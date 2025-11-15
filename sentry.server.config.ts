@@ -1,34 +1,19 @@
+// This file configures the initialization of Sentry on the server.
+// The config you add here will be used whenever the server handles a request.
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/
+
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: "https://5fb46f451de4d84ce83f867e41e24b9d@o4510371387080704.ingest.us.sentry.io/4510371394682880",
 
-  // Only send errors in production
-  enabled: process.env.NODE_ENV === "production",
+  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
+  tracesSampleRate: 1,
 
-  // Adjust this value in production
-  tracesSampleRate: 0.1, // 10% of transactions
+  // Enable logs to be sent to Sentry
+  enableLogs: true,
 
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-
-  // Server-specific configuration
-  environment: process.env.VERCEL_ENV || process.env.NODE_ENV || "development",
-
-  // Add server context
-  initialScope: {
-    tags: {
-      runtime: "node",
-    },
-  },
-
-  // Filter out database integrations (we don't use Prisma or raw Postgres)
-  // We use Supabase client which doesn't need these instrumentations
-  // This prevents "Critical dependency" warnings from OpenTelemetry instrumentation
-  integrations: (integrations) => {
-    return integrations.filter((integration) => {
-      const name = integration.name;
-      return !["Prisma", "Postgres", "Mysql", "Mongo"].includes(name);
-    });
-  },
+  // Enable sending user PII (Personally Identifiable Information)
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
+  sendDefaultPii: true,
 });

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build:index": "node scripts/build-resource-index.cjs",
-    "build": "npm run build:index && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -34,7 +34,13 @@
     "provider-maintenance": "node --env-file=.env.local scripts/update-providers.js all",
     "migrate:content:dry": "tsx scripts/migrate-articles-to-knowledge-hub.ts --dry",
     "migrate:content": "tsx scripts/migrate-articles-to-knowledge-hub.ts",
-    "validate:content": "tsx scripts/validate-content.ts"
+    "validate:content": "tsx scripts/validate-content.ts",
+    "sync:content": "tsx scripts/sync-json-to-db.ts",
+    "sync:content:dry": "tsx scripts/sync-json-to-db.ts --dry-run",
+    "sync:treatments": "tsx scripts/sync-json-to-db.ts --type=treatments",
+    "sync:conditions": "tsx scripts/sync-json-to-db.ts --type=conditions",
+    "sync:resources": "tsx scripts/sync-json-to-db.ts --type=resources",
+    "prebuild": "npm run sync:content && npm run build:index"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -55,7 +61,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "dotenv": "^17.2.1",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.23.12",
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.537.0",
