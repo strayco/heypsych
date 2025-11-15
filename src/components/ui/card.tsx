@@ -11,11 +11,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const baseClasses = "rounded-2xl border transition-all duration-200";
 
     const variantClasses = {
-      default: "bg-white border-neutral-200 hover:shadow-lg",
-      outlined: "bg-transparent border-neutral-300 hover:border-neutral-400",
-      filled: "bg-white border-neutral-200 hover:bg-neutral-50",
+      default: "bg-white border-neutral-200 [@media(hover:hover)]:hover:shadow-lg",
+      outlined: "bg-transparent border-neutral-300 [@media(hover:hover)]:hover:border-neutral-400",
+      filled: "bg-white border-neutral-200 [@media(hover:hover)]:hover:bg-neutral-50",
       gradient: "bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-100",
-      glow: "bg-white border-blue-200 shadow-lg hover:shadow-xl",
+      glow: "bg-white border-blue-200 shadow-lg [@media(hover:hover)]:hover:shadow-xl",
       glass: "bg-white/95 backdrop-blur-sm border-neutral-200",
     };
 
@@ -27,7 +27,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     };
 
     const interactiveClasses = interactive
-      ? "cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+      ? "cursor-pointer [@media(hover:hover)]:hover:scale-[1.02] active:scale-[0.98]"
       : "";
 
     return (
