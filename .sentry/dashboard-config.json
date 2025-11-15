@@ -1,0 +1,266 @@
+{
+  "title": "HeyPsych Production Monitoring",
+  "description": "Performance monitoring and error tracking for HeyPsych production deployment",
+  "widgets": [
+    {
+      "title": "Search API Performance (p50/p95/p99)",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "p50",
+          "fields": ["p50(search.duration)"],
+          "aggregates": ["p50(search.duration)"],
+          "conditions": "transaction:api.search",
+          "orderby": ""
+        },
+        {
+          "name": "p95",
+          "fields": ["p95(search.duration)"],
+          "aggregates": ["p95(search.duration)"],
+          "conditions": "transaction:api.search",
+          "orderby": ""
+        },
+        {
+          "name": "p99",
+          "fields": ["p99(search.duration)"],
+          "aggregates": ["p99(search.duration)"],
+          "conditions": "transaction:api.search",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "title": "Provider Search Performance (p50/p95/p99)",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "p50",
+          "fields": ["p50(provider_search.duration)"],
+          "aggregates": ["p50(provider_search.duration)"],
+          "conditions": "transaction:api.providers.search",
+          "orderby": ""
+        },
+        {
+          "name": "p95",
+          "fields": ["p95(provider_search.duration)"],
+          "aggregates": ["p95(provider_search.duration)"],
+          "conditions": "transaction:api.providers.search",
+          "orderby": ""
+        },
+        {
+          "name": "p99",
+          "fields": ["p99(provider_search.duration)"],
+          "aggregates": ["p99(provider_search.duration)"],
+          "conditions": "transaction:api.providers.search",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 2,
+        "y": 0,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "title": "Error Rate by Endpoint",
+      "displayType": "table",
+      "queries": [
+        {
+          "name": "Errors by Transaction",
+          "fields": ["transaction", "count()", "error_rate()", "p95()"],
+          "aggregates": ["count()", "error_rate()", "p95()"],
+          "conditions": "",
+          "orderby": "-count()"
+        }
+      ],
+      "layout": {
+        "x": 0,
+        "y": 2,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "title": "Search Query Distribution by Length",
+      "displayType": "bar",
+      "queries": [
+        {
+          "name": "Query Length Distribution",
+          "fields": ["query_length", "count()"],
+          "aggregates": ["count()"],
+          "conditions": "transaction:api.search",
+          "orderby": "query_length"
+        }
+      ],
+      "layout": {
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      }
+    },
+    {
+      "title": "Database Query Performance",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "Search DB Queries",
+          "fields": ["avg(duration)"],
+          "aggregates": ["avg(duration)"],
+          "conditions": "tags[api]:search",
+          "orderby": ""
+        },
+        {
+          "name": "Provider Search DB Queries",
+          "fields": ["avg(duration)"],
+          "aggregates": ["avg(duration)"],
+          "conditions": "tags[api]:provider_search",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      }
+    },
+    {
+      "title": "Top Slow Transactions",
+      "displayType": "table",
+      "queries": [
+        {
+          "name": "Slowest Endpoints",
+          "fields": ["transaction", "p95()", "tpm()", "error_rate()"],
+          "aggregates": ["p95()", "tpm()", "error_rate()"],
+          "conditions": "p95():>500",
+          "orderby": "-p95()"
+        }
+      ],
+      "layout": {
+        "x": 0,
+        "y": 4,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "title": "Error Trend (Last 24h)",
+      "displayType": "line",
+      "interval": "1h",
+      "queries": [
+        {
+          "name": "Total Errors",
+          "fields": ["count()"],
+          "aggregates": ["count()"],
+          "conditions": "event.type:error",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 2,
+        "y": 4,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "title": "Core Web Vitals - LCP",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "LCP p75",
+          "fields": ["p75(measurements.lcp)"],
+          "aggregates": ["p75(measurements.lcp)"],
+          "conditions": "transaction.op:pageload",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 0,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      }
+    },
+    {
+      "title": "Core Web Vitals - FCP",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "FCP p75",
+          "fields": ["p75(measurements.fcp)"],
+          "aggregates": ["p75(measurements.fcp)"],
+          "conditions": "transaction.op:pageload",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 1,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      }
+    },
+    {
+      "title": "Core Web Vitals - CLS",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "CLS p75",
+          "fields": ["p75(measurements.cls)"],
+          "aggregates": ["p75(measurements.cls)"],
+          "conditions": "transaction.op:pageload",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 2,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      }
+    },
+    {
+      "title": "Page Load Performance",
+      "displayType": "line",
+      "interval": "5m",
+      "queries": [
+        {
+          "name": "Page Load p95",
+          "fields": ["p95(transaction.duration)"],
+          "aggregates": ["p95(transaction.duration)"],
+          "conditions": "transaction.op:pageload",
+          "orderby": ""
+        }
+      ],
+      "layout": {
+        "x": 3,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      }
+    }
+  ],
+  "filters": {
+    "environment": ["production"],
+    "release": ["latest"]
+  },
+  "period": "24h",
+  "start": null,
+  "end": null,
+  "utc": true
+}

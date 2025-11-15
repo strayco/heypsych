@@ -1,0 +1,216 @@
+{
+  "alert_rules": [
+    {
+      "name": "[CRITICAL] Search API p95 > 400ms - Rollback Required",
+      "type": "metric_alert",
+      "dataset": "transactions",
+      "query": "transaction:api.search",
+      "aggregate": "p95(transaction.duration)",
+      "time_window": 5,
+      "threshold_type": "above",
+      "resolve_threshold": null,
+      "triggers": [
+        {
+          "label": "critical",
+          "alert_threshold": 400,
+          "actions": [
+            {
+              "type": "email",
+              "target_type": "team",
+              "target_identifier": "engineering"
+            },
+            {
+              "type": "slack",
+              "target_identifier": "#alerts-critical"
+            },
+            {
+              "type": "pagerduty",
+              "target_identifier": "on-call"
+            }
+          ]
+        }
+      ],
+      "environment": "production",
+      "owner": "engineering",
+      "thresholdPeriod": 1
+    },
+    {
+      "name": "[CRITICAL] Error Rate > 2%",
+      "type": "metric_alert",
+      "dataset": "transactions",
+      "query": "",
+      "aggregate": "error_rate()",
+      "time_window": 2,
+      "threshold_type": "above",
+      "resolve_threshold": 1,
+      "triggers": [
+        {
+          "label": "critical",
+          "alert_threshold": 2,
+          "actions": [
+            {
+              "type": "email",
+              "target_type": "team",
+              "target_identifier": "engineering"
+            },
+            {
+              "type": "slack",
+              "target_identifier": "#alerts-critical"
+            },
+            {
+              "type": "pagerduty",
+              "target_identifier": "on-call"
+            }
+          ]
+        }
+      ],
+      "environment": "production",
+      "owner": "engineering",
+      "thresholdPeriod": 1
+    },
+    {
+      "name": "[CRITICAL] Database Query Failures",
+      "type": "issue_alert",
+      "conditions": [
+        {
+          "id": "sentry.rules.conditions.event_frequency.EventFrequencyCondition",
+          "value": 5,
+          "interval": "2m"
+        },
+        {
+          "id": "sentry.rules.filters.tagged_event.TaggedEventFilter",
+          "key": "level",
+          "match": "eq",
+          "value": "error"
+        },
+        {
+          "id": "sentry.rules.filters.issue_occurrences.IssueOccurrencesFilter",
+          "value": 5
+        }
+      ],
+      "filters": [
+        {
+          "id": "sentry.rules.filters.tagged_event.TaggedEventFilter",
+          "key": "api",
+          "match": "eq",
+          "value": "search"
+        }
+      ],
+      "actions": [
+        {
+          "id": "sentry.mail.actions.NotifyEmailAction",
+          "targetType": "Team",
+          "targetIdentifier": "engineering"
+        },
+        {
+          "id": "sentry.integrations.slack.notify_action.SlackNotifyServiceAction",
+          "workspace": "heypsych",
+          "channel": "#alerts-critical"
+        }
+      ],
+      "actionMatch": "all",
+      "filterMatch": "all",
+      "frequency": 5,
+      "environment": "production",
+      "owner": "engineering"
+    },
+    {
+      "name": "[WARNING] Search API p95 > 250ms",
+      "type": "metric_alert",
+      "dataset": "transactions",
+      "query": "transaction:api.search",
+      "aggregate": "p95(transaction.duration)",
+      "time_window": 15,
+      "threshold_type": "above",
+      "resolve_threshold": 200,
+      "triggers": [
+        {
+          "label": "warning",
+          "alert_threshold": 250,
+          "actions": [
+            {
+              "type": "email",
+              "target_type": "team",
+              "target_identifier": "engineering"
+            },
+            {
+              "type": "slack",
+              "target_identifier": "#alerts-monitoring"
+            }
+          ]
+        }
+      ],
+      "environment": "production",
+      "owner": "engineering",
+      "thresholdPeriod": 1
+    },
+    {
+      "name": "[WARNING] Provider Search > 250ms",
+      "type": "metric_alert",
+      "dataset": "transactions",
+      "query": "transaction:api.providers.search",
+      "aggregate": "p95(transaction.duration)",
+      "time_window": 15,
+      "threshold_type": "above",
+      "resolve_threshold": 200,
+      "triggers": [
+        {
+          "label": "warning",
+          "alert_threshold": 250,
+          "actions": [
+            {
+              "type": "email",
+              "target_type": "team",
+              "target_identifier": "engineering"
+            },
+            {
+              "type": "slack",
+              "target_identifier": "#alerts-monitoring"
+            }
+          ]
+        }
+      ],
+      "environment": "production",
+      "owner": "engineering",
+      "thresholdPeriod": 1
+    },
+    {
+      "name": "[WARNING] Slow ISR Regeneration",
+      "type": "metric_alert",
+      "dataset": "transactions",
+      "query": "transaction.op:function.nextjs",
+      "aggregate": "avg(transaction.duration)",
+      "time_window": 60,
+      "threshold_type": "above",
+      "resolve_threshold": 3000,
+      "triggers": [
+        {
+          "label": "warning",
+          "alert_threshold": 5000,
+          "actions": [
+            {
+              "type": "email",
+              "target_type": "team",
+              "target_identifier": "engineering"
+            },
+            {
+              "type": "slack",
+              "target_identifier": "#alerts-monitoring"
+            }
+          ]
+        }
+      ],
+      "environment": "production",
+      "owner": "engineering",
+      "thresholdPeriod": 1
+    }
+  ],
+  "metadata": {
+    "created_at": "2025-11-15",
+    "version": "1.0",
+    "project": "heypsych",
+    "sentry_project": "javascript-nextjs",
+    "organization": "strayco",
+    "notes": "Alert rules aligned with DEPLOYMENT_RUNBOOK.md thresholds"
+  }
+}

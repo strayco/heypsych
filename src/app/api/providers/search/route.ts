@@ -6,6 +6,14 @@ import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 import { validateQuery } from "@/lib/validation";
 import { providerSearchSchema } from "@/lib/schemas/api";
 
+// Import Sentry if available
+let Sentry: any = null;
+try {
+  Sentry = require("@sentry/nextjs");
+} catch {
+  // Sentry not available, performance tracking disabled
+}
+
 // Use service role for server-side queries to bypass RLS and improve performance
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -19,18 +27,31 @@ const supabaseAdmin = createClient(
 );
 
 export async function GET(req: NextRequest) {
+  const startTime = Date.now();
+
+  // Start Sentry transaction if available
+  const transaction = Sentry?.startTransaction({
+    op: "api.providers.search",
+    name: "Provider Search API",
+  });
+
   // Rate limiting - FIRST line of defense
   const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
-  if (rateLimitResponse) return rateLimitResponse;
+  if (rateLimitResponse) {
+    transaction?.finish();
+    return rateLimitResponse;
+  }
 
   // Input validation - SECOND line of defense
   const { data: qParams, error: validationError } = validateQuery(req, providerSearchSchema);
-  if (validationError) return validationError;
+  if (validationError) {
+    transaction?.finish();
+    return validationError;
+  }
   if (!qParams) {
+    transaction?.finish();
     return NextResponse.json({ error: "Invalid query parameters" }, { status: 400 });
   }
-
-  const startTime = Date.now();
 
   try {
     const limit = qParams.limit;
@@ -118,6 +139,35 @@ export async function GET(req: NextRequest) {
     const loadTime = Date.now() - startTime;
     logger.debug(`✅ Found ${data?.length || 0} providers (${count} total) in ${loadTime}ms`);
 
+    // Track performance metric in Sentry
+    if (Sentry) {
+      Sentry.metrics.distribution("provider_search.duration", loadTime, {
+        unit: "millisecond",
+        tags: {
+          has_state: !!qParams.state,
+          has_city: !!qParams.city,
+          has_specialization: !!qParams.specialization,
+          result_count: data?.length || 0,
+        },
+      });
+
+      // Alert on slow queries (threshold: 100ms for good UX)
+      if (loadTime > 250) {
+        Sentry.captureMessage("Slow provider search query detected", {
+          level: "warning",
+          tags: {
+            duration: loadTime,
+            threshold: "250ms",
+          },
+          extra: {
+            result_count: data?.length || 0,
+            total_count: count,
+            filters: qParams,
+          },
+        });
+      }
+    }
+
     // Map to expected format with better error handling
     const providers = (data ?? []).map((row: any) => {
       const content = row.content || {};
@@ -164,6 +214,17 @@ export async function GET(req: NextRequest) {
     const loadTime = Date.now() - startTime;
     logger.error("Provider search failed", e, { loadTime });
 
+    // Track error in Sentry
+    Sentry?.captureException(e, {
+      tags: {
+        api: "provider_search",
+        duration: loadTime,
+      },
+      extra: {
+        filters: qParams,
+      },
+    });
+
     // Return more specific error messages
     let errorMessage = "Search failed";
 
@@ -182,5 +243,7 @@ export async function GET(req: NextRequest) {
       },
       { status: 500 }
     );
+  } finally {
+    transaction?.finish();
   }
 }
