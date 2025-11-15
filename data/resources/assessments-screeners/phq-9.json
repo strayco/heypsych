@@ -1,0 +1,181 @@
+{
+  "kind": "resource",
+  "slug": "phq-9",
+  "name": "PHQ-9",
+  "full_name": "Patient Health Questionnaire-9",
+  "summary": "A 9-item depression screening tool with scoring guidelines.",
+  "category": "assessments-screeners",
+  "assessment_type": "screening",
+  "tags": ["assessment", "depression", "screening", "mood"],
+  "description": "A 9-question instrument for screening, diagnosing, monitoring and measuring the severity of depression.",
+  "metadata": { "category": "assessments-screeners" },
+
+  "items": [
+    { "id": "q1", "text": "Little interest or pleasure in doing things", "type": "likert_0_3" },
+    { "id": "q2", "text": "Feeling down, depressed, or hopeless", "type": "likert_0_3" },
+    {
+      "id": "q3",
+      "text": "Trouble falling or staying asleep, or sleeping too much",
+      "type": "likert_0_3"
+    },
+    { "id": "q4", "text": "Feeling tired or having little energy", "type": "likert_0_3" },
+    { "id": "q5", "text": "Poor appetite or overeating", "type": "likert_0_3" },
+    {
+      "id": "q6",
+      "text": "Feeling bad about yourself — or that you are a failure or have let yourself or your family down",
+      "type": "likert_0_3"
+    },
+    {
+      "id": "q7",
+      "text": "Trouble concentrating on things, such as reading the newspaper or watching television",
+      "type": "likert_0_3"
+    },
+    {
+      "id": "q8",
+      "text": "Moving or speaking so slowly that other people could have noticed. Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual",
+      "type": "likert_0_3"
+    },
+    {
+      "id": "q9",
+      "text": "Thoughts that you would be better off dead, or of hurting yourself",
+      "type": "likert_0_3",
+      "alert": true
+    }
+  ],
+
+  "response_options": [
+    { "value": 0, "label": "Not at all" },
+    { "value": 1, "label": "Several days" },
+    { "value": 2, "label": "More than half the days" },
+    { "value": 3, "label": "Nearly every day" }
+  ],
+
+  "scoring": {
+    "engine": "sum_with_bands",
+    "rules": {
+      "total": {
+        "items": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"],
+        "method": "sum"
+      },
+      "severity": {
+        "input": "total",
+        "bands": {
+          "0-4": "Minimal",
+          "5-9": "Mild",
+          "10-14": "Moderate",
+          "15-19": "Moderately severe",
+          "20-27": "Severe"
+        }
+      },
+      "alerts": {
+        "suicide_risk": {
+          "item": "q9",
+          "threshold": 1,
+          "message": "Suicide risk screen positive - requires immediate clinical attention"
+        }
+      }
+    }
+  },
+
+  "clinical_interpretations": {
+    "Minimal": "Your score indicates minimal depression symptoms. This suggests you are experiencing few if any depressive symptoms that interfere with your daily life. Continue with healthy lifestyle practices including regular exercise, adequate sleep, social connections, and stress management techniques.",
+    "Mild": "Your score suggests mild depression symptoms that may occasionally affect your daily activities. Consider implementing self-care strategies such as regular physical activity, maintaining social connections, practicing stress reduction techniques, and ensuring adequate sleep. If symptoms persist for more than two weeks or worsen, consider consulting with a healthcare professional.",
+    "Moderate": "Your score indicates moderate depression that is likely impacting your daily functioning and quality of life. It is recommended to consult with a healthcare professional for proper evaluation and discussion of treatment options. Effective treatments may include counseling, psychotherapy (such as cognitive-behavioral therapy), lifestyle modifications, and in some cases, medication.",
+    "Moderately severe": "Your score suggests moderately severe depression that is significantly affecting your daily life and well-being. Professional evaluation and treatment are strongly recommended. Depression at this level typically responds well to treatment, which may include psychotherapy, medication, or a combination of both, along with lifestyle support strategies.",
+    "Severe": "Your score indicates severe depression that is substantially impairing your ability to function in daily activities. Immediate consultation with a healthcare professional is strongly recommended for comprehensive evaluation and treatment planning. Severe depression is highly treatable with appropriate professional care, and early intervention can significantly improve outcomes and quality of life."
+  },
+
+  "ui": {
+    "result_panels": [
+      {
+        "title": "Depression Severity",
+        "rows": [
+          { "key": "total", "label": "Total Score", "suffix": "/27" },
+          { "key": "severity", "label": "Severity Level" },
+          {
+            "key": "suicide_alert",
+            "label": "Suicide Risk",
+            "format": { "type": "alert", "show_if_present": true }
+          }
+        ]
+      }
+    ]
+  },
+
+  "sections": [
+    {
+      "type": "about",
+      "title": "About the PHQ-9",
+      "text": "The Patient Health Questionnaire-9 (PHQ-9) is a multipurpose instrument for screening, diagnosing, monitoring and measuring the severity of depression."
+    },
+    {
+      "type": "instructions",
+      "title": "Instructions",
+      "text": "Over the last 2 weeks, how often have you been bothered by any of the following problems?"
+    },
+    {
+      "type": "scoring",
+      "title": "Scoring and Interpretation",
+      "text": "Depression severity bands: 0–4 minimal, 5–9 mild, 10–14 moderate, 15–19 moderately severe, 20–27 severe depression."
+    }
+  ],
+
+  "psychometric_properties": {
+    "sensitivity": "88% at cutoff of 10",
+    "specificity": "88% at cutoff of 10",
+    "internal_consistency": "Cronbach's alpha = 0.89"
+  },
+
+  "clinical_alerts": {
+    "suicide_screening": "Any positive response to item 9 requires immediate risk assessment"
+  },
+
+  "references": [
+    {
+      "title": "The PHQ-9: validity of a brief depression severity measure",
+      "authors": "Kroenke K, Spitzer RL, Williams JB",
+      "year": 2001,
+      "doi": "10.1046/j.1525-1497.2001.016009606.x"
+    },
+    {
+      "title": "The Patient Health Questionnaire-9 (PHQ-9) in the assessment of depression in primary care",
+      "authors": "Gilbody S, Richards D, Brealey S, Hewitt C",
+      "year": 2007,
+      "doi": "10.1016/j.jad.2020.09.131"
+    }
+  ],
+
+  "copyright": {
+    "notice": "Copyright © Pfizer Inc. All rights reserved.",
+    "usage": "May be reproduced, translated and distributed without permission from Pfizer Inc."
+  },
+
+  "validated": true,
+  "free": true,
+  "duration": "2-3 minutes",
+  "age_range": "Adults (18+)",
+
+  "conditions": ["depression", "major depressive disorder", "mood disorders"],
+  "target_populations": ["adults", "primary care patients", "psychiatric patients"],
+  "limitations": [
+    "Not a diagnostic tool by itself — requires clinical judgment",
+    "May not capture all aspects of depression",
+    "Cultural factors may influence responses"
+  ],
+
+  "order": 1,
+  "featured": true,
+  "downloadable_pdf": true,
+  "interactive_version": true,
+
+  "seo": {
+    "title": "PHQ-9 Depression Screening Tool - Scoring & Interpretation Guide",
+    "description": "Complete PHQ-9 depression screening questionnaire with scoring guidelines, clinical interpretation, and usage instructions for healthcare providers.",
+    "keywords": [
+      "PHQ-9",
+      "depression screening",
+      "mental health assessment",
+      "patient health questionnaire"
+    ]
+  }
+}

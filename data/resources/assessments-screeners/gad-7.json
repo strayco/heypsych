@@ -1,0 +1,174 @@
+{
+  "kind": "resource",
+  "slug": "gad-7",
+  "name": "GAD-7",
+  "full_name": "Generalized Anxiety Disorder-7",
+  "summary": "A 7-item anxiety screening tool with scoring guidelines.",
+  "category": "assessments-screeners",
+  "assessment_type": "screening",
+  "tags": ["assessment", "anxiety", "screening", "mood"],
+  "description": "A 7-question instrument for screening, diagnosing, monitoring and measuring the severity of generalized anxiety disorder (GAD). The GAD-7 is widely used in healthcare and research settings worldwide.",
+  "purpose": "Screen for generalized anxiety disorder and monitor treatment response",
+  "validated": true,
+  "free": true,
+  "duration": "2-3 minutes",
+  "age_range": "Adults (18+)",
+  "languages": ["English", "Spanish", "French", "Portuguese", "German"],
+  "administration": "self-report",
+  "metadata": { "category": "assessments-screeners" },
+
+  "items": [
+    { "id": "q1", "text": "Feeling nervous, anxious, or on edge", "type": "likert_0_3" },
+    { "id": "q2", "text": "Not being able to stop or control worrying", "type": "likert_0_3" },
+    { "id": "q3", "text": "Worrying too much about different things", "type": "likert_0_3" },
+    { "id": "q4", "text": "Trouble relaxing", "type": "likert_0_3" },
+    { "id": "q5", "text": "Being so restless that it is hard to sit still", "type": "likert_0_3" },
+    { "id": "q6", "text": "Becoming easily annoyed or irritable", "type": "likert_0_3" },
+    {
+      "id": "q7",
+      "text": "Feeling afraid as if something awful might happen",
+      "type": "likert_0_3"
+    }
+  ],
+
+  "response_options": [
+    { "value": 0, "label": "Not at all" },
+    { "value": 1, "label": "Several days" },
+    { "value": 2, "label": "More than half the days" },
+    { "value": 3, "label": "Nearly every day" }
+  ],
+
+  "scoring": {
+    "engine": "sum_with_bands",
+    "rules": {
+      "total": {
+        "items": ["q1", "q2", "q3", "q4", "q5", "q6", "q7"],
+        "method": "sum"
+      },
+      "severity": {
+        "input": "total",
+        "bands": {
+          "0-4": "Minimal",
+          "5-9": "Mild",
+          "10-14": "Moderate",
+          "15-21": "Severe"
+        }
+      },
+      "alerts": {
+        "severe_anxiety": {
+          "item": "total",
+          "threshold": 15,
+          "message": "Severe anxiety - may require clinical intervention"
+        }
+      }
+    }
+  },
+
+  "clinical_interpretations": {
+    "Minimal": "Your score suggests minimal anxiety symptoms. This is within the normal range. Continue monitoring your mental health and maintain healthy coping strategies such as regular exercise, adequate sleep, and stress management techniques.",
+    "Mild": "Your score indicates mild anxiety symptoms that may occasionally interfere with daily activities. Consider lifestyle modifications including regular physical activity, mindfulness practices, limiting caffeine intake, and ensuring adequate sleep. If symptoms persist or worsen over several weeks, consider consulting a healthcare professional.",
+    "Moderate": "Your score suggests moderate anxiety symptoms that are likely interfering with your daily activities and quality of life. It is recommended to consult with a healthcare professional for proper evaluation. Treatment options may include counseling, therapy (such as cognitive-behavioral therapy), lifestyle modifications, or other evidence-based interventions.",
+    "Severe": "Your score indicates severe anxiety symptoms that are significantly impacting your daily functioning and well-being. It is important to consult with a healthcare professional promptly for comprehensive evaluation and treatment planning. Severe anxiety is highly treatable with appropriate professional care, which may include therapy, medication, or a combination of treatments."
+  },
+
+  "ui": {
+    "result_panels": [
+      {
+        "title": "Anxiety Severity",
+        "rows": [
+          { "key": "total", "label": "Total Score", "suffix": "/21" },
+          { "key": "severity", "label": "Severity Level" },
+          {
+            "key": "severe_anxiety_alert",
+            "label": "Clinical Alert",
+            "format": { "type": "alert", "show_if_present": true }
+          }
+        ]
+      }
+    ]
+  },
+
+  "sections": [
+    {
+      "type": "about",
+      "title": "About the GAD-7",
+      "text": "The Generalized Anxiety Disorder-7 (GAD-7) is a brief self-report tool designed to screen for generalized anxiety disorder and assess its severity. It is based on DSM-IV criteria for GAD and is also useful for identifying other anxiety disorders."
+    },
+    {
+      "type": "instructions",
+      "title": "Instructions",
+      "text": "Over the last 2 weeks, how often have you been bothered by the following problems? For each item, select the response that best describes your experience."
+    },
+    {
+      "type": "scoring",
+      "title": "Scoring and Interpretation",
+      "text": "Add up all checked boxes for a total score. Anxiety severity bands: 0–4 minimal, 5–9 mild, 10–14 moderate, 15–21 severe anxiety."
+    },
+    {
+      "type": "clinical_use",
+      "title": "Clinical Applications",
+      "text": "The GAD-7 is widely used in primary care, mental health, and research settings. It can be used for initial screening, monitoring treatment progress, and assessing outcomes for anxiety disorders."
+    }
+  ],
+
+  "psychometric_properties": {
+    "sensitivity": "89% at cutoff of 10",
+    "specificity": "82% at cutoff of 10",
+    "internal_consistency": "Cronbach's alpha = 0.92",
+    "test_retest_reliability": "Excellent"
+  },
+
+  "clinical_alerts": {
+    "severe_anxiety": "Scores ≥15 indicate severe anxiety and may require clinical intervention"
+  },
+
+  "references": [
+    {
+      "title": "A brief measure for assessing generalized anxiety disorder: the GAD-7",
+      "authors": "Spitzer RL, Kroenke K, Williams JB, Löwe B",
+      "year": 2006,
+      "doi": "10.1001/archinte.166.10.1092"
+    },
+    {
+      "title": "The GAD-7 scale as a measure of generalized anxiety disorder in primary care",
+      "authors": "Löwe B, Decker O, Müller S, et al.",
+      "year": 2008,
+      "doi": "10.1016/j.jpsychores.2008.01.005"
+    }
+  ],
+
+  "copyright": {
+    "notice": "Copyright © Pfizer Inc. All rights reserved.",
+    "usage": "May be reproduced, translated and distributed without permission from Pfizer Inc."
+  },
+
+  "conditions": [
+    "generalized anxiety disorder",
+    "anxiety disorders",
+    "panic disorder",
+    "social anxiety disorder",
+    "PTSD"
+  ],
+  "target_populations": ["adults", "primary care patients", "psychiatric patients"],
+  "limitations": [
+    "Not a diagnostic tool by itself — requires clinical judgment",
+    "May not capture all anxiety-related symptoms (e.g., specific phobias, OCD)",
+    "Cultural factors may influence responses"
+  ],
+
+  "order": 2,
+  "featured": true,
+  "downloadable_pdf": true,
+  "interactive_version": true,
+
+  "seo": {
+    "title": "GAD-7 Anxiety Screening Tool - Scoring & Interpretation Guide",
+    "description": "Complete GAD-7 anxiety screening questionnaire with scoring guidelines, clinical interpretation, and usage instructions for healthcare providers.",
+    "keywords": [
+      "GAD-7",
+      "anxiety screening",
+      "mental health assessment",
+      "generalized anxiety disorder questionnaire"
+    ]
+  }
+}

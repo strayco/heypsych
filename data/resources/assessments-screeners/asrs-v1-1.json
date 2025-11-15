@@ -1,0 +1,274 @@
+{
+  "kind": "resource",
+  "slug": "asrs-v1-1",
+  "name": "ASRS v1.1",
+  "full_name": "Adult ADHD Self-Report Scale v1.1 (ASRS)",
+  "summary": "18-item adult ADHD screener with Part A (6 items) and Part B (12 items).",
+  "category": "assessments-screeners",
+  "assessment_type": "screening",
+  "tags": ["assessment", "adhd", "screening", "adult"],
+  "description": "The ASRS v1.1 is a validated screening tool for adult ADHD aligned with DSM criteria. Part A (items 1-6) is the primary screener, while Part B (items 7-18) provides additional symptom context.",
+  "purpose": "Screen for adult ADHD and assess symptom patterns across inattention and hyperactivity-impulsivity domains.",
+  "validated": true,
+  "free": true,
+  "duration": "5 minutes",
+  "age_range": "Adults (18+)",
+  "languages": ["English"],
+  "administration": "self-report",
+  "metadata": { "category": "assessments-screeners" },
+
+  "items": [
+    {
+      "id": "q1",
+      "text": "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q2",
+      "text": "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q3",
+      "text": "How often do you have problems remembering appointments or obligations?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q4",
+      "text": "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q5",
+      "text": "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q6",
+      "text": "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q7",
+      "text": "How often do you make careless mistakes when you have to work on a boring or difficult project?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q8",
+      "text": "How often do you have difficulty keeping your attention when you are doing boring or repetitive work?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q9",
+      "text": "How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q10",
+      "text": "How often do you misplace or have difficulty finding things at home or at work?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q11",
+      "text": "How often are you distracted by activity or noise around you?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q12",
+      "text": "How often do you leave your seat in meetings or other situations in which you are expected to remain seated?",
+      "type": "likert_0_4"
+    },
+    { "id": "q13", "text": "How often do you feel restless or fidgety?", "type": "likert_0_4" },
+    {
+      "id": "q14",
+      "text": "How often do you have difficulty unwinding and relaxing when you have time to yourself?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q15",
+      "text": "How often do you find yourself talking too much when you are in social situations?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q16",
+      "text": "When you're in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q17",
+      "text": "How often do you have difficulty waiting your turn in situations when turn taking is required?",
+      "type": "likert_0_4"
+    },
+    {
+      "id": "q18",
+      "text": "How often do you interrupt others when they are busy?",
+      "type": "likert_0_4"
+    }
+  ],
+
+  "response_options": [
+    { "value": 0, "label": "Never" },
+    { "value": 1, "label": "Rarely" },
+    { "value": 2, "label": "Sometimes" },
+    { "value": 3, "label": "Often" },
+    { "value": 4, "label": "Very often" }
+  ],
+
+  "scoring": {
+    "engine": "asrs_custom",
+    "rules": {
+      "part_a": [1, 2, 3, 4, 5, 6],
+      "part_b": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "domains": {
+        "inattention": [1, 2, 3, 4, 7, 8, 9, 10, 11],
+        "hyperactivity_motor": [5, 6, 12, 13, 14],
+        "hyperactivity_verbal": [15, 16, 17, 18]
+      }
+    }
+  },
+
+  "clinical_interpretations": {
+    "Low": "Your scores indicate minimal ADHD symptoms. Part A score ≤9 and total score ≤30 are both below clinical thresholds, consistent with typical adult functioning without clinically significant ADHD symptoms.",
+    "Mild to Moderate": "Your scores are in the mild to moderate range. If Part A is 10-13 (below diagnostic threshold) but total score approaches 40+ (79th percentile), clinical evaluation may still be warranted as this pattern can be diagnostically informative.",
+    "High": "Your scores indicate clinically significant ADHD symptoms. Part A scores 14-17 meet the diagnostic threshold, and/or total scores 40-49 exceed the 79th percentile where most individuals with ADHD score. Professional evaluation is recommended.",
+    "Very High": "Your scores indicate severe ADHD symptoms. Part A scores ≥18 or total scores ≥50 represent very high symptom levels that are strongly consistent with ADHD diagnosis and require comprehensive clinical evaluation."
+  },
+
+  "ui": {
+    "result_panels": [
+      {
+        "title": "Part A - Primary Screening",
+        "rows": [
+          { "key": "part_a_total", "label": "Part A Total", "suffix": "/24" },
+          { "key": "part_a_descriptor", "label": "Severity Level" },
+          {
+            "key": "part_a_positive",
+            "label": "ADHD Threshold",
+            "format": { "type": "flag", "true": "Met (≥14)", "false": "Not Met (<14)" }
+          }
+        ]
+      },
+      {
+        "title": "Part B - Additional Symptoms",
+        "rows": [
+          { "key": "part_b_total", "label": "Part B Total", "suffix": "/48" },
+          { "key": "part_b_descriptor", "label": "Severity Level" },
+          {
+            "key": "part_b_clinically_significant",
+            "label": "Clinical Significance",
+            "format": {
+              "type": "flag",
+              "true": "Significant (≥27)",
+              "false": "Below Threshold (<27)"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Total Score & Percentile Context",
+        "rows": [
+          { "key": "total", "label": "Total Score", "suffix": "/72" },
+          { "key": "total_descriptor", "label": "Severity Level" },
+          {
+            "key": "total_above_79th_percentile",
+            "label": "Percentile Context",
+            "format": {
+              "type": "flag",
+              "true": "Above 79th %ile (≥40)",
+              "false": "Below 79th %ile (<40)"
+            }
+          }
+        ]
+      },
+      {
+        "title": "ADHD Symptom Domains",
+        "rows": [
+          { "key": "sub_inattention", "label": "Inattention", "suffix": "/36" },
+          { "key": "sub_hyperactivity_motor", "label": "Motor Hyperactivity", "suffix": "/20" },
+          { "key": "sub_hyperactivity_verbal", "label": "Verbal Hyperactivity", "suffix": "/16" }
+        ]
+      }
+    ]
+  },
+
+  "sections": [
+    {
+      "type": "about",
+      "title": "About the ASRS v1.1",
+      "text": "The Adult ADHD Self-Report Scale (ASRS) v1.1 is a validated screening tool based on DSM criteria. Part A (items 1-6) is the most predictive for ADHD screening, while Part B (items 7-18) provides additional symptom severity information across inattention and hyperactivity-impulsivity domains."
+    },
+    {
+      "type": "instructions",
+      "title": "Instructions",
+      "text": "For each item, choose how often the problem has occurred over the past 6 months. Please answer each question as honestly as possible based on your recent experiences."
+    },
+    {
+      "type": "scoring",
+      "title": "Scoring and Interpretation",
+      "text": "Part A scores of 14 or higher suggest symptoms consistent with ADHD and warrant professional evaluation. The assessment provides scores for overall symptom severity and specific symptom domains including inattention and hyperactivity-impulsivity."
+    }
+  ],
+
+  "psychometric_properties": {
+    "sensitivity": "68.7% for Part A screening",
+    "specificity": "99.5% for Part A screening",
+    "internal_consistency": "Excellent reliability across domains",
+    "validation": "Validated against DSM-IV and DSM-5 ADHD criteria"
+  },
+
+  "clinical_alerts": {
+    "adhd_screening": "Part A scores ≥14 indicate positive ADHD screening and recommend professional evaluation"
+  },
+
+  "references": [
+    {
+      "title": "The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population",
+      "authors": "Kessler RC, Adler L, Ames M, et al.",
+      "year": 2005,
+      "doi": "10.1017/S0033291705006096"
+    },
+    {
+      "title": "The prevalence and correlates of adult ADHD in the United States: results from the National Comorbidity Survey Replication",
+      "authors": "Kessler RC, Adler L, Barkley R, et al.",
+      "year": 2006,
+      "doi": "10.1176/ajp.2006.163.4.716"
+    }
+  ],
+
+  "copyright": {
+    "notice": "© World Health Organization. All rights reserved.",
+    "usage": "May be reproduced for clinical and research use with proper attribution."
+  },
+
+  "conditions": ["attention-deficit/hyperactivity disorder", "ADHD", "adult ADHD"],
+  "target_populations": [
+    "adults",
+    "primary care patients",
+    "psychiatric patients",
+    "occupational health"
+  ],
+  "limitations": [
+    "Screening tool only — not diagnostic by itself",
+    "Requires clinical judgment and comprehensive evaluation for diagnosis",
+    "May not capture all ADHD presentations or comorbid conditions"
+  ],
+
+  "order": 3,
+  "featured": true,
+  "downloadable_pdf": true,
+  "interactive_version": true,
+
+  "seo": {
+    "title": "ASRS v1.1 Adult ADHD Screening Tool - Complete Assessment & Scoring",
+    "description": "Adult ADHD Self-Report Scale v1.1 with comprehensive scoring for Part A/B, symptom domains, and clinical interpretation for ADHD screening.",
+    "keywords": [
+      "ASRS",
+      "ASRS v1.1",
+      "adult ADHD screening",
+      "ADHD assessment",
+      "inattention",
+      "hyperactivity",
+      "impulsivity"
+    ]
+  }
+}
