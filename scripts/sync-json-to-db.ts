@@ -181,9 +181,9 @@ function normalizeToEntity(filePath: string, content: any): any {
   return {
     slug: content.slug,
     type,
-    name: content.name || content.title,
+    title: content.name || content.title,
     description: content.description || content.summary || null,
-    data: content, // Store full content in JSONB column
+    content: content, // Store full content in JSONB column
     metadata,
     status: content.status || "active",
   };
@@ -200,7 +200,7 @@ async function batchUpsertEntities(entities: any[], type: string): Promise<void>
   }
 
   const { data, error } = await supabase.from("entities").upsert(entities, {
-    onConflict: "slug",
+    onConflict: "type,slug",
     ignoreDuplicates: false,
   });
 
