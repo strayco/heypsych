@@ -18,18 +18,19 @@ fi
 echo "📊 Running performance tests..."
 echo ""
 
-# Test 1: Single-term search
+# Test 1: Single-term search (direct query)
 echo "Test 1: Single-term search (anxiety)"
 echo "-----------------------------------"
 psql "$DATABASE_URL" <<'EOF'
 \timing on
 EXPLAIN ANALYZE
 SELECT
-  id, type, slug, name, description, metadata,
+  id, type, slug, title, description, metadata,
   ts_rank(search_vector, websearch_to_tsquery('english', 'anxiety')) as rank
 FROM entities
 WHERE
-  status = 'active'
+  type <> 'provider'
+  AND status = 'active'
   AND search_vector @@ websearch_to_tsquery('english', 'anxiety')
 ORDER BY rank DESC
 LIMIT 50;
