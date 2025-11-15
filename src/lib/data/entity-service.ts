@@ -241,15 +241,18 @@ export class EntityService {
   static async getBySlug(slug: string): Promise<Entity | null> {
     try {
       // First, try the database
+      // Use limit(1) instead of single() to handle potential duplicates
+      // Prioritize treatment types in this order if duplicates exist
       const { data, error } = await supabase
         .from("entities")
         .select("*")
         .eq("slug", slug)
         .eq("status", "active")
-        .single();
+        .order("type", { ascending: true }) // Prioritize alphabetically (medication before supplement)
+        .limit(1);
 
-      if (!error && data) {
-        return normalizeEntity(data);
+      if (!error && data && data.length > 0) {
+        return normalizeEntity(data[0]);
       }
 
       console.log(`🔍 Entity '${slug}' not found in database, trying API fallback...`);

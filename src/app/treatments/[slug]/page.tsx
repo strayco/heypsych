@@ -27,10 +27,11 @@ export async function generateStaticParams() {
         "interventional",
         "alternative",
         "supplement",
+        "investigational",
       ])
       .eq("status", "active")
-      .order("name")
-      .limit(100);
+      .order("title")
+      .limit(200);
 
     console.log(`📦 Generating ${treatments?.length || 0} static treatment pages`);
 
