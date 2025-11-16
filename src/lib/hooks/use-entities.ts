@@ -95,7 +95,8 @@ export function useMedications() {
         .select("*")
         .in("type", TREATMENT_TYPE_MAP.medication)
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(200); // Prevent unbounded query
 
       if (error) throw error;
       const mappedData = (data || []).map((row) => mapRowToEntity(row, "medication"));
@@ -124,7 +125,8 @@ export function useInterventionalTreatments() {
         .select("*")
         .eq("type", "interventional")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(100); // Prevent unbounded query
 
       if (error) throw error;
       return (data || []).map((row) => mapRowToEntity(row, "interventional"));
@@ -143,7 +145,8 @@ export function useSupplements() {
         .select("*")
         .eq("type", "supplement")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(100); // Prevent unbounded query
 
       if (error) throw error;
       return (data || []).map((row) => mapRowToEntity(row, "supplement"));
@@ -162,7 +165,8 @@ export function useTherapies() {
         .select("*")
         .eq("type", "therapy")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(100); // Prevent unbounded query
 
       if (error) throw error;
       return (data || []).map((row) => mapRowToEntity(row, "therapy"));
@@ -181,7 +185,8 @@ export function useAlternativeTreatments() {
         .select("*")
         .eq("type", "alternative")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(100); // Prevent unbounded query
 
       if (error) throw error;
       return (data || []).map((row) => mapRowToEntity(row, "alternative"));
@@ -200,7 +205,8 @@ export function useInvestigationalTreatments() {
         .select("*")
         .eq("type", "investigational")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(100); // Prevent unbounded query
 
       if (error) throw error;
       return (data || []).map((row) => mapRowToEntity(row, "investigational"));
@@ -305,7 +311,8 @@ export function useConditions() {
         .select("*")
         .eq("type", "condition")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(200); // Prevent unbounded query
 
       if (error) throw error;
       return data?.map(mapRowToEntityShape) || [];
@@ -450,7 +457,8 @@ export function useProviders() {
         .select("*")
         .eq("type", "provider")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(200); // Prevent unbounded query
 
       if (error) throw error;
       return data?.map(mapRowToEntityShape) || [];

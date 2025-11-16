@@ -328,8 +328,8 @@ export class EntityService {
     return normalizeEntities(data || []);
   }
 
-  // FIXED: Include all treatment types
-  static async getAllTreatments(): Promise<Entity[]> {
+  // FIXED: Include all treatment types with pagination support
+  static async getAllTreatments(limit?: number): Promise<Entity[]> {
     const treatmentTypes = [
       "medication",
       "therapy",
@@ -340,13 +340,21 @@ export class EntityService {
       "investigational",
     ];
 
-    const { data, error } = await supabase
+    let query = supabase
       .from("entities")
       .select("*")
       .in("type", treatmentTypes)
       .eq("status", "active")
       .order("title");
 
+    // Apply limit if provided, default to 200 to prevent unbounded queries
+    if (limit !== undefined) {
+      query = query.limit(limit);
+    } else {
+      query = query.limit(200);
+    }
+
+    const { data, error } = await query;
     if (error) throw error;
     return normalizeEntities(data || []);
   }

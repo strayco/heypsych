@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS entities (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   slug text NOT NULL UNIQUE,
   type text NOT NULL,
-  name text NOT NULL,
+  title text NOT NULL,
   description text,
-  data jsonb NOT NULL DEFAULT '{}'::jsonb,
+  content jsonb NOT NULL DEFAULT '{}'::jsonb,
   metadata jsonb NOT NULL DEFAULT '{}'::jsonb,
   status text NOT NULL DEFAULT 'active',
   created_at timestamptz NOT NULL DEFAULT now(),
@@ -37,6 +37,6 @@ CREATE TRIGGER update_entities_updated_at
 COMMENT ON TABLE entities IS 'Universal content table storing treatments, conditions, and resources';
 COMMENT ON COLUMN entities.slug IS 'URL-friendly unique identifier';
 COMMENT ON COLUMN entities.type IS 'Entity type: medication, therapy, condition, resource, etc.';
-COMMENT ON COLUMN entities.data IS 'Full JSON content from source files';
+COMMENT ON COLUMN entities.content IS 'Full JSON content from source files';
 COMMENT ON COLUMN entities.metadata IS 'Additional metadata (category, codes, etc.)';
 COMMENT ON COLUMN entities.status IS 'Publication status: active, draft, archived';
