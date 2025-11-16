@@ -154,6 +154,10 @@ export default withSentryConfig(withBundleAnalyzer(nextConfig), {
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
 
+  // Disable sourcemap upload if no auth token (prevents build failures)
+  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+
   // For all available options, see:
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
 
