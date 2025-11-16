@@ -143,20 +143,17 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withSentryConfig(withBundleAnalyzer(nextConfig), {
+// Only enable Sentry sourcemap upload if auth token is available
+// This prevents build failures from permission errors
+const sentryOptions = {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
   org: "strayco",
-
   project: "javascript-nextjs",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
-
-  // Disable sourcemap upload if no auth token (prevents build failures)
-  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
-  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
@@ -165,17 +162,19 @@ export default withSentryConfig(withBundleAnalyzer(nextConfig), {
   widenClientFileUpload: true,
 
   // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  // This can increase your server load as well as your hosting bill.
-  // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-  // side errors will fail.
   tunnelRoute: "/monitoring",
 
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
 
-  // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
+  // Enables automatic instrumentation of Vercel Cron Monitors.
   automaticVercelMonitors: true,
-});
+};
+
+// Conditionally apply Sentry config only if auth token exists
+// Otherwise just use the base config (Sentry runtime monitoring still works)
+const configWithSentry = process.env.SENTRY_AUTH_TOKEN
+  ? withSentryConfig(withBundleAnalyzer(nextConfig), sentryOptions)
+  : withBundleAnalyzer(nextConfig);
+
+export default configWithSentry;
