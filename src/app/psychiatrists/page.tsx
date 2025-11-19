@@ -105,12 +105,25 @@ export default function ProvidersPage() {
           providersCount: data.providers?.length || 0,
           totalCount: data.totalCount,
           error: data.error,
+          timeout: data.timeout,
+          message: data.message,
         });
 
-        // Check for API-level errors (like timeouts)
+        // Check for timeout (API returns 200 with timeout flag for better UX)
+        if (data.timeout) {
+          logger.warn("Search timed out or no results found", { message: data.message });
+          setProviders([]);
+          setTotalCount(0);
+          // Don't show alert for timeouts - just display "no results" message
+          // The UI will show the "No psychiatrists found" card
+          return;
+        }
+
+        // Check for API-level errors (other errors)
         if (data.error) {
           logger.error("API returned error:", null, { error: data.error });
-          alert(data.error); // Show user-friendly error message
+          // Show alert for actual errors, not timeouts
+          alert("Search failed. Please try again or use different filters.");
           setProviders([]);
           setTotalCount(0);
           return;
@@ -548,11 +561,13 @@ export default function ProvidersPage() {
                           <Input
                             id="zip-filter"
                             type="text"
-                            placeholder="Enter zip code"
+                            placeholder="Enter 5-digit zip"
                             value={zipFilter}
                             onChange={(e) => {
-                              setZipFilter(e.target.value);
-                              zipFilterRef.current = e.target.value; // Update ref synchronously
+                              // Only allow digits
+                              const value = e.target.value.replace(/\D/g, '');
+                              setZipFilter(value);
+                              zipFilterRef.current = value; // Update ref synchronously
                             }}
                             className="h-9 text-sm"
                             maxLength={5}
@@ -782,8 +797,17 @@ export default function ProvidersPage() {
                 <AlertCircle className="mx-auto mb-4 h-12 w-12 text-neutral-600" />
                 <h3 className="mb-2 text-lg font-semibold text-neutral-900">No psychiatrists found</h3>
                 <p className="mb-4 text-neutral-800">
-                  Try adjusting your filters or search terms to find more providers.
+                  We couldn't find any psychiatrists matching your search criteria.
                 </p>
+                <div className="mb-6 text-sm text-neutral-700">
+                  <p className="mb-2">Try these tips:</p>
+                  <ul className="mx-auto max-w-md list-inside list-disc space-y-1 text-left">
+                    <li>Use only state filter instead of city or zip code</li>
+                    <li>Clear some filters to expand your search</li>
+                    <li>Check spelling of city names</li>
+                    <li>Try nearby cities or zip codes</li>
+                  </ul>
+                </div>
                 <Button onClick={clearFilters} variant="outline">
                   Clear All Filters
                 </Button>

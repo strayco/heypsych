@@ -1,5 +1,7 @@
 // src/lib/types/database.ts
 
+import type { EditorialMetadata } from './editorial';
+
 export interface Collection {
   id: string;
   name: string;
@@ -28,6 +30,23 @@ export interface Entity {
   updated_at: string;
   created_by?: string;
   updated_by?: string;
+
+  /** Editorial metadata for E-A-T compliance (YMYL content) */
+  editorial?: EditorialMetadata;
+
+  /** SEO overrides (title, description, keywords) */
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
+
+  /** Entity type (derived from schema_name or explicit type field) */
+  type?: EntityType;
+
+  /** Tags for categorization and filtering */
+  tags?: string[];
+
   schema?: {
     id: string;
     entity_type: string;

@@ -3,6 +3,7 @@
 import React from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -24,6 +25,8 @@ export function MainLayout({
       <main className="flex-1">{children}</main>
 
       {showFooter && <Footer />}
+
+      <ScrollToTop />
     </div>
   );
 }

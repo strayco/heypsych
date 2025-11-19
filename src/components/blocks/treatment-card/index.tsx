@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/lib/utils/format";
 import { Entity } from "@/lib/types/database";
 
 interface TreatmentCardProps {
@@ -14,6 +14,7 @@ interface TreatmentCardProps {
   showCharts?: boolean;
   onCompare?: (entity: Entity) => void;
   onLearnMore?: (entity: Entity) => void;
+  href?: string;
   className?: string;
 }
 
@@ -23,6 +24,7 @@ export function TreatmentCard({
   showCharts = false,
   onCompare,
   onLearnMore,
+  href,
   className = "",
 }: TreatmentCardProps) {
   const schema = entity.schema;
@@ -150,14 +152,24 @@ export function TreatmentCard({
         ];
       }
       case "therapy":
+        // Extract therapy type from metadata
+        const therapyType = data.metadata?.treatment_types?.[0] ||
+                           data.metadata?.intervention_types?.[0] || "N/A";
+
+        // Extract treatment duration (course length)
+        const therapyTreatmentDuration = data.metadata?.treatment_duration?.[0] || "N/A";
+
+        // Extract session duration
+        const therapySessionDuration = data.metadata?.session_duration || "N/A";
+
+        // Extract delivery format
+        const therapyFormat = data.metadata?.delivery_methods?.[0] || "N/A";
+
         return [
-          { label: "Type", value: data.therapy_type || "N/A" },
-          { label: "Sessions", value: data.typical_sessions || "N/A" },
-          {
-            label: "Duration",
-            value: data.session_duration ? `${data.session_duration} min` : "N/A",
-          },
-          { label: "Format", value: data.format || "N/A" },
+          { label: "Type", value: therapyType },
+          { label: "Course Length", value: therapyTreatmentDuration },
+          { label: "Session Time", value: therapySessionDuration },
+          { label: "Format", value: therapyFormat },
         ];
       case "alternative":
         // Extract session info from metadata
@@ -260,111 +272,109 @@ export function TreatmentCard({
     return data.indications || [];
   };
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.3 }}
-      className={className}
-      onClick={() => onLearnMore?.(entity)}
-      style={{ cursor: 'pointer' }}
+  const cardBody = (
+    <Card
+      variant={getCardVariant()}
+      size={variant === "compact" ? "sm" : "md"}
+      interactive
+      className="h-full"
     >
-      <Card
-        variant={getCardVariant()}
-        size={variant === "compact" ? "sm" : "md"}
-        interactive
-        className="h-full"
-      >
-        <CardHeader>
-          <div className="flex items-start justify-between">
-            <div className="min-w-0 flex-1">
-              <CardTitle className={`${variant === "compact" ? "text-lg" : "text-xl"} font-bold`}>
-                {entity.name}
-              </CardTitle>
+      <CardHeader>
+        <div className="flex items-start justify-between">
+          <div className="min-w-0 flex-1">
+            <CardTitle className={`${variant === "compact" ? "text-lg" : "text-xl"} font-bold`}>
+              {entity.name}
+            </CardTitle>
 
-              {/* Category/type info hidden */}
+            {/* Category/type info hidden */}
 
-              {/* Show description if available */}
-              {getDescription() && variant !== "compact" && (
-                <p className="mt-2 line-clamp-2 text-sm text-neutral-800">{getDescription()}</p>
-              )}
-            </div>
-            <Badge variant={getBadgeVariant() as any} size="sm" className="ml-3 flex-shrink-0">
-              {schema?.display_name || "Treatment"}
-            </Badge>
+            {/* Show description if available */}
+            {getDescription() && variant !== "compact" && (
+              <p className="mt-2 line-clamp-2 text-sm text-neutral-900">{getDescription()}</p>
+            )}
           </div>
-        </CardHeader>
+          <Badge variant={getBadgeVariant() as any} size="sm" className="ml-3 flex-shrink-0">
+            {schema?.display_name || "Treatment"}
+          </Badge>
+        </div>
+      </CardHeader>
 
-        <CardContent className="space-y-4">
-          {/* Key Metrics Grid */}
-          {variant !== "compact" && keyMetrics.length > 0 && (
-            <div className="grid grid-cols-2 gap-3">
-              {keyMetrics.slice(0, 4).map((metric, index) => (
-                <div key={index} className="min-w-0 space-y-1">
-                  <p className="text-xs font-medium tracking-wide text-neutral-700 uppercase">
-                    {metric.label}
-                  </p>
-                  <p className="text-sm font-semibold text-neutral-900 break-words line-clamp-2">{metric.value}</p>
-                </div>
+      <CardContent className="space-y-4">
+        {/* Key Metrics Grid */}
+        {variant !== "compact" && keyMetrics.length > 0 && (
+          <div className="grid grid-cols-2 gap-3">
+            {keyMetrics.slice(0, 4).map((metric, index) => (
+              <div key={index} className="min-w-0 space-y-1">
+                <p className="text-xs font-medium tracking-wide text-neutral-800 uppercase">
+                  {metric.label}
+                </p>
+                <p className="text-sm font-semibold text-neutral-900 break-words line-clamp-2">
+                  {metric.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Compact metrics */}
+        {variant === "compact" && keyMetrics.length > 0 && (
+          <div className="flex justify-between text-xs text-neutral-900">
+            <span>{keyMetrics[0]?.value}</span>
+            <span>{keyMetrics[1]?.value}</span>
+          </div>
+        )}
+
+        {/* Indications */}
+        {variant === "detailed" && getIndications().length > 0 && (
+          <div className="space-y-2">
+            <h4 className="text-sm font-semibold text-neutral-900">Primary Uses</h4>
+            <div className="flex flex-wrap gap-1">
+              {getIndications().map((indication: string, index: number) => (
+                <Badge key={index} variant="success" size="sm">
+                  {indication}
+                </Badge>
               ))}
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Compact metrics */}
-          {variant === "compact" && keyMetrics.length > 0 && (
-            <div className="flex justify-between text-xs text-neutral-800">
-              <span>{keyMetrics[0]?.value}</span>
-              <span>{keyMetrics[1]?.value}</span>
+        {/* Side Effects for medications */}
+        {variant === "detailed" && treatmentType === "medication" && getSideEffects().length > 0 && (
+          <div className="space-y-2">
+            <h4 className="text-sm font-semibold text-neutral-900">Common Side Effects</h4>
+            <div className="flex flex-wrap gap-1">
+              {getSideEffects().map((effect: string, index: number) => (
+                <Badge key={index} variant="warning" size="sm">
+                  {effect}
+                </Badge>
+              ))}
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Indications */}
-          {variant === "detailed" && getIndications().length > 0 && (
-            <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-neutral-900">Primary Uses</h4>
-              <div className="flex flex-wrap gap-1">
-                {getIndications().map((indication: string, index: number) => (
-                  <Badge key={index} variant="success" size="sm">
-                    {indication}
-                  </Badge>
-                ))}
-              </div>
+        {/* FDA Status for Interventional */}
+        {treatmentType === "interventional" && data.fda_cleared_conditions && (
+          <div className="space-y-2">
+            <h4 className="text-sm font-semibold text-neutral-900">FDA Cleared For</h4>
+            <div className="flex flex-wrap gap-1">
+              {data.fda_cleared_conditions.map((condition: string) => (
+                <Badge key={condition} variant="success" size="sm">
+                  {condition}
+                </Badge>
+              ))}
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Side Effects for medications */}
-          {variant === "detailed" &&
-            treatmentType === "medication" &&
-            getSideEffects().length > 0 && (
-              <div className="space-y-2">
-                <h4 className="text-sm font-semibold text-neutral-900">Common Side Effects</h4>
-                <div className="flex flex-wrap gap-1">
-                  {getSideEffects().map((effect: string, index: number) => (
-                    <Badge key={index} variant="warning" size="sm">
-                      {effect}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-
-          {/* FDA Status for Interventional */}
-          {treatmentType === "interventional" && data.fda_cleared_conditions && (
-            <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-neutral-900">FDA Cleared For</h4>
-              <div className="flex flex-wrap gap-1">
-                {data.fda_cleared_conditions.map((condition: string) => (
-                  <Badge key={condition} variant="success" size="sm">
-                    {condition}
-                  </Badge>
-                ))}
-              </div>
+        {/* Learn More Button */}
+        <div className="pt-3">
+          {href ? (
+            <div className="pointer-events-none">
+              <Button size="sm" className="w-full" tabIndex={-1} aria-hidden="true">
+                Learn More
+              </Button>
             </div>
-          )}
-
-          {/* Learn More Button */}
-          <div className="pt-3">
+          ) : (
             <Button
               size="sm"
               className="w-full"
@@ -375,9 +385,55 @@ export function TreatmentCard({
             >
               Learn More
             </Button>
-          </div>
-        </CardContent>
-      </Card>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+
+  const handleManualClick = () => {
+    onLearnMore?.(entity);
+  };
+
+  const cardWrapper = href ? (
+    <Link
+      href={href}
+      className={`block h-full ${className}`}
+      onClick={() => onLearnMore?.(entity)}
+      prefetch={true}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="h-full"
+      >
+        {cardBody}
+      </motion.div>
+    </Link>
+  ) : (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className={className}
+    >
+      <div
+        role="button"
+        tabIndex={0}
+        className="h-full"
+        onClick={handleManualClick}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleManualClick();
+          }
+        }}
+      >
+        {cardBody}
+      </div>
     </motion.div>
   );
+
+  return cardWrapper;
 }

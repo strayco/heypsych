@@ -18,10 +18,10 @@ export function GenericRenderer({ resource }: ResourceRendererProps) {
         </CardHeader>
         <CardContent className="space-y-3">
           {resource.description && (
-            <ParsedContent content={String(resource.description)} className="text-gray-700" />
+            <ParsedContent content={String(resource.description)} className="text-gray-900" />
           )}
           {data.summary && (
-            <ParsedContent content={String(data.summary)} className="text-gray-700" />
+            <ParsedContent content={String(data.summary)} className="text-gray-900" />
           )}
         </CardContent>
       </Card>

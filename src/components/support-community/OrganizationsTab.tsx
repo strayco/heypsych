@@ -98,7 +98,7 @@ export function OrganizationsTab({ resources }: Props) {
         {searchQuery ? (
           // Show filtered search results
           <div>
-            <p className="mb-4 text-sm text-slate-600">
+            <p className="mb-4 text-sm text-slate-900">
               Showing {filteredResources.length} results for "{searchQuery}"
             </p>
             {filteredResources.length > 0 ? (
@@ -109,7 +109,7 @@ export function OrganizationsTab({ resources }: Props) {
               </div>
             ) : (
               <Card>
-                <CardContent className="p-8 text-center text-slate-600">
+                <CardContent className="p-8 text-center text-slate-900">
                   <p>No results found for "{searchQuery}"</p>
                 </CardContent>
               </Card>
@@ -140,7 +140,7 @@ export function OrganizationsTab({ resources }: Props) {
                           {lane.title}
                         </h3>
                       </div>
-                      <p className="mb-4 text-sm text-slate-600">{lane.description}</p>
+                      <p className="mb-4 text-sm text-slate-900">{lane.description}</p>
                       <Button variant="outline" size="sm" className="w-full">
                         Explore {lane.sections.length} Categories
                       </Button>
@@ -169,7 +169,7 @@ export function OrganizationsTab({ resources }: Props) {
       <Card>
         <CardContent className="p-6">
           <h2 className="mb-2 text-2xl font-bold text-slate-900">{selectedLaneData.title}</h2>
-          <p className="text-slate-600">{selectedLaneData.description}</p>
+          <p className="text-slate-900">{selectedLaneData.description}</p>
         </CardContent>
       </Card>
 
@@ -205,7 +205,7 @@ export function OrganizationsTab({ resources }: Props) {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-bold text-slate-900">{section.title}</h3>
-                    <p className="text-sm text-slate-600">{sectionResources.length} resources</p>
+                    <p className="text-sm text-slate-900">{sectionResources.length} resources</p>
                   </div>
                   {isExpanded ? (
                     <ChevronUp className="h-5 w-5 text-slate-400" />
@@ -224,7 +224,7 @@ export function OrganizationsTab({ resources }: Props) {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-center text-slate-600">No resources in this category</p>
+                    <p className="text-center text-slate-900">No resources in this category</p>
                   )}
                 </CardContent>
               )}

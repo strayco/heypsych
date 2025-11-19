@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useComparisonStore } from "@/lib/stores/comparison-store";
 import { ComparisonTable } from "../comparison-table";
-import { BarChart3, X } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 
 interface TreatmentGridProps {
   entities: Entity[];
@@ -63,15 +63,6 @@ export function TreatmentGrid({
         staggerChildren: 0.1,
         delayChildren: 0.2,
       },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
     },
   };
 
@@ -220,16 +211,16 @@ export function TreatmentGrid({
         className={`grid gap-6 ${getGridColumns()}`}
       >
         {filteredEntities.map((entity) => (
-          <motion.div key={entity.id} variants={itemVariants}>
-            <TreatmentCard
-              entity={entity}
-              variant={variant}
-              showCharts={showCharts}
-              onCompare={showComparison ? handleAddToComparison : undefined}
-              onLearnMore={onEntityClick}
-              className={isSelected(entity.id) ? "ring-2 ring-blue-500" : ""}
-            />
-          </motion.div>
+          <TreatmentCard
+            key={entity.id}
+            entity={entity}
+            variant={variant}
+            showCharts={showCharts}
+            onCompare={showComparison ? handleAddToComparison : undefined}
+            onLearnMore={onEntityClick}
+            href={entity.slug ? `/treatments/${entity.slug}` : undefined}
+            className={isSelected(entity.id) ? "ring-2 ring-blue-500" : ""}
+          />
         ))}
       </motion.div>
 

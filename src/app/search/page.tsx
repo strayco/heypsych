@@ -19,12 +19,27 @@ interface SearchResult {
   snippets?: Array<{ term: string; field: string; snippet: string }>;
 }
 
+interface GroupedResults {
+  conditions: SearchResult[];
+  treatments: SearchResult[];
+  resources: SearchResult[];
+  conditionsTotal: number;
+  treatmentsTotal: number;
+  resourcesTotal: number;
+}
+
 export default function SearchPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [groupedResults, setGroupedResults] = useState<GroupedResults>({
+    conditions: [],
+    treatments: [],
+    resources: [],
+    conditionsTotal: 0,
+    treatmentsTotal: 0,
+    resourcesTotal: 0,
+  });
   const [isLoading, setIsLoading] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
     condition: false,
     treatment: false,
@@ -40,13 +55,27 @@ export default function SearchPage() {
     const fetchResults = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=5`);
         const data = await response.json();
-        setResults(data.results || []);
-        setTotalCount(data.totalCount || 0);
+
+        setGroupedResults({
+          conditions: data.conditions?.results || [],
+          treatments: data.treatments?.results || [],
+          resources: data.resources?.results || [],
+          conditionsTotal: Number(data.conditions?.totalCount) || 0,
+          treatmentsTotal: Number(data.treatments?.totalCount) || 0,
+          resourcesTotal: Number(data.resources?.totalCount) || 0,
+        });
       } catch (error) {
         logger.error("Search error", error);
-        setResults([]);
+        setGroupedResults({
+          conditions: [],
+          treatments: [],
+          resources: [],
+          conditionsTotal: 0,
+          treatmentsTotal: 0,
+          resourcesTotal: 0,
+        });
       } finally {
         setIsLoading(false);
       }
@@ -88,25 +117,42 @@ export default function SearchPage() {
       .join(' & ');
   };
 
-  // Group results by type
-  const groupedResults = results.reduce(
-    (acc, result) => {
-      if (!acc[result.type]) acc[result.type] = [];
-      acc[result.type].push(result);
-      return acc;
-    },
-    {} as Record<string, SearchResult[]>
-  );
+  const toggleCategory = async (category: "condition" | "treatment" | "resource") => {
+    const isExpanded = expandedCategories[category];
 
-  const toggleCategory = (category: string) => {
-    setExpandedCategories((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
+    if (isExpanded) {
+      // Collapse - just update state
+      setExpandedCategories((prev) => ({
+        ...prev,
+        [category]: false,
+      }));
+    } else {
+      // Expand - fetch all results for this category
+      setExpandedCategories((prev) => ({
+        ...prev,
+        [category]: true,
+      }));
+
+      try {
+        const response = await fetch(
+          `/api/search?q=${encodeURIComponent(query)}&type=${category}&limit=100`
+        );
+        const data = await response.json();
+
+        setGroupedResults((prev) => ({
+          ...prev,
+          [`${category}s` as keyof GroupedResults]: data.results || [],
+        }));
+      } catch (error) {
+        logger.error(`Error fetching expanded ${category} results`, error);
+      }
+    }
   };
 
-  const getDisplayedResults = (category: string, results: SearchResult[]) => {
-    const isExpanded = expandedCategories[category as keyof typeof expandedCategories];
+  const getDisplayedResults = (category: "condition" | "treatment" | "resource") => {
+    const isExpanded = expandedCategories[category];
+    const key = `${category}s` as keyof Pick<GroupedResults, 'conditions' | 'treatments' | 'resources'>;
+    const results = groupedResults[key] || [];
     return isExpanded ? results : results.slice(0, 5);
   };
 
@@ -115,13 +161,12 @@ export default function SearchPage() {
     const searchTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
 
     return (
-      <motion.div
-        key={result.id}
-        initial={{ opacity: 0, y: 5 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.02 }}
-      >
-        <Link href={getResultUrl(result)}>
+      <Link key={result.id} href={getResultUrl(result)}>
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.02 }}
+        >
           <div className="rounded-lg border border-neutral-200 bg-white px-1.5 py-1 transition-all hover:border-blue-300 hover:shadow-sm">
             <div className="flex items-start gap-1.5">
               {/* Icon */}
@@ -199,10 +244,17 @@ export default function SearchPage() {
               </div>
             </div>
           </div>
-        </Link>
-      </motion.div>
+        </motion.div>
+      </Link>
     );
   };
+
+  const totalCount =
+    groupedResults.conditionsTotal + groupedResults.treatmentsTotal + groupedResults.resourcesTotal;
+  const hasResults =
+    groupedResults.conditions.length > 0 ||
+    groupedResults.treatments.length > 0 ||
+    groupedResults.resources.length > 0;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -222,7 +274,7 @@ export default function SearchPage() {
 
           {query && (
             <div className="text-lg text-neutral-800">
-              Showing {results.length} results for{" "}
+              {Number(totalCount).toLocaleString('en-US')} {totalCount === 1 ? 'result' : 'results'} for{" "}
               <span className="font-semibold">"{query}"</span>
             </div>
           )}
@@ -249,7 +301,7 @@ export default function SearchPage() {
         )}
 
         {/* No Results */}
-        {query && !isLoading && results.length === 0 && (
+        {query && !isLoading && !hasResults && (
           <Card>
             <CardContent className="p-12 text-center">
               <Search className="mx-auto mb-4 h-16 w-16 text-gray-300" />
@@ -262,10 +314,10 @@ export default function SearchPage() {
         )}
 
         {/* Results Grouped by Type */}
-        {!isLoading && results.length > 0 && (
+        {!isLoading && hasResults && (
           <div className="space-y-6">
             {/* Conditions */}
-            {groupedResults.condition && groupedResults.condition.length > 0 && (
+            {groupedResults.conditions.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -274,29 +326,29 @@ export default function SearchPage() {
                 <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
                   <Brain className="h-5 w-5 text-purple-600" />
                   <h2 className="text-lg font-semibold text-neutral-900">
-                    Conditions ({groupedResults.condition.length})
+                    Conditions ({groupedResults.conditionsTotal})
                   </h2>
                 </div>
                 <div className="space-y-1.5">
-                  {getDisplayedResults("condition", groupedResults.condition).map((result, index) =>
+                  {getDisplayedResults("condition").map((result, index) =>
                     renderResult(result, index)
                   )}
                 </div>
-                {groupedResults.condition.length > 5 && (
+                {groupedResults.conditionsTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("condition")}
                     className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
                   >
                     {expandedCategories.condition
                       ? "Show Less"
-                      : `Show All ${groupedResults.condition.length} Conditions`}
+                      : `Show All ${groupedResults.conditionsTotal} Conditions`}
                   </button>
                 )}
               </motion.div>
             )}
 
             {/* Treatments */}
-            {groupedResults.treatment && groupedResults.treatment.length > 0 && (
+            {groupedResults.treatments.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -305,29 +357,29 @@ export default function SearchPage() {
                 <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
                   <Pill className="h-5 w-5 text-blue-600" />
                   <h2 className="text-lg font-semibold text-neutral-900">
-                    Treatments ({groupedResults.treatment.length})
+                    Treatments ({groupedResults.treatmentsTotal})
                   </h2>
                 </div>
                 <div className="space-y-1.5">
-                  {getDisplayedResults("treatment", groupedResults.treatment).map((result, index) =>
+                  {getDisplayedResults("treatment").map((result, index) =>
                     renderResult(result, index)
                   )}
                 </div>
-                {groupedResults.treatment.length > 5 && (
+                {groupedResults.treatmentsTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("treatment")}
                     className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
                   >
                     {expandedCategories.treatment
                       ? "Show Less"
-                      : `Show All ${groupedResults.treatment.length} Treatments`}
+                      : `Show All ${groupedResults.treatmentsTotal} Treatments`}
                   </button>
                 )}
               </motion.div>
             )}
 
             {/* Resources */}
-            {groupedResults.resource && groupedResults.resource.length > 0 && (
+            {groupedResults.resources.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -336,22 +388,22 @@ export default function SearchPage() {
                 <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
                   <BookOpen className="h-5 w-5 text-green-600" />
                   <h2 className="text-lg font-semibold text-neutral-900">
-                    Resources ({groupedResults.resource.length})
+                    Resources ({groupedResults.resourcesTotal})
                   </h2>
                 </div>
                 <div className="space-y-2">
-                  {getDisplayedResults("resource", groupedResults.resource).map((result, index) =>
+                  {getDisplayedResults("resource").map((result, index) =>
                     renderResult(result, index)
                   )}
                 </div>
-                {groupedResults.resource.length > 5 && (
+                {groupedResults.resourcesTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("resource")}
                     className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
                   >
                     {expandedCategories.resource
                       ? "Show Less"
-                      : `Show All ${groupedResults.resource.length} Resources`}
+                      : `Show All ${groupedResults.resourcesTotal} Resources`}
                   </button>
                 )}
               </motion.div>

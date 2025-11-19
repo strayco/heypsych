@@ -69,9 +69,9 @@ export function CrisisCard({ hotline }: Props) {
             {hotline.name}
           </h3>
           {hotline.org.name && hotline.org.name !== hotline.name && (
-            <p className="mb-2 text-sm text-slate-600">{hotline.org.name}</p>
+            <p className="mb-2 text-sm text-slate-900">{hotline.org.name}</p>
           )}
-          <p className="text-sm leading-relaxed text-slate-700">{hotline.summary}</p>
+          <p className="text-sm leading-relaxed text-slate-900">{hotline.summary}</p>
         </div>
 
         {/* Details Bar */}

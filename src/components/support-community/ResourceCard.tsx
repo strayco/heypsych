@@ -36,9 +36,9 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
           <div className="mb-4">
             <h3 className="mb-2 text-xl font-bold text-slate-900">{resource.name}</h3>
             {resource.organization && (
-              <p className="mb-2 text-sm text-slate-600">{resource.organization}</p>
+              <p className="mb-2 text-sm text-slate-900">{resource.organization}</p>
             )}
-            <p className="text-sm text-slate-700">{resource.description}</p>
+            <p className="text-sm text-slate-900">{resource.description}</p>
           </div>
 
           <div className="mb-4 flex flex-wrap gap-2">
@@ -103,12 +103,12 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
               {resource.name}
             </h3>
             {resource.organization && (
-              <p className="mb-2 text-sm text-slate-500">{resource.organization}</p>
+              <p className="mb-2 text-sm text-slate-900">{resource.organization}</p>
             )}
           </div>
         </div>
 
-        <p className="mb-3 text-sm text-slate-700">{resource.description}</p>
+        <p className="mb-3 text-sm text-slate-900">{resource.description}</p>
 
         <div className="mb-3 flex flex-wrap gap-2">
           {resource.cost.includes("free") && (

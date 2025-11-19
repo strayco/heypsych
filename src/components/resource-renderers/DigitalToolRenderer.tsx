@@ -27,7 +27,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
               <Star className="h-4 w-4 fill-current text-yellow-500" />
               <span className="font-medium">{data.app_rating}</span>
               {data.total_reviews && (
-                <span className="text-sm text-gray-600">({data.total_reviews} reviews)</span>
+                <span className="text-sm text-gray-900">({data.total_reviews} reviews)</span>
               )}
             </div>
           )}

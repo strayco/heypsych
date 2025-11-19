@@ -28,10 +28,25 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER update_entities_updated_at
-  BEFORE UPDATE ON entities
-  FOR EACH ROW
-  EXECUTE FUNCTION update_updated_at_column();
+-- Only create the trigger if it doesn't already exist
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_trigger t
+    JOIN pg_class c ON c.oid = t.tgrelid
+    JOIN pg_namespace n ON n.oid = c.relnamespace
+    WHERE t.tgname = 'update_entities_updated_at'
+      AND c.relname = 'entities'
+      AND n.nspname = 'public'
+  ) THEN
+    CREATE TRIGGER update_entities_updated_at
+      BEFORE UPDATE ON entities
+      FOR EACH ROW
+      EXECUTE FUNCTION update_updated_at_column();
+  END IF;
+END;
+$$;
 
 -- Add comments
 COMMENT ON TABLE entities IS 'Universal content table storing treatments, conditions, and resources';

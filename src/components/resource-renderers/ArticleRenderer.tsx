@@ -46,7 +46,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
       return (
         <blockquote
           key={index}
-          className="border-l-4 border-purple-300 bg-purple-50/60 px-4 py-2 italic text-slate-700"
+          className="border-l-4 border-purple-300 bg-purple-50/60 px-4 py-2 italic text-slate-900"
         >
           {text}
         </blockquote>
@@ -54,7 +54,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
     }
 
     return (
-      <p key={index} className="text-slate-700">
+      <p key={index} className="text-slate-900">
         <ParsedContent content={text} />
       </p>
     );
@@ -73,13 +73,13 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           {data.author && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-900">
               <User className="h-4 w-4" />
               <span>By {data.author}</span>
             </div>
           )}
           {data.reading_time && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-900">
               <Clock className="h-4 w-4" />
               <span>{data.reading_time} read</span>
             </div>
@@ -120,7 +120,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
             {introduction && (
               <div className="space-y-2">
                 <h2 className="text-xl font-semibold text-slate-900">Overview</h2>
-                <ParsedContent content={introduction} className="text-slate-700" />
+                <ParsedContent content={introduction} className="text-slate-900" />
               </div>
             )}
 
@@ -132,7 +132,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
                   </h3>
                   <ParsedContent
                     content={section.content || section.text || ""}
-                    className="text-slate-700"
+                    className="text-slate-900"
                   />
                 </div>
               ))}
@@ -140,7 +140,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
             {conclusion && (
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold text-slate-900">Conclusion</h3>
-                <ParsedContent content={conclusion} className="text-slate-700" />
+                <ParsedContent content={conclusion} className="text-slate-900" />
               </div>
             )}
           </CardContent>

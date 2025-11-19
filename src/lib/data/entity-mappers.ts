@@ -1,5 +1,6 @@
 // Entity mapping utilities - centralizes entity normalization logic
 import type { Entity, SchemaName, EntityType } from "@/lib/types/database";
+import type { EditorialMetadata } from "@/lib/types/editorial";
 
 type SchemaConfig = {
   icon: string;
@@ -80,17 +81,116 @@ function buildEntitySchema(schemaName: SchemaName) {
 }
 
 /**
+ * Normalize stored JSON so consumers always get the actual entity payload.
+ * Some legacy rows store the entire file (with a nested `content` object);
+ * peel that layer off so downstream UI can read `description`, `symptoms`, etc.
+ */
+export function normalizeEntityContent(content: any): Record<string, any> {
+  if (!content || typeof content !== "object") {
+    return content ?? {};
+  }
+
+  // Some entries persisted as { ..., content: { ...actualFields } }
+  if (
+    "content" in content &&
+    content.content &&
+    typeof content.content === "object" &&
+    !Array.isArray(content.content)
+  ) {
+    return content.content;
+  }
+
+  return content;
+}
+
+/**
+ * Extract editorial metadata from content or metadata fields
+ */
+function extractEditorialMetadata(content: any, metadata: any): EditorialMetadata | undefined {
+  // Check for editorial data in content.editorial
+  const contentEditorial = content?.editorial;
+
+  // Check for editorial data in metadata.editorial
+  const metadataEditorial = metadata?.editorial;
+
+  // Merge both sources (content takes precedence)
+  const editorial = { ...metadataEditorial, ...contentEditorial };
+
+  // Return undefined if no editorial data
+  if (!editorial || Object.keys(editorial).length === 0) {
+    return undefined;
+  }
+
+  return editorial as EditorialMetadata;
+}
+
+/**
+ * Extract SEO overrides from content or metadata
+ */
+function extractSEOMetadata(content: any, metadata: any) {
+  const contentSEO = content?.seo;
+  const metadataSEO = metadata?.seo;
+
+  const seo = { ...metadataSEO, ...contentSEO };
+
+  if (!seo || Object.keys(seo).length === 0) {
+    return undefined;
+  }
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords
+  };
+}
+
+/**
+ * Extract entity type from schema name or explicit type field
+ */
+function extractEntityType(schemaName: SchemaName, content: any, metadata: any): EntityType | undefined {
+  // Explicit type in content takes precedence
+  if (content?.type) return content.type as EntityType;
+  if (content?.kind) return content.kind as EntityType;
+
+  // Metadata type
+  if (metadata?.type) return metadata.type as EntityType;
+
+  // Fall back to schema name
+  return schemaName as EntityType;
+}
+
+/**
+ * Extract tags from content or metadata
+ */
+function extractTags(content: any, metadata: any): string[] | undefined {
+  const contentTags = content?.tags;
+  const metadataTags = metadata?.tags;
+
+  // Merge and deduplicate
+  const allTags = [
+    ...(Array.isArray(contentTags) ? contentTags : []),
+    ...(Array.isArray(metadataTags) ? metadataTags : [])
+  ];
+
+  const uniqueTags = Array.from(new Set(allTags));
+
+  return uniqueTags.length > 0 ? uniqueTags : undefined;
+}
+
+/**
  * Maps a database row to an Entity with proper schema metadata
  * This centralizes the mapping logic used across all hooks
  */
 export function mapRowToEntity(row: any, schemaName: SchemaName): Entity {
+  const normalizedContent = normalizeEntityContent(row.content);
+
   return {
     id: row.id,
     schema_id: `schema-${schemaName}`,
     name: row.title,
     slug: row.slug,
-    description: row.description,
-    data: (row.content as Record<string, any>) || {},
+    description: row.description ?? normalizedContent?.description ?? null,
+    data: normalizedContent || {},
     metadata: row.metadata,
     status: row.status,
     visibility: "public" as const,
@@ -99,5 +199,11 @@ export function mapRowToEntity(row: any, schemaName: SchemaName): Entity {
     created_by: row.created_by,
     updated_by: row.updated_by,
     schema: buildEntitySchema(schemaName),
+
+    // NEW: E-A-T and SEO fields
+    editorial: extractEditorialMetadata(normalizedContent, row.metadata),
+    seo: extractSEOMetadata(normalizedContent, row.metadata),
+    type: extractEntityType(schemaName, normalizedContent, row.metadata),
+    tags: extractTags(normalizedContent, row.metadata),
   };
 }

@@ -25,7 +25,7 @@ export function EducationRenderer({ resource }: ResourceRendererProps) {
           {data.learning_objectives && (
             <div>
               <h4 className="mb-2 font-semibold text-gray-900">Learning Objectives</h4>
-              <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
+              <ul className="list-inside list-disc space-y-1 text-sm text-gray-900">
                 {data.learning_objectives.map((objective: string, i: number) => (
                   <li key={i}>{objective}</li>
                 ))}

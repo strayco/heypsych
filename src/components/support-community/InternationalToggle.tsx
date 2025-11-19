@@ -78,7 +78,7 @@ export function InternationalToggle({ hotlines }: Props) {
                 <h3 className="text-lg font-bold text-slate-900">
                   Outside the U.S.? International Crisis Support
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-900">
                   Find crisis hotlines and resources in other countries
                 </p>
               </div>

@@ -126,6 +126,12 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
+    // Only apply strict security headers in production
+    // In development, skip HSTS and upgrade-insecure-requests to allow HTTP on local network
+    if (process.env.NODE_ENV !== "production") {
+      return [];
+    }
+
     return [
       {
         source: "/(.*)",

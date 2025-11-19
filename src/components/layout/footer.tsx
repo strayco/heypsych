@@ -154,9 +154,9 @@ export function Footer() {
             <p className="text-sm text-gray-400">
               © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
-            <Badge variant="outline" className="border-gray-600 text-gray-400">
+            <div className="inline-flex items-center rounded-full border border-gray-600 px-3 py-1 text-xs font-medium text-gray-400">
               Made with <Heart className="mx-1 h-3 w-3 text-red-500" /> for better mental health
-            </Badge>
+            </div>
           </div>
         </div>
       </div>

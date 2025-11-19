@@ -1,6 +1,7 @@
 // src/lib/data/entity-service.ts - Server-only safe version
 import { supabase } from "@/lib/config/database";
 import type { Entity, Collection, EntityType, SchemaName } from "@/lib/types/database";
+import { normalizeEntityContent } from "@/lib/data/entity-mappers";
 
 // Only import fs modules on server side
 let fs: typeof import("fs") | null = null;
@@ -182,6 +183,7 @@ class FileSystemScanner {
 function normalizeEntity(row: any): Entity {
   // FIXED: Use entity type first, then fall back to category-based mapping
   let schemaName: SchemaName;
+  const normalizedContent = normalizeEntityContent(row.content || row.data || {});
 
   if (
     row.type &&
@@ -218,8 +220,8 @@ function normalizeEntity(row: any): Entity {
     schema_id: `schema-${schemaName}`,
     name: row.title || row.name,
     slug: row.slug,
-    description: row.description, // Add this line
-    data: row.content || row.data || {},
+    description: row.description ?? normalizedContent?.description ?? null,
+    data: normalizedContent || {},
     metadata: row.metadata,
     status: row.status,
     visibility: "public",
@@ -236,6 +238,24 @@ function normalizeEntities(rows: any[]): Entity[] {
 }
 
 // ---------- Enhanced service ----------
+type CachedSet<T> = {
+  data: T[];
+  fetchedAt: number;
+};
+
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+const legacyCache: {
+  treatments?: CachedSet<Entity>;
+  conditions?: CachedSet<Entity>;
+  resources?: CachedSet<Entity>;
+} = {};
+
+function isCacheFresh(entry?: CachedSet<Entity>): entry is CachedSet<Entity> {
+  if (!entry) return false;
+  return Date.now() - entry.fetchedAt < CACHE_TTL_MS && entry.data.length > 0;
+}
+
 export class EntityService {
   /** Enhanced getBySlug with API fallback for client-side */
   static async getBySlug(slug: string): Promise<Entity | null> {
@@ -295,6 +315,12 @@ export class EntityService {
     FileSystemScanner.clearCache();
   }
 
+  static clearLegacySearchCache() {
+    legacyCache.treatments = undefined;
+    legacyCache.conditions = undefined;
+    legacyCache.resources = undefined;
+  }
+
   // Keep all your existing database methods unchanged
   static async getBySchemaType(schemaName: string): Promise<Entity[]> {
     const schema = (schemaName as SchemaName) || "treatment";
@@ -317,6 +343,13 @@ export class EntityService {
   }
 
   static async getByEntityType(entityType: string): Promise<Entity[]> {
+    if (entityType === "condition" && isCacheFresh(legacyCache.conditions)) {
+      return legacyCache.conditions!.data;
+    }
+    if (entityType === "resource" && isCacheFresh(legacyCache.resources)) {
+      return legacyCache.resources!.data;
+    }
+
     const { data, error } = await supabase
       .from("entities")
       .select("*")
@@ -325,13 +358,55 @@ export class EntityService {
       .order("title");
 
     if (error) throw error;
-    return normalizeEntities(data || []);
+    const normalized = normalizeEntities(data || []);
+
+    if (entityType === "condition") {
+      legacyCache.conditions = { data: normalized, fetchedAt: Date.now() };
+    } else if (entityType === "resource") {
+      legacyCache.resources = { data: normalized, fetchedAt: Date.now() };
+    }
+
+    return normalized;
   }
 
   // FIXED: Include all treatment types with pagination support
   static async getAllTreatments(limit?: number): Promise<Entity[]> {
+    if (isCacheFresh(legacyCache.treatments)) {
+      return limit ? legacyCache.treatments!.data.slice(0, limit) : legacyCache.treatments!.data;
+    }
+
     const treatmentTypes = [
       "medication",
+      "antidepressant",
+      "antipsychotic",
+      "anxiolytic",
+      "benzodiazepine",
+      "hypnotic",
+      "sedative-hypnotic",
+      "stimulant",
+      "mood-stabilizer",
+      "anticonvulsant",
+      "nootropic",
+      "cognitive-enhancer",
+      "adhd-medication",
+      "addiction-treatment",
+      "opioid-dependence-treatment",
+      "alcohol-dependence-treatment",
+      "smoking-cessation-antidepressant",
+      "antihistamine",
+      "muscle-relaxant",
+      "barbiturate",
+      "anesthetic",
+      "antiemetic",
+      "antihypertensive",
+      "opioid-antagonist",
+      "combination-medication",
+      "antidepressant-antipsychotic-combination",
+      "combination-antipsychotic-antihistamine",
+      "wakefulness-promoting-agent",
+      "non-stimulant-adhd-medication",
+      "sleep-medication",
+      "herbal",
       "therapy",
       "interventional",
       "supplement",
@@ -340,23 +415,52 @@ export class EntityService {
       "investigational",
     ];
 
-    let query = supabase
+    const query = supabase
       .from("entities")
       .select("*")
       .in("type", treatmentTypes)
       .eq("status", "active")
-      .order("title");
-
-    // Apply limit if provided, default to 200 to prevent unbounded queries
-    if (limit !== undefined) {
-      query = query.limit(limit);
-    } else {
-      query = query.limit(200);
-    }
+      .order("title")
+      .limit(1000); // High limit to get all rows before deduplication
 
     const { data, error } = await query;
     if (error) throw error;
-    return normalizeEntities(data || []);
+
+    const normalized = normalizeEntities(data || []);
+
+    // Deduplicate by slug, preferring entities with more complete metadata
+    const bySlug = new Map<string, Entity>();
+    normalized.forEach((entity) => {
+      const existing = bySlug.get(entity.slug);
+
+      // If no existing entry, add it
+      if (!existing) {
+        bySlug.set(entity.slug, entity);
+        return;
+      }
+
+      // Prefer entity with mechanism_categories populated
+      const existingHasMechanism = existing.metadata?.mechanism_categories?.length > 0;
+      const currentHasMechanism = entity.metadata?.mechanism_categories?.length > 0;
+
+      if (currentHasMechanism && !existingHasMechanism) {
+        bySlug.set(entity.slug, entity);
+      }
+      // If both or neither have mechanisms, keep the one with more metadata fields
+      else if (currentHasMechanism === existingHasMechanism) {
+        const existingMetadataCount = Object.keys(existing.metadata || {}).length;
+        const currentMetadataCount = Object.keys(entity.metadata || {}).length;
+
+        if (currentMetadataCount > existingMetadataCount) {
+          bySlug.set(entity.slug, entity);
+        }
+      }
+    });
+
+    const deduplicated = Array.from(bySlug.values());
+    legacyCache.treatments = { data: deduplicated, fetchedAt: Date.now() };
+
+    return limit ? deduplicated.slice(0, limit) : deduplicated;
   }
 
   static async getConditionsByCategory(category: string): Promise<Entity[]> {

@@ -27,6 +27,20 @@ import {
   Settings,
 } from "lucide-react";
 import { Entity } from "@/lib/types/database";
+import type { PageLinkResult } from "@/lib/linking/link-service";
+import {
+  TreatmentOptionsSection,
+  RelatedConditionsSection,
+  AssessmentCTASection,
+  RelatedArticlesSection,
+} from "@/components/linking";
+import {
+  AuthorByline,
+  MedicalReviewBadge,
+  ContentTimestamps,
+  MedicalDisclaimer,
+  CitationList,
+} from "@/components/eat";
 
 type DynamicSection = {
   type: string;
@@ -35,9 +49,10 @@ type DynamicSection = {
 
 interface TreatmentClientWrapperProps {
   entity: Entity;
+  pageLinks: PageLinkResult;
 }
 
-export default function TreatmentClientWrapper({ entity }: TreatmentClientWrapperProps) {
+export default function TreatmentClientWrapper({ entity, pageLinks }: TreatmentClientWrapperProps) {
   const data = (entity.data || {}) as {
     name?: string;
     summary?: string;
@@ -428,11 +443,16 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
-              {displayCategory && (
-                <Badge variant={treatmentType as any} size="md">
-                  {displayCategory}
-                </Badge>
-              )}
+              <div className="flex flex-wrap items-center gap-2">
+                {displayCategory && (
+                  <Badge variant={treatmentType as any} size="md">
+                    {displayCategory}
+                  </Badge>
+                )}
+                {(entity as any)?.metadata?.medical_review?.reviewed && (
+                  <MedicalReviewBadge reviewInfo={(entity as any).metadata.medical_review} compact />
+                )}
+              </div>
               <h1 className="text-4xl font-bold text-neutral-900">{title}</h1>
               {fdaApprovalYear && (
                 <div className="flex items-center gap-2 text-sm text-neutral-800">
@@ -462,6 +482,41 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           </div>
         </motion.div>
 
+        {/* Author & Review Information */}
+        {(() => {
+          const metadata = (entity as any)?.metadata || {};
+          const author = metadata.author;
+          const medicalReviewer = metadata.medical_reviewer;
+          const timestamps = {
+            published_date: metadata.published_date || (entity as any)?.created_at,
+            last_updated: metadata.last_updated || (entity as any)?.updated_at,
+            last_reviewed: metadata.medical_review?.review_date,
+          };
+
+          return (author || medicalReviewer || timestamps.published_date) ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="mb-8"
+            >
+              <div className="space-y-4">
+                {(author || medicalReviewer) && (
+                  <AuthorByline
+                    author={author}
+                    medicalReviewer={medicalReviewer}
+                    publishedDate={timestamps.published_date}
+                    lastUpdated={timestamps.last_updated}
+                  />
+                )}
+                {!author && !medicalReviewer && timestamps.published_date && (
+                  <ContentTimestamps timestamps={timestamps} />
+                )}
+              </div>
+            </motion.div>
+          ) : null;
+        })()}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -471,10 +526,104 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           {sections.map(renderSection)}
         </motion.div>
 
+        {/* Conditions Treated Links */}
+        {pageLinks.linksBySlot.related_conditions.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="mt-8"
+          >
+            <RelatedConditionsSection
+              links={pageLinks.linksBySlot.related_conditions}
+              title="Conditions Treated"
+            />
+          </motion.div>
+        )}
+
+        {/* Related Treatments Links */}
+        {pageLinks.linksBySlot.treatment_options.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.17 }}
+            className="mt-8"
+          >
+            <TreatmentOptionsSection
+              links={pageLinks.linksBySlot.treatment_options}
+              title="Related Treatments"
+              description="Alternative and complementary treatment approaches"
+            />
+          </motion.div>
+        )}
+
+        {/* Assessment Tools Links */}
+        {pageLinks.linksBySlot.screening_tools.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.19 }}
+            className="mt-8"
+          >
+            <AssessmentCTASection
+              links={pageLinks.linksBySlot.screening_tools}
+              title="Assessment Tools"
+              description="Evaluate symptoms and track progress"
+            />
+          </motion.div>
+        )}
+
+        {/* Related Resources Links */}
+        {pageLinks.linksBySlot.related_articles.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.21 }}
+            className="mt-8"
+          >
+            <RelatedArticlesSection
+              links={pageLinks.linksBySlot.related_articles}
+              title="Related Resources"
+            />
+          </motion.div>
+        )}
+
+        {/* Citations/References */}
+        {(() => {
+          const references = data.sections?.find((s: any) => s.type === 'references')?.references ||
+            (entity as any)?.metadata?.references;
+          return references && references.length > 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.23 }}
+              className="mt-8"
+            >
+              <CitationList citations={references} title="Scientific References" />
+            </motion.div>
+          ) : null;
+        })()}
+
+        {/* Medical Disclaimer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.24 }}
+          className="mt-8"
+        >
+          <MedicalDisclaimer
+            config={{
+              entity_type: treatmentType === 'medication' ? 'medication' :
+                         treatmentType === 'therapy' ? 'therapy' : 'treatment',
+              prominent: false,
+            }}
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
           className="mt-12"
         >
           <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">

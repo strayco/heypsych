@@ -133,31 +133,31 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
       {/* Intro sections */}
       <SectionList sections={topSections} />
 
-      {/* Questions or Results */}
-      {!showResults ? (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <span>Assessment Questions</span>
-              <span className="text-sm font-normal text-neutral-800">
-                {completedCount} of {totalQuestions} completed
-              </span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {questions.map((question: Question, index: number) => {
-              const answerKey = question.id || `q${index + 1}`;
-              const selectedValue = answers[answerKey];
-              const questionOptions = getOptionsForQuestion(question);
+      {/* Questions */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            <span>Assessment Questions</span>
+            <span className="text-sm font-normal text-neutral-800">
+              {completedCount} of {totalQuestions} completed
+            </span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {questions.map((question: Question, index: number) => {
+            const answerKey = question.id || `q${index + 1}`;
+            const selectedValue = answers[answerKey];
+            const questionOptions = getOptionsForQuestion(question);
 
-              return (
-                <motion.div
-                  key={answerKey}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.04 }}
-                  className="space-y-3"
-                >
+            return (
+              <motion.div
+                key={answerKey}
+                id={index === 0 ? "question-1" : undefined}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.04 }}
+                className="space-y-3"
+              >
                   <div className="font-medium text-neutral-900">
                     {index + 1}. {String(question.text ?? "")}
                     {question.alert && (
@@ -200,6 +200,7 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
               );
             })}
 
+          {!showResults && (
             <div className="flex items-center justify-between pt-4">
               <p className="text-sm text-neutral-900">
                 Progress: {completedCount} / {totalQuestions}
@@ -212,9 +213,12 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                 View Results
               </Button>
             </div>
-          </CardContent>
-        </Card>
-      ) : (
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Results */}
+      {showResults && (
         <Card id="assessment-results">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -283,7 +287,19 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
               <Button variant="outline" onClick={() => window.print()}>
                 Print / Save
               </Button>
-              <Button variant="outline" onClick={() => setShowResults(false)}>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setAnswers({});
+                  setShowResults(false);
+                  setTimeout(() => {
+                    const firstQuestion = document.getElementById("question-1");
+                    if (firstQuestion) {
+                      firstQuestion.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                  }, 100);
+                }}
+              >
                 Retake Assessment
               </Button>
             </div>

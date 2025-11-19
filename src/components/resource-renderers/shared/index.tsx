@@ -54,7 +54,7 @@ export function SectionList({ sections = [] }: { sections?: Section[] }) {
               {String(section?.title ?? section?.heading ?? section?.type ?? "Section")}
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="text-slate-900">
             <ParsedContent
               content={
                 typeof section?.text === "string"
@@ -108,7 +108,7 @@ export function ReferencesTable({ refs = [] }: { refs?: Reference[] }) {
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 ) : (
-                  <span className="text-sm leading-relaxed text-slate-700">{citationText}</span>
+                  <span className="text-sm leading-relaxed text-slate-900">{citationText}</span>
                 )}
               </div>
             );
@@ -186,7 +186,7 @@ export function AutoFields({
           className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${
             value
               ? "border-green-200 bg-green-50 text-green-700"
-              : "border-slate-200 bg-slate-50 text-slate-700"
+              : "border-slate-200 bg-slate-50 text-slate-900"
           }`}
         >
           {value ? "Yes" : "No"}
@@ -201,7 +201,7 @@ export function AutoFields({
           {value.map((item, i) => (
             <span
               key={i}
-              className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"
+              className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-900"
             >
               {String(item)}
             </span>
@@ -255,7 +255,7 @@ export function AutoFields({
           <div className="min-w-[140px] text-sm font-semibold text-slate-800">
             {humanLabel(key)}
           </div>
-          <div className="flex-1 text-sm text-slate-700">{renderValue(data[key])}</div>
+          <div className="flex-1 text-sm text-slate-900">{renderValue(data[key])}</div>
         </div>
       ))}
     </div>

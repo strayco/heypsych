@@ -87,7 +87,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
                 Support & Community
               </span>
             </h1>
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-600">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-900">
               Find help, connect with others, and access support resources for your mental health journey
             </p>
           </motion.div>
@@ -109,7 +109,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
                       className={`group relative flex-1 border-b-2 px-4 py-3 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                         isActive
                           ? `border-${tab.color}-600 text-${tab.color}-600`
-                          : "border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-900"
+                          : "border-transparent text-slate-900 hover:border-slate-300 hover:text-slate-900"
                       }`}
                     >
                       <div className="flex items-center justify-center gap-2">

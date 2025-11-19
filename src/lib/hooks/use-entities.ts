@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/config/database";
 import type { EntitiesRow, MappedEntity, EntityType, SchemaName } from "@/lib/types/database";
 import { EntityService } from "@/lib/data/entity-service";
-import { mapRowToEntity, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
+import { mapRowToEntity, normalizeEntityContent, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
 
 // Map category ("medications/...", "therapy/...") -> schema name used in UI
 function categoryToSchemaName(category?: string | null): SchemaName {
@@ -35,6 +35,7 @@ function mapRowToEntityShape(row: any): MappedEntity<any> {
     (row.metadata as any)?.category ?? (row.content as any)?.category
   );
   const display = schemaName.charAt(0).toUpperCase() + schemaName.slice(1);
+  const normalizedContent = normalizeEntityContent((row.content as any) || {});
 
   return {
     id: row.id,
@@ -42,8 +43,8 @@ function mapRowToEntityShape(row: any): MappedEntity<any> {
     name: row.title || row.name,
     summary: row.description ?? "",
     schema: { schema_name: schemaName, display_name: display },
-    metadata: (row.metadata as any) || {}, // <-- add this line
-    data: (row.content as any) || {},
+    metadata: (row.metadata as any) || {},
+    data: normalizedContent || {},
     pillar: (row as any).pillar, // Preserve pillar field from resource index
     raw: row,
   };

@@ -30,10 +30,13 @@ export async function GET(req: NextRequest) {
   const startTime = Date.now();
 
   // Start Sentry transaction if available
-  const transaction = Sentry?.startTransaction({
-    op: "api.providers.search",
-    name: "Provider Search API",
-  });
+  const transaction =
+    typeof Sentry?.startTransaction === "function"
+      ? Sentry.startTransaction({
+          op: "api.providers.search",
+          name: "Provider Search API",
+        })
+      : null;
 
   // Rate limiting - FIRST line of defense
   const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
@@ -77,8 +80,13 @@ export async function GET(req: NextRequest) {
       query = query.eq("content->address->>state", qParams.state.toUpperCase());
     }
 
+    // City search optimization: use exact match first, fallback to prefix match
+    // This is much faster than substring search (%city%)
     if (qParams.city) {
-      query = query.ilike("content->address->>city", `%${qParams.city.trim()}%`);
+      const cityTerm = qParams.city.trim();
+      // For better performance, use prefix match instead of substring match
+      // Users typically search "Los Angeles" not "Angeles"
+      query = query.ilike("content->address->>city", `${cityTerm}%`);
     }
 
     if (qParams.zip) {
@@ -90,13 +98,22 @@ export async function GET(req: NextRequest) {
     }
 
     if (qParams.specialization) {
-      const specializations = qParams.specialization.split(",").map((s) => s.trim());
+      const specializations = Array.from(
+        new Set(
+          qParams.specialization
+            .split(",")
+            .map((s) => s.trim())
+            .filter(Boolean)
+        )
+      );
 
-      // Filter for ALL specializations (AND logic) on server-side
+      // Filter for ALL selected specializations (AND logic) on server-side
       for (const spec of specializations) {
+        // Use json containment on the whole content object to ensure the array check works reliably
         query = query.contains("content", { specialties: [spec] });
       }
     }
+
 
     // Server-side filtering for accepting patients (when data is available)
     if (qParams.acceptingOnly === "true") {
@@ -113,24 +130,38 @@ export async function GET(req: NextRequest) {
 
     logger.debug("⚙️ Executing query...");
 
-    // Add timeout handling
+    // Add timeout handling with better error messages
     const timeoutPromise = new Promise<never>((_, reject) =>
       setTimeout(() => reject(new Error("Query timeout after 15 seconds")), 15000)
     );
 
     const queryPromise = query;
-    const { data, error, count } = await Promise.race([queryPromise, timeoutPromise]);
+    let data, error, count;
+
+    try {
+      ({ data, error, count } = await Promise.race([queryPromise, timeoutPromise]));
+    } catch (timeoutError: any) {
+      // Handle timeout gracefully - return empty results instead of throwing
+      logger.warn("Provider search timed out", { filters: qParams });
+      return NextResponse.json({
+        providers: [],
+        totalCount: 0,
+        timeout: true,
+        message: "No psychiatrists found matching your search criteria. Try using fewer filters or a different location.",
+      }, { status: 200 }); // Return 200 so frontend doesn't treat it as an error
+    }
 
     if (error) {
       logger.error("Supabase query error", error);
 
-      // Handle specific timeout errors more gracefully
+      // Handle specific database timeout errors more gracefully
       if (error.code === "57014") {
         return NextResponse.json({
           providers: [],
           totalCount: 0,
-          error: "Search timeout - please try a more specific search or filter",
-        });
+          timeout: true,
+          message: "No psychiatrists found matching your search criteria. Try using fewer filters or a different location.",
+        }, { status: 200 }); // Return 200 so frontend doesn't treat it as an error
       }
 
       throw error;
@@ -140,8 +171,9 @@ export async function GET(req: NextRequest) {
     logger.debug(`✅ Found ${data?.length || 0} providers (${count} total) in ${loadTime}ms`);
 
     // Track performance metric in Sentry
-    if (Sentry) {
-      Sentry.metrics.distribution("provider_search.duration", loadTime, {
+    const metrics = Sentry?.metrics;
+    if (metrics && typeof metrics.distribution === "function") {
+      metrics.distribution("provider_search.duration", loadTime, {
         unit: "millisecond",
         tags: {
           has_state: !!qParams.state,
@@ -150,22 +182,21 @@ export async function GET(req: NextRequest) {
           result_count: data?.length || 0,
         },
       });
+    }
 
-      // Alert on slow queries (threshold: 100ms for good UX)
-      if (loadTime > 250) {
-        Sentry.captureMessage("Slow provider search query detected", {
-          level: "warning",
-          tags: {
-            duration: loadTime,
-            threshold: "250ms",
-          },
-          extra: {
-            result_count: data?.length || 0,
-            total_count: count,
-            filters: qParams,
-          },
-        });
-      }
+    if (loadTime > 250 && typeof Sentry?.captureMessage === "function") {
+      Sentry.captureMessage("Slow provider search query detected", {
+        level: "warning",
+        tags: {
+          duration: loadTime,
+          threshold: "250ms",
+        },
+        extra: {
+          result_count: data?.length || 0,
+          total_count: count,
+          filters: qParams,
+        },
+      });
     }
 
     // Map to expected format with better error handling
@@ -205,11 +236,15 @@ export async function GET(req: NextRequest) {
       };
     });
 
+    // Add cache headers for performance (shorter cache due to dynamic filters)
+    const headers = new Headers();
+    headers.set('Cache-Control', 'public, s-maxage=180, stale-while-revalidate=300');
+
     return NextResponse.json({
       providers,
       totalCount: count ?? 0,
       loadTimeMs: Date.now() - startTime,
-    });
+    }, { headers });
   } catch (e: any) {
     const loadTime = Date.now() - startTime;
     logger.error("Provider search failed", e, { loadTime });
@@ -226,19 +261,36 @@ export async function GET(req: NextRequest) {
     });
 
     // Return more specific error messages
-    let errorMessage = "Search failed";
+    let message = "Search failed - please try again";
+    let isTimeout = false;
 
     if (e.message?.includes("timeout")) {
-      errorMessage = "Search timeout - please try a more specific search";
+      message = "No psychiatrists found matching your search criteria. Try using fewer filters or a different location.";
+      isTimeout = true;
     } else if (e.code === "57014") {
-      errorMessage = "Database timeout - please try filtering your search";
+      message = "No psychiatrists found matching your search criteria. Try using fewer filters or a different location.";
+      isTimeout = true;
     }
 
+    // For timeout errors, return 200 with empty results so frontend shows "no results" instead of error
+    if (isTimeout) {
+      return NextResponse.json(
+        {
+          providers: [],
+          totalCount: 0,
+          timeout: true,
+          message,
+        },
+        { status: 200 }
+      );
+    }
+
+    // For other errors, return 500
     return NextResponse.json(
       {
         providers: [],
         totalCount: 0,
-        error: errorMessage,
+        error: message,
         details: process.env.NODE_ENV === "development" ? e.toString() : undefined,
       },
       { status: 500 }

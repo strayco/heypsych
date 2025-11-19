@@ -339,7 +339,7 @@ function SearchInput({ value, onChange, resultCount }: SearchInputProps) {
         aria-label="Search organizations"
       />
       {value && (
-        <p className="text-sm text-slate-600" role="status" aria-live="polite">
+        <p className="text-sm text-slate-900" role="status" aria-live="polite">
           Found {resultCount} {resultCount === 1 ? "organization" : "organizations"}
         </p>
       )}
@@ -374,7 +374,7 @@ function OrganizationCard({ organization }: OrganizationCardProps) {
           </div>
 
           {/* Description */}
-          <p className="text-slate-600">{organization.description}</p>
+          <p className="text-slate-900">{organization.description}</p>
 
           {/* Tags/Labels */}
           <div className="flex flex-wrap gap-2">
@@ -483,7 +483,7 @@ export function OrganizationsAtoZSection({ organizations }: Props) {
         <h2 className="mb-4 text-2xl font-bold text-slate-900">
           Mental Health Organizations & Support Groups
         </h2>
-        <p className="mb-6 text-slate-600">
+        <p className="mb-6 text-slate-900">
           Find peer support groups, advocacy organizations, and communities for specific conditions,
           identities, and life situations. All organizations offer free or low-cost support.
         </p>
@@ -534,7 +534,7 @@ export function OrganizationsAtoZSection({ organizations }: Props) {
         </div>
       ) : (
         <Card>
-          <CardContent className="p-8 text-center text-slate-600">
+          <CardContent className="p-8 text-center text-slate-900">
             <p className="mb-2 text-lg font-medium">No organizations found</p>
             <p className="text-sm">
               {searchQuery

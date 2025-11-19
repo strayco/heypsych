@@ -60,7 +60,7 @@ export function ProviderCard({
           ))}
         </div>
         <span className="text-sm font-medium">{data.rating}</span>
-        <span className="text-sm text-neutral-700">({data.total_reviews} reviews)</span>
+        <span className="text-sm text-neutral-900">({data.total_reviews} reviews)</span>
       </div>
     );
   };
@@ -134,7 +134,7 @@ export function ProviderCard({
                     <h3 className="text-xl font-bold transition-colors group-hover:text-blue-600">
                       {data.full_name}
                     </h3>
-                    <p className="mb-2 text-sm text-neutral-800">{data.credentials}</p>
+                    <p className="mb-2 text-sm text-neutral-900">{data.credentials}</p>
 
                     <div className="mb-2 flex items-center gap-2">
                       <Badge variant="primary" size="sm">
@@ -163,7 +163,7 @@ export function ProviderCard({
                     )}
 
                     {data.residency && (
-                      <div className="text-sm text-neutral-800">
+                      <div className="text-sm text-neutral-900">
                         <p>Residency: {data.residency}</p>
                         {data.fellowship && <p>Fellowship: {data.fellowship}</p>}
                       </div>
@@ -178,11 +178,11 @@ export function ProviderCard({
                     </h4>
 
                     {data.practice_name && (
-                      <div className="text-sm font-medium">{data.practice_name}</div>
+                      <div className="text-sm font-medium text-neutral-900">{data.practice_name}</div>
                     )}
 
                     {data.address && (
-                      <div className="text-sm text-neutral-800">
+                      <div className="text-sm text-neutral-900">
                         <p>{data.address.street}</p>
                         <p>
                           {data.address.city}, {data.address.state} {data.address.zip}
@@ -191,7 +191,7 @@ export function ProviderCard({
                     )}
 
                     {data.languages && data.languages.length > 1 && (
-                      <div className="flex items-center gap-1 text-sm text-neutral-800">
+                      <div className="flex items-center gap-1 text-sm text-neutral-900">
                         <Globe className="h-3 w-3" />
                         <span>{data.languages.join(", ")}</span>
                       </div>
@@ -249,7 +249,7 @@ export function ProviderCard({
                 {data.bio && (
                   <div className="mt-4 border-t pt-4">
                     <h4 className="mb-2 text-sm font-semibold text-neutral-900">About</h4>
-                    <p className="line-clamp-2 text-sm text-neutral-800">{data.bio}</p>
+                    <p className="line-clamp-2 text-sm text-neutral-900">{data.bio}</p>
                   </div>
                 )}
 
@@ -374,7 +374,7 @@ export function ProviderCard({
                 <CardTitle className="text-lg transition-colors group-hover:text-blue-600">
                   {data.full_name}
                 </CardTitle>
-                <p className="mb-2 text-sm text-neutral-800">{data.credentials}</p>
+                <p className="mb-2 text-sm text-neutral-900">{data.credentials}</p>
 
                 <div className="mb-2 flex items-center gap-2">
                   <Badge variant="primary" size="sm">
@@ -402,7 +402,7 @@ export function ProviderCard({
                 )}
 
                 {data.residency && (
-                  <div className="flex items-start gap-2 text-sm text-neutral-800">
+                  <div className="flex items-start gap-2 text-sm text-neutral-900">
                     <GraduationCap className="mt-0.5 h-4 w-4 text-neutral-700" />
                     <div>
                       <p>Residency: {data.residency}</p>
@@ -415,12 +415,12 @@ export function ProviderCard({
               {/* Practice & Location */}
               {data.practice_name && (
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="font-medium">{data.practice_name}</span>
+                  <span className="font-medium text-neutral-900">{data.practice_name}</span>
                 </div>
               )}
 
               {data.address && (
-                <div className="flex items-start gap-2 text-sm text-neutral-800">
+                <div className="flex items-start gap-2 text-sm text-neutral-900">
                   <MapPin className="mt-0.5 h-4 w-4 text-neutral-700" />
                   <div>
                     <p>{data.address.street}</p>

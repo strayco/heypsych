@@ -137,18 +137,6 @@ export function Header() {
                   </Link>
                 );
               })}
-
-              {/* Mobile Action Buttons */}
-              <div className="border-t pt-4">
-                <div className="flex space-x-2">
-                  <Button size="sm" className="flex-1">
-                    Sign In
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1">
-                    Sign Up
-                  </Button>
-                </div>
-              </div>
             </nav>
           </motion.div>
         )}

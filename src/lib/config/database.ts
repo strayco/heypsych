@@ -175,4 +175,13 @@ export type Database = {
 
 export const supabase = createClient<Database>(url, anon, {
   auth: { persistSession: true, autoRefreshToken: true },
+  global: {
+    fetch: (url, options = {}) => {
+      // Increase timeout to 30 seconds for long-running queries like full-text search
+      return fetch(url, {
+        ...options,
+        signal: AbortSignal.timeout(30000),
+      });
+    },
+  },
 });

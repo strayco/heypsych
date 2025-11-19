@@ -72,7 +72,7 @@ export function TreatmentTab({ resources }: Props) {
 
       {Object.keys(groupedResources).length === 0 && searchQuery && (
         <Card>
-          <CardContent className="p-8 text-center text-slate-600">
+          <CardContent className="p-8 text-center text-slate-900">
             <p>No results found for "{searchQuery}"</p>
           </CardContent>
         </Card>

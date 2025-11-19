@@ -236,7 +236,7 @@ export function CrisisAtoZSection({ hotlines }: Props) {
           <h2 className="mb-4 text-2xl font-bold text-slate-900">
             Specialized Crisis Hotlines
           </h2>
-          <p className="mb-6 text-slate-600">
+          <p className="mb-6 text-slate-900">
             Find specialized support for specific communities, situations, and needs. All hotlines
             are free and confidential.
           </p>
@@ -284,7 +284,7 @@ export function CrisisAtoZSection({ hotlines }: Props) {
         </div>
       ) : (
         <Card>
-          <CardContent className="p-8 text-center text-slate-600">
+          <CardContent className="p-8 text-center text-slate-900">
             <p className="mb-2 text-lg font-medium">No hotlines found</p>
             <p className="text-sm">
               {searchQuery

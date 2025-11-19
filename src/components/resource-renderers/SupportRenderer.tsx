@@ -22,13 +22,13 @@ export function SupportRenderer({ resource }: ResourceRendererProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           {data.meeting_times && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-900">
               <Clock className="h-4 w-4" />
               <span>{data.meeting_times}</span>
             </div>
           )}
           {data.location && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-900">
               <MapPin className="h-4 w-4" />
               <span>{data.location}</span>
             </div>
