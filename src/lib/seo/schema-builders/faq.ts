@@ -7,6 +7,7 @@
 
 import type { Entity } from '@/lib/types/database';
 import { SchemaBuilder, SchemaUtils } from '../schema-builder';
+import { getEntityType } from '@/lib/utils/entity-type';
 
 interface FAQ {
   question: string;
@@ -51,7 +52,7 @@ function extractFAQs(entity: Entity): FAQ[] | null {
   }
 
   // Priority 2: Auto-generate FAQs for conditions
-  const entityType = entity.type || entity.schema?.entity_type;
+  const entityType = getEntityType(entity);
 
   if (entityType === 'condition') {
     return generateConditionFAQs(entity);
@@ -158,7 +159,7 @@ function generateMedicationFAQs(entity: Entity): FAQ[] {
 
   // FAQ 1: What is {medication} used for?
   const indications = entity.data?.primary_indications ||
-                     entity.clinical_metadata?.primary_indications;
+                     entity.metadata?.clinical?.primary_indications;
 
   if (Array.isArray(indications) && indications.length > 0) {
     const indicationsText = indications

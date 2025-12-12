@@ -98,7 +98,7 @@ export class PlacementEngine {
     for (const link of allLinks) {
       if (allocated.has(link)) continue;
 
-      const score = this.scoreLink ForSlot(link, slot, config.preferredLinkTypes);
+      const score = this.scoreLinkForSlot(link, slot, config.preferredLinkTypes);
       if (score > 0) {
         scores.push({ slot, link, score });
       }

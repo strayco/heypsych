@@ -65,7 +65,7 @@ export function buildDrugSchema(entity: Entity): Record<string, any> {
   if (deaSchedule) {
     builder.addProperty('legalStatus', {
       '@type': 'DrugLegalStatus',
-      applicableLocation': 'US',
+      'applicableLocation': 'US',
       schedule: deaSchedule
     });
   }
@@ -98,7 +98,39 @@ export function buildDrugSchema(entity: Entity): Record<string, any> {
   const pregnancyCategory = entity.data?.pregnancy_category;
   builder.addPropertyIfExists('pregnancyCategory', pregnancyCategory);
 
+  // Clinical trial / efficacy data (E-E-A-T boost)
+  const clinicalTrial = extractClinicalTrialData(entity);
+  if (clinicalTrial) {
+    builder.addProperty('clinicalPharmacology', clinicalTrial.description);
+  }
+
   return builder.build();
+}
+
+/**
+ * Extract clinical trial / efficacy data for schema.org
+ */
+function extractClinicalTrialData(entity: Entity): { description: string } | null {
+  // From clinical_metadata.efficacy_response
+  const efficacyResponse = entity.data?.clinical_metadata?.efficacy_response;
+  if (efficacyResponse && efficacyResponse.metric && efficacyResponse.percentage_value) {
+    return {
+      description: `${efficacyResponse.metric}: ${efficacyResponse.percentage_value}${efficacyResponse.comparison_data ? ` (vs ${efficacyResponse.comparison_data})` : ''}`
+    };
+  }
+
+  // From sections.efficacy
+  const sections = entity.data?.sections;
+  if (Array.isArray(sections)) {
+    const efficacySection = sections.find((s: any) => s.type === 'efficacy');
+    if (efficacySection && efficacySection.metric && efficacySection.value) {
+      return {
+        description: `${efficacySection.metric}: ${efficacySection.value}${efficacySection.comparison ? ` (vs ${efficacySection.comparison})` : ''}`
+      };
+    }
+  }
+
+  return null;
 }
 
 function extractBrandNames(entity: Entity): string[] | null {
@@ -190,7 +222,7 @@ function extractIndications(entity: Entity): Record<string, any>[] | null {
 
   // From clinical_metadata.primary_indications
   const primaryIndications = entity.data?.primary_indications ||
-                            entity.clinical_metadata?.primary_indications;
+                            entity.metadata?.clinical?.primary_indications;
 
   if (Array.isArray(primaryIndications)) {
     primaryIndications.forEach((indication: string) => {
@@ -202,7 +234,7 @@ function extractIndications(entity: Entity): Record<string, any>[] | null {
 
   // From clinical_metadata.conditions_treated
   const conditions = entity.data?.conditions_treated ||
-                    entity.clinical_metadata?.conditions_treated;
+                    entity.metadata?.clinical?.conditions_treated;
 
   if (Array.isArray(conditions)) {
     conditions.forEach((condition: string) => {
@@ -233,7 +265,7 @@ function extractIndications(entity: Entity): Record<string, any>[] | null {
 
 function extractContraindications(entity: Entity): string[] | null {
   const contraindications = entity.data?.contraindications ||
-                           entity.clinical_metadata?.contraindications;
+                           entity.metadata?.clinical?.contraindications;
 
   if (Array.isArray(contraindications) && contraindications.length > 0) {
     return SchemaUtils.cleanTextArray(contraindications);
@@ -262,7 +294,7 @@ function extractWarnings(entity: Entity): string[] | null {
   }
 
   // From clinical_metadata.warnings
-  const clinicalWarnings = entity.clinical_metadata?.warnings;
+  const clinicalWarnings = entity.metadata?.clinical?.warnings;
   if (Array.isArray(clinicalWarnings)) {
     warnings.push(...SchemaUtils.cleanTextArray(clinicalWarnings));
   }
@@ -273,9 +305,48 @@ function extractWarnings(entity: Entity): string[] | null {
 function extractAdverseEffects(entity: Entity): Record<string, any>[] | null {
   const effects: Record<string, any>[] = [];
 
-  // From sections.side_effects
   const sections = entity.data?.sections;
   if (Array.isArray(sections)) {
+    // NEW: Handle adverse_effects section with incidence rates
+    const adverseEffectsSection = sections.find((s: any) => s.type === 'adverse_effects');
+    
+    if (adverseEffectsSection) {
+      // Handle common effects with incidence data
+      if (adverseEffectsSection.common && Array.isArray(adverseEffectsSection.common)) {
+        adverseEffectsSection.common.forEach((effect: any) => {
+          if (typeof effect === 'object' && effect.symptom) {
+            effects.push({
+              '@type': 'MedicalEntity',
+              name: SchemaUtils.cleanText(effect.symptom),
+              ...(effect.incidence && { 
+                description: `Incidence: ${effect.incidence}` 
+              })
+            });
+          } else if (typeof effect === 'string') {
+            effects.push({
+              '@type': 'MedicalEntity',
+              name: SchemaUtils.cleanText(effect)
+            });
+          }
+        });
+      }
+      
+      // Handle serious effects
+      if (adverseEffectsSection.serious && Array.isArray(adverseEffectsSection.serious)) {
+        adverseEffectsSection.serious.forEach((effect: any) => {
+          const effectName = typeof effect === 'string' ? effect : effect.symptom;
+          if (effectName) {
+            effects.push({
+              '@type': 'MedicalEntity',
+              name: SchemaUtils.cleanText(effectName),
+              potentialAction: 'Seek medical attention'
+            });
+          }
+        });
+      }
+    }
+    
+    // LEGACY: Handle side_effects section (backwards compatibility)
     const sideEffectsSection = sections.find((s: any) => s.type === 'side_effects');
 
     if (sideEffectsSection?.subsections) {

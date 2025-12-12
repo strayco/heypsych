@@ -108,6 +108,19 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
+            <h3 className="mb-2 font-semibold text-gray-900">Medical Review Board</h3>
+            <p className="text-sm text-gray-700">
+              All medical content is reviewed by board-certified psychiatrists and licensed mental
+              health professionals to ensure accuracy and clinical relevance.{" "}
+              <Link
+                href="/about/medical-review-board"
+                className="font-medium text-green-700 hover:text-green-800 hover:underline"
+              >
+                Meet our Medical Review Board →
+              </Link>
+            </p>
+          </div>
+          <div>
             <h3 className="mb-2 font-semibold text-gray-900">Evidence-Based Information</h3>
             <p className="text-sm text-gray-700">
               All content is reviewed for accuracy and backed by current research and clinical

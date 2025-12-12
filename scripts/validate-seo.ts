@@ -87,13 +87,13 @@ async function validateMetadata(): Promise<ValidationResult> {
       // Critical checks
       if (!metadata.title) {
         errors.push(`${entity.slug}: Missing title`);
-      } else if (metadata.title.length > 60) {
+      } else if (typeof metadata.title === 'string' && metadata.title.length > 60) {
         warnings.push(`${entity.slug}: Title length ${metadata.title.length} exceeds 60 chars`);
       }
 
       if (!metadata.description) {
         errors.push(`${entity.slug}: Missing description`);
-      } else if (metadata.description.length > 160) {
+      } else if (typeof metadata.description === 'string' && metadata.description.length > 160) {
         warnings.push(
           `${entity.slug}: Description length ${metadata.description.length} exceeds 160 chars`
         );
@@ -203,7 +203,7 @@ async function validateSitemaps(): Promise<ValidationResult> {
     const conditions = entities.filter((e) => e.type === 'condition' && e.status === 'active');
     const treatments = entities.filter(
       (e) =>
-        ['medication', 'therapy', 'treatment'].includes(e.type) && e.status === 'active'
+        e.type && ['medication', 'therapy', 'treatment'].includes(e.type) && e.status === 'active'
     );
 
     if (conditions.length > 0) {

@@ -14,7 +14,7 @@ import { EntityService } from "@/lib/data/entity-service";
 import { supabase } from "@/lib/config/database";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
-import { getPageLinks } from "@/lib/linking/link-service";
+import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import ConditionClientWrapper from "./client-wrapper";
 
 // Generate static params for all conditions
@@ -61,7 +61,7 @@ export async function generateMetadata({
 }
 
 // Server Component - Fetches data on server (or from cache)
-// Generates complete schema.org stack for SEO + internal links
+// Generates complete schema.org stack for SEO + inline links
 export default async function ConditionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const entity = await EntityService.getBySlug(slug);
@@ -70,6 +70,10 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
     notFound();
   }
 
+  // Content enhancement for automatic inline crosslinking
+  // Detects entity names in content and injects {link:} syntax
+  const enhancedEntity = await enhanceEntityContent(entity);
+
   // Generate complete schema.org stack (5 schemas):
   // 1. MedicalCondition (primary entity)
   // 2. MedicalWebPage (universal)
@@ -77,11 +81,6 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
   // 4. Person schemas (author + medical reviewer, if present)
   // 5. FAQPage (auto-generated or explicit)
   const schemas = SchemaFactory.generateAll(entity);
-
-  // Generate internal links (extract + allocate to slots)
-  // Fetch all entities for link matching (cached in production)
-  const allEntities = await EntityService.getAll();
-  const pageLinks = await getPageLinks(entity, allEntities);
 
   return (
     <>
@@ -94,9 +93,9 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
         />
       ))}
 
-      {/* Pass data + links to client component for interactivity */}
-      {/* Data and links already fetched server-side, no client-side waterfall */}
-      <ConditionClientWrapper entity={entity} pageLinks={pageLinks} />
+      {/* Pass enhanced entity data to client component for interactivity */}
+      {/* Entity names are automatically linked inline via {link:} syntax */}
+      <ConditionClientWrapper entity={enhancedEntity} />
     </>
   );
 }

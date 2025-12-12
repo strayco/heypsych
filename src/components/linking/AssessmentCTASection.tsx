@@ -78,7 +78,7 @@ export function AssessmentCTASection({
             {displayLinks.map((link, index) => (
               <Link
                 key={`${link.targetSlug}-${index}`}
-                href={`/resources/assessments-screeners/${link.targetSlug}`}
+                href={`/resources/${link.targetSlug}`}
                 className="group block"
               >
                 <div className="flex items-center justify-between rounded-lg border border-blue-200 bg-white p-4 transition-all hover:border-blue-400 hover:shadow-md">
@@ -121,7 +121,7 @@ function renderProminentSingle(link: CandidateLink, title: string, description: 
           </div>
           <h3 className="mb-2 text-2xl font-bold text-neutral-900">{title}</h3>
           <p className="mx-auto mb-6 max-w-2xl text-neutral-700">{description}</p>
-          <Link href={`/resources/assessments-screeners/${link.targetSlug}`}>
+          <Link href={`/resources/${link.targetSlug}`}>
             <Button size="lg" className="group">
               Take the {link.anchorOptions[0]}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

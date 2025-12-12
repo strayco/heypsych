@@ -1,17 +1,61 @@
 // src/lib/data/entity-service.ts - Server-only safe version
 import { supabase } from "@/lib/config/database";
-import type { Entity, Collection, EntityType, SchemaName } from "@/lib/types/database";
-import { normalizeEntityContent } from "@/lib/data/entity-mappers";
+import type { Entity, Collection, EntityType, SchemaName, EntityMetadata } from "@/lib/types/database";
+import { normalizeEntityContent, categoryToSchemaName } from "@/lib/data/entity-mappers";
 
 // Only import fs modules on server side
-let fs: typeof import("fs") | null = null;
-let path: typeof import("path") | null = null;
+// Keep as null initially, will be loaded dynamically on server
+let fs: typeof import('fs') | null = null;
+let path: typeof import('path') | null = null;
 
-// Dynamically import fs modules only when on server
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-if (typeof window === "undefined") {
-  fs = require("fs");
-  path = require("path");
+/**
+ * Webpack-safe server module loader
+ *
+ * INTENTIONAL USE OF EVAL:
+ * We use eval('require') to hide the require() call from webpack's static analysis.
+ * This prevents webpack from attempting to bundle Node.js modules (fs, path) for client-side code.
+ * These modules should ONLY be loaded server-side during SSG/ISR builds.
+ *
+ * This is NOT a security risk - it's a build-time pattern to prevent incorrect bundling.
+ * Alternatives like dynamic import('node:fs') still trigger webpack's module resolver.
+ */
+function loadServerModule(moduleName: string): any {
+  if (typeof window !== "undefined") return null; // Client-side guard
+
+  try {
+    // eslint-disable-next-line no-eval
+    return eval('require')(moduleName);
+  } catch {
+    return null;
+  }
+}
+
+// Load fs modules dynamically when needed (server-side only)
+async function ensureFsModules(): Promise<boolean> {
+  if (typeof window !== "undefined") return false; // Client-side, don't load
+  if (fs && path) return true; // Already loaded
+
+  try {
+    fs = loadServerModule('fs');
+    path = loadServerModule('path');
+    return !!(fs && path);
+  } catch {
+    return false;
+  }
+}
+
+// Synchronous wrapper for backwards compatibility
+function ensureFsModulesSync(): boolean {
+  if (typeof window !== "undefined") return false;
+  if (fs && path) return true;
+
+  try {
+    fs = loadServerModule('fs');
+    path = loadServerModule('path');
+    return !!(fs && path);
+  } catch {
+    return false;
+  }
 }
 
 type BasicSchemaMeta = {
@@ -29,28 +73,9 @@ type BasicSchemaMeta = {
 };
 
 // ---------- Dynamic helpers ----------
-function categoryToSchemaName(category?: string | null): SchemaName {
-  if (!category) return "treatment";
-  const first = category.split("/")[0];
-  switch (first) {
-    case "medications":
-      return "medication";
-    case "interventional":
-      return "interventional";
-    case "investigational":
-      return "investigational";
-    case "alternative":
-      return "alternative";
-    case "therapy":
-      return "therapy";
-    case "supplements":
-      return "supplement";
-    default:
-      return "treatment";
-  }
-}
+// categoryToSchemaName is now imported from entity-mappers.ts (single source of truth)
 
-// NEW: Map entity type directly to schema name
+// Map entity type directly to schema name
 function entityTypeToSchemaName(entityType: string): SchemaName {
   switch (entityType) {
     case "medication":
@@ -137,7 +162,6 @@ class FileSystemScanner {
   static getTreatmentCategories(): string[] {
     // Client-side: return empty array and let API handle it
     if (typeof window !== "undefined") {
-      console.log("FileSystemScanner: Client-side, returning empty array");
       return [];
     }
 
@@ -146,7 +170,7 @@ class FileSystemScanner {
     }
 
     try {
-      if (!fs || !path) {
+      if (!ensureFsModulesSync() || !fs || !path) {
         console.warn("fs or path module not available");
         return [];
       }
@@ -159,12 +183,11 @@ class FileSystemScanner {
 
       const categories = fs
         .readdirSync(treatmentsPath, { withFileTypes: true })
-        .filter((dirent) => dirent.isDirectory())
-        .map((dirent) => dirent.name)
+        .filter((dirent: any) => dirent.isDirectory())
+        .map((dirent: any) => dirent.name)
         .sort();
 
       this.treatmentCategoriesCache = categories;
-      console.log("🗂️ Discovered treatment categories:", categories);
       return categories;
     } catch (error) {
       console.error("Error scanning treatment categories:", error);
@@ -225,6 +248,7 @@ function normalizeEntity(row: any): Entity {
     metadata: row.metadata,
     status: row.status,
     visibility: "public",
+    type: row.type || schemaMeta.entity_type, // CRITICAL: Set type field for link extraction
     created_at: row.created_at,
     updated_at: row.updated_at,
     created_by: row.created_by,
@@ -249,7 +273,11 @@ const legacyCache: {
   treatments?: CachedSet<Entity>;
   conditions?: CachedSet<Entity>;
   resources?: CachedSet<Entity>;
-} = {};
+  all?: CachedSet<Entity>;
+  bySchema: Map<string, CachedSet<Entity>>;
+} = {
+  bySchema: new Map(),
+};
 
 function isCacheFresh(entry?: CachedSet<Entity>): entry is CachedSet<Entity> {
   if (!entry) return false;
@@ -257,10 +285,10 @@ function isCacheFresh(entry?: CachedSet<Entity>): entry is CachedSet<Entity> {
 }
 
 export class EntityService {
-  /** Enhanced getBySlug with API fallback for client-side */
+  /** Get entity by slug - database only, no API fallback */
   static async getBySlug(slug: string): Promise<Entity | null> {
     try {
-      // First, try the database
+      // Query database only - NO API FALLBACK
       // Use limit(1) instead of single() to handle potential duplicates
       // Prioritize treatment types in this order if duplicates exist
       const { data, error } = await supabase
@@ -275,32 +303,9 @@ export class EntityService {
         return normalizeEntity(data[0]);
       }
 
-      console.log(`🔍 Entity '${slug}' not found in database, trying API fallback...`);
-
-      // Fallback: use API route (works on both client and server)
-      return await this.getFromAPI(slug);
+      return null;
     } catch (error) {
       console.error("Error in getBySlug:", error);
-      return await this.getFromAPI(slug);
-    }
-  }
-
-  /** Fallback method using API route (works client and server-side) */
-  private static async getFromAPI(slug: string): Promise<Entity | null> {
-    try {
-      const response = await fetch(`/api/treatments/${slug}`);
-
-      if (!response.ok) {
-        console.log(`❌ API request failed for ${slug}: ${response.status}`);
-        return null;
-      }
-
-      const data = await response.json();
-      console.log(`✅ Found ${slug} via API`);
-
-      return data as Entity;
-    } catch (error) {
-      console.error("Error fetching from API:", error);
       return null;
     }
   }
@@ -319,6 +324,7 @@ export class EntityService {
     legacyCache.treatments = undefined;
     legacyCache.conditions = undefined;
     legacyCache.resources = undefined;
+    legacyCache.bySchema.clear();
   }
 
   // Keep all your existing database methods unchanged
@@ -326,12 +332,19 @@ export class EntityService {
     const schema = (schemaName as SchemaName) || "treatment";
     const filter = SCHEMA_TO_FILTER[schema] ?? { type: "treatment" };
 
+    // Check cache first
+    const cached = legacyCache.bySchema.get(schema);
+    if (cached && isCacheFresh(cached)) {
+      return cached.data;
+    }
+
     let query = supabase
       .from("entities")
       .select("*")
       .eq("type", filter.type)
       .eq("status", "active")
-      .order("title");
+      .order("title")
+      .limit(500); // Add limit to prevent timeout
 
     if (filter.categoryPrefix) {
       query = query.like("metadata->>category", `${filter.categoryPrefix}%`);
@@ -339,7 +352,13 @@ export class EntityService {
 
     const { data, error } = await query;
     if (error) throw error;
-    return normalizeEntities(data || []);
+    
+    const normalized = normalizeEntities(data || []);
+    
+    // Cache the result
+    legacyCache.bySchema.set(schema, { data: normalized, fetchedAt: Date.now() });
+    
+    return normalized;
   }
 
   static async getByEntityType(entityType: string): Promise<Entity[]> {
@@ -369,59 +388,52 @@ export class EntityService {
     return normalized;
   }
 
+  /** Get all active entities across all types */
+  static async getAll(): Promise<Entity[]> {
+    // Check cache first (critical for performance during page generation)
+    if (isCacheFresh(legacyCache.all)) {
+      return legacyCache.all.data;
+    }
+
+    const { data, error } = await supabase
+      .from("entities")
+      .select("*")
+      .eq("status", "active")
+      .order("type")
+      .order("title");
+
+    if (error) throw error;
+
+    const normalized = normalizeEntities(data || []);
+
+    // Cache the result
+    legacyCache.all = { data: normalized, fetchedAt: Date.now() };
+
+    return normalized;
+  }
+
+  /** Get all entities by type (alias for getByEntityType) */
+  static async getByType(entityType: EntityType): Promise<Entity[]> {
+    return this.getByEntityType(entityType);
+  }
+
   // FIXED: Include all treatment types with pagination support
+  // Uses NOT IN for excluded types (faster than IN with 35+ types)
   static async getAllTreatments(limit?: number): Promise<Entity[]> {
     if (isCacheFresh(legacyCache.treatments)) {
       return limit ? legacyCache.treatments!.data.slice(0, limit) : legacyCache.treatments!.data;
     }
 
-    const treatmentTypes = [
-      "medication",
-      "antidepressant",
-      "antipsychotic",
-      "anxiolytic",
-      "benzodiazepine",
-      "hypnotic",
-      "sedative-hypnotic",
-      "stimulant",
-      "mood-stabilizer",
-      "anticonvulsant",
-      "nootropic",
-      "cognitive-enhancer",
-      "adhd-medication",
-      "addiction-treatment",
-      "opioid-dependence-treatment",
-      "alcohol-dependence-treatment",
-      "smoking-cessation-antidepressant",
-      "antihistamine",
-      "muscle-relaxant",
-      "barbiturate",
-      "anesthetic",
-      "antiemetic",
-      "antihypertensive",
-      "opioid-antagonist",
-      "combination-medication",
-      "antidepressant-antipsychotic-combination",
-      "combination-antipsychotic-antihistamine",
-      "wakefulness-promoting-agent",
-      "non-stimulant-adhd-medication",
-      "sleep-medication",
-      "herbal",
-      "therapy",
-      "interventional",
-      "supplement",
-      "treatment",
-      "alternative",
-      "investigational",
-    ];
+    // Exclude non-treatment types instead of listing all treatment types
+    const excludedTypes = ["condition", "resource", "provider"];
 
     const query = supabase
       .from("entities")
       .select("*")
-      .in("type", treatmentTypes)
       .eq("status", "active")
+      .not("type", "in", `(${excludedTypes.join(",")})`)
       .order("title")
-      .limit(1000); // High limit to get all rows before deduplication
+      .limit(800);
 
     const { data, error } = await query;
     if (error) throw error;
@@ -440,8 +452,8 @@ export class EntityService {
       }
 
       // Prefer entity with mechanism_categories populated
-      const existingHasMechanism = existing.metadata?.mechanism_categories?.length > 0;
-      const currentHasMechanism = entity.metadata?.mechanism_categories?.length > 0;
+      const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
+      const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
 
       if (currentHasMechanism && !existingHasMechanism) {
         bySlug.set(entity.slug, entity);
@@ -514,7 +526,8 @@ export class EntityService {
     const categories = new Set<string>();
 
     data?.forEach((row) => {
-      const metaCategory = (row.metadata as any)?.category;
+      const metadata = row.metadata as EntityMetadata | null;
+      const metaCategory = metadata?.category;
       if (metaCategory) categories.add(metaCategory);
     });
 
@@ -603,23 +616,29 @@ export class EntityService {
   }
 
   // comparisons
-  static extractValue(entity: Entity, path: string): any {
+  static extractValue(entity: Entity, path: string): unknown {
     const keys = path.replace(/^\$\./, "").split(".");
-    return keys.reduce((obj, key) => (obj as any)?.[key], entity.data as any);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return keys.reduce<unknown>((obj, key) => {
+      if (obj && typeof obj === 'object' && key in obj) {
+        return (obj as Record<string, unknown>)[key];
+      }
+      return undefined;
+    }, entity.data);
   }
 
   static getComparisonData(entities: Entity[], metricPaths: string[]) {
     return entities.map((entity) => ({
       id: entity.id,
       name: entity.name,
-      schema: (entity as any).schema?.display_name,
+      schema: entity.schema?.display_name ?? null,
       metrics: metricPaths.reduce(
         (acc, path) => {
           const key = path.replace(/^\$\./, "").replace(".", "_");
           acc[key] = this.extractValue(entity, path);
           return acc;
         },
-        {} as Record<string, any>
+        {} as Record<string, unknown>
       ),
     }));
   }

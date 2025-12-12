@@ -12,6 +12,7 @@
 import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { MetadataGenerator } from '../metadata-generator';
+import { SITE_CONFIG } from '../config';
 
 export class ResourceMetadataGenerator extends MetadataGenerator {
   async generate(entity: Entity): Promise<Metadata> {
@@ -76,7 +77,27 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
   }
 
   private generateDigitalToolTitle(entity: Entity, name: string): string {
-    // Format: "Headspace: Mental Health App Review & Features | HeyPsych"
+    // V2: Include rating and reviews for SEO impact
+    // Format: "Headspace: 4.8★ Meditation App (1.2M reviews) | HeyPsych"
+    const rating = entity.data?.app_rating;
+    const reviews = entity.data?.total_reviews;
+
+    if (rating && reviews) {
+      const formattedReviews = this.formatReviewCount(reviews);
+      const titleWithRating = `${name}: ${rating}★ Mental Health App (${formattedReviews} reviews) | HeyPsych`;
+
+      if (titleWithRating.length <= 60) {
+        return titleWithRating;
+      }
+
+      // Fallback: Shorter version with just rating
+      const shortTitle = `${name}: ${rating}★ Mental Health App | HeyPsych`;
+      if (shortTitle.length <= 60) {
+        return shortTitle;
+      }
+    }
+
+    // V1 fallback: Generic title
     const fullTitle = `${name}: Mental Health App Review & Features | HeyPsych`;
 
     if (fullTitle.length > 60) {
@@ -150,8 +171,56 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
   }
 
   private generateDigitalToolDescription(entity: Entity, name: string): string {
+    // V2: Rich description with rating, reviews, efficacy, pricing, platforms
+    const rating = entity.data?.app_rating;
+    const reviews = entity.data?.total_reviews;
+    const platforms = entity.metadata?.platforms || entity.data?.platforms || [];
+    const efficacy = entity.data?.clinical_metadata?.efficacy_data;
+    const pricing = entity.data?.sections?.find((s: any) => s.type === 'pricing');
+
+    // V2 Enhanced Description
+    if (rating || efficacy) {
+      let desc = `${name}`;
+
+      // Add rating
+      if (rating && reviews) {
+        const formattedReviews = this.formatReviewCount(reviews);
+        desc += ` (${rating}★, ${formattedReviews} reviews)`;
+      }
+
+      // Add efficacy claim if available
+      if (efficacy?.percentage_value && efficacy?.metric) {
+        desc += ` ${efficacy.metric.toLowerCase().includes('reduces') || efficacy.metric.toLowerCase().includes('reduction') ? 'reduces' : 'improves'} ${efficacy.metric.toLowerCase().replace(/after.*/, '').trim()} by ${efficacy.percentage_value}`;
+        if (efficacy.metric.match(/\d+\s*(day|week|month)/i)) {
+          const duration = efficacy.metric.match(/(\d+\s*(?:day|week|month)s?)/i)?.[0];
+          if (duration) desc += ` in ${duration}`;
+        }
+      }
+
+      // Add platforms
+      if (platforms.length > 0) {
+        desc += `. ${platforms.join(', ')}.`;
+      } else {
+        desc += `.`;
+      }
+
+      // Add pricing hint
+      if (pricing?.plans && Array.isArray(pricing.plans)) {
+        const annualPlan = pricing.plans.find((p: any) => p.name?.toLowerCase().includes('annual'));
+        const freeTier = pricing.free_features && pricing.free_features.length > 0;
+
+        if (freeTier) {
+          desc += ` Free trial available.`;
+        } else if (annualPlan?.price) {
+          desc += ` ${annualPlan.price}.`;
+        }
+      }
+
+      return this.ensureDescriptionLength(desc);
+    }
+
+    // V1 Fallback Description
     const features = entity.data?.features || [];
-    const platforms = entity.data?.platforms || [];
 
     let desc = `${name} is a mental health app`;
     if (platforms.length > 0) {
@@ -160,6 +229,19 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
     desc += `. Learn about features, pricing, and user reviews to decide if it's right for you.`;
 
     return this.ensureDescriptionLength(desc);
+  }
+
+  /**
+   * Format review count for readability (1.2M, 800K, etc.)
+   */
+  private formatReviewCount(count: number): string {
+    if (count >= 1000000) {
+      return `${(count / 1000000).toFixed(1)}M`;
+    }
+    if (count >= 1000) {
+      return `${Math.round(count / 1000)}K`;
+    }
+    return count.toString();
   }
 
   private generateCrisisDescription(entity: Entity, name: string): string {
@@ -272,12 +354,7 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
   }
 
   protected getPath(entity: Entity): string {
-    const category = this.getResourceCategory(entity);
-
-    if (category === 'assessments-screeners') {
-      return `/resources/assessments-screeners/${entity.slug}`;
-    }
-
+    // All resources use canonical /resources/[slug] path
     return `/resources/${entity.slug}`;
   }
 }

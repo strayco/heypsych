@@ -10,6 +10,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
     | "alternative"
     | "investigational"
     | "intervention"
+    | "treatment"
     | "primary"
     | "success"
     | "warning"
@@ -35,6 +36,7 @@ export const Badge: React.FC<BadgeProps> = ({
     therapy: "bg-orange-100 text-orange-900 hover:bg-orange-200",
     alternative: "bg-amber-100 text-amber-900 hover:bg-amber-200",
     investigational: "bg-teal-100 text-teal-900 hover:bg-teal-200",
+    treatment: "bg-indigo-100 text-indigo-900 hover:bg-indigo-200",
     primary: "bg-blue-100 text-blue-900 hover:bg-blue-200",
     success: "bg-green-100 text-green-900 hover:bg-green-200",
     warning: "bg-yellow-100 text-yellow-900 hover:bg-yellow-200",

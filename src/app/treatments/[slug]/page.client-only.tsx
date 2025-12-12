@@ -78,14 +78,15 @@ export default function TreatmentPage() {
   const description: string | undefined = data.description;
   const sections: DynamicSection[] = data.sections || [];
   const category: string | undefined = data.category;
-  const metadata = data.metadata || (entity!.data as any)?.metadata || {};
+  const metadata = data.metadata || entity?.data?.metadata || {};
   const fdaApprovalYear = metadata.fda_approval_year;
 
   // Don't display category badges
   const displayCategory = null;
 
-  // Dynamic badge from category
-  const treatmentType = (() => {
+  // Dynamic badge from category - typed to match Badge variants
+  type BadgeVariant = "medication" | "interventional" | "investigational" | "alternative" | "therapy" | "supplement" | "treatment";
+  const treatmentType: BadgeVariant = (() => {
     if (!category) return "treatment";
     if (category.includes("medication")) return "medication";
     if (category.includes("interventional")) return "interventional";
@@ -485,7 +486,7 @@ export default function TreatmentPage() {
           <div className="flex items-start justify-between">
             <div className="space-y-3">
               {displayCategory && (
-                <Badge variant={treatmentType as any} size="md">
+                <Badge variant={treatmentType} size="md">
                   {displayCategory}
                 </Badge>
               )}

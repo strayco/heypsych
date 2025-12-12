@@ -10,7 +10,7 @@ interface BackToResourcesButtonProps {
 export function BackToResourcesButton({
   className = "",
   href = "/resources",
-  label = "Back to Resources"
+  label = "Back"
 }: BackToResourcesButtonProps) {
   return (
     <Link

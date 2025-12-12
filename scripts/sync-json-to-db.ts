@@ -23,6 +23,10 @@ import fs from "fs";
 import path from "path";
 import { createClient } from "@supabase/supabase-js";
 import pLimit from "p-limit";
+import dotenv from "dotenv";
+
+// Load environment variables from .env.local
+dotenv.config({ path: path.join(process.cwd(), ".env.local") });
 
 // Environment setup
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -89,7 +93,7 @@ function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
 
       if (entry.isDirectory()) {
         traverse(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".json")) {
+      } else if (entry.isFile() && entry.name.endsWith(".json") && !entry.name.endsWith(".legacy.json")) {
         try {
           const content = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
           files.push({ path: fullPath, content });

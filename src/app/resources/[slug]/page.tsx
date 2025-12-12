@@ -14,6 +14,7 @@ import { EntityService } from "@/lib/data/entity-service";
 import { supabase } from "@/lib/config/database";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
+import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import { ResourceDetailClient } from "@/components/resources/ResourceDetailClient";
 
 // Generate static params for all resources
@@ -62,7 +63,7 @@ export async function generateMetadata({
 }
 
 // Server Component - Fetches data on server (or from cache)
-// Generates complete schema.org stack for SEO
+// Generates complete schema.org stack for SEO + inline links
 export default async function ResourceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const entity = await EntityService.getBySlug(slug);
@@ -70,6 +71,11 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
   if (!entity) {
     notFound();
   }
+
+  // Content enhancement disabled for performance
+  // Links are pre-generated in JSON files and synced to database
+  // const enhancedEntity = await enhanceEntityContent(entity);
+  const enhancedEntity = entity;
 
   // Generate complete schema.org stack (5 schemas):
   // 1. Primary schema (varies by category: MedicalRiskEstimator, SoftwareApplication, Article)
@@ -90,9 +96,9 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
         />
       ))}
 
-      {/* Pass slug to existing client component for backward compatibility */}
-      {/* TODO: Refactor ResourceDetailClient to accept entity prop to avoid double fetch */}
-      <ResourceDetailClient slug={slug} />
+      {/* Pass enhanced entity to client component for rendering */}
+      {/* Entity names are automatically linked inline via {link:} syntax */}
+      <ResourceDetailClient entity={enhancedEntity} />
     </>
   );
 }

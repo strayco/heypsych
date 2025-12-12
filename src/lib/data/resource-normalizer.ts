@@ -33,10 +33,8 @@ function normalizeLegacyResource(content: any) {
 }
 
 export function normalizeResource(content: unknown) {
-  console.log("Normalizing content for:", (content as any)?.slug);
   try {
     const parsed = AnyResourceZ.parse(normalizeLegacyResource(content));
-    console.log("Schema validation passed for:", parsed.slug);
 
     parsed.name = String(parsed.name ?? "");
     if (parsed.description != null) parsed.description = String(parsed.description);

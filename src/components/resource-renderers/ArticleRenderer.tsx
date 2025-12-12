@@ -1,8 +1,9 @@
 // src/components/resource-renderers/ArticleRenderer.tsx
 import React from "react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { FileText, Clock, User, ExternalLink } from "lucide-react";
 import { SEOMeta, SectionList, ReferencesTable, AutoFields } from "./shared";
 import { ParsedContent } from "@/components/ui/parsed-content";
@@ -10,6 +11,7 @@ import type { ResourceRendererProps } from "./index";
 
 export function ArticleRenderer({ resource }: ResourceRendererProps) {
   const data = resource as any;
+
   const bodyBlocks = Array.isArray(data.body)
     ? data.body
     : Array.isArray(data.content?.body)
@@ -81,15 +83,20 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
           {data.reading_time && (
             <div className="flex items-center gap-2 text-sm text-gray-900">
               <Clock className="h-4 w-4" />
-              <span>{data.reading_time} read</span>
+              <span>{data.reading_time}</span>
             </div>
           )}
-          {data.tags && (
+          {data.validated_tags && Array.isArray(data.validated_tags) && data.validated_tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              {data.tags.map((tag: string, i: number) => (
-                <Badge key={i} variant="outline">
-                  {tag}
-                </Badge>
+              {data.validated_tags.map((tag: any, i: number) => (
+                <Link key={i} href={tag.route}>
+                  <Badge
+                    variant="outline"
+                    className="cursor-pointer transition-colors hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700"
+                  >
+                    {tag.text}
+                  </Badge>
+                </Link>
               ))}
             </div>
           )}
@@ -104,6 +111,10 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
                 Read Full Article <ExternalLink className="ml-2 h-4 w-4" />
               </a>
             </Button>
+          )}
+          {/* Fallback message if no metadata is present */}
+          {!data.author && !data.reading_time && (!data.validated_tags || data.validated_tags.length === 0) && !data.external_url && (
+            <p className="text-sm text-gray-500">Article metadata loading...</p>
           )}
         </CardContent>
       </Card>

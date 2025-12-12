@@ -127,7 +127,7 @@ export function generateEntitySitemapUrls(
   const opts = { ...DEFAULT_OPTIONS, ...options };
 
   return entities.map((entity) => {
-    const config = getSitemapConfigForEntity(entity.type);
+    const config = getSitemapConfigForEntity(entity.type || 'treatment');
     const url: SitemapUrl = {
       loc: `${opts.baseUrl}${pathPrefix}/${entity.slug}`,
     };

@@ -160,13 +160,35 @@ export interface Citation {
 }
 
 /**
+ * Raw editorial metadata as stored in JSON files
+ * Uses ID-based references for reviewers/authors
+ */
+export interface RawEditorialMetadata {
+  /** Author ID (e.g., "sarah-mitchell") */
+  authorId?: string;
+
+  /** Medical reviewer IDs (e.g., ["john-lee-md"]) */
+  medicalReviewerIds?: string[];
+
+  /** Review board status (e.g., "official") */
+  reviewBoard?: 'official' | 'pending' | 'none';
+
+  /** Last reviewed date (ISO 8601) */
+  lastReviewed?: string;
+
+  /** Last updated date (ISO 8601) */
+  lastUpdated?: string;
+}
+
+/**
  * Complete editorial metadata for an entity
+ * Contains resolved full objects (not IDs)
  */
 export interface EditorialMetadata {
-  /** Content author */
+  /** Content author (resolved from authorId) */
   author?: AuthorInfo;
 
-  /** Medical reviewer (required for clinical content) */
+  /** Medical reviewer (resolved from medicalReviewerIds) */
   medicalReviewer?: MedicalReviewerInfo;
 
   /** Editorial dates */
@@ -189,6 +211,22 @@ export interface EditorialMetadata {
 
   /** Editorial notes (internal, not displayed) */
   internalNotes?: string;
+
+  // Preserved raw fields for backwards compatibility
+  /** Raw reviewer IDs from JSON */
+  medicalReviewerIds?: string[];
+  
+  /** Raw author ID from JSON */
+  authorId?: string;
+  
+  /** Review board status */
+  reviewBoard?: 'official' | 'pending' | 'none';
+  
+  /** Last reviewed date (ISO 8601) */
+  lastReviewed?: string;
+  
+  /** Last updated date (ISO 8601) */
+  lastUpdated?: string;
 }
 
 /**

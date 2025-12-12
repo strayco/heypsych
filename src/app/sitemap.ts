@@ -259,9 +259,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // TODO: Add dynamic routes from database
-  // Uncomment when ready to fetch from Supabase:
-  /*
+  // Fetch dynamic routes from database
   try {
     const { supabase } = await import("@/lib/config/database");
 
@@ -270,21 +268,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .from("entities")
       .select("slug, updated_at")
       .eq("type", "condition")
-      .eq("status", "published");
+      .eq("status", "active")
+      .order("slug");
 
     // Fetch all published treatments
     const { data: treatments } = await supabase
       .from("entities")
       .select("slug, updated_at")
-      .eq("type", "treatment")
-      .eq("status", "published");
+      .in("type", ["medication", "therapy", "treatment", "interventional", "investigational", "alternative", "supplement"])
+      .eq("status", "active")
+      .order("slug");
 
-    // Fetch all published resources
-    const { data: resources } = await supabase
+    // Fetch digital tools specifically (PHASE 1.1: Digital Tools Sitemap)
+    const { data: digitalTools } = await supabase
       .from("entities")
       .select("slug, updated_at")
       .eq("type", "resource")
-      .eq("status", "published");
+      .eq("status", "active")
+      .eq("metadata->>category", "digital-tools")
+      .order("slug");
+
+    // Fetch other resources (assessments, articles, etc.)
+    const { data: otherResources } = await supabase
+      .from("entities")
+      .select("slug, updated_at")
+      .eq("type", "resource")
+      .eq("status", "active")
+      .neq("metadata->>category", "digital-tools")
+      .order("slug");
 
     // Add dynamic condition pages
     if (conditions) {
@@ -310,9 +321,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     }
 
-    // Add dynamic resource pages
-    if (resources) {
-      resources.forEach((resource) => {
+    // Add digital tool pages (PHASE 1.1: Higher priority for tools)
+    if (digitalTools) {
+      digitalTools.forEach((tool) => {
+        staticPages.push({
+          url: `${baseUrl}/resources/${tool.slug}`,
+          lastModified: new Date(tool.updated_at),
+          changeFrequency: "monthly",
+          priority: 0.7, // Increased from 0.6 to 0.7 for digital tools
+        });
+      });
+    }
+
+    // Add other resource pages
+    if (otherResources) {
+      otherResources.forEach((resource) => {
         staticPages.push({
           url: `${baseUrl}/resources/${resource.slug}`,
           lastModified: new Date(resource.updated_at),
@@ -321,11 +344,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
       });
     }
+
+    console.log(`📊 Sitemap generated: ${conditions?.length || 0} conditions, ${treatments?.length || 0} treatments, ${digitalTools?.length || 0} digital tools, ${otherResources?.length || 0} other resources`);
   } catch (error) {
     console.error("Error fetching dynamic routes for sitemap:", error);
     // Continue with static pages only
   }
-  */
 
   return staticPages;
 }

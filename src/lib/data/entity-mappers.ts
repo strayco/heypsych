@@ -1,6 +1,7 @@
 // Entity mapping utilities - centralizes entity normalization logic
 import type { Entity, SchemaName, EntityType } from "@/lib/types/database";
-import type { EditorialMetadata } from "@/lib/types/editorial";
+import type { EditorialMetadata, EditorialDates } from "@/lib/types/editorial";
+import { EditorialService } from "./editorial-service";
 
 type SchemaConfig = {
   icon: string;
@@ -20,6 +21,34 @@ const SCHEMA_CONFIG: Record<SchemaName, SchemaConfig> = {
   resource: { icon: "book", color: "slate", display: "Resource" },
   provider: { icon: "user", color: "gray", display: "Provider" },
 };
+
+/**
+ * Map category path to schema name
+ * SINGLE SOURCE OF TRUTH - imported by entity-service.ts and use-entities.ts
+ * 
+ * @param category - Category path like "medications/antidepressants"
+ * @returns SchemaName for the category
+ */
+export function categoryToSchemaName(category?: string | null): SchemaName {
+  if (!category) return "treatment";
+  const first = category.split("/")[0];
+  switch (first) {
+    case "medications":
+      return "medication";
+    case "interventional":
+      return "interventional";
+    case "investigational":
+      return "investigational";
+    case "alternative":
+      return "alternative";
+    case "therapy":
+      return "therapy";
+    case "supplements":
+      return "supplement";
+    default:
+      return "treatment";
+  }
+}
 
 // Comprehensive medication type mapping
 export const TREATMENT_TYPE_MAP: Record<string, string[]> = {
@@ -84,6 +113,8 @@ function buildEntitySchema(schemaName: SchemaName) {
  * Normalize stored JSON so consumers always get the actual entity payload.
  * Some legacy rows store the entire file (with a nested `content` object);
  * peel that layer off so downstream UI can read `description`, `symptoms`, etc.
+ *
+ * IMPORTANT: Preserves top-level fields (like `author`, `pillar`) when unwrapping
  */
 export function normalizeEntityContent(content: any): Record<string, any> {
   if (!content || typeof content !== "object") {
@@ -97,16 +128,37 @@ export function normalizeEntityContent(content: any): Record<string, any> {
     typeof content.content === "object" &&
     !Array.isArray(content.content)
   ) {
-    return content.content;
+    // Unwrap the nested content, but preserve top-level fields
+    const { content: nestedContent, ...topLevelFields } = content;
+
+    // Merge: nested content takes precedence, but preserve unique top-level fields
+    return {
+      ...topLevelFields,      // author, pillar, etc.
+      ...nestedContent,       // sections, conclusion, introduction
+    };
   }
 
   return content;
 }
 
 /**
- * Extract editorial metadata from content or metadata fields
+ * Extract and resolve editorial metadata from content or metadata fields
+ * 
+ * This function:
+ * 1. Extracts raw editorial data from content.editorial or metadata.editorial
+ * 2. Resolves medicalReviewerIds to full MedicalReviewerInfo objects
+ * 3. Resolves authorId to full AuthorInfo objects
+ * 4. Builds EditorialDates from lastReviewed/lastUpdated fields
+ * 
+ * @param content - Entity content object
+ * @param metadata - Entity metadata object
+ * @param entityTimestamps - Entity created_at/updated_at for fallback dates
  */
-function extractEditorialMetadata(content: any, metadata: any): EditorialMetadata | undefined {
+function extractEditorialMetadata(
+  content: any, 
+  metadata: any, 
+  entityTimestamps?: { created_at?: string; updated_at?: string }
+): EditorialMetadata | undefined {
   // Check for editorial data in content.editorial
   const contentEditorial = content?.editorial;
 
@@ -114,14 +166,61 @@ function extractEditorialMetadata(content: any, metadata: any): EditorialMetadat
   const metadataEditorial = metadata?.editorial;
 
   // Merge both sources (content takes precedence)
-  const editorial = { ...metadataEditorial, ...contentEditorial };
+  const rawEditorial = { ...metadataEditorial, ...contentEditorial };
 
   // Return undefined if no editorial data
-  if (!editorial || Object.keys(editorial).length === 0) {
+  if (!rawEditorial || Object.keys(rawEditorial).length === 0) {
     return undefined;
   }
 
-  return editorial as EditorialMetadata;
+  // Build resolved editorial metadata
+  const editorial: EditorialMetadata = {
+    // Preserve raw fields
+    medicalReviewerIds: rawEditorial.medicalReviewerIds,
+    authorId: rawEditorial.authorId,
+    reviewBoard: rawEditorial.reviewBoard,
+    lastReviewed: rawEditorial.lastReviewed,
+    lastUpdated: rawEditorial.lastUpdated,
+  };
+
+  // Resolve medicalReviewerIds to full MedicalReviewerInfo
+  if (rawEditorial.medicalReviewerIds && Array.isArray(rawEditorial.medicalReviewerIds)) {
+    const reviewer = EditorialService.getFirstReviewer(rawEditorial.medicalReviewerIds);
+    if (reviewer) {
+      editorial.medicalReviewer = reviewer;
+    }
+  }
+
+  // Resolve authorId to full AuthorInfo
+  if (rawEditorial.authorId) {
+    const author = EditorialService.getAuthorById(rawEditorial.authorId);
+    if (author) {
+      editorial.author = author;
+    }
+  }
+
+  // Build EditorialDates from available date fields
+  const lastReviewed = rawEditorial.lastReviewed || rawEditorial.lastUpdated || entityTimestamps?.updated_at;
+  const lastUpdated = rawEditorial.lastUpdated || entityTimestamps?.updated_at;
+  const published = entityTimestamps?.created_at;
+
+  if (lastReviewed || lastUpdated || published) {
+    editorial.dates = {
+      published: published || lastUpdated || new Date().toISOString(),
+      lastUpdated: lastUpdated || new Date().toISOString(),
+      lastMedicallyReviewed: lastReviewed || lastUpdated || new Date().toISOString(),
+    };
+  }
+
+  // Pass through any other fields
+  if (rawEditorial.reviewHistory) editorial.reviewHistory = rawEditorial.reviewHistory;
+  if (rawEditorial.citations) editorial.citations = rawEditorial.citations;
+  if (rawEditorial.customDisclaimer) editorial.customDisclaimer = rawEditorial.customDisclaimer;
+  if (rawEditorial.evidenceLevel) editorial.evidenceLevel = rawEditorial.evidenceLevel;
+  if (rawEditorial.qualityRating) editorial.qualityRating = rawEditorial.qualityRating;
+  if (rawEditorial.internalNotes) editorial.internalNotes = rawEditorial.internalNotes;
+
+  return editorial;
 }
 
 /**
@@ -184,6 +283,12 @@ function extractTags(content: any, metadata: any): string[] | undefined {
 export function mapRowToEntity(row: any, schemaName: SchemaName): Entity {
   const normalizedContent = normalizeEntityContent(row.content);
 
+  // Extract timestamps for editorial date fallbacks
+  const entityTimestamps = {
+    created_at: row.created_at,
+    updated_at: row.updated_at,
+  };
+
   return {
     id: row.id,
     schema_id: `schema-${schemaName}`,
@@ -200,8 +305,8 @@ export function mapRowToEntity(row: any, schemaName: SchemaName): Entity {
     updated_by: row.updated_by,
     schema: buildEntitySchema(schemaName),
 
-    // NEW: E-A-T and SEO fields
-    editorial: extractEditorialMetadata(normalizedContent, row.metadata),
+    // E-A-T and SEO fields (with resolved reviewer/author objects)
+    editorial: extractEditorialMetadata(normalizedContent, row.metadata, entityTimestamps),
     seo: extractSEOMetadata(normalizedContent, row.metadata),
     type: extractEntityType(schemaName, normalizedContent, row.metadata),
     tags: extractTags(normalizedContent, row.metadata),

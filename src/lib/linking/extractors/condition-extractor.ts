@@ -11,269 +11,205 @@
 import type { Entity } from '@/lib/types/database';
 import type { LinkExtractor, CandidateLink } from '../types';
 import { getLinkTypePriority } from '../config';
-import { parseLinkSyntax, slugify, matchEntityByName } from '../utils';
+import { parseEntityNames, generateValidatedLinks, parseLinkSyntax } from '../utils';
 
 export class ConditionLinkExtractor implements LinkExtractor {
   entityType = 'condition' as const;
   id = 'condition-extractor';
 
   async extract(entity: Entity, allEntities: Entity[] = []): Promise<CandidateLink[]> {
-    const links: CandidateLink[] = [];
+    const links: CandidateLink[]  = [];
 
-    // Extract treatment links
-    links.push(...this.extractTreatmentLinks(entity, allEntities));
+    // Extract treatment links (now async with validation)
+    const treatmentLinks = await this.extractTreatmentLinks(entity, allEntities);
+    links.push(...treatmentLinks);
 
-    // Extract related condition links
-    links.push(...this.extractRelatedConditionLinks(entity, allEntities));
+    // Extract related condition links (now async with validation)
+    const relatedLinks = await this.extractRelatedConditionLinks(entity, allEntities);
+    links.push(...relatedLinks);
 
-    // Extract comorbidity links
-    links.push(...this.extractComorbidityLinks(entity, allEntities));
+    // Extract comorbidity links (now async with validation)
+    const comorbidityLinks = await this.extractComorbidityLinks(entity, allEntities);
+    links.push(...comorbidityLinks);
 
-    // Extract assessment links
-    links.push(...this.extractAssessmentLinks(entity, allEntities));
+    // Extract assessment links (now async with validation)
+    const assessmentLinks = await this.extractAssessmentLinks(entity, allEntities);
+    links.push(...assessmentLinks);
 
     return links;
   }
 
   /**
    * Extract treatment links from treatment_approaches
+   * Parses complex medication strings and validates each entity exists
    */
-  private extractTreatmentLinks(entity: Entity, allEntities: Entity[]): CandidateLink[] {
+  private async extractTreatmentLinks(entity: Entity, allEntities: Entity[]): Promise<CandidateLink[]> {
     const links: CandidateLink[] = [];
     const data = entity.data || {};
 
     // Medications
     const medications = data.treatment_approaches?.medications || [];
-    medications.forEach((med: any, index: number) => {
-      const medName = this.extractName(med);
-      if (!medName) return;
+    for (const med of medications) {
+      const medText = this.extractName(med);
+      if (!medText) continue;
 
-      const targetEntity = matchEntityByName(medName, allEntities, ['medication', 'treatment']);
-      if (!targetEntity) return;
+      // Parse to extract individual medication names
+      const medNames = parseEntityNames(medText);
 
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: targetEntity.type || 'medication',
+      // Generate validated links (only for entities that exist)
+      const validatedLinks = await generateValidatedLinks({
+        sourceEntity: entity,
+        targetNames: medNames,
+        targetType: 'medication',
         linkType: 'condition_to_treatment',
-        context: `treatment_approaches.medications[${index}]`,
+        contextPrefix: 'treatment_approaches.medications',
         priority: getLinkTypePriority('condition_to_treatment'),
-        anchorOptions: this.generateAnchorOptions(medName, targetEntity),
-        metadata: {
-          category: 'medication',
-          extractorId: this.id,
-        },
+        extractorId: this.id,
+        category: 'medication',
       });
-    });
+
+      links.push(...validatedLinks);
+    }
 
     // Psychotherapy
     const therapies = data.treatment_approaches?.psychotherapy || [];
-    therapies.forEach((therapy: any, index: number) => {
-      const therapyName = this.extractName(therapy);
-      if (!therapyName) return;
+    for (const therapy of therapies) {
+      const therapyText = this.extractName(therapy);
+      if (!therapyText) continue;
 
-      const targetEntity = matchEntityByName(therapyName, allEntities, ['therapy', 'treatment']);
-      if (!targetEntity) return;
+      // Parse therapy names (handles lists like "CBT, DBT, ACT")
+      const therapyNames = parseEntityNames(therapyText);
 
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: targetEntity.type || 'therapy',
+      const validatedLinks = await generateValidatedLinks({
+        sourceEntity: entity,
+        targetNames: therapyNames,
+        targetType: 'therapy',
         linkType: 'condition_to_treatment',
-        context: `treatment_approaches.psychotherapy[${index}]`,
+        contextPrefix: 'treatment_approaches.psychotherapy',
         priority: getLinkTypePriority('condition_to_treatment'),
-        anchorOptions: this.generateAnchorOptions(therapyName, targetEntity),
-        metadata: {
-          category: 'therapy',
-          extractorId: this.id,
-        },
+        extractorId: this.id,
+        category: 'therapy',
       });
-    });
+
+      links.push(...validatedLinks);
+    }
 
     // Interventional treatments
     const interventions = data.treatment_approaches?.interventional || [];
-    interventions.forEach((intervention: any, index: number) => {
-      const name = this.extractName(intervention);
-      if (!name) return;
+    for (const intervention of interventions) {
+      const interventionText = this.extractName(intervention);
+      if (!interventionText) continue;
 
-      const targetEntity = matchEntityByName(name, allEntities, [
-        'interventional',
-        'treatment',
-      ]);
-      if (!targetEntity) return;
+      const interventionNames = parseEntityNames(interventionText);
 
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: targetEntity.type || 'interventional',
+      const validatedLinks = await generateValidatedLinks({
+        sourceEntity: entity,
+        targetNames: interventionNames,
+        targetType: 'interventional',
         linkType: 'condition_to_treatment',
-        context: `treatment_approaches.interventional[${index}]`,
+        contextPrefix: 'treatment_approaches.interventional',
         priority: getLinkTypePriority('condition_to_treatment'),
-        anchorOptions: this.generateAnchorOptions(name, targetEntity),
-        metadata: {
-          category: 'interventional',
-          extractorId: this.id,
-        },
+        extractorId: this.id,
+        category: 'interventional',
       });
-    });
+
+      links.push(...validatedLinks);
+    }
 
     return links;
   }
 
   /**
    * Extract related condition links
+   * Validates each condition exists before creating link
    */
-  private extractRelatedConditionLinks(entity: Entity, allEntities: Entity[]): CandidateLink[] {
-    const links: CandidateLink[] = [];
+  private async extractRelatedConditionLinks(entity: Entity, allEntities: Entity[]): Promise<CandidateLink[]> {
     const data = entity.data || {};
-
     const relatedConditions = data.related_conditions || [];
-    relatedConditions.forEach((related: any, index: number) => {
-      const name = this.extractName(related);
-      if (!name) return;
 
-      const targetEntity = matchEntityByName(name, allEntities, ['condition']);
-      if (!targetEntity) return;
+    const conditionNames = relatedConditions
+      .map((related: any) => this.extractName(related))
+      .filter((name: string | null): name is string => Boolean(name));
 
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: 'condition',
-        linkType: 'condition_to_related_condition',
-        context: `related_conditions[${index}]`,
-        priority: getLinkTypePriority('condition_to_related_condition'),
-        anchorOptions: this.generateAnchorOptions(name, targetEntity),
-        metadata: {
-          extractorId: this.id,
-        },
-      });
+    return await generateValidatedLinks({
+      sourceEntity: entity,
+      targetNames: conditionNames,
+      targetType: 'condition',
+      linkType: 'condition_to_related_condition',
+      contextPrefix: 'related_conditions',
+      priority: getLinkTypePriority('condition_to_related_condition'),
+      extractorId: this.id,
     });
-
-    return links;
   }
 
   /**
    * Extract comorbidity links
+   * Validates each comorbid condition exists before creating link
    */
-  private extractComorbidityLinks(entity: Entity, allEntities: Entity[]): CandidateLink[] {
-    const links: CandidateLink[] = [];
+  private async extractComorbidityLinks(entity: Entity, allEntities: Entity[]): Promise<CandidateLink[]> {
     const data = entity.data || {};
-
     const comorbidities = data.comorbidities || [];
-    comorbidities.forEach((comorbidity: any, index: number) => {
-      const name = this.extractName(comorbidity);
-      if (!name) return;
 
-      const targetEntity = matchEntityByName(name, allEntities, ['condition']);
-      if (!targetEntity) return;
+    const comorbidityNames = comorbidities
+      .map((comorbidity: any) => this.extractName(comorbidity))
+      .filter((name: string | null): name is string => Boolean(name));
 
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: 'condition',
-        linkType: 'condition_to_comorbidity',
-        context: `comorbidities[${index}]`,
-        priority: getLinkTypePriority('condition_to_comorbidity'),
-        anchorOptions: this.generateAnchorOptions(name, targetEntity),
-        metadata: {
-          extractorId: this.id,
-        },
-      });
+    return await generateValidatedLinks({
+      sourceEntity: entity,
+      targetNames: comorbidityNames,
+      targetType: 'condition',
+      linkType: 'condition_to_comorbidity',
+      contextPrefix: 'comorbidities',
+      priority: getLinkTypePriority('condition_to_comorbidity'),
+      extractorId: this.id,
     });
-
-    return links;
   }
 
   /**
    * Extract assessment/screener links
+   * Validates each assessment exists before creating link
    */
-  private extractAssessmentLinks(entity: Entity, allEntities: Entity[]): CandidateLink[] {
+  private async extractAssessmentLinks(entity: Entity, allEntities: Entity[]): Promise<CandidateLink[]> {
     const links: CandidateLink[] = [];
     const data = entity.data || {};
 
     // From evaluation.screening_tools
     const screeningTools = data.evaluation?.screening_tools || [];
-    screeningTools.forEach((tool: any, index: number) => {
-      const name = this.extractName(tool);
-      if (!name) return;
+    const screeningToolNames = screeningTools
+      .map((tool: any) => this.extractName(tool))
+      .filter((name: string | null): name is string => Boolean(name));
 
-      const targetEntity = matchEntityByName(name, allEntities, ['resource']);
-      if (!targetEntity) return;
-
-      // Verify it's actually an assessment
-      if (
-        targetEntity.data?.category !== 'assessments-screeners' &&
-        targetEntity.metadata?.category !== 'assessments-screeners'
-      ) {
-        return;
-      }
-
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: 'resource',
-        linkType: 'condition_to_assessment',
-        context: `evaluation.screening_tools[${index}]`,
-        priority: getLinkTypePriority('condition_to_assessment'),
-        anchorOptions: this.generateAnchorOptions(name, targetEntity),
-        metadata: {
-          category: 'assessments-screeners',
-          extractorId: this.id,
-        },
-      });
+    const screeningLinks = await generateValidatedLinks({
+      sourceEntity: entity,
+      targetNames: screeningToolNames,
+      targetType: 'resource',
+      linkType: 'condition_to_assessment',
+      contextPrefix: 'evaluation.screening_tools',
+      priority: getLinkTypePriority('condition_to_assessment'),
+      extractorId: this.id,
+      category: 'assessments-screeners',
     });
+
+    links.push(...screeningLinks);
 
     // From dedicated assessments array if it exists
     const assessments = data.assessments || [];
-    assessments.forEach((assessment: any, index: number) => {
-      const name = this.extractName(assessment);
-      if (!name) return;
+    const assessmentNames = assessments
+      .map((assessment: any) => this.extractName(assessment))
+      .filter((name: string | null): name is string => Boolean(name));
 
-      const targetEntity = matchEntityByName(name, allEntities, ['resource']);
-      if (!targetEntity) return;
-
-      if (
-        targetEntity.data?.category !== 'assessments-screeners' &&
-        targetEntity.metadata?.category !== 'assessments-screeners'
-      ) {
-        return;
-      }
-
-      links.push({
-        sourceId: entity.id,
-        sourceSlug: entity.slug,
-        sourceType: 'condition',
-        targetId: targetEntity.id,
-        targetSlug: targetEntity.slug,
-        targetType: 'resource',
-        linkType: 'condition_to_assessment',
-        context: `assessments[${index}]`,
-        priority: getLinkTypePriority('condition_to_assessment'),
-        anchorOptions: this.generateAnchorOptions(name, targetEntity),
-        metadata: {
-          category: 'assessments-screeners',
-          extractorId: this.id,
-        },
-      });
+    const assessmentLinks = await generateValidatedLinks({
+      sourceEntity: entity,
+      targetNames: assessmentNames,
+      targetType: 'resource',
+      linkType: 'condition_to_assessment',
+      contextPrefix: 'assessments',
+      priority: getLinkTypePriority('condition_to_assessment'),
+      extractorId: this.id,
+      category: 'assessments-screeners',
     });
+
+    links.push(...assessmentLinks);
 
     return links;
   }

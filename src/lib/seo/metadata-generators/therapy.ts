@@ -83,7 +83,7 @@ export class TherapyMetadataGenerator extends MetadataGenerator {
   private extractPrimaryConditions(entity: Entity): string {
     // From clinical_metadata.primary_indications
     const indications = entity.data?.primary_indications ||
-                       entity.clinical_metadata?.primary_indications;
+                       entity.metadata?.clinical?.primary_indications;
 
     if (Array.isArray(indications) && indications.length > 0) {
       if (indications.length === 1) {
@@ -102,7 +102,7 @@ export class TherapyMetadataGenerator extends MetadataGenerator {
 
     // From conditions_treated
     const conditions = entity.data?.conditions_treated ||
-                      entity.clinical_metadata?.conditions_treated;
+                      entity.metadata?.clinical?.conditions_treated;
 
     if (Array.isArray(conditions) && conditions.length > 0) {
       return this.cleanLinkSyntax(conditions[0]).toLowerCase();
@@ -126,7 +126,7 @@ export class TherapyMetadataGenerator extends MetadataGenerator {
 
     // Conditions treated
     const conditions = entity.data?.conditions_treated ||
-                      entity.clinical_metadata?.conditions_treated;
+                      entity.metadata?.clinical?.conditions_treated;
 
     if (Array.isArray(conditions)) {
       conditions.slice(0, 3).forEach((condition: string) => {
