@@ -12,19 +12,8 @@ type EntityRow = {
   metadata?: Record<string, unknown> | null;
 };
 
-async function fetchResourceFromApi(slug: string) {
-  try {
-    const response = await fetch(`/api/resources/${slug}`);
-    if (response.ok) {
-      const resourceData = await response.json();
-      console.log(`✅ Found ${slug} via API`);
-      return normalizeResource(resourceData);
-    }
-  } catch (error) {
-    console.error("API fallback failed:", error);
-  }
-  return null;
-}
+// REMOVED: No API fallback allowed
+// Resources must exist in database
 
 const hasKnowledgeHubContent = (resource: any): boolean => {
   if (!resource || typeof resource !== "object") return false;
@@ -64,26 +53,10 @@ export function useResource(slug: string) {
           if (data.slug && !mergedContent.slug) {
             mergedContent.slug = data.slug;
           }
-          const normalized = normalizeResource(mergedContent);
-
-          if (
-            normalized.metadata?.category === "knowledge-hub" &&
-            !hasKnowledgeHubContent(normalized)
-          ) {
-            console.log(
-              `ℹ️ ${slug} missing Knowledge Hub body in DB, falling back to JSON source`
-            );
-            const apiResource = await fetchResourceFromApi(slug);
-            if (apiResource) return apiResource;
-          }
-
-          return normalized;
+          return normalizeResource(mergedContent);
         }
 
-        console.log(`🔍 Resource '${slug}' not found in database, trying API fallback...`);
-        const apiResource = await fetchResourceFromApi(slug);
-        if (apiResource) return apiResource;
-        console.log(`❌ Resource '${slug}' not found in API either`);
+        console.log(`❌ Resource '${slug}' not found in database`);
         return null;
       } catch (err) {
         console.error("Error fetching resource:", err);

@@ -265,7 +265,7 @@ export class SEOMetricsEngine {
       if (metadata.title) withTitle++;
       if (metadata.description) withDescription++;
       if (metadata.openGraph?.images) withOgImage++;
-      if (metadata.twitter?.card) withTwitterCard++;
+      if (metadata.twitter) withTwitterCard++;
       if (metadata.alternates?.canonical) withCanonical++;
       if (metadata.keywords) withKeywords++;
     }

@@ -25,13 +25,19 @@
 
 import type { Entity, EntityType } from '@/lib/types/database';
 import { SITE_CONFIG, SCHEMA_CONFIG } from './config';
+import { getEntityType, getEntityPath } from '@/lib/utils/entity-type';
 import { buildMedicalConditionSchema } from './schema-builders/medical-condition';
 import { buildDrugSchema } from './schema-builders/drug';
 import { buildMedicalTherapySchema } from './schema-builders/medical-therapy';
+import { buildDigitalToolSchema } from './schema-builders/digital-tool'; // PHASE 1.2: Digital tool schema
 import { buildAuthorSchema, buildMedicalReviewerSchema } from './schema-builders/person';
 import { buildBreadcrumbSchema } from './schema-builders/breadcrumb';
 import { buildFAQPageSchema } from './schema-builders/faq';
 import { buildMedicalWebPageSchema } from './schema-builders/medical-webpage';
+import {
+  buildMedicalReviewBoardSchema,
+  buildDefaultReviewBoardPersonSchema
+} from './schema-builders/organization';
 import { hasAuthor, hasMedicalReviewer } from '@/lib/types/editorial';
 
 /**
@@ -70,10 +76,17 @@ export class SchemaFactory {
     const schemas: Record<string, any>[] = [];
     const pageUrl = options.pageUrl || this.getPageUrl(entity);
 
-    // 1. Primary entity schema
+    // 1. Primary entity schema (auto-generated from content)
     const primarySchema = this.generatePrimarySchema(entity);
-    if (primarySchema && SCHEMA_CONFIG.enabled.medicalCondition) {
-      schemas.push(primarySchema);
+
+    if (primarySchema) {
+      // Check type-specific enable flag
+      const schemaType = primarySchema['@type'] as string;
+      const isEnabled = this.isSchemaTypeEnabled(schemaType);
+
+      if (isEnabled) {
+        schemas.push(primarySchema);
+      }
     }
 
     // 2. MedicalWebPage (universal for all medical content)
@@ -86,13 +99,16 @@ export class SchemaFactory {
       schemas.push(buildBreadcrumbSchema(entity));
     }
 
-    // 4. Person schemas (author + medical reviewer)
+    // 4. Organization schemas (Medical Review Board)
+    schemas.push(buildMedicalReviewBoardSchema());
+
+    // 5. Person schemas (author + medical reviewer OR default board)
     if (SCHEMA_CONFIG.enabled.person) {
       const personSchemas = this.generatePersonSchemas(entity);
       schemas.push(...personSchemas);
     }
 
-    // 5. FAQPage (if FAQs available)
+    // 6. FAQPage (if FAQs available)
     if (!options.skipFAQ && SCHEMA_CONFIG.enabled.faqPage) {
       const faqSchema = buildFAQPageSchema(entity);
       if (faqSchema) {
@@ -141,6 +157,7 @@ export class SchemaFactory {
 
   /**
    * Generate Person schemas for author and medical reviewer
+   * CRITICAL: Always generates at least default Medical Review Board Person schema
    */
   private static generatePersonSchemas(entity: Entity): Record<string, any>[] {
     const schemas: Record<string, any>[] = [];
@@ -154,13 +171,17 @@ export class SchemaFactory {
       }
     }
 
-    // Medical reviewer schema
+    // Medical reviewer schema (individual OR default board)
     if (hasMedicalReviewer(entity)) {
       try {
         schemas.push(buildMedicalReviewerSchema(entity.editorial!.medicalReviewer!));
       } catch (error) {
         console.error('Error generating reviewer schema:', error);
       }
+    } else {
+      // CRITICAL: Always generate default Medical Review Board Person schema
+      // when no individual reviewer is specified (E-A-T compliance)
+      schemas.push(buildDefaultReviewBoardPersonSchema());
     }
 
     return schemas;
@@ -179,19 +200,13 @@ export class SchemaFactory {
           '@type': 'MedicalRiskEstimator',
           name: entity.name,
           description: entity.description || entity.data?.description,
-          url: `${SITE_CONFIG.url}/resources/assessments-screeners/${entity.slug}`,
+          url: `${SITE_CONFIG.url}/resources/${entity.slug}`,
           estimatesRiskOf: entity.data?.conditions?.[0] || 'Mental health condition'
         };
 
       case 'digital-tools':
-        return {
-          '@context': 'https://schema.org',
-          '@type': 'SoftwareApplication',
-          name: entity.name,
-          description: entity.description || entity.data?.description,
-          applicationCategory: 'HealthApplication',
-          operatingSystem: entity.data?.platforms?.join(', ')
-        };
+        // PHASE 1.2: Use comprehensive SoftwareApplication schema builder
+        return buildDigitalToolSchema(entity);
 
       default:
         return this.generateArticleSchema(entity);
@@ -227,50 +242,54 @@ export class SchemaFactory {
   }
 
   /**
+   * Check if a schema type is enabled in config
+   *
+   * @param schemaType - Schema.org @type value
+   * @returns True if schema type is enabled
+   */
+  private static isSchemaTypeEnabled(schemaType: string): boolean {
+    switch (schemaType) {
+      case 'MedicalCondition':
+        return SCHEMA_CONFIG.enabled.medicalCondition;
+      case 'Drug':
+        return SCHEMA_CONFIG.enabled.drug;
+      case 'MedicalTherapy':
+        return SCHEMA_CONFIG.enabled.medicalTherapy;
+      case 'MedicalWebPage':
+        return SCHEMA_CONFIG.enabled.medicalWebPage;
+      case 'BreadcrumbList':
+        return SCHEMA_CONFIG.enabled.breadcrumbList;
+      case 'Person':
+        return SCHEMA_CONFIG.enabled.person;
+      case 'FAQPage':
+        return SCHEMA_CONFIG.enabled.faqPage;
+      case 'MedicalOrganization':
+      case 'Organization':
+        return SCHEMA_CONFIG.enabled.organization;
+      case 'Article':
+      case 'MedicalRiskEstimator':
+      case 'SoftwareApplication':
+        return true; // Always enabled for fallback schemas
+      default:
+        console.warn(`Unknown schema type "${schemaType}", enabling by default`);
+        return true;
+    }
+  }
+
+  /**
    * Determine entity type from entity object
+   * Uses consolidated utility for consistent type determination
    */
   private static determineEntityType(entity: Entity): EntityType {
-    if (entity.type) return entity.type;
-    if (entity.schema?.entity_type) return entity.schema.entity_type as EntityType;
-    if (entity.schema?.schema_name) return entity.schema.schema_name as EntityType;
-    if (entity.data?.kind) return entity.data.kind as EntityType;
-    if (entity.data?.type) return entity.data.type as EntityType;
-
-    return 'treatment'; // Default fallback
+    return getEntityType(entity);
   }
 
   /**
    * Get page URL for entity
+   * Uses consolidated utility for consistent URL generation
    */
   private static getPageUrl(entity: Entity): string {
-    const entityType = this.determineEntityType(entity);
-
-    switch (entityType) {
-      case 'condition':
-        return `${SITE_CONFIG.url}/conditions/${entity.slug}`;
-
-      case 'medication':
-      case 'therapy':
-      case 'treatment':
-      case 'interventional':
-      case 'investigational':
-      case 'alternative':
-      case 'supplement':
-        return `${SITE_CONFIG.url}/treatments/${entity.slug}`;
-
-      case 'resource':
-        const category = entity.data?.category || entity.metadata?.category;
-        if (category === 'assessments-screeners') {
-          return `${SITE_CONFIG.url}/resources/assessments-screeners/${entity.slug}`;
-        }
-        return `${SITE_CONFIG.url}/resources/${entity.slug}`;
-
-      case 'provider':
-        return `${SITE_CONFIG.url}/psychiatrists/${entity.slug}`;
-
-      default:
-        return `${SITE_CONFIG.url}/${entity.slug}`;
-    }
+    return `${SITE_CONFIG.url}${getEntityPath(entity)}`;
   }
 
   /**

@@ -94,6 +94,11 @@ export class ClusterBuilder {
    */
   private filterEntities(entities: Entity[]): Entity[] {
     return entities.filter((entity) => {
+      // Skip entities without a type
+      if (!entity.type) {
+        return false;
+      }
+
       // Exclude by type
       if (this.config.exclude_entity_types.includes(entity.type)) {
         return false;
@@ -410,7 +415,9 @@ export class ClusterBuilder {
     const distribution: Record<string, number> = {};
 
     for (const entity of entities) {
-      distribution[entity.type] = (distribution[entity.type] || 0) + 1;
+      if (entity.type) {
+        distribution[entity.type] = (distribution[entity.type] || 0) + 1;
+      }
     }
 
     return distribution as Record<EntityType, number>;

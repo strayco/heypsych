@@ -27,7 +27,7 @@ export function buildMedicalTherapySchema(entity: Entity): Record<string, any> {
 
   // Contraindications
   const contraindications = entity.data?.contraindications ||
-                           entity.clinical_metadata?.contraindications;
+                           entity.metadata?.clinical?.contraindications;
   builder.addPropertyIfExists('contraindication', contraindications);
 
   // Duration of treatment
@@ -46,7 +46,7 @@ function extractTherapyIndications(entity: Entity): Record<string, any>[] | null
 
   // From clinical_metadata.primary_indications
   const primaryIndications = entity.data?.primary_indications ||
-                            entity.clinical_metadata?.primary_indications;
+                            entity.metadata?.clinical?.primary_indications;
 
   if (Array.isArray(primaryIndications)) {
     primaryIndications.forEach((indication: string) => {
@@ -58,7 +58,7 @@ function extractTherapyIndications(entity: Entity): Record<string, any>[] | null
 
   // From conditions_treated
   const conditions = entity.data?.conditions_treated ||
-                    entity.clinical_metadata?.conditions_treated;
+                    entity.metadata?.clinical?.conditions_treated;
 
   if (Array.isArray(conditions)) {
     conditions.forEach((condition: string) => {

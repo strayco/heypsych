@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -13,6 +14,7 @@ import {
   Smartphone,
   Info,
   Clock,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +22,11 @@ import { Badge } from "@/components/ui/badge";
 import { ParsedContent } from "@/components/ui/parsed-content";
 import { useResource } from "@/lib/hooks/use-resource";
 import { getRenderer } from "@/components/resource-renderers";
+import {
+  AuthorByline,
+  MedicalDisclaimer,
+  ContentTimestamps,
+} from "@/components/eat";
 
 type CategoryKey =
   | "assessments-screeners"
@@ -39,6 +46,63 @@ const CategoryIcon: Record<CategoryKey, React.ElementType> = {
   "digital-tools": Smartphone,
   "knowledge-hub": BookOpen,
 };
+
+type CrossLink = {
+  slug: string;
+  type: 'condition' | 'treatment';
+  display: string;
+};
+
+function CrossLinksSection({ crosslinks }: { crosslinks: CrossLink[] }) {
+  if (!crosslinks || crosslinks.length === 0) return null;
+
+  const conditions = crosslinks.filter(c => c.type === 'condition');
+  const treatments = crosslinks.filter(c => c.type === 'treatment');
+
+  return (
+    <Card className="border-emerald-100 bg-emerald-50/50">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-base text-emerald-900">Related Topics</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        {conditions.length > 0 && (
+          <div>
+            <div className="mb-1 text-xs font-medium text-emerald-700">Conditions</div>
+            <div className="flex flex-wrap gap-2">
+              {conditions.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/conditions/${c.slug}`}
+                  className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-800 transition-colors hover:bg-emerald-200"
+                >
+                  {c.display}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        {treatments.length > 0 && (
+          <div>
+            <div className="mb-1 text-xs font-medium text-emerald-700">Treatments</div>
+            <div className="flex flex-wrap gap-2">
+              {treatments.map((t) => (
+                <Link
+                  key={t.slug}
+                  href={`/treatments/${t.slug}`}
+                  className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200"
+                >
+                  {t.display}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
 
 function ResourceHeader({ resource }: { resource: any }) {
   const categoryKey = resource.metadata?.category as CategoryKey | undefined;
@@ -106,13 +170,18 @@ function ResourceHeader({ resource }: { resource: any }) {
 }
 
 interface ResourceDetailClientProps {
-  slug: string;
+  slug?: string;
+  entity?: any;
 }
 
-export function ResourceDetailClient({ slug }: ResourceDetailClientProps) {
-  const { data: resource, isLoading } = useResource(slug);
+export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps) {
+  // If entity is provided, use it directly (server-side enhanced)
+  // Otherwise, fetch via hook (backward compatibility)
+  // Pass empty string when entity exists to disable the query
+  const { data: fetchedResource, isLoading } = useResource(entity ? "" : (slug || ""));
+  const resource = entity || fetchedResource;
 
-  if (isLoading) {
+  if (!entity && isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="space-y-3 text-center">
@@ -125,8 +194,45 @@ export function ResourceDetailClient({ slug }: ResourceDetailClientProps) {
 
   if (!resource) notFound();
 
-  const categoryKey = resource.metadata?.category;
+  // Normalize entity structure for renderer
+  // Resource is already normalized by server or hook
+  const normalizedResource = {
+    // Flatten server-side entity.data so renderers can read body/sections at the top level
+    ...(resource?.data || {}),
+    ...resource,
+    // Map Knowledge Hub article metadata fields
+    author: resource.author || resource.metadata?.author,
+    reading_time: resource.reading_time || resource.metadata?.read_time,
+    tags: resource.tags || resource.metadata?.topics,
+    // Pass pre-validated tags from server (no client-side validation needed)
+    validated_tags: resource.validated_tags || [],
+    // Cross-links for related entities
+    crosslinks: resource.crosslinks || [],
+    // Conditions for assessments
+    conditions: resource.conditions || [],
+  };
+
+  const categoryKey = normalizedResource.metadata?.category || resource.category;
   const Renderer = getRenderer(categoryKey);
+
+  // Determine if resource needs medical disclaimer (assessments, articles, guides)
+  const needsMedicalDisclaimer = [
+    'assessments-screeners',
+    'articles-blogs',
+    'education-guides',
+    'knowledge-hub'
+  ].includes(categoryKey);
+
+  // Extract editorial metadata
+  const metadata = resource?.metadata || {};
+  const editorial = resource?.editorial || {};
+  const author = editorial.author || metadata.author;
+  const medicalReviewer = editorial.medicalReviewer || metadata.medical_reviewer;
+  const timestamps = {
+    published_date: editorial.dates?.published || metadata.published_date || resource.created_at,
+    last_updated: editorial.dates?.lastUpdated || metadata.last_updated || resource.updated_at,
+    last_reviewed: editorial.dates?.lastMedicallyReviewed || metadata.medical_review?.review_date || resource.updated_at,
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -138,11 +244,37 @@ export function ResourceDetailClient({ slug }: ResourceDetailClientProps) {
             className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Resources
+            Back
           </Button>
         </motion.div>
 
-        <ResourceHeader resource={resource} />
+        <ResourceHeader resource={normalizedResource} />
+
+        {/* Author & Review Information - ALWAYS SHOW for E-A-T compliance */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+        >
+          <AuthorByline
+            author={author}
+            medicalReviewer={medicalReviewer}
+            publishedDate={timestamps.published_date}
+            lastUpdated={timestamps.last_updated}
+            lastReviewed={timestamps.last_reviewed}
+          />
+        </motion.div>
+
+        {/* Cross-links to related conditions/treatments */}
+        {normalizedResource.crosslinks && normalizedResource.crosslinks.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 }}
+          >
+            <CrossLinksSection crosslinks={normalizedResource.crosslinks} />
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -150,8 +282,24 @@ export function ResourceDetailClient({ slug }: ResourceDetailClientProps) {
           transition={{ delay: 0.1 }}
           className="space-y-6"
         >
-          <Renderer resource={resource} />
+          <Renderer resource={normalizedResource} />
         </motion.div>
+
+        {/* Medical Disclaimer for medical resource types */}
+        {needsMedicalDisclaimer && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+          >
+            <MedicalDisclaimer
+              config={{
+                entity_type: categoryKey === 'assessments-screeners' ? 'assessment' : 'resource',
+                prominent: false,
+              }}
+            />
+          </motion.div>
+        )}
       </div>
     </div>
   );

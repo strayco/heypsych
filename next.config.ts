@@ -91,6 +91,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // Mark Node.js built-ins as external for server components
+  // This prevents webpack from trying to bundle them
+  serverExternalPackages: ['fs', 'path'],
+
   eslint: {
     // TODO: Fix 280+ warnings and set to false
     // Temporarily true to allow build during audit
@@ -144,7 +148,14 @@ const nextConfig: NextConfig = {
     const articleRedirects = loadArticleRedirects();
     return [
       ...articleRedirects,
-      // Add additional custom redirects here if needed
+      // SEO: Redirect singular /treatment/ to plural /treatments/
+      {
+        source: "/treatment/:slug",
+        destination: "/treatments/:slug",
+        permanent: true, // 301 redirect
+      },
+      // SEO: Redirect non-www to www (handled at Vercel/DNS level, but documented here)
+      // In production, configure this at the hosting/DNS provider level
     ];
   },
 };

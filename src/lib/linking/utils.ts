@@ -5,7 +5,7 @@
  */
 
 import type { Entity, EntityType } from '@/lib/types/database';
-import type { CandidateLink } from './types';
+import type { CandidateLink, LinkType, LinkPriority } from './types';
 
 /**
  * Parse {link:type:slug} syntax from content
@@ -16,16 +16,31 @@ export function parseLinkSyntax(text: string): {
   slug: string;
   text: string | null;
 } | null {
-  const linkRegex = /\{link:([^:}]+):([^:}]+)(?::([^}]+))?\}/;
-  const match = text.match(linkRegex);
+  // Full format: {link:type:slug:text} or {link:type:slug}
+  const fullLinkRegex = /\{link:([^:}]+):([^:}]+)(?::([^}]+))?\}/;
+  const fullMatch = text.match(fullLinkRegex);
 
-  if (!match) return null;
+  if (fullMatch) {
+    return {
+      type: fullMatch[1],
+      slug: fullMatch[2],
+      text: fullMatch[3] || null,
+    };
+  }
+  
+  // Simple format: {link:slug} - assume condition type
+  const simpleLinkRegex = /\{link:([^:}]+)\}/;
+  const simpleMatch = text.match(simpleLinkRegex);
+  
+  if (simpleMatch) {
+    return {
+      type: 'condition', // Default to condition for simple format
+      slug: simpleMatch[1],
+      text: null,
+    };
+  }
 
-  return {
-    type: match[1],
-    slug: match[2],
-    text: match[3] || null,
-  };
+  return null;
 }
 
 /**
@@ -47,6 +62,14 @@ export function slugify(text: string): string {
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_]+/g, '-')
     .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Normalize condition name by removing abbreviations in parentheses
+ * Example: "Obsessive-Compulsive Disorder (OCD)" -> "Obsessive-Compulsive Disorder"
+ */
+export function normalizeConditionName(text: string): string {
+  return text.replace(/\s*\([^)]+\)\s*/g, '').trim();
 }
 
 /**
@@ -229,7 +252,7 @@ export function extractDrugClass(entity: Entity): string | null {
   return (
     entity.data?.drug_class ||
     entity.data?.medication_class ||
-    entity.clinical_metadata?.drug_class ||
+    entity.metadata?.clinical?.drug_class ||
     null
   );
 }
@@ -325,4 +348,636 @@ export function countLinksByPriority(links: CandidateLink[]): Record<string, num
   }
 
   return counts;
+}
+
+/**
+ * Parse medication/treatment list strings to extract individual entity names
+ * Handles formats like:
+ * - "First-line antidepressants: SSRIs (sertraline, escitalopram, fluoxetine)"
+ * - "sertraline, escitalopram, fluoxetine"
+ * - "Bupropion — energizing, fewer sexual side effects"
+ * - "Cognitive Behavioral Therapy (CBT) — description"
+ * - "Cognitive Behavioral Therapy"
+ * - "Stimulants: Methylphenidate (Concerta), Mixed Amphetamine Salts (Adderall)"
+ * - "Non-stimulants: Atomoxetine (Strattera), Guanfacine, Clonidine"
+ * - "Antidepressants: Bupropion in select cases"
+ */
+export function parseEntityNames(text: string): string[] {
+  if (!text) return [];
+
+  const names: string[] = [];
+
+  // Remove common prefixes/descriptions (including medication class prefixes)
+  // Handle both formats: "Stimulants: ..." and "Stimulants (...)"
+  let cleaned = text
+    .replace(/^(First-line|Second-line|Third-line)[:\s]+/i, '')
+    .trim();
+
+  // Check if it starts with a medication class prefix followed by colon or parenthesis
+  // Examples: "Stimulants: ..." or "Stimulants (...)"
+  let contentToParse = cleaned;
+  // Match medication class prefixes - strip these to get to the actual medication names
+  // Examples: "Stimulants: ...", "FDA-approved for irritability: ...", "ADHD symptoms: ..."
+  const classPrefixMatch = cleaned.match(/^(Stimulants?|Non-stimulants?|Antidepressants?|SSRIs?|SNRIs?|TCAs?|MAOIs?|FDA-approved[^:]*|ADHD symptoms?|Anxiety[^:]*|Mood[^:]*|medications?|therapies?|treatments?)\s*([:\(])/i);
+  
+  if (classPrefixMatch) {
+    const prefix = classPrefixMatch[1];
+    const separator = classPrefixMatch[2];
+    
+    if (separator === ':') {
+      // Format: "Stimulants: ..." - extract everything after colon
+      contentToParse = cleaned.substring(cleaned.indexOf(':') + 1).trim();
+    } else if (separator === '(') {
+      // Format: "Stimulants (...)" - extract content inside outer parentheses
+      // Find the matching closing parenthesis
+      let depth = 0;
+      let startIndex = cleaned.indexOf('(');
+      let endIndex = -1;
+      
+      for (let i = startIndex; i < cleaned.length; i++) {
+        if (cleaned[i] === '(') depth++;
+        else if (cleaned[i] === ')') {
+          depth--;
+          if (depth === 0) {
+            endIndex = i;
+            break;
+          }
+        }
+      }
+      
+      if (endIndex > startIndex) {
+        contentToParse = cleaned.substring(startIndex + 1, endIndex).trim();
+      } else {
+        // Fallback: remove prefix and opening paren
+        contentToParse = cleaned.replace(/^(Stimulants?|Non-stimulants?|Antidepressants?|SSRIs?|SNRIs?|TCAs?|MAOIs?|medications?|therapies?|treatments?)\s*\(/i, '').trim();
+        contentToParse = contentToParse.replace(/\)\s*$/, '').trim();
+      }
+    }
+  }
+
+  // SPECIAL CASE: Therapy names with abbreviations
+  // "Cognitive Behavioral Therapy (CBT) — description"
+  // Extract BOTH the full name AND the abbreviation for better matching
+  const therapyNameMatch = contentToParse.match(/^([A-Z][a-z]+(?:\s+(?:and|&|or|for|with|Based|Focused)\s+)?(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*))\s*\(([A-Z-]+)\)\s*[—–-]/);
+  if (therapyNameMatch) {
+    const fullName = therapyNameMatch[1].trim();
+    const abbreviation = therapyNameMatch[2].trim();
+    // Add both full name and abbreviation for matching
+    names.push(fullName);
+    names.push(abbreviation);
+    return names; // Return early - this is a single therapy description
+  }
+  
+  // Now parse the content, handling nested parentheses and comma-separated lists
+  // Split by commas, but respect nested parentheses
+  const entries: string[] = [];
+  let current = '';
+  let depth = 0;
+  
+  for (let i = 0; i < contentToParse.length; i++) {
+    const char = contentToParse[i];
+    if (char === '(') {
+      depth++;
+      current += char;
+    } else if (char === ')') {
+      depth--;
+      current += char;
+    } else if (char === ',' && depth === 0) {
+      entries.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  if (current.trim()) {
+    entries.push(current.trim());
+  }
+  
+  // If no commas found but there's content, treat the whole thing as one entry
+  if (entries.length === 0 && contentToParse.trim()) {
+    entries.push(contentToParse.trim());
+  }
+  
+  // Process each entry
+  for (const entry of entries) {
+    const trimmed = entry.trim();
+    
+    // Handle nested parentheses: "Methylphenidate ER (Concerta)" or "Mixed Amphetamine Salts (Adderall)"
+    // IMPORTANT: Only extract the brand name inside parentheses, NOT the generic class name before it
+    // Generic class names like "Methylphenidate ER" and "Mixed Amphetamine Salts" should NOT be linked
+    if (trimmed.includes('(') && trimmed.includes(')')) {
+      const nestedMatch = trimmed.match(/^(.+?)\s*\(([^)]+)\)/);
+      if (nestedMatch) {
+        const beforeParen = nestedMatch[1].trim();
+        const insideParen = nestedMatch[2].trim();
+        
+        // Check if the name before parentheses is a drug FORMULATION or CLASS (not a generic drug name)
+        // Formulations like "Mixed Amphetamine Salts" or "Methylphenidate ER" should NOT be linked
+        // But generic drug names like "Atomoxetine", "Guanfacine" SHOULD be linked
+        const beforeParenLower = beforeParen.toLowerCase();
+        const isFormulationOrClass = 
+          beforeParenLower.includes('salts') ||           // "Mixed Amphetamine Salts" = formulation
+          beforeParenLower.includes(' er') ||              // "Methylphenidate ER" = extended release formulation
+          beforeParenLower.includes(' extended release') ||
+          beforeParenLower.includes(' xr') ||              // Extended release
+          beforeParenLower.includes(' ir') ||              // Immediate release
+          beforeParenLower.match(/^(ssri|snri|tca|maoi|stimulant|antidepressant|antipsychotic|anxiolytic)/i);
+        
+        // Add the brand name inside parentheses
+        if (insideParen && insideParen.length > 2) {
+          names.push(insideParen);
+        }
+        
+        // Also add the generic drug name if it's NOT a formulation/class
+        // "Atomoxetine" → add it (it's the generic name for Strattera)
+        // "Mixed Amphetamine Salts" → skip it (it's a formulation, not a drug name)
+        if (!isFormulationOrClass && beforeParen && beforeParen.length > 2) {
+          names.push(beforeParen);
+        }
+      } else {
+        // Fallback: remove parentheses and use the remaining text
+        const cleanEntry = trimmed.replace(/\([^)]*\)/g, '').trim();
+        if (cleanEntry && cleanEntry.length > 2) {
+          names.push(cleanEntry);
+        }
+      }
+    } else {
+      // Simple name without parentheses (e.g., "Guanfacine", "Clonidine", "Bupropion")
+      // Remove trailing descriptive text like "in select cases"
+      let cleanName = trimmed
+        .replace(/\s+in\s+select\s+cases.*$/i, '')
+        .replace(/\s+—.*$/, '')
+        .replace(/\s+–.*$/, '')
+        .replace(/\s+-.*$/, '')
+        .replace(/[.,;:]+$/, '')
+        .trim();
+      
+      if (cleanName && cleanName.length > 2) {
+        names.push(cleanName);
+      }
+    }
+  }
+
+  // Split remaining text by commas, semicolons, or "and"
+  if (cleaned) {
+    const splitNames = cleaned
+      .split(/[,;]|\s+and\s+/i)
+      .map((name) => {
+        name = name.trim();
+
+        // For prose items like "Bupropion — energizing, fewer side effects",
+        // extract just the medication name (first word or multi-word phrase before punctuation)
+        // Stop at: —, –, -, (, [, or other descriptive separators
+        const proseMatch = name.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*[—–\-\(\[]/);
+        if (proseMatch) {
+          return proseMatch[1].trim();
+        }
+
+        // Also handle formats like "nortriptyline) and MAOIs" - remove trailing punctuation
+        name = name.replace(/[)\]]+.*$/, '').trim();
+        name = name.replace(/[.,;:]+$/, '').trim();
+
+        return name;
+      })
+      .filter((name) => {
+        // Filter out empty, too short, or generic terms
+        if (!name || name.length < 3) return false;
+        const lower = name.toLowerCase();
+        // Skip generic class names
+        if (['ssri', 'ssris', 'snri', 'snris', 'tca', 'tcas', 'maoi', 'maois', 
+             'stimulants', 'non-stimulants', 'non'].includes(lower)) {
+          return false;
+        }
+        // Skip common prose words that aren't entity names
+        const skipWords = ['e.g.', 'i.e.', 'etc.', 'helpful for', 'effective but', 'energizing', 'consider if', 'monitor'];
+        if (skipWords.some(word => lower.includes(word))) {
+          return false;
+        }
+        return true;
+      });
+
+    names.push(...splitNames);
+  }
+
+  // Deduplicate and return
+  return [...new Set(names.filter(name => name && name.length > 2))];
+}
+
+// In-memory cache for entity validation during static generation
+// Prevents redundant database calls for the same entity name
+const validationCache = new Map<string, Entity | null>();
+const CACHE_TTL_MS = 60000; // 1 minute cache TTL
+let lastCacheClear = Date.now();
+
+function getCacheKey(name: string, type: EntityType): string {
+  return `${type}:${name.toLowerCase().trim()}`;
+}
+
+function checkAndClearCache(): void {
+  const now = Date.now();
+  if (now - lastCacheClear > CACHE_TTL_MS) {
+    validationCache.clear();
+    lastCacheClear = now;
+  }
+}
+
+/**
+ * Validate that an entity exists by querying the database
+ * Returns the entity if found, null otherwise
+ * Uses smart matching strategies to handle:
+ * - Generic names → brand combinations (sertraline → sertraline-zoloft)
+ * - Abbreviations (CBT → cognitive-behavioral-therapy)
+ * - Partial matches with word boundaries
+ * 
+ * PERFORMANCE: Results are cached in-memory during static generation
+ */
+export async function validateEntityExists(
+  name: string,
+  type: EntityType
+): Promise<Entity | null> {
+  // Check cache first
+  checkAndClearCache();
+  const cacheKey = getCacheKey(name, type);
+  if (validationCache.has(cacheKey)) {
+    return validationCache.get(cacheKey) || null;
+  }
+
+  // Import dependencies dynamically to avoid circular deps
+  const { EntityService } = await import('@/lib/data/entity-service');
+
+  const baseSlug = slugify(name);
+  const lowerName = name.toLowerCase().trim();
+
+  // STRICT BLACKLIST: Reject generic words that should NEVER be linked
+  // These are too vague and would create incorrect/misleading links
+  const genericWordBlacklist = new Set([
+    // General mental health terms
+    'anxiety', 'depression', 'mood', 'stress', 'pain', 'sleep',
+    'treatment', 'therapy', 'medication', 'disorder', 'condition',
+    'mental', 'health', 'care', 'symptom', 'symptoms', 'test',
+    'screening', 'assessment', 'scale', 'questionnaire', 'tool',
+    
+    // Additional generic terms
+    'drug', 'drugs', 'medicine', 'medicines', 'pill', 'pills',
+    'effect', 'effects', 'side', 'dose', 'dosage', 'dosing',
+    'feeling', 'feelings', 'thought', 'thoughts', 'behavior', 'behaviors',
+    'problem', 'problems', 'issue', 'issues', 'concern', 'concerns',
+    
+    // Descriptive/action words
+    'start', 'stop', 'use', 'using', 'take', 'taking', 'watch',
+    'monitor', 'check', 'track', 'manage', 'help', 'support',
+    'improve', 'reduce', 'increase', 'decrease', 'change', 'changes',
+    
+    // Body/experience terms
+    'brain', 'body', 'mind', 'physical', 'emotional', 'cognitive',
+    'memory', 'concentration', 'focus', 'attention', 'energy',
+    'appetite', 'weight', 'fatigue', 'tired', 'exhaustion',
+    
+    // Process terms
+    'diagnosis', 'evaluation', 'criteria', 'guidelines', 'approach',
+    'intervention', 'psychotherapy', 'counseling', 'coaching',
+    
+    // Severity/quality terms
+    'mild', 'moderate', 'severe', 'acute', 'chronic', 'persistent',
+    'recurrent', 'remission', 'relapse', 'recovery', 'response',
+    
+    // People/roles
+    'patient', 'patients', 'doctor', 'therapist', 'psychiatrist',
+    'provider', 'clinician', 'specialist', 'professional',
+  ]);
+
+  // Reject if name is a generic word (unless it's part of a longer specific phrase)
+  const wordCount = lowerName.split(/\s+/).length;
+  if (wordCount === 1 && genericWordBlacklist.has(lowerName)) {
+    return null;
+  }
+  
+  // Also reject two-word phrases that are too generic
+  const genericPhrases = new Set([
+    'side effects', 'drug interactions', 'black box', 'first line',
+    'second line', 'off label', 'as needed', 'long term', 'short term',
+    'mental health', 'substance use', 'substance abuse', 'mood disorder',
+    'anxiety disorder', 'depressive disorder', 'personality disorder',
+  ]);
+  
+  if (wordCount === 2 && genericPhrases.has(lowerName)) {
+    return null;
+  }
+
+  // BLACKLIST: Drug FORMULATIONS and CLASS names that should NOT be linked
+  // These are NOT specific medications - only the brand name inside parens should be linked
+  // Examples: "Mixed Amphetamine Salts (Adderall)" → only link "Adderall"
+  //           "Methylphenidate ER (Concerta)" → only link "Concerta"
+  // But NOT: "Atomoxetine (Strattera)" → Atomoxetine IS Strattera, link the whole thing
+  const drugFormulationsToSkip = [
+    // Formulations
+    'mixed amphetamine salts',
+    'amphetamine salts',
+    'amphetamine mixed salts',
+    'methylphenidate er',
+    'methylphenidate extended release',
+    'methylphenidate xr',
+    'methylphenidate ir',
+    
+    // Generic class names
+    'ssri', 'ssris',
+    'snri', 'snris', 
+    'tca', 'tcas',
+    'maoi', 'maois',
+    'ndri', 'ndris',
+    'nri', 'nris',
+    'benzodiazepine', 'benzodiazepines', 'benzo', 'benzos',
+    'antidepressant', 'antidepressants',
+    'antipsychotic', 'antipsychotics',
+    'anxiolytic', 'anxiolytics',
+    'stimulant', 'stimulants',
+    'non-stimulant', 'non-stimulants', 'nonstimulant', 'nonstimulants',
+    'mood stabilizer', 'mood stabilizers',
+    'anticonvulsant', 'anticonvulsants',
+    'sedative', 'sedatives',
+    'hypnotic', 'hypnotics',
+    'neuroleptic', 'neuroleptics',
+    
+    // Other formulation patterns
+    'extended release', 'immediate release',
+    'controlled release', 'sustained release',
+    'oral solution', 'oral concentrate',
+    'injectable', 'injection',
+    'transdermal', 'patch',
+  ];
+  
+  if (drugFormulationsToSkip.some(cls => lowerName === cls || lowerName.startsWith(cls + ' '))) {
+    return null;
+  }
+
+  // Run first 3 strategies in parallel for better performance
+  const { supabase } = await import('@/lib/config/database');
+  
+  const strategyPromises: Promise<Entity | null>[] = [
+    // Strategy 1: Exact slug match
+    EntityService.getBySlug(baseSlug).then(
+      entity => (entity && entity.type === type ? entity : null),
+      () => null
+    ),
+    
+    // Strategy 2: Slug starts with base slug (handles generic → brand combinations)
+    // Example: "fluoxetine" → "fluoxetine-prozac"
+    Promise.resolve(
+      supabase
+        .from('entities')
+        .select('slug')
+        .eq('type', type)
+        .eq('status', 'active')
+        .ilike('slug', `${baseSlug}-%`)
+        .order('slug')
+        .limit(1)
+        .then(async ({ data: prefixMatches }) => {
+          if (prefixMatches && prefixMatches.length > 0) {
+            try {
+              const entity = await EntityService.getBySlug(prefixMatches[0].slug);
+              return entity || null;
+            } catch {
+              return null;
+            }
+          }
+          return null;
+        })
+    ),
+    
+    // Strategy 2b: Slug ends with base slug (handles brand name lookups)
+    // Example: "prozac" → "fluoxetine-prozac", "zoloft" → "sertraline-zoloft"
+    Promise.resolve(
+      supabase
+        .from('entities')
+        .select('slug')
+        .eq('type', type)
+        .eq('status', 'active')
+        .ilike('slug', `%-${baseSlug}`)
+        .order('slug')
+        .limit(1)
+        .then(async ({ data: suffixMatches }) => {
+          if (suffixMatches && suffixMatches.length > 0) {
+            try {
+              const entity = await EntityService.getBySlug(suffixMatches[0].slug);
+              return entity || null;
+            } catch {
+              return null;
+            }
+          }
+          return null;
+        })
+    ),
+    
+    // Strategy 3a: Check hardcoded common abbreviations
+    (async () => {
+      if (lowerName.length <= 10 && type === 'condition') {
+        const commonAbbreviations: Record<string, string> = {
+          'gad': 'generalized-anxiety-disorder',
+          'mdd': 'major-depressive-disorder',
+          'ptsd': 'posttraumatic-stress-disorder',
+          'ocd': 'obsessive-compulsive-disorder',
+          'adhd': 'attention-deficit-hyperactivity-disorder',
+          'sad': 'social-anxiety-disorder',
+          'pmdd': 'premenstrual-dysphoric-disorder',
+        };
+        
+        if (commonAbbreviations[lowerName]) {
+          try {
+            const entity = await EntityService.getBySlug(commonAbbreviations[lowerName]);
+            return entity || null;
+          } catch {
+            return null;
+          }
+        }
+      }
+      return null;
+    })(),
+    
+    // Strategy 3b: Check metadata abbreviations
+    (async () => {
+      if (lowerName.length <= 10) {
+        const { data: abbrevMatches } = await supabase
+          .from('entities')
+          .select('slug')
+          .eq('type', type)
+          .eq('status', 'active')
+          .or(`content->abbreviation.ilike.${lowerName},metadata->abbreviation.ilike.${lowerName}`)
+          .limit(1);
+        
+        if (abbrevMatches && abbrevMatches.length > 0) {
+          try {
+            const entity = await EntityService.getBySlug(abbrevMatches[0].slug);
+            return entity || null;
+          } catch {
+            return null;
+          }
+        }
+      }
+      return null;
+    })(),
+  ];
+  
+  // Wait for first strategies in parallel, return first match
+  const strategyResults = await Promise.all(strategyPromises);
+  for (const result of strategyResults) {
+    if (result) {
+      validationCache.set(cacheKey, result);
+      return result;
+    }
+  }
+
+  // Strategy 4: Normalized matching (handles spelling variants like "post-traumatic" vs "posttraumatic")
+  // Remove hyphens from both input and database values for comparison
+  const normalizedInput = lowerName.replace(/-/g, '');
+  const normalizedSlug = baseSlug.replace(/-/g, '');
+
+  const { data: normalizedMatches } = await supabase
+    .from('entities')
+    .select('slug, title')
+    .eq('type', type)
+    .eq('status', 'active')
+    .limit(50); // Get more results for client-side filtering
+
+  if (normalizedMatches && normalizedMatches.length > 0) {
+    for (const row of normalizedMatches) {
+      const rowSlugNormalized = (row.slug || '').toLowerCase().replace(/-/g, '');
+      const rowTitleNormalized = (row.title || '').toLowerCase().replace(/-/g, '').replace(/\s+/g, '');
+
+      // Exact match after normalization
+      if (rowSlugNormalized === normalizedSlug || rowTitleNormalized === normalizedInput.replace(/\s+/g, '')) {
+        const entity = await EntityService.getBySlug(row.slug);
+        if (entity) {
+          validationCache.set(cacheKey, entity);
+          return entity;
+        }
+      }
+    }
+  }
+
+  // Strategy 5: Name contains search term (word boundary aware)
+  // Example: "cognitive behavioral" → "cognitive-behavioral-therapy"
+  const { data: nameMatches } = await supabase
+    .from('entities')
+    .select('slug, title')
+    .eq('type', type)
+    .eq('status', 'active')
+    .ilike('title', `%${name}%`)
+    .order('title')
+    .limit(5);
+
+  if (nameMatches && nameMatches.length > 0) {
+    // Prefer exact word matches over partial matches
+    for (const row of nameMatches) {
+      const entityName = (row.title || '').toLowerCase();
+      const entitySlug = (row.slug || '').toLowerCase();
+
+      // Check if name starts with search term (best match)
+      if (entityName.startsWith(lowerName) || entitySlug.startsWith(baseSlug)) {
+        const entity = await EntityService.getBySlug(row.slug);
+        if (entity) {
+          validationCache.set(cacheKey, entity);
+          return entity;
+        }
+      }
+    }
+
+    // Check for word boundary match
+    const wordBoundaryRegex = new RegExp(`\\b${lowerName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    for (const row of nameMatches) {
+      const entityName = row.title || '';
+      if (wordBoundaryRegex.test(entityName)) {
+        const entity = await EntityService.getBySlug(row.slug);
+        if (entity) {
+          validationCache.set(cacheKey, entity);
+          return entity;
+        }
+      }
+    }
+
+    // NO FALLBACK - if we didn't find an exact match, don't guess
+    // This prevents linking generic words to random entities
+  }
+
+  // Strategy 5: Check alternative_names array in content
+  const { data: altNameMatches } = await supabase
+    .from('entities')
+    .select('slug')
+    .eq('type', type)
+    .eq('status', 'active')
+    .contains('content', { alternative_names: [name] })
+    .limit(1);
+
+  if (altNameMatches && altNameMatches.length > 0) {
+    const entity = await EntityService.getBySlug(altNameMatches[0].slug);
+    if (entity) {
+      validationCache.set(cacheKey, entity);
+      return entity;
+    }
+  }
+
+  // Cache the negative result too to avoid repeated lookups
+  validationCache.set(cacheKey, null);
+  return null;
+}
+
+/**
+ * Generate validated links from entity names
+ * Only creates links for entities that actually exist in the database
+ * NEVER creates links to non-existent pages
+ */
+export async function generateValidatedLinks(params: {
+  sourceEntity: Entity;
+  targetNames: string[];
+  targetType: EntityType;
+  linkType: LinkType;
+  contextPrefix: string;
+  priority: LinkPriority;
+  extractorId: string;
+  category?: string;
+}): Promise<CandidateLink[]> {
+  const {
+    sourceEntity,
+    targetNames,
+    targetType,
+    linkType,
+    contextPrefix,
+    priority,
+    extractorId,
+    category,
+  } = params;
+
+  const links: CandidateLink[] = [];
+
+  for (let i = 0; i < targetNames.length; i++) {
+    const name = targetNames[i];
+    if (!name) continue;
+
+    // Validate entity exists before creating link
+    const targetEntity = await validateEntityExists(name, targetType);
+
+    if (!targetEntity) {
+      // Skip - entity doesn't exist, don't create a broken link
+      continue;
+    }
+
+    // Entity exists - create the link
+    links.push({
+      sourceId: sourceEntity.id,
+      sourceSlug: sourceEntity.slug,
+      sourceType: sourceEntity.type || 'resource',
+      targetId: targetEntity.id,
+      targetSlug: targetEntity.slug,
+      targetType: targetEntity.type || targetType,
+      linkType: linkType,
+      context: `${contextPrefix}[${i}]`,
+      priority: priority,
+      anchorOptions: [targetEntity.name, name],
+      metadata: {
+        extractorId: extractorId,
+        category: category,
+      },
+    });
+  }
+
+  return links;
 }

@@ -66,6 +66,10 @@ export const ENTITY_SITEMAP_CONFIG: Record<EntityType, SitemapEntryConfig> = {
     priority: 0.6,
     changefreq: 'monthly',
   },
+  provider: {
+    priority: 0.7,
+    changefreq: 'weekly',
+  },
 };
 
 /**

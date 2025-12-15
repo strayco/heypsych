@@ -14,6 +14,12 @@ export function readJsonFilesRecursively(dir) {
       if (entry.isDirectory()) {
         walkDir(fullPath);
       } else if (entry.isFile() && entry.name.endsWith(".json")) {
+        // Skip legacy and backup files - only seed v2 versions
+        if (entry.name.endsWith(".legacy.json") || entry.name.includes(".backup")) {
+          console.log(`⏭️  Skipping legacy/backup file: ${entry.name}`);
+          continue;
+        }
+
         try {
           const content = fs.readFileSync(fullPath, "utf-8");
 

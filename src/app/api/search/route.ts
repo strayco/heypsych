@@ -451,6 +451,63 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
   const description = getDescriptionValue(item) || null;
   const category = getCategoryValue(item) || null;
 
+  // Use database-generated snippet if available (from grouped search)
+  let snippets: SearchSnippet[];
+  if (item?.snippet && typeof item.snippet === 'string') {
+    // Database provided a snippet - clean up JSON artifacts and HTML tags
+    const cleanedSnippet = item.snippet
+      .replace(/<b>/g, '')
+      .replace(/<\/b>/g, '')
+      // Remove JSON field syntax: "fieldname": or fieldname":
+      .replace(/"\w+"\s*:\s*"/g, '') // "title": "
+      .replace(/\w+"\s*:\s*"/g, '') // title": "
+      // Remove all quote-comma combinations (array/object separators)
+      .replace(/"\s*,\s*"/g, ' ') // ", " or "," or " ," → space
+      .replace(/"\s*,/g, ' ') // ", at end → space
+      .replace(/,\s*"/g, ' ') // ," at start → space
+      // Remove standalone quoted field values (e.g., "treatment", "medication", "slug")
+      .replace(/\s+"[\w-]+"\s*,?\s*/g, ' ') // " value",
+      // Remove JSON braces/brackets
+      .replace(/[{}\[\]]/g, '')
+      // Remove JSON field names (snake_case or camelCase patterns)
+      .replace(/\s+\w+_\w+["':\s]*/g, ' ') // black_box", generic_name:
+      .replace(/\s+"\w+_\w+/g, ' ') // "black_box
+      // Remove common JSON field names and values
+      .replace(/\s+(items|null|undefined|false|true)["':\s,]*/gi, ' ')
+      .replace(/\s*(seo|metadata|slug|type|category|title|description|name)["':\s]+/gi, ' ') // SEO and metadata fields (with optional leading space)
+      // Remove URLs
+      .replace(/https?:\/\/[^\s,)"]+/g, '')
+      .replace(/\([^\)]*https?[^\)]*\)/g, '') // Remove parentheses containing URLs
+      .replace(/\(\s*\)/g, '') // Remove empty parentheses
+      .replace(/\s+\)\s*/g, ' ') // Remove orphaned closing parentheses
+      // Remove trailing metadata patterns (e.g., "treatment Medication medication SSRI")
+      // These appear when ts_headline captures JSON field values at the end
+      .replace(/\s+(treatment|medication|supplement|therapy|intervention|condition|resource)\s+[\w\s()-]+\s+(medication|supplement|therapy|SSRI|SNRI|antidepressant|benzodiazepine)[\w\s-]*$/i, '')
+      // Clean up multiple periods from fragment delimiters
+      .replace(/\.{2,}/g, '...')
+      // Clean up multiple commas
+      .replace(/,\s*,+/g, ',')
+      // Remove leading/trailing junk
+      .replace(/^["'\s:,\.]+|["'\s:,\.]+$/g, '')
+      // Normalize whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    // Use cleaned snippet if it has content, otherwise fall back to buildSnippets
+    if (cleanedSnippet.length > 0) {
+      snippets = [{
+        term: searchTerms[0] || '',
+        field: 'Content',
+        snippet: cleanedSnippet
+      }];
+    } else {
+      snippets = buildSnippets(item, searchTerms);
+    }
+  } else {
+    // Fall back to client-side snippet building
+    snippets = buildSnippets(item, searchTerms);
+  }
+
   return {
     type,
     id,
@@ -458,7 +515,7 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
     name,
     description,
     category,
-    snippets: buildSnippets(item, searchTerms),
+    snippets,
   };
 }
 

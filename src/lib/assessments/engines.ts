@@ -88,8 +88,17 @@ function resolveBandAndText(
   return {};
 }
 
-function getRules(resource: any) {
-  return (resource?.scoring?.rules ?? {}) as any;
+interface ScoringRules {
+  numeric_mapping?: Record<string, number>;
+  not_scored_items?: string[];
+  reverse_scored?: string[];
+  item_weights?: Record<string, number>;
+  types?: Array<{ type: string; [k: string]: unknown }>;
+  [key: string]: unknown;
+}
+
+function getRules(resource: { scoring?: { rules?: ScoringRules } }): ScoringRules {
+  return resource?.scoring?.rules ?? {};
 }
 
 function getNumericMapping(resource: any): Record<string, number> {
@@ -180,13 +189,16 @@ function sumItems(resource: any, answers: Record<string, any>, itemKeys: string[
   }, 0);
 }
 
-function getItems(resource: any, key?: "all_scored" | string): string[] {
+function getItems(resource: { scoring?: { rules?: ScoringRules } }, key?: "all_scored" | string): string[] {
   if (!key || key === "all_scored") return getAllScoredItems(resource);
   const rules = getRules(resource);
-  const items = rules[key] ?? [];
+  const items = rules[key];
+
+  // Ensure we have an array
+  if (!Array.isArray(items)) return [];
 
   // Convert numbers to question IDs if needed
-  return items.map((x: any) => {
+  return items.map((x: unknown) => {
     if (typeof x === "number") return `q${x}`;
     return String(x);
   });
@@ -257,7 +269,8 @@ function genericEngine(resource: any, answers: Record<string, any>): EngineResul
       const domains = rulesAll[rule.domains_key] ?? {};
       const prefix = rule.result_prefix ?? "sub_";
       for (const [name, items] of Object.entries(domains)) {
-        const itemKeys = (items as any[]).map((x) => (typeof x === "number" ? `q${x}` : String(x)));
+        const itemArr = Array.isArray(items) ? items : [];
+        const itemKeys = itemArr.map((x: unknown) => (typeof x === "number" ? `q${x}` : String(x)));
         const s = sumItems(resource, answers, itemKeys);
         ctx[`${prefix}${name}`] = s;
       }
@@ -367,9 +380,10 @@ function genericEngine(resource: any, answers: Record<string, any>): EngineResul
 
   if (ctx.count != null && (ctx.count_flag != null || ctx.count_key != null)) {
     // generic count_when summary if caller didn't supply custom keys
-    const label = (pipeline.find((r) => r.type === "count_when") as any)?.count_key ?? "count";
-    const flag = (pipeline.find((r) => r.type === "count_when") as any)?.flag_key ?? "count_flag";
-    const cutoff = (pipeline.find((r) => r.type === "count_when") as any)?.cutoff;
+    const countRule = pipeline.find((r) => r.type === "count_when") as { count_key?: string; flag_key?: string; cutoff?: number } | undefined;
+    const label = countRule?.count_key ?? "count";
+    const flag = countRule?.flag_key ?? "count_flag";
+    const cutoff = countRule?.cutoff;
     const flagVal = ctx[flag];
     parts.push(
       `${label}: ${ctx[label]}` +

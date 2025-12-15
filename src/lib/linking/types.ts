@@ -96,6 +96,12 @@ export interface CandidateLink {
 
     /** For de-duplication */
     extractorId?: string;
+
+    /** Relationship type (e.g., primary_treatment, off_label) */
+    relationship?: string;
+
+    /** Additional context about the link */
+    linkContext?: string;
   };
 }
 

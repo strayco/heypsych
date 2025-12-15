@@ -1,9 +1,10 @@
 // src/components/resource-renderers/AssessmentRenderer.tsx
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import {
   SEOMeta,
   SectionList,
@@ -129,6 +130,35 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
 
       {/* Medical disclaimer */}
       <MedicalDisclaimer />
+
+      {/* Related Conditions - Cross-links */}
+      {data.conditions && data.conditions.length > 0 && (
+        <Card className="border-blue-100 bg-blue-50/50">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base text-blue-900">Related Conditions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {data.conditions.map((conditionSlug: string) => (
+                <Link
+                  key={conditionSlug}
+                  href={`/conditions/${conditionSlug}`}
+                  className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200"
+                >
+                  {conditionSlug
+                    .split('-')
+                    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                    .join(' ')}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-blue-700">
+              This assessment is commonly used to screen for these conditions
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Intro sections */}
       <SectionList sections={topSections} />

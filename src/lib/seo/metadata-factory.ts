@@ -21,6 +21,7 @@ import { ConditionMetadataGenerator } from './metadata-generators/condition';
 import { MedicationMetadataGenerator } from './metadata-generators/medication';
 import { TherapyMetadataGenerator } from './metadata-generators/therapy';
 import { ResourceMetadataGenerator } from './metadata-generators/resource';
+import { getEntityType } from '@/lib/utils/entity-type';
 
 /**
  * MetadataFactory
@@ -93,48 +94,10 @@ export class MetadataFactory {
 
   /**
    * Determine entity type from entity object
-   *
-   * Checks multiple sources in priority order:
-   * 1. entity.type (explicit type field)
-   * 2. entity.schema.entity_type (from schema)
-   * 3. entity.schema.schema_name (fallback)
-   * 4. entity.data.kind or entity.data.type (JSON data)
+   * Uses consolidated utility for consistent type determination
    */
   private static determineEntityType(entity: Entity): EntityType {
-    // Priority 1: Explicit type field
-    if (entity.type) {
-      return entity.type;
-    }
-
-    // Priority 2: Schema entity_type
-    if (entity.schema?.entity_type) {
-      return entity.schema.entity_type as EntityType;
-    }
-
-    // Priority 3: Schema name
-    if (entity.schema?.schema_name) {
-      return entity.schema.schema_name as EntityType;
-    }
-
-    // Priority 4: Data fields
-    if (entity.data?.kind) {
-      return entity.data.kind as EntityType;
-    }
-
-    if (entity.data?.type) {
-      return entity.data.type as EntityType;
-    }
-
-    // Priority 5: Infer from URL path (if schema_id contains type)
-    if (entity.schema_id) {
-      if (entity.schema_id.includes('condition')) return 'condition';
-      if (entity.schema_id.includes('medication')) return 'medication';
-      if (entity.schema_id.includes('therapy')) return 'therapy';
-      if (entity.schema_id.includes('resource')) return 'resource';
-    }
-
-    // Default fallback
-    return 'treatment';
+    return getEntityType(entity);
   }
 
   /**
@@ -166,10 +129,8 @@ export class MetadataFactory {
     // Check title
     if (!metadata.title) {
       issues.push('Missing title');
-    } else {
-      const titleLength = typeof metadata.title === 'string'
-        ? metadata.title.length
-        : metadata.title.absolute?.length || 0;
+    } else if (typeof metadata.title === 'string') {
+      const titleLength = metadata.title.length;
 
       if (titleLength < 30) {
         issues.push('Title too short (min 30 chars)');

@@ -37,8 +37,16 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
     const name = entity.name;
     const brandName = this.extractBrandName(entity);
 
+    // Check if name already includes brand name in parentheses to avoid duplication
+    const nameHasBrand = brandName && (
+      name.includes(`(${brandName})`) || 
+      name.includes(`(${brandName.toLowerCase()})`) ||
+      name.includes(`(${brandName.toUpperCase()})`)
+    );
+
     // Format: "Sertraline (Zoloft): Uses, Side Effects, Dosage | HeyPsych"
-    const brandSuffix = brandName ? ` (${brandName})` : '';
+    // But don't add brand suffix if name already contains it
+    const brandSuffix = (brandName && !nameHasBrand) ? ` (${brandName})` : '';
     const fullTitle = `${name}${brandSuffix}: Uses, Side Effects, Dosage | HeyPsych`;
 
     // If too long, try shorter version
@@ -56,7 +64,15 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
   private generateDescription(entity: Entity): string {
     const name = entity.name;
     const brandName = this.extractBrandName(entity);
-    const brandText = brandName ? ` (${brandName})` : '';
+    
+    // Check if name already includes brand name to avoid duplication
+    const nameHasBrand = brandName && (
+      name.includes(`(${brandName})`) || 
+      name.includes(`(${brandName.toLowerCase()})`) ||
+      name.includes(`(${brandName.toUpperCase()})`)
+    );
+    
+    const brandText = (brandName && !nameHasBrand) ? ` (${brandName})` : '';
 
     // Primary use/indication
     const primaryUse = this.extractPrimaryIndication(entity);
@@ -91,7 +107,7 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
   private extractPrimaryIndication(entity: Entity): string {
     // From clinical_metadata.primary_indications
     const primaryIndications = entity.data?.primary_indications ||
-                              entity.clinical_metadata?.primary_indications;
+                              entity.metadata?.clinical?.primary_indications;
 
     if (Array.isArray(primaryIndications) && primaryIndications.length > 0) {
       const indication = this.cleanLinkSyntax(primaryIndications[0]);
@@ -100,7 +116,7 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
 
     // From clinical_metadata.conditions_treated
     const conditionsTreated = entity.data?.conditions_treated ||
-                             entity.clinical_metadata?.conditions_treated;
+                             entity.metadata?.clinical?.conditions_treated;
 
     if (Array.isArray(conditionsTreated) && conditionsTreated.length > 0) {
       const condition = this.cleanLinkSyntax(conditionsTreated[0]);
@@ -142,7 +158,7 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
 
     // Conditions treated
     const conditions = entity.data?.conditions_treated ||
-                      entity.clinical_metadata?.conditions_treated;
+                      entity.metadata?.clinical?.conditions_treated;
     if (Array.isArray(conditions)) {
       conditions.slice(0, 3).forEach((condition: string) => {
         baseKeywords.push(this.cleanLinkSyntax(condition));

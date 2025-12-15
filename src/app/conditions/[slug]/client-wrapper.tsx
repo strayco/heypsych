@@ -4,6 +4,7 @@
 // Data is passed from server component (already fetched)
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,17 +33,9 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { Entity } from "@/lib/types/database";
-import type { PageLinkResult } from "@/lib/linking/link-service";
-import {
-  TreatmentOptionsSection,
-  RelatedConditionsSection,
-  AssessmentCTASection,
-  RelatedArticlesSection,
-} from "@/components/linking";
 import {
   AuthorByline,
   MedicalReviewBadge,
-  ContentTimestamps,
   MedicalDisclaimer,
   CrisisSupportBanner,
   CitationList,
@@ -50,7 +43,6 @@ import {
 
 interface ConditionClientWrapperProps {
   entity: Entity;
-  pageLinks: PageLinkResult;
 }
 
 // Icon mapping for different field types
@@ -174,7 +166,7 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
   return String(data) || fallback;
 };
 
-export default function ConditionClientWrapper({ entity, pageLinks }: ConditionClientWrapperProps) {
+export default function ConditionClientWrapper({ entity }: ConditionClientWrapperProps) {
   const [expandedFields, setExpandedFields] = useState<Record<string, boolean>>({});
 
   const toggleField = (fieldName: string) => {
@@ -193,7 +185,9 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
   // Get dynamic fields
   const getDynamicFields = () => {
     const allFields = Object.keys(data);
-    const excludeFields = [...headerFields, ...alwaysVisibleFields];
+    // Exclude metadata/structural fields that should never be rendered as content sections
+    const metadataFields = ["name", "slug", "type", "status", "metadata", "editorial", "id", "created_at", "updated_at"];
+    const excludeFields = [...headerFields, ...alwaysVisibleFields, ...metadataFields];
     const otherFields = allFields.filter((field) => !excludeFields.includes(field));
 
     const fieldsWithPriority = [];
@@ -430,8 +424,16 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
               <Badge variant="primary" size="md">
                 Mental Health Condition
               </Badge>
-              {(entity as any)?.metadata?.medical_review?.reviewed && (
-                <MedicalReviewBadge reviewInfo={(entity as any).metadata.medical_review} compact />
+              {entity.metadata?.medical_review?.reviewed && (
+                <MedicalReviewBadge 
+                  reviewInfo={{
+                    reviewed: entity.metadata.medical_review.reviewed,
+                    reviewer_name: entity.metadata.medical_review.reviewer_name,
+                    reviewer_credentials: entity.metadata.medical_review.reviewer_credentials,
+                    review_date: entity.metadata.medical_review.review_date,
+                  }} 
+                  compact 
+                />
               )}
             </div>
             <h1 className="text-4xl font-bold text-neutral-900">{entity.name}</h1>
@@ -506,8 +508,8 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
 
                     {/* DSM-5 and ICD-10 Codes */}
                     {(() => {
-                      const dsm5 = (entity as any)?.raw?.metadata?.dsm5_code;
-                      const icd10 = (entity as any)?.raw?.metadata?.icd10_code;
+                      const dsm5 = entity.metadata?.dsm5_code;
+                      const icd10 = entity.metadata?.icd10_code;
 
                       return dsm5 || icd10 ? (
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -533,38 +535,55 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
             </motion.div>
           )}
 
-          {/* Author & Review Information */}
+          {/* Author & Review Information - ALWAYS SHOW for E-A-T compliance */}
           {(() => {
-            const metadata = (entity as any)?.metadata || {};
-            const author = metadata.author;
-            const medicalReviewer = metadata.medical_reviewer;
+            const metadata = entity.metadata || {};
+            const editorial = entity.editorial || {};
+            
+            // Map metadata author to AuthorInfo format if needed
+            const metadataAuthor = metadata.author ? {
+              name: metadata.author.name || '',
+              slug: metadata.author.name?.toLowerCase().replace(/\s+/g, '-') || '',
+              credentials: metadata.author.credentials || '',
+              bio: metadata.author.bio || '',
+              profileUrl: `/about/authors/${metadata.author.name?.toLowerCase().replace(/\s+/g, '-') || ''}`,
+            } : undefined;
+            
+            // Map metadata reviewer to MedicalReviewerInfo format if needed  
+            const metadataReviewer = metadata.medical_reviewer ? {
+              name: metadata.medical_reviewer.name || '',
+              slug: metadata.medical_reviewer.name?.toLowerCase().replace(/\s+/g, '-') || '',
+              credentials: metadata.medical_reviewer.credentials || '',
+              specialty: metadata.medical_reviewer.role || 'Psychiatry',
+              bio: metadata.medical_reviewer.bio || '',
+              profileUrl: `/about/medical-review-board`,
+            } : undefined;
+            
+            const author = editorial.author || metadataAuthor;
+            const medicalReviewer = editorial.medicalReviewer || metadataReviewer;
             const timestamps = {
-              published_date: metadata.published_date || (entity as any)?.created_at,
-              last_updated: metadata.last_updated || (entity as any)?.updated_at,
-              last_reviewed: metadata.medical_review?.review_date,
+              published_date: editorial.dates?.published || metadata.published_date || entity.created_at,
+              last_updated: editorial.dates?.lastUpdated || metadata.last_updated || entity.updated_at,
+              last_reviewed: editorial.dates?.lastMedicallyReviewed || metadata.medical_review?.review_date || entity.updated_at,
             };
 
-            return (author || medicalReviewer || timestamps.published_date) ? (
+            // CRITICAL: Always render AuthorByline for E-A-T compliance
+            // Shows Medical Review Board fallback when no individual reviewer
+            return (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
               >
-                <div className="space-y-4">
-                  {(author || medicalReviewer) && (
-                    <AuthorByline
-                      author={author}
-                      medicalReviewer={medicalReviewer}
-                      publishedDate={timestamps.published_date}
-                      lastUpdated={timestamps.last_updated}
-                    />
-                  )}
-                  {!author && !medicalReviewer && timestamps.published_date && (
-                    <ContentTimestamps timestamps={timestamps} />
-                  )}
-                </div>
+                <AuthorByline
+                  author={author}
+                  medicalReviewer={medicalReviewer}
+                  publishedDate={timestamps.published_date}
+                  lastUpdated={timestamps.last_updated}
+                  lastReviewed={timestamps.last_reviewed}
+                />
               </motion.div>
-            ) : null;
+            );
           })()}
 
           {/* Quick Actions */}
@@ -602,67 +621,9 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
             renderDynamicField(fieldName, data[fieldName], index)
           )}
 
-          {/* Treatment Options Links */}
-          {pageLinks.linksBySlot.treatment_options.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (dynamicFields.length + 3) }}
-            >
-              <TreatmentOptionsSection
-                links={pageLinks.linksBySlot.treatment_options}
-                title="Treatment Options"
-                description={`Evidence-based treatments for ${entity.name}`}
-              />
-            </motion.div>
-          )}
-
-          {/* Assessment/Screening Tools Links */}
-          {pageLinks.linksBySlot.screening_tools.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (dynamicFields.length + 3.5) }}
-            >
-              <AssessmentCTASection
-                links={pageLinks.linksBySlot.screening_tools}
-                title="Screening Tools"
-                description={`Take a validated assessment to better understand ${entity.name} symptoms`}
-              />
-            </motion.div>
-          )}
-
-          {/* Related Conditions Links */}
-          {pageLinks.linksBySlot.related_conditions.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (dynamicFields.length + 3.7) }}
-            >
-              <RelatedConditionsSection
-                links={pageLinks.linksBySlot.related_conditions}
-                title="Related Conditions"
-              />
-            </motion.div>
-          )}
-
-          {/* Related Articles/Resources Links */}
-          {pageLinks.linksBySlot.related_articles.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (dynamicFields.length + 3.9) }}
-            >
-              <RelatedArticlesSection
-                links={pageLinks.linksBySlot.related_articles}
-                title="Related Resources"
-              />
-            </motion.div>
-          )}
-
           {/* Citations/References */}
           {(() => {
-            const references = data.references || (entity as any)?.metadata?.references;
+            const references = data.references || entity.metadata?.references;
             return references && references.length > 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -705,11 +666,13 @@ export default function ConditionClientWrapper({ entity, pageLinks }: ConditionC
                 <div className="mx-auto mb-6 max-w-2xl text-neutral-800">
                   <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
                 </div>
-                <div className="flex justify-center space-x-4">
-                  <Button size="lg">Find Treatment Options</Button>
-                  <Button size="lg" variant="outline">
-                    Locate Providers
-                  </Button>
+                <div className="flex justify-center">
+                  <Link
+                    href="/psychiatrists"
+                    className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg h-14 px-8 text-lg"
+                  >
+                    Locate Psychiatrists
+                  </Link>
                 </div>
               </CardContent>
             </Card>

@@ -188,10 +188,9 @@ export default function SearchPage() {
 
                 {/* Show snippets from API (with search terms) */}
                 {(() => {
-                  // Use API snippets if available and valid
-                  const validSnippets = snippets.filter(s =>
-                    s.snippet && s.snippet.toLowerCase().includes(s.term.toLowerCase())
-                  );
+                  // Use API snippets if available - show all snippets with content
+                  // even if they don't contain the exact search term (for related matches)
+                  const validSnippets = snippets.filter(s => s.snippet && s.snippet.trim().length > 0);
 
                   if (validSnippets.length > 0) {
                     return (

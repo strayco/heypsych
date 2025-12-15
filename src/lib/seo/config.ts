@@ -19,7 +19,8 @@ export const SITE_CONFIG = {
   description: 'Evidence-based mental health treatment information and resources',
   locale: 'en_US',
   twitter: '@heypsych',
-  logo: '/logo.svg',
+  logo: '/images/logo.png',  // PNG for schema.org compatibility with Google
+  logoSvg: '/logo.svg',       // SVG for browser display
   defaultOGImage: '/og-image.png',
 } as const;
 
@@ -191,7 +192,7 @@ export const SCHEMA_CONFIG = {
     '@type': 'MedicalOrganization',
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    logo: `${SITE_CONFIG.url}/logo.svg`,
+    logo: `${SITE_CONFIG.url}${SITE_CONFIG.logo}`,
     description: SITE_CONFIG.description,
     medicalSpecialty: 'Psychiatry',
     sameAs: [

@@ -8,6 +8,7 @@
 import type { Entity } from '@/lib/types/database';
 import { SchemaBuilder } from '../schema-builder';
 import { SITE_CONFIG } from '../config';
+import { getEntityType, getCanonicalRoute } from '@/lib/utils/entity-type';
 
 interface Breadcrumb {
   name: string;
@@ -38,7 +39,7 @@ function buildBreadcrumbPath(entity: Entity): Breadcrumb[] {
     { name: 'Home', path: '/' }
   ];
 
-  const entityType = entity.type || entity.schema?.entity_type;
+  const entityType = getEntityType(entity);
 
   switch (entityType) {
     case 'condition':
@@ -109,15 +110,18 @@ function extractTreatmentCategory(entity: Entity): string | null {
     return parts[0]; // Return "medications" from "medications/antidepressants"
   }
 
-  // Infer from entity type
-  if (entity.type === 'medication') return 'medications';
-  if (entity.type === 'therapy') return 'therapy';
-  if (entity.type === 'interventional') return 'interventional';
-  if (entity.type === 'investigational') return 'investigational';
-  if (entity.type === 'alternative') return 'alternative';
-  if (entity.type === 'supplement') return 'supplements';
+  // Infer from entity type using consolidated utility
+  const entityType = getEntityType(entity);
+  const typeToCategory: Record<string, string> = {
+    medication: 'medications',
+    therapy: 'therapy',
+    interventional: 'interventional',
+    investigational: 'investigational',
+    alternative: 'alternative',
+    supplement: 'supplements',
+  };
 
-  return null;
+  return typeToCategory[entityType] ?? null;
 }
 
 function formatCategoryName(category: string): string {
@@ -127,8 +131,22 @@ function formatCategoryName(category: string): string {
     .join(' & ');
 }
 
+function getEntityPathForBreadcrumb(entity: Entity): string {
+  const entityType = getEntityType(entity);
+  const route = getCanonicalRoute(entityType);
+
+  // Provider has special path
+  if (entityType === 'provider') {
+    return `/psychiatrists/${entity.slug}`;
+  }
+
+  // Use canonical route from utility
+  return `${route}/${entity.slug}`;
+}
+
+// Legacy function name alias (can be removed after refactor)
 function getEntityPath(entity: Entity): string {
-  const entityType = entity.type || entity.schema?.entity_type;
+  const entityType = getEntityType(entity);
 
   switch (entityType) {
     case 'condition':
@@ -144,10 +162,7 @@ function getEntityPath(entity: Entity): string {
       return `/treatments/${entity.slug}`;
 
     case 'resource':
-      const category = entity.data?.category || entity.metadata?.category;
-      if (category === 'assessments-screeners') {
-        return `/resources/assessments-screeners/${entity.slug}`;
-      }
+      // All resources use canonical /resources/[slug] path
       return `/resources/${entity.slug}`;
 
     case 'provider':

@@ -241,6 +241,10 @@ export class SchemaUtils {
    * Clean link syntax from text before adding to schema
    */
   static cleanText(text: string): string {
+    // Handle non-string values gracefully
+    if (!text || typeof text !== 'string') {
+      return String(text || '');
+    }
     return text
       .replace(/\{link:[^:]+:([^}]+)\}/g, '$1')
       .replace(/\{link:([^}]+)\}/g, '$1')

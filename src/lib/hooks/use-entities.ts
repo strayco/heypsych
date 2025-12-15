@@ -5,29 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/config/database";
 import type { EntitiesRow, MappedEntity, EntityType, SchemaName } from "@/lib/types/database";
 import { EntityService } from "@/lib/data/entity-service";
-import { mapRowToEntity, normalizeEntityContent, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
+import { mapRowToEntity, normalizeEntityContent, TREATMENT_TYPE_MAP, categoryToSchemaName } from "@/lib/data/entity-mappers";
 
-// Map category ("medications/...", "therapy/...") -> schema name used in UI
-function categoryToSchemaName(category?: string | null): SchemaName {
-  if (!category) return "treatment";
-  const first = category.split("/")[0];
-  switch (first) {
-    case "medications":
-      return "medication";
-    case "interventional":
-      return "interventional";
-    case "investigational":
-      return "investigational";
-    case "alternative":
-      return "alternative";
-    case "therapy":
-      return "therapy";
-    case "supplements":
-      return "supplement";
-    default:
-      return "treatment";
-  }
-}
+// categoryToSchemaName is now imported from entity-mappers.ts (single source of truth)
 
 // DB row -> UI shape
 function mapRowToEntityShape(row: any): MappedEntity<any> {
@@ -239,13 +219,13 @@ export function useAssessments() {
 
 /* ------- DIRECT SUPABASE QUERIES (return MappedEntity) ------- */
 
-/** Direct Supabase query - no EntityService dependency */
+/** Direct Supabase query - no EntityService dependency, no API fallback */
 export function useEntityByType<T = any>(type: EntityType, slug: string) {
   return useQuery<MappedEntity<T> | null>({
     queryKey: ["entity", type, slug],
     enabled: !!type && !!slug,
     queryFn: async () => {
-      // First, try the database
+      // Query database only - NO API FALLBACK
       const { data, error } = await supabase
         .from("entities")
         .select("*")
@@ -258,44 +238,7 @@ export function useEntityByType<T = any>(type: EntityType, slug: string) {
         return mapRowToEntityShape(data as EntitiesRow) as MappedEntity<T>;
       }
 
-      // Fallback: try the API route (loads from JSON files)
-      console.log(`🔍 Entity '${slug}' (${type}) not found in database, trying API fallback...`);
-
-      try {
-        // Determine API endpoint based on type
-        let apiPath = "";
-        if (type === "condition") {
-          apiPath = `/api/conditions/${slug}`;
-        } else if (
-          [
-            "medication",
-            "therapy",
-            "interventional",
-            "supplement",
-            "treatment",
-            "alternative",
-            "investigational",
-          ].includes(type)
-        ) {
-          apiPath = `/api/treatments/${slug}`;
-        } else if (type === "resource") {
-          apiPath = `/api/resources/${slug}`;
-        }
-
-        if (apiPath) {
-          const response = await fetch(apiPath);
-
-          if (response.ok) {
-            const entityData = await response.json();
-            console.log(`✅ Found ${slug} via API`);
-            return mapRowToEntityShape(entityData as EntitiesRow) as MappedEntity<T>;
-          }
-        }
-      } catch (err) {
-        console.error(`Error fetching ${type} from API:`, err);
-      }
-
-      console.log(`❌ Entity '${slug}' (${type}) not found in database or API`);
+      console.log(`❌ Entity '${slug}' (${type}) not found in database`);
       return null;
     },
     staleTime: 5 * 60 * 1000,
@@ -468,40 +411,27 @@ export function useProviders() {
   });
 }
 
-/** Direct Supabase query for resources */
+/** Direct Supabase query for resources - database only, no API fallback */
 export function useResources() {
   return useQuery({
     queryKey: ["resources"],
     queryFn: async () => {
-      // For resources, ALWAYS load from JSON files (includes knowledge-hub articles)
-      // The database may have some resources but not all (knowledge-hub is JSON-only)
-      console.log("📂 Loading resources from JSON files...");
-      try {
-        const response = await fetch("/api/resources");
-        if (response.ok) {
-          const { resources } = await response.json();
-          console.log(`✅ Loaded ${resources.length} resources from JSON`);
-          return resources.map(mapRowToEntityShape);
-        }
-      } catch (err) {
-        console.error("Error loading resources from API:", err);
-      }
-
-      // Fallback to database if API fails
-      console.log("⚠️ API failed, trying database...");
+      // Query database only - NO API FALLBACK
       const { data, error } = await supabase
         .from("entities")
         .select("*")
         .eq("type", "resource")
         .eq("status", "active")
-        .order("title");
+        .order("title")
+        .limit(200);
 
-      if (!error && data && data.length > 0) {
-        console.log(`✅ Loaded ${data.length} resources from database`);
-        return data.map(mapRowToEntityShape);
+      if (error) {
+        console.error("Error loading resources:", error);
+        return [];
       }
 
-      return [];
+      console.log(`✅ Loaded ${data.length} resources from database`);
+      return data.map(mapRowToEntityShape);
     },
     staleTime: 5 * 60 * 1000,
   });

@@ -72,11 +72,16 @@ export function ParsedLinkList({
  * Component for rendering indications section specifically
  */
 interface IndicationsProps {
-  indications: string[];
+  indications?: string[];
   className?: string;
 }
 
 export function Indications({ indications, className = "" }: IndicationsProps) {
+  // Guard against undefined/null/empty indications
+  if (!indications || !Array.isArray(indications) || indications.length === 0) {
+    return null;
+  }
+
   return (
     <div className={`space-y-2 ${className}`}>
       <h3 className="mb-2 font-semibold text-slate-900">Primary Indications</h3>

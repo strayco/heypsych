@@ -31,6 +31,13 @@ export function TreatmentCard({
   const data = entity.data;
   const treatmentType = schema?.schema_name || "default";
 
+  // Helper function to strip link syntax and extract plain text
+  const stripLinkSyntax = (text: string): string => {
+    if (!text || typeof text !== "string") return text;
+    // Remove {link:type:slug:Display Text} and keep only "Display Text"
+    return text.replace(/\{link:[^:]+:[^:]+:([^}]+)\}/g, "$1");
+  };
+
   // Helper function to extract data from sections-based JSON structure
   const extractFromSections = (sectionType: string, path?: string) => {
     if (!data.sections || !Array.isArray(data.sections)) return null;
@@ -97,7 +104,8 @@ export function TreatmentCard({
 
         const indicationsSection = extractFromSections("indications");
         const indications = indicationsSection?.items || data.indications || [];
-        const primaryIndication = Array.isArray(indications) ? indications[0] : "N/A";
+        const primaryIndicationRaw = Array.isArray(indications) ? indications[0] : "N/A";
+        const primaryIndication = stripLinkSyntax(primaryIndicationRaw);
 
         const onsetSection = extractFromSections("onset_duration");
         const onset = onsetSection?.text || data.onset || "N/A";

@@ -15,9 +15,10 @@ export function getDbPool(): Pool {
 
     pool = new Pool({
       connectionString,
-      max: 20, // Maximum number of clients in the pool
-      idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
-      connectionTimeoutMillis: 5000, // Timeout after 5 seconds if can't connect
+      max: 10, // Reduce pool size to avoid connection limits
+      idleTimeoutMillis: 10000, // Close idle clients faster (10 seconds)
+      connectionTimeoutMillis: 10000, // Increase timeout to 10 seconds
+      statement_timeout: 8000, // Kill queries after 8 seconds
     });
 
     // Handle pool errors

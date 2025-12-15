@@ -49,7 +49,8 @@ export class TreatmentLinkExtractor implements LinkExtractor {
     // Primary indications
     const indications =
       data.primary_indications ||
-      entity.clinical_metadata?.primary_indications ||
+      entity.metadata?.clinical?.primary_indications ||
+      entity.metadata?.primary_indications ||
       [];
 
     indications.forEach((indication: any, index: number) => {
@@ -125,6 +126,44 @@ export class TreatmentLinkExtractor implements LinkExtractor {
         anchorOptions: this.generateAnchorOptions(name, targetEntity),
         metadata: {
           extractorId: this.id,
+        },
+      });
+    });
+
+    // Explicit linked conditions (slug-based, highest reliability)
+    const linkedConditions =
+      data.linked_conditions ||
+      data.clinical_metadata?.linked_conditions ||
+      [];
+    linkedConditions.forEach((linked: any, index: number) => {
+      if (!linked.slug) return;
+
+      // Find by exact slug match
+      const targetEntity = allEntities.find(
+        (e) => e.type === 'condition' && e.slug === linked.slug
+      );
+      if (!targetEntity) return;
+
+      const priority =
+        linked.relationship === 'primary_treatment'
+          ? getLinkTypePriority('treatment_to_condition')
+          : 'medium';
+
+      links.push({
+        sourceId: entity.id,
+        sourceSlug: entity.slug,
+        sourceType: entity.type || 'treatment',
+        targetId: targetEntity.id,
+        targetSlug: targetEntity.slug,
+        targetType: 'condition',
+        linkType: 'treatment_to_condition',
+        context: `linked_conditions[${index}]`,
+        priority,
+        anchorOptions: [targetEntity.name || linked.slug],
+        metadata: {
+          extractorId: this.id,
+          relationship: linked.relationship,
+          linkContext: linked.context,
         },
       });
     });

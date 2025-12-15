@@ -5,11 +5,15 @@
  *
  * Displays author information for E-A-T (Expertise, Authoritativeness, Trustworthiness).
  * Wired to Entity.metadata.author and Entity.metadata.medical_reviewer.
+ *
+ * CRITICAL: Always displays "Reviewed by the HeyPsych Medical Review Board" when no individual reviewer specified.
+ * This ensures YMYL (Your Money Your Life) medical content E-A-T compliance.
  */
 
 import React from "react";
-import { User, CheckCircle } from "lucide-react";
+import { User, CheckCircle, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export interface AuthorInfo {
   name: string;
@@ -33,6 +37,9 @@ interface AuthorBylineProps {
   /** Last updated date */
   lastUpdated?: string;
 
+  /** Last medically reviewed date */
+  lastReviewed?: string;
+
   /** Compact mode (single line) */
   compact?: boolean;
 }
@@ -42,11 +49,16 @@ export function AuthorByline({
   medicalReviewer,
   publishedDate,
   lastUpdated,
+  lastReviewed,
   compact = false,
 }: AuthorBylineProps) {
-  if (!author && !medicalReviewer) {
-    return null;
-  }
+  // Determine review date with fallback priority:
+  // 1. lastReviewed (explicit medical review date)
+  // 2. lastUpdated (content update date)
+  // 3. publishedDate (original publication)
+  const reviewDate = lastReviewed || lastUpdated || publishedDate;
+
+  // CRITICAL: Never return null - always show Medical Review Board for E-A-T compliance
 
   if (compact) {
     return (
@@ -61,9 +73,22 @@ export function AuthorByline({
             {author.verified && <CheckCircle className="h-3.5 w-3.5 text-green-600" />}
           </div>
         )}
-        {lastUpdated && (
+        {/* Always show Medical Review Board in compact mode */}
+        <div className="flex items-center gap-1">
+          <Shield className="h-3.5 w-3.5 text-green-600" />
+          <span>
+            {medicalReviewer ? (
+              <>Reviewed by {medicalReviewer.name}</>
+            ) : (
+              <Link href="/about/medical-review-board" className="text-green-700 hover:underline">
+                Reviewed by the HeyPsych Medical Review Board
+              </Link>
+            )}
+          </span>
+        </div>
+        {reviewDate && (
           <span className="text-neutral-600">
-            • Updated {new Date(lastUpdated).toLocaleDateString()}
+            • Last reviewed {new Date(reviewDate).toLocaleDateString()}
           </span>
         )}
       </div>
@@ -91,7 +116,7 @@ export function AuthorByline({
               <div className="flex items-center gap-2">
                 <div className="font-semibold text-neutral-900">{author.name}</div>
                 {author.verified && (
-                  <CheckCircle className="h-4 w-4 text-green-600" title="Verified professional" />
+                  <CheckCircle className="h-4 w-4 text-green-600" aria-label="Verified professional" />
                 )}
               </div>
               {author.credentials && (
@@ -107,63 +132,92 @@ export function AuthorByline({
           </div>
         )}
 
-        {/* Medical Reviewer */}
-        {medicalReviewer && (
-          <div className="flex items-start gap-3 border-t border-neutral-200 pt-3">
-            {medicalReviewer.image_url ? (
-              <img
-                src={medicalReviewer.image_url}
-                alt={medicalReviewer.name}
-                className="h-12 w-12 rounded-full object-cover"
-              />
-            ) : (
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                <CheckCircle className="h-6 w-6 text-blue-600" />
-              </div>
-            )}
-            <div className="flex-1">
-              <div className="flex items-center gap-2">
-                <div className="font-semibold text-neutral-900">{medicalReviewer.name}</div>
-                {medicalReviewer.verified && (
-                  <CheckCircle className="h-4 w-4 text-green-600" title="Verified professional" />
+        {/* Medical Reviewer - ALWAYS SHOW (either individual or board) */}
+        <div className={`flex items-start gap-3 ${author ? 'border-t border-neutral-200 pt-3' : ''}`}>
+          {medicalReviewer ? (
+            <>
+              {medicalReviewer.image_url ? (
+                <img
+                  src={medicalReviewer.image_url}
+                  alt={medicalReviewer.name}
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+              ) : (
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+                  <CheckCircle className="h-6 w-6 text-blue-600" />
+                </div>
+              )}
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <div className="font-semibold text-neutral-900">{medicalReviewer.name}</div>
+                  {medicalReviewer.verified && (
+                    <CheckCircle className="h-4 w-4 text-green-600" aria-label="Verified professional" />
+                  )}
+                </div>
+                {medicalReviewer.credentials && (
+                  <div className="text-sm text-neutral-700">{medicalReviewer.credentials}</div>
+                )}
+                <Badge variant="outline" className="mt-1 bg-blue-50 text-xs text-blue-700">
+                  Medical Reviewer
+                </Badge>
+                {medicalReviewer.bio && (
+                  <p className="mt-1 text-sm text-neutral-600">{medicalReviewer.bio}</p>
                 )}
               </div>
-              {medicalReviewer.credentials && (
-                <div className="text-sm text-neutral-700">{medicalReviewer.credentials}</div>
-              )}
-              <Badge variant="outline" className="mt-1 bg-blue-50 text-xs text-blue-700">
-                Medical Reviewer
-              </Badge>
-              {medicalReviewer.bio && (
-                <p className="mt-1 text-sm text-neutral-600">{medicalReviewer.bio}</p>
-              )}
-            </div>
-          </div>
-        )}
+            </>
+          ) : (
+            // Fallback: Show Medical Review Board when no individual reviewer
+            <>
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                <Shield className="h-6 w-6 text-green-600" />
+              </div>
+              <div className="flex-1">
+                <div className="font-semibold text-neutral-900">
+                  <Link href="/about/medical-review-board" className="text-green-700 hover:underline">
+                    Reviewed by the HeyPsych Medical Review Board
+                  </Link>
+                </div>
+                <div className="text-sm text-neutral-700">
+                  Board-certified psychiatrists and mental health professionals
+                </div>
+                <Badge variant="outline" className="mt-1 bg-green-50 text-xs text-green-700">
+                  Medical Review Board
+                </Badge>
+              </div>
+            </>
+          )}
+        </div>
 
-        {/* Dates */}
-        {(publishedDate || lastUpdated) && (
-          <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-neutral-200 pt-2 text-xs text-neutral-600">
-            {publishedDate && (
-              <div>
-                Published: {new Date(publishedDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </div>
-            )}
-            {lastUpdated && (
-              <div>
-                Last Updated: {new Date(lastUpdated).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </div>
-            )}
-          </div>
-        )}
+        {/* Dates - Always show review date */}
+        <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-neutral-200 pt-2 text-xs text-neutral-600">
+          {publishedDate && (
+            <div>
+              Published: {new Date(publishedDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </div>
+          )}
+          {lastUpdated && lastUpdated !== publishedDate && (
+            <div>
+              Last Updated: {new Date(lastUpdated).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </div>
+          )}
+          {reviewDate && (
+            <div className="font-semibold text-green-700">
+              Last Reviewed: {new Date(reviewDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

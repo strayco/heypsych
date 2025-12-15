@@ -16,6 +16,8 @@ import type {
   LinkExtractionResult,
   BidirectionalLinkPair,
   LinkQualityMetrics,
+  LinkType,
+  LinkPriority,
 } from './types';
 import {
   getLinkLimits,
@@ -40,7 +42,18 @@ import {
  * Main class for link extraction and management
  */
 export class LinkEngine {
+  private static instance: LinkEngine | null = null;
   private registry = getLinkExtractorRegistry();
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(): LinkEngine {
+    if (!this.instance) {
+      this.instance = new LinkEngine();
+    }
+    return this.instance;
+  }
 
   /**
    * Extract links for a single entity
@@ -89,8 +102,8 @@ export class LinkEngine {
         sourceEntity: entity,
         rawLinks: [],
         links: [],
-        countByType: {},
-        countByPriority: {},
+        countByType: {} as Record<LinkType, number>,
+        countByPriority: {} as Record<LinkPriority, number>,
         errors,
       };
     }

@@ -36,8 +36,8 @@ export async function getMedicationsServer(): Promise<Entity[]> {
     }
 
     // Prefer entity with mechanism_categories populated
-    const existingHasMechanism = existing.metadata?.mechanism_categories?.length > 0;
-    const currentHasMechanism = entity.metadata?.mechanism_categories?.length > 0;
+    const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
+    const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
 
     if (currentHasMechanism && !existingHasMechanism) {
       bySlug.set(entity.slug, entity);
@@ -227,7 +227,6 @@ export async function getResourcesServer(): Promise<Entity[]> {
       .order("title");
 
     if (!error && data && data.length > 0) {
-      console.log(`✅ Loaded ${data.length} resources from database`);
       return data.map((row) => mapRowToEntity(row, "resource"));
     }
   } catch (err) {
@@ -235,7 +234,6 @@ export async function getResourcesServer(): Promise<Entity[]> {
   }
 
   // Fallback to empty array - resources are primarily loaded via API route
-  console.log("⚠️ No resources in database, resources will load from JSON files via client");
   return [];
 }
 
@@ -255,4 +253,21 @@ export async function getResourcesByCategoryServer(category: string): Promise<En
   }
 
   return (data || []).map((row) => mapRowToEntity(row, "resource"));
+}
+
+export async function getOtherConditionsSubcategoryServer(subcategory: string): Promise<Entity[]> {
+  const { data, error } = await supabase
+    .from("entities")
+    .select("*")
+    .eq("type", "condition")
+    .eq("status", "active")
+    .eq("metadata->>category", `other-conditions/${subcategory}`)
+    .order("title");
+
+  if (error) {
+    console.error(`Error fetching conditions for subcategory ${subcategory}:`, error);
+    return [];
+  }
+
+  return (data || []).map((row) => mapRowToEntity(row, "condition"));
 }

@@ -29,7 +29,7 @@ export async function GET() {
     }
 
     const generator = getSitemapGenerator();
-    const xml = await generator.generateAssessmentsSitemap(assessments as Entity[]);
+    const xml = await generator.generateAssessmentsSitemap(assessments as unknown as Entity[]);
 
     return new NextResponse(xml, {
       status: 200,
