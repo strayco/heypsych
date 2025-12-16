@@ -88,7 +88,7 @@ export interface ResourceEntity extends BaseEntity {
 export interface ContentSection {
   // Section identity
   type: string; // indications, efficacy, warnings, dosing, etc.
-  heading: string;
+  heading?: string; // Optional - some sections may not have headings
 
   // Content (use appropriate field for section type)
   text?: string;
