@@ -104,11 +104,12 @@ export interface Entity {
   /** Editorial metadata for E-A-T compliance (YMYL content) */
   editorial?: EditorialMetadata;
 
-  /** SEO overrides (title, description, keywords) */
+  /** SEO overrides (title, description, keywords, indexability) */
   seo?: {
     title?: string;
     description?: string;
     keywords?: string[];
+    noindex?: boolean; // Explicit flag to prevent indexing (for placeholder/thin content)
   };
 
   /** Entity type (derived from schema_name or explicit type field) */
