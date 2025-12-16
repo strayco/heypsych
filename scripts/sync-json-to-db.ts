@@ -25,8 +25,12 @@ import { createClient } from "@supabase/supabase-js";
 import pLimit from "p-limit";
 import dotenv from "dotenv";
 
-// Load environment variables from .env.local
-dotenv.config({ path: path.join(process.cwd(), ".env.local") });
+// Load environment variables from .env.local if it exists (local dev)
+// In CI/production, environment variables are already injected
+const envPath = path.join(process.cwd(), ".env.local");
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
 
 // Environment setup
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
