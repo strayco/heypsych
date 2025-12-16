@@ -33,7 +33,7 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
       description,
       keywords: keywords.join(', '),
       alternates: { canonical },
-      robots: this.generateRobots(entity),
+      // robots: this.generateRobots(entity), // TODO: Tune robots logic - currently too aggressive
       openGraph: this.generateOpenGraph(title, description, canonical),
       twitter: this.generateTwitterCard(title, description)
     };
