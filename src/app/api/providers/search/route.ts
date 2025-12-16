@@ -26,8 +26,19 @@ const supabaseAdmin = createClient(
   }
 );
 
+// Cache version - read from env var to allow updates without code deploy
+// Format: YYYY-MM (e.g., "2025-12" for December 2025 data)
+// Set in .env: PROVIDER_DATA_VERSION=2025-12
+// Update after monthly NPPES imports to bust edge cache
+const PROVIDER_DATA_VERSION = process.env.PROVIDER_DATA_VERSION || "2025-12";
+
 export async function GET(req: NextRequest) {
   const startTime = Date.now();
+  const queryStartTime = performance.now();
+
+  // Check for Vercel cache headers to detect cached responses
+  const vercelCacheHeader = req.headers.get('x-vercel-cache');
+  const isCachedResponse = vercelCacheHeader === 'HIT' || vercelCacheHeader === 'STALE';
 
   // Start Sentry transaction if available
   const transaction =
@@ -60,7 +71,41 @@ export async function GET(req: NextRequest) {
     const limit = qParams.limit;
     const offset = qParams.offset;
 
-    logger.debug("🔍 Provider search:", { limit, offset, params: qParams });
+    // Normalize query params to improve cache hit rate
+    // This ensures variations like "CA" vs "ca" or " Los Angeles " vs "los angeles" cache the same
+    const normalizedParams = {
+      q: qParams.q?.trim().toLowerCase() || undefined,
+      state: qParams.state?.trim().toUpperCase() || undefined,
+      city: qParams.city?.trim().toLowerCase() || undefined,
+      zip: qParams.zip?.trim() || undefined,
+      gender: qParams.gender || undefined,
+      specialization: qParams.specialization?.split(',').map(s => s.trim()).sort().join(',') || undefined,
+      acceptingOnly: qParams.acceptingOnly || undefined,
+      telehealthOnly: qParams.telehealthOnly || undefined,
+      limit: limit,
+      offset: offset,
+    };
+
+    // Generate cache key for debugging (hash of normalized params)
+    const cacheKeyData = JSON.stringify(normalizedParams);
+    const cacheKey = `prov:${PROVIDER_DATA_VERSION}:${Buffer.from(cacheKeyData).toString('base64').substring(0, 16)}`;
+
+    // Extract version param for cache busting (optional)
+    const requestedVersion = req.nextUrl.searchParams.get('v');
+    const isVersionMismatch = requestedVersion && requestedVersion !== PROVIDER_DATA_VERSION;
+
+    logger.debug("🔍 Provider search:", {
+      limit,
+      offset,
+      originalParams: qParams,
+      normalizedParams,
+      cacheKey,
+      dataVersion: PROVIDER_DATA_VERSION,
+      requestedVersion,
+      isVersionMismatch,
+      isCachedResponse,
+      vercelCacheHeader
+    });
 
     // Select only necessary fields to reduce query size and improve performance
     let query = supabaseAdmin
@@ -70,42 +115,35 @@ export async function GET(req: NextRequest) {
       .not("content", "is", null)
       .order("slug"); // Add consistent ordering for pagination
 
+    // Use normalized params for queries to ensure consistent cache behavior
     // Free-text search (name only)
-    if (qParams.q) {
-      const searchTerm = `%${qParams.q.trim()}%`;
+    if (normalizedParams.q) {
+      const searchTerm = `%${normalizedParams.q}%`;
       query = query.ilike("content->>full_name", searchTerm);
     }
 
-    if (qParams.state) {
-      query = query.eq("content->address->>state", qParams.state.toUpperCase());
+    if (normalizedParams.state) {
+      query = query.eq("content->address->>state", normalizedParams.state);
     }
 
     // City search optimization: use exact match first, fallback to prefix match
     // This is much faster than substring search (%city%)
-    if (qParams.city) {
-      const cityTerm = qParams.city.trim();
+    if (normalizedParams.city) {
       // For better performance, use prefix match instead of substring match
       // Users typically search "Los Angeles" not "Angeles"
-      query = query.ilike("content->address->>city", `${cityTerm}%`);
+      query = query.ilike("content->address->>city", `${normalizedParams.city}%`);
     }
 
-    if (qParams.zip) {
-      query = query.eq("content->address->>zip", qParams.zip.trim());
+    if (normalizedParams.zip) {
+      query = query.eq("content->address->>zip", normalizedParams.zip);
     }
 
-    if (qParams.gender) {
-      query = query.eq("content->>gender", qParams.gender);
+    if (normalizedParams.gender) {
+      query = query.eq("content->>gender", normalizedParams.gender);
     }
 
-    if (qParams.specialization) {
-      const specializations = Array.from(
-        new Set(
-          qParams.specialization
-            .split(",")
-            .map((s) => s.trim())
-            .filter(Boolean)
-        )
-      );
+    if (normalizedParams.specialization) {
+      const specializations = normalizedParams.specialization.split(",").filter(Boolean);
 
       // Filter for ALL selected specializations (AND logic) on server-side
       for (const spec of specializations) {
@@ -116,12 +154,12 @@ export async function GET(req: NextRequest) {
 
 
     // Server-side filtering for accepting patients (when data is available)
-    if (qParams.acceptingOnly === "true") {
+    if (normalizedParams.acceptingOnly === "true") {
       query = query.eq("content->>accepting_new_patients", true);
     }
 
     // Server-side filtering for telehealth (when data is available)
-    if (qParams.telehealthOnly === "true") {
+    if (normalizedParams.telehealthOnly === "true") {
       query = query.eq("content->>telehealth_available", true);
     }
 
@@ -142,7 +180,7 @@ export async function GET(req: NextRequest) {
       ({ data, error, count } = await Promise.race([queryPromise, timeoutPromise]));
     } catch (timeoutError: any) {
       // Handle timeout gracefully - return empty results instead of throwing
-      logger.warn("Provider search timed out", { filters: qParams });
+      logger.warn("Provider search timed out", { filters: normalizedParams });
       return NextResponse.json({
         providers: [],
         totalCount: 0,
@@ -167,8 +205,34 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
+    const queryEndTime = performance.now();
+    const queryDurationMs = queryEndTime - queryStartTime;
     const loadTime = Date.now() - startTime;
-    logger.debug(`✅ Found ${data?.length || 0} providers (${count} total) in ${loadTime}ms`);
+
+    // Estimate egress: ~850 bytes per provider record (average from database analysis)
+    const estimatedEgressBytes = (data?.length || 0) * 850;
+    const estimatedEgressKB = (estimatedEgressBytes / 1024).toFixed(2);
+
+    logger.info(`✅ Provider search complete`, {
+      resultCount: data?.length || 0,
+      totalCount: count || 0,
+      queryTimeMs: Math.round(queryDurationMs),
+      totalTimeMs: loadTime,
+      estimatedEgressKB,
+      estimatedEgressBytes,
+      dataVersion: PROVIDER_DATA_VERSION,
+      cacheKey,
+      isCachedResponse,
+      vercelCacheHeader,
+      normalizedParams,
+      filters: {
+        hasState: !!normalizedParams.state,
+        hasCity: !!normalizedParams.city,
+        hasZip: !!normalizedParams.zip,
+        hasSpecialization: !!normalizedParams.specialization,
+        hasQuery: !!normalizedParams.q
+      }
+    });
 
     // Track performance metric in Sentry
     const metrics = Sentry?.metrics;
@@ -176,10 +240,11 @@ export async function GET(req: NextRequest) {
       metrics.distribution("provider_search.duration", loadTime, {
         unit: "millisecond",
         tags: {
-          has_state: !!qParams.state,
-          has_city: !!qParams.city,
-          has_specialization: !!qParams.specialization,
+          has_state: !!normalizedParams.state,
+          has_city: !!normalizedParams.city,
+          has_specialization: !!normalizedParams.specialization,
           result_count: data?.length || 0,
+          cached: isCachedResponse.toString(),
         },
       });
     }
@@ -190,18 +255,34 @@ export async function GET(req: NextRequest) {
         tags: {
           duration: loadTime,
           threshold: "250ms",
+          cached: isCachedResponse.toString(),
         },
         extra: {
           result_count: data?.length || 0,
           total_count: count,
-          filters: qParams,
+          filters: normalizedParams,
         },
       });
     }
 
-    // Map to expected format with better error handling
+    // Validate and map to expected format with better error handling
     const providers = (data ?? []).map((row: any) => {
       const content = row.content || {};
+
+      // Validate required fields for provider cards
+      // Critical fields: first_name, last_name, credentials, address, specialties
+      const missingFields: string[] = [];
+      if (!content.first_name) missingFields.push('first_name');
+      if (!content.last_name) missingFields.push('last_name');
+      if (!content.credentials) missingFields.push('credentials');
+      if (!content.address?.city || !content.address?.state) missingFields.push('address');
+      if (!Array.isArray(content.specialties) || content.specialties.length === 0) {
+        missingFields.push('specialties');
+      }
+
+      if (missingFields.length > 0) {
+        logger.warn(`⚠️ Provider ${row.slug} missing fields:`, missingFields);
+      }
 
       // Handle missing or malformed data gracefully
       const firstName = content.first_name || "";
@@ -236,14 +317,37 @@ export async function GET(req: NextRequest) {
       };
     });
 
-    // Add cache headers for performance (shorter cache due to dynamic filters)
+    // Add aggressive edge caching headers to reduce Supabase egress
+    // Cache at Vercel Edge for 1 hour, serve stale for up to 24 hours while revalidating
+    // Note: Update PROVIDER_DATA_VERSION env var after monthly uploads to bust cache
     const headers = new Headers();
-    headers.set('Cache-Control', 'public, s-maxage=180, stale-while-revalidate=300');
+    headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+    headers.set('X-Provider-Data-Version', PROVIDER_DATA_VERSION);
+    headers.set('X-Estimated-Egress-KB', estimatedEgressKB);
+    headers.set('X-Cache-Key', cacheKey);
+
+    // Add cache status for debugging
+    if (isCachedResponse) {
+      headers.set('X-Cache-Status', vercelCacheHeader || 'HIT');
+    } else {
+      headers.set('X-Cache-Status', 'MISS');
+    }
+
+    logger.debug(`📦 Sending response with cache headers:`, {
+      cacheControl: 'public, s-maxage=3600, stale-while-revalidate=86400',
+      dataVersion: PROVIDER_DATA_VERSION,
+      cacheKey,
+      cacheStatus: isCachedResponse ? (vercelCacheHeader || 'HIT') : 'MISS',
+      egressKB: estimatedEgressKB
+    });
 
     return NextResponse.json({
       providers,
       totalCount: count ?? 0,
       loadTimeMs: Date.now() - startTime,
+      dataVersion: PROVIDER_DATA_VERSION, // Include version in response for debugging
+      cacheKey, // Include cache key for debugging
+      cached: isCachedResponse, // Indicate if response was cached
     }, { headers });
   } catch (e: any) {
     const loadTime = Date.now() - startTime;

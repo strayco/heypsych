@@ -19,10 +19,14 @@ import TreatmentClientWrapper from "./client-wrapper";
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
-// Generate static params for all treatments
-// This pre-renders treatment pages at build time
+// Generate static params for top treatments only
+// Pre-renders a small number of critical pages at build time
+// All other pages will be generated on-demand via dynamicParams=true + ISR
 export async function generateStaticParams() {
   try {
+    // Only pre-render the top 5 most important treatments at build time
+    // All others will be generated on-demand with ISR (revalidate: 86400s)
+    // This prevents build timeouts while maintaining SEO benefits
     const { data: treatments } = await supabase
       .from("entities")
       .select("slug")
@@ -37,14 +41,15 @@ export async function generateStaticParams() {
       ])
       .eq("status", "active")
       .order("title")
-      .limit(200);
+      .limit(5); // Reduced from 200 to 5 to prevent build timeouts
 
-    console.log(`📦 Generating ${treatments?.length || 0} static treatment pages`);
+    console.log(`📦 Generating ${treatments?.length || 0} static treatment pages at build time`);
+    console.log(`⚡ Other pages will be generated on-demand with ISR (revalidate: 86400s)`);
 
     return treatments?.map((t) => ({ slug: t.slug })) || [];
   } catch (error) {
     console.error("Failed to generate static params for treatments:", error);
-    return [];
+    return []; // Graceful fallback - all pages will be on-demand
   }
 }
 

@@ -28,6 +28,7 @@ export class TherapyMetadataGenerator extends MetadataGenerator {
       description,
       keywords: keywords.join(', '),
       alternates: { canonical },
+      robots: this.generateRobots(entity),
       openGraph: this.generateOpenGraph(title, description, canonical, 'article'),
       twitter: this.generateTwitterCard(title, description)
     };

@@ -8,6 +8,10 @@ import { SITE_CONFIG } from "@/lib/seo/config";
  * Includes complete SEO metadata
  */
 
+// Force dynamic rendering - this is an index page, not SEO-critical
+// Prevents build-time database queries that can timeout
+export const dynamic = 'force-dynamic';
+
 // Generate SEO metadata for therapy hub page
 export const metadata: Metadata = {
   title: "Psychotherapy Types | CBT, DBT, EMDR, Psychodynamic & More | HeyPsych",

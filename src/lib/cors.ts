@@ -1,15 +1,12 @@
 /**
  * Minimal CORS helper for Next.js API routes.
  *
- * TODO: Replace YOUR_DOMAIN_HERE with your actual production domain.
- * Example: "https://heypsych.com"
- *
  * If you don't need cross-origin calls, you can skip using this helper.
  * Only apply CORS to API routes that genuinely need cross-origin access.
  */
 
-// TODO: Replace with your actual production domain
-export const allowOrigin = "https://YOUR_DOMAIN_HERE";
+// Production domain - update this when deploying
+export const allowOrigin = process.env.NEXT_PUBLIC_BASE_URL || "https://heypsych.com";
 
 /**
  * Apply CORS headers to a Next.js response object.

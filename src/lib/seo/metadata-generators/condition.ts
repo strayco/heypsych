@@ -32,6 +32,7 @@ export class ConditionMetadataGenerator extends MetadataGenerator {
       description,
       keywords: keywords.join(', '),
       alternates: { canonical },
+      robots: this.generateRobots(entity),
       openGraph: {
         ...this.generateOpenGraph(title, description, canonical, 'article'),
         ...(hasCrisisRisk && {

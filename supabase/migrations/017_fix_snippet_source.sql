@@ -1,0 +1,123 @@
+-- Fix snippet extraction to match search_vector sources
+-- This ensures snippets can show where the match occurred across all searchable fields
+
+DROP FUNCTION IF EXISTS search_entities_grouped(text, int);
+
+CREATE OR REPLACE FUNCTION search_entities_grouped(
+  query_text text,
+  limit_per_type int DEFAULT 5
+)
+RETURNS TABLE (
+  entity_type text,
+  id uuid,
+  type varchar(50),
+  slug varchar(255),
+  title varchar(500),
+  description text,
+  category text,
+  snippet text,
+  rank real,
+  type_total_count bigint
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+DECLARE
+  search_query tsquery;
+BEGIN
+  -- Compute the tsquery once - simple, literal search
+  search_query := websearch_to_tsquery('english', query_text);
+
+  -- Return results for all three types with a single table scan
+  RETURN QUERY
+  WITH all_matches AS (
+    SELECT
+      CASE
+        WHEN e.type = 'condition' THEN 'condition'
+        WHEN e.type = 'resource' THEN 'resource'
+        ELSE 'treatment'
+      END as entity_type,
+      e.id,
+      e.type,
+      e.slug,
+      e.title,
+      e.description,
+      COALESCE(e.category, e.metadata->>'category') as category,
+      -- Extract snippet using ts_headline for context
+      -- Build searchable text from same sources as search_vector for accurate highlighting
+      ts_headline(
+        'english',
+        -- Concatenate description + title + relevant content fields
+        -- This matches what's in the search_vector so ts_headline can find matches
+        COALESCE(e.description, '') || ' ' ||
+        COALESCE(e.title, '') || ' ' ||
+        COALESCE(
+          -- Extract text from common content fields that might contain matches
+          COALESCE(e.content->>'summary', '') || ' ' ||
+          COALESCE(
+            (SELECT string_agg(value::text, ' ') FROM jsonb_array_elements_text(e.content->'tags')),
+            ''
+          ) || ' ' ||
+          COALESCE(
+            (SELECT string_agg(value::text, ' ')
+             FROM jsonb_array_elements_text(e.content->'search_metadata'->'searchable_terms')),
+            ''
+          ) || ' ' ||
+          COALESCE(
+            (SELECT string_agg(med->>'generic_name', ' ')
+             FROM jsonb_array_elements(e.content->'clinical_metadata'->'medications') AS med),
+            ''
+          ) || ' ' ||
+          COALESCE(
+            (SELECT string_agg(med->>'brand_names', ' ')
+             FROM jsonb_array_elements(e.content->'clinical_metadata'->'medications') AS med),
+            ''
+          ),
+          ''
+        ),
+        search_query,
+        'MaxWords=20, MinWords=10, ShortWord=3, MaxFragments=1, HighlightAll=false, StartSel=<b>, StopSel=</b>'
+      ) as snippet,
+      ts_rank(e.search_vector, search_query) as search_rank
+    FROM entities e
+    WHERE e.type <> 'provider'
+      AND e.status = 'active'
+      AND e.search_vector @@ search_query
+  ),
+  ranked_and_counted AS (
+    SELECT
+      m.entity_type,
+      m.id,
+      m.type,
+      m.slug,
+      m.title,
+      m.description,
+      m.category,
+      m.snippet,
+      m.search_rank,
+      ROW_NUMBER() OVER (PARTITION BY m.entity_type ORDER BY m.search_rank DESC) as rn,
+      COUNT(*) OVER (PARTITION BY m.entity_type) as type_count
+    FROM all_matches m
+  )
+  SELECT
+    r.entity_type,
+    r.id,
+    r.type,
+    r.slug,
+    r.title,
+    r.description,
+    r.category,
+    r.snippet,
+    r.search_rank as rank,
+    r.type_count as type_total_count
+  FROM ranked_and_counted r
+  WHERE r.rn <= limit_per_type
+  ORDER BY r.entity_type, r.search_rank DESC;
+END;
+$$;
+
+-- Update permissions
+GRANT EXECUTE ON FUNCTION search_entities_grouped(text, int) TO anon;
+GRANT EXECUTE ON FUNCTION search_entities_grouped(text, int) TO authenticated;
+
+COMMENT ON FUNCTION search_entities_grouped IS 'Simple literal search with snippet extraction from description + content fields to match search_vector sources';

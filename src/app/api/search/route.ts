@@ -104,7 +104,7 @@ export async function GET(req: NextRequest) {
         const resultArray = result.rows;
         const totalCount = resultArray.length > 0 ? (resultArray[0].total_count || 0) : 0;
         const normalizedResults = resultArray
-          .map((row: any) => normalizeSearchResult(row, searchTerms))
+          .map((row: any) => normalizeSearchResult(row, searchTerms, type)) // Pass type as typeOverride
           .filter(Boolean) as SearchResult[];
 
         const loadTime = Date.now() - startTime;

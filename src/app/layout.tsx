@@ -8,6 +8,15 @@ import { MainLayout } from "@/components/layout/main-layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Viewport configuration for Lighthouse SEO 100/100
+// Next.js 14+ requires viewport in separate export from metadata
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.heypsych.com"

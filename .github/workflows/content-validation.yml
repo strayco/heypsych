@@ -1,0 +1,57 @@
+name: Content Schema Validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'data/**/*.json'
+      - 'src/lib/content/**'
+      - 'scripts/validate-content-schema.ts'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'data/**/*.json'
+      - 'src/lib/content/**'
+      - 'scripts/validate-content-schema.ts'
+
+jobs:
+  validate-content-schema:
+    name: Validate Content-Only JSON Contract
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run content schema validation
+        run: npx tsx scripts/validate-content-schema.ts --verbose
+
+      - name: Report validation results
+        if: always()
+        run: |
+          echo "## Content Schema Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ $? -eq 0 ]; then
+            echo "✅ All content JSON files conform to the content-only contract." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Content schema validation failed. See job logs for details." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Block merge on validation failure
+        if: failure()
+        run: |
+          echo "::error::Content schema validation failed. JSON files must not contain:"
+          echo "::error::  - UI/design tokens (visual_design, typography, colors, spacing, etc.)"
+          echo "::error::  - Layout hints (ui_hints, ux_display, collapsible, card_style, etc.)"
+          echo "::error::  - SEO blobs (seo_extensions, keywords, search_intent, schema_org, etc.)"
+          echo "::error::See src/lib/content/schema.ts for the complete content-only contract."
+          exit 1

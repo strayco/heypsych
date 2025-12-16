@@ -8,6 +8,10 @@ import { SITE_CONFIG } from "@/lib/seo/config";
  * Includes complete SEO metadata for medications hub page
  */
 
+// Force dynamic rendering - this is an index page, not SEO-critical
+// Prevents build-time database queries that can timeout
+export const dynamic = 'force-dynamic';
+
 // Generate SEO metadata for medications hub page
 export const metadata: Metadata = {
   title: "Psychiatric Medications A-Z | Antidepressants, Mood Stabilizers & More | HeyPsych",

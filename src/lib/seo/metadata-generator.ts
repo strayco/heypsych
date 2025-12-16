@@ -39,6 +39,86 @@ export abstract class MetadataGenerator {
   }
 
   /**
+   * Generate robots meta tag based on entity indexability
+   *
+   * This method determines whether a page should be indexed by search engines.
+   * Uses explicit flags and entity status primarily to avoid accidentally
+   * noindexing legitimate pages.
+   *
+   * Noindex if:
+   * 1. Explicit noindex flag set (entity.seo?.noindex === true)
+   * 2. Entity status is not "active"
+   * 3. Content contains explicit placeholder keywords
+   * 4. Content is extremely thin (< 100 words - very conservative threshold)
+   *
+   * @param entity The entity to check for indexability
+   * @returns Robots metadata object
+   */
+  protected generateRobots(entity: Entity): Metadata['robots'] {
+    // 1. Check for explicit noindex flag (highest priority)
+    if (entity.seo?.noindex === true) {
+      return {
+        index: false,
+        follow: true, // Still follow links even if page isn't indexed
+      };
+    }
+
+    // 2. Check entity status - only index active entities
+    if (entity.status !== 'active') {
+      return {
+        index: false,
+        follow: false, // Don't follow links on inactive pages
+      };
+    }
+
+    // 3. Check for explicit placeholder content keywords
+    // Only flag very obvious placeholder patterns to avoid false positives
+    const placeholderKeywords = [
+      'coming soon',
+      'will be displayed here',
+      'reviews coming soon',
+      'patient reviews and ratings will be displayed',
+    ];
+
+    const content = [
+      entity.description || '',
+      entity.data?.summary || '',
+      JSON.stringify(entity.data?.sections || []),
+    ].filter(Boolean).join(' ').toLowerCase();
+
+    const hasExplicitPlaceholder = placeholderKeywords.some(keyword =>
+      content.includes(keyword.toLowerCase())
+    );
+
+    if (hasExplicitPlaceholder) {
+      return {
+        index: false,
+        follow: true,
+      };
+    }
+
+    // 4. Check for extremely thin content (very conservative: < 100 words)
+    // This threshold is intentionally low to avoid false positives
+    const wordCount = content.split(/\s+/).filter(word => word.length > 0).length;
+    if (wordCount < 100) {
+      return {
+        index: false,
+        follow: true,
+      };
+    }
+
+    // Default: fully indexable
+    return {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    };
+  }
+
+  /**
    * Clean link syntax from text (removes {link:type:slug} patterns)
    */
   protected cleanLinkSyntax(text: string): string {

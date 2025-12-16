@@ -15,13 +15,14 @@ import type { EntityType } from '@/lib/types/database';
  */
 export const SITE_CONFIG = {
   name: 'HeyPsych',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://heypsych.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.heypsych.com',
   description: 'Evidence-based mental health treatment information and resources',
   locale: 'en_US',
   twitter: '@heypsych',
   logo: '/images/logo.png',  // PNG for schema.org compatibility with Google
   logoSvg: '/logo.svg',       // SVG for browser display
-  defaultOGImage: '/og-image.png',
+  // TODO: Create proper 1200x630 OG image at /og-image.png for optimal social sharing
+  defaultOGImage: '/android-chrome-512x512.png',  // Using existing image temporarily
 } as const;
 
 /**
