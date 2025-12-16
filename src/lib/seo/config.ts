@@ -21,8 +21,7 @@ export const SITE_CONFIG = {
   twitter: '@heypsych',
   logo: '/images/logo.png',  // PNG for schema.org compatibility with Google
   logoSvg: '/logo.svg',       // SVG for browser display
-  // TODO: Create proper 1200x630 OG image at /og-image.png for optimal social sharing
-  defaultOGImage: '/android-chrome-512x512.png',  // Using existing image temporarily
+  defaultOGImage: '/og-image.png',
 } as const;
 
 /**

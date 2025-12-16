@@ -3,10 +3,6 @@ import { getOtherConditionsSubcategoryServer } from "@/lib/data/server-queries";
 import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
 
-// Force dynamic rendering - this is an index page, not SEO-critical
-// Prevents build-time database queries that can timeout
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "Sleep Disorders | Insomnia, Sleep Apnea, Narcolepsy | HeyPsych",
   description:
