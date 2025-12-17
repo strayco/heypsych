@@ -50,6 +50,28 @@ export function getDbPool(): Pool {
 }
 
 /**
+ * Ensure the database pool has at least one ready connection
+ * In serverless environments, this ensures connection is ready before queries
+ */
+async function ensureConnectionReady(): Promise<void> {
+  const pool = getDbPool();
+  
+  // Check if we already have idle connections
+  if (pool.idleCount > 0) {
+    return; // Connection already ready
+  }
+
+  // If no idle connections, create one by executing a simple query
+  // This ensures the connection is fully initialized before the actual query
+  try {
+    await pool.query('SELECT 1');
+  } catch (error) {
+    // If connection fails, wait a bit and let the retry logic handle it
+    // Don't throw here - let queryWithRetry handle retries
+  }
+}
+
+/**
  * Execute a query with retry logic for connection issues
  * This ensures queries work even on cold starts or after connection timeouts
  * Uses pool.query() which handles connection management automatically
@@ -61,6 +83,9 @@ export async function queryWithRetry<T = any>(
 ): Promise<{ rows: T[]; rowCount: number }> {
   const pool = getDbPool();
   let lastError: Error | null = null;
+
+  // Ensure connection is ready before first attempt (especially important for serverless cold starts)
+  await ensureConnectionReady();
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
