@@ -62,27 +62,20 @@ if (typeof window === 'undefined') {
       pool = initializePool();
     }
     
-    // CRITICAL: Always warm up, even if pool was already created
-    // This ensures the connection is actually ready, not just started
-    // We must wait here, not fire-and-forget
-    let retries = 3;
-    while (retries > 0) {
-      try {
-        await pool.query('SELECT 1');
-        // Success - connection is established and ready
-        return pool;
-      } catch (error) {
-        retries--;
-        if (retries === 0) {
-          console.warn('Pool warm-up query failed after retries (non-fatal):', error);
-          // Don't throw - pool will still work, connection will be created on first query
-          return pool;
-        } else {
-          // Wait a bit before retrying (exponential backoff)
-          await new Promise(resolve => setTimeout(resolve, 100 * (4 - retries)));
-        }
-      }
+    // CRITICAL: Use pool.connect() to explicitly establish a connection
+    // pool.query() is lazy - it doesn't create connections until needed
+    // pool.connect() forces connection establishment and returns a client
+    const client = await pool.connect();
+    try {
+      // Test the connection is actually working
+      await client.query('SELECT 1');
+      // Success - connection is established and ready
+      console.log('✅ Database pool warmed up successfully');
+    } finally {
+      // Release the client back to the pool (connection stays alive)
+      client.release();
     }
+    
     return pool;
   })();
 }
@@ -99,32 +92,9 @@ async function ensureConnectionReady(): Promise<void> {
     await poolInitializationPromise;
   }
   
-  const pool = getDbPool();
-  
-  // Check if we already have idle connections - if so, we're ready
-  if (pool.idleCount > 0) {
-    return;
-  }
-
-  // If no idle connections, try to create one by executing a simple query
-  // Retry up to 3 times with increasing delays
-  const maxAttempts = 3;
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    try {
-      // Try to execute a simple query to establish connection
-      await pool.query('SELECT 1');
-      // If successful, connection is ready
-      return;
-    } catch (error: any) {
-      // If this is the last attempt, throw the error
-      if (attempt === maxAttempts - 1) {
-        throw error;
-      }
-      // Wait before retrying (exponential backoff: 100ms, 200ms)
-      const delay = 100 * Math.pow(2, attempt);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-  }
+  // After waiting for initialization, we're ready
+  // The initialization promise already established a connection via pool.connect()
+  return;
 }
 
 /**
