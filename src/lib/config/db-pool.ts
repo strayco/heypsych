@@ -13,8 +13,13 @@ function initializePool(): Pool {
   const connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
 
   if (!connectionString) {
+    console.error('[db-pool] ❌ Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
     throw new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
   }
+
+  // Log connection info (masked) for debugging
+  const maskedUrl = connectionString.replace(/:[^:@]+@/, ':****@');
+  console.log('[db-pool] Initializing pool with connection:', maskedUrl);
 
   // Parse connection string to check if SSL is already in the URL
   // Supabase connection strings may already include ?sslmode=require
@@ -74,7 +79,13 @@ export async function queryWithRetry<T = any>(
   // The pg library manages connection pooling efficiently
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
+      if (attempt === 0) {
+        console.log(`[db-pool] Executing query (attempt ${attempt + 1}/${maxRetries + 1})...`);
+      }
       const result = await pool.query(queryText, params);
+      if (attempt > 0) {
+        console.log(`[db-pool] ✅ Query succeeded on retry attempt ${attempt + 1}`);
+      }
       return {
         rows: result.rows,
         rowCount: result.rowCount ?? 0,
@@ -82,13 +93,12 @@ export async function queryWithRetry<T = any>(
     } catch (error: any) {
       lastError = error as Error;
       // Log connection errors for debugging
-      if (attempt === 0) {
-        console.error(`[db-pool] Query failed (attempt ${attempt + 1}/${maxRetries + 1}):`, {
-          code: error.code,
-          message: error.message,
-          query: queryText.substring(0, 50) + '...'
-        });
-      }
+      console.error(`[db-pool] ❌ Query failed (attempt ${attempt + 1}/${maxRetries + 1}):`, {
+        code: error.code,
+        message: error.message,
+        name: error.name,
+        query: queryText.substring(0, 50) + '...'
+      });
       
       // Check if this is a connection-related error that might be retryable
       const isConnectionError = 
