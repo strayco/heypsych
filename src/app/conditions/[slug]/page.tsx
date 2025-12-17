@@ -17,33 +17,21 @@ import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import ConditionClientWrapper from "./client-wrapper";
 
-// Generate static params for top conditions only
-// Pre-renders a small number of critical pages at build time
-// All other pages will be generated on-demand via dynamicParams=true + ISR
+// Generate static params for ALL conditions
+// Pre-renders all condition pages at build time for instant page loads
 export async function generateStaticParams() {
-  // Skip static generation during local builds to prevent Supabase connection timeouts
-  // In production (Vercel), set ENABLE_BUILD_TIME_SSG=true to pre-render critical pages
-  // All pages will still be generated on-demand with ISR (revalidate: 86400s)
-  if (process.env.ENABLE_BUILD_TIME_SSG !== "true") {
-    console.log("⚡ Skipping build-time static generation (ENABLE_BUILD_TIME_SSG not set)");
-    console.log("⚡ All pages will be generated on-demand with ISR (revalidate: 86400s)");
-    return [];
-  }
-
   try {
-    // Only pre-render the top 5 most important conditions at build time
-    // All others will be generated on-demand with ISR (revalidate: 86400s)
-    // This prevents build timeouts while maintaining SEO benefits
+    // Pre-render ALL condition pages at build time (~133 pages)
+    // This ensures instant page loads from search results
     const { data: conditions } = await supabase
       .from("entities")
       .select("slug")
       .eq("type", "condition")
       .eq("status", "active")
-      .order("title")
-      .limit(5); // Reduced from 200 to 5 to prevent build timeouts
+      .order("title");
+      // No limit - pre-render ALL for instant loads
 
     console.log(`📦 Generating ${conditions?.length || 0} static condition pages at build time`);
-    console.log(`⚡ Other pages will be generated on-demand with ISR (revalidate: 86400s)`);
 
     return conditions?.map((c) => ({ slug: c.slug })) || [];
   } catch (error) {
