@@ -29,7 +29,9 @@ async function initializePool(): Promise<Pool> {
 
   const newPool = new Pool({
     connectionString,
-    max: 10,
+    // Transaction pooler (port 6543) can handle more connections than direct (port 5432)
+    // Set based on connection type - check URL for port or 'pooler' hostname
+    max: connectionString.includes(':6543') || connectionString.includes('pooler') ? 20 : 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 20000,
     // SSL required for Supabase connections
