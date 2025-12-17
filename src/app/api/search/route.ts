@@ -2,7 +2,7 @@
 // Bypasses Supabase PostgREST overhead to achieve <300ms search times
 
 import { NextRequest, NextResponse } from "next/server";
-import { getDbPool } from "@/lib/config/db-pool";
+import { queryWithRetry } from "@/lib/config/db-pool";
 import { EntityService } from "@/lib/data/entity-service";
 import { logger } from "@/lib/utils/logger";
 
@@ -92,11 +92,9 @@ export async function GET(req: NextRequest) {
     let source: "db" | "legacy" = "db";
 
     try {
-      const pool = getDbPool();
-
       // If a specific type is requested, use the type-filtered query
       if (type) {
-        const result = await pool.query(
+        const result = await queryWithRetry(
           'SELECT * FROM search_entities($1, $2, $3, $4)',
           [searchTerm, limit, 0, type]
         );
@@ -124,7 +122,8 @@ export async function GET(req: NextRequest) {
       }
 
       // Use grouped search for all types (single DB query)
-      const result = await pool.query(
+      // Use queryWithRetry to handle connection initialization issues
+      const result = await queryWithRetry(
         'SELECT * FROM search_entities_grouped($1, $2)',
         [searchTerm, limit]
       );
