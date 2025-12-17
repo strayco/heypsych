@@ -66,7 +66,11 @@ export async function queryWithRetry<T = any>(
     try {
       // pool.query() handles connection acquisition and release automatically
       const result = await pool.query(queryText, params);
-      return result;
+      // Handle null rowCount (pg library can return null for some queries)
+      return {
+        rows: result.rows,
+        rowCount: result.rowCount ?? 0,
+      };
     } catch (error: any) {
       lastError = error as Error;
       
