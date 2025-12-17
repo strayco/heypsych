@@ -38,6 +38,10 @@ type GroupedSearchResponse = {
   resources: CategoryResults;
   loadTimeMs: number;
   fallbackUsed: boolean;
+  // Debug fields (temporarily included in production)
+  dbError?: string;
+  dbErrorCode?: string;
+  dbErrorName?: string;
 };
 
 type LegacySearchPayload = {
