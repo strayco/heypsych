@@ -74,6 +74,14 @@ export async function queryWithRetry<T = any>(
       };
     } catch (error: any) {
       lastError = error as Error;
+      // Log connection errors for debugging
+      if (attempt === 0) {
+        console.error(`[db-pool] Query failed (attempt ${attempt + 1}/${maxRetries + 1}):`, {
+          code: error.code,
+          message: error.message,
+          query: queryText.substring(0, 50) + '...'
+        });
+      }
       
       // Check if this is a connection-related error that might be retryable
       const isConnectionError = 
