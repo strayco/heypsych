@@ -10,10 +10,15 @@ let pool: Pool | null = null;
  * Connections are created automatically by pool.query() when needed
  */
 function initializePool(): Pool {
-  const connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
+  let connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
 
   if (!connectionString) {
     console.error('[db-pool] ❌ Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
+    // Log available env vars for debugging (masked)
+    const availableVars = Object.keys(process.env)
+      .filter(k => k.includes('SUPABASE') || k.includes('DATABASE'))
+      .map(k => `${k}=${process.env[k]?.substring(0, 20)}...` || 'undefined');
+    console.error('[db-pool] Available database-related env vars:', availableVars);
     throw new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
   }
 
