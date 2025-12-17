@@ -12,7 +12,7 @@ import { Card } from "@/components/ui/card";
  *   1. Anxiety vs. Stress — "Know the difference."
  *   2. SSRI Basics — "How they work."
  *   3. CBT Explained — "Therapy in plain English."
- *   4. Panic Attacks — "Immediate coping strategies."
+ *   4. Panic Attacks — "What's happening in the body and mind."
  * - 4 equal-width tiles on desktop
  * - 2×2 wrap on tablet
  * - Stack on mobile
@@ -23,22 +23,22 @@ const trendingTopics = [
   {
     title: "Anxiety vs. Stress",
     description: "Know the difference.",
-    href: "/conditions/anxiety-fear", // Linking to anxiety category
+    href: "/resources/knowledge-hub/how-to-guides/anxiety-vs-stress",
   },
   {
     title: "SSRI Basics",
     description: "How they work.",
-    href: "/treatments", // Linking to treatments - can be made more specific later
+    href: "/resources/knowledge-hub/research-and-science/ssri-basics",
   },
   {
     title: "CBT Explained",
     description: "Therapy in plain English.",
-    href: "/treatments", // Can link to specific CBT page when available
+    href: "/resources/knowledge-hub/how-to-guides/cbt-explained",
   },
   {
     title: "Panic Attacks",
-    description: "Immediate coping strategies.",
-    href: "/conditions/panic-disorder",
+    description: "What's happening in the body and mind.",
+    href: "/resources/knowledge-hub/how-to-guides/panic-attacks-body-mind",
   },
 ];
 
