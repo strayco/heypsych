@@ -21,6 +21,10 @@ function initializePool(): Pool {
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 15000, // Increased timeout for serverless cold starts
+    // SSL required for Supabase connections
+    ssl: {
+      rejectUnauthorized: false
+    },
     // Don't use min - let pool manage connections naturally
     // min causes issues in serverless where connections can't be kept alive
   });
