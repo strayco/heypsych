@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -28,7 +28,7 @@ interface GroupedResults {
   resourcesTotal: number;
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const [groupedResults, setGroupedResults] = useState<GroupedResults>({
@@ -56,6 +56,11 @@ export default function SearchPage() {
       setIsLoading(true);
       try {
         const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=5`);
+        
+        if (!response.ok) {
+          throw new Error(`Search API returned ${response.status}: ${response.statusText}`);
+        }
+        
         const data = await response.json();
 
         setGroupedResults({
@@ -411,5 +416,17 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
   );
 }
