@@ -200,7 +200,9 @@ BEGIN
                 COALESCE(interaction->>'action', ''),
                 ' '
               )
-              FROM jsonb_array_elements(e.content->'interactions') AS interaction
+              FROM jsonb_array_elements(e.content->'sections') AS section
+              CROSS JOIN LATERAL jsonb_array_elements(section->'items') AS interaction
+              WHERE section->>'type' = 'interactions'
             ),
             ''
           ) || ' ' ||
