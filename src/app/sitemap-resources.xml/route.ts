@@ -25,12 +25,9 @@ export async function GET() {
       .not('data->>category', 'eq', 'assessments-screeners')
       .order('title');
 
-    if (!resources) {
-      return new NextResponse('No resources found', { status: 404 });
-    }
-
+    // Return empty sitemap if no resources found (better than 404 for GSC)
     const generator = getSitemapGenerator();
-    const xml = await generator.generateResourcesSitemap(resources as unknown as Entity[]);
+    const xml = await generator.generateResourcesSitemap((resources || []) as unknown as Entity[]);
 
     return new NextResponse(xml, {
       status: 200,

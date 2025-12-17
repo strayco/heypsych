@@ -24,12 +24,9 @@ export async function GET() {
       .or('metadata->>category.eq.assessments-screeners,data->>category.eq.assessments-screeners')
       .order('title');
 
-    if (!assessments) {
-      return new NextResponse('No assessments found', { status: 404 });
-    }
-
+    // Return empty sitemap if no assessments found (better than 404 for GSC)
     const generator = getSitemapGenerator();
-    const xml = await generator.generateAssessmentsSitemap(assessments as unknown as Entity[]);
+    const xml = await generator.generateAssessmentsSitemap((assessments || []) as unknown as Entity[]);
 
     return new NextResponse(xml, {
       status: 200,
