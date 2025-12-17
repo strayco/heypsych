@@ -4,12 +4,11 @@
 import { Pool } from 'pg';
 
 let pool: Pool | null = null;
-let poolInitializationPromise: Promise<Pool> | null = null;
+let connectionReadyPromise: Promise<void> | null = null;
 
 /**
- * Initialize the database pool at module load time
- * This ensures the connection is ready before any user requests
- * In serverless environments, this runs when the module is first loaded (before first request)
+ * Initialize the database pool (synchronously, no connection yet)
+ * Connection will be established on first use via ensureConnectionReady()
  */
 function initializePool(): Pool {
   const connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
@@ -33,14 +32,12 @@ function initializePool(): Pool {
     console.error('Unexpected error on idle database client', err);
   });
 
-  // Don't warm up here - it will be done in the initialization promise
-  // This keeps initialization synchronous and fast
   return newPool;
 }
 
 /**
  * Get the database pool, initializing it if necessary
- * The pool is initialized at module load time, so it's ready before first request
+ * Note: This only creates the pool object, connection is established on first use
  */
 export function getDbPool(): Pool {
   if (!pool) {
@@ -49,52 +46,50 @@ export function getDbPool(): Pool {
   return pool;
 }
 
-// Initialize pool immediately at module load time (not lazily)
-// This ensures connection is ready before any user requests
-// In serverless, this runs when the module is first loaded, before the first API call
-if (typeof window === 'undefined') {
-  // Only initialize on server-side
-  // Start initialization immediately - this happens when module is loaded
-  // CRITICAL: This promise must complete before queries can run
-  poolInitializationPromise = (async () => {
-    // Ensure pool exists (might have been created by getDbPool() already)
-    if (!pool) {
-      pool = initializePool();
-    }
-    
-    // CRITICAL: Use pool.connect() to explicitly establish a connection
-    // pool.query() is lazy - it doesn't create connections until needed
-    // pool.connect() forces connection establishment and returns a client
-    const client = await pool.connect();
-    try {
-      // Test the connection is actually working
-      await client.query('SELECT 1');
-      // Success - connection is established and ready
-      console.log('✅ Database pool warmed up successfully');
-    } finally {
-      // Release the client back to the pool (connection stays alive)
-      client.release();
-    }
-    
-    return pool;
-  })();
-}
+// No module-level initialization - we'll establish connection on first use
+// This ensures we don't waste time on cold starts establishing connections that might timeout
 
 /**
  * Ensure the database pool has at least one ready connection
- * In serverless environments, this ensures connection is ready before queries
- * This function will wait for module-level initialization if it's still in progress
+ * Uses singleton pattern - if connection establishment is in progress, waits for it
+ * If no connection exists, establishes one using pool.connect() and verifies it works
  */
 async function ensureConnectionReady(): Promise<void> {
-  // If pool initialization is still in progress, wait for it to complete
-  // This ensures the connection is ready before any queries
-  if (poolInitializationPromise) {
-    await poolInitializationPromise;
+  const pool = getDbPool();
+  
+  // If we already have idle connections, we're ready
+  if (pool.idleCount > 0) {
+    return;
   }
   
-  // After waiting for initialization, we're ready
-  // The initialization promise already established a connection via pool.connect()
-  return;
+  // If connection establishment is already in progress, wait for it
+  if (connectionReadyPromise) {
+    await connectionReadyPromise;
+    return;
+  }
+  
+  // Start establishing a connection (only once, even with concurrent requests)
+  connectionReadyPromise = (async () => {
+    try {
+      // Explicitly get a client to establish connection
+      const client = await pool.connect();
+      try {
+        // Verify connection works
+        await client.query('SELECT 1');
+        console.log('✅ Database connection established');
+      } finally {
+        // Release client back to pool (connection stays alive)
+        client.release();
+      }
+    } catch (error) {
+      // Clear promise so we can retry next time
+      connectionReadyPromise = null;
+      throw error;
+    }
+  })();
+  
+  // Wait for connection to be ready
+  await connectionReadyPromise;
 }
 
 /**
