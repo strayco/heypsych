@@ -29,10 +29,11 @@ export async function GET() {
     }
 
     // Filter for assessments category
-    const filteredAssessments = assessments?.filter(a =>
-      a.metadata?.category === 'assessments-screeners' ||
-      a.data?.category === 'assessments-screeners'
-    ) || [];
+    const filteredAssessments = assessments?.filter(a => {
+      const metadataCategory = (a.metadata as any)?.category;
+      const dataCategory = (a.data as any)?.category;
+      return metadataCategory === 'assessments-screeners' || dataCategory === 'assessments-screeners';
+    }) || [];
 
     const generator = getSitemapGenerator();
     const xml = await generator.generateAssessmentsSitemap(filteredAssessments as unknown as Entity[]);
