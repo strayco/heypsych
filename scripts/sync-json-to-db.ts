@@ -48,10 +48,10 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 // Configuration
 const DATA_DIR = path.join(process.cwd(), "data");
 const IS_CI = process.env.CI === "true" || process.env.VERCEL === "1";
-const BATCH_SIZE = IS_CI ? 25 : 50; // Smaller batches in CI to avoid timeouts
-const CONCURRENCY = IS_CI ? 2 : 5; // Lower concurrency in CI
+const BATCH_SIZE = IS_CI ? 25 : 20; // Smaller batches to avoid timeouts (reduced from 50 to 20)
+const CONCURRENCY = IS_CI ? 2 : 3; // Lower concurrency to reduce database load (reduced from 5 to 3)
 const MAX_RETRIES = 3; // Retry failed batches up to 3 times
-const RETRY_DELAY_MS = 1000; // Wait 1s between retries
+const RETRY_DELAY_MS = 2000; // Wait 2s between retries (increased from 1s)
 const MIN_SUCCESS_RATE = 0.85; // Require 85% success rate to pass (tolerates some timeouts in CI)
 
 // CLI arguments

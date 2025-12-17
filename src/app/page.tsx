@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/homepage/Hero";
-import { StartHere } from "@/components/homepage/StartHere";
 import { NavigationGrid } from "@/components/homepage/NavigationGrid";
 import { TrendingTopics } from "@/components/homepage/TrendingTopics";
+import { PsychTrail } from "@/components/homepage/PsychTrail";
 import { ToolkitStrip } from "@/components/homepage/ToolkitStrip";
 
 // SEO-optimized metadata for homepage
@@ -53,10 +53,10 @@ const websiteSchema = {
  * No deviations permitted.
  *
  * Section Order (TOP → BOTTOM):
- * 1. Hero (Search + Trust)
- * 2. Start Here (Guidance Banner)
- * 3. Core Navigation Grid (2×2)
- * 4. Trending Topics (Discovery Tiles)
+ * 1. Hero (Search + "Take me anywhere")
+ * 2. Core Navigation Grid (2×2)
+ * 3. Trending Topics (Discovery Tiles)
+ * 4. Psych Trail (Coming Soon)
  * 5. Toolkit Strip (Optional)
  *
  * All sections use existing design system:
@@ -85,17 +85,17 @@ export default function HomePage() {
 
       {/* Homepage Sections - EXACT ORDER REQUIRED */}
       <div className="min-h-screen">
-        {/* SECTION 1 - Hero (Search + Trust) */}
+        {/* SECTION 1 - Hero (Search + "Take me anywhere") */}
         <Hero />
 
-        {/* SECTION 2 - Start Here (Guidance Banner) */}
-        <StartHere />
-
-        {/* SECTION 3 - Core Navigation Grid (2×2) */}
+        {/* SECTION 2 - Core Navigation Grid (2×2) */}
         <NavigationGrid />
 
-        {/* SECTION 4 - Trending Topics (Discovery Tiles) */}
+        {/* SECTION 3 - Trending Topics (Discovery Tiles) */}
         <TrendingTopics />
+
+        {/* SECTION 4 - Psych Trail (Coming Soon) */}
+        <PsychTrail />
 
         {/* SECTION 5 - Toolkit Strip (Optional but Preferred) */}
         <ToolkitStrip />

@@ -6,13 +6,14 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config/site";
-import { Menu, X, Search, Pill, Brain, BookOpen, Users, Info } from "lucide-react";
+import { Menu, X, Search, Pill, Brain, BookOpen, Users, Compass, Info } from "lucide-react";
 
 const iconMap = {
   pill: Pill,
   brain: Brain,
   "book-open": BookOpen,
   users: Users,
+  compass: Compass,
   info: Info,
 };
 
@@ -58,6 +59,20 @@ export function Header() {
           <nav className="hidden items-center space-x-8 md:flex">
             {siteConfig.navigation.map((item) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
+              const isDisabled = item.href === "/psych-trail";
+
+              if (isDisabled) {
+                return (
+                  <span
+                    key={item.href}
+                    className="flex items-center space-x-1 text-sm font-medium text-neutral-400 cursor-not-allowed"
+                  >
+                    {IconComponent && <IconComponent className="h-4 w-4" />}
+                    <span>{item.name}</span>
+                  </span>
+                );
+              }
+
               return (
                 <Link
                   key={item.href}
@@ -125,6 +140,20 @@ export function Header() {
               {/* Mobile Navigation Links */}
               {siteConfig.navigation.map((item) => {
                 const IconComponent = iconMap[item.icon as keyof typeof iconMap];
+                const isDisabled = item.href === "/psych-trail";
+
+                if (isDisabled) {
+                  return (
+                    <span
+                      key={item.href}
+                      className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium text-neutral-400 cursor-not-allowed"
+                    >
+                      {IconComponent && <IconComponent className="h-5 w-5" />}
+                      <span>{item.name}</span>
+                    </span>
+                  );
+                }
+
                 return (
                   <Link
                     key={item.href}

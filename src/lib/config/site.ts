@@ -9,6 +9,7 @@ export const siteConfig = {
     { name: "Conditions", href: "/conditions", icon: "brain" },
     { name: "Resources", href: "/resources", icon: "book-open" },
     { name: "Psychiatrists", href: "/psychiatrists", icon: "users" },
+    { name: "Psych Trail (Coming Soon)", href: "/psych-trail", icon: "compass" },
     { name: "About", href: "/about", icon: "info" },
   ],
 
