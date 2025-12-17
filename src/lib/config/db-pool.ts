@@ -4,71 +4,82 @@
 import { Pool } from 'pg';
 
 let pool: Pool | null = null;
-let poolInitializationError: Error | null = null;
+let initializationPromise: Promise<Pool> | null = null;
 
 /**
- * Initialize the database pool
- * Connections are created automatically by pool.query() when needed
+ * Initialize the database pool and ensure it's ready
+ * This ensures the connection is available on first request, even on cold starts
  */
-function initializePool(): Pool | null {
-  // If we already tried and failed, don't retry on every request
-  if (poolInitializationError) {
-    return null;
-  }
-
+async function initializePool(): Promise<Pool> {
   const connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
 
   if (!connectionString) {
-    poolInitializationError = new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
-    return null;
+    throw new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
   }
 
   // Validate connection string format
   if (!connectionString.startsWith('postgresql://') && !connectionString.startsWith('postgres://')) {
-    poolInitializationError = new Error('Invalid database connection string format');
-    return null;
+    throw new Error('Invalid database connection string format');
   }
 
   // Check if connection string looks complete
   if (!connectionString.includes('@') || connectionString.split('@').length < 2) {
-    poolInitializationError = new Error('Database connection string appears incomplete');
-    return null;
+    throw new Error('Database connection string appears incomplete');
   }
 
+  const newPool = new Pool({
+    connectionString,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 20000,
+    // SSL required for Supabase connections
+    ssl: {
+      rejectUnauthorized: false
+    },
+  });
+
+  // Handle pool errors - reconnect on error
+  newPool.on('error', (err) => {
+    console.error('[db-pool] Pool error:', err.message);
+    // Don't throw - let queries handle errors with retries
+  });
+
+  // Test the connection immediately to ensure it's ready
   try {
-    const newPool = new Pool({
-      connectionString,
-      max: 10,
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 20000,
-      // SSL required for Supabase connections
-      ssl: {
-        rejectUnauthorized: false
-      },
-    });
-
-    // Handle pool errors gracefully
-    newPool.on('error', (err) => {
-      // Log but don't throw - let individual queries handle errors
-      console.error('[db-pool] Pool error:', err.message);
-    });
-
-    return newPool;
+    await newPool.query('SELECT 1');
   } catch (error) {
-    poolInitializationError = error instanceof Error ? error : new Error('Failed to initialize pool');
-    return null;
+    await newPool.end();
+    throw new Error(`Failed to establish database connection: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
+
+  return newPool;
 }
 
 /**
  * Get the database pool, initializing it if necessary
- * Returns null if initialization failed (caller should use fallback)
+ * Ensures the pool is ready before returning
  */
-export function getDbPool(): Pool | null {
-  if (!pool) {
-    pool = initializePool();
+export async function getDbPool(): Promise<Pool> {
+  if (pool) {
+    return pool;
   }
-  return pool;
+
+  // If initialization is in progress, wait for it
+  if (initializationPromise) {
+    return initializationPromise;
+  }
+
+  // Start initialization
+  initializationPromise = initializePool();
+  
+  try {
+    pool = await initializationPromise;
+    return pool;
+  } catch (error) {
+    // Reset promise on failure so we can retry
+    initializationPromise = null;
+    throw error;
+  }
 }
 
 // Let the pg Pool library handle connections automatically
@@ -76,24 +87,19 @@ export function getDbPool(): Pool | null {
 
 /**
  * Execute a query with retry logic for connection issues
- * Returns null if pool is unavailable (caller should use fallback)
+ * Always attempts to use direct DB connection - throws only if all retries fail
  */
 export async function queryWithRetry<T = any>(
   queryText: string,
   params?: any[],
   maxRetries: number = 3
-): Promise<{ rows: T[]; rowCount: number } | null> {
-  const pool = getDbPool();
-  
-  if (!pool) {
-    // Pool initialization failed - return null so caller can use fallback
-    return null;
-  }
-
+): Promise<{ rows: T[]; rowCount: number }> {
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
+      // Get pool (will initialize and test connection if needed)
+      const pool = await getDbPool();
       const result = await pool.query(queryText, params);
       return {
         rows: result.rows,
@@ -118,18 +124,29 @@ export async function queryWithRetry<T = any>(
         error.message?.includes('Connection ended');
 
       if (isConnectionError && attempt < maxRetries) {
+        // Reset pool on connection error so we can reinitialize
+        if (pool) {
+          try {
+            await pool.end();
+          } catch {
+            // Ignore errors during cleanup
+          }
+          pool = null;
+          initializationPromise = null;
+        }
+
         // Exponential backoff: 200ms, 400ms, 800ms
         const delay = 200 * Math.pow(2, attempt);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
 
-      // Not retryable or out of retries - return null to trigger fallback
-      return null;
+      // Not retryable or out of retries - throw the error
+      throw error;
     }
   }
 
-  return null;
+  throw lastError || new Error('Query failed after retries');
 }
 
 // Graceful shutdown
