@@ -29,7 +29,7 @@ export interface SitemapOptions {
 }
 
 const DEFAULT_OPTIONS: Required<SitemapOptions> = {
-  baseUrl: SITE_CONFIG.url,
+  baseUrl: SITE_CONFIG.url.trim().replace(/\/+$/, ''), // Trim whitespace and trailing slashes
   includeLastmod: true,
   includeChangefreq: true,
   includePriority: true,
@@ -228,6 +228,10 @@ export class SitemapGenerator {
 
   constructor(options?: SitemapOptions) {
     this.options = { ...DEFAULT_OPTIONS, ...options };
+    // Sanitize baseUrl to remove whitespace and trailing slashes
+    if (this.options.baseUrl) {
+      this.options.baseUrl = this.options.baseUrl.trim().replace(/\/+$/, '');
+    }
   }
 
   /**
