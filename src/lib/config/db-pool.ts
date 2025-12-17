@@ -20,23 +20,16 @@ function initializePool(): Pool {
   // Log connection info (masked) for debugging
   const maskedUrl = connectionString.replace(/:[^:@]+@/, ':****@');
   console.log('[db-pool] Initializing pool with connection:', maskedUrl);
-
-  // Parse connection string to check if SSL is already in the URL
-  // Supabase connection strings may already include ?sslmode=require
-  const hasSslMode = connectionString.includes('sslmode=');
   
   const newPool = new Pool({
     connectionString,
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 20000, // Increased timeout for serverless cold starts
-    // SSL required for Supabase connections
-    // Only add ssl config if not already in connection string
-    ...(hasSslMode ? {} : {
-      ssl: {
-        rejectUnauthorized: false
-      }
-    }),
+    // SSL required for Supabase connections (always needed, even if sslmode= is in URL)
+    ssl: {
+      rejectUnauthorized: false
+    },
     // Don't use min - let pool manage connections naturally
     // min causes issues in serverless where connections can't be kept alive
   });
