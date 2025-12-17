@@ -55,7 +55,15 @@ function SearchPageContent() {
     const fetchResults = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=5`);
+        // Add timeout to prevent hanging indefinitely
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=5`, {
+          signal: controller.signal,
+        });
+        
+        clearTimeout(timeoutId);
         
         if (!response.ok) {
           throw new Error(`Search API returned ${response.status}: ${response.statusText}`);
@@ -71,8 +79,14 @@ function SearchPageContent() {
           treatmentsTotal: Number(data.treatments?.totalCount) || 0,
           resourcesTotal: Number(data.resources?.totalCount) || 0,
         });
-      } catch (error) {
+      } catch (error: any) {
         logger.error("Search error", error);
+        
+        // If it's an abort (timeout), show a helpful message
+        if (error.name === 'AbortError') {
+          logger.error("Search request timed out after 30 seconds");
+        }
+        
         setGroupedResults({
           conditions: [],
           treatments: [],

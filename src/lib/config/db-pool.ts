@@ -4,69 +4,67 @@
 import { Pool } from 'pg';
 
 let pool: Pool | null = null;
+let poolInitializationError: Error | null = null;
 
 /**
  * Initialize the database pool
  * Connections are created automatically by pool.query() when needed
  */
-function initializePool(): Pool {
-  let connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
+function initializePool(): Pool | null {
+  // If we already tried and failed, don't retry on every request
+  if (poolInitializationError) {
+    return null;
+  }
+
+  const connectionString = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
 
   if (!connectionString) {
-    console.error('[db-pool] ❌ Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
-    // Log available env vars for debugging (masked)
-    const availableVars = Object.keys(process.env)
-      .filter(k => k.includes('SUPABASE') || k.includes('DATABASE'))
-      .map(k => `${k}=${process.env[k]?.substring(0, 20)}...` || 'undefined');
-    console.error('[db-pool] Available database-related env vars:', availableVars);
-    throw new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
+    poolInitializationError = new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
+    return null;
   }
 
   // Validate connection string format
   if (!connectionString.startsWith('postgresql://') && !connectionString.startsWith('postgres://')) {
-    console.error('[db-pool] ❌ Invalid connection string format. Must start with postgresql:// or postgres://');
-    console.error('[db-pool] Connection string length:', connectionString.length);
-    console.error('[db-pool] First 50 chars:', connectionString.substring(0, 50));
-    throw new Error('Invalid database connection string format');
+    poolInitializationError = new Error('Invalid database connection string format');
+    return null;
   }
 
-  // Check if connection string looks complete (should contain @ and ://)
+  // Check if connection string looks complete
   if (!connectionString.includes('@') || connectionString.split('@').length < 2) {
-    console.error('[db-pool] ❌ Connection string appears incomplete (missing @)');
-    console.error('[db-pool] Connection string length:', connectionString.length);
-    throw new Error('Database connection string appears incomplete');
+    poolInitializationError = new Error('Database connection string appears incomplete');
+    return null;
   }
 
-  // Log connection info (masked) for debugging
-  const maskedUrl = connectionString.replace(/:[^:@]+@/, ':****@');
-  console.log('[db-pool] Initializing pool with connection:', maskedUrl);
-  console.log('[db-pool] Connection string length:', connectionString.length);
-  
-  const newPool = new Pool({
-    connectionString,
-    max: 10,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 20000, // Increased timeout for serverless cold starts
-    // SSL required for Supabase connections (always needed, even if sslmode= is in URL)
-    ssl: {
-      rejectUnauthorized: false
-    },
-    // Don't use min - let pool manage connections naturally
-    // min causes issues in serverless where connections can't be kept alive
-  });
+  try {
+    const newPool = new Pool({
+      connectionString,
+      max: 10,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 20000,
+      // SSL required for Supabase connections
+      ssl: {
+        rejectUnauthorized: false
+      },
+    });
 
-  // Handle pool errors
-  newPool.on('error', (err) => {
-    console.error('Unexpected error on idle database client', err);
-  });
+    // Handle pool errors gracefully
+    newPool.on('error', (err) => {
+      // Log but don't throw - let individual queries handle errors
+      console.error('[db-pool] Pool error:', err.message);
+    });
 
-  return newPool;
+    return newPool;
+  } catch (error) {
+    poolInitializationError = error instanceof Error ? error : new Error('Failed to initialize pool');
+    return null;
+  }
 }
 
 /**
  * Get the database pool, initializing it if necessary
+ * Returns null if initialization failed (caller should use fallback)
  */
-export function getDbPool(): Pool {
+export function getDbPool(): Pool | null {
   if (!pool) {
     pool = initializePool();
   }
@@ -78,41 +76,31 @@ export function getDbPool(): Pool {
 
 /**
  * Execute a query with retry logic for connection issues
- * This ensures queries work even on cold starts or after connection timeouts
- * Uses pool.query() which handles connection management automatically
+ * Returns null if pool is unavailable (caller should use fallback)
  */
 export async function queryWithRetry<T = any>(
   queryText: string,
   params?: any[],
   maxRetries: number = 3
-): Promise<{ rows: T[]; rowCount: number }> {
+): Promise<{ rows: T[]; rowCount: number } | null> {
   const pool = getDbPool();
+  
+  if (!pool) {
+    // Pool initialization failed - return null so caller can use fallback
+    return null;
+  }
+
   let lastError: Error | null = null;
 
-  // Let pool.query() handle connections automatically - it's designed for this
-  // The pg library manages connection pooling efficiently
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
-      if (attempt === 0) {
-        console.log(`[db-pool] Executing query (attempt ${attempt + 1}/${maxRetries + 1})...`);
-      }
       const result = await pool.query(queryText, params);
-      if (attempt > 0) {
-        console.log(`[db-pool] ✅ Query succeeded on retry attempt ${attempt + 1}`);
-      }
       return {
         rows: result.rows,
         rowCount: result.rowCount ?? 0,
       };
     } catch (error: any) {
       lastError = error as Error;
-      // Log connection errors for debugging
-      console.error(`[db-pool] ❌ Query failed (attempt ${attempt + 1}/${maxRetries + 1}):`, {
-        code: error.code,
-        message: error.message,
-        name: error.name,
-        query: queryText.substring(0, 50) + '...'
-      });
       
       // Check if this is a connection-related error that might be retryable
       const isConnectionError = 
@@ -121,9 +109,9 @@ export async function queryWithRetry<T = any>(
         error.code === 'ENOTFOUND' ||
         error.code === 'ECONNRESET' ||
         error.code === 'EPIPE' ||
-        error.code === '57P01' || // Admin shutdown
-        error.code === '57P02' || // Crash shutdown
-        error.code === '57P03' || // Cannot connect now
+        error.code === '57P01' ||
+        error.code === '57P02' ||
+        error.code === '57P03' ||
         error.message?.includes('connection') ||
         error.message?.includes('timeout') ||
         error.message?.includes('Connection terminated') ||
@@ -136,12 +124,12 @@ export async function queryWithRetry<T = any>(
         continue;
       }
 
-      // Not retryable or out of retries - throw the error
-      throw error;
+      // Not retryable or out of retries - return null to trigger fallback
+      return null;
     }
   }
 
-  throw lastError || new Error('Query failed after retries');
+  return null;
 }
 
 // Graceful shutdown

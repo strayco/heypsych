@@ -38,10 +38,6 @@ type GroupedSearchResponse = {
   resources: CategoryResults;
   loadTimeMs: number;
   fallbackUsed: boolean;
-  // Debug fields (temporarily included in production)
-  dbError?: string;
-  dbErrorCode?: string;
-  dbErrorName?: string;
 };
 
 type LegacySearchPayload = {
@@ -95,18 +91,18 @@ export async function GET(req: NextRequest) {
 
     let source: "db" | "legacy" = "db";
 
-    try {
-      // If a specific type is requested, use the type-filtered query
-      if (type) {
-        const result = await queryWithRetry(
-          'SELECT * FROM search_entities($1, $2, $3, $4)',
-          [searchTerm, limit, 0, type]
-        );
+    // Try direct database query first
+    if (type) {
+      const result = await queryWithRetry(
+        'SELECT * FROM search_entities($1, $2, $3, $4)',
+        [searchTerm, limit, 0, type]
+      );
 
+      if (result) {
         const resultArray = result.rows;
         const totalCount = resultArray.length > 0 ? (resultArray[0].total_count || 0) : 0;
         const normalizedResults = resultArray
-          .map((row: any) => normalizeSearchResult(row, searchTerms, type)) // Pass type as typeOverride
+          .map((row: any) => normalizeSearchResult(row, searchTerms, type))
           .filter(Boolean) as SearchResult[];
 
         const loadTime = Date.now() - startTime;
@@ -124,155 +120,141 @@ export async function GET(req: NextRequest) {
           fallbackUsed: false,
         });
       }
-
-      // Use grouped search for all types (single DB query)
-      // Use queryWithRetry to handle connection initialization issues
+    } else {
       const result = await queryWithRetry(
         'SELECT * FROM search_entities_grouped($1, $2)',
         [searchTerm, limit]
       );
 
-      const allResults = result.rows;
+      if (result) {
+        const allResults = result.rows;
 
-      // Group by entity_type
-      const conditionsArray = allResults.filter(r => r.entity_type === 'condition');
-      const treatmentsArray = allResults.filter(r => r.entity_type === 'treatment');
-      const resourcesArray = allResults.filter(r => r.entity_type === 'resource');
+        // Group by entity_type
+        const conditionsArray = allResults.filter(r => r.entity_type === 'condition');
+        const treatmentsArray = allResults.filter(r => r.entity_type === 'treatment');
+        const resourcesArray = allResults.filter(r => r.entity_type === 'resource');
 
-      const conditionsTotal = conditionsArray.length > 0 ? (conditionsArray[0].type_total_count || 0) : 0;
-      const treatmentsTotal = treatmentsArray.length > 0 ? (treatmentsArray[0].type_total_count || 0) : 0;
-      const resourcesTotal = resourcesArray.length > 0 ? (resourcesArray[0].type_total_count || 0) : 0;
+        const conditionsTotal = conditionsArray.length > 0 ? (conditionsArray[0].type_total_count || 0) : 0;
+        const treatmentsTotal = treatmentsArray.length > 0 ? (treatmentsArray[0].type_total_count || 0) : 0;
+        const resourcesTotal = resourcesArray.length > 0 ? (resourcesArray[0].type_total_count || 0) : 0;
 
-      const conditionsResults = conditionsArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
+        const conditionsResults = conditionsArray
+          .map((row: any) => normalizeSearchResult(row, searchTerms))
+          .filter(Boolean) as SearchResult[];
 
-      const treatmentsResults = treatmentsArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
+        const treatmentsResults = treatmentsArray
+          .map((row: any) => normalizeSearchResult(row, searchTerms))
+          .filter(Boolean) as SearchResult[];
 
-      const resourcesResults = resourcesArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
+        const resourcesResults = resourcesArray
+          .map((row: any) => normalizeSearchResult(row, searchTerms))
+          .filter(Boolean) as SearchResult[];
 
-      const loadTime = Date.now() - startTime;
-      logger.info(
-        `✅ Search completed: "${searchTerm}" in ${loadTime}ms (source=${source})`,
-        {
-          conditions: conditionsResults.length,
-          treatments: treatmentsResults.length,
-          resources: resourcesResults.length,
-          totalMatches: conditionsTotal + treatmentsTotal + resourcesTotal,
-        }
-      );
-
-      // Track performance metric in Sentry
-      const metrics = Sentry?.metrics;
-      if (metrics && typeof metrics.distribution === "function") {
-        metrics.distribution("search.duration", loadTime, {
-          unit: "millisecond",
-          tags: {
-            query_length: searchTerm.length,
-            result_count: conditionsResults.length + treatmentsResults.length + resourcesResults.length,
-            source,
-          },
-        });
-      }
-
-      if (loadTime > 400 && typeof Sentry?.captureMessage === "function") {
-        Sentry.captureMessage("Slow search query detected", {
-          level: "warning",
-          tags: {
-            query: searchTerm,
-            duration: loadTime,
-            threshold: "400ms",
-            source,
-          },
-        });
-      }
-
-      const response: GroupedSearchResponse = {
-        conditions: {
-          results: conditionsResults,
-          totalCount: conditionsTotal,
-          hasMore: conditionsResults.length < conditionsTotal,
-        },
-        treatments: {
-          results: treatmentsResults,
-          totalCount: treatmentsTotal,
-          hasMore: treatmentsResults.length < treatmentsTotal,
-        },
-        resources: {
-          results: resourcesResults,
-          totalCount: resourcesTotal,
-          hasMore: resourcesResults.length < resourcesTotal,
-        },
-        loadTimeMs: loadTime,
-        fallbackUsed: false,
-      };
-
-      // Add cache headers for performance
-      const headers = new Headers();
-      headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
-
-      return NextResponse.json(response, { headers });
-
-    } catch (dbError: any) {
-      // Database query failed, fall back to legacy search
-      const errorDetails = {
-        message: dbError.message,
-        code: dbError.code,
-        name: dbError.name,
-        query: searchTerm,
-      };
-      logger.warn("Database search failed, falling back to legacy search", errorDetails);
-      console.error("[search-api] DB connection error details:", errorDetails);
-
-      source = "legacy";
-      const fallback = await runLegacySearch(normalizedSearchPhrase, searchTerms, 1000, 0, type);
-
-      if (type) {
         const loadTime = Date.now() - startTime;
-        return NextResponse.json({
-          results: fallback.results,
-          totalCount: fallback.totalCount,
-          hasMore: fallback.results.length < fallback.totalCount,
+        logger.info(
+          `✅ Search completed: "${searchTerm}" in ${loadTime}ms (source=${source})`,
+          {
+            conditions: conditionsResults.length,
+            treatments: treatmentsResults.length,
+            resources: resourcesResults.length,
+            totalMatches: conditionsTotal + treatmentsTotal + resourcesTotal,
+          }
+        );
+
+        // Track performance metric in Sentry
+        const metrics = Sentry?.metrics;
+        if (metrics && typeof metrics.distribution === "function") {
+          metrics.distribution("search.duration", loadTime, {
+            unit: "millisecond",
+            tags: {
+              query_length: searchTerm.length,
+              result_count: conditionsResults.length + treatmentsResults.length + resourcesResults.length,
+              source,
+            },
+          });
+        }
+
+        if (loadTime > 400 && typeof Sentry?.captureMessage === "function") {
+          Sentry.captureMessage("Slow search query detected", {
+            level: "warning",
+            tags: {
+              query: searchTerm,
+              duration: loadTime,
+              threshold: "400ms",
+              source,
+            },
+          });
+        }
+
+        const response: GroupedSearchResponse = {
+          conditions: {
+            results: conditionsResults,
+            totalCount: conditionsTotal,
+            hasMore: conditionsResults.length < conditionsTotal,
+          },
+          treatments: {
+            results: treatmentsResults,
+            totalCount: treatmentsTotal,
+            hasMore: treatmentsResults.length < treatmentsTotal,
+          },
+          resources: {
+            results: resourcesResults,
+            totalCount: resourcesTotal,
+            hasMore: resourcesResults.length < resourcesTotal,
+          },
           loadTimeMs: loadTime,
-          fallbackUsed: true,
-        });
+          fallbackUsed: false,
+        };
+
+        // Add cache headers for performance
+        const headers = new Headers();
+        headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+
+        return NextResponse.json(response, { headers });
       }
+    }
 
-      const conditionsResults = fallback.results.filter(r => r.type === "condition").slice(0, limit);
-      const treatmentsResults = fallback.results.filter(r => r.type === "treatment").slice(0, limit);
-      const resourcesResults = fallback.results.filter(r => r.type === "resource").slice(0, limit);
+    // Database query unavailable or failed - fall back to legacy search
+    source = "legacy";
+    const fallback = await runLegacySearch(normalizedSearchPhrase, searchTerms, 1000, 0, type);
 
+    if (type) {
       const loadTime = Date.now() - startTime;
-      const response: GroupedSearchResponse = {
-        conditions: {
-          results: conditionsResults,
-          totalCount: fallback.results.filter(r => r.type === "condition").length,
-          hasMore: conditionsResults.length < fallback.results.filter(r => r.type === "condition").length,
-        },
-        treatments: {
-          results: treatmentsResults,
-          totalCount: fallback.results.filter(r => r.type === "treatment").length,
-          hasMore: treatmentsResults.length < fallback.results.filter(r => r.type === "treatment").length,
-        },
-        resources: {
-          results: resourcesResults,
-          totalCount: fallback.results.filter(r => r.type === "resource").length,
-          hasMore: resourcesResults.length < fallback.results.filter(r => r.type === "resource").length,
-        },
+      return NextResponse.json({
+        results: fallback.results,
+        totalCount: fallback.totalCount,
+        hasMore: fallback.results.length < fallback.totalCount,
         loadTimeMs: loadTime,
         fallbackUsed: true,
-        // Include error details for debugging (temporarily in production)
-        dbError: dbError.message,
-        dbErrorCode: dbError.code,
-        dbErrorName: dbError.name,
-      };
-
-      return NextResponse.json(response);
+      });
     }
+
+    const conditionsResults = fallback.results.filter(r => r.type === "condition").slice(0, limit);
+    const treatmentsResults = fallback.results.filter(r => r.type === "treatment").slice(0, limit);
+    const resourcesResults = fallback.results.filter(r => r.type === "resource").slice(0, limit);
+
+    const loadTime = Date.now() - startTime;
+    const response: GroupedSearchResponse = {
+      conditions: {
+        results: conditionsResults,
+        totalCount: fallback.results.filter(r => r.type === "condition").length,
+        hasMore: conditionsResults.length < fallback.results.filter(r => r.type === "condition").length,
+      },
+      treatments: {
+        results: treatmentsResults,
+        totalCount: fallback.results.filter(r => r.type === "treatment").length,
+        hasMore: treatmentsResults.length < fallback.results.filter(r => r.type === "treatment").length,
+      },
+      resources: {
+        results: resourcesResults,
+        totalCount: fallback.results.filter(r => r.type === "resource").length,
+        hasMore: resourcesResults.length < fallback.results.filter(r => r.type === "resource").length,
+      },
+      loadTimeMs: loadTime,
+      fallbackUsed: true,
+    };
+
+    return NextResponse.json(response);
   } catch (error) {
     const loadTime = Date.now() - startTime;
     logger.error("Search failed", error, { loadTime });
