@@ -31,8 +31,7 @@ export async function GET() {
     // Filter for assessments category
     const filteredAssessments = assessments?.filter(a => {
       const metadataCategory = (a.metadata as any)?.category;
-      const dataCategory = (a.data as any)?.category;
-      return metadataCategory === 'assessments-screeners' || dataCategory === 'assessments-screeners';
+      return metadataCategory === 'assessments-screeners';
     }) || [];
 
     const generator = getSitemapGenerator();
