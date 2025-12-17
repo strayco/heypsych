@@ -97,7 +97,7 @@ function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
 
       if (entry.isDirectory()) {
         traverse(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".json") && !entry.name.endsWith(".legacy.json")) {
+      } else if (entry.isFile() && entry.name.endsWith(".json") ) {
         try {
           const content = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
           files.push({ path: fullPath, content });
