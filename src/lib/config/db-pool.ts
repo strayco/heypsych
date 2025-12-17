@@ -17,9 +17,25 @@ function initializePool(): Pool {
     throw new Error('Missing SUPABASE_DB_URL or DATABASE_URL environment variable');
   }
 
+  // Validate connection string format
+  if (!connectionString.startsWith('postgresql://') && !connectionString.startsWith('postgres://')) {
+    console.error('[db-pool] ❌ Invalid connection string format. Must start with postgresql:// or postgres://');
+    console.error('[db-pool] Connection string length:', connectionString.length);
+    console.error('[db-pool] First 50 chars:', connectionString.substring(0, 50));
+    throw new Error('Invalid database connection string format');
+  }
+
+  // Check if connection string looks complete (should contain @ and ://)
+  if (!connectionString.includes('@') || connectionString.split('@').length < 2) {
+    console.error('[db-pool] ❌ Connection string appears incomplete (missing @)');
+    console.error('[db-pool] Connection string length:', connectionString.length);
+    throw new Error('Database connection string appears incomplete');
+  }
+
   // Log connection info (masked) for debugging
   const maskedUrl = connectionString.replace(/:[^:@]+@/, ':****@');
   console.log('[db-pool] Initializing pool with connection:', maskedUrl);
+  console.log('[db-pool] Connection string length:', connectionString.length);
   
   const newPool = new Pool({
     connectionString,
