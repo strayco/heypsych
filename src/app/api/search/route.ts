@@ -261,11 +261,10 @@ export async function GET(req: NextRequest) {
         },
         loadTimeMs: loadTime,
         fallbackUsed: true,
-        // Include error details in development for debugging
-        ...(process.env.NODE_ENV === 'development' ? { 
-          dbError: dbError.message,
-          dbErrorCode: dbError.code 
-        } : {}),
+        // Include error details for debugging (temporarily in production)
+        dbError: dbError.message,
+        dbErrorCode: dbError.code,
+        dbErrorName: dbError.name,
       };
 
       return NextResponse.json(response);
