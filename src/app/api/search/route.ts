@@ -215,10 +215,14 @@ export async function GET(req: NextRequest) {
 
     } catch (dbError: any) {
       // Database query failed, fall back to legacy search
-      logger.warn("Database search failed, falling back to legacy search", {
-        error: dbError.message,
+      const errorDetails = {
+        message: dbError.message,
+        code: dbError.code,
+        name: dbError.name,
         query: searchTerm,
-      });
+      };
+      logger.warn("Database search failed, falling back to legacy search", errorDetails);
+      console.error("[search-api] DB connection error details:", errorDetails);
 
       source = "legacy";
       const fallback = await runLegacySearch(normalizedSearchPhrase, searchTerms, 1000, 0, type);
@@ -257,6 +261,11 @@ export async function GET(req: NextRequest) {
         },
         loadTimeMs: loadTime,
         fallbackUsed: true,
+        // Include error details in development for debugging
+        ...(process.env.NODE_ENV === 'development' ? { 
+          dbError: dbError.message,
+          dbErrorCode: dbError.code 
+        } : {}),
       };
 
       return NextResponse.json(response);
