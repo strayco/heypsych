@@ -16,17 +16,26 @@ export const revalidate = 86400; // Revalidate daily
 export async function GET() {
   try {
     // Fetch all assessment resources
-    const { data: assessments } = await supabase
+    const { data: assessments, error } = await supabase
       .from('entities')
       .select('*')
       .eq('type', 'resource')
       .eq('status', 'active')
-      .or('metadata->>category.eq.assessments-screeners,data->>category.eq.assessments-screeners')
       .order('title');
 
-    // Return empty sitemap if no assessments found (better than 404 for GSC)
+    if (error) {
+      console.error('Supabase query error:', error);
+      throw error;
+    }
+
+    // Filter for assessments category
+    const filteredAssessments = assessments?.filter(a =>
+      a.metadata?.category === 'assessments-screeners' ||
+      a.data?.category === 'assessments-screeners'
+    ) || [];
+
     const generator = getSitemapGenerator();
-    const xml = await generator.generateAssessmentsSitemap((assessments || []) as unknown as Entity[]);
+    const xml = await generator.generateAssessmentsSitemap(filteredAssessments as unknown as Entity[]);
 
     return new NextResponse(xml, {
       status: 200,

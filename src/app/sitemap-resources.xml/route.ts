@@ -16,18 +16,26 @@ export const revalidate = 86400; // Revalidate daily
 export async function GET() {
   try {
     // Fetch all resource entities (excluding assessments)
-    const { data: resources } = await supabase
+    const { data: resources, error } = await supabase
       .from('entities')
       .select('*')
       .eq('type', 'resource')
       .eq('status', 'active')
-      .not('metadata->>category', 'eq', 'assessments-screeners')
-      .not('data->>category', 'eq', 'assessments-screeners')
       .order('title');
 
-    // Return empty sitemap if no resources found (better than 404 for GSC)
+    if (error) {
+      console.error('Supabase query error:', error);
+      throw error;
+    }
+
+    // Filter out assessments
+    const filteredResources = resources?.filter(r =>
+      r.metadata?.category !== 'assessments-screeners' &&
+      r.data?.category !== 'assessments-screeners'
+    ) || [];
+
     const generator = getSitemapGenerator();
-    const xml = await generator.generateResourcesSitemap((resources || []) as unknown as Entity[]);
+    const xml = await generator.generateResourcesSitemap(filteredResources as unknown as Entity[]);
 
     return new NextResponse(xml, {
       status: 200,
