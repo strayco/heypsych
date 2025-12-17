@@ -52,22 +52,34 @@ export function getDbPool(): Pool {
 /**
  * Ensure the database pool has at least one ready connection
  * In serverless environments, this ensures connection is ready before queries
+ * This function will wait and retry until connection is established
  */
 async function ensureConnectionReady(): Promise<void> {
   const pool = getDbPool();
   
-  // Check if we already have idle connections
+  // Check if we already have idle connections - if so, we're ready
   if (pool.idleCount > 0) {
-    return; // Connection already ready
+    return;
   }
 
-  // If no idle connections, create one by executing a simple query
-  // This ensures the connection is fully initialized before the actual query
-  try {
-    await pool.query('SELECT 1');
-  } catch (error) {
-    // If connection fails, wait a bit and let the retry logic handle it
-    // Don't throw here - let queryWithRetry handle retries
+  // If no idle connections, try to create one by executing a simple query
+  // Retry up to 3 times with increasing delays
+  const maxAttempts = 3;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    try {
+      // Try to execute a simple query to establish connection
+      await pool.query('SELECT 1');
+      // If successful, connection is ready
+      return;
+    } catch (error: any) {
+      // If this is the last attempt, throw the error
+      if (attempt === maxAttempts - 1) {
+        throw error;
+      }
+      // Wait before retrying (exponential backoff: 100ms, 200ms)
+      const delay = 100 * Math.pow(2, attempt);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
   }
 }
 
@@ -85,6 +97,7 @@ export async function queryWithRetry<T = any>(
   let lastError: Error | null = null;
 
   // Ensure connection is ready before first attempt (especially important for serverless cold starts)
+  // This will throw if connection cannot be established, which is what we want
   await ensureConnectionReady();
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
