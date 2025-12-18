@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'HeyPsych - Mental Health Treatment Education & Resources';
+export const alt = 'HeyPsych - Mental Health Education & Resources';
 export const size = {
   width: 1200,
   height: 630,
@@ -99,7 +99,7 @@ export default async function Image() {
                 maxWidth: '900px',
               }}
             >
-              Mental Health Treatment Education & Resources
+              Mental Health Education & Resources
             </div>
           </div>
         </div>
