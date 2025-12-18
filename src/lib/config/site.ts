@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "HeyPsych",
-  description: "Beautiful mental health treatment education",
+  description: "Comprehensive mental health treatment information and comparison platform",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 
   // Navigation (easily reorderable)
