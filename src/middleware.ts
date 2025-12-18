@@ -14,6 +14,7 @@ import type { NextRequest } from 'next/server';
  */
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
+  const pathname = request.nextUrl.pathname;
 
   // Skip localhost and Vercel preview deployments
   if (hostname.includes('localhost') || hostname.includes('.vercel.app')) {
@@ -33,6 +34,17 @@ export function middleware(request: NextRequest) {
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
+  }
+
+  // Special handling for OG images - allow cross-origin access for social platforms
+  if (pathname === '/opengraph-image' || pathname.startsWith('/opengraph-image?')) {
+    const response = NextResponse.next();
+
+    // Override strict CORS headers to allow LinkedIn/Facebook/Twitter to load OG images
+    response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
+    response.headers.set('Cross-Origin-Embedder-Policy', 'unsafe-none');
+
+    return response;
   }
 
   return NextResponse.next();

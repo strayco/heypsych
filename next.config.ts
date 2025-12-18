@@ -136,28 +136,11 @@ const nextConfig: NextConfig = {
       return [];
     }
 
-    // Create modified headers for OG images with relaxed CORS
-    const ogImageHeaders = securityHeaders.map((header) => {
-      // Remove CORP restrictions for OG images so LinkedIn/Facebook/Twitter can load them
-      if (header.key === "Cross-Origin-Resource-Policy") {
-        return { key: header.key, value: "cross-origin" };
-      }
-      // Remove COEP for OG images
-      if (header.key === "Cross-Origin-Embedder-Policy") {
-        return { key: header.key, value: "unsafe-none" };
-      }
-      return header;
-    });
-
     return [
       {
-        // Special headers for OG images - must allow cross-origin for social platforms
-        source: "/opengraph-image",
-        headers: ogImageHeaders,
-      },
-      {
-        // Default strict security headers for all other routes (excluding opengraph-image)
-        source: "/:path((?!opengraph-image).*)*",
+        // Apply security headers to all routes
+        // Note: OG image CORS headers are handled in middleware.ts
+        source: "/(.*)",
         headers: securityHeaders,
       },
     ];
