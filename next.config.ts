@@ -138,6 +138,22 @@ const nextConfig: NextConfig = {
 
     return [
       {
+        // Special headers for OG images - must allow cross-origin for social platforms
+        source: "/opengraph-image",
+        headers: securityHeaders.map((header) => {
+          // Remove CORP restrictions for OG images so LinkedIn/Facebook/Twitter can load them
+          if (header.key === "Cross-Origin-Resource-Policy") {
+            return { key: header.key, value: "cross-origin" };
+          }
+          // Remove COEP for OG images
+          if (header.key === "Cross-Origin-Embedder-Policy") {
+            return { key: header.key, value: "unsafe-none" };
+          }
+          return header;
+        }),
+      },
+      {
+        // Default strict security headers for all other routes
         source: "/(.*)",
         headers: securityHeaders,
       },
