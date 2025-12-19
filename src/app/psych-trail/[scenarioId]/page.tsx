@@ -6,11 +6,12 @@ import { GameContainer } from "@/components/psychTrail";
 import { scenarios } from "@/lib/psychTrail";
 
 type Props = {
-  params: { scenarioId: string };
+  params: Promise<{ scenarioId: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const scenario = Object.values(scenarios).find((s) => s.id === params.scenarioId);
+  const { scenarioId } = await params;
+  const scenario = Object.values(scenarios).find((s) => s.id === scenarioId);
 
   if (!scenario) {
     return {
@@ -24,9 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ScenarioPage({ params }: Props) {
+export default async function ScenarioPage({ params }: Props) {
   // Find the scenario by ID
-  const scenario = Object.values(scenarios).find((s) => s.id === params.scenarioId);
+  const { scenarioId } = await params;
+  const scenario = Object.values(scenarios).find((s) => s.id === scenarioId);
 
   if (!scenario) {
     notFound();
