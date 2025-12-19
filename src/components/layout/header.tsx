@@ -59,19 +59,6 @@ export function Header() {
           <nav className="hidden items-center space-x-8 md:flex">
             {siteConfig.navigation.map((item) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-              const isDisabled = item.href === "/psych-trail";
-
-              if (isDisabled) {
-                return (
-                  <span
-                    key={item.href}
-                    className="flex items-center space-x-1 text-sm font-medium text-neutral-400 cursor-not-allowed"
-                  >
-                    {IconComponent && <IconComponent className="h-4 w-4" />}
-                    <span>{item.name}</span>
-                  </span>
-                );
-              }
 
               return (
                 <Link
@@ -140,19 +127,6 @@ export function Header() {
               {/* Mobile Navigation Links */}
               {siteConfig.navigation.map((item) => {
                 const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-                const isDisabled = item.href === "/psych-trail";
-
-                if (isDisabled) {
-                  return (
-                    <span
-                      key={item.href}
-                      className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium text-neutral-400 cursor-not-allowed"
-                    >
-                      {IconComponent && <IconComponent className="h-5 w-5" />}
-                      <span>{item.name}</span>
-                    </span>
-                  );
-                }
 
                 return (
                   <Link

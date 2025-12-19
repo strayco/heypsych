@@ -56,7 +56,7 @@ const websiteSchema = {
  * 1. Hero (Search + "Take me anywhere")
  * 2. Core Navigation Grid (2×2)
  * 3. Trending Topics (Discovery Tiles)
- * 4. Psych Trail (Coming Soon)
+ * 4. Psych Trail
  * 5. Toolkit Strip (Optional)
  *
  * All sections use existing design system:
@@ -94,7 +94,7 @@ export default function HomePage() {
         {/* SECTION 3 - Trending Topics (Discovery Tiles) */}
         <TrendingTopics />
 
-        {/* SECTION 4 - Psych Trail (Coming Soon) */}
+        {/* SECTION 4 - Psych Trail */}
         <PsychTrail />
 
         {/* SECTION 5 - Toolkit Strip (Optional but Preferred) */}

@@ -1,0 +1,310 @@
+{
+  "id": "depression-treatment-demo",
+  "version": "1.0.0",
+  "name": "Depression Treatment Journey (Demo)",
+  "reviewedBy": "Clinical Content Team",
+  "updatedAt": "2025-01-15T00:00:00Z",
+  "startNodeId": "intro",
+  "initialMetrics": {
+    "mood": 30,
+    "energy": 35,
+    "hope": 25,
+    "socialConnection": 40
+  },
+  "initialFlags": {
+    "hasSeenTherapist": false,
+    "onMedication": false,
+    "hasSupport": false
+  },
+  "nodes": [
+    {
+      "id": "intro",
+      "text": "You've been feeling down for months. Low energy, trouble sleeping, and nothing seems enjoyable anymore. You finally decide to seek help.\n\nYour primary care doctor refers you to a mental health professional. What do you want to try first?",
+      "choiceIds": ["choice_therapy", "choice_medication", "choice_both"]
+    },
+    {
+      "id": "therapy_start",
+      "text": "You begin weekly therapy sessions. Your therapist helps you identify negative thought patterns and teaches you coping strategies.\n\nAfter a few weeks, you're starting to notice small changes in how you think about things.",
+      "choiceIds": ["choice_continue_therapy", "choice_add_medication"]
+    },
+    {
+      "id": "medication_start",
+      "text": "You start an antidepressant (SSRI). Your doctor explains it may take 4-6 weeks to feel the full effects, and you might experience some side effects initially.\n\nYou're tracking your mood and side effects carefully.",
+      "choiceIds": ["choice_continue_meds", "choice_add_therapy_later"]
+    },
+    {
+      "id": "combined_start",
+      "text": "You begin both therapy and medication together. Research shows this combination is often more effective than either alone.\n\nYou're working with both a therapist and a prescriber to monitor your progress.",
+      "choiceIds": ["choice_continue_combined", "choice_reduce_one"]
+    },
+    {
+      "id": "therapy_progress",
+      "text": "Several weeks have passed. You've been practicing the skills from therapy regularly. Some days are harder than others, but you're seeing gradual improvement.\n\nYour mood has lifted somewhat, though you still have difficult days.",
+      "choiceIds": ["choice_continue_therapy_only", "choice_consider_meds_now"]
+    },
+    {
+      "id": "medication_progress",
+      "text": "It's been about 6 weeks on medication. The initial side effects have mostly subsided, and you're starting to feel more like yourself.\n\nYour energy is better, and small tasks don't feel as overwhelming.",
+      "choiceIds": ["choice_continue_meds_only", "choice_add_therapy_now"]
+    },
+    {
+      "id": "recovery",
+      "text": "After several months of consistent treatment, you're feeling significantly better. You have more energy, you're reconnecting with friends, and you're finding joy in activities again.\n\nYou know recovery isn't linear, but you have tools and support now.",
+      "choiceIds": ["choice_continue_maintenance", "choice_taper_treatment"],
+      "isEnding": false
+    },
+    {
+      "id": "ending_success",
+      "text": "You've made tremendous progress. Whether through therapy, medication, or both, you've learned to manage your depression and built a foundation for ongoing wellness.\n\nYou continue with maintenance treatment and check-ins, knowing that seeking help was a crucial step.",
+      "choiceIds": [],
+      "isEnding": true
+    },
+    {
+      "id": "ending_partial",
+      "text": "You've made some progress, but the journey has been challenging. You're feeling somewhat better than when you started, though full recovery takes time.\n\nYou decide to continue treatment and remain hopeful about further improvement.",
+      "choiceIds": [],
+      "isEnding": true
+    },
+    {
+      "id": "ending_struggle",
+      "text": "Despite your efforts, you're still struggling significantly. This happens sometimes—not every treatment works for everyone, and finding the right approach can take time.\n\nYou decide to talk with your providers about trying a different approach.",
+      "choiceIds": [],
+      "isEnding": true
+    }
+  ],
+  "choices": [
+    {
+      "id": "choice_therapy",
+      "text": "Start with therapy (CBT/talk therapy)",
+      "effects": [
+        { "type": "flag", "flag": "hasSeenTherapist", "value": true },
+        { "type": "metric", "metric": "hope", "change": 10 }
+      ],
+      "nextNodeId": "therapy_start"
+    },
+    {
+      "id": "choice_medication",
+      "text": "Start with medication (antidepressant)",
+      "effects": [
+        { "type": "flag", "flag": "onMedication", "value": true },
+        { "type": "metric", "metric": "hope", "change": 5 }
+      ],
+      "nextNodeId": "medication_start"
+    },
+    {
+      "id": "choice_both",
+      "text": "Try both therapy and medication together",
+      "effects": [
+        { "type": "flag", "flag": "hasSeenTherapist", "value": true },
+        { "type": "flag", "flag": "onMedication", "value": true },
+        { "type": "metric", "metric": "hope", "change": 15 }
+      ],
+      "nextNodeId": "combined_start"
+    },
+    {
+      "id": "choice_continue_therapy",
+      "text": "Continue with therapy only",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 10 },
+        { "type": "metric", "metric": "hope", "change": 5 }
+      ],
+      "nextNodeId": "therapy_progress"
+    },
+    {
+      "id": "choice_add_medication",
+      "text": "Add medication to therapy",
+      "effects": [
+        { "type": "flag", "flag": "onMedication", "value": true },
+        { "type": "metric", "metric": "mood", "change": 5 }
+      ],
+      "nextNodeId": "combined_start"
+    },
+    {
+      "id": "choice_continue_meds",
+      "text": "Continue medication only",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 5 },
+        { "type": "metric", "metric": "energy", "change": 10 }
+      ],
+      "nextNodeId": "medication_progress"
+    },
+    {
+      "id": "choice_add_therapy_later",
+      "text": "Add therapy to medication",
+      "effects": [
+        { "type": "flag", "flag": "hasSeenTherapist", "value": true },
+        { "type": "metric", "metric": "mood", "change": 8 }
+      ],
+      "nextNodeId": "combined_start"
+    },
+    {
+      "id": "choice_continue_combined",
+      "text": "Continue both treatments",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 15 },
+        { "type": "metric", "metric": "energy", "change": 10 },
+        { "type": "metric", "metric": "hope", "change": 10 }
+      ],
+      "nextNodeId": "recovery"
+    },
+    {
+      "id": "choice_reduce_one",
+      "text": "Focus on one treatment",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 5 }
+      ],
+      "nextNodeId": "therapy_progress"
+    },
+    {
+      "id": "choice_continue_therapy_only",
+      "text": "Stay with therapy alone",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 8 },
+        { "type": "metric", "metric": "socialConnection", "change": 5 }
+      ],
+      "nextNodeId": "recovery"
+    },
+    {
+      "id": "choice_consider_meds_now",
+      "text": "Consider adding medication",
+      "effects": [
+        { "type": "flag", "flag": "onMedication", "value": true },
+        { "type": "metric", "metric": "mood", "change": 10 }
+      ],
+      "nextNodeId": "combined_start"
+    },
+    {
+      "id": "choice_continue_meds_only",
+      "text": "Stay with medication alone",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 10 },
+        { "type": "metric", "metric": "energy", "change": 8 }
+      ],
+      "nextNodeId": "recovery"
+    },
+    {
+      "id": "choice_add_therapy_now",
+      "text": "Add therapy to medication",
+      "effects": [
+        { "type": "flag", "flag": "hasSeenTherapist", "value": true },
+        { "type": "metric", "metric": "mood", "change": 12 }
+      ],
+      "nextNodeId": "combined_start"
+    },
+    {
+      "id": "choice_continue_maintenance",
+      "text": "Continue with maintenance treatment",
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 10 },
+        { "type": "end", "endingId": "success" }
+      ],
+      "nextNodeId": "ending_success"
+    },
+    {
+      "id": "choice_taper_treatment",
+      "text": "Begin tapering treatment",
+      "condition": {
+        "type": "metric",
+        "metric": "mood",
+        "operator": ">=",
+        "value": 70
+      },
+      "effects": [
+        { "type": "end", "endingId": "success" }
+      ],
+      "nextNodeId": "ending_success"
+    }
+  ],
+  "events": [
+    {
+      "id": "event_good_day",
+      "text": "You had an unexpectedly good day. Small things felt more enjoyable than usual.",
+      "probability": 0.15,
+      "condition": {
+        "type": "metric",
+        "metric": "mood",
+        "operator": ">=",
+        "value": 40
+      },
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 5 },
+        { "type": "metric", "metric": "hope", "change": 3 }
+      ]
+    },
+    {
+      "id": "event_setback",
+      "text": "You had a difficult setback this week. Something triggered old negative patterns.",
+      "probability": 0.1,
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": -5 },
+        { "type": "metric", "metric": "energy", "change": -3 }
+      ]
+    },
+    {
+      "id": "event_friend_support",
+      "text": "A friend reached out to check on you. Their support reminded you that people care.",
+      "probability": 0.2,
+      "condition": {
+        "type": "flag",
+        "flag": "hasSeenTherapist",
+        "value": true
+      },
+      "effects": [
+        { "type": "metric", "metric": "socialConnection", "change": 10 },
+        { "type": "metric", "metric": "hope", "change": 5 },
+        { "type": "flag", "flag": "hasSupport", "value": true }
+      ]
+    },
+    {
+      "id": "event_side_effects",
+      "text": "You're experiencing some medication side effects (nausea, sleep changes). Your doctor says they often improve after 2-3 weeks.",
+      "probability": 0.25,
+      "condition": {
+        "type": "and",
+        "conditions": [
+          { "type": "flag", "flag": "onMedication", "value": true },
+          { "type": "week", "operator": "<=", "value": 3 }
+        ]
+      },
+      "effects": [
+        { "type": "metric", "metric": "energy", "change": -5 }
+      ]
+    },
+    {
+      "id": "event_breakthrough",
+      "text": "You had a breakthrough in therapy. A pattern that was invisible before suddenly made sense.",
+      "probability": 0.15,
+      "condition": {
+        "type": "and",
+        "conditions": [
+          { "type": "flag", "flag": "hasSeenTherapist", "value": true },
+          { "type": "week", "operator": ">=", "value": 4 }
+        ]
+      },
+      "effects": [
+        { "type": "metric", "metric": "mood", "change": 8 },
+        { "type": "metric", "metric": "hope", "change": 10 }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "success",
+      "title": "Recovery Path",
+      "text": "Through consistent treatment and effort, you've built a foundation for managing depression. You've learned that seeking help was a sign of strength, not weakness.\n\n**Key Outcomes:**\n- Improved mood and energy\n- Better coping skills\n- Stronger support network\n- Ongoing wellness plan\n\n*Note: This is a fictional educational simulation. Real treatment journeys vary greatly and should always involve professional guidance.*",
+      "isPositive": true
+    },
+    {
+      "id": "partial",
+      "title": "Partial Progress",
+      "text": "You've made some progress, though the path hasn't been easy. Recovery from depression often takes time and sometimes requires trying different approaches.\n\n**Key Outcomes:**\n- Some improvement in symptoms\n- Beginning to develop coping skills\n- Understanding that recovery isn't linear\n\n*Note: This is a fictional educational simulation. Real treatment journeys vary greatly and should always involve professional guidance.*",
+      "isPositive": false
+    },
+    {
+      "id": "struggle",
+      "title": "Continuing the Journey",
+      "text": "Despite your efforts, you're still struggling. This doesn't mean failure—it means this particular approach may not be the right fit. Many people try several different treatments before finding what works.\n\n**Key Outcomes:**\n- Learned what doesn't work for you\n- Building resilience through persistence\n- Ready to explore alternative approaches\n\n*Note: This is a fictional educational simulation. Real treatment journeys vary greatly and should always involve professional guidance.*",
+      "isPositive": false
+    }
+  ]
+}

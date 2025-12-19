@@ -1,106 +1,102 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Compass, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft, Compass, Clock } from "lucide-react";
+import { scenarios } from "@/lib/psychTrail";
 
 export const metadata: Metadata = {
-  title: "Psych Trail - Coming Soon | HeyPsych",
+  title: "Psych Trail - Mental Health Treatment Simulator | HeyPsych",
   description:
-    "An interactive treatment simulator to help you explore different mental health treatment paths in a safe, educational environment.",
+    "An educational, fictional simulation that models how treatment decisions unfold over time—choices, tradeoffs, and unexpected events.",
 };
 
 /**
- * Psych Trail - Placeholder Page
+ * Psych Trail - Scenario Selection Page
  *
- * Purpose: Simple preview/placeholder page for the upcoming Psych Trail feature
- * Design: Calm, informational, no CTAs yet
+ * Lists all available scenarios for users to choose from.
  */
 export default function PsychTrailPage() {
+  // Get all scenarios as an array
+  const scenarioList = Object.values(scenarios);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          {/* Back Link */}
-          <Link
-            href="/"
-            className="mb-8 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        {/* Back Link */}
+        <Link
+          href="/"
+          className="mb-6 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Home
+        </Link>
 
-          {/* Icon */}
-          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-100 to-blue-100">
-            <Compass className="h-10 w-10 text-purple-600" />
+        {/* Page Header */}
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg">
+            <Compass className="h-8 w-8 text-white" />
           </div>
+          <h1 className="mb-3 text-4xl font-bold text-neutral-900">Psych Trail</h1>
+          <p className="mx-auto max-w-2xl text-lg text-neutral-600">
+            Choose a scenario to explore how treatment decisions unfold over time
+          </p>
+          <p className="mt-2 text-sm text-neutral-500 italic">
+            Educational simulations only. Fictional scenarios. Not medical advice.
+          </p>
+        </div>
 
-          {/* Heading */}
-          <h1 className="mb-4 text-4xl font-bold text-neutral-900">
-            Psych Trail
-            <span className="ml-3 text-lg font-normal text-neutral-500">(Coming Soon)</span>
-          </h1>
+        {/* Scenario Grid */}
+        <div className="mx-auto max-w-4xl">
+          <div className="grid gap-6 md:grid-cols-2">
+            {scenarioList.map((scenario) => (
+              <Link
+                key={scenario.id}
+                href={`/psych-trail/${scenario.id}`}
+                className="group block"
+              >
+                <div className="h-full rounded-xl border-2 border-neutral-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-purple-400 hover:shadow-lg">
+                  {/* Scenario Header */}
+                  <div className="mb-4">
+                    <h2 className="mb-2 text-xl font-bold text-neutral-900 transition-colors group-hover:text-purple-700">
+                      {scenario.title}
+                    </h2>
+                    <p className="text-sm text-neutral-600">{scenario.summary}</p>
+                  </div>
 
-          {/* Description */}
-          <div className="space-y-4 text-neutral-700">
-            <p className="text-lg leading-relaxed">
-              An interactive treatment simulator designed to help you explore different mental
-              health treatment paths in a safe, educational environment.
-            </p>
+                  {/* Scenario Meta */}
+                  <div className="flex items-center gap-4 text-xs text-neutral-500">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      <span>~{scenario.estimatedMinutes} minutes</span>
+                    </div>
+                    {scenario.tags && scenario.tags.length > 0 && (
+                      <div className="flex gap-1">
+                        {scenario.tags.slice(0, 2).map((tag) => (
+                          <span key={tag} className="rounded bg-neutral-100 px-2 py-1">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
-            <p>
-              Follow fictional patient journeys and learn how various treatments work in practice.
-              Understand the decision-making process behind treatment selection, potential outcomes,
-              and how different approaches compare.
-            </p>
-
-            <p className="text-sm text-neutral-600">
-              This feature is currently in development. We're working to create an educational
-              experience that helps demystify mental health treatment options.
-            </p>
+                  {/* Hover Indicator */}
+                  <div className="mt-4 flex items-center text-sm font-medium text-purple-600 opacity-0 transition-opacity group-hover:opacity-100">
+                    Start Scenario →
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
+        </div>
 
-          {/* What to Expect Section */}
-          <div className="mt-12 rounded-xl border border-neutral-200 bg-white p-6">
-            <h2 className="mb-4 text-xl font-semibold text-neutral-900">What to Expect</h2>
-            <ul className="space-y-3 text-sm text-neutral-700">
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600">
-                  1
-                </span>
-                <span>
-                  <strong>Interactive Scenarios:</strong> Follow realistic patient journeys through
-                  different treatment paths
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600">
-                  2
-                </span>
-                <span>
-                  <strong>Educational Focus:</strong> Learn how treatments work in practice, not
-                  just theory
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600">
-                  3
-                </span>
-                <span>
-                  <strong>Safe Exploration:</strong> All scenarios are fictional and designed for
-                  learning purposes
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-8">
-            <Link href="/">
-              <Button variant="outline" size="lg">
-                Explore HeyPsych
-              </Button>
-            </Link>
-          </div>
+        {/* Educational Disclaimer */}
+        <div className="mx-auto mt-12 max-w-3xl rounded-lg border border-blue-200 bg-blue-50 p-6">
+          <p className="text-sm font-semibold text-blue-900">Educational Disclaimer</p>
+          <p className="mt-2 text-sm text-blue-800">
+            These are fictional scenarios designed for learning purposes only. They do not
+            constitute medical advice. Real treatment decisions should always be made with
+            qualified mental health professionals.
+          </p>
         </div>
       </div>
     </div>

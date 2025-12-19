@@ -1,0 +1,328 @@
+{
+  "id": "first-psych-appointment",
+  "title": "First Psychiatry Appointment",
+  "summary": "Navigate your first appointment with a psychiatrist. Learn what to expect, how to communicate effectively, and how to make the most of your time.",
+  "category": "system",
+  "tags": ["appointment", "psychiatrist", "communication", "first-visit"],
+  "version": "1.0.0",
+  "reviewedBy": "Clinical Content Team",
+  "updatedAt": "2025-01-17T00:00:00Z",
+  "difficulty": "beginner",
+  "estimatedMinutes": 10,
+  "timeConfig": {
+    "stepLabel": "step",
+    "stepLabelPlural": "steps",
+    "maxSteps": 15
+  },
+  "uiConfig": {
+    "metrics": [
+      {
+        "key": "preparedness",
+        "label": "Preparedness",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "comfort",
+        "label": "Comfort Level",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "communication",
+        "label": "Communication Quality",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      }
+    ],
+    "showTimeline": true,
+    "showEventLog": true
+  },
+  "initialMetrics": {
+    "preparedness": 30,
+    "comfort": 40,
+    "communication": 50
+  },
+  "initialFlags": {},
+  "startNodeId": "waiting-room",
+  "nodes": [
+    {
+      "id": "waiting-room",
+      "text": "You're sitting in the waiting room for your first psychiatry appointment. Your appointment is in a few minutes. You're feeling a mix of nervousness and hope.\n\nWhat do you do while waiting?",
+      "choiceIds": ["choice_review_notes", "choice_scroll_phone", "choice_sit_quietly"]
+    },
+    {
+      "id": "appointment-starts",
+      "text": "The psychiatrist calls your name. You enter the office—it's a calm, professional space. They introduce themselves and invite you to sit down.\n\n\"So, what brings you in today?\"",
+      "choiceIds": ["choice_detailed_history", "choice_brief_overview", "choice_deflect"]
+    },
+    {
+      "id": "discussing-symptoms",
+      "text": "The psychiatrist listens attentively and asks follow-up questions about your symptoms, how long you've been experiencing them, and how they affect your daily life. You notice they're taking notes and seem genuinely interested in understanding your experience.\n\nHow do you respond?",
+      "choiceIds": ["choice_honest_detailed", "choice_minimize", "choice_vague"]
+    },
+    {
+      "id": "treatment-options",
+      "text": "Based on what you've shared, the psychiatrist explains potential treatment options. They mention both medication and therapy approaches.\n\n\"Do you have any questions about these options?\"",
+      "choiceIds": ["choice_ask_questions", "choice_accept_quietly", "choice_express_concerns"]
+    },
+    {
+      "id": "making-plan",
+      "text": "You've discussed treatment options. Now it's time to create a plan together. The psychiatrist asks what feels right for you as a starting point.",
+      "choiceIds": ["choice_medication_trial", "choice_therapy_first", "choice_combined_approach", "choice_think_about_it"]
+    },
+    {
+      "id": "ending-session",
+      "text": "The session is wrapping up. The psychiatrist schedules a follow-up appointment and provides resources for what to do if you need support before then.\n\nHow do you feel as the appointment ends?",
+      "choiceIds": ["choice_thank_and_leave", "choice_last_question", "choice_leave_uncertain"],
+      "isEnding": false
+    },
+    {
+      "id": "ending-prepared",
+      "text": "You leave the appointment feeling well-informed and with a clear plan forward. You have resources, know what to expect, and feel you can reach out if needed.\n\nYou learned what to expect, how to communicate your needs, and how to collaborate on a treatment plan.",
+      "choiceIds": [],
+      "isEnding": true
+    },
+    {
+      "id": "ending-mixed",
+      "text": "You leave with some clarity, though you wish you'd asked more questions or shared more details. Still, you have a follow-up scheduled and some direction forward.\n\nYou learned that appointments are a collaborative process and that you can prepare more for next time.",
+      "choiceIds": [],
+      "isEnding": true
+    },
+    {
+      "id": "ending-uncertain",
+      "text": "You leave feeling somewhat uncertain. You have a follow-up appointment, but you're not entirely sure what the plan is or what to expect next.\n\nYou learned that clear communication takes practice, and you can do better at your next appointment.",
+      "choiceIds": [],
+      "isEnding": true
+    }
+  ],
+  "choices": [
+    {
+      "id": "choice_review_notes",
+      "text": "Review the notes you prepared about your symptoms",
+      "description": "Taking time to review your notes helps you feel more prepared and organized. Having specific examples ready makes it easier to communicate clearly with your psychiatrist.",
+      "resultText": "You reviewed your notes and walked into the appointment feeling organized and ready. Having specific examples and dates fresh in your mind helped you communicate clearly with the psychiatrist.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 20 },
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "appointment-starts"
+    },
+    {
+      "id": "choice_scroll_phone",
+      "text": "Scroll through your phone to distract yourself",
+      "description": "Many people use their phone to manage nervousness in waiting rooms. While this provides temporary distraction, it means you might not mentally prepare for what you want to share. This is common and understandable—appointments can feel less daunting next time once you know what to expect.",
+      "resultText": "You distracted yourself with your phone, but when your name was called, you realized you hadn't thought through what you wanted to say. You felt a bit more anxious going in.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -5 }
+      ],
+      "nextNodeId": "appointment-starts"
+    },
+    {
+      "id": "choice_sit_quietly",
+      "text": "Sit quietly and take some deep breaths",
+      "description": "Taking a moment to center yourself with breathing exercises helps calm pre-appointment nerves. This small boost to your comfort level can help you feel more present during the session.",
+      "resultText": "You took several deep breaths and calmed your nerves. When your name was called, you felt more centered and ready to engage in the conversation.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 }
+      ],
+      "nextNodeId": "appointment-starts"
+    },
+    {
+      "id": "choice_detailed_history",
+      "text": "Share a detailed history of your symptoms and experiences",
+      "description": "Providing specific examples and timeline details helps improve communication quality and helps the psychiatrist understand your situation better, leading to more informed treatment recommendations.",
+      "resultText": "You shared specific examples and timeline details. The psychiatrist listened carefully and asked clarifying questions, building a comprehensive understanding of your situation.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 20 },
+        { "type": "metric", "metric": "preparedness", "change": 10 }
+      ],
+      "nextNodeId": "discussing-symptoms"
+    },
+    {
+      "id": "choice_brief_overview",
+      "text": "Give a brief overview of why you're here",
+      "description": "Sharing a general overview is a good start and helps establish the basics. While not as detailed as bringing notes, it still communicates your main concerns and opens the door for follow-up questions.",
+      "resultText": "You explained your main concerns in general terms. The psychiatrist nodded and asked follow-up questions to get more details about what you're experiencing.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 10 }
+      ],
+      "nextNodeId": "discussing-symptoms"
+    },
+    {
+      "id": "choice_deflect",
+      "text": "Deflect a bit, feeling uncertain how much to share",
+      "description": "It's very common to feel uncertain about how much to share in a first appointment—opening up to a stranger about personal struggles takes courage. Many people deflect initially. While this protects your sense of privacy, it can make it harder for the psychiatrist to understand what you're experiencing, which may affect the conversation flow.",
+      "resultText": "You gave vague answers and changed the subject. The psychiatrist seemed patient but couldn't get a clear picture of what you're experiencing. As the conversation continued, you felt uncertain whether you were being understood.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "discussing-symptoms"
+    },
+    {
+      "id": "choice_honest_detailed",
+      "text": "Be honest and detailed about your experiences",
+      "description": "Being open and specific about your experiences helps build trust and improves communication. Even without written notes, sharing honestly gives the psychiatrist important context and can make you feel more comfortable as the conversation progresses.",
+      "resultText": "You opened up about your experiences honestly. The psychiatrist listened without judgment, and as you talked, you felt more comfortable and understood. The open dialogue helped establish trust.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 15 },
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "treatment-options"
+    },
+    {
+      "id": "choice_minimize",
+      "text": "Minimize your symptoms, not wanting to seem dramatic",
+      "description": "Many people worry about oversharing or sounding dramatic in medical settings—this concern is incredibly common. While minimizing feels safer, it can make it harder for the psychiatrist to gauge severity and provide appropriate recommendations. Remember, psychiatrists are trained to assess mental health concerns without judgment.",
+      "resultText": "You downplayed your symptoms, describing them as \"not that bad\" or \"probably normal.\" The psychiatrist listened but seemed to probe gently for more details. You worried you might not have given them the full picture.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": -10 },
+        { "type": "metric", "metric": "preparedness", "change": -5 }
+      ],
+      "nextNodeId": "treatment-options"
+    },
+    {
+      "id": "choice_vague",
+      "text": "Stay somewhat vague, unsure how to describe everything",
+      "description": "Mental health experiences can be difficult to put into words, especially when you're feeling nervous or uncertain. Many people struggle with this in their first appointment. While being vague is understandable, it can limit how much the psychiatrist can understand your situation. With practice and preparation, this gets easier.",
+      "resultText": "You tried to explain but kept your answers general, using phrases like \"sometimes\" and \"I guess.\" The psychiatrist asked follow-up questions to help you clarify, but you found it hard to pin down specifics. You made a mental note to prepare more concrete examples next time.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "treatment-options"
+    },
+    {
+      "id": "choice_ask_questions",
+      "text": "Ask questions about how treatments work and potential side effects",
+      "description": "Asking informed questions demonstrates engagement and helps you make better decisions about your care. Understanding how treatments work, what to expect, and potential side effects significantly increases your preparedness.",
+      "resultText": "You asked detailed questions about how each treatment works, what to expect, and potential side effects. The psychiatrist appreciated your engagement and provided thorough explanations, leaving you much more informed.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 20 },
+        { "type": "metric", "metric": "communication", "change": 15 }
+      ],
+      "nextNodeId": "making-plan"
+    },
+    {
+      "id": "choice_accept_quietly",
+      "text": "Accept the information quietly without questions",
+      "description": "Some people feel more comfortable listening quietly and processing information later—this is a common response, especially if you feel overwhelmed or aren't sure what to ask. However, not asking questions in the moment can mean missing opportunities to understand your options more fully. Remember, psychiatrists expect and welcome questions.",
+      "resultText": "You nodded and listened as the psychiatrist explained the options. You didn't want to seem difficult or take up too much time, so you stayed quiet. As they moved on to creating a plan, you realized there were things you wished you'd asked about.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": -10 }
+      ],
+      "nextNodeId": "making-plan"
+    },
+    {
+      "id": "choice_express_concerns",
+      "text": "Express concerns about medication or therapy",
+      "description": "Voicing your concerns—whether about side effects, stigma, or effectiveness—helps the psychiatrist address your specific worries and tailor recommendations. Being honest about hesitations improves communication and helps you feel more prepared for the decision ahead.",
+      "resultText": "You shared your concerns openly—about side effects, how treatment might fit into your life, or whether it would actually help. The psychiatrist listened without judgment and addressed each concern directly, helping you understand your options more clearly.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 10 },
+        { "type": "metric", "metric": "preparedness", "change": 5 }
+      ],
+      "nextNodeId": "making-plan"
+    },
+    {
+      "id": "choice_medication_trial",
+      "text": "Try medication with regular follow-ups",
+      "description": "Starting medication is a common treatment approach that can be effective for many conditions. Having a clear plan with regular follow-ups helps you feel more prepared and ensures close monitoring as you begin treatment.",
+      "resultText": "You agreed to try medication. The psychiatrist explained the starting dose, what to expect in the first few weeks, and potential side effects to watch for. They scheduled a follow-up in two weeks to check how you're doing and make any needed adjustments. You left with a clear plan and a prescription.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 10 }
+      ],
+      "nextNodeId": "ending-session"
+    },
+    {
+      "id": "choice_therapy_first",
+      "text": "Start with therapy before considering medication",
+      "description": "Beginning with therapy is a valid approach, especially if you prefer to explore non-medication options first. Having a clear plan increases your comfort level and preparedness, and you can always revisit medication later if needed.",
+      "resultText": "You decided to start with therapy. The psychiatrist supported your choice and provided referrals to therapists who specialize in what you're experiencing. They explained that you can revisit medication at any time if you'd like, and scheduled a follow-up to see how therapy is going. You felt good about starting with this approach.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 10 },
+        { "type": "metric", "metric": "preparedness", "change": 5 }
+      ],
+      "nextNodeId": "ending-session"
+    },
+    {
+      "id": "choice_combined_approach",
+      "text": "Try both therapy and medication together",
+      "description": "Research shows that combining therapy and medication is often highly effective for many conditions. This comprehensive treatment plan can significantly improve your preparedness and communication with your care team.",
+      "resultText": "You decided on a combined approach of therapy and medication. The psychiatrist explained how these treatments work together—medication can help stabilize symptoms while therapy addresses underlying patterns and builds coping skills. They provided therapy referrals, wrote a prescription, and scheduled a follow-up to monitor both. You felt prepared with a comprehensive plan.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 15 },
+        { "type": "metric", "metric": "communication", "change": 10 }
+      ],
+      "nextNodeId": "ending-session"
+    },
+    {
+      "id": "choice_think_about_it",
+      "text": "Ask for time to think about the options",
+      "description": "Taking time to reflect on treatment options is completely valid and can increase your comfort level. However, delaying a decision slightly reduces your immediate preparedness since you leave without a concrete plan in place. You can always discuss options further at your follow-up.",
+      "resultText": "You asked for time to think about the treatment options. The psychiatrist completely understood and encouraged you to take the time you need. They offered to send you some information to review and said you can discuss your decision at your follow-up appointment. While you don't have a concrete treatment plan yet, you felt respected and not rushed.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": -5 },
+        { "type": "metric", "metric": "comfort", "change": 5 }
+      ],
+      "nextNodeId": "ending-session"
+    },
+    {
+      "id": "choice_thank_and_leave",
+      "text": "Thank the psychiatrist and head out",
+      "description": "You've completed your appointment and have a plan forward. While you might wish you'd communicated more or asked additional questions, you have a follow-up scheduled and some direction forward.",
+      "resultText": "You thanked the psychiatrist for their time and headed out. You have your treatment plan and follow-up scheduled. As you walked to your car, you thought of a few things you wished you'd asked about or explained better, but overall you felt okay about taking this first step.",
+      "effects": [
+        { "type": "end", "endingId": "mixed" }
+      ],
+      "nextNodeId": "ending-mixed"
+    },
+    {
+      "id": "choice_last_question",
+      "text": "Ask one more important question before leaving",
+      "description": "Taking the opportunity to clarify any remaining concerns shows good self-advocacy. This final question helps ensure you leave with a complete understanding, improving both your preparedness and communication effectiveness.",
+      "resultText": "Before leaving, you asked one more question that had been on your mind. The psychiatrist took the time to answer thoroughly, making sure you understood. This final clarification helped you feel more confident about your treatment plan. You left feeling well-informed and ready to take the next steps.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 10 },
+        { "type": "metric", "metric": "communication", "change": 5 },
+        { "type": "end", "endingId": "prepared" }
+      ],
+      "nextNodeId": "ending-prepared",
+      "advancesTime": false
+    },
+    {
+      "id": "choice_leave_uncertain",
+      "text": "Leave feeling a bit overwhelmed and unclear",
+      "description": "First appointments can be overwhelming, especially if you found it hard to articulate your experiences or felt unsure about how the conversation went. It's okay to leave feeling uncertain—this is valuable information about what you might need to prepare differently for your next appointment.",
+      "resultText": "You left the appointment feeling somewhat overwhelmed. There was a lot of information, and you're not entirely sure what the plan is or what happens next. You have a follow-up scheduled, but you wish the conversation had been clearer. As you left, you felt uncertain about whether you'd communicated effectively or understood everything the psychiatrist said.",
+      "effects": [
+        { "type": "end", "endingId": "uncertain" }
+      ],
+      "nextNodeId": "ending-uncertain"
+    }
+  ],
+  "events": [],
+  "endings": [
+    {
+      "id": "prepared",
+      "title": "Well-Prepared Path Forward",
+      "text": "What Happened\n\nYou left your first psychiatry appointment with clarity about next steps. You were able to share your experiences with enough detail for the psychiatrist to understand what you're going through, engaged with questions about treatment approaches, and worked together to create a plan that feels right for you.\n\nWhy This Experience Felt This Way\n\nYour preparation and willingness to communicate openly helped the psychiatrist understand your situation more fully. Asking questions gave you the information you needed to make informed decisions. This collaborative approach meant you could actively participate in shaping your treatment plan rather than just receiving instructions.\n\nWhat You Learned\n\nFirst psychiatry appointments are about building a foundation for ongoing care. You experienced how:\n- Clear communication about symptoms and experiences helps psychiatrists make better recommendations\n- Asking questions is expected and valued—it's a sign of engagement, not a burden\n- Treatment planning works best as a collaboration where your preferences and concerns matter\n- Having specific examples and prepared thoughts can make conversations more productive\n\nMoving Forward\n\nEvery appointment is different, and this simulation showed one possible path. Real psychiatry visits vary based on individual circumstances, communication styles, and treatment needs. Your next appointment will build on this foundation—you'll have more context, know what to expect, and can continue developing the skills that help you advocate for your mental health care.\n\nThis is a fictional educational simulation. Real appointments vary greatly based on individual needs and circumstances.",
+      "isPositive": true
+    },
+    {
+      "id": "mixed",
+      "title": "A Learning Experience",
+      "text": "What Happened\n\nYou completed your first psychiatry appointment and left with a treatment plan and follow-up scheduled. While you shared some information about your experiences and have general direction forward, you find yourself wishing you'd asked more questions or been more specific about certain details.\n\nWhy This Experience Felt This Way\n\nFirst appointments can feel overwhelming, and it's completely normal to walk out thinking of things you wish you'd said or asked. Maybe you felt nervous about taking up too much time, weren't sure what questions were \"okay\" to ask, or found it harder than expected to articulate your experiences in the moment. These are common challenges that many people face in medical appointments, especially first visits.\n\nWhat You Learned\n\nYou experienced firsthand how psychiatry appointments work and what they feel like. Now you know:\n- What the setting and conversation structure are like, which can reduce anxiety for next time\n- That appointments are collaborative—the psychiatrist wants your input and questions\n- How it feels to talk about mental health concerns with a professional\n- That preparation (like writing down questions or symptoms beforehand) can help you communicate more effectively\n- That it's okay to take notes during appointments or ask for clarification when something isn't clear\n\nMoving Forward\n\nThis was your first appointment, and first attempts at anything new rarely feel perfect—that's part of the learning process. You now have context that you didn't have before. At your next appointment, you can build on what you learned: prepare questions ahead of time, bring up anything you forgot to mention this time, or ask the psychiatrist to slow down if you need more time to process information. Communication in medical settings is a skill that improves with practice, and every appointment is an opportunity to advocate more effectively for yourself.\n\nThis is a fictional educational simulation. Real appointments vary greatly based on individual needs and circumstances.",
+      "isPositive": false
+    },
+    {
+      "id": "uncertain",
+      "title": "Building Communication Skills",
+      "text": "What Happened\n\nYou attended your first psychiatry appointment and have a follow-up scheduled. The psychiatrist provided some information about potential next steps, but you're leaving without full clarity about the treatment plan or what to expect. You found it challenging to share details about your experiences or to ask the questions on your mind.\n\nWhy This Experience Felt This Way\n\nOpening up about mental health concerns to someone you just met is genuinely difficult. Many people find their first psychiatry appointment overwhelming—there's a lot to process, you might feel self-conscious, and it can be hard to find the right words for experiences that feel complex or deeply personal. If you felt uncertain about how much to share, worried about being judged, or struggled to articulate what you're going through, you're far from alone. These barriers are incredibly common, especially in first appointments when everything is new and unfamiliar.\n\nWhat You Learned\n\nEven though the appointment might not have gone the way you hoped, you took an important step and learned valuable things:\n- You experienced what a psychiatry appointment is like—the setting, format, and types of questions asked\n- You learned which parts felt most difficult, which helps you identify what to prepare for next time\n- You got a sense of how psychiatrists communicate and what they need to understand in order to help\n- You discovered that communicating about mental health takes practice, and that's completely okay\n- You learned that appointments are safe spaces where professionals expect uncertainty and difficulty with communication\n\nMoving Forward\n\nThis simulation showed a path where communication felt hard—but that experience itself is valuable information. Many people need several appointments before they feel comfortable opening up, and psychiatrists understand this. Before your next appointment, you might find it helpful to write down specific examples of what you're experiencing, questions you want to ask, or even a note saying \"I find this hard to talk about.\" You could also let the psychiatrist know that you struggled in the first appointment and ask for their help in structuring the conversation differently.\n\nCommunication skills develop over time. Your first appointment doesn't determine how future appointments will go—each one is a new opportunity to practice advocating for yourself, and it genuinely gets easier. The fact that you showed up despite the difficulty already demonstrates courage and commitment to your mental health.\n\nThis is a fictional educational simulation. Real appointments vary greatly based on individual needs and circumstances.",
+      "isPositive": false
+    }
+  ]
+}
