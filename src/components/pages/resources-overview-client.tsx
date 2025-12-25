@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { ResourceSearch } from "@/components/resources/ResourceSearch";
 import { PopularResourceChips } from "@/components/resources/PopularResourceChips";
-import type { Entity } from "@/lib/types";
+import type { Entity } from "@/lib/types/database";
 
 const resourceCategories = [
   {
