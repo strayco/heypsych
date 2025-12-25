@@ -156,6 +156,42 @@ const nextConfig: NextConfig = {
         destination: "/treatments/:slug",
         permanent: true, // 301 redirect
       },
+      // SEO: Redirect retired /conditions/other/* routes to new top-level categories
+      {
+        source: "/conditions/other/sleep-disorders",
+        destination: "/conditions/sleep-disorders",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other/dissociative-disorders",
+        destination: "/conditions/dissociative-disorders",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other/somatic-disorders",
+        destination: "/conditions/somatic-health-anxiety",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other/sexual-disorders",
+        destination: "/conditions/sexual-health",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other/gender-disorders",
+        destination: "/conditions/sexual-health",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other/paraphilic-disorders",
+        destination: "/conditions/sexual-health",
+        permanent: true,
+      },
+      {
+        source: "/conditions/other",
+        destination: "/conditions",
+        permanent: true,
+      },
       // SEO: Redirect non-www to www (handled at Vercel/DNS level, but documented here)
       // In production, configure this at the hosting/DNS provider level
     ];

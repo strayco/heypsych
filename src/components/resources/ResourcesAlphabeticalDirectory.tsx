@@ -98,9 +98,12 @@ export function ResourcesAlphabeticalDirectory({ resources }: ResourcesAlphabeti
                 </span>
               </button>
 
-              {/* Always render links in DOM for crawlability, just hide visually */}
+              {/* Always render links in DOM for crawlability */}
+              {/* Use max-height transition instead of display:none for SEO */}
               <ul
-                className={`space-y-2 px-4 pb-3 ${isExpanded ? "block" : "hidden"}`}
+                className={`space-y-2 overflow-hidden px-4 transition-all duration-300 ${
+                  isExpanded ? "max-h-[2000px] pb-3" : "max-h-0"
+                }`}
               >
                 {groupedResources[letter].map((resource) => (
                   <li key={resource.slug}>

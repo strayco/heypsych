@@ -13,6 +13,9 @@ import {
   ArrowRight,
   ArrowLeft,
 } from "lucide-react";
+import { ResourceSearch } from "@/components/resources/ResourceSearch";
+import { PopularResourceChips } from "@/components/resources/PopularResourceChips";
+import type { Entity } from "@/lib/types";
 
 const resourceCategories = [
   {
@@ -108,7 +111,11 @@ function ResourceTile({ category, index }: { category: typeof resourceCategories
   );
 }
 
-export function ResourcesOverviewClient() {
+interface ResourcesOverviewClientProps {
+  resources: Entity[];
+}
+
+export function ResourcesOverviewClient({ resources }: ResourcesOverviewClientProps) {
   return (
     <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero */}
@@ -137,6 +144,18 @@ export function ResourcesOverviewClient() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Search Bar */}
+      <section className="px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <ResourceSearch resources={resources} />
+        </div>
+      </section>
+
+      {/* Popular Resources */}
+      <section className="px-4 py-4 sm:px-6 lg:px-8">
+        <PopularResourceChips />
       </section>
 
       {/* 2×2 Tile Grid */}

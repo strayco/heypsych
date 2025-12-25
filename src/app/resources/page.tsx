@@ -32,7 +32,7 @@ export default async function ResourcesPage() {
 
   return (
     <>
-      <ResourcesOverviewClient />
+      <ResourcesOverviewClient resources={resources} />
       <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
         <ResourcesAlphabeticalDirectory resources={resources} />
       </div>
