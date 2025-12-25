@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
-import type { Entity } from "@/lib/types";
+import type { Entity } from "@/lib/types/database";
 
 interface ResourceSearchProps {
   resources: Entity[];
@@ -27,13 +27,13 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
     const lowerQuery = query.toLowerCase();
     const filtered = resources
       .filter((resource) => {
-        const name = (resource.name || resource.title || "").toLowerCase();
-        const summary = (resource.summary || "").toLowerCase();
-        const keywords = (resource.search?.keywords || []).join(" ").toLowerCase();
+        const name = (resource.name || "").toLowerCase();
+        const description = (resource.description || "").toLowerCase();
+        const keywords = (resource.seo?.keywords || resource.tags || []).join(" ").toLowerCase();
 
         return (
           name.includes(lowerQuery) ||
-          summary.includes(lowerQuery) ||
+          description.includes(lowerQuery) ||
           keywords.includes(lowerQuery)
         );
       })
@@ -111,14 +111,14 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <div className="font-semibold text-neutral-900">
-                      {resource.name || resource.title}
+                      {resource.name}
                     </div>
-                    {resource.summary && (
-                      <div className="mt-1 line-clamp-2 text-sm text-neutral-600">
-                        {resource.summary}
+                    {resource.description && (
+                      <div className="mt-1 line-clamp-2 text-sm text-neutral-700">
+                        {resource.description}
                       </div>
                     )}
-                    <div className="mt-1 text-xs text-neutral-500">
+                    <div className="mt-1 text-xs text-neutral-600">
                       {resource.metadata?.category?.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
           </div>
 
           {filteredResources.length === 8 && (
-            <div className="border-t border-neutral-100 px-4 py-2 text-center text-xs text-neutral-500">
+            <div className="border-t border-neutral-100 px-4 py-2 text-center text-xs text-neutral-600">
               Showing first 8 results
             </div>
           )}
@@ -138,10 +138,10 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
       {/* No results message */}
       {isOpen && query && filteredResources.length === 0 && (
         <div className="absolute z-50 mt-2 w-full rounded-xl border border-neutral-200 bg-white p-6 text-center shadow-lg">
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-neutral-700">
             No resources found for "{query}"
           </p>
-          <p className="mt-2 text-xs text-neutral-500">
+          <p className="mt-2 text-xs text-neutral-600">
             Try different keywords or browse categories below
           </p>
         </div>

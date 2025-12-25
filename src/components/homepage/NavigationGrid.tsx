@@ -104,7 +104,7 @@ export function NavigationGrid() {
                         <p className="text-lg font-semibold text-neutral-700">{item.stat}</p>
                       </div>
                     </div>
-                    <p className="text-base text-neutral-600 mb-4 flex-1">{item.description}</p>
+                    <p className="text-base text-neutral-700 mb-4 flex-1">{item.description}</p>
                     <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
                       <span>{item.cta}</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

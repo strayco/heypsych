@@ -115,7 +115,7 @@ export function Pagination({ currentPage, totalPages, baseUrl, tabParam }: Pagin
           return isActive ? (
             <Button
               key={page}
-              variant="default"
+              variant="primary"
               size="sm"
               className="min-w-[36px]"
               aria-label={`Page ${page}`}

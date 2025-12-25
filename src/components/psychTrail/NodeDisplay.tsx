@@ -18,7 +18,7 @@ interface NodeDisplayProps {
 export function NodeDisplay({ node, stepNumber, stepLabel, className = "" }: NodeDisplayProps) {
   return (
     <div className={`space-y-4 ${className}`}>
-      <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">
+      <div className="text-xs font-medium uppercase tracking-wide text-neutral-700">
         {stepLabel.charAt(0).toUpperCase() + stepLabel.slice(1)} {stepNumber}
       </div>
       <div className="prose prose-neutral max-w-none">

@@ -227,7 +227,27 @@ export async function getResourcesServer(): Promise<Entity[]> {
       .order("title");
 
     if (!error && data && data.length > 0) {
-      return data.map((row) => mapRowToEntity(row, "resource"));
+      const mappedData = data.map((row) => mapRowToEntity(row, "resource"));
+
+      // Deduplicate by name (title) to handle cases where the same resource
+      // exists with different slugs (e.g., "988-lifeline" vs "988-suicide-crisis-lifeline")
+      const byName = new Map<string, Entity>();
+      mappedData.forEach((entity) => {
+        const existing = byName.get(entity.name);
+
+        // If no existing entry, add it
+        if (!existing) {
+          byName.set(entity.name, entity);
+          return;
+        }
+
+        // Prefer entity with longer slug (more descriptive)
+        if (entity.slug.length > existing.slug.length) {
+          byName.set(entity.name, entity);
+        }
+      });
+
+      return Array.from(byName.values());
     }
   } catch (err) {
     console.error("Database error loading resources:", err);

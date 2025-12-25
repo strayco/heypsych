@@ -27,7 +27,7 @@ export function ChoiceList({
 
   return (
     <div className={`space-y-3 ${className}`}>
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-700">
         What do you do?
       </h3>
       <div className="space-y-2">

@@ -20,7 +20,7 @@ export function MetricsDisplay({ metrics, config, className = "" }: MetricsDispl
 
   return (
     <div className={`space-y-3 ${className}`}>
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-700">
         Current Status
       </h3>
       <div className="space-y-2">
@@ -55,7 +55,7 @@ function MetricBar({ label, value, min, max, higherIsBetter }: MetricBarProps) {
     <div className="space-y-1">
       <div className="flex items-center justify-between text-xs">
         <span className="font-medium text-neutral-700">{label}</span>
-        <span className="text-neutral-500">{Math.round(value)}</span>
+        <span className="text-neutral-600">{Math.round(value)}</span>
       </div>
       <div className="h-2 w-full overflow-hidden rounded-full bg-neutral-100">
         <div

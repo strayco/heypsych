@@ -68,7 +68,7 @@ export function AuthorByline({
             <User className="h-3.5 w-3.5" />
             <span>
               {author.name}
-              {author.credentials && <span className="ml-1 text-neutral-600">{author.credentials}</span>}
+              {author.credentials && <span className="ml-1 text-neutral-700">{author.credentials}</span>}
             </span>
             {author.verified && <CheckCircle className="h-3.5 w-3.5 text-green-600" />}
           </div>
@@ -87,7 +87,7 @@ export function AuthorByline({
           </span>
         </div>
         {reviewDate && (
-          <span className="text-neutral-600">
+          <span className="text-neutral-700">
             • Last reviewed {new Date(reviewDate).toLocaleDateString()}
           </span>
         )}
@@ -127,7 +127,7 @@ export function AuthorByline({
                   {author.role}
                 </Badge>
               )}
-              {author.bio && <p className="mt-1 text-sm text-neutral-600">{author.bio}</p>}
+              {author.bio && <p className="mt-1 text-sm text-neutral-700">{author.bio}</p>}
             </div>
           </div>
         )}
@@ -161,7 +161,7 @@ export function AuthorByline({
                   Medical Reviewer
                 </Badge>
                 {medicalReviewer.bio && (
-                  <p className="mt-1 text-sm text-neutral-600">{medicalReviewer.bio}</p>
+                  <p className="mt-1 text-sm text-neutral-700">{medicalReviewer.bio}</p>
                 )}
               </div>
             </>
@@ -189,7 +189,7 @@ export function AuthorByline({
         </div>
 
         {/* Dates - Always show review date */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-neutral-200 pt-2 text-xs text-neutral-600">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-neutral-200 pt-2 text-xs text-neutral-700">
           {publishedDate && (
             <div>
               Published: {new Date(publishedDate).toLocaleDateString('en-US', {

@@ -62,7 +62,7 @@ export default async function ScenarioPage({ params }: Props) {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
           {/* Breadcrumb Navigation */}
-          <nav className="mb-6 flex items-center text-sm text-neutral-600" aria-label="Breadcrumb">
+          <nav className="mb-6 flex items-center text-sm text-neutral-700" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-neutral-900">
               Home
             </Link>
@@ -77,7 +77,7 @@ export default async function ScenarioPage({ params }: Props) {
           {/* Back Link */}
           <Link
             href="/psych-trail"
-            className="mb-6 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+            className="mb-6 inline-flex items-center text-sm text-neutral-700 transition-colors hover:text-neutral-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Scenarios
@@ -99,13 +99,13 @@ export default async function ScenarioPage({ params }: Props) {
               {/* Metadata Row */}
               <div className="flex flex-wrap items-center gap-4 mb-4 text-sm">
                 {scenario.estimatedMinutes && (
-                  <div className="flex items-center gap-1 text-neutral-600">
+                  <div className="flex items-center gap-1 text-neutral-700">
                     <Clock className="h-4 w-4" />
                     <span>~{scenario.estimatedMinutes} minutes</span>
                   </div>
                 )}
                 {scenario.difficulty && (
-                  <div className="flex items-center gap-1 text-neutral-600">
+                  <div className="flex items-center gap-1 text-neutral-700">
                     <TrendingUp className="h-4 w-4" />
                     <span className="capitalize">{scenario.difficulty}</span>
                   </div>
@@ -161,7 +161,7 @@ export default async function ScenarioPage({ params }: Props) {
             <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-sm mb-4">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold text-neutral-900">Start Simulation</h2>
-                <span className="text-sm text-neutral-500">Interactive Experience Below</span>
+                <span className="text-sm text-neutral-700">Interactive Experience Below</span>
               </div>
               <GameContainer scenario={scenario} />
             </div>

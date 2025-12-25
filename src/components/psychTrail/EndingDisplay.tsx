@@ -43,7 +43,7 @@ export function EndingDisplay({
           )}
         </div>
         <div>
-          <div className="text-xs font-medium uppercase tracking-wide text-neutral-500">
+          <div className="text-xs font-medium uppercase tracking-wide text-neutral-700">
             Journey Complete • {stepLabel.charAt(0).toUpperCase() + stepLabel.slice(1)} {stepNumber}
           </div>
           <h2 className="text-2xl font-bold text-neutral-900">{ending.title}</h2>

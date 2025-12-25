@@ -34,7 +34,7 @@ export function PopularResourceChips() {
               className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:shadow"
             >
               <span className="font-semibold">{resource.name}</span>
-              <span className="text-xs text-neutral-500 group-hover:text-blue-600">
+              <span className="text-xs text-neutral-600 group-hover:text-blue-600">
                 {resource.label}
               </span>
             </Link>

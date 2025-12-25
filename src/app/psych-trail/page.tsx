@@ -35,7 +35,7 @@ export default function PsychTrailPage() {
           {/* Back Link */}
           <Link
             href="/"
-            className="mb-6 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+            className="mb-6 inline-flex items-center text-sm text-neutral-700 transition-colors hover:text-neutral-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
@@ -49,7 +49,7 @@ export default function PsychTrailPage() {
             <h1 className="mb-3 text-4xl font-bold text-neutral-900">
               Psych Trail: An Interactive Mental Health Simulation Platform
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-neutral-600">
+            <p className="mx-auto max-w-2xl text-lg text-neutral-700">
               Explore mental health care through interactive educational simulations. Learn about
               appointments, treatments, and mental health journeys in a safe, fictional environment.
             </p>
@@ -112,11 +112,11 @@ export default function PsychTrailPage() {
                     <h2 className="mb-2 text-xl font-bold text-neutral-900 transition-colors group-hover:text-purple-700">
                       {scenario.title}
                     </h2>
-                    <p className="text-sm text-neutral-600">{scenario.summary}</p>
+                    <p className="text-sm text-neutral-700">{scenario.summary}</p>
                   </div>
 
                   {/* Scenario Meta */}
-                  <div className="flex items-center gap-4 text-xs text-neutral-500">
+                  <div className="flex items-center gap-4 text-xs text-neutral-600">
                     <div className="flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       <span>~{scenario.estimatedMinutes} minutes</span>

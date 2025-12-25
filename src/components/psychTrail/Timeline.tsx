@@ -21,7 +21,7 @@ export function Timeline({ history, stepLabel, className = "" }: TimelineProps) 
 
   return (
     <div className={`space-y-3 ${className}`}>
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-700">
         Journey Timeline
       </h3>
       <div className="space-y-1">
@@ -56,7 +56,7 @@ function TimelineEntry({ entry, isLatest, stepLabel }: TimelineEntryProps) {
           }`}
         />
       </div>
-      <div className={`flex-1 ${isLatest ? "text-neutral-900" : "text-neutral-500"}`}>
+      <div className={`flex-1 ${isLatest ? "text-neutral-900" : "text-neutral-600"}`}>
         <span className="font-medium">
           {capitalizedLabel} {entry.step}
         </span>

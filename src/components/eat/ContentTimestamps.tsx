@@ -73,12 +73,12 @@ export function ContentTimestamps({
     <div className={containerClass}>
       {publishDate && (
         <div className="flex items-center gap-1.5 text-sm text-neutral-700">
-          <Calendar className="h-4 w-4 text-neutral-500" />
+          <Calendar className="h-4 w-4 text-neutral-600" />
           <span className="font-medium">Published:</span>
           <span>
             {formatDate(publishDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-600">
+              <span className="ml-1 text-neutral-700">
                 ({getRelativeTime(publishDate)})
               </span>
             )}
@@ -88,12 +88,12 @@ export function ContentTimestamps({
 
       {updateDate && updateDate !== publishDate && (
         <div className="flex items-center gap-1.5 text-sm text-neutral-700">
-          <RefreshCw className="h-4 w-4 text-neutral-500" />
+          <RefreshCw className="h-4 w-4 text-neutral-600" />
           <span className="font-medium">Updated:</span>
           <span>
             {formatDate(updateDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-600">
+              <span className="ml-1 text-neutral-700">
                 ({getRelativeTime(updateDate)})
               </span>
             )}
@@ -108,7 +108,7 @@ export function ContentTimestamps({
           <span className="text-green-700">
             {formatDate(reviewDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-600">
+              <span className="ml-1 text-neutral-700">
                 ({getRelativeTime(reviewDate)})
               </span>
             )}

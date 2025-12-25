@@ -54,7 +54,7 @@ export function PsychTrail() {
               </p>
 
               {/* Disclaimer */}
-              <p className="text-sm text-neutral-500 italic">
+              <p className="text-sm text-neutral-600 italic">
                 Educational simulations only. Fictional scenarios. Not medical advice.
               </p>
             </div>
