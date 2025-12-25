@@ -51,18 +51,29 @@ interface Hotline {
 
 export async function loadCrisisResources(): Promise<Resource[]> {
   try {
-    const filePath = path.join(
+    const dirPath = path.join(
       process.cwd(),
-      "data/resources/support-community/immediate-crisis/index.json"
+      "data/resources/support-community/immediate-crisis"
     );
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const data: TabFile = JSON.parse(fileContents);
 
-    if (process.env.NODE_ENV === "development") {
-      console.log(`✅ Loaded ${data.resources.length} crisis resources`);
+    // Read all JSON files in the immediate-crisis directory (except index.json)
+    const files = fs.readdirSync(dirPath)
+      .filter(file => file.endsWith('.json') && file !== 'index.json');
+
+    const resources: Resource[] = [];
+
+    for (const file of files) {
+      const filePath = path.join(dirPath, file);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      const resource: Resource = JSON.parse(fileContents);
+      resources.push(resource);
     }
 
-    return data.resources;
+    if (process.env.NODE_ENV === "development") {
+      console.log(`✅ Loaded ${resources.length} crisis resources from individual files`);
+    }
+
+    return resources;
   } catch (error) {
     console.error("Error loading crisis resources:", error);
     return [];
