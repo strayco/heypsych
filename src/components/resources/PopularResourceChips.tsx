@@ -7,10 +7,10 @@ import { TrendingUp } from "lucide-react";
 const POPULAR_RESOURCES = [
   { name: "PHQ-9", slug: "phq-9", label: "Depression Assessment" },
   { name: "GAD-7", slug: "gad-7", label: "Anxiety Assessment" },
-  { name: "988 Lifeline", slug: "988-suicide-crisis-lifeline", label: "Crisis Support" },
+  { name: "988 Lifeline", slug: "support-community", label: "Crisis Support", href: "/resources/support-community" },
   { name: "Find a Therapist", slug: "finding-a-therapist", label: "How-to Guide" },
   { name: "BetterHelp", slug: "betterhelp", label: "Online Therapy" },
-  { name: "Crisis Text Line", slug: "crisis-text-line", label: "Text Support" },
+  { name: "Crisis Text Line", slug: "support-community", label: "Text Support", href: "/resources/support-community" },
 ];
 
 export function PopularResourceChips() {
@@ -30,7 +30,7 @@ export function PopularResourceChips() {
             transition={{ delay: index * 0.05 }}
           >
             <Link
-              href={`/resources/${resource.slug}`}
+              href={resource.href || `/resources/${resource.slug}`}
               className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:shadow"
             >
               <span className="font-semibold">{resource.name}</span>
