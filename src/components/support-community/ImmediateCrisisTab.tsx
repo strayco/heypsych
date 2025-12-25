@@ -11,10 +11,18 @@ interface Props {
 }
 
 export function ImmediateCrisisTab({ resources, hotlines }: Props) {
+  const PINNED_IDS = ["988-lifeline", "crisis-text-line"];
+
   // Pin 988 and Crisis Text Line
   const pinnedResources = useMemo(
-    () => resources.filter((r) => ["988-lifeline", "crisis-text-line"].includes(r.id)),
+    () => resources.filter((r) => PINNED_IDS.includes(r.id)),
     [resources]
+  );
+
+  // Filter out pinned resources from A-Z section to avoid duplicates
+  const atozHotlines = useMemo(
+    () => hotlines.filter((h) => !PINNED_IDS.includes(h.id)),
+    [hotlines]
   );
 
   return (
@@ -46,9 +54,9 @@ export function ImmediateCrisisTab({ resources, hotlines }: Props) {
       </div>
 
       {/* A-Z Specialized Crisis Hotlines */}
-      {hotlines.length > 0 && (
+      {atozHotlines.length > 0 && (
         <div className="mt-12 border-t border-slate-200 pt-12">
-          <CrisisAtoZSection hotlines={hotlines} />
+          <CrisisAtoZSection hotlines={atozHotlines} />
         </div>
       )}
     </div>
