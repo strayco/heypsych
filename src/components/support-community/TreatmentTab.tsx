@@ -3,29 +3,44 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import { Pagination } from "@/components/ui/pagination";
 import type { Resource } from "@/lib/types/support-community";
 import { ResourceCard } from "./ResourceCard";
 import { matchesQuery } from "@/lib/utils/search";
 
 interface Props {
   resources: Resource[];
+  page?: number;
 }
 
-export function TreatmentTab({ resources }: Props) {
+const ITEMS_PER_PAGE = 30;
+
+export function TreatmentTab({ resources, page = 1 }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const groupedResources = useMemo(() => {
+  const { filteredResources, totalResources } = useMemo(() => {
     const filtered = resources.filter((r) => matchesQuery(r, searchQuery));
+    return { filteredResources: filtered, totalResources: filtered.length };
+  }, [resources, searchQuery]);
 
+  // Pagination logic
+  const { paginatedResources, totalPages } = useMemo(() => {
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginated = filteredResources.slice(startIndex, endIndex);
+    const total = Math.ceil(filteredResources.length / ITEMS_PER_PAGE);
+    return { paginatedResources: paginated, totalPages: total };
+  }, [filteredResources, page]);
+
+  const groupedResources = useMemo(() => {
     const groups: Record<string, Resource[]> = {};
-    filtered.forEach((resource) => {
+    paginatedResources.forEach((resource) => {
       const category = resource.category || "Other";
       if (!groups[category]) groups[category] = [];
       groups[category].push(resource);
     });
-
     return groups;
-  }, [resources, searchQuery]);
+  }, [paginatedResources]);
 
   return (
     <div className="space-y-8">
@@ -76,6 +91,23 @@ export function TreatmentTab({ resources }: Props) {
             <p>No results found for "{searchQuery}"</p>
           </CardContent>
         </Card>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8"
+        >
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            baseUrl="/resources/support-community"
+            tabParam="treatment"
+          />
+        </motion.div>
       )}
     </div>
   );

@@ -25,12 +25,14 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
   const router = useRouter();
   const initialTab = (searchParams.get("tab") as TabType) || "crisis";
   const [activeTab, setActiveTab] = useState<TabType>(initialTab);
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
     // Update URL query param
     const params = new URLSearchParams(searchParams.toString());
     params.set("tab", tab);
+    params.delete("page"); // Reset to page 1 when switching tabs
     router.push(`?${params.toString()}`, { scroll: false });
 
     // Smooth scroll to top
@@ -135,15 +137,15 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
       <section className="px-4 pb-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div id="crisis-panel" role="tabpanel" aria-labelledby="crisis-tab" hidden={activeTab !== "crisis"}>
-            {activeTab === "crisis" && <ImmediateCrisisTab resources={crisisResources} hotlines={crisisHotlines} />}
+            {activeTab === "crisis" && <ImmediateCrisisTab resources={crisisResources} hotlines={crisisHotlines} page={currentPage} />}
           </div>
 
           <div id="organizations-panel" role="tabpanel" aria-labelledby="organizations-tab" hidden={activeTab !== "organizations"}>
-            {activeTab === "organizations" && <OrganizationsAtoZSection organizations={organizationsResources} />}
+            {activeTab === "organizations" && <OrganizationsAtoZSection organizations={organizationsResources} page={currentPage} />}
           </div>
 
           <div id="treatment-panel" role="tabpanel" aria-labelledby="treatment-tab" hidden={activeTab !== "treatment"}>
-            {activeTab === "treatment" && <TreatmentTab resources={treatmentResources} />}
+            {activeTab === "treatment" && <TreatmentTab resources={treatmentResources} page={currentPage} />}
           </div>
         </div>
       </section>

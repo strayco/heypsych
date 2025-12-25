@@ -9,6 +9,7 @@ import { CrisisCard } from "./CrisisCard";
 import { InternationalToggle } from "./InternationalToggle";
 import { useFuzzySearch } from "@/lib/hooks/useFuzzySearch";
 import { Card, CardContent } from "@/components/ui/card";
+import { Pagination } from "@/components/ui/pagination";
 
 interface Hotline {
   id: string;
@@ -57,7 +58,10 @@ interface Hotline {
 
 interface Props {
   hotlines: Hotline[];
+  page?: number;
 }
+
+const ITEMS_PER_PAGE = 30;
 
 // Category labels mapping
 const CATEGORY_LABELS: Record<string, string> = {
@@ -139,7 +143,7 @@ function generateJsonLd(hotlines: Hotline[]) {
   };
 }
 
-export function CrisisAtoZSection({ hotlines }: Props) {
+export function CrisisAtoZSection({ hotlines, page = 1 }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const jsonLd = useMemo(() => generateJsonLd(hotlines), [hotlines]);
@@ -191,7 +195,7 @@ export function CrisisAtoZSection({ hotlines }: Props) {
   const searchFilteredUS = useFuzzySearch(usHotlines, searchQuery);
 
   // Apply category filter and determine what to show
-  const { filteredHotlines, showInternationalSection } = useMemo(() => {
+  const { allFilteredHotlines, showInternationalSection } = useMemo(() => {
     // If "International" category is selected, show only international hotlines
     if (selectedCategory === 'international') {
       const filtered = internationalHotlines.filter((hotline) => {
@@ -202,7 +206,7 @@ export function CrisisAtoZSection({ hotlines }: Props) {
           hotline.summary.toLowerCase().includes(searchLower)
         );
       });
-      return { filteredHotlines: filtered, showInternationalSection: false };
+      return { allFilteredHotlines: filtered, showInternationalSection: false };
     }
 
     // Apply specialized category filter (if selected) to US hotlines
@@ -212,10 +216,19 @@ export function CrisisAtoZSection({ hotlines }: Props) {
 
     // Show international section only when "All" is selected (no category filter)
     return {
-      filteredHotlines: filtered,
+      allFilteredHotlines: filtered,
       showInternationalSection: !selectedCategory && internationalHotlines.length > 0
     };
   }, [searchFilteredUS, internationalHotlines, searchQuery, selectedCategory]);
+
+  // Pagination logic
+  const { paginatedHotlines, totalPages } = useMemo(() => {
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginated = allFilteredHotlines.slice(startIndex, endIndex);
+    const total = Math.ceil(allFilteredHotlines.length / ITEMS_PER_PAGE);
+    return { paginatedHotlines: paginated, totalPages: total };
+  }, [allFilteredHotlines, page]);
 
   return (
     <>
@@ -264,24 +277,43 @@ export function CrisisAtoZSection({ hotlines }: Props) {
         <CrisisSearchInput
           value={searchQuery}
           onChange={setSearchQuery}
-          resultCount={filteredHotlines.length}
+          resultCount={allFilteredHotlines.length}
         />
       </motion.div>
 
       {/* Hotlines List */}
-      {filteredHotlines.length > 0 ? (
-        <div className="space-y-4">
-          {filteredHotlines.map((hotline, index) => (
+      {paginatedHotlines.length > 0 ? (
+        <>
+          <div className="space-y-4">
+            {paginatedHotlines.map((hotline, index) => (
+              <motion.div
+                key={hotline.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 * Math.min(index, 10) }}
+              >
+                <CrisisCard hotline={hotline} />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
             <motion.div
-              key={hotline.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 * Math.min(index, 10) }}
+              transition={{ delay: 0.4 }}
+              className="mt-8"
             >
-              <CrisisCard hotline={hotline} />
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                baseUrl="/resources/support-community"
+                tabParam="crisis"
+              />
             </motion.div>
-          ))}
-        </div>
+          )}
+        </>
       ) : (
         <Card>
           <CardContent className="p-8 text-center text-slate-900">

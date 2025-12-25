@@ -8,9 +8,10 @@ import { CrisisAtoZSection } from "./CrisisAtoZSection";
 interface Props {
   resources: Resource[];
   hotlines: Hotline[];
+  page?: number;
 }
 
-export function ImmediateCrisisTab({ resources, hotlines }: Props) {
+export function ImmediateCrisisTab({ resources, hotlines, page = 1 }: Props) {
   const PINNED_IDS = ["988-lifeline", "crisis-text-line"];
 
   // Pin 988 and Crisis Text Line
@@ -56,7 +57,7 @@ export function ImmediateCrisisTab({ resources, hotlines }: Props) {
       {/* A-Z Specialized Crisis Hotlines */}
       {atozHotlines.length > 0 && (
         <div className="mt-12 border-t border-slate-200 pt-12">
-          <CrisisAtoZSection hotlines={atozHotlines} />
+          <CrisisAtoZSection hotlines={atozHotlines} page={page} />
         </div>
       )}
     </div>

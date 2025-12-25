@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { Pagination } from "@/components/ui/pagination";
 import type { AccessType, Resource } from "@/lib/types/support-community";
 
 interface OrganizationResource extends Resource {
@@ -16,7 +17,10 @@ interface OrganizationResource extends Resource {
 
 interface Props {
   organizations: OrganizationResource[];
+  page?: number;
 }
+
+const ITEMS_PER_PAGE = 30;
 
 // Category label mappings
 const CATEGORY_LABELS: Record<string, string> = {
@@ -436,7 +440,7 @@ function OrganizationCard({ organization }: OrganizationCardProps) {
   );
 }
 
-export function OrganizationsAtoZSection({ organizations }: Props) {
+export function OrganizationsAtoZSection({ organizations, page = 1 }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
@@ -471,6 +475,15 @@ export function OrganizationsAtoZSection({ organizations }: Props) {
   const filteredOrganizations = selectedTag
     ? searchFiltered.filter((org) => doesOrganizationMatchFilter(org, selectedTag))
     : searchFiltered;
+
+  // Pagination logic
+  const { paginatedOrganizations, totalPages } = useMemo(() => {
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginated = filteredOrganizations.slice(startIndex, endIndex);
+    const total = Math.ceil(filteredOrganizations.length / ITEMS_PER_PAGE);
+    return { paginatedOrganizations: paginated, totalPages: total };
+  }, [filteredOrganizations, page]);
 
   return (
     <div className="space-y-8">
@@ -516,22 +529,41 @@ export function OrganizationsAtoZSection({ organizations }: Props) {
       </motion.div>
 
       {/* Organizations List */}
-      {filteredOrganizations.length > 0 ? (
-        <div className="space-y-4">
-          {filteredOrganizations.map((org, index) => {
-            const key = org.id ? `${org.id}-${index}` : `${org.name}-${index}`;
-            return (
-              <motion.div
-                key={key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * Math.min(index, 10) }}
-              >
-                <OrganizationCard organization={org} />
-              </motion.div>
-            );
-          })}
-        </div>
+      {paginatedOrganizations.length > 0 ? (
+        <>
+          <div className="space-y-4">
+            {paginatedOrganizations.map((org, index) => {
+              const key = org.id ? `${org.id}-${index}` : `${org.name}-${index}`;
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * Math.min(index, 10) }}
+                >
+                  <OrganizationCard organization={org} />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-8"
+            >
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                baseUrl="/resources/support-community"
+                tabParam="organizations"
+              />
+            </motion.div>
+          )}
+        </>
       ) : (
         <Card>
           <CardContent className="p-8 text-center text-slate-900">
