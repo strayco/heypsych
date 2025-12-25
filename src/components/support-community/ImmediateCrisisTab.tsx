@@ -13,7 +13,7 @@ interface Props {
 export function ImmediateCrisisTab({ resources, hotlines }: Props) {
   // Pin 988 and Crisis Text Line
   const pinnedResources = useMemo(
-    () => resources.filter((r) => ["988-suicide-crisis-lifeline", "crisis-text-line"].includes(r.id)),
+    () => resources.filter((r) => ["988-lifeline", "crisis-text-line"].includes(r.id)),
     [resources]
   );
 
