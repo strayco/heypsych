@@ -118,54 +118,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/conditions/other`,
+      url: `${baseUrl}/conditions/sleep-disorders`,
       lastModified: currentDate,
       changeFrequency: "weekly",
-      priority: 0.7,
-    },
-
-    // Other conditions subcategories
-    {
-      url: `${baseUrl}/conditions/other/sleep-disorders`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/conditions/other/sexual-disorders`,
+      url: `${baseUrl}/conditions/sexual-health`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/conditions/other/gender-disorders`,
+      url: `${baseUrl}/conditions/dissociative-disorders`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/conditions/other/dissociative-disorders`,
+      url: `${baseUrl}/conditions/somatic-health-anxiety`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/conditions/other/somatic-disorders`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/conditions/other/elimination-disorders`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/conditions/other/paraphilic-disorders`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
 
     // Treatment category pages
