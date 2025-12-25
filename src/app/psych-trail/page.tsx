@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Compass, Clock } from "lucide-react";
+import { ArrowLeft, Compass, Clock, Shield } from "lucide-react";
 import { scenarios } from "@/lib/psychTrail";
+import { generatePsychTrailHubMetadata } from "@/lib/seo/psychtrail-metadata";
+import { generatePsychTrailHubSchemas } from "@/lib/seo/psychtrail-schema";
 
-export const metadata: Metadata = {
-  title: "Psych Trail - Mental Health Treatment Simulator | HeyPsych",
-  description:
-    "An educational, fictional simulation that models how treatment decisions unfold over time—choices, tradeoffs, and unexpected events.",
-};
+export const metadata: Metadata = generatePsychTrailHubMetadata();
 
 /**
  * Psych Trail - Scenario Selection Page
@@ -18,31 +16,86 @@ export default function PsychTrailPage() {
   // Get all scenarios as an array
   const scenarioList = Object.values(scenarios);
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="mb-6 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
-        </Link>
+  // Generate schema.org structured data
+  const schemas = generatePsychTrailHubSchemas();
 
-        {/* Page Header */}
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg">
-            <Compass className="h-8 w-8 text-white" />
+  return (
+    <>
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+        <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          {/* Back Link */}
+          <Link
+            href="/"
+            className="mb-6 inline-flex items-center text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+
+          {/* Page Header */}
+          <div className="mb-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg">
+              <Compass className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="mb-3 text-4xl font-bold text-neutral-900">
+              Psych Trail: An Interactive Mental Health Simulation Platform
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-neutral-600">
+              Explore mental health care through interactive educational simulations. Learn about
+              appointments, treatments, and mental health journeys in a safe, fictional environment.
+            </p>
+
+            {/* Clinical Review Badge */}
+            <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-sm text-green-800 border border-green-200">
+              <Shield className="h-4 w-4" />
+              <span className="font-medium">
+                Clinically Reviewed by the HeyPsych Medical Review Board
+              </span>
+            </div>
           </div>
-          <h1 className="mb-3 text-4xl font-bold text-neutral-900">Psych Trail</h1>
-          <p className="mx-auto max-w-2xl text-lg text-neutral-600">
-            Choose a scenario to explore how treatment decisions unfold over time
-          </p>
-          <p className="mt-2 text-sm text-neutral-500 italic">
-            Educational simulations only. Fictional scenarios. Not medical advice.
-          </p>
-        </div>
+
+          {/* What You'll Learn Section */}
+          <div className="mx-auto max-w-3xl mb-8">
+            <h2 className="text-2xl font-bold text-neutral-900 mb-4 text-center">
+              What Are Interactive Simulations?
+            </h2>
+            <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-sm">
+              <p className="text-neutral-700 mb-4">
+                Psych Trail simulations are educational tools that let you explore mental health
+                care scenarios through interactive storytelling. Unlike static articles, these
+                simulations show how decisions unfold over time and how different choices can
+                lead to different outcomes.
+              </p>
+              <h3 className="font-semibold text-neutral-900 mb-2">You'll Learn:</h3>
+              <ul className="space-y-2 text-neutral-700">
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>What to expect during mental health appointments</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>How to communicate effectively with mental health professionals</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>How treatment decisions are made collaboratively</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>The real-world complexity of mental health care journeys</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
         {/* Scenario Grid */}
         <div className="mx-auto max-w-4xl">
@@ -100,5 +153,6 @@ export default function PsychTrailPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

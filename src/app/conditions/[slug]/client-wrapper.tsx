@@ -40,6 +40,9 @@ import {
   CrisisSupportBanner,
   CitationList,
 } from "@/components/eat";
+import { ConditionBreadcrumbs } from "@/components/conditions/ConditionBreadcrumbs";
+import { MedicationsList } from "@/components/conditions/MedicationsList";
+import { getCategoryBySlug } from "@/lib/config/condition-categories";
 
 interface ConditionClientWrapperProps {
   entity: Entity;
@@ -187,7 +190,9 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
     const allFields = Object.keys(data);
     // Exclude metadata/structural fields that should never be rendered as content sections
     const metadataFields = ["name", "slug", "type", "status", "metadata", "editorial", "id", "created_at", "updated_at"];
-    const excludeFields = [...headerFields, ...alwaysVisibleFields, ...metadataFields];
+    // Exclude new gold-standard fields that are rendered in dedicated sections
+    const dedicatedSectionFields = ["shortDefinition", "short_definition", "linkedMedications", "linked_medications", "citations", "references"];
+    const excludeFields = [...headerFields, ...alwaysVisibleFields, ...metadataFields, ...dedicatedSectionFields];
     const otherFields = allFields.filter((field) => !excludeFields.includes(field));
 
     const fieldsWithPriority = [];
@@ -402,9 +407,27 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
 
   const dynamicFields = getDynamicFields();
 
+  // Get category config for breadcrumbs
+  const categorySlug = entity.metadata?.category as string | undefined;
+  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
+
+  // Extract shortDefinition if available
+  const shortDefinition = data.shortDefinition || data.short_definition;
+
   return (
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        {/* Breadcrumbs */}
+        {category && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <ConditionBreadcrumbs category={category} conditionName={entity.name} />
+          </motion.div>
+        )}
+
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -425,18 +448,23 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 Mental Health Condition
               </Badge>
               {entity.metadata?.medical_review?.reviewed && (
-                <MedicalReviewBadge 
+                <MedicalReviewBadge
                   reviewInfo={{
                     reviewed: entity.metadata.medical_review.reviewed,
                     reviewer_name: entity.metadata.medical_review.reviewer_name,
                     reviewer_credentials: entity.metadata.medical_review.reviewer_credentials,
                     review_date: entity.metadata.medical_review.review_date,
-                  }} 
-                  compact 
+                  }}
+                  compact
                 />
               )}
             </div>
             <h1 className="text-4xl font-bold text-neutral-900">{entity.name}</h1>
+            {shortDefinition && (
+              <p className="text-lg text-neutral-700 leading-relaxed max-w-4xl">
+                {shortDefinition}
+              </p>
+            )}
           </div>
         </motion.div>
 
@@ -621,16 +649,33 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
             renderDynamicField(fieldName, data[fieldName], index)
           )}
 
+          {/* Medications List */}
+          {(() => {
+            const linkedMedications = data.linkedMedications || data.linked_medications;
+            const treatmentApproaches = data.treatment_approaches || data.treatmentApproaches;
+            const medications = treatmentApproaches?.linkedMedications || linkedMedications;
+
+            return medications && Array.isArray(medications) && medications.length > 0 ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * (dynamicFields.length + 3.5) }}
+              >
+                <MedicationsList medications={medications} />
+              </motion.div>
+            ) : null;
+          })()}
+
           {/* Citations/References */}
           {(() => {
-            const references = data.references || entity.metadata?.references;
-            return references && references.length > 0 ? (
+            const citations = data.citations || data.references || entity.metadata?.references;
+            return citations && citations.length > 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * (dynamicFields.length + 4) }}
               >
-                <CitationList citations={references} title="Scientific References" />
+                <CitationList citations={citations} title="Scientific References" />
               </motion.div>
             ) : null;
           })()}

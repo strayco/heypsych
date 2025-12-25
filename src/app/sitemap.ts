@@ -37,6 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/psych-trail`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
 
     // Condition category pages
     {
@@ -349,6 +355,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error("Error fetching dynamic routes for sitemap:", error);
     // Continue with static pages only
+  }
+
+  // Add Psych Trail scenario pages
+  try {
+    const { scenarios } = await import("@/lib/psychTrail");
+    const scenarioList = Object.values(scenarios);
+
+    scenarioList.forEach((scenario) => {
+      staticPages.push({
+        url: `${baseUrl}/psych-trail/${scenario.id}`,
+        lastModified: new Date(scenario.updatedAt),
+        changeFrequency: "monthly",
+        priority: 0.75,
+      });
+    });
+
+    console.log(`📊 Added ${scenarioList.length} Psych Trail scenarios to sitemap`);
+  } catch (error) {
+    console.error("Error adding Psych Trail scenarios to sitemap:", error);
   }
 
   return staticPages;

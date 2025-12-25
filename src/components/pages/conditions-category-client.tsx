@@ -5,8 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Brain, ArrowRight, LucideIcon } from "lucide-react";
+import { ArrowLeft, Brain, ArrowRight, AlertCircle } from "lucide-react";
 import type { Entity } from "@/lib/types/database";
+import type { CategoryConfig } from "@/lib/config/condition-categories";
+import { ConditionBreadcrumbs } from "@/components/conditions/ConditionBreadcrumbs";
 
 interface ConditionContent {
   description?: string | object;
@@ -18,18 +20,12 @@ interface ConditionContent {
   [key: string]: any;
 }
 
-interface CategoryConfig {
-  title: string;
-  emoji: string;
-  description: string;
-  gradient: string;
-  iconColor: string;
-  bgColor: string;
-}
+// Client-safe category config (without React component icon)
+type SerializableCategoryConfig = Omit<CategoryConfig, 'icon'>;
 
 interface ConditionsCategoryClientProps {
   conditions: Entity[];
-  category: CategoryConfig;
+  category: SerializableCategoryConfig;
 }
 
 export function ConditionsCategoryClient({ conditions, category }: ConditionsCategoryClientProps) {
@@ -38,6 +34,11 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
+          {/* Breadcrumbs */}
+          <div className="mb-6">
+            <ConditionBreadcrumbs category={category} />
+          </div>
+
           {/* Header Row */}
           <div className="mb-8 flex items-start justify-between">
             {/* Back Button */}
@@ -55,14 +56,24 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
               </div>
 
               <h1 className="mb-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
-                <span className={`bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
-                  {category.emoji} {category.title}
+                <span className={`bg-linear-to-r ${category.gradient} bg-clip-text text-transparent`}>
+                  {category.emoji} {category.displayTitle}
                 </span>
               </h1>
 
               <p className="mx-auto mb-6 max-w-3xl text-lg text-neutral-800">
-                {category.description}
+                {category.subtitle}
               </p>
+
+              {/* Educational Disclaimer */}
+              <div className="mx-auto mb-6 max-w-2xl rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <div className="flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 flex-shrink-0 text-amber-600 mt-0.5" />
+                  <div className="text-sm text-amber-900">
+                    <strong>Educational Resource:</strong> This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider.
+                  </div>
+                </div>
+              </div>
 
               {/* Stats */}
               <div className="flex items-center justify-center gap-6 text-sm text-neutral-700">
@@ -89,7 +100,7 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
           <Card className="rounded-3xl bg-white shadow-xl">
             <CardHeader>
               <CardTitle className="text-center text-2xl font-bold text-neutral-900">
-                All {category.title} Conditions
+                All {category.displayTitle} Conditions
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">

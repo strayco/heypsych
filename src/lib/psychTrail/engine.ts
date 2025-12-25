@@ -106,6 +106,13 @@ export class PsychTrailEngine {
     // Apply choice effects
     newState = this.applyEffects(newState, choice.effects);
 
+    // Advance time (if choice specifies it, default true)
+    // Do this BEFORE checking if game ended so ending choices get correct step number
+    const advancesTime = choice.advancesTime ?? true;
+    if (advancesTime) {
+      newState.currentStep += 1;
+    }
+
     // Check if choice ended the game
     if (newState.isEnded) {
       // Add to history and return early
@@ -119,12 +126,6 @@ export class PsychTrailEngine {
       });
       newState.currentNodeId = choice.nextNodeId;
       return { newState, triggeredEvents: [], choice };
-    }
-
-    // Advance time (if choice specifies it, default true)
-    const advancesTime = choice.advancesTime ?? true;
-    if (advancesTime) {
-      newState.currentStep += 1;
     }
 
     // Roll for random events

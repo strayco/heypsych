@@ -49,6 +49,26 @@ export interface ScenarioMetadata {
   difficulty?: ScenarioDifficulty;
   /** Estimated play time in minutes */
   estimatedMinutes?: number;
+
+  // ========== E-E-A-T / SEO Metadata ==========
+  /** Content author (for E-E-A-T signals) */
+  author?: string;
+  /** Author's credentials or role */
+  authorRole?: string;
+  /** Medical/clinical reviewer name */
+  medicalReviewer?: string;
+  /** Medical reviewer's credentials */
+  medicalReviewerCredentials?: string;
+  /** Date clinically reviewed (ISO 8601) */
+  clinicalReviewDate?: string;
+  /** Date clinical review is due (ISO 8601) */
+  clinicalReviewDueDate?: string;
+  /** SEO keywords for this scenario */
+  keywords?: string[];
+  /** What users will learn (for LearningResource schema) */
+  learningObjectives?: string[];
+  /** Educational level (for schema.org educationalLevel) */
+  educationalLevel?: 'beginner' | 'intermediate' | 'advanced';
 }
 
 // ============================================================================
@@ -299,6 +319,26 @@ export interface Scenario {
   difficulty?: ScenarioDifficulty;
   /** Estimated play time in minutes */
   estimatedMinutes?: number;
+
+  // ========== E-E-A-T / SEO Metadata ==========
+  /** Content author (for E-E-A-T signals) */
+  author?: string;
+  /** Author's credentials or role */
+  authorRole?: string;
+  /** Medical/clinical reviewer name */
+  medicalReviewer?: string;
+  /** Medical reviewer's credentials */
+  medicalReviewerCredentials?: string;
+  /** Date clinically reviewed (ISO 8601) */
+  clinicalReviewDate?: string;
+  /** Date clinical review is due (ISO 8601) */
+  clinicalReviewDueDate?: string;
+  /** SEO keywords for this scenario */
+  keywords?: string[];
+  /** What users will learn (for LearningResource schema) */
+  learningObjectives?: string[];
+  /** Educational level (for schema.org educationalLevel) */
+  educationalLevel?: 'beginner' | 'intermediate' | 'advanced';
 
   // ========== Configuration ==========
   /** Time model (step labels, max steps) */

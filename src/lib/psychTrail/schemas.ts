@@ -185,6 +185,17 @@ export const ScenarioSchema = z.object({
   difficulty: ScenarioDifficultySchema.optional(),
   estimatedMinutes: z.number().int().positive().optional(),
 
+  // E-E-A-T / SEO Metadata
+  author: z.string().optional(),
+  authorRole: z.string().optional(),
+  medicalReviewer: z.string().optional(),
+  medicalReviewerCredentials: z.string().optional(),
+  clinicalReviewDate: z.string().datetime().optional(),
+  clinicalReviewDueDate: z.string().datetime().optional(),
+  keywords: z.array(z.string()).optional(),
+  learningObjectives: z.array(z.string()).optional(),
+  educationalLevel: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
+
   // Configuration
   timeConfig: TimeConfigSchema,
   uiConfig: UIConfigSchema,
