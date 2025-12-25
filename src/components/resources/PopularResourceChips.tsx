@@ -7,10 +7,10 @@ import { TrendingUp } from "lucide-react";
 const POPULAR_RESOURCES = [
   { name: "PHQ-9", slug: "phq-9", label: "Depression Assessment" },
   { name: "GAD-7", slug: "gad-7", label: "Anxiety Assessment" },
-  { name: "988 Lifeline", slug: "support-community", label: "Crisis Support", href: "/resources/support-community" },
+  { name: "988 Lifeline", slug: "988-lifeline", label: "Crisis Support", href: "/resources/support-community" },
   { name: "Find a Therapist", slug: "finding-a-therapist", label: "How-to Guide" },
   { name: "BetterHelp", slug: "betterhelp", label: "Online Therapy" },
-  { name: "Crisis Text Line", slug: "support-community", label: "Text Support", href: "/resources/support-community" },
+  { name: "Crisis Text Line", slug: "crisis-text-line", label: "Text Support", href: "/resources/support-community" },
 ];
 
 export function PopularResourceChips() {
