@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import type { Entity } from "@/lib/types";
+import type { Entity } from "@/lib/types/database";
 
 interface ResourcesAlphabeticalDirectoryProps {
   resources: Entity[];
@@ -16,7 +16,7 @@ export function ResourcesAlphabeticalDirectory({ resources }: ResourcesAlphabeti
   const groupedResources: Record<string, Entity[]> = {};
 
   resources.forEach((resource) => {
-    const firstLetter = (resource.name || resource.title || "").charAt(0).toUpperCase();
+    const firstLetter = (resource.name || "").charAt(0).toUpperCase();
     if (!groupedResources[firstLetter]) {
       groupedResources[firstLetter] = [];
     }
@@ -26,7 +26,7 @@ export function ResourcesAlphabeticalDirectory({ resources }: ResourcesAlphabeti
   // Sort each group alphabetically
   Object.keys(groupedResources).forEach((letter) => {
     groupedResources[letter].sort((a, b) =>
-      (a.name || a.title || "").localeCompare(b.name || b.title || "")
+      (a.name || "").localeCompare(b.name || "")
     );
   });
 
@@ -57,16 +57,24 @@ export function ResourcesAlphabeticalDirectory({ resources }: ResourcesAlphabeti
                 {letter}
               </h3>
               <ul className="space-y-2">
-                {groupedResources[letter].map((resource) => (
-                  <li key={resource.slug}>
-                    <Link
-                      href={`/resources/${resource.slug}`}
-                      className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
-                    >
-                      {resource.name || resource.title}
-                    </Link>
-                  </li>
-                ))}
+                {groupedResources[letter].map((resource) => {
+                  // Support & Community resources link to category page, not individual pages
+                  const isSupportResource = resource.metadata?.category === "support-community";
+                  const href = isSupportResource
+                    ? "/resources/support-community"
+                    : `/resources/${resource.slug}`;
+
+                  return (
+                    <li key={resource.slug}>
+                      <Link
+                        href={href}
+                        className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
+                      >
+                        {resource.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
@@ -105,16 +113,24 @@ export function ResourcesAlphabeticalDirectory({ resources }: ResourcesAlphabeti
                   isExpanded ? "max-h-[2000px] pb-3" : "max-h-0"
                 }`}
               >
-                {groupedResources[letter].map((resource) => (
-                  <li key={resource.slug}>
-                    <Link
-                      href={`/resources/${resource.slug}`}
-                      className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
-                    >
-                      {resource.name || resource.title}
-                    </Link>
-                  </li>
-                ))}
+                {groupedResources[letter].map((resource) => {
+                  // Support & Community resources link to category page, not individual pages
+                  const isSupportResource = resource.metadata?.category === "support-community";
+                  const href = isSupportResource
+                    ? "/resources/support-community"
+                    : `/resources/${resource.slug}`;
+
+                  return (
+                    <li key={resource.slug}>
+                      <Link
+                        href={href}
+                        className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
+                      >
+                        {resource.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           );
