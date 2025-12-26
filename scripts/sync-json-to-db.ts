@@ -24,6 +24,7 @@ import path from "path";
 import { createClient } from "@supabase/supabase-js";
 import pLimit from "p-limit";
 import dotenv from "dotenv";
+import { execSync } from "child_process";
 
 // Load environment variables from .env.local if it exists (local dev)
 // In CI/production, environment variables are already injected
@@ -343,6 +344,38 @@ async function syncContentType(type: string, directory: string): Promise<void> {
 }
 
 /**
+ * Check if content files have changed in this commit
+ * Returns true if data/ directory has changes, false otherwise
+ */
+function hasContentChanged(): boolean {
+  if (!IS_CI) {
+    // In local development, always sync
+    return true;
+  }
+
+  try {
+    // Check if any files in data/ directory changed
+    // Compare current commit with previous commit
+    const diff = execSync('git diff --name-only HEAD~1 HEAD', { encoding: 'utf-8' });
+    const changedFiles = diff.split('\n').filter(Boolean);
+    const contentChanged = changedFiles.some(file => file.startsWith('data/'));
+
+    if (!contentChanged) {
+      console.log("📋 No content files changed in this deployment");
+      console.log("   Skipping database sync to save egress bandwidth\n");
+      return false;
+    }
+
+    console.log(`📋 Found ${changedFiles.filter(f => f.startsWith('data/')).length} changed content file(s)`);
+    return true;
+  } catch (error) {
+    // If git command fails (e.g., first commit), assume content changed
+    console.log("   ⚠️  Could not check git diff, proceeding with sync...\n");
+    return true;
+  }
+}
+
+/**
  * Warm up database connection to avoid cold start issues
  */
 async function warmupDatabase(): Promise<void> {
@@ -378,6 +411,12 @@ async function main() {
 
   console.log(`📂 Data directory: ${DATA_DIR}`);
   console.log(`🗄️  Database: ${SUPABASE_URL}\n`);
+
+  // Check if content files changed before syncing (saves egress bandwidth)
+  if (!hasContentChanged()) {
+    console.log("✨ Sync skipped - no content changes detected");
+    process.exit(0);
+  }
 
   // Warm up database connection before starting sync
   await warmupDatabase();
