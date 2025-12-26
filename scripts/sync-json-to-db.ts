@@ -51,8 +51,8 @@ const IS_CI = process.env.CI === "true" || process.env.VERCEL === "1";
 const BATCH_SIZE = IS_CI ? 5 : 20; // Smaller batches in CI to avoid timeouts and network issues
 const CONCURRENCY = IS_CI ? 1 : 3; // Lower concurrency to reduce database load
 const MAX_RETRIES = IS_CI ? 5 : 3; // More retries in CI for network issues
-const RETRY_DELAY_MS = IS_CI ? 3000 : 2000; // Longer delays in CI for network recovery
-const BATCH_DELAY_MS = IS_CI ? 500 : 0; // Small delay between batches in CI to prevent connection overload
+const RETRY_DELAY_MS = IS_CI ? 2000 : 2000; // Retry delay (reduced from 3s to 2s for faster recovery)
+const BATCH_DELAY_MS = IS_CI ? 200 : 0; // Minimal delay between batches in CI (reduced from 500ms)
 const MIN_SUCCESS_RATE = 0.85; // Require 85% success rate to pass (tolerates some timeouts in CI)
 
 // CLI arguments
@@ -218,19 +218,27 @@ async function batchUpsertEntities(entities: any[], type: string, retryCount = 0
   });
 
   if (error) {
-    // Check if it's a timeout or network error that can be retried
+    // Check if it's a timeout, network, or database error that can be retried
     const errorMessage = error.message?.toLowerCase() || '';
-    const isTimeout = error.code === '57014' || errorMessage.includes('timeout');
+    const errorCode = error.code || '';
+
+    const isTimeout = errorCode === '57014' || errorMessage.includes('timeout');
     const isNetworkError = errorMessage.includes('fetch failed') ||
                           errorMessage.includes('network') ||
                           errorMessage.includes('econnreset') ||
                           errorMessage.includes('econnrefused');
-    const isRetryable = isTimeout || isNetworkError;
+    const isDatabaseError = errorCode === 'PGRST002' || // Schema cache error
+                           errorCode === 'PGRST003' || // Connection error
+                           errorMessage.includes('schema cache') ||
+                           errorMessage.includes('could not query');
+    const isRetryable = isTimeout || isNetworkError || isDatabaseError;
 
     if (isRetryable && retryCount < MAX_RETRIES) {
       const delay = RETRY_DELAY_MS * Math.pow(2, retryCount); // Exponential backoff: 3s, 6s, 12s, 24s, 48s
-      const errorType = isTimeout ? 'Timeout' : 'Network error';
-      if (verbose) {
+      const errorType = isTimeout ? 'Timeout' :
+                       isNetworkError ? 'Network error' :
+                       'Database connection error';
+      if (verbose || IS_CI) {
         console.log(`   ⏳ ${errorType} on batch, retrying in ${delay}ms (attempt ${retryCount + 1}/${MAX_RETRIES})...`);
       }
       await new Promise(resolve => setTimeout(resolve, delay));
@@ -335,6 +343,29 @@ async function syncContentType(type: string, directory: string): Promise<void> {
 }
 
 /**
+ * Warm up database connection to avoid cold start issues
+ */
+async function warmupDatabase(): Promise<void> {
+  if (isDryRun) return;
+
+  try {
+    console.log("🔌 Warming up database connection...");
+    const { error } = await supabase
+      .from("entities")
+      .select("slug")
+      .limit(1);
+
+    if (error) {
+      console.log("   ⚠️  Database warmup query failed, but continuing...");
+    } else {
+      console.log("   ✅ Database connection ready\n");
+    }
+  } catch (err) {
+    console.log("   ⚠️  Database warmup failed, but continuing...\n");
+  }
+}
+
+/**
  * Main sync function
  */
 async function main() {
@@ -347,6 +378,9 @@ async function main() {
 
   console.log(`📂 Data directory: ${DATA_DIR}`);
   console.log(`🗄️  Database: ${SUPABASE_URL}\n`);
+
+  // Warm up database connection before starting sync
+  await warmupDatabase();
 
   const startTime = Date.now();
 
