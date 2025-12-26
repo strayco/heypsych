@@ -48,10 +48,11 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 // Configuration
 const DATA_DIR = path.join(process.cwd(), "data");
 const IS_CI = process.env.CI === "true" || process.env.VERCEL === "1";
-const BATCH_SIZE = IS_CI ? 10 : 20; // Smaller batches to avoid timeouts (reduced from 25 to 10)
-const CONCURRENCY = IS_CI ? 1 : 3; // Lower concurrency to reduce database load (reduced from 2 to 1)
-const MAX_RETRIES = 3; // Retry failed batches up to 3 times
-const RETRY_DELAY_MS = 2000; // Wait 2s between retries (increased from 1s)
+const BATCH_SIZE = IS_CI ? 5 : 20; // Smaller batches in CI to avoid timeouts and network issues
+const CONCURRENCY = IS_CI ? 1 : 3; // Lower concurrency to reduce database load
+const MAX_RETRIES = IS_CI ? 5 : 3; // More retries in CI for network issues
+const RETRY_DELAY_MS = IS_CI ? 3000 : 2000; // Longer delays in CI for network recovery
+const BATCH_DELAY_MS = IS_CI ? 500 : 0; // Small delay between batches in CI to prevent connection overload
 const MIN_SUCCESS_RATE = 0.85; // Require 85% success rate to pass (tolerates some timeouts in CI)
 
 // CLI arguments
@@ -217,13 +218,20 @@ async function batchUpsertEntities(entities: any[], type: string, retryCount = 0
   });
 
   if (error) {
-    // Check if it's a timeout error that can be retried
-    const isTimeout = error.code === '57014' || error.message.includes('timeout');
+    // Check if it's a timeout or network error that can be retried
+    const errorMessage = error.message?.toLowerCase() || '';
+    const isTimeout = error.code === '57014' || errorMessage.includes('timeout');
+    const isNetworkError = errorMessage.includes('fetch failed') ||
+                          errorMessage.includes('network') ||
+                          errorMessage.includes('econnreset') ||
+                          errorMessage.includes('econnrefused');
+    const isRetryable = isTimeout || isNetworkError;
 
-    if (isTimeout && retryCount < MAX_RETRIES) {
-      const delay = RETRY_DELAY_MS * (retryCount + 1); // Exponential backoff
+    if (isRetryable && retryCount < MAX_RETRIES) {
+      const delay = RETRY_DELAY_MS * Math.pow(2, retryCount); // Exponential backoff: 3s, 6s, 12s, 24s, 48s
+      const errorType = isTimeout ? 'Timeout' : 'Network error';
       if (verbose) {
-        console.log(`   ⏳ Timeout on batch, retrying in ${delay}ms (attempt ${retryCount + 1}/${MAX_RETRIES})...`);
+        console.log(`   ⏳ ${errorType} on batch, retrying in ${delay}ms (attempt ${retryCount + 1}/${MAX_RETRIES})...`);
       }
       await new Promise(resolve => setTimeout(resolve, delay));
       return batchUpsertEntities(entities, type, retryCount + 1);
@@ -297,6 +305,11 @@ async function syncContentType(type: string, directory: string): Promise<void> {
   const upsertPromises = batches.map((batch, index) =>
     limit(async () => {
       try {
+        // Add delay between batches in CI to prevent connection overload
+        if (BATCH_DELAY_MS > 0 && index > 0) {
+          await new Promise(resolve => setTimeout(resolve, BATCH_DELAY_MS));
+        }
+
         await batchUpsertEntities(batch, type);
         stats[type].created += batch.length;
         if (!verbose) {

@@ -224,7 +224,8 @@ export async function getResourcesServer(): Promise<Entity[]> {
       .select("*")
       .eq("type", "resource")
       .eq("status", "active")
-      .order("title");
+      .order("title")
+      .limit(1000); // Add limit to prevent fetching all resources
 
     if (!error && data && data.length > 0) {
       const mappedData = data.map((row) => mapRowToEntity(row, "resource"));
