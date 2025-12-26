@@ -1,4 +1,3 @@
-import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 import fs from "fs";
 import path from "path";
@@ -65,7 +64,7 @@ const securityHeaders = [
       "img-src 'self' data: https:; " +
       "script-src 'self' 'unsafe-eval' 'unsafe-inline'; " +
       "style-src 'self' 'unsafe-inline'; " +
-      "connect-src 'self' https://*.supabase.co https://*.sentry.io; " +
+      "connect-src 'self' https://*.supabase.co; " +
       "font-src 'self'; " +
       "object-src 'none'; " +
       "frame-ancestors 'none'; " +
@@ -101,21 +100,6 @@ const nextConfig: NextConfig = {
         : false,
   },
 
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      // Suppress the "Critical dependency" warning from OpenTelemetry instrumentation
-      // These warnings are harmless - they come from OpenTelemetry's dynamic require() calls
-      // We filter out unused database integrations at runtime in sentry.server.config.ts
-      config.ignoreWarnings = [
-        ...(config.ignoreWarnings || []),
-        {
-          module: /@opentelemetry\/instrumentation/,
-          message: /Critical dependency: the request of a dependency is an expression/,
-        },
-      ];
-    }
-    return config;
-  },
 
   async headers() {
     // Only apply strict security headers in production
@@ -186,38 +170,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Only enable Sentry sourcemap upload if auth token is available
-// This prevents build failures from permission errors
-const sentryOptions = {
-  // For all available options, see:
-  // https://www.npmjs.com/package/@sentry/webpack-plugin#options
-
-  org: "strayco",
-  project: "javascript-nextjs",
-
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
-
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
-
-  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  tunnelRoute: "/monitoring",
-
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
-
-  // Enables automatic instrumentation of Vercel Cron Monitors.
-  automaticVercelMonitors: true,
-};
-
-// Conditionally apply Sentry config only if auth token exists
-// Otherwise just use the base config (Sentry runtime monitoring still works)
-const configWithSentry = process.env.SENTRY_AUTH_TOKEN
-  ? withSentryConfig(withBundleAnalyzer(nextConfig), sentryOptions)
-  : withBundleAnalyzer(nextConfig);
-
-export default configWithSentry;
+export default withBundleAnalyzer(nextConfig);

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import * as Sentry from "@sentry/nextjs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
@@ -14,8 +13,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Send error to Sentry for tracking and alerting
-    Sentry.captureException(error);
+    // Log error to console
+    console.error("Error boundary caught:", error);
   }, [error]);
 
   return (

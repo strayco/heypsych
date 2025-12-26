@@ -2,11 +2,8 @@
  * Production-safe logging utility
  * - Gates debug logs behind NODE_ENV
  * - Throttles production errors to prevent log spam
- * - Sends errors to Sentry in production
  * - Provides structured logging for analytics
  */
-
-import * as Sentry from "@sentry/nextjs";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -35,7 +32,7 @@ export const logger = {
   },
 
   /**
-   * Error logging with Sentry integration and throttling in production
+   * Error logging with throttling in production
    */
   error: (message: string, error?: any, context?: Record<string, any>) => {
     const errorKey = `${message}-${error?.message || ""}`;
@@ -52,15 +49,8 @@ export const logger = {
     if (isDev) {
       console.error(message, error, context);
     } else {
-      // In production, send to Sentry
-      Sentry.captureException(error || new Error(message), {
-        extra: context,
-        tags: { source: "logger" },
-        level: "error",
-      });
-
-      // Still log minimal info to console for Vercel logs
-      console.error(message, error?.message || error);
+      // In production, log to console for Vercel logs
+      console.error(message, error?.message || error, context);
     }
   },
 };

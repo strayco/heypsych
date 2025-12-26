@@ -6,14 +6,6 @@ import { queryWithRetry } from "@/lib/config/db-pool";
 import { EntityService } from "@/lib/data/entity-service";
 import { logger } from "@/lib/utils/logger";
 
-// Import Sentry if available
-let Sentry: any = null;
-try {
-  Sentry = require("@sentry/nextjs");
-} catch {
-  // Sentry not available, performance tracking disabled
-}
-
 type SearchSnippet = { term: string; field: string; snippet: string };
 
 type SearchResult = {
@@ -47,15 +39,6 @@ type LegacySearchPayload = {
 
 export async function GET(req: NextRequest) {
   const startTime = Date.now();
-
-  // Start Sentry transaction if available
-  const transaction =
-    typeof Sentry?.startTransaction === "function"
-      ? Sentry.startTransaction({
-          op: "api.search",
-          name: "Search API (Direct DB)",
-        })
-      : null;
 
   try {
     const { searchParams } = new URL(req.url);
@@ -161,28 +144,12 @@ export async function GET(req: NextRequest) {
         }
       );
 
-      // Track performance metric in Sentry
-      const metrics = Sentry?.metrics;
-      if (metrics && typeof metrics.distribution === "function") {
-        metrics.distribution("search.duration", loadTime, {
-          unit: "millisecond",
-          tags: {
-            query_length: searchTerm.length,
-            result_count: conditionsResults.length + treatmentsResults.length + resourcesResults.length,
-            source,
-          },
-        });
-      }
-
-      if (loadTime > 400 && typeof Sentry?.captureMessage === "function") {
-        Sentry.captureMessage("Slow search query detected", {
-          level: "warning",
-          tags: {
-            query: searchTerm,
-            duration: loadTime,
-            threshold: "400ms",
-            source,
-          },
+      if (loadTime > 400) {
+        logger.warn("Slow search query detected", {
+          query: searchTerm,
+          duration: loadTime,
+          threshold: "400ms",
+          source,
         });
       }
 
@@ -266,13 +233,7 @@ export async function GET(req: NextRequest) {
     const loadTime = Date.now() - startTime;
     logger.error("Search failed", error, { loadTime });
 
-    Sentry?.captureException(error, {
-      tags: { api: "search" },
-    });
-
     return NextResponse.json({ error: "Search failed. Please try again." }, { status: 500 });
-  } finally {
-    transaction?.finish();
   }
 }
 
