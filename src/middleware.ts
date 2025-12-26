@@ -40,7 +40,7 @@ export function middleware(request: NextRequest) {
   if (pathname === '/opengraph-image' || pathname.startsWith('/opengraph-image?')) {
     const response = NextResponse.next();
 
-    // Override strict CORS headers to allow LinkedIn/Facebook/Twitter to load OG images
+    // Explicitly set permissive CORS headers to ensure LinkedIn/Facebook/Twitter can load OG images
     response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
     response.headers.set('Cross-Origin-Embedder-Policy', 'unsafe-none');
 

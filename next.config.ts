@@ -55,18 +55,6 @@ const securityHeaders = [
     key: "X-Permitted-Cross-Domain-Policies",
     value: "none",
   },
-  {
-    key: "Cross-Origin-Embedder-Policy",
-    value: "require-corp",
-  },
-  {
-    key: "Cross-Origin-Opener-Policy",
-    value: "same-origin",
-  },
-  {
-    key: "Cross-Origin-Resource-Policy",
-    value: "same-origin",
-  },
   // Content Security Policy - Balanced security vs functionality
   // NOTE: 'unsafe-inline' and 'unsafe-eval' reduce security but are required for Next.js
   // TODO: Implement nonce-based CSP for stricter security (see docs/launch-readiness.md)
