@@ -29,9 +29,12 @@ async function initializePool(): Promise<Pool> {
 
   const newPool = new Pool({
     connectionString,
-    // Transaction pooler (port 6543) can handle more connections than direct (port 5432)
-    // Set based on connection type - check URL for port or 'pooler' hostname
-    max: connectionString.includes(':6543') || connectionString.includes('pooler') ? 20 : 10,
+    // During build, use smaller pool to avoid exhausting connections during parallel page generation
+    // At runtime, use larger pool for better throughput
+    // Transaction pooler (6543) can handle more than direct (5432) at runtime
+    max: process.env.NEXT_PHASE === 'phase-production-build'
+      ? 3  // Build: Small pool (Next.js spawns many workers)
+      : (connectionString.includes(':6543') || connectionString.includes('pooler') ? 20 : 10), // Runtime
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 20000,
     // SSL required for Supabase connections
@@ -126,17 +129,6 @@ export async function queryWithRetry<T = any>(
         error.message?.includes('Connection ended');
 
       if (isConnectionError && attempt < maxRetries) {
-        // Reset pool on connection error so we can reinitialize
-        if (pool) {
-          try {
-            await pool.end();
-          } catch {
-            // Ignore errors during cleanup
-          }
-          pool = null;
-          initializationPromise = null;
-        }
-
         // Exponential backoff: 200ms, 400ms, 800ms
         const delay = 200 * Math.pow(2, attempt);
         await new Promise(resolve => setTimeout(resolve, delay));

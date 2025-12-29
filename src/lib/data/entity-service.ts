@@ -288,15 +288,36 @@ export class EntityService {
   /** Get entity by slug - database only, no API fallback */
   static async getBySlug(slug: string): Promise<Entity | null> {
     try {
-      // Query database only - NO API FALLBACK
-      // Use limit(1) instead of single() to handle potential duplicates
-      // Prioritize treatment types in this order if duplicates exist
+      // During build, skip direct pool to avoid connection issues
+      const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
+
+      // Use direct database pool for faster queries (runtime only)
+      if (!isBuild && typeof window === 'undefined') {
+        try {
+          const { queryWithRetry } = await import('@/lib/config/db-pool');
+          const result = await queryWithRetry(
+            `SELECT * FROM entities WHERE slug = $1 AND status = $2 ORDER BY type ASC LIMIT 1`,
+            [slug, 'active']
+          );
+
+          if (result.rows && result.rows.length > 0) {
+            return normalizeEntity(result.rows[0]);
+          }
+
+          return null;
+        } catch (poolError) {
+          console.warn('Direct pool query failed for getBySlug, falling back to Supabase:', poolError);
+          // Fall through to Supabase client
+        }
+      }
+
+      // Use Supabase (build-time and client-safe)
       const { data, error } = await supabase
         .from("entities")
         .select("*")
         .eq("slug", slug)
         .eq("status", "active")
-        .order("type", { ascending: true }) // Prioritize alphabetically (medication before supplement)
+        .order("type", { ascending: true })
         .limit(1);
 
       if (!error && data && data.length > 0) {
@@ -395,20 +416,41 @@ export class EntityService {
       return legacyCache.all.data;
     }
 
+    // During build, skip direct pool to avoid connection issues
+    // Use Supabase which has better connection pooling for parallel builds
+    const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
+
+    // Use direct database pool for faster queries (runtime only)
+    if (!isBuild && typeof window === 'undefined') {
+      try {
+        const { queryWithRetry } = await import('@/lib/config/db-pool');
+        const result = await queryWithRetry(
+          `SELECT * FROM entities WHERE status = $1 ORDER BY type, title LIMIT 1000`,
+          ['active']
+        );
+
+        const normalized = normalizeEntities(result.rows || []);
+        legacyCache.all = { data: normalized, fetchedAt: Date.now() };
+        return normalized;
+      } catch (poolError) {
+        console.warn('Direct pool query failed, falling back to Supabase:', poolError);
+        // Fall through to Supabase client
+      }
+    }
+
+    // Use Supabase (build-time and client-safe)
     const { data, error } = await supabase
       .from("entities")
       .select("*")
       .eq("status", "active")
       .order("type")
-      .order("title");
+      .order("title")
+      .limit(1000);
 
     if (error) throw error;
 
     const normalized = normalizeEntities(data || []);
-
-    // Cache the result
     legacyCache.all = { data: normalized, fetchedAt: Date.now() };
-
     return normalized;
   }
 

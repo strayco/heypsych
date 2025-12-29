@@ -215,38 +215,30 @@ export async function getConditionsByCategoryServer(category: string): Promise<E
 }
 
 export async function getResourcesServer(): Promise<Entity[]> {
-  // For resources, we load from JSON files since some categories (like knowledge-hub) are JSON-only
-  // This matches the client-side behavior
+  // Fetch all resources for client-side search and navigation features
+  // Limit set to 500 to support growth while preventing runaway queries
   try {
-    // Try database first
     const { data, error } = await supabase
       .from("entities")
       .select("*")
       .eq("type", "resource")
       .eq("status", "active")
       .order("title")
-      .limit(1000); // Add limit to prevent fetching all resources
+      .limit(500);
 
     if (!error && data && data.length > 0) {
-      const mappedData = data.map((row) => mapRowToEntity(row, "resource"));
-
-      // Deduplicate by name (title) to handle cases where the same resource
-      // exists with different slugs (e.g., "988-lifeline" vs "988-suicide-crisis-lifeline")
+      // Deduplicate by name during mapping for better performance
       const byName = new Map<string, Entity>();
-      mappedData.forEach((entity) => {
+
+      for (const row of data) {
+        const entity = mapRowToEntity(row, "resource");
         const existing = byName.get(entity.name);
 
-        // If no existing entry, add it
-        if (!existing) {
-          byName.set(entity.name, entity);
-          return;
-        }
-
-        // Prefer entity with longer slug (more descriptive)
-        if (entity.slug.length > existing.slug.length) {
+        // If no existing entry or current has longer slug (more descriptive), add it
+        if (!existing || entity.slug.length > existing.slug.length) {
           byName.set(entity.name, entity);
         }
-      });
+      }
 
       return Array.from(byName.values());
     }

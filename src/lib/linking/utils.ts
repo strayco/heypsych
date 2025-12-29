@@ -566,7 +566,8 @@ export function parseEntityNames(text: string): string[] {
 // In-memory cache for entity validation during static generation
 // Prevents redundant database calls for the same entity name
 const validationCache = new Map<string, Entity | null>();
-const CACHE_TTL_MS = 60000; // 1 minute cache TTL
+// Longer cache during build for performance, shorter during runtime for freshness
+const CACHE_TTL_MS = process.env.NEXT_PHASE === 'phase-production-build' ? 600000 : 60000; // 10 min build, 1 min runtime
 let lastCacheClear = Date.now();
 
 function getCacheKey(name: string, type: EntityType): string {
@@ -578,6 +579,43 @@ function checkAndClearCache(): void {
   if (now - lastCacheClear > CACHE_TTL_MS) {
     validationCache.clear();
     lastCacheClear = now;
+  }
+}
+
+// Global entity cache for build-time performance
+// Stores all entities by type to reduce database queries during validation
+let globalEntityCache: Map<EntityType, Entity[]> | null = null;
+let globalCacheInitialized = false;
+
+/**
+ * Pre-warm the global entity cache with all entities
+ * Called once at the start of build to reduce database queries
+ */
+async function ensureGlobalCache(): Promise<void> {
+  if (globalCacheInitialized && globalEntityCache) return;
+
+  // Only initialize during build, not runtime
+  const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
+  if (!isBuild) return;
+
+  try {
+    const { EntityService } = await import('@/lib/data/entity-service');
+    const allEntities = await EntityService.getAll();
+
+    // Group entities by type for faster lookups
+    globalEntityCache = new Map();
+    const entityTypes: EntityType[] = ['condition', 'medication', 'therapy', 'treatment', 'resource'];
+
+    for (const type of entityTypes) {
+      const entitiesOfType = allEntities.filter(e => e.type === type);
+      globalEntityCache.set(type, entitiesOfType);
+    }
+
+    globalCacheInitialized = true;
+    console.log(`✅ Pre-warmed entity cache with ${allEntities.length} entities`);
+  } catch (error) {
+    console.error('Failed to pre-warm global entity cache:', error);
+    // Continue without cache - will fall back to individual queries
   }
 }
 
@@ -600,6 +638,60 @@ export async function validateEntityExists(
   const cacheKey = getCacheKey(name, type);
   if (validationCache.has(cacheKey)) {
     return validationCache.get(cacheKey) || null;
+  }
+
+  // Ensure global cache is initialized (build-time only)
+  await ensureGlobalCache();
+
+  // If global cache available, search it first (much faster than DB queries)
+  if (globalEntityCache) {
+    const entitiesOfType = globalEntityCache.get(type) || [];
+    const baseSlug = slugify(name);
+    const lowerName = name.toLowerCase().trim();
+
+    // Try exact slug match first
+    let match = entitiesOfType.find(e => e.slug === baseSlug);
+    if (match) {
+      validationCache.set(cacheKey, match);
+      return match;
+    }
+
+    // Try slug prefix match (e.g., "fluoxetine" → "fluoxetine-prozac")
+    match = entitiesOfType.find(e => e.slug.startsWith(`${baseSlug}-`));
+    if (match) {
+      validationCache.set(cacheKey, match);
+      return match;
+    }
+
+    // Try slug suffix match (e.g., "prozac" → "fluoxetine-prozac")
+    match = entitiesOfType.find(e => e.slug.endsWith(`-${baseSlug}`));
+    if (match) {
+      validationCache.set(cacheKey, match);
+      return match;
+    }
+
+    // Try abbreviation match
+    if (lowerName.length <= 10) {
+      match = entitiesOfType.find(e => {
+        const abbrev = e.data?.abbreviation || e.metadata?.abbreviation;
+        return abbrev && abbrev.toLowerCase() === lowerName;
+      });
+      if (match) {
+        validationCache.set(cacheKey, match);
+        return match;
+      }
+    }
+
+    // Try name match
+    match = entitiesOfType.find(e => e.name.toLowerCase() === lowerName);
+    if (match) {
+      validationCache.set(cacheKey, match);
+      return match;
+    }
+
+    // If no match in global cache, cache negative result and return
+    validationCache.set(cacheKey, null);
+    return null;
   }
 
   // Import dependencies dynamically to avoid circular deps
