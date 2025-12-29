@@ -8,52 +8,88 @@ import type { Entity } from "@/lib/types/database";
  * These run on Vercel's servers during SSR, eliminating cold start delays
  */
 
+// Build-time cache to prevent redundant queries during parallel page generation
+// Longer TTL during build, shorter during runtime
+const CACHE_TTL_MS = process.env.NEXT_PHASE === 'phase-production-build' ? 600000 : 60000; // 10 min build, 1 min runtime
+
+type CachedData<T> = {
+  data: T;
+  fetchedAt: number;
+};
+
+const queryCache = new Map<string, CachedData<Entity[]>>();
+
+function isCacheFresh<T>(entry?: CachedData<T>): entry is CachedData<T> {
+  if (!entry) return false;
+  return Date.now() - entry.fetchedAt < CACHE_TTL_MS;
+}
+
+function getCached(key: string): Entity[] | null {
+  const cached = queryCache.get(key);
+  return isCacheFresh(cached) ? cached.data : null;
+}
+
+function setCache(key: string, data: Entity[]): void {
+  queryCache.set(key, { data, fetchedAt: Date.now() });
+}
+
 export async function getMedicationsServer(): Promise<Entity[]> {
-  const { data, error} = await supabase
-    .from("entities")
-    .select("*")
-    .in("type", TREATMENT_TYPE_MAP.medication)
-    .eq("status", "active")
-    .order("title")
-    .limit(500); // Increased from 200 to account for duplicate type entries
+  // Check cache first
+  const cached = getCached('medications');
+  if (cached) return cached;
 
-  if (error) {
-    console.error("Error fetching medications:", error);
-    return [];
-  }
+  try {
+    const { data, error} = await supabase
+      .from("entities")
+      .select("*")
+      .in("type", TREATMENT_TYPE_MAP.medication)
+      .eq("status", "active")
+      .order("title")
+      .limit(500);
 
-  const mappedData = (data || []).map((row) => mapRowToEntity(row, "medication"));
-
-  // Deduplicate by slug, preferring entities with more complete metadata
-  const bySlug = new Map<string, Entity>();
-  mappedData.forEach((entity) => {
-    const existing = bySlug.get(entity.slug);
-
-    // If no existing entry, add it
-    if (!existing) {
-      bySlug.set(entity.slug, entity);
-      return;
+    if (error) {
+      console.error("Error fetching medications:", error);
+      return [];
     }
 
-    // Prefer entity with mechanism_categories populated
-    const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
-    const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
+    const mappedData = (data || []).map((row) => mapRowToEntity(row, "medication"));
 
-    if (currentHasMechanism && !existingHasMechanism) {
-      bySlug.set(entity.slug, entity);
-    }
-    // If both or neither have mechanisms, keep the one with more metadata fields
-    else if (currentHasMechanism === existingHasMechanism) {
-      const existingMetadataCount = Object.keys(existing.metadata || {}).length;
-      const currentMetadataCount = Object.keys(entity.metadata || {}).length;
+    // Deduplicate by slug, preferring entities with more complete metadata
+    const bySlug = new Map<string, Entity>();
+    mappedData.forEach((entity) => {
+      const existing = bySlug.get(entity.slug);
 
-      if (currentMetadataCount > existingMetadataCount) {
+      // If no existing entry, add it
+      if (!existing) {
+        bySlug.set(entity.slug, entity);
+        return;
+      }
+
+      // Prefer entity with mechanism_categories populated
+      const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
+      const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
+
+      if (currentHasMechanism && !existingHasMechanism) {
         bySlug.set(entity.slug, entity);
       }
-    }
-  });
+      // If both or neither have mechanisms, keep the one with more metadata fields
+      else if (currentHasMechanism === existingHasMechanism) {
+        const existingMetadataCount = Object.keys(existing.metadata || {}).length;
+        const currentMetadataCount = Object.keys(entity.metadata || {}).length;
 
-  return Array.from(bySlug.values());
+        if (currentMetadataCount > existingMetadataCount) {
+          bySlug.set(entity.slug, entity);
+        }
+      }
+    });
+
+    const result = Array.from(bySlug.values());
+    setCache('medications', result);
+    return result;
+  } catch (err) {
+    console.error("Error fetching medications:", err);
+    return [];
+  }
 }
 
 export async function getInterventionalServer(): Promise<Entity[]> {
@@ -142,6 +178,10 @@ export async function getInvestigationalServer(): Promise<Entity[]> {
 }
 
 export async function getAllTreatmentsServer(): Promise<Entity[]> {
+  // Check cache first - critical during build to prevent repeated queries
+  const cached = getCached('all-treatments');
+  if (cached) return cached;
+
   const treatmentTypes = [
     "medication",
     "therapy",
@@ -152,49 +192,69 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
     "investigational",
   ];
 
-  const { data, error } = await supabase
-    .from("entities")
-    .select("*")
-    .in("type", treatmentTypes)
-    .eq("status", "active")
-    .order("title")
-    .limit(500);
+  try {
+    const { data, error } = await supabase
+      .from("entities")
+      .select("*")
+      .in("type", treatmentTypes)
+      .eq("status", "active")
+      .order("title")
+      .limit(500);
 
-  if (error) {
-    console.error("Error fetching all treatments:", error);
+    if (error) {
+      console.error("Error fetching all treatments:", error);
+      return [];
+    }
+
+    const mappedData = (data || []).map((row) => {
+      // Map each entity with its correct type
+      const type = row.type as any;
+      return mapRowToEntity(row, type);
+    });
+
+    // Deduplicate by slug - keep the first occurrence
+    const seen = new Set<string>();
+    const result = mappedData.filter((entity) => {
+      if (seen.has(entity.slug)) return false;
+      seen.add(entity.slug);
+      return true;
+    });
+
+    // Cache the result
+    setCache('all-treatments', result);
+    return result;
+  } catch (err) {
+    console.error("Error fetching all treatments:", err);
     return [];
   }
-
-  const mappedData = (data || []).map((row) => {
-    // Map each entity with its correct type
-    const type = row.type as any;
-    return mapRowToEntity(row, type);
-  });
-
-  // Deduplicate by slug - keep the first occurrence
-  const seen = new Set<string>();
-  return mappedData.filter((entity) => {
-    if (seen.has(entity.slug)) return false;
-    seen.add(entity.slug);
-    return true;
-  });
 }
 
 export async function getConditionsServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
-    .from("entities")
-    .select("*")
-    .eq("type", "condition")
-    .eq("status", "active")
-    .order("title")
-    .limit(200);
+  // Check cache first
+  const cached = getCached('conditions');
+  if (cached) return cached;
 
-  if (error) {
-    console.error("Error fetching conditions:", error);
+  try {
+    const { data, error } = await supabase
+      .from("entities")
+      .select("*")
+      .eq("type", "condition")
+      .eq("status", "active")
+      .order("title")
+      .limit(200);
+
+    if (error) {
+      console.error("Error fetching conditions:", error);
+      return [];
+    }
+
+    const result = (data || []).map((row) => mapRowToEntity(row, "condition"));
+    setCache('conditions', result);
+    return result;
+  } catch (err) {
+    console.error("Error fetching conditions:", err);
     return [];
   }
-
-  return (data || []).map((row) => mapRowToEntity(row, "condition"));
 }
 
 export async function getConditionsByCategoryServer(category: string): Promise<Entity[]> {
@@ -215,6 +275,10 @@ export async function getConditionsByCategoryServer(category: string): Promise<E
 }
 
 export async function getResourcesServer(): Promise<Entity[]> {
+  // Check cache first
+  const cached = getCached('resources');
+  if (cached) return cached;
+
   // Fetch all resources for client-side search and navigation features
   // Limit set to 500 to support growth while preventing runaway queries
   try {
@@ -240,7 +304,9 @@ export async function getResourcesServer(): Promise<Entity[]> {
         }
       }
 
-      return Array.from(byName.values());
+      const result = Array.from(byName.values());
+      setCache('resources', result);
+      return result;
     }
   } catch (err) {
     console.error("Database error loading resources:", err);
