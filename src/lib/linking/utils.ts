@@ -589,12 +589,18 @@ let globalCacheInitialized = false;
 
 /**
  * Pre-warm the global entity cache with all entities
- * Called once at the start of build to reduce database queries
+ * DISABLED during build to prevent timeout errors with parallel workers
+ * Query-level caching in EntityService and server-queries provides sufficient optimization
  */
 async function ensureGlobalCache(): Promise<void> {
+  // DISABLED: Global cache warming causes timeouts during parallel page generation
+  // Each worker trying to fetch all entities simultaneously overwhelms the database
+  // Query-level caching (EntityService, server-queries) is sufficient
+  return;
+
+  /* Original implementation - disabled
   if (globalCacheInitialized && globalEntityCache) return;
 
-  // Only initialize during build, not runtime
   const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
   if (!isBuild) return;
 
@@ -602,7 +608,6 @@ async function ensureGlobalCache(): Promise<void> {
     const { EntityService } = await import('@/lib/data/entity-service');
     const allEntities = await EntityService.getAll();
 
-    // Group entities by type for faster lookups
     globalEntityCache = new Map();
     const entityTypes: EntityType[] = ['condition', 'medication', 'therapy', 'treatment', 'resource'];
 
@@ -615,8 +620,8 @@ async function ensureGlobalCache(): Promise<void> {
     console.log(`✅ Pre-warmed entity cache with ${allEntities.length} entities`);
   } catch (error) {
     console.error('Failed to pre-warm global entity cache:', error);
-    // Continue without cache - will fall back to individual queries
   }
+  */
 }
 
 /**
@@ -803,14 +808,16 @@ export async function validateEntityExists(
   }
 
   // Run first 3 strategies in parallel for better performance
-  const { supabase } = await import('@/lib/config/database');
-  
-  const strategyPromises: Promise<Entity | null>[] = [
-    // Strategy 1: Exact slug match
-    EntityService.getBySlug(baseSlug).then(
-      entity => (entity && entity.type === type ? entity : null),
-      () => null
-    ),
+  // Wrap in try-catch to prevent build crashes on timeout
+  try {
+    const { supabase } = await import('@/lib/config/database');
+
+    const strategyPromises: Promise<Entity | null>[] = [
+      // Strategy 1: Exact slug match
+      EntityService.getBySlug(baseSlug).then(
+        entity => (entity && entity.type === type ? entity : null),
+        () => null
+      ).catch(() => null),
     
     // Strategy 2: Slug starts with base slug (handles generic → brand combinations)
     // Example: "fluoxetine" → "fluoxetine-prozac"
@@ -1007,9 +1014,16 @@ export async function validateEntityExists(
     }
   }
 
-  // Cache the negative result too to avoid repeated lookups
-  validationCache.set(cacheKey, null);
-  return null;
+    // Cache the negative result too to avoid repeated lookups
+    validationCache.set(cacheKey, null);
+    return null;
+  } catch (error) {
+    // Gracefully handle timeouts and errors during validation
+    // Don't crash the build - just cache negative result and continue
+    console.warn(`Entity validation timeout/error for "${name}" (${type}):`, error instanceof Error ? error.message : 'Unknown error');
+    validationCache.set(cacheKey, null);
+    return null;
+  }
 }
 
 /**
