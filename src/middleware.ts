@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { maybeTrackAIBot } from '@/lib/analytics/ai-telemetry';
 
 /**
  * Middleware to enforce canonical host (www.heypsych.com)
@@ -43,6 +44,22 @@ export function middleware(request: NextRequest) {
     // Explicitly set permissive CORS headers to ensure LinkedIn/Facebook/Twitter can load OG images
     response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
     response.headers.set('Cross-Origin-Embedder-Policy', 'unsafe-none');
+
+    return response;
+  }
+
+  // AI Agent CORS - allow cross-origin access for LLM crawlers
+  // Enables browser-based AI sidekicks (Perplexity, Claude-Web, custom medical GPTs)
+  // to fetch llms.txt without being blocked by browser CORS policies
+  if (pathname === '/llms.txt') {
+    // Track AI bot access for telemetry
+    maybeTrackAIBot(request, 'llms.txt');
+
+    const response = NextResponse.next();
+
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, User-Agent');
 
     return response;
   }
