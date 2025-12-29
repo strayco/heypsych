@@ -415,7 +415,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
   const shortDefinition = data.shortDefinition || data.short_definition;
 
   return (
-    <div className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         {category && (
@@ -459,11 +459,13 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 />
               )}
             </div>
-            <h1 className="text-4xl font-bold text-neutral-900">{entity.name}</h1>
+            <h1 className="text-4xl font-bold text-neutral-900" itemProp="name headline">{entity.name}</h1>
             {shortDefinition && (
-              <p className="text-lg text-neutral-700 leading-relaxed max-w-4xl">
-                {shortDefinition}
-              </p>
+              <article itemProp="abstract description" className="text-lg text-neutral-700 leading-relaxed max-w-4xl">
+                <p>
+                  <strong>To define {entity.name}:</strong> {shortDefinition}
+                </p>
+              </article>
             )}
           </div>
         </motion.div>
@@ -496,22 +498,23 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Info className="h-5 w-5" />
-                    Overview
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
+              <section itemProp="mainEntityOfPage">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Info className="h-5 w-5" />
+                      Overview
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
                     {data.description && (
-                      <div className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4">
+                      <article className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4" itemProp="description">
                         <h4 className="mb-2 font-semibold text-blue-900">Description</h4>
                         <div className="text-sm text-blue-800">
                           <ParsedContent content={extractSafeText(data.description)} />
                         </div>
-                      </div>
+                      </article>
                     )}
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -557,9 +560,10 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                         </div>
                       ) : null;
                     })()}
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+              </section>
             </motion.div>
           )}
 
@@ -724,6 +728,6 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           </motion.div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -8,6 +8,7 @@
 import type { Entity } from '@/lib/types/database';
 import { SchemaBuilder, SchemaUtils } from '../schema-builder';
 import { SITE_CONFIG } from '../config';
+import { getConditionSameAsLinks } from '../knowledge-graph-mapper';
 
 export function buildMedicalConditionSchema(entity: Entity): Record<string, any> {
   const builder = new SchemaBuilder()
@@ -15,6 +16,11 @@ export function buildMedicalConditionSchema(entity: Entity): Record<string, any>
     .setType('MedicalCondition')
     .setId(`${SITE_CONFIG.url}/conditions/${entity.slug}#condition`)
     .addProperty('name', entity.name);
+
+  // Entity Grounding: Link to external knowledge graphs (Wikidata, DBpedia, SNOMED CT, ICD-10)
+  // This enables LLMs to uniquely identify our entities in the global knowledge graph
+  const sameAsLinks = getConditionSameAsLinks(entity);
+  builder.addPropertyIfExists('sameAs', sameAsLinks);
 
   // Description
   builder.addPropertyIfExists(

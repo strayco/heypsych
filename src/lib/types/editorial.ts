@@ -44,6 +44,9 @@ export interface AuthorInfo {
     twitter?: string;
     linkedin?: string;
   };
+
+  /** ORCID (Open Researcher and Contributor ID) for academic verification */
+  orcid?: string;
 }
 
 /**
@@ -85,6 +88,17 @@ export interface MedicalReviewerInfo {
 
   /** Areas of clinical expertise */
   clinicalExpertise?: string[];
+
+  /** ORCID (Open Researcher and Contributor ID) for academic verification */
+  orcid?: string;
+
+  /** NPI (National Provider Identifier) for medical license verification */
+  npi?: string;
+
+  /** Social media profiles */
+  social?: {
+    linkedin?: string;
+  };
 }
 
 /**

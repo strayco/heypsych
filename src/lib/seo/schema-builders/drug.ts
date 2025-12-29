@@ -8,6 +8,7 @@
 import type { Entity } from '@/lib/types/database';
 import { SchemaBuilder, SchemaUtils } from '../schema-builder';
 import { SITE_CONFIG } from '../config';
+import { getTreatmentSameAsLinks } from '../knowledge-graph-mapper';
 
 export function buildDrugSchema(entity: Entity): Record<string, any> {
   const builder = new SchemaBuilder()
@@ -15,6 +16,11 @@ export function buildDrugSchema(entity: Entity): Record<string, any> {
     .setType('Drug')
     .setId(`${SITE_CONFIG.url}/treatments/${entity.slug}#drug`)
     .addProperty('name', entity.name);
+
+  // Entity Grounding: Link to external knowledge graphs (Wikidata, DBpedia, RxNorm, DrugBank, PubChem)
+  // This enables LLMs to uniquely identify our medications in the global knowledge graph
+  const sameAsLinks = getTreatmentSameAsLinks(entity);
+  builder.addPropertyIfExists('sameAs', sameAsLinks);
 
   // Description
   builder.addPropertyIfExists(

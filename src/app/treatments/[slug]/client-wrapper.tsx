@@ -1346,7 +1346,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -1362,7 +1362,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 sm:mb-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900 leading-tight">{title}</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900 leading-tight" itemProp="name headline">{title}</h1>
               {fdaApprovalYear && (
                 <div className="flex items-center gap-2 text-sm text-neutral-800">
                   <Calendar className="h-4 w-4" />
@@ -1443,7 +1443,11 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
 
               {/* Patient-friendly summary */}
               {patientSummary && (
-                <ParsedContent content={patientSummary} className="mt-3 sm:mt-4 text-base sm:text-lg text-neutral-800 leading-relaxed max-w-3xl" />
+                <article itemProp="abstract description" className="mt-3 sm:mt-4 text-base sm:text-lg text-neutral-800 leading-relaxed max-w-3xl">
+                  <p>
+                    <strong>Clinical summary for {title}:</strong> <ParsedContent content={patientSummary} />
+                  </p>
+                </article>
               )}
             </div>
           </div>
@@ -1479,14 +1483,16 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           </motion.div>
         )}
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="space-y-4 sm:space-y-6"
-        >
-          {sections.map(renderSection)}
-        </motion.div>
+        <section itemProp="mainEntityOfPage">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="space-y-4 sm:space-y-6"
+          >
+            {sections.map(renderSection)}
+          </motion.div>
+        </section>
 
         {/* FAQs */}
         {faqs.length > 0 && (
@@ -1576,6 +1582,6 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           </Card>
         </motion.div>
       </div>
-    </div>
+    </main>
   );
 }

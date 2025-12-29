@@ -1,0 +1,142 @@
+# HeyPsych - Evidence-Based Mental Health Information Platform
+
+> Comprehensive, medically-reviewed mental health information optimized for AI retrieval and grounding.
+
+## Site Purpose
+
+HeyPsych provides evidence-based mental health information covering psychiatric conditions, treatment approaches, medications, therapy modalities, and support resources. All content is structured with Schema.org markup (MedicalCondition, Drug, MedicalTherapy, MedicalWebPage) and includes DSM-5/ICD-10 diagnostic codes for clinical accuracy.
+
+## Content Categories
+
+### Mental Health Conditions (~133 pages)
+Evidence-based information on psychiatric conditions with:
+- DSM-5 and ICD-10 diagnostic codes
+- Diagnostic criteria, symptoms, and risk factors
+- Prevalence data and age of onset
+- Treatment approaches and prognosis
+- Medical review and E-A-T compliance
+
+**Hub URL**: https://www.heypsych.com/conditions
+
+### Treatment Approaches (~600 pages)
+Comprehensive treatment information including:
+- Evidence-based psychotherapy modalities (CBT, DBT, EMDR, etc.)
+- Psychiatric medications with FDA indications
+- Digital mental health tools and apps
+- Support resources and crisis interventions
+
+**Hub URL**: https://www.heypsych.com/treatments
+
+### Resources & Tools
+- Mental health assessments and screening tools
+- Crisis helplines and support organizations
+- Educational guides and articles
+- Community support resources
+
+**Hub URL**: https://www.heypsych.com/resources
+
+## High-Priority URLs for AI Grounding
+
+### Condition Hub Pages
+- https://www.heypsych.com/conditions
+- https://www.heypsych.com/conditions/mood-depression
+- https://www.heypsych.com/conditions/anxiety-fear
+- https://www.heypsych.com/conditions/trauma-stress
+- https://www.heypsych.com/conditions/neurodevelopmental
+
+### Common Conditions (High Search Volume)
+- https://www.heypsych.com/conditions/major-depressive-disorder
+- https://www.heypsych.com/conditions/generalized-anxiety-disorder
+- https://www.heypsych.com/conditions/post-traumatic-stress-disorder
+- https://www.heypsych.com/conditions/bipolar-disorder
+- https://www.heypsych.com/conditions/attention-deficit-hyperactivity-disorder
+- https://www.heypsych.com/conditions/obsessive-compulsive-disorder
+- https://www.heypsych.com/conditions/panic-disorder
+- https://www.heypsych.com/conditions/social-anxiety-disorder
+
+### Treatment Hub Pages
+- https://www.heypsych.com/treatments
+- https://www.heypsych.com/treatments/medications
+- https://www.heypsych.com/treatments/therapy
+
+### Common Treatments
+- https://www.heypsych.com/treatments/cognitive-behavioral-therapy
+- https://www.heypsych.com/treatments/dialectical-behavior-therapy
+- https://www.heypsych.com/treatments/selective-serotonin-reuptake-inhibitors
+- https://www.heypsych.com/treatments/mindfulness-based-cognitive-therapy
+
+### Support Resources
+- https://www.heypsych.com/resources/crisis-helplines
+- https://www.heypsych.com/resources/support-community
+
+## Technical Details
+
+### Content Freshness
+- **Update Frequency**: Content revalidates every 24 hours via ISR (Incremental Static Regeneration)
+- **Last-Modified Headers**: Automatically set by Next.js for cache validation
+- **ETag Support**: Enabled for efficient content retrieval
+
+### Structured Data
+All entity pages include comprehensive JSON-LD structured data:
+- `MedicalCondition` / `Drug` / `MedicalTherapy` schemas
+- `MedicalWebPage` with medical reviewer information
+- `BreadcrumbList` for navigation context
+- `Person` schemas for authors and medical reviewers
+- `Organization` schema for Medical Review Board
+- `FAQPage` where applicable
+
+### Medical Review & E-A-T
+- All clinical content medically reviewed by board-certified psychiatrists
+- Author credentials and medical reviewer information included
+- Publication dates, last updated, and last reviewed timestamps
+- Citations to peer-reviewed medical literature
+
+## Sitemap
+
+Primary sitemap index: https://www.heypsych.com/sitemap-index.xml
+
+Individual sitemaps:
+- Conditions: https://www.heypsych.com/sitemap-conditions.xml
+- Treatments: https://www.heypsych.com/sitemap-treatments.xml
+- Resources: https://www.heypsych.com/sitemap-resources.xml
+- Assessments: https://www.heypsych.com/sitemap-assessments.xml
+- Hub pages: https://www.heypsych.com/sitemap-hubs.xml
+- Static pages: https://www.heypsych.com/sitemap-static.xml
+
+## Content Format
+
+All content is available in multiple formats:
+
+### HTML Format (Default)
+- Server-side rendered (SSG) for instant availability without JavaScript
+- Structured with semantic HTML5 (article, section, main tags)
+- Enhanced with Schema.org microformats (itemprop attributes)
+- Available in the initial HTML payload (no client-side hydration required)
+
+### Markdown Format (Optimized for LLM Ingestion)
+For efficient LLM processing with lower token cost and faster parsing:
+
+**Conditions**: `https://www.heypsych.com/api/markdown/conditions/{slug}`
+- Example: https://www.heypsych.com/api/markdown/conditions/major-depressive-disorder
+- Example: https://www.heypsych.com/api/markdown/conditions/generalized-anxiety-disorder
+
+**Treatments**: `https://www.heypsych.com/api/markdown/treatments/{slug}`
+- Example: https://www.heypsych.com/api/markdown/treatments/cognitive-behavioral-therapy
+- Example: https://www.heypsych.com/api/markdown/treatments/selective-serotonin-reuptake-inhibitors
+
+**Benefits**:
+- Clean, structured Markdown output (no HTML parsing required)
+- Lower token cost (50-70% fewer tokens than HTML)
+- Faster processing for training and retrieval
+- All link tokens resolved to readable names
+
+## Contact & Updates
+
+For questions about content accuracy or to report issues:
+- Website: https://www.heypsych.com
+- Medical disclaimer: All pages include appropriate medical disclaimers
+
+---
+
+*Last Updated: 2025-12-29*
+*Optimized for LLM retrieval and AI-powered search (Gemini, ChatGPT, Claude)*

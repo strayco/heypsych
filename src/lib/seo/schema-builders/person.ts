@@ -8,6 +8,7 @@
 import type { AuthorInfo, MedicalReviewerInfo } from '@/lib/types/editorial';
 import { SchemaBuilder } from '../schema-builder';
 import { SITE_CONFIG } from '../config';
+import { getORCIDUrl } from '../knowledge-graph-mapper';
 
 /**
  * Build Person schema for content author
@@ -55,11 +56,26 @@ export function buildAuthorSchema(author: AuthorInfo): Record<string, any> {
   // Email
   builder.addPropertyIfExists('email', author.email);
 
-  // Social media
-  if (author.social?.twitter || author.social?.linkedin) {
-    const sameAs: string[] = [];
-    if (author.social.twitter) sameAs.push(author.social.twitter);
-    if (author.social.linkedin) sameAs.push(author.social.linkedin);
+  // Verified Identity Links: ORCID, LinkedIn, Twitter
+  // Critical for E-E-A-T verification in Google Search
+  const sameAs: string[] = [];
+
+  // ORCID (highest priority - gold standard for researcher identification)
+  if (author.orcid) {
+    sameAs.push(getORCIDUrl(author.orcid));
+  }
+
+  // LinkedIn (professional verification)
+  if (author.social?.linkedin) {
+    sameAs.push(author.social.linkedin);
+  }
+
+  // Twitter (social proof)
+  if (author.social?.twitter) {
+    sameAs.push(author.social.twitter);
+  }
+
+  if (sameAs.length > 0) {
     builder.addProperty('sameAs', sameAs);
   }
 
@@ -113,6 +129,29 @@ export function buildMedicalReviewerSchema(reviewer: MedicalReviewerInfo): Recor
   // Years of practice
   if (reviewer.yearsOfPractice) {
     builder.addProperty('award', `${reviewer.yearsOfPractice}+ years of clinical practice`);
+  }
+
+  // Verified Identity Links: ORCID, LinkedIn, NPI
+  // Critical for E-E-A-T verification - allows Google to verify medical credentials
+  const sameAs: string[] = [];
+
+  // ORCID (highest priority for academic/research credentials)
+  if (reviewer.orcid) {
+    sameAs.push(getORCIDUrl(reviewer.orcid));
+  }
+
+  // NPI (National Provider Identifier - verifies medical license)
+  if (reviewer.npi) {
+    sameAs.push(`https://npiregistry.cms.hhs.gov/provider-view/${reviewer.npi}`);
+  }
+
+  // LinkedIn (professional verification)
+  if (reviewer.social?.linkedin) {
+    sameAs.push(reviewer.social.linkedin);
+  }
+
+  if (sameAs.length > 0) {
+    builder.addProperty('sameAs', sameAs);
   }
 
   return builder.build();

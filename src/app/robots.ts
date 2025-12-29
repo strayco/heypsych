@@ -15,24 +15,30 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/debug", "/test-env"],
         crawlDelay: 1,
       },
-      {
-        userAgent: "GPTBot",
-        disallow: "/",
-      },
-      {
-        userAgent: "CCBot",
-        disallow: "/",
-      },
+      // AI bots: Allow with polite crawl delay for LLM training/grounding
       {
         userAgent: "Google-Extended",
-        disallow: "/",
+        allow: "/",
+        crawlDelay: 2,
+      },
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+        crawlDelay: 2,
       },
       {
         userAgent: "anthropic-ai",
-        disallow: "/",
+        allow: "/",
+        crawlDelay: 2,
       },
       {
         userAgent: "Claude-Web",
+        allow: "/",
+        crawlDelay: 2,
+      },
+      // Block content scrapers (non-AI training bots)
+      {
+        userAgent: "CCBot",
         disallow: "/",
       },
     ],
