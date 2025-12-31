@@ -419,7 +419,7 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
     const cleanedSnippet = item.snippet
       .replace(/<b>/g, '')
       .replace(/<\/b>/g, '')
-      // Remove whitespace characters and normalize spacing
+      // Remove whitespace characters and normalize spacing (handle all variants)
       .replace(/\\n/g, ' ')  // Remove literal \n text (from JSON)
       .replace(/\\t/g, ' ')  // Remove literal \t text (from JSON)
       .replace(/\\r/g, ' ')  // Remove literal \r text (from JSON)
@@ -427,8 +427,12 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
       .replace(/\t/g, ' ')   // Remove actual tabs
       .replace(/\r/g, ' ')   // Remove actual carriage returns
       .replace(/\\"/g, '"')  // Replace \" with "
-      // Remove bullet points
-      .replace(/[•●◦]/g, '')
+      // Remove bullet points and special unicode characters
+      .replace(/[•●◦\u2022\u2023\u25E6\u2043\u2219]/g, '')
+      // Remove ISO 8601 timestamps (e.g., 2025-12-31T05:06:07.913Z)
+      .replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z?/g, '')
+      // Remove internal metadata field names that shouldn't appear in snippets
+      .replace(/\b(categories|wikidata_qid|last_synced|file_path|data_source|sync_date|import_date|schema_version|internal_id|legacy_id|migration_id)\b/gi, '')
       // Remove JSON field syntax: "fieldname": or fieldname":
       .replace(/"\w+"\s*:\s*"/g, '') // "title": "
       .replace(/\w+"\s*:\s*"/g, '') // title": "
@@ -446,6 +450,11 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
       // Remove common JSON field names and values
       .replace(/\s+(items|null|undefined|false|true)["':\s,]*/gi, ' ')
       .replace(/\s*(seo|metadata|slug|type|category|title|description|name)["':\s]+/gi, ' ') // SEO and metadata fields (with optional leading space)
+      // Remove common entity field values that shouldn't appear in snippets
+      .replace(/\b(resource|treatment|condition|anonymous|active|inactive|how-to-guides|knowledge-hub|professional-resources)\b/gi, '')
+      // Remove slug patterns (kebab-case identifiers with 3+ hyphens, like "anxiety-vs-stress")
+      // Only remove patterns that look like slugs (multiple short words connected by hyphens)
+      .replace(/\b[a-z]{2,8}-[a-z]{2,8}-[a-z0-9-]+\b/g, '')
       // Remove URLs
       .replace(/https?:\/\/[^\s,)"]+/g, '')
       .replace(/\([^\)]*https?[^\)]*\)/g, '') // Remove parentheses containing URLs
@@ -460,7 +469,7 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
       .replace(/,\s*,+/g, ',')
       // Remove leading/trailing junk
       .replace(/^["'\s:,\.]+|["'\s:,\.]+$/g, '')
-      // Normalize whitespace
+      // Normalize whitespace (final cleanup)
       .replace(/\s+/g, ' ')
       .trim();
 
