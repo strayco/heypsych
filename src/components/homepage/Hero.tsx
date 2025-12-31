@@ -83,7 +83,7 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mb-3 text-2xl font-bold sm:text-3xl">
           <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            Mental health guidance. Grounded in science.
+            Everything Mental Health—One Trusted Place.
           </span>
         </h1>
 
