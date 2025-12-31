@@ -664,7 +664,7 @@ export function getConditionSameAsLinks(entity: Entity): string[] | null {
 
   // 4. ICD-10 (if available)
   const icd10Code = entity.metadata?.icd10_code;
-  if (icd10Code) {
+  if (icd10Code && typeof icd10Code === 'string') {
     // Link to WHO ICD browser
     links.push(`https://icd.who.int/browse10/2019/en#/${icd10Code.replace('.', '')}`);
   }
