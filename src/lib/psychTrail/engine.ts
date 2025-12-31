@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Simulation Engine
+ * PsychTrails - Simulation Engine
  *
  * Domain-neutral, pure TypeScript engine for turn-based simulation.
  * No React, no UI logic, no clinical assumptions - just state + transitions.

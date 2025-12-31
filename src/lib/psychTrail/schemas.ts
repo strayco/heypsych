@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Zod Schemas
+ * PsychTrails - Zod Schemas
  *
  * Runtime validation schemas for scenario pack files.
  * Used at build/dev time to catch errors early.

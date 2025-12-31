@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Scenario Validation Tool
+ * PsychTrails - Scenario Validation Tool
  *
  * Run this script to validate all scenario files.
  * Can be used in dev/build pipeline to catch errors early.
@@ -14,7 +14,7 @@ import { validateScenario } from "./schemas";
 const SCENARIOS_DIR = join(__dirname, "scenarios");
 
 function validateAllScenarios() {
-  console.log("🔍 Validating Psych Trail scenarios...\n");
+  console.log("🔍 Validating PsychTrails scenarios...\n");
 
   let totalScenarios = 0;
   let validScenarios = 0;

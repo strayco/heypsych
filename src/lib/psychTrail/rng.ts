@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Seeded Random Number Generator
+ * PsychTrails - Seeded Random Number Generator
  *
  * Deterministic RNG for reproducible simulation runs.
  * Uses a simple Linear Congruential Generator (LCG) algorithm.

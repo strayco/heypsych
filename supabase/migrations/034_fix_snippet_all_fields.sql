@@ -98,7 +98,7 @@ BEGIN
             'english',
             m.searchable_text,
             search_query,
-            'MaxWords=40, MinWords=20, ShortWord=2, MaxFragments=1, StartSel=<b>, StopSel=</b>'
+            'MaxWords=40, MinWords=20, ShortWord=2, MaxFragments=1'
           )
       END as snippet,
       m.search_rank

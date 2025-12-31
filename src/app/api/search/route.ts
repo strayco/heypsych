@@ -419,6 +419,16 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
     const cleanedSnippet = item.snippet
       .replace(/<b>/g, '')
       .replace(/<\/b>/g, '')
+      // Remove whitespace characters and normalize spacing
+      .replace(/\\n/g, ' ')  // Remove literal \n text (from JSON)
+      .replace(/\\t/g, ' ')  // Remove literal \t text (from JSON)
+      .replace(/\\r/g, ' ')  // Remove literal \r text (from JSON)
+      .replace(/\n/g, ' ')   // Remove actual newlines
+      .replace(/\t/g, ' ')   // Remove actual tabs
+      .replace(/\r/g, ' ')   // Remove actual carriage returns
+      .replace(/\\"/g, '"')  // Replace \" with "
+      // Remove bullet points
+      .replace(/[•●◦]/g, '')
       // Remove JSON field syntax: "fieldname": or fieldname":
       .replace(/"\w+"\s*:\s*"/g, '') // "title": "
       .replace(/\w+"\s*:\s*"/g, '') // title": "

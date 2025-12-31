@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Choice List Component
+ * PsychTrails - Choice List Component
  *
  * Pure renderer: displays available choices as interactive buttons.
  * No simulation logic - just fires callbacks.

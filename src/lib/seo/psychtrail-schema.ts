@@ -1,7 +1,7 @@
 /**
- * Psych Trail Schema.org Factory
+ * PsychTrails Schema.org Factory
  *
- * Generates complete stack of schema.org structured data for Psych Trail pages.
+ * Generates complete stack of schema.org structured data for PsychTrails pages.
  * Ensures E-E-A-T parity with medication/treatment pages.
  *
  * Schema Stack:
@@ -17,7 +17,7 @@ import { SITE_CONFIG } from './config';
 import { buildMedicalReviewBoardSchema } from './schema-builders/organization';
 
 /**
- * Generate all schemas for a Psych Trail scenario page
+ * Generate all schemas for a PsychTrails scenario page
  */
 export function generatePsychTrailScenarioSchemas(scenario: Scenario): Record<string, any>[] {
   const schemas: Record<string, any>[] = [];
@@ -43,7 +43,7 @@ export function generatePsychTrailScenarioSchemas(scenario: Scenario): Record<st
 }
 
 /**
- * Generate all schemas for Psych Trail hub page
+ * Generate all schemas for PsychTrails hub page
  */
 export function generatePsychTrailHubSchemas(): Record<string, any>[] {
   const schemas: Record<string, any>[] = [];
@@ -53,7 +53,7 @@ export function generatePsychTrailHubSchemas(): Record<string, any>[] {
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Psych Trail: Interactive Mental Health Simulations',
+    name: 'PsychTrails™: Interactive Mental Health Simulations',
     description: 'Explore mental health care through interactive educational simulations. Learn about appointments, treatments, and mental health journeys in a safe, fictional environment.',
     url: pageUrl,
     mainEntity: {
@@ -83,7 +83,7 @@ export function generatePsychTrailHubSchemas(): Record<string, any>[] {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Psych Trail',
+        name: 'PsychTrails™',
         item: pageUrl
       }
     ]
@@ -222,7 +222,7 @@ function buildBreadcrumbSchemaForScenario(scenario: Scenario): Record<string, an
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Psych Trail',
+        name: 'PsychTrails™',
         item: `${SITE_CONFIG.url}/psych-trail`
       },
       {

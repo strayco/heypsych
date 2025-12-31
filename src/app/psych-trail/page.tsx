@@ -8,7 +8,7 @@ import { generatePsychTrailHubSchemas } from "@/lib/seo/psychtrail-schema";
 export const metadata: Metadata = generatePsychTrailHubMetadata();
 
 /**
- * Psych Trail - Scenario Selection Page
+ * PsychTrails - Scenario Selection Page
  *
  * Lists all available scenarios for users to choose from.
  */
@@ -47,7 +47,7 @@ export default function PsychTrailPage() {
               <Compass className="h-8 w-8 text-white" />
             </div>
             <h1 className="mb-3 text-4xl font-bold text-neutral-900">
-              Psych Trail: An Interactive Mental Health Simulation Platform
+              PsychTrails™: An Interactive Mental Health Simulation Platform
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-neutral-700">
               Explore mental health care through interactive educational simulations. Learn about
@@ -70,7 +70,7 @@ export default function PsychTrailPage() {
             </h2>
             <div className="bg-white rounded-lg border border-neutral-200 p-6 shadow-sm">
               <p className="text-neutral-700 mb-4">
-                Psych Trail simulations are educational tools that let you explore mental health
+                PsychTrails™ simulations are educational tools that let you explore mental health
                 care scenarios through interactive storytelling. Unlike static articles, these
                 simulations show how decisions unfold over time and how different choices can
                 lead to different outcomes.
@@ -149,6 +149,13 @@ export default function PsychTrailPage() {
             These are fictional scenarios designed for learning purposes only. They do not
             constitute medical advice. Real treatment decisions should always be made with
             qualified mental health professionals.
+          </p>
+        </div>
+
+        {/* Copyright Notice */}
+        <div className="mx-auto mt-6 max-w-3xl text-center">
+          <p className="text-xs text-neutral-500">
+            PsychTrails™ © 2025 All rights reserved
           </p>
         </div>
       </div>

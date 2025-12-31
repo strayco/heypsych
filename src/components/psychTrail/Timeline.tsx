@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Timeline Component
+ * PsychTrails - Timeline Component
  *
  * Pure renderer: displays the history of the run as a timeline.
  * Domain-neutral (uses step instead of hardcoded "week").

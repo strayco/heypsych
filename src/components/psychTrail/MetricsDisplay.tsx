@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Metrics Display Component
+ * PsychTrails - Metrics Display Component
  *
  * Pure renderer: displays current metrics as visual bars/meters.
  * Domain-neutral (driven by scenario UI config).

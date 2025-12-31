@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Public API
+ * PsychTrails - Public API
  *
  * Main entry point for the simulation engine.
  */

@@ -1,5 +1,5 @@
 /**
- * Psych Trail - UI Components
+ * PsychTrails - UI Components
  *
  * Pure renderer components for the simulation.
  */

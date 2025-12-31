@@ -4,7 +4,7 @@ import { Compass, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 /**
- * Psych Trail Section
+ * PsychTrails Section
  *
  * Purpose: Introduce the interactive mental health simulation platform
  *
@@ -40,7 +40,7 @@ export function PsychTrail() {
 
               {/* Heading */}
               <h2 className="mb-3 text-3xl font-bold text-neutral-900 transition-colors duration-300 group-hover:text-purple-700">
-                Psych Trail
+                PsychTrails™
               </h2>
 
               {/* Subtitle */}

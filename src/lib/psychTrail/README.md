@@ -1,4 +1,4 @@
-# Psych Trail - Mental Health Treatment Simulator
+# PsychTrails - Mental Health Treatment Simulator
 
 An educational, Oregon Trail-style simulation engine for exploring mental health treatment paths. Built as a data-driven, turn-based simulation platform.
 

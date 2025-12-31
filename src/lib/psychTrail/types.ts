@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Core Type Definitions
+ * PsychTrails - Core Type Definitions
  *
  * Scenario-agnostic simulation engine types.
  * The engine is completely domain-neutral and works for any simulation type.

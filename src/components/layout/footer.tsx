@@ -39,6 +39,7 @@ export function Footer() {
         { name: "Support & Community", href: "/resources/support-community" },
         { name: "Digital Tools", href: "/resources/digital-tools" },
         { name: "Knowledge Hub", href: "/resources/knowledge-hub" },
+        { name: "PsychTrails™", href: "/resources" },
       ],
     },
     {
@@ -152,7 +153,7 @@ export function Footer() {
         <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center space-y-4">
             <p className="text-sm text-gray-400">
-              © {currentYear} {siteConfig.name}. All rights reserved.
+              © {currentYear} {siteConfig.name} (PsychTrails™). All rights reserved.
             </p>
             <div className="inline-flex items-center rounded-full border border-gray-600 px-3 py-1 text-xs font-medium text-gray-400">
               Made with <Heart className="mx-1 h-3 w-3 text-red-500" /> for better mental health

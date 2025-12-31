@@ -331,7 +331,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Continue with static pages only
   }
 
-  // Add Psych Trail scenario pages
+  // Add PsychTrails scenario pages
   try {
     const { scenarios } = await import("@/lib/psychTrail");
     const scenarioList = Object.values(scenarios);
@@ -345,9 +345,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     });
 
-    console.log(`📊 Added ${scenarioList.length} Psych Trail scenarios to sitemap`);
+    console.log(`📊 Added ${scenarioList.length} PsychTrails scenarios to sitemap`);
   } catch (error) {
-    console.error("Error adding Psych Trail scenarios to sitemap:", error);
+    console.error("Error adding PsychTrails scenarios to sitemap:", error);
   }
 
   return staticPages;

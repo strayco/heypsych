@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Ending Display Component
+ * PsychTrails - Ending Display Component
  *
  * Pure renderer: displays the final ending screen.
  * No simulation logic.

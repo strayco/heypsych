@@ -1,7 +1,7 @@
 /**
- * Psych Trail Metadata Generator
+ * PsychTrails Metadata Generator
  *
- * Generates SEO metadata for Psych Trail scenario pages.
+ * Generates SEO metadata for PsychTrails scenario pages.
  * Ensures E-E-A-T parity with medication/treatment pages.
  *
  * Title Formula: "{Scenario Title}: Interactive Mental Health Simulation | HeyPsych"
@@ -13,7 +13,7 @@ import type { Scenario } from '@/lib/psychTrail/types';
 import { SITE_CONFIG, METADATA_LIMITS } from './config';
 
 /**
- * Generate complete SEO metadata for a Psych Trail scenario
+ * Generate complete SEO metadata for a PsychTrails scenario
  */
 export function generatePsychTrailScenarioMetadata(scenario: Scenario): Metadata {
   const title = generateTitle(scenario);
@@ -109,7 +109,7 @@ function extractKeywords(scenario: Scenario): string[] {
   keywords.add(`${scenario.category} simulation`);
   keywords.add('mental health education');
   keywords.add('interactive mental health simulation');
-  keywords.add('psych trail');
+  keywords.add('psychtrails');
 
   // Add difficulty-based keywords
   if (scenario.difficulty) {
@@ -179,14 +179,14 @@ function truncate(text: string, maxLength: number): string {
  * Generate hub page metadata
  */
 export function generatePsychTrailHubMetadata(): Metadata {
-  const title = 'Psych Trail: Interactive Mental Health Simulations | HeyPsych';
+  const title = 'PsychTrails™: Interactive Mental Health Simulations | HeyPsych';
   const description = 'Explore mental health care through interactive educational simulations. Learn about appointments, treatments, and mental health journeys in a safe, fictional environment. Clinically reviewed by the HeyPsych Medical Review Board.';
   const canonical = `${SITE_CONFIG.url}/psych-trail`;
 
   const keywords = [
     'mental health simulations',
     'interactive mental health education',
-    'psych trail',
+    'psychtrails',
     'psychiatry appointment simulation',
     'mental health care education',
     'treatment decision simulation',

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Psych Trail - Game Container Component
+ * PsychTrails - Game Container Component
  *
  * Orchestrates the UI and engine together.
  * Contains React state but delegates all simulation logic to the engine.

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!scenario) {
     return {
-      title: "Scenario Not Found | Psych Trail",
+      title: "Scenario Not Found | PsychTrails™",
     };
   }
 
@@ -68,7 +68,7 @@ export default async function ScenarioPage({ params }: Props) {
             </Link>
             <ChevronRight className="mx-2 h-4 w-4" />
             <Link href="/psych-trail" className="hover:text-neutral-900">
-              Psych Trail
+              PsychTrails™
             </Link>
             <ChevronRight className="mx-2 h-4 w-4" />
             <span className="text-neutral-900 font-medium">{scenario.title}</span>
@@ -165,6 +165,13 @@ export default async function ScenarioPage({ params }: Props) {
               </div>
               <GameContainer scenario={scenario} />
             </div>
+          </div>
+
+          {/* Copyright Notice */}
+          <div className="mx-auto max-w-6xl text-center mt-6 mb-4">
+            <p className="text-xs text-neutral-500">
+              PsychTrails™ © 2025 All rights reserved
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Event Log Component
+ * PsychTrails - Event Log Component
  *
  * Pure renderer: displays events that happened on the last turn.
  * No simulation logic.

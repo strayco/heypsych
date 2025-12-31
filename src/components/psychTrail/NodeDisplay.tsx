@@ -1,5 +1,5 @@
 /**
- * Psych Trail - Node Display Component
+ * PsychTrails - Node Display Component
  *
  * Pure renderer: displays the current story node text.
  * Supports markdown rendering.
