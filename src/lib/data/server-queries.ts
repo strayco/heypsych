@@ -192,6 +192,41 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
     "investigational",
   ];
 
+  const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
+
+  // Use direct database pool for faster queries (runtime only, skip during build to avoid connection issues)
+  if (!isBuild && typeof window === 'undefined') {
+    try {
+      const { queryWithRetry } = await import('@/lib/config/db-pool');
+      const typeList = treatmentTypes.map(t => `'${t}'`).join(',');
+      const result = await queryWithRetry(
+        `SELECT * FROM entities WHERE type IN (${typeList}) AND status = $1 ORDER BY title LIMIT 500`,
+        ['active']
+      );
+
+      const mappedData = (result.rows || []).map((row: any) => {
+        const type = row.type as any;
+        return mapRowToEntity(row, type);
+      });
+
+      // Deduplicate by slug - keep the first occurrence
+      const seen = new Set<string>();
+      const deduplicated = mappedData.filter((entity: Entity) => {
+        if (seen.has(entity.slug)) return false;
+        seen.add(entity.slug);
+        return true;
+      });
+
+      // Cache the result
+      setCache('all-treatments', deduplicated);
+      return deduplicated;
+    } catch (poolError) {
+      console.warn('Direct pool query failed for getAllTreatments, falling back to Supabase:', poolError);
+      // Fall through to Supabase client
+    }
+  }
+
+  // Use Supabase client (build-time and fallback)
   try {
     const { data, error } = await supabase
       .from("entities")
