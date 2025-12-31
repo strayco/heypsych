@@ -115,7 +115,7 @@ function findBestMatch(
     // Partial word matching (for acronyms and abbreviations)
     const searchWords = searchName.split(' ').filter(w => w.length > 2);
     const labelWords = label.split(' ');
-    const matchingWords = searchWords.filter(w => labelWords.some(lw => lw.includes(w)));
+    const matchingWords = searchWords.filter(w => labelWords.some((lw: string) => lw.includes(w)));
     score += matchingWords.length * 15;
 
     // Description keyword matching
