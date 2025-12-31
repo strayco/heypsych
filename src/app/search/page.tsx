@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Search, Pill, Brain, BookOpen, Users } from "lucide-react";
+import { Search, Pill, Brain, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { logger } from "@/lib/utils/logger";
@@ -55,6 +55,10 @@ function SearchPageContent() {
       return;
     }
 
+    // Create controller for this effect - will be cleaned up on unmount or re-run
+    const controller = new AbortController();
+    let timeoutId: NodeJS.Timeout;
+
     const fetchResults = async () => {
       setIsLoading(true);
       setHasSearched(true);
@@ -71,8 +75,7 @@ function SearchPageContent() {
 
       try {
         // Add timeout to prevent hanging indefinitely
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
         logger.info('Fetching search results', { query });
 
@@ -104,13 +107,14 @@ function SearchPageContent() {
           resourcesTotal: Number(data.resources?.totalCount) || 0,
         });
       } catch (error: any) {
-        logger.error("Search error", error);
-        
-        // If it's an abort (timeout), show a helpful message
+        // Ignore abort errors - they're expected when component unmounts or query changes
         if (error.name === 'AbortError') {
-          logger.error("Search request timed out after 30 seconds");
+          logger.info('Search request aborted', { query });
+          return;
         }
-        
+
+        logger.error("Search error", error);
+
         setGroupedResults({
           conditions: [],
           treatments: [],
@@ -125,6 +129,14 @@ function SearchPageContent() {
     };
 
     fetchResults();
+
+    // Cleanup: abort the request if component unmounts or query changes
+    return () => {
+      controller.abort();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [query]);
 
   const getResultIcon = (type: string) => {
