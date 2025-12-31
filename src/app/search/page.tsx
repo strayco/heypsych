@@ -39,7 +39,8 @@ function SearchPageContent() {
     treatmentsTotal: 0,
     resourcesTotal: 0,
   });
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
     condition: false,
     treatment: false,
@@ -47,29 +48,52 @@ function SearchPageContent() {
   });
 
   useEffect(() => {
-    if (!query) {
-      setIsLoading(false);
+    if (!query || query.trim().length < 2) {
+      if (hasSearched) {
+        setIsLoading(false);
+      }
       return;
     }
 
     const fetchResults = async () => {
       setIsLoading(true);
+      setHasSearched(true);
+
+      // Reset results to prevent showing stale data
+      setGroupedResults({
+        conditions: [],
+        treatments: [],
+        resources: [],
+        conditionsTotal: 0,
+        treatmentsTotal: 0,
+        resourcesTotal: 0,
+      });
+
       try {
         // Add timeout to prevent hanging indefinitely
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
-        
+
+        logger.info('Fetching search results', { query });
+
         const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=5`, {
           signal: controller.signal,
         });
-        
+
         clearTimeout(timeoutId);
-        
+
         if (!response.ok) {
           throw new Error(`Search API returned ${response.status}: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
+
+        logger.info('Search results received', {
+          query,
+          conditionsCount: data.conditions?.results?.length || 0,
+          treatmentsCount: data.treatments?.results?.length || 0,
+          resourcesCount: data.resources?.results?.length || 0,
+        });
 
         setGroupedResults({
           conditions: data.conditions?.results || [],
