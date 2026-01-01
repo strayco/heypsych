@@ -3,10 +3,10 @@ import type { NextRequest } from 'next/server';
 import { maybeTrackAIBot } from '@/lib/analytics/ai-telemetry';
 
 /**
- * Middleware to enforce canonical host (www.heypsych.com)
+ * Middleware for request handling
  *
- * Redirects:
- * - https://heypsych.com/* → https://www.heypsych.com/* (301 permanent)
+ * Domain redirects (www → non-www) are handled at Vercel DNS level.
+ * Production domain: heypsych.com
  *
  * Skips:
  * - localhost (development)
@@ -19,23 +19,20 @@ export function middleware(request: NextRequest) {
 
   // Skip localhost and Vercel preview deployments
   if (hostname.includes('localhost') || hostname.includes('.vercel.app')) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+
+    // Block Vercel preview deployments from Google indexing
+    // This prevents Google from showing Vercel's favicon for preview URLs
+    if (hostname.includes('.vercel.app')) {
+      response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
+
+    return response;
   }
 
-  // Redirect non-www to www (301 permanent)
-  // Only redirect heypsych.com domain (not other domains)
-  if (!hostname.startsWith('www.') && hostname.includes('heypsych.com')) {
-    const url = request.nextUrl.clone();
-    url.host = `www.${hostname}`;
-
-    // 301 Moved Permanently - tells search engines this is the canonical URL
-    return NextResponse.redirect(url, {
-      status: 301,
-      headers: {
-        'Cache-Control': 'public, max-age=31536000, immutable',
-      },
-    });
-  }
+  // Domain redirects (www ↔ non-www) are handled at Vercel DNS level
+  // Production domain: heypsych.com
+  // www.heypsych.com redirects to heypsych.com via Vercel
 
   // Special handling for OG images - allow cross-origin access for social platforms
   if (pathname === '/opengraph-image' || pathname.startsWith('/opengraph-image?')) {
