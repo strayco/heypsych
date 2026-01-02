@@ -26,9 +26,9 @@ const organizationSchema = {
   url: "https://heypsych.com",
   logo: {
     "@type": "ImageObject",
-    url: "https://heypsych.com/images/logo.png",
-    width: 512,
-    height: 512,
+    url: "https://heypsych.com/favicon-48x48.png",
+    width: 48,
+    height: 48,
   },
   description: "Evidence-based mental health treatment information and resources",
   sameAs: ["https://twitter.com/heypsych", "https://linkedin.com/company/heypsych"],

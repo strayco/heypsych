@@ -124,7 +124,7 @@ export function conditionToMarkdown(entity: Entity): string {
   // Footer
   markdown += `---\n\n`;
   markdown += `*Source: HeyPsych.com - Evidence-based mental health information*\n`;
-  markdown += `*URL: https://www.heypsych.com/conditions/${entity.slug}*\n`;
+  markdown += `*URL: https://heypsych.com/conditions/${entity.slug}*\n`;
 
   return markdown;
 }
@@ -212,7 +212,7 @@ export function treatmentToMarkdown(entity: Entity): string {
   // Footer
   markdown += `---\n\n`;
   markdown += `*Source: HeyPsych.com - Evidence-based mental health information*\n`;
-  markdown += `*URL: https://www.heypsych.com/treatments/${entity.slug}*\n`;
+  markdown += `*URL: https://heypsych.com/treatments/${entity.slug}*\n`;
 
   return markdown;
 }

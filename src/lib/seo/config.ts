@@ -15,7 +15,7 @@ import type { EntityType } from '@/lib/types/database';
  */
 export const SITE_CONFIG = {
   name: 'HeyPsych',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.heypsych.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://heypsych.com',
   description: 'Evidence-based mental health treatment information and resources',
   locale: 'en_US',
   twitter: '@heypsych',

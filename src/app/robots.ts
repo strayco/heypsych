@@ -42,6 +42,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/",
       },
     ],
-    sitemap: "https://www.heypsych.com/sitemap-index.xml",
+    sitemap: "https://heypsych.com/sitemap-index.xml",
   };
 }

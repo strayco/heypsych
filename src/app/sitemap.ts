@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.heypsych.com").trim().replace(/\/+$/, '');
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://heypsych.com").trim().replace(/\/+$/, '');
   const currentDate = new Date();
 
   // Static pages with priority and changeFrequency

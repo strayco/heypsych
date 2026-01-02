@@ -10,7 +10,7 @@
  *   tsx scripts/verify-http-headers.ts [base-url]
  *
  * Example:
- *   tsx scripts/verify-http-headers.ts https://www.heypsych.com
+ *   tsx scripts/verify-http-headers.ts https://heypsych.com
  *   tsx scripts/verify-http-headers.ts http://localhost:3000
  */
 
