@@ -16,7 +16,7 @@ import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import { ResourceDetailClient } from "@/components/resources/ResourceDetailClient";
-import { getEntityType } from "@/lib/utils/entity-type";
+import { getEntityType, isTreatmentType } from "@/lib/utils/entity-type";
 
 // Generate static params for ALL resources
 // Pre-renders all resource pages at build time for instant page loads
@@ -60,9 +60,9 @@ export async function generateMetadata({
       };
     }
 
-    // Validate that this is actually a resource type
+    // Validate that this is NOT a treatment or condition
     const entityType = getEntityType(entity);
-    if (entityType !== 'resource') {
+    if (isTreatmentType(entityType) || entityType === 'condition') {
       return {
         title: "Not Found | HeyPsych",
         description: "The requested page was not found.",
@@ -91,10 +91,10 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
     notFound();
   }
 
-  // Validate that this is actually a resource, not a treatment/condition/provider
+  // Validate that this is NOT a treatment or condition
   // Treatments should be at /treatments/[slug], conditions at /conditions/[slug]
   const entityType = getEntityType(entity);
-  if (entityType !== 'resource') {
+  if (isTreatmentType(entityType) || entityType === 'condition') {
     notFound();
   }
 
