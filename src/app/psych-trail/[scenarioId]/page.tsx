@@ -170,7 +170,7 @@ export default async function ScenarioPage({ params }: Props) {
           {/* Copyright Notice */}
           <div className="mx-auto max-w-6xl text-center mt-6 mb-4">
             <p className="text-xs text-neutral-500">
-              PsychTrails™ © 2025 All rights reserved
+              PsychTrails™ © 2026 All rights reserved
             </p>
           </div>
         </div>

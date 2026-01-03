@@ -18,6 +18,7 @@ import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import TreatmentClientWrapper from "./client-wrapper";
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getEntityType, isTreatmentType } from "@/lib/utils/entity-type";
 
 // Generate static params for ALL treatments
 // Pre-renders all treatment pages at build time for instant page loads
@@ -82,6 +83,15 @@ export async function generateMetadata({
       return {
         title: "Treatment Information | HeyPsych",
         description: "Learn about mental health treatments with evidence-based information.",
+      };
+    }
+
+    // Validate that this is actually a treatment type
+    const entityType = getEntityType(entity);
+    if (!isTreatmentType(entityType)) {
+      return {
+        title: "Not Found | HeyPsych",
+        description: "The requested page was not found.",
       };
     }
 
@@ -194,6 +204,13 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
   }
 
   if (!entity) {
+    notFound();
+  }
+
+  // Validate that this is actually a treatment, not a resource/condition/provider
+  // Resources should be at /resources/[slug], not /treatments/[slug]
+  const entityType = getEntityType(entity);
+  if (!isTreatmentType(entityType)) {
     notFound();
   }
 

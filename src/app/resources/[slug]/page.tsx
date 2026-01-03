@@ -16,6 +16,7 @@ import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import { ResourceDetailClient } from "@/components/resources/ResourceDetailClient";
+import { getEntityType } from "@/lib/utils/entity-type";
 
 // Generate static params for ALL resources
 // Pre-renders all resource pages at build time for instant page loads
@@ -52,6 +53,22 @@ export async function generateMetadata({
     const { slug } = await params;
     const entity = await EntityService.getBySlug(slug);
 
+    if (!entity) {
+      return {
+        title: "Resource | HeyPsych",
+        description: "Mental health resources and tools.",
+      };
+    }
+
+    // Validate that this is actually a resource type
+    const entityType = getEntityType(entity);
+    if (entityType !== 'resource') {
+      return {
+        title: "Not Found | HeyPsych",
+        description: "The requested page was not found.",
+      };
+    }
+
     // Use MetadataFactory to generate complete SEO metadata
     // Routes to appropriate generator based on resource category
     return await MetadataFactory.generate(entity);
@@ -71,6 +88,13 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
   const entity = await EntityService.getBySlug(slug);
 
   if (!entity) {
+    notFound();
+  }
+
+  // Validate that this is actually a resource, not a treatment/condition/provider
+  // Treatments should be at /treatments/[slug], conditions at /conditions/[slug]
+  const entityType = getEntityType(entity);
+  if (entityType !== 'resource') {
     notFound();
   }
 

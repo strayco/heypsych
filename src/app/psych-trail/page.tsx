@@ -155,7 +155,7 @@ export default function PsychTrailPage() {
         {/* Copyright Notice */}
         <div className="mx-auto mt-6 max-w-3xl text-center">
           <p className="text-xs text-neutral-500">
-            PsychTrails™ © 2025 All rights reserved
+            PsychTrails™ © 2026 All rights reserved
           </p>
         </div>
       </div>

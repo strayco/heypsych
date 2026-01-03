@@ -16,6 +16,7 @@ import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import ConditionClientWrapper from "./client-wrapper";
+import { getEntityType } from "@/lib/utils/entity-type";
 
 // Generate static params for ALL conditions
 // Pre-renders all condition pages at build time for instant page loads
@@ -51,6 +52,22 @@ export async function generateMetadata({
     const { slug } = await params;
     const entity = await EntityService.getBySlug(slug);
 
+    if (!entity) {
+      return {
+        title: "Condition Information | HeyPsych",
+        description: "Learn about mental health conditions with evidence-based information.",
+      };
+    }
+
+    // Validate that this is actually a condition type
+    const entityType = getEntityType(entity);
+    if (entityType !== 'condition') {
+      return {
+        title: "Not Found | HeyPsych",
+        description: "The requested page was not found.",
+      };
+    }
+
     // Use MetadataFactory to generate complete SEO metadata
     return await MetadataFactory.generate(entity);
   } catch (error) {
@@ -69,6 +86,13 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
   const entity = await EntityService.getBySlug(slug);
 
   if (!entity) {
+    notFound();
+  }
+
+  // Validate that this is actually a condition, not a treatment/resource/provider
+  // Treatments should be at /treatments/[slug], resources at /resources/[slug]
+  const entityType = getEntityType(entity);
+  if (entityType !== 'condition') {
     notFound();
   }
 
