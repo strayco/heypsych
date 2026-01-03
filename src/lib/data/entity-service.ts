@@ -248,7 +248,9 @@ function normalizeEntity(row: any): Entity {
     metadata: row.metadata,
     status: row.status,
     visibility: "public",
-    type: row.type || schemaMeta.entity_type, // CRITICAL: Set type field for link extraction
+    // CRITICAL: Preserve entity type - check multiple sources
+    // Priority: row.type > metadata.entity_type > content.type > content.kind > schema fallback
+    type: row.type || row.metadata?.entity_type || normalizedContent?.type || normalizedContent?.kind || schemaMeta.entity_type,
     created_at: row.created_at,
     updated_at: row.updated_at,
     created_by: row.created_by,
