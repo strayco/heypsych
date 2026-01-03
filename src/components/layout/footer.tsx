@@ -155,8 +155,11 @@ export function Footer() {
             <p className="text-sm text-gray-400">
               © {currentYear} {siteConfig.name} (PsychTrails™). All rights reserved.
             </p>
-            <div className="inline-flex items-center rounded-full border border-gray-600 px-3 py-1 text-xs font-medium text-gray-400">
-              Made with <Heart className="mx-1 h-3 w-3 text-red-500" /> for better mental health
+            <div className="flex items-center gap-4">
+              <div className="inline-flex items-center rounded-full border border-gray-600 px-3 py-1 text-xs font-medium text-gray-400">
+                Made with <Heart className="mx-1 h-3 w-3 text-red-500" /> for better mental health
+              </div>
+              <span className="text-xs text-gray-600">v2.2.0</span>
             </div>
           </div>
         </div>

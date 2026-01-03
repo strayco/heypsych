@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Pill, Zap, Beaker, Leaf, Brain, Sun } from "lucide-react";
+import { ArrowRight, ArrowLeft, Pill, Zap, Beaker, Leaf, Brain, Sun, Scale } from "lucide-react";
 import { Entity } from "@/lib/types/database";
 
 const treatmentCategories = [
@@ -143,6 +143,47 @@ export function TreatmentsOverviewClient({ allTreatments }: TreatmentsOverviewCl
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Compare Treatments Banner */}
+      <section className="px-4 pb-2 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Link href="/treatments/compare" className="group block">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-lg transition-all duration-300 hover:border-slate-300 hover:shadow-xl group-hover:-translate-y-0.5"
+            >
+              {/* Subtle gradient overlay matching other cards */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 opacity-5 transition-opacity duration-500 group-hover:opacity-10" />
+              
+              <div className="relative flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 transition-transform duration-300 group-hover:scale-110">
+                    <Scale className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-slate-700">
+                      Compare Treatments
+                    </h2>
+                    <p className="text-sm text-slate-600">
+                      Can&apos;t decide? See side-by-side comparisons like Lexapro vs Zoloft, CBT vs DBT
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden items-center gap-2 text-sm font-semibold sm:flex">
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    View comparisons
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-slate-400 transition-transform duration-300 group-hover:translate-x-1" />
+                </div>
+              </div>
+              
+              {/* Hover ring effect matching other cards */}
+              <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent transition-all duration-300 group-hover:ring-slate-200" />
+            </motion.div>
+          </Link>
         </div>
       </section>
 

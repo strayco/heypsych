@@ -82,6 +82,20 @@ export function buildMedicalWebPageSchema(entity: Entity, pageUrl: string): Reco
     cssSelector: 'main'
   });
 
+  // Speakable schema for voice search and AI citations
+  // Tells Google/AI which content is best for TTS and quick answers
+  builder.addProperty('speakable', {
+    '@type': 'SpeakableSpecification',
+    cssSelector: [
+      '[itemprop="description"]',      // Entity description/definition
+      '[itemprop="abstract"]',         // Golden answer paragraph
+      '.golden-answer',                // Explicit golden answer sections
+      'h1',                            // Main heading
+      '.key-points',                   // Key points/takeaways
+      '.faq-answer'                    // FAQ answers
+    ]
+  });
+
   // Medical specialty
   builder.addProperty('specialty', 'Psychiatry');
 

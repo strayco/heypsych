@@ -129,6 +129,10 @@ export const HUB_SITEMAP_CONFIG: Record<string, SitemapEntryConfig> = {
     priority: 0.6,
     changefreq: 'daily',
   },
+  '/treatments/compare': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
 };
 
 /**

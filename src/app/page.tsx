@@ -18,9 +18,10 @@ export const metadata: Metadata = {
 };
 
 // Organization schema for Google Search rich results
+// Using MedicalOrganization for E-E-A-T signals in health content
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "MedicalOrganization",
   "@id": "https://heypsych.com/#organization",
   name: "HeyPsych",
   url: "https://heypsych.com",
@@ -31,18 +32,29 @@ const organizationSchema = {
     height: 48,
   },
   description: "Evidence-based mental health treatment information and resources",
+  medicalSpecialty: "Psychiatric",
   sameAs: ["https://twitter.com/heypsych", "https://linkedin.com/company/heypsych"],
 };
 
 // WebSite schema for sitelinks search box
+// This enables the search box directly in Google search results
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://heypsych.com/#website",
   name: "HeyPsych",
   url: "https://heypsych.com",
+  description: "Evidence-based mental health treatment information covering 500+ conditions, medications, and therapies",
   publisher: {
     "@id": "https://heypsych.com/#organization",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://heypsych.com/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
   },
 };
 

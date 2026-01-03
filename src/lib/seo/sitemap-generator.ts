@@ -283,6 +283,7 @@ export class SitemapGenerator {
       '/treatments/alternative',
       '/treatments/supplements',
       '/treatments/investigational',
+      '/treatments/compare',
       '/resources',
       '/resources/assessments-screeners',
       '/resources/articles-guides',
@@ -315,6 +316,8 @@ export class SitemapGenerator {
       { loc: `${this.options.baseUrl}/sitemap-resources.xml` },
       { loc: `${this.options.baseUrl}/sitemap-hubs.xml` },
       { loc: `${this.options.baseUrl}/sitemap-static.xml` },
+      { loc: `${this.options.baseUrl}/sitemap-news.xml` },
+      { loc: `${this.options.baseUrl}/sitemap-guide.xml` }, // Programmatic SEO pages
     ];
 
     // Add lastmod to all sitemaps
