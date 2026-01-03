@@ -208,8 +208,12 @@ function normalizeEntity(row: any): Entity {
   let schemaName: SchemaName;
   const normalizedContent = normalizeEntityContent(row.content || row.data || {});
 
+  // Check content.type and content.kind first for accurate type detection
+  const contentType = normalizedContent?.type || normalizedContent?.kind;
+  const effectiveType = row.type || row.metadata?.entity_type || contentType;
+
   if (
-    row.type &&
+    effectiveType &&
     [
       "medication",
       "interventional",
@@ -217,9 +221,12 @@ function normalizeEntity(row: any): Entity {
       "alternative",
       "therapy",
       "supplement",
-    ].includes(row.type)
+      "resource",
+      "condition",
+      "provider",
+    ].includes(effectiveType)
   ) {
-    schemaName = entityTypeToSchemaName(row.type);
+    schemaName = entityTypeToSchemaName(effectiveType);
   } else {
     schemaName = categoryToSchemaName(row?.metadata?.category ?? row?.content?.category);
   }
