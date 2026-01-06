@@ -168,6 +168,23 @@ export default function AboutPage() {
           </div>
         </CardContent>
       </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Contact</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-gray-700">
+            For general inquiries, media, and partnerships:{" "}
+            <a
+              href="mailto:hello@heypsych.com"
+              className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+            >
+              hello@heypsych.com
+            </a>
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

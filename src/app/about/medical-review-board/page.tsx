@@ -2,7 +2,7 @@
 // Displays all medical reviewers with credentials and expertise
 
 import { Metadata } from "next";
-import { Shield, CheckCircle, GraduationCap, Award, Briefcase } from "lucide-react";
+import { Shield, CheckCircle, Award, Briefcase } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import fs from 'fs';
@@ -15,10 +15,7 @@ interface Reviewer {
   credentials: string;
   specialty: string;
   board_certifications: string[];
-  education: string[];
   affiliations: string[];
-  license_number: string;
-  license_state: string;
   years_of_practice: number;
   clinical_expertise: string[];
   bio: string;
@@ -90,10 +87,6 @@ export default function MedicalReviewBoardPage() {
     "affiliation": reviewer.affiliations.map((aff: string) => ({
       "@type": "Organization",
       "name": aff
-    })),
-    "alumniOf": reviewer.education.map((edu: string) => ({
-      "@type": "EducationalOrganization",
-      "name": edu
     }))
   }));
 
@@ -179,9 +172,6 @@ export default function MedicalReviewBoardPage() {
                           <Badge variant="outline" className="bg-purple-50 text-purple-700">
                             {reviewer.years_of_practice}+ years experience
                           </Badge>
-                          <Badge variant="outline" className="bg-green-50 text-green-700">
-                            {reviewer.license_state} Licensed
-                          </Badge>
                         </div>
                       </div>
                     </div>
@@ -191,21 +181,6 @@ export default function MedicalReviewBoardPage() {
                     {/* Bio */}
                     <div className="mb-6">
                       <p className="text-neutral-800">{reviewer.bio}</p>
-                    </div>
-
-                    {/* Education */}
-                    <div className="mb-6">
-                      <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-neutral-900">
-                        <GraduationCap className="h-4 w-4" />
-                        Education
-                      </div>
-                      <ul className="space-y-1">
-                        {reviewer.education.map((edu: string, idx: number) => (
-                          <li key={idx} className="text-sm text-neutral-700">
-                            • {edu}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
 
                     {/* Board Certifications */}
@@ -303,6 +278,19 @@ export default function MedicalReviewBoardPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Contact */}
+          <div className="mt-8 text-center">
+            <p className="text-sm text-neutral-600">
+              Questions about our review process? Contact us at{" "}
+              <a
+                href="mailto:hello@heypsych.com"
+                className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+              >
+                hello@heypsych.com
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </>
