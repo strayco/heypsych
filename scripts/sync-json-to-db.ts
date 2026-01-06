@@ -120,6 +120,12 @@ function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
 function determineEntityType(filePath: string, content: any): string {
   // Check content.type first
   if (content.type) {
+    // SAFEGUARD: Convert legacy type values to correct types
+    // Old data had "digital-tool" and "hotline" which should be "resource"
+    if (content.type === "digital-tool" || content.type === "hotline") {
+      console.warn(`⚠️  Converting legacy type "${content.type}" to "resource" for ${filePath}`);
+      return "resource";
+    }
     return content.type;
   }
 
@@ -154,6 +160,16 @@ function extractCategory(filePath: string): string | null {
 function normalizeToEntity(filePath: string, content: any): any {
   const type = determineEntityType(filePath, content);
   const category = extractCategory(filePath);
+
+  // Validate entity type - prevent legacy/invalid types
+  const validTypes = [
+    'condition', 'medication', 'therapy', 'treatment',
+    'interventional', 'investigational', 'alternative', 'supplement',
+    'resource', 'provider'
+  ];
+  if (!validTypes.includes(type)) {
+    throw new Error(`Invalid entity type "${type}" for ${filePath}. Must be one of: ${validTypes.join(', ')}`);
+  }
 
   // Validate required fields
   if (!content.slug) {
