@@ -55,7 +55,7 @@ const randomPages = [
  *
  * Spec Requirements:
  * - H1: "Mental health guidance. Grounded in science."
- * - Subhead: "Clear answers on conditions, treatments, and tools. Always free. Always clinical."
+ * - Subhead: "Clear answers on conditions, treatments, and tools. Always clinical."
  * - Large, center-aligned search bar with "Take me anywhere" button
  * - Trust indicators: "Evidence-Based · Clinically Reviewed · Updated Weekly"
  * - White background, generous spacing, center-aligned
@@ -89,7 +89,7 @@ export function Hero() {
 
         {/* Subhead */}
         <p className="mx-auto mb-4 max-w-2xl text-sm text-neutral-800">
-          Clear answers on conditions, treatments, and tools. Always free. Always clinical.
+          Clear answers on conditions, treatments, and tools. Always clinical.
         </p>
 
         {/* Search Bar + Take me anywhere */}

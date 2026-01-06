@@ -58,7 +58,7 @@ All components use **existing** design system components:
 
 **Key Features**:
 - **H1**: "Mental health guidance. Grounded in science."
-- **Subhead**: "Clear answers on conditions, treatments, and tools. Always free. Always clinical."
+- **Subhead**: "Clear answers on conditions, treatments, and tools. Always clinical."
 - **Search Bar**: Large, center-aligned input with search icon
   - Placeholder: "Search for anxiety, CBT, psychiatrists…"
   - Routes to `/search?q={query}` on submit
@@ -324,7 +324,7 @@ onClick={() => trackEvent('homepage_trending_click', { topic: topic.title })}
 **Subhead** (lines 46-48):
 ```tsx
 <p className="mx-auto mb-10 max-w-2xl text-lg text-slate-600 sm:text-xl lg:mb-12">
-  Clear answers on conditions, treatments, and tools. Always free. Always clinical.
+  Clear answers on conditions, treatments, and tools. Always clinical.
 </p>
 ```
 
