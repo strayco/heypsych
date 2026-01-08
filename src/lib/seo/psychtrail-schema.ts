@@ -18,10 +18,12 @@ import { buildMedicalReviewBoardSchema } from './schema-builders/organization';
 
 /**
  * Generate all schemas for a PsychTrails scenario page
+ * Note: Individual scenarios are no longer directly accessible.
+ * They are only accessible through the tile-based map system.
  */
 export function generatePsychTrailScenarioSchemas(scenario: Scenario): Record<string, any>[] {
   const schemas: Record<string, any>[] = [];
-  const pageUrl = `${SITE_CONFIG.url}/psych-trail/${scenario.id}`;
+  const pageUrl = `${SITE_CONFIG.url}/psychtrails`;
 
   // 1. LearningResource schema (primary)
   schemas.push(buildLearningResourceSchema(scenario, pageUrl));
@@ -47,7 +49,7 @@ export function generatePsychTrailScenarioSchemas(scenario: Scenario): Record<st
  */
 export function generatePsychTrailHubSchemas(): Record<string, any>[] {
   const schemas: Record<string, any>[] = [];
-  const pageUrl = `${SITE_CONFIG.url}/psych-trail`;
+  const pageUrl = `${SITE_CONFIG.url}/psychtrails`;
 
   // 1. CollectionPage schema
   schemas.push({
@@ -223,13 +225,7 @@ function buildBreadcrumbSchemaForScenario(scenario: Scenario): Record<string, an
         '@type': 'ListItem',
         position: 2,
         name: 'PsychTrails™',
-        item: `${SITE_CONFIG.url}/psych-trail`
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: scenario.title,
-        item: `${SITE_CONFIG.url}/psych-trail/${scenario.id}`
+        item: `${SITE_CONFIG.url}/psychtrails`
       }
     ]
   };

@@ -5,12 +5,15 @@
  * No simulation logic - just fires callbacks.
  */
 
-import type { Choice } from "@/lib/psychTrail/types";
+import type { Choice, RunState } from "@/lib/psychTrail/types";
+import type { IRenderer } from "@/lib/psychTrail/renderer";
 import { Button } from "@/components/ui/button";
 
 interface ChoiceListProps {
   choices: Choice[];
   onChoiceSelect: (choiceId: string) => void;
+  renderer: IRenderer;
+  state: RunState;
   disabled?: boolean;
   className?: string;
 }
@@ -18,6 +21,8 @@ interface ChoiceListProps {
 export function ChoiceList({
   choices,
   onChoiceSelect,
+  renderer,
+  state,
   disabled = false,
   className = "",
 }: ChoiceListProps) {
@@ -39,7 +44,7 @@ export function ChoiceList({
             variant="outline"
             className="w-full justify-start text-left h-auto py-3 px-4 hover:bg-purple-50 hover:border-purple-300 transition-colors"
           >
-            {choice.text}
+            {renderer.renderChoiceText(choice, state)}
           </Button>
         ))}
       </div>

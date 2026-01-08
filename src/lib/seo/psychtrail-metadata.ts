@@ -124,9 +124,11 @@ function extractKeywords(scenario: Scenario): string[] {
 
 /**
  * Generate canonical URL for scenario
+ * Note: Individual scenarios are no longer directly accessible.
+ * They are only accessible through the tile-based map system.
  */
 function generateCanonical(scenario: Scenario): string {
-  return `${SITE_CONFIG.url}/psych-trail/${scenario.id}`;
+  return `${SITE_CONFIG.url}/psychtrails`;
 }
 
 /**
@@ -181,7 +183,7 @@ function truncate(text: string, maxLength: number): string {
 export function generatePsychTrailHubMetadata(): Metadata {
   const title = 'PsychTrails™: Interactive Mental Health Simulations | HeyPsych';
   const description = 'Explore mental health care through interactive educational simulations. Learn about appointments, treatments, and mental health journeys in a safe, fictional environment. Clinically reviewed by the HeyPsych Medical Review Board.';
-  const canonical = `${SITE_CONFIG.url}/psych-trail`;
+  const canonical = `${SITE_CONFIG.url}/psychtrails`;
 
   const keywords = [
     'mental health simulations',

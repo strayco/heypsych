@@ -8,8 +8,11 @@
  */
 
 import { useState, useEffect } from "react";
-import type { Scenario, RunState, GameEvent, Choice } from "@/lib/psychTrail/types";
+import type { Scenario, RunState, GameEvent, Choice, Tile } from "@/lib/psychTrail/types";
+import type { IRenderer } from "@/lib/psychTrail/renderer";
+import type { ScenarioCompletionResult } from "@/lib/psychTrail/types";
 import { PsychTrailEngine } from "@/lib/psychTrail/engine";
+import { PathAwareRenderer } from "@/lib/psychTrail/renderers/PathAwareRenderer";
 import { MetricsDisplay } from "./MetricsDisplay";
 import { NodeDisplay } from "./NodeDisplay";
 import { ChoiceList } from "./ChoiceList";
@@ -21,10 +24,15 @@ import { RotateCcw } from "lucide-react";
 
 interface GameContainerProps {
   scenario: Scenario;
+  tile: Tile;
+  renderer?: IRenderer;
+  onComplete?: (result: ScenarioCompletionResult) => void;
   className?: string;
 }
 
-export function GameContainer({ scenario, className = "" }: GameContainerProps) {
+export function GameContainer({ scenario, tile, renderer, onComplete, className = "" }: GameContainerProps) {
+  // Default to PathAwareRenderer if not provided (generates ending text based on user's path)
+  const actualRenderer = renderer ?? new PathAwareRenderer(scenario);
   // Engine instance (created once)
   const [engine] = useState(() => new PsychTrailEngine(scenario));
 
@@ -76,9 +84,23 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
 
   // Handle continuing after reading explanation
   const handleContinue = () => {
-    // Don't advance state yet - just show results on the same node
-    setShowingExplanation(false);
-    setShowResults(true);
+    // Check if the pending state is an ending - if so, skip results and go straight to ending
+    const isEnding = pendingState?.isEnded;
+    if (isEnding) {
+      // For endings, skip the results panel and apply the ending state directly
+      setShowingExplanation(false);
+      setShowResults(false);
+      if (pendingState) {
+        setRunState(pendingState);
+        setPendingState(null);
+      }
+      setLastChoice(null);
+      setLastEvents([]);
+    } else {
+      // Don't advance state yet - just show results on the same node
+      setShowingExplanation(false);
+      setShowResults(true);
+    }
   };
 
   // Handle dismissing results and showing new choices
@@ -141,6 +163,8 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
               node={currentNode}
               stepNumber={runState.currentStep}
               stepLabel={scenario.timeConfig.stepLabel}
+              renderer={actualRenderer}
+              state={runState}
             />
           </div>
 
@@ -150,19 +174,23 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
               choices={availableChoices}
               onChoiceSelect={handleChoiceSelect}
               disabled={isProcessing || showingExplanation}
+              renderer={actualRenderer}
+              state={runState}
             />
           )}
 
           {/* Choice explanation (shown after selection, under the choices) */}
-          {lastChoice && lastChoice.description && showingExplanation && (
+          {lastChoice && showingExplanation && (
             <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">
+                <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">
                   ✓
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-blue-900 mb-1">You chose: {lastChoice.text}</p>
-                  <p className="text-sm text-blue-800 leading-relaxed">{lastChoice.description}</p>
+                  <p className="text-sm font-semibold text-blue-900 mb-1">You chose: {actualRenderer.renderChoiceText(lastChoice, runState)}</p>
+                  {actualRenderer.renderChoiceDescription(lastChoice, runState) && (
+                    <p className="text-sm text-blue-800 leading-relaxed">{actualRenderer.renderChoiceDescription(lastChoice, runState)}</p>
+                  )}
                 </div>
               </div>
               <div className="mt-4 flex justify-end">
@@ -178,13 +206,13 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
             <div className="rounded-lg border border-green-200 bg-green-50 p-4">
               <div className="space-y-3">
                 <div className="flex items-start gap-2">
-                  <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-600 text-white text-xs font-bold">
+                  <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-600 text-white text-xs font-bold">
                     ✓
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-semibold text-green-900">Result of your choice:</p>
-                    {lastChoice.resultText && (
-                      <p className="mt-2 text-sm text-green-800 leading-relaxed">{lastChoice.resultText}</p>
+                    {actualRenderer.renderChoiceResult(lastChoice, runState) && (
+                      <p className="mt-2 text-sm text-green-800 leading-relaxed">{actualRenderer.renderChoiceResult(lastChoice, runState)}</p>
                     )}
                   </div>
                 </div>
@@ -223,7 +251,7 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
                   <div className="ml-7 space-y-1 border-t border-green-300 pt-2">
                     <p className="text-xs font-semibold uppercase tracking-wide text-green-700">Events:</p>
                     {lastEvents.map((event, i) => (
-                      <p key={i} className="text-sm text-green-800">{event.text}</p>
+                      <p key={i} className="text-sm text-green-800">{actualRenderer.renderEventText(event, runState)}</p>
                     ))}
                   </div>
                 )}
@@ -244,6 +272,10 @@ export function GameContainer({ scenario, className = "" }: GameContainerProps) 
               stepNumber={runState.currentStep}
               stepLabel={scenario.timeConfig.stepLabel}
               onRestart={handleRestart}
+              renderer={actualRenderer}
+              state={runState}
+              tile={tile}
+              onComplete={onComplete}
             />
           )}
         </div>

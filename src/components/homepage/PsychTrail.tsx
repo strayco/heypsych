@@ -16,8 +16,8 @@ import Link from "next/link";
 export function PsychTrail() {
   return (
     <section className="border-t border-neutral-200 bg-white px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
-        <Link href="/psych-trail" className="block">
+      <div className="mx-auto max-w-6xl">
+        <Link href="/psychtrails" className="block">
           <div className="group relative overflow-hidden rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 via-blue-50 to-white p-8 transition-all duration-300 hover:border-purple-400 hover:shadow-xl cursor-pointer">
             {/* New badge */}
             <div className="absolute top-4 left-4">

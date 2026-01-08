@@ -41,11 +41,15 @@ Pure renderer components with **no simulation logic**.
 
 All components are presentation-only. The engine handles all logic.
 
-### 3. Route Layer (`src/app/psych-trail/`)
+### 3. Route Layer (`src/app/psychtrails/`)
 
 Next.js pages that wire engine + UI together.
 
-- **`page.tsx`** - Main game page
+- **`page.tsx`** - Onboarding flow (life stage + lens selection)
+- **`map/page.tsx`** - Tile-based map interface
+- **`play/[tileId]/page.tsx`** - Individual scenario player
+
+**Legacy routes** (`src/app/psych-trail/`) redirect to `/psychtrails` onboarding.
 
 ## Data Model
 
@@ -305,7 +309,7 @@ src/
 │   ├── index.ts                 # Public API
 │   ├── README.md                # This file
 │   └── scenarios/               # Scenario files
-│       └── depression-treatment-demo.json
+│       └── *.json
 │
 ├── components/psychTrail/       # UI layer
 │   ├── GameContainer.tsx        # Main orchestrator
@@ -315,10 +319,17 @@ src/
 │   ├── EventLog.tsx             # Events renderer
 │   ├── Timeline.tsx             # History renderer
 │   ├── EndingDisplay.tsx        # Ending renderer
+│   ├── onboarding/              # Onboarding flow components
+│   ├── map/                     # Map interface components
 │   └── index.ts                 # Exports
 │
-└── app/psych-trail/             # Route layer
-    └── page.tsx                 # Main game page
+├── app/psychtrails/             # Route layer
+│   ├── page.tsx                 # Onboarding flow
+│   ├── map/page.tsx             # Tile-based map
+│   └── play/[tileId]/page.tsx   # Scenario player
+│
+└── app/psych-trail/             # Legacy routes (redirects)
+    └── [scenarioId]/page.tsx    # Redirects to /psychtrails
 ```
 
 ## License & Credits

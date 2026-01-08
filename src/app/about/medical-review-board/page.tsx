@@ -14,6 +14,7 @@ interface Reviewer {
   name: string;
   credentials: string;
   specialty: string;
+  status?: string;
   board_certifications: string[];
   affiliations: string[];
   years_of_practice: number;
@@ -172,6 +173,11 @@ export default function MedicalReviewBoardPage() {
                           <Badge variant="outline" className="bg-purple-50 text-purple-700">
                             {reviewer.years_of_practice}+ years experience
                           </Badge>
+                          {reviewer.status === "onboarding" && (
+                            <Badge variant="outline" className="bg-amber-50 text-amber-700">
+                              Currently Onboarding
+                            </Badge>
+                          )}
                         </div>
                       </div>
                     </div>

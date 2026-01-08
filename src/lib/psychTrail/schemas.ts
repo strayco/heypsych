@@ -149,7 +149,7 @@ const ChoiceSchema = z.object({
   resultText: z.string().optional(),
   condition: ConditionSchema.optional(),
   effects: z.array(EffectSchema),
-  nextNodeId: z.string().min(1),
+  nextNodeId: z.string().min(1).optional(), // Optional for ending choices
   advancesTime: z.boolean().optional(),
 });
 
@@ -259,10 +259,15 @@ export function validateScenario(scenario: unknown): {
     });
   });
 
-  // Check all choice nextNodeIds exist
+  // Check all choice nextNodeIds exist (only if specified - ending choices may not have one)
   s.choices.forEach((choice) => {
-    if (!nodeIds.has(choice.nextNodeId)) {
+    if (choice.nextNodeId && !nodeIds.has(choice.nextNodeId)) {
       errors.push(`Choice "${choice.id}" leads to non-existent node "${choice.nextNodeId}"`);
+    }
+    // Warn if choice has no nextNodeId and no ending effect
+    const hasEndEffect = choice.effects.some((e) => e.type === "end");
+    if (!choice.nextNodeId && !hasEndEffect) {
+      errors.push(`Choice "${choice.id}" has no nextNodeId and no ending effect`);
     }
   });
 
@@ -316,7 +321,7 @@ export function validateScenario(scenario: unknown): {
 
     node.choiceIds.forEach((cid) => {
       const choice = s.choices.find((c) => c.id === cid);
-      if (choice && !visited.has(choice.nextNodeId)) {
+      if (choice && choice.nextNodeId && !visited.has(choice.nextNodeId)) {
         visitQueue.push(choice.nextNodeId);
       }
     });

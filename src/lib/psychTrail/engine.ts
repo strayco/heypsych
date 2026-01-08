@@ -116,6 +116,10 @@ export class PsychTrailEngine {
     // Check if choice ended the game
     if (newState.isEnded) {
       // Add to history and return early
+      // Keep currentNodeId as-is if no nextNodeId (ending choices don't need navigation)
+      if (choice.nextNodeId) {
+        newState.currentNodeId = choice.nextNodeId;
+      }
       newState.history.push({
         step: newState.currentStep,
         nodeId: newState.currentNodeId,
@@ -124,7 +128,6 @@ export class PsychTrailEngine {
         metricsSnapshot: { ...newState.metrics },
         inventorySnapshot: newState.inventory ? { ...newState.inventory } : undefined,
       });
-      newState.currentNodeId = choice.nextNodeId;
       return { newState, triggeredEvents: [], choice };
     }
 
@@ -138,8 +141,10 @@ export class PsychTrailEngine {
       if (newState.isEnded) break;
     }
 
-    // Move to next node
-    newState.currentNodeId = choice.nextNodeId;
+    // Move to next node (only if nextNodeId is specified)
+    if (choice.nextNodeId) {
+      newState.currentNodeId = choice.nextNodeId;
+    }
 
     // Add history entry
     newState.history.push({

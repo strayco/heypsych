@@ -1,12 +1,14 @@
 /**
  * Sitemap for Programmatic SEO Pages
- * 
+ *
  * Dynamically generates sitemap for thousands of long-tail guide pages.
- * This crawls your JSON files and generates URLs for all valid combinations.
+ * ONLY includes indexable pages - noindex pages are excluded to avoid crawl budget waste.
  */
 
 import { NextResponse } from 'next/server';
 import { generateDynamicPageConfigs } from '@/lib/programmatic-seo/dynamic-generator';
+import { generatePageContent } from '@/lib/programmatic-seo/content-engine';
+import { checkIndexEligibility } from '@/lib/programmatic-seo/index-eligibility';
 import { SITE_CONFIG } from '@/lib/seo/config';
 
 export const dynamic = 'force-dynamic';
@@ -15,7 +17,24 @@ export const revalidate = 86400; // Revalidate daily
 export async function GET() {
   try {
     const baseUrl = SITE_CONFIG.url.trim().replace(/\/+$/, '');
-    const configs = await generateDynamicPageConfigs();
+    const allConfigs = await generateDynamicPageConfigs();
+
+    // Filter to only indexable pages
+    console.log(`[Sitemap] Filtering ${allConfigs.length} pages for index eligibility...`);
+    const indexableConfigs = [];
+
+    for (const config of allConfigs) {
+      const content = await generatePageContent(config);
+      if (!content) continue;
+
+      const eligibility = checkIndexEligibility(config, content);
+      if (eligibility.isIndexable) {
+        indexableConfigs.push(config);
+      }
+    }
+
+    console.log(`[Sitemap] ${indexableConfigs.length} of ${allConfigs.length} pages are indexable`);
+    const configs = indexableConfigs;
     const now = new Date().toISOString();
 
     // Generate XML

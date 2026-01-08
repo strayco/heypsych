@@ -78,3 +78,4 @@ export async function generateStaticParams() {
 }
 
 export const revalidate = 86400; // 24 hours
+export const dynamic = 'force-dynamic'; // Required because we access request.headers for AI bot tracking

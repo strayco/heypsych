@@ -242,3 +242,4 @@ export const TRENDING_MENTAL_HEALTH_SEARCHES = [
   { query: "how to find a therapist", volume: "medium" },
 ];
 
+

@@ -1,0 +1,313 @@
+{
+  "id": "college_social_anxiety_dining_hall_v1",
+  "title": "Dining Hall: Small Talk Starter",
+  "summary": "Practice low-stakes social exposure in the dining hall. Navigate entering crowded spaces, asking simple questions, and tolerating brief social moments.",
+  "category": "life-event",
+  "tags": ["social-anxiety", "college", "exposure", "small-talk"],
+  "version": "1.0.0",
+  "reviewedBy": "Clinical Content Team",
+  "updatedAt": "2026-01-06T00:00:00Z",
+  "difficulty": "beginner",
+  "estimatedMinutes": 8,
+  "author": "HeyPsych Clinical Content Team",
+  "authorRole": "Mental Health Educators",
+  "medicalReviewer": "HeyPsych Medical Review Board",
+  "medicalReviewerCredentials": "Board-Certified Psychiatrists",
+  "clinicalReviewDate": "2026-01-06T00:00:00Z",
+  "clinicalReviewDueDate": "2027-01-06T00:00:00Z",
+  "keywords": [
+    "social anxiety dining hall",
+    "college social exposure",
+    "small talk practice",
+    "asking is this seat taken"
+  ],
+  "learningObjectives": [
+    "Practice entering crowded social spaces despite anxiety",
+    "Ask simple direct questions like 'is this seat taken?'",
+    "Interpret neutral responses as normal, not negative",
+    "Build tolerance for brief social moments"
+  ],
+  "educationalLevel": "beginner",
+  "timeConfig": {
+    "stepLabel": "moment",
+    "stepLabelPlural": "moments",
+    "maxSteps": 10
+  },
+  "uiConfig": {
+    "metrics": [
+      {
+        "key": "preparedness",
+        "label": "Preparedness",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "comfort",
+        "label": "Comfort",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "communication",
+        "label": "Communication",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      }
+    ],
+    "showTimeline": true,
+    "showEventLog": false
+  },
+  "initialMetrics": {
+    "preparedness": 30,
+    "comfort": 20,
+    "communication": 40
+  },
+  "initialFlags": {},
+  "startNodeId": "entrance",
+  "nodes": [
+    {
+      "id": "entrance",
+      "text": "You push through the heavy doors. The dining hall hits you all at once—clattering trays, overlapping conversations, clusters of people everywhere. Your chest tightens. Everyone looks like they belong here. You spot the food line and a few scattered empty tables.\n\nWhat do you do?",
+      "choiceIds": ["entrance_plan", "entrance_phone", "entrance_bail"]
+    },
+    {
+      "id": "plan_route",
+      "text": "You take a breath and sketch a quick mental plan: get food, find a seat, eat. Simple. The anxiety doesn't vanish, but having a micro-plan helps. You join the line.\n\nStanding in line, you're hyper-aware of people around you. Are they looking at you? Probably not. But your mind whispers 'you look awkward just standing here.'\n\nWhat do you do?",
+      "choiceIds": ["line_ground", "line_phone_shield", "line_leave"]
+    },
+    {
+      "id": "phone_shield",
+      "text": "You pull out your phone and scroll. It's a familiar safety move—something to do with your hands, a reason not to make eye contact. The anxiety dulls slightly, but you also feel... hidden. You get your food.\n\nNow you're holding a tray, scanning for a seat. There are a few options.\n\nWhat do you do?",
+      "choiceIds": ["seat_near_people", "seat_isolate", "seat_bail"]
+    },
+    {
+      "id": "bailed_early",
+      "text": "You turn around before even getting in line. The noise, the crowd, the feeling of being watched—it's too much right now. You leave, and relief floods in as you exit.\n\nAs you walk away, your inner critic pipes up. But that voice isn't the whole story.\n\nAn hour later, your stomach growls. You're hungry. The dining hall is still open.",
+      "choiceIds": ["try_again_dining", "ending_avoidance"]
+    },
+    {
+      "id": "seat_choice",
+      "text": "You hold your tray and scan the room. There's an empty table in the corner—safe, quiet. There's also a table with one person sitting alone, reading. And a bigger table with a few open seats near a group chatting.\n\nYour anxiety spikes. Where do you sit?",
+      "choiceIds": ["seat_near_people", "seat_isolate", "seat_bail"]
+    },
+    {
+      "id": "near_people",
+      "text": "You walk toward the table with a few people. Your heart pounds. This is the moment. You stop near an empty chair.\n\nYou clear your throat slightly and ask: 'Is this seat taken?'\n\nThe person nearest you glances up. 'Nope, go ahead,' they say, then return to their conversation.\n\nNeutral. Not warm, not cold. Just... normal.\n\nWhat do you do?",
+      "choiceIds": ["follow_up_question", "sit_silent", "interpret_negative"]
+    },
+    {
+      "id": "isolated_corner",
+      "text": "You head to the empty corner table. Sitting alone feels safer. You eat quickly, earbuds in, eyes down. The anxiety is manageable—you made it through.\n\nBut as you finish, you notice other people at tables, talking, laughing. Part of you wonders what it would be like to try.\n\nYou stayed. That's something.",
+      "choiceIds": ["ending_mixed"]
+    },
+    {
+      "id": "follow_up",
+      "text": "You sit down. After a moment, you try something small: 'How's your day going?'\n\nThe person looks up again, a bit surprised but not annoyed. 'Pretty good, thanks. You?'\n\n'Not bad,' you say. They nod and go back to their food.\n\nIt wasn't deep. It wasn't perfect. But you did it—a real, brief, normal social moment.\n\nYou eat your meal. The anxiety fades slightly. You stayed, you asked, you connected for a second.",
+      "choiceIds": ["ending_confident"]
+    },
+    {
+      "id": "sat_silent",
+      "text": "You sit down and focus on your food. You don't say anything else. The brief interaction was enough—maybe more than enough. Your phone sits next to your tray, a quiet shield.\n\nYou made it. You asked the question, you sat near people. That's progress, even if you didn't push further.",
+      "choiceIds": ["ending_mixed"]
+    },
+    {
+      "id": "mind_read_negative",
+      "text": "They said 'go ahead,' but their tone felt... flat. Were they annoyed? Did you interrupt? Your mind races. Maybe they didn't want you there. The spotlight feeling intensifies.\n\nYou sit, but the meal feels uncomfortable. You eat quickly and leave.\n\nYou tried. But the mind-reading pulled you back into avoidance mode.",
+      "choiceIds": ["ending_mixed"]
+    }
+  ],
+  "choices": [
+    {
+      "id": "entrance_plan",
+      "text": "Take a breath and make a micro-plan: food, seat, eat",
+      "description": "Planning gives structure. Anxiety won't vanish, but you'll have a path.",
+      "resultText": "You map out the steps. It helps.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 15 },
+        { "type": "metric", "metric": "comfort", "change": 5 }
+      ],
+      "nextNodeId": "plan_route"
+    },
+    {
+      "id": "entrance_phone",
+      "text": "Pull out phone immediately—safer than just standing there",
+      "description": "Your phone is a shield. It dulls the spotlight feeling but keeps you in hiding mode.",
+      "resultText": "The phone helps you feel less exposed, but also less present.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "phone_shield"
+    },
+    {
+      "id": "entrance_bail",
+      "text": "Turn around—this is too much",
+      "description": "Leaving feels like relief, but reinforces the avoidance loop.",
+      "resultText": "You leave before even trying. The anxiety wins this round.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "preparedness", "change": -10 }
+      ],
+      "nextNodeId": "bailed_early"
+    },
+    {
+      "id": "line_ground",
+      "text": "Stay present—notice your feet, your breath, the person ahead",
+      "description": "Grounding pulls you out of your head. The anxiety is there, but you're here too.",
+      "resultText": "You ground yourself. It's uncomfortable, but you're staying with it.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 10 },
+        { "type": "metric", "metric": "communication", "change": 5 }
+      ],
+      "nextNodeId": "seat_choice"
+    },
+    {
+      "id": "line_phone_shield",
+      "text": "Scroll phone—give yourself something to do",
+      "description": "The phone dulls the discomfort but keeps you disconnected.",
+      "resultText": "You scroll. It's easier, but you're still hiding.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "seat_choice"
+    },
+    {
+      "id": "line_leave",
+      "text": "Quietly leave the line—you can't do this today",
+      "description": "Bailing feels like relief, but it strengthens the avoidance pattern.",
+      "resultText": "You slip out of line and head for the door.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "preparedness", "change": -5 }
+      ],
+      "nextNodeId": "bailed_early"
+    },
+    {
+      "id": "seat_near_people",
+      "text": "Sit near the group—ask 'is this seat taken?'",
+      "description": "Direct and brief. One small question. This is the rep.",
+      "resultText": "You approach the table. Your heart pounds, but you ask.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 15 },
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "near_people"
+    },
+    {
+      "id": "seat_isolate",
+      "text": "Take the empty corner table—safer alone",
+      "description": "You avoid the interaction. Safe, but no practice.",
+      "resultText": "You sit alone. It's manageable. You chose what felt right for today.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "isolated_corner"
+    },
+    {
+      "id": "seat_bail",
+      "text": "Leave with your tray—too overwhelming",
+      "description": "You got this far, but the final step feels impossible.",
+      "resultText": "You set the tray down and leave. Almost, but not quite.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "communication", "change": -10 }
+      ],
+      "nextNodeId": "bailed_early"
+    },
+    {
+      "id": "follow_up_question",
+      "text": "Try small talk: 'How's your day going?'",
+      "description": "One more small step. Not required, but practice for connection.",
+      "resultText": "You ask. They respond. Brief, normal, real.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 15 },
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "follow_up"
+    },
+    {
+      "id": "sit_silent",
+      "text": "Just sit and eat—one question was enough",
+      "description": "You already did the hard part. Sitting quietly is okay.",
+      "resultText": "You sit in silence. That's enough for today.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "metric", "metric": "communication", "change": 0 }
+      ],
+      "nextNodeId": "sat_silent"
+    },
+    {
+      "id": "interpret_negative",
+      "text": "Their tone seemed flat—maybe they didn't want me here",
+      "description": "When we're anxious, neutral responses can feel negative. This is a common pattern worth noticing.",
+      "resultText": "You interpret their neutrality as rejection. The anxiety spikes.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "mind_read_negative"
+    },
+    {
+      "id": "try_again_dining",
+      "text": "Go back—you're hungry and you can do this",
+      "description": "You bailed once. But hunger is a powerful motivator, and you've got another shot.",
+      "resultText": "You take a breath and walk back toward the dining hall. Round two.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 5 },
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "flag", "flag": "triedAgain", "value": true }
+      ],
+      "nextNodeId": "entrance"
+    },
+    {
+      "id": "ending_confident",
+      "text": "Finish meal and leave feeling proud",
+      "description": "You stayed, you asked, you connected briefly. This is a confident step.",
+      "effects": [
+        { "type": "end", "endingId": "confident_step" }
+      ]
+    },
+    {
+      "id": "ending_mixed",
+      "text": "Leave quietly—you made it through",
+      "description": "You showed up and sat down. Not perfect, but progress.",
+      "effects": [
+        { "type": "end", "endingId": "mixed_but_moving" }
+      ]
+    },
+    {
+      "id": "ending_avoidance",
+      "text": "Leave feeling defeated",
+      "description": "Avoidance won this round. The pattern continues.",
+      "effects": [
+        { "type": "end", "endingId": "avoidance_loop" }
+      ]
+    }
+  ],
+  "events": [],
+  "endings": [
+    {
+      "id": "confident_step",
+      "title": "Confident Step",
+      "text": "You did it. You walked into a crowded dining hall, asked a direct question, and even tried a brief follow-up. It wasn't perfect—it never is—but you stayed present despite the anxiety.\n\nThis is what small reps look like: uncomfortable, brief, real. You're building the skill of showing up even when the spotlight feeling is loud.\n\nNext time will still be hard. But you proved you can do hard things.",
+      "isPositive": true
+    },
+    {
+      "id": "mixed_but_moving",
+      "title": "Mixed But Moving",
+      "text": "You made it through. You entered the dining hall, got food, and sat down. Maybe you used your phone as a shield, or chose the corner table, or didn't push for more interaction.\n\nThat's okay. You didn't bail completely. You stayed in the space, even if it felt uncomfortable.\n\nProgress isn't always a straight line. Sometimes just showing up is the rep.",
+      "isPositive": false
+    },
+    {
+      "id": "avoidance_loop",
+      "title": "Avoidance Loop",
+      "text": "You left before giving yourself a chance. The relief was instant—walking away always is—but it came with a cost. Avoidance teaches your brain that the dining hall is dangerous, that you can't handle it.\n\nThe truth? You probably could have. But avoidance doesn't let you find out.\n\nNext time, try staying just one minute longer. The discomfort won't kill you—but avoiding it keeps the fear alive.",
+      "isPositive": false
+    }
+  ]
+}

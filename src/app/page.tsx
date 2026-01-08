@@ -100,14 +100,14 @@ export default function HomePage() {
         {/* SECTION 1 - Hero (Search + "Take me anywhere") */}
         <Hero />
 
-        {/* SECTION 2 - Core Navigation Grid (2×2) */}
+        {/* SECTION 2 - PsychTrails */}
+        <PsychTrail />
+
+        {/* SECTION 3 - Core Navigation Grid (2×2) */}
         <NavigationGrid />
 
-        {/* SECTION 3 - Trending Topics (Discovery Tiles) */}
+        {/* SECTION 4 - Trending Topics (Discovery Tiles) */}
         <TrendingTopics />
-
-        {/* SECTION 4 - PsychTrails */}
-        <PsychTrail />
 
         {/* SECTION 5 - Toolkit Strip (Optional but Preferred) */}
         <ToolkitStrip />

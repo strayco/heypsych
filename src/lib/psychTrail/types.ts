@@ -228,8 +228,8 @@ export interface Choice {
   condition?: Condition;
   /** Effects applied when this choice is selected */
   effects: Effect[];
-  /** Where this choice leads (node ID) */
-  nextNodeId: string;
+  /** Where this choice leads (node ID). Optional for ending choices that don't navigate to another node. */
+  nextNodeId?: string;
   /** Does selecting this choice advance time? (default: true) */
   advancesTime?: boolean;
 }
@@ -388,4 +388,82 @@ export interface TurnResult {
   triggeredEvents: GameEvent[];
   /** The choice that was made */
   choice: Choice;
+}
+
+// ============================================================================
+// Campaign System (PsychTrails MVP)
+// ============================================================================
+
+/**
+ * Life stage options for campaign
+ */
+export type LifeStage = "teen" | "college" | "parent";
+
+/**
+ * Lens/perspective options
+ */
+export type Lens = "generic" | "social_anxiety" | "adhd";
+
+/**
+ * Optional context tags (up to 2)
+ */
+export type ContextTag =
+  | "first-gen"
+  | "family-pressure"
+  | "care-access-friction"
+  | "stigma";
+
+/**
+ * User's onboarding selections
+ */
+export interface UserProfile {
+  lifeStage: LifeStage;
+  lens: Lens;
+  contextTags: ContextTag[];
+  onboardedAt: number; // timestamp
+}
+
+/**
+ * A situation tile on the campaign map
+ */
+export interface Tile {
+  id: string;
+  title: string;
+  description: string;
+  icon: string; // lucide-react icon name
+  lifeStage: LifeStage;
+  scenarioId: string; // maps to scenario JSON id
+  prerequisiteTileIds: string[]; // tiles that must be completed first
+  initialConfidence: number; // 0-100, starting confidence
+  unlocked: boolean; // hardcoded for MVP
+}
+
+/**
+ * Progress tracking for a single tile
+ */
+export interface TileProgress {
+  confidence: number; // 0-100
+  completions: number; // how many times completed
+  lastPlayedAt?: number; // timestamp of last completion
+  bestEndingId?: string; // best ending achieved (optional)
+}
+
+/**
+ * Complete campaign progress state
+ */
+export interface CampaignProgress {
+  profile: UserProfile;
+  tiles: Record<string, TileProgress>; // tileId -> progress
+  totalXP: number;
+  insightCardsEarned: string[]; // card IDs
+}
+
+/**
+ * Result of completing a scenario
+ */
+export interface ScenarioCompletionResult {
+  xpEarned: number;
+  confidenceGain: number; // how much confidence increased
+  insightCardId?: string; // which card was earned (optional)
+  endingId: string;
 }

@@ -1,0 +1,335 @@
+{
+  "id": "college_social_anxiety_office_hours_v1",
+  "title": "Office Hours: Ask One Question",
+  "summary": "Navigate asking for help despite fear of judgment. Practice preparing one clear question and choosing clarity over confidence.",
+  "category": "life-event",
+  "tags": ["social-anxiety", "college", "office-hours", "asking-for-help"],
+  "version": "1.0.0",
+  "reviewedBy": "Clinical Content Team",
+  "updatedAt": "2026-01-06T00:00:00Z",
+  "difficulty": "beginner",
+  "estimatedMinutes": 8,
+  "author": "HeyPsych Clinical Content Team",
+  "authorRole": "Mental Health Educators",
+  "medicalReviewer": "HeyPsych Medical Review Board",
+  "medicalReviewerCredentials": "Board-Certified Psychiatrists",
+  "clinicalReviewDate": "2026-01-06T00:00:00Z",
+  "clinicalReviewDueDate": "2027-01-06T00:00:00Z",
+  "keywords": [
+    "social anxiety office hours",
+    "asking for help college",
+    "clear questions",
+    "professor interaction"
+  ],
+  "learningObjectives": [
+    "Practice asking for help despite fear of looking stupid",
+    "Prepare one clear, specific question",
+    "Interpret neutral instructor responses as normal, not rejection",
+    "Close the loop with one actionable next step"
+  ],
+  "educationalLevel": "beginner",
+  "timeConfig": {
+    "stepLabel": "moment",
+    "stepLabelPlural": "moments",
+    "maxSteps": 10
+  },
+  "uiConfig": {
+    "metrics": [
+      {
+        "key": "preparedness",
+        "label": "Preparedness",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "comfort",
+        "label": "Comfort",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      },
+      {
+        "key": "communication",
+        "label": "Communication",
+        "min": 0,
+        "max": 100,
+        "higherIsBetter": true
+      }
+    ],
+    "showTimeline": true,
+    "showEventLog": false
+  },
+  "initialMetrics": {
+    "preparedness": 25,
+    "comfort": 20,
+    "communication": 35
+  },
+  "initialFlags": {},
+  "startNodeId": "debate_going",
+  "nodes": [
+    {
+      "id": "debate_going",
+      "text": "Your professor's office hours are in 15 minutes. You've been stuck on a concept from lecture and know you should ask—but your chest tightens at the thought.\n\n'What if I sound stupid? What if I'm wasting their time? Everyone else probably gets it.'\n\nWhat do you do?",
+      "choiceIds": ["decide_go", "decide_email_instead", "decide_skip"]
+    },
+    {
+      "id": "outside_door",
+      "text": "You're standing outside the office. Through the half-open door, you hear another student asking questions. They sound confident, articulate. You compare yourself instantly: 'They know what they're doing. I'll just embarrass myself.'\n\nThe other student finishes and leaves, nodding politely as they pass you.\n\nWhat do you do?",
+      "choiceIds": ["write_question", "go_in_unprepared", "leave_now"]
+    },
+    {
+      "id": "emailed_instead",
+      "text": "You open your laptop and draft an email instead. It feels safer—no eye contact, no real-time judgment, time to edit your words.\n\nBut as you type, you realize: the question is hard to explain over email. And waiting for a reply means staying stuck longer.\n\nThe professor replies: 'This is a great question—easier to explain in person. I have office hours tomorrow at 2pm if you want to stop by.'",
+      "choiceIds": ["try_again_email", "ending_avoidance"]
+    },
+    {
+      "id": "skipped",
+      "text": "You convince yourself you'll figure it out later. Maybe watch a YouTube video. Maybe ask a friend. Anything but going to office hours.\n\nThe relief is instant. But the concept stays confusing, and the assignment deadline creeps closer.\n\nThe night before it's due, you're still stuck.",
+      "choiceIds": ["try_again_deadline", "ending_avoidance"]
+    },
+    {
+      "id": "prepared_question",
+      "text": "You pull out your phone and type a quick note: 'I'm confused about [concept]. Can you explain how it connects to [example]?'\n\nHaving the question written down feels grounding. You take a breath.\n\nYou knock lightly and step inside.\n\nThe professor looks up. 'Hi, come in. What can I help you with?'\n\nWhat do you say?",
+      "choiceIds": ["ask_clear", "ask_apology_heavy", "ask_vague"]
+    },
+    {
+      "id": "unprepared_entry",
+      "text": "You step inside without a plan. The professor looks up.\n\n'Hi, come in. What can I help you with?'\n\nYour mind blanks. You know you're confused, but the words won't come together clearly.\n\nWhat do you say?",
+      "choiceIds": ["ask_clear", "ask_apology_heavy", "ask_vague"]
+    },
+    {
+      "id": "asked_question",
+      "text": "You ask your question. The professor listens, nods, and responds:\n\n'Good question. A lot of students find this tricky. Let me explain...'\n\nThey walk you through it. Their tone is neutral—not warm, not cold. Just... normal. Professional.\n\nYour anxiety whispers: 'Are they annoyed? Did I waste their time?'\n\nBut their words say otherwise.\n\nWhat do you do?",
+      "choiceIds": ["close_loop_next_step", "leave_without_clarity", "interpret_neutral"]
+    },
+    {
+      "id": "apology_heavy",
+      "text": "You start with: 'I'm really sorry to bother you, I know you're busy, but I'm just totally lost and probably should have figured this out already...'\n\nThe professor interrupts gently: 'It's okay. Office hours are for questions. What's confusing you?'\n\nYou manage to ask your question. The apologies came from a place of not wanting to be a burden—a feeling many people share.\n\nThey explain the concept. It helps, even if part of you still feels uncertain about whether you 'should have' asked.",
+      "choiceIds": ["close_loop_next_step", "leave_without_clarity", "interpret_neutral"]
+    },
+    {
+      "id": "vague_question",
+      "text": "You say: 'I just... don't really get the last lecture. It was confusing.'\n\nThe professor nods. 'Okay. What specifically was unclear?'\n\nIt's hard to pinpoint on the spot—putting confusion into words is genuinely difficult. They try to help, but without a specific question, the conversation feels scattered.\n\nYou leave wishing you had more clarity. That's okay—it's information for next time.",
+      "choiceIds": ["ending_mixed"]
+    },
+    {
+      "id": "got_next_step",
+      "text": "Before leaving, you ask: 'What's one thing I should focus on before the next class?'\n\nThe professor gives you a specific next step: 'Review [this example] and try [this practice problem]. That'll clarify it.'\n\nYou nod. You have a plan now.\n\nYou leave the office. The anxiety is still there, but quieter. You asked for help, you got an answer, and you have a clear next step.\n\nClarity beats confidence.",
+      "choiceIds": ["ending_confident"]
+    },
+    {
+      "id": "left_without_closing",
+      "text": "They finish explaining. You nod, say 'Thanks,' and head out.\n\nAs you walk away, you realize: you're not totally sure what to do next. You got an explanation, but not a concrete plan.\n\nYou showed up and asked—that's real progress. The next step is just getting clarity on what comes next.",
+      "choiceIds": ["ending_mixed"]
+    },
+    {
+      "id": "mind_read_instructor",
+      "text": "Their tone was neutral. But your mind insists: 'They think I'm slow. They're annoyed. I shouldn't have come.'\n\nYou thank them quickly and leave. The explanation helped a little, but the mind-reading pulled you out of the moment.\n\nYou tried. But interpreting neutral as negative kept you from fully engaging.",
+      "choiceIds": ["ending_mixed"]
+    }
+  ],
+  "choices": [
+    {
+      "id": "decide_go",
+      "text": "Go to office hours—you need the answer",
+      "description": "Choosing clarity over comfort. The fear is real, but so is the need for help.",
+      "resultText": "You decide to go. Your heart pounds, but you're doing it.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 10 },
+        { "type": "metric", "metric": "comfort", "change": 5 }
+      ],
+      "nextNodeId": "outside_door"
+    },
+    {
+      "id": "decide_email_instead",
+      "text": "Email the professor instead—safer than in-person",
+      "description": "Email feels less risky, but you lose the clarity of real-time conversation.",
+      "resultText": "You choose the safer route. But safety has a cost.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "metric", "metric": "communication", "change": -10 }
+      ],
+      "nextNodeId": "emailed_instead"
+    },
+    {
+      "id": "decide_skip",
+      "text": "Skip it—you'll figure it out another way",
+      "description": "Avoidance feels easier. But staying confused has consequences.",
+      "resultText": "You avoid the discomfort. The confusion stays.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -5 },
+        { "type": "metric", "metric": "preparedness", "change": -10 }
+      ],
+      "nextNodeId": "skipped"
+    },
+    {
+      "id": "write_question",
+      "text": "Write down your question first—clarity helps",
+      "description": "Preparing one clear question gives structure. You'll sound more confident because you're more prepared.",
+      "resultText": "You write it down. The question feels clearer now.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 15 },
+        { "type": "metric", "metric": "communication", "change": 10 }
+      ],
+      "nextNodeId": "prepared_question"
+    },
+    {
+      "id": "go_in_unprepared",
+      "text": "Just go in—winging it is fine",
+      "description": "Sometimes you just have to show up. But unpreparedness makes the moment harder.",
+      "resultText": "You step in without a plan. Your anxiety spikes.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -5 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "unprepared_entry"
+    },
+    {
+      "id": "leave_now",
+      "text": "Turn around—hearing that other student made you feel worse",
+      "description": "Comparison steals the moment. You bail before trying.",
+      "resultText": "You leave. Avoidance wins again.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "preparedness", "change": -5 }
+      ],
+      "nextNodeId": "skipped"
+    },
+    {
+      "id": "ask_clear",
+      "text": "Ask your prepared question directly and clearly",
+      "description": "One clear question. No apologies. This is what clarity looks like.",
+      "resultText": "You ask clearly. The professor nods and explains.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 15 },
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "asked_question"
+    },
+    {
+      "id": "ask_apology_heavy",
+      "text": "Apologize repeatedly before asking your question",
+      "description": "Starting with apologies is a common habit when we feel nervous. It can make the conversation feel heavier than it needs to be.",
+      "resultText": "You apologize too much. They reassure you, but the tone is set.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 5 },
+        { "type": "metric", "metric": "comfort", "change": -5 }
+      ],
+      "nextNodeId": "apology_heavy"
+    },
+    {
+      "id": "ask_vague",
+      "text": "Say you're confused about 'the whole lecture'",
+      "description": "Vague questions get vague answers. Without specificity, you stay stuck.",
+      "resultText": "Your question is too broad. The conversation goes nowhere.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": -10 },
+        { "type": "metric", "metric": "preparedness", "change": -5 }
+      ],
+      "nextNodeId": "vague_question"
+    },
+    {
+      "id": "close_loop_next_step",
+      "text": "Ask: 'What's one thing I should do before next class?'",
+      "description": "Closing the loop with a clear next step. This is how you turn explanation into action.",
+      "resultText": "You ask for a next step. They give you one. Clarity achieved.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 15 },
+        { "type": "metric", "metric": "communication", "change": 10 }
+      ],
+      "nextNodeId": "got_next_step"
+    },
+    {
+      "id": "leave_without_clarity",
+      "text": "Thank them and leave—you got what you needed",
+      "description": "You got some help, but you didn't ask for a next step. Progress, but incomplete.",
+      "resultText": "You leave without closing the loop. Partial clarity.",
+      "effects": [
+        { "type": "metric", "metric": "communication", "change": 0 },
+        { "type": "metric", "metric": "comfort", "change": 5 }
+      ],
+      "nextNodeId": "left_without_closing"
+    },
+    {
+      "id": "interpret_neutral",
+      "text": "Their neutral tone means they're annoyed—leave quickly",
+      "description": "When we're anxious, neutral responses can feel negative. This is a common pattern worth noticing.",
+      "resultText": "You interpret neutrality as judgment. The anxiety spikes.",
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -10 },
+        { "type": "metric", "metric": "communication", "change": -5 }
+      ],
+      "nextNodeId": "mind_read_instructor"
+    },
+    {
+      "id": "try_again_email",
+      "text": "Show up tomorrow—they invited you",
+      "description": "The professor made it easy. They literally invited you. This is your second chance.",
+      "resultText": "The next day, you walk to their office. They're expecting you.",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 10 },
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "flag", "flag": "triedAgain", "value": true }
+      ],
+      "nextNodeId": "outside_door"
+    },
+    {
+      "id": "try_again_deadline",
+      "text": "Email the professor—ask for a quick meeting",
+      "description": "The deadline pressure finally outweighs the anxiety. You reach out.",
+      "resultText": "You send a short email: 'Can I stop by office hours tomorrow? I'm stuck on the assignment.' They reply: 'Of course. See you then.'",
+      "effects": [
+        { "type": "metric", "metric": "preparedness", "change": 5 },
+        { "type": "metric", "metric": "comfort", "change": 5 },
+        { "type": "flag", "flag": "triedAgain", "value": true }
+      ],
+      "nextNodeId": "outside_door"
+    },
+    {
+      "id": "ending_confident",
+      "text": "Leave with a clear next step",
+      "description": "You asked for help, got clarity, and closed the loop. This is a confident step.",
+      "effects": [
+        { "type": "end", "endingId": "confident_step" }
+      ]
+    },
+    {
+      "id": "ending_mixed",
+      "text": "Leave feeling uncertain",
+      "description": "You showed up, but didn't fully commit. Progress, but incomplete.",
+      "effects": [
+        { "type": "end", "endingId": "mixed_but_moving" }
+      ]
+    },
+    {
+      "id": "ending_avoidance",
+      "text": "Avoid entirely",
+      "description": "Avoidance won. The confusion stays, and the pattern continues.",
+      "effects": [
+        { "type": "end", "endingId": "avoidance_loop" }
+      ]
+    }
+  ],
+  "events": [],
+  "endings": [
+    {
+      "id": "confident_step",
+      "title": "Confident Step",
+      "text": "You did the hard thing. You went to office hours, asked a clear question, and—critically—closed the loop by asking for one next step.\n\nClarity beats confidence. You didn't need to feel perfectly sure of yourself. You just needed to show up, ask directly, and get specific.\n\nThis is what asking for help looks like when you do it well: uncomfortable, brief, effective.\n\nNext time will still be hard. But you know the formula now.",
+      "isPositive": true
+    },
+    {
+      "id": "mixed_but_moving",
+      "title": "Mixed But Moving",
+      "text": "You went. That's more than avoiding. You showed up, asked something, and got some help—even if you over-apologized, left without a next step, or let mind-reading pull you out of the moment.\n\nYou're building the skill. It's messy. That's normal.\n\nNext time, try one thing: ask for a clear next step before you leave. Close the loop. That's the difference between partial help and real progress.",
+      "isPositive": false
+    },
+    {
+      "id": "avoidance_loop",
+      "title": "Avoidance Loop",
+      "text": "You chose safety over clarity. Maybe you emailed instead, or skipped entirely, or bailed at the door.\n\nAvoidance feels like relief—until you're still stuck on the concept, still confused, still avoiding the next time.\n\nOffice hours aren't about confidence. They're about getting unstuck. And the only way to get unstuck is to ask.\n\nNext time, try this: write down one clear question, walk to the door, and ask it. That's the whole rep.",
+      "isPositive": false
+    }
+  ]
+}

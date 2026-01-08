@@ -39,7 +39,7 @@ export function Footer() {
         { name: "Support & Community", href: "/resources/support-community" },
         { name: "Digital Tools", href: "/resources/digital-tools" },
         { name: "Knowledge Hub", href: "/resources/knowledge-hub" },
-        { name: "PsychTrails™", href: "/psych-trail" },
+        { name: "PsychTrails™", href: "/psychtrails" },
       ],
     },
     {

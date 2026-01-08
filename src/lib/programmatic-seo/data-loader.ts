@@ -63,11 +63,13 @@ async function findTreatmentFile(slug: string): Promise<string | null> {
     try {
       const files = await fs.readdir(dirPath);
       
-      // Look for exact match or v2 version
+      // Look for exact match or v2 version (case-insensitive)
       for (const file of files) {
         if (file.endsWith('.json')) {
           const fileSlug = file.replace('.json', '').replace('-v2', '').replace('.legacy', '');
-          if (fileSlug === fullSlug || file.includes(fullSlug)) {
+          // Case-insensitive comparison to handle filename casing variations
+          if (fileSlug.toLowerCase() === fullSlug.toLowerCase() ||
+              file.toLowerCase().includes(fullSlug.toLowerCase())) {
             return path.join(dirPath, file);
           }
         }
@@ -287,4 +289,5 @@ export function clearCaches(): void {
   conditionCache.clear();
   treatmentIndexCache.clear();
 }
+
 
