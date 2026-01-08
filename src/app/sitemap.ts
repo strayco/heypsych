@@ -1,5 +1,8 @@
 import { MetadataRoute } from "next";
 
+// Use ISR: generate at build time, revalidate every hour
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://heypsych.com").trim().replace(/\/+$/, '');
   const currentDate = new Date();
@@ -38,10 +41,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/psych-trail`,
+      url: `${baseUrl}/psychtrails`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/psychtrails/map`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
 
     // Condition category pages
@@ -239,8 +248,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Fetch dynamic routes from database
+  // Fetch dynamic routes from database with timeout
+  // Skip database queries in local builds (when not in CI/production)
+  const isProduction = process.env.CI === "true" || process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+
   try {
+    if (!isProduction) {
+      console.log("🔧 Local build: Skipping database queries for sitemap");
+      return staticPages;
+    }
+
     const { supabase } = await import("@/lib/config/database");
 
     // Fetch all published conditions
@@ -329,25 +346,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error("Error fetching dynamic routes for sitemap:", error);
     // Continue with static pages only
-  }
-
-  // Add PsychTrails scenario pages
-  try {
-    const { scenarios } = await import("@/lib/psychTrail");
-    const scenarioList = Object.values(scenarios);
-
-    scenarioList.forEach((scenario) => {
-      staticPages.push({
-        url: `${baseUrl}/psych-trail/${scenario.id}`,
-        lastModified: new Date(scenario.updatedAt),
-        changeFrequency: "monthly",
-        priority: 0.75,
-      });
-    });
-
-    console.log(`📊 Added ${scenarioList.length} PsychTrails scenarios to sitemap`);
-  } catch (error) {
-    console.error("Error adding PsychTrails scenarios to sitemap:", error);
   }
 
   return staticPages;

@@ -61,7 +61,7 @@
     "audit:resources": "node scripts/audit-resources.cjs",
     "fix:resources": "node scripts/fix-orphaned-resources.cjs",
     "fix:resources:dry": "node scripts/fix-orphaned-resources.cjs --dry-run",
-    "prebuild": "npm run sync:content && npm run build:index && npm run validate:resources",
+    "prebuild": "if [ \"$CI\" = \"true\" ] || [ \"$VERCEL\" = \"1\" ]; then npm run sync:content; fi && npm run build:index && npm run validate:resources",
     "test": "playwright test",
     "test:e2e": "playwright test e2e/",
     "test:schema": "node scripts/validate-schema.mjs",

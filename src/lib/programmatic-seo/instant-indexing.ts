@@ -27,9 +27,15 @@ export async function pushAllPagesToIndexNow(): Promise<{
   failed: number;
   results: IndexingResult[];
 }> {
+  // Skip network calls during build
+  if (typeof window === 'undefined' && process.env.NEXT_PHASE === 'phase-production-build') {
+    console.log('⏭️  Skipping IndexNow push during build');
+    return { total: 0, success: 0, failed: 0, results: [] };
+  }
+
   const configs = await generateDynamicPageConfigs();
   const urls = configs.map(c => `${SITE_URL}/guide/${c.slug}`);
-  
+
   const results: IndexingResult[] = [];
   let success = 0;
   let failed = 0;
@@ -37,7 +43,7 @@ export async function pushAllPagesToIndexNow(): Promise<{
   // IndexNow allows batch submission of up to 10,000 URLs
   const batchSize = 10000;
   const batches = [];
-  
+
   for (let i = 0; i < urls.length; i += batchSize) {
     batches.push(urls.slice(i, i + batchSize));
   }
@@ -116,4 +122,5 @@ export function generateIndexNowPingUrl(pageSlug: string): string {
   const url = encodeURIComponent(`${SITE_URL}/guide/${pageSlug}`);
   return `https://api.indexnow.org/indexnow?url=${url}&key=${key}`;
 }
+
 
