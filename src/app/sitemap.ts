@@ -38,13 +38,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/psychiatrists`,
       lastModified: currentDate,
       changeFrequency: "daily",
-      priority: 0.8,
+      priority: 0.9, // Elevated: priority sitelink page
     },
     {
       url: `${baseUrl}/psychtrails`,
       lastModified: currentDate,
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.95, // Highest priority: unique differentiator & strategic sitelink
     },
     {
       url: `${baseUrl}/psychtrails/map`,
@@ -226,13 +226,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/search`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.3, // De-emphasized: utility page, not a priority sitelink
     },
     {
       url: `${baseUrl}/about`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.85, // Elevated: priority sitelink page
     },
     {
       url: `${baseUrl}/privacy`,
@@ -249,11 +249,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Fetch dynamic routes from database with timeout
-  // Skip database queries in local builds (when not in CI/production)
-  const isProduction = process.env.CI === "true" || process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+  // Skip database queries in local builds (only run in Vercel/CI)
+  const isVercelOrCI = process.env.VERCEL === "1" || process.env.CI === "true";
 
   try {
-    if (!isProduction) {
+    if (!isVercelOrCI) {
       console.log("🔧 Local build: Skipping database queries for sitemap");
       return staticPages;
     }

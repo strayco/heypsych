@@ -4,12 +4,13 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 
   // Navigation (easily reorderable)
+  // Order optimized for SEO sitelinks: priority pages first
   navigation: [
+    { name: "PsychTrails™", href: "/psychtrails", icon: "compass" }, // Unique differentiator
     { name: "Treatments", href: "/treatments", icon: "pill" },
     { name: "Conditions", href: "/conditions", icon: "brain" },
     { name: "Resources", href: "/resources", icon: "book-open" },
     { name: "Psychiatrists", href: "/psychiatrists", icon: "users" },
-    { name: "PsychTrails™", href: "/psychtrails", icon: "compass" },
     { name: "About", href: "/about", icon: "info" },
   ],
 

@@ -1582,14 +1582,20 @@ async function generateConditionDiagnosis(config: DynamicPageConfig): Promise<Ge
     : `Understanding how ${conditionName} is diagnosed. Learn about the evaluation process, diagnostic criteria, and what to expect.`;
 
   const evaluation = condition.content.evaluation || {};
+  const diagnosticCriteria = condition.content.diagnostic_criteria || '';
+
+  // Build evaluation methods list for non-self-test pages
+  const evaluationMethods = [
+    evaluation.history_observation?.length ? 'detailed history' : null,
+    evaluation.gold_standard_measures?.length ? 'standardized assessments' : null,
+    evaluation.screeners_rating_scales?.length ? 'symptom rating scales' : null,
+  ].filter(Boolean);
 
   const quickAnswer = isSelfTest
-    ? `A self-test can help you understand your symptoms, but it cannot replace professional diagnosis. If you score high or are concerned, speak with a mental health professional.`
-    : `${conditionName} is diagnosed through clinical evaluation, including ${[
-        evaluation.history_observation?.length ? 'detailed history' : null,
-        evaluation.gold_standard_measures?.length ? 'standardized assessments' : null,
-        evaluation.screeners_rating_scales?.length ? 'symptom rating scales' : null,
-      ].filter(Boolean).join(', ')}. Only qualified professionals can make a diagnosis.`;
+    ? `This self-reflection tool is based on clinical diagnostic criteria. It can help you understand symptoms—but only a qualified mental health professional can diagnose ${conditionName}.`
+    : evaluationMethods.length > 0
+      ? `${conditionName} is diagnosed through clinical evaluation, including ${evaluationMethods.join(', ')}. Only qualified professionals can make a diagnosis.`
+      : `${conditionName} is diagnosed through clinical evaluation by a qualified mental health professional. The evaluation typically includes a detailed assessment of symptoms, history, and functional impact.`;
 
   const sections: ContentSection[] = [];
 
@@ -1624,20 +1630,62 @@ async function generateConditionDiagnosis(config: DynamicPageConfig): Promise<Ge
       });
     }
   } else {
-    // Self-test format
+    // Self-test format - show DSM criteria as self-reflection tool
     sections.push({
-      id: 'how-it-works',
-      heading: 'How This Self-Assessment Works',
-      content: 'This screening uses questions based on clinical criteria. It can indicate whether you might benefit from professional evaluation—but it is not a diagnosis.',
-      type: 'callout',
-      icon: '📋',
+      id: 'professional-diagnosis-required',
+      heading: 'Important: Professional Diagnosis Required',
+      content: 'Only a qualified mental health professional can diagnose mental health conditions. This self-reflection tool is for educational purposes and cannot replace professional evaluation. If you have concerns about your symptoms, please consult a licensed provider.',
+      type: 'warning',
     });
 
+    if (diagnosticCriteria) {
+      sections.push({
+        id: 'diagnostic-criteria-reflection',
+        heading: 'Clinical Diagnostic Criteria for Self-Reflection',
+        content: `The following are the clinical criteria that professionals use to diagnose ${conditionName}. You can reflect on whether these apply to you, but remember that proper diagnosis requires professional evaluation:`,
+        type: 'callout',
+        icon: '📋',
+      });
+
+      // Parse DSM criteria into formatted list items (split by A., B., C., etc.)
+      const criteriaItems = diagnosticCriteria
+        .split(/(?=[A-Z]\.\s)/) // Split before each "A. ", "B. ", etc.
+        .map(item => item.trim())
+        .filter(item => item.length > 0);
+
+      sections.push({
+        id: 'dsm-criteria',
+        heading: 'DSM-5 Diagnostic Criteria',
+        content: 'To meet diagnostic criteria, the following must be present:',
+        items: criteriaItems.length > 0 ? criteriaItems : [diagnosticCriteria],
+        type: 'list',
+      });
+    }
+
+    // Add screener information if available
+    if (evaluation.screeners_rating_scales && evaluation.screeners_rating_scales.length > 0) {
+      sections.push({
+        id: 'validated-screeners',
+        heading: 'Validated Screening Tools',
+        content: `Mental health professionals often use validated screening tools to assess ${conditionName}. Common tools include:`,
+        items: evaluation.screeners_rating_scales,
+        type: 'list',
+      });
+    }
+
     sections.push({
-      id: 'important-note',
-      heading: 'Important Disclaimer',
-      content: 'Self-tests are screening tools, not diagnostic instruments. A high score doesn\'t mean you definitely have this condition, and a low score doesn\'t rule it out. Only a qualified mental health professional can diagnose mental health conditions.',
-      type: 'warning',
+      id: 'next-steps',
+      heading: 'What to Do Next',
+      content: 'If you identify with many of these criteria, consider:',
+      items: [
+        'Scheduling an appointment with a mental health professional (psychiatrist, psychologist, or licensed therapist)',
+        'Speaking with your primary care doctor who can provide referrals',
+        'Keeping a log of your symptoms, their duration, and how they impact your daily life',
+        'Gathering information about your family history of mental health conditions',
+        'Avoiding self-diagnosis—symptoms can overlap with other conditions',
+      ],
+      type: 'tip',
+      icon: '💡',
     });
   }
 

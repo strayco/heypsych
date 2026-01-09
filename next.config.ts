@@ -122,6 +122,12 @@ const nextConfig: NextConfig = {
     const articleRedirects = loadArticleRedirects();
     return [
       ...articleRedirects,
+      // SEO: Remove trailing slashes for URL consistency (canonical = no trailing slash)
+      {
+        source: "/:path+/",
+        destination: "/:path+",
+        permanent: true, // 301 redirect
+      },
       // SEO: Redirect singular /treatment/ to plural /treatments/
       {
         source: "/treatment/:slug",
@@ -164,8 +170,8 @@ const nextConfig: NextConfig = {
         destination: "/conditions",
         permanent: true,
       },
-      // SEO: Redirect non-www to www (handled at Vercel/DNS level, but documented here)
-      // In production, configure this at the hosting/DNS provider level
+      // SEO: Domain canonicalization (www → non-www) handled at Vercel DNS level
+      // Canonical domain: heypsych.com (non-www)
     ];
   },
 };
