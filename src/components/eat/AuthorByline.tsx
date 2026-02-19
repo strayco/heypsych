@@ -58,12 +58,22 @@ export function AuthorByline({
   // 3. publishedDate (original publication)
   const reviewDate = lastReviewed || lastUpdated || publishedDate;
 
+  // Check if author is anonymous (Knowledge Hub articles use "anonymous" for contributor content)
+  const isAnonymousAuthor = !author || 
+    (typeof author === 'string' && (author as string).toLowerCase() === 'anonymous') ||
+    (typeof author === 'object' && author.name?.toLowerCase() === 'anonymous');
+
   // CRITICAL: Never return null - always show Medical Review Board for E-A-T compliance
 
   if (compact) {
     return (
       <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-700">
-        {author && (
+        {isAnonymousAuthor ? (
+          <div className="flex items-center gap-1">
+            <User className="h-3.5 w-3.5" />
+            <span>By HeyPsych Contributor</span>
+          </div>
+        ) : author && (
           <div className="flex items-center gap-1">
             <User className="h-3.5 w-3.5" />
             <span>
@@ -98,8 +108,23 @@ export function AuthorByline({
   return (
     <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
       <div className="space-y-3">
-        {/* Author */}
-        {author && (
+        {/* Author - Show "HeyPsych Contributor" for anonymous authors */}
+        {isAnonymousAuthor ? (
+          <div className="flex items-start gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200">
+              <User className="h-6 w-6 text-neutral-600" />
+            </div>
+            <div className="flex-1">
+              <div className="font-semibold text-neutral-900">By HeyPsych Contributor</div>
+              <div className="mt-1 text-sm text-neutral-700">
+                Reviewed by the{" "}
+                <Link href="/about/medical-review-board" className="font-medium text-green-700 hover:text-green-800 hover:underline">
+                  HeyPsych Medical Review Board
+                </Link>
+              </div>
+            </div>
+          </div>
+        ) : author && (
           <div className="flex items-start gap-3">
             {author.image_url ? (
               <img
@@ -132,8 +157,8 @@ export function AuthorByline({
           </div>
         )}
 
-        {/* Medical Reviewer - ALWAYS SHOW (either individual or board) */}
-        <div className={`flex items-start gap-3 ${author ? 'border-t border-neutral-200 pt-3' : ''}`}>
+        {/* Medical Reviewer - ALWAYS SHOW (either individual or board) - Skip for anonymous authors (already shown above) */}
+        <div className={`flex items-start gap-3 ${(author || isAnonymousAuthor) ? 'border-t border-neutral-200 pt-3' : ''} ${isAnonymousAuthor && !medicalReviewer ? 'hidden' : ''}`}>
           {medicalReviewer ? (
             <>
               {medicalReviewer.image_url ? (

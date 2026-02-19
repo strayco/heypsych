@@ -286,96 +286,6 @@ function getCategoryValue(item: any): string {
   ).trim();
 }
 
-function extractSnippet(text: string, term: string, surrounding = 80): string | null {
-  const lowerText = text.toLowerCase();
-  const index = lowerText.indexOf(term);
-  if (index === -1) return null;
-  const start = Math.max(0, index - surrounding);
-  const end = Math.min(text.length, index + term.length + surrounding);
-  const snippet = text.substring(start, end).replace(/\s+/g, " ").trim();
-  return (start > 0 ? "..." : "") + snippet + (end < text.length ? "..." : "");
-}
-
-function cleanJsonSnippet(raw: string): string {
-  return raw.replace(/[{}\[\]":,]/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function buildSnippets(item: any, searchTerms: string[]): SearchSnippet[] {
-  const snippets: SearchSnippet[] = [];
-  const name = getNameValue(item);
-  const description = getDescriptionValue(item);
-  const category = getCategoryValue(item);
-  const isCondition = item?.type === 'condition';
-
-  // For grouped search results, we only have title/description/category (no full content/metadata)
-  const hasFullData = Boolean(item?.content || item?.metadata);
-
-  for (const term of searchTerms) {
-    const lowerTerm = term.toLowerCase();
-
-    if (name && name.toLowerCase().includes(lowerTerm)) {
-      const snippet = extractSnippet(name, lowerTerm, 120);
-      if (snippet) {
-        snippets.push({ term, field: "Name", snippet });
-        continue;
-      }
-    }
-
-    if (description && description.toLowerCase().includes(lowerTerm)) {
-      const snippet = extractSnippet(description, lowerTerm);
-      if (snippet) {
-        snippets.push({ term, field: "Description", snippet });
-        continue;
-      }
-    }
-
-    // Skip category snippets for conditions (internal categorization only)
-    if (!isCondition && category && category.toLowerCase().includes(lowerTerm)) {
-      snippets.push({ term, field: "Category", snippet: category });
-      continue;
-    }
-
-    // Only build content/metadata snippets if we have the full data (type-filtered search)
-    if (hasFullData) {
-      const metadata = item?.metadata || {};
-      const metadataForSnippet = isCondition
-        ? { ...metadata, category: undefined, file_path: undefined }
-        : metadata;
-      const metadataStr = JSON.stringify(metadataForSnippet);
-      const contentStr = JSON.stringify(item?.content || item?.data || {});
-
-      // Skip metadata snippets for conditions (contains technical codes, sync dates, etc.)
-      if (!isCondition) {
-        const metadataIndex = metadataStr.toLowerCase().indexOf(lowerTerm);
-        if (metadataIndex !== -1) {
-          const rawSnippet = metadataStr.substring(
-            Math.max(0, metadataIndex - 60),
-            Math.min(metadataStr.length, metadataIndex + lowerTerm.length + 60)
-          );
-          const cleaned = cleanJsonSnippet(rawSnippet);
-          if (cleaned.toLowerCase().includes(lowerTerm)) {
-            snippets.push({ term, field: "Metadata", snippet: cleaned });
-            continue;
-          }
-        }
-      }
-
-      const contentIndex = contentStr.toLowerCase().indexOf(lowerTerm);
-      if (contentIndex !== -1) {
-        const rawSnippet = contentStr.substring(
-          Math.max(0, contentIndex - 80),
-          Math.min(contentStr.length, contentIndex + lowerTerm.length + 80)
-        );
-        const cleaned = cleanJsonSnippet(rawSnippet);
-        if (cleaned.toLowerCase().includes(lowerTerm)) {
-          snippets.push({ term, field: "Content", snippet: cleaned });
-        }
-      }
-    }
-  }
-
-  return snippets;
-}
 
 function getSearchableText(item: any): string {
   const name = getNameValue(item);
@@ -412,81 +322,8 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
   const description = getDescriptionValue(item) || null;
   const category = getCategoryValue(item) || null;
 
-  // Use database-generated snippet if available (from grouped search)
-  let snippets: SearchSnippet[];
-  if (item?.snippet && typeof item.snippet === 'string') {
-    // Database provided a snippet - clean up JSON artifacts and HTML tags
-    const cleanedSnippet = item.snippet
-      .replace(/<b>/g, '')
-      .replace(/<\/b>/g, '')
-      // Remove whitespace characters and normalize spacing (handle all variants)
-      .replace(/\\n/g, ' ')  // Remove literal \n text (from JSON)
-      .replace(/\\t/g, ' ')  // Remove literal \t text (from JSON)
-      .replace(/\\r/g, ' ')  // Remove literal \r text (from JSON)
-      .replace(/\n/g, ' ')   // Remove actual newlines
-      .replace(/\t/g, ' ')   // Remove actual tabs
-      .replace(/\r/g, ' ')   // Remove actual carriage returns
-      .replace(/\\"/g, '"')  // Replace \" with "
-      // Remove bullet points and special unicode characters
-      .replace(/[•●◦\u2022\u2023\u25E6\u2043\u2219]/g, '')
-      // Remove ISO 8601 timestamps (e.g., 2025-12-31T05:06:07.913Z)
-      .replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z?/g, '')
-      // Remove internal metadata field names that shouldn't appear in snippets
-      .replace(/\b(categories|wikidata_qid|last_synced|file_path|data_source|sync_date|import_date|schema_version|internal_id|legacy_id|migration_id)\b/gi, '')
-      // Remove JSON field syntax: "fieldname": or fieldname":
-      .replace(/"\w+"\s*:\s*"/g, '') // "title": "
-      .replace(/\w+"\s*:\s*"/g, '') // title": "
-      // Remove all quote-comma combinations (array/object separators)
-      .replace(/"\s*,\s*"/g, ' ') // ", " or "," or " ," → space
-      .replace(/"\s*,/g, ' ') // ", at end → space
-      .replace(/,\s*"/g, ' ') // ," at start → space
-      // Remove standalone quoted field values (e.g., "treatment", "medication", "slug")
-      .replace(/\s+"[\w-]+"\s*,?\s*/g, ' ') // " value",
-      // Remove JSON braces/brackets
-      .replace(/[{}\[\]]/g, '')
-      // Remove JSON field names (snake_case or camelCase patterns)
-      .replace(/\s+\w+_\w+["':\s]*/g, ' ') // black_box", generic_name:
-      .replace(/\s+"\w+_\w+/g, ' ') // "black_box
-      // Remove common JSON field names and values
-      .replace(/\s+(items|null|undefined|false|true)["':\s,]*/gi, ' ')
-      .replace(/\s*(seo|metadata|slug|type|category|title|description|name)["':\s]+/gi, ' ') // SEO and metadata fields (with optional leading space)
-      // Remove common entity field values that shouldn't appear in snippets
-      .replace(/\b(resource|treatment|condition|anonymous|active|inactive|how-to-guides|knowledge-hub|professional-resources)\b/gi, '')
-      // Remove slug patterns (kebab-case identifiers with 3+ hyphens, like "anxiety-vs-stress")
-      // Only remove patterns that look like slugs (multiple short words connected by hyphens)
-      .replace(/\b[a-z]{2,8}-[a-z]{2,8}-[a-z0-9-]+\b/g, '')
-      // Remove URLs
-      .replace(/https?:\/\/[^\s,)"]+/g, '')
-      .replace(/\([^\)]*https?[^\)]*\)/g, '') // Remove parentheses containing URLs
-      .replace(/\(\s*\)/g, '') // Remove empty parentheses
-      .replace(/\s+\)\s*/g, ' ') // Remove orphaned closing parentheses
-      // Remove trailing metadata patterns (e.g., "treatment Medication medication SSRI")
-      // These appear when ts_headline captures JSON field values at the end
-      .replace(/\s+(treatment|medication|supplement|therapy|intervention|condition|resource)\s+[\w\s()-]+\s+(medication|supplement|therapy|SSRI|SNRI|antidepressant|benzodiazepine)[\w\s-]*$/i, '')
-      // Clean up multiple periods from fragment delimiters
-      .replace(/\.{2,}/g, '...')
-      // Clean up multiple commas
-      .replace(/,\s*,+/g, ',')
-      // Remove leading/trailing junk
-      .replace(/^["'\s:,\.]+|["'\s:,\.]+$/g, '')
-      // Normalize whitespace (final cleanup)
-      .replace(/\s+/g, ' ')
-      .trim();
-
-    // Use cleaned snippet if it has content, otherwise fall back to buildSnippets
-    if (cleanedSnippet.length > 0) {
-      snippets = [{
-        term: searchTerms[0] || '',
-        field: 'Content',
-        snippet: cleanedSnippet
-      }];
-    } else {
-      snippets = buildSnippets(item, searchTerms);
-    }
-  } else {
-    // Fall back to client-side snippet building
-    snippets = buildSnippets(item, searchTerms);
-  }
+  // Build clean snippets - ONLY from name and description, never from JSON
+  const snippets = buildCleanSnippets(name, description, searchTerms);
 
   return {
     type,
@@ -497,6 +334,74 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
     category,
     snippets,
   };
+}
+
+/**
+ * Build clean snippets from name and description only.
+ * Never includes raw JSON, field names, or internal metadata.
+ */
+function buildCleanSnippets(name: string, description: string | null, searchTerms: string[]): SearchSnippet[] {
+  const snippets: SearchSnippet[] = [];
+  
+  for (const term of searchTerms) {
+    const lowerTerm = term.toLowerCase();
+    
+    // Check if term is in name
+    if (name.toLowerCase().includes(lowerTerm)) {
+      snippets.push({
+        term,
+        field: "Name",
+        snippet: name
+      });
+      continue;
+    }
+    
+    // Check if term is in description
+    if (description && description.toLowerCase().includes(lowerTerm)) {
+      const snippet = extractCleanSnippet(description, lowerTerm);
+      if (snippet) {
+        snippets.push({
+          term,
+          field: "Description",
+          snippet
+        });
+      }
+      continue;
+    }
+  }
+  
+  // If no term-specific snippets found, use description as fallback
+  if (snippets.length === 0 && description && description.length > 10) {
+    snippets.push({
+      term: searchTerms[0] || '',
+      field: "Description",
+      snippet: description.length > 200 ? description.substring(0, 200) + '...' : description
+    });
+  }
+  
+  return snippets;
+}
+
+/**
+ * Extract a clean snippet around a search term.
+ * Only works with plain text, no JSON processing.
+ */
+function extractCleanSnippet(text: string, term: string): string | null {
+  const lowerText = text.toLowerCase();
+  const index = lowerText.indexOf(term);
+  if (index === -1) return null;
+  
+  const surrounding = 80;
+  const start = Math.max(0, index - surrounding);
+  const end = Math.min(text.length, index + term.length + surrounding);
+  
+  let snippet = text.substring(start, end).trim();
+  
+  // Add ellipsis if we're not at the boundaries
+  if (start > 0) snippet = '...' + snippet;
+  if (end < text.length) snippet = snippet + '...';
+  
+  return snippet;
 }
 
 function hasBrandMatch(brandNames: string[] | undefined, searchTermLower: string, searchTerms: string[]): boolean {

@@ -228,7 +228,8 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
     const meta = resource.metadata as any;
     const pillar = getPillar(resource);
     const topics = getTopics(resource);
-    const author = data?.authors?.[0] || data?.author || meta?.author;
+    // Knowledge Hub articles always show "HeyPsych Contributor" instead of individual author names
+    const author = 'HeyPsych Contributor';
     const publishedDate = getPublishedDate(resource);
     const readTime = data?.readingMinutes ? `${data.readingMinutes} min read` : (data?.read_time || meta?.read_time);
     const imageUrl = data?.coverImage || data?.image_url || meta?.image_url;

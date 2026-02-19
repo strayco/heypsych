@@ -175,10 +175,10 @@ export function transformKnowledgeHubArticle(raw: any) {
   }
 
   const sanitized = stripAsterisksDeep(normalized);
-  sanitized.authors = ["anonymous"];
-  sanitized.author = "anonymous";
+  sanitized.authors = ["HeyPsych Contributors"];
+  sanitized.author = "HeyPsych Contributors";
   if (sanitized.metadata) {
-    sanitized.metadata.author = "anonymous";
+    sanitized.metadata.author = "HeyPsych Contributors";
   }
 
   return sanitized;

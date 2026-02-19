@@ -1490,7 +1490,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
             transition={{ delay: 0.1 }}
             className="space-y-4 sm:space-y-6"
           >
-            {sections.map(renderSection)}
+            {sections.filter(s => s.type !== 'references').map(renderSection)}
           </motion.div>
         </section>
 

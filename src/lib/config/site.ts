@@ -10,7 +10,7 @@ export const siteConfig = {
     { name: "Treatments", href: "/treatments", icon: "pill" },
     { name: "Conditions", href: "/conditions", icon: "brain" },
     { name: "Resources", href: "/resources", icon: "book-open" },
-    { name: "Psychiatrists", href: "/psychiatrists", icon: "users" },
+    { name: "For Clinicians", href: "/tools/for-clinicians", icon: "stethoscope" },
     { name: "About", href: "/about", icon: "info" },
   ],
 

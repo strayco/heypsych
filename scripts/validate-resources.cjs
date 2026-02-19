@@ -65,6 +65,10 @@ function getAllResourceFiles(dir, fileList = []) {
     const stat = fs.statSync(filePath);
 
     if (stat.isDirectory()) {
+      // Skip 'tools' directory - it uses v3 schema and has its own validator (validate:tools)
+      if (file === 'tools') {
+        return;
+      }
       getAllResourceFiles(filePath, fileList);
     } else if (file.endsWith('.json') && file !== 'index.json' && file !== 'README.md') {
       fileList.push(filePath);
@@ -312,6 +316,18 @@ function validateCrosslinks() {
       allResourceSlugs.add(data.slug);
     }
   });
+
+  // Also include tools from the v3 tools directory (they can be referenced)
+  const toolsDir = path.join(DATA_DIR, 'tools');
+  if (fs.existsSync(toolsDir)) {
+    const toolFiles = fs.readdirSync(toolsDir).filter(f => f.endsWith('.json'));
+    toolFiles.forEach(file => {
+      const data = readJsonFile(path.join(toolsDir, file));
+      if (data?.slug && data?.status === 'active') {
+        allResourceSlugs.add(data.slug);
+      }
+    });
+  }
 
   let brokenLinks = 0;
 

@@ -13,8 +13,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export interface Citation {
-  /** Citation title */
-  title: string;
+  /** Citation title (or use 'text' for full citation string) */
+  title?: string;
+
+  /** Full citation text (alternative to title/authors/publication format) */
+  text?: string;
+
+  /** Citation ID */
+  id?: string;
 
   /** Author(s) */
   authors?: string;
@@ -95,6 +101,12 @@ export function CitationList({
   };
 
   const formatCitation = (citation: Citation, index: number): string => {
+    // If citation has 'text' field (new format), use it directly
+    if (citation.text) {
+      return citation.text;
+    }
+
+    // Otherwise build from structured fields (legacy format)
     let formatted = '';
 
     if (citation.authors) {
@@ -105,13 +117,15 @@ export function CitationList({
       formatted += `(${citation.year}). `;
     }
 
-    formatted += `${citation.title}`;
+    if (citation.title) {
+      formatted += citation.title;
+    }
 
     if (citation.publication) {
       formatted += `. ${citation.publication}`;
     }
 
-    return formatted;
+    return formatted || 'Citation';
   };
 
   return (

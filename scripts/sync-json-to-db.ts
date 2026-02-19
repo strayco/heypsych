@@ -90,16 +90,55 @@ function initStats(type: string) {
  */
 function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
   const files: Array<{ path: string; content: any }> = [];
+  const v2Files = new Set<string>(); // Track which base names have v2 versions
 
   function traverse(currentDir: string) {
     const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+    // First pass: identify all v2 files
+    for (const entry of entries) {
+      if (entry.isFile() && entry.name.endsWith("-v2.json")) {
+        // Extract base name (e.g., "sertraline-zoloft" from "sertraline-zoloft-v2.json")
+        const baseName = entry.name.replace(/-v2\.json$/, "");
+        v2Files.add(path.join(currentDir, baseName));
+      }
+    }
 
     for (const entry of entries) {
       const fullPath = path.join(currentDir, entry.name);
 
       if (entry.isDirectory()) {
+        // Skip backup directories and taxonomies
+        if (entry.name.startsWith("_backup") || entry.name === "taxonomies") {
+          continue;
+        }
         traverse(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".json") ) {
+      } else if (entry.isFile() && entry.name.endsWith(".json")) {
+        // Skip backup files and index files
+        if (entry.name.includes(".backup") || entry.name === "index.json") {
+          continue;
+        }
+
+        // Handle legacy files: skip if v2 version exists
+        if (entry.name.endsWith(".legacy.json")) {
+          const baseName = entry.name.replace(/\.legacy\.json$/, "");
+          const baseKey = path.join(currentDir, baseName);
+          if (v2Files.has(baseKey)) {
+            // v2 exists, skip legacy
+            continue;
+          }
+        }
+
+        // Handle regular files: skip if v2 version exists (e.g., skip foo.json if foo-v2.json exists)
+        if (!entry.name.endsWith("-v2.json") && !entry.name.endsWith(".legacy.json")) {
+          const baseName = entry.name.replace(/\.json$/, "");
+          const baseKey = path.join(currentDir, baseName);
+          if (v2Files.has(baseKey)) {
+            // v2 exists, skip this older version
+            continue;
+          }
+        }
+
         try {
           const content = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
           files.push({ path: fullPath, content });
@@ -318,10 +357,55 @@ async function syncContentType(type: string, directory: string): Promise<void> {
     return;
   }
 
+  // Deduplicate by type+slug (prefer v2 files over legacy/older files)
+  const seen = new Map<string, { entity: any; filePath: string }>();
+  const dedupedEntities: any[] = [];
+
+  for (const entity of entities) {
+    const key = `${entity.type}:${entity.slug}`;
+    const existing = seen.get(key);
+
+    if (!existing) {
+      seen.set(key, { entity, filePath: entity.metadata?.file_path || '' });
+      dedupedEntities.push(entity);
+    } else {
+      // Prefer v2 files over legacy or older files
+      const existingPath = existing.filePath;
+      const newPath = entity.metadata?.file_path || '';
+
+      const existingIsV2 = existingPath.includes('-v2.json');
+      const newIsV2 = newPath.includes('-v2.json');
+      const existingIsLegacy = existingPath.includes('.legacy.json');
+      const newIsLegacy = newPath.includes('.legacy.json');
+
+      // Priority: v2 > regular > legacy
+      const existingPriority = existingIsV2 ? 2 : existingIsLegacy ? 0 : 1;
+      const newPriority = newIsV2 ? 2 : newIsLegacy ? 0 : 1;
+
+      if (newPriority > existingPriority) {
+        // Replace with the newer/better version
+        const existingIndex = dedupedEntities.findIndex(e => e === existing.entity);
+        if (existingIndex !== -1) {
+          dedupedEntities[existingIndex] = entity;
+        }
+        seen.set(key, { entity, filePath: newPath });
+        if (verbose) {
+          console.log(`   ℹ️  Deduped: keeping ${newPath} over ${existingPath}`);
+        }
+      } else if (verbose) {
+        console.log(`   ℹ️  Deduped: skipping ${newPath} (keeping ${existingPath})`);
+      }
+    }
+  }
+
+  if (verbose && dedupedEntities.length < entities.length) {
+    console.log(`   ℹ️  Removed ${entities.length - dedupedEntities.length} duplicate(s)`);
+  }
+
   // Batch upsert with concurrency control
   const batches: any[][] = [];
-  for (let i = 0; i < entities.length; i += BATCH_SIZE) {
-    batches.push(entities.slice(i, i + BATCH_SIZE));
+  for (let i = 0; i < dedupedEntities.length; i += BATCH_SIZE) {
+    batches.push(dedupedEntities.slice(i, i + BATCH_SIZE));
   }
 
   console.log(`   Processing ${batches.length} batches (${BATCH_SIZE} per batch)...`);

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config/site";
-import { Menu, X, Search, Pill, Brain, BookOpen, Users, Compass, Info } from "lucide-react";
+import { Menu, X, Search, Pill, Brain, BookOpen, Users, Compass, Info, Stethoscope } from "lucide-react";
 
 const iconMap = {
   pill: Pill,
@@ -15,6 +15,7 @@ const iconMap = {
   users: Users,
   compass: Compass,
   info: Info,
+  stethoscope: Stethoscope,
 };
 
 export function Header() {

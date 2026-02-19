@@ -97,19 +97,30 @@ export async function getDbPool(): Promise<Pool> {
 export async function queryWithRetry<T = any>(
   queryText: string,
   params?: any[],
-  maxRetries: number = 3
+  maxRetries: number = 3,
+  statementTimeoutMs: number = 30000
 ): Promise<{ rows: T[]; rowCount: number }> {
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
       // Get pool (will initialize and test connection if needed)
-      const pool = await getDbPool();
-      const result = await pool.query(queryText, params);
-      return {
-        rows: result.rows,
-        rowCount: result.rowCount ?? 0,
-      };
+      const dbPool = await getDbPool();
+      
+      // Use a client to set statement_timeout per query
+      const client = await dbPool.connect();
+      try {
+        // Set statement timeout for this query (in milliseconds)
+        await client.query(`SET statement_timeout = ${statementTimeoutMs}`);
+        const result = await client.query(queryText, params);
+        return {
+          rows: result.rows,
+          rowCount: result.rowCount ?? 0,
+        };
+      } finally {
+        // Always release the client back to the pool
+        client.release();
+      }
     } catch (error: any) {
       lastError = error as Error;
       

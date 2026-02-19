@@ -1,9 +1,10 @@
 "use client";
 
 // CLIENT WRAPPER - Handles interactive features for condition pages
+// Supports both legacy flat structure and new ui.tiles dynamic layout
 // Data is passed from server component (already fetched)
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,6 +32,11 @@ import {
   Eye,
   Settings,
   ChevronDown,
+  ChevronRight,
+  Users,
+  BookOpen,
+  Sparkles,
+  HelpCircle,
 } from "lucide-react";
 import { Entity } from "@/lib/types/database";
 import {
@@ -48,23 +54,49 @@ interface ConditionClientWrapperProps {
   entity: Entity;
 }
 
-// Icon mapping for different field types
-const getIconForField = (fieldName: string) => {
+// Tile configuration from JSON
+interface TileConfig {
+  id: string;
+  title: string;
+  teaser?: string;
+  summary?: string;
+  content_refs?: string[];
+  nav?: { prev: string | null; next: string | null };
+  deep_link?: string;
+}
+
+interface UIConfig {
+  layout?: string;
+  tiles?: TileConfig[];
+}
+
+// Icon mapping for tile IDs and field types
+const getIconForTile = (id: string): React.ReactNode => {
   const iconMap: Record<string, React.ReactNode> = {
-    description: <Info className="h-5 w-5" />,
     overview: <Info className="h-5 w-5" />,
+    symptoms: <AlertCircle className="h-5 w-5" />,
+    diagnosis: <Stethoscope className="h-5 w-5" />,
+    causes: <Brain className="h-5 w-5" />,
+    treatment: <Heart className="h-5 w-5" />,
+    living_with: <Lightbulb className="h-5 w-5" />,
+    support: <Users className="h-5 w-5" />,
+    resources: <BookOpen className="h-5 w-5" />,
+    prognosis: <TrendingUp className="h-5 w-5" />,
+    risk_factors: <Shield className="h-5 w-5" />,
+    complications: <AlertTriangle className="h-5 w-5" />,
+    prevention: <Shield className="h-5 w-5" />,
+    research: <Sparkles className="h-5 w-5" />,
+    faq: <HelpCircle className="h-5 w-5" />,
+    // Legacy field mappings
+    description: <Info className="h-5 w-5" />,
     diagnostic_criteria: <Stethoscope className="h-5 w-5" />,
     evaluation: <Stethoscope className="h-5 w-5" />,
-    prognosis: <TrendingUp className="h-5 w-5" />,
     neurobiology: <Brain className="h-5 w-5" />,
-    symptoms: <AlertCircle className="h-5 w-5" />,
     signs: <AlertCircle className="h-5 w-5" />,
     presentation: <Eye className="h-5 w-5" />,
     severity_levels: <BarChart3 className="h-5 w-5" />,
     warning_signs: <AlertTriangle className="h-5 w-5" />,
-    risk_factors: <Shield className="h-5 w-5" />,
     impact_on_life: <Target className="h-5 w-5" />,
-    complications: <AlertTriangle className="h-5 w-5" />,
     comorbidities: <Activity className="h-5 w-5" />,
     treatment_approaches: <Heart className="h-5 w-5" />,
     treatment_goals: <CheckCircle className="h-5 w-5" />,
@@ -75,45 +107,50 @@ const getIconForField = (fieldName: string) => {
     self_help_strategies: <Lightbulb className="h-5 w-5" />,
     coping_strategies: <Lightbulb className="h-5 w-5" />,
     lifestyle_interventions: <Heart className="h-5 w-5" />,
-    prevention: <Shield className="h-5 w-5" />,
     withdrawal: <AlertTriangle className="h-5 w-5" />,
     intoxication: <AlertCircle className="h-5 w-5" />,
     use_disorder: <Brain className="h-5 w-5" />,
     default: <Globe className="h-5 w-5" />,
   };
 
-  if (iconMap[fieldName]) return iconMap[fieldName];
+  // Direct match
+  if (iconMap[id]) return iconMap[id];
 
-  for (const [key, icon] of Object.entries(iconMap)) {
-    if (fieldName.includes(key) || key.includes(fieldName)) {
-      return icon;
+  // Partial match (with null safety)
+  if (id) {
+    for (const [key, icon] of Object.entries(iconMap)) {
+      if (id.includes(key) || key.includes(id)) {
+        return icon;
+      }
     }
   }
 
   return iconMap["default"];
 };
 
-// Color mapping for different field types
-const getColorForField = (fieldName: string): string => {
+// Color mapping for tiles
+const getColorForTile = (id: string): string => {
   const colorMap: Record<string, string> = {
-    symptoms: "blue",
-    risk_factors: "red",
+    overview: "blue",
+    symptoms: "orange",
+    diagnosis: "indigo",
+    causes: "purple",
     treatment: "green",
-    prognosis: "purple",
-    warning: "red",
-    help: "orange",
-    self_help: "yellow",
-    severity: "orange",
-    impact: "purple",
-    evaluation: "indigo",
-    examples: "teal",
-    withdrawal: "red",
-    intoxication: "orange",
-    use_disorder: "purple",
+    living_with: "yellow",
+    support: "pink",
+    resources: "slate",
+    prognosis: "teal",
+    risk_factors: "red",
+    complications: "red",
+    prevention: "emerald",
+    research: "cyan",
+    faq: "gray",
   };
 
-  for (const [key, color] of Object.entries(colorMap)) {
-    if (fieldName.includes(key)) return color;
+  if (id) {
+    for (const [key, color] of Object.entries(colorMap)) {
+      if (id.includes(key)) return color;
+    }
   }
 
   return "gray";
@@ -127,12 +164,27 @@ const formatTitle = (fieldName: string): string => {
     .join(" ");
 };
 
-// Safe text extraction
+// Resolve a content reference path like "description.overview" or "symptoms.inattention"
+const resolveContentRef = (content: Record<string, any>, ref: string): any => {
+  const parts = ref.split(".");
+  let current: any = content;
+
+  for (const part of parts) {
+    if (current === null || current === undefined) return null;
+    current = current[part];
+  }
+
+  return current;
+};
+
+// Safe text extraction from various data types
 const extractSafeText = (data: any, fallback = "No information available"): string => {
   if (typeof data === "string") return data;
+  if (typeof data === "number" || typeof data === "boolean") return String(data);
   if (!data) return fallback;
 
   if (typeof data === "object") {
+    // Check for common text fields
     const textFields = [
       "description",
       "summary",
@@ -141,6 +193,12 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
       "text",
       "content",
       "definition",
+      "answer",
+      "question",
+      "title",
+      "name",
+      "story",
+      "note",
     ];
     for (const field of textFields) {
       if (data[field] && typeof data[field] === "string") {
@@ -148,241 +206,595 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
       }
     }
 
+    // Handle arrays
     if (Array.isArray(data)) {
       const strings = data.filter((item) => typeof item === "string").slice(0, 3);
       if (strings.length > 0) return strings.join(", ");
+      // Try to extract text from array of objects
+      const extracted = data.slice(0, 3).map(item => {
+        if (typeof item === "string") return item;
+        if (typeof item === "object" && item) {
+          return item.name || item.title || item.question || item.description || item.summary || '';
+        }
+        return '';
+      }).filter(Boolean);
+      if (extracted.length > 0) return extracted.join(", ");
     }
 
+    // For other objects, try to get first string value
+    const values = Object.values(data);
+    for (const val of values) {
+      if (typeof val === "string" && val.length > 0 && val.length < 500) {
+        return val;
+      }
+    }
+
+    // Return keys as description of what's available
     const keys = Object.keys(data);
     if (keys.length > 0) {
-      if (
-        keys.includes("withdrawal") ||
-        keys.includes("intoxication") ||
-        keys.includes("use_disorder")
-      ) {
-        return `Substance-related information covering: ${keys.join(", ")}`;
-      }
-      return `Information covers: ${keys.join(", ")}`;
+      return `Contains: ${keys.slice(0, 5).join(", ")}${keys.length > 5 ? '...' : ''}`;
     }
   }
 
-  return String(data) || fallback;
+  // Never return [object Object]
+  const str = String(data);
+  if (str === "[object Object]") return fallback;
+  return str || fallback;
 };
 
 export default function ConditionClientWrapper({ entity }: ConditionClientWrapperProps) {
-  const [expandedFields, setExpandedFields] = useState<Record<string, boolean>>({});
+  const [expandedTiles, setExpandedTiles] = useState<Record<string, boolean>>({});
+  const [activeTile, setActiveTile] = useState<string | null>(null);
+  const detailPanelRef = useRef<HTMLDivElement>(null);
 
-  const toggleField = (fieldName: string) => {
-    setExpandedFields((prev) => ({
+  // Scroll to detail panel when a tile is selected
+  useEffect(() => {
+    if (activeTile && detailPanelRef.current) {
+      // Small delay to allow the panel to render/animate in
+      setTimeout(() => {
+        detailPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [activeTile]);
+
+  const toggleTile = (tileId: string) => {
+    setExpandedTiles((prev) => ({
       ...prev,
-      [fieldName]: !prev[fieldName],
+      [tileId]: !prev[tileId],
     }));
   };
 
-  const data = entity.data || {};
+  const rawData = entity.data || {};
 
-  // Header fields
-  const headerFields = ["description", "prevalence", "age_of_onset", "dsm5_code", "icd10_code"];
-  const alwaysVisibleFields = ["description", "prevalence", "age_of_onset"];
+  // Detect new structure: ui config exists (normalizeEntityContent flattens content but preserves ui)
+  const hasNewStructure = rawData.ui && typeof rawData.ui === 'object';
 
-  // Get dynamic fields
-  const getDynamicFields = () => {
-    const allFields = Object.keys(data);
-    // Exclude metadata/structural fields that should never be rendered as content sections
-    const metadataFields = ["name", "slug", "type", "status", "metadata", "editorial", "id", "created_at", "updated_at"];
-    // Exclude new gold-standard fields that are rendered in dedicated sections
-    const dedicatedSectionFields = ["shortDefinition", "short_definition", "linkedMedications", "linked_medications", "citations", "references"];
-    const excludeFields = [...headerFields, ...alwaysVisibleFields, ...metadataFields, ...dedicatedSectionFields];
-    const otherFields = allFields.filter((field) => !excludeFields.includes(field));
+  // Content is now flattened to top level by normalizeEntityContent
+  // UI config is preserved at rawData.ui
+  const content: Record<string, any> = rawData;
+  const uiConfig: UIConfig = rawData.ui || {};
+  const tiles = uiConfig.tiles || [];
+  const hasTiles = tiles.length > 0;
 
-    const fieldsWithPriority = [];
-    if (otherFields.includes("diagnostic_criteria")) {
-      fieldsWithPriority.push("diagnostic_criteria");
-    }
-    fieldsWithPriority.push(...otherFields.filter((field) => field !== "diagnostic_criteria"));
+  // Get category config for breadcrumbs
+  const categorySlug = entity.metadata?.category as string | undefined;
+  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
 
-    return fieldsWithPriority;
+  // Extract shortDefinition
+  const shortDefinition = content.shortDefinition || content.short_definition || content.aeo?.what_is;
+
+  // Get description text for crisis detection
+  const getDescriptionText = (): string => {
+    if (typeof content.description === 'string') return content.description;
+    if (content.description?.overview) return content.description.overview;
+    return '';
   };
 
-  // Enhanced content renderer
-  const renderFieldContent = (fieldData: any, color: string = "gray", fieldName?: string) => {
-    if (!fieldData) {
-      return <p className="text-neutral-600 italic">No information available</p>;
+  // Universal object renderer - handles any object structure
+  const renderObject = (obj: Record<string, any>, depth = 0): React.ReactNode => {
+    if (!obj || typeof obj !== 'object') return null;
+
+    return (
+      <div className={depth > 0 ? "pl-3 border-l-2 border-neutral-100" : ""}>
+        {Object.entries(obj).map(([key, value]) => {
+          // Skip internal/meta fields
+          if (['id', 'nav', 'deep_link', 'content_refs'].includes(key)) return null;
+
+          return (
+            <div key={key} className="mb-3">
+              <h5 className="text-sm font-medium text-neutral-700 capitalize mb-1">
+                {formatTitle(key)}
+              </h5>
+              <div className="text-sm text-neutral-800">
+                {renderAnyValue(value, depth + 1)}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Universal value renderer - handles any value type
+  const renderAnyValue = (value: any, depth = 0): React.ReactNode => {
+    // Null/undefined
+    if (value === null || value === undefined) {
+      return <span className="text-neutral-400 italic">Not available</span>;
     }
 
-    // Special handling for diagnostic criteria
-    if (fieldName === "diagnostic_criteria" && typeof fieldData === "string") {
-      const listPatterns = [
-        /(?=[A-Z]\.)/,
-        /(?=\(\d+\))/,
-        /(?=\d+\.)/,
-        /(?=\d+\))/,
-        /(?=[ivx]+\.)/i,
-        /(?=[a-z]\.)/,
-        /(?=\([a-z]\))/,
-        /(?=\([ivx]+\))/i,
-        /(?=•)/,
-        /(?=-\s)/,
-        /(?=\*\s)/,
-      ];
-
-      let criteria: string[] = [];
-      for (const pattern of listPatterns) {
-        const testSplit = fieldData.split(pattern).filter((item) => item.trim().length > 0);
-        if (testSplit.length > 1) {
-          criteria = testSplit;
-          break;
-        }
-      }
-
-      if (criteria.length > 1) {
+    // Primitives
+    if (typeof value === 'string') {
+      // Check if it's a quote
+      if (value.startsWith('"') && value.endsWith('"')) {
         return (
-          <ul className="space-y-3">
-            {criteria.map((criterion: string, index: number) => (
-              <li key={index} className="flex items-start gap-3 text-sm text-neutral-800">
-                <div className={`h-2 w-2 bg-${color}-500 mt-2 flex-shrink-0 rounded-full`} />
-                <ParsedContent content={criterion.trim()} />
+          <blockquote className="border-l-4 border-blue-300 pl-3 py-1 bg-blue-50 rounded-r text-neutral-700 italic">
+            {value}
+          </blockquote>
+        );
+      }
+      return <ParsedContent content={value} className="text-neutral-800" />;
+    }
+
+    if (typeof value === 'number' || typeof value === 'boolean') {
+      return <span>{String(value)}</span>;
+    }
+
+    // Arrays
+    if (Array.isArray(value)) {
+      if (value.length === 0) return <span className="text-neutral-400 italic">None</span>;
+
+      const firstItem = value[0];
+
+      // Array of strings
+      if (typeof firstItem === 'string') {
+        // Check if quotes (lived experience)
+        if (firstItem.startsWith('"')) {
+          return (
+            <div className="space-y-2">
+              {value.map((item, i) => (
+                <blockquote key={i} className="border-l-4 border-blue-300 pl-3 py-1 bg-blue-50 rounded-r text-sm text-neutral-700 italic">
+                  {item}
+                </blockquote>
+              ))}
+            </div>
+          );
+        }
+        // Regular string list
+        return (
+          <ul className="space-y-1">
+            {value.map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
+                <ParsedContent content={String(item)} />
               </li>
             ))}
           </ul>
         );
       }
-    }
 
-    // Handle arrays with link parsing
-    if (Array.isArray(fieldData)) {
-      const hasStringLinks = fieldData.some(
-        (item) => typeof item === "string" && item.includes("{link:")
-      );
+      // Array of objects
+      if (typeof firstItem === 'object') {
+        // FAQ pattern: question/answer
+        if (firstItem.question && firstItem.answer) {
+          return (
+            <div className="space-y-3">
+              {value.map((item, i) => (
+                <div key={i} className="rounded-lg border border-neutral-200 bg-white p-4">
+                  <h5 className="font-semibold text-neutral-900 mb-2">{item.question}</h5>
+                  <p className="text-sm text-neutral-700">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          );
+        }
 
-      if (hasStringLinks) {
+        // Story pattern: age_group/story
+        if (firstItem.story) {
+          return (
+            <div className="space-y-3">
+              {value.map((item, i) => (
+                <div key={i} className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                  {(item.age_group || item.demographic) && (
+                    <div className="flex gap-2 mb-2">
+                      {item.age_group && (
+                        <Badge variant="default" className="capitalize">
+                          {String(item.age_group).replace(/_/g, ' ')}
+                        </Badge>
+                      )}
+                      {item.demographic && (
+                        <Badge variant="outline" className="text-xs">
+                          {item.demographic}
+                        </Badge>
+                      )}
+                    </div>
+                  )}
+                  <p className="text-sm text-neutral-700 italic">&ldquo;{item.story}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        // Name pattern
+        if (firstItem.name) {
+          return (
+            <ul className="space-y-2">
+              {value.map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
+                  <div>
+                    <span className="font-medium text-neutral-900">{item.name}</span>
+                    {item.description && (
+                      <p className="text-sm text-neutral-600 mt-0.5">{item.description}</p>
+                    )}
+                    {item.dsm5_code && (
+                      <span className="text-xs bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded ml-2">
+                        DSM-5: {item.dsm5_code}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        // Narrative story pattern: title + baseline/first_change/behaviors/consequences/aftermath
+        if (firstItem.title && (firstItem.baseline || firstItem.first_change || firstItem.behaviors)) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => {
+                const storyId = `story-${i}`;
+                const isStoryExpanded = expandedTiles[storyId] || false;
+
+                return (
+                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                    <button
+                      onClick={() => toggleTile(storyId)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <h6 className="font-semibold text-neutral-900">{item.title}</h6>
+                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className="h-5 w-5 text-neutral-400" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {isStoryExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="px-4 pb-4 space-y-3 border-t border-neutral-100">
+                            {item.baseline && (
+                              <div className="pt-3">
+                                <h6 className="text-xs font-medium text-neutral-500 uppercase tracking-wide mb-1">Background</h6>
+                                <p className="text-sm text-neutral-700">{item.baseline}</p>
+                              </div>
+                            )}
+                            {item.first_change && (
+                              <div>
+                                <h6 className="text-xs font-medium text-orange-600 uppercase tracking-wide mb-1">First Signs</h6>
+                                <p className="text-sm text-neutral-700">{item.first_change}</p>
+                              </div>
+                            )}
+                            {item.behaviors && (
+                              <div>
+                                <h6 className="text-xs font-medium text-red-600 uppercase tracking-wide mb-1">Behaviors</h6>
+                                <p className="text-sm text-neutral-700">{item.behaviors}</p>
+                              </div>
+                            )}
+                            {item.consequences && (
+                              <div>
+                                <h6 className="text-xs font-medium text-purple-600 uppercase tracking-wide mb-1">Impact</h6>
+                                <p className="text-sm text-neutral-700">{item.consequences}</p>
+                              </div>
+                            )}
+                            {item.aftermath && (
+                              <div>
+                                <h6 className="text-xs font-medium text-green-600 uppercase tracking-wide mb-1">Resolution</h6>
+                                <p className="text-sm text-neutral-700">{item.aftermath}</p>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+
+        // Person story pattern: objects with a "person" field containing full narrative
+        if (firstItem.person) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => {
+                const storyId = `person-story-${i}`;
+                const isStoryExpanded = expandedTiles[storyId] || false;
+                // Create preview from first 150 characters
+                const preview = item.person.length > 150 ? item.person.substring(0, 150) + "..." : item.person;
+
+                return (
+                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                    <button
+                      onClick={() => toggleTile(storyId)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <p className="text-sm text-neutral-700 line-clamp-2 pr-4">{preview}</p>
+                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className="h-5 w-5 text-neutral-400 shrink-0" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {isStoryExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="px-4 pb-4 border-t border-neutral-100 pt-3">
+                            <p className="text-sm text-neutral-700 leading-relaxed">{item.person}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+
+        // Scenario pattern: title + scenario + optional clinical_note (clinical vignettes)
+        if (firstItem.scenario && firstItem.title) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => {
+                const storyId = `scenario-${i}`;
+                const isStoryExpanded = expandedTiles[storyId] || false;
+
+                return (
+                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                    <button
+                      onClick={() => toggleTile(storyId)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <h6 className="font-semibold text-neutral-900">{item.title}</h6>
+                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className="h-5 w-5 text-neutral-400" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {isStoryExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="px-4 pb-4 space-y-3 border-t border-neutral-100">
+                            <div className="pt-3">
+                              <p className="text-sm text-neutral-700 leading-relaxed">{item.scenario}</p>
+                            </div>
+                            {item.clinical_note && (
+                              <div className="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-400">
+                                <h6 className="text-xs font-medium text-indigo-700 uppercase tracking-wide mb-1">Clinical Note</h6>
+                                <p className="text-sm text-indigo-900">{item.clinical_note}</p>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+
+        // Simple scenario pattern: just scenario text (no title)
+        if (firstItem.scenario) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => {
+                const storyId = `scenario-simple-${i}`;
+                const isStoryExpanded = expandedTiles[storyId] || false;
+                const preview = item.scenario.length > 120 ? item.scenario.substring(0, 120) + "..." : item.scenario;
+
+                return (
+                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                    <button
+                      onClick={() => toggleTile(storyId)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <p className="text-sm text-neutral-700 line-clamp-2 pr-4">{preview}</p>
+                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className="h-5 w-5 text-neutral-400 shrink-0" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {isStoryExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="px-4 pb-4 border-t border-neutral-100 pt-3">
+                            <p className="text-sm text-neutral-700 leading-relaxed">{item.scenario}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+
+        // Title pattern (simple titles with optional description/teaser)
+        if (firstItem.title) {
+          return (
+            <div className="space-y-3">
+              {value.map((item, i) => (
+                <div key={i} className="p-3 bg-neutral-50 rounded-lg">
+                  <h6 className="font-medium text-neutral-900">{item.title}</h6>
+                  {item.description && <p className="text-sm text-neutral-600 mt-1">{item.description}</p>}
+                  {item.teaser && <p className="text-sm text-neutral-600 mt-1">{item.teaser}</p>}
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        // Generic object array - render each object
         return (
-          <ParsedLinkList
-            items={fieldData.filter((item) => typeof item === "string")}
-            className="space-y-2"
-            itemClassName="flex items-start gap-3 text-sm text-neutral-800"
-            separator=""
-          />
+          <div className="space-y-3">
+            {value.map((item, i) => (
+              <div key={i} className="p-3 bg-neutral-50 rounded-lg">
+                {renderObject(item, depth)}
+              </div>
+            ))}
+          </div>
         );
       }
 
+      // Fallback for other arrays
       return (
-        <ul className="space-y-2">
-          {fieldData.map((item: any, index: number) => (
-            <li key={index} className="flex items-start gap-3 text-sm text-neutral-800">
-              <div className={`h-1.5 w-1.5 bg-${color}-500 mt-2 flex-shrink-0 rounded-full`} />
-              {typeof item === "object" ? (
-                <div className="space-y-1">
-                  {item?.name ? (
-                    <>
-                      <span className="font-medium text-neutral-900">{String(item.name)}</span>
-                      {(item.dsm5_code || item.icd10_code) && (
-                        <div className="flex gap-2 text-xs">
-                          {item.dsm5_code && (
-                            <span className="rounded bg-indigo-100 px-2 py-1 font-mono text-indigo-700">
-                              DSM-5: {String(item.dsm5_code)}
-                            </span>
-                          )}
-                          {item.icd10_code && (
-                            <span className="rounded bg-amber-100 px-2 py-1 font-mono text-amber-700">
-                              ICD-10: {String(item.icd10_code)}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </>
-                  ) : item?.note ? (
-                    <ParsedContent content={String(item.note)} className="text-neutral-800" />
-                  ) : (
-                    <ParsedContent content={extractSafeText(item)} className="text-neutral-800" />
-                  )}
-                </div>
-              ) : (
-                <ParsedContent content={String(item)} />
-              )}
+        <ul className="space-y-1">
+          {value.map((item, i) => (
+            <li key={i} className="flex items-start gap-2">
+              <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
+              <span>{String(item)}</span>
             </li>
           ))}
         </ul>
       );
     }
 
-    // Handle objects
-    if (typeof fieldData === "object" && fieldData !== null) {
-      return (
-        <div className="space-y-6">
-          {Object.entries(fieldData).map(([key, value]) => (
-            <div key={key} className="space-y-3">
-              <h4 className="border-b pb-2 font-semibold text-neutral-900 capitalize">
-                {formatTitle(key)}
-              </h4>
-              {Array.isArray(value) ? (
-                <ul className="space-y-2">
-                  {value.map((item: any, index: number) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-neutral-800">
-                      <div
-                        className={`h-1.5 w-1.5 bg-${color}-500 mt-2 flex-shrink-0 rounded-full`}
-                      />
-                      <ParsedContent content={extractSafeText(item)} />
-                    </li>
-                  ))}
-                </ul>
-              ) : typeof value === "object" && value !== null ? (
-                <div className="ml-4 space-y-2">
-                  {Object.entries(value).map(([subKey, subValue]) => (
-                    <div key={subKey} className="border-l-2 border-neutral-200 pl-3">
-                      <h5 className="text-sm font-medium text-neutral-900 capitalize">
-                        {formatTitle(subKey)}
-                      </h5>
-                      <div className="mt-1">
-                        <ParsedContent
-                          content={String(subValue)}
-                          className="text-sm text-neutral-800"
-                        />
-                      </div>
-                    </div>
-                  ))}
+    // Objects
+    if (typeof value === 'object') {
+      // Check for special object patterns first
+      if (value.overview) {
+        return (
+          <div className="space-y-3">
+            <p className="text-neutral-800">{value.overview}</p>
+            {Object.entries(value).map(([k, v]) => {
+              if (k === 'overview') return null;
+              return (
+                <div key={k}>
+                  <h5 className="text-sm font-medium text-neutral-700 capitalize mb-1">{formatTitle(k)}</h5>
+                  {renderAnyValue(v, depth + 1)}
                 </div>
-              ) : (
-                <ParsedContent content={String(value)} className="text-sm text-neutral-800" />
-              )}
-            </div>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        );
+      }
+
+      // Generic object
+      return renderObject(value, depth);
+    }
+
+    // Fallback
+    return <span>{String(value)}</span>;
+  };
+
+  // Render content from a single reference - now using universal renderer
+  const renderContentRef = (contentData: any, refPath: string): React.ReactNode => {
+    return renderAnyValue(contentData, 0);
+  };
+
+  // Check if using grid layout
+  const isGridLayout = uiConfig.layout === "3x3" || uiConfig.layout === "2x2" || uiConfig.layout === "2x3";
+
+  // Render a single tile - grid mode shows compact cards, list mode shows accordions
+  const renderTile = (tile: TileConfig, index: number) => {
+    const isExpanded = expandedTiles[tile.id] || false;
+    const icon = getIconForTile(tile.id);
+    const color = getColorForTile(tile.id);
+
+    // Resolve all content refs for this tile
+    const contentRefs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
+    const resolvedContent = contentRefs
+      .map((ref) => ({
+        ref,
+        data: resolveContentRef(content, ref),
+      }))
+      .filter(({ data }) => data !== null && data !== undefined);
+
+    const hasContent = resolvedContent.length > 0;
+    const tileDescription = tile.teaser || tile.summary || "";
+
+    // Grid mode: compact clickable cards
+    if (isGridLayout) {
+      return (
+        <motion.div
+          key={tile.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.03 * index }}
+          className="h-full"
+        >
+          <Card
+            className={`h-full transition-all ${hasContent ? "cursor-pointer hover:shadow-lg hover:scale-[1.02] hover:border-blue-300" : ""}`}
+            onClick={hasContent ? () => setActiveTile(activeTile === tile.id ? null : tile.id) : undefined}
+          >
+            <CardHeader className="pb-2">
+              <div className="flex items-center gap-3 mb-2">
+                <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+                  {icon}
+                </div>
+              </div>
+              <CardTitle className="text-base font-semibold text-neutral-900 leading-tight">
+                {tile.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-sm text-neutral-600 line-clamp-3">{tileDescription}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
       );
     }
 
-    // Handle strings and primitives
-    return <ParsedContent content={String(fieldData)} className="text-neutral-800" />;
-  };
+    // List mode requires content to expand
+    if (!hasContent) return null;
 
-  // Render dynamic field
-  const renderDynamicField = (fieldName: string, fieldData: any, index: number) => {
-    if (!fieldData) return null;
-
-    const title = formatTitle(fieldName);
-    const icon = getIconForField(fieldName);
-    const color = getColorForField(fieldName);
-    const isExpanded = expandedFields[fieldName] || false;
-
+    // List mode: expandable accordion
     return (
       <motion.div
-        key={fieldName}
+        key={tile.id}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 * (index + 3) }}
+        transition={{ delay: 0.05 * index }}
       >
-        <Card>
+        <Card className="overflow-hidden">
           <CardHeader
             className="cursor-pointer transition-colors hover:bg-neutral-50"
-            onClick={() => toggleField(fieldName)}
+            onClick={() => toggleTile(tile.id)}
           >
             <CardTitle className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-neutral-900">
-                {icon}
-                {title}
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+                  {icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-neutral-900">{tile.title}</h3>
+                  {!isExpanded && (
+                    <p className="text-sm text-neutral-600 font-normal mt-0.5">{tile.teaser}</p>
+                  )}
+                </div>
               </div>
               <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown className="h-5 w-5 text-neutral-600" />
+                <ChevronDown className="h-5 w-5 text-neutral-400" />
               </motion.div>
             </CardTitle>
           </CardHeader>
@@ -394,8 +806,12 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <CardContent className="pt-0">
-                  {renderFieldContent(fieldData, color, fieldName)}
+                <CardContent className="pt-0 space-y-6">
+                  {resolvedContent.map(({ ref, data }, idx) => (
+                    <div key={ref} className={idx > 0 ? "pt-4 border-t border-neutral-100" : ""}>
+                      {renderContentRef(data, ref)}
+                    </div>
+                  ))}
                 </CardContent>
               </motion.div>
             )}
@@ -405,14 +821,71 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
     );
   };
 
-  const dynamicFields = getDynamicFields();
+  // Legacy field rendering for backwards compatibility
+  const renderLegacyFields = () => {
+    const metadataFields = ["name", "slug", "type", "status", "metadata", "editorial", "id", "created_at", "updated_at", "content", "ui", "aeo", "kind"];
+    const headerFields = ["description", "prevalence", "age_of_onset", "shortDefinition", "short_definition"];
+    const dedicatedFields = ["linkedMedications", "linked_medications", "citations", "references"];
+    const excludeFields = [...metadataFields, ...headerFields, ...dedicatedFields];
 
-  // Get category config for breadcrumbs
-  const categorySlug = entity.metadata?.category as string | undefined;
-  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
+    const dynamicFields = Object.keys(content).filter(
+      (field) => !excludeFields.includes(field) && content[field]
+    );
 
-  // Extract shortDefinition if available
-  const shortDefinition = data.shortDefinition || data.short_definition;
+    return dynamicFields.map((fieldName, index) => {
+      const fieldData = content[fieldName];
+      const isExpanded = expandedTiles[fieldName] || false;
+      const icon = getIconForTile(fieldName);
+      const color = getColorForTile(fieldName);
+
+      return (
+        <motion.div
+          key={fieldName}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 * index }}
+        >
+          <Card>
+            <CardHeader
+              className="cursor-pointer transition-colors hover:bg-neutral-50"
+              onClick={() => toggleTile(fieldName)}
+            >
+              <CardTitle className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-neutral-900">
+                  {icon}
+                  {formatTitle(fieldName)}
+                </div>
+                <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                  <ChevronDown className="h-5 w-5 text-neutral-600" />
+                </motion.div>
+              </CardTitle>
+            </CardHeader>
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <CardContent className="pt-0">
+                    {renderContentRef(fieldData, fieldName)}
+                  </CardContent>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Card>
+        </motion.div>
+      );
+    });
+  };
+
+  // Check if this is a sensitive condition
+  const descriptionText = getDescriptionText();
+  const isSensitive = entity.name?.toLowerCase().includes('suicide') ||
+    entity.name?.toLowerCase().includes('self-harm') ||
+    entity.name?.toLowerCase().includes('depression') ||
+    descriptionText?.toLowerCase().includes('suicide');
 
   return (
     <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
@@ -471,28 +944,21 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
         </motion.div>
 
         {/* Crisis Support Banner (for sensitive conditions) */}
-        {(() => {
-          const isSensitive = entity.name?.toLowerCase().includes('suicide') ||
-            entity.name?.toLowerCase().includes('self-harm') ||
-            entity.name?.toLowerCase().includes('depression') ||
-            data.description?.toLowerCase().includes('suicide');
-
-          return isSensitive ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 }}
-              className="mb-8"
-            >
-              <CrisisSupportBanner prominent />
-            </motion.div>
-          ) : null;
-        })()}
+        {isSensitive && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            className="mb-8"
+          >
+            <CrisisSupportBanner prominent />
+          </motion.div>
+        )}
 
         {/* Content Sections */}
-        <div className="space-y-8">
-          {/* Overview */}
-          {(data.description || data.prevalence || data.age_of_onset) && (
+        <div className="space-y-6">
+          {/* Overview Card - Always show for key stats */}
+          {(content.description || content.prevalence || content.age_of_onset) && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -508,58 +974,58 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                    {data.description && (
-                      <article className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4" itemProp="description">
-                        <h4 className="mb-2 font-semibold text-blue-900">Description</h4>
-                        <div className="text-sm text-blue-800">
-                          <ParsedContent content={extractSafeText(data.description)} />
-                        </div>
-                      </article>
-                    )}
-
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                      {data.prevalence && (
-                        <div className="rounded-lg border-l-4 border-green-500 bg-green-50 p-3">
-                          <h4 className="mb-1 font-semibold text-green-900">Prevalence</h4>
-                          <div className="text-sm text-green-800">
-                            <ParsedContent content={String(data.prevalence)} />
+                      {content.description && (
+                        <article className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4" itemProp="description">
+                          <h4 className="mb-2 font-semibold text-blue-900">Description</h4>
+                          <div className="text-sm text-blue-800">
+                            <ParsedContent content={extractSafeText(content.description)} />
                           </div>
-                        </div>
+                        </article>
                       )}
 
-                      {data.age_of_onset && (
-                        <div className="rounded-lg border-l-4 border-purple-500 bg-purple-50 p-3">
-                          <h4 className="mb-1 font-semibold text-purple-900">Age of Onset</h4>
-                          <div className="text-sm text-purple-800">
-                            <ParsedContent content={String(data.age_of_onset)} />
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        {content.prevalence && (
+                          <div className="rounded-lg border-l-4 border-green-500 bg-green-50 p-3">
+                            <h4 className="mb-1 font-semibold text-green-900">Prevalence</h4>
+                            <div className="text-sm text-green-800">
+                              <ParsedContent content={String(content.prevalence)} />
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
+                        )}
 
-                    {/* DSM-5 and ICD-10 Codes */}
-                    {(() => {
-                      const dsm5 = entity.metadata?.dsm5_code;
-                      const icd10 = entity.metadata?.icd10_code;
-
-                      return dsm5 || icd10 ? (
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                          {dsm5 && (
-                            <div className="rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-3">
-                              <h4 className="mb-1 font-semibold text-indigo-900">DSM-5 Code</h4>
-                              <p className="font-mono text-sm text-indigo-800">{String(dsm5)}</p>
+                        {content.age_of_onset && (
+                          <div className="rounded-lg border-l-4 border-purple-500 bg-purple-50 p-3">
+                            <h4 className="mb-1 font-semibold text-purple-900">Age of Onset</h4>
+                            <div className="text-sm text-purple-800">
+                              <ParsedContent content={String(content.age_of_onset)} />
                             </div>
-                          )}
+                          </div>
+                        )}
+                      </div>
 
-                          {icd10 && (
-                            <div className="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-3">
-                              <h4 className="mb-1 font-semibold text-amber-900">ICD-10 Code</h4>
-                              <p className="font-mono text-sm text-amber-800">{String(icd10)}</p>
-                            </div>
-                          )}
-                        </div>
-                      ) : null;
-                    })()}
+                      {/* DSM-5 and ICD-10 Codes */}
+                      {(() => {
+                        const dsm5 = entity.metadata?.dsm5_code;
+                        const icd10 = entity.metadata?.icd10_code;
+
+                        return dsm5 || icd10 ? (
+                          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            {dsm5 && (
+                              <div className="rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-3">
+                                <h4 className="mb-1 font-semibold text-indigo-900">DSM-5 Code</h4>
+                                <p className="font-mono text-sm text-indigo-800">{String(dsm5)}</p>
+                              </div>
+                            )}
+
+                            {icd10 && (
+                              <div className="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-3">
+                                <h4 className="mb-1 font-semibold text-amber-900">ICD-10 Code</h4>
+                                <p className="font-mono text-sm text-amber-800">{String(icd10)}</p>
+                              </div>
+                            )}
+                          </div>
+                        ) : null;
+                      })()}
                     </div>
                   </CardContent>
                 </Card>
@@ -567,12 +1033,11 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
             </motion.div>
           )}
 
-          {/* Author & Review Information - ALWAYS SHOW for E-A-T compliance */}
+          {/* Author & Review Information */}
           {(() => {
             const metadata = entity.metadata || {};
             const editorial = entity.editorial || {};
-            
-            // Map metadata author to AuthorInfo format if needed
+
             const metadataAuthor = metadata.author ? {
               name: metadata.author.name || '',
               slug: metadata.author.name?.toLowerCase().replace(/\s+/g, '-') || '',
@@ -580,8 +1045,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
               bio: metadata.author.bio || '',
               profileUrl: `/about/authors/${metadata.author.name?.toLowerCase().replace(/\s+/g, '-') || ''}`,
             } : undefined;
-            
-            // Map metadata reviewer to MedicalReviewerInfo format if needed  
+
             const metadataReviewer = metadata.medical_reviewer ? {
               name: metadata.medical_reviewer.name || '',
               slug: metadata.medical_reviewer.name?.toLowerCase().replace(/\s+/g, '-') || '',
@@ -590,7 +1054,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
               bio: metadata.medical_reviewer.bio || '',
               profileUrl: `/about/medical-review-board`,
             } : undefined;
-            
+
             const author = editorial.author || metadataAuthor;
             const medicalReviewer = editorial.medicalReviewer || metadataReviewer;
             const timestamps = {
@@ -599,8 +1063,6 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
               last_reviewed: editorial.dates?.lastMedicallyReviewed || metadata.medical_review?.review_date || entity.updated_at,
             };
 
-            // CRITICAL: Always render AuthorByline for E-A-T compliance
-            // Shows Medical Review Board fallback when no individual reviewer
             return (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -618,52 +1080,93 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
             );
           })()}
 
-          {/* Quick Actions */}
-          {dynamicFields.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex justify-end gap-2"
-            >
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => {
-                  const allExpanded = dynamicFields.every((field) => expandedFields[field]);
-                  const newState = dynamicFields.reduce(
-                    (acc, field) => ({
-                      ...acc,
-                      [field]: !allExpanded,
-                    }),
-                    {}
-                  );
-                  setExpandedFields(newState);
-                }}
-              >
-                {dynamicFields.every((field) => expandedFields[field])
-                  ? "Collapse All"
-                  : "Expand All"}
-              </Button>
-            </motion.div>
-          )}
+          {/* Dynamic Content - Tiles or Legacy Fields */}
+          {hasTiles ? (
+            <>
+              {/* Grid layout */}
+              <div className={
+                uiConfig.layout === "3x3" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" :
+                uiConfig.layout === "2x2" ? "grid grid-cols-1 md:grid-cols-2 gap-4" :
+                uiConfig.layout === "2x3" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" :
+                uiConfig.layout === "1x3" ? "grid grid-cols-1 gap-4" :
+                "space-y-4"
+              }>
+                {tiles.map((tile, index) => renderTile(tile, index))}
+              </div>
 
-          {/* Dynamic Fields */}
-          {dynamicFields.map((fieldName, index) =>
-            renderDynamicField(fieldName, data[fieldName], index)
+              {/* Expanded tile detail panel (for grid mode) */}
+              <AnimatePresence>
+                {isGridLayout && activeTile && (() => {
+                  const tile = tiles.find(t => t.id === activeTile);
+                  if (!tile) return null;
+
+                  const contentRefs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
+                  const resolvedContent = contentRefs
+                    .map((ref) => ({
+                      ref,
+                      data: resolveContentRef(content, ref),
+                    }))
+                    .filter(({ data }) => data !== null && data !== undefined);
+
+                  const icon = getIconForTile(tile.id);
+                  const color = getColorForTile(tile.id);
+
+                  return (
+                    <motion.div
+                      ref={detailPanelRef}
+                      key="detail-panel"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Card className="border-2 border-blue-200 shadow-lg">
+                        <CardHeader className="flex flex-row items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+                              {icon}
+                            </div>
+                            <CardTitle className="text-xl">{tile.title}</CardTitle>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setActiveTile(null)}
+                          >
+                            Close
+                          </Button>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                          {resolvedContent.map(({ ref, data }, idx) => (
+                            <div key={ref} className={idx > 0 ? "pt-4 border-t border-neutral-100" : ""}>
+                              {renderContentRef(data, ref)}
+                            </div>
+                          ))}
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })()}
+              </AnimatePresence>
+            </>
+          ) : (
+            // Legacy field-based layout
+            <div className="space-y-4">
+              {renderLegacyFields()}
+            </div>
           )}
 
           {/* Medications List */}
           {(() => {
-            const linkedMedications = data.linkedMedications || data.linked_medications;
-            const treatmentApproaches = data.treatment_approaches || data.treatmentApproaches;
+            const linkedMedications = content.linkedMedications || content.linked_medications;
+            const treatmentApproaches = content.treatment_approaches || content.treatmentApproaches;
             const medications = treatmentApproaches?.linkedMedications || linkedMedications;
 
             return medications && Array.isArray(medications) && medications.length > 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * (dynamicFields.length + 3.5) }}
+                transition={{ delay: 0.3 }}
               >
                 <MedicationsList medications={medications} />
               </motion.div>
@@ -672,12 +1175,12 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
 
           {/* Citations/References */}
           {(() => {
-            const citations = data.citations || data.references || entity.metadata?.references;
+            const citations = content.citations || content.references || entity.metadata?.references;
             return citations && citations.length > 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * (dynamicFields.length + 4) }}
+                transition={{ delay: 0.35 }}
               >
                 <CitationList citations={citations} title="Scientific References" />
               </motion.div>
@@ -688,15 +1191,13 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * (dynamicFields.length + 4.1) }}
+            transition={{ delay: 0.4 }}
           >
             <MedicalDisclaimer
               config={{
                 entity_type: 'condition',
                 prominent: false,
-                include_crisis_line: entity.name?.toLowerCase().includes('suicide') ||
-                  entity.name?.toLowerCase().includes('self-harm') ||
-                  entity.name?.toLowerCase().includes('depression'),
+                include_crisis_line: isSensitive,
               }}
             />
           </motion.div>
@@ -705,7 +1206,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * (dynamicFields.length + 4) }}
+            transition={{ delay: 0.45 }}
           >
             <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
               <CardContent className="p-8 text-center">

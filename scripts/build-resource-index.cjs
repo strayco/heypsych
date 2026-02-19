@@ -82,6 +82,8 @@ if (!fs.existsSync(resourcesPath)) {
 const categories = fs
   .readdirSync(resourcesPath, { withFileTypes: true })
   .filter((d) => d.isDirectory())
+  // Skip 'tools' directory - it uses v3 schema and has its own system
+  .filter((d) => d.name !== 'tools')
   .map((d) => d.name);
 
 console.log(`📂 Found ${categories.length} resource categories: ${categories.join(", ")}`);

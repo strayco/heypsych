@@ -128,6 +128,13 @@ export default function AboutPage() {
             </p>
           </div>
           <div>
+            <h3 className="mb-2 font-semibold text-gray-900">HeyPsych Contributors</h3>
+            <p className="text-sm text-gray-700">
+              Content is created by clinicians and community members with lived experience to ensure
+              it is practical, relevant, and easy to understand.
+            </p>
+          </div>
+          <div>
             <h3 className="mb-2 font-semibold text-gray-900">Privacy & Security</h3>
             <p className="text-sm text-gray-700">
               We take your privacy seriously and do not collect or store personal health

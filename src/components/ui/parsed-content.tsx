@@ -16,6 +16,16 @@ interface ParsedContentProps {
 export function ParsedContent({ content, className = "", linkClassName = "" }: ParsedContentProps) {
   const parts = parseLinks(content);
 
+  const renderTextWithLineBreaks = (text: string, keyPrefix: string) => {
+    const lines = text.split('\n');
+    return lines.map((line, lineIndex) => (
+      <React.Fragment key={`${keyPrefix}-line-${lineIndex}`}>
+        {line}
+        {lineIndex < lines.length - 1 && <br />}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <span className={className}>
       {parts.map((part, index) => {
@@ -31,7 +41,7 @@ export function ParsedContent({ content, className = "", linkClassName = "" }: P
           );
         }
 
-        return <span key={index}>{part.content}</span>;
+        return <span key={index}>{renderTextWithLineBreaks(part.content, `part-${index}`)}</span>;
       })}
     </span>
   );

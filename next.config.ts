@@ -170,6 +170,17 @@ const nextConfig: NextConfig = {
         destination: "/conditions",
         permanent: true,
       },
+      // SEO: Legacy digital tools redirects → new /tools/ directory
+      {
+        source: "/resources/digital-tools",
+        destination: "/tools",
+        permanent: true,
+      },
+      {
+        source: "/resources/digital-tools/:slug",
+        destination: "/tools/:slug",
+        permanent: true,
+      },
       // SEO: Domain canonicalization (www → non-www) handled at Vercel DNS level
       // Canonical domain: heypsych.com (non-www)
     ];
