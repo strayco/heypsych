@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 import Link from "next/link";
 import { Entity } from "@/lib/types/database";
@@ -28,6 +29,7 @@ export function ConditionsSearchBar({
   conditions,
   placeholder = "Search conditions... (e.g., ADHD, Depression, Anxiety)",
 }: ConditionsSearchBarProps) {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -102,11 +104,10 @@ export function ConditionsSearchBar({
         if (highlightedIndex >= 0 && highlightedIndex < filteredConditions.length) {
           // Navigate to selected condition
           const selected = filteredConditions[highlightedIndex];
-          const category =
-            selected.metadata?.category || (selected.data as any)?.metadata?.category;
-          if (category) {
-            window.location.href = `/conditions/${selected.slug}`;
-          }
+          router.push(`/conditions/${selected.slug}`);
+        } else if (searchTerm.trim()) {
+          // No item selected - go to full search results, scroll to conditions section
+          router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}#conditions`);
         }
         break;
       case "Escape":

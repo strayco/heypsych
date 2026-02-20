@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
 import type { Entity } from "@/lib/types/database";
@@ -10,22 +11,18 @@ interface ResourceSearchProps {
 }
 
 export function ResourceSearch({ resources }: ResourceSearchProps) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [filteredResources, setFilteredResources] = useState<Entity[]>([]);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Filter resources based on search query
-  useEffect(() => {
-    if (query.length === 0) {
-      setFilteredResources([]);
-      setIsOpen(false);
-      return;
-    }
+  // Filter resources based on search query - using useMemo to compute synchronously
+  const filteredResources = useMemo(() => {
+    if (query.length === 0) return [];
 
     const lowerQuery = query.toLowerCase();
-    const filtered = resources
+    return resources
       .filter((resource) => {
         const name = (resource.name || "").toLowerCase();
         const description = (resource.description || "").toLowerCase();
@@ -38,10 +35,16 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
         );
       })
       .slice(0, 8); // Show max 8 results
-
-    setFilteredResources(filtered);
-    setIsOpen(filtered.length > 0);
   }, [query, resources]);
+
+  // Sync isOpen state with query changes
+  useEffect(() => {
+    if (query.length === 0) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  }, [query]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -57,9 +60,19 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
 
   const clearSearch = () => {
     setQuery("");
-    setFilteredResources([]);
     setIsOpen(false);
     inputRef.current?.focus();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && query.trim()) {
+      e.preventDefault();
+      // Go to full search results, scroll to resources section
+      router.push(`/search?q=${encodeURIComponent(query.trim())}#resources`);
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+      inputRef.current?.blur();
+    }
   };
 
   return (
@@ -74,6 +87,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           onFocus={() => {
             if (filteredResources.length > 0) {
               setIsOpen(true);

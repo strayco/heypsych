@@ -65,7 +65,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
     category?: string;
     metadata?: { fda_approval_year?: number };
     clinical_metadata?: any;
-    faqs?: Array<{ q: string; a: string }>;
+    faqs?: Array<{ q?: string; a?: string; question?: string; answer?: string }>;
   };
 
   const title = entity.name || data.name || "";
@@ -1000,6 +1000,60 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
         );
       }
 
+      // FAQs section with q/a or question/answer items
+      if (type === "faqs" && sectionData.items?.[0] && (sectionData.items[0].q || sectionData.items[0].question)) {
+        return (
+          <div className="space-y-4">
+            {sectionData.items.map((faq: any, i: number) => (
+              <div key={i} className="border-b border-neutral-100 pb-4 last:border-0 last:pb-0">
+                <h4 className="font-semibold text-neutral-900 mb-2">{faq.question || faq.q}</h4>
+                <p className="text-neutral-700">{faq.answer || faq.a}</p>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      // Compared_to section with treatment comparisons
+      if (type === "compared_to" && sectionData.items?.[0]?.name) {
+        return (
+          <div className="space-y-4">
+            {sectionData.items.map((item: any, i: number) => (
+              <div key={i} className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                <h4 className="font-semibold text-neutral-900 mb-2">{item.name}</h4>
+                {item.how_its_different && (
+                  <p className="text-neutral-700 mb-2">
+                    <span className="font-medium text-neutral-600">How it&apos;s different: </span>
+                    {item.how_its_different}
+                  </p>
+                )}
+                {item.when_that_might_be_better && (
+                  <p className="text-neutral-700">
+                    <span className="font-medium text-neutral-600">When it might be better: </span>
+                    {item.when_that_might_be_better}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      // Treatment variants section
+      if (type === "treatment_variants" && sectionData.items?.[0]) {
+        return (
+          <div className="space-y-4">
+            {sectionData.items.map((item: any, i: number) => (
+              <div key={i} className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                {item.name && <h4 className="font-semibold text-neutral-900 mb-2">{item.name}</h4>}
+                {item.description && <p className="text-neutral-700">{item.description}</p>}
+                {item.differences && <p className="text-neutral-600 text-sm mt-1">{item.differences}</p>}
+              </div>
+            ))}
+          </div>
+        );
+      }
+
       if (type === "indications") {
         return (
           <>
@@ -1195,6 +1249,296 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
               <ParsedContent content={String(value)} />
             </p>
           ))}
+        </div>
+      );
+    }
+
+    // Who it's for section
+    if (type === "who_its_for") {
+      return (
+        <div className="space-y-4">
+          {sectionData.best_for && (
+            <div>
+              <h4 className="font-semibold text-green-700 mb-2">Best For</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.best_for.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.works_well_when && (
+            <div>
+              <h4 className="font-semibold text-blue-700 mb-2">Works Well When</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.works_well_when.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.common_use_cases && (
+            <div>
+              <h4 className="font-semibold text-neutral-700 mb-2">Common Use Cases</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.common_use_cases.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Who it's not for section
+    if (type === "who_its_not_for") {
+      return (
+        <div className="space-y-4">
+          {sectionData.not_a_good_fit && (
+            <div>
+              <h4 className="font-semibold text-red-700 mb-2">Not a Good Fit</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.not_a_good_fit.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.use_with_extra_support && (
+            <div>
+              <h4 className="font-semibold text-amber-700 mb-2">Use With Extra Support</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.use_with_extra_support.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.urgent_red_flags && (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+              <h4 className="font-semibold text-red-800 mb-2">Urgent Red Flags</h4>
+              <ul className="list-disc space-y-1 pl-6 text-red-800">
+                {sectionData.urgent_red_flags.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.alternatives && (
+            <div>
+              <h4 className="font-semibold text-neutral-700 mb-2">Alternatives</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.alternatives.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // What to expect section (week by week)
+    if (type === "what_to_expect") {
+      const weekEntries = Object.entries(sectionData).filter(([key]) => 
+        key.startsWith("week_") || key.startsWith("month_") || key.startsWith("day_")
+      );
+      if (weekEntries.length > 0) {
+        return (
+          <div className="space-y-4">
+            {weekEntries.map(([period, items]: [string, any]) => (
+              <div key={period} className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                <h4 className="font-semibold text-neutral-900 mb-2 capitalize">
+                  {period.replace(/_/g, " ")}
+                </h4>
+                {Array.isArray(items) ? (
+                  <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                    {items.map((item: string, i: number) => (
+                      <li key={i}><ParsedContent content={item} /></li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-neutral-700"><ParsedContent content={String(items)} /></p>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      }
+    }
+
+    // Quick steps section
+    if (type === "quick_steps") {
+      return (
+        <div className="space-y-4">
+          {sectionData.steps && (
+            <div>
+              <ol className="list-decimal space-y-2 pl-6 text-neutral-800">
+                {sectionData.steps.map((step: string, i: number) => (
+                  <li key={i}><ParsedContent content={step} /></li>
+                ))}
+              </ol>
+            </div>
+          )}
+          {sectionData.what_to_prepare && (
+            <div className="mt-4">
+              <h4 className="font-semibold text-neutral-700 mb-2">What to Prepare</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.what_to_prepare.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.what_to_track && (
+            <div className="mt-4">
+              <h4 className="font-semibold text-neutral-700 mb-2">What to Track</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.what_to_track.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Common mistakes section
+    if (type === "common_mistakes" && sectionData.mistakes) {
+      return (
+        <div className="space-y-4">
+          <ul className="list-disc space-y-2 pl-6 text-neutral-800">
+            {sectionData.mistakes.map((mistake: string, i: number) => (
+              <li key={i}><ParsedContent content={mistake} /></li>
+            ))}
+          </ul>
+          {sectionData.how_to_avoid && (
+            <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4">
+              <h4 className="font-semibold text-green-800 mb-2">How to Avoid</h4>
+              <ul className="list-disc space-y-1 pl-6 text-green-800">
+                {sectionData.how_to_avoid.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Session structure section
+    if (type === "session_structure") {
+      return (
+        <div className="space-y-3">
+          {sectionData.pre_session && (
+            <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+              <h4 className="font-semibold text-neutral-900 mb-1">Pre-Session</h4>
+              <p className="text-neutral-700"><ParsedContent content={sectionData.pre_session} /></p>
+            </div>
+          )}
+          {sectionData.treatment_phase && (
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+              <h4 className="font-semibold text-blue-900 mb-1">Treatment Phase</h4>
+              <p className="text-blue-800"><ParsedContent content={sectionData.treatment_phase} /></p>
+            </div>
+          )}
+          {sectionData.post_session && (
+            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+              <h4 className="font-semibold text-green-900 mb-1">Post-Session</h4>
+              <p className="text-green-800"><ParsedContent content={sectionData.post_session} /></p>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Research evidence section
+    if (type === "research_evidence") {
+      return (
+        <div className="space-y-4">
+          {sectionData.studies && (
+            <div>
+              <h4 className="font-semibold text-neutral-700 mb-2">Key Studies</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.studies.map((study: string, i: number) => (
+                  <li key={i}><ParsedContent content={study} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.limitations && (
+            <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
+              <h4 className="font-semibold text-amber-800 mb-1">Limitations</h4>
+              <p className="text-amber-800"><ParsedContent content={sectionData.limitations} /></p>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Integration support section
+    if (type === "integration_support") {
+      return (
+        <div className="space-y-4">
+          {sectionData.concurrent_therapies && (
+            <div>
+              <h4 className="font-semibold text-neutral-700 mb-2">Concurrent Therapies</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.concurrent_therapies.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.complementary_approaches && (
+            <div>
+              <h4 className="font-semibold text-neutral-700 mb-2">Complementary Approaches</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.complementary_approaches.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Patient experience section (non-carousel fallback)
+    if (type === "patient_experience" && !sectionData.items) {
+      return (
+        <div className="space-y-4">
+          {sectionData.what_feels_easy && (
+            <div>
+              <h4 className="font-semibold text-green-700 mb-2">What Feels Easy</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.what_feels_easy.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.what_feels_hard && (
+            <div>
+              <h4 className="font-semibold text-amber-700 mb-2">What Feels Hard</h4>
+              <ul className="list-disc space-y-1 pl-6 text-neutral-800">
+                {sectionData.what_feels_hard.map((item: string, i: number) => (
+                  <li key={i}><ParsedContent content={item} /></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {sectionData.quotes && (
+            <div className="space-y-3">
+              {sectionData.quotes.map((quote: string, i: number) => (
+                <blockquote key={i} className="border-l-4 border-blue-400 pl-4 italic text-neutral-700">
+                  {quote}
+                </blockquote>
+              ))}
+            </div>
+          )}
         </div>
       );
     }
@@ -1513,8 +1857,8 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
                     <div key={index} className="border-b border-neutral-100 pb-4 last:border-0 last:pb-0">
-                      <h4 className="font-semibold text-neutral-900 mb-2">{faq.q}</h4>
-                      <p className="text-neutral-700">{faq.a}</p>
+                      <h4 className="font-semibold text-neutral-900 mb-2">{faq.question || faq.q}</h4>
+                      <p className="text-neutral-700">{faq.answer || faq.a}</p>
                     </div>
                   ))}
                 </div>

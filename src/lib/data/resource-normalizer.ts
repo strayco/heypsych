@@ -2,6 +2,48 @@
 import { AnyResourceZ } from "@/lib/schemas/resource";
 import { transformKnowledgeHubArticle, buildBodyFromLegacy } from "@/lib/utils/resource-shape";
 
+function buildCrosslinks(resource: any): Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> {
+  const crosslinks: Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> = [];
+  
+  if (Array.isArray(resource.relatedConditionSlugs)) {
+    for (const slug of resource.relatedConditionSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'condition',
+          display: slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  if (Array.isArray(resource.relatedTreatmentSlugs)) {
+    for (const slug of resource.relatedTreatmentSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'treatment',
+          display: slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  if (Array.isArray(resource.relatedResourceSlugs)) {
+    for (const slug of resource.relatedResourceSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'resource',
+          display: slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  return crosslinks;
+}
+
 function normalizeLegacyResource(content: any) {
   if (!content || typeof content !== "object") return content;
 
@@ -27,6 +69,12 @@ function normalizeLegacyResource(content: any) {
 
   if (!normalized.sections && Array.isArray(normalized.content?.sections)) {
     normalized.sections = normalized.content.sections;
+  }
+
+  // Build crosslinks for all resource types
+  const crosslinks = buildCrosslinks(normalized);
+  if (crosslinks.length > 0) {
+    normalized.crosslinks = crosslinks;
   }
 
   return normalized;

@@ -165,8 +165,11 @@ const formatTitle = (fieldName: string): string => {
 };
 
 // Resolve a content reference path like "description.overview" or "symptoms.inattention"
+// Also handles paths that start with "content." prefix (strips it since we're already in content)
 const resolveContentRef = (content: Record<string, any>, ref: string): any => {
-  const parts = ref.split(".");
+  // Strip "content." prefix if present since we're already working with the content object
+  const normalizedRef = ref.startsWith("content.") ? ref.slice(8) : ref;
+  const parts = normalizedRef.split(".");
   let current: any = content;
 
   for (const part of parts) {
@@ -184,7 +187,7 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
   if (!data) return fallback;
 
   if (typeof data === "object") {
-    // Check for common text fields
+    // Check for common text fields (includes short forms q/a for FAQs)
     const textFields = [
       "description",
       "summary",
@@ -194,7 +197,9 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
       "content",
       "definition",
       "answer",
+      "a",
       "question",
+      "q",
       "title",
       "name",
       "story",
@@ -214,7 +219,7 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
       const extracted = data.slice(0, 3).map(item => {
         if (typeof item === "string") return item;
         if (typeof item === "object" && item) {
-          return item.name || item.title || item.question || item.description || item.summary || '';
+          return item.name || item.title || item.question || item.q || item.description || item.summary || '';
         }
         return '';
       }).filter(Boolean);
@@ -374,14 +379,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
 
       // Array of objects
       if (typeof firstItem === 'object') {
-        // FAQ pattern: question/answer
-        if (firstItem.question && firstItem.answer) {
+        // FAQ pattern: question/answer or q/a (handle both formats)
+        if ((firstItem.question && firstItem.answer) || (firstItem.q && firstItem.a)) {
           return (
             <div className="space-y-3">
               {value.map((item, i) => (
                 <div key={i} className="rounded-lg border border-neutral-200 bg-white p-4">
-                  <h5 className="font-semibold text-neutral-900 mb-2">{item.question}</h5>
-                  <p className="text-sm text-neutral-700">{item.answer}</p>
+                  <h5 className="font-semibold text-neutral-900 mb-2">{item.question || item.q}</h5>
+                  <p className="text-sm text-neutral-700">{item.answer || item.a}</p>
                 </div>
               ))}
             </div>

@@ -174,6 +174,49 @@ export function transformKnowledgeHubArticle(raw: any) {
     normalized.body = body;
   }
 
+  // Build crosslinks from relatedConditionSlugs, relatedTreatmentSlugs, and relatedResourceSlugs
+  const crosslinks: Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> = [];
+  
+  if (Array.isArray(normalized.relatedConditionSlugs)) {
+    for (const slug of normalized.relatedConditionSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'condition',
+          display: slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  if (Array.isArray(normalized.relatedTreatmentSlugs)) {
+    for (const slug of normalized.relatedTreatmentSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'treatment',
+          display: slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  if (Array.isArray(normalized.relatedResourceSlugs)) {
+    for (const slug of normalized.relatedResourceSlugs) {
+      if (typeof slug === 'string' && slug.trim()) {
+        crosslinks.push({
+          slug,
+          type: 'resource',
+          display: slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        });
+      }
+    }
+  }
+  
+  if (crosslinks.length > 0) {
+    normalized.crosslinks = crosslinks;
+  }
+
   const sanitized = stripAsterisksDeep(normalized);
   sanitized.authors = ["HeyPsych Contributors"];
   sanitized.author = "HeyPsych Contributors";

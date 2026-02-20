@@ -249,6 +249,11 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
             {/* Featured Image */}
             {imageUrl && (
               <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                <img
+                  src={imageUrl}
+                  alt={resource.name || "Article image"}
+                  className="h-full w-full object-cover"
+                />
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute top-4 left-4 z-20">
                   <Badge className={`bg-gradient-to-r ${cardPillarInfo.gradient} text-white`}>

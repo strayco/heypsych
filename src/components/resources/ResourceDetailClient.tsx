@@ -49,7 +49,7 @@ const CategoryIcon: Record<CategoryKey, React.ElementType> = {
 
 type CrossLink = {
   slug: string;
-  type: 'condition' | 'treatment';
+  type: 'condition' | 'treatment' | 'resource';
   display: string;
 };
 
@@ -58,6 +58,7 @@ function CrossLinksSection({ crosslinks }: { crosslinks: CrossLink[] }) {
 
   const conditions = crosslinks.filter(c => c.type === 'condition');
   const treatments = crosslinks.filter(c => c.type === 'treatment');
+  const resources = crosslinks.filter(c => c.type === 'resource');
 
   return (
     <Card className="border-emerald-100 bg-emerald-50/50">
@@ -93,6 +94,23 @@ function CrossLinksSection({ crosslinks }: { crosslinks: CrossLink[] }) {
                   className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200"
                 >
                   {t.display}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        {resources.length > 0 && (
+          <div>
+            <div className="mb-1 text-xs font-medium text-emerald-700">Resources</div>
+            <div className="flex flex-wrap gap-2">
+              {resources.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/resources/${r.slug}`}
+                  className="inline-flex items-center gap-1 rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 transition-colors hover:bg-purple-200"
+                >
+                  {r.display}
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               ))}
@@ -194,6 +212,46 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
 
   if (!resource) notFound();
 
+  // Build crosslinks from related slugs if not already present
+  const buildCrosslinksFromSlugs = (res: any): Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> => {
+    if (res.crosslinks && res.crosslinks.length > 0) {
+      return res.crosslinks;
+    }
+
+    const crosslinks: Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> = [];
+    const slugToDisplay = (slug: string) => slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+    const conditionSlugs = res.relatedConditionSlugs || res.data?.relatedConditionSlugs;
+    const treatmentSlugs = res.relatedTreatmentSlugs || res.data?.relatedTreatmentSlugs;
+    const resourceSlugs = res.relatedResourceSlugs || res.data?.relatedResourceSlugs;
+
+    if (Array.isArray(conditionSlugs)) {
+      for (const slug of conditionSlugs) {
+        if (typeof slug === 'string' && slug.trim()) {
+          crosslinks.push({ slug, type: 'condition', display: slugToDisplay(slug) });
+        }
+      }
+    }
+
+    if (Array.isArray(treatmentSlugs)) {
+      for (const slug of treatmentSlugs) {
+        if (typeof slug === 'string' && slug.trim()) {
+          crosslinks.push({ slug, type: 'treatment', display: slugToDisplay(slug) });
+        }
+      }
+    }
+
+    if (Array.isArray(resourceSlugs)) {
+      for (const slug of resourceSlugs) {
+        if (typeof slug === 'string' && slug.trim()) {
+          crosslinks.push({ slug, type: 'resource', display: slugToDisplay(slug) });
+        }
+      }
+    }
+
+    return crosslinks;
+  };
+
   // Normalize entity structure for renderer
   // Resource is already normalized by server or hook
   const normalizedResource = {
@@ -206,8 +264,8 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
     tags: resource.tags || resource.metadata?.topics,
     // Pass pre-validated tags from server (no client-side validation needed)
     validated_tags: resource.validated_tags || [],
-    // Cross-links for related entities
-    crosslinks: resource.crosslinks || [],
+    // Cross-links for related entities (build from slugs if not present)
+    crosslinks: buildCrosslinksFromSlugs(resource),
     // Conditions for assessments
     conditions: resource.conditions || [],
   };

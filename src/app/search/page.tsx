@@ -40,7 +40,7 @@ function SearchPageContent() {
     resourcesTotal: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
+  const [searchedQuery, setSearchedQuery] = useState(""); // Track which query the results are for
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
     condition: false,
     treatment: false,
@@ -49,9 +49,6 @@ function SearchPageContent() {
 
   useEffect(() => {
     if (!query || query.trim().length < 2) {
-      if (hasSearched) {
-        setIsLoading(false);
-      }
       return;
     }
 
@@ -61,17 +58,6 @@ function SearchPageContent() {
 
     const fetchResults = async () => {
       setIsLoading(true);
-      setHasSearched(true);
-
-      // Reset results to prevent showing stale data
-      setGroupedResults({
-        conditions: [],
-        treatments: [],
-        resources: [],
-        conditionsTotal: 0,
-        treatmentsTotal: 0,
-        resourcesTotal: 0,
-      });
 
       try {
         // Add timeout to prevent hanging indefinitely
@@ -106,6 +92,7 @@ function SearchPageContent() {
           treatmentsTotal: Number(data.treatments?.totalCount) || 0,
           resourcesTotal: Number(data.resources?.totalCount) || 0,
         });
+        setSearchedQuery(query); // Mark this query as completed
       } catch (error: any) {
         // Ignore abort errors - they're expected when component unmounts or query changes
         if (error.name === 'AbortError') {
@@ -123,6 +110,7 @@ function SearchPageContent() {
           treatmentsTotal: 0,
           resourcesTotal: 0,
         });
+        setSearchedQuery(query); // Mark this query as completed (with error)
       } finally {
         setIsLoading(false);
       }
@@ -138,6 +126,22 @@ function SearchPageContent() {
       }
     };
   }, [query]);
+
+  // Scroll to section based on URL hash after results load
+  useEffect(() => {
+    if (searchedQuery && !isLoading) {
+      const hash = window.location.hash.slice(1); // Remove the #
+      if (hash) {
+        // Small delay to ensure the section is rendered
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+    }
+  }, [searchedQuery, isLoading]);
 
   const getResultIcon = (type: string) => {
     switch (type) {
@@ -354,8 +358,8 @@ function SearchPageContent() {
           </Card>
         )}
 
-        {/* No Results */}
-        {query && !isLoading && !hasResults && (
+        {/* No Results - only show when search for this exact query is complete */}
+        {query && !isLoading && searchedQuery === query && !hasResults && (
           <Card>
             <CardContent className="p-12 text-center">
               <Search className="mx-auto mb-4 h-16 w-16 text-gray-300" />
@@ -373,6 +377,7 @@ function SearchPageContent() {
             {/* Conditions */}
             {groupedResults.conditions.length > 0 && (
               <motion.div
+                id="conditions"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -404,6 +409,7 @@ function SearchPageContent() {
             {/* Treatments */}
             {groupedResults.treatments.length > 0 && (
               <motion.div
+                id="treatments"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -435,6 +441,7 @@ function SearchPageContent() {
             {/* Resources */}
             {groupedResults.resources.length > 0 && (
               <motion.div
+                id="resources"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}

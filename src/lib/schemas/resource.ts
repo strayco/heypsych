@@ -34,6 +34,16 @@ const Base = z
     conditions: z.array(z.string()).optional(),
     target_populations: z.array(z.string()).optional(),
     limitations: z.array(z.string()).optional(),
+    crosslinks: z.array(
+      z.object({
+        slug: z.string(),
+        type: z.enum(['condition', 'treatment', 'resource']),
+        display: z.string(),
+      })
+    ).optional(),
+    relatedConditionSlugs: z.array(z.string()).optional(),
+    relatedTreatmentSlugs: z.array(z.string()).optional(),
+    relatedResourceSlugs: z.array(z.string()).optional(),
     metadata: z
       .object({
         category: ResourceCategoryZ.optional(),

@@ -1,16 +1,19 @@
 // src/components/resource-renderers/ArticleRenderer.tsx
-import React from "react";
-import Link from "next/link";
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { FileText, Clock, User, ExternalLink } from "lucide-react";
-import { SEOMeta, SectionList, ReferencesTable, AutoFields } from "./shared";
+import { ExternalLink, ImageIcon, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { SEOMeta, ReferencesTable, AutoFields } from "./shared";
 import { ParsedContent } from "@/components/ui/parsed-content";
 import type { ResourceRendererProps } from "./index";
 
 export function ArticleRenderer({ resource }: ResourceRendererProps) {
   const data = resource as any;
+  const [showInfographic, setShowInfographic] = useState(false);
+
+  const coverImage = data.coverImage || data.content?.coverImage || data.image_url;
 
   const bodyBlocks = Array.isArray(data.body)
     ? data.body
@@ -18,7 +21,16 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
     ? data.content.body
     : undefined;
 
-  const sections = data.sections || data.content?.sections;
+  const allSections = data.sections || data.content?.sections;
+  // Filter out References section - we'll render it separately
+  const sections = Array.isArray(allSections)
+    ? allSections.filter((s: any) => s.heading?.toLowerCase() !== 'references')
+    : allSections;
+  // Extract references section content
+  const referencesSection = Array.isArray(allSections)
+    ? allSections.find((s: any) => s.heading?.toLowerCase() === 'references')
+    : null;
+
   const introduction = data.introduction || data.content?.introduction;
   const conclusion = data.conclusion || data.content?.conclusion;
 
@@ -66,58 +78,40 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
     <>
       <SEOMeta seo={data.seo} />
 
-      <Card>
-        <CardHeader>
-          <div className="flex items-center gap-3">
-            <FileText className="h-6 w-6 text-green-600" />
-            <CardTitle>Article</CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {data.author && (
-            <div className="flex items-center gap-2 text-sm text-gray-900">
-              <User className="h-4 w-4" />
-              <span>By {data.author}</span>
-            </div>
+      {coverImage && (
+        <Card>
+          <CardHeader className="pb-2">
+            <button
+              onClick={() => setShowInfographic(!showInfographic)}
+              className="flex w-full items-center justify-between text-left"
+            >
+              <div className="flex items-center gap-2">
+                <ImageIcon className="h-5 w-5 text-purple-600" />
+                <CardTitle className="text-base">View Infographic</CardTitle>
+              </div>
+              {showInfographic ? (
+                <ChevronUp className="h-5 w-5 text-slate-500" />
+              ) : (
+                <ChevronDown className="h-5 w-5 text-slate-500" />
+              )}
+            </button>
+          </CardHeader>
+          {showInfographic && (
+            <CardContent className="pt-0">
+              <div className="relative w-full overflow-hidden rounded-lg border">
+                <Image
+                  src={coverImage}
+                  alt={data.name || "Article infographic"}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
+            </CardContent>
           )}
-          {data.reading_time && (
-            <div className="flex items-center gap-2 text-sm text-gray-900">
-              <Clock className="h-4 w-4" />
-              <span>{data.reading_time}</span>
-            </div>
-          )}
-          {data.validated_tags && Array.isArray(data.validated_tags) && data.validated_tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {data.validated_tags.map((tag: any, i: number) => (
-                <Link key={i} href={tag.route}>
-                  <Badge
-                    variant="outline"
-                    className="cursor-pointer transition-colors hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700"
-                  >
-                    {tag.text}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
-          )}
-          {data.external_url && (
-            <Button variant="outline">
-              <a
-                href={data.external_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                Read Full Article <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-          )}
-          {/* Fallback message if no metadata is present */}
-          {!data.author && !data.reading_time && (!data.validated_tags || data.validated_tags.length === 0) && !data.external_url && (
-            <p className="text-sm text-gray-500">Article metadata loading...</p>
-          )}
-        </CardContent>
-      </Card>
+        </Card>
+      )}
 
       {bodyBlocks && bodyBlocks.length > 0 ? (
         <Card>
@@ -169,10 +163,46 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
         </Card>
       )}
 
-      <SectionList sections={sections} />
-
       {data.related_topics && (
         <AutoFields data={data} title="Related Topics" only={["related_topics"]} />
+      )}
+
+      {/* Render references from section or data.references */}
+      {referencesSection?.content && (
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-slate-600" />
+              <CardTitle>References</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ol className="list-decimal list-inside space-y-3 text-sm text-slate-700">
+              {referencesSection.content.split('\n').filter((line: string) => line.trim()).map((ref: string, idx: number) => {
+                // Remove leading number and period (e.g., "1. " or "2. ")
+                const cleanRef = ref.replace(/^\d+\.\s*/, '').trim();
+                // Extract title for search (text before the year in parentheses)
+                const titleMatch = cleanRef.match(/^(.+?)\s*\(\d{4}\)/);
+                const searchQuery = titleMatch ? titleMatch[1].replace(/,?\s*et al\.?/i, '').trim() : cleanRef;
+                const scholarUrl = `https://scholar.google.com/scholar?q=${encodeURIComponent(searchQuery)}`;
+
+                return (
+                  <li key={idx} className="leading-relaxed">
+                    <a
+                      href={scholarUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-700 hover:text-purple-900 hover:underline"
+                    >
+                      {cleanRef}
+                      <ExternalLink className="ml-1 inline h-3 w-3" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </CardContent>
+        </Card>
       )}
 
       <ReferencesTable refs={data.references} />
