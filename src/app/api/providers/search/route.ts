@@ -1,22 +1,34 @@
 // src/app/api/providers/search/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 import { validateQuery } from "@/lib/validation";
 import { providerSearchSchema } from "@/lib/schemas/api";
 
-// Use service role for server-side queries to bypass RLS and improve performance
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  {
+// Lazy-initialize Supabase client to avoid build-time failures
+// when credentials are not available
+let _supabaseAdmin: SupabaseClient | null = null;
+
+function getSupabaseAdmin(): SupabaseClient | null {
+  if (_supabaseAdmin) return _supabaseAdmin;
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    return null;
+  }
+
+  _supabaseAdmin = createClient(url, key, {
     auth: {
       autoRefreshToken: false,
       persistSession: false
     }
-  }
-);
+  });
+
+  return _supabaseAdmin;
+}
 
 // Cache version - read from env var to allow updates without code deploy
 // Format: YYYY-MM (e.g., "2025-12" for December 2025 data)
@@ -31,6 +43,20 @@ export async function GET(req: NextRequest) {
   // Check for Vercel cache headers to detect cached responses
   const vercelCacheHeader = req.headers.get('x-vercel-cache');
   const isCachedResponse = vercelCacheHeader === 'HIT' || vercelCacheHeader === 'STALE';
+
+  // Check Supabase availability before proceeding
+  const supabaseAdmin = getSupabaseAdmin();
+  if (!supabaseAdmin) {
+    logger.warn("Provider search unavailable - Supabase not configured");
+    return NextResponse.json(
+      {
+        providers: [],
+        totalCount: 0,
+        error: "Provider search is temporarily unavailable",
+      },
+      { status: 503 }
+    );
+  }
 
   // Rate limiting - FIRST line of defense
   const rateLimitResponse = await checkRateLimit(req, searchRateLimit);

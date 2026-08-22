@@ -2,16 +2,20 @@
 // Enables instant page loads for all conditions with complete schema.org metadata
 //
 // Features:
-// - Static generation via generateStaticParams()
-// - ISR with 24-hour revalidation
+// - Static generation controlled by static-generation-policy
+// - ISR with 24-hour revalidation for on-demand pages
 // - Complete SEO metadata via MetadataFactory
 // - Full schema.org stack via SchemaFactory (5 schemas per page)
 // - Server-side data fetching (no client waterfalls)
+//
+// BUILD STRATEGY:
+// - Production builds use on-demand ISR to avoid Supabase dependency
+// - Sitemap completeness is independent of build-time generation
+// - SEO indexability is determined by the central index-decision-service
+// @see src/lib/build/static-generation-policy.ts
 
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { EntityService } from "@/lib/data/entity-service";
-import { supabase } from "@/lib/config/database";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
@@ -23,82 +27,90 @@ import {
   createProviderQuestionsNextStep,
 } from "@/domains/navigation/service";
 import type { NextStep } from "@/domains/navigation/types";
+import { getStaticParamsForRoute } from "@/lib/build/static-generation-policy";
+import { getAllConditionSlugs } from "@/lib/conditions/condition-loader";
+import {
+  getEntityBySlug,
+  isEntityFound,
+  isEntityUnavailable,
+} from "@/lib/data/entity-cache";
 
-// Generate static params for ALL conditions
-// Pre-renders all condition pages at build time for instant page loads
+// Generate static params based on the centralized static generation policy
+// In production builds with SSG_MODE=none (default), returns empty array
+// This removes Supabase from the build critical path while preserving full SEO
+// All pages are still rendered on-demand via ISR with complete HTML/metadata
 export async function generateStaticParams() {
-  try {
-    // Pre-render ALL condition pages at build time (~133 pages)
-    // This ensures instant page loads from search results
-    const { data: conditions } = await supabase
-      .from("entities")
-      .select("slug")
-      .eq("type", "condition")
-      .eq("status", "active")
-      .order("title");
-      // No limit - pre-render ALL for instant loads
-
-    console.log(`📦 Generating ${conditions?.length || 0} static condition pages at build time`);
-
-    return conditions?.map((c) => ({ slug: c.slug })) || [];
-  } catch (error) {
-    console.error("Failed to generate static params for conditions:", error);
-    return []; // Graceful fallback - all pages will be on-demand
-  }
+  return getStaticParamsForRoute("conditions", getAllConditionSlugs);
 }
 
 // Generate complete SEO metadata using MetadataFactory
 // Includes: title, description, keywords, canonical, OpenGraph, Twitter Card
+// Uses request-scoped cache to share entity data with page component
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  try {
-    const { slug } = await params;
-    const entity = await EntityService.getBySlug(slug);
+  const { slug } = await params;
+  const result = await getEntityBySlug(slug);
 
-    if (!entity) {
-      return {
-        title: "Condition Information | HeyPsych",
-        description: "Learn about mental health conditions with evidence-based information.",
-      };
-    }
-
-    // Validate that this is actually a condition type
-    const entityType = getEntityType(entity);
-    if (entityType !== 'condition') {
-      return {
-        title: "Not Found | HeyPsych",
-        description: "The requested page was not found.",
-      };
-    }
-
-    // Use MetadataFactory to generate complete SEO metadata
-    return await MetadataFactory.generate(entity);
-  } catch (error) {
-    console.error("Failed to generate metadata for condition:", error);
+  // Handle database unavailability - return safe defaults without caching as 404
+  if (isEntityUnavailable(result)) {
+    console.error("[ConditionPage] Database unavailable for metadata:", slug);
     return {
       title: "Condition Information | HeyPsych",
       description: "Learn about mental health conditions with evidence-based information.",
     };
   }
+
+  // Entity not found - return appropriate defaults
+  if (!isEntityFound(result)) {
+    return {
+      title: "Condition Information | HeyPsych",
+      description: "Learn about mental health conditions with evidence-based information.",
+    };
+  }
+
+  const entity = result.entity;
+
+  // Validate that this is actually a condition type
+  const entityType = getEntityType(entity);
+  if (entityType !== "condition") {
+    return {
+      title: "Not Found | HeyPsych",
+      description: "The requested page was not found.",
+    };
+  }
+
+  // Use MetadataFactory to generate complete SEO metadata
+  return await MetadataFactory.generate(entity);
 }
 
-// Server Component - Fetches data on server (or from cache)
+// Server Component - Fetches data on server (or from request-scoped cache)
 // Generates complete schema.org stack for SEO + inline links
+// Entity is deduplicated with generateMetadata via React cache()
 export default async function ConditionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const entity = await EntityService.getBySlug(slug);
+  const result = await getEntityBySlug(slug);
 
-  if (!entity) {
+  // Handle database unavailability - throw to trigger error boundary
+  // This prevents caching a temporary failure as a permanent 404
+  if (isEntityUnavailable(result)) {
+    console.error("[ConditionPage] Database unavailable:", slug);
+    throw new Error("Database temporarily unavailable");
+  }
+
+  // Entity not found - proper 404
+  if (!isEntityFound(result)) {
     notFound();
   }
+
+  const entity = result.entity;
 
   // Validate that this is actually a condition, not a treatment/resource/provider
   // Treatments should be at /treatments/[slug], resources at /resources/[slug]
   const entityType = getEntityType(entity);
-  if (entityType !== 'condition') {
+  if (entityType !== "condition") {
     notFound();
   }
 

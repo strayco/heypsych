@@ -1,46 +1,49 @@
 /**
  * Programmatic SEO Dynamic Route - THE WIN PROTOCOL
- * 
+ *
  * SUSTAINABLE DOMINANCE through:
  * 1. Index Eligibility Gate - only index pages that earn it
  * 2. Canonical Authority Model - answer kings vs variants
  * 3. Honest Freshness - real dates, not fake "Updated today"
  * 4. Real Medical Authority - provable, not claimed
  * 5. Proper Schema Discipline - less, but correct
- * 
+ *
  * Pages are GENERATED but only INDEXED if they pass eligibility:
  * - Demand score ≥ threshold
- * - Uniqueness score ≥ threshold  
+ * - Uniqueness score ≥ threshold
  * - Safety completeness score = pass
  * - Canonical authority exists
+ *
+ * BUILD STRATEGY:
+ * - Production builds use on-demand ISR to avoid generating thousands of pages
+ * - Pages are rendered on first request with complete HTML/metadata
+ * - Sitemap completeness is independent of build-time generation
+ * - SEO indexability is determined by the central index-decision-service
+ * @see src/lib/build/static-generation-policy.ts
  */
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
-  generateDynamicPageConfigs,
   parseDynamicSlug,
 } from '@/lib/programmatic-seo/dynamic-generator';
 import { generatePageContent } from '@/lib/programmatic-seo/content-engine';
 import { makeGuideIndexDecision, getCanonicalUrl } from '@/lib/seo/index-decision-service';
 import { SITE_CONFIG } from '@/lib/seo/config';
 import { GuidePageClient } from './client-wrapper';
+import { getStaticParamsForRoute } from '@/lib/build/static-generation-policy';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Generate all static paths at build time
-// This crawls your JSON files and generates all valid combinations
+// Generate static params based on the centralized static generation policy
+// In production builds with SSG_MODE=none (default), returns empty array
+// This prevents generating thousands of pages and making builds take hours
+// All pages are still rendered on-demand via ISR with complete HTML/metadata/schema
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  try {
-    const configs = await generateDynamicPageConfigs();
-    console.log(`[Programmatic SEO] Generating ${configs.length} static pages`);
-    return configs.map(config => ({ slug: config.slug }));
-  } catch (error) {
-    console.error('[Programmatic SEO] Error generating static params:', error);
-    return [];
-  }
+  // Guide pages are unbounded programmatic pages - always on-demand in production
+  return getStaticParamsForRoute("guide");
 }
 
 // Generate metadata for each page (with INDEX ELIGIBILITY GATE)
@@ -155,3 +158,11 @@ export default async function GuidePage({ params }: PageProps) {
     </>
   );
 }
+
+// Revalidate every 24 hours (ISR)
+// Pages are rendered on-demand and cached for 24 hours
+export const revalidate = 86400;
+
+// Allow dynamic slugs not in generateStaticParams
+// This is essential for on-demand ISR - pages are generated on first request
+export const dynamicParams = true;

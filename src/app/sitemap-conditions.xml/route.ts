@@ -3,34 +3,90 @@
  *
  * Serves sitemap for all condition pages.
  * https://yourdomain.com/sitemap-conditions.xml
+ *
+ * SITEMAP POLICY:
+ * - Uses runtime database query with local fallback
+ * - Includes ALL eligible conditions regardless of build-time generation
+ * - Preserves sitemap completeness even when database is unavailable
+ * - Does not remove pages just because they weren't pre-rendered
+ *
+ * @see src/lib/build/static-generation-policy.ts - Build-time decisions
+ * @see src/lib/conditions/condition-loader.ts - Local data fallback
  */
 
-import { NextResponse } from 'next/server';
-import { EntityService } from '@/lib/data/entity-service';
-import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
+import { NextResponse } from "next/server";
+import { EntityService } from "@/lib/data/entity-service";
+import { getSitemapGenerator, generateSitemapXml } from "@/lib/seo/sitemap-generator";
+import { SITE_CONFIG } from "@/lib/seo/config";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 86400; // Revalidate daily
+// ISR with daily revalidation - sitemap is cached at edge for 24 hours
+// Note: force-dynamic was removed as it conflicts with revalidate
+export const revalidate = 86400;
 
 export async function GET() {
-  try {
-    const conditions = await EntityService.getByType('condition');
-    const activeConditions = conditions.filter((c) => c.status === 'active');
+  const generator = getSitemapGenerator();
 
-    const generator = getSitemapGenerator();
+  try {
+    // Try database first for the most up-to-date data
+    const conditions = await EntityService.getByType("condition");
+    const activeConditions = conditions.filter((c) => c.status === "active");
+
+    console.log(
+      `[Sitemap] Generated conditions sitemap from database: ${activeConditions.length} conditions`
+    );
+
     const xml = await generator.generateConditionsSitemap(activeConditions);
 
     return new NextResponse(xml, {
       status: 200,
       headers: {
-        'Content-Type': 'application/xml',
-        'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=86400, s-maxage=86400",
+        "X-Sitemap-Source": "database",
       },
     });
-  } catch (error) {
-    console.error('Failed to generate conditions sitemap:', error);
-    return new NextResponse('Failed to generate conditions sitemap', {
-      status: 500,
-    });
+  } catch (dbError) {
+    console.warn(
+      "[Sitemap] Database unavailable, falling back to local data:",
+      dbError
+    );
+
+    // Fallback to local JSON files with SEO eligibility filtering
+    // This ensures sitemap remains correct even during database outages
+    // by applying the same SEO firewall as the database path
+    try {
+      const { getSitemapEligibleConditions } = await import(
+        "@/lib/conditions/condition-loader"
+      );
+      const eligibleConditions = await getSitemapEligibleConditions();
+      const baseUrl = SITE_CONFIG.url.trim().replace(/\/+$/, "");
+
+      const urls = eligibleConditions.map((c) => ({
+        loc: `${baseUrl}/conditions/${c.slug}`,
+        lastmod: c.lastmod,
+        changefreq: "monthly" as const,
+        priority: 0.8,
+      }));
+
+      const xml = generateSitemapXml(urls);
+
+      console.log(
+        `[Sitemap] Generated conditions sitemap from local files: ${urls.length} eligible conditions`
+      );
+
+      return new NextResponse(xml, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/xml",
+          "Cache-Control": "public, max-age=3600, s-maxage=3600", // Shorter cache for fallback
+          "X-Sitemap-Source": "local-fallback-filtered",
+        },
+      });
+    } catch (localError) {
+      console.error("[Sitemap] Failed to generate conditions sitemap:", localError);
+      return new NextResponse("Failed to generate conditions sitemap", {
+        status: 500,
+      });
+    }
   }
 }

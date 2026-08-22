@@ -335,14 +335,24 @@ export class EntityService {
         .order("type", { ascending: true })
         .limit(1);
 
-      if (!error && data && data.length > 0) {
+      // Database error - throw to distinguish from "not found"
+      // Callers like entity-cache.ts need to know if this is a transient failure
+      if (error) {
+        console.error("Supabase error in getBySlug:", error);
+        throw new Error(`Database error fetching entity "${slug}": ${error.message}`);
+      }
+
+      if (data && data.length > 0) {
         return normalizeEntity(data[0]);
       }
 
+      // Confirmed not found - entity doesn't exist
       return null;
     } catch (error) {
+      // Re-throw database errors to preserve error semantics
+      // Only swallow non-database errors (shouldn't happen)
       console.error("Error in getBySlug:", error);
-      return null;
+      throw error;
     }
   }
 
