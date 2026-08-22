@@ -9,14 +9,9 @@ export default defineConfig({
     // See: https://github.com/vitest-dev/vitest/issues/4540
     pool: "threads",
 
-    // Default test environment - node for most tests
-    // React component tests (.tsx) use jsdom via environmentMatchGlobs
+    // Use node environment to avoid jsdom/undici issues with Node 24+
+    // Component tests can add `// @vitest-environment jsdom` as needed
     environment: "node",
-
-    // Use jsdom only for React component tests that need a DOM
-    environmentMatchGlobs: [
-      ["**/*.test.tsx", "jsdom"],
-    ],
 
     // Setup file for jest-dom matchers
     setupFiles: ["./tests/setup.ts"],

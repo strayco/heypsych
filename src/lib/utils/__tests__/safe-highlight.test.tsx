@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 /**
  * Safe Highlight XSS Protection Tests
  *
