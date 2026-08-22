@@ -245,6 +245,10 @@ function normalizeEntity(row: any): Entity {
     updated_at: new Date().toISOString(),
   };
 
+  // Extract editorial metadata from multiple possible sources
+  // Priority: row.editorial (direct) > normalizedContent.editorial > row.content.editorial
+  const editorial = row.editorial || normalizedContent?.editorial || row.content?.editorial;
+
   return {
     id: row.id,
     schema_id: `schema-${schemaName}`,
@@ -263,6 +267,8 @@ function normalizeEntity(row: any): Entity {
     created_by: row.created_by,
     updated_by: row.updated_by,
     schema: schemaMeta,
+    // Editorial metadata for E-A-T compliance (YMYL content)
+    editorial,
   };
 }
 
