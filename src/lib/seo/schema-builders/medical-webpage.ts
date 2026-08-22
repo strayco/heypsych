@@ -65,6 +65,7 @@ export function buildMedicalWebPageSchema(entity: Entity, pageUrl: string): Reco
   }
 
   // Editorial dates (if present)
+  // Check both legacy format (entity.editorial.dates) and v2 format (entity.data.editorial)
   if (hasEditorialDates(entity)) {
     const dates = entity.editorial!.dates!;
 
@@ -73,6 +74,17 @@ export function buildMedicalWebPageSchema(entity: Entity, pageUrl: string): Reco
 
     if (dates.lastMedicallyReviewed) {
       builder.addProperty('lastReviewed', dates.lastMedicallyReviewed);
+    }
+  } else {
+    // Handle v2 format where editorial data is in entity.data.editorial
+    const v2Editorial = entity.data?.editorial;
+    if (v2Editorial) {
+      if (v2Editorial.lastUpdated) {
+        builder.addProperty('dateModified', v2Editorial.lastUpdated);
+      }
+      if (v2Editorial.lastReviewed) {
+        builder.addProperty('lastReviewed', v2Editorial.lastReviewed);
+      }
     }
   }
 

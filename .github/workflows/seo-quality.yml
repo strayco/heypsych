@@ -27,20 +27,21 @@ jobs:
 
       - name: Set up environment
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
-          echo "DATABASE_URL=$DATABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.local
 
       - name: Run SEO Metrics
         id: metrics
         run: |
-          npm run seo:metrics:json > seo-report.json || echo "METRICS_FAILED=true" >> $GITHUB_ENV
+          if npm run seo:metrics:json > seo-report.json 2>&1; then
+            echo "METRICS_OK=true" >> $GITHUB_ENV
+          else
+            echo '{"summary":{"health_score":0,"issues_count":1},"issues":["SEO metrics script failed"]}' > seo-report.json
+            echo "METRICS_FAILED=true" >> $GITHUB_ENV
+          fi
           cat seo-report.json
 
       - name: Upload SEO Report
@@ -112,15 +113,11 @@ jobs:
 
       - name: Set up environment
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
-          echo "DATABASE_URL=$DATABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.local
 
       - name: Validate Schema Generation
         run: |
@@ -148,15 +145,11 @@ jobs:
 
       - name: Set up environment
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
-          echo "DATABASE_URL=$DATABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.local
 
       - name: Validate Sitemap Generation
         run: |
@@ -187,15 +180,11 @@ jobs:
 
       - name: Set up environment
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
-          echo "DATABASE_URL=$DATABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.local
 
       - name: Build Next.js app
         run: npm run build
@@ -254,15 +243,11 @@ jobs:
 
       - name: Set up environment
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
-          echo "DATABASE_URL=$DATABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY" >> .env.local
 
       - name: Build Next.js app
         run: npm run build

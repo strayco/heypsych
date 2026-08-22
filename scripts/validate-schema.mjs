@@ -27,7 +27,7 @@ const REQUIRED_SCHEMAS = {
 const TEST_PAGES = [
   { url: '/conditions/major-depressive-disorder', type: 'condition', name: 'MDD Condition' },
   { url: '/conditions/generalized-anxiety-disorder', type: 'condition', name: 'GAD Condition' },
-  { url: '/treatments/sertraline', type: 'treatment', name: 'Sertraline Medication' },
+  { url: '/treatments/sertraline-zoloft', type: 'treatment', name: 'Sertraline Medication' },
   { url: '/treatments/cognitive-behavioral-therapy', type: 'therapy', name: 'CBT Therapy' },
   { url: '/resources/gad-7', type: 'resource', name: 'GAD-7 Assessment' },
   { url: '/about/medical-review-board', type: 'board', name: 'Medical Review Board' },

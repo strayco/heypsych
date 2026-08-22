@@ -5,6 +5,10 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   test: {
+    // Use threads pool instead of forks to avoid undici/jsdom compatibility issues
+    // See: https://github.com/vitest-dev/vitest/issues/4540
+    pool: "threads",
+
     // Default test environment - jsdom for React tests
     environment: "jsdom",
 
