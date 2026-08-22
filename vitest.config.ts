@@ -9,8 +9,14 @@ export default defineConfig({
     // See: https://github.com/vitest-dev/vitest/issues/4540
     pool: "threads",
 
-    // Default test environment - jsdom for React tests
-    environment: "jsdom",
+    // Default test environment - node for most tests
+    // React component tests (.tsx) use jsdom via environmentMatchGlobs
+    environment: "node",
+
+    // Use jsdom only for React component tests that need a DOM
+    environmentMatchGlobs: [
+      ["**/*.test.tsx", "jsdom"],
+    ],
 
     // Setup file for jest-dom matchers
     setupFiles: ["./tests/setup.ts"],
@@ -33,11 +39,16 @@ export default defineConfig({
       "**/entity-service.test.ts",
     ],
 
-    // Environment options for jsdom
+    // Environment options for jsdom (when used)
     environmentOptions: {
       jsdom: {
         url: "http://localhost:3000",
       },
+    },
+
+    // Inline undici to fix webidl compatibility issues with Node 24+
+    deps: {
+      inline: ["undici"],
     },
 
     // Global test timeout
