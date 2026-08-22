@@ -65,8 +65,9 @@ export function buildMedicalWebPageSchema(entity: Entity, pageUrl: string): Reco
   }
 
   // Editorial dates (if present)
-  // Check both legacy format (entity.editorial.dates) and v2 format (entity.data.editorial)
+  // Check multiple formats: legacy (entity.editorial.dates), raw (entity.editorial), v2 (entity.data.editorial)
   if (hasEditorialDates(entity)) {
+    // Legacy format with nested dates object
     const dates = entity.editorial!.dates!;
 
     builder.addProperty('datePublished', dates.published);
@@ -74,6 +75,14 @@ export function buildMedicalWebPageSchema(entity: Entity, pageUrl: string): Reco
 
     if (dates.lastMedicallyReviewed) {
       builder.addProperty('lastReviewed', dates.lastMedicallyReviewed);
+    }
+  } else if (entity.editorial?.lastReviewed || entity.editorial?.lastUpdated) {
+    // Raw format with dates directly on editorial object (used by conditions)
+    if (entity.editorial.lastUpdated) {
+      builder.addProperty('dateModified', entity.editorial.lastUpdated);
+    }
+    if (entity.editorial.lastReviewed) {
+      builder.addProperty('lastReviewed', entity.editorial.lastReviewed);
     }
   } else {
     // Handle v2 format where editorial data is in entity.data.editorial
