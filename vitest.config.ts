@@ -46,11 +46,6 @@ export default defineConfig({
       },
     },
 
-    // Inline undici to fix webidl compatibility issues with Node 24+
-    deps: {
-      inline: ["undici"],
-    },
-
     // Global test timeout
     testTimeout: 10000,
 
