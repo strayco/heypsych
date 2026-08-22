@@ -1,21 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "rhodiola",
-  "type": "supplement",
-  "name": "Rhodiola",
-  "summary": "Rhodiola (Rhodiola rosea) is an adaptogenic herb traditionally used to reduce fatigue, enhance resilience to stress, and support mood and cognitive performance.",
-  "description": "Rhodiola rosea is an adaptogenic plant native to cold regions of Europe and Asia. Its active compounds, such as rosavins and salidroside, are thought to modulate stress-response pathways, including the hypothalamic-pituitary-adrenal (HPA) axis, monoamine neurotransmitters, and mitochondrial function. It has been studied for its ability to reduce symptoms of fatigue, improve cognitive performance under stress, and support mood and anxiety disorders. While evidence suggests potential benefit in mild to moderate depression and stress-related fatigue, clinical data remain modest and heterogeneous.",
-  "category": "supplements",
-  "tags": [
-    "adaptogen",
-    "stress resilience",
-    "fatigue",
-    "mood support",
-    "cognition"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract (adaptogen)",
-    "natural_source": "Rhodiola rosea root",
+  "identity": {
+    "slug": "rhodiola",
+    "name": "Rhodiola",
+    "brand_names": [
+      "Arctic Root",
+      "Rhodaxon",
+      "Rosavin",
+      "Golden Root"
+    ],
+    "aliases": [
+      "Golden Root",
+      "Arctic Root",
+      "Roseroot"
+    ],
+    "wikidata_qid": "Q133592"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Psychiatry",
       "Neurology",
@@ -27,78 +31,165 @@
       "Mitochondrial support",
       "HPA axis regulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Arctic Root",
-      "Rhodaxon",
-      "Rosavin",
-      "Golden Root"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Integrative Medicine",
-      "Sports Medicine"
-    ],
-    "wikidata_qid": "Q133592"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Fatigue and reduced stamina",
-      "Stress resilience",
-      "Cognitive support under stress"
-    ],
-    "off_label_uses": [
-      "Adjunctive therapy for mild to moderate depression",
-      "Adjunctive support for anxiety",
-      "Support in chronic fatigue syndrome"
-    ],
-    "contraindications": [
-      "Bipolar disorder (may trigger mood instability in some cases)",
-      "Pregnancy and lactation (safety not established)"
-    ],
-    "monitoring_required": [
-      "Mood changes in individuals with psychiatric history",
-      "Blood pressure if combined with stimulants"
-    ],
-    "efficacy_rating": {
-      "stress_resilience": 4,
-      "fatigue": 4,
-      "mood": 3,
-      "cognition": 3,
-      "anxiety": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Rhodiola",
-      "Rhodiola rosea",
-      "Golden root",
-      "Arctic root"
-    ],
-    "synonyms": [
-      "Golden Root",
-      "Arctic Root",
-      "Roseroot"
-    ],
-    "common_misspellings": [
-      "rhodola",
-      "rodiola",
-      "rhodiloa"
+    "tags": [
+      "adaptogen",
+      "stress resilience",
+      "fatigue",
+      "mood support",
+      "cognition"
     ]
+  },
+  "summary": "Rhodiola (Rhodiola rosea) is an adaptogenic herb traditionally used to reduce fatigue, enhance resilience to stress, and support mood and cognitive performance.",
+  "description": "Rhodiola rosea is an adaptogenic plant native to cold regions of Europe and Asia. Its active compounds, such as rosavins and salidroside, are thought to modulate stress-response pathways, including the hypothalamic-pituitary-adrenal (HPA) axis, monoamine neurotransmitters, and mitochondrial function. It has been studied for its ability to reduce symptoms of fatigue, improve cognitive performance under stress, and support mood and anxiety disorders. While evidence suggests potential benefit in mild to moderate depression and stress-related fatigue, clinical data remain modest and heterogeneous.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "fatigue-and-reduced-stamina",
+          "condition_name": "Fatigue and reduced stamina",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-resilience",
+          "condition_name": "Stress resilience",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-support-under-stress",
+          "condition_name": "Cognitive support under stress",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-therapy-for-mild-to-moderate-depression",
+          "condition_name": "Adjunctive therapy for mild to moderate depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-support-for-anxiety",
+          "condition_name": "Adjunctive support for anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-in-chronic-fatigue-syndrome",
+          "condition_name": "Support in chronic fatigue syndrome",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "stress_resilience": {
+          "rating": 4
+        },
+        "fatigue": {
+          "rating": 4
+        },
+        "mood": {
+          "rating": 3
+        },
+        "cognition": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dry mouth"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Possible mood destabilization in bipolar disorder"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Bipolar disorder (may trigger mood instability in some cases)"
+        },
+        {
+          "contraindication": "Pregnancy and lactation (safety not established)"
+        }
+      ],
+      "precautions": [
+        "May cause overstimulation or insomnia if taken late in the day.",
+        "Caution in individuals with bipolar disorder or psychiatric instability."
+      ],
+      "interactions": [
+        {
+          "interactant": "SSRIs/SNRIs",
+          "mechanism": "Potential additive serotonergic effects",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Stimulants",
+          "mechanism": "Possible additive stimulating effects",
+          "action": "Use caution"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "May reduce effectiveness",
+          "action": "Monitor blood pressure"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood symptoms in psychiatric patients"
+        },
+        {
+          "parameter": "Blood pressure if at risk for hypertension"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid; insufficient safety data",
+        "lactation": "Not recommended due to limited data",
+        "pediatric": "Not established; avoid use",
+        "geriatric": "Generally safe at standard doses; monitor for interactions"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract (adaptogen)",
+        "natural_source": "Rhodiola rosea root",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -221,6 +312,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Rhodiola",
+      "url": "https://www.nccih.nih.gov/health/rhodiola"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Darbinyan V, et al. Rhodiola rosea in stress-induced fatigue—a double-blind cross-over study. Phytomedicine. 2000",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10839209/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Iovieno N, et al. Rhodiola rosea for depression: A pilot study. Phytomedicine. 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25640811/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Rhodiola",
+      "Rhodiola rosea",
+      "Golden root",
+      "Arctic root"
+    ],
+    "synonyms": [
+      "Golden Root",
+      "Arctic Root",
+      "Roseroot"
+    ],
+    "common_misspellings": [
+      "rhodola",
+      "rodiola",
+      "rhodiloa"
+    ]
+  },
   "seo": {
     "title": "Rhodiola – Adaptogenic Herb for Stress, Fatigue, and Mood Support",
     "description": "Rhodiola rosea is an adaptogen used to support stress resilience, reduce fatigue, and enhance mood and cognition. Learn about benefits, dosing, and safety.",

@@ -1,18 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "trazodone-desyrel",
-  "type": "medication",
-  "name": "Trazodone",
-  "summary": "Trazodone is an antidepressant often used to treat major depressive disorder, insomnia, and certain anxiety disorders.",
-  "description": "Trazodone, marketed under the brand name Desyrel among others, is an antidepressant that acts primarily as a serotonin antagonist and reuptake inhibitor (SARI). It is FDA-approved for the treatment of major depressive disorder in adults, but is also widely prescribed off-label for insomnia and anxiety due to its sedative properties. Trazodone modulates serotonin activity in the brain and has additional alpha-adrenergic and histamine receptor blocking effects. Its sedative action is thought to be related to its antihistaminic and alpha-1 adrenergic blocking properties.",
-  "category": "medications/psychiatry",
-  "tags": [
-    "antidepressant",
-    "insomnia",
-    "SARI",
-    "anxiolytic"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "trazodone-desyrel",
+    "name": "Trazodone",
+    "brand_names": [
+      "Desyrel",
+      "Oleptro"
+    ],
+    "aliases": [
+      "Desyrel",
+      "Oleptro"
+    ],
+    "wikidata_qid": "Q411457"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychiatry",
     "drug_classes": [
       "Antidepressant",
       "Serotonin antagonist and reuptake inhibitor"
@@ -24,68 +28,161 @@
     "mechanism_categories": [
       "Other"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription only",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Desyrel",
-      "Oleptro"
-    ],
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Long-term maintenance",
-      "Short-term (insomnia)"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep medicine"
-    ],
-    "fda_approval_year": 1981,
-    "wikidata_qid": "Q411457"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression"
-    ],
-    "off_label_uses": [
-      "Insomnia",
-      "Anxiety disorders",
-      "Fibromyalgia"
-    ],
-    "contraindications": [
-      "Hypersensitivity to trazodone or formulation components",
-      "Concurrent use with MAOIs or within 14 days of MAOI therapy"
-    ],
-    "monitoring_required": [
-      "Mood and suicidal ideation",
-      "Signs of serotonin syndrome",
-      "Orthostatic blood pressure"
-    ],
-    "efficacy_rating": {
-      "Major depressive disorder": 3,
-      "Insomnia": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "trazodone",
-      "Desyrel",
-      "SARI antidepressant"
-    ],
-    "synonyms": [
-      "Desyrel",
-      "Oleptro"
-    ],
-    "common_misspellings": [
-      "trazadone",
-      "trasodone"
+    "tags": [
+      "antidepressant",
+      "insomnia",
+      "SARI",
+      "anxiolytic"
     ]
+  },
+  "summary": "Trazodone is an antidepressant often used to treat major depressive disorder, insomnia, and certain anxiety disorders.",
+  "description": "Trazodone, marketed under the brand name Desyrel among others, is an antidepressant that acts primarily as a serotonin antagonist and reuptake inhibitor (SARI). It is FDA-approved for the treatment of major depressive disorder in adults, but is also widely prescribed off-label for insomnia and anxiety due to its sedative properties. Trazodone modulates serotonin activity in the brain and has additional alpha-adrenergic and histamine receptor blocking effects. Its sedative action is thought to be related to its antihistaminic and alpha-1 adrenergic blocking properties.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fibromyalgia",
+          "condition_name": "Fibromyalgia",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "Major depressive disorder": {
+          "rating": 3
+        },
+        "Insomnia": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Long-term maintenance; Short-term (insomnia)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "drowsiness"
+        },
+        {
+          "effect": "dry mouth"
+        },
+        {
+          "effect": "dizziness"
+        },
+        {
+          "effect": "blurred vision"
+        },
+        {
+          "effect": "constipation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "priapism"
+        },
+        {
+          "risk": "serotonin syndrome"
+        },
+        {
+          "risk": "cardiac arrhythmias"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to trazodone or formulation components"
+        },
+        {
+          "contraindication": "Concurrent use with MAOIs or within 14 days of MAOI therapy"
+        }
+      ],
+      "precautions": [
+        "May cause orthostatic hypotension and syncope",
+        "Risk of serotonin syndrome with serotonergic agents",
+        "Priapism is a rare but serious adverse effect",
+        "May cause sedation; caution with activities requiring alertness"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs",
+          "mechanism": "Serotonin syndrome",
+          "action": "Contraindicated; allow 14-day washout"
+        },
+        {
+          "interactant": "Other CNS depressants",
+          "mechanism": "Additive sedation",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Strong CYP3A4 inhibitors",
+          "mechanism": "Increased trazodone levels",
+          "action": "Consider dose adjustment"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood changes and suicidal ideation"
+        },
+        {
+          "parameter": "Signs of serotonin syndrome"
+        },
+        {
+          "parameter": "Blood pressure (especially orthostatic)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; use only if benefit justifies risk",
+        "lactation": "Excreted in human milk; caution advised",
+        "geriatric": "Increased sensitivity to sedation and orthostatic hypotension; use lower doses"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1981
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "dosing": {},
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Gradually reduce dose over 1–2 weeks to minimize withdrawal symptoms."
+        }
+      }
+    }
   },
   "sections": [
     {
@@ -212,6 +309,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Desyrel Prescribing Information",
+      "url": "https://www.accessdata.fda.gov/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "NHS - Trazodone",
+      "url": "https://www.nhs.uk/medicines/trazodone/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "PubChem - Trazodone",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Trazodone"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "trazodone",
+      "Desyrel",
+      "SARI antidepressant"
+    ],
+    "synonyms": [
+      "Desyrel",
+      "Oleptro"
+    ],
+    "common_misspellings": [
+      "trazadone",
+      "trasodone"
+    ]
+  },
   "seo": {
     "title": "Trazodone (Desyrel) - Uses, Dosage, Side Effects, and Warnings",
     "description": "Trazodone (Desyrel) is an antidepressant also used for insomnia. Learn about dosing, side effects, interactions, and monitoring.",

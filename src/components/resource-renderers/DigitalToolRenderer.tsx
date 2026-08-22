@@ -3,9 +3,14 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Smartphone, Star, Download, ExternalLink, Shield, Clock } from "lucide-react";
+import { Smartphone, Star, Download, ExternalLink, Shield, Clock, HelpCircle } from "lucide-react";
 import { SEOMeta, SectionList, ReferencesTable, AutoFields } from "./shared";
 import type { ResourceRendererProps } from "./index";
+import {
+  isComplianceConfirmedYes,
+  isComplianceUnknown,
+  getHipaaBadgeVariant,
+} from "@/lib/schemas/tool-editorial";
 
 // Import V2 section components
 import { PatientSummary } from "./sections/PatientSummary";
@@ -45,16 +50,16 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Smartphone className="h-6 w-6 text-indigo-600" />
+              <Smartphone className="h-6 w-6 text-label-secondary" />
               <div>
                 <CardTitle>{data.name}</CardTitle>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-label-tertiary">
                   {data.metadata?.app_category || "Digital Mental Health Tool"}
                 </p>
               </div>
             </div>
             {data.metadata?.privacy_certified && (
-              <Badge variant="outline" className="border-green-500 text-green-700">
+              <Badge variant="outline" className="border-positive-border text-positive-600">
                 <Shield className="mr-1 h-3 w-3" />
                 Privacy Certified
               </Badge>
@@ -66,11 +71,11 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
           {data.app_rating && (
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1">
-                <Star className="h-5 w-5 fill-current text-yellow-500" />
-                <span className="text-2xl font-bold text-gray-900">{data.app_rating}</span>
+                <Star className="h-5 w-5 fill-current text-caution" />
+                <span className="text-2xl font-bold text-label-primary">{data.app_rating}</span>
               </div>
               {data.total_reviews && (
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-label-tertiary">
                   {formatReviews(data.total_reviews)} reviews
                 </span>
               )}
@@ -80,7 +85,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
           {/* Platforms */}
           {data.metadata?.platforms && (
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">Available On</h4>
+              <h4 className="mb-2 text-sm font-semibold text-label-secondary">Available On</h4>
               <div className="flex flex-wrap gap-2">
                 {data.metadata.platforms.map((platform: string, i: number) => (
                   <Badge key={i} variant="outline">
@@ -102,14 +107,31 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
             {data.metadata?.free_tier_available && (
               <Badge variant="success">Free Tier Available</Badge>
             )}
-            {data.metadata?.hipaa_compliant && (
-              <Badge variant="primary">HIPAA Compliant</Badge>
-            )}
+            {/* HIPAA Badge - only show confirmed YES, don't mislead on unknown */}
+            {(() => {
+              const hipaaValue = data.privacy?.hipaa_compliant ?? data.metadata?.hipaa_compliant;
+              const variant = getHipaaBadgeVariant(hipaaValue);
+
+              if (variant === "compliant") {
+                return <Badge variant="primary">HIPAA Compliant</Badge>;
+              }
+              if (variant === "unknown" && data.privacy?.grade) {
+                // Only show unknown badge if we have other privacy data (tool is healthcare-relevant)
+                return (
+                  <Badge variant="outline" className="border-label-tertiary text-label-tertiary">
+                    <HelpCircle className="mr-1 h-3 w-3" />
+                    HIPAA Status Unknown
+                  </Badge>
+                );
+              }
+              // Don't show badge for confirmed NO or N/A (absence of badge implies no HIPAA)
+              return null;
+            })()}
           </div>
 
           {/* Last Updated */}
           {data.metadata?.last_updated && (
-            <div className="flex items-center gap-2 text-xs text-gray-500">
+            <div className="flex items-center gap-2 text-xs text-label-primary0">
               <Clock className="h-3 w-3" />
               Last updated: {new Date(data.metadata.last_updated).toLocaleDateString()}
             </div>
@@ -123,7 +145,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button>
+                <Button variant="primary">
                   <Download className="mr-2 h-4 w-4" />
                   Download (iOS)
                 </Button>
@@ -136,7 +158,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button>
+                <Button variant="primary">
                   <Download className="mr-2 h-4 w-4" />
                   Download (Android)
                 </Button>
@@ -149,7 +171,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="outline">
+                <Button variant="secondary">
                   Visit Website <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </a>

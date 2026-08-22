@@ -1,74 +1,142 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "glabellar-botulinum-toxini-injection",
-  "type": "interventional",
-  "name": "Glabellar Botulinum Toxin Injection",
-  "summary": "An interventional treatment involving targeted injection of botulinum toxin into the glabellar region, explored for psychiatric use in major depressive disorder and commonly used cosmetically to reduce frown lines.",
-  "description": "Glabellar botulinum toxin injection involves administering botulinum toxin type A into the muscles of the glabellar region (between the eyebrows) to reduce hyperactivity of the corrugator and procerus muscles. While its primary use is cosmetic (to reduce frown lines), clinical trials have investigated its role in alleviating symptoms of major depressive disorder. The hypothesized mechanism is based on the facial feedback hypothesis, where reducing the ability to form negative facial expressions may improve mood states. This treatment is minimally invasive and performed in an outpatient setting.",
-  "category": "interventional/neurostimulation",
-  "tags": [
-    "botulinum-toxin",
-    "depression",
-    "facial-feedback",
-    "psychiatry",
-    "neuromodulation"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "glabellar-botulinum-toxini-injection",
+    "name": "Glabellar Botulinum Toxin Injection",
+    "wikidata_qid": "Q64792465"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurostimulation",
     "intervention_types": [
       "Botulinum toxin type A injection"
     ],
-    "treatment_types": [
-      "Injectable",
-      "Neurotoxin"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Cosmetic dermatology"
-    ],
-    "delivery_methods": [
-      "Local injection into glabellar muscles"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adults"
-    ],
-    "session_duration": "10–20 minutes",
-    "treatment_duration": [
-      "Effects last 3–4 months"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Dermatology",
-      "Aesthetic medicine"
-    ],
-    "wikidata_qid": "Q64792465"
+    "tags": [
+      "botulinum-toxin",
+      "depression",
+      "facial-feedback",
+      "psychiatry",
+      "neuromodulation"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder (investigational)",
-      "Cosmetic reduction of glabellar frown lines"
-    ],
-    "conditions_treated": [
-      "Major depression",
-      "Cosmetic facial rhytides"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders (exploratory research)"
-    ],
-    "contraindications": [
-      "Known hypersensitivity to botulinum toxin",
-      "Neuromuscular disorders (e.g., myasthenia gravis)",
-      "Active infection at injection site"
-    ],
-    "safety_profile": "Generally well-tolerated; localized side effects most common.",
-    "evidence_level": "Moderate for cosmetic use; emerging for psychiatric use.",
-    "research_support": "Several randomized controlled trials suggest benefit for depression; replication ongoing.",
-    "invasiveness": "Minimally invasive injection",
-    "efficacy_rating": {
-      "cosmetic_use": 5,
-      "depression": 3
+  "summary": "An interventional treatment involving targeted injection of botulinum toxin into the glabellar region, explored for psychiatric use in major depressive disorder and commonly used cosmetically to reduce frown lines.",
+  "description": "Glabellar botulinum toxin injection involves administering botulinum toxin type A into the muscles of the glabellar region (between the eyebrows) to reduce hyperactivity of the corrugator and procerus muscles. While its primary use is cosmetic (to reduce frown lines), clinical trials have investigated its role in alleviating symptoms of major depressive disorder. The hypothesized mechanism is based on the facial feedback hypothesis, where reducing the ability to form negative facial expressions may improve mood states. This treatment is minimally invasive and performed in an outpatient setting.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder-investigational",
+          "condition_name": "Major depressive disorder (investigational)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cosmetic-reduction-of-glabellar-frown-lines",
+          "condition_name": "Cosmetic reduction of glabellar frown lines",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depression",
+          "condition_name": "Major depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cosmetic-facial-rhytides",
+          "condition_name": "Cosmetic facial rhytides",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders-exploratory-research",
+          "condition_name": "Anxiety disorders (exploratory research)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for cosmetic use; emerging for psychiatric use.",
+      "efficacy_ratings": {
+        "cosmetic_use": {
+          "rating": 5
+        },
+        "depression": {
+          "rating": 3
+        }
+      },
+      "research_support": "Several randomized controlled trials suggest benefit for depression; replication ongoing."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Effects last 3–4 months"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Local injection into glabellar muscles"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "10–20 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well-tolerated; localized side effects most common.",
+      "common_adverse_effects": [
+        {
+          "effect": "Injection site pain"
+        },
+        {
+          "effect": "Bruising"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Systemic botulinum toxin effects (very rare with cosmetic dosing)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Neuromuscular disorders",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Known hypersensitivity",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Active infection at site",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy and breastfeeding (safety not established)",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Botulinum toxin type A injection",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Skin cleansed and prepared\nBotulinum toxin type A injected into corrugator and procerus muscles (typical total dose: 20–40 units)\nPost-injection care includes avoiding rubbing the area for several hours"
+      }
     }
   },
   "sections": [
@@ -224,6 +292,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Finzi E, Rosenthal NE. Treatment of depression with onabotulinumtoxinA: a randomized, double-blind, placebo-controlled trial. J Psychiatr Res. 2014;52:1–6.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24342292/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Magid M, et al. Botulinum toxin for depression: a randomized controlled trial. J Psychiatr Res. 2015;70:63–67.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26411958/"
+    }
+  ],
   "seo": {
     "title": "Glabellar Botulinum Toxin Injection – Cosmetic and Psychiatric Use",
     "description": "Glabellar botulinum toxin injection is a minimally invasive treatment used cosmetically for frown lines and investigated as an adjunctive therapy for depression.",
@@ -236,5 +318,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for cosmetic use; emerging for psychiatric use."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for cosmetic use; emerging for psychiatric use."
+    ]
   }
 }

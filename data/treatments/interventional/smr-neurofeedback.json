@@ -1,84 +1,167 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "smr-neurofeedback",
-  "type": "interventional",
-  "name": "SMR Neurofeedback (Sensorimotor Rhythm Training)",
-  "summary": "A neurofeedback technique that trains patients to enhance brainwave activity in the sensorimotor rhythm range (12–15 Hz), often used to improve sleep, attention, and seizure control.",
-  "description": "Sensorimotor Rhythm (SMR) Neurofeedback is a specialized form of EEG-based biofeedback. It targets brain activity in the 12–15 Hz range, typically recorded over the sensorimotor cortex. Training patients to increase SMR activity is associated with improved sleep quality, reduced hyperactivity, enhanced attention, and decreased seizure susceptibility. It has been used in ADHD, insomnia, and epilepsy treatment, supported by decades of clinical application.",
-  "category": "interventional/neurofeedback",
-  "tags": [
-    "SMR neurofeedback",
-    "sensorimotor rhythm training",
-    "EEG biofeedback",
-    "sleep enhancement",
-    "ADHD",
-    "epilepsy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "smr-neurofeedback",
+    "name": "SMR Neurofeedback (Sensorimotor Rhythm Training)",
+    "generic_name": "smr neurofeedback",
+    "brand_names": [
+      "Sensorimotor Rhythm Training"
+    ],
+    "wikidata_qid": "Q60943199"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurofeedback",
     "intervention_types": [
       "Neurofeedback",
       "EEG-based therapy"
     ],
-    "treatment_types": [
-      "Non-invasive therapy"
-    ],
-    "categories": [
-      "Neurology",
-      "Psychiatry",
-      "Sleep Medicine"
-    ],
-    "delivery_methods": [
-      "EEG-based computer feedback"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Child",
-      "Adolescent",
-      "Adult"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "20–40 sessions typically required"
-    ],
-    "specialty_areas": [
+    "tags": [
+      "SMR neurofeedback",
+      "sensorimotor rhythm training",
+      "EEG biofeedback",
+      "sleep enhancement",
       "ADHD",
-      "Epilepsy",
-      "Insomnia",
-      "Neurodevelopmental disorders"
-    ],
-    "wikidata_qid": "Q60943199"
+      "epilepsy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)",
-      "Insomnia",
-      "Epilepsy"
-    ],
-    "conditions_treated": [
-      "ADHD",
-      "Insomnia",
-      "Seizure disorders",
-      "Sleep disturbances"
-    ],
-    "off_label_uses": [
-      "Anxiety",
-      "Autism Spectrum Disorder"
-    ],
-    "contraindications": [
-      "Severe intellectual disability (difficulty engaging in training)",
-      "Active psychosis"
-    ],
-    "safety_profile": "Generally safe and well-tolerated. Mild fatigue or frustration during sessions possible.",
-    "evidence_level": "Moderate to strong for ADHD and epilepsy; growing evidence for insomnia.",
-    "research_support": "Several randomized controlled trials and meta-analyses support efficacy for ADHD and seizure reduction.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "adhd": 4,
-      "insomnia": 3,
-      "epilepsy": 4,
-      "anxiety": 2
+  "summary": "A neurofeedback technique that trains patients to enhance brainwave activity in the sensorimotor rhythm range (12–15 Hz), often used to improve sleep, attention, and seizure control.",
+  "description": "Sensorimotor Rhythm (SMR) Neurofeedback is a specialized form of EEG-based biofeedback. It targets brain activity in the 12–15 Hz range, typically recorded over the sensorimotor cortex. Training patients to increase SMR activity is associated with improved sleep quality, reduced hyperactivity, enhanced attention, and decreased seizure susceptibility. It has been used in ADHD, insomnia, and epilepsy treatment, supported by decades of clinical application.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder-adhd",
+          "condition_name": "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "seizure-disorders",
+          "condition_name": "Seizure disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "sleep-disturbances",
+          "condition_name": "Sleep disturbances",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "autism-spectrum-disorder",
+          "condition_name": "Autism Spectrum Disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to strong for ADHD and epilepsy; growing evidence for insomnia.",
+      "efficacy_ratings": {
+        "adhd": {
+          "rating": 4
+        },
+        "insomnia": {
+          "rating": 3
+        },
+        "epilepsy": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 2
+        }
+      },
+      "research_support": "Several randomized controlled trials and meta-analyses support efficacy for ADHD and seizure reduction."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "20–40 sessions typically required"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "EEG-based computer feedback"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe and well-tolerated. Mild fatigue or frustration during sessions possible.",
+      "common_adverse_effects": [
+        {
+          "effect": "Fatigue"
+        },
+        {
+          "effect": "Mild frustration"
+        },
+        {
+          "effect": "Difficulty sustaining focus during training"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "No serious adverse effects reported"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Poor adherence to training schedule",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe and non-invasive alternative to pharmacotherapy."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Neurofeedback, EEG-based therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Baseline EEG recorded and target SMR band set.\nPatients engage in training tasks (games, visual/auditory feedback) where rewards are given for sustaining SMR activity.\nTraining repeated across sessions to reinforce brainwave regulation."
+      }
     }
   },
   "sections": [
@@ -251,6 +334,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Arns M, et al. Efficacy of neurofeedback treatment in ADHD: the effects on inattention, impulsivity and hyperactivity: a meta-analysis. Clin EEG Neurosci. (2009).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19715181/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Sterman MB, et al. Neurophysiological studies of epilepsy: sensory motor rhythm. Electroencephalogr Clin Neurophysiol. (1974).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4139057/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Hoedlmoser K, et al. Neurofeedback training of the SMR and its impact on sleep. Sleep. (2008).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18457238/"
+    }
+  ],
   "seo": {
     "title": "SMR Neurofeedback | EEG Therapy for ADHD, Insomnia, and Epilepsy",
     "description": "SMR neurofeedback trains the brain’s 12–15 Hz rhythms to improve sleep, attention, and seizure control. Learn protocols, indications, outcomes, and evidence.",
@@ -263,5 +366,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to strong for ADHD and epilepsy; growing evidence for insomnia."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to strong for ADHD and epilepsy; growing evidence for insomnia."
+    ]
   }
 }

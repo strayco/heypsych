@@ -1,21 +1,26 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b3-niacin",
-  "type": "supplement",
-  "name": "Vitamin B3 (Niacin)",
-  "summary": "Vitamin B3, also known as niacin, is an essential water-soluble vitamin important for energy metabolism, cardiovascular health, and skin integrity.",
-  "description": "Niacin (Vitamin B3) exists in two main forms, nicotinic acid and nicotinamide (niacinamide). Both are precursors to nicotinamide adenine dinucleotide (NAD⁺/NADH) and nicotinamide adenine dinucleotide phosphate (NADP⁺/NADPH), essential coenzymes in cellular metabolism, DNA repair, and antioxidant defense. Niacin plays a key role in energy production, maintaining healthy skin, nerves, and digestion. High-dose niacin (nicotinic acid) has been used clinically to manage dyslipidemia, as it lowers LDL cholesterol and triglycerides while raising HDL cholesterol. Niacinamide is more often used in dermatology and supplementation, as it does not cause flushing. Deficiency results in pellagra, characterized by the “3 Ds”: dermatitis, diarrhea, and dementia.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "energy metabolism",
-    "cardiovascular health",
-    "skin health"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Meat, poultry, fish, nuts, legumes, whole grains, fortified cereals",
+  "identity": {
+    "slug": "vitamin-b3-niacin",
+    "name": "Vitamin B3 (Niacin)",
+    "generic_name": "vitamin b3",
+    "brand_names": [
+      "Niacor",
+      "Niaspan",
+      "Slo-Niacin",
+      "Niacinamide"
+    ],
+    "aliases": [
+      "Nicotinic acid",
+      "Niacinamide",
+      "Nicotinamide"
+    ],
+    "wikidata_qid": "Q30715691"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutritional Support",
       "Cardiology",
@@ -28,81 +33,164 @@
       "DNA repair",
       "Antioxidant defense"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous (clinical use)"
-    ],
-    "prescription_status": "Over-the-counter (low-dose); Prescription (high-dose for dyslipidemia)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Niacor",
-      "Niaspan",
-      "Slo-Niacin",
-      "Niacinamide"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved drug (for dyslipidemia); Dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Cardiology",
-      "Dermatology",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q30715691"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment and prevention of niacin deficiency (pellagra)",
-      "Adjunct therapy for dyslipidemia (high-dose nicotinic acid)",
-      "General nutritional support"
-    ],
-    "off_label_uses": [
-      "Adjunct in certain psychiatric conditions (supporting NAD metabolism)",
-      "Dermatological uses for skin health (niacinamide)"
-    ],
-    "contraindications": [
-      "Active liver disease",
-      "Severe gout",
-      "Peptic ulcer disease (with high-dose nicotinic acid)"
-    ],
-    "monitoring_required": [
-      "Liver function tests (for high-dose therapy)",
-      "Uric acid levels",
-      "Blood glucose (high doses may worsen insulin resistance)"
-    ],
-    "efficacy_rating": {
-      "deficiency_treatment": 5,
-      "dyslipidemia": 4,
-      "skin health (niacinamide)": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B3",
-      "Niacin",
-      "Niacinamide",
-      "Nicotinic Acid"
-    ],
-    "synonyms": [
-      "Nicotinic acid",
-      "Niacinamide",
-      "Nicotinamide"
-    ],
-    "common_misspellings": [
-      "niasine",
-      "niacine",
-      "nician"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "energy metabolism",
+      "cardiovascular health",
+      "skin health"
     ]
+  },
+  "summary": "Vitamin B3, also known as niacin, is an essential water-soluble vitamin important for energy metabolism, cardiovascular health, and skin integrity.",
+  "description": "Niacin (Vitamin B3) exists in two main forms, nicotinic acid and nicotinamide (niacinamide). Both are precursors to nicotinamide adenine dinucleotide (NAD⁺/NADH) and nicotinamide adenine dinucleotide phosphate (NADP⁺/NADPH), essential coenzymes in cellular metabolism, DNA repair, and antioxidant defense. Niacin plays a key role in energy production, maintaining healthy skin, nerves, and digestion. High-dose niacin (nicotinic acid) has been used clinically to manage dyslipidemia, as it lowers LDL cholesterol and triglycerides while raising HDL cholesterol. Niacinamide is more often used in dermatology and supplementation, as it does not cause flushing. Deficiency results in pellagra, characterized by the “3 Ds”: dermatitis, diarrhea, and dementia.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-and-prevention-of-niacin-deficiency-pellagra",
+          "condition_name": "Treatment and prevention of niacin deficiency (pellagra)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunct-therapy-for-dyslipidemia-high-dose-nicotinic-acid",
+          "condition_name": "Adjunct therapy for dyslipidemia (high-dose nicotinic acid)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "general-nutritional-support",
+          "condition_name": "General nutritional support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-in-certain-psychiatric-conditions-supporting-nad-metabolism",
+          "condition_name": "Adjunct in certain psychiatric conditions (supporting NAD metabolism)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "dermatological-uses-for-skin-health-niacinamide",
+          "condition_name": "Dermatological uses for skin health (niacinamide)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_treatment": {
+          "rating": 5
+        },
+        "dyslipidemia": {
+          "rating": 4
+        },
+        "skin health (niacinamide)": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous (clinical use)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Flushing and warmth (nicotinic acid)"
+        },
+        {
+          "effect": "Itching"
+        },
+        {
+          "effect": "Upset stomach"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hepatotoxicity (especially sustained-release niacin)"
+        },
+        {
+          "risk": "Peptic ulcer activation"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active liver disease"
+        },
+        {
+          "contraindication": "Severe gout"
+        },
+        {
+          "contraindication": "Peptic ulcer disease (with high-dose nicotinic acid)"
+        }
+      ],
+      "precautions": [
+        "High-dose niacin should only be used under medical supervision due to liver toxicity risk.",
+        "Niacinamide does not cause flushing but also lacks lipid-lowering effects."
+      ],
+      "interactions": [
+        {
+          "interactant": "Statins",
+          "mechanism": "Increased risk of myopathy and liver injury",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Increased flushing and liver toxicity",
+          "action": "Limit alcohol intake"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Additive hypotension",
+          "action": "Monitor blood pressure"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver function tests (ALT, AST)"
+        },
+        {
+          "parameter": "Fasting blood glucose"
+        },
+        {
+          "parameter": "Uric acid levels"
+        },
+        {
+          "parameter": "Lipid profile (if used for dyslipidemia)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally safe at dietary doses; high-dose niacin not recommended",
+        "lactation": "Safe at dietary doses; excreted in breast milk",
+        "pediatric": "Safe at recommended dietary allowances; deficiency treatment requires supervision",
+        "geriatric": "Safe but monitor liver and kidney function at higher doses"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Meat, poultry, fish, nuts, legumes, whole grains, fortified cereals",
+        "regulatory_notes": "Approved drug (for dyslipidemia); Dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -227,6 +315,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Niacin",
+      "url": "https://ods.od.nih.gov/factsheets/Niacin-HealthProfessional/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Guyton JR, Bays HE. Safety considerations with niacin therapy. Am J Cardiol. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17448380/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Kirkland JB. Niacin status, NAD distribution and ADP-ribose metabolism. Curr Pharm Des. 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19442169/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B3",
+      "Niacin",
+      "Niacinamide",
+      "Nicotinic Acid"
+    ],
+    "synonyms": [
+      "Nicotinic acid",
+      "Niacinamide",
+      "Nicotinamide"
+    ],
+    "common_misspellings": [
+      "niasine",
+      "niacine",
+      "nician"
+    ]
+  },
   "seo": {
     "title": "Vitamin B3 (Niacin) – Energy, Cholesterol Management, and Skin Health",
     "description": "Vitamin B3 (Niacin) is essential for energy metabolism, cardiovascular support, and skin health. Learn about uses, dosing, benefits, side effects, and safety.",

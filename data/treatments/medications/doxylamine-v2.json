@@ -1,83 +1,216 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "doxylamine",
-  "type": "medication",
-  "name": "Doxylamine (OTC Sleep Aid)",
-  "summary": "Sedating first-generation antihistamine used short-term as an over-the-counter sleep aid. Strong anticholinergic effects and next-day sedation, especially in older adults.",
-  "description": "Doxylamine is an over-the-counter antihistamine that makes people sleepy and is marketed as a short-term sleep aid. It can help with trouble falling or staying asleep but often causes dry mouth, constipation, dizziness, and next-day grogginess. It is strongly anticholinergic and appears on the Beers list, so it should generally be avoided in older adults and used cautiously in anyone with glaucoma, prostate issues, or urinary retention. It’s meant to be a temporary bridge, not a long-term insomnia solution.",
-  "patient_summary": "Doxylamine is an OTC “nighttime” antihistamine that can make you sleepy. It may help for a few nights of bad insomnia but often leaves people feeling groggy or foggy the next day. It also dries things out—mouth, eyes, bowels—and can make peeing harder, especially if you have a large prostate. It’s usually not a good choice for people over 65.",
-  "category": "medications/sleep",
-  "metadata": {
+  "identity": {
+    "slug": "doxylamine",
+    "name": "Doxylamine (OTC Sleep Aid)",
+    "generic_name": "doxylamine",
+    "brand_names": [
+      "FT Sleep Aid (Doxylamine)"
+    ],
+    "wikidata_qid": "Q423390"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep",
     "drug_classes": [
       "Ethanolamine Derivative",
       "Histamine H1 Antagonist",
       "First-Generation Antihistamine"
-    ],
-    "brand_names": [
-      "FT Sleep Aid (Doxylamine)"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-counter",
-    "controlled_substance": null,
-    "generic_available": true,
-    "fda_approval_year": null,
-    "pharmacologic_category": "Sedating H1 Antagonist (First Generation)",
-    "published_date": "2025-12-27T00:00:00Z",
-    "last_updated": "2025-12-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q423390"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Short-term insomnia (sleep onset or maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "Used as an OTC short-term hypnotic for difficulty falling or staying asleep; not preferred for chronic insomnia due to anticholinergic side effects and tolerance."
-      },
-      {
-        "slug": "pregnancy-associated-nausea",
-        "relationship": "off_label",
-        "context": "Used off-label with pyridoxine for pregnancy-associated nausea and vomiting when symptoms persist despite nonpharmacologic strategies and pyridoxine alone."
-      }
-    ],
-    "contraindications": [
-      "Children <12 years for self-medication (OTC labeling)",
-      "Concomitant use with other products containing doxylamine (OTC labeling)",
-      "Use when there is not enough time for a full night’s sleep (OTC labeling)",
-      "Hypersensitivity to doxylamine or any component (Canadian labeling)",
-      "Narrow-angle glaucoma (Canadian labeling)",
-      "Asthmatic attack (Canadian labeling)",
-      "Prostatic hypertrophy (Canadian labeling)",
-      "Stenosing peptic ulcer or pyloroduodenal obstruction (Canadian labeling)",
-      "Bladder-neck obstruction (Canadian labeling)",
-      "Concurrent use with monoamine oxidase inhibitors (Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep onset and maintenance improvement",
-      "percentage_value": null,
-      "comparison_data": null,
-      "patient_text": "Doxylamine can help some people fall asleep faster and wake less often during the night, but the benefit is modest and often limited by grogginess and anticholinergic side effects—especially with repeated use.",
-      "citation_tag": null
+  "summary": "Sedating first-generation antihistamine used short-term as an over-the-counter sleep aid. Strong anticholinergic effects and next-day sedation, especially in older adults.",
+  "description": "Doxylamine is an over-the-counter antihistamine that makes people sleepy and is marketed as a short-term sleep aid. It can help with trouble falling or staying asleep but often causes dry mouth, constipation, dizziness, and next-day grogginess. It is strongly anticholinergic and appears on the Beers list, so it should generally be avoided in older adults and used cautiously in anyone with glaucoma, prostate issues, or urinary retention. It’s meant to be a temporary bridge, not a long-term insomnia solution.",
+  "patient_summary": "Doxylamine is an OTC “nighttime” antihistamine that can make you sleepy. It may help for a few nights of bad insomnia but often leaves people feeling groggy or foggy the next day. It also dries things out—mouth, eyes, bowels—and can make peeing harder, especially if you have a large prostate. It’s usually not a good choice for people over 65.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "Used as an OTC short-term hypnotic for difficulty falling or staying asleep; not preferred for chronic insomnia due to anticholinergic side effects and tolerance.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "pregnancy-associated-nausea",
+          "condition_name": "Pregnancy Associated Nausea",
+          "relationship": "off_label",
+          "context": "Used off-label with pyridoxine for pregnancy-associated nausea and vomiting when symptoms persist despite nonpharmacologic strategies and pyridoxine alone."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed orally with measurable sedative effects within a few hours.",
-      "onset": "Sedation typically begins within 30–60 minutes after an oral dose.",
-      "peak_plasma": "2–4 hours after oral administration.",
-      "half_life": "10–12 hours in adults; may be prolonged in older adults.",
-      "duration_IR": "Sedating effects often persist into the next morning, particularly at higher doses or in older adults.",
-      "metabolism": "Hepatic metabolism via N-dealkylation to multiple metabolites.",
-      "excretion": "Renal excretion of parent drug (~60%) and metabolites.",
-      "protein_binding": null,
-      "food_effect": null
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sedation typically begins within 30–60 minutes after an oral dose."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Very common (dose-related)",
+          "notes": "Expect to feel sleepy at bedtime and possibly groggy the next morning. Avoid driving or tasks requiring full alertness until you know how it affects you."
+        },
+        {
+          "effect": "Anticholinergic Effects (Dry mouth, constipation, urinary retention)",
+          "incidence": "Common",
+          "notes": "Dry mouth, trouble peeing, and constipation are frequent and can be more severe in older adults or when combined with other anticholinergic medications."
+        },
+        {
+          "effect": "Dizziness / Vertigo",
+          "incidence": "Common",
+          "notes": "You may feel lightheaded when standing. Get up slowly to reduce fall risk."
+        },
+        {
+          "effect": "Blurred Vision",
+          "incidence": "Common",
+          "notes": "Blurry vision can make reading and driving more difficult. Avoid night driving until you know your response."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe confusion, delirium, or hallucinations (especially in older adults)."
+        },
+        {
+          "risk": "Urinary retention with painful or minimal urination."
+        },
+        {
+          "risk": "Falls and fractures due to dizziness and sedation."
+        },
+        {
+          "risk": "Worsening of narrow-angle glaucoma."
+        },
+        {
+          "risk": "Paradoxical agitation, especially in children or at higher doses."
+        },
+        {
+          "risk": "Worsening of sleep apnea or breathing problems when combined with other sedatives."
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Children <12 years for self-medication (OTC labeling)"
+        },
+        {
+          "contraindication": "Concomitant use with other products containing doxylamine (OTC labeling)"
+        },
+        {
+          "contraindication": "Use when there is not enough time for a full night’s sleep (OTC labeling)"
+        },
+        {
+          "contraindication": "Hypersensitivity to doxylamine or any component (Canadian labeling)"
+        },
+        {
+          "contraindication": "Narrow-angle glaucoma (Canadian labeling)"
+        },
+        {
+          "contraindication": "Asthmatic attack (Canadian labeling)"
+        },
+        {
+          "contraindication": "Prostatic hypertrophy (Canadian labeling)"
+        },
+        {
+          "contraindication": "Stenosing peptic ulcer or pyloroduodenal obstruction (Canadian labeling)"
+        },
+        {
+          "contraindication": "Bladder-neck obstruction (Canadian labeling)"
+        },
+        {
+          "contraindication": "Concurrent use with monoamine oxidase inhibitors (Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "CNS depression: May impair mental alertness and physical coordination; caution with driving and operating machinery.",
+        "Anticholinergic burden: Dry mouth, constipation, blurred vision, urinary retention, and cognitive slowing are common.",
+        "Older adults: Beers Criteria identify doxylamine as potentially inappropriate due to anticholinergic toxicity and fall risk.",
+        "Paradoxical excitation: Some children and sensitive adults may become more agitated or restless instead of sleepy.",
+        "Respiratory conditions: Use caution in patients with apnea or chronic respiratory disease due to additive sedative effects with other CNS depressants."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol, benzodiazepines, Z-drugs, opioids, and other CNS depressants",
+          "mechanism": "Additive CNS depression, confusion, falls, and respiratory suppression.",
+          "action": "Avoid combining when possible. If combination cannot be avoided, use the lowest doses and monitor closely for excessive sedation and breathing problems."
+        },
+        {
+          "interactant": "Other anticholinergic drugs (eg, tricyclics, antipsychotics, bladder antispasmodics)",
+          "mechanism": "Increased risk of constipation, urinary retention, blurry vision, confusion, and delirium.",
+          "action": "Review the total anticholinergic burden and minimize overlap, especially in older adults."
+        },
+        {
+          "interactant": "Other sedating antihistamines and OTC “PM” products",
+          "mechanism": "Duplication of therapy, overdose risk, and marked sedation.",
+          "action": "Avoid stacking OTC sleep aids. Check labels for doxylamine or diphenhydramine."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and next-day impairment: Assess morning grogginess, driving safety, and work/school performance."
+        },
+        {
+          "parameter": "Anticholinergic burden: Monitor for dry mouth, constipation, urinary retention, blurred vision, and cognitive changes, especially when combined with other anticholinergic medications."
+        },
+        {
+          "parameter": "Falls and balance: Ask older adults about dizziness, near-falls, and actual falls, particularly at night."
+        },
+        {
+          "parameter": "Sleep outcomes: Track sleep onset latency, total sleep time, and nocturnal awakenings to determine whether benefits outweigh side effects."
+        },
+        {
+          "parameter": "Paradoxical reactions: Watch for agitation, irritability, or insomnia worsening, especially in children and adolescents."
+        },
+        {
+          "parameter": "Overall medication list: Periodically review total sedative and anticholinergic load, particularly in patients with polypharmacy."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "In combination with pyridoxine, doxylamine is commonly used for pregnancy-associated nausea and vomiting and has not been shown to increase baseline risk of major birth defects. For insomnia in pregnancy, behavioral approaches and safer pharmacologic options are generally preferred—discuss with OB and psychiatry.",
+        "lactation": "Doxylamine is expected to appear in breast milk. Infants may experience irritability, unusual sleepiness, or feeding difficulties. Use the lowest effective dose for the shortest time if needed and monitor the infant for sedation, poor feeding, or breathing concerns.",
+        "pediatric": "Insomnia: 25 mg PO once nightly for ages ≥12 years when recommended by a health care professional. Do not use in children <12 years for sleep. Children are more prone to paradoxical excitation.",
+        "geriatric": "Beers Criteria recommend avoiding doxylamine in adults ≥65 years due to strong anticholinergic effects, reduced clearance, and increased risk of confusion, falls, and dementia. Consider non-drug treatments and safer alternatives.",
+        "renal_impairment": "Excreted in urine as parent drug and metabolites; use caution in severe renal impairment and monitor for prolonged sedation.",
+        "hepatic_impairment": "No dose adjustment recommendations in labeling; consider starting cautiously in hepatic impairment."
+      }
+    },
+    "access": {
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed orally with measurable sedative effects within a few hours.",
+          "peak_plasma": "2–4 hours after oral administration.",
+          "half_life": "10–12 hours in adults; may be prolonged in older adults.",
+          "metabolism": "Hepatic metabolism via N-dealkylation to multiple metabolites.",
+          "excretion": "Renal excretion of parent drug (~60%) and metabolites.",
+          "protein_binding": null,
+          "food_effect": null
+        },
+        "dosing": {
+          "titration": "Use the lowest effective dose, taken before bedtime, and limit duration to short-term use. This is a sedating medication—build in enough time for a full night’s sleep."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Doxylamine is not associated with classic physiologic dependence like benzodiazepines, but rebound insomnia and disrupted sleep can occur after regular use."
+        }
+      }
     }
   },
   "sections": [
@@ -97,7 +230,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People taking doxylamine for sleep usually notice strong sedation, but they also often describe classic anticholinergic effects.",
       "items": [
         {
           "category": "Falling Asleep",
@@ -130,7 +262,8 @@
           ],
           "note": "First-generation antihistamines can occasionally cause paradoxical agitation, especially in children."
         }
-      ]
+      ],
+      "intro": "People taking doxylamine for sleep usually notice strong sedation, but they also often describe classic anticholinergic effects."
     },
     {
       "type": "onset_duration",
@@ -146,10 +279,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Doxylamine can shorten sleep latency and reduce nighttime awakenings in the short term. However, tolerance to the sedating effects can develop, and side effects—particularly next-day grogginess and anticholinergic symptoms—limit its usefulness as a chronic sleep aid.",
       "metric": "Subjective improvement in sleep onset and maintenance",
       "value": null,
       "comparison": null,
-      "text": "Doxylamine can shorten sleep latency and reduce nighttime awakenings in the short term. However, tolerance to the sedating effects can develop, and side effects—particularly next-day grogginess and anticholinergic symptoms—limit its usefulness as a chronic sleep aid.",
       "clinical_details": "Evidence for long-term benefit in chronic insomnia is limited. Clinical guidelines generally recommend behavioral treatments and non-sedating options before sedating antihistamines. In older adults, the risks of falls, confusion, and anticholinergic burden usually outweigh the modest sleep benefits.",
       "citation": {
         "authors": null,
@@ -229,7 +362,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Doxylamine adds to the effects of other sedating and anticholinergic medications. Polypharmacy is a major concern in older adults.",
       "items": [
         {
           "with": "Alcohol, benzodiazepines, Z-drugs, opioids, and other CNS depressants",
@@ -246,7 +378,8 @@
           "risk": "Duplication of therapy, overdose risk, and marked sedation.",
           "action": "Avoid stacking OTC sleep aids. Check labels for doxylamine or diphenhydramine."
         }
-      ]
+      ],
+      "intro": "Doxylamine adds to the effects of other sedating and anticholinergic medications. Polypharmacy is a major concern in older adults."
     },
     {
       "type": "tapering",
@@ -335,21 +468,29 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Doxylamine (OTC Sleep Aid): Uses, Dosing, Side Effects & Safety in Mental Health Care",
-    "description": "Doxylamine is an OTC sedating antihistamine used short-term for insomnia. Learn about dosing, side effects, pregnancy use with pyridoxine, and why it’s usually avoided in older adults.",
-    "canonical": "https://www.heypsych.com/treatments/doxylamine-sleep-aid",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current SAMHSA guidance on benzodiazepine prescribing."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "ACOG Practice Bulletin: Nausea and Vomiting of Pregnancy (2018)",
+      "url": "https://www.acog.org/",
+      "description": "Guidance on the use of doxylamine–pyridoxine combinations in pregnancy."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "American Geriatrics Society Beers Criteria (2023)",
+      "url": "https://www.americangeriatrics.org/",
+      "description": "Lists first-generation antihistamines, including doxylamine, as potentially inappropriate in older adults."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Patient education: Insomnia (general information)",
+      "url": "https://www.sleepfoundation.org/",
+      "description": "Overview of non-drug strategies for insomnia."
+    }
+  ],
   "faqs": [
     {
       "q": "What is doxylamine used for?",
@@ -383,5 +524,20 @@
       "q": "Can I drink alcohol with doxylamine?",
       "a": "No. Alcohol adds to the sedative effects of doxylamine and increases the risk of dangerous drowsiness, poor judgment, accidents, and breathing problems. Avoid alcohol when using any sedating sleep medicine."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Doxylamine (OTC Sleep Aid): Uses, Dosing, Side Effects & Safety in Mental Health Care",
+    "description": "Doxylamine is an OTC sedating antihistamine used short-term for insomnia. Learn about dosing, side effects, pregnancy use with pyridoxine, and why it’s usually avoided in older adults.",
+    "canonical": "https://www.heypsych.com/treatments/doxylamine-sleep-aid",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current SAMHSA guidance on benzodiazepine prescribing."
+  }
 }

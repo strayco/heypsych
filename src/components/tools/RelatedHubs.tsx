@@ -29,9 +29,9 @@ export function RelatedHubs({ hubSlugs, currentToolSlug }: RelatedHubsProps) {
   }
 
   return (
-    <section className="py-6 border-t border-neutral-200">
+    <section className="py-6 border-t border-separator">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-lg font-semibold text-neutral-900 mb-4">
+        <h2 className="text-lg font-semibold text-label-primary mb-4">
           Browse More Tools
         </h2>
 
@@ -40,7 +40,7 @@ export function RelatedHubs({ hubSlugs, currentToolSlug }: RelatedHubsProps) {
             <Link
               key={hub.slug}
               href={hub.url}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-neutral-200 rounded-full text-sm font-medium text-neutral-700 hover:border-indigo-300 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-separator rounded-full text-sm font-medium text-label-secondary hover:border-accent-500 hover:text-accent hover:bg-accent-tint transition-colors"
             >
               {hub.display_name}
               <ArrowRight className="h-3 w-3" />

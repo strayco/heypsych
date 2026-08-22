@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "multi-strain-probiotics",
-  "type": "supplement",
-  "name": "Multi-Strain Probiotics",
-  "summary": "Multi-strain probiotics combine different beneficial bacterial species to support gut health, immune balance, and potentially mood regulation. They may have synergistic effects on gastrointestinal and mental health outcomes compared to single-strain probiotics.",
-  "description": "Multi-strain probiotics contain a combination of various beneficial bacteria, often including Lactobacillus, Bifidobacterium, and sometimes Streptococcus or Saccharomyces species. These supplements are designed to enhance microbial diversity, restore gut microbiome balance, and influence systemic health through the gut-brain axis. While single-strain probiotics have demonstrated targeted benefits, multi-strain formulations may provide broader or synergistic effects, including potential benefits for mood, anxiety, cognition, and immune function. They are widely available as dietary supplements and commonly used in integrative psychiatry.",
-  "category": "supplements",
-  "tags": [
-    "gut health",
-    "gut-brain axis",
-    "microbiome",
-    "mental health",
-    "immune support"
-  ],
-  "metadata": {
-    "compound_type": "Probiotic blend",
-    "natural_source": "Cultured beneficial bacteria",
+  "identity": {
+    "slug": "multi-strain-probiotics",
+    "name": "Multi-Strain Probiotics",
+    "brand_names": [
+      "VSL#3",
+      "Garden of Life RAW Probiotics",
+      "Culturelle Pro-Well"
+    ],
+    "aliases": [
+      "probiotic complex",
+      "broad-spectrum probiotics"
+    ],
+    "wikidata_qid": "Q170430"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Gastroenterology",
       "Psychiatry",
@@ -26,79 +28,167 @@
       "Immune regulation",
       "Gut-brain axis"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "VSL#3",
-      "Garden of Life RAW Probiotics",
-      "Culturelle Pro-Well"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for psychiatric or GI indications)",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term (acute GI support)",
-      "Chronic supplementation"
-    ],
-    "specialty_areas": [
-      "Integrative Psychiatry",
-      "Gastroenterology",
-      "Immunology"
-    ],
-    "wikidata_qid": "Q170430"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Irritable bowel syndrome (IBS)",
-      "Diarrhea (infectious, antibiotic-associated, traveler’s)",
-      "General gut microbiome support"
-    ],
-    "off_label_uses": [
-      "Adjunctive treatment for depression",
-      "Adjunctive treatment for anxiety",
-      "Stress resilience",
-      "Cognitive support",
-      "Immune modulation"
-    ],
-    "contraindications": [
-      "Severe immunocompromise (e.g., chemotherapy, transplant, uncontrolled HIV)",
-      "Central venous catheters (risk of translocation and bacteremia in rare cases)"
-    ],
-    "monitoring_required": [
-      "GI symptom response",
-      "Tolerance (bloating, gas)",
-      "Signs of infection in immunocompromised individuals"
-    ],
-    "efficacy_rating": {
-      "IBS": 3,
-      "diarrhea_prevention": 4,
-      "depression_adjunct": 2,
-      "anxiety_adjunct": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "multi-strain probiotics",
-      "probiotic blends",
-      "synbiotics",
-      "Lactobacillus Bifidobacterium combination"
-    ],
-    "synonyms": [
-      "probiotic complex",
-      "broad-spectrum probiotics"
-    ],
-    "common_misspellings": [
-      "multi-strane probiotics",
-      "multi-strain probiotix"
+    "tags": [
+      "gut health",
+      "gut-brain axis",
+      "microbiome",
+      "mental health",
+      "immune support"
     ]
+  },
+  "summary": "Multi-strain probiotics combine different beneficial bacterial species to support gut health, immune balance, and potentially mood regulation. They may have synergistic effects on gastrointestinal and mental health outcomes compared to single-strain probiotics.",
+  "description": "Multi-strain probiotics contain a combination of various beneficial bacteria, often including Lactobacillus, Bifidobacterium, and sometimes Streptococcus or Saccharomyces species. These supplements are designed to enhance microbial diversity, restore gut microbiome balance, and influence systemic health through the gut-brain axis. While single-strain probiotics have demonstrated targeted benefits, multi-strain formulations may provide broader or synergistic effects, including potential benefits for mood, anxiety, cognition, and immune function. They are widely available as dietary supplements and commonly used in integrative psychiatry.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "irritable-bowel-syndrome-ibs",
+          "condition_name": "Irritable bowel syndrome (IBS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "diarrhea-infectious-antibiotic-associated-traveler-s",
+          "condition_name": "Diarrhea (infectious, antibiotic-associated, traveler’s)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "general-gut-microbiome-support",
+          "condition_name": "General gut microbiome support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-treatment-for-depression",
+          "condition_name": "Adjunctive treatment for depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-treatment-for-anxiety",
+          "condition_name": "Adjunctive treatment for anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-resilience",
+          "condition_name": "Stress resilience",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "immune-modulation",
+          "condition_name": "Immune modulation",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "IBS": {
+          "rating": 3
+        },
+        "diarrhea_prevention": {
+          "rating": 4
+        },
+        "depression_adjunct": {
+          "rating": 2
+        },
+        "anxiety_adjunct": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term (acute GI support); Chronic supplementation"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Bloating"
+        },
+        {
+          "effect": "Gas"
+        },
+        {
+          "effect": "Mild GI discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare bacteremia or fungemia in immunocompromised patients"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe immunocompromise (e.g., chemotherapy, transplant, uncontrolled HIV)"
+        },
+        {
+          "contraindication": "Central venous catheters (risk of translocation and bacteremia in rare cases)"
+        }
+      ],
+      "precautions": [
+        "Safety in immunocompromised or critically ill patients is not well established.",
+        "Formulation-specific efficacy varies; not all strains are equally effective."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antibiotics",
+          "mechanism": "Reduced probiotic viability",
+          "action": "Separate doses by 2–3 hours"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "Possible increased infection risk",
+          "action": "Use cautiously"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI symptom improvement"
+        },
+        {
+          "parameter": "Mood and anxiety changes (if used for mental health)"
+        },
+        {
+          "parameter": "Signs of systemic infection in high-risk populations"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally considered safe",
+        "lactation": "Safe; may support infant microbiome",
+        "pediatric": "Safe at lower CFU doses; evidence supports use in certain GI conditions",
+        "geriatric": "Safe; may support immune and gut function"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Probiotic blend",
+        "natural_source": "Cultured beneficial bacteria",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for psychiatric or GI indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -217,6 +307,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Ford AC et al. Efficacy of probiotics in IBS. Am J Gastroenterol. 2014.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24562436/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Wallace CJK, Milev R. The effects of probiotics on depressive symptoms. CNS Spectr. 2017.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28747264/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Examine.com – Probiotics",
+      "url": "https://examine.com/supplements/probiotics/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "multi-strain probiotics",
+      "probiotic blends",
+      "synbiotics",
+      "Lactobacillus Bifidobacterium combination"
+    ],
+    "synonyms": [
+      "probiotic complex",
+      "broad-spectrum probiotics"
+    ],
+    "common_misspellings": [
+      "multi-strane probiotics",
+      "multi-strain probiotix"
+    ]
+  },
   "seo": {
     "title": "Multi-Strain Probiotics – Gut and Mental Health Support",
     "description": "Multi-strain probiotics combine beneficial bacteria such as Lactobacillus and Bifidobacterium to support gut health, immune balance, and potentially mood regulation through the gut-brain axis.",

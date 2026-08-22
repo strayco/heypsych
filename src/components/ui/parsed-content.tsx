@@ -34,7 +34,7 @@ export function ParsedContent({ content, className = "", linkClassName = "" }: P
             <Link
               key={index}
               href={getLinkPath(part.linkType, part.slug)}
-              className={`text-blue-600 transition-colors hover:text-blue-800 hover:underline ${linkClassName}`}
+              className={`text-accent transition-colors hover:text-accent-700 hover:underline ${linkClassName}`}
             >
               {part.content}
             </Link>
@@ -94,14 +94,14 @@ export function Indications({ indications, className = "" }: IndicationsProps) {
 
   return (
     <div className={`space-y-2 ${className}`}>
-      <h3 className="mb-2 font-semibold text-slate-900">Primary Indications</h3>
+      <h3 className="mb-2 font-semibold text-label-primary">Primary Indications</h3>
       <div className="flex flex-wrap gap-2">
         {indications.map((indication, index) => {
           const parts = parseLinks(indication);
           return (
             <span
               key={index}
-              className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 transition-colors hover:bg-blue-100"
+              className="inline-flex items-center rounded-full bg-accent-tint px-3 py-1 text-sm font-medium text-accent-700 transition-colors hover:bg-accent-tint-hover"
             >
               {parts.map((part, partIndex) => {
                 if (part.type === "link" && part.slug && part.linkType) {

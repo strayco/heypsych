@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b2-riboflavin",
-  "type": "supplement",
-  "name": "Vitamin B2 (Riboflavin)",
-  "summary": "Vitamin B2, or riboflavin, is a water-soluble vitamin that plays a critical role in energy metabolism, antioxidant defense, and cellular function.",
-  "description": "Riboflavin (Vitamin B2) is an essential B-complex vitamin required for the production of flavin adenine dinucleotide (FAD) and flavin mononucleotide (FMN), coenzymes that participate in numerous redox reactions involved in energy production, metabolism of fats, carbohydrates, and proteins, and antioxidant protection. It also supports healthy skin, eyes, and neurological function. Deficiency can cause ariboflavinosis, presenting with sore throat, angular cheilitis, glossitis, and anemia. Supplementation is sometimes used in the prevention of migraines and to support overall metabolic health.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "energy metabolism",
-    "antioxidant"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Milk, eggs, lean meats, green leafy vegetables, fortified cereals",
+  "identity": {
+    "slug": "vitamin-b2-riboflavin",
+    "name": "Vitamin B2 (Riboflavin)",
+    "generic_name": "vitamin b2",
+    "brand_names": [
+      "Riboflavin",
+      "Vitamin B2"
+    ],
+    "aliases": [
+      "Riboflavin",
+      "Lactoflavin"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutritional Support",
       "Neurology",
@@ -25,71 +27,140 @@
       "Cofactor for enzymes",
       "Antioxidant defense"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous (clinical use)"
-    ],
-    "prescription_status": "Over-the-counter supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Riboflavin",
-      "Vitamin B2"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Neurology",
-      "Dermatology"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "energy metabolism",
+      "antioxidant"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of riboflavin deficiency (ariboflavinosis)",
-      "Support in migraine prophylaxis",
-      "Nutritional support in metabolic disorders"
-    ],
-    "off_label_uses": [
-      "Adjunct for mitochondrial disorders",
-      "Supportive role in eye health (e.g., keratoconus with riboflavin + UV therapy)"
-    ],
-    "contraindications": [
-      "Hypersensitivity to riboflavin (rare)"
-    ],
-    "monitoring_required": [
-      "Symptom resolution in deficiency treatment",
-      "Migraine frequency when used prophylactically"
-    ],
-    "efficacy_rating": {
-      "deficiency_treatment": 5,
-      "migraine_prophylaxis": 4,
-      "eye_health_support": 3
+  "summary": "Vitamin B2, or riboflavin, is a water-soluble vitamin that plays a critical role in energy metabolism, antioxidant defense, and cellular function.",
+  "description": "Riboflavin (Vitamin B2) is an essential B-complex vitamin required for the production of flavin adenine dinucleotide (FAD) and flavin mononucleotide (FMN), coenzymes that participate in numerous redox reactions involved in energy production, metabolism of fats, carbohydrates, and proteins, and antioxidant protection. It also supports healthy skin, eyes, and neurological function. Deficiency can cause ariboflavinosis, presenting with sore throat, angular cheilitis, glossitis, and anemia. Supplementation is sometimes used in the prevention of migraines and to support overall metabolic health.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-riboflavin-deficiency-ariboflavinosis",
+          "condition_name": "Prevention and treatment of riboflavin deficiency (ariboflavinosis)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "support-in-migraine-prophylaxis",
+          "condition_name": "Support in migraine prophylaxis",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "nutritional-support-in-metabolic-disorders",
+          "condition_name": "Nutritional support in metabolic disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-for-mitochondrial-disorders",
+          "condition_name": "Adjunct for mitochondrial disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "supportive-role-in-eye-health-e-g-keratoconus-with-riboflavin-uv-therapy",
+          "condition_name": "Supportive role in eye health (e.g., keratoconus with riboflavin + UV therapy)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_treatment": {
+          "rating": 5
+        },
+        "migraine_prophylaxis": {
+          "rating": 4
+        },
+        "eye_health_support": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous (clinical use)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Bright yellow urine (harmless)"
+        },
+        {
+          "effect": "Mild diarrhea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypersensitivity reactions (extremely rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to riboflavin (rare)"
+        }
+      ],
+      "precautions": [
+        "Excess intake is generally safe since riboflavin is water-soluble and excreted in urine.",
+        "High doses may cause harmless yellow-orange discoloration of urine."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticholinergic drugs",
+          "mechanism": "Reduced absorption",
+          "action": "Take supplements separately"
+        },
+        {
+          "interactant": "Tetracycline antibiotics",
+          "mechanism": "May reduce antibiotic effectiveness",
+          "action": "Separate dosing by several hours"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Symptom resolution in deficiency"
+        },
+        {
+          "parameter": "Migraine frequency if used for prevention"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at recommended dietary doses; sometimes used in prenatal supplements",
+        "lactation": "Safe and excreted in breast milk at low levels",
+        "pediatric": "Safe at recommended dietary allowance; clinical doses for deficiency require supervision",
+        "geriatric": "Safe and may help prevent age-related deficiency"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Milk, eggs, lean meats, green leafy vegetables, fortified cereals",
+        "regulatory_notes": "Dietary supplement"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B2",
-      "Riboflavin",
-      "B2 vitamin"
-    ],
-    "synonyms": [
-      "Riboflavin",
-      "Lactoflavin"
-    ],
-    "common_misspellings": [
-      "riboflavon",
-      "riboflaven"
-    ]
   },
   "sections": [
     {
@@ -204,6 +275,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Riboflavin",
+      "url": "https://ods.od.nih.gov/factsheets/Riboflavin-HealthProfessional/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Thompson DF, Saluja HS. Prophylaxis of migraine headaches with riboflavin: a systematic review. J Clin Pharm Ther. 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28321954/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Powers HJ. Riboflavin (vitamin B-2) and health. Am J Clin Nutr. 2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12612161/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B2",
+      "Riboflavin",
+      "B2 vitamin"
+    ],
+    "synonyms": [
+      "Riboflavin",
+      "Lactoflavin"
+    ],
+    "common_misspellings": [
+      "riboflavon",
+      "riboflaven"
+    ]
+  },
   "seo": {
     "title": "Vitamin B2 (Riboflavin) – Energy, Migraine Prevention, and Nutritional Health",
     "description": "Vitamin B2 (Riboflavin) is essential for energy metabolism, antioxidant defense, and neurological health. Learn about uses, dosing, benefits, and safety.",

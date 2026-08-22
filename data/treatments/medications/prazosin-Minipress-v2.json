@@ -1,74 +1,201 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "prazosin-minipress-ptsd-nightmares",
-  "type": "medication",
-  "name": "Prazosin (Minipress)",
-  "summary": "Alpha-1 blocker most often used off-label in psychiatry for PTSD-related nightmares and sleep disruption. Start low at bedtime to reduce the risk of dizziness or fainting.",
-  "description": "Prazosin is a blood pressure medication that psychiatry commonly repurposes for PTSD nightmares. The goal isn’t to “knock you out” — it’s to dial down the adrenaline-style overactivation that can fuel trauma nightmares and broken sleep. The biggest issue is blood pressure dropping too low (especially after the first dose), which can cause dizziness or fainting. That’s why most people start at 1 mg at bedtime and titrate slowly.",
-  "patient_summary": "Prazosin is a blood pressure med that’s often used off-label for PTSD nightmares. It can help make sleep less chaotic, but the tradeoff is it can drop your blood pressure — especially the first dose — so dizziness and fainting are the main risks. Start low, take it at bedtime, and increase slowly with your prescriber.",
-  "category": "medications/ptsd-sleep",
-  "metadata": {
-    "drug_classes": [
-      "Alpha-1 Adrenergic Blocker",
-      "Antihypertensive"
-    ],
+  "identity": {
+    "slug": "prazosin-minipress-ptsd-nightmares",
+    "name": "Prazosin (Minipress)",
+    "generic_name": "prazosin",
     "brand_names": [
       "Minipress",
       "APO-Prazo",
       "TEVA-Prazosin"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1976,
-    "pharmacologic_category": "Alpha-1 Blocker (Nonselective)",
-    "published_date": "2026-01-19T00:00:00Z",
-    "last_updated": "2026-01-19T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-19T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Posttraumatic Stress Disorder (PTSD)–related nightmares and sleep disruption (off-label)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "ptsd",
-        "relationship": "off_label",
-        "context": "Often used for nightmares and sleep disruption tied to PTSD. Clinical guidance commonly recommends a slow bedtime titration and continuing only if sleep/nightmares objectively improve. VA/DoD guidance has supported prazosin for PTSD nightmares (weak recommendation), while a large veteran trial did not find benefit on average — so response can be very individual."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Not a general insomnia medication. It’s specifically used when insomnia is being driven by trauma nightmares/hyperarousal patterns."
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity to prazosin, quinazolines, or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Nightmares and sleep disruption in PTSD",
-      "percentage_value": "Variable (mixed evidence)",
-      "comparison_data": "Some studies show improvement; a large veteran RCT did not show benefit vs placebo on average",
-      "patient_text": "Prazosin is one of those meds where some people say, “my nightmares finally chilled out,” and others feel nothing. The evidence is mixed: earlier studies and some guidelines support it for PTSD nightmares, but a large veteran trial didn’t show an overall benefit compared with placebo. The real test is your own sleep over a few weeks at a tolerable dose — if there’s no clear improvement, it’s usually not worth pushing higher.",
-      "citation_tag": "VA/DoD PTSD CPG; NEJM 2018 Raskind trial"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/ptsd-sleep",
+    "drug_classes": [
+      "Alpha-1 Adrenergic Blocker",
+      "Antihypertensive"
+    ]
+  },
+  "summary": "Alpha-1 blocker most often used off-label in psychiatry for PTSD-related nightmares and sleep disruption. Start low at bedtime to reduce the risk of dizziness or fainting.",
+  "description": "Prazosin is a blood pressure medication that psychiatry commonly repurposes for PTSD nightmares. The goal isn’t to “knock you out” — it’s to dial down the adrenaline-style overactivation that can fuel trauma nightmares and broken sleep. The biggest issue is blood pressure dropping too low (especially after the first dose), which can cause dizziness or fainting. That’s why most people start at 1 mg at bedtime and titrate slowly.",
+  "patient_summary": "Prazosin is a blood pressure med that’s often used off-label for PTSD nightmares. It can help make sleep less chaotic, but the tradeoff is it can drop your blood pressure — especially the first dose — so dizziness and fainting are the main risks. Start low, take it at bedtime, and increase slowly with your prescriber.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "posttraumatic-stress-disorder-ptsd-related-nightmares-and-sleep-disruption-off-label",
+          "condition_name": "Posttraumatic Stress Disorder (PTSD)–related nightmares and sleep disruption (off-label)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "Ptsd",
+          "relationship": "off_label",
+          "context": "Often used for nightmares and sleep disruption tied to PTSD. Clinical guidance commonly recommends a slow bedtime titration and continuing only if sleep/nightmares objectively improve. VA/DoD guidance has supported prazosin for PTSD nightmares (weak recommendation), while a large veteran trial did not find benefit on average — so response can be very individual."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Not a general insomnia medication. It’s specifically used when insomnia is being driven by trauma nightmares/hyperarousal patterns."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with variable food effects",
-      "bioavailability": "Approximately 43% to 82%",
-      "onset": "Antihypertensive effect within ~2 hours (psychiatric sleep effects usually assessed over days to weeks during titration)",
-      "peak_plasma": "~3 hours",
-      "half_life": "2 to 3 hours (may be prolonged in congestive heart failure)",
-      "duration": "10 to 24 hours (blood pressure effects)",
-      "metabolism": "Extensive hepatic metabolism (demethylation and conjugation)",
-      "excretion": "Primarily feces; urine (small fraction as unchanged drug)",
-      "protein_binding": "Highly protein bound (~97%)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Antihypertensive effect within ~2 hours (psychiatric sleep effects usually assessed over days to weeks during titration)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness / Orthostatic Symptoms",
+          "incidence": "Common",
+          "notes": "This is the signature side effect. It’s usually worse after the first dose, after a dose increase, or if you’re dehydrated. Bedtime dosing and slow titration help."
+        },
+        {
+          "effect": "Drowsiness / Fatigue",
+          "incidence": "Common",
+          "notes": "Some people feel sleepy or wiped out, especially during titration. If you feel overly sedated or groggy, the dose may be too high for your system."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common",
+          "notes": "Often improves as your body adjusts. If headaches are severe or persistent, reassess dose and blood pressure."
+        },
+        {
+          "effect": "Palpitations",
+          "incidence": "Common",
+          "notes": "Can happen as your body responds to blood pressure changes. If palpitations are intense, accompanied by chest pain, or you faint, seek urgent evaluation."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "Common",
+          "notes": "Usually mild. Taking with food is acceptable if it helps, though food can variably affect absorption."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Syncope (fainting), especially early in treatment or after rapid dose increases"
+        },
+        {
+          "risk": "Severe orthostatic hypotension with falls/injury"
+        },
+        {
+          "risk": "Priapism (prolonged painful erection): emergency condition"
+        },
+        {
+          "risk": "Intraoperative floppy iris syndrome (IFIS) during cataract surgery"
+        },
+        {
+          "risk": "Worsening angina or chest pain in susceptible patients (rare but reported)"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to prazosin, quinazolines, or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "First-dose (or restart) fainting risk: the blood pressure drop can be strongest early on, especially within the first few hours after a dose",
+        "Orthostatic hypotension: standing up too fast can cause dizziness, tunnel vision, or passing out",
+        "Higher risk if combined with other blood pressure-lowering meds, dehydration, alcohol, or PDE-5 inhibitors (like sildenafil/tadalafil)",
+        "Priapism (rare): prolonged painful erections require emergency care",
+        "Intraoperative floppy iris syndrome (IFIS): has been reported with alpha-1 blockers during cataract surgery; tell your eye surgeon if you ever used prazosin",
+        "Recent manufacturing recalls have occurred for some prazosin products due to nitrosamine impurity concerns; don’t stop abruptly without a plan — talk to your pharmacist/prescriber to confirm whether your specific bottle/lot is affected"
+      ],
+      "interactions": [
+        {
+          "interactant": "PDE-5 inhibitors (sildenafil, tadalafil, vardenafil)",
+          "mechanism": "Additive blood pressure lowering → dizziness, fainting, falls.",
+          "action": "If used together, start PDE-5 inhibitors at the lowest dose and separate timing when possible. Monitor for lightheadedness and syncope."
+        },
+        {
+          "interactant": "Other antihypertensives (especially vasodilators, beta-blockers) or other alpha-1 blockers",
+          "mechanism": "Too much BP lowering, especially during prazosin initiation or titration.",
+          "action": "Coordinate dosing changes with one prescriber when possible; titrate slowly; consider home BP monitoring."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Worsens dizziness/orthostatic hypotension and impairs balance/judgment.",
+          "action": "Limit or avoid, especially during initiation and dose increases."
+        },
+        {
+          "interactant": "Medications that also cause orthostasis (some antipsychotics, TCAs, trazodone, nitrates)",
+          "mechanism": "Compounded dizziness and fainting risk.",
+          "action": "Use extra caution; slower titration; reassess the full regimen if recurrent lightheadedness occurs."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure and orthostatic symptoms during initiation and each dose increase (lightheadedness, near-fainting, actual fainting)"
+        },
+        {
+          "parameter": "Falls risk (especially older adults): nighttime bathroom trips, standing from bed, balance issues"
+        },
+        {
+          "parameter": "Nightmare frequency/intensity and sleep quality (track with a simple log so you’re not guessing)"
+        },
+        {
+          "parameter": "Daytime functioning: is sleep improving without daytime dizziness or fatigue?"
+        },
+        {
+          "parameter": "Heart symptoms in higher-risk patients: palpitations, chest pain, syncope"
+        },
+        {
+          "parameter": "Medication interactions that can worsen hypotension (PDE-5 inhibitors, other BP meds, sedating meds that worsen balance, alcohol)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Prazosin crosses the placenta. It is not generally a preferred agent for chronic hypertension in pregnancy, and its role for PTSD nightmares in pregnancy is not well established. If considered, it should be a careful, specialist-informed decision that weighs maternal functioning, fall/syncope risk, and alternative treatments.",
+        "lactation": "Prazosin is present in breast milk. The manufacturer recommends caution in lactating patients. If used, monitor the infant for unusual sleepiness, poor feeding, or lethargy and coordinate with pediatrics/OB.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "For older adults, the main issue is orthostatic hypotension and falls. While Beers Criteria flags prazosin as potentially inappropriate for treating hypertension in older adults due to orthostasis risk, PTSD-nightmare use still requires the same principle: start very low, titrate slowly, and prioritize fall safety.",
+        "renal_impairment": "No routine dose adjustment is required based on pharmacokinetics, but blood-pressure lowering effects can be exaggerated in kidney impairment. Start low and titrate cautiously; prazosin is unlikely to be removed by dialysis due to high protein binding.",
+        "hepatic_impairment": "No formal manufacturer dose adjustment is provided. Because prazosin is extensively metabolized by the liver, use cautious titration and monitor for exaggerated effects (dizziness, hypotension)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1976
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with variable food effects",
+          "bioavailability": "Approximately 43% to 82%",
+          "peak_plasma": "~3 hours",
+          "half_life": "2 to 3 hours (may be prolonged in congestive heart failure)",
+          "metabolism": "Extensive hepatic metabolism (demethylation and conjugation)",
+          "excretion": "Primarily feces; urine (small fraction as unchanged drug)",
+          "protein_binding": "Highly protein bound (~97%)"
+        },
+        "dosing": {
+          "titration": "For PTSD nightmares, prazosin is usually taken at bedtime and increased slowly. The goal is the lowest dose that clearly improves nightmares/sleep without causing dizziness or fainting."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Prazosin is not a benzodiazepine and doesn’t require a seizure-prevention taper. Many people can stop it without a formal taper. That said, if it’s been helping nightmares, stopping abruptly can bring nightmares back quickly — so some clinicians step down over several nights to make it smoother."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +214,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People’s experiences tend to fall into a few buckets — and yes, you’ll see both “this saved my sleep” and “did absolutely nothing.”",
       "items": [
         {
           "category": "Nightmares turn down (when it works)",
@@ -124,7 +250,8 @@
           ],
           "note": "Response is individual. If there’s no clear sleep/nightmare improvement after a fair trial at a tolerable dose, most clinicians stop it."
         }
-      ]
+      ],
+      "intro": "People’s experiences tend to fall into a few buckets — and yes, you’ll see both “this saved my sleep” and “did absolutely nothing.”"
     },
     {
       "type": "onset_duration",
@@ -140,10 +267,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Prazosin can help PTSD nightmares for some people, but it’s not a guaranteed win. Guidelines have supported prazosin for nightmares (weak recommendation), yet a large trial in military veterans did not show an overall benefit vs placebo. Clinically, it’s often treated as a personalized trial: titrate slowly, track nightmares/sleep, keep it only if it clearly helps.",
       "metric": "PTSD nightmares and sleep disruption",
       "value": "Mixed evidence",
       "comparison": "Placebo outcomes vary by study",
-      "text": "Prazosin can help PTSD nightmares for some people, but it’s not a guaranteed win. Guidelines have supported prazosin for nightmares (weak recommendation), yet a large trial in military veterans did not show an overall benefit vs placebo. Clinically, it’s often treated as a personalized trial: titrate slowly, track nightmares/sleep, keep it only if it clearly helps.",
       "clinical_details": "In a large randomized trial in veterans with chronic PTSD, prazosin did not outperform placebo for distressing dreams or sleep quality on average. That doesn’t mean no one benefits — it means the average effect wasn’t there in that population. Meanwhile, other studies and clinical guidance documents describe benefit in subsets of patients and continue to recommend an individualized trial with objective symptom tracking.",
       "citation": {
         "authors": "Raskind MA, et al.",
@@ -229,7 +356,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Most interactions are about blood pressure dropping too low. When prazosin stacks with other BP-lowering agents, people can get dizzy, faint, or injured.",
       "items": [
         {
           "with": "PDE-5 inhibitors (sildenafil, tadalafil, vardenafil)",
@@ -251,7 +377,8 @@
           "risk": "Compounded dizziness and fainting risk.",
           "action": "Use extra caution; slower titration; reassess the full regimen if recurrent lightheadedness occurs."
         }
-      ]
+      ],
+      "intro": "Most interactions are about blood pressure dropping too low. When prazosin stacks with other BP-lowering agents, people can get dizzy, faint, or injured."
     },
     {
       "type": "tapering",
@@ -319,21 +446,6 @@
       "text": "Prazosin is a symptom-targeted option for PTSD nightmares — not a full PTSD treatment. The core treatments for PTSD are trauma-focused therapy and (when appropriate) first-line medications like SSRIs/SNRIs. Prazosin is usually considered when nightmares/sleep disruption are a major driver of impairment, and the plan is to run a structured trial: start low, titrate, track sleep/nightmares, and keep it only if it clearly helps."
     }
   ],
-  "seo": {
-    "title": "Prazosin (Minipress) for PTSD Nightmares: Uses, Dosing, Side Effects",
-    "description": "Prazosin (Minipress) is commonly used off-label for PTSD nightmares and sleep disruption. Learn bedtime dosing (start 1 mg, titrate slowly), what to expect, side effects like dizziness/fainting, and key interactions (PDE-5 inhibitors, other BP meds, alcohol).",
-    "canonical": "[https://www.heypsych.com/treatments/prazosin-minipress-ptsd-nightmares](https://www.heypsych.com/treatments/prazosin-minipress-ptsd-nightmares)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is prazosin used for in psychiatry?",
@@ -375,5 +487,20 @@
       "q": "Is prazosin safe in older adults?",
       "a": "The main concern is falls from orthostatic hypotension (blood pressure dropping when standing). If used, older adults generally need extra-cautious dosing: very low starting dose, slow titration, and serious attention to nighttime fall safety."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Prazosin (Minipress) for PTSD Nightmares: Uses, Dosing, Side Effects",
+    "description": "Prazosin (Minipress) is commonly used off-label for PTSD nightmares and sleep disruption. Learn bedtime dosing (start 1 mg, titrate slowly), what to expect, side effects like dizziness/fainting, and key interactions (PDE-5 inhibitors, other BP meds, alcohol).",
+    "canonical": "[https://www.heypsych.com/treatments/prazosin-minipress-ptsd-nightmares](https://www.heypsych.com/treatments/prazosin-minipress-ptsd-nightmares)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

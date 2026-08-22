@@ -1,20 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "st-johns-wort",
-  "type": "supplement",
-  "name": "St. John’s Wort",
-  "summary": "St. John’s Wort (Hypericum perforatum) is a widely used herbal supplement for mild-to-moderate depression, with additional applications for anxiety and sleep disturbances.",
-  "description": "St. John’s Wort is a flowering plant native to Europe and used for centuries in traditional medicine. Its active compounds, including hypericin and hyperforin, are thought to modulate neurotransmitters such as serotonin, dopamine, and norepinephrine. It has been shown in multiple clinical trials to be effective for mild-to-moderate depression, sometimes comparable to standard antidepressants. However, its extensive interactions with prescription medications—especially through induction of cytochrome P450 enzymes and P-glycoprotein—make it a high-risk supplement in polypharmacy settings. It is generally well tolerated but requires careful monitoring when combined with other drugs.",
-  "category": "supplements",
-  "tags": [
-    "antidepressant",
-    "anxiolytic",
-    "herbal medicine",
-    "serotonin"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract",
-    "natural_source": "Flowering tops of Hypericum perforatum",
+  "identity": {
+    "slug": "st-johns-wort",
+    "name": "St. John’s Wort",
+    "brand_names": [
+      "Perika",
+      "Kira",
+      "Hyperforat",
+      "LI 160"
+    ],
+    "aliases": [
+      "SJW",
+      "Hypericum",
+      "Tipton’s Weed"
+    ],
+    "wikidata_qid": "Q155978"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Psychiatry",
       "Integrative Medicine",
@@ -25,77 +30,176 @@
       "Dopaminergic activity",
       "Noradrenergic activity"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Herbal Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Perika",
-      "Kira",
-      "Hyperforat",
-      "LI 160"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for depression treatment)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Medium-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Integrative Medicine",
-      "Primary Care"
-    ],
-    "wikidata_qid": "Q155978"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild-to-moderate depression",
-      "Seasonal affective disorder (adjunctive)",
-      "Mild anxiety and sleep disturbances"
-    ],
-    "off_label_uses": [
-      "Menopausal symptoms",
-      "Somatic symptoms of stress"
-    ],
-    "contraindications": [
-      "Use with SSRIs, SNRIs, MAOIs, or other serotonergic medications",
-      "Concurrent use with immunosuppressants, anticoagulants, or certain chemotherapeutics",
-      "Pregnancy and lactation (insufficient safety data)"
-    ],
-    "monitoring_required": [
-      "Mood response",
-      "Drug–drug interactions",
-      "Signs of serotonin syndrome"
-    ],
-    "efficacy_rating": {
-      "depression": 4,
-      "anxiety": 3,
-      "sleep": 2,
-      "menopausal_symptoms": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "St. John’s Wort",
-      "Hypericum perforatum",
-      "Hypericin",
-      "Hyperforin"
-    ],
-    "synonyms": [
-      "SJW",
-      "Hypericum",
-      "Tipton’s Weed"
-    ],
-    "common_misspellings": [
-      "st johns wart",
-      "st-johns-wart"
+    "tags": [
+      "antidepressant",
+      "anxiolytic",
+      "herbal medicine",
+      "serotonin"
     ]
+  },
+  "summary": "St. John’s Wort (Hypericum perforatum) is a widely used herbal supplement for mild-to-moderate depression, with additional applications for anxiety and sleep disturbances.",
+  "description": "St. John’s Wort is a flowering plant native to Europe and used for centuries in traditional medicine. Its active compounds, including hypericin and hyperforin, are thought to modulate neurotransmitters such as serotonin, dopamine, and norepinephrine. It has been shown in multiple clinical trials to be effective for mild-to-moderate depression, sometimes comparable to standard antidepressants. However, its extensive interactions with prescription medications—especially through induction of cytochrome P450 enzymes and P-glycoprotein—make it a high-risk supplement in polypharmacy settings. It is generally well tolerated but requires careful monitoring when combined with other drugs.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-to-moderate-depression",
+          "condition_name": "Mild-to-moderate depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "seasonal-affective-disorder-adjunctive",
+          "condition_name": "Seasonal affective disorder (adjunctive)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mild-anxiety-and-sleep-disturbances",
+          "condition_name": "Mild anxiety and sleep disturbances",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "menopausal-symptoms",
+          "condition_name": "Menopausal symptoms",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "somatic-symptoms-of-stress",
+          "condition_name": "Somatic symptoms of stress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "sleep": {
+          "rating": 2
+        },
+        "menopausal_symptoms": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Medium-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Dry mouth"
+        },
+        {
+          "effect": "Photosensitivity"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serotonin syndrome (with other serotonergic drugs)"
+        },
+        {
+          "risk": "Severe drug–drug interactions"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Use with SSRIs, SNRIs, MAOIs, or other serotonergic medications"
+        },
+        {
+          "contraindication": "Concurrent use with immunosuppressants, anticoagulants, or certain chemotherapeutics"
+        },
+        {
+          "contraindication": "Pregnancy and lactation (insufficient safety data)"
+        }
+      ],
+      "precautions": [
+        "Potent inducer of CYP3A4, CYP2C9, and P-glycoprotein, leading to reduced levels of many medications (e.g., oral contraceptives, warfarin, HIV protease inhibitors, cyclosporine).",
+        "Avoid combination with prescription antidepressants due to serotonin syndrome risk.",
+        "May increase sensitivity to sunlight; use sunscreen."
+      ],
+      "interactions": [
+        {
+          "interactant": "SSRIs/SNRIs/MAOIs",
+          "mechanism": "Serotonin syndrome",
+          "action": "Contraindicated"
+        },
+        {
+          "interactant": "Oral contraceptives",
+          "mechanism": "Reduced effectiveness",
+          "action": "Avoid concurrent use"
+        },
+        {
+          "interactant": "Warfarin",
+          "mechanism": "Decreased anticoagulant effect",
+          "action": "Monitor INR closely"
+        },
+        {
+          "interactant": "Immunosuppressants (e.g., cyclosporine)",
+          "mechanism": "Reduced drug levels",
+          "action": "Avoid"
+        },
+        {
+          "interactant": "HIV medications",
+          "mechanism": "Reduced plasma concentrations",
+          "action": "Avoid"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood improvement"
+        },
+        {
+          "parameter": "Signs of serotonin syndrome"
+        },
+        {
+          "parameter": "Drug efficacy if combined with other therapies"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; safety data insufficient",
+        "lactation": "Not recommended; possible infant exposure via breast milk",
+        "pediatric": "Not routinely recommended; limited safety data",
+        "geriatric": "Caution with polypharmacy due to interaction risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract",
+        "natural_source": "Flowering tops of Hypericum perforatum",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for depression treatment)"
+      }
+    }
   },
   "sections": [
     {
@@ -232,6 +336,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – St. John’s Wort and Depression",
+      "url": "https://www.nccih.nih.gov/health/st-johns-wort-and-depression"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Linde K, et al. St John’s wort for major depression. Cochrane Database Syst Rev. 2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18425885/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Izzo AA. Interactions between herbs and conventional drugs: overview of the clinical data. Med Princ Pract. 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22179226/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "St. John’s Wort",
+      "Hypericum perforatum",
+      "Hypericin",
+      "Hyperforin"
+    ],
+    "synonyms": [
+      "SJW",
+      "Hypericum",
+      "Tipton’s Weed"
+    ],
+    "common_misspellings": [
+      "st johns wart",
+      "st-johns-wart"
+    ]
+  },
   "seo": {
     "title": "St. John’s Wort – Herbal Supplement for Depression and Mood Support",
     "description": "St. John’s Wort (Hypericum perforatum) is an herbal remedy used for mild-to-moderate depression, anxiety, and sleep support. Learn about benefits, dosing, risks, and drug interactions.",

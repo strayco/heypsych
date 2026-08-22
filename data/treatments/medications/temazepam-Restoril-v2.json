@@ -1,79 +1,228 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "temazepam-restoril",
-  "type": "medication",
-  "name": "Temazepam (Restoril)",
-  "summary": "Short-term benzodiazepine sleep medication for insomnia (trouble falling asleep or staying asleep). Works the same night, but can cause next-day grogginess and carries real dependence and withdrawal risk—especially with daily use.",
-  "description": "Temazepam (Restoril) is a benzodiazepine used for short-term insomnia when safer options haven’t worked. It can help you fall asleep faster and stay asleep longer, usually the same night you take it. The tradeoff: next-day impairment, memory issues, sleep-walking–type behaviors in rare cases, and a high risk of physical dependence if used regularly. Never combine with alcohol or opioids—this can be fatal. Best used at the lowest effective dose, for the shortest time, and as-needed when possible.",
-  "patient_summary": "Temazepam (Restoril) can help you fall asleep and stay asleep the same night you take it. It can also leave you groggy the next day and can be habit-forming with regular use. Never mix with alcohol or opioids—this combo can shut down breathing. Most people should use it short-term and only when safer insomnia treatments haven’t worked.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "temazepam-restoril",
+    "name": "Temazepam (Restoril)",
+    "generic_name": "temazepam",
+    "brand_names": [
+      "Restoril"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Benzodiazepine",
       "GABA-A Receptor Modulator",
       "Hypnotic (Sedative)"
-    ],
-    "brand_names": [
-      "Restoril"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1981,
-    "pharmacologic_category": "Benzodiazepine, Short-to-Intermediate Acting",
-    "published_date": "2025-11-04T00:00:00Z",
-    "last_updated": "2025-11-04T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-04T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset or sleep maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for short-term treatment of insomnia (trouble falling asleep and/or staying asleep). Typically reserved for situations where safer therapies (CBT-I, sleep hygiene, non-benzodiazepine options) aren’t working or aren’t available."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "clinical_context_only",
-        "context": "Temazepam is not an antidepressant or anti-anxiety first-line medication. If insomnia is being driven by anxiety, treating the underlying anxiety (therapy and/or a longer-term medication strategy) usually matters more than stacking nightly sedatives."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to temazepam or any component of the formulation",
-      "Hypersensitivity to other benzodiazepines",
-      "Myasthenia gravis (risk of worsening muscle weakness)",
-      "Sleep apnea syndrome (avoid due to respiratory suppression risk; listed as contraindicated in some countries)",
-      "Prior paradoxical reactions to alcohol and/or sedative medications (in some labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep onset and sleep maintenance (short-term)",
-      "percentage_value": "Varies by patient",
-      "comparison_data": "Generally better than no medication in the short term, but tolerance and dependence risk rise with ongoing use",
-      "patient_text": "Temazepam can help you fall asleep faster and stay asleep longer—often the same night. But it’s not a forever medication. With regular use, your brain can adapt (tolerance), and stopping suddenly can trigger rebound insomnia and withdrawal.",
-      "citation_tag": "FDA Label: Temazepam (Restoril)"
+  "summary": "Short-term benzodiazepine sleep medication for insomnia (trouble falling asleep or staying asleep). Works the same night, but can cause next-day grogginess and carries real dependence and withdrawal risk—especially with daily use.",
+  "description": "Temazepam (Restoril) is a benzodiazepine used for short-term insomnia when safer options haven’t worked. It can help you fall asleep faster and stay asleep longer, usually the same night you take it. The tradeoff: next-day impairment, memory issues, sleep-walking–type behaviors in rare cases, and a high risk of physical dependence if used regularly. Never combine with alcohol or opioids—this can be fatal. Best used at the lowest effective dose, for the shortest time, and as-needed when possible.",
+  "patient_summary": "Temazepam (Restoril) can help you fall asleep and stay asleep the same night you take it. It can also leave you groggy the next day and can be habit-forming with regular use. Never mix with alcohol or opioids—this combo can shut down breathing. Most people should use it short-term and only when safer insomnia treatments haven’t worked.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for short-term treatment of insomnia (trouble falling asleep and/or staying asleep). Typically reserved for situations where safer therapies (CBT-I, sleep hygiene, non-benzodiazepine options) aren’t working or aren’t available.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Temazepam is not an antidepressant or anti-anxiety first-line medication. If insomnia is being driven by anxiety, treating the underlying anxiety (therapy and/or a longer-term medication strategy) usually matters more than stacking nightly sedatives."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with hypnotic effect typically the same night",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Same-night sedation; plan for a full night of sleep",
-      "peak_plasma": "1.2 to 1.6 hours",
-      "half_life": "3.5 to 18.4 hours",
-      "duration_IR": "Classified as short-to-intermediate acting; next-day impairment risk increases with higher dose and shorter sleep time",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic; primarily phase II metabolism",
-      "excretion": "Urine (mostly inactive metabolites; <3% as unchanged drug)",
-      "protein_binding": "96%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Same-night sedation; plan for a full night of sleep"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness",
+          "incidence": "9%",
+          "notes": "Sleepiness is the point, but it can spill into the next day. Higher doses, older age, and other sedatives make this worse."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "5%",
+          "notes": "This can raise fall risk—especially at night when you get up to use the bathroom. Move slowly and keep pathways clear."
+        },
+        {
+          "effect": "Lethargy",
+          "incidence": "5%",
+          "notes": "Some people describe this as low energy or heaviness the next day."
+        },
+        {
+          "effect": "Hangover effect",
+          "incidence": "3%",
+          "notes": "Grogginess and reduced sharpness the next morning. If this happens, the dose is often too high or sleep time is too short."
+        },
+        {
+          "effect": "Euphoria",
+          "incidence": "2%",
+          "notes": "This is part of why benzodiazepines can be misused. If you notice craving or using it for reasons other than sleep, tell your prescriber."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "2%",
+          "notes": "Not common, but it shows up in labeling."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (highest risk with opioids, alcohol, or significant respiratory disease): slow or shallow breathing, bluish lips, unresponsiveness. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe withdrawal with abrupt stop after continued use: agitation, tremor, sweating, nausea, vomiting, perceptual changes, delirium, and seizures. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Paradoxical reactions: agitation, aggression, disinhibition, hallucinations, worsening anxiety. Stop and contact your prescriber urgently."
+        },
+        {
+          "risk": "Anterograde amnesia: memory gaps for events after dosing; can lead to risky decisions without recall."
+        },
+        {
+          "risk": "Complex sleep behaviors: sleep-driving, sleep-eating, making calls while not fully awake. Discontinue and seek immediate medical advice."
+        },
+        {
+          "risk": "Hypersensitivity reactions (rare but serious): anaphylaxis or angioedema. Emergency care; do not rechallenge."
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined use for patients where alternatives are inadequate. Use the minimum effective dose and duration, and monitor closely for sedation and breathing problems.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to temazepam or any component of the formulation"
+        },
+        {
+          "contraindication": "Hypersensitivity to other benzodiazepines"
+        },
+        {
+          "contraindication": "Myasthenia gravis (risk of worsening muscle weakness)"
+        },
+        {
+          "contraindication": "Sleep apnea syndrome (avoid due to respiratory suppression risk; listed as contraindicated in some countries)"
+        },
+        {
+          "contraindication": "Prior paradoxical reactions to alcohol and/or sedative medications (in some labeling)"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction risk: Higher risk with substance use history or when combined with alcohol, opioids, or illicit substances",
+        "Physical dependence can develop with continued use; risk increases with longer duration and higher daily dose",
+        "Do not stop suddenly after regular use: Abrupt discontinuation or rapid dose reduction can cause life-threatening withdrawal",
+        "Next-day impairment: Can impair driving, reaction time, and judgment the following day—especially with higher doses or short sleep time",
+        "Complex sleep behaviors (rare): Sleep-driving, sleep-eating, making calls while asleep—stop medication and seek urgent medical advice if this happens",
+        "Depression and suicidal risk: Avoid in depression when there’s concern about worsening mood or safety, except in acute/emergency situations"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid whenever possible. If there is no alternative, use the lowest dose for the shortest time and monitor closely for excessive sedation and breathing problems."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression with dangerous impairment, blackouts, falls, and potential respiratory suppression.",
+          "action": "Absolute “no.” Don’t drink on nights you take temazepam, and don’t assume spacing it out makes it safe."
+        },
+        {
+          "interactant": "Other sedatives (sleep meds, benzodiazepines, barbiturates, muscle relaxants, sedating antihistamines like diphenhydramine, gabapentinoids, cannabis)",
+          "mechanism": "Excess sedation, falls, confusion, memory impairment, and higher overdose risk.",
+          "action": "Avoid stacking sedatives. If your prescriber intentionally combines, doses should be conservative and safety monitoring should be tighter."
+        },
+        {
+          "interactant": "Respiratory depressants and high-risk medical conditions (COPD, untreated sleep apnea)",
+          "mechanism": "Increased risk of breathing suppression during sleep.",
+          "action": "Dose reduction or avoidance is often appropriate. If sleep apnea is suspected, get evaluated—sedatives can make it worse."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors/inducers",
+          "mechanism": "Temazepam is only a minor CYP3A4 substrate and primarily undergoes phase II metabolism, so interactions here are usually not the main story—but clinically meaningful interactions can still exist depending on the full medication list.",
+          "action": "Medication list review matters. If you’re on multiple interacting drugs, your prescriber may reduce dose, adjust frequency, or choose a different option."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Respiratory status: Watch for shallow breathing, loud snoring, witnessed apneas, or unusual daytime sleepiness—especially with COPD, suspected sleep apnea, or any opioid exposure"
+        },
+        {
+          "parameter": "Next-day impairment: Morning grogginess, slowed reaction time, driving risk, work/school performance impairment"
+        },
+        {
+          "parameter": "Falls and balance: Nighttime unsteadiness, dizziness, near-falls; higher risk in older adults"
+        },
+        {
+          "parameter": "Cognition and memory: Confusion, forgetfulness, amnesia for events after dosing"
+        },
+        {
+          "parameter": "Mood and safety: Worsening depression, irritability, disinhibition, suicidal thinking—especially in patients with baseline mood disorders"
+        },
+        {
+          "parameter": "Paradoxical reactions: New agitation, aggression, hallucinations, unusual behavior"
+        },
+        {
+          "parameter": "Misuse risk: Early refills, dose escalation, using outside bedtime/sleep purpose, mixing with alcohol or other sedatives"
+        },
+        {
+          "parameter": "Duration creep: If use is extending beyond short-term, reassess the diagnosis (sleep apnea, circadian issues, substance-related insomnia, anxiety/depression) and prioritize CBT-I"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "In utero benzodiazepine exposure may cause fetal harm. While data are mixed and not perfectly definitive, late-pregnancy exposure can cause newborn sedation (hypotonia, lethargy, respiratory depression) and/or neonatal withdrawal (irritability, tremors, feeding difficulty, hyperreflexia). Nonpharmacologic therapy is preferred for insomnia during pregnancy when possible. If exposure occurs, newborn monitoring is recommended. Patients may be eligible for enrollment in the National Pregnancy Registry for Psychiatric Medications (866-961-2388).",
+        "lactation": "Temazepam is present in breast milk. Limited data suggest milk levels are often very low, but infant sedation and feeding problems have been reported with some benzodiazepines. If used while breastfeeding, monitor the infant for excessive sleepiness, poor feeding, respiratory depression, and inadequate weight gain. The decision should balance infant exposure risk, breastfeeding benefits, and the mother’s treatment needs.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Avoid for insomnia in most adults age 65+ (Beers Criteria). Risks include impaired cognition, delirium, falls, fractures, and motor vehicle accidents. If a benzodiazepine is considered necessary for a different indication (not routine insomnia), dosing should be minimal and reassessed frequently.",
+        "renal_impairment": "No dosage adjustment is typically required for kidney impairment. Temazepam is highly protein-bound and not meaningfully dialyzed; supplemental doses are not usually needed with dialysis modalities.",
+        "hepatic_impairment": "Use caution and consider a lower dose and slower titration in hepatic impairment. Temazepam is often considered less impacted by liver dysfunction than some other benzodiazepines, but sedation and confusion risk still rise in medically complex patients."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1981
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with hypnotic effect typically the same night",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "1.2 to 1.6 hours",
+          "half_life": "3.5 to 18.4 hours",
+          "metabolism": "Hepatic; primarily phase II metabolism",
+          "excretion": "Urine (mostly inactive metabolites; <3% as unchanged drug)",
+          "protein_binding": "96%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Temazepam is taken at bedtime for short-term insomnia. Most adults start with a low dose and only increase if needed based on response and next-day effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been taking temazepam regularly, don’t stop abruptly. Benzodiazepine withdrawal can be severe and, in some cases, life-threatening. A gradual taper lowers the risk of withdrawal symptoms and rebound insomnia."
+        }
+      }
     }
   },
   "sections": [
@@ -93,7 +242,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People describe temazepam in a pretty consistent way—quick sleepiness, less nighttime wake-ups, and then the tradeoffs. Here’s what that can feel like:",
       "items": [
         {
           "category": "Sleepiness (same night)",
@@ -138,7 +286,8 @@
           ],
           "note": "With ongoing use, the brain can adapt. That’s why temazepam is typically kept short-term and tapered if it’s been used regularly."
         }
-      ]
+      ],
+      "intro": "People describe temazepam in a pretty consistent way—quick sleepiness, less nighttime wake-ups, and then the tradeoffs. Here’s what that can feel like:"
     },
     {
       "type": "onset_duration",
@@ -155,10 +304,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Temazepam can be effective for short-term insomnia—especially when you’re stuck in a cycle of not sleeping and your system is too revved to reset. Many people notice faster sleep onset, fewer awakenings, or both. The catch is that tolerance can build, and dependence risk increases with longer use and higher doses. That’s why it’s usually positioned as a short-term tool while the real insomnia treatment is happening (CBT-I, habit changes, treating anxiety/depression, adjusting stimulants, etc.).",
       "metric": "Short-term insomnia relief",
       "value": "Often improves sleep onset and/or sleep maintenance",
       "comparison": "Better than no medication short-term, but not a long-term solution",
-      "text": "Temazepam can be effective for short-term insomnia—especially when you’re stuck in a cycle of not sleeping and your system is too revved to reset. Many people notice faster sleep onset, fewer awakenings, or both. The catch is that tolerance can build, and dependence risk increases with longer use and higher doses. That’s why it’s usually positioned as a short-term tool while the real insomnia treatment is happening (CBT-I, habit changes, treating anxiety/depression, adjusting stimulants, etc.).",
       "clinical_details": "Benzodiazepine hypnotics can improve sleep in the short term, but they come with next-day impairment risk, paradoxical reactions in some patients, and a meaningful risk of dependence and withdrawal if used continuously. For many patients, the safest long-term plan is CBT-I plus targeted treatment of underlying drivers (anxiety, depression, trauma, circadian rhythm issues, substances, medical sleep disorders).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -248,7 +397,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Temazepam is a sedative. Most serious interactions are about stacking sedation—especially anything that slows breathing or knocks out your alertness.",
       "items": [
         {
           "with": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
@@ -275,7 +423,8 @@
           "risk": "Temazepam is only a minor CYP3A4 substrate and primarily undergoes phase II metabolism, so interactions here are usually not the main story—but clinically meaningful interactions can still exist depending on the full medication list.",
           "action": "Medication list review matters. If you’re on multiple interacting drugs, your prescriber may reduce dose, adjust frequency, or choose a different option."
         }
-      ]
+      ],
+      "intro": "Temazepam is a sedative. Most serious interactions are about stacking sedation—especially anything that slows breathing or knocks out your alertness."
     },
     {
       "type": "tapering",
@@ -351,21 +500,6 @@
       "text": "Temazepam is not a first-line insomnia treatment. In psychiatry-world, the foundation is CBT-I and addressing what’s driving insomnia (anxiety, depression, trauma, stimulants, circadian rhythm mismatch, substances, medical sleep disorders like sleep apnea). Temazepam is typically a short-term “bridge” or rescue option when insomnia is severe and safer options haven’t worked. If you need it nightly to sleep, that’s usually a sign the plan needs an upgrade—not just a higher dose."
     }
   ],
-  "seo": {
-    "title": "Temazepam (Restoril): Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Temazepam (Restoril) for insomnia: bedtime dosing (7.5–30 mg), how fast it works, next-day impairment, dependence risk, opioid/alcohol dangers, side effects, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/temazepam-restoril](https://www.heypsych.com/treatments/temazepam-restoril)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is temazepam (Restoril) used for?",
@@ -415,5 +549,20 @@
       "q": "Is temazepam safe in pregnancy or breastfeeding?",
       "a": "It’s generally avoided in pregnancy unless benefits clearly outweigh risks. Late-pregnancy benzodiazepine exposure can cause newborn sedation or withdrawal symptoms. Temazepam can pass into breast milk; if used while breastfeeding, infants should be monitored for sleepiness, feeding problems, breathing issues, and poor weight gain."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Temazepam (Restoril): Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Temazepam (Restoril) for insomnia: bedtime dosing (7.5–30 mg), how fast it works, next-day impairment, dependence risk, opioid/alcohol dangers, side effects, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/temazepam-restoril](https://www.heypsych.com/treatments/temazepam-restoril)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

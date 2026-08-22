@@ -81,6 +81,9 @@ export function getClientIp(req: NextRequest): string {
 /**
  * Apply rate limit to API route
  * Returns null if request is allowed, or NextResponse with 429 if rate limited
+ *
+ * IMPORTANT: For admin endpoints, use checkRateLimitStrict() which fails closed
+ * in production when rate limiting is not configured.
  */
 export async function checkRateLimit(
   req: NextRequest,
@@ -95,7 +98,7 @@ export async function checkRateLimit(
   }
 
   const ip = getClientIp(req);
-  const { success, limit, reset, remaining } = await limiter.limit(ip);
+  const { success, limit, reset } = await limiter.limit(ip);
 
   if (!success) {
     const retryAfter = Math.ceil((reset - Date.now()) / 1000);
@@ -120,6 +123,43 @@ export async function checkRateLimit(
 
   // Request allowed
   return null;
+}
+
+/**
+ * Apply rate limit with FAIL CLOSED behavior for admin endpoints
+ *
+ * In production:
+ * - If rate limiting is not configured, returns 503 (Service Unavailable)
+ * - Admin endpoints MUST have rate limiting to prevent abuse
+ *
+ * In development:
+ * - Allows requests without rate limiting (for local testing)
+ * - Logs a warning about missing configuration
+ *
+ * @returns null if allowed, NextResponse if blocked (429 or 503)
+ */
+export async function checkRateLimitStrict(
+  req: NextRequest,
+  limiter: Ratelimit | null
+): Promise<NextResponse | null> {
+  const isProduction = process.env.NODE_ENV === "production";
+
+  // FAIL CLOSED: In production, rate limiting MUST be enabled
+  if (!isRateLimitEnabled || !limiter) {
+    if (isProduction) {
+      console.error("SECURITY: Rate limiting not configured - blocking admin request");
+      return NextResponse.json(
+        { error: "Service not properly configured" },
+        { status: 503 }
+      );
+    }
+    // Development: allow but warn
+    console.log("⚠️  Rate limiting disabled - configure Upstash Redis for production");
+    return null;
+  }
+
+  // Apply standard rate limiting
+  return checkRateLimit(req, limiter);
 }
 
 /**

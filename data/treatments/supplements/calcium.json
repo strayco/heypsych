@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "calcium",
-  "type": "supplement",
-  "name": "Calcium",
-  "summary": "An essential mineral for bone health, muscle contraction, nerve signaling, and cardiovascular stability, sometimes used as adjunctive support in mood and anxiety disorders.",
-  "description": "Calcium is the most abundant mineral in the human body, with over 99% stored in bones and teeth. It plays critical roles in skeletal integrity, neuromuscular function, intracellular signaling, and blood clotting. While primarily recognized for preventing osteoporosis, calcium has also been studied in psychiatry, particularly in relation to premenstrual syndrome (PMS), mood regulation, and anxiety. Supplementation is widely available but should be balanced with other minerals, particularly magnesium and vitamin D, to optimize absorption and minimize cardiovascular risks.",
-  "category": "supplements",
-  "tags": [
-    "bone-health",
-    "electrolyte",
-    "mood-support",
-    "cardiovascular",
-    "pms"
-  ],
-  "metadata": {
-    "compound_type": "Essential mineral",
-    "natural_source": "Dairy products, leafy greens, fortified foods",
+  "identity": {
+    "slug": "calcium",
+    "name": "Calcium",
+    "brand_names": [
+      "Caltrate",
+      "Tums (calcium carbonate)",
+      "Oscal"
+    ],
+    "aliases": [
+      "Ca",
+      "Ca2+",
+      "calcium mineral"
+    ],
+    "wikidata_qid": "Q660"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Bone Health",
       "Endocrinology",
@@ -27,78 +30,176 @@
       "Neurotransmission",
       "Muscle contraction"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Caltrate",
-      "Tums (calcium carbonate)",
-      "Oscal"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Recognized as a dietary supplement and nutrient of concern",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Endocrinology",
-      "Orthopedics",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q660"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of osteoporosis",
-      "Calcium deficiency",
-      "Adjunct in hypoparathyroidism"
-    ],
-    "off_label_uses": [
-      "Premenstrual syndrome (PMS) and mood symptoms",
-      "Adjunctive support in anxiety and depression",
-      "Hypertension prevention (in combination with other nutrients)"
-    ],
-    "contraindications": [
-      "Hypercalcemia",
-      "History of kidney stones",
-      "Severe renal impairment"
-    ],
-    "monitoring_required": [
-      "Serum calcium levels (if long-term high dose)",
-      "Renal function",
-      "Bone density in osteoporosis patients"
-    ],
-    "efficacy_rating": {
-      "osteoporosis": 5,
-      "pms-support": 3,
-      "psychiatric-benefits": 2,
-      "cardiovascular-benefits": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "calcium supplement",
-      "Ca2+",
-      "calcium carbonate",
-      "calcium citrate"
-    ],
-    "synonyms": [
-      "Ca",
-      "Ca2+",
-      "calcium mineral"
-    ],
-    "common_misspellings": [
-      "calcuim",
-      "calceum"
+    "tags": [
+      "bone-health",
+      "electrolyte",
+      "mood-support",
+      "cardiovascular",
+      "pms"
     ]
+  },
+  "summary": "An essential mineral for bone health, muscle contraction, nerve signaling, and cardiovascular stability, sometimes used as adjunctive support in mood and anxiety disorders.",
+  "description": "Calcium is the most abundant mineral in the human body, with over 99% stored in bones and teeth. It plays critical roles in skeletal integrity, neuromuscular function, intracellular signaling, and blood clotting. While primarily recognized for preventing osteoporosis, calcium has also been studied in psychiatry, particularly in relation to premenstrual syndrome (PMS), mood regulation, and anxiety. Supplementation is widely available but should be balanced with other minerals, particularly magnesium and vitamin D, to optimize absorption and minimize cardiovascular risks.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-osteoporosis",
+          "condition_name": "Prevention and treatment of osteoporosis",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "calcium-deficiency",
+          "condition_name": "Calcium deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunct-in-hypoparathyroidism",
+          "condition_name": "Adjunct in hypoparathyroidism",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "premenstrual-syndrome-pms-and-mood-symptoms",
+          "condition_name": "Premenstrual syndrome (PMS) and mood symptoms",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-support-in-anxiety-and-depression",
+          "condition_name": "Adjunctive support in anxiety and depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "hypertension-prevention-in-combination-with-other-nutrients",
+          "condition_name": "Hypertension prevention (in combination with other nutrients)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "osteoporosis": {
+          "rating": 5
+        },
+        "pms-support": {
+          "rating": 3
+        },
+        "psychiatric-benefits": {
+          "rating": 2
+        },
+        "cardiovascular-benefits": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Constipation"
+        },
+        {
+          "effect": "Bloating"
+        },
+        {
+          "effect": "Flatulence"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Kidney stones"
+        },
+        {
+          "risk": "Hypercalcemia (in excessive intake)"
+        },
+        {
+          "risk": "Possible increased cardiovascular risk with very high doses"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypercalcemia"
+        },
+        {
+          "contraindication": "History of kidney stones"
+        },
+        {
+          "contraindication": "Severe renal impairment"
+        }
+      ],
+      "precautions": [
+        "Avoid exceeding 2000–2500 mg daily to reduce kidney stone and cardiovascular risks.",
+        "Calcium should be balanced with magnesium and vitamin D for proper absorption and utilization."
+      ],
+      "interactions": [
+        {
+          "interactant": "Thiazide diuretics",
+          "mechanism": "Hypercalcemia",
+          "action": "Monitor calcium levels"
+        },
+        {
+          "interactant": "Bisphosphonates",
+          "mechanism": "Reduced absorption if taken together",
+          "action": "Separate dosing by several hours"
+        },
+        {
+          "interactant": "Iron supplements",
+          "mechanism": "Reduced absorption of iron",
+          "action": "Take at different times"
+        },
+        {
+          "interactant": "Levothyroxine",
+          "mechanism": "Reduced absorption",
+          "action": "Separate by at least 4 hours"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Bone mineral density (if used for osteoporosis)"
+        },
+        {
+          "parameter": "Serum calcium in high-dose users"
+        },
+        {
+          "parameter": "Renal function in long-term use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe and essential; reduces risk of preeclampsia when adequate",
+        "lactation": "Safe; increased requirements during breastfeeding",
+        "pediatric": "Safe within age-appropriate dosing",
+        "geriatric": "Beneficial for bone preservation but monitor for cardiovascular risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential mineral",
+        "natural_source": "Dairy products, leafy greens, fortified foods",
+        "regulatory_notes": "Recognized as a dietary supplement and nutrient of concern"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +327,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Fact Sheet: Calcium",
+      "url": "https://ods.od.nih.gov/factsheets/Calcium-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com: Calcium",
+      "url": "https://examine.com/supplements/calcium/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "calcium supplement",
+      "Ca2+",
+      "calcium carbonate",
+      "calcium citrate"
+    ],
+    "synonyms": [
+      "Ca",
+      "Ca2+",
+      "calcium mineral"
+    ],
+    "common_misspellings": [
+      "calcuim",
+      "calceum"
+    ]
+  },
   "seo": {
     "title": "Calcium: Essential Mineral for Bone, Heart, and Mood Health",
     "description": "Comprehensive guide to calcium supplementation for bone density, PMS, mood regulation, and cardiovascular health, including dosage, benefits, and risks.",

@@ -224,12 +224,12 @@ export function TreatmentCard({
   const keyMetrics = getKeyMetrics();
 
   // Get variant-specific styling
-  const getCardVariant = () => {
+  const getCardVariant = (): "default" | "elevated" | "accent" | "outlined" | "subtle" | "glass" => {
     switch (variant) {
       case "compact":
-        return "filled";
+        return "subtle";
       case "detailed":
-        return "gradient";
+        return "elevated";
       case "comparison":
         return "outlined";
       default:
@@ -298,10 +298,10 @@ export function TreatmentCard({
 
             {/* Show description if available */}
             {getDescription() && variant !== "compact" && (
-              <p className="mt-2 line-clamp-2 text-sm text-neutral-900">{getDescription()}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-label-secondary">{getDescription()}</p>
             )}
           </div>
-          <Badge variant={getBadgeVariant() as any} size="sm" className="ml-3 flex-shrink-0">
+          <Badge variant={getBadgeVariant() as any} size="sm" className="ml-3 shrink-0">
             {schema?.display_name || "Treatment"}
           </Badge>
         </div>
@@ -313,10 +313,10 @@ export function TreatmentCard({
           <div className="grid grid-cols-2 gap-3">
             {keyMetrics.slice(0, 4).map((metric, index) => (
               <div key={index} className="min-w-0 space-y-1">
-                <p className="text-xs font-medium tracking-wide text-neutral-800 uppercase">
+                <p className="text-xs font-medium tracking-wide text-label-tertiary uppercase">
                   {metric.label}
                 </p>
-                <p className="text-sm font-semibold text-neutral-900 break-words line-clamp-2">
+                <p className="text-sm font-semibold text-label-secondary wrap-break-word line-clamp-2">
                   {metric.value}
                 </p>
               </div>
@@ -326,7 +326,7 @@ export function TreatmentCard({
 
         {/* Compact metrics */}
         {variant === "compact" && keyMetrics.length > 0 && (
-          <div className="flex justify-between text-xs text-neutral-900">
+          <div className="flex justify-between text-xs text-label-secondary">
             <span>{keyMetrics[0]?.value}</span>
             <span>{keyMetrics[1]?.value}</span>
           </div>
@@ -335,7 +335,7 @@ export function TreatmentCard({
         {/* Indications */}
         {variant === "detailed" && getIndications().length > 0 && (
           <div className="space-y-2">
-            <h4 className="text-sm font-semibold text-neutral-900">Primary Uses</h4>
+            <h4 className="text-sm font-semibold text-label-secondary">Primary Uses</h4>
             <div className="flex flex-wrap gap-1">
               {getIndications().map((indication: string, index: number) => (
                 <Badge key={index} variant="success" size="sm">
@@ -349,7 +349,7 @@ export function TreatmentCard({
         {/* Side Effects for medications */}
         {variant === "detailed" && treatmentType === "medication" && getSideEffects().length > 0 && (
           <div className="space-y-2">
-            <h4 className="text-sm font-semibold text-neutral-900">Common Side Effects</h4>
+            <h4 className="text-sm font-semibold text-label-secondary">Common Side Effects</h4>
             <div className="flex flex-wrap gap-1">
               {getSideEffects().map((effect: string, index: number) => (
                 <Badge key={index} variant="warning" size="sm">
@@ -363,7 +363,7 @@ export function TreatmentCard({
         {/* FDA Status for Interventional */}
         {treatmentType === "interventional" && data.fda_cleared_conditions && (
           <div className="space-y-2">
-            <h4 className="text-sm font-semibold text-neutral-900">FDA Cleared For</h4>
+            <h4 className="text-sm font-semibold text-label-secondary">FDA Cleared For</h4>
             <div className="flex flex-wrap gap-1">
               {data.fda_cleared_conditions.map((condition: string) => (
                 <Badge key={condition} variant="success" size="sm">

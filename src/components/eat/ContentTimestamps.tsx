@@ -72,13 +72,13 @@ export function ContentTimestamps({
   return (
     <div className={containerClass}>
       {publishDate && (
-        <div className="flex items-center gap-1.5 text-sm text-neutral-700">
-          <Calendar className="h-4 w-4 text-neutral-600" />
+        <div className="flex items-center gap-1.5 text-sm text-label-tertiary">
+          <Calendar className="h-4 w-4 text-label-primary0" />
           <span className="font-medium">Published:</span>
           <span>
             {formatDate(publishDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-700">
+              <span className="ml-1 text-label-tertiary">
                 ({getRelativeTime(publishDate)})
               </span>
             )}
@@ -87,13 +87,13 @@ export function ContentTimestamps({
       )}
 
       {updateDate && updateDate !== publishDate && (
-        <div className="flex items-center gap-1.5 text-sm text-neutral-700">
-          <RefreshCw className="h-4 w-4 text-neutral-600" />
+        <div className="flex items-center gap-1.5 text-sm text-label-tertiary">
+          <RefreshCw className="h-4 w-4 text-label-primary0" />
           <span className="font-medium">Updated:</span>
           <span>
             {formatDate(updateDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-700">
+              <span className="ml-1 text-label-tertiary">
                 ({getRelativeTime(updateDate)})
               </span>
             )}
@@ -102,13 +102,13 @@ export function ContentTimestamps({
       )}
 
       {reviewDate && (
-        <div className="flex items-center gap-1.5 text-sm text-neutral-700">
-          <Clock className="h-4 w-4 text-green-600" />
-          <span className="font-medium text-green-700">Reviewed:</span>
-          <span className="text-green-700">
+        <div className="flex items-center gap-1.5 text-sm text-label-tertiary">
+          <Clock className="h-4 w-4 text-positive-600" />
+          <span className="font-medium text-positive-700">Reviewed:</span>
+          <span className="text-positive-700">
             {formatDate(reviewDate)}
             {showRelative && (
-              <span className="ml-1 text-neutral-700">
+              <span className="ml-1 text-label-tertiary">
                 ({getRelativeTime(reviewDate)})
               </span>
             )}

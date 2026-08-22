@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "reishi-mushroom",
-  "type": "supplement",
-  "name": "Reishi Mushroom",
-  "summary": "Reishi mushroom (Ganoderma lucidum) is a medicinal mushroom traditionally used for immune support, stress reduction, and longevity, with emerging evidence for neuroprotective and mental health benefits.",
-  "description": "Reishi mushroom, known as Ganoderma lucidum or 'Lingzhi,' has been used in traditional Chinese and Japanese medicine for over 2,000 years. It contains bioactive compounds such as polysaccharides, triterpenes, and peptidoglycans, which are believed to modulate the immune system, reduce inflammation, and support stress resilience. Reishi is commonly used to promote relaxation, improve sleep quality, and support cardiovascular and metabolic health. In mental health contexts, it may influence fatigue, stress, and mood regulation, though evidence remains limited and primarily from preclinical and small clinical studies.",
-  "category": "supplements",
-  "tags": [
-    "mushroom",
-    "immune support",
-    "adaptogen",
-    "stress resilience",
-    "sleep aid"
-  ],
-  "metadata": {
-    "compound_type": "Medicinal mushroom",
-    "natural_source": "Ganoderma lucidum fruiting body and spores",
+  "identity": {
+    "slug": "reishi-mushroom",
+    "name": "Reishi Mushroom",
+    "brand_names": [
+      "ReishiMax",
+      "Lingzhi Extract",
+      "Ganoderma Lucidum Capsules"
+    ],
+    "aliases": [
+      "Lingzhi",
+      "Ganoderma lucidum"
+    ],
+    "wikidata_qid": "Q740968"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Integrative Medicine",
       "Immunology",
@@ -28,78 +30,169 @@
       "Adaptogen",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "ReishiMax",
-      "Lingzhi Extract",
-      "Ganoderma Lucidum Capsules"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Immunology",
-      "Psychiatry",
-      "Sleep Medicine"
-    ],
-    "wikidata_qid": "Q740968"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Immune system support",
-      "Stress reduction and relaxation",
-      "Support for sleep quality",
-      "Fatigue reduction"
-    ],
-    "off_label_uses": [
-      "Adjunctive mood support",
-      "Neuroprotection and cognitive support",
-      "Cardiovascular health and metabolic support"
-    ],
-    "contraindications": [
-      "Autoimmune disease (may stimulate immune activity)",
-      "Bleeding disorders (anticoagulant effects possible)",
-      "Pregnancy and lactation (limited data)"
-    ],
-    "monitoring_required": [
-      "Bleeding risk if on anticoagulants",
-      "Immune-related effects in autoimmune conditions"
-    ],
-    "efficacy_rating": {
-      "immune_support": 4,
-      "stress_resilience": 3,
-      "sleep": 3,
-      "fatigue": 3,
-      "mood": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Reishi",
-      "Ganoderma lucidum",
-      "Lingzhi"
-    ],
-    "synonyms": [
-      "Lingzhi",
-      "Ganoderma lucidum"
-    ],
-    "common_misspellings": [
-      "reishy",
-      "reeshi",
-      "reeshie"
+    "tags": [
+      "mushroom",
+      "immune support",
+      "adaptogen",
+      "stress resilience",
+      "sleep aid"
     ]
+  },
+  "summary": "Reishi mushroom (Ganoderma lucidum) is a medicinal mushroom traditionally used for immune support, stress reduction, and longevity, with emerging evidence for neuroprotective and mental health benefits.",
+  "description": "Reishi mushroom, known as Ganoderma lucidum or 'Lingzhi,' has been used in traditional Chinese and Japanese medicine for over 2,000 years. It contains bioactive compounds such as polysaccharides, triterpenes, and peptidoglycans, which are believed to modulate the immune system, reduce inflammation, and support stress resilience. Reishi is commonly used to promote relaxation, improve sleep quality, and support cardiovascular and metabolic health. In mental health contexts, it may influence fatigue, stress, and mood regulation, though evidence remains limited and primarily from preclinical and small clinical studies.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "immune-system-support",
+          "condition_name": "Immune system support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-reduction-and-relaxation",
+          "condition_name": "Stress reduction and relaxation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "support-for-sleep-quality",
+          "condition_name": "Support for sleep quality",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "fatigue-reduction",
+          "condition_name": "Fatigue reduction",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-mood-support",
+          "condition_name": "Adjunctive mood support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neuroprotection-and-cognitive-support",
+          "condition_name": "Neuroprotection and cognitive support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cardiovascular-health-and-metabolic-support",
+          "condition_name": "Cardiovascular health and metabolic support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "immune_support": {
+          "rating": 4
+        },
+        "stress_resilience": {
+          "rating": 3
+        },
+        "sleep": {
+          "rating": 3
+        },
+        "fatigue": {
+          "rating": 3
+        },
+        "mood": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dry mouth"
+        },
+        {
+          "effect": "Nasal dryness"
+        },
+        {
+          "effect": "Mild digestive upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased bleeding risk with anticoagulants"
+        },
+        {
+          "risk": "Potential hepatotoxicity (rare, high-dose use)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Autoimmune disease (may stimulate immune activity)"
+        },
+        {
+          "contraindication": "Bleeding disorders (anticoagulant effects possible)"
+        },
+        {
+          "contraindication": "Pregnancy and lactation (limited data)"
+        }
+      ],
+      "precautions": [
+        "May increase bleeding risk; use with caution if on blood thinners.",
+        "Not recommended for individuals with autoimmune disease without medical supervision.",
+        "Quality and potency vary widely among products."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticoagulants/antiplatelets",
+          "mechanism": "Increased bleeding risk",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "May reduce effectiveness",
+          "action": "Avoid or monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Bleeding risk if combined with anticoagulants"
+        },
+        {
+          "parameter": "Liver function with prolonged or high-dose use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not enough data; avoid unless supervised",
+        "lactation": "Limited safety data; not recommended",
+        "pediatric": "Not well studied; avoid supplementation outside clinical use",
+        "geriatric": "Generally safe; monitor for interactions with medications"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Medicinal mushroom",
+        "natural_source": "Ganoderma lucidum fruiting body and spores",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -219,6 +312,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Reishi Mushroom",
+      "url": "https://www.nccih.nih.gov/health/reishi"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Guggenheim AG, et al. Ganoderma lucidum for immune system enhancement. J Altern Complement Med. 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24738982/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Wachtel-Galor S, et al. Ganoderma lucidum (Lingzhi or Reishi). In: Herbal Medicine. CRC Press. 2011",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK92757/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Reishi",
+      "Ganoderma lucidum",
+      "Lingzhi"
+    ],
+    "synonyms": [
+      "Lingzhi",
+      "Ganoderma lucidum"
+    ],
+    "common_misspellings": [
+      "reishy",
+      "reeshi",
+      "reeshie"
+    ]
+  },
   "seo": {
     "title": "Reishi Mushroom – Immune, Stress, and Sleep Support",
     "description": "Reishi mushroom (Ganoderma lucidum) is a traditional medicinal mushroom used for immune support, stress reduction, and sleep quality. Learn about benefits, dosing, and safety.",

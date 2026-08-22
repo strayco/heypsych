@@ -1,92 +1,197 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "psychoeducational-groups",
-  "type": "therapy",
-  "name": "Psychoeducational Groups",
-  "summary": "Psychoeducational groups are structured group interventions that combine education with therapeutic support, helping participants learn about mental health conditions, coping strategies, and skill development in a supportive setting.",
-  "description": "Psychoeducational groups focus on teaching participants about mental health, emotional regulation, coping strategies, and interpersonal skills while also providing peer support. These groups are structured, goal-oriented, and often facilitated by trained clinicians. They may target specific conditions such as depression, anxiety, trauma, or substance use, or address life skills, parenting, and relapse prevention. Unlike purely process-oriented groups, psychoeducational groups emphasize learning, practice, and practical application of skills, blending elements of education and therapy.",
-  "category": "therapy/group",
-  "tags": [
-    "psychoeducation",
-    "group therapy",
-    "skills training",
-    "coping strategies",
-    "mental health education"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "psychoeducational-groups",
+    "name": "Psychoeducational Groups",
+    "wikidata_qid": "Q64789766"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/group",
     "intervention_types": [
       "Group therapy",
       "Psychoeducation"
     ],
-    "treatment_types": [
-      "Supportive therapy",
-      "Skills training"
-    ],
-    "categories": [
-      "Educational therapy",
-      "Support groups"
-    ],
-    "delivery_methods": [
-      "In-person groups",
-      "Online groups"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Families"
-    ],
-    "session_duration": "60–120 minutes",
-    "treatment_duration": [
-      "6–20 sessions",
-      "Ongoing in some programs"
-    ],
-    "specialty_areas": [
-      "Anxiety",
-      "Depression",
-      "Substance use",
-      "Trauma recovery",
-      "Parenting"
-    ],
-    "wikidata_qid": "Q64789766"
+    "tags": [
+      "psychoeducation",
+      "group therapy",
+      "skills training",
+      "coping strategies",
+      "mental health education"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression",
-      "Anxiety",
-      "Substance use disorders",
-      "Trauma",
-      "Parenting challenges"
-    ],
-    "conditions_treated": [
-      "Mood disorders",
-      "Anxiety disorders",
-      "Addiction",
-      "Post-traumatic stress",
-      "Adjustment disorders"
-    ],
-    "off_label_uses": [
-      "Life skills development",
-      "Stress management",
-      "Relapse prevention"
-    ],
-    "contraindications": [
-      "Severe psychosis",
-      "Active suicidality",
-      "Disruptive behaviors that prevent group functioning"
-    ],
-    "safety_profile": "Safe and well-tolerated; risks include discomfort when sharing personal information in a group.",
-    "evidence_level": "Moderate to strong—widely used and supported for multiple conditions, particularly in combination with individual therapy.",
-    "research_support": "Extensive research supports psychoeducational groups for relapse prevention, mood disorders, substance use, and family support programs.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 3,
-      "anxiety": 3,
-      "substance-use": 4,
-      "parenting": 3
+  "summary": "Psychoeducational groups are structured group interventions that combine education with therapeutic support, helping participants learn about mental health conditions, coping strategies, and skill development in a supportive setting.",
+  "description": "Psychoeducational groups focus on teaching participants about mental health, emotional regulation, coping strategies, and interpersonal skills while also providing peer support. These groups are structured, goal-oriented, and often facilitated by trained clinicians. They may target specific conditions such as depression, anxiety, trauma, or substance use, or address life skills, parenting, and relapse prevention. Unlike purely process-oriented groups, psychoeducational groups emphasize learning, practice, and practical application of skills, blending elements of education and therapy.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "trauma",
+          "condition_name": "Trauma",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parenting-challenges",
+          "condition_name": "Parenting challenges",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "mood-disorders",
+          "condition_name": "Mood disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "addiction",
+          "condition_name": "Addiction",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress",
+          "condition_name": "Post-traumatic stress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "life-skills-development",
+          "condition_name": "Life skills development",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-management",
+          "condition_name": "Stress management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "relapse-prevention",
+          "condition_name": "Relapse prevention",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to strong—widely used and supported for multiple conditions, particularly in combination with individual therapy.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "substance-use": {
+          "rating": 4
+        },
+        "parenting": {
+          "rating": 3
+        }
+      },
+      "research_support": "Extensive research supports psychoeducational groups for relapse prevention, mood disorders, substance use, and family support programs."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "6–20 sessions; Ongoing in some programs"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person groups",
+        "Online groups"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–120 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated; risks include discomfort when sharing personal information in a group.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when sharing personal experiences"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Group conflict"
+        },
+        {
+          "risk": "Exposure to triggering content"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Immediate safety risks",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Difficulty tolerating group settings",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe social anxiety",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Supportive therapy, Skills training",
+        "key_techniques": [
+          "Educational therapy",
+          "Support groups"
+        ],
+        "session_structure": {
+          "pre_session": "Review of previous session and check-in.",
+          "during_session": "Educational lesson, group discussion, skill practice.",
+          "post_session": "Homework assignment, reflection, planning for application in daily life."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed clinicians or trained group facilitators with experience in psychoeducation"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -237,6 +342,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Mueser, K. T., & Glynn, S. M. (1999). Behavioral Family Therapy for Psychiatric Disorders.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10072406/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Yalom, I. D., & Leszcz, M. (2020). The Theory and Practice of Group Psychotherapy.",
+      "url": "https://www.wiley.com/en-us/The+Theory+and+Practice+of+Group+Psychotherapy%2C+6th+Edition-p-9781541617568"
+    }
+  ],
   "seo": {
     "title": "Psychoeducational Groups | Group Therapy for Skills & Support",
     "description": "Psychoeducational groups teach mental health skills, coping strategies, and emotional regulation in a supportive group setting. Effective for depression, anxiety, trauma, and substance use recovery.",
@@ -249,5 +368,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to strong—widely used and supported for multiple conditions, particularly in combination with individual therapy."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to strong—widely used and supported for multiple conditions, particularly in combination with individual therapy."
+    ]
   }
 }

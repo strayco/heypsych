@@ -1,133 +1,297 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "escitalopram-lexapro",
-  "type": "medication",
-  "name": "Escitalopram (Lexapro)",
-  "summary": "SSRI antidepressant for depression and anxiety. Once-daily, generally well tolerated, with a black box warning for suicidal thoughts in younger patients and risks of sexual side effects, QTc prolongation, and withdrawal if stopped too quickly.",
-  "description": "Escitalopram (Lexapro) is a selective serotonin reuptake inhibitor (SSRI) used to treat depression and anxiety disorders. It’s taken once daily and works slowly over weeks, not minutes. Most people notice fewer mental spirals, more emotional bandwidth, and less background dread as it kicks in. Common trade-offs include nausea in the first week or two, sleep changes, and sexual side effects. At higher doses or in medically vulnerable patients, escitalopram can prolong the QT interval on EKG. Like all antidepressants, it carries a boxed warning about suicidal thoughts and behaviors in children, teens, and young adults—so close monitoring early in treatment and after dose changes is non-negotiable.",
-  "patient_summary": "Escitalopram (Lexapro) is a once-daily antidepressant that helps with depression and anxiety over time. It doesn’t work like Xanax—there’s no quick calm-down effect—but over 2 to 6 weeks, many people feel less overwhelmed, less stuck in their head, and more like themselves again. Upsides: simple dosing, usually pretty well tolerated, and widely used. Downsides: nausea or jitteriness during the first week or two, sexual side effects (low libido or delayed orgasm), and withdrawal symptoms if it’s stopped too fast. For younger people (especially under 25), energy can improve before mood fully lifts, which is why we watch closely for any increase in suicidal thoughts at the beginning or when changing the dose.",
-  "category": "medications/depression-and-anxiety",
-  "metadata": {
-    "drug_classes": [
-      "Antidepressant",
-      "Selective Serotonin Reuptake Inhibitor (SSRI)"
-    ],
+  "identity": {
+    "slug": "escitalopram-lexapro",
+    "name": "Escitalopram (Lexapro)",
+    "generic_name": "escitalopram",
     "brand_names": [
       "Lexapro",
       "Cipralex",
       "Multiple generic escitalopram products"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 2002,
-    "pharmacologic_category": "Antidepressant, SSRI",
-    "published_date": "2025-11-27T00:00:00Z",
-    "last_updated": "2025-11-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q423757"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (Unipolar)",
-      "Generalized Anxiety Disorder (GAD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for acute and maintenance treatment of unipolar major depressive disorder in adults and adolescents ≥12. Considered a first-line SSRI in most depression guidelines."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for GAD in adults and children ≥7. First-line SSRI for chronic, excessive worry with somatic tension."
-      },
-      {
-        "slug": "obsessive-compulsive-disorder",
-        "relationship": "off_label",
-        "context": "Off-label for OCD. Often requires higher doses and longer trials (≥6–12 weeks at maximum tolerated dose) than for depression."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Off-label for panic disorder with or without agoraphobia. Start low to avoid early activation, then titrate slowly."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Off-label option for social anxiety disorder. Useful for generalized social anxiety with performance and interaction fears."
-      },
-      {
-        "slug": "posttraumatic-stress-disorder",
-        "relationship": "off_label",
-        "context": "Off-label SSRI for PTSD when first-line agents (sertraline, paroxetine, fluoxetine, venlafaxine) are not tolerated or ineffective."
-      },
-      {
-        "slug": "body-dysmorphic-disorder",
-        "relationship": "off_label",
-        "context": "Off-label SSRI often requiring higher doses and 12–16 week trials, paired with CBT specialized for BDD."
-      },
-      {
-        "slug": "bulimia-nervosa",
-        "relationship": "off_label",
-        "context": "Alternative off-label antidepressant for bulimia nervosa when fluoxetine is not tolerated, always alongside psychotherapy and nutritional rehabilitation."
-      },
-      {
-        "slug": "binge-eating-disorder",
-        "relationship": "off_label",
-        "context": "Off-label option that may reduce binge frequency as part of a broader treatment plan (therapy, nutrition, coping skills)."
-      },
-      {
-        "slug": "premenstrual-dysphoric-disorder",
-        "relationship": "off_label",
-        "context": "Off-label for PMDD using continuous daily dosing, luteal-phase dosing, or symptom-onset dosing."
-      },
-      {
-        "slug": "premature-ejaculation",
-        "relationship": "off_label",
-        "context": "Off-label use in premature ejaculation by delaying ejaculation through serotonergic mechanisms."
-      },
-      {
-        "slug": "vasomotor-symptoms-menopause",
-        "relationship": "off_label",
-        "context": "Off-label non-hormonal option for menopausal hot flashes when hormone therapy is not desired or is contraindicated."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to escitalopram, citalopram, or any component of the formulation",
-      "Use of monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders, concurrently or within 14 days of discontinuing either escitalopram or the MAOI",
-      "Initiation of escitalopram in a patient receiving IV methylene blue",
-      "Concurrent use with pimozide",
-      "Known QT-interval prolongation or congenital long QT syndrome (per Canadian labeling)",
-      "History of serotonin syndrome with an SSRI or other serotonergic agents (relative contraindication)",
-      "Escitalopram is not approved for use in pediatric patients <7 years of age"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in major depression at 8–12 weeks",
-      "percentage_value": "≈55–60%",
-      "comparison_data": "Typical placebo response ≈35–40% in similar trials (estimated NNT ≈6–8 for response).",
-      "patient_text": "In large studies, a little over half of people with depression taking escitalopram improved significantly, compared with about one-third to two-fifths on placebo. Put simply: for every 6–8 people treated, one extra person gets a clear benefit because of the medication.",
-      "citation_tag": "Representative escitalopram SSRI MDD trial data; numbers rounded for patient education."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression-and-anxiety",
+    "drug_classes": [
+      "Antidepressant",
+      "Selective Serotonin Reuptake Inhibitor (SSRI)"
+    ]
+  },
+  "summary": "SSRI antidepressant for depression and anxiety. Once-daily, generally well tolerated, with a black box warning for suicidal thoughts in younger patients and risks of sexual side effects, QTc prolongation, and withdrawal if stopped too quickly.",
+  "description": "Escitalopram (Lexapro) is a selective serotonin reuptake inhibitor (SSRI) used to treat depression and anxiety disorders. It’s taken once daily and works slowly over weeks, not minutes. Most people notice fewer mental spirals, more emotional bandwidth, and less background dread as it kicks in. Common trade-offs include nausea in the first week or two, sleep changes, and sexual side effects. At higher doses or in medically vulnerable patients, escitalopram can prolong the QT interval on EKG. Like all antidepressants, it carries a boxed warning about suicidal thoughts and behaviors in children, teens, and young adults—so close monitoring early in treatment and after dose changes is non-negotiable.",
+  "patient_summary": "Escitalopram (Lexapro) is a once-daily antidepressant that helps with depression and anxiety over time. It doesn’t work like Xanax—there’s no quick calm-down effect—but over 2 to 6 weeks, many people feel less overwhelmed, less stuck in their head, and more like themselves again. Upsides: simple dosing, usually pretty well tolerated, and widely used. Downsides: nausea or jitteriness during the first week or two, sexual side effects (low libido or delayed orgasm), and withdrawal symptoms if it’s stopped too fast. For younger people (especially under 25), energy can improve before mood fully lifts, which is why we watch closely for any increase in suicidal thoughts at the beginning or when changing the dose.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for acute and maintenance treatment of unipolar major depressive disorder in adults and adolescents ≥12. Considered a first-line SSRI in most depression guidelines.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for GAD in adults and children ≥7. First-line SSRI for chronic, excessive worry with somatic tension.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive Compulsive Disorder",
+          "relationship": "off_label",
+          "context": "Off-label for OCD. Often requires higher doses and longer trials (≥6–12 weeks at maximum tolerated dose) than for depression."
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Off-label for panic disorder with or without agoraphobia. Start low to avoid early activation, then titrate slowly."
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Off-label option for social anxiety disorder. Useful for generalized social anxiety with performance and interaction fears."
+        },
+        {
+          "condition_slug": "posttraumatic-stress-disorder",
+          "condition_name": "Posttraumatic Stress Disorder",
+          "relationship": "off_label",
+          "context": "Off-label SSRI for PTSD when first-line agents (sertraline, paroxetine, fluoxetine, venlafaxine) are not tolerated or ineffective."
+        },
+        {
+          "condition_slug": "body-dysmorphic-disorder",
+          "condition_name": "Body Dysmorphic Disorder",
+          "relationship": "off_label",
+          "context": "Off-label SSRI often requiring higher doses and 12–16 week trials, paired with CBT specialized for BDD."
+        },
+        {
+          "condition_slug": "bulimia-nervosa",
+          "condition_name": "Bulimia Nervosa",
+          "relationship": "off_label",
+          "context": "Alternative off-label antidepressant for bulimia nervosa when fluoxetine is not tolerated, always alongside psychotherapy and nutritional rehabilitation."
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge Eating Disorder",
+          "relationship": "off_label",
+          "context": "Off-label option that may reduce binge frequency as part of a broader treatment plan (therapy, nutrition, coping skills)."
+        },
+        {
+          "condition_slug": "premenstrual-dysphoric-disorder",
+          "condition_name": "Premenstrual Dysphoric Disorder",
+          "relationship": "off_label",
+          "context": "Off-label for PMDD using continuous daily dosing, luteal-phase dosing, or symptom-onset dosing."
+        },
+        {
+          "condition_slug": "premature-ejaculation",
+          "condition_name": "Premature Ejaculation",
+          "relationship": "off_label",
+          "context": "Off-label use in premature ejaculation by delaying ejaculation through serotonergic mechanisms."
+        },
+        {
+          "condition_slug": "vasomotor-symptoms-menopause",
+          "condition_name": "Vasomotor Symptoms Menopause",
+          "relationship": "off_label",
+          "context": "Off-label non-hormonal option for menopausal hot flashes when hormone therapy is not desired or is contraindicated."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed after oral dosing; tablets and oral solution are bioequivalent.",
-      "bioavailability": "Approximately 80%.",
-      "onset": "Biologic steady state reached in about 1 week; clinical mood and anxiety benefits typically emerge over 2–6 weeks.",
-      "peak_plasma": "About 5 hours after dosing in adults (around 3 hours in adolescents).",
-      "half_life": "Approximately 27–32 hours in adults; prolonged by ~50% in older adults and doubled in hepatic impairment.",
-      "duration_IR": "Once-daily dosing provides 24-hour coverage due to long half-life.",
-      "metabolism": "Hepatically metabolized primarily via CYP2C19 and CYP3A4 to S-desmethylcitalopram (S-DCT), then via CYP2D6 to S-didesmethylcitalopram (S-DDCT). Metabolites contribute minimally to antidepressant effect.",
-      "excretion": "Eliminated in urine mainly as metabolites; ~8% excreted as unchanged drug.",
-      "protein_binding": "Approximately 56% bound to plasma proteins.",
-      "food_effect": "Food does not meaningfully alter exposure; can be taken with or without food."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Biologic steady state reached in about 1 week; clinical mood and anxiety benefits typically emerge over 2–6 weeks."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea and GI upset",
+          "incidence": "≈10–20%",
+          "notes": "Often improves after the first 1–2 weeks. Taking with food or at night can help."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Very common early",
+          "notes": "Usually fades with time; simple analgesics and good hydration often help."
+        },
+        {
+          "effect": "Insomnia or somnolence",
+          "incidence": "Common; pattern varies by person",
+          "notes": "If it makes you sleepy, take it at night. If it wires you, take it in the morning."
+        },
+        {
+          "effect": "Sexual dysfunction",
+          "incidence": "Common (up to 30–50% in some series)",
+          "notes": "Low libido and delayed orgasm are widely reported. This is a medical side effect, not a character flaw, and it’s absolutely something to bring up."
+        },
+        {
+          "effect": "Fatigue and emotional blunting",
+          "incidence": "Variable",
+          "notes": "Some people feel less emotionally volatile but also less intense. Dose tweaks can sometimes find a better balance."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serotonin syndrome: anxiety, agitation, tremor, clonus, fever, autonomic instability—medical emergency."
+        },
+        {
+          "risk": "QT prolongation and rare torsades de pointes in high-risk patients or at high doses."
+        },
+        {
+          "risk": "Severe hyponatremia/SIADH: confusion, seizures, falls, especially in older adults."
+        },
+        {
+          "risk": "Severe bleeding events (GI bleeding, intracranial hemorrhage) when combined with other bleeding-risk medications."
+        },
+        {
+          "risk": "Mania or hypomania: decreased need for sleep, racing thoughts, impulsivity, grandiosity in susceptible individuals."
+        },
+        {
+          "risk": "Severe cutaneous reactions (Stevens–Johnson syndrome, toxic epidermal necrolysis)—very rare but serious."
+        }
+      ],
+      "black_box_warning": "Closely monitor all antidepressant-treated patients, especially children, adolescents, and young adults, for clinical worsening and for the emergence of suicidal thoughts and behaviors, particularly during the first few months of therapy or at times of dose changes. Escitalopram is not approved for use in pediatric patients <7 years of age.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to escitalopram, citalopram, or any component of the formulation"
+        },
+        {
+          "contraindication": "Use of monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders, concurrently or within 14 days of discontinuing either escitalopram or the MAOI"
+        },
+        {
+          "contraindication": "Initiation of escitalopram in a patient receiving IV methylene blue"
+        },
+        {
+          "contraindication": "Concurrent use with pimozide"
+        },
+        {
+          "contraindication": "Known QT-interval prolongation or congenital long QT syndrome (per Canadian labeling)"
+        },
+        {
+          "contraindication": "History of serotonin syndrome with an SSRI or other serotonergic agents (relative contraindication)"
+        },
+        {
+          "contraindication": "Escitalopram is not approved for use in pediatric patients <7 years of age"
+        }
+      ],
+      "precautions": [
+        "QT prolongation: Escitalopram can prolong QTc in a dose-related fashion, particularly above 20 mg/day or in patients with multiple risk factors (electrolyte disturbances, structural heart disease, other QT-prolonging drugs).",
+        "Serotonin syndrome: Risk increases when combined with other serotonergic drugs (MAOIs, linezolid, triptans, tramadol, St. John’s wort, other SSRIs/SNRIs).",
+        "Hyponatremia/SIADH: Particularly in older adults, low body weight, diuretic use, or prior history of hyponatremia.",
+        "Bleeding risk: SSRIs can increase bleeding risk, especially when combined with NSAIDs, antiplatelets, or anticoagulants.",
+        "Mania/hypomania: Antidepressants can precipitate mania or mixed states in patients with bipolar disorder or vulnerable mood architecture.",
+        "Bone health: Long-term SSRI use is associated with increased fragility fracture risk, especially in older adults."
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (including linezolid and methylene blue at higher/systemic doses)",
+          "mechanism": "Life-threatening serotonin syndrome with agitation, hyperthermia, and autonomic instability.",
+          "action": "Contraindicated. Allow at least 14 days between escitalopram and MAOI in either direction."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs, SNRIs, TCAs, triptans, tramadol, lithium, St. John’s wort)",
+          "mechanism": "Increased risk of serotonin syndrome; overlapping side effects (GI upset, agitation).",
+          "action": "Use lowest effective doses, avoid duplicate therapy, and monitor closely for serotonin toxicity."
+        },
+        {
+          "interactant": "QT-prolonging medications (certain antipsychotics, macrolide antibiotics, methadone, some antiarrhythmics)",
+          "mechanism": "Additive QTc prolongation and rare torsades de pointes, especially at higher escitalopram doses or with electrolyte abnormalities.",
+          "action": "Avoid high-dose escitalopram; correct electrolytes; consider baseline and follow-up ECGs."
+        },
+        {
+          "interactant": "NSAIDs, antiplatelets (aspirin, clopidogrel), anticoagulants (warfarin, DOACs)",
+          "mechanism": "Increased risk of bruising and bleeding, including GI bleeding.",
+          "action": "Use gastroprotection if appropriate; counsel on bleeding signs (black stools, nosebleeds, easy bruising)."
+        },
+        {
+          "interactant": "Strong CYP2C19 or CYP3A4 inhibitors (omeprazole, fluconazole, some HIV protease inhibitors, macrolides)",
+          "mechanism": "Higher escitalopram levels, increased risk of side effects and QTc changes.",
+          "action": "Consider lower escitalopram doses and closer monitoring."
+        },
+        {
+          "interactant": "Alcohol and sedatives (benzodiazepines, opioids, sedating antihistamines)",
+          "mechanism": "Increased sedation, falls, cognitive impairment; can worsen depression and judgment.",
+          "action": "Encourage minimal or no alcohol and careful use of other sedatives; avoid combining with high-risk opioid regimens whenever possible."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: especially in children, adolescents, and young adults during the first 1–2 months and around dose changes."
+        },
+        {
+          "parameter": "Mood, anxiety, and functioning: use rating scales (PHQ-9, GAD-7, OCD/PTSD scales) alongside subjective reports."
+        },
+        {
+          "parameter": "Screen for bipolar disorder before initiating therapy: personal or family history of mania, hypomania, or bipolar disorder."
+        },
+        {
+          "parameter": "Electrolytes (especially sodium): at baseline and as clinically indicated in older adults, diuretic users, or those with prior hyponatremia."
+        },
+        {
+          "parameter": "ECG: in patients with cardiac disease, multiple QT-prolonging medications, electrolyte disturbances, or when using doses above standard ranges."
+        },
+        {
+          "parameter": "Bleeding: bruising, GI bleeding, heavy menstrual bleeding, especially with NSAIDs, antiplatelets, or anticoagulants."
+        },
+        {
+          "parameter": "Weight, sleep, and sexual function: routinely ask—patients often won’t volunteer this unless you do."
+        },
+        {
+          "parameter": "Withdrawal symptoms: during dose reductions; adjust taper speed if symptoms are significant."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "SSRIs, including escitalopram, have been studied extensively. Overall, major birth defect risk does not appear dramatically increased once confounders are accounted for. Third-trimester exposure can lead to neonatal adaptation syndrome (jitteriness, poor feeding, respiratory distress) that usually resolves within days to weeks. Persistent pulmonary hypertension of the newborn (PPHN) is a rare but reported risk. Do not automatically stop escitalopram solely because of pregnancy—this is a shared decision balancing relapse risk against fetal and neonatal risks.",
+        "lactation": "Escitalopram and its active metabolite are present in breast milk at low relative infant doses (generally under or around 5–10% of the weight-adjusted maternal dose). Most breastfed infants do well, but monitoring is recommended for sedation, feeding difficulty, poor weight gain, or unusual irritability. For a patient already stable on escitalopram during pregnancy, continuing postpartum while breastfeeding is often reasonable.",
+        "pediatric": "Approved in the US for MDD in patients ≥12 and for GAD in patients ≥7. Start at lower doses, titrate slowly, and monitor closely for activation, behavioral changes, and suicidal thoughts. Combine with psychotherapy whenever possible.",
+        "geriatric": "Older adults have higher escitalopram exposure (higher AUC and longer half-life). Start low (eg, 5 mg/day), go slow, and monitor closely for hyponatremia, falls, and QTc prolongation. SSRIs, including escitalopram, are flagged in Beers/STOPP criteria for fracture and hyponatremia risk.",
+        "renal_impairment": "Mild to moderate impairment: no routine dose adjustment but monitor for side effects. Severe impairment or dialysis: consider starting at 5 mg/day and titrate cautiously with close monitoring, given data suggesting higher sudden cardiac death risk with citalopram/escitalopram in hemodialysis patients.",
+        "hepatic_impairment": "In Child-Pugh A–C, start 5 mg once daily and titrate more slowly with extended intervals (eg, ≥2 weeks between increases). Avoid exceeding the usual indication-specific maximum dose. Monitor for excessive sedation and QTc changes."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2002
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed after oral dosing; tablets and oral solution are bioequivalent.",
+          "bioavailability": "Approximately 80%.",
+          "peak_plasma": "About 5 hours after dosing in adults (around 3 hours in adolescents).",
+          "half_life": "Approximately 27–32 hours in adults; prolonged by ~50% in older adults and doubled in hepatic impairment.",
+          "metabolism": "Hepatically metabolized primarily via CYP2C19 and CYP3A4 to S-desmethylcitalopram (S-DCT), then via CYP2D6 to S-didesmethylcitalopram (S-DDCT). Metabolites contribute minimally to antidepressant effect.",
+          "excretion": "Eliminated in urine mainly as metabolites; ~8% excreted as unchanged drug.",
+          "protein_binding": "Approximately 56% bound to plasma proteins.",
+          "food_effect": "Food does not meaningfully alter exposure; can be taken with or without food."
+        },
+        "dosing": {
+          "titration": "Escitalopram is usually taken once daily, morning or evening. For anxiety-prone patients, starting low and going slow is key to avoiding early activation and dropout."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Escitalopram is not chemically addictive, but your brain does adapt to it. Stopping suddenly can feel rough and is often misread as ‘my depression instantly came back’ when it’s actually withdrawal."
+        }
+      }
     }
   },
   "sections": [
@@ -156,7 +320,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Escitalopram changes things slowly. You usually don’t wake up one morning magically better; it’s more like realizing, a few weeks in, that your brain hasn’t been screaming at you all day.",
       "items": [
         {
           "category": "First 1–2 weeks",
@@ -211,7 +374,8 @@
           ],
           "note": "In children, teens, and young adults, antidepressants can increase suicidal thoughts in the first few months, especially when energy improves before mood. That’s why close monitoring and honest communication are essential."
         }
-      ]
+      ],
+      "intro": "Escitalopram changes things slowly. You usually don’t wake up one morning magically better; it’s more like realizing, a few weeks in, that your brain hasn’t been screaming at you all day."
     },
     {
       "type": "onset_duration",
@@ -228,10 +392,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Escitalopram performs similarly to other modern SSRIs but tends to be on the better-tolerated side. When combined with therapy, sleep hygiene, exercise, and structure, response rates are clinically meaningful.",
       "metric": "Depression response at 8–12 weeks",
       "value": "≈55–60%",
       "comparison": "≈35–40% on placebo",
-      "text": "Escitalopram performs similarly to other modern SSRIs but tends to be on the better-tolerated side. When combined with therapy, sleep hygiene, exercise, and structure, response rates are clinically meaningful.",
       "clinical_details": "Across randomized trials in unipolar depression, roughly 55–60% of patients on escitalopram achieve at least a 50% symptom reduction by 8–12 weeks, versus about 35–40% on placebo. Remission rates are lower but still clinically significant. In GAD and other anxiety disorders, effect sizes are comparable to other first-line SSRIs.",
       "citation": {
         "authors": "Multiple investigators",
@@ -318,7 +482,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Escitalopram is metabolized by CYP2C19 and CYP3A4 and has serotonergic and QT-prolonging potential. The big worries: serotonin syndrome, excessive sedation, and QTc synergy.",
       "items": [
         {
           "with": "MAOIs (including linezolid and methylene blue at higher/systemic doses)",
@@ -350,7 +513,8 @@
           "risk": "Increased sedation, falls, cognitive impairment; can worsen depression and judgment.",
           "action": "Encourage minimal or no alcohol and careful use of other sedatives; avoid combining with high-risk opioid regimens whenever possible."
         }
-      ]
+      ],
+      "intro": "Escitalopram is metabolized by CYP2C19 and CYP3A4 and has serotonergic and QT-prolonging potential. The big worries: serotonin syndrome, excessive sedation, and QTc synergy."
     },
     {
       "type": "tapering",
@@ -476,21 +640,43 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Escitalopram (Lexapro): Uses, Dosing, Side Effects, Suicidality & Withdrawal",
-    "description": "Psychiatry-focused guide to escitalopram (Lexapro): how it works, evidence-based dosing for depression and anxiety, suicidal thoughts warning in younger patients, sexual side effects, QTc risk, withdrawal, and safe tapering strategies.",
-    "canonical": "[https://www.heypsych.com/treatments/escitalopram-lexapro](https://www.heypsych.com/treatments/escitalopram-lexapro)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information: Lexapro (Escitalopram)",
+      "url": "[https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/lexapro.pdf](https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/lexapro.pdf)",
+      "description": "Official label with full safety, dosing, and pharmacology details."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "APA Practice Guideline for the Treatment of Patients With Major Depressive Disorder",
+      "url": "[https://psychiatryonline.org](https://psychiatryonline.org)",
+      "description": "Evidence-based recommendations for pharmacologic and psychotherapeutic management of depression."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "WFSBP Guidelines for Anxiety, OCD, and PTSD",
+      "url": "[https://wfsbp.org](https://wfsbp.org)",
+      "description": "International guidelines summarizing pharmacologic and psychotherapeutic treatments for anxiety spectrum disorders."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "CANMAT Depression Guidelines",
+      "url": "[https://www.canmat.org](https://www.canmat.org)",
+      "description": "Canadian network guidelines on first-line and subsequent depression interventions, including SSRIs."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "National Pregnancy Registry for Antidepressants",
+      "url": "[https://womensmentalhealth.org/research/pregnancyregistry/antidepressants/](https://womensmentalhealth.org/research/pregnancyregistry/antidepressants/)",
+      "description": "Ongoing registry tracking pregnancy outcomes after antidepressant exposure."
+    }
+  ],
   "faqs": [
     {
       "q": "What is escitalopram (Lexapro) used for?",
@@ -536,5 +722,20 @@
       "q": "What’s the difference between escitalopram and citalopram?",
       "a": "Escitalopram is essentially the active ‘half’ of citalopram. It tends to be somewhat more potent on a milligram-for-milligram basis, and generally has less QTc prolongation at typical doses compared with high-dose citalopram. In practice, both are SSRIs with similar uses; escitalopram is often favored when QTc or drug interactions are a concern."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Escitalopram (Lexapro): Uses, Dosing, Side Effects, Suicidality & Withdrawal",
+    "description": "Psychiatry-focused guide to escitalopram (Lexapro): how it works, evidence-based dosing for depression and anxiety, suicidal thoughts warning in younger patients, sexual side effects, QTc risk, withdrawal, and safe tapering strategies.",
+    "canonical": "[https://www.heypsych.com/treatments/escitalopram-lexapro](https://www.heypsych.com/treatments/escitalopram-lexapro)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

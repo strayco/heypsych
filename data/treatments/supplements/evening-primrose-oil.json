@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "evening-primrose-oil",
-  "type": "supplement",
-  "name": "Evening Primrose Oil",
-  "summary": "Evening primrose oil (EPO) is a plant-based supplement rich in gamma-linolenic acid (GLA), an omega-6 fatty acid believed to support skin health, reduce inflammation, and potentially improve mood and premenstrual symptoms.",
-  "description": "Evening primrose oil is extracted from the seeds of the evening primrose plant (Oenothera biennis). It contains gamma-linolenic acid (GLA), a precursor to anti-inflammatory prostaglandins. EPO has been studied for a wide range of conditions, including eczema, mastalgia, premenstrual syndrome (PMS), menopause-related symptoms, and mood regulation. While evidence is mixed, some studies suggest benefits for women’s health and mild anti-inflammatory effects. It is widely available as an over-the-counter dietary supplement.",
-  "category": "supplements",
-  "tags": [
-    "omega-6 fatty acids",
-    "women’s health",
-    "skin health",
-    "PMS support"
-  ],
-  "metadata": {
-    "compound_type": "Omega-6 polyunsaturated fatty acid (GLA)",
-    "natural_source": "Evening primrose plant seeds",
+  "identity": {
+    "slug": "evening-primrose-oil",
+    "name": "Evening Primrose Oil",
+    "brand_names": [
+      "Efamol",
+      "NOW Evening Primrose Oil",
+      "Barlean’s Organic EPO"
+    ],
+    "aliases": [
+      "EPO supplement",
+      "GLA oil"
+    ],
+    "wikidata_qid": "Q156243"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Women’s health",
       "Dermatology",
@@ -24,78 +27,167 @@
       "Anti-inflammatory",
       "Hormonal modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Efamol",
-      "NOW Evening Primrose Oil",
-      "Barlean’s Organic EPO"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Women’s Health",
-      "Dermatology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q156243"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Premenstrual syndrome (PMS)",
-      "Menopausal symptoms",
-      "Mastalgia (breast pain)",
-      "Eczema and skin health"
-    ],
-    "off_label_uses": [
-      "Mood support (adjunctive)",
-      "Diabetic neuropathy",
-      "Rheumatoid arthritis"
-    ],
-    "contraindications": [
-      "Bleeding disorders",
-      "Epilepsy or seizure disorders",
-      "Use with anticoagulant/antiplatelet therapy (caution)"
-    ],
-    "monitoring_required": [
-      "Signs of bleeding",
-      "Skin reactions",
-      "GI tolerance"
-    ],
-    "efficacy_rating": {
-      "pms": 3,
-      "mastalgia": 3,
-      "eczema": 2,
-      "mood_support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "evening primrose oil",
-      "EPO",
-      "gamma-linolenic acid",
-      "GLA supplement"
-    ],
-    "synonyms": [
-      "EPO supplement",
-      "GLA oil"
-    ],
-    "common_misspellings": [
-      "evening primros oil",
-      "evening primrose oyl"
+    "tags": [
+      "omega-6 fatty acids",
+      "women’s health",
+      "skin health",
+      "PMS support"
     ]
+  },
+  "summary": "Evening primrose oil (EPO) is a plant-based supplement rich in gamma-linolenic acid (GLA), an omega-6 fatty acid believed to support skin health, reduce inflammation, and potentially improve mood and premenstrual symptoms.",
+  "description": "Evening primrose oil is extracted from the seeds of the evening primrose plant (Oenothera biennis). It contains gamma-linolenic acid (GLA), a precursor to anti-inflammatory prostaglandins. EPO has been studied for a wide range of conditions, including eczema, mastalgia, premenstrual syndrome (PMS), menopause-related symptoms, and mood regulation. While evidence is mixed, some studies suggest benefits for women’s health and mild anti-inflammatory effects. It is widely available as an over-the-counter dietary supplement.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "premenstrual-syndrome-pms",
+          "condition_name": "Premenstrual syndrome (PMS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "menopausal-symptoms",
+          "condition_name": "Menopausal symptoms",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mastalgia-breast-pain",
+          "condition_name": "Mastalgia (breast pain)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "eczema-and-skin-health",
+          "condition_name": "Eczema and skin health",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "mood-support-adjunctive",
+          "condition_name": "Mood support (adjunctive)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "diabetic-neuropathy",
+          "condition_name": "Diabetic neuropathy",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "rheumatoid-arthritis",
+          "condition_name": "Rheumatoid arthritis",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "pms": {
+          "rating": 3
+        },
+        "mastalgia": {
+          "rating": 3
+        },
+        "eczema": {
+          "rating": 2
+        },
+        "mood_support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare seizures (in predisposed individuals)"
+        },
+        {
+          "risk": "Increased bleeding tendency"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Bleeding disorders"
+        },
+        {
+          "contraindication": "Epilepsy or seizure disorders"
+        },
+        {
+          "contraindication": "Use with anticoagulant/antiplatelet therapy (caution)"
+        }
+      ],
+      "precautions": [
+        "May increase bleeding risk if combined with anticoagulants or antiplatelet medications.",
+        "Use caution in individuals with epilepsy or seizure history."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin or anticoagulants",
+          "mechanism": "Increased bleeding risk",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "Phenothiazines",
+          "mechanism": "May lower seizure threshold",
+          "action": "Use with caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "PMS or breast pain symptoms"
+        },
+        {
+          "parameter": "Skin improvement"
+        },
+        {
+          "parameter": "Adverse GI or bleeding effects"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Possibly unsafe in late pregnancy; may increase bleeding or induce uterine contractions",
+        "lactation": "Limited data; likely safe in small amounts",
+        "pediatric": "Not routinely recommended; safety unestablished",
+        "geriatric": "Generally safe with caution for bleeding risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Omega-6 polyunsaturated fatty acid (GLA)",
+        "natural_source": "Evening primrose plant seeds",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -213,6 +305,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Evening Primrose Oil",
+      "url": "https://examine.com/supplements/evening-primrose-oil/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Budeiri D, et al. Evening primrose oil and mastalgia. BMJ. 1996",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8653215/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Bamford JT. Evening primrose oil in atopic eczema. Arch Dis Child. 1985",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3914471/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "evening primrose oil",
+      "EPO",
+      "gamma-linolenic acid",
+      "GLA supplement"
+    ],
+    "synonyms": [
+      "EPO supplement",
+      "GLA oil"
+    ],
+    "common_misspellings": [
+      "evening primros oil",
+      "evening primrose oyl"
+    ]
+  },
   "seo": {
     "title": "Evening Primrose Oil – PMS, Skin Health & Women’s Health Supplement",
     "description": "Evening primrose oil is a natural source of gamma-linolenic acid (GLA), studied for PMS, mastalgia, eczema, and inflammation. Learn about dosing, uses, and safety.",

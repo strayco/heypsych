@@ -1,90 +1,176 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "solution-focused-brief-therapy",
-  "type": "therapy",
-  "name": "Solution-Focused Brief Therapy (SFBT)",
-  "summary": "Solution-Focused Brief Therapy is a short-term, goal-oriented therapy that emphasizes building solutions rather than focusing on problems, helping clients envision and move toward their preferred future.",
-  "description": "Solution-Focused Brief Therapy (SFBT) is a strengths-based, future-focused therapeutic approach that helps clients identify resources, past successes, and achievable goals to create positive change. Rather than analyzing problems or their origins, SFBT emphasizes clients’ existing strengths, resilience, and capacities. The therapy is collaborative, brief, and structured, using techniques like the miracle question, scaling, and exception-finding to help clients set realistic goals and implement practical solutions.",
-  "category": "therapy/individual",
-  "tags": [
-    "solution-focused",
-    "brief therapy",
-    "strengths-based",
-    "goal-oriented",
-    "short-term therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "solution-focused-brief-therapy",
+    "name": "Solution-Focused Brief Therapy (SFBT)",
+    "generic_name": "solution-focused brief therapy",
+    "brand_names": [
+      "SFBT"
+    ],
+    "wikidata_qid": "Q845478"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Individual therapy",
       "Family therapy",
       "Couples therapy"
     ],
-    "treatment_types": [
-      "Brief therapy",
-      "Strengths-based therapy"
-    ],
-    "categories": [
-      "Short-term interventions",
-      "Goal-directed therapies"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Hybrid"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "1–12 sessions"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Anxiety disorders",
-      "Stress management",
-      "Substance use",
-      "Relationship issues",
-      "School and work adjustment"
-    ],
-    "wikidata_qid": "Q845478"
+    "tags": [
+      "solution-focused",
+      "brief therapy",
+      "strengths-based",
+      "goal-oriented",
+      "short-term therapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Goal-setting",
-      "Stress and anxiety",
-      "Depression",
-      "Relationship difficulties"
-    ],
-    "conditions_treated": [
-      "Depression",
-      "Anxiety disorders",
-      "Substance use disorders",
-      "Adjustment disorders"
-    ],
-    "off_label_uses": [
-      "Workplace coaching",
-      "School-based counseling"
-    ],
-    "contraindications": [
-      "Severe psychosis",
-      "High risk of suicide without additional supports"
-    ],
-    "safety_profile": "Very safe, with minimal risks; effectiveness depends on client engagement and appropriateness of goals.",
-    "evidence_level": "Moderate",
-    "research_support": "Meta-analyses show SFBT can be effective for a wide range of conditions, particularly when rapid or time-limited interventions are needed.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 3,
-      "anxiety": 3,
-      "relationship-issues": 3,
-      "stress-management": 4
+  "summary": "Solution-Focused Brief Therapy is a short-term, goal-oriented therapy that emphasizes building solutions rather than focusing on problems, helping clients envision and move toward their preferred future.",
+  "description": "Solution-Focused Brief Therapy (SFBT) is a strengths-based, future-focused therapeutic approach that helps clients identify resources, past successes, and achievable goals to create positive change. Rather than analyzing problems or their origins, SFBT emphasizes clients’ existing strengths, resilience, and capacities. The therapy is collaborative, brief, and structured, using techniques like the miracle question, scaling, and exception-finding to help clients set realistic goals and implement practical solutions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "goal-setting",
+          "condition_name": "Goal-setting",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-and-anxiety",
+          "condition_name": "Stress and anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "relationship-difficulties",
+          "condition_name": "Relationship difficulties",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "workplace-coaching",
+          "condition_name": "Workplace coaching",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "school-based-counseling",
+          "condition_name": "School-based counseling",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level": "moderate",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "relationship-issues": {
+          "rating": 3
+        },
+        "stress-management": {
+          "rating": 4
+        }
+      },
+      "research_support": "Meta-analyses show SFBT can be effective for a wide range of conditions, particularly when rapid or time-limited interventions are needed."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "1–12 sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Hybrid"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Very safe, with minimal risks; effectiveness depends on client engagement and appropriateness of goals.",
+      "common_adverse_effects": [
+        {
+          "effect": "Occasional frustration if rapid solutions do not emerge"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Minimal emotional distress when goals feel unattainable"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Imminent risk of harm to self or others without additional care",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Clients needing trauma-focused, long-term processing therapies",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Brief therapy, Strengths-based therapy",
+        "key_techniques": [
+          "Short-term interventions",
+          "Goal-directed therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in and review progress since last session.",
+          "during_session": "Solution-building dialogue using structured questioning and goal-setting.",
+          "post_session": "Summarize progress, assign achievable tasks, and set next steps."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed mental health professionals trained in SFBT methods"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -231,6 +317,20 @@
           "url": "https://doi.org/10.1002/j.2161-1939.2008.tb00195.x"
         }
       ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "de Shazer, S., & Dolan, Y. (2012). More Than Miracles: The State of the Art of Solution-Focused Brief Therapy.",
+      "url": "https://doi.org/10.4324/9780203892837"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kim, J.S. (2008). Examining the effectiveness of solution-focused brief therapy: A meta-analysis.",
+      "url": "https://doi.org/10.1002/j.2161-1939.2008.tb00195.x"
     }
   ],
   "seo": {

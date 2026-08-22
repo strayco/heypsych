@@ -1,84 +1,182 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "real-time-fmri-neurofeedback",
-  "type": "interventional",
-  "name": "Real-Time fMRI Neurofeedback",
-  "summary": "An advanced neurofeedback technique that uses real-time functional MRI to help patients learn to self-regulate brain activity.",
-  "description": "Real-time functional magnetic resonance imaging (rt-fMRI) neurofeedback is an advanced brain training method that provides individuals with live feedback on their brain activity in specific regions of interest. Unlike EEG-based neurofeedback, which reflects electrical activity at the scalp, rt-fMRI provides high spatial resolution and can target deep or localized brain areas. Patients are shown visual or auditory cues representing their brain activation patterns and are trained to modulate these signals through mental strategies. This approach is being explored as a treatment for psychiatric and neurological disorders.",
-  "category": "interventional/neurofeedback",
-  "tags": [
-    "fMRI",
-    "neurofeedback",
-    "brain-training",
-    "real-time-neurofeedback",
-    "neuromodulation"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "real-time-fmri-neurofeedback",
+    "name": "Real-Time fMRI Neurofeedback",
+    "wikidata_qid": "Q65364743"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurofeedback",
     "intervention_types": [
       "Neurofeedback",
       "Neuroimaging-based training"
     ],
-    "treatment_types": [
-      "Non-invasive neuroimaging therapy"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology",
-      "Neurorehabilitation"
-    ],
-    "delivery_methods": [
-      "Real-time fMRI neurofeedback in MRI scanner"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "3–10 sessions, typically once per week"
-    ],
-    "specialty_areas": [
-      "Neuroimaging",
-      "Psychiatry",
-      "Cognitive Neuroscience",
-      "Neurorehabilitation"
-    ],
-    "wikidata_qid": "Q65364743"
+    "tags": [
+      "fMRI",
+      "neurofeedback",
+      "brain-training",
+      "real-time-neurofeedback",
+      "neuromodulation"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder",
-      "Anxiety disorders",
-      "Addiction"
-    ],
-    "conditions_treated": [
-      "Depression",
-      "Generalized anxiety disorder",
-      "Post-traumatic stress disorder (PTSD)",
-      "Addiction and craving disorders",
-      "Chronic pain (experimental)"
-    ],
-    "off_label_uses": [
-      "Cognitive enhancement",
-      "Rehabilitation post-stroke",
-      "Autism spectrum disorder"
-    ],
-    "contraindications": [
-      "Standard MRI contraindications (metal implants, pacemakers, severe claustrophobia)",
-      "Unstable medical conditions"
-    ],
-    "safety_profile": "Generally safe; risks are the same as undergoing fMRI scanning (claustrophobia, noise, rare risk of heating/implant interaction). No radiation exposure.",
-    "evidence_level": "Emerging; growing research base with promising results, but not yet widely standardized.",
-    "research_support": "Several pilot trials and RCTs show efficacy in modulating mood-related and craving-related brain circuits.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 3,
-      "anxiety": 3,
-      "addiction": 2,
-      "chronic_pain": 2
+  "summary": "An advanced neurofeedback technique that uses real-time functional MRI to help patients learn to self-regulate brain activity.",
+  "description": "Real-time functional magnetic resonance imaging (rt-fMRI) neurofeedback is an advanced brain training method that provides individuals with live feedback on their brain activity in specific regions of interest. Unlike EEG-based neurofeedback, which reflects electrical activity at the scalp, rt-fMRI provides high spatial resolution and can target deep or localized brain areas. Patients are shown visual or auditory cues representing their brain activation patterns and are trained to modulate these signals through mental strategies. This approach is being explored as a treatment for psychiatric and neurological disorders.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "addiction",
+          "condition_name": "Addiction",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-traumatic stress disorder (PTSD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "addiction-and-craving-disorders",
+          "condition_name": "Addiction and craving disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain-experimental",
+          "condition_name": "Chronic pain (experimental)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "rehabilitation-post-stroke",
+          "condition_name": "Rehabilitation post-stroke",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "autism-spectrum-disorder",
+          "condition_name": "Autism spectrum disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Emerging; growing research base with promising results, but not yet widely standardized.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "addiction": {
+          "rating": 2
+        },
+        "chronic_pain": {
+          "rating": 2
+        }
+      },
+      "research_support": "Several pilot trials and RCTs show efficacy in modulating mood-related and craving-related brain circuits."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "3–10 sessions, typically once per week"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Real-time fMRI neurofeedback in MRI scanner"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; risks are the same as undergoing fMRI scanning (claustrophobia, noise, rare risk of heating/implant interaction). No radiation exposure.",
+      "common_adverse_effects": [
+        {
+          "effect": "Claustrophobia"
+        },
+        {
+          "effect": "Scanner noise discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "MRI safety events (e.g., implant heating)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "MRI-incompatible implants",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe claustrophobia",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncontrolled epilepsy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe medical comorbidities",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally avoided due to MRI exposure considerations."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Neurofeedback, Neuroimaging-based training",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Patient placed in fMRI scanner.\nBrain region of interest (ROI) identified (e.g., amygdala for emotion regulation).\nReal-time feedback provided via visual display or auditory tones.\nPatient practices regulating brain activity with cognitive or emotional strategies."
+      }
     }
   },
   "sections": [
@@ -250,6 +348,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Sulzer J, et al. Real-time fMRI neurofeedback: progress and challenges. NeuroImage. (2013).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22705304/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Linden DEJ, et al. Real-time self-regulation of emotion networks in patients with depression. PLoS Biology. (2012).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23209385/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Thibault RT, et al. Neurofeedback with real-time fMRI: a critical review of methodology. NeuroImage. (2018).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28801119/"
+    }
+  ],
   "seo": {
     "title": "Real-Time fMRI Neurofeedback | Advanced Brain Training",
     "description": "Real-time fMRI neurofeedback for depression, anxiety, PTSD, addiction, and neurorehabilitation. Evidence, protocols, safety, and costs.",
@@ -262,5 +380,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Emerging; growing research base with promising results, but not yet widely standardized."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Emerging; growing research base with promising results, but not yet widely standardized."
+    ]
   }
 }

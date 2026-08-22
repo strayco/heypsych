@@ -1,71 +1,200 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "triazolam-halcion",
-  "type": "medication",
-  "name": "Triazolam (Halcion)",
-  "summary": "Ultra–short-acting benzodiazepine for short-term sleep-onset insomnia. Works fast (15–30 minutes) but carries real risks: next-day impairment, memory gaps, dependence, and dangerous interactions (especially opioids and alcohol).",
-  "description": "Triazolam (Halcion) is a short-acting benzodiazepine used for short-term treatment of sleep-onset insomnia—meaning trouble falling asleep. It kicks in quickly (usually within 15–30 minutes), which is the whole point, but the trade-offs are common: grogginess, dizziness, and memory problems (including anterograde amnesia). Because dependence can develop and withdrawal can be dangerous, it should be used at the lowest effective dose, for the shortest time, and never mixed with alcohol or opioids.",
-  "patient_summary": "Halcion is a fast-onset sleep med for people who can’t fall asleep. It works in 15–30 minutes, so you take it right before bed (not earlier). The downside: it can cause next-day fog, dizziness, and memory gaps—and it can become habit-forming. Never combine with alcohol or opioids. If you’ve been taking it regularly, don’t stop suddenly—taper slowly to avoid withdrawal.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "triazolam-halcion",
+    "name": "Triazolam (Halcion)",
+    "generic_name": "triazolam",
+    "brand_names": [
+      "Halcion"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Benzodiazepine",
       "GABA-A Receptor Modulator",
       "Hypnotic"
-    ],
-    "brand_names": [
-      "Halcion"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1982,
-    "pharmacologic_category": "Benzodiazepine, Short-Acting Hypnotic",
-    "published_date": "2026-01-29T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia, sleep onset (short-term)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "Labeled for short-term treatment (generally 7–10 days) of sleep-onset insomnia. Because of dependence, next-day impairment, and memory risks, it’s usually reserved for situations where safer options haven’t worked."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to triazolam, other benzodiazepines, or any component of the formulation",
-      "Concurrent therapy with strong CYP3A inhibitors (e.g., itraconazole, ketoconazole, nefazodone, lopinavir, ritonavir)"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep-onset benefit",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Triazolam is designed for one job: helping you fall asleep quickly. It’s not a great choice for staying asleep all night, and it’s not meant for long-term nightly use.",
-      "citation_tag": "FDA Label (Halcion)"
+  "summary": "Ultra–short-acting benzodiazepine for short-term sleep-onset insomnia. Works fast (15–30 minutes) but carries real risks: next-day impairment, memory gaps, dependence, and dangerous interactions (especially opioids and alcohol).",
+  "description": "Triazolam (Halcion) is a short-acting benzodiazepine used for short-term treatment of sleep-onset insomnia—meaning trouble falling asleep. It kicks in quickly (usually within 15–30 minutes), which is the whole point, but the trade-offs are common: grogginess, dizziness, and memory problems (including anterograde amnesia). Because dependence can develop and withdrawal can be dangerous, it should be used at the lowest effective dose, for the shortest time, and never mixed with alcohol or opioids.",
+  "patient_summary": "Halcion is a fast-onset sleep med for people who can’t fall asleep. It works in 15–30 minutes, so you take it right before bed (not earlier). The downside: it can cause next-day fog, dizziness, and memory gaps—and it can become habit-forming. Never combine with alcohol or opioids. If you’ve been taking it regularly, don’t stop suddenly—taper slowly to avoid withdrawal.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "Labeled for short-term treatment (generally 7–10 days) of sleep-onset insomnia. Because of dependence, next-day impairment, and memory risks, it’s usually reserved for situations where safer options haven’t worked.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "15-30 minutes (hypnotic effect)",
-      "peak_plasma": "Within 2 hours",
-      "half_life": "1.5-5.5 hours",
-      "duration_IR": "Hypnotic effect ~6-7 hours",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism; CYP3A4 hydroxylation with subsequent conjugation; includes an active metabolite (alpha-hydroxytriazolam)",
-      "excretion": "Urine (~80% as metabolites; small amounts unchanged)",
-      "protein_binding": "89%",
-      "food_effect": "Take on an empty stomach for reliable onset; taking with or right after a meal can delay effects"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "15-30 minutes (hypnotic effect)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": ">10% (reported around 14%)",
+          "notes": "Sedation is the point—until it spills into the next day. Risk goes up if you don’t sleep long enough, take it too late, increase the dose, or combine it with other sedatives."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "5-8%",
+          "notes": "This can feel like lightheadedness, clumsiness, or delayed reaction time. It’s a fall risk—especially at night when you get up to use the bathroom."
+        },
+        {
+          "effect": "Ataxia / Impaired Coordination",
+          "incidence": "~5%",
+          "notes": "Unsteady gait and slowed motor control can happen, particularly in older adults or anyone sensitive to sedatives."
+        },
+        {
+          "effect": "Nausea / Vomiting",
+          "incidence": "~5%",
+          "notes": "Usually mild, but if it’s persistent, that’s a sign this may not be your medication."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Up to ~10%",
+          "notes": "Can occur during use or when stopping, especially if rebound insomnia hits."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (especially with opioids, alcohol, or other sedatives): slow or shallow breathing, bluish lips, unresponsiveness — MEDICAL EMERGENCY"
+        },
+        {
+          "risk": "Severe withdrawal (after continued use or abrupt stopping): agitation, tremor, sweating, vomiting, confusion, hallucinations, seizures — MEDICAL EMERGENCY"
+        },
+        {
+          "risk": "Anterograde amnesia: doing things after dosing and not remembering them later"
+        },
+        {
+          "risk": "Paradoxical reactions: agitation, aggressive behavior, irritability, mania-like symptoms"
+        },
+        {
+          "risk": "Complex sleep behaviors: sleep-walking, sleep-driving, eating, phone calls while not fully awake, often with amnesia"
+        },
+        {
+          "risk": "Hypersensitivity reactions (rare): angioedema or anaphylaxis — stop and seek urgent care"
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve concomitant prescribing for patients in whom alternative treatment options are inadequate. Limit dosages and durations to the minimum required. Follow patients for signs and symptoms of respiratory depression and sedation.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to triazolam, other benzodiazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Concurrent therapy with strong CYP3A inhibitors (e.g., itraconazole, ketoconazole, nefazodone, lopinavir, ritonavir)"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction risk: assess risk before prescribing and throughout treatment",
+        "Physical dependence can develop with continued use; withdrawal can be life-threatening if stopped abruptly",
+        "Next-day impairment is a real risk—especially if you don’t get a full night of sleep",
+        "Anterograde amnesia and complex sleep behaviors can occur (doing things while not fully awake, with little or no memory)",
+        "Use extreme caution (or avoid) in respiratory disease (COPD, sleep apnea) due to respiratory depression risk",
+        "Avoid in patients with depression when suicidal risk may be present, except for acute/emergency situations"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (e.g., oxycodone, hydrocodone, morphine, fentanyl)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid when possible. If there is no alternative, keep doses and duration to the minimum, monitor closely, and educate on overdose warning signs."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Dangerous additive CNS depression: severe sedation, blackouts, breathing suppression, death.",
+          "action": "Absolute no-go. No alcohol while using triazolam."
+        },
+        {
+          "interactant": "Strong CYP3A inhibitors (e.g., ketoconazole, itraconazole, ritonavir, lopinavir, nefazodone)",
+          "mechanism": "Major increase in triazolam exposure leading to extreme sedation, prolonged impairment, and higher overdose risk.",
+          "action": "Contraindicated—do not combine."
+        },
+        {
+          "interactant": "Other CNS depressants (sedating antihistamines, muscle relaxants, sleep meds, cannabis, barbiturates)",
+          "mechanism": "More sedation, worse coordination, higher fall risk, more memory impairment.",
+          "action": "Avoid stacking sedatives. If unavoidable, use the lowest doses and monitor for over-sedation."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "Can increase benzodiazepine levels via CYP3A4 inhibition, raising sedation and impairment risk.",
+          "action": "Limit or avoid grapefruit products while taking triazolam."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Respiratory status: respiratory rate and signs of breathing suppression, especially in people with COPD, sleep apnea, or any opioid/sedative co-use."
+        },
+        {
+          "parameter": "Next-day impairment: morning grogginess, slowed reaction time, driving safety, and falls—especially with nighttime awakenings."
+        },
+        {
+          "parameter": "Memory and behavior changes: amnesia, confusion, unusual behaviors at night, and any reports of complex sleep behaviors."
+        },
+        {
+          "parameter": "Mood effects: worsening depression, irritability, agitation, or paradoxical aggression—stop and reassess if this shows up."
+        },
+        {
+          "parameter": "Misuse risk: early refill requests, dose escalation, combining with alcohol/other sedatives, loss of control, or continued use despite harm."
+        },
+        {
+          "parameter": "Insomnia course: if sleep doesn’t improve within 7-10 days, reassess for underlying psychiatric/medical causes and shift toward durable treatment (CBT-I, targeted medication alternatives when appropriate)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Benzodiazepine exposure in pregnancy can be associated with fetal and neonatal risks. Late-pregnancy exposure may cause neonatal sedation (hypotonia, lethargy, respiratory depression) and/or withdrawal symptoms (irritability, tremors, feeding difficulty). Treatment for insomnia in pregnancy should be individualized, and nonpharmacologic therapy is generally preferred as first-line when available. If exposure occurs, newborn monitoring is recommended. Patients may be encouraged to enroll in the National Pregnancy Registry for Psychiatric Medications (866-961-2388).",
+        "lactation": "It is not known if triazolam is present in breast milk. Some benzodiazepines have case reports of infant sedation, lethargy, or weight loss. If used while breastfeeding, infants should be monitored for respiratory depression, sedation, feeding problems, or withdrawal symptoms. Some guidance suggests expressing and discarding milk during therapy and for 28 hours after the last dose to minimize potential exposure.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Avoid use in adults 65 and older when possible. Older adults have higher risk of cognitive impairment, delirium, falls, fractures, and motor vehicle accidents with benzodiazepines. If there is a compelling reason to use it anyway, use the lowest dose: 0.125 mg PO at bedtime as needed; maximum 0.25 mg/day, with close monitoring for next-day impairment and falls.",
+        "renal_impairment": "No dosage adjustment is generally needed based on available pharmacokinetic data, but use with caution in significant renal impairment and monitor for excessive sedation.",
+        "hepatic_impairment": "No specific manufacturer dose adjustment is provided; use with caution because metabolism is hepatic. Start low, titrate cautiously, and monitor for over-sedation and prolonged impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1982
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Within 2 hours",
+          "half_life": "1.5-5.5 hours",
+          "metabolism": "Extensive hepatic metabolism; CYP3A4 hydroxylation with subsequent conjugation; includes an active metabolite (alpha-hydroxytriazolam)",
+          "excretion": "Urine (~80% as metabolites; small amounts unchanged)",
+          "protein_binding": "89%",
+          "food_effect": "Take on an empty stomach for reliable onset; taking with or right after a meal can delay effects"
+        },
+        "dosing": {
+          "titration": "Triazolam is taken immediately before bedtime for sleep-onset insomnia. Use the lowest effective dose, and only when you can get a full night of sleep. It’s typically reserved for short-term use."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve used triazolam beyond short-term, stopping suddenly can trigger rebound insomnia and withdrawal. The safest move is a gradual taper—small reductions, spaced out, with support (often CBT-I) so sleep doesn’t crash and burn."
+        }
+      }
     }
   },
   "sections": [
@@ -83,7 +212,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s nervous system has its own personality, but these are the patterns people report most often:",
       "items": [
         {
           "category": "Fast Sleep Switch (15–30 min)",
@@ -120,7 +248,8 @@
           ],
           "note": "Rebound insomnia and withdrawal symptoms are more likely with longer use, higher doses, and abrupt stopping."
         }
-      ]
+      ],
+      "intro": "Everyone’s nervous system has its own personality, but these are the patterns people report most often:"
     },
     {
       "type": "onset_duration",
@@ -136,10 +265,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Triazolam can help people fall asleep faster, especially when the main issue is sleep onset. But the clinical question is never just “Does it work?” It’s “Is it worth the risks for you?” Because it can cause next-day impairment, memory effects, dependence, and rebound insomnia, it’s typically reserved for short-term, carefully selected use.",
       "metric": "Sleep onset (time to fall asleep)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Triazolam can help people fall asleep faster, especially when the main issue is sleep onset. But the clinical question is never just “Does it work?” It’s “Is it worth the risks for you?” Because it can cause next-day impairment, memory effects, dependence, and rebound insomnia, it’s typically reserved for short-term, carefully selected use.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -226,7 +355,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Triazolam is primarily metabolized by CYP3A4. Strong inhibitors can sharply raise levels, increasing sedation, amnesia, and respiratory risk.",
       "items": [
         {
           "with": "Opioids (e.g., oxycodone, hydrocodone, morphine, fentanyl)",
@@ -253,7 +381,8 @@
           "risk": "Can increase benzodiazepine levels via CYP3A4 inhibition, raising sedation and impairment risk.",
           "action": "Limit or avoid grapefruit products while taking triazolam."
         }
-      ]
+      ],
+      "intro": "Triazolam is primarily metabolized by CYP3A4. Strong inhibitors can sharply raise levels, increasing sedation, amnesia, and respiratory risk."
     },
     {
       "type": "tapering",
@@ -321,21 +450,6 @@
       "text": "Halcion is not a long-term insomnia plan—it’s a short-term tool. In psychiatry, insomnia is often driven by hyperarousal (anxiety, stress, trauma, mood episodes, substances, medical issues). The best durable treatment is usually CBT-I and addressing the driver. Triazolam may have a role when insomnia is severe, sleep onset is the primary problem, and safer options have failed or aren’t available—but only with strict boundaries: lowest effective dose, shortest duration, no alcohol/opioids, and a clear exit plan to avoid dependence and rebound insomnia."
     }
   ],
-  "seo": {
-    "title": "Triazolam (Halcion): Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Halcion (triazolam) for sleep-onset insomnia: how fast it works (15–30 min), bedtime dosing (0.125–0.5 mg), next-day impairment, memory risks, dependence, dangerous opioid/alcohol interactions, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/triazolam-halcion](https://www.heypsych.com/treatments/triazolam-halcion)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is triazolam (Halcion) used for?",
@@ -389,5 +503,20 @@
       "q": "What should I do if it stops working?",
       "a": "Needing more to get the same effect is a red flag for tolerance. Increasing the dose raises risks (memory issues, falls, dependence). The better move is to reassess what’s driving the insomnia and shift toward treatments that hold up long-term—especially CBT-I."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Triazolam (Halcion): Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Halcion (triazolam) for sleep-onset insomnia: how fast it works (15–30 min), bedtime dosing (0.125–0.5 mg), next-day impairment, memory risks, dependence, dangerous opioid/alcohol interactions, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/triazolam-halcion](https://www.heypsych.com/treatments/triazolam-halcion)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

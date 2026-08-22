@@ -1,91 +1,247 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "droperidol-inapsine",
-  "type": "medication",
-  "name": "Droperidol",
-  "summary": "Short-acting injectable antipsychotic/antiemetic used in the OR and emergency department, mainly for acute agitation and rescue treatment of nausea/vomiting. Powerful but carries a boxed warning for heart rhythm problems (QT prolongation and torsades).",
-  "description": "Droperidol is an older antipsychotic that most people meet in the operating room or emergency department. At low doses it helps with nausea and vomiting. At higher doses it can rapidly calm severe agitation. Because it can prolong the heart’s QT interval and trigger dangerous arrhythmias, it’s reserved for situations where safer options have not worked and ECG monitoring is available.",
-  "patient_summary": "Droperidol is an injectable medication used in hospitals to quickly calm severe agitation or treat bad nausea and vomiting, usually after surgery. It works fast—often within minutes—but it can affect your heart rhythm, so it’s typically given only when other options haven’t helped and while you’re on a heart monitor.",
-  "category": "medications/agitation-management",
-  "metadata": {
+  "identity": {
+    "slug": "droperidol-inapsine",
+    "name": "Droperidol",
+    "brand_names": [
+      "Inapsine",
+      "Droperidol (generic injection)"
+    ],
+    "wikidata_qid": "Q174259"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/agitation-management",
     "drug_classes": [
       "First-generation (typical) antipsychotic",
       "Butyrophenone",
       "Dopamine D2 receptor antagonist",
       "Antiemetic"
-    ],
-    "brand_names": [
-      "Inapsine",
-      "Droperidol (generic injection)"
-    ],
-    "administration_routes": [
-      "Intramuscular",
-      "Intravenous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1970,
-    "pharmacologic_category": "Antiemetic; First Generation (Typical) Antipsychotic",
-    "published_date": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-05T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-05T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q174259"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Postoperative nausea and vomiting (PONV) – prevention and rescue",
-      "Acute undifferentiated agitation in emergency settings (off-label)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "acute-agitation",
-        "relationship": "off_label",
-        "context": "Used IM or IV for rapid sedation in severely agitated patients when other options (benzodiazepines, other antipsychotics) are ineffective or not tolerated."
-      },
-      {
-        "slug": "postoperative-nausea-and-vomiting",
-        "relationship": "primary_treatment",
-        "context": "Labeled for prevention and treatment of nausea and vomiting related to surgery and diagnostic procedures, typically at low IV doses."
-      },
-      {
-        "slug": "delirium",
-        "relationship": "off_label",
-        "context": "Sometimes considered when delirium presents with dangerous agitation, but QT risk and EPS limit its role. Not a first-line delirium treatment."
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity to droperidol or formulation components",
-      "Known or suspected QT prolongation (including congenital long QT syndrome)",
-      "Baseline QTc >440 msec in males or >450 msec in females",
-      "History of torsades de pointes or serious ventricular arrhythmias",
-      "Uncorrected hypokalemia or hypomagnesemia",
-      "Bradycardia <50 bpm or clinically significant cardiac disease without monitoring",
-      "Concomitant use of other high-risk QT-prolonging drugs when monitoring is not available"
-    ],
-    "efficacy_response": {
-      "metric": "Onset of calming for acute agitation",
-      "percentage_value": "Most patients show clinically meaningful calming within 10–30 minutes at typical doses",
-      "comparison_data": "Comparable to other injectable antipsychotics and benzodiazepine-based protocols in many emergency department protocols.",
-      "patient_text": "In real-world emergency department use, droperidol is valued because it usually starts taking the edge off agitation within minutes and can be repeated in small doses to get you calm but still breathing safely.",
-      "citation_tag": "Clinical practice data; no single landmark trial defines efficacy."
+  "summary": "Short-acting injectable antipsychotic/antiemetic used in the OR and emergency department, mainly for acute agitation and rescue treatment of nausea/vomiting. Powerful but carries a boxed warning for heart rhythm problems (QT prolongation and torsades).",
+  "description": "Droperidol is an older antipsychotic that most people meet in the operating room or emergency department. At low doses it helps with nausea and vomiting. At higher doses it can rapidly calm severe agitation. Because it can prolong the heart’s QT interval and trigger dangerous arrhythmias, it’s reserved for situations where safer options have not worked and ECG monitoring is available.",
+  "patient_summary": "Droperidol is an injectable medication used in hospitals to quickly calm severe agitation or treat bad nausea and vomiting, usually after surgery. It works fast—often within minutes—but it can affect your heart rhythm, so it’s typically given only when other options haven’t helped and while you’re on a heart monitor.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "postoperative-nausea-and-vomiting",
+          "condition_name": "Postoperative Nausea And Vomiting",
+          "relationship": "primary_indication",
+          "context": "Labeled for prevention and treatment of nausea and vomiting related to surgery and diagnostic procedures, typically at low IV doses.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "off_label",
+          "context": "Used IM or IV for rapid sedation in severely agitated patients when other options (benzodiazepines, other antipsychotics) are ineffective or not tolerated."
+        },
+        {
+          "condition_slug": "delirium",
+          "condition_name": "Delirium",
+          "relationship": "off_label",
+          "context": "Sometimes considered when delirium presents with dangerous agitation, but QT risk and EPS limit its role. Not a first-line delirium treatment."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid after IM injection",
-      "bioavailability": "High (parenteral administration)",
-      "onset": "3–10 minutes",
-      "peak_plasma": "Around 30 minutes",
-      "half_life": "Approximately 2 hours in adults",
-      "duration_IR": "2–4 hours of main clinical effect (sedation and antiemesis), with some patients experiencing effects up to 12 hours",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic metabolism to multiple metabolites including p-fluorophenylacetic acid, benzimidazolone, and p-hydroxypiperidine",
-      "excretion": "Primarily in urine (~75%, less than 1% unchanged) and feces (~22%)",
-      "protein_binding": "85–90%",
-      "food_effect": "Not relevant (given IM/IV)."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "3–10 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intramuscular",
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Common; more likely at higher doses or in combination with other sedatives",
+          "notes": "You may feel very sleepy or groggy for several hours after an injection. This is partly intentional when treating agitation but can linger even after you feel calm. Staff should help you with walking or transfers to prevent falls."
+        },
+        {
+          "effect": "Dizziness and Orthostatic Hypotension",
+          "incidence": "Common; especially in older adults or those with dehydration or cardiovascular disease",
+          "notes": "Standing up quickly may make you feel light-headed or like you might black out. Move slowly, ask for help when getting out of bed, and let staff know if you feel woozy or faint."
+        },
+        {
+          "effect": "Extrapyramidal Symptoms (EPS)",
+          "incidence": "Uncommon at low antiemetic doses; more common at higher antipsychotic-range doses or in children and young adults",
+          "notes": "EPS can feel like inner restlessness (akathisia), muscle stiffness, jaw or neck tightness, or eyes pulling upward. These reactions are uncomfortable but usually treatable with other medications if caught early."
+        },
+        {
+          "effect": "Anxiety, Dysphoria, or Mood Changes",
+          "incidence": "Reported but not precisely quantified",
+          "notes": "Some people feel emotionally flat or mildly depressed after dosing; others feel briefly more anxious or uncomfortable. Let your team know if your mood feels significantly worse after receiving droperidol."
+        },
+        {
+          "effect": "Shivering, Chills, or Feeling Cold",
+          "incidence": "Reported in perioperative use",
+          "notes": "You may notice shaking or feeling chilled. Warm blankets and time usually help, but persistent or severe shivering should be reported."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "QT prolongation and torsade de pointes: Can present with palpitations, dizziness, fainting, or sudden collapse. This is a medical emergency."
+        },
+        {
+          "risk": "Ventricular tachycardia or other severe arrhythmias: May cause sudden loss of consciousness or cardiac arrest."
+        },
+        {
+          "risk": "Severe hypotension: Marked blood-pressure drop requiring fluids, positioning, or vasopressors."
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): High fever, severe muscle rigidity, confusion, unstable blood pressure or heart rate. Requires immediate discontinuation and emergency treatment."
+        },
+        {
+          "risk": "Laryngospasm, bronchospasm, or respiratory depression: Difficulty breathing, wheezing, or slowed respirations, especially when combined with opioids or benzodiazepines."
+        },
+        {
+          "risk": "Tardive dyskinesia with prolonged or repeated antipsychotic exposure: Involuntary facial or limb movements that may be persistent."
+        },
+        {
+          "risk": "Anaphylaxis: Very rare but serious allergic reaction with hives, swelling, or trouble breathing."
+        }
+      ],
+      "black_box_warning": "Cases of QT prolongation and torsade de pointes, including fatal events, have occurred at or below recommended doses, sometimes in patients without obvious risk factors. Obtain a baseline ECG and do NOT use droperidol if QTc is >440 ms in men or >450 ms in women. Monitor ECG and vital signs for 2–3 hours after dosing.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to droperidol or formulation components"
+        },
+        {
+          "contraindication": "Known or suspected QT prolongation (including congenital long QT syndrome)"
+        },
+        {
+          "contraindication": "Baseline QTc >440 msec in males or >450 msec in females"
+        },
+        {
+          "contraindication": "History of torsades de pointes or serious ventricular arrhythmias"
+        },
+        {
+          "contraindication": "Uncorrected hypokalemia or hypomagnesemia"
+        },
+        {
+          "contraindication": "Bradycardia <50 bpm or clinically significant cardiac disease without monitoring"
+        },
+        {
+          "contraindication": "Concomitant use of other high-risk QT-prolonging drugs when monitoring is not available"
+        }
+      ],
+      "precautions": [
+        "Contraindicated in known or suspected QT prolongation, including congenital long QT syndrome.",
+        "Use extreme caution in patients with heart failure, bradycardia, structural heart disease, or electrolyte disturbances (low potassium or magnesium).",
+        "Risk increases when combined with other QT-prolonging drugs or medications that lower potassium/magnesium (eg, diuretics).",
+        "May cause extrapyramidal symptoms (EPS) such as dystonia, akathisia, and Parkinson-like stiffness.",
+        "Can cause significant sedation, low blood pressure, and impaired coordination, especially at higher or repeated doses.",
+        "Neuroleptic malignant syndrome (NMS), a rare but life-threatening reaction, has been reported with antipsychotics including droperidol."
+      ],
+      "interactions": [
+        {
+          "interactant": "Other QT-prolonging drugs (Class I and III antiarrhythmics, some antipsychotics, certain SSRIs, macrolide antibiotics, fluoroquinolones)",
+          "mechanism": "Additive QT prolongation and increased risk of torsades de pointes or other ventricular arrhythmias.",
+          "action": "Avoid combination when possible. If no alternatives, correct electrolytes, obtain baseline ECG, and monitor continuously."
+        },
+        {
+          "interactant": "Diuretics and other electrolyte-altering drugs",
+          "mechanism": "Low potassium or magnesium increases risk of QT prolongation and torsades.",
+          "action": "Check and correct electrolytes before dosing. Use caution in patients on loop or thiazide diuretics or with vomiting/diarrhea."
+        },
+        {
+          "interactant": "Benzodiazepines, opioids, volatile anesthetics, and other CNS depressants",
+          "mechanism": "Additive sedation, respiratory depression, low blood pressure, and falls.",
+          "action": "These combos are common in the OR/ED but require careful dose selection, slow titration, and close monitoring of breathing and blood pressure."
+        },
+        {
+          "interactant": "Other antipsychotics and dopamine-blocking agents (eg, metoclopramide, prochlorperazine)",
+          "mechanism": "Increased risk of EPS, NMS, and QT prolongation.",
+          "action": "Avoid stacking multiple dopamine blockers when possible; if needed, keep doses low and duration brief, and monitor closely for movement side effects."
+        },
+        {
+          "interactant": "MAO inhibitors and certain antidepressants",
+          "mechanism": "Potential additive CNS effects, blood-pressure changes, and QT interactions.",
+          "action": "Use only if clearly necessary with careful monitoring. Consider non-QT-prolonging alternatives first."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Baseline ECG before dosing to confirm QTc ≤440 ms in men or ≤450 ms in women."
+        },
+        {
+          "parameter": "Continuous ECG and cardiac monitoring for at least 2–3 hours after dosing, especially if higher or repeated doses are used."
+        },
+        {
+          "parameter": "Vital signs (blood pressure, heart rate, respiratory rate, oxygen saturation) before and after dosing, and more frequently in older or medically fragile patients."
+        },
+        {
+          "parameter": "Electrolytes (potassium, magnesium, calcium), renal function, and liver function as clinically indicated, especially if risk factors for QT prolongation are present."
+        },
+        {
+          "parameter": "Assessment for extrapyramidal symptoms (dystonia, akathisia, Parkinsonism) at baseline if on chronic dopamine blockers and after dosing; use a standardized EPS scale when possible."
+        },
+        {
+          "parameter": "Fall risk evaluation in older adults and those with orthostatic symptoms; provide assistance with ambulation."
+        },
+        {
+          "parameter": "Mental status and level of sedation: ensure that the patient is calm but still protecting their airway and breathing adequately."
+        },
+        {
+          "parameter": "Metabolic parameters (weight, fasting glucose, lipids) are less of a concern for single-dose use, but may still be relevant if droperidol is used repeatedly as an antipsychotic."
+        },
+        {
+          "parameter": "Prolactin-related symptoms (changes in menstruation, galactorrhea, sexual dysfunction) if droperidol is used beyond a single exposure."
+        },
+        {
+          "parameter": "Documentation of indication, dosing, ECG findings, and any cardiac or neurologic adverse events for future risk/benefit discussions."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Droperidol has been studied as an adjunct for severe nausea and vomiting in pregnancy, but current guidelines do not recommend it as a routine option. Short-term perioperative use may be considered if benefits outweigh risks, but alternatives are generally preferred. As with all antipsychotics, use in pregnancy should be individualized and reserved for situations where the mother’s safety is clearly at stake.",
+        "lactation": "It is not clear how much droperidol passes into breast milk. Some data suggest temporary effects on newborn behavior when used during cesarean delivery. A single perioperative dose is unlikely to cause serious problems in a healthy term infant, but caution is advised and monitoring for excess sleepiness, feeding problems, or poor tone is reasonable.",
+        "pediatric": "Use cautiously and only when clearly indicated. Droperidol is considered a high-risk medication in children due to greater susceptibility to acute dystonic reactions and hyperprolactinemia. For agitation, data are limited and dosing should follow institutional protocols. For PONV, small weight-based doses may be used as rescue—not routine first-line.",
+        "geriatric": "As with other antipsychotics, droperidol is on the Beers Criteria list of potentially inappropriate medications in older adults. Risks include stroke, cognitive decline, falls, SIADH/hyponatremia, and mortality in those with dementia. If used for severe agitation or antiemesis, start at very low doses, monitor closely, and reassess frequently.",
+        "renal_impairment": "Renal impairment does not require a specific numeric adjustment, but accumulation of metabolites is possible. Use with caution and monitor for prolonged effects.",
+        "hepatic_impairment": "Metabolized in the liver; use lower starting doses and titrate slowly in moderate-to-severe hepatic impairment. Monitor for prolonged sedation and hypotension."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1970
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid after IM injection",
+          "bioavailability": "High (parenteral administration)",
+          "peak_plasma": "Around 30 minutes",
+          "half_life": "Approximately 2 hours in adults",
+          "metabolism": "Hepatic metabolism to multiple metabolites including p-fluorophenylacetic acid, benzimidazolone, and p-hydroxypiperidine",
+          "excretion": "Primarily in urine (~75%, less than 1% unchanged) and feces (~22%)",
+          "protein_binding": "85–90%",
+          "food_effect": "Not relevant (given IM/IV)."
+        },
+        "dosing": {
+          "titration": "All droperidol dosing should be individualized and given in settings where vital signs and ECG can be monitored. The doses below are typical psychiatry-relevant ranges for adults and children in emergency or perioperative settings."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Droperidol is usually given as a one-time or very short-term injection in the OR or emergency department, not as a daily home medication. That means classic tapering plans (like we use for SSRIs or benzodiazepines) generally do not apply."
+        }
+      }
     }
   },
   "sections": [
@@ -106,7 +262,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Commonly Feel",
-      "intro": "Most people meet droperidol in a crisis—either very agitated or very nauseated. You’re usually already in the hospital, attached to monitors, and being watched closely.",
       "items": [
         {
           "category": "Fast Calm (Minutes, Not Hours)",
@@ -142,7 +297,8 @@
           ],
           "note": "Because droperidol can prolong the QT interval and trigger dangerous heart rhythms, ECG and vital sign monitoring are standard."
         }
-      ]
+      ],
+      "intro": "Most people meet droperidol in a crisis—either very agitated or very nauseated. You’re usually already in the hospital, attached to monitors, and being watched closely."
     },
     {
       "type": "onset_duration",
@@ -159,10 +315,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In practice, droperidol is chosen for situations where clinicians need a reliable, injectable option that works quickly. When used for acute agitation, most patients show noticeable calming within the first 10–30 minutes, especially when combined thoughtfully with a benzodiazepine. For postoperative nausea and vomiting, low doses can reduce nausea and the need for additional rescue medications, but QT concerns have pushed many centers toward newer antiemetics as first-line.",
       "metric": "Time to calming for acute agitation",
       "value": "Often within 10–30 minutes",
       "comparison": "Similar to other injectable antipsychotics and some benzo-based protocols used in emergency settings.",
-      "text": "In practice, droperidol is chosen for situations where clinicians need a reliable, injectable option that works quickly. When used for acute agitation, most patients show noticeable calming within the first 10–30 minutes, especially when combined thoughtfully with a benzodiazepine. For postoperative nausea and vomiting, low doses can reduce nausea and the need for additional rescue medications, but QT concerns have pushed many centers toward newer antiemetics as first-line.",
       "clinical_details": "Droperidol’s modern role has been shaped more by emergency department and perioperative experience than by a single landmark trial. Common emergency department protocols using 5–10 mg IM or 2.5–10 mg IV, with repeat dosing up to 20 mg per episode, report reliable calming with acceptable respiratory safety when patients are properly monitored. For PONV, low doses around 0.625–1.25 mg IV at the end of surgery have been effective, though concerns about QT prolongation have limited first-line use.",
       "citation": {
         "authors": "Multiple perioperative and emergency medicine studies",
@@ -251,7 +407,6 @@
     {
       "type": "interactions",
       "heading": "Drug Interactions",
-      "intro": "With droperidol, the big interaction themes are QT prolongation, electrolyte shifts, and stacking sedatives.",
       "items": [
         {
           "with": "Other QT-prolonging drugs (Class I and III antiarrhythmics, some antipsychotics, certain SSRIs, macrolide antibiotics, fluoroquinolones)",
@@ -278,7 +433,8 @@
           "risk": "Potential additive CNS effects, blood-pressure changes, and QT interactions.",
           "action": "Use only if clearly necessary with careful monitoring. Consider non-QT-prolonging alternatives first."
         }
-      ]
+      ],
+      "intro": "With droperidol, the big interaction themes are QT prolongation, electrolyte shifts, and stacking sedatives."
     },
     {
       "type": "tapering",
@@ -387,21 +543,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Droperidol: Emergency Sedation, QT Risk, Dosing, and Side Effects",
-    "description": "Droperidol for acute agitation and postoperative nausea: fast-acting IM/IV antipsychotic/antiemetic with boxed warning for QT prolongation and torsades. Learn dosing ranges, onset, monitoring, and when it should—and should not—be used.",
-    "canonical": "https://www.heypsych.com/treatments/droperidol",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Droperidol – Clinical Use and Safety Concerns",
+      "url": "https://pubmed.ncbi.nlm.nih.gov",
+      "description": "Search for \"droperidol QT prolongation\" or \"droperidol agitation\" to review clinical trials and safety reports."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Antipsychotic Use and Monitoring Guidelines",
+      "url": "https://psychiatryonline.org",
+      "description": "Practice guideline resources on antipsychotic prescribing, EPS monitoring, and cardiac safety."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Beers Criteria for Potentially Inappropriate Medications in Older Adults (2023)",
+      "url": "https://geriatricscareonline.org",
+      "description": "Guidance on antipsychotic risks in older adults, including stroke, falls, and mortality concerns."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "Guidance on Drug-Induced QT Prolongation",
+      "url": "https://www.heart.org",
+      "description": "General information about drug-induced QT prolongation and arrhythmia risk management."
+    }
+  ],
   "faqs": [
     {
       "q": "Why would my team choose droperidol for agitation instead of something like lorazepam or haloperidol?",
@@ -443,5 +614,20 @@
       "q": "Can droperidol be used for routine anxiety or insomnia?",
       "a": "No. Droperidol is not a routine treatment for chronic anxiety, panic, or insomnia. Its role is short-term and situation-specific, usually tied to surgery, procedures, or severe agitation. For ongoing anxiety or sleep problems, safer and better-studied options like therapy, SSRIs/SNRIs, non-sedating sleep strategies, or carefully chosen sleep medications are preferred."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Droperidol: Emergency Sedation, QT Risk, Dosing, and Side Effects",
+    "description": "Droperidol for acute agitation and postoperative nausea: fast-acting IM/IV antipsychotic/antiemetic with boxed warning for QT prolongation and torsades. Learn dosing ranges, onset, monitoring, and when it should—and should not—be used.",
+    "canonical": "https://www.heypsych.com/treatments/droperidol",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

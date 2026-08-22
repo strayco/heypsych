@@ -1,87 +1,262 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "thioridazine-mellaril",
-  "type": "medication",
-  "name": "Thioridazine (Mellaril)",
-  "summary": "Older (first-generation) antipsychotic reserved for schizophrenia when other antipsychotics don’t work or aren’t tolerated. Effective for psychosis but carries a serious, dose-related QTc prolongation risk that can lead to dangerous arrhythmias and sudden death.",
-  "description": "Thioridazine is a first-generation antipsychotic sometimes used for schizophrenia when other options fail. It can reduce hallucinations, delusions, agitation, and disorganization over weeks, but it’s not a go-to medication today because it can dangerously prolong the QTc interval (risk of torsades de pointes and sudden death). It can also cause sedation, anticholinergic side effects (dry mouth, constipation, blurry vision), orthostatic hypotension, movement side effects (EPS), tardive dyskinesia, and rare blood count problems. It’s not approved for dementia-related psychosis and can raise mortality risk in that population.",
-  "patient_summary": "Thioridazine is an older antipsychotic used for schizophrenia only when other antipsychotics haven’t worked or weren’t tolerable. It can help psychosis and agitation, but it has a real, dose-related risk of QTc prolongation that can cause life-threatening heart rhythm problems. If you’re on it, you need careful ECG monitoring, avoidance of QT-prolonging meds, and a plan with psychiatry to use the lowest effective dose.",
-  "category": "medications/schizophrenia-psychosis",
-  "metadata": {
+  "identity": {
+    "slug": "thioridazine-mellaril",
+    "name": "Thioridazine (Mellaril)",
+    "generic_name": "thioridazine",
+    "brand_names": [
+      "Mellaril"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/schizophrenia-psychosis",
     "drug_classes": [
       "First-Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative",
       "Dopamine Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Mellaril"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 1959,
-    "pharmacologic_category": "First-Generation Antipsychotic (Piperidine Phenothiazine)",
-    "published_date": "2026-01-29T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia (reserved use when other antipsychotics are ineffective or not tolerated)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Reserved option for schizophrenia when at least two adequate antipsychotic trials have failed due to poor efficacy or intolerable adverse effects."
-      },
-      {
-        "slug": "psychosis",
-        "relationship": "related_condition",
-        "context": "May reduce psychotic symptoms (hallucinations, delusions, disorganization), but safety limitations make it an uncommon choice."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "symptom_target",
-        "context": "Can be sedating and may reduce agitation in schizophrenia, but QTc risk and side effects limit its role."
-      }
-    ],
-    "contraindications": [
-      "Congenital long QT syndrome",
-      "History of cardiac arrhythmias",
-      "Baseline QTc interval >450 msec",
-      "Concurrent use with other QTc-prolonging medications",
-      "Concurrent use with CYP2D6 inhibitors (including fluoxetine, paroxetine) or fluvoxamine",
-      "Concurrent use with propranolol or pindolol",
-      "Known genetic defect causing reduced CYP2D6 activity (poor metabolizer status)",
-      "Severe CNS depression",
-      "Coma",
-      "Severe hyper- or hypotensive heart disease"
-    ],
-    "efficacy_response": {
-      "metric": "Time to meaningful improvement in psychosis",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Thioridazine can help psychosis, but the main clinical issue isn’t whether it works—it’s that its cardiac risk profile forces it into a last-line role.",
-      "citation_tag": "FDA Label + APA Antipsychotic Monitoring Guidance"
+  "summary": "Older (first-generation) antipsychotic reserved for schizophrenia when other antipsychotics don’t work or aren’t tolerated. Effective for psychosis but carries a serious, dose-related QTc prolongation risk that can lead to dangerous arrhythmias and sudden death.",
+  "description": "Thioridazine is a first-generation antipsychotic sometimes used for schizophrenia when other options fail. It can reduce hallucinations, delusions, agitation, and disorganization over weeks, but it’s not a go-to medication today because it can dangerously prolong the QTc interval (risk of torsades de pointes and sudden death). It can also cause sedation, anticholinergic side effects (dry mouth, constipation, blurry vision), orthostatic hypotension, movement side effects (EPS), tardive dyskinesia, and rare blood count problems. It’s not approved for dementia-related psychosis and can raise mortality risk in that population.",
+  "patient_summary": "Thioridazine is an older antipsychotic used for schizophrenia only when other antipsychotics haven’t worked or weren’t tolerable. It can help psychosis and agitation, but it has a real, dose-related risk of QTc prolongation that can cause life-threatening heart rhythm problems. If you’re on it, you need careful ECG monitoring, avoidance of QT-prolonging meds, and a plan with psychiatry to use the lowest effective dose.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Reserved option for schizophrenia when at least two adequate antipsychotic trials have failed due to poor efficacy or intolerable adverse effects.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "psychosis",
+          "condition_name": "Psychosis",
+          "relationship": "secondary_indication",
+          "context": "May reduce psychotic symptoms (hallucinations, delusions, disorganization), but safety limitations make it an uncommon choice."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "secondary_indication",
+          "context": "Can be sedating and may reduce agitation in schizophrenia, but QTc risk and side effects limit its role."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "25-33%",
-      "onset": "Schizophrenia: early effects often noticed in 1-2 weeks, with continued improvement through 4-6 weeks",
-      "peak_plasma": "~1-4 hours",
-      "half_life": "5-27 hours (variable)",
-      "metabolism": "Hepatic (multiple pathways). Major CYP2D6 involvement with active metabolites (mesoridazine, sulforidazine)",
-      "excretion": "Not applicable for this medication.",
-      "protein_binding": "96-99%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Schizophrenia: early effects often noticed in 1-2 weeks, with continued improvement through 4-6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Frequency not defined",
+          "notes": "This can feel like calming at first, but it can also feel like brain fog or heavy fatigue. If you’re too sedated, the dose may be too high or the timing may need adjustment."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurry vision, urinary retention)",
+          "incidence": "Frequency not defined",
+          "notes": "Thioridazine can be particularly “drying” compared to many antipsychotics. Constipation isn’t just uncomfortable—it can become dangerous if ignored. Treat it early and proactively."
+        },
+        {
+          "effect": "Orthostatic hypotension / dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "Lightheadedness when standing is common during titration. It can raise fall risk, especially if you’re older or on other blood-pressure-lowering medications."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (EPS) / parkinsonism",
+          "incidence": "Frequency not defined",
+          "notes": "Stiffness, tremor, slowed movements, or restlessness can happen. Dose, individual sensitivity, and other meds all matter."
+        },
+        {
+          "effect": "Weight gain and prolactin-related effects",
+          "incidence": "Frequency not defined",
+          "notes": "Some people gain weight and some develop symptoms tied to higher prolactin (menstrual changes, sexual side effects, galactorrhea). If symptoms show up, it’s worth checking and adjusting the plan."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "QTc prolongation, torsades de pointes, and sudden death: risk increases with higher doses, bradycardia, low potassium/magnesium, congenital long QT, CYP2D6 inhibition, and other QT-prolonging drugs"
+        },
+        {
+          "risk": "Blood dyscrasias (leukopenia, neutropenia, agranulocytosis): can be life-threatening; discontinue if ANC <1,000/mm3"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, autonomic instability—medical emergency"
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially irreversible abnormal movements; risk increases with duration and cumulative exposure"
+        },
+        {
+          "risk": "Seizures: first-generation antipsychotics can lower seizure threshold"
+        },
+        {
+          "risk": "Ocular toxicity at higher doses: pigmentary retinopathy/corneal changes; risk increases above recommended dosing and with higher daily doses"
+        }
+      ],
+      "black_box_warning": "Thioridazine prolongs the QTc interval in a dose-related manner and has been associated with torsades de pointes–type arrhythmias and sudden death. Reserve use for schizophrenia only when other antipsychotics have failed due to inadequate effectiveness or intolerable adverse effects. Elderly patients with dementia-related psychosis treated with antipsychotics have an increased risk of death; thioridazine is not approved for dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Congenital long QT syndrome"
+        },
+        {
+          "contraindication": "History of cardiac arrhythmias"
+        },
+        {
+          "contraindication": "Baseline QTc interval >450 msec"
+        },
+        {
+          "contraindication": "Concurrent use with other QTc-prolonging medications"
+        },
+        {
+          "contraindication": "Concurrent use with CYP2D6 inhibitors (including fluoxetine, paroxetine) or fluvoxamine"
+        },
+        {
+          "contraindication": "Concurrent use with propranolol or pindolol"
+        },
+        {
+          "contraindication": "Known genetic defect causing reduced CYP2D6 activity (poor metabolizer status)"
+        },
+        {
+          "contraindication": "Severe CNS depression"
+        },
+        {
+          "contraindication": "Coma"
+        },
+        {
+          "contraindication": "Severe hyper- or hypotensive heart disease"
+        }
+      ],
+      "precautions": [
+        "Do not start if baseline QTc >450 msec",
+        "If QTc >500 msec during treatment, discontinue thioridazine",
+        "If QTc increases >60 msec from baseline, reassess urgently (dose reduction or switch is typically considered)",
+        "Avoid combining with other QT-prolonging drugs and with CYP2D6 inhibitors (risk of higher levels and greater QTc effect)",
+        "Orthostatic hypotension and sedation can increase fall risk",
+        "Extrapyramidal symptoms (EPS) and tardive dyskinesia can occur, especially with higher doses and longer use",
+        "Rare but serious: neuroleptic malignant syndrome (NMS), seizures (lowered threshold), and blood dyscrasias (including agranulocytosis)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Other QTc-prolonging medications",
+          "mechanism": "Additive QTc prolongation increases risk of torsades de pointes and sudden death.",
+          "action": "Avoid combinations whenever possible. If unavoidable, use specialist oversight, baseline + follow-up ECGs, and correct electrolytes."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (e.g., fluoxetine, paroxetine)",
+          "mechanism": "Raises thioridazine levels and can substantially increase QTc risk.",
+          "action": "Avoid. If antidepressant treatment is needed, choose alternatives that do not strongly inhibit CYP2D6 and reassess the antipsychotic plan."
+        },
+        {
+          "interactant": "Fluvoxamine",
+          "mechanism": "Can increase levels and QTc risk (and is specifically listed among combinations to avoid).",
+          "action": "Avoid."
+        },
+        {
+          "interactant": "Propranolol or pindolol",
+          "mechanism": "Combination is listed as a contraindicated/avoid interaction due to cardiac risk and potential pharmacokinetic effects.",
+          "action": "Avoid. If a beta-blocker is needed, coordinate with cardiology/psychiatry for a safer alternative."
+        },
+        {
+          "interactant": "Electrolyte-lowering agents (anything that can contribute to hypokalemia/hypomagnesemia)",
+          "mechanism": "Low potassium or magnesium amplifies torsades risk in QT-prolonging medications.",
+          "action": "Monitor electrolytes and correct aggressively if thioridazine is used."
+        },
+        {
+          "interactant": "Other CNS depressants (sedatives, alcohol, some sleep meds)",
+          "mechanism": "More sedation, more falls, more confusion; can worsen safety and functioning.",
+          "action": "Use caution and simplify the regimen. Avoid stacking sedation when possible."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "ECG (QTc): Baseline before starting; avoid initiation if QTc >450 ms. Recheck after significant dose increases, when adding any QT-prolonging medication, or if symptoms suggest arrhythmia (dizziness, palpitations, syncope). Discontinue if QTc >500 ms."
+        },
+        {
+          "parameter": "Electrolytes (especially potassium and magnesium): Check baseline and as clinically indicated; correct abnormalities promptly because low K/Mg increases torsades risk."
+        },
+        {
+          "parameter": "Vital signs and orthostatics: Monitor for hypotension and fall risk, especially during titration and in older adults."
+        },
+        {
+          "parameter": "Mental status and functioning: Every visit—track hallucinations, delusions, disorganization, agitation, sleep, and real-world functioning (work, school, relationships)."
+        },
+        {
+          "parameter": "Movement symptoms (EPS): Every visit early on; use a structured scale periodically. Reassess after dose changes and at least annually (more often if high risk)."
+        },
+        {
+          "parameter": "Tardive dyskinesia: Screen regularly; use a formal scale at least annually (or every 6 months if high risk)."
+        },
+        {
+          "parameter": "CBC: As clinically indicated, especially if there’s a history of low WBC or prior drug-induced leukopenia/neutropenia; discontinue for severe neutropenia/agranulocytosis concerns (including ANC <1,000/mm3)."
+        },
+        {
+          "parameter": "Metabolic monitoring: Weight/BMI frequently early on (every visit for first 6 months, then quarterly). Consider fasting glucose/HbA1c and lipid panel around 4 months after initiation and then annually (or more often if abnormal)."
+        },
+        {
+          "parameter": "Prolactin-related symptoms: Ask about menstrual changes, libido changes, galactorrhea, gynecomastia, erectile/ejaculatory issues; check levels if symptomatic."
+        },
+        {
+          "parameter": "Ocular monitoring: Consider periodic eye exams, especially at higher daily doses (e.g., ≥600 mg/day) or if visual symptoms develop, due to risk of pigmentary/retinal changes with higher exposure."
+        },
+        {
+          "parameter": "Fall risk: Evaluate regularly in older adults and anyone reporting dizziness, sedation, or unsteadiness."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for first-generation antipsychotics do not show a clear large increase in major congenital malformations overall, but data for individual agents and specific outcomes are limited. Third-trimester exposure to antipsychotics can cause newborn EPS and/or withdrawal symptoms (agitation, abnormal tone, feeding problems, respiratory distress, sleepiness, tremor). Do not taper late in pregnancy solely to prevent newborn symptoms; instead, focus on stable psychiatric control. Use the lowest effective dose of a single agent when possible, and reassess risks/benefits continuously.",
+        "lactation": "It is not known if thioridazine is present in human milk. If breastfeeding is planned or ongoing, coordinate with psychiatry and pediatrics to choose the safest effective option and to monitor the infant for sedation, feeding difficulty, poor weight gain, or abnormal movements.",
+        "pediatric": "Not commonly used today in children and adolescents because safer and better-tolerated options (often second-generation antipsychotics) are typically preferred. If used in refractory cases, dosing is weight-based and requires careful monitoring for dystonia/EPS, prolactin-related effects, and overall tolerability. Gradual tapering is recommended if discontinuing to reduce withdrawal symptoms and relapse risk.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic options have failed and there is risk of harm. Antipsychotics in older adults carry higher risks (falls, orthostatic hypotension, cognitive effects), and antipsychotics increase mortality risk in dementia-related psychosis. If used for schizophrenia in late-onset cases, lower-range adult doses are often sufficient; titrate slowly and monitor carefully.",
+        "renal_impairment": "No dosage adjustments are provided in manufacturer labeling; monitor clinically and keep an eye on overall medication burden and hydration/electrolytes.",
+        "hepatic_impairment": "No formal manufacturer dose adjustment is provided, but use caution because metabolism is hepatic and accumulation can occur. Start low, titrate slowly, and monitor sedation, orthostasis, and adverse effects."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1959
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "25-33%",
+          "peak_plasma": "~1-4 hours",
+          "half_life": "5-27 hours (variable)",
+          "metabolism": "Hepatic (multiple pathways). Major CYP2D6 involvement with active metabolites (mesoridazine, sulforidazine)",
+          "excretion": "Not applicable for this medication.",
+          "protein_binding": "96-99%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Thioridazine dosing is individualized and typically managed by psychiatry because of QTc risk and side effects. The goal is the lowest effective dose, slow titration, and routine safety monitoring (especially ECGs and interacting medications)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "For chronic psychotic disorders, clinicians usually switch antipsychotics rather than stopping with no replacement, because relapse risk can be high. If thioridazine is being stopped for tolerability or lack of benefit, a gradual taper over weeks to months is typically used to reduce withdrawal symptoms and to catch early relapse signs. If discontinuation is due to a serious adverse effect (like QTc >500 msec or dangerous blood count changes), the plan may need to be faster and medically supervised."
+        }
+      }
     }
   },
   "sections": [
@@ -99,7 +274,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s brain chemistry is different, but here’s the kind of “day-to-day feel” people often describe with thioridazine:",
       "items": [
         {
           "category": "Calmer, less “amped up”",
@@ -145,7 +319,8 @@
           ],
           "note": "This medication requires serious attention to QTc risk and drug interactions."
         }
-      ]
+      ],
+      "intro": "Everyone’s brain chemistry is different, but here’s the kind of “day-to-day feel” people often describe with thioridazine:"
     },
     {
       "type": "onset_duration",
@@ -161,10 +336,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Thioridazine can reduce psychotic symptoms, but modern practice treats it as an alternative agent, not a first- or second-line choice. The limiting factor is safety—especially its dose-related QTc prolongation and risk of torsades de pointes and sudden death. In real-life decision-making, “Does it work?” is usually followed immediately by “Is it safe enough for this specific patient?”",
       "metric": "Symptom reduction in schizophrenia",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Thioridazine can reduce psychotic symptoms, but modern practice treats it as an alternative agent, not a first- or second-line choice. The limiting factor is safety—especially its dose-related QTc prolongation and risk of torsades de pointes and sudden death. In real-life decision-making, “Does it work?” is usually followed immediately by “Is it safe enough for this specific patient?”",
       "clinical_details": "When thioridazine is used, clinicians typically aim for the lowest effective maintenance dose and reassess frequently. Response is often judged by reductions in hallucinations/delusions, improved organization, reduced agitation, better sleep continuity, and improved functioning over weeks. The medication’s anticholinergic and sedating profile may make it feel calming, but those same properties can impair cognition, contribute to constipation/urinary retention, and increase fall risk.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -254,7 +429,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Thioridazine has a dangerous interaction profile because it can prolong QTc and because CYP2D6 metabolism matters a lot. The safest approach is: treat this medication like it’s “interaction-prone” by default.",
       "items": [
         {
           "with": "Other QTc-prolonging medications",
@@ -286,7 +460,8 @@
           "risk": "More sedation, more falls, more confusion; can worsen safety and functioning.",
           "action": "Use caution and simplify the regimen. Avoid stacking sedation when possible."
         }
-      ]
+      ],
+      "intro": "Thioridazine has a dangerous interaction profile because it can prolong QTc and because CYP2D6 metabolism matters a lot. The safest approach is: treat this medication like it’s “interaction-prone” by default."
     },
     {
       "type": "tapering",
@@ -359,21 +534,6 @@
       "text": "Thioridazine sits in a very narrow lane: refractory schizophrenia when other antipsychotics haven’t worked or weren’t tolerable. The deciding factor isn’t convenience—it’s safety. Because QTc prolongation risk is dose-related and potentially life-threatening, clinicians generally prefer other antipsychotics first. If thioridazine is used, it’s usually with specialist oversight, careful ECG monitoring, strict interaction avoidance, and a constant push toward the lowest effective dose."
     }
   ],
-  "seo": {
-    "title": "Thioridazine (Mellaril): Uses, Dosing, Side Effects, QTc Warning",
-    "description": "Thioridazine (Mellaril) is a last-line antipsychotic for schizophrenia due to dose-related QTc prolongation and torsades risk. Learn dosing, side effects, interactions, monitoring, and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/thioridazine-mellaril](https://www.heypsych.com/treatments/thioridazine-mellaril)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is thioridazine used for?",
@@ -419,5 +579,20 @@
       "q": "What’s the bottom line on thioridazine?",
       "a": "It can help schizophrenia, but it’s a high-monitoring, high-caution medication. If it’s part of your plan, the goal is tight safety screening, careful ECG monitoring, avoiding risky interactions, and using the lowest dose that actually helps."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Thioridazine (Mellaril): Uses, Dosing, Side Effects, QTc Warning",
+    "description": "Thioridazine (Mellaril) is a last-line antipsychotic for schizophrenia due to dose-related QTc prolongation and torsades risk. Learn dosing, side effects, interactions, monitoring, and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/thioridazine-mellaril](https://www.heypsych.com/treatments/thioridazine-mellaril)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

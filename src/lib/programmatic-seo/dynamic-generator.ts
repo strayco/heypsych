@@ -216,7 +216,7 @@ async function buildBrandMapping(): Promise<Map<string, string>> {
       mapping.set(t.brandName, t.slug);
     }
     // Map generic name too
-    if (t.genericName) {
+    if (t.genericName && typeof t.genericName === 'string') {
       mapping.set(t.genericName.split(' ')[0], t.slug);
     }
     // Direct slug mapping

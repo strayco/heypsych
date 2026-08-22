@@ -1,72 +1,213 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "daridorexant-quviviq",
-  "type": "medication",
-  "name": "Daridorexant (Quviviq)",
-  "summary": "Dual orexin receptor antagonist (DORA) for adult insomnia (sleep onset and/or maintenance), with relatively short half-life and lower next-day residual effect compared with many hypnotics.",
-  "description": "Daridorexant is an orexin receptor antagonist indicated for the treatment of adult insomnia characterized by difficulty with sleep onset and/or sleep maintenance. It blocks wake-promoting orexin A/B at OX1R and OX2R, thereby reducing wake drive rather than global CNS suppression. It is dosed once nightly (25–50 mg) within 30 minutes of bedtime with at least 7 hours available for sleep. Compared with GABAergic hypnotics, it has a distinct side effect profile: somnolence/fatigue and rare complex sleep behaviors, with relatively modest respiratory effects but limited data in significant respiratory disease. It is a Schedule IV controlled substance in the US (non-controlled in Canada).",
-  "patient_summary": "Daridorexant (Quviviq) is a prescription sleep medicine for adults who have trouble falling or staying asleep. You take it once at night, within 30 minutes of going to bed, when you can stay in bed for at least 7 hours. It works by blocking chemicals in the brain (orexins) that keep you awake. The most common side effects are feeling sleepy, tired, dizzy, or having a headache. Some people can have unusual sleep behaviors like sleepwalking or doing things while not fully awake. Don’t drink alcohol with it and don’t take it if you have narcolepsy.",
-  "category": "medications/insomnia",
-  "metadata": {
-    "drug_classes": [
-      "Hypnotic, Miscellaneous",
-      "Dual Orexin Receptor Antagonist (DORA)"
-    ],
+  "identity": {
+    "slug": "daridorexant-quviviq",
+    "name": "Daridorexant (Quviviq)",
+    "generic_name": "daridorexant",
     "brand_names": [
       "Quviviq"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "C-IV (United States); noncontrolled (Canada)",
-    "generic_available": false,
-    "pharmacologic_category": "Hypnotic; Orexin Receptor Antagonist",
-    "fda_approval_year": 2022,
-    "published_date": "2026-02-10T00:00:00Z",
-    "last_updated": "2026-02-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q55112806"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia, sleep onset and/or sleep maintenance, adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA/Health Canada indication for insomnia characterized by difficulties with sleep onset and/or sleep maintenance in adults."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "caution_comorbidity",
-        "context": "Use cautiously in patients with current or past depression; hypnotics may worsen mood or unmask suicidality."
-      },
-      {
-        "slug": "obstructive-sleep-apnea",
-        "relationship": "caution_comorbidity",
-        "context": "Limited data in significant respiratory disease; consider risk–benefit and monitor for respiratory compromise."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
+    "drug_classes": [
+      "Hypnotic, Miscellaneous",
+      "Dual Orexin Receptor Antagonist (DORA)"
+    ]
+  },
+  "summary": "Dual orexin receptor antagonist (DORA) for adult insomnia (sleep onset and/or maintenance), with relatively short half-life and lower next-day residual effect compared with many hypnotics.",
+  "description": "Daridorexant is an orexin receptor antagonist indicated for the treatment of adult insomnia characterized by difficulty with sleep onset and/or sleep maintenance. It blocks wake-promoting orexin A/B at OX1R and OX2R, thereby reducing wake drive rather than global CNS suppression. It is dosed once nightly (25–50 mg) within 30 minutes of bedtime with at least 7 hours available for sleep. Compared with GABAergic hypnotics, it has a distinct side effect profile: somnolence/fatigue and rare complex sleep behaviors, with relatively modest respiratory effects but limited data in significant respiratory disease. It is a Schedule IV controlled substance in the US (non-controlled in Canada).",
+  "patient_summary": "Daridorexant (Quviviq) is a prescription sleep medicine for adults who have trouble falling or staying asleep. You take it once at night, within 30 minutes of going to bed, when you can stay in bed for at least 7 hours. It works by blocking chemicals in the brain (orexins) that keep you awake. The most common side effects are feeling sleepy, tired, dizzy, or having a headache. Some people can have unusual sleep behaviors like sleepwalking or doing things while not fully awake. Don’t drink alcohol with it and don’t take it if you have narcolepsy.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia-disorder",
+          "condition_name": "Insomnia Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA/Health Canada indication for insomnia characterized by difficulties with sleep onset and/or sleep maintenance in adults.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication",
+          "context": "Use cautiously in patients with current or past depression; hypnotics may worsen mood or unmask suicidality."
+        },
+        {
+          "condition_slug": "obstructive-sleep-apnea",
+          "condition_name": "Obstructive Sleep Apnea",
+          "relationship": "secondary_indication",
+          "context": "Limited data in significant respiratory disease; consider risk–benefit and monitor for respiratory compromise."
+        }
+      ]
+    },
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "≈30–40 minutes (dose-dependent; faster at 50 mg)"
+        }
       }
-    ],
-    "contraindications": [
-      "History of hypersensitivity to daridorexant (eg, angioedema with pharyngeal involvement)",
-      "Narcolepsy",
-      "Severe hepatic impairment (Child-Pugh C; use not recommended)"
-    ],
-    "pharmacokinetics": {
-      "absorption": "Oral; bioavailability ≈62%",
-      "onset": "≈30–40 minutes (dose-dependent; faster at 50 mg)",
-      "peak_plasma": "≈1–2 hours (delayed ~1.3 hours with high-fat/high-calorie meal)",
-      "half_life": "≈8 hours",
-      "distribution": "Vd ≈31 L; plasma protein binding ≈99.7%",
-      "metabolism": "Primarily hepatic via CYP3A4 (≈89%)",
-      "excretion": "≈57% feces; ≈28% urine",
-      "food_effect": "High-fat/high-calorie meals delay Tmax and may delay sleep onset"
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Somnolence / Fatigue / Drowsiness",
+          "incidence": "≤6%",
+          "notes": "Can impair driving and next-day performance, especially with <7 hours in bed, higher doses, or concomitant CNS depressants."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "≈6–7%",
+          "notes": "Typically mild to moderate; often attenuates with continued use."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "≈3%",
+          "notes": "Contributes to fall risk in older adults; consider starting at 25 mg and counsel regarding nocturnal ambulation."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "≈3%",
+          "notes": "Usually transient and dose-related."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors: sleepwalking, sleep-driving, cooking/eating, phone calls, or sexual activity while not fully awake, with amnesia for the event."
+        },
+        {
+          "risk": "Hallucinations (hypnagogic or hypnopompic), nightmares, abnormal dreams."
+        },
+        {
+          "risk": "Sleep paralysis (transient inability to move/speak during sleep–wake transitions)."
+        },
+        {
+          "risk": "Narcolepsy-like symptoms (eg, mild cataplexy) theoretically possible based on mechanism."
+        },
+        {
+          "risk": "Worsening depression or emergent suicidal ideation."
+        },
+        {
+          "risk": "Hypersensitivity reactions, including angioedema."
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "History of hypersensitivity to daridorexant (eg, angioedema with pharyngeal involvement)"
+        },
+        {
+          "contraindication": "Narcolepsy"
+        },
+        {
+          "contraindication": "Severe hepatic impairment (Child-Pugh C; use not recommended)"
+        }
+      ],
+      "precautions": [
+        "CNS depression: Risk of driving impairment and daytime somnolence, particularly with less than 7 hours in bed, higher doses, or co-administration with CNS depressants (benzodiazepines, opioids, TCAs, alcohol).",
+        "Complex sleep behaviors: Discontinue permanently if patient experiences sleep-walking, sleep-driving, or other complex behaviors while not fully awake.",
+        "Sleep-related phenomena: Hallucinations, nightmares, sleep paralysis, and mild cataplexy-like episodes have been reported with orexin antagonists.",
+        "Depression / suicidality: Hypnotics can worsen mood or unmask suicidal ideation; monitor closely in MDD, bipolar disorder, and personality disorders.",
+        "Respiratory compromise: Limited data in significant COPD or other respiratory disorders; consider alternative agents or close monitoring.",
+        "Hepatic impairment: Increased exposure in moderate hepatic dysfunction; max dose 25 mg; avoid in severe hepatic impairment.",
+        "Substance use risk: Schedule IV in US; risk appears lower vs GABAergic hypnotics but monitor for misuse, dose escalation, or drug-seeking behavior.",
+        "Appropriate use: Persistent insomnia beyond 7–10 days may indicate underlying psychiatric or medical illness that requires further diagnostic workup."
+      ],
+      "interactions": [
+        {
+          "interactant": "Strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole, clarithromycin, ritonavir, some boosted HIV regimens)",
+          "mechanism": "Significant increase in daridorexant exposure with increased risk of excessive sedation and adverse effects.",
+          "action": "Avoid co-administration; choose an alternative hypnotic or adjust the interacting agent."
+        },
+        {
+          "interactant": "Moderate CYP3A4 inhibitors (eg, diltiazem, verapamil, erythromycin, fluconazole, grapefruit juice)",
+          "mechanism": "Moderate elevation of daridorexant levels.",
+          "action": "Consider reducing daridorexant dose (eg, 25 mg max) and monitor for sedation; avoid grapefruit juice near dosing."
+        },
+        {
+          "interactant": "CYP3A4 inducers (eg, rifampin, carbamazepine, phenytoin, St John’s wort)",
+          "mechanism": "Reduced daridorexant exposure, decreased efficacy.",
+          "action": "Avoid strong inducers or monitor for reduced efficacy; consider alternative hypnotic."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, Z-drugs, opioids, sedating antidepressants, antipsychotics, gabapentinoids, alcohol)",
+          "mechanism": "Additive or synergistic CNS depression, increasing risk of sedation, falls, and respiratory events.",
+          "action": "Use lowest effective doses for all agents; consider monotherapy for insomnia where possible; counsel on avoiding alcohol."
+        },
+        {
+          "interactant": "Drugs cleared via CYP3A4 or P-gp",
+          "mechanism": "Daridorexant is a weak CYP3A4 and P-gp inhibitor; modest increases in exposure to sensitive substrates possible.",
+          "action": "Typically no adjustment required, but be aware in narrow therapeutic index drugs and monitor as clinically indicated."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Clinical sleep outcomes: Sleep onset latency, total sleep time, wake after sleep onset, and daytime functioning (ideally via sleep diary)."
+        },
+        {
+          "parameter": "Daytime sedation and driving ability, especially during first weeks and after dose changes."
+        },
+        {
+          "parameter": "Complex sleep behaviors: Ask routinely about sleepwalking, nocturnal eating, sleep-driving, and other unusual behaviors with amnesia."
+        },
+        {
+          "parameter": "Mood and suicidality: Screen for depressive symptoms and SI at baseline and periodically (eg, PHQ-9, C-SSRS)."
+        },
+        {
+          "parameter": "Falls and balance: Particularly in older adults and those on multiple CNS depressants."
+        },
+        {
+          "parameter": "Liver function tests (LFTs): Baseline and as clinically indicated, especially in hepatic impairment or polypharmacy."
+        },
+        {
+          "parameter": "Respiratory status: As clinically indicated in patients with COPD, OSA, obesity hypoventilation, or concomitant respiratory depressants."
+        },
+        {
+          "parameter": "Adherence and misuse: Refill patterns, PDMP, and reports of dose escalation or recreational use."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal data do not suggest major teratogenicity at multiples of human exposure, but human data are limited. Use only if potential benefit justifies the potential risk. A pregnancy registry is available.",
+        "lactation": "Daridorexant and metabolites are present in breast milk at low relative infant dose (~0.22% of maternal dose). Clinical impact is unknown; if used during lactation, monitor infant for excessive sedation and feeding difficulties.",
+        "pediatric": "Not indicated and not studied in patients <18 years.",
+        "geriatric": "Similar dosing to younger adults, but greater susceptibility to somnolence, fatigue, and falls. Consider starting at 25 mg and careful fall-risk assessment.",
+        "renal_impairment": "No dose adjustment required.",
+        "hepatic_impairment": "No adjustment in Child-Pugh A; max 25 mg in Child-Pugh B; avoid in Child-Pugh C."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2022
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral; bioavailability ≈62%",
+          "peak_plasma": "≈1–2 hours (delayed ~1.3 hours with high-fat/high-calorie meal)",
+          "half_life": "≈8 hours",
+          "metabolism": "Primarily hepatic via CYP3A4 (≈89%)",
+          "excretion": "≈57% feces; ≈28% urine",
+          "food_effect": "High-fat/high-calorie meals delay Tmax and may delay sleep onset"
+        },
+        "dosing": {
+          "titration": "Dose selection is based on insomnia phenotype, age/comorbidity, and hepatic function. Use a single nightly dose only and ensure ≥7 hours available for sleep."
+        }
+      }
     }
   },
   "sections": [
@@ -187,7 +328,6 @@
     {
       "type": "interactions",
       "heading": "Drug–Drug Interactions (Psychiatry-Relevant)",
-      "intro": "Daridorexant is primarily a CYP3A4 substrate and a weak CYP3A4 and P-gp inhibitor. Dose adjustments or avoidance are required with strong/moderate CYP3A4 modulators.",
       "items": [
         {
           "with": "Strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole, clarithromycin, ritonavir, some boosted HIV regimens)",
@@ -214,7 +354,8 @@
           "risk": "Daridorexant is a weak CYP3A4 and P-gp inhibitor; modest increases in exposure to sensitive substrates possible.",
           "action": "Typically no adjustment required, but be aware in narrow therapeutic index drugs and monitor as clinically indicated."
         }
-      ]
+      ],
+      "intro": "Daridorexant is primarily a CYP3A4 substrate and a weak CYP3A4 and P-gp inhibitor. Dose adjustments or avoidance are required with strong/moderate CYP3A4 modulators."
     },
     {
       "type": "special_populations",
@@ -280,22 +421,29 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Daridorexant (Quviviq) for Insomnia: Psychiatrist Dosing & Safety Guide",
-    "description": "Psychiatrist-focused monograph for daridorexant: indications, dosing (25–50 mg QHS), PK, adverse effects, complex sleep behaviors, depression/suicide risk, hepatic adjustments, interactions, and monitoring.",
-    "canonical": "https://www.heypsych.com/treatments/daridorexant-quviviq",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists",
-      "sleep-medicine-specialists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-02-10",
-    "lastUpdated": "2026-02-10",
-    "reviewStatement": "Content adapted for psychiatric prescribers from current product labeling and contemporary insomnia guidelines. Not a substitute for full prescribing information or local regulatory documents."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Quviviq (daridorexant) US Prescribing Information",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/214985s010s012lbl.pdf",
+      "description": "Full prescribing information including Medication Guide and detailed clinical pharmacology."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Mignot et al., Daridorexant in insomnia disorder",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "description": "Phase 3 clinical trials describing efficacy and safety in adult insomnia."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Roch et al., Daridorexant mechanism and pharmacology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "description": "Nonclinical and early clinical data on orexin receptor antagonism."
+    }
+  ],
   "faqs": [
     {
       "q": "How does daridorexant differ from benzodiazepines and Z-drugs?",
@@ -321,5 +469,21 @@
       "q": "Is tapering required when stopping daridorexant?",
       "a": "No formal taper is required given its mechanism and half-life. However, avoid abrupt discontinuation in highly anxious patients without planning for alternative insomnia management (eg, CBT-i), as insomnia symptoms may recur."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Daridorexant (Quviviq) for Insomnia: Psychiatrist Dosing & Safety Guide",
+    "description": "Psychiatrist-focused monograph for daridorexant: indications, dosing (25–50 mg QHS), PK, adverse effects, complex sleep behaviors, depression/suicide risk, hepatic adjustments, interactions, and monitoring.",
+    "canonical": "https://www.heypsych.com/treatments/daridorexant-quviviq",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists",
+      "sleep-medicine-specialists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-02-10",
+    "lastUpdated": "2026-02-10",
+    "reviewStatement": "Content adapted for psychiatric prescribers from current product labeling and contemporary insomnia guidelines. Not a substitute for full prescribing information or local regulatory documents."
+  }
 }

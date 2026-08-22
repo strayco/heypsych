@@ -35,7 +35,7 @@ export function PlatformComparisonSection({
           {platforms.map((platform, i) => (
             <div
               key={i}
-              className="rounded-lg border border-gray-200 bg-white p-4"
+              className="rounded-lg border border-separator bg-surface p-4"
             >
               <div className="mb-3 flex items-start justify-between">
                 <div className="flex items-center gap-2">
@@ -44,7 +44,7 @@ export function PlatformComparisonSection({
                   ) : (
                     <Smartphone className="h-5 w-5 text-indigo-600" />
                   )}
-                  <h4 className="font-semibold text-gray-900">{platform.name}</h4>
+                  <h4 className="font-semibold text-label-primary">{platform.name}</h4>
                 </div>
                 {platform.rating && (
                   <Badge variant="outline" className="flex items-center gap-1">
@@ -53,7 +53,7 @@ export function PlatformComparisonSection({
                   </Badge>
                 )}
               </div>
-              <p className="mb-3 text-sm text-gray-700">{platform.features}</p>
+              <p className="mb-3 text-sm text-label-primary">{platform.features}</p>
               {(platform.download || platform.url) && (
                 <a
                   href={platform.download || platform.url}

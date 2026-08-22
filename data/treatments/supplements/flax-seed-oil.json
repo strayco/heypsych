@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "flax-seed-oil",
-  "type": "supplement",
-  "name": "Flax Seed Oil",
-  "summary": "Flax seed oil is a plant-based source of omega-3 fatty acids, particularly alpha-linolenic acid (ALA), used for cardiovascular, metabolic, and general health support.",
-  "description": "Flax seed oil is extracted from the seeds of the flax plant (Linum usitatissimum). It is one of the richest plant sources of alpha-linolenic acid (ALA), an essential omega-3 fatty acid that the body can partially convert into EPA and DHA, though conversion efficiency is low. Flax seed oil is commonly used to support heart health, reduce inflammation, and improve skin and digestive health. Compared to fish oil, it is often chosen by vegetarians and vegans as a plant-based alternative, though its efficacy in psychiatric or neurological disorders is less established.",
-  "category": "supplements",
-  "tags": [
-    "omega-3 fatty acids",
-    "ALA",
-    "heart health",
-    "vegan supplement"
-  ],
-  "metadata": {
-    "compound_type": "Omega-3 polyunsaturated fatty acid (ALA)",
-    "natural_source": "Flax seeds (Linum usitatissimum)",
+  "identity": {
+    "slug": "flax-seed-oil",
+    "name": "Flax Seed Oil",
+    "brand_names": [
+      "Barlean’s Flax Oil",
+      "Nature Made Flaxseed Oil",
+      "NOW Flax Seed Oil"
+    ],
+    "aliases": [
+      "linseed oil",
+      "ALA oil"
+    ],
+    "wikidata_qid": "Q157218"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cardiology",
       "Integrative Medicine",
@@ -24,77 +27,164 @@
       "Anti-inflammatory",
       "Lipid metabolism"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Barlean’s Flax Oil",
-      "Nature Made Flaxseed Oil",
-      "NOW Flax Seed Oil"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Preventive Medicine",
-      "Nutrition",
-      "Cardiology"
-    ],
-    "wikidata_qid": "Q157218"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "General cardiovascular support",
-      "Dietary omega-3 supplementation",
-      "Inflammation reduction",
-      "Skin health"
-    ],
-    "off_label_uses": [
-      "Mood support",
-      "Cognitive support",
-      "Digestive regularity"
-    ],
-    "contraindications": [
-      "Flaxseed allergy",
-      "Bleeding disorders (caution at high doses)"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Bleeding risk (at high doses or with anticoagulants)"
-    ],
-    "efficacy_rating": {
-      "cardiovascular_support": 3,
-      "triglyceride_reduction": 2,
-      "mood_support": 1,
-      "cognition": 1,
-      "anti-inflammatory": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "flax seed oil",
+    "tags": [
+      "omega-3 fatty acids",
       "ALA",
-      "omega-3 plant oil",
-      "flax oil"
-    ],
-    "synonyms": [
-      "linseed oil",
-      "ALA oil"
-    ],
-    "common_misspellings": [
-      "flakseed oil",
-      "flax oyl"
+      "heart health",
+      "vegan supplement"
     ]
+  },
+  "summary": "Flax seed oil is a plant-based source of omega-3 fatty acids, particularly alpha-linolenic acid (ALA), used for cardiovascular, metabolic, and general health support.",
+  "description": "Flax seed oil is extracted from the seeds of the flax plant (Linum usitatissimum). It is one of the richest plant sources of alpha-linolenic acid (ALA), an essential omega-3 fatty acid that the body can partially convert into EPA and DHA, though conversion efficiency is low. Flax seed oil is commonly used to support heart health, reduce inflammation, and improve skin and digestive health. Compared to fish oil, it is often chosen by vegetarians and vegans as a plant-based alternative, though its efficacy in psychiatric or neurological disorders is less established.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "general-cardiovascular-support",
+          "condition_name": "General cardiovascular support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "dietary-omega-3-supplementation",
+          "condition_name": "Dietary omega-3 supplementation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "inflammation-reduction",
+          "condition_name": "Inflammation reduction",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "skin-health",
+          "condition_name": "Skin health",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "mood-support",
+          "condition_name": "Mood support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "digestive-regularity",
+          "condition_name": "Digestive regularity",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cardiovascular_support": {
+          "rating": 3
+        },
+        "triglyceride_reduction": {
+          "rating": 2
+        },
+        "mood_support": {
+          "rating": 1
+        },
+        "cognition": {
+          "rating": 1
+        },
+        "anti-inflammatory": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Loose stools"
+        },
+        {
+          "effect": "Bloating"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased bleeding risk at high doses"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Flaxseed allergy"
+        },
+        {
+          "contraindication": "Bleeding disorders (caution at high doses)"
+        }
+      ],
+      "precautions": [
+        "Flax seed oil is less effective than fish oil for raising EPA and DHA levels.",
+        "May increase bleeding risk when combined with anticoagulants or antiplatelets."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin or anticoagulants",
+          "mechanism": "Increased bleeding",
+          "action": "Monitor INR and clinical signs"
+        },
+        {
+          "interactant": "Antiplatelet drugs",
+          "mechanism": "Increased bleeding",
+          "action": "Caution advised"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "General lipid profile"
+        },
+        {
+          "parameter": "Signs of bleeding"
+        },
+        {
+          "parameter": "Digestive tolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally considered safe in food amounts; supplement use should be discussed with provider",
+        "lactation": "Likely safe in moderate amounts",
+        "pediatric": "Ground flax seeds often used for fiber; oil supplements require supervision",
+        "geriatric": "Generally safe; useful as a plant-based omega-3 option"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Omega-3 polyunsaturated fatty acid (ALA)",
+        "natural_source": "Flax seeds (Linum usitatissimum)",
+        "regulatory_notes": "Dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -212,6 +302,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Flaxseed Oil",
+      "url": "https://examine.com/supplements/flaxseed-oil/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Pawlosky RJ et al. Physiological compartmental analysis of ALA conversion. J Lipid Res. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11108726/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Bloedon LT, Szapary PO. Flaxseed and cardiovascular risk. Nutr Rev. 2004",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15291300/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "flax seed oil",
+      "ALA",
+      "omega-3 plant oil",
+      "flax oil"
+    ],
+    "synonyms": [
+      "linseed oil",
+      "ALA oil"
+    ],
+    "common_misspellings": [
+      "flakseed oil",
+      "flax oyl"
+    ]
+  },
   "seo": {
     "title": "Flax Seed Oil (ALA Omega-3) – Plant-Based Heart & Wellness Supplement",
     "description": "Flax seed oil is a vegan source of omega-3 fatty acids (ALA) for heart, skin, and general wellness. Learn benefits, dosing, and safety compared to fish oil.",

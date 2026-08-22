@@ -1,84 +1,244 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "trifluoperazine-stelazine",
-  "type": "medication",
-  "name": "Trifluoperazine (Stelazine)",
-  "summary": "First-generation (typical) antipsychotic used for schizophrenia; historically labeled for anxiety but rarely chosen today because the risk profile is heavier than safer alternatives.",
-  "description": "Trifluoperazine is a high-potency typical antipsychotic that can reduce psychotic symptoms by blocking dopamine signaling in the brain. It can also cause movement side effects (like restlessness, stiffness, tremor) and, less commonly, serious complications like neuroleptic malignant syndrome (NMS) and blood count problems. It carries a boxed warning for increased mortality in older adults with dementia-related psychosis and is not approved for that use. If you’re taking it, the goal is the lowest effective dose, with careful monitoring—especially for extrapyramidal symptoms and tardive dyskinesia.",
-  "patient_summary": "Trifluoperazine can help with schizophrenia symptoms, but it has a higher chance of movement side effects than many newer antipsychotics. It has a boxed warning about increased death risk in older adults with dementia-related psychosis and is not approved for that use. Most people who do well on it do best on the lowest effective dose with close monitoring.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "trifluoperazine-stelazine",
+    "name": "Trifluoperazine (Stelazine)",
+    "generic_name": "trifluoperazine",
+    "brand_names": [
+      "Stelazine"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
     "drug_classes": [
       "First Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative",
       "Dopamine D2 Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Stelazine"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1959,
-    "pharmacologic_category": "High-Potency Typical Antipsychotic (Piperazine Phenothiazine)",
-    "published_date": "2025-11-04T00:00:00Z",
-    "last_updated": "2025-11-04T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-04T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Anxiety (labeled; not commonly recommended in modern practice)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "A labeled use for trifluoperazine. Many clinicians prefer second-generation antipsychotics first because they may cause fewer extrapyramidal symptoms, but efficacy differences are not clearly established across individuals. Trifluoperazine can still be used when the benefit-risk fit is right and monitoring is tight."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "legacy_labeled_use",
-        "context": "Although anxiety is a labeled indication, most modern guidelines no longer describe a routine role for trifluoperazine in anxiety because safer alternatives exist and long-term risks (especially movement disorders) can be severe."
-      },
-      {
-        "slug": "dementia-related-psychosis",
-        "relationship": "not_approved_boxed_warning",
-        "context": "Not approved for dementia-related psychosis. Antipsychotics increase mortality risk in older adults with dementia-related psychosis."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to trifluoperazine, phenothiazines, or any component of the formulation",
-      "Comatose or severely CNS-depressed states due to CNS depressants",
-      "Bone marrow suppression or significant blood dyscrasias",
-      "Hepatic disease"
-    ],
-    "efficacy_response": {
-      "metric": "Time to early clinical effect (schizophrenia)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With schizophrenia, this medication is not a same-day fix. Some people notice early changes in 1 to 2 weeks, with continued improvements over 4 to 6 weeks. The goal is steady symptom improvement without trading your stability for side effects.",
-      "citation_tag": "Agid 2003; Levine 2010"
+  "summary": "First-generation (typical) antipsychotic used for schizophrenia; historically labeled for anxiety but rarely chosen today because the risk profile is heavier than safer alternatives.",
+  "description": "Trifluoperazine is a high-potency typical antipsychotic that can reduce psychotic symptoms by blocking dopamine signaling in the brain. It can also cause movement side effects (like restlessness, stiffness, tremor) and, less commonly, serious complications like neuroleptic malignant syndrome (NMS) and blood count problems. It carries a boxed warning for increased mortality in older adults with dementia-related psychosis and is not approved for that use. If you’re taking it, the goal is the lowest effective dose, with careful monitoring—especially for extrapyramidal symptoms and tardive dyskinesia.",
+  "patient_summary": "Trifluoperazine can help with schizophrenia symptoms, but it has a higher chance of movement side effects than many newer antipsychotics. It has a boxed warning about increased death risk in older adults with dementia-related psychosis and is not approved for that use. Most people who do well on it do best on the lowest effective dose with close monitoring.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "A labeled use for trifluoperazine. Many clinicians prefer second-generation antipsychotics first because they may cause fewer extrapyramidal symptoms, but efficacy differences are not clearly established across individuals. Trifluoperazine can still be used when the benefit-risk fit is right and monitoring is tight.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Although anxiety is a labeled indication, most modern guidelines no longer describe a routine role for trifluoperazine in anxiety because safer alternatives exist and long-term risks (especially movement disorders) can be severe."
+        },
+        {
+          "condition_slug": "dementia-related-psychosis",
+          "condition_name": "Dementia Related Psychosis",
+          "relationship": "secondary_indication",
+          "context": "Not approved for dementia-related psychosis. Antipsychotics increase mortality risk in older adults with dementia-related psychosis."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with measurable serum peak",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Schizophrenia: early effects may be noticed within 1 to 2 weeks; improvements can continue through 4 to 6 weeks",
-      "peak_plasma": "1.5 to 6 hours",
-      "half_life": "3 to 12 hours",
-      "duration_IR": "Variable",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Metabolized in the gut after administration and hepatically to active metabolites (including N-desmethyltrifluoperazine and 7-hydroxytrifluoperazine)",
-      "excretion": "Not applicable for this medication.",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "May be taken with food to reduce GI upset (practical guidance)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Schizophrenia: early effects may be noticed within 1 to 2 weeks; improvements can continue through 4 to 6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal symptoms (EPS)",
+          "incidence": "Frequency not defined (can be common with typical antipsychotics)",
+          "notes": "EPS can look like restlessness, stiffness, tremor, or muscle spasms. This is not a ‘tough it out’ side effect—tell your prescriber early. Dose changes or add-on treatments can help, and catching it early lowers the chance of longer-term problems."
+        },
+        {
+          "effect": "Orthostatic hypotension / dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "You may feel woozy when standing up, especially early on. This matters because falls are a real risk—especially if you’re older, dehydrated, or on blood pressure meds."
+        },
+        {
+          "effect": "Sedation / CNS depression",
+          "incidence": "Frequency not defined",
+          "notes": "Sleepiness and slowed reaction time can happen. Until you know how you react, avoid driving or anything where ‘a little impaired’ becomes dangerous."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, urinary retention, blurred vision)",
+          "incidence": "Frequency not defined",
+          "notes": "This medication can cause classic anticholinergic side effects. Constipation and urinary retention can become serious—especially if you already have GI motility issues or prostate problems."
+        },
+        {
+          "effect": "Endocrine/metabolic effects (prolactin-related)",
+          "incidence": "Frequency not defined",
+          "notes": "Possible libido changes, menstrual changes, galactorrhea, gynecomastia. If symptoms show up, your clinician may check prolactin and consider switching or adjusting the plan."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, unstable blood pressure/heart rate. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Tardive dyskinesia: involuntary movements that can become persistent or irreversible; risk increases with duration and dose."
+        },
+        {
+          "risk": "Blood dyscrasias (including agranulocytosis, pancytopenia): can be fatal; stop and evaluate if significant abnormalities occur."
+        },
+        {
+          "risk": "Cardiac conduction changes/arrhythmias: rare but can be life-threatening; higher concern in cardiac disease or electrolyte issues."
+        },
+        {
+          "risk": "Cholestatic jaundice/hepatotoxicity: liver injury and jaundice have been reported; contraindicated in hepatic disease."
+        },
+        {
+          "risk": "Aspiration pneumonia risk: esophageal dysmotility/aspiration can occur, especially in older adults or those at risk for swallowing problems."
+        },
+        {
+          "risk": "Seizures: lowered seizure threshold can increase risk in vulnerable patients."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Across 17 placebo-controlled trials (about 10 weeks), the death rate was ~4.5% with antipsychotics vs ~2.6% with placebo (about 1.6 to 1.7 times higher). Most deaths appeared cardiovascular (eg, heart failure, sudden death) or infectious (eg, pneumonia).",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to trifluoperazine, phenothiazines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Comatose or severely CNS-depressed states due to CNS depressants"
+        },
+        {
+          "contraindication": "Bone marrow suppression or significant blood dyscrasias"
+        },
+        {
+          "contraindication": "Hepatic disease"
+        }
+      ],
+      "precautions": [
+        "Movement disorders (EPS): akathisia, dystonia, parkinsonism; risk rises with dose and in susceptible patients",
+        "Tardive dyskinesia: potentially irreversible abnormal movements, risk increases with longer exposure and higher doses",
+        "Neuroleptic malignant syndrome (NMS): rare but life-threatening (fever, rigidity, confusion, autonomic instability)",
+        "Blood dyscrasias: rare but serious (including agranulocytosis and pancytopenia); stop if significant abnormalities appear",
+        "Orthostatic hypotension and falls: especially in older adults",
+        "Cardiac conduction changes and arrhythmia risk: use caution in cardiovascular disease",
+        "Seizure threshold may be lowered: caution in seizure disorders or risk factors",
+        "Hepatic disease: contraindicated",
+        "Aspiration risk: esophageal dysmotility/aspiration pneumonia risk can increase with age"
+      ],
+      "interactions": [
+        {
+          "interactant": "CNS depressants (alcohol, benzodiazepines, opioids, sedating sleep meds, sedating antihistamines)",
+          "mechanism": "Additive sedation, impaired judgment, falls, respiratory compromise in vulnerable patients.",
+          "action": "Avoid mixing whenever possible. If a combination is clinically necessary, use the lowest effective doses and reassess sedation and safety (especially driving and fall risk)."
+        },
+        {
+          "interactant": "Medications that prolong QT or increase arrhythmia risk",
+          "mechanism": "Potentially higher risk of abnormal heart rhythms, especially with electrolyte abnormalities or underlying cardiac disease.",
+          "action": "Review the full med list for QT risk. Consider baseline ECG and electrolyte checks in higher-risk patients."
+        },
+        {
+          "interactant": "Anticholinergic medications (some antidepressants, bladder meds, diphenhydramine, etc.)",
+          "mechanism": "Worsened constipation, urinary retention, blurred vision, confusion, temperature regulation problems.",
+          "action": "Use caution and simplify the anticholinergic load when possible; monitor bowel and bladder function."
+        },
+        {
+          "interactant": "Dopamine-blocking meds (additional antipsychotics, metoclopramide, prochlorperazine)",
+          "mechanism": "Higher risk of EPS and tardive dyskinesia.",
+          "action": "Avoid stacking dopamine blockers unless a specialist has a clear reason and a tight monitoring plan."
+        },
+        {
+          "interactant": "Blood pressure medications",
+          "mechanism": "More dizziness and orthostatic hypotension, higher fall risk.",
+          "action": "Monitor blood pressure/orthostatics, especially during initiation and dose changes."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Adherence: every visit (this medication works best when taken consistently; missed doses can look like relapse or destabilization)."
+        },
+        {
+          "parameter": "Mental status and alertness: every visit; watch for oversedation, confusion, and functional impairment."
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (akathisia, dystonia, parkinsonism): every visit; reassess about 4 weeks after starting and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)."
+        },
+        {
+          "parameter": "Tardive dyskinesia: check every visit; use a formal rating scale at least annually (or every 6 months if high risk factors are present)."
+        },
+        {
+          "parameter": "Fall risk: assess as clinically indicated; be extra proactive in patients ≥60 years and those with orthostasis or sedation."
+        },
+        {
+          "parameter": "Vital signs: blood pressure (including orthostatics), pulse, temperature; assess as clinically indicated, especially during initiation and dose changes."
+        },
+        {
+          "parameter": "Metabolic monitoring: fasting glucose/HbA1c at ~4 months after initiation and annually; lipid panel at ~4 months and annually; weight/height/BMI every visit for the first 6 months then quarterly; consider waist circumference at baseline and annually."
+        },
+        {
+          "parameter": "Electrolytes/renal function/liver function/TSH: as clinically indicated, especially if symptoms suggest adverse effects or comorbidities increase risk."
+        },
+        {
+          "parameter": "CBC: as clinically indicated; check more frequently in the first few months if preexisting low WBC or history of drug-induced leukopenia/neutropenia; discontinue if significant blood dyscrasias or if ANC drops severely."
+        },
+        {
+          "parameter": "Prolactin: ask about symptoms every visit until dose is stable; check a level if symptoms occur (menstrual changes, libido changes, gynecomastia, galactorrhea, sexual dysfunction)."
+        },
+        {
+          "parameter": "Infection vigilance: older adults and those with aspiration risk should be monitored carefully for pneumonia symptoms."
+        },
+        {
+          "parameter": "Ocular effects: ocular exam as clinically indicated, especially with prolonged therapy or visual symptoms."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Antipsychotic exposure in the third trimester can be associated with extrapyramidal and/or withdrawal symptoms in newborns after delivery. Reported newborn symptoms include agitation, feeding problems, abnormal muscle tone (hypertonia or hypotonia), respiratory distress, sleepiness, and tremor; these can be self-limiting or require hospitalization. Animal reproduction studies have not shown adverse events except at doses that were also toxic to the mother. Use only if benefits outweigh risks and with a plan for newborn monitoring when exposure occurs late in pregnancy.",
+        "lactation": "Trifluoperazine is excreted in breast milk and has been measurable in nursing infant serum in limited reports. Infants should be monitored for adverse effects (sedation, feeding issues, abnormal movements). The manufacturer recommends deciding whether to discontinue nursing or discontinue the drug, considering the importance of treatment to the mother.",
+        "pediatric": "Use has largely been replaced by newer agents. If used for schizophrenia, dosing must be individualized, using the lowest effective dose and shortest effective duration with periodic reassessment. Children and adolescents have higher risk of acute dystonic reactions and other EPS, and tapering is recommended when discontinuing to reduce withdrawal and relapse risk.",
+        "geriatric": "Avoid use for behavioral problems associated with dementia or delirium unless nonpharmacologic approaches have failed and there is a risk of harm to self or others. Antipsychotics in older adults are associated with increased risk of stroke, cognitive decline, and mortality in dementia. If used for appropriate indications (like schizophrenia), lower doses are often sufficient in late-onset psychosis; titrate slowly and monitor carefully for orthostasis, falls, EPS, sedation, and hyponatremia/SIADH.",
+        "renal_impairment": "No manufacturer-provided dosage adjustment guidance for kidney impairment. Dialysis: reported as not dialyzable (0% to 5%).",
+        "hepatic_impairment": "Contraindicated in hepatic disease. Manufacturer labeling does not provide a dosing adjustment framework; practical approach is avoidance in hepatic disease as listed in contraindications."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1959
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with measurable serum peak",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "1.5 to 6 hours",
+          "half_life": "3 to 12 hours",
+          "metabolism": "Metabolized in the gut after administration and hepatically to active metabolites (including N-desmethyltrifluoperazine and 7-hydroxytrifluoperazine)",
+          "excretion": "Not applicable for this medication.",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "May be taken with food to reduce GI upset (practical guidance)"
+        },
+        "dosing": {
+          "titration": "Trifluoperazine dosing depends on the psychiatric indication. For schizophrenia, dosing usually starts low and is adjusted every few days based on response and side effects (especially akathisia and parkinsonism). For anxiety, it has labeled dosing, but it’s rarely a modern first-choice option because safer anxiety treatments exist."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "For chronic psychiatric illness, many clinicians aim to switch antipsychotics rather than abruptly stop—especially in schizophrenia where relapse risk can be high. If stopping is the plan (or a patient insists), taper gradually over weeks to months when clinically safe to do so. A slow taper helps catch early relapse signs and can reduce withdrawal-like reactions."
+        }
+      }
     }
   },
   "sections": [
@@ -97,7 +257,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People’s experiences can be wildly different, but these themes come up a lot with trifluoperazine:",
       "items": [
         {
           "category": "Quieter psychosis (days to weeks)",
@@ -141,7 +300,8 @@
           ],
           "note": "The goal is always the lowest effective dose and regular movement monitoring to reduce long-term risk."
         }
-      ]
+      ],
+      "intro": "People’s experiences can be wildly different, but these themes come up a lot with trifluoperazine:"
     },
     {
       "type": "onset_duration",
@@ -158,10 +318,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For schizophrenia, trifluoperazine can reduce psychotic symptoms over time, with early changes sometimes noticed within the first 1 to 2 weeks and continued improvement over 4 to 6 weeks. The practical reality: response is individual, and tolerability often drives whether someone can stay on it long enough to benefit.",
       "metric": "Clinical response timeline (schizophrenia)",
       "value": "Initial effects may appear within 1 to 2 weeks",
       "comparison": "Not applicable for this medication.",
-      "text": "For schizophrenia, trifluoperazine can reduce psychotic symptoms over time, with early changes sometimes noticed within the first 1 to 2 weeks and continued improvement over 4 to 6 weeks. The practical reality: response is individual, and tolerability often drives whether someone can stay on it long enough to benefit.",
       "clinical_details": "Some clinicians prefer second-generation antipsychotics first because they may be less likely to cause extrapyramidal symptoms, but efficacy differences across individuals are not consistent enough to make this a one-size-fits-all decision. If trifluoperazine is used, dosing is typically adjusted gradually while watching closely for akathisia, anticholinergic effects, and parkinsonism.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -253,7 +413,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Trifluoperazine interactions are mostly about additive sedation, blood pressure effects, heart rhythm risk, and medications that worsen movement side effects. It’s also a UGT1A4 substrate, so interaction risk can exist depending on what else you take.",
       "items": [
         {
           "with": "CNS depressants (alcohol, benzodiazepines, opioids, sedating sleep meds, sedating antihistamines)",
@@ -280,7 +439,8 @@
           "risk": "More dizziness and orthostatic hypotension, higher fall risk.",
           "action": "Monitor blood pressure/orthostatics, especially during initiation and dose changes."
         }
-      ]
+      ],
+      "intro": "Trifluoperazine interactions are mostly about additive sedation, blood pressure effects, heart rhythm risk, and medications that worsen movement side effects. It’s also a UGT1A4 substrate, so interaction risk can exist depending on what else you take."
     },
     {
       "type": "tapering",
@@ -355,21 +515,6 @@
       "text": "Trifluoperazine is a typical antipsychotic option for schizophrenia, but many clinicians start with second-generation antipsychotics because they may be less likely to cause EPS. Trifluoperazine can still have a role when a patient has a history of response, when alternatives aren’t tolerated, or when a specialist judges the benefit-risk fit to be favorable. For anxiety, even though it’s a labeled use, it’s generally not the first-choice medication today because the long-term risks—especially tardive dyskinesia—are not worth it when safer anxiety treatments exist."
     }
   ],
-  "seo": {
-    "title": "Trifluoperazine (Stelazine): Uses, Dosing, Side Effects & Safety",
-    "description": "Trifluoperazine (Stelazine) is a first-generation antipsychotic used for schizophrenia. Learn dosing ranges, how long it takes to work, EPS/tardive dyskinesia risks, boxed warning in dementia, and monitoring tips.",
-    "canonical": "[https://www.heypsych.com/treatments/trifluoperazine-stelazine](https://www.heypsych.com/treatments/trifluoperazine-stelazine)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is trifluoperazine used for?",
@@ -415,5 +560,20 @@
       "q": "Is trifluoperazine contraindicated in liver disease?",
       "a": "Yes. Use is contraindicated in hepatic disease. If there are liver concerns, clinicians typically choose an alternative antipsychotic plan that better fits hepatic safety."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Trifluoperazine (Stelazine): Uses, Dosing, Side Effects & Safety",
+    "description": "Trifluoperazine (Stelazine) is a first-generation antipsychotic used for schizophrenia. Learn dosing ranges, how long it takes to work, EPS/tardive dyskinesia risks, boxed warning in dementia, and monitoring tips.",
+    "canonical": "[https://www.heypsych.com/treatments/trifluoperazine-stelazine](https://www.heypsych.com/treatments/trifluoperazine-stelazine)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

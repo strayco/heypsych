@@ -1,96 +1,269 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "topiramate-topamax",
-  "type": "medication",
-  "name": "Topiramate (Topamax)",
-  "summary": "A brain-calming antiseizure medication that’s also used in psychiatry off-label for alcohol cravings, binge eating, and antipsychotic-related weight gain. It’s effective for some people, but “brain fog,” tingling, and metabolic side effects are real and need monitoring.",
-  "description": "Topiramate is best known as a seizure and migraine prevention medication, but in psychiatry it’s used off-label to reduce alcohol cravings, decrease binge eating, and sometimes help with antipsychotic-related weight gain. The upside is it can lower urge-driven behavior and appetite for some people. The tradeoffs: cognitive slowing (“word-finding problems”), tingling, appetite suppression/weight loss, and a risk of metabolic acidosis and kidney stones. It must be titrated slowly, and you shouldn’t stop it abruptly.",
-  "patient_summary": "Topiramate can help some people drink less, binge less, and gain less weight on certain psychiatric meds. But it can also make you feel foggy, tired, or “not as sharp,” and it can cause tingling and appetite loss. It needs a slow ramp-up, hydration matters, and labs (especially bicarbonate) are important. If you ever get sudden blurry vision/eye pain, severe confusion, or symptoms of acidosis, that’s urgent.",
-  "category": "medications/substance-use-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Antiseizure Agent",
-      "Carbonic Anhydrase Inhibitor (Weak)",
-      "Glutamate Modulator",
-      "GABAergic Modulator"
-    ],
+  "identity": {
+    "slug": "topiramate-topamax",
+    "name": "Topiramate (Topamax)",
+    "generic_name": "topiramate",
     "brand_names": [
       "Topamax",
       "Topamax Sprinkle",
       "Trokendi XR",
       "Qudexy XR",
       "Eprontia"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 1996,
-    "pharmacologic_category": "Antiseizure Agent, Miscellaneous",
-    "published_date": "2026-01-24T00:00:00Z",
-    "last_updated": "2026-01-24T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-24T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Alcohol Use Disorder (moderate to severe) (off-label)",
-      "Binge Eating Disorder (off-label)",
-      "Antipsychotic-Induced Weight Gain (off-label)",
-      "Cocaine Use Disorder (off-label)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alcohol-use-disorder",
-        "relationship": "off_label",
-        "context": "Used off-label to reduce cravings and heavy drinking days. Slow titration matters. If it’s not helping after a real trial (often 4 to 6 months), many clinicians switch strategies rather than pushing dose endlessly."
-      },
-      {
-        "slug": "binge-eating-disorder",
-        "relationship": "off_label",
-        "context": "Used off-label as an alternative option when binge eating is driven by cravings/impulses and other treatments aren’t enough or aren’t tolerated. Can reduce binge frequency for some people, but watch cognition and mood."
-      },
-      {
-        "slug": "antipsychotic-induced-weight-gain",
-        "relationship": "off_label",
-        "context": "Sometimes added to help limit weight gain on antipsychotics (alongside lifestyle changes and medication adjustments). Not a magic fix—benefits are modest for many, and side effects can be limiting."
-      },
-      {
-        "slug": "cocaine-use-disorder",
-        "relationship": "off_label",
-        "context": "Studied off-label for cravings/relapse prevention, sometimes alone or alongside other treatments. Response is mixed, and tolerability often determines whether people can stay on it."
-      }
-    ],
-    "contraindications": [
-      "Trokendi XR only: Recent alcohol use (within 6 hours before and 6 hours after dosing) due to dose dumping risk",
-      "Qudexy XR only: Metabolic acidosis with concomitant metformin use",
-      "Canadian labeling (migraine prophylaxis only): Pregnancy or patients of childbearing potential not using effective contraception",
-      "Hypersensitivity to topiramate or any component (Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful reduction in cravings/impulse-driven symptoms",
-      "percentage_value": "Varies widely",
-      "comparison_data": "Some patients respond strongly; others stop due to side effects or minimal benefit",
-      "patient_text": "Topiramate is one of those meds where the right person can feel a real change in cravings and impulse-driven behavior—but it’s not universal. A slow titration and a clear goal (drink less, binge less, stabilize weight) help you judge whether it’s worth staying on.",
-      "citation_tag": "FDA Labels + Clinical Literature (mixed outcomes)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/substance-use-disorders",
+    "drug_classes": [
+      "Antiseizure Agent",
+      "Carbonic Anhydrase Inhibitor (Weak)",
+      "Glutamate Modulator",
+      "GABAergic Modulator"
+    ]
+  },
+  "summary": "A brain-calming antiseizure medication that’s also used in psychiatry off-label for alcohol cravings, binge eating, and antipsychotic-related weight gain. It’s effective for some people, but “brain fog,” tingling, and metabolic side effects are real and need monitoring.",
+  "description": "Topiramate is best known as a seizure and migraine prevention medication, but in psychiatry it’s used off-label to reduce alcohol cravings, decrease binge eating, and sometimes help with antipsychotic-related weight gain. The upside is it can lower urge-driven behavior and appetite for some people. The tradeoffs: cognitive slowing (“word-finding problems”), tingling, appetite suppression/weight loss, and a risk of metabolic acidosis and kidney stones. It must be titrated slowly, and you shouldn’t stop it abruptly.",
+  "patient_summary": "Topiramate can help some people drink less, binge less, and gain less weight on certain psychiatric meds. But it can also make you feel foggy, tired, or “not as sharp,” and it can cause tingling and appetite loss. It needs a slow ramp-up, hydration matters, and labs (especially bicarbonate) are important. If you ever get sudden blurry vision/eye pain, severe confusion, or symptoms of acidosis, that’s urgent.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alcohol-use-disorder-moderate-to-severe-off-label",
+          "condition_name": "Alcohol Use Disorder (moderate to severe) (off-label)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "binge-eating-disorder-off-label",
+          "condition_name": "Binge Eating Disorder (off-label)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "antipsychotic-induced-weight-gain-off-label",
+          "condition_name": "Antipsychotic-Induced Weight Gain (off-label)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cocaine-use-disorder-off-label",
+          "condition_name": "Cocaine Use Disorder (off-label)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "alcohol-use-disorder",
+          "condition_name": "Alcohol Use Disorder",
+          "relationship": "off_label",
+          "context": "Used off-label to reduce cravings and heavy drinking days. Slow titration matters. If it’s not helping after a real trial (often 4 to 6 months), many clinicians switch strategies rather than pushing dose endlessly."
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge Eating Disorder",
+          "relationship": "off_label",
+          "context": "Used off-label as an alternative option when binge eating is driven by cravings/impulses and other treatments aren’t enough or aren’t tolerated. Can reduce binge frequency for some people, but watch cognition and mood."
+        },
+        {
+          "condition_slug": "antipsychotic-induced-weight-gain",
+          "condition_name": "Antipsychotic Induced Weight Gain",
+          "relationship": "off_label",
+          "context": "Sometimes added to help limit weight gain on antipsychotics (alongside lifestyle changes and medication adjustments). Not a magic fix—benefits are modest for many, and side effects can be limiting."
+        },
+        {
+          "condition_slug": "cocaine-use-disorder",
+          "condition_name": "Cocaine Use Disorder",
+          "relationship": "off_label",
+          "context": "Studied off-label for cravings/relapse prevention, sometimes alone or alongside other treatments. Response is mixed, and tolerability often determines whether people can stay on it."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Good absorption; immediate-release generally not affected by food",
-      "bioavailability": "~80% (immediate release)",
-      "onset": "Side effects can show up early; behavioral benefits often build over weeks",
-      "peak_plasma": "Immediate release tablets ~2 hours; oral solution ~0.5 hours",
-      "half_life": "Adults: ~19 to 23 hours (mean ~21 hours); longer with renal impairment",
-      "duration_IR": "Typically dosed twice daily for smoother coverage",
-      "duration_XR": "Once-daily dosing for extended-release products",
-      "metabolism": "Not extensively metabolized; minor hepatic metabolism (hydroxylation, hydrolysis, glucuronidation)",
-      "excretion": "Urine (~70% as unchanged drug); renal clearance is a big deal",
-      "protein_binding": "15% to 41% (inversely related to concentration)",
-      "food_effect": "High-fat meals can change XR peak timing and peak levels depending on product"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Side effects can show up early; behavioral benefits often build over weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Paresthesia (tingling/numbness)",
+          "incidence": "Common (often dose-related)",
+          "notes": "This can feel alarming the first time it happens, but it’s a known effect. It often fades over 2 to 3 months. If it’s severe or persistent, dose changes may help."
+        },
+        {
+          "effect": "Cognitive slowing / word-finding difficulty",
+          "incidence": "Common (can occur even at ≤100 mg/day in some people)",
+          "notes": "People describe it as brain fog, slower processing, or ‘I can’t find words.’ It can impact work/school. Slow titration helps, but for some, this is the reason to stop."
+        },
+        {
+          "effect": "Sedation, fatigue, dizziness",
+          "incidence": "Common (dose-related)",
+          "notes": "Often shows up early or after dose increases. If you feel unsafe driving or functioning, that’s a sign the dose is too fast or too high."
+        },
+        {
+          "effect": "Appetite loss / weight loss",
+          "incidence": "Common (varies by person)",
+          "notes": "For some psychiatric uses, this is part of the goal. But weight loss can become excessive, and topiramate can also worsen or trigger disordered eating patterns in vulnerable people."
+        },
+        {
+          "effect": "Mood changes (anxiety, depression, irritability)",
+          "incidence": "Less common but important",
+          "notes": "If mood gets worse after starting or increasing the dose, don’t push through it. Let your clinician know—slower titration, lower dose, or stopping may be necessary."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Metabolic acidosis: can cause fatigue, rapid breathing, confusion; long-term risk includes kidney stones and bone issues"
+        },
+        {
+          "risk": "Kidney stones (nephrolithiasis): flank pain, blood in urine, severe abdominal/back pain"
+        },
+        {
+          "risk": "Ocular emergency (acute myopia/angle-closure glaucoma): eye pain, sudden blurry vision, halos—urgent evaluation"
+        },
+        {
+          "risk": "Hyperammonemic encephalopathy (especially with valproate): lethargy, vomiting, confusion—urgent evaluation"
+        },
+        {
+          "risk": "Severe mood or behavioral changes: agitation, aggression, psychosis-like symptoms, suicidal thoughts—urgent evaluation and medication reassessment"
+        },
+        {
+          "risk": "Severe skin reactions (rare): Stevens-Johnson syndrome/toxic epidermal necrolysis—emergency"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Trokendi XR only: Recent alcohol use (within 6 hours before and 6 hours after dosing) due to dose dumping risk"
+        },
+        {
+          "contraindication": "Qudexy XR only: Metabolic acidosis with concomitant metformin use"
+        },
+        {
+          "contraindication": "Canadian labeling (migraine prophylaxis only): Pregnancy or patients of childbearing potential not using effective contraception"
+        },
+        {
+          "contraindication": "Hypersensitivity to topiramate or any component (Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "Cognitive effects: trouble with attention, memory, and word-finding can happen—even at lower doses in some people",
+        "Psychiatric effects: can worsen anxiety, depression, irritability, or rarely trigger agitation/psychosis-like symptoms, especially with rapid titration or vulnerable history",
+        "Metabolic acidosis: can be silent or show up as fatigue, rapid breathing, confusion, or feeling “off”; chronic acidosis increases kidney stone and bone risks",
+        "Kidney stones: risk is increased; hydration matters",
+        "Ocular emergency risk: acute myopia/secondary angle-closure glaucoma can happen (often early). Eye pain or sudden vision changes = emergency evaluation",
+        "Heat intolerance: decreased sweating and hyperthermia risk, especially in hot weather or during heavy exercise",
+        "Suicidal thoughts/behavior: antiseizure drugs have been associated with suicidality; monitor mood and thoughts closely, especially in the first weeks and after dose increases",
+        "Pregnancy: associated with increased risk of oral clefts and fetal growth concerns; avoid for migraine prevention in people trying to conceive"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol (Trokendi XR only)",
+          "mechanism": "Dose dumping risk with extended-release Trokendi XR, which can spike side effects and unpredictability.",
+          "action": "Avoid alcohol within 6 hours before and 6 hours after taking Trokendi XR."
+        },
+        {
+          "interactant": "Valproate",
+          "mechanism": "Increased risk of hyperammonemia and hyperammonemic encephalopathy (confusion, lethargy, vomiting).",
+          "action": "Use caution, monitor for mental status changes, and check ammonia if symptoms appear."
+        },
+        {
+          "interactant": "Metformin (Qudexy XR specific issue when metabolic acidosis is present)",
+          "mechanism": "Metabolic acidosis risk is a major concern; specific contraindication exists for Qudexy XR in patients with metabolic acidosis taking metformin.",
+          "action": "If metabolic acidosis is present and metformin is necessary, avoid Qudexy XR and reassess the regimen."
+        },
+        {
+          "interactant": "Hormonal contraception",
+          "mechanism": "May reduce contraceptive effectiveness and can change bleeding patterns; effect may be dose-related.",
+          "action": "Use reliable contraception and discuss backup methods. If bleeding changes or pregnancy risk is a concern, revisit the plan."
+        },
+        {
+          "interactant": "Other carbonic anhydrase inhibitors (eg, acetazolamide, zonisamide)",
+          "mechanism": "Higher risk of metabolic acidosis and kidney stones.",
+          "action": "Avoid the combo when possible; if used, monitor bicarbonate and kidney stone risk closely."
+        },
+        {
+          "interactant": "Enzyme-inducing antiseizure meds (eg, carbamazepine, phenytoin, phenobarbital)",
+          "mechanism": "Can increase topiramate clearance and reduce levels/effect; also complicates side effects and dosing stability.",
+          "action": "Dose adjustments may be needed; monitor response and tolerability carefully."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and suicidality: monitor for new/worsening depression, anxiety, agitation, or suicidal thoughts—especially in the first 1 to 12 weeks and after dose increases"
+        },
+        {
+          "parameter": "Cognition and function: attention, memory, processing speed, and word-finding; track real-world functioning (work/school, driving safety)"
+        },
+        {
+          "parameter": "Sedation and coordination: dizziness, drowsiness, gait/balance issues, falls risk (especially in older adults)"
+        },
+        {
+          "parameter": "Weight and eating patterns: weight loss may be intended, but monitor for excessive loss, rigid dieting, or eating-disorder symptoms"
+        },
+        {
+          "parameter": "Serum bicarbonate (baseline and periodically): screen for metabolic acidosis; consider more frequent checks with symptoms or risk factors"
+        },
+        {
+          "parameter": "Renal function: serum creatinine and kidney stone risk; encourage hydration and monitor for stone symptoms"
+        },
+        {
+          "parameter": "Hydration and heat intolerance: watch for decreased sweating and hyperthermia during heat exposure or exercise"
+        },
+        {
+          "parameter": "Eye symptoms: acute blurred vision, eye pain, halos—urgent evaluation for angle-closure glaucoma"
+        },
+        {
+          "parameter": "Ammonia level if unexplained lethargy, vomiting, or mental status changes—especially if combined with valproate"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Topiramate crosses the placenta and is associated with an increased risk of oral clefts and possible fetal growth concerns. For migraine prevention, it’s generally not recommended during pregnancy and is typically stopped prior to conception when possible. For seizure indications, risk/benefit is individualized because uncontrolled convulsive seizures can be dangerous for both parent and fetus. If pregnancy is possible, use effective contraception and have a clear plan before starting.",
+        "lactation": "Topiramate is present in breast milk and infant exposure can be meaningful in some cases. Breastfeeding may be possible depending on dose and the infant’s health, but monitor the infant for sedation, poor feeding, diarrhea, poor weight gain, and developmental progress. If the infant shows concerning symptoms, clinicians may consider checking infant drug levels and reassessing the feeding/medication plan.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Older adults are more sensitive to cognitive slowing, sedation, balance problems, and weight loss. Many older adults also have reduced kidney function, which can raise topiramate levels. A common approach is starting at 25 mg/day and increasing by 25 mg weekly as tolerated, with careful monitoring of cognition, falls risk, appetite/weight, and bicarbonate.",
+        "renal_impairment": "Kidney function is a major dosing driver. If CrCl is <70 mL/min/1.73 m2, typical guidance is to use ~50% of the usual dose and titrate more slowly. Hemodialysis removes topiramate significantly; supplemental dosing after dialysis may be needed under specialist guidance.",
+        "hepatic_impairment": "Clearance can be reduced in moderate to severe hepatic impairment. No routine dose reduction is required in mild to moderate impairment for most patients, but if cognitive or balance side effects emerge, clinicians may consider a dose reduction (up to ~30%) and slower titration with specialist input."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1996
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Good absorption; immediate-release generally not affected by food",
+          "bioavailability": "~80% (immediate release)",
+          "peak_plasma": "Immediate release tablets ~2 hours; oral solution ~0.5 hours",
+          "half_life": "Adults: ~19 to 23 hours (mean ~21 hours); longer with renal impairment",
+          "metabolism": "Not extensively metabolized; minor hepatic metabolism (hydroxylation, hydrolysis, glucuronidation)",
+          "excretion": "Urine (~70% as unchanged drug); renal clearance is a big deal",
+          "protein_binding": "15% to 41% (inversely related to concentration)",
+          "food_effect": "High-fat meals can change XR peak timing and peak levels depending on product"
+        },
+        "dosing": {
+          "titration": "In psychiatry, topiramate dosing is usually slow and deliberate. The goal is to find the lowest dose that helps cravings/impulses without causing brain fog or mood worsening. Total daily dose is the amount taken over 24 hours. Immediate-release is usually split into two doses daily; extended-release is usually once daily."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Don’t stop topiramate abruptly. Even if you’re taking it for psychiatric reasons, the safest approach is a gradual taper. Abrupt stopping can increase seizure risk and can also cause rebound symptoms (sleep disruption, anxiety, irritability) in some people."
+        }
+      }
     }
   },
   "sections": [
@@ -112,7 +285,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Topiramate has a very specific vibe. Some people love it because cravings quiet down. Others stop it because the side effects feel like walking through mental molasses. Here’s the most common range of experiences:",
       "items": [
         {
           "category": "Cravings Turn Down (weeks, not hours)",
@@ -158,7 +330,8 @@
           ],
           "note": "Topiramate can worsen depression/anxiety in some people, especially with rapid titration or prior mood vulnerability."
         }
-      ]
+      ],
+      "intro": "Topiramate has a very specific vibe. Some people love it because cravings quiet down. Others stop it because the side effects feel like walking through mental molasses. Here’s the most common range of experiences:"
     },
     {
       "type": "onset_duration",
@@ -175,10 +348,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In psychiatry, topiramate is most often used as a cravings/impulse modulator—especially for alcohol use disorder and binge eating. Some people get a clear reduction in urges and a drop in heavy use or binge frequency. Others don’t get enough benefit to justify the side effects. The biggest predictors of success are: slow titration, a clearly defined target outcome, and stopping if it’s not delivering after a fair trial.",
       "metric": "Reduction in cravings and urge-driven behavior",
       "value": "Meaningful for some people",
       "comparison": "Not consistent for everyone",
-      "text": "In psychiatry, topiramate is most often used as a cravings/impulse modulator—especially for alcohol use disorder and binge eating. Some people get a clear reduction in urges and a drop in heavy use or binge frequency. Others don’t get enough benefit to justify the side effects. The biggest predictors of success are: slow titration, a clearly defined target outcome, and stopping if it’s not delivering after a fair trial.",
       "clinical_details": "Topiramate’s psychiatric use is largely off-label and symptom-targeted. Clinicians usually judge efficacy by functional outcomes (fewer binge episodes, fewer heavy drinking days, improved control around triggers) rather than “felt calm.” Benefits often require weeks at a tolerable therapeutic dose, and dose increases are commonly limited by cognitive side effects.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -269,7 +442,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Topiramate interacts most dangerously through metabolic effects (acidosis/hyperammonemia) and by changing how other meds behave (especially some anticonvulsants and hormonal contraception).",
       "items": [
         {
           "with": "Alcohol (Trokendi XR only)",
@@ -301,7 +473,8 @@
           "risk": "Can increase topiramate clearance and reduce levels/effect; also complicates side effects and dosing stability.",
           "action": "Dose adjustments may be needed; monitor response and tolerability carefully."
         }
-      ]
+      ],
+      "intro": "Topiramate interacts most dangerously through metabolic effects (acidosis/hyperammonemia) and by changing how other meds behave (especially some anticonvulsants and hormonal contraception)."
     },
     {
       "type": "tapering",
@@ -384,21 +557,6 @@
       "text": "In psychiatry, topiramate is usually a symptom-targeted, off-label option—not a first-line universal choice. For alcohol use disorder, first-line options often include naltrexone or acamprosate alongside therapy; topiramate is a reasonable alternative when those aren’t effective, tolerated, or appropriate. For binge eating, therapy and first-line medication options (when appropriate) are often tried before topiramate; topiramate can be useful when cravings/impulses and weight dynamics are central, but clinicians watch closely for cognitive side effects and eating-disorder risk. For antipsychotic-induced weight gain, the foundation is still adjusting the antipsychotic plan when possible and pairing with behavioral support; topiramate is one possible add-on when weight gain threatens adherence or health, as long as cognition and mood remain stable."
     }
   ],
-  "seo": {
-    "title": "Topiramate (Topamax): Uses for Alcohol Cravings, Binge Eating & Weight Gain",
-    "description": "Topiramate (Topamax) in psychiatry: off-label uses for alcohol use disorder, binge eating, and antipsychotic-related weight gain—plus dosing, side effects (brain fog, tingling), metabolic acidosis, kidney stones, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/topiramate-topamax](https://www.heypsych.com/treatments/topiramate-topamax)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is topiramate used for in psychiatry?",
@@ -444,5 +602,20 @@
       "q": "How do I stop topiramate safely?",
       "a": "Don’t stop abruptly. A common taper is decreasing by 25 to 50 mg per week, adjusted to your dose and how long you’ve been on it. If you’re stopping because of serious side effects, you still need a plan—often with closer monitoring—rather than a sudden stop."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Topiramate (Topamax): Uses for Alcohol Cravings, Binge Eating & Weight Gain",
+    "description": "Topiramate (Topamax) in psychiatry: off-label uses for alcohol use disorder, binge eating, and antipsychotic-related weight gain—plus dosing, side effects (brain fog, tingling), metabolic acidosis, kidney stones, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/topiramate-topamax](https://www.heypsych.com/treatments/topiramate-topamax)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

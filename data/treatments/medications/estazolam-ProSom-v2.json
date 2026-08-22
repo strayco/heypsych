@@ -1,84 +1,248 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "estazolam-prosom",
-  "type": "medication",
-  "name": "Estazolam (ProSom)",
-  "summary": "Intermediate-acting benzodiazepine hypnotic for short-term insomnia. Helps with sleep onset and maintenance but carries dependence, withdrawal, and next-day impairment risks.",
-  "description": "Estazolam is a benzodiazepine used short term for insomnia when safer options haven’t worked. It can help you fall asleep faster and stay asleep longer, but it also brings baggage: next-day grogginess, falls (especially in older adults), and real dependence and withdrawal risks. Because it’s a Schedule IV controlled substance, it should be used at the lowest effective dose, for the shortest possible time, and always with a clear exit plan.",
-  "patient_summary": "Estazolam is a sleep medicine in the benzodiazepine family. You take it at bedtime to help you fall asleep and stay asleep. It can be very effective, but it also comes with downsides: next-day drowsiness, balance problems, and a real risk of dependence and withdrawal if you stay on it too long or stop suddenly. It’s best used as a short-term tool after you’ve tried non-medication options or safer sleep meds.",
-  "category": "medications/sleep-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "Sedative-Hypnotic"
-    ],
+  "identity": {
+    "slug": "estazolam-prosom",
+    "name": "Estazolam (ProSom)",
+    "generic_name": "estazolam",
     "brand_names": [
       "ProSom"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1990,
-    "pharmacologic_category": "Benzodiazepine Hypnotic, Intermediate-Acting",
-    "published_date": "2026-01-29T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q3045264"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset and sleep maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia-disorder",
-        "relationship": "primary_treatment",
-        "context": "Approved for short-term management of insomnia characterized by trouble falling asleep, frequent awakenings, or early morning awakenings when non-drug treatments or safer hypnotics are ineffective or not available."
-      },
-      {
-        "slug": "depressive-disorders",
-        "relationship": "caution",
-        "context": "Should generally be avoided in patients with depression or suicidal risk except in acute situations; benzodiazepines can worsen mood, disinhibit behavior, and complicate treatment."
-      },
-      {
-        "slug": "substance-use-disorders",
-        "relationship": "contraindicated_or_high_risk",
-        "context": "Benzodiazepines have substantial abuse, misuse, and dependence risk. Estazolam should typically be avoided in patients with current or past substance use disorders if alternative options exist."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to estazolam, other benzodiazepines, or any component of the formulation",
-      "Concurrent use with itraconazole or ketoconazole",
-      "Significant respiratory compromise (eg, severe COPD, severe sleep apnea) where respiratory depression risk is high",
-      "Acute narrow-angle glaucoma (class precaution)",
-      "Severe hepatic impairment or unstable medical illness where sedation could be dangerous"
-    ],
-    "efficacy_response": {
-      "metric": "Improvement in sleep onset and maintenance",
-      "percentage_value": "Clinically meaningful improvement in a substantial proportion of patients over short-term use",
-      "comparison_data": "As with other benzodiazepine hypnotics, estazolam improves sleep continuity versus placebo in the short term, but benefits taper with time as tolerance and dependence risks grow.",
-      "patient_text": "In practice, many people notice that they fall asleep faster and wake up less often when they start estazolam—but the effect can fade over time, and the longer you stay on it, the higher the risk of dependence and withdrawal.",
-      "citation_tag": "Class data for benzodiazepine hypnotics"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "Sedative-Hypnotic"
+    ]
+  },
+  "summary": "Intermediate-acting benzodiazepine hypnotic for short-term insomnia. Helps with sleep onset and maintenance but carries dependence, withdrawal, and next-day impairment risks.",
+  "description": "Estazolam is a benzodiazepine used short term for insomnia when safer options haven’t worked. It can help you fall asleep faster and stay asleep longer, but it also brings baggage: next-day grogginess, falls (especially in older adults), and real dependence and withdrawal risks. Because it’s a Schedule IV controlled substance, it should be used at the lowest effective dose, for the shortest possible time, and always with a clear exit plan.",
+  "patient_summary": "Estazolam is a sleep medicine in the benzodiazepine family. You take it at bedtime to help you fall asleep and stay asleep. It can be very effective, but it also comes with downsides: next-day drowsiness, balance problems, and a real risk of dependence and withdrawal if you stay on it too long or stop suddenly. It’s best used as a short-term tool after you’ve tried non-medication options or safer sleep meds.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia-disorder",
+          "condition_name": "Insomnia Disorder",
+          "relationship": "primary_indication",
+          "context": "Approved for short-term management of insomnia characterized by trouble falling asleep, frequent awakenings, or early morning awakenings when non-drug treatments or safer hypnotics are ineffective or not available.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depressive-disorders",
+          "condition_name": "Depressive Disorders",
+          "relationship": "secondary_indication",
+          "context": "Should generally be avoided in patients with depression or suicidal risk except in acute situations; benzodiazepines can worsen mood, disinhibit behavior, and complicate treatment."
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance Use Disorders",
+          "relationship": "secondary_indication",
+          "context": "Benzodiazepines have substantial abuse, misuse, and dependence risk. Estazolam should typically be avoided in patients with current or past substance use disorders if alternative options exist."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapidly absorbed after oral administration",
-      "bioavailability": "Not precisely defined clinically, but effectively absorbed for hypnotic effect",
-      "onset": "Typically within 30–60 minutes when taken at bedtime",
-      "peak_plasma": "Around 2 hours (range 0.5–6 hours)",
-      "half_life": "10–24 hours (intermediate-acting benzodiazepine range)",
-      "duration_IR": "Nighttime hypnotic effect generally covers a typical sleep period; next-day residual sedation is possible, especially at higher doses or in older adults",
-      "duration_XR": "Not applicable (no extended-release formulation)",
-      "metabolism": "Extensive hepatic metabolism to inactive metabolites (including 1-oxo-estazolam and 4-hydroxy-estazolam); metabolism to 4-hydroxy-estazolam is mediated by CYP3A4",
-      "excretion": "Primarily urine (>70% as inactive metabolites, <5% as unchanged drug); small amount in feces (~4%)",
-      "protein_binding": "Approximately 93%",
-      "food_effect": "Taking with or immediately after a meal can delay onset and may increase next-day residual effects; recommended to take on an empty stomach at bedtime"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Typically within 30–60 minutes when taken at bedtime"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "≈42%",
+          "notes": "Expect to feel sleepy after you take it—that’s the point. The problem is when that sleepiness lingers into the morning or afternoon. If you feel dangerously groggy, can’t safely drive, or are nodding off at work, the dose may be too high, or the medication may not be a good fit."
+        },
+        {
+          "effect": "Dizziness and Ataxia (Unsteadiness)",
+          "incidence": "Dizziness ≈7%; ataxia ≈4%",
+          "notes": "You may feel wobbly, off-balance, or like your body is moving slower than your brain. This is why getting up in the middle of the night to use the bathroom can be risky—especially if you’re older or have mobility issues."
+        },
+        {
+          "effect": "Hangover Effect",
+          "incidence": "≈3%",
+          "notes": "Many people describe feeling ‘hung over’—heavy, foggy, and slow—especially if they slept less than a full night, took a higher dose, or combined it with other sedatives."
+        },
+        {
+          "effect": "Cognitive and Mood Changes",
+          "incidence": "Abnormal thinking ≈2%; confusion ≈2%; anxiety ≥1%",
+          "notes": "Your thinking may feel dulled, your reaction time slower, and your memory fuzzier. Some people paradoxically feel more anxious or agitated rather than calmer—if that’s you, the medication may not be a good match."
+        },
+        {
+          "effect": "Motor Slowing and Muscle Symptoms",
+          "incidence": "Hypokinesia ≈8%; leg pain ≈3%; stiffness ≈1%",
+          "notes": "You may feel physically slowed or stiff, which can amplify fall and injury risk, especially at night and in older adults."
+        },
+        {
+          "effect": "Dry Mouth and GI Effects",
+          "incidence": "Constipation and dry mouth ≥1%",
+          "notes": "Constipation and dry mouth are annoying but common. Hydration, fiber, and, if needed, gentle bowel regimens can help—but if these are severe, talk with your prescriber."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe allergic reactions: Anaphylaxis, angioedema, Stevens–Johnson syndrome, and other severe rashes. Seek emergency care for swelling of the face/tongue, trouble breathing, or blistering rash."
+        },
+        {
+          "risk": "Respiratory depression: Slow or shallow breathing, especially when combined with opioids, alcohol, or other sedatives, or in people with sleep apnea or COPD."
+        },
+        {
+          "risk": "Seizures: Rare but serious, especially in the context of abrupt withdrawal after long-term or high-dose use."
+        },
+        {
+          "risk": "Severe psychiatric reactions: Hallucinations, hostility, paranoia, suicidal thoughts, agitation, or mania-like symptoms."
+        },
+        {
+          "risk": "Falls, fractures, and head injury: Particularly in older adults or anyone with gait instability or other fall risks."
+        },
+        {
+          "risk": "Blood dyscrasias: Rare reports of agranulocytosis and leukopenia; unexplained fevers, infections, or bruising should be evaluated promptly."
+        },
+        {
+          "risk": "Complex sleep behaviors: Sleep-driving, sleep-eating, or other activities performed while not fully awake with no memory afterward."
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined prescribing for patients in whom alternative treatment options are inadequate. Limit doses and duration to the minimum required and monitor closely for respiratory depression and sedation. Benzodiazepines, including estazolam, also carry boxed warnings for abuse, misuse, addiction, dependence, and withdrawal reactions.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to estazolam, other benzodiazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Concurrent use with itraconazole or ketoconazole"
+        },
+        {
+          "contraindication": "Significant respiratory compromise (eg, severe COPD, severe sleep apnea) where respiratory depression risk is high"
+        },
+        {
+          "contraindication": "Acute narrow-angle glaucoma (class precaution)"
+        },
+        {
+          "contraindication": "Severe hepatic impairment or unstable medical illness where sedation could be dangerous"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction: Benzodiazepines are commonly misused, often with alcohol or other drugs, which amplifies overdose risk. Assess risk before prescribing and throughout treatment.",
+        "Physical dependence and withdrawal: Continued use, especially at higher doses or for longer durations, can lead to dependence. Abrupt discontinuation may trigger acute, sometimes life-threatening withdrawal (seizures, severe anxiety, agitation). Always taper slowly.",
+        "CNS depression: Estazolam can significantly impair alertness, reaction time, and coordination. Driving, operating machinery, and fall risk are major concerns, especially in older adults.",
+        "Anterograde amnesia: Memory gaps for events after the dose can occur, especially at higher doses or when combined with alcohol or other sedatives.",
+        "Paradoxical reactions: Some patients develop agitation, irritability, aggression, or disinhibition rather than sedation—this is more common in older adults, people with substance use histories, or those with certain personality or psychiatric disorders.",
+        "Sleep-related behaviors: Activities like sleep-driving, sleep-cooking, or making phone calls while not fully awake, with no memory afterward, have been reported with benzodiazepines.",
+        "Respiratory disease: In people with COPD, sleep apnea, or other respiratory compromise, benzodiazepines can suppress breathing and worsen oxygenation.",
+        "Older adults: Strongly associated with falls, fractures, delirium, and cognitive decline in people 65 and older. Beers Criteria recommend avoiding benzodiazepines for insomnia in this age group.",
+        "Hypersensitivity: Rare but serious allergic reactions (anaphylaxis, angioedema, severe rash including Stevens–Johnson syndrome) have been reported. Do not rechallenge if this occurs."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (eg, oxycodone, hydrocodone, morphine, fentanyl)",
+          "mechanism": "US boxed warning: profound sedation, respiratory depression, coma, and death. Risk is especially high at initiation, dose increases, or when combined with other sedatives.",
+          "action": "Avoid whenever possible. If there is no alternative, use the lowest effective doses for the shortest duration and monitor closely for slowed breathing, extreme drowsiness, or unresponsiveness."
+        },
+        {
+          "interactant": "Alcohol and Other CNS Depressants (benzodiazepines, Z-drugs, barbiturates, sedating antihistamines, antipsychotics, gabapentinoids)",
+          "mechanism": "Additive or synergistic CNS depression and respiratory suppression, increasing accident and overdose risk.",
+          "action": "Counsel patients to avoid alcohol entirely while taking estazolam. Minimize co-prescribing of other sedatives and, if unavoidable, use the lowest effective doses with careful monitoring."
+        },
+        {
+          "interactant": "Azole Antifungals (itraconazole, ketoconazole)",
+          "mechanism": "Marked increase in estazolam exposure due to CYP3A4 inhibition, with significant oversedation and respiratory depression risk.",
+          "action": "Concurrent use with itraconazole or ketoconazole is contraindicated. Consider alternative antifungals or a different hypnotic not dependent on CYP3A4."
+        },
+        {
+          "interactant": "Other CYP3A4 Inhibitors (eg, certain macrolides, some HIV protease inhibitors)",
+          "mechanism": "Potential elevation of estazolam levels and prolonged sedation.",
+          "action": "If co-use is necessary, consider dose reduction and increased clinical monitoring. Choose non-CNS depressing alternatives when possible."
+        },
+        {
+          "interactant": "CYP3A4 Inducers (eg, certain anticonvulsants, rifampin)",
+          "mechanism": "Reduced estazolam levels and diminished hypnotic effect, possibly prompting unsafe dose escalation.",
+          "action": "Avoid if possible. If co-use is necessary, monitor for loss of effect but be cautious about increasing benzodiazepine dose due to dependence and withdrawal risk."
+        },
+        {
+          "interactant": "Grapefruit Juice",
+          "mechanism": "May increase benzodiazepine concentrations via CYP3A4 inhibition, potentially enhancing sedation and psychomotor impairment.",
+          "action": "Advise patients to limit or avoid grapefruit juice while taking estazolam."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Daytime alertness and psychomotor performance: Ask about morning grogginess, driving safety, and work/school functioning."
+        },
+        {
+          "parameter": "Fall risk: Monitor for dizziness, unsteadiness, and near-falls, especially in older adults or patients with balance issues."
+        },
+        {
+          "parameter": "Respiratory and cardiovascular status: In patients with COPD, sleep apnea, or cardiac disease, watch for worsened breathing, snoring, or nocturnal events."
+        },
+        {
+          "parameter": "Mental status and mood: Track for depression, anxiety changes, agitation, hallucinations, or paradoxical reactions."
+        },
+        {
+          "parameter": "Substance use and misuse: Screen for alcohol and substance use before and during treatment; watch for early refills, dose escalation, and doctor-shopping behaviors."
+        },
+        {
+          "parameter": "Dependence and withdrawal: Monitor for tolerance (needing more for same effect) and for withdrawal symptoms during attempts to reduce or stop."
+        },
+        {
+          "parameter": "CBC, electrolytes, and urinalysis: Consider periodic labs during prolonged use, particularly if there are systemic symptoms (fevers, bruising, infections)."
+        },
+        {
+          "parameter": "Sleep quality and underlying causes: Reassess sleep patterns and contributors (pain, mood, medical conditions) rather than simply continuing the hypnotic indefinitely."
+        },
+        {
+          "parameter": "Concomitant medications: Regularly review the full medication list for other sedatives, CYP3A4 inhibitors/inducers, and interacting agents."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Benzodiazepine exposure in pregnancy has been associated in some studies with congenital malformations (though data are mixed) and with neonatal sedation or withdrawal when used late in pregnancy. Infants may present with poor feeding, lethargy, hypotonia, respiratory depression, or withdrawal symptoms (tremor, irritability). For pregnant patients, nonpharmacologic insomnia treatments are preferred. If estazolam is considered, the decision should involve shared decision making, using the lowest effective dose for the shortest duration and close monitoring of both mother and fetus.",
+        "lactation": "It is not known whether estazolam is present in human breast milk, but other benzodiazepines have caused sedation, lethargy, and poor weight gain in exposed infants. Due to the long half-life of estazolam and potential accumulation in infants, breastfeeding is generally not recommended during treatment. If a patient and clinician decide to proceed, infant monitoring for sedation, feeding difficulties, and weight gain is essential.",
+        "pediatric": "Estazolam is not indicated in children or adolescents for insomnia. Paradoxical reactions, behavioral disinhibition, and misuse risk are greater in younger populations. Use nonpharmacologic sleep strategies and age-appropriate alternatives instead.",
+        "geriatric": "Older adults are highly sensitive to benzodiazepines. Estazolam increases the risk of falls, fractures, delirium, and cognitive impairment and is flagged as potentially inappropriate in Beers Criteria. When possible, avoid benzodiazepines for insomnia in adults ≥65. If used, doses should be very low, duration very short, and reassessment frequent.",
+        "renal_impairment": "Limited unchanged drug is excreted renally, so large dose adjustments are usually not necessary. However, comorbid conditions in kidney disease (anemia, frailty, polypharmacy) increase sedation and fall risk, so use cautiously.",
+        "hepatic_impairment": "Because estazolam is extensively metabolized by the liver, patients with hepatic impairment may have higher and more prolonged levels. Use with caution, start at the low end of the dosing range, and monitor closely for oversedation and cognitive changes."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1990
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapidly absorbed after oral administration",
+          "bioavailability": "Not precisely defined clinically, but effectively absorbed for hypnotic effect",
+          "peak_plasma": "Around 2 hours (range 0.5–6 hours)",
+          "half_life": "10–24 hours (intermediate-acting benzodiazepine range)",
+          "metabolism": "Extensive hepatic metabolism to inactive metabolites (including 1-oxo-estazolam and 4-hydroxy-estazolam); metabolism to 4-hydroxy-estazolam is mediated by CYP3A4",
+          "excretion": "Primarily urine (>70% as inactive metabolites, <5% as unchanged drug); small amount in feces (~4%)",
+          "protein_binding": "Approximately 93%",
+          "food_effect": "Taking with or immediately after a meal can delay onset and may increase next-day residual effects; recommended to take on an empty stomach at bedtime"
+        },
+        "dosing": {
+          "titration": "Estazolam is a bedtime-only medication. You take it once nightly, right before getting into bed, and ideally for the shortest duration possible."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping a benzodiazepine hypnotic is not ‘just quit and see what happens.’ Estazolam needs a slow, planned taper with sleep tools in place so you don’t rebound harder than when you started."
+        }
+      }
     }
   },
   "sections": [
@@ -99,7 +263,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Estazolam is basically a ‘sleep benzodiazepine.’ For many people it knocks them out; for others it’s a mixed bag of better sleep plus next-day fog.",
       "items": [
         {
           "category": "Falling Asleep",
@@ -144,7 +307,8 @@
           ],
           "note": "Benzodiazepines can cause paradoxical agitation, sleep-related behaviors (like ‘sleep activities’ you don’t recall), and memory gaps in some people."
         }
-      ]
+      ],
+      "intro": "Estazolam is basically a ‘sleep benzodiazepine.’ For many people it knocks them out; for others it’s a mixed bag of better sleep plus next-day fog."
     },
     {
       "type": "onset_duration",
@@ -161,10 +325,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Estazolam is generally effective at doing what benzodiazepine sleep meds do best: helping you fall asleep faster and wake up less during the night, at least in the short term. But like other meds in this class, the benefit tends to plateau and tolerance can creep in. Over time you may need higher doses for the same effect, which increases side effects and dependence risk.",
       "metric": "Sleep onset and total sleep time",
       "value": "Meaningful short-term improvement for many patients",
       "comparison": "Class effect: similar to other intermediate-acting benzodiazepine hypnotics; better than placebo for short-term insomnia but no advantage over safer modern options in most patients.",
-      "text": "Estazolam is generally effective at doing what benzodiazepine sleep meds do best: helping you fall asleep faster and wake up less during the night, at least in the short term. But like other meds in this class, the benefit tends to plateau and tolerance can creep in. Over time you may need higher doses for the same effect, which increases side effects and dependence risk.",
       "clinical_details": "Benzodiazepine hypnotics, including estazolam, consistently improve objective and subjective sleep measures (sleep latency, total sleep time, and number of awakenings) in short-term trials. However, long-term controlled data are limited; dependence, tolerance, and withdrawal are well documented at the class level. For chronic insomnia, guidelines increasingly prioritize nonpharmacologic treatments (such as CBT-I) and safer hypnotics over benzodiazepines.",
       "citation": {
         "authors": "Vinkers CH, Olivier B and others (class data)",
@@ -260,7 +424,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Estazolam is a CNS depressant and a CYP3A4 substrate. The big interaction themes are: more sedation, more breathing risk, and metabolic interactions that raise levels.",
       "items": [
         {
           "with": "Opioids (eg, oxycodone, hydrocodone, morphine, fentanyl)",
@@ -292,7 +455,8 @@
           "risk": "May increase benzodiazepine concentrations via CYP3A4 inhibition, potentially enhancing sedation and psychomotor impairment.",
           "action": "Advise patients to limit or avoid grapefruit juice while taking estazolam."
         }
-      ]
+      ],
+      "intro": "Estazolam is a CNS depressant and a CYP3A4 substrate. The big interaction themes are: more sedation, more breathing risk, and metabolic interactions that raise levels."
     },
     {
       "type": "tapering",
@@ -405,21 +569,50 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Estazolam (ProSom): Uses, Dosing, Side Effects, and Safe Tapering",
-    "description": "Estazolam (ProSom) is a benzodiazepine sleep medication for short-term insomnia. Learn how it works, bedtime dosing, next-day drowsiness, dependence and withdrawal risks, interactions with opioids and alcohol, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/estazolam-prosom](https://www.heypsych.com/treatments/estazolam-prosom)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Medication Guide for Estazolam",
+      "url": "[https://www.fda.gov/media/86297/download](https://www.fda.gov/media/86297/download)",
+      "description": "Official patient-friendly guide outlining risks, safe use, and boxed warnings for estazolam."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Beers Criteria for Potentially Inappropriate Medication Use in Older Adults (AGS 2023)",
+      "url": "[https://www.americangeriatrics.org](https://www.americangeriatrics.org)",
+      "description": "Guidance highlighting benzodiazepines, including estazolam, as high-risk in older adults."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "British Association for Psychopharmacology: Insomnia and Sleep Disorders Guidelines",
+      "url": "[https://www.bap.org.uk](https://www.bap.org.uk)",
+      "description": "Evidence-based recommendations on when and how to use hypnotics, including benzodiazepines."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "Wilson et al. (BAP 2019) – Management of Insomnia and Benzodiazepine Withdrawal",
+      "url": "[https://www.bap.org.uk/articles/insomnia-and-benzodiazepine-withdrawal](https://www.bap.org.uk/articles/insomnia-and-benzodiazepine-withdrawal)",
+      "description": "Discussion of benzodiazepine tolerance, withdrawal, and taper strategies for sleep meds."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "Vinkers & Olivier (2012) – Mechanisms of Benzodiazepine Action",
+      "url": "[https://pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov)",
+      "description": "Review of benzodiazepine receptor pharmacology and clinical implications."
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "National Pregnancy Registry for Psychiatric Medications",
+      "url": "[https://womensmentalhealth.org/research/pregnancyregistry/psychiatric-medications/](https://womensmentalhealth.org/research/pregnancyregistry/psychiatric-medications/)",
+      "description": "Registry for monitoring pregnancy outcomes after exposure to psychotropic medications, including benzodiazepines."
+    }
+  ],
   "faqs": [
     {
       "q": "What is estazolam used for?",
@@ -465,5 +658,20 @@
       "q": "How do I know if estazolam is still worth taking?",
       "a": "A good rule of thumb: if your sleep is only marginally better, but your days are clearly worse (groggy, off-balance, forgetful), or you feel fearful of sleeping without the pill, it may be time to rethink the plan. For some people, estazolam is a helpful short-term bridge. For others, it quietly becomes part of the problem. Regular check-ins with your prescriber about sleep quality, mood, daytime functioning, and dependence are key."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Estazolam (ProSom): Uses, Dosing, Side Effects, and Safe Tapering",
+    "description": "Estazolam (ProSom) is a benzodiazepine sleep medication for short-term insomnia. Learn how it works, bedtime dosing, next-day drowsiness, dependence and withdrawal risks, interactions with opioids and alcohol, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/estazolam-prosom](https://www.heypsych.com/treatments/estazolam-prosom)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

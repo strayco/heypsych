@@ -1,80 +1,171 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "prolonged-exposure-therapy",
-  "type": "therapy",
-  "name": "Prolonged Exposure Therapy (PE)",
-  "summary": "Prolonged Exposure Therapy is a structured, evidence-based cognitive-behavioral treatment designed to help individuals confront and process trauma-related memories, feelings, and situations to reduce PTSD symptoms.",
-  "description": "Prolonged Exposure Therapy (PE) is a form of cognitive-behavioral therapy (CBT) developed by Dr. Edna Foa for the treatment of post-traumatic stress disorder (PTSD). The therapy involves repeatedly revisiting trauma memories (imaginal exposure) and gradually approaching safe but trauma-related reminders (in vivo exposure). Through repeated, guided exposure, patients process the traumatic event, reduce avoidance behaviors, and decrease distress associated with trauma cues. PE is considered a gold-standard treatment for PTSD and has strong empirical support across populations, including veterans, survivors of assault, and individuals exposed to accidents or disasters.",
-  "category": "therapy/trauma-focused",
-  "tags": [
-    "prolonged exposure",
-    "exposure therapy",
-    "PTSD",
-    "trauma therapy",
-    "cognitive behavioral therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "prolonged-exposure-therapy",
+    "name": "Prolonged Exposure Therapy (PE)",
+    "generic_name": "prolonged exposure therapy",
+    "brand_names": [
+      "PE"
+    ],
+    "wikidata_qid": "Q864693"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/trauma-focused",
     "intervention_types": [
       "Cognitive-behavioral therapy",
       "Exposure therapy"
     ],
-    "treatment_types": [
-      "Trauma-focused therapy"
-    ],
-    "categories": [
-      "Trauma therapy",
-      "Evidence-based therapy"
-    ],
-    "delivery_methods": [
-      "In-person therapy",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–15 sessions, typically weekly"
-    ],
-    "specialty_areas": [
-      "Post-traumatic stress disorder",
-      "Trauma recovery",
-      "Anxiety disorders"
-    ],
-    "wikidata_qid": "Q864693"
+    "tags": [
+      "prolonged exposure",
+      "exposure therapy",
+      "PTSD",
+      "trauma therapy",
+      "cognitive behavioral therapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-Traumatic Stress Disorder (PTSD)"
-    ],
-    "conditions_treated": [
-      "Post-Traumatic Stress Disorder",
-      "Trauma-related anxiety",
-      "Acute Stress Disorder"
-    ],
-    "off_label_uses": [
-      "Obsessive-compulsive disorder",
-      "Panic disorder",
-      "Social anxiety disorder"
-    ],
-    "contraindications": [
-      "Severe dissociation",
-      "Uncontrolled psychosis",
-      "Severe suicidality without stabilization"
-    ],
-    "safety_profile": "Generally safe but emotionally challenging; distress may temporarily increase before improvements occur.",
-    "evidence_level": "Strong—recognized as a gold-standard evidence-based therapy for PTSD.",
-    "research_support": "PE has been validated in numerous randomized controlled trials, showing significant reduction in PTSD symptoms and comorbid depression/anxiety.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 5,
-      "trauma-related-anxiety": 4,
-      "depression-comorbid": 4
+  "summary": "Prolonged Exposure Therapy is a structured, evidence-based cognitive-behavioral treatment designed to help individuals confront and process trauma-related memories, feelings, and situations to reduce PTSD symptoms.",
+  "description": "Prolonged Exposure Therapy (PE) is a form of cognitive-behavioral therapy (CBT) developed by Dr. Edna Foa for the treatment of post-traumatic stress disorder (PTSD). The therapy involves repeatedly revisiting trauma memories (imaginal exposure) and gradually approaching safe but trauma-related reminders (in vivo exposure). Through repeated, guided exposure, patients process the traumatic event, reduce avoidance behaviors, and decrease distress associated with trauma cues. PE is considered a gold-standard treatment for PTSD and has strong empirical support across populations, including veterans, survivors of assault, and individuals exposed to accidents or disasters.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-Traumatic Stress Disorder (PTSD)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-Traumatic Stress Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-anxiety",
+          "condition_name": "Trauma-related anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "acute-stress-disorder",
+          "condition_name": "Acute Stress Disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social anxiety disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—recognized as a gold-standard evidence-based therapy for PTSD.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 5
+        },
+        "trauma-related-anxiety": {
+          "rating": 4
+        },
+        "depression-comorbid": {
+          "rating": 4
+        }
+      },
+      "research_support": "PE has been validated in numerous randomized controlled trials, showing significant reduction in PTSD symptoms and comorbid depression/anxiety."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–15 sessions, typically weekly"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person therapy",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe but emotionally challenging; distress may temporarily increase before improvements occur.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort"
+        },
+        {
+          "effect": "Temporary increase in anxiety or distress"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout due to distress"
+        },
+        {
+          "risk": "Re-traumatization if improperly delivered"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "High suicide risk",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dissociative symptoms",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unstable substance use disorder",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Trauma-focused therapy",
+        "key_techniques": [
+          "Trauma therapy",
+          "Evidence-based therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of homework, monitoring distress levels.",
+          "during_session": "Engagement in imaginal exposure or in vivo exposure planning and processing.",
+          "post_session": "Reflection on experience, assignment of exposure-based homework."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed mental health professionals trained in PE"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -219,6 +310,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Foa, E. B., Hembree, E. A., & Rothbaum, B. O. (2007). Prolonged Exposure Therapy for PTSD: Emotional Processing of Traumatic Experiences Therapist Guide.",
+      "url": "https://www.apa.org/pubs/books/4317328"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "U.S. Department of Veterans Affairs – Prolonged Exposure Therapy",
+      "url": "https://www.ptsd.va.gov/professional/treat/txessentials/prolonged_exposure.asp"
+    }
+  ],
   "seo": {
     "title": "Prolonged Exposure Therapy (PE) | Evidence-Based PTSD Treatment",
     "description": "Prolonged Exposure Therapy (PE) is a gold-standard cognitive-behavioral treatment for PTSD that helps patients process trauma memories and reduce avoidance, with strong evidence of effectiveness.",
@@ -231,5 +336,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—recognized as a gold-standard evidence-based therapy for PTSD."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—recognized as a gold-standard evidence-based therapy for PTSD."
+    ]
   }
 }

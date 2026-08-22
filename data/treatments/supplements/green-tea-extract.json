@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "green-tea-extract",
-  "type": "supplement",
-  "name": "Green Tea Extract",
-  "summary": "Green tea extract, rich in catechins such as EGCG, is studied for its antioxidant, metabolic, and neuroprotective properties, with potential benefits in mood, cognition, and weight regulation.",
-  "description": "Green tea extract is derived from the leaves of Camellia sinensis and contains concentrated polyphenols, particularly epigallocatechin gallate (EGCG). These bioactive compounds exert strong antioxidant and anti-inflammatory effects, modulate neurotransmitter activity, and improve metabolic function. Green tea extract has been investigated for its potential in supporting cognitive health, reducing stress and anxiety, and promoting weight management. It is commonly used in integrative and preventive medicine for its cardiometabolic and neuroprotective benefits.",
-  "category": "supplements",
-  "tags": [
-    "antioxidant",
-    "neuroprotection",
-    "weight management",
-    "mood support"
-  ],
-  "metadata": {
-    "compound_type": "Polyphenol-rich botanical extract",
-    "natural_source": "Leaves of Camellia sinensis",
+  "identity": {
+    "slug": "green-tea-extract",
+    "name": "Green Tea Extract",
+    "brand_names": [
+      "EGCG extract",
+      "Teavigo"
+    ],
+    "aliases": [
+      "Camellia sinensis extract",
+      "EGCG supplement"
+    ],
+    "wikidata_qid": "Q49314"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cognition",
       "Metabolic Health",
@@ -25,73 +27,151 @@
       "Anti-inflammatory",
       "Neurotransmitter modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "EGCG extract",
-      "Teavigo"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for specific medical conditions)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Nutrition",
-      "Neurology",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q49314"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Antioxidant support",
-      "Weight management and metabolic support"
-    ],
-    "off_label_uses": [
-      "Cognitive protection and memory support",
-      "Adjunctive support for anxiety and stress",
-      "Cardiovascular risk reduction"
-    ],
-    "contraindications": [
-      "Liver disease (rare hepatotoxicity at high doses)",
-      "Sensitivity to caffeine (though extract is often decaffeinated)"
-    ],
-    "monitoring_required": [
-      "Liver enzymes with high-dose or long-term use",
-      "Blood pressure in hypertensive individuals"
-    ],
-    "efficacy_rating": {
-      "antioxidant_support": 4,
-      "weight_management": 3,
-      "cognitive_support": 2,
-      "anxiety_relief": 2,
-      "cardiovascular_support": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Green tea extract",
-      "EGCG",
-      "catechins"
-    ],
-    "synonyms": [
-      "Camellia sinensis extract",
-      "EGCG supplement"
-    ],
-    "common_misspellings": [
-      "grean tea extract",
-      "green tee extract"
+    "tags": [
+      "antioxidant",
+      "neuroprotection",
+      "weight management",
+      "mood support"
     ]
+  },
+  "summary": "Green tea extract, rich in catechins such as EGCG, is studied for its antioxidant, metabolic, and neuroprotective properties, with potential benefits in mood, cognition, and weight regulation.",
+  "description": "Green tea extract is derived from the leaves of Camellia sinensis and contains concentrated polyphenols, particularly epigallocatechin gallate (EGCG). These bioactive compounds exert strong antioxidant and anti-inflammatory effects, modulate neurotransmitter activity, and improve metabolic function. Green tea extract has been investigated for its potential in supporting cognitive health, reducing stress and anxiety, and promoting weight management. It is commonly used in integrative and preventive medicine for its cardiometabolic and neuroprotective benefits.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "antioxidant-support",
+          "condition_name": "Antioxidant support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "weight-management-and-metabolic-support",
+          "condition_name": "Weight management and metabolic support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-protection-and-memory-support",
+          "condition_name": "Cognitive protection and memory support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-support-for-anxiety-and-stress",
+          "condition_name": "Adjunctive support for anxiety and stress",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cardiovascular-risk-reduction",
+          "condition_name": "Cardiovascular risk reduction",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "antioxidant_support": {
+          "rating": 4
+        },
+        "weight_management": {
+          "rating": 3
+        },
+        "cognitive_support": {
+          "rating": 2
+        },
+        "anxiety_relief": {
+          "rating": 2
+        },
+        "cardiovascular_support": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild GI upset"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare hepatotoxicity at high doses"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Liver disease (rare hepatotoxicity at high doses)"
+        },
+        {
+          "contraindication": "Sensitivity to caffeine (though extract is often decaffeinated)"
+        }
+      ],
+      "precautions": [
+        "May cause liver injury at high doses; monitor liver function.",
+        "Caffeine-containing extracts may cause insomnia, anxiety, or palpitations in sensitive individuals."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin and anticoagulants",
+          "mechanism": "May alter coagulation",
+          "action": "Monitor INR closely"
+        },
+        {
+          "interactant": "Stimulants or caffeine",
+          "mechanism": "Additive stimulant effects",
+          "action": "Monitor for anxiety, insomnia"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver enzymes with prolonged or high-dose use"
+        },
+        {
+          "parameter": "Blood pressure in hypertensive patients"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Caution; avoid high doses due to caffeine content and limited safety data",
+        "lactation": "Caffeine may pass into breast milk; use decaffeinated extract if necessary",
+        "pediatric": "Not recommended due to limited data",
+        "geriatric": "Generally safe at moderate doses; monitor for liver and cardiovascular effects"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Polyphenol-rich botanical extract",
+        "natural_source": "Leaves of Camellia sinensis",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for specific medical conditions)"
+      }
+    }
   },
   "sections": [
     {
@@ -208,6 +288,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Chantre P, et al. Efficacy of a green tea extract in weight loss. Phytomedicine. 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11924762/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Mandel SA, et al. Green tea catechins as brain-permeable, natural iron chelators–antioxidant neuroprotective mechanisms. FASEB J. 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16816112/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "NCCIH – Green Tea Extract",
+      "url": "https://www.nccih.nih.gov/health/green-tea"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Green tea extract",
+      "EGCG",
+      "catechins"
+    ],
+    "synonyms": [
+      "Camellia sinensis extract",
+      "EGCG supplement"
+    ],
+    "common_misspellings": [
+      "grean tea extract",
+      "green tee extract"
+    ]
+  },
   "seo": {
     "title": "Green Tea Extract – EGCG Supplement for Antioxidant, Metabolic, and Cognitive Support",
     "description": "Green tea extract, rich in EGCG and catechins, is studied for its antioxidant, weight management, cardiovascular, and potential cognitive benefits.",

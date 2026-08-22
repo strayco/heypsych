@@ -1,78 +1,157 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "seasonal-affective-disorder-lamp",
-  "type": "interventional",
-  "name": "Seasonal Affective Disorder (SAD) Lamp Therapy",
-  "summary": "A form of bright light therapy that uses specially designed lamps to alleviate symptoms of Seasonal Affective Disorder by simulating natural daylight exposure.",
-  "description": "SAD lamp therapy is a light-based intervention for Seasonal Affective Disorder, a subtype of depression that occurs during winter months when daylight exposure is reduced. The therapy involves sitting near a lamp that emits bright, broad-spectrum light (usually 10,000 lux), which helps regulate circadian rhythms, melatonin secretion, and serotonin activity. This treatment is considered first-line for SAD and has strong evidence for improving mood, energy, and sleep in affected individuals.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "SAD lamp",
-    "light box therapy",
-    "bright light therapy",
-    "seasonal affective disorder treatment",
-    "phototherapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "seasonal-affective-disorder-lamp",
+    "name": "Seasonal Affective Disorder (SAD) Lamp Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Light-based therapy"
     ],
-    "treatment_types": [
-      "Non-invasive therapy"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Mood Disorders"
-    ],
-    "delivery_methods": [
-      "Light boxes",
-      "Desktop lamps"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "20–45 minutes",
-    "treatment_duration": [
-      "Daily sessions during fall/winter months"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep Medicine",
-      "Primary Care"
+    "tags": [
+      "SAD lamp",
+      "light box therapy",
+      "bright light therapy",
+      "seasonal affective disorder treatment",
+      "phototherapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Seasonal Affective Disorder"
-    ],
-    "conditions_treated": [
-      "Seasonal depression",
-      "Circadian rhythm disorders",
-      "Mild non-seasonal depression (adjunctive)"
-    ],
-    "off_label_uses": [
-      "Insomnia",
-      "Jet lag",
-      "Shift work disorder"
-    ],
-    "contraindications": [
-      "Bipolar disorder (risk of triggering mania)",
-      "Ocular conditions sensitive to bright light (e.g., macular degeneration)",
-      "Photosensitivity"
-    ],
-    "safety_profile": "Generally safe; most side effects are mild and transient (eye strain, headache, mild agitation).",
-    "evidence_level": "High for Seasonal Affective Disorder; moderate for circadian rhythm disorders.",
-    "research_support": "Multiple randomized controlled trials and meta-analyses support efficacy for SAD.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "seasonal-affective-disorder": 5,
-      "circadian-rhythm-disorders": 3,
-      "non-seasonal-depression": 2
+  "summary": "A form of bright light therapy that uses specially designed lamps to alleviate symptoms of Seasonal Affective Disorder by simulating natural daylight exposure.",
+  "description": "SAD lamp therapy is a light-based intervention for Seasonal Affective Disorder, a subtype of depression that occurs during winter months when daylight exposure is reduced. The therapy involves sitting near a lamp that emits bright, broad-spectrum light (usually 10,000 lux), which helps regulate circadian rhythms, melatonin secretion, and serotonin activity. This treatment is considered first-line for SAD and has strong evidence for improving mood, energy, and sleep in affected individuals.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "seasonal-affective-disorder",
+          "condition_name": "Seasonal Affective Disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "seasonal-depression",
+          "condition_name": "Seasonal depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "circadian-rhythm-disorders",
+          "condition_name": "Circadian rhythm disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "mild-non-seasonal-depression-adjunctive",
+          "condition_name": "Mild non-seasonal depression (adjunctive)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "jet-lag",
+          "condition_name": "Jet lag",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "shift-work-disorder",
+          "condition_name": "Shift work disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for Seasonal Affective Disorder; moderate for circadian rhythm disorders.",
+      "efficacy_ratings": {
+        "seasonal-affective-disorder": {
+          "rating": 5
+        },
+        "circadian-rhythm-disorders": {
+          "rating": 3
+        },
+        "non-seasonal-depression": {
+          "rating": 2
+        }
+      },
+      "research_support": "Multiple randomized controlled trials and meta-analyses support efficacy for SAD."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Daily sessions during fall/winter months"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Light boxes",
+        "Desktop lamps"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–45 minutes"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; most side effects are mild and transient (eye strain, headache, mild agitation).",
+      "common_adverse_effects": [
+        {
+          "effect": "Eye strain"
+        },
+        {
+          "effect": "Mild headache"
+        },
+        {
+          "effect": "Agitation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Mania in individuals with bipolar disorder"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Bipolar disorder without mood stabilizer",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe ocular disease sensitive to light",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Photosensitive conditions",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Concurrent photosensitizing medications",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Considered safe; may be preferable to medications."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light-based therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Patient sits near the lamp, eyes open but not staring directly at the light.\nTypical sessions last 20–45 minutes.\nPerformed once daily, usually in the morning."
+      }
     }
   },
   "sections": [
@@ -244,6 +323,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Golden RN, et al. The efficacy of light therapy in the treatment of mood disorders: a review and meta-analysis. Am J Psychiatry. (2005).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15625212/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Lam RW, et al. Light therapy for Seasonal Affective Disorder: a review of efficacy. Can J Psychiatry. (1999).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10074877/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Terman M, et al. Light therapy for Seasonal Affective Disorder: a review of efficacy. Neuropsychopharmacology. (1989).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2682556/"
+    }
+  ],
   "seo": {
     "title": "SAD Lamp Therapy | Bright Light Treatment for Seasonal Depression",
     "description": "SAD lamp therapy is a safe, effective treatment for Seasonal Affective Disorder using 10,000 lux light exposure. Learn protocols, safety, and outcomes.",
@@ -256,5 +355,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for Seasonal Affective Disorder; moderate for circadian rhythm disorders."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for Seasonal Affective Disorder; moderate for circadian rhythm disorders."
+    ]
   }
 }

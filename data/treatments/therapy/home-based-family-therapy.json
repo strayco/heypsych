@@ -1,88 +1,178 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "home-based-family-therapy",
-  "type": "therapy",
-  "name": "Home-Based Family Therapy",
-  "summary": "A therapeutic approach that delivers family counseling and interventions directly in the home environment to strengthen family functioning and address behavioral or relational challenges.",
-  "description": "Home-Based Family Therapy is a flexible, community-based intervention that provides therapy services to families within their home environment. This approach allows therapists to observe family interactions in real time, address challenges in their natural setting, and tailor strategies to the specific needs of the household. Home-based therapy is often used for families with at-risk youth, child welfare involvement, or those facing barriers to accessing traditional outpatient care. It integrates elements from structural, strategic, and systemic family therapy models, with an emphasis on improving communication, parenting practices, conflict resolution, and family stability.",
-  "category": "therapy/family",
-  "tags": [
-    "family-therapy",
-    "home-based",
-    "parenting-support",
-    "systemic",
-    "behavioral-intervention"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "home-based-family-therapy",
+    "name": "Home-Based Family Therapy"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "Community-based intervention"
     ],
-    "treatment_types": [
-      "Home-based therapy",
-      "Systemic therapy"
-    ],
-    "categories": [
-      "Family therapy",
-      "Parenting interventions"
-    ],
-    "delivery_methods": [
-      "In-home sessions",
-      "Telehealth (hybrid)"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Families"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "Weekly sessions for 3–6 months"
-    ],
-    "specialty_areas": [
-      "Family conflict",
-      "Behavioral challenges",
-      "Parent-child relationship issues",
-      "Juvenile justice or child welfare involvement"
+    "tags": [
+      "family-therapy",
+      "home-based",
+      "parenting-support",
+      "systemic",
+      "behavioral-intervention"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Family conflict",
-      "Adolescent behavioral issues",
-      "Parenting difficulties",
-      "Child welfare involvement"
-    ],
-    "conditions_treated": [
-      "Oppositional defiant disorder",
-      "Conduct disorder",
-      "Parent-child relational problems",
-      "Family systems dysfunction"
-    ],
-    "off_label_uses": [
-      "Prevention of out-of-home placement",
-      "Support for reintegration after juvenile detention or foster care"
-    ],
-    "contraindications": [
-      "Families unwilling to participate",
-      "Unsafe home environments for therapist or family members"
-    ],
-    "safety_profile": "Generally safe and supportive; dependent on home safety conditions.",
-    "evidence_level": "Moderate—supported by community-based studies and outcomes research.",
-    "research_support": "Evidence suggests home-based models improve family functioning, reduce youth delinquency, and lower risk of placement disruption.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family_conflict": 4,
-      "adolescent_behavioral_issues": 4,
-      "parenting_difficulties": 4,
-      "child_welfare_cases": 3,
-      "overall_tolerability": 5
+  "summary": "A therapeutic approach that delivers family counseling and interventions directly in the home environment to strengthen family functioning and address behavioral or relational challenges.",
+  "description": "Home-Based Family Therapy is a flexible, community-based intervention that provides therapy services to families within their home environment. This approach allows therapists to observe family interactions in real time, address challenges in their natural setting, and tailor strategies to the specific needs of the household. Home-based therapy is often used for families with at-risk youth, child welfare involvement, or those facing barriers to accessing traditional outpatient care. It integrates elements from structural, strategic, and systemic family therapy models, with an emphasis on improving communication, parenting practices, conflict resolution, and family stability.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adolescent-behavioral-issues",
+          "condition_name": "Adolescent behavioral issues",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parenting-difficulties",
+          "condition_name": "Parenting difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "child-welfare-involvement",
+          "condition_name": "Child welfare involvement",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder",
+          "condition_name": "Oppositional defiant disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-problems",
+          "condition_name": "Parent-child relational problems",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-systems-dysfunction",
+          "condition_name": "Family systems dysfunction",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "prevention-of-out-of-home-placement",
+          "condition_name": "Prevention of out-of-home placement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-for-reintegration-after-juvenile-detention-or-foster-care",
+          "condition_name": "Support for reintegration after juvenile detention or foster care",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—supported by community-based studies and outcomes research.",
+      "efficacy_ratings": {
+        "family_conflict": {
+          "rating": 4
+        },
+        "adolescent_behavioral_issues": {
+          "rating": 4
+        },
+        "parenting_difficulties": {
+          "rating": 4
+        },
+        "child_welfare_cases": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Evidence suggests home-based models improve family functioning, reduce youth delinquency, and lower risk of placement disruption."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Weekly sessions for 3–6 months"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-home sessions",
+        "Telehealth (hybrid)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe and supportive; dependent on home safety conditions.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary emotional discomfort"
+        },
+        {
+          "effect": "Resistance to change"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict during early phases of therapy"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unsafe home environment",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Families unwilling or unable to engage consistently",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Home-based therapy, Systemic therapy",
+        "key_techniques": [
+          "Family therapy",
+          "Parenting interventions"
+        ],
+        "session_structure": {
+          "pre_session": "Therapist checks in with family members, identifies urgent concerns, and reviews previous homework.",
+          "during_session": "Therapist observes interactions, coaches communication, and applies interventions in real time.",
+          "post_session": "Family reflects on progress, therapist provides feedback and assigns practice strategies."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed marriage and family therapists (LMFT)",
+            "Licensed clinical social workers (LCSW)",
+            "Other trained mental health professionals with family therapy specialization"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -238,6 +328,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Henggeler, S. W., et al. (2009). Home-based multisystemic therapy for juvenile offenders.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19364219/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kazdin, A. E. (1997). Practitioner review: Psychosocial treatments for conduct disorder in children.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9243726/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "U.S. Department of Health & Human Services – Family-Centered Practice",
+      "url": "https://www.childwelfare.gov/topics/famcentered/"
+    }
+  ],
   "seo": {
     "title": "Home-Based Family Therapy | In-Home Family Counseling",
     "description": "Home-Based Family Therapy provides in-home support to improve family functioning, resolve conflict, and address behavioral challenges in children and adolescents.",
@@ -250,5 +360,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—supported by community-based studies and outcomes research."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—supported by community-based studies and outcomes research."
+    ]
   }
 }

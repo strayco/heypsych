@@ -3,11 +3,15 @@
  *
  * Abstract base for all metadata generators. Provides common utilities
  * and enforces consistent metadata generation patterns.
+ *
+ * IMPORTANT: Uses Central Indexation Firewall for all robots decisions.
+ * @see src/lib/seo/index-decision-service.ts
  */
 
 import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { SITE_CONFIG, METADATA_LIMITS } from './config';
+import { makeEntityIndexDecision, getRobotsMetaTag, getCanonicalUrl } from './index-decision-service';
 
 /**
  * Abstract base class for metadata generation
@@ -41,81 +45,49 @@ export abstract class MetadataGenerator {
   /**
    * Generate robots meta tag based on entity indexability
    *
-   * This method determines whether a page should be indexed by search engines.
-   * Uses explicit flags and entity status primarily to avoid accidentally
-   * noindexing legitimate pages.
+   * USES CENTRAL INDEXATION FIREWALL for all decisions.
+   * This ensures consistency across metadata, sitemaps, and internal promotion.
    *
-   * Noindex if:
-   * 1. Explicit noindex flag set (entity.seo?.noindex === true)
-   * 2. Entity status is not "active"
-   * 3. Content contains explicit placeholder keywords
-   * 4. Content is extremely thin (< 100 words - very conservative threshold)
-   *
+   * @see src/lib/seo/index-decision-service.ts
    * @param entity The entity to check for indexability
    * @returns Robots metadata object
    */
   protected generateRobots(entity: Entity): Metadata['robots'] {
-    // 1. Check for explicit noindex flag (highest priority)
-    if (entity.seo?.noindex === true) {
-      return {
-        index: false,
-        follow: true, // Still follow links even if page isn't indexed
-      };
-    }
+    // Use Central Indexation Firewall for consistent decisions
+    const path = this.getPath(entity);
+    const decision = makeEntityIndexDecision(entity, path);
+    const robotsString = getRobotsMetaTag(decision);
 
-    // 2. Check entity status - only index active entities
-    if (entity.status !== 'active') {
-      return {
-        index: false,
-        follow: false, // Don't follow links on inactive pages
-      };
-    }
+    // Parse robots directive
+    const parts = robotsString.split(',').map(p => p.trim());
+    const shouldIndex = parts.includes('index');
+    const shouldFollow = parts.includes('follow');
 
-    // 3. Check for explicit placeholder content keywords
-    // Only flag very obvious placeholder patterns to avoid false positives
-    const placeholderKeywords = [
-      'coming soon',
-      'will be displayed here',
-      'reviews coming soon',
-      'patient reviews and ratings will be displayed',
-    ];
-
-    const content = [
-      entity.description || '',
-      entity.data?.summary || '',
-      JSON.stringify(entity.data?.sections || []),
-    ].filter(Boolean).join(' ').toLowerCase();
-
-    const hasExplicitPlaceholder = placeholderKeywords.some(keyword =>
-      content.includes(keyword.toLowerCase())
-    );
-
-    if (hasExplicitPlaceholder) {
-      return {
-        index: false,
-        follow: true,
-      };
-    }
-
-    // 4. Check for extremely thin content (very conservative: < 100 words)
-    // This threshold is intentionally low to avoid false positives
-    const wordCount = content.split(/\s+/).filter(word => word.length > 0).length;
-    if (wordCount < 100) {
-      return {
-        index: false,
-        follow: true,
-      };
-    }
-
-    // Default: fully indexable
+    // Return structured robots object
     return {
-      index: true,
-      follow: true,
+      index: shouldIndex,
+      follow: shouldFollow,
       googleBot: {
-        index: true,
-        follow: true,
+        index: shouldIndex,
+        follow: shouldFollow,
+        // Additional directives for indexed pages
+        ...(shouldIndex && {
+          'max-snippet': -1,
+          'max-image-preview': 'large',
+          'max-video-preview': -1,
+        }),
       },
     };
+  }
+
+  /**
+   * Get the canonical URL using the Central Indexation Firewall
+   * Handles answer king deference and redirect canonicals
+   */
+  protected generateCanonicalWithFirewall(entity: Entity): string {
+    const path = this.getPath(entity);
+    const decision = makeEntityIndexDecision(entity, path);
+    return getCanonicalUrl(decision, SITE_CONFIG.url) || `${SITE_CONFIG.url}${path}`;
   }
 
   /**

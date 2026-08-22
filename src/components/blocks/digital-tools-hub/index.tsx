@@ -125,11 +125,11 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="mb-2 text-2xl font-bold sm:text-3xl">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
                 Digital Tools & Apps
               </span>
             </h1>
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-600">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-tertiary">
               Curated mental health apps and digital tools for mood tracking, meditation, sleep,
               therapy, and wellness — with privacy ratings and evidence-based reviews.
             </p>
@@ -144,20 +144,20 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="mb-4 flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-slate-600" />
-                  <span className="text-sm font-medium text-slate-700">Find apps:</span>
+                  <Filter className="h-4 w-4 text-label-tertiary" />
+                  <span className="text-sm font-medium text-label-secondary">Find apps:</span>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                   {/* Search */}
                   <div className="relative md:col-span-2">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
                     <input
                       type="text"
                       placeholder="Search apps..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full rounded-md border border-neutral-300 py-2 pr-3 pl-10 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      className="w-full rounded-md border border-separator py-2 pr-3 pl-10 text-sm focus:border-accent focus:ring-2 focus:ring-accent"
                     />
                   </div>
 
@@ -165,7 +165,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-accent focus:ring-2 focus:ring-accent"
                   >
                     <option value="all">All Categories</option>
                     {categories.map((c) => (
@@ -179,7 +179,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                   <select
                     value={selectedPlatform}
                     onChange={(e) => setSelectedPlatform(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-accent focus:ring-2 focus:ring-accent"
                   >
                     <option value="all">All Platforms</option>
                     {platforms.map((p) => (
@@ -197,16 +197,16 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                     id="free-only"
                     checked={showFreeOnly}
                     onChange={(e) => setShowFreeOnly(e.target.checked)}
-                    className="h-4 w-4 rounded text-blue-600 focus:ring-2 focus:ring-blue-500"
+                    className="h-4 w-4 rounded text-accent focus:ring-2 focus:ring-accent"
                   />
-                  <label htmlFor="free-only" className="cursor-pointer text-sm text-slate-700">
+                  <label htmlFor="free-only" className="cursor-pointer text-sm text-label-secondary">
                     Show free apps only
                   </label>
                 </div>
 
                 {activeFiltersCount > 0 && (
                   <div className="flex items-center justify-between border-t pt-4">
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-label-tertiary">
                       Showing {filteredResources.length} of {resources.length} apps
                     </span>
                     <Button variant="ghost" size="sm" onClick={clearFilters}>
@@ -247,11 +247,11 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                     <Card className="h-full transition-shadow hover:shadow-xl">
                       <CardHeader>
                         <div className="mb-3 flex items-start justify-between">
-                          <div className="rounded-xl bg-blue-50 p-3">
-                            <Smartphone className="h-6 w-6 text-blue-600" />
+                          <div className="rounded-xl bg-accent-tint p-3">
+                            <Smartphone className="h-6 w-6 text-accent" />
                           </div>
                           {privacyCertified && (
-                            <Badge variant="outline" className="border-green-200 text-green-600">
+                            <Badge variant="outline" className="border-positive-border text-green-600">
                               <Lock className="mr-1 h-3 w-3" />
                               Privacy Certified
                             </Badge>
@@ -269,7 +269,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                               </span>
                             </div>
                             {totalReviews && (
-                              <span className="text-xs text-slate-500">
+                              <span className="text-xs text-label-primary0">
                                 ({totalReviews.toLocaleString()})
                               </span>
                             )}
@@ -277,7 +277,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         )}
 
                         {resource.description && (
-                          <p className="mt-2 text-sm text-slate-600">{resource.description}</p>
+                          <p className="mt-2 text-sm text-label-tertiary">{resource.description}</p>
                         )}
                       </CardHeader>
                       <CardContent className="space-y-4">
@@ -289,7 +289,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                             </Badge>
                           ))}
                           {free ? (
-                            <Badge className="bg-green-100 text-xs text-green-700">Free</Badge>
+                            <Badge className="bg-positive-tint text-xs text-positive-700">Free</Badge>
                           ) : subscriptionModel ? (
                             <Badge variant="outline" className="text-xs">
                               {subscriptionModel}
@@ -301,7 +301,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         <div className="space-y-2">
                           {appStoreUrl && (
                             <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">
-                              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                              <Button className="w-full bg-accent hover:bg-accent-hover">
                                 <Download className="mr-2 h-4 w-4" />
                                 Download App
                               </Button>
@@ -309,7 +309,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                           )}
                           {website && !appStoreUrl && (
                             <a href={website} target="_blank" rel="noopener noreferrer">
-                              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                              <Button className="w-full bg-accent hover:bg-accent-hover">
                                 <Globe className="mr-2 h-4 w-4" />
                                 Visit Website
                               </Button>
@@ -331,9 +331,9 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
           ) : (
             <Card>
               <CardContent className="p-12 text-center">
-                <Smartphone className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                <h3 className="mb-2 text-xl font-semibold text-slate-900">No apps found</h3>
-                <p className="mb-6 text-slate-600">Try adjusting your filters</p>
+                <Smartphone className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">No apps found</h3>
+                <p className="mb-6 text-label-tertiary">Try adjusting your filters</p>
                 <Button onClick={clearFilters}>Clear Filters</Button>
               </CardContent>
             </Card>
@@ -344,11 +344,11 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
       {/* Privacy notice */}
       <section className="px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <Card className="border-blue-200 bg-blue-50">
+          <Card className="border-accent-border bg-accent-tint">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
-                <Shield className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
-                <div className="text-sm text-blue-800">
+                <Shield className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" />
+                <div className="text-sm text-accent-700">
                   <p className="mb-1 font-semibold">Privacy & Security</p>
                   <p>
                     Always review an app's privacy policy before use. Apps marked "Privacy

@@ -1,78 +1,161 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "anos-family-approach",
-  "type": "therapy",
-  "name": "ANOS Family Approach",
-  "summary": "A structured family-based therapeutic model for addressing adolescent behavioral and emotional challenges through collaborative family engagement.",
-  "description": "The ANOS Family Approach is a systemic therapy model designed to improve adolescent and family functioning by addressing communication patterns, relational dynamics, and shared goals. It emphasizes collaboration between family members, the adolescent, and the therapist to reduce conflict, strengthen bonds, and improve emotional regulation. The approach uses structured sessions, psychoeducation, and skill-building to help families navigate developmental challenges and improve long-term outcomes.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "adolescent",
-    "systemic",
-    "communication",
-    "behavioral"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "anos-family-approach",
+    "name": "ANOS Family Approach"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Psychotherapy"
     ],
-    "treatment_types": [
-      "Family-Based Therapy",
-      "Systemic Therapy"
-    ],
-    "categories": [
-      "Family Therapies"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Families"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "12–20 sessions typical"
-    ],
-    "specialty_areas": [
-      "Adolescent behavior",
-      "Family conflict",
-      "Parenting support"
+    "tags": [
+      "family therapy",
+      "adolescent",
+      "systemic",
+      "communication",
+      "behavioral"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Adolescent behavioral problems",
-      "Family conflict",
-      "Parent-child relational difficulties",
-      "Anxiety disorders",
-      "Depression in adolescents"
-    ],
-    "off_label_uses": [
-      "School-related difficulties",
-      "Substance use prevention",
-      "Stressful life transitions"
-    ],
-    "contraindications": [
-      "Families unwilling to participate",
-      "Severe parental psychopathology preventing engagement"
-    ],
-    "safety_profile": "Safe and non-invasive.",
-    "evidence_level": "Moderate; supported by clinical use and emerging research.",
-    "research_support": "Used in family therapy practice to address adolescent and parent-child relational challenges.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "adolescent_behavior": 4,
-      "family_conflict": 4,
-      "depression": 3,
-      "anxiety": 3,
-      "overall_tolerability": 5
+  "summary": "A structured family-based therapeutic model for addressing adolescent behavioral and emotional challenges through collaborative family engagement.",
+  "description": "The ANOS Family Approach is a systemic therapy model designed to improve adolescent and family functioning by addressing communication patterns, relational dynamics, and shared goals. It emphasizes collaboration between family members, the adolescent, and the therapist to reduce conflict, strengthen bonds, and improve emotional regulation. The approach uses structured sessions, psychoeducation, and skill-building to help families navigate developmental challenges and improve long-term outcomes.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "adolescent-behavioral-problems",
+          "condition_name": "Adolescent behavioral problems",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-difficulties",
+          "condition_name": "Parent-child relational difficulties",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression-in-adolescents",
+          "condition_name": "Depression in adolescents",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "school-related-difficulties",
+          "condition_name": "School-related difficulties",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "substance-use-prevention",
+          "condition_name": "Substance use prevention",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stressful-life-transitions",
+          "condition_name": "Stressful life transitions",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate; supported by clinical use and emerging research.",
+      "efficacy_ratings": {
+        "adolescent_behavior": {
+          "rating": 4
+        },
+        "family_conflict": {
+          "rating": 4
+        },
+        "depression": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Used in family therapy practice to address adolescent and parent-child relational challenges."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary discomfort when addressing conflicts"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict if poorly managed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active abuse in the family system",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe parental psychopathology",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not directly applicable"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family-Based Therapy, Systemic Therapy",
+        "key_techniques": [
+          "Family Therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Review progress and assess current family dynamics.",
+          "during_session": "Facilitate structured discussion, skill-building, and conflict resolution.",
+          "post_session": "Summarize key takeaways and assign family-based practice tasks."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists, psychologists, or social workers with systemic therapy training"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -235,6 +318,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Carr, A. (2019). Family therapy and systemic interventions for child-focused problems: The current evidence base.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31141721/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Diamond, G. & Josephson, A. (2005). Family-based treatment research: A 10-year update. Journal of the American Academy of Child & Adolescent Psychiatry.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16113614/"
+    }
+  ],
   "seo": {
     "title": "ANOS Family Approach | Family Therapy for Adolescents",
     "description": "The ANOS Family Approach is a systemic therapy for adolescents and families, focusing on improving communication, reducing conflict, and strengthening relationships.",
@@ -247,5 +344,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate; supported by clinical use and emerging research."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate; supported by clinical use and emerging research."
+    ]
   }
 }

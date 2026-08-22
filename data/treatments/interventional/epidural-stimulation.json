@@ -1,79 +1,166 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "epidural-stimulation",
-  "type": "interventional",
-  "name": "Epidural Spinal Cord Stimulation",
-  "summary": "A neuromodulation technique involving the implantation of electrodes over the spinal cord's dura mater to deliver targeted electrical stimulation, used to manage chronic pain and aid motor recovery after spinal cord injury.",
-  "description": "Epidural spinal cord stimulation (SCS) involves surgically implanting electrodes in the epidural space above the spinal cord to deliver electrical impulses. This therapy modulates nerve signals before they reach the brain, reducing chronic pain or enhancing motor function after neurological injury. It is typically reserved for patients who have not responded to conservative treatments.",
-  "category": "interventional/neurostimulation",
-  "tags": [
-    "spinal-cord-stimulation",
-    "neuromodulation",
-    "chronic-pain",
-    "neurorehabilitation"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "epidural-stimulation",
+    "name": "Epidural Spinal Cord Stimulation",
+    "wikidata_qid": "Q113895953"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurostimulation",
     "intervention_types": [
       "Epidural spinal cord stimulation"
     ],
-    "treatment_types": [
-      "Neurostimulation",
-      "Implantable device"
-    ],
-    "categories": [
-      "Pain management",
-      "Neurorehabilitation"
-    ],
-    "delivery_methods": [
-      "Implanted pulse generator with percutaneous or paddle leads"
-    ],
-    "invasiveness_level": "Invasive (requires surgical implantation)",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adults"
-    ],
-    "session_duration": "Continuous stimulation with periodic adjustments",
-    "treatment_duration": [
-      "Long-term, device lifespan 5–10 years"
-    ],
-    "specialty_areas": [
-      "Neurology",
-      "Pain medicine",
-      "Neurosurgery"
-    ],
-    "wikidata_qid": "Q113895953"
+    "tags": [
+      "spinal-cord-stimulation",
+      "neuromodulation",
+      "chronic-pain",
+      "neurorehabilitation"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic neuropathic pain",
-      "Failed back surgery syndrome",
-      "Complex regional pain syndrome (CRPS)",
-      "Motor recovery after spinal cord injury"
-    ],
-    "conditions_treated": [
-      "Chronic pain syndromes",
-      "Spinal cord injury",
-      "CRPS",
-      "Failed back surgery syndrome",
-      "Peripheral neuropathy"
-    ],
-    "off_label_uses": [
-      "Enhancement of autonomic function post-spinal cord injury"
-    ],
-    "contraindications": [
-      "Active systemic infection",
-      "Coagulopathy",
-      "Psychological instability"
-    ],
-    "safety_profile": "Generally safe with appropriate patient selection; surgical and device-related risks present.",
-    "evidence_level": "Moderate to high for chronic pain; emerging for motor recovery.",
-    "research_support": "Multiple randomized trials support efficacy in chronic pain; small trials show promise for SCI motor recovery.",
-    "invasiveness": "Surgical implantation required",
-    "efficacy_rating": {
-      "chronic_pain": 4,
-      "crps": 4,
-      "motor_recovery_sci": 3
+  "summary": "A neuromodulation technique involving the implantation of electrodes over the spinal cord's dura mater to deliver targeted electrical stimulation, used to manage chronic pain and aid motor recovery after spinal cord injury.",
+  "description": "Epidural spinal cord stimulation (SCS) involves surgically implanting electrodes in the epidural space above the spinal cord to deliver electrical impulses. This therapy modulates nerve signals before they reach the brain, reducing chronic pain or enhancing motor function after neurological injury. It is typically reserved for patients who have not responded to conservative treatments.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-neuropathic-pain",
+          "condition_name": "Chronic neuropathic pain",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "failed-back-surgery-syndrome",
+          "condition_name": "Failed back surgery syndrome",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "complex-regional-pain-syndrome-crps",
+          "condition_name": "Complex regional pain syndrome (CRPS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "motor-recovery-after-spinal-cord-injury",
+          "condition_name": "Motor recovery after spinal cord injury",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "chronic-pain-syndromes",
+          "condition_name": "Chronic pain syndromes",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "spinal-cord-injury",
+          "condition_name": "Spinal cord injury",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "crps",
+          "condition_name": "CRPS",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "peripheral-neuropathy",
+          "condition_name": "Peripheral neuropathy",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "enhancement-of-autonomic-function-post-spinal-cord-injury",
+          "condition_name": "Enhancement of autonomic function post-spinal cord injury",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to high for chronic pain; emerging for motor recovery.",
+      "efficacy_ratings": {
+        "chronic_pain": {
+          "rating": 4
+        },
+        "crps": {
+          "rating": 4
+        },
+        "motor_recovery_sci": {
+          "rating": 3
+        }
+      },
+      "research_support": "Multiple randomized trials support efficacy in chronic pain; small trials show promise for SCI motor recovery."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Long-term, device lifespan 5–10 years"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Implanted pulse generator with percutaneous or paddle leads"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Continuous stimulation with periodic adjustments"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally safe with appropriate patient selection; surgical and device-related risks present.",
+      "common_adverse_effects": [
+        {
+          "effect": "Lead migration"
+        },
+        {
+          "effect": "Incisional pain"
+        },
+        {
+          "effect": "Paresthesia"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neurological injury"
+        },
+        {
+          "risk": "Allergic reaction to implant materials"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active systemic infection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncorrected coagulopathy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Poor surgical candidate",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Untreated psychiatric disorders",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Epidural spinal cord stimulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Placement of trial leads into the epidural space under fluoroscopic guidance\nExternal pulse generator connected for trial phase (5–7 days)\nIf successful, surgical implantation of permanent leads and pulse generator"
+      }
     }
   },
   "sections": [
@@ -232,6 +319,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kumar K, et al. Spinal cord stimulation in treatment of chronic benign pain: challenges in treatment planning and present status, a 22-year experience. Neurosurgery. 2006;58(3):481–496.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16528188/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Angeli CA, et al. Recovery of over-ground walking after chronic motor complete spinal cord injury. N Engl J Med. 2018;379(13):1244–1250.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30257164/"
+    }
+  ],
   "seo": {
     "title": "Epidural Spinal Cord Stimulation",
     "description": "Epidural spinal cord stimulation is an implantable neuromodulation therapy for chronic pain and motor recovery after spinal cord injury.",
@@ -244,5 +345,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to high for chronic pain; emerging for motor recovery."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to high for chronic pain; emerging for motor recovery."
+    ]
   }
 }

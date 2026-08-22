@@ -1,77 +1,284 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "amisulpride-solian",
-  "type": "medication",
-  "name": "Amisulpride (Solian)",
-  "summary": "An atypical antipsychotic used mainly for schizophrenia, with activity against both positive and negative symptoms due to selective dopamine D2/D3 receptor binding.",
-  "description": "Amisulpride is a substituted benzamide atypical antipsychotic. It selectively antagonizes dopamine D2 and D3 receptors, with relative limbic selectivity. At lower doses (around 50–300 mg/day), it preferentially blocks presynaptic D2/D3 receptors, enhancing dopaminergic transmission and improving negative symptoms. At higher doses (approximately 400–1,200 mg/day), it predominantly blocks postsynaptic receptors, which helps reduce positive symptoms such as hallucinations and delusions.",
-  "patient_summary": "Solian (amisulpride) is a medicine used to treat schizophrenia. The dose matters: lower doses are often used for symptoms like low motivation or emotional “flatness,” while higher doses focus on symptoms like hearing voices or having fixed false beliefs. Your kidneys clear most of this drug, so doses must be adjusted if you have kidney problems. It is not currently approved for psychiatric treatment in the United States.",
-  "category": "medications/antipsychotics",
-  "metadata": {
+  "identity": {
+    "slug": "amisulpride-solian",
+    "name": "Amisulpride (Solian)",
+    "generic_name": "amisulpride",
+    "brand_names": [
+      "Solian"
+    ],
+    "wikidata_qid": "Q418785"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antipsychotics",
     "drug_classes": [
       "Atypical Antipsychotic",
       "Substituted Benzamide",
       "D2/D3 Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Solian"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (IM) for initial acute episodes"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": "Introduced in the 1990s (Not available in the USA for psychiatric use)",
-    "pharmacologic_category": "Antipsychotic (ATC code: N05AL05)",
-    "published_date": "2025-11-28T00:00:00Z",
-    "last_updated": "2025-11-28T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-28T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q418785"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Atypical antipsychotic used for acute and chronic schizophrenia, targeting both positive and negative symptoms."
-      },
-      {
-        "slug": "schizoaffective-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used off-label to treat psychotic symptoms in schizoaffective disorder."
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity to amisulpride or any excipient",
-      "Pheochromocytoma (known or suspected)",
-      "Children and adolescents under 15 years of age",
-      "Known or suspected prolactin-dependent tumors (for example, pituitary prolactinoma or breast cancer)",
-      "Concurrent use with non-antiparkinsonian dopamine agonists (cabergoline, quinagolide)",
-      "Concurrent use with citalopram, escitalopram, domperidone, hydroxyzine, or piperaquine",
-      "Serious renal insufficiency (creatinine clearance < 10 mL/min)"
-    ],
-    "efficacy_response": {
-      "metric": "Positive & negative symptom control in schizophrenia",
-      "percentage_value": null,
-      "comparison_data": "> haloperidol for negative symptoms in controlled trials",
-      "patient_text": "Clinical studies suggest that amisulpride can be particularly helpful for the ‘negative’ symptoms of schizophrenia (such as social withdrawal or low motivation), while still treating hallucinations and delusions as well as many older antipsychotics.",
-      "citation_tag": "SmPC"
+  "summary": "An atypical antipsychotic used mainly for schizophrenia, with activity against both positive and negative symptoms due to selective dopamine D2/D3 receptor binding.",
+  "description": "Amisulpride is a substituted benzamide atypical antipsychotic. It selectively antagonizes dopamine D2 and D3 receptors, with relative limbic selectivity. At lower doses (around 50–300 mg/day), it preferentially blocks presynaptic D2/D3 receptors, enhancing dopaminergic transmission and improving negative symptoms. At higher doses (approximately 400–1,200 mg/day), it predominantly blocks postsynaptic receptors, which helps reduce positive symptoms such as hallucinations and delusions.",
+  "patient_summary": "Solian (amisulpride) is a medicine used to treat schizophrenia. The dose matters: lower doses are often used for symptoms like low motivation or emotional “flatness,” while higher doses focus on symptoms like hearing voices or having fixed false beliefs. Your kidneys clear most of this drug, so doses must be adjusted if you have kidney problems. It is not currently approved for psychiatric treatment in the United States.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Atypical antipsychotic used for acute and chronic schizophrenia, targeting both positive and negative symptoms.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "schizoaffective-disorder",
+          "condition_name": "Schizoaffective Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used off-label to treat psychotic symptoms in schizoaffective disorder."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "metabolism": "Minimally metabolized; two inactive metabolites account for approximately 4% of the dose.",
-      "excretion": "Primarily renal; about 50% of an IV dose is recovered unchanged in the urine.",
-      "half_life": "Approximately 12 hours",
-      "bioavailability": "Around 48%",
-      "protein_binding": "Low (~16%)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "1 hour: First absorption peak after an oral dose.; 3–4 hours: Second absorption peak, reflecting delayed absorption.; ≈12 hours: Elimination half-life, allowing once- or twice-daily dosing.; Several days to weeks: Clinical improvement in psychotic symptoms typically emerges gradually over this period."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (IM) for initial acute episodes"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal symptoms (tremor, rigidity, hypersalivation, akathisia, dyskinesia)",
+          "incidence": "Very common",
+          "notes": "Movement side effects are dose-related and tend to be mild to moderate. They are much less common at lower doses (50–300 mg/day)."
+        },
+        {
+          "effect": "Acute dystonia (e.g., muscle spasms, abnormal postures)",
+          "incidence": "Common",
+          "notes": "These symptoms usually respond to anti–Parkinson’s medicines and dose adjustment."
+        },
+        {
+          "effect": "Somnolence (drowsiness)",
+          "incidence": "Common"
+        },
+        {
+          "effect": "Insomnia, anxiety, or agitation",
+          "incidence": "Common"
+        },
+        {
+          "effect": "Hyperprolactinemia (elevated prolactin)",
+          "incidence": "Common",
+          "notes": "High prolactin may cause breast tenderness or enlargement, menstrual changes, milk production, or sexual side effects."
+        },
+        {
+          "effect": "Weight gain",
+          "incidence": "Common"
+        },
+        {
+          "effect": "Hypotension (low blood pressure)",
+          "incidence": "Common"
+        },
+        {
+          "effect": "Gastrointestinal symptoms (constipation, nausea, vomiting, dry mouth)",
+          "incidence": "Common"
+        },
+        {
+          "effect": "Blurred vision",
+          "incidence": "Common"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic Malignant Syndrome (NMS): a rare but life-threatening reaction with fever, muscle rigidity, and autonomic instability."
+        },
+        {
+          "risk": "QT interval prolongation and serious ventricular arrhythmias (including Torsades de pointes and sudden death)."
+        },
+        {
+          "risk": "Venous thromboembolism (VTE), such as deep vein thrombosis or pulmonary embolism."
+        },
+        {
+          "risk": "Severe blood dyscrasias such as agranulocytosis (markedly low white blood cell count)."
+        },
+        {
+          "risk": "Benign pituitary tumors (prolactinoma) in the context of sustained hyperprolactinemia."
+        },
+        {
+          "risk": "Severe hepatotoxicity or clinically significant liver injury."
+        }
+      ],
+      "black_box_warning": "Amisulpride is not FDA-approved in the United States and therefore does not carry an official US Boxed Warning. However, major safety concerns include QT interval prolongation, Neuroleptic Malignant Syndrome (NMS), and increased cerebrovascular and mortality risk in elderly patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to amisulpride or any excipient"
+        },
+        {
+          "contraindication": "Pheochromocytoma (known or suspected)"
+        },
+        {
+          "contraindication": "Children and adolescents under 15 years of age"
+        },
+        {
+          "contraindication": "Known or suspected prolactin-dependent tumors (for example, pituitary prolactinoma or breast cancer)"
+        },
+        {
+          "contraindication": "Concurrent use with non-antiparkinsonian dopamine agonists (cabergoline, quinagolide)"
+        },
+        {
+          "contraindication": "Concurrent use with citalopram, escitalopram, domperidone, hydroxyzine, or piperaquine"
+        },
+        {
+          "contraindication": "Serious renal insufficiency (creatinine clearance < 10 mL/min)"
+        }
+      ],
+      "precautions": [
+        "Neuroleptic Malignant Syndrome (NMS): If unexplained fever, muscle stiffness, confusion, or autonomic instability occur, stop the medicine immediately and provide urgent medical care.",
+        "QT Interval Prolongation: Amisulpride can prolong the QT interval in a dose-related manner. Correct low potassium and avoid use in patients with significant bradycardia, congenital QT prolongation, or with other QT-prolonging drugs unless strictly necessary.",
+        "Cerebrovascular Events: Atypical antipsychotics have been associated with a higher risk of stroke in elderly patients with dementia.",
+        "Increased Mortality in Elderly with Dementia-Related Psychosis: As with other antipsychotics, there is an increased risk of death in this population, chiefly from cardiovascular events or infections.",
+        "Venous Thromboembolism (VTE): Cases of blood clots in veins have been reported. Assess patients for VTE risk factors and manage preventively when indicated.",
+        "Metabolic Effects: Monitor weight, blood glucose, and lipid profile, especially in patients with diabetes or cardiometabolic risk.",
+        "Hepatotoxicity: Rare but serious liver injury can occur. Advise patients to report symptoms such as fatigue, dark urine, nausea, abdominal pain, or yellowing of the skin/eyes; check liver function tests if suspected.",
+        "Hyperprolactinemia and Pituitary Tumors: Amisulpride frequently raises prolactin levels. Prolactin-dependent tumors (including benign pituitary adenomas) have been reported; investigate symptoms like visual changes, headache, or persistent galactorrhea.",
+        "Seizure Risk: May lower the seizure threshold. Use caution in people with a history of seizures or conditions that predispose to seizures.",
+        "Withdrawal/Discontinuation: Abrupt cessation can cause nausea, vomiting, insomnia, and movement symptoms, as well as relapse of psychosis. Taper gradually under medical supervision."
+      ],
+      "interactions": [
+        {
+          "interactant": "Non-antiparkinsonian dopamine agonists (e.g., cabergoline, quinagolide)",
+          "mechanism": "Opposing pharmacologic effects on dopamine; may cancel each other’s benefits.",
+          "action": "Contraindicated. Avoid using together."
+        },
+        {
+          "interactant": "Citalopram, escitalopram, domperidone, hydroxyzine, piperaquine",
+          "mechanism": "Additive QT prolongation, with increased risk of Torsades de pointes.",
+          "action": "Contraindicated. Do not combine."
+        },
+        {
+          "interactant": "Class Ia/III antiarrhythmics and certain other antipsychotics",
+          "mechanism": "Increased risk of clinically significant QT prolongation and arrhythmias.",
+          "action": "Avoid if possible; if essential, use close ECG and electrolyte monitoring."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Enhanced sedation and impaired judgment or coordination.",
+          "action": "Avoid alcohol use during treatment."
+        },
+        {
+          "interactant": "Levodopa and other antiparkinsonian dopamine agonists",
+          "mechanism": "Mutual antagonism of therapeutic effects.",
+          "action": "If combination is necessary, use the lowest effective doses and monitor closely; often one of the drugs must be reduced or withdrawn."
+        },
+        {
+          "interactant": "Methadone, hydroxychloroquine, and certain antiparasitics",
+          "mechanism": "Increased QT prolongation and risk of Torsades de pointes.",
+          "action": "Avoid combination where possible; if unavoidable, monitor ECG and electrolytes."
+        },
+        {
+          "interactant": "Sodium oxybate",
+          "mechanism": "Potentiated CNS depressant effects (excessive sedation or respiratory depression).",
+          "action": "Avoid combining if possible."
+        },
+        {
+          "interactant": "Other sedative drugs (e.g., benzodiazepines, sedating antihistamines, opioids)",
+          "mechanism": "Additive CNS depression and impaired psychomotor performance.",
+          "action": "Use cautiously, with the lowest effective doses and careful monitoring."
+        },
+        {
+          "interactant": "Bradycardia-inducing drugs (e.g., beta-blockers, certain calcium channel blockers)",
+          "mechanism": "Higher risk of significant QT prolongation and arrhythmia.",
+          "action": "Monitor heart rate and ECG; adjust therapy if needed."
+        },
+        {
+          "interactant": "Potassium-depleting agents (e.g., some diuretics, laxatives)",
+          "mechanism": "Low potassium increases the risk of QT prolongation and Torsades de pointes.",
+          "action": "Correct low potassium before and during therapy; monitor electrolytes regularly."
+        },
+        {
+          "interactant": "Lithium",
+          "mechanism": "Possible increased risk of NMS or lithium toxicity.",
+          "action": "Monitor clinically for toxicity and consider serum lithium levels as indicated."
+        },
+        {
+          "interactant": "Certain antibiotics (e.g., azithromycin, ciprofloxacin), anagrelide, ondansetron",
+          "mechanism": "Additional QT prolongation risk.",
+          "action": "Use only with ECG and electrolyte monitoring when benefits clearly outweigh risks."
+        },
+        {
+          "interactant": "Antihypertensive agents",
+          "mechanism": "Increased risk of symptomatic hypotension or dizziness.",
+          "action": "Monitor blood pressure and adjust antihypertensive doses when necessary."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Baseline and periodic ECGs, especially in patients with cardiac risk factors or when used with other QT-prolonging drugs."
+        },
+        {
+          "parameter": "Serum electrolytes (particularly potassium and magnesium) when indicated."
+        },
+        {
+          "parameter": "Liver function tests if symptoms suggest liver injury."
+        },
+        {
+          "parameter": "Renal function (creatinine clearance) before starting and periodically during treatment, to guide dose adjustments."
+        },
+        {
+          "parameter": "Weight, fasting glucose, and lipid profile to monitor for metabolic changes."
+        },
+        {
+          "parameter": "Clinical signs of venous thromboembolism (e.g., leg swelling, chest pain, shortness of breath)."
+        },
+        {
+          "parameter": "Complete blood count if signs of infection or unexplained fever develop (to evaluate for agranulocytosis or neutropenia)."
+        },
+        {
+          "parameter": "Prolactin levels and related clinical features (galactorrhea, menstrual disturbances, sexual dysfunction) when clinically indicated."
+        },
+        {
+          "parameter": "Neurologic examination for extrapyramidal symptoms and tardive dyskinesia."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use during pregnancy is generally not recommended unless the expected benefits outweigh potential risks. Babies exposed during late pregnancy may show movement problems or withdrawal-like symptoms after birth and should be monitored.",
+        "lactation": "Amisulpride is excreted into breast milk in clinically relevant amounts. Decisions about breastfeeding versus treatment should balance the benefits of therapy for the mother against potential risks to the infant.",
+        "pediatric": "Contraindicated in children and adolescents under 15 years of age due to lack of sufficient safety and efficacy data.",
+        "geriatric": "Use cautiously in older adults, especially those with dementia-related psychosis, due to increased risk of stroke, low blood pressure, sedation, and mortality. Dose reductions may be required in the presence of renal impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "bioavailability": "Around 48%",
+          "half_life": "Approximately 12 hours",
+          "metabolism": "Minimally metabolized; two inactive metabolites account for approximately 4% of the dose.",
+          "excretion": "Primarily renal; about 50% of an IV dose is recovered unchanged in the urine.",
+          "protein_binding": "Low (~16%)"
+        },
+        "dosing": {},
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "As with other antipsychotics, amisulpride should generally be withdrawn gradually rather than stopped abruptly. A slow taper can help reduce the risk of rebound or withdrawal symptoms (such as nausea, vomiting, insomnia, or new movement problems) and lower the chance of sudden relapse of psychotic symptoms."
+        }
+      }
     }
   },
   "sections": [
@@ -89,7 +296,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are common patterns people describe on amisulpride:",
       "items": [
         {
           "category": "Positive Symptom Relief",
@@ -125,7 +331,8 @@
             "Some days I wish I didn’t need it, but staying on it has kept me out of hospital."
           ]
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are common patterns people describe on amisulpride:"
     },
     {
       "type": "onset_duration",
@@ -141,10 +348,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In a major clinical trial, about 7 in 10 patients with schizophrenia responded to amisulpride treatment, compared with about 5 in 10 taking haloperidol. This means for every 4 people treated with amisulpride instead of haloperidol, 1 additional person achieves a meaningful clinical response. Amisulpride improves both positive symptoms (hallucinations, delusions, disorganized thinking) and negative symptoms (emotional flattening, social withdrawal, lack of drive), with particularly strong effects on negative symptoms.",
       "metric": "Treatment Response at 4 Months",
       "value": "71%",
       "comparison": "47%",
-      "text": "In a major clinical trial, about 7 in 10 patients with schizophrenia responded to amisulpride treatment, compared with about 5 in 10 taking haloperidol. This means for every 4 people treated with amisulpride instead of haloperidol, 1 additional person achieves a meaningful clinical response. Amisulpride improves both positive symptoms (hallucinations, delusions, disorganized thinking) and negative symptoms (emotional flattening, social withdrawal, lack of drive), with particularly strong effects on negative symptoms.",
       "clinical_details": "Carrière et al. (2000) conducted a multicentre, double-blind, flexible-dose study with 199 patients diagnosed with paranoid schizophrenia or schizophreniform disorders. Participants received haloperidol (10-30 mg/day) or amisulpride (400-1200 mg/day) for four months. Response was measured using the Clinical Global Impression (CGI) scale. The percentage of responders was significantly greater with amisulpride (71% vs 47%; P < 0.001). NNT=4 for achieving clinical response vs haloperidol.",
       "citation": {
         "authors": "Carrière P, Bonhomme D, Lempérière T",
@@ -425,24 +632,14 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Amisulpride (Solian): Dosing, Warnings, and Schizophrenia Treatment Guide",
-    "description": "Comprehensive clinical and patient guide to Amisulpride (Solian), an atypical antipsychotic for schizophrenia. Covers dual efficacy for positive and negative symptoms, renal dosing, QT prolongation, NMS risk, and key monitoring recommendations.",
-    "canonical": "https://www.heypsych.com/treatments/amisulpride-solian",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "john-lee-md"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "reviewStatement": "This content has been medically reviewed by board-certified psychiatrists and verified against the latest Summary of Product Characteristics (SmPC) and major schizophrenia treatment guidelines.",
-    "lastReviewed": "2025-11-28",
-    "lastUpdated": "2025-11-28",
-    "citations": [
-      "SOLIAN (Amisulpride) Summary of Product Characteristics (SmPC): https://www.sanofi.com/assets/countries/singapore/docs/Solian--SG-0822.pdf"
-    ]
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "SOLIAN (Amisulpride) Summary of Product Characteristics (SmPC)",
+      "url": "https://www.sanofi.com/assets/countries/singapore/docs/Solian--SG-0822.pdf"
+    }
+  ],
   "faqs": [
     {
       "q": "Is Amisulpride (Solian) available in the United States?",
@@ -464,5 +661,23 @@
       "q": "Can I stop taking Amisulpride suddenly?",
       "a": "Stopping amisulpride abruptly is not recommended. Sudden discontinuation can lead to withdrawal symptoms such as nausea, vomiting, insomnia, and new movement problems, and may trigger a rapid return of psychotic symptoms. Any dose changes should be made gradually and under close medical supervision."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Amisulpride (Solian): Dosing, Warnings, and Schizophrenia Treatment Guide",
+    "description": "Comprehensive clinical and patient guide to Amisulpride (Solian), an atypical antipsychotic for schizophrenia. Covers dual efficacy for positive and negative symptoms, renal dosing, QT prolongation, NMS risk, and key monitoring recommendations.",
+    "canonical": "https://www.heypsych.com/treatments/amisulpride-solian",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "john-lee-md"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "reviewStatement": "This content has been medically reviewed by board-certified psychiatrists and verified against the latest Summary of Product Characteristics (SmPC) and major schizophrenia treatment guidelines.",
+    "lastReviewed": "2025-11-28",
+    "lastUpdated": "2025-11-28",
+    "citations": [
+      "SOLIAN (Amisulpride) Summary of Product Characteristics (SmPC): https://www.sanofi.com/assets/countries/singapore/docs/Solian--SG-0822.pdf"
+    ]
+  }
 }

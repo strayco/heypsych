@@ -1,105 +1,182 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lsd-therapy",
-  "type": "investigational",
-  "name": "Lysergic Acid Diethylamide (LSD) Therapy",
-  "summary": "LSD-assisted psychotherapy uses the psychedelic compound LSD to facilitate deep psychological processing and potentially treat conditions such as anxiety, depression, and substance use disorders. Clinical research is ongoing after decades of prohibition.",
-  "description": "LSD (lysergic acid diethylamide) is a potent serotonergic psychedelic that profoundly alters perception, cognition, and sense of self. When administered in a controlled therapeutic setting, LSD is paired with psychotherapy to facilitate emotional release, enhanced self-reflection, and potential restructuring of maladaptive cognitive and behavioral patterns. Current research focuses on LSD-assisted therapy for anxiety associated with life-threatening illness, treatment-resistant depression, cluster headaches, and substance use disorders. While promising, LSD therapy remains investigational and highly regulated.",
-  "category": "investigational/psychedelic",
-  "tags": [
-    "LSD",
-    "psychedelic-assisted therapy",
-    "serotonergic psychedelics",
-    "anxiety",
-    "depression",
-    "substance use",
-    "psychotherapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "lsd-therapy",
+    "name": "Lysergic Acid Diethylamide (LSD) Therapy",
+    "aliases": [
+      "acid therapy",
+      "lysergic acid diethylamide psychotherapy",
+      "psychedelic-assisted therapy (LSD)"
+    ]
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/psychedelic",
     "intervention_types": [
       "High-dose psychedelic-assisted psychotherapy",
       "Low-dose (microdosing) experimental protocols"
     ],
-    "treatment_types": [
-      "Psychotherapy",
-      "Psychedelic-assisted therapy"
-    ],
-    "categories": [
-      "Psychedelics",
-      "Psychiatry",
-      "Investigational Therapies"
-    ],
-    "delivery_methods": [
-      "Oral administration of LSD in supervised clinical setting"
-    ],
-    "invasiveness_level": "Noninvasive (oral ingestion, psychotherapeutic support)",
-    "equipment_required": "Therapy space, monitoring equipment for vital signs",
-    "training_required": "Specialized psychedelic-assisted psychotherapy training",
-    "age_groups": [
-      "Adults (clinical trials)",
-      "Elderly (palliative care research)"
-    ],
-    "session_duration": "6–10 hours (including preparation and integration)",
-    "treatment_duration": [
-      "Single or multiple sessions spaced weeks apart"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Palliative Care",
-      "Addiction Medicine"
-    ],
-    "trial_phase": "Phase II (psychiatric research)",
-    "regulatory_status": "Schedule I controlled substance in most jurisdictions; investigational use only"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety related to life-threatening illness",
-      "Treatment-resistant depression",
-      "Cluster headaches",
-      "Substance use disorders"
-    ],
-    "conditions_treated": [
-      "Major Depressive Disorder",
-      "End-of-life anxiety",
-      "Alcohol use disorder",
-      "Cluster headaches"
-    ],
-    "off_label_uses": [
-      "Exploratory use in PTSD, OCD, and existential distress"
-    ],
-    "contraindications": [
-      "History of psychosis or schizophrenia",
-      "Uncontrolled cardiovascular disease",
-      "Pregnancy"
-    ],
-    "safety_profile": "Generally safe in supervised settings; risks include acute anxiety, panic reactions, or prolonged psychological distress if unsupported.",
-    "evidence_level": "Small randomized controlled trials and observational studies; growing modern evidence base but limited by legal restrictions.",
-    "research_support": "Ongoing studies by MAPS, Beckley Foundation, and university research centers.",
-    "efficacy_rating": {
-      "anxiety_end_of_life": 3,
-      "treatment_resistant_depression": 2,
-      "cluster_headaches": 3,
-      "substance_use_disorders": 2,
-      "safety_tolerability": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "LSD therapy depression",
-      "LSD-assisted psychotherapy",
-      "psychedelic therapy anxiety",
-      "cluster headaches LSD"
-    ],
-    "synonyms": [
-      "acid therapy",
-      "lysergic acid diethylamide psychotherapy",
-      "psychedelic-assisted therapy (LSD)"
-    ],
-    "common_misspellings": [
-      "LSD therpy",
-      "lsd therapie",
-      "LSD-assited therapy"
+    "tags": [
+      "LSD",
+      "psychedelic-assisted therapy",
+      "serotonergic psychedelics",
+      "anxiety",
+      "depression",
+      "substance use",
+      "psychotherapy"
     ]
+  },
+  "summary": "LSD-assisted psychotherapy uses the psychedelic compound LSD to facilitate deep psychological processing and potentially treat conditions such as anxiety, depression, and substance use disorders. Clinical research is ongoing after decades of prohibition.",
+  "description": "LSD (lysergic acid diethylamide) is a potent serotonergic psychedelic that profoundly alters perception, cognition, and sense of self. When administered in a controlled therapeutic setting, LSD is paired with psychotherapy to facilitate emotional release, enhanced self-reflection, and potential restructuring of maladaptive cognitive and behavioral patterns. Current research focuses on LSD-assisted therapy for anxiety associated with life-threatening illness, treatment-resistant depression, cluster headaches, and substance use disorders. While promising, LSD therapy remains investigational and highly regulated.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anxiety-related-to-life-threatening-illness",
+          "condition_name": "Anxiety related to life-threatening illness",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cluster-headaches",
+          "condition_name": "Cluster headaches",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "end-of-life-anxiety",
+          "condition_name": "End-of-life anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "alcohol-use-disorder",
+          "condition_name": "Alcohol use disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "exploratory-use-in-ptsd-ocd-and-existential-distress",
+          "condition_name": "Exploratory use in PTSD, OCD, and existential distress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Small randomized controlled trials and observational studies; growing modern evidence base but limited by legal restrictions.",
+      "efficacy_ratings": {
+        "anxiety_end_of_life": {
+          "rating": 3
+        },
+        "treatment_resistant_depression": {
+          "rating": 2
+        },
+        "cluster_headaches": {
+          "rating": 3
+        },
+        "substance_use_disorders": {
+          "rating": 2
+        },
+        "safety_tolerability": {
+          "rating": 3
+        }
+      },
+      "research_support": "Ongoing studies by MAPS, Beckley Foundation, and university research centers."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Single or multiple sessions spaced weeks apart"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Oral administration of LSD in supervised clinical setting"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "6–10 hours (including preparation and integration)"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Specialized psychedelic-assisted psychotherapy training"
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally safe in supervised settings; risks include acute anxiety, panic reactions, or prolonged psychological distress if unsupported.",
+      "common_adverse_effects": [
+        {
+          "effect": "Transient anxiety"
+        },
+        {
+          "effect": "Confusion"
+        },
+        {
+          "effect": "Fatigue"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Persistent perceptual changes"
+        },
+        {
+          "risk": "Hallucinogen persisting perception disorder (HPPD)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "History of psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncontrolled hypertension",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Strong family history of schizophrenia",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe cardiovascular disease",
+          "type": "relative"
+        }
+      ]
+    },
+    "access": {
+      "regulatory_status": "investigational"
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "procedure_type": "High-dose psychedelic-assisted psychotherapy, Low-dose (microdosing) experimental protocols",
+        "equipment_required": [
+          "Therapy space, monitoring equipment for vital signs"
+        ],
+        "session_protocol": "Oral administration of LSD (typical dose 100–200 µg) in a safe therapeutic environment\nContinuous monitoring and psychological support provided by trained therapists\nPost-session integration therapy to process and apply insights"
+      }
+    }
   },
   "sections": [
     {
@@ -215,6 +292,38 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Gasser P et al., 'Safety and efficacy of lysergic acid diethylamide-assisted psychotherapy for anxiety associated with life-threatening diseases: a phase 2 double-blind randomized controlled trial', J Nerv Ment Dis (2014)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24594678/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Dolder PC et al., 'LSD research: past, present and future', Ther Adv Psychopharmacol (2017)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28652880/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "LSD therapy depression",
+      "LSD-assisted psychotherapy",
+      "psychedelic therapy anxiety",
+      "cluster headaches LSD"
+    ],
+    "synonyms": [
+      "acid therapy",
+      "lysergic acid diethylamide psychotherapy",
+      "psychedelic-assisted therapy (LSD)"
+    ],
+    "common_misspellings": [
+      "LSD therpy",
+      "lsd therapie",
+      "LSD-assited therapy"
+    ]
+  },
   "seo": {
     "title": "LSD Therapy for Anxiety, Depression, and Addiction",
     "description": "LSD-assisted psychotherapy is an investigational psychedelic treatment being studied for anxiety, depression, and substance use disorders. Research suggests potential benefits but legal restrictions remain.",
@@ -227,5 +336,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Small randomized controlled trials and observational studies; growing modern evidence base but limited by legal restrictions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Small randomized controlled trials and observational studies; growing modern evidence base but limited by legal restrictions."
+    ]
   }
 }

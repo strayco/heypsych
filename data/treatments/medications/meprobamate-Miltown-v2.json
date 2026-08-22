@@ -1,80 +1,220 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "meprobamate-equanil",
-  "type": "medication",
-  "name": "Meprobamate (Equanil)",
-  "summary": "Older sedating anti-anxiety medication that can calm severe anxiety but has a high risk of dependence, withdrawal, and dangerous sedation—especially with alcohol or other downers.",
-  "description": "Meprobamate is a strong, sedating anxiety medication from an older era of psychiatry. It can reduce anxiety and tension, but it’s not a preferred option today because tolerance and dependence can show up fast, and stopping abruptly can trigger withdrawal (anxiety, insomnia, appetite loss). It can also impair driving, coordination, and judgment—especially when combined with alcohol, opioids, sleep meds, or other sedatives.",
-  "patient_summary": "Meprobamate can take the edge off anxiety, but it’s heavy on sedation and heavy on risk: dependence, withdrawal, and dangerous interactions with alcohol or other sedatives. If it’s used at all, it’s usually short-term, at the lowest effective dose, with a clear plan to taper off.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "meprobamate-equanil",
+    "name": "Meprobamate (Equanil)",
+    "generic_name": "meprobamate",
+    "brand_names": [
+      "Equanil"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
     "drug_classes": [
       "Antianxiety Agent, Miscellaneous",
       "Sedative-Hypnotic (Legacy/Older Anxiolytic)"
-    ],
-    "brand_names": [
-      "Equanil"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1955,
-    "pharmacologic_category": "Antianxiety Agent, Miscellaneous",
-    "published_date": "2025-12-10T00:00:00Z",
-    "last_updated": "2025-12-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety Disorders"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Labeled for management of anxiety disorders, but not considered a preferred modern treatment due to dependence risk and sedation."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Not a modern standard option for panic; if used at all, it’s usually for short-term sedation/anxiolysis when safer first-line options aren’t workable."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Sedation can make people sleepy, but it’s not a recommended insomnia medication due to dependence risk, next-day impairment, and withdrawal insomnia."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to meprobamate, related compounds (including carisoprodol), or any component of the formulation",
-      "Acute intermittent porphyria"
-    ],
-    "efficacy_response": {
-      "metric": "Anxiety symptom relief",
-      "percentage_value": "Not established in modern guideline-quality trials",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Meprobamate can reduce anxiety for some people, but it’s an older medication and not a preferred option today because the sedation and dependence risks often outweigh the benefit.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Older sedating anti-anxiety medication that can calm severe anxiety but has a high risk of dependence, withdrawal, and dangerous sedation—especially with alcohol or other downers.",
+  "description": "Meprobamate is a strong, sedating anxiety medication from an older era of psychiatry. It can reduce anxiety and tension, but it’s not a preferred option today because tolerance and dependence can show up fast, and stopping abruptly can trigger withdrawal (anxiety, insomnia, appetite loss). It can also impair driving, coordination, and judgment—especially when combined with alcohol, opioids, sleep meds, or other sedatives.",
+  "patient_summary": "Meprobamate can take the edge off anxiety, but it’s heavy on sedation and heavy on risk: dependence, withdrawal, and dangerous interactions with alcohol or other sedatives. If it’s used at all, it’s usually short-term, at the lowest effective dose, with a clear plan to taper off.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Labeled for management of anxiety disorders, but not considered a preferred modern treatment due to dependence risk and sedation.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Not a modern standard option for panic; if used at all, it’s usually for short-term sedation/anxiolysis when safer first-line options aren’t workable."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Sedation can make people sleepy, but it’s not a recommended insomnia medication due to dependence risk, next-day impairment, and withdrawal insomnia."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Not applicable for this medication.",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Sedation: ~1 hour",
-      "peak_plasma": "Not applicable for this medication.",
-      "half_life": "~10 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic",
-      "excretion": "Urine (8% to 20% unchanged) and feces (metabolites)",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sedation: ~1 hour"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Frequency not defined",
+          "notes": "This medication can make you feel heavily sedated. That might feel like “relief,” but it can also wreck your driving, work performance, and safety—especially at higher doses or early in treatment."
+        },
+        {
+          "effect": "Dizziness / Vertigo",
+          "incidence": "Frequency not defined",
+          "notes": "Lightheadedness, spinning sensations, and feeling off-balance can happen. Falls are a real concern—especially in older adults."
+        },
+        {
+          "effect": "Ataxia / Slurred speech",
+          "incidence": "Frequency not defined",
+          "notes": "Unsteady gait and slurred speech can look like alcohol intoxication. If this shows up, the dose is too high or the combo with other sedatives is unsafe."
+        },
+        {
+          "effect": "Paradoxical excitation",
+          "incidence": "Frequency not defined",
+          "notes": "Rarely, sedatives can do the opposite: agitation, overstimulation, or irritability. If that happens, it’s usually a stop-and-reassess situation."
+        },
+        {
+          "effect": "GI upset (nausea/diarrhea/vomiting)",
+          "incidence": "Frequency not defined",
+          "notes": "Stomach symptoms can occur. If severe or persistent, talk to your prescriber—especially if you can’t keep fluids down."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe allergic reactions: anaphylaxis, angioedema, bronchospasm (medical emergency)"
+        },
+        {
+          "risk": "Severe skin reactions: Stevens-Johnson syndrome, erythema multiforme (stop immediately and seek urgent care)"
+        },
+        {
+          "risk": "Severe hypotension, syncope, arrhythmias, tachycardia (urgent evaluation needed)"
+        },
+        {
+          "risk": "Blood dyscrasias: agranulocytosis, aplastic anemia, leukopenia, immune thrombocytopenia (seek care for fever, sore throat, unusual bruising/bleeding)"
+        },
+        {
+          "risk": "Urinary problems: oliguria/anuria (urgent evaluation needed)"
+        },
+        {
+          "risk": "Severe CNS depression: stupor, unsafe sedation—especially with alcohol or other sedatives"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to meprobamate, related compounds (including carisoprodol), or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute intermittent porphyria"
+        }
+      ],
+      "precautions": [
+        "CNS depression: Can impair thinking, coordination, and reaction time—driving and machinery are unsafe until you know your response",
+        "Dependence risk: Tolerance, psychological dependence, and physical dependence can develop with prolonged use",
+        "Withdrawal risk: Abrupt discontinuation can trigger withdrawal symptoms (including anxiety and insomnia)",
+        "Depression/suicidality caution: Use carefully if there’s depression, suicidal thoughts, or impulsivity",
+        "Seizure disorder caution: Use carefully in people with seizure history",
+        "Porphyria: Contraindicated in acute intermittent porphyria",
+        "Allergic reactions can occur early (often by the fourth dose), including severe skin reactions"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Major additive CNS depression: profound sedation, impaired judgment, accidents, and potentially dangerous breathing suppression.",
+          "action": "Avoid completely."
+        },
+        {
+          "interactant": "Opioids",
+          "mechanism": "High-risk sedation and respiratory depression when combined with other CNS depressants.",
+          "action": "Avoid when possible. If unavoidable, use the lowest doses with close monitoring and clear safety counseling."
+        },
+        {
+          "interactant": "Benzodiazepines, sleep meds, sedating antihistamines, muscle relaxants, antipsychotics with sedation",
+          "mechanism": "Additive cognitive impairment, falls, blackouts, and dangerous oversedation.",
+          "action": "Avoid stacking sedatives. If a sedating combo is unavoidable, reduce doses and monitor closely."
+        },
+        {
+          "interactant": "Carisoprodol",
+          "mechanism": "Related compound; combining can increase sedation and misuse risk.",
+          "action": "Avoid combination unless there is a compelling reason and close monitoring."
+        },
+        {
+          "interactant": "Concomitant therapy in general",
+          "mechanism": "Significant drug interactions can exist, sometimes requiring dose or frequency adjustments or avoidance.",
+          "action": "Medication reconciliation matters. Review the full med list (including OTC and alcohol) before starting or changing doses."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Anxiety symptoms and functional improvement (not just sedation)"
+        },
+        {
+          "parameter": "Mental status: confusion, slowed thinking, mood changes, depression, suicidality"
+        },
+        {
+          "parameter": "Sedation/psychomotor impairment: falls, driving risk, work/school performance"
+        },
+        {
+          "parameter": "Abuse/overuse signals: early refills, dose escalation, mixing with alcohol/other sedatives, continued use despite harm"
+        },
+        {
+          "parameter": "Skin reactions: rash, mucosal sores, fever (urgent red flags for severe reactions)"
+        },
+        {
+          "parameter": "Signs of hypersensitivity: swelling, wheezing, shortness of breath"
+        },
+        {
+          "parameter": "Blood-related warning signs: fever, sore throat, unusual bruising/bleeding (consider CBC if clinically indicated)"
+        },
+        {
+          "parameter": "Renal and hepatic status in at-risk patients (clinical monitoring and labs as appropriate)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Meprobamate crosses the placenta and is found in cord blood at concentrations similar to maternal plasma. Maternal use may be associated with congenital malformations; avoid use during pregnancy when possible.",
+        "lactation": "Breast milk concentrations can be higher than maternal plasma concentrations. This raises concern for infant sedation and feeding problems; generally avoid or use only with careful risk-benefit review and infant monitoring.",
+        "pediatric": "Children ≥6 years (anxiety): 200 to 600 mg/day PO in 2 to 3 divided doses. Adolescents: refer to adult dosing. Renal/hepatic adjustment guidance is not well-defined in labeling; use caution and consider adult-based adjustments if clinically necessary.",
+        "geriatric": "Avoid use in patients 65 years and older due to high rate of physical dependence and strong sedation (potentially inappropriate medication).",
+        "renal_impairment": "Use with caution in renal impairment. Suggested adult interval adjustments: CrCl 10 to 50 mL/minute every 9 to 12 hours; CrCl <10 mL/minute every 12 to 18 hours. Dialysis/CRRT interval guidance may apply as above.",
+        "hepatic_impairment": "No formal dosing adjustment in labeling; use with caution due to hepatic metabolism and sedation risk."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1955
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Not applicable for this medication.",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Not applicable for this medication.",
+          "half_life": "~10 hours",
+          "metabolism": "Hepatic",
+          "excretion": "Urine (8% to 20% unchanged) and feces (metabolites)",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Meprobamate dosing for anxiety is typically spread across the day because sedation and impairment are dose-related. The goal is the lowest effective total daily dose, used for the shortest duration possible, with a clear plan to taper if it’s used regularly."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If someone has been taking higher doses for weeks or months, meprobamate should not be stopped abruptly. A gradual taper helps reduce withdrawal symptoms like anxiety, appetite loss, and insomnia."
+        }
+      }
     }
   },
   "sections": [
@@ -92,7 +232,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People describe meprobamate as more “sedating” than “cleanly calming.” Here are the common themes:",
       "items": [
         {
           "category": "Calm (but sleepy)",
@@ -127,7 +266,8 @@
           ],
           "note": "Withdrawal is a real risk after weeks to months of use—tapering matters."
         }
-      ]
+      ],
+      "intro": "People describe meprobamate as more “sedating” than “cleanly calming.” Here are the common themes:"
     },
     {
       "type": "onset_duration",
@@ -142,10 +282,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Meprobamate can reduce anxiety for some people, largely through CNS calming and sedation. The tradeoff is big: it’s very sedating, carries meaningful abuse/dependence risk, and can cause withdrawal if stopped abruptly. Because of that, major modern guidelines generally do not list it as a preferred treatment option for anxiety disorders.",
       "metric": "Practical clinical effect",
       "value": "Sedating anxiety relief",
       "comparison": "Not applicable for this medication.",
-      "text": "Meprobamate can reduce anxiety for some people, largely through CNS calming and sedation. The tradeoff is big: it’s very sedating, carries meaningful abuse/dependence risk, and can cause withdrawal if stopped abruptly. Because of that, major modern guidelines generally do not list it as a preferred treatment option for anxiety disorders.",
       "clinical_details": "In modern practice, the bar for anxiety treatment is: effective, sustainable, and safe for long-term use (SSRIs/SNRIs, CBT, and other evidence-based options). Meprobamate doesn’t fit that profile well due to sedation, tolerance, and dependence risk—so if it’s used at all, it’s typically short-term and with a clear exit plan.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -233,7 +373,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "The biggest interaction issue with meprobamate is additive sedation and impairment. If you stack downers, the risk isn’t subtle—it multiplies.",
       "items": [
         {
           "with": "Alcohol",
@@ -260,7 +399,8 @@
           "risk": "Significant drug interactions can exist, sometimes requiring dose or frequency adjustments or avoidance.",
           "action": "Medication reconciliation matters. Review the full med list (including OTC and alcohol) before starting or changing doses."
         }
-      ]
+      ],
+      "intro": "The biggest interaction issue with meprobamate is additive sedation and impairment. If you stack downers, the risk isn’t subtle—it multiplies."
     },
     {
       "type": "tapering",
@@ -333,21 +473,6 @@
       "text": "Meprobamate is a legacy anxiolytic. In modern psychiatry, it’s rarely a first choice because it’s highly sedating and has meaningful dependence and withdrawal risk. For most anxiety disorders, evidence-based first-line options (CBT and SSRIs/SNRIs) are preferred. If meprobamate is used at all, it’s typically short-term, at the lowest effective dose, with careful counseling about impairment and a clear taper plan."
     }
   ],
-  "seo": {
-    "title": "Meprobamate (Equanil): Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Meprobamate (Equanil) for anxiety: dosing (1,200–1,600 mg/day), major sedation risks, dependence and withdrawal, interactions with alcohol/other sedatives, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/meprobamate-equanil](https://www.heypsych.com/treatments/meprobamate-equanil)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is meprobamate used for in psychiatry?",
@@ -389,5 +514,20 @@
       "q": "Is meprobamate safe in pregnancy or breastfeeding?",
       "a": "It’s generally avoided. It crosses the placenta and has been associated with congenital malformations in some reports. In breastfeeding, milk concentrations can be higher than maternal plasma, raising concern for infant sedation and feeding problems."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Meprobamate (Equanil): Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Meprobamate (Equanil) for anxiety: dosing (1,200–1,600 mg/day), major sedation risks, dependence and withdrawal, interactions with alcohol/other sedatives, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/meprobamate-equanil](https://www.heypsych.com/treatments/meprobamate-equanil)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

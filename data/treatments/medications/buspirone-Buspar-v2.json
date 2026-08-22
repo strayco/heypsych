@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "buspirone-buspar",
-  "type": "medication",
-  "name": "Buspirone (Buspar)",
-  "summary": "Daily, non-sedating anti-anxiety medication for ongoing worry (GAD). It does not work right away and does not cause physical dependence like benzodiazepines.",
-  "description": "Buspirone is an anti-anxiety medication usually taken every day for generalized anxiety. It works slowly over time—most people notice benefits after a couple of weeks, not within minutes or hours. Unlike drugs such as Xanax or Ativan, it does not cause strong sedation, does not give a \"buzz,\" and is not a controlled substance. It is sometimes used off-label for social anxiety or as an add-on to antidepressants in depression.",
-  "patient_summary": "Buspirone is a daily anxiety medicine that helps with constant worry and tension. It does not work instantly and you won’t usually feel “knocked out” or high on it. It’s not physically addictive like benzos, but you still shouldn’t change your dose without talking to your doctor.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Antianxiety Agent",
-      "Serotonin 5-HT1A Partial Agonist",
-      "Miscellaneous Anxiolytic"
-    ],
+  "identity": {
+    "slug": "buspirone-buspar",
+    "name": "Buspirone (Buspar)",
+    "generic_name": "buspirone",
     "brand_names": [
       "Bucapsol (US)",
       "AMB-Buspirone (Canada)",
@@ -25,70 +17,220 @@
       "Pro-Buspirone (Canada)",
       "TEVA-Buspirone (Canada)"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": null,
-    "pharmacologic_category": "Antianxiety Agent, Miscellaneous",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q422221"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Generalized Anxiety Disorder (GAD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Approved for generalized anxiety disorder and used for ongoing worry and tension rather than sudden panic."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes added to or used instead of antidepressants when social anxiety does not fully respond."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "off_label",
-        "context": "Used as an augmentation option when depression remains partially treated despite antidepressant therapy."
-      },
-      {
-        "slug": "post-cardiac-arrest",
-        "relationship": "off_label",
-        "context": "Occasionally used as part of a protocol to reduce shivering during targeted temperature management in the ICU."
-      }
-    ],
-    "contraindications": [
-      "Past allergic reaction to buspirone or its ingredients",
-      "Current or recent (within 14 days) use of MAOIs for depression or Parkinson’s disease (eg, phenelzine, tranylcypromine, isocarboxazid, selegiline, rasagiline)",
-      "Concurrent or recent (14 days) use of MAOIs, IV methylene blue, or linezolid (risk of serotonin syndrome)",
-      "Severe liver or severe kidney disease (Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Anxiety symptom reduction",
-      "percentage_value": "Variable",
-      "comparison_data": "Best for chronic worry, less helpful as a rescue for sudden attacks.",
-      "patient_text": "Buspirone is most helpful for people with day-to-day anxiety and worry. It does not work like a “take one and feel better in 30 minutes” pill. Benefits typically build over 2–4 weeks of regular use."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Antianxiety Agent",
+      "Serotonin 5-HT1A Partial Agonist",
+      "Miscellaneous Anxiolytic"
+    ]
+  },
+  "summary": "Daily, non-sedating anti-anxiety medication for ongoing worry (GAD). It does not work right away and does not cause physical dependence like benzodiazepines.",
+  "description": "Buspirone is an anti-anxiety medication usually taken every day for generalized anxiety. It works slowly over time—most people notice benefits after a couple of weeks, not within minutes or hours. Unlike drugs such as Xanax or Ativan, it does not cause strong sedation, does not give a \"buzz,\" and is not a controlled substance. It is sometimes used off-label for social anxiety or as an add-on to antidepressants in depression.",
+  "patient_summary": "Buspirone is a daily anxiety medicine that helps with constant worry and tension. It does not work instantly and you won’t usually feel “knocked out” or high on it. It’s not physically addictive like benzos, but you still shouldn’t change your dose without talking to your doctor.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Approved for generalized anxiety disorder and used for ongoing worry and tension rather than sudden panic.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes added to or used instead of antidepressants when social anxiety does not fully respond."
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "off_label",
+          "context": "Used as an augmentation option when depression remains partially treated despite antidepressant therapy."
+        },
+        {
+          "condition_slug": "post-cardiac-arrest",
+          "condition_name": "Post Cardiac Arrest",
+          "relationship": "off_label",
+          "context": "Occasionally used as part of a protocol to reduce shivering during targeted temperature management in the ICU."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapidly absorbed, but heavily broken down by the liver on first pass; only a small portion reaches the bloodstream unchanged.",
-      "bioavailability": "Low; increased with food.",
-      "onset": "Clinical benefit typically noticed after 2–4 weeks of scheduled dosing.",
-      "peak_plasma": "About 40–90 minutes after a dose.",
-      "half_life": "Around 2–3 hours; longer in liver or kidney impairment.",
-      "duration_IR": "Requires dosing 2–3 times per day for stable levels.",
-      "metabolism": "Liver (mainly CYP3A4) to multiple metabolites including an active metabolite (1-PP).",
-      "excretion": "Through urine and stool, mostly as metabolites.",
-      "protein_binding": "About 86%",
-      "food_effect": "Food can increase the amount of drug absorbed; consistency with or without food is important for steady levels."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical benefit typically noticed after 2–4 weeks of scheduled dosing."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "Up to ~10–12%",
+          "notes": "Often mild and worst when first starting or after dose increases. Standing up slowly and hydrating can help."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Around 5–10%",
+          "notes": "Usually improves as your body adjusts. Let your doctor know if it’s severe or persistent."
+        },
+        {
+          "effect": "Nausea / Stomach upset",
+          "incidence": "Up to ~8–10%",
+          "notes": "Can be reduced by taking with a small snack and being consistent with or without food."
+        },
+        {
+          "effect": "Nervousness or excitement",
+          "incidence": "Around 2–5%",
+          "notes": "Some people feel a bit jittery at first. This often fades; if not, dose changes may help."
+        },
+        {
+          "effect": "Drowsiness",
+          "incidence": "Up to ~10%",
+          "notes": "Less sedating than benzos, but can still cause some sleepiness in a subset of people."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe allergic reaction: rash, hives, swelling of face/lips/tongue/throat, trouble breathing—EMERGENCY."
+        },
+        {
+          "risk": "Serotonin syndrome (usually when mixed with other serotonin drugs): agitation, confusion, fever, sweating, shaking, stiff muscles, fast heart rate."
+        },
+        {
+          "risk": "Movement disorders: new or worsening tremor, muscle stiffness, trouble sitting still, abnormal body or facial movements."
+        },
+        {
+          "risk": "Worsening mood or suicidal thoughts (rare): any new or sudden changes in mood or behavior should be reported."
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Past allergic reaction to buspirone or its ingredients"
+        },
+        {
+          "contraindication": "Current or recent (within 14 days) use of MAOIs for depression or Parkinson’s disease (eg, phenelzine, tranylcypromine, isocarboxazid, selegiline, rasagiline)"
+        },
+        {
+          "contraindication": "Concurrent or recent (14 days) use of MAOIs, IV methylene blue, or linezolid (risk of serotonin syndrome)"
+        },
+        {
+          "contraindication": "Severe liver or severe kidney disease (Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "Serotonin syndrome risk when combined with other serotonin-boosting drugs (SSRIs, SNRIs, certain migraine meds, MAOIs, linezolid, methylene blue).",
+        "May cause movement problems in rare cases (restlessness, tremor, stiffness, abnormal movements), especially at higher doses or in people with Parkinson’s disease.",
+        "Dizziness can increase fall risk, particularly in older adults or when combined with alcohol or other sedating drugs.",
+        "Not recommended in severe liver or kidney impairment (higher drug levels and longer half-life).",
+        "Does not cross-tolerate with benzodiazepines—if switching from a benzo, the benzo must be tapered separately."
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (phenelzine, tranylcypromine, isocarboxazid, selegiline, rasagiline)",
+          "mechanism": "Dangerous blood pressure spikes and serotonin toxicity.",
+          "action": "Do NOT combine. Wait at least 14 days between stopping an MAOI and starting buspirone (and vice versa)."
+        },
+        {
+          "interactant": "Linezolid or IV Methylene Blue",
+          "mechanism": "Higher risk of serotonin syndrome.",
+          "action": "Avoid if possible. If absolutely needed, close monitoring is required."
+        },
+        {
+          "interactant": "SSRIs, SNRIs, triptans, other serotonergic agents",
+          "mechanism": "Serotonin syndrome (especially with higher doses or multiple serotonin drugs).",
+          "action": "Can be used together with careful monitoring. Report symptoms like agitation, shaking, or fever."
+        },
+        {
+          "interactant": "Strong CYP3A4 inhibitors (nefazodone, certain azole antifungals, some HIV meds, some macrolide antibiotics)",
+          "mechanism": "Higher buspirone levels; more side effects (dizziness, nausea, serotonin symptoms).",
+          "action": "Start with very low buspirone doses (often 2.5 mg once or twice daily) and titrate slowly."
+        },
+        {
+          "interactant": "Strong CYP3A4 inducers (carbamazepine, rifampin, St. John’s wort)",
+          "mechanism": "Lower buspirone levels and reduced effect.",
+          "action": "May require higher doses or choosing another anxiety treatment."
+        },
+        {
+          "interactant": "Alcohol and other CNS depressants",
+          "mechanism": "More dizziness, drowsiness, and impaired coordination.",
+          "action": "Best to minimize or avoid, especially when starting or increasing dose."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "Raises buspirone blood levels and side effect risk.",
+          "action": "Avoid large amounts of grapefruit products."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Anxiety symptoms: track worry, tension, irritability, sleep, and function over weeks."
+        },
+        {
+          "parameter": "Side effects: dizziness, nausea, headache, restlessness, or sleep changes."
+        },
+        {
+          "parameter": "Movement symptoms: new tremor, stiffness, pacing, or unusual body movements."
+        },
+        {
+          "parameter": "Signs of serotonin syndrome if combined with other serotonergic drugs: agitation, fever, sweating, shaking, muscle stiffness, fast heart rate."
+        },
+        {
+          "parameter": "Liver and kidney function: check in patients with known liver/kidney issues or those on higher doses long term."
+        },
+        {
+          "parameter": "Fall risk in older adults: balance, gait, blood pressure changes when standing."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "There’s not a lot of human data. No clear signal of major birth defects, but other medications may be preferred when starting treatment in pregnancy. Untreated anxiety itself can harm pregnancy, so don’t stop medication abruptly—discuss with your OB/psychiatrist.",
+        "lactation": "Very limited data; small reports suggest low exposure in milk, but the manufacturer advises caution and often recommends avoiding it. If used, the baby should be monitored for unusual sleepiness, feeding problems, or irritability.",
+        "pediatric": "Not strongly supported by evidence. Trials in children and teens with GAD did not clearly outperform placebo. Usually not a first choice in kids; SSRIs plus therapy are preferred.",
+        "geriatric": "Older adults may be more sensitive to dizziness and falls. Start at low doses and titrate slowly. Buspirone can be a safer alternative to benzos in this group.",
+        "renal_impairment": "Kidney disease increases drug and metabolite levels. Start low and titrate carefully; avoid or keep doses modest in advanced kidney failure.",
+        "hepatic_impairment": "Buspirone levels can be 10–20 times higher in cirrhosis. Use much lower doses or choose another medication in moderate liver disease; avoid in severe liver failure."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapidly absorbed, but heavily broken down by the liver on first pass; only a small portion reaches the bloodstream unchanged.",
+          "bioavailability": "Low; increased with food.",
+          "peak_plasma": "About 40–90 minutes after a dose.",
+          "half_life": "Around 2–3 hours; longer in liver or kidney impairment.",
+          "metabolism": "Liver (mainly CYP3A4) to multiple metabolites including an active metabolite (1-PP).",
+          "excretion": "Through urine and stool, mostly as metabolites.",
+          "protein_binding": "About 86%",
+          "food_effect": "Food can increase the amount of drug absorbed; consistency with or without food is important for steady levels."
+        },
+        "dosing": {
+          "titration": "Buspirone dosing is usually started low and increased slowly to balance benefit and side effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Buspirone does not cause classic physical dependence like benzos or opioids, and there is no standard, mandatory taper schedule. However, it’s still better not to stop suddenly without talking to your prescriber."
+        }
+      }
     }
   },
   "sections": [
@@ -112,7 +254,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experiences vary, but these are common themes people report:",
       "items": [
         {
           "category": "Gradual relief (not instant)",
@@ -136,7 +277,8 @@
           ],
           "note": "Dizziness and mild stomach upset are common at the beginning and often improve with time."
         }
-      ]
+      ],
+      "intro": "Experiences vary, but these are common themes people report:"
     },
     {
       "type": "onset_duration",
@@ -152,10 +294,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Buspirone is modestly effective for generalized anxiety. It is often chosen because it does not cause dependence, strong sedation, or cognitive slowing like benzos. It is not ideal for sudden panic attacks or for people wanting rapid-on/rapid-off effects.",
       "metric": "Reduction in worry and tension over time",
       "value": "Moderate",
       "comparison": "Less dramatic than benzodiazepines but safer long-term.",
-      "text": "Buspirone is modestly effective for generalized anxiety. It is often chosen because it does not cause dependence, strong sedation, or cognitive slowing like benzos. It is not ideal for sudden panic attacks or for people wanting rapid-on/rapid-off effects.",
       "clinical_details": "Controlled trials show buspirone improves core GAD symptoms (worry, tension, restlessness) over several weeks. It does not show strong benefit for immediate panic relief. It may not separate from placebo in all pediatric studies, and its role in children is less clear.",
       "citation": {
         "authors": null,
@@ -237,7 +379,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Buspirone is mainly broken down by CYP3A4 in the liver and also affects serotonin. Other medications or substances that change these systems can cause problems.",
       "items": [
         {
           "with": "MAOIs (phenelzine, tranylcypromine, isocarboxazid, selegiline, rasagiline)",
@@ -274,7 +415,8 @@
           "risk": "Raises buspirone blood levels and side effect risk.",
           "action": "Avoid large amounts of grapefruit products."
         }
-      ]
+      ],
+      "intro": "Buspirone is mainly broken down by CYP3A4 in the liver and also affects serotonin. Other medications or substances that change these systems can cause problems."
     },
     {
       "type": "tapering",
@@ -369,21 +511,29 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Buspirone (Buspar): Uses, Dosing, Side Effects & How It Compares to Benzos",
-    "description": "Buspirone (Buspar) is a daily, non-addictive anxiety medication for generalized anxiety disorder. Learn how it works, how long it takes to work, dosing, side effects, and how it differs from Xanax and other benzodiazepines.",
-    "canonical": "https://www.heypsych.com/treatments/buspirone-buspar",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and aligned with buspirone prescribing information and current anxiety treatment guidelines."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Buspirone",
+      "url": "https://www.accessdata.fda.gov/",
+      "description": "Official labeling with full prescribing info."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "UpToDate – Pharmacotherapy for Generalized Anxiety Disorder",
+      "url": "https://www.uptodate.com/",
+      "description": "Evidence summary and treatment algorithms (subscription)."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "National Pregnancy Registry for Psychiatric Medications",
+      "url": "https://womensmentalhealth.org/research/pregnancyregistry/antidepressants/",
+      "description": "Tracks outcomes of psychiatric meds in pregnancy."
+    }
+  ],
   "faqs": [
     {
       "q": "What is buspirone used for?",
@@ -425,5 +575,20 @@
       "q": "Do I have to take buspirone with food?",
       "a": "You can take it with or without food, but you should be consistent. Always take it the same way (always with food or always on an empty stomach) so your body absorbs it in a predictable way."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Buspirone (Buspar): Uses, Dosing, Side Effects & How It Compares to Benzos",
+    "description": "Buspirone (Buspar) is a daily, non-addictive anxiety medication for generalized anxiety disorder. Learn how it works, how long it takes to work, dosing, side effects, and how it differs from Xanax and other benzodiazepines.",
+    "canonical": "https://www.heypsych.com/treatments/buspirone-buspar",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and aligned with buspirone prescribing information and current anxiety treatment guidelines."
+  }
 }

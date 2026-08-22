@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-c",
-  "type": "supplement",
-  "name": "Vitamin C (Ascorbic Acid)",
-  "summary": "Vitamin C, or ascorbic acid, is an essential water-soluble vitamin with antioxidant properties, important for collagen synthesis, immune function, iron absorption, and wound healing. Severe deficiency causes scurvy.",
-  "description": "Vitamin C is a potent antioxidant and enzymatic cofactor involved in hydroxylation reactions. It is critical for collagen production, neurotransmitter synthesis, and immune defense. Humans cannot synthesize vitamin C, requiring dietary intake from fruits and vegetables. Deficiency results in scurvy, with symptoms including bleeding gums, poor wound healing, fatigue, and anemia. Beyond deficiency prevention, vitamin C is widely studied for its role in immunity, skin health, cardiovascular protection, and as an adjunctive therapy in infections and cancer.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "antioxidant",
-    "immune support",
-    "skin health",
-    "collagen"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Citrus fruits, strawberries, kiwi, bell peppers, broccoli, tomatoes",
+  "identity": {
+    "slug": "vitamin-c",
+    "name": "Vitamin C (Ascorbic Acid)",
+    "generic_name": "vitamin c",
+    "brand_names": [
+      "Ascorbic Acid",
+      "Ester-C",
+      "C-1000",
+      "Redoxon"
+    ],
+    "aliases": [
+      "Ascorbate"
+    ],
+    "wikidata_qid": "Q199678"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Immunology",
@@ -26,80 +29,169 @@
       "Collagen synthesis",
       "Immune modulation"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous (IV high-dose)"
-    ],
-    "prescription_status": "Available OTC",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Ascorbic Acid",
-      "Ester-C",
-      "C-1000",
-      "Redoxon"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Immunology",
-      "Dermatology",
-      "Oncology"
-    ],
-    "wikidata_qid": "Q199678"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Vitamin C deficiency (scurvy)",
-      "Supportive therapy in wound healing",
-      "Adjunct to improve iron absorption in anemia"
-    ],
-    "off_label_uses": [
-      "Adjunctive therapy in infections (e.g., colds, sepsis)",
-      "High-dose IV vitamin C in oncology (experimental)",
-      "Skin health and photoaging prevention"
-    ],
-    "contraindications": [
-      "Known hypersensitivity",
-      "Caution in patients with history of kidney stones (oxalate stones)",
-      "Caution in G6PD deficiency (risk of hemolysis with high doses)"
-    ],
-    "monitoring_required": [
-      "Kidney function in high-dose IV use",
-      "Oxalate levels if prolonged high-dose therapy"
-    ],
-    "efficacy_rating": {
-      "scurvy treatment": 5,
-      "immune support (general colds)": 2,
-      "iron absorption": 4,
-      "skin and wound healing": 4,
-      "oncology (high-dose IV)": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin C",
-      "Ascorbic Acid",
-      "Ester-C"
-    ],
-    "synonyms": [
-      "Ascorbate"
-    ],
-    "common_misspellings": [
-      "vit c",
-      "ascorbic",
-      "vitamin see"
+    "tags": [
+      "vitamin",
+      "antioxidant",
+      "immune support",
+      "skin health",
+      "collagen"
     ]
+  },
+  "summary": "Vitamin C, or ascorbic acid, is an essential water-soluble vitamin with antioxidant properties, important for collagen synthesis, immune function, iron absorption, and wound healing. Severe deficiency causes scurvy.",
+  "description": "Vitamin C is a potent antioxidant and enzymatic cofactor involved in hydroxylation reactions. It is critical for collagen production, neurotransmitter synthesis, and immune defense. Humans cannot synthesize vitamin C, requiring dietary intake from fruits and vegetables. Deficiency results in scurvy, with symptoms including bleeding gums, poor wound healing, fatigue, and anemia. Beyond deficiency prevention, vitamin C is widely studied for its role in immunity, skin health, cardiovascular protection, and as an adjunctive therapy in infections and cancer.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "vitamin-c-deficiency-scurvy",
+          "condition_name": "Vitamin C deficiency (scurvy)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "supportive-therapy-in-wound-healing",
+          "condition_name": "Supportive therapy in wound healing",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunct-to-improve-iron-absorption-in-anemia",
+          "condition_name": "Adjunct to improve iron absorption in anemia",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-therapy-in-infections-e-g-colds-sepsis",
+          "condition_name": "Adjunctive therapy in infections (e.g., colds, sepsis)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "high-dose-iv-vitamin-c-in-oncology-experimental",
+          "condition_name": "High-dose IV vitamin C in oncology (experimental)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "skin-health-and-photoaging-prevention",
+          "condition_name": "Skin health and photoaging prevention",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "scurvy treatment": {
+          "rating": 5
+        },
+        "immune support (general colds)": {
+          "rating": 2
+        },
+        "iron absorption": {
+          "rating": 4
+        },
+        "skin and wound healing": {
+          "rating": 4
+        },
+        "oncology (high-dose IV)": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous (IV high-dose)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Diarrhea"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Abdominal cramps"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Kidney stone formation (oxalate stones)"
+        },
+        {
+          "risk": "Hemolysis in G6PD deficiency (rare, high doses)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity"
+        },
+        {
+          "contraindication": "Caution in patients with history of kidney stones (oxalate stones)"
+        },
+        {
+          "contraindication": "Caution in G6PD deficiency (risk of hemolysis with high doses)"
+        }
+      ],
+      "precautions": [
+        "Excess intake can lead to gastrointestinal upset and kidney stones.",
+        "Use caution in patients with renal impairment or G6PD deficiency."
+      ],
+      "interactions": [
+        {
+          "interactant": "Iron supplements",
+          "mechanism": "Increases absorption",
+          "action": "Beneficial but monitor for iron overload in hemochromatosis"
+        },
+        {
+          "interactant": "Chemotherapy agents",
+          "mechanism": "May interfere with pro-oxidant mechanisms",
+          "action": "Avoid high-dose unless directed by oncologist"
+        },
+        {
+          "interactant": "Aluminum-containing antacids",
+          "mechanism": "Increased aluminum absorption",
+          "action": "Use cautiously in renal impairment"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Kidney function in high-dose use"
+        },
+        {
+          "parameter": "Clinical signs of deficiency resolution"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at RDA doses; avoid high doses",
+        "lactation": "Safe at RDA doses",
+        "pediatric": "Safe within RDA; deficiency must be treated",
+        "geriatric": "Safe; may have increased need due to dietary gaps"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Citrus fruits, strawberries, kiwi, bell peppers, broccoli, tomatoes",
+        "regulatory_notes": "Approved vitamin; dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +318,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Vitamin C",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminC-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Carr AC, Maggini S. Vitamin C and immune function. Nutrients. 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29099763/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Nauman G, et al. Systematic review of high-dose IV vitamin C in cancer therapy. Antioxidants. 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29534466/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin C",
+      "Ascorbic Acid",
+      "Ester-C"
+    ],
+    "synonyms": [
+      "Ascorbate"
+    ],
+    "common_misspellings": [
+      "vit c",
+      "ascorbic",
+      "vitamin see"
+    ]
+  },
   "seo": {
     "title": "Vitamin C (Ascorbic Acid) – Uses, Deficiency, Immunity, Antioxidant, Dosing",
     "description": "Vitamin C is an essential antioxidant vitamin for collagen, immunity, and wound healing. Learn about deficiency, scurvy, dosing, IV therapy, and safety.",

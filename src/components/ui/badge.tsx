@@ -1,21 +1,22 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?:
     | "default"
-    | "medication"
-    | "supplement"
-    | "interventional"
-    | "therapy"
-    | "alternative"
-    | "investigational"
-    | "intervention"
-    | "treatment"
     | "primary"
     | "success"
     | "warning"
     | "error"
-    | "outline";
+    | "outline"
+    | "treatment"
+    | "tools"
+    | "medication"
+    | "supplement"
+    | "therapy"
+    | "investigational"
+    | "interventional"
+    | "alternative";
   size?: "sm" | "md" | "lg";
 }
 
@@ -28,31 +29,45 @@ export const Badge: React.FC<BadgeProps> = ({
   const baseClasses = "inline-flex items-center rounded-full font-medium transition-colors";
 
   const variantClasses = {
-    default: "bg-neutral-100 text-neutral-900 hover:bg-neutral-200",
-    medication: "bg-blue-100 text-blue-900 hover:bg-blue-200",
-    supplement: "bg-green-100 text-green-900 hover:bg-green-200",
-    interventional: "bg-purple-100 text-purple-900 hover:bg-purple-200",
-    intervention: "bg-purple-100 text-purple-900 hover:bg-purple-200",
-    therapy: "bg-orange-100 text-orange-900 hover:bg-orange-200",
-    alternative: "bg-amber-100 text-amber-900 hover:bg-amber-200",
-    investigational: "bg-teal-100 text-teal-900 hover:bg-teal-200",
-    treatment: "bg-indigo-100 text-indigo-900 hover:bg-indigo-200",
-    primary: "bg-blue-100 text-blue-900 hover:bg-blue-200",
-    success: "bg-green-100 text-green-900 hover:bg-green-200",
-    warning: "bg-yellow-100 text-yellow-900 hover:bg-yellow-200",
-    error: "bg-red-100 text-red-900 hover:bg-red-200",
-    outline: "border border-neutral-300 text-neutral-900 hover:bg-neutral-50",
+    // Default - Subtle gray
+    default: "bg-fill-secondary text-label-primary",
+    // Primary - Blue accent
+    primary: "bg-accent-tint text-accent border border-accent-border",
+    // Success - Green
+    success: "bg-positive-tint text-positive-700 border border-positive-border",
+    // Warning - Orange
+    warning: "bg-caution-tint text-caution-700 border border-caution-border",
+    // Error - Red
+    error: "bg-negative-tint text-negative-700 border border-negative-border",
+    // Outline - Bordered
+    outline: "border border-separator text-label-secondary hover:bg-fill-quaternary",
+    // Treatment - Indigo (clinical)
+    treatment: "bg-treatment-tint text-treatment-700 border border-treatment-border",
+    // Tools - Teal (technology)
+    tools: "bg-tools-tint text-tools-700 border border-tools-border",
+    // Medication specific
+    medication: "bg-accent-tint text-accent-700 border border-accent-border",
+    // Supplement specific
+    supplement: "bg-positive-50 text-positive-700 border border-positive-200",
+    // Therapy specific
+    therapy: "bg-orange-50 text-orange-700 border border-orange-200",
+    // Investigational
+    investigational: "bg-tools-50 text-tools-700 border border-tools-200",
+    // Interventional procedures
+    interventional: "bg-treatment-tint text-treatment-700 border border-treatment-border",
+    // Alternative treatments
+    alternative: "bg-positive-tint text-positive-700 border border-positive-border",
   };
 
   const sizeClasses = {
-    sm: "px-2 py-1 text-xs",
+    sm: "px-2 py-0.5 text-xs",
     md: "px-3 py-1 text-sm",
-    lg: "px-4 py-2 text-base",
+    lg: "px-4 py-1.5 text-sm",
   };
 
   return (
     <div
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
       {...props}
     />
   );

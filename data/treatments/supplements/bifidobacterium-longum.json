@@ -1,22 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bifidobacterium-longum",
-  "type": "supplement",
-  "name": "Bifidobacterium longum",
-  "summary": "A probiotic bacterium studied for digestive health, immune balance, and emerging benefits in stress, mood, and cognitive function via the gut–brain axis.",
-  "description": "Bifidobacterium longum is one of the earliest colonizers of the human gut microbiome and plays a key role in intestinal health. It ferments carbohydrates into short-chain fatty acids (SCFAs), supports barrier integrity, and reduces inflammation. Certain strains, such as B. longum subsp. infantis and B. longum 1714, have been investigated for gastrointestinal conditions, immune regulation, metabolic health, and psychiatric disorders, including anxiety, depression, and cognitive decline.",
-  "category": "supplements",
-  "tags": [
-    "probiotic",
-    "gut-microbiome",
-    "digestive-health",
-    "immune-modulation",
-    "gut-brain-axis",
-    "psychobiotic"
-  ],
-  "metadata": {
-    "compound_type": "Probiotic bacterium",
-    "natural_source": "Human gut microbiota (infants and adults), fermented foods",
+  "identity": {
+    "slug": "bifidobacterium-longum",
+    "name": "Bifidobacterium longum",
+    "brand_names": [
+      "Align (with B. longum strains)",
+      "Yakult probiotic blends",
+      "Culturelle probiotics"
+    ],
+    "aliases": [
+      "B. longum",
+      "Probiotic bacterium longum"
+    ],
+    "wikidata_qid": "Q310698"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Digestive Health",
       "Immune Support",
@@ -29,78 +30,168 @@
       "Neuroimmune Regulation",
       "Gut–Brain Axis"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement/probiotic)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Align (with B. longum strains)",
-      "Yakult probiotic blends",
-      "Culturelle probiotics"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Generally Recognized as Safe (GRAS) for some strains",
-    "age_groups": [
-      "Infant",
-      "Child",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term (strain-dependent)"
-    ],
-    "specialty_areas": [
-      "Gastroenterology",
-      "Allergy/Immunology",
-      "Psychiatry (investigational)"
-    ],
-    "wikidata_qid": "Q310698"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Irritable Bowel Syndrome (IBS)",
-      "Constipation and diarrhea regulation",
-      "Allergic diseases and immune balance",
-      "Supportive gut microbiome health"
-    ],
-    "off_label_uses": [
-      "Stress reduction and anxiety (psychobiotic strains such as B. longum 1714)",
-      "Adjunctive treatment in depression (gut–brain axis)",
-      "Cognitive support in older adults (strain-dependent)",
-      "Metabolic health (insulin sensitivity and lipid metabolism, early research)"
-    ],
-    "contraindications": [
-      "Severe immunocompromise",
-      "Central venous catheter patients (risk of contamination/infection)"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Immune status in at-risk patients"
-    ],
-    "efficacy_rating": {
-      "gut-health": 4,
-      "immune-support": 3,
-      "psychiatric-applications": 3,
-      "safety-tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Bifidobacterium longum",
-      "B. longum",
-      "probiotic"
-    ],
-    "synonyms": [
-      "B. longum",
-      "Probiotic bacterium longum"
-    ],
-    "common_misspellings": [
-      "bifidobactrium longum",
-      "bifidobacter longam"
+    "tags": [
+      "probiotic",
+      "gut-microbiome",
+      "digestive-health",
+      "immune-modulation",
+      "gut-brain-axis",
+      "psychobiotic"
     ]
+  },
+  "summary": "A probiotic bacterium studied for digestive health, immune balance, and emerging benefits in stress, mood, and cognitive function via the gut–brain axis.",
+  "description": "Bifidobacterium longum is one of the earliest colonizers of the human gut microbiome and plays a key role in intestinal health. It ferments carbohydrates into short-chain fatty acids (SCFAs), supports barrier integrity, and reduces inflammation. Certain strains, such as B. longum subsp. infantis and B. longum 1714, have been investigated for gastrointestinal conditions, immune regulation, metabolic health, and psychiatric disorders, including anxiety, depression, and cognitive decline.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "irritable-bowel-syndrome-ibs",
+          "condition_name": "Irritable Bowel Syndrome (IBS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "constipation-and-diarrhea-regulation",
+          "condition_name": "Constipation and diarrhea regulation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "allergic-diseases-and-immune-balance",
+          "condition_name": "Allergic diseases and immune balance",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "supportive-gut-microbiome-health",
+          "condition_name": "Supportive gut microbiome health",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "stress-reduction-and-anxiety-psychobiotic-strains-such-as-b-longum-1714",
+          "condition_name": "Stress reduction and anxiety (psychobiotic strains such as B. longum 1714)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-treatment-in-depression-gut-brain-axis",
+          "condition_name": "Adjunctive treatment in depression (gut–brain axis)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-support-in-older-adults-strain-dependent",
+          "condition_name": "Cognitive support in older adults (strain-dependent)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "metabolic-health-insulin-sensitivity-and-lipid-metabolism-early-research",
+          "condition_name": "Metabolic health (insulin sensitivity and lipid metabolism, early research)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "gut-health": {
+          "rating": 4
+        },
+        "immune-support": {
+          "rating": 3
+        },
+        "psychiatric-applications": {
+          "rating": 3
+        },
+        "safety-tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term (strain-dependent)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild gas"
+        },
+        {
+          "effect": "Bloating"
+        },
+        {
+          "effect": "Loose stools (temporary)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare systemic infection in immunocompromised individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe immunocompromise"
+        },
+        {
+          "contraindication": "Central venous catheter patients (risk of contamination/infection)"
+        }
+      ],
+      "precautions": [
+        "Efficacy is highly strain-dependent.",
+        "Use caution in immunocompromised patients.",
+        "Not a replacement for psychiatric medications in depression or anxiety."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antibiotics",
+          "mechanism": "Probiotic survival reduced",
+          "action": "Separate dosing by several hours"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "Infection risk may increase",
+          "action": "Use with caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI symptom improvement"
+        },
+        {
+          "parameter": "Psychological symptom tracking in stress/anxiety use"
+        },
+        {
+          "parameter": "Signs of infection in high-risk groups"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally safe; may reduce maternal anxiety and improve infant microbiota",
+        "lactation": "Safe; supports maternal and infant gut health",
+        "pediatric": "Widely used in infants and children; particularly B. longum subsp. infantis",
+        "geriatric": "Safe; emerging evidence for cognition and mood support"
+      }
+    },
+    "access": {
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Probiotic bacterium",
+        "natural_source": "Human gut microbiota (infants and adults), fermented foods",
+        "regulatory_notes": "Generally Recognized as Safe (GRAS) for some strains"
+      }
+    }
   },
   "sections": [
     {
@@ -221,6 +312,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Bifidobacterium longum",
+      "url": "https://examine.com/supplements/bifidobacterium-longum/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubMed: Bifidobacterium longum psychobiotic",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Kelly JR et al., Psychobiotics and the gut–brain axis (2016)",
+      "url": "https://doi.org/10.1016/j.biopsych.2016.05.017"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Bifidobacterium longum",
+      "B. longum",
+      "probiotic"
+    ],
+    "synonyms": [
+      "B. longum",
+      "Probiotic bacterium longum"
+    ],
+    "common_misspellings": [
+      "bifidobactrium longum",
+      "bifidobacter longam"
+    ]
+  },
   "seo": {
     "title": "Bifidobacterium longum: Gut Health and Psychobiotic Benefits",
     "description": "Comprehensive guide to Bifidobacterium longum, a probiotic studied for digestive health, immunity, stress resilience, mood regulation, and cognition.",

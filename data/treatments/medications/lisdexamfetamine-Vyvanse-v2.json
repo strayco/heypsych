@@ -1,82 +1,242 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lisdexamfetamine-vyvanse",
-  "type": "medication",
-  "name": "Lisdexamfetamine (Vyvanse)",
-  "summary": "Once-daily stimulant (a prodrug of dextroamphetamine) used for ADHD and moderate-to-severe binge eating disorder. Can improve focus and impulse control for 8–14 hours, but carries Schedule II misuse risk and can raise heart rate and blood pressure.",
-  "description": "Vyvanse is a long-acting stimulant that helps with ADHD symptoms like distractibility, impulsivity, and procrastination. In adults, it’s also approved for moderate-to-severe binge eating disorder. It’s taken once in the morning and typically lasts most of the day. Common issues are decreased appetite, insomnia, dry mouth, jitteriness, and irritability—especially during the first few weeks or after dose increases. Because it’s a controlled substance with abuse and dependence risk, it needs careful prescribing and monitoring.",
-  "patient_summary": "Vyvanse is a once-daily stimulant for ADHD (and for moderate-to-severe binge eating disorder in adults). It can make it easier to start tasks, stay on track, and resist impulsive choices, often for 8–14 hours. The trade-offs are appetite suppression and sleep problems, plus the need for safety checks around heart risk and misuse risk.",
-  "category": "medications/adhd",
-  "metadata": {
+  "identity": {
+    "slug": "lisdexamfetamine-vyvanse",
+    "name": "Lisdexamfetamine (Vyvanse)",
+    "generic_name": "lisdexamfetamine",
+    "brand_names": [
+      "Vyvanse"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd",
     "drug_classes": [
       "Central Nervous System Stimulant",
       "Amphetamine (Prodrug)",
       "ADHD Medication"
-    ],
-    "brand_names": [
-      "Vyvanse"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule II (US); C-II (Canada)",
-    "generic_available": true,
-    "fda_approval_year": 2007,
-    "pharmacologic_category": "Central Nervous System Stimulant (Prodrug converted to dextroamphetamine)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD) (Adults and ages 6+)",
-      "Moderate to Severe Binge Eating Disorder (Adults)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for ADHD in adults and in children/adolescents ages 6+. Typically used as part of a comprehensive treatment plan (skills/behavior supports + medication)."
-      },
-      {
-        "slug": "binge-eating-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for moderate to severe binge eating disorder in adults. Not a weight-loss medication, and it should be stopped if binge eating doesn’t improve."
-      },
-      {
-        "slug": "executive-dysfunction",
-        "relationship": "off_label",
-        "context": "Sometimes used to target executive dysfunction (task initiation, follow-through) when ADHD symptoms are the driver—but the goal is function, not “super-productivity.”"
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to amphetamine products or any component of the formulation",
-      "Concurrent use of an MAO inhibitor (including linezolid or IV methylene blue) or use within 14 days of stopping an MAO inhibitor"
-    ],
-    "efficacy_response": {
-      "metric": "Functional improvement (attention, impulse control, task follow-through)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Vyvanse tends to help when ADHD symptoms show up as distractibility, impulsive choices, or that “I know what to do, I just can’t start” wall. The goal isn’t perfection—it’s a noticeable, sustainable improvement in daily function (school/work performance, fewer careless mistakes, less time lost to task-switching, and better follow-through).",
-      "citation_tag": "FDA Label (Vyvanse)"
+  "summary": "Once-daily stimulant (a prodrug of dextroamphetamine) used for ADHD and moderate-to-severe binge eating disorder. Can improve focus and impulse control for 8–14 hours, but carries Schedule II misuse risk and can raise heart rate and blood pressure.",
+  "description": "Vyvanse is a long-acting stimulant that helps with ADHD symptoms like distractibility, impulsivity, and procrastination. In adults, it’s also approved for moderate-to-severe binge eating disorder. It’s taken once in the morning and typically lasts most of the day. Common issues are decreased appetite, insomnia, dry mouth, jitteriness, and irritability—especially during the first few weeks or after dose increases. Because it’s a controlled substance with abuse and dependence risk, it needs careful prescribing and monitoring.",
+  "patient_summary": "Vyvanse is a once-daily stimulant for ADHD (and for moderate-to-severe binge eating disorder in adults). It can make it easier to start tasks, stay on track, and resist impulsive choices, often for 8–14 hours. The trade-offs are appetite suppression and sleep problems, plus the need for safety checks around heart risk and misuse risk.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for ADHD in adults and in children/adolescents ages 6+. Typically used as part of a comprehensive treatment plan (skills/behavior supports + medication).",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge Eating Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for moderate to severe binge eating disorder in adults. Not a weight-loss medication, and it should be stopped if binge eating doesn’t improve.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "executive-dysfunction",
+          "condition_name": "Executive Dysfunction",
+          "relationship": "off_label",
+          "context": "Sometimes used to target executive dysfunction (task initiation, follow-through) when ADHD symptoms are the driver—but the goal is function, not “super-productivity.”"
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (prodrug is absorbed and then converted to active dextroamphetamine)",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Varies; many people feel it within 1–2 hours after a morning dose",
-      "peak_plasma": "Dextroamphetamine peaks around ~3.5–4.7 hours depending on formulation and food",
-      "half_life": "Lisdexamfetamine: <1 hour; Dextroamphetamine: ~10–13 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "8–14 hours (typical clinical duration range)",
-      "metabolism": "Converted in blood (red blood cells) to dextroamphetamine and L-lysine; dextroamphetamine is metabolized in part by CYP2D6",
-      "excretion": "Urine (major; includes amphetamine-related compounds and metabolites)",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "High-fat meal can delay time-to-peak (Tmax) by ~1 hour; can be taken with or without food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Varies; many people feel it within 1–2 hours after a morning dose"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Decreased appetite",
+          "incidence": "Adults: 8% to 27%; Children/Adolescents: 34% to 39%",
+          "notes": "This is the classic stimulant side effect. If you don’t plan food, you can end up shaky, irritable, headachy, and sleepless. A high-protein breakfast and a scheduled lunch (even if it’s small) can make a big difference."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "13% to 27%",
+          "notes": "Usually a timing or dose issue. Morning-only dosing is standard. If sleep is consistently worse, the plan needs adjusting—because untreated insomnia will destroy the benefits."
+        },
+        {
+          "effect": "Dry mouth",
+          "incidence": "Adults: 26% to 36%",
+          "notes": "Hydration helps, and sugar-free gum/candy can help. If dry mouth is intense, it can increase dental risk over time—don’t ignore it."
+        },
+        {
+          "effect": "Anxiety / jitteriness / restlessness",
+          "incidence": "Adults: Anxiety 5% to 6%; Jitteriness 4% to 6%; Restlessness 2% to 3%",
+          "notes": "Sometimes this means the dose is too high, caffeine is stacking, sleep is poor, or baseline anxiety isn’t being treated. “More stimulant” usually makes this worse, not better."
+        },
+        {
+          "effect": "Irritability",
+          "incidence": "Children: 10% (reported); Adults: variable",
+          "notes": "Irritability can be a dose/timing issue, a hunger issue, a rebound issue as it wears off, or a clue that mood/anxiety needs attention."
+        },
+        {
+          "effect": "GI upset (nausea/constipation/diarrhea)",
+          "incidence": "Nausea 6% to 7%; Constipation (adults) 6%; Diarrhea (adults) 4% to 7%",
+          "notes": "Often improves with food timing, hydration, and dose adjustments. If it’s persistent or severe, reassess."
+        },
+        {
+          "effect": "Increased heart rate / blood pressure / palpitations",
+          "incidence": "Adults: Increased BP 3%; Increased HR 2% to 7%; Palpitations 2%",
+          "notes": "This is why we check vitals. If you’re feeling chest pain, fainting, or severe shortness of breath, that’s urgent."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serious cardiovascular events (rare): myocardial infarction, stroke, sudden cardiac death—risk is higher with underlying heart disease, higher doses, dehydration, or extreme exertion"
+        },
+        {
+          "risk": "New or worsening psychosis/mania: paranoia, hallucinations, delusional thinking, or manic escalation (can happen even without prior history, but risk is higher with vulnerability)"
+        },
+        {
+          "risk": "Serotonin syndrome (rare but dangerous): agitation, sweating, diarrhea, tremor, fever, muscle rigidity—especially with serotonergic meds or certain drug interactions"
+        },
+        {
+          "risk": "Peripheral vasculopathy (including Raynaud): painful, cold, numb, or color-changing fingers/toes; rarely digital ulceration"
+        },
+        {
+          "risk": "Misuse, abuse, and dependence: escalating dose, craving, running out early, doctor shopping, or using to override sleep/burnout"
+        },
+        {
+          "risk": "Abrupt discontinuation after high doses or prolonged use: can cause depression, extreme fatigue, and rebound symptoms"
+        }
+      ],
+      "black_box_warning": "CNS stimulants (including amphetamine products) have a high potential for abuse and dependence. Assess the risk of abuse before prescribing, and monitor for signs of misuse, diversion, and substance use disorder during treatment.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to amphetamine products or any component of the formulation"
+        },
+        {
+          "contraindication": "Concurrent use of an MAO inhibitor (including linezolid or IV methylene blue) or use within 14 days of stopping an MAO inhibitor"
+        }
+      ],
+      "precautions": [
+        "Cardiovascular risks: Increased heart rate and blood pressure; rare serious events (more concerning in people with structural heart disease or serious arrhythmias)",
+        "Psychiatric risks: Can trigger or worsen psychosis or mania; may increase irritability, anxiety, or agitation in some people",
+        "Serotonin syndrome risk when combined with serotonergic medications or CYP2D6 inhibitors in certain situations",
+        "Peripheral vasculopathy (including Raynaud phenomenon): finger/toe color changes, numbness, pain—usually improves with dose reduction or stopping",
+        "Growth suppression risk in pediatric patients (monitor height/weight/appetite)",
+        "Not for weight loss; other sympathomimetics used for weight loss have been linked to serious cardiovascular events"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAO inhibitors (including linezolid or IV methylene blue)",
+          "mechanism": "CONTRAINDICATED: Risk of hypertensive crisis and serious reactions.",
+          "action": "Do not use with MAOIs or within 14 days of stopping an MAOI."
+        },
+        {
+          "interactant": "SSRIs/SNRIs, triptans, lithium, linezolid, other serotonergic agents",
+          "mechanism": "Serotonin syndrome risk (rare, but can be life-threatening).",
+          "action": "Use caution, especially with multiple serotonergic meds. Educate on early symptoms (agitation, sweating, diarrhea, tremor, fever) and seek urgent care if they appear."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (can raise dextroamphetamine exposure in some patients)",
+          "mechanism": "Higher stimulant exposure may increase side effects (jitteriness, insomnia, BP/HR increases).",
+          "action": "Monitor closely after starting or changing interacting meds; dose adjustment may be needed."
+        },
+        {
+          "interactant": "Other stimulants (including high-dose caffeine, decongestants like pseudoephedrine, or illicit stimulants)",
+          "mechanism": "Additive stimulation: anxiety, insomnia, palpitations, BP/HR increases.",
+          "action": "Avoid stacking stimulants. If you’re getting chest symptoms or panic-y jitter, scale back and reassess."
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Stimulants can blunt blood pressure control in some people.",
+          "action": "Monitor BP/HR; adjust treatment plan if blood pressure becomes difficult to manage."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Increased impairment risk and poor judgment; may mask intoxication or worsen risky behavior in some people.",
+          "action": "If you drink, keep it conservative and pay attention to how your body reacts. If alcohol worsens impulsivity or sleep, it’s not a good mix."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Baseline cardiovascular screen: personal and family history of sudden death, ventricular arrhythmia, structural heart disease; physical exam; ECG if indicated or if symptoms/risk factors suggest"
+        },
+        {
+          "parameter": "Blood pressure and heart rate: baseline, after dose increases, and periodically during treatment"
+        },
+        {
+          "parameter": "Sleep: insomnia, delayed sleep phase, rebound sleepiness, and whether timing is appropriate"
+        },
+        {
+          "parameter": "Appetite and weight: baseline and ongoing (children: height/weight/growth velocity; adults: weight and nutritional status)"
+        },
+        {
+          "parameter": "Mood and behavior: irritability, anxiety, agitation, depressive symptoms, emotional blunting, and functional outcomes"
+        },
+        {
+          "parameter": "Psychosis/mania screening and monitoring: especially if personal/family history of bipolar disorder, psychosis, or prior stimulant-induced symptoms"
+        },
+        {
+          "parameter": "Tics/Tourette’s: screen before starting; monitor for new or worsening tics"
+        },
+        {
+          "parameter": "Peripheral vasculopathy: finger/toe color change, numbness, pain, sores—evaluate if present"
+        },
+        {
+          "parameter": "Misuse/diversion risk: assess before prescribing; monitor for early refills, dose escalation, lost prescriptions, multiple prescribers, and functional red flags"
+        },
+        {
+          "parameter": "Binge eating outcomes (if treating BED): binge frequency, loss-of-control eating, impairment, and whether benefit is meaningful; stop if it’s not working"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human outcome data are limited. Amphetamine exposure in pregnancy may be associated with risks like premature birth and low birth weight, and newborns may have withdrawal-like symptoms (agitation, irritability, excessive drowsiness, feeding difficulties). Nonmedication approaches are preferred for mild to moderate ADHD during pregnancy; for moderate to severe impairment, shared decision-making is key, using the lowest effective dose and the fewest medications possible. Consider enrollment in the National Pregnancy Registry for ADHD Medications (1-866-961-2388).",
+        "lactation": "Lisdexamfetamine converts to dextroamphetamine, which can be present in breast milk. Reported relative infant doses (RID) across amphetamine/dextroamphetamine sources have ranged roughly 2% to 13.8% of the weight-adjusted maternal dose, and long-term neurodevelopmental outcomes are not well established. The manufacturer recommends avoiding breastfeeding due to potential serious adverse reactions (including cardiovascular effects and growth suppression). If used during breastfeeding in carefully selected cases, use the lowest effective dose and monitor the infant for feeding problems, irritability, insomnia, or excessive sleepiness.",
+        "pediatric": "FDA-approved for ADHD in ages 6+ (not recommended under 6). Typical starting dose is 20 to 30 mg once daily in the morning, with increases by 10 mg/day or 20 mg/day every 3 to 7 days until optimal response; max 70 mg/day. Monitor appetite, weight, height/growth velocity, sleep, mood/behavior, and tics.",
+        "geriatric": "Use caution. Older adults can be more sensitive to stimulant adverse effects (BP/HR increases, insomnia, anxiety, appetite/weight loss). Start low, titrate slowly, and monitor cardiovascular status closely.",
+        "renal_impairment": "Dose caps apply in moderate to severe renal impairment: max 50 mg/day at GFR 15 to <30; max 30 mg/day at GFR <15 or ESRD on hemodialysis.",
+        "hepatic_impairment": "No manufacturer dose adjustment provided."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2007
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (prodrug is absorbed and then converted to active dextroamphetamine)",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Dextroamphetamine peaks around ~3.5–4.7 hours depending on formulation and food",
+          "half_life": "Lisdexamfetamine: <1 hour; Dextroamphetamine: ~10–13 hours",
+          "metabolism": "Converted in blood (red blood cells) to dextroamphetamine and L-lysine; dextroamphetamine is metabolized in part by CYP2D6",
+          "excretion": "Urine (major; includes amphetamine-related compounds and metabolites)",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "High-fat meal can delay time-to-peak (Tmax) by ~1 hour; can be taken with or without food"
+        },
+        "dosing": {
+          "titration": "Vyvanse is taken once daily in the morning. Doses are increased gradually to find the lowest dose that improves symptoms without blowing up appetite, sleep, mood, or blood pressure."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Vyvanse doesn’t usually require a long medical taper the way benzodiazepines do, but abruptly stopping after high doses or long-term use can still hit hard—think fatigue, low mood, irritability, and a big rebound of ADHD symptoms. The plan should match the real-world situation: dose, duration, side effects, and misuse risk."
+        }
+      }
     }
   },
   "sections": [
@@ -95,7 +255,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People describe Vyvanse less like a “rush” and more like a steady push toward focus—when the dose is right. Here’s the real-world vibe:",
       "items": [
         {
           "category": "Focus & Follow-Through",
@@ -141,7 +300,8 @@
           ],
           "note": "Stimulants can be misused. The target is function and stability—not pushing past human limits."
         }
-      ]
+      ],
+      "intro": "People describe Vyvanse less like a “rush” and more like a steady push toward focus—when the dose is right. Here’s the real-world vibe:"
     },
     {
       "type": "onset_duration",
@@ -158,10 +318,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Vyvanse is often effective when ADHD symptoms look like distractibility, procrastination, impulsive decisions, and inconsistent follow-through. For binge eating disorder, the target is fewer binge episodes and less loss-of-control eating—not weight loss. If you’re not seeing meaningful functional improvement after a careful titration, that’s a reason to reassess the dose, timing, diagnosis, sleep, anxiety, depression, substance use, and overall treatment plan.",
       "metric": "Day-to-day function (attention + impulse control)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Vyvanse is often effective when ADHD symptoms look like distractibility, procrastination, impulsive decisions, and inconsistent follow-through. For binge eating disorder, the target is fewer binge episodes and less loss-of-control eating—not weight loss. If you’re not seeing meaningful functional improvement after a careful titration, that’s a reason to reassess the dose, timing, diagnosis, sleep, anxiety, depression, substance use, and overall treatment plan.",
       "clinical_details": "Dose is individualized. The best dose is the lowest dose that improves function with tolerable side effects. More is not always better—too high can look like irritability, anxiety, insomnia, appetite collapse, or a flat “robotic” feeling.",
       "citation": {
         "authors": "FDA",
@@ -258,7 +418,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Vyvanse is converted to dextroamphetamine. The biggest interaction themes are: MAO inhibitors (dangerous), drugs that increase serotonin (serotonin syndrome risk), and medications that change amphetamine levels or cardiovascular strain.",
       "items": [
         {
           "with": "MAO inhibitors (including linezolid or IV methylene blue)",
@@ -290,7 +449,8 @@
           "risk": "Increased impairment risk and poor judgment; may mask intoxication or worsen risky behavior in some people.",
           "action": "If you drink, keep it conservative and pay attention to how your body reacts. If alcohol worsens impulsivity or sleep, it’s not a good mix."
         }
-      ]
+      ],
+      "intro": "Vyvanse is converted to dextroamphetamine. The biggest interaction themes are: MAO inhibitors (dangerous), drugs that increase serotonin (serotonin syndrome risk), and medications that change amphetamine levels or cardiovascular strain."
     },
     {
       "type": "tapering",
@@ -371,21 +531,6 @@
       "text": "For ADHD, stimulants are often first-line when symptoms cause real impairment, alongside skills-based supports (sleep, routines, coaching/therapy, workplace/school accommodations). Vyvanse is a good fit when you want once-daily coverage and a smoother day. For binge eating disorder in adults, it’s an evidence-based option for moderate to severe illness, but it’s not a substitute for therapy, nutrition support, and addressing shame/avoidance cycles. Vyvanse is usually a poor choice if uncontrolled anxiety, insomnia, active substance misuse, or untreated bipolar disorder are the main issues—because stimulants can pour gasoline on those problems."
     }
   ],
-  "seo": {
-    "title": "Lisdexamfetamine (Vyvanse): Uses, Dosage, Side Effects & Safety",
-    "description": "Vyvanse (lisdexamfetamine) for ADHD and binge eating disorder: how it works, once-daily dosing (30–70 mg), duration (8–14 hours), common side effects (appetite loss, insomnia), key warnings (heart risk, psychosis/mania), interactions, and stopping safely.",
-    "canonical": "[https://www.heypsych.com/treatments/lisdexamfetamine-vyvanse](https://www.heypsych.com/treatments/lisdexamfetamine-vyvanse)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Vyvanse used for?",
@@ -435,5 +580,20 @@
       "q": "Are there dose limits with kidney disease?",
       "a": "Yes. In adults with GFR 15 to <30 mL/min/1.73 m2, the max is 50 mg/day. With GFR <15 or ESRD on hemodialysis, the max is 30 mg/day. In GFR ≥30, the manufacturer doesn’t provide a specific adjustment."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lisdexamfetamine (Vyvanse): Uses, Dosage, Side Effects & Safety",
+    "description": "Vyvanse (lisdexamfetamine) for ADHD and binge eating disorder: how it works, once-daily dosing (30–70 mg), duration (8–14 hours), common side effects (appetite loss, insomnia), key warnings (heart risk, psychosis/mania), interactions, and stopping safely.",
+    "canonical": "[https://www.heypsych.com/treatments/lisdexamfetamine-vyvanse](https://www.heypsych.com/treatments/lisdexamfetamine-vyvanse)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

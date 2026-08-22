@@ -1,96 +1,273 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "alprazolam-xanax",
-  "type": "medication",
-  "name": "Alprazolam (Xanax)",
-  "summary": "Fast-acting benzodiazepine for severe anxiety and panic disorder. Works within 30-60 minutes but carries significant dependence risk.",
-  "description": "Xanax relieves severe anxiety and panic within an hour. Side effects include drowsiness and unsteadiness. Physical dependence can develop with regular use. Never mix with alcohol or opioids—this can be fatal. Best used short-term or as-needed.",
-  "patient_summary": "Xanax relieves severe anxiety and panic within an hour. Side effects include drowsiness and unsteadiness. Physical dependence can develop with regular use. Never mix with alcohol or opioids—this can be fatal. Best used short-term or as-needed.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "GABA-A Receptor Modulator",
-      "Anxiolytic"
-    ],
+  "identity": {
+    "slug": "alprazolam-xanax",
+    "name": "Alprazolam (Xanax)",
+    "generic_name": "alprazolam",
     "brand_names": [
       "Xanax",
       "Xanax XR",
       "Alprazolam Intensol"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1981,
-    "pharmacologic_category": "Benzodiazepine, Short-to-Intermediate Acting",
-    "published_date": "2026-02-17T00:00:00Z",
-    "last_updated": "2026-02-17T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-17T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q415218"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Generalized Anxiety Disorder (GAD)",
-      "Panic Disorder",
-      "Panic Disorder with Agoraphobia"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for GAD. Typically used short-term for rapid symptom control while SSRIs or CBT take effect (4-6 weeks)."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved with robust efficacy data. 50% panic-free at 4 weeks vs 28% placebo (Ballenger 1988)."
-      },
-      {
-        "slug": "agoraphobia",
-        "relationship": "off_label",
-        "context": "Commonly used when panic disorder presents with significant avoidance behaviors."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used PRN for acute performance anxiety. SSRIs/SNRIs preferred for chronic social anxiety."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to benzodiazepines or any component",
-      "Acute narrow-angle glaucoma",
-      "Concurrent use with strong CYP3A4 inhibitors (ketoconazole, itraconazole, ritonavir)",
-      "Myasthenia gravis",
-      "Severe respiratory insufficiency",
-      "Severe hepatic impairment",
-      "Sleep apnea syndrome (relative contraindication)"
-    ],
-    "efficacy_response": {
-      "metric": "Panic-free at 4 weeks",
-      "percentage_value": "50%",
-      "comparison_data": "28% with placebo (NNT ≈ 5)",
-      "patient_text": "In controlled trials, about half of people taking Xanax were free of panic attacks after 4 weeks, compared with about 1 in 4 taking placebo. For every 5 people treated, 1 additional person becomes panic-free.",
-      "citation_tag": "PMID:3282478"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "GABA-A Receptor Modulator",
+      "Anxiolytic"
+    ]
+  },
+  "summary": "Fast-acting benzodiazepine for severe anxiety and panic disorder. Works within 30-60 minutes but carries significant dependence risk.",
+  "description": "Xanax relieves severe anxiety and panic within an hour. Side effects include drowsiness and unsteadiness. Physical dependence can develop with regular use. Never mix with alcohol or opioids—this can be fatal. Best used short-term or as-needed.",
+  "patient_summary": "Xanax relieves severe anxiety and panic within an hour. Side effects include drowsiness and unsteadiness. Physical dependence can develop with regular use. Never mix with alcohol or opioids—this can be fatal. Best used short-term or as-needed.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for GAD. Typically used short-term for rapid symptom control while SSRIs or CBT take effect (4-6 weeks).",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved with robust efficacy data. 50% panic-free at 4 weeks vs 28% placebo (Ballenger 1988).",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "agoraphobia",
+          "condition_name": "Agoraphobia",
+          "relationship": "off_label",
+          "context": "Commonly used when panic disorder presents with significant avoidance behaviors."
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used PRN for acute performance anxiety. SSRIs/SNRIs preferred for chronic social anxiety."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete",
-      "bioavailability": "80-90%",
-      "onset": "30-60 minutes",
-      "peak_plasma": "1-2 hours",
-      "half_life": "11.2 hours (range: 6.3-26.9 hours)",
-      "duration_IR": "4-6 hours",
-      "duration_XR": "10-12 hours",
-      "metabolism": "Hepatic via CYP3A4 to alpha-hydroxyalprazolam (active) and 4-hydroxyalprazolam (inactive)",
-      "excretion": "Urine (80% as metabolites)",
-      "protein_binding": "80%",
-      "food_effect": "High-fat meals increase Cmax by 25% and delay Tmax"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "30-60 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "40-70% (dose-dependent)",
+          "notes": "Expect to feel relaxed, sleepy, or \"out of it,\" especially during initiation or dose increases. Peak sedation occurs 1-2 hours after dose. Avoid driving, machinery, or tasks requiring full alertness. Tolerance to sedation develops partially but not completely over 1-2 weeks."
+        },
+        {
+          "effect": "Cognitive Impairment",
+          "incidence": "20-40%",
+          "notes": "Slowed thinking, poor concentration, difficulty learning new information. Impairs performance on complex tasks (work presentations, exams, detailed projects). May worsen with chronic use. Effects amplified by alcohol, antihistamines, or cannabis."
+        },
+        {
+          "effect": "Ataxia / Impaired Coordination",
+          "incidence": "15-30% (higher in elderly)",
+          "notes": "Off-balance, unsteady gait, slowed reaction time. Similar to alcohol intoxication. Fall risk increases 2-3x in adults over 65. Use caution on stairs, ladders, or uneven surfaces."
+        },
+        {
+          "effect": "Anterograde Amnesia",
+          "incidence": "10-25% (dose-dependent)",
+          "notes": "Difficulty forming new memories for hours after taking dose. May not recall conversations, activities, or decisions made during peak effect. More common at doses >2mg. Document important information before taking."
+        },
+        {
+          "effect": "Disinhibition / Impulsivity",
+          "incidence": "5-15%",
+          "notes": "Reduced self-control, poor judgment, risk-taking behavior (overspending, sexual indiscretion, aggression). More common in those with history of impulse control issues."
+        },
+        {
+          "effect": "Appetite and Weight Changes",
+          "incidence": "Variable (5-20%)",
+          "notes": "Can increase or decrease appetite. Weight gain more common with long-term use. Mechanism unclear but may involve GABA effects on hypothalamus."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (especially with opioids, alcohol, or high doses): slow, shallow breathing, cyanosis, unresponsiveness. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe withdrawal syndrome: seizures, delirium, autonomic instability, hallucinations. Onset 1-3 days after abrupt cessation. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Paradoxical reactions: severe agitation, rage, violence, mania-like symptoms. Stop immediately and seek emergency care."
+        },
+        {
+          "risk": "Profound anterograde amnesia: complete blackouts lasting hours. May engage in complex behaviors with no memory."
+        },
+        {
+          "risk": "Suicidal ideation or self-harm: especially when combined with depression or substance use. Monitor closely."
+        },
+        {
+          "risk": "Hepatotoxicity (rare): elevated liver enzymes, jaundice. More common with chronic high-dose use."
+        },
+        {
+          "risk": "Complex sleep behaviors (rare): sleep-driving, sleep-eating, sleep-sex with amnesia. Discontinue immediately."
+        }
+      ],
+      "black_box_warning": "Combining benzodiazepines with opioids may cause severe sedation, breathing problems, coma, and death. Only use together when absolutely necessary, at lowest doses, and with close monitoring.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to benzodiazepines or any component"
+        },
+        {
+          "contraindication": "Acute narrow-angle glaucoma"
+        },
+        {
+          "contraindication": "Concurrent use with strong CYP3A4 inhibitors (ketoconazole, itraconazole, ritonavir)"
+        },
+        {
+          "contraindication": "Myasthenia gravis"
+        },
+        {
+          "contraindication": "Severe respiratory insufficiency"
+        },
+        {
+          "contraindication": "Severe hepatic impairment"
+        },
+        {
+          "contraindication": "Sleep apnea syndrome (relative contraindication)"
+        }
+      ],
+      "precautions": [
+        "Physical dependence develops quickly (2-4 weeks of daily use)",
+        "Never stop suddenly after regular use—can cause life-threatening seizures",
+        "Avoid in pregnancy (birth defects, newborn withdrawal)",
+        "High risk of misuse, abuse, and addiction—especially with substance use history",
+        "Driving and operating machinery: Impaired reaction time and judgment"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (hydrocodone, oxycodone, morphine, fentanyl, etc.)",
+          "mechanism": "BLACK BOX WARNING: Severe respiratory depression, coma, death. Risk increases with dose and duration.",
+          "action": "AVOID unless absolutely necessary. If required, use lowest doses for shortest duration with close monitoring. Prescribe naloxone rescue kit. Counsel on overdose signs: unresponsiveness, slow breathing, blue lips."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: severe sedation, respiratory failure, amnesia, falls, death. Synergistic, not just additive.",
+          "action": "ABSOLUTE CONTRAINDICATION. Zero alcohol consumption. Even 1-2 drinks can be dangerous."
+        },
+        {
+          "interactant": "Strong CYP3A4 Inhibitors (ketoconazole, itraconazole, ritonavir, clarithromycin)",
+          "mechanism": "Alprazolam levels increase 2-5x. Severe sedation, prolonged effects, respiratory depression.",
+          "action": "CONTRAINDICATED per FDA labeling. If inhibitor unavoidable, reduce alprazolam by 50-75% or switch to lorazepam (not CYP-dependent)."
+        },
+        {
+          "interactant": "Other CNS Depressants (barbiturates, sedating antihistamines, muscle relaxants, sleep aids)",
+          "mechanism": "Additive sedation, cognitive impairment, fall risk. Effects multiply, not add.",
+          "action": "Use extreme caution. Reduce doses of both. Monitor closely for excessive sedation. Consider non-sedating alternatives (e.g., cetirizine instead of diphenhydramine)."
+        },
+        {
+          "interactant": "CYP3A4 Inducers (rifampin, carbamazepine, phenytoin, St. John's Wort)",
+          "mechanism": "Alprazolam levels decrease 50-70%. Loss of efficacy, breakthrough anxiety, withdrawal symptoms.",
+          "action": "Avoid if possible. If required, may need dose increase, but increases dependence risk. Consider alternative benzodiazepine or anxiolytic."
+        },
+        {
+          "interactant": "Grapefruit Juice",
+          "mechanism": "Moderate CYP3A4 inhibition. Alprazolam levels increase 20-40%.",
+          "action": "Avoid grapefruit juice and products. Effects can last 24+ hours."
+        },
+        {
+          "interactant": "Oral Contraceptives",
+          "mechanism": "May increase alprazolam levels by 20-30% (hormonal effect on CYP3A4).",
+          "action": "Monitor for increased sedation. May need dose reduction."
+        },
+        {
+          "interactant": "Smoking Cessation (varenicline, bupropion)",
+          "mechanism": "Smoking induces CYP1A2 (minor pathway). Quitting may increase levels slightly.",
+          "action": "Monitor for increased sedation during smoking cessation. May need dose reduction."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Signs of misuse or loss of control: early refills, dose escalation without authorization, obtaining from multiple prescribers, combining with alcohol/drugs, continued use despite harm."
+        },
+        {
+          "parameter": "Sedation and psychomotor function: especially first 2 weeks, after dose increases, in elderly, and when combined with other CNS depressants. Use objective measures (reaction time, balance tests) if available."
+        },
+        {
+          "parameter": "Respiratory status: in patients with COPD, asthma, sleep apnea, or concurrent opioid use. Pulse oximetry if high-risk. Warn about shallow breathing, snoring, daytime sleepiness."
+        },
+        {
+          "parameter": "Cognitive function: memory, attention, executive function. Use screening tools (MMSE, MoCA) in elderly or those with cognitive complaints. May need neuropsych testing if impairment suspected."
+        },
+        {
+          "parameter": "Mood symptoms: depression, anhedonia, suicidal ideation, irritability, emotional blunting. Screen at every visit (PHQ-9, C-SSRS). Benzodiazepines can worsen or unmask mood disorders."
+        },
+        {
+          "parameter": "Withdrawal symptoms: if dose missed or reduced. Use CIWA-B scale to quantify severity. Adjust taper rate accordingly."
+        },
+        {
+          "parameter": "Functional outcomes: work/school performance, social relationships, activities of daily living. Are symptoms improving? Is medication helping or harming function?"
+        },
+        {
+          "parameter": "Liver function: baseline and periodically if chronic high-dose use or hepatic disease. Monitor ALT, AST, bilirubin."
+        },
+        {
+          "parameter": "Prescription drug monitoring program (PDMP): check at baseline and every 3-6 months to detect doctor shopping or concurrent controlled substances."
+        },
+        {
+          "parameter": "Urine drug screen: consider at baseline and randomly if misuse suspected. Alprazolam detected 1-7 days after last use (longer with chronic use)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Category D (positive evidence of fetal risk). Avoid in first trimester—increased risk of oral clefts (0.6% vs 0.06% baseline). Third trimester exposure: neonatal withdrawal, floppy infant syndrome, respiratory depression. Use only if benefits clearly outweigh risks and no safer alternatives exist (CBT, SSRIs like sertraline have better safety profiles).",
+        "lactation": "Excreted in breast milk at levels ~0.5% of maternal dose. Can cause sedation, poor feeding, weight loss in infant. Generally avoid. If essential, use lowest dose, monitor infant closely for sedation and feeding difficulties, consider pumping and discarding milk 3-4 hours post-dose.",
+        "pediatric": "Safety and efficacy not established in patients <18 years. Off-label use rare and controversial. Increased risk of paradoxical reactions (agitation, impulsivity). Prefer CBT, SSRIs.",
+        "geriatric": "START LOW, GO SLOW. Beers Criteria: Avoid benzodiazepines in adults ≥65 due to increased risk of cognitive impairment, delirium, falls, fractures, motor vehicle crashes. If unavoidable: start 0.125-0.25mg BID, max 1-2mg/day, reassess frequently, taper ASAP. Consider alternatives: SSRIs, buspirone, CBT.",
+        "renal_impairment": "No dose adjustment required. Metabolites excreted renally but parent drug is hepatically cleared.",
+        "hepatic_impairment": "Reduced clearance in cirrhosis. Start 0.25mg BID-TID, titrate slowly, monitor for excessive sedation. Contraindicated in severe hepatic impairment (Child-Pugh C)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1981
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete",
+          "bioavailability": "80-90%",
+          "peak_plasma": "1-2 hours",
+          "half_life": "11.2 hours (range: 6.3-26.9 hours)",
+          "metabolism": "Hepatic via CYP3A4 to alpha-hydroxyalprazolam (active) and 4-hydroxyalprazolam (inactive)",
+          "excretion": "Urine (80% as metabolites)",
+          "protein_binding": "80%",
+          "food_effect": "High-fat meals increase Cmax by 25% and delay Tmax"
+        },
+        "dosing": {
+          "titration": "Most adults start with 0.25-0.5 mg taken 2-3 times daily (total 0.75-1.5 mg/day). Your doctor may gradually increase based on response. Xanax XR is taken once daily in the morning."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Never stop Xanax suddenly after regular use. Your doctor will reduce your dose slowly over weeks or months to prevent dangerous withdrawal symptoms like seizures, severe anxiety, insomnia, or delirium."
+        }
+      }
     }
   },
   "sections": [
@@ -113,7 +290,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are the most common experiences:",
       "items": [
         {
           "category": "Relief (30-60 min)",
@@ -149,7 +325,8 @@
           ],
           "note": "Physical dependence can develop in 2-4 weeks of daily use."
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are the most common experiences:"
     },
     {
       "type": "onset_duration",
@@ -166,10 +343,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In clinical trials, about half of people with panic disorder became panic-free after 4 weeks on Xanax, compared with about 1 in 4 taking placebo. This means for every 5 people treated, 1 additional person achieves complete relief.",
       "metric": "Panic-Free Rate at 4 Weeks",
       "value": "50%",
       "comparison": "28%",
-      "text": "In clinical trials, about half of people with panic disorder became panic-free after 4 weeks on Xanax, compared with about 1 in 4 taking placebo. This means for every 5 people treated, 1 additional person achieves complete relief.",
       "clinical_details": "Ballenger et al. (1988) conducted a multicenter, double-blind, placebo-controlled trial with 1,168 patients diagnosed with panic disorder. Participants received alprazolam (up to 10mg/day, mean 5.7mg/day) or placebo for 8 weeks. By week 4, 50% of alprazolam-treated patients were panic-free compared to 28% on placebo (p<0.001). Response was defined as complete absence of panic attacks. NNT=5 for achieving panic-free status.",
       "citation": {
         "authors": "Ballenger JC, Burrows GD, DuPont RL, et al.",
@@ -260,7 +437,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Xanax metabolism depends heavily on CYP3A4. Strong inhibitors can increase levels 2-5x, causing severe sedation or respiratory depression.",
       "items": [
         {
           "with": "Opioids (hydrocodone, oxycodone, morphine, fentanyl, etc.)",
@@ -302,7 +478,8 @@
           "risk": "Smoking induces CYP1A2 (minor pathway). Quitting may increase levels slightly.",
           "action": "Monitor for increased sedation during smoking cessation. May need dose reduction."
         }
-      ]
+      ],
+      "intro": "Xanax metabolism depends heavily on CYP3A4. Strong inhibitors can increase levels 2-5x, causing severe sedation or respiratory depression."
     },
     {
       "type": "tapering",
@@ -431,21 +608,64 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Alprazolam (Xanax): Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Xanax (alprazolam) for anxiety & panic: how it works in 30-60 min, dosing (0.25-4mg), side effects, addiction risk, dangerous interactions with alcohol/opioids, and safe tapering.",
-    "canonical": "https://www.heypsych.com/treatments/alprazolam-xanax",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current SAMHSA guidance on benzodiazepine prescribing."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information (Xanax)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/018276s052lbl.pdf",
+      "description": "Official FDA-approved labeling with complete prescribing information"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Ballenger et al. (1988) - Alprazolam in Panic Disorder",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3282478/",
+      "description": "Landmark RCT demonstrating 50% panic-free rate vs 28% placebo at 4 weeks"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "APA Practice Guideline: Panic Disorder (2009)",
+      "url": "https://psychiatryonline.org/doi/book/10.1176/appi.books.9780890423424",
+      "description": "Evidence-based treatment recommendations"
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "American Geriatrics Society Beers Criteria (2023)",
+      "url": "https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372",
+      "description": "Avoid benzodiazepines in older adults—high fall and cognitive impairment risk"
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "Ashton Manual - Benzodiazepine Withdrawal",
+      "url": "https://www.benzo.org.uk/manual/",
+      "description": "Comprehensive guide to safe benzodiazepine tapering strategies"
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "FDA Drug Safety Communication: Opioid + Benzodiazepine Black Box",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-requiring-boxed-warning-updated-improve-safe-use-benzodiazepine-drug-class",
+      "description": "2016 black box warning on combined use with opioids"
+    },
+    {
+      "id": "ref-7",
+      "type": "other",
+      "title": "British Association for Psychopharmacology: Anxiety Guidelines",
+      "url": "https://www.bap.org.uk/articles/anxiety-disorders/",
+      "description": "Evidence-based treatment algorithms for anxiety disorders"
+    },
+    {
+      "id": "ref-8",
+      "type": "other",
+      "title": "UpToDate: Pharmacotherapy for Panic Disorder",
+      "url": "https://www.uptodate.com/contents/pharmacotherapy-for-panic-disorder",
+      "description": "Clinical decision support and evidence synthesis (subscription required)"
+    }
+  ],
   "faqs": [
     {
       "q": "What is Xanax used for?",
@@ -495,5 +715,20 @@
       "q": "Xanax vs Ativan: which is better?",
       "a": "Neither is universally 'better'—it depends on your needs. Xanax (alprazolam) works faster (30-60 min) but lasts shorter (4-6 hrs), requiring multiple daily doses. Ativan (lorazepam) takes slightly longer to work (60-90 min) but lasts longer (8-12 hrs). Ativan is not metabolized by CYP450 enzymes, making it safer with fewer drug interactions. Both carry similar dependence risks. Your doctor will choose based on symptom pattern and other medications."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Alprazolam (Xanax): Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Xanax (alprazolam) for anxiety & panic: how it works in 30-60 min, dosing (0.25-4mg), side effects, addiction risk, dangerous interactions with alcohol/opioids, and safe tapering.",
+    "canonical": "https://www.heypsych.com/treatments/alprazolam-xanax",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current SAMHSA guidance on benzodiazepine prescribing."
+  }
 }

@@ -1,97 +1,261 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "olanzapine-zyprexa",
-  "type": "medication",
-  "name": "Olanzapine (Zyprexa)",
-  "summary": "A second-generation antipsychotic used for schizophrenia and bipolar disorder. Can calm agitation and help with sleep, but it’s a heavyweight for weight gain and metabolic side effects.",
-  "description": "Olanzapine (Zyprexa) is an atypical antipsychotic that can reduce psychosis, stabilize mania, and rapidly calm severe agitation. Many people feel it “turns down” racing thoughts and helps with sleep, but the tradeoff is real: increased appetite, weight gain, high blood sugar, and cholesterol changes are common. In older adults with dementia-related psychosis, antipsychotics increase the risk of death and stroke—olanzapine is not approved for that use. The long-acting injectable (Zyprexa Relprevv) has a rare but serious risk of post-injection delirium/sedation syndrome and requires 3-hour monitoring after every dose.",
-  "patient_summary": "Olanzapine can help with psychosis, mania, and severe agitation and is often very sedating (sometimes a plus if sleep is wrecked). But it can seriously increase appetite and cause weight gain and metabolic problems. It’s not approved for dementia-related psychosis because antipsychotics raise death risk in that group. The long-acting shot (Relprevv) requires a 3-hour observation period after every injection due to a rare overdose-like reaction.",
-  "category": "medications/antipsychotics",
-  "metadata": {
-    "drug_classes": [
-      "Second-Generation (Atypical) Antipsychotic",
-      "Antimanic Agent"
-    ],
+  "identity": {
+    "slug": "olanzapine-zyprexa",
+    "name": "Olanzapine (Zyprexa)",
+    "generic_name": "olanzapine",
     "brand_names": [
       "Zyprexa",
       "Zyprexa Zydis",
       "Zyprexa Relprevv"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": true,
-    "fda_approval_year": 1996,
-    "pharmacologic_category": "Second-Generation (Atypical) Antipsychotic",
-    "published_date": "2025-11-20T00:00:00Z",
-    "last_updated": "2025-11-20T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-20T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Bipolar I Disorder (acute mania / mixed episodes; maintenance)",
-      "Bipolar Depression (in combination with fluoxetine)",
-      "Acute agitation associated with schizophrenia or bipolar I mania (IM short-acting)",
-      "Treatment-resistant depression (in combination with fluoxetine)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "A core indication. Can reduce hallucinations, delusions, disorganization, and agitation. Often sedating; metabolic monitoring is essential."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for acute mania/mixed episodes and maintenance. Sedation can help during acute episodes; weight and metabolic risks are common limiting factors."
-      },
-      {
-        "slug": "bipolar-depression",
-        "relationship": "adjunctive",
-        "context": "Used with fluoxetine (or as the fixed-dose combination) for bipolar depression. Monitor for metabolic effects and sedation."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "primary_treatment",
-        "context": "IM olanzapine can calm severe acute agitation quickly. Monitor for sedation, orthostasis, and respiratory depression—especially if other sedatives are involved."
-      },
-      {
-        "slug": "psychotic-depression",
-        "relationship": "off_label",
-        "context": "Sometimes used short-term with an antidepressant for depression with psychotic features; reassess and consider tapering the antipsychotic after sustained recovery."
-      }
-    ],
-    "contraindications": [
-      "No contraindications listed in US manufacturer labeling",
-      "Hypersensitivity to olanzapine or any component (noted in Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Not applicable for this medication.",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Not applicable for this medication.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antipsychotics",
+    "drug_classes": [
+      "Second-Generation (Atypical) Antipsychotic",
+      "Antimanic Agent"
+    ]
+  },
+  "summary": "A second-generation antipsychotic used for schizophrenia and bipolar disorder. Can calm agitation and help with sleep, but it’s a heavyweight for weight gain and metabolic side effects.",
+  "description": "Olanzapine (Zyprexa) is an atypical antipsychotic that can reduce psychosis, stabilize mania, and rapidly calm severe agitation. Many people feel it “turns down” racing thoughts and helps with sleep, but the tradeoff is real: increased appetite, weight gain, high blood sugar, and cholesterol changes are common. In older adults with dementia-related psychosis, antipsychotics increase the risk of death and stroke—olanzapine is not approved for that use. The long-acting injectable (Zyprexa Relprevv) has a rare but serious risk of post-injection delirium/sedation syndrome and requires 3-hour monitoring after every dose.",
+  "patient_summary": "Olanzapine can help with psychosis, mania, and severe agitation and is often very sedating (sometimes a plus if sleep is wrecked). But it can seriously increase appetite and cause weight gain and metabolic problems. It’s not approved for dementia-related psychosis because antipsychotics raise death risk in that group. The long-acting shot (Relprevv) requires a 3-hour observation period after every injection due to a rare overdose-like reaction.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "A core indication. Can reduce hallucinations, delusions, disorganization, and agitation. Often sedating; metabolic monitoring is essential.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for acute mania/mixed episodes and maintenance. Sedation can help during acute episodes; weight and metabolic risks are common limiting factors.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "primary_indication",
+          "context": "IM olanzapine can calm severe acute agitation quickly. Monitor for sedation, orthostasis, and respiratory depression—especially if other sedatives are involved.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar Depression",
+          "relationship": "adjunctive",
+          "context": "Used with fluoxetine (or as the fixed-dose combination) for bipolar depression. Monitor for metabolic effects and sedation."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "psychotic-depression",
+          "condition_name": "Psychotic Depression",
+          "relationship": "off_label",
+          "context": "Sometimes used short-term with an antidepressant for depression with psychotic features; reassess and consider tapering the antipsychotic after sustained recovery."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral: well absorbed; not affected by food; tablets and ODT are bioequivalent",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "IM (short-acting) agitation: initial effects within ~15 minutes; IV (off-label) within ~5 to 10 minutes; oral psychiatric effects may begin over days to 1-2 weeks depending on condition",
-      "peak_plasma": "Oral: ~6 hours in adults; IM short-acting: 15 to 45 minutes; long-acting injection: ~7 days",
-      "half_life": "Adults (oral/IM short-acting): ~30 hours (range reported); longer in older adults (~1.5x). Long-acting injection: ~30 days",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic: glucuronidation and CYP oxidation (CYP1A2 major; CYP2D6 minor; UGT1A4)",
-      "excretion": "Urine ~57% (about 7% unchanged), feces ~30%",
-      "protein_binding": "About 93%",
-      "food_effect": "No meaningful effect (oral)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IM (short-acting) agitation: initial effects within ~15 minutes; IV (off-label) within ~5 to 10 minutes; oral psychiatric effects may begin over days to 1-2 weeks depending on condition"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Common (often reported; can be 20% to 48% in labeling for oral formulations, higher in some adolescent data)",
+          "notes": "This can feel like a welcome shutdown if you’re manic, agitated, or not sleeping—but it can also wreck daytime functioning. If you’re wiped out, dose timing (often bedtime) and slower titration can matter."
+        },
+        {
+          "effect": "Increased appetite / Weight gain",
+          "incidence": "Common; can be clinically significant (≥7% weight gain reported in a substantial minority)",
+          "notes": "This is the signature problem. Hunger can ramp up fast, cravings can get intense, and weight can move quickly. We don’t just “hope for the best” here—diet, activity, and monitoring are part of the plan."
+        },
+        {
+          "effect": "Metabolic changes (glucose/lipids)",
+          "incidence": "Common; olanzapine is strongly associated with hyperglycemia and dyslipidemia",
+          "notes": "This isn’t just ‘numbers on paper.’ Olanzapine can contribute to insulin resistance, new-onset diabetes, and major cholesterol/triglyceride changes. If you already have metabolic risk, we take that seriously before and during treatment."
+        },
+        {
+          "effect": "Orthostatic hypotension / Dizziness",
+          "incidence": "Reported; more likely with titration and in older adults",
+          "notes": "Standing up too fast can make you lightheaded. Hydration, slow position changes, and cautious dose increases help. This matters because falls are a real risk."
+        },
+        {
+          "effect": "Anticholinergic effects (constipation, dry mouth, urinary retention risk)",
+          "incidence": "Reported; anticholinergic burden can be more problematic in older adults",
+          "notes": "Constipation can sneak up on people. If you’re not going regularly, don’t ignore it. In older adults or people with urinary issues, the anticholinergic load can cause confusion or retention."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (akathisia, parkinsonism, dystonia; tardive dyskinesia long-term)",
+          "incidence": "Dose-related; overall mild-to-moderate risk compared to some agents, but present",
+          "notes": "Restlessness (can’t sit still), stiffness, tremor—tell your prescriber early. And with long-term use, we monitor for tardive dyskinesia because early detection matters."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, autonomic instability — MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe hyperglycemia/diabetic ketoacidosis or hyperosmolar coma (rare but can be fatal) — MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Cerebrovascular events (stroke/TIA), particularly reported in elderly dementia-related psychosis trials."
+        },
+        {
+          "risk": "Post-injection delirium/sedation syndrome (Relprevv): overdose-like sedation (including coma) and/or delirium; requires monitored administration."
+        },
+        {
+          "risk": "Agranulocytosis/neutropenia (rare): infections, fevers; consider CBC if clinically indicated or history of low WBC."
+        },
+        {
+          "risk": "Severe hypersensitivity reactions (including DRESS/SCARs) — stop and seek urgent care."
+        },
+        {
+          "risk": "QT prolongation (generally moderate risk): higher concern with other QT-prolonging meds or cardiac risk factors."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. In placebo-controlled trials (modal duration ~10 weeks), the risk of death in drug-treated patients was about 1.6 to 1.7 times placebo (about 4.5% vs 2.6%). Deaths were often cardiovascular (eg, heart failure, sudden death) or infectious (eg, pneumonia). Olanzapine is not approved for treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "No contraindications listed in US manufacturer labeling"
+        },
+        {
+          "contraindication": "Hypersensitivity to olanzapine or any component (noted in Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "Long-acting injectable olanzapine (Zyprexa Relprevv) can cause post-injection delirium/sedation syndrome (overdose-like sedation/coma and/or delirium); requires administration in a registered facility and observation for at least 3 hours after every injection",
+        "Metabolic risk is high: significant weight gain, elevated glucose (including severe hyperglycemia/DKA), and lipid abnormalities can occur",
+        "Sedation can impair driving, work, and safety; fall risk increases, especially in older adults",
+        "Orthostatic hypotension can happen during titration or dose increases; can contribute to falls",
+        "Neuroleptic malignant syndrome (rare but life-threatening) is possible with any antipsychotic",
+        "Cerebrovascular events (stroke/TIA) have been reported in elderly patients with dementia-related psychosis receiving antipsychotics"
+      ],
+      "interactions": [
+        {
+          "interactant": "Benzodiazepines (especially parenteral)",
+          "mechanism": "Additive sedation and potential respiratory depression. The prescribing info recommends against giving parenteral olanzapine with a benzodiazepine due to respiratory depression risk.",
+          "action": "If both are needed for severe agitation, separate parenteral doses (commonly at least 1 hour) and monitor closely (vitals, level of consciousness, oxygenation). Avoid stacking sedatives casually."
+        },
+        {
+          "interactant": "Alcohol and other CNS depressants (opioids, sleep meds, sedating antihistamines)",
+          "mechanism": "More sedation, impaired coordination, falls, and respiratory suppression risk in vulnerable patients.",
+          "action": "Avoid or minimize combinations. If unavoidable, use the lowest effective doses and monitor closely—especially in older adults."
+        },
+        {
+          "interactant": "Cigarette smoking (tobacco)",
+          "mechanism": "Smoking increases clearance (CYP1A2 induction) and can lower olanzapine levels; stopping smoking can increase levels and side effects.",
+          "action": "If smoking status changes, reassess dose and side effects. Dose increases may be needed in smokers; dose reductions may be needed after cessation."
+        },
+        {
+          "interactant": "Other anticholinergic medications",
+          "mechanism": "Increased constipation, urinary retention, confusion/delirium risk—especially in older adults.",
+          "action": "Try to reduce overall anticholinergic burden; monitor bowel/bladder function and cognition."
+        },
+        {
+          "interactant": "QT-prolonging medications",
+          "mechanism": "Additive QT prolongation risk, especially with multiple QT-risk meds or underlying cardiac/electrolyte issues.",
+          "action": "Review med list; consider ECG monitoring in higher-risk patients; correct electrolytes."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Weight/BMI: baseline, then at 8 and 12 weeks after initiation or dose change, then at least quarterly (some clinicians check every visit early on)"
+        },
+        {
+          "parameter": "Fasting glucose or HbA1c: baseline (when clinically relevant), then around 4 months after starting, then at least annually (more often if abnormal or high-risk)"
+        },
+        {
+          "parameter": "Lipid panel: baseline (when clinically relevant), then around 4 months after starting, then at least annually (more often if abnormal)"
+        },
+        {
+          "parameter": "Blood pressure and orthostatics: especially during titration and dose increases; watch for dizziness and fall risk"
+        },
+        {
+          "parameter": "Sedation/alertness and functional impact: every visit (school/work performance, driving safety, daytime grogginess)"
+        },
+        {
+          "parameter": "EPS monitoring: assess every visit; formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Tardive dyskinesia: screen every visit; formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Prolactin symptoms: ask at visits until dose is stable (menstrual changes, libido changes, gynecomastia/galactorrhea); check level if symptomatic"
+        },
+        {
+          "parameter": "CBC: as clinically indicated, especially if history of low WBC or drug-induced neutropenia"
+        },
+        {
+          "parameter": "Liver chemistries: baseline and periodically, especially with metabolic risk factors or hepatic disease"
+        },
+        {
+          "parameter": "Fall risk: every visit in older adults or anyone reporting dizziness/imbalance"
+        },
+        {
+          "parameter": "For IM short-acting or IV (off-label): monitor sedation, vital signs, respiratory status; consider ECG in QT-risk patients"
+        },
+        {
+          "parameter": "For Relprevv (LAI): observe for sedation/delirium for at least 3 hours after every injection"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Second-generation antipsychotics as a class have not shown a clear major increase in congenital malformations, but outcomes vary across studies. Olanzapine has substantial exposure data compared to many other SGAs. Third-trimester exposure to antipsychotics can be associated with neonatal EPS/withdrawal symptoms (eg, agitation, abnormal tone, somnolence, respiratory distress, tremor). Because olanzapine has higher metabolic risk, it may increase gestational diabetes risk in some patients; standard prenatal screening for gestational diabetes should continue. Do not stop effective treatment solely because of pregnancy status—relapse can be dangerous.",
+        "lactation": "Olanzapine is present in breast milk. Reported relative infant dose is generally low in available studies, and many reports show no adverse effects, but sedation, irritability, poor feeding, and EPS have been reported in some infants. If breastfeeding while taking olanzapine, use the lowest effective dose, avoid polypharmacy when possible, and monitor the infant (especially if premature/low birth weight or if other sedatives are used).",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic options failed and there is risk of harm. Antipsychotics increase mortality and stroke risk in dementia-related psychosis. If used for appropriate indications, start lower (often 2.5 to 5 mg/day), titrate slowly, and monitor closely for sedation, orthostasis, falls, and metabolic effects.",
+        "renal_impairment": "No dosage adjustment necessary for any degree of kidney impairment; not dialyzed in hemodialysis.",
+        "hepatic_impairment": "No specific dose adjustments are usually required across Child-Turcotte-Pugh classes A to C, but starting at the low end and titrating cautiously is prudent. Obtain baseline liver chemistries and monitor more frequently if risk factors are present; reduce to the lowest effective dose during acute liver worsening and stop if drug-induced liver injury is suspected."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1996
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral: well absorbed; not affected by food; tablets and ODT are bioequivalent",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Oral: ~6 hours in adults; IM short-acting: 15 to 45 minutes; long-acting injection: ~7 days",
+          "half_life": "Adults (oral/IM short-acting): ~30 hours (range reported); longer in older adults (~1.5x). Long-acting injection: ~30 days",
+          "metabolism": "Hepatic: glucuronidation and CYP oxidation (CYP1A2 major; CYP2D6 minor; UGT1A4)",
+          "excretion": "Urine ~57% (about 7% unchanged), feces ~30%",
+          "protein_binding": "About 93%",
+          "food_effect": "No meaningful effect (oral)"
+        },
+        "dosing": {
+          "titration": "Olanzapine dosing depends on the psychiatric target (psychosis, mania, acute agitation). Many people start low (especially first-episode psychosis or older adults) and increase gradually based on response and side effects like sedation and metabolic changes."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’re stopping olanzapine, don’t slam it to zero unless there’s a serious adverse reaction that forces it. Gradual dose reduction over weeks to months helps catch relapse early and reduces withdrawal/rebound symptoms (like insomnia, agitation, anxiety, sweating, GI upset, and restlessness). The goal is a controlled landing—not a crash."
+        }
+      }
     }
   },
   "sections": [
@@ -117,7 +281,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are the patterns I hear over and over:",
       "items": [
         {
           "category": "Calm / “Brain got quieter”",
@@ -162,7 +325,8 @@
           ],
           "note": "Olanzapine’s EPS risk is often lower than some others, but it’s not zero—especially at higher doses or in vulnerable patients."
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are the patterns I hear over and over:"
     },
     {
       "type": "onset_duration",
@@ -179,10 +343,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Olanzapine is widely used because it can be reliably effective for psychosis and mania and can rapidly calm severe agitation in emergency settings. The flip side is tolerability: sedation and metabolic side effects often determine whether someone can stay on it long-term.",
       "metric": "Not applicable for this medication.",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Olanzapine is widely used because it can be reliably effective for psychosis and mania and can rapidly calm severe agitation in emergency settings. The flip side is tolerability: sedation and metabolic side effects often determine whether someone can stay on it long-term.",
       "clinical_details": "In real-world psychiatric practice, olanzapine is often selected when symptom control needs to be strong and fast (psychosis, mania, severe agitation), and when sedation is acceptable or helpful. Long-term use requires active metabolic monitoring and a clear plan to balance benefit against weight, glucose, and lipid changes.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -275,7 +439,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Olanzapine is mainly metabolized through CYP1A2 (and some CYP2D6/UGT pathways). Smoking can lower levels, and stopping smoking can raise levels. The biggest clinical interaction theme is additive sedation and respiratory risk when combining sedating meds.",
       "items": [
         {
           "with": "Benzodiazepines (especially parenteral)",
@@ -302,7 +465,8 @@
           "risk": "Additive QT prolongation risk, especially with multiple QT-risk meds or underlying cardiac/electrolyte issues.",
           "action": "Review med list; consider ECG monitoring in higher-risk patients; correct electrolytes."
         }
-      ]
+      ],
+      "intro": "Olanzapine is mainly metabolized through CYP1A2 (and some CYP2D6/UGT pathways). Smoking can lower levels, and stopping smoking can raise levels. The biggest clinical interaction theme is additive sedation and respiratory risk when combining sedating meds."
     },
     {
       "type": "tapering",
@@ -390,21 +554,6 @@
       "text": "Olanzapine is often a “power tool” in psychiatry: strong symptom control for psychosis and mania, and a reliable option for severe agitation—especially when sleep is shattered and you need calming quickly. But because it has one of the highest metabolic burdens among antipsychotics, it’s usually not the first choice when weight, diabetes risk, or lipids are already a problem. It’s also a medication where the plan should be explicit: what are we treating, what’s the monitoring schedule, and what would make us switch or taper."
     }
   ],
-  "seo": {
-    "title": "Olanzapine (Zyprexa): Uses, Dosage, Side Effects & Warnings",
-    "description": "Olanzapine (Zyprexa) for schizophrenia, bipolar disorder, and acute agitation: dosing, sedation, weight gain, metabolic risks (glucose/lipids), dementia-related boxed warning, and Relprevv injection monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/olanzapine-zyprexa](https://www.heypsych.com/treatments/olanzapine-zyprexa)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is olanzapine used for in psychiatry?",
@@ -446,5 +595,20 @@
       "q": "How do I stop olanzapine safely?",
       "a": "In most situations, the safest move is a gradual taper over weeks to months, with close monitoring for early relapse signs (return of mania, insomnia, agitation, or psychosis). Abrupt stopping can trigger rebound symptoms like insomnia, anxiety, and agitation—so a controlled taper is usually the goal unless a serious adverse reaction forces an urgent stop."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Olanzapine (Zyprexa): Uses, Dosage, Side Effects & Warnings",
+    "description": "Olanzapine (Zyprexa) for schizophrenia, bipolar disorder, and acute agitation: dosing, sedation, weight gain, metabolic risks (glucose/lipids), dementia-related boxed warning, and Relprevv injection monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/olanzapine-zyprexa](https://www.heypsych.com/treatments/olanzapine-zyprexa)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,22 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b9-folate",
-  "type": "supplement",
-  "name": "Vitamin B9 (Folate / Folic Acid)",
-  "summary": "Vitamin B9, known as folate in its natural form and folic acid in its synthetic form, is an essential water-soluble B vitamin required for DNA synthesis, repair, and methylation, as well as red blood cell formation.",
-  "description": "Folate plays a key role in one-carbon metabolism, supporting nucleotide biosynthesis and methylation reactions. Deficiency leads to megaloblastic anemia, elevated homocysteine, and in pregnancy, an increased risk of neural tube defects. Supplementation with folic acid is routinely recommended for women of childbearing potential. Folate may also support cardiovascular health, cognition, and mood regulation through its role in neurotransmitter synthesis. However, excessive folic acid intake may mask vitamin B12 deficiency.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "methylation",
-    "DNA synthesis",
-    "anemia",
-    "pregnancy"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Leafy greens, legumes, citrus fruits, fortified grains, liver",
+  "identity": {
+    "slug": "vitamin-b9-folate",
+    "name": "Vitamin B9 (Folate / Folic Acid)",
+    "generic_name": "vitamin b9",
+    "brand_names": [
+      "Folic Acid",
+      "Folate"
+    ],
+    "aliases": [
+      "Vitamin M",
+      "Pteroylglutamic acid"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Hematology",
@@ -28,77 +28,157 @@
       "DNA synthesis",
       "Methylation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-counter supplement; prescription formulations available",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Folic Acid",
-      "Folate"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; also available as dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric",
-      "Pregnancy"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Obstetrics",
-      "Hematology",
-      "Neurology"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "methylation",
+      "DNA synthesis",
+      "anemia",
+      "pregnancy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Folate deficiency and megaloblastic anemia",
-      "Prevention of neural tube defects in pregnancy",
-      "Supplementation in patients on folate-lowering drugs (e.g., methotrexate, phenytoin)"
-    ],
-    "off_label_uses": [
-      "Adjunct in depression (especially with L-methylfolate)",
-      "Homocysteine reduction for cardiovascular risk",
-      "Cognitive support in aging populations"
-    ],
-    "contraindications": [
-      "Hypersensitivity to folic acid",
-      "Use with caution in pernicious anemia (may mask B12 deficiency)"
-    ],
-    "monitoring_required": [
-      "CBC and folate/B12 levels in patients with anemia",
-      "Homocysteine levels in cardiovascular risk"
-    ],
-    "efficacy_rating": {
-      "deficiency_treatment": 5,
-      "pregnancy neural tube prevention": 5,
-      "depression (adjunct)": 3,
-      "cognitive decline": 2
+  "summary": "Vitamin B9, known as folate in its natural form and folic acid in its synthetic form, is an essential water-soluble B vitamin required for DNA synthesis, repair, and methylation, as well as red blood cell formation.",
+  "description": "Folate plays a key role in one-carbon metabolism, supporting nucleotide biosynthesis and methylation reactions. Deficiency leads to megaloblastic anemia, elevated homocysteine, and in pregnancy, an increased risk of neural tube defects. Supplementation with folic acid is routinely recommended for women of childbearing potential. Folate may also support cardiovascular health, cognition, and mood regulation through its role in neurotransmitter synthesis. However, excessive folic acid intake may mask vitamin B12 deficiency.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "folate-deficiency-and-megaloblastic-anemia",
+          "condition_name": "Folate deficiency and megaloblastic anemia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "prevention-of-neural-tube-defects-in-pregnancy",
+          "condition_name": "Prevention of neural tube defects in pregnancy",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "supplementation-in-patients-on-folate-lowering-drugs-e-g-methotrexate-phenytoin",
+          "condition_name": "Supplementation in patients on folate-lowering drugs (e.g., methotrexate, phenytoin)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-in-depression-especially-with-l-methylfolate",
+          "condition_name": "Adjunct in depression (especially with L-methylfolate)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "homocysteine-reduction-for-cardiovascular-risk",
+          "condition_name": "Homocysteine reduction for cardiovascular risk",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-support-in-aging-populations",
+          "condition_name": "Cognitive support in aging populations",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_treatment": {
+          "rating": 5
+        },
+        "pregnancy neural tube prevention": {
+          "rating": 5
+        },
+        "depression (adjunct)": {
+          "rating": 3
+        },
+        "cognitive decline": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "High doses may mask vitamin B12 deficiency, leading to neurologic damage"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to folic acid"
+        },
+        {
+          "contraindication": "Use with caution in pernicious anemia (may mask B12 deficiency)"
+        }
+      ],
+      "precautions": [
+        "Do not rely on folic acid supplementation alone in B12 deficiency.",
+        "High doses (>1 mg/day) should be supervised by a clinician."
+      ],
+      "interactions": [
+        {
+          "interactant": "Methotrexate",
+          "mechanism": "Antagonizes antifolate action",
+          "action": "Folinic acid rescue may be required"
+        },
+        {
+          "interactant": "Anticonvulsants (phenytoin, phenobarbital)",
+          "mechanism": "May lower folate levels, reduce drug efficacy",
+          "action": "Monitor and supplement"
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Reduces folate absorption and metabolism",
+          "action": "Limit alcohol consumption"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "CBC response"
+        },
+        {
+          "parameter": "Serum folate and vitamin B12 levels"
+        },
+        {
+          "parameter": "Homocysteine levels if clinically relevant"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Strongly recommended to prevent neural tube defects",
+        "lactation": "Safe at recommended intakes",
+        "pediatric": "Safe at RDA levels; higher doses for deficiency under supervision",
+        "geriatric": "Safe, though B12 deficiency should be ruled out"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Leafy greens, legumes, citrus fruits, fortified grains, liver",
+        "regulatory_notes": "Approved vitamin; also available as dietary supplement"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B9",
-      "Folate",
-      "Folic Acid",
-      "L-methylfolate"
-    ],
-    "synonyms": [
-      "Vitamin M",
-      "Pteroylglutamic acid"
-    ],
-    "common_misspellings": [
-      "folat",
-      "folick acid",
-      "foliate"
-    ]
   },
   "sections": [
     {
@@ -221,6 +301,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Folate",
+      "url": "https://ods.od.nih.gov/factsheets/Folate-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Bailey LB, Berry RJ. Folic acid supplementation and neural tube defects. Annu Rev Nutr. 2005",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16011463/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Papakostas GI, et al. L-methylfolate as adjunctive therapy for depression. J Clin Psychiatry. 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22497652/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B9",
+      "Folate",
+      "Folic Acid",
+      "L-methylfolate"
+    ],
+    "synonyms": [
+      "Vitamin M",
+      "Pteroylglutamic acid"
+    ],
+    "common_misspellings": [
+      "folat",
+      "folick acid",
+      "foliate"
+    ]
+  },
   "seo": {
     "title": "Vitamin B9 (Folate/Folic Acid) – Uses, Dosing, Pregnancy, Mental Health",
     "description": "Vitamin B9 (Folate/Folic Acid) is essential for DNA synthesis and methylation. Learn about its role in anemia, pregnancy, homocysteine, mental health, dosing, and safety.",

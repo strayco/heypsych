@@ -1,85 +1,174 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cognitive-behavioral-therapy-insomnia",
-  "type": "therapy",
-  "name": "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
-  "summary": "A specialized form of CBT designed to treat chronic insomnia by addressing maladaptive sleep habits, dysfunctional beliefs, and behavioral patterns that interfere with restful sleep.",
-  "description": "Cognitive Behavioral Therapy for Insomnia (CBT-I) is the first-line, evidence-based treatment for chronic insomnia. Unlike general CBT, CBT-I is tailored specifically to sleep difficulties and includes strategies such as stimulus control, sleep restriction therapy, relaxation training, and cognitive restructuring. CBT-I has been shown to be as effective as, or more effective than, pharmacological sleep aids in the long term, with sustained benefits after treatment completion. It is effective across populations, including older adults, individuals with comorbid depression or anxiety, and those with chronic medical conditions.",
-  "category": "therapy/individual",
-  "tags": [
-    "cognitive",
-    "behavioral",
-    "insomnia",
-    "sleep-disorders",
-    "evidence-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "cognitive-behavioral-therapy-insomnia",
+    "name": "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
+    "generic_name": "cognitive behavioral therapy for insomnia",
+    "brand_names": [
+      "CBT-I"
+    ],
+    "wikidata_qid": "Q5141192"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Psychotherapy",
       "Behavioral Intervention"
     ],
-    "treatment_types": [
-      "Cognitive",
-      "Behavioral"
-    ],
-    "categories": [
-      "Individual Therapy",
-      "Sleep Disorders"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Digital CBT-I apps"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "6–8 weekly sessions standard"
-    ],
-    "specialty_areas": [
-      "Insomnia",
-      "Sleep Disorders",
-      "Chronic Conditions"
-    ],
-    "wikidata_qid": "Q5141192"
+    "tags": [
+      "cognitive",
+      "behavioral",
+      "insomnia",
+      "sleep-disorders",
+      "evidence-based"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic Insomnia"
-    ],
-    "conditions_treated": [
-      "Primary Insomnia",
-      "Insomnia Comorbid with Depression",
-      "Insomnia Comorbid with Anxiety",
-      "Insomnia in Older Adults",
-      "Insomnia associated with chronic medical illness"
-    ],
-    "off_label_uses": [
-      "Shift-work sleep disorder",
-      "Circadian rhythm disruptions",
-      "Adjunct to tapering off hypnotic medications"
-    ],
-    "contraindications": [
-      "Untreated sleep apnea (requires evaluation first)",
-      "Severe untreated psychiatric conditions (psychosis, acute mania)",
-      "Inability to adhere to structured sleep protocols"
-    ],
-    "safety_profile": "Safe and well-tolerated; some patients may experience transient fatigue or daytime sleepiness when initiating sleep restriction therapy.",
-    "evidence_level": "Strong—endorsed by the American Academy of Sleep Medicine (AASM) and recommended as first-line treatment by NIH and APA.",
-    "research_support": "Multiple meta-analyses confirm CBT-I as the gold-standard for insomnia, superior to medication in long-term outcomes.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "insomnia": 5,
-      "depression": 4,
-      "anxiety": 4,
-      "overall_tolerability": 5
+  "summary": "A specialized form of CBT designed to treat chronic insomnia by addressing maladaptive sleep habits, dysfunctional beliefs, and behavioral patterns that interfere with restful sleep.",
+  "description": "Cognitive Behavioral Therapy for Insomnia (CBT-I) is the first-line, evidence-based treatment for chronic insomnia. Unlike general CBT, CBT-I is tailored specifically to sleep difficulties and includes strategies such as stimulus control, sleep restriction therapy, relaxation training, and cognitive restructuring. CBT-I has been shown to be as effective as, or more effective than, pharmacological sleep aids in the long term, with sustained benefits after treatment completion. It is effective across populations, including older adults, individuals with comorbid depression or anxiety, and those with chronic medical conditions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-insomnia",
+          "condition_name": "Chronic Insomnia",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "primary-insomnia",
+          "condition_name": "Primary Insomnia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-comorbid-with-depression",
+          "condition_name": "Insomnia Comorbid with Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-comorbid-with-anxiety",
+          "condition_name": "Insomnia Comorbid with Anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-in-older-adults",
+          "condition_name": "Insomnia in Older Adults",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-associated-with-chronic-medical-illness",
+          "condition_name": "Insomnia associated with chronic medical illness",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "shift-work-sleep-disorder",
+          "condition_name": "Shift-work sleep disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "circadian-rhythm-disruptions",
+          "condition_name": "Circadian rhythm disruptions",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-to-tapering-off-hypnotic-medications",
+          "condition_name": "Adjunct to tapering off hypnotic medications",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—endorsed by the American Academy of Sleep Medicine (AASM) and recommended as first-line treatment by NIH and APA.",
+      "efficacy_ratings": {
+        "insomnia": {
+          "rating": 5
+        },
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Multiple meta-analyses confirm CBT-I as the gold-standard for insomnia, superior to medication in long-term outcomes."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "6–8 weekly sessions standard"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Digital CBT-I apps"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated; some patients may experience transient fatigue or daytime sleepiness when initiating sleep restriction therapy.",
+      "common_adverse_effects": [
+        {
+          "effect": "Daytime sleepiness early in treatment"
+        },
+        {
+          "effect": "Temporary irritability"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased anxiety when eliminating safety behaviors around sleep"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe untreated sleep apnea",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Shift workers with irregular schedules may require modified protocols",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive, Behavioral",
+        "key_techniques": [
+          "Individual Therapy",
+          "Sleep Disorders"
+        ],
+        "session_structure": {
+          "pre_session": "Review sleep diary and adherence to behavioral prescriptions.",
+          "during_session": "Introduce and practice one or more techniques (e.g., stimulus control, cognitive restructuring).",
+          "post_session": "Assign updated sleep prescriptions and strategies for the week."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed psychologist, psychiatrist, or behavioral sleep medicine specialist trained in CBT-I"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -240,6 +329,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Morin CM et al. (2006). Psychological and behavioral treatment of insomnia.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16944667/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Trauer JM et al. (2015). CBT for chronic insomnia: A meta-analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26054060/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "American Academy of Sleep Medicine – Clinical Guidelines",
+      "url": "https://aasm.org/"
+    }
+  ],
   "seo": {
     "title": "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
     "description": "Cognitive Behavioral Therapy for Insomnia (CBT-I) is the gold-standard, evidence-based treatment for chronic insomnia. Learn about techniques, effectiveness, and long-term benefits.",
@@ -252,5 +361,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—endorsed by the American Academy of Sleep Medicine (AASM) and recommended as first-line treatment by NIH and APA."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—endorsed by the American Academy of Sleep Medicine (AASM) and recommended as first-line treatment by NIH and APA."
+    ]
   }
 }

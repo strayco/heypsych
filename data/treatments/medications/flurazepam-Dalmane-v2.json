@@ -1,79 +1,221 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "flurazepam-dalmane",
-  "type": "medication",
-  "name": "Flurazepam (Dalmane)",
-  "summary": "Long-acting benzodiazepine sleep medication for short-term insomnia relief. Can help you fall asleep and stay asleep, but the “next-day hangover,” dependence risk, and dangerous interactions (especially opioids/alcohol) are the big deal.",
-  "description": "Flurazepam is a benzodiazepine used for insomnia (trouble falling asleep, staying asleep, or waking too early). It kicks in fast, but it’s long-acting because of an active metabolite that can linger for days—so morning grogginess is common. Like all benzos, it carries real risks: dependence, withdrawal, misuse, falls, confusion, and potentially fatal breathing suppression when mixed with opioids or alcohol. This is a “reserve option,” not a first-line sleep plan.",
-  "patient_summary": "Flurazepam can knock insomnia down fast, but it can also leave you foggy the next day—and it’s not a casual med. If you mix it with alcohol or opioids, breathing can slow enough to kill you. If you take it nightly, dependence can build and stopping suddenly can be dangerous. Think: short-term, lowest dose, bedtime only, and a real plan for getting off it.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "flurazepam-dalmane",
+    "name": "Flurazepam (Dalmane)",
+    "generic_name": "flurazepam",
+    "brand_names": [
+      "Dalmane"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Benzodiazepine",
       "Sedative-Hypnotic",
       "GABA-A Receptor Modulator"
-    ],
-    "brand_names": [
-      "Dalmane"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1970,
-    "pharmacologic_category": "Benzodiazepine, Long-Acting (active metabolite)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset or sleep maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "Labeled for short-term insomnia when difficulty falling asleep, frequent awakenings, or early-morning awakening is the main problem. Best reserved for cases where safer options and CBT-I aren’t available or haven’t worked."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "not_preferred",
-        "context": "Not a go-to anxiety medication in modern practice—too much next-day impairment and dependence risk for routine anxiety treatment."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to flurazepam, other benzodiazepines, or any component of the formulation",
-      "Pregnancy",
-      "Severe respiratory function impairment (eg, significant sleep apnea syndrome) (listed in some non-U.S. labeling)",
-      "Myasthenia gravis (listed in some non-U.S. labeling)",
-      "Severe hepatic impairment (listed in some non-U.S. labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Short-term insomnia symptom relief",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Flurazepam can help you fall asleep faster and wake up less during the night in the short term. The tradeoff is the long “tail” in your system, which increases next-day grogginess and accident risk. Tolerance can develop, so it tends to stop feeling as effective if you use it night after night.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Long-acting benzodiazepine sleep medication for short-term insomnia relief. Can help you fall asleep and stay asleep, but the “next-day hangover,” dependence risk, and dangerous interactions (especially opioids/alcohol) are the big deal.",
+  "description": "Flurazepam is a benzodiazepine used for insomnia (trouble falling asleep, staying asleep, or waking too early). It kicks in fast, but it’s long-acting because of an active metabolite that can linger for days—so morning grogginess is common. Like all benzos, it carries real risks: dependence, withdrawal, misuse, falls, confusion, and potentially fatal breathing suppression when mixed with opioids or alcohol. This is a “reserve option,” not a first-line sleep plan.",
+  "patient_summary": "Flurazepam can knock insomnia down fast, but it can also leave you foggy the next day—and it’s not a casual med. If you mix it with alcohol or opioids, breathing can slow enough to kill you. If you take it nightly, dependence can build and stopping suddenly can be dangerous. Think: short-term, lowest dose, bedtime only, and a real plan for getting off it.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "Labeled for short-term insomnia when difficulty falling asleep, frequent awakenings, or early-morning awakening is the main problem. Best reserved for cases where safer options and CBT-I aren’t available or haven’t worked.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Not a go-to anxiety medication in modern practice—too much next-day impairment and dependence risk for routine anxiety treatment."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "You may feel sedation within ~30-60 minutes",
-      "peak_plasma": "Parent drug peaks around 30-60 minutes; active metabolite peaks later (hours)",
-      "half_life": "Parent drug: ~2-3 hours; active metabolite (N-desalkylflurazepam): ~74-90 hours after single dose (can be longer with repeated dosing, especially in older adults)",
-      "duration_IR": "Long-acting overall due to active metabolite; next-day effects can persist",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic to active metabolite (N-desalkylflurazepam) and other metabolites",
-      "excretion": "Mostly urine as metabolites; minimal parent drug in urine",
-      "protein_binding": "Very high protein binding (parent drug and active metabolite)",
-      "food_effect": "May be taken without regard to meals; bedtime dosing is key"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "You may feel sedation within ~30-60 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Daytime sedation / hangover effect",
+          "incidence": "Frequency not defined (common in practice)",
+          "notes": "This medication can leave you foggy the next day because an active metabolite sticks around. That can mean slower reaction time, worse driving performance, and higher accident risk—especially if you take it nightly."
+        },
+        {
+          "effect": "Dizziness, ataxia, staggering, falls",
+          "incidence": "Frequency not defined",
+          "notes": "Getting up at night to use the bathroom is a classic setup for falls. If you’re older, on other sedatives, or have balance issues, this risk is a major reason clinicians avoid flurazepam."
+        },
+        {
+          "effect": "Memory impairment / anterograde amnesia",
+          "incidence": "Frequency not defined",
+          "notes": "You may not fully form memories after taking it—especially if you stay awake after dosing. That can look like missing chunks of conversations or not remembering what you did at night."
+        },
+        {
+          "effect": "Confusion, slowed reflexes, impaired coordination",
+          "incidence": "Frequency not defined",
+          "notes": "This is the brain-on-brakes effect. It can be helpful for sleep, but it can also make you clumsy, foggy, and unsafe to drive."
+        },
+        {
+          "effect": "Mood changes (depression, irritability)",
+          "incidence": "Frequency not defined",
+          "notes": "Some people feel more down, more irritable, or emotionally flat. If depression or suicidal thoughts are part of your history, this is a red flag medication."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (especially with opioids, alcohol, or severe lung disease): slow/shallow breathing, bluish lips, unresponsiveness. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe withdrawal reactions after continued use: agitation, tremor, insomnia rebound, confusion, hallucinations, seizures. MEDICAL EMERGENCY if severe symptoms occur."
+        },
+        {
+          "risk": "Complex sleep behaviors (rare): sleep-driving, cooking while asleep, sleep-eating, making calls while asleep. Stop medication and seek urgent evaluation."
+        },
+        {
+          "risk": "Hypersensitivity reactions (rare): anaphylaxis or angioedema (swelling of face/lips/tongue). Do not re-challenge if angioedema occurs."
+        },
+        {
+          "risk": "Paradoxical reactions (rare but real): hyperactivity, aggression, agitation—more likely in pediatrics/adolescents, older adults, or certain psychiatric/substance use histories."
+        },
+        {
+          "risk": "Blood count abnormalities or liver injury signals (rare): unexplained infections, jaundice, dark urine, severe fatigue—needs medical evaluation."
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined use for patients in whom alternatives are inadequate. Use the lowest effective doses for the shortest possible duration. Monitor closely for sedation and respiratory depression.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to flurazepam, other benzodiazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Pregnancy"
+        },
+        {
+          "contraindication": "Severe respiratory function impairment (eg, significant sleep apnea syndrome) (listed in some non-U.S. labeling)"
+        },
+        {
+          "contraindication": "Myasthenia gravis (listed in some non-U.S. labeling)"
+        },
+        {
+          "contraindication": "Severe hepatic impairment (listed in some non-U.S. labeling)"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction risk: Higher when combined with alcohol, other sedatives, or illicit substances",
+        "Physical dependence can develop with continued use; risk rises with higher dose and longer duration",
+        "Do not stop abruptly after continued use: withdrawal can be severe and life-threatening",
+        "CNS depression: Can impair driving, decision-making, coordination, and reaction time (especially the next day)",
+        "Depression warning: Generally avoid in patients with depression or suicidal risk unless an acute emergency situation demands it",
+        "Respiratory disease: Use extreme caution (COPD, sleep apnea, other respiratory compromise)",
+        "Parasomnias and complex sleep behaviors can occur (rare but high-risk): sleep-driving, sleep-eating, cooking while asleep"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (any opioid pain medication, including methadone or illicit opioids)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid whenever possible. If there is truly no alternative, use the smallest doses for the shortest time and monitor for sedation and slow breathing. Consider naloxone access when opioids are involved."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "High-risk CNS and respiratory depression; blackouts; accidents; overdose risk.",
+          "action": "Absolute no. Do not drink while taking flurazepam."
+        },
+        {
+          "interactant": "Other sedatives (other benzodiazepines, Z-drugs like zolpidem/eszopiclone, barbiturates, muscle relaxants, sedating antihistamines, gabapentinoids, some antipsychotics)",
+          "mechanism": "Excess sedation, confusion, falls, dangerous sleep behaviors, breathing suppression in high-risk patients.",
+          "action": "Avoid stacking when you can. If it must happen, reduce doses, separate timing, and monitor closely—especially in older adults or anyone with respiratory issues."
+        },
+        {
+          "interactant": "Cannabis (THC) and other intoxicants",
+          "mechanism": "More impairment, more memory problems, higher fall risk, risky decision-making.",
+          "action": "Strongly discourage combination—especially if driving or operating anything dangerous."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "May increase benzodiazepine concentrations in some cases, increasing sedation/impairment.",
+          "action": "Limit or avoid grapefruit products while using flurazepam."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Daytime alertness and next-day impairment: morning grogginess, slowed reaction time, trouble concentrating, driving safety"
+        },
+        {
+          "parameter": "Respiratory status in higher-risk patients: respiratory rate, excessive snoring, witnessed apneas, daytime sleepiness (especially if opioids or lung disease are involved)"
+        },
+        {
+          "parameter": "Behavior and cognition: confusion, memory impairment, disinhibition, mood worsening"
+        },
+        {
+          "parameter": "Falls and safety: nighttime falls, unsteadiness, balance problems—especially in older adults"
+        },
+        {
+          "parameter": "Abuse/misuse signals: early refills, dose escalation, mixing with alcohol/illicit substances, multiple prescribers, loss of control"
+        },
+        {
+          "parameter": "Sleep-related abnormal behaviors: reports of sleep-walking, sleep-eating, sleep-driving, or “doing things at night with no memory”"
+        },
+        {
+          "parameter": "Treatment fit: if insomnia doesn’t improve after 7 to 10 days, reassess for underlying psychiatric/medical causes and reconsider the plan"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Contraindicated in labeling: pregnancy. Benzodiazepines have potential fetal risks, and late-pregnancy exposure can cause neonatal sedation and/or withdrawal. For insomnia in pregnancy, nonpharmacologic treatment (like CBT-I) is typically preferred, and medication choices should be individualized with obstetric and psychiatric input. Encourage enrollment in the National Pregnancy Registry for Psychiatric Medications (1-866-961-2388) if exposure occurs.",
+        "lactation": "Not recommended by the manufacturer. It is not clearly established how much flurazepam transfers into milk, but the long half-life increases concern for infant sedation, feeding issues, poor weight gain, and withdrawal effects. Consider alternative treatments and consult pediatric guidance if exposure occurs.",
+        "pediatric": "Limited data: Adolescents ≥15 years have been reported to use 15 mg at bedtime in limited settings. In general, benzodiazepine hypnotics are rarely preferred in pediatric populations due to paradoxical reactions, misuse risk, and safety concerns.",
+        "geriatric": "Avoid use in adults ≥65 whenever possible. Older adults have increased sensitivity and decreased clearance of long-acting benzodiazepines, raising risk for confusion, delirium, falls, fractures, and motor vehicle accidents. If a benzodiazepine hypnotic is being considered in an older adult, clinicians typically look for safer alternatives first.",
+        "renal_impairment": "No specific adjustment provided in manufacturer labeling; use with caution. Dose adjustment is generally unlikely based on limited urinary excretion of parent drug, but overall sensitivity and accumulation risk still matter—especially in frail patients.",
+        "hepatic_impairment": "No specific adjustment provided in manufacturer labeling; use with caution. Reduced hepatic function can increase sedation and prolong effects."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1970
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Parent drug peaks around 30-60 minutes; active metabolite peaks later (hours)",
+          "half_life": "Parent drug: ~2-3 hours; active metabolite (N-desalkylflurazepam): ~74-90 hours after single dose (can be longer with repeated dosing, especially in older adults)",
+          "metabolism": "Hepatic to active metabolite (N-desalkylflurazepam) and other metabolites",
+          "excretion": "Mostly urine as metabolites; minimal parent drug in urine",
+          "protein_binding": "Very high protein binding (parent drug and active metabolite)",
+          "food_effect": "May be taken without regard to meals; bedtime dosing is key"
+        },
+        "dosing": {
+          "titration": "Flurazepam is taken at bedtime as needed for insomnia. Start low, take it right before bed, and keep duration short. Because it’s long-acting, next-day impairment is a common limiting factor."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If flurazepam has been used regularly, don’t stop abruptly. Rebound insomnia and withdrawal can hit hard, and in severe cases benzodiazepine withdrawal can be life-threatening. Tapering is the safer path: slow, structured, and paired with CBT-I whenever possible."
+        }
+      }
     }
   },
   "sections": [
@@ -93,7 +235,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is a benzo sleep med, so experiences tend to cluster into a few predictable buckets:",
       "items": [
         {
           "category": "Sleepier fast (same night)",
@@ -130,7 +271,8 @@
           ],
           "note": "Regular nightly use raises dependence risk, and stopping suddenly can trigger dangerous withdrawal."
         }
-      ]
+      ],
+      "intro": "This is a benzo sleep med, so experiences tend to cluster into a few predictable buckets:"
     },
     {
       "type": "onset_duration",
@@ -147,10 +289,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Flurazepam can be effective short-term for insomnia—especially when sleep is fragmented or you’re waking too early. The catch: tolerance can build, and the long duration increases next-day impairment risk. That’s why modern insomnia care usually starts with CBT-I and safer medication options, and reserves long-acting benzos for very specific situations.",
       "metric": "Short-term insomnia symptom relief",
       "value": "Varies by person",
       "comparison": "Not applicable for this medication.",
-      "text": "Flurazepam can be effective short-term for insomnia—especially when sleep is fragmented or you’re waking too early. The catch: tolerance can build, and the long duration increases next-day impairment risk. That’s why modern insomnia care usually starts with CBT-I and safer medication options, and reserves long-acting benzos for very specific situations.",
       "clinical_details": "As a benzodiazepine hypnotic, flurazepam enhances GABA-A signaling, lowering arousal and promoting sleep. It may improve sleep onset and maintenance in the short term, but it can cause next-day cognitive and motor impairment due to an active metabolite with a very long elimination half-life. Prolonged nightly use increases risk of tolerance, dependence, rebound insomnia, and withdrawal.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -238,7 +380,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "With flurazepam, the most dangerous interactions are the ones that stack sedation and suppress breathing. If you’re combining sedatives, you’re multiplying risk—not adding it.",
       "items": [
         {
           "with": "Opioids (any opioid pain medication, including methadone or illicit opioids)",
@@ -265,7 +406,8 @@
           "risk": "May increase benzodiazepine concentrations in some cases, increasing sedation/impairment.",
           "action": "Limit or avoid grapefruit products while using flurazepam."
         }
-      ]
+      ],
+      "intro": "With flurazepam, the most dangerous interactions are the ones that stack sedation and suppress breathing. If you’re combining sedatives, you’re multiplying risk—not adding it."
     },
     {
       "type": "tapering",
@@ -337,21 +479,6 @@
       "text": "Flurazepam is not a first-line insomnia treatment. The modern playbook is CBT-I first, plus sleep schedule/behavior work. If medication is needed, clinicians often prefer options with less dependence risk and less next-day impairment. Flurazepam is typically reserved for select short-term cases where other approaches have failed, the risks are understood, and the plan includes a clear off-ramp."
     }
   ],
-  "seo": {
-    "title": "Flurazepam (Dalmane): Uses, Dosage, Side Effects, Next-Day Hangover & Withdrawal",
-    "description": "Flurazepam (Dalmane) for insomnia: bedtime dosing (15–30 mg), how fast it works, why next-day grogginess is common, dependence/withdrawal risks, and dangerous interactions with opioids and alcohol.",
-    "canonical": "[https://www.heypsych.com/treatments/flurazepam-dalmane](https://www.heypsych.com/treatments/flurazepam-dalmane)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is flurazepam (Dalmane) used for?",
@@ -397,5 +524,20 @@
       "q": "What should I do if my insomnia doesn’t improve after a week on flurazepam?",
       "a": "That’s a signal to reassess. Persistent insomnia can be driven by depression, anxiety, PTSD, substances, circadian rhythm problems, sleep apnea, pain, medications, or stress patterns. If sleep hasn’t meaningfully improved after 7–10 days, the plan should shift toward identifying the driver and using CBT-I or safer long-term strategies."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Flurazepam (Dalmane): Uses, Dosage, Side Effects, Next-Day Hangover & Withdrawal",
+    "description": "Flurazepam (Dalmane) for insomnia: bedtime dosing (15–30 mg), how fast it works, why next-day grogginess is common, dependence/withdrawal risks, and dangerous interactions with opioids and alcohol.",
+    "canonical": "[https://www.heypsych.com/treatments/flurazepam-dalmane](https://www.heypsych.com/treatments/flurazepam-dalmane)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

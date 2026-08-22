@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "dextroamphetamine-dexedrine",
-  "type": "medication",
-  "name": "Dextroamphetamine (Dexedrine, Zenzedi, Xelstrym)",
-  "summary": "Stimulant medication for ADHD and narcolepsy. Increases dopamine and norepinephrine to improve focus and wakefulness, but carries high risks of abuse, weight loss, and heart side effects.",
-  "description": "Dextroamphetamine is a central nervous system stimulant used mainly for ADHD and narcolepsy. It boosts dopamine and norepinephrine in the brain to improve attention, reduce impulsivity, and promote wakefulness. It comes as tablets, extended-release capsules, oral solution, and a transdermal patch (Xelstrym). Because it is a Schedule II controlled substance, it has a high risk of misuse, addiction, appetite and weight loss, and cardiovascular side effects. Extra caution is needed in children, especially those younger than 6 years, where extended-release forms can cause higher drug levels and significant weight loss.",
-  "patient_summary": "Dextroamphetamine is a stimulant used for ADHD and narcolepsy. It can help you or your child focus better, sit still longer, and stay awake. It comes as pills, liquid, and a patch. It is a controlled substance with a real risk of misuse and addiction. Common side effects include decreased appetite, trouble sleeping, weight loss, and feeling jittery. In very young children, long-acting forms (extended-release) can cause more side effects and serious weight loss, so they are usually avoided. Your care team will monitor heart rate, blood pressure, growth, appetite, sleep, and mood while you are on this medication.",
-  "category": "medications/adhd-stimulants",
-  "metadata": {
-    "drug_classes": [
-      "Central Nervous System Stimulant",
-      "Amphetamine",
-      "Sympathomimetic Amine"
-    ],
+  "identity": {
+    "slug": "dextroamphetamine-dexedrine",
+    "name": "Dextroamphetamine (Dexedrine, Zenzedi, Xelstrym)",
+    "generic_name": "dextroamphetamine",
     "brand_names": [
       "Dexedrine",
       "Dexedrine Spansule",
@@ -20,77 +12,261 @@
       "ProCentra",
       "Xelstrym"
     ],
-    "administration_routes": [
-      "Oral",
-      "Transdermal (Patch)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule II (DEA)",
-    "generic_available": true,
-    "pharmacologic_category": "Central Nervous System Stimulant",
-    "fda_approval_year": 1976,
-    "published_date": "2026-02-12T00:00:00Z",
-    "last_updated": "2026-02-12T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-12T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q420198"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)",
-      "Narcolepsy"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved as part of a comprehensive ADHD treatment plan that includes behavioral, educational, and social interventions. Particularly useful for improving attention, focus, and reducing hyperactivity and impulsivity."
-      },
-      {
-        "slug": "narcolepsy",
-        "relationship": "primary_treatment",
-        "context": "Used to improve daytime wakefulness and reduce excessive daytime sleepiness. Not all formulations are approved for narcolepsy (transdermal patch excluded)."
-      },
-      {
-        "slug": "obesity-hypothalamic-pituitary-dysfunction",
-        "relationship": "off_label",
-        "context": "Occasionally used in children with obesity secondary to hypothalamic-pituitary dysfunction, under specialist supervision and with strict monitoring for cardiovascular and growth effects."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to amphetamine products or any component (including angioedema, anaphylaxis, Stevens-Johnson syndrome with patch)",
-      "Use during or within 14 days of monoamine oxidase inhibitor (MAOI) therapy (including linezolid or IV methylene blue)",
-      "Symptomatic cardiovascular disease or structural cardiac abnormalities",
-      "Moderate to severe hypertension",
-      "Hyperthyroidism",
-      "Glaucoma",
-      "Agitated state or marked anxiety",
-      "History of drug abuse or dependence (strong caution; often a relative contraindication)",
-      "Pheochromocytoma (Canadian labeling)",
-      "Motor tics or family history of Tourette syndrome (Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in ADHD",
-      "percentage_value": null,
-      "comparison_data": null,
-      "patient_text": "Most children and adults who tolerate dextroamphetamine notice clearer focus, better ability to sit still, and less impulsivity once the dose is adjusted correctly. Overall effectiveness is similar to other stimulant medications used for ADHD.",
-      "citation_tag": null
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd-stimulants",
+    "drug_classes": [
+      "Central Nervous System Stimulant",
+      "Amphetamine",
+      "Sympathomimetic Amine"
+    ]
+  },
+  "summary": "Stimulant medication for ADHD and narcolepsy. Increases dopamine and norepinephrine to improve focus and wakefulness, but carries high risks of abuse, weight loss, and heart side effects.",
+  "description": "Dextroamphetamine is a central nervous system stimulant used mainly for ADHD and narcolepsy. It boosts dopamine and norepinephrine in the brain to improve attention, reduce impulsivity, and promote wakefulness. It comes as tablets, extended-release capsules, oral solution, and a transdermal patch (Xelstrym). Because it is a Schedule II controlled substance, it has a high risk of misuse, addiction, appetite and weight loss, and cardiovascular side effects. Extra caution is needed in children, especially those younger than 6 years, where extended-release forms can cause higher drug levels and significant weight loss.",
+  "patient_summary": "Dextroamphetamine is a stimulant used for ADHD and narcolepsy. It can help you or your child focus better, sit still longer, and stay awake. It comes as pills, liquid, and a patch. It is a controlled substance with a real risk of misuse and addiction. Common side effects include decreased appetite, trouble sleeping, weight loss, and feeling jittery. In very young children, long-acting forms (extended-release) can cause more side effects and serious weight loss, so they are usually avoided. Your care team will monitor heart rate, blood pressure, growth, appetite, sleep, and mood while you are on this medication.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved as part of a comprehensive ADHD treatment plan that includes behavioral, educational, and social interventions. Particularly useful for improving attention, focus, and reducing hyperactivity and impulsivity.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "narcolepsy",
+          "condition_name": "Narcolepsy",
+          "relationship": "primary_indication",
+          "context": "Used to improve daytime wakefulness and reduce excessive daytime sleepiness. Not all formulations are approved for narcolepsy (transdermal patch excluded).",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "obesity-hypothalamic-pituitary-dysfunction",
+          "condition_name": "Obesity Hypothalamic Pituitary Dysfunction",
+          "relationship": "off_label",
+          "context": "Occasionally used in children with obesity secondary to hypothalamic-pituitary dysfunction, under specialist supervision and with strict monitoring for cardiovascular and growth effects."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed orally; transdermal system provides continuous drug delivery over the wear period.",
-      "bioavailability": "Not precisely defined; clinically effective at low milligram doses.",
-      "onset": "Oral immediate-release: within 1 to 2 hours; extended-release: later peak; transdermal patch: several hours after application.",
-      "peak_plasma": "Oral immediate-release: about 3 hours; extended-release: about 8 hours; transdermal patch: about 6 to 9 hours after initial application.",
-      "half_life": "Oral: about 12 hours in adults; transdermal: about 6.4 to 11.5 hours in children and adults.",
-      "duration_IR": "About 4 to 6 hours.",
-      "duration_ER": "About 8 hours for extended-release capsules; 9 hours for the transdermal patch while worn.",
-      "metabolism": "Partly hepatic, including CYP2D6-mediated metabolism.",
-      "excretion": "Urine; excretion is pH-dependent and increases in more acidic urine.",
-      "protein_binding": "Not well defined.",
-      "food_effect": "Acidic foods, juices, or vitamin C can reduce serum levels and effectiveness; external heat can increase absorption from the patch."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral immediate-release: within 1 to 2 hours; extended-release: later peak; transdermal patch: several hours after application."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Transdermal (Patch)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Decreased Appetite and Weight Loss",
+          "incidence": "Very common (around 10% to 30% or more, higher in younger children and at higher doses).",
+          "notes": "Your child may eat less at lunch and lose weight, especially on long-acting forms. Focus calories at breakfast and dinner, and monitor weight closely. In children younger than 6 years on extended-release stimulants, weight loss of at least 10% has been reported, prompting new FDA warnings."
+        },
+        {
+          "effect": "Insomnia and Sleep Problems",
+          "incidence": "Common (often 5% to 15% or more depending on dose and timing).",
+          "notes": "Trouble falling asleep is more likely if doses are taken late in the day. Moving doses earlier, lowering the dose, or switching formulations can help."
+        },
+        {
+          "effect": "Headache and Stomachache",
+          "incidence": "Common, especially during the first weeks.",
+          "notes": "Headache or stomach discomfort often improves with time or dose adjustments. Taking with food in the morning can help some people."
+        },
+        {
+          "effect": "Irritability, Emotional Ups and Downs",
+          "incidence": "Common, especially as the medication is wearing off.",
+          "notes": "Some people feel more irritable or emotional when the dose is too high or when it wears off quickly. Let your clinician know if afternoon or evening \"crashes\" are a problem."
+        },
+        {
+          "effect": "Application-Site Reactions (Patch)",
+          "incidence": "Very common (redness, itching, irritation in most patch users).",
+          "notes": "Mild redness or itching at the patch site is common and often improves by rotating sites. Severe rash, blistering, or swelling needs medical attention and may require stopping the patch."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serious heart problems: chest pain, shortness of breath, fainting, or signs of stroke (sudden weakness, trouble speaking, facial droop). Call emergency services immediately."
+        },
+        {
+          "risk": "New or worsening psychiatric symptoms: hallucinations, paranoia, mania, extreme aggression, or suicidal thoughts."
+        },
+        {
+          "risk": "Peripheral vasculopathy and Raynaud phenomenon: fingers or toes turning white, blue, or red with pain, numbness, or ulcers."
+        },
+        {
+          "risk": "Severe allergic reactions: swelling of face, lips, or tongue; difficulty breathing; rash or hives. For the patch, widespread rash or severe skin reaction can occur."
+        },
+        {
+          "risk": "Significant weight loss or failure to grow in children, especially with extended-release formulations and in those younger than 6 years."
+        },
+        {
+          "risk": "Rhabdomyolysis (rare): severe muscle pain, dark urine, fever, or confusion."
+        }
+      ],
+      "black_box_warning": "Stimulant medications including dextroamphetamine have a high potential for abuse and misuse, which can lead to addiction, overdose, and death. Misuse by snorting, injecting, or taking higher doses than prescribed greatly increases the risk of serious heart problems and sudden death.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to amphetamine products or any component (including angioedema, anaphylaxis, Stevens-Johnson syndrome with patch)"
+        },
+        {
+          "contraindication": "Use during or within 14 days of monoamine oxidase inhibitor (MAOI) therapy (including linezolid or IV methylene blue)"
+        },
+        {
+          "contraindication": "Symptomatic cardiovascular disease or structural cardiac abnormalities"
+        },
+        {
+          "contraindication": "Moderate to severe hypertension"
+        },
+        {
+          "contraindication": "Hyperthyroidism"
+        },
+        {
+          "contraindication": "Glaucoma"
+        },
+        {
+          "contraindication": "Agitated state or marked anxiety"
+        },
+        {
+          "contraindication": "History of drug abuse or dependence (strong caution; often a relative contraindication)"
+        },
+        {
+          "contraindication": "Pheochromocytoma (Canadian labeling)"
+        },
+        {
+          "contraindication": "Motor tics or family history of Tourette syndrome (Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "Extended-release stimulants and young children: In July 2025, the FDA warned that children younger than 6 years taking extended-release amphetamine and methylphenidate products had higher blood levels and more side effects, including weight loss of at least 10%. Because of this, the labeling now recommends against extended-release stimulants in children under 6 and emphasizes close monitoring of weight and growth.",
+        "Heart risks: Stimulants can increase heart rate and blood pressure. Rarely, they have been linked to sudden death, stroke, or heart attack in people with underlying heart disease. A careful heart history and physical exam are recommended before starting.",
+        "Psychiatric risks: Stimulants can worsen or unmask conditions such as bipolar disorder or psychosis in vulnerable patients, causing hallucinations, paranoia, or mania. New or worsening aggression, irritability, or mood swings should be reported.",
+        "Growth and weight: Long-term use in children can slow growth and cause weight loss. Height, weight, and appetite must be monitored regularly.",
+        "Peripheral vasculopathy and Raynaud phenomenon: Stimulants can reduce blood flow to fingers and toes, causing color changes, numbness, or pain. Rarely, ulcers or tissue damage can occur.",
+        "Serotonin syndrome: When combined with certain antidepressants or other serotonergic drugs, there is a risk of serotonin syndrome (agitation, sweating, tremor, rapid heart rate, fever), which can be life-threatening."
+      ],
+      "interactions": [
+        {
+          "interactant": "Monoamine Oxidase Inhibitors (MAOIs) such as phenelzine, tranylcypromine, selegiline, linezolid, IV methylene blue",
+          "mechanism": "Severe, potentially life-threatening increase in blood pressure and serotonin syndrome.",
+          "action": "Contraindicated. Do not use dextroamphetamine during or within 14 days of MAOIs."
+        },
+        {
+          "interactant": "Serotonergic drugs (SSRIs, SNRIs, TCAs, triptans, tramadol, fentanyl, lithium, St. John’s wort, tryptophan)",
+          "mechanism": "Increased risk of serotonin syndrome (agitation, sweating, tremor, fever, confusion).",
+          "action": "Use with caution. Start at low stimulant doses, monitor closely, and seek urgent care for signs of serotonin syndrome."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (fluoxetine, paroxetine, bupropion, quinidine, some antipsychotics)",
+          "mechanism": "Increased dextroamphetamine levels and side effects (heart rate, blood pressure, anxiety, insomnia).",
+          "action": "May need lower stimulant doses and closer monitoring."
+        },
+        {
+          "interactant": "Other stimulants (other amphetamine products, methylphenidate, modafinil/armodafinil, caffeine in high doses)",
+          "mechanism": "Additive stimulation, higher heart rate and blood pressure, anxiety, insomnia.",
+          "action": "Avoid combining two stimulant prescriptions unless specifically directed by a specialist. Limit energy drinks and high-dose caffeine."
+        },
+        {
+          "interactant": "Acidifying agents (vitamin C, acidic juices, some antacids that acidify urine)",
+          "mechanism": "Lower blood levels of dextroamphetamine, reducing effectiveness.",
+          "action": "Avoid large doses of vitamin C or highly acidic drinks around dosing. Tell your clinician if the medicine seems weaker on certain days."
+        },
+        {
+          "interactant": "Alkalinizing agents (some antacids, sodium bicarbonate)",
+          "mechanism": "Higher blood levels and longer duration of dextroamphetamine, raising side effect risk.",
+          "action": "Use cautiously and separate timing where possible. Monitor for jitteriness, insomnia, or heart symptoms."
+        },
+        {
+          "interactant": "Antihypertensives and heart medications",
+          "mechanism": "Stimulants may reduce the effectiveness of blood pressure drugs.",
+          "action": "Monitor blood pressure closely and adjust doses as needed with your cardiologist or primary care clinician."
+        },
+        {
+          "interactant": "Alcohol and nonprescribed drugs",
+          "mechanism": "Increased risk of misuse, addiction, heart strain, and dangerous behaviors.",
+          "action": "Avoid nonmedical use of alcohol or recreational drugs while on dextroamphetamine, especially at higher doses or with heart risk factors."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cardiovascular status: Check heart rate and blood pressure at baseline, after dose increases, and periodically thereafter."
+        },
+        {
+          "parameter": "Cardiac history: Screen for structural heart disease, fainting, chest pain, and family history of sudden death or serious arrhythmias."
+        },
+        {
+          "parameter": "Growth and weight: In children and adolescents, track height and weight at least every 3 to 6 months; pay special attention to extended-release formulations and children under 6."
+        },
+        {
+          "parameter": "Appetite and nutrition: Ask about meals skipped, appetite changes, and dietary intake; consider nutrition support if needed."
+        },
+        {
+          "parameter": "Sleep: Monitor for insomnia or early-morning waking, especially if doses are taken later in the day."
+        },
+        {
+          "parameter": "Behavior and mood: Watch for increased anxiety, irritability, aggression, mood swings, or new psychotic or manic symptoms."
+        },
+        {
+          "parameter": "Peripheral circulation: Look for color changes, pain, numbness, or sores on fingers and toes suggestive of Raynaud phenomenon or peripheral vasculopathy."
+        },
+        {
+          "parameter": "Substance use and misuse: Ask about cravings for higher doses, using without a prescription, taking more than prescribed, or diversion. Check prescription drug monitoring programs (PDMPs) when appropriate."
+        },
+        {
+          "parameter": "Adherence and function: Review school or work performance, organization, attention, and symptom ratings from parents, teachers, or the patient."
+        },
+        {
+          "parameter": "Skin (patch users): Monitor for persistent or severe skin reactions at the application site or elsewhere on the body."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use during pregnancy has been associated with risks such as low birth weight, preterm birth, and possible withdrawal symptoms in the newborn. For pregnant patients with mild to moderate ADHD, nonmedication strategies are preferred. For those with more severe ADHD or narcolepsy, the decision to continue medication should be made using shared decision-making, aiming for the lowest effective dose and minimizing other risk factors.",
+        "lactation": "Dextroamphetamine passes into breast milk. Small studies found relative infant doses around 2% to 13.8% of the maternal weight-adjusted dose, with no short-term adverse effects reported in a few infants. Because long-term neurodevelopmental effects are unknown and stimulants can affect heart rate, blood pressure, and growth, many manufacturers do not recommend use while breastfeeding. If used, monitor the infant for irritability, poor sleep, poor feeding, or poor weight gain.",
+        "pediatric": "Stimulants are widely used in school-aged children with ADHD, but dextroamphetamine is not recommended for routine use in children younger than 6 years. In July 2025, the FDA highlighted that extended-release stimulants in children under 6 led to higher blood levels and more side effects, including significant weight loss. Growth (height and weight), appetite, sleep, heart rate, and blood pressure must be checked regularly.",
+        "geriatric": "Older adults may be more sensitive to increases in heart rate and blood pressure and to mood or sleep changes. Start at the lowest possible dose and titrate very slowly, with close cardiovascular monitoring. Consider nonstimulant or nonmedication strategies when possible.",
+        "renal_impairment": "Oral forms do not have clear renal dosing guidelines, but reduced kidney function may slow elimination. The transdermal patch requires lower maximum doses in reduced kidney function. In advanced kidney disease, careful dose selection and monitoring are required.",
+        "hepatic_impairment": "No specific dose adjustment guidelines exist, but because dextroamphetamine is partly metabolized in the liver, use with caution in moderate to severe liver impairment and titrate slowly."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1976
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed orally; transdermal system provides continuous drug delivery over the wear period.",
+          "bioavailability": "Not precisely defined; clinically effective at low milligram doses.",
+          "peak_plasma": "Oral immediate-release: about 3 hours; extended-release: about 8 hours; transdermal patch: about 6 to 9 hours after initial application.",
+          "half_life": "Oral: about 12 hours in adults; transdermal: about 6.4 to 11.5 hours in children and adults.",
+          "metabolism": "Partly hepatic, including CYP2D6-mediated metabolism.",
+          "excretion": "Urine; excretion is pH-dependent and increases in more acidic urine.",
+          "protein_binding": "Not well defined.",
+          "food_effect": "Acidic foods, juices, or vitamin C can reduce serum levels and effectiveness; external heat can increase absorption from the patch."
+        },
+        "dosing": {
+          "titration": "Dosing is highly individualized. Clinicians usually start low and go up slowly each week until benefits are seen or side effects become limiting."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Dextroamphetamine does not cause life-threatening withdrawal like some other drugs, but stopping suddenly after long-term or high-dose use can cause uncomfortable symptoms and a sharp drop in functioning."
+        }
+      }
     }
   },
   "sections": [
@@ -112,7 +288,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People respond differently, but these are common experiences reported with dextroamphetamine when the dose is adjusted correctly.",
       "items": [
         {
           "category": "Improved Focus and Productivity",
@@ -148,7 +323,8 @@
           ],
           "note": "Too high a dose can cause jitteriness, anxiety, mood swings, or a harsh \"crash\" as the medicine wears off."
         }
-      ]
+      ],
+      "intro": "People respond differently, but these are common experiences reported with dextroamphetamine when the dose is adjusted correctly."
     },
     {
       "type": "onset_duration",
@@ -164,10 +340,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Stimulants like dextroamphetamine are among the most effective medications in all of psychiatry. When tolerated, many children and adults have noticeable improvements in focus, ability to sit still, task completion, and overall functioning. Benefits often appear within days and are directly tied to when the medication is active in the body.",
       "metric": "Symptom Improvement in ADHD",
       "value": null,
       "comparison": null,
-      "text": "Stimulants like dextroamphetamine are among the most effective medications in all of psychiatry. When tolerated, many children and adults have noticeable improvements in focus, ability to sit still, task completion, and overall functioning. Benefits often appear within days and are directly tied to when the medication is active in the body.",
       "clinical_details": "Dextroamphetamine has similar effectiveness to other first-line ADHD stimulants such as methylphenidate. Treatment guidelines recommend stimulants as a primary medication option for moderate to severe ADHD, along with behavioral and educational interventions. Response depends on the right diagnosis, careful dose titration, and ongoing monitoring of benefits versus side effects.",
       "citation": {
         "authors": null,
@@ -254,7 +430,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Dextroamphetamine interacts with many medications and substances. Some combinations can be dangerous or are strictly banned.",
       "items": [
         {
           "with": "Monoamine Oxidase Inhibitors (MAOIs) such as phenelzine, tranylcypromine, selegiline, linezolid, IV methylene blue",
@@ -296,7 +471,8 @@
           "risk": "Increased risk of misuse, addiction, heart strain, and dangerous behaviors.",
           "action": "Avoid nonmedical use of alcohol or recreational drugs while on dextroamphetamine, especially at higher doses or with heart risk factors."
         }
-      ]
+      ],
+      "intro": "Dextroamphetamine interacts with many medications and substances. Some combinations can be dangerous or are strictly banned."
     },
     {
       "type": "tapering",
@@ -421,21 +597,50 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Dextroamphetamine (Dexedrine, Zenzedi, Xelstrym): Uses, Dosing, Side Effects, and Safety",
-    "description": "Dextroamphetamine for ADHD and narcolepsy: how it works, dosing for kids and adults, side effects (insomnia, weight loss, heart risks), July 2025 FDA weight-loss warning for extended-release stimulants in young children, and monitoring guidance.",
-    "canonical": "https://www.heypsych.com/treatments/dextroamphetamine-dexedrine-zenzedi-xelstrym",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-02-12",
-    "lastUpdated": "2026-02-12",
-    "reviewStatement": "Content medically reviewed and aligned with current FDA prescribing information, major ADHD and narcolepsy treatment guidelines, and the July 2025 FDA safety communication on extended-release stimulants in young children."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Drug Safety Communication – Extended-Release Stimulants and Weight Loss Risk in Children Younger Than 6 Years (2025)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-requires-expanded-labeling-about-weight-loss-risk-patients-younger-6-years-taking-extended",
+      "description": "Details the July 2025 safety update regarding increased weight loss and higher drug exposure in young children on extended-release stimulants."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Dexedrine Prescribing Information (US)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/017078s059lbl.pdf",
+      "description": "Official FDA-approved labeling with detailed dosing, safety, and pharmacology information."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Xelstrym Prescribing Information (US)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215401s015lbl.pdf",
+      "description": "Labeling for the dextroamphetamine transdermal system, including application instructions and safety information."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "AAP ADHD Clinical Practice Guideline",
+      "url": "https://pediatrics.aappublications.org/",
+      "description": "Guidelines for diagnosis and management of ADHD in children and adolescents, including stimulant use and monitoring."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "NICE ADHD Guideline",
+      "url": "https://www.nice.org.uk/guidance/ng87",
+      "description": "Evidence-based UK guidance on ADHD assessment and management across the lifespan."
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "UpToDate: Pharmacology of Stimulant Medications for ADHD",
+      "url": "https://www.uptodate.com/",
+      "description": "Detailed clinical review of stimulant pharmacology, dosing, and safety considerations (subscription required)."
+    }
+  ],
   "faqs": [
     {
       "q": "What is dextroamphetamine used for?",
@@ -489,5 +694,20 @@
       "q": "How does dextroamphetamine compare to Adderall?",
       "a": "Adderall contains a mixture of amphetamine salts (including dextroamphetamine and levoamphetamine), whereas dextroamphetamine products contain only the dextro isomer. Some people feel that dextroamphetamine gives a cleaner or smoother focus, while others do better on mixed amphetamine salts. Effectiveness and side effects vary between individuals, so the best choice is the one that gives good symptom control with the fewest side effects for you."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Dextroamphetamine (Dexedrine, Zenzedi, Xelstrym): Uses, Dosing, Side Effects, and Safety",
+    "description": "Dextroamphetamine for ADHD and narcolepsy: how it works, dosing for kids and adults, side effects (insomnia, weight loss, heart risks), July 2025 FDA weight-loss warning for extended-release stimulants in young children, and monitoring guidance.",
+    "canonical": "https://www.heypsych.com/treatments/dextroamphetamine-dexedrine-zenzedi-xelstrym",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-02-12",
+    "lastUpdated": "2026-02-12",
+    "reviewStatement": "Content medically reviewed and aligned with current FDA prescribing information, major ADHD and narcolepsy treatment guidelines, and the July 2025 FDA safety communication on extended-release stimulants in young children."
+  }
 }

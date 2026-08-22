@@ -1,80 +1,180 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "transcranial-magnetic-stimulation",
-  "type": "interventional",
-  "name": "Transcranial Magnetic Stimulation (TMS)",
-  "summary": "A non-invasive brain stimulation technique that uses magnetic fields to modulate neural activity, FDA-approved for depression, OCD, and migraine prevention.",
-  "description": "Transcranial Magnetic Stimulation (TMS) is a non-invasive neuromodulation technique that delivers focused magnetic pulses to specific brain regions, most commonly the dorsolateral prefrontal cortex. Repetitive TMS (rTMS) can alter cortical excitability and functional connectivity, making it a well-established treatment for major depressive disorder and OCD. TMS is generally safe, performed in outpatient settings, and requires no anesthesia. Variants include intermittent theta burst stimulation (iTBS) and deep TMS (dTMS), which target different brain regions and reduce treatment time.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "TMS",
-    "rTMS",
-    "iTBS",
-    "deep TMS",
-    "brain stimulation",
-    "neuromodulation"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Magnetic stimulation"
-    ],
-    "treatment_types": [
-      "Neurostimulation"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "External magnetic coil"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult",
-      "Adolescent (off-label)"
-    ],
-    "session_duration": "20–40 minutes (iTBS ~3 minutes)",
-    "treatment_duration": "Typically daily sessions for 4–6 weeks",
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology"
+  "identity": {
+    "slug": "transcranial-magnetic-stimulation",
+    "name": "Transcranial Magnetic Stimulation (TMS)",
+    "generic_name": "transcranial magnetic stimulation",
+    "brand_names": [
+      "TMS"
     ],
     "wikidata_qid": "Q638954"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder (treatment-resistant)",
-      "Obsessive-compulsive disorder",
-      "Migraine prevention"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
+    "intervention_types": [
+      "Magnetic stimulation"
     ],
-    "conditions_treated": [
-      "Depression",
-      "OCD",
-      "Migraine",
-      "PTSD",
-      "Anxiety disorders",
-      "Schizophrenia (auditory hallucinations)"
-    ],
-    "off_label_uses": [
-      "Substance use disorders",
-      "Chronic pain",
-      "Autism spectrum disorder"
-    ],
-    "contraindications": [
-      "History of seizures",
-      "Metallic implants near the head (e.g., aneurysm clips, cochlear implants)",
-      "Unstable medical conditions"
-    ],
-    "safety_profile": "Well tolerated. Common side effects include headache, scalp discomfort, and transient fatigue. Rare risk of seizure.",
-    "evidence_level": "High for depression and OCD; moderate for other conditions.",
-    "research_support": "Hundreds of RCTs and meta-analyses support efficacy for depression; expanding evidence for other disorders.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "ocd": 4,
-      "migraine": 3
+    "tags": [
+      "TMS",
+      "rTMS",
+      "iTBS",
+      "deep TMS",
+      "brain stimulation",
+      "neuromodulation"
+    ]
+  },
+  "summary": "A non-invasive brain stimulation technique that uses magnetic fields to modulate neural activity, FDA-approved for depression, OCD, and migraine prevention.",
+  "description": "Transcranial Magnetic Stimulation (TMS) is a non-invasive neuromodulation technique that delivers focused magnetic pulses to specific brain regions, most commonly the dorsolateral prefrontal cortex. Repetitive TMS (rTMS) can alter cortical excitability and functional connectivity, making it a well-established treatment for major depressive disorder and OCD. TMS is generally safe, performed in outpatient settings, and requires no anesthesia. Variants include intermittent theta burst stimulation (iTBS) and deep TMS (dTMS), which target different brain regions and reduce treatment time.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder-treatment-resistant",
+          "condition_name": "Major depressive disorder (treatment-resistant)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "migraine-prevention",
+          "condition_name": "Migraine prevention",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "ocd",
+          "condition_name": "OCD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "migraine",
+          "condition_name": "Migraine",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "schizophrenia-auditory-hallucinations",
+          "condition_name": "Schizophrenia (auditory hallucinations)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "autism-spectrum-disorder",
+          "condition_name": "Autism spectrum disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for depression and OCD; moderate for other conditions.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "ocd": {
+          "rating": 4
+        },
+        "migraine": {
+          "rating": 3
+        }
+      },
+      "research_support": "Hundreds of RCTs and meta-analyses support efficacy for depression; expanding evidence for other disorders."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Typically daily sessions for 4–6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "External magnetic coil"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–40 minutes (iTBS ~3 minutes)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Well tolerated. Common side effects include headache, scalp discomfort, and transient fatigue. Rare risk of seizure.",
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Scalp discomfort"
+        },
+        {
+          "effect": "Fatigue"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Seizure (extremely rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "History of seizures"
+        },
+        {
+          "contraindication": "Metallic implants near the head (e.g., aneurysm clips, cochlear implants)"
+        },
+        {
+          "contraindication": "Unstable medical conditions"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Appears safe, though more studies needed."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Magnetic stimulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Magnetic coil placed over the dorsolateral prefrontal cortex or other target.\nStimulation intensity determined by motor threshold.\nRepetitive trains of pulses delivered."
+      }
     }
   },
   "sections": [
@@ -219,6 +319,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "George MS, et al. Daily left prefrontal transcranial magnetic stimulation therapy for major depressive disorder: a controlled trial. JAMA. (2010).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20841561/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Carmi L, et al. Efficacy and safety of deep transcranial magnetic stimulation for obsessive-compulsive disorder: a prospective multicenter randomized double-blind placebo-controlled trial. Am J Psychiatry. (2019).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30654640/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Blumberger DM, et al. Effectiveness of theta burst versus high-frequency repetitive transcranial magnetic stimulation in patients with depression (THREE-D): a randomised non-inferiority trial. Lancet. (2018).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29580389/"
+    }
+  ],
   "seo": {
     "title": "Transcranial Magnetic Stimulation (TMS) | Depression & OCD Treatment",
     "description": "Learn about Transcranial Magnetic Stimulation (TMS), a non-invasive brain stimulation treatment for depression, OCD, and migraine prevention.",
@@ -231,5 +351,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for depression and OCD; moderate for other conditions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for depression and OCD; moderate for other conditions."
+    ]
   }
 }

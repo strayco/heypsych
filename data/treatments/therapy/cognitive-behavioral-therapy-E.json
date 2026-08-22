@@ -1,83 +1,153 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cbt-e",
-  "type": "therapy",
-  "name": "CBT-E (Enhanced Cognitive Behavioral Therapy for Eating Disorders)",
-  "summary": "CBT-E is a structured, skills-based psychotherapy used mainly for bulimia nervosa, binge-eating disorder, and many OSFED presentations to reduce eating-disorder behaviors by changing the thoughts, habits, and triggers that keep them going.",
-  "description": "CBT-E (Enhanced Cognitive Behavioral Therapy) is a manualized treatment designed specifically for eating disorders. It focuses on breaking the day-to-day patterns that maintain symptoms, such as dieting/restriction, binge eating, purging, body checking, and overvaluation of weight and shape. CBT-E is practical and action-oriented, with clear session goals and between-session practice. It is not a substitute for medical stabilization, and some people with severe medical risk or very low weight may need a higher level of care or a different treatment plan before or alongside CBT-E.",
-  "category": "therapy/eating-disorders",
-  "tags": [
-    "CBT-E",
-    "enhanced cognitive behavioral therapy",
-    "CBT for eating disorders",
-    "bulimia nervosa therapy",
-    "binge eating disorder treatment",
-    "OSFED treatment",
-    "purging disorder therapy",
-    "eating disorder recovery therapy",
-    "structured psychotherapy for eating disorders"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "cbt-e",
+    "name": "CBT-E (Enhanced Cognitive Behavioral Therapy for Eating Disorders)",
+    "generic_name": "cbt-e",
+    "brand_names": [
+      "Enhanced Cognitive Behavioral Therapy for Eating Disorders"
+    ]
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/eating-disorders",
     "intervention_types": [
       "Psychological therapy",
       "Cognitive behavioral therapy"
     ],
-    "treatment_types": [
-      "Individual psychotherapy"
-    ],
-    "categories": [
-      "Eating disorders",
-      "Cognitive behavioral approaches"
-    ],
-    "delivery_methods": [
-      "In-person therapy",
-      "Teletherapy (when medically appropriate and privacy is feasible)"
-    ],
-    "equipment_required": "None",
-    "training_required": "Clinician training in CBT-E and eating-disorder risk management, ideally with supervision/consultation.",
-    "age_groups": [
-      "Adolescents",
-      "Young adults",
-      "Adults"
-    ],
-    "session_duration": "50–60 minutes",
-    "treatment_duration": [
-      "Typically 20 sessions for many non-underweight presentations",
-      "Often 40 sessions for underweight presentations or more complex cases",
-      "Commonly delivered over 5–9 months depending on intensity"
-    ],
-    "specialty_areas": [
-      "Bulimia nervosa",
-      "Binge-eating disorder",
-      "OSFED",
-      "Purging behaviors",
-      "Body image and weight/shape overvaluation"
+    "tags": [
+      "CBT-E",
+      "enhanced cognitive behavioral therapy",
+      "CBT for eating disorders",
+      "bulimia nervosa therapy",
+      "binge eating disorder treatment",
+      "OSFED treatment",
+      "purging disorder therapy",
+      "eating disorder recovery therapy",
+      "structured psychotherapy for eating disorders"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bulimia nervosa",
-      "Binge-eating disorder",
-      "Other specified feeding or eating disorder (OSFED) with bingeing, purging, or restrictive dieting patterns"
-    ],
-    "conditions_treated": [
-      "Bulimia nervosa",
-      "Binge-eating disorder",
-      "Other specified feeding or eating disorder (OSFED)",
-      "Purging disorder"
-    ],
-    "off_label_uses": [
-      "Not applicable for this treatment."
-    ],
-    "contraindications": [
-      "Medical instability requiring inpatient medical stabilization or a higher level of care",
-      "Severe cognitive impairment from malnutrition that prevents meaningful outpatient psychotherapy participation",
-      "Active psychosis or uncontrolled mania requiring stabilization",
-      "Inability to maintain basic safety in outpatient care without immediate higher support"
-    ],
-    "safety_profile": "Psychotherapy is generally physically safe. Anxiety and distress can increase early when eating patterns change. Safety depends on appropriate medical monitoring and escalation when restriction, purging, or medical risk is high.",
-    "evidence_level": "Strong evidence supports CBT-based treatments, including CBT-E, for bulimia nervosa and binge-eating disorder. Evidence for anorexia nervosa is more mixed and often depends on medical risk, weight status, and treatment intensity.",
-    "research_support": "Clinical trials and guideline summaries support CBT-E as a leading outpatient psychotherapy for bulimia nervosa, binge-eating disorder, and many OSFED presentations. For underweight restrictive disorders, CBT-E may be used in some settings, but safety and level of care decisions remain central."
+  "summary": "CBT-E is a structured, skills-based psychotherapy used mainly for bulimia nervosa, binge-eating disorder, and many OSFED presentations to reduce eating-disorder behaviors by changing the thoughts, habits, and triggers that keep them going.",
+  "description": "CBT-E (Enhanced Cognitive Behavioral Therapy) is a manualized treatment designed specifically for eating disorders. It focuses on breaking the day-to-day patterns that maintain symptoms, such as dieting/restriction, binge eating, purging, body checking, and overvaluation of weight and shape. CBT-E is practical and action-oriented, with clear session goals and between-session practice. It is not a substitute for medical stabilization, and some people with severe medical risk or very low weight may need a higher level of care or a different treatment plan before or alongside CBT-E.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bulimia-nervosa",
+          "condition_name": "Bulimia nervosa",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge-eating disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "other-specified-feeding-or-eating-disorder-osfed-with-bingeing-purging-or-restrictive-dieting-patterns",
+          "condition_name": "Other specified feeding or eating disorder (OSFED) with bingeing, purging, or restrictive dieting patterns",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "other-specified-feeding-or-eating-disorder-osfed",
+          "condition_name": "Other specified feeding or eating disorder (OSFED)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "purging-disorder",
+          "condition_name": "Purging disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "not-applicable-for-this-treatment",
+          "condition_name": "Not applicable for this treatment.",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong evidence supports CBT-based treatments, including CBT-E, for bulimia nervosa and binge-eating disorder. Evidence for anorexia nervosa is more mixed and often depends on medical risk, weight status, and treatment intensity.",
+      "research_support": "Clinical trials and guideline summaries support CBT-E as a leading outpatient psychotherapy for bulimia nervosa, binge-eating disorder, and many OSFED presentations. For underweight restrictive disorders, CBT-E may be used in some settings, but safety and level of care decisions remain central."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Typically 20 sessions for many non-underweight presentations; Often 40 sessions for underweight presentations or more complex cases; Commonly delivered over 5–9 months depending on intensity"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person therapy",
+        "Teletherapy (when medically appropriate and privacy is feasible)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–60 minutes"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Clinician training in CBT-E and eating-disorder risk management, ideally with supervision/consultation."
+      }
+    },
+    "safety": {
+      "overall_safety": "Psychotherapy is generally physically safe. Anxiety and distress can increase early when eating patterns change. Safety depends on appropriate medical monitoring and escalation when restriction, purging, or medical risk is high.",
+      "common_adverse_effects": [
+        {
+          "effect": "Increased anxiety when changing eating patterns"
+        },
+        {
+          "effect": "Temporary distress when reducing avoidance and facing feared foods"
+        },
+        {
+          "effect": "Frustration when progress is not linear"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Worsening medical instability if restriction or purging continues (requires urgent medical review)"
+        },
+        {
+          "risk": "Increased shame if therapy focuses on outcomes rather than process (address by recalibrating goals and stance)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Medical instability requiring inpatient medical stabilization or a higher level of care"
+        },
+        {
+          "contraindication": "Severe cognitive impairment from malnutrition that prevents meaningful outpatient psychotherapy participation"
+        },
+        {
+          "contraindication": "Active psychosis or uncontrolled mania requiring stabilization"
+        },
+        {
+          "contraindication": "Inability to maintain basic safety in outpatient care without immediate higher support"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual psychotherapy",
+        "key_techniques": [
+          "Eating disorders",
+          "Cognitive behavioral approaches"
+        ],
+        "session_structure": {
+          "pre_session": "Review symptom tracking, medical safety (if relevant), and key events since last session.",
+          "during_session": "Work through session agenda: review patterns, choose a skill or target behavior, plan specific experiments or changes for the week.",
+          "post_session": "Confirm next steps, anticipated barriers, and a simple plan for the highest-risk moments."
+        }
+      }
+    }
   },
   "sections": [
     {
@@ -413,5 +483,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2026-01-30",
     "lastUpdated": "2026-01-30"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong evidence supports CBT-based treatments, including CBT-E, for bulimia nervosa and binge-eating disorder. Evidence for anorexia nervosa is more mixed and often depends on medical risk, weight status, and treatment intensity."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong evidence supports CBT-based treatments, including CBT-E, for bulimia nervosa and binge-eating disorder. Evidence for anorexia nervosa is more mixed and often depends on medical risk, weight status, and treatment intensity."
+    ]
   }
 }

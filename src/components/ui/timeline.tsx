@@ -37,7 +37,7 @@ export function Timeline({
   return (
     <div className={`space-y-6 ${className}`}>
       {intro && (
-        <p className="text-neutral-800 leading-relaxed">
+        <p className="text-label-secondary leading-relaxed">
           <ParsedContent content={intro} />
         </p>
       )}
@@ -72,18 +72,18 @@ export function Timeline({
               </motion.div>
 
               {/* Content */}
-              <div className="bg-white rounded-xl border-2 border-neutral-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-xl border-2 border-separator p-5 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-baseline gap-3 mb-2">
                   <Clock className={`h-4 w-4 ${colors.text} flex-shrink-0 mt-0.5`} />
                   <span className={`text-sm font-bold uppercase tracking-wide ${colors.text}`}>
                     {item.time}
                   </span>
                 </div>
-                <h4 className="text-lg font-semibold text-neutral-900 mb-1">
+                <h4 className="text-lg font-semibold text-label-primary mb-1">
                   {item.label}
                 </h4>
                 {item.description && (
-                  <p className="text-neutral-700 leading-relaxed">
+                  <p className="text-label-secondary leading-relaxed">
                     <ParsedContent content={item.description} />
                   </p>
                 )}

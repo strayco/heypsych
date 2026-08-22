@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ginkgo-biloba",
-  "type": "supplement",
-  "name": "Ginkgo Biloba",
-  "summary": "Ginkgo biloba is a herbal supplement derived from the leaves of the ginkgo tree, traditionally used to support cognitive function, circulation, and mood, though clinical evidence is mixed.",
-  "description": "Ginkgo biloba extract (GBE) is one of the most widely used herbal medicines worldwide, derived from the leaves of the Ginkgo biloba tree. It contains flavonoids, terpenoids, and other phytochemicals with antioxidant, anti-inflammatory, and vasoregulatory properties. Ginkgo is often promoted for enhancing memory, improving circulation, reducing anxiety, and treating dementia-related symptoms. While some studies suggest modest benefits in cognitive function and anxiety, large-scale clinical trials have shown inconsistent results, and its use remains controversial in evidence-based medicine. It is, however, generally regarded as safe and is among the most popular supplements for brain health.",
-  "category": "supplements",
-  "tags": [
-    "cognition",
-    "memory",
-    "circulation",
-    "anxiety support"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract",
-    "natural_source": "Leaves of the Ginkgo biloba tree",
+  "identity": {
+    "slug": "ginkgo-biloba",
+    "name": "Ginkgo Biloba",
+    "brand_names": [
+      "EGb 761",
+      "Tebonin",
+      "Ginkgold"
+    ],
+    "aliases": [
+      "Ginkgo extract",
+      "EGb 761"
+    ],
+    "wikidata_qid": "Q152108"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Herbal Medicine",
       "Neuropsychiatry",
@@ -25,78 +28,168 @@
       "Vasomodulation",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "EGb 761",
-      "Tebonin",
-      "Ginkgold"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Neurology",
-      "Psychiatry",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q152108"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cognitive decline and dementia (mixed evidence)",
-      "Memory support",
-      "Circulatory support"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders",
-      "Tinnitus",
-      "Depression (adjunctive use)"
-    ],
-    "contraindications": [
-      "Bleeding disorders",
-      "Concurrent anticoagulant or antiplatelet use (e.g., warfarin, aspirin)",
-      "Upcoming surgery"
-    ],
-    "monitoring_required": [
-      "Signs of bleeding",
-      "Medication interactions (especially with anticoagulants)"
-    ],
-    "efficacy_rating": {
-      "cognitive_support": 2,
-      "dementia": 2,
-      "anxiety": 2,
-      "circulation": 2,
-      "tinnitus": 1
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Ginkgo biloba",
-      "ginkgo supplement",
-      "EGb 761",
-      "herbal cognitive enhancer"
-    ],
-    "synonyms": [
-      "Ginkgo extract",
-      "EGb 761"
-    ],
-    "common_misspellings": [
-      "ginko",
-      "gingko",
-      "gingko biloba"
+    "tags": [
+      "cognition",
+      "memory",
+      "circulation",
+      "anxiety support"
     ]
+  },
+  "summary": "Ginkgo biloba is a herbal supplement derived from the leaves of the ginkgo tree, traditionally used to support cognitive function, circulation, and mood, though clinical evidence is mixed.",
+  "description": "Ginkgo biloba extract (GBE) is one of the most widely used herbal medicines worldwide, derived from the leaves of the Ginkgo biloba tree. It contains flavonoids, terpenoids, and other phytochemicals with antioxidant, anti-inflammatory, and vasoregulatory properties. Ginkgo is often promoted for enhancing memory, improving circulation, reducing anxiety, and treating dementia-related symptoms. While some studies suggest modest benefits in cognitive function and anxiety, large-scale clinical trials have shown inconsistent results, and its use remains controversial in evidence-based medicine. It is, however, generally regarded as safe and is among the most popular supplements for brain health.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cognitive-decline-and-dementia-mixed-evidence",
+          "condition_name": "Cognitive decline and dementia (mixed evidence)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "memory-support",
+          "condition_name": "Memory support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "circulatory-support",
+          "condition_name": "Circulatory support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "tinnitus",
+          "condition_name": "Tinnitus",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "depression-adjunctive-use",
+          "condition_name": "Depression (adjunctive use)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cognitive_support": {
+          "rating": 2
+        },
+        "dementia": {
+          "rating": 2
+        },
+        "anxiety": {
+          "rating": 2
+        },
+        "circulation": {
+          "rating": 2
+        },
+        "tinnitus": {
+          "rating": 1
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased bleeding risk (rare but clinically important)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Bleeding disorders"
+        },
+        {
+          "contraindication": "Concurrent anticoagulant or antiplatelet use (e.g., warfarin, aspirin)"
+        },
+        {
+          "contraindication": "Upcoming surgery"
+        }
+      ],
+      "precautions": [
+        "May increase bleeding risk, especially when combined with anticoagulants or before surgery.",
+        "Efficacy in dementia is modest and inconsistent across studies.",
+        "Use caution in individuals with seizure disorders, as rare reports of seizure exist."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin",
+          "mechanism": "Increased bleeding risk",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "Aspirin/NSAIDs",
+          "mechanism": "Additive bleeding risk",
+          "action": "Caution"
+        },
+        {
+          "interactant": "SSRIs",
+          "mechanism": "Rare reports of serotonin syndrome",
+          "action": "Monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Signs of abnormal bleeding"
+        },
+        {
+          "parameter": "Cognitive function changes"
+        },
+        {
+          "parameter": "Drug–herb interactions"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; insufficient safety data and potential bleeding risk",
+        "lactation": "Avoid due to lack of safety data",
+        "pediatric": "Not recommended",
+        "geriatric": "Widely used; monitor for bleeding and medication interactions"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract",
+        "natural_source": "Leaves of the Ginkgo biloba tree",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -220,6 +313,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Ginkgo",
+      "url": "https://www.nccih.nih.gov/health/ginkgo"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Weinmann S et al. Effects of Ginkgo biloba in dementia: a systematic review. BMC Geriatrics. 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20937106/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Hashiguchi M et al. Efficacy of Ginkgo biloba for dementia: a systematic review and meta-analysis. J Altern Complement Med. 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26252099/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Ginkgo biloba",
+      "ginkgo supplement",
+      "EGb 761",
+      "herbal cognitive enhancer"
+    ],
+    "synonyms": [
+      "Ginkgo extract",
+      "EGb 761"
+    ],
+    "common_misspellings": [
+      "ginko",
+      "gingko",
+      "gingko biloba"
+    ]
+  },
   "seo": {
     "title": "Ginkgo Biloba – Cognitive and Circulatory Support Supplement",
     "description": "Ginkgo biloba is a popular herbal supplement used for memory, cognition, circulation, and anxiety. Learn about dosing, safety, and effectiveness.",

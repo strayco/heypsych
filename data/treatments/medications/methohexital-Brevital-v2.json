@@ -1,78 +1,215 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "methohexital-brevital-ect",
-  "type": "medication",
-  "name": "Methohexital (Brevital Sodium)",
-  "summary": "Ultra–short-acting IV anesthetic used to put you to sleep for ECT. Works immediately, wears off fast, and must be given with full airway and heart monitoring.",
-  "description": "Methohexital is a fast on/off anesthetic that’s commonly used for electroconvulsive therapy (ECT). The goal is simple: you’re asleep and not aware of the procedure, then you wake up quickly afterward. This medication can slow or stop breathing for short periods, drop blood pressure, and trigger airway spasm—so it’s only given in settings with continuous monitoring, resuscitation drugs, and staff trained in airway management.",
-  "patient_summary": "For ECT, methohexital is the “lights out fast, wake up fast” anesthetic. It works immediately through the IV and usually wears off within minutes, but you still need close monitoring because breathing can slow or pause and blood pressure can dip. You should not drive or make important decisions the same day.",
-  "category": "medications/ect",
-  "metadata": {
+  "identity": {
+    "slug": "methohexital-brevital-ect",
+    "name": "Methohexital (Brevital Sodium)",
+    "generic_name": "methohexital",
+    "brand_names": [
+      "Brevital Sodium"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/ect",
     "drug_classes": [
       "Barbiturate",
       "General Anesthetic",
       "Sedative-Hypnotic"
-    ],
-    "brand_names": [
-      "Brevital Sodium"
-    ],
-    "administration_routes": [
-      "Intravenous",
-      "Intramuscular (rare in psychiatry/ECT workflows)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (US)",
-    "generic_available": true,
-    "fda_approval_year": 1956,
-    "pharmacologic_category": "Barbiturate, Ultra Short-Acting IV Anesthetic",
-    "published_date": "2025-11-24T00:00:00Z",
-    "last_updated": "2025-11-24T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-24T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anesthetic induction for Electroconvulsive Therapy (ECT)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "electroconvulsive-therapy",
-        "relationship": "procedure_adjuvant",
-        "context": "Methohexital doesn’t treat depression or anxiety directly. It’s used to safely induce sleep for ECT so the procedure can be performed with comfort, immobility, and controlled airway/heart monitoring."
-      },
-      {
-        "slug": "catatonia",
-        "relationship": "procedure_adjuvant",
-        "context": "When ECT is used for severe catatonia, methohexital may be selected as the anesthetic because it has a rapid onset and short recovery profile, allowing repeated treatments while supporting close physiologic monitoring."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to methohexital or any component of the formulation",
-      "Porphyria (latent or manifest)",
-      "Any situation where general anesthesia is contraindicated"
-    ],
-    "efficacy_response": {
-      "metric": "Time to clinical recovery after a single IV dose (ECT-style anesthesia)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For ECT anesthesia, “efficacy” isn’t about treating symptoms—it’s about reliable sleep induction and fast recovery so the procedure can be done safely. Most people wake up within minutes, but coordination and judgment can still be off for hours.",
-      "citation_tag": "Product labeling; anesthesia recovery data"
+  "summary": "Ultra–short-acting IV anesthetic used to put you to sleep for ECT. Works immediately, wears off fast, and must be given with full airway and heart monitoring.",
+  "description": "Methohexital is a fast on/off anesthetic that’s commonly used for electroconvulsive therapy (ECT). The goal is simple: you’re asleep and not aware of the procedure, then you wake up quickly afterward. This medication can slow or stop breathing for short periods, drop blood pressure, and trigger airway spasm—so it’s only given in settings with continuous monitoring, resuscitation drugs, and staff trained in airway management.",
+  "patient_summary": "For ECT, methohexital is the “lights out fast, wake up fast” anesthetic. It works immediately through the IV and usually wears off within minutes, but you still need close monitoring because breathing can slow or pause and blood pressure can dip. You should not drive or make important decisions the same day.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anesthetic-induction-for-electroconvulsive-therapy-ect",
+          "condition_name": "Anesthetic induction for Electroconvulsive Therapy (ECT)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "electroconvulsive-therapy",
+          "condition_name": "Electroconvulsive Therapy",
+          "relationship": "secondary_indication",
+          "context": "Methohexital doesn’t treat depression or anxiety directly. It’s used to safely induce sleep for ECT so the procedure can be performed with comfort, immobility, and controlled airway/heart monitoring."
+        },
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "secondary_indication",
+          "context": "When ECT is used for severe catatonia, methohexital may be selected as the anesthetic because it has a rapid onset and short recovery profile, allowing repeated treatments while supporting close physiologic monitoring."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Not applicable for this medication.",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "IV: Immediate",
-      "peak_plasma": "Not applicable for this medication.",
-      "half_life": "1.6 to 3.9 hours (elimination half-life)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via demethylation and oxidation",
-      "excretion": "Urine",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV: Immediate"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intravenous",
+        "Intramuscular (rare in psychiatry/ECT workflows)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Respiratory depression / Apnea",
+          "incidence": "Frequency not defined (clinically important risk)",
+          "notes": "This can look like shallow breathing or brief pauses. In ECT settings, the team expects this possibility and monitors oxygenation continuously while supporting breathing as needed."
+        },
+        {
+          "effect": "Hypotension / Tachycardia",
+          "incidence": "Frequency not defined",
+          "notes": "Blood pressure may dip temporarily and heart rate may rise. This matters most for people with heart disease or unstable blood pressure."
+        },
+        {
+          "effect": "Airway reactions (cough, hiccups, laryngospasm, bronchospasm)",
+          "incidence": "Frequency not defined",
+          "notes": "Some people experience coughing or hiccups. Rarely, the airway can spasm, which is why airway-skilled staff and equipment are required."
+        },
+        {
+          "effect": "Nausea / Vomiting",
+          "incidence": "Postmarketing reports",
+          "notes": "This can happen after anesthesia. The team can treat it in recovery if needed."
+        },
+        {
+          "effect": "Injection-site pain or irritation",
+          "incidence": "Postmarketing reports",
+          "notes": "IV site discomfort can occur. Good IV access and proper dilution help reduce risk."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Circulatory shock or severe circulatory depression (medical emergency)"
+        },
+        {
+          "risk": "Severe laryngospasm with impaired ventilation (medical emergency)"
+        },
+        {
+          "risk": "Anaphylaxis or severe hypersensitivity reaction (medical emergency)"
+        },
+        {
+          "risk": "Severe tissue injury/necrosis from extravasation or intra-arterial injection (medical emergency)"
+        },
+        {
+          "risk": "Seizure (reported postmarketing; in ECT settings seizure activity is procedure-related and medically managed, but unexpected events still require urgent assessment)"
+        }
+      ],
+      "black_box_warning": "Appropriate administration (US Boxed Warning): Methohexital should only be administered in hospitals or ambulatory care settings that provide continuous monitoring of respiratory and cardiac function. Resuscitative drugs and age- and size-appropriate equipment for bag/valve/mask ventilation and intubation must be immediately available, along with personnel trained in their use and skilled in airway management. For deeply sedated patients, a designated individual other than the practitioner performing the procedure should continuously monitor the patient.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to methohexital or any component of the formulation"
+        },
+        {
+          "contraindication": "Porphyria (latent or manifest)"
+        },
+        {
+          "contraindication": "Any situation where general anesthesia is contraindicated"
+        }
+      ],
+      "precautions": [
+        "Breathing risk: Can cause apnea and respiratory depression—airway and ventilation must be actively managed",
+        "Airway spasm: Laryngospasm can occur, especially during induction",
+        "Blood pressure/heart effects: May cause temporary hypotension and tachycardia; higher risk if medically unstable",
+        "IV safety: Extravasation or accidental intra-arterial injection can cause severe tissue injury/necrosis",
+        "Cumulative effect: Repeated dosing can stack and prolong sedation"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS and respiratory depression; worsened sedation and breathing risk.",
+          "action": "Avoid alcohol before and after ECT sessions as instructed by your treatment team."
+        },
+        {
+          "interactant": "Opioids (pain medications)",
+          "mechanism": "Higher risk of respiratory depression, low oxygen, and oversedation.",
+          "action": "Tell the anesthesia team about all opioid use. Dosing and monitoring plans may need adjustment."
+        },
+        {
+          "interactant": "Benzodiazepines, sleep meds, and other sedatives",
+          "mechanism": "Stacked sedation and impaired breathing; can also affect ECT treatment planning.",
+          "action": "Disclose all sedatives (including PRN). Your team may hold or adjust certain meds around ECT depending on safety and treatment goals."
+        },
+        {
+          "interactant": "Blood pressure medications and other agents that lower BP",
+          "mechanism": "Greater risk of hypotension during induction.",
+          "action": "Follow pre-ECT medication instructions. The team may adjust timing or dosing on treatment days."
+        },
+        {
+          "interactant": "Concomitant therapy (general)",
+          "mechanism": "Significant interactions may require dose/frequency adjustment or avoidance.",
+          "action": "Medication reconciliation matters. Bring an updated med list (including supplements) to every ECT session."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Continuous respiratory monitoring: pulse oximetry; consider capnography when available"
+        },
+        {
+          "parameter": "Airway readiness: immediate access to bag/valve/mask ventilation and intubation equipment; personnel skilled in airway management present"
+        },
+        {
+          "parameter": "Continuous cardiovascular monitoring: heart rate/rhythm, blood pressure; watch for hypotension and tachycardia"
+        },
+        {
+          "parameter": "Sedation depth and recovery: level of consciousness, protective reflexes, ability to maintain a patent airway, and safe ambulation before discharge"
+        },
+        {
+          "parameter": "Signs of airway reactivity: cough, wheeze, bronchospasm, laryngospasm—especially in asthma/COPD"
+        },
+        {
+          "parameter": "IV site monitoring: prevent extravasation; confirm appropriate IV access before administration"
+        },
+        {
+          "parameter": "Post-procedure safety: psychomotor impairment can persist—confirm safe escort and no driving/operating machinery same day"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Methohexital crosses the placenta. Repeated or prolonged exposure to anesthetic/sedative drugs during periods of rapid brain growth (including the third trimester) has been associated with neurodevelopmental concerns in animal data, and epidemiologic human studies report mixed signals. For medically necessary procedures, treatment should not be withheld solely due to pregnancy; for elective procedures, delaying may be considered when clinically appropriate. If anesthesia time is expected to be prolonged, the team should discuss benefits vs potential fetal risks.",
+        "lactation": "Methohexital is present in breast milk. Reported data suggest milk levels peak around ~1 hour after induction and become very low or not measurable later the same day; many protocols allow resuming breastfeeding once the parent is awake and stable in recovery for healthy, full-term infants. For infants at higher risk (apnea/hypotonia), extra caution and individualized guidance are appropriate.",
+        "pediatric": "ECT in minors is uncommon and highly specialized. Pediatric anesthesia exposures raise specific neurodevelopmental warning language for repeated or lengthy sedation in very young children. If methohexital is used in pediatric patients for any procedure, dosing is weight-based and requires pediatric anesthesia expertise and full monitoring infrastructure.",
+        "geriatric": "Older adults can be more sensitive to anesthetics and more prone to low blood pressure, airway events, prolonged grogginess, and falls after discharge. Use the low end of dosing ranges and titrate carefully. Plan for extra recovery time and strict same-day safety precautions (no driving, supervised discharge).",
+        "renal_impairment": "No formal manufacturer dose adjustment is provided; need for adjustment is generally unlikely because limited active drug is excreted in urine. Use caution in significant renal disease, especially when overall physiologic reserve is low.",
+        "hepatic_impairment": "No formal manufacturer dose adjustment is provided, but methohexital is hepatically metabolized, so effects may be prolonged or stronger in hepatic impairment. Use caution and titrate carefully."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1956
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Not applicable for this medication.",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Not applicable for this medication.",
+          "half_life": "1.6 to 3.9 hours (elimination half-life)",
+          "metabolism": "Hepatic via demethylation and oxidation",
+          "excretion": "Urine",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "For ECT, methohexital is given IV by the anesthesia team to induce general anesthesia quickly. Doses are weight-based and titrated to the minimum effective depth needed for the procedure, with continuous breathing and heart monitoring."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Not applicable for this medication."
+        }
+      }
     }
   },
   "sections": [
@@ -91,7 +228,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "For ECT, most people don’t “feel” methohexital so much as they notice how fast everything happens. These are common experiences people describe:",
       "items": [
         {
           "category": "Lights Out Fast",
@@ -128,7 +264,8 @@
           ],
           "note": "This drug is designed to be used with continuous respiratory and cardiac monitoring, plus airway-ready staff and equipment."
         }
-      ]
+      ],
+      "intro": "For ECT, most people don’t “feel” methohexital so much as they notice how fast everything happens. These are common experiences people describe:"
     },
     {
       "type": "onset_duration",
@@ -144,10 +281,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For ECT, methohexital’s job is to reliably induce anesthesia quickly and wear off quickly. If the anesthesia is too light, people can move or become aware. If it’s too deep, breathing and blood pressure can become unsafe. The “win” is smooth induction, stable monitoring, and a controlled recovery—every single session.",
       "metric": "Procedure success support (sleep induction + fast wake-up)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "For ECT, methohexital’s job is to reliably induce anesthesia quickly and wear off quickly. If the anesthesia is too light, people can move or become aware. If it’s too deep, breathing and blood pressure can become unsafe. The “win” is smooth induction, stable monitoring, and a controlled recovery—every single session.",
       "clinical_details": "Clinicians titrate methohexital to the minimum effective anesthetic depth for the procedure while maintaining airway protection and cardiovascular stability. Because it can cause apnea, respiratory depression, hypotension, and laryngospasm, it’s used in settings equipped for continuous monitoring and immediate resuscitation.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -230,7 +367,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "With methohexital, the big issue is additive brain-and-breathing suppression. Anything else that sedates you can make this medication more dangerous.",
       "items": [
         {
           "with": "Alcohol",
@@ -257,7 +393,8 @@
           "risk": "Significant interactions may require dose/frequency adjustment or avoidance.",
           "action": "Medication reconciliation matters. Bring an updated med list (including supplements) to every ECT session."
         }
-      ]
+      ],
+      "intro": "With methohexital, the big issue is additive brain-and-breathing suppression. Anything else that sedates you can make this medication more dangerous."
     },
     {
       "type": "tapering",
@@ -322,21 +459,6 @@
       "text": "Methohexital is not a psychiatric “treatment” in the way antidepressants, mood stabilizers, or therapy are. It’s the anesthetic that makes ECT possible. Think of it as the safety-critical backstage medication: rapid induction, short duration, tightly monitored, repeatable across multiple ECT sessions, and always administered by trained clinicians with airway and resuscitation capability."
     }
   ],
-  "seo": {
-    "title": "Methohexital (Brevital) for ECT: Dosing, Safety, Side Effects & Monitoring",
-    "description": "Methohexital (Brevital Sodium) is a fast on/off IV anesthetic commonly used for ECT. Learn how it works immediately, typical ECT induction dosing (1–1.5 mg/kg), key risks (apnea, hypotension, laryngospasm), required monitoring, and recovery precautions.",
-    "canonical": "[https://www.heypsych.com/treatments/methohexital-brevital-ect](https://www.heypsych.com/treatments/methohexital-brevital-ect)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is methohexital used for in psychiatry?",
@@ -378,5 +500,20 @@
       "q": "Is methohexital safe in pregnancy or breastfeeding?",
       "a": "It crosses the placenta, and anesthesia exposures in pregnancy require individualized risk-benefit discussion. It can also be present in breast milk; many protocols allow resuming breastfeeding once the parent is awake and stable in recovery for healthy, full-term infants, but higher-risk infants may require extra caution. Your team should guide you based on your situation."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Methohexital (Brevital) for ECT: Dosing, Safety, Side Effects & Monitoring",
+    "description": "Methohexital (Brevital Sodium) is a fast on/off IV anesthetic commonly used for ECT. Learn how it works immediately, typical ECT induction dosing (1–1.5 mg/kg), key risks (apnea, hypotension, laryngospasm), required monitoring, and recovery precautions.",
+    "canonical": "[https://www.heypsych.com/treatments/methohexital-brevital-ect](https://www.heypsych.com/treatments/methohexital-brevital-ect)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

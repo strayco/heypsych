@@ -1,86 +1,174 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "couples-therapy",
-  "type": "therapy",
-  "name": "Couples Therapy",
-  "summary": "A form of psychotherapy designed to help intimate partners improve communication, resolve conflicts, and strengthen their relationship.",
-  "description": "Couples therapy, also known as marriage counseling or relationship therapy, is a structured intervention that supports partners in navigating challenges, improving communication, fostering intimacy, and resolving conflicts. It integrates multiple therapeutic approaches, including cognitive-behavioral, emotionally focused, psychodynamic, and systemic models, depending on the therapist's training and the couple's needs. The goal is to improve relationship satisfaction and individual well-being.",
-  "category": "therapy/relationship",
-  "tags": [
-    "relationships",
-    "communication",
-    "family",
-    "marriage",
-    "conflict-resolution"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "couples-therapy",
+    "name": "Couples Therapy",
+    "wikidata_qid": "Q1423426"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/relationship",
     "intervention_types": [
       "Psychotherapy",
       "Relationship Counseling"
     ],
-    "treatment_types": [
-      "Systemic",
-      "Behavioral",
-      "Experiential"
-    ],
-    "categories": [
-      "Family & Relationships"
-    ],
-    "delivery_methods": [
-      "In-person sessions",
-      "Teletherapy",
-      "Workshops",
-      "Retreats"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "50–90 minutes",
-    "treatment_duration": [
-      "Short-term (8–20 sessions)",
-      "Long-term as needed"
-    ],
-    "specialty_areas": [
-      "Communication skills",
-      "Conflict resolution",
-      "Intimacy building"
-    ],
-    "wikidata_qid": "Q1423426"
+    "tags": [
+      "relationships",
+      "communication",
+      "family",
+      "marriage",
+      "conflict-resolution"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Relationship distress",
-      "Marital conflict"
-    ],
-    "conditions_treated": [
-      "Adjustment disorders",
-      "Divorce and separation-related stress",
-      "Infidelity",
-      "Intimacy issues"
-    ],
-    "off_label_uses": [
-      "Support during chronic illness",
-      "Parenting alignment",
-      "Trauma recovery within couples"
-    ],
-    "contraindications": [
-      "Active domestic violence without safety measures",
-      "Untreated severe substance use disorder",
-      "Unwillingness of one or both partners to engage"
-    ],
-    "safety_profile": "Safe and non-invasive, but may bring up intense emotions.",
-    "evidence_level": "Strong—supported by multiple RCTs, particularly for Emotionally Focused Therapy and Behavioral Couples Therapy.",
-    "research_support": "Demonstrated efficacy for improving relationship satisfaction, reducing conflict, and supporting recovery from infidelity or trauma.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "relationship_satisfaction": 4,
-      "conflict_resolution": 4,
-      "intimacy_building": 4,
-      "overall_tolerability": 5
+  "summary": "A form of psychotherapy designed to help intimate partners improve communication, resolve conflicts, and strengthen their relationship.",
+  "description": "Couples therapy, also known as marriage counseling or relationship therapy, is a structured intervention that supports partners in navigating challenges, improving communication, fostering intimacy, and resolving conflicts. It integrates multiple therapeutic approaches, including cognitive-behavioral, emotionally focused, psychodynamic, and systemic models, depending on the therapist's training and the couple's needs. The goal is to improve relationship satisfaction and individual well-being.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "relationship-distress",
+          "condition_name": "Relationship distress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "marital-conflict",
+          "condition_name": "Marital conflict",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "divorce-and-separation-related-stress",
+          "condition_name": "Divorce and separation-related stress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "infidelity",
+          "condition_name": "Infidelity",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "intimacy-issues",
+          "condition_name": "Intimacy issues",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-during-chronic-illness",
+          "condition_name": "Support during chronic illness",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "parenting-alignment",
+          "condition_name": "Parenting alignment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "trauma-recovery-within-couples",
+          "condition_name": "Trauma recovery within couples",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—supported by multiple RCTs, particularly for Emotionally Focused Therapy and Behavioral Couples Therapy.",
+      "efficacy_ratings": {
+        "relationship_satisfaction": {
+          "rating": 4
+        },
+        "conflict_resolution": {
+          "rating": 4
+        },
+        "intimacy_building": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Demonstrated efficacy for improving relationship satisfaction, reducing conflict, and supporting recovery from infidelity or trauma."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term (8–20 sessions); Long-term as needed"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person sessions",
+        "Teletherapy",
+        "Workshops",
+        "Retreats"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive, but may bring up intense emotions.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort"
+        },
+        {
+          "effect": "Temporary increase in conflict as issues surface"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Relationship dissolution if therapy reveals irreconcilable differences"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active domestic violence without intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Lack of partner consent to participate",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe psychiatric instability in one partner",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Systemic, Behavioral, Experiential",
+        "key_techniques": [
+          "Family & Relationships"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in about progress and challenges.",
+          "during_session": "Therapist-facilitated dialogue, skill practice, and exploration of emotions.",
+          "post_session": "Homework assignments and reflection exercises."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in couples/relationship therapy models"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -232,6 +320,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Johnson SM, Greenman PS. Emotionally focused therapy: Empirical status and future directions. J Fam Ther. 2013.",
+      "url": "https://doi.org/10.1111/j.1467-6427.2012.00599.x"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Shadish WR, Baldwin SA. Meta-analysis of marriage and family therapy. J Marital Fam Ther. 2003.",
+      "url": "https://doi.org/10.1111/j.1752-0606.2003.tb01694.x"
+    }
+  ],
   "seo": {
     "title": "Couples Therapy",
     "description": "Couples therapy, also called marriage counseling, helps partners improve communication, resolve conflict, and strengthen intimacy through evidence-based relationship interventions.",
@@ -244,5 +346,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—supported by multiple RCTs, particularly for Emotionally Focused Therapy and Behavioral Couples Therapy."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—supported by multiple RCTs, particularly for Emotionally Focused Therapy and Behavioral Couples Therapy."
+    ]
   }
 }

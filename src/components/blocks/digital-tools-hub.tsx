@@ -100,7 +100,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
     (selectedCondition !== "all" ? 1 : 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-canvas">
       {/* Hero */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -114,7 +114,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
               Back
             </Button>
 
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
+            <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 Digital Tools & Apps
               </span>
@@ -123,7 +123,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
             <div className="w-20"></div>
           </div>
 
-          <p className="mt-2 text-center text-gray-600">
+          <p className="mt-2 text-center text-label-secondary">
             Curated mental health apps with clinical evidence, privacy ratings,
             and expert reviews.
           </p>
@@ -133,7 +133,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
       {/* Filters */}
       <section className="px-4 pb-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <Card className="border-neutral-200 bg-white/80 backdrop-blur">
+          <Card className="border-separator bg-surface/80 backdrop-blur">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -162,7 +162,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
               {/* App Category Filter */}
               {appCategories.length > 0 && (
                 <div>
-                  <h3 className="mb-2 text-sm font-semibold text-gray-700">
+                  <h3 className="mb-2 text-sm font-semibold text-label-primary">
                     App Category
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -171,7 +171,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                       className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                         selectedCategory === "all"
                           ? "bg-indigo-600 text-white shadow-md"
-                          : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                          : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
                       }`}
                     >
                       All
@@ -183,7 +183,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                           selectedCategory === cat
                             ? "bg-indigo-600 text-white shadow-md"
-                            : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                            : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
                         }`}
                       >
                         {cat}
@@ -196,7 +196,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
               {/* Condition Filter */}
               {conditions.length > 0 && (
                 <div>
-                  <h3 className="mb-2 text-sm font-semibold text-gray-700">
+                  <h3 className="mb-2 text-sm font-semibold text-label-primary">
                     Condition
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -205,7 +205,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                       className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                         selectedCondition === "all"
                           ? "bg-purple-600 text-white shadow-md"
-                          : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                          : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
                       }`}
                     >
                       All Conditions
@@ -217,7 +217,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                           selectedCondition === cond
                             ? "bg-purple-600 text-white shadow-md"
-                            : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                            : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
                         }`}
                       >
                         {cond
@@ -237,7 +237,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
       {/* Tools Grid */}
       <section className="px-4 pb-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-4 text-sm text-label-secondary">
             Showing {filteredResources.length} of {resources.length} tools
           </div>
 
@@ -264,7 +264,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                   href={`/resources/${tool.slug}`}
                   className="group block"
                 >
-                  <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-neutral-200 bg-white">
+                  <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-separator bg-surface">
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
@@ -272,7 +272,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                             {tool.name}
                           </CardTitle>
                           {appCategory && (
-                            <p className="mt-1 text-sm text-gray-600">
+                            <p className="mt-1 text-sm text-label-secondary">
                               {appCategory}
                             </p>
                           )}
@@ -293,12 +293,12 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         <div className="flex items-center gap-2">
                           <div className="flex items-center">
                             <Star className="h-4 w-4 fill-current text-yellow-500" />
-                            <span className="ml-1 font-bold text-gray-900">
+                            <span className="ml-1 font-bold text-label-primary">
                               {rating}
                             </span>
                           </div>
                           {reviews && (
-                            <span className="text-sm text-gray-600">
+                            <span className="text-sm text-label-secondary">
                               ({reviews >= 1000000
                                 ? `${(reviews / 1000000).toFixed(1)}M`
                                 : reviews >= 1000
@@ -311,7 +311,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                       )}
 
                       {/* Description */}
-                      <p className="line-clamp-2 text-sm text-gray-700">
+                      <p className="line-clamp-2 text-sm text-label-primary">
                         {tool.data?.patient_summary ||
                           tool.description ||
                           tool.data?.description ||
@@ -336,7 +336,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                       {/* Privacy Badge */}
                       <div className="flex items-center gap-2">
                         {privacyCertified && (
-                          <div className="flex items-center gap-1 text-green-700">
+                          <div className="flex items-center gap-1 text-positive-700">
                             <Shield className="h-4 w-4" />
                             <span className="text-xs font-medium">
                               Privacy Certified
@@ -346,7 +346,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         {privacyGrade && (
                           <Badge
                             variant="outline"
-                            className="border-blue-300 bg-blue-50 text-blue-800"
+                            className="border-accent-border bg-accent-tint text-accent-700"
                           >
                             Privacy: {privacyGrade}
                           </Badge>
@@ -367,11 +367,11 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
 
           {filteredResources.length === 0 && (
             <div className="py-12 text-center">
-              <Smartphone className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              <Smartphone className="mx-auto h-12 w-12 text-label-tertiary" />
+              <h3 className="mt-4 text-lg font-semibold text-label-primary">
                 No tools found
               </h3>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-label-secondary">
                 Try adjusting your filters to see more results.
               </p>
               <Button onClick={clearFilters} className="mt-4" variant="outline">

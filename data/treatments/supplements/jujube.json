@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "jujube",
-  "type": "supplement",
-  "name": "Jujube (Ziziphus jujuba)",
-  "summary": "Jujube is a traditional medicinal fruit used for relaxation, sleep enhancement, digestive support, and immune modulation. It has adaptogenic and anxiolytic properties with a long history in traditional Chinese and Korean medicine.",
-  "description": "Jujube, also known as Chinese date (Ziziphus jujuba), is a fruit-bearing plant used in traditional medicine for over 2,500 years. It is rich in flavonoids, saponins, and polysaccharides that are believed to contribute to its calming, antioxidant, and immune-supporting effects. Traditionally, jujube is used to relieve stress, improve sleep quality, support digestion, and enhance energy. Modern research is investigating its neuroprotective and anti-inflammatory potential, although most clinical evidence is preliminary.",
-  "category": "supplements",
-  "tags": [
-    "adaptogen",
-    "sleep aid",
-    "anxiolytic",
-    "traditional medicine",
-    "antioxidant"
-  ],
-  "metadata": {
-    "compound_type": "Herbal supplement",
-    "natural_source": "Ziziphus jujuba fruit, seeds, and leaves",
+  "identity": {
+    "slug": "jujube",
+    "name": "Jujube (Ziziphus jujuba)",
+    "generic_name": "jujube",
+    "brand_names": [
+      "Chinese Date Extract",
+      "Jujube Seed Supplement"
+    ],
+    "aliases": [
+      "Ziziphus",
+      "Chinese date",
+      "Da Zao"
+    ],
+    "wikidata_qid": "Q3093648"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Sleep",
       "Anxiety",
@@ -27,75 +30,163 @@
       "Antioxidant activity",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Chinese Date Extract",
-      "Jujube Seed Supplement"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical treatment)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "As needed or daily use depending on purpose"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Sleep Medicine",
-      "Herbal Medicine"
-    ],
-    "wikidata_qid": "Q3093648"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild insomnia and sleep disturbances",
-      "Stress and anxiety relief",
-      "Digestive health support"
-    ],
-    "off_label_uses": [
-      "Cognitive support",
-      "Immune modulation",
-      "Adjunctive antioxidant therapy"
-    ],
-    "contraindications": [
-      "Pregnancy (insufficient safety data)",
-      "Concurrent use with sedatives or hypnotics (potential additive effects)",
-      "Severe liver or kidney impairment (limited data)"
-    ],
-    "monitoring_required": [
-      "Sleep quality and duration",
-      "Daytime sedation or fatigue",
-      "GI tolerance"
-    ],
-    "efficacy_rating": {
-      "insomnia_relief": 3,
-      "anxiety_reduction": 3,
-      "digestive_support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Jujube supplement",
-      "Ziziphus jujuba",
-      "Chinese date extract"
-    ],
-    "synonyms": [
-      "Ziziphus",
-      "Chinese date",
-      "Da Zao"
-    ],
-    "common_misspellings": [
-      "juboob",
-      "jujub",
-      "jujoba (confused)"
+    "tags": [
+      "adaptogen",
+      "sleep aid",
+      "anxiolytic",
+      "traditional medicine",
+      "antioxidant"
     ]
+  },
+  "summary": "Jujube is a traditional medicinal fruit used for relaxation, sleep enhancement, digestive support, and immune modulation. It has adaptogenic and anxiolytic properties with a long history in traditional Chinese and Korean medicine.",
+  "description": "Jujube, also known as Chinese date (Ziziphus jujuba), is a fruit-bearing plant used in traditional medicine for over 2,500 years. It is rich in flavonoids, saponins, and polysaccharides that are believed to contribute to its calming, antioxidant, and immune-supporting effects. Traditionally, jujube is used to relieve stress, improve sleep quality, support digestion, and enhance energy. Modern research is investigating its neuroprotective and anti-inflammatory potential, although most clinical evidence is preliminary.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-insomnia-and-sleep-disturbances",
+          "condition_name": "Mild insomnia and sleep disturbances",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-and-anxiety-relief",
+          "condition_name": "Stress and anxiety relief",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "digestive-health-support",
+          "condition_name": "Digestive health support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "immune-modulation",
+          "condition_name": "Immune modulation",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-antioxidant-therapy",
+          "condition_name": "Adjunctive antioxidant therapy",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "insomnia_relief": {
+          "rating": 3
+        },
+        "anxiety_reduction": {
+          "rating": 3
+        },
+        "digestive_support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "As needed or daily use depending on purpose"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild drowsiness"
+        },
+        {
+          "effect": "Dry mouth"
+        },
+        {
+          "effect": "GI discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Unknown; limited data"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy (insufficient safety data)"
+        },
+        {
+          "contraindication": "Concurrent use with sedatives or hypnotics (potential additive effects)"
+        },
+        {
+          "contraindication": "Severe liver or kidney impairment (limited data)"
+        }
+      ],
+      "precautions": [
+        "May enhance sedative effects of alcohol, antihistamines, or benzodiazepines.",
+        "Safety during pregnancy and lactation is not established.",
+        "Some reports suggest possible mild hypoglycemic effects—caution in diabetes."
+      ],
+      "interactions": [
+        {
+          "interactant": "Sedatives (benzodiazepines, zolpidem, antihistamines)",
+          "mechanism": "Additive sedation",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Enhanced drowsiness",
+          "action": "Avoid concurrent use"
+        },
+        {
+          "interactant": "Antidiabetic drugs",
+          "mechanism": "Potential additive hypoglycemia",
+          "action": "Monitor glucose"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sleep quality"
+        },
+        {
+          "parameter": "Daytime sedation"
+        },
+        {
+          "parameter": "GI tolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended due to lack of safety data",
+        "lactation": "Insufficient evidence; use caution",
+        "pediatric": "Not established; avoid unless supervised by a clinician",
+        "geriatric": "Generally safe but monitor for excessive sedation"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal supplement",
+        "natural_source": "Ziziphus jujuba fruit, seeds, and leaves",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical treatment)"
+      }
+    }
   },
   "sections": [
     {
@@ -217,6 +308,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH - Ziziphus jujuba Research",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Ziziphus+jujuba"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Journal of Ethnopharmacology – Jujube Review",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0378874116302796"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Jujube supplement",
+      "Ziziphus jujuba",
+      "Chinese date extract"
+    ],
+    "synonyms": [
+      "Ziziphus",
+      "Chinese date",
+      "Da Zao"
+    ],
+    "common_misspellings": [
+      "juboob",
+      "jujub",
+      "jujoba (confused)"
+    ]
+  },
   "seo": {
     "title": "Jujube (Ziziphus jujuba) – Herbal Sleep and Stress Supplement",
     "description": "Jujube is a traditional herbal supplement used for sleep, relaxation, and digestive health, with adaptogenic and antioxidant properties.",

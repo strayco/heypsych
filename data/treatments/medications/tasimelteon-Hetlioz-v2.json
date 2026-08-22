@@ -1,81 +1,208 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "tasimelteon-hetlioz",
-  "type": "medication",
-  "name": "Tasimelteon (Hetlioz)",
-  "summary": "Prescription melatonin-receptor agonist for circadian rhythm sleep disorders (Non-24 and Smith-Magenis–related nighttime sleep disturbance). Taken nightly, but results can take weeks to show up.",
-  "description": "Hetlioz is a circadian “reset” medication, not a quick knockout sleep pill. It’s used for non-24-hour sleep-wake disorder (especially in totally blind patients) and for nighttime sleep disturbances in Smith-Magenis syndrome. You take it every night at the same time, about an hour before bed—then you give it time. Some people notice changes in sleep over weeks; for others it can take months. Biggest watch-outs: next-day grogginess, weird dreams, and drug interactions that can tank effectiveness or increase side effects. Capsules and the liquid (Hetlioz LQ) are not interchangeable mg-for-mg.",
-  "patient_summary": "Hetlioz is for circadian rhythm sleep problems—not a fast “sleep now” med. Take it every night at the same time, 1 hour before bed, and be patient: it may take weeks (sometimes longer) to see the full effect. Common issues are headache, unusual dreams/nightmares, and infections like URIs/UTIs. Avoid alcohol, and make sure your prescriber checks for drug interactions. Capsules and the liquid are NOT interchangeable.",
-  "category": "medications/sleep-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Melatonin Receptor Agonist",
-      "Hypnotic, Miscellaneous"
-    ],
+  "identity": {
+    "slug": "tasimelteon-hetlioz",
+    "name": "Tasimelteon (Hetlioz)",
+    "generic_name": "tasimelteon",
     "brand_names": [
       "Hetlioz",
       "Hetlioz LQ"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 2014,
-    "pharmacologic_category": "Melatonin receptor agonist (MT1/MT2), circadian rhythm modulator",
-    "published_date": "2026-02-07T00:00:00Z",
-    "last_updated": "2026-02-07T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-07T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Non-24-hour Sleep-Wake Disorder (Non-24)",
-      "Nighttime Sleep Disturbances in Smith-Magenis Syndrome"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "non-24-hour-sleep-wake-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for Non-24. Efficacy was established in totally blind patients. It’s meant to help entrain (re-align) the sleep-wake cycle over time—not provide immediate sedation."
-      },
-      {
-        "slug": "smith-magenis-syndrome",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved (by age/formulation) for nighttime sleep disturbances associated with Smith-Magenis syndrome. Taken nightly, consistently, to support more stable sleep timing."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "related",
-        "context": "This is not a general insomnia medication. It’s specifically used when insomnia is driven by circadian rhythm misalignment (timing problem), not just difficulty falling asleep for any reason."
-      }
-    ],
-    "contraindications": [
-      "There are no contraindications listed in the manufacturer’s labeling."
-    ],
-    "efficacy_response": {
-      "metric": "Circadian entrainment and improved nighttime sleep timing",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Hetlioz is designed to shift and stabilize your sleep-wake rhythm over time. If it works for you, the “win” is a more predictable sleep schedule and fewer nights where your body clock feels off. It’s not a same-night rescue medication.",
-      "citation_tag": "FDA labeling (trial populations include totally blind Non-24)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-disorders",
+    "drug_classes": [
+      "Melatonin Receptor Agonist",
+      "Hypnotic, Miscellaneous"
+    ]
+  },
+  "summary": "Prescription melatonin-receptor agonist for circadian rhythm sleep disorders (Non-24 and Smith-Magenis–related nighttime sleep disturbance). Taken nightly, but results can take weeks to show up.",
+  "description": "Hetlioz is a circadian “reset” medication, not a quick knockout sleep pill. It’s used for non-24-hour sleep-wake disorder (especially in totally blind patients) and for nighttime sleep disturbances in Smith-Magenis syndrome. You take it every night at the same time, about an hour before bed—then you give it time. Some people notice changes in sleep over weeks; for others it can take months. Biggest watch-outs: next-day grogginess, weird dreams, and drug interactions that can tank effectiveness or increase side effects. Capsules and the liquid (Hetlioz LQ) are not interchangeable mg-for-mg.",
+  "patient_summary": "Hetlioz is for circadian rhythm sleep problems—not a fast “sleep now” med. Take it every night at the same time, 1 hour before bed, and be patient: it may take weeks (sometimes longer) to see the full effect. Common issues are headache, unusual dreams/nightmares, and infections like URIs/UTIs. Avoid alcohol, and make sure your prescriber checks for drug interactions. Capsules and the liquid are NOT interchangeable.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "non-24-hour-sleep-wake-disorder",
+          "condition_name": "Non 24 Hour Sleep Wake Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for Non-24. Efficacy was established in totally blind patients. It’s meant to help entrain (re-align) the sleep-wake cycle over time—not provide immediate sedation.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "smith-magenis-syndrome",
+          "condition_name": "Smith Magenis Syndrome",
+          "relationship": "primary_indication",
+          "context": "FDA-approved (by age/formulation) for nighttime sleep disturbances associated with Smith-Magenis syndrome. Taken nightly, consistently, to support more stable sleep timing.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "This is not a general insomnia medication. It’s specifically used when insomnia is driven by circadian rhythm misalignment (timing problem), not just difficulty falling asleep for any reason."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Capsule: absorption reduced and time-to-peak delayed with a high-fat meal",
-      "bioavailability": "Capsule: ~38%",
-      "onset": "Clinical effect may take weeks or months due to circadian rhythm differences",
-      "peak_plasma": "Fasting: capsule ~0.5 to 3 hours; oral suspension ~15 to 30 minutes",
-      "half_life": "~1 to 2 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism primarily via CYP1A2 and CYP3A4; phase II glucuronidation",
-      "excretion": "Urine (~80%; <1% unchanged); feces (~4%)",
-      "protein_binding": "~90%",
-      "food_effect": "High-fat meal delays Tmax and reduces peak levels (capsule); administer without food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical effect may take weeks or months due to circadian rhythm differences"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache",
+          "incidence": "17%",
+          "notes": "If headaches are frequent or severe, hydration and sleep timing help—but also tell your prescriber. Persistent headaches can be a reason to reassess dosing timing or whether the med is a fit."
+        },
+        {
+          "effect": "Increased ALT (liver enzyme)",
+          "incidence": "10%",
+          "notes": "This doesn’t always mean liver injury, but it’s a signal to monitor. If you develop jaundice, dark urine, severe fatigue, or right-upper-abdominal pain—get checked urgently."
+        },
+        {
+          "effect": "Abnormal dreams / Nightmares",
+          "incidence": "≤10%",
+          "notes": "Vivid dreams can be tolerable—or they can mess with sleep and mood. If nightmares are frequent, distressing, or trigger daytime anxiety, bring it up."
+        },
+        {
+          "effect": "Upper respiratory tract infection",
+          "incidence": "7%",
+          "notes": "Usually mild, but if you have fever, shortness of breath, or symptoms that drag on, treat it like a real illness—not a side effect you ignore."
+        },
+        {
+          "effect": "Urinary tract infection",
+          "incidence": "7%",
+          "notes": "Burning with urination, urgency, pelvic pain—don’t wait it out. UTIs are treatable, and ignoring them can make things worse."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe sedation or impaired alertness leading to accidents (higher risk if combined with alcohol or other sedatives)"
+        },
+        {
+          "risk": "Clinically significant liver issues (rare, but watch for jaundice, dark urine, severe fatigue, abdominal pain)"
+        },
+        {
+          "risk": "Hypersensitivity reactions to excipients in certain formulations (rare; risk depends on individual sensitivity)"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "There are no contraindications listed in the manufacturer’s labeling."
+        }
+      ],
+      "precautions": [
+        "CNS depression: Can impair physical and mental abilities (think: driving, machinery, decisions)",
+        "Severe liver disease: Use is not recommended (has not been studied)",
+        "Older adults: Higher exposure may increase side effects—use caution",
+        "Smokers: Exposure is lower in smokers, which can reduce effectiveness",
+        "Alcohol: Avoid or limit ethanol—combining sedatives is never a flex"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol (ethanol)",
+          "mechanism": "Worsened CNS depression, impaired coordination and judgment, poorer sleep quality, higher accident risk.",
+          "action": "Avoid or strictly limit alcohol. If you drink, don’t take this as a “sleep chaser.”"
+        },
+        {
+          "interactant": "Strong CYP1A2 or CYP3A4 inhibitors (interaction risk)",
+          "mechanism": "Higher tasimelteon exposure may increase sedation, next-day impairment, and adverse effects.",
+          "action": "Review all meds and supplements with your prescriber/pharmacist. Dose adjustment or avoidance may be needed depending on the interacting drug."
+        },
+        {
+          "interactant": "Strong CYP1A2 or CYP3A4 inducers (interaction risk)",
+          "mechanism": "Lower tasimelteon exposure can reduce efficacy (basically: you’re taking it, but it may not land).",
+          "action": "Avoid inducing agents when possible or reassess whether this medication is worth continuing under those conditions."
+        },
+        {
+          "interactant": "Smoking (CYP1A2 induction)",
+          "mechanism": "Exposure is decreased in smokers compared with nonsmokers, which can reduce efficacy.",
+          "action": "If you smoke and Hetlioz isn’t working, this may be part of why. Tell your prescriber—don’t just assume the med is useless."
+        },
+        {
+          "interactant": "Other sedating medications (benzodiazepines, opioids, sedating antihistamines, sleep aids, cannabis, etc.)",
+          "mechanism": "Additive sedation and impairment. Higher fall/accident risk.",
+          "action": "Use caution, especially early in treatment. Avoid stacking sedatives unless your prescriber explicitly planned it."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sleep timing and drift: Track bedtime, wake time, naps, and nighttime awakenings (sleep diary is the simplest high-yield tool)"
+        },
+        {
+          "parameter": "Daytime impairment: Next-day grogginess, slowed thinking, reaction time changes—especially early on and in older adults"
+        },
+        {
+          "parameter": "Dream changes: Vivid dreams/nightmares that disrupt sleep or worsen daytime anxiety/mood"
+        },
+        {
+          "parameter": "Medication timing consistency: Same time nightly is essential; inconsistent timing can look like “it doesn’t work”"
+        },
+        {
+          "parameter": "Drug interaction review: New meds, antibiotics, antifungals, supplements, and smoking changes can all shift exposure"
+        },
+        {
+          "parameter": "Alcohol and sedative stacking: Screen for alcohol use and concurrent sedating meds that increase impairment risk"
+        },
+        {
+          "parameter": "Liver labs if clinically indicated: Especially if there’s pre-existing liver disease, symptoms of liver dysfunction, or unexplained fatigue/jaundice"
+        },
+        {
+          "parameter": "Infection symptoms: URI/UTI symptoms when they appear—don’t just assume it’s “nothing”"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Adverse events were observed in animal reproduction studies. In humans, use during pregnancy should be a risk-benefit decision focused on symptom severity, alternatives, and functional risk from untreated sleep-wake disorder.",
+        "lactation": "It is not known if tasimelteon is excreted into breast milk. The manufacturer recommends weighing infant exposure risk, benefits of breastfeeding, and benefits of treatment to the mother.",
+        "pediatric": "Smith-Magenis syndrome nighttime sleep disturbances: Children ≥3 years and adolescents <16 years use the oral suspension dosing based on weight (≤28 kg: 0.7 mg/kg once nightly 1 hour before bed; >28 kg: 20 mg once nightly 1 hour before bed). Adolescents ≥16 years use the 20 mg capsule once nightly 1 hour before bed. Capsules vs suspension are not interchangeable mg-for-mg.",
+        "geriatric": "Use with caution. In older adults, exposure can be increased (about two-fold compared with younger adults), which may raise the chance of next-day impairment and other adverse events.",
+        "renal_impairment": "Adults: no dosage adjustment necessary. Pediatric renal impairment: no specific guidance in labeling; based on adult data, adjustment is likely unnecessary.",
+        "hepatic_impairment": "Mild to moderate impairment: no adjustment necessary. Severe hepatic impairment: use is not recommended (not studied)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2014
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Capsule: absorption reduced and time-to-peak delayed with a high-fat meal",
+          "bioavailability": "Capsule: ~38%",
+          "peak_plasma": "Fasting: capsule ~0.5 to 3 hours; oral suspension ~15 to 30 minutes",
+          "half_life": "~1 to 2 hours",
+          "metabolism": "Extensive hepatic metabolism primarily via CYP1A2 and CYP3A4; phase II glucuronidation",
+          "excretion": "Urine (~80%; <1% unchanged); feces (~4%)",
+          "protein_binding": "~90%",
+          "food_effect": "High-fat meal delays Tmax and reduces peak levels (capsule); administer without food"
+        },
+        "dosing": {
+          "titration": "This is a nightly circadian routine medication. Dose timing matters as much as the dose itself: take it 1 hour before bedtime, at the same time every night. Don’t take it with food. If you can’t take it around your usual time on a given night, skip the dose—don’t double up. Capsules and the oral suspension are not interchangeable."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Hetlioz is not a benzodiazepine and is not known for a classic dangerous withdrawal syndrome. Most people can stop it without a formal taper. The main “rebound” risk is your circadian sleep problem returning—sometimes quickly—because the medication’s benefit depends on consistent, ongoing rhythm support."
+        }
+      }
     }
   },
   "sections": [
@@ -94,7 +221,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med is a slow-burn. Most people don’t feel a dramatic “hit” the first night. What they notice (if it’s working) is their sleep pattern getting less chaotic over time.",
       "items": [
         {
           "category": "The first nights",
@@ -131,7 +257,8 @@
           ],
           "note": "After taking it, keep activities limited to getting ready for sleep. Avoid alcohol."
         }
-      ]
+      ],
+      "intro": "This med is a slow-burn. Most people don’t feel a dramatic “hit” the first night. What they notice (if it’s working) is their sleep pattern getting less chaotic over time."
     },
     {
       "type": "onset_duration",
@@ -148,10 +275,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Hetlioz is most effective when the sleep problem is truly circadian—meaning your internal clock is drifting or mis-timed. In Non-24, the best-studied benefit is helping the sleep-wake cycle lock onto a 24-hour day over time (especially in totally blind patients). In Smith-Magenis syndrome, the goal is fewer nighttime disruptions and a more stable night sleep pattern. If you’re expecting a same-night rescue effect, it will disappoint you. If you treat it like a nightly circadian routine, it has a real chance to help.",
       "metric": "Circadian realignment (entrainment) and improved sleep timing",
       "value": "Varies by person",
       "comparison": "Not applicable for this medication.",
-      "text": "Hetlioz is most effective when the sleep problem is truly circadian—meaning your internal clock is drifting or mis-timed. In Non-24, the best-studied benefit is helping the sleep-wake cycle lock onto a 24-hour day over time (especially in totally blind patients). In Smith-Magenis syndrome, the goal is fewer nighttime disruptions and a more stable night sleep pattern. If you’re expecting a same-night rescue effect, it will disappoint you. If you treat it like a nightly circadian routine, it has a real chance to help.",
       "clinical_details": "Response is not immediate. This medication is taken nightly at the same time, and clinicians often use sleep logs (and sometimes circadian markers) to judge whether the sleep window is stabilizing over weeks. Missed timing, inconsistent dosing, interacting meds, and smoking-related metabolism changes can all reduce the chance of benefit.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -234,7 +361,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Tasimelteon is metabolized primarily by CYP1A2 and CYP3A4. Some interacting meds can meaningfully change exposure—either increasing side effects or making the medication less effective. This is one of those meds where “check interactions” is not optional.",
       "items": [
         {
           "with": "Alcohol (ethanol)",
@@ -261,7 +387,8 @@
           "risk": "Additive sedation and impairment. Higher fall/accident risk.",
           "action": "Use caution, especially early in treatment. Avoid stacking sedatives unless your prescriber explicitly planned it."
         }
-      ]
+      ],
+      "intro": "Tasimelteon is metabolized primarily by CYP1A2 and CYP3A4. Some interacting meds can meaningfully change exposure—either increasing side effects or making the medication less effective. This is one of those meds where “check interactions” is not optional."
     },
     {
       "type": "tapering",
@@ -336,21 +463,6 @@
       "text": "Hetlioz is a specialist-style tool for circadian rhythm disorders. It’s most appropriate when the diagnosis is clear (Non-24, or Smith-Magenis nighttime sleep disturbance) and when the patient can commit to consistent nightly timing. For general insomnia, clinicians usually start elsewhere: sleep hygiene, CBT-I, and targeted treatment of anxiety/depression. Hetlioz is about aligning the clock—not sedating you into sleep."
     }
   ],
-  "seo": {
-    "title": "Tasimelteon (Hetlioz): Uses, Dosage, Side Effects & How Long It Takes to Work",
-    "description": "Hetlioz (tasimelteon) for Non-24 and Smith-Magenis sleep disturbance: nightly dosing 1 hour before bed, why it can take weeks to work, common side effects (headache, vivid dreams), interactions, and special populations.",
-    "canonical": "[https://www.heypsych.com/treatments/tasimelteon-hetlioz](https://www.heypsych.com/treatments/tasimelteon-hetlioz)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is Hetlioz a regular sleeping pill?",
@@ -396,5 +508,20 @@
       "q": "Why do I feel groggy the next day?",
       "a": "CNS depression is possible, especially early on, in older adults, or if you combine it with other sedating meds or alcohol. Also: if you take it and then stay up doing stimulating stuff, you may feel worse the next day. Take it, wind down, go to bed."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Tasimelteon (Hetlioz): Uses, Dosage, Side Effects & How Long It Takes to Work",
+    "description": "Hetlioz (tasimelteon) for Non-24 and Smith-Magenis sleep disturbance: nightly dosing 1 hour before bed, why it can take weeks to work, common side effects (headache, vivid dreams), interactions, and special populations.",
+    "canonical": "[https://www.heypsych.com/treatments/tasimelteon-hetlioz](https://www.heypsych.com/treatments/tasimelteon-hetlioz)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

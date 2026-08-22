@@ -137,20 +137,25 @@ export function FastFacts({
   }
 
   return (
-    <div className="mt-4 sm:mt-6 rounded-xl border border-neutral-200 bg-gradient-to-r from-neutral-50 to-white p-4 sm:p-5 shadow-sm">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+    <section
+      id="KEY_FACTS"
+      data-answer="true"
+      aria-label="Key facts"
+      className="mt-4 sm:mt-6 rounded-xl border border-separator bg-gradient-to-r from-neutral-50 to-white p-4 sm:p-5 shadow-sm"
+    >
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 list-none m-0 p-0">
         {facts.map((fact, index) => (
-          <div key={index} className="flex items-start gap-2.5 sm:gap-3">
+          <li key={index} className="flex items-start gap-2.5 sm:gap-3">
             <span className="text-xl sm:text-2xl flex-shrink-0" aria-hidden="true">
               {fact.icon}
             </span>
-            <span className="text-sm sm:text-base text-neutral-800 leading-relaxed flex-1 font-medium">
+            <span className="text-sm sm:text-base text-label-secondary leading-relaxed flex-1 font-medium">
               <ParsedContent content={fact.text} />
             </span>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 

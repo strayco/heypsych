@@ -1,106 +1,274 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "haloperidol-haldol",
-  "type": "medication",
-  "name": "Haloperidol (Haldol)",
-  "summary": "High-potency first-generation antipsychotic used for acute agitation, psychosis, and severe mania. Fast calming effects, but higher risk of movement side effects (EPS), QT prolongation, and neuroleptic malignant syndrome—especially with higher doses or IV use.",
-  "description": "Haloperidol is an older, high-potency antipsychotic that can rapidly settle severe agitation, hallucinations, delusions, and manic aggression. It can work within minutes by injection and within hours by mouth. The tradeoff: it’s more likely than many newer antipsychotics to cause stiff muscles, restlessness, tremor, and dystonia—and it can prolong QTc, especially with IV dosing. It is NOT approved for dementia-related psychosis and carries an increased mortality warning in that group.",
-  "patient_summary": "Haloperidol can calm severe agitation and psychosis fast—sometimes in minutes if given IM/IV. It’s powerful, but it comes with real baggage: movement side effects (stiffness, restlessness, dystonia), QT prolongation risk (especially IV), and rare but life-threatening neuroleptic malignant syndrome. It is not approved for dementia-related psychosis and is linked to increased death risk in elderly patients with dementia-related psychosis.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
-    "drug_classes": [
-      "First-Generation (Typical) Antipsychotic",
-      "D2 Receptor Antagonist",
-      "Butyrophenone Antipsychotic"
-    ],
+  "identity": {
+    "slug": "haloperidol-haldol",
+    "name": "Haloperidol (Haldol)",
+    "generic_name": "haloperidol",
     "brand_names": [
       "Haldol",
       "Haldol Decanoate",
       "TEVA-Haloperidol (Canada)"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular",
-      "Intravenous (off-label route)",
-      "Subcutaneous (off-label route)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": true,
-    "fda_approval_year": 1967,
-    "pharmacologic_category": "High-Potency Typical Antipsychotic",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia and other psychotic disorders",
-      "Acute agitation/aggression when psychosis or mania is driving the behavior",
-      "Tourette syndrome (tics)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used to treat positive symptoms (hallucinations, delusions) and agitation related to psychosis. Many clinicians start with second-generation antipsychotics first due to lower EPS risk, but haloperidol remains a reliable option, especially for acute control."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "primary_treatment",
-        "context": "Commonly used for severe, acute agitation or aggression when psychosis is suspected as the main driver. Often paired with an anticholinergic (benztropine or diphenhydramine) to reduce acute dystonia risk."
-      },
-      {
-        "slug": "bipolar-disorder-mania",
-        "relationship": "off_label",
-        "context": "Can help stabilize acute mania or mixed agitation, but may worsen depressive symptoms. Not recommended for bipolar depression or long-term maintenance."
-      },
-      {
-        "slug": "delirium",
-        "relationship": "off_label",
-        "context": "Sometimes used short-term for hyperactive delirium when non-medication strategies and medical optimization are not enough and the patient is distressed or unsafe. Reassess daily and stop as soon as possible."
-      },
-      {
-        "slug": "postpartum-psychosis",
-        "relationship": "off_label",
-        "context": "May be used for acute stabilization when rapid calming is needed or oral meds aren’t possible. Typically part of a bigger plan that prioritizes sleep protection and ongoing psychiatric management."
-      },
-      {
-        "slug": "tourette-syndrome",
-        "relationship": "primary_treatment",
-        "context": "Can reduce tics and vocalizations, but the movement side-effect burden is real. Often considered when benefits clearly outweigh risks and alternatives haven’t worked."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to haloperidol or any component of the formulation",
-      "Parkinson disease",
-      "Severe CNS depression",
-      "Coma",
-      "Dementia with Lewy bodies"
-    ],
-    "efficacy_response": {
-      "metric": "Time to calming/sedation for acute agitation (IM)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For severe agitation, IM haloperidol can start working within about 15 minutes, with many people becoming noticeably calmer within ~25–30 minutes. Oral dosing is slower and is better for maintenance once the crisis is over.",
-      "citation_tag": "FDA Labeling / Clinical Trials (varied study designs)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
+    "drug_classes": [
+      "First-Generation (Typical) Antipsychotic",
+      "D2 Receptor Antagonist",
+      "Butyrophenone Antipsychotic"
+    ]
+  },
+  "summary": "High-potency first-generation antipsychotic used for acute agitation, psychosis, and severe mania. Fast calming effects, but higher risk of movement side effects (EPS), QT prolongation, and neuroleptic malignant syndrome—especially with higher doses or IV use.",
+  "description": "Haloperidol is an older, high-potency antipsychotic that can rapidly settle severe agitation, hallucinations, delusions, and manic aggression. It can work within minutes by injection and within hours by mouth. The tradeoff: it’s more likely than many newer antipsychotics to cause stiff muscles, restlessness, tremor, and dystonia—and it can prolong QTc, especially with IV dosing. It is NOT approved for dementia-related psychosis and carries an increased mortality warning in that group.",
+  "patient_summary": "Haloperidol can calm severe agitation and psychosis fast—sometimes in minutes if given IM/IV. It’s powerful, but it comes with real baggage: movement side effects (stiffness, restlessness, dystonia), QT prolongation risk (especially IV), and rare but life-threatening neuroleptic malignant syndrome. It is not approved for dementia-related psychosis and is linked to increased death risk in elderly patients with dementia-related psychosis.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used to treat positive symptoms (hallucinations, delusions) and agitation related to psychosis. Many clinicians start with second-generation antipsychotics first due to lower EPS risk, but haloperidol remains a reliable option, especially for acute control.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "primary_indication",
+          "context": "Commonly used for severe, acute agitation or aggression when psychosis is suspected as the main driver. Often paired with an anticholinergic (benztropine or diphenhydramine) to reduce acute dystonia risk.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "tourette-syndrome",
+          "condition_name": "Tourette Syndrome",
+          "relationship": "primary_indication",
+          "context": "Can reduce tics and vocalizations, but the movement side-effect burden is real. Often considered when benefits clearly outweigh risks and alternatives haven’t worked.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-disorder-mania",
+          "condition_name": "Bipolar Disorder Mania",
+          "relationship": "off_label",
+          "context": "Can help stabilize acute mania or mixed agitation, but may worsen depressive symptoms. Not recommended for bipolar depression or long-term maintenance."
+        },
+        {
+          "condition_slug": "delirium",
+          "condition_name": "Delirium",
+          "relationship": "off_label",
+          "context": "Sometimes used short-term for hyperactive delirium when non-medication strategies and medical optimization are not enough and the patient is distressed or unsafe. Reassess daily and stop as soon as possible."
+        },
+        {
+          "condition_slug": "postpartum-psychosis",
+          "condition_name": "Postpartum Psychosis",
+          "relationship": "off_label",
+          "context": "May be used for acute stabilization when rapid calming is needed or oral meds aren’t possible. Typically part of a bigger plan that prioritizes sleep protection and ongoing psychiatric management."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability ~60–70%; injections bypass gut absorption",
-      "bioavailability": "Oral ~60–70%",
-      "onset": "IM agitation: ~15 minutes; IV sedation: ~3–20 minutes; oral: effects build over hours to days depending on symptom target",
-      "peak_plasma": "Oral: ~2–6 hours; IM (lactate): ~20 minutes; Decanoate: peak ~6 days",
-      "half_life": "Oral: ~14–37 hours; IM (lactate): ~20 hours; IV: ~14–26 hours; Decanoate: ~21 days",
-      "duration_IR": "Oral/short-acting effects are dose-dependent; acute calming may last hours; maintenance symptom control requires scheduled dosing",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic metabolism (glucuronidation and CYP pathways); CYP2D6 and CYP3A4 are clinically relevant",
-      "excretion": "Urine (~30% total; ~1% unchanged)",
-      "protein_binding": "High protein binding (~88–92%)",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IM agitation: ~15 minutes; IV sedation: ~3–20 minutes; oral: effects build over hours to days depending on symptom target"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular",
+        "Intravenous (off-label route)",
+        "Subcutaneous (off-label route)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal symptoms (EPS)",
+          "incidence": ">10% reported in labeling for extrapyramidal reactions and parkinsonism",
+          "notes": "This is the signature risk with haloperidol. You might notice stiffness, tremor, slowed movement, jaw tightness, or weird muscle pulls. Dystonia can happen early—sometimes after a first dose—especially with injections. If your throat or neck tightens, treat it like urgent."
+        },
+        {
+          "effect": "Akathisia",
+          "incidence": "1% to 10% reported in labeling",
+          "notes": "Akathisia is not “anxiety.” It’s a body-level need to move—pacing, bouncing a leg, feeling like you can’t sit still. If this happens, tell your prescriber quickly; it’s fixable, and you shouldn’t have to white-knuckle it."
+        },
+        {
+          "effect": "Drowsiness / sedation",
+          "incidence": "1% to 10% reported in labeling",
+          "notes": "Some people feel sleepy or slowed. Others feel calm but physically heavy. Don’t drive or do high-risk tasks until you know how you respond."
+        },
+        {
+          "effect": "Hyperprolactinemia effects",
+          "incidence": "Frequency not defined; clinically relevant with ongoing treatment",
+          "notes": "Haloperidol can raise prolactin. Signs include missed periods, breast tenderness, lactation that isn’t postpartum, sexual dysfunction, or fertility issues. If symptoms show up, your clinician may check a prolactin level or switch to a prolactin-sparing option."
+        },
+        {
+          "effect": "Orthostatic hypotension / falls",
+          "incidence": "<1% to 10% depending on symptom and setting",
+          "notes": "Dizziness when standing and fall risk are more likely in older adults and with parenteral dosing. Standing up slowly and hydration help, but sometimes the dose or med needs adjustment."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, autonomic instability, elevated CK. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Tardive dyskinesia (TD): involuntary movements (often face/tongue) that can become persistent with long-term exposure."
+        },
+        {
+          "risk": "QT prolongation / torsades de pointes / sudden cardiac death: risk rises with IV use, high dose, baseline QTc issues, and low potassium or magnesium."
+        },
+        {
+          "risk": "Severe dystonia involving the airway (laryngeal dystonia/laryngospasm): trouble breathing or swallowing. EMERGENCY."
+        },
+        {
+          "risk": "Blood count problems (rare): leukopenia, neutropenia, thrombocytopenia; higher concern if history of low counts."
+        },
+        {
+          "risk": "Angioedema or severe allergic reactions (rare): swelling of face/lips/tongue, trouble breathing. EMERGENCY."
+        },
+        {
+          "risk": "Temperature dysregulation: heat stroke risk in extreme heat/exertion; rare hypothermia cases also reported."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. In placebo-controlled trials (modal duration ~10 weeks), the risk of death was about 1.6 to 1.7 times higher with antipsychotics than placebo (approximately 4.5% vs 2.6%). Haloperidol is not approved for the treatment of dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to haloperidol or any component of the formulation"
+        },
+        {
+          "contraindication": "Parkinson disease"
+        },
+        {
+          "contraindication": "Severe CNS depression"
+        },
+        {
+          "contraindication": "Coma"
+        },
+        {
+          "contraindication": "Dementia with Lewy bodies"
+        }
+      ],
+      "precautions": [
+        "QTc prolongation and torsades risk: Higher risk with IV (off-label) use, higher doses, baseline prolonged QTc, electrolyte abnormalities, and other QT-prolonging meds",
+        "Extrapyramidal symptoms (EPS): High risk compared with many second-generation antipsychotics (dystonia, parkinsonism, akathisia; tardive dyskinesia with long-term exposure)",
+        "Neuroleptic malignant syndrome (NMS): Rare but life-threatening (fever, rigidity, confusion, autonomic instability, high CK)",
+        "Falls and orthostatic hypotension: Especially in older adults or medically fragile patients",
+        "Catatonia caution: Antipsychotics are not indicated for catatonia and may worsen it or raise NMS risk in some patients",
+        "Not a depression treatment: Can worsen depressive symptoms in some bipolar patients"
+      ],
+      "interactions": [
+        {
+          "interactant": "QT-prolonging medications (many antiarrhythmics, certain antibiotics, methadone, some antidepressants, other antipsychotics)",
+          "mechanism": "Additive QT prolongation increases risk of torsades and sudden death—especially with IV haloperidol, high total doses, or electrolyte abnormalities.",
+          "action": "Avoid combinations when possible. If unavoidable, use the lowest effective doses, correct potassium/magnesium, and consider ECG monitoring."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (e.g., fluoxetine, paroxetine, bupropion) and CYP3A4 inhibitors (e.g., certain macrolides/azoles, some HIV meds)",
+          "mechanism": "Higher haloperidol exposure can raise EPS and QT risk.",
+          "action": "Monitor closely for EPS, sedation, and ECG changes in higher-risk patients; dose reductions may be needed."
+        },
+        {
+          "interactant": "CYP3A4 inducers (e.g., carbamazepine, rifampin, St. John’s wort)",
+          "mechanism": "Lower haloperidol levels can reduce efficacy and destabilize psychosis or agitation control.",
+          "action": "Avoid if possible. If needed, monitor symptoms and adjust dose carefully."
+        },
+        {
+          "interactant": "Levodopa and dopamine agonists (Parkinson meds)",
+          "mechanism": "Haloperidol can directly oppose dopamine therapies and worsen Parkinson symptoms; severe EPS risk.",
+          "action": "Generally avoid. Haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, opioids, alcohol, sedating antihistamines)",
+          "mechanism": "Additive sedation, falls, and respiratory risk in medically fragile patients.",
+          "action": "Use cautious dosing and clear monitoring plans, especially in older adults or inpatient settings."
+        },
+        {
+          "interactant": "Lithium",
+          "mechanism": "Neurotoxicity has been reported with antipsychotic + lithium combinations (confusion, rigidity, tremor), and NMS risk may rise in vulnerable patients.",
+          "action": "If combined, monitor closely for neurologic changes, hydration status, and rigidity/fever symptoms."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "EPS every visit: ask about stiffness, tremor, jaw/neck tightness, restlessness; consider formal rating scales when indicated"
+        },
+        {
+          "parameter": "Tardive dyskinesia surveillance: screen regularly (e.g., AIMS at least annually; more often if high risk)"
+        },
+        {
+          "parameter": "Akathisia check: pacing, inner restlessness, inability to sit still—treat early to avoid nonadherence and distress"
+        },
+        {
+          "parameter": "Cardiac monitoring (when indicated): baseline ECG in higher-risk patients; extra caution and ECG/electrolytes monitoring with IV use or higher doses"
+        },
+        {
+          "parameter": "Electrolytes (K, Mg, Ca) when QT risk is present or when using IV/off-label routes; correct abnormalities aggressively"
+        },
+        {
+          "parameter": "Vital signs and orthostatics: hypotension, tachycardia; fall risk assessment, especially in older adults"
+        },
+        {
+          "parameter": "Mental status and functional change: target symptom tracking (psychosis intensity, agitation frequency, sleep stability, safety behaviors)"
+        },
+        {
+          "parameter": "Metabolic monitoring: weight/BMI and metabolic labs over time (haloperidol tends to be lower metabolic-risk than many SGAs, but risk is not zero)"
+        },
+        {
+          "parameter": "Prolactin symptom monitoring: menstrual changes, libido/sexual function changes, galactorrhea, gynecomastia; check prolactin level if symptomatic"
+        },
+        {
+          "parameter": "CBC if clinically indicated: especially if history of low WBC or drug-induced neutropenia; monitor for infection symptoms"
+        },
+        {
+          "parameter": "Temperature regulation and hydration: watch for heat illness risk in extreme heat/exertion; monitor for unusual hypothermia symptoms in vulnerable patients"
+        },
+        {
+          "parameter": "Medication adherence and safety: missed doses, overuse, accidental double dosing; careful review of other QT-prolonging or sedating meds"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Haloperidol crosses the placenta. Class-level data for first-generation antipsychotics do not show a clear large increase in major congenital malformations, but individual outcome data are mixed and limited. Third-trimester exposure to antipsychotics can be associated with newborn EPS and/or withdrawal-like symptoms (agitation, abnormal tone, tremor, feeding or breathing difficulties). Do not taper late in pregnancy solely to prevent neonatal symptoms; instead, use the lowest effective dose and avoid polytherapy when possible. Shared decision-making is essential, because untreated psychosis or mania can be high-risk for both parent and baby.",
+        "lactation": "Haloperidol is present in breast milk, and infant exposure has been documented. Reports describe possible infant sedation, poor feeding, irritability, and slowed motor movements—especially if other sedating meds are also involved. The manufacturer does not recommend breastfeeding on haloperidol. If breastfeeding continues, monitor the infant closely (alertness, feeding, weight gain, tone, and development), and coordinate with pediatrics. In postpartum psychosis, protecting maternal sleep is part of treatment; some clinicians recommend avoiding overnight breastfeeding during early stabilization.",
+        "pediatric": "Haloperidol can be used in children for specific indications (including tics and severe agitation), but the movement-risk profile is higher and acute dystonia can be dramatic. Use the lowest effective dose, build slowly, and consider EPS prevention strategies when clinically appropriate. For most pediatric psychiatric conditions, second-generation antipsychotics are often preferred due to tolerability.",
+        "geriatric": "High-risk medication in older adults. Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic approaches have failed and the patient is at risk of harming self or others. Use lower starting doses (often 0.5–1 mg) and titrate slowly. Monitor closely for EPS, falls, orthostasis, QT issues, and sodium changes (SIADH/hyponatremia risk in older adults). Haloperidol is not approved for dementia-related psychosis and is associated with increased mortality in that population.",
+        "renal_impairment": "No routine dose adjustment is typically required because very little unchanged drug is renally eliminated, and haloperidol is unlikely to be dialyzed. Use clinical judgment in medically fragile patients and monitor for side effects.",
+        "hepatic_impairment": "Haloperidol is extensively metabolized in the liver and is highly protein-bound; accumulation is a concern in cirrhosis. For scheduled maintenance indications (schizophrenia/mania), consider reduced initial dosing and slower titration, aiming for the lowest effective dose. QT risk may rise with higher exposure."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1967
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability ~60–70%; injections bypass gut absorption",
+          "bioavailability": "Oral ~60–70%",
+          "peak_plasma": "Oral: ~2–6 hours; IM (lactate): ~20 minutes; Decanoate: peak ~6 days",
+          "half_life": "Oral: ~14–37 hours; IM (lactate): ~20 hours; IV: ~14–26 hours; Decanoate: ~21 days",
+          "metabolism": "Hepatic metabolism (glucuronidation and CYP pathways); CYP2D6 and CYP3A4 are clinically relevant",
+          "excretion": "Urine (~30% total; ~1% unchanged)",
+          "protein_binding": "High protein binding (~88–92%)",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Haloperidol dosing depends heavily on the target problem (acute agitation vs ongoing psychosis) and the route (oral vs IM/IV vs long-acting decanoate). For acute agitation, clinicians may repeat doses at short intervals until calm is achieved, then transition to oral maintenance. For schizophrenia maintenance, the goal is the lowest effective dose to reduce EPS and long-term movement risk."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If haloperidol is being used for ongoing psychiatric treatment (like schizophrenia), don’t stop abruptly unless there’s a serious safety reason. A gradual taper helps you catch early relapse signs and reduces withdrawal-type symptoms (agitation, insomnia, sweating, nausea, restlessness, return of psychosis). For long-acting decanoate injections, withdrawal symptoms are less common because the medication leaves the body slowly—but relapse monitoring still matters."
+        }
+      }
     }
   },
   "sections": [
@@ -122,7 +290,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Real-world haloperidol experiences tend to cluster into a few buckets. This is the vibe people describe most often:",
       "items": [
         {
           "category": "Rapid calming (especially IM/IV)",
@@ -159,7 +326,8 @@
           ],
           "note": "Emotional blunting can happen, especially at higher doses."
         }
-      ]
+      ],
+      "intro": "Real-world haloperidol experiences tend to cluster into a few buckets. This is the vibe people describe most often:"
     },
     {
       "type": "onset_duration",
@@ -176,10 +344,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For severe agitation driven by psychosis or mania, haloperidol is one of the classic “works fast” options. IM dosing can calm someone in about 15–30 minutes, and IV (off-label) can act even faster. For schizophrenia, it can reduce hallucinations and delusions, but meaningful improvement usually builds over days to weeks—this isn’t an instant switch-flip for chronic psychosis.",
       "metric": "Acute calming for severe agitation",
       "value": "Often within minutes to 30 minutes (route-dependent)",
       "comparison": "Not applicable for this medication.",
-      "text": "For severe agitation driven by psychosis or mania, haloperidol is one of the classic “works fast” options. IM dosing can calm someone in about 15–30 minutes, and IV (off-label) can act even faster. For schizophrenia, it can reduce hallucinations and delusions, but meaningful improvement usually builds over days to weeks—this isn’t an instant switch-flip for chronic psychosis.",
       "clinical_details": "Haloperidol is most effective when the agitation is primarily psychosis-driven (hallucinations, paranoia, mania). If the agitation is from alcohol withdrawal, stimulant intoxication, or anticholinergic toxicity, other medications are often preferred. The biggest limiter isn’t whether it works—it’s tolerability (EPS, akathisia, QT risk).",
       "citation": {
         "authors": "FDA Prescribing Information (Haldol / Haldol Decanoate)",
@@ -266,7 +434,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Haloperidol is a QT-risk medication and a dopamine blocker—so interactions often fall into two buckets: heart rhythm risk and movement/neurologic risk. It also has clinically relevant CYP interactions (notably CYP2D6 and CYP3A4).",
       "items": [
         {
           "with": "QT-prolonging medications (many antiarrhythmics, certain antibiotics, methadone, some antidepressants, other antipsychotics)",
@@ -298,7 +465,8 @@
           "risk": "Neurotoxicity has been reported with antipsychotic + lithium combinations (confusion, rigidity, tremor), and NMS risk may rise in vulnerable patients.",
           "action": "If combined, monitor closely for neurologic changes, hydration status, and rigidity/fever symptoms."
         }
-      ]
+      ],
+      "intro": "Haloperidol is a QT-risk medication and a dopamine blocker—so interactions often fall into two buckets: heart rhythm risk and movement/neurologic risk. It also has clinically relevant CYP interactions (notably CYP2D6 and CYP3A4)."
     },
     {
       "type": "tapering",
@@ -394,21 +562,6 @@
       "text": "Haloperidol is a “high-control, high-side-effect” antipsychotic. It still has a strong role when you need fast behavioral stabilization (severe agitation, dangerous psychosis, extreme mania) or when a patient has done well on it historically. For many people starting long-term treatment today, second-generation antipsychotics are often preferred first because EPS and tardive dyskinesia risks are generally lower. Haloperidol is also not approved for dementia-related psychosis and should be avoided for behavioral symptoms in dementia unless there’s imminent safety risk and other approaches have failed."
     }
   ],
-  "seo": {
-    "title": "Haloperidol (Haldol): Uses, Dosing, Side Effects, QT Risk & EPS",
-    "description": "Haloperidol (Haldol) for acute agitation, psychosis, and mania: how fast it works (IM/IV vs oral), dosing ranges, EPS and akathisia risks, QT prolongation safety, dementia mortality warning, and tapering guidance.",
-    "canonical": "[https://www.heypsych.com/treatments/haloperidol-haldol](https://www.heypsych.com/treatments/haloperidol-haldol)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is haloperidol (Haldol) used for in psychiatry?",
@@ -450,5 +603,20 @@
       "q": "Is haloperidol used for insomnia?",
       "a": "No. Haloperidol can cause sedation, but it’s not an insomnia medication and comes with significant risks (movement side effects, QT prolongation). Using antipsychotics primarily for sleep—especially in older adults—is generally considered poor risk-benefit."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Haloperidol (Haldol): Uses, Dosing, Side Effects, QT Risk & EPS",
+    "description": "Haloperidol (Haldol) for acute agitation, psychosis, and mania: how fast it works (IM/IV vs oral), dosing ranges, EPS and akathisia risks, QT prolongation safety, dementia mortality warning, and tapering guidance.",
+    "canonical": "[https://www.heypsych.com/treatments/haloperidol-haldol](https://www.heypsych.com/treatments/haloperidol-haldol)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

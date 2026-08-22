@@ -1,85 +1,177 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "narrative-exposure-therapy",
-  "type": "therapy",
-  "name": "Narrative Exposure Therapy (NET)",
-  "summary": "Narrative Exposure Therapy (NET) is a short-term, trauma-focused therapy designed to help individuals process multiple traumatic experiences by constructing a chronological life narrative that integrates traumatic memories into a coherent story.",
-  "description": "Narrative Exposure Therapy (NET) is an evidence-based, short-term therapeutic approach specifically developed for survivors of complex trauma, including war, torture, natural disasters, and chronic interpersonal violence. The therapy guides individuals in constructing a detailed chronological narrative of their entire life, emphasizing traumatic experiences but contextualizing them within the broader scope of positive and neutral life events. By externalizing and contextualizing trauma memories, NET aims to reduce intrusive symptoms, foster emotional integration, and restore continuity in personal identity. It is particularly effective in populations with cumulative trauma and is suitable for group or individual delivery.",
-  "category": "therapy/trauma-focused",
-  "tags": [
-    "trauma therapy",
-    "PTSD",
-    "narrative therapy",
-    "evidence-based",
-    "complex trauma",
-    "survivors of violence",
-    "refugees"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "narrative-exposure-therapy",
+    "name": "Narrative Exposure Therapy (NET)",
+    "generic_name": "narrative exposure therapy",
+    "brand_names": [
+      "NET"
+    ],
+    "wikidata_qid": "Q100166531"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/trauma-focused",
     "intervention_types": [
       "Psychotherapy",
       "Narrative therapy",
       "Trauma-focused therapy"
     ],
-    "treatment_types": [
-      "Individual therapy",
-      "Group therapy"
-    ],
-    "categories": [
-      "Trauma-focused",
-      "Narrative approaches"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Teletherapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–16 sessions"
-    ],
-    "specialty_areas": [
-      "Post-traumatic stress disorder",
-      "Complex trauma",
-      "Refugees and displaced populations",
-      "Survivors of torture or war"
-    ],
-    "wikidata_qid": "Q100166531"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-traumatic stress disorder (PTSD)",
-      "Complex trauma"
-    ],
-    "conditions_treated": [
+    "tags": [
+      "trauma therapy",
       "PTSD",
-      "Complex PTSD",
-      "Trauma-related depression and anxiety",
-      "Adjustment disorders"
-    ],
-    "off_label_uses": [
-      "Identity integration in fragmented trauma survivors"
-    ],
-    "contraindications": [
-      "Acute psychosis",
-      "Severe dissociation without stabilization"
-    ],
-    "safety_profile": "Generally safe; may temporarily increase distress as traumatic memories are revisited.",
-    "evidence_level": "Moderate to high—supported by randomized controlled trials across diverse trauma populations.",
-    "research_support": "Strong evidence for effectiveness with refugees, survivors of war, and victims of interpersonal violence.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd-symptom-reduction": 4,
-      "trauma-integration": 5,
-      "depression-reduction": 3,
-      "anxiety-reduction": 3,
-      "overall-tolerability": 4
+      "narrative therapy",
+      "evidence-based",
+      "complex trauma",
+      "survivors of violence",
+      "refugees"
+    ]
+  },
+  "summary": "Narrative Exposure Therapy (NET) is a short-term, trauma-focused therapy designed to help individuals process multiple traumatic experiences by constructing a chronological life narrative that integrates traumatic memories into a coherent story.",
+  "description": "Narrative Exposure Therapy (NET) is an evidence-based, short-term therapeutic approach specifically developed for survivors of complex trauma, including war, torture, natural disasters, and chronic interpersonal violence. The therapy guides individuals in constructing a detailed chronological narrative of their entire life, emphasizing traumatic experiences but contextualizing them within the broader scope of positive and neutral life events. By externalizing and contextualizing trauma memories, NET aims to reduce intrusive symptoms, foster emotional integration, and restore continuity in personal identity. It is particularly effective in populations with cumulative trauma and is suitable for group or individual delivery.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-traumatic stress disorder (PTSD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "complex-trauma",
+          "condition_name": "Complex trauma",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-ptsd",
+          "condition_name": "Complex PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-depression-and-anxiety",
+          "condition_name": "Trauma-related depression and anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "identity-integration-in-fragmented-trauma-survivors",
+          "condition_name": "Identity integration in fragmented trauma survivors",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to high—supported by randomized controlled trials across diverse trauma populations.",
+      "efficacy_ratings": {
+        "ptsd-symptom-reduction": {
+          "rating": 4
+        },
+        "trauma-integration": {
+          "rating": 5
+        },
+        "depression-reduction": {
+          "rating": 3
+        },
+        "anxiety-reduction": {
+          "rating": 3
+        },
+        "overall-tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Strong evidence for effectiveness with refugees, survivors of war, and victims of interpersonal violence."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–16 sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Teletherapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; may temporarily increase distress as traumatic memories are revisited.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary distress"
+        },
+        {
+          "effect": "Heightened anxiety when recounting trauma"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Re-traumatization if not adequately supported"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment preventing narrative construction",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dissociation requiring prior stabilization",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unstable living environment without safety",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual therapy, Group therapy",
+        "key_techniques": [
+          "Trauma-focused",
+          "Narrative approaches"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in, review of emotional stability and safety.",
+          "during_session": "Narrative construction and detailed exploration of traumatic events with therapist support.",
+          "post_session": "Review of progress, grounding exercises, planning for self-care between sessions."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Mental health professionals trained in NET protocols"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -228,6 +320,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Schauer, M., Neuner, F., & Elbert, T. (2011). Narrative Exposure Therapy.",
+      "url": "https://www.cambridge.org/core/books/narrative-exposure-therapy/6DCD18482D3A1E930F6C6CF7E2677D97"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "American Psychological Association – Narrative Exposure Therapy",
+      "url": "https://www.apa.org/ptsd-guideline/treatments/narrative-exposure"
+    }
+  ],
   "seo": {
     "title": "Narrative Exposure Therapy (NET) | Trauma-Focused Therapy for PTSD & Complex Trauma",
     "description": "Narrative Exposure Therapy (NET) helps survivors of multiple traumas process and integrate memories into a coherent life story. Evidence-based for PTSD, refugees, and war survivors.",
@@ -240,5 +346,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to high—supported by randomized controlled trials across diverse trauma populations."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to high—supported by randomized controlled trials across diverse trauma populations."
+    ]
   }
 }

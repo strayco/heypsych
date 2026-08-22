@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "turkey-tail-mushroom",
-  "type": "supplement",
-  "name": "Turkey Tail Mushroom",
-  "summary": "Turkey Tail (Trametes versicolor) is a medicinal mushroom rich in polysaccharopeptides like PSK and PSP, studied for immune support, gut health, and potential adjunctive cancer therapy.",
-  "description": "Turkey Tail (Trametes versicolor) is a widely distributed medicinal mushroom traditionally used in Asian medicine. It contains bioactive compounds such as polysaccharopeptide (PSP) and polysaccharide-K (PSK), which have immunomodulatory, antioxidant, and prebiotic properties. Clinical studies, particularly in Japan and China, have investigated PSK as an adjunctive cancer therapy with evidence of improved survival in some cancers. Turkey Tail is also studied for supporting gut microbiome health, immune function, and resilience against infections, though more high-quality human trials are needed.",
-  "category": "supplements",
-  "tags": [
-    "mushroom",
-    "immune support",
-    "cancer adjunct",
-    "gut health"
-  ],
-  "metadata": {
-    "compound_type": "Medicinal mushroom",
-    "natural_source": "Fruiting body and mycelium of Trametes versicolor",
+  "identity": {
+    "slug": "turkey-tail-mushroom",
+    "name": "Turkey Tail Mushroom",
+    "brand_names": [
+      "Turkey Tail",
+      "PSK",
+      "PSP"
+    ],
+    "aliases": [
+      "Coriolus versicolor",
+      "Yun Zhi",
+      "Kawaratake"
+    ],
+    "wikidata_qid": "Q219149"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Oncology",
       "Immunology",
@@ -25,74 +29,160 @@
       "Prebiotic",
       "Antioxidant"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Dietary Supplement (PSK is prescription in Japan)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Turkey Tail",
-      "PSK",
-      "PSP"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement in the U.S.; PSK approved in Japan as adjunctive cancer therapy",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Oncology",
-      "Immunology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q219149"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Adjunctive therapy in cancer (e.g., gastric, colorectal, breast, lung)",
-      "Immune system support",
-      "Gut microbiome balance"
-    ],
-    "off_label_uses": [
-      "Viral infections (limited evidence)",
-      "Chronic fatigue and immune-related conditions"
-    ],
-    "contraindications": [
-      "Immunosuppressive therapy (theoretical antagonism)",
-      "Known mushroom allergies"
-    ],
-    "monitoring_required": [
-      "Immune markers if used adjunctively with cancer therapy",
-      "GI tolerance"
-    ],
-    "efficacy_rating": {
-      "cancer_adjuvant": 4,
-      "immune_support": 3,
-      "gut_health": 3,
-      "general_wellness": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Turkey Tail",
-      "Trametes versicolor",
-      "PSK",
-      "PSP"
-    ],
-    "synonyms": [
-      "Coriolus versicolor",
-      "Yun Zhi",
-      "Kawaratake"
-    ],
-    "common_misspellings": [
-      "turky tail",
-      "turkeytail mushroom"
+    "tags": [
+      "mushroom",
+      "immune support",
+      "cancer adjunct",
+      "gut health"
     ]
+  },
+  "summary": "Turkey Tail (Trametes versicolor) is a medicinal mushroom rich in polysaccharopeptides like PSK and PSP, studied for immune support, gut health, and potential adjunctive cancer therapy.",
+  "description": "Turkey Tail (Trametes versicolor) is a widely distributed medicinal mushroom traditionally used in Asian medicine. It contains bioactive compounds such as polysaccharopeptide (PSP) and polysaccharide-K (PSK), which have immunomodulatory, antioxidant, and prebiotic properties. Clinical studies, particularly in Japan and China, have investigated PSK as an adjunctive cancer therapy with evidence of improved survival in some cancers. Turkey Tail is also studied for supporting gut microbiome health, immune function, and resilience against infections, though more high-quality human trials are needed.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "adjunctive-therapy-in-cancer-e-g-gastric-colorectal-breast-lung",
+          "condition_name": "Adjunctive therapy in cancer (e.g., gastric, colorectal, breast, lung)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "immune-system-support",
+          "condition_name": "Immune system support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "gut-microbiome-balance",
+          "condition_name": "Gut microbiome balance",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "viral-infections-limited-evidence",
+          "condition_name": "Viral infections (limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "chronic-fatigue-and-immune-related-conditions",
+          "condition_name": "Chronic fatigue and immune-related conditions",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cancer_adjuvant": {
+          "rating": 4
+        },
+        "immune_support": {
+          "rating": 3
+        },
+        "gut_health": {
+          "rating": 3
+        },
+        "general_wellness": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Digestive upset"
+        },
+        {
+          "effect": "Darkened stool"
+        },
+        {
+          "effect": "Gas or bloating"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare allergic reactions"
+        },
+        {
+          "risk": "Immune overstimulation in sensitive individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Immunosuppressive therapy (theoretical antagonism)"
+        },
+        {
+          "contraindication": "Known mushroom allergies"
+        }
+      ],
+      "precautions": [
+        "May interfere with immunosuppressant medications.",
+        "Not a substitute for standard cancer treatments.",
+        "Safety in pregnancy and breastfeeding not established."
+      ],
+      "interactions": [
+        {
+          "interactant": "Chemotherapy",
+          "mechanism": "Potentially synergistic",
+          "action": "Used as adjunct in clinical protocols (esp. in Japan)"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "Reduced efficacy of immunosuppressants",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "Other mushroom supplements",
+          "mechanism": "Additive immune effects",
+          "action": "Monitor response"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Immune function in oncology patients"
+        },
+        {
+          "parameter": "Gastrointestinal tolerance"
+        },
+        {
+          "parameter": "Allergic responses"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid unless medically supervised",
+        "lactation": "Unknown safety",
+        "pediatric": "Not well studied; avoid outside clinical trials",
+        "geriatric": "Generally safe but monitor for digestive tolerance"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Medicinal mushroom",
+        "natural_source": "Fruiting body and mycelium of Trametes versicolor",
+        "regulatory_notes": "Dietary supplement in the U.S.; PSK approved in Japan as adjunctive cancer therapy"
+      }
+    }
   },
   "sections": [
     {
@@ -217,6 +307,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Turkey Tail Mushroom",
+      "url": "https://www.nccih.nih.gov/health/turkey-tail"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Eliza WL, et al. Clinical trials of Coriolus versicolor PSP in cancer. Int J Med Mushrooms. 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23257135/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "PSK adjunctive cancer therapy (Meta-analysis)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22219181/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Turkey Tail",
+      "Trametes versicolor",
+      "PSK",
+      "PSP"
+    ],
+    "synonyms": [
+      "Coriolus versicolor",
+      "Yun Zhi",
+      "Kawaratake"
+    ],
+    "common_misspellings": [
+      "turky tail",
+      "turkeytail mushroom"
+    ]
+  },
   "seo": {
     "title": "Turkey Tail Mushroom – Immune & Cancer Support (PSK, PSP)",
     "description": "Turkey Tail (Trametes versicolor) is a medicinal mushroom studied for immune support, gut health, and adjunctive cancer therapy through compounds like PSK and PSP.",

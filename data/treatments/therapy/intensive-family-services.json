@@ -1,91 +1,175 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "intensive-family-services",
-  "type": "therapy",
-  "name": "Intensive Family Services",
-  "summary": "A family-centered, community-based therapeutic approach providing intensive, short-term support to families in crisis or with children at risk of out-of-home placement.",
-  "description": "Intensive Family Services (IFS) are comprehensive, home- or community-based interventions designed to stabilize families in crisis, prevent unnecessary foster care or residential placement, and strengthen family functioning. These services typically involve frequent contact with families, case management, counseling, parenting support, and coordination with schools and community agencies. IFS models draw from evidence-based family therapy approaches, crisis intervention, and parent training to address safety, behavioral, and relational concerns.",
-  "category": "therapy/family",
-  "tags": [
-    "family-therapy",
-    "intensive-services",
-    "crisis-intervention",
-    "parenting-support",
-    "child-welfare"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "intensive-family-services",
+    "name": "Intensive Family Services"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "Case management",
       "Crisis intervention"
     ],
-    "treatment_types": [
-      "Home-based",
-      "Community-based",
-      "Short-term intensive therapy"
-    ],
-    "categories": [
-      "Family preservation",
-      "Child protection",
-      "Parenting interventions"
-    ],
-    "delivery_methods": [
-      "In-home sessions",
-      "Community outreach",
-      "Telehealth (sometimes)"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None, aside from therapy materials"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Parents",
-      "Families"
-    ],
-    "session_duration": "Varies (often 1–2 hours)",
-    "treatment_duration": [
-      "4–12 weeks (can be extended)"
-    ],
-    "specialty_areas": [
-      "Child welfare",
-      "Family crisis stabilization",
-      "Parenting skill development",
-      "Juvenile justice diversion"
+    "tags": [
+      "family-therapy",
+      "intensive-services",
+      "crisis-intervention",
+      "parenting-support",
+      "child-welfare"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Families at risk of child removal",
-      "Severe parent-child conflict",
-      "Juvenile justice involvement",
-      "Behavioral crises at home"
-    ],
-    "conditions_treated": [
-      "Family dysfunction",
-      "Child and adolescent behavior disorders",
-      "Parental stress and skill deficits",
-      "Crisis-related emotional problems"
-    ],
-    "off_label_uses": [
-      "Support for reintegration after foster care or residential treatment",
-      "Prevention of homelessness in families with children"
-    ],
-    "contraindications": [
-      "Families unwilling to participate in intensive, home-based work",
-      "Severe psychiatric conditions requiring inpatient care"
-    ],
-    "safety_profile": "Safe, supportive, and non-invasive, though emotionally challenging for some families.",
-    "evidence_level": "Moderate—supported by community-based studies and program evaluations, overlaps with evidence-based family preservation and multisystemic therapy models.",
-    "research_support": "Studies show effectiveness in preventing child out-of-home placement, reducing behavior problems, and improving family functioning.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-functioning": 4,
-      "child-behavior": 4,
-      "crisis-stabilization": 5,
-      "overall-tolerability": 4
+  "summary": "A family-centered, community-based therapeutic approach providing intensive, short-term support to families in crisis or with children at risk of out-of-home placement.",
+  "description": "Intensive Family Services (IFS) are comprehensive, home- or community-based interventions designed to stabilize families in crisis, prevent unnecessary foster care or residential placement, and strengthen family functioning. These services typically involve frequent contact with families, case management, counseling, parenting support, and coordination with schools and community agencies. IFS models draw from evidence-based family therapy approaches, crisis intervention, and parent training to address safety, behavioral, and relational concerns.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "families-at-risk-of-child-removal",
+          "condition_name": "Families at risk of child removal",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "severe-parent-child-conflict",
+          "condition_name": "Severe parent-child conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "juvenile-justice-involvement",
+          "condition_name": "Juvenile justice involvement",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "behavioral-crises-at-home",
+          "condition_name": "Behavioral crises at home",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "family-dysfunction",
+          "condition_name": "Family dysfunction",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "child-and-adolescent-behavior-disorders",
+          "condition_name": "Child and adolescent behavior disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parental-stress-and-skill-deficits",
+          "condition_name": "Parental stress and skill deficits",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "crisis-related-emotional-problems",
+          "condition_name": "Crisis-related emotional problems",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-for-reintegration-after-foster-care-or-residential-treatment",
+          "condition_name": "Support for reintegration after foster care or residential treatment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "prevention-of-homelessness-in-families-with-children",
+          "condition_name": "Prevention of homelessness in families with children",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—supported by community-based studies and program evaluations, overlaps with evidence-based family preservation and multisystemic therapy models.",
+      "efficacy_ratings": {
+        "family-functioning": {
+          "rating": 4
+        },
+        "child-behavior": {
+          "rating": 4
+        },
+        "crisis-stabilization": {
+          "rating": 5
+        },
+        "overall-tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Studies show effectiveness in preventing child out-of-home placement, reducing behavior problems, and improving family functioning."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "4–12 weeks (can be extended)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-home sessions",
+        "Community outreach",
+        "Telehealth (sometimes)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Varies (often 1–2 hours)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, supportive, and non-invasive, though emotionally challenging for some families.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional stress during crisis discussions"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Family dropout due to intensity of services"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe mental illness or safety risks requiring inpatient stabilization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Family unwillingness to engage in home-based work",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Home-based, Community-based, Short-term intensive therapy",
+        "key_techniques": [
+          "Family preservation",
+          "Child protection",
+          "Parenting interventions"
+        ],
+        "session_structure": {
+          "pre_session": "Review of safety and progress since last visit.",
+          "during_session": "Therapy, skill-building, problem-solving, and crisis management.",
+          "post_session": "Homework assignments, coordination with schools or agencies."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists",
+            "Case managers",
+            "Social workers with training in crisis intervention"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -241,6 +325,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Fraser, M. W., et al. (1997). Intensive Family Preservation Services: An Experimental Evaluation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9112703/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Families in Society: The Journal of Contemporary Social Services",
+      "url": "https://journals.sagepub.com/home/fis"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "An Overview of Intensive Family Preservation Services",
+      "url": "https://www.childwelfare.gov/topics/supporting/families/family-preservation/"
+    }
+  ],
   "seo": {
     "title": "Intensive Family Services | Home-Based Crisis & Family Preservation Therapy",
     "description": "Intensive Family Services provide short-term, home-based therapy and support to stabilize families in crisis, prevent child removal, and strengthen family functioning.",
@@ -253,5 +357,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—supported by community-based studies and program evaluations, overlaps with evidence-based family preservation and multisystemic therapy models."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—supported by community-based studies and program evaluations, overlaps with evidence-based family preservation and multisystemic therapy models."
+    ]
   }
 }

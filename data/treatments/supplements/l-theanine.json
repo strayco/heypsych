@@ -1,21 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "l-theanine",
-  "type": "supplement",
-  "name": "L-Theanine",
-  "summary": "L-theanine is an amino acid found primarily in green tea leaves, known for its calming, anxiolytic, and focus-enhancing properties without sedation.",
-  "description": "L-theanine is a naturally occurring amino acid found in tea (Camellia sinensis) and certain mushrooms. It is best known for promoting relaxation without drowsiness, supporting stress reduction, and enhancing attention and cognitive performance, especially when combined with caffeine. Mechanistically, L-theanine influences neurotransmitter activity, including GABA, serotonin, and dopamine, and may modulate alpha brain waves, contributing to its calming yet alertness-promoting effects. It is generally safe, well tolerated, and commonly used as a nootropic and anxiolytic supplement.",
-  "category": "supplements",
-  "tags": [
-    "anxiolytic",
-    "nootropic",
-    "cognitive support",
-    "relaxation",
-    "sleep support"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid derivative",
-    "natural_source": "Green tea (Camellia sinensis)",
+  "identity": {
+    "slug": "l-theanine",
+    "name": "L-Theanine",
+    "brand_names": [
+      "Suntheanine",
+      "TheaCalm"
+    ],
+    "aliases": [
+      "gamma-glutamylethylamide",
+      "N5-ethyl-L-glutamine"
+    ],
+    "wikidata_qid": "Q420576"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Anxiety Reduction",
       "Cognitive Enhancement",
@@ -26,75 +27,163 @@
       "Dopamine modulation",
       "Alpha brain wave enhancement"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Suntheanine",
-      "TheaCalm"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical treatment)",
-    "age_groups": [
-      "Adult",
-      "Adolescent"
-    ],
-    "treatment_duration": [
-      "Acute use",
-      "Chronic supplementation"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q420576"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild anxiety and stress",
-      "Sleep initiation and quality improvement",
-      "Attention and focus support"
-    ],
-    "off_label_uses": [
-      "Adjunctive therapy for ADHD",
-      "Adjunctive therapy for depression",
-      "Support for nicotine or caffeine withdrawal"
-    ],
-    "contraindications": [
-      "Hypersensitivity to L-theanine or tea extracts",
-      "Use with sedative medications without medical supervision"
-    ],
-    "monitoring_required": [
-      "Subjective mood and anxiety symptoms",
-      "Sleep quality",
-      "Interactions with sedative or stimulant use"
-    ],
-    "efficacy_rating": {
-      "anxiolytic": 4,
-      "cognitive_support": 3,
-      "sleep_support": 3,
-      "mood_support": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "L-theanine supplement",
-      "Suntheanine",
-      "green tea amino acid"
-    ],
-    "synonyms": [
-      "gamma-glutamylethylamide",
-      "N5-ethyl-L-glutamine"
-    ],
-    "common_misspellings": [
-      "l theanin",
-      "letheanine",
-      "theanine"
+    "tags": [
+      "anxiolytic",
+      "nootropic",
+      "cognitive support",
+      "relaxation",
+      "sleep support"
     ]
+  },
+  "summary": "L-theanine is an amino acid found primarily in green tea leaves, known for its calming, anxiolytic, and focus-enhancing properties without sedation.",
+  "description": "L-theanine is a naturally occurring amino acid found in tea (Camellia sinensis) and certain mushrooms. It is best known for promoting relaxation without drowsiness, supporting stress reduction, and enhancing attention and cognitive performance, especially when combined with caffeine. Mechanistically, L-theanine influences neurotransmitter activity, including GABA, serotonin, and dopamine, and may modulate alpha brain waves, contributing to its calming yet alertness-promoting effects. It is generally safe, well tolerated, and commonly used as a nootropic and anxiolytic supplement.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-anxiety-and-stress",
+          "condition_name": "Mild anxiety and stress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "sleep-initiation-and-quality-improvement",
+          "condition_name": "Sleep initiation and quality improvement",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "attention-and-focus-support",
+          "condition_name": "Attention and focus support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-therapy-for-adhd",
+          "condition_name": "Adjunctive therapy for ADHD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-therapy-for-depression",
+          "condition_name": "Adjunctive therapy for depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-for-nicotine-or-caffeine-withdrawal",
+          "condition_name": "Support for nicotine or caffeine withdrawal",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiolytic": {
+          "rating": 4
+        },
+        "cognitive_support": {
+          "rating": 3
+        },
+        "sleep_support": {
+          "rating": 3
+        },
+        "mood_support": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute use; Chronic supplementation"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild drowsiness"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "GI upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypotension in sensitive individuals (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to L-theanine or tea extracts"
+        },
+        {
+          "contraindication": "Use with sedative medications without medical supervision"
+        }
+      ],
+      "precautions": [
+        "Use cautiously with sedative medications due to additive effects.",
+        "May lower blood pressure; monitor in hypotensive patients.",
+        "Generally considered safe, but long-term safety in pregnancy and lactation not established."
+      ],
+      "interactions": [
+        {
+          "interactant": "Caffeine",
+          "mechanism": "Enhances focus and reduces jitteriness",
+          "action": "Combination often beneficial"
+        },
+        {
+          "interactant": "Sedatives (benzodiazepines, zolpidem)",
+          "mechanism": "Additive sedation",
+          "action": "Monitor carefully"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Possible additive blood pressure lowering",
+          "action": "Monitor blood pressure"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Subjective anxiety and stress levels"
+        },
+        {
+          "parameter": "Sleep quality"
+        },
+        {
+          "parameter": "Blood pressure in hypotensive patients"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safety not well studied; avoid unless supervised by a clinician",
+        "lactation": "Limited data; avoid unless necessary",
+        "pediatric": "Has been studied in ADHD with some benefit; use under medical guidance",
+        "geriatric": "Generally safe; monitor for additive sedative effects"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid derivative",
+        "natural_source": "Green tea (Camellia sinensis)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical treatment)"
+      }
+    }
   },
   "sections": [
     {
@@ -215,6 +304,36 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH ODS – L-Theanine",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6711035/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com – L-Theanine",
+      "url": "https://examine.com/supplements/theanine/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "L-theanine supplement",
+      "Suntheanine",
+      "green tea amino acid"
+    ],
+    "synonyms": [
+      "gamma-glutamylethylamide",
+      "N5-ethyl-L-glutamine"
+    ],
+    "common_misspellings": [
+      "l theanin",
+      "letheanine",
+      "theanine"
+    ]
+  },
   "seo": {
     "title": "L-Theanine – Natural Anxiolytic and Nootropic",
     "description": "L-theanine is an amino acid from green tea that promotes relaxation, focus, and sleep quality. Learn about its benefits, dosing, safety, and interactions.",

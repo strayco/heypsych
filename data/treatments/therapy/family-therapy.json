@@ -1,92 +1,179 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "family-therapy",
-  "type": "therapy",
-  "name": "Family Therapy",
-  "summary": "A form of psychotherapy that helps families improve communication, resolve conflicts, and strengthen relationships by addressing patterns of interaction within the family system.",
-  "description": "Family Therapy is a structured therapeutic approach that focuses on improving the functioning of families by examining relational dynamics and communication patterns. Unlike individual therapy, family therapy involves multiple family members working together with a therapist to identify problematic interactions and develop healthier ways of relating. It may draw on systemic, structural, strategic, or integrative models depending on the family's needs. The goal is to support family members in understanding one another, resolving conflicts, and enhancing coping strategies for challenges such as mental illness, behavioral problems, or life transitions.",
-  "category": "therapy/family",
-  "tags": [
-    "family-therapy",
-    "systems-therapy",
-    "communication",
-    "relationships",
-    "conflict-resolution"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "family-therapy",
+    "name": "Family Therapy",
+    "wikidata_qid": "Q950931"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "Systems therapy",
       "Group therapy"
     ],
-    "treatment_types": [
-      "Psychotherapy"
-    ],
-    "categories": [
-      "Family",
-      "Relationships",
-      "Mental health support"
-    ],
-    "delivery_methods": [
-      "In-person sessions",
-      "Teletherapy",
-      "Group family sessions"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None beyond therapist space or teletherapy platform"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Families"
-    ],
-    "session_duration": "50–90 minutes",
-    "treatment_duration": [
-      "Short-term (8–12 sessions)",
-      "Long-term (several months or more)"
-    ],
-    "specialty_areas": [
-      "Family conflict",
-      "Parent-child relationships",
-      "Divorce and separation",
-      "Chronic illness in family",
-      "Mental health support"
-    ],
-    "wikidata_qid": "Q950931"
+    "tags": [
+      "family-therapy",
+      "systems-therapy",
+      "communication",
+      "relationships",
+      "conflict-resolution"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Family conflict",
-      "Communication difficulties",
-      "Parenting challenges",
-      "Adjustment to life transitions"
-    ],
-    "conditions_treated": [
-      "Behavioral problems in children",
-      "Mood disorders within family context",
-      "Substance use disorders affecting family",
-      "Relationship stress"
-    ],
-    "off_label_uses": [
-      "Support during medical treatment of a family member",
-      "Improving caregiver resilience"
-    ],
-    "contraindications": [
-      "Active domestic violence without safeguards",
-      "Unwilling participation of critical family members"
-    ],
-    "safety_profile": "Generally safe, but may temporarily heighten tension when discussing sensitive issues.",
-    "evidence_level": "Strong—well-supported across multiple clinical contexts.",
-    "research_support": "Meta-analyses show family therapy improves communication, reduces relapse in schizophrenia, and enhances outcomes in adolescent behavioral disorders.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-communication": 5,
-      "relationship-strengthening": 4,
-      "behavioral-outcomes": 4,
-      "overall_tolerability": 5
+  "summary": "A form of psychotherapy that helps families improve communication, resolve conflicts, and strengthen relationships by addressing patterns of interaction within the family system.",
+  "description": "Family Therapy is a structured therapeutic approach that focuses on improving the functioning of families by examining relational dynamics and communication patterns. Unlike individual therapy, family therapy involves multiple family members working together with a therapist to identify problematic interactions and develop healthier ways of relating. It may draw on systemic, structural, strategic, or integrative models depending on the family's needs. The goal is to support family members in understanding one another, resolving conflicts, and enhancing coping strategies for challenges such as mental illness, behavioral problems, or life transitions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "communication-difficulties",
+          "condition_name": "Communication difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parenting-challenges",
+          "condition_name": "Parenting challenges",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjustment-to-life-transitions",
+          "condition_name": "Adjustment to life transitions",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "behavioral-problems-in-children",
+          "condition_name": "Behavioral problems in children",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "mood-disorders-within-family-context",
+          "condition_name": "Mood disorders within family context",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders-affecting-family",
+          "condition_name": "Substance use disorders affecting family",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "relationship-stress",
+          "condition_name": "Relationship stress",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-during-medical-treatment-of-a-family-member",
+          "condition_name": "Support during medical treatment of a family member",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "improving-caregiver-resilience",
+          "condition_name": "Improving caregiver resilience",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—well-supported across multiple clinical contexts.",
+      "efficacy_ratings": {
+        "family-communication": {
+          "rating": 5
+        },
+        "relationship-strengthening": {
+          "rating": 4
+        },
+        "behavioral-outcomes": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Meta-analyses show family therapy improves communication, reduces relapse in schizophrenia, and enhances outcomes in adolescent behavioral disorders."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term (8–12 sessions); Long-term (several months or more)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person sessions",
+        "Teletherapy",
+        "Group family sessions"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe, but may temporarily heighten tension when discussing sensitive issues.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when discussing conflicts"
+        },
+        {
+          "effect": "Temporary increase in tension"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict without therapist mediation"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active, ongoing domestic violence",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "One or more key members refusing to participate",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Psychotherapy",
+        "key_techniques": [
+          "Family",
+          "Relationships",
+          "Mental health support"
+        ],
+        "session_structure": {
+          "pre_session": "Therapist reviews previous progress and checks in with all family members.",
+          "during_session": "Active work on communication, role dynamics, and problem-solving.",
+          "post_session": "Summary of progress, feedback, and practice assignments."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists",
+            "Marriage and family therapists (MFTs)",
+            "Clinical psychologists with systemic training"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -240,6 +327,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Carr A. (2009). The Effectiveness of Family Therapy and Systemic Interventions.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19591613/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Barbato & D'Avanzo (2000). Family interventions in schizophrenia and related disorders.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11191705/"
+    }
+  ],
   "seo": {
     "title": "Family Therapy | Improve Communication & Resolve Conflict",
     "description": "Family Therapy helps families resolve conflict, improve communication, and strengthen relationships through systemic and relational approaches.",
@@ -252,5 +353,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—well-supported across multiple clinical contexts."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—well-supported across multiple clinical contexts."
+    ]
   }
 }

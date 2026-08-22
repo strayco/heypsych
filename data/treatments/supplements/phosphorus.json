@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phosphorus",
-  "type": "supplement",
-  "name": "Phosphorus",
-  "summary": "Phosphorus is an essential mineral involved in bone health, cellular energy production, and neurotransmission, though supplementation is rarely needed outside of deficiency.",
-  "description": "Phosphorus is the second most abundant mineral in the human body after calcium, with approximately 85% stored in bones and teeth as hydroxyapatite. It plays critical roles in energy metabolism (as ATP and phosphocreatine), cell signaling, acid-base balance, and neuronal function. Because phosphorus is widely available in the diet (meat, dairy, legumes, nuts, grains), deficiencies are uncommon except in cases of malnutrition, chronic alcoholism, or certain medical conditions. Supplementation may be considered in hypophosphatemia or specific clinical scenarios, but excessive intake can be harmful, particularly in kidney disease. Phosphorus supplements are generally used under medical supervision.",
-  "category": "supplements",
-  "tags": [
-    "mineral",
-    "bone health",
-    "energy metabolism",
-    "neurotransmission"
-  ],
-  "metadata": {
-    "compound_type": "Essential mineral",
-    "natural_source": "Meat, fish, dairy, legumes, nuts, seeds, grains",
+  "identity": {
+    "slug": "phosphorus",
+    "name": "Phosphorus",
+    "brand_names": [
+      "K-Phos",
+      "Phospha 250",
+      "Fleet Phospho-soda"
+    ],
+    "aliases": [
+      "Phosphate",
+      "Orthophosphate"
+    ],
+    "wikidata_qid": "Q674"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Endocrinology",
       "Nephrology",
@@ -25,75 +28,162 @@
       "Bone structure support",
       "Energy production"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter and Prescription (depending on form/dose)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "K-Phos",
-      "Phospha 250",
-      "Fleet Phospho-soda"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for psychiatric or general health indications)",
-    "age_groups": [
-      "Adult",
-      "Pediatric (under medical supervision)"
-    ],
-    "treatment_duration": [
-      "Short-term (deficiency correction)",
-      "Long-term (if medically required)"
-    ],
-    "specialty_areas": [
-      "Nephrology",
-      "Endocrinology",
-      "Nutrition"
-    ],
-    "wikidata_qid": "Q674"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Correction of hypophosphatemia",
-      "Support of bone and mineral balance",
-      "Adjunctive use in refeeding syndrome"
-    ],
-    "off_label_uses": [
-      "Potential adjunct in energy metabolism support (limited evidence)",
-      "Bone health in special populations"
-    ],
-    "contraindications": [
-      "Severe kidney disease",
-      "Hyperphosphatemia",
-      "Hypoparathyroidism"
-    ],
-    "monitoring_required": [
-      "Serum phosphate levels",
-      "Kidney function",
-      "Calcium-phosphate balance"
-    ],
-    "efficacy_rating": {
-      "bone_health": 4,
-      "energy_metabolism": 3,
-      "psychiatric_applications": 1,
-      "nutritional_support": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Phosphorus supplement",
-      "phosphate",
-      "hypophosphatemia treatment"
-    ],
-    "synonyms": [
-      "Phosphate",
-      "Orthophosphate"
-    ],
-    "common_misspellings": [
-      "phosphorous",
-      "fosforus"
+    "tags": [
+      "mineral",
+      "bone health",
+      "energy metabolism",
+      "neurotransmission"
     ]
+  },
+  "summary": "Phosphorus is an essential mineral involved in bone health, cellular energy production, and neurotransmission, though supplementation is rarely needed outside of deficiency.",
+  "description": "Phosphorus is the second most abundant mineral in the human body after calcium, with approximately 85% stored in bones and teeth as hydroxyapatite. It plays critical roles in energy metabolism (as ATP and phosphocreatine), cell signaling, acid-base balance, and neuronal function. Because phosphorus is widely available in the diet (meat, dairy, legumes, nuts, grains), deficiencies are uncommon except in cases of malnutrition, chronic alcoholism, or certain medical conditions. Supplementation may be considered in hypophosphatemia or specific clinical scenarios, but excessive intake can be harmful, particularly in kidney disease. Phosphorus supplements are generally used under medical supervision.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "correction-of-hypophosphatemia",
+          "condition_name": "Correction of hypophosphatemia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "support-of-bone-and-mineral-balance",
+          "condition_name": "Support of bone and mineral balance",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunctive-use-in-refeeding-syndrome",
+          "condition_name": "Adjunctive use in refeeding syndrome",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "potential-adjunct-in-energy-metabolism-support-limited-evidence",
+          "condition_name": "Potential adjunct in energy metabolism support (limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "bone-health-in-special-populations",
+          "condition_name": "Bone health in special populations",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "bone_health": {
+          "rating": 4
+        },
+        "energy_metabolism": {
+          "rating": 3
+        },
+        "psychiatric_applications": {
+          "rating": 1
+        },
+        "nutritional_support": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term (deficiency correction); Long-term (if medically required)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Diarrhea"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hyperphosphatemia with kidney injury"
+        },
+        {
+          "risk": "Ectopic calcification"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe kidney disease"
+        },
+        {
+          "contraindication": "Hyperphosphatemia"
+        },
+        {
+          "contraindication": "Hypoparathyroidism"
+        }
+      ],
+      "precautions": [
+        "Use caution in chronic kidney disease, as phosphorus retention can worsen outcomes.",
+        "Avoid over-the-counter use without monitoring serum phosphate."
+      ],
+      "interactions": [
+        {
+          "interactant": "Calcium supplements",
+          "mechanism": "May impair absorption balance",
+          "action": "Stagger dosing"
+        },
+        {
+          "interactant": "Antacids (aluminum, magnesium, calcium-based)",
+          "mechanism": "May bind phosphate and reduce absorption",
+          "action": "Avoid concurrent use"
+        },
+        {
+          "interactant": "ACE inhibitors / ARBs",
+          "mechanism": "May increase risk of hyperkalemia when combined with potassium phosphate salts",
+          "action": "Monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum phosphate"
+        },
+        {
+          "parameter": "Serum calcium"
+        },
+        {
+          "parameter": "Kidney function (BUN/Creatinine)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally considered safe in normal dietary intake; supplementation only if deficient",
+        "lactation": "Safe in dietary amounts; supplementation requires supervision",
+        "pediatric": "May be used under strict clinical supervision",
+        "geriatric": "Monitor kidney function closely; risk of phosphate retention increases with age"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential mineral",
+        "natural_source": "Meat, fish, dairy, legumes, nuts, seeds, grains",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for psychiatric or general health indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -218,6 +308,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Phosphorus",
+      "url": "https://ods.od.nih.gov/factsheets/Phosphorus-HealthProfessional/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Calvo MS, et al. Dietary phosphorus, kidney disease, and cardiovascular health. Am J Clin Nutr. 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21123438/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Shaw JH, et al. Phosphate supplementation in hypophosphatemia. Clin Endocrinol. 1984",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6421860/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Phosphorus supplement",
+      "phosphate",
+      "hypophosphatemia treatment"
+    ],
+    "synonyms": [
+      "Phosphate",
+      "Orthophosphate"
+    ],
+    "common_misspellings": [
+      "phosphorous",
+      "fosforus"
+    ]
+  },
   "seo": {
     "title": "Phosphorus – Essential Mineral for Bone, Energy, and Cellular Health",
     "description": "Phosphorus is an essential mineral for bone strength, energy production, and cell signaling. Learn about supplementation, uses, dosing, and safety.",

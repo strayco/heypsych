@@ -1,92 +1,159 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "multimodal-antidepressants",
-  "type": "investigational",
-  "name": "Multimodal Antidepressants",
-  "summary": "Multimodal antidepressants combine serotonin reuptake inhibition with additional receptor activity to produce broader therapeutic effects. These agents are designed to improve efficacy and tolerability compared to traditional SSRIs or SNRIs.",
-  "description": "Unlike traditional SSRIs and SNRIs, multimodal antidepressants act on multiple neurotransmitter systems simultaneously. For example, vortioxetine and vilazodone not only inhibit serotonin reuptake but also directly modulate serotonin receptor subtypes. This approach aims to enhance antidepressant efficacy, improve cognitive symptoms, and reduce side effects like sexual dysfunction. Research continues to evaluate the comparative benefits of these newer medications over conventional antidepressants.",
-  "category": "investigational/pharmacological",
-  "tags": [
-    "antidepressants",
-    "multimodal",
-    "vortioxetine",
-    "vilazodone",
-    "depression",
-    "cognitive symptoms"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Oral pharmacotherapy"
-    ],
-    "treatment_types": [
-      "Pharmacological treatment"
-    ],
-    "categories": [
-      "Depression",
-      "Mood disorders"
-    ],
-    "delivery_methods": [
-      "Oral tablets or capsules"
-    ],
-    "invasiveness_level": "Noninvasive",
-    "equipment_required": "Prescription and clinical monitoring",
-    "training_required": "Prescriber-level (psychiatrist, physician, nurse practitioner)",
-    "age_groups": [
-      "Adults"
-    ],
-    "session_duration": "Daily oral dosing",
-    "treatment_duration": [
-      "Chronic, ongoing treatment"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Primary care"
-    ],
-    "trial_phase": "Approved in some countries; ongoing comparative and expansion studies",
-    "regulatory_status": "FDA-approved (vortioxetine, vilazodone) for major depressive disorder"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)"
-    ],
-    "conditions_treated": [
-      "MDD",
-      "cognitive symptoms of depression"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders (exploratory)",
-      "Cognitive dysfunction in other disorders"
-    ],
-    "contraindications": [
-      "Concurrent use with MAO inhibitors",
-      "Known hypersensitivity",
-      "Caution in seizure disorders"
-    ],
-    "safety_profile": "Generally well tolerated; lower incidence of sexual side effects compared to SSRIs. Gastrointestinal upset and headache are common.",
-    "evidence_level": "Strong for MDD; emerging for cognition-related outcomes.",
-    "research_support": "Multiple RCTs supporting efficacy in depression; meta-analyses highlight potential cognitive benefits.",
-    "efficacy_rating": {
-      "MDD": 4,
-      "cognitive_symptoms": 3,
-      "safety_tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "multimodal antidepressants",
-      "vortioxetine",
-      "vilazodone",
-      "serotonin modulators"
-    ],
-    "synonyms": [
+  "identity": {
+    "slug": "multimodal-antidepressants",
+    "name": "Multimodal Antidepressants",
+    "aliases": [
       "serotonin modulators",
       "multimodal agents",
       "novel antidepressants"
-    ],
-    "common_misspellings": [
-      "multimodel antidepressants",
-      "multi modal antidepressants"
     ]
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/pharmacological",
+    "intervention_types": [
+      "Oral pharmacotherapy"
+    ],
+    "tags": [
+      "antidepressants",
+      "multimodal",
+      "vortioxetine",
+      "vilazodone",
+      "depression",
+      "cognitive symptoms"
+    ]
+  },
+  "summary": "Multimodal antidepressants combine serotonin reuptake inhibition with additional receptor activity to produce broader therapeutic effects. These agents are designed to improve efficacy and tolerability compared to traditional SSRIs or SNRIs.",
+  "description": "Unlike traditional SSRIs and SNRIs, multimodal antidepressants act on multiple neurotransmitter systems simultaneously. For example, vortioxetine and vilazodone not only inhibit serotonin reuptake but also directly modulate serotonin receptor subtypes. This approach aims to enhance antidepressant efficacy, improve cognitive symptoms, and reduce side effects like sexual dysfunction. Research continues to evaluate the comparative benefits of these newer medications over conventional antidepressants.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder-mdd",
+          "condition_name": "Major Depressive Disorder (MDD)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "mdd",
+          "condition_name": "MDD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cognitive-symptoms-of-depression",
+          "condition_name": "cognitive symptoms of depression",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders-exploratory",
+          "condition_name": "Anxiety disorders (exploratory)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-dysfunction-in-other-disorders",
+          "condition_name": "Cognitive dysfunction in other disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for MDD; emerging for cognition-related outcomes.",
+      "efficacy_ratings": {
+        "MDD": {
+          "rating": 4
+        },
+        "cognitive_symptoms": {
+          "rating": 3
+        },
+        "safety_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Multiple RCTs supporting efficacy in depression; meta-analyses highlight potential cognitive benefits."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Chronic, ongoing treatment"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Oral tablets or capsules"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Daily oral dosing"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Prescriber-level (psychiatrist, physician, nurse practitioner)"
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well tolerated; lower incidence of sexual side effects compared to SSRIs. Gastrointestinal upset and headache are common.",
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Diarrhea"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hyponatremia"
+        },
+        {
+          "risk": "Serotonin syndrome (with drug interactions)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Concurrent MAOI use",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Known hypersensitivity to drug",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Epilepsy",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe hepatic impairment",
+          "type": "relative"
+        }
+      ]
+    },
+    "access": {
+      "regulatory_status": "fda_approved"
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "procedure_type": "Oral pharmacotherapy",
+        "equipment_required": [
+          "Prescription and clinical monitoring"
+        ],
+        "session_protocol": "Daily oral administration of multimodal antidepressant (e.g., vortioxetine or vilazodone).\nClinical monitoring for efficacy and side effects.\nDose adjustments as needed."
+      }
+    }
   },
   "sections": [
     {
@@ -201,6 +268,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Cipriani A et al., 'Comparative efficacy and acceptability of 21 antidepressant drugs', The Lancet (2018)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29477251/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Katona C et al., 'Vortioxetine for cognitive dysfunction in MDD', CNS Drugs (2012)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23224623/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "multimodal antidepressants",
+      "vortioxetine",
+      "vilazodone",
+      "serotonin modulators"
+    ],
+    "synonyms": [
+      "serotonin modulators",
+      "multimodal agents",
+      "novel antidepressants"
+    ],
+    "common_misspellings": [
+      "multimodel antidepressants",
+      "multi modal antidepressants"
+    ]
+  },
   "seo": {
     "title": "Multimodal Antidepressants",
     "description": "Multimodal antidepressants like vortioxetine and vilazodone act on multiple serotonin receptors and transporters to treat depression with improved tolerability and cognitive benefits.",
@@ -213,5 +311,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for MDD; emerging for cognition-related outcomes."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for MDD; emerging for cognition-related outcomes."
+    ]
   }
 }

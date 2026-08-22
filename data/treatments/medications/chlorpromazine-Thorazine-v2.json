@@ -1,97 +1,238 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "chlorpromazine-thorazine",
-  "type": "medication",
-  "name": "Chlorpromazine",
-  "summary": "Older 'typical' antipsychotic used for schizophrenia, severe agitation, bipolar mania, intractable hiccups, and hard-to-treat nausea. Effective but carries high risk of side effects like drowsiness, movement problems, weight gain, and heart rhythm changes.",
-  "description": "Chlorpromazine is one of the earliest antipsychotic medicines. It can calm severe agitation, treat psychosis, and help with stubborn nausea, vomiting, or hiccups when other options fail. However, it has a high side-effect burden, including strong sedation, low blood pressure, movement disorders, weight gain, and possible heart rhythm changes. Modern antipsychotics are usually preferred, and chlorpromazine is generally reserved for specific situations under close monitoring.",
-  "patient_summary": "Chlorpromazine is an older antipsychotic that can be very helpful for severe agitation, psychosis, hard-to-treat nausea, or nonstop hiccups. It often makes people very sleepy at first and can cause dizziness when standing, weight gain, and muscle stiffness or tremors. It also carries heart and liver risks, especially at higher doses or in older adults. Because of this, doctors generally try newer options first and use chlorpromazine when the benefits clearly outweigh the risks.",
-  "category": "medications/antipsychotics",
-  "metadata": {
+  "identity": {
+    "slug": "chlorpromazine-thorazine",
+    "name": "Chlorpromazine",
+    "brand_names": [
+      "Chlorpromazine (generic)",
+      "TEVA-Chlorpromazine (Canada)"
+    ],
+    "wikidata_qid": "Q417169"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antipsychotics",
     "drug_classes": [
       "First-generation (typical) antipsychotic",
       "Phenothiazine",
       "Antiemetic",
       "Antimanic agent"
-    ],
-    "brand_names": [
-      "Chlorpromazine (generic)",
-      "TEVA-Chlorpromazine (Canada)"
-    ],
-    "administration_routes": [
-      "Oral (tablets, oral solution)",
-      "Intramuscular (IM)",
-      "Intravenous (IV)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1954,
-    "pharmacologic_category": "Typical antipsychotic (phenothiazine derivative)",
-    "published_date": "2025-12-08T00:00:00Z",
-    "last_updated": "2025-12-08T00:00:00Z",
-    "medical_review": {
-      "reviewed": false,
-      "review_date": null,
-      "reviewer_name": null
-    },
-    "wikidata_qid": "Q417169"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia and other psychotic disorders",
-      "Bipolar disorder – acute manic episodes",
-      "Severe agitation or aggression related to psychosis or mania",
-      "Prolonged or intractable hiccups",
-      "Severe nausea and vomiting when other treatments fail",
-      "Adjunctive treatment in tetanus"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "alternative_treatment",
-        "context": "Effective for hallucinations and delusions, but generally not first- or second-line today due to high risk of sedation, movement disorders, and metabolic side effects."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "alternative_treatment",
-        "context": "Can help control acute manic symptoms when newer antipsychotics or mood stabilizers are unavailable or poorly tolerated."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "alternative_treatment",
-        "context": "Used IM/IV in some emergency settings for severe agitation when other options are not available or appropriate."
-      },
-      {
-        "slug": "intractable-hiccups",
-        "relationship": "primary_treatment",
-        "context": "A classic option for stubborn hiccups that haven’t responded to simpler measures."
-      },
-      {
-        "slug": "nausea-and-vomiting",
-        "relationship": "alternative_treatment",
-        "context": "Sometimes used for severe, short-term nausea and vomiting, including in pregnancy when supervised by specialists and other options have failed."
+  "summary": "Older 'typical' antipsychotic used for schizophrenia, severe agitation, bipolar mania, intractable hiccups, and hard-to-treat nausea. Effective but carries high risk of side effects like drowsiness, movement problems, weight gain, and heart rhythm changes.",
+  "description": "Chlorpromazine is one of the earliest antipsychotic medicines. It can calm severe agitation, treat psychosis, and help with stubborn nausea, vomiting, or hiccups when other options fail. However, it has a high side-effect burden, including strong sedation, low blood pressure, movement disorders, weight gain, and possible heart rhythm changes. Modern antipsychotics are usually preferred, and chlorpromazine is generally reserved for specific situations under close monitoring.",
+  "patient_summary": "Chlorpromazine is an older antipsychotic that can be very helpful for severe agitation, psychosis, hard-to-treat nausea, or nonstop hiccups. It often makes people very sleepy at first and can cause dizziness when standing, weight gain, and muscle stiffness or tremors. It also carries heart and liver risks, especially at higher doses or in older adults. Because of this, doctors generally try newer options first and use chlorpromazine when the benefits clearly outweigh the risks.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "intractable-hiccups",
+          "condition_name": "Intractable Hiccups",
+          "relationship": "primary_indication",
+          "context": "A classic option for stubborn hiccups that haven’t responded to simpler measures.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "secondary_indication",
+          "context": "Effective for hallucinations and delusions, but generally not first- or second-line today due to high risk of sedation, movement disorders, and metabolic side effects."
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "secondary_indication",
+          "context": "Can help control acute manic symptoms when newer antipsychotics or mood stabilizers are unavailable or poorly tolerated."
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "secondary_indication",
+          "context": "Used IM/IV in some emergency settings for severe agitation when other options are not available or appropriate."
+        },
+        {
+          "condition_slug": "nausea-and-vomiting",
+          "condition_name": "Nausea And Vomiting",
+          "relationship": "secondary_indication",
+          "context": "Sometimes used for severe, short-term nausea and vomiting, including in pregnancy when supervised by specialists and other options have failed."
+        }
+      ]
+    },
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "For nausea and agitation, improvement may start within 30–60 minutes after oral or parenteral dosing. For psychosis or mania, meaningful improvement often appears over 1–2 weeks."
+        }
       }
-    ],
-    "contraindications": [
-      "Allergy to chlorpromazine or other phenothiazines",
-      "Coma or severe central nervous system depression",
-      "Concurrent use with large amounts of alcohol or other strong sedatives (eg, barbiturates, opioids)",
-      "History of severe reaction to phenothiazines (eg, jaundice or severe blood problems)",
-      "Uncontrolled severe heart disease or serious heart rhythm disorders",
-      "Possible Reye syndrome in children or teens (avoid)"
-    ],
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth, but a significant amount is broken down on first pass through the gut and liver.",
-      "bioavailability": "Around one-third of the swallowed dose reaches the bloodstream unchanged.",
-      "onset": "For nausea and agitation, improvement may start within 30–60 minutes after oral or parenteral dosing. For psychosis or mania, meaningful improvement often appears over 1–2 weeks.",
-      "peak_plasma": "Typically within 2–4 hours after an oral dose.",
-      "half_life": "Initial distribution half-life about 2 hours; terminal elimination around 30 hours in adults.",
-      "duration": "Single oral doses usually have noticeable effects for 4–6 hours, though some effects (like sedation and movement symptoms) can last longer.",
-      "metabolism": "Extensively broken down in the liver into multiple active and inactive metabolites.",
-      "excretion": "Mostly excreted in the urine as metabolites; only a very small amount leaves the body unchanged.",
-      "protein_binding": "Highly protein bound (over 90%), which contributes to a long duration in the body.",
-      "food_effect": "Food doesn’t dramatically change overall exposure, but may slow or smooth absorption and can help reduce stomach upset."
+    },
+    "delivery": {
+      "routes": [
+        "Oral (tablets, oral solution)",
+        "Intramuscular (IM)",
+        "Intravenous (IV)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Very common, especially early in treatment or at higher doses",
+          "notes": "You may feel very sleepy or \"slowed down.\" This sometimes improves after a week or two, but some grogginess can persist. Avoid driving or operating machinery until you know how it affects you."
+        },
+        {
+          "effect": "Orthostatic Hypotension (Drop in Blood Pressure When Standing)",
+          "incidence": "Common, especially with IM/IV dosing or in older adults",
+          "notes": "You might feel lightheaded or faint when standing up. Standing slowly, staying hydrated, and reporting severe dizziness can help reduce risk of falls."
+        },
+        {
+          "effect": "Extrapyramidal Symptoms (Movement Problems)",
+          "incidence": "Common, especially at higher doses and with long-term use",
+          "notes": "These can look like stiffness, tremors (similar to Parkinson’s), inner restlessness (can’t sit still), or sudden neck or eye muscle spasms. Tell your provider immediately—doses can be adjusted or other medicines added to help."
+        },
+        {
+          "effect": "Weight Gain and Metabolic Changes",
+          "incidence": "Moderate-to-high risk with ongoing use",
+          "notes": "You may notice increased appetite and weight gain over time. Your provider may check your weight, blood sugar, and cholesterol and may recommend diet, activity, or a medication change if things worsen."
+        },
+        {
+          "effect": "Anticholinergic Effects",
+          "incidence": "Common",
+          "notes": "Dry mouth, constipation, blurred vision, and trouble urinating can occur. Drinking water, chewing sugar-free gum, and using stool softeners or fiber may help. Severe or sudden problems urinating should be treated as urgent."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Tardive dyskinesia: Long-term, often irreversible involuntary movements (especially of the face, tongue, or limbs). Risk increases with age, duration of treatment, and total dose."
+        },
+        {
+          "risk": "Neuroleptic Malignant Syndrome: High fever, rigid muscles, confusion, fast heart rate, sweating, and unstable blood pressure. This is a medical emergency."
+        },
+        {
+          "risk": "Severe liver injury: Jaundice, intense fatigue, fever, or abdominal pain—requires urgent evaluation and usually permanent discontinuation."
+        },
+        {
+          "risk": "Serious blood disorders: Very low white blood counts (infections), low platelets (bleeding), or anemia (severe fatigue, pale skin)."
+        },
+        {
+          "risk": "Dangerous heart rhythm changes: Palpitations, fainting, or sudden collapse could signal a serious arrhythmia."
+        },
+        {
+          "risk": "Seizures: New-onset seizures or major changes in seizure pattern in those with epilepsy."
+        }
+      ],
+      "black_box_warning": "Older adults with dementia-related behavior problems are at higher risk of death with antipsychotics, including chlorpromazine. This medicine is not approved for dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Allergy to chlorpromazine or other phenothiazines"
+        },
+        {
+          "contraindication": "Coma or severe central nervous system depression"
+        },
+        {
+          "contraindication": "Concurrent use with large amounts of alcohol or other strong sedatives (eg, barbiturates, opioids)"
+        },
+        {
+          "contraindication": "History of severe reaction to phenothiazines (eg, jaundice or severe blood problems)"
+        },
+        {
+          "contraindication": "Uncontrolled severe heart disease or serious heart rhythm disorders"
+        },
+        {
+          "contraindication": "Possible Reye syndrome in children or teens (avoid)"
+        }
+      ],
+      "precautions": [
+        "Heart rhythm changes (QT prolongation): At higher doses or in people with heart disease or low potassium/magnesium, chlorpromazine can disturb heart rhythm and, in rare cases, cause a dangerous arrhythmia.",
+        "Movement disorders: Stiffness, tremors, restlessness, and long-term involuntary movements (tardive dyskinesia) are more common than with newer antipsychotics.",
+        "Severe muscle and fever reaction (Neuroleptic Malignant Syndrome): A rare but life-threatening reaction with high fever, rigid muscles, confusion, and unstable blood pressure.",
+        "Blood pressure drops: Especially when standing up or after injections—can cause fainting and falls.",
+        "Liver injury: Can cause cholestatic jaundice (yellowing skin/eyes, dark urine, pale stools); sometimes serious.",
+        "Metabolic effects: Weight gain, higher blood sugar, and cholesterol changes can occur and may increase heart and diabetes risk over time.",
+        "Seizures: At higher doses or in people with seizure risk, chlorpromazine can lower the seizure threshold.",
+        "Skin and eye effects: Sun sensitivity, skin discoloration with long-term high doses, and corneal or lens deposits that can affect vision."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol and other sedatives (benzodiazepines, sleep medicines, opioids, some antihistamines, muscle relaxants)",
+          "mechanism": "Stronger sedation, confusion, slow breathing, higher fall risk, and possible overdose.",
+          "action": "Avoid alcohol entirely. Use other sedating medicines only if your prescriber knows you are on chlorpromazine and agrees it’s necessary."
+        },
+        {
+          "interactant": "Other antipsychotics or dopamine-blocking drugs (eg, metoclopramide)",
+          "mechanism": "Higher risk of movement disorders and possibly Neuroleptic Malignant Syndrome.",
+          "action": "Use with caution. Usually avoid stacking multiple dopamine-blocking drugs unless clearly needed and closely supervised."
+        },
+        {
+          "interactant": "Medicines that prolong the QT interval (many antiarrhythmics, some antibiotics, some antidepressants)",
+          "mechanism": "Increased risk of dangerous heart rhythm changes.",
+          "action": "Your provider may avoid this combination, lower doses, and/or monitor your heart with ECGs."
+        },
+        {
+          "interactant": "Blood pressure medications and diuretics",
+          "mechanism": "Stronger drops in blood pressure, dizziness, and fainting.",
+          "action": "Blood pressure may need closer monitoring and possible dose adjustments."
+        },
+        {
+          "interactant": "Other anticholinergic drugs (such as some bladder medicines, antihistamines, or antidepressants)",
+          "mechanism": "More dry mouth, constipation, confusion, and urinary retention, especially in older adults.",
+          "action": "Use cautiously; watch for worsening side effects and contact your provider if they become problematic."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Weight, blood pressure, and pulse, especially after starting or changing the dose."
+        },
+        {
+          "parameter": "Blood tests: liver function, blood counts, blood sugar, and cholesterol—especially with long-term use."
+        },
+        {
+          "parameter": "Heart rhythm (ECG), particularly if you have heart disease, are on other QT-prolonging drugs, or are taking higher doses."
+        },
+        {
+          "parameter": "Movement checks: watching for stiffness, shakes, restlessness, or unusual mouth/tongue movements."
+        },
+        {
+          "parameter": "Eye checks: for people on long-term higher doses, especially if they notice vision changes."
+        },
+        {
+          "parameter": "Mental health symptoms: tracking whether psychosis, mania, nausea, or hiccups are improving and whether side effects are tolerable."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Chlorpromazine crosses the placenta. Most studies of related antipsychotics do not show a strong overall pattern of birth defects, but data for individual drugs are limited. Use late in pregnancy may cause newborns to be stiff, floppy, or unusually sleepy, and sometimes they can have withdrawal-like symptoms. Decisions about use in pregnancy should be made together with a psychiatrist and obstetric provider, weighing the risks of untreated illness versus medication.",
+        "lactation": "Chlorpromazine passes into breast milk. Some breastfed infants exposed to antipsychotics have had drowsiness, poor feeding, or delayed development, though other factors may also play a role. If used while breastfeeding, infants should be watched for unusual sleepiness, feeding problems, or poor weight gain. In some cases, switching medicines or formula-feeding may be recommended.",
+        "pediatric": "Chlorpromazine has been used in children for severe behavior problems, nausea, and other conditions, but it is on pediatric \"high-risk\" lists because of movement disorders and hormone changes. Whenever possible, safer and more modern options are preferred. If used, doses are based on weight and children must be monitored closely.",
+        "geriatric": "Older adults are more sensitive to sedation, confusion, blood pressure drops, falls, and movement side effects. They also have a higher baseline risk of stroke and death with antipsychotics, especially if they have dementia. If chlorpromazine must be used, doctors typically start with very low doses, increase slowly, and reassess frequently."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1954
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth, but a significant amount is broken down on first pass through the gut and liver.",
+          "bioavailability": "Around one-third of the swallowed dose reaches the bloodstream unchanged.",
+          "peak_plasma": "Typically within 2–4 hours after an oral dose.",
+          "half_life": "Initial distribution half-life about 2 hours; terminal elimination around 30 hours in adults.",
+          "metabolism": "Extensively broken down in the liver into multiple active and inactive metabolites.",
+          "excretion": "Mostly excreted in the urine as metabolites; only a very small amount leaves the body unchanged.",
+          "protein_binding": "Highly protein bound (over 90%), which contributes to a long duration in the body.",
+          "food_effect": "Food doesn’t dramatically change overall exposure, but may slow or smooth absorption and can help reduce stomach upset."
+        },
+        "dosing": {
+          "titration": "Exact dosing is very individualized. Doctors start low and increase slowly based on response and side effects."
+        }
+      }
     }
   },
   "sections": [
@@ -120,7 +261,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Commonly Feel",
-      "intro": "Experiences vary a lot depending on dose, route (pill vs injection), and why it’s being used. These are common themes people report:",
       "items": [
         {
           "category": "Sedation and Calm",
@@ -152,7 +292,8 @@
             "“My appetite went up and it was hard to control snacking.”"
           ]
         }
-      ]
+      ],
+      "intro": "Experiences vary a lot depending on dose, route (pill vs injection), and why it’s being used. These are common themes people report:"
     },
     {
       "type": "onset_duration",
@@ -241,7 +382,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug Interactions",
-      "intro": "Chlorpromazine affects the brain, heart, and liver, so interactions are common.",
       "items": [
         {
           "with": "Alcohol and other sedatives (benzodiazepines, sleep medicines, opioids, some antihistamines, muscle relaxants)",
@@ -268,7 +408,8 @@
           "risk": "More dry mouth, constipation, confusion, and urinary retention, especially in older adults.",
           "action": "Use cautiously; watch for worsening side effects and contact your provider if they become problematic."
         }
-      ]
+      ],
+      "intro": "Chlorpromazine affects the brain, heart, and liver, so interactions are common."
     },
     {
       "type": "dosing",
@@ -326,19 +467,6 @@
       "text": "Chlorpromazine was a groundbreaking antipsychotic when first introduced and opened the door to modern psychiatric treatment. Today, it has largely been replaced by newer antipsychotics that usually cause fewer movement and metabolic side effects. It is now used mainly when:\n\n- Newer antipsychotics are unavailable or not tolerated.\n- A broad-acting drug is needed urgently for severe agitation or psychosis.\n- Specific problems like intractable hiccups or severe nausea haven’t responded to safer options.\n\nBecause of its side-effect burden, careful monitoring and regular re-evaluation are essential."
     }
   ],
-  "seo": {
-    "title": "Chlorpromazine: Uses, Side Effects, Dosing, and Safety",
-    "description": "Chlorpromazine is an older antipsychotic used for schizophrenia, severe agitation, hard-to-treat nausea, and intractable hiccups. Learn how it works, common side effects, and key safety warnings in plain language.",
-    "canonical": "https://www.heypsych.com/treatments/chlorpromazine",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": null,
-    "lastUpdated": "2025-12-08",
-    "reviewStatement": "Draft educational content based on standard clinical references and safety summaries. Not a substitute for individual medical advice."
-  },
   "faqs": [
     {
       "q": "What is chlorpromazine used for?",
@@ -380,5 +508,18 @@
       "q": "Can I stop chlorpromazine suddenly?",
       "a": "You should not stop suddenly unless your doctor tells you to. Stopping abruptly can cause a return of symptoms and, in some cases, withdrawal-like effects (such as nausea, insomnia, or agitation). Your provider will usually reduce your dose gradually to make stopping safer and more comfortable."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Chlorpromazine: Uses, Side Effects, Dosing, and Safety",
+    "description": "Chlorpromazine is an older antipsychotic used for schizophrenia, severe agitation, hard-to-treat nausea, and intractable hiccups. Learn how it works, common side effects, and key safety warnings in plain language.",
+    "canonical": "https://www.heypsych.com/treatments/chlorpromazine",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": null,
+    "lastUpdated": "2025-12-08",
+    "reviewStatement": "Draft educational content based on standard clinical references and safety summaries. Not a substitute for individual medical advice."
+  }
 }

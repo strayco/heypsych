@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "coq10",
-  "type": "supplement",
-  "name": "Coenzyme Q10 (CoQ10, Ubiquinone)",
-  "summary": "An antioxidant and mitochondrial cofactor that supports cellular energy production, studied for fatigue, neuroprotection, and mood disorders.",
-  "description": "Coenzyme Q10 (ubiquinone, ubiquinol) is a naturally occurring compound in the electron transport chain that plays a key role in ATP production and cellular energy metabolism. As both an antioxidant and mitochondrial cofactor, it has been investigated in cardiovascular disease, neurodegenerative disorders, and psychiatric conditions. Emerging evidence suggests possible benefits for depression, chronic fatigue, and mitochondrial dysfunction–related syndromes. It is generally safe and well tolerated.",
-  "category": "supplements",
-  "tags": [
-    "antioxidant",
-    "mitochondrial-function",
-    "neuroprotection",
-    "fatigue"
-  ],
-  "metadata": {
-    "compound_type": "Quinone derivative",
-    "natural_source": "Endogenously synthesized; found in meat, fish, nuts, spinach, broccoli",
+  "identity": {
+    "slug": "coq10",
+    "name": "Coenzyme Q10 (CoQ10, Ubiquinone)",
+    "generic_name": "coenzyme q10",
+    "brand_names": [
+      "Ubiquinol",
+      "Q-Sorb CoQ10",
+      "Kaneka Q10"
+    ],
+    "aliases": [
+      "Co-enzyme Q",
+      "Q10"
+    ],
+    "wikidata_qid": "Q75063680"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Mitochondrial support",
       "Neuroprotection",
@@ -25,76 +29,153 @@
       "Antioxidant",
       "Energy metabolism"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Ubiquinol",
-      "Q-Sorb CoQ10",
-      "Kaneka Q10"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Cardiology"
-    ],
-    "wikidata_qid": "Q75063680"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mitochondrial dysfunction",
-      "Neuroprotection",
-      "Fatigue and energy support"
-    ],
-    "off_label_uses": [
-      "Adjunctive treatment in depression",
-      "Neurodegenerative disorders (Parkinson’s, Huntington’s, Alzheimer’s)",
-      "Fibromyalgia and chronic fatigue syndrome"
-    ],
-    "contraindications": [
-      "Known hypersensitivity",
-      "Caution with anticoagulant therapy (may reduce warfarin effectiveness)"
-    ],
-    "monitoring_required": [
-      "Clinical response",
-      "Drug–supplement interactions (anticoagulants)"
-    ],
-    "efficacy_rating": {
-      "mitochondrial_support": 3,
-      "depression": 2,
-      "neurodegeneration": 2,
-      "fatigue": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Coenzyme Q10",
-      "CoQ10",
-      "Ubiquinone",
-      "Ubiquinol"
-    ],
-    "synonyms": [
-      "Co-enzyme Q",
-      "Q10"
-    ],
-    "common_misspellings": [
-      "coenzyme q-10",
-      "coqu10",
-      "co qten"
+    "tags": [
+      "antioxidant",
+      "mitochondrial-function",
+      "neuroprotection",
+      "fatigue"
     ]
+  },
+  "summary": "An antioxidant and mitochondrial cofactor that supports cellular energy production, studied for fatigue, neuroprotection, and mood disorders.",
+  "description": "Coenzyme Q10 (ubiquinone, ubiquinol) is a naturally occurring compound in the electron transport chain that plays a key role in ATP production and cellular energy metabolism. As both an antioxidant and mitochondrial cofactor, it has been investigated in cardiovascular disease, neurodegenerative disorders, and psychiatric conditions. Emerging evidence suggests possible benefits for depression, chronic fatigue, and mitochondrial dysfunction–related syndromes. It is generally safe and well tolerated.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mitochondrial-dysfunction",
+          "condition_name": "Mitochondrial dysfunction",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neuroprotection",
+          "condition_name": "Neuroprotection",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "fatigue-and-energy-support",
+          "condition_name": "Fatigue and energy support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-treatment-in-depression",
+          "condition_name": "Adjunctive treatment in depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neurodegenerative-disorders-parkinson-s-huntington-s-alzheimer-s",
+          "condition_name": "Neurodegenerative disorders (Parkinson’s, Huntington’s, Alzheimer’s)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fibromyalgia-and-chronic-fatigue-syndrome",
+          "condition_name": "Fibromyalgia and chronic fatigue syndrome",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "mitochondrial_support": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 2
+        },
+        "neurodegeneration": {
+          "rating": 2
+        },
+        "fatigue": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Gastrointestinal upset"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Potential interaction reducing effectiveness of warfarin"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity"
+        },
+        {
+          "contraindication": "Caution with anticoagulant therapy (may reduce warfarin effectiveness)"
+        }
+      ],
+      "precautions": [
+        "Absorption is improved when taken with fatty meals.",
+        "Ubiquinol form may have superior bioavailability."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin",
+          "mechanism": "May decrease anticoagulant effect",
+          "action": "Monitor INR"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Possible additive blood pressure–lowering effect",
+          "action": "Monitor blood pressure"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Clinical response"
+        },
+        {
+          "parameter": "INR if patient is on warfarin"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; use caution",
+        "lactation": "Unknown safety",
+        "pediatric": "Not well studied",
+        "geriatric": "Generally well tolerated; commonly used in older adults"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Quinone derivative",
+        "natural_source": "Endogenously synthesized; found in meat, fish, nuts, spinach, broccoli",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -209,6 +290,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Coenzyme Q10",
+      "url": "https://examine.com/supplements/coenzyme-q10/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Young AJ et al. Coenzyme Q10 and neurodegenerative disease. Neurochem Res. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17551827/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Coenzyme Q10",
+      "CoQ10",
+      "Ubiquinone",
+      "Ubiquinol"
+    ],
+    "synonyms": [
+      "Co-enzyme Q",
+      "Q10"
+    ],
+    "common_misspellings": [
+      "coenzyme q-10",
+      "coqu10",
+      "co qten"
+    ]
+  },
   "seo": {
     "title": "Coenzyme Q10 (CoQ10): Antioxidant and Mitochondrial Supplement",
     "description": "Learn about CoQ10’s role in mitochondrial function, neuroprotection, and fatigue. Includes dosing, safety, evidence, and psychiatric relevance.",

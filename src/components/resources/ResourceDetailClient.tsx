@@ -91,7 +91,7 @@ function CrossLinksSection({ crosslinks }: { crosslinks: CrossLink[] }) {
                 <Link
                   key={t.slug}
                   href={`/treatments/${t.slug}`}
-                  className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200"
+                  className="inline-flex items-center gap-1 rounded-full bg-accent-tint px-3 py-1 text-sm font-medium text-accent-700 transition-colors hover:bg-accent-tint-hover"
                 >
                   {t.display}
                   <ArrowRight className="h-3 w-3" />
@@ -141,23 +141,23 @@ function ResourceHeader({ resource }: { resource: any }) {
                   {resource.validated && (
                     <Badge
                       variant="outline"
-                      className="border-green-300 bg-green-50 text-green-700"
+                      className="border-positive-border bg-positive-tint text-positive-700"
                     >
                       ✓ Validated
                     </Badge>
                   )}
                   {resource.free && (
-                    <Badge variant="outline" className="border-blue-300 bg-blue-50 text-blue-700">
+                    <Badge variant="outline" className="border-accent-border bg-accent-tint text-accent-700">
                       Free
                     </Badge>
                   )}
                 </div>
                 {resource.description && (
-                  <div className="mb-3 text-neutral-900">
+                  <div className="mb-3 text-label-primary">
                     <ParsedContent content={String(resource.description)} />
                   </div>
                 )}
-                <div className="flex items-center gap-4 text-sm text-neutral-800">
+                <div className="flex items-center gap-4 text-sm text-label-secondary">
                   {resource.duration && (
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -203,8 +203,8 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="space-y-3 text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
-          <div className="text-neutral-900">Loading resource…</div>
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent" />
+          <div className="text-label-primary">Loading resource…</div>
         </div>
       </div>
     );
@@ -293,7 +293,7 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-fill-quaternary">
       <div className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Button

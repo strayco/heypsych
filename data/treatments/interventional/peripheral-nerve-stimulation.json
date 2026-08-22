@@ -1,81 +1,189 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "peripheral-nerve-stimulation",
-  "type": "interventional",
-  "name": "Peripheral Nerve Stimulation (PNS)",
-  "summary": "A minimally invasive neuromodulation technique using implanted electrodes to deliver electrical pulses to targeted peripheral nerves, reducing pain signals and modulating neural activity.",
-  "description": "Peripheral nerve stimulation (PNS) is a neuromodulation therapy that delivers low-level electrical impulses to specific peripheral nerves through implanted electrodes. These pulses modulate pain signal transmission and can alter central nervous system pain processing. PNS is primarily used for chronic, localized neuropathic or musculoskeletal pain that has not responded adequately to conservative treatments. Modern PNS systems are designed to be minimally invasive, often percutaneous, and can be trialed before permanent implantation. The therapy is reversible and adjustable, making it an alternative to systemic medications or more invasive surgeries.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "peripheral-nerve-stimulation",
-    "neuromodulation",
-    "chronic-pain",
-    "neurostimulation"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Electrical neuromodulation"
-    ],
-    "treatment_types": [
-      "Implantable device therapy"
-    ],
-    "categories": [
-      "Pain Management",
-      "Neurology",
-      "Rehabilitation"
-    ],
-    "delivery_methods": [
-      "Implanted electrodes connected to external or internal pulse generator"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "Device trial lasts days to weeks; implant sessions 30–90 minutes",
-    "treatment_duration": [
-      "Chronic therapy; device may remain implanted long-term"
-    ],
-    "specialty_areas": [
-      "Interventional Pain Management",
-      "Neurology",
-      "Physical Medicine & Rehabilitation"
+  "identity": {
+    "slug": "peripheral-nerve-stimulation",
+    "name": "Peripheral Nerve Stimulation (PNS)",
+    "generic_name": "peripheral nerve stimulation",
+    "brand_names": [
+      "PNS"
     ],
     "wikidata_qid": "Q100788304"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic localized neuropathic pain",
-      "Complex regional pain syndrome",
-      "Post-surgical pain syndromes"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
+    "intervention_types": [
+      "Electrical neuromodulation"
     ],
-    "conditions_treated": [
-      "Chronic neuropathic pain",
-      "Post-amputation pain",
-      "Complex regional pain syndrome (CRPS)",
-      "Peripheral neuralgias"
-    ],
-    "off_label_uses": [
-      "Migraines (occipital nerve stimulation)",
-      "Refractory low back pain (dorsal ramus branches)",
-      "Post-stroke shoulder pain"
-    ],
-    "contraindications": [
-      "Active infection at implant site",
-      "Uncorrected coagulopathy",
-      "Unrealistic patient expectations or poor adherence potential",
-      "Pacemaker or defibrillator interference risk (requires specialist evaluation)"
-    ],
-    "safety_profile": "Generally safe; risks include infection, lead migration, skin erosion, and device malfunction. Serious complications are rare when performed by trained specialists.",
-    "evidence_level": "Moderate-to-high for chronic neuropathic pain; emerging evidence for other pain conditions.",
-    "research_support": "Multiple RCTs and systematic reviews support efficacy in focal neuropathic pain, with ongoing trials expanding indications.",
-    "invasiveness": "Minimally invasive",
-    "efficacy_rating": {
-      "neuropathic_pain": 4,
-      "musculoskeletal_pain": 3,
-      "overall_tolerability": 4
+    "tags": [
+      "peripheral-nerve-stimulation",
+      "neuromodulation",
+      "chronic-pain",
+      "neurostimulation"
+    ]
+  },
+  "summary": "A minimally invasive neuromodulation technique using implanted electrodes to deliver electrical pulses to targeted peripheral nerves, reducing pain signals and modulating neural activity.",
+  "description": "Peripheral nerve stimulation (PNS) is a neuromodulation therapy that delivers low-level electrical impulses to specific peripheral nerves through implanted electrodes. These pulses modulate pain signal transmission and can alter central nervous system pain processing. PNS is primarily used for chronic, localized neuropathic or musculoskeletal pain that has not responded adequately to conservative treatments. Modern PNS systems are designed to be minimally invasive, often percutaneous, and can be trialed before permanent implantation. The therapy is reversible and adjustable, making it an alternative to systemic medications or more invasive surgeries.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-localized-neuropathic-pain",
+          "condition_name": "Chronic localized neuropathic pain",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "complex-regional-pain-syndrome",
+          "condition_name": "Complex regional pain syndrome",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "post-surgical-pain-syndromes",
+          "condition_name": "Post-surgical pain syndromes",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "chronic-neuropathic-pain",
+          "condition_name": "Chronic neuropathic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-amputation-pain",
+          "condition_name": "Post-amputation pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-regional-pain-syndrome-crps",
+          "condition_name": "Complex regional pain syndrome (CRPS)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "peripheral-neuralgias",
+          "condition_name": "Peripheral neuralgias",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "migraines-occipital-nerve-stimulation",
+          "condition_name": "Migraines (occipital nerve stimulation)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "refractory-low-back-pain-dorsal-ramus-branches",
+          "condition_name": "Refractory low back pain (dorsal ramus branches)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "post-stroke-shoulder-pain",
+          "condition_name": "Post-stroke shoulder pain",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate-to-high for chronic neuropathic pain; emerging evidence for other pain conditions.",
+      "efficacy_ratings": {
+        "neuropathic_pain": {
+          "rating": 4
+        },
+        "musculoskeletal_pain": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Multiple RCTs and systematic reviews support efficacy in focal neuropathic pain, with ongoing trials expanding indications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Chronic therapy; device may remain implanted long-term"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Implanted electrodes connected to external or internal pulse generator"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Device trial lasts days to weeks; implant sessions 30–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; risks include infection, lead migration, skin erosion, and device malfunction. Serious complications are rare when performed by trained specialists.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild discomfort at implant site"
+        },
+        {
+          "effect": "Lead migration"
+        },
+        {
+          "effect": "Paresthesias"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Infection"
+        },
+        {
+          "risk": "Nerve injury"
+        },
+        {
+          "risk": "Erosion through skin"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Local/systemic infection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe coagulopathy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Inability to undergo procedure safely",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unrealistic expectations",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Poor adherence",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unmanaged psychiatric comorbidities",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Implantation typically avoided; device may be maintained if already implanted and safe."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Electrical neuromodulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Trial: Percutaneous electrode placed near target nerve under ultrasound or fluoroscopic guidance.\nTest stimulation performed to assess pain relief.\nIf successful, permanent electrode(s) are implanted and connected to an external or implantable pulse generator."
+      }
     }
   },
   "sections": [
@@ -253,6 +361,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Deer TR, et al. A systematic literature review of peripheral nerve stimulation for chronic pain. Pain Med. (2020).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32361742/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Gilmore CA, et al. Percutaneous peripheral nerve stimulation for chronic pain: a multicenter randomized trial. Pain Pract. (2019).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30206901/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "NASS Coverage Policy Recommendations: Peripheral Nerve Stimulation (2021).",
+      "url": "https://www.spine.org"
+    }
+  ],
   "seo": {
     "title": "Peripheral Nerve Stimulation (PNS) for Chronic Pain",
     "description": "Overview of peripheral nerve stimulation (PNS), a minimally invasive neuromodulation therapy for chronic focal neuropathic pain and complex regional pain syndrome.",
@@ -265,5 +393,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate-to-high for chronic neuropathic pain; emerging evidence for other pain conditions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate-to-high for chronic neuropathic pain; emerging evidence for other pain conditions."
+    ]
   }
 }

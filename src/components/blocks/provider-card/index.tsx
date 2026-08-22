@@ -54,13 +54,13 @@ export function ProviderCard({
             <Star
               key={i}
               className={`h-4 w-4 ${
-                i < Math.floor(data.rating) ? "fill-current text-yellow-400" : "text-neutral-500"
+                i < Math.floor(data.rating) ? "fill-current text-caution" : "text-label-primary0"
               }`}
             />
           ))}
         </div>
         <span className="text-sm font-medium">{data.rating}</span>
-        <span className="text-sm text-neutral-900">({data.total_reviews} reviews)</span>
+        <span className="text-sm text-label-secondary">({data.total_reviews} reviews)</span>
       </div>
     );
   };
@@ -123,7 +123,7 @@ export function ProviderCard({
           <CardContent className="p-6">
             <div className="flex items-start space-x-4">
               {/* Avatar */}
-              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-blue-600">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-positive-500 to-accent-500">
                 <User className="h-8 w-8 text-white" />
               </div>
 
@@ -131,10 +131,10 @@ export function ProviderCard({
                 {/* Header */}
                 <div className="mb-3 flex items-start justify-between">
                   <div>
-                    <h3 className="text-xl font-bold transition-colors group-hover:text-blue-600">
+                    <h3 className="text-xl font-bold transition-colors group-hover:text-accent">
                       {data.full_name}
                     </h3>
-                    <p className="mb-2 text-sm text-neutral-900">{data.credentials}</p>
+                    <p className="mb-2 text-sm text-label-secondary">{data.credentials}</p>
 
                     <div className="mb-2 flex items-center gap-2">
                       <Badge variant="primary" size="sm">
@@ -151,7 +151,7 @@ export function ProviderCard({
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                   {/* Education & Experience */}
                   <div className="space-y-3">
-                    <h4 className="flex items-center gap-1 text-sm font-semibold text-neutral-900">
+                    <h4 className="flex items-center gap-1 text-sm font-semibold text-label-secondary">
                       <GraduationCap className="h-4 w-4" />
                       Education & Experience
                     </h4>
@@ -163,7 +163,7 @@ export function ProviderCard({
                     )}
 
                     {data.residency && (
-                      <div className="text-sm text-neutral-900">
+                      <div className="text-sm text-label-secondary">
                         <p>Residency: {data.residency}</p>
                         {data.fellowship && <p>Fellowship: {data.fellowship}</p>}
                       </div>
@@ -172,17 +172,17 @@ export function ProviderCard({
 
                   {/* Practice & Location */}
                   <div className="space-y-3">
-                    <h4 className="flex items-center gap-1 text-sm font-semibold text-neutral-900">
+                    <h4 className="flex items-center gap-1 text-sm font-semibold text-label-secondary">
                       <MapPin className="h-4 w-4" />
                       Practice & Location
                     </h4>
 
                     {data.practice_name && (
-                      <div className="text-sm font-medium text-neutral-900">{data.practice_name}</div>
+                      <div className="text-sm font-medium text-label-secondary">{data.practice_name}</div>
                     )}
 
                     {data.address && (
-                      <div className="text-sm text-neutral-900">
+                      <div className="text-sm text-label-secondary">
                         <p>{data.address.street}</p>
                         <p>
                           {data.address.city}, {data.address.state} {data.address.zip}
@@ -191,7 +191,7 @@ export function ProviderCard({
                     )}
 
                     {data.languages && data.languages.length > 1 && (
-                      <div className="flex items-center gap-1 text-sm text-neutral-900">
+                      <div className="flex items-center gap-1 text-sm text-label-secondary">
                         <Globe className="h-3 w-3" />
                         <span>{data.languages.join(", ")}</span>
                       </div>
@@ -203,7 +203,7 @@ export function ProviderCard({
                     {/* Specialties */}
                     {data.specialties && data.specialties.length > 0 && (
                       <div>
-                        <h4 className="mb-2 text-sm font-semibold text-neutral-900">Specialties</h4>
+                        <h4 className="mb-2 text-sm font-semibold text-label-secondary">Specialties</h4>
                         <div className="flex flex-wrap gap-1">
                           {data.specialties.slice(0, 3).map((specialty: string, idx: number) => (
                             <Badge key={idx} variant="outline" size="sm">
@@ -222,7 +222,7 @@ export function ProviderCard({
                     {/* Insurance */}
                     {data.insurance_accepted && data.insurance_accepted.length > 0 && (
                       <div>
-                        <h4 className="mb-2 flex items-center gap-1 text-sm font-semibold text-neutral-900">
+                        <h4 className="mb-2 flex items-center gap-1 text-sm font-semibold text-label-secondary">
                           <Shield className="h-4 w-4" />
                           Insurance
                         </h4>
@@ -248,8 +248,8 @@ export function ProviderCard({
                 {/* Bio Preview */}
                 {data.bio && (
                   <div className="mt-4 border-t pt-4">
-                    <h4 className="mb-2 text-sm font-semibold text-neutral-900">About</h4>
-                    <p className="line-clamp-2 text-sm text-neutral-900">{data.bio}</p>
+                    <h4 className="mb-2 text-sm font-semibold text-label-secondary">About</h4>
+                    <p className="line-clamp-2 text-sm text-label-secondary">{data.bio}</p>
                   </div>
                 )}
 
@@ -259,7 +259,7 @@ export function ProviderCard({
                   return val !== null && val !== undefined;
                 }) && (
                   <div className="mt-4 border-t pt-4">
-                    <h4 className="mb-2 flex items-center gap-1 text-sm font-semibold text-neutral-900">
+                    <h4 className="mb-2 flex items-center gap-1 text-sm font-semibold text-label-secondary">
                       <Globe className="h-4 w-4" />
                       Online Presence
                     </h4>
@@ -270,7 +270,7 @@ export function ProviderCard({
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-blue-600"
+                          className="inline-flex items-center gap-1 rounded-md border border-separator bg-surface-grouped px-3 py-1.5 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-secondary hover:text-accent"
                         >
                           <ExternalLink className="h-3.5 w-3.5" />
                           Website
@@ -282,7 +282,7 @@ export function ProviderCard({
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-blue-600"
+                          className="inline-flex items-center gap-1 rounded-md border border-separator bg-surface-grouped px-3 py-1.5 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-secondary hover:text-accent"
                         >
                           <Linkedin className="h-3.5 w-3.5" />
                           LinkedIn
@@ -294,7 +294,7 @@ export function ProviderCard({
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-blue-600"
+                          className="inline-flex items-center gap-1 rounded-md border border-separator bg-surface-grouped px-3 py-1.5 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-secondary hover:text-accent"
                         >
                           <GraduationCap className="h-3.5 w-3.5" />
                           Academic Profile
@@ -306,7 +306,7 @@ export function ProviderCard({
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-blue-600"
+                          className="inline-flex items-center gap-1 rounded-md border border-separator bg-surface-grouped px-3 py-1.5 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-secondary hover:text-accent"
                         >
                           <Building2 className="h-3.5 w-3.5" />
                           Practice Profile
@@ -319,7 +319,7 @@ export function ProviderCard({
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 hover:text-blue-600"
+                          className="inline-flex items-center gap-1 rounded-md border border-separator bg-surface-grouped px-3 py-1.5 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-secondary hover:text-accent"
                         >
                           <ExternalLink className="h-3.5 w-3.5" />
                           {link.label}
@@ -366,15 +366,15 @@ export function ProviderCard({
           <div className="flex items-start justify-between">
             <div className="flex flex-1 items-start space-x-3">
               {/* Avatar */}
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-blue-600">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-positive-500 to-accent-500">
                 <User className="h-6 w-6 text-white" />
               </div>
 
               <div className="min-w-0 flex-1">
-                <CardTitle className="text-lg transition-colors group-hover:text-blue-600">
+                <CardTitle className="text-lg transition-colors group-hover:text-accent">
                   {data.full_name}
                 </CardTitle>
-                <p className="mb-2 text-sm text-neutral-900">{data.credentials}</p>
+                <p className="mb-2 text-sm text-label-secondary">{data.credentials}</p>
 
                 <div className="mb-2 flex items-center gap-2">
                   <Badge variant="primary" size="sm">
@@ -396,14 +396,14 @@ export function ProviderCard({
               <div className="space-y-2">
                 {data.medical_school && (
                   <div className="flex items-center gap-2 text-sm">
-                    <GraduationCap className="h-4 w-4 text-neutral-700" />
+                    <GraduationCap className="h-4 w-4 text-label-tertiary" />
                     <span className="font-medium">{data.medical_school}</span>
                   </div>
                 )}
 
                 {data.residency && (
-                  <div className="flex items-start gap-2 text-sm text-neutral-900">
-                    <GraduationCap className="mt-0.5 h-4 w-4 text-neutral-700" />
+                  <div className="flex items-start gap-2 text-sm text-label-secondary">
+                    <GraduationCap className="mt-0.5 h-4 w-4 text-label-tertiary" />
                     <div>
                       <p>Residency: {data.residency}</p>
                       {data.fellowship && <p>Fellowship: {data.fellowship}</p>}
@@ -415,13 +415,13 @@ export function ProviderCard({
               {/* Practice & Location */}
               {data.practice_name && (
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="font-medium text-neutral-900">{data.practice_name}</span>
+                  <span className="font-medium text-label-secondary">{data.practice_name}</span>
                 </div>
               )}
 
               {data.address && (
-                <div className="flex items-start gap-2 text-sm text-neutral-900">
-                  <MapPin className="mt-0.5 h-4 w-4 text-neutral-700" />
+                <div className="flex items-start gap-2 text-sm text-label-secondary">
+                  <MapPin className="mt-0.5 h-4 w-4 text-label-tertiary" />
                   <div>
                     <p>{data.address.street}</p>
                     <p>
@@ -434,7 +434,7 @@ export function ProviderCard({
               {/* Specialties */}
               {data.specialties && data.specialties.length > 0 && (
                 <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-neutral-900">Specialties</h4>
+                  <h4 className="text-sm font-semibold text-label-secondary">Specialties</h4>
                   <div className="flex flex-wrap gap-1">
                     {data.specialties.slice(0, 4).map((specialty: string, idx: number) => (
                       <Badge key={idx} variant="outline" size="sm">
@@ -453,7 +453,7 @@ export function ProviderCard({
               {/* Insurance */}
               {data.insurance_accepted && data.insurance_accepted.length > 0 && (
                 <div className="space-y-2">
-                  <h4 className="flex items-center gap-1 text-sm font-semibold text-neutral-900">
+                  <h4 className="flex items-center gap-1 text-sm font-semibold text-label-secondary">
                     <Shield className="h-4 w-4" />
                     Insurance
                   </h4>
@@ -486,7 +486,7 @@ export function ProviderCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                  className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent-700 hover:underline"
                 >
                   <ExternalLink className="h-3 w-3" />
                   Website
@@ -498,7 +498,7 @@ export function ProviderCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                  className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent-700 hover:underline"
                 >
                   <Linkedin className="h-3 w-3" />
                   LinkedIn
@@ -510,7 +510,7 @@ export function ProviderCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                  className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent-700 hover:underline"
                 >
                   <GraduationCap className="h-3 w-3" />
                   Academic
@@ -522,7 +522,7 @@ export function ProviderCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                  className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent-700 hover:underline"
                 >
                   <Building2 className="h-3 w-3" />
                   Practice

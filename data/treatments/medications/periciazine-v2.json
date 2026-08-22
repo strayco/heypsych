@@ -1,90 +1,287 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "periciazine-neuleptil",
-  "type": "medication",
-  "name": "Periciazine (Neuleptil)",
-  "summary": "Sedating first-generation (typical) antipsychotic used as adjunctive treatment in psychosis to reduce hostility, impulsivity, and aggression. Not available in the United States and contraindicated in liver dysfunction.",
-  "description": "Periciazine (Neuleptil) is a first-generation antipsychotic with a more sedating, calming profile and relatively weak antipsychotic effects. In practice, it’s used as adjunctive therapy in psychosis when the goal is to reduce hostility, impulsivity, and aggression—not as a stand-alone schizophrenia treatment. It can cause sedation, low blood pressure, anticholinergic side effects (constipation, dry mouth, blurred vision, urinary retention), movement side effects (EPS/tardive dyskinesia), and rare but serious problems like arrhythmias (QT prolongation/torsades), blood dyscrasias, and neuroleptic malignant syndrome. Liver impairment is a hard stop (contraindicated).",
-  "patient_summary": "Periciazine (Neuleptil) is a sedating typical antipsychotic used as add-on treatment in psychosis to help with hostility, impulsivity, and aggression. It’s not usually strong enough as a solo medication for schizophrenia. The tradeoff is side effects: sleepiness, dizziness/orthostatic hypotension, constipation/dry mouth/blurred vision, and possible movement symptoms. Rare but serious risks include dangerous heart rhythm changes, blood count problems, and neuroleptic malignant syndrome. It’s contraindicated in liver dysfunction.",
-  "category": "medications/psychosis",
-  "metadata": {
+  "identity": {
+    "slug": "periciazine-neuleptil",
+    "name": "Periciazine (Neuleptil)",
+    "generic_name": "periciazine",
+    "brand_names": [
+      "Neuleptil (Canada)"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychosis",
     "drug_classes": [
       "First Generation (Typical) Antipsychotic",
       "Phenothiazine (piperidine group)"
-    ],
-    "brand_names": [
-      "Neuleptil (Canada)"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not controlled",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "First Generation (Typical) Antipsychotic; sedating phenothiazine with weak antipsychotic properties",
-    "published_date": "2026-01-27T00:00:00Z",
-    "last_updated": "2026-01-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Psychosis (adjunctive therapy) for hostility, impulsivity, and aggression"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "psychosis",
-        "relationship": "primary_treatment",
-        "context": "Used as adjunctive therapy in psychosis when the main target is hostility, impulsivity, and aggression."
-      },
-      {
-        "slug": "schizophrenia",
-        "relationship": "adjunctive",
-        "context": "May not be effective as monotherapy for schizophrenia and other types of psychosis; typically used as add-on rather than the only antipsychotic."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "Sometimes used for agitation in the context of psychosis when sedation and behavioral calming are the primary goals."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to periciazine, phenothiazine derivatives, or any component",
-      "Altered states of consciousness or comatose states, particularly due to intoxication with CNS depressants (eg, ethanol, hypnotics, analgesics, opioids)",
-      "History of liver dysfunction",
-      "Circulatory collapse",
-      "History of blood dyscrasias or agranulocytosis",
-      "Patients receiving spinal or regional anesthesia",
-      "Patients at risk of angle-closure glaucoma",
-      "Patients at risk of urinary retention due to urethroprostatic disorders",
-      "Children undergoing surgery",
-      "Severe depression",
-      "Kidney or liver dysfunction",
-      "Pheochromocytoma",
-      "Subcortical brain damage, with or without hypothalamic damage (known or suspected)"
-    ],
-    "efficacy_response": {
-      "metric": "Behavioral symptom reduction (hostility/impulsivity/aggression) in psychosis (adjunctive use)",
-      "percentage_value": "Not established in provided notes.",
-      "comparison_data": "Not established in provided notes.",
-      "patient_text": "Periciazine is used as an add-on antipsychotic when the specific target is hostility, impulsivity, and aggression in someone with psychosis. It may not be effective as the only medication for schizophrenia or other psychotic disorders.",
-      "citation_tag": "Product labeling / referenced clinical guidance in provided notes"
+  "summary": "Sedating first-generation (typical) antipsychotic used as adjunctive treatment in psychosis to reduce hostility, impulsivity, and aggression. Not available in the United States and contraindicated in liver dysfunction.",
+  "description": "Periciazine (Neuleptil) is a first-generation antipsychotic with a more sedating, calming profile and relatively weak antipsychotic effects. In practice, it’s used as adjunctive therapy in psychosis when the goal is to reduce hostility, impulsivity, and aggression—not as a stand-alone schizophrenia treatment. It can cause sedation, low blood pressure, anticholinergic side effects (constipation, dry mouth, blurred vision, urinary retention), movement side effects (EPS/tardive dyskinesia), and rare but serious problems like arrhythmias (QT prolongation/torsades), blood dyscrasias, and neuroleptic malignant syndrome. Liver impairment is a hard stop (contraindicated).",
+  "patient_summary": "Periciazine (Neuleptil) is a sedating typical antipsychotic used as add-on treatment in psychosis to help with hostility, impulsivity, and aggression. It’s not usually strong enough as a solo medication for schizophrenia. The tradeoff is side effects: sleepiness, dizziness/orthostatic hypotension, constipation/dry mouth/blurred vision, and possible movement symptoms. Rare but serious risks include dangerous heart rhythm changes, blood count problems, and neuroleptic malignant syndrome. It’s contraindicated in liver dysfunction.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "psychosis",
+          "condition_name": "Psychosis",
+          "relationship": "primary_indication",
+          "context": "Used as adjunctive therapy in psychosis when the main target is hostility, impulsivity, and aggression.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "adjunctive",
+          "context": "May not be effective as monotherapy for schizophrenia and other types of psychosis; typically used as add-on rather than the only antipsychotic."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "Sometimes used for agitation in the context of psychosis when sedation and behavioral calming are the primary goals."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Not established in provided notes.",
-      "bioavailability": "Not established in provided notes.",
-      "onset": "Not established in provided notes.",
-      "peak_plasma": "Not established in provided notes.",
-      "half_life": "Not established in provided notes.",
-      "duration": "Not established in provided notes.",
-      "metabolism": "Not established in provided notes.",
-      "excretion": "Not established in provided notes.",
-      "protein_binding": "Not established in provided notes.",
-      "food_effect": "Not established in provided notes."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not established in provided notes."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Not established in provided notes.",
+          "notes": "Sedation is a core effect with periciazine. Dosing is often split with a larger evening dose to reduce daytime impairment."
+        },
+        {
+          "effect": "Orthostatic hypotension",
+          "incidence": "Not established in provided notes.",
+          "notes": "Lightheadedness on standing can happen, especially early on or after dose increases. Falls risk goes up if you’re sedated and your blood pressure drops."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurred vision, urinary retention)",
+          "incidence": "Not established in provided notes.",
+          "notes": "These can range from annoying to dangerous (eg, paralytic ileus, urinary retention), especially in older adults or people with BPH/glaucoma/low gut motility."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (EPS)",
+          "incidence": "Not established in provided notes.",
+          "notes": "May include akathisia (inner restlessness), dystonia, and parkinsonism. Risk may rise with higher doses, conventional antipsychotics, and in younger patients (especially males)."
+        },
+        {
+          "effect": "Weight gain / metabolic changes",
+          "incidence": "Not established in provided notes.",
+          "notes": "Weight gain and hyperglycemia/glucose intolerance have been reported. Monitor weight and labs over time."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Cardiac arrhythmias including QT prolongation, torsades de pointes, ventricular tachycardia/fibrillation: may be life-threatening"
+        },
+        {
+          "risk": "Agranulocytosis and other blood dyscrasias (neutropenia, thrombocytopenia): stop and evaluate urgently if suspected"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, muscle rigidity, altered mental status, autonomic instability—medical emergency"
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially irreversible abnormal movements; risk increases with duration and vulnerability factors"
+        },
+        {
+          "risk": "Seizure: reported; risk higher in those with seizure history or lowered threshold"
+        },
+        {
+          "risk": "Cholestatic jaundice / hepatic injury: discontinue if jaundice occurs"
+        },
+        {
+          "risk": "Pulmonary embolism / venous thromboembolism: reported, including fatal events"
+        },
+        {
+          "risk": "Aspiration pneumonia risk in vulnerable patients due to esophageal dysmotility/aspiration association"
+        }
+      ],
+      "black_box_warning": "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death compared with placebo. Periciazine is not approved for dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to periciazine, phenothiazine derivatives, or any component"
+        },
+        {
+          "contraindication": "Altered states of consciousness or comatose states, particularly due to intoxication with CNS depressants (eg, ethanol, hypnotics, analgesics, opioids)"
+        },
+        {
+          "contraindication": "History of liver dysfunction"
+        },
+        {
+          "contraindication": "Circulatory collapse"
+        },
+        {
+          "contraindication": "History of blood dyscrasias or agranulocytosis"
+        },
+        {
+          "contraindication": "Patients receiving spinal or regional anesthesia"
+        },
+        {
+          "contraindication": "Patients at risk of angle-closure glaucoma"
+        },
+        {
+          "contraindication": "Patients at risk of urinary retention due to urethroprostatic disorders"
+        },
+        {
+          "contraindication": "Children undergoing surgery"
+        },
+        {
+          "contraindication": "Severe depression"
+        },
+        {
+          "contraindication": "Kidney or liver dysfunction"
+        },
+        {
+          "contraindication": "Pheochromocytoma"
+        },
+        {
+          "contraindication": "Subcortical brain damage, with or without hypothalamic damage (known or suspected)"
+        }
+      ],
+      "precautions": [
+        "Cardiac conduction risk: QT prolongation has been reported rarely; life-threatening arrhythmias have occurred with phenothiazines, including torsades de pointes",
+        "Blood dyscrasias: agranulocytosis, neutropenia, thrombocytopenia can occur; stop at first signs and evaluate urgently",
+        "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, autonomic instability—stop immediately and treat as emergency",
+        "Extrapyramidal symptoms (EPS) and tardive dyskinesia: dystonia, akathisia, parkinsonism; risk rises with dose and vulnerability factors",
+        "CNS depression: can impair driving/operating machinery and can worsen with other sedatives",
+        "Aspiration risk: antipsychotics can be associated with esophageal dysmotility/aspiration; higher risk with age",
+        "Falls: sedation + orthostasis + motor instability can raise fall risk",
+        "Anticholinergic effects: constipation, dry mouth, blurred vision, urinary retention; risk is higher in vulnerable patients",
+        "Metabolic/endocrine effects: weight gain and hyperglycemia/glucose intolerance have been reported; monitor",
+        "Venous thromboembolism: VTE including fatal pulmonary embolism has been reported",
+        "Ocular effects: prolonged phenothiazine therapy can cause retinal changes; avoid in glaucoma per provided notes"
+      ],
+      "interactions": [
+        {
+          "interactant": "CNS depressants (eg, alcohol, opioids, hypnotics, sedatives)",
+          "mechanism": "Additive CNS depression, impaired alertness, higher fall risk; severe risk in intoxication states (contraindicated when altered consciousness/coma is due to CNS depressants).",
+          "action": "Avoid combining whenever possible. Use extreme caution and close monitoring if unavoidable."
+        },
+        {
+          "interactant": "QT-prolonging medications",
+          "mechanism": "Higher risk of QT prolongation and life-threatening arrhythmias including torsades de pointes, especially with electrolyte abnormalities or underlying heart disease.",
+          "action": "Avoid high-risk combinations when possible. Correct electrolytes and consider ECG monitoring when clinically indicated."
+        },
+        {
+          "interactant": "Blood-pressure-lowering medications",
+          "mechanism": "Worsened orthostatic hypotension and syncope.",
+          "action": "Start low, go slow, and monitor orthostatics in higher-risk patients."
+        },
+        {
+          "interactant": "Anticholinergic medications (high-burden combinations)",
+          "mechanism": "Worsened constipation/ileus, urinary retention, blurred vision, confusion, temperature dysregulation.",
+          "action": "Minimize cumulative anticholinergic load; monitor bowel/bladder function and cognition."
+        },
+        {
+          "interactant": "Spinal or regional anesthesia",
+          "mechanism": "Contraindicated per provided notes.",
+          "action": "Avoid."
+        },
+        {
+          "interactant": "Other interacting therapies",
+          "mechanism": "Significant drug interactions may require dose/frequency changes or avoidance.",
+          "action": "Consult a drug interactions database for patient-specific guidance."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Adherence: every visit"
+        },
+        {
+          "parameter": "Mental status and alertness (sedation, confusion, delirium): every visit"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (EPS): every visit; reassess ~4 weeks after initiation and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Tardive dyskinesia: every visit; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Vital signs (BP, orthostatics, pulse, temperature) and clinical signs of infection: as clinically indicated"
+        },
+        {
+          "parameter": "Fall risk: evaluate regularly in patients ≥60 years or when clinically indicated"
+        },
+        {
+          "parameter": "Weight/Height/BMI: every visit for first 6 months, then quarterly; consider waist circumference at baseline and annually (especially if metabolic risk)"
+        },
+        {
+          "parameter": "Fasting plasma glucose/HbA1c: ~4 months after initiation, then annually (more often if abnormal or high risk)"
+        },
+        {
+          "parameter": "Lipid panel: ~4 months after initiation, then annually (more often if abnormal or high risk)"
+        },
+        {
+          "parameter": "CBC: check prior to initiation and then periodically (especially first 2 to 3 months); monitor for blood dyscrasia symptoms"
+        },
+        {
+          "parameter": "Blood chemistries (electrolytes, renal function, liver function, TSH): as clinically indicated; liver function periodically with prolonged therapy"
+        },
+        {
+          "parameter": "Prolactin effects: ask about symptoms at every visit until stable; check prolactin if symptomatic (menstrual changes, libido changes, gynecomastia, galactorrhea, erectile/ejaculatory issues)"
+        },
+        {
+          "parameter": "Ocular exam: as clinically indicated; particularly if symptoms occur or in higher-risk vision conditions"
+        },
+        {
+          "parameter": "Hyponatremia/SIADH risk in older adults: consider sodium monitoring closely with initiation or dose adjustments"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use of antipsychotic agents during the third trimester may increase the risk of extrapyramidal and/or withdrawal symptoms in newborns (eg, agitation, feeding disorder, hypertonia, hypotonia, respiratory distress, somnolence, tremor). Reported outcomes range from self-limiting to severe.",
+        "lactation": "It is not known if periciazine is present in human milk. According to the manufacturer, breastfeeding is not recommended during treatment with periciazine.",
+        "pediatric": "Children ≥5 years and adolescents (psychosis): Initial 2.5 to 10 mg PO in the morning, then 5 to 30 mg PO in the evening; start lower and increase gradually based on effect and tolerance. To minimize drowsiness, use divided doses with a larger evening dose.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic therapies failed and there is risk of harm. Antipsychotics are potentially inappropriate in adults ≥65 due to increased risk of stroke, cognitive decline, and mortality in dementia, and they can contribute to SIADH/hyponatremia. If used for appropriate indications (eg, psychosis), use the lowest effective dose and reassess frequently, including deprescribing attempts when clinically appropriate.",
+        "renal_impairment": "No dosage adjustment provided in manufacturer labeling.",
+        "hepatic_impairment": "Contraindicated (history of liver dysfunction; hepatic impairment is a hard stop)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Not established in provided notes.",
+          "bioavailability": "Not established in provided notes.",
+          "peak_plasma": "Not established in provided notes.",
+          "half_life": "Not established in provided notes.",
+          "metabolism": "Not established in provided notes.",
+          "excretion": "Not established in provided notes.",
+          "protein_binding": "Not established in provided notes.",
+          "food_effect": "Not established in provided notes."
+        },
+        "dosing": {
+          "titration": "Periciazine dosing is commonly split with a larger evening dose to limit daytime sedation. In psychosis, it’s described as adjunctive therapy when targeting hostility, impulsivity, and aggression. Dose increases should be gradual based on response and tolerability, and maintenance should aim for the lowest effective dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If periciazine is being used for a chronic psychiatric condition, switching to another treatment is generally preferred over stopping outright when side effects are intolerable or the medication isn’t working. If a patient insists on stopping (and it’s not an emergency), taper over weeks to months to reduce withdrawal reactions and to watch for relapse early. Monitor closely for prodromal symptoms of recurrence."
+        }
+      }
     }
   },
   "sections": [
@@ -103,7 +300,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but this is the vibe patients often describe with sedating, older-style antipsychotics like periciazine:",
       "items": [
         {
           "category": "Calm-down effect (especially in the evening)",
@@ -149,7 +345,8 @@
           ],
           "note": "Extrapyramidal symptoms can occur and should be assessed regularly."
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but this is the vibe patients often describe with sedating, older-style antipsychotics like periciazine:"
     },
     {
       "type": "onset_duration",
@@ -162,10 +359,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Periciazine is described for adjunctive use in psychosis to reduce hostility, impulsivity, and aggression. The provided notes specifically caution that it may not be effective as monotherapy for schizophrenia and other types of psychosis—so the expectation is usually add-on benefit rather than primary antipsychotic control.",
       "metric": "Adjunctive behavioral symptom control in psychosis",
       "value": "Not established in provided notes.",
       "comparison": "Not established in provided notes.",
-      "text": "Periciazine is described for adjunctive use in psychosis to reduce hostility, impulsivity, and aggression. The provided notes specifically caution that it may not be effective as monotherapy for schizophrenia and other types of psychosis—so the expectation is usually add-on benefit rather than primary antipsychotic control.",
       "clinical_details": "Clinical use here is symptom-targeted: calming behavioral volatility in psychosis, often leveraging its sedating profile. If the goal is full antipsychotic efficacy for schizophrenia, periciazine may be insufficient as a stand-alone option per the provided notes.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -259,7 +456,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "The provided notes emphasize that significant drug interactions can exist and dosing/frequency adjustments or avoidance may be needed. Key practical interaction themes with typical antipsychotics include additive sedation, QT-prolonging combinations, and medications that worsen hypotension or anticholinergic burden.",
       "items": [
         {
           "with": "CNS depressants (eg, alcohol, opioids, hypnotics, sedatives)",
@@ -291,7 +487,8 @@
           "risk": "Significant drug interactions may require dose/frequency changes or avoidance.",
           "action": "Consult a drug interactions database for patient-specific guidance."
         }
-      ]
+      ],
+      "intro": "The provided notes emphasize that significant drug interactions can exist and dosing/frequency adjustments or avoidance may be needed. Key practical interaction themes with typical antipsychotics include additive sedation, QT-prolonging combinations, and medications that worsen hypotension or anticholinergic burden."
     },
     {
       "type": "tapering",
@@ -372,21 +569,6 @@
       "text": "Periciazine sits in a very specific lane: adjunctive behavioral stabilization in psychosis—especially when hostility, impulsivity, and aggression are front and center and a sedating profile is clinically useful. The provided notes caution it may not be effective as monotherapy for schizophrenia and other psychoses, so it’s generally not a first-choice stand-alone antipsychotic. In older adults, it’s generally avoided for dementia-related behavioral symptoms unless nonpharmacologic approaches fail and there’s a risk of harm."
     }
   ],
-  "seo": {
-    "title": "Periciazine (Neuleptil): Uses, Dosing, Side Effects & Safety",
-    "description": "Periciazine (Neuleptil) is a sedating typical antipsychotic used as adjunctive therapy in psychosis for hostility, impulsivity, and aggression. Learn dosing, side effects (sedation, EPS, QT risk), monitoring, and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/periciazine-neuleptil](https://www.heypsych.com/treatments/periciazine-neuleptil)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is periciazine (Neuleptil) used for?",
@@ -432,5 +614,20 @@
       "q": "Is periciazine safe in pregnancy or breastfeeding?",
       "a": "The provided notes state that antipsychotic exposure in the third trimester may increase the risk of extrapyramidal and/or withdrawal symptoms in newborns. For breastfeeding, it’s not known if periciazine is present in human milk, and the manufacturer does not recommend breastfeeding during treatment."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Periciazine (Neuleptil): Uses, Dosing, Side Effects & Safety",
+    "description": "Periciazine (Neuleptil) is a sedating typical antipsychotic used as adjunctive therapy in psychosis for hostility, impulsivity, and aggression. Learn dosing, side effects (sedation, EPS, QT risk), monitoring, and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/periciazine-neuleptil](https://www.heypsych.com/treatments/periciazine-neuleptil)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

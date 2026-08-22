@@ -1,96 +1,283 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "methotrimeprazine-nozinan",
-  "type": "medication",
-  "name": "Methotrimeprazine (Nozinan)",
-  "summary": "Sedating first-generation antipsychotic used in Canada for psychosis, acute mania, severe anxiety, and short-term insomnia. Strong calming effect, but higher risk of low blood pressure, anticholinergic side effects, and movement symptoms compared with newer antipsychotics.",
-  "description": "Methotrimeprazine (also known as levomepromazine) is a very sedating typical antipsychotic used in Canada for schizophrenia/psychosis and bipolar disorder, and sometimes for severe anxiety or short-term insomnia when sedation is actually the point. It can quiet agitation fast, but it can also drop blood pressure, cause heavy daytime sleepiness, dry mouth/constipation, and movement side effects (EPS/tardive dyskinesia). Not available in the U.S. Liver disease is a hard stop (contraindicated).",
-  "patient_summary": "This is a “knock-the-volume-down” antipsychotic. People often feel calmer and sleepier—sometimes too sleepy. It can help with agitation, racing thoughts, and insomnia, but it can also cause dizziness when standing, dry mouth/constipation, and movement side effects. It’s not a casual med, and it’s not a long-term sleep fix.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "methotrimeprazine-nozinan",
+    "name": "Methotrimeprazine (Nozinan)",
+    "generic_name": "methotrimeprazine",
+    "brand_names": [
+      "Nozinan",
+      "Methoprazine"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
     "drug_classes": [
       "First-Generation (Typical) Antipsychotic",
       "Phenothiazine (Aliphatic)",
       "Sedating Antipsychotic"
-    ],
-    "brand_names": [
-      "Nozinan",
-      "Methoprazine"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (IM)",
-      "Intravenous (IV) (specialty/palliative protocols)",
-      "Subcutaneous (off-label, palliative protocols)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not applicable for this medication.",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "Analgesic, Nonopioid; Antimanic Agent; First Generation (Typical) Antipsychotic",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia and other psychotic disorders",
-      "Bipolar disorder (including acute mania)",
-      "Anxiety (tablet only, Canada)",
-      "Insomnia (short-term; includes sedation in palliative settings)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used for schizophrenia/psychosis when an antipsychotic is needed and strong sedation may be helpful (for example, severe agitation or insomnia tied to psychosis)."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used in bipolar disorder and acute mania. Calming effects can show up within days, with fuller mood stabilization over 1 to 2 weeks."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "In practice, it’s sometimes used short-term for severe anxiety when sedation is a benefit. Tablet labeling in Canada includes anxiety-related conditions."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Sometimes used as a short-term sleep agent (especially when insomnia is driven by agitation, mania, or psychosis). Not a long-term insomnia strategy."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to methotrimeprazine/phenothiazines or any component",
-      "Hepatic disease (contraindicated)",
-      "Hematologic disorders/blood dyscrasias",
-      "Coma or significant CNS depression due to alcohol, hypnotics, analgesics, or opioids",
-      "Injection-specific: bone marrow depression, severe hypotension/circulatory collapse or severe heart disorders, myasthenia gravis, pheochromocytoma, regional/spinal anesthesia, risk of closed-angle glaucoma or urinary retention related to urethroprostatic disorders, history of agranulocytosis, concomitant neuroleptics/dopaminergics, pediatric patients <1 year (parenteral contraindications vary by product)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response timeline (real-world expectation)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "This medication tends to calm agitation and help sleep relatively quickly (hours), while antipsychotic and antimanic effects usually take longer (days to weeks).",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Sedating first-generation antipsychotic used in Canada for psychosis, acute mania, severe anxiety, and short-term insomnia. Strong calming effect, but higher risk of low blood pressure, anticholinergic side effects, and movement symptoms compared with newer antipsychotics.",
+  "description": "Methotrimeprazine (also known as levomepromazine) is a very sedating typical antipsychotic used in Canada for schizophrenia/psychosis and bipolar disorder, and sometimes for severe anxiety or short-term insomnia when sedation is actually the point. It can quiet agitation fast, but it can also drop blood pressure, cause heavy daytime sleepiness, dry mouth/constipation, and movement side effects (EPS/tardive dyskinesia). Not available in the U.S. Liver disease is a hard stop (contraindicated).",
+  "patient_summary": "This is a “knock-the-volume-down” antipsychotic. People often feel calmer and sleepier—sometimes too sleepy. It can help with agitation, racing thoughts, and insomnia, but it can also cause dizziness when standing, dry mouth/constipation, and movement side effects. It’s not a casual med, and it’s not a long-term sleep fix.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used for schizophrenia/psychosis when an antipsychotic is needed and strong sedation may be helpful (for example, severe agitation or insomnia tied to psychosis).",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Used in bipolar disorder and acute mania. Calming effects can show up within days, with fuller mood stabilization over 1 to 2 weeks.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "In practice, it’s sometimes used short-term for severe anxiety when sedation is a benefit. Tablet labeling in Canada includes anxiety-related conditions."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Sometimes used as a short-term sleep agent (especially when insomnia is driven by agitation, mania, or psychosis). Not a long-term insomnia strategy."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability is moderate.",
-      "bioavailability": "~50% (adult data)",
-      "onset": "IM for anxiety/tension: ~1 hour; oral effects for mania may be noticed within days; oral effects for schizophrenia may be noticed within 1-2 weeks",
-      "peak_plasma": "IM: ~0.5-1.5 hours; oral: ~1-3 hours",
-      "half_life": "~15-30 hours",
-      "duration_IR": "~2-4 hours (clinical duration reported for some effects; sedation can feel longer depending on dose and sensitivity)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic; CYP3A4 substrate (minor contribution noted)",
-      "excretion": "Urine and feces",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Oral dosing is typically given with meals to reduce GI upset and improve tolerability."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IM for anxiety/tension: ~1 hour; oral effects for mania may be noticed within days; oral effects for schizophrenia may be noticed within 1-2 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (IM)",
+        "Intravenous (IV) (specialty/palliative protocols)",
+        "Subcutaneous (off-label, palliative protocols)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Not applicable for this medication.",
+          "notes": "This is a sedating antipsychotic. Many people feel sleepy, slowed, or “heavy,” especially early on or after dose increases. If daytime sedation is too much, clinicians often shift more dosing to bedtime and keep daytime doses smaller."
+        },
+        {
+          "effect": "Orthostatic Hypotension (dizziness/faintness when standing)",
+          "incidence": "Not applicable for this medication.",
+          "notes": "This can happen even at therapeutic doses and is more likely with injections and higher doses. Get up slowly, hydrate, and let your prescriber know if you’re having near-fainting episodes."
+        },
+        {
+          "effect": "Anticholinergic Effects (dry mouth, constipation, urinary retention, blurry vision)",
+          "incidence": "Not applicable for this medication.",
+          "notes": "Dry mouth and constipation are common with phenothiazines. Constipation can become severe—don’t ignore it. Urinary retention or severe belly pain needs urgent evaluation."
+        },
+        {
+          "effect": "Extrapyramidal Symptoms (EPS)",
+          "incidence": "Not applicable for this medication.",
+          "notes": "EPS can look like inner restlessness (akathisia), stiffness, tremor, slowed movement, or muscle spasms. Tell your prescriber quickly—early management matters."
+        },
+        {
+          "effect": "Metabolic Effects (weight gain, glucose changes)",
+          "incidence": "Not applicable for this medication.",
+          "notes": "Glucose intolerance and hyperglycemia have been reported with antipsychotics. If you have diabetes or are at risk, monitoring matters."
+        },
+        {
+          "effect": "Prolactin-Related Effects (hormonal/sexual side effects)",
+          "incidence": "Not applicable for this medication.",
+          "notes": "Antipsychotics can raise prolactin. Symptoms can include menstrual changes, low libido, erectile/ejaculatory changes, breast tenderness, or galactorrhea."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, autonomic instability. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Serious arrhythmias/QT prolongation/torsades de pointes: fainting, palpitations, sudden collapse. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe hypotension/circulatory collapse (especially parenteral): syncope, shock. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Blood dyscrasias (agranulocytosis, neutropenia): fever, sore throat, infections. URGENT evaluation."
+        },
+        {
+          "risk": "Tardive dyskinesia: involuntary movements (often face/tongue) that can persist—risk increases with long-term use."
+        },
+        {
+          "risk": "Seizures: phenothiazines can lower seizure threshold."
+        },
+        {
+          "risk": "Paralytic ileus/necrotizing enterocolitis (rare but severe GI complications): severe abdominal pain/distention, vomiting, no stool/gas. EMERGENCY."
+        },
+        {
+          "risk": "Severe hypersensitivity reactions: angioedema, Stevens-Johnson syndrome. EMERGENCY."
+        }
+      ],
+      "black_box_warning": "Canadian boxed warning: Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death compared with placebo. Methotrimeprazine is not indicated for dementia-related psychosis in elderly patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to methotrimeprazine/phenothiazines or any component"
+        },
+        {
+          "contraindication": "Hepatic disease (contraindicated)"
+        },
+        {
+          "contraindication": "Hematologic disorders/blood dyscrasias"
+        },
+        {
+          "contraindication": "Coma or significant CNS depression due to alcohol, hypnotics, analgesics, or opioids"
+        },
+        {
+          "contraindication": "Injection-specific: bone marrow depression, severe hypotension/circulatory collapse or severe heart disorders, myasthenia gravis, pheochromocytoma, regional/spinal anesthesia, risk of closed-angle glaucoma or urinary retention related to urethroprostatic disorders, history of agranulocytosis, concomitant neuroleptics/dopaminergics, pediatric patients <1 year (parenteral contraindications vary by product)"
+        }
+      ],
+      "precautions": [
+        "Contraindicated in hepatic disease (liver disease is a hard stop).",
+        "QT prolongation and life-threatening arrhythmias have been reported with phenothiazines; risk rises with electrolyte problems and other QT-prolonging meds.",
+        "Orthostatic hypotension can be significant, especially after parenteral dosing or higher oral doses.",
+        "CNS depression: can impair driving, decision-making, coordination, and increase fall risk.",
+        "Extrapyramidal symptoms (EPS) and tardive dyskinesia can occur; risk increases with higher doses and longer exposure.",
+        "Neuroleptic malignant syndrome (NMS) is rare but life-threatening: fever, rigidity, confusion, autonomic instability.",
+        "Blood dyscrasias (like agranulocytosis) have been reported with antipsychotics: take infection symptoms seriously.",
+        "Anticholinergic effects can be intense: constipation, urinary retention, blurry vision, dry mouth; paralytic ileus is an emergency.",
+        "Temperature regulation problems: higher risk with heat exposure, dehydration, strenuous exercise, and other anticholinergic meds."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression and impaired coordination; higher risk of respiratory depression, falls, and dangerous sedation.",
+          "action": "Avoid. If you’re drinking, this is the wrong medication for you right now."
+        },
+        {
+          "interactant": "Opioids (and other strong sedatives)",
+          "mechanism": "Severe sedation, respiratory depression, hypotension, falls—risk multiplies, not just adds.",
+          "action": "Avoid or use only with tight coordination and monitoring. Start low, go slow."
+        },
+        {
+          "interactant": "Benzodiazepines, Z-drugs, sedating antihistamines, muscle relaxants, cannabis",
+          "mechanism": "Excess sedation, confusion, impaired judgment, falls, and (in vulnerable people) delirium.",
+          "action": "Minimize combinations whenever possible. If combined, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "QT-prolonging medications (certain antidepressants, antibiotics, antiarrhythmics, methadone, etc.)",
+          "mechanism": "Increased risk of QT prolongation and torsades de pointes, especially with low potassium/magnesium.",
+          "action": "Review the full med list. Consider baseline ECG and electrolyte checks if risk factors exist."
+        },
+        {
+          "interactant": "Anticholinergic medications (benztropine, diphenhydramine, tricyclics, some bladder meds)",
+          "mechanism": "Worsened constipation, urinary retention, blurred vision, dry mouth, confusion/delirium—especially in older adults.",
+          "action": "Keep anticholinergic burden as low as possible. Have a constipation plan."
+        },
+        {
+          "interactant": "Dopamine agonists (e.g., Parkinson’s meds) and stimulants",
+          "mechanism": "Pharmacologic “tug-of-war”: reduced efficacy of one or both; possible worsening of psychosis.",
+          "action": "Coordinate carefully with neurology/psychiatry. Often best avoided or managed with a clear plan."
+        },
+        {
+          "interactant": "Blood pressure medications",
+          "mechanism": "Additive hypotension and dizziness/falls.",
+          "action": "Monitor blood pressure, especially early on and after dose increases."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors/inducers",
+          "mechanism": "Potential level changes (CYP3A4 is noted as a minor substrate pathway).",
+          "action": "Still worth checking for major interaction flags if you’re on multiple meds."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and alertness every visit: sedation level, confusion, and whether daytime functioning is getting crushed."
+        },
+        {
+          "parameter": "Blood pressure and orthostatics, especially after starting, after dose increases, and after parenteral doses; watch for dizziness/falls."
+        },
+        {
+          "parameter": "EPS monitoring at every visit (akathisia, dystonia, parkinsonism). Use a formal rating scale at least annually, or every 6 months if high risk."
+        },
+        {
+          "parameter": "Tardive dyskinesia monitoring at every visit and with a formal scale at least annually (more often if high risk)."
+        },
+        {
+          "parameter": "Fall risk assessment as clinically indicated; extra vigilance in older adults and those with prior falls."
+        },
+        {
+          "parameter": "Metabolic monitoring: weight/BMI frequently early (every visit for first months, then periodically), fasting glucose/HbA1c and lipids at baseline and periodically (e.g., around 4 months after initiation and annually, sooner if abnormal)."
+        },
+        {
+          "parameter": "CBC as clinically indicated, especially if infection symptoms occur (fever, sore throat) or if history of low WBC/drug-induced neutropenia."
+        },
+        {
+          "parameter": "Electrolytes and renal function as clinically indicated; monitor sodium in older adults (hyponatremia/SIADH risk)."
+        },
+        {
+          "parameter": "ECG when clinically indicated (history of QT issues, cardiac disease, syncope, multiple QT-prolonging meds, electrolyte risk)."
+        },
+        {
+          "parameter": "Prolactin symptom screening: ask about menstrual changes, libido changes, gynecomastia, galactorrhea, erectile/ejaculatory issues; check prolactin if symptomatic."
+        },
+        {
+          "parameter": "Constipation and urinary retention checks: treat constipation early; urgent evaluation for severe abdominal pain/distention or inability to urinate."
+        },
+        {
+          "parameter": "Temperature regulation: counsel on heat exposure, dehydration, and strenuous exercise—especially with anticholinergic co-meds."
+        },
+        {
+          "parameter": "Ocular symptoms: assess vision changes; consider eye exam if prolonged exposure or symptoms arise."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Data on methotrimeprazine specifically are limited. As a class, first-generation antipsychotics have not shown a clear major malformation signal overall, but late-pregnancy exposure to antipsychotics can cause newborn EPS and/or withdrawal symptoms (agitation, abnormal muscle tone, tremor, feeding problems, respiratory distress, somnolence). Tapering late in pregnancy to prevent newborn symptoms is generally not recommended; instead, use the lowest effective dose and avoid polypharmacy when possible. For anxiety in pregnancy, other options are usually preferred.",
+        "lactation": "Present in human milk; the manufacturer does not recommend breastfeeding during treatment. Infants exposed to antipsychotics via milk have been reported to have sedation, irritability, poor feeding, motor abnormalities, and slowed development. If exposure occurs, monitor the infant closely—especially if premature or low birth weight, or if the parent is taking other sedating medications.",
+        "pediatric": "For psychiatric/psychotic disorders and related indications, pediatric dosing is weight-based and requires specialist management. Parenteral use is contraindicated in children <1 year due to safety concerns. Children/adolescents may be more vulnerable to movement side effects and sedation; titrate carefully and monitor closely.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic approaches have failed and the patient is at risk of harming self or others. Even when appropriate (e.g., schizophrenia or bipolar disorder), older adults are more sensitive to sedation and orthostatic hypotension. Use the lowest effective dose, titrate slowly, reassess often, and consider deprescribing attempts when stable.",
+        "renal_impairment": "No formal dose adjustment provided; use with caution. Avoid parenteral use in renal impairment when possible.",
+        "hepatic_impairment": "Contraindicated."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability is moderate.",
+          "bioavailability": "~50% (adult data)",
+          "peak_plasma": "IM: ~0.5-1.5 hours; oral: ~1-3 hours",
+          "half_life": "~15-30 hours",
+          "metabolism": "Hepatic; CYP3A4 substrate (minor contribution noted)",
+          "excretion": "Urine and feces",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Oral dosing is typically given with meals to reduce GI upset and improve tolerability."
+        },
+        "dosing": {
+          "titration": "Dosing is highly symptom-driven: lower doses may be enough when the goal is anxiety relief or sleep, while mania/psychosis often require higher divided doses. If pronounced sedation happens, clinicians often use smaller doses during the day and a higher dose at night. If parenteral therapy is used, patients should be switched to oral as soon as possible."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "For chronic psychiatric treatment, switching antipsychotics is often safer than abruptly stopping. If discontinuation is chosen (and it’s not an emergency due to a serious adverse reaction), taper gradually over weeks to months to watch for relapse and reduce withdrawal symptoms."
+        }
+      }
     }
   },
   "sections": [
@@ -113,7 +300,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med has a vibe. It’s not subtle. When it works, people often describe a heavy calm that can be relieving—unless it tips into “I can’t function.”",
       "items": [
         {
           "category": "Calm & Quieting (sometimes fast)",
@@ -158,7 +344,8 @@
           ],
           "note": "EPS can include restlessness (akathisia), stiffness, tremor, dystonia, and—over time—tardive dyskinesia."
         }
-      ]
+      ],
+      "intro": "This med has a vibe. It’s not subtle. When it works, people often describe a heavy calm that can be relieving—unless it tips into “I can’t function.”"
     },
     {
       "type": "onset_duration",
@@ -175,10 +362,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "This is a heavy-sedation antipsychotic. In real-world use, it’s often effective for dialing down agitation, helping with sleep, and taking the “threat level” out of severe anxiety. For mania and psychosis, expect a slower arc: early improvements can happen within the first week, but meaningful stabilization usually builds over 1-2 weeks (mania) and 4-6 weeks (psychosis).",
       "metric": "Clinical effectiveness (psychiatry-focused)",
       "value": "Often strong sedation + calming within hours; symptom improvement in mania/psychosis over days to weeks",
       "comparison": "Not applicable for this medication.",
-      "text": "This is a heavy-sedation antipsychotic. In real-world use, it’s often effective for dialing down agitation, helping with sleep, and taking the “threat level” out of severe anxiety. For mania and psychosis, expect a slower arc: early improvements can happen within the first week, but meaningful stabilization usually builds over 1-2 weeks (mania) and 4-6 weeks (psychosis).",
       "clinical_details": "Methotrimeprazine is most useful when sedation is clinically helpful—like acute agitation, severe insomnia tied to mania/psychosis, or crisis-level anxiety—while still providing dopamine-blocking antipsychotic effects. The tradeoff is tolerability: orthostatic hypotension, anticholinergic effects, and movement risks can limit dosing and long-term use.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -277,7 +464,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Big picture: this medication stacks sedation and blood-pressure-lowering effects with other meds. Also watch QT risk and anticholinergic burden.",
       "items": [
         {
           "with": "Alcohol",
@@ -319,7 +505,8 @@
           "risk": "Potential level changes (CYP3A4 is noted as a minor substrate pathway).",
           "action": "Still worth checking for major interaction flags if you’re on multiple meds."
         }
-      ]
+      ],
+      "intro": "Big picture: this medication stacks sedation and blood-pressure-lowering effects with other meds. Also watch QT risk and anticholinergic burden."
     },
     {
       "type": "tapering",
@@ -402,21 +589,6 @@
       "text": "In modern psychiatry, this isn’t usually a first-choice long-term antipsychotic because the side effect load can be heavy (sedation, hypotension, anticholinergic burden, EPS/TD risk). Where it can make sense is when sedation is clinically useful—severe agitation, insomnia tied to mania/psychosis, or short-term stabilization—especially in settings where this medication is commonly available (Canada) and when alternatives aren’t tolerated or effective."
     }
   ],
-  "seo": {
-    "title": "Methotrimeprazine (Nozinan): Uses, Dosing, Side Effects, Sedation & Withdrawal",
-    "description": "Nozinan (methotrimeprazine/levomepromazine) is a very sedating typical antipsychotic used in Canada for psychosis, bipolar disorder, severe anxiety, and short-term insomnia. Learn dosing, onset, side effects (low blood pressure, EPS), interactions, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/methotrimeprazine-nozinan](https://www.heypsych.com/treatments/methotrimeprazine-nozinan)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is methotrimeprazine (Nozinan) used for in psychiatry?",
@@ -462,5 +634,20 @@
       "q": "What about pregnancy and breastfeeding?",
       "a": "Data for methotrimeprazine specifically are limited. Antipsychotic exposure in the third trimester can cause newborn EPS and/or withdrawal symptoms. For breastfeeding, the manufacturer does not recommend use; the medication is present in human milk and infant sedation/feeding problems are concerns. Decisions should be individualized with shared decision-making."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Methotrimeprazine (Nozinan): Uses, Dosing, Side Effects, Sedation & Withdrawal",
+    "description": "Nozinan (methotrimeprazine/levomepromazine) is a very sedating typical antipsychotic used in Canada for psychosis, bipolar disorder, severe anxiety, and short-term insomnia. Learn dosing, onset, side effects (low blood pressure, EPS), interactions, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/methotrimeprazine-nozinan](https://www.heypsych.com/treatments/methotrimeprazine-nozinan)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

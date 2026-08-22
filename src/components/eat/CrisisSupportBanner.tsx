@@ -62,27 +62,27 @@ export function CrisisSupportBanner({
 
   if (prominent) {
     return (
-      <Card className="border-red-300 bg-gradient-to-r from-red-50 via-rose-50 to-red-50">
+      <Card className="border-negative-500/40 bg-linear-to-r from-negative-900/30 via-surface to-negative-900/30">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100">
-              <AlertCircle className="h-6 w-6 text-red-600" />
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-negative-tint">
+              <AlertCircle className="h-6 w-6 text-negative" />
             </div>
             <div className="flex-1 space-y-4">
               <div>
-                <h3 className="text-lg font-bold text-red-900">Need Immediate Help?</h3>
-                <p className="mt-1 text-sm text-red-800">{message}</p>
+                <h3 className="text-lg font-bold text-negative-700">Need Immediate Help?</h3>
+                <p className="mt-1 text-sm text-label-secondary">{message}</p>
               </div>
 
               <div className="space-y-3">
                 {resources.map((resource, index) => (
                   <div
                     key={index}
-                    className="flex flex-wrap items-center gap-3 rounded-lg border border-red-200 bg-white p-3"
+                    className="flex flex-wrap items-center gap-3 rounded-lg border border-separator bg-surface-grouped p-3"
                   >
                     <div className="flex-1">
-                      <div className="font-semibold text-neutral-900">{resource.name}</div>
-                      <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-neutral-700">
+                      <div className="font-semibold text-label-primary">{resource.name}</div>
+                      <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-label-secondary">
                         {resource.phone && (
                           <div className="flex items-center gap-1">
                             <Phone className="h-3.5 w-3.5" />
@@ -96,7 +96,7 @@ export function CrisisSupportBanner({
                           </div>
                         )}
                         {resource.hours && (
-                          <span className="text-neutral-600">• {resource.hours}</span>
+                          <span className="text-label-tertiary">• {resource.hours}</span>
                         )}
                       </div>
                     </div>
@@ -104,7 +104,7 @@ export function CrisisSupportBanner({
                       <Button
                         size="sm"
                         variant="outline"
-                        className="border-red-300 hover:bg-red-50"
+                        className="border-separator hover:bg-fill-secondary"
                         onClick={() => window.open(resource.url, '_blank')}
                       >
                         <Globe className="mr-1 h-3.5 w-3.5" />
@@ -115,13 +115,13 @@ export function CrisisSupportBanner({
                 ))}
               </div>
 
-              <div className="text-xs text-red-700">
+              <div className="text-xs text-label-secondary">
                 <strong>International?</strong> Find crisis resources in your country at{' '}
                 <a
                   href="https://findahelpline.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-red-900"
+                  className="text-negative-700 underline hover:text-negative-700"
                 >
                   findahelpline.com
                 </a>
@@ -134,15 +134,15 @@ export function CrisisSupportBanner({
   }
 
   return (
-    <div className="rounded-lg border-2 border-red-200 bg-red-50 p-4">
+    <div className="rounded-lg border-2 border-negative-500/40 bg-negative-tint p-4">
       <div className="flex items-start gap-3">
-        <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-600" />
+        <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-negative" />
         <div className="flex-1 space-y-2">
-          <p className="text-sm font-semibold text-red-900">Crisis Support Available 24/7</p>
-          <p className="text-sm text-red-800">{message}</p>
+          <p className="text-sm font-semibold text-negative-700">Crisis Support Available 24/7</p>
+          <p className="text-sm text-label-secondary">{message}</p>
           <div className="flex flex-wrap gap-3 text-sm">
             {resources.slice(0, 2).map((resource, index) => (
-              <div key={index} className="flex items-center gap-1.5 text-red-900">
+              <div key={index} className="flex items-center gap-1.5 text-label-primary">
                 {resource.phone && (
                   <>
                     <Phone className="h-3.5 w-3.5" />

@@ -1,91 +1,233 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "oxazepam-serax",
-  "type": "medication",
-  "name": "Oxazepam (Serax)",
-  "summary": "Short-acting benzodiazepine used for short-term anxiety relief and for symptoms of alcohol withdrawal. Slower to kick in than some benzos, but often chosen when liver function is a concern. High dependence risk—keep it short and keep it supervised.",
-  "description": "Oxazepam is a benzodiazepine used for short-term anxiety relief and for alcohol withdrawal symptoms like tremor and intense anxiety. It can make you sleepy, foggy, and unsteady—especially if you combine it with alcohol, opioids, or other sedatives. Dependence can happen with ongoing use. If you’ve taken it regularly, don’t stop abruptly—taper slowly with a clinician to avoid dangerous withdrawal.",
-  "patient_summary": "Oxazepam can calm anxiety and help with alcohol withdrawal symptoms, but it can also knock you out, slow your thinking, and mess with balance. Mixing it with alcohol or opioids is a hard no because it can suppress breathing. If you take it daily for a while, your body can get dependent—so stopping needs a taper, not a cold turkey.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "GABA-A Receptor Modulator",
-      "Anxiolytic"
-    ],
+  "identity": {
+    "slug": "oxazepam-serax",
+    "name": "Oxazepam (Serax)",
+    "generic_name": "oxazepam",
     "brand_names": [
       "Serax",
       "APO-Oxazepam",
       "DOM-Oxazepam",
       "PRO-Oxazepam",
       "RIVA-Oxazepam"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1965,
-    "pharmacologic_category": "Benzodiazepine, Short-Acting",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety Disorders (short-term treatment)",
-      "Alcohol Withdrawal Syndrome (symptom control)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for short-term relief of severe anxiety symptoms, often as a bridge while first-line treatments (therapy and SSRIs/SNRIs) take effect."
-      },
-      {
-        "slug": "alcohol-withdrawal",
-        "relationship": "primary_treatment",
-        "context": "Used to manage alcohol withdrawal symptoms like tremor and anxiety. It’s sometimes preferred when liver function is impaired because it’s metabolized mainly via glucuronidation."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Not a first-choice sleep medication, but sedation can indirectly help sleep during acute anxiety or withdrawal. Long-term use for sleep is generally a bad tradeoff because of tolerance and dependence."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "May be used short-term for anxiety-driven agitation, but it is not an antidepressant or antipsychotic and is not indicated for psychosis."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to oxazepam or any component of the formulation",
-      "Canadian labeling (not in all US labeling): history of glaucoma, myasthenia gravis, use in infants"
-    ],
-    "efficacy_response": {
-      "metric": "Symptom relief in acute anxiety / withdrawal",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Oxazepam can reduce the physical intensity of anxiety and withdrawal symptoms, but response varies a lot person-to-person. The bigger clinical story is less about a single trial number and more about using the lowest effective dose for the shortest time to avoid dependence.",
-      "citation_tag": "FDA Label / Clinical Guidelines"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "GABA-A Receptor Modulator",
+      "Anxiolytic"
+    ]
+  },
+  "summary": "Short-acting benzodiazepine used for short-term anxiety relief and for symptoms of alcohol withdrawal. Slower to kick in than some benzos, but often chosen when liver function is a concern. High dependence risk—keep it short and keep it supervised.",
+  "description": "Oxazepam is a benzodiazepine used for short-term anxiety relief and for alcohol withdrawal symptoms like tremor and intense anxiety. It can make you sleepy, foggy, and unsteady—especially if you combine it with alcohol, opioids, or other sedatives. Dependence can happen with ongoing use. If you’ve taken it regularly, don’t stop abruptly—taper slowly with a clinician to avoid dangerous withdrawal.",
+  "patient_summary": "Oxazepam can calm anxiety and help with alcohol withdrawal symptoms, but it can also knock you out, slow your thinking, and mess with balance. Mixing it with alcohol or opioids is a hard no because it can suppress breathing. If you take it daily for a while, your body can get dependent—so stopping needs a taper, not a cold turkey.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for short-term relief of severe anxiety symptoms, often as a bridge while first-line treatments (therapy and SSRIs/SNRIs) take effect.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "alcohol-withdrawal",
+          "condition_name": "Alcohol Withdrawal",
+          "relationship": "primary_indication",
+          "context": "Used to manage alcohol withdrawal symptoms like tremor and anxiety. It’s sometimes preferred when liver function is impaired because it’s metabolized mainly via glucuronidation.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Not a first-choice sleep medication, but sedation can indirectly help sleep during acute anxiety or withdrawal. Long-term use for sleep is generally a bad tradeoff because of tolerance and dependence."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "May be used short-term for anxiety-driven agitation, but it is not an antidepressant or antipsychotic and is not indicated for psychosis."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Slowly absorbed from the GI tract",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Typically felt within 1-2 hours (varies)",
-      "peak_plasma": "~3 hours",
-      "half_life": "~8 hours (range: 6-11 hours; can be longer in very old age or severe renal impairment)",
-      "duration_IR": "Classified as short-acting; effects often last several hours",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic glucuronidation (phase II) to an inactive metabolite",
-      "excretion": "Urine (as inactive glucuronide conjugate)",
-      "protein_binding": "96-98%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Typically felt within 1-2 hours (varies)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "Expect some sedation, especially early on or after dose increases. If you feel over-sedated, that’s not a “push through it” situation—dose often needs adjusting."
+        },
+        {
+          "effect": "Dizziness / Vertigo",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "Can feel like lightheadedness or being slightly off-balance. Hydration, slow position changes, and avoiding other sedatives help—but sometimes the dose is simply too high."
+        },
+        {
+          "effect": "Ataxia / Impaired Coordination",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "This is the fall-risk side effect. If you’re older, already unsteady, or on other sedating meds, this matters a lot."
+        },
+        {
+          "effect": "Memory impairment / Amnesia",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "Benzos can interfere with forming new memories while they’re active. If you don’t remember conversations or decisions, that’s a sign to reassess the plan."
+        },
+        {
+          "effect": "Slurred speech / Dysarthria",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "Often a marker of being too sedated—especially if paired with unsteady walking."
+        },
+        {
+          "effect": "Paradoxical excitation (agitation, aggression)",
+          "incidence": "Frequency not defined in labeling",
+          "notes": "Rare but important. If you get more wired, impulsive, angry, or aggressive on a benzo, stop and call your prescriber—this can escalate."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression, coma, and death—risk skyrockets with opioids, alcohol, and other sedatives"
+        },
+        {
+          "risk": "Severe withdrawal reactions with abrupt discontinuation after continued use (can be life-threatening)"
+        },
+        {
+          "risk": "Syncope or severe hypotension (rare but possible), especially in people who can’t tolerate BP drops"
+        },
+        {
+          "risk": "Hazardous sleep-related behaviors (sleep-driving, cooking/eating while asleep) with amnesia"
+        },
+        {
+          "risk": "Worsening depression or suicidality in vulnerable patients"
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined prescribing for patients with inadequate alternative options. Limit dosages and durations to the minimum required and monitor for respiratory depression and sedation.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to oxazepam or any component of the formulation"
+        },
+        {
+          "contraindication": "Canadian labeling (not in all US labeling): history of glaucoma, myasthenia gravis, use in infants"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction risk: higher with alcohol, other sedatives, or illicit substances",
+        "Physical dependence can develop with continued use; risk rises with dose and duration",
+        "Abrupt stopping after continued use can cause severe, potentially life-threatening withdrawal",
+        "CNS depression: impaired driving, judgment, reaction time",
+        "Respiratory disease (COPD, sleep apnea): higher risk of dangerous sedation and breathing suppression",
+        "Depression and suicidality: avoid in depression when possible due to risk of worsening mood symptoms (except acute/emergency situations)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (prescription pain meds, illicit opioids, fentanyl exposure)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death (boxed warning class effect).",
+          "action": "Avoid if possible. If there is no alternative: minimum effective doses, shortest duration, and close monitoring for sedation and breathing problems."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive/synergistic CNS and respiratory depression; blackouts, falls, overdose risk.",
+          "action": "Do not combine. If alcohol use is part of the picture, prescribers need a plan that prioritizes safety."
+        },
+        {
+          "interactant": "Other sedatives (sleep meds, sedating antihistamines, muscle relaxants, some antipsychotics)",
+          "mechanism": "Extra sedation, confusion, falls, impaired driving, breathing suppression in high-risk patients.",
+          "action": "Use extreme caution. Consider dose reductions, timing changes, or alternative meds."
+        },
+        {
+          "interactant": "Cannabis",
+          "mechanism": "More sedation, slowed reaction time, increased accident risk, worse cognition.",
+          "action": "Avoid combining, especially if you’re driving or operating machinery."
+        },
+        {
+          "interactant": "Medications that lower blood pressure or cause dizziness",
+          "mechanism": "Increased lightheadedness, syncope, falls.",
+          "action": "Stand slowly, monitor symptoms, and reassess the regimen if you’re wobbling or fainting."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Respiratory status: especially if COPD, sleep apnea, obesity hypoventilation, or any opioid exposure (monitor for slow/shallow breathing and excessive sedation)."
+        },
+        {
+          "parameter": "Sedation and psychomotor impairment: falls risk, driving risk, reaction time; reassess after dose changes."
+        },
+        {
+          "parameter": "Misuse/addiction risk: early refills, dose escalation, lost prescriptions, using with alcohol/illicit substances, multiple prescribers/pharmacies."
+        },
+        {
+          "parameter": "Mood changes: worsening depression, emotional blunting, irritability, suicidal thoughts—especially in vulnerable patients."
+        },
+        {
+          "parameter": "Paradoxical reactions: agitation, aggression, impulsivity—stop/reassess if this shows up."
+        },
+        {
+          "parameter": "Withdrawal risk: if doses are missed or reduced; slow the taper if rebound symptoms are intense."
+        },
+        {
+          "parameter": "Periodic labs (as clinically indicated): CBC and liver function tests."
+        },
+        {
+          "parameter": "Cardiovascular monitoring when relevant: hypotension, syncope risk in medically fragile patients."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Oxazepam crosses the placenta. Benzodiazepine exposure late in pregnancy may cause neonatal sedation (hypotonia, lethargy, respiratory depression) and/or neonatal withdrawal symptoms (irritability, tremors, feeding difficulties). Data on birth-defect risk are mixed and not perfectly conclusive, so this becomes a shared decision: severity of illness, alternatives, and timing in pregnancy matter. For alcohol withdrawal in pregnancy, benzodiazepines are commonly used and inpatient treatment is generally recommended; near delivery, agents with shorter onset/duration may be preferred and newborn monitoring is important.",
+        "lactation": "Oxazepam is present in breast milk. Case reports describe measurable milk concentrations, and infant sedation has been reported with benzodiazepines as a class in some cases. If oxazepam is used while breastfeeding, use the lowest effective dose and monitor the infant for excessive sleepiness, poor feeding, breathing problems, and poor weight gain. Some guidance considers shorter half-life benzodiazepines more reasonable than long half-life agents with active metabolites when a benzo is necessary.",
+        "pediatric": "Children >12 years and adolescents: refer to adult dosing. Routine psychiatric use in younger patients is generally avoided due to safety risks and paradoxical reactions.",
+        "geriatric": "Beers Criteria flags benzodiazepines as potentially inappropriate in adults ≥65 because of increased risk of cognitive impairment, delirium, falls, fractures, and motor vehicle crashes. If a benzodiazepine is truly necessary (for example, severe anxiety or alcohol withdrawal), use the lowest dose, reassess frequently, and taper as soon as clinically reasonable. Suggested anxiety dosing in older adults: start 10 mg PO three times daily; if needed, increase cautiously to 15 mg PO 3-4 times daily.",
+        "renal_impairment": "No manufacturer dose adjustment provided; adjustment is unlikely based on available evidence, though half-life may be prolonged in severe renal insufficiency. Hemodialysis: not dialyzable (minimal removal).",
+        "hepatic_impairment": "No specific manufacturer dose adjustment is provided, and hepatic dysfunction is not expected to significantly decrease clearance. Clinically, oxazepam is often considered when hepatic concerns exist because metabolism is primarily glucuronidation. Still: start low, go slow, and watch sedation."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1965
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Slowly absorbed from the GI tract",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "~3 hours",
+          "half_life": "~8 hours (range: 6-11 hours; can be longer in very old age or severe renal impairment)",
+          "metabolism": "Hepatic glucuronidation (phase II) to an inactive metabolite",
+          "excretion": "Urine (as inactive glucuronide conjugate)",
+          "protein_binding": "96-98%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Oxazepam dosing depends on what you’re treating: anxiety dosing is scheduled and titrated; alcohol withdrawal dosing is often protocol-based (symptom-triggered or fixed-dose). Exact dosing should match the setting (inpatient vs outpatient), symptom severity, and safety risks (especially opioids, respiratory disease, older age, and substance use history)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If oxazepam has been used regularly, stopping suddenly can trigger a withdrawal syndrome that ranges from miserable to medically dangerous. The safer move is a gradual taper that slows down if symptoms flare."
+        }
+      }
     }
   },
   "sections": [
@@ -106,7 +248,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s nervous system is different, but these are the patterns I see again and again:",
       "items": [
         {
           "category": "Calm (but not instant)",
@@ -152,7 +293,8 @@
           ],
           "note": "If a benzo makes you more aggressive, wired, or out of control, that’s a red flag—contact your prescriber quickly."
         }
-      ]
+      ],
+      "intro": "Everyone’s nervous system is different, but these are the patterns I see again and again:"
     },
     {
       "type": "onset_duration",
@@ -168,10 +310,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Oxazepam can be effective for short-term anxiety relief and for alcohol withdrawal symptoms, especially when dosing is tailored to symptom severity. The key is using it in the right situation: acute, time-limited, and monitored—because the downside risk (dependence, sedation, interactions) rises fast when it becomes routine.",
       "metric": "Real-world symptom control",
       "value": "Variable",
       "comparison": "Not applicable for this medication.",
-      "text": "Oxazepam can be effective for short-term anxiety relief and for alcohol withdrawal symptoms, especially when dosing is tailored to symptom severity. The key is using it in the right situation: acute, time-limited, and monitored—because the downside risk (dependence, sedation, interactions) rises fast when it becomes routine.",
       "clinical_details": "For alcohol withdrawal, benzodiazepines are commonly used either symptom-triggered (based on a validated scale like CIWA-Ar) or fixed-dose regimens depending on setting and seizure/DT risk. Oxazepam is sometimes chosen when hepatic concerns make certain longer-acting options less attractive. For anxiety disorders, it’s generally positioned as short-term relief while first-line treatments take effect.",
       "citation": {
         "authors": "FDA / Clinical Guidelines",
@@ -262,7 +404,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Oxazepam can stack sedation with almost anything that slows the nervous system. The big danger isn’t subtle—it’s breathing suppression and loss of consciousness.",
       "items": [
         {
           "with": "Opioids (prescription pain meds, illicit opioids, fentanyl exposure)",
@@ -289,7 +430,8 @@
           "risk": "Increased lightheadedness, syncope, falls.",
           "action": "Stand slowly, monitor symptoms, and reassess the regimen if you’re wobbling or fainting."
         }
-      ]
+      ],
+      "intro": "Oxazepam can stack sedation with almost anything that slows the nervous system. The big danger isn’t subtle—it’s breathing suppression and loss of consciousness."
     },
     {
       "type": "tapering",
@@ -366,21 +508,6 @@
       "text": "Oxazepam has a clear niche: short-term symptom control for severe anxiety or alcohol withdrawal. For chronic anxiety disorders, it’s usually not the long-game—therapy and SSRIs/SNRIs are the foundation. In alcohol withdrawal, it may be used as part of symptom-triggered or fixed-dose protocols, especially when clinicians want a benzodiazepine option that’s often considered friendlier in hepatic impairment. The core principle stays the same: lowest effective dose, shortest necessary duration, and a real taper plan if use becomes regular."
     }
   ],
-  "seo": {
-    "title": "Oxazepam (Serax): Uses, Dosage, Side Effects, Interactions & Tapering",
-    "description": "Oxazepam (Serax) for short-term anxiety relief and alcohol withdrawal symptoms: dosing regimens, side effects (sedation, falls), dangerous interactions with opioids/alcohol, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/oxazepam-serax](https://www.heypsych.com/treatments/oxazepam-serax)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is oxazepam used for?",
@@ -430,5 +557,20 @@
       "q": "Can oxazepam be used in pregnancy or breastfeeding?",
       "a": "Sometimes, but it requires careful risk-benefit discussion. Benzodiazepines can affect the newborn (sedation or withdrawal symptoms), especially with late-pregnancy exposure. For alcohol withdrawal during pregnancy, benzodiazepines are commonly used and inpatient monitoring is often recommended. During breastfeeding, oxazepam can be present in milk, so if it’s used, the lowest effective dose and infant monitoring for sedation/feeding issues are important."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Oxazepam (Serax): Uses, Dosage, Side Effects, Interactions & Tapering",
+    "description": "Oxazepam (Serax) for short-term anxiety relief and alcohol withdrawal symptoms: dosing regimens, side effects (sedation, falls), dangerous interactions with opioids/alcohol, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/oxazepam-serax](https://www.heypsych.com/treatments/oxazepam-serax)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

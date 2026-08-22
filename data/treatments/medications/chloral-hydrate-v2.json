@@ -1,60 +1,203 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "chloral-hydrate",
-  "type": "medication",
-  "name": "Chloral Hydrate",
-  "summary": "Very old sedative-hypnotic sometimes used for short-term or procedural sedation, mainly in children. Not available in the US and largely replaced by safer options.",
-  "description": "Chloral hydrate is an older sedative-hypnotic medicine that was first introduced in the 19th century. It is broken down in the body to trichloroethanol, which has strong calming and sleep-inducing effects. Today, it is rarely used in adults because newer medications are safer and easier to manage. In some Canadian and international settings, it may still be used for short-term sedation around medical procedures, particularly in young children, and occasionally as a last-resort sleep aid when other options have failed.",
-  "patient_summary": "Chloral hydrate is a strong, old-fashioned sleep and sedation medicine. It can make people very sleepy and relaxed, but it also comes with real risks—especially to breathing, heart rhythm, and the airway. Because of safety concerns and the availability of better options, it is not used much anymore, especially in adults. When it is used, it’s usually for a one-time dose before a medical test or procedure, given under close monitoring by medical staff.",
-  "category": "medications/sedatives-and-hypnotics",
-  "metadata": {
-    "drug_classes": [
-      "Hypnotic, Miscellaneous",
-      "Sedative"
-    ],
+  "identity": {
+    "slug": "chloral-hydrate",
+    "name": "Chloral Hydrate",
     "brand_names": [
       "Chloral Hydrate Odan (Canada)"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": null,
-    "generic_available": true,
-    "fda_approval_year": null,
-    "notes": [
-      "No longer commercially available in the United States.",
-      "Still available in some countries, including Canada, mainly as an oral syrup."
-    ],
     "wikidata_qid": "Q412340"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Procedural sedation (eg, before minor surgery, imaging, EEG, or echocardiogram)",
-      "Short-term sedation in mechanically ventilated pediatric patients (specialist settings only)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "historical",
-        "context": "Historically used for short-term insomnia but now largely discouraged due to safer alternatives."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sedatives-and-hypnotics",
+    "drug_classes": [
+      "Hypnotic, Miscellaneous",
+      "Sedative"
+    ]
+  },
+  "summary": "Very old sedative-hypnotic sometimes used for short-term or procedural sedation, mainly in children. Not available in the US and largely replaced by safer options.",
+  "description": "Chloral hydrate is an older sedative-hypnotic medicine that was first introduced in the 19th century. It is broken down in the body to trichloroethanol, which has strong calming and sleep-inducing effects. Today, it is rarely used in adults because newer medications are safer and easier to manage. In some Canadian and international settings, it may still be used for short-term sedation around medical procedures, particularly in young children, and occasionally as a last-resort sleep aid when other options have failed.",
+  "patient_summary": "Chloral hydrate is a strong, old-fashioned sleep and sedation medicine. It can make people very sleepy and relaxed, but it also comes with real risks—especially to breathing, heart rhythm, and the airway. Because of safety concerns and the availability of better options, it is not used much anymore, especially in adults. When it is used, it’s usually for a one-time dose before a medical test or procedure, given under close monitoring by medical staff.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "procedural-sedation-eg-before-minor-surgery-imaging-eeg-or-echocardiogram",
+          "condition_name": "Procedural sedation (eg, before minor surgery, imaging, EEG, or echocardiogram)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "short-term-sedation-in-mechanically-ventilated-pediatric-patients-specialist-settings-only",
+          "condition_name": "Short-term sedation in mechanically ventilated pediatric patients (specialist settings only)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "Historically used for short-term insomnia but now largely discouraged due to safer alternatives."
+        }
+      ]
+    },
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "15–30 minutes after oral dosing."
+        }
       }
-    ],
-    "contraindications": [
-      "Allergy to chloral hydrate or any component of the formulation",
-      "Marked kidney impairment (eg, CrCl <50 mL/minute in adults; ‘marked renal impairment’ in pediatrics)",
-      "Marked liver impairment",
-      "Severe heart disease (due to increased risk of arrhythmias and low blood pressure)",
-      "Significant esophageal, stomach, or intestinal inflammation, ulcers, or obstruction"
-    ],
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth; onset of sedative effect usually within 15–30 minutes.",
-      "onset": "15–30 minutes after oral dosing.",
-      "duration": "Around 1–2 hours of primary sedation, with possible prolonged drowsiness depending on age and dose.",
-      "metabolism": "Rapidly converted in the liver to trichloroethanol (active), which is then further metabolized and conjugated; some conversion to trichloroacetic acid.",
-      "half_life": "Parent compound is short-lived; active metabolite’s half-life ranges from ~8–12 hours in adults and is much longer in newborns and preterm infants.",
-      "excretion": "Mainly via the kidneys as metabolites, with small amounts in feces.",
-      "protein_binding": "Moderate to high for metabolites (especially trichloroacetic acid)."
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness, ‘hangover’ feeling",
+          "incidence": "Common",
+          "notes": "You may feel sleepy, foggy, or slow-thinking for many hours. Plan to rest and avoid tasks that require clear thinking."
+        },
+        {
+          "effect": "Dizziness and poor coordination",
+          "incidence": "Common",
+          "notes": "Increases fall risk, especially in older adults. Sit up slowly and get help when walking immediately after a dose."
+        },
+        {
+          "effect": "Gastrointestinal upset",
+          "incidence": "Common",
+          "notes": "Nausea, stomach irritation, vomiting, or diarrhea may occur. Taking with juice or mixing with a drink can sometimes help with taste and irritation."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe breathing problems or airway obstruction, especially in infants and young children."
+        },
+        {
+          "risk": "Dangerous heart rhythm changes, including supraventricular arrhythmias or torsades de pointes, and low blood pressure."
+        },
+        {
+          "risk": "Confusion, delirium, hallucinations, or agitation (including paradoxical reactions where a person becomes more restless instead of sleepy)."
+        },
+        {
+          "risk": "Seizures (rare)."
+        },
+        {
+          "risk": "Severe allergic reactions with rash, swelling, or breathing difficulty."
+        },
+        {
+          "risk": "Blood problems such as low white blood cell count or easy bruising (rare)."
+        },
+        {
+          "risk": "Serious skin reactions such as blistering rashes or erythema multiforme (rare)."
+        },
+        {
+          "risk": "Dependence and withdrawal symptoms with long-term or high-dose use."
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to chloral hydrate or any component of the formulation"
+        },
+        {
+          "contraindication": "Marked kidney impairment (eg, CrCl <50 mL/minute in adults; ‘marked renal impairment’ in pediatrics)"
+        },
+        {
+          "contraindication": "Marked liver impairment"
+        },
+        {
+          "contraindication": "Severe heart disease (due to increased risk of arrhythmias and low blood pressure)"
+        },
+        {
+          "contraindication": "Significant esophageal, stomach, or intestinal inflammation, ulcers, or obstruction"
+        }
+      ],
+      "precautions": [
+        "Not available as a commercial product in the United States; other sedatives are preferred because they are safer and easier to dose.",
+        "Can significantly slow breathing and cause airway blockage, especially in children with enlarged tonsils, sleep apnea, or neuromuscular problems.",
+        "May provoke heart rhythm problems and low blood pressure, particularly in people with existing heart disease or who receive large doses.",
+        "Long-term or frequent use can lead to tolerance, dependence, and withdrawal, including confusion, hallucinations, and delirium-like states when stopped abruptly.",
+        "Chloral hydrate can irritate the stomach and esophagus, worsening ulcers or severe gastritis.",
+        "Should never be given outside a supervised medical setting for deep sedation, especially in children."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Greatly increases sedation, poor coordination, and risk of breathing problems or dangerous heart rhythms.",
+          "action": "Avoid completely when chloral hydrate is used."
+        },
+        {
+          "interactant": "Opioid pain medications (eg, codeine, oxycodone, morphine) or other strong sedatives",
+          "mechanism": "Marked increase in risk of severe respiratory depression, coma, or death.",
+          "action": "Use together only under close medical supervision, usually in hospital or monitored settings."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, some sleep medications, certain antihistamines, some antipsychotics)",
+          "mechanism": "Additive sedation and increased risk of falls, confusion, and slowed breathing.",
+          "action": "Avoid or use extreme caution; dose adjustments and monitoring may be required."
+        },
+        {
+          "interactant": "Medications affecting heart rhythm (QT-prolonging drugs)",
+          "mechanism": "Potential additive risk of abnormal heart rhythms.",
+          "action": "Careful ECG and clinical monitoring if combination cannot be avoided."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Continuous monitoring of breathing, oxygen saturation, heart rate, and level of consciousness during and after sedation."
+        },
+        {
+          "parameter": "Blood pressure monitoring, especially with higher doses, in cardiac disease, or in very young or older patients."
+        },
+        {
+          "parameter": "Observation for delayed or recurrent sedation up to 24 hours after dosing, particularly in infants and young children."
+        },
+        {
+          "parameter": "Watch for signs of airway obstruction (snoring, stridor, chest retractions, cyanosis) and be prepared for emergent airway support."
+        },
+        {
+          "parameter": "In prolonged or repeated use (uncommon now), monitoring for signs of tolerance, dependence, and withdrawal on discontinuation."
+        },
+        {
+          "parameter": "In neonates, careful monitoring for jaundice and direct hyperbilirubinemia if chloral hydrate is used repeatedly."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Chloral hydrate crosses the placenta. Long-term use in pregnancy can lead to withdrawal symptoms in the newborn and potential sedation or respiratory issues at birth. Because safer options are available, chloral hydrate is generally avoided in pregnancy unless there is a compelling short-term indication and no better alternative. Any use should be under specialist guidance.",
+        "lactation": "Chloral hydrate and/or its active metabolite appear in breast milk and can cause sedation in nursing infants. If used, infants should be observed for excessive sleepiness, poor feeding, or breathing issues. In most cases, other sedatives or hypnotics with better safety data are preferred for breastfeeding parents.",
+        "pediatric": "Children are particularly vulnerable to breathing problems and airway obstruction with chloral hydrate, especially those with large tonsils, obstructive sleep apnea, or underlying neurologic conditions. Sedation must be done in a fully monitored medical environment with staff trained in pediatric airway management.",
+        "geriatric": "Older adults are more prone to oversedation, confusion, falls, and heart rhythm disturbances. Most guidelines recommend avoiding chloral hydrate in older adults and using safer alternatives.",
+        "renal_impairment": "Since metabolites are cleared by the kidneys, those with marked kidney impairment can accumulate the drug and are at higher risk of toxicity; use is typically contraindicated.",
+        "hepatic_impairment": "Because the drug is converted in the liver to its active metabolite, people with significant liver disease may have unpredictable and prolonged sedation, and are generally not candidates for chloral hydrate."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth; onset of sedative effect usually within 15–30 minutes.",
+          "half_life": "Parent compound is short-lived; active metabolite’s half-life ranges from ~8–12 hours in adults and is much longer in newborns and preterm infants.",
+          "metabolism": "Rapidly converted in the liver to trichloroethanol (active), which is then further metabolized and conjugated; some conversion to trichloroacetic acid.",
+          "excretion": "Mainly via the kidneys as metabolites, with small amounts in feces.",
+          "protein_binding": "Moderate to high for metabolites (especially trichloroacetic acid)."
+        },
+        "dosing": {
+          "titration": "Dosing is highly individualized and should only be determined by clinicians experienced with chloral hydrate. Below is a simplified overview."
+        }
+      }
     }
   },
   "sections": [
@@ -74,7 +217,6 @@
     {
       "type": "patient_experience",
       "heading": "What It Feels Like",
-      "intro": "When chloral hydrate is used, it’s usually for a short period or a single dose under supervision.",
       "items": [
         {
           "category": "Sedation and sleep",
@@ -92,7 +234,8 @@
             "Rarely, people feel paradoxically agitated instead of calm."
           ]
         }
-      ]
+      ],
+      "intro": "When chloral hydrate is used, it’s usually for a short period or a single dose under supervision."
     },
     {
       "type": "onset_duration",
@@ -168,7 +311,6 @@
     {
       "type": "interactions",
       "heading": "Drug and Substance Interactions",
-      "intro": "Chloral hydrate is a central nervous system depressant, so the biggest concerns are with anything else that slows breathing or causes sedation.",
       "items": [
         {
           "with": "Alcohol",
@@ -190,7 +332,8 @@
           "risk": "Potential additive risk of abnormal heart rhythms.",
           "action": "Careful ECG and clinical monitoring if combination cannot be avoided."
         }
-      ]
+      ],
+      "intro": "Chloral hydrate is a central nervous system depressant, so the biggest concerns are with anything else that slows breathing or causes sedation."
     },
     {
       "type": "dosing",
@@ -252,12 +395,6 @@
       "text": "Chloral hydrate is one of the earliest synthetic sedatives (introduced in the late 1800s). In psychiatry and general medicine, it has been largely replaced by benzodiazepines and newer hypnotics that are safer, more predictable, and easier to reverse. Today, chloral hydrate is mainly seen in very specific hospital settings, such as pediatric procedural sedation or intensive care, often when other sedatives are unsuitable or unavailable. For routine insomnia, anxiety, or ongoing sedation needs, it is almost never the first choice."
     }
   ],
-  "seo": {
-    "title": "Chloral Hydrate: Uses, Sedation, Risks, and Modern Role",
-    "description": "Learn how chloral hydrate is used today for short-term sedation, why it has fallen out of favor, and what safety issues patients and caregivers need to know.",
-    "canonical": "https://www.heypsych.com/treatments/chloral-hydrate",
-    "no_index": false
-  },
   "faqs": [
     {
       "q": "Is chloral hydrate still used?",
@@ -283,5 +420,21 @@
       "q": "Is chloral hydrate safe for children?",
       "a": "Chloral hydrate can be used safely in children only in carefully controlled medical environments with trained staff monitoring breathing and heart function. Serious breathing and airway problems have been reported, including deaths, when used improperly or without adequate monitoring."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Chloral Hydrate: Uses, Sedation, Risks, and Modern Role",
+    "description": "Learn how chloral hydrate is used today for short-term sedation, why it has fallen out of favor, and what safety issues patients and caregivers need to know.",
+    "canonical": "https://www.heypsych.com/treatments/chloral-hydrate",
+    "no_index": false
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "unmapped_fields": {
+      "metadata.notes": [
+        "No longer commercially available in the United States.",
+        "Still available in some countries, including Canada, mainly as an oral syrup."
+      ]
+    },
+    "requires_review": false
+  }
 }

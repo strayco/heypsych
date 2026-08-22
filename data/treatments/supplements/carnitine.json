@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "carnitine",
-  "type": "supplement",
-  "name": "Carnitine (L-Carnitine, Acetyl-L-Carnitine)",
-  "summary": "An amino acid–like compound involved in mitochondrial energy metabolism, studied as a supplement for cognitive health, depression, and fatigue.",
-  "description": "Carnitine is a naturally occurring compound derived from lysine and methionine. It plays a central role in transporting fatty acids into mitochondria for energy production. Supplementation is often used in two primary forms: L-carnitine, which supports muscular and metabolic health, and Acetyl-L-carnitine (ALCAR), which can cross the blood-brain barrier and may support cognitive function. Clinical research suggests potential benefits in depression, age-related cognitive decline, neuropathic pain, and fatigue syndromes. Carnitine supplementation is generally well tolerated, though some individuals may experience mild gastrointestinal upset or a 'fishy' odor due to metabolite excretion.",
-  "category": "supplements",
-  "tags": [
-    "mitochondrial-health",
-    "cognition",
-    "depression",
-    "fatigue",
-    "neuroprotection"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid derivative",
-    "natural_source": "Endogenously synthesized in liver and kidney; dietary sources include red meat, dairy, fish",
+  "identity": {
+    "slug": "carnitine",
+    "name": "Carnitine (L-Carnitine, Acetyl-L-Carnitine)",
+    "generic_name": "carnitine",
+    "brand_names": [
+      "Carnitor",
+      "Acetyl-L-Carnitine (various brands)"
+    ],
+    "aliases": [
+      "ALCAR",
+      "Carnitor",
+      "Vitamin BT"
+    ],
+    "wikidata_qid": "Q243309"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Mood",
       "Cognitive function",
@@ -26,76 +29,157 @@
       "Neuroprotection",
       "Energy metabolism"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Carnitor",
-      "Acetyl-L-Carnitine (various brands)"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q243309"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depressive symptoms (particularly dysthymia, geriatric depression)",
-      "Cognitive decline",
-      "Chronic fatigue"
-    ],
-    "off_label_uses": [
-      "Neuropathic pain",
-      "Fibromyalgia",
-      "ADHD"
-    ],
-    "contraindications": [
-      "Trimethylaminuria (can exacerbate fishy odor)",
-      "Seizure disorders (rare reports of increased seizure risk)"
-    ],
-    "monitoring_required": [
-      "Mood and cognitive function",
-      "Energy and fatigue levels",
-      "Tolerance to gastrointestinal side effects"
-    ],
-    "efficacy_rating": {
-      "depression": 3,
-      "cognitive_decline": 3,
-      "fatigue": 2,
-      "neuropathy": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "L-carnitine",
-      "Acetyl-L-carnitine",
-      "ALCAR",
-      "carnitine supplement"
-    ],
-    "synonyms": [
-      "ALCAR",
-      "Carnitor",
-      "Vitamin BT"
-    ],
-    "common_misspellings": [
-      "carnitene",
-      "carnetine"
+    "tags": [
+      "mitochondrial-health",
+      "cognition",
+      "depression",
+      "fatigue",
+      "neuroprotection"
     ]
+  },
+  "summary": "An amino acid–like compound involved in mitochondrial energy metabolism, studied as a supplement for cognitive health, depression, and fatigue.",
+  "description": "Carnitine is a naturally occurring compound derived from lysine and methionine. It plays a central role in transporting fatty acids into mitochondria for energy production. Supplementation is often used in two primary forms: L-carnitine, which supports muscular and metabolic health, and Acetyl-L-carnitine (ALCAR), which can cross the blood-brain barrier and may support cognitive function. Clinical research suggests potential benefits in depression, age-related cognitive decline, neuropathic pain, and fatigue syndromes. Carnitine supplementation is generally well tolerated, though some individuals may experience mild gastrointestinal upset or a 'fishy' odor due to metabolite excretion.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depressive-symptoms-particularly-dysthymia-geriatric-depression",
+          "condition_name": "Depressive symptoms (particularly dysthymia, geriatric depression)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-decline",
+          "condition_name": "Cognitive decline",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-fatigue",
+          "condition_name": "Chronic fatigue",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "neuropathic-pain",
+          "condition_name": "Neuropathic pain",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fibromyalgia",
+          "condition_name": "Fibromyalgia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "cognitive_decline": {
+          "rating": 3
+        },
+        "fatigue": {
+          "rating": 2
+        },
+        "neuropathy": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Diarrhea"
+        },
+        {
+          "effect": "Fishy body odor"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Possible increased seizure risk in predisposed individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Trimethylaminuria (can exacerbate fishy odor)"
+        },
+        {
+          "contraindication": "Seizure disorders (rare reports of increased seizure risk)"
+        }
+      ],
+      "precautions": [
+        "May exacerbate fishy odor in patients with trimethylaminuria.",
+        "Caution in seizure disorders."
+      ],
+      "interactions": [
+        {
+          "interactant": "Valproic acid",
+          "mechanism": "May enhance carnitine depletion",
+          "action": "Supplementation sometimes recommended"
+        },
+        {
+          "interactant": "Thyroid hormone",
+          "mechanism": "Carnitine may reduce thyroid hormone uptake",
+          "action": "Monitor thyroid function"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and cognition"
+        },
+        {
+          "parameter": "Energy levels"
+        },
+        {
+          "parameter": "GI tolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient evidence; use only if benefits outweigh risks",
+        "lactation": "Unknown safety",
+        "pediatric": "May be prescribed for inborn errors of metabolism under medical supervision",
+        "geriatric": "Well studied for depression and cognitive decline"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid derivative",
+        "natural_source": "Endogenously synthesized in liver and kidney; dietary sources include red meat, dairy, fish",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -209,6 +293,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Acetyl-L-Carnitine",
+      "url": "https://examine.com/supplements/acety-l-carnitine/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PLOS One – Acetyl-L-carnitine in Depression (2018)",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0189652"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "L-carnitine",
+      "Acetyl-L-carnitine",
+      "ALCAR",
+      "carnitine supplement"
+    ],
+    "synonyms": [
+      "ALCAR",
+      "Carnitor",
+      "Vitamin BT"
+    ],
+    "common_misspellings": [
+      "carnitene",
+      "carnetine"
+    ]
+  },
   "seo": {
     "title": "Carnitine (L-Carnitine, ALCAR): Energy, Mood & Cognitive Support",
     "description": "Explore the benefits, dosage, and safety of carnitine supplements for depression, cognition, and fatigue. Learn about forms, side effects, and clinical uses.",

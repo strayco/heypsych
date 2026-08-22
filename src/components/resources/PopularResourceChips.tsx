@@ -17,8 +17,8 @@ export function PopularResourceChips() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-3 flex items-center gap-2">
-        <TrendingUp className="h-4 w-4 text-neutral-600" />
-        <span className="text-sm font-semibold text-neutral-700">Popular</span>
+        <TrendingUp className="h-4 w-4 text-label-primary0" />
+        <span className="text-sm font-semibold text-label-tertiary">Popular</span>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -27,14 +27,14 @@ export function PopularResourceChips() {
             key={resource.slug}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.05 }}
+            transition={{ delay: index * 0.04 }}
           >
             <Link
               href={resource.href || `/resources/${resource.slug}`}
-              className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:shadow"
+              className="group inline-flex items-center gap-2 rounded-full border border-separator bg-surface-grouped px-4 py-2 text-sm font-medium text-label-secondary transition-all hover:border-separator hover:bg-fill-secondary hover:text-label-primary"
             >
               <span className="font-semibold">{resource.name}</span>
-              <span className="text-xs text-neutral-600 group-hover:text-blue-600">
+              <span className="text-xs text-label-primary0 group-hover:text-label-tertiary">
                 {resource.label}
               </span>
             </Link>

@@ -1,89 +1,256 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "pimozide-orap",
-  "type": "medication",
-  "name": "Pimozide (Orap)",
-  "summary": "High-potency first-generation antipsychotic used as an alternative option for severe Tourette tics and, off-label, delusional infestation. Effective for some people, but QT prolongation risk makes this a “respect the drug” medication.",
-  "description": "Pimozide is a typical antipsychotic that can reduce severe motor and vocal tics in Tourette syndrome and is sometimes used off-label for delusional infestation (delusional parasitosis). It’s not a first-line choice because of cardiac risk—especially dose-dependent QTc prolongation—and because it can cause movement side effects (EPS), sedation, and anticholinergic symptoms. Baseline and periodic ECG monitoring matters, and certain drug combinations are absolute no-go’s.",
-  "patient_summary": "Pimozide can help with severe Tourette tics and sometimes with delusional infestation, but it comes with real cardiac and movement-risk baggage. You typically start low and titrate slowly, with ECG checks along the way. If QTc runs high at baseline or climbs on treatment, dose reduction or switching is often the right move. This is not a casual med and it’s not a first-line pick for most people.",
-  "category": "medications/tic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "pimozide-orap",
+    "name": "Pimozide (Orap)",
+    "generic_name": "pimozide",
+    "brand_names": [
+      "Orap"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/tic-disorders",
     "drug_classes": [
       "First-Generation (Typical) Antipsychotic",
       "Dopamine Receptor Antagonist",
       "High-Potency Neuroleptic"
-    ],
-    "brand_names": [
-      "Orap"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": true,
-    "fda_approval_year": 1984,
-    "pharmacologic_category": "First-Generation (Typical) Antipsychotic",
-    "published_date": "2026-02-13T00:00:00Z",
-    "last_updated": "2026-02-13T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-13T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Tourette Syndrome (severe motor and phonic tics; alternative agent)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "tourette-syndrome",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for suppression of severe motor and phonic tics in Tourette syndrome after inadequate response to standard treatments. Not intended as first choice."
-      },
-      {
-        "slug": "chronic-tic-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes considered in tic disorders when other options are not accessible or not tolerated, but evidence quality is limited and QT risk changes the risk-benefit math."
-      },
-      {
-        "slug": "delusional-infestation",
-        "relationship": "off_label",
-        "context": "Used as an alternative agent for delusional infestation (delusional parasitosis), typically reserved for situations where preferred options aren’t available or tolerated."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to pimozide or any component",
-      "Severe toxic CNS depression or coma",
-      "History of cardiac arrhythmias",
-      "Congenital long QT syndrome",
-      "Baseline clinically significant QT prolongation or conditions that predispose to torsades de pointes",
-      "Concurrent use with QT-prolonging agents (contraindicated per labeling)",
-      "Hypokalemia or hypomagnesemia (must correct prior to initiation)",
-      "Concurrent use with strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole; certain macrolides; protease inhibitors) due to elevated levels and arrhythmia risk",
-      "Concurrent use with strong CYP2D6 inhibitors (eg, paroxetine) due to increased exposure and cardiac risk",
-      "Use for simple tics or tics other than Tourette syndrome (contraindicated per labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Tic reduction vs placebo",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Pimozide can reduce tics for some people, but guideline confidence in superiority over placebo is low. In real life, the bigger issue is whether benefits outweigh QT and movement risks for a specific patient.",
-      "citation_tag": "AAN 2019"
+  "summary": "High-potency first-generation antipsychotic used as an alternative option for severe Tourette tics and, off-label, delusional infestation. Effective for some people, but QT prolongation risk makes this a “respect the drug” medication.",
+  "description": "Pimozide is a typical antipsychotic that can reduce severe motor and vocal tics in Tourette syndrome and is sometimes used off-label for delusional infestation (delusional parasitosis). It’s not a first-line choice because of cardiac risk—especially dose-dependent QTc prolongation—and because it can cause movement side effects (EPS), sedation, and anticholinergic symptoms. Baseline and periodic ECG monitoring matters, and certain drug combinations are absolute no-go’s.",
+  "patient_summary": "Pimozide can help with severe Tourette tics and sometimes with delusional infestation, but it comes with real cardiac and movement-risk baggage. You typically start low and titrate slowly, with ECG checks along the way. If QTc runs high at baseline or climbs on treatment, dose reduction or switching is often the right move. This is not a casual med and it’s not a first-line pick for most people.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "tourette-syndrome",
+          "condition_name": "Tourette Syndrome",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for suppression of severe motor and phonic tics in Tourette syndrome after inadequate response to standard treatments. Not intended as first choice.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-tic-disorder",
+          "condition_name": "Chronic Tic Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes considered in tic disorders when other options are not accessible or not tolerated, but evidence quality is limited and QT risk changes the risk-benefit math."
+        },
+        {
+          "condition_slug": "delusional-infestation",
+          "condition_name": "Delusional Infestation",
+          "relationship": "off_label",
+          "context": "Used as an alternative agent for delusional infestation (delusional parasitosis), typically reserved for situations where preferred options aren’t available or tolerated."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "At least 50% absorbed after oral dosing",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Within ~1 week for noticeable clinical effect (variable)",
-      "peak_plasma": "6 to 8 hours (range: 4 to 12 hours)",
-      "half_life": "Adults: mean ~111 hours (Tourette data); pediatric mean ~66 hours (6 to 13 years)",
-      "duration_IR": "Variable (long half-life supports once-daily dosing in some patients)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic N-dealkylation primarily via CYP3A4, with contributions from CYP1A2 and CYP2D6",
-      "excretion": "Urine (metabolites)",
-      "protein_binding": "99%",
-      "food_effect": "Avoid grapefruit juice due to increased serum concentration via CYP3A4 inhibition"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Within ~1 week for noticeable clinical effect (variable)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Constipation / Dry mouth",
+          "incidence": ">10%",
+          "notes": "This can sneak up on you. Hydration, fiber, and a bowel plan matter—especially if you’re prone to constipation."
+        },
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": ">10%",
+          "notes": "Many people feel slowed down, especially early on or after a dose increase. Bedtime dosing is often used to reduce daytime drag."
+        },
+        {
+          "effect": "Akathisia (inner restlessness)",
+          "incidence": ">10%",
+          "notes": "This can feel like anxiety but it’s different: more like your body can’t settle. If it happens, don’t just push through—tell your clinician."
+        },
+        {
+          "effect": "Parkinsonism-like symptoms (stiffness, slowed movement, tremor)",
+          "incidence": "Frequency not defined (can be clinically significant)",
+          "notes": "High-potency typical antipsychotics can cause stiffness and tremor. Dose adjustments and symptom management may be needed."
+        },
+        {
+          "effect": "ECG abnormalities / QT prolongation",
+          "incidence": "1% to 10% (ECG abnormalities reported); QT risk is dose- and interaction-dependent",
+          "notes": "This is why ECG monitoring exists in the first place. QT risk isn’t about how you feel—sometimes the ECG is the only early warning."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Torsades de pointes / life-threatening arrhythmias related to QT prolongation: fainting, palpitations, sudden collapse"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, autonomic instability"
+        },
+        {
+          "risk": "Severe extrapyramidal reactions: acute dystonia, oculogyric crisis, opisthotonos"
+        },
+        {
+          "risk": "Tardive dyskinesia: involuntary movements (often tongue/face) that can become persistent"
+        },
+        {
+          "risk": "Blood dyscrasias including neutropenia/agranulocytosis: fever, sore throat, infection signs require urgent evaluation"
+        },
+        {
+          "risk": "Seizures (rare; risk higher in predisposed patients)"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to pimozide or any component"
+        },
+        {
+          "contraindication": "Severe toxic CNS depression or coma"
+        },
+        {
+          "contraindication": "History of cardiac arrhythmias"
+        },
+        {
+          "contraindication": "Congenital long QT syndrome"
+        },
+        {
+          "contraindication": "Baseline clinically significant QT prolongation or conditions that predispose to torsades de pointes"
+        },
+        {
+          "contraindication": "Concurrent use with QT-prolonging agents (contraindicated per labeling)"
+        },
+        {
+          "contraindication": "Hypokalemia or hypomagnesemia (must correct prior to initiation)"
+        },
+        {
+          "contraindication": "Concurrent use with strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole; certain macrolides; protease inhibitors) due to elevated levels and arrhythmia risk"
+        },
+        {
+          "contraindication": "Concurrent use with strong CYP2D6 inhibitors (eg, paroxetine) due to increased exposure and cardiac risk"
+        },
+        {
+          "contraindication": "Use for simple tics or tics other than Tourette syndrome (contraindicated per labeling)"
+        }
+      ],
+      "precautions": [
+        "Dose-dependent QTc prolongation: Avoid use in patients with elevated baseline QTc (commonly referenced threshold >450 msec) and do not ignore QTc increases on treatment",
+        "If QTc exceeds 500 msec or increases substantially from baseline (for example, ≥60 msec), reassess urgently: lower dose or switch antipsychotic",
+        "Contraindicated with many QT-prolonging drugs and strong CYP3A4 inhibitors due to arrhythmia risk",
+        "Extrapyramidal symptoms (EPS), including dystonia, akathisia, parkinsonism, and tardive dyskinesia can occur",
+        "Neuroleptic malignant syndrome (NMS) is rare but life-threatening",
+        "Older adults: generally avoid (Beers Criteria concerns, including stroke/cognitive decline/mortality signals with antipsychotics in dementia-related psychosis)",
+        "CNS depression: can impair driving and tasks requiring alertness"
+      ],
+      "interactions": [
+        {
+          "interactant": "QT-prolonging medications (multiple classes)",
+          "mechanism": "Additive QT prolongation → torsades de pointes risk.",
+          "action": "Avoid combination. If a QT-prolonging drug is necessary, consider switching away from pimozide."
+        },
+        {
+          "interactant": "Strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole; some macrolides; protease inhibitors)",
+          "mechanism": "Increased pimozide exposure → higher QT risk and toxicity.",
+          "action": "Contraindicated per labeling. Use an alternative antipsychotic or alternative interacting medication."
+        },
+        {
+          "interactant": "Strong CYP2D6 inhibitors (eg, paroxetine)",
+          "mechanism": "Increased pimozide levels → higher arrhythmia risk.",
+          "action": "Avoid. If an antidepressant is needed, choose one that doesn’t create this high-risk interaction."
+        },
+        {
+          "interactant": "SSRIs with specific contraindications or QT concerns (varies by agent; labeling lists several)",
+          "mechanism": "Either QT synergy and/or metabolic inhibition depending on the specific antidepressant.",
+          "action": "Treat this as a pharmacist-level interaction check every time. If you’re on pimozide, do not start or change antidepressants without reviewing interactions."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "CYP3A4 inhibition → increased pimozide serum concentration.",
+          "action": "Avoid grapefruit and grapefruit products."
+        },
+        {
+          "interactant": "Electrolyte-lowering risks (anything that can cause low potassium or magnesium)",
+          "mechanism": "Hypokalemia/hypomagnesemia increases torsades risk when QT is prolonged.",
+          "action": "Correct electrolytes before starting and recheck when clinically indicated (vomiting/diarrhea, diuretics, etc.)."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "ECG: Baseline and periodically thereafter, especially during dose adjustments, after significant dose increases, or when adding any QT-prolonging or metabolism-altering medication"
+        },
+        {
+          "parameter": "Electrolytes (potassium, magnesium): Correct abnormalities prior to initiation; recheck when clinically indicated (diuretics, vomiting/diarrhea, medical illness)"
+        },
+        {
+          "parameter": "CYP2D6 geno-/phenotyping: At baseline when planning higher doses; required if exceeding specific dose thresholds (adult doses >4 mg/day; children thresholds are weight-based in some guidance)"
+        },
+        {
+          "parameter": "EPS monitoring: Akathisia, dystonia, parkinsonism—assess at every visit during titration; use a structured scale periodically if available"
+        },
+        {
+          "parameter": "Tardive dyskinesia: Screen regularly (every visit and at least annually; more often if high risk)"
+        },
+        {
+          "parameter": "Mental status and functioning: Track target symptom change (tics or delusional intensity), sedation, attention, and daily functioning"
+        },
+        {
+          "parameter": "CBC when clinically indicated: Especially in patients with risk factors for leukopenia/neutropenia; discontinue if ANC <1,000/mm3"
+        },
+        {
+          "parameter": "Vital signs and fall risk: Particularly in patients ≥60 or those with sedation/orthostasis symptoms"
+        },
+        {
+          "parameter": "Weight/BMI and metabolic labs: While pimozide is not the most notorious for metabolic issues, antipsychotic monitoring standards still apply—especially if treatment is long-term"
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (when used): Draw trough just before next dose; interpret as an adherence and exposure tool rather than a standalone dosing target"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Antipsychotic exposure in the third trimester can be associated with newborn EPS and withdrawal symptoms (agitation, tone changes, tremor, feeding problems, respiratory distress, somnolence). Use only when the benefits clearly outweigh risks, and coordinate with obstetrics when possible.",
+        "lactation": "It is not known whether pimozide is excreted in breast milk. Because of potential for serious adverse reactions in the nursing infant, weigh the importance of treatment against breastfeeding; consider alternative treatment strategies when feasible.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Generally avoid. Antipsychotics are flagged as potentially inappropriate in many older adults, especially for dementia-related behavioral symptoms. If used, justify carefully, use the lowest effective dose, and monitor closely for falls, cognitive effects, and cardiac risk.",
+        "renal_impairment": "No manufacturer-provided adjustment; use with caution.",
+        "hepatic_impairment": "No manufacturer-provided adjustment; use with caution. Hepatic metabolism is clinically important, and drug interactions can meaningfully raise levels."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1984
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "At least 50% absorbed after oral dosing",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "6 to 8 hours (range: 4 to 12 hours)",
+          "half_life": "Adults: mean ~111 hours (Tourette data); pediatric mean ~66 hours (6 to 13 years)",
+          "metabolism": "Hepatic N-dealkylation primarily via CYP3A4, with contributions from CYP1A2 and CYP2D6",
+          "excretion": "Urine (metabolites)",
+          "protein_binding": "99%",
+          "food_effect": "Avoid grapefruit juice due to increased serum concentration via CYP3A4 inhibition"
+        },
+        "dosing": {
+          "titration": "Pimozide dosing is slow-and-steady: start low, titrate carefully, and build in ECG monitoring—especially during dose changes. The dosing below reflects psychiatry-relevant uses from your notes (Tourette syndrome and delusional infestation)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If pimozide needs to be stopped and it’s not an emergency safety stop, tapering is usually the move. A gradual taper helps you catch returning symptoms early and reduces the risk of withdrawal reactions (like agitation, anxiety, insomnia, sweating, GI symptoms, tremor, and restlessness)."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +269,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People’s experiences vary a lot, but pimozide tends to land in a few predictable buckets:",
       "items": [
         {
           "category": "Tics turn down (but not always)",
@@ -139,7 +305,8 @@
           ],
           "note": "QTc prolongation risk is dose-related and interaction-sensitive, so monitoring is part of the deal."
         }
-      ]
+      ],
+      "intro": "People’s experiences vary a lot, but pimozide tends to land in a few predictable buckets:"
     },
     {
       "type": "onset_duration",
@@ -155,10 +322,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Pimozide can reduce tics for some people, but modern guidelines rate the confidence in superiority over placebo as low. In practice, the decision often comes down to: (1) severity and impairment from tics, (2) what’s already been tried, and (3) whether the patient can safely do the cardiac monitoring and avoid dangerous interactions.",
       "metric": "Confidence in tic reduction vs placebo",
       "value": "Low confidence (guideline assessment)",
       "comparison": "Placebo",
-      "text": "Pimozide can reduce tics for some people, but modern guidelines rate the confidence in superiority over placebo as low. In practice, the decision often comes down to: (1) severity and impairment from tics, (2) what’s already been tried, and (3) whether the patient can safely do the cardiac monitoring and avoid dangerous interactions.",
       "clinical_details": "The American Academy of Neurology practice guideline on tics notes limited and lower-confidence evidence for pimozide’s benefit, and highlights the safety trade-offs—especially QT prolongation and extrapyramidal symptoms. That combination is why pimozide is typically reserved for more severe cases and for situations where other treatments are not effective or not feasible.",
       "citation": {
         "authors": "Pringsheim T, et al.",
@@ -245,7 +412,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Pimozide is the opposite of a “mix and match” medication. QT prolongation risk plus CYP metabolism means certain combinations are straight-up contraindicated.",
       "items": [
         {
           "with": "QT-prolonging medications (multiple classes)",
@@ -277,7 +443,8 @@
           "risk": "Hypokalemia/hypomagnesemia increases torsades risk when QT is prolonged.",
           "action": "Correct electrolytes before starting and recheck when clinically indicated (vomiting/diarrhea, diuretics, etc.)."
         }
-      ]
+      ],
+      "intro": "Pimozide is the opposite of a “mix and match” medication. QT prolongation risk plus CYP metabolism means certain combinations are straight-up contraindicated."
     },
     {
       "type": "tapering",
@@ -358,21 +525,6 @@
       "text": "Pimozide is usually a second- or third-line tool. For Tourette tics, it’s generally reserved for moderate-to-severe, function-impairing tics when standard treatments haven’t worked or aren’t tolerated—because QT risk and interactions raise the stakes. For delusional infestation, it’s typically considered an alternative option when preferred antipsychotics aren’t accessible or tolerated, and when the clinical picture is firmly in the delusional range (not a dermatologic or neurologic mimic)."
     }
   ],
-  "seo": {
-    "title": "Pimozide (Orap): Uses, Dosing, Side Effects, QT Risk & Monitoring",
-    "description": "Pimozide (Orap) for severe Tourette tics and delusional infestation: dosing, titration, QT prolongation risk, interactions, side effects (EPS), monitoring, and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/pimozide-orap](https://www.heypsych.com/treatments/pimozide-orap)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is pimozide used for in psychiatry?",
@@ -418,5 +570,20 @@
       "q": "Is pimozide safe for older adults?",
       "a": "Often it’s best avoided. Antipsychotics are considered high-risk in many older adults, especially in dementia-related psychosis where increased mortality and stroke risks have been observed with antipsychotics as a class. If used, it should be with strong justification, the lowest effective dose, and tight monitoring."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Pimozide (Orap): Uses, Dosing, Side Effects, QT Risk & Monitoring",
+    "description": "Pimozide (Orap) for severe Tourette tics and delusional infestation: dosing, titration, QT prolongation risk, interactions, side effects (EPS), monitoring, and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/pimozide-orap](https://www.heypsych.com/treatments/pimozide-orap)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

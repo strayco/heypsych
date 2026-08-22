@@ -1,80 +1,163 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "transcranial-focused-ultrasound",
-  "type": "interventional",
-  "name": "Transcranial Focused Ultrasound (tFUS)",
-  "summary": "A non-invasive neuromodulation and lesioning technique using focused ultrasound waves to either modulate brain activity or ablate targeted tissue for conditions such as tremor and depression.",
-  "description": "Transcranial Focused Ultrasound (tFUS) is an emerging neuromodulation and neurosurgical technology that uses highly focused ultrasound beams delivered through the skull to specific brain regions. Depending on the intensity, tFUS can either transiently modulate neuronal activity or permanently ablate tissue. It is FDA-approved for essential tremor and Parkinson’s disease tremor, with ongoing research into psychiatric conditions such as depression and obsessive-compulsive disorder. Because it is incisionless, tFUS avoids many risks of open neurosurgery, but requires MRI guidance and specialized equipment.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "tFUS",
-    "focused ultrasound",
-    "neuromodulation",
-    "non-invasive",
-    "brain stimulation",
-    "neurosurgery"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "transcranial-focused-ultrasound",
+    "name": "Transcranial Focused Ultrasound (tFUS)",
+    "generic_name": "transcranial focused ultrasound",
+    "brand_names": [
+      "tFUS"
+    ],
+    "wikidata_qid": "Q135489699"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
     "intervention_types": [
       "Ultrasound neuromodulation",
       "Thermal ablation"
     ],
-    "treatment_types": [
-      "Neurostimulation",
-      "Lesioning"
-    ],
-    "categories": [
-      "Neurology",
-      "Psychiatry",
-      "Neurosurgery"
-    ],
-    "delivery_methods": [
-      "MRI-guided focused ultrasound"
-    ],
-    "invasiveness_level": "Non-invasive / Incisionless",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "1–4 hours (depending on application)",
-    "treatment_duration": "Single session for ablation; multiple for neuromodulation protocols",
-    "specialty_areas": [
-      "Neurosurgery",
-      "Neurology",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q135489699"
+    "tags": [
+      "tFUS",
+      "focused ultrasound",
+      "neuromodulation",
+      "non-invasive",
+      "brain stimulation",
+      "neurosurgery"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Essential tremor",
-      "Parkinson’s disease tremor"
-    ],
-    "conditions_treated": [
-      "Essential tremor",
-      "Parkinson’s disease",
-      "Treatment-resistant depression",
-      "Obsessive-compulsive disorder"
-    ],
-    "off_label_uses": [
-      "Neuropathic pain",
-      "Epilepsy",
-      "Alzheimer’s disease"
-    ],
-    "contraindications": [
-      "Skull density ratio too low for effective targeting",
-      "MRI contraindications (e.g., metallic implants, severe claustrophobia)",
-      "Uncontrolled medical illness"
-    ],
-    "safety_profile": "Generally safe but can cause headache, dizziness, balance problems, or transient neurological deficits. Ablation procedures may carry risk of permanent deficits.",
-    "evidence_level": "High for essential tremor; early/moderate for psychiatric disorders.",
-    "research_support": "Dozens of trials in tremor disorders; increasing number of pilot studies in psychiatry.",
-    "invasiveness": "Non-invasive (no incision, incisionless neurosurgery)",
-    "efficacy_rating": {
-      "essential_tremor": 5,
-      "parkinsons_tremor": 4,
-      "depression": 2
+  "summary": "A non-invasive neuromodulation and lesioning technique using focused ultrasound waves to either modulate brain activity or ablate targeted tissue for conditions such as tremor and depression.",
+  "description": "Transcranial Focused Ultrasound (tFUS) is an emerging neuromodulation and neurosurgical technology that uses highly focused ultrasound beams delivered through the skull to specific brain regions. Depending on the intensity, tFUS can either transiently modulate neuronal activity or permanently ablate tissue. It is FDA-approved for essential tremor and Parkinson’s disease tremor, with ongoing research into psychiatric conditions such as depression and obsessive-compulsive disorder. Because it is incisionless, tFUS avoids many risks of open neurosurgery, but requires MRI guidance and specialized equipment.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "essential-tremor",
+          "condition_name": "Essential tremor",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parkinson-s-disease-tremor",
+          "condition_name": "Parkinson’s disease tremor",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "parkinson-s-disease",
+          "condition_name": "Parkinson’s disease",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "neuropathic-pain",
+          "condition_name": "Neuropathic pain",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "alzheimer-s-disease",
+          "condition_name": "Alzheimer’s disease",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for essential tremor; early/moderate for psychiatric disorders.",
+      "efficacy_ratings": {
+        "essential_tremor": {
+          "rating": 5
+        },
+        "parkinsons_tremor": {
+          "rating": 4
+        },
+        "depression": {
+          "rating": 2
+        }
+      },
+      "research_support": "Dozens of trials in tremor disorders; increasing number of pilot studies in psychiatry."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Single session for ablation; multiple for neuromodulation protocols"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "MRI-guided focused ultrasound"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "1–4 hours (depending on application)"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally safe but can cause headache, dizziness, balance problems, or transient neurological deficits. Ablation procedures may carry risk of permanent deficits.",
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Scalp discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Permanent neurological deficits from mis-targeted ablation"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Skull density ratio too low for effective targeting"
+        },
+        {
+          "contraindication": "MRI contraindications (e.g., metallic implants, severe claustrophobia)"
+        },
+        {
+          "contraindication": "Uncontrolled medical illness"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not studied; avoided due to MRI and ultrasound exposure."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Ultrasound neuromodulation, Thermal ablation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "MRI-guided targeting of brain region (e.g., thalamus for tremor).\nApplication of low- or high-intensity ultrasound pulses.\nTemperature monitored in real time via MR thermography."
+      }
     }
   },
   "sections": [
@@ -215,6 +298,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Elias WJ, et al. A randomized trial of focused ultrasound thalamotomy for essential tremor. N Engl J Med. (2016).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27557301/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Folloni D, et al. Manipulation of subcortical and deep cortical activity in the primate brain using transcranial focused ultrasound stimulation. Neuron. (2019).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30981666/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Legon W, et al. Transcranial focused ultrasound modulates the activity of primary somatosensory cortex in humans. Nat Neurosci. (2014).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25038769/"
+    }
+  ],
   "seo": {
     "title": "Transcranial Focused Ultrasound (tFUS) | Non-Invasive Brain Therapy",
     "description": "Learn about Transcranial Focused Ultrasound (tFUS), a non-invasive brain therapy used for essential tremor, Parkinson’s disease, and emerging psychiatric applications.",
@@ -227,5 +330,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for essential tremor; early/moderate for psychiatric disorders."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for essential tremor; early/moderate for psychiatric disorders."
+    ]
   }
 }

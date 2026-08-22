@@ -1,76 +1,147 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "mantra-therapy",
-  "type": "therapy",
-  "name": "MANTRA (Maudsley Model of Anorexia Nervosa Treatment for Adults)",
-  "summary": "MANTRA is a structured outpatient psychotherapy for adults with anorexia nervosa that supports nutritional recovery and targets the thinking, emotional, and relationship patterns that keep restrictive eating going.",
-  "description": "MANTRA (Maudsley Model of Anorexia Nervosa Treatment for Adults) is a manualized therapy created specifically for adults with anorexia nervosa. It focuses on common maintaining factors such as rigid thinking, avoidance of difficult emotions, identity issues tied to the eating disorder, and relationship patterns that make change harder. Treatment is collaborative and typically paired with medical monitoring and nutrition support. It is not appropriate as a stand-alone option when medical risk is high or when someone cannot stay safe in outpatient care.",
-  "category": "therapy/eating-disorders",
-  "tags": [
-    "MANTRA",
-    "MANTRA therapy",
-    "Maudsley model for adults",
-    "anorexia nervosa therapy",
-    "adult anorexia treatment",
-    "eating disorder psychotherapy",
-    "restrictive eating disorder treatment",
-    "treatment for atypical anorexia",
-    "outpatient eating disorder therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "mantra-therapy",
+    "name": "MANTRA (Maudsley Model of Anorexia Nervosa Treatment for Adults)",
+    "generic_name": "mantra",
+    "brand_names": [
+      "Maudsley Model of Anorexia Nervosa Treatment for Adults"
+    ]
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/eating-disorders",
     "intervention_types": [
       "Psychological therapy"
     ],
-    "treatment_types": [
-      "Individual psychotherapy"
-    ],
-    "categories": [
-      "Eating disorders",
-      "Adult mental health"
-    ],
-    "delivery_methods": [
-      "In-person therapy",
-      "Teletherapy (when medically appropriate and safety monitoring is feasible)"
-    ],
-    "equipment_required": "None",
-    "training_required": "Clinician training in MANTRA or specialist eating disorder treatment, ideally with supervision.",
-    "age_groups": [
-      "Adults"
-    ],
-    "session_duration": "50–60 minutes",
-    "treatment_duration": [
-      "Often 20–40 sessions",
-      "Commonly delivered over 6–12 months depending on severity and service setting"
-    ],
-    "specialty_areas": [
-      "Anorexia nervosa",
-      "Atypical anorexia nervosa",
-      "Restrictive eating disorders",
-      "Body image distress",
-      "Emotion avoidance"
+    "tags": [
+      "MANTRA",
+      "MANTRA therapy",
+      "Maudsley model for adults",
+      "anorexia nervosa therapy",
+      "adult anorexia treatment",
+      "eating disorder psychotherapy",
+      "restrictive eating disorder treatment",
+      "treatment for atypical anorexia",
+      "outpatient eating disorder therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anorexia nervosa in adults",
-      "Atypical anorexia nervosa in adults"
-    ],
-    "conditions_treated": [
-      "Anorexia nervosa",
-      "Atypical anorexia nervosa"
-    ],
-    "off_label_uses": [
-      "Not applicable for this treatment."
-    ],
-    "contraindications": [
-      "Medical instability requiring inpatient medical stabilization or a higher level of care",
-      "Severe cognitive impairment from malnutrition that prevents meaningful outpatient psychotherapy work",
-      "Acute psychosis or uncontrolled mania requiring stabilization",
-      "Inability to maintain basic safety in outpatient care without immediate higher support"
-    ],
-    "safety_profile": "Psychotherapy is generally physically safe. Distress and anxiety can increase during nutritional rehabilitation and behavior change. Safety depends on appropriate medical monitoring and escalation to higher care when needed.",
-    "evidence_level": "Evidence supports MANTRA as a specialist treatment option for adults with anorexia nervosa. As with most adult anorexia treatments, outcomes vary and no single approach is clearly best for everyone.",
-    "research_support": "Randomized trials and guideline summaries support MANTRA as one of several evidence-based specialist psychotherapies for adult anorexia nervosa, with a collaborative style that many patients find acceptable."
+  "summary": "MANTRA is a structured outpatient psychotherapy for adults with anorexia nervosa that supports nutritional recovery and targets the thinking, emotional, and relationship patterns that keep restrictive eating going.",
+  "description": "MANTRA (Maudsley Model of Anorexia Nervosa Treatment for Adults) is a manualized therapy created specifically for adults with anorexia nervosa. It focuses on common maintaining factors such as rigid thinking, avoidance of difficult emotions, identity issues tied to the eating disorder, and relationship patterns that make change harder. Treatment is collaborative and typically paired with medical monitoring and nutrition support. It is not appropriate as a stand-alone option when medical risk is high or when someone cannot stay safe in outpatient care.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anorexia-nervosa-in-adults",
+          "condition_name": "Anorexia nervosa in adults",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "atypical-anorexia-nervosa-in-adults",
+          "condition_name": "Atypical anorexia nervosa in adults",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anorexia-nervosa",
+          "condition_name": "Anorexia nervosa",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "atypical-anorexia-nervosa",
+          "condition_name": "Atypical anorexia nervosa",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "not-applicable-for-this-treatment",
+          "condition_name": "Not applicable for this treatment.",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Evidence supports MANTRA as a specialist treatment option for adults with anorexia nervosa. As with most adult anorexia treatments, outcomes vary and no single approach is clearly best for everyone.",
+      "research_support": "Randomized trials and guideline summaries support MANTRA as one of several evidence-based specialist psychotherapies for adult anorexia nervosa, with a collaborative style that many patients find acceptable."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Often 20–40 sessions; Commonly delivered over 6–12 months depending on severity and service setting"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person therapy",
+        "Teletherapy (when medically appropriate and safety monitoring is feasible)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–60 minutes"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Clinician training in MANTRA or specialist eating disorder treatment, ideally with supervision."
+      }
+    },
+    "safety": {
+      "overall_safety": "Psychotherapy is generally physically safe. Distress and anxiety can increase during nutritional rehabilitation and behavior change. Safety depends on appropriate medical monitoring and escalation to higher care when needed.",
+      "common_adverse_effects": [
+        {
+          "effect": "Increased anxiety during nutritional rehabilitation"
+        },
+        {
+          "effect": "Emotional discomfort when reducing avoidance and control behaviors"
+        },
+        {
+          "effect": "Temporary spikes in eating disorder thoughts during change"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Worsening medical instability if intake does not improve (requires urgent medical review)"
+        },
+        {
+          "risk": "Dropout during periods of high ambivalence or shame (reduces benefit and may require re-engagement planning)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Medical instability requiring inpatient medical stabilization or a higher level of care"
+        },
+        {
+          "contraindication": "Severe cognitive impairment from malnutrition that prevents meaningful outpatient psychotherapy work"
+        },
+        {
+          "contraindication": "Acute psychosis or uncontrolled mania requiring stabilization"
+        },
+        {
+          "contraindication": "Inability to maintain basic safety in outpatient care without immediate higher support"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual psychotherapy",
+        "key_techniques": [
+          "Eating disorders",
+          "Adult mental health"
+        ],
+        "session_structure": {
+          "pre_session": "Review safety, medical status as relevant, eating patterns since the last session, and any high-risk behaviors (restriction, purging, over-exercise).",
+          "during_session": "Work through the MANTRA formulation, focus on the current maintaining factor(s), and agree on realistic behavior and support steps for the week.",
+          "post_session": "Brief recap of insights and the next small actions; track what happens and bring it back to the next session."
+        }
+      }
+    }
   },
   "sections": [
     {
@@ -402,5 +473,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2026-01-30",
     "lastUpdated": "2026-01-30"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Evidence supports MANTRA as a specialist treatment option for adults with anorexia nervosa. As with most adult anorexia treatments, outcomes vary and no single approach is clearly best for everyone."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Evidence supports MANTRA as a specialist treatment option for adults with anorexia nervosa. As with most adult anorexia treatments, outcomes vary and no single approach is clearly best for everyone."
+    ]
   }
 }

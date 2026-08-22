@@ -45,7 +45,7 @@ export function CrisisSearchInput({
             Search specialized crisis hotlines
           </label>
           <Search
-            className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-slate-400"
+            className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0"
             aria-hidden="true"
           />
           <Input

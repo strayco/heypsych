@@ -1,76 +1,222 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "brexanolone-zulresso",
-  "type": "medication",
-  "name": "Brexanolone (Zulresso)",
-  "summary": "First-in-class IV GABA-A modulator for severe postpartum depression. Given as a single 60-hour continuous infusion in a REMS-certified facility with intensive monitoring for excessive sedation and loss of consciousness.",
-  "description": "Brexanolone is an intravenous positive allosteric modulator of GABA-A receptors and the first medication specifically approved for postpartum depression (PPD). It is given as a one-time, 60-hour continuous infusion in a certified health care setting under the ZULRESSO REMS program. In clinical trials, many patients experienced rapid improvement in depressive symptoms within days, with benefits that often persisted for weeks. However, brexanolone can cause excessive sedation and sudden loss of consciousness, requiring continuous pulse oximetry and frequent sedation checks. Patients must be accompanied during interactions with their children throughout the infusion.",
-  "patient_summary": "Brexanolone (Zulresso) is a one-time IV treatment for postpartum depression. You receive it as a continuous drip over about 2½ days in a hospital or certified center. Many patients start to feel noticeably better in just a few days, and improvements can last for weeks. Because it can cause very deep sleep or even brief loss of consciousness, you’re monitored closely with continuous oxygen and sedation checks, and a caregiver must be present to help with your baby. You cannot drive until the effects fully wear off. It’s a powerful option for severe PPD when fast relief is needed, but it requires a hospital stay and careful safety monitoring.",
-  "category": "medications/postpartum-depression",
-  "metadata": {
-    "drug_classes": [
-      "Antidepressant",
-      "GABA-A Receptor Positive Modulator"
-    ],
+  "identity": {
+    "slug": "brexanolone-zulresso",
+    "name": "Brexanolone (Zulresso)",
+    "generic_name": "brexanolone",
     "brand_names": [
       "Zulresso"
     ],
-    "administration_routes": [
-      "Intravenous"
-    ],
-    "prescription_status": "Prescription Required (REMS Program)",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": false,
-    "fda_approval_year": 2019,
-    "pharmacologic_category": "Antidepressant; Gamma-Aminobutyric Acid (GABA) A Receptor Positive Modulator",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q133270363"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Postpartum Depression (PPD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "postpartum-depression",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for moderate to severe postpartum depression in patients ≥15 years, given as a single 60-hour IV infusion with rapid onset of effect and intensive monitoring requirements."
-      },
-      {
-        "slug": "perinatal-depression",
-        "relationship": "related",
-        "context": "Target population is depression with onset in the late third trimester or within weeks after delivery, but brexanolone itself is initiated postpartum."
-      }
-    ],
-    "contraindications": [
-      "Known serious hypersensitivity to brexanolone or any component of the formulation",
-      "Severe renal impairment with eGFR <15 mL/min/1.73 m² (use not recommended due to accumulation of solubilizing agent betadex sulfobutyl ether sodium)",
-      "Inability to provide continuous monitoring and supervision required by the ZULRESSO REMS (practical/operational contraindication)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful reduction in PPD symptoms at 60 hours",
-      "percentage_value": "Higher response rates vs placebo in trials",
-      "comparison_data": "Randomized trials showed greater reductions in depression rating scale scores and higher remission rates with brexanolone vs placebo at the end of the 60-hour infusion, with benefits maintained in many patients at follow-up.",
-      "patient_text": "In clinical studies, women who received brexanolone had a larger drop in depression scores and were more likely to no longer meet criteria for postpartum depression within just a few days compared with women who received placebo.",
-      "citation_tag": "Based on pivotal Zulresso registration trials in moderate to severe postpartum depression."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/postpartum-depression",
+    "drug_classes": [
+      "Antidepressant",
+      "GABA-A Receptor Positive Modulator"
+    ]
+  },
+  "summary": "First-in-class IV GABA-A modulator for severe postpartum depression. Given as a single 60-hour continuous infusion in a REMS-certified facility with intensive monitoring for excessive sedation and loss of consciousness.",
+  "description": "Brexanolone is an intravenous positive allosteric modulator of GABA-A receptors and the first medication specifically approved for postpartum depression (PPD). It is given as a one-time, 60-hour continuous infusion in a certified health care setting under the ZULRESSO REMS program. In clinical trials, many patients experienced rapid improvement in depressive symptoms within days, with benefits that often persisted for weeks. However, brexanolone can cause excessive sedation and sudden loss of consciousness, requiring continuous pulse oximetry and frequent sedation checks. Patients must be accompanied during interactions with their children throughout the infusion.",
+  "patient_summary": "Brexanolone (Zulresso) is a one-time IV treatment for postpartum depression. You receive it as a continuous drip over about 2½ days in a hospital or certified center. Many patients start to feel noticeably better in just a few days, and improvements can last for weeks. Because it can cause very deep sleep or even brief loss of consciousness, you’re monitored closely with continuous oxygen and sedation checks, and a caregiver must be present to help with your baby. You cannot drive until the effects fully wear off. It’s a powerful option for severe PPD when fast relief is needed, but it requires a hospital stay and careful safety monitoring.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "postpartum-depression",
+          "condition_name": "Postpartum Depression",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for moderate to severe postpartum depression in patients ≥15 years, given as a single 60-hour IV infusion with rapid onset of effect and intensive monitoring requirements.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "perinatal-depression",
+          "condition_name": "Perinatal Depression",
+          "relationship": "secondary_indication",
+          "context": "Target population is depression with onset in the late third trimester or within weeks after delivery, but brexanolone itself is initiated postpartum."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Administered as an IV infusion; bioavailability is effectively 100%.",
-      "bioavailability": "IV only (not orally absorbed in a useful way)",
-      "onset": "Sedation and CNS effects can begin during the infusion; antidepressant effects generally emerge over the 60-hour infusion and shortly thereafter.",
-      "peak_plasma": "Achieved during infusion; steady-state related to infusion rate.",
-      "half_life": "~9 hours",
-      "duration_IR": "Not applicable (continuous IV infusion with programmed rate changes)",
-      "metabolism": "Extensively metabolized via keto-reduction (AKRs), glucuronidation (UGTs), and sulfation (SULTs) to inactive metabolites.",
-      "excretion": "Feces ~47%, urine ~42% (<1% as unchanged drug).",
-      "protein_binding": ">99%",
-      "food_effect": "Not relevant (IV administration)."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sedation and CNS effects can begin during the infusion; antidepressant effects generally emerge over the 60-hour infusion and shortly thereafter."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness / Sedated State",
+          "incidence": "Up to ~21%",
+          "notes": "You may sleep much more than usual or feel deeply sedated during the infusion. Staff will check on you frequently and may pause or slow the infusion if needed."
+        },
+        {
+          "effect": "Dizziness, Presyncope, Vertigo",
+          "incidence": "Up to ~13% for each",
+          "notes": "You might feel lightheaded, like the room is spinning, or like you’re about to pass out. Call your nurse immediately if this happens."
+        },
+        {
+          "effect": "Dry Mouth",
+          "incidence": "3–11%",
+          "notes": "Sipping water or using sugar-free gum/lozenges (if allowed) can help, but ask your care team what is safe during the infusion."
+        },
+        {
+          "effect": "Flushing / Hot Flashes",
+          "incidence": "Up to ~5%",
+          "notes": "You may feel warm or notice redness in your face or chest; this is usually brief but should still be mentioned to staff."
+        },
+        {
+          "effect": "GI Symptoms (Diarrhea, Dyspepsia)",
+          "incidence": "Low (around 2–3%)",
+          "notes": "Mild stomach upset or loose stools may occur; tell your team if it becomes bothersome."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Loss of consciousness (brief or prolonged episodes where you are not responsive)."
+        },
+        {
+          "risk": "Impaired consciousness or unresponsiveness requiring immediate medical evaluation."
+        },
+        {
+          "risk": "Significant hypoxia (low oxygen saturation on pulse oximetry)."
+        },
+        {
+          "risk": "Serious allergic reactions: rash, swelling, trouble breathing, or anaphylaxis."
+        },
+        {
+          "risk": "Emergent suicidal thoughts or behaviors, severe mood swings, or agitation."
+        },
+        {
+          "risk": "Falls or injuries related to sudden sedation or loss of consciousness."
+        }
+      ],
+      "black_box_warning": "Patients treated with brexanolone are at risk of excessive sedation or sudden loss of consciousness during administration. Because of the risk of serious harm, patients must be monitored for excessive sedation and have continuous pulse oximetry during the entire 60-hour infusion. Patients must be accompanied during interactions with their children. Brexanolone is available only through the ZULRESSO REMS program.",
+      "contraindications": [
+        {
+          "contraindication": "Known serious hypersensitivity to brexanolone or any component of the formulation"
+        },
+        {
+          "contraindication": "Severe renal impairment with eGFR <15 mL/min/1.73 m² (use not recommended due to accumulation of solubilizing agent betadex sulfobutyl ether sodium)"
+        },
+        {
+          "contraindication": "Inability to provide continuous monitoring and supervision required by the ZULRESSO REMS (practical/operational contraindication)"
+        }
+      ],
+      "precautions": [
+        "Time to full recovery from episodes of altered or loss of consciousness after stopping or reducing the infusion has ranged from 15 to 60 minutes.",
+        "After infusion, patients should avoid driving or operating machinery until the sedative effects have fully resolved.",
+        "As with all antidepressants, there is a potential risk of suicidal thoughts and behaviors, particularly in children, adolescents, and young adults. Monitor closely for worsening mood or emergent suicidality.",
+        "Brexanolone is a CNS depressant and can interact with other sedating medications and alcohol, increasing the risk of dangerous sedation or respiratory depression.",
+        "Use is not recommended in patients with eGFR <15 mL/min/1.73 m² due to accumulation of the solubilizing agent.",
+        "Potential for abuse and dependence exists; taper according to recommendations unless toxicity requires immediate cessation."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression, greatly increased risk of excessive sedation, respiratory depression, and loss of consciousness.",
+          "action": "Avoid alcohol before, during, and immediately after the brexanolone infusion."
+        },
+        {
+          "interactant": "Opioids (e.g., morphine, oxycodone, hydrocodone, fentanyl)",
+          "mechanism": "Increased risk of severe sedation, respiratory depression, and overdose.",
+          "action": "Use only if absolutely necessary, at the lowest effective dose, with close monitoring. Coordinate pain management with the brexanolone team."
+        },
+        {
+          "interactant": "Benzodiazepines and Other Sedatives (e.g., lorazepam, zolpidem, eszopiclone, barbiturates)",
+          "mechanism": "Major additive sedative effects, higher risk of loss of consciousness and breathing problems.",
+          "action": "Avoid or minimize doses; if required, monitor extremely closely in a controlled setting."
+        },
+        {
+          "interactant": "Sedating Antidepressants, Antipsychotics, Antihistamines, and Sleep Medications",
+          "mechanism": "Extra drowsiness, dizziness, and impaired coordination.",
+          "action": "Review all medications before infusion; reduce or hold other sedatives when possible during treatment."
+        },
+        {
+          "interactant": "MAOIs and Certain Other Antidepressants",
+          "mechanism": "Increased CNS depression; complex interactions requiring specialist judgment.",
+          "action": "Psychiatric and perinatal mental health specialists should coordinate therapy and monitoring."
+        },
+        {
+          "interactant": "Strong CNS Depressants or Substances of Misuse (e.g., kratom, kava, GHB/oxybate)",
+          "mechanism": "Potentially dangerous, unpredictable sedation and respiratory depression.",
+          "action": "Avoid. Disclose all substances, including herbal and recreational, to your treatment team."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Continuous pulse oximetry (oxygen saturation) with alarms throughout the 60-hour infusion."
+        },
+        {
+          "parameter": "Sedation level checks at least every 2 hours during normal wake times, using a standardized sedation scale."
+        },
+        {
+          "parameter": "Vital signs monitoring (blood pressure, heart rate, respiratory rate)."
+        },
+        {
+          "parameter": "Mental status: alertness, orientation, presence of confusion or loss of consciousness."
+        },
+        {
+          "parameter": "Depression severity and suicidality: before, during, and after infusion."
+        },
+        {
+          "parameter": "Renal function in patients with risk factors or known kidney disease."
+        },
+        {
+          "parameter": "Fall risk and safety, particularly when mobilizing or going to the bathroom."
+        },
+        {
+          "parameter": "Infant safety: ensure a responsible adult is present to care for the baby at all times while the patient is sedated."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Based on mechanism and animal data, in utero exposure may cause fetal harm. Brexanolone is generally initiated after delivery, not during pregnancy. If depression requires treatment during pregnancy, other options with more established safety profiles are preferred.",
+        "lactation": "Brexanolone (identical to endogenous allopregnanolone) appears in breast milk at low levels, and relative infant dose estimates are <10%. Low oral bioavailability further limits infant exposure. However, because the birthing parent may be deeply sedated or lose consciousness, close supervision is essential for any breastfeeding or pumping during the infusion. Decisions about breastfeeding should balance maternal benefit, infant exposure, and safety/logistical issues.",
+        "pediatric": "Approved for patients ≥15 years of age for postpartum depression. Not indicated in younger adolescents or children.",
+        "geriatric": "PPD population is typically younger; data in older adults are limited. Theoretically, older patients would be at higher risk of sedation, falls, and other CNS effects.",
+        "renal_impairment": "Avoid use if eGFR <15 mL/min/1.73 m² due to accumulation of the solubilizing agent. Monitor kidney function in at-risk patients.",
+        "hepatic_impairment": "No dose adjustment needed, but global medical fragility and polypharmacy should be considered."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2019
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Administered as an IV infusion; bioavailability is effectively 100%.",
+          "bioavailability": "IV only (not orally absorbed in a useful way)",
+          "peak_plasma": "Achieved during infusion; steady-state related to infusion rate.",
+          "half_life": "~9 hours",
+          "metabolism": "Extensively metabolized via keto-reduction (AKRs), glucuronidation (UGTs), and sulfation (SULTs) to inactive metabolites.",
+          "excretion": "Feces ~47%, urine ~42% (<1% as unchanged drug).",
+          "protein_binding": ">99%",
+          "food_effect": "Not relevant (IV administration)."
+        },
+        "dosing": {
+          "titration": "Brexanolone dosing is fully weight-based and given via a continuous IV infusion over 60 hours in a controlled setting."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Brexanolone is given as a single 60-hour infusion rather than a long-term daily medication."
+        }
+      }
     }
   },
   "sections": [
@@ -90,7 +236,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Feel During Treatment",
-      "intro": "Experiences vary, but these are common themes reported by patients receiving brexanolone for postpartum depression:",
       "items": [
         {
           "category": "Mood & Anxiety",
@@ -124,7 +269,8 @@
           ],
           "note": "Caution with driving or tasks requiring full alertness is recommended until all effects have worn off."
         }
-      ]
+      ],
+      "intro": "Experiences vary, but these are common themes reported by patients receiving brexanolone for postpartum depression:"
     },
     {
       "type": "onset_duration",
@@ -140,10 +286,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works for Postpartum Depression",
+      "text": "In pivotal clinical trials, women with moderate to severe postpartum depression who received brexanolone had significantly larger decreases in standardized depression scores by the end of the 60-hour infusion than those receiving placebo. A higher percentage of brexanolone-treated patients met criteria for remission (no longer in the depressive range). Many maintained these benefits at follow-up after the infusion.",
       "metric": "Change in depression rating scores at 60 hours",
       "value": "Clinically meaningful reduction vs placebo in trials",
       "comparison": "Brexanolone produced greater symptom reduction and higher remission rates vs placebo at 60 hours.",
-      "text": "In pivotal clinical trials, women with moderate to severe postpartum depression who received brexanolone had significantly larger decreases in standardized depression scores by the end of the 60-hour infusion than those receiving placebo. A higher percentage of brexanolone-treated patients met criteria for remission (no longer in the depressive range). Many maintained these benefits at follow-up after the infusion.",
       "clinical_details": "Brexanolone was studied as a single 60-hour infusion with titrated dosing. Primary endpoints were change from baseline in depression rating scales at 60 hours. Trials showed statistically and clinically significant improvements compared with placebo, with onset of benefit within days and sustained effects in many patients at later assessments.",
       "citation": {
         "authors": "Multiple investigators",
@@ -229,7 +375,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug & Substance Interactions",
-      "intro": "Brexanolone is a CNS depressant. Anything else that makes you drowsy can increase the risk of excessive sedation, breathing problems, or loss of consciousness.",
       "items": [
         {
           "with": "Alcohol",
@@ -261,7 +406,8 @@
           "risk": "Potentially dangerous, unpredictable sedation and respiratory depression.",
           "action": "Avoid. Disclose all substances, including herbal and recreational, to your treatment team."
         }
-      ]
+      ],
+      "intro": "Brexanolone is a CNS depressant. Anything else that makes you drowsy can increase the risk of excessive sedation, breathing problems, or loss of consciousness."
     },
     {
       "type": "tapering",
@@ -369,21 +515,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Brexanolone (Zulresso) for Postpartum Depression: 60-Hour IV Treatment, Dosing, Risks & Monitoring",
-    "description": "Brexanolone (Zulresso) is a one-time 60-hour IV infusion for severe postpartum depression. Learn how it works, dosing, REMS monitoring, side effects (sedation, loss of consciousness), and what to expect during treatment.",
-    "canonical": "https://www.heypsych.com/treatments/brexanolone-zulresso",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and aligned with current brexanolone prescribing information, ZULRESSO REMS requirements, and contemporary guidelines for the treatment of postpartum depression."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Zulresso (brexanolone)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/211371s007lbl.pdf",
+      "description": "Official labeling with full prescribing, REMS, and safety information."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "ZULRESSO REMS Program",
+      "url": "https://www.zulressorems.com",
+      "description": "Information for clinicians, facilities, and patients about REMS requirements and certified sites."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "ACOG Guidance on Perinatal Mental Health (including PPD)",
+      "url": "https://www.acog.org",
+      "description": "Professional guidelines on evaluation and management of perinatal mood and anxiety disorders."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "National Pregnancy Registry for Antidepressants",
+      "url": "https://womensmentalhealth.org/research/pregnancyregistry/antidepressants/",
+      "description": "Registry collecting data on pregnancy and infant outcomes after antidepressant exposure."
+    }
+  ],
   "faqs": [
     {
       "q": "What is brexanolone (Zulresso) used for?",
@@ -425,5 +586,20 @@
       "q": "Will I still need other treatments after brexanolone?",
       "a": "Often yes. Many patients continue or start oral antidepressants and psychotherapy as ongoing treatment. Brexanolone can provide rapid improvement, but long-term care plans usually include medication, therapy, and support to maintain recovery."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Brexanolone (Zulresso) for Postpartum Depression: 60-Hour IV Treatment, Dosing, Risks & Monitoring",
+    "description": "Brexanolone (Zulresso) is a one-time 60-hour IV infusion for severe postpartum depression. Learn how it works, dosing, REMS monitoring, side effects (sedation, loss of consciousness), and what to expect during treatment.",
+    "canonical": "https://www.heypsych.com/treatments/brexanolone-zulresso",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and aligned with current brexanolone prescribing information, ZULRESSO REMS requirements, and contemporary guidelines for the treatment of postpartum depression."
+  }
 }

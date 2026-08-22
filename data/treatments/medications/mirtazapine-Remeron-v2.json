@@ -1,93 +1,268 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "mirtazapine-remeron",
-  "type": "medication",
-  "name": "Mirtazapine (Remeron)",
-  "summary": "Sedating antidepressant often chosen when depression comes with insomnia, low appetite, or nausea. Usually taken once nightly. Common trade-offs: grogginess and weight gain.",
-  "description": "Mirtazapine is an antidepressant that’s famous for two things: sleep and appetite. For a lot of people, it helps them fall asleep faster and stay asleep longer—sometimes from the first night—while mood and anxiety symptoms improve more gradually over a few weeks. The flip side is real: morning “hangover,” weight gain, dry mouth, constipation, and higher cholesterol can show up, especially early on. Like all antidepressants, it carries a suicidality warning in young people and needs close monitoring when starting or changing the dose.",
-  "patient_summary": "Mirtazapine is an antidepressant that’s often picked when depression is tangled up with insomnia or poor appetite. It’s usually taken at bedtime and can make sleep better quickly, while mood changes take weeks. The common downsides are morning grogginess and weight gain. In younger patients, antidepressants can increase suicidal thoughts early in treatment, so close monitoring matters.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "mirtazapine-remeron",
+    "name": "Mirtazapine (Remeron)",
+    "generic_name": "mirtazapine",
+    "brand_names": [
+      "Remeron",
+      "Remeron SolTab"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Antidepressant",
       "Alpha-2 Adrenergic Antagonist (NaSSA)",
       "Tetracyclic Antidepressant"
-    ],
-    "brand_names": [
-      "Remeron",
-      "Remeron SolTab"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1996,
-    "pharmacologic_category": "Noradrenergic and Specific Serotonergic Antidepressant (NaSSA); Tetracyclic",
-    "published_date": "2025-12-31T00:00:00Z",
-    "last_updated": "2025-12-31T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-31T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD) in adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for major depressive disorder in adults. Often chosen when depression includes insomnia, low appetite, or nausea because it can improve sleep and appetite earlier than mood."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as an alternative option when SSRIs aren’t effective or tolerated. Benefits may start within a couple weeks, with continued improvement over 4–6 weeks (and some patients need longer)."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Frequently used in psychiatry for sleep when insomnia is tied to mood or anxiety. It’s sedating, especially at lower doses."
-      },
-      {
-        "slug": "sexual-dysfunction",
-        "relationship": "off_label",
-        "context": "Sometimes used when SSRIs cause sexual side effects, either by switching to mirtazapine or using it as part of a strategy to reduce SSRI-related sexual dysfunction."
-      },
-      {
-        "slug": "stimulant-use-disorder",
-        "relationship": "off_label",
-        "context": "Occasionally considered as an alternative agent in methamphetamine use disorder when first-line options aren’t effective or tolerated."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to mirtazapine or any component of the formulation (including severe skin reactions such as Stevens-Johnson syndrome, toxic epidermal necrolysis, DRESS)",
-      "Use with monoamine oxidase inhibitors (MAOIs) concurrently or within 14 days of stopping an MAOI",
-      "Starting an MAOI within 14 days of stopping mirtazapine"
-    ],
-    "efficacy_response": {
-      "metric": "Time to noticeable improvement",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With mirtazapine, sleep and appetite can improve early (sometimes within days), while mood and anxiety benefits usually build over 1–2 weeks and keep improving over 4–6 weeks. If you’re taking it for panic symptoms, the timeline can be slower—don’t judge it after only a few nights.",
-      "citation_tag": "FDA Label + Clinical Guideline Consensus"
+  "summary": "Sedating antidepressant often chosen when depression comes with insomnia, low appetite, or nausea. Usually taken once nightly. Common trade-offs: grogginess and weight gain.",
+  "description": "Mirtazapine is an antidepressant that’s famous for two things: sleep and appetite. For a lot of people, it helps them fall asleep faster and stay asleep longer—sometimes from the first night—while mood and anxiety symptoms improve more gradually over a few weeks. The flip side is real: morning “hangover,” weight gain, dry mouth, constipation, and higher cholesterol can show up, especially early on. Like all antidepressants, it carries a suicidality warning in young people and needs close monitoring when starting or changing the dose.",
+  "patient_summary": "Mirtazapine is an antidepressant that’s often picked when depression is tangled up with insomnia or poor appetite. It’s usually taken at bedtime and can make sleep better quickly, while mood changes take weeks. The common downsides are morning grogginess and weight gain. In younger patients, antidepressants can increase suicidal thoughts early in treatment, so close monitoring matters.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for major depressive disorder in adults. Often chosen when depression includes insomnia, low appetite, or nausea because it can improve sleep and appetite earlier than mood.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as an alternative option when SSRIs aren’t effective or tolerated. Benefits may start within a couple weeks, with continued improvement over 4–6 weeks (and some patients need longer)."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Frequently used in psychiatry for sleep when insomnia is tied to mood or anxiety. It’s sedating, especially at lower doses."
+        },
+        {
+          "condition_slug": "sexual-dysfunction",
+          "condition_name": "Sexual Dysfunction",
+          "relationship": "off_label",
+          "context": "Sometimes used when SSRIs cause sexual side effects, either by switching to mirtazapine or using it as part of a strategy to reduce SSRI-related sexual dysfunction."
+        },
+        {
+          "condition_slug": "stimulant-use-disorder",
+          "condition_name": "Stimulant Use Disorder",
+          "relationship": "off_label",
+          "context": "Occasionally considered as an alternative agent in methamphetamine use disorder when first-line options aren’t effective or tolerated."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete",
-      "bioavailability": "~50%",
-      "onset": "Sleep/sedation can be rapid; antidepressant effects often begin in 1–2 weeks with continued improvement over 4–6 weeks",
-      "peak_plasma": "~2 hours",
-      "half_life": "~20 to 40 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism (CYP3A4 major; CYP1A2, CYP2D6, CYP2C9 minor) via demethylation and hydroxylation",
-      "excretion": "Urine (~75%) and feces (~15%) as metabolites",
-      "protein_binding": "~85%",
-      "food_effect": "Can be taken with or without food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sleep/sedation can be rapid; antidepressant effects often begin in 1–2 weeks with continued improvement over 4–6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Very common (reported around half of patients in short-term studies)",
+          "notes": "This can be the whole point (better sleep) or the reason people quit (morning hangover). If you feel unsafe to drive in the morning, that’s real—adjust timing, dose, or plan with your prescriber."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "Common (roughly 1 in 4 in labeling data)",
+          "notes": "Hydration helps, but it can still be annoying. Sugar-free gum or lozenges can make a difference."
+        },
+        {
+          "effect": "Increased Appetite",
+          "incidence": "Common",
+          "notes": "This can feel like cravings that hit hard, especially at night. If weight is a concern, plan meals/snacks intentionally rather than winging it."
+        },
+        {
+          "effect": "Weight Gain",
+          "incidence": "Common; significant weight gain can occur with short- and long-term use",
+          "notes": "Some people gain quickly. If this starts early and bothers you, bring it up early—there are options."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "Common",
+          "notes": "Water + fiber + movement matter. If you’re prone to constipation, be proactive from day one."
+        },
+        {
+          "effect": "Increased Cholesterol / Triglycerides",
+          "incidence": "Common (cholesterol increases are reported more often than triglycerides)",
+          "notes": "This is why labs matter. You don’t have to guess—check and track."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thinking/behavior changes in younger patients, especially early in treatment or after dose changes: urgent evaluation needed"
+        },
+        {
+          "risk": "Severe allergic/skin reactions (SJS/TEN/DRESS): blistering rash, mucous membrane sores, facial swelling, fever + rash: emergency care"
+        },
+        {
+          "risk": "Severe neutropenia/agranulocytosis: fever, sore throat, mouth ulcers, infections: urgent evaluation"
+        },
+        {
+          "risk": "Mania/hypomania or mixed activation: decreased need for sleep, racing thoughts, irritability, impulsivity: contact clinician urgently"
+        },
+        {
+          "risk": "Serotonin syndrome (rare, higher risk with other serotonergic meds): agitation, confusion, sweating, tremor, muscle rigidity, fever: emergency care"
+        },
+        {
+          "risk": "Severe hypertriglyceridemia and pancreatitis (rare): severe abdominal pain, nausea/vomiting: urgent evaluation"
+        },
+        {
+          "risk": "Movement disorders (rare): akathisia, dystonia, dyskinesia, restless legs: report promptly"
+        },
+        {
+          "risk": "QT prolongation/torsades (rare): fainting, palpitations, dizziness: urgent evaluation"
+        },
+        {
+          "risk": "Priapism (rare): painful prolonged erection: emergency care"
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies. Closely monitor all antidepressant-treated patients for clinical worsening and for emergence of suicidal thoughts and behaviors. Mirtazapine is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to mirtazapine or any component of the formulation (including severe skin reactions such as Stevens-Johnson syndrome, toxic epidermal necrolysis, DRESS)"
+        },
+        {
+          "contraindication": "Use with monoamine oxidase inhibitors (MAOIs) concurrently or within 14 days of stopping an MAOI"
+        },
+        {
+          "contraindication": "Starting an MAOI within 14 days of stopping mirtazapine"
+        }
+      ],
+      "precautions": [
+        "Do not combine with MAOIs (or within 14 days of stopping/starting): dangerous interaction risk",
+        "Sedation is common early on and can impair driving and reaction time—treat it like a sleep medication until you know your response",
+        "Weight gain and lipid increases are common enough to matter clinically—plan for monitoring, not vibes",
+        "Hyponatremia/SIADH can happen (older adults are higher risk): confusion, weakness, unsteadiness, headache can be warning signs",
+        "Rare but serious blood count issues (neutropenia/agranulocytosis): fever, sore throat, mouth ulcers, or infections need urgent evaluation",
+        "Rare but serious skin reactions (SJS/TEN/DRESS): any new widespread rash, blistering, facial swelling, or fever + rash needs immediate medical attention",
+        "Activation of mania/hypomania can occur (especially without a mood stabilizer in bipolar-spectrum patients)",
+        "Serotonin syndrome is rare but possible, especially when combined with other serotonergic meds",
+        "Orthostatic dizziness can happen: stand up slowly, especially early in treatment or if you’re prone to low blood pressure",
+        "QT prolongation and dangerous rhythm issues have been reported postmarketing: higher concern if you have heart risk factors or take other QT-prolonging meds"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (phenelzine, tranylcypromine, isocarboxazid) and IV methylene blue",
+          "mechanism": "Contraindicated. High risk of severe reactions including serotonin toxicity.",
+          "action": "Do not use together. Wait 14 days between stopping an MAOI and starting mirtazapine, and 14 days between stopping mirtazapine and starting an MAOI."
+        },
+        {
+          "interactant": "Linezolid",
+          "mechanism": "Serotonin toxicity risk has been reported with serotonergic combinations; newer evidence suggests the absolute risk may be low, but it’s not zero.",
+          "action": "If linezolid is medically necessary, use with close monitoring for serotonin syndrome symptoms (agitation, confusion, tremor, fever, sweating, muscle rigidity)."
+        },
+        {
+          "interactant": "Other serotonergic medications (SSRIs, SNRIs, TCAs, triptans, tramadol, lithium, some migraine meds, St. John’s wort, MDMA)",
+          "mechanism": "Increased risk of serotonin syndrome, especially with multiple serotonergic agents or dose increases.",
+          "action": "Use cautious combinations and monitor. Seek urgent care for severe agitation, confusion, fever, rigidity, or rapidly worsening symptoms."
+        },
+        {
+          "interactant": "Alcohol, benzodiazepines, sedating antihistamines, sleep meds, muscle relaxants",
+          "mechanism": "Additive sedation, impaired coordination, falls, blackouts, poor judgment.",
+          "action": "Avoid or minimize. If combined, do it only with a clear plan from your prescriber and treat driving/operating machinery as off-limits."
+        },
+        {
+          "interactant": "Other QT-prolonging medications (selected antipsychotics, some antibiotics, some antiarrhythmics)",
+          "mechanism": "Higher risk of rhythm problems in susceptible patients.",
+          "action": "Use caution if you have heart disease, electrolyte problems, or multiple QT-prolonging meds. Consider ECG monitoring when risk is elevated."
+        },
+        {
+          "interactant": "Medications that lower sodium (some diuretics) or increase SIADH risk",
+          "mechanism": "Greater chance of hyponatremia/SIADH, especially in older adults.",
+          "action": "Monitor sodium, especially after starting or increasing dose."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: monitor closely during the first 1–2 months and during any dose changes, especially in patients 18–24"
+        },
+        {
+          "parameter": "Mood switching: screen for bipolar risk before starting; monitor for hypomania/mania or mixed features after starting or increasing dose"
+        },
+        {
+          "parameter": "Sedation and safety: daytime sleepiness, driving impairment, falls (higher risk in older adults and when combined with other sedatives)"
+        },
+        {
+          "parameter": "Weight and appetite: baseline weight/BMI and regular follow-up; track rapid early gain and nighttime eating patterns"
+        },
+        {
+          "parameter": "Lipids and metabolic markers: lipid profile (cholesterol/triglycerides) at baseline and periodically, especially if weight increases"
+        },
+        {
+          "parameter": "Sodium (hyponatremia/SIADH risk): check sodium when initiating or increasing dose in older adults or high-risk patients"
+        },
+        {
+          "parameter": "CBC when clinically indicated: educate patients to report fever, sore throat, mouth ulcers, or infections (rare neutropenia/agranulocytosis concern)"
+        },
+        {
+          "parameter": "Renal and hepatic function: baseline and periodic monitoring in patients with known impairment or higher clinical risk"
+        },
+        {
+          "parameter": "Serotonin syndrome monitoring when combined with serotonergic meds: agitation, confusion, tremor, sweating, rigidity, fever"
+        },
+        {
+          "parameter": "Orthostatic symptoms: dizziness or near-fainting, especially early in treatment or in patients on blood pressure meds"
+        },
+        {
+          "parameter": "QT risk assessment when clinically relevant: consider ECG monitoring in patients with cardiac history, electrolyte issues, or multiple QT-prolonging medications"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Mirtazapine crosses the placenta. Available data have not shown a clear increased risk of major birth defects, but the data are limited. Untreated depression and anxiety during pregnancy also carry real risks, so decisions should balance maternal stability and fetal/newborn safety. If medication is used, aim for the lowest effective dose of a single agent and monitor symptoms regularly with a validated tool. Encourage enrollment in the National Pregnancy Registry for Antidepressants when applicable.",
+        "lactation": "Mirtazapine and its metabolite appear in breast milk. Reported relative infant doses in available case data are generally below common safety thresholds, and some reports describe no observed sedation or feeding problems—still, infants should be monitored for excessive sleepiness, poor feeding, and poor weight gain. If starting an antidepressant for the first time postpartum in a treatment-naive breastfeeding patient, some guidelines prefer other agents; if mirtazapine has been effective and the risk–benefit favors continuation, it may be reasonable with monitoring.",
+        "pediatric": "Not approved for pediatric use. Antidepressants increase suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies; close monitoring is required when antidepressants are used in younger populations.",
+        "geriatric": "Use with caution. Older adults may have reduced clearance and are more vulnerable to sedation, falls, and hyponatremia/SIADH. Consider a lower starting dose (such as 7.5 mg at bedtime) and monitor sodium closely when starting or adjusting the dose, especially in patients ≥65 or those on diuretics or with prior low sodium.",
+        "renal_impairment": "Use with caution because clearance decreases with kidney impairment. For eGFR ≥30 mL/min/1.73 m2, no routine adjustment is commonly required. For eGFR <30 mL/min/1.73 m2 or for dialysis/CRRT settings, consider starting 7.5–15 mg once daily and titrate slowly with close monitoring for sedation and other adverse effects.",
+        "hepatic_impairment": "Clearance is decreased and half-life is increased in mild to moderate cirrhosis, increasing risk of dose-limiting sedation. In preexisting cirrhosis (Child-Pugh A or B), consider starting at about 50% of the usual indication-specific starting dose and titrate cautiously with close monitoring; some expert guidance suggests a practical maximum around 30 mg/day in cirrhosis. In Child-Pugh C, consider alternative agents; if used, start low (about 50% of usual start) and titrate cautiously with close monitoring."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1996
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete",
+          "bioavailability": "~50%",
+          "peak_plasma": "~2 hours",
+          "half_life": "~20 to 40 hours",
+          "metabolism": "Extensive hepatic metabolism (CYP3A4 major; CYP1A2, CYP2D6, CYP2C9 minor) via demethylation and hydroxylation",
+          "excretion": "Urine (~75%) and feces (~15%) as metabolites",
+          "protein_binding": "~85%",
+          "food_effect": "Can be taken with or without food"
+        },
+        "dosing": {
+          "titration": "Mirtazapine is usually dosed once daily, most often at bedtime because it can be sedating—especially at lower doses. Dose changes are typically made no more often than weekly so you can tell what’s side effect vs. what’s benefit."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping mirtazapine suddenly can cause withdrawal-type symptoms for some people. If you’ve been on it for more than a few weeks, tapering is usually the move—both to reduce withdrawal and to catch returning symptoms early."
+        }
+      }
     }
   },
   "sections": [
@@ -110,7 +285,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s different, but mirtazapine has a pretty recognizable “signature.” Here’s what people commonly describe:",
       "items": [
         {
           "category": "Sleep (often fast)",
@@ -164,7 +338,8 @@
           ],
           "note": "If you have bipolar risk (personal or family history), any antidepressant can trigger hypomania/mania—this needs clinician-level attention."
         }
-      ]
+      ],
+      "intro": "Everyone’s different, but mirtazapine has a pretty recognizable “signature.” Here’s what people commonly describe:"
     },
     {
       "type": "onset_duration",
@@ -181,10 +356,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Mirtazapine is a solid antidepressant option, especially when depression comes with insomnia, poor appetite, nausea, or a lot of internal agitation. Many people notice sleep and appetite changes early, which can make the “waiting period” for antidepressant mood benefits feel more tolerable. For panic symptoms, improvement may start within a couple weeks and continue building over 4–6 weeks (and some people need a longer trial).",
       "metric": "Symptom improvement over time",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Mirtazapine is a solid antidepressant option, especially when depression comes with insomnia, poor appetite, nausea, or a lot of internal agitation. Many people notice sleep and appetite changes early, which can make the “waiting period” for antidepressant mood benefits feel more tolerable. For panic symptoms, improvement may start within a couple weeks and continue building over 4–6 weeks (and some people need a longer trial).",
       "clinical_details": "In practice, mirtazapine is often selected for its calming nighttime profile and lower tendency to cause SSRI-type sexual side effects. The trade-off is metabolic and sedation burden: weight gain, increased appetite, and morning grogginess can limit long-term use for some patients. Dose changes should be evaluated over weeks, not days, unless side effects are severe.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -283,7 +458,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Mirtazapine can interact dangerously with certain antidepressants, antibiotics, and other serotonergic or sedating medications. Always tell your prescriber what you’re taking—even “supplements.”",
       "items": [
         {
           "with": "MAOIs (phenelzine, tranylcypromine, isocarboxazid) and IV methylene blue",
@@ -315,7 +489,8 @@
           "risk": "Greater chance of hyponatremia/SIADH, especially in older adults.",
           "action": "Monitor sodium, especially after starting or increasing dose."
         }
-      ]
+      ],
+      "intro": "Mirtazapine can interact dangerously with certain antidepressants, antibiotics, and other serotonergic or sedating medications. Always tell your prescriber what you’re taking—even “supplements.”"
     },
     {
       "type": "tapering",
@@ -397,21 +572,6 @@
       "text": "Mirtazapine is often a “strategic pick” rather than a default first choice. It shines when depression is tied to insomnia, low appetite/weight loss, nausea, or when SSRI-type sexual side effects are a big problem. It’s not a great match when weight gain, metabolic risk, or daytime sedation would significantly worsen a patient’s quality of life. For anxiety and panic, it’s typically an alternative option when first-line approaches (like SSRIs/SNRIs and therapy) aren’t effective or tolerated. As always: diagnose bipolar disorder correctly before prescribing antidepressant monotherapy."
     }
   ],
-  "seo": {
-    "title": "Mirtazapine (Remeron): Uses, Dosage, Side Effects, Sleep Benefits & Weight Gain",
-    "description": "Mirtazapine (Remeron) for depression and anxiety symptoms: bedtime dosing (7.5–45 mg), how fast it helps sleep vs. mood, common side effects (grogginess, weight gain), serious warnings, interactions, and tapering guidance.",
-    "canonical": "[https://www.heypsych.com/treatments/mirtazapine-remeron](https://www.heypsych.com/treatments/mirtazapine-remeron)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is mirtazapine (Remeron) used for?",
@@ -461,5 +621,20 @@
       "q": "What should I do if I miss a dose?",
       "a": "If you remember the same night, you can usually take it—unless it’s close to morning. If it’s already late or you’ll need to drive early, it may be safer to skip and take your next dose at the regular bedtime. Don’t double up the next night unless your prescriber specifically tells you to."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Mirtazapine (Remeron): Uses, Dosage, Side Effects, Sleep Benefits & Weight Gain",
+    "description": "Mirtazapine (Remeron) for depression and anxiety symptoms: bedtime dosing (7.5–45 mg), how fast it helps sleep vs. mood, common side effects (grogginess, weight gain), serious warnings, interactions, and tapering guidance.",
+    "canonical": "[https://www.heypsych.com/treatments/mirtazapine-remeron](https://www.heypsych.com/treatments/mirtazapine-remeron)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

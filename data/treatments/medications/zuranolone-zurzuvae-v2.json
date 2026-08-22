@@ -1,75 +1,227 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "zuranolone-zurzuvae",
-  "type": "medication",
-  "name": "Zuranolone (Zurzuvae)",
-  "summary": "14-day, once-nightly oral treatment for postpartum depression that can start working within days. Strong sedation + driving impairment risk, and it must be taken with a fat-containing meal.",
-  "description": "Zurzuvae (zuranolone) is a short-course postpartum depression medication you take once nightly for 14 days. Many people notice mood symptoms improve quickly (sometimes within a few days). The tradeoff: it can make you very sleepy, foggy, and unsafe to drive—so you need a full 12-hour no-driving window after each dose. It also has abuse and physical-dependence potential, even though the treatment course is brief. Always take it with a fat-containing meal so it actually absorbs.",
-  "patient_summary": "Zurzuvae is a 14-day, once-nightly pill for postpartum depression that may start helping within days. Biggest risks are heavy sleepiness, confusion, and driving impairment—no driving for 12 hours after each dose. Take it with a fat-containing meal. It’s a controlled substance and can cause dependence/withdrawal symptoms if used longer or at higher doses than prescribed.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "zuranolone-zurzuvae",
+    "name": "Zuranolone (Zurzuvae)",
+    "generic_name": "zuranolone",
+    "brand_names": [
+      "Zurzuvae"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Antidepressant",
       "GABA-A Receptor Positive Allosteric Modulator",
       "Neuroactive Steroid"
-    ],
-    "brand_names": [
-      "Zurzuvae"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": false,
-    "fda_approval_year": 2023,
-    "pharmacologic_category": "Antidepressant; Gamma-Aminobutyric Acid (GABA) A Receptor Positive Modulator",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Postpartum Depression (PPD) in adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "postpartum-depression",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for postpartum depression in adults as a short, 14-day nightly course. It’s designed for faster symptom relief than traditional antidepressants, with sedation and driving impairment as the big limiting factors."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "not_indicated",
-        "context": "Not FDA-approved for major depressive disorder. If you’re being treated for non-postpartum depression, this usually isn’t the medication your clinician reaches for first."
-      }
-    ],
-    "contraindications": [
-      "No contraindications listed in manufacturer labeling"
-    ],
-    "efficacy_response": {
-      "metric": "HAM-D (17-item) improvement at Day 15",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Least-squares mean change -15.6 with zuranolone vs -11.6 with placebo (difference -4.0) in a Phase 3 trial using 50 mg/day for 14 days.",
-      "patient_text": "In a large clinical trial for severe postpartum depression, people taking zuranolone improved more than placebo by Day 15 on a standard depression scale—and the separation showed up as early as Day 3 in the study.",
-      "citation_tag": "PMID:37491938"
+  "summary": "14-day, once-nightly oral treatment for postpartum depression that can start working within days. Strong sedation + driving impairment risk, and it must be taken with a fat-containing meal.",
+  "description": "Zurzuvae (zuranolone) is a short-course postpartum depression medication you take once nightly for 14 days. Many people notice mood symptoms improve quickly (sometimes within a few days). The tradeoff: it can make you very sleepy, foggy, and unsafe to drive—so you need a full 12-hour no-driving window after each dose. It also has abuse and physical-dependence potential, even though the treatment course is brief. Always take it with a fat-containing meal so it actually absorbs.",
+  "patient_summary": "Zurzuvae is a 14-day, once-nightly pill for postpartum depression that may start helping within days. Biggest risks are heavy sleepiness, confusion, and driving impairment—no driving for 12 hours after each dose. Take it with a fat-containing meal. It’s a controlled substance and can cause dependence/withdrawal symptoms if used longer or at higher doses than prescribed.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "postpartum-depression",
+          "condition_name": "Postpartum Depression",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for postpartum depression in adults as a short, 14-day nightly course. It’s designed for faster symptom relief than traditional antidepressants, with sedation and driving impairment as the big limiting factors.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication",
+          "context": "Not FDA-approved for major depressive disorder. If you’re being treated for non-postpartum depression, this usually isn’t the medication your clinician reaches for first."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Food-dependent; must be taken with a fat-containing meal for adequate absorption",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Clinical improvement reported as early as Day 3 in trials; sedating effects can occur after dosing",
-      "peak_plasma": "5 to 6 hours",
-      "half_life": "Approximately 19.7 to 24.6 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Primarily hepatic via CYP3A4; no active metabolites",
-      "excretion": "Urine ~45%; feces ~41% (less than 2% unchanged)",
-      "protein_binding": ">99.5%",
-      "food_effect": "Fat-containing meals markedly increase exposure; high-fat meals increase Cmax ~4.3-fold and AUC ~2-fold; smaller fat-containing meals increase Cmax ~3.5-fold and AUC ~1.8-fold"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical improvement reported as early as Day 3 in trials; sedating effects can occur after dosing"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Somnolence",
+          "incidence": "36% (including hypersomnia and sedated state)",
+          "notes": "This is the big one. If you’re trying to function at night (feeding, pumping, checking on baby), plan support. Take it only when you can commit to being slowed down."
+        },
+        {
+          "effect": "Dizziness (including vertigo)",
+          "incidence": "13%",
+          "notes": "Stand up slowly, especially at night. If you feel wobbly, don’t carry the baby while walking around the house."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "6%",
+          "notes": "Hydrate and watch for dehydration, especially if you’re breastfeeding or already not eating well postpartum."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "5% (including asthenia)",
+          "notes": "Postpartum fatigue is already intense. This can stack on top of it and make you feel flattened."
+        },
+        {
+          "effect": "Urinary tract infection",
+          "incidence": "5%",
+          "notes": "If you have burning, urgency, or fever, don’t ignore it—postpartum UTIs can escalate quickly."
+        },
+        {
+          "effect": "Memory impairment",
+          "incidence": "3%",
+          "notes": "If you notice forgetfulness, write things down and avoid decisions that need sharp judgment at night."
+        },
+        {
+          "effect": "Abdominal pain",
+          "incidence": "3%",
+          "notes": "Can overlap with postpartum recovery. If pain is severe or persistent, rule out other causes."
+        },
+        {
+          "effect": "Anxiety",
+          "incidence": "2%",
+          "notes": "Yes, ironically. If anxiety ramps up, or you feel agitated/restless, report it."
+        },
+        {
+          "effect": "Tremor / Muscle twitching / Myalgia",
+          "incidence": "2% each",
+          "notes": "Usually mild, but if it’s intense or scary, check in with your clinician."
+        },
+        {
+          "effect": "Rash",
+          "incidence": "2%",
+          "notes": "If rash spreads rapidly, blisters, or you have swelling/trouble breathing, seek urgent care."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Confusion: frequency not defined; can be dangerous, especially overnight when caring for an infant"
+        },
+        {
+          "risk": "Severe sedation or altered consciousness: overdose risk exists; seek emergency care if someone is difficult to wake or not acting normal"
+        },
+        {
+          "risk": "Worsening depression or emergent suicidality: requires urgent clinical evaluation"
+        },
+        {
+          "risk": "Falls and injuries: sedation + dizziness increases risk; this is especially relevant postpartum"
+        },
+        {
+          "risk": "Withdrawal-type symptoms after stopping (reported in healthy subjects after several days of dosing): insomnia, palpitations, decreased appetite, nightmares, nausea, sweating, paranoia—risk may be higher if used longer or at higher doses than recommended"
+        }
+      ],
+      "black_box_warning": "WARNING: IMPAIRED ABILITY TO DRIVE OR ENGAGE IN OTHER POTENTIALLY HAZARDOUS ACTIVITIES. Zuranolone causes driving impairment due to central nervous system (CNS) depressant effects. Patients should not drive or engage in potentially hazardous activities until at least 12 hours after administration for the duration of the 14-day treatment course. Patients may not be able to assess their own driving competence or the degree of impairment.",
+      "contraindications": [
+        {
+          "contraindication": "No contraindications listed in manufacturer labeling"
+        }
+      ],
+      "precautions": [
+        "CNS depression: Can cause marked drowsiness, sedation, and confusion—your brain may be slower than you realize",
+        "Falls: Sedation + dizziness + postpartum sleep deprivation is a bad mix. Move slowly and get support if you feel unsteady",
+        "Suicidal thinking/behavior: Antidepressants can increase suicidality risk in some people (especially ages 18-24). Monitor closely during treatment and for 1-2 months after",
+        "Abuse and misuse: This is a Schedule IV controlled substance with abuse potential",
+        "Physical dependence and withdrawal symptoms: Withdrawal-type symptoms have been reported after stopping, especially with higher-than-recommended doses or longer-than-recommended use"
+      ],
+      "interactions": [
+        {
+          "interactant": "Strong or moderate CYP3A4 inhibitors",
+          "mechanism": "Can raise zuranolone levels and increase sedation, confusion, and impairment.",
+          "action": "Expect dose adjustments or avoidance depending on the interacting drug. Your prescriber should explicitly review this before starting."
+        },
+        {
+          "interactant": "CYP3A4 inducers (including some seizure meds and herbal products)",
+          "mechanism": "Can lower zuranolone levels and reduce benefit (and make the course feel like it “did nothing”).",
+          "action": "Avoid when possible or choose alternatives. Tell your clinician about all supplements—especially St. John’s Wort."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: worse sedation, worse impairment, higher fall risk, and potentially dangerous oversedation.",
+          "action": "Avoid alcohol during the 14-day course (and be cautious for at least several days after if you still feel sedated)."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, opioids, sleep meds, sedating antihistamines, muscle relaxants, cannabis/THC)",
+          "mechanism": "Stacking sedation can push you into unsafe territory (confusion, falls, impaired caregiving, dangerous driving impairment).",
+          "action": "Avoid combining when possible. If something sedating is medically necessary, your prescriber should plan it intentionally and monitor closely."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and impairment: drowsiness, slowed thinking, confusion—especially during the first few nights and after any dose reduction decisions"
+        },
+        {
+          "parameter": "Driving and safety behaviors: confirm the patient is reliably keeping the 12-hour no-driving/no-hazard window after each dose"
+        },
+        {
+          "parameter": "Falls risk: dizziness/vertigo, unsteadiness, nighttime caregiving, sleep deprivation, and any other sedating medications"
+        },
+        {
+          "parameter": "Suicidality and clinical worsening: monitor closely during treatment and for 1-2 months after (especially ages 18-24), and involve family/caregivers when appropriate"
+        },
+        {
+          "parameter": "Behavioral activation signals: agitation, irritability, insomnia, impulsivity, akathisia, hypomania/mania-like symptoms—report immediately"
+        },
+        {
+          "parameter": "Misuse/abuse risk: early refill requests, taking more than prescribed, using for a “high,” combining with alcohol/other sedatives"
+        },
+        {
+          "parameter": "Dependence/withdrawal-type symptoms: insomnia, palpitations, sweating, nightmares, nausea, paranoia after stopping—especially if the course is extended or dosing is higher than recommended"
+        },
+        {
+          "parameter": "Medication interaction review: CYP3A4 inhibitor/inducer checks at start (and again if meds change mid-course)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Based on animal reproduction data, in utero exposure may cause fetal harm. Because postpartum depression can begin late in pregnancy, treatment decisions during pregnancy typically favor other options if antidepressant treatment must start before delivery. Shared decision-making is essential.",
+        "lactation": "Zuranolone is present in breast milk. Available data suggest very low infant exposure (relative infant dose <1% in a small study of lactating women given 30 mg daily for 5 days), and milk concentrations fell below quantification several days after the last dose. The manufacturer recommends weighing infant exposure risk, breastfeeding benefits, and treatment benefits. Until more data exist, an option is pumping and discarding milk during therapy and for 1 week after the last dose.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Not specifically studied. Use adult dosing, but be extra cautious about sedation, confusion, and falls.",
+        "renal_impairment": "Moderate to severe renal impairment (eGFR 15 to 59): 30 mg nightly for 14 days; exposure increases when eGFR <60. Not studied in eGFR <15 or dialysis.",
+        "hepatic_impairment": "Severe hepatic impairment (Child-Turcotte-Pugh C): 30 mg nightly for 14 days; increased exposure is expected. Use caution and monitor sedation/impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2023
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Food-dependent; must be taken with a fat-containing meal for adequate absorption",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "5 to 6 hours",
+          "half_life": "Approximately 19.7 to 24.6 hours",
+          "metabolism": "Primarily hepatic via CYP3A4; no active metabolites",
+          "excretion": "Urine ~45%; feces ~41% (less than 2% unchanged)",
+          "protein_binding": ">99.5%",
+          "food_effect": "Fat-containing meals markedly increase exposure; high-fat meals increase Cmax ~4.3-fold and AUC ~2-fold; smaller fat-containing meals increase Cmax ~3.5-fold and AUC ~1.8-fold"
+        },
+        "dosing": {
+          "titration": "Zurzuvae is taken once nightly for 14 days, in the evening, with a fat-containing meal. The dosing is intentionally simple—and the safety rules (food + no driving window) are non-negotiable."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "For the FDA-approved use, Zurzuvae is a short, 14-day course—so most people finish the course and stop without a formal taper. The big rule is: do not extend the treatment or increase dose on your own. Withdrawal-type symptoms have been reported after stopping, and the risk appears higher with higher-than-recommended doses or longer-than-recommended use."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +239,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Zurzuvae has a very “body-forward” feel for a depression medication: some people notice mood lift quickly, but sedation can be intense. Here’s what tends to come up:",
       "items": [
         {
           "category": "Faster mood shift (days, not weeks)",
@@ -134,7 +285,8 @@
           ],
           "note": "Anxiety has been reported as a side effect. If anxiety spikes hard, tell your clinician promptly."
         }
-      ]
+      ],
+      "intro": "Zurzuvae has a very “body-forward” feel for a depression medication: some people notice mood lift quickly, but sedation can be intense. Here’s what tends to come up:"
     },
     {
       "type": "onset_duration",
@@ -152,10 +304,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In a Phase 3 postpartum depression trial, zuranolone improved depression scores more than placebo by Day 15, with differences showing up as early as Day 3 and persisting beyond the dosing window in the study follow-up.",
       "metric": "HAM-D (17-item) change at Day 15",
       "value": "-15.6",
       "comparison": "-11.6",
-      "text": "In a Phase 3 postpartum depression trial, zuranolone improved depression scores more than placebo by Day 15, with differences showing up as early as Day 3 and persisting beyond the dosing window in the study follow-up.",
       "clinical_details": "In a double-blind Phase 3 trial in severe postpartum depression (N=196), participants received zuranolone 50 mg daily or placebo for 14 days. The primary endpoint was change in HAM-D (17-item) total score at Day 15. The least-squares mean change was -15.6 with zuranolone vs -11.6 with placebo (difference -4.0; 95% CI -6.3 to -1.7).",
       "citation": {
         "authors": "Deligiannidis KM, et al.",
@@ -266,7 +418,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Zurzuvae is a CYP3A4 substrate and it’s also a CNS depressant. So two big interaction buckets matter: (1) meds that change CYP3A4 levels and (2) anything else that sedates you.",
       "items": [
         {
           "with": "Strong or moderate CYP3A4 inhibitors",
@@ -288,7 +439,8 @@
           "risk": "Stacking sedation can push you into unsafe territory (confusion, falls, impaired caregiving, dangerous driving impairment).",
           "action": "Avoid combining when possible. If something sedating is medically necessary, your prescriber should plan it intentionally and monitor closely."
         }
-      ]
+      ],
+      "intro": "Zurzuvae is a CYP3A4 substrate and it’s also a CNS depressant. So two big interaction buckets matter: (1) meds that change CYP3A4 levels and (2) anything else that sedates you."
     },
     {
       "type": "tapering",
@@ -362,21 +514,6 @@
       "text": "Zurzuvae fills a very specific lane: postpartum depression that needs faster symptom relief than traditional antidepressants, with a short, time-limited dosing plan. It’s not a casual medication—you have to plan around sedation and the 12-hour driving restriction—but for the right patient, the speed can be meaningful. It can be used as a standalone rapid intervention or alongside longer-term supports like therapy and/or maintenance antidepressants, depending on severity, relapse risk, and patient preference."
     }
   ],
-  "seo": {
-    "title": "Zuranolone (Zurzuvae): Postpartum Depression Uses, Dosing, Side Effects & Safety",
-    "description": "Zurzuvae (zuranolone) is a 14-day, once-nightly oral treatment for postpartum depression. Learn dosing (50 mg nightly), why you must take it with a fat-containing meal, common side effects (sleepiness, dizziness), the 12-hour no-driving rule, interactions, and dependence risk.",
-    "canonical": "[https://www.heypsych.com/treatments/zuranolone-zurzuvae](https://www.heypsych.com/treatments/zuranolone-zurzuvae)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Zurzuvae used for?",
@@ -422,5 +559,20 @@
       "q": "Does Zurzuvae replace therapy or standard antidepressants?",
       "a": "Not necessarily. It’s a short-course, rapid option for postpartum depression, and it may be used alongside therapy and/or longer-term medications depending on symptom severity, relapse risk, and what you and your clinician decide together."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Zuranolone (Zurzuvae): Postpartum Depression Uses, Dosing, Side Effects & Safety",
+    "description": "Zurzuvae (zuranolone) is a 14-day, once-nightly oral treatment for postpartum depression. Learn dosing (50 mg nightly), why you must take it with a fat-containing meal, common side effects (sleepiness, dizziness), the 12-hour no-driving rule, interactions, and dependence risk.",
+    "canonical": "[https://www.heypsych.com/treatments/zuranolone-zurzuvae](https://www.heypsych.com/treatments/zuranolone-zurzuvae)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

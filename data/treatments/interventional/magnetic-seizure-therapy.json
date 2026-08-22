@@ -1,74 +1,148 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "magnetic-seizure-therapy",
-  "type": "interventional",
-  "name": "Magnetic Seizure Therapy (MST)",
-  "summary": "An interventional brain stimulation treatment using high-intensity magnetic pulses to induce controlled therapeutic seizures, aiming to retain the efficacy of electroconvulsive therapy with fewer cognitive side effects.",
-  "description": "Magnetic Seizure Therapy (MST) is a neurostimulation technique that uses focused, high-intensity magnetic fields to induce a therapeutic seizure under anesthesia. It is designed to target specific brain regions while reducing the spread of stimulation to areas responsible for memory, potentially lowering cognitive side effects compared to electroconvulsive therapy (ECT). MST is primarily being investigated for treatment-resistant mood disorders, especially {link:major-depressive-disorder} and bipolar disorder.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "MST",
-    "magnetic seizure therapy",
-    "neuromodulation",
-    "ECT alternative"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "magnetic-seizure-therapy",
+    "name": "Magnetic Seizure Therapy (MST)",
+    "generic_name": "magnetic seizure therapy",
+    "brand_names": [
+      "MST"
+    ],
+    "wikidata_qid": "Q6730617"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
     "intervention_types": [
       "Neuromodulation",
       "Seizure therapy"
     ],
-    "treatment_types": [
-      "Brain stimulation"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "Magnetic field induction under anesthesia"
-    ],
-    "invasiveness_level": "Non-invasive (requires anesthesia)",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "15–30 minutes (plus anesthesia and recovery)",
-    "treatment_duration": [
-      "Acute series",
-      "Maintenance possible"
-    ],
-    "specialty_areas": [
-      "Mood Disorders"
-    ],
-    "wikidata_qid": "Q6730617"
+    "tags": [
+      "MST",
+      "magnetic seizure therapy",
+      "neuromodulation",
+      "ECT alternative"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "{link:condition:major-depressive-disorder}",
-      "Bipolar Disorder"
-    ],
-    "conditions_treated": [
-      "{link:condition:major-depressive-disorder}",
-      "Bipolar Disorder",
-      "{link:condition:schizophrenia}"
-    ],
-    "off_label_uses": [
-      "Catatonia"
-    ],
-    "contraindications": [
-      "Significant cardiovascular instability",
-      "Increased intracranial pressure",
-      "History of adverse reaction to anesthesia"
-    ],
-    "safety_profile": "Generally well tolerated in research settings; cognitive side effects appear less severe than with ECT, but data is still limited.",
-    "evidence_level": "Phase II/III clinical trials; not yet widely available outside research centers.",
-    "research_support": "Studies suggest MST may offer similar antidepressant efficacy to ECT with better preservation of memory function.",
-    "invasiveness": "Non-invasive (procedure performed under anesthesia)",
-    "efficacy_rating": {
-      "treatment_resistant_depression": 4,
-      "acute_mood_stabilization": 4,
-      "cognitive_tolerability": 4
+  "summary": "An interventional brain stimulation treatment using high-intensity magnetic pulses to induce controlled therapeutic seizures, aiming to retain the efficacy of electroconvulsive therapy with fewer cognitive side effects.",
+  "description": "Magnetic Seizure Therapy (MST) is a neurostimulation technique that uses focused, high-intensity magnetic fields to induce a therapeutic seizure under anesthesia. It is designed to target specific brain regions while reducing the spread of stimulation to areas responsible for memory, potentially lowering cognitive side effects compared to electroconvulsive therapy (ECT). MST is primarily being investigated for treatment-resistant mood disorders, especially {link:major-depressive-disorder} and bipolar disorder.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "link-condition-major-depressive-disorder",
+          "condition_name": "{link:condition:major-depressive-disorder}",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "link-condition-schizophrenia",
+          "condition_name": "{link:condition:schizophrenia}",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Phase II/III clinical trials; not yet widely available outside research centers.",
+      "efficacy_ratings": {
+        "treatment_resistant_depression": {
+          "rating": 4
+        },
+        "acute_mood_stabilization": {
+          "rating": 4
+        },
+        "cognitive_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Studies suggest MST may offer similar antidepressant efficacy to ECT with better preservation of memory function."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute series; Maintenance possible"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Magnetic field induction under anesthesia"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "15–30 minutes (plus anesthesia and recovery)"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally well tolerated in research settings; cognitive side effects appear less severe than with ECT, but data is still limited.",
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Scalp discomfort"
+        },
+        {
+          "effect": "Muscle soreness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Prolonged seizures"
+        },
+        {
+          "risk": "Serious anesthesia complications"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstable medical conditions",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Inability to undergo anesthesia",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "High seizure risk from other causes",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Recent stroke",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally avoided; insufficient safety data."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Neuromodulation, Seizure therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Induce anesthesia and muscle relaxation.\nPosition MST coil over targeted cortical region (often frontal cortex).\nDeliver high-frequency magnetic pulses to induce seizure.\nMonitor EEG and vital signs throughout.\nRecovery in post-anesthesia care unit."
+      }
     }
   },
   "sections": [
@@ -209,6 +283,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Lisanby SH, et al. Magnetic seizure therapy for treatment-resistant depression. Neuropsychopharmacology. 2003.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12637948/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kayser S, et al. Cognitive outcomes following MST vs ECT: A randomized trial. Am J Psychiatry. 2011.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21799066/"
+    }
+  ],
   "seo": {
     "title": "Magnetic Seizure Therapy (MST)",
     "description": "Overview of Magnetic Seizure Therapy, a brain stimulation treatment for severe depression aiming to match ECT's efficacy with fewer cognitive side effects.",
@@ -221,5 +309,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Phase II/III clinical trials; not yet widely available outside research centers."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Phase II/III clinical trials; not yet widely available outside research centers."
+    ]
   }
 }

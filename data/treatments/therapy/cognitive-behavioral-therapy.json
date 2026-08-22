@@ -1,97 +1,204 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cognitive-behavioral-therapy",
-  "type": "therapy",
-  "name": "Cognitive Behavioral Therapy (CBT)",
-  "summary": "A widely used, evidence-based psychotherapy that focuses on identifying and modifying maladaptive thoughts, behaviors, and emotional responses.",
-  "description": "Cognitive Behavioral Therapy (CBT) is a structured, goal-oriented psychotherapy that emphasizes the connection between thoughts, feelings, and behaviors. Developed by Aaron Beck and Albert Ellis, CBT helps individuals recognize and challenge distorted cognitions and replace them with healthier, more adaptive patterns of thinking and acting. It is typically short-term (12–20 sessions), skills-based, and has been adapted into many specialized forms (e.g., CBT-I for insomnia, TF-CBT for trauma, and exposure-based CBT for anxiety disorders). CBT is one of the most empirically validated psychotherapies and is effective across a broad spectrum of mental health conditions.",
-  "category": "therapy/individual",
-  "tags": [
-    "cognitive",
-    "behavioral",
-    "skills-based",
-    "structured therapy",
-    "evidence-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "cognitive-behavioral-therapy",
+    "name": "Cognitive Behavioral Therapy (CBT)",
+    "generic_name": "cognitive behavioral therapy",
+    "brand_names": [
+      "CBT"
+    ],
+    "wikidata_qid": "Q380550"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Psychotherapy",
       "Skills Training"
     ],
-    "treatment_types": [
-      "Cognitive",
-      "Behavioral",
-      "Talk Therapy"
-    ],
-    "categories": [
-      "Individual Therapy",
-      "Evidence-Based"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Group",
-      "Telehealth",
-      "Self-guided (digital CBT)"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "45–60 minutes",
-    "treatment_duration": [
-      "12–20 sessions standard",
-      "Extended for chronic conditions"
-    ],
-    "specialty_areas": [
-      "Mood Disorders",
-      "Anxiety",
-      "PTSD",
-      "Insomnia",
-      "Addiction"
-    ],
-    "wikidata_qid": "Q380550"
+    "tags": [
+      "cognitive",
+      "behavioral",
+      "skills-based",
+      "structured therapy",
+      "evidence-based"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Major Depressive Disorder",
-      "Generalized Anxiety Disorder",
-      "Social Anxiety Disorder",
-      "Panic Disorder",
-      "Obsessive–Compulsive Disorder (OCD)",
-      "Post-Traumatic Stress Disorder (PTSD)",
-      "Insomnia",
-      "Eating Disorders",
-      "Substance Use Disorders"
-    ],
-    "off_label_uses": [
-      "Chronic pain management",
-      "Adjustment disorders",
-      "Anger management",
-      "Medical adherence (e.g., diabetes, hypertension)"
-    ],
-    "contraindications": [
-      "Severe cognitive impairment (e.g., advanced dementia)",
-      "Severe psychosis without stabilization",
-      "Individuals unable to engage in structured, homework-based therapy"
-    ],
-    "safety_profile": "Safe and well-tolerated; may initially increase distress when confronting feared situations or thoughts.",
-    "evidence_level": "Strong—hundreds of randomized controlled trials across multiple diagnoses.",
-    "research_support": "Recognized as a gold-standard therapy by the American Psychological Association, NICE (UK), and WHO.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "anxiety-disorders": 5,
-      "ocd": 4,
-      "ptsd": 4,
-      "insomnia": 4,
-      "substance-use": 3,
-      "overall_tolerability": 5
+  "summary": "A widely used, evidence-based psychotherapy that focuses on identifying and modifying maladaptive thoughts, behaviors, and emotional responses.",
+  "description": "Cognitive Behavioral Therapy (CBT) is a structured, goal-oriented psychotherapy that emphasizes the connection between thoughts, feelings, and behaviors. Developed by Aaron Beck and Albert Ellis, CBT helps individuals recognize and challenge distorted cognitions and replace them with healthier, more adaptive patterns of thinking and acting. It is typically short-term (12–20 sessions), skills-based, and has been adapted into many specialized forms (e.g., CBT-I for insomnia, TF-CBT for trauma, and exposure-based CBT for anxiety disorders). CBT is one of the most empirically validated psychotherapies and is effective across a broad spectrum of mental health conditions.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder-ocd",
+          "condition_name": "Obsessive–Compulsive Disorder (OCD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-Traumatic Stress Disorder (PTSD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "eating-disorders",
+          "condition_name": "Eating Disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance Use Disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain-management",
+          "condition_name": "Chronic pain management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anger-management",
+          "condition_name": "Anger management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "medical-adherence-e-g-diabetes-hypertension",
+          "condition_name": "Medical adherence (e.g., diabetes, hypertension)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—hundreds of randomized controlled trials across multiple diagnoses.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "anxiety-disorders": {
+          "rating": 5
+        },
+        "ocd": {
+          "rating": 4
+        },
+        "ptsd": {
+          "rating": 4
+        },
+        "insomnia": {
+          "rating": 4
+        },
+        "substance-use": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Recognized as a gold-standard therapy by the American Psychological Association, NICE (UK), and WHO."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions standard; Extended for chronic conditions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Group",
+        "Telehealth",
+        "Self-guided (digital CBT)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated; may initially increase distress when confronting feared situations or thoughts.",
+      "common_adverse_effects": [
+        {
+          "effect": "Increased anxiety when confronting avoided thoughts/situations"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout due to difficulty tolerating homework or exposure tasks"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe untreated psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "High suicide risk without stabilization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Cognitive or developmental limitations preventing use of CBT methods",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive, Behavioral, Talk Therapy",
+        "key_techniques": [
+          "Individual Therapy",
+          "Evidence-Based"
+        ],
+        "session_structure": {
+          "pre_session": "Review homework and current symptoms.",
+          "during_session": "Introduce and practice cognitive or behavioral strategies.",
+          "post_session": "Assign homework and set goals for the week."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed psychologist, psychiatrist, or mental health provider trained in CBT",
+            "Specialized training for subtypes (e.g., CBT-I, TF-CBT, DBT integration)"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -258,6 +365,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Butler AC, Chapman JE, Forman EM, Beck AT. (2006). The empirical status of CBT.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16822169/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Hofmann SG, Asnaani A, Vonk IJJ, Sawyer AT, Fang A. (2012). The efficacy of CBT: A review of meta-analyses.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22273529/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "APA – Cognitive Behavioral Therapy",
+      "url": "https://www.apa.org/ptsd-guideline/treatments/cognitive-behavioral-therapy"
+    }
+  ],
   "seo": {
     "title": "Cognitive Behavioral Therapy (CBT)",
     "description": "Cognitive Behavioral Therapy (CBT) is an evidence-based psychotherapy for depression, anxiety, PTSD, insomnia, and more. Learn about its techniques, effectiveness, and outcomes.",
@@ -270,5 +397,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—hundreds of randomized controlled trials across multiple diagnoses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—hundreds of randomized controlled trials across multiple diagnoses."
+    ]
   }
 }

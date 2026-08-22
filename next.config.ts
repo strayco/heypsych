@@ -82,11 +82,7 @@ const nextConfig: NextConfig = {
   // This prevents webpack from trying to bundle them
   serverExternalPackages: ['fs', 'path'],
 
-  eslint: {
-    // TODO: Fix 280+ warnings and set to false
-    // Temporarily true to allow build during audit
-    ignoreDuringBuilds: true,
-  },
+  // NOTE: eslint config moved to eslint.config.js - no longer in Next.js 16 config
   typescript: {
     ignoreBuildErrors: false,
   },

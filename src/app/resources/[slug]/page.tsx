@@ -11,7 +11,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { EntityService } from "@/lib/data/entity-service";
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
@@ -21,6 +21,19 @@ import { ResourceDetailClient } from "@/components/resources/ResourceDetailClien
 // Pre-renders all resource pages at build time for instant page loads
 export async function generateStaticParams() {
   try {
+    // If Supabase is unavailable (local build), fall back to reading from local JSON files
+    if (SUPABASE_UNAVAILABLE) {
+      console.log("📦 Supabase unavailable - using local JSON files for static params");
+      // Return empty array - pages will be generated on-demand via dynamicParams
+      // This ensures builds work without database access
+      return [];
+    }
+
+    const supabase = supabaseOptional();
+    if (!supabase) {
+      return [];
+    }
+
     // Pre-render ALL resource pages at build time (~50 pages)
     // This ensures instant page loads from search results
     const { data: resources } = await supabase

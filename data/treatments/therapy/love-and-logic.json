@@ -1,87 +1,173 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "love-and-logic",
-  "type": "therapy",
-  "name": "Love and Logic Parenting",
-  "summary": "A parenting approach that emphasizes empathy, natural consequences, and shared control to foster responsibility and self-regulation in children.",
-  "description": "Love and Logic is a parenting program developed by Jim Fay and Foster Cline that integrates warmth, empathy, and structure to help parents raise responsible, respectful, and independent children. The model emphasizes giving children choices within limits, allowing them to experience the natural consequences of their actions, and maintaining strong, supportive parent–child relationships. By combining loving guidance with logical consequences, the approach aims to promote self-control, accountability, and positive behavior.",
-  "category": "therapy/parenting",
-  "tags": [
-    "parent training",
-    "behavior management",
-    "family therapy",
-    "child development",
-    "discipline",
-    "empathy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "love-and-logic",
+    "name": "Love and Logic Parenting"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parenting",
     "intervention_types": [
       "Parent training",
       "Behavioral parenting support"
     ],
-    "treatment_types": [
-      "Parenting program",
-      "Skills training"
-    ],
-    "categories": [
-      "Parenting interventions",
-      "Behavioral approaches"
-    ],
-    "delivery_methods": [
-      "Workshops",
-      "Group sessions",
-      "Books",
-      "Online courses"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Parents of children (toddlers through teens)"
-    ],
-    "session_duration": "60–90 minutes (workshops); variable for self-study",
-    "treatment_duration": [
-      "Varies—multi-week workshops or self-paced"
-    ],
-    "specialty_areas": [
-      "Parenting skills",
-      "Behavioral management",
-      "Family communication",
-      "Conflict reduction"
+    "tags": [
+      "parent training",
+      "behavior management",
+      "family therapy",
+      "child development",
+      "discipline",
+      "empathy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Parenting difficulties",
-      "Child behavioral challenges",
-      "Family conflict"
-    ],
-    "conditions_treated": [
-      "Oppositional behaviors",
-      "Defiant children",
-      "General behavior problems",
-      "Parent–child relational strain"
-    ],
-    "off_label_uses": [
-      "Classroom behavior management",
-      "Foster and adoptive parenting support"
-    ],
-    "contraindications": [
-      "Severe child mental health disorders requiring specialized therapy",
-      "Families in acute crisis needing intensive interventions"
-    ],
-    "safety_profile": "Safe, supportive, and educational; emphasizes empathy and positive discipline.",
-    "evidence_level": "Low to moderate—popular program with anecdotal support, limited peer-reviewed research compared to established models like PMT or Triple P.",
-    "research_support": "Some studies suggest improved parenting skills and child behavior outcomes, though rigorous evidence base is limited.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "parenting-skills": 4,
-      "behavior-management": 3,
-      "parent-child-relationship": 4,
-      "stress-reduction": 3,
-      "overall-tolerability": 5
+  "summary": "A parenting approach that emphasizes empathy, natural consequences, and shared control to foster responsibility and self-regulation in children.",
+  "description": "Love and Logic is a parenting program developed by Jim Fay and Foster Cline that integrates warmth, empathy, and structure to help parents raise responsible, respectful, and independent children. The model emphasizes giving children choices within limits, allowing them to experience the natural consequences of their actions, and maintaining strong, supportive parent–child relationships. By combining loving guidance with logical consequences, the approach aims to promote self-control, accountability, and positive behavior.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "parenting-difficulties",
+          "condition_name": "Parenting difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "child-behavioral-challenges",
+          "condition_name": "Child behavioral challenges",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-behaviors",
+          "condition_name": "Oppositional behaviors",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "defiant-children",
+          "condition_name": "Defiant children",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "general-behavior-problems",
+          "condition_name": "General behavior problems",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-strain",
+          "condition_name": "Parent–child relational strain",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "classroom-behavior-management",
+          "condition_name": "Classroom behavior management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "foster-and-adoptive-parenting-support",
+          "condition_name": "Foster and adoptive parenting support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Low to moderate—popular program with anecdotal support, limited peer-reviewed research compared to established models like PMT or Triple P.",
+      "efficacy_ratings": {
+        "parenting-skills": {
+          "rating": 4
+        },
+        "behavior-management": {
+          "rating": 3
+        },
+        "parent-child-relationship": {
+          "rating": 4
+        },
+        "stress-reduction": {
+          "rating": 3
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Some studies suggest improved parenting skills and child behavior outcomes, though rigorous evidence base is limited."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Varies—multi-week workshops or self-paced"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Workshops",
+        "Group sessions",
+        "Books",
+        "Online courses"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes (workshops); variable for self-study"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, supportive, and educational; emphasizes empathy and positive discipline.",
+      "common_adverse_effects": [
+        {
+          "effect": "Initial resistance from children to new parenting approach"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Frustration if parents are inconsistent in applying methods"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Families in need of crisis intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Children with severe psychiatric disorders needing clinical treatment",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Parenting program, Skills training",
+        "key_techniques": [
+          "Parenting interventions",
+          "Behavioral approaches"
+        ],
+        "session_structure": {
+          "pre_session": "Review parenting challenges and program concepts.",
+          "during_session": "Interactive teaching, role-playing, and strategy practice.",
+          "post_session": "Parents apply Love and Logic principles at home, with follow-up reflection."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Certified Love and Logic facilitators",
+            "Parent educators",
+            "Counselors and family therapists"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -231,6 +317,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Fay, J., & Cline, F. (2006). Parenting with Love and Logic.",
+      "url": "https://www.loveandlogic.com/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Love and Logic Institute – Official Website",
+      "url": "https://www.loveandlogic.com/"
+    }
+  ],
   "seo": {
     "title": "Love and Logic Parenting | Empathy and Discipline",
     "description": "Love and Logic is a parenting approach that blends empathy with logical consequences to raise responsible, resilient children. Learn its strategies, applications, and effectiveness.",
@@ -243,5 +343,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Low to moderate—popular program with anecdotal support, limited peer-reviewed research compared to established models like PMT or Triple P."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Low to moderate—popular program with anecdotal support, limited peer-reviewed research compared to established models like PMT or Triple P."
+    ]
   }
 }

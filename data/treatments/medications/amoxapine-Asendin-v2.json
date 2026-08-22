@@ -1,73 +1,236 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "amoxapine-asendin",
-  "type": "medication",
-  "name": "Amoxapine (Asendin)",
-  "summary": "An older tricyclic antidepressant with additional antipsychotic-like properties, used for major depressive disorder, including depression with psychotic features.",
-  "description": "Amoxapine is a tricyclic antidepressant (TCA) and dibenzoxazepine derivative that blocks the reuptake of norepinephrine and serotonin. One of its active metabolites also blocks dopamine receptors, giving it some antipsychotic-like effects. Because of its side-effect profile and boxed warning about suicidality in younger patients, it is generally reserved for treatment-resistant depression or depression with psychotic features when newer antidepressants are not effective or not tolerated.",
-  "patient_summary": "Amoxapine is an older antidepressant tablet taken by mouth, often once at night. It can help with depression and may be especially useful when there are severe symptoms like delusions or hallucinations. It can also cause significant side effects such as sleepiness, dry mouth, constipation, and movement problems, and it carries a warning about suicidal thoughts in younger people. It is not usually a first-choice antidepressant today and is typically used when other options have not worked.",
-  "category": "medications/depressive-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Tricyclic Antidepressant (Secondary Amine)",
-      "Dibenzoxazepine Derivative"
-    ],
+  "identity": {
+    "slug": "amoxapine-asendin",
+    "name": "Amoxapine (Asendin)",
+    "generic_name": "amoxapine",
     "brand_names": [
       "Asendin (historical brand)",
       "Amoxapine (generic)"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": false,
-    "generic_available": true,
-    "fda_approval_year": 1980,
-    "pharmacologic_category": "Antidepressant, Tricyclic (Secondary Amine)",
-    "published_date": "2025-11-29T00:00:00Z",
-    "last_updated": "2025-11-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q418272"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD), unipolar",
-      "Major Depressive Disorder with psychotic features"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Treatment of unipolar major depression when other antidepressants are ineffective or not tolerated"
-      },
-      {
-        "slug": "major-depressive-disorder-with-psychotic-features",
-        "relationship": "primary_treatment",
-        "context": "May be used when depression is accompanied by delusions or hallucinations due to its dopamine-blocking metabolite"
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity to amoxapine, other dibenzoxazepines, or any component of the formulation",
-      "Use with or within 14 days of monoamine oxidase inhibitors (MAOIs) such as phenelzine, tranylcypromine, isocarboxazid, selegiline, or rasagiline",
-      "Current treatment with linezolid or IV methylene blue",
-      "Acute recovery phase following a recent myocardial infarction (heart attack)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in major depressive disorder",
-      "percentage_value": "65%",
-      "comparison_data": "Response ≈60–70% in adults with major depression; broadly similar to imipramine and amitriptyline and superior to placebo in controlled trials.",
-      "patient_text": "Across clinical studies, roughly 6 to 7 out of 10 adults with major depression had meaningful improvement on amoxapine. Its benefit was about as strong as other older antidepressants and better than a sugar pill.",
-      "citation_tag": "PMID7049659"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depressive-disorders",
+    "drug_classes": [
+      "Tricyclic Antidepressant (Secondary Amine)",
+      "Dibenzoxazepine Derivative"
+    ]
+  },
+  "summary": "An older tricyclic antidepressant with additional antipsychotic-like properties, used for major depressive disorder, including depression with psychotic features.",
+  "description": "Amoxapine is a tricyclic antidepressant (TCA) and dibenzoxazepine derivative that blocks the reuptake of norepinephrine and serotonin. One of its active metabolites also blocks dopamine receptors, giving it some antipsychotic-like effects. Because of its side-effect profile and boxed warning about suicidality in younger patients, it is generally reserved for treatment-resistant depression or depression with psychotic features when newer antidepressants are not effective or not tolerated.",
+  "patient_summary": "Amoxapine is an older antidepressant tablet taken by mouth, often once at night. It can help with depression and may be especially useful when there are severe symptoms like delusions or hallucinations. It can also cause significant side effects such as sleepiness, dry mouth, constipation, and movement problems, and it carries a warning about suicidal thoughts in younger people. It is not usually a first-choice antidepressant today and is typically used when other options have not worked.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Treatment of unipolar major depression when other antidepressants are ineffective or not tolerated",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "major-depressive-disorder-with-psychotic-features",
+          "condition_name": "Major Depressive Disorder With Psychotic Features",
+          "relationship": "primary_indication",
+          "context": "May be used when depression is accompanied by delusions or hallucinations due to its dopamine-blocking metabolite",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "metabolism": "Extensively metabolized in the liver to active metabolites, including 7-hydroxyamoxapine and 8-hydroxyamoxapine (the latter has dopamine receptor–blocking activity).",
-      "excretion": "Primarily excreted in the urine as metabolites and conjugates.",
-      "half_life": "Parent drug ~8 hours; active metabolite (8-hydroxyamoxapine) ~30 hours.",
-      "bioavailability": "Well absorbed after oral dosing; peak levels usually reached in about 1.5 hours."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "1–2 weeks: Some people notice early improvements in sleep or mood.; 4–6+ weeks: Typical timeframe for full antidepressant response at a stable dose.; First days: Sedation, dry mouth, and other side effects may appear and sometimes lessen over time.; Long-acting metabolite: The 8-hydroxyamoxapine metabolite (t½ ~30 hours) can prolong both therapeutic and adverse effects."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / feeling slowed down",
+          "incidence": "≈14%",
+          "notes": "You may feel sleepy or less alert, especially when first starting or after dose increases. Avoid driving or operating machinery until you know how this medicine affects you."
+        },
+        {
+          "effect": "Dry mouth",
+          "incidence": "≈14%",
+          "notes": "Drinking water regularly, chewing sugar-free gum, or using saliva substitutes may help."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "≈12%",
+          "notes": "Increase fluids, fiber, and activity if possible. Talk with your clinician if constipation is severe or persistent."
+        },
+        {
+          "effect": "Blurred vision",
+          "incidence": "≈7%"
+        },
+        {
+          "effect": "Dizziness, lightheadedness, especially when standing up",
+          "incidence": "1–10%"
+        },
+        {
+          "effect": "Headache, fatigue, or trouble sleeping",
+          "incidence": "1–10%"
+        },
+        {
+          "effect": "Increased appetite or weight change",
+          "incidence": "1–10%"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serotonergic and dopaminergic effects: new or worsening agitation, confusion, hallucinations, or marked mood swings."
+        },
+        {
+          "risk": "Seizures (the risk increases with higher doses or in people with a seizure history)."
+        },
+        {
+          "risk": "Cardiovascular events: chest pain, fast or irregular heartbeat, fainting, or signs of stroke (sudden weakness, trouble speaking, facial droop)."
+        },
+        {
+          "risk": "Severe anticholinergic effects: inability to urinate, severe constipation, abdominal pain, or worsening narrow-angle glaucoma."
+        },
+        {
+          "risk": "Extrapyramidal symptoms (EPS): stiffness, tremor, restlessness, or difficulty controlling movements."
+        },
+        {
+          "risk": "Tardive dyskinesia: persistent, involuntary movements of the tongue, face, mouth, or limbs (can be irreversible)."
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, muscle rigidity, confusion, autonomic instability, and elevated creatine kinase."
+        },
+        {
+          "risk": "Severe allergic reactions: rash, hives, swelling of face or throat, difficulty breathing."
+        },
+        {
+          "risk": "Hyponatremia/SIADH: confusion, headache, weakness, or seizures related to low sodium."
+        }
+      ],
+      "black_box_warning": "Antidepressants, including amoxapine, may increase the risk of suicidal thoughts and behaviors in children, adolescents, and young adults, especially in the first few months of treatment or after dose changes. This medicine is not approved for use in pediatric patients. Carefully weigh the need for treatment against the risk in younger people. Monitor all patients closely for new or worsening suicidal thoughts, depressed mood, agitation, or unusual behavior changes. Families and caregivers should be instructed to observe the patient and report concerning symptoms right away.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to amoxapine, other dibenzoxazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Use with or within 14 days of monoamine oxidase inhibitors (MAOIs) such as phenelzine, tranylcypromine, isocarboxazid, selegiline, or rasagiline"
+        },
+        {
+          "contraindication": "Current treatment with linezolid or IV methylene blue"
+        },
+        {
+          "contraindication": "Acute recovery phase following a recent myocardial infarction (heart attack)"
+        }
+      ],
+      "precautions": [
+        "Suicidality: Depression itself carries a risk of suicide. Any sudden change in mood, behavior, or thoughts of self-harm should be treated as an emergency.",
+        "Cardiac risk: Like other tricyclics, amoxapine can affect heart rhythm and blood pressure. Use caution in patients with cardiovascular disease, conduction abnormalities, or a history of heart attack.",
+        "Seizure threshold: Amoxapine can lower the seizure threshold, especially at higher doses or in overdose. Use extra caution in people with a seizure history, brain injury, or alcohol/substance use.",
+        "Movement disorders: Because a metabolite blocks dopamine receptors, amoxapine can cause extrapyramidal symptoms and tardive dyskinesia, particularly with long-term use or in older adults.",
+        "Anticholinergic burden: Dry mouth, constipation, blurred vision, urinary retention, and cognitive slowing are more likely in older patients and those with conditions such as benign prostatic hyperplasia, chronic constipation, or narrow-angle glaucoma.",
+        "Orthostatic hypotension: Standing up too quickly may cause dizziness or fainting. The risk is higher in older adults, people with low blood volume, or those on other blood pressure–lowering medications.",
+        "Neuroleptic malignant syndrome: Rare but life-threatening. Sudden fever, muscle stiffness, confusion, and unstable blood pressure or heart rate need urgent care.",
+        "Discontinuation symptoms: Stopping abruptly after several weeks or months can cause nausea, flu-like feelings, sleep problems, mood changes, and other withdrawal symptoms. Tapering slowly is recommended.",
+        "Electroconvulsive therapy (ECT): Amoxapine may increase the risks associated with ECT; prescribers may adjust or temporarily stop it before ECT sessions.",
+        "Older adults: Generally avoided due to increased risk of falls, confusion, heart rhythm problems, and movement disorders."
+      ],
+      "interactions": [
+        {
+          "interactant": "Monoamine oxidase inhibitors (MAOIs) and related drugs (e.g., phenelzine, tranylcypromine, isocarboxazid, selegiline, rasagiline, linezolid, methylene blue)",
+          "mechanism": "Serious reactions including very high blood pressure, serotonin toxicity, and other life-threatening effects.",
+          "action": "Contraindicated. Allow at least 14 days between stopping an MAOI and starting amoxapine, and at least 14 days between stopping amoxapine and starting an MAOI or high-risk serotonergic MAO-B inhibitor."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs, SNRIs, other TCAs, many triptans, tramadol, some opioids, St John’s wort, dextromethorphan, etc.)",
+          "mechanism": "Increased serotonin with potential for serotonin syndrome (agitation, tremor, clonus, fever, autonomic instability).",
+          "action": "Use cautiously. Avoid unnecessary combinations and monitor closely for symptoms of serotonin toxicity."
+        },
+        {
+          "interactant": "Other drugs that lower seizure threshold (e.g., bupropion, tramadol, typical antipsychotics, some fluoroquinolones)",
+          "mechanism": "Higher risk of seizures.",
+          "action": "Avoid high-risk combinations when possible or use the lowest effective doses with careful monitoring."
+        },
+        {
+          "interactant": "CNS depressants (alcohol, benzodiazepines, opioids, sedating antihistamines, sleep medicines, muscle relaxants)",
+          "mechanism": "Additive sedation, impaired coordination, falls, and in severe cases, slowed or stopped breathing.",
+          "action": "Avoid or minimize combined use. If combination cannot be avoided, use the smallest effective doses and monitor closely."
+        },
+        {
+          "interactant": "Strong CYP2D6 inhibitors (e.g., fluoxetine, paroxetine, some antipsychotics)",
+          "mechanism": "Possible increase in amoxapine levels, leading to more side effects.",
+          "action": "Consider lower amoxapine doses and monitor for toxicity (sedation, confusion, tremor, heart rhythm changes)."
+        },
+        {
+          "interactant": "Anticholinergic medications (e.g., oxybutynin, some antipsychotics, first-generation antihistamines)",
+          "mechanism": "Increased dry mouth, constipation, urinary retention, blurred vision, and confusion.",
+          "action": "Limit combined anticholinergic load where possible; monitor especially in older adults."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood, anxiety, and suicidal thoughts, especially in the first weeks of treatment and after dose changes."
+        },
+        {
+          "parameter": "Blood pressure and heart rate; consider baseline and follow-up ECG in patients with cardiac history or higher doses."
+        },
+        {
+          "parameter": "Weight, appetite, and metabolic parameters (e.g., blood glucose) in at-risk individuals."
+        },
+        {
+          "parameter": "Signs of extrapyramidal symptoms or tardive dyskinesia (involuntary movements, stiffness, tremor)."
+        },
+        {
+          "parameter": "Serum sodium in older adults or others at risk of hyponatremia."
+        },
+        {
+          "parameter": "Anticholinergic burden (dry mouth, constipation, urinary retention, blurred vision, confusion)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Data on amoxapine in pregnancy are limited. Untreated depression in pregnancy also carries risks. TCAs are generally not first-line for treatment-naïve pregnant patients, but continuing an effective regimen may be reasonable after shared decision-making. Use the lowest effective dose and monitor both mother and fetus.",
+        "lactation": "Amoxapine and its active metabolite appear in breast milk in low concentrations. If used during breastfeeding, monitor the infant for excessive sleepiness, trouble feeding, or poor weight gain. Alternative antidepressants with more lactation data are often preferred when starting new therapy.",
+        "pediatric": "Not approved for use in children or adolescents. Because of the boxed warning about suicidality and significant side-effect profile, use in individuals under 18 should be avoided.",
+        "geriatric": "Older adults are more sensitive to anticholinergic, cardiovascular, and movement-related side effects. Amoxapine is generally considered potentially inappropriate in many older patients. If it must be used, start with very low doses, increase slowly, and monitor closely for falls, confusion, and heart rhythm changes."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1980
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "bioavailability": "Well absorbed after oral dosing; peak levels usually reached in about 1.5 hours.",
+          "half_life": "Parent drug ~8 hours; active metabolite (8-hydroxyamoxapine) ~30 hours.",
+          "metabolism": "Extensively metabolized in the liver to active metabolites, including 7-hydroxyamoxapine and 8-hydroxyamoxapine (the latter has dopamine receptor–blocking activity).",
+          "excretion": "Primarily excreted in the urine as metabolites and conjugates."
+        },
+        "dosing": {
+          "max_dose": "Outpatient maximum: 400 mg/day. In hospitalized patients without a seizure history who have not responded to 300 mg/day for at least 2 weeks, doses up to 600 mg/day in divided doses have been used.",
+          "titration": "Dosing is individualized based on severity of depression, presence of psychotic features, medical comorbidities, and tolerability. Higher doses increase both antidepressant effect and risks such as seizures and extrapyramidal symptoms."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "When amoxapine has been used for 4 weeks or longer, it should usually be tapered gradually rather than stopped suddenly. A common approach is to reduce the total daily dose by 10–25% every 1 to 2 weeks, slowing down further if withdrawal symptoms or a return of depression appears. Longer-term users (for example, more than 6 months) or those on higher doses may need a slower and more flexible taper schedule."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +250,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Reported experiences vary, but common themes from patients taking amoxapine include:",
       "items": [
         {
           "category": "Sedation & Energy",
@@ -114,7 +276,8 @@
           ],
           "note": "Movement side effects may reflect dopamine-blocking activity from an active metabolite."
         }
-      ]
+      ],
+      "intro": "Reported experiences vary, but common themes from patients taking amoxapine include:"
     },
     {
       "type": "onset_duration",
@@ -130,10 +293,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In studies of adults with depression, about 6 or 7 out of 10 people taking amoxapine felt noticeably better. It generally works about as well as other older antidepressants. Some people start to feel a change in mood within a week or two, but full benefit can take several weeks.",
       "metric": "Major Depressive Disorder",
       "value": "Effective",
       "comparison": "Similar to other TCAs",
-      "text": "In studies of adults with depression, about 6 or 7 out of 10 people taking amoxapine felt noticeably better. It generally works about as well as other older antidepressants. Some people start to feel a change in mood within a week or two, but full benefit can take several weeks.",
       "clinical_details": "Jue (1982) reviewed short- and longer-term trials of amoxapine in depressed adults and found overall response rates in the 60–70% range, which are similar to those reported for other first-generation tricyclic antidepressants like imipramine and amitriptyline. Across studies, amoxapine demonstrated superiority to placebo on standard depression rating scales, with some evidence for a relatively early onset of therapeutic benefit. The review also highlighted that the dopamine receptor–blocking properties of the 8-hydroxyamoxapine metabolite may improve psychotic features in some patients but increase risk for extrapyramidal symptoms and tardive dyskinesia, particularly with higher doses and long-term use.",
       "citation": {
         "authors": "Jue SG",
@@ -369,25 +532,20 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Amoxapine (Asendin): Dosing, Suicidality Warning, Side Effects & Safety Guide",
-    "description": "Clinical and patient-friendly guide to Amoxapine (Asendin), an older tricyclic antidepressant used for major depressive disorder, including psychotic depression. Covers efficacy, dosing, boxed suicidality warning, side effects, and monitoring.",
-    "canonical": "https://www.heypsych.com/treatments/amoxapine-asendin",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-11-29",
-    "lastUpdated": "2025-11-29",
-    "citations": [
-      "Jue SG. Amoxapine: a review of its pharmacology, clinical efficacy, and adverse effects in depressed states. Drugs. 1982;24(1):1–24.",
-      "Standard tricyclic antidepressant prescribing information and contemporary treatment guidelines for major depressive disorder."
-    ],
-    "reviewStatement": "This content has been medically reviewed by board-certified psychiatrists and aligned with available pharmacology reviews, standard antidepressant treatment guidelines, and current safety warnings."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Jue SG. Amoxapine: a review of its pharmacology, clinical efficacy, and adverse effects in depressed states. Drugs. 1982;24(1):1–24.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7049659/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Amoxapine drug monographs and prescribing information (various standard references).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=amoxapine"
+    }
+  ],
   "faqs": [
     {
       "q": "What is Amoxapine used for?",
@@ -421,5 +579,24 @@
       "q": "How should I store and dispose of Amoxapine?",
       "a": "Store tablets at room temperature in a dry place, away from moisture and direct heat, and out of reach of children and pets. Do not keep them in the bathroom. When tablets are expired or no longer needed, use a local medicine take-back program if available. Do not flush them down the toilet or pour them down the drain unless a pharmacist or local guidance specifically instructs you to."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Amoxapine (Asendin): Dosing, Suicidality Warning, Side Effects & Safety Guide",
+    "description": "Clinical and patient-friendly guide to Amoxapine (Asendin), an older tricyclic antidepressant used for major depressive disorder, including psychotic depression. Covers efficacy, dosing, boxed suicidality warning, side effects, and monitoring.",
+    "canonical": "https://www.heypsych.com/treatments/amoxapine-asendin",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-11-29",
+    "lastUpdated": "2025-11-29",
+    "citations": [
+      "Jue SG. Amoxapine: a review of its pharmacology, clinical efficacy, and adverse effects in depressed states. Drugs. 1982;24(1):1–24.",
+      "Standard tricyclic antidepressant prescribing information and contemporary treatment guidelines for major depressive disorder."
+    ],
+    "reviewStatement": "This content has been medically reviewed by board-certified psychiatrists and aligned with available pharmacology reviews, standard antidepressant treatment guidelines, and current safety warnings."
+  }
 }

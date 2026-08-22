@@ -1,83 +1,176 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "accelerated-resolution-therapy",
-  "type": "therapy",
-  "name": "Accelerated Resolution Therapy (ART)",
-  "summary": "A brief, evidence-based psychotherapy combining eye movements, relaxation, and imagery rescripting to rapidly reduce symptoms of trauma, anxiety, and other conditions.",
-  "description": "Accelerated Resolution Therapy (ART) is a form of psychotherapy that integrates elements of eye movement therapies, cognitive-behavioral therapy, and guided imagery. ART uses sets of therapist-directed eye movements combined with visualization techniques to help patients replace distressing images and sensations with positive ones. Research suggests ART can quickly reduce symptoms of PTSD, anxiety, depression, and phobias, often in fewer sessions than traditional therapies.",
-  "category": "therapy/trauma-focused",
-  "tags": [
-    "trauma",
-    "ptsd",
-    "anxiety",
-    "rescripting",
-    "eye-movement therapy",
-    "brief therapy"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Trauma-Focused Therapy",
-      "Brief Therapy"
-    ],
-    "categories": [
-      "Trauma Therapy",
-      "Anxiety Disorders",
-      "Cognitive-Behavioral"
-    ],
-    "delivery_methods": [
-      "Individual psychotherapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "1–5 sessions typically",
-      "May extend based on severity"
-    ],
-    "specialty_areas": [
-      "Trauma",
-      "Anxiety Disorders",
-      "PTSD"
+  "identity": {
+    "slug": "accelerated-resolution-therapy",
+    "name": "Accelerated Resolution Therapy (ART)",
+    "generic_name": "accelerated resolution therapy",
+    "brand_names": [
+      "ART"
     ],
     "wikidata_qid": "Q2822953"
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "PTSD",
-      "Trauma-related disorders",
-      "Anxiety disorders",
-      "Phobias",
-      "Depression",
-      "Grief"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/trauma-focused",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "off_label_uses": [
-      "Chronic pain",
-      "Performance anxiety"
-    ],
-    "contraindications": [
-      "Severe dissociation",
-      "Acute psychosis",
-      "Unstable neurological conditions"
-    ],
-    "safety_profile": "Considered safe with minimal risks. May trigger temporary emotional distress during processing.",
-    "evidence_level": "Emerging to moderate; supported by clinical trials but less established than CBT or EMDR.",
-    "research_support": "Studies show ART is effective for PTSD and other trauma-related conditions, with rapid symptom reduction.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 4,
-      "anxiety": 4,
-      "phobias": 3,
-      "depression": 3,
-      "overall_tolerability": 5
+    "tags": [
+      "trauma",
+      "ptsd",
+      "anxiety",
+      "rescripting",
+      "eye-movement therapy",
+      "brief therapy"
+    ]
+  },
+  "summary": "A brief, evidence-based psychotherapy combining eye movements, relaxation, and imagery rescripting to rapidly reduce symptoms of trauma, anxiety, and other conditions.",
+  "description": "Accelerated Resolution Therapy (ART) is a form of psychotherapy that integrates elements of eye movement therapies, cognitive-behavioral therapy, and guided imagery. ART uses sets of therapist-directed eye movements combined with visualization techniques to help patients replace distressing images and sensations with positive ones. Research suggests ART can quickly reduce symptoms of PTSD, anxiety, depression, and phobias, often in fewer sessions than traditional therapies.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-disorders",
+          "condition_name": "Trauma-related disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "phobias",
+          "condition_name": "Phobias",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "grief",
+          "condition_name": "Grief",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "performance-anxiety",
+          "condition_name": "Performance anxiety",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Emerging to moderate; supported by clinical trials but less established than CBT or EMDR.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "phobias": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Studies show ART is effective for PTSD and other trauma-related conditions, with rapid symptom reduction."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "1–5 sessions typically; May extend based on severity"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Individual psychotherapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Considered safe with minimal risks. May trigger temporary emotional distress during processing.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary emotional discomfort during session"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Intense emotional flooding if not properly guided"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Dissociative disorders",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Neurological instability",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe, but consider emotional tolerance"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Trauma-Focused Therapy, Brief Therapy",
+        "key_techniques": [
+          "Trauma Therapy",
+          "Anxiety Disorders",
+          "Cognitive-Behavioral"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in, identification of target memory or symptom.",
+          "during_session": "Eye movements with visualization and image rescripting.",
+          "post_session": "Grounding, discussion of insights, plan for next session."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed mental health professionals with ART certification"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -242,6 +335,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kip KE, et al. Randomized controlled trial of Accelerated Resolution Therapy (ART) for symptoms of combat-related post-traumatic stress disorder (PTSD). Military Medicine. 2013.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23634465/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "APA Division 12: Accelerated Resolution Therapy (ART) – Research Summary",
+      "url": "https://div12.org/accelerated-resolution-therapy-art/"
+    }
+  ],
   "seo": {
     "title": "Accelerated Resolution Therapy (ART) | Trauma & PTSD Treatment",
     "description": "Accelerated Resolution Therapy (ART) is a brief, evidence-based psychotherapy using eye movements and visualization to rapidly reduce PTSD, trauma, anxiety, and depression symptoms.",
@@ -254,5 +361,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Emerging to moderate; supported by clinical trials but less established than CBT or EMDR."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Emerging to moderate; supported by clinical trials but less established than CBT or EMDR."
+    ]
   }
 }

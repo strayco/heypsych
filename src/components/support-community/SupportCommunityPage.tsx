@@ -16,14 +16,15 @@ interface Props {
   organizationsResources: Resource[];
   treatmentResources: Resource[];
   crisisHotlines: Hotline[];
+  defaultTab?: TabType;
 }
 
 type TabType = "crisis" | "organizations" | "treatment";
 
-export function SupportCommunityPage({ crisisResources, organizationsResources, treatmentResources, crisisHotlines }: Props) {
+export function SupportCommunityPage({ crisisResources, organizationsResources, treatmentResources, crisisHotlines, defaultTab }: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const initialTab = (searchParams.get("tab") as TabType) || "crisis";
+  const initialTab = defaultTab || (searchParams.get("tab") as TabType) || "crisis";
   const [activeTab, setActiveTab] = useState<TabType>(initialTab);
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
@@ -53,7 +54,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
       label: "Immediate & Crisis Help",
       icon: Shield,
       color: "red",
-      gradient: "from-red-500 to-rose-600",
+      gradient: "from-negative to-negative-600",
     },
     {
       id: "organizations" as TabType,
@@ -72,7 +73,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -89,14 +90,14 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
                 Support & Community
               </span>
             </h1>
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-900">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-primary">
               Find help, connect with others, and access support resources for your mental health journey
             </p>
           </motion.div>
 
           {/* Tabs */}
           <div className="mb-8">
-            <div className="border-b border-slate-200">
+            <div className="border-b border-separator">
               <nav className="-mb-px flex flex-col gap-2 sm:flex-row sm:gap-0" aria-label="Tabs" role="tablist">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
@@ -108,10 +109,10 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
                       role="tab"
                       aria-selected={isActive}
                       aria-controls={`${tab.id}-panel`}
-                      className={`group relative flex-1 border-b-2 px-4 py-3 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                      className={`group relative flex-1 border-b-2 px-4 py-3 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                         isActive
                           ? `border-${tab.color}-600 text-${tab.color}-600`
-                          : "border-transparent text-slate-900 hover:border-slate-300 hover:text-slate-900"
+                          : "border-transparent text-label-primary hover:border-separator hover:text-label-primary"
                       }`}
                     >
                       <div className="flex items-center justify-center gap-2">

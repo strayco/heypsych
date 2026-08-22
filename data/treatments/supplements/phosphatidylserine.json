@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phosphatidylserine",
-  "type": "supplement",
-  "name": "Phosphatidylserine",
-  "summary": "Phosphatidylserine is a phospholipid that supports cognitive function, memory, stress resilience, and neuronal cell membrane integrity.",
-  "description": "Phosphatidylserine (PS) is a naturally occurring phospholipid concentrated in brain cell membranes, where it plays a crucial role in cell signaling, neurotransmitter release, and membrane fluidity. Supplementation has been studied for supporting memory, cognitive performance, and stress response, particularly in older adults and individuals with cognitive decline. Some studies suggest it may improve mood and reduce cortisol levels under stress. While PS was originally derived from bovine brain, modern supplements are typically sourced from soy or sunflower lecithin. It remains a popular nootropic and integrative medicine supplement, though evidence varies by indication.",
-  "category": "supplements",
-  "tags": [
-    "phospholipid",
-    "cognition",
-    "memory",
-    "stress resilience"
-  ],
-  "metadata": {
-    "compound_type": "Phospholipid",
-    "natural_source": "Soy lecithin, sunflower lecithin, bovine cortex (historic source)",
+  "identity": {
+    "slug": "phosphatidylserine",
+    "name": "Phosphatidylserine",
+    "brand_names": [
+      "SerinAid",
+      "Neuro-PS",
+      "Sharp-PS"
+    ],
+    "aliases": [
+      "PS",
+      "phosphatidyl-L-serine"
+    ],
+    "wikidata_qid": "Q422675"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Neurology",
       "Integrative Medicine",
@@ -25,75 +28,159 @@
       "Neurotransmitter modulation",
       "Cortisol regulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "SerinAid",
-      "Neuro-PS",
-      "Sharp-PS"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Neurology",
-      "Geriatrics",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q422675"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Support for memory and cognitive function",
-      "Stress resilience and cortisol regulation",
-      "Support for age-related cognitive decline"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in ADHD",
-      "Mood enhancement in stress-related conditions",
-      "Potential use in athletic performance under stress"
-    ],
-    "contraindications": [
-      "Soy allergy (if soy-derived)",
-      "Use caution with anticoagulant therapy (possible theoretical bleeding risk)"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Mood and cognitive response"
-    ],
-    "efficacy_rating": {
-      "cognition": 4,
-      "memory": 4,
-      "stress_resilience": 3,
-      "mood": 2,
-      "neuroprotection": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Phosphatidylserine",
-      "PS",
-      "phospholipid memory supplement"
-    ],
-    "synonyms": [
-      "PS",
-      "phosphatidyl-L-serine"
-    ],
-    "common_misspellings": [
-      "phosphatidylserin",
-      "phosphaditylserine"
+    "tags": [
+      "phospholipid",
+      "cognition",
+      "memory",
+      "stress resilience"
     ]
+  },
+  "summary": "Phosphatidylserine is a phospholipid that supports cognitive function, memory, stress resilience, and neuronal cell membrane integrity.",
+  "description": "Phosphatidylserine (PS) is a naturally occurring phospholipid concentrated in brain cell membranes, where it plays a crucial role in cell signaling, neurotransmitter release, and membrane fluidity. Supplementation has been studied for supporting memory, cognitive performance, and stress response, particularly in older adults and individuals with cognitive decline. Some studies suggest it may improve mood and reduce cortisol levels under stress. While PS was originally derived from bovine brain, modern supplements are typically sourced from soy or sunflower lecithin. It remains a popular nootropic and integrative medicine supplement, though evidence varies by indication.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "support-for-memory-and-cognitive-function",
+          "condition_name": "Support for memory and cognitive function",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-resilience-and-cortisol-regulation",
+          "condition_name": "Stress resilience and cortisol regulation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "support-for-age-related-cognitive-decline",
+          "condition_name": "Support for age-related cognitive decline",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-adhd",
+          "condition_name": "Adjunctive support in ADHD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-enhancement-in-stress-related-conditions",
+          "condition_name": "Mood enhancement in stress-related conditions",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "potential-use-in-athletic-performance-under-stress",
+          "condition_name": "Potential use in athletic performance under stress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cognition": {
+          "rating": 4
+        },
+        "memory": {
+          "rating": 4
+        },
+        "stress_resilience": {
+          "rating": 3
+        },
+        "mood": {
+          "rating": 2
+        },
+        "neuroprotection": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Insomnia (rare)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Potential bleeding risk when combined with anticoagulants (rare, theoretical)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Soy allergy (if soy-derived)"
+        },
+        {
+          "contraindication": "Use caution with anticoagulant therapy (possible theoretical bleeding risk)"
+        }
+      ],
+      "precautions": [
+        "Discontinue if experiencing insomnia or agitation.",
+        "Soy-derived PS may trigger allergic reactions in sensitive individuals."
+      ],
+      "interactions": [
+        {
+          "interactant": "Cholinergic medications",
+          "mechanism": "Potential additive effects",
+          "action": "Monitor cognition and side effects"
+        },
+        {
+          "interactant": "Anticoagulants",
+          "mechanism": "Possible increased bleeding risk (theoretical)",
+          "action": "Use caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cognitive performance"
+        },
+        {
+          "parameter": "GI tolerance"
+        },
+        {
+          "parameter": "Sleep quality"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; avoid unless prescribed",
+        "lactation": "Insufficient data; avoid",
+        "pediatric": "Investigated in ADHD; otherwise not routinely recommended",
+        "geriatric": "Often used in aging populations; generally well tolerated"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Phospholipid",
+        "natural_source": "Soy lecithin, sunflower lecithin, bovine cortex (historic source)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -211,6 +298,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Crook TH, et al. Effects of phosphatidylserine in age-associated memory impairment. Neurology. 1991",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2027487/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Hellhammer J, et al. The effect of phosphatidylserine on stress responses in humans. Stress. 2004",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15512860/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Jorissen BL, et al. The influence of soy-derived phosphatidylserine on cognitive performance in elderly. Nutr Neurosci. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11842880/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Phosphatidylserine",
+      "PS",
+      "phospholipid memory supplement"
+    ],
+    "synonyms": [
+      "PS",
+      "phosphatidyl-L-serine"
+    ],
+    "common_misspellings": [
+      "phosphatidylserin",
+      "phosphaditylserine"
+    ]
+  },
   "seo": {
     "title": "Phosphatidylserine – Phospholipid Supplement for Memory, Cognition, and Stress Support",
     "description": "Phosphatidylserine is a brain phospholipid supplement studied for cognitive function, memory, and stress resilience. Learn about benefits, dosing, and safety.",

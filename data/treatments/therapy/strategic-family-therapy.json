@@ -1,85 +1,170 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "strategic-family-therapy",
-  "type": "therapy",
-  "name": "Strategic Family Therapy (SFT)",
-  "summary": "Strategic Family Therapy is a structured, problem-focused approach to family counseling that aims to change dysfunctional interaction patterns and resolve presenting problems within families.",
-  "description": "Strategic Family Therapy (SFT) is a therapeutic model developed in the 1970s at the Mental Research Institute (MRI) in Palo Alto and further refined by Salvador Minuchin and Jay Haley. It focuses on identifying dysfunctional family interaction patterns and creating targeted interventions to disrupt them. SFT is directive, time-limited, and goal-oriented, often using reframing, paradoxical interventions, and tasks assigned to family members between sessions. The therapy addresses family dynamics directly, emphasizing solutions rather than deep exploration of past causes.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "systems therapy",
-    "short-term therapy",
-    "directive approach",
-    "behavioral change"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "strategic-family-therapy",
+    "name": "Strategic Family Therapy (SFT)",
+    "generic_name": "strategic family therapy",
+    "brand_names": [
+      "SFT"
+    ],
+    "wikidata_qid": "Q7621791"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "Systemic intervention"
     ],
-    "treatment_types": [
-      "Directive therapy",
-      "Brief therapy"
-    ],
-    "categories": [
-      "Family-based interventions",
-      "Systems therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Families"
-    ],
-    "session_duration": "50–90 minutes",
-    "treatment_duration": [
-      "8–20 sessions"
-    ],
-    "specialty_areas": [
-      "Family conflict",
-      "Adolescent behavioral problems",
-      "Substance use in families",
-      "Parent–child relational issues"
-    ],
-    "wikidata_qid": "Q7621791"
+    "tags": [
+      "family therapy",
+      "systems therapy",
+      "short-term therapy",
+      "directive approach",
+      "behavioral change"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Family conflict",
-      "Adolescent behavioral problems",
-      "Parenting challenges",
-      "Substance use in families"
-    ],
-    "conditions_treated": [
-      "Conduct problems",
-      "Oppositional defiant disorder (ODD)",
-      "Substance use disorders",
-      "Relational distress"
-    ],
-    "off_label_uses": [
-      "Improving family communication in non-clinical settings"
-    ],
-    "contraindications": [
-      "Families with ongoing severe domestic violence",
-      "Situations requiring individual trauma-focused therapy"
-    ],
-    "safety_profile": "Safe and non-invasive; may temporarily increase conflict as issues are addressed.",
-    "evidence_level": "Moderate",
-    "research_support": "Research supports effectiveness in addressing adolescent behavioral issues and substance use, with consistent improvements in family functioning.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-conflict": 4,
-      "adolescent-behavior": 4,
-      "substance-use": 3,
-      "relationship-distress": 3
+  "summary": "Strategic Family Therapy is a structured, problem-focused approach to family counseling that aims to change dysfunctional interaction patterns and resolve presenting problems within families.",
+  "description": "Strategic Family Therapy (SFT) is a therapeutic model developed in the 1970s at the Mental Research Institute (MRI) in Palo Alto and further refined by Salvador Minuchin and Jay Haley. It focuses on identifying dysfunctional family interaction patterns and creating targeted interventions to disrupt them. SFT is directive, time-limited, and goal-oriented, often using reframing, paradoxical interventions, and tasks assigned to family members between sessions. The therapy addresses family dynamics directly, emphasizing solutions rather than deep exploration of past causes.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adolescent-behavioral-problems",
+          "condition_name": "Adolescent behavioral problems",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parenting-challenges",
+          "condition_name": "Parenting challenges",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "substance-use-in-families",
+          "condition_name": "Substance use in families",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "conduct-problems",
+          "condition_name": "Conduct problems",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional defiant disorder (ODD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "relational-distress",
+          "condition_name": "Relational distress",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "improving-family-communication-in-non-clinical-settings",
+          "condition_name": "Improving family communication in non-clinical settings",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level": "moderate",
+      "efficacy_ratings": {
+        "family-conflict": {
+          "rating": 4
+        },
+        "adolescent-behavior": {
+          "rating": 4
+        },
+        "substance-use": {
+          "rating": 3
+        },
+        "relationship-distress": {
+          "rating": 3
+        }
+      },
+      "research_support": "Research supports effectiveness in addressing adolescent behavioral issues and substance use, with consistent improvements in family functioning."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–20 sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive; may temporarily increase conflict as issues are addressed.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary increases in conflict as patterns are disrupted"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Resistance to paradoxical interventions"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Ongoing severe domestic violence",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Families with highly resistant members unwilling to participate",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Directive therapy, Brief therapy",
+        "key_techniques": [
+          "Family-based interventions",
+          "Systems therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of previous homework and family progress.",
+          "during_session": "Live observation and intervention in family interactions.",
+          "post_session": "Assignment of tasks, reflection, and feedback."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Therapists with specialized training in strategic and systemic family therapy approaches"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -224,6 +309,20 @@
           "url": "https://psycnet.apa.org/record/1990-97457-000"
         }
       ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Haley, J. (1976). Problem-Solving Therapy.",
+      "url": "https://psycnet.apa.org/record/1977-02266-000"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Szapocznik, J., & Kurtines, W. (1989). Breakthroughs in Family Therapy with Drug Abusing and Problem Youth.",
+      "url": "https://psycnet.apa.org/record/1990-97457-000"
     }
   ],
   "seo": {

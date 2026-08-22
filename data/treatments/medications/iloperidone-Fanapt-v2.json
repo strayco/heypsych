@@ -1,85 +1,289 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "iloperidone-fanapt",
-  "type": "medication",
-  "name": "Iloperidone (Fanapt)",
-  "summary": "Atypical antipsychotic used for schizophrenia and acute manic or mixed episodes in bipolar I disorder. Requires slow titration to reduce dizziness and fainting risk, and it can prolong the QT interval (heart rhythm risk).",
-  "description": "Fanapt (iloperidone) is a second-generation antipsychotic used in adults for schizophrenia and for acute manic or mixed episodes in bipolar I disorder. It has to be started low and increased slowly because it can cause orthostatic hypotension (lightheadedness when standing), fast heart rate, and fainting—especially early on. It can also prolong the QT interval, which raises the risk of dangerous heart rhythm problems in higher-risk patients or when combined with certain meds. Like all antipsychotics, it carries a boxed warning for increased mortality in elderly patients with dementia-related psychosis and is not approved for that use.",
-  "patient_summary": "Fanapt can help stabilize psychosis or mania, but it’s not a “pop a pill and instantly feel better” medication. The build-up is intentionally slow to avoid dizziness, fainting, and heart rhythm problems. Expect early side effects to be more about lightheadedness and sleepiness than anything else. It can also raise prolactin, affect cholesterol, and cause weight gain for some people—so the plan usually includes metabolic monitoring, not just symptom check-ins.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Second Generation (Atypical) Antipsychotic",
-      "Dopamine-Serotonin Antagonist"
-    ],
+  "identity": {
+    "slug": "iloperidone-fanapt",
+    "name": "Iloperidone (Fanapt)",
+    "generic_name": "iloperidone",
     "brand_names": [
       "Fanapt",
       "Fanapt Titration Pack A",
       "Fanapt Titration Pack B",
       "Fanapt Titration Pack C"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": false,
-    "fda_approval_year": 2009,
-    "pharmacologic_category": "Atypical antipsychotic (mixed dopamine/serotonin antagonist with strong alpha-1 blockade)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia (adults)",
-      "Bipolar I Disorder: Acute manic or mixed episodes (adults)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used in adults for schizophrenia. Effects can begin to show within 1 to 2 weeks, with continued improvement through 4 to 6 weeks. Slow titration means it can take longer to reach a full therapeutic dose."
-      },
-      {
-        "slug": "bipolar-i-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used in adults for acute manic or mixed episodes in bipolar I disorder. Dose is increased over days to reduce orthostatic hypotension risk while working toward a target dose."
-      },
-      {
-        "slug": "dementia-related-psychosis",
-        "relationship": "not_indicated",
-        "context": "Not approved for dementia-related psychosis. Antipsychotics increase mortality risk in elderly patients with dementia-related psychosis."
-      },
-      {
-        "slug": "catatonia",
-        "relationship": "caution",
-        "context": "Antipsychotics are generally not indicated for catatonia and can worsen psychosis and increase neuroleptic malignant syndrome risk in catatonic patients. Specialist involvement is recommended."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to iloperidone or any component of the formulation (including anaphylaxis or angioedema history with this medication)"
-    ],
-    "efficacy_response": {
-      "metric": "Time-to-response (clinical expectation)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Fanapt isn’t an instant-on medication. Many people notice early changes within 1 to 2 weeks, but the more meaningful improvements often build across 4 to 6 weeks—especially because the dose has to be titrated slowly for safety.",
-      "citation_tag": "Agid 2003; Levine 2010"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
+    "drug_classes": [
+      "Second Generation (Atypical) Antipsychotic",
+      "Dopamine-Serotonin Antagonist"
+    ]
+  },
+  "summary": "Atypical antipsychotic used for schizophrenia and acute manic or mixed episodes in bipolar I disorder. Requires slow titration to reduce dizziness and fainting risk, and it can prolong the QT interval (heart rhythm risk).",
+  "description": "Fanapt (iloperidone) is a second-generation antipsychotic used in adults for schizophrenia and for acute manic or mixed episodes in bipolar I disorder. It has to be started low and increased slowly because it can cause orthostatic hypotension (lightheadedness when standing), fast heart rate, and fainting—especially early on. It can also prolong the QT interval, which raises the risk of dangerous heart rhythm problems in higher-risk patients or when combined with certain meds. Like all antipsychotics, it carries a boxed warning for increased mortality in elderly patients with dementia-related psychosis and is not approved for that use.",
+  "patient_summary": "Fanapt can help stabilize psychosis or mania, but it’s not a “pop a pill and instantly feel better” medication. The build-up is intentionally slow to avoid dizziness, fainting, and heart rhythm problems. Expect early side effects to be more about lightheadedness and sleepiness than anything else. It can also raise prolactin, affect cholesterol, and cause weight gain for some people—so the plan usually includes metabolic monitoring, not just symptom check-ins.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used in adults for schizophrenia. Effects can begin to show within 1 to 2 weeks, with continued improvement through 4 to 6 weeks. Slow titration means it can take longer to reach a full therapeutic dose.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-i-disorder",
+          "condition_name": "Bipolar I Disorder",
+          "relationship": "primary_indication",
+          "context": "Used in adults for acute manic or mixed episodes in bipolar I disorder. Dose is increased over days to reduce orthostatic hypotension risk while working toward a target dose.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "dementia-related-psychosis",
+          "condition_name": "Dementia Related Psychosis",
+          "relationship": "secondary_indication",
+          "context": "Not approved for dementia-related psychosis. Antipsychotics increase mortality risk in elderly patients with dementia-related psychosis."
+        },
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "secondary_indication",
+          "context": "Antipsychotics are generally not indicated for catatonia and can worsen psychosis and increase neuroleptic malignant syndrome risk in catatonic patients. Specialist involvement is recommended."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed; can be taken with or without food",
-      "bioavailability": "Tablet (relative to oral solution): ~96%",
-      "onset": "Schizophrenia: initial effects may be observed within 1 to 2 weeks; continued improvement through 4 to 6 weeks; slow titration delays time to therapeutic dose",
-      "peak_plasma": "2 to 4 hours",
-      "half_life": "Extensive metabolizers: iloperidone ~18 hours (active metabolites ~23 to 26 hours); Poor metabolizers: iloperidone ~33 hours (active metabolites ~31 to 37 hours)",
-      "protein_binding": "~97% (parent); ~92% (active metabolites)",
-      "metabolism": "Hepatic via carbonyl reduction, hydroxylation (CYP2D6), and O-demethylation (CYP3A4); forms active metabolites (P88 and P95)",
-      "excretion": "Mostly as metabolites via urine and feces; <1% recovered unchanged"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Schizophrenia: initial effects may be observed within 1 to 2 weeks; continued improvement through 4 to 6 weeks; slow titration delays time to therapeutic dose"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Tachycardia (fast heart rate)",
+          "incidence": "3% to 23%",
+          "notes": "This can show up early, especially during titration. If it comes with fainting, chest pain, or severe dizziness, it needs prompt medical review because of QT-related risk factors and orthostasis."
+        },
+        {
+          "effect": "Increased prolactin",
+          "incidence": "26% to 35%",
+          "notes": "Prolactin effects can be silent until symptoms appear. If you notice sexual dysfunction, menstrual changes, galactorrhea, or gynecomastia, bring it up—there are options (dose change, switch, or targeted workup)."
+        },
+        {
+          "effect": "Hypercholesterolemia",
+          "incidence": "11%",
+          "notes": "This is why baseline and follow-up lipid panels matter. You can feel fine while your labs drift in the wrong direction."
+        },
+        {
+          "effect": "Weight gain",
+          "incidence": "6% to 35%",
+          "notes": "The range is wide because people vary. If weight is a high-priority concern, build a plan early (nutrition, activity, sleep stabilization, and monitoring)."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "10% to 20%",
+          "notes": "Often tied to orthostatic hypotension. Hydration, slow position changes, and cautious titration reduce risk. This is one of the main reasons Fanapt is started low and increased gradually."
+        },
+        {
+          "effect": "Drowsiness / Somnolence",
+          "incidence": "8% to 15%",
+          "notes": "Sleepiness can be helpful if agitation is severe, but it can also interfere with function. Avoid driving or risky tasks until you know your response."
+        },
+        {
+          "effect": "Orthostatic hypotension / Hypotension",
+          "incidence": "Orthostatic: 3% to 5%; Hypotension: 3% to 6%",
+          "notes": "This is the headline tolerability issue early on. Falls risk is real—especially in older adults or anyone on antihypertensives."
+        },
+        {
+          "effect": "GI effects (nausea/vomiting, diarrhea, abdominal distress)",
+          "incidence": "Nausea/vomiting: 4% to 10%; Diarrhea: 5% to 7%; Abdominal distress: 3%",
+          "notes": "Often improves as your body adjusts. If dehydration worsens dizziness, the fix may be supportive care plus a slower titration."
+        },
+        {
+          "effect": "Dry mouth (xerostomia)",
+          "incidence": "8% to 10%",
+          "notes": "Hydration and sugar-free gum/lozenges can help. Persistent dryness can affect dental health over time, so it’s worth addressing."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (EPS), including akathisia",
+          "incidence": "1% to 5% (akathisia reported ~4%)",
+          "notes": "Rates may be low, but akathisia can feel awful (inner restlessness). If you feel like you can’t sit still or your body is buzzing, don’t just power through—tell your prescriber."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "QT prolongation and arrhythmias: Can be life-threatening, especially with other QT-prolonging meds, electrolyte abnormalities, bradycardia, structural heart disease, or congenital long QT syndrome"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, autonomic instability (MEDICAL EMERGENCY)"
+        },
+        {
+          "risk": "Severe orthostatic hypotension/syncope: falls, injury, and rare complications"
+        },
+        {
+          "risk": "Neutropenia/agranulocytosis: increased infection risk; discontinue if ANC <1,000/mm3 and follow WBC until recovery"
+        },
+        {
+          "risk": "Hyperglycemia: can be severe; rare cases associated with ketoacidosis or hyperosmolar coma have been reported with atypical antipsychotics as a class"
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially irreversible abnormal movements; risk increases with duration, dose, and vulnerability factors"
+        },
+        {
+          "risk": "Cerebrovascular events in elderly dementia patients (unapproved use): stroke/TIA, sometimes fatal"
+        },
+        {
+          "risk": "Hypersensitivity reactions: including angioedema and anaphylaxis"
+        },
+        {
+          "risk": "Priapism: rare but urgent"
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Iloperidone is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to iloperidone or any component of the formulation (including anaphylaxis or angioedema history with this medication)"
+        }
+      ],
+      "precautions": [
+        "QT prolongation: Fanapt can prolong the QT interval and raise the risk of dangerous arrhythmias—especially in people with congenital long QT syndrome, prior serious arrhythmias, recent MI, uncompensated heart failure, bradycardia, or low potassium/magnesium, or when combined with QT-prolonging drugs",
+        "Orthostatic hypotension and syncope: Dose must be increased gradually to reduce dizziness, fast heart rate, and fainting risk",
+        "Neuroleptic malignant syndrome (NMS): Rare but life-threatening; symptoms include fever, rigidity, confusion, and autonomic instability",
+        "Blood dyscrasias: Leukopenia/neutropenia/agranulocytosis have been reported; monitor CBC when clinically indicated and especially if risk factors exist",
+        "Cerebrovascular events in dementia: Higher rates of stroke/TIA and deaths have been seen when antipsychotics are used for dementia-related psychosis (unapproved use)",
+        "Metabolic effects: Weight gain, dyslipidemia, and hyperglycemia can occur; monitor labs and body measures",
+        "Hyperprolactinemia: Can cause sexual side effects and reproductive/hormonal symptoms",
+        "Falls risk: Somnolence + orthostasis + motor instability can increase falls, especially in older adults",
+        "Seizure risk: Use caution in patients with seizure risk factors or medications that lower seizure threshold",
+        "Catatonia caution: Antipsychotics are generally not indicated in catatonia and may worsen psychosis and increase NMS risk in catatonic patients"
+      ],
+      "interactions": [
+        {
+          "interactant": "QT-prolonging medications (certain antiarrhythmics, some antibiotics, some antidepressants, methadone, etc.)",
+          "mechanism": "Additive QT prolongation increases risk of torsades de pointes and sudden cardiac death—especially if combined with electrolyte abnormalities or cardiac disease.",
+          "action": "Avoid combinations when possible. If unavoidable, use careful risk assessment, correct potassium/magnesium, and consider ECG monitoring after dose changes or when adding QT-prolonging agents."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (examples: fluoxetine, paroxetine, bupropion, quinidine)",
+          "mechanism": "Higher iloperidone exposure and greater risk of side effects (orthostasis, QT issues, sedation).",
+          "action": "Use caution and consider lower dosing targets and slower titration, especially if the patient is also a CYP2D6 poor metabolizer."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (examples: ketoconazole, clarithromycin, some HIV/HCV antivirals)",
+          "mechanism": "Higher iloperidone exposure; increased risk of adverse effects including hypotension and QT-related concerns.",
+          "action": "Avoid when possible or adjust regimen with specialist input. Review the full med list and consider ECG monitoring in higher-risk situations."
+        },
+        {
+          "interactant": "CYP3A4 inducers (examples: carbamazepine, phenytoin, rifampin, St. John’s Wort)",
+          "mechanism": "Lower iloperidone levels and reduced efficacy; symptom breakthrough or relapse risk.",
+          "action": "Avoid if possible. If used, plan close symptom monitoring and consider switching antipsychotic rather than chasing dose in a way that destabilizes tolerability."
+        },
+        {
+          "interactant": "Antihypertensives, alpha-blockers, dehydration/diuretics",
+          "mechanism": "More hypotension and fainting risk due to additive blood pressure lowering.",
+          "action": "Monitor orthostatics closely during titration, adjust blood pressure meds if needed, and prioritize hydration and slow position changes."
+        },
+        {
+          "interactant": "Alcohol, sedating antihistamines, benzodiazepines, sleep meds, other CNS depressants",
+          "mechanism": "Additive sedation and impaired coordination; higher falls and accident risk.",
+          "action": "Minimize combinations when possible and counsel about driving/operating machinery until response is known."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Adherence: Every visit—because missed doses >3 days often require restarting titration, and adherence changes can look like “med failure.”"
+        },
+        {
+          "parameter": "Mental status and safety: Every visit—psychosis/mania severity, agitation, suicidality risk, and functional changes (sleep, behavior, insight)."
+        },
+        {
+          "parameter": "Orthostatic vitals and pulse: Every visit (at least weekly during the first 3 to 4 weeks of treatment); repeat 4 weeks after dose changes—especially in older adults, dehydration/hypovolemia, antihypertensive use, cardiovascular disease, or cerebrovascular disease."
+        },
+        {
+          "parameter": "Sedation and alertness: Every visit—assess driving/work safety, falls risk, and daytime impairment."
+        },
+        {
+          "parameter": "ECG (as clinically indicated): Consider baseline and repeat after significant dose increases or when adding QT-prolonging meds if cardiac risk factors exist (conduction disease, congenital long QT, bradycardia, structural heart disease, family history of sudden cardiac death). Discontinue if persistent QTc >500 ms."
+        },
+        {
+          "parameter": "Electrolytes and chemistries (renal function, liver function, TSH): Annually, and sooner when clinically indicated (especially if QT risk is present or hepatic impairment exists)."
+        },
+        {
+          "parameter": "CBC: As clinically indicated; monitor more frequently early in treatment if preexisting low WBC or history of drug-induced leukopenia/neutropenia."
+        },
+        {
+          "parameter": "Metabolic monitoring: Fasting plasma glucose or HbA1c at ~4 months after initiation and annually (more often if abnormal); lipid panel at ~4 months after initiation and annually (more often if abnormal)."
+        },
+        {
+          "parameter": "Weight/height/BMI: Check around 8 and 12 weeks after initiation and after dose changes, then at least quarterly; consider waist circumference at baseline and annually. Consider switching antipsychotic if BMI increases by ≥1 unit and risk/benefit supports it."
+        },
+        {
+          "parameter": "EPS monitoring: Every visit; also at ~4 weeks after initiation and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)."
+        },
+        {
+          "parameter": "Tardive dyskinesia monitoring: Every visit with at least annual formal screening; higher-risk patients may need formal screening every 6 months."
+        },
+        {
+          "parameter": "Prolactin: Ask about symptoms at every visit until stable; check a level if symptoms occur (menstrual changes, libido changes, gynecomastia, galactorrhea, erectile/ejaculatory dysfunction)."
+        },
+        {
+          "parameter": "Falls risk: Every visit—especially during titration and in older adults."
+        },
+        {
+          "parameter": "Glucose dysregulation symptoms: Ongoing—polyuria, polydipsia, unexplained fatigue; intervene quickly if hyperglycemia suspected."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (optional, specialist use): Draw a trough (just before next dose) if needed to confirm adherence; a commonly cited reference range is 5 to 10 ng/mL with an alert level around 20 ng/mL, but dosing should be guided by clinical response rather than chasing a lab number."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for second-generation antipsychotics do not show a major overall increase in congenital malformations, but individual-agent data can be limited. Antipsychotic exposure in the third trimester can be associated with newborn EPS and/or withdrawal symptoms (agitation, feeding problems, abnormal tone, respiratory distress, somnolence, tremor). Tapering late in pregnancy to try to prevent newborn symptoms is not recommended. Untreated psychosis/mania carries serious pregnancy risks; continuing an effective medication may be appropriate when benefits outweigh risks, using the lowest effective dose and avoiding polytherapy when possible.",
+        "lactation": "It is not known whether iloperidone is present in human breast milk. The manufacturer does not recommend breastfeeding during iloperidone treatment. For antipsychotics as a group, infant sedation, poor feeding, irritability, motor abnormalities, and slowed development have been reported. If exposure occurs, monitor infants closely—especially premature or low birth weight infants or when other sedating drugs are used.",
+        "pediatric": "Safety and efficacy for iloperidone in pediatric patients are not established in the provided information. In general, dopamine antagonists are considered higher-risk in pediatrics due to metabolic effects and movement-disorder risks, and rapid discontinuation in patients ≤18 years can be associated with emergent dystonia/dyskinesia. Specialist-led care is recommended if used.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic approaches have failed and there is risk of harm to self or others. For labeled indications (such as schizophrenia), older adults may respond to the lower end of adult dosing; titrate slowly and monitor carefully. Antipsychotics are listed as potentially inappropriate in adults ≥65 due to higher stroke risk, cognitive decline, and mortality in dementia; older adults are also more vulnerable to orthostasis, falls, hyponatremia/SIADH, tardive dyskinesia, and seizures.",
+        "renal_impairment": "No manufacturer-provided dose adjustments; renal impairment alone is unlikely to meaningfully change iloperidone pharmacokinetics. Monitor clinically, especially if dehydration or other risk factors increase orthostasis risk.",
+        "hepatic_impairment": "Mild hepatic impairment (Child-Pugh A): no adjustment typically needed. Moderate hepatic impairment (Child-Pugh B): use caution; dose adjustment may be necessary. Severe hepatic impairment (Child-Pugh C): use is not recommended."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2009
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed; can be taken with or without food",
+          "bioavailability": "Tablet (relative to oral solution): ~96%",
+          "peak_plasma": "2 to 4 hours",
+          "half_life": "Extensive metabolizers: iloperidone ~18 hours (active metabolites ~23 to 26 hours); Poor metabolizers: iloperidone ~33 hours (active metabolites ~31 to 37 hours)",
+          "metabolism": "Hepatic via carbonyl reduction, hydroxylation (CYP2D6), and O-demethylation (CYP3A4); forms active metabolites (P88 and P95)",
+          "excretion": "Mostly as metabolites via urine and feces; <1% recovered unchanged",
+          "protein_binding": "~97% (parent); ~92% (active metabolites)"
+        },
+        "dosing": {
+          "titration": "Fanapt dosing is built around safety: start low and increase gradually to reduce orthostatic hypotension (lightheadedness, fast heart rate, fainting). Doses are typically split into two equal doses per day. If you stop for more than a few days, you usually have to restart titration rather than jumping back to your prior dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "With chronic psychiatric illness, the decision is often “switching” rather than abruptly stopping. If Fanapt is ineffective or side effects are intolerable, a structured plan matters—both to avoid relapse and to reduce withdrawal-type reactions. If someone insists on stopping and it’s not an emergency, tapering over weeks to months is generally safer so you can spot early relapse signals and avoid rebound symptoms."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +302,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s brain and body respond differently, but these are the patterns that come up a lot with Fanapt—especially during the slow titration phase:",
       "items": [
         {
           "category": "Early days: lightheaded + sleepy",
@@ -145,7 +348,8 @@
           ],
           "note": "EPS rates can be similar to placebo in trials, but individual vulnerability varies—especially with higher doses or prior EPS history."
         }
-      ]
+      ],
+      "intro": "Everyone’s brain and body respond differently, but these are the patterns that come up a lot with Fanapt—especially during the slow titration phase:"
     },
     {
       "type": "onset_duration",
@@ -162,10 +366,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Fanapt can reduce hallucinations, delusions, agitation, and disorganized thinking in schizophrenia, and can help calm and stabilize acute mania or mixed episodes in bipolar I disorder. The big practical detail is that it’s titrated slowly for safety—so the timeline to full benefit can feel slower than some other antipsychotics. Clinically, the goal is not just “fewer symptoms,” but better function: improved sleep-wake rhythm, less agitation, clearer thinking, and fewer crisis-level spikes.",
       "metric": "Real-world expectation (not a one-number guarantee)",
       "value": "Gradual reduction in psychosis/mania severity over weeks",
       "comparison": "Not applicable for this medication.",
-      "text": "Fanapt can reduce hallucinations, delusions, agitation, and disorganized thinking in schizophrenia, and can help calm and stabilize acute mania or mixed episodes in bipolar I disorder. The big practical detail is that it’s titrated slowly for safety—so the timeline to full benefit can feel slower than some other antipsychotics. Clinically, the goal is not just “fewer symptoms,” but better function: improved sleep-wake rhythm, less agitation, clearer thinking, and fewer crisis-level spikes.",
       "clinical_details": "Initial symptom changes may be observed within 1 to 2 weeks, with continued improvement across 4 to 6 weeks. Slow titration delays reaching a full therapeutic dose, and early visits often focus on tolerability (orthostasis, sedation, heart rhythm risk) while moving toward the recommended dose range.",
       "citation": {
         "authors": "Agid O; Levine SZ; and others",
@@ -287,7 +491,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Fanapt interacts in two big ways: (1) heart rhythm risk (QT prolongation), and (2) metabolism (CYP2D6 and CYP3A4). It can also stack sedation and blood pressure effects with other meds.",
       "items": [
         {
           "with": "QT-prolonging medications (certain antiarrhythmics, some antibiotics, some antidepressants, methadone, etc.)",
@@ -319,7 +522,8 @@
           "risk": "Additive sedation and impaired coordination; higher falls and accident risk.",
           "action": "Minimize combinations when possible and counsel about driving/operating machinery until response is known."
         }
-      ]
+      ],
+      "intro": "Fanapt interacts in two big ways: (1) heart rhythm risk (QT prolongation), and (2) metabolism (CYP2D6 and CYP3A4). It can also stack sedation and blood pressure effects with other meds."
     },
     {
       "type": "tapering",
@@ -410,21 +614,6 @@
       "text": "Fanapt can be a reasonable option for schizophrenia or acute bipolar mania when a clinician and patient are balancing symptom control against side effects like EPS and metabolic concerns—but it has a unique practical constraint: slow titration. That makes it less ideal when rapid control is required and more suitable when careful outpatient titration is feasible. It also demands extra attention to orthostasis and QT risk, so it’s best chosen intentionally (not casually) after reviewing cardiac history, electrolyte risks, and the rest of the medication list. For older adults, especially those with dementia, the risk profile changes dramatically and the boxed warning becomes central to the decision."
     }
   ],
-  "seo": {
-    "title": "Iloperidone (Fanapt): Uses, Dosing, Side Effects, QT Risk & Titration",
-    "description": "Fanapt (iloperidone) for schizophrenia and bipolar I mania: why titration is slow, typical dosing (12–24 mg/day), side effects (dizziness, sedation, prolactin, weight/lipids), QT prolongation risk, monitoring, and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/iloperidone-fanapt](https://www.heypsych.com/treatments/iloperidone-fanapt)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Fanapt used for?",
@@ -470,5 +659,20 @@
       "q": "Is Fanapt used for catatonia?",
       "a": "Usually no. Antipsychotics are generally not indicated for catatonia and can worsen psychosis and increase the risk of neuroleptic malignant syndrome in catatonic patients. This is a scenario where specialist-guided care is especially important."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Iloperidone (Fanapt): Uses, Dosing, Side Effects, QT Risk & Titration",
+    "description": "Fanapt (iloperidone) for schizophrenia and bipolar I mania: why titration is slow, typical dosing (12–24 mg/day), side effects (dizziness, sedation, prolactin, weight/lipids), QT prolongation risk, monitoring, and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/iloperidone-fanapt](https://www.heypsych.com/treatments/iloperidone-fanapt)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phenylalanine",
-  "type": "supplement",
-  "name": "Phenylalanine",
-  "summary": "Phenylalanine is an essential amino acid and precursor to neurotransmitters such as dopamine, norepinephrine, and epinephrine, with potential applications in mood regulation, pain management, and cognitive health.",
-  "description": "Phenylalanine is an essential amino acid obtained through dietary protein and supplements. It exists in three forms: L-phenylalanine (naturally occurring and proteinogenic), D-phenylalanine (a synthetic form with potential analgesic properties), and DL-phenylalanine (a mixture of both, used in mood and pain support). Phenylalanine serves as a precursor to tyrosine, which in turn contributes to the synthesis of catecholamine neurotransmitters dopamine, norepinephrine, and epinephrine. These pathways make it a target of interest in conditions involving low mood, attention deficits, and chronic pain. However, its use requires caution, especially in individuals with phenylketonuria (PKU).",
-  "category": "supplements",
-  "tags": [
-    "amino acid",
-    "neurotransmitter precursor",
-    "mood support",
-    "pain management"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid",
-    "natural_source": "Protein-rich foods (meat, fish, dairy, legumes, nuts, seeds)",
+  "identity": {
+    "slug": "phenylalanine",
+    "name": "Phenylalanine",
+    "brand_names": [
+      "DLPA",
+      "L-Phenylalanine",
+      "D-Phenylalanine"
+    ],
+    "aliases": [
+      "DLPA",
+      "L-Phenylalanine",
+      "D-Phenylalanine"
+    ],
+    "wikidata_qid": "Q181003"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutritional Supplement",
       "Integrative Psychiatry",
@@ -25,78 +29,165 @@
       "Analgesic (enkephalinase inhibition, D-form)",
       "Cognitive support"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "DLPA",
-      "L-Phenylalanine",
-      "D-Phenylalanine"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for psychiatric indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Pain Medicine",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q181003"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Nutritional support in low protein intake",
-      "Potential adjunct in depression (catecholamine precursor)",
-      "Pain management (particularly D-phenylalanine)"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in ADHD",
-      "Possible role in Parkinson’s disease (neurotransmitter precursor)",
-      "Supportive use in vitiligo (tyrosine/dopamine pathway link)"
-    ],
-    "contraindications": [
-      "Phenylketonuria (PKU)",
-      "Severe liver disease",
-      "History of schizophrenia or psychosis (may exacerbate symptoms)"
-    ],
-    "monitoring_required": [
-      "Mood and psychiatric symptoms",
-      "Liver function in high-dose or long-term use"
-    ],
-    "efficacy_rating": {
-      "mood": 2,
-      "pain": 3,
-      "attention": 2,
-      "cognitive_support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Phenylalanine",
-      "DLPA",
-      "L-Phenylalanine",
-      "D-Phenylalanine",
-      "amino acid supplement"
-    ],
-    "synonyms": [
-      "DLPA",
-      "L-Phenylalanine",
-      "D-Phenylalanine"
-    ],
-    "common_misspellings": [
-      "phenylalanin",
-      "fenylalanine",
-      "fenalalanine"
+    "tags": [
+      "amino acid",
+      "neurotransmitter precursor",
+      "mood support",
+      "pain management"
     ]
+  },
+  "summary": "Phenylalanine is an essential amino acid and precursor to neurotransmitters such as dopamine, norepinephrine, and epinephrine, with potential applications in mood regulation, pain management, and cognitive health.",
+  "description": "Phenylalanine is an essential amino acid obtained through dietary protein and supplements. It exists in three forms: L-phenylalanine (naturally occurring and proteinogenic), D-phenylalanine (a synthetic form with potential analgesic properties), and DL-phenylalanine (a mixture of both, used in mood and pain support). Phenylalanine serves as a precursor to tyrosine, which in turn contributes to the synthesis of catecholamine neurotransmitters dopamine, norepinephrine, and epinephrine. These pathways make it a target of interest in conditions involving low mood, attention deficits, and chronic pain. However, its use requires caution, especially in individuals with phenylketonuria (PKU).",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "nutritional-support-in-low-protein-intake",
+          "condition_name": "Nutritional support in low protein intake",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "potential-adjunct-in-depression-catecholamine-precursor",
+          "condition_name": "Potential adjunct in depression (catecholamine precursor)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "pain-management-particularly-d-phenylalanine",
+          "condition_name": "Pain management (particularly D-phenylalanine)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-adhd",
+          "condition_name": "Adjunctive support in ADHD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "possible-role-in-parkinson-s-disease-neurotransmitter-precursor",
+          "condition_name": "Possible role in Parkinson’s disease (neurotransmitter precursor)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "supportive-use-in-vitiligo-tyrosine-dopamine-pathway-link",
+          "condition_name": "Supportive use in vitiligo (tyrosine/dopamine pathway link)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "mood": {
+          "rating": 2
+        },
+        "pain": {
+          "rating": 3
+        },
+        "attention": {
+          "rating": 2
+        },
+        "cognitive_support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Anxiety or jitteriness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of psychosis or mania in vulnerable individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Phenylketonuria (PKU)"
+        },
+        {
+          "contraindication": "Severe liver disease"
+        },
+        {
+          "contraindication": "History of schizophrenia or psychosis (may exacerbate symptoms)"
+        }
+      ],
+      "precautions": [
+        "Contraindicated in phenylketonuria (PKU).",
+        "May increase blood pressure at high doses.",
+        "Caution in individuals with psychiatric disorders (mania, psychosis)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Levodopa",
+          "mechanism": "Competition for absorption and metabolism",
+          "action": "Separate dosing or avoid"
+        },
+        {
+          "interactant": "MAO inhibitors",
+          "mechanism": "Hypertensive crisis from excess catecholamines",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "Stimulants",
+          "mechanism": "Additive effects on dopamine/norepinephrine",
+          "action": "Monitor blood pressure and mood"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood stability"
+        },
+        {
+          "parameter": "Blood pressure"
+        },
+        {
+          "parameter": "Liver function in long-term/high-dose use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safety not established; avoid unless prescribed",
+        "lactation": "Insufficient data; avoid",
+        "pediatric": "Avoid supplementation; risk of PKU",
+        "geriatric": "Use cautiously; monitor blood pressure and psychiatric symptoms"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid",
+        "natural_source": "Protein-rich foods (meat, fish, dairy, legumes, nuts, seeds)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for psychiatric indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -220,6 +311,45 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Phenylalanine",
+      "url": "https://www.nccih.nih.gov/health/phenylalanine"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Birkmayer W, et al. DL-phenylalanine in depression. Lancet. 1975",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/49870/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Clinical Pain Review – D-Phenylalanine as an analgesic",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7186646/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Phenylalanine",
+      "DLPA",
+      "L-Phenylalanine",
+      "D-Phenylalanine",
+      "amino acid supplement"
+    ],
+    "synonyms": [
+      "DLPA",
+      "L-Phenylalanine",
+      "D-Phenylalanine"
+    ],
+    "common_misspellings": [
+      "phenylalanin",
+      "fenylalanine",
+      "fenalalanine"
+    ]
+  },
   "seo": {
     "title": "Phenylalanine – Amino Acid Supplement for Mood and Pain Support",
     "description": "Phenylalanine is an essential amino acid and precursor to dopamine and norepinephrine, studied for mood, attention, and pain management. Learn about benefits, dosing, and safety.",

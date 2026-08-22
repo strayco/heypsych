@@ -1,95 +1,251 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "clobazam-onfi",
-  "type": "medication",
-  "name": "Clobazam (Onfi, Sympazan)",
-  "summary": "Long-acting benzodiazepine mainly used to treat certain hard-to-control seizures (like Lennox–Gastaut syndrome). Very sedating, habit-forming, and especially dangerous when combined with opioids or alcohol.",
-  "description": "Clobazam is a long-acting benzodiazepine that helps calm overactive brain activity, mainly used as an add-on treatment for seizures in Lennox–Gastaut syndrome. It can also be used off-label for other seizure types and, less commonly, short-term for severe anxiety. Because it is a benzodiazepine, it carries serious risks: sleepiness, slowed breathing (especially with opioids), dependence, and withdrawal if stopped too quickly. It should be used at the lowest effective dose, for as short a time as possible, with careful monitoring.",
-  "patient_summary": "Clobazam is usually prescribed for certain hard-to-treat seizures, especially in Lennox–Gastaut syndrome. It’s a benzodiazepine, similar in family to medications like Valium, but designed mainly for seizures. It can help reduce seizure frequency, but it also makes many people sleepy or groggy. Over time, your body can get used to it (dependence), so you should never stop it suddenly—doses must be reduced slowly under medical supervision. Mixing clobazam with opioids, alcohol, or other sedatives can be extremely dangerous and lead to slowed or stopped breathing.",
-  "category": "medications/seizure-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "Antiseizure Agent"
-    ],
+  "identity": {
+    "slug": "clobazam-onfi",
+    "name": "Clobazam (Onfi, Sympazan)",
+    "generic_name": "clobazam",
     "brand_names": [
       "Onfi",
       "Sympazan",
       "APO-Clobazam",
       "TEVA-Clobazam"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 2011,
-    "pharmacologic_category": "Antiseizure Agent, Benzodiazepine",
-    "published_date": "2026-01-05T00:00:00Z",
-    "last_updated": "2026-01-05T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-05T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q412164"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Lennox–Gastaut Syndrome (LGS) – adjunctive seizure treatment"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "lennox-gastaut-syndrome",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved as an add-on (adjunctive) medication to reduce seizures in patients ≥2 years old with Lennox–Gastaut syndrome."
-      },
-      {
-        "slug": "dravet-syndrome",
-        "relationship": "off_label",
-        "context": "Used off-label to help control seizures in Dravet syndrome when other antiseizure medications are not enough."
-      },
-      {
-        "slug": "epilepsy-refractory-seizures",
-        "relationship": "off_label",
-        "context": "Often added when seizures remain uncontrolled despite multiple antiseizure drugs."
-      },
-      {
-        "slug": "catamenial-epilepsy",
-        "relationship": "off_label",
-        "context": "Sometimes used only around the menstrual period to reduce seizure flares."
-      },
-      {
-        "slug": "anxiety-disorders",
-        "relationship": "off_label",
-        "context": "Can be used short-term for severe anxiety when other treatments are not yet working, but not a first-line anxiety medication because of dependence and withdrawal risks."
-      }
-    ],
-    "contraindications": [
-      "Known allergy or serious reaction to clobazam or any ingredient in the product",
-      "Current serious respiratory compromise (e.g., severe COPD, significant sleep apnea) without close monitoring",
-      "History of benzodiazepine abuse or significant substance use disorder (strong relative contraindication)",
-      "Concurrent use with opioids unless there is no alternative and close monitoring is in place"
-    ],
-    "efficacy_response": {
-      "metric": "Seizure reduction in Lennox–Gastaut syndrome (adjunctive)",
-      "percentage_value": "Many patients achieve clinically meaningful seizure reduction",
-      "comparison_data": "In clinical trials, clobazam led to significant reductions in drop seizures compared with placebo when added to existing antiseizure medications.",
-      "patient_text": "Clobazam usually doesn’t stop seizures completely by itself, but it can meaningfully reduce how often and how severe they are when added to a seizure regimen—especially in Lennox–Gastaut syndrome.",
-      "citation_tag": "Pivotal Onfi trials – LGS adjunctive therapy"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/seizure-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "Antiseizure Agent"
+    ]
+  },
+  "summary": "Long-acting benzodiazepine mainly used to treat certain hard-to-control seizures (like Lennox–Gastaut syndrome). Very sedating, habit-forming, and especially dangerous when combined with opioids or alcohol.",
+  "description": "Clobazam is a long-acting benzodiazepine that helps calm overactive brain activity, mainly used as an add-on treatment for seizures in Lennox–Gastaut syndrome. It can also be used off-label for other seizure types and, less commonly, short-term for severe anxiety. Because it is a benzodiazepine, it carries serious risks: sleepiness, slowed breathing (especially with opioids), dependence, and withdrawal if stopped too quickly. It should be used at the lowest effective dose, for as short a time as possible, with careful monitoring.",
+  "patient_summary": "Clobazam is usually prescribed for certain hard-to-treat seizures, especially in Lennox–Gastaut syndrome. It’s a benzodiazepine, similar in family to medications like Valium, but designed mainly for seizures. It can help reduce seizure frequency, but it also makes many people sleepy or groggy. Over time, your body can get used to it (dependence), so you should never stop it suddenly—doses must be reduced slowly under medical supervision. Mixing clobazam with opioids, alcohol, or other sedatives can be extremely dangerous and lead to slowed or stopped breathing.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "lennox-gastaut-syndrome",
+          "condition_name": "Lennox Gastaut Syndrome",
+          "relationship": "primary_indication",
+          "context": "FDA-approved as an add-on (adjunctive) medication to reduce seizures in patients ≥2 years old with Lennox–Gastaut syndrome.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "dravet-syndrome",
+          "condition_name": "Dravet Syndrome",
+          "relationship": "off_label",
+          "context": "Used off-label to help control seizures in Dravet syndrome when other antiseizure medications are not enough."
+        },
+        {
+          "condition_slug": "epilepsy-refractory-seizures",
+          "condition_name": "Epilepsy Refractory Seizures",
+          "relationship": "off_label",
+          "context": "Often added when seizures remain uncontrolled despite multiple antiseizure drugs."
+        },
+        {
+          "condition_slug": "catamenial-epilepsy",
+          "condition_name": "Catamenial Epilepsy",
+          "relationship": "off_label",
+          "context": "Sometimes used only around the menstrual period to reduce seizure flares."
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety Disorders",
+          "relationship": "off_label",
+          "context": "Can be used short-term for severe anxiety when other treatments are not yet working, but not a first-line anxiety medication because of dependence and withdrawal risks."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and extensive after oral dosing; not significantly affected by food.",
-      "bioavailability": "About 87%",
-      "onset": "Seizure benefit builds over several days; maximal effect often seen within 1–2 weeks as steady-state is reached.",
-      "peak_plasma": "0.5–4 hours after oral dose (formulation-dependent).",
-      "half_life": "Clobazam: ~36–42 hours; active metabolite N-desmethylclobazam: ~71–82 hours (very long-acting).",
-      "duration_IR": "Classified as long-acting due to long half-life and active metabolite.",
-      "metabolism": "Processed in the liver mainly by CYP3A4 and CYP2C19 to an active metabolite; CYP2C19 poor metabolizers have much higher levels.",
-      "excretion": "Eliminated mostly in urine as metabolites; small amount in stool.",
-      "protein_binding": "Clobazam: ~80–90%; active metabolite: ~70%.",
-      "food_effect": "Food and tablet crushing do not meaningfully alter overall absorption."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Seizure benefit builds over several days; maximal effect often seen within 1–2 weeks as steady-state is reached."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness, sedation, and lethargy",
+          "incidence": "Very common (up to ~25% or more, dose-related)",
+          "notes": "Expect increased sleepiness, especially when starting or increasing the dose. Avoid driving or risky activities until you know how clobazam affects you."
+        },
+        {
+          "effect": "Drooling",
+          "incidence": "Common",
+          "notes": "Extra saliva and drooling are frequently reported, especially in children. Talk with your provider if this affects comfort, swallowing, or skin around the mouth."
+        },
+        {
+          "effect": "Aggressive or irritable behavior",
+          "incidence": "Common (especially in children)",
+          "notes": "Some patients become more agitated or aggressive instead of calmer. Caregivers should watch closely and report behavior changes promptly."
+        },
+        {
+          "effect": "Ataxia (unsteady walking, clumsiness)",
+          "incidence": "Common",
+          "notes": "Use caution with stairs and uneven surfaces. This side effect increases fall risk, especially in older adults."
+        },
+        {
+          "effect": "GI symptoms (vomiting, constipation, appetite changes)",
+          "incidence": "Common",
+          "notes": "Nausea, vomiting, and changes in appetite can occur. Hydration, fiber, and meal timing adjustments may help; tell your provider if severe or persistent."
+        },
+        {
+          "effect": "Respiratory infections and cough",
+          "incidence": "Common",
+          "notes": "Upper respiratory infections and pneumonia have been reported more frequently in patients taking clobazam, especially those with neurologic disabilities."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe allergic reactions: swelling of face/lips/tongue, trouble breathing, or widespread rash."
+        },
+        {
+          "risk": "Stevens–Johnson syndrome or toxic epidermal necrolysis: painful rash, blisters, skin peeling, sores in mouth or eyes—medical emergency."
+        },
+        {
+          "risk": "Severe respiratory depression: very slow or shallow breathing, blue lips, confusion, difficult to wake—especially when combined with opioids or alcohol."
+        },
+        {
+          "risk": "Suicidal thoughts or behavior: new or sudden changes in mood, self-harm thoughts, or unusual agitation."
+        },
+        {
+          "risk": "Multiorgan hypersensitivity: fever, swollen glands, rash, and problems with liver, kidney, blood, or other organs."
+        },
+        {
+          "risk": "Withdrawal seizures and severe withdrawal symptoms if stopped abruptly or tapered too quickly."
+        }
+      ],
+      "black_box_warning": "Using clobazam together with opioids (such as oxycodone, hydrocodone, morphine, or fentanyl) can cause extreme sleepiness, dangerously slowed breathing, coma, and death. These medicines should only be used together when no safer alternatives exist, at the lowest effective doses, and with close medical supervision.",
+      "contraindications": [
+        {
+          "contraindication": "Known allergy or serious reaction to clobazam or any ingredient in the product"
+        },
+        {
+          "contraindication": "Current serious respiratory compromise (e.g., severe COPD, significant sleep apnea) without close monitoring"
+        },
+        {
+          "contraindication": "History of benzodiazepine abuse or significant substance use disorder (strong relative contraindication)"
+        },
+        {
+          "contraindication": "Concurrent use with opioids unless there is no alternative and close monitoring is in place"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction: Clobazam is a benzodiazepine and a controlled substance. It can be misused and is habit-forming. Taking more than prescribed, using it for non-medical reasons, or combining it with alcohol/other drugs greatly increases the risk of overdose and death.",
+        "Dependence and withdrawal: The body adapts to clobazam over time. Stopping suddenly or lowering the dose too quickly can trigger withdrawal symptoms (anxiety, tremors, agitation, seizures), which can be life-threatening.",
+        "Respiratory depression: Clobazam can slow breathing, especially in people with lung disease, sleep apnea, or those using other sedatives.",
+        "Serious skin reactions: Rare but severe skin reactions (Stevens–Johnson syndrome, toxic epidermal necrolysis) can occur, usually in the first 8 weeks. Any new, widespread, or blistering rash needs urgent medical attention.",
+        "Multiorgan hypersensitivity: Fever, rash, swollen glands, and problems with liver, kidneys, or blood cells can occur as a severe allergic-type reaction. This requires immediate discontinuation and medical care.",
+        "Suicidal thoughts and behavior: Like other antiseizure medications, clobazam may slightly increase the risk of suicidal thoughts or actions. Monitor for new or worsening mood changes, irritability, or self-harm thoughts.",
+        "Paradoxical reactions: In some people, especially children and older adults, clobazam can cause increased agitation, aggression, or disinhibition instead of calming effects.",
+        "Older adults: Higher risks of falls, confusion, breathing problems, and death. Use only when clearly needed and at the lowest effective dose."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
+          "mechanism": "Profound sedation, severe respiratory depression, coma, and death.",
+          "action": "Avoid combination when possible. If absolutely necessary, use the lowest effective doses with close monitoring and consider having naloxone on hand."
+        },
+        {
+          "interactant": "Alcohol and other sedatives (benzodiazepines, sleep medications, barbiturates, many muscle relaxants)",
+          "mechanism": "Additive or synergistic sedation and breathing suppression; high risk of overdose and accidents.",
+          "action": "Avoid or minimize. Do not drink alcohol while on clobazam without direct medical guidance."
+        },
+        {
+          "interactant": "Other antiseizure medications",
+          "mechanism": "May change clobazam or other drug levels; can increase sedation or alter seizure control.",
+          "action": "Your neurologist will adjust doses and may monitor blood levels for complex regimens."
+        },
+        {
+          "interactant": "Strong CYP2C19 inhibitors (e.g., some heartburn and antifungal medications)",
+          "mechanism": "Higher levels of the active metabolite, leading to more sedation and side effects.",
+          "action": "Dose reductions and slower titration may be needed; your provider may order drug levels in some cases."
+        },
+        {
+          "interactant": "Medications that depress breathing (e.g., some anesthetics, high-dose gabapentinoids)",
+          "mechanism": "Increased risk of respiratory depression and hospitalization.",
+          "action": "Use with great caution and under specialist supervision."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Seizure frequency, severity, and type: to assess benefit."
+        },
+        {
+          "parameter": "Level of sedation, cognition, and coordination: risk of falls and accidents."
+        },
+        {
+          "parameter": "Breathing: especially if there is lung disease, sleep apnea, or concurrent opioid use."
+        },
+        {
+          "parameter": "Mood and behavior: agitation, aggression, depression, or suicidal thoughts."
+        },
+        {
+          "parameter": "Skin: early signs of rash or blistering suggesting SJS/TEN."
+        },
+        {
+          "parameter": "Signs of abuse or misuse: early refills, escalating doses, taking more than prescribed, doctor shopping."
+        },
+        {
+          "parameter": "Withdrawal symptoms: during dose reductions or if doses are missed."
+        },
+        {
+          "parameter": "Liver function and blood counts: if clinically indicated or if symptoms suggest organ problems."
+        },
+        {
+          "parameter": "Drug levels (clobazam and N-desmethylclobazam): in complex cases, pregnancy, or suspected toxicity, as guided by epilepsy specialists."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "All antiseizure drugs, including clobazam, must be weighed carefully in pregnancy. Uncontrolled seizures are dangerous for both parent and baby, but benzodiazepines can cause birth defects in some studies, and late pregnancy use may lead to newborn sedation or withdrawal. If a patient becomes pregnant while taking clobazam, do not stop suddenly; contact neurology and obstetrics to plan the safest approach. Folic acid supplementation and enrollment in antiseizure pregnancy registries are recommended.",
+        "lactation": "Clobazam and its active metabolite pass into breast milk. Some breastfed infants may become sleepy or have feeding or weight-gain issues. If clobazam is used while breastfeeding, the infant should be monitored for sedation, poor feeding, and poor weight gain. In some cases, a shorter-acting benzodiazepine may be preferred for anxiety treatment during breastfeeding, but clobazam may still be appropriate for seizure control under specialist care.",
+        "pediatric": "Approved as adjunctive therapy for Lennox–Gastaut syndrome in children ≥2 years. Doses are weight-based and titrated slowly. Children are particularly prone to sedation, drooling, and behavior changes; careful monitoring by caretakers and specialists is essential.",
+        "geriatric": "Older adults clear clobazam more slowly and are more sensitive to sedative effects, falls, confusion, and breathing problems. Lower starting doses, slower titration, and strict maximum doses are critical. Beers Criteria list benzodiazepines as potentially inappropriate in most older adults except in specific cases (e.g., seizure disorders).",
+        "renal_impairment": "Mild to moderate kidney impairment usually does not need dose changes, but severe impairment has not been well studied—careful monitoring is needed.",
+        "hepatic_impairment": "Because clobazam is extensively metabolized in the liver, people with liver impairment need lower initial doses, slower titration, and lower maximum doses. Severe liver disease requires extreme caution or alternative options."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2011
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and extensive after oral dosing; not significantly affected by food.",
+          "bioavailability": "About 87%",
+          "peak_plasma": "0.5–4 hours after oral dose (formulation-dependent).",
+          "half_life": "Clobazam: ~36–42 hours; active metabolite N-desmethylclobazam: ~71–82 hours (very long-acting).",
+          "metabolism": "Processed in the liver mainly by CYP3A4 and CYP2C19 to an active metabolite; CYP2C19 poor metabolizers have much higher levels.",
+          "excretion": "Eliminated mostly in urine as metabolites; small amount in stool.",
+          "protein_binding": "Clobazam: ~80–90%; active metabolite: ~70%.",
+          "food_effect": "Food and tablet crushing do not meaningfully alter overall absorption."
+        },
+        "dosing": {
+          "titration": "Clobazam dosing depends on the condition being treated, age, weight, and other medical issues. Epilepsy specialists usually guide dosing and changes."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Because clobazam is a long-acting benzodiazepine, stopping too quickly can be dangerous and may cause severe withdrawal, including seizures."
+        }
+      }
     }
   },
   "sections": [
@@ -111,7 +267,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Notice",
-      "intro": "Experiences vary, but many people and caregivers describe a mix of seizure benefits and sedation-related side effects.",
       "items": [
         {
           "category": "Seizure Control",
@@ -148,7 +303,8 @@
           ],
           "note": "Clobazam can cause physical dependence; doses must be reduced gradually to avoid withdrawal and seizure worsening."
         }
-      ]
+      ],
+      "intro": "Experiences vary, but many people and caregivers describe a mix of seizure benefits and sedation-related side effects."
     },
     {
       "type": "onset_duration",
@@ -242,7 +398,6 @@
     {
       "type": "interactions",
       "heading": "Drug and Substance Interactions",
-      "intro": "Clobazam interacts with many medications and substances, especially other sedatives and certain antiseizure drugs.",
       "items": [
         {
           "with": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
@@ -269,7 +424,8 @@
           "risk": "Increased risk of respiratory depression and hospitalization.",
           "action": "Use with great caution and under specialist supervision."
         }
-      ]
+      ],
+      "intro": "Clobazam interacts with many medications and substances, especially other sedatives and certain antiseizure drugs."
     },
     {
       "type": "tapering",
@@ -372,22 +528,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Clobazam (Onfi, Sympazan): Uses, Dosing, Side Effects & Safety",
-    "description": "Clobazam for Lennox–Gastaut syndrome and refractory seizures: how it works, dosing, serious risks with opioids, dependence and withdrawal, side effects, pregnancy/breastfeeding, and safe tapering.",
-    "canonical": "https://www.heypsych.com/treatments/clobazam-onfi",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-neurologists",
-      "board-certified-epileptologists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-05",
-    "lastUpdated": "2026-01-05",
-    "reviewStatement": "Content medically reviewed for accuracy against current FDA labeling, epilepsy treatment guidelines, and up-to-date literature on benzodiazepine safety, dependence, and use in special populations."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Onfi",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/202067s007,203993s009lbl.pdf",
+      "description": "Official US prescribing information for clobazam (Onfi)."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "FDA Prescribing Information – Sympazan",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/210833s004lbl.pdf",
+      "description": "Labeling for clobazam oral film (Sympazan)."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Beers Criteria (2023)",
+      "url": "https://www.americangeriatrics.org/",
+      "description": "Guidance on benzodiazepine risks and use in older adults."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "NICE and Epilepsy Society Guidelines",
+      "url": "https://www.nice.org.uk/",
+      "description": "Recommendations for antiseizure medications, including clobazam, in epilepsy management."
+    }
+  ],
   "faqs": [
     {
       "q": "What is clobazam used for?",
@@ -429,5 +599,21 @@
       "q": "What are signs that the dose may be too high?",
       "a": "Warning signs include extreme sleepiness, confusion, difficulty waking, very slow or shallow breathing, severe drooling, marked behavior changes (aggression or agitation), or frequent falls. These symptoms need urgent medical review."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Clobazam (Onfi, Sympazan): Uses, Dosing, Side Effects & Safety",
+    "description": "Clobazam for Lennox–Gastaut syndrome and refractory seizures: how it works, dosing, serious risks with opioids, dependence and withdrawal, side effects, pregnancy/breastfeeding, and safe tapering.",
+    "canonical": "https://www.heypsych.com/treatments/clobazam-onfi",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-neurologists",
+      "board-certified-epileptologists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-05",
+    "lastUpdated": "2026-01-05",
+    "reviewStatement": "Content medically reviewed for accuracy against current FDA labeling, epilepsy treatment guidelines, and up-to-date literature on benzodiazepine safety, dependence, and use in special populations."
+  }
 }

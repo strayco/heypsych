@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-k",
-  "type": "supplement",
-  "name": "Vitamin K",
-  "summary": "Vitamin K is a fat-soluble vitamin essential for blood clotting, bone metabolism, and vascular health. It exists primarily in two forms: K1 (phylloquinone) from plants and K2 (menaquinones) produced by bacteria or found in animal-based foods.",
-  "description": "Vitamin K is crucial for the activation of clotting factors (II, VII, IX, X) and proteins involved in bone and vascular health. Vitamin K1 (phylloquinone) is found mainly in leafy green vegetables, while vitamin K2 (menaquinones, MK-4 to MK-13) comes from fermented foods, meats, and gut bacteria. Supplementation is used to treat deficiency, prevent bleeding disorders, and support bone health. Vitamin K antagonists (e.g., warfarin) interfere with its action, requiring careful monitoring of intake. Emerging evidence suggests a role in reducing vascular calcification and supporting cardiovascular health, particularly for K2.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "fat-soluble",
-    "coagulation",
-    "bone health",
-    "vascular health"
-  ],
-  "metadata": {
-    "compound_type": "Fat-soluble vitamin",
-    "natural_source": "Leafy green vegetables (K1), fermented foods (natto, cheese), meats, eggs, gut bacteria (K2)",
+  "identity": {
+    "slug": "vitamin-k",
+    "name": "Vitamin K",
+    "brand_names": [
+      "Mephyton",
+      "Phytonadione",
+      "Konakion"
+    ],
+    "aliases": [
+      "Phytonadione",
+      "Menatetrenone"
+    ],
+    "wikidata_qid": "Q178290"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Hematology",
@@ -26,80 +28,153 @@
       "Bone metabolism",
       "Vascular calcification prevention"
     ],
-    "administration_routes": [
-      "Oral",
-      "Parenteral (for deficiency or prophylaxis)"
-    ],
-    "prescription_status": "OTC (dietary supplement); prescription formulations available for deficiency",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Mephyton",
-      "Phytonadione",
-      "Konakion"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; dietary supplement",
-    "age_groups": [
-      "Neonates",
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Acute deficiency correction",
-      "Chronic supplementation for support"
-    ],
-    "specialty_areas": [
-      "Hematology",
-      "Nutrition",
-      "Endocrinology",
-      "Cardiology"
-    ],
-    "wikidata_qid": "Q178290"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of vitamin K deficiency",
-      "Prevention of hemorrhagic disease of the newborn",
-      "Reversal of anticoagulation from vitamin K antagonists (warfarin)"
-    ],
-    "off_label_uses": [
-      "Adjunctive therapy for osteoporosis",
-      "Prevention of vascular calcification (K2, investigational)"
-    ],
-    "contraindications": [
-      "Known hypersensitivity to vitamin K",
-      "Use with caution in patients on anticoagulant therapy (interferes with dosing balance)"
-    ],
-    "monitoring_required": [
-      "Prothrombin time (PT) / INR, especially in patients on warfarin",
-      "Clotting factor function"
-    ],
-    "efficacy_rating": {
-      "deficiency treatment": 5,
-      "warfarin reversal": 5,
-      "osteoporosis support": 3,
-      "cardiovascular protection": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin K",
-      "Phylloquinone",
-      "Menaquinone",
-      "K1",
-      "K2",
-      "MK-7"
-    ],
-    "synonyms": [
-      "Phytonadione",
-      "Menatetrenone"
-    ],
-    "common_misspellings": [
-      "vitamen k",
-      "vit k"
+    "tags": [
+      "vitamin",
+      "fat-soluble",
+      "coagulation",
+      "bone health",
+      "vascular health"
     ]
+  },
+  "summary": "Vitamin K is a fat-soluble vitamin essential for blood clotting, bone metabolism, and vascular health. It exists primarily in two forms: K1 (phylloquinone) from plants and K2 (menaquinones) produced by bacteria or found in animal-based foods.",
+  "description": "Vitamin K is crucial for the activation of clotting factors (II, VII, IX, X) and proteins involved in bone and vascular health. Vitamin K1 (phylloquinone) is found mainly in leafy green vegetables, while vitamin K2 (menaquinones, MK-4 to MK-13) comes from fermented foods, meats, and gut bacteria. Supplementation is used to treat deficiency, prevent bleeding disorders, and support bone health. Vitamin K antagonists (e.g., warfarin) interfere with its action, requiring careful monitoring of intake. Emerging evidence suggests a role in reducing vascular calcification and supporting cardiovascular health, particularly for K2.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-vitamin-k-deficiency",
+          "condition_name": "Prevention and treatment of vitamin K deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "prevention-of-hemorrhagic-disease-of-the-newborn",
+          "condition_name": "Prevention of hemorrhagic disease of the newborn",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "reversal-of-anticoagulation-from-vitamin-k-antagonists-warfarin",
+          "condition_name": "Reversal of anticoagulation from vitamin K antagonists (warfarin)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-therapy-for-osteoporosis",
+          "condition_name": "Adjunctive therapy for osteoporosis",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "prevention-of-vascular-calcification-k2-investigational",
+          "condition_name": "Prevention of vascular calcification (K2, investigational)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency treatment": {
+          "rating": 5
+        },
+        "warfarin reversal": {
+          "rating": 5
+        },
+        "osteoporosis support": {
+          "rating": 3
+        },
+        "cardiovascular protection": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute deficiency correction; Chronic supplementation for support"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Parenteral (for deficiency or prophylaxis)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated at dietary levels"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypersensitivity reactions (rare, usually with IV administration)"
+        },
+        {
+          "risk": "Hemolytic anemia and hyperbilirubinemia in neonates (with synthetic menadione, no longer recommended)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to vitamin K"
+        },
+        {
+          "contraindication": "Use with caution in patients on anticoagulant therapy (interferes with dosing balance)"
+        }
+      ],
+      "precautions": [
+        "Do not use menadione (synthetic K3) due to toxicity.",
+        "High doses can interfere with anticoagulant therapy (warfarin).",
+        "IV administration carries rare but serious risk of anaphylaxis; oral route preferred when possible."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin and other vitamin K antagonists",
+          "mechanism": "Decreases anticoagulant effect",
+          "action": "Monitor INR; adjust warfarin dose"
+        },
+        {
+          "interactant": "Antibiotics (broad spectrum)",
+          "mechanism": "May reduce gut flora vitamin K production, increasing deficiency risk",
+          "action": "Monitor for bleeding"
+        },
+        {
+          "interactant": "Bile acid sequestrants",
+          "mechanism": "Reduced absorption of vitamin K",
+          "action": "Separate dosing"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "INR/prothrombin time in anticoagulated patients"
+        },
+        {
+          "parameter": "Bleeding or clotting symptoms"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at dietary levels; higher doses used for neonatal prophylaxis",
+        "lactation": "Safe at recommended intake levels",
+        "pediatric": "Neonatal prophylaxis standard of care; deficiency can cause life-threatening bleeding",
+        "geriatric": "Safe at recommended levels; monitor anticoagulant interactions"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Fat-soluble vitamin",
+        "natural_source": "Leafy green vegetables (K1), fermented foods (natto, cheese), meats, eggs, gut bacteria (K2)",
+        "regulatory_notes": "Approved vitamin; dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +301,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Vitamin K",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminK-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Shea MK, Booth SL. Vitamin K, vascular calcification, and osteoporosis. Curr Opin Lipidol. 2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18460914/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Vermeer C. Vitamin K: the effect on health beyond coagulation – an overview. Food Nutr Res. 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22736977/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin K",
+      "Phylloquinone",
+      "Menaquinone",
+      "K1",
+      "K2",
+      "MK-7"
+    ],
+    "synonyms": [
+      "Phytonadione",
+      "Menatetrenone"
+    ],
+    "common_misspellings": [
+      "vitamen k",
+      "vit k"
+    ]
+  },
   "seo": {
     "title": "Vitamin K – Blood Clotting, Bone Health, Deficiency, Dosing",
     "description": "Vitamin K is a fat-soluble vitamin essential for blood clotting and bone health. Learn about K1 and K2, deficiency, dosing, and interactions with warfarin.",

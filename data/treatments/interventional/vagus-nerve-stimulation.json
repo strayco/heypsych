@@ -1,76 +1,166 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vagus-nerve-stimulation",
-  "type": "interventional",
-  "name": "Vagus Nerve Stimulation (VNS)",
-  "summary": "An FDA-approved neuromodulation therapy that delivers mild electrical impulses to the vagus nerve via an implanted device, used in treatment-resistant epilepsy and depression.",
-  "description": "Vagus Nerve Stimulation (VNS) involves surgical implantation of a pulse generator under the skin of the chest, with a lead wire wrapped around the left vagus nerve in the neck. The device sends regular, mild electrical signals to the vagus nerve, which in turn modulates brain activity through widespread connections to the brainstem and limbic system. VNS is FDA-approved for epilepsy and treatment-resistant depression, with ongoing research exploring additional psychiatric and neurological indications.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "VNS",
-    "nerve stimulation",
-    "neuromodulation",
-    "implantable device"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Implantable neurostimulation"
-    ],
-    "treatment_types": [
-      "Neuromodulation",
-      "Device-based therapy"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "Implanted pulse generator with vagus nerve lead"
-    ],
-    "invasiveness_level": "Minimally invasive (surgical implant)",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult",
-      "Adolescent (for epilepsy)"
-    ],
-    "session_duration": "Continuous stimulation, adjustable programming during follow-up visits",
-    "treatment_duration": "Long-term (device remains implanted)",
-    "specialty_areas": [
-      "Neurology",
-      "Psychiatry",
-      "Neurosurgery"
+  "identity": {
+    "slug": "vagus-nerve-stimulation",
+    "name": "Vagus Nerve Stimulation (VNS)",
+    "generic_name": "vagus nerve stimulation",
+    "brand_names": [
+      "VNS"
     ],
     "wikidata_qid": "Q2508947"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-resistant epilepsy",
-      "Treatment-resistant depression"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
+    "intervention_types": [
+      "Implantable neurostimulation"
     ],
-    "conditions_treated": [
-      "Epilepsy",
-      "Major depressive disorder"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders",
-      "Bipolar disorder",
-      "Chronic pain",
-      "Alzheimer’s disease (investigational)"
-    ],
-    "contraindications": [
-      "History of left or bilateral vagotomy",
-      "Cardiac arrhythmias",
-      "Severe respiratory disorders",
-      "Unfit for surgery"
-    ],
-    "safety_profile": "Generally safe but carries surgical and device-related risks. Side effects include hoarseness, throat discomfort, cough, and shortness of breath during stimulation. Serious risks include infection, vocal cord paralysis, or device malfunction.",
-    "evidence_level": "Strong for epilepsy; moderate for depression.",
-    "research_support": "FDA-approved; large body of clinical evidence in epilepsy; growing data for depression.",
-    "invasiveness": "Surgical implant",
-    "efficacy_rating": {
-      "epilepsy": 4,
-      "treatment-resistant-depression": 3
+    "tags": [
+      "VNS",
+      "nerve stimulation",
+      "neuromodulation",
+      "implantable device"
+    ]
+  },
+  "summary": "An FDA-approved neuromodulation therapy that delivers mild electrical impulses to the vagus nerve via an implanted device, used in treatment-resistant epilepsy and depression.",
+  "description": "Vagus Nerve Stimulation (VNS) involves surgical implantation of a pulse generator under the skin of the chest, with a lead wire wrapped around the left vagus nerve in the neck. The device sends regular, mild electrical signals to the vagus nerve, which in turn modulates brain activity through widespread connections to the brainstem and limbic system. VNS is FDA-approved for epilepsy and treatment-resistant depression, with ongoing research exploring additional psychiatric and neurological indications.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-epilepsy",
+          "condition_name": "Treatment-resistant epilepsy",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "alzheimer-s-disease-investigational",
+          "condition_name": "Alzheimer’s disease (investigational)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for epilepsy; moderate for depression.",
+      "efficacy_ratings": {
+        "epilepsy": {
+          "rating": 4
+        },
+        "treatment-resistant-depression": {
+          "rating": 3
+        }
+      },
+      "research_support": "FDA-approved; large body of clinical evidence in epilepsy; growing data for depression."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Long-term (device remains implanted)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Implanted pulse generator with vagus nerve lead"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Continuous stimulation, adjustable programming during follow-up visits"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally safe but carries surgical and device-related risks. Side effects include hoarseness, throat discomfort, cough, and shortness of breath during stimulation. Serious risks include infection, vocal cord paralysis, or device malfunction.",
+      "common_adverse_effects": [
+        {
+          "effect": "Hoarseness"
+        },
+        {
+          "effect": "Cough"
+        },
+        {
+          "effect": "Throat discomfort"
+        },
+        {
+          "effect": "Shortness of breath during stimulation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Vocal cord paralysis"
+        },
+        {
+          "risk": "Infection"
+        },
+        {
+          "risk": "Device malfunction"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "History of left or bilateral vagotomy"
+        },
+        {
+          "contraindication": "Cardiac arrhythmias"
+        },
+        {
+          "contraindication": "Severe respiratory disorders"
+        },
+        {
+          "contraindication": "Unfit for surgery"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; device usually left active if already implanted"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Implantable neurostimulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Performed under general anesthesia by a neurosurgeon.\nDevice programmed after implantation with adjustable stimulation parameters.\nPatients attend follow-up visits for titration and monitoring."
+      }
     }
   },
   "sections": [
@@ -214,6 +304,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Handforth A, et al. Vagus nerve stimulation therapy for partial-onset seizures: A randomized active-control trial. Neurology. (1998).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9443470/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Nemeroff CB, et al. Vagus nerve stimulation for treatment-resistant depression: A randomized, controlled acute phase trial. Biol Psychiatry. (2006).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16631125/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Johnson RL, Wilson CG. A review of vagus nerve stimulation as a therapeutic intervention. J Inflamm Res. (2018).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29588654/"
+    }
+  ],
   "seo": {
     "title": "Vagus Nerve Stimulation (VNS) | Neuromodulation for Epilepsy & Depression",
     "description": "Learn about Vagus Nerve Stimulation (VNS), an implantable neuromodulation treatment for epilepsy and treatment-resistant depression, including benefits, risks, and clinical evidence.",
@@ -226,5 +336,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for epilepsy; moderate for depression."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for epilepsy; moderate for depression."
+    ]
   }
 }

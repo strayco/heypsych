@@ -1,108 +1,175 @@
-import type { Metadata } from "next";
-import { Compass } from "lucide-react";
-import { OnboardingFlow } from "@/components/psychTrail/onboarding/OnboardingFlow";
+"use client";
 
-export const metadata: Metadata = {
-  title: "PsychTrails - Start Your Journey | HeyPsych",
-  description: "Begin your mental health navigation journey with PsychTrails. Choose your life stage and start building confidence through interactive scenarios.",
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Play, Clock } from "lucide-react";
+import { getPackRegistry } from "@/lib/psychTrail/pack-registry";
+import {
+  getProgressState,
+  getScenarioProgress,
+  isReturningUser,
+} from "@/lib/psychTrail/storage-v2";
+import { trackScenarioStart, trackSecondScenarioStart, trackReturnVisit, trackFeaturedShown, trackFeaturedClick } from "@/lib/analytics/product-events";
+import { FEATURED_SCENARIO_ID } from "@/lib/psychTrail/constants";
+import type { ScenarioV2 } from "@/lib/psychTrail/types-v2";
+
+const DIFFICULTY_LABELS: Record<string, string> = {
+  beginner: "Beginner",
+  intermediate: "Intermediate",
+  advanced: "Advanced",
 };
 
-/**
- * PsychTrails - Onboarding Entry Point
- *
- * User selects life stage, lens (optional), and context tags (optional)
- * Saves selections to localStorage and redirects to map
- */
-export default function PsychTrailsOnboardingPage() {
+export default function PsychTrailsPage() {
+  const router = useRouter();
+  const registry = getPackRegistry();
+  const [isReturning, setIsReturning] = useState(false);
+  const [hasProgress, setHasProgress] = useState(false);
+  const [practiceCount, setPracticeCount] = useState(0);
+  const [scenariosCompleted, setScenariosCompleted] = useState(0);
+  const [scenarioHasBeenPlayed, setScenarioHasBeenPlayed] = useState<Record<string, boolean>>({});
+  const [featuredTracked, setFeaturedTracked] = useState(false);
+
+  const allScenarios = registry.getAllScenarios() as ScenarioV2[];
+
+  useEffect(() => {
+    const progress = getProgressState();
+    const hasAnyProgress = progress.global.totalRuns > 0;
+    setHasProgress(hasAnyProgress);
+    setIsReturning(isReturningUser());
+    setPracticeCount(progress.global.totalRuns);
+    setScenariosCompleted(progress.global.totalScenariosCompleted);
+
+    // Track return visits for analytics
+    if (hasAnyProgress && progress.global.lastPlayAt) {
+      const daysSinceLast = Math.floor((Date.now() - progress.global.lastPlayAt) / (1000 * 60 * 60 * 24));
+      if (daysSinceLast >= 1) {
+        trackReturnVisit(daysSinceLast, progress.global.totalScenariosCompleted);
+      }
+    }
+
+    // Track featured scenario exposure for new users
+    if (!hasAnyProgress && !featuredTracked) {
+      trackFeaturedShown(FEATURED_SCENARIO_ID);
+      setFeaturedTracked(true);
+    }
+
+    // Build played status map
+    const playedMap: Record<string, boolean> = {};
+    for (const scenario of allScenarios) {
+      const sp = getScenarioProgress(scenario.id);
+      playedMap[scenario.id] = sp ? sp.completions > 0 : false;
+    }
+    setScenarioHasBeenPlayed(playedMap);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleStartScenario = (scenarioId: string) => {
+    const scenario = allScenarios.find(s => s.id === scenarioId);
+    const progress = getProgressState();
+
+    if (scenario) {
+      const isFeatured = scenarioId === FEATURED_SCENARIO_ID;
+      trackScenarioStart(scenarioId, scenario.packIds[0] || "none", scenario.difficulty);
+
+      if (isFeatured) {
+        trackFeaturedClick(scenarioId);
+      }
+
+      if (progress.global.totalScenariosCompleted >= 1) {
+        trackSecondScenarioStart(scenarioId, scenario.packIds[0] || "none", progress.global.totalScenariosCompleted);
+      }
+    }
+
+    // Go to scenario detail screen
+    router.push(`/psychtrails/play/${scenarioId}`);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        {/* Header Icon */}
-        <div className="mb-8 flex justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg">
-            <Compass className="h-10 w-10 text-white" />
-          </div>
+    <div className="min-h-screen bg-canvas text-label-primary">
+      <div className="mx-auto max-w-xl px-4 py-12">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-semibold text-label-primary tracking-tight">
+            PsychTrails
+          </h1>
+          <p className="mt-2 text-label-tertiary">
+            {isReturning
+              ? "Welcome back. Ready to practice?"
+              : "Practice navigating challenging moments."}
+          </p>
         </div>
 
-        {/* Onboarding Flow */}
-        <OnboardingFlow />
-
-        {/* FAQ Section */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-8 text-center">
-            FAQ
-          </h2>
-
-          <div className="space-y-6">
+        {/* Progress Summary - returning users only */}
+        {hasProgress && (
+          <div className="mb-8 flex justify-center gap-8 text-center">
             <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                What is PsychTrails™?
-              </h3>
-              <p className="text-base text-neutral-700">
-                An interactive, story based platform that turns mental health learning into skill building simulations. Users explore fictional scenarios and practice decisions in a safe, engaging way.
-              </p>
+              <div className="text-xl font-medium text-label-primary">{practiceCount}</div>
+              <div className="text-xs text-label-primary0 mt-0.5">Practice Sessions</div>
             </div>
-
             <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                Who is it for?
-              </h3>
-              <p className="text-base text-neutral-700">
-                Schools and SEL programs, college campuses, clinics, and community organizations. Also great for individuals who want a low pressure way to explore and build coping skills.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                What makes it different?
-              </h3>
-              <p className="text-base text-neutral-700">
-                Highly customizable. Scenarios can be tailored by audience, setting, and goals so the experience feels relevant and real.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                Is it therapy or medical advice?
-              </h3>
-              <p className="text-base text-neutral-700">
-                No. PsychTrails is educational and fictional, designed to support learning and skill building.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                What skills does it build?
-              </h3>
-              <p className="text-base text-neutral-700">
-                Practical skills like coping strategies, decision making, and help seeking, delivered through interactive storytelling.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                How long does a scenario take?
-              </h3>
-              <p className="text-base text-neutral-700">
-                Most take 5 to 12 minutes, and users can replay different paths.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
-                Do you offer partnerships?
-              </h3>
-              <p className="text-base text-neutral-700">
-                Yes. We work with schools, SEL programs, campuses, and clinics. Email{" "}
-                <a
-                  href="mailto:hello@heypsych.com"
-                  className="text-purple-600 hover:text-purple-700 underline"
-                >
-                  hello@heypsych.com
-                </a>.
-              </p>
+              <div className="text-xl font-medium text-label-primary">{scenariosCompleted}</div>
+              <div className="text-xs text-label-primary0 mt-0.5">Scenarios Completed</div>
             </div>
           </div>
+        )}
+
+        {/* Scenarios List */}
+        <div className="space-y-3">
+          {allScenarios.map((scenario) => {
+            const hasPlayed = scenarioHasBeenPlayed[scenario.id];
+            return (
+              <button
+                key={scenario.id}
+                onClick={() => handleStartScenario(scenario.id)}
+                className="w-full text-left rounded-xl border border-separator bg-surface-grouped p-4 transition-all hover:border-separator hover:bg-fill-secondary shadow-card-1 hover:shadow-card-2"
+              >
+                <div className="flex items-start gap-4">
+                  {/* Play icon */}
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-500/15 border border-accent-500/20">
+                      <Play className="h-4 w-4 text-accent" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-medium text-label-primary">
+                        {scenario.title}
+                      </h3>
+                      {hasPlayed && (
+                        <span className="text-xs text-label-primary0">Practiced</span>
+                      )}
+                    </div>
+                    <p className="mt-1 text-sm text-label-tertiary line-clamp-2">
+                      {scenario.summary}
+                    </p>
+                    <div className="mt-2 flex items-center gap-3 text-xs text-label-primary0">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {scenario.estimatedMinutes} min
+                      </span>
+                      <span>{DIFFICULTY_LABELS[scenario.difficulty] || scenario.difficulty}</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Trust Note - new users only */}
+        {!isReturning && (
+          <p className="mt-8 text-center text-sm text-label-primary0">
+            Evidence-based scenarios. No account needed.
+          </p>
+        )}
+
+        {/* Footer */}
+        <div className="mt-8 pt-8 border-t border-separator">
+          <p className="text-center text-xs text-label-quaternary">
+            Educational practice scenarios. Not medical advice or treatment.
+          </p>
         </div>
       </div>
     </div>

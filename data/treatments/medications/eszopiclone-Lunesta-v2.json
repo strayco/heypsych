@@ -1,83 +1,234 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "eszopiclone-lunesta",
-  "type": "medication",
-  "name": "Eszopiclone (Lunesta)",
-  "summary": "Non-benzodiazepine ‘Z-drug’ hypnotic for insomnia. Helps with sleep onset and maintenance but carries complex sleep behavior and next-day impairment risks.",
-  "description": "Eszopiclone (Lunesta) is a non-benzodiazepine hypnotic used at bedtime to help with difficulty falling asleep and staying asleep. It works quickly and can improve sleep continuity, but it also brings risks: next-day drowsiness, cognitive and motor impairment, and FDA boxed warnings for complex sleep behaviors like sleep-driving. Long-term nightly use can lead to dependence and withdrawal. Best used short term, at the lowest effective dose, alongside real sleep work like CBT-I.",
-  "patient_summary": "Lunesta is a sleep med you take right before bed to help you fall asleep and stay asleep. It’s in the ‘Z-drug’ family, not a classic benzo, but it still acts on the same sleep receptors. Many people sleep better, but there are tradeoffs: bad taste, grogginess the next day, balance problems, and weird sleep behaviors like sleep-walking or even sleep-driving in rare cases. If anything strange like that happens, it needs to be stopped immediately. This is a tool, not a permanent fix, and works best when paired with therapy for insomnia.",
-  "category": "medications/sleep-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "eszopiclone-lunesta",
+    "name": "Eszopiclone (Lunesta)",
+    "generic_name": "eszopiclone",
+    "brand_names": [
+      "Lunesta"
+    ],
+    "wikidata_qid": "Q422240"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-disorders",
     "drug_classes": [
       "Nonbenzodiazepine Benzodiazepine Receptor Agonist",
       "Hypnotic",
       "GABA-A Modulator"
-    ],
-    "brand_names": [
-      "Lunesta"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 2004,
-    "pharmacologic_category": "Hypnotic, Miscellaneous; Nonbenzodiazepine Benzodiazepine Receptor Agonist",
-    "published_date": "2026-01-22T00:00:00Z",
-    "last_updated": "2026-01-22T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-22T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q422240"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset and sleep maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia-disorder",
-        "relationship": "primary_treatment",
-        "context": "Approved for treatment of insomnia when there is difficulty falling asleep, frequent nocturnal awakenings, or early morning awakenings. Intended for bedtime use in adults when nonpharmacologic treatments are insufficient."
-      },
-      {
-        "slug": "depressive-disorders",
-        "relationship": "caution",
-        "context": "Hypnotics can worsen depression or unmask suicidal ideation. Use with caution in patients with mood disorders, prescribe the smallest effective quantity, and reassess if insomnia persists beyond 7–10 days."
-      },
-      {
-        "slug": "substance-use-disorders",
-        "relationship": "caution",
-        "context": "Z-drugs have abuse and dependence potential, particularly in patients with a history of substance misuse. Prefer nonpharmacologic strategies and safer alternatives in this group."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to eszopiclone or any component of the formulation",
-      "History of complex sleep behaviors (eg, sleep-walking, sleep-driving, or other activities performed while not fully awake) after taking eszopiclone",
-      "Canadian labeling: Hypersensitivity to zopiclone; myasthenia gravis; severe respiratory impairment (eg, significant sleep apnea syndrome); older adults with severe hepatic impairment or concomitant potent CYP3A4 inhibitors"
-    ],
-    "efficacy_response": {
-      "metric": "Change in sleep latency and total sleep time",
-      "percentage_value": "Clinically meaningful improvement in a substantial proportion of patients over short-term use",
-      "comparison_data": "Compared with placebo, eszopiclone reduces time to fall asleep and increases total sleep time, with modest improvements in sleep continuity. Benefits are present but not dramatic on average.",
-      "patient_text": "In real life, many people fall asleep faster and stay asleep a bit longer on Lunesta, but it’s not a miracle cure—think shaving off some time to fall asleep and reducing middle-of-the-night awakenings, not perfect 8-hour sleep every night.",
-      "citation_tag": "Eszopiclone registration trials and class data for nonbenzodiazepine hypnotics"
+  "summary": "Non-benzodiazepine ‘Z-drug’ hypnotic for insomnia. Helps with sleep onset and maintenance but carries complex sleep behavior and next-day impairment risks.",
+  "description": "Eszopiclone (Lunesta) is a non-benzodiazepine hypnotic used at bedtime to help with difficulty falling asleep and staying asleep. It works quickly and can improve sleep continuity, but it also brings risks: next-day drowsiness, cognitive and motor impairment, and FDA boxed warnings for complex sleep behaviors like sleep-driving. Long-term nightly use can lead to dependence and withdrawal. Best used short term, at the lowest effective dose, alongside real sleep work like CBT-I.",
+  "patient_summary": "Lunesta is a sleep med you take right before bed to help you fall asleep and stay asleep. It’s in the ‘Z-drug’ family, not a classic benzo, but it still acts on the same sleep receptors. Many people sleep better, but there are tradeoffs: bad taste, grogginess the next day, balance problems, and weird sleep behaviors like sleep-walking or even sleep-driving in rare cases. If anything strange like that happens, it needs to be stopped immediately. This is a tool, not a permanent fix, and works best when paired with therapy for insomnia.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia-disorder",
+          "condition_name": "Insomnia Disorder",
+          "relationship": "primary_indication",
+          "context": "Approved for treatment of insomnia when there is difficulty falling asleep, frequent nocturnal awakenings, or early morning awakenings. Intended for bedtime use in adults when nonpharmacologic treatments are insufficient.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depressive-disorders",
+          "condition_name": "Depressive Disorders",
+          "relationship": "secondary_indication",
+          "context": "Hypnotics can worsen depression or unmask suicidal ideation. Use with caution in patients with mood disorders, prescribe the smallest effective quantity, and reassess if insomnia persists beyond 7–10 days."
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance Use Disorders",
+          "relationship": "secondary_indication",
+          "context": "Z-drugs have abuse and dependence potential, particularly in patients with a history of substance misuse. Prefer nonpharmacologic strategies and safer alternatives in this group."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapidly absorbed; high-fat/heavy meals delay absorption and onset of effect",
-      "bioavailability": "Effectively absorbed; precise value not routinely used clinically",
-      "onset": "Rapid—typically within about 30–60 minutes when taken immediately before bedtime",
-      "peak_plasma": "Approximately 1 hour",
-      "half_life": "About 6 hours in healthy adults; around 9 hours in older adults",
-      "duration_IR": "Effects generally cover a typical sleep period; next-day psychomotor impairment more likely at higher doses, in older adults, and if taken without a full 7–8 hours in bed",
-      "duration_XR": "Not applicable (only immediate-release tablets available)",
-      "metabolism": "Hepatic metabolism via oxidation and demethylation primarily through CYP3A4 (major) and CYP2E1 (minor); metabolites are less active than parent drug",
-      "excretion": "Up to ~75% excreted in urine primarily as metabolites; <10% as unchanged drug",
-      "protein_binding": "Approximately 52–59%",
-      "food_effect": "High-fat or heavy meals delay absorption and onset, increasing risk of residual next-day effects"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Rapid—typically within about 30–60 minutes when taken immediately before bedtime"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache",
+          "incidence": "≈15–21%",
+          "notes": "Headaches can show up the morning after or later in the day. They’re usually mild to moderate, but if they’re severe, persistent, or associated with other neurological symptoms, let your prescriber know."
+        },
+        {
+          "effect": "Dysgeusia (Bad or Metallic Taste)",
+          "incidence": "≈8–34%",
+          "notes": "This is one of Lunesta’s signature side effects. People describe a strong bitter or metallic taste that can linger into the next day. Sips of water may help, but often it’s just something you have to weigh against the sleep benefits."
+        },
+        {
+          "effect": "Drowsiness and Dizziness",
+          "incidence": "Drowsiness ≈8–10%; dizziness ≈5–7%",
+          "notes": "Feeling sleepy is the point, but if you’re still groggy the next day or feel woozy when you stand up, we may need to lower the dose or rethink the medication—especially if you drive or do safety-sensitive work."
+        },
+        {
+          "effect": "GI Symptoms (Dry Mouth, Nausea, Dyspepsia, Diarrhea)",
+          "incidence": "Dry mouth ≈3–7%; nausea ≈4–5%; dyspepsia and diarrhea ≈2–6%",
+          "notes": "Mild stomach upset, dry mouth, or loose stools are pretty common. Hydration, lighter evening meals, and timing of the dose can help, but if GI issues are intense or persistent, bring it up."
+        },
+        {
+          "effect": "Mood and Cognitive Changes",
+          "incidence": "Depression 1–4%; anxiety 1–3%; confusion ≤3%; hallucinations 1–3%; abnormal dreams 1–3%",
+          "notes": "This is where we get cautious. If your mood worsens, you feel more anxious, you see or hear things that aren’t there, or your behavior feels out of character, we need to know immediately."
+        },
+        {
+          "effect": "Skin Reactions and Itching",
+          "incidence": "Rash 3–4%; pruritus 1–4%",
+          "notes": "Mild rashes or itchiness can happen with many medications. However, any severe, blistering, or spreading rash—especially with fever or facial swelling—needs urgent attention."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors (sleep-walking, sleep-driving, sleep-eating, having sex while not fully awake) with no memory afterward. These can cause serious injuries, legal issues, or death and require immediate discontinuation."
+        },
+        {
+          "risk": "Severe allergic reactions: Anaphylaxis and angioedema (swelling of tongue, throat, or face) can occur, sometimes after the first dose. This is an emergency."
+        },
+        {
+          "risk": "Severe psychiatric reactions: Agitation, aggression, hallucinations, suicidal ideation, or drastic behavior changes may occur and need urgent reassessment."
+        },
+        {
+          "risk": "Respiratory compromise: Sedation can worsen underlying sleep apnea or COPD and lead to breathing problems during sleep."
+        },
+        {
+          "risk": "Severe withdrawal: After high-dose or prolonged use, abrupt discontinuation may cause seizures, delirium, disorientation, hypertension, severe anxiety, or tremor—these require urgent medical care."
+        },
+        {
+          "risk": "Serious dermatologic reactions: Rare, but erythema multiforme and other serious rashes have been reported."
+        }
+      ],
+      "black_box_warning": "Complex sleep behaviors, including sleep-walking, sleep-driving, and other activities while not fully awake, may occur after taking eszopiclone. These events can result in serious injuries, including death. They may happen at recommended doses, with or without alcohol or other CNS depressants, and often without memory of the event. Discontinue eszopiclone immediately if a patient experiences a complex sleep behavior. Use is contraindicated in patients who have previously experienced such events.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to eszopiclone or any component of the formulation"
+        },
+        {
+          "contraindication": "History of complex sleep behaviors (eg, sleep-walking, sleep-driving, or other activities performed while not fully awake) after taking eszopiclone"
+        },
+        {
+          "contraindication": "Canadian labeling: Hypersensitivity to zopiclone; myasthenia gravis; severe respiratory impairment (eg, significant sleep apnea syndrome); older adults with severe hepatic impairment or concomitant potent CYP3A4 inhibitors"
+        }
+      ],
+      "precautions": [
+        "CNS depression and next-day impairment: Higher doses (2–3 mg) and inadequate time in bed increase the risk of impaired alertness, driving, and decision-making the following day.",
+        "Abnormal thinking and behavior changes: Aggression, agitation, bizarre behavior, hallucinations, and depersonalization can occur and may signal underlying or unrecognized psychiatric illness.",
+        "Depression and suicidality: Hypnotics may worsen depression or bring suicidal thoughts to the surface. Use the lowest effective dose and smallest quantity; monitor closely in patients with mood disorders.",
+        "Withdrawal and rebound insomnia: Abrupt discontinuation can cause transient worsening of sleep, anxiety, and mood changes. Rarely, more severe withdrawal symptoms (eg, seizures, confusion, delirium) can occur after long-term or high-dose use.",
+        "Respiratory compromise: Use with caution in sleep apnea, COPD, or other respiratory disease; sedative-hypnotics can worsen breathing during sleep.",
+        "Hepatic impairment: Systemic exposure is doubled in severe hepatic impairment. Dose reduction is required and use should be cautious.",
+        "Allergic reactions: Anaphylaxis and angioedema have been reported, sometimes after the first dose. Do not rechallenge after a severe hypersensitivity reaction.",
+        "Older adults: Similar adverse events to benzodiazepines—falls, fractures, delirium, and motor vehicle accidents—with only small improvements in sleep. Beers Criteria recommend avoiding Z-drugs in patients 65 and older."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression, increased risk of complex sleep behaviors, blackouts, and impaired judgment.",
+          "action": "Do not combine. Avoid alcohol completely when taking eszopiclone, especially near bedtime."
+        },
+        {
+          "interactant": "Other CNS Depressants (benzodiazepines, Z-drugs, opioids, barbiturates, sedating antihistamines, antipsychotics, gabapentinoids)",
+          "mechanism": "Increased sedation, respiratory depression, complex sleep behaviors, and next-day psychomotor impairment.",
+          "action": "Avoid stacking sedatives. If unavoidable, use the lowest effective doses, adjust eszopiclone dose downward, and monitor closely for oversedation and unusual behaviors."
+        },
+        {
+          "interactant": "Strong CYP3A4 Inhibitors (eg, ketoconazole, itraconazole, certain HIV protease inhibitors, some macrolide antibiotics)",
+          "mechanism": "Increased eszopiclone levels and prolonged sedation, raising risk of next-day impairment and complex behaviors.",
+          "action": "Avoid high doses of eszopiclone in combination; consider limiting to 1 mg, or using an alternative hypnotic not dependent on CYP3A4. Monitor for excessive sedation."
+        },
+        {
+          "interactant": "CYP3A4 Inducers (eg, rifampin, some anticonvulsants)",
+          "mechanism": "Decreased eszopiclone levels and reduced hypnotic effect, potentially driving dose escalation.",
+          "action": "Avoid if possible. If used together, focus on nonpharmacologic insomnia treatment rather than escalating eszopiclone doses."
+        },
+        {
+          "interactant": "Other Sedative-Hypnotics at Bedtime",
+          "mechanism": "Markedly increased risk of complex sleep behaviors, profound sedation, and breathing impairment.",
+          "action": "Do not use multiple hypnotics (eg, eszopiclone + another ‘sleep med’) at the same bedtime or during the night."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Daytime alertness and psychomotor performance: Ask about next-day grogginess, driving safety, workplace performance, and near-miss events."
+        },
+        {
+          "parameter": "Complex sleep behaviors: At each visit, ask the patient and, when possible, bed partners about sleep-walking, sleep-eating, sleep-driving, or other odd nighttime activities with amnesia."
+        },
+        {
+          "parameter": "Sleep pattern and quality: Track sleep onset, awakenings, early morning waking, and overall satisfaction with sleep. Persistent insomnia warrants re-evaluation of underlying causes."
+        },
+        {
+          "parameter": "Mood and suicidality: Screen for depression, anxiety, and suicidal ideation, especially if insomnia persists or worsens. Hypnotics can unmask or exacerbate mood disorders."
+        },
+        {
+          "parameter": "Substance use: Monitor alcohol and sedative use; eszopiclone should not be layered on top of significant alcohol or sedative use."
+        },
+        {
+          "parameter": "Withdrawal and rebound: During and after tapering, monitor for rebound insomnia, anxiety, autonomic symptoms, and rarely more severe withdrawal phenomena."
+        },
+        {
+          "parameter": "Falls and cognitive effects: Particularly in older or debilitated patients, watch for falls, confusion, memory issues, or functional decline."
+        },
+        {
+          "parameter": "Hepatic function: In severe hepatic impairment, consider periodic liver function tests and clinical monitoring for exaggerated sedation or prolonged effects."
+        },
+        {
+          "parameter": "Concomitant medications: Regularly review for interacting CNS depressants and CYP3A4 inhibitors or inducers that may alter eszopiclone exposure."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Eszopiclone is the S-isomer of zopiclone. Data with this class suggest an association with preterm birth, low birth weight, and small-for-gestational-age infants when used chronically in pregnancy, but findings are not uniform and confounded by maternal illness. Long-term hypnotic use is generally discouraged in pregnancy. Nonpharmacologic insomnia treatments (sleep hygiene, CBT-I) are preferred. If eszopiclone is used, employ the lowest effective dose for the shortest possible time, reassess frequently, and plan a gradual discontinuation to reduce rebound insomnia.",
+        "lactation": "It is unknown whether eszopiclone itself is present in human milk, but its racemic parent zopiclone is excreted in breast milk. Sedation, poor feeding, and weight changes are theoretical risks in exposed infants. Decisions about breastfeeding while on eszopiclone should weigh maternal sleep and mental health needs against potential infant exposure. If used, choose the lowest effective dose, consider timing doses right after the last feed of the evening, and monitor infants closely for sedation and feeding difficulties.",
+        "pediatric": "Eszopiclone is not approved for children or adolescents. Data are limited and concerns about misuse, paradoxical reactions, and impact on developing sleep–wake regulation mean nonpharmacologic interventions are strongly preferred.",
+        "geriatric": "Older adults are more sensitive to hypnotics and show increased exposure (higher AUC and longer half-life). Eszopiclone is listed in Beers Criteria as potentially inappropriate in adults ≥65 due to risks similar to benzodiazepines (falls, fractures, delirium, motor vehicle accidents) with only modest sleep benefit. If used at all, doses should be very low (usually 1 mg, max 2 mg), duration short, and monitoring tight.",
+        "renal_impairment": "Eszopiclone and its metabolites are largely handled by the liver, with metabolites excreted in urine. Significant dose adjustment is not typically needed in renal impairment, but comorbidities and concomitant drugs in kidney disease still increase risk of falls and sedation.",
+        "hepatic_impairment": "In severe hepatic impairment, systemic exposure to eszopiclone is doubled, prompting lower maximum doses (1–2 mg) and careful monitoring for oversedation and cognitive changes. Mild to moderate hepatic impairment generally does not require dose adjustment, but caution remains appropriate."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2004
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapidly absorbed; high-fat/heavy meals delay absorption and onset of effect",
+          "bioavailability": "Effectively absorbed; precise value not routinely used clinically",
+          "peak_plasma": "Approximately 1 hour",
+          "half_life": "About 6 hours in healthy adults; around 9 hours in older adults",
+          "metabolism": "Hepatic metabolism via oxidation and demethylation primarily through CYP3A4 (major) and CYP2E1 (minor); metabolites are less active than parent drug",
+          "excretion": "Up to ~75% excreted in urine primarily as metabolites; <10% as unchanged drug",
+          "protein_binding": "Approximately 52–59%",
+          "food_effect": "High-fat or heavy meals delay absorption and onset, increasing risk of residual next-day effects"
+        },
+        "dosing": {
+          "titration": "Eszopiclone dosing is simple on paper—1, 2, or 3 mg at bedtime—but the safest strategy is always ‘start low, reassess often.’"
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Eszopiclone isn’t as famous for withdrawal as benzos, but it still hits GABA systems—so a thoughtful taper is far kinder to your brain than a sudden stop."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +249,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People often describe Lunesta as ‘strong but not as heavy as a benzo’—though the line can blur, especially at higher doses or in sensitive brains.",
       "items": [
         {
           "category": "Falling Asleep",
@@ -150,7 +300,8 @@
             "It’s easy to get psychologically attached to ‘my sleep pill’—that dependence is real, even if you’re not abusing it."
           ]
         }
-      ]
+      ],
+      "intro": "People often describe Lunesta as ‘strong but not as heavy as a benzo’—though the line can blur, especially at higher doses or in sensitive brains."
     },
     {
       "type": "onset_duration",
@@ -167,10 +318,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Eszopiclone can shave down the time it takes to fall asleep and reduce the number of awakenings, especially in the first weeks of use. For some people, that’s enough to feel like a real win. For others, the tradeoff—grogginess, odd taste, or safety concerns—can outweigh the benefit. And no pill can compete long term with CBT-I when it comes to durable insomnia recovery.",
       "metric": "Sleep latency and total sleep time",
       "value": "Meaningful but modest improvements on average",
       "comparison": "Improves sleep more than placebo, but benefits in latency and total sleep time are generally small to moderate and can be similar to other ‘Z-drugs’ and benzodiazepine hypnotics.",
-      "text": "Eszopiclone can shave down the time it takes to fall asleep and reduce the number of awakenings, especially in the first weeks of use. For some people, that’s enough to feel like a real win. For others, the tradeoff—grogginess, odd taste, or safety concerns—can outweigh the benefit. And no pill can compete long term with CBT-I when it comes to durable insomnia recovery.",
       "clinical_details": "In randomized controlled trials, eszopiclone reduced sleep latency and increased total sleep time compared with placebo in adults with insomnia. Improvements were modest but statistically significant. Tolerance to hypnotic effects did not appear to develop over 6 months in some studies, but clinical experience still suggests caution with prolonged use due to dependence and withdrawal risks. Nonpharmacologic treatments (eg, CBT-I) remain first-line, with eszopiclone positioned as an adjunct or second-line option.",
       "citation": {
         "authors": "Eszopiclone insomnia trial programs",
@@ -265,7 +416,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Eszopiclone is a CNS depressant and a CYP3A4 substrate. The main interaction themes: more sedation, more next-day impairment, and higher blood levels with CYP3A4 inhibitors.",
       "items": [
         {
           "with": "Alcohol",
@@ -292,7 +442,8 @@
           "risk": "Markedly increased risk of complex sleep behaviors, profound sedation, and breathing impairment.",
           "action": "Do not use multiple hypnotics (eg, eszopiclone + another ‘sleep med’) at the same bedtime or during the night."
         }
-      ]
+      ],
+      "intro": "Eszopiclone is a CNS depressant and a CYP3A4 substrate. The main interaction themes: more sedation, more next-day impairment, and higher blood levels with CYP3A4 inhibitors."
     },
     {
       "type": "tapering",
@@ -407,21 +558,50 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Eszopiclone (Lunesta): Uses, Dosing, Side Effects & Complex Sleep Behaviors",
-    "description": "Eszopiclone (Lunesta) for insomnia: bedtime dosing (1–3 mg), how it helps sleep onset and maintenance, complex sleep behavior warning (sleep-driving, sleep-walking), next-day impairment, tapering strategies, and safety in older adults.",
-    "canonical": "[https://www.heypsych.com/treatments/eszopiclone-lunesta](https://www.heypsych.com/treatments/eszopiclone-lunesta)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information (Lunesta)",
+      "url": "[https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021476s038lbl.pdf](https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021476s038lbl.pdf)",
+      "description": "Official US labeling including boxed warning for complex sleep behaviors, dosing, and safety information."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "FDA Medication Guide for Eszopiclone",
+      "url": "[https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021476s038lbl.pdf#page=26](https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021476s038lbl.pdf#page=26)",
+      "description": "Patient-focused guide outlining risks, proper use, and safety precautions."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Beers Criteria (AGS 2023): Potentially Inappropriate Medication Use in Older Adults",
+      "url": "[https://www.americangeriatrics.org](https://www.americangeriatrics.org)",
+      "description": "Recommends avoiding eszopiclone and other Z-drugs in older adults due to limited benefit and increased harms."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "BAP Guidelines – Insomnia and Sedative-Hypnotic Withdrawal",
+      "url": "[https://www.bap.org.uk](https://www.bap.org.uk)",
+      "description": "Evidence-based guidance on management of insomnia and tapering of GABAergic hypnotics."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "Schifano (2019) – Z-drugs and Dependence Risk",
+      "url": "[https://pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov)",
+      "description": "Review of misuse, dependence, and withdrawal phenomena associated with Z-drugs."
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "National Pregnancy Registry for Psychiatric Medications",
+      "url": "[https://womensmentalhealth.org/research/pregnancyregistry/psychiatric-medications/](https://womensmentalhealth.org/research/pregnancyregistry/psychiatric-medications/)",
+      "description": "Registry collecting data on pregnancy and neonatal outcomes following exposure to psychiatric medications, including hypnotics."
+    }
+  ],
   "faqs": [
     {
       "q": "What is Lunesta (eszopiclone) used for?",
@@ -471,5 +651,20 @@
       "q": "How does Lunesta fit into a long-term plan for insomnia?",
       "a": "Ideally, Lunesta is a short-term tool while you work on long-term fixes: CBT-I, circadian rhythm alignment, consistent wake times, managing caffeine, addressing pain or mood issues, and so on. We use it to buy you some sleep while you build skills and routines. Once those are in place and working, we slowly taper the medication and see how your sleep holds up without it. If the pill is doing all the work and nothing else has changed, we’ve missed the real treatment opportunity."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Eszopiclone (Lunesta): Uses, Dosing, Side Effects & Complex Sleep Behaviors",
+    "description": "Eszopiclone (Lunesta) for insomnia: bedtime dosing (1–3 mg), how it helps sleep onset and maintenance, complex sleep behavior warning (sleep-driving, sleep-walking), next-day impairment, tapering strategies, and safety in older adults.",
+    "canonical": "[https://www.heypsych.com/treatments/eszopiclone-lunesta](https://www.heypsych.com/treatments/eszopiclone-lunesta)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

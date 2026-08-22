@@ -1,50 +1,55 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/homepage/Hero";
-import { NavigationGrid } from "@/components/homepage/NavigationGrid";
-import { TrendingTopics } from "@/components/homepage/TrendingTopics";
-import { PsychTrail } from "@/components/homepage/PsychTrail";
-import { ToolkitStrip } from "@/components/homepage/ToolkitStrip";
+import Link from "next/link";
+import { Search, ChevronRight } from "lucide-react";
+import { IntentGrid } from "@/components/navigation/IntentGrid";
 
-// SEO-optimized metadata for homepage
+// SEO-optimized metadata - Navigation V1 positioning
 export const metadata: Metadata = {
-  title: "HeyPsych - Mental Health Treatments, Medications & Therapy Guide",
+  title: "HeyPsych - Understand Mental Health, Explore Options, Find Care",
   description:
-    "Compare 500+ mental health treatments, medications, and therapies for depression, anxiety, ADHD, and more. Evidence-based, clinically reviewed information to guide your care.",
+    "Navigate your mental health journey. Understand conditions, compare treatments, find tools, and connect with care. Free, evidence-based information to help you take the next step.",
   openGraph: {
-    title: "HeyPsych - Mental Health Treatments, Medications & Therapy Guide",
+    title: "HeyPsych - Understand Mental Health, Explore Options, Find Care",
     description:
-      "Compare 500+ mental health treatments, medications, and therapies for depression, anxiety, ADHD, and more. Evidence-based, clinically reviewed information.",
+      "Navigate your mental health journey. Understand conditions, compare treatments, and find the right care for you.",
+    type: "website",
+    url: "https://heypsych.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HeyPsych - Mental Health Navigation",
+    description:
+      "Understand mental health. Explore your options. Find your next step.",
   },
 };
 
 // Organization schema for Google Search rich results
-// Using MedicalOrganization for E-E-A-T signals in health content
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "MedicalOrganization",
+  "@type": "Organization",
   "@id": "https://heypsych.com/#organization",
   name: "HeyPsych",
   url: "https://heypsych.com",
   logo: {
     "@type": "ImageObject",
-    url: "https://heypsych.com/favicon-48x48.png",
-    width: 48,
-    height: 48,
+    url: "https://heypsych.com/images/logo.png",
+    width: 220,
+    height: 64,
   },
-  description: "Evidence-based mental health treatment information and resources",
-  medicalSpecialty: "Psychiatric",
+  description:
+    "Mental health navigation platform helping people understand conditions, compare treatments, and find appropriate care.",
   sameAs: ["https://twitter.com/heypsych", "https://linkedin.com/company/heypsych"],
 };
 
-// WebSite schema for sitelinks search box
-// This enables the search box directly in Google search results
+// WebSite schema with navigation focus
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://heypsych.com/#website",
   name: "HeyPsych",
   url: "https://heypsych.com",
-  description: "Evidence-based mental health treatment information covering 500+ conditions, medications, and therapies",
+  description:
+    "Navigate your mental health journey. Understand conditions, explore treatments, find tools, and connect with care.",
   publisher: {
     "@id": "https://heypsych.com/#organization",
   },
@@ -59,28 +64,19 @@ const websiteSchema = {
 };
 
 /**
- * Homepage - FINAL APPROVED REDESIGN
+ * Homepage - Navigation V1
  *
- * Implementation follows MASTER IMPLEMENTATION SPEC exactly.
- * No deviations permitted.
+ * HeyPsych's core product is mental-health navigation powered by structured
+ * clinical knowledge.
  *
- * Section Order (TOP → BOTTOM):
- * 1. Hero (Search + "Take me anywhere")
- * 2. Core Navigation Grid (2×2)
- * 3. Trending Topics (Discovery Tiles)
- * 4. PsychTrails
- * 5. Toolkit Strip (Optional)
+ * Core promise:
+ *   Understand your mental health.
+ *   Explore your options.
+ *   Find your next step.
  *
- * All sections use existing design system:
- * - Color tokens from Tailwind config
- * - Typography scale (existing)
- * - Spacing tokens (existing)
- * - Existing Card and Button components
- *
- * Design Aesthetic: "Apple-level clean" with:
- * - Increased whitespace (~20% more padding)
- * - Visual differentiation through background tones & spacing
- * - No new colors, shapes, or UI patterns
+ * This homepage provides intent-based navigation to help users find
+ * their path through understanding conditions, comparing treatments,
+ * finding tools, and connecting with care.
  */
 export default function HomePage() {
   return (
@@ -95,22 +91,142 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
-      {/* Homepage Sections - EXACT ORDER REQUIRED */}
-      <div className="min-h-screen">
-        {/* SECTION 1 - Hero (Search + "Take me anywhere") */}
-        <Hero />
+      {/* Homepage Sections - Navigation V1 */}
+      <div className="min-h-screen bg-canvas">
+        {/* Hero Section */}
+        <section className="px-4 pb-12 pt-12 sm:px-6 md:pt-20 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Primary Heading */}
+            <h1 className="text-3xl font-bold tracking-tight text-label-primary sm:text-4xl md:text-5xl">
+              What can we help you figure out?
+            </h1>
 
-        {/* SECTION 2 - PsychTrails */}
-        <PsychTrail />
+            {/* Supporting Copy */}
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary sm:mt-6 sm:text-xl">
+              Understand your mental health. Explore your options. Find your next step.
+            </p>
 
-        {/* SECTION 3 - Core Navigation Grid (2×2) */}
-        <NavigationGrid />
+            {/* Search Bar */}
+            <div className="mx-auto mt-8 max-w-xl">
+              <Link
+                href="/search"
+                className="
+                  group flex w-full items-center gap-3 rounded-full
+                  border border-separator bg-surface px-5 py-3.5
+                  text-label-tertiary shadow-subtle
+                  transition-all duration-200
+                  hover:border-accent hover:shadow-soft
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+                "
+              >
+                <Search className="h-5 w-5 text-label-tertiary group-hover:text-accent" />
+                <span className="flex-1 text-left">Search conditions, treatments, tools...</span>
+                <kbd className="hidden rounded-md bg-fill-quaternary px-2 py-1 text-xs font-medium text-label-tertiary sm:inline-block">
+                  /
+                </kbd>
+              </Link>
+            </div>
 
-        {/* SECTION 4 - Trending Topics (Discovery Tiles) */}
-        <TrendingTopics />
+            {/* Trust Cues */}
+            <p className="mt-4 text-sm text-label-tertiary">
+              Evidence-based information reviewed by mental health professionals
+            </p>
+          </div>
+        </section>
 
-        {/* SECTION 5 - Toolkit Strip (Optional but Preferred) */}
-        <ToolkitStrip />
+        {/* Intent Grid Section */}
+        <section className="px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <IntentGrid />
+          </div>
+        </section>
+
+        {/* Quick Navigation Section */}
+        <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="mb-8 text-center text-xl font-semibold text-label-primary">
+              Explore by category
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  href: "/conditions",
+                  label: "Conditions",
+                  description: "Understand symptoms and diagnoses",
+                },
+                {
+                  href: "/treatments/compare",
+                  label: "Compare Treatments",
+                  description: "Compare therapy and medication",
+                },
+                {
+                  href: "/tools",
+                  label: "Tools",
+                  description: "Discover apps and resources",
+                },
+                {
+                  href: "/psychiatrists",
+                  label: "Find Care",
+                  description: "Search for providers near you",
+                },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="
+                    group flex items-center justify-between rounded-xl
+                    border border-separator bg-surface p-4
+                    transition-all duration-150
+                    hover:border-accent/30 hover:shadow-subtle
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+                  "
+                >
+                  <div>
+                    <p className="font-medium text-label-primary group-hover:text-accent">
+                      {item.label}
+                    </p>
+                    <p className="mt-0.5 text-sm text-label-tertiary">
+                      {item.description}
+                    </p>
+                  </div>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-8 text-center sm:grid-cols-3">
+              <div>
+                <p className="text-3xl font-bold text-accent tabular-nums">130+</p>
+                <p className="mt-1 text-sm text-label-secondary">Mental health conditions covered</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-accent tabular-nums">650+</p>
+                <p className="mt-1 text-sm text-label-secondary">Treatment options explained</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-accent tabular-nums">100+</p>
+                <p className="mt-1 text-sm text-label-secondary">Digital tools reviewed</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Medical Disclaimer Footer */}
+        <section className="border-t border-separator bg-surface-grouped px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm text-label-secondary">
+              HeyPsych provides educational information about mental health conditions and
+              treatments. This content is not a substitute for professional medical advice,
+              diagnosis, or treatment. Always seek the advice of a qualified healthcare
+              provider with questions about a medical condition.
+            </p>
+          </div>
+        </section>
       </div>
     </>
   );

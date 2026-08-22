@@ -1,76 +1,264 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "levomilnacipran-fetzima",
-  "type": "medication",
-  "name": "Levomilnacipran (Fetzima)",
-  "summary": "Once-daily SNRI for major depression. Often felt as more “get-up-and-go” than sedating, but nausea, sweating, sexual side effects, and blood pressure/heart rate bumps can show up—especially early.",
-  "description": "Fetzima is an SNRI antidepressant used for major depressive disorder (MDD). It’s taken once daily as an extended-release capsule that you swallow whole. Some people notice early shifts in energy and focus within 1–2 weeks, with fuller mood improvement building over 4–6 weeks. Biggest watch-outs: the antidepressant suicidality warning in people 24 and under, serotonin syndrome risk with other serotonergic meds, blood pressure/heart rate increases, urinary hesitancy/retention, hyponatremia (especially older adults), and discontinuation symptoms if stopped abruptly.",
-  "patient_summary": "Fetzima is a once-daily antidepressant for MDD. You swallow the capsule whole (don’t crush or open it). Early changes can show up in 1–2 weeks, but real depression relief usually builds over 4–6 weeks. Common issues: nausea, sweating, constipation, sexual side effects, and sometimes higher blood pressure or a faster heart rate. It carries the standard antidepressant warning about increased suicidal thoughts/behavior in people 24 and under. Don’t mix it with MAOIs, and don’t stop suddenly—taper if you’ve been on it for a few weeks or longer.",
-  "category": "medications/depression",
-  "metadata": {
-    "drug_classes": [
-      "Serotonin/Norepinephrine Reuptake Inhibitor (SNRI)",
-      "Antidepressant"
-    ],
+  "identity": {
+    "slug": "levomilnacipran-fetzima",
+    "name": "Levomilnacipran (Fetzima)",
+    "generic_name": "levomilnacipran",
     "brand_names": [
       "Fetzima",
       "Fetzima Titration"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": "Not provided in supplied notes.",
-    "pharmacologic_category": "Antidepressant, Serotonin/Norepinephrine Reuptake Inhibitor",
-    "published_date": "2026-01-02T00:00:00Z",
-    "last_updated": "2026-01-02T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-02T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for major depressive disorder. Early effects may show up in 1–2 weeks, with continued improvement through 4–6 weeks."
-      },
-      {
-        "slug": "depression-with-anxiety",
-        "relationship": "clinical_context",
-        "context": "Not a separate FDA indication in the supplied notes, but in real-world depression, anxiety, agitation, insomnia, and panic symptoms can ride along. If those symptoms intensify after starting or changing the dose, reassess quickly for activation, akathisia, bipolar spectrum illness, or emerging suicidality."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to levomilnacipran, milnacipran, or any component of the formulation",
-      "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 7 days of discontinuing levomilnacipran, or within 14 days of discontinuing the MAOI)",
-      "Initiation of levomilnacipran in a patient receiving IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Time course of antidepressant response",
-      "percentage_value": "Not provided in supplied notes.",
-      "comparison_data": "Not provided in supplied notes.",
-      "patient_text": "With this medication, early changes can show up within 1–2 weeks, but the bigger depression shift usually builds over 4–6 weeks. If you feel worse, more agitated, more impulsive, or more suicidal at any point—especially early on or after a dose change—that’s not a “push through it” moment. That’s a call-your-prescriber moment.",
-      "citation_tag": "FDA-label"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
+    "drug_classes": [
+      "Serotonin/Norepinephrine Reuptake Inhibitor (SNRI)",
+      "Antidepressant"
+    ]
+  },
+  "summary": "Once-daily SNRI for major depression. Often felt as more “get-up-and-go” than sedating, but nausea, sweating, sexual side effects, and blood pressure/heart rate bumps can show up—especially early.",
+  "description": "Fetzima is an SNRI antidepressant used for major depressive disorder (MDD). It’s taken once daily as an extended-release capsule that you swallow whole. Some people notice early shifts in energy and focus within 1–2 weeks, with fuller mood improvement building over 4–6 weeks. Biggest watch-outs: the antidepressant suicidality warning in people 24 and under, serotonin syndrome risk with other serotonergic meds, blood pressure/heart rate increases, urinary hesitancy/retention, hyponatremia (especially older adults), and discontinuation symptoms if stopped abruptly.",
+  "patient_summary": "Fetzima is a once-daily antidepressant for MDD. You swallow the capsule whole (don’t crush or open it). Early changes can show up in 1–2 weeks, but real depression relief usually builds over 4–6 weeks. Common issues: nausea, sweating, constipation, sexual side effects, and sometimes higher blood pressure or a faster heart rate. It carries the standard antidepressant warning about increased suicidal thoughts/behavior in people 24 and under. Don’t mix it with MAOIs, and don’t stop suddenly—taper if you’ve been on it for a few weeks or longer.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for major depressive disorder. Early effects may show up in 1–2 weeks, with continued improvement through 4–6 weeks.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression-with-anxiety",
+          "condition_name": "Depression With Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Not a separate FDA indication in the supplied notes, but in real-world depression, anxiety, agitation, insomnia, and panic symptoms can ride along. If those symptoms intensify after starting or changing the dose, reassess quickly for activation, akathisia, bipolar spectrum illness, or emerging suicidality."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Extended-release formulation; once-daily dosing",
-      "bioavailability": "92%",
-      "onset": "Depression: initial effects may be observed within 1 to 2 weeks; continued improvements through 4 to 6 weeks",
-      "peak_plasma": "6 to 8 hours",
-      "half_life": "12 hours",
-      "metabolism": "Hepatic to inactive metabolites",
-      "excretion": "Urine (58% as unchanged drug)",
-      "protein_binding": "22%",
-      "food_effect": "May be administered with or without food",
-      "special_notes": "Ethanol may accelerate drug release by interacting with extended-release properties; avoid ethanol."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: initial effects may be observed within 1 to 2 weeks; continued improvements through 4 to 6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea",
+          "incidence": "17%",
+          "notes": "This is one of the most common early side effects. If nausea is mild, it often settles. If it’s severe (can’t eat, can’t hydrate, vomiting repeatedly), reach out—don’t just white-knuckle it."
+        },
+        {
+          "effect": "Orthostatic hypotension",
+          "incidence": "10% to 12%",
+          "notes": "Lightheadedness when standing can happen. Hydration helps, but persistent dizziness, fainting, or falls need evaluation—especially if you’re also noticing heart rate or blood pressure changes."
+        },
+        {
+          "effect": "Hyperhidrosis (excess sweating)",
+          "incidence": "9%",
+          "notes": "Sweating can be annoying and surprisingly intense. If sweating comes with confusion, fever, tremor, or diarrhea, think serotonin syndrome and seek urgent care."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "9%",
+          "notes": "Constipation is common with SNRIs. If you’re going days without a bowel movement or you have severe abdominal pain, don’t ignore it."
+        },
+        {
+          "effect": "Tachycardia",
+          "incidence": "6%",
+          "notes": "A faster heart rate can occur. This is one reason blood pressure and pulse checks are part of routine monitoring."
+        },
+        {
+          "effect": "Palpitations",
+          "incidence": "5%",
+          "notes": "Feeling your heartbeat more strongly can happen. If you have chest pain, fainting, or a known arrhythmia, take this seriously and get evaluated."
+        },
+        {
+          "effect": "Hypertension",
+          "incidence": "3%",
+          "notes": "Even small sustained increases matter over time. If your readings stay elevated, your prescriber may adjust the dose or switch medications."
+        },
+        {
+          "effect": "Vomiting",
+          "incidence": "5%",
+          "notes": "If vomiting is persistent, that can spiral into dehydration and dizziness. Contact your prescriber."
+        },
+        {
+          "effect": "Urinary hesitancy",
+          "incidence": "4% to 6%",
+          "notes": "If it’s harder to start peeing, or you feel like you can’t fully empty your bladder, tell your clinician. If you can’t urinate at all, that’s urgent."
+        },
+        {
+          "effect": "Sexual dysfunction (male)",
+          "incidence": "Erectile dysfunction 6% to 10%; ejaculatory disorder 5%",
+          "notes": "Sexual side effects can affect desire, arousal, and orgasm. They’re treatable, adjustable, and discussable—bring it up."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal ideation or suicidal tendencies: frequency not defined; risk is emphasized in the boxed warning for people 24 and under and during early treatment or dose changes"
+        },
+        {
+          "risk": "Serotonin syndrome: potentially life-threatening; more likely with other serotonergic agents or MAOIs; symptoms can include agitation, hallucinations/delirium, autonomic instability, tremor/rigidity/myoclonus, GI symptoms, and seizures"
+        },
+        {
+          "risk": "Seizure: reported in <1% in adults"
+        },
+        {
+          "risk": "Takotsubo cardiomyopathy (postmarketing)"
+        },
+        {
+          "risk": "Severe hypertension, sustained tachycardia, or syncope: requires evaluation and possible dose reduction or discontinuation"
+        },
+        {
+          "risk": "Mania/hypomania activation in vulnerable patients (bipolar spectrum risk)"
+        },
+        {
+          "risk": "Hyponatremia/SIADH (rare but potentially severe): confusion, headache, weakness, seizures—higher risk in older adults and those on diuretics"
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies. These studies did not show an increase in the risk of suicidal thoughts and behavior with antidepressant use in patients older than 24 years; there was a reduction in risk with antidepressant use in patients 65 years and older.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to levomilnacipran, milnacipran, or any component of the formulation"
+        },
+        {
+          "contraindication": "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 7 days of discontinuing levomilnacipran, or within 14 days of discontinuing the MAOI)"
+        },
+        {
+          "contraindication": "Initiation of levomilnacipran in a patient receiving IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Monitor closely for clinical worsening, suicidality, or unusual behavior changes—particularly during the first few months or when the dose is increased or decreased",
+        "Levomilnacipran is not approved for use in pediatric patients",
+        "Serotonin syndrome can be life-threatening, especially when combined with other serotonergic agents or MAOIs",
+        "May increase blood pressure and heart rate; assess before starting and periodically thereafter",
+        "Bleeding risk may increase (impaired platelet aggregation), especially with NSAIDs, aspirin, warfarin, or other anticoagulants",
+        "May cause urinary hesitancy or urinary retention; report difficulty urinating",
+        "May cause pupillary dilation and can trigger narrow-angle glaucoma in susceptible patients",
+        "May precipitate mania/hypomania in patients with bipolar disorder; screen for bipolar disorder before treating depression",
+        "Hyponatremia/SIADH risk (older adults, diuretics, volume depletion increase risk); monitor sodium when starting or changing dose in at-risk patients",
+        "Discontinuation syndrome can occur with abrupt stop or interruption—taper when stopping after sustained use",
+        "Seizures have been reported; use caution in seizure disorders",
+        "Ethanol may accelerate drug release from the extended-release capsule; avoid ethanol"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (psychiatric MAOIs) and IV methylene blue",
+          "mechanism": "Contraindicated due to high risk of serious reactions including serotonin syndrome.",
+          "action": "Switching rules: wait 14 days after stopping an MAOI before starting levomilnacipran. Wait 7 days after stopping levomilnacipran before starting an MAOI. Do not initiate levomilnacipran in a patient receiving IV methylene blue."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs/SNRIs, triptans, TCAs, fentanyl, lithium, tramadol, meperidine, methadone, buspirone, amphetamines, St. John’s wort, tryptophan)",
+          "mechanism": "Serotonin syndrome (potentially life-threatening).",
+          "action": "Avoid unnecessary stacking. If combination is clinically required, monitor closely and educate on serotonin syndrome symptoms. Stop the medication(s) and seek urgent care if symptoms emerge."
+        },
+        {
+          "interactant": "NSAIDs, aspirin, warfarin, and other anticoagulants/antiplatelets",
+          "mechanism": "Increased bleeding risk (from minor bruising/nosebleeds to serious bleeding).",
+          "action": "Use caution and monitor for unusual bruising, GI bleeding, or prolonged bleeding. Coordinate with the prescriber managing anticoagulation."
+        },
+        {
+          "interactant": "Alcohol (ethanol)",
+          "mechanism": "Ethanol may accelerate drug release by interacting with extended-release properties.",
+          "action": "Avoid ethanol while taking this medication, especially around dosing."
+        },
+        {
+          "interactant": "Linezolid",
+          "mechanism": "Manufacturer labeling treats this as a contraindication due to serotonin syndrome concern; newer evidence in the supplied notes suggests the combination is unlikely to cause serotonin syndrome but risk is not zero.",
+          "action": "If linezolid is necessary, coadministration may be possible with close monitoring and patient education for serotonin toxicity."
+        },
+        {
+          "interactant": "Other significant interactions",
+          "mechanism": "Clinically meaningful drug interactions may exist and can require dose/frequency adjustment or avoidance.",
+          "action": "Run a full interaction check for the entire medication list, including OTCs and supplements, before starting or adjusting the dose."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: monitor closely in all ages when starting therapy and during dose changes; pay extra attention in people 24 and under"
+        },
+        {
+          "parameter": "Mood activation: watch for agitation, irritability, panic attacks, insomnia, impulsivity, akathisia, hypomania/mania—especially early or after dose adjustments; reassess for bipolar disorder if activation occurs"
+        },
+        {
+          "parameter": "Blood pressure and heart rate: evaluate prior to initiation and periodically thereafter; consider dose reduction or gradual discontinuation for sustained hypertension or tachycardia"
+        },
+        {
+          "parameter": "Serotonin syndrome surveillance when combined with other serotonergic agents: mental status changes, autonomic instability, neuromuscular signs, GI symptoms, seizures"
+        },
+        {
+          "parameter": "Serum sodium in at-risk populations (older adults, diuretic use, volume depletion) and when initiating or adjusting dose"
+        },
+        {
+          "parameter": "Renal function for dosing limits (maximum dose depends on CrCl; ESRD use not recommended)"
+        },
+        {
+          "parameter": "Urinary hesitancy/retention: ask directly about urinary symptoms; urgent evaluation if inability to urinate"
+        },
+        {
+          "parameter": "Sexual function: assess baseline and follow-up (libido, arousal, orgasm, erectile/ejaculatory function)"
+        },
+        {
+          "parameter": "Eye risk: consider intraocular pressure monitoring in patients with elevated baseline IOP or narrow-angle glaucoma risk; educate about acute angle-closure symptoms"
+        },
+        {
+          "parameter": "Bleeding risk: monitor for bruising, nosebleeds, GI bleeding—especially with NSAIDs/anticoagulants/antiplatelets"
+        },
+        {
+          "parameter": "Discontinuation symptoms if doses are missed or the medication is stopped: dizziness, GI symptoms, irritability, sleep disturbances, “electric shock” sensations, mood lability—adjust taper if needed"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "SNRIs are not described as first-line before conception for treatment-naive patients in the supplied notes, but patients who are effectively treated may continue their current medication when planning pregnancy unless contraindications exist. Evidence quality for some risks is low, but SNRI exposure has been associated with possible increased risk of preeclampsia and spontaneous abortion. Third-trimester exposure can be associated with neonatal adaptation syndrome (often resolves within 2 weeks) and rare persistent pulmonary hypertension of the newborn; dose reduction or discontinuation prior to delivery is not recommended solely to reduce neonatal adaptation syndrome risk. Use the lowest effective dose of a single agent when possible, monitor symptoms monthly with a validated tool during pregnancy, and use shared decision-making.",
+        "lactation": "It is not known if levomilnacipran is present in breast milk. If used while breastfeeding, monitor the infant for agitation, irritability, poor feeding, and poor weight gain. The decision should balance infant exposure risk, breastfeeding benefits, and maternal treatment benefits.",
+        "pediatric": "Not FDA-approved for pediatric patients. The boxed warning highlights increased risk of suicidal thoughts/behavior in children, adolescents, and young adults in short-term studies.",
+        "geriatric": "Refer to adult dosing, but use with caution. Beers Criteria flags SNRIs (including levomilnacipran) as potentially inappropriate to use with caution in adults ≥65 due to SIADH/hyponatremia risk. Monitor sodium closely when initiating or adjusting the dose, especially with diuretics, low intake, or volume depletion.",
+        "renal_impairment": "Dose limits by kidney function (CrCl): ≥60 mL/minute: no adjustment necessary. 30 to 59 mL/minute: maximum 80 mg once daily. 15 to 29 mL/minute: maximum 40 mg once daily. End-stage renal disease (ESRD): use is not recommended.",
+        "hepatic_impairment": "No dosage adjustment necessary (adult liver impairment guidance in supplied notes)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Extended-release formulation; once-daily dosing",
+          "bioavailability": "92%",
+          "peak_plasma": "6 to 8 hours",
+          "half_life": "12 hours",
+          "metabolism": "Hepatic to inactive metabolites",
+          "excretion": "Urine (58% as unchanged drug)",
+          "protein_binding": "22%",
+          "food_effect": "May be administered with or without food"
+        },
+        "dosing": {
+          "titration": "Fetzima is taken once daily as an extended-release capsule. The standard start is 20 mg daily for 2 days, then 40 mg daily. Dose increases are made in steps, based on response and side effects. Kidney function matters for the maximum dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been on Fetzima for a few weeks or longer, don’t stop abruptly. Tapering helps minimize withdrawal symptoms and gives you a chance to catch relapse early."
+        }
+      }
     }
   },
   "sections": [
@@ -88,7 +276,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s what patients commonly describe—real-life, not brochure-life. Everyone’s different, but patterns show up:",
       "items": [
         {
           "category": "Early activation (first 1–2 weeks)",
@@ -143,7 +330,8 @@
           ],
           "note": "Discontinuation symptoms are more likely with abrupt stops, longer treatment duration, and higher doses. Tapering matters."
         }
-      ]
+      ],
+      "intro": "Here’s what patients commonly describe—real-life, not brochure-life. Everyone’s different, but patterns show up:"
     },
     {
       "type": "onset_duration",
@@ -160,10 +348,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "With antidepressants, the biggest trap is expecting a dramatic overnight change. With Fetzima, early shifts can show up within 1–2 weeks, but meaningful depression improvement typically keeps building through 4–6 weeks. If you’re getting worse—more agitated, more impulsive, more suicidal—especially early on or around dose changes, that’s a safety signal and needs immediate clinical attention.",
       "metric": "Clinical response timeline",
       "value": "Early effects may be observed within 1–2 weeks",
       "comparison": "Not provided in supplied notes.",
-      "text": "With antidepressants, the biggest trap is expecting a dramatic overnight change. With Fetzima, early shifts can show up within 1–2 weeks, but meaningful depression improvement typically keeps building through 4–6 weeks. If you’re getting worse—more agitated, more impulsive, more suicidal—especially early on or around dose changes, that’s a safety signal and needs immediate clinical attention.",
       "clinical_details": "The supplied notes describe a typical antidepressant time course: initial effects may be seen within 1 to 2 weeks with continued improvement through 4 to 6 weeks. Specific response/remission percentages or trial outcomes were not provided in the supplied notes.",
       "citation": {
         "authors": "Not provided in supplied notes.",
@@ -284,7 +472,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "With Fetzima, the biggest interaction themes are: MAOIs (absolute no), serotonin syndrome risk with other serotonergic meds, bleeding risk with blood thinners/NSAIDs, and alcohol concerns with the extended-release capsule.",
       "items": [
         {
           "with": "MAOIs (psychiatric MAOIs) and IV methylene blue",
@@ -316,7 +503,8 @@
           "risk": "Clinically meaningful drug interactions may exist and can require dose/frequency adjustment or avoidance.",
           "action": "Run a full interaction check for the entire medication list, including OTCs and supplements, before starting or adjusting the dose."
         }
-      ]
+      ],
+      "intro": "With Fetzima, the biggest interaction themes are: MAOIs (absolute no), serotonin syndrome risk with other serotonergic meds, bleeding risk with blood thinners/NSAIDs, and alcohol concerns with the extended-release capsule."
     },
     {
       "type": "tapering",
@@ -392,21 +580,6 @@
       "text": "Fetzima is a once-daily SNRI option for major depressive disorder. In practice, it can be considered when depression symptoms include low energy, low drive, and impaired focus—while staying mindful that SNRIs can raise blood pressure/heart rate and can cause discontinuation symptoms if stopped abruptly. It is not approved for pediatric use, and patients should be screened for bipolar disorder before starting an antidepressant to reduce the risk of antidepressant-induced mania/hypomania."
     }
   ],
-  "seo": {
-    "title": "Levomilnacipran (Fetzima): Uses, Dosage, Side Effects & Safe Tapering",
-    "description": "Fetzima (levomilnacipran) for major depressive disorder: once-daily dosing, what to expect in weeks 1–6, common side effects (nausea, sweating, sexual dysfunction), key warnings (suicidality, serotonin syndrome), interactions, kidney-based max doses, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/levomilnacipran-fetzima](https://www.heypsych.com/treatments/levomilnacipran-fetzima)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Fetzima used for?",
@@ -464,5 +637,20 @@
       "q": "Can Fetzima trigger mania?",
       "a": "It can. Antidepressants may precipitate mania or hypomania in people with bipolar disorder. That’s why clinicians screen for bipolar symptoms before starting an antidepressant and monitor closely for activation symptoms after starting or changing the dose."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Levomilnacipran (Fetzima): Uses, Dosage, Side Effects & Safe Tapering",
+    "description": "Fetzima (levomilnacipran) for major depressive disorder: once-daily dosing, what to expect in weeks 1–6, common side effects (nausea, sweating, sexual dysfunction), key warnings (suicidality, serotonin syndrome), interactions, kidney-based max doses, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/levomilnacipran-fetzima](https://www.heypsych.com/treatments/levomilnacipran-fetzima)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,83 +1,175 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ketamine-assisted-psychotherapy",
-  "type": "interventional",
-  "name": "Ketamine-Assisted Psychotherapy",
-  "summary": "A combined approach where ketamine administration is integrated with structured psychotherapy sessions to enhance therapeutic outcomes, particularly for mood disorders, PTSD, and existential distress.",
-  "description": "Ketamine-Assisted Psychotherapy (KAP) merges the rapid neurobiological effects of ketamine with psychotherapeutic processing. The ketamine is typically given in low to moderate doses via oral, intranasal, or intramuscular routes, creating an altered state of consciousness that can facilitate emotional openness and neuroplasticity. Therapists then guide the patient through preparation, in-session support, and post-session integration to address core psychological patterns, trauma, and existential concerns. This differs from standard IV ketamine infusions by placing equal emphasis on the psychotherapeutic frame.",
-  "category": "interventional/psychedelic-assisted-therapy",
-  "tags": [
-    "ketamine",
-    "psychedelic-assisted therapy",
-    "psychotherapy integration",
-    "KAP"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "ketamine-assisted-psychotherapy",
+    "name": "Ketamine-Assisted Psychotherapy",
+    "wikidata_qid": "Q106977438"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/psychedelic-assisted-therapy",
     "intervention_types": [
       "Pharmacologic",
       "Psychotherapy"
     ],
-    "treatment_types": [
-      "Psychedelic-assisted therapy",
-      "Integration-focused therapy"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Psychotherapy"
-    ],
-    "delivery_methods": [
-      "Intramuscular injection",
-      "Oral lozenge",
-      "Intranasal spray"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "90–180 minutes",
-    "treatment_duration": [
-      "Acute series",
-      "Maintenance integration sessions"
-    ],
-    "specialty_areas": [
-      "Mood Disorders",
-      "Trauma Therapy",
-      "End-of-Life Care"
-    ],
-    "wikidata_qid": "Q106977438"
+    "tags": [
+      "ketamine",
+      "psychedelic-assisted therapy",
+      "psychotherapy integration",
+      "KAP"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-resistant depression",
-      "Post-traumatic stress disorder"
-    ],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Bipolar depression",
-      "PTSD",
-      "Anxiety disorders",
-      "End-of-life existential distress"
-    ],
-    "off_label_uses": [
-      "Obsessive-compulsive disorder",
-      "Substance use disorder relapse prevention"
-    ],
-    "contraindications": [
-      "Uncontrolled hypertension",
-      "History of psychosis",
-      "Pregnancy or breastfeeding"
-    ],
-    "safety_profile": "Generally well-tolerated in controlled settings. Dissociation, mild perceptual changes, and transient increases in blood pressure are common during dosing sessions.",
-    "evidence_level": "Moderate for depression and PTSD; emerging for end-of-life anxiety.",
-    "research_support": "Open-label trials and qualitative studies suggest benefit; more large-scale randomized trials are underway.",
-    "invasiveness": "Minimally invasive",
-    "efficacy_rating": {
-      "treatment_resistant_depression": 5,
-      "ptsd": 4,
-      "end_of_life_anxiety": 3,
-      "overall_tolerability": 4
+  "summary": "A combined approach where ketamine administration is integrated with structured psychotherapy sessions to enhance therapeutic outcomes, particularly for mood disorders, PTSD, and existential distress.",
+  "description": "Ketamine-Assisted Psychotherapy (KAP) merges the rapid neurobiological effects of ketamine with psychotherapeutic processing. The ketamine is typically given in low to moderate doses via oral, intranasal, or intramuscular routes, creating an altered state of consciousness that can facilitate emotional openness and neuroplasticity. Therapists then guide the patient through preparation, in-session support, and post-session integration to address core psychological patterns, trauma, and existential concerns. This differs from standard IV ketamine infusions by placing equal emphasis on the psychotherapeutic frame.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "end-of-life-existential-distress",
+          "condition_name": "End-of-life existential distress",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "substance-use-disorder-relapse-prevention",
+          "condition_name": "Substance use disorder relapse prevention",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for depression and PTSD; emerging for end-of-life anxiety.",
+      "efficacy_ratings": {
+        "treatment_resistant_depression": {
+          "rating": 5
+        },
+        "ptsd": {
+          "rating": 4
+        },
+        "end_of_life_anxiety": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Open-label trials and qualitative studies suggest benefit; more large-scale randomized trials are underway."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute series; Maintenance integration sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Intramuscular injection",
+        "Oral lozenge",
+        "Intranasal spray"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "90–180 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well-tolerated in controlled settings. Dissociation, mild perceptual changes, and transient increases in blood pressure are common during dosing sessions.",
+      "common_adverse_effects": [
+        {
+          "effect": "Dissociation"
+        },
+        {
+          "effect": "Perceptual changes"
+        },
+        {
+          "effect": "Mild dizziness"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe agitation"
+        },
+        {
+          "risk": "Loss of consciousness"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled hypertension",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Substance misuse history",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe cardiovascular disease",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid unless benefits outweigh risks."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Pharmacologic, Psychotherapy",
+        "session_protocol": "Administer ketamine in a comfortable, supportive environment.\nTherapist provides non-directive support during altered state.\nPost-dosing integration session within 24–72 hours."
+      }
     }
   },
   "sections": [
@@ -224,6 +316,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Dore J, et al. Ketamine Assisted Psychotherapy (KAP): Patient demographics, clinical data, and outcomes. J Psychoactive Drugs. 2019.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31140391/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Wolfson P, et al. Ketamine Assisted Psychotherapy for depression and anxiety: A pilot study. J Psychoactive Drugs. 2020.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32662754/"
+    }
+  ],
   "seo": {
     "title": "Ketamine-Assisted Psychotherapy",
     "description": "Clinical guide to Ketamine-Assisted Psychotherapy for depression, PTSD, and existential distress.",
@@ -236,5 +342,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for depression and PTSD; emerging for end-of-life anxiety."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for depression and PTSD; emerging for end-of-life anxiety."
+    ]
   }
 }

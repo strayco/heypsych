@@ -35,6 +35,11 @@ import {
   countLinksByPriority,
   isDuplicateLink,
 } from './utils';
+import {
+  registerPage,
+  registerLink as registerAuthorityLink,
+  calculateAuthorityScores,
+} from '@/lib/trust/authority-graph';
 
 /**
  * LinkEngine
@@ -81,7 +86,12 @@ export class LinkEngine {
       // De-duplicate
       const dedupedLinks = deduplicateLinks(validLinks);
 
-      // Sort by priority
+      // Register in Authority Graph for PageRank-style authority calculation
+      // This builds the link graph for determining which pages are most authoritative
+      // @see Phase G - Authority Graph Integration
+      this.registerInAuthorityGraph(entity, dedupedLinks);
+
+      // Sort by priority (with authority scores as tiebreaker)
       const sortedLinks = sortLinksByPriority(dedupedLinks);
 
       // Apply limits
@@ -381,6 +391,92 @@ export class LinkEngine {
     }
 
     return errors;
+  }
+
+  /**
+   * Register entity and its links in the Authority Graph
+   * Builds the internal link graph for PageRank-style authority calculation
+   *
+   * @see Phase G - Authority Graph Integration
+   */
+  private registerInAuthorityGraph(entity: Entity, links: CandidateLink[]): void {
+    // Determine path based on entity type
+    const sourcePath = this.getPathForEntity(entity);
+    const topicCluster = entity.metadata?.category as string | undefined;
+
+    // Register source page
+    registerPage({
+      path: sourcePath,
+      entitySlug: entity.slug,
+      entityType: entity.type,
+      topicCluster,
+    });
+
+    // Register all outbound links
+    for (const link of links) {
+      const targetPath = this.getPathForLink(link);
+
+      // Map CandidateLink linkType to authority link type
+      const authorityLinkType = this.mapToAuthorityLinkType(link.linkType);
+
+      registerAuthorityLink({
+        from: sourcePath,
+        to: targetPath,
+        linkType: authorityLinkType,
+        anchorText: link.anchorOptions[0],
+        context: link.context,
+      });
+    }
+  }
+
+  /**
+   * Get URL path for an entity
+   */
+  private getPathForEntity(entity: Entity): string {
+    switch (entity.type) {
+      case 'condition':
+        return `/conditions/${entity.slug}`;
+      case 'medication':
+      case 'therapy':
+      case 'treatment':
+        return `/treatments/${entity.slug}`;
+      default:
+        return `/resources/${entity.slug}`;
+    }
+  }
+
+  /**
+   * Get URL path for a link target
+   */
+  private getPathForLink(link: CandidateLink): string {
+    switch (link.targetType) {
+      case 'condition':
+        return `/conditions/${link.targetSlug}`;
+      case 'medication':
+      case 'therapy':
+      case 'treatment':
+        return `/treatments/${link.targetSlug}`;
+      default:
+        return `/resources/${link.targetSlug}`;
+    }
+  }
+
+  /**
+   * Map CandidateLink linkType to AuthorityLink linkType
+   */
+  private mapToAuthorityLinkType(
+    linkType: LinkType
+  ): 'navigation' | 'inline' | 'related' | 'breadcrumb' | 'footer' {
+    // Most internal links are "related" type (topical relationship)
+    // Inline links in body text are more valuable
+    if (linkType.includes('related') || linkType.includes('comorbidity')) {
+      return 'related';
+    }
+    if (linkType.includes('hub')) {
+      return 'navigation';
+    }
+    // Default to inline for direct entity-to-entity links
+    return 'inline';
   }
 
   /**

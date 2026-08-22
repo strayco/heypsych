@@ -1,0 +1,127 @@
+{
+  "objectives": [
+    {
+      "id": "obj_complete",
+      "type": "primary",
+      "title": "See It Through",
+      "description": "Reach any ending without leaving mid-attempt",
+      "condition": {
+        "type": "any-of",
+        "conditions": [
+          { "type": "reach-ending-quality", "quality": "positive" },
+          { "type": "reach-ending-quality", "quality": "mixed" }
+        ]
+      },
+      "showPreRun": true,
+      "showInRun": false,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 25, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_stay_full_meal",
+      "type": "primary",
+      "title": "Stay for the Full Meal",
+      "description": "Sit down and finish eating without leaving early",
+      "condition": { "type": "flag-set", "flag": "completedMeal", "value": true },
+      "showPreRun": true,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 50, "starBonus": 1, "achievementId": null }
+    },
+    {
+      "id": "obj_accurate_read",
+      "type": "primary",
+      "title": "Read the Room",
+      "description": "Interpret a neutral moment accurately instead of catastrophizing",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "choice-avoided", "choiceId": "interpret_rejection" },
+          { "type": "choice-avoided", "choiceId": "interpret_pity" },
+          {
+            "type": "any-of",
+            "conditions": [
+              { "type": "choice-made", "choiceId": "interpret_normal" },
+              { "type": "choice-made", "choiceId": "interpret_uncertain_stay" }
+            ]
+          }
+        ]
+      },
+      "showPreRun": true,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 50, "starBonus": 1, "achievementId": null }
+    },
+    {
+      "id": "obj_no_phone_shield",
+      "type": "primary",
+      "title": "No Safety Net",
+      "description": "Complete without using your phone as a shield",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "choice-avoided", "choiceId": "entrance_phone" },
+          { "type": "choice-avoided", "choiceId": "line_phone_shield" },
+          { "type": "choice-avoided", "choiceId": "escape_to_phone" },
+          { "type": "choice-avoided", "choiceId": "lull_check_phone" }
+        ]
+      },
+      "showPreRun": true,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 40, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_comeback",
+      "type": "hidden",
+      "title": "The Comeback",
+      "description": "Leave, return, and reach a positive ending",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "recoveredFromBail", "value": true },
+          { "type": "reach-ending-quality", "quality": "positive" }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 100, "starBonus": 0, "achievementId": "comeback_kid" }
+    },
+    {
+      "id": "obj_quiet_success",
+      "type": "hidden",
+      "title": "Quiet Strength",
+      "description": "Sit with the reader, stay regulated, complete your meal without forcing conversation",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "satWithReader", "value": true },
+          { "type": "flag-set", "flag": "completedMeal", "value": true },
+          { "type": "choice-avoided", "choiceId": "force_conversation_reader" }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 75, "starBonus": 0, "achievementId": "quiet_strength" }
+    },
+    {
+      "id": "obj_stay_awkward",
+      "type": "challenge",
+      "title": "Sit With Discomfort",
+      "description": "Stay through an awkward silence without escaping to your phone",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "stayedThroughAwkward", "value": true },
+          { "type": "choice-avoided", "choiceId": "escape_to_phone" }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 60, "starBonus": 1, "achievementId": null }
+    }
+  ]
+}

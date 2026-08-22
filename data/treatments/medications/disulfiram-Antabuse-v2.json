@@ -1,57 +1,142 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "disulfiram-antabuse",
-  "type": "medication",
-  "name": "Disulfiram (Antabuse)",
-  "summary": "Aversive medication for alcohol use disorder that causes a severe reaction if alcohol is consumed. Not useful for cravings; requires abstinence, motivation, and informed consent.",
-  "description": "Disulfiram is an aldehyde dehydrogenase inhibitor used for long-term treatment of moderate to severe alcohol use disorder. It blocks metabolism of alcohol at the acetaldehyde stage, leading to flushing, headache, nausea, vomiting, chest pain, and hypotension if alcohol is consumed. Severe reactions can include arrhythmias and cardiovascular collapse. It does not reduce cravings directly; instead it works through negative reinforcement and requires good adherence and motivation. Disulfiram must never be given to someone who is intoxicated or without their full knowledge. It should be combined with psychosocial treatments and careful medical monitoring.",
-  "patient_summary": "Disulfiram helps people stay away from drinking by making alcohol cause an intense sick reaction. If you drink while on this medicine, you can get flushing, nausea, vomiting, feeling faint, or chest discomfort. The effect can last up to 1–2 weeks after the last dose, so even a small amount of alcohol can trigger problems. It doesn’t reduce cravings and works best when you’re motivated and supported in treatment.",
-  "category": "medications/addiction-treatment",
-  "metadata": {
-    "drug_classes": [
-      "Aldehyde Dehydrogenase Inhibitor"
-    ],
+  "identity": {
+    "slug": "disulfiram-antabuse",
+    "name": "Disulfiram (Antabuse)",
+    "generic_name": "disulfiram",
     "brand_names": [
       "Antabuse"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1951,
-    "pharmacologic_category": "Aldehyde Dehydrogenase Inhibitor",
     "wikidata_qid": "Q418076"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Alcohol Use Disorder (moderate to severe)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alcohol-use-disorder",
-        "relationship": "primary_treatment",
-        "context": "Aversive therapy; requires abstinence, insight, and motivation. Does not reduce cravings."
-      }
-    ],
-    "contraindications": [
-      "Current alcohol intoxication",
-      "Use of alcohol-containing products",
-      "Metronidazole or paraldehyde use",
-      "Psychosis",
-      "Severe myocardial disease or coronary occlusion",
-      "Hypersensitivity to disulfiram or thiuram derivatives"
-    ],
-    "efficacy_response": {
-      "metric": "Reduction in drinking days via aversive mechanism",
-      "percentage_value": "Highly variable",
-      "comparison_data": "Best efficacy in motivated, supervised patients",
-      "patient_text": "Works only if you avoid alcohol and stay motivated."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/addiction-treatment",
+    "drug_classes": [
+      "Aldehyde Dehydrogenase Inhibitor"
+    ]
+  },
+  "summary": "Aversive medication for alcohol use disorder that causes a severe reaction if alcohol is consumed. Not useful for cravings; requires abstinence, motivation, and informed consent.",
+  "description": "Disulfiram is an aldehyde dehydrogenase inhibitor used for long-term treatment of moderate to severe alcohol use disorder. It blocks metabolism of alcohol at the acetaldehyde stage, leading to flushing, headache, nausea, vomiting, chest pain, and hypotension if alcohol is consumed. Severe reactions can include arrhythmias and cardiovascular collapse. It does not reduce cravings directly; instead it works through negative reinforcement and requires good adherence and motivation. Disulfiram must never be given to someone who is intoxicated or without their full knowledge. It should be combined with psychosocial treatments and careful medical monitoring.",
+  "patient_summary": "Disulfiram helps people stay away from drinking by making alcohol cause an intense sick reaction. If you drink while on this medicine, you can get flushing, nausea, vomiting, feeling faint, or chest discomfort. The effect can last up to 1–2 weeks after the last dose, so even a small amount of alcohol can trigger problems. It doesn’t reduce cravings and works best when you’re motivated and supported in treatment.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alcohol-use-disorder",
+          "condition_name": "Alcohol Use Disorder",
+          "relationship": "primary_indication",
+          "context": "Aversive therapy; requires abstinence, insight, and motivation. Does not reduce cravings.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "onset": "About 12 hours after first dose",
-      "duration_IR": "Reactions possible up to 1–2 weeks after last dose"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "About 12 hours after first dose"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "serious_risks": [
+        {
+          "risk": "Severe hepatitis or liver failure"
+        },
+        {
+          "risk": "Peripheral neuropathy"
+        },
+        {
+          "risk": "Severe alcohol reaction"
+        },
+        {
+          "risk": "Cardiovascular collapse (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Current alcohol intoxication"
+        },
+        {
+          "contraindication": "Use of alcohol-containing products"
+        },
+        {
+          "contraindication": "Metronidazole or paraldehyde use"
+        },
+        {
+          "contraindication": "Psychosis"
+        },
+        {
+          "contraindication": "Severe myocardial disease or coronary occlusion"
+        },
+        {
+          "contraindication": "Hypersensitivity to disulfiram or thiuram derivatives"
+        }
+      ],
+      "precautions": [
+        "Severe reactions if any alcohol is consumed (even small amounts).",
+        "Reaction may include flushing, pounding headache, nausea, vomiting, chest pain, difficulty breathing, hypotension.",
+        "Severe cases: arrhythmias, cardiovascular collapse, seizures, death.",
+        "Avoid hidden alcohol in cough syrups, sauces, vinegar, mouthwash, aftershave."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Severe reaction; potentially life-threatening",
+          "action": "Strict avoidance of all alcohol and alcohol-containing products"
+        },
+        {
+          "interactant": "Metronidazole",
+          "mechanism": "Psychotic reactions reported",
+          "action": "Avoid"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver function tests (baseline and 10–14 days)"
+        },
+        {
+          "parameter": "Symptoms of hepatitis"
+        },
+        {
+          "parameter": "Cardiac status if indicated"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; generally avoid unless needed for acute withdrawal.",
+        "lactation": "Not recommended.",
+        "pediatric": "Not used.",
+        "geriatric": "Use lowest effective dose.",
+        "renal_impairment": "Use with caution in nephritis.",
+        "hepatic_impairment": "Use with extreme caution."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1951
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {},
+        "dosing": {
+          "titration": "Start only after alcohol abstinence."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "No formal taper required, but adverse reactions to alcohol may persist for 1–2 weeks after stopping."
+        }
+      }
     }
   },
   "sections": [
@@ -69,7 +154,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Notice",
-      "intro": "Used in motivated adults who want to avoid relapse.",
       "items": [
         {
           "category": "Aversive Effect",
@@ -85,7 +169,8 @@
             "I needed reminders about hidden alcohol in products."
           ]
         }
-      ]
+      ],
+      "intro": "Used in motivated adults who want to avoid relapse."
     },
     {
       "type": "onset_duration",
@@ -193,20 +278,6 @@
       "text": "An aversive, motivation-dependent option for alcohol use disorder when craving-reducing agents (naltrexone, acamprosate) are inadequate or not tolerated."
     }
   ],
-  "seo": {
-    "title": "Disulfiram (Antabuse): Uses, Safety, and Alcohol Reaction",
-    "description": "Learn how disulfiram helps treat alcohol use disorder, how the alcohol reaction works, safety warnings, and who may benefit.",
-    "canonical": "https://www.heypsych.com/treatments/disulfiram",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01"
-  },
   "faqs": [
     {
       "q": "What happens if I drink while taking disulfiram?",
@@ -224,5 +295,19 @@
       "q": "Can I use mouthwash or sauces that contain alcohol?",
       "a": "Avoid all products with alcohol, even small amounts, including mouthwash and cooking sauces."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Disulfiram (Antabuse): Uses, Safety, and Alcohol Reaction",
+    "description": "Learn how disulfiram helps treat alcohol use disorder, how the alcohol reaction works, safety warnings, and who may benefit.",
+    "canonical": "https://www.heypsych.com/treatments/disulfiram",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01"
+  }
 }

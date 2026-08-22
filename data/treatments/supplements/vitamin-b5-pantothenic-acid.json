@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b5-pantothenic-acid",
-  "type": "supplement",
-  "name": "Vitamin B5 (Pantothenic Acid)",
-  "summary": "Vitamin B5, also known as pantothenic acid, is an essential water-soluble vitamin that plays a critical role in energy metabolism and synthesis of coenzyme A (CoA).",
-  "description": "Pantothenic acid (Vitamin B5) is a member of the B-complex vitamins, necessary for the synthesis of coenzyme A, a central cofactor in the metabolism of carbohydrates, fats, and proteins. It is also involved in the synthesis of fatty acids, cholesterol, steroid hormones, acetylcholine, and hemoglobin. Deficiency is rare due to its widespread presence in foods, but when it occurs, it may lead to fatigue, irritability, numbness, muscle cramps, and the so-called 'burning feet syndrome.' Vitamin B5 is sometimes supplemented for stress reduction, skin health, and wound healing, though clinical evidence is limited.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "energy metabolism",
-    "skin health",
-    "stress support"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Meat, poultry, fish, eggs, legumes, whole grains, mushrooms, avocados, broccoli",
+  "identity": {
+    "slug": "vitamin-b5-pantothenic-acid",
+    "name": "Vitamin B5 (Pantothenic Acid)",
+    "generic_name": "vitamin b5",
+    "brand_names": [
+      "Pantothenic Acid",
+      "Calcium Pantothenate",
+      "Panthenol (pro-vitamin B5, topical)"
+    ],
+    "aliases": [
+      "Pantothenate",
+      "Dexpanthenol",
+      "Pro-vitamin B5"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Metabolism",
@@ -26,75 +29,136 @@
       "Coenzyme synthesis",
       "Fatty acid metabolism"
     ],
-    "administration_routes": [
-      "Oral",
-      "Parenteral (rare, clinical use)"
-    ],
-    "prescription_status": "Over-the-counter supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Pantothenic Acid",
-      "Calcium Pantothenate",
-      "Panthenol (pro-vitamin B5, topical)"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Metabolism",
-      "Dermatology"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "energy metabolism",
+      "skin health",
+      "stress support"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment and prevention of pantothenic acid deficiency",
-      "General nutritional support"
-    ],
-    "off_label_uses": [
-      "Support for skin health and wound healing",
-      "Stress and fatigue management (limited evidence)",
-      "Acne management (controversial, anecdotal use)"
-    ],
-    "contraindications": [
-      "None known at nutritional doses"
-    ],
-    "monitoring_required": [
-      "None under typical supplementation"
-    ],
-    "efficacy_rating": {
-      "deficiency_treatment": 5,
-      "nutritional support": 4,
-      "stress/fatigue": 2,
-      "skin health": 2
+  "summary": "Vitamin B5, also known as pantothenic acid, is an essential water-soluble vitamin that plays a critical role in energy metabolism and synthesis of coenzyme A (CoA).",
+  "description": "Pantothenic acid (Vitamin B5) is a member of the B-complex vitamins, necessary for the synthesis of coenzyme A, a central cofactor in the metabolism of carbohydrates, fats, and proteins. It is also involved in the synthesis of fatty acids, cholesterol, steroid hormones, acetylcholine, and hemoglobin. Deficiency is rare due to its widespread presence in foods, but when it occurs, it may lead to fatigue, irritability, numbness, muscle cramps, and the so-called 'burning feet syndrome.' Vitamin B5 is sometimes supplemented for stress reduction, skin health, and wound healing, though clinical evidence is limited.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-and-prevention-of-pantothenic-acid-deficiency",
+          "condition_name": "Treatment and prevention of pantothenic acid deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "general-nutritional-support",
+          "condition_name": "General nutritional support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-for-skin-health-and-wound-healing",
+          "condition_name": "Support for skin health and wound healing",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-and-fatigue-management-limited-evidence",
+          "condition_name": "Stress and fatigue management (limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "acne-management-controversial-anecdotal-use",
+          "condition_name": "Acne management (controversial, anecdotal use)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_treatment": {
+          "rating": 5
+        },
+        "nutritional support": {
+          "rating": 4
+        },
+        "stress/fatigue": {
+          "rating": 2
+        },
+        "skin health": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Parenteral (rare, clinical use)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated"
+        },
+        {
+          "effect": "Mild gastrointestinal upset at high doses"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "None well documented at standard supplementation doses"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "None known at nutritional doses"
+        }
+      ],
+      "precautions": [
+        "Deficiency is rare in humans, usually seen only in severe malnutrition or experimental restriction.",
+        "High-dose supplementation has not been shown to provide additional health benefits in most people."
+      ],
+      "interactions": [
+        {
+          "interactant": "Biotin (B7)",
+          "mechanism": "Competitive absorption in very high doses",
+          "action": "Monitor if supplementing with large doses of both"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "No routine monitoring required for typical supplementation"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at recommended dietary intakes",
+        "lactation": "Safe at recommended dietary intakes",
+        "pediatric": "Safe at recommended dietary intakes",
+        "geriatric": "Safe at recommended dietary intakes"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Meat, poultry, fish, eggs, legumes, whole grains, mushrooms, avocados, broccoli",
+        "regulatory_notes": "Dietary supplement"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B5",
-      "Pantothenic Acid",
-      "Calcium Pantothenate",
-      "Panthenol"
-    ],
-    "synonyms": [
-      "Pantothenate",
-      "Dexpanthenol",
-      "Pro-vitamin B5"
-    ],
-    "common_misspellings": [
-      "pantoshenic",
-      "pantothanate",
-      "panthotenic"
-    ]
   },
   "sections": [
     {
@@ -203,6 +267,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Pantothenic Acid",
+      "url": "https://ods.od.nih.gov/factsheets/PantothenicAcid-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Smith CM, Song WO. Comparative nutrition of pantothenic acid. J Nutr Biochem. 1996",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8900631/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Scientific Opinion on Dietary Reference Values for pantothenic acid. EFSA Journal. 2014",
+      "url": "https://efsa.onlinelibrary.wiley.com/doi/epdf/10.2903/j.efsa.2014.3759"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B5",
+      "Pantothenic Acid",
+      "Calcium Pantothenate",
+      "Panthenol"
+    ],
+    "synonyms": [
+      "Pantothenate",
+      "Dexpanthenol",
+      "Pro-vitamin B5"
+    ],
+    "common_misspellings": [
+      "pantoshenic",
+      "pantothanate",
+      "panthotenic"
+    ]
+  },
   "seo": {
     "title": "Vitamin B5 (Pantothenic Acid) – Energy, Stress Support, and Skin Health",
     "description": "Vitamin B5 (Pantothenic Acid) is essential for metabolism, energy, and coenzyme A production. Learn about uses, benefits, dosing, side effects, and safety.",

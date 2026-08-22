@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "id": "route_direct",
+      "name": "Direct Path",
+      "description": "Complete the scenario without backtracking",
+      "identifiedBy": {
+        "type": "choice-sequence",
+        "choiceIds": ["choice_continue", "choice_finish"]
+      },
+      "isHidden": false,
+      "discoveryHint": null,
+      "discoveryReward": {
+        "xpBonus": 60,
+        "achievementId": null
+      }
+    },
+    {
+      "id": "route_exit",
+      "name": "Early Exit",
+      "description": "Leave at the first opportunity",
+      "identifiedBy": {
+        "type": "ending",
+        "endingId": "ending_early_exit"
+      },
+      "isHidden": false,
+      "discoveryHint": null,
+      "discoveryReward": {
+        "xpBonus": 30,
+        "achievementId": null
+      }
+    }
+  ]
+}

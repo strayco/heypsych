@@ -1,89 +1,298 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phenelzine-nardil",
-  "type": "medication",
-  "name": "Phenelzine (Nardil)",
-  "summary": "Older-school MAOI antidepressant used for hard-to-treat depression and sometimes social anxiety. Can work well, but it comes with strict food/drug interaction rules and real blood pressure risks.",
-  "description": "Phenelzine (Nardil) is a monoamine oxidase inhibitor (MAOI). It can be a game-changer for certain types of depression—especially when other antidepressants haven’t worked—but it’s not casual medication. You need a tyramine-restricted diet, careful interaction screening, and close monitoring for blood pressure spikes, mood switching, and suicidality (especially ages 18–24 early in treatment).",
-  "patient_summary": "Phenelzine (Nardil) is a strong, older antidepressant (MAOI). It can help when other meds fail, but it requires a strict diet and serious attention to drug interactions to prevent dangerous blood pressure reactions. It usually takes weeks to fully kick in, and you need close monitoring early on for worsening mood, agitation, and suicidal thoughts—especially in younger adults.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "phenelzine-nardil",
+    "name": "Phenelzine (Nardil)",
+    "generic_name": "phenelzine",
+    "brand_names": [
+      "Nardil"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Monoamine Oxidase Inhibitor (MAOI)",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Nardil"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1959,
-    "pharmacologic_category": "Antidepressant, Nonselective Irreversible MAOI",
-    "published_date": "2025-12-06T00:00:00Z",
-    "last_updated": "2025-12-06T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-06T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (Unipolar) in Adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Labeled for unipolar major depressive disorder in adults. Typically used when first-line options haven’t worked or aren’t tolerated."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as an alternative option for social anxiety disorder when standard treatments fail or aren’t tolerated."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to phenelzine or any component",
-      "Congestive heart failure",
-      "Pheochromocytoma",
-      "Abnormal liver function tests or history of hepatic disease",
-      "Renal disease or severe renal impairment",
-      "Concurrent use of MAO inhibitors",
-      "Concurrent use of SSRIs or SNRIs",
-      "Concurrent use of tricyclic antidepressants and related agents with significant serotonergic/noradrenergic activity (multiple agents in this class are contraindicated)",
-      "Concurrent use of bupropion",
-      "Concurrent use of buspirone",
-      "Concurrent use of meperidine",
-      "Concurrent use of dextromethorphan",
-      "Concurrent use of sympathomimetics (including amphetamines, methylphenidate, dopamine, norepinephrine) and related compounds",
-      "Concurrent use of cocaine",
-      "Concurrent use of local anesthetics containing sympathomimetic vasoconstrictors",
-      "Foods high in tyramine (and certain related dietary triggers) during therapy and for 2 weeks after stopping"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in treatment-resistant or atypical presentations",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Phenelzine isn’t usually the first antidepressant people try. Where it earns its keep is in patients who haven’t responded to more standard antidepressants, or who have specific symptom patterns where MAOIs can be uniquely effective. The trade-off is complexity: diet rules, interaction risks, and closer monitoring.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Older-school MAOI antidepressant used for hard-to-treat depression and sometimes social anxiety. Can work well, but it comes with strict food/drug interaction rules and real blood pressure risks.",
+  "description": "Phenelzine (Nardil) is a monoamine oxidase inhibitor (MAOI). It can be a game-changer for certain types of depression—especially when other antidepressants haven’t worked—but it’s not casual medication. You need a tyramine-restricted diet, careful interaction screening, and close monitoring for blood pressure spikes, mood switching, and suicidality (especially ages 18–24 early in treatment).",
+  "patient_summary": "Phenelzine (Nardil) is a strong, older antidepressant (MAOI). It can help when other meds fail, but it requires a strict diet and serious attention to drug interactions to prevent dangerous blood pressure reactions. It usually takes weeks to fully kick in, and you need close monitoring early on for worsening mood, agitation, and suicidal thoughts—especially in younger adults.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Labeled for unipolar major depressive disorder in adults. Typically used when first-line options haven’t worked or aren’t tolerated.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as an alternative option for social anxiety disorder when standard treatments fail or aren’t tolerated."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Depression: initial effects may be seen in 1–2 weeks, with continued improvement through 4–6 weeks",
-      "peak_plasma": "About 43 minutes",
-      "half_life": "About 11.6 hours",
-      "duration_IR": "Clinical effects and interaction risk can persist for about 2 weeks after stopping",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Oxidized (primary) and acetylation (minor)",
-      "excretion": "Urine (about 73% as metabolites)",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Tyramine- and related dietary exposures can trigger hypertensive crisis; food freshness matters (spoiled/aged/fermented protein foods are higher risk)."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: initial effects may be seen in 1–2 weeks, with continued improvement through 4–6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Orthostatic hypotension",
+          "incidence": "Frequency not defined",
+          "notes": "Feeling dizzy when standing up can happen, especially early or after dose increases. Stand slowly, hydrate, and tell your clinician if you’re fainting or falling."
+        },
+        {
+          "effect": "Sleep disturbance (insomnia or hypersomnia)",
+          "incidence": "Frequency not defined",
+          "notes": "Sleep can swing either way. If insomnia shows up, dosing timing and sleep structure matter. If hypersomnia shows up, watch daytime functioning and safety."
+        },
+        {
+          "effect": "Drowsiness / fatigue",
+          "incidence": "Frequency not defined",
+          "notes": "Some people feel sedated or slowed. This is a big reason to be cautious with driving until you know your baseline."
+        },
+        {
+          "effect": "Dizziness / ataxia",
+          "incidence": "Frequency not defined",
+          "notes": "Feeling unsteady can happen. Combine that with orthostatic hypotension and fall risk goes up—especially in older adults."
+        },
+        {
+          "effect": "Agitation / jitteriness",
+          "incidence": "Frequency not defined",
+          "notes": "Activation symptoms can happen early or during titration. If you feel wired, panicky, or unusually restless, don’t push through in silence—call it in."
+        },
+        {
+          "effect": "Sexual dysfunction",
+          "incidence": "Frequency not defined",
+          "notes": "Changes in orgasm or performance can occur. It’s common enough that it’s worth naming early so adjustments can be made."
+        },
+        {
+          "effect": "Weight gain / metabolic changes",
+          "incidence": "Frequency not defined",
+          "notes": "Not everyone gains weight, but it can happen. If appetite or weight shifts, track it early rather than discovering it months later."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypertensive crisis (sometimes fatal): severe headache, chest pain, palpitations, sweating, nausea/vomiting, neck stiffness, photophobia, dilated pupils; can be triggered by tyramine foods or interacting drugs. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Intracranial bleeding reported in association with severe blood pressure increases. MEDICAL EMERGENCY symptoms include sudden neurologic changes, worst headache, weakness, confusion, or vision changes."
+        },
+        {
+          "risk": "Mania/hypomania: mood switching, decreased need for sleep, risky behavior, agitation—especially in bipolar-spectrum illness. Stop-and-reassess urgently with your prescriber."
+        },
+        {
+          "risk": "Seizures: risk increases with predisposition, interactions, or abrupt discontinuation. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe discontinuation syndrome with abrupt stopping: agitation, delirium, confusion, hallucinations, myoclonic jerks, seizures, thought disorganization."
+        },
+        {
+          "risk": "Hepatic injury/necrosis and jaundice (rare but serious): dark urine, yellow skin/eyes, severe fatigue, abdominal pain—urgent evaluation needed."
+        },
+        {
+          "risk": "Psychosis/delirium (postmarketing reports): new paranoia, hallucinations, severe confusion—urgent evaluation needed."
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk compared with placebo of suicidal thinking and behavior (suicidality) in children, adolescents, and young adults in short-term studies of major depressive disorder (MDD) and other psychiatric disorders. Anyone considering the use of phenelzine or any other antidepressant in a child, adolescent, or young adult must balance this risk with the clinical need. Short-term studies did not show an increase in the risk of suicidality with antidepressants compared with placebo in adults older than 24 years; there was a reduction in risk with antidepressants compared with placebo in adults 65 years and older. Depression and certain other psychiatric disorders are themselves associated with increases in the risk of suicide. Closely observe and appropriately monitor patients of all ages who are started on antidepressant therapy for clinical worsening, suicidality, or unusual changes in behavior. Advise families and caregivers of the need for close observation and communication with the health care provider. Phenelzine is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to phenelzine or any component"
+        },
+        {
+          "contraindication": "Congestive heart failure"
+        },
+        {
+          "contraindication": "Pheochromocytoma"
+        },
+        {
+          "contraindication": "Abnormal liver function tests or history of hepatic disease"
+        },
+        {
+          "contraindication": "Renal disease or severe renal impairment"
+        },
+        {
+          "contraindication": "Concurrent use of MAO inhibitors"
+        },
+        {
+          "contraindication": "Concurrent use of SSRIs or SNRIs"
+        },
+        {
+          "contraindication": "Concurrent use of tricyclic antidepressants and related agents with significant serotonergic/noradrenergic activity (multiple agents in this class are contraindicated)"
+        },
+        {
+          "contraindication": "Concurrent use of bupropion"
+        },
+        {
+          "contraindication": "Concurrent use of buspirone"
+        },
+        {
+          "contraindication": "Concurrent use of meperidine"
+        },
+        {
+          "contraindication": "Concurrent use of dextromethorphan"
+        },
+        {
+          "contraindication": "Concurrent use of sympathomimetics (including amphetamines, methylphenidate, dopamine, norepinephrine) and related compounds"
+        },
+        {
+          "contraindication": "Concurrent use of cocaine"
+        },
+        {
+          "contraindication": "Concurrent use of local anesthetics containing sympathomimetic vasoconstrictors"
+        },
+        {
+          "contraindication": "Foods high in tyramine (and certain related dietary triggers) during therapy and for 2 weeks after stopping"
+        }
+      ],
+      "precautions": [
+        "Hypertensive crisis risk (sometimes fatal): Can happen with tyramine-containing foods, certain supplements, and many interacting medications. Symptoms can include severe headache (often occipital), palpitations, sweating, nausea/vomiting, neck stiffness, photophobia, and chest pain.",
+        "Diet is not optional: Aged/fermented/pickled/smoked/spoiled protein foods and certain beverages can trigger dangerous blood pressure spikes. Freshness matters—spoiled or improperly stored protein foods raise risk.",
+        "Hypotension and fainting: Postural (orthostatic) hypotension can occur, especially during dose increases.",
+        "CNS depression: Can impair alertness and coordination. Be careful with driving, machinery, and anything where being foggy is dangerous.",
+        "Mania/hypomania risk: Antidepressants can trigger mood switching in bipolar disorder. Screen for bipolar symptoms before starting.",
+        "Seizure risk: Use caution in people at higher seizure risk or with medications that lower seizure threshold.",
+        "Discontinuation syndrome: Abrupt stopping can cause significant neuropsychiatric symptoms; MAOI discontinuation reactions can be more severe and may require conservative tapers.",
+        "Not approved for pediatrics: Phenelzine is not FDA-approved for depression in children and is not approved for pediatric use."
+      ],
+      "interactions": [
+        {
+          "interactant": "SSRIs / SNRIs",
+          "mechanism": "High risk of severe reaction due to pharmacodynamic interaction. Washouts are mandatory.",
+          "action": "Do not combine. Wait at least 2 weeks after stopping most SSRIs/SNRIs before starting phenelzine. For fluoxetine, wait 5 weeks. After stopping phenelzine, wait 14 days before starting an SSRI/SNRI."
+        },
+        {
+          "interactant": "Tricyclic antidepressants and related agents (multiple agents in this class are contraindicated in the notes)",
+          "mechanism": "High-risk interaction. Can cause severe adverse reactions.",
+          "action": "Avoid combination. Use strict washout timing when switching."
+        },
+        {
+          "interactant": "Bupropion",
+          "mechanism": "Contraindicated combination; high-risk interaction.",
+          "action": "Avoid combination. Wait at least 14 days between stopping phenelzine and starting bupropion (and vice versa)."
+        },
+        {
+          "interactant": "Buspirone",
+          "mechanism": "Contraindicated combination; high-risk interaction.",
+          "action": "Avoid combination. Wait at least 14 days between stopping phenelzine and starting buspirone (Canadian labeling notes 10 days)."
+        },
+        {
+          "interactant": "Meperidine",
+          "mechanism": "Dangerous interaction; can be severe and life-threatening.",
+          "action": "Contraindicated. Make sure all clinicians (including ER and anesthesia) know you take an MAOI."
+        },
+        {
+          "interactant": "Dextromethorphan (common in cough/cold meds)",
+          "mechanism": "Contraindicated interaction risk.",
+          "action": "Avoid. Check OTC cough/cold labels carefully."
+        },
+        {
+          "interactant": "Sympathomimetics and stimulants (including amphetamines, methylphenidate, dopamine, norepinephrine; and related compounds)",
+          "mechanism": "Can dangerously raise blood pressure and trigger hypertensive crisis.",
+          "action": "Avoid. This includes many decongestants and stimulant-type products."
+        },
+        {
+          "interactant": "Alcohol and other CNS depressants",
+          "mechanism": "Can worsen CNS depression, coordination impairment, and judgment problems.",
+          "action": "Avoid or use extreme caution based on individualized guidance. If you drink at all, discuss explicitly with your prescriber."
+        },
+        {
+          "interactant": "Tyramine-rich foods and certain dietary triggers (and poor food storage/freshness)",
+          "mechanism": "Hypertensive crisis risk.",
+          "action": "Avoid aged/fermented/pickled/smoked/spoiled protein foods; aged cheeses; certain cured meats; yeast extracts; some alcoholic beverages (beer, wine); and avoid spoiled/improperly stored protein foods. Continue diet restrictions for 2 weeks after stopping."
+        },
+        {
+          "interactant": "Surgery and anesthesia (general or spinal); local anesthetics with sympathomimetic vasoconstrictors",
+          "mechanism": "Blood pressure instability and exaggerated hypotension or hypertensive reactions.",
+          "action": "Manufacturer guidance: discontinue phenelzine at least 10 days prior to elective surgery. Any perioperative plan should be coordinated with psychiatry and anesthesia, avoiding meperidine and indirect-acting adrenergic agents."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure and heart rate: baseline and regularly during titration; watch for both hypertensive crisis symptoms and orthostatic hypotension/syncope."
+        },
+        {
+          "parameter": "Mental status and safety: worsening depression, suicidality, agitation, unusual behavior changes—especially during the first 1 to 2 months and during dose increases/decreases."
+        },
+        {
+          "parameter": "Mood switching: screen for bipolar disorder at baseline; monitor for hypomania/mania (decreased sleep need, increased energy, impulsivity, irritability)."
+        },
+        {
+          "parameter": "Diet adherence and food safety: ongoing education and reinforcement; freshness and storage of protein foods matter."
+        },
+        {
+          "parameter": "Medication reconciliation at every visit: prescription, OTC, supplements, stimulants, cough/cold products—MAOI interactions are the main preventable danger."
+        },
+        {
+          "parameter": "Renal and hepatic function: baseline and periodic checks when clinically indicated; hepatic impairment is a contraindication and severe renal impairment is a contraindication."
+        },
+        {
+          "parameter": "Blood glucose in diabetes: sensitization to insulin effects may occur; monitor glucose closely in patients with diabetes."
+        },
+        {
+          "parameter": "Sleep and daytime functioning: insomnia/hypersomnia, sedation, driving safety, occupational safety."
+        },
+        {
+          "parameter": "Discontinuation symptoms if tapering: agitation, delirium, confusion, sleep disruption, myoclonus, seizures—slow taper if symptoms emerge."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal reproduction studies show adverse events, and human pregnancy data are limited. If pregnancy is possible or planned, discuss risks/benefits and alternatives. Pregnant patients exposed to antidepressants can enroll in the National Pregnancy Registry for Antidepressants (NPRAD) by calling 844-405-6185 (enroll as early as possible).",
+        "lactation": "It is not known if phenelzine is excreted in breast milk. The decision to continue breastfeeding vs discontinue therapy should weigh infant exposure risk against the benefit of treatment to the mother. If used during breastfeeding, monitor the infant closely for concerning changes and coordinate with pediatrics.",
+        "pediatric": "Not approved for pediatric use. Phenelzine is not approved for use in pediatric patients and is not FDA-approved for depression in children ≤18 years.",
+        "geriatric": "MAOIs can be effective in older adults, but the limiting factors are diet/drug interactions and blood pressure effects. Start low, titrate slowly, and monitor orthostasis, falls, and confusion risk.",
+        "renal_impairment": "Mild to moderate impairment: no adjustment provided in labeling. Severe renal impairment/renal disease: contraindicated.",
+        "hepatic_impairment": "Contraindicated, including abnormal liver function tests or history of hepatic disease."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1959
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "About 43 minutes",
+          "half_life": "About 11.6 hours",
+          "metabolism": "Oxidized (primary) and acetylation (minor)",
+          "excretion": "Urine (about 73% as metabolites)",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Tyramine- and related dietary exposures can trigger hypertensive crisis; food freshness matters (spoiled/aged/fermented protein foods are higher risk)."
+        },
+        "dosing": {
+          "titration": "Phenelzine dosing is typically started low and increased gradually based on response and tolerability. Higher doses may be needed for full effect in some patients, but dose increases should be deliberate because blood pressure effects and side effects can intensify during titration."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping phenelzine abruptly can be rough—and MAOIs are associated with more severe discontinuation symptoms in some patients. If you’ve been on it for 4 weeks or longer, tapering is usually the move so you can reduce withdrawal symptoms and also catch relapse early."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +311,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s different, but phenelzine tends to have a pretty recognizable “feel” once it starts working—and it also has some very specific downsides.",
       "items": [
         {
           "category": "Mood shift (weeks, not hours)",
@@ -138,7 +346,8 @@
           ],
           "note": "This is the defining feature of phenelzine: it can work well, but you must take the interaction rules seriously."
         }
-      ]
+      ],
+      "intro": "Everyone’s different, but phenelzine tends to have a pretty recognizable “feel” once it starts working—and it also has some very specific downsides."
     },
     {
       "type": "onset_duration",
@@ -154,10 +363,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Phenelzine can be highly effective for the right patient, especially when other antidepressants haven’t helped. But it’s not a casual first-line choice because the risks are mostly about prevention: hypertensive crisis, dangerous interactions, and mood switching. The best outcomes happen when dosing is gradual, the diet is consistent, and the prescriber/patient treat interactions like a non-negotiable.",
       "metric": "Symptom improvement in depression and/or social anxiety over weeks",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Phenelzine can be highly effective for the right patient, especially when other antidepressants haven’t helped. But it’s not a casual first-line choice because the risks are mostly about prevention: hypertensive crisis, dangerous interactions, and mood switching. The best outcomes happen when dosing is gradual, the diet is consistent, and the prescriber/patient treat interactions like a non-negotiable.",
       "clinical_details": "Clinically, response is usually judged by real-world function: less depressive shutdown, improved motivation, better sleep stability, reduced anxiety intensity, and fewer day-to-day crashes. For social anxiety, improvement often shows up as reduced anticipatory dread and fewer physical panic-like reactions in social settings. Because MAOI effects and interaction risk persist after discontinuation, planning (washouts, medication changes, and surgery/anesthesia) is part of efficacy and safety.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -257,7 +466,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Phenelzine has some of the strictest interaction rules in psychiatry. Many combinations are flat-out contraindicated because they can trigger hypertensive crisis, serotonin toxicity-like reactions, severe blood pressure instability, or dangerous CNS effects.",
       "items": [
         {
           "with": "SSRIs / SNRIs",
@@ -309,7 +517,8 @@
           "risk": "Blood pressure instability and exaggerated hypotension or hypertensive reactions.",
           "action": "Manufacturer guidance: discontinue phenelzine at least 10 days prior to elective surgery. Any perioperative plan should be coordinated with psychiatry and anesthesia, avoiding meperidine and indirect-acting adrenergic agents."
         }
-      ]
+      ],
+      "intro": "Phenelzine has some of the strictest interaction rules in psychiatry. Many combinations are flat-out contraindicated because they can trigger hypertensive crisis, serotonin toxicity-like reactions, severe blood pressure instability, or dangerous CNS effects."
     },
     {
       "type": "tapering",
@@ -386,21 +595,6 @@
       "text": "Phenelzine is usually not a first-line antidepressant. It’s more of a specialist tool: useful for treatment-resistant depression or specific symptom patterns where MAOIs can shine, and as an alternative option for social anxiety when standard therapies haven’t worked. The practical reality is that success depends as much on education, diet consistency, and interaction screening as it does on the dose."
     }
   ],
-  "seo": {
-    "title": "Phenelzine (Nardil): Uses, Dosing, MAOI Diet, Side Effects & Interactions",
-    "description": "Phenelzine (Nardil) is an MAOI for depression and sometimes social anxiety. Learn dosing, how long it takes to work, major side effects, strict food rules (tyramine diet), dangerous drug interactions, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/phenelzine-nardil](https://www.heypsych.com/treatments/phenelzine-nardil)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is phenelzine (Nardil) used for?",
@@ -446,5 +640,20 @@
       "q": "Is phenelzine approved for kids or teens?",
       "a": "No. Phenelzine is not approved for pediatric use."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Phenelzine (Nardil): Uses, Dosing, MAOI Diet, Side Effects & Interactions",
+    "description": "Phenelzine (Nardil) is an MAOI for depression and sometimes social anxiety. Learn dosing, how long it takes to work, major side effects, strict food rules (tyramine diet), dangerous drug interactions, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/phenelzine-nardil](https://www.heypsych.com/treatments/phenelzine-nardil)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

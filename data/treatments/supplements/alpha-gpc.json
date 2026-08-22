@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "alpha-gpc",
-  "type": "supplement",
-  "name": "Alpha-GPC (L-alpha-glycerylphosphorylcholine)",
-  "summary": "A choline-containing compound used as a dietary supplement for cognitive support, memory enhancement, and potential neuroprotective effects. Sometimes explored in dementia and stroke recovery.",
-  "description": "Alpha-GPC is a naturally occurring choline compound found in small amounts in the brain and various foods. As a supplement, it serves as a highly bioavailable source of choline, supporting acetylcholine synthesis, a key neurotransmitter involved in memory and learning. It has been investigated in Europe as a prescription drug for Alzheimer’s disease and stroke recovery, and is commonly marketed as a nootropic. Some evidence suggests it may improve memory, attention, and learning, though results are mixed. It may also support physical performance by enhancing growth hormone release.",
-  "category": "supplements",
-  "tags": [
-    "choline",
-    "cognitive-support",
-    "nootropic",
-    "neuroprotection",
-    "memory"
-  ],
-  "metadata": {
-    "compound_type": "Choline-containing phospholipid precursor",
-    "natural_source": "Soy lecithin and other food sources in trace amounts",
+  "identity": {
+    "slug": "alpha-gpc",
+    "name": "Alpha-GPC (L-alpha-glycerylphosphorylcholine)",
+    "generic_name": "alpha-gpc",
+    "brand_names": [
+      "Alpha-GPC",
+      "GlyceroPhosphoCholine"
+    ],
+    "aliases": [
+      "choline alfoscerate",
+      "glycerylphosphorylcholine",
+      "Alpha-GPC"
+    ],
+    "wikidata_qid": "Q2840688"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cognitive Health",
       "Neurodegenerative Disorders",
@@ -25,74 +28,165 @@
       "Cholinergic",
       "Neuroprotective"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (as supplement in most countries); prescription drug in some (e.g., Europe)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Alpha-GPC",
-      "GlyceroPhosphoCholine"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement in U.S.",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Sports Medicine"
-    ],
-    "wikidata_qid": "Q2840688"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cognitive decline",
-      "Alzheimer’s disease (investigated)",
-      "Stroke recovery (investigated)",
-      "General nootropic use"
-    ],
-    "off_label_uses": [
-      "Athletic performance enhancement",
-      "Mood and energy support"
-    ],
-    "contraindications": [
-      "Hypersensitivity to choline-containing compounds"
-    ],
-    "monitoring_required": [
-      "Cognitive function in dementia studies",
-      "Adverse effects at high doses"
-    ],
-    "efficacy_rating": {
-      "cognitive-decline": 3,
-      "alzheimers": 2,
-      "stroke-recovery": 2,
-      "athletic-performance": 2,
-      "tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "alpha gpc",
-      "L-alpha-glycerylphosphorylcholine",
-      "alpha glycerylphosphorylcholine"
-    ],
-    "synonyms": [
-      "choline alfoscerate",
-      "glycerylphosphorylcholine",
-      "Alpha-GPC"
-    ],
-    "common_misspellings": [
-      "alphagpc",
-      "alpha gpc supplement"
+    "tags": [
+      "choline",
+      "cognitive-support",
+      "nootropic",
+      "neuroprotection",
+      "memory"
     ]
+  },
+  "summary": "A choline-containing compound used as a dietary supplement for cognitive support, memory enhancement, and potential neuroprotective effects. Sometimes explored in dementia and stroke recovery.",
+  "description": "Alpha-GPC is a naturally occurring choline compound found in small amounts in the brain and various foods. As a supplement, it serves as a highly bioavailable source of choline, supporting acetylcholine synthesis, a key neurotransmitter involved in memory and learning. It has been investigated in Europe as a prescription drug for Alzheimer’s disease and stroke recovery, and is commonly marketed as a nootropic. Some evidence suggests it may improve memory, attention, and learning, though results are mixed. It may also support physical performance by enhancing growth hormone release.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cognitive-decline",
+          "condition_name": "Cognitive decline",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "alzheimer-s-disease-investigated",
+          "condition_name": "Alzheimer’s disease (investigated)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stroke-recovery-investigated",
+          "condition_name": "Stroke recovery (investigated)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "general-nootropic-use",
+          "condition_name": "General nootropic use",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "athletic-performance-enhancement",
+          "condition_name": "Athletic performance enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-and-energy-support",
+          "condition_name": "Mood and energy support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cognitive-decline": {
+          "rating": 3
+        },
+        "alzheimers": {
+          "rating": 2
+        },
+        "stroke-recovery": {
+          "rating": 2
+        },
+        "athletic-performance": {
+          "rating": 2
+        },
+        "tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "headache"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "insomnia"
+        },
+        {
+          "effect": "nervousness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "rare cases of hypotension or dizziness at high doses"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to choline-containing compounds"
+        }
+      ],
+      "precautions": [
+        "Use with caution in patients with mood or anxiety disorders, as cholinergic effects can sometimes worsen symptoms.",
+        "High doses may cause insomnia or restlessness."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticholinergic medications",
+          "mechanism": "Reduced efficacy of both agents",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "Cholinesterase inhibitors",
+          "mechanism": "Additive cholinergic effects",
+          "action": "Monitor for excessive cholinergic symptoms"
+        },
+        {
+          "interactant": "Stimulants",
+          "mechanism": "Possible additive insomnia or restlessness",
+          "action": "Monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cognitive changes"
+        },
+        {
+          "parameter": "Sleep quality"
+        },
+        {
+          "parameter": "GI tolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient data; avoid use unless supervised",
+        "lactation": "Insufficient safety data; avoid use",
+        "pediatric": "Not well studied; avoid use",
+        "geriatric": "Used in dementia studies; appears safe at studied doses"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Choline-containing phospholipid precursor",
+        "natural_source": "Soy lecithin and other food sources in trace amounts",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement in U.S."
+      }
+    }
   },
   "sections": [
     {
@@ -215,6 +309,36 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Alpha-GPC",
+      "url": "https://examine.com/supplements/alpha-gpc/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubChem: Alpha-GPC",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Alpha-GPC"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "alpha gpc",
+      "L-alpha-glycerylphosphorylcholine",
+      "alpha glycerylphosphorylcholine"
+    ],
+    "synonyms": [
+      "choline alfoscerate",
+      "glycerylphosphorylcholine",
+      "Alpha-GPC"
+    ],
+    "common_misspellings": [
+      "alphagpc",
+      "alpha gpc supplement"
+    ]
+  },
   "seo": {
     "title": "Alpha-GPC (Choline Supplement) – Cognitive and Memory Support",
     "description": "Comprehensive guide to Alpha-GPC, a choline-containing nootropic for memory, cognition, and neuroprotection. Includes dosing, benefits, side effects, and clinical research.",

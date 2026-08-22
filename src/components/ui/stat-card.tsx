@@ -116,7 +116,7 @@ export function StatCard({
       className={`
         rounded-2xl
         bg-gradient-to-br from-green-50 via-emerald-50 to-green-100
-        border-2 border-green-300
+        border-2 border-positive-border
         p-6 sm:p-8
         shadow-lg hover:shadow-xl
         transition-shadow duration-300
@@ -125,7 +125,7 @@ export function StatCard({
     >
       {/* Metric Label */}
       {metric && (
-        <p className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-green-700 mb-3">
+        <p className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-positive-700 mb-3">
           {metric}
         </p>
       )}
@@ -144,7 +144,7 @@ export function StatCard({
         {comparison && (
           <div className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5 text-green-600" />
-            <span className="text-base sm:text-lg text-neutral-700 font-medium">
+            <span className="text-base sm:text-lg text-label-secondary font-medium">
               vs {comparison}
             </span>
           </div>
@@ -157,7 +157,7 @@ export function StatCard({
           {/* Main value bar */}
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-green-800 w-20">Active</span>
-            <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-green-200">
+            <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-positive-border">
               <motion.div
                 className="h-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-end px-3"
                 initial={{ width: 0 }}
@@ -171,15 +171,15 @@ export function StatCard({
 
           {/* Comparison bar */}
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-neutral-600 w-20">Placebo</span>
-            <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-neutral-200">
+            <span className="text-sm font-medium text-label-tertiary w-20">Placebo</span>
+            <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-separator">
               <motion.div
                 className="h-full bg-gradient-to-r from-neutral-300 to-neutral-400 flex items-center justify-end px-3"
                 initial={{ width: 0 }}
                 animate={{ width: `${comparisonBarWidth}%` }}
                 transition={{ duration: 1.5, delay: 0.7 }}
               >
-                <span className="text-xs font-bold text-neutral-700">{comparison}</span>
+                <span className="text-xs font-bold text-label-secondary">{comparison}</span>
               </motion.div>
             </div>
           </div>
@@ -201,17 +201,17 @@ export function StatCard({
 
       {/* Description */}
       {description && (
-        <div className="text-sm sm:text-base text-neutral-800 leading-relaxed">
+        <div className="text-sm sm:text-base text-label-secondary leading-relaxed">
           <ParsedContent content={description} />
         </div>
       )}
 
       {/* Collapsible Clinical Details */}
       {(clinicalDetails || citation) && (
-        <div className="mt-6 border-t border-green-200 pt-4">
+        <div className="mt-6 border-t border-positive-border pt-4">
           <button
             onClick={() => setShowDetails(!showDetails)}
-            className="flex items-center gap-2 text-sm font-medium text-green-700 hover:text-green-800 transition-colors w-full text-left"
+            className="flex items-center gap-2 text-sm font-medium text-positive-700 hover:text-green-800 transition-colors w-full text-left"
           >
             <FileText className="h-4 w-4" />
             <span>Clinical Details</span>
@@ -233,10 +233,10 @@ export function StatCard({
               {/* Study Details */}
               {clinicalDetails && (
                 <div className="bg-white rounded-lg p-4 border border-green-100">
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-green-700 mb-2">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-positive-700 mb-2">
                     Study Summary
                   </h4>
-                  <p className="text-sm text-neutral-700 leading-relaxed">
+                  <p className="text-sm text-label-secondary leading-relaxed">
                     {clinicalDetails}
                   </p>
                 </div>
@@ -245,10 +245,10 @@ export function StatCard({
               {/* Citation */}
               {citation && (
                 <div className="bg-white rounded-lg p-4 border border-green-100">
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-green-700 mb-2">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-positive-700 mb-2">
                     Reference
                   </h4>
-                  <div className="text-sm text-neutral-700 space-y-1">
+                  <div className="text-sm text-label-secondary space-y-1">
                     <p className="font-medium">{citation.authors}</p>
                     <p className="italic">{citation.title}</p>
                     <p>
@@ -264,7 +264,7 @@ export function StatCard({
                             href={`https://doi.org/${citation.doi}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                            className="text-xs text-accent hover:text-accent-700 hover:underline"
                           >
                             DOI: {citation.doi}
                           </a>
@@ -274,7 +274,7 @@ export function StatCard({
                             href={`https://pubmed.ncbi.nlm.nih.gov/${citation.pmid}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-blue-600 hover:text-blue-700 hover:underline"
+                            className="text-xs text-accent hover:text-accent-700 hover:underline"
                           >
                             PMID: {citation.pmid}
                           </a>

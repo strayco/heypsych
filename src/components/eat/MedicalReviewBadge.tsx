@@ -42,7 +42,7 @@ export function MedicalReviewBadge({
   if (compact) {
     return (
       <div
-        className="flex items-center gap-1 text-green-700"
+        className="flex items-center gap-1 text-positive-600"
         title={`Medically reviewed${reviewInfo.reviewer_name ? ` by ${reviewInfo.reviewer_name}` : ''}`}
       >
         <Shield className="h-4 w-4" />
@@ -53,24 +53,24 @@ export function MedicalReviewBadge({
 
   if (prominent) {
     return (
-      <div className="rounded-lg border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 p-4">
+      <div className="rounded-lg border-2 border-positive-500/30 bg-linear-to-r from-positive-900/20 to-surface-grouped p-4">
         <div className="flex items-start gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-            <Shield className="h-6 w-6 text-green-600" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-positive-tint">
+            <Shield className="h-6 w-6 text-positive-600" />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-green-900">Medically Reviewed</h3>
-              <CheckCircle className="h-4 w-4 text-green-600" />
+              <h3 className="font-semibold text-positive-700">Medically Reviewed</h3>
+              <CheckCircle className="h-4 w-4 text-positive-600" />
             </div>
             {reviewInfo.reviewer_name && (
-              <p className="mt-1 text-sm text-green-800">
+              <p className="mt-1 text-sm text-label-secondary">
                 Reviewed by {reviewInfo.reviewer_name}
                 {reviewInfo.reviewer_credentials && `, ${reviewInfo.reviewer_credentials}`}
               </p>
             )}
             {reviewInfo.review_date && (
-              <p className="mt-1 text-xs text-green-700">
+              <p className="mt-1 text-xs text-label-tertiary">
                 Review Date: {new Date(reviewInfo.review_date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -79,7 +79,7 @@ export function MedicalReviewBadge({
               </p>
             )}
             {reviewInfo.next_review_date && (
-              <div className="mt-2 flex items-center gap-1 text-xs text-green-700">
+              <div className="mt-2 flex items-center gap-1 text-xs text-label-tertiary">
                 <Clock className="h-3 w-3" />
                 <span>
                   Next Review: {new Date(reviewInfo.next_review_date).toLocaleDateString()}
@@ -93,7 +93,7 @@ export function MedicalReviewBadge({
   }
 
   return (
-    <Badge variant="outline" className="border-green-200 bg-green-50 text-green-800">
+    <Badge variant="outline" className="border-positive-border bg-positive-tint text-positive-700">
       <Shield className="mr-1 h-3 w-3" />
       Medically Reviewed
       {reviewInfo.reviewer_name && ` by ${reviewInfo.reviewer_name}`}

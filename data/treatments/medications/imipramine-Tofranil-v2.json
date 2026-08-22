@@ -1,84 +1,244 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "imipramine-tofranil",
-  "type": "medication",
-  "name": "Imipramine (Tofranil)",
-  "summary": "Older tricyclic antidepressant (TCA) that can treat major depression and sometimes anxiety/panic, but it’s a heavier med—more sedation, more anticholinergic side effects, and real cardiac safety considerations.",
-  "description": "Imipramine is a tricyclic antidepressant that can help major depression and, in some cases, panic symptoms. It tends to be more sedating and more “body side effects” than newer antidepressants—dry mouth, constipation, urinary retention, dizziness, and orthostatic hypotension are common. It can affect heart rhythm, so baseline risk checks and sometimes an ECG matter—especially at higher doses or in older adults. Like all antidepressants, it carries an FDA boxed warning about increased suicidal thinking/behavior in people 24 and younger during early treatment and dose changes. It’s generally not a first-choice antidepressant today, but it still has a role when other treatments fail or when a clinician is targeting a specific symptom cluster.",
-  "patient_summary": "Imipramine is a tricyclic antidepressant that can help major depression and sometimes panic symptoms, but it’s not a “light” medication. Expect more sedation and more side effects like dry mouth, constipation, and dizziness—plus potential heart rhythm issues at higher doses. It also carries the antidepressant boxed warning about increased suicidal thinking/behavior in people 24 and younger early in treatment and during dose changes. It’s usually not first-line today, but it can be useful in specific cases when other meds haven’t worked.",
-  "category": "medications/depression",
-  "metadata": {
-    "drug_classes": [
-      "Tricyclic Antidepressant (TCA)",
-      "Tertiary Amine Antidepressant"
-    ],
+  "identity": {
+    "slug": "imipramine-tofranil",
+    "name": "Imipramine (Tofranil)",
+    "generic_name": "imipramine",
     "brand_names": [
       "Tofranil",
       "Tofranil-PM"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1959,
-    "pharmacologic_category": "Tricyclic Antidepressant (Tertiary Amine)",
-    "published_date": "2026-02-06T00:00:00Z",
-    "last_updated": "2026-02-06T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-06T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (unipolar)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "A tricyclic antidepressant option for unipolar major depression. Often reserved for cases where first-line antidepressants (SSRIs/SNRIs) haven’t worked or aren’t tolerated, due to side effect burden and safety monitoring needs."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "May be used off-label for panic symptoms in select patients. Symptom improvement typically builds over weeks (not hours), and side effects/heart-risk considerations limit use compared with SSRIs/SNRIs."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "adjunct",
-        "context": "Sometimes dosed at bedtime because it can be sedating. It’s not a dedicated sleep medication, and sedation comes with tradeoffs (next-day grogginess, dizziness, falls)."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to imipramine or any component of the formulation",
-      "Acute recovery period after a myocardial infarction (MI)",
-      "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 14 days of discontinuing either imipramine or the MAOI)",
-      "Initiation in patients receiving IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Time-to-response window",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Imipramine is not a “feel it today” antidepressant. Most people who respond start noticing early shifts after 1–2 weeks, with fuller benefit building over 4–6 weeks. If you’re treating panic symptoms, the timeline is still measured in weeks, not hours.",
-      "citation_tag": "Onset: 1–2 weeks early effects; 4–6 weeks continued improvement (depression); anxiety/panic often 2–6 weeks"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
+    "drug_classes": [
+      "Tricyclic Antidepressant (TCA)",
+      "Tertiary Amine Antidepressant"
+    ]
+  },
+  "summary": "Older tricyclic antidepressant (TCA) that can treat major depression and sometimes anxiety/panic, but it’s a heavier med—more sedation, more anticholinergic side effects, and real cardiac safety considerations.",
+  "description": "Imipramine is a tricyclic antidepressant that can help major depression and, in some cases, panic symptoms. It tends to be more sedating and more “body side effects” than newer antidepressants—dry mouth, constipation, urinary retention, dizziness, and orthostatic hypotension are common. It can affect heart rhythm, so baseline risk checks and sometimes an ECG matter—especially at higher doses or in older adults. Like all antidepressants, it carries an FDA boxed warning about increased suicidal thinking/behavior in people 24 and younger during early treatment and dose changes. It’s generally not a first-choice antidepressant today, but it still has a role when other treatments fail or when a clinician is targeting a specific symptom cluster.",
+  "patient_summary": "Imipramine is a tricyclic antidepressant that can help major depression and sometimes panic symptoms, but it’s not a “light” medication. Expect more sedation and more side effects like dry mouth, constipation, and dizziness—plus potential heart rhythm issues at higher doses. It also carries the antidepressant boxed warning about increased suicidal thinking/behavior in people 24 and younger early in treatment and during dose changes. It’s usually not first-line today, but it can be useful in specific cases when other meds haven’t worked.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "A tricyclic antidepressant option for unipolar major depression. Often reserved for cases where first-line antidepressants (SSRIs/SNRIs) haven’t worked or aren’t tolerated, due to side effect burden and safety monitoring needs.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "Sometimes dosed at bedtime because it can be sedating. It’s not a dedicated sleep medication, and sedation comes with tradeoffs (next-day grogginess, dizziness, falls)."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "May be used off-label for panic symptoms in select patients. Symptom improvement typically builds over weeks (not hours), and side effects/heart-risk considerations limit use compared with SSRIs/SNRIs."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed; not significantly affected by food",
-      "bioavailability": "22% to 77% (variable; significant first-pass effect)",
-      "onset": "Depression: early effects 1-2 weeks; fuller benefit 4-6 weeks. Panic/anxiety: early effects ~2 weeks, continued improvement 4-6 weeks (sometimes longer).",
-      "peak_plasma": "2 to 6 hours",
-      "half_life": "Imipramine: ~8 to 21 hours (mean ~16-17 hours in adults); desipramine (active metabolite): ~22 to 28 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic, primarily via CYP2D6 to desipramine (active) and other metabolites",
-      "excretion": "Urine (mostly metabolites; <5% unchanged)",
-      "protein_binding": "60% to 96%",
-      "food_effect": "Not meaningfully affected by food",
-      "special_notes": "Clearance may decrease in older adults and hepatic impairment; smokers may have lower steady-state levels; chronic alcohol use disorder may increase clearance."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: early effects 1-2 weeks; fuller benefit 4-6 weeks. Panic/anxiety: early effects ~2 weeks, continued improvement 4-6 weeks (sometimes longer)."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurred vision, urinary hesitancy)",
+          "incidence": "Frequency not defined (common clinically)",
+          "notes": "This medication can feel “drying.” Dry mouth and constipation are the classics. Mild urinary hesitancy can happen. Severe constipation, severe blurry vision, or trouble urinating are red flags—don’t ignore them."
+        },
+        {
+          "effect": "Sedation / fatigue",
+          "incidence": "Frequency not defined (common clinically)",
+          "notes": "Imipramine can be very sedating—especially early and after dose increases. Bedtime dosing can help, but next-day grogginess is real for some people."
+        },
+        {
+          "effect": "Orthostatic hypotension (dizzy/faint when standing)",
+          "incidence": "Frequency not defined (risk is high relative to many antidepressants)",
+          "notes": "If you feel lightheaded standing up, take it seriously. This is one of the main reasons TCAs can be dangerous in older adults (falls)."
+        },
+        {
+          "effect": "Activation symptoms (agitation, anxiety, insomnia)",
+          "incidence": "Frequency not defined",
+          "notes": "Some people feel more anxious or keyed up early on (especially during titration). If you notice panic, agitation, or insomnia ramping up hard, reach out—sometimes the plan needs adjusting."
+        },
+        {
+          "effect": "Sexual side effects",
+          "incidence": "Frequency not defined",
+          "notes": "Libido can go down (or sometimes up). Erectile dysfunction can occur. If it’s affecting your quality of life, there are options—don’t suffer in silence."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Cardiac arrhythmias, conduction problems, or severe palpitations (higher risk with heart disease, higher doses, or overdose)."
+        },
+        {
+          "risk": "Severe orthostatic hypotension leading to falls or fainting."
+        },
+        {
+          "risk": "Seizures (especially in overdose or in patients with seizure risk)."
+        },
+        {
+          "risk": "Severe confusion, hallucinations, or delirium (risk increases in older adults and with anticholinergic burden)."
+        },
+        {
+          "risk": "Suicidal ideation/behavior changes early in treatment or during dose adjustments (boxed warning focus)."
+        },
+        {
+          "risk": "Serotonin syndrome (especially with other serotonergic medications)."
+        },
+        {
+          "risk": "Blood dyscrasias (rare): seek evaluation for fever/sore throat and consider CBC if symptomatic."
+        },
+        {
+          "risk": "Pathological neutrophil depression: discontinue if hematologic toxicity emerges."
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk compared with placebo of suicidal thinking and behavior (suicidality) in short-term studies in children, adolescents, and young adults with major depressive disorder (MDD) and other psychiatric disorders. Patients of all ages who are started on antidepressant therapy should be monitored appropriately and observed closely for clinical worsening, suicidality, or unusual changes in behavior. Families and caregivers should be advised of the need for close observation and communication with the health care provider. Imipramine is not approved for use in pediatric patients except for patients with nocturnal enuresis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to imipramine or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute recovery period after a myocardial infarction (MI)"
+        },
+        {
+          "contraindication": "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 14 days of discontinuing either imipramine or the MAOI)"
+        },
+        {
+          "contraindication": "Initiation in patients receiving IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Cardiac risk: Imipramine can affect heart conduction and rhythm. Risk is higher with preexisting heart disease, higher doses, overdose, and in older adults.",
+        "Orthostatic hypotension: Standing up can cause a major blood pressure drop—dizziness, falls, fainting (especially early or with dose increases).",
+        "Strong anticholinergic effects: Dry mouth, constipation, blurred vision, urinary retention—can become medically significant.",
+        "Sedation and impaired alertness: Can impair driving and decision-making, especially during initiation and titration.",
+        "Seizure risk: Use caution in anyone with seizure history or medications/substances that lower seizure threshold.",
+        "Mania/hypomania risk: Like other antidepressants, can trigger mania/hypomania in bipolar disorder—screen before starting.",
+        "Serotonin syndrome: Risk increases when combined with other serotonergic meds; watch for agitation, confusion, fever, tremor, rigidity, diarrhea."
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (psychiatric MAOIs; also IV methylene blue)",
+          "mechanism": "Contraindicated. High risk of severe adverse reactions including serotonin toxicity and dangerous instability.",
+          "action": "Allow 14 days between stopping an MAOI and starting imipramine, and 14 days between stopping imipramine and starting an MAOI."
+        },
+        {
+          "interactant": "Other serotonergic medications (SSRIs/SNRIs, triptans, tramadol, fentanyl, lithium, buspirone, St. John’s wort, tryptophan)",
+          "mechanism": "Increased risk of serotonin syndrome (agitation, confusion, fever, tremor/rigidity, diarrhea, seizures).",
+          "action": "Use cautiously and monitor closely. Educate patients on warning signs. Stop and seek urgent care if symptoms appear."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (e.g., some SSRIs like fluoxetine/paroxetine; bupropion)",
+          "mechanism": "Can raise imipramine/desipramine levels, increasing side effects and cardiac risk.",
+          "action": "Consider lower imipramine doses, slower titration, and therapeutic drug monitoring in select cases; watch for toxicity."
+        },
+        {
+          "interactant": "Alcohol and other CNS depressants (sedating antihistamines, benzodiazepines, sleep meds, muscle relaxants)",
+          "mechanism": "Additive sedation, impaired coordination, accidents, falls—especially early in treatment.",
+          "action": "Avoid or minimize. If combined, use the lowest effective doses and caution about driving/operating machinery."
+        },
+        {
+          "interactant": "Medications that can affect heart rhythm or blood pressure",
+          "mechanism": "Higher risk of arrhythmias, conduction problems, or severe hypotension in vulnerable patients.",
+          "action": "Review cardiac history, consider baseline ECG in higher-risk patients, and monitor closely with dose increases."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: monitor closely early in treatment (especially first 1–2 months) and during dose increases/decreases; involve family/caregivers when possible."
+        },
+        {
+          "parameter": "Mental status: agitation, insomnia, irritability, impulsivity, akathisia, hypomania/mania—especially in younger patients and those with bipolar risk."
+        },
+        {
+          "parameter": "Cardiac monitoring: assess cardiac history; consider baseline ECG and repeat with dose increases in higher-risk patients (older adults, high doses, preexisting cardiovascular disease)."
+        },
+        {
+          "parameter": "Blood pressure and pulse: monitor for orthostatic hypotension and tachycardia during initiation and titration."
+        },
+        {
+          "parameter": "Anticholinergic side effects: constipation severity, urinary retention, blurred vision, confusion—especially in older adults."
+        },
+        {
+          "parameter": "Sedation and functional impairment: daytime sleepiness, driving safety, fall risk."
+        },
+        {
+          "parameter": "Serum sodium: monitor in at-risk patients (older adults, diuretic use, low body weight, severe illness) and with dose adjustments."
+        },
+        {
+          "parameter": "Weight and BMI: track changes over time, especially with long-term use."
+        },
+        {
+          "parameter": "Blood glucose: monitor in patients with diabetes or metabolic vulnerability."
+        },
+        {
+          "parameter": "CBC: consider if symptoms of infection occur (fever, sore throat) due to rare hematologic toxicity."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (select cases): trough levels just before the next dose; combined imipramine + desipramine therapeutic range commonly referenced as 175–300 ng/mL; alert levels above ~300 ng/mL may signal toxicity risk."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Outcome data exist for TCAs including imipramine, but results vary and confounding is common. If someone is stable on imipramine and it’s working, continuation during pregnancy can be considered through shared decision-making, weighing relapse risk against medication risk. TCAs are generally not first-line for treatment-naive pregnant patients; use the lowest effective dose of a single agent and monitor closely. Physiologic changes in late pregnancy may alter levels; therapeutic drug monitoring can be considered in select cases.",
+        "lactation": "Imipramine and desipramine appear in breast milk. Infant serum levels are often low or undetectable in small reports, but monitoring is recommended for sedation and poor feeding. The manufacturer discourages breastfeeding on imipramine; however, clinical practice may support continuation in a stable, effectively treated parent when benefits outweigh risks and breastfeeding goals are considered.",
+        "pediatric": "Imipramine is not approved for pediatric depression; it is approved for nocturnal enuresis in children ≥6 years. Pediatric psychiatric use carries higher cardiac concern and requires careful risk assessment and monitoring (including ECG considerations in some cases).",
+        "geriatric": "Avoid if possible (Beers Criteria): strong anticholinergic burden, sedation, and orthostatic hypotension increase risk of confusion, falls, fractures, and hyponatremia. If used despite risks, start very low, titrate slowly, and monitor closely (blood pressure, cognition, falls, sodium, ECG when indicated).",
+        "renal_impairment": "No formal manufacturer adjustment; limited unchanged urinary excretion. Use caution in renal impairment and monitor for side effects, especially in medically complex patients.",
+        "hepatic_impairment": "No formal manufacturer adjustment, but use caution due to hepatic metabolism. Some experts reduce initial and maintenance doses by ~50% in hepatic impairment and titrate slowly with close monitoring."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1959
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed; not significantly affected by food",
+          "bioavailability": "22% to 77% (variable; significant first-pass effect)",
+          "peak_plasma": "2 to 6 hours",
+          "half_life": "Imipramine: ~8 to 21 hours (mean ~16-17 hours in adults); desipramine (active metabolite): ~22 to 28 hours",
+          "metabolism": "Hepatic, primarily via CYP2D6 to desipramine (active) and other metabolites",
+          "excretion": "Urine (mostly metabolites; <5% unchanged)",
+          "protein_binding": "60% to 96%",
+          "food_effect": "Not meaningfully affected by food"
+        },
+        "dosing": {
+          "titration": "Imipramine dosing is usually slow and intentional. Some people are sensitive to TCAs, so starting low (even 10 mg at night) and titrating gradually can reduce early dropout from side effects. For depression, doses may end up in the 100–300 mg/day range depending on setting and tolerability. Bedtime dosing is common because the medication can be sedating."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been on imipramine for more than a few weeks, don’t stop abruptly. A gradual taper lowers the chance of withdrawal symptoms and helps us catch relapse early."
+        }
+      }
     }
   },
   "sections": [
@@ -99,7 +259,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Imipramine has a very “TCA feel.” Some people love it. Some people bail fast. Here’s what tends to show up:",
       "items": [
         {
           "category": "Early days: body-first effects",
@@ -137,7 +296,8 @@
           ],
           "note": "Palpitations, fainting, severe dizziness, confusion, urinary retention, or severe constipation aren’t “push through it” symptoms—those are call-your-clinician symptoms."
         }
-      ]
+      ],
+      "intro": "Imipramine has a very “TCA feel.” Some people love it. Some people bail fast. Here’s what tends to show up:"
     },
     {
       "type": "onset_duration",
@@ -154,10 +314,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Imipramine is a proven antidepressant, but it’s not commonly the first pick today because the tradeoffs can be steep: anticholinergic side effects, sedation, orthostatic hypotension, and higher cardiac risk than many newer antidepressants. When people tolerate it and the dose is optimized, it can be genuinely effective—especially in treatment-resistant patterns where several first-line options have failed. The key is respecting the medication: slow titration, safety screening, and close monitoring early on and during dose changes.",
       "metric": "Clinical response over time",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Imipramine is a proven antidepressant, but it’s not commonly the first pick today because the tradeoffs can be steep: anticholinergic side effects, sedation, orthostatic hypotension, and higher cardiac risk than many newer antidepressants. When people tolerate it and the dose is optimized, it can be genuinely effective—especially in treatment-resistant patterns where several first-line options have failed. The key is respecting the medication: slow titration, safety screening, and close monitoring early on and during dose changes.",
       "clinical_details": "Clinical practice often uses conservative starts (sometimes as low as 10 mg nightly in sensitive patients) with gradual increases every few days to weekly, aiming for symptom improvement while minimizing side effects. Full antidepressant response commonly requires several weeks at a therapeutic dose, and dose limits are influenced by tolerability, age, comorbidities, drug interactions, and cardiac risk. Therapeutic drug monitoring (imipramine + desipramine levels) can be helpful in select patients, especially at higher doses or when response is unclear.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -247,7 +407,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Imipramine has multiple interaction pathways: it’s strongly affected by CYP2D6 metabolism, it adds to sedation, and it can raise serotonin syndrome risk when stacked with other serotonergic agents. It also has meaningful cardiac interaction risk with certain meds.",
       "items": [
         {
           "with": "MAOIs (psychiatric MAOIs; also IV methylene blue)",
@@ -274,7 +433,8 @@
           "risk": "Higher risk of arrhythmias, conduction problems, or severe hypotension in vulnerable patients.",
           "action": "Review cardiac history, consider baseline ECG in higher-risk patients, and monitor closely with dose increases."
         }
-      ]
+      ],
+      "intro": "Imipramine has multiple interaction pathways: it’s strongly affected by CYP2D6 metabolism, it adds to sedation, and it can raise serotonin syndrome risk when stacked with other serotonergic agents. It also has meaningful cardiac interaction risk with certain meds."
     },
     {
       "type": "tapering",
@@ -354,21 +514,6 @@
       "text": "Imipramine is a classic antidepressant with real efficacy—but it’s usually not first-line in modern psychiatry because the safety/side-effect burden is heavier than many newer options. Where it can still make sense: treatment-resistant depression after multiple first-line trials, specific patient histories where a TCA previously worked well, or carefully selected cases where symptom pattern and past response justify the tradeoffs. If panic symptoms are part of the picture, it may help for some people, but it’s typically an off-label, specialist-style move due to tolerability and cardiac considerations."
     }
   ],
-  "seo": {
-    "title": "Imipramine (Tofranil): Uses, Dosing, Side Effects, and Safety Warnings",
-    "description": "Imipramine (Tofranil) is a tricyclic antidepressant used for major depression and sometimes panic symptoms. Learn dosing basics, what people feel, common side effects (dry mouth, constipation, sedation), cardiac risks, interactions, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/imipramine-tofranil](https://www.heypsych.com/treatments/imipramine-tofranil)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is imipramine used for in psychiatry?",
@@ -414,5 +559,20 @@
       "q": "Is imipramine safe in older adults?",
       "a": "Often, no. In patients 65 and older, imipramine is generally considered a medication to avoid when possible because it can cause confusion, sedation, orthostatic hypotension, and falls—and it has strong anticholinergic burden. If it’s used anyway, it should be with very cautious dosing and close monitoring."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Imipramine (Tofranil): Uses, Dosing, Side Effects, and Safety Warnings",
+    "description": "Imipramine (Tofranil) is a tricyclic antidepressant used for major depression and sometimes panic symptoms. Learn dosing basics, what people feel, common side effects (dry mouth, constipation, sedation), cardiac risks, interactions, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/imipramine-tofranil](https://www.heypsych.com/treatments/imipramine-tofranil)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

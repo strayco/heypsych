@@ -19,9 +19,9 @@ export function RelatedTools({ tools, title = "Related Tools" }: RelatedToolsPro
   }
 
   return (
-    <section className="py-8 bg-slate-50">
+    <section className="py-8 bg-surface-grouped">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-neutral-900 mb-6">
+        <h2 className="text-2xl font-bold text-label-primary mb-6">
           {title}
         </h2>
 

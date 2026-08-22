@@ -130,7 +130,7 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
     filters.aiAttributes.length;
 
   return (
-    <Card className="border-neutral-200 bg-white/80 backdrop-blur">
+    <Card className="border-separator bg-surface/80 backdrop-blur">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
               variant="ghost"
               size="sm"
               onClick={clearAllFilters}
-              className="text-indigo-600 hover:text-indigo-700"
+              className="text-indigo-600 hover:text-accent"
             >
               <X className="mr-1 h-4 w-4" />
               Clear all
@@ -224,7 +224,7 @@ interface FilterSectionProps {
 function FilterSection({ title, options, selected, onToggle, formatLabel }: FilterSectionProps) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-semibold text-neutral-700">{title}</h3>
+      <h3 className="mb-2 text-sm font-semibold text-label-secondary">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
           <button
@@ -233,7 +233,7 @@ function FilterSection({ title, options, selected, onToggle, formatLabel }: Filt
             className={`rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
               selected.includes(option)
                 ? "bg-indigo-600 text-white shadow-md"
-                : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
             }`}
           >
             {formatLabel ? formatLabel(option) : option}

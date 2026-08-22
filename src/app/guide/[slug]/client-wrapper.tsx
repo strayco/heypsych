@@ -47,13 +47,13 @@ export function GuidePageClient({ content }: GuidePageClientProps) {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="max-w-4xl mx-auto px-6 -mt-8 relative z-10"
         >
-          <Card variant="glow" className="bg-white border-blue-200 shadow-lg">
+          <Card variant="accent" className="border-accent-500/30 bg-accent-900/10 shadow-card-1">
             <CardContent className="pt-0">
               <div className="flex gap-4">
-                <span className="text-2xl flex-shrink-0">💡</span>
+                <span className="text-2xl shrink-0">💡</span>
                 <div>
-                  <h2 className="font-semibold text-slate-900 mb-2 text-lg">Quick Answer</h2>
-                  <p className="text-slate-700 leading-relaxed quick-answer" itemProp="description">
+                  <h2 className="font-semibold text-label-primary mb-2 text-lg">Quick Answer</h2>
+                  <p className="text-label-secondary leading-relaxed quick-answer" itemProp="description">
                     {content.quickAnswer}
                   </p>
                 </div>
@@ -342,12 +342,12 @@ function SectionCard({ section }: { section: ContentSection }) {
     }
   };
 
-  const getVariant = (): "default" | "filled" | "gradient" => {
+  const getVariant = (): "default" | "elevated" | "accent" | "outlined" | "subtle" | "glass" => {
     switch (section.type) {
       case 'warning':
       case 'tip':
       case 'callout':
-        return 'filled';
+        return 'elevated';
       default:
         return 'default';
     }
@@ -370,22 +370,22 @@ function SectionCard({ section }: { section: ContentSection }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-slate-600 leading-relaxed mb-4">
+        <p className="text-label-tertiary leading-relaxed mb-4">
           {section.content}
         </p>
-        
+
         {section.items && Array.isArray(section.items) && section.items.length > 0 && (
           <ul className={`space-y-3 ${section.type === 'numbered-list' ? 'list-decimal list-inside' : ''}`}>
             {section.items.map((item, index) => (
               <li key={index} className={`flex gap-3 ${section.type === 'numbered-list' ? 'block' : ''}`}>
                 {section.type !== 'numbered-list' && (
-                  <span className={`flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full ${
-                    section.type === 'warning' ? 'bg-red-400' :
-                    section.type === 'tip' ? 'bg-green-400' :
-                    'bg-blue-400'
+                  <span className={`shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full ${
+                    section.type === 'warning' ? 'bg-negative-400' :
+                    section.type === 'tip' ? 'bg-positive-400' :
+                    'bg-accent-400'
                   }`} />
                 )}
-                <span className="text-slate-700">{parseText(item)}</span>
+                <span className="text-label-secondary">{parseText(item)}</span>
               </li>
             ))}
           </ul>
@@ -486,37 +486,37 @@ function DisclaimerCard({ level }: { level: 'standard' | 'elevated' | 'critical'
     standard: {
       icon: '📋',
       title: 'Medical Information Disclaimer',
-      bgClass: 'bg-slate-50/50 border-slate-200',
-      textClass: 'text-slate-800',
+      bgClass: 'bg-surface-grouped border-separator',
+      textClass: 'text-label-secondary',
     },
     elevated: {
       icon: '⚕️',
       title: 'Medical Disclaimer',
-      bgClass: 'bg-amber-50/50 border-amber-200',
-      textClass: 'text-amber-900',
+      bgClass: 'bg-caution-tint border-caution-border',
+      textClass: 'text-caution-700',
     },
     critical: {
       icon: '🚨',
       title: 'Important Medical Warning',
-      bgClass: 'bg-red-50/50 border-red-200',
-      textClass: 'text-red-900',
+      bgClass: 'bg-negative-tint border-negative-border',
+      textClass: 'text-negative-700',
     },
   };
 
   const c = config[level];
 
   return (
-    <Card variant="filled" className={c.bgClass}>
+    <Card variant="elevated" className={c.bgClass}>
       <CardContent className="pt-0">
         <div className="flex gap-3">
           <span className="text-2xl">{c.icon}</span>
           <div>
             <h3 className={`font-semibold ${c.textClass} mb-2`}>{c.title}</h3>
             <p className={`text-sm ${c.textClass} opacity-90 leading-relaxed`}>
-              This information is for educational purposes only and is not a substitute for 
-              professional medical advice, diagnosis, or treatment. Always seek the advice of 
-              your physician or other qualified health provider with any questions you may have 
-              regarding a medical condition. Never disregard professional medical advice or 
+              This information is for educational purposes only and is not a substitute for
+              professional medical advice, diagnosis, or treatment. Always seek the advice of
+              your physician or other qualified health provider with any questions you may have
+              regarding a medical condition. Never disregard professional medical advice or
               delay in seeking it because of something you have read on this website.
               {level === 'critical' && (
                 <strong className="block mt-2">

@@ -1,97 +1,266 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "valproate-depakote",
-  "type": "medication",
-  "name": "Valproate (Divalproex/Valproic Acid) (Depakote)",
-  "summary": "Mood stabilizer used for acute mania and mixed episodes in bipolar disorder. Can work within days (especially with loading) but carries serious risks—most importantly liver failure, pancreatitis, and major pregnancy-related harms.",
-  "description": "Valproate (often prescribed as Depakote/divalproex) is a classic bipolar medication for calming acute mania and mixed episodes—especially when symptoms are loud, fast, and hard to contain. It can start helping within a few days, but it’s not a casual med. It can cause serious (rare but real) liver failure, life-threatening pancreatitis, and significant fetal risk. It also commonly causes weight gain, tremor, sedation, and GI upset. This is a medication where labs and safety checks matter.",
-  "patient_summary": "Valproate (Depakote/divalproex) can calm mania and mixed episodes quickly—sometimes within days. But it’s a high-stakes medication: rare liver failure and pancreatitis can be fatal, and pregnancy exposure can cause major birth defects and long-term neurodevelopmental harm. It can also cause weight gain, tremor, sedation, and stomach side effects. If you’re on it, monitoring and contraception counseling (when relevant) are non-negotiable.",
-  "category": "medications/bipolar-disorder",
-  "metadata": {
-    "drug_classes": [
-      "Mood Stabilizer",
-      "Antimanic Agent",
-      "Antiseizure Medication (with psychiatric use)",
-      "Histone Deacetylase (HDAC) Inhibitor"
-    ],
+  "identity": {
+    "slug": "valproate-depakote",
+    "name": "Valproate (Divalproex/Valproic Acid) (Depakote)",
     "brand_names": [
       "Depakote",
       "Depakote ER",
       "Depakote Sprinkles",
       "Depakene",
       "Depacon"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1978,
-    "pharmacologic_category": "Valproate (GABA-Enhancing Antiseizure Agent) used as a mood stabilizer in psychiatry",
-    "published_date": "2026-01-29T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bipolar I Disorder: Acute Mania",
-      "Bipolar I Disorder: Mixed Episodes"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "bipolar-i-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for acute mania and mixed episodes. Often chosen when symptoms are severe, sleep is collapsing, irritability is high, or there’s agitation. May be used alone or combined with an antipsychotic depending on episode intensity."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes continued as maintenance if it clearly prevented relapse for that person. Not everyone is a great fit—side effects and reproductive safety often drive the long-term plan."
-      },
-      {
-        "slug": "bipolar-depression",
-        "relationship": "off_label",
-        "context": "Not a go-to for bipolar depression, but sometimes used as an alternative agent (mono- or adjunctive therapy) when other options haven’t worked or aren’t tolerated."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "May be used in select cases to help stabilize agitation when it’s tied to mood cycling (especially mixed features). Not recommended for dementia-related agitation due to poor benefit and higher harm."
-      }
-    ],
-    "contraindications": [
-      "Hepatic disease or significant hepatic impairment",
-      "Urea cycle disorders",
-      "Known mitochondrial disorders caused by POLG mutations (eg, Alpers-Huttenlocher syndrome)",
-      "Children <2 years of age who are clinically suspected of a mitochondrial disorder",
-      "Pregnancy: avoid for bipolar disorder unless other medications have failed or are unacceptable (high fetal risk)",
-      "Hypersensitivity to valproate/divalproex/derivatives or formulation components"
-    ],
-    "efficacy_response": {
-      "metric": "Time to noticeable calming of mania",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For acute mania or mixed episodes, valproate can start taking the edge off within a few days—especially if your prescriber uses a loading strategy—while full stabilization may take 1 to 2 weeks. The goal is fewer racing thoughts, less impulsive energy, less irritability, and sleep that stops falling apart.",
-      "citation_tag": "FDA: Depakote labeling"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/bipolar-disorder",
+    "drug_classes": [
+      "Mood Stabilizer",
+      "Antimanic Agent",
+      "Antiseizure Medication (with psychiatric use)",
+      "Histone Deacetylase (HDAC) Inhibitor"
+    ]
+  },
+  "summary": "Mood stabilizer used for acute mania and mixed episodes in bipolar disorder. Can work within days (especially with loading) but carries serious risks—most importantly liver failure, pancreatitis, and major pregnancy-related harms.",
+  "description": "Valproate (often prescribed as Depakote/divalproex) is a classic bipolar medication for calming acute mania and mixed episodes—especially when symptoms are loud, fast, and hard to contain. It can start helping within a few days, but it’s not a casual med. It can cause serious (rare but real) liver failure, life-threatening pancreatitis, and significant fetal risk. It also commonly causes weight gain, tremor, sedation, and GI upset. This is a medication where labs and safety checks matter.",
+  "patient_summary": "Valproate (Depakote/divalproex) can calm mania and mixed episodes quickly—sometimes within days. But it’s a high-stakes medication: rare liver failure and pancreatitis can be fatal, and pregnancy exposure can cause major birth defects and long-term neurodevelopmental harm. It can also cause weight gain, tremor, sedation, and stomach side effects. If you’re on it, monitoring and contraception counseling (when relevant) are non-negotiable.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bipolar-i-disorder",
+          "condition_name": "Bipolar I Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for acute mania and mixed episodes. Often chosen when symptoms are severe, sleep is collapsing, irritability is high, or there’s agitation. May be used alone or combined with an antipsychotic depending on episode intensity.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes continued as maintenance if it clearly prevented relapse for that person. Not everyone is a great fit—side effects and reproductive safety often drive the long-term plan."
+        },
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar Depression",
+          "relationship": "off_label",
+          "context": "Not a go-to for bipolar depression, but sometimes used as an alternative agent (mono- or adjunctive therapy) when other options haven’t worked or aren’t tolerated."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "May be used in select cases to help stabilize agitation when it’s tied to mood cycling (especially mixed features). Not recommended for dementia-related agitation due to poor benefit and higher harm."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed; food may delay absorption but does not meaningfully reduce overall absorption",
-      "bioavailability": "Extended-release is ~90% relative to IV and slightly lower than delayed-release",
-      "onset": "Varies by target symptom; calming of mania may begin within days",
-      "peak_plasma": "Delayed-release ~4 hours; extended-release ~4 to 17 hours",
-      "half_life": "Adults: ~9 to 19 hours (longer in neonates, older adults, and hepatic impairment)",
-      "duration_IR": "Depends on dosing schedule; often divided dosing for stable levels",
-      "duration_XR": "Smoother daily profile with less fluctuation; commonly once daily",
-      "metabolism": "Extensively hepatic (glucuronidation and mitochondrial beta-oxidation; additional oxidative pathways)",
-      "excretion": "Urine primarily as metabolites; minimal unchanged drug",
-      "protein_binding": "High and concentration-dependent (typically 80% to 90%); free fraction increases with hypoalbuminemia, kidney impairment, and higher levels",
-      "food_effect": "May help GI tolerability; may delay peak levels"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Varies by target symptom; calming of mania may begin within days"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI Upset (nausea, vomiting, indigestion, diarrhea)",
+          "incidence": ">10% reported in labeling (varies by symptom and formulation)",
+          "notes": "Taking it with food and increasing the dose slowly can make a big difference. If you can’t keep food down or symptoms are severe, your prescriber should know—sometimes the formulation or schedule needs to change."
+        },
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": ">10% reported (varies by study and population)",
+          "notes": "Early sedation is common. If it’s crushing your daytime function, dosing time or the total dose may need adjusting. Older adults are more sensitive and usually need lower doses."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": ">10% reported in some populations",
+          "notes": "Tremor is often dose- or level-related. Sometimes lowering the dose slightly fixes it without losing mood stability."
+        },
+        {
+          "effect": "Weight Gain / Increased Appetite",
+          "incidence": "Common (variable)",
+          "notes": "This is one of the most common reasons people stop valproate. Tracking weight early (not months later) helps you catch changes before they snowball."
+        },
+        {
+          "effect": "Hair Thinning (alopecia)",
+          "incidence": "Reported; rates vary",
+          "notes": "Hair changes can happen and are often reversible. It’s upsetting, and it’s real—bring it up early so your prescriber can weigh options."
+        },
+        {
+          "effect": "Cognitive Slowing / Fog",
+          "incidence": "Variable",
+          "notes": "Some people feel calmer but also a bit dulled. The goal is stability without losing your brain. If you feel ‘too slowed down,’ dosing and alternatives should be discussed."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hepatotoxicity and hepatic failure (can be fatal): watch for malaise, weakness, lethargy, facial edema, loss of appetite, vomiting, jaundice; highest risk early (first 6 months)."
+        },
+        {
+          "risk": "Pancreatitis (can be hemorrhagic and rapidly fatal): severe abdominal pain, nausea, vomiting, anorexia—requires urgent evaluation and usually discontinuation."
+        },
+        {
+          "risk": "Hyperammonemia / hyperammonemic encephalopathy: drowsiness, vomiting, confusion, slowed thinking, decreased consciousness, focal neurologic symptoms—check ammonia and reassess therapy."
+        },
+        {
+          "risk": "Coagulopathy and thrombocytopenia: bruising, bleeding, hemorrhage risk; rare severe complications reported."
+        },
+        {
+          "risk": "Severe cutaneous reactions (SJS/TEN/DRESS): rash with fever, mucosal sores, facial swelling, swollen lymph nodes, organ symptoms—medical emergency."
+        },
+        {
+          "risk": "Reproductive/endocrine effects: menstrual irregularities, polycystic ovary syndrome features, hyperandrogenism; fertility-related changes have been reported in all sexes."
+        },
+        {
+          "risk": "Suicidal ideation/behavior: class warning for antiseizure medications; monitor mood and safety closely."
+        }
+      ],
+      "black_box_warning": "Serious or fatal hepatotoxicity has occurred, usually within the first 6 months. Life-threatening pancreatitis has been reported in children and adults. In pregnancy, valproate can cause major congenital malformations (including neural tube defects) and long-term neurodevelopmental harm (including lower IQ and increased neurodevelopmental disorders).",
+      "contraindications": [
+        {
+          "contraindication": "Hepatic disease or significant hepatic impairment"
+        },
+        {
+          "contraindication": "Urea cycle disorders"
+        },
+        {
+          "contraindication": "Known mitochondrial disorders caused by POLG mutations (eg, Alpers-Huttenlocher syndrome)"
+        },
+        {
+          "contraindication": "Children <2 years of age who are clinically suspected of a mitochondrial disorder"
+        },
+        {
+          "contraindication": "Pregnancy: avoid for bipolar disorder unless other medications have failed or are unacceptable (high fetal risk)"
+        },
+        {
+          "contraindication": "Hypersensitivity to valproate/divalproex/derivatives or formulation components"
+        }
+      ],
+      "precautions": [
+        "Hepatotoxicity risk is highest early (first 6 months) and higher in very young children, mitochondrial disease, metabolic disorders, and polytherapy",
+        "Contraindicated in known POLG-related mitochondrial disorders; avoid in children <2 years suspected of mitochondrial disease",
+        "Pancreatitis can occur shortly after starting or after years; can progress rapidly and be fatal",
+        "Hyperammonemia and encephalopathy can occur with or without liver failure (can look like sudden confusion, lethargy, vomiting)",
+        "Hematologic toxicity can occur (thrombocytopenia, impaired platelet function, bleeding risk)",
+        "Suicidal thoughts/behavior warning applies to antiseizure medications as a class",
+        "Not recommended for dementia-related agitation or aggression (poor benefit, higher adverse effects)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Lamotrigine",
+          "mechanism": "Valproate can increase lamotrigine levels and raise the risk of serious rash (including SJS/TEN) if lamotrigine is titrated too fast.",
+          "action": "If combined, lamotrigine must be started at a lower dose and increased more slowly than usual. Any rash needs urgent evaluation."
+        },
+        {
+          "interactant": "Topiramate",
+          "mechanism": "Increased risk of hyperammonemia and encephalopathy—even if either medication was previously tolerated alone.",
+          "action": "Use caution, monitor for confusion/lethargy/vomiting, and check ammonia if symptoms appear."
+        },
+        {
+          "interactant": "Alcohol and other sedatives",
+          "mechanism": "Additive CNS depression (more sedation, impaired judgment, falls).",
+          "action": "Avoid or minimize alcohol; be cautious with sleep aids, antihistamines, and other sedating meds."
+        },
+        {
+          "interactant": "Aspirin and other highly protein-bound drugs",
+          "mechanism": "Can increase the free (active) fraction of valproate, raising toxicity risk even if total level looks “fine.”",
+          "action": "If symptoms suggest toxicity, consider checking free valproate level and reassessing the med combo."
+        },
+        {
+          "interactant": "Warfarin and other anticoagulants/antiplatelet agents",
+          "mechanism": "Bleeding risk can increase due to platelet effects and potential coagulation changes.",
+          "action": "Monitor closely for bruising/bleeding and coordinate labs when clinically indicated."
+        },
+        {
+          "interactant": "Enzyme-inducing antiseizure medications (eg, carbamazepine, phenytoin)",
+          "mechanism": "Can alter valproate levels and increase adverse effects; complex bidirectional interactions are possible.",
+          "action": "Specialist-guided dosing and monitoring is recommended when combining."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver safety: Baseline liver tests and frequent monitoring during the first 6 months. Watch for early warning symptoms (malaise, weakness, lethargy, facial edema, anorexia, vomiting, jaundice)."
+        },
+        {
+          "parameter": "Pancreatitis warning signs: Abdominal pain, nausea, vomiting, anorexia—prompt evaluation is required."
+        },
+        {
+          "parameter": "CBC with platelets: Baseline and periodic monitoring for thrombocytopenia and bleeding risk."
+        },
+        {
+          "parameter": "Coagulation labs (PT/PTT): Especially if there’s bleeding risk, before procedures, or if clinical concern arises."
+        },
+        {
+          "parameter": "Serum valproate concentrations: Use trough levels for interpretation; consider free valproate levels when albumin is low, kidney function is poor, or symptoms suggest toxicity despite ‘normal’ total levels."
+        },
+        {
+          "parameter": "Ammonia: Check if unexplained lethargy, vomiting, hypothermia, confusion, slowed cognition, or mental status changes occur (hyperammonemic encephalopathy can occur even without clear liver failure)."
+        },
+        {
+          "parameter": "Mood and safety: Monitor for depression, agitation changes, and suicidal thoughts/behavior (class warning)."
+        },
+        {
+          "parameter": "Weight and metabolic tracking: Weight changes can be early; track before it becomes a long-term problem."
+        },
+        {
+          "parameter": "Neurologic/cognitive function: Monitor for tremor, parkinsonism-like symptoms, and cognitive slowing—especially in long-term use."
+        },
+        {
+          "parameter": "Reproductive/endocrine monitoring: Menstrual history and features of PCOS (especially in the first year), plus counseling on fertility-related effects as relevant."
+        },
+        {
+          "parameter": "Pregnancy status and contraception counseling: Evaluate pregnancy status when clinically appropriate and document shared decision-making about risks."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "High fetal risk. Valproate can cause major congenital malformations (including neural tube defects like spina bifida) and is linked to long-term neurodevelopmental harms (including lower IQ and increased risk of neurodevelopmental disorders) after in utero exposure. For bipolar disorder, it should not be used in pregnancy unless other medications have failed or are unacceptable. In patients who could become pregnant, it should not be used unless other options fail or are unacceptable, and effective contraception should be used.",
+        "lactation": "Valproate enters breast milk at relatively low levels compared with many other antiseizure medications and is often considered compatible with breastfeeding. However, infants should be monitored for signs of liver problems (jaundice), unusual bruising/bleeding, poor feeding, sedation, and appropriate weight gain. If toxicity is suspected, infant serum levels may be checked.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Older adults are more sensitive to sedation and dehydration risk. Lower initial and maintenance doses (often 50% to 60% of usual) are commonly recommended, with close monitoring for somnolence, nutritional intake, and falls.",
+        "renal_impairment": "No standard dose adjustment is usually required, but protein binding is reduced in severe kidney impairment, so free valproate may be higher than expected. Total levels can be misleading; monitor clinical response and consider free levels when available.",
+        "hepatic_impairment": "Avoid in significant hepatic impairment. Use is contraindicated in Child-Turcotte-Pugh class B or C. Even mild impairment increases the free (active) fraction due to lower albumin, so total levels can look ‘normal’ while free levels are too high—free level monitoring is preferred when available."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1978
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed; food may delay absorption but does not meaningfully reduce overall absorption",
+          "bioavailability": "Extended-release is ~90% relative to IV and slightly lower than delayed-release",
+          "peak_plasma": "Delayed-release ~4 hours; extended-release ~4 to 17 hours",
+          "half_life": "Adults: ~9 to 19 hours (longer in neonates, older adults, and hepatic impairment)",
+          "metabolism": "Extensively hepatic (glucuronidation and mitochondrial beta-oxidation; additional oxidative pathways)",
+          "excretion": "Urine primarily as metabolites; minimal unchanged drug",
+          "protein_binding": "High and concentration-dependent (typically 80% to 90%); free fraction increases with hypoalbuminemia, kidney impairment, and higher levels",
+          "food_effect": "May help GI tolerability; may delay peak levels"
+        },
+        "dosing": {
+          "titration": "Valproate dosing in bipolar disorder is usually adjusted based on symptoms plus serum levels. There are different formulations (immediate, delayed-release, extended-release), and the schedule depends on what you’re taking and what your body tolerates."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Valproate shouldn’t be stopped abruptly unless there’s a safety emergency (like suspected pancreatitis or severe liver injury). In bipolar disorder, stopping too fast increases the risk of mood relapse—especially mania/hypomania returning hard."
+        }
+      }
     }
   },
   "sections": [
@@ -114,7 +283,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Valproate can feel like a “turning down” medication—helpful for mania, but sometimes a little too sedating or heavy. Here’s how people commonly describe it:",
       "items": [
         {
           "category": "Mania Cooling Down",
@@ -158,7 +326,8 @@
           ],
           "note": "Monitoring is not optional with valproate—especially early in treatment and in anyone who could become pregnant."
         }
-      ]
+      ],
+      "intro": "Valproate can feel like a “turning down” medication—helpful for mania, but sometimes a little too sedating or heavy. Here’s how people commonly describe it:"
     },
     {
       "type": "onset_duration",
@@ -175,10 +344,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Valproate is widely used for acute mania and mixed episodes because it can bring intensity down relatively quickly and can be combined with an antipsychotic when symptoms are severe. The practical target is fewer racing thoughts, less impulsivity, less agitation, and sleep that returns.",
       "metric": "Acute mania stabilization",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Valproate is widely used for acute mania and mixed episodes because it can bring intensity down relatively quickly and can be combined with an antipsychotic when symptoms are severe. The practical target is fewer racing thoughts, less impulsivity, less agitation, and sleep that returns.",
       "clinical_details": "Response is strongly dose- and level-dependent. Many clinicians aim for therapeutic serum concentrations while tracking real-life function: sleep, pacing/speech pressure, irritability, spending/sexual impulsivity, goal-directed overactivity, and safety risks. Some people respond dramatically; others feel mainly side effects. If there’s no meaningful change after dose optimization and time, the plan should shift.",
       "citation": {
         "authors": "U.S. Food and Drug Administration (FDA)",
@@ -272,7 +441,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Valproate has interaction landmines. Some raise side effects (like sedation, bleeding, ammonia issues). Others can drastically change levels—meaning your dose that ‘worked’ suddenly doesn’t.",
       "items": [
         {
           "with": "Lamotrigine",
@@ -304,7 +472,8 @@
           "risk": "Can alter valproate levels and increase adverse effects; complex bidirectional interactions are possible.",
           "action": "Specialist-guided dosing and monitoring is recommended when combining."
         }
-      ]
+      ],
+      "intro": "Valproate has interaction landmines. Some raise side effects (like sedation, bleeding, ammonia issues). Others can drastically change levels—meaning your dose that ‘worked’ suddenly doesn’t."
     },
     {
       "type": "tapering",
@@ -384,21 +553,6 @@
       "text": "Valproate is a workhorse medication for acute mania and mixed episodes—especially when symptoms are severe, agitation is present, and sleep is collapsing. It’s often used alongside an antipsychotic for faster stabilization. Long-term use is a risk-benefit decision: some people do great on it, but weight gain, sedation, and the reproductive/pregnancy risks can be deal-breakers. It is generally avoided in people who are pregnant or could become pregnant unless other options have clearly failed and the safety plan is tight."
     }
   ],
-  "seo": {
-    "title": "Valproate (Depakote): Uses, Dosing, Side Effects, Labs, and Pregnancy Risks",
-    "description": "Valproate (Depakote/divalproex) for bipolar mania and mixed episodes: how fast it works, dosing basics, common side effects (weight gain, tremor, sedation), serious warnings (liver failure, pancreatitis, hyperammonemia), key interactions, and required monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/valproate-depakote](https://www.heypsych.com/treatments/valproate-depakote)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is valproate (Depakote) used for in psychiatry?",
@@ -444,5 +598,20 @@
       "q": "Is valproate used for dementia-related agitation?",
       "a": "It’s not recommended for dementia-related agitation or aggression because evidence suggests limited benefit and increased risk of adverse effects. In those situations, clinicians generally look for other approaches."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Valproate (Depakote): Uses, Dosing, Side Effects, Labs, and Pregnancy Risks",
+    "description": "Valproate (Depakote/divalproex) for bipolar mania and mixed episodes: how fast it works, dosing basics, common side effects (weight gain, tremor, sedation), serious warnings (liver failure, pancreatitis, hyperammonemia), key interactions, and required monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/valproate-depakote](https://www.heypsych.com/treatments/valproate-depakote)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

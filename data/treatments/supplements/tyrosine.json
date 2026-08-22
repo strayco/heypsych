@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "tyrosine",
-  "type": "supplement",
-  "name": "Tyrosine",
-  "summary": "L-Tyrosine is an amino acid precursor to dopamine, norepinephrine, and epinephrine, studied for its potential to support cognitive function, stress resilience, and mood under demanding conditions.",
-  "description": "Tyrosine is a non-essential amino acid found in protein-rich foods and synthesized in the body from phenylalanine. It serves as a precursor for catecholamine neurotransmitters (dopamine, norepinephrine, epinephrine) and thyroid hormones. Supplementation has been investigated for enhancing cognitive performance under stress, fatigue, and sleep deprivation, as well as for supporting mood and motivation. While it may help preserve mental performance in stressful situations, evidence for benefits in depression or ADHD is mixed.",
-  "category": "supplements",
-  "tags": [
-    "amino acid",
-    "neurotransmitter precursor",
-    "cognitive support",
-    "stress resilience"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid",
-    "natural_source": "Protein-rich foods (dairy, soy, meats, fish, eggs)",
+  "identity": {
+    "slug": "tyrosine",
+    "name": "Tyrosine",
+    "brand_names": [
+      "L-Tyrosine",
+      "N-Acetyl-L-Tyrosine (NALT)"
+    ],
+    "aliases": [
+      "4-hydroxyphenylalanine",
+      "NALT"
+    ],
+    "wikidata_qid": "Q7861683"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Psychiatry",
       "Neurocognitive Support",
@@ -24,71 +26,160 @@
       "Neurotransmitter precursor",
       "Cognitive support"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-counter dietary supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "L-Tyrosine",
-      "N-Acetyl-L-Tyrosine (NALT)"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Situational"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Integrative Medicine",
-      "Nutrition"
-    ],
-    "wikidata_qid": "Q7861683"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Support for cognitive performance under stress, fatigue, or sleep deprivation",
-      "Catecholamine precursor support"
-    ],
-    "off_label_uses": [
-      "Adjunctive support for ADHD (limited evidence)",
-      "Mood support in depression (mixed evidence)",
-      "Cognitive enhancement in demanding tasks"
-    ],
-    "contraindications": [
-      "Hyperthyroidism (tyrosine is a thyroid hormone precursor)",
-      "Phenylketonuria (PKU; altered metabolism of phenylalanine/tyrosine)"
-    ],
-    "monitoring_required": [
-      "Thyroid function if used chronically",
-      "Mood or behavioral changes"
-    ],
-    "efficacy_rating": {
-      "stress_resilience": 3,
-      "cognitive_performance": 3,
-      "depression": 2,
-      "ADHD": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Tyrosine",
-      "L-Tyrosine",
-      "N-Acetyl-L-Tyrosine"
-    ],
-    "synonyms": [
-      "4-hydroxyphenylalanine",
-      "NALT"
-    ],
-    "common_misspellings": [
-      "tirosine",
-      "tyrosin"
+    "tags": [
+      "amino acid",
+      "neurotransmitter precursor",
+      "cognitive support",
+      "stress resilience"
     ]
+  },
+  "summary": "L-Tyrosine is an amino acid precursor to dopamine, norepinephrine, and epinephrine, studied for its potential to support cognitive function, stress resilience, and mood under demanding conditions.",
+  "description": "Tyrosine is a non-essential amino acid found in protein-rich foods and synthesized in the body from phenylalanine. It serves as a precursor for catecholamine neurotransmitters (dopamine, norepinephrine, epinephrine) and thyroid hormones. Supplementation has been investigated for enhancing cognitive performance under stress, fatigue, and sleep deprivation, as well as for supporting mood and motivation. While it may help preserve mental performance in stressful situations, evidence for benefits in depression or ADHD is mixed.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "support-for-cognitive-performance-under-stress-fatigue-or-sleep-deprivation",
+          "condition_name": "Support for cognitive performance under stress, fatigue, or sleep deprivation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "catecholamine-precursor-support",
+          "condition_name": "Catecholamine precursor support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-for-adhd-limited-evidence",
+          "condition_name": "Adjunctive support for ADHD (limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-support-in-depression-mixed-evidence",
+          "condition_name": "Mood support in depression (mixed evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-enhancement-in-demanding-tasks",
+          "condition_name": "Cognitive enhancement in demanding tasks",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "stress_resilience": {
+          "rating": 3
+        },
+        "cognitive_performance": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 2
+        },
+        "ADHD": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Situational"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Heartburn"
+        },
+        {
+          "effect": "Fatigue if overdosed"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypertension or anxiety (rare, with high doses or in sensitive individuals)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hyperthyroidism (tyrosine is a thyroid hormone precursor)"
+        },
+        {
+          "contraindication": "Phenylketonuria (PKU; altered metabolism of phenylalanine/tyrosine)"
+        }
+      ],
+      "precautions": [
+        "May overstimulate in combination with other stimulants or high caffeine intake.",
+        "Caution in individuals with hyperthyroidism.",
+        "Avoid excessive chronic use without medical supervision."
+      ],
+      "interactions": [
+        {
+          "interactant": "Levodopa (Parkinson’s treatment)",
+          "mechanism": "Competition for absorption",
+          "action": "Avoid combination or separate by several hours"
+        },
+        {
+          "interactant": "Stimulants (e.g., amphetamines)",
+          "mechanism": "Additive catecholamine stimulation",
+          "action": "Monitor for overstimulation"
+        },
+        {
+          "interactant": "Thyroid hormone",
+          "mechanism": "Potential additive effects",
+          "action": "Use caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Monitor thyroid status in at-risk individuals"
+        },
+        {
+          "parameter": "Watch for mood or sleep disturbances"
+        },
+        {
+          "parameter": "Blood pressure if used with stimulants"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid unless medically supervised",
+        "lactation": "Unknown safety; caution advised",
+        "pediatric": "Not well studied; avoid outside medical supervision",
+        "geriatric": "Generally safe, monitor for blood pressure and thyroid function"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid",
+        "natural_source": "Protein-rich foods (dairy, soy, meats, fish, eggs)",
+        "regulatory_notes": "Dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -212,6 +303,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Tyrosine",
+      "url": "https://www.nccih.nih.gov/health/tyrosine"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Deijen JB, et al. Tyrosine supplementation and cognitive performance. Brain Res Bull. 1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10624808/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Hase A, et al. Effects of tyrosine on cognitive performance and stress. Nutrients. 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26132997/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Tyrosine",
+      "L-Tyrosine",
+      "N-Acetyl-L-Tyrosine"
+    ],
+    "synonyms": [
+      "4-hydroxyphenylalanine",
+      "NALT"
+    ],
+    "common_misspellings": [
+      "tirosine",
+      "tyrosin"
+    ]
+  },
   "seo": {
     "title": "Tyrosine – Stress Resilience & Cognitive Support",
     "description": "L-Tyrosine is an amino acid precursor to dopamine and norepinephrine, studied for stress resilience, mood, and cognitive performance under demanding conditions.",

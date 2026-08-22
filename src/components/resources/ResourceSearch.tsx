@@ -79,7 +79,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
     <div ref={searchRef} className="relative w-full">
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <Search className="h-5 w-5 text-neutral-400" />
+          <Search className="h-5 w-5 text-label-primary0" />
         </div>
 
         <input
@@ -94,13 +94,13 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
             }
           }}
           placeholder="Search resources (PHQ-9, therapy, crisis support...)"
-          className="w-full rounded-xl border border-neutral-300 bg-white py-3 pl-12 pr-12 text-neutral-900 placeholder-neutral-500 shadow-sm transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          className="w-full rounded-xl border border-separator bg-surface-grouped py-3 pl-12 pr-12 text-label-primary placeholder:text-label-quaternary transition-all focus:border-separator focus:outline-none focus:ring-2 focus:ring-separator hover:border-separator"
         />
 
         {query && (
           <button
             onClick={clearSearch}
-            className="absolute inset-y-0 right-0 flex items-center pr-4 text-neutral-400 hover:text-neutral-600"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 text-label-primary0 hover:text-label-secondary"
             aria-label="Clear search"
           >
             <X className="h-5 w-5" />
@@ -110,7 +110,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
 
       {/* Typeahead dropdown */}
       {isOpen && filteredResources.length > 0 && (
-        <div className="absolute z-50 mt-2 w-full rounded-xl border border-neutral-200 bg-white shadow-2xl">
+        <div className="absolute z-50 mt-2 w-full rounded-xl border border-separator bg-surface-grouped shadow-card-2">
           <div className="max-h-96 overflow-y-auto p-2">
             {filteredResources.map((resource) => (
               <Link
@@ -120,19 +120,19 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
                   setIsOpen(false);
                   setQuery("");
                 }}
-                className="block rounded-lg px-4 py-3 transition-colors hover:bg-neutral-50"
+                className="block rounded-lg px-4 py-3 transition-colors hover:bg-fill-secondary"
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
-                    <div className="font-semibold text-neutral-900">
+                    <div className="font-semibold text-label-primary">
                       {resource.name}
                     </div>
                     {resource.description && (
-                      <div className="mt-1 line-clamp-2 text-sm text-neutral-700">
+                      <div className="mt-1 line-clamp-2 text-sm text-label-secondary">
                         {resource.description}
                       </div>
                     )}
-                    <div className="mt-1 text-xs text-neutral-600">
+                    <div className="mt-1 text-xs text-label-tertiary">
                       {resource.metadata?.category?.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
           </div>
 
           {filteredResources.length === 8 && (
-            <div className="border-t border-neutral-100 px-4 py-2 text-center text-xs text-neutral-600">
+            <div className="border-t border-separator px-4 py-2 text-center text-xs text-label-primary0">
               Showing first 8 results
             </div>
           )}
@@ -151,11 +151,11 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
 
       {/* No results message */}
       {isOpen && query && filteredResources.length === 0 && (
-        <div className="absolute z-50 mt-2 w-full rounded-xl border border-neutral-200 bg-white p-6 text-center shadow-lg">
-          <p className="text-sm text-neutral-700">
+        <div className="absolute z-50 mt-2 w-full rounded-xl border border-separator bg-surface-grouped p-6 text-center shadow-card-2">
+          <p className="text-sm text-label-secondary">
             No resources found for "{query}"
           </p>
-          <p className="mt-2 text-xs text-neutral-600">
+          <p className="mt-2 text-xs text-label-tertiary">
             Try different keywords or browse categories below
           </p>
         </div>

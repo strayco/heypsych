@@ -102,7 +102,7 @@ export function Pagination({ currentPage, totalPages, baseUrl, tabParam }: Pagin
             return (
               <span
                 key={`${page}-${index}`}
-                className="px-2 text-slate-500"
+                className="px-2 text-label-primary0"
                 aria-hidden="true"
               >
                 ...

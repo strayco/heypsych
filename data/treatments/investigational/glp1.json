@@ -1,24 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "glp1",
-  "type": "investigational",
-  "name": "GLP-1 Receptor Agonists",
-  "summary": "A class of metabolic medications (e.g., semaglutide, liraglutide) under investigation for depression, anhedonia, cognitive dysfunction, and substance use disorders, in addition to approved uses for type 2 diabetes and obesity.",
-  "description": "Glucagon-like peptide-1 (GLP-1) receptor agonists enhance glucose-dependent insulin secretion, slow gastric emptying, and reduce appetite. Beyond metabolic effects, GLP-1 receptors are expressed in brain regions involved in reward, motivation, and mood (e.g., VTA, nucleus accumbens, prefrontal cortex). Early clinical and preclinical research suggests potential benefits for major depressive disorder, anhedonia, cognitive impairment, and substance use disorders by modulating dopamine signaling, reducing neuroinflammation, and improving metabolic health. Psychiatric applications remain investigational.",
-  "category": "investigational/metabolic-psychiatry",
-  "tags": [
-    "GLP-1",
-    "semaglutide",
-    "liraglutide",
-    "metabolic psychiatry",
-    "depression",
-    "anhedonia",
-    "substance use disorders",
-    "alcohol use disorder",
-    "nicotine dependence",
-    "stimulant use"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "glp1",
+    "name": "GLP-1 Receptor Agonists",
+    "brand_names": [
+      "Ozempic",
+      "Wegovy",
+      "Rybelsus",
+      "Victoza",
+      "Saxenda"
+    ],
+    "aliases": [
+      "incretin mimetics"
+    ],
+    "wikidata_qid": "Q123653813"
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/metabolic-psychiatry",
     "drug_classes": [
       "GLP-1 Receptor Agonist"
     ],
@@ -36,87 +36,181 @@
       "Appetite and Reward Regulation",
       "Dopamine Circuit Modulation"
     ],
-    "administration_routes": [
-      "Oral",
-      "Subcutaneous Injection"
-    ],
-    "prescription_status": "Prescription Required for approved indications",
-    "controlled_substance": false,
-    "generic_available": false,
-    "brand_names": [
-      "Ozempic",
-      "Wegovy",
-      "Rybelsus",
-      "Victoza",
-      "Saxenda"
-    ],
-    "dea_schedule": null,
-    "fda_pregnancy_category": "Not assigned",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Endocrinology",
-      "Psychiatry",
-      "Addiction Medicine"
-    ],
-    "wikidata_qid": "Q123653813"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Type 2 Diabetes (approved)",
-      "Obesity/Weight Management (approved)"
-    ],
-    "conditions_treated": [
-      "Major Depressive Disorder (investigational)",
-      "Treatment-resistant depression (investigational)",
-      "Anhedonia (investigational)",
-      "Substance Use Disorders (alcohol, nicotine, stimulants — investigational)",
-      "Cognitive impairment (investigational)"
-    ],
-    "off_label_uses": [
-      "Binge-eating spectrum (exploratory)",
-      "Neurodegenerative disorders (exploratory)"
-    ],
-    "contraindications": [
-      "Personal or family history of medullary thyroid carcinoma",
-      "Multiple Endocrine Neoplasia syndrome type 2 (MEN2)",
-      "Hypersensitivity to GLP-1 receptor agonists"
-    ],
-    "monitoring_required": [
-      "Weight, BMI, metabolic parameters",
-      "Gastrointestinal tolerability",
-      "Mood, suicidality (psychiatric trials)",
-      "Craving/relapse outcomes (for SUD protocols)"
-    ],
-    "efficacy_rating": {
-      "depression": 2,
-      "cognitive_disorders": 2,
-      "substance_use_disorders": 2,
-      "overall_tolerability": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "GLP-1 receptor agonist psychiatry",
-      "semaglutide depression",
-      "liraglutide addiction",
-      "GLP-1 alcohol use disorder",
-      "GLP-1 nicotine craving",
-      "metabolic psychiatry"
-    ],
-    "synonyms": [
-      "incretin mimetics"
-    ],
-    "common_misspellings": [
-      "GLP1",
-      "GLP-1R",
-      "semiglutide"
+    "tags": [
+      "GLP-1",
+      "semaglutide",
+      "liraglutide",
+      "metabolic psychiatry",
+      "depression",
+      "anhedonia",
+      "substance use disorders",
+      "alcohol use disorder",
+      "nicotine dependence",
+      "stimulant use"
     ]
+  },
+  "summary": "A class of metabolic medications (e.g., semaglutide, liraglutide) under investigation for depression, anhedonia, cognitive dysfunction, and substance use disorders, in addition to approved uses for type 2 diabetes and obesity.",
+  "description": "Glucagon-like peptide-1 (GLP-1) receptor agonists enhance glucose-dependent insulin secretion, slow gastric emptying, and reduce appetite. Beyond metabolic effects, GLP-1 receptors are expressed in brain regions involved in reward, motivation, and mood (e.g., VTA, nucleus accumbens, prefrontal cortex). Early clinical and preclinical research suggests potential benefits for major depressive disorder, anhedonia, cognitive impairment, and substance use disorders by modulating dopamine signaling, reducing neuroinflammation, and improving metabolic health. Psychiatric applications remain investigational.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "type-2-diabetes-approved",
+          "condition_name": "Type 2 Diabetes (approved)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "obesity-weight-management-approved",
+          "condition_name": "Obesity/Weight Management (approved)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder-investigational",
+          "condition_name": "Major Depressive Disorder (investigational)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression-investigational",
+          "condition_name": "Treatment-resistant depression (investigational)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anhedonia-investigational",
+          "condition_name": "Anhedonia (investigational)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders-alcohol-nicotine-stimulants-investigational",
+          "condition_name": "Substance Use Disorders (alcohol, nicotine, stimulants — investigational)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cognitive-impairment-investigational",
+          "condition_name": "Cognitive impairment (investigational)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "binge-eating-spectrum-exploratory",
+          "condition_name": "Binge-eating spectrum (exploratory)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neurodegenerative-disorders-exploratory",
+          "condition_name": "Neurodegenerative disorders (exploratory)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 2
+        },
+        "cognitive_disorders": {
+          "rating": 2
+        },
+        "substance_use_disorders": {
+          "rating": 2
+        },
+        "overall_tolerability": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Subcutaneous Injection"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Vomiting"
+        },
+        {
+          "effect": "Diarrhea"
+        },
+        {
+          "effect": "Constipation"
+        },
+        {
+          "effect": "Decreased appetite"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Pancreatitis"
+        },
+        {
+          "risk": "Acute kidney injury (secondary to dehydration)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Personal or family history of medullary thyroid carcinoma"
+        },
+        {
+          "contraindication": "Multiple Endocrine Neoplasia syndrome type 2 (MEN2)"
+        },
+        {
+          "contraindication": "Hypersensitivity to GLP-1 receptor agonists"
+        }
+      ],
+      "precautions": [
+        "Boxed warning for thyroid C-cell tumors in rodents (human relevance uncertain).",
+        "Use caution in patients with history of pancreatitis.",
+        "Slow dose titration helps mitigate GI adverse effects."
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Weight, BMI, waist circumference"
+        },
+        {
+          "parameter": "HbA1c, fasting glucose, lipids"
+        },
+        {
+          "parameter": "GI symptoms and hydration status"
+        },
+        {
+          "parameter": "Mood (e.g., PHQ-9) and craving/relapse metrics in SUD trials"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; weight loss is not indicated during pregnancy.",
+        "lactation": "Unknown excretion in human milk; weigh risks/benefits.",
+        "pediatric": "Semaglutide approved for adolescent obesity; psychiatric use not established.",
+        "geriatric": "Generally tolerable; monitor renal function and GI tolerance."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": false
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "session_protocol": "Administer per diabetes/obesity labeling (weekly subcutaneous semaglutide, daily oral semaglutide, or daily liraglutide) within research protocols for psychiatric indications.\nCombine with psychotherapy or standard-of-care treatments for depression or SUDs where applicable.\nTrack craving, substance use days, and mood scales at regular intervals."
+      }
+    }
   },
   "sections": [
     {
@@ -224,6 +318,38 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Labels for semaglutide (Ozempic/Wegovy/Rybelsus) and liraglutide (Victoza/Saxenda)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Review: GLP-1 receptor agonists and neuropsychiatric outcomes (overview)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "GLP-1 receptor agonist psychiatry",
+      "semaglutide depression",
+      "liraglutide addiction",
+      "GLP-1 alcohol use disorder",
+      "GLP-1 nicotine craving",
+      "metabolic psychiatry"
+    ],
+    "synonyms": [
+      "incretin mimetics"
+    ],
+    "common_misspellings": [
+      "GLP1",
+      "GLP-1R",
+      "semiglutide"
+    ]
+  },
   "seo": {
     "title": "GLP-1 Receptor Agonists in Psychiatry and Addiction",
     "description": "Investigational use of GLP-1 receptor agonists (semaglutide, liraglutide) for depression, anhedonia, cognitive impairment, and substance use disorders—alongside their approved metabolic indications.",

@@ -1,88 +1,191 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "behavioral-activation",
-  "type": "therapy",
-  "name": "Behavioral Activation (BA)",
-  "summary": "A structured, evidence-based therapy that reduces depression by increasing engagement in rewarding, values-aligned activities and decreasing avoidance patterns.",
-  "description": "Behavioral Activation (BA) is a straightforward cognitive-behavioral intervention that targets the avoidance and withdrawal patterns central to depression. By systematically scheduling and reinforcing meaningful activities, BA increases contact with positive reinforcement and rebuilds routines that support mood and functioning. The approach is highly pragmatic, skills-focused, and adaptable across settings and populations, with strong evidence showing outcomes comparable to full CBT for depression.",
-  "category": "therapy/cognitive-behavioral",
-  "tags": [
-    "depression",
-    "CBT",
-    "activity scheduling",
-    "values",
-    "exposure",
-    "functional analysis"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Cognitive-Behavioral",
-      "Brief Therapy"
-    ],
-    "categories": [
-      "Cognitive-Behavioral Therapies"
-    ],
-    "delivery_methods": [
-      "Individual therapy",
-      "Group therapy",
-      "Primary care integration",
-      "Teletherapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "45–60 minutes",
-    "treatment_duration": [
-      "8–16 sessions typical",
-      "Brief 6–8 session variants"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Chronic illness",
-      "Anxiety",
-      "Substance use"
+  "identity": {
+    "slug": "behavioral-activation",
+    "name": "Behavioral Activation (BA)",
+    "generic_name": "behavioral activation",
+    "brand_names": [
+      "BA"
     ],
     "wikidata_qid": "Q4880711"
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Persistent depressive disorder",
-      "Perinatal/postpartum depression",
-      "Bipolar depression (adjunct)",
-      "Anxiety disorders",
-      "PTSD (behavioral avoidance)",
-      "Substance use disorders (avoidance-driven use)",
-      "Chronic pain with comorbid depression"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/cognitive-behavioral",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "off_label_uses": [
-      "Negative symptom reduction in severe mental illness (adjunct)",
-      "Procrastination and functional impairment",
-      "Medical illness adjustment"
-    ],
-    "contraindications": [
-      "Acute mania or psychosis without stabilization",
-      "Imminent suicide risk requiring higher level of care"
-    ],
-    "safety_profile": "Very safe, skills-based psychotherapy. Temporary distress can occur when approaching previously avoided activities.",
-    "evidence_level": "Strong for depression; moderate for anxiety, PTSD, and substance use.",
-    "research_support": "Multiple RCTs and meta-analyses show BA equals or outperforms standard CBT and antidepressant management for depression, including in primary care and low-resource settings.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "anxiety": 3,
-      "ptsd": 3,
-      "substance_use": 3,
-      "overall_tolerability": 5
+    "tags": [
+      "depression",
+      "CBT",
+      "activity scheduling",
+      "values",
+      "exposure",
+      "functional analysis"
+    ]
+  },
+  "summary": "A structured, evidence-based therapy that reduces depression by increasing engagement in rewarding, values-aligned activities and decreasing avoidance patterns.",
+  "description": "Behavioral Activation (BA) is a straightforward cognitive-behavioral intervention that targets the avoidance and withdrawal patterns central to depression. By systematically scheduling and reinforcing meaningful activities, BA increases contact with positive reinforcement and rebuilds routines that support mood and functioning. The approach is highly pragmatic, skills-focused, and adaptable across settings and populations, with strong evidence showing outcomes comparable to full CBT for depression.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "persistent-depressive-disorder",
+          "condition_name": "Persistent depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "perinatal-postpartum-depression",
+          "condition_name": "Perinatal/postpartum depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression-adjunct",
+          "condition_name": "Bipolar depression (adjunct)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "ptsd-behavioral-avoidance",
+          "condition_name": "PTSD (behavioral avoidance)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders-avoidance-driven-use",
+          "condition_name": "Substance use disorders (avoidance-driven use)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain-with-comorbid-depression",
+          "condition_name": "Chronic pain with comorbid depression",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "negative-symptom-reduction-in-severe-mental-illness-adjunct",
+          "condition_name": "Negative symptom reduction in severe mental illness (adjunct)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "procrastination-and-functional-impairment",
+          "condition_name": "Procrastination and functional impairment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "medical-illness-adjustment",
+          "condition_name": "Medical illness adjustment",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for depression; moderate for anxiety, PTSD, and substance use.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "ptsd": {
+          "rating": 3
+        },
+        "substance_use": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Multiple RCTs and meta-analyses show BA equals or outperforms standard CBT and antidepressant management for depression, including in primary care and low-resource settings."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–16 sessions typical; Brief 6–8 session variants"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Individual therapy",
+        "Group therapy",
+        "Primary care integration",
+        "Teletherapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Very safe, skills-based psychotherapy. Temporary distress can occur when approaching previously avoided activities.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary discomfort when approaching avoided tasks"
+        },
+        {
+          "effect": "Fatigue as routines increase"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Symptom exacerbation if severe risk not stabilized before exposure to stressors"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled mania or psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Imminent suicide risk requiring acute stabilization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment limiting homework capacity",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Effective and safe for perinatal depression with tailored pacing"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive-Behavioral, Brief Therapy",
+        "key_techniques": [
+          "Cognitive-Behavioral Therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Review activity log and mood ratings; troubleshoot barriers.",
+          "during_session": "Assign and practice graded activities; conduct functional analyses; plan exposures aligned with values.",
+          "post_session": "Confirm home plan with specific when/where; set monitoring metrics."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in BA/CBT; clinicians in collaborative care models"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -268,6 +371,32 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Dimidjian S, et al. Randomized trial of behavioral activation, cognitive therapy, and antidepressant medication for major depression. J Consult Clin Psychol. 2006.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17032086/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Ekers D, et al. Behavioural activation for depression; effectiveness in routine primary care. PLoS One. 2014.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24608854/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Richards DA, et al. Behavioural activation vs CBT for depression (COBRA): non-inferiority RCT. Lancet. 2016.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27743963/"
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "Jacobson NS, et al. A component analysis of CBT: BA, AT, and CT for depression. J Consult Clin Psychol. 1996.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8698946/"
+    }
+  ],
   "seo": {
     "title": "Behavioral Activation (BA) | Evidence-Based Therapy for Depression",
     "description": "Behavioral Activation is a practical, evidence-based therapy that reduces depression by increasing engagement in rewarding, values-aligned activities and reducing avoidance.",
@@ -280,5 +409,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for depression; moderate for anxiety, PTSD, and substance use."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for depression; moderate for anxiety, PTSD, and substance use."
+    ]
   }
 }

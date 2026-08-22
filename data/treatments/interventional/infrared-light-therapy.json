@@ -1,92 +1,180 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "infrared-light-therapy",
-  "type": "interventional",
-  "name": "Infrared Light Therapy",
-  "summary": "A non-invasive treatment using near- or far-infrared wavelengths to stimulate cellular repair, modulate inflammation, and enhance circulation.",
-  "description": "Infrared light therapy uses wavelengths beyond the visible spectrum (typically 700–1,000+ nm for near-infrared, and 3,000–100,000 nm for far-infrared) to penetrate tissues and trigger photobiomodulation. Near-infrared wavelengths penetrate deeper into muscles, joints, and sometimes brain tissue, influencing mitochondrial activity and promoting cellular repair. Far-infrared primarily generates gentle heat, improving circulation and tissue flexibility. Both modes can modulate inflammation, reduce pain, and support recovery.\n\nIt is applied via LEDs, laser diodes, or infrared heat panels, often for musculoskeletal injuries, neuropathic pain, arthritis, and emerging mental health and neurorehabilitation contexts.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "infrared",
-    "photobiomodulation",
-    "pain",
-    "circulation",
-    "inflammation",
-    "recovery"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "infrared-light-therapy",
+    "name": "Infrared Light Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Near-infrared photobiomodulation",
       "Far-infrared heat therapy"
     ],
-    "treatment_types": [
-      "Light therapy",
-      "Photobiomodulation",
-      "Thermal therapy"
-    ],
-    "categories": [
-      "Pain Management",
-      "Rehabilitation",
-      "Neurology",
-      "Sports Medicine"
-    ],
-    "delivery_methods": [
-      "Clinic-based device",
-      "Portable home unit",
-      "Wearable"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "10–30 minutes",
-    "treatment_duration": [
-      "Short-term",
-      "Maintenance"
-    ],
-    "specialty_areas": [
-      "Pain Management",
-      "Sports Rehabilitation",
-      "Neurological Recovery"
+    "tags": [
+      "infrared",
+      "photobiomodulation",
+      "pain",
+      "circulation",
+      "inflammation",
+      "recovery"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic musculoskeletal pain",
-      "Joint stiffness and arthritis",
-      "Soft tissue injuries"
-    ],
-    "conditions_treated": [
-      "Osteoarthritis",
-      "Myofascial pain",
-      "Neuropathic pain",
-      "Post-exercise muscle soreness",
-      "Tendonitis",
-      "Post-stroke neurological recovery (emerging)"
-    ],
-    "off_label_uses": [
-      "Traumatic brain injury recovery (experimental)",
-      "Cognitive enhancement (pilot studies)"
-    ],
-    "contraindications": [
-      "Direct irradiation over eyes without protection",
-      "Active skin cancer sites",
-      "Pregnancy—avoid abdominal exposure without medical advice",
-      "Areas with impaired sensation (risk of overheating)"
-    ],
-    "safety_profile": "Generally safe when used as directed; risk of mild skin warming, transient redness, or irritation. Overheating possible with prolonged far-infrared exposure.",
-    "evidence_level": "Moderate for musculoskeletal pain; emerging for neurorehabilitation and mood disorders.",
-    "research_support": "Numerous trials in pain management; small but growing evidence base for neurocognitive and mood benefits via transcranial near-infrared applications.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "musculoskeletal_pain": 4,
-      "joint_stiffness": 3,
-      "neuro_recovery": 2,
-      "overall_tolerability": 5
+  "summary": "A non-invasive treatment using near- or far-infrared wavelengths to stimulate cellular repair, modulate inflammation, and enhance circulation.",
+  "description": "Infrared light therapy uses wavelengths beyond the visible spectrum (typically 700–1,000+ nm for near-infrared, and 3,000–100,000 nm for far-infrared) to penetrate tissues and trigger photobiomodulation. Near-infrared wavelengths penetrate deeper into muscles, joints, and sometimes brain tissue, influencing mitochondrial activity and promoting cellular repair. Far-infrared primarily generates gentle heat, improving circulation and tissue flexibility. Both modes can modulate inflammation, reduce pain, and support recovery.\n\nIt is applied via LEDs, laser diodes, or infrared heat panels, often for musculoskeletal injuries, neuropathic pain, arthritis, and emerging mental health and neurorehabilitation contexts.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-musculoskeletal-pain",
+          "condition_name": "Chronic musculoskeletal pain",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "joint-stiffness-and-arthritis",
+          "condition_name": "Joint stiffness and arthritis",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "soft-tissue-injuries",
+          "condition_name": "Soft tissue injuries",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "osteoarthritis",
+          "condition_name": "Osteoarthritis",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "myofascial-pain",
+          "condition_name": "Myofascial pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "neuropathic-pain",
+          "condition_name": "Neuropathic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-exercise-muscle-soreness",
+          "condition_name": "Post-exercise muscle soreness",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "tendonitis",
+          "condition_name": "Tendonitis",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-stroke-neurological-recovery-emerging",
+          "condition_name": "Post-stroke neurological recovery (emerging)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "traumatic-brain-injury-recovery-experimental",
+          "condition_name": "Traumatic brain injury recovery (experimental)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-enhancement-pilot-studies",
+          "condition_name": "Cognitive enhancement (pilot studies)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for musculoskeletal pain; emerging for neurorehabilitation and mood disorders.",
+      "efficacy_ratings": {
+        "musculoskeletal_pain": {
+          "rating": 4
+        },
+        "joint_stiffness": {
+          "rating": 3
+        },
+        "neuro_recovery": {
+          "rating": 2
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Numerous trials in pain management; small but growing evidence base for neurocognitive and mood benefits via transcranial near-infrared applications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Clinic-based device",
+        "Portable home unit",
+        "Wearable"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "10–30 minutes"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe when used as directed; risk of mild skin warming, transient redness, or irritation. Overheating possible with prolonged far-infrared exposure.",
+      "common_adverse_effects": [
+        {
+          "effect": "Warmth"
+        },
+        {
+          "effect": "Mild redness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Burn if used improperly"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active skin cancer on treatment site",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Direct retinal exposure",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy (avoid abdominal use)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Photosensitive conditions",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid abdominal exposure without clearance."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Near-infrared photobiomodulation, Far-infrared heat therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Position device at manufacturer-specified distance.\nApply near-infrared light for 10–20 minutes over target area (e.g., joint, muscle, scalp for neuro applications).\nFor far-infrared, allow gradual warming over 15–30 minutes.\nAvoid continuous exposure to prevent overheating."
+      }
     }
   },
   "sections": [
@@ -229,6 +317,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Chow RT, et al. Efficacy of low-level laser therapy in the management of neck pain: a systematic review and meta-analysis. Lancet. 2009.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19717199/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Hamblin MR. Mechanisms and applications of the anti-inflammatory effects of photobiomodulation. AIMS Biophys. 2017.",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5523874/"
+    }
+  ],
   "seo": {
     "title": "Infrared Light Therapy",
     "description": "Evidence-based overview of near- and far-infrared light therapy for pain relief, circulation, inflammation, and tissue repair.",
@@ -241,5 +343,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for musculoskeletal pain; emerging for neurorehabilitation and mood disorders."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for musculoskeletal pain; emerging for neurorehabilitation and mood disorders."
+    ]
   }
 }

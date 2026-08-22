@@ -1,0 +1,364 @@
+{
+  "nodes": [
+    {
+      "id": "entrance",
+      "text": "You push through the heavy doors. The dining hall hits you all at once—clattering trays, conversations layered over each other, clusters of people who all seem to know exactly where they belong.\n\nYour chest tightens. That familiar thought: everyone is watching. They're not. Probably. But your body doesn't believe that yet.\n\nYou see the food line. A table with one person reading, headphones in. A bigger table with a group mid-conversation. An empty corner table. The exit behind you.",
+      "choiceIds": ["entrance_step_in", "entrance_quick_scan", "entrance_phone", "entrance_leave"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "anxious", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": true
+    },
+    {
+      "id": "stepping_in",
+      "text": "You take a breath. Not deep—that would feel weird—just enough to steady yourself. You move toward the food line.\n\nStanding there, you're hyper-aware of everything. The person behind you is too close. Or normal close? The menu board is confusing. Someone ahead is taking forever.\n\nYour mind is loud. Part of you wants to leave. Part of you knows that leaving would make tomorrow harder.",
+      "choiceIds": ["line_stay_present", "line_phone_shield", "line_leave"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "quick_scan",
+      "text": "You pause just inside the door, scanning the room like you're looking for someone. Classic move. Buys you time.\n\nThe group table has an empty chair. The reading person hasn't looked up. The corner table is safe. The food line is moving.\n\nNo one has noticed you yet. You could still leave without it meaning anything.",
+      "choiceIds": ["scan_commit", "scan_corner_first", "scan_leave"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "phone_entrance",
+      "text": "You pull out your phone before you've even fully entered. It's automatic—something to hold, something to look at. You're not really reading anything.\n\nYou drift toward the food line, eyes on the screen. The anxiety dulls slightly. But you feel a little more hidden, a little less present.",
+      "choiceIds": ["phone_to_line", "phone_realize_bail"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "bailed_early",
+      "text": "You turn and walk out. The relief is instant—the noise fades, the pressure lifts. You're outside before you've really decided.\n\nAn hour later, you're still hungry. The dining hall is still open. There's a window of time where you could try again. Or not.",
+      "choiceIds": ["try_again", "stay_away"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "got_food",
+      "text": "You have your tray. The food is fine. Now comes the real part.\n\nThree options: the empty corner table—safe, solitary. The table with one person reading—lower stakes, but still someone. The group table with the open seat—highest exposure.\n\nYour hands are slightly damp on the tray. You need to decide.",
+      "choiceIds": ["seat_reader", "seat_group", "seat_alone", "seat_bail"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": true
+    },
+    {
+      "id": "approach_reader",
+      "text": "You walk toward the person reading. They have headphones in, a textbook open, a half-eaten sandwich. They don't look up as you approach.\n\nYou stop near the empty chair across from them. They still haven't noticed you. You could just sit. Or you could say something.",
+      "choiceIds": ["reader_just_sit", "reader_ask_seat", "reader_change_mind"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "slow" },
+      "routeMarkers": ["route_quiet_meaningful"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "reader_sat_quietly",
+      "text": "You sit down without a word. They glance up briefly, register that someone sat down, then go back to their book. No acknowledgment. No hostility. Just... neutral.\n\nYou eat. They read. The silence is strange at first—is this awkward? Are you supposed to say something? But after a few minutes, it starts to feel almost comfortable. Two people sharing a table, neither one needing anything from the other.\n\nYour meal is nearly done.",
+      "choiceIds": ["reader_leave_quietly", "reader_offer_small_nod", "force_conversation_reader"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": ["route_quiet_meaningful"],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_full_meal", "action": "progress" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "reader_asked",
+      "text": "\"Is this seat taken?\"\n\nThey pull out one earbud. \"Oh—no, go ahead.\" They put the earbud back in.\n\nThat's it. Four words. You sit down.\n\nThey don't seem annoyed. They don't seem happy. They're just... continuing what they were doing. The interaction was so small it barely registered for them.",
+      "choiceIds": ["reader_sit_interpret", "reader_sit_spiral"],
+      "isEnding": false,
+      "presentation": { "type": "dialogue", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": ["route_quiet_meaningful"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "reader_interpret",
+      "text": "You eat. They read. The silence settles.\n\nHere's what your brain wants to do: analyze the earbud thing. Did they put it back in too fast? Were they annoyed? Should you have said something else?\n\nBut there's another option: accept that it was nothing. A small, neutral moment. Not a rejection. Not a welcome. Just normal.",
+      "choiceIds": ["interpret_reader_normal", "interpret_reader_negative", "reader_finish_meal"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "approach_group",
+      "text": "You walk toward the group table. There are four people, mid-conversation about something—a class, a professor, you're not sure. The empty chair is at the end.\n\nYou stop. Heart pounding. The conversation doesn't pause. They haven't noticed you yet.\n\nYou could ask. You could just sit. You could stand here another three seconds and feel like an idiot.",
+      "choiceIds": ["group_ask_direct", "group_just_sit", "group_hover_awkward", "group_abort"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_direct_connect"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "group_asked",
+      "text": "\"Hey—is this seat taken?\"\n\nThe nearest person glances up. \"Nope, go ahead.\"\n\nThey return to the conversation. It doesn't include you. You sit down.\n\nThe interaction was three seconds. Their response was flat—not warm, not cold. Your brain is already trying to decide what that meant.",
+      "choiceIds": ["interpret_normal", "interpret_rejection", "interpret_pity"],
+      "isEnding": false,
+      "presentation": { "type": "dialogue", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": ["route_direct_connect"],
+      "objectiveTriggers": [],
+      "isCheckpoint": true
+    },
+    {
+      "id": "group_interpretation_normal",
+      "text": "You decide: that was normal. Not a welcome party. Not a rejection. Just a brief, ordinary moment between strangers.\n\nYou eat. The conversation continues around you. Occasionally someone laughs. You're not part of it, but you're also not excluded. You're just... there.\n\nThen there's a lull. One of them turns slightly in your direction.",
+      "choiceIds": ["lull_speak_up", "lull_stay_quiet", "lull_check_phone"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": ["route_direct_connect"],
+      "objectiveTriggers": [{ "objectiveId": "obj_accurate_read", "action": "progress" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "group_interpretation_rejection",
+      "text": "Your brain latches on: their tone was flat. They barely looked at you. They went right back to their conversation. They didn't want you there.\n\n**[Interpretation: You turned a neutral moment into evidence of rejection]**\n\nYou sit down anyway, but the meal already feels wrong. Every laugh that isn't directed at you feels like confirmation. You eat quickly.",
+      "choiceIds": ["rejection_leave_fast", "rejection_catch_yourself", "rejection_spiral_more"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_mind_reading"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "group_interpretation_pity",
+      "text": "They said yes, but they had to. Social obligation. They probably looked at you and thought: here comes the awkward loner.\n\n**[Interpretation: You assumed their compliance was pity, not neutrality]**\n\nYou sit, but you're already preparing to leave as soon as it's not weird. The meal is a formality now.",
+      "choiceIds": ["pity_exit_fast", "pity_pause_reconsider"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_mind_reading"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "lull_spoke_up",
+      "text": "\"How's your day going?\"\n\nThe person nearest you looks up. Brief surprise, then: \"Pretty good, thanks. You?\"\n\n\"Not bad.\"\n\nThey nod. Small smile. The conversation doesn't continue, but it wasn't supposed to. It was just a moment of ordinary human acknowledgment.\n\nYou go back to eating. So do they.",
+      "choiceIds": ["after_exchange_settle", "after_exchange_push", "after_exchange_analyze"],
+      "isEnding": false,
+      "presentation": { "type": "dialogue", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_direct_connect"],
+      "objectiveTriggers": [{ "objectiveId": "obj_accurate_read", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "lull_stayed_quiet",
+      "text": "The lull passes. The conversation picks back up without you. That's fine. You didn't need to speak. You're here. You're eating. That's enough.\n\nA few more minutes pass. Your meal is almost done.",
+      "choiceIds": ["quiet_finish_meal", "quiet_leave_early"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_full_meal", "action": "progress" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "after_exchange",
+      "text": "The small talk is over. Now what?\n\nYour brain has options: replay the exchange critically, looking for where you sounded weird. Or just... let it exist as the neutral thing it was.\n\nThe meal is nearly done. Soon you'll leave.",
+      "choiceIds": ["metabolize_positive", "metabolize_critical", "metabolize_uncertain"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "awkward_silence_group",
+      "text": "There's a silence. It stretches. Someone checks their phone. Someone else stares at their food.\n\nYou're aware of every second. This is the part social anxiety makes hard—sitting in a moment that isn't going anywhere, without escaping or filling it.\n\nThe silence isn't hostile. It's just empty. But your body is telling you to leave.",
+      "choiceIds": ["stay_through_silence", "escape_to_phone", "leave_during_silence"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "stayed_through_awkward",
+      "text": "You don't fill the silence. You don't check your phone. You just sit with it.\n\nThirty seconds. Forty-five. Then someone says something and the conversation resumes. It wasn't about you. It wasn't because of you. It was just a pause.\n\n**[You tolerated discomfort without escaping]**\n\nYour meal is done. Time to leave.",
+      "choiceIds": ["leave_proud", "leave_neutral", "leave_still_uncertain"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": ["route_stumble_recover"],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_awkward", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "sat_alone",
+      "text": "You take the corner table. It's quieter here. No one to navigate, no questions to ask. You eat your meal with your headphones in, eyes mostly down.\n\nThe anxiety is manageable. But as you finish, you notice the group table laughing about something. The reader turns a page. Life is happening around you.\n\nYou stayed. That counts for something. But part of you wonders what would have happened if you'd sat somewhere else.",
+      "choiceIds": ["alone_leave_satisfied", "alone_leave_wondering", "alone_regret"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": ["route_safe_present"],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_full_meal", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "recovery_caught_yourself",
+      "text": "Wait.\n\nYou notice what your brain is doing. You're making up a story about what they think. You don't actually know. Their flat response could mean anything—tired, distracted, just not expressive. It probably meant nothing.\n\n**[You caught the mind-reading pattern mid-spiral]**\n\nYou take a breath. You're still here. You can stay.",
+      "choiceIds": ["recovery_stay_present", "recovery_stay_guarded"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "hopeful", "pacing": "slow" },
+      "routeMarkers": ["route_stumble_recover"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "recovery_stayed",
+      "text": "You stay. The meal continues. The group talks around you. Occasionally there's a lull, and you sit with it.\n\nIt's not comfortable. But it's also not the disaster your brain predicted. You finish eating.\n\nThis wasn't a triumphant social success. It was something smaller and maybe more important: you stayed when every instinct told you to leave.",
+      "choiceIds": ["recovery_leave_processing", "recovery_leave_uncertain"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": ["route_stumble_recover"],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_full_meal", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "return_attempt",
+      "text": "You're back. The dining hall looks the same. The anxiety is still there, but different now—tempered by the knowledge that you already left once and it didn't help.\n\nThis time you're doing it on purpose. That changes something.",
+      "choiceIds": ["return_direct", "return_careful"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": ["route_comeback"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "final_reflection_group",
+      "text": "You're walking out of the dining hall. The meal is over. The interaction is done.\n\nNow your brain gets to decide what that experience meant.\n\nWas it evidence that you can handle ordinary social moments? Or is it already being processed into a list of things you did wrong?",
+      "choiceIds": ["reflect_balanced", "reflect_critical", "reflect_proud"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "final_reflection_reader",
+      "text": "You're done. You gather your things. The person reading hasn't looked up again. You're not sure they'd recognize you if they saw you tomorrow.\n\nBut you stayed. You ate your meal in a public space, near another person, without collapsing. That's data.",
+      "choiceIds": ["reader_final_good", "reader_final_enough", "reader_final_critical"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "reader_forced_awkward",
+      "text": "They respond briefly—\"Yeah, just reviewing for a test\"—and turn back to their book. The conversation dies immediately.\n\nYou eat in silence. It's not hostile, but it's also not comfortable. You pushed when they weren't looking for connection, and now you're both sitting in the aftermath of that mismatch.",
+      "choiceIds": ["forced_accept_awkward", "forced_leave_early"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "reader_spiral_node",
+      "text": "Your brain is building a story. They put the earbud back in too fast. Their response was too short. They probably wish you weren't here.\n\nYou're eating, but you're not really present. Part of you is already rehearsing how to leave without it being weird.",
+      "choiceIds": ["spiral_catch_yourself", "spiral_leave_fast", "spiral_stay_despite"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_mind_reading"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "group_sat_no_ask",
+      "text": "You sit down without asking. No one says anything. No one looks at you. The conversation continues around you.\n\nDid they notice? Did they care? You can't tell. The ambiguity hangs there as you start eating.",
+      "choiceIds": ["no_ask_settle", "no_ask_worry", "no_ask_leave"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "group_hover_moment",
+      "text": "You're standing at the edge of the table, tray in hands, not quite sitting, not quite leaving. Someone glances up briefly, then looks away.\n\nThe moment stretches. Every second feels like evidence that you're doing this wrong.",
+      "choiceIds": ["hover_finally_ask", "hover_just_sit", "hover_abort"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "anxious", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "lull_phone_escape",
+      "text": "You pull out your phone and scroll. The lull passes without you being part of it. When you look up, the conversation has moved on.\n\nYou finish your meal in parallel with them—present but not connected. Safe but separate.",
+      "choiceIds": ["phone_finish_meal", "phone_put_away_try"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "extended_conversation",
+      "text": "The conversation keeps going. You ask what class they're in. They mention something about the professor. Someone else joins in with a complaint about the homework.\n\nYou're part of it now—not the center, but included. It's messy and unscripted and more than you expected.",
+      "choiceIds": ["extended_ride_it_out", "extended_pull_back", "extended_leave_on_high"],
+      "isEnding": false,
+      "presentation": { "type": "dialogue", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_direct_connect"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "post_exchange_analyze",
+      "text": "Your brain is already replaying the exchange. Did \"not bad\" sound weird? Should you have said more? Did they actually want to talk or were they just being polite?\n\nYou're eating mechanically now, more focused on the internal replay than the food in front of you.",
+      "choiceIds": ["analyze_stop_it", "analyze_let_it_run", "analyze_leave_early"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "deep_spiral",
+      "text": "The story keeps growing. They're definitely talking about you. The person who laughed just now—was that about you? You shouldn't have come here. You shouldn't have sat here. Everyone knows you don't belong.\n\nThe meal tastes like nothing. You're counting the seconds until you can leave.",
+      "choiceIds": ["deep_spiral_leave", "deep_spiral_stay_suffering"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_mind_reading"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "phone_escape_silence",
+      "text": "Your phone is out. The silence passes. When you look up, someone is getting up to leave. The table dynamic has shifted.\n\nYou finish your meal behind the safety of your screen. It's not connection, but it's completion.",
+      "choiceIds": ["phone_silence_finish", "phone_silence_leave"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "recovery_guarded",
+      "text": "You stay, but you're watching everything. Every laugh feels like it might be about you. Every pause makes you want to check if you're doing something wrong.\n\nThe meal finishes. You survived it. But you're not sure if this counted as progress or just endurance.",
+      "choiceIds": ["guarded_leave_tired", "guarded_leave_uncertain"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [{ "objectiveId": "obj_stay_full_meal", "action": "complete" }],
+      "isCheckpoint": false
+    }
+  ]
+}

@@ -1,86 +1,182 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "somatic-experiencing",
-  "type": "therapy",
-  "name": "Somatic Experiencing (SE)",
-  "summary": "Somatic Experiencing is a body-focused therapy designed to resolve trauma and chronic stress by helping individuals release stored physiological tension and restore natural self-regulation.",
-  "description": "Somatic Experiencing (SE), developed by Dr. Peter Levine, is a trauma therapy that emphasizes the body’s innate capacity to heal. It views trauma not as the event itself, but as the dysregulation of the autonomic nervous system that results from overwhelming experiences. SE uses gentle awareness of bodily sensations, movement, and the release of physical tension (discharge) to restore balance. By working with sensations rather than explicit re-exposure to trauma, SE helps clients renegotiate traumatic experiences and reestablish a sense of safety and resilience.",
-  "category": "therapy/individual",
-  "tags": [
-    "trauma therapy",
-    "somatic therapy",
-    "nervous system regulation",
-    "body-focused",
-    "stress recovery"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "somatic-experiencing",
+    "name": "Somatic Experiencing (SE)",
+    "generic_name": "somatic experiencing",
+    "brand_names": [
+      "SE"
+    ],
+    "wikidata_qid": "Q7559447"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Individual therapy",
       "Trauma-focused therapy"
     ],
-    "treatment_types": [
-      "Somatic therapy",
-      "Trauma resolution"
-    ],
-    "categories": [
-      "Trauma-focused interventions",
-      "Mind-body therapies"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–20 sessions, depending on trauma severity"
-    ],
-    "specialty_areas": [
-      "Post-traumatic stress disorder (PTSD)",
-      "Chronic stress",
-      "Anxiety",
-      "Developmental trauma",
-      "Somatic symptoms"
-    ],
-    "wikidata_qid": "Q7559447"
+    "tags": [
+      "trauma therapy",
+      "somatic therapy",
+      "nervous system regulation",
+      "body-focused",
+      "stress recovery"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-traumatic stress disorder (PTSD)",
-      "Chronic stress",
-      "Developmental trauma",
-      "Anxiety with somatic symptoms"
-    ],
-    "conditions_treated": [
-      "PTSD",
-      "Anxiety disorders",
-      "Somatic symptom disorders",
-      "Stress-related disorders"
-    ],
-    "off_label_uses": [
-      "Performance enhancement",
-      "Chronic pain relief"
-    ],
-    "contraindications": [
-      "Unstable medical conditions where somatic awareness may be distressing",
-      "Acute psychosis"
-    ],
-    "safety_profile": "Generally safe; may bring up strong physical or emotional sensations, which require careful pacing and skilled facilitation.",
-    "evidence_level": "Emerging",
-    "research_support": "Preliminary studies show SE can reduce PTSD symptoms, though more large-scale randomized controlled trials are needed.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 3,
-      "anxiety": 3,
-      "stress": 4,
-      "somatic-symptoms": 3
+  "summary": "Somatic Experiencing is a body-focused therapy designed to resolve trauma and chronic stress by helping individuals release stored physiological tension and restore natural self-regulation.",
+  "description": "Somatic Experiencing (SE), developed by Dr. Peter Levine, is a trauma therapy that emphasizes the body’s innate capacity to heal. It views trauma not as the event itself, but as the dysregulation of the autonomic nervous system that results from overwhelming experiences. SE uses gentle awareness of bodily sensations, movement, and the release of physical tension (discharge) to restore balance. By working with sensations rather than explicit re-exposure to trauma, SE helps clients renegotiate traumatic experiences and reestablish a sense of safety and resilience.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-traumatic stress disorder (PTSD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-stress",
+          "condition_name": "Chronic stress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "developmental-trauma",
+          "condition_name": "Developmental trauma",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-with-somatic-symptoms",
+          "condition_name": "Anxiety with somatic symptoms",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "somatic-symptom-disorders",
+          "condition_name": "Somatic symptom disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "stress-related-disorders",
+          "condition_name": "Stress-related disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "performance-enhancement",
+          "condition_name": "Performance enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "chronic-pain-relief",
+          "condition_name": "Chronic pain relief",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level": "emerging",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "stress": {
+          "rating": 4
+        },
+        "somatic-symptoms": {
+          "rating": 3
+        }
+      },
+      "research_support": "Preliminary studies show SE can reduce PTSD symptoms, though more large-scale randomized controlled trials are needed."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–20 sessions, depending on trauma severity"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; may bring up strong physical or emotional sensations, which require careful pacing and skilled facilitation.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary emotional or physical discomfort"
+        },
+        {
+          "effect": "Mild fatigue"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Intensification of traumatic memories if not paced appropriately"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Acute psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dissociation without stabilization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Clients with limited tolerance for body awareness exercises",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Somatic therapy, Trauma resolution",
+        "key_techniques": [
+          "Trauma-focused interventions",
+          "Mind-body therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Grounding and orienting to present safety.",
+          "during_session": "Tracking sensations, titrating activation, and facilitating discharge of stored tension.",
+          "post_session": "Reflection, integration, and grounding practices."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Mental health professionals trained and certified in Somatic Experiencing"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -231,6 +327,20 @@
           "url": "https://doi.org/10.3389/fpsyg.2015.00093"
         }
       ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Levine, P. A. (2010). In an Unspoken Voice: How the Body Releases Trauma and Restores Goodness.",
+      "url": "https://www.penguinrandomhouse.com/books/307064/in-an-unspoken-voice-by-peter-a-levine/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Payne, P., Levine, P. A., & Crane-Godreau, M. A. (2015). Somatic experiencing: Using interoception and proprioception as core elements of trauma therapy. Frontiers in Psychology.",
+      "url": "https://doi.org/10.3389/fpsyg.2015.00093"
     }
   ],
   "seo": {

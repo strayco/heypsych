@@ -1,72 +1,148 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "low-field-magnetic-stimulation",
-  "type": "interventional",
-  "name": "Low-Field Magnetic Stimulation (LFMS)",
-  "summary": "A non-invasive neuromodulation technique delivering weak magnetic fields to modulate brain activity, with emerging evidence for rapid mood improvement in depression and bipolar disorder.",
-  "description": "Low-Field Magnetic Stimulation (LFMS) applies magnetic fields much weaker than those used in repetitive transcranial magnetic stimulation (rTMS), typically in the microtesla to millitesla range. It does not induce neuronal firing directly but is thought to modulate ongoing brain oscillations and network connectivity. LFMS sessions are short, painless, and do not require anesthesia, making it a potentially rapid-acting and well-tolerated option for mood disorders.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "LFMS",
-    "low-intensity magnetic stimulation",
-    "neuromodulation",
-    "depression"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Neuromodulation"
-    ],
-    "treatment_types": [
-      "Brain stimulation"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "External magnetic field application"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "20–30 minutes",
-    "treatment_duration": [
-      "Acute series",
-      "Maintenance possible"
-    ],
-    "specialty_areas": [
-      "Mood Disorders"
+  "identity": {
+    "slug": "low-field-magnetic-stimulation",
+    "name": "Low-Field Magnetic Stimulation (LFMS)",
+    "generic_name": "low-field magnetic stimulation",
+    "brand_names": [
+      "LFMS"
     ],
     "wikidata_qid": "Q17492535"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder",
-      "Bipolar depression"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
+    "intervention_types": [
+      "Neuromodulation"
     ],
-    "conditions_treated": [
-      "Treatment-resistant depression",
-      "Bipolar disorder",
-      "Subsyndromal depression"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders"
-    ],
-    "contraindications": [
-      "Implanted ferromagnetic devices near the head",
-      "Active seizure disorder (precautionary)"
-    ],
-    "safety_profile": "Well tolerated with minimal side effects. No seizures reported in clinical trials.",
-    "evidence_level": "Early-phase clinical trials with promising results for rapid antidepressant effects.",
-    "research_support": "Several small randomized controlled trials have demonstrated rapid mood improvement within a single session, particularly in bipolar depression.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "acute_mood_elevation": 3,
-      "treatment_resistant_depression": 2,
-      "overall_tolerability": 5
+    "tags": [
+      "LFMS",
+      "low-intensity magnetic stimulation",
+      "neuromodulation",
+      "depression"
+    ]
+  },
+  "summary": "A non-invasive neuromodulation technique delivering weak magnetic fields to modulate brain activity, with emerging evidence for rapid mood improvement in depression and bipolar disorder.",
+  "description": "Low-Field Magnetic Stimulation (LFMS) applies magnetic fields much weaker than those used in repetitive transcranial magnetic stimulation (rTMS), typically in the microtesla to millitesla range. It does not induce neuronal firing directly but is thought to modulate ongoing brain oscillations and network connectivity. LFMS sessions are short, painless, and do not require anesthesia, making it a potentially rapid-acting and well-tolerated option for mood disorders.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "subsyndromal-depression",
+          "condition_name": "Subsyndromal depression",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Early-phase clinical trials with promising results for rapid antidepressant effects.",
+      "efficacy_ratings": {
+        "acute_mood_elevation": {
+          "rating": 3
+        },
+        "treatment_resistant_depression": {
+          "rating": 2
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Several small randomized controlled trials have demonstrated rapid mood improvement within a single session, particularly in bipolar depression."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute series; Maintenance possible"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "External magnetic field application"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–30 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Well tolerated with minimal side effects. No seizures reported in clinical trials.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild scalp sensations"
+        },
+        {
+          "effect": "Transient headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "None reported in current literature"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Ferromagnetic implants near head",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of seizures",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe uncontrolled medical illness",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safety not established."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Neuromodulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Position coil or LFMS device over target brain region (commonly midline frontal).\nApply low-field magnetic stimulation at prescribed parameters.\nMonitor patient comfort during session."
+      }
     }
   },
   "sections": [
@@ -201,6 +277,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Rohan ML, et al. Rapid mood-elevating effects of low field magnetic stimulation in depression. Biol Psychiatry. 2004.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15016523/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Bennett CM, et al. LFMS for bipolar depression: Randomized, sham-controlled pilot trial. Depress Anxiety. 2014.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24577946/"
+    }
+  ],
   "seo": {
     "title": "Low-Field Magnetic Stimulation (LFMS)",
     "description": "Overview of low-field magnetic stimulation, a non-invasive neuromodulation technique for rapid mood improvement in depression and bipolar disorder.",
@@ -213,5 +303,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Early-phase clinical trials with promising results for rapid antidepressant effects."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Early-phase clinical trials with promising results for rapid antidepressant effects."
+    ]
   }
 }

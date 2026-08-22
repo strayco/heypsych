@@ -39,12 +39,12 @@ export function MedicationsList({ medications, className }: MedicationsListProps
   const offLabel = medications.filter((med) => med.context === "off-label");
 
   return (
-    <div className={cn("rounded-lg border border-slate-200 bg-slate-50 p-6", className)}>
-      <h3 className="mb-4 text-lg font-bold text-slate-900">
+    <div className={cn("rounded-lg border border-separator bg-surface-grouped p-6", className)}>
+      <h3 className="mb-4 text-lg font-bold text-label-primary">
         Medications Sometimes Used
       </h3>
 
-      <p className="mb-4 text-sm text-slate-600">
+      <p className="mb-4 text-sm text-label-tertiary">
         These medications may be prescribed for this condition. Always consult a healthcare
         professional before starting any medication.
       </p>
@@ -54,7 +54,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
         {firstLine.length > 0 && (
           <div>
             <div className="mb-2 flex items-center gap-2">
-              <h4 className="text-sm font-semibold text-slate-900">First-Line Treatments</h4>
+              <h4 className="text-sm font-semibold text-label-secondary">First-Line Treatments</h4>
               <Badge variant="success" size="sm">
                 FDA-Approved
               </Badge>
@@ -64,7 +64,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
                 <li key={med.slug}>
                   <Link
                     href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
                   >
                     {med.name}
                   </Link>
@@ -78,7 +78,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
         {secondLine.length > 0 && (
           <div>
             <div className="mb-2 flex items-center gap-2">
-              <h4 className="text-sm font-semibold text-slate-900">Second-Line Treatments</h4>
+              <h4 className="text-sm font-semibold text-label-secondary">Second-Line Treatments</h4>
               <Badge variant="outline" size="sm">
                 Alternative
               </Badge>
@@ -88,7 +88,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
                 <li key={med.slug}>
                   <Link
                     href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
                   >
                     {med.name}
                   </Link>
@@ -102,7 +102,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
         {offLabel.length > 0 && (
           <div>
             <div className="mb-2 flex items-center gap-2">
-              <h4 className="text-sm font-semibold text-slate-900">Off-Label Use</h4>
+              <h4 className="text-sm font-semibold text-label-secondary">Off-Label Use</h4>
               <Badge variant="warning" size="sm">
                 Limited Evidence
               </Badge>
@@ -112,7 +112,7 @@ export function MedicationsList({ medications, className }: MedicationsListProps
                 <li key={med.slug}>
                   <Link
                     href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
                   >
                     {med.name}
                   </Link>

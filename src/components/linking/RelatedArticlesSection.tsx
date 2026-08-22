@@ -60,7 +60,7 @@ export function RelatedArticlesSection({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-purple-600" />
+            <BookOpen className="h-5 w-5 text-accent" />
             {title}
           </CardTitle>
         </CardHeader>
@@ -72,12 +72,12 @@ export function RelatedArticlesSection({
                 href={`/resources/${link.targetSlug}`}
                 className="group block"
               >
-                <div className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4 transition-all hover:border-purple-300 hover:bg-purple-50">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-purple-100">
-                    <FileText className="h-5 w-5 text-purple-600" />
+                <div className="flex items-center gap-3 rounded-lg border border-separator bg-surface-grouped p-4 transition-all hover:border-accent-border hover:bg-fill-secondary">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-tint">
+                    <FileText className="h-5 w-5 text-accent" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="truncate font-medium text-neutral-900 group-hover:text-purple-700">
+                    <div className="truncate font-medium text-label-primary group-hover:text-accent">
                       {link.anchorOptions[0]}
                     </div>
                     {showBadges && (
@@ -86,7 +86,7 @@ export function RelatedArticlesSection({
                       </Badge>
                     )}
                   </div>
-                  <ArrowRight className="h-4 w-4 flex-shrink-0 text-neutral-400 transition-transform group-hover:translate-x-1 group-hover:text-purple-600" />
+                  <ArrowRight className="h-4 w-4 shrink-0 text-label-tertiary transition-transform group-hover:translate-x-1 group-hover:text-accent" />
                 </div>
               </Link>
             ))}

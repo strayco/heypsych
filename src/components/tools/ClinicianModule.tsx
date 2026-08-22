@@ -36,26 +36,26 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
   }).filter(Boolean);
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border-y border-blue-200">
+    <section className="bg-gradient-to-br from-blue-50 via-surface to-indigo-50 border-y border-accent-border">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-blue-100 rounded-lg">
-            <Stethoscope className="h-5 w-5 text-blue-600" />
+          <div className="p-2 bg-accent-tint-hover rounded-lg">
+            <Stethoscope className="h-5 w-5 text-accent" />
           </div>
-          <h2 className="text-xl font-bold text-neutral-900">For Clinicians</h2>
+          <h2 className="text-xl font-bold text-label-primary">For Clinicians</h2>
         </div>
 
         {/* How Clinicians Use It */}
         <div className="mb-6">
-          <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+          <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
             How Clinicians Use This
           </h3>
           <ul className="space-y-2">
             {clinician.how_clinicians_use_it.map((item, index) => (
               <li key={index} className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                <span className="text-neutral-700">{item}</span>
+                <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                <span className="text-label-secondary">{item}</span>
               </li>
             ))}
           </ul>
@@ -63,14 +63,14 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
 
         {/* Workflow Fit Chips */}
         <div className="mb-6">
-          <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+          <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
             Workflow Fit
           </h3>
           <div className="flex flex-wrap gap-2">
             {workflowConfigs.map((wf) => (
               <span
                 key={wf.workflowSlug}
-                className="px-3 py-1.5 bg-blue-100 text-blue-800 text-sm font-medium rounded-full"
+                className="px-3 py-1.5 bg-accent-tint-hover text-accent-700 text-sm font-medium rounded-full"
               >
                 {wf.chip_label}
               </span>
@@ -81,12 +81,12 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
         {/* Implementation Notes */}
         {clinician.implementation_notes && (
           <div className="mb-6">
-            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
               Implementation Notes
             </h3>
-            <div className="flex items-start gap-2 p-4 bg-white border border-blue-200 rounded-lg">
-              <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-              <p className="text-neutral-700">{clinician.implementation_notes}</p>
+            <div className="flex items-start gap-2 p-4 bg-surface border border-accent-border rounded-lg">
+              <Info className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+              <p className="text-label-secondary">{clinician.implementation_notes}</p>
             </div>
           </div>
         )}
@@ -94,14 +94,14 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
         {/* Integrations */}
         {clinician.integrations && clinician.integrations.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
               Known Integrations
             </h3>
             <div className="flex flex-wrap gap-2">
               {clinician.integrations.map((integration) => (
                 <span
                   key={integration}
-                  className="px-3 py-1.5 bg-neutral-100 text-neutral-700 text-sm rounded-full"
+                  className="px-3 py-1.5 bg-surface-grouped text-label-secondary text-sm rounded-full"
                 >
                   {integration}
                 </span>
@@ -113,10 +113,10 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
         {/* Billing Notes */}
         {clinician.billing_notes && (
           <div className="mb-6">
-            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
               Billing Notes
             </h3>
-            <p className="text-neutral-700 bg-white p-4 border border-neutral-200 rounded-lg">
+            <p className="text-label-secondary bg-surface p-4 border border-separator rounded-lg">
               {clinician.billing_notes}
             </p>
           </div>
@@ -124,8 +124,8 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
 
         {/* Related Clinician Hubs */}
         {hubLinks.length > 0 && (
-          <div className="pt-4 border-t border-blue-200">
-            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wide mb-3">
+          <div className="pt-4 border-t border-accent-border">
+            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
               Explore More Clinician Tools
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -133,7 +133,7 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
                 <Link
                   key={hub.slug}
                   href={hub.url}
-                  className="inline-flex items-center gap-1 px-4 py-2 bg-white border border-blue-200 rounded-lg text-sm font-medium text-blue-700 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                  className="inline-flex items-center gap-1 px-4 py-2 bg-surface border border-accent-border rounded-lg text-sm font-medium text-accent-700 hover:bg-accent-tint hover:border-accent-600 transition-colors"
                 >
                   {hub.display_name}
                   <ArrowRight className="h-3 w-3" />

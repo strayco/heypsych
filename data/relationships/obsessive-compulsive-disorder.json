@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0",
+  "entity": {
+    "type": "condition",
+    "slug": "obsessive-compulsive-disorder"
+  },
+  "updatedAt": "2024-01-01T00:00:00Z",
+  "updatedBy": "editorial-team",
+  "relationships": [
+    {
+      "id": "ocd-erp-treatment",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "treatment",
+        "slug": "exposure-response-prevention"
+      },
+      "relation": "USED_FOR",
+      "audience": ["patient", "clinician"],
+      "displayLabel": "Explore ERP Therapy",
+      "rationale": "Exposure and Response Prevention (ERP) is the gold standard psychological treatment for OCD, with strong evidence from randomized controlled trials.",
+      "priority": 1,
+      "provenance": "editorial",
+      "status": "published"
+    },
+    {
+      "id": "ocd-cbt-treatment",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "treatment",
+        "slug": "cognitive-behavioral-therapy"
+      },
+      "relation": "USED_FOR",
+      "audience": ["patient", "clinician"],
+      "displayLabel": "Learn about CBT",
+      "rationale": "Cognitive Behavioral Therapy, particularly when combined with ERP, is effective for OCD treatment.",
+      "priority": 2,
+      "provenance": "editorial",
+      "status": "published"
+    },
+    {
+      "id": "ocd-ssri-medication",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "treatment",
+        "slug": "sertraline-zoloft"
+      },
+      "relation": "USED_FOR",
+      "audience": ["patient", "clinician"],
+      "displayLabel": "Explore medication options",
+      "rationale": "SSRIs, including sertraline, are FDA-approved first-line medications for OCD. Higher doses are often needed compared to depression treatment.",
+      "priority": 3,
+      "provenance": "editorial",
+      "status": "published"
+    },
+    {
+      "id": "ocd-fluvoxamine",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "treatment",
+        "slug": "fluvoxamine-luvox"
+      },
+      "relation": "USED_FOR",
+      "audience": ["patient", "clinician"],
+      "displayLabel": "Fluvoxamine (Luvox)",
+      "rationale": "Fluvoxamine is FDA-approved specifically for OCD and has strong evidence supporting its efficacy.",
+      "priority": 4,
+      "provenance": "editorial",
+      "status": "published"
+    },
+    {
+      "id": "ocd-find-care",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "provider",
+        "slug": "psychiatrists"
+      },
+      "relation": "FIND_CARE_FOR",
+      "audience": ["patient"],
+      "displayLabel": "Find psychiatrists who may treat OCD",
+      "rationale": "Connects users to psychiatrist directory with appropriate expectation setting about data limitations.",
+      "priority": 10,
+      "provenance": "editorial",
+      "status": "published"
+    },
+    {
+      "id": "ocd-anxiety-relation",
+      "source": {
+        "type": "condition",
+        "slug": "obsessive-compulsive-disorder"
+      },
+      "target": {
+        "type": "condition",
+        "slug": "generalized-anxiety-disorder"
+      },
+      "relation": "HAS_NEXT_STEP",
+      "audience": ["patient"],
+      "displayLabel": "Related: Generalized Anxiety",
+      "rationale": "OCD was historically classified as an anxiety disorder. Users may benefit from understanding related conditions.",
+      "priority": 20,
+      "provenance": "editorial",
+      "status": "published"
+    }
+  ],
+  "_comments": {
+    "assessmentNote": "No OCD-specific assessment (Y-BOCS) is currently available in the HeyPsych assessment library. The prompt specifies not to present unrelated assessments as OCD screeners. A 'questions to discuss with a professional' approach is used instead until a valid OCD assessment is added.",
+    "toolsNote": "Tools tagged for OCD/anxiety will be shown dynamically via ToolService.getByCondition(). No manual tool relationships needed here.",
+    "providerNote": "Find Care links use conservative language ('may treat') because NPPES data cannot substantiate OCD expertise."
+  }
+}

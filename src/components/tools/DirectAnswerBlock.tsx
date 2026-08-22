@@ -16,24 +16,24 @@ interface DirectAnswerBlockProps {
  */
 export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
   return (
-    <section className="bg-gradient-to-br from-white to-slate-50 border-b border-neutral-200">
+    <section className="bg-gradient-to-br from-surface to-surface-grouped border-b border-separator">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Tool Name & Rating */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">
+            <h1 className="text-3xl font-bold text-label-primary sm:text-4xl">
               {tool.name}
             </h1>
             {tool.app_rating && (
               <div className="flex items-center gap-2 mt-2">
                 <div className="flex items-center">
                   <Star className="h-5 w-5 fill-current text-yellow-500" />
-                  <span className="ml-1 font-bold text-lg text-neutral-900">
+                  <span className="ml-1 font-bold text-lg text-label-primary">
                     {tool.app_rating}
                   </span>
                 </div>
                 {tool.total_reviews && (
-                  <span className="text-neutral-600">
+                  <span className="text-label-tertiary">
                     ({formatReviews(tool.total_reviews)} reviews)
                   </span>
                 )}
@@ -44,12 +44,12 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
           {/* Quick Badges */}
           <div className="flex flex-wrap gap-2">
             {tool.pricing.free_tier && (
-              <Badge variant="outline" className="border-green-300 bg-green-50 text-green-800">
+              <Badge variant="outline" className="border-positive-border bg-positive-tint text-green-800">
                 Free Available
               </Badge>
             )}
             {tool.privacy.grade && tool.privacy.grade !== "unknown" && (
-              <Badge variant="outline" className="border-blue-300 bg-blue-50 text-blue-800">
+              <Badge variant="outline" className="border-accent-600 bg-accent-tint text-accent-700">
                 <Shield className="h-3 w-3 mr-1" />
                 Privacy: {tool.privacy.grade}
               </Badge>
@@ -63,7 +63,7 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
         </div>
 
         {/* One-Liner (Direct Answer) */}
-        <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+        <p className="text-lg text-label-secondary leading-relaxed mb-6">
           {tool.one_liner}
         </p>
 
@@ -89,14 +89,14 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
 
         {/* Best For / Not For */}
         <div className="grid sm:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-4 border border-green-200">
+          <div className="bg-surface rounded-lg p-4 border border-positive-border">
             <h2 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />
               Best For
             </h2>
             <ul className="space-y-2">
               {tool.best_for.slice(0, 4).map((item, i) => (
-                <li key={i} className="text-sm text-neutral-700 flex items-start gap-2">
+                <li key={i} className="text-sm text-label-secondary flex items-start gap-2">
                   <span className="text-green-500 mt-0.5">•</span>
                   {item}
                 </li>
@@ -104,15 +104,15 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
             </ul>
           </div>
 
-          <div className="bg-white rounded-lg p-4 border border-red-200">
-            <h2 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+          <div className="bg-surface rounded-lg p-4 border border-negative-border">
+            <h2 className="font-semibold text-negative-700 mb-3 flex items-center gap-2">
               <XCircle className="h-5 w-5" />
               Not Recommended For
             </h2>
             <ul className="space-y-2">
               {tool.not_for.slice(0, 3).map((item, i) => (
-                <li key={i} className="text-sm text-neutral-700 flex items-start gap-2">
-                  <span className="text-red-500 mt-0.5">•</span>
+                <li key={i} className="text-sm text-label-secondary flex items-start gap-2">
+                  <span className="text-negative mt-0.5">•</span>
                   {item}
                 </li>
               ))}
@@ -127,9 +127,9 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
 // Helper Components
 function AtAGlanceItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-white rounded-lg p-3 border border-neutral-200">
-      <dt className="text-xs text-neutral-500 uppercase tracking-wide">{label}</dt>
-      <dd className="mt-1 text-sm font-medium text-neutral-900">{value}</dd>
+    <div className="bg-surface rounded-lg p-3 border border-separator">
+      <dt className="text-xs text-label-primary0 uppercase tracking-wide">{label}</dt>
+      <dd className="mt-1 text-sm font-medium text-label-primary">{value}</dd>
     </div>
   );
 }

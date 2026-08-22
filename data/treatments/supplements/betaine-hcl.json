@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "betaine-hcl",
-  "type": "supplement",
-  "name": "Betaine Hydrochloride (Betaine HCl)",
-  "summary": "A digestive supplement historically used to increase gastric acid levels; studied primarily for hypochlorhydria, indigestion, and nutrient absorption support.",
-  "description": "Betaine hydrochloride (Betaine HCl) is a supplemental form of betaine combined with hydrochloric acid. It has historically been used to treat low stomach acid (hypochlorhydria), support protein digestion, and improve absorption of key nutrients such as vitamin B12, iron, calcium, and magnesium. Research evidence is limited, and it is no longer approved as a prescription digestive aid in the U.S. It is available as an over-the-counter supplement, often combined with pepsin. Safety concerns include risk of gastritis, esophageal irritation, and exacerbation of peptic ulcers.",
-  "category": "supplements",
-  "tags": [
-    "digestion",
-    "hypochlorhydria",
-    "stomach acid",
-    "nutrient absorption"
-  ],
-  "metadata": {
-    "compound_type": "Organic osmolyte with hydrochloride salt",
-    "natural_source": "Betaine (from beets, spinach, wheat) combined with HCl",
+  "identity": {
+    "slug": "betaine-hcl",
+    "name": "Betaine Hydrochloride (Betaine HCl)",
+    "generic_name": "betaine hydrochloride",
+    "brand_names": [
+      "Betaine HCl with Pepsin",
+      "Generic betaine HCl supplements"
+    ],
+    "aliases": [
+      "Betaine hydrochloride",
+      "Trimethylglycine HCl"
+    ],
+    "wikidata_qid": "Q422147"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Digestive Health",
       "Nutrient Absorption"
@@ -22,71 +25,155 @@
     "mechanism_categories": [
       "Gastric Acid Supplementation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Betaine HCl with Pepsin",
-      "Generic betaine HCl supplements"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; formerly approved but withdrawn",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Situational"
-    ],
-    "specialty_areas": [
-      "Gastroenterology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q422147"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Hypochlorhydria (low stomach acid)",
-      "Support of nutrient absorption",
-      "Adjunctive digestive aid"
-    ],
-    "off_label_uses": [
-      "Indigestion/dyspepsia (limited evidence)",
-      "B12 absorption testing (historical use)"
-    ],
-    "contraindications": [
-      "Peptic ulcer disease",
-      "Gastritis",
-      "GERD or esophagitis",
-      "Pregnancy/lactation (insufficient safety data)"
-    ],
-    "monitoring_required": [
-      "Gastrointestinal tolerance",
-      "Signs of mucosal irritation or ulcer exacerbation"
-    ],
-    "efficacy_rating": {
-      "digestion_support": 2,
-      "nutrient_absorption": 2,
-      "safety_tolerability": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "betaine hydrochloride",
-      "betaine HCl",
-      "stomach acid supplement"
-    ],
-    "synonyms": [
-      "Betaine hydrochloride",
-      "Trimethylglycine HCl"
-    ],
-    "common_misspellings": [
-      "betain HCL",
-      "betane HCL"
+    "tags": [
+      "digestion",
+      "hypochlorhydria",
+      "stomach acid",
+      "nutrient absorption"
     ]
+  },
+  "summary": "A digestive supplement historically used to increase gastric acid levels; studied primarily for hypochlorhydria, indigestion, and nutrient absorption support.",
+  "description": "Betaine hydrochloride (Betaine HCl) is a supplemental form of betaine combined with hydrochloric acid. It has historically been used to treat low stomach acid (hypochlorhydria), support protein digestion, and improve absorption of key nutrients such as vitamin B12, iron, calcium, and magnesium. Research evidence is limited, and it is no longer approved as a prescription digestive aid in the U.S. It is available as an over-the-counter supplement, often combined with pepsin. Safety concerns include risk of gastritis, esophageal irritation, and exacerbation of peptic ulcers.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "hypochlorhydria-low-stomach-acid",
+          "condition_name": "Hypochlorhydria (low stomach acid)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "support-of-nutrient-absorption",
+          "condition_name": "Support of nutrient absorption",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunctive-digestive-aid",
+          "condition_name": "Adjunctive digestive aid",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "indigestion-dyspepsia-limited-evidence",
+          "condition_name": "Indigestion/dyspepsia (limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "b12-absorption-testing-historical-use",
+          "condition_name": "B12 absorption testing (historical use)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "digestion_support": {
+          "rating": 2
+        },
+        "nutrient_absorption": {
+          "rating": 2
+        },
+        "safety_tolerability": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Situational"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Heartburn"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "GI discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Peptic ulcer exacerbation"
+        },
+        {
+          "risk": "Esophageal damage if capsules lodge in throat"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Peptic ulcer disease"
+        },
+        {
+          "contraindication": "Gastritis"
+        },
+        {
+          "contraindication": "GERD or esophagitis"
+        },
+        {
+          "contraindication": "Pregnancy/lactation (insufficient safety data)"
+        }
+      ],
+      "precautions": [
+        "Do not use with active ulcers or gastritis.",
+        "Take only with food.",
+        "Swallow capsules whole; do not open or dissolve."
+      ],
+      "interactions": [
+        {
+          "interactant": "NSAIDs",
+          "mechanism": "Increased risk of gastric irritation/ulceration",
+          "action": "Avoid combination if possible"
+        },
+        {
+          "interactant": "Acid-suppressing medications (PPIs, H2 blockers)",
+          "mechanism": "Opposing effects",
+          "action": "Avoid concurrent use"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Gastrointestinal symptoms (burning, discomfort)"
+        },
+        {
+          "parameter": "Signs of ulcer or gastritis worsening"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended due to lack of safety data",
+        "lactation": "Not recommended",
+        "pediatric": "Insufficient evidence; avoid use",
+        "geriatric": "Higher risk of GI irritation; use cautiously"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Organic osmolyte with hydrochloride salt",
+        "natural_source": "Betaine (from beets, spinach, wheat) combined with HCl",
+        "regulatory_notes": "Not FDA-approved; formerly approved but withdrawn"
+      }
+    }
   },
   "sections": [
     {
@@ -201,6 +288,35 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Betaine HCl",
+      "url": "https://examine.com/supplements/betaine-hcl/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements",
+      "url": "https://ods.od.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "betaine hydrochloride",
+      "betaine HCl",
+      "stomach acid supplement"
+    ],
+    "synonyms": [
+      "Betaine hydrochloride",
+      "Trimethylglycine HCl"
+    ],
+    "common_misspellings": [
+      "betain HCL",
+      "betane HCL"
+    ]
+  },
   "seo": {
     "title": "Betaine HCl: Digestive Aid and Hypochlorhydria Support",
     "description": "Comprehensive guide to betaine hydrochloride (Betaine HCl) for low stomach acid, digestion, and nutrient absorption. Includes dosing, safety, interactions, and research.",

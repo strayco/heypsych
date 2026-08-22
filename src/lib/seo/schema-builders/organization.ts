@@ -17,7 +17,7 @@ export function buildMedicalReviewBoardSchema(): Record<string, any> {
     'name': 'HeyPsych Medical Review Board',
     'description': 'Board-certified psychiatrists and licensed mental health professionals dedicated to ensuring the accuracy and reliability of mental health information',
     'url': `${SITE_CONFIG.url}/about/medical-review-board`,
-    'logo': `${SITE_CONFIG.url}/favicon-48x48.png`,
+    'logo': `${SITE_CONFIG.url}/images/logo.png`,
     'sameAs': [
       'https://twitter.com/heypsych',
       'https://linkedin.com/company/heypsych'
@@ -67,7 +67,7 @@ export function buildPublisherOrganizationSchema(): Record<string, any> {
     'name': SITE_CONFIG.name,
     'description': SITE_CONFIG.description,
     'url': SITE_CONFIG.url,
-    'logo': `${SITE_CONFIG.url}/favicon-48x48.png`,
+    'logo': `${SITE_CONFIG.url}/images/logo.png`,
     'sameAs': [
       'https://twitter.com/heypsych',
       'https://linkedin.com/company/heypsych'

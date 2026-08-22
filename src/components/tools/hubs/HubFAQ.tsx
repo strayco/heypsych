@@ -25,9 +25,9 @@ export function HubFAQ({ faqs, hubName }: HubFAQProps) {
   };
 
   return (
-    <section className="py-10 bg-neutral-50 border-t border-neutral-200">
+    <section className="py-10 bg-surface border-t border-separator">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-neutral-900 mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-label-primary mb-6 flex items-center gap-2">
           <HelpCircle className="h-6 w-6 text-indigo-600" />
           {hubName ? `${hubName} FAQ` : "Frequently Asked Questions"}
         </h2>
@@ -36,25 +36,25 @@ export function HubFAQ({ faqs, hubName }: HubFAQProps) {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg border border-neutral-200 overflow-hidden"
+              className="bg-surface rounded-lg border border-separator overflow-hidden"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-5 py-4 text-left flex items-center justify-between hover:bg-neutral-50 transition-colors"
+                className="w-full px-5 py-4 text-left flex items-center justify-between hover:bg-surface transition-colors"
                 aria-expanded={openIndex === index}
               >
-                <span className="font-medium text-neutral-900 pr-4">
+                <span className="font-medium text-label-primary pr-4">
                   {faq.q}
                 </span>
                 {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-neutral-500 flex-shrink-0" />
+                  <ChevronUp className="h-5 w-5 text-label-primary0 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-neutral-500 flex-shrink-0" />
+                  <ChevronDown className="h-5 w-5 text-label-primary0 flex-shrink-0" />
                 )}
               </button>
 
               {openIndex === index && (
-                <div className="px-5 pb-4 text-neutral-700 leading-relaxed border-t border-neutral-100">
+                <div className="px-5 pb-4 text-label-secondary leading-relaxed border-t border-separator">
                   <p className="pt-3">{faq.a}</p>
                 </div>
               )}

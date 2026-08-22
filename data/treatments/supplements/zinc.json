@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "zinc",
-  "type": "supplement",
-  "name": "Zinc",
-  "summary": "Zinc is an essential trace mineral required for immune function, wound healing, growth, reproduction, and neurological health. It plays a critical role as a cofactor for over 300 enzymes.",
-  "description": "Zinc is a vital micronutrient involved in DNA synthesis, cellular repair, protein metabolism, and immune defense. It is naturally found in foods such as oysters, red meat, poultry, beans, nuts, and whole grains. Deficiency can lead to impaired immunity, delayed wound healing, growth retardation, hair loss, and depression. Supplementation is widely used for immune support, cold prevention, and skin health. Various formulations exist, including zinc gluconate, zinc sulfate, and zinc picolinate, with differing absorption profiles.",
-  "category": "supplements",
-  "tags": [
-    "mineral",
-    "trace element",
-    "immune support",
-    "wound healing",
-    "neurological health"
-  ],
-  "metadata": {
-    "compound_type": "Essential trace mineral",
-    "natural_source": "Oysters, red meat, poultry, beans, nuts, whole grains, fortified cereals",
+  "identity": {
+    "slug": "zinc",
+    "name": "Zinc",
+    "brand_names": [
+      "Zincate",
+      "Zicam",
+      "Cold-Eeze"
+    ],
+    "aliases": [
+      "Zn",
+      "Trace mineral zinc"
+    ],
+    "wikidata_qid": "Q758"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Immune support",
@@ -27,80 +29,177 @@
       "Immune modulation",
       "Antioxidant activity"
     ],
-    "administration_routes": [
-      "Oral",
-      "Topical (skin, wound formulations)"
-    ],
-    "prescription_status": "OTC supplement; prescription formulations for deficiency",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Zincate",
-      "Zicam",
-      "Cold-Eeze"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement; prescription formulations available",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Acute supplementation (colds)",
-      "Chronic supplementation (deficiency or prevention)"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Immunology",
-      "Dermatology",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q758"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Zinc deficiency",
-      "Immune support",
-      "Wound healing",
-      "Diarrhea in children (WHO recommendation)"
-    ],
-    "off_label_uses": [
-      "Common cold (shortening duration/severity)",
-      "Depression (adjunctive, investigational)",
-      "Age-related macular degeneration (with antioxidants)"
-    ],
-    "contraindications": [
-      "Known hypersensitivity to zinc formulations",
-      "Caution with excessive dosing due to toxicity"
-    ],
-    "monitoring_required": [
-      "Serum zinc levels in deficiency cases",
-      "Copper levels with long-term high-dose supplementation"
-    ],
-    "efficacy_rating": {
-      "zinc deficiency treatment": 5,
-      "immune support": 3,
-      "wound healing": 4,
-      "common cold reduction": 3,
-      "psychiatric adjunct": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Zinc",
-      "Zinc gluconate",
-      "Zinc sulfate",
-      "Zinc picolinate"
-    ],
-    "synonyms": [
-      "Zn",
-      "Trace mineral zinc"
-    ],
-    "common_misspellings": [
-      "zink",
-      "zinck"
+    "tags": [
+      "mineral",
+      "trace element",
+      "immune support",
+      "wound healing",
+      "neurological health"
     ]
+  },
+  "summary": "Zinc is an essential trace mineral required for immune function, wound healing, growth, reproduction, and neurological health. It plays a critical role as a cofactor for over 300 enzymes.",
+  "description": "Zinc is a vital micronutrient involved in DNA synthesis, cellular repair, protein metabolism, and immune defense. It is naturally found in foods such as oysters, red meat, poultry, beans, nuts, and whole grains. Deficiency can lead to impaired immunity, delayed wound healing, growth retardation, hair loss, and depression. Supplementation is widely used for immune support, cold prevention, and skin health. Various formulations exist, including zinc gluconate, zinc sulfate, and zinc picolinate, with differing absorption profiles.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "zinc-deficiency",
+          "condition_name": "Zinc deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "immune-support",
+          "condition_name": "Immune support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "wound-healing",
+          "condition_name": "Wound healing",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "diarrhea-in-children-who-recommendation",
+          "condition_name": "Diarrhea in children (WHO recommendation)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "common-cold-shortening-duration-severity",
+          "condition_name": "Common cold (shortening duration/severity)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "depression-adjunctive-investigational",
+          "condition_name": "Depression (adjunctive, investigational)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "age-related-macular-degeneration-with-antioxidants",
+          "condition_name": "Age-related macular degeneration (with antioxidants)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "zinc deficiency treatment": {
+          "rating": 5
+        },
+        "immune support": {
+          "rating": 3
+        },
+        "wound healing": {
+          "rating": 4
+        },
+        "common cold reduction": {
+          "rating": 3
+        },
+        "psychiatric adjunct": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute supplementation (colds); Chronic supplementation (deficiency or prevention)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Topical (skin, wound formulations)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Vomiting"
+        },
+        {
+          "effect": "Stomach upset"
+        },
+        {
+          "effect": "Metallic taste"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Copper deficiency with long-term high doses"
+        },
+        {
+          "risk": "Immune dysfunction"
+        },
+        {
+          "risk": "Neurotoxicity with excessive intake"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to zinc formulations"
+        },
+        {
+          "contraindication": "Caution with excessive dosing due to toxicity"
+        }
+      ],
+      "precautions": [
+        "Excessive zinc (>40 mg/day long term) can cause copper deficiency, anemia, and neurological symptoms.",
+        "Intranasal zinc (e.g., sprays, gels) has been associated with permanent loss of smell (anosmia) and is no longer recommended."
+      ],
+      "interactions": [
+        {
+          "interactant": "Copper",
+          "mechanism": "Excess zinc depletes copper",
+          "action": "Monitor or supplement copper if long-term zinc therapy"
+        },
+        {
+          "interactant": "Iron supplements",
+          "mechanism": "Competitive absorption",
+          "action": "Separate dosing"
+        },
+        {
+          "interactant": "Antibiotics (tetracyclines, quinolones)",
+          "mechanism": "Reduced absorption",
+          "action": "Take zinc and antibiotic several hours apart"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum zinc levels in deficiency states"
+        },
+        {
+          "parameter": "Copper levels with long-term high-dose use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at recommended dietary intake (RDA 11–12 mg/day); deficiency linked to adverse outcomes",
+        "lactation": "Safe at recommended levels",
+        "pediatric": "Widely used in pediatric diarrhea management; safe at recommended doses",
+        "geriatric": "Common deficiency in elderly; supplementation may support immune function"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential trace mineral",
+        "natural_source": "Oysters, red meat, poultry, beans, nuts, whole grains, fortified cereals",
+        "regulatory_notes": "Dietary supplement; prescription formulations available"
+      }
+    }
   },
   "sections": [
     {
@@ -232,6 +331,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Zinc",
+      "url": "https://ods.od.nih.gov/factsheets/Zinc-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Mayo Clinic – Zinc Supplementation",
+      "url": "https://www.mayoclinic.org/drugs-supplements-zinc/art-20366112"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "WHO Guidelines – Zinc in Pediatric Diarrhea",
+      "url": "https://www.who.int/elena/titles/zinc_diarrhoea/en/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Zinc",
+      "Zinc gluconate",
+      "Zinc sulfate",
+      "Zinc picolinate"
+    ],
+    "synonyms": [
+      "Zn",
+      "Trace mineral zinc"
+    ],
+    "common_misspellings": [
+      "zink",
+      "zinck"
+    ]
+  },
   "seo": {
     "title": "Zinc – Immune Support, Deficiency, Dosing, and Benefits",
     "description": "Zinc is an essential mineral for immunity, wound healing, and growth. Learn about deficiency, dosing, zinc lozenges for colds, and safety considerations.",

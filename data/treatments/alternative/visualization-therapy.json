@@ -1,113 +1,182 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "visualization-therapy",
-  "type": "alternative",
-  "name": "Visualization Therapy",
-  "summary": "A mind-body technique that uses guided imagery and mental visualization to promote relaxation, improve performance, and support physical and emotional healing.",
-  "description": "Visualization Therapy, also known as guided imagery, is a mental practice in which individuals imagine calming, healing, or goal-oriented images and scenarios to influence physical, psychological, and behavioral outcomes. The practice draws on the connection between mind and body, engaging sensory imagination to activate relaxation responses, reduce stress, and support healing. Used in psychotherapy, sports performance, stress management, and integrative medicine, visualization may involve self-directed imagery or facilitator-guided sessions. Evidence supports benefits in pain reduction, anxiety management, athletic performance, and recovery from illness, though outcomes vary by context and individual receptivity.",
-  "category": "alternative/mind-body",
-  "tags": [
-    "visualization",
-    "guided imagery",
-    "mind-body",
-    "stress reduction",
-    "healing visualization",
-    "performance enhancement"
-  ],
-  "metadata": {
-    "practice_styles": [
-      "Guided imagery with facilitator or recordings",
-      "Self-directed visualization",
-      "Therapeutic visualization in psychotherapy",
-      "Athletic/performance visualization"
-    ],
-    "treatment_variants": [
-      "Healing visualization (imagining physical recovery)",
-      "Relaxation and stress reduction imagery",
-      "Performance visualization (sports, public speaking)",
-      "Future self/goal achievement imagery"
-    ],
-    "delivery_methods": [
-      "Guided sessions (therapist, coach, or recordings)",
-      "Self-practice in a quiet environment",
-      "Integration with relaxation, breathwork, or hypnosis"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "setting": [
-      "Psychotherapy sessions",
-      "Sports and performance coaching",
-      "Medical and integrative care",
-      "Self-practice at home"
-    ],
-    "session_duration": "15–45 minutes",
-    "treatment_duration": [
-      "Short-term stress management: 4–6 weeks",
-      "Long-term: ongoing as a self-care or performance tool"
-    ],
-    "training_required": "No formal regulation; taught by psychologists, coaches, or integrative therapists",
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Geriatric"
-    ],
-    "specialty_areas": [
-      "Psychotherapy",
-      "Sports psychology",
-      "Integrative oncology",
-      "Pain management",
-      "Stress and resilience training"
-    ],
-    "regulatory_status": "Unregulated complementary practice; often integrated into psychotherapy, coaching, or medical care"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Stress and anxiety reduction",
-      "Pain management",
-      "Enhancing athletic or performance outcomes",
-      "Emotional healing and resilience"
-    ],
-    "conditions_treated": [
-      "Anxiety disorders",
-      "Chronic pain",
-      "Cancer-related symptoms (adjunctive)",
-      "Insomnia",
-      "Depression (supportive)"
-    ],
-    "off_label_uses": [
-      "Immune system support",
-      "Creativity and problem-solving enhancement",
-      "Postoperative recovery support"
-    ],
-    "contraindications": [
-      "Absolute: none specific",
-      "Relative: severe psychiatric illness where imagery may exacerbate symptoms"
-    ],
-    "safety_profile": "Generally very safe; minimal risks, though emotionally charged imagery may cause distress in trauma survivors without guidance.",
-    "evidence_level": "Moderate – supportive evidence for stress, pain, and performance; limited for physical healing claims.",
-    "efficacy_rating": {
-      "stress_anxiety": 4,
-      "pain_management": 3,
-      "performance_enhancement": 4,
-      "emotional_healing": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "visualization therapy",
-      "guided imagery",
-      "healing visualization",
-      "mental imagery therapy"
-    ],
-    "synonyms": [
+  "identity": {
+    "slug": "visualization-therapy",
+    "name": "Visualization Therapy",
+    "aliases": [
       "guided imagery",
       "mental imagery",
       "healing visualization"
-    ],
-    "common_misspellings": [
-      "vizualization therapy",
-      "visualisation therapy"
     ]
+  },
+  "taxonomy": {
+    "modality": "alternative",
+    "category": "alternative/mind-body",
+    "tags": [
+      "visualization",
+      "guided imagery",
+      "mind-body",
+      "stress reduction",
+      "healing visualization",
+      "performance enhancement"
+    ]
+  },
+  "summary": "A mind-body technique that uses guided imagery and mental visualization to promote relaxation, improve performance, and support physical and emotional healing.",
+  "description": "Visualization Therapy, also known as guided imagery, is a mental practice in which individuals imagine calming, healing, or goal-oriented images and scenarios to influence physical, psychological, and behavioral outcomes. The practice draws on the connection between mind and body, engaging sensory imagination to activate relaxation responses, reduce stress, and support healing. Used in psychotherapy, sports performance, stress management, and integrative medicine, visualization may involve self-directed imagery or facilitator-guided sessions. Evidence supports benefits in pain reduction, anxiety management, athletic performance, and recovery from illness, though outcomes vary by context and individual receptivity.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "stress-and-anxiety-reduction",
+          "condition_name": "Stress and anxiety reduction",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "pain-management",
+          "condition_name": "Pain management",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "enhancing-athletic-or-performance-outcomes",
+          "condition_name": "Enhancing athletic or performance outcomes",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "emotional-healing-and-resilience",
+          "condition_name": "Emotional healing and resilience",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cancer-related-symptoms-adjunctive",
+          "condition_name": "Cancer-related symptoms (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression-supportive",
+          "condition_name": "Depression (supportive)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "immune-system-support",
+          "condition_name": "Immune system support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "creativity-and-problem-solving-enhancement",
+          "condition_name": "Creativity and problem-solving enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "postoperative-recovery-support",
+          "condition_name": "Postoperative recovery support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate – supportive evidence for stress, pain, and performance; limited for physical healing claims.",
+      "efficacy_ratings": {
+        "stress_anxiety": {
+          "rating": 4
+        },
+        "pain_management": {
+          "rating": 3
+        },
+        "performance_enhancement": {
+          "rating": 4
+        },
+        "emotional_healing": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term stress management: 4–6 weeks; Long-term: ongoing as a self-care or performance tool"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Guided sessions (therapist, coach, or recordings)",
+        "Self-practice in a quiet environment",
+        "Integration with relaxation, breathwork, or hypnosis"
+      ],
+      "setting": [],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "15–45 minutes"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "No formal regulation; taught by psychologists, coaches, or integrative therapists"
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally very safe; minimal risks, though emotionally charged imagery may cause distress in trauma survivors without guidance.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild drowsiness"
+        },
+        {
+          "effect": "Emotional release"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased anxiety in trauma survivors without guidance"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe psychiatric illness (e.g., psychosis)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unprocessed trauma (requires trauma-informed support)",
+          "type": "relative"
+        }
+      ]
+    },
+    "access": {
+      "regulatory_status": "unregulated"
+    },
+    "modality_details": {
+      "modality": "alternative",
+      "details": {
+        "practice_style": "Guided imagery with facilitator or recordings, Self-directed visualization, Therapeutic visualization in psychotherapy, Athletic/performance visualization",
+        "variants": [
+          "Healing visualization (imagining physical recovery)",
+          "Relaxation and stress reduction imagery",
+          "Performance visualization (sports, public speaking)",
+          "Future self/goal achievement imagery"
+        ],
+        "self_practice_possible": true
+      }
+    }
   },
   "sections": [
     {
@@ -243,6 +312,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Utay J, Miller M. Guided imagery as an effective therapeutic technique: A brief review of its history and efficacy research. J Instr Psychol. 2006",
+      "url": "https://psycnet.apa.org/record/2007-05322-003"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Posadzki P, Ernst E. Guided imagery for musculoskeletal pain: a systematic review. Clin J Pain. 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21415717/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "NCCIH – Relaxation Techniques: Guided Imagery",
+      "url": "https://www.nccih.nih.gov/health/relaxation-techniques-what-you-need-to-know"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "visualization therapy",
+      "guided imagery",
+      "healing visualization",
+      "mental imagery therapy"
+    ],
+    "synonyms": [
+      "guided imagery",
+      "mental imagery",
+      "healing visualization"
+    ],
+    "common_misspellings": [
+      "vizualization therapy",
+      "visualisation therapy"
+    ]
+  },
   "seo": {
     "title": "Visualization Therapy – Guided Imagery for Stress, Pain & Healing",
     "description": "Comprehensive guide to Visualization Therapy: guided imagery for stress reduction, pain relief, and performance enhancement. Includes protocols, safety, and integration with conventional care.",
@@ -255,5 +361,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate – supportive evidence for stress, pain, and performance; limited for physical healing claims."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate – supportive evidence for stress, pain, and performance; limited for physical healing claims."
+    ]
   }
 }

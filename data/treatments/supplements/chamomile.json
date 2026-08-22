@@ -1,20 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "chamomile",
-  "type": "supplement",
-  "name": "Chamomile (Matricaria recutita, Chamaemelum nobile)",
-  "summary": "A traditional herbal remedy widely used for anxiety, insomnia, and digestive discomfort, supported by some clinical evidence for mild-to-moderate anxiety and sleep improvement.",
-  "description": "Chamomile is one of the most commonly used medicinal herbs worldwide, prepared as teas, extracts, or essential oils. It contains bioactive compounds such as apigenin, luteolin, and bisabolol, which contribute to its anxiolytic, sedative, anti-inflammatory, and gastrointestinal-calming properties. Clinical studies suggest benefits in mild-to-moderate generalized anxiety disorder, sleep quality, and gastrointestinal health. Chamomile is generally well tolerated but may cause allergic reactions in individuals sensitive to plants in the Asteraceae family. It can also interact with anticoagulants and sedatives.",
-  "category": "supplements",
-  "tags": [
-    "anxiolytic",
-    "sedative",
-    "digestive-health",
-    "anti-inflammatory"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract / tea",
-    "natural_source": "Flower heads of Matricaria recutita (German chamomile) or Chamaemelum nobile (Roman chamomile)",
+  "identity": {
+    "slug": "chamomile",
+    "name": "Chamomile (Matricaria recutita, Chamaemelum nobile)",
+    "generic_name": "chamomile",
+    "brand_names": [
+      "Chamomile Tea",
+      "Chamomile Extract",
+      "Calm-Aid"
+    ],
+    "aliases": [
+      "Manzanilla",
+      "Matricaria",
+      "Camomilla"
+    ],
+    "wikidata_qid": "Q156004"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Anxiety",
       "Insomnia",
@@ -25,81 +30,162 @@
       "Anti-inflammatory",
       "Sedative"
     ],
-    "administration_routes": [
-      "Oral",
-      "Topical",
-      "Inhalation (aromatherapy)"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Chamomile Tea",
-      "Chamomile Extract",
-      "Calm-Aid"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Psychiatry",
-      "Sleep Medicine",
-      "Gastroenterology"
-    ],
-    "wikidata_qid": "Q156004"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild-to-moderate anxiety",
-      "Insomnia",
-      "Gastrointestinal upset"
-    ],
-    "off_label_uses": [
-      "Depression adjunct",
-      "Irritable bowel syndrome",
-      "Wound healing (topical)"
-    ],
-    "contraindications": [
-      "Allergy to ragweed, daisies, chrysanthemums (Asteraceae family)",
-      "Pregnancy (safety not fully established at high doses)"
-    ],
-    "monitoring_required": [
-      "Allergic reactions",
-      "Bleeding risk in patients on anticoagulants"
-    ],
-    "efficacy_rating": {
-      "anxiety": 3,
-      "insomnia": 2,
-      "digestive_support": 2,
-      "inflammation": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Chamomile",
-      "Matricaria recutita",
-      "Roman chamomile",
-      "German chamomile"
-    ],
-    "synonyms": [
-      "Manzanilla",
-      "Matricaria",
-      "Camomilla"
-    ],
-    "common_misspellings": [
-      "camomile",
-      "chammomile",
-      "chamomil"
+    "tags": [
+      "anxiolytic",
+      "sedative",
+      "digestive-health",
+      "anti-inflammatory"
     ]
+  },
+  "summary": "A traditional herbal remedy widely used for anxiety, insomnia, and digestive discomfort, supported by some clinical evidence for mild-to-moderate anxiety and sleep improvement.",
+  "description": "Chamomile is one of the most commonly used medicinal herbs worldwide, prepared as teas, extracts, or essential oils. It contains bioactive compounds such as apigenin, luteolin, and bisabolol, which contribute to its anxiolytic, sedative, anti-inflammatory, and gastrointestinal-calming properties. Clinical studies suggest benefits in mild-to-moderate generalized anxiety disorder, sleep quality, and gastrointestinal health. Chamomile is generally well tolerated but may cause allergic reactions in individuals sensitive to plants in the Asteraceae family. It can also interact with anticoagulants and sedatives.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-to-moderate-anxiety",
+          "condition_name": "Mild-to-moderate anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "gastrointestinal-upset",
+          "condition_name": "Gastrointestinal upset",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "depression-adjunct",
+          "condition_name": "Depression adjunct",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "irritable-bowel-syndrome",
+          "condition_name": "Irritable bowel syndrome",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "wound-healing-topical",
+          "condition_name": "Wound healing (topical)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiety": {
+          "rating": 3
+        },
+        "insomnia": {
+          "rating": 2
+        },
+        "digestive_support": {
+          "rating": 2
+        },
+        "inflammation": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Topical",
+        "Inhalation (aromatherapy)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Allergic reactions"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Anaphylaxis (rare, in Asteraceae-sensitive individuals)"
+        },
+        {
+          "risk": "Increased bleeding risk with anticoagulants"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to ragweed, daisies, chrysanthemums (Asteraceae family)"
+        },
+        {
+          "contraindication": "Pregnancy (safety not fully established at high doses)"
+        }
+      ],
+      "precautions": [
+        "Avoid in individuals with ragweed or related allergies.",
+        "Caution with concurrent sedatives or anticoagulants.",
+        "Not recommended in pregnancy in medicinal doses."
+      ],
+      "interactions": [
+        {
+          "interactant": "Benzodiazepines, sedatives, alcohol",
+          "mechanism": "Excess sedation",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Warfarin and anticoagulants",
+          "mechanism": "Increased bleeding risk",
+          "action": "Avoid or monitor INR"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Signs of allergy"
+        },
+        {
+          "parameter": "Bleeding risk if on anticoagulants"
+        },
+        {
+          "parameter": "Sedation level if combined with CNS depressants"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid high doses; mild tea may be safe",
+        "lactation": "Likely safe in moderate amounts (tea); avoid concentrated extracts",
+        "pediatric": "Mild tea may be safe for older children; avoid in infants",
+        "geriatric": "Generally safe; monitor for excess sedation"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract / tea",
+        "natural_source": "Flower heads of Matricaria recutita (German chamomile) or Chamaemelum nobile (Roman chamomile)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -216,6 +302,38 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Amsterdam JD et al. Chamomile for Generalized Anxiety Disorder. J Clin Psychopharmacol. 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19593179/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com – Chamomile",
+      "url": "https://examine.com/supplements/chamomile/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Chamomile",
+      "Matricaria recutita",
+      "Roman chamomile",
+      "German chamomile"
+    ],
+    "synonyms": [
+      "Manzanilla",
+      "Matricaria",
+      "Camomilla"
+    ],
+    "common_misspellings": [
+      "camomile",
+      "chammomile",
+      "chamomil"
+    ]
+  },
   "seo": {
     "title": "Chamomile: Benefits for Anxiety, Sleep, and Digestion",
     "description": "Learn about chamomile’s traditional uses, clinical evidence for anxiety and insomnia, dosing, safety, and potential interactions.",

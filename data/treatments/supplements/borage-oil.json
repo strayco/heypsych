@@ -1,22 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "borage-oil",
-  "type": "supplement",
-  "name": "Borage Oil",
-  "summary": "A seed oil rich in gamma-linolenic acid (GLA), studied for its anti-inflammatory, dermatologic, and hormonal health benefits, with emerging evidence in mood and stress regulation.",
-  "description": "Borage oil is derived from the seeds of Borago officinalis, a medicinal plant. It is one of the richest natural sources of gamma-linolenic acid (GLA), an omega-6 fatty acid that supports anti-inflammatory and immunomodulatory pathways. Traditionally used for skin disorders such as eczema, rheumatoid arthritis, and premenstrual syndrome (PMS), borage oil has also been studied for cardiovascular and neurological support. Its role in psychiatry is emerging, particularly in adjunctive support for mood and stress regulation.",
-  "category": "supplements",
-  "tags": [
-    "omega-6",
-    "gamma-linolenic-acid",
-    "anti-inflammatory",
-    "skin-health",
-    "women's-health",
-    "adjunctive-psychiatry"
-  ],
-  "metadata": {
-    "compound_type": "Plant-derived oil (seed oil)",
-    "natural_source": "Seeds of Borago officinalis",
+  "identity": {
+    "slug": "borage-oil",
+    "name": "Borage Oil",
+    "brand_names": [
+      "Borage Seed Oil",
+      "Starflower Oil"
+    ],
+    "aliases": [
+      "Starflower oil",
+      "Borago oil"
+    ],
+    "wikidata_qid": "Q156101"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Dermatology",
       "Rheumatology",
@@ -28,75 +28,169 @@
       "Hormonal Modulation",
       "Cell Membrane Regulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Borage Seed Oil",
-      "Starflower Oil"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement, not FDA-approved for medical indications",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Dermatology",
-      "Gynecology",
-      "Psychiatry (adjunctive)"
-    ],
-    "wikidata_qid": "Q156101"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Atopic dermatitis and eczema",
-      "Premenstrual syndrome (PMS)",
-      "Rheumatoid arthritis and joint inflammation"
-    ],
-    "off_label_uses": [
-      "Adjunctive treatment for stress and mood dysregulation",
-      "Menopausal symptom relief",
-      "Cardiovascular support"
-    ],
-    "contraindications": [
-      "Liver disease (rare reports of hepatotoxic pyrrolizidine alkaloids in poorly processed oils)",
-      "Bleeding disorders",
-      "Concurrent anticoagulant use without monitoring"
-    ],
-    "monitoring_required": [
-      "Liver function (if used long-term or in high doses)",
-      "Bleeding risk in anticoagulated patients",
-      "Skin or GI tolerance"
-    ],
-    "efficacy_rating": {
-      "skin-health": 3,
-      "pms-support": 3,
-      "anti-inflammatory-effects": 3,
-      "psychiatric-benefits": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Borage oil",
-      "Borago officinalis seed oil",
-      "GLA supplement"
-    ],
-    "synonyms": [
-      "Starflower oil",
-      "Borago oil"
-    ],
-    "common_misspellings": [
-      "borag oil",
-      "borrage oil"
+    "tags": [
+      "omega-6",
+      "gamma-linolenic-acid",
+      "anti-inflammatory",
+      "skin-health",
+      "women's-health",
+      "adjunctive-psychiatry"
     ]
+  },
+  "summary": "A seed oil rich in gamma-linolenic acid (GLA), studied for its anti-inflammatory, dermatologic, and hormonal health benefits, with emerging evidence in mood and stress regulation.",
+  "description": "Borage oil is derived from the seeds of Borago officinalis, a medicinal plant. It is one of the richest natural sources of gamma-linolenic acid (GLA), an omega-6 fatty acid that supports anti-inflammatory and immunomodulatory pathways. Traditionally used for skin disorders such as eczema, rheumatoid arthritis, and premenstrual syndrome (PMS), borage oil has also been studied for cardiovascular and neurological support. Its role in psychiatry is emerging, particularly in adjunctive support for mood and stress regulation.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "atopic-dermatitis-and-eczema",
+          "condition_name": "Atopic dermatitis and eczema",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "premenstrual-syndrome-pms",
+          "condition_name": "Premenstrual syndrome (PMS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "rheumatoid-arthritis-and-joint-inflammation",
+          "condition_name": "Rheumatoid arthritis and joint inflammation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-treatment-for-stress-and-mood-dysregulation",
+          "condition_name": "Adjunctive treatment for stress and mood dysregulation",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "menopausal-symptom-relief",
+          "condition_name": "Menopausal symptom relief",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cardiovascular-support",
+          "condition_name": "Cardiovascular support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "skin-health": {
+          "rating": 3
+        },
+        "pms-support": {
+          "rating": 3
+        },
+        "anti-inflammatory-effects": {
+          "rating": 3
+        },
+        "psychiatric-benefits": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Loose stools"
+        },
+        {
+          "effect": "Belching with oil taste"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare hepatotoxicity from pyrrolizidine alkaloids if oil is not properly purified"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Liver disease (rare reports of hepatotoxic pyrrolizidine alkaloids in poorly processed oils)"
+        },
+        {
+          "contraindication": "Bleeding disorders"
+        },
+        {
+          "contraindication": "Concurrent anticoagulant use without monitoring"
+        }
+      ],
+      "precautions": [
+        "Ensure supplements are certified PA-free to reduce risk of liver toxicity.",
+        "Avoid use in patients with active liver disease or significant hepatic impairment."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin and anticoagulants",
+          "mechanism": "Increased bleeding risk",
+          "action": "Monitor INR closely"
+        },
+        {
+          "interactant": "Antiplatelet drugs",
+          "mechanism": "Additive bleeding effect",
+          "action": "Monitor clinical response"
+        },
+        {
+          "interactant": "Hepatotoxic medications",
+          "mechanism": "Increased liver burden",
+          "action": "Avoid or monitor liver function"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Skin symptom response"
+        },
+        {
+          "parameter": "PMS symptom tracking"
+        },
+        {
+          "parameter": "Liver function (if long-term)"
+        },
+        {
+          "parameter": "Signs of bleeding"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; insufficient data on safety",
+        "lactation": "Limited safety evidence; avoid unless supervised",
+        "pediatric": "Not well studied",
+        "geriatric": "Generally safe; monitor for polypharmacy and bleeding risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Plant-derived oil (seed oil)",
+        "natural_source": "Seeds of Borago officinalis",
+        "regulatory_notes": "Dietary supplement, not FDA-approved for medical indications"
+      }
+    }
   },
   "sections": [
     {
@@ -217,6 +311,35 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Borage Oil",
+      "url": "https://examine.com/supplements/borage-oil/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubMed: Borage Oil Clinical Studies",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Borage oil",
+      "Borago officinalis seed oil",
+      "GLA supplement"
+    ],
+    "synonyms": [
+      "Starflower oil",
+      "Borago oil"
+    ],
+    "common_misspellings": [
+      "borag oil",
+      "borrage oil"
+    ]
+  },
   "seo": {
     "title": "Borage Oil: GLA-Rich Supplement for Skin, PMS, and Inflammation",
     "description": "Evidence-based overview of borage oil, a rich source of gamma-linolenic acid (GLA), studied for eczema, PMS, arthritis, and emerging psychiatric support.",

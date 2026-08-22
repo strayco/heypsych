@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "valerian-root",
-  "type": "supplement",
-  "name": "Valerian Root",
-  "summary": "Valerian root (Valeriana officinalis) is a traditional herbal remedy commonly used for insomnia, anxiety, and stress-related sleep disturbances.",
-  "description": "Valerian root is derived from the plant *Valeriana officinalis* and has been used for centuries as a natural sedative and anxiolytic. It is thought to enhance gamma-aminobutyric acid (GABA) signaling in the brain, promoting relaxation and sleep. Research on its efficacy is mixed, but some studies support its use for reducing sleep latency and improving subjective sleep quality. It is generally considered safe for short-term use, though long-term safety is less established.",
-  "category": "supplements",
-  "tags": [
-    "herbal",
-    "sleep",
-    "anxiolytic",
-    "sedative"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract",
-    "natural_source": "Root of *Valeriana officinalis*",
+  "identity": {
+    "slug": "valerian-root",
+    "name": "Valerian Root",
+    "brand_names": [
+      "Valerian",
+      "Valeriana",
+      "Sedonium"
+    ],
+    "aliases": [
+      "Garden heliotrope",
+      "All-heal"
+    ],
+    "wikidata_qid": "Q156018"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Sleep Disorders",
       "Anxiety",
@@ -24,70 +27,154 @@
       "GABA modulation",
       "Sedative"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-counter herbal supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Valerian",
-      "Valeriana",
-      "Sedonium"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term"
-    ],
-    "specialty_areas": [
-      "Sleep Medicine",
-      "Integrative Medicine",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q156018"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia and sleep disturbances",
-      "Mild anxiety and nervousness",
-      "Stress-related sleep problems"
-    ],
-    "off_label_uses": [
-      "Adjunct for benzodiazepine tapering (anecdotal)",
-      "Menopausal symptom relief (limited evidence)"
-    ],
-    "contraindications": [
-      "Pregnancy and lactation (insufficient safety data)",
-      "Concurrent alcohol or sedative use"
-    ],
-    "monitoring_required": [
-      "Daytime drowsiness or impaired alertness",
-      "Liver function with long-term/high-dose use (rare reports)"
-    ],
-    "efficacy_rating": {
-      "insomnia": 3,
-      "anxiety": 2,
-      "stress": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Valerian",
-      "Valerian Root",
-      "Valeriana officinalis"
-    ],
-    "synonyms": [
-      "Garden heliotrope",
-      "All-heal"
-    ],
-    "common_misspellings": [
-      "valarian",
-      "valarien"
+    "tags": [
+      "herbal",
+      "sleep",
+      "anxiolytic",
+      "sedative"
     ]
+  },
+  "summary": "Valerian root (Valeriana officinalis) is a traditional herbal remedy commonly used for insomnia, anxiety, and stress-related sleep disturbances.",
+  "description": "Valerian root is derived from the plant *Valeriana officinalis* and has been used for centuries as a natural sedative and anxiolytic. It is thought to enhance gamma-aminobutyric acid (GABA) signaling in the brain, promoting relaxation and sleep. Research on its efficacy is mixed, but some studies support its use for reducing sleep latency and improving subjective sleep quality. It is generally considered safe for short-term use, though long-term safety is less established.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia-and-sleep-disturbances",
+          "condition_name": "Insomnia and sleep disturbances",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mild-anxiety-and-nervousness",
+          "condition_name": "Mild anxiety and nervousness",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-related-sleep-problems",
+          "condition_name": "Stress-related sleep problems",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-for-benzodiazepine-tapering-anecdotal",
+          "condition_name": "Adjunct for benzodiazepine tapering (anecdotal)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "menopausal-symptom-relief-limited-evidence",
+          "condition_name": "Menopausal symptom relief (limited evidence)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "insomnia": {
+          "rating": 3
+        },
+        "anxiety": {
+          "rating": 2
+        },
+        "stress": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Stomach upset"
+        },
+        {
+          "effect": "Daytime drowsiness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Liver toxicity (rare, mostly with extracts of questionable quality)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy and lactation (insufficient safety data)"
+        },
+        {
+          "contraindication": "Concurrent alcohol or sedative use"
+        }
+      ],
+      "precautions": [
+        "Avoid combining with alcohol or sedative medications due to additive CNS depression.",
+        "Not recommended during pregnancy or lactation.",
+        "Long-term continuous use is not well studied."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Increased sedation",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "Benzodiazepines or sedative-hypnotics",
+          "mechanism": "Additive CNS depression",
+          "action": "Use with caution"
+        },
+        {
+          "interactant": "Antihistamines (sedating)",
+          "mechanism": "Increased drowsiness",
+          "action": "Avoid or monitor closely"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Monitor for next-day drowsiness or impaired concentration"
+        },
+        {
+          "parameter": "Liver function if used long-term"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; insufficient safety data",
+        "lactation": "Not recommended; safety unknown",
+        "pediatric": "Not routinely recommended; limited safety data",
+        "geriatric": "Generally safe; monitor for fall risk due to sedation"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract",
+        "natural_source": "Root of *Valeriana officinalis*",
+        "regulatory_notes": "Dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -211,6 +298,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Valerian",
+      "url": "https://www.nccih.nih.gov/health/valerian"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Bent S, et al. Valerian for sleep: a systematic review. Am J Med. 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16443423/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Fernandez-San-Martin MI, et al. Valerian for insomnia. Cochrane Database Syst Rev. 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20091560/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Valerian",
+      "Valerian Root",
+      "Valeriana officinalis"
+    ],
+    "synonyms": [
+      "Garden heliotrope",
+      "All-heal"
+    ],
+    "common_misspellings": [
+      "valarian",
+      "valarien"
+    ]
+  },
   "seo": {
     "title": "Valerian Root – Natural Sleep Aid & Anxiety Relief",
     "description": "Valerian root (Valeriana officinalis) is an herbal supplement used for insomnia, anxiety, and stress. Learn about its effects, dosing, safety, and interactions.",

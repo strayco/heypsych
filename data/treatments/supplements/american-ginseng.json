@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "american-ginseng",
-  "type": "supplement",
-  "name": "American Ginseng (Panax quinquefolius)",
-  "summary": "An herbal supplement traditionally used for fatigue, cognitive support, and immune modulation. Studied for benefits in energy, mental performance, and blood sugar regulation.",
-  "description": "American Ginseng (Panax quinquefolius) is a perennial plant native to North America. It contains ginsenosides, active compounds thought to influence energy metabolism, stress response, and cognition. Unlike Asian ginseng (Panax ginseng), American ginseng is considered to have a more calming effect. It has been used in traditional medicine for enhancing vitality, improving memory, reducing fatigue, and modulating blood sugar. Clinical studies suggest modest benefits for mental performance, fatigue in cancer patients, and glycemic control in diabetes.",
-  "category": "supplements",
-  "tags": [
-    "herbal",
-    "adaptogen",
-    "energy",
-    "cognition",
-    "immune"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract (root)",
-    "natural_source": "Panax quinquefolius root",
+  "identity": {
+    "slug": "american-ginseng",
+    "name": "American Ginseng (Panax quinquefolius)",
+    "generic_name": "american ginseng",
+    "brand_names": [
+      "American Ginseng",
+      "Panax quinquefolius"
+    ],
+    "aliases": [
+      "Panax quinquefolius",
+      "North American ginseng"
+    ],
+    "wikidata_qid": "Q157350"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Fatigue",
       "Cognitive Support",
@@ -27,74 +29,172 @@
       "Neuroprotective",
       "Metabolic"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "American Ginseng",
-      "Panax quinquefolius"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement in U.S.",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Integrative Medicine",
-      "Endocrinology"
-    ],
-    "wikidata_qid": "Q157350"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Fatigue",
-      "Cognitive performance support",
-      "Adjunctive support in diabetes (glycemic control)"
-    ],
-    "off_label_uses": [
-      "Immune support",
-      "Cancer-related fatigue",
-      "Stress resilience"
-    ],
-    "contraindications": [
-      "Hypersensitivity to ginseng species",
-      "Uncontrolled hypertension"
-    ],
-    "monitoring_required": [
-      "Blood pressure",
-      "Blood sugar in diabetic patients"
-    ],
-    "efficacy_rating": {
-      "fatigue": 3,
-      "cognition": 2,
-      "glycemic-control": 3,
-      "immune-support": 2,
-      "tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "american ginseng",
-      "panax quinquefolius",
-      "ginsenosides"
-    ],
-    "synonyms": [
-      "Panax quinquefolius",
-      "North American ginseng"
-    ],
-    "common_misspellings": [
-      "amercian ginseng",
-      "americn ginseng",
-      "am ginseng"
+    "tags": [
+      "herbal",
+      "adaptogen",
+      "energy",
+      "cognition",
+      "immune"
     ]
+  },
+  "summary": "An herbal supplement traditionally used for fatigue, cognitive support, and immune modulation. Studied for benefits in energy, mental performance, and blood sugar regulation.",
+  "description": "American Ginseng (Panax quinquefolius) is a perennial plant native to North America. It contains ginsenosides, active compounds thought to influence energy metabolism, stress response, and cognition. Unlike Asian ginseng (Panax ginseng), American ginseng is considered to have a more calming effect. It has been used in traditional medicine for enhancing vitality, improving memory, reducing fatigue, and modulating blood sugar. Clinical studies suggest modest benefits for mental performance, fatigue in cancer patients, and glycemic control in diabetes.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "fatigue",
+          "condition_name": "Fatigue",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-performance-support",
+          "condition_name": "Cognitive performance support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunctive-support-in-diabetes-glycemic-control",
+          "condition_name": "Adjunctive support in diabetes (glycemic control)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "immune-support",
+          "condition_name": "Immune support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cancer-related-fatigue",
+          "condition_name": "Cancer-related fatigue",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-resilience",
+          "condition_name": "Stress resilience",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "fatigue": {
+          "rating": 3
+        },
+        "cognition": {
+          "rating": 2
+        },
+        "glycemic-control": {
+          "rating": 3
+        },
+        "immune-support": {
+          "rating": 2
+        },
+        "tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "headache"
+        },
+        {
+          "effect": "insomnia"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "nervousness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "hypertension (rare)"
+        },
+        {
+          "risk": "hypoglycemia (in diabetic patients on medication)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to ginseng species"
+        },
+        {
+          "contraindication": "Uncontrolled hypertension"
+        }
+      ],
+      "precautions": [
+        "Use with caution in patients with diabetes; risk of additive hypoglycemia with medications.",
+        "Can cause insomnia if taken late in the day.",
+        "Avoid in uncontrolled hypertension."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antidiabetic medications (insulin, metformin, sulfonylureas)",
+          "mechanism": "Additive hypoglycemia",
+          "action": "Monitor glucose closely"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "May reduce efficacy of therapy",
+          "action": "Monitor BP"
+        },
+        {
+          "interactant": "Stimulants (caffeine, ADHD meds)",
+          "mechanism": "Additive insomnia or nervousness",
+          "action": "Monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure"
+        },
+        {
+          "parameter": "Blood glucose (especially in diabetics)"
+        },
+        {
+          "parameter": "Sleep patterns"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not enough safety data; avoid use",
+        "lactation": "Avoid due to insufficient data",
+        "pediatric": "Not recommended due to lack of safety data",
+        "geriatric": "May be beneficial in fatigue or cognitive decline; monitor for BP/glucose changes"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract (root)",
+        "natural_source": "Panax quinquefolius root",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement in U.S."
+      }
+    }
   },
   "sections": [
     {
@@ -222,6 +322,36 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: American Ginseng",
+      "url": "https://examine.com/supplements/american-ginseng/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubMed: Panax quinquefolius clinical trials",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "american ginseng",
+      "panax quinquefolius",
+      "ginsenosides"
+    ],
+    "synonyms": [
+      "Panax quinquefolius",
+      "North American ginseng"
+    ],
+    "common_misspellings": [
+      "amercian ginseng",
+      "americn ginseng",
+      "am ginseng"
+    ]
+  },
   "seo": {
     "title": "American Ginseng (Panax quinquefolius): Uses, Benefits, Dosing",
     "description": "Evidence-based guide to American ginseng for fatigue, cognition, and blood sugar control. Includes mechanisms, dosage, side effects, and clinical research.",

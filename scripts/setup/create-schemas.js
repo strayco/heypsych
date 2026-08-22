@@ -1,4 +1,20 @@
 // scripts/setup/create-schemas.js
+//
+// ⚠️  SAFETY NOTICE: This script contains destructive operations.
+//
+// The createRelationshipsAndFiles() function drops and recreates tables:
+//   - entity_relationships
+//   - content_files
+//   - user_interactions
+//
+// These operations will DELETE ALL DATA in those tables.
+//
+// To run destructive operations, you must either:
+//   1. Set ALLOW_DESTRUCTIVE_SCHEMA_SETUP=true in environment
+//   2. Pass --destructive flag: node scripts/setup/create-schemas.js --destructive
+//
+// For production databases, these should use Supabase migrations instead.
+//
 import dotenv from "dotenv";
 import { Client } from "pg";
 
@@ -8,6 +24,27 @@ const dbUrl = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL;
 if (!dbUrl) {
   console.error("❌ Missing SUPABASE_DB_URL (or DATABASE_URL) in .env.local");
   console.error("   Get it from Supabase → Project Settings → Database → Connection string → URI");
+  process.exit(1);
+}
+
+// Safety check for destructive operations
+const allowDestructive =
+  process.env.ALLOW_DESTRUCTIVE_SCHEMA_SETUP === "true" ||
+  process.argv.includes("--destructive");
+
+const isProduction =
+  process.env.NODE_ENV === "production" ||
+  dbUrl.includes("pooler.supabase.com") ||
+  dbUrl.includes(".supabase.co");
+
+if (isProduction && !process.argv.includes("--i-know-this-is-production")) {
+  console.error("❌ SAFETY: This appears to be a production database.");
+  console.error("   Database URL contains production indicators.");
+  console.error("");
+  console.error("   If you really want to run this against production, add:");
+  console.error("     --i-know-this-is-production");
+  console.error("");
+  console.error("   Better: Use Supabase migrations for production schema changes.");
   process.exit(1);
 }
 
@@ -86,7 +123,60 @@ async function fixEntitiesUniqueConstraint() {
 }
 
 async function createRelationshipsAndFiles() {
-  // slug/type relationships (wipe old versions once, then keep)
+  // ⚠️ DESTRUCTIVE OPERATIONS
+  // These DROP TABLE statements will delete all existing data.
+  // Only run if explicitly authorized.
+
+  if (!allowDestructive) {
+    console.log("  ⏭️  Skipping destructive table recreation (use --destructive to enable)");
+    console.log("     Tables entity_relationships, content_files, user_interactions preserved.");
+    console.log("");
+    console.log("     Creating tables only if they don't exist...");
+
+    // Non-destructive: CREATE IF NOT EXISTS
+    await run(`
+      CREATE TABLE IF NOT EXISTS public.entity_relationships (
+        id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        source_slug varchar(255) NOT NULL,
+        source_type varchar(50) NOT NULL,
+        target_slug varchar(255) NOT NULL,
+        target_type varchar(50) NOT NULL,
+        relation varchar(100) NOT NULL,
+        metadata jsonb DEFAULT '{}'::jsonb,
+        created_at timestamptz DEFAULT now()
+      );
+    `);
+
+    await run(`
+      CREATE TABLE IF NOT EXISTS public.content_files (
+        id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        slug varchar(255) NOT NULL,
+        type varchar(50) NOT NULL,
+        file_path varchar(500) NOT NULL,
+        meta jsonb DEFAULT '{}'::jsonb,
+        created_at timestamptz DEFAULT now()
+      );
+    `);
+
+    await run(`
+      CREATE TABLE IF NOT EXISTS public.user_interactions (
+        id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        entity_type varchar(50) NOT NULL,
+        entity_slug varchar(255) NOT NULL,
+        interaction_type varchar(50) NOT NULL,
+        user_id varchar(255),
+        session_id varchar(255),
+        metadata jsonb DEFAULT '{}'::jsonb,
+        created_at timestamptz DEFAULT now()
+      );
+    `);
+
+    return;
+  }
+
+  // Destructive path - only reached with explicit authorization
+  console.log("  ⚠️  DESTRUCTIVE: Dropping and recreating tables...");
+
   await run(`DROP TABLE IF EXISTS public.entity_relationships CASCADE;`);
   await run(`
     CREATE TABLE public.entity_relationships (

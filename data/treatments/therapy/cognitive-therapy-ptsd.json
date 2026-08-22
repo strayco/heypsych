@@ -1,80 +1,164 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cognitive-therapy-ptsd",
-  "type": "therapy",
-  "name": "Cognitive Therapy for PTSD",
-  "summary": "A structured cognitive-behavioral approach that targets maladaptive trauma-related beliefs and appraisals to reduce post-traumatic stress disorder (PTSD) symptoms.",
-  "description": "Cognitive Therapy for PTSD (CT-PTSD) is a trauma-focused cognitive-behavioral intervention designed to help individuals process and recover from post-traumatic stress disorder (PTSD). Developed by Anke Ehlers and David Clark, CT-PTSD emphasizes identifying and modifying distorted appraisals of the trauma and its consequences, reducing unhelpful coping strategies (e.g., avoidance, rumination), and updating trauma memories to reduce distress. CT-PTSD is recommended as a first-line treatment for PTSD in multiple clinical guidelines and has strong empirical support.",
-  "category": "therapy/individual",
-  "tags": [
-    "cognitive",
-    "behavioral",
-    "trauma-focused",
-    "ptsd",
-    "evidence-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "cognitive-therapy-ptsd",
+    "name": "Cognitive Therapy for PTSD",
+    "wikidata_qid": "Q64719307"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Psychotherapy",
       "Cognitive Therapy"
     ],
-    "treatment_types": [
-      "Cognitive",
-      "Behavioral"
-    ],
-    "categories": [
-      "Individual Therapy",
-      "Trauma-Focused Therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–12 sessions typical"
-    ],
-    "specialty_areas": [
-      "PTSD",
-      "Trauma Recovery"
-    ],
-    "wikidata_qid": "Q64719307"
+    "tags": [
+      "cognitive",
+      "behavioral",
+      "trauma-focused",
+      "ptsd",
+      "evidence-based"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-Traumatic Stress Disorder (PTSD)"
-    ],
-    "conditions_treated": [
-      "PTSD",
-      "Complex Trauma",
-      "Trauma-related Depression",
-      "Anxiety Disorders with trauma component"
-    ],
-    "off_label_uses": [
-      "Complicated grief",
-      "Adjustment disorders with trauma exposure"
-    ],
-    "contraindications": [
-      "Severe dissociation without stabilization",
-      "Active psychosis",
-      "High suicidality without crisis management"
-    ],
-    "safety_profile": "Generally safe and well tolerated; temporary distress may occur when trauma memories are processed.",
-    "evidence_level": "Strong—endorsed by NICE, APA, and international guidelines as a frontline PTSD treatment.",
-    "research_support": "Multiple randomized controlled trials and meta-analyses confirm its efficacy in reducing PTSD and comorbid symptoms.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 5,
-      "depression": 4,
-      "anxiety": 4,
-      "overall_tolerability": 4
+  "summary": "A structured cognitive-behavioral approach that targets maladaptive trauma-related beliefs and appraisals to reduce post-traumatic stress disorder (PTSD) symptoms.",
+  "description": "Cognitive Therapy for PTSD (CT-PTSD) is a trauma-focused cognitive-behavioral intervention designed to help individuals process and recover from post-traumatic stress disorder (PTSD). Developed by Anke Ehlers and David Clark, CT-PTSD emphasizes identifying and modifying distorted appraisals of the trauma and its consequences, reducing unhelpful coping strategies (e.g., avoidance, rumination), and updating trauma memories to reduce distress. CT-PTSD is recommended as a first-line treatment for PTSD in multiple clinical guidelines and has strong empirical support.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-Traumatic Stress Disorder (PTSD)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-trauma",
+          "condition_name": "Complex Trauma",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-depression",
+          "condition_name": "Trauma-related Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders-with-trauma-component",
+          "condition_name": "Anxiety Disorders with trauma component",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "complicated-grief",
+          "condition_name": "Complicated grief",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjustment-disorders-with-trauma-exposure",
+          "condition_name": "Adjustment disorders with trauma exposure",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—endorsed by NICE, APA, and international guidelines as a frontline PTSD treatment.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 5
+        },
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Multiple randomized controlled trials and meta-analyses confirm its efficacy in reducing PTSD and comorbid symptoms."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–12 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe and well tolerated; temporary distress may occur when trauma memories are processed.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary increase in distress when discussing trauma"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of dissociation if not carefully managed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unmanaged suicidality",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dissociative disorders without stabilization",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Ongoing unsafe environments",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive, Behavioral",
+        "key_techniques": [
+          "Individual Therapy",
+          "Trauma-Focused Therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Symptom check-in and review of homework.",
+          "during_session": "Cognitive restructuring, trauma memory work, behavioral experiments.",
+          "post_session": "Assign homework (practice reappraisals, exposure, behavioral activation)."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapist trained in cognitive therapy for trauma"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -233,6 +317,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Ehlers A, Clark DM. A cognitive model of PTSD. Behaviour Research and Therapy. 2000.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10761279/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Ehlers A et al. (2005). Cognitive therapy for PTSD: Development and evaluation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15893292/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "NICE Guidelines: Post-traumatic stress disorder. 2018.",
+      "url": "https://www.nice.org.uk/guidance/ng116"
+    }
+  ],
   "seo": {
     "title": "Cognitive Therapy for PTSD",
     "description": "Cognitive Therapy for PTSD (CT-PTSD) is an evidence-based treatment that targets maladaptive trauma beliefs to reduce PTSD symptoms. Learn about techniques, outcomes, and research support.",
@@ -245,5 +349,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—endorsed by NICE, APA, and international guidelines as a frontline PTSD treatment."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—endorsed by NICE, APA, and international guidelines as a frontline PTSD treatment."
+    ]
   }
 }

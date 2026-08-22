@@ -1,87 +1,185 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "emdr",
-  "type": "therapy",
-  "name": "Eye Movement Desensitization and Reprocessing (EMDR)",
-  "summary": "A structured therapy that uses guided eye movements or other forms of bilateral stimulation to help patients process and reduce distress associated with traumatic memories.",
-  "description": "Eye Movement Desensitization and Reprocessing (EMDR) is a psychotherapy approach developed by Francine Shapiro in the late 1980s. It is primarily used for treating trauma and post-traumatic stress disorder (PTSD). The therapy involves recalling distressing experiences while simultaneously focusing on bilateral sensory input, such as side-to-side eye movements, taps, or auditory tones. EMDR is structured into eight phases, including history taking, preparation, assessment, desensitization, installation, body scan, closure, and reevaluation. Research shows EMDR can reduce the emotional intensity and vividness of traumatic memories and foster adaptive reprocessing.",
-  "category": "therapy/trauma",
-  "tags": [
-    "trauma",
-    "ptsd",
-    "bilateral-stimulation",
-    "evidence-based",
-    "psychotherapy"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Trauma-focused therapy",
-      "Cognitive-emotional processing"
-    ],
-    "categories": [
-      "PTSD treatment",
-      "Trauma therapy",
-      "Evidence-based psychotherapy"
-    ],
-    "delivery_methods": [
-      "In-person therapy",
-      "Telehealth with adaptations"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "Therapist-guided bilateral stimulation (eye movement, tapping, audio tones)"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "6–12 sessions on average, may vary depending on trauma complexity"
-    ],
-    "specialty_areas": [
-      "PTSD",
-      "Trauma-related disorders",
-      "Anxiety",
-      "Depression"
+  "identity": {
+    "slug": "emdr",
+    "name": "Eye Movement Desensitization and Reprocessing (EMDR)",
+    "generic_name": "eye movement desensitization and reprocessing",
+    "brand_names": [
+      "EMDR"
     ],
     "wikidata_qid": "Q1385716"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-Traumatic Stress Disorder (PTSD)"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/trauma",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "conditions_treated": [
-      "PTSD",
-      "Acute stress disorder",
-      "Trauma-related depression",
-      "Anxiety disorders",
-      "Complicated grief",
-      "Phobias"
-    ],
-    "off_label_uses": [
-      "Chronic pain management",
-      "Addiction-related trauma",
-      "Performance anxiety"
-    ],
-    "contraindications": [
-      "Severe dissociation without stabilization",
-      "Active psychosis",
-      "Unstable medical conditions"
-    ],
-    "safety_profile": "Generally safe with trained practitioners. Temporary increases in distress can occur during trauma recall.",
-    "evidence_level": "High—recognized as an evidence-based treatment by APA, WHO, and VA/DoD guidelines.",
-    "research_support": "Numerous randomized controlled trials and meta-analyses demonstrate EMDR’s effectiveness in treating PTSD and trauma-related disorders.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 5,
-      "anxiety": 4,
-      "depression": 4,
-      "overall_tolerability": 4
+    "tags": [
+      "trauma",
+      "ptsd",
+      "bilateral-stimulation",
+      "evidence-based",
+      "psychotherapy"
+    ]
+  },
+  "summary": "A structured therapy that uses guided eye movements or other forms of bilateral stimulation to help patients process and reduce distress associated with traumatic memories.",
+  "description": "Eye Movement Desensitization and Reprocessing (EMDR) is a psychotherapy approach developed by Francine Shapiro in the late 1980s. It is primarily used for treating trauma and post-traumatic stress disorder (PTSD). The therapy involves recalling distressing experiences while simultaneously focusing on bilateral sensory input, such as side-to-side eye movements, taps, or auditory tones. EMDR is structured into eight phases, including history taking, preparation, assessment, desensitization, installation, body scan, closure, and reevaluation. Research shows EMDR can reduce the emotional intensity and vividness of traumatic memories and foster adaptive reprocessing.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-Traumatic Stress Disorder (PTSD)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "acute-stress-disorder",
+          "condition_name": "Acute stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-depression",
+          "condition_name": "Trauma-related depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complicated-grief",
+          "condition_name": "Complicated grief",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "phobias",
+          "condition_name": "Phobias",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain-management",
+          "condition_name": "Chronic pain management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "addiction-related-trauma",
+          "condition_name": "Addiction-related trauma",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "performance-anxiety",
+          "condition_name": "Performance anxiety",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—recognized as an evidence-based treatment by APA, WHO, and VA/DoD guidelines.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 5
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "depression": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Numerous randomized controlled trials and meta-analyses demonstrate EMDR’s effectiveness in treating PTSD and trauma-related disorders."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "6–12 sessions on average, may vary depending on trauma complexity"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person therapy",
+        "Telehealth with adaptations"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe with trained practitioners. Temporary increases in distress can occur during trauma recall.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary emotional distress"
+        },
+        {
+          "effect": "Fatigue"
+        },
+        {
+          "effect": "Vivid dreams"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dissociation if unprepared or unsupported"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncontrolled dissociation",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unstable mood or medical condition",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Trauma-focused therapy, Cognitive-emotional processing",
+        "key_techniques": [
+          "PTSD treatment",
+          "Trauma therapy",
+          "Evidence-based psychotherapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review symptoms and establish target memory.",
+          "during_session": "Guided recall of traumatic event with bilateral stimulation.",
+          "post_session": "Debriefing, coping strategy reinforcement, planning next target."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists with EMDRIA-approved EMDR training"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -236,6 +334,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Shapiro F. (1989). Eye movement desensitization: A new treatment for post-traumatic stress disorder. J Behav Ther Exp Psychiatry.",
+      "url": "https://doi.org/10.1016/0005-7916(89)90025-6"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "WHO (2013). Guidelines for the management of conditions specifically related to stress.",
+      "url": "https://www.who.int/publications/i/item/9789241505406"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "APA Clinical Practice Guideline for PTSD (2017).",
+      "url": "https://www.apa.org/ptsd-guideline"
+    }
+  ],
   "seo": {
     "title": "Eye Movement Desensitization and Reprocessing (EMDR) Therapy",
     "description": "EMDR is an evidence-based psychotherapy for PTSD and trauma that uses bilateral stimulation to reprocess distressing memories and reduce their impact.",
@@ -248,5 +366,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—recognized as an evidence-based treatment by APA, WHO, and VA/DoD guidelines."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—recognized as an evidence-based treatment by APA, WHO, and VA/DoD guidelines."
+    ]
   }
 }

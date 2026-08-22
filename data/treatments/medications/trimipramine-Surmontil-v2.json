@@ -1,79 +1,241 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "trimipramine",
-  "type": "medication",
-  "name": "Trimipramine",
-  "summary": "Sedating tricyclic antidepressant (TCA) sometimes used for depression with prominent insomnia or agitation. Can work well for mood, but the side effect burden is real (anticholinergic effects, orthostasis, cardiac risk), and it is generally avoided in older adults.",
-  "description": "Trimipramine is a tricyclic antidepressant that can help depression—especially when sleep is wrecked and you need a more sedating option. It usually takes 1–2 weeks to notice early changes and 4–6 weeks for fuller benefit. This medication can cause strong sedation, constipation, dry mouth, blurred vision, dizziness, and low blood pressure when standing. It can also affect heart rhythm, so it’s not a casual prescription. Like other antidepressants, it carries a boxed warning about increased suicidal thoughts/behaviors in people 24 and younger, especially early on or with dose changes.",
-  "patient_summary": "Trimipramine is a sedating antidepressant sometimes chosen when depression comes with major insomnia or nighttime anxiety. It can help mood over weeks, but it can also cause heavy drowsiness, dry mouth, constipation, dizziness, and blood-pressure drops when you stand up. It can affect heart rhythm and is usually avoided in people 65+. If you’re 24 or younger, antidepressants can raise suicidal thinking early in treatment—so you need close check-ins, especially during the first month and after dose changes.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "trimipramine",
+    "name": "Trimipramine",
+    "brand_names": [
+      "APO-Trimipramine (Canada)"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Tricyclic Antidepressant (TCA)",
       "Tertiary Amine Antidepressant"
-    ],
-    "brand_names": [
-      "APO-Trimipramine (Canada)"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 0,
-    "pharmacologic_category": "Tricyclic Antidepressant (Tertiary Amine), Highly Sedating and Anticholinergic",
-    "published_date": "2026-02-11T00:00:00Z",
-    "last_updated": "2026-02-11T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-11T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used to treat depression. Clinically, it’s most relevant when depression is paired with significant insomnia, agitation, or nighttime anxiety because it is strongly sedating."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Not a primary insomnia medication, but its strong sedation can be useful when insomnia is a major part of the depressive picture. This is a side-effect-driven benefit, not a first-line insomnia strategy."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to trimipramine, any component of the formulation, or other tricyclic antidepressants",
-      "Use during the acute recovery phase of myocardial infarction",
-      "Concurrent use of monoamine oxidase inhibitors (MAOIs) or use within 14 days of discontinuing either trimipramine or an MAOI",
-      "Initiation of trimipramine in a patient receiving IV methylene blue",
-      "Canadian labeling (additional): Narrow-angle glaucoma",
-      "Canadian labeling (additional): Prostatic hypertrophy"
-    ],
-    "efficacy_response": {
-      "metric": "Time to clinically meaningful improvement in depression",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With trimipramine, early improvement can show up in 1–2 weeks, but the full antidepressant effect usually takes 4–6 weeks. If nothing is moving by week 4 at an adequate dose, your clinician will usually reassess the plan.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Sedating tricyclic antidepressant (TCA) sometimes used for depression with prominent insomnia or agitation. Can work well for mood, but the side effect burden is real (anticholinergic effects, orthostasis, cardiac risk), and it is generally avoided in older adults.",
+  "description": "Trimipramine is a tricyclic antidepressant that can help depression—especially when sleep is wrecked and you need a more sedating option. It usually takes 1–2 weeks to notice early changes and 4–6 weeks for fuller benefit. This medication can cause strong sedation, constipation, dry mouth, blurred vision, dizziness, and low blood pressure when standing. It can also affect heart rhythm, so it’s not a casual prescription. Like other antidepressants, it carries a boxed warning about increased suicidal thoughts/behaviors in people 24 and younger, especially early on or with dose changes.",
+  "patient_summary": "Trimipramine is a sedating antidepressant sometimes chosen when depression comes with major insomnia or nighttime anxiety. It can help mood over weeks, but it can also cause heavy drowsiness, dry mouth, constipation, dizziness, and blood-pressure drops when you stand up. It can affect heart rhythm and is usually avoided in people 65+. If you’re 24 or younger, antidepressants can raise suicidal thinking early in treatment—so you need close check-ins, especially during the first month and after dose changes.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Used to treat depression. Clinically, it’s most relevant when depression is paired with significant insomnia, agitation, or nighttime anxiety because it is strongly sedating.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Not a primary insomnia medication, but its strong sedation can be useful when insomnia is a major part of the depressive picture. This is a side-effect-driven benefit, not a first-line insomnia strategy."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral; significant first-pass metabolism",
-      "bioavailability": "18% to 63%",
-      "onset": "Depression: initial effects may be observed within 1 to 2 weeks; continued improvement through 4 to 6 weeks",
-      "peak_plasma": "1 to 6 hours",
-      "half_life": "7 to 40 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic; CYP2D6 (major) and CYP2C19 (minor) substrate",
-      "excretion": "Urine",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "May be taken without regard to food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: initial effects may be observed within 1 to 2 weeks; continued improvement through 4 to 6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Frequency not defined in product labeling",
+          "notes": "This can be strong. Many people take it at bedtime for that reason. The goal is “sleepy enough to sleep” without being a zombie the next morning."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurred vision)",
+          "incidence": "Frequency not defined in product labeling",
+          "notes": "These effects can stack up. Constipation can become severe if you ignore it. If you get urinary retention or eye pain/vision halos (glaucoma warning sign), that’s urgent."
+        },
+        {
+          "effect": "Orthostatic hypotension / dizziness",
+          "incidence": "Frequency not defined in product labeling",
+          "notes": "Standing up quickly can make you lightheaded. This is a fall risk. Hydration and slow position changes matter."
+        },
+        {
+          "effect": "Cognitive slowing / fatigue",
+          "incidence": "Frequency not defined in product labeling",
+          "notes": "Some people feel foggy or slowed down—especially early on or at higher doses."
+        },
+        {
+          "effect": "Sleep disturbance (insomnia, nightmares) despite sedation",
+          "incidence": "Frequency not defined in product labeling",
+          "notes": "Yes, it’s paradoxical sometimes: you can be sedated and still have fragmented sleep or vivid dreams."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Cardiac arrhythmias, conduction problems, tachycardia, and (rarely) myocardial infarction or stroke symptoms—seek emergency care for chest pain, fainting, severe palpitations, or neurologic symptoms."
+        },
+        {
+          "risk": "Seizures (risk increases with higher doses, predisposition, or interacting meds)."
+        },
+        {
+          "risk": "Severe confusion, hallucinations, or worsening psychosis in vulnerable patients."
+        },
+        {
+          "risk": "Serotonin syndrome when combined with other serotonergic agents: agitation, confusion, fever, sweating, tremor, diarrhea—medical emergency."
+        },
+        {
+          "risk": "SIADH / hyponatremia (low sodium), especially in older adults: confusion, weakness, headache, falls."
+        },
+        {
+          "risk": "Agranulocytosis or significant blood count issues (rare): fever, sore throat, infections—urgent evaluation."
+        },
+        {
+          "risk": "Cholestatic jaundice or significant liver enzyme elevation (rare): yellow skin/eyes, dark urine—urgent evaluation."
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thinking and behavior (suicidality) in short-term studies in children, adolescents, and young adults with major depressive disorder (MDD) and other psychiatric disorders. Closely observe patients of all ages who are started on therapy for clinical worsening, suicidality, or unusual changes in behavior—especially during the first 1 to 2 months and during dose increases or decreases. Trimipramine is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to trimipramine, any component of the formulation, or other tricyclic antidepressants"
+        },
+        {
+          "contraindication": "Use during the acute recovery phase of myocardial infarction"
+        },
+        {
+          "contraindication": "Concurrent use of monoamine oxidase inhibitors (MAOIs) or use within 14 days of discontinuing either trimipramine or an MAOI"
+        },
+        {
+          "contraindication": "Initiation of trimipramine in a patient receiving IV methylene blue"
+        },
+        {
+          "contraindication": "Canadian labeling (additional): Narrow-angle glaucoma"
+        },
+        {
+          "contraindication": "Canadian labeling (additional): Prostatic hypertrophy"
+        }
+      ],
+      "precautions": [
+        "Overdose danger: TCAs have a narrow safety margin in overdose. If suicide risk is high, clinicians typically prescribe the smallest reasonable quantity.",
+        "Cardiac risk: Can affect conduction and rhythm. Use extra caution with existing heart disease or history of arrhythmias.",
+        "Severe sedation: Can impair driving, reaction time, and decision-making—especially when starting or after dose changes.",
+        "Anticholinergic burden: Constipation, urinary retention, blurred vision, and confusion are not minor side effects with this medication.",
+        "Orthostatic hypotension: Can cause dizziness and falls, especially when standing quickly or if you’re dehydrated.",
+        "Mania/hypomania risk: Can flip bipolar depression into hypomania/mania. Screen for bipolar disorder before antidepressant monotherapy.",
+        "Serotonin syndrome: Possible when combined with other serotonergic medications; monitor for agitation, confusion, sweating, tremor, diarrhea, and fever."
+      ],
+      "interactions": [
+        {
+          "interactant": "Monoamine oxidase inhibitors (MAOIs) and IV methylene blue",
+          "mechanism": "Contraindicated due to risk of serious reactions (including serotonin toxicity).",
+          "action": "Wait 14 days between stopping an MAOI and starting trimipramine, and also 14 days between stopping trimipramine and starting an MAOI."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs, SNRIs, triptans, fentanyl, lithium, tramadol, buspirone, St. John’s wort, tryptophan)",
+          "mechanism": "Increased risk of serotonin syndrome.",
+          "action": "Avoid risky combinations when possible; if used, monitor closely for agitation, confusion, sweating, tremor, diarrhea, fever, and neuromuscular changes."
+        },
+        {
+          "interactant": "Alcohol, benzodiazepines, sedating antihistamines, sleep meds, muscle relaxants",
+          "mechanism": "Additive CNS depression: heavier sedation, impaired coordination, accidents, falls.",
+          "action": "Minimize or avoid combining sedatives. If unavoidable, use the lowest effective doses and avoid driving."
+        },
+        {
+          "interactant": "Medications that increase arrhythmia/QT risk or worsen conduction",
+          "mechanism": "Higher risk of rhythm problems and conduction abnormalities.",
+          "action": "Clinicians may check ECG and electrolytes in higher-risk patients and avoid stacking QT/conduction-risk meds."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "May inhibit metabolism of some TCAs and increase toxicity risk.",
+          "action": "Avoid or use cautiously; monitor for increased sedation, dizziness, or other toxicity."
+        },
+        {
+          "interactant": "Linezolid (labeling contraindication; evolving evidence)",
+          "mechanism": "Manufacturer labeling lists it as contraindicated, but some newer evidence suggests serotonin syndrome risk may be low; risk may increase with longer concurrent use.",
+          "action": "If the combination is medically necessary, clinicians monitor closely for serotonin toxicity and educate on symptoms."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidal ideation and clinical worsening: Baseline and closely during the first 1–2 months and with dose changes (increases or decreases)."
+        },
+        {
+          "parameter": "Sedation and functional impairment: Daytime drowsiness, driving safety, reaction time, work/school functioning—especially early on."
+        },
+        {
+          "parameter": "Orthostatic blood pressure and falls: Check standing/sitting blood pressure and ask about dizziness and near-falls."
+        },
+        {
+          "parameter": "Cardiac monitoring: ECG, heart rate, and blood pressure in patients with cardiac disease or higher arrhythmia/QT risk; monitor for palpitations, syncope, chest pain."
+        },
+        {
+          "parameter": "Electrolytes: Potassium, magnesium, and sodium at baseline and as clinically indicated (especially sodium in older adults due to SIADH/hyponatremia risk)."
+        },
+        {
+          "parameter": "Liver function tests: Baseline and as clinically indicated."
+        },
+        {
+          "parameter": "Weight and BMI: Baseline and periodically."
+        },
+        {
+          "parameter": "Blood glucose: Baseline and as clinically indicated in patients with diabetes or glucose regulation concerns."
+        },
+        {
+          "parameter": "Bipolar screening and mood switches: Watch for hypomania/mania (decreased sleep, increased energy, impulsivity, irritability)."
+        },
+        {
+          "parameter": "Discontinuation symptoms when tapering: Dizziness, nausea, sweating, tremor, sleep disruption, mood lability; adjust taper speed if symptoms flare."
+        },
+        {
+          "parameter": "If therapeutic drug monitoring is used: Draw trough level just before the next dose; typical therapeutic range cited as 150 to 300 ng/mL; alert level 600 ng/mL."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Pregnancy exposure data for tricyclic antidepressants (including trimipramine) exist but are limited and mixed. Untreated depression also carries real risks in pregnancy (including relapse, functional impairment, and adverse pregnancy outcomes). If a patient is stable on trimipramine before pregnancy, some may continue it after a risk–benefit discussion. During pregnancy and postpartum, therapeutic drug monitoring can be considered because drug levels may shift. Use the lowest effective dose of a single agent when possible and monitor symptoms with a validated tool.",
+        "lactation": "It is not known if trimipramine is present in breast milk. If used while breastfeeding, infants should be monitored for sedation and poor feeding. If initiating a brand-new antidepressant during breastfeeding, many clinicians prefer agents with more lactation data, but continuation of an effective TCA may be considered depending on clinical need and individual risk–benefit discussion.",
+        "pediatric": "Not approved for pediatric use. Antidepressants carry increased suicidality risk in children, adolescents, and young adults. Also, controlled trials have not consistently shown TCAs to be superior to placebo for pediatric depression, and safer contemporary options are generally preferred. If used in adolescents in rare cases, reduced dosing and close monitoring are standard.",
+        "geriatric": "Generally avoid in adults 65+ because trimipramine is highly anticholinergic and highly sedating, and it increases risk of orthostatic hypotension and falls. If it must be used, clinicians typically start with a low dose (up to 50 mg/day) and titrate cautiously, with a typical maximum around 100 mg/day in older adults and close monitoring for confusion, constipation/urinary retention, and blood pressure drops.",
+        "renal_impairment": "eGFR ≥15 mL/minute: No adjustment typically required. eGFR <15 mL/minute or dialysis: Use a low initial dose up to 50 mg/day and increase gradually based on response and tolerability.",
+        "hepatic_impairment": "No manufacturer-provided adjustment, but use caution because it’s hepatically metabolized. Some experts recommend starting and maintaining at ~50% lower doses in hepatic impairment with cautious titration based on response and tolerability."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 0
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral; significant first-pass metabolism",
+          "bioavailability": "18% to 63%",
+          "peak_plasma": "1 to 6 hours",
+          "half_life": "7 to 40 hours",
+          "metabolism": "Hepatic; CYP2D6 (major) and CYP2C19 (minor) substrate",
+          "excretion": "Urine",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "May be taken without regard to food"
+        },
+        "dosing": {
+          "titration": "Trimipramine is typically started low and increased gradually. Many clinicians prefer moving the dose toward bedtime once tolerated because sedation is a major effect. Dosing varies depending on outpatient vs inpatient setting, tolerability, and comorbid medical risk."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been on trimipramine for more than a few weeks, don’t stop abruptly. Tapering helps prevent discontinuation symptoms and helps your clinician see whether symptoms returning are withdrawal vs depression coming back."
+        }
+      }
     }
   },
   "sections": [
@@ -93,7 +255,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s different, but trimipramine tends to create a pretty consistent “feel” because it’s so sedating and anticholinergic:",
       "items": [
         {
           "category": "Sleepiness (early on)",
@@ -131,7 +292,8 @@
           ],
           "note": "Orthostatic hypotension (blood pressure dropping when you stand) is a known issue with this medication."
         }
-      ]
+      ],
+      "intro": "Everyone’s different, but trimipramine tends to create a pretty consistent “feel” because it’s so sedating and anticholinergic:"
     },
     {
       "type": "onset_duration",
@@ -148,10 +310,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Trimipramine is an antidepressant option that can work for depression, but it’s typically chosen for a specific clinical fit—when sedation is actually helpful (severe insomnia, nighttime anxiety, agitation). If you tolerate it, the sleep benefit may show up before mood improves, and the mood benefit usually builds over several weeks.",
       "metric": "Symptom improvement timeline in depression",
       "value": "Early improvement often within 1–2 weeks; fuller response commonly 4–6 weeks",
       "comparison": "Not applicable for this medication.",
-      "text": "Trimipramine is an antidepressant option that can work for depression, but it’s typically chosen for a specific clinical fit—when sedation is actually helpful (severe insomnia, nighttime anxiety, agitation). If you tolerate it, the sleep benefit may show up before mood improves, and the mood benefit usually builds over several weeks.",
       "clinical_details": "Clinically, trimipramine is generally not a first-line antidepressant because the side effect burden (sedation, anticholinergic effects, orthostasis) and cardiac safety considerations can outweigh the benefits for many patients. When used, clinicians often focus on careful dosing, bedtime administration when possible, and close monitoring early in treatment.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -242,7 +404,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Trimipramine has meaningful interaction risk—especially with MAOIs, other serotonergic meds, and anything that worsens sedation, blood pressure drops, or heart rhythm risk.",
       "items": [
         {
           "with": "Monoamine oxidase inhibitors (MAOIs) and IV methylene blue",
@@ -274,7 +435,8 @@
           "risk": "Manufacturer labeling lists it as contraindicated, but some newer evidence suggests serotonin syndrome risk may be low; risk may increase with longer concurrent use.",
           "action": "If the combination is medically necessary, clinicians monitor closely for serotonin toxicity and educate on symptoms."
         }
-      ]
+      ],
+      "intro": "Trimipramine has meaningful interaction risk—especially with MAOIs, other serotonergic meds, and anything that worsens sedation, blood pressure drops, or heart rhythm risk."
     },
     {
       "type": "tapering",
@@ -352,21 +514,6 @@
       "text": "Trimipramine is not a modern first-line antidepressant for most patients. Where it can make sense is a narrower lane: depression with severe insomnia or nighttime agitation where sedation is a feature, not a bug. Even then, clinicians weigh the tradeoffs—anticholinergic side effects, blood pressure drops, and cardiac considerations. In older adults, it’s generally avoided. In patients with meaningful suicide risk, prescribers are often extra cautious because TCAs are more dangerous in overdose than many newer antidepressants."
     }
   ],
-  "seo": {
-    "title": "Trimipramine: Uses, Dosing, Side Effects, Warnings & Tapering",
-    "description": "Trimipramine is a sedating tricyclic antidepressant used for depression—often when insomnia is severe. Learn dosing, side effects (dry mouth, constipation, dizziness), suicidality warning in young adults, interactions, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/trimipramine](https://www.heypsych.com/treatments/trimipramine)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is trimipramine used for?",
@@ -408,5 +555,20 @@
       "q": "Is trimipramine safe in pregnancy or breastfeeding?",
       "a": "It depends on the individual situation. There’s some pregnancy outcome data for TCAs, but it’s limited and mixed, and untreated depression also carries real risks. Breast milk data for trimipramine specifically are unclear. If someone is stable on it, continuation may be considered after shared decision-making, with close monitoring."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Trimipramine: Uses, Dosing, Side Effects, Warnings & Tapering",
+    "description": "Trimipramine is a sedating tricyclic antidepressant used for depression—often when insomnia is severe. Learn dosing, side effects (dry mouth, constipation, dizziness), suicidality warning in young adults, interactions, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/trimipramine](https://www.heypsych.com/treatments/trimipramine)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

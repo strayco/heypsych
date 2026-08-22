@@ -1,97 +1,266 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "risperidone-risperdal",
-  "type": "medication",
-  "name": "Risperidone (Risperdal)",
-  "summary": "Second-generation antipsychotic used to treat schizophrenia and bipolar mania, and sometimes used off-label for severe agitation or as an add-on for treatment-resistant depression or OCD. Effective, but carries real risks: weight gain/metabolic changes, movement side effects, high prolactin, and a boxed warning for increased mortality in elderly patients with dementia-related psychosis.",
-  "description": "Risperidone is an atypical antipsychotic that can reduce psychosis, mania, severe agitation, and irritability. It can be sedating for some people and activating for others (akathisia/restlessness). It also has a higher-than-average chance of raising prolactin (sexual side effects, menstrual changes, breast symptoms) and can cause movement side effects (stiffness, tremor, restlessness). In older adults with dementia-related psychosis, antipsychotics increase the risk of death—risperidone is not approved for that use.",
-  "patient_summary": "Risperidone can help with psychosis, mania, and severe agitation, and it’s sometimes used as an add-on when depression or OCD won’t budge. People often notice less intensity, fewer intrusive symptoms, and more emotional steadiness—but side effects can be the dealbreaker (weight gain, sleepiness or restlessness, stiffness/tremor, and sexual or hormone-related changes). It also carries a serious boxed warning in elderly patients with dementia-related psychosis: higher risk of death.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Second Generation (Atypical) Antipsychotic",
-      "Antimanic Agent"
-    ],
+  "identity": {
+    "slug": "risperidone-risperdal",
+    "name": "Risperidone (Risperdal)",
+    "generic_name": "risperidone",
     "brand_names": [
       "RisperDAL",
       "RisperDAL Consta",
       "Rykindo",
       "Perseris",
       "Uzedy"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular",
-      "Subcutaneous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1993,
-    "pharmacologic_category": "Second-Generation Antipsychotic (Atypical)",
-    "published_date": "2026-01-03T00:00:00Z",
-    "last_updated": "2026-01-03T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-03T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Bipolar I Disorder (acute mania/mixed episodes)",
-      "Bipolar I Disorder (maintenance; long-acting injectable forms)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for schizophrenia. Often improves hallucinations, delusions, paranoia, disorganization, and agitation. Most people notice early changes in 1 to 2 weeks, with fuller benefit over 4 to 6 weeks."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for acute mania/mixed episodes and for maintenance of bipolar I disorder (including certain long-acting injectable formulations). Early calming can happen within days, but mood stabilization continues over 1 to 2 weeks."
-      },
-      {
-        "slug": "treatment-resistant-depression",
-        "relationship": "off_label",
-        "context": "Sometimes used as a low-dose add-on to an antidepressant when depression is not improving (augmentation strategy)."
-      },
-      {
-        "slug": "obsessive-compulsive-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as augmentation to an SSRI/SNRI or clomipramine in treatment-resistant OCD."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "May be used for severe acute agitation when psychosis is driving the agitation and safety is at risk. Route and setting matter; dosing is usually short-term and symptom-driven."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity (eg, anaphylaxis, angioedema) to risperidone, paliperidone, or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical improvement timeline",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For schizophrenia, many people feel some early improvement in 1 to 2 weeks (less intensity, less agitation), with a more complete response over 4 to 6 weeks. For acute mania, early calming may show up within days, with continued improvement over 1 to 2 weeks.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
+    "drug_classes": [
+      "Second Generation (Atypical) Antipsychotic",
+      "Antimanic Agent"
+    ]
+  },
+  "summary": "Second-generation antipsychotic used to treat schizophrenia and bipolar mania, and sometimes used off-label for severe agitation or as an add-on for treatment-resistant depression or OCD. Effective, but carries real risks: weight gain/metabolic changes, movement side effects, high prolactin, and a boxed warning for increased mortality in elderly patients with dementia-related psychosis.",
+  "description": "Risperidone is an atypical antipsychotic that can reduce psychosis, mania, severe agitation, and irritability. It can be sedating for some people and activating for others (akathisia/restlessness). It also has a higher-than-average chance of raising prolactin (sexual side effects, menstrual changes, breast symptoms) and can cause movement side effects (stiffness, tremor, restlessness). In older adults with dementia-related psychosis, antipsychotics increase the risk of death—risperidone is not approved for that use.",
+  "patient_summary": "Risperidone can help with psychosis, mania, and severe agitation, and it’s sometimes used as an add-on when depression or OCD won’t budge. People often notice less intensity, fewer intrusive symptoms, and more emotional steadiness—but side effects can be the dealbreaker (weight gain, sleepiness or restlessness, stiffness/tremor, and sexual or hormone-related changes). It also carries a serious boxed warning in elderly patients with dementia-related psychosis: higher risk of death.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for schizophrenia. Often improves hallucinations, delusions, paranoia, disorganization, and agitation. Most people notice early changes in 1 to 2 weeks, with fuller benefit over 4 to 6 weeks.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for acute mania/mixed episodes and for maintenance of bipolar I disorder (including certain long-acting injectable formulations). Early calming can happen within days, but mood stabilization continues over 1 to 2 weeks.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment Resistant Depression",
+          "relationship": "off_label",
+          "context": "Sometimes used as a low-dose add-on to an antidepressant when depression is not improving (augmentation strategy)."
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive Compulsive Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as augmentation to an SSRI/SNRI or clomipramine in treatment-resistant OCD."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "May be used for severe acute agitation when psychosis is driving the agitation and safety is at risk. Route and setting matter; dosing is usually short-term and symptom-driven."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral: Rapid and well absorbed; food does not meaningfully change absorption",
-      "bioavailability": "Oral ~70%",
-      "onset": "Agitation (ODT): median time to calm ~70 minutes (reported)",
-      "peak_plasma": "Oral risperidone: within ~1 hour; metabolite peak varies by metabolizer status",
-      "half_life": "Active moiety (risperidone + 9-hydroxyrisperidone): ~20 hours on average; prolonged in older adults",
-      "duration_IR": "Daily dosing effect is from the combined active moiety with ~20-hour half-life; clinical effects accumulate over days",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensively hepatic via CYP2D6 (major) and CYP3A4 (minor) to 9-hydroxyrisperidone (active; paliperidone)",
-      "excretion": "Urine (~70%, primarily as active metabolite) and feces (~14%)",
-      "protein_binding": "Risperidone ~88% to 90%; 9-hydroxyrisperidone ~77%",
-      "food_effect": "Food does not significantly affect rate or extent of absorption"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Agitation (ODT): median time to calm ~70 minutes (reported)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular",
+        "Subcutaneous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Common; varies by dose and individual sensitivity",
+          "notes": "Some people feel calmer because they’re sleepier; others feel genuinely less symptomatic without feeling sedated. If you’re too groggy to function, that’s not “tough it out”—that’s a dosing problem or a med-choice problem."
+        },
+        {
+          "effect": "Akathisia / Restlessness",
+          "incidence": "Common; can be misread as anxiety",
+          "notes": "This is the ‘I need to move’ feeling—pacing, leg bouncing, skin-crawly discomfort. It can make people quit meds fast. Tell your prescriber ASAP; dose adjustments and add-on treatments can help."
+        },
+        {
+          "effect": "Extrapyramidal Symptoms (EPS)",
+          "incidence": "Moderate to high propensity among SGAs",
+          "notes": "EPS includes stiffness, tremor, slowed movement, and dystonia. It’s dose-related and more likely during titration. Catching it early matters."
+        },
+        {
+          "effect": "Weight Gain / Metabolic Changes",
+          "incidence": "Common; clinically significant gain can occur",
+          "notes": "Weight gain can happen fast early on and then plateau, but some people keep gaining. This is a medical side effect—not a willpower issue—so you monitor and intervene early."
+        },
+        {
+          "effect": "Hyperprolactinemia",
+          "incidence": "High risk compared with many other SGAs",
+          "notes": "Think: lower libido, erectile/orgasm issues, menstrual changes, galactorrhea, gynecomastia. If symptoms show up, you can check prolactin and consider dose changes or switching to a prolactin-sparing option."
+        },
+        {
+          "effect": "Orthostatic Hypotension",
+          "incidence": "More common with initiation/rapid titration and in older adults",
+          "notes": "Dizziness, lightheadedness, or fainting when you stand up. Slow titration and hydration help; sometimes you need dose changes or a different med."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): high fever, severe rigidity, confusion, unstable blood pressure/heart rate (MEDICAL EMERGENCY)."
+        },
+        {
+          "risk": "Tardive dyskinesia: involuntary movements (tongue, face, jaw, trunk) that can persist even after stopping."
+        },
+        {
+          "risk": "Cerebrovascular events in older adults with dementia-related psychosis (stroke/TIA), including fatalities reported in trials."
+        },
+        {
+          "risk": "QT prolongation / torsades risk in susceptible patients (electrolyte problems, older age, interacting meds)."
+        },
+        {
+          "risk": "Severe neutropenia (ANC <1,000/mm3): discontinue."
+        },
+        {
+          "risk": "Angioedema/anaphylaxis: swelling of face/lips/tongue, trouble breathing (EMERGENCY)."
+        },
+        {
+          "risk": "Hyperglycemia and diabetic ketoacidosis (rare but serious)."
+        },
+        {
+          "risk": "Aspiration risk if severe EPS causes swallowing dysfunction; pneumonia risk increases especially in frail/older adults."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Risperidone is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity (eg, anaphylaxis, angioedema) to risperidone, paliperidone, or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Stroke/TIA risk in older adults with dementia-related psychosis has been reported in trials; use only when benefits clearly outweigh risks and non-drug strategies have failed",
+        "Neuroleptic malignant syndrome (NMS): rare but life-threatening (fever, rigidity, confusion, autonomic instability)",
+        "Tardive dyskinesia: potentially irreversible abnormal movements with longer exposure; risk increases with duration and total dose",
+        "Metabolic risk: weight gain, glucose changes, lipid changes—can develop within months",
+        "Hyperprolactinemia: sexual dysfunction, menstrual changes, galactorrhea, gynecomastia, fertility issues",
+        "QT prolongation: risk higher with other QT-prolonging meds, electrolyte abnormalities, older age, kidney/liver impairment",
+        "Orthostatic hypotension and falls: especially during initiation, rapid titration, and in older adults",
+        "Severe neutropenia: stop treatment if ANC < 1,000/mm3",
+        "Catatonia warning: antipsychotics are not indicated for catatonia and may worsen psychosis and increase NMS risk in catatonic patients"
+      ],
+      "interactions": [
+        {
+          "interactant": "CYP2D6 inhibitors (eg, fluoxetine, paroxetine)",
+          "mechanism": "Can increase risperidone exposure and side effects (EPS, sedation, prolactin effects).",
+          "action": "Consider lower risperidone doses and slower titration; monitor closely for movement side effects and sedation."
+        },
+        {
+          "interactant": "Other QT-prolonging medications",
+          "mechanism": "Higher risk of QT prolongation and torsades in susceptible patients.",
+          "action": "Avoid risky combinations when possible; correct electrolytes; consider baseline and follow-up ECGs in higher-risk patients."
+        },
+        {
+          "interactant": "Blood pressure–lowering agents (antihypertensives, TCAs)",
+          "mechanism": "Additive orthostatic hypotension, dizziness, syncope, falls.",
+          "action": "Start low, titrate slowly, monitor orthostatic vitals especially early and after dose changes."
+        },
+        {
+          "interactant": "CNS depressants (alcohol, sedating antihistamines, benzodiazepines, sleep meds)",
+          "mechanism": "More sedation, impaired coordination, fall risk—especially in older adults.",
+          "action": "Use the lowest effective doses, avoid stacking sedatives, and counsel on driving/falls."
+        },
+        {
+          "interactant": "Dopamine agonists (eg, for Parkinson disease)",
+          "mechanism": "Pharmacologic “tug-of-war” that can worsen either psychosis or motor symptoms.",
+          "action": "Specialist management is strongly recommended; choose agents carefully and monitor closely."
+        },
+        {
+          "interactant": "Medications that raise prolactin or worsen sexual function",
+          "mechanism": "Amplifies prolactin-related side effects and sexual dysfunction burden.",
+          "action": "Monitor symptoms; consider switching to prolactin-sparing strategies if clinically appropriate."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and symptom targets every visit: psychosis intensity, mania severity, agitation, sleep, safety, insight, functioning."
+        },
+        {
+          "parameter": "EPS/akathisia every visit (and after dose changes): look for restlessness, tremor, stiffness, dystonia; use a formal rating scale at least annually (or every 6 months if high risk)."
+        },
+        {
+          "parameter": "Tardive dyskinesia every visit (and formally at least annually): early detection matters because risk increases with cumulative exposure."
+        },
+        {
+          "parameter": "Weight/BMI: baseline; at 8 and 12 weeks after initiation and dose changes; then quarterly (more often if rapid gain). Consider waist circumference baseline and annually."
+        },
+        {
+          "parameter": "Metabolic labs: fasting glucose or HbA1c at ~4 months after initiation and then annually (more often if abnormal); lipid panel at ~4 months and then annually (more often if abnormal)."
+        },
+        {
+          "parameter": "Blood pressure/orthostatics and pulse: especially during initiation and titration; monitor for dizziness/syncope and fall risk."
+        },
+        {
+          "parameter": "Prolactin: ask about symptoms at every visit until dose is stable; check level if symptomatic (sexual dysfunction, menstrual changes, galactorrhea, gynecomastia)."
+        },
+        {
+          "parameter": "CBC as clinically indicated, especially in patients with low baseline WBC/ANC or history of drug-induced neutropenia; discontinue if ANC <1,000/mm3."
+        },
+        {
+          "parameter": "Electrolytes, renal and liver function periodically (at least annually or sooner if medically indicated), especially with kidney or liver impairment."
+        },
+        {
+          "parameter": "QT risk assessment: review other QT-prolonging meds, correct electrolytes, consider ECG monitoring in higher-risk patients (older age, heart disease, kidney/liver impairment, polypharmacy)."
+        },
+        {
+          "parameter": "Sodium in older adults: monitor closely with initiation or dose adjustments due to SIADH/hyponatremia risk."
+        },
+        {
+          "parameter": "Adherence every visit; for LAIs, document injection schedule, missed-dose plan, and symptom monitoring between doses."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Outcome data for second-generation antipsychotics as a class do not show a large overall increase in major malformations, but findings for risperidone are mixed and more data are needed. Third-trimester exposure to antipsychotics can lead to newborn EPS and/or withdrawal symptoms (agitation, feeding issues, abnormal tone, respiratory distress, somnolence, tremor). Tapering late in pregnancy to prevent neonatal symptoms is not recommended; instead, use the lowest effective dose of a single agent and monitor closely. Long-acting/depot antipsychotics are generally not initiated during pregnancy, but may be continued when relapse risk is high and the patient is stable.",
+        "lactation": "Risperidone and its active metabolite are present in breast milk. Reported relative infant doses are generally in a low single-digit percentage range, but infant sedation, poor feeding, jitteriness, tremor, abnormal movements, and rare respiratory depression (especially in premature infants) have been reported. If breastfeeding while on risperidone, use the lowest effective dose, avoid sedative polypharmacy, and monitor the infant closely (sedation, feeding, weight gain, tone, breathing). Some formulations’ labeling recommends against breastfeeding for extended periods after the last injection (product-specific).",
+        "pediatric": "Oral risperidone is used in pediatric psychiatry for specific labeled indications (eg, irritability associated with autism) and for select off-label situations under specialist care. Children and adolescents are at higher risk for metabolic effects, weight gain, and prolactin elevation; careful monitoring is essential. Rapid discontinuation should be avoided due to risk of withdrawal and emergent dystonia/dyskinesia.",
+        "geriatric": "Avoid antipsychotics for behavioral symptoms of dementia or delirium unless nonpharmacologic strategies fail and there is risk of harm. Boxed warning: increased mortality in elderly patients with dementia-related psychosis. Older adults are also more vulnerable to orthostatic hypotension, falls, sedation, QT issues, and SIADH/hyponatremia. If used for approved psychiatric indications, start low, titrate slowly, and reassess frequently.",
+        "renal_impairment": "Kidney impairment reduces clearance of the active moiety. If CrCl 30 to 60 mL/min: start ~50% to 75% of usual doses and titrate cautiously (small increments, slower titration), with a maximum that generally should not exceed ~75% of usual. If CrCl 10 to <30 mL/min: start ~50% of usual and do not exceed ~50% of typical maximum. If CrCl <10 mL/min: consider an alternative; if used, very low dosing with careful monitoring. Long-acting formulations require special caution and are often avoided or used only after clear oral tolerability and specialist oversight.",
+        "hepatic_impairment": "In liver impairment, free fraction of risperidone may increase (~35%), raising side effect risk (including hypotension). Oral dosing is started lower and titrated cautiously: Child-Pugh A/B often start ~1 mg/day; Child-Pugh C may start ~0.25 to 0.5 mg/day, with cautious titration and longer intervals when higher doses are reached. Long-acting injectable risperidone has limited data in cirrhosis; use caution and prioritize oral tolerability and stability first."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1993
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral: Rapid and well absorbed; food does not meaningfully change absorption",
+          "bioavailability": "Oral ~70%",
+          "peak_plasma": "Oral risperidone: within ~1 hour; metabolite peak varies by metabolizer status",
+          "half_life": "Active moiety (risperidone + 9-hydroxyrisperidone): ~20 hours on average; prolonged in older adults",
+          "metabolism": "Extensively hepatic via CYP2D6 (major) and CYP3A4 (minor) to 9-hydroxyrisperidone (active; paliperidone)",
+          "excretion": "Urine (~70%, primarily as active metabolite) and feces (~14%)",
+          "protein_binding": "Risperidone ~88% to 90%; 9-hydroxyrisperidone ~77%",
+          "food_effect": "Food does not significantly affect rate or extent of absorption"
+        },
+        "dosing": {
+          "titration": "Risperidone dosing depends on what you’re treating (psychosis vs mania vs augmentation) and the route (oral vs long-acting injection). The guiding principle is: start low, titrate based on response and side effects, and use the lowest effective maintenance dose. Special caution is needed in older adults and in kidney or liver impairment."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If risperidone is being stopped (because it’s not working, side effects are intolerable, or a switch is needed), tapering is usually safer than stopping abruptly. Abrupt discontinuation can trigger withdrawal-type symptoms and rebound (agitation, insomnia, anxiety, sweating, GI symptoms, dyskinesias, and return of psychosis or mood symptoms). If discontinuation is due to a serious adverse effect, the plan changes—safety first."
+        }
+      }
     }
   },
   "sections": [
@@ -116,7 +285,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Real talk: risperidone can feel like a lifesaver or a hard no, depending on your brain and your side-effect sensitivity. Here are the patterns I hear most:",
       "items": [
         {
           "category": "Calming the storm (days to 2 weeks)",
@@ -152,7 +320,8 @@
           ],
           "note": "Risperidone is known for raising prolactin. If you get sexual side effects, menstrual changes, breast tenderness, galactorrhea, or fertility issues—say it out loud early so you can adjust the plan."
         }
-      ]
+      ],
+      "intro": "Real talk: risperidone can feel like a lifesaver or a hard no, depending on your brain and your side-effect sensitivity. Here are the patterns I hear most:"
     },
     {
       "type": "onset_duration",
@@ -169,10 +338,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Risperidone is a solid option for schizophrenia and bipolar mania when symptoms are impairing safety, sleep, reality-testing, or functioning. The big clinical win is often reduced intensity—less agitation, less paranoia, fewer hallucinations, and more ability to pause before reacting. The tradeoff is tolerability: weight/metabolic effects, movement side effects, and prolactin-related symptoms are the usual reasons people stop or switch.",
       "metric": "Real-world effectiveness",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Risperidone is a solid option for schizophrenia and bipolar mania when symptoms are impairing safety, sleep, reality-testing, or functioning. The big clinical win is often reduced intensity—less agitation, less paranoia, fewer hallucinations, and more ability to pause before reacting. The tradeoff is tolerability: weight/metabolic effects, movement side effects, and prolactin-related symptoms are the usual reasons people stop or switch.",
       "clinical_details": "In schizophrenia, clinicians often look for early signals in the first 1 to 2 weeks (less agitation, improved sleep, less preoccupation), then reassess more fully by weeks 4 to 6. In acute mania, early calming can occur within days, but the full mood stabilization picture is usually clearer after 1 to 2 weeks. Long-acting formulations can be useful when adherence is the main barrier—but they don’t eliminate side effects, and initiation requires careful planning (tolerability first, then conversion and overlap rules depending on the product).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -268,7 +437,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Risperidone is metabolized mainly by CYP2D6 (and partly by CYP3A4). Interactions can raise levels, worsen side effects (EPS, sedation, QT), or increase metabolic and blood pressure risks.",
       "items": [
         {
           "with": "CYP2D6 inhibitors (eg, fluoxetine, paroxetine)",
@@ -300,7 +468,8 @@
           "risk": "Amplifies prolactin-related side effects and sexual dysfunction burden.",
           "action": "Monitor symptoms; consider switching to prolactin-sparing strategies if clinically appropriate."
         }
-      ]
+      ],
+      "intro": "Risperidone is metabolized mainly by CYP2D6 (and partly by CYP3A4). Interactions can raise levels, worsen side effects (EPS, sedation, QT), or increase metabolic and blood pressure risks."
     },
     {
       "type": "tapering",
@@ -395,21 +564,6 @@
       "text": "Risperidone is commonly used for schizophrenia and acute mania because it’s effective and relatively straightforward to dose. Where it gets tricky is tolerability: prolactin elevation and EPS can be prominent, and weight/metabolic issues are real. In practice, it’s a strong option when you need symptom control and the side-effect profile fits the person. Long-acting formulations are especially useful when relapse is driven by missed doses—not because the med is “better,” but because steady delivery helps keep the floor from dropping out."
     }
   ],
-  "seo": {
-    "title": "Risperidone (Risperdal): Uses, Dosing, Side Effects, Prolactin, Weight Gain & LAI Options",
-    "description": "Risperidone (Risperdal) for schizophrenia and bipolar mania: dosing (oral and long-acting injections), onset, side effects (EPS, akathisia, weight gain, prolactin), boxed warning in dementia-related psychosis, interactions, and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/risperidone-risperdal](https://www.heypsych.com/treatments/risperidone-risperdal)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is risperidone used for?",
@@ -447,5 +601,20 @@
       "q": "Can I stop risperidone suddenly?",
       "a": "Usually, no. Stopping abruptly can cause withdrawal-like symptoms (agitation, insomnia, sweating, GI upset, movement symptoms) and rebound psychosis or mood symptoms. Most of the time you taper. The exception is when there’s a serious adverse reaction—then safety comes first and your clinician will guide next steps."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Risperidone (Risperdal): Uses, Dosing, Side Effects, Prolactin, Weight Gain & LAI Options",
+    "description": "Risperidone (Risperdal) for schizophrenia and bipolar mania: dosing (oral and long-acting injections), onset, side effects (EPS, akathisia, weight gain, prolactin), boxed warning in dementia-related psychosis, interactions, and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/risperidone-risperdal](https://www.heypsych.com/treatments/risperidone-risperdal)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

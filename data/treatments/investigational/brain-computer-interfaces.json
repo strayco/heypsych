@@ -1,109 +1,192 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "brain-computer-interfaces",
-  "type": "investigational",
-  "name": "Brain-Computer Interfaces (BCIs)",
-  "summary": "Brain-computer interfaces are investigational technologies that enable direct communication between the brain and external devices, with applications in neurorehabilitation, assistive communication, and treatment of neurological and psychiatric disorders.",
-  "description": "Brain-computer interfaces (BCIs) are systems that establish a direct pathway between brain activity and external devices such as computers, prosthetics, or stimulation systems. They may be invasive (implanted electrodes) or non-invasive (EEG, MEG, fNIRS). BCIs are being explored for restoring communication in paralyzed patients, enhancing motor recovery after stroke, controlling neuroprosthetics, and modulating brain activity in psychiatric conditions. Research is ongoing to determine safety, reliability, and therapeutic efficacy across diverse conditions.",
-  "category": "investigational/neuromodulation",
-  "tags": [
-    "brain-computer interface",
-    "BCI",
-    "neuroprosthetics",
-    "assistive technology",
-    "neurorehabilitation"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "brain-computer-interfaces",
+    "name": "Brain-Computer Interfaces (BCIs)",
+    "generic_name": "brain-computer interfaces",
+    "brand_names": [
+      "BCIs"
+    ],
+    "aliases": [
+      "BMI (Brain-Machine Interface)",
+      "Neuroprosthetics",
+      "Neural interface"
+    ],
+    "wikidata_qid": "Q27725673"
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/neuromodulation",
     "intervention_types": [
       "Neural recording",
       "Neural decoding",
       "Brain-controlled devices"
     ],
-    "treatment_types": [
-      "Neuromodulation",
-      "Assistive Communication",
-      "Rehabilitation"
-    ],
-    "categories": [
-      "Neurotechnology",
-      "Digital Health",
-      "Experimental Therapies"
-    ],
-    "delivery_methods": [
-      "Invasive implant",
-      "Non-invasive headset"
-    ],
-    "invasiveness_level": "Variable (non-invasive to highly invasive)",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Adolescents (research only)"
-    ],
-    "session_duration": "30 minutes – several hours",
-    "treatment_duration": [
-      "Single sessions",
-      "Ongoing use"
-    ],
-    "specialty_areas": [
-      "Neurology",
-      "Neurosurgery",
-      "Rehabilitation Medicine",
-      "Psychiatry"
-    ],
-    "trial_phase": "Phase I–II",
-    "regulatory_status": "Investigational; FDA Breakthrough Device Designations in some cases",
-    "wikidata_qid": "Q27725673"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Severe motor impairment",
-      "ALS communication support",
-      "Stroke rehabilitation"
-    ],
-    "conditions_treated": [
-      "Amyotrophic lateral sclerosis (ALS)",
-      "Spinal cord injury",
-      "Stroke-related paralysis",
-      "Locked-in syndrome",
-      "Treatment-resistant depression (experimental neuromodulation)"
-    ],
-    "off_label_uses": [
-      "Cognitive enhancement",
-      "Gaming and entertainment"
-    ],
-    "contraindications": [
-      "Active brain infection (for implants)",
-      "Severe uncontrolled epilepsy (relative)",
-      "Inability to tolerate surgical implantation (for invasive systems)"
-    ],
-    "safety_profile": "Non-invasive BCIs are considered low risk, with potential for skin irritation and fatigue. Invasive BCIs carry surgical risks, infection risk, device failure, and long-term implantation complications.",
-    "evidence_level": "Early-phase clinical and engineering feasibility studies; some compelling proof-of-concept trials",
-    "research_support": "Strong NIH, DARPA, and private sector investment (e.g., Neuralink, Synchron, academic consortia).",
-    "efficacy_rating": {
-      "motor_rehabilitation": 3,
-      "communication_restoration": 4,
-      "psychiatric_applications": 2,
-      "overall_tolerability": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "brain-computer interfaces",
-      "BCI therapy",
-      "neural prosthetics",
-      "brain-machine interface",
-      "BCI rehabilitation"
-    ],
-    "synonyms": [
-      "BMI (Brain-Machine Interface)",
-      "Neuroprosthetics",
-      "Neural interface"
-    ],
-    "common_misspellings": [
-      "brain computer interphase",
-      "BCI device"
+    "tags": [
+      "brain-computer interface",
+      "BCI",
+      "neuroprosthetics",
+      "assistive technology",
+      "neurorehabilitation"
     ]
+  },
+  "summary": "Brain-computer interfaces are investigational technologies that enable direct communication between the brain and external devices, with applications in neurorehabilitation, assistive communication, and treatment of neurological and psychiatric disorders.",
+  "description": "Brain-computer interfaces (BCIs) are systems that establish a direct pathway between brain activity and external devices such as computers, prosthetics, or stimulation systems. They may be invasive (implanted electrodes) or non-invasive (EEG, MEG, fNIRS). BCIs are being explored for restoring communication in paralyzed patients, enhancing motor recovery after stroke, controlling neuroprosthetics, and modulating brain activity in psychiatric conditions. Research is ongoing to determine safety, reliability, and therapeutic efficacy across diverse conditions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "severe-motor-impairment",
+          "condition_name": "Severe motor impairment",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "als-communication-support",
+          "condition_name": "ALS communication support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stroke-rehabilitation",
+          "condition_name": "Stroke rehabilitation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "amyotrophic-lateral-sclerosis-als",
+          "condition_name": "Amyotrophic lateral sclerosis (ALS)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "spinal-cord-injury",
+          "condition_name": "Spinal cord injury",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "stroke-related-paralysis",
+          "condition_name": "Stroke-related paralysis",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "locked-in-syndrome",
+          "condition_name": "Locked-in syndrome",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression-experimental-neuromodulation",
+          "condition_name": "Treatment-resistant depression (experimental neuromodulation)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "gaming-and-entertainment",
+          "condition_name": "Gaming and entertainment",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Early-phase clinical and engineering feasibility studies; some compelling proof-of-concept trials",
+      "efficacy_ratings": {
+        "motor_rehabilitation": {
+          "rating": 3
+        },
+        "communication_restoration": {
+          "rating": 4
+        },
+        "psychiatric_applications": {
+          "rating": 2
+        },
+        "overall_tolerability": {
+          "rating": 3
+        }
+      },
+      "research_support": "Strong NIH, DARPA, and private sector investment (e.g., Neuralink, Synchron, academic consortia)."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Single sessions; Ongoing use"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Invasive implant",
+        "Non-invasive headset"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30 minutes – several hours"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Non-invasive BCIs are considered low risk, with potential for skin irritation and fatigue. Invasive BCIs carry surgical risks, infection risk, device failure, and long-term implantation complications.",
+      "common_adverse_effects": [
+        {
+          "effect": "Fatigue"
+        },
+        {
+          "effect": "Frustration from training"
+        },
+        {
+          "effect": "Skin irritation from electrodes"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Infection or hemorrhage (invasive implants)"
+        },
+        {
+          "risk": "Device malfunction"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active infection (for invasive implants)",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unfit for neurosurgery",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment limiting training ability",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Uncontrolled seizure disorder",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not studied"
+      }
+    },
+    "access": {
+      "regulatory_status": "investigational"
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "procedure_type": "Neural recording, Neural decoding, Brain-controlled devices",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Recording of brain signals via electrodes or sensors\nSignal processing and decoding\nUser training with device control or neurofeedback\nOngoing adjustments for performance optimization"
+      }
+    }
   },
   "sections": [
     {
@@ -285,6 +368,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Hochberg et al. (2012), Nature",
+      "url": "https://www.nature.com/articles/nature11076"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Synchron BCI Clinical Trial",
+      "url": "https://clinicaltrials.gov/ct2/show/NCT03844096"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Review on BCIs in rehabilitation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33931763/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "brain-computer interfaces",
+      "BCI therapy",
+      "neural prosthetics",
+      "brain-machine interface",
+      "BCI rehabilitation"
+    ],
+    "synonyms": [
+      "BMI (Brain-Machine Interface)",
+      "Neuroprosthetics",
+      "Neural interface"
+    ],
+    "common_misspellings": [
+      "brain computer interphase",
+      "BCI device"
+    ]
+  },
   "seo": {
     "title": "Brain-Computer Interfaces: Neurotechnology for Communication and Rehabilitation",
     "description": "Comprehensive profile of brain-computer interfaces (BCIs): mechanisms, protocols, safety, research evidence, and therapeutic applications in paralysis, stroke, and psychiatric disorders.",
@@ -297,5 +418,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Early-phase clinical and engineering feasibility studies; some compelling proof-of-concept trials"
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Early-phase clinical and engineering feasibility studies; some compelling proof-of-concept trials"
+    ]
   }
 }

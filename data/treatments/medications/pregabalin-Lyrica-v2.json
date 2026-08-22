@@ -1,87 +1,244 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "pregabalin-lyrica",
-  "type": "medication",
-  "name": "Pregabalin (Lyrica)",
-  "summary": "Pregabalin is a calming, nerve-signal modulating medication sometimes used off-label in psychiatry for anxiety, panic augmentation, sleep disruption, and agitation—especially when first-line options haven’t worked or aren’t tolerated. It can cause dizziness, sedation, weight gain, and swelling, and it becomes riskier when mixed with opioids, alcohol, or other sedatives.",
-  "description": "Pregabalin (Lyrica) is FDA-approved for certain pain and seizure conditions, but in psychiatry it’s mainly an off-label tool for generalized anxiety, social anxiety, and as add-on support in panic disorder—sometimes helping with sleep and body-based anxiety fast. It can be genuinely calming, but it can also make people feel foggy, off-balance, or swollen. The biggest safety issue: respiratory depression and dangerous sedation when it’s combined with opioids or other CNS depressants, especially in older adults or people with underlying lung disease. Dose needs to be adjusted for kidney function, and stopping abruptly can trigger a withdrawal syndrome.",
-  "patient_summary": "Pregabalin (Lyrica) can quiet physical anxiety and improve sleep for some people, sometimes within the first week. But it can also cause dizziness, drowsiness, weight gain, and swelling. The combo to avoid: pregabalin + opioids/alcohol/other sedatives (higher overdose and breathing-risk). Kidney function matters for dosing. If you’ve been on it regularly, don’t stop suddenly—taper over at least a week to reduce withdrawal symptoms.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Antiseizure Agent (Miscellaneous)",
-      "GABA Analog (Non-benzodiazepine)"
-    ],
+  "identity": {
+    "slug": "pregabalin-lyrica",
+    "name": "Pregabalin (Lyrica)",
+    "generic_name": "pregabalin",
     "brand_names": [
       "Lyrica",
       "Lyrica CR"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule V (US)",
-    "generic_available": true,
-    "fda_approval_year": 2004,
-    "pharmacologic_category": "Gabapentinoid; Alpha-2-delta Calcium Channel Ligand",
-    "published_date": "2025-12-19T00:00:00Z",
-    "last_updated": "2025-12-19T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-19T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Generalized Anxiety Disorder (GAD) (off-label, alternative agent)",
-      "Social Anxiety Disorder (off-label, alternative agent)",
-      "Panic Disorder (off-label, augmentation)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as an alternative (monotherapy or adjunct) when first-line options (therapy, SSRIs/SNRIs, buspirone) don’t work or aren’t tolerated. Often described as helping the “body anxiety” (tension, restlessness, autonomic symptoms) and sleep."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Reserved for people who don’t respond to or can’t tolerate preferred treatments. May help performance/social fear plus physical symptoms, but sedation and dizziness can be limiting."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as augmentation to an SSRI/SNRI when rapid symptom relief is needed or there’s only partial response to antidepressant monotherapy."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Not a primary insomnia medication, but can support sleep when anxiety, pain sensitivity, or restless body symptoms are the drivers. The tradeoff is next-day grogginess in some people."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to pregabalin or any component of the formulation (including angioedema)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful anxiety reduction",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Pregabalin can be a real option for anxiety when first-line treatments aren’t working or aren’t tolerated—especially for physical symptoms and sleep. Response is individual, and side effects often determine whether it’s a good fit.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Antiseizure Agent (Miscellaneous)",
+      "GABA Analog (Non-benzodiazepine)"
+    ]
+  },
+  "summary": "Pregabalin is a calming, nerve-signal modulating medication sometimes used off-label in psychiatry for anxiety, panic augmentation, sleep disruption, and agitation—especially when first-line options haven’t worked or aren’t tolerated. It can cause dizziness, sedation, weight gain, and swelling, and it becomes riskier when mixed with opioids, alcohol, or other sedatives.",
+  "description": "Pregabalin (Lyrica) is FDA-approved for certain pain and seizure conditions, but in psychiatry it’s mainly an off-label tool for generalized anxiety, social anxiety, and as add-on support in panic disorder—sometimes helping with sleep and body-based anxiety fast. It can be genuinely calming, but it can also make people feel foggy, off-balance, or swollen. The biggest safety issue: respiratory depression and dangerous sedation when it’s combined with opioids or other CNS depressants, especially in older adults or people with underlying lung disease. Dose needs to be adjusted for kidney function, and stopping abruptly can trigger a withdrawal syndrome.",
+  "patient_summary": "Pregabalin (Lyrica) can quiet physical anxiety and improve sleep for some people, sometimes within the first week. But it can also cause dizziness, drowsiness, weight gain, and swelling. The combo to avoid: pregabalin + opioids/alcohol/other sedatives (higher overdose and breathing-risk). Kidney function matters for dosing. If you’ve been on it regularly, don’t stop suddenly—taper over at least a week to reduce withdrawal symptoms.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder-gad-off-label-alternative-agent",
+          "condition_name": "Generalized Anxiety Disorder (GAD) (off-label, alternative agent)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "social-anxiety-disorder-off-label-alternative-agent",
+          "condition_name": "Social Anxiety Disorder (off-label, alternative agent)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "panic-disorder-off-label-augmentation",
+          "condition_name": "Panic Disorder (off-label, augmentation)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as an alternative (monotherapy or adjunct) when first-line options (therapy, SSRIs/SNRIs, buspirone) don’t work or aren’t tolerated. Often described as helping the “body anxiety” (tension, restlessness, autonomic symptoms) and sleep."
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Reserved for people who don’t respond to or can’t tolerate preferred treatments. May help performance/social fear plus physical symptoms, but sedation and dizziness can be limiting."
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as augmentation to an SSRI/SNRI when rapid symptom relief is needed or there’s only partial response to antidepressant monotherapy."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Not a primary insomnia medication, but can support sleep when anxiety, pain sensitivity, or restless body symptoms are the drivers. The tradeoff is next-day grogginess in some people."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (immediate-release); extended-release requires food for best exposure",
-      "bioavailability": "≥90% (immediate-release)",
-      "onset": "Some people notice benefits within the first week (especially pain/anxiety-related sleep disruption), but full effect can take longer with titration",
-      "peak_plasma": "Immediate-release: ~1.5 hours fasting (~3 hours with food); Extended-release: median ~8 hours with food",
-      "half_life": "Adult: ~6.3 hours",
-      "duration_IR": "Typically requires divided dosing (BID-TID) for steady coverage",
-      "duration_XR": "Once daily after evening meal",
-      "metabolism": "Negligible hepatic metabolism",
-      "excretion": "Urine (mostly unchanged drug)",
-      "protein_binding": "0%",
-      "food_effect": "Extended-release exposure is ~30% lower when taken fasting; take XR after an evening meal"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Some people notice benefits within the first week (especially pain/anxiety-related sleep disruption), but full effect can take longer with titration"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness / Balance impairment",
+          "incidence": "Common; can be frequent and dose-related",
+          "notes": "This is the classic pregabalin side effect. People describe it as lightheaded, wobbly, or “mildly intoxicated.” It’s worse when you stand quickly, when you combine with other sedatives, and when the dose is pushed too fast."
+        },
+        {
+          "effect": "Somnolence / Drowsiness",
+          "incidence": "Common; dose-related",
+          "notes": "Some people love this because it helps sleep. Others hate it because it flattens energy and productivity. If you’re getting knocked out, dose timing (more at night) and slower titration can help."
+        },
+        {
+          "effect": "Cognitive slowing / “Fog”",
+          "incidence": "Common",
+          "notes": "If you feel like your brain is slower, you’re not imagining it. This often improves with time or dose adjustment—but for some people it’s the dealbreaker."
+        },
+        {
+          "effect": "Weight gain / Increased appetite",
+          "incidence": "Common over time",
+          "notes": "This can sneak up. Some people gain weight even without obvious appetite changes. If weight gain matters for you, plan monitoring early instead of waiting until it’s a problem."
+        },
+        {
+          "effect": "Peripheral edema (swelling)",
+          "incidence": "0% to 16% (varies by population and dose)",
+          "notes": "Swelling in feet/ankles can happen with or without weight gain. If you have heart failure risk, this needs extra caution."
+        },
+        {
+          "effect": "Visual disturbances (blurred vision, diplopia, decreased acuity)",
+          "incidence": "Can occur; dose-related",
+          "notes": "If your vision changes, don’t just “push through.” It may be dose-related or related to accumulation (especially with kidney issues)."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (especially with opioids/other CNS depressants, older age, or underlying respiratory impairment): MEDICAL EMERGENCY if severe sedation or slowed breathing"
+        },
+        {
+          "risk": "Angioedema or severe hypersensitivity reactions: facial/lip/tongue swelling, trouble breathing—MEDICAL EMERGENCY"
+        },
+        {
+          "risk": "Severe cutaneous adverse reactions (rare): DRESS, Stevens-Johnson syndrome, toxic epidermal necrolysis"
+        },
+        {
+          "risk": "Suicidal ideation or behavior changes (antiseizure-class warning): new/worsening depression, agitation, or suicidal thoughts—seek urgent help"
+        },
+        {
+          "risk": "Acute worsening edema/heart failure symptoms in susceptible patients: rapid weight gain, leg swelling, shortness of breath"
+        },
+        {
+          "risk": "Withdrawal syndrome after abrupt stop: anxiety, insomnia, nausea/diarrhea, sweating, confusion; rarely severe neuropsychiatric symptoms reported"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to pregabalin or any component of the formulation (including angioedema)"
+        }
+      ],
+      "precautions": [
+        "CNS depression (drowsiness, dizziness) is dose-related and can impair driving, work performance, and balance (falls)",
+        "Serious respiratory depression can occur, especially with opioids/other CNS depressants, in older adults, or with underlying respiratory disease",
+        "Peripheral edema can occur and may worsen heart failure in susceptible patients",
+        "Hypersensitivity reactions including angioedema; rare severe skin reactions reported (DRESS, SJS/TEN)",
+        "Antiseizure-class warning: increased risk of suicidal thoughts/behavior has been reported with antiseizure medications, including pregabalin",
+        "Withdrawal syndrome can occur if stopped abruptly (anxiety, insomnia, GI symptoms, sweating, agitation; rarely severe symptoms including seizures reported)",
+        "Dose must be adjusted in kidney impairment to avoid accumulation and toxicity"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids",
+          "mechanism": "Higher risk of severe sedation and life-threatening respiratory depression, especially in older adults or people with underlying respiratory disease.",
+          "action": "Avoid when possible. If used together, start at the lowest pregabalin dose, titrate slowly, and monitor closely for sedation and breathing problems."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: increased dizziness, impaired coordination, blackouts/falls, and potential respiratory suppression when combined with other sedatives.",
+          "action": "Strongly discourage. If you drink, this is a medication to discuss honestly with your prescriber because the combo can get unsafe fast."
+        },
+        {
+          "interactant": "Benzodiazepines and other sedatives (sleep meds, sedating antihistamines, muscle relaxants)",
+          "mechanism": "Additive sedation, confusion, impaired coordination, and fall risk. Can also worsen respiratory suppression in high-risk patients.",
+          "action": "Use the lowest effective doses, avoid stacking sedatives, and reassess frequently—especially in older adults."
+        },
+        {
+          "interactant": "Other medications that increase edema risk (including thiazolidinediones)",
+          "mechanism": "Increased risk of peripheral edema and possible heart failure decompensation in susceptible patients.",
+          "action": "Monitor weight/edema closely; consider alternatives if swelling becomes clinically meaningful."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Efficacy for psychiatric target symptoms: anxiety severity (GAD-7), panic symptoms, sleep quality, and functional improvement"
+        },
+        {
+          "parameter": "Sedation and mental alertness: drowsiness, slowed thinking, reaction time, ability to drive/work safely—especially after dose increases"
+        },
+        {
+          "parameter": "Respiratory depression risk: monitor for excessive sleepiness, shallow breathing, snoring/daytime somnolence—especially in patients with underlying respiratory disease or those taking opioids/other CNS depressants"
+        },
+        {
+          "parameter": "Falls and balance: gait instability, dizziness, orthostatic symptoms—particularly in older adults"
+        },
+        {
+          "parameter": "Weight and edema: weight trend, ankle/leg swelling, rapid weight gain; evaluate for heart failure symptoms in susceptible patients"
+        },
+        {
+          "parameter": "Mood and suicidality: new/worsening depression, agitation, behavioral changes, suicidal thoughts (antiseizure-class warning)"
+        },
+        {
+          "parameter": "Vision changes: blurred vision, diplopia, decreased acuity; consider dose reduction or evaluation if persistent"
+        },
+        {
+          "parameter": "Kidney function: baseline and periodic assessment (especially if older, medically complex, or symptoms suggest accumulation)"
+        },
+        {
+          "parameter": "Misuse risk signals: dose escalation, euphoria-seeking, combining with sedatives, history of substance misuse—pregabalin misuse exists in some populations"
+        },
+        {
+          "parameter": "Withdrawal symptoms during taper: rebound anxiety/insomnia, GI symptoms, sweating, irritability, confusion; slow down taper if needed"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Outcome data are limited and not sufficient to clearly define risk of specific malformations or long-term neurodevelopmental outcomes. Pregabalin crosses the placenta. For anxiety disorders, it is generally not a first-line medication to start for the first time prior to conception or during pregnancy when safer, better-studied options exist. If a patient is already stable on pregabalin and alternatives are not appropriate, continuation may be considered using shared decision-making, aiming for the lowest effective dose of a single agent and monitoring symptoms and fetal growth as clinically indicated.",
+        "lactation": "Pregabalin is present in breast milk. Estimated relative infant dose has been reported around the single-digit percent range in small studies, but the manufacturer does not recommend breastfeeding due to potential for serious adverse reactions. If used during lactation, monitor the infant for sedation, poor feeding/sucking, appropriate weight gain, and developmental milestones; consider checking infant serum levels if toxicity is suspected.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Start at the lowest dose and titrate cautiously. Older adults have higher risk of dizziness, confusion, falls, and respiratory depression—especially when combined with other sedatives or in the presence of underlying respiratory disease. Reassess frequently for balance, cognition, and functional impairment.",
+        "renal_impairment": "Dose adjustment is required in kidney impairment. Accumulation increases dizziness, sedation, confusion, and other CNS effects. Extended-release use is not recommended in more advanced kidney impairment in many dosing schemes; immediate-release allows more flexible, safer adjustment.",
+        "hepatic_impairment": "No dose adjustment is expected because pregabalin undergoes minimal hepatic metabolism; use routine clinical judgment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2004
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (immediate-release); extended-release requires food for best exposure",
+          "bioavailability": "≥90% (immediate-release)",
+          "peak_plasma": "Immediate-release: ~1.5 hours fasting (~3 hours with food); Extended-release: median ~8 hours with food",
+          "half_life": "Adult: ~6.3 hours",
+          "metabolism": "Negligible hepatic metabolism",
+          "excretion": "Urine (mostly unchanged drug)",
+          "protein_binding": "0%",
+          "food_effect": "Extended-release exposure is ~30% lower when taken fasting; take XR after an evening meal"
+        },
+        "dosing": {
+          "titration": "Psychiatry-relevant pregabalin dosing is off-label and usually individualized. The best strategy is low-and-slow, especially if you’re sensitive to sedation or you have respiratory disease, are older, or have kidney impairment. For anxiety, many patients respond at moderate doses; pushing higher increases side effects and doesn’t always add benefit."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been taking pregabalin regularly, don’t stop abruptly unless there’s an urgent safety reason. Stopping too fast can trigger a withdrawal syndrome—anxiety, insomnia, sweating, nausea/diarrhea, irritability, and sometimes more severe neuropsychiatric symptoms. The simplest rule: taper gradually over at least 1 week; go slower if you’ve been on it long-term or at higher doses."
+        }
+      }
     }
   },
   "sections": [
@@ -103,7 +260,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Pregabalin has a very particular vibe. Some people feel calm and finally sleep. Others feel dizzy, foggy, or like their body is “heavy.” Here are the patterns I see over and over:",
       "items": [
         {
           "category": "Calm body, quieter nervous system",
@@ -149,7 +305,8 @@
           ],
           "note": "Withdrawal syndrome is real for some people—tapering matters."
         }
-      ]
+      ],
+      "intro": "Pregabalin has a very particular vibe. Some people feel calm and finally sleep. Others feel dizzy, foggy, or like their body is “heavy.” Here are the patterns I see over and over:"
     },
     {
       "type": "onset_duration",
@@ -165,10 +322,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "As an anxiety medication, pregabalin is usually not the first pick. Where it can shine: people who don’t tolerate SSRIs/SNRIs, people who need help with the physical side of anxiety (tension, restlessness), and people whose sleep is being wrecked by hyperarousal. The limiter is side effects—especially dizziness, sedation, and weight gain/edema.",
       "metric": "Anxiety symptom reduction (off-label use)",
       "value": "Varies by person",
       "comparison": "Not applicable for this medication.",
-      "text": "As an anxiety medication, pregabalin is usually not the first pick. Where it can shine: people who don’t tolerate SSRIs/SNRIs, people who need help with the physical side of anxiety (tension, restlessness), and people whose sleep is being wrecked by hyperarousal. The limiter is side effects—especially dizziness, sedation, and weight gain/edema.",
       "clinical_details": "Clinically, pregabalin is often positioned as an alternative or adjunct in anxiety disorders rather than a default first-line treatment. Dosing is usually titrated weekly; many patients get what they need around moderate doses, and pushing higher can increase side effects without clearly improving benefit.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -263,7 +420,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Pregabalin doesn’t have major CYP metabolism interactions, but it has a big practical interaction problem: additive sedation and breathing suppression when combined with other CNS depressants.",
       "items": [
         {
           "with": "Opioids",
@@ -285,7 +441,8 @@
           "risk": "Increased risk of peripheral edema and possible heart failure decompensation in susceptible patients.",
           "action": "Monitor weight/edema closely; consider alternatives if swelling becomes clinically meaningful."
         }
-      ]
+      ],
+      "intro": "Pregabalin doesn’t have major CYP metabolism interactions, but it has a big practical interaction problem: additive sedation and breathing suppression when combined with other CNS depressants."
     },
     {
       "type": "tapering",
@@ -430,21 +587,6 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Pregabalin (Lyrica) for Anxiety: Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Pregabalin (Lyrica) psychiatry guide: off-label use for GAD, social anxiety, panic augmentation, sleep support, dosing (IR vs CR), side effects (dizziness, sedation, weight gain, edema), dangerous interactions with opioids/alcohol, and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/pregabalin-lyrica](https://www.heypsych.com/treatments/pregabalin-lyrica)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is pregabalin (Lyrica) an anxiety medication?",
@@ -486,5 +628,20 @@
       "q": "Who needs extra caution with pregabalin?",
       "a": "People with kidney impairment (dose adjustment needed), older adults (higher fall/confusion risk), and anyone with respiratory disease or taking opioids/other sedatives (higher breathing-risk)."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Pregabalin (Lyrica) for Anxiety: Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Pregabalin (Lyrica) psychiatry guide: off-label use for GAD, social anxiety, panic augmentation, sleep support, dosing (IR vs CR), side effects (dizziness, sedation, weight gain, edema), dangerous interactions with opioids/alcohol, and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/pregabalin-lyrica](https://www.heypsych.com/treatments/pregabalin-lyrica)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

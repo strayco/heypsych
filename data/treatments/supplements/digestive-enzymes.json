@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "digestive-enzymes",
-  "type": "supplement",
-  "name": "Digestive Enzymes",
-  "summary": "Digestive enzyme supplements contain naturally occurring proteins such as amylase, protease, and lipase that help break down carbohydrates, proteins, and fats, and are sometimes used to improve gastrointestinal comfort and nutrient absorption.",
-  "description": "Digestive enzymes are substances produced in the pancreas, stomach, and small intestine, as well as derived from plants (e.g., papain, bromelain) and microbial sources. Supplementation is intended to support digestion in individuals with enzyme insufficiency or functional gastrointestinal issues. While primarily used for digestive health, improved nutrient absorption and reduced gut inflammation may have downstream effects on mental health, given the gut-brain axis.",
-  "category": "supplements",
-  "tags": [
-    "gut health",
-    "digestion",
-    "enzymes",
-    "GI support"
-  ],
-  "metadata": {
-    "compound_type": "Protein enzymes",
-    "natural_source": "Pancreatic extracts, plant sources (papaya, pineapple), microbial fermentation",
+  "identity": {
+    "slug": "digestive-enzymes",
+    "name": "Digestive Enzymes",
+    "brand_names": [
+      "Creon (prescription pancreatic enzymes)",
+      "Enzymedica Digest Gold",
+      "NOW Super Enzymes"
+    ],
+    "aliases": [
+      "enzymes for digestion",
+      "enzyme therapy"
+    ],
+    "wikidata_qid": "Q73571440"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Digestive health",
       "Nutrient absorption"
@@ -23,78 +26,150 @@
       "Enzymatic digestion",
       "Gut support"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Creon (prescription pancreatic enzymes)",
-      "Enzymedica Digest Gold",
-      "NOW Super Enzymes"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Gastroenterology",
-      "Integrative Medicine",
-      "Nutrition"
-    ],
-    "wikidata_qid": "Q73571440"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Pancreatic enzyme insufficiency (in prescription form)",
-      "General digestive support",
-      "Food intolerance-related GI discomfort"
-    ],
-    "off_label_uses": [
-      "Bloating and dyspepsia",
-      "Adjunct in irritable bowel syndrome (IBS)",
-      "Support for nutrient absorption in malabsorption conditions"
-    ],
-    "contraindications": [
-      "Allergy to specific enzyme sources (e.g., pork-derived enzymes, papaya, pineapple)",
-      "Active ulcers (caution with proteolytic enzymes)"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Allergic reactions (rare)"
-    ],
-    "efficacy_rating": {
-      "pancreatic_insufficiency": 5,
-      "general_digestive_support": 3,
-      "bloating": 2,
-      "gut-brain_support": 1
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "digestive enzymes",
-      "pancreatic enzymes",
-      "bromelain",
-      "papain",
-      "lipase",
-      "amylase",
-      "protease"
-    ],
-    "synonyms": [
-      "enzymes for digestion",
-      "enzyme therapy"
-    ],
-    "common_misspellings": [
-      "digestive enzyms",
-      "digestive enzimes"
+    "tags": [
+      "gut health",
+      "digestion",
+      "enzymes",
+      "GI support"
     ]
+  },
+  "summary": "Digestive enzyme supplements contain naturally occurring proteins such as amylase, protease, and lipase that help break down carbohydrates, proteins, and fats, and are sometimes used to improve gastrointestinal comfort and nutrient absorption.",
+  "description": "Digestive enzymes are substances produced in the pancreas, stomach, and small intestine, as well as derived from plants (e.g., papain, bromelain) and microbial sources. Supplementation is intended to support digestion in individuals with enzyme insufficiency or functional gastrointestinal issues. While primarily used for digestive health, improved nutrient absorption and reduced gut inflammation may have downstream effects on mental health, given the gut-brain axis.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "pancreatic-enzyme-insufficiency-in-prescription-form",
+          "condition_name": "Pancreatic enzyme insufficiency (in prescription form)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "general-digestive-support",
+          "condition_name": "General digestive support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "food-intolerance-related-gi-discomfort",
+          "condition_name": "Food intolerance-related GI discomfort",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bloating-and-dyspepsia",
+          "condition_name": "Bloating and dyspepsia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-in-irritable-bowel-syndrome-ibs",
+          "condition_name": "Adjunct in irritable bowel syndrome (IBS)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-for-nutrient-absorption-in-malabsorption-conditions",
+          "condition_name": "Support for nutrient absorption in malabsorption conditions",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "pancreatic_insufficiency": {
+          "rating": 5
+        },
+        "general_digestive_support": {
+          "rating": 3
+        },
+        "bloating": {
+          "rating": 2
+        },
+        "gut-brain_support": {
+          "rating": 1
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild GI upset"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Allergic reactions in sensitive individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to specific enzyme sources (e.g., pork-derived enzymes, papaya, pineapple)"
+        },
+        {
+          "contraindication": "Active ulcers (caution with proteolytic enzymes)"
+        }
+      ],
+      "precautions": [
+        "Do not exceed recommended dosages; very high doses may cause GI irritation.",
+        "Plant-based proteolytic enzymes may interact with clotting."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticoagulants",
+          "mechanism": "Proteolytic enzymes like bromelain may increase bleeding risk",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Antibiotics",
+          "mechanism": "Enzymes may alter absorption",
+          "action": "Stagger dosing"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI symptoms"
+        },
+        {
+          "parameter": "Signs of allergic reaction"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Likely safe in standard supplemental doses; avoid high-dose proteolytic enzymes",
+        "lactation": "Limited data; likely safe in dietary amounts",
+        "pediatric": "Use only under supervision when medically indicated",
+        "geriatric": "Generally safe; may support digestion in age-related decline"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Protein enzymes",
+        "natural_source": "Pancreatic extracts, plant sources (papaya, pineapple), microbial fermentation",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -209,6 +284,45 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Digestive Enzymes",
+      "url": "https://examine.com/supplements/digestive-enzymes/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Domínguez-Muñoz JE. Pancreatic enzyme replacement therapy: exocrine pancreatic insufficiency after gastrointestinal surgery. HPB. 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19793066/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Klein AP. Pancreatic enzyme replacement therapy: Clinical practice guidelines. Pancreatology. 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33867191/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "digestive enzymes",
+      "pancreatic enzymes",
+      "bromelain",
+      "papain",
+      "lipase",
+      "amylase",
+      "protease"
+    ],
+    "synonyms": [
+      "enzymes for digestion",
+      "enzyme therapy"
+    ],
+    "common_misspellings": [
+      "digestive enzyms",
+      "digestive enzimes"
+    ]
+  },
   "seo": {
     "title": "Digestive Enzymes – Gut Health and Nutrient Absorption Support",
     "description": "Digestive enzyme supplements support the breakdown of carbs, proteins, and fats, improving digestion and nutrient absorption. Learn about uses, dosing, and safety.",

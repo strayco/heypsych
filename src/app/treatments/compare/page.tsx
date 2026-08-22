@@ -1,27 +1,32 @@
-// Comparison Hub Page
-// Lists all available treatment comparisons
+/**
+ * Treatment Comparison Hub
+ *
+ * Unified comparison experience:
+ * - No items: Shows selector/explorer with curated comparisons
+ * - With items: Shows dynamic universal comparison
+ *
+ * URL format: /treatments/compare?items=slug1,slug2&condition=condition-slug
+ */
 
+import { Suspense } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { readdirSync, existsSync, readFileSync } from "fs";
 import { join } from "path";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { loadTreatments, parseComparisonUrl } from "@/lib/comparison/treatment-loader";
+import {
+  generateComparison,
+  serializeComparisonResult,
+  type ComparisonContext,
+} from "@/lib/comparison/comparison-engine";
+import { ComparePageClient } from "./compare-client";
 
-export const metadata: Metadata = {
-  title: "Treatment Comparisons | Compare Medications & Therapies | HeyPsych",
-  description:
-    "Compare mental health medications and therapies side by side. See differences in effectiveness, side effects, and which treatment might be right for you.",
-  alternates: {
-    canonical: `${SITE_CONFIG.url}/treatments/compare`,
-  },
-  openGraph: {
-    title: "Treatment Comparisons | HeyPsych",
-    description:
-      "Compare mental health medications and therapies side by side.",
-  },
-};
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
-interface ComparisonSummary {
+interface CuratedComparison {
   slug: string;
   name: string;
   title: string;
@@ -30,7 +35,10 @@ interface ComparisonSummary {
   drug_class?: string;
 }
 
-function getAllComparisons(): ComparisonSummary[] {
+/**
+ * Load curated editorial comparisons from data/treatments/compare/
+ */
+function getCuratedComparisons(): CuratedComparison[] {
   const comparePath = join(process.cwd(), "data/treatments/compare");
 
   if (!existsSync(comparePath)) {
@@ -60,102 +68,184 @@ function getAllComparisons(): ComparisonSummary[] {
   }
 }
 
-export default function ComparisonsPage() {
-  const comparisons = getAllComparisons();
+/**
+ * Generate metadata based on query params
+ */
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const params = await searchParams;
+  const items = (typeof params.items === "string" ? params.items : "").split(",").filter(Boolean);
 
-  // Group by category
-  const grouped = comparisons.reduce(
-    (acc, comp) => {
-      const cat = comp.category || "general";
-      if (!acc[cat]) acc[cat] = [];
-      acc[cat].push(comp);
-      return acc;
+  // Base metadata for empty state (selector/explorer)
+  if (items.length < 2) {
+    return {
+      title: "Compare Treatments | Side-by-Side Analysis | HeyPsych",
+      description:
+        "Compare mental health medications and therapies side by side. See differences in effectiveness, side effects, and find which treatment might be right for you.",
+      alternates: {
+        canonical: `${SITE_CONFIG.url}/treatments/compare`,
+      },
+      openGraph: {
+        title: "Treatment Comparisons | HeyPsych",
+        description: "Compare mental health medications and therapies side by side.",
+      },
+      // Prevent indexing of arbitrary query combinations
+      robots: items.length === 1 ? { index: false, follow: true } : undefined,
+    };
+  }
+
+  // Dynamic metadata for comparisons
+  const treatments = await loadTreatments(items);
+  const names = Array.from(treatments.values()).map((t) => t.identity.name);
+
+  const title = `Compare ${names.join(" vs ")} | HeyPsych`;
+  const description = `Side-by-side comparison of ${names.join(", ")}. Compare effectiveness, side effects, dosing, and more.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
     },
-    {} as Record<string, ComparisonSummary[]>
+    // Dynamic comparisons are noindex to prevent duplicate content
+    // Curated comparisons at /compare/[slug] are the canonical indexed versions
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
+}
+
+/**
+ * Main comparison page component
+ */
+export default async function ComparePage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const { items, condition } = parseComparisonUrl(
+    new URLSearchParams(
+      Object.entries(params)
+        .filter(([, v]) => typeof v === "string")
+        .map(([k, v]) => [k, v as string])
+    )
   );
 
-  const categoryLabels: Record<string, string> = {
-    medications: "Medication Comparisons",
-    therapy: "Therapy Comparisons",
-    categories: "Treatment Category Comparisons",
-    general: "Other Comparisons",
+  // Load curated comparisons for the selector view
+  const curatedComparisons = getCuratedComparisons();
+
+  // If no items, show the selector/explorer
+  if (items.length === 0) {
+    return (
+      <Suspense fallback={<ComparisonLoadingSkeleton />}>
+        <ComparePageClient
+          initialTreatments={[]}
+          comparison={null}
+          initialCondition={condition}
+          curatedComparisons={curatedComparisons}
+        />
+      </Suspense>
+    );
+  }
+
+  // Handle validation errors
+  if (items.length === 1) {
+    return (
+      <Suspense fallback={<ComparisonLoadingSkeleton />}>
+        <ComparePageClient
+          initialTreatments={[]}
+          comparison={null}
+          error="Select at least 2 treatments to compare"
+          initialCondition={condition}
+          curatedComparisons={curatedComparisons}
+        />
+      </Suspense>
+    );
+  }
+
+  if (items.length > 4) {
+    return (
+      <Suspense fallback={<ComparisonLoadingSkeleton />}>
+        <ComparePageClient
+          initialTreatments={[]}
+          comparison={null}
+          error="Maximum 4 treatments allowed"
+          initialCondition={condition}
+          curatedComparisons={curatedComparisons}
+        />
+      </Suspense>
+    );
+  }
+
+  // Load treatments
+  const treatments = await loadTreatments(items);
+
+  // Check if all treatments were found
+  const missing = items.filter((slug) => !treatments.has(slug));
+  if (missing.length > 0) {
+    return (
+      <Suspense fallback={<ComparisonLoadingSkeleton />}>
+        <ComparePageClient
+          initialTreatments={Array.from(treatments.values())}
+          comparison={null}
+          error={`Could not find: ${missing.join(", ")}`}
+          initialCondition={condition}
+          curatedComparisons={curatedComparisons}
+        />
+      </Suspense>
+    );
+  }
+
+  // Generate comparison
+  const context: ComparisonContext = {
+    conditionSlug: condition,
+    depthLevel: "detailed",
   };
 
+  const treatmentArray = Array.from(treatments.values());
+  const comparison = generateComparison(treatmentArray, context);
+
+  // Serialize for client component (removes functions)
+  const serializedComparison = serializeComparisonResult(comparison);
+
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
-        {/* Breadcrumb */}
-        <nav className="text-sm text-neutral-500 mb-6">
-          <Link href="/" className="hover:text-neutral-700">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/treatments" className="hover:text-neutral-700">
-            Treatments
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-neutral-900">Compare</span>
-        </nav>
+    <Suspense fallback={<ComparisonLoadingSkeleton />}>
+      <ComparePageClient
+        initialTreatments={treatmentArray}
+        comparison={serializedComparison}
+        initialCondition={condition}
+        curatedComparisons={curatedComparisons}
+      />
+    </Suspense>
+  );
+}
 
-        {/* Header */}
-        <header className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-            Treatment Comparisons
-          </h1>
-          <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl">
-            Compare mental health medications and therapies side by side. See
-            differences in effectiveness, side effects, drug interactions, and
-            find out which treatment might be right for you.
-          </p>
-        </header>
+function ComparisonLoadingSkeleton() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="animate-pulse">
+        {/* Header skeleton */}
+        <div className="mb-8">
+          <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+        </div>
 
-        {/* Comparisons by Category */}
-        {Object.entries(grouped).map(([category, items]) => (
-          <section key={category} className="mb-10">
-            <h2 className="text-xl font-bold text-neutral-900 mb-4 pb-2 border-b border-neutral-200">
-              {categoryLabels[category] || category}
-            </h2>
-            <div className="grid gap-4">
-              {items.map((comp) => (
-                <Link
-                  key={comp.slug}
-                  href={`/treatments/compare/${comp.slug}`}
-                  className="block p-4 bg-neutral-50 rounded-lg border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-100 transition-colors"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-semibold text-neutral-900 mb-1">
-                        {comp.name}
-                      </h3>
-                      <p className="text-sm text-neutral-600 line-clamp-2">
-                        {comp.description}
-                      </p>
-                    </div>
-                    {comp.drug_class && (
-                      <span className="shrink-0 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                        {comp.drug_class}
-                      </span>
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
+        {/* Treatment cards skeleton */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="bg-gray-100 rounded-lg p-4 h-32"></div>
+          ))}
+        </div>
 
-        {comparisons.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-neutral-500">
-              No comparisons available yet. Check back soon!
-            </p>
-          </div>
-        )}
-
+        {/* Table skeleton */}
+        <div className="space-y-4">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="h-16 bg-gray-100 rounded"></div>
+          ))}
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
 
 // Revalidate every 24 hours
 export const revalidate = 86400;
-

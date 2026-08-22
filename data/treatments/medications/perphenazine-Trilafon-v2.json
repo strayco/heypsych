@@ -1,80 +1,249 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "perphenazine-trilafon",
-  "type": "medication",
-  "name": "Perphenazine (Trilafon)",
-  "summary": "First-generation (typical) antipsychotic used to treat schizophrenia. Can be effective, but comes with real risks—especially movement side effects (EPS), tardive dyskinesia, sedation, and a boxed warning about increased mortality in older adults with dementia-related psychosis.",
-  "description": "Perphenazine is a typical antipsychotic that can reduce hallucinations, delusions, paranoia, and severe agitation by blocking dopamine signaling in the brain. It can also cause movement side effects (restlessness, stiffness, tremor), sedation, dizziness, and orthostatic hypotension. Long-term use can lead to tardive dyskinesia (potentially irreversible). In older adults with dementia-related psychosis, antipsychotics increase the risk of death—perphenazine is not approved for that use.",
-  "patient_summary": "Perphenazine can help with schizophrenia symptoms like hallucinations, delusions, and severe agitation, but it can also make you feel slowed down, stiff, or restless. Movement side effects are the big watch-out. Long-term use can cause tardive dyskinesia (involuntary movements that can become permanent). It also carries a boxed warning: in older adults with dementia-related psychosis, antipsychotics raise the risk of death—this medication isn’t approved for that.",
-  "category": "medications/schizophrenia-psychosis",
-  "metadata": {
+  "identity": {
+    "slug": "perphenazine-trilafon",
+    "name": "Perphenazine (Trilafon)",
+    "generic_name": "perphenazine",
+    "brand_names": [
+      "Trilafon"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/schizophrenia-psychosis",
     "drug_classes": [
       "First Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative",
       "D2 Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Trilafon"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "Antiemetic; First Generation (Typical) Antipsychotic; Phenothiazine Derivative",
-    "published_date": "2026-01-27T00:00:00Z",
-    "last_updated": "2026-01-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Labeled for schizophrenia. Often reserved for situations where a first-generation antipsychotic makes sense based on prior response, patient preference, access, or side effect tradeoffs."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "off_label",
-        "context": "May be used in select cases of severe agitation related to psychosis, but dosing and setting should be guided by a psychiatry specialist and local protocols."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to perphenazine or any component of the formulation",
-      "Severe CNS depression (comatose patients or patients receiving large doses of CNS depressants)",
-      "Subcortical brain damage with or without hypothalamic damage (known or suspected)",
-      "Bone marrow suppression",
-      "Blood dyscrasias",
-      "Liver damage"
-    ],
-    "efficacy_response": {
-      "metric": "Symptom reduction in schizophrenia",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Perphenazine can reduce positive symptoms of schizophrenia (like hallucinations and delusions) over the first few weeks, with continued improvement over 4 to 6 weeks. The tradeoff is a higher risk of movement side effects compared with many second-generation antipsychotics.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "First-generation (typical) antipsychotic used to treat schizophrenia. Can be effective, but comes with real risks—especially movement side effects (EPS), tardive dyskinesia, sedation, and a boxed warning about increased mortality in older adults with dementia-related psychosis.",
+  "description": "Perphenazine is a typical antipsychotic that can reduce hallucinations, delusions, paranoia, and severe agitation by blocking dopamine signaling in the brain. It can also cause movement side effects (restlessness, stiffness, tremor), sedation, dizziness, and orthostatic hypotension. Long-term use can lead to tardive dyskinesia (potentially irreversible). In older adults with dementia-related psychosis, antipsychotics increase the risk of death—perphenazine is not approved for that use.",
+  "patient_summary": "Perphenazine can help with schizophrenia symptoms like hallucinations, delusions, and severe agitation, but it can also make you feel slowed down, stiff, or restless. Movement side effects are the big watch-out. Long-term use can cause tardive dyskinesia (involuntary movements that can become permanent). It also carries a boxed warning: in older adults with dementia-related psychosis, antipsychotics raise the risk of death—this medication isn’t approved for that.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Labeled for schizophrenia. Often reserved for situations where a first-generation antipsychotic makes sense based on prior response, patient preference, access, or side effect tradeoffs.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "off_label",
+          "context": "May be used in select cases of severe agitation related to psychosis, but dosing and setting should be guided by a psychiatry specialist and local protocols."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability is moderate",
-      "bioavailability": "Approximately 40%",
-      "onset": "Schizophrenia: early effects may be noticed within 1 to 2 weeks; fuller benefit often builds over 4 to 6 weeks",
-      "peak_plasma": "Perphenazine: 1 to 3 hours; active metabolite: 2 to 4 hours",
-      "half_life": "Perphenazine: 9 to 12 hours; active metabolite: 10 to 19 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism; CYP2D6 is a major pathway (genetic differences can matter)",
-      "excretion": "Not applicable for this medication.",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Schizophrenia: early effects may be noticed within 1 to 2 weeks; fuller benefit often builds over 4 to 6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal symptoms (EPS)",
+          "incidence": "Frequency not defined",
+          "notes": "This is the signature risk zone for perphenazine. Watch for restlessness (akathisia), stiffness, tremor, slowed movement, or jaw/neck muscle tightness. These can show up early and can get worse with dose increases."
+        },
+        {
+          "effect": "Sedation / drowsiness",
+          "incidence": "Frequency not defined",
+          "notes": "Some people feel calmer but sleepy or slowed down—especially early in treatment. If you’re too sedated to function, that’s a dosing/timing problem worth fixing, not a life sentence."
+        },
+        {
+          "effect": "Orthostatic hypotension / dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "Feeling lightheaded when standing can happen, especially during titration. This matters because it increases fall risk—especially in older adults."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurry vision, urinary retention)",
+          "incidence": "Frequency not defined",
+          "notes": "Perphenazine has relatively lower anticholinergic potency than some other phenothiazines, but these symptoms can still occur—especially if combined with other anticholinergic meds."
+        },
+        {
+          "effect": "Hyperprolactinemia-related effects",
+          "incidence": "Frequency not defined",
+          "notes": "Possible menstrual changes, breast tenderness/enlargement, galactorrhea, libido changes, erectile/ejaculatory issues. If symptoms show up, prolactin can be checked and the plan can be adjusted."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Tardive dyskinesia: Involuntary movements (face, tongue, jaw, limbs) that can become permanent"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): Fever, severe rigidity, confusion, unstable blood pressure/heart rate — MEDICAL EMERGENCY"
+        },
+        {
+          "risk": "Serious arrhythmias: Palpitations, fainting, sudden collapse — EMERGENCY"
+        },
+        {
+          "risk": "Severe blood dyscrasias (eg, agranulocytosis): Infections, fever, sore throat — urgent evaluation needed"
+        },
+        {
+          "risk": "Jaundice or liver injury: Yellow skin/eyes, dark urine, severe fatigue"
+        },
+        {
+          "risk": "Seizures: Especially in people with seizure history or other risk factors"
+        },
+        {
+          "risk": "Aspiration pneumonia risk: Swallowing problems, choking episodes, cough/fever—especially in older adults"
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. In analyses of placebo-controlled trials (modal duration ~10 weeks), the death rate was about 4.5% with antipsychotics vs about 2.6% with placebo (roughly 1.6–1.7x higher). Causes were often cardiovascular (eg, heart failure, sudden death) or infectious (eg, pneumonia). Perphenazine is not approved for the treatment of dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to perphenazine or any component of the formulation"
+        },
+        {
+          "contraindication": "Severe CNS depression (comatose patients or patients receiving large doses of CNS depressants)"
+        },
+        {
+          "contraindication": "Subcortical brain damage with or without hypothalamic damage (known or suspected)"
+        },
+        {
+          "contraindication": "Bone marrow suppression"
+        },
+        {
+          "contraindication": "Blood dyscrasias"
+        },
+        {
+          "contraindication": "Liver damage"
+        }
+      ],
+      "precautions": [
+        "Tardive dyskinesia (TD): Involuntary movements that can become irreversible; risk increases with dose and duration, and is higher in older adults (especially older women)",
+        "Extrapyramidal symptoms (EPS): Akathisia, dystonia, parkinsonism, tremor—can be severe and appear early",
+        "Neuroleptic malignant syndrome (NMS): Rare but life-threatening (fever, rigidity, confusion, autonomic instability)",
+        "Cardiac conduction changes and serious arrhythmias have been reported with phenothiazines—even at therapeutic doses",
+        "Orthostatic hypotension and falls: Especially in older adults or during titration",
+        "Blood dyscrasias: Leukopenia, neutropenia, agranulocytosis; stop if severe abnormalities develop",
+        "Aspiration risk: Antipsychotics can be linked to esophageal dysmotility and aspiration pneumonia (risk increases with age)",
+        "Seizure threshold: First-generation antipsychotics can lower seizure threshold",
+        "Depression and suicidality: Use caution; limit quantities if suicide risk is a concern",
+        "Hepatic risk: Contraindicated in liver damage; monitor for jaundice or abnormal liver tests"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol, opioids, benzodiazepines, sedating sleep meds, sedating antihistamines",
+          "mechanism": "Additive CNS depression: more sedation, impaired coordination, falls, and in severe cases breathing suppression (especially when multiple sedatives are combined).",
+          "action": "Avoid mixing when possible. If combination is clinically necessary, use lowest effective doses and monitor closely—especially early on."
+        },
+        {
+          "interactant": "QT-prolonging or arrhythmia-risk medications",
+          "mechanism": "Higher risk of dangerous rhythm problems when multiple QT-risk agents are combined, especially with electrolyte abnormalities.",
+          "action": "Review the full med list for QT risk. Correct low potassium/magnesium and consider ECG monitoring when risk is elevated."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (and poor metabolizer status)",
+          "mechanism": "Higher perphenazine exposure can increase EPS, sedation, and other adverse effects.",
+          "action": "Use caution. Consider lower dosing and closer monitoring if CYP2D6 inhibition or poor metabolizer risk is present."
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Additive blood pressure lowering may worsen dizziness and falls.",
+          "action": "Monitor orthostatic vitals and adjust therapy if symptomatic."
+        },
+        {
+          "interactant": "Anticholinergic medications",
+          "mechanism": "More constipation, urinary retention, blurred vision, confusion (especially in older adults).",
+          "action": "Minimize anticholinergic stacking and watch bowel/bladder symptoms."
+        },
+        {
+          "interactant": "Dopamine agonists (eg, medications used for Parkinson symptoms)",
+          "mechanism": "Pharmacologic “tug-of-war”: perphenazine blocks dopamine, which can reduce the effect of dopamine-boosting meds and worsen parkinsonism.",
+          "action": "Use caution and coordinate with neurology/psychiatry when both are needed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and function: symptom change, agitation, suicidality, and overall functioning at every visit"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (EPS): assess every visit; reassess around 4 weeks after initiation and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Tardive dyskinesia: watch at every visit and perform formalized screening at least annually (or more often if high risk)"
+        },
+        {
+          "parameter": "Vital signs and orthostatics: especially during initiation/titration and in older adults; monitor fall risk as clinically indicated"
+        },
+        {
+          "parameter": "Weight/BMI: every visit for the first 6 months, then at least quarterly; consider waist circumference at baseline and annually"
+        },
+        {
+          "parameter": "Metabolic labs: fasting glucose/HbA1c and lipid panel about 4 months after initiation and then at least annually (more often if abnormal)"
+        },
+        {
+          "parameter": "Electrolytes and sodium: especially in older adults (SIADH/hyponatremia risk) and when clinically indicated"
+        },
+        {
+          "parameter": "CBC: as clinically indicated; monitor more closely if prior low WBC or history of drug-induced leukopenia/neutropenia; discontinue if severe dyscrasia develops"
+        },
+        {
+          "parameter": "Liver function tests: as clinically indicated; discontinue if abnormalities occur; be alert for jaundice symptoms"
+        },
+        {
+          "parameter": "Cardiac risk: consider ECG and electrolyte review when baseline risk is elevated or when combining with QT-risk meds"
+        },
+        {
+          "parameter": "Adherence and safety behaviors: check at every visit; review sedation, driving safety, and substance use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for first-generation antipsychotics do not show a clear large increase in major congenital malformations, but individual-agent data are limited. Antipsychotic use in the third trimester can increase the risk of newborn EPS and/or withdrawal symptoms (agitation, abnormal tone, tremor, sleepiness, feeding problems, respiratory distress). Treatment decisions should use shared decision-making: relapse prevention matters, and stopping an effective medication can be risky. Use the lowest effective dose of a single agent when possible and avoid polytherapy unless clearly needed.",
+        "lactation": "Perphenazine is present in breast milk. Limited data suggest a low relative infant dose in one reported case, and no adverse events were observed in that infant; however, infants exposed to antipsychotics via milk can develop sedation, irritability, poor feeding, or motor abnormalities. If breastfeeding while taking perphenazine, monitor the infant closely—especially if premature, low birth weight, or if other sedating meds are also involved.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "High-risk medication in older adults. Antipsychotics are potentially inappropriate for behavioral symptoms of dementia or delirium unless nonpharmacologic approaches failed and there is risk of harm. Boxed warning: increased mortality in dementia-related psychosis. Older adults are also more vulnerable to orthostatic hypotension, falls, sedation, aspiration, hyponatremia/SIADH, and movement side effects—start low, titrate slow, and reassess often.",
+        "renal_impairment": "Use with caution. Monitor renal function clinically; discontinue if concerning abnormalities occur.",
+        "hepatic_impairment": "Contraindicated in liver damage. Monitor hepatic function during therapy and discontinue if clinically significant abnormalities occur."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability is moderate",
+          "bioavailability": "Approximately 40%",
+          "peak_plasma": "Perphenazine: 1 to 3 hours; active metabolite: 2 to 4 hours",
+          "half_life": "Perphenazine: 9 to 12 hours; active metabolite: 10 to 19 hours",
+          "metabolism": "Extensive hepatic metabolism; CYP2D6 is a major pathway (genetic differences can matter)",
+          "excretion": "Not applicable for this medication.",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Perphenazine dosing for schizophrenia is usually divided across the day. Many people do best when the dose is increased slowly and kept at the lowest effective maintenance dose to reduce EPS and other side effects. First-episode psychosis often requires lower starting doses because sensitivity to adverse effects tends to be higher."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If perphenazine is being stopped (and it’s not an emergency safety situation), a gradual taper is usually the move—especially in chronic psychotic disorders. The goal is to reduce withdrawal symptoms and catch early relapse signs before they become a full crisis."
+        }
+      }
     }
   },
   "sections": [
@@ -93,7 +262,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Perphenazine can be helpful, but the “feel” can be a mix of calmer brain + annoying body side effects. Here’s the vibe people commonly describe:",
       "items": [
         {
           "category": "Quieter psychosis (days to weeks)",
@@ -129,7 +297,8 @@
             "I wasn’t as scared, but I also wasn’t as excited about anything."
           ]
         }
-      ]
+      ],
+      "intro": "Perphenazine can be helpful, but the “feel” can be a mix of calmer brain + annoying body side effects. Here’s the vibe people commonly describe:"
     },
     {
       "type": "onset_duration",
@@ -146,10 +315,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Perphenazine can be effective for schizophrenia symptoms, especially positive symptoms like hallucinations and delusions. The main clinical tradeoff is tolerability: compared with many second-generation antipsychotics, perphenazine can carry a higher risk of extrapyramidal symptoms (restlessness, stiffness, tremor) and tardive dyskinesia over time.",
       "metric": "Schizophrenia symptom control",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Perphenazine can be effective for schizophrenia symptoms, especially positive symptoms like hallucinations and delusions. The main clinical tradeoff is tolerability: compared with many second-generation antipsychotics, perphenazine can carry a higher risk of extrapyramidal symptoms (restlessness, stiffness, tremor) and tardive dyskinesia over time.",
       "clinical_details": "In real-world practice, response depends on dose, sensitivity to side effects, prior antipsychotic exposure, and whether movement symptoms are proactively monitored and treated. Many people who do well on perphenazine do best on the lowest effective maintenance dose.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -243,7 +412,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Perphenazine has meaningful interaction risks—especially anything that adds sedation, drops blood pressure, affects heart rhythm, or changes CYP2D6 metabolism.",
       "items": [
         {
           "with": "Alcohol, opioids, benzodiazepines, sedating sleep meds, sedating antihistamines",
@@ -275,7 +443,8 @@
           "risk": "Pharmacologic “tug-of-war”: perphenazine blocks dopamine, which can reduce the effect of dopamine-boosting meds and worsen parkinsonism.",
           "action": "Use caution and coordinate with neurology/psychiatry when both are needed."
         }
-      ]
+      ],
+      "intro": "Perphenazine has meaningful interaction risks—especially anything that adds sedation, drops blood pressure, affects heart rhythm, or changes CYP2D6 metabolism."
     },
     {
       "type": "tapering",
@@ -352,21 +521,6 @@
       "text": "Perphenazine is a first-generation antipsychotic option for schizophrenia. Many clinicians prefer second-generation antipsychotics first because they may cause fewer movement side effects for some patients, but perphenazine can still be a valid choice depending on prior response, side effect profile, access, and patient preference. When it’s used, the key is careful titration, proactive monitoring for movement side effects, and sticking with the lowest effective maintenance dose."
     }
   ],
-  "seo": {
-    "title": "Perphenazine (Trilafon): Uses, Dosing, Side Effects, EPS & Dementia Warning",
-    "description": "Perphenazine (Trilafon) for schizophrenia: how it works, typical dosing (8–32 mg/day), side effects (EPS, tardive dyskinesia, sedation), key interactions, tapering, and the boxed warning for increased mortality in older adults with dementia-related psychosis.",
-    "canonical": "[https://www.heypsych.com/treatments/perphenazine-trilafon](https://www.heypsych.com/treatments/perphenazine-trilafon)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is perphenazine used for in psychiatry?",
@@ -408,5 +562,20 @@
       "q": "Does perphenazine affect pregnancy or breastfeeding?",
       "a": "Decisions in pregnancy and breastfeeding are individualized. Class-level data for first-generation antipsychotics don’t show a clear large increase in major congenital malformations, but newborn EPS/withdrawal symptoms are a concern with third-trimester exposure. Perphenazine can pass into breast milk; limited data suggest low infant exposure in one case, but infants should be monitored for sedation, feeding issues, and motor changes."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Perphenazine (Trilafon): Uses, Dosing, Side Effects, EPS & Dementia Warning",
+    "description": "Perphenazine (Trilafon) for schizophrenia: how it works, typical dosing (8–32 mg/day), side effects (EPS, tardive dyskinesia, sedation), key interactions, tapering, and the boxed warning for increased mortality in older adults with dementia-related psychosis.",
+    "canonical": "[https://www.heypsych.com/treatments/perphenazine-trilafon](https://www.heypsych.com/treatments/perphenazine-trilafon)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

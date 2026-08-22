@@ -55,7 +55,7 @@ export function StartHere() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 py-4 sm:px-6 lg:px-8">
+    <section className="bg-canvas px-4 py-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl text-center">
         <Button
           variant="primary"

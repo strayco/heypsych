@@ -158,6 +158,13 @@ export function generateEntitySitemapUrls(
 
 /**
  * Generate sitemap URLs for static paths
+ *
+ * SITEMAP FRESHNESS POLICY:
+ * Static/hub pages do NOT get lastModified timestamps. Fabricating "today"
+ * destroys trust signals. Google recommends omitting lastmod unless it
+ * reflects actual content changes.
+ *
+ * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
  */
 export function generateStaticSitemapUrls(
   paths: string[],
@@ -179,10 +186,8 @@ export function generateStaticSitemapUrls(
       url.priority = config.priority;
     }
 
-    // Static pages don't have dynamic lastmod
-    if (opts.includeLastmod) {
-      url.lastmod = new Date().toISOString();
-    }
+    // REMOVED: Fake lastmod using new Date().toISOString()
+    // Static pages don't have a meaningful lastmod - omit entirely
 
     return url;
   });
@@ -287,6 +292,9 @@ export class SitemapGenerator {
       '/resources',
       '/resources/assessments-screeners',
       '/resources/articles-guides',
+      '/resources/support-community',
+      '/resources/support-community/immediate-crisis',
+      '/resources/support-community/organizations-communities',
       '/psychiatrists',
       '/search',
     ];
@@ -306,28 +314,66 @@ export class SitemapGenerator {
   }
 
   /**
+   * Generate symptoms sitemap
+   * Only includes indexable symptoms that pass quality gate
+   */
+  async generateSymptomsSitemap(): Promise<string> {
+    // Import dynamically to avoid server-only module issues
+    const { getIndexableSymptoms } = await import('@/domains/symptoms');
+    const symptoms = getIndexableSymptoms();
+
+    const urls: SitemapUrl[] = symptoms.map((symptom) => {
+      const url: SitemapUrl = {
+        loc: `${this.options.baseUrl}/symptoms/${symptom.slug}`,
+        changefreq: 'monthly',
+        priority: 0.7,
+      };
+
+      if (symptom.lastReviewed) {
+        url.lastmod = symptom.lastReviewed;
+      }
+
+      return url;
+    });
+
+    // Add the hub page
+    urls.unshift({
+      loc: `${this.options.baseUrl}/symptoms`,
+      changefreq: 'weekly',
+      priority: 0.8,
+    });
+
+    return generateSitemapXml(urls, this.options);
+  }
+
+  /**
    * Generate sitemap index
+   *
+   * SITEMAP FRESHNESS POLICY:
+   * Sub-sitemap lastmod is intentionally OMITTED. Adding fake "now" timestamps
+   * to the index destroys trust signals. Google will discover actual changes
+   * by crawling the individual sitemaps.
+   *
+   * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
    */
   async generateSitemapIndex(): Promise<string> {
     const sitemaps = [
       { loc: `${this.options.baseUrl}/sitemap-conditions.xml` },
       { loc: `${this.options.baseUrl}/sitemap-treatments.xml` },
+      { loc: `${this.options.baseUrl}/sitemap-symptoms.xml` }, // Symptom exploration pages
       { loc: `${this.options.baseUrl}/sitemap-assessments.xml` },
       { loc: `${this.options.baseUrl}/sitemap-resources.xml` },
       { loc: `${this.options.baseUrl}/sitemap-hubs.xml` },
       { loc: `${this.options.baseUrl}/sitemap-static.xml` },
       { loc: `${this.options.baseUrl}/sitemap-news.xml` },
       { loc: `${this.options.baseUrl}/sitemap-guide.xml` }, // Programmatic SEO pages
+      { loc: `${this.options.baseUrl}/sitemap-tools.xml` }, // Tools directory pages
     ];
 
-    // Add lastmod to all sitemaps
-    const now = new Date().toISOString();
-    const sitemapsWithLastmod = sitemaps.map((s) => ({
-      ...s,
-      lastmod: now,
-    }));
+    // REMOVED: Fake lastmod using new Date().toISOString()
+    // Sub-sitemaps don't need lastmod in the index - omit entirely
 
-    return generateSitemapIndexXml(sitemapsWithLastmod, this.options);
+    return generateSitemapIndexXml(sitemaps, this.options);
   }
 }
 

@@ -42,7 +42,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
 
     if (type === "h1" || type === "h2" || type === "heading") {
       return (
-        <h2 key={index} className="text-xl font-semibold text-slate-900">
+        <h2 key={index} className="text-xl font-semibold text-label-primary">
           {text}
         </h2>
       );
@@ -50,7 +50,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
 
     if (type === "h3") {
       return (
-        <h3 key={index} className="text-lg font-semibold text-slate-900">
+        <h3 key={index} className="text-lg font-semibold text-label-primary">
           {text}
         </h3>
       );
@@ -60,7 +60,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
       return (
         <blockquote
           key={index}
-          className="border-l-4 border-purple-300 bg-purple-50/60 px-4 py-2 italic text-slate-900"
+          className="border-l-4 border-separator bg-surface-grouped/50 px-4 py-2 italic text-label-secondary"
         >
           {text}
         </blockquote>
@@ -68,7 +68,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
     }
 
     return (
-      <p key={index} className="text-slate-900">
+      <p key={index} className="text-label-secondary">
         <ParsedContent content={text} />
       </p>
     );
@@ -86,19 +86,19 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
               className="flex w-full items-center justify-between text-left"
             >
               <div className="flex items-center gap-2">
-                <ImageIcon className="h-5 w-5 text-purple-600" />
+                <ImageIcon className="h-5 w-5 text-label-tertiary" />
                 <CardTitle className="text-base">View Infographic</CardTitle>
               </div>
               {showInfographic ? (
-                <ChevronUp className="h-5 w-5 text-slate-500" />
+                <ChevronUp className="h-5 w-5 text-label-primary0" />
               ) : (
-                <ChevronDown className="h-5 w-5 text-slate-500" />
+                <ChevronDown className="h-5 w-5 text-label-primary0" />
               )}
             </button>
           </CardHeader>
           {showInfographic && (
             <CardContent className="pt-0">
-              <div className="relative w-full overflow-hidden rounded-lg border">
+              <div className="relative w-full overflow-hidden rounded-lg border border-separator">
                 <Image
                   src={coverImage}
                   alt={data.name || "Article infographic"}
@@ -124,28 +124,28 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
           <CardContent className="space-y-6">
             {introduction && (
               <div className="space-y-2">
-                <h2 className="text-xl font-semibold text-slate-900">Overview</h2>
-                <ParsedContent content={introduction} className="text-slate-900" />
+                <h2 className="text-xl font-semibold text-label-primary">Overview</h2>
+                <ParsedContent content={introduction} className="text-label-secondary" />
               </div>
             )}
 
             {Array.isArray(sections) &&
               sections.map((section: any, index: number) => (
                 <div key={index} className="space-y-2">
-                  <h3 className="text-lg font-semibold text-slate-900">
+                  <h3 className="text-lg font-semibold text-label-primary">
                     {section.heading || section.title || `Section ${index + 1}`}
                   </h3>
                   <ParsedContent
                     content={section.content || section.text || ""}
-                    className="text-slate-900"
+                    className="text-label-secondary"
                   />
                 </div>
               ))}
 
             {conclusion && (
               <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-slate-900">Conclusion</h3>
-                <ParsedContent content={conclusion} className="text-slate-900" />
+                <h3 className="text-lg font-semibold text-label-primary">Conclusion</h3>
+                <ParsedContent content={conclusion} className="text-label-secondary" />
               </div>
             )}
           </CardContent>
@@ -172,12 +172,12 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-slate-600" />
+              <BookOpen className="h-5 w-5 text-label-tertiary" />
               <CardTitle>References</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <ol className="list-decimal list-inside space-y-3 text-sm text-slate-700">
+            <ol className="list-decimal list-inside space-y-3 text-sm text-label-secondary">
               {referencesSection.content.split('\n').filter((line: string) => line.trim()).map((ref: string, idx: number) => {
                 // Remove leading number and period (e.g., "1. " or "2. ")
                 const cleanRef = ref.replace(/^\d+\.\s*/, '').trim();
@@ -192,7 +192,7 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
                       href={scholarUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-700 hover:text-purple-900 hover:underline"
+                      className="text-accent hover:text-accent-700 hover:underline"
                     >
                       {cleanRef}
                       <ExternalLink className="ml-1 inline h-3 w-3" />

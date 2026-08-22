@@ -1,23 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "algae-omega-3",
-  "type": "supplement",
-  "name": "Algae-Derived Omega-3",
-  "summary": "Plant-based source of omega-3 fatty acids, especially DHA and sometimes EPA, used for cardiovascular, cognitive, mood, and anti-inflammatory benefits. A vegan alternative to fish oil.",
-  "description": "Algae-derived omega-3 supplements provide docosahexaenoic acid (DHA) and, in some formulations, eicosapentaenoic acid (EPA). These fatty acids are essential for brain development, neuronal membrane fluidity, anti-inflammatory pathways, and cardiovascular health. Unlike fish oil, algae oil offers a sustainable, vegan-friendly alternative with lower risk of heavy metal contamination. Research suggests that adequate DHA/EPA intake may reduce depression risk, support cognitive health, and improve cardiovascular outcomes. Trials in perinatal mental health also suggest potential benefits in reducing perinatal depression risk.",
-  "category": "supplements",
-  "tags": [
-    "omega-3",
-    "DHA",
-    "EPA",
-    "plant-based",
-    "mood-support",
-    "cognitive-support",
-    "cardiovascular"
-  ],
-  "metadata": {
-    "compound_type": "Polyunsaturated Fatty Acid (PUFA)",
-    "natural_source": "Microalgae (Schizochytrium sp., Crypthecodinium cohnii)",
+  "identity": {
+    "slug": "algae-omega-3",
+    "name": "Algae-Derived Omega-3",
+    "brand_names": [
+      "Ovega-3",
+      "Testa Omega-3",
+      "Algatrium",
+      "Minami Vegan DHA"
+    ],
+    "aliases": [
+      "algal oil",
+      "DHA from algae",
+      "vegan fish oil"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Depression",
       "Cognitive Health",
@@ -29,81 +30,169 @@
       "Membrane Modulation",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (supplement form)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Ovega-3",
-      "Testa Omega-3",
-      "Algatrium",
-      "Minami Vegan DHA"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement",
-    "age_groups": [
-      "Perinatal",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term (daily supplementation)"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Nutrition",
-      "Cardiology",
-      "Obstetrics"
+    "tags": [
+      "omega-3",
+      "DHA",
+      "EPA",
+      "plant-based",
+      "mood-support",
+      "cognitive-support",
+      "cardiovascular"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression (adjunctive)",
-      "Cognitive decline prevention",
-      "Perinatal mental health support",
-      "Cardiovascular prevention"
-    ],
-    "off_label_uses": [
-      "ADHD",
-      "Inflammatory disorders",
-      "Ophthalmologic conditions"
-    ],
-    "contraindications": [
-      "Hypersensitivity to algae or supplement excipients"
-    ],
-    "monitoring_required": [
-      "Bleeding risk if combined with anticoagulants",
-      "Mood and cognitive outcomes in psychiatric use"
-    ],
-    "efficacy_rating": {
-      "depression": 3,
-      "perinatal-depression-prevention": 2,
-      "cognitive-decline": 2,
-      "cardiovascular": 3,
-      "overall-tolerability": 5
+  "summary": "Plant-based source of omega-3 fatty acids, especially DHA and sometimes EPA, used for cardiovascular, cognitive, mood, and anti-inflammatory benefits. A vegan alternative to fish oil.",
+  "description": "Algae-derived omega-3 supplements provide docosahexaenoic acid (DHA) and, in some formulations, eicosapentaenoic acid (EPA). These fatty acids are essential for brain development, neuronal membrane fluidity, anti-inflammatory pathways, and cardiovascular health. Unlike fish oil, algae oil offers a sustainable, vegan-friendly alternative with lower risk of heavy metal contamination. Research suggests that adequate DHA/EPA intake may reduce depression risk, support cognitive health, and improve cardiovascular outcomes. Trials in perinatal mental health also suggest potential benefits in reducing perinatal depression risk.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression-adjunctive",
+          "condition_name": "Depression (adjunctive)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-decline-prevention",
+          "condition_name": "Cognitive decline prevention",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "perinatal-mental-health-support",
+          "condition_name": "Perinatal mental health support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cardiovascular-prevention",
+          "condition_name": "Cardiovascular prevention",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "inflammatory-disorders",
+          "condition_name": "Inflammatory disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "ophthalmologic-conditions",
+          "condition_name": "Ophthalmologic conditions",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "perinatal-depression-prevention": {
+          "rating": 2
+        },
+        "cognitive-decline": {
+          "rating": 2
+        },
+        "cardiovascular": {
+          "rating": 3
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term (daily supplementation)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "mild GI upset"
+        },
+        {
+          "effect": "fishy or algae aftertaste"
+        },
+        {
+          "effect": "burping"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "bleeding risk in combination with anticoagulants (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to algae or supplement excipients"
+        }
+      ],
+      "precautions": [
+        "Caution with anticoagulant or antiplatelet therapy (warfarin, aspirin, clopidogrel).",
+        "Algal sources are generally safer than fish oil for heavy metals, but quality varies."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin or anticoagulants",
+          "mechanism": "Increased bleeding tendency",
+          "action": "Monitor INR or bleeding signs"
+        },
+        {
+          "interactant": "SSRIs or other serotonergic drugs",
+          "mechanism": "Additive bleeding risk",
+          "action": "Monitor clinically"
+        },
+        {
+          "interactant": "High-dose omega-3 (fish oil or other)",
+          "mechanism": "Additive GI side effects or bleeding risk",
+          "action": "Monitor dose and tolerance"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and cognitive changes"
+        },
+        {
+          "parameter": "Signs of bleeding (easy bruising, nosebleeds)"
+        },
+        {
+          "parameter": "GI tolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Recommended source of DHA (200–300 mg/day); safe and commonly used.",
+        "lactation": "Safe; supports infant brain development via breast milk.",
+        "pediatric": "Safe in age-appropriate doses; studied in ADHD and developmental support.",
+        "geriatric": "Safe and beneficial for cardiovascular and cognitive health."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Polyunsaturated Fatty Acid (PUFA)",
+        "natural_source": "Microalgae (Schizochytrium sp., Crypthecodinium cohnii)",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "algae omega-3",
-      "algal DHA",
-      "algal EPA",
-      "vegan omega-3",
-      "plant-based omega-3"
-    ],
-    "synonyms": [
-      "algal oil",
-      "DHA from algae",
-      "vegan fish oil"
-    ],
-    "common_misspellings": [
-      "alge omega",
-      "algea omega 3",
-      "algie omega"
-    ]
   },
   "sections": [
     {
@@ -225,6 +314,39 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements: Omega-3 Fatty Acids",
+      "url": "https://ods.od.nih.gov/factsheets/Omega3FattyAcids-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com: Omega-3 Fatty Acids",
+      "url": "https://examine.com/supplements/omega-3-fatty-acids/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "algae omega-3",
+      "algal DHA",
+      "algal EPA",
+      "vegan omega-3",
+      "plant-based omega-3"
+    ],
+    "synonyms": [
+      "algal oil",
+      "DHA from algae",
+      "vegan fish oil"
+    ],
+    "common_misspellings": [
+      "alge omega",
+      "algea omega 3",
+      "algie omega"
+    ]
+  },
   "seo": {
     "title": "Algae Omega-3 (DHA/EPA): Vegan Source for Brain, Mood, and Heart Health",
     "description": "Comprehensive guide to algae-derived omega-3 supplements (DHA/EPA). Covers mood, cognitive, perinatal, and cardiovascular benefits, dosing, side effects, and interactions.",

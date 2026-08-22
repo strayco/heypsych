@@ -17,12 +17,13 @@
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { 
-  generateDynamicPageConfigs, 
+import {
+  generateDynamicPageConfigs,
   parseDynamicSlug,
 } from '@/lib/programmatic-seo/dynamic-generator';
 import { generatePageContent } from '@/lib/programmatic-seo/content-engine';
-import { checkIndexEligibility, getRobotsDirective } from '@/lib/programmatic-seo/index-eligibility';
+import { makeGuideIndexDecision, getCanonicalUrl } from '@/lib/seo/index-decision-service';
+import { SITE_CONFIG } from '@/lib/seo/config';
 import { GuidePageClient } from './client-wrapper';
 
 interface PageProps {
@@ -66,22 +67,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  // THE WIN PROTOCOL: Check index eligibility
-  // Only index pages that pass all criteria
-  const eligibility = checkIndexEligibility(config, content);
-  const robotsDirective = getRobotsDirective(eligibility);
-  const shouldIndex = eligibility.isIndexable;
+  // CENTRAL INDEXATION FIREWALL: Single source of truth for indexability
+  // All decisions now go through the firewall for consistency
+  const decision = makeGuideIndexDecision(slug, {
+    pageType: config.pageType,
+    wordCount: content.wordCount,
+    uniquenessScore: 0.8, // TODO: Calculate from similarity engine
+    safetyScore: content.disclaimerLevel === 'critical' ? 0.9 : 0.85,
+    hasDemographicContent: !!config.demographic,
+  });
+
+  const shouldIndex = decision.indexable;
+  const canonicalUrl = getCanonicalUrl(decision, SITE_CONFIG.url) || content.canonicalUrl;
 
   return {
     title: content.title,
     description: content.metaDescription,
     alternates: {
-      canonical: content.canonicalUrl,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: content.title,
       description: content.metaDescription,
-      url: content.canonicalUrl,
+      url: canonicalUrl,
       type: 'article',
       siteName: 'HeyPsych',
       locale: 'en_US',
@@ -91,18 +99,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: content.title,
       description: content.metaDescription,
     },
-    // INDEX ELIGIBILITY GATE: noindex pages that don't qualify
+    // CENTRAL FIREWALL: Consistent robots directives
     robots: {
       index: shouldIndex,
       follow: true, // Always follow links for crawl discovery
-      'max-snippet': shouldIndex ? -1 : 0,
-      'max-image-preview': shouldIndex ? 'large' : 'none',
-      'max-video-preview': shouldIndex ? -1 : 0,
+      googleBot: {
+        index: shouldIndex,
+        follow: true,
+        'max-snippet': shouldIndex ? -1 : 0,
+        'max-image-preview': shouldIndex ? 'large' : 'none',
+        'max-video-preview': shouldIndex ? -1 : 0,
+      },
     },
     other: {
       // Show honest review date, not fake "modified" date
       ...(content.datePublished && { 'article:published_time': content.datePublished }),
       'article:modified_time': content.lastUpdated,
+      // Track firewall decision for debugging
+      'x-firewall-cohort': decision.cohort,
     },
   };
 }

@@ -6,6 +6,7 @@
 
 import type { Entity, EntityType } from '@/lib/types/database';
 import type { CandidateLink, LinkType, LinkPriority } from './types';
+import { getAuthorityScore, getNode, registerPage } from '@/lib/trust/authority-graph';
 
 /**
  * Parse {link:type:slug} syntax from content
@@ -212,9 +213,12 @@ export function deduplicateLinks(links: CandidateLink[]): CandidateLink[] {
 }
 
 /**
- * Sort links by priority
+ * Calculate authority-boosted priority score for a link
+ * Links to high-authority pages get priority boost
+ *
+ * @see authority-graph.ts - PageRank-inspired internal authority tracking
  */
-export function sortLinksByPriority(links: CandidateLink[]): CandidateLink[] {
+function calculateAuthorityBoostedScore(link: CandidateLink): number {
   const priorityOrder: Record<string, number> = {
     critical: 4,
     high: 3,
@@ -222,10 +226,38 @@ export function sortLinksByPriority(links: CandidateLink[]): CandidateLink[] {
     low: 1,
   };
 
+  const basePriority = priorityOrder[link.priority] || 0;
+
+  // Get authority score for target page (0-1)
+  // Path format depends on entity type
+  const targetPath = link.targetType === 'condition'
+    ? `/conditions/${link.targetSlug}`
+    : link.targetType === 'medication' || link.targetType === 'therapy' || link.targetType === 'treatment'
+      ? `/treatments/${link.targetSlug}`
+      : `/resources/${link.targetSlug}`;
+
+  const authorityScore = getAuthorityScore(targetPath);
+
+  // Boost priority by up to 0.5 based on authority (high-authority pages rank higher)
+  // This allows authority to be a tiebreaker between same-priority links
+  // but doesn't override explicit priority assignments
+  const authorityBoost = authorityScore * 0.5;
+
+  return basePriority + authorityBoost;
+}
+
+/**
+ * Sort links by priority, with authority score as tiebreaker
+ * Links to high-authority pages rank higher within same priority tier
+ *
+ * INTEGRATION: Authority Graph → Link Priority
+ * @see authority-graph.ts Phase G
+ */
+export function sortLinksByPriority(links: CandidateLink[]): CandidateLink[] {
   return links.sort((a, b) => {
-    const aPriority = priorityOrder[a.priority] || 0;
-    const bPriority = priorityOrder[b.priority] || 0;
-    return bPriority - aPriority; // Descending order
+    const aScore = calculateAuthorityBoostedScore(a);
+    const bScore = calculateAuthorityBoostedScore(b);
+    return bScore - aScore; // Descending order
   });
 }
 

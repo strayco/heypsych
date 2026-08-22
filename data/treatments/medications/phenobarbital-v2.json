@@ -1,90 +1,256 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phenobarbital-sezaby",
-  "type": "medication",
-  "name": "Phenobarbital (Sezaby)",
-  "summary": "Long-acting barbiturate that can provide sedation and seizure control, but comes with serious risks: profound sedation, respiratory depression, and life-threatening withdrawal if stopped abruptly after ongoing use.",
-  "description": "Phenobarbital is a long-acting barbiturate used in monitored settings for sedation and seizure control. In psychiatry-adjacent care, it shows up most often for severe alcohol withdrawal (especially refractory cases) and occasionally for sedative/hypnotic withdrawal protocols. This medication can knock people out—sometimes too much. Mixing with opioids or alcohol can be fatal. Physical dependence can develop with ongoing use, and abrupt stopping after longer-than-recommended use can trigger dangerous withdrawal.",
-  "patient_summary": "Phenobarbital is a long-acting barbiturate sometimes used (usually in the hospital) for severe alcohol withdrawal or heavy sedation when close monitoring is available. It can cause deep sleepiness and slow breathing, and mixing it with opioids or alcohol can be deadly. If it’s used longer than intended, stopping suddenly can cause life-threatening withdrawal—so it must be tapered.",
-  "category": "medications/withdrawal-management",
-  "metadata": {
+  "identity": {
+    "slug": "phenobarbital-sezaby",
+    "name": "Phenobarbital (Sezaby)",
+    "generic_name": "phenobarbital",
+    "brand_names": [
+      "Sezaby"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/withdrawal-management",
     "drug_classes": [
       "Barbiturate",
       "Antiseizure Agent",
       "Sedative-Hypnotic"
-    ],
-    "brand_names": [
-      "Sezaby"
-    ],
-    "administration_routes": [
-      "Intravenous",
-      "Intramuscular",
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1912,
-    "pharmacologic_category": "Barbiturate, Long-Acting",
-    "published_date": "2026-02-02T00:00:00Z",
-    "last_updated": "2026-02-02T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-02T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Sedation (labeled use)",
-      "Seizure management (including status epilepticus; Sezaby includes neonatal seizures)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alcohol-withdrawal",
-        "relationship": "off_label",
-        "context": "Used in monitored settings for severe or refractory alcohol withdrawal when close respiratory and sedation monitoring is available. Regimens vary and should be handled by clinicians experienced with phenobarbital protocols."
-      },
-      {
-        "slug": "sedative-hypnotic-withdrawal",
-        "relationship": "off_label",
-        "context": "Sometimes used as a conversion-and-taper strategy for sedative/hypnotic withdrawal (e.g., benzodiazepine-type withdrawal protocols) using structured tapers."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "Not a standard outpatient psychiatry medication, but may be encountered in acute care when deep sedation is required and monitoring is available."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to phenobarbital, barbiturates, or any component of the formulation",
-      "Marked hepatic impairment",
-      "Dyspnea or airway obstruction",
-      "Porphyria (manifest or latent)",
-      "Injection: intra-arterial administration",
-      "Injection: subcutaneous administration (not recommended)",
-      "Injection: large doses in nephritic patients (product-specific cautions may apply)",
-      "History of sedative/hypnotic substance use disorder (noted as an additional contraindication for some injectable solutions)"
-    ],
-    "efficacy_response": {
-      "metric": "Symptom control in severe withdrawal (clinical response)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For alcohol withdrawal and sedative/hypnotic withdrawal, the goal isn’t a single “percent response” number—it’s getting dangerous symptoms under control safely (tremors, agitation, delirium risk), without oversedating or slowing breathing.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Long-acting barbiturate that can provide sedation and seizure control, but comes with serious risks: profound sedation, respiratory depression, and life-threatening withdrawal if stopped abruptly after ongoing use.",
+  "description": "Phenobarbital is a long-acting barbiturate used in monitored settings for sedation and seizure control. In psychiatry-adjacent care, it shows up most often for severe alcohol withdrawal (especially refractory cases) and occasionally for sedative/hypnotic withdrawal protocols. This medication can knock people out—sometimes too much. Mixing with opioids or alcohol can be fatal. Physical dependence can develop with ongoing use, and abrupt stopping after longer-than-recommended use can trigger dangerous withdrawal.",
+  "patient_summary": "Phenobarbital is a long-acting barbiturate sometimes used (usually in the hospital) for severe alcohol withdrawal or heavy sedation when close monitoring is available. It can cause deep sleepiness and slow breathing, and mixing it with opioids or alcohol can be deadly. If it’s used longer than intended, stopping suddenly can cause life-threatening withdrawal—so it must be tapered.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "sedation-labeled-use",
+          "condition_name": "Sedation (labeled use)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "seizure-management-including-status-epilepticus-sezaby-includes-neonatal-seizures",
+          "condition_name": "Seizure management (including status epilepticus; Sezaby includes neonatal seizures)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "alcohol-withdrawal",
+          "condition_name": "Alcohol Withdrawal",
+          "relationship": "off_label",
+          "context": "Used in monitored settings for severe or refractory alcohol withdrawal when close respiratory and sedation monitoring is available. Regimens vary and should be handled by clinicians experienced with phenobarbital protocols."
+        },
+        {
+          "condition_slug": "sedative-hypnotic-withdrawal",
+          "condition_name": "Sedative Hypnotic Withdrawal",
+          "relationship": "off_label",
+          "context": "Sometimes used as a conversion-and-taper strategy for sedative/hypnotic withdrawal (e.g., benzodiazepine-type withdrawal protocols) using structured tapers."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "Not a standard outpatient psychiatry medication, but may be encountered in acute care when deep sedation is required and monitoring is available."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral: Rapid and complete in adults",
-      "bioavailability": "~90% (adults, oral)",
-      "onset": "IV: ~5 minutes; Oral: ≥60 minutes",
-      "peak_plasma": "Oral: 2-4 hours (adults)",
-      "half_life": "~79 hours (range: 53-118 hours; adults)",
-      "duration_IR": "Oral: 10-12 hours; IV: >6 hours",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via CYP2C9 (primary) and CYP2C19/CYP2E1 (minor); also N-glucosidation; induces multiple CYP enzymes (notably CYP3A4) and UGT1A1",
-      "excretion": "Urine (25-50% unchanged); feces minimal",
-      "protein_binding": "~48% (adults)",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV: ~5 minutes; Oral: ≥60 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intravenous",
+        "Intramuscular",
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Common (dose-related; may be intended in monitored withdrawal/sedation care)",
+          "notes": "This can feel like your brain is wrapped in a blanket. Helpful for severe withdrawal symptoms, but oversedation is dangerous—especially if you’re also getting other sedatives."
+        },
+        {
+          "effect": "Ataxia / Impaired Coordination",
+          "incidence": "Common",
+          "notes": "Wobbliness and clumsiness can show up quickly. Falls are a real risk, especially if you stand up fast or you’re older."
+        },
+        {
+          "effect": "Cognitive Slowing / Confusion",
+          "incidence": "Common",
+          "notes": "People often describe a slowed brain, trouble concentrating, or feeling mentally “far away.” This is more likely at higher serum levels or in people with baseline cognitive vulnerability."
+        },
+        {
+          "effect": "Dizziness / Vertigo",
+          "incidence": "Common",
+          "notes": "Dizziness can be part of the sedation effect. If it’s severe, clinicians usually reassess dose, stacking, and other sedatives on board."
+        },
+        {
+          "effect": "GI Effects",
+          "incidence": "Variable",
+          "notes": "Nausea, constipation, and appetite changes can happen—often secondary to general CNS slowing."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression: slow/shallow breathing, low oxygen, unresponsiveness—risk spikes with opioids, benzodiazepines, alcohol, high doses, or rapid IV administration"
+        },
+        {
+          "risk": "Profound oversedation/coma: especially with dose stacking or combined CNS depressants"
+        },
+        {
+          "risk": "Hypotension/bradycardia and cardiovascular collapse (more likely with IV use or rapid infusion)"
+        },
+        {
+          "risk": "Severe cutaneous adverse reactions (SJS/TEN) and DRESS: rash with systemic symptoms can be life-threatening"
+        },
+        {
+          "risk": "Paradoxical CNS stimulation (agitation, hyperactivity) can occur, especially in pediatric patients but possible in others"
+        },
+        {
+          "risk": "Suicidal ideation/behavior warning associated with antiseizure meds—monitor mood and safety particularly in the first weeks"
+        }
+      ],
+      "black_box_warning": "Concomitant use of phenobarbital products and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined prescribing for patients for whom alternative treatment options are inadequate. If used together, limit dosages and duration to the minimum required and monitor closely for respiratory depression and sedation.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to phenobarbital, barbiturates, or any component of the formulation"
+        },
+        {
+          "contraindication": "Marked hepatic impairment"
+        },
+        {
+          "contraindication": "Dyspnea or airway obstruction"
+        },
+        {
+          "contraindication": "Porphyria (manifest or latent)"
+        },
+        {
+          "contraindication": "Injection: intra-arterial administration"
+        },
+        {
+          "contraindication": "Injection: subcutaneous administration (not recommended)"
+        },
+        {
+          "contraindication": "Injection: large doses in nephritic patients (product-specific cautions may apply)"
+        },
+        {
+          "contraindication": "History of sedative/hypnotic substance use disorder (noted as an additional contraindication for some injectable solutions)"
+        }
+      ],
+      "precautions": [
+        "Dependence can develop with ongoing use; risk increases with higher dose and longer duration",
+        "Abrupt discontinuation after longer-than-recommended use can trigger life-threatening withdrawal",
+        "Rapid IV administration increases risk of respiratory depression, apnea, and cardiovascular instability",
+        "Severe skin reactions (SJS/TEN) and DRESS can occur (rare but serious)",
+        "Antiseizure medications have been associated with suicidal ideation/behavior—monitor mood and safety, especially early in treatment"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (including opioid pain meds and illicit opioids)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid when possible. If absolutely necessary, use the lowest doses for the shortest time and monitor closely for breathing and sedation."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive and potentially fatal CNS and respiratory depression.",
+          "action": "Do not combine."
+        },
+        {
+          "interactant": "Benzodiazepines and other sedatives (sleep meds, sedating antihistamines, muscle relaxants, gabapentinoids, antipsychotics with sedating profiles)",
+          "mechanism": "Stacked sedation, impaired coordination, respiratory suppression—especially in high-risk patients.",
+          "action": "Avoid stacking when possible; if combined in monitored protocols, watch vitals and level of consciousness closely."
+        },
+        {
+          "interactant": "Hormonal contraceptives",
+          "mechanism": "Reduced contraceptive effectiveness due to enzyme induction.",
+          "action": "Use a barrier method in addition to hormonal contraception and discuss alternatives with a clinician."
+        },
+        {
+          "interactant": "Many psychiatric and medical meds metabolized by CYP enzymes (including CYP3A4 substrates)",
+          "mechanism": "Phenobarbital can lower levels of other medications by inducing metabolism, potentially reducing effectiveness.",
+          "action": "Medication list review is mandatory; dose adjustments or alternative meds may be needed."
+        },
+        {
+          "interactant": "Vitamin D / Calcium balance",
+          "mechanism": "Can increase vitamin D metabolism and contribute to bone health issues over time.",
+          "action": "Ensure adequate vitamin D/calcium intake; supplementation may be needed, especially with longer-term therapy."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Respiratory status: respiratory rate, oxygen saturation, level of consciousness—especially with IV dosing, dose stacking, or any concurrent sedatives/opioids"
+        },
+        {
+          "parameter": "Hemodynamics: blood pressure and heart rate (watch for hypotension/bradycardia, especially with rapid IV administration)"
+        },
+        {
+          "parameter": "CNS status: oversedation, confusion, delirium, ataxia/fall risk; reassess after each escalation in monitored protocols"
+        },
+        {
+          "parameter": "Mood and safety: monitor for new or worsening depression, anxiety, agitation, or suicidal ideation (especially early weeks of therapy in antiseizure-med contexts)"
+        },
+        {
+          "parameter": "Dermatologic reactions: rash, mucosal lesions, fever, facial swelling—concern for SJS/TEN or DRESS; discontinue and evaluate urgently if suspected"
+        },
+        {
+          "parameter": "Phenobarbital serum concentrations (as clinically indicated): trough levels just before the next dose; common reference range cited for seizures is 10-40 mcg/mL, with alert levels around 50 mcg/mL"
+        },
+        {
+          "parameter": "Laboratory monitoring (periodic when ongoing): liver enzymes, CBC with differential, renal function"
+        },
+        {
+          "parameter": "Drug interaction surveillance: phenobarbital induces multiple enzymes and can lower levels of other medications (including contraceptives and many CYP3A4 substrates)"
+        },
+        {
+          "parameter": "In withdrawal protocols: track symptom scales used by the institution (e.g., alcohol withdrawal scales) plus sedation/airway checks"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Phenobarbital crosses the placenta, and fetal levels may be similar to maternal levels after parenteral dosing. It has been associated with increased risk of major congenital malformations (notably cardiac malformations and cleft/oral palate) compared with some other antiseizure medications. Newborn sedation, hypotonia, respiratory depression, and withdrawal symptoms can occur, especially with third-trimester exposure; withdrawal may be delayed up to 14 days after birth. Pregnancy can increase phenobarbital clearance, so levels may drop and dosing may need adjustment based on seizure control and serum concentrations. For pregnant patients with alcohol withdrawal, inpatient treatment is recommended and barbiturates are sometimes used; newborn monitoring is important.",
+        "lactation": "Phenobarbital is present in breast milk. Infant sedation, poor feeding, respiratory depression, and withdrawal can occur; infant serum concentrations can rise into toxic range in some cases. If breastfeeding continues, infants should be monitored closely for sedation, feeding/sucking, weight gain, developmental milestones, and signs of toxicity; infant drug levels may be checked if symptoms occur. Abrupt discontinuation of breastfeeding can trigger infant withdrawal in exposed infants—gradual weaning is safer when feasible.",
+        "pediatric": "Not approved for use in adolescents or adults for Sezaby per the provided notes; unapproved use exposes them to risks of abuse, misuse, addiction, overdose, and death. Pediatric patients may experience paradoxical agitation/hyperactivity and are at risk for cognitive and behavioral effects with ongoing therapy. Not applicable for this medication.",
+        "geriatric": "Avoid use when possible. Beers Criteria lists phenobarbital as potentially inappropriate in adults ≥65 due to high physical dependence risk, tolerance to sleep benefits, and increased overdose risk at low dosages. If used in exceptional circumstances, use the lowest effective dose with close monitoring for sedation, cognition, falls, and respiratory status.",
+        "renal_impairment": "For urgent 1-2 dose situations (e.g., status epilepticus), no adjustment is typically needed. For ongoing dosing: if eGFR ≥10 mL/min/1.73 m2, no adjustment is generally necessary but individualize to response and serum concentrations. If eGFR <10, consider 50% to 66% of usual indication-specific dose with serum level monitoring. Hemodialysis can remove drug; some patients may need supplemental post-dialysis dosing depending on seizure risk, guided by levels. CRRT may significantly remove drug; dosing should be individualized with close monitoring.",
+        "hepatic_impairment": "Use with caution in hepatic impairment; half-life can be significantly prolonged in cirrhosis with increased accumulation risk. Manufacturer labeling notes marked hepatic impairment as a contraindication; in select monitored inpatient circumstances, initiation may be considered if benefits outweigh risks and airway support is available. In Child-Pugh B/C, avoid loading dose unless urgently needed; maintenance dosing may be reduced (example described: ~50% of usual indication-specific maintenance dose) with serum level monitoring and vigilance for encephalopathy/oversedation."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1912
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral: Rapid and complete in adults",
+          "bioavailability": "~90% (adults, oral)",
+          "peak_plasma": "Oral: 2-4 hours (adults)",
+          "half_life": "~79 hours (range: 53-118 hours; adults)",
+          "metabolism": "Hepatic via CYP2C9 (primary) and CYP2C19/CYP2E1 (minor); also N-glucosidation; induces multiple CYP enzymes (notably CYP3A4) and UGT1A1",
+          "excretion": "Urine (25-50% unchanged); feces minimal",
+          "protein_binding": "~48% (adults)",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Psychiatry-relevant dosing is most commonly about severe alcohol withdrawal (hospital/monitored protocols) and, less commonly, sedative/hypnotic withdrawal tapers. Dosing varies by protocol and patient risk, and oversedation/respiratory compromise are the main safety limits."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If phenobarbital is used longer than intended, stopping abruptly (or cutting too fast) can trigger acute withdrawal that may be life-threatening. Tapering is how you get off safely—slow and deliberate."
+        }
+      }
     }
   },
   "sections": [
@@ -106,7 +272,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Phenobarbital isn’t subtle. When it’s used for withdrawal or sedation, people commonly describe it like this:",
       "items": [
         {
           "category": "The “volume down” effect",
@@ -152,7 +317,8 @@
           ],
           "note": "If used longer than intended, abrupt stopping can be life-threatening."
         }
-      ]
+      ],
+      "intro": "Phenobarbital isn’t subtle. When it’s used for withdrawal or sedation, people commonly describe it like this:"
     },
     {
       "type": "onset_duration",
@@ -169,10 +335,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For alcohol withdrawal and sedative/hypnotic withdrawal, phenobarbital is used to control dangerous symptoms (agitation, autonomic instability, delirium risk) while avoiding oversedation and respiratory compromise. Effectiveness is judged by symptom control and safety—especially breathing, alertness, and vitals.",
       "metric": "Clinical control of severe withdrawal symptoms (monitored care)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "For alcohol withdrawal and sedative/hypnotic withdrawal, phenobarbital is used to control dangerous symptoms (agitation, autonomic instability, delirium risk) while avoiding oversedation and respiratory compromise. Effectiveness is judged by symptom control and safety—especially breathing, alertness, and vitals.",
       "clinical_details": "Optimal dosing regimens for withdrawal are not universally standardized. Published protocols describe IV/IM loading approaches with symptom-triggered redosing and careful monitoring for respiratory depression, hypotension, and oversedation. Because this is a high-risk sedative, it’s typically reserved for settings where airway support is available if needed.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -257,7 +423,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Phenobarbital is a strong CNS depressant and also an enzyme inducer. Interactions can be both dangerous (sedation/respiratory depression) and sneaky (lowering levels of other meds).",
       "items": [
         {
           "with": "Opioids (including opioid pain meds and illicit opioids)",
@@ -289,7 +454,8 @@
           "risk": "Can increase vitamin D metabolism and contribute to bone health issues over time.",
           "action": "Ensure adequate vitamin D/calcium intake; supplementation may be needed, especially with longer-term therapy."
         }
-      ]
+      ],
+      "intro": "Phenobarbital is a strong CNS depressant and also an enzyme inducer. Interactions can be both dangerous (sedation/respiratory depression) and sneaky (lowering levels of other meds)."
     },
     {
       "type": "tapering",
@@ -370,21 +536,6 @@
       "text": "In psychiatry-relevant practice, phenobarbital is mainly a hospital/acute-care tool: severe alcohol withdrawal (including refractory cases) and occasional structured sedative/hypnotic withdrawal protocols. It’s not a first-line outpatient anxiolytic or sleep medication. The risk profile is the whole story: dependence, overdose risk, and the very real possibility of respiratory suppression—especially when opioids, alcohol, or other sedatives are involved."
     }
   ],
-  "seo": {
-    "title": "Phenobarbital (Sezaby): Uses, Dosing, Side Effects, Interactions & Withdrawal",
-    "description": "Phenobarbital (Sezaby) for severe alcohol withdrawal and monitored sedation: dosing approaches, onset/duration, major risks (respiratory depression), opioid/alcohol danger, dependence, and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/phenobarbital-sezaby](https://www.heypsych.com/treatments/phenobarbital-sezaby)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is phenobarbital basically a sleeping pill?",
@@ -426,5 +577,20 @@
       "q": "Can phenobarbital be used for anxiety or insomnia the way benzos are?",
       "a": "Not in any routine outpatient sense. While it can sedate, the risk profile is much heavier than standard first-line options for anxiety/insomnia. In psychiatric practice, it’s mostly a specialized tool for severe withdrawal management or controlled sedation in monitored settings."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Phenobarbital (Sezaby): Uses, Dosing, Side Effects, Interactions & Withdrawal",
+    "description": "Phenobarbital (Sezaby) for severe alcohol withdrawal and monitored sedation: dosing approaches, onset/duration, major risks (respiratory depression), opioid/alcohol danger, dependence, and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/phenobarbital-sezaby](https://www.heypsych.com/treatments/phenobarbital-sezaby)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

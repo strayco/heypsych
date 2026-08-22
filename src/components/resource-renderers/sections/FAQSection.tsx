@@ -52,22 +52,22 @@ export function FAQSection({ faqs, entityName, entityUrl }: FAQSectionProps) {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-gray-200 bg-white"
+                className="rounded-lg border border-separator bg-surface"
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-50"
+                  className="flex w-full items-center justify-between p-4 text-left hover:bg-fill-quaternary"
                 >
-                  <span className="font-medium text-gray-900">{faq.q}</span>
+                  <span className="font-medium text-label-primary">{faq.q}</span>
                   {openIndex === i ? (
-                    <ChevronUp className="h-5 w-5 flex-shrink-0 text-gray-500" />
+                    <ChevronUp className="h-5 w-5 flex-shrink-0 text-label-primary0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
+                    <ChevronDown className="h-5 w-5 flex-shrink-0 text-label-primary0" />
                   )}
                 </button>
                 {openIndex === i && (
-                  <div className="border-t border-gray-200 px-4 pb-4 pt-3">
-                    <p className="text-sm text-gray-700">{faq.a}</p>
+                  <div className="border-t border-separator px-4 pb-4 pt-3">
+                    <p className="text-sm text-label-primary">{faq.a}</p>
                   </div>
                 )}
               </div>

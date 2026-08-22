@@ -20,9 +20,9 @@ import type { ResourceRendererProps } from "./index";
 function FixedProgressFooter({ percent }: { percent: number }) {
   return (
     <div className="pointer-events-none fixed right-0 bottom-0 left-0 z-40" aria-hidden="true">
-      <div className="h-1 bg-gray-200">
+      <div className="h-1 bg-surface-grouped">
         <div
-          className="h-1 bg-gradient-to-r from-sky-500 to-indigo-500 transition-[width] duration-300 ease-out"
+          className="h-1 bg-accent transition-[width] duration-300 ease-out"
           style={{ width: `${Math.max(0, Math.min(100, percent))}%` }}
         />
       </div>
@@ -133,9 +133,9 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
 
       {/* Related Conditions - Cross-links */}
       {data.conditions && data.conditions.length > 0 && (
-        <Card className="border-blue-100 bg-blue-50/50">
+        <Card className="border-separator bg-surface-grouped/50">
           <CardHeader className="pb-2">
-            <CardTitle className="text-base text-blue-900">Related Conditions</CardTitle>
+            <CardTitle className="text-base text-label-primary">Related Conditions</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
@@ -143,7 +143,7 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                 <Link
                   key={conditionSlug}
                   href={`/conditions/${conditionSlug}`}
-                  className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200"
+                  className="inline-flex items-center gap-1 rounded-full bg-fill-secondary px-3 py-1 text-sm font-medium text-label-secondary transition-colors hover:bg-fill-tertiary hover:text-label-primary"
                 >
                   {conditionSlug
                     .split('-')
@@ -153,7 +153,7 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                 </Link>
               ))}
             </div>
-            <p className="mt-2 text-xs text-blue-700">
+            <p className="mt-2 text-xs text-label-tertiary">
               This assessment is commonly used to screen for these conditions
             </p>
           </CardContent>
@@ -168,7 +168,7 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span>Assessment Questions</span>
-            <span className="text-sm font-normal text-neutral-800">
+            <span className="text-sm font-normal text-label-tertiary">
               {completedCount} of {totalQuestions} completed
             </span>
           </CardTitle>
@@ -188,10 +188,10 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                 transition={{ delay: index * 0.04 }}
                 className="space-y-3"
               >
-                  <div className="font-medium text-neutral-900">
+                  <div className="font-medium text-label-primary">
                     {index + 1}. {String(question.text ?? "")}
                     {question.alert && (
-                      <div className="mt-1 text-sm font-normal text-orange-600">
+                      <div className="mt-1 text-sm font-normal text-caution">
                         ⚠️{" "}
                         {typeof question.alert === "string"
                           ? question.alert
@@ -208,17 +208,17 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                           onClick={() => onAnswer(index, option.value)}
                           className={`rounded-lg border p-3 text-left transition-all ${
                             isSelected
-                              ? "border-blue-500 bg-blue-50 text-blue-700"
-                              : "border-gray-200 text-neutral-900 hover:border-gray-300"
+                              ? "border-accent bg-accent-tint text-accent-700"
+                              : "border-separator text-label-secondary hover:border-separator-opaque"
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <div
                               className={`flex h-4 w-4 items-center justify-center rounded-full border-2 ${
-                                isSelected ? "border-blue-500 bg-blue-500" : "border-gray-300"
+                                isSelected ? "border-accent bg-accent" : "border-separator"
                               }`}
                             >
-                              {isSelected && <div className="h-2 w-2 rounded-full bg-white" />}
+                              {isSelected && <div className="h-2 w-2 rounded-full bg-canvas" />}
                             </div>
                             <span className="text-sm font-medium">{option.label}</span>
                           </div>
@@ -232,7 +232,7 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
 
           {!showResults && (
             <div className="flex items-center justify-between pt-4">
-              <p className="text-sm text-neutral-900">
+              <p className="text-sm text-label-secondary">
                 Progress: {completedCount} / {totalQuestions}
               </p>
               <Button
@@ -252,17 +252,17 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
         <Card id="assessment-results">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
+              <CheckCircle className="h-5 w-5 text-positive-500" />
               Your Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="rounded-lg bg-gray-50 py-6 text-center">
-              <div className="mb-1 text-3xl font-bold text-neutral-900">
+            <div className="rounded-lg bg-fill-tertiary/30 py-6 text-center">
+              <div className="mb-1 text-3xl font-bold text-label-primary">
                 {result.score} / {result.max}
               </div>
               {result.details && "band" in result.details && result.details.band && (
-                <div className="mb-3 text-lg font-semibold text-neutral-900">
+                <div className="mb-3 text-lg font-semibold text-label-secondary">
                   {result.details.band}
                 </div>
               )}
@@ -273,11 +273,11 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
               "band" in result.details &&
               result.details.band &&
               data.clinical_interpretations?.[result.details.band] && (
-                <Card className="border-blue-200 bg-blue-50">
+                <Card className="border-separator bg-surface-grouped/50">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg text-blue-900">What This Means</CardTitle>
+                    <CardTitle className="text-lg text-label-primary">What This Means</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-sm text-blue-800">
+                  <CardContent className="text-sm text-label-secondary">
                     <p>{data.clinical_interpretations[result.details.band]}</p>
                   </CardContent>
                 </Card>
@@ -288,9 +288,9 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
               "alerts" in result.details &&
               result.details.alerts &&
               result.details.alerts.length > 0 && (
-                <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                  <div className="mb-2 font-medium text-amber-900">Clinical Alert</div>
-                  <div className="text-sm text-amber-800">{result.details.alerts.join("; ")}</div>
+                <div className="rounded-lg border border-caution-border bg-caution-tint p-4">
+                  <div className="mb-2 font-medium text-caution-700">Clinical Alert</div>
+                  <div className="text-sm text-caution">{result.details.alerts.join("; ")}</div>
                 </div>
               )}
 
@@ -299,9 +299,9 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
               "recommendations" in result.details &&
               result.details.recommendations &&
               result.details.recommendations.length > 0 && (
-                <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-                  <div className="mb-2 font-medium text-green-900">Recommendations</div>
-                  <div className="text-sm text-green-800">
+                <div className="rounded-lg border border-positive-border bg-positive-tint p-4">
+                  <div className="mb-2 font-medium text-positive-700">Recommendations</div>
+                  <div className="text-sm text-positive-600">
                     <ul className="list-inside list-disc space-y-1">
                       {result.details.recommendations.map((rec: string, index: number) => (
                         <li key={index}>{rec}</li>
@@ -314,11 +314,11 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
             <SectionList sections={scoringSections} />
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <Button variant="outline" onClick={() => window.print()}>
+              <Button variant="secondary" onClick={() => window.print()}>
                 Print / Save
               </Button>
               <Button
-                variant="outline"
+                variant="secondary"
                 onClick={() => {
                   setAnswers({});
                   setShowResults(false);

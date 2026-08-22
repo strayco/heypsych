@@ -83,7 +83,7 @@ export function OrganizationsTab({ resources }: Props) {
         <Card>
           <CardContent className="p-4">
             <div className="relative">
-              <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0" />
               <Input
                 type="text"
                 placeholder="Search organizations and communities..."
@@ -98,7 +98,7 @@ export function OrganizationsTab({ resources }: Props) {
         {searchQuery ? (
           // Show filtered search results
           <div>
-            <p className="mb-4 text-sm text-slate-900">
+            <p className="mb-4 text-sm text-label-primary">
               Showing {filteredResources.length} results for "{searchQuery}"
             </p>
             {filteredResources.length > 0 ? (
@@ -109,7 +109,7 @@ export function OrganizationsTab({ resources }: Props) {
               </div>
             ) : (
               <Card>
-                <CardContent className="p-8 text-center text-slate-900">
+                <CardContent className="p-8 text-center text-label-primary">
                   <p>No results found for "{searchQuery}"</p>
                 </CardContent>
               </Card>
@@ -133,14 +133,14 @@ export function OrganizationsTab({ resources }: Props) {
                   >
                     <CardContent className="p-6">
                       <div className="mb-4 flex items-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50">
-                          <Icon className="h-6 w-6 text-blue-600" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-tint">
+                          <Icon className="h-6 w-6 text-accent" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600">
+                        <h3 className="text-xl font-bold text-label-primary group-hover:text-accent">
                           {lane.title}
                         </h3>
                       </div>
-                      <p className="mb-4 text-sm text-slate-900">{lane.description}</p>
+                      <p className="mb-4 text-sm text-label-primary">{lane.description}</p>
                       <Button variant="outline" size="sm" className="w-full">
                         Explore {lane.sections.length} Categories
                       </Button>
@@ -168,15 +168,15 @@ export function OrganizationsTab({ resources }: Props) {
 
       <Card>
         <CardContent className="p-6">
-          <h2 className="mb-2 text-2xl font-bold text-slate-900">{selectedLaneData.title}</h2>
-          <p className="text-slate-900">{selectedLaneData.description}</p>
+          <h2 className="mb-2 text-2xl font-bold text-label-primary">{selectedLaneData.title}</h2>
+          <p className="text-label-primary">{selectedLaneData.description}</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-4">
           <div className="relative">
-            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-slate-400" />
+            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0" />
             <Input
               type="text"
               placeholder="Search this category..."
@@ -198,19 +198,19 @@ export function OrganizationsTab({ resources }: Props) {
             <Card key={section.id}>
               <button
                 onClick={() => toggleSection(section.id)}
-                className="w-full p-4 text-left transition-colors hover:bg-slate-50"
+                className="w-full p-4 text-left transition-colors hover:bg-surface-grouped"
                 aria-expanded={isExpanded}
                 aria-controls={`section-${section.id}`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-bold text-slate-900">{section.title}</h3>
-                    <p className="text-sm text-slate-900">{sectionResources.length} resources</p>
+                    <h3 className="font-bold text-label-primary">{section.title}</h3>
+                    <p className="text-sm text-label-primary">{sectionResources.length} resources</p>
                   </div>
                   {isExpanded ? (
-                    <ChevronUp className="h-5 w-5 text-slate-400" />
+                    <ChevronUp className="h-5 w-5 text-label-primary0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-slate-400" />
+                    <ChevronDown className="h-5 w-5 text-label-primary0" />
                   )}
                 </div>
               </button>
@@ -224,7 +224,7 @@ export function OrganizationsTab({ resources }: Props) {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-center text-slate-900">No resources in this category</p>
+                    <p className="text-center text-label-primary">No resources in this category</p>
                   )}
                 </CardContent>
               )}

@@ -1,83 +1,267 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "amitriptyline-perphenazine",
-  "type": "medication",
-  "name": "Amitriptyline/Perphenazine",
-  "summary": "Combination antidepressant + antipsychotic used for depression with significant anxiety/agitation, or schizophrenia with depressive symptoms. Can be effective, but side effects and safety warnings are serious—this is not a casual first-choice med.",
-  "description": "Amitriptyline/perphenazine combines a tricyclic antidepressant (amitriptyline) with a first-generation antipsychotic (perphenazine). In psychiatry, it’s used when depression comes with a lot of anxiety, agitation, or sleep disruption—and sometimes for schizophrenia with depressive symptoms. It can be sedating and calming, but it also carries real risks: suicidal thinking warnings (especially under 25), movement side effects (EPS/tardive dyskinesia), dangerous anticholinergic effects (constipation, urinary retention), orthostatic hypotension, heart rhythm problems, and a boxed warning about increased mortality in elderly patients with dementia-related psychosis. Not approved for pediatric use.",
-  "patient_summary": "This med is a two-in-one: an older antidepressant plus an older antipsychotic. That combo can help when depression is mixed with anxiety/agitation, but the tradeoff is side effects. People often feel calmer and sleepier, but they can also get dry mouth, constipation, dizziness when standing, brain fog, and (from the antipsychotic part) restlessness or stiffness. It has major safety warnings, interacts with lots of meds (especially MAOIs and sedatives), and it’s generally avoided in older adults.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "amitriptyline-perphenazine",
+    "name": "Amitriptyline/Perphenazine"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Tricyclic Antidepressant (TCA), Tertiary Amine",
       "First-Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative"
-    ],
-    "brand_names": [],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 0,
-    "pharmacologic_category": "Antidepressant (TCA) + Typical Antipsychotic (Phenothiazine)",
-    "published_date": "2025-12-09T00:00:00Z",
-    "last_updated": "2025-12-09T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-09T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Unipolar Major Depressive Disorder (MDD) with moderate to severe anxiety and/or agitation",
-      "Schizophrenia with depressive symptoms"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for unipolar depression when anxiety and agitation are prominent and a sedating/calming approach is part of the plan."
-      },
-      {
-        "slug": "anxiety-disorders",
-        "relationship": "adjunctive_treatment",
-        "context": "Targets anxiety symptoms occurring alongside depression, especially when agitation, insomnia, or distress is intense."
-      },
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used when schizophrenia includes depressive symptoms; dosing is higher and side-effect monitoring becomes even more important."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to amitriptyline, perphenazine, or any component of the formulation (cross-sensitivity with other phenothiazines may exist)",
-      "Bone marrow depression",
-      "Use with or within 14 days of monoamine oxidase inhibitors (MAOIs)",
-      "CNS depression due to barbiturates, alcohol, opioids, analgesics, or antihistamines",
-      "During the acute recovery phase of myocardial infarction (MI)"
-    ],
-    "efficacy_response": {
-      "metric": "Symptom improvement in depression with anxiety/agitation",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "There isn’t a single clean headline number that tells the story here. Clinically, the goal is reduced depressive symptoms plus reduced anxiety/agitation, with better sleep and steadier daily functioning—without trading symptoms for side effects.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Combination antidepressant + antipsychotic used for depression with significant anxiety/agitation, or schizophrenia with depressive symptoms. Can be effective, but side effects and safety warnings are serious—this is not a casual first-choice med.",
+  "description": "Amitriptyline/perphenazine combines a tricyclic antidepressant (amitriptyline) with a first-generation antipsychotic (perphenazine). In psychiatry, it’s used when depression comes with a lot of anxiety, agitation, or sleep disruption—and sometimes for schizophrenia with depressive symptoms. It can be sedating and calming, but it also carries real risks: suicidal thinking warnings (especially under 25), movement side effects (EPS/tardive dyskinesia), dangerous anticholinergic effects (constipation, urinary retention), orthostatic hypotension, heart rhythm problems, and a boxed warning about increased mortality in elderly patients with dementia-related psychosis. Not approved for pediatric use.",
+  "patient_summary": "This med is a two-in-one: an older antidepressant plus an older antipsychotic. That combo can help when depression is mixed with anxiety/agitation, but the tradeoff is side effects. People often feel calmer and sleepier, but they can also get dry mouth, constipation, dizziness when standing, brain fog, and (from the antipsychotic part) restlessness or stiffness. It has major safety warnings, interacts with lots of meds (especially MAOIs and sedatives), and it’s generally avoided in older adults.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for unipolar depression when anxiety and agitation are prominent and a sedating/calming approach is part of the plan.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used when schizophrenia includes depressive symptoms; dosing is higher and side-effect monitoring becomes even more important.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety Disorders",
+          "relationship": "secondary_indication",
+          "context": "Targets anxiety symptoms occurring alongside depression, especially when agitation, insomnia, or distress is intense."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Not applicable for this medication.",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Not applicable for this medication.",
-      "peak_plasma": "Not applicable for this medication.",
-      "half_life": "Not applicable for this medication.",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Not applicable for this medication.",
-      "excretion": "Not applicable for this medication.",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not applicable for this medication."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Slowed Thinking",
+          "incidence": "Frequency not defined",
+          "notes": "Many people feel calmer and sleepier early on. That can be helpful for agitation/insomnia, but it can also cause brain fog and daytime impairment—especially during titration."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "Frequency not defined",
+          "notes": "Dry mouth is common with amitriptyline. It’s annoying, but it also matters medically (teeth/gum issues). Hydration, sugar-free gum/lozenges, and dental care help."
+        },
+        {
+          "effect": "Orthostatic Hypotension / Dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "Blood pressure can drop when standing. If you’re getting lightheaded, near-fainting, or falls, that’s a dose-limiting side effect."
+        },
+        {
+          "effect": "EPS (Restlessness, Stiffness, Tremor)",
+          "incidence": "Frequency not defined",
+          "notes": "Perphenazine can cause movement side effects. Akathisia can feel like unbearable inner agitation and is sometimes mistaken for worsening anxiety—tell your clinician fast."
+        },
+        {
+          "effect": "Constipation / Urinary Retention",
+          "incidence": "Frequency not defined",
+          "notes": "These can become serious. If you can’t pee, or you go days without a bowel movement with abdominal pain, treat it as urgent."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal ideation or worsening depression, especially early in treatment or after dose changes"
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially persistent involuntary movements (risk increases with duration and cumulative dose)"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, autonomic instability (medical emergency)"
+        },
+        {
+          "risk": "Life-threatening arrhythmias or conduction abnormalities, especially with cardiac disease or overdose"
+        },
+        {
+          "risk": "Blood dyscrasias: leukopenia, neutropenia, agranulocytosis (sometimes fatal); seek care for fever, sore throat, infection symptoms"
+        },
+        {
+          "risk": "Aspiration pneumonia risk in vulnerable populations due to dysphagia/esophageal dysmotility"
+        },
+        {
+          "risk": "Hyponatremia/SIADH, particularly in older adults (confusion, weakness, falls)"
+        },
+        {
+          "risk": "Myocarditis (postmarketing reports)"
+        },
+        {
+          "risk": "Hyperthermia and impaired temperature regulation (heat intolerance, dehydration risk)"
+        }
+      ],
+      "black_box_warning": "Suicidality in children, adolescents, and young adults: Antidepressants increased the risk of suicidal thinking and behavior in short-term studies in children and adolescents with major depressive disorder (MDD) and other psychiatric disorders. Closely monitor all patients—especially during the first 1 to 2 months and during dose changes—for clinical worsening, suicidality, or unusual behavior changes. This medication is not approved for pediatric patients.\n\nIncreased mortality in elderly patients with dementia-related psychosis: Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. This medication is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to amitriptyline, perphenazine, or any component of the formulation (cross-sensitivity with other phenothiazines may exist)"
+        },
+        {
+          "contraindication": "Bone marrow depression"
+        },
+        {
+          "contraindication": "Use with or within 14 days of monoamine oxidase inhibitors (MAOIs)"
+        },
+        {
+          "contraindication": "CNS depression due to barbiturates, alcohol, opioids, analgesics, or antihistamines"
+        },
+        {
+          "contraindication": "During the acute recovery phase of myocardial infarction (MI)"
+        }
+      ],
+      "precautions": [
+        "Not approved for pediatric use; antidepressant-related suicidality monitoring is still relevant across ages, especially under 25",
+        "Avoid in older adults when possible: high anticholinergic burden, sedation, orthostatic hypotension, falls, confusion, and hyponatremia risk",
+        "EPS and tardive dyskinesia risk from perphenazine (stiffness, tremor, restlessness, abnormal movements that can become persistent)",
+        "Neuroleptic malignant syndrome (NMS) is rare but life-threatening: fever, rigidity, confusion, autonomic instability",
+        "Heart risks: altered cardiac conduction and arrhythmias can occur; risk is higher with underlying cardiac disease and in overdose",
+        "Anticholinergic effects can become dangerous: severe constipation/ileus, urinary retention, blurred vision, delirium",
+        "Mania/hypomania risk: can precipitate mood switching in bipolar-spectrum illness; screen for bipolar disorder before starting",
+        "Aspiration risk: antipsychotics can contribute to dysphagia/aspiration risk, especially in older adults",
+        "Photosensitivity: can increase sensitivity to sun exposure",
+        "Surgery: manufacturer recommends discontinuation prior to elective surgery due to interaction/arrhythmia risk; discontinuation must be weighed against relapse/discontinuation risks"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAO inhibitors (MAOIs)",
+          "mechanism": "Dangerous interaction risk; requires washout period.",
+          "action": "Do not use together. Allow 14 days between stopping an MAOI and starting amitriptyline/perphenazine, and allow 14 days between stopping this medication and starting an MAOI."
+        },
+        {
+          "interactant": "Alcohol, opioids, sedating antihistamines, sleep meds, benzodiazepines",
+          "mechanism": "Additive CNS depression: heavy sedation, impaired coordination, accidents, respiratory risk in vulnerable patients.",
+          "action": "Avoid or use only with careful clinician review. If combined, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "Other anticholinergic medications (e.g., diphenhydramine, many bladder meds, some antipsychotics/TCAs)",
+          "mechanism": "Anticholinergic toxicity: severe constipation/ileus, urinary retention, confusion/delirium, blurred vision, overheating.",
+          "action": "Minimize anticholinergic stacking. If you’re already constipated, retaining urine, or confused—this combo is a problem."
+        },
+        {
+          "interactant": "Medications that increase QT/arrhythmia risk",
+          "mechanism": "Higher risk of conduction abnormalities/arrhythmias, especially with cardiac disease or electrolyte issues.",
+          "action": "Review full med list for QT risk. Consider ECG monitoring when clinically indicated."
+        },
+        {
+          "interactant": "Medications that lower seizure threshold",
+          "mechanism": "Increased seizure risk in susceptible patients.",
+          "action": "Use caution in seizure disorder, brain injury, heavy alcohol use history, or when combining multiple threshold-lowering meds."
+        },
+        {
+          "interactant": "CYP2D6 poor metabolizer status or strong CYP2D6 inhibitors",
+          "mechanism": "Higher plasma concentrations at usual doses can raise side-effect risk.",
+          "action": "Consider lower dosing and slower titration; monitor tolerability closely."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: monitor closely, especially early in therapy and during dose changes; involve family/caregivers when appropriate"
+        },
+        {
+          "parameter": "Mental status and alertness: sedation, confusion, delirium risk (especially in older adults or with sedative combinations)"
+        },
+        {
+          "parameter": "Blood pressure and orthostatics: monitor for orthostatic hypotension and fall risk"
+        },
+        {
+          "parameter": "EPS: assess every visit; repeat at ~4 weeks after initiation and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Tardive dyskinesia: assess every visit; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Weight/BMI: monitor every visit for first 6 months, then quarterly; consider waist circumference at baseline and annually when metabolic risk is a concern"
+        },
+        {
+          "parameter": "Fasting glucose/HbA1c: around 4 months after initiation and then annually (more often if abnormal or high risk)"
+        },
+        {
+          "parameter": "Lipid panel: around 4 months after initiation and then annually (more often if abnormal or high risk)"
+        },
+        {
+          "parameter": "CBC: as clinically indicated; check more frequently early in therapy if preexisting low WBC or history of drug-induced leukopenia/neutropenia"
+        },
+        {
+          "parameter": "Blood chemistries: electrolytes, renal function, liver function, and TSH as clinically indicated"
+        },
+        {
+          "parameter": "Prolactin: ask about symptoms at each visit until stable; check levels if symptoms occur (menstrual changes, libido changes, gynecomastia, galactorrhea, sexual dysfunction)"
+        },
+        {
+          "parameter": "ECG: baseline and as clinically indicated in older adults and patients with preexisting cardiac disease or conduction risk"
+        },
+        {
+          "parameter": "Serum sodium: in at-risk populations (especially older adults) when clinically indicated; watch for hyponatremia/SIADH symptoms (confusion, weakness, falls)"
+        },
+        {
+          "parameter": "Temperature regulation: monitor risk with heat exposure, dehydration, strenuous activity, and anticholinergic stacking"
+        },
+        {
+          "parameter": "Ocular effects: ocular exam as clinically indicated; consider risk with long-term phenothiazine exposure and in patients with diabetes or vision concerns"
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (optional/selected cases): trough levels can help confirm adherence; dosing should still be based on clinical response and tolerability"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Adverse events were not observed in animal reproduction studies per the provided notes. Clinical decision-making should follow the risk profile of the individual agents, the severity of illness, and safer alternatives when available.",
+        "lactation": "Amitriptyline and perphenazine are present in breast milk. Breastfeeding is not recommended by the manufacturer; if considered, it requires careful clinician oversight and infant monitoring.",
+        "pediatric": "Not approved for pediatric patients. Antidepressants carry increased risk of suicidal thinking/behavior in children/adolescents/young adults; this combination is not FDA-approved for children.",
+        "geriatric": "Generally avoid. Amitriptyline has strong anticholinergic effects and can cause sedation and orthostatic hypotension. Perphenazine (antipsychotic) is potentially inappropriate in older adults due to stroke risk, cognitive decline, and mortality risk (especially in dementia-related psychosis). Falls, delirium, and hyponatremia risk are key concerns.",
+        "renal_impairment": "Use caution in renal impairment. Dosing specifics are typically guided by the individual components and by observed tolerability.",
+        "hepatic_impairment": "Use caution because clearance can be reduced and plasma concentrations increased. A conservative approach uses lower initial and maintenance dosing with cautious titration; some expert guidance suggests reducing amitriptyline dosing substantially and keeping the maximum lower in hepatic impairment."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 0
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Not applicable for this medication.",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Not applicable for this medication.",
+          "half_life": "Not applicable for this medication.",
+          "metabolism": "Not applicable for this medication.",
+          "excretion": "Not applicable for this medication.",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Dosing is typically divided across the day (2 to 4 doses). Your prescriber adjusts based on response and tolerability, with a firm ceiling on the daily maximum for both components."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Don’t stop this medication abruptly unless a clinician tells you to for a safety emergency. Both components can cause rebound and withdrawal-style symptoms. The safer approach is usually a gradual taper, tailored to how long you’ve been on it, your dose, and your symptom history."
+        }
+      }
     }
   },
   "sections": [
@@ -97,7 +281,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Real talk: this is an “older school” combo med, and people often notice it in their body quickly—sometimes in helpful ways, sometimes in annoying ways.",
       "items": [
         {
           "category": "Calm / Sedation (often early)",
@@ -143,7 +326,8 @@
           ],
           "note": "Orthostatic hypotension (BP drop when standing) is a known risk with both components and increases fall risk."
         }
-      ]
+      ],
+      "intro": "Real talk: this is an “older school” combo med, and people often notice it in their body quickly—sometimes in helpful ways, sometimes in annoying ways."
     },
     {
       "type": "onset_duration",
@@ -160,10 +344,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "This medication is used when the clinical target is a specific cluster: depression plus significant anxiety/agitation (sometimes with insomnia). The “win” looks like fewer spirals, less agitation, improved sleep, and better day-to-day function—without unacceptable side effects like severe dizziness, heart rhythm issues, or movement symptoms.",
       "metric": "Clinical improvement in depression with anxiety/agitation",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "This medication is used when the clinical target is a specific cluster: depression plus significant anxiety/agitation (sometimes with insomnia). The “win” looks like fewer spirals, less agitation, improved sleep, and better day-to-day function—without unacceptable side effects like severe dizziness, heart rhythm issues, or movement symptoms.",
       "clinical_details": "Because this is a combination product with two older agents (a tricyclic antidepressant and a typical antipsychotic), response is usually evaluated symptom-by-symptom: mood, anxiety, agitation, sleep, and functional impairment. Dose changes are typically based on both benefit and tolerability, and many patients stop or switch if anticholinergic effects, orthostasis, or EPS show up.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -257,7 +441,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "This combination has meaningful interaction risk. The biggest red flags are MAOIs and anything that adds sedation, anticholinergic burden, or heart rhythm risk.",
       "items": [
         {
           "with": "MAO inhibitors (MAOIs)",
@@ -289,7 +472,8 @@
           "risk": "Higher plasma concentrations at usual doses can raise side-effect risk.",
           "action": "Consider lower dosing and slower titration; monitor tolerability closely."
         }
-      ]
+      ],
+      "intro": "This combination has meaningful interaction risk. The biggest red flags are MAOIs and anything that adds sedation, anticholinergic burden, or heart rhythm risk."
     },
     {
       "type": "tapering",
@@ -378,21 +562,6 @@
       "text": "This is not a modern first-line “default” option for depression or anxiety. It’s a higher-side-effect combination that may be considered when depression is paired with significant anxiety/agitation and a sedating approach is clinically appropriate, or when schizophrenia includes depressive symptoms. The downside is predictable: anticholinergic burden, orthostatic hypotension/falls, cardiac conduction risks, and typical antipsychotic movement side effects. In older adults, it’s usually avoided unless the situation is unusually specific and benefits clearly outweigh harms."
     }
   ],
-  "seo": {
-    "title": "Amitriptyline/Perphenazine: Uses, Dosing, Side Effects & Safety Warnings",
-    "description": "Amitriptyline/perphenazine for depression with anxiety/agitation or schizophrenia with depressive symptoms: dosing, common side effects (sedation, dry mouth, constipation, dizziness), EPS risk, boxed warnings (suicidality and dementia-related mortality), interactions, and tapering guidance.",
-    "canonical": "[https://www.heypsych.com/treatments/amitriptyline-perphenazine](https://www.heypsych.com/treatments/amitriptyline-perphenazine)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is amitriptyline/perphenazine used for?",
@@ -438,5 +607,20 @@
       "q": "What should I watch for that needs urgent medical attention?",
       "a": "High fever with severe muscle stiffness and confusion (possible NMS), severe fainting, chest pain or palpitations with severe dizziness, inability to urinate, severe constipation with abdominal pain, signs of infection (fever/sore throat) that could signal a blood problem, or rapidly worsening suicidal thoughts—especially early in treatment or after dose changes."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Amitriptyline/Perphenazine: Uses, Dosing, Side Effects & Safety Warnings",
+    "description": "Amitriptyline/perphenazine for depression with anxiety/agitation or schizophrenia with depressive symptoms: dosing, common side effects (sedation, dry mouth, constipation, dizziness), EPS risk, boxed warnings (suicidality and dementia-related mortality), interactions, and tapering guidance.",
+    "canonical": "[https://www.heypsych.com/treatments/amitriptyline-perphenazine](https://www.heypsych.com/treatments/amitriptyline-perphenazine)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

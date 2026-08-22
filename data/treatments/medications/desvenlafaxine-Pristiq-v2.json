@@ -1,81 +1,246 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "desvenlafaxine-pristiq",
-  "type": "medication",
-  "name": "Desvenlafaxine (Pristiq)",
-  "summary": "Serotonin–norepinephrine reuptake inhibitor (SNRI) antidepressant for major depressive disorder. Once-daily extended-release tablet with typical starting dose 50 mg. Carries standard suicidality warning for antidepressants and has notable withdrawal and blood pressure considerations.",
-  "description": "Desvenlafaxine (Pristiq) is an SNRI antidepressant used to treat major depressive disorder in adults. It boosts serotonin and norepinephrine in the brain, chemicals involved in mood and energy. Most people take it once daily as an extended-release tablet. Common side effects include nausea, sweating, dry mouth, trouble sleeping, and sexual side effects. Like all antidepressants, it carries a boxed warning about increased suicidal thoughts and behaviors in some younger patients when starting or changing the dose. Stopping suddenly can cause uncomfortable withdrawal symptoms, so tapers should be gradual and supervised.",
-  "patient_summary": "Desvenlafaxine (brand name Pristiq) is an antidepressant used to treat major depression. It works on serotonin and norepinephrine—brain chemicals that affect mood, energy, and focus. You usually take it once a day as an extended-release tablet. Common side effects are nausea, sweating, dry mouth, trouble sleeping, and sexual side effects. All antidepressants, including desvenlafaxine, can increase suicidal thoughts in some younger people when treatment first starts or when doses change—especially in the first few weeks—so close monitoring is important. If you ever feel worse, more agitated, or have thoughts of self-harm, contact your clinician or emergency services immediately. Do not stop this medication abruptly; doses should be slowly lowered with your prescriber to avoid withdrawal symptoms.",
-  "category": "medications/depression",
-  "metadata": {
-    "drug_classes": [
-      "Serotonin Norepinephrine Reuptake Inhibitor (SNRI)",
-      "Antidepressant"
-    ],
+  "identity": {
+    "slug": "desvenlafaxine-pristiq",
+    "name": "Desvenlafaxine (Pristiq)",
+    "generic_name": "desvenlafaxine",
     "brand_names": [
       "Pristiq",
       "Desvenlafaxine (multiple generics)"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not controlled",
-    "generic_available": true,
-    "fda_approval_year": 2008,
-    "pharmacologic_category": "Antidepressant, Serotonin/Norepinephrine Reuptake Inhibitor",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q5264817"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (unipolar)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for major depressive disorder in adults. Efficacy is broadly similar to other modern antidepressants (SSRIs/SNRIs). Typical starting dose is 50 mg once daily."
-      },
-      {
-        "slug": "vasomotor-symptoms-menopause",
-        "relationship": "off_label",
-        "context": "Used off-label to reduce hot flashes in menopausal patients who cannot or prefer not to use estrogen. Doses typically 50–100 mg/day."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to desvenlafaxine, venlafaxine, or any component of the formulation",
-      "Current use of an MAOI intended to treat psychiatric disorders or use within the last 14 days",
-      "Initiation of an MAOI within 7–14 days after stopping desvenlafaxine (most experts prefer 14 days)",
-      "Concomitant use with IV methylene blue (psychiatric dosing)",
-      "Uncontrolled narrow-angle glaucoma (relative/functional contraindication)",
-      "Known allergy to venlafaxine class with serious reaction (eg, anaphylaxis, severe rash)"
-    ],
-    "efficacy_response": {
-      "metric": "Response/remission in major depression",
-      "percentage_value": null,
-      "comparison_data": "Head-to-head and meta-analytic data suggest desvenlafaxine has similar antidepressant efficacy to other modern agents (SSRIs, SNRIs) at 50–100 mg/day.",
-      "patient_text": "In clinical trials, many people taking desvenlafaxine had a meaningful improvement in depressive symptoms over 4–8 weeks, similar to other antidepressants. Some became fully or nearly symptom-free, while others had partial improvement.",
-      "citation_tag": null
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
+    "drug_classes": [
+      "Serotonin Norepinephrine Reuptake Inhibitor (SNRI)",
+      "Antidepressant"
+    ]
+  },
+  "summary": "Serotonin–norepinephrine reuptake inhibitor (SNRI) antidepressant for major depressive disorder. Once-daily extended-release tablet with typical starting dose 50 mg. Carries standard suicidality warning for antidepressants and has notable withdrawal and blood pressure considerations.",
+  "description": "Desvenlafaxine (Pristiq) is an SNRI antidepressant used to treat major depressive disorder in adults. It boosts serotonin and norepinephrine in the brain, chemicals involved in mood and energy. Most people take it once daily as an extended-release tablet. Common side effects include nausea, sweating, dry mouth, trouble sleeping, and sexual side effects. Like all antidepressants, it carries a boxed warning about increased suicidal thoughts and behaviors in some younger patients when starting or changing the dose. Stopping suddenly can cause uncomfortable withdrawal symptoms, so tapers should be gradual and supervised.",
+  "patient_summary": "Desvenlafaxine (brand name Pristiq) is an antidepressant used to treat major depression. It works on serotonin and norepinephrine—brain chemicals that affect mood, energy, and focus. You usually take it once a day as an extended-release tablet. Common side effects are nausea, sweating, dry mouth, trouble sleeping, and sexual side effects. All antidepressants, including desvenlafaxine, can increase suicidal thoughts in some younger people when treatment first starts or when doses change—especially in the first few weeks—so close monitoring is important. If you ever feel worse, more agitated, or have thoughts of self-harm, contact your clinician or emergency services immediately. Do not stop this medication abruptly; doses should be slowly lowered with your prescriber to avoid withdrawal symptoms.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for major depressive disorder in adults. Efficacy is broadly similar to other modern antidepressants (SSRIs/SNRIs). Typical starting dose is 50 mg once daily.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "vasomotor-symptoms-menopause",
+          "condition_name": "Vasomotor Symptoms Menopause",
+          "relationship": "off_label",
+          "context": "Used off-label to reduce hot flashes in menopausal patients who cannot or prefer not to use estrogen. Doses typically 50–100 mg/day."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability ~80%; extended-release formulation smooths peak levels.",
-      "bioavailability": "~80%",
-      "onset": "Subjective improvement often starts within 1–2 weeks; full effect may take 4–6 weeks.",
-      "peak_plasma": "1–2 hours (extended-release; may be delayed ~1 hour with high-fat meals)",
-      "half_life": "10–11 hours (longer in renal or hepatic impairment and in older adults)",
-      "duration_IR": null,
-      "duration_XR": "24-hour extended-release, once-daily dosing",
-      "metabolism": "Primarily hepatic conjugation; minor oxidative metabolism via CYP3A4",
-      "excretion": "Urine (~45% unchanged, ~24% as metabolites)",
-      "protein_binding": "≈30%",
-      "food_effect": "Can be taken with or without food; high-fat meals may delay absorption modestly."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Subjective improvement often starts within 1–2 weeks; full effect may take 4–6 weeks."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea and GI upset",
+          "incidence": "Very common (≈20–25%)",
+          "notes": "Often worst in the first week or two, especially at higher doses or on an empty stomach. Taking with food or at the same time daily may help. Usually improves over time."
+        },
+        {
+          "effect": "Dry mouth",
+          "incidence": "Common (≈10–17%)",
+          "notes": "Can increase dental risk. Sugar-free gum, frequent sips of water, and good oral hygiene are important."
+        },
+        {
+          "effect": "Sweating / hot flashes",
+          "incidence": "Common (≈10–11%)",
+          "notes": "Excess sweating, particularly at night. May be bothersome socially; dose reduction sometimes helps if clinically appropriate."
+        },
+        {
+          "effect": "Insomnia or somnolence",
+          "incidence": "Common (≈9–12%)",
+          "notes": "Can cause either trouble sleeping or sleepiness. Dose timing (morning vs evening) and sleep hygiene strategies are often helpful."
+        },
+        {
+          "effect": "Sexual dysfunction",
+          "incidence": "Common (varies by sex and definition)",
+          "notes": "Lower libido, difficulty reaching orgasm, delayed ejaculation, or erectile problems. Often under-reported. Discuss openly; options include dose adjustments, drug holidays (with caution), switching agents, or adding a counteracting medication."
+        },
+        {
+          "effect": "Dizziness / light-headedness",
+          "incidence": "Common (≈10–13%)",
+          "notes": "More noticeable with sudden posture changes or missed doses. Slow positional changes and good hydration help."
+        },
+        {
+          "effect": "Appetite or weight changes",
+          "incidence": "Common (small percentages, usually mild)",
+          "notes": "Some people lose a bit of appetite/weight; others gain weight over time. Monitor weight and lifestyle factors."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thoughts or behaviors, new or worsening depression, severe agitation, or aggression—especially in younger patients or early in treatment."
+        },
+        {
+          "risk": "Serotonin syndrome: agitation, confusion, fever, sweating, rapid heart rate, stiff muscles, tremor, diarrhea—MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe hypertension, chest pain, or palpitations: may indicate dangerous blood pressure or heart rhythm changes."
+        },
+        {
+          "risk": "Seizures: new-onset seizure or major change in seizure pattern."
+        },
+        {
+          "risk": "Severe allergic reaction: swelling of face, lips, tongue, or throat; trouble breathing; widespread rash—MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Hyponatremia/SIADH: confusion, severe fatigue, headache, seizures, or falls (especially in older adults)."
+        },
+        {
+          "risk": "Severe withdrawal symptoms: intense dizziness, “electric shock” sensations, agitation, or severe insomnia after abrupt dose reduction or missed doses."
+        }
+      ],
+      "black_box_warning": "Monitor all patients closely for clinical worsening, suicidality, or unusual behavior changes, particularly during the first 1–2 months or after dose changes. Families and caregivers should observe daily and communicate concerning changes immediately. Desvenlafaxine is not approved for pediatric use.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to desvenlafaxine, venlafaxine, or any component of the formulation"
+        },
+        {
+          "contraindication": "Current use of an MAOI intended to treat psychiatric disorders or use within the last 14 days"
+        },
+        {
+          "contraindication": "Initiation of an MAOI within 7–14 days after stopping desvenlafaxine (most experts prefer 14 days)"
+        },
+        {
+          "contraindication": "Concomitant use with IV methylene blue (psychiatric dosing)"
+        },
+        {
+          "contraindication": "Uncontrolled narrow-angle glaucoma (relative/functional contraindication)"
+        },
+        {
+          "contraindication": "Known allergy to venlafaxine class with serious reaction (eg, anaphylaxis, severe rash)"
+        }
+      ],
+      "precautions": [
+        "Blood pressure and heart rate: Can modestly increase BP and pulse; clinically significant elevations occur in a minority of patients.",
+        "Serotonin syndrome: Potentially life-threatening when combined with other serotonergic drugs (MAOIs, certain migraine meds, some opioids, St. John’s wort).",
+        "Withdrawal/Discontinuation: Abrupt stopping can cause distressing symptoms (dizziness, “brain zaps,” irritability, insomnia, flu-like symptoms).",
+        "Hyponatremia/SIADH: Risk of low sodium—especially in older adults and those on diuretics.",
+        "Glaucoma: Can dilate pupils and may trigger narrow-angle glaucoma in susceptible individuals.",
+        "Seizure risk: Use caution in people with a history of seizures or conditions that lower seizure threshold.",
+        "Bleeding risk: May increase bleeding risk, particularly with anticoagulants, antiplatelets, or NSAIDs."
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (eg, phenelzine, tranylcypromine, isocarboxazid, linezolid, methylene blue at psychiatric doses)",
+          "mechanism": "High risk of serotonin syndrome and hypertensive crisis.",
+          "action": "CONTRAINDICATED. Maintain appropriate washout period: typically 14 days between MAOI and desvenlafaxine in either direction (longer if clinically indicated)."
+        },
+        {
+          "interactant": "Other serotonergic antidepressants (SSRIs, SNRIs, TCAs, many atypicals), triptans, tramadol, lithium, St. John’s wort",
+          "mechanism": "Increased risk of serotonin syndrome; overlapping side effects (eg, bleeding, hyponatremia).",
+          "action": "Avoid unnecessary combinations. If switching, use cross-taper or washout consistent with guidelines. Educate patients about serotonin-syndrome warning signs."
+        },
+        {
+          "interactant": "Anticoagulants and antiplatelets (eg, warfarin, DOACs, aspirin, clopidogrel) and NSAIDs",
+          "mechanism": "Higher bleeding risk, especially GI or intracranial bleeding.",
+          "action": "Use with caution. Monitor for bruising, nosebleeds, GI bleeding. Consider gastroprotection in high-risk patients."
+        },
+        {
+          "interactant": "Other drugs that raise blood pressure (eg, stimulants, some decongestants) or lower blood pressure (eg, some antihypertensives)",
+          "mechanism": "Can complicate BP control; may blunt or amplify cardiovascular effects.",
+          "action": "Monitor blood pressure more frequently and adjust antihypertensives or other agents as needed."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (eg, certain azole antifungals, some HIV medications, macrolide antibiotics)",
+          "mechanism": "May modestly increase desvenlafaxine levels; clinical impact usually limited but can add to side-effect burden.",
+          "action": "Monitor for increased side effects (nausea, sweating, BP changes). Dose adjustment rarely needed but may be considered."
+        },
+        {
+          "interactant": "Alcohol and sedatives (benzodiazepines, opioids)",
+          "mechanism": "Increased CNS depression, impaired judgment, and fall risk.",
+          "action": "Counsel on cautious or limited use; avoid combining with high-risk sedatives whenever possible."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and mood: Regularly assess depressive symptoms, suicidal thoughts, agitation, or behavioral changes—especially during the first 1–2 months and after dose changes."
+        },
+        {
+          "parameter": "Blood pressure and heart rate: Baseline and periodic monitoring, particularly in patients with hypertension, cardiovascular disease, or on higher doses."
+        },
+        {
+          "parameter": "Serum sodium: Check in older adults, those on diuretics, or with prior history of hyponatremia."
+        },
+        {
+          "parameter": "Renal and hepatic function: Periodic assessment to guide dosing, especially with comorbid disease or polypharmacy."
+        },
+        {
+          "parameter": "Weight and metabolic parameters: Track weight, appetite, and lipids (desvenlafaxine can modestly affect cholesterol and triglycerides)."
+        },
+        {
+          "parameter": "Adverse effects: Systematic review of sexual dysfunction, sleep disturbance, sweating, and GI effects at each visit."
+        },
+        {
+          "parameter": "Concomitant drugs: Regularly review medication list for serotonergic agents, anticoagulants/antiplatelets, NSAIDs, and drugs affecting BP."
+        },
+        {
+          "parameter": "Adherence and withdrawal: Ask about missed doses and any withdrawal-like symptoms, especially during tapers."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not a first-line antidepressant in pregnancy, but may be continued if it has been clearly effective and alternatives are less suitable. Untreated depression itself carries significant risks (preterm birth, low birth weight, preeclampsia, postpartum depression). Late-pregnancy exposure to SNRIs can cause neonatal adaptation syndrome (jitteriness, feeding difficulty, respiratory distress) and in rare cases persistent pulmonary hypertension of the newborn. Routine dose reduction before delivery is not generally recommended solely to prevent neonatal adaptation; instead, monitor newborns after birth.",
+        "lactation": "Desvenlafaxine passes into breast milk at low to moderate levels. Most reports show small infant exposure and no serious short-term toxicity, but infants should be monitored for excess sleepiness, poor feeding, or poor weight gain. If starting an antidepressant from scratch in a breastfeeding parent, many guidelines favor SSRIs first, but continuing desvenlafaxine can be reasonable if it is working well.",
+        "pediatric": "Not approved for children or adolescents. Like other antidepressants, desvenlafaxine carries a higher relative risk of suicidal thoughts and behaviors in younger patients, and robust pediatric efficacy data are limited. If used off-label in youth, close specialist supervision and intense monitoring are essential.",
+        "geriatric": "Older adults are more susceptible to hyponatremia, orthostatic symptoms, falls, and BP changes. Start low, titrate slowly, monitor sodium and BP, and review total medication burden (including other serotonergic or hyponatremia-inducing agents).",
+        "renal_impairment": "Because a large proportion of the drug is renally excreted, clearance falls as kidney function declines. Use reduced doses and extended dosing intervals per renal function, and monitor for side effects (BP, CNS, GI).",
+        "hepatic_impairment": "Clearance is reduced in moderate–severe hepatic impairment. Use lower doses and monitor for side effects. In advanced liver disease, consider alternative agents with more experience or easier monitoring."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2008
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability ~80%; extended-release formulation smooths peak levels.",
+          "bioavailability": "~80%",
+          "peak_plasma": "1–2 hours (extended-release; may be delayed ~1 hour with high-fat meals)",
+          "half_life": "10–11 hours (longer in renal or hepatic impairment and in older adults)",
+          "metabolism": "Primarily hepatic conjugation; minor oxidative metabolism via CYP3A4",
+          "excretion": "Urine (~45% unchanged, ~24% as metabolites)",
+          "protein_binding": "≈30%",
+          "food_effect": "Can be taken with or without food; high-fat meals may delay absorption modestly."
+        },
+        "dosing": {
+          "titration": "Exact dosing should always be individualized. This is a simplified overview for context—not a prescribing guide."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Desvenlafaxine can cause clinically significant withdrawal symptoms if stopped suddenly, particularly after longer-term or higher-dose use."
+        }
+      }
     }
   },
   "sections": [
@@ -96,7 +261,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Commonly Notice",
-      "intro": "Individual responses vary, but these themes are commonly reported by patients:",
       "items": [
         {
           "category": "Early weeks (1–2)",
@@ -132,7 +296,8 @@
           ],
           "note": "Desvenlafaxine can cause notable withdrawal symptoms if stopped abruptly or tapered too quickly."
         }
-      ]
+      ],
+      "intro": "Individual responses vary, but these themes are commonly reported by patients:"
     },
     {
       "type": "onset_duration",
@@ -149,10 +314,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In randomized controlled trials, desvenlafaxine 50 mg daily has been shown to improve depressive symptoms significantly more than placebo, with overall effectiveness similar to many other modern antidepressants (SSRIs and SNRIs). Some patients achieve full remission (minimal or no symptoms), others experience partial improvement, and a subset have little benefit and may require switching or augmentation.",
       "metric": "Antidepressant response/remission",
       "value": null,
       "comparison": null,
-      "text": "In randomized controlled trials, desvenlafaxine 50 mg daily has been shown to improve depressive symptoms significantly more than placebo, with overall effectiveness similar to many other modern antidepressants (SSRIs and SNRIs). Some patients achieve full remission (minimal or no symptoms), others experience partial improvement, and a subset have little benefit and may require switching or augmentation.",
       "clinical_details": "Desvenlafaxine is the major active metabolite of venlafaxine. Fixed-dose and flexible-dose trials have demonstrated separation from placebo in standardized depression rating scales at 50–100 mg/day. Higher doses (>100 mg/day) tend to increase side effects (eg, nausea, sweating, BP changes) without strong evidence of better antidepressant efficacy. As with other antidepressants, effect sizes are modest at a population level, but individual outcomes vary widely.",
       "citation": {
         "authors": null,
@@ -251,7 +416,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug and Substance Interactions",
-      "intro": "Desvenlafaxine is serotonergic and can affect platelet function and blood pressure. Interactions can be clinically significant.",
       "items": [
         {
           "with": "MAOIs (eg, phenelzine, tranylcypromine, isocarboxazid, linezolid, methylene blue at psychiatric doses)",
@@ -283,7 +447,8 @@
           "risk": "Increased CNS depression, impaired judgment, and fall risk.",
           "action": "Counsel on cautious or limited use; avoid combining with high-risk sedatives whenever possible."
         }
-      ]
+      ],
+      "intro": "Desvenlafaxine is serotonergic and can affect platelet function and blood pressure. Interactions can be clinically significant."
     },
     {
       "type": "tapering",
@@ -389,21 +554,43 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Desvenlafaxine (Pristiq): Uses, Dosing, Side Effects & Withdrawal",
-    "description": "Desvenlafaxine (Pristiq) for depression: how it works, typical 50 mg once-daily dosing, common side effects (nausea, sweating, sexual changes), suicidality warning, withdrawal symptoms, and tips for safe tapering.",
-    "canonical": "https://www.heypsych.com/treatments/desvenlafaxine-pristiq",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and aligned with current prescribing information and major practice guidelines for antidepressant treatment and safety monitoring."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Pristiq (desvenlafaxine) – FDA Prescribing Information",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/021992s048lbl.pdf",
+      "description": "Official US prescribing information with detailed dosing, safety, and clinical trial data."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Desvenlafaxine – Health Canada Product Monograph",
+      "url": "https://health-products.canada.ca/dpd-bdpp",
+      "description": "Canadian regulatory information including indications and safety profile."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "CANMAT Guidelines for the Management of Major Depressive Disorder",
+      "url": "https://www.canmat.org",
+      "description": "Evidence-based Canadian expert guidelines on antidepressant selection and sequencing."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "ACOG Clinical Practice Guideline – Treatment and Management of Mental Health Conditions During Pregnancy and Postpartum",
+      "url": "https://www.acog.org",
+      "description": "Guidance on antidepressant use in pregnancy and the postpartum period."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "National Pregnancy Registry for Antidepressants",
+      "url": "https://womensmentalhealth.org/research/pregnancyregistry/antidepressants/",
+      "description": "Prospective registry tracking pregnancy outcomes with antidepressant exposure."
+    }
+  ],
   "faqs": [
     {
       "q": "What is desvenlafaxine (Pristiq) used for?",
@@ -453,5 +640,20 @@
       "q": "What should I do if I miss a dose?",
       "a": "If you miss a dose and you remember later the same day, take it as soon as you remember. If it’s nearly time for your next dose, skip the missed one and just take your usual dose at the regular time. Do not double up. Missing doses repeatedly can increase the chance of withdrawal symptoms and relapse, so let your prescriber know if adherence is difficult."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Desvenlafaxine (Pristiq): Uses, Dosing, Side Effects & Withdrawal",
+    "description": "Desvenlafaxine (Pristiq) for depression: how it works, typical 50 mg once-daily dosing, common side effects (nausea, sweating, sexual changes), suicidality warning, withdrawal symptoms, and tips for safe tapering.",
+    "canonical": "https://www.heypsych.com/treatments/desvenlafaxine-pristiq",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and aligned with current prescribing information and major practice guidelines for antidepressant treatment and safety monitoring."
+  }
 }

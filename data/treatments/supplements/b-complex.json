@@ -1,22 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "b-complex",
-  "type": "supplement",
-  "name": "B-Complex Vitamins",
-  "summary": "A group of eight essential B vitamins that support energy metabolism, neurological health, and stress resilience.",
-  "description": "B-complex refers to the eight water-soluble B vitamins—B1 (thiamine), B2 (riboflavin), B3 (niacin), B5 (pantothenic acid), B6 (pyridoxine), B7 (biotin), B9 (folate), and B12 (cobalamin). These vitamins serve as cofactors in critical enzymatic reactions for energy production, neurotransmitter synthesis, red blood cell formation, and DNA repair. Supplementation may help address deficiencies caused by poor diet, alcoholism, medication use, or certain health conditions. B vitamins are also investigated for their roles in mood regulation, cognitive function, and stress resilience.",
-  "category": "supplements",
-  "tags": [
-    "vitamins",
-    "energy",
-    "mood",
-    "cognition",
-    "stress",
-    "deficiency"
-  ],
-  "metadata": {
-    "compound_type": "Essential water-soluble vitamins",
-    "natural_source": "Whole grains, legumes, leafy greens, eggs, dairy, meat, fortified foods",
+  "identity": {
+    "slug": "b-complex",
+    "name": "B-Complex Vitamins",
+    "brand_names": [
+      "B-100 Complex",
+      "Super B Complex",
+      "NeuroBion"
+    ],
+    "aliases": [
+      "B vitamin complex",
+      "Vitamin B group"
+    ],
+    "wikidata_qid": "Q194353"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Mood Support",
       "Cognitive Health",
@@ -28,80 +29,185 @@
       "Neurotransmitter synthesis",
       "Hematopoiesis"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "B-100 Complex",
-      "Super B Complex",
-      "NeuroBion"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement in U.S.",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Nutrition",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q194353"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "B-vitamin deficiency",
-      "Fatigue",
-      "Megaloblastic anemia (B12 or folate)",
-      "Neuropathy (B1, B6, B12)",
-      "Mood disturbances"
-    ],
-    "off_label_uses": [
-      "Cognitive support",
-      "Stress management",
-      "Adjunct in depression treatment",
-      "Homocysteine reduction for cardiovascular risk"
-    ],
-    "contraindications": [
-      "Hypersensitivity to any B vitamin formulation"
-    ],
-    "monitoring_required": [
-      "Vitamin B12, folate, and homocysteine levels in relevant patients"
-    ],
-    "efficacy_rating": {
-      "deficiency_states": 5,
-      "anemia": 5,
-      "fatigue": 3,
-      "cognition": 2,
-      "mood_support": 3,
-      "tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "b complex",
-      "b vitamins",
-      "vitamin b",
-      "neurobion"
-    ],
-    "synonyms": [
-      "B vitamin complex",
-      "Vitamin B group"
-    ],
-    "common_misspellings": [
-      "b-complexe",
-      "b complexx"
+    "tags": [
+      "vitamins",
+      "energy",
+      "mood",
+      "cognition",
+      "stress",
+      "deficiency"
     ]
+  },
+  "summary": "A group of eight essential B vitamins that support energy metabolism, neurological health, and stress resilience.",
+  "description": "B-complex refers to the eight water-soluble B vitamins—B1 (thiamine), B2 (riboflavin), B3 (niacin), B5 (pantothenic acid), B6 (pyridoxine), B7 (biotin), B9 (folate), and B12 (cobalamin). These vitamins serve as cofactors in critical enzymatic reactions for energy production, neurotransmitter synthesis, red blood cell formation, and DNA repair. Supplementation may help address deficiencies caused by poor diet, alcoholism, medication use, or certain health conditions. B vitamins are also investigated for their roles in mood regulation, cognitive function, and stress resilience.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "b-vitamin-deficiency",
+          "condition_name": "B-vitamin deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "fatigue",
+          "condition_name": "Fatigue",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "megaloblastic-anemia-b12-or-folate",
+          "condition_name": "Megaloblastic anemia (B12 or folate)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neuropathy-b1-b6-b12",
+          "condition_name": "Neuropathy (B1, B6, B12)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mood-disturbances",
+          "condition_name": "Mood disturbances",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-management",
+          "condition_name": "Stress management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-in-depression-treatment",
+          "condition_name": "Adjunct in depression treatment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "homocysteine-reduction-for-cardiovascular-risk",
+          "condition_name": "Homocysteine reduction for cardiovascular risk",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_states": {
+          "rating": 5
+        },
+        "anemia": {
+          "rating": 5
+        },
+        "fatigue": {
+          "rating": 3
+        },
+        "cognition": {
+          "rating": 2
+        },
+        "mood_support": {
+          "rating": 3
+        },
+        "tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild GI upset"
+        },
+        {
+          "effect": "Flushing (niacin)"
+        },
+        {
+          "effect": "Yellow discoloration of urine (riboflavin)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuropathy with very high B6 doses"
+        },
+        {
+          "risk": "Hepatotoxicity with high-dose niacin"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to any B vitamin formulation"
+        }
+      ],
+      "precautions": [
+        "High-dose B6 (>200 mg/day) can cause sensory neuropathy.",
+        "Niacin at therapeutic doses may cause hepatotoxicity and flushing.",
+        "Excessive folate can mask B12 deficiency, risking neurological injury."
+      ],
+      "interactions": [
+        {
+          "interactant": "Methotrexate",
+          "mechanism": "Interferes with folate metabolism",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Anticonvulsants",
+          "mechanism": "Altered folate/B6 metabolism",
+          "action": "Monitor vitamin levels"
+        },
+        {
+          "interactant": "Metformin",
+          "mechanism": "Reduced B12 absorption",
+          "action": "Monitor B12"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Vitamin B12 and folate levels in at-risk patients"
+        },
+        {
+          "parameter": "Homocysteine and methylmalonic acid (if deficiency suspected)"
+        },
+        {
+          "parameter": "Liver function with high-dose niacin"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Folate supplementation strongly recommended; B-complex is safe at dietary doses",
+        "lactation": "Generally safe; supports maternal and infant needs",
+        "pediatric": "Safe at recommended dietary allowances",
+        "geriatric": "B12 deficiency more common; consider higher supplementation"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential water-soluble vitamins",
+        "natural_source": "Whole grains, legumes, leafy greens, eggs, dairy, meat, fortified foods",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement in U.S."
+      }
+    }
   },
   "sections": [
     {
@@ -224,6 +330,30 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – B Vitamins",
+      "url": "https://ods.od.nih.gov/factsheets/list-BVitamins/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "b complex",
+      "b vitamins",
+      "vitamin b",
+      "neurobion"
+    ],
+    "synonyms": [
+      "B vitamin complex",
+      "Vitamin B group"
+    ],
+    "common_misspellings": [
+      "b-complexe",
+      "b complexx"
+    ]
+  },
   "seo": {
     "title": "B-Complex Vitamins: Energy, Mood, and Cognitive Support",
     "description": "Comprehensive guide to B-Complex vitamins for energy metabolism, neurological function, stress resilience, and deficiency treatment.",

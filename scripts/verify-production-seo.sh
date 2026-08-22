@@ -52,21 +52,41 @@ else
 fi
 echo ""
 
-# 4. Check sitemap accessibility
+# 4. Check sitemap accessibility (canonical is sitemap-index.xml)
 echo "4️⃣  Checking sitemap..."
-SITEMAP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PROD_URL/sitemap.xml")
-if [ "$SITEMAP_STATUS" = "200" ]; then
-  echo "   ✅ Sitemap accessible (HTTP $SITEMAP_STATUS)"
 
-  # Check if sitemap contains canonical URLs
-  if curl -s "$PROD_URL/sitemap.xml" | grep -q "www.heypsych.com"; then
-    echo "   ✅ Sitemap contains canonical URLs"
+# Check the canonical sitemap-index.xml
+SITEMAP_INDEX_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PROD_URL/sitemap-index.xml")
+if [ "$SITEMAP_INDEX_STATUS" = "200" ]; then
+  echo "   ✅ sitemap-index.xml accessible (HTTP $SITEMAP_INDEX_STATUS)"
+
+  # Check if sitemap index contains expected sub-sitemaps
+  SITEMAP_INDEX_CONTENT=$(curl -s "$PROD_URL/sitemap-index.xml")
+  if echo "$SITEMAP_INDEX_CONTENT" | grep -q "sitemap-conditions.xml"; then
+    echo "   ✅ sitemap-index.xml contains conditions sitemap"
   else
-    echo "   ⚠️  Sitemap may not contain canonical URLs"
+    echo "   ⚠️  sitemap-index.xml missing conditions sitemap"
+  fi
+
+  if echo "$SITEMAP_INDEX_CONTENT" | grep -q "sitemap-tools.xml"; then
+    echo "   ✅ sitemap-index.xml contains tools sitemap"
+  else
+    echo "   ❌ sitemap-index.xml missing tools sitemap"
+    FAILED=$((FAILED + 1))
   fi
 else
-  echo "   ❌ Sitemap not accessible (HTTP $SITEMAP_STATUS)"
+  echo "   ❌ sitemap-index.xml not accessible (HTTP $SITEMAP_INDEX_STATUS)"
   FAILED=$((FAILED + 1))
+fi
+
+# Check legacy /sitemap.xml redirect
+SITEMAP_LEGACY_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PROD_URL/sitemap.xml")
+if [ "$SITEMAP_LEGACY_STATUS" = "301" ] || [ "$SITEMAP_LEGACY_STATUS" = "308" ]; then
+  echo "   ✅ /sitemap.xml redirects to sitemap-index.xml (HTTP $SITEMAP_LEGACY_STATUS)"
+elif [ "$SITEMAP_LEGACY_STATUS" = "200" ]; then
+  echo "   ⚠️  /sitemap.xml returns 200 (expected 301 redirect to sitemap-index.xml)"
+else
+  echo "   ❌ /sitemap.xml unexpected status (HTTP $SITEMAP_LEGACY_STATUS)"
 fi
 echo ""
 

@@ -1,86 +1,193 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "electroconvulsive-therapy",
-  "type": "interventional",
-  "name": "Electroconvulsive Therapy (ECT)",
-  "summary": "A medical procedure in which controlled electrical currents are passed through the brain to intentionally trigger a brief seizure, used to treat severe psychiatric conditions when other treatments have failed or are unsafe.",
-  "description": "Electroconvulsive therapy (ECT) is a safe, highly effective treatment primarily for severe depression, treatment-resistant mood disorders, and certain psychotic illnesses. It involves the administration of a short, controlled electrical stimulus to the scalp under general anesthesia, producing a brief therapeutic seizure. Modern ECT is performed with muscle relaxants and continuous monitoring to minimize risks. The treatment often leads to rapid symptom improvement, making it especially valuable in urgent or life-threatening psychiatric conditions.",
-  "category": "interventional/neurostimulation",
-  "tags": [
-    "neurostimulation",
-    "psychiatry",
-    "depression",
-    "bipolar-disorder",
-    "schizophrenia",
-    "treatment-resistant"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Electroconvulsive therapy"
-    ],
-    "treatment_types": [
-      "Neurostimulation",
-      "Medical procedure"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "Inpatient hospital",
-      "Outpatient hospital or clinic"
-    ],
-    "invasiveness_level": "Minimally invasive (requires anesthesia)",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Older adults",
-      "Adolescents (selected cases)"
-    ],
-    "session_duration": "5–10 minutes (plus anesthesia and recovery time)",
-    "treatment_duration": [
-      "6–12 treatments",
-      "Typically over 2–4 weeks"
-    ],
-    "specialty_areas": [
-      "Severe mood disorders",
-      "Psychotic depression",
-      "Catatonia"
+  "identity": {
+    "slug": "electroconvulsive-therapy",
+    "name": "Electroconvulsive Therapy (ECT)",
+    "generic_name": "electroconvulsive therapy",
+    "brand_names": [
+      "ECT"
     ],
     "wikidata_qid": "Q390550"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Severe major depressive disorder",
-      "Treatment-resistant depression",
-      "Bipolar depression",
-      "Catatonia"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurostimulation",
+    "intervention_types": [
+      "Electroconvulsive therapy"
     ],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Bipolar disorder",
-      "Schizoaffective disorder",
-      "Schizophrenia with catatonia",
-      "Severe postpartum depression"
-    ],
-    "off_label_uses": [
-      "Parkinson's disease with severe depression",
-      "Neuroleptic malignant syndrome"
-    ],
-    "contraindications": [
-      "Recent myocardial infarction",
-      "Unstable cardiac disease",
-      "Increased intracranial pressure"
-    ],
-    "safety_profile": "Generally safe under anesthesia; transient confusion and memory issues are the most common side effects.",
-    "evidence_level": "High for severe depression and catatonia; moderate for mania and psychosis.",
-    "research_support": "Decades of clinical use and randomized controlled trials support efficacy.",
-    "invasiveness": "Requires anesthesia and IV access",
-    "efficacy_rating": {
-      "severe_depression": 5,
-      "catatonia": 5,
-      "bipolar_depression": 4
+    "tags": [
+      "neurostimulation",
+      "psychiatry",
+      "depression",
+      "bipolar-disorder",
+      "schizophrenia",
+      "treatment-resistant"
+    ]
+  },
+  "summary": "A medical procedure in which controlled electrical currents are passed through the brain to intentionally trigger a brief seizure, used to treat severe psychiatric conditions when other treatments have failed or are unsafe.",
+  "description": "Electroconvulsive therapy (ECT) is a safe, highly effective treatment primarily for severe depression, treatment-resistant mood disorders, and certain psychotic illnesses. It involves the administration of a short, controlled electrical stimulus to the scalp under general anesthesia, producing a brief therapeutic seizure. Modern ECT is performed with muscle relaxants and continuous monitoring to minimize risks. The treatment often leads to rapid symptom improvement, making it especially valuable in urgent or life-threatening psychiatric conditions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "severe-major-depressive-disorder",
+          "condition_name": "Severe major depressive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "schizoaffective-disorder",
+          "condition_name": "Schizoaffective disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "schizophrenia-with-catatonia",
+          "condition_name": "Schizophrenia with catatonia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "severe-postpartum-depression",
+          "condition_name": "Severe postpartum depression",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "parkinson-s-disease-with-severe-depression",
+          "condition_name": "Parkinson's disease with severe depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neuroleptic-malignant-syndrome",
+          "condition_name": "Neuroleptic malignant syndrome",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for severe depression and catatonia; moderate for mania and psychosis.",
+      "efficacy_ratings": {
+        "severe_depression": {
+          "rating": 5
+        },
+        "catatonia": {
+          "rating": 5
+        },
+        "bipolar_depression": {
+          "rating": 4
+        }
+      },
+      "research_support": "Decades of clinical use and randomized controlled trials support efficacy."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "6–12 treatments; Typically over 2–4 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Inpatient hospital",
+        "Outpatient hospital or clinic"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "5–10 minutes (plus anesthesia and recovery time)"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Generally safe under anesthesia; transient confusion and memory issues are the most common side effects.",
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Muscle aches"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Confusion"
+        },
+        {
+          "effect": "Short-term memory loss"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Prolonged seizure"
+        },
+        {
+          "risk": "Cardiac complications"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Recent myocardial infarction",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncontrolled hypertension",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Increased intracranial pressure",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe pulmonary disease",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Pregnancy (requires specialist evaluation)",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Electroconvulsive therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Patient placed under general anesthesia with muscle relaxant.\nElectrodes positioned on scalp (bilateral or unilateral placement).\nBrief electrical stimulus delivered to induce a controlled seizure.\nPatient monitored until recovery from anesthesia."
+      }
     }
   },
   "sections": [
@@ -245,6 +352,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "UK ECT Review Group. Efficacy and safety of electroconvulsive therapy in depressive disorders: a systematic review and meta-analysis. Lancet. 2003;361(9360):799–808.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12642045/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Pagnin D, et al. Efficacy of ECT in depression: a meta-analytic review. J ECT. 2004;20(1):13–20.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15087991/"
+    }
+  ],
   "seo": {
     "title": "Electroconvulsive Therapy (ECT)",
     "description": "ECT is a safe, effective treatment for severe depression, bipolar disorder, and catatonia, especially when rapid improvement is needed.",
@@ -257,5 +378,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for severe depression and catatonia; moderate for mania and psychosis."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for severe depression and catatonia; moderate for mania and psychosis."
+    ]
   }
 }

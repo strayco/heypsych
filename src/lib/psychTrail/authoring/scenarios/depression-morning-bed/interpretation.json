@@ -1,0 +1,318 @@
+{
+  "version": "1.0.0",
+  "patternLabelMap": {
+    "threshold_collapse": "The bar felt too high",
+    "experiential_avoidance": "You pulled back from the hard part",
+    "micro_step_success": "You found a move small enough to work",
+    "compassionate_response": "You gave yourself room",
+    "self_attack": "You turned on yourself",
+    "overforcing": "You pushed and your system pushed back",
+    "values_aligned_action": "You moved toward what matters",
+    "recovery_success": "You came back after pulling away",
+    "support_utilized": "You let someone be there",
+    "flexible_response": "You adjusted when it didn't work",
+    "distress_tolerated": "You stayed through the hard part",
+    "premature_exit": "You retreated before trying",
+    "direct_communication": "You asked for what you needed"
+  },
+  "turningPointConfig": {
+    "maxTurningPoints": 4,
+    "minWeight": 30,
+    "rankingWeights": {
+      "turningPointWeight": 1.0,
+      "interpretationPriority": 0.8,
+      "routeDivergence": 0.6,
+      "patternContribution": 0.7,
+      "mechanismShift": 0.5
+    }
+  },
+  "routeInterpretations": [
+    {
+      "routeId": "route_gradual_activation",
+      "routeSummaryLabel": "Gradual Activation",
+      "whatShowedUp": "You built momentum through sequence: sit, feet down, stand, one task.",
+      "dominantInternalPatternIds": ["micro_step_success", "values_aligned_action"],
+      "dominantUserFacingPatternLabel": "Smaller worked",
+      "routeReinforcement": "Your brain just logged: 'I can get up when the bar is low enough.' That's data it couldn't get from staying down.",
+      "routeNextRep": "Tomorrow: sit up, feet down, stand, one task. Same sequence.",
+      "routeWhyItMatters": "Once you're moving, even slightly, momentum exists. You found the entry point.",
+      "routeIfPatternKeepsRunning": "The sequence gets easier. The barrier gets lower.",
+      "routeTransferBridge": "When the day feels impossible, find the smallest move that still counts.",
+      "routeReflection": "Where else do you demand the full performance when the sequence would work?",
+      "priority": 100
+    },
+    {
+      "routeId": "route_tiny_steps",
+      "routeSummaryLabel": "Radical Lowering",
+      "whatShowedUp": "You found the smallest possible step and started there—one leg, ten seconds, just water.",
+      "dominantInternalPatternIds": ["micro_step_success", "flexible_response"],
+      "dominantUserFacingPatternLabel": "The smallest thing worked",
+      "routeReinforcement": "You proved that 'pathetically small' can still move you. The bar doesn't have to be impressive to work.",
+      "routeNextRep": "Find the step your brain can't say no to. That's the real entry point.",
+      "routeWhyItMatters": "The bar was survivable. You met it.",
+      "routeIfPatternKeepsRunning": "You keep finding entry points when the day looks impossible.",
+      "routeTransferBridge": "When stuck: what's the minimum viable version? Do that.",
+      "routeReflection": "Where else do you make the bar too high and then fail to clear it?",
+      "priority": 95
+    },
+    {
+      "routeId": "route_self_compassion",
+      "routeSummaryLabel": "Different Voice",
+      "whatShowedUp": "The attack voice was running. You tried a different one.",
+      "dominantInternalPatternIds": ["compassionate_response", "values_aligned_action"],
+      "dominantUserFacingPatternLabel": "You stopped yelling at yourself",
+      "routeReinforcement": "Yelling didn't work. It never does on these mornings. You tried something else.",
+      "routeNextRep": "When you hear 'what's wrong with you': say 'I'm struggling. That's what this is.'",
+      "routeWhyItMatters": "The attack freezes you. You found something that didn't.",
+      "routeIfPatternKeepsRunning": "The other voice gets easier to find.",
+      "routeTransferBridge": "Notice when you're yelling at yourself. Try something else.",
+      "routeReflection": "When does the attack voice actually help you move?",
+      "priority": 90
+    },
+    {
+      "routeId": "route_connection",
+      "routeSummaryLabel": "Not Alone",
+      "whatShowedUp": "You told someone. They showed up. The weight shifted.",
+      "dominantInternalPatternIds": ["support_utilized", "direct_communication"],
+      "dominantUserFacingPatternLabel": "You let someone see it",
+      "routeReinforcement": "You didn't carry it alone. That's not weakness—that's data. The weight moved when someone else knew.",
+      "routeNextRep": "Text someone tonight: 'Check on me tomorrow morning.'",
+      "routeWhyItMatters": "Alone, you stayed stuck. With a witness, you moved.",
+      "routeIfPatternKeepsRunning": "Asking gets less weird. The isolation loses its grip.",
+      "routeTransferBridge": "When you can't move alone, tell someone.",
+      "routeReflection": "When else do you carry it alone and stay stuck?",
+      "priority": 85
+    },
+    {
+      "routeId": "route_recovery",
+      "routeSummaryLabel": "The Second Try",
+      "whatShowedUp": "You collapsed back into bed. And then you got up again.",
+      "dominantInternalPatternIds": ["recovery_success", "flexible_response"],
+      "dominantUserFacingPatternLabel": "Falling didn't mean staying down",
+      "routeReinforcement": "Most people who collapse stay down. You just proved that's not required. Your brain logged: 'I can recover.'",
+      "routeNextRep": "If you collapse tomorrow, give yourself 5 minutes. Then try a smaller step.",
+      "routeWhyItMatters": "The second attempt is the hidden skill. You did it.",
+      "routeIfPatternKeepsRunning": "Collapse becomes a pause, not a verdict.",
+      "routeTransferBridge": "When you fall back, the second try is always available.",
+      "routeReflection": "Where else do you treat a setback as final when it doesn't have to be?",
+      "priority": 100
+    },
+    {
+      "routeId": "route_shutdown",
+      "routeSummaryLabel": "The Heavy Day",
+      "whatShowedUp": "You stayed in bed. The weight was too heavy today.",
+      "dominantInternalPatternIds": ["threshold_collapse", "experiential_avoidance"],
+      "dominantUserFacingPatternLabel": "The barrier was too high",
+      "routeReinforcement": "Your brain logged: 'Confirmed: too hard.' That makes tomorrow start harder. But tomorrow is another day.",
+      "routeNextRep": "Tonight: set up one tiny thing. Alarm across the room. Text from a friend. Something.",
+      "routeWhyItMatters": "Today was one day. It doesn't define the pattern.",
+      "routeIfPatternKeepsRunning": "The barrier keeps getting higher. But you can interrupt that.",
+      "routeTransferBridge": "Set up tomorrow tonight.",
+      "routeReflection": "What's the smallest step you could actually do tomorrow?",
+      "priority": 50
+    },
+    {
+      "routeId": "route_overreach",
+      "routeSummaryLabel": "Too Much Too Fast",
+      "whatShowedUp": "You demanded the full routine. It crashed you harder than doing nothing.",
+      "dominantInternalPatternIds": ["overforcing", "threshold_collapse"],
+      "dominantUserFacingPatternLabel": "You set the bar too high and couldn't clear it",
+      "routeReinforcement": "Forcing through works for some things. This isn't one of them. You burned through what energy you had and ended up worse.",
+      "routeNextRep": "Before starting anything, ask: Can I do even less?",
+      "routeWhyItMatters": "The overreach was the problem, not you.",
+      "routeIfPatternKeepsRunning": "You keep burning out at the start and never building momentum.",
+      "routeTransferBridge": "When capacity is low, go smaller, not harder.",
+      "routeReflection": "Where else do you demand everything and get nothing?",
+      "priority": 70
+    },
+    {
+      "routeId": "route_self_attack",
+      "routeSummaryLabel": "The Inner Critic Wins",
+      "whatShowedUp": "You let the self-attack pattern run. It paralyzed you.",
+      "dominantInternalPatternIds": ["self_attack", "threshold_collapse"],
+      "dominantUserFacingPatternLabel": "The critic kept you stuck",
+      "routeReinforcement": "The attack voice sounds like it's trying to help. It's not. It froze you in place.",
+      "routeNextRep": "When the attack starts, name it: 'That's the critic, not the truth.'",
+      "routeWhyItMatters": "The critic made movement impossible. That's what it does.",
+      "routeIfPatternKeepsRunning": "The critic becomes the default voice. Every hard morning starts with an attack.",
+      "routeTransferBridge": "Notice when the critic is running. Don't let it finish the script.",
+      "routeReflection": "Where else do you use self-attack as fuel and stall out anyway?",
+      "priority": 60
+    },
+    {
+      "routeId": "route_all_or_nothing",
+      "routeSummaryLabel": "The Perfectionism Trap",
+      "whatShowedUp": "All-or-nothing thinking collapsed partial progress into nothing.",
+      "dominantInternalPatternIds": ["overforcing", "self_attack"],
+      "dominantUserFacingPatternLabel": "'Not enough' erased what you did",
+      "routeReinforcement": "You did something. Then the 'not enough' voice made it count as nothing. That's the trap.",
+      "routeNextRep": "When 'not enough' appears, ask: Is this observation or all-or-nothing?",
+      "routeWhyItMatters": "Partial got erased. That's the all-or-nothing pattern at work.",
+      "routeIfPatternKeepsRunning": "Nothing ever counts. Every attempt gets canceled.",
+      "routeTransferBridge": "Define 'enough' before you start. Don't let the goalposts move.",
+      "routeReflection": "Where else do you let 'not enough' erase real progress?",
+      "priority": 75
+    }
+  ],
+  "stepInterpretations": [],
+  "fallbacks": [
+    {
+      "id": "fallback_general",
+      "appliesWhen": "no_match",
+      "userFacingPatternLabel": "A moment passed",
+      "whatShowedUp": "The morning had a shape.",
+      "functionalIntent": "Your brain was managing what it could.",
+      "immediatePayoff": "You got through it.",
+      "cost": "There may have been a different path.",
+      "reinforcement": "Each choice gives your brain data about what's possible.",
+      "tryNext": "Notice what you felt here. Try something different next time.",
+      "whyThisMatters": "You're building awareness of the pattern.",
+      "consequenceIfRepeated": "Patterns emerge through repetition."
+    }
+  ],
+  "insightBeatConfig": {
+    "maxBeatsPerRun": 2,
+    "cooldownSteps": 3,
+    "enabled": true,
+    "maxInterventionShowsPerRun": 2,
+    "interventionCooldownSteps": 3,
+    "interventionsEnabled": true
+  },
+  "insightBeats": [
+    {
+      "id": "beat_self_attack",
+      "trigger": {
+        "choiceIds": ["sitting_self_attack", "collapse_self_attack", "attack_believe_it", "soft_seems_fake"],
+        "minStep": 1
+      },
+      "internalPatternIds": ["self_attack", "threshold_collapse"],
+      "userFacingLabel": "The attack voice",
+      "insightText": "You're yelling at yourself for not being able to do the thing. The yelling is making the thing harder.",
+      "whyItMatters": "The attack sounds like motivation. It's not. It's a freeze response dressed up as discipline.",
+      "tryNextCue": "Name it: 'That's the attack voice.' Don't argue with it. Just label it.",
+      "valence": "negative",
+      "priority": 85,
+      "mechanismContribution": "self_talk",
+      "patternContribution": "self_attack",
+      "category": "self_attack",
+      "setFlagOnTrigger": "_beat_attack_shown",
+      "internalState": "self_attack_spiral",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "attack_label",
+          "text": "Say out loud: 'That's the critic.'",
+          "targetState": "self_attack_spiral",
+          "why": "Labeling creates distance. Distance creates choice."
+        },
+        {
+          "id": "attack_notice",
+          "text": "Notice where you feel it in your body.",
+          "targetState": "self_attack_spiral",
+          "why": "The attack lives in your body. Noticing it loosens the grip."
+        }
+      ]
+    },
+    {
+      "id": "beat_covers_retreat",
+      "trigger": {
+        "choiceIds": ["wake_pull_covers", "covers_stay"],
+        "maxStep": 3
+      },
+      "internalPatternIds": ["experiential_avoidance", "threshold_collapse"],
+      "userFacingLabel": "Going dark",
+      "insightText": "Under the covers, the day can't find you. But it's still out there. And each minute makes re-entry harder.",
+      "whyItMatters": "The relief is real. So is the cost. Every minute under there teaches your brain that the day is too much.",
+      "tryNextCue": "Uncover your face. Just your face. Let the light in.",
+      "valence": "negative",
+      "priority": 80,
+      "mechanismContribution": "activation",
+      "patternContribution": "avoidance",
+      "category": "avoidance",
+      "setFlagOnTrigger": "_beat_covers_shown",
+      "internalState": "shutdown",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "covers_face",
+          "text": "Pull the covers below your chin. That's it.",
+          "targetState": "shutdown",
+          "why": "Tiny reversal. You're not hiding anymore."
+        },
+        {
+          "id": "covers_count",
+          "text": "Count to 30. Then decide again.",
+          "targetState": "shutdown",
+          "why": "Delay the permanent decision. See if it shifts."
+        }
+      ]
+    },
+    {
+      "id": "beat_all_or_nothing",
+      "trigger": {
+        "choiceIds": ["leg_give_up", "one_all_or_nothing", "stand_full_routine"],
+        "minStep": 2
+      },
+      "internalPatternIds": ["overforcing", "self_attack"],
+      "userFacingLabel": "All or nothing",
+      "insightText": "Your brain just said: if you can't do everything, why do anything? That's the trap. Partial counts. One thing counts.",
+      "whyItMatters": "All-or-nothing erases partial wins. You did something. The voice is lying about what counts.",
+      "tryNextCue": "Say: 'One thing is real.' Don't let the bar move.",
+      "valence": "negative",
+      "priority": 80,
+      "mechanismContribution": "interpretation",
+      "patternContribution": "all_or_nothing",
+      "category": "interpretation",
+      "setFlagOnTrigger": "_beat_aon_shown",
+      "internalState": "all_or_nothing_trap",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "aon_one",
+          "text": "Name one thing you already did. Out loud.",
+          "targetState": "all_or_nothing_trap",
+          "why": "You're fighting the erasure. The thing happened."
+        },
+        {
+          "id": "aon_bar",
+          "text": "Ask: 'Who set this bar? Was it me or the pattern?'",
+          "targetState": "all_or_nothing_trap",
+          "why": "The bar is a lie. You can set a different one."
+        }
+      ]
+    },
+    {
+      "id": "beat_recovery",
+      "trigger": {
+        "choiceIds": ["collapse_gentler_try", "covers_emerge", "attack_notice_pattern", "aon_catch_it", "staying_last_try"],
+        "requireFlags": { "collapsedBack": true }
+      },
+      "internalPatternIds": ["recovery_success", "flexible_response"],
+      "userFacingLabel": "Second try",
+      "insightText": "You fell back. And now you're trying again. That second attempt is the move most people don't make.",
+      "whyItMatters": "Collapse usually wins. You just proved it doesn't have to. Your brain is logging new data right now.",
+      "valence": "positive",
+      "priority": 90,
+      "mechanismContribution": "recovery",
+      "patternContribution": "recovery_success",
+      "category": "recovery",
+      "setFlagOnTrigger": "_beat_recovery_shown",
+      "internalState": "recovery_window",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "recovery_tiny",
+          "text": "Go even smaller than before. What's the minimum?",
+          "targetState": "recovery_window",
+          "why": "The first bar was too high. Find a lower one."
+        },
+        {
+          "id": "recovery_credit",
+          "text": "Say: 'I came back.' That's the win.",
+          "targetState": "recovery_window",
+          "why": "The return is the skill. Everything else is bonus."
+        }
+      ]
+    }
+  ]
+}

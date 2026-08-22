@@ -6,8 +6,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Search, Pill, Brain, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { logger } from "@/lib/utils/logger";
+import { trackSearchSubmit } from "@/lib/analytics/product-events";
+import { safeHighlight } from "@/lib/utils/safe-highlight";
 
 interface SearchResult {
   type: "treatment" | "condition" | "resource";
@@ -84,18 +85,24 @@ function SearchPageContent() {
           resourcesCount: data.resources?.results?.length || 0,
         });
 
-        setGroupedResults({
+        const resultsData = {
           conditions: data.conditions?.results || [],
           treatments: data.treatments?.results || [],
           resources: data.resources?.results || [],
           conditionsTotal: Number(data.conditions?.totalCount) || 0,
           treatmentsTotal: Number(data.treatments?.totalCount) || 0,
           resourcesTotal: Number(data.resources?.totalCount) || 0,
-        });
+        };
+
+        setGroupedResults(resultsData);
         setSearchedQuery(query); // Mark this query as completed
-      } catch (error: any) {
+
+        // Track search analytics (privacy-safe: only length, not content)
+        const totalResults = resultsData.conditionsTotal + resultsData.treatmentsTotal + resultsData.resourcesTotal;
+        trackSearchSubmit(query.length, "all", totalResults > 0);
+      } catch (error: unknown) {
         // Ignore abort errors - they're expected when component unmounts or query changes
-        if (error.name === 'AbortError') {
+        if (error instanceof Error && error.name === 'AbortError') {
           logger.info('Search request aborted', { query });
           return;
         }
@@ -146,11 +153,11 @@ function SearchPageContent() {
   const getResultIcon = (type: string) => {
     switch (type) {
       case "treatment":
-        return <Pill className="h-5 w-5 text-blue-500" />;
+        return <Pill className="h-5 w-5 text-blue-400" />;
       case "condition":
-        return <Brain className="h-5 w-5 text-purple-500" />;
+        return <Brain className="h-5 w-5 text-accent" />;
       case "resource":
-        return <BookOpen className="h-5 w-5 text-green-500" />;
+        return <BookOpen className="h-5 w-5 text-positive-600" />;
       default:
         return null;
     }
@@ -226,8 +233,8 @@ function SearchPageContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.02 }}
         >
-          <div className="rounded-lg border border-neutral-200 bg-white px-1.5 py-1 transition-all hover:border-blue-300 hover:shadow-sm">
-            <div className="flex items-start gap-1.5">
+          <div className="rounded-xl border border-separator bg-surface-grouped px-3 py-2.5 transition-all hover:border-accent-border hover:bg-fill-secondary shadow-card-1 hover:shadow-card-2">
+            <div className="flex items-start gap-2.5">
               {/* Icon */}
               <div className="mt-0.5 shrink-0">{getResultIcon(result.type)}</div>
 
@@ -235,7 +242,7 @@ function SearchPageContent() {
               <div className="flex-1 overflow-hidden">
                 {/* Title and Category */}
                 <div className="mb-0.5 flex items-center gap-2">
-                  <h3 className="text-sm font-semibold text-neutral-900 hover:text-blue-600 truncate">
+                  <h3 className="text-sm font-semibold text-label-primary hover:text-accent-700 truncate">
                     {result.name}
                   </h3>
                   {result.category && (
@@ -245,7 +252,7 @@ function SearchPageContent() {
                   )}
                 </div>
 
-                {/* Show snippets from API (with search terms) */}
+                {/* Show snippets from API (with search terms) - XSS-safe rendering */}
                 {(() => {
                   // Use API snippets if available - show all snippets with content
                   // even if they don't contain the exact search term (for related matches)
@@ -255,18 +262,16 @@ function SearchPageContent() {
                     return (
                       <div className="space-y-0.5">
                         {validSnippets.map((snippet, idx) => {
-                          const termPattern = snippet.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                          const termRegex = new RegExp(`(${termPattern})`, "gi");
-                          const highlighted = snippet.snippet.replace(termRegex, (match) =>
-                            `<mark class="bg-yellow-200 px-0.5 font-medium">${match}</mark>`
-                          );
+                          // Use safe highlighting - no dangerouslySetInnerHTML
+                          const highlighted = safeHighlight(snippet.snippet, snippet.term);
 
                           return (
                             <div
                               key={idx}
-                              className="text-xs text-neutral-800 overflow-hidden text-ellipsis whitespace-nowrap block"
-                              dangerouslySetInnerHTML={{ __html: highlighted }}
-                            />
+                              className="text-xs text-label-tertiary overflow-hidden text-ellipsis whitespace-nowrap block"
+                            >
+                              {highlighted}
+                            </div>
                           );
                         })}
                       </div>
@@ -279,20 +284,13 @@ function SearchPageContent() {
                     const hasSearchTerm = searchTerms.some(term => descLower.includes(term));
 
                     if (hasSearchTerm) {
-                      let highlighted = result.description;
-                      searchTerms.forEach(term => {
-                        const termPattern = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                        const termRegex = new RegExp(`(${termPattern})`, "gi");
-                        highlighted = highlighted.replace(termRegex, (match) =>
-                          `<mark class="bg-yellow-200 px-0.5 font-medium">${match}</mark>`
-                        );
-                      });
+                      // Use safe highlighting - no dangerouslySetInnerHTML
+                      const highlighted = safeHighlight(result.description, searchTerms);
 
                       return (
-                        <div
-                          className="text-xs text-neutral-800 overflow-hidden text-ellipsis whitespace-nowrap block"
-                          dangerouslySetInnerHTML={{ __html: highlighted }}
-                        />
+                        <div className="text-xs text-label-tertiary overflow-hidden text-ellipsis whitespace-nowrap block">
+                          {highlighted}
+                        </div>
                       );
                     }
                   }
@@ -315,7 +313,7 @@ function SearchPageContent() {
     groupedResults.resources.length > 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-canvas">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -324,16 +322,16 @@ function SearchPageContent() {
           className="mb-8"
         >
           <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 shadow-soft">
               <Search className="h-6 w-6 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-neutral-900">Search Results</h1>
+            <h1 className="text-3xl font-bold text-label-primary">Search Results</h1>
           </div>
 
           {query && (
-            <div className="text-lg text-neutral-800">
+            <div className="text-lg text-label-secondary">
               {Number(totalCount).toLocaleString('en-US')} {totalCount === 1 ? 'result' : 'results'} for{" "}
-              <span className="font-semibold">"{query}"</span>
+              <span className="font-semibold text-label-primary">&ldquo;{query}&rdquo;</span>
             </div>
           )}
         </motion.div>
@@ -341,39 +339,35 @@ function SearchPageContent() {
         {/* Loading State */}
         {isLoading && (
           <div className="flex items-center justify-center py-12">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent-500 border-t-transparent"></div>
           </div>
         )}
 
         {/* No Query */}
         {!query && !isLoading && (
-          <Card>
-            <CardContent className="p-12 text-center">
-              <Search className="mx-auto mb-4 h-16 w-16 text-gray-300" />
-              <h3 className="mb-2 text-xl font-semibold text-neutral-900">No search query</h3>
-              <p className="text-neutral-800">
-                Use the search bar above to search for treatments, conditions, and resources.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="rounded-xl border border-separator bg-surface-grouped p-12 text-center">
+            <Search className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+            <h3 className="mb-2 text-xl font-semibold text-label-primary">No search query</h3>
+            <p className="text-label-tertiary">
+              Use the search bar above to search for treatments, conditions, and resources.
+            </p>
+          </div>
         )}
 
         {/* No Results - only show when search for this exact query is complete */}
         {query && !isLoading && searchedQuery === query && !hasResults && (
-          <Card>
-            <CardContent className="p-12 text-center">
-              <Search className="mx-auto mb-4 h-16 w-16 text-gray-300" />
-              <h3 className="mb-2 text-xl font-semibold text-neutral-900">No results found</h3>
-              <p className="text-neutral-800">
-                No results found for "{query}". Try searching with different keywords.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="rounded-xl border border-separator bg-surface-grouped p-12 text-center">
+            <Search className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+            <h3 className="mb-2 text-xl font-semibold text-label-primary">No results found</h3>
+            <p className="text-label-tertiary">
+              No results found for &ldquo;{query}&rdquo;. Try searching with different keywords.
+            </p>
+          </div>
         )}
 
         {/* Results Grouped by Type */}
         {!isLoading && hasResults && (
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Conditions */}
             {groupedResults.conditions.length > 0 && (
               <motion.div
@@ -382,13 +376,13 @@ function SearchPageContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
-                  <Brain className="h-5 w-5 text-purple-600" />
-                  <h2 className="text-lg font-semibold text-neutral-900">
+                <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
+                  <Brain className="h-5 w-5 text-accent" />
+                  <h2 className="text-lg font-semibold text-label-primary">
                     Conditions ({groupedResults.conditionsTotal})
                   </h2>
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   {getDisplayedResults("condition").map((result, index) =>
                     renderResult(result, index)
                   )}
@@ -396,7 +390,7 @@ function SearchPageContent() {
                 {groupedResults.conditionsTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("condition")}
-                    className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                    className="mt-4 w-full rounded-xl border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-colors hover:bg-surface-grouped hover:text-label-primary"
                   >
                     {expandedCategories.condition
                       ? "Show Less"
@@ -414,13 +408,13 @@ function SearchPageContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
-                  <Pill className="h-5 w-5 text-blue-600" />
-                  <h2 className="text-lg font-semibold text-neutral-900">
+                <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
+                  <Pill className="h-5 w-5 text-blue-400" />
+                  <h2 className="text-lg font-semibold text-label-primary">
                     Treatments ({groupedResults.treatmentsTotal})
                   </h2>
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   {getDisplayedResults("treatment").map((result, index) =>
                     renderResult(result, index)
                   )}
@@ -428,7 +422,7 @@ function SearchPageContent() {
                 {groupedResults.treatmentsTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("treatment")}
-                    className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                    className="mt-4 w-full rounded-xl border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-colors hover:bg-surface-grouped hover:text-label-primary"
                   >
                     {expandedCategories.treatment
                       ? "Show Less"
@@ -446,9 +440,9 @@ function SearchPageContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <div className="mb-3 flex items-center gap-2 border-b border-neutral-200 pb-2">
-                  <BookOpen className="h-5 w-5 text-green-600" />
-                  <h2 className="text-lg font-semibold text-neutral-900">
+                <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
+                  <BookOpen className="h-5 w-5 text-positive-600" />
+                  <h2 className="text-lg font-semibold text-label-primary">
                     Resources ({groupedResults.resourcesTotal})
                   </h2>
                 </div>
@@ -460,7 +454,7 @@ function SearchPageContent() {
                 {groupedResults.resourcesTotal > 5 && (
                   <button
                     onClick={() => toggleCategory("resource")}
-                    className="mt-3 w-full rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                    className="mt-4 w-full rounded-xl border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-colors hover:bg-surface-grouped hover:text-label-primary"
                   >
                     {expandedCategories.resource
                       ? "Show Less"
@@ -479,8 +473,8 @@ function SearchPageContent() {
 export default function SearchPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+      <div className="min-h-screen bg-canvas flex items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent-500 border-t-transparent"></div>
       </div>
     }>
       <SearchPageContent />

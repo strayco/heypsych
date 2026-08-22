@@ -1,104 +1,263 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lorazepam-ativan",
-  "type": "medication",
-  "name": "Lorazepam (Ativan)",
-  "summary": "Fast-acting benzodiazepine used for acute anxiety, agitation, and short-term insomnia relief. Strong calming and sedating effects, with real dependence and withdrawal risk—especially with daily use.",
-  "description": "Lorazepam (Ativan) can quickly take the edge off severe anxiety, panic-like surges, agitation, and sometimes insomnia—often within 20–60 minutes depending on the route. It can also cause heavy sedation, memory gaps, and impaired coordination. Dependence can develop with repeated use, and stopping suddenly after regular use can be dangerous. Never mix with alcohol or opioids—this combo can shut down breathing. Best used short-term or as-needed, with a plan to taper if it’s been used regularly.",
-  "patient_summary": "Lorazepam (Ativan) can quickly take the edge off severe anxiety, agitation, and sometimes insomnia—often within 20–60 minutes depending on the route. It can also cause heavy sedation, memory gaps, and impaired coordination. Dependence can develop with repeated use, and stopping suddenly after regular use can be dangerous. Never mix with alcohol or opioids—this combo can shut down breathing. Best used short-term or as-needed, with a plan to taper if it’s been used regularly.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "lorazepam-ativan",
+    "name": "Lorazepam (Ativan)",
+    "generic_name": "lorazepam",
+    "brand_names": [
+      "Ativan",
+      "LORazepam Intensol",
+      "Loreev XR"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
     "drug_classes": [
       "Benzodiazepine",
       "GABA-A Receptor Modulator",
       "Anxiolytic",
       "Sedative"
-    ],
-    "brand_names": [
-      "Ativan",
-      "LORazepam Intensol",
-      "Loreev XR"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (IM)",
-      "Intravenous (IV)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1977,
-    "pharmacologic_category": "Benzodiazepine, Short-to-Intermediate Acting",
-    "published_date": "2025-11-17T00:00:00Z",
-    "last_updated": "2025-11-17T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-17T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety disorders (short-term relief)",
-      "Acute anxiety and agitation",
-      "Procedural anxiety/premedication (injection)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for short-term relief of anxiety symptoms or as a bridge while first-line treatments (SSRIs/SNRIs and therapy) take effect (often 4–6 weeks)."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used as-needed for panic spikes or severe anxiety surges. Not a long-term solution due to tolerance and dependence risk."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "May help short-term insomnia when anxiety, agitation, or acute distress is driving sleeplessness. Not ideal as a nightly sleep med."
-      },
-      {
-        "slug": "catatonia",
-        "relationship": "off_label",
-        "context": "Commonly used as both a diagnostic “lorazepam challenge” and as first-line medication treatment for catatonia."
-      },
-      {
-        "slug": "substance-withdrawal",
-        "relationship": "off_label",
-        "context": "Used in alcohol withdrawal (especially when liver disease makes longer-acting benzodiazepines less desirable) and sometimes to control severe autonomic agitation in withdrawal states."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to lorazepam, other benzodiazepines, or any component of the formulation",
-      "Acute narrow-angle glaucoma",
-      "Parenteral (injection) formulations: hypersensitivity to polyethylene glycol, propylene glycol, or benzyl alcohol",
-      "Parenteral (injection) formulations: sleep apnea",
-      "Parenteral (injection) formulations: intra-arterial administration",
-      "Parenteral (injection) formulations: use in premature infants",
-      "Parenteral (injection) formulations: severe respiratory insufficiency (except during mechanical ventilation)",
-      "Myasthenia gravis (listed as a contraindication in some labeling outside the US)"
-    ],
-    "efficacy_response": {
-      "metric": "Rapid symptom relief (acute anxiety/agitation)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Lorazepam is used when you need fast calming or sedation—think minutes to an hour—especially for acute anxiety, agitation, or procedural anxiety. It’s not meant to be the long-game medication for chronic anxiety.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Fast-acting benzodiazepine used for acute anxiety, agitation, and short-term insomnia relief. Strong calming and sedating effects, with real dependence and withdrawal risk—especially with daily use.",
+  "description": "Lorazepam (Ativan) can quickly take the edge off severe anxiety, panic-like surges, agitation, and sometimes insomnia—often within 20–60 minutes depending on the route. It can also cause heavy sedation, memory gaps, and impaired coordination. Dependence can develop with repeated use, and stopping suddenly after regular use can be dangerous. Never mix with alcohol or opioids—this combo can shut down breathing. Best used short-term or as-needed, with a plan to taper if it’s been used regularly.",
+  "patient_summary": "Lorazepam (Ativan) can quickly take the edge off severe anxiety, agitation, and sometimes insomnia—often within 20–60 minutes depending on the route. It can also cause heavy sedation, memory gaps, and impaired coordination. Dependence can develop with repeated use, and stopping suddenly after regular use can be dangerous. Never mix with alcohol or opioids—this combo can shut down breathing. Best used short-term or as-needed, with a plan to taper if it’s been used regularly.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for short-term relief of anxiety symptoms or as a bridge while first-line treatments (SSRIs/SNRIs and therapy) take effect (often 4–6 weeks).",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used as-needed for panic spikes or severe anxiety surges. Not a long-term solution due to tolerance and dependence risk."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "May help short-term insomnia when anxiety, agitation, or acute distress is driving sleeplessness. Not ideal as a nightly sleep med."
+        },
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "off_label",
+          "context": "Commonly used as both a diagnostic “lorazepam challenge” and as first-line medication treatment for catatonia."
+        },
+        {
+          "condition_slug": "substance-withdrawal",
+          "condition_name": "Substance Withdrawal",
+          "relationship": "off_label",
+          "context": "Used in alcohol withdrawal (especially when liver disease makes longer-acting benzodiazepines less desirable) and sometimes to control severe autonomic agitation in withdrawal states."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral: readily absorbed; IM: delayed compared with IV",
-      "bioavailability": "Oral: ~90%",
-      "onset": "Oral: ~20–30 minutes; IV: ~15–20 minutes (dose-dependent)",
-      "peak_plasma": "Immediate release oral: ~2 hours; extended release: ~14 hours (range: 7–24 hours)",
-      "half_life": "Immediate release: ~12 hours; IV: ~14 hours; IM: ~13–18 hours; extended release: ~20 hours",
-      "duration_IR": "Often felt for ~6–8 hours (sedation/amnesia can overlap this window)",
-      "duration_XR": "Once-daily coverage when converted from stable IR dosing",
-      "metabolism": "Hepatic conjugation to lorazepam glucuronide (inactive)",
-      "excretion": "Urine (~88%, mostly inactive metabolites); feces (~7%)",
-      "protein_binding": "85–91%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: ~20–30 minutes; IV: ~15–20 minutes (dose-dependent)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (IM)",
+        "Intravenous (IV)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": ">10% reported",
+          "notes": "This can feel like calm, sleepiness, or being ‘out of it.’ It’s dose-related and much stronger when combined with other sedatives."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "~7%",
+          "notes": "Lightheaded, off-balance, slower reflexes. This is one of the reasons falls and car accidents go up with benzos."
+        },
+        {
+          "effect": "Unsteadiness / impaired coordination",
+          "incidence": "~3%",
+          "notes": "Walking feels clumsy, reaction time slows. Older adults are especially vulnerable to injuries."
+        },
+        {
+          "effect": "Confusion / delirium (especially older adults)",
+          "incidence": "≤1% reported",
+          "notes": "Can show up as disorientation, fogginess, or agitation—more likely with higher doses, IV use, or medical illness."
+        },
+        {
+          "effect": "Injection site pain or redness (IM/IV)",
+          "incidence": "IM pain: 1%–17%; IV pain: 2%",
+          "notes": "Local irritation can happen with injections; the risk depends on technique and formulation."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression, hypoventilation, apnea, respiratory failure—especially with opioids, alcohol, sleep apnea, COPD, or high doses"
+        },
+        {
+          "risk": "Severe withdrawal syndrome after abrupt stop: rebound anxiety, insomnia, tremor, autonomic instability, hallucinations, seizures, and rarely psychosis"
+        },
+        {
+          "risk": "Paradoxical reactions: agitation, hostility, rage, aggression, disinhibition (rare, but clinically important)"
+        },
+        {
+          "risk": "Anterograde amnesia and blackouts (more likely at higher doses and with IV use)"
+        },
+        {
+          "risk": "Hypotension, arrhythmias, and severe oversedation (more likely in medically fragile patients or ICU settings)"
+        },
+        {
+          "risk": "Propylene glycol toxicity with high-dose/prolonged IV use: high anion gap metabolic acidosis with elevated osmol gap, kidney injury, hypotension, arrhythmias, seizures, mental status changes"
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve co-prescribing for patients where alternatives are inadequate. Use the lowest effective doses for the shortest duration and monitor closely for sedation and breathing problems.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to lorazepam, other benzodiazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute narrow-angle glaucoma"
+        },
+        {
+          "contraindication": "Parenteral (injection) formulations: hypersensitivity to polyethylene glycol, propylene glycol, or benzyl alcohol"
+        },
+        {
+          "contraindication": "Parenteral (injection) formulations: sleep apnea"
+        },
+        {
+          "contraindication": "Parenteral (injection) formulations: intra-arterial administration"
+        },
+        {
+          "contraindication": "Parenteral (injection) formulations: use in premature infants"
+        },
+        {
+          "contraindication": "Parenteral (injection) formulations: severe respiratory insufficiency (except during mechanical ventilation)"
+        },
+        {
+          "contraindication": "Myasthenia gravis (listed as a contraindication in some labeling outside the US)"
+        }
+      ],
+      "precautions": [
+        "Abuse, misuse, and addiction risk exists even with prescribed benzodiazepines, and risk rises with alcohol, opioids, or illicit substances",
+        "Physical dependence can develop with repeated use over days to weeks; withdrawal can be life-threatening if stopped abruptly after regular use",
+        "Driving, falls, and accidents: slowed reaction time, impaired coordination, and cognitive slowing are common",
+        "Depression/suicidality: avoid routine use in depression or suicidal risk except for acute/emergency situations",
+        "Respiratory disease (COPD, sleep apnea): higher risk of dangerous breathing suppression—dose reduce or avoid when possible",
+        "Parenteral (IV) lorazepam contains propylene glycol: high-dose or prolonged IV use can cause toxicity"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (prescribed or illicit; oral or injected)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid when possible. If unavoidable, use lower doses, shortest duration, and close monitoring for slow/shallow breathing and oversedation."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Dangerous CNS and respiratory suppression; amnesia; falls; overdose risk.",
+          "action": "Absolute no. Mixing alcohol with lorazepam is one of the highest-risk combos."
+        },
+        {
+          "interactant": "Other sedatives (sleep meds, sedating antihistamines, muscle relaxants, gabapentinoids, barbiturates)",
+          "mechanism": "Additive sedation, impaired coordination, falls, respiratory suppression.",
+          "action": "Use caution, minimize overlap, consider non-sedating alternatives when possible."
+        },
+        {
+          "interactant": "Cannabis (especially high-THC products)",
+          "mechanism": "More sedation, cognitive impairment, slower reaction time; can worsen disinhibition.",
+          "action": "Avoid combining, especially if driving/fall risk is a concern."
+        },
+        {
+          "interactant": "Flumazenil",
+          "mechanism": "Can trigger acute withdrawal and seizures in people with benzodiazepine dependence.",
+          "action": "Used only in medically supervised settings; not a casual “reversal” for routine outpatient benzo use."
+        },
+        {
+          "interactant": "Other medications containing propylene glycol (relevant mainly to IV settings)",
+          "mechanism": "Higher risk of propylene glycol accumulation and toxicity with prolonged/high-dose IV exposure.",
+          "action": "Monitor osmol gap and labs if high-dose or prolonged IV therapy is used."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and functioning: daytime sleepiness, slowed reaction time, impaired coordination; assess fall risk and driving safety"
+        },
+        {
+          "parameter": "Respiratory status: especially with opioids, sleep apnea, COPD, obesity hypoventilation, or other respiratory compromise"
+        },
+        {
+          "parameter": "Cognitive effects: memory issues, attention, confusion; watch closely in older adults and medically ill patients"
+        },
+        {
+          "parameter": "Mood and suicidality: worsening depression, emotional blunting, disinhibition, suicidal thoughts (especially in those with baseline depression)"
+        },
+        {
+          "parameter": "Misuse risk: early refills, dose escalation, mixing with alcohol/illicit substances, multiple prescribers, continued use despite harm"
+        },
+        {
+          "parameter": "Withdrawal/rebound: if doses are missed or reduced; monitor for anxiety spikes, tremor, insomnia, autonomic symptoms"
+        },
+        {
+          "parameter": "Vitals when using parenteral routes: blood pressure, heart rate, and level of consciousness"
+        },
+        {
+          "parameter": "Long-term therapy labs (when applicable): CBC, liver function tests, LDH"
+        },
+        {
+          "parameter": "High-dose/prolonged IV use: monitor for propylene glycol toxicity (osmol gap, creatinine/BUN, lactate, metabolic acidosis signs)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Lorazepam crosses the placenta. Benzodiazepine exposure in pregnancy can be associated with neonatal sedation (hypotonia, lethargy, respiratory depression) and/or neonatal withdrawal (irritability, tremor, feeding difficulties), especially with late-pregnancy exposure. Data on teratogenic risk are mixed and not definitive. When treating perinatal anxiety, benzodiazepines are generally avoided or used sparingly as a short-term bridge until preferred therapy is effective. Benzodiazepines are among the preferred options for treating alcohol withdrawal during pregnancy (inpatient monitoring recommended). Lorazepam may be used in postpartum psychosis treatment plans as clinically indicated.",
+        "lactation": "Lorazepam is present in breast milk. Available data suggest relatively low relative infant dose in many cases, and reports of serious infant adverse effects are uncommon, but monitoring matters: watch for sedation, lethargy, poor feeding, or inadequate weight gain. Use the lowest effective dose, avoid poly-sedative combinations, and reassess ongoing need frequently.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Older adults have increased sensitivity: higher risk of cognitive impairment, delirium, falls, fractures, and motor vehicle accidents. In general, avoid routine benzodiazepine use in adults ≥65. If used, start at the low end of the range and reassess frequently; initial immediate-release dosing is often kept ≤2 mg/day total, with careful titration and a plan to taper.",
+        "renal_impairment": "Oral: no dosage adjustment typically needed. Parenteral: acute doses usually do not require adjustment, but repeated IV dosing warrants caution because propylene glycol can accumulate; monitor for toxicity with prolonged/high-dose IV use.",
+        "hepatic_impairment": "Lorazepam metabolism is generally not dramatically altered in cirrhosis, but the half-life can be prolonged due to reduced protein binding and increased volume of distribution—so accumulation is a real risk. Extended-release formulation should not be used in hepatic impairment. In moderate to severe liver disease, consider dose reduction (often at least 50% of usual) and/or longer intervals, and use caution in hepatic encephalopathy."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1977
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral: readily absorbed; IM: delayed compared with IV",
+          "bioavailability": "Oral: ~90%",
+          "peak_plasma": "Immediate release oral: ~2 hours; extended release: ~14 hours (range: 7–24 hours)",
+          "half_life": "Immediate release: ~12 hours; IV: ~14 hours; IM: ~13–18 hours; extended release: ~20 hours",
+          "metabolism": "Hepatic conjugation to lorazepam glucuronide (inactive)",
+          "excretion": "Urine (~88%, mostly inactive metabolites); feces (~7%)",
+          "protein_binding": "85–91%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Lorazepam dosing depends on the psychiatric use case—acute anxiety spikes and agitation are treated differently than chronic anxiety disorders or performance anxiety. The goal is the lowest effective dose for the shortest duration, especially in anyone with opioid exposure, respiratory disease, older age, or substance use risk."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If lorazepam has been used regularly—especially daily—your nervous system can adapt to it. Stopping suddenly can trigger withdrawal that ranges from miserable to medically dangerous. The safer move is a gradual taper tailored to dose, duration, and your risk factors."
+        }
+      }
     }
   },
   "sections": [
@@ -123,7 +282,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s nervous system has its own personality, but these are the patterns I hear over and over:",
       "items": [
         {
           "category": "Relief (fast calm)",
@@ -169,7 +327,8 @@
           ],
           "note": "Paradoxical agitation/disinhibition is uncommon but more likely at extremes of age, with certain psychiatric conditions, alcohol use history, or higher doses."
         }
-      ]
+      ],
+      "intro": "Everyone’s nervous system has its own personality, but these are the patterns I hear over and over:"
     },
     {
       "type": "onset_duration",
@@ -186,10 +345,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Lorazepam is effective for rapid symptom control—when the goal is to calm the nervous system quickly (acute anxiety, agitation, pre-procedure sedation, catatonia). The tradeoff is that the same properties that make it work fast also make it risky for regular daily use (tolerance, dependence, withdrawal, and cognitive side effects).",
       "metric": "Rapid calming for acute anxiety/agitation",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Lorazepam is effective for rapid symptom control—when the goal is to calm the nervous system quickly (acute anxiety, agitation, pre-procedure sedation, catatonia). The tradeoff is that the same properties that make it work fast also make it risky for regular daily use (tolerance, dependence, withdrawal, and cognitive side effects).",
       "clinical_details": "Clinically, lorazepam is often chosen when rapid anxiolysis or sedation is needed and when a benzodiazepine that does not rely on CYP metabolism is desirable. It is commonly used short-term while longer-term treatments take effect, or intermittently as-needed for severe spikes.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -276,7 +435,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Lorazepam’s biggest interaction problem isn’t enzyme metabolism—it’s additive sedation. Anything that slows the brain or breathing can stack on top of it.",
       "items": [
         {
           "with": "Opioids (prescribed or illicit; oral or injected)",
@@ -308,7 +466,8 @@
           "risk": "Higher risk of propylene glycol accumulation and toxicity with prolonged/high-dose IV exposure.",
           "action": "Monitor osmol gap and labs if high-dose or prolonged IV therapy is used."
         }
-      ]
+      ],
+      "intro": "Lorazepam’s biggest interaction problem isn’t enzyme metabolism—it’s additive sedation. Anything that slows the brain or breathing can stack on top of it."
     },
     {
       "type": "tapering",
@@ -403,21 +562,6 @@
       "items": "Not applicable for this medication."
     }
   ],
-  "seo": {
-    "title": "Lorazepam (Ativan): Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Lorazepam (Ativan) for acute anxiety, agitation, and short-term insomnia: how fast it works, dosing, side effects, dependence/withdrawal risk, and dangerous interactions with alcohol or opioids.",
-    "canonical": "[https://www.heypsych.com/treatments/lorazepam-ativan](https://www.heypsych.com/treatments/lorazepam-ativan)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is lorazepam (Ativan) used for in psychiatry?",
@@ -463,5 +607,20 @@
       "q": "Why is Ativan considered higher risk in older adults?",
       "a": "Older adults are more sensitive to benzodiazepines. They’re more likely to get confusion, delirium, falls, fractures, and motor vehicle accidents. That’s why most guidelines recommend avoiding routine benzo use in people 65 and older unless there’s a compelling reason—and even then, using the lowest dose with frequent reassessment."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lorazepam (Ativan): Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Lorazepam (Ativan) for acute anxiety, agitation, and short-term insomnia: how fast it works, dosing, side effects, dependence/withdrawal risk, and dangerous interactions with alcohol or opioids.",
+    "canonical": "[https://www.heypsych.com/treatments/lorazepam-ativan](https://www.heypsych.com/treatments/lorazepam-ativan)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

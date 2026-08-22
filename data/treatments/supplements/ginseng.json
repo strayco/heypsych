@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ginseng",
-  "type": "supplement",
-  "name": "Ginseng",
-  "summary": "Ginseng is a traditional herbal remedy derived from the roots of Panax species, used to support energy, cognitive function, mood, and resilience to stress.",
-  "description": "Ginseng, particularly Panax ginseng (Asian ginseng) and Panax quinquefolius (American ginseng), is one of the most studied adaptogenic herbs in traditional and modern medicine. It contains active compounds called ginsenosides, which are thought to influence neurotransmission, reduce oxidative stress, and modulate the hypothalamic–pituitary–adrenal (HPA) axis. Ginseng has been promoted for improving mental performance, reducing fatigue, supporting immune health, and alleviating symptoms of stress and depression. While some clinical trials support these effects, results are mixed, and efficacy varies depending on the species, extract standardization, and duration of treatment.",
-  "category": "supplements",
-  "tags": [
-    "adaptogen",
-    "energy",
-    "cognition",
-    "stress resilience"
-  ],
-  "metadata": {
-    "compound_type": "Herbal root extract",
-    "natural_source": "Panax ginseng (Asian ginseng), Panax quinquefolius (American ginseng)",
+  "identity": {
+    "slug": "ginseng",
+    "name": "Ginseng",
+    "brand_names": [
+      "Korean Red Ginseng",
+      "American Ginseng",
+      "Ginsana"
+    ],
+    "aliases": [
+      "Panax ginseng",
+      "Panax quinquefolius"
+    ],
+    "wikidata_qid": "Q20817212"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Herbal Medicine",
       "Adaptogens",
@@ -25,79 +28,174 @@
       "Stress modulation",
       "Immunomodulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Korean Red Ginseng",
-      "American Ginseng",
-      "Ginsana"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q20817212"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Fatigue and low energy",
-      "Cognitive support",
-      "Stress adaptation"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in depression",
-      "Immune enhancement",
-      "Glycemic regulation in diabetes"
-    ],
-    "contraindications": [
-      "Uncontrolled hypertension",
-      "History of hormone-sensitive cancers (e.g., breast cancer)",
-      "Concurrent stimulant use"
-    ],
-    "monitoring_required": [
-      "Blood pressure",
-      "Blood glucose (in diabetic patients)",
-      "Medication interactions"
-    ],
-    "efficacy_rating": {
-      "fatigue": 3,
-      "cognition": 2,
-      "stress_resilience": 3,
-      "mood": 2,
-      "immune_support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Ginseng",
-      "Panax ginseng",
-      "American ginseng",
-      "Asian ginseng",
-      "Korean red ginseng"
-    ],
-    "synonyms": [
-      "Panax ginseng",
-      "Panax quinquefolius"
-    ],
-    "common_misspellings": [
-      "ginsing",
-      "genseng",
-      "ginsen"
+    "tags": [
+      "adaptogen",
+      "energy",
+      "cognition",
+      "stress resilience"
     ]
+  },
+  "summary": "Ginseng is a traditional herbal remedy derived from the roots of Panax species, used to support energy, cognitive function, mood, and resilience to stress.",
+  "description": "Ginseng, particularly Panax ginseng (Asian ginseng) and Panax quinquefolius (American ginseng), is one of the most studied adaptogenic herbs in traditional and modern medicine. It contains active compounds called ginsenosides, which are thought to influence neurotransmission, reduce oxidative stress, and modulate the hypothalamic–pituitary–adrenal (HPA) axis. Ginseng has been promoted for improving mental performance, reducing fatigue, supporting immune health, and alleviating symptoms of stress and depression. While some clinical trials support these effects, results are mixed, and efficacy varies depending on the species, extract standardization, and duration of treatment.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "fatigue-and-low-energy",
+          "condition_name": "Fatigue and low energy",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-adaptation",
+          "condition_name": "Stress adaptation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-depression",
+          "condition_name": "Adjunctive support in depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "immune-enhancement",
+          "condition_name": "Immune enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "glycemic-regulation-in-diabetes",
+          "condition_name": "Glycemic regulation in diabetes",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "fatigue": {
+          "rating": 3
+        },
+        "cognition": {
+          "rating": 2
+        },
+        "stress_resilience": {
+          "rating": 3
+        },
+        "mood": {
+          "rating": 2
+        },
+        "immune_support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Insomnia"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Nervousness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypertension"
+        },
+        {
+          "risk": "Mania or overstimulation in rare cases"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled hypertension"
+        },
+        {
+          "contraindication": "History of hormone-sensitive cancers (e.g., breast cancer)"
+        },
+        {
+          "contraindication": "Concurrent stimulant use"
+        }
+      ],
+      "precautions": [
+        "May cause overstimulation or insomnia if taken late in the day.",
+        "Not recommended for individuals with uncontrolled hypertension.",
+        "Potential hormonal effects—use caution in hormone-sensitive conditions."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin",
+          "mechanism": "Reduced anticoagulant effect",
+          "action": "Avoid or monitor INR"
+        },
+        {
+          "interactant": "Stimulants (caffeine, amphetamines)",
+          "mechanism": "Additive overstimulation",
+          "action": "Caution"
+        },
+        {
+          "interactant": "Insulin or hypoglycemics",
+          "mechanism": "Additive glucose-lowering effects",
+          "action": "Monitor glucose"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure"
+        },
+        {
+          "parameter": "Blood glucose (if diabetic)"
+        },
+        {
+          "parameter": "Sleep quality"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended; insufficient safety data",
+        "lactation": "Avoid due to limited safety information",
+        "pediatric": "Not recommended without medical supervision",
+        "geriatric": "May be used with caution; monitor cardiovascular status"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal root extract",
+        "natural_source": "Panax ginseng (Asian ginseng), Panax quinquefolius (American ginseng)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +324,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Ginseng",
+      "url": "https://www.nccih.nih.gov/health/asian-ginseng"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Reay JL et al. Panax ginseng: a review of its cognitive and mood effects in healthy adults. Hum Psychopharmacol. 2005",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15651056/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Kennedy DO et al. Effects of Panax ginseng, consumed with and without glucose, on mood and cognitive performance. Physiol Behav. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11534971/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Ginseng",
+      "Panax ginseng",
+      "American ginseng",
+      "Asian ginseng",
+      "Korean red ginseng"
+    ],
+    "synonyms": [
+      "Panax ginseng",
+      "Panax quinquefolius"
+    ],
+    "common_misspellings": [
+      "ginsing",
+      "genseng",
+      "ginsen"
+    ]
+  },
   "seo": {
     "title": "Ginseng – Adaptogenic Herbal Supplement for Energy and Stress",
     "description": "Ginseng is an adaptogenic herbal root supplement used to support energy, cognition, and stress resilience. Learn about benefits, dosing, and safety.",

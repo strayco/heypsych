@@ -1,21 +1,21 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "creatine",
-  "type": "supplement",
-  "name": "Creatine",
-  "summary": "A naturally occurring compound stored in muscle and brain tissue that supports cellular energy production. Supplementation is widely used for athletic performance and is being investigated for neuropsychiatric and cognitive benefits.",
-  "description": "Creatine is a nitrogenous organic acid synthesized from amino acids and stored primarily in skeletal muscle and the brain as phosphocreatine. It plays a critical role in the ATP-phosphocreatine energy system, rapidly regenerating ATP during high-demand states. Supplementation is well established in sports and exercise performance, but emerging evidence supports its potential for neuroprotection, antidepressant augmentation, cognitive enhancement, and neurological disorders such as Parkinson’s disease, ALS, and traumatic brain injury.",
-  "category": "supplements",
-  "tags": [
-    "nootropic",
-    "neuroprotection",
-    "antidepressant augmentation",
-    "energy metabolism",
-    "sports nutrition"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid derivative",
-    "natural_source": "Endogenously synthesized (arginine, glycine, methionine); dietary sources include meat and fish",
+  "identity": {
+    "slug": "creatine",
+    "name": "Creatine",
+    "brand_names": [
+      "Creapure",
+      "Creatine Monohydrate"
+    ],
+    "aliases": [
+      "methylguanidoacetic acid"
+    ],
+    "wikidata_qid": "Q194091"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Performance enhancement",
       "Neuroprotection",
@@ -26,74 +26,159 @@
       "Neurotransmission support",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Creapure",
-      "Creatine Monohydrate"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Sports Medicine",
-      "Neurology",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q194091"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Muscle strength and exercise performance",
-      "Neuroprotection (experimental)",
-      "Cognitive support in aging and neurological disorders"
-    ],
-    "off_label_uses": [
-      "Adjunctive treatment for depression",
-      "Traumatic brain injury recovery",
-      "Bipolar disorder (augmentation)",
-      "Parkinson’s disease support"
-    ],
-    "contraindications": [
-      "Severe renal impairment",
-      "Caution in patients with kidney disease"
-    ],
-    "monitoring_required": [
-      "Renal function (creatinine, eGFR) in at-risk populations"
-    ],
-    "efficacy_rating": {
-      "exercise_performance": 5,
-      "mood_support": 3,
-      "cognitive_support": 3,
-      "neuroprotection": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Creatine",
-      "Creatine Monohydrate",
-      "Phosphocreatine"
-    ],
-    "synonyms": [
-      "methylguanidoacetic acid"
-    ],
-    "common_misspellings": [
-      "creetin",
-      "creeteen",
-      "createn"
+    "tags": [
+      "nootropic",
+      "neuroprotection",
+      "antidepressant augmentation",
+      "energy metabolism",
+      "sports nutrition"
     ]
+  },
+  "summary": "A naturally occurring compound stored in muscle and brain tissue that supports cellular energy production. Supplementation is widely used for athletic performance and is being investigated for neuropsychiatric and cognitive benefits.",
+  "description": "Creatine is a nitrogenous organic acid synthesized from amino acids and stored primarily in skeletal muscle and the brain as phosphocreatine. It plays a critical role in the ATP-phosphocreatine energy system, rapidly regenerating ATP during high-demand states. Supplementation is well established in sports and exercise performance, but emerging evidence supports its potential for neuroprotection, antidepressant augmentation, cognitive enhancement, and neurological disorders such as Parkinson’s disease, ALS, and traumatic brain injury.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "muscle-strength-and-exercise-performance",
+          "condition_name": "Muscle strength and exercise performance",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neuroprotection-experimental",
+          "condition_name": "Neuroprotection (experimental)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-support-in-aging-and-neurological-disorders",
+          "condition_name": "Cognitive support in aging and neurological disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-treatment-for-depression",
+          "condition_name": "Adjunctive treatment for depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "traumatic-brain-injury-recovery",
+          "condition_name": "Traumatic brain injury recovery",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "bipolar-disorder-augmentation",
+          "condition_name": "Bipolar disorder (augmentation)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "parkinson-s-disease-support",
+          "condition_name": "Parkinson’s disease support",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "exercise_performance": {
+          "rating": 5
+        },
+        "mood_support": {
+          "rating": 3
+        },
+        "cognitive_support": {
+          "rating": 3
+        },
+        "neuroprotection": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Water retention"
+        },
+        {
+          "effect": "Weight gain"
+        },
+        {
+          "effect": "GI upset (bloating, diarrhea)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare renal stress in predisposed individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe renal impairment"
+        },
+        {
+          "contraindication": "Caution in patients with kidney disease"
+        }
+      ],
+      "precautions": [
+        "Ensure adequate hydration during supplementation.",
+        "Monitor kidney function in patients with renal risk factors."
+      ],
+      "interactions": [
+        {
+          "interactant": "Nephrotoxic drugs",
+          "mechanism": "Potential additive renal strain",
+          "action": "Monitor renal function"
+        },
+        {
+          "interactant": "Caffeine (high doses)",
+          "mechanism": "Mixed evidence on interaction with performance benefits",
+          "action": "Consider moderation"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Renal function in at-risk patients"
+        },
+        {
+          "parameter": "Body weight and hydration status"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient evidence; avoid unless medically indicated",
+        "lactation": "Safety not established",
+        "pediatric": "Limited safety data; not recommended for general use",
+        "geriatric": "Well tolerated; may support muscle and cognitive function"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid derivative",
+        "natural_source": "Endogenously synthesized (arginine, glycine, methionine); dietary sources include meat and fish",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -210,6 +295,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Creatine",
+      "url": "https://examine.com/supplements/creatine/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Roitman S, Green T, Osher Y, et al. Creatine monohydrate in resistant depression: a preliminary study. J Clin Psychiatry. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17592906/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Persky AM, Brazeau GA. Clinical pharmacology of the dietary supplement creatine monohydrate. Pharmacol Rev. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11502892/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Creatine",
+      "Creatine Monohydrate",
+      "Phosphocreatine"
+    ],
+    "synonyms": [
+      "methylguanidoacetic acid"
+    ],
+    "common_misspellings": [
+      "creetin",
+      "creeteen",
+      "createn"
+    ]
+  },
   "seo": {
     "title": "Creatine: Beyond Sports – Cognitive and Mood Benefits",
     "description": "Creatine is a well-studied supplement for energy metabolism, exercise, and emerging psychiatric uses. Learn about its mechanisms, dosing, and neuropsychiatric potential.",

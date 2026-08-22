@@ -1,80 +1,223 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "suvorexant-belsomra",
-  "type": "medication",
-  "name": "Suvorexant (Belsomra)",
-  "summary": "Prescription sleep medication for insomnia (trouble falling asleep and/or staying asleep). Works by turning down the brain’s “wake drive,” but can cause next-day sleepiness, vivid dreams, and rare sleep-walking/sleep-driving behaviors.",
-  "description": "Belsomra is a nightly, as-needed insomnia medication you take within 30 minutes of bedtime (only when you can stay in bed for at least 7 hours). It can help with sleep onset and sleep maintenance. Common side effects include drowsiness, headache, dizziness, and abnormal dreams. It can worsen depression in some people and may trigger rare REM-related effects like sleep paralysis or hallucinations. Avoid alcohol and other sedatives. If insomnia doesn’t improve after 7–10 days, it’s a sign you may need a deeper medical/psychiatric reassessment—not just a stronger sleep med.",
-  "patient_summary": "Belsomra helps with falling asleep and staying asleep by blocking orexin (a wakefulness signal). Take it within 30 minutes of bedtime only when you can sleep at least 7 hours. Expect possible next-day grogginess and vivid dreams. Rarely, people can do things in their sleep (sleep-walking, sleep-driving) and not remember it—stop the medication and call your prescriber if that happens. Avoid alcohol and other sedatives.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "suvorexant-belsomra",
+    "name": "Suvorexant (Belsomra)",
+    "generic_name": "suvorexant",
+    "brand_names": [
+      "Belsomra"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Orexin Receptor Antagonist",
       "Hypnotic (Miscellaneous)"
-    ],
-    "brand_names": [
-      "Belsomra"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": false,
-    "fda_approval_year": 2014,
-    "pharmacologic_category": "Hypnotic, Miscellaneous; Orexin Receptor Antagonist",
-    "published_date": "2025-12-15T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset and/or sleep maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for insomnia characterized by difficulty falling asleep and/or staying asleep. Best outcomes usually come from pairing medication with behavioral insomnia treatment (like CBT-I) and sleep schedule work."
-      },
-      {
-        "slug": "depression",
-        "relationship": "caution",
-        "context": "Use caution if you have depression—some people experience worsening mood or suicidal thoughts on hypnotics. Lowest effective dose and close follow-up matter."
-      },
-      {
-        "slug": "obstructive-sleep-apnea",
-        "relationship": "caution",
-        "context": "Use caution in sleep-disordered breathing or significant respiratory disease. If you snore loudly, stop breathing during sleep, or feel unusually sleepy in the day, get evaluated."
-      }
-    ],
-    "contraindications": [
-      "Narcolepsy",
-      "Hypersensitivity to suvorexant or any component of the formulation (noted in some non-US labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Improvement in sleep onset and sleep maintenance",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Belsomra is approved for insomnia when falling asleep and/or staying asleep is the problem. In long-term data, some people maintain benefit over extended use, but it’s still smart to treat the root cause of insomnia instead of relying on nightly medication forever.",
-      "citation_tag": "FDA Label"
+  "summary": "Prescription sleep medication for insomnia (trouble falling asleep and/or staying asleep). Works by turning down the brain’s “wake drive,” but can cause next-day sleepiness, vivid dreams, and rare sleep-walking/sleep-driving behaviors.",
+  "description": "Belsomra is a nightly, as-needed insomnia medication you take within 30 minutes of bedtime (only when you can stay in bed for at least 7 hours). It can help with sleep onset and sleep maintenance. Common side effects include drowsiness, headache, dizziness, and abnormal dreams. It can worsen depression in some people and may trigger rare REM-related effects like sleep paralysis or hallucinations. Avoid alcohol and other sedatives. If insomnia doesn’t improve after 7–10 days, it’s a sign you may need a deeper medical/psychiatric reassessment—not just a stronger sleep med.",
+  "patient_summary": "Belsomra helps with falling asleep and staying asleep by blocking orexin (a wakefulness signal). Take it within 30 minutes of bedtime only when you can sleep at least 7 hours. Expect possible next-day grogginess and vivid dreams. Rarely, people can do things in their sleep (sleep-walking, sleep-driving) and not remember it—stop the medication and call your prescriber if that happens. Avoid alcohol and other sedatives.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for insomnia characterized by difficulty falling asleep and/or staying asleep. Best outcomes usually come from pairing medication with behavioral insomnia treatment (like CBT-I) and sleep schedule work.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication",
+          "context": "Use caution if you have depression—some people experience worsening mood or suicidal thoughts on hypnotics. Lowest effective dose and close follow-up matter."
+        },
+        {
+          "condition_slug": "obstructive-sleep-apnea",
+          "condition_name": "Obstructive Sleep Apnea",
+          "relationship": "secondary_indication",
+          "context": "Use caution in sleep-disordered breathing or significant respiratory disease. If you snore loudly, stop breathing during sleep, or feel unusually sleepy in the day, get evaluated."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Bioavailability ~82%; absorption can be delayed with food and decreases at higher doses",
-      "bioavailability": "82%",
-      "onset": "~30 minutes (can feel slower if taken with or right after food)",
-      "peak_plasma": "~2 hours (range: 30 minutes to 6 hours); delayed ~1.5 hours with a meal",
-      "half_life": "~12 hours (terminal half-life ~15 hours; can be longer with moderate hepatic impairment)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Primarily hepatic via CYP3A4 (major) with minor CYP2C19; hydroxy-suvorexant metabolite is inactive",
-      "excretion": "Feces (~66%); urine (~23%)",
-      "protein_binding": ">99%",
-      "food_effect": "Meal delays time to peak and can delay onset; for faster sleep onset, avoid taking with or immediately after food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "~30 minutes (can feel slower if taken with or right after food)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Daytime sleepiness",
+          "incidence": "2% to 7% (reported in labeling; more common in females)",
+          "notes": "This is the big one. If you don’t get a full night in bed, or you take it with food, you’re more likely to feel groggy the next day. If you drive for work or operate machinery, be extra cautious."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "7% (reported in labeling; more common in females)",
+          "notes": "Usually mild, sometimes dose-related. If headaches become persistent or severe, it’s worth reassessing dose and sleep schedule."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "3%",
+          "notes": "Can show up at night (bathroom trips) or in the morning. Get up slowly and be careful with falls—especially if you’re older or taking other sedating meds."
+        },
+        {
+          "effect": "Abnormal dreams",
+          "incidence": "2% (more common in females)",
+          "notes": "Dreams can feel vivid, intense, or strange. If it’s tolerable, it’s usually just annoying. If it’s distressing or triggers worsening mood, that’s a reason to stop or switch."
+        },
+        {
+          "effect": "Dry mouth",
+          "incidence": "2% (more common in females)",
+          "notes": "Hydration, sugar-free gum, or mouth rinse can help. If dry mouth becomes severe, talk with your prescriber."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "2%",
+          "notes": "Usually mild. If persistent, consider timing, diet, and other meds that may be contributing."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors: sleep-walking, sleep-driving, preparing food, making calls, or having sex while not fully awake—often with no memory afterward. Stop immediately and contact your prescriber."
+        },
+        {
+          "risk": "Mood worsening: exacerbation of depression, suicidal ideation—especially in people with depression or significant mood instability. Use the smallest effective dose and keep close follow-up."
+        },
+        {
+          "risk": "REM-related events: sleep paralysis, hypnagogic/hypnopompic hallucinations, and cataplexy-like lower extremity weakness (leg weakness can happen at night or during the day)."
+        },
+        {
+          "risk": "CNS depression and next-day impairment: slowed reaction time, poor judgment, increased accident risk—especially if you combine with other sedatives or don’t get enough sleep time."
+        },
+        {
+          "risk": "Respiratory risk in vulnerable people: caution if you have respiratory compromise (severe COPD or severe OSA)."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Narcolepsy"
+        },
+        {
+          "contraindication": "Hypersensitivity to suvorexant or any component of the formulation (noted in some non-US labeling)"
+        }
+      ],
+      "precautions": [
+        "Contraindicated in narcolepsy (it targets the orexin system tied to wakefulness)",
+        "CNS depression: can impair driving, reaction time, and decision-making the next day",
+        "Complex sleep behaviors (sleep-walking, sleep-driving, eating, calling people, sex) can occur and you may not remember it—stop immediately if this happens",
+        "REM-related effects may occur: sleep paralysis, hallucinations around sleep-wake transitions, and cataplexy-like leg weakness",
+        "Depression risk: hypnotics can worsen depression or suicidal thinking in some people—use caution and keep doses minimal",
+        "Respiratory caution: use carefully in people with significant breathing issues (severe COPD or severe obstructive sleep apnea hasn’t been well studied)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: worsened sedation, impaired coordination/judgment, and higher risk of dangerous sleep behaviors.",
+          "action": "Avoid. If you drink, skip Belsomra that night."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, opioids, sedating antihistamines, muscle relaxants, other sleep meds)",
+          "mechanism": "More sedation, more next-day impairment, higher fall risk, and higher risk of complex sleep behaviors.",
+          "action": "Avoid stacking sedatives unless your prescriber explicitly instructs it. If combined, use the lowest effective doses and monitor next-day functioning."
+        },
+        {
+          "interactant": "Strong or moderate CYP3A inhibitors (some antifungals, certain antibiotics, some HIV/HCV meds, etc.)",
+          "mechanism": "Higher suvorexant exposure → more sedation, more next-day impairment, more adverse effects.",
+          "action": "Dose adjustments or avoidance may be needed. If you’re starting a new medication, ask specifically about CYP3A interactions."
+        },
+        {
+          "interactant": "CYP3A inducers (some seizure meds, rifampin, St. John’s wort)",
+          "mechanism": "Lower suvorexant levels → reduced sleep benefit.",
+          "action": "May make Belsomra feel like it “stopped working.” Consider alternatives rather than escalating without a plan."
+        },
+        {
+          "interactant": "Grapefruit or grapefruit juice",
+          "mechanism": "Can increase suvorexant levels and side effects.",
+          "action": "Avoid grapefruit products, or use extra caution and consider lower dosing if grapefruit exposure is unavoidable."
+        },
+        {
+          "interactant": "Food (especially a meal right before dosing)",
+          "mechanism": "Delayed onset and delayed peak effect, which can make it feel inconsistent.",
+          "action": "For faster sleep onset, don’t take with or immediately after a meal."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Daytime alertness and next-day impairment: morning grogginess, slowed reaction time, driving safety, workplace function"
+        },
+        {
+          "parameter": "Sleep behaviors and safety: sleep-walking, sleep-driving, eating, phone calls, sex while not fully awake (stop immediately if any occur)"
+        },
+        {
+          "parameter": "Mood and suicidality: worsening depression, irritability, suicidal thoughts—especially in patients with depression or mood instability"
+        },
+        {
+          "parameter": "REM-related effects: sleep paralysis, hallucinations around sleep-wake transitions, cataplexy-like leg weakness"
+        },
+        {
+          "parameter": "Respiratory status in at-risk patients: worsening snoring, breathing pauses, daytime sleepiness; caution in significant COPD/OSA"
+        },
+        {
+          "parameter": "Tolerance, misuse, and dependence risk: especially with prolonged use, history of substance use disorder, or combining with alcohol/other sedatives"
+        },
+        {
+          "parameter": "Response pattern: sleep onset vs sleep maintenance improvement, total sleep time, awakenings, and whether insomnia is resolving or just being masked"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal studies have shown adverse events at certain exposures. In humans, pregnancy data are limited. If insomnia is related to anxiety, depression, trauma, or pregnancy discomfort, nonmedication approaches (CBT-I, schedule support, treating mood/anxiety) are often preferred. Use the lowest effective dose only if benefits clearly outweigh risks and alternatives are not workable.",
+        "lactation": "Suvorexant and a metabolite are present in human milk. Available data suggest low infant exposure (reported relative infant dose <1% in labeling; one small study estimated very low exposure as well). Even with low exposure, monitor the infant for excessive sleepiness, poor feeding, or unusual behavior. The decision to breastfeed while taking Belsomra should weigh infant exposure risk, breastfeeding benefits, and the benefit of treatment to the mother.",
+        "pediatric": "Very limited data. Off-label use has been reported in children ≥10 years and adolescents, typically 10–20 mg at bedtime (maximum 20 mg/day), with a strong preference for the lowest effective dose. Some patients discontinue due to abnormal dreams or excessive sleepiness. Use should be cautious, individualized, and typically reserved for specialist situations where behavioral approaches and underlying psychiatric drivers are being actively treated.",
+        "geriatric": "Refer to adult dosing. Older adults can be more sensitive to next-day impairment and falls. Use the lowest effective dose and reassess frequently for daytime sedation, balance issues, and cognitive slowing.",
+        "renal_impairment": "No dosage adjustment necessary based on adult data.",
+        "hepatic_impairment": "Mild to moderate impairment: no adjustment typically needed, but monitor for increased sedation. Severe impairment: use is not recommended (not studied)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2014
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Bioavailability ~82%; absorption can be delayed with food and decreases at higher doses",
+          "bioavailability": "82%",
+          "peak_plasma": "~2 hours (range: 30 minutes to 6 hours); delayed ~1.5 hours with a meal",
+          "half_life": "~12 hours (terminal half-life ~15 hours; can be longer with moderate hepatic impairment)",
+          "metabolism": "Primarily hepatic via CYP3A4 (major) with minor CYP2C19; hydroxy-suvorexant metabolite is inactive",
+          "excretion": "Feces (~66%); urine (~23%)",
+          "protein_binding": ">99%",
+          "food_effect": "Meal delays time to peak and can delay onset; for faster sleep onset, avoid taking with or immediately after food"
+        },
+        "dosing": {
+          "titration": "Belsomra is taken once nightly, as needed, right before bed—only when you can stay in bed for at least 7 hours. Start low and only increase if you truly need it and you’re not getting next-day impairment."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Belsomra is not a benzodiazepine and it’s not typically associated with dangerous withdrawal the way benzos can be. Most people can stop it without a formal taper. That said, if you’ve been taking it nightly for a long time, you may notice rebound insomnia (sleep feels worse for a bit) just because your brain got used to having a sleep aid onboard."
+        }
+      }
     }
   },
   "sections": [
@@ -94,7 +237,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People describe Belsomra as “turning down wakefulness” more than “knocking you out.” Here are the common themes:",
       "items": [
         {
           "category": "Sleep comes easier (especially staying asleep)",
@@ -131,7 +273,8 @@
           ],
           "note": "If you ever sleep-walk, sleep-drive, or do activities while not fully awake, stop the medication and contact your prescriber immediately."
         }
-      ]
+      ],
+      "intro": "People describe Belsomra as “turning down wakefulness” more than “knocking you out.” Here are the common themes:"
     },
     {
       "type": "onset_duration",
@@ -147,10 +290,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Belsomra can help you fall asleep and/or stay asleep, especially when nighttime wakefulness feels like the main problem. But it’s not magic—and if your insomnia is being driven by anxiety loops, depression, trauma nightmares, late-night screens, irregular schedules, substances, or untreated sleep apnea, you’ll get a lot more traction by treating the root cause too.",
       "metric": "Sleep onset and sleep maintenance benefit",
       "value": "Varies by person",
       "comparison": "Not applicable for this medication.",
-      "text": "Belsomra can help you fall asleep and/or stay asleep, especially when nighttime wakefulness feels like the main problem. But it’s not magic—and if your insomnia is being driven by anxiety loops, depression, trauma nightmares, late-night screens, irregular schedules, substances, or untreated sleep apnea, you’ll get a lot more traction by treating the root cause too.",
       "clinical_details": "Longer-term experience suggests some people maintain benefit over extended use, but insomnia meds are usually best as a targeted tool—ideally paired with CBT-I and a plan to avoid drifting into indefinite nightly use unless the benefits clearly outweigh the risks.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -241,7 +384,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Belsomra is mainly metabolized by CYP3A4. Medications or foods that change CYP3A activity can push levels up (more side effects) or down (less benefit).",
       "items": [
         {
           "with": "Alcohol",
@@ -273,7 +415,8 @@
           "risk": "Delayed onset and delayed peak effect, which can make it feel inconsistent.",
           "action": "For faster sleep onset, don’t take with or immediately after a meal."
         }
-      ]
+      ],
+      "intro": "Belsomra is mainly metabolized by CYP3A4. Medications or foods that change CYP3A activity can push levels up (more side effects) or down (less benefit)."
     },
     {
       "type": "tapering",
@@ -342,21 +485,6 @@
       "text": "Belsomra can be a reasonable option when insomnia is persistent and you’ve already addressed the basics (sleep schedule, screens, caffeine, alcohol, nighttime worry loops) and/or tried evidence-based behavioral treatment like CBT-I. It’s not a substitute for treating anxiety, depression, PTSD nightmares, circadian rhythm disruption, or sleep apnea—because those will keep re-breaking sleep no matter what pill you use. If you need an insomnia med beyond a few weeks, it usually means the underlying cause still needs attention."
     }
   ],
-  "seo": {
-    "title": "Suvorexant (Belsomra): Uses, Dosage, Side Effects & Sleep Safety",
-    "description": "Belsomra (suvorexant) for insomnia: dosing (10–20 mg at bedtime as needed), how fast it works, next-day grogginess, vivid dreams, rare sleep-walking/sleep-driving, interactions, and who should avoid it (narcolepsy, severe liver disease).",
-    "canonical": "[https://www.heypsych.com/treatments/suvorexant-belsomra](https://www.heypsych.com/treatments/suvorexant-belsomra)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Belsomra used for?",
@@ -410,5 +538,20 @@
       "q": "What if my insomnia doesn’t improve after a week?",
       "a": "If sleep doesn’t improve after 7–10 days, that’s a flag to reassess what’s causing the insomnia. Persistent insomnia often has an underlying driver—anxiety loops, depression, trauma, circadian rhythm problems, substances, medical issues, or sleep apnea—and fixing that driver is what creates durable sleep."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Suvorexant (Belsomra): Uses, Dosage, Side Effects & Sleep Safety",
+    "description": "Belsomra (suvorexant) for insomnia: dosing (10–20 mg at bedtime as needed), how fast it works, next-day grogginess, vivid dreams, rare sleep-walking/sleep-driving, interactions, and who should avoid it (narcolepsy, severe liver disease).",
+    "canonical": "[https://www.heypsych.com/treatments/suvorexant-belsomra](https://www.heypsych.com/treatments/suvorexant-belsomra)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

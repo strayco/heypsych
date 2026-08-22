@@ -316,19 +316,19 @@ export default function ProvidersPage() {
   ].filter(Boolean).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         {/* Back Button + Title Row */}
         <div className="mb-4 flex items-center justify-between">
           <Link href="/">
-            <Button variant="ghost" className="group">
+            <Button variant="ghost" className="group text-label-secondary hover:text-label-primary hover:bg-surface-grouped">
               <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Back to Home
             </Button>
           </Link>
 
-          <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
+            <span className="bg-linear-to-r from-positive-400 to-accent-400 bg-clip-text text-transparent">
               Psychiatrists
             </span>
           </h1>
@@ -342,33 +342,30 @@ export default function ProvidersPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 text-center"
         >
-          <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-600">
-            Find board-certified psychiatrists in your area. Psychiatrists are medical doctors who
+          <p className="mx-auto mb-3 max-w-2xl text-sm text-label-tertiary">
+            Find psychiatrists in your area. Psychiatrists are medical doctors who
             can prescribe medication and provide comprehensive mental health treatment.
           </p>
 
-          {/* Quick Stats */}
-          <div className="mb-4 flex items-center justify-center gap-4 text-xs text-slate-500">
-            <div className="flex items-center gap-1.5">
-              {isLoading && hasSearched ? (
-                <div className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-green-500 border-t-transparent"></div>
-              ) : (
-                <>
-                  <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
-                  {hasSearched ? totalCount.toLocaleString() : "68,945"}{" "}
-                  {hasSearched && totalCount > 0 ? "Matching" : "Total"} Psychiatrists
-                </>
-              )}
+          {/* Search Stats - only shown after search */}
+          {hasSearched && (
+            <div className="mb-4 flex items-center justify-center gap-4 text-xs text-label-primary0">
+              <div className="flex items-center gap-1.5">
+                {isLoading ? (
+                  <div className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-positive-500 border-t-transparent"></div>
+                ) : (
+                  <>
+                    <div className="h-1.5 w-1.5 rounded-full bg-positive-500"></div>
+                    {totalCount.toLocaleString()} Matching Psychiatrists
+                  </>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="h-1.5 w-1.5 rounded-full bg-label-tertiary"></div>
+                Data from NPPES
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-              Board-Certified
-            </div>
-            <div className="flex items-center gap-1.5">
-              <div className="h-1.5 w-1.5 rounded-full bg-purple-500"></div>
-              Updated Oct 2025
-            </div>
-          </div>
+          )}
         </motion.div>
 
         {/* Search and Filters */}
@@ -378,18 +375,18 @@ export default function ProvidersPage() {
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <Card>
+          <Card className="border-separator bg-surface">
             <CardContent className="p-6">
               {/* Search Bar */}
               <div className="relative mb-6">
-                <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-neutral-600" />
+                <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-label-tertiary" />
                 <Input
                   type="text"
                   placeholder="Search by name"
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onKeyDown={handleSearchKeyDown}
-                  className="h-12 pl-10 text-lg"
+                  className="h-12 pl-10 text-lg bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
                 />
                 <Button
                   onClick={handleSearch}
@@ -418,8 +415,8 @@ export default function ProvidersPage() {
 
                 {/* Loading indicator */}
                 {isLoading && (
-                  <div className="flex items-center space-x-2 text-neutral-700">
-                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"></div>
+                  <div className="flex items-center space-x-2 text-label-secondary">
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-accent-500 border-t-transparent"></div>
                     <span className="text-sm">Loading...</span>
                   </div>
                 )}
@@ -450,18 +447,18 @@ export default function ProvidersPage() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="border-t pt-4"
+                    className="border-t border-separator pt-4"
                   >
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                       {/* Location Filters */}
                       <div className="space-y-3">
-                        <label className="mb-2 block text-sm font-medium text-neutral-800">
+                        <label className="mb-2 block text-sm font-medium text-label-secondary">
                           Location
                         </label>
 
                         {/* State Filter */}
                         <div>
-                          <label htmlFor="state-filter" className="mb-1 block text-xs text-neutral-800">
+                          <label htmlFor="state-filter" className="mb-1 block text-xs text-label-secondary">
                             State
                           </label>
                           <select
@@ -479,7 +476,7 @@ export default function ProvidersPage() {
                                 handleSearch();
                               }
                             }}
-                            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="w-full rounded-md border border-separator bg-surface-grouped px-3 py-2 text-sm text-label-primary focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500"
                           >
                             <option value="">All States</option>
                             <option value="AL">Alabama</option>
@@ -537,7 +534,7 @@ export default function ProvidersPage() {
 
                         {/* City Filter */}
                         <div>
-                          <label htmlFor="city-filter" className="mb-1 block text-xs text-neutral-800">
+                          <label htmlFor="city-filter" className="mb-1 block text-xs text-label-secondary">
                             City
                           </label>
                           <Input
@@ -549,13 +546,13 @@ export default function ProvidersPage() {
                               setCityFilter(e.target.value);
                               cityFilterRef.current = e.target.value; // Update ref synchronously
                             }}
-                            className="h-9 text-sm"
+                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
                           />
                         </div>
 
                         {/* Zip Code Filter */}
                         <div>
-                          <label htmlFor="zip-filter" className="mb-1 block text-xs text-neutral-800">
+                          <label htmlFor="zip-filter" className="mb-1 block text-xs text-label-secondary">
                             Zip Code
                           </label>
                           <Input
@@ -569,7 +566,7 @@ export default function ProvidersPage() {
                               setZipFilter(value);
                               zipFilterRef.current = value; // Update ref synchronously
                             }}
-                            className="h-9 text-sm"
+                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
                             maxLength={5}
                           />
                         </div>
@@ -577,17 +574,17 @@ export default function ProvidersPage() {
 
                       {/* Specialty Filter */}
                       <div>
-                        <label className="mb-2 block text-sm font-medium text-neutral-800">
+                        <label className="mb-2 block text-sm font-medium text-label-secondary">
                           Specialties
                         </label>
-                        <div className="max-h-60 overflow-y-auto rounded-md border border-gray-300 bg-white p-3">
+                        <div className="max-h-60 overflow-y-auto rounded-md border border-separator bg-surface-grouped p-3">
                           <div className="space-y-2">
                             {allAvailableSpecialties.map((specialty) => {
                               const isSelected = selectedSpecialties.includes(specialty);
                               return (
                                 <label
                                   key={specialty}
-                                  className="flex cursor-pointer items-center space-x-2 rounded p-1 hover:bg-neutral-50"
+                                  className="flex cursor-pointer items-center space-x-2 rounded p-1 hover:bg-fill-secondary"
                                 >
                                   <input
                                     type="checkbox"
@@ -601,9 +598,9 @@ export default function ProvidersPage() {
                                         );
                                       }
                                     }}
-                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    className="h-4 w-4 rounded border-separator bg-fill-tertiary text-accent-500 focus:ring-accent-500"
                                   />
-                                  <span className="text-sm text-neutral-900">
+                                  <span className="text-sm text-label-secondary">
                                     {specialtyNames[specialty] || specialty}
                                   </span>
                                 </label>
@@ -613,10 +610,10 @@ export default function ProvidersPage() {
 
                           {/* Quick actions */}
                           {selectedSpecialties.length > 0 && (
-                            <div className="mt-3 border-t border-neutral-200 pt-2">
+                            <div className="mt-3 border-t border-separator pt-2">
                               <button
                                 onClick={() => setSelectedSpecialties([])}
-                                className="text-xs text-neutral-700 hover:text-neutral-800"
+                                className="text-xs text-label-tertiary hover:text-label-secondary"
                               >
                                 Clear all ({selectedSpecialties.length})
                               </button>
@@ -639,7 +636,7 @@ export default function ProvidersPage() {
                           <Button
                             variant="ghost"
                             onClick={clearFilters}
-                            className="w-full text-neutral-800 hover:text-neutral-900"
+                            className="w-full text-label-secondary hover:text-label-primary hover:bg-fill-secondary"
                           >
                             <X className="mr-2 h-4 w-4" />
                             Clear All ({activeFiltersCount})
@@ -664,16 +661,16 @@ export default function ProvidersPage() {
           >
             <div className="flex items-center justify-between">
               {totalCount > 0 && (
-                <p className="text-neutral-800">
-                  Showing <span className="font-semibold">{((currentPage - 1) * PROVIDERS_PER_PAGE) + 1}-{Math.min(currentPage * PROVIDERS_PER_PAGE, totalCount)}</span> of{" "}
-                  <span className="font-semibold">{totalCount.toLocaleString()}</span> psychiatrists
+                <p className="text-label-secondary">
+                  Showing <span className="font-semibold text-label-primary">{((currentPage - 1) * PROVIDERS_PER_PAGE) + 1}-{Math.min(currentPage * PROVIDERS_PER_PAGE, totalCount)}</span> of{" "}
+                  <span className="font-semibold text-label-primary">{totalCount.toLocaleString()}</span> psychiatrists
                 </p>
               )}
 
               {/* Active Filters Display */}
             {activeFiltersCount > 0 && (
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-neutral-800">Active filters:</span>
+                <span className="text-sm text-label-secondary">Active filters:</span>
                 <div className="flex flex-wrap gap-2">
                   {searchQuery && (
                     <Badge variant="outline" className="flex items-center space-x-1">
@@ -744,13 +741,13 @@ export default function ProvidersPage() {
           transition={{ delay: 0.3 }}
         >
           {!hasSearched ? (
-            <Card className="py-12 text-center">
+            <Card className="py-12 text-center border-separator bg-surface">
               <CardContent>
-                <Users className="mx-auto mb-4 h-16 w-16 text-gray-300" />
-                <h3 className="mb-2 text-xl font-semibold text-neutral-900">
+                <Users className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">
                   Ready to find psychiatrists
                 </h3>
-                <p className="mb-4 text-neutral-800">
+                <p className="mb-4 text-label-secondary">
                   Use the filters above to search by location, specialty, or name. Click "Apply Filters" or "Search" to see results.
                 </p>
                 <Button onClick={handleSearch} size="lg" className="mt-2">
@@ -760,46 +757,46 @@ export default function ProvidersPage() {
               </CardContent>
             </Card>
           ) : isLoading ? (
-            <Card className="py-16 text-center">
+            <Card className="py-16 text-center border-separator bg-surface">
               <CardContent>
                 <div className="flex flex-col items-center space-y-6">
                   {/* Animated Loading Spinner */}
                   <div className="relative">
-                    <div className="h-20 w-20 animate-spin rounded-full border-8 border-blue-200 border-t-blue-600"></div>
+                    <div className="h-20 w-20 animate-spin rounded-full border-8 border-separator border-t-accent-500"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Users className="h-8 w-8 text-blue-600" />
+                      <Users className="h-8 w-8 text-accent" />
                     </div>
                   </div>
 
                   {/* Loading Text */}
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-neutral-900">Searching Psychiatrists...</h3>
-                    <p className="text-base text-neutral-800">
-                      Searching through 69,000+ providers
+                    <h3 className="text-2xl font-bold text-label-primary">Searching Psychiatrists...</h3>
+                    <p className="text-base text-label-secondary">
+                      Searching NPPES provider database
                     </p>
-                    <p className="text-sm text-neutral-700">
+                    <p className="text-sm text-label-tertiary">
                       This may take a few seconds. Please wait...
                     </p>
                   </div>
 
                   {/* Progress Dots */}
                   <div className="flex space-x-2">
-                    <div className="h-3 w-3 animate-bounce rounded-full bg-blue-600" style={{ animationDelay: '0ms' }}></div>
-                    <div className="h-3 w-3 animate-bounce rounded-full bg-blue-600" style={{ animationDelay: '150ms' }}></div>
-                    <div className="h-3 w-3 animate-bounce rounded-full bg-blue-600" style={{ animationDelay: '300ms' }}></div>
+                    <div className="h-3 w-3 animate-bounce rounded-full bg-accent-500" style={{ animationDelay: '0ms' }}></div>
+                    <div className="h-3 w-3 animate-bounce rounded-full bg-accent-500" style={{ animationDelay: '150ms' }}></div>
+                    <div className="h-3 w-3 animate-bounce rounded-full bg-accent-500" style={{ animationDelay: '300ms' }}></div>
                   </div>
                 </div>
               </CardContent>
             </Card>
           ) : filteredProviders.length === 0 ? (
-            <Card className="py-12 text-center">
+            <Card className="py-12 text-center border-separator bg-surface">
               <CardContent>
-                <AlertCircle className="mx-auto mb-4 h-12 w-12 text-neutral-600" />
-                <h3 className="mb-2 text-lg font-semibold text-neutral-900">No psychiatrists found</h3>
-                <p className="mb-4 text-neutral-800">
+                <AlertCircle className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
+                <h3 className="mb-2 text-lg font-semibold text-label-primary">No psychiatrists found</h3>
+                <p className="mb-4 text-label-secondary">
                   We couldn't find any psychiatrists matching your search criteria.
                 </p>
-                <div className="mb-6 text-sm text-neutral-700">
+                <div className="mb-6 text-sm text-label-tertiary">
                   <p className="mb-2">Try these tips:</p>
                   <ul className="mx-auto max-w-md list-inside list-disc space-y-1 text-left">
                     <li>Use only state filter instead of city or zip code</li>
@@ -857,11 +854,11 @@ export default function ProvidersPage() {
             </Button>
 
             <div className="flex items-center gap-2">
-              <span className="text-neutral-800">
+              <span className="text-label-secondary">
                 Page {currentPage} of {Math.ceil(totalCount / PROVIDERS_PER_PAGE)}
               </span>
-              <span className="text-neutral-600">•</span>
-              <span className="text-neutral-800">
+              <span className="text-label-primary0">•</span>
+              <span className="text-label-secondary">
                 {totalCount.toLocaleString()} total psychiatrists
               </span>
             </div>
@@ -884,12 +881,12 @@ export default function ProvidersPage() {
             transition={{ delay: 0.4 }}
             className="mt-12"
           >
-            <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-green-50">
+            <Card className="border-accent-500/30 bg-linear-to-r from-accent-900/30 to-positive-900/20 shadow-card-1">
               <CardContent className="p-8 text-center">
-                <h3 className="mb-2 text-xl font-semibold text-neutral-900">
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">
                   Can't find the right psychiatrist?
                 </h3>
-                <p className="mb-4 text-neutral-800">
+                <p className="mb-4 text-label-secondary">
                   We're always adding new providers to our directory. Check back soon or contact us
                   for help finding the right care.
                 </p>

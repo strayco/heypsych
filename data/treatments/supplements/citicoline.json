@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "citicoline",
-  "type": "supplement",
-  "name": "Citicoline (CDP-Choline)",
-  "summary": "A naturally occurring compound that supports phospholipid synthesis and increases brain choline availability, studied for cognitive enhancement, attention, and neuroprotection.",
-  "description": "Citicoline (cytidine-5’-diphosphocholine, or CDP-choline) is a dietary supplement and intermediate in the synthesis of phosphatidylcholine, a key component of neuronal membranes. It has been researched as a neuroprotective agent in stroke, traumatic brain injury, and neurodegenerative conditions. In psychiatry, citicoline is being studied for its effects on attention, working memory, and impulse control, with emerging evidence in ADHD, substance use disorders, and cognitive impairment. It is generally well tolerated, with minimal side effects.",
-  "category": "supplements",
-  "tags": [
-    "cognitive-enhancement",
-    "neuroprotection",
-    "adhd",
-    "memory"
-  ],
-  "metadata": {
-    "compound_type": "Nucleotide-derived supplement",
-    "natural_source": "Synthesized in the body; dietary precursor is choline",
+  "identity": {
+    "slug": "citicoline",
+    "name": "Citicoline (CDP-Choline)",
+    "generic_name": "citicoline",
+    "brand_names": [
+      "Cognizin",
+      "Somazina"
+    ],
+    "aliases": [
+      "Cytidine diphosphate choline",
+      "Somazina"
+    ],
+    "wikidata_qid": "Q418942"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cognitive enhancement",
       "Neuroprotection",
@@ -25,71 +28,150 @@
       "Neurotransmitter regulation",
       "Membrane repair"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Cognizin",
-      "Somazina"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Neurorehabilitation"
-    ],
-    "wikidata_qid": "Q418942"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cognitive enhancement",
-      "Attention support",
-      "Stroke recovery (adjunct)"
-    ],
-    "off_label_uses": [
-      "ADHD (adjunctive treatment)",
-      "Substance use disorders (cocaine, methamphetamine)",
-      "Neurodegenerative disorders"
-    ],
-    "contraindications": [
-      "Known hypersensitivity",
-      "Severe hypotension (rare concern)"
-    ],
-    "monitoring_required": [],
-    "efficacy_rating": {
-      "cognitive_enhancement": 3,
-      "adhd": 2,
-      "stroke_recovery": 3,
-      "substance_use": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Citicoline",
-      "CDP-Choline",
-      "Cognizin"
-    ],
-    "synonyms": [
-      "Cytidine diphosphate choline",
-      "Somazina"
-    ],
-    "common_misspellings": [
-      "citocline",
-      "citolene",
-      "cdp choline"
+    "tags": [
+      "cognitive-enhancement",
+      "neuroprotection",
+      "adhd",
+      "memory"
     ]
+  },
+  "summary": "A naturally occurring compound that supports phospholipid synthesis and increases brain choline availability, studied for cognitive enhancement, attention, and neuroprotection.",
+  "description": "Citicoline (cytidine-5’-diphosphocholine, or CDP-choline) is a dietary supplement and intermediate in the synthesis of phosphatidylcholine, a key component of neuronal membranes. It has been researched as a neuroprotective agent in stroke, traumatic brain injury, and neurodegenerative conditions. In psychiatry, citicoline is being studied for its effects on attention, working memory, and impulse control, with emerging evidence in ADHD, substance use disorders, and cognitive impairment. It is generally well tolerated, with minimal side effects.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "attention-support",
+          "condition_name": "Attention support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stroke-recovery-adjunct",
+          "condition_name": "Stroke recovery (adjunct)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adhd-adjunctive-treatment",
+          "condition_name": "ADHD (adjunctive treatment)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "substance-use-disorders-cocaine-methamphetamine",
+          "condition_name": "Substance use disorders (cocaine, methamphetamine)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neurodegenerative-disorders",
+          "condition_name": "Neurodegenerative disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cognitive_enhancement": {
+          "rating": 3
+        },
+        "adhd": {
+          "rating": 2
+        },
+        "stroke_recovery": {
+          "rating": 3
+        },
+        "substance_use": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Insomnia"
+        },
+        {
+          "effect": "Gastrointestinal upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypotension (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity"
+        },
+        {
+          "contraindication": "Severe hypotension (rare concern)"
+        }
+      ],
+      "precautions": [
+        "May cause mild overstimulation in sensitive individuals.",
+        "Limited data on long-term use beyond 6 months."
+      ],
+      "interactions": [
+        {
+          "interactant": "Cholinergic agents (donepezil, rivastigmine)",
+          "mechanism": "Additive cholinergic effects",
+          "action": "Monitor for cholinergic side effects"
+        },
+        {
+          "interactant": "Stimulants (amphetamine, methylphenidate)",
+          "mechanism": "Possible additive effects on attention and arousal",
+          "action": "Monitor response"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Clinical response in attention, cognition, and mood"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid high-dose supplementation",
+        "lactation": "Unknown safety; use caution",
+        "pediatric": "Not well studied; limited use in ADHD trials",
+        "geriatric": "Generally well tolerated; may aid cognitive decline"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Nucleotide-derived supplement",
+        "natural_source": "Synthesized in the body; dietary precursor is choline",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -202,6 +284,36 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Secades JJ. Citicoline: pharmacological and clinical review. CNS Drugs. 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11888342/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com – Citicoline",
+      "url": "https://examine.com/supplements/citicoline/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Citicoline",
+      "CDP-Choline",
+      "Cognizin"
+    ],
+    "synonyms": [
+      "Cytidine diphosphate choline",
+      "Somazina"
+    ],
+    "common_misspellings": [
+      "citocline",
+      "citolene",
+      "cdp choline"
+    ]
+  },
   "seo": {
     "title": "Citicoline (CDP-Choline): Cognitive and Neuroprotective Supplement",
     "description": "Learn about citicoline’s role in cognitive enhancement, attention, and neuroprotection. Includes dosing, evidence, safety, and psychiatric applications.",

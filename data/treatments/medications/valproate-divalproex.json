@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "valproate-divalproex",
-  "type": "medication",
-  "name": "Valproate (Divalproex, Valproic Acid)",
-  "summary": "Mood stabilizer and antiseizure medication used mainly for acute mania in bipolar disorder. Powerful but high-risk: carries boxed warnings for liver failure, pancreatitis, and major fetal harm.",
-  "description": "Valproate (often prescribed as Depakote) is a mood stabilizer and antiseizure medication. In psychiatry, it is used mainly for acute mania and mixed episodes in bipolar disorder, and sometimes for maintenance and migraine prevention. It calms overactive brain circuits by boosting GABA (a calming brain chemical) and modulating sodium channels and gene expression. Because it can cause life-threatening liver failure, pancreatitis, blood problems, and severe birth defects, it should only be used with careful monitoring, and is generally avoided in pregnancy if at all possible.",
-  "patient_summary": "Valproate (Depakote) is a mood stabilizer that can bring down severe manic symptoms and help keep mood steadier over time. It’s also an antiseizure drug. The trade-off is risk: it can injure the liver or pancreas, change blood counts, cause weight gain and tremor, and has a high risk of serious birth defects and developmental problems if taken during pregnancy. People on valproate need regular blood tests, reliable contraception if pregnancy is possible, and a slow taper if it ever needs to be stopped.",
-  "category": "medications/mood-stabilizers",
-  "metadata": {
-    "drug_classes": [
-      "Mood Stabilizer",
-      "Antiseizure Agent",
-      "Histone Deacetylase (HDAC) Inhibitor"
-    ],
+  "identity": {
+    "slug": "valproate-divalproex",
+    "name": "Valproate (Divalproex, Valproic Acid)",
+    "generic_name": "valproate",
     "brand_names": [
       "Depakote",
       "Depakote ER",
@@ -21,84 +13,269 @@
       "Generic valproic acid",
       "Generic divalproex sodium"
     ],
-    "administration_routes": [
-      "Oral",
-      "IV"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": null,
-    "generic_available": true,
-    "fda_approval_year": 1978,
-    "pharmacologic_category": "Antimanic Agent; Antiseizure Agent, Miscellaneous; HDAC Inhibitor",
-    "published_date": "2025-12-14T00:00:00Z",
-    "last_updated": "2025-12-14T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-14T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q9370638"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bipolar I Disorder – acute mania",
-      "Bipolar I Disorder – mixed episodes"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Common first-line or second-line option for acute mania and mixed states; often combined with an atypical antipsychotic."
-      },
-      {
-        "slug": "bipolar-depression",
-        "relationship": "off_label",
-        "context": "Sometimes used as part of a regimen for bipolar depression, but not a primary antidepressant treatment."
-      },
-      {
-        "slug": "focal-onset-seizures",
-        "relationship": "primary_treatment",
-        "context": "Approved antiseizure medication; seizure control is often relevant for psychiatric patients with comorbid epilepsy."
-      },
-      {
-        "slug": "generalized-onset-seizures",
-        "relationship": "primary_treatment",
-        "context": "Approved for absence and other generalized seizures; used when bipolar disorder and epilepsy co-occur."
-      },
-      {
-        "slug": "migraine",
-        "relationship": "primary_treatment",
-        "context": "Approved for migraine prevention but contraindicated for migraine prophylaxis in pregnancy and in people who could become pregnant without effective contraception."
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity to valproic acid, divalproex, or any component",
-      "Active hepatic disease or significant hepatic impairment",
-      "Known urea cycle disorders",
-      "Known mitochondrial disorders due to POLG mutations (eg, Alpers-Huttenlocher syndrome)",
-      "Children <2 years suspected of having POLG-related mitochondrial disease",
-      "Use for migraine prophylaxis in pregnant patients",
-      "Use for migraine prophylaxis in people of childbearing potential who are not using effective contraception"
-    ],
-    "efficacy_response": {
-      "metric": "Typical therapeutic serum range (bipolar mania)",
-      "percentage_value": null,
-      "comparison_data": null,
-      "patient_text": "For bipolar disorder, many people respond when total valproate levels are roughly in the 50–125 mcg/mL range, but the \"right\" level is individualized and based on symptom control and side effects.",
-      "citation_tag": null
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/mood-stabilizers",
+    "drug_classes": [
+      "Mood Stabilizer",
+      "Antiseizure Agent",
+      "Histone Deacetylase (HDAC) Inhibitor"
+    ]
+  },
+  "summary": "Mood stabilizer and antiseizure medication used mainly for acute mania in bipolar disorder. Powerful but high-risk: carries boxed warnings for liver failure, pancreatitis, and major fetal harm.",
+  "description": "Valproate (often prescribed as Depakote) is a mood stabilizer and antiseizure medication. In psychiatry, it is used mainly for acute mania and mixed episodes in bipolar disorder, and sometimes for maintenance and migraine prevention. It calms overactive brain circuits by boosting GABA (a calming brain chemical) and modulating sodium channels and gene expression. Because it can cause life-threatening liver failure, pancreatitis, blood problems, and severe birth defects, it should only be used with careful monitoring, and is generally avoided in pregnancy if at all possible.",
+  "patient_summary": "Valproate (Depakote) is a mood stabilizer that can bring down severe manic symptoms and help keep mood steadier over time. It’s also an antiseizure drug. The trade-off is risk: it can injure the liver or pancreas, change blood counts, cause weight gain and tremor, and has a high risk of serious birth defects and developmental problems if taken during pregnancy. People on valproate need regular blood tests, reliable contraception if pregnancy is possible, and a slow taper if it ever needs to be stopped.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Common first-line or second-line option for acute mania and mixed states; often combined with an atypical antipsychotic.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "focal-onset-seizures",
+          "condition_name": "Focal Onset Seizures",
+          "relationship": "primary_indication",
+          "context": "Approved antiseizure medication; seizure control is often relevant for psychiatric patients with comorbid epilepsy.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "generalized-onset-seizures",
+          "condition_name": "Generalized Onset Seizures",
+          "relationship": "primary_indication",
+          "context": "Approved for absence and other generalized seizures; used when bipolar disorder and epilepsy co-occur.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "migraine",
+          "condition_name": "Migraine",
+          "relationship": "primary_indication",
+          "context": "Approved for migraine prevention but contraindicated for migraine prophylaxis in pregnancy and in people who could become pregnant without effective contraception.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar Depression",
+          "relationship": "off_label",
+          "context": "Sometimes used as part of a regimen for bipolar depression, but not a primary antidepressant treatment."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed orally; multiple formulations (IR, DR, ER) with different release profiles.",
-      "bioavailability": "Extended-release: ~90% relative to IV and delayed-release.",
-      "onset": "Initial calming of manic symptoms often within several days of reaching therapeutic levels.",
-      "peak_plasma": "Typically 2–4 hours for delayed-release capsules; up to 17 hours for extended-release.",
-      "half_life": "About 9–19 hours in adults (longer in older adults, shorter in some children).",
-      "duration_IR": null,
-      "duration_XR": null,
-      "metabolism": "Extensive hepatic metabolism via glucuronidation and mitochondrial beta-oxidation; minor oxidative pathways produce reactive metabolites.",
-      "excretion": "Primarily in urine as metabolites; <3% unchanged drug.",
-      "protein_binding": "Highly protein-bound (~80–90%); free fraction increases with higher doses, low albumin, and kidney or liver impairment.",
-      "food_effect": "Food may delay absorption but does not significantly change the total amount absorbed."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Initial calming of manic symptoms often within several days of reaching therapeutic levels."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "IV"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Very common; often dose-related",
+          "notes": "You may feel more tired or slowed down, especially during titration or at higher levels. This can sometimes improve over time or with dose adjustments."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "Common",
+          "notes": "A fine shake in the hands is typical. Caffeine, stress, and higher doses make it worse. Sometimes dose reduction or beta-blockers are used to manage it."
+        },
+        {
+          "effect": "Gastrointestinal symptoms",
+          "incidence": "Very common (nausea, abdominal discomfort, diarrhea or constipation)",
+          "notes": "Taking the medication with food and making slow dose increases can help. Persistent or severe abdominal pain should be treated as urgent."
+        },
+        {
+          "effect": "Weight and metabolic changes",
+          "incidence": "Common (weight gain in a significant subset)",
+          "notes": "Increased appetite and gradual weight gain are frequent. Monitoring weight, diet, and activity early is crucial."
+        },
+        {
+          "effect": "Thrombocytopenia (low platelets)",
+          "incidence": "Up to about 1–2 in 10 in some series, often mild",
+          "notes": "Can increase bruising or bleeding tendency. Usually reversible with dose reduction or discontinuation; detected on routine blood work."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Acute or progressive liver failure (can be fatal)"
+        },
+        {
+          "risk": "Pancreatitis (can be fatal; sometimes hemorrhagic)"
+        },
+        {
+          "risk": "Hyperammonemic encephalopathy with confusion, lethargy, or behavior changes"
+        },
+        {
+          "risk": "Severe cutaneous reactions: SJS, TEN, and DRESS"
+        },
+        {
+          "risk": "Aplastic anemia, neutropenia, and other bone marrow suppression syndromes"
+        },
+        {
+          "risk": "Polycystic ovary syndrome, menstrual irregularities, and possible fertility effects"
+        },
+        {
+          "risk": "Significant teratogenicity: neural tube defects, craniofacial, cardiac, and limb malformations; lower IQ and increased autism/ADHD risk in exposed children"
+        },
+        {
+          "risk": "Reye-like syndrome and mitochondrial toxicity in susceptible individuals"
+        }
+      ],
+      "black_box_warning": "Serious or fatal hepatotoxicity has occurred, most often within the first 6 months and especially in young children and those on multiple antiseizure medications. Life-threatening pancreatitis and major fetal harm (including neural tube defects and decreased IQ) have been reported. Use in pregnancy is restricted to situations where no safer alternative exists.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to valproic acid, divalproex, or any component"
+        },
+        {
+          "contraindication": "Active hepatic disease or significant hepatic impairment"
+        },
+        {
+          "contraindication": "Known urea cycle disorders"
+        },
+        {
+          "contraindication": "Known mitochondrial disorders due to POLG mutations (eg, Alpers-Huttenlocher syndrome)"
+        },
+        {
+          "contraindication": "Children <2 years suspected of having POLG-related mitochondrial disease"
+        },
+        {
+          "contraindication": "Use for migraine prophylaxis in pregnant patients"
+        },
+        {
+          "contraindication": "Use for migraine prophylaxis in people of childbearing potential who are not using effective contraception"
+        }
+      ],
+      "precautions": [
+        "Hepatotoxicity: Early signs can be vague—fatigue, weakness, facial swelling, loss of appetite, nausea, vomiting, or a sudden loss of seizure control. Liver failure can progress rapidly.",
+        "Children <2 years: Markedly higher risk of fatal hepatotoxicity, especially with congenital metabolic disorders, severe seizure disorders, developmental delay, or organic brain disease.",
+        "Mitochondrial disease: People with POLG mutations (eg, Alpers-Huttenlocher syndrome) have a very high risk of acute liver failure and death; valproate is contraindicated.",
+        "Pancreatitis: Can present with abdominal pain, nausea, vomiting, and loss of appetite and may rapidly progress to hemorrhagic or fatal pancreatitis.",
+        "Hyperammonemic encephalopathy: Confusion, lethargy, slowed thinking, vomiting, or behavior changes can signal elevated ammonia—with or without liver failure.",
+        "Severe skin reactions: Rare but serious reactions like Stevens–Johnson syndrome (SJS), toxic epidermal necrolysis (TEN), and DRESS can occur.",
+        "Hematologic effects: Thrombocytopenia and other blood dyscrasias increase bleeding risk and may require dose changes or discontinuation.",
+        "Suicidality: Like other antiseizure drugs, valproate has been associated with increased suicidal thoughts and behaviors in a small subset of patients."
+      ],
+      "interactions": [
+        {
+          "interactant": "Other antiseizure medications (eg, carbamazepine, phenytoin, phenobarbital)",
+          "mechanism": "Complex bidirectional changes in drug levels; higher risk of sedation, liver toxicity, and blood problems.",
+          "action": "Use lower starting doses, monitor levels and side effects closely, and adjust one medication at a time."
+        },
+        {
+          "interactant": "Lamotrigine",
+          "mechanism": "Valproate significantly increases lamotrigine levels and the risk of serious rash (including SJS/TEN).",
+          "action": "Use much lower lamotrigine starting doses and a slower titration; stop both and seek urgent care if a concerning rash appears."
+        },
+        {
+          "interactant": "Topiramate",
+          "mechanism": "Increased risk of hyperammonemia and encephalopathy, even with normal liver tests.",
+          "action": "Monitor for confusion, lethargy, and vomiting; check ammonia if symptoms appear."
+        },
+        {
+          "interactant": "Atypical antipsychotics (eg, quetiapine, olanzapine, risperidone)",
+          "mechanism": "Additive sedation and metabolic burden; some combinations may change valproate levels or vice versa.",
+          "action": "Start low, go slow, monitor weight, metabolic labs, and overall sedation."
+        },
+        {
+          "interactant": "Enzyme-inducing antiseizure drugs (eg, carbamazepine, phenytoin)",
+          "mechanism": "May reduce valproate levels and increase clearance; can also add hepatic stress.",
+          "action": "Monitor levels and clinical response; dose adjustments often required."
+        },
+        {
+          "interactant": "Warfarin and other anticoagulants",
+          "mechanism": "Valproate can affect platelets and coagulation, increasing bleeding risk.",
+          "action": "Close monitoring of INR/coagulation and clinical signs of bleeding."
+        },
+        {
+          "interactant": "Alcohol and sedatives (eg, benzodiazepines, opioids)",
+          "mechanism": "Additive CNS depression, impaired judgment and coordination; with opioids, increased risk of respiratory depression.",
+          "action": "Limit or avoid alcohol; use the lowest effective doses of sedating medications and monitor closely."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver function tests (ALT, AST, bilirubin): at baseline and frequently during the first 6 months, then periodically."
+        },
+        {
+          "parameter": "Complete blood count with platelets: baseline and periodically to detect thrombocytopenia or other cytopenias."
+        },
+        {
+          "parameter": "Serum valproate levels: check trough levels after dose changes or if toxicity or nonresponse is suspected; consider free levels in hypoalbuminemia or kidney/liver impairment."
+        },
+        {
+          "parameter": "Serum ammonia: if there is unexplained lethargy, vomiting, confusion, or behavior change."
+        },
+        {
+          "parameter": "Weight, BMI, and metabolic parameters: monitor for weight gain and metabolic complications, especially when combined with antipsychotics."
+        },
+        {
+          "parameter": "Pregnancy status: before initiation and at reasonable intervals in people who could become pregnant; ongoing contraception counseling."
+        },
+        {
+          "parameter": "Mood and function: track manic, depressive, and mixed symptoms and daily functioning to ensure the medication is helping more than it harms."
+        },
+        {
+          "parameter": "Neurologic status: watch for tremor, parkinsonism, cognitive changes, or gait instability."
+        },
+        {
+          "parameter": "Signs of hypersensitivity: rash, fever, lymph node swelling, or multi-organ symptoms suggestive of DRESS or SJS/TEN."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Valproate is highly teratogenic: it markedly increases the risk of neural tube defects (like spina bifida), other major malformations, and decreased IQ and developmental disorders in exposed children. It should not be used for migraine prophylaxis in pregnancy, and should be avoided for epilepsy or bipolar disorder unless no safer effective alternative exists. If it must be continued, the lowest effective dose and slow-release formulations are preferred, along with high-dose folate and careful perinatal planning.",
+        "lactation": "Only a small fraction of valproate enters breast milk, and most studies have not shown clear harm, but isolated cases of liver and blood problems in infants have been reported. If a breastfeeding parent continues valproate, the infant should be monitored for jaundice, easy bruising or bleeding, sedation, and appropriate growth and development.",
+        "pediatric": "Under age 2, valproate carries a substantially higher risk of fatal hepatotoxicity, especially with neurologic or metabolic disorders or multiple antiseizure medications. In this age group, it is used only when absolutely necessary and with intensive monitoring. In older children and adolescents, seizure and mood indications are individualized, and long-term reproductive and metabolic risks must be considered.",
+        "geriatric": "Older adults clear valproate more slowly and are more prone to sedation, falls, and dehydration. Start low, go slow, and monitor cognition, gait, and nutritional status; consider alternatives when recurrent falls or cognitive decline are concerns.",
+        "renal_impairment": "No automatic dose adjustment is required in kidney impairment, but protein binding is reduced and free valproate levels may be higher than total levels suggest. Monitoring free levels, when available, is helpful in advanced kidney disease or dialysis.",
+        "hepatic_impairment": "Because valproate is hepatically metabolized and can itself injure the liver, it is contraindicated in significant liver disease. In mild impairment where benefits outweigh risks, only the lowest effective dose should be used with frequent monitoring of liver function and free valproate levels when albumin is low."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1978
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed orally; multiple formulations (IR, DR, ER) with different release profiles.",
+          "bioavailability": "Extended-release: ~90% relative to IV and delayed-release.",
+          "peak_plasma": "Typically 2–4 hours for delayed-release capsules; up to 17 hours for extended-release.",
+          "half_life": "About 9–19 hours in adults (longer in older adults, shorter in some children).",
+          "metabolism": "Extensive hepatic metabolism via glucuronidation and mitochondrial beta-oxidation; minor oxidative pathways produce reactive metabolites.",
+          "excretion": "Primarily in urine as metabolites; <3% unchanged drug.",
+          "protein_binding": "Highly protein-bound (~80–90%); free fraction increases with higher doses, low albumin, and kidney or liver impairment.",
+          "food_effect": "Food may delay absorption but does not significantly change the total amount absorbed."
+        },
+        "dosing": {
+          "titration": "All doses below are expressed as total daily valproic acid equivalents. Exact dosing must be individualized based on weight, age, comorbid conditions, and co-prescribed medications."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Valproate should not be stopped abruptly unless there is a life-threatening reaction such as severe liver injury, pancreatitis, or a serious rash."
+        }
+      }
     }
   },
   "sections": [
@@ -122,7 +299,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Notice",
-      "intro": "Experiences vary, but common themes among people taking valproate include:",
       "items": [
         {
           "category": "During Acute Mania (First Days to Weeks)",
@@ -150,7 +326,8 @@
           ],
           "note": "For many, the decision to continue valproate is a balance between mood stability and side effects or lab changes."
         }
-      ]
+      ],
+      "intro": "Experiences vary, but common themes among people taking valproate include:"
     },
     {
       "type": "onset_duration",
@@ -167,10 +344,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For acute mania, most people who respond to valproate do so when total serum levels are roughly between 50–125 mcg/mL. Some patients respond at lower levels; others need levels at the higher end but may have more side effects. Clinical response and tolerability matter more than hitting a specific number.",
       "metric": "Serum Concentration Range for Mania",
       "value": "50–125 mcg/mL (total valproate)",
       "comparison": null,
-      "text": "For acute mania, most people who respond to valproate do so when total serum levels are roughly between 50–125 mcg/mL. Some patients respond at lower levels; others need levels at the higher end but may have more side effects. Clinical response and tolerability matter more than hitting a specific number.",
       "clinical_details": "Valproate is considered an established treatment for acute mania and mixed episodes and a maintenance option for bipolar I disorder. It is often combined with atypical antipsychotics in severe episodes. Compared to lithium, valproate may act somewhat faster in highly agitated or mixed states, but has greater reproductive and metabolic concerns.",
       "citation": {
         "authors": null,
@@ -260,7 +437,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Valproate interacts with many antiseizure drugs and psychotropics, and can alter or be altered by other medications that affect liver enzymes or protein binding.",
       "items": [
         {
           "with": "Other antiseizure medications (eg, carbamazepine, phenytoin, phenobarbital)",
@@ -297,7 +473,8 @@
           "risk": "Additive CNS depression, impaired judgment and coordination; with opioids, increased risk of respiratory depression.",
           "action": "Limit or avoid alcohol; use the lowest effective doses of sedating medications and monitor closely."
         }
-      ]
+      ],
+      "intro": "Valproate interacts with many antiseizure drugs and psychotropics, and can alter or be altered by other medications that affect liver enzymes or protein binding."
     },
     {
       "type": "tapering",
@@ -400,21 +577,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Valproate (Depakote) for Bipolar Disorder: Uses, Risks, Liver Toxicity & Pregnancy Warnings",
-    "description": "Valproate (Depakote) as a mood stabilizer for bipolar disorder: how it works, dosing for mania, serious risks like liver failure, pancreatitis, and major fetal harm, monitoring, and safer use strategies.",
-    "canonical": "https://www.heypsych.com/treatments/valproate-divalproex",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA boxed warnings, major bipolar disorder and epilepsy guidelines, and current literature on reproductive and hepatic safety."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Divalproex (Depakote)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/019680s056lbl.pdf",
+      "description": "Official prescribing information, including boxed warnings and full safety data."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Guidelines for Bipolar Disorder – Mood Stabilizer Use",
+      "url": "https://www.psychiatry.org/psychiatrists/practice/clinical-practice-guidelines",
+      "description": "Practice guideline resources for bipolar disorder management."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Antiseizure Medications and Pregnancy Registries",
+      "url": "https://www.aedpregnancyregistry.org",
+      "description": "North American Antiepileptic Drug Pregnancy Registry information for patients and clinicians."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "ACOG – Mental Health Conditions in Pregnancy",
+      "url": "https://www.acog.org",
+      "description": "Guidance on balancing medication risks and benefits during pregnancy."
+    }
+  ],
   "faqs": [
     {
       "q": "What is valproate used for in psychiatry?",
@@ -452,5 +644,20 @@
       "q": "What should I do if I miss a dose?",
       "a": "If it’s only been a few hours, you can usually take the missed dose when you remember. If it’s close to the next scheduled dose, skip the missed one and just take the next dose. Don’t double up without talking to your prescriber, as that can increase side effects."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Valproate (Depakote) for Bipolar Disorder: Uses, Risks, Liver Toxicity & Pregnancy Warnings",
+    "description": "Valproate (Depakote) as a mood stabilizer for bipolar disorder: how it works, dosing for mania, serious risks like liver failure, pancreatitis, and major fetal harm, monitoring, and safer use strategies.",
+    "canonical": "https://www.heypsych.com/treatments/valproate-divalproex",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA boxed warnings, major bipolar disorder and epilepsy guidelines, and current literature on reproductive and hepatic safety."
+  }
 }

@@ -1,74 +1,202 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lofexidine-lucemyra",
-  "type": "medication",
-  "name": "Lofexidine (Lucemyra)",
-  "summary": "Non-opioid, alpha-2 adrenergic medication used to take the edge off opioid withdrawal symptoms during detox. Helps calm the body's stress response but can lower blood pressure and heart rate.",
-  "description": "Lucemyra (lofexidine) is used short-term to reduce opioid withdrawal symptoms so people can stop opioids abruptly under medical supervision. It does not treat opioid use disorder by itself and it does not prevent relapse. Common effects include dizziness, low blood pressure, slow heart rate, dry mouth, and feeling sedated—plus insomnia is still very common during withdrawal. Because it can affect heart rhythm (QT prolongation), it needs extra caution in higher-risk patients and with certain meds.",
-  "patient_summary": "Lucemyra is a short-term, non-opioid med that helps reduce opioid withdrawal symptoms during detox. It doesn't treat opioid use disorder or protect against relapse. It can cause low blood pressure, slow heart rate, dizziness, and sedation, and it can affect QT interval in some people—so monitoring matters, especially if you have heart, liver, or kidney issues or take other QT-prolonging meds.",
-  "category": "medications/withdrawal-management",
-  "metadata": {
+  "identity": {
+    "slug": "lofexidine-lucemyra",
+    "name": "Lofexidine (Lucemyra)",
+    "generic_name": "lofexidine",
+    "brand_names": [
+      "Lucemyra"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/withdrawal-management",
     "drug_classes": [
       "Alpha-2 Adrenergic Agonist",
       "Sympatholytic"
-    ],
-    "brand_names": [
-      "Lucemyra"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 2018,
-    "pharmacologic_category": "Central Alpha-2 Adrenergic Agonist",
-    "published_date": "2025-11-21T00:00:00Z",
-    "last_updated": "2025-11-21T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-21T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Opioid Withdrawal (symptom mitigation)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "opioid-withdrawal",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved to reduce opioid withdrawal symptoms to support abrupt opioid discontinuation. It's a withdrawal-symptom tool, not a full opioid use disorder treatment."
-      },
-      {
-        "slug": "opioid-use-disorder",
-        "relationship": "adjunct",
-        "context": "May be used inside a comprehensive opioid use disorder plan, but it does not treat OUD by itself and does not prevent relapse. MOUD (buprenorphine or methadone) remains first-line for OUD when appropriate."
-      }
-    ],
-    "contraindications": [
-      "There are no contraindications listed in the manufacturer's labeling."
-    ],
-    "efficacy_response": {
-      "metric": "Withdrawal symptom reduction (supportive, non-opioid)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Lucemyra isn't about being 'cured'—it’s about making withdrawal more tolerable by dialing down the body's fight-or-flight surge. Many people still feel uncomfortable, but symptoms like sweating, chills, restlessness, and racing heart can be less intense.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Non-opioid, alpha-2 adrenergic medication used to take the edge off opioid withdrawal symptoms during detox. Helps calm the body's stress response but can lower blood pressure and heart rate.",
+  "description": "Lucemyra (lofexidine) is used short-term to reduce opioid withdrawal symptoms so people can stop opioids abruptly under medical supervision. It does not treat opioid use disorder by itself and it does not prevent relapse. Common effects include dizziness, low blood pressure, slow heart rate, dry mouth, and feeling sedated—plus insomnia is still very common during withdrawal. Because it can affect heart rhythm (QT prolongation), it needs extra caution in higher-risk patients and with certain meds.",
+  "patient_summary": "Lucemyra is a short-term, non-opioid med that helps reduce opioid withdrawal symptoms during detox. It doesn't treat opioid use disorder or protect against relapse. It can cause low blood pressure, slow heart rate, dizziness, and sedation, and it can affect QT interval in some people—so monitoring matters, especially if you have heart, liver, or kidney issues or take other QT-prolonging meds.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "opioid-withdrawal",
+          "condition_name": "Opioid Withdrawal",
+          "relationship": "primary_indication",
+          "context": "FDA-approved to reduce opioid withdrawal symptoms to support abrupt opioid discontinuation. It's a withdrawal-symptom tool, not a full opioid use disorder treatment.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "opioid-use-disorder",
+          "condition_name": "Opioid Use Disorder",
+          "relationship": "secondary_indication",
+          "context": "May be used inside a comprehensive opioid use disorder plan, but it does not treat OUD by itself and does not prevent relapse. MOUD (buprenorphine or methadone) remains first-line for OUD when appropriate."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well-absorbed",
-      "bioavailability": "72%",
-      "onset": "Not applicable for this medication.",
-      "peak_plasma": "3 to 5 hours",
-      "half_life": "11 to 13 hours after first dose; 17 to 22 hours at steady state",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "First-pass metabolism; primarily hepatic via CYP2D6, with contributions from CYP1A2 and CYP2C19",
-      "excretion": "Urine (93.5%; 15% to 20% unchanged); feces (0.92%)",
-      "protein_binding": "~55%",
-      "food_effect": "Can be administered with or without food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not applicable for this medication."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Bradycardia (slow heart rate)",
+          "incidence": "24% to 32%",
+          "notes": "Your pulse can run lower than usual. If you feel faint, weak, or like you might pass out—especially with chest symptoms—contact your clinician right away."
+        },
+        {
+          "effect": "Hypotension (low blood pressure)",
+          "incidence": "30%",
+          "notes": "Low blood pressure can feel like fatigue, weakness, or lightheadedness. Hydration and slow position changes help, but dose adjustments may be needed if it’s clinically significant."
+        },
+        {
+          "effect": "Orthostatic hypotension (BP drop when standing)",
+          "incidence": "29% to 42%",
+          "notes": "This is the classic “stand up and the room tilts” side effect. It’s common. Go slow, hold onto something, and sit back down if you get dizzy."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "19% to 23%",
+          "notes": "Often overlaps with low blood pressure. Avoid sudden movements and be careful on stairs."
+        },
+        {
+          "effect": "Drowsiness / sedated state",
+          "incidence": "Drowsiness 11% to 13%; sedated state 12% to 13%",
+          "notes": "Expect some sedation. It can be helpful for agitation, but it can also impair coordination and reaction time."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "51% to 55%",
+          "notes": "Withdrawal insomnia can be brutal, and Lucemyra doesn’t necessarily fix it. Sometimes it helps the physical agitation but sleep still lags behind."
+        },
+        {
+          "effect": "Dry mouth (xerostomia)",
+          "incidence": "10% to 11%",
+          "notes": "Sugar-free gum, hydration, and oral care help. Dry mouth can worsen dental issues over time."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Syncope (fainting): can happen with low blood pressure or bradycardia—especially with dehydration or standing quickly."
+        },
+        {
+          "risk": "QT prolongation and torsades de pointes (rare but serious): higher risk in at-risk patients, electrolyte abnormalities, or when combined with QT-prolonging medications."
+        },
+        {
+          "risk": "Clinically significant hypotension/bradycardia: may require dose reduction or interruption of therapy."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "There are no contraindications listed in the manufacturer's labeling."
+        }
+      ],
+      "precautions": [
+        "Accidental opioid overdose risk after treatment: After withdrawal management, tolerance can drop fast. People may respond to much lower opioid doses than they used before, increasing overdose risk if relapse occurs.",
+        "Cardiovascular effects: Can cause low blood pressure, slow heart rate, orthostatic hypotension, and fainting. Higher risk in people with significant heart disease or baseline bradycardia.",
+        "CNS depression: Can cause sedation and slowed reaction time—driving and machinery can be unsafe.",
+        "QT prolongation risk: Can prolong QT interval; avoid in congenital long QT syndrome and use extra caution in higher-risk patients or with QT-prolonging meds.",
+        "Do not stop abruptly: Sudden discontinuation can cause a rebound spike in blood pressure plus withdrawal-like symptoms (anxiety, chills, diarrhea, sweating, insomnia, pain)."
+      ],
+      "interactions": [
+        {
+          "interactant": "QT-prolonging medications (multiple classes: some antipsychotics, some antidepressants, some antibiotics, antiarrhythmics)",
+          "mechanism": "Additive QT prolongation increases risk of dangerous arrhythmias, especially in people with bradycardia, heart failure, electrolyte problems, or liver/kidney impairment.",
+          "action": "Avoid when possible. If combined is necessary, correct electrolytes first and monitor ECG in at-risk patients."
+        },
+        {
+          "interactant": "Other blood pressure or heart rate lowering agents (antihypertensives, some antiarrhythmics)",
+          "mechanism": "More hypotension, orthostasis, bradycardia, syncope.",
+          "action": "Use caution. Monitor vitals and consider dose reductions or spacing adjustments."
+        },
+        {
+          "interactant": "CNS depressants (alcohol, benzodiazepines, sedating antihistamines, sleep meds, muscle relaxants)",
+          "mechanism": "More sedation, slowed reaction time, falls, impaired judgment.",
+          "action": "Use caution and avoid stacking sedatives whenever possible, especially during detox when dehydration and instability are common."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors or CYP2D6 poor metabolizer status",
+          "mechanism": "Higher exposure may increase orthostasis, bradycardia, and QT effects.",
+          "action": "Monitor closely for dizziness, fainting, and low heart rate; dose adjustments may be needed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure and heart rate (baseline and during therapy), including orthostatic vitals if dizziness/faintness is present"
+        },
+        {
+          "parameter": "Opioid withdrawal symptom severity over time to guide dose adjustments"
+        },
+        {
+          "parameter": "Sedation and functional impairment (falls risk, driving safety, slowed reaction time)"
+        },
+        {
+          "parameter": "Electrolytes and ECG at baseline in at-risk populations (eg, heart failure, bradyarrhythmias, hepatic impairment, renal impairment, congenital long QT risk, or concomitant QT-prolonging medications)"
+        },
+        {
+          "parameter": "Symptoms of clinically significant bradycardia/hypotension (fainting, near-syncope, severe weakness) that may require dose reduction or interruption of therapy"
+        },
+        {
+          "parameter": "Relapse and overdose risk counseling: reinforce that post-detox opioid tolerance is lower and old doses can be fatal"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Information related to the use of lofexidine in pregnancy is limited. Abrupt discontinuation of opioid therapy in dependent patients is generally not recommended during pregnancy.",
+        "lactation": "It is not known if lofexidine is present in breast milk. Lofexidine should be used with caution in breastfeeding patients; the decision to breastfeed during therapy should consider the risk of infant exposure, the benefits of breastfeeding to the infant, and benefits of treatment to the mother.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing; use with caution; consider lower doses based on blood pressure, heart rate, fall risk, and overall tolerability.",
+        "renal_impairment": "Prolongation of the QTc interval may be more pronounced in patients with severe renal impairment. Use caution in renal impairment and follow recommended dose reductions; avoid use in chronic renal failure.",
+        "hepatic_impairment": "Prolongation of the QTc interval may be more pronounced in patients with severe hepatic impairment. Use caution in hepatic impairment and follow recommended dose reductions in moderate and severe impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 2018
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well-absorbed",
+          "bioavailability": "72%",
+          "peak_plasma": "3 to 5 hours",
+          "half_life": "11 to 13 hours after first dose; 17 to 22 hours at steady state",
+          "metabolism": "First-pass metabolism; primarily hepatic via CYP2D6, with contributions from CYP1A2 and CYP2C19",
+          "excretion": "Urine (93.5%; 15% to 20% unchanged); feces (0.92%)",
+          "protein_binding": "~55%",
+          "food_effect": "Can be administered with or without food"
+        },
+        "dosing": {
+          "titration": "Lucemyra is typically taken four times daily during peak opioid withdrawal symptoms, then adjusted based on how you’re tolerating it and how withdrawal is evolving. The biggest limiter is blood pressure and heart rate—if you get symptomatic hypotension or bradycardia, dosing often needs to be reduced or paused."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Don’t stop Lucemyra abruptly. Stopping suddenly can cause a rebound spike in blood pressure and a cluster of withdrawal-like symptoms (anxiety, chills, diarrhea, sweating, insomnia, pain). The usual move is a short taper over a few days."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +215,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s withdrawal is different, but these are the patterns people describe with Lucemyra:",
       "items": [
         {
           "category": "Less “fight-or-flight”",
@@ -133,7 +260,8 @@
           ],
           "note": "After withdrawal treatment, people may respond to lower opioid doses than before—overdose risk rises if relapse occurs."
         }
-      ]
+      ],
+      "intro": "Everyone’s withdrawal is different, but these are the patterns people describe with Lucemyra:"
     },
     {
       "type": "onset_duration",
@@ -149,10 +277,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Lucemyra is best thought of as a “withdrawal symptom dampener.” It can reduce the intensity of symptoms driven by norepinephrine (sweats, chills, restlessness, agitation), but it won’t necessarily fix insomnia, cravings, or the emotional spiral on its own. It works best when it’s part of a full withdrawal and opioid use disorder plan.",
       "metric": "Withdrawal Symptom Relief",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Lucemyra is best thought of as a “withdrawal symptom dampener.” It can reduce the intensity of symptoms driven by norepinephrine (sweats, chills, restlessness, agitation), but it won’t necessarily fix insomnia, cravings, or the emotional spiral on its own. It works best when it’s part of a full withdrawal and opioid use disorder plan.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -245,7 +373,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Lucemyra has meaningful interaction risk. The two big buckets are (1) meds that further lower blood pressure/heart rate and (2) meds that increase QT prolongation risk. It’s also a CYP2D6 substrate, so metabolism differences and CYP2D6-related interactions can matter.",
       "items": [
         {
           "with": "QT-prolonging medications (multiple classes: some antipsychotics, some antidepressants, some antibiotics, antiarrhythmics)",
@@ -267,7 +394,8 @@
           "risk": "Higher exposure may increase orthostasis, bradycardia, and QT effects.",
           "action": "Monitor closely for dizziness, fainting, and low heart rate; dose adjustments may be needed."
         }
-      ]
+      ],
+      "intro": "Lucemyra has meaningful interaction risk. The two big buckets are (1) meds that further lower blood pressure/heart rate and (2) meds that increase QT prolongation risk. It’s also a CYP2D6 substrate, so metabolism differences and CYP2D6-related interactions can matter."
     },
     {
       "type": "tapering",
@@ -337,21 +465,6 @@
       "text": "Lucemyra fits into withdrawal management, not long-term opioid use disorder treatment. It can help people get through detox more safely and comfortably, but it does not treat addiction on its own and does not reduce relapse risk the way medications for opioid use disorder (like buprenorphine or methadone) do. Clinically, it’s used when someone is doing an abrupt opioid stop and needs non-opioid symptom support, while keeping a sharp eye on blood pressure, heart rate, and QT risk—especially in people with kidney or liver impairment."
     }
   ],
-  "seo": {
-    "title": "Lofexidine (Lucemyra): Uses, Dosing, Side Effects & Detox Safety",
-    "description": "Lucemyra (lofexidine) for opioid withdrawal: what it helps, dosing (0.54 mg QID; max 2.88 mg/day), common side effects (low BP, slow HR, dizziness, sedation), QT warning, interactions, and how to taper off safely.",
-    "canonical": "[https://www.heypsych.com/treatments/lofexidine-lucemyra](https://www.heypsych.com/treatments/lofexidine-lucemyra)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Lucemyra used for?",
@@ -393,5 +506,20 @@
       "q": "Is Lucemyra safe in pregnancy or breastfeeding?",
       "a": "Pregnancy data are limited, and abrupt opioid discontinuation during pregnancy is generally not recommended in opioid-dependent patients. It’s also not known whether lofexidine is present in breast milk. If lofexidine is being considered in pregnancy or breastfeeding, it should be a specialized, high-caution decision with a clear risk/benefit discussion and a comprehensive treatment plan."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lofexidine (Lucemyra): Uses, Dosing, Side Effects & Detox Safety",
+    "description": "Lucemyra (lofexidine) for opioid withdrawal: what it helps, dosing (0.54 mg QID; max 2.88 mg/day), common side effects (low BP, slow HR, dizziness, sedation), QT warning, interactions, and how to taper off safely.",
+    "canonical": "[https://www.heypsych.com/treatments/lofexidine-lucemyra](https://www.heypsych.com/treatments/lofexidine-lucemyra)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,87 +1,161 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "blue-light-therapy",
-  "type": "interventional",
-  "name": "Blue Light Therapy",
-  "summary": "A form of phototherapy that uses short-wavelength visible light to influence circadian rhythms, improve mood, and treat certain dermatologic conditions.",
-  "description": "Blue light therapy involves exposure to light in the blue spectrum, typically between 450–495 nanometers, which has distinct biological effects compared to full-spectrum or white light. In mental health, blue light is primarily used for circadian rhythm modulation, seasonal affective disorder (SAD) treatment, and sleep-phase disorders by influencing melanopsin-containing retinal ganglion cells that project to the brain's suprachiasmatic nucleus (SCN).\n\nIn dermatology, high-intensity blue light is employed for its antimicrobial and anti-inflammatory properties, often in acne treatment or as part of photodynamic therapy for certain precancerous skin lesions. The wavelength and intensity used in psychiatric versus dermatologic applications differ substantially, with psychiatric use focusing on safe daily exposure and dermatologic use often involving shorter, higher-intensity treatments.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "blue-light",
-    "phototherapy",
-    "circadian-rhythm",
-    "SAD",
-    "insomnia",
-    "delayed-sleep-phase",
-    "acne",
-    "photodynamic-therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "blue-light-therapy",
+    "name": "Blue Light Therapy",
+    "wikidata_qid": "Q66080616"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Light Therapy",
       "Phototherapy"
     ],
-    "treatment_types": [
-      "Non-pharmacologic",
-      "Neuromodulation",
-      "Dermatologic therapy"
-    ],
-    "categories": [
-      "Chronotherapy",
-      "Mood Disorders",
-      "Dermatology"
-    ],
-    "delivery_methods": [
-      "Light box",
-      "Wearable light glasses",
-      "Dermatologic light panels"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "20–40 minutes for psychiatric use; 5–20 minutes for dermatologic use",
-    "treatment_duration": [
-      "Short-term",
-      "Medium-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep Medicine",
-      "Dermatology"
-    ],
-    "wikidata_qid": "Q66080616"
+    "tags": [
+      "blue-light",
+      "phototherapy",
+      "circadian-rhythm",
+      "SAD",
+      "insomnia",
+      "delayed-sleep-phase",
+      "acne",
+      "photodynamic-therapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Seasonal affective disorder",
-      "Circadian rhythm sleep-wake disorders"
-    ],
-    "conditions_treated": [
-      "Seasonal affective disorder",
-      "Delayed sleep phase syndrome",
-      "Non-seasonal depression (adjunctive)",
-      "Insomnia (circadian misalignment)",
-      "Acne vulgaris",
-      "Actinic keratosis (as part of photodynamic therapy)"
-    ],
-    "off_label_uses": [
-      "Bipolar depression (with caution)",
-      "Jet lag",
-      "Shift-work disorder"
-    ],
-    "contraindications": [
-      "Active ocular disease sensitive to light",
-      "Photosensitive epilepsy",
-      "Use of photosensitizing medications without precautions"
-    ],
-    "safety_profile": "Generally safe when used as directed; mild side effects may include eyestrain, headache, or mild agitation. Dermatologic protocols can cause transient erythema or peeling.",
-    "evidence_level": "Strong for SAD; moderate for delayed sleep phase; emerging for non-seasonal depression and dermatologic uses.",
-    "research_support": "Multiple randomized controlled trials support efficacy for SAD and circadian rhythm disorders; growing evidence base for dermatologic indications."
+  "summary": "A form of phototherapy that uses short-wavelength visible light to influence circadian rhythms, improve mood, and treat certain dermatologic conditions.",
+  "description": "Blue light therapy involves exposure to light in the blue spectrum, typically between 450–495 nanometers, which has distinct biological effects compared to full-spectrum or white light. In mental health, blue light is primarily used for circadian rhythm modulation, seasonal affective disorder (SAD) treatment, and sleep-phase disorders by influencing melanopsin-containing retinal ganglion cells that project to the brain's suprachiasmatic nucleus (SCN).\n\nIn dermatology, high-intensity blue light is employed for its antimicrobial and anti-inflammatory properties, often in acne treatment or as part of photodynamic therapy for certain precancerous skin lesions. The wavelength and intensity used in psychiatric versus dermatologic applications differ substantially, with psychiatric use focusing on safe daily exposure and dermatologic use often involving shorter, higher-intensity treatments.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "seasonal-affective-disorder",
+          "condition_name": "Seasonal affective disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "circadian-rhythm-sleep-wake-disorders",
+          "condition_name": "Circadian rhythm sleep-wake disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "delayed-sleep-phase-syndrome",
+          "condition_name": "Delayed sleep phase syndrome",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "non-seasonal-depression-adjunctive",
+          "condition_name": "Non-seasonal depression (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-circadian-misalignment",
+          "condition_name": "Insomnia (circadian misalignment)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "acne-vulgaris",
+          "condition_name": "Acne vulgaris",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "actinic-keratosis-as-part-of-photodynamic-therapy",
+          "condition_name": "Actinic keratosis (as part of photodynamic therapy)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-depression-with-caution",
+          "condition_name": "Bipolar depression (with caution)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "jet-lag",
+          "condition_name": "Jet lag",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "shift-work-disorder",
+          "condition_name": "Shift-work disorder",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for SAD; moderate for delayed sleep phase; emerging for non-seasonal depression and dermatologic uses.",
+      "research_support": "Multiple randomized controlled trials support efficacy for SAD and circadian rhythm disorders; growing evidence base for dermatologic indications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Medium-term"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Light box",
+        "Wearable light glasses",
+        "Dermatologic light panels"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–40 minutes for psychiatric use; 5–20 minutes for dermatologic use"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe when used as directed; mild side effects may include eyestrain, headache, or mild agitation. Dermatologic protocols can cause transient erythema or peeling.",
+      "common_adverse_effects": [
+        {
+          "effect": "Eye strain"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Agitation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Mania in bipolar disorder"
+        },
+        {
+          "risk": "Severe photosensitivity reactions"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active ocular disease sensitive to light"
+        },
+        {
+          "contraindication": "Photosensitive epilepsy"
+        },
+        {
+          "contraindication": "Use of photosensitizing medications without precautions"
+        }
+      ]
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light Therapy, Phototherapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Position light source at a specified distance (typically 30–60 cm for psychiatric use).\nExpose eyes indirectly to light for prescribed duration while engaging in normal seated activities.\nFor dermatologic uses, position treatment area under blue light device and follow specific energy-dose protocols."
+      }
+    }
   },
   "sections": [
     {
@@ -165,6 +239,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Lam RW, Levitt AJ, et al. Efficacy of light therapy for SAD: A meta-analysis. Am J Psychiatry. 2006;163(4):656-662.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16585449/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Rybnikova NA, et al. Blue light therapy in dermatology. Photodermatol Photoimmunol Photomed. 2021;37(5):396-408.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33756091/"
+    }
+  ],
   "seo": {
     "title": "Blue Light Therapy for SAD, Sleep Disorders, and Dermatologic Care",
     "description": "Blue light therapy uses targeted wavelengths to treat seasonal affective disorder, circadian rhythm misalignment, acne, and more. Learn protocols, safety, and outcomes.",
@@ -177,5 +265,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for SAD; moderate for delayed sleep phase; emerging for non-seasonal depression and dermatologic uses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for SAD; moderate for delayed sleep phase; emerging for non-seasonal depression and dermatologic uses."
+    ]
   }
 }

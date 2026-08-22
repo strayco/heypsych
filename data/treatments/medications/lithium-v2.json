@@ -1,87 +1,259 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lithium-lithobid",
-  "type": "medication",
-  "name": "Lithium (Lithobid)",
-  "summary": "Classic mood stabilizer for bipolar disorder—especially mania and relapse prevention. Very effective, but it has a narrow safety window, so blood level monitoring is non-negotiable.",
-  "description": "Lithium is a cornerstone medication for bipolar disorder. It can stabilize mania, reduce relapse risk, and is often used long-term. The tradeoff: lithium sits in a tight “sweet spot.” Too low = not working. Too high = toxicity. That’s why lithium requires regular blood levels plus kidney and thyroid monitoring. Dehydration, low salt intake, and common meds like NSAIDs or diuretics can push levels up fast.",
-  "patient_summary": "Lithium can be life-changing for bipolar disorder, especially for preventing manic episodes. But it’s not a “set it and forget it” med—blood levels and labs matter. Staying hydrated, keeping salt intake steady, and avoiding certain meds (like NSAIDs) can prevent toxicity. If you start feeling new tremor, bad nausea/diarrhea, wobbliness, confusion, or slurred speech—assume lithium level might be high and call your clinician urgently.",
-  "category": "medications/bipolar-disorder",
-  "metadata": {
+  "identity": {
+    "slug": "lithium-lithobid",
+    "name": "Lithium (Lithobid)",
+    "generic_name": "lithium",
+    "brand_names": [
+      "Lithobid"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/bipolar-disorder",
     "drug_classes": [
       "Mood Stabilizer",
       "Antimanic Agent"
-    ],
-    "brand_names": [
-      "Lithobid"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 1970,
-    "pharmacologic_category": "Antimanic Agent",
-    "published_date": "2026-01-25T00:00:00Z",
-    "last_updated": "2026-01-25T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-25T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bipolar Disorder (Acute Mania / Mixed Features)",
-      "Bipolar Disorder (Maintenance)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Lithium is a core mood stabilizer for acute mania/mixed episodes and long-term maintenance. Many clinicians target higher serum levels during acute mania and lower levels during maintenance, balancing efficacy with tolerability."
-      },
-      {
-        "slug": "bipolar-depression",
-        "relationship": "off_label",
-        "context": "Sometimes used for acute bipolar depression as an alternative agent, often as part of combination therapy rather than as a stand-alone first choice."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "off_label",
-        "context": "Used as augmentation (add-on) for treatment-resistant unipolar depression. Clinical improvement can take several weeks when used as an antidepressant booster."
-      },
-      {
-        "slug": "postpartum-psychosis",
-        "relationship": "off_label",
-        "context": "Used in postpartum psychosis, typically in combination with an antipsychotic, with dosing guided by serum levels and careful perinatal monitoring."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to lithium or any component of the formulation",
-      "Immediate-release products: severe cardiovascular disease, severe renal disease, severe debilitation, dehydration, sodium depletion, and concurrent use with diuretics (per product labeling)",
-      "Severe kidney impairment (practical contraindication in many settings due to toxicity risk; avoid especially when CrCl <30 mL/min)"
-    ],
-    "efficacy_response": {
-      "metric": "Therapeutic serum range commonly associated with clinical response",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Lithium response is guided more by your symptoms plus your blood level than by a single “one-size” dose. Many patients respond in the 0.8–1.2 mEq/L range during acute mania, with lower targets often used for maintenance or in older adults when side effects become the limiter.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Classic mood stabilizer for bipolar disorder—especially mania and relapse prevention. Very effective, but it has a narrow safety window, so blood level monitoring is non-negotiable.",
+  "description": "Lithium is a cornerstone medication for bipolar disorder. It can stabilize mania, reduce relapse risk, and is often used long-term. The tradeoff: lithium sits in a tight “sweet spot.” Too low = not working. Too high = toxicity. That’s why lithium requires regular blood levels plus kidney and thyroid monitoring. Dehydration, low salt intake, and common meds like NSAIDs or diuretics can push levels up fast.",
+  "patient_summary": "Lithium can be life-changing for bipolar disorder, especially for preventing manic episodes. But it’s not a “set it and forget it” med—blood levels and labs matter. Staying hydrated, keeping salt intake steady, and avoiding certain meds (like NSAIDs) can prevent toxicity. If you start feeling new tremor, bad nausea/diarrhea, wobbliness, confusion, or slurred speech—assume lithium level might be high and call your clinician urgently.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Lithium is a core mood stabilizer for acute mania/mixed episodes and long-term maintenance. Many clinicians target higher serum levels during acute mania and lower levels during maintenance, balancing efficacy with tolerability.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar Depression",
+          "relationship": "off_label",
+          "context": "Sometimes used for acute bipolar depression as an alternative agent, often as part of combination therapy rather than as a stand-alone first choice."
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "off_label",
+          "context": "Used as augmentation (add-on) for treatment-resistant unipolar depression. Clinical improvement can take several weeks when used as an antidepressant booster."
+        },
+        {
+          "condition_slug": "postpartum-psychosis",
+          "condition_name": "Postpartum Psychosis",
+          "relationship": "off_label",
+          "context": "Used in postpartum psychosis, typically in combination with an antipsychotic, with dosing guided by serum levels and careful perinatal monitoring."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete",
-      "bioavailability": "80% to 100%",
-      "onset": "Not a rapid “feel it in an hour” med for mood stabilization; clinical response builds over days to weeks",
-      "peak_plasma": "Immediate release: ~0.5 to 3 hours; extended release: 2 to 6 hours; solution: 15 to 60 minutes",
-      "half_life": "Adults: 18 to 36 hours (often longer in older adults); pediatric 7 to 17 years: ~27 hours reported",
-      "duration_IR": "Depends on dosing schedule; commonly given in divided doses initially",
-      "duration_XR": "Designed for smoother levels; still requires level monitoring",
-      "metabolism": "Not metabolized",
-      "excretion": "Urine (primarily unchanged); small amounts in sweat, saliva, feces",
-      "protein_binding": "Not protein bound",
-      "food_effect": "Often taken with meals to reduce GI upset"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not a rapid “feel it in an hour” med for mood stabilization; clinical response builds over days to weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset (nausea, diarrhea)",
+          "incidence": "Common",
+          "notes": "Early nausea is common and may improve. Taking with food can help. If you have severe nausea/vomiting/diarrhea, think “possible high level,” especially if you’re dehydrated."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "Common (often described in ~1 in 4 patients)",
+          "notes": "A mild hand tremor can show up early. If tremor suddenly worsens or turns coarse, that’s a toxicity red flag—especially if you also feel wobbly, nauseated, or confused."
+        },
+        {
+          "effect": "Polyuria / polydipsia",
+          "incidence": "Common (especially with long-term use)",
+          "notes": "More thirst and more urination can happen early or later. It can be mild or quality-of-life annoying. Persistent, extreme symptoms can be part of nephrogenic diabetes insipidus and need evaluation."
+        },
+        {
+          "effect": "Cognitive dulling / slowed thinking",
+          "incidence": "Variable",
+          "notes": "Some people feel a mental “slowing” or less creative intensity. If it’s impacting life, dose/target level can often be adjusted—don’t just quit."
+        },
+        {
+          "effect": "Weight gain",
+          "incidence": "Common",
+          "notes": "Weight gain can happen over time. Sometimes it’s indirect (more sugary drinks from thirst, fluid changes, or thyroid slowing). Monitoring weight and thyroid helps catch this early."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Lithium toxicity: worsening tremor, severe GI symptoms, ataxia/unsteady gait, slurred speech, confusion, lethargy; can progress to seizures, coma, death if untreated"
+        },
+        {
+          "risk": "SILENT syndrome (rare): persistent neurologic injury after toxicity episodes"
+        },
+        {
+          "risk": "Cardiac conduction issues: bradycardia, arrhythmias, ECG changes; possible unmasking of Brugada pattern"
+        },
+        {
+          "risk": "Nephrogenic diabetes insipidus with hypernatremia risk: severe thirst/urination, dehydration, neurologic symptoms"
+        },
+        {
+          "risk": "Progressive kidney impairment over long-term exposure (risk increases with duration and toxicity episodes)"
+        },
+        {
+          "risk": "Hypothyroidism (can worsen depressive symptoms and fatigue; can be misread as mood relapse)"
+        },
+        {
+          "risk": "Hyperparathyroidism/hypercalcemia: fatigue, weakness, stones, bone issues; can present with depressive symptoms"
+        },
+        {
+          "risk": "Pseudotumor cerebri (rare): headache, vision changes, papilledema; can lead to vision loss if missed"
+        },
+        {
+          "risk": "Serotonin syndrome (rare, usually with serotonergic combinations): agitation, confusion, autonomic instability, tremor/rigidity, hyperreflexia, diarrhea, fever"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to lithium or any component of the formulation"
+        },
+        {
+          "contraindication": "Immediate-release products: severe cardiovascular disease, severe renal disease, severe debilitation, dehydration, sodium depletion, and concurrent use with diuretics (per product labeling)"
+        },
+        {
+          "contraindication": "Severe kidney impairment (practical contraindication in many settings due to toxicity risk; avoid especially when CrCl <30 mL/min)"
+        }
+      ],
+      "precautions": [
+        "Toxicity correlates with serum level and can occur close to the therapeutic range; toxicity is more likely at ≥1.5 mEq/L and may occur in some patients as low as ~1.2 mEq/L",
+        "Only prescribe when serum lithium monitoring is available (you need prompt, accurate levels)",
+        "Kidney function matters: lithium is cleared by the kidneys and clearance tracks with GFR",
+        "Dehydration and sodium depletion raise lithium levels (vomiting/diarrhea, heavy sweating, low salt intake, sudden diet changes can all matter)",
+        "Common medications can raise lithium levels (NSAIDs, ACE inhibitors/ARBs, diuretics); this can turn a stable dose toxic",
+        "Cardiac conduction problems can occur (bradycardia, arrhythmias, ECG changes); lithium can unmask Brugada pattern in susceptible people",
+        "Serotonin syndrome can occur when lithium is combined with other serotonergic meds (rare, but serious)",
+        "Stop or reduce carefully: abrupt discontinuation can trigger relapse; taper when feasible unless stopping for serious toxicity"
+      ],
+      "interactions": [
+        {
+          "interactant": "NSAIDs (ibuprofen, naproxen, many prescription NSAIDs)",
+          "mechanism": "Can increase lithium levels by reducing renal clearance → toxicity risk",
+          "action": "Avoid routine NSAID use unless your prescriber specifically okays it and levels are monitored. If an NSAID is started, lithium level may need re-check and dose adjustment."
+        },
+        {
+          "interactant": "ACE inhibitors / ARBs (common blood pressure meds)",
+          "mechanism": "Can increase lithium levels → toxicity risk",
+          "action": "Use caution and monitor levels closely, especially after starting or changing doses."
+        },
+        {
+          "interactant": "Diuretics (especially thiazides; also other diuretics can matter)",
+          "mechanism": "Increase lithium levels and toxicity risk; sodium depletion worsens this",
+          "action": "Often avoid. If unavoidable, lithium dose reduction and close monitoring are typically needed."
+        },
+        {
+          "interactant": "Serotonergic agents (SSRIs/SNRIs, TCAs, triptans, tramadol, fentanyl, buspirone, St. John’s wort, tryptophan, MAOIs)",
+          "mechanism": "Serotonin syndrome (rare but potentially life-threatening)",
+          "action": "Monitor closely for agitation, confusion, sweating, fever, tremor/rigidity, hyperreflexia, diarrhea. Stop meds and seek urgent care if symptoms appear."
+        },
+        {
+          "interactant": "Other CNS depressants or neuroactive meds (antipsychotics, antiseizure meds, sedative-hypnotics)",
+          "mechanism": "Additive neurologic effects (sedation, coordination problems) and can complicate toxicity recognition",
+          "action": "Start low, go slow, and watch for neurotoxicity signs (worsening gait, confusion, slurred speech)."
+        },
+        {
+          "interactant": "Dehydration / sodium depletion (GI illness, heavy sweating, low salt intake, drastic diet changes)",
+          "mechanism": "Raises lithium levels and toxicity risk without any medication interaction",
+          "action": "Maintain steady fluids and salt. If sick with vomiting/diarrhea or unable to hydrate, contact your prescriber urgently."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Before starting: Confirm that prompt, accurate serum lithium monitoring is available. Lithium toxicity can occur close to therapeutic levels."
+        },
+        {
+          "parameter": "Serum lithium trough levels: Prefer a 12-hour trough (sometimes 8–12 hours if logistics require). Check ~5 days after dose changes. Once stable, recheck every 3 to 6 months or as clinically indicated; more often with interacting meds, illness, dehydration, or kidney disease."
+        },
+        {
+          "parameter": "Renal function (BUN/SCr/eGFR): Baseline; every 2 to 3 months during the first 6 months; then at least annually if stable (more often if risk factors or changes occur)."
+        },
+        {
+          "parameter": "Thyroid function (TSH ± free T4): Baseline; 1 to 2 times in first 6 months; then at least annually if stable. Watch for fatigue, cognitive slowing, weight gain, and depressive symptoms that can mimic relapse."
+        },
+        {
+          "parameter": "Calcium (and PTH if indicated): Baseline; recheck 2 to 6 weeks after initiation; then every 6 to 12 months. Monitor for hypercalcemia symptoms (fatigue, weakness, constipation, stones, bone pain, mood changes)."
+        },
+        {
+          "parameter": "Electrolytes and fluid status: Baseline and periodically; extra vigilance during GI illness, heat exposure, heavy sweating, or major diet changes."
+        },
+        {
+          "parameter": "ECG: Baseline for patients >40 or with cardiac risk factors; repeat as clinically indicated. Watch for bradycardia, conduction changes, and symptoms like syncope/palpitations."
+        },
+        {
+          "parameter": "Weight and metabolic tracking: Baseline and periodically; address thirst-driven high-calorie beverages and hypothyroidism as contributors."
+        },
+        {
+          "parameter": "Neurotoxicity and early toxicity symptoms: New/worsening tremor, diarrhea/vomiting, ataxia, slurred speech, confusion, heavy sedation—treat these as urgent, especially if dehydrated or after starting NSAIDs/ACEi/ARB/diuretics."
+        },
+        {
+          "parameter": "Polyuria/polydipsia: Track severity and impact; evaluate for nephrogenic diabetes insipidus when persistent or severe."
+        },
+        {
+          "parameter": "Reproductive monitoring: Pregnancy test prior to initiation for patients who could become pregnant. If pregnant: lithium levels every 2–4 weeks until 34 weeks, then at least weekly until delivery; at delivery; twice weekly in first 2 postpartum weeks; then again at ~4 weeks postpartum (plus renal labs as indicated)."
+        },
+        {
+          "parameter": "Safety checks: Avoid dosing errors (mg vs mEq confusion). 300 mg lithium carbonate (or equivalent citrate) contains about 8 mEq of lithium ion—prescriptions should be written in mg to avoid mistakes."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Lithium crosses the placenta and fetal levels can be similar to maternal levels. First-trimester exposure is associated with increased risk of cardiac malformations (including Ebstein anomaly), though the absolute risk may be low. Consider fetal echocardiography in the second trimester (16–20 weeks) if first-trimester exposure occurs. Pregnancy increases lithium renal clearance, so doses often need adjustment to maintain therapeutic effect; levels are typically checked every 2 to 4 weeks until 34 weeks, then at least weekly until delivery. Many guidelines suggest reducing or holding lithium 24 to 48 hours before planned delivery or at labor onset to reduce maternal/neonatal toxicity risk, then restarting postpartum with level-guided dosing. Shared decision-making matters because untreated bipolar disorder increases pregnancy/postpartum risks, including postpartum psychosis.",
+        "lactation": "Lithium is present in breast milk, and infant serum levels can be significant (sometimes up to ~50% of maternal levels). Some guidelines allow breastfeeding only in carefully selected situations (clinically stable parent, full-term healthy infant, strong adherence, and ability to monitor). If breastfeeding occurs, infant monitoring is essential (infant lithium level, thyroid and renal function, weight/growth, neurodevelopment). Watch for infant toxicity signs like cyanosis, ECG changes, abnormal tone, hypothermia, poor feeding, lethargy; discontinue breastfeeding if toxicity occurs. Some sources and the manufacturer do not recommend breastfeeding on lithium due to variability and risk.",
+        "pediatric": "Lithium is used in pediatric bipolar disorder with serum level monitoring. Immediate-release products are labeled for acute mania/mixed episodes and maintenance in ages ≥7 years; extended-release is labeled for ages ≥12 years. Dosing is weight- and level-guided, with careful titration and avoidance in significant renal impairment.",
+        "geriatric": "Older adults are more vulnerable to toxicity due to age-related renal clearance changes and comorbid meds. Start lower, titrate slower, and consider lower target levels (often ~0.4 to 0.8 mEq/L). Lithium is considered potentially inappropriate in older adults with QTc prolongation risk and requires extra ECG and renal monitoring when used.",
+        "renal_impairment": "Lithium is primarily renally cleared. Reduced kidney function increases toxicity risk and requires lower starting doses, slower titration, and frequent levels. Avoid when CrCl <30 mL/min. Dialysis patients are generally poor candidates unless benefits clearly outweigh risks and monitoring is highly specialized.",
+        "hepatic_impairment": "No manufacturer-provided dose adjustment; lithium is not hepatically metabolized. Practical management focuses on renal function, hydration, and interactions."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1970
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete",
+          "bioavailability": "80% to 100%",
+          "peak_plasma": "Immediate release: ~0.5 to 3 hours; extended release: 2 to 6 hours; solution: 15 to 60 minutes",
+          "half_life": "Adults: 18 to 36 hours (often longer in older adults); pediatric 7 to 17 years: ~27 hours reported",
+          "metabolism": "Not metabolized",
+          "excretion": "Urine (primarily unchanged); small amounts in sweat, saliva, feces",
+          "protein_binding": "Not protein bound",
+          "food_effect": "Often taken with meals to reduce GI upset"
+        },
+        "dosing": {
+          "titration": "Lithium dosing is individualized and guided by a 12-hour trough serum level plus symptom response and side effects. Doses below are expressed as lithium carbonate equivalents. Initial dosing frequency depends on formulation and dose size, and many patients start with divided dosing, then consolidate to bedtime dosing once stable (if appropriate)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Lithium is one of those meds where stopping too fast can backfire—especially if it was doing real relapse prevention work. If you’re discontinuing for non-emergency reasons, a gradual taper helps reduce the risk of mood episode recurrence. If lithium is being stopped because of significant adverse effects or toxicity, safety comes first and the plan changes."
+        }
+      }
     }
   },
   "sections": [
@@ -104,7 +276,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Lithium doesn’t usually feel like a “kick-in-the-door” med. It’s more like stabilization over time. Here’s how patients commonly describe it:",
       "items": [
         {
           "category": "Mood Stabilization (Days to Weeks)",
@@ -149,7 +320,8 @@
           ],
           "note": "New or worsening tremor, vomiting/diarrhea, unsteady gait, slurred speech, confusion, or heavy sedation can be lithium toxicity—especially if you’re dehydrated or started an interacting med."
         }
-      ]
+      ],
+      "intro": "Lithium doesn’t usually feel like a “kick-in-the-door” med. It’s more like stabilization over time. Here’s how patients commonly describe it:"
     },
     {
       "type": "onset_duration",
@@ -166,10 +338,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Lithium is one of the most established mood stabilizers in psychiatry for bipolar disorder. In real-world practice, the main “efficacy” question is whether you’re in a therapeutic trough range that matches your phase of illness (acute vs maintenance) and whether you can tolerate it without drifting into toxicity. It’s a medication where monitoring is part of the treatment, not an optional extra.",
       "metric": "Not applicable for this medication.",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Lithium is one of the most established mood stabilizers in psychiatry for bipolar disorder. In real-world practice, the main “efficacy” question is whether you’re in a therapeutic trough range that matches your phase of illness (acute vs maintenance) and whether you can tolerate it without drifting into toxicity. It’s a medication where monitoring is part of the treatment, not an optional extra.",
       "clinical_details": "During acute mania, many patients respond in the 0.8–1.2 mEq/L range. Maintenance targets are often lower (commonly 0.6–1.0 mEq/L), and older adults frequently need lower targets to reduce toxicity risk. Some people respond at lower levels (around 0.6), but relapse risk can increase if maintained too low for too long.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -263,7 +435,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Lithium interactions are a big deal because many common meds can raise lithium levels by reducing kidney clearance. If lithium levels rise, toxicity can hit fast—sometimes even without a dose change.",
       "items": [
         {
           "with": "NSAIDs (ibuprofen, naproxen, many prescription NSAIDs)",
@@ -295,7 +466,8 @@
           "risk": "Raises lithium levels and toxicity risk without any medication interaction",
           "action": "Maintain steady fluids and salt. If sick with vomiting/diarrhea or unable to hydrate, contact your prescriber urgently."
         }
-      ]
+      ],
+      "intro": "Lithium interactions are a big deal because many common meds can raise lithium levels by reducing kidney clearance. If lithium levels rise, toxicity can hit fast—sometimes even without a dose change."
     },
     {
       "type": "tapering",
@@ -383,21 +555,6 @@
       "text": "Lithium is a cornerstone option for bipolar disorder—especially for acute mania/mixed states and for maintenance relapse prevention. In acute severe mania, it’s often paired with an antipsychotic or an antiseizure medication for faster control. Lithium is also used off-label as augmentation in treatment-resistant depression and in postpartum psychosis (often with an antipsychotic). The clinical reality: lithium works best when the monitoring plan is solid, interactions are respected, and hydration/salt are stable."
     }
   ],
-  "seo": {
-    "title": "Lithium (Lithobid): Uses, Dosing, Side Effects, Levels & Toxicity",
-    "description": "Lithium for bipolar disorder: dosing basics, therapeutic blood levels, side effects (tremor, thirst, GI upset), toxicity warning signs, drug interactions (NSAIDs/diuretics/ACE inhibitors), and monitoring (kidney, thyroid, calcium).",
-    "canonical": "[https://www.heypsych.com/treatments/lithium-lithobid](https://www.heypsych.com/treatments/lithium-lithobid)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is lithium used for in psychiatry?",
@@ -447,5 +604,20 @@
       "q": "How do I stop lithium safely?",
       "a": "If it’s not an emergency, tapering is usually preferred to reduce relapse risk. During an acute medication switch, one approach is tapering over 1–2 weeks (for example, decreasing by 300 mg each day or every other day). For maintenance discontinuation in bipolar disorder, taper over weeks to months when feasible. If stopping because of toxicity or serious side effects, the plan can be faster—your clinician should direct it."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lithium (Lithobid): Uses, Dosing, Side Effects, Levels & Toxicity",
+    "description": "Lithium for bipolar disorder: dosing basics, therapeutic blood levels, side effects (tremor, thirst, GI upset), toxicity warning signs, drug interactions (NSAIDs/diuretics/ACE inhibitors), and monitoring (kidney, thyroid, calcium).",
+    "canonical": "[https://www.heypsych.com/treatments/lithium-lithobid](https://www.heypsych.com/treatments/lithium-lithobid)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

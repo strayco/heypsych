@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "magnesium",
-  "type": "supplement",
-  "name": "Magnesium",
-  "summary": "Magnesium is an essential mineral involved in numerous biochemical processes, including neurotransmission and stress regulation. Various forms of magnesium are used as supplements for anxiety, depression, sleep, and overall mental health.",
-  "description": "Magnesium is a vital mineral that plays roles in neuromuscular function, neurotransmitter regulation, and energy metabolism. Deficiency has been associated with depression, anxiety, migraines, and insomnia. Supplementation is common in integrative psychiatry, though clinical evidence is variable depending on formulation and condition. Different forms of magnesium vary in absorption, tolerability, and clinical effects—making the choice of formulation important for therapeutic use in mental health.",
-  "category": "supplements",
-  "tags": [
-    "essential mineral",
-    "mental health",
-    "sleep",
-    "anxiety",
-    "depression"
-  ],
-  "metadata": {
-    "compound_type": "Essential mineral (Mg²⁺ cation)",
-    "natural_source": "Leafy greens, nuts, seeds, whole grains, legumes",
+  "identity": {
+    "slug": "magnesium",
+    "name": "Magnesium",
+    "brand_names": [
+      "Calm Magnesium",
+      "Mag-Ox",
+      "Natural Calm",
+      "Doctor’s Best Magnesium"
+    ],
+    "aliases": [
+      "Mg",
+      "magnesium salts"
+    ],
+    "wikidata_qid": "Q660"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Anxiety",
       "Sleep",
@@ -27,74 +30,167 @@
       "GABAergic support",
       "Stress axis regulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Calm Magnesium",
-      "Mag-Ox",
-      "Natural Calm",
-      "Doctor’s Best Magnesium"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for psychiatric indications)",
-    "age_groups": [
-      "Adult",
-      "Adolescent"
-    ],
-    "treatment_duration": [
-      "Chronic supplementation",
-      "Short-term (insomnia, anxiety)"
-    ],
-    "specialty_areas": [
-      "Integrative Psychiatry",
-      "Sleep Medicine",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q660"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Magnesium deficiency"
-    ],
-    "off_label_uses": [
-      "Anxiety",
-      "Depression (adjunctive)",
-      "Insomnia",
-      "Migraine prevention",
-      "Premenstrual syndrome (PMS)"
-    ],
-    "contraindications": [
-      "Severe renal impairment",
-      "Hypermagnesemia"
-    ],
-    "monitoring_required": [
-      "Serum magnesium levels (in high-dose supplementation or renal impairment)"
-    ],
-    "efficacy_rating": {
-      "anxiety": 3,
-      "depression": 2,
-      "sleep": 3,
-      "migraine": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "magnesium supplement",
-      "Mg²⁺ mental health",
-      "magnesium forms"
-    ],
-    "synonyms": [
-      "Mg",
-      "magnesium salts"
-    ],
-    "common_misspellings": [
-      "magnesum",
-      "magnesiom"
+    "tags": [
+      "essential mineral",
+      "mental health",
+      "sleep",
+      "anxiety",
+      "depression"
     ]
+  },
+  "summary": "Magnesium is an essential mineral involved in numerous biochemical processes, including neurotransmission and stress regulation. Various forms of magnesium are used as supplements for anxiety, depression, sleep, and overall mental health.",
+  "description": "Magnesium is a vital mineral that plays roles in neuromuscular function, neurotransmitter regulation, and energy metabolism. Deficiency has been associated with depression, anxiety, migraines, and insomnia. Supplementation is common in integrative psychiatry, though clinical evidence is variable depending on formulation and condition. Different forms of magnesium vary in absorption, tolerability, and clinical effects—making the choice of formulation important for therapeutic use in mental health.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "magnesium-deficiency",
+          "condition_name": "Magnesium deficiency",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "depression-adjunctive",
+          "condition_name": "Depression (adjunctive)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "migraine-prevention",
+          "condition_name": "Migraine prevention",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "premenstrual-syndrome-pms",
+          "condition_name": "Premenstrual syndrome (PMS)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiety": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 2
+        },
+        "sleep": {
+          "rating": 3
+        },
+        "migraine": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Chronic supplementation; Short-term (insomnia, anxiety)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Diarrhea (especially with citrate, oxide)"
+        },
+        {
+          "effect": "Abdominal cramping"
+        },
+        {
+          "effect": "Loose stools"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypermagnesemia in renal impairment"
+        },
+        {
+          "risk": "Cardiac arrhythmia (rare, in overdose)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe renal impairment"
+        },
+        {
+          "contraindication": "Hypermagnesemia"
+        }
+      ],
+      "precautions": [
+        "Excessive doses may cause diarrhea or electrolyte imbalance",
+        "Caution in renal impairment due to accumulation risk"
+      ],
+      "interactions": [
+        {
+          "interactant": "Antibiotics (tetracyclines, fluoroquinolones)",
+          "mechanism": "Reduced absorption",
+          "action": "Separate by at least 2–4 hours"
+        },
+        {
+          "interactant": "Bisphosphonates",
+          "mechanism": "Reduced absorption",
+          "action": "Separate dosing"
+        },
+        {
+          "interactant": "Levothyroxine",
+          "mechanism": "Reduced absorption",
+          "action": "Separate dosing"
+        },
+        {
+          "interactant": "Diuretics",
+          "mechanism": "Altered magnesium levels",
+          "action": "Monitor electrolytes"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum magnesium levels in long-term or high-dose use"
+        },
+        {
+          "parameter": "Renal function if supplementation is chronic and high dose"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally safe at recommended doses; high doses should be supervised",
+        "lactation": "Safe within dietary intake levels",
+        "pediatric": "Safe at age-appropriate doses; consult for higher therapeutic use",
+        "geriatric": "Safe, but monitor renal function and bowel tolerance"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential mineral (Mg²⁺ cation)",
+        "natural_source": "Leafy greens, nuts, seeds, whole grains, legumes",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for psychiatric indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -263,6 +359,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Boyle NB et al. The effects of magnesium supplementation on subjective anxiety and stress—systematic review. Nutrients. 2017.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28629171/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Eby GA, Eby KL. Rapid recovery from major depression using magnesium treatment. Med Hypotheses. 2006.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16542786/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Examine.com – Magnesium",
+      "url": "https://examine.com/supplements/magnesium/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "magnesium supplement",
+      "Mg²⁺ mental health",
+      "magnesium forms"
+    ],
+    "synonyms": [
+      "Mg",
+      "magnesium salts"
+    ],
+    "common_misspellings": [
+      "magnesum",
+      "magnesiom"
+    ]
+  },
   "seo": {
     "title": "Magnesium – Essential Mineral for Anxiety, Depression, and Sleep",
     "description": "Magnesium is an essential mineral supplement used for anxiety, depression, sleep, and migraines. Learn about the different forms of magnesium, their benefits, and dosing.",

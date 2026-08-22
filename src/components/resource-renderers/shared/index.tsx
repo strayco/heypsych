@@ -54,7 +54,7 @@ export function SectionList({ sections = [] }: { sections?: Section[] }) {
               {String(section?.title ?? section?.heading ?? section?.type ?? "Section")}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-slate-900">
+          <CardContent className="text-label-secondary">
             <ParsedContent
               content={
                 typeof section?.text === "string"
@@ -99,7 +99,7 @@ export function ReferencesTable({ refs = [] }: { refs?: Reference[] }) {
               <div key={i}>
                 {ref.doi ? (
                   <a
-                    className="inline-flex items-center gap-2 text-sm leading-relaxed text-sky-600 hover:text-sky-800 hover:underline"
+                    className="inline-flex items-center gap-2 text-sm leading-relaxed text-accent hover:text-accent-700 hover:underline"
                     href={`https://doi.org/${encodeURIComponent(ref.doi)}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -108,7 +108,7 @@ export function ReferencesTable({ refs = [] }: { refs?: Reference[] }) {
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 ) : (
-                  <span className="text-sm leading-relaxed text-slate-900">{citationText}</span>
+                  <span className="text-sm leading-relaxed text-label-secondary">{citationText}</span>
                 )}
               </div>
             );
@@ -185,8 +185,8 @@ export function AutoFields({
         <span
           className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${
             value
-              ? "border-green-200 bg-green-50 text-green-700"
-              : "border-slate-200 bg-slate-50 text-slate-900"
+              ? "border-positive-border bg-positive-tint text-positive-600"
+              : "border-separator bg-surface-grouped text-label-tertiary"
           }`}
         >
           {value ? "Yes" : "No"}
@@ -201,7 +201,7 @@ export function AutoFields({
           {value.map((item, i) => (
             <span
               key={i}
-              className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-900"
+              className="inline-flex items-center rounded-full bg-fill-secondary px-2 py-0.5 text-xs text-label-secondary"
             >
               {String(item)}
             </span>
@@ -225,7 +225,7 @@ export function AutoFields({
             {trueItems.map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800"
+                className="inline-flex items-center rounded-full bg-accent-500/20 px-2 py-0.5 text-xs font-medium text-accent-700"
               >
                 {item}
               </span>
@@ -252,10 +252,10 @@ export function AutoFields({
     <div className="space-y-4">
       {keys.map((key) => (
         <div key={key} className="flex flex-col gap-2 sm:flex-row sm:items-start">
-          <div className="min-w-[140px] text-sm font-semibold text-slate-800">
+          <div className="min-w-[140px] text-sm font-semibold text-label-secondary">
             {humanLabel(key)}
           </div>
-          <div className="flex-1 text-sm text-slate-900">{renderValue(data[key])}</div>
+          <div className="flex-1 text-sm text-label-secondary">{renderValue(data[key])}</div>
         </div>
       ))}
     </div>
@@ -268,7 +268,7 @@ export function AutoFields({
         {collapsible && (
           <button
             type="button"
-            className="text-sm text-slate-500 hover:text-slate-700"
+            className="text-sm text-label-tertiary hover:text-label-secondary"
             onClick={() => setOpen((prev) => !prev)}
           >
             {open ? "Hide" : "Show"}
@@ -282,16 +282,16 @@ export function AutoFields({
 
 export function MedicalDisclaimer() {
   return (
-    <Card className="border-amber-200 bg-amber-50">
+    <Card className="border-caution-border bg-caution-tint">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
-          <AlertTriangle className="h-5 w-5 text-amber-600" />
-          <CardTitle className="text-lg text-amber-800">Important Notice</CardTitle>
+          <AlertTriangle className="h-5 w-5 text-caution" />
+          <CardTitle className="text-lg text-caution-700">Important Notice</CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="space-y-2 text-sm text-amber-800">
+      <CardContent className="space-y-2 text-sm text-caution">
         <p>
-          This assessment is for <strong>educational and informational purposes only</strong> and is
+          This assessment is for <strong className="text-caution-700">educational and informational purposes only</strong> and is
           not intended to provide medical advice, diagnosis, or treatment.
         </p>
         <p>

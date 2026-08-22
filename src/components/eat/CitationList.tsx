@@ -90,12 +90,12 @@ export function CitationList({
 
   const getCitationTypeColor = (type?: string): string => {
     const colors: Record<string, string> = {
-      study: 'bg-blue-100 text-blue-700',
-      review: 'bg-purple-100 text-purple-700',
-      'meta-analysis': 'bg-indigo-100 text-indigo-700',
-      guideline: 'bg-green-100 text-green-700',
-      book: 'bg-amber-100 text-amber-700',
-      other: 'bg-neutral-100 text-neutral-700',
+      study: 'bg-accent-tint text-accent-700',
+      review: 'bg-accent-tint text-accent-700',
+      'meta-analysis': 'bg-accent-tint text-accent-700',
+      guideline: 'bg-positive-tint text-positive-700',
+      book: 'bg-caution-tint text-caution-700',
+      other: 'bg-fill-tertiary text-label-secondary',
     };
     return colors[type || 'other'] || colors.other;
   };
@@ -132,7 +132,7 @@ export function CitationList({
     <Card className="shadow-sm">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <BookOpen className="h-5 w-5 text-blue-600" />
+          <BookOpen className="h-5 w-5 text-accent" />
           {title}
         </CardTitle>
       </CardHeader>
@@ -154,7 +154,7 @@ export function CitationList({
                 )}
 
                 {/* Citation text */}
-                <p className="text-neutral-800 leading-relaxed">
+                <p className="text-label-secondary leading-relaxed">
                   {numbered && <span className="font-semibold mr-2">{index + 1}.</span>}
                   {formatCitation(citation, index)}
                 </p>
@@ -166,7 +166,7 @@ export function CitationList({
                       href={`https://doi.org/${citation.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 hover:underline"
+                      className="flex items-center gap-1 text-accent hover:text-accent-700 hover:underline"
                     >
                       <span className="font-mono">DOI: {citation.doi}</span>
                       <ExternalLink className="h-3 w-3" />
@@ -178,7 +178,7 @@ export function CitationList({
                       href={`https://pubmed.ncbi.nlm.nih.gov/${citation.pmid}/`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 hover:underline"
+                      className="flex items-center gap-1 text-accent hover:text-accent-700 hover:underline"
                     >
                       <span className="font-mono">PMID: {citation.pmid}</span>
                       <ExternalLink className="h-3 w-3" />
@@ -190,7 +190,7 @@ export function CitationList({
                       href={citation.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 hover:underline"
+                      className="flex items-center gap-1 text-accent hover:text-accent-700 hover:underline"
                     >
                       <span>View Source</span>
                       <ExternalLink className="h-3 w-3" />
@@ -200,7 +200,7 @@ export function CitationList({
 
                 {/* Note */}
                 {citation.note && (
-                  <p className="text-xs italic text-neutral-600">{citation.note}</p>
+                  <p className="text-xs italic text-label-tertiary">{citation.note}</p>
                 )}
               </div>
             </li>

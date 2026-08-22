@@ -1,75 +1,209 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "zolpidem-ambien",
-  "type": "medication",
-  "name": "Zolpidem (Ambien)",
-  "summary": "Fast-acting prescription sleep medication for short-term insomnia. Helps you fall asleep (and sometimes stay asleep), but can cause next-day impairment and rare-but-serious complex sleep behaviors like sleep-walking or sleep-driving.",
-  "description": "Zolpidem is a non-benzodiazepine hypnotic (“Z-drug”) used for short-term insomnia. It can work quickly (often within ~30 minutes), but it’s not a long-term fix. The big safety headline: complex sleep behaviors can happen (sleep-walking, sleep-driving, doing things while not fully awake, with no memory). If that happens even once, zolpidem should be stopped and not retried. Higher doses increase next-day impairment (including driving risk), especially in women and older adults.",
-  "patient_summary": "Zolpidem can help you fall asleep fast, but it comes with real risks: next-day grogginess, memory gaps, and rare but dangerous “complex sleep behaviors” (sleep-walking, sleep-driving, doing things while not fully awake). If that happens, stop it immediately and don’t take it again. This med is best kept short-term and paired with CBT-I and sleep habit work—not used as your forever plan.",
-  "category": "medications/insomnia",
-  "metadata": {
-    "drug_classes": [
-      "Nonbenzodiazepine Benzodiazepine Receptor Agonist",
-      "Hypnotic, Miscellaneous",
-      "Sedative-Hypnotic (Z-drug)"
-    ],
+  "identity": {
+    "slug": "zolpidem-ambien",
+    "name": "Zolpidem (Ambien)",
+    "generic_name": "zolpidem",
     "brand_names": [
       "Ambien",
       "Ambien CR",
       "Edluar",
       "Zolpimist (discontinued in US)"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Sublingual"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1992,
-    "pharmacologic_category": "Nonbenzodiazepine Hypnotic (BZ1-Preferential GABA-A Modulator)",
-    "published_date": "2025-11-24T00:00:00Z",
-    "last_updated": "2025-11-24T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-24T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (short-term treatment)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "Used short-term for insomnia—especially sleep-onset insomnia. For many people, CBT-I remains the best long-term treatment; zolpidem is typically the short-term bridge, not the whole strategy."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity (eg, anaphylaxis, angioedema) to zolpidem or any component of the formulation",
-      "History of complex sleep behaviors after taking zolpidem (sleep-walking, sleep-driving, or other activities while not fully awake)"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep onset (time to fall asleep)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Zolpidem can shorten the time it takes to fall asleep and may help some people stay asleep (especially the extended-release version). The tradeoff is safety: next-day impairment and rare but serious complex sleep behaviors.",
-      "citation_tag": "FDA-labeling"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
+    "drug_classes": [
+      "Nonbenzodiazepine Benzodiazepine Receptor Agonist",
+      "Hypnotic, Miscellaneous",
+      "Sedative-Hypnotic (Z-drug)"
+    ]
+  },
+  "summary": "Fast-acting prescription sleep medication for short-term insomnia. Helps you fall asleep (and sometimes stay asleep), but can cause next-day impairment and rare-but-serious complex sleep behaviors like sleep-walking or sleep-driving.",
+  "description": "Zolpidem is a non-benzodiazepine hypnotic (“Z-drug”) used for short-term insomnia. It can work quickly (often within ~30 minutes), but it’s not a long-term fix. The big safety headline: complex sleep behaviors can happen (sleep-walking, sleep-driving, doing things while not fully awake, with no memory). If that happens even once, zolpidem should be stopped and not retried. Higher doses increase next-day impairment (including driving risk), especially in women and older adults.",
+  "patient_summary": "Zolpidem can help you fall asleep fast, but it comes with real risks: next-day grogginess, memory gaps, and rare but dangerous “complex sleep behaviors” (sleep-walking, sleep-driving, doing things while not fully awake). If that happens, stop it immediately and don’t take it again. This med is best kept short-term and paired with CBT-I and sleep habit work—not used as your forever plan.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "Used short-term for insomnia—especially sleep-onset insomnia. For many people, CBT-I remains the best long-term treatment; zolpidem is typically the short-term bridge, not the whole strategy.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (IR and sublingual); extended-release has biphasic absorption",
-      "bioavailability": "~70% (IR tablet, adult data)",
-      "onset": "~30 minutes (IR tablet)",
-      "peak_plasma": "IR tablet ~1.6 hours (later with food); IR capsule ~1 hour (later with food)",
-      "half_life": "~2.5 hours in adults (can be prolonged in older adults and significantly prolonged in cirrhosis)",
-      "duration_IR": "6-8 hours (varies by person and dose)",
-      "duration_ER": "Designed to extend concentrations beyond ~3 hours post-dose for sleep maintenance",
-      "metabolism": "Hepatic (primarily CYP3A4; also CYP2C9, CYP1A2, CYP2D6, CYP2C19) to inactive metabolites",
-      "excretion": "Urine and feces (primarily as metabolites)",
-      "protein_binding": "~93%",
-      "food_effect": "Food delays onset and lowers peak levels; do not take with or right after a meal"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "~30 minutes (IR tablet)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Sublingual"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / next-day impairment",
+          "incidence": "Common (varies by dose and formulation)",
+          "notes": "You can feel ‘awake’ and still be impaired. Risk goes up with higher doses, extended-release, short sleep time, alcohol, other sedatives, older age, and liver disease."
+        },
+        {
+          "effect": "Dizziness / balance impairment",
+          "incidence": "Common",
+          "notes": "This is a big falls-and-injury issue, especially in older adults. Nighttime bathroom trips can become surprisingly risky."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common",
+          "notes": "Usually mild to moderate. If headaches are persistent or severe, it’s worth reassessing dose, timing, sleep duration, and other meds."
+        },
+        {
+          "effect": "Amnesia / memory impairment",
+          "incidence": "Reported (dose and behavior dependent)",
+          "notes": "More likely if you don’t go to bed right away, take extra doses, combine with alcohol/other sedatives, or use higher doses."
+        },
+        {
+          "effect": "Abnormal dreams / unusual thinking",
+          "incidence": "Reported",
+          "notes": "Some people get vivid dreams, odd thoughts, or feel ‘not quite themselves.’ If it’s intense, it’s not a ‘push through it’ situation—talk to your prescriber."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors (sleep-walking, sleep-driving, cooking, eating, sex while not fully awake) with amnesia; can cause serious injury or death. Discontinue immediately if it occurs."
+        },
+        {
+          "risk": "Delirium, confusion, hallucinations, agitation, bizarre behavior, disinhibition, aggression—can happen unpredictably and are usually reversible when stopped."
+        },
+        {
+          "risk": "Suicidal ideation or behavior has been reported, sometimes linked to confusion, hallucinations, paranoia, or complex sleep behaviors—urgent evaluation is needed."
+        },
+        {
+          "risk": "Respiratory depression or worsening breathing during sleep in vulnerable patients (sleep apnea/COPD), especially with other CNS depressants."
+        },
+        {
+          "risk": "Falls, fractures, motor vehicle accidents—risk increases with next-day impairment and in older adults."
+        }
+      ],
+      "black_box_warning": "Complex sleep behaviors including sleep-walking, sleep-driving, and engaging in other activities while not fully awake may occur following the use of zolpidem. Some of these events may result in serious injuries, including death. Discontinue zolpidem immediately if a patient experiences a complex sleep behavior.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity (eg, anaphylaxis, angioedema) to zolpidem or any component of the formulation"
+        },
+        {
+          "contraindication": "History of complex sleep behaviors after taking zolpidem (sleep-walking, sleep-driving, or other activities while not fully awake)"
+        }
+      ],
+      "precautions": [
+        "Next-day impairment: You can be impaired even if you feel fully awake—driving and safety-sensitive tasks can be affected.",
+        "Higher dose = higher risk: Higher doses increase next-morning impairment and complex behavior risk.",
+        "Alcohol + other sedatives: Mixing increases risk of dangerous sedation, breathing problems, injuries, amnesia, and complex sleep behaviors.",
+        "Depression and suicidality: Use caution in depression, especially if suicide risk is present; unusual thinking/behavior and suicidal ideation have been reported.",
+        "Respiratory disease: Use caution in sleep apnea or COPD; sedatives can worsen breathing during sleep.",
+        "Liver impairment: Accumulation risk is significant in cirrhosis; avoid in moderate to severe impairment and avoid in encephalopathy."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Major CNS depression, amnesia, complex sleep behaviors, injuries, and dangerous impairment.",
+          "action": "Avoid completely while using zolpidem."
+        },
+        {
+          "interactant": "Opioids (and other strong sedatives)",
+          "mechanism": "Additive sedation and respiratory depression; higher risk of overdose-level impairment and injury.",
+          "action": "Avoid when possible. If unavoidable, use the lowest doses and close monitoring—this is a high-risk combo."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, antihistamines like diphenhydramine, muscle relaxants, gabapentinoids, cannabis)",
+          "mechanism": "More sedation, worse coordination, more memory gaps, higher falls risk, higher complex sleep behavior risk.",
+          "action": "Avoid stacking sedatives. If used, reduce doses and treat it like a serious safety issue (driving, falls, decision-making)."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (major pathway)",
+          "mechanism": "Higher zolpidem exposure and greater impairment risk.",
+          "action": "Use caution; consider dose reduction or alternative. Monitor for next-day sedation and unusual behaviors."
+        },
+        {
+          "interactant": "Serotonergic antidepressants (SSRIs/SNRIs) and other psychoactive meds",
+          "mechanism": "Higher likelihood of odd behaviors, hallucinations, and complex sleep behaviors in some patients.",
+          "action": "Use extra caution; keep zolpidem dose low, avoid alcohol/other sedatives, and stop immediately if unusual behaviors occur."
+        },
+        {
+          "interactant": "Food (high-fat meal or taking with/after a meal)",
+          "mechanism": "Delayed onset and blunted peak effect; increases the temptation to re-dose (which is dangerous).",
+          "action": "Take on an empty stomach or not with/after a meal; do not re-dose the same night."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Daytime alertness and next-day impairment: ask specifically about morning driving risk and work/school performance."
+        },
+        {
+          "parameter": "Falls risk: especially older adults, anyone with nighttime bathroom trips, balance issues, or other sedatives onboard."
+        },
+        {
+          "parameter": "Behavior profile: unusual behaviors, confusion, hallucinations, agitation, disinhibition, aggression—these are stop-sign symptoms."
+        },
+        {
+          "parameter": "Complex sleep behaviors: any sleep-walking, sleep-driving, cooking/eating/sex while not fully awake with amnesia = discontinue immediately."
+        },
+        {
+          "parameter": "Respiratory status in high-risk patients: sleep apnea, COPD, respiratory compromise; monitor for worsening snoring, apneas, morning headaches, daytime sleepiness."
+        },
+        {
+          "parameter": "Tolerance, misuse, and dependence risk: escalating dose, taking extra doses, combining with alcohol, craving, or using outside prescribed instructions."
+        },
+        {
+          "parameter": "Reevaluate if insomnia persists after 7 to 10 days: consider psychiatric drivers (anxiety, depression, trauma), substances, circadian issues, medical causes, or medication side effects."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Zolpidem crosses the placenta. Late third-trimester exposure has been associated with neonatal sedation and severe respiratory depression requiring intervention in some reports. If used in pregnancy, keep dose low, avoid other sedatives, and monitor the newborn for excess sedation, hypotonia, and respiratory depression.",
+        "lactation": "Zolpidem is present in breast milk. Excess sedation in breastfed infants has been reported. If used while breastfeeding, monitor the infant for sedation, poor feeding, hypotonia, and breathing problems. Some guidance suggests pumping and discarding breast milk during treatment and for about 23 hours after the last dose to minimize infant exposure.",
+        "pediatric": "Not a routine pediatric insomnia medication. Limited pediatric data show variable efficacy, and a randomized trial in ADHD-associated insomnia did not improve sleep latency; hallucinations occurred in a notable minority. If insomnia is present in kids, behavioral sleep treatment and evaluation of underlying conditions is usually the primary path.",
+        "geriatric": "Avoid use when possible. Zolpidem is listed as potentially inappropriate for adults ≥65 due to delirium, falls, fractures, ER visits, hospitalizations, and motor vehicle crashes, with minimal average sleep benefit. If used anyway, dose must be low with close monitoring for confusion and falls.",
+        "renal_impairment": "No dosage adjustment necessary for any degree of kidney dysfunction; not significantly dialyzed, so no supplemental dose is needed with hemodialysis or peritoneal dialysis.",
+        "hepatic_impairment": "High-risk. Zolpidem exposure increases substantially in cirrhosis and can accumulate. Avoid in moderate to severe hepatic impairment and avoid in hepatic encephalopathy. In mild impairment (eg, Child-Pugh A), use the lowest effective dose (commonly IR 5 mg or ER 6.25 mg) and avoid prolonged use."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1992
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (IR and sublingual); extended-release has biphasic absorption",
+          "bioavailability": "~70% (IR tablet, adult data)",
+          "peak_plasma": "IR tablet ~1.6 hours (later with food); IR capsule ~1 hour (later with food)",
+          "half_life": "~2.5 hours in adults (can be prolonged in older adults and significantly prolonged in cirrhosis)",
+          "metabolism": "Hepatic (primarily CYP3A4; also CYP2C9, CYP1A2, CYP2D6, CYP2C19) to inactive metabolites",
+          "excretion": "Urine and feces (primarily as metabolites)",
+          "protein_binding": "~93%",
+          "food_effect": "Food delays onset and lowers peak levels; do not take with or right after a meal"
+        },
+        "dosing": {
+          "titration": "Zolpidem dosing is sex-sensitive and formulation-specific. The safest rule: use the lowest effective dose, take it immediately before bed, and only when you have enough time to sleep (7-8 hours; or at least 4 hours for middle-of-the-night low-dose sublingual use). Don’t take it with or right after a meal."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Most people don’t need a long taper if they’ve used standard doses short-term. But if you’ve been taking higher doses or using it long-term, stop like a professional: slowly and with a plan. Rebound insomnia for a night or two is common. True withdrawal symptoms are less common but can happen—especially with chronic, high-dose use."
+        }
+      }
     }
   },
   "sections": [
@@ -89,7 +223,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s the real-world vibe people report. Not everyone gets all of this—but these patterns show up a lot:",
       "items": [
         {
           "category": "Sleep comes faster (often within ~30 minutes)",
@@ -126,7 +259,8 @@
           ],
           "note": "If complex sleep behaviors happen (sleep-walking, sleep-driving, doing activities while not fully awake), zolpidem should be discontinued immediately and not retried."
         }
-      ]
+      ],
+      "intro": "Here’s the real-world vibe people report. Not everyone gets all of this—but these patterns show up a lot:"
     },
     {
       "type": "onset_duration",
@@ -143,10 +277,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Zolpidem can help people fall asleep faster and, depending on the formulation, may help with staying asleep. The catch is that the improvement can be modest for some people—and the safety risks are real (next-day impairment, falls, confusion, and complex sleep behaviors). In practice, zolpidem works best as a short-term tool paired with CBT-I and behavioral sleep changes.",
       "metric": "Sleep onset and sleep maintenance (clinical outcomes vary)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Zolpidem can help people fall asleep faster and, depending on the formulation, may help with staying asleep. The catch is that the improvement can be modest for some people—and the safety risks are real (next-day impairment, falls, confusion, and complex sleep behaviors). In practice, zolpidem works best as a short-term tool paired with CBT-I and behavioral sleep changes.",
       "clinical_details": "Immediate-release formulations are typically used for sleep-onset insomnia. Extended-release is used when sleep maintenance is also a problem. Sublingual low-dose formulations may be used for middle-of-the-night awakenings when there are at least 4 hours left to sleep."
     },
     {
@@ -220,7 +354,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Zolpidem is a sedative-hypnotic. The most dangerous interactions are the ones that increase sedation, blackout risk, and breathing problems.",
       "items": [
         {
           "with": "Alcohol",
@@ -252,7 +385,8 @@
           "risk": "Delayed onset and blunted peak effect; increases the temptation to re-dose (which is dangerous).",
           "action": "Take on an empty stomach or not with/after a meal; do not re-dose the same night."
         }
-      ]
+      ],
+      "intro": "Zolpidem is a sedative-hypnotic. The most dangerous interactions are the ones that increase sedation, blackout risk, and breathing problems."
     },
     {
       "type": "tapering",
@@ -327,21 +461,6 @@
       "text": "Zolpidem is not the main character in long-term insomnia care—CBT-I is. Zolpidem is best used as a short-term, targeted tool: a bridge while behavioral treatment ramps up, a rescue option during acute stress, or a carefully selected medication choice when insomnia is severe and function is suffering. The deciding factor is safety. If someone has risk factors for falls, confusion, substance misuse, breathing problems during sleep, or has ever had complex sleep behaviors, zolpidem is usually the wrong fit."
     }
   ],
-  "seo": {
-    "title": "Zolpidem (Ambien): Uses, Dosage, Side Effects & Safety Warnings",
-    "description": "Zolpidem (Ambien/Ambien CR) for insomnia: how fast it works, dosing by formulation, next-day impairment, complex sleep behaviors (sleep-walking/sleep-driving), interactions, tapering, and safer long-term strategies like CBT-I.",
-    "canonical": "[https://www.heypsych.com/treatments/zolpidem-ambien](https://www.heypsych.com/treatments/zolpidem-ambien)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is zolpidem (Ambien) used for?",
@@ -387,5 +506,20 @@
       "q": "What should I do if zolpidem stops working?",
       "a": "Don’t just escalate the dose. That increases risk more than it increases benefit. Instead, reassess the insomnia pattern, timing, sleep schedule, substance use (including alcohol/cannabis), medications that may be interfering with sleep, and consider CBT-I. If insomnia persists beyond about a week or two, it’s worth checking for depression, anxiety, trauma, circadian issues, or medical causes."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Zolpidem (Ambien): Uses, Dosage, Side Effects & Safety Warnings",
+    "description": "Zolpidem (Ambien/Ambien CR) for insomnia: how fast it works, dosing by formulation, next-day impairment, complex sleep behaviors (sleep-walking/sleep-driving), interactions, tapering, and safer long-term strategies like CBT-I.",
+    "canonical": "[https://www.heypsych.com/treatments/zolpidem-ambien](https://www.heypsych.com/treatments/zolpidem-ambien)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

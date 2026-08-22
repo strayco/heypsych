@@ -1,81 +1,135 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "biofeedback-thermal",
-  "type": "interventional",
-  "name": "Thermal Biofeedback",
-  "summary": "A noninvasive biofeedback method that uses skin temperature monitoring to train relaxation and peripheral vasodilation as markers of parasympathetic activation.",
-  "description": "Thermal biofeedback measures skin surface temperature—typically from a finger or toe—using sensitive thermistors or infrared sensors. Peripheral skin temperature reflects changes in blood flow, which is influenced by autonomic balance: stress and sympathetic activation cause vasoconstriction and cooling, while relaxation and parasympathetic activation promote vasodilation and warming.\n\nPatients learn to raise skin temperature through paced breathing, guided imagery, and relaxation strategies, often supported by visual feedback on a screen. This method is particularly useful in conditions where peripheral vasoconstriction plays a role, such as migraine, Raynaud’s phenomenon, and stress-related disorders.",
-  "category": "interventional/biofeedback",
-  "tags": [
-    "biofeedback",
-    "thermal",
-    "skin-temperature",
-    "peripheral-vasodilation",
-    "migraine",
-    "raynauds",
-    "relaxation-training",
-    "stress-management"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "biofeedback-thermal",
+    "name": "Thermal Biofeedback",
+    "wikidata_qid": "Q65536523"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/biofeedback",
     "intervention_types": [
       "Thermal Biofeedback",
       "Temperature Biofeedback"
     ],
-    "treatment_types": [
-      "Biofeedback",
-      "Behavioral Therapy"
-    ],
-    "categories": [
-      "Neuromodulation",
-      "Biofeedback",
-      "Behavioral Health"
-    ],
-    "delivery_methods": [
-      "Thermistor or infrared skin temperature sensor with real-time feedback display"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "30–45 minutes",
-    "treatment_duration": [
-      "Short-term",
-      "Medium-term"
-    ],
-    "specialty_areas": [
-      "Behavioral Medicine",
-      "Pain Management",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q65536523"
+    "tags": [
+      "biofeedback",
+      "thermal",
+      "skin-temperature",
+      "peripheral-vasodilation",
+      "migraine",
+      "raynauds",
+      "relaxation-training",
+      "stress-management"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Migraine headache prophylaxis",
-      "Raynaud’s phenomenon"
-    ],
-    "conditions_treated": [
-      "Migraine",
-      "Raynaud’s phenomenon",
-      "Stress-related vasoconstriction",
-      "Anxiety with peripheral symptoms"
-    ],
-    "off_label_uses": [
-      "Adjunctive relaxation training for insomnia",
-      "Chronic pain with autonomic dysregulation"
-    ],
-    "contraindications": [
-      "Open wounds or skin infection at sensor site",
-      "Severe peripheral neuropathy (loss of temperature sensation)",
-      "Cognitive impairment limiting participation"
-    ],
-    "safety_profile": "Very safe; adverse effects are rare and usually mild (temporary skin irritation from sensor, lightheadedness from relaxation).",
-    "evidence_level": "Moderate to strong for migraine prophylaxis; moderate for Raynaud’s; low for generalized stress management.",
-    "research_support": "Supported by multiple randomized controlled trials for migraine and Raynaud’s; widely recommended in behavioral medicine guidelines."
+  "summary": "A noninvasive biofeedback method that uses skin temperature monitoring to train relaxation and peripheral vasodilation as markers of parasympathetic activation.",
+  "description": "Thermal biofeedback measures skin surface temperature—typically from a finger or toe—using sensitive thermistors or infrared sensors. Peripheral skin temperature reflects changes in blood flow, which is influenced by autonomic balance: stress and sympathetic activation cause vasoconstriction and cooling, while relaxation and parasympathetic activation promote vasodilation and warming.\n\nPatients learn to raise skin temperature through paced breathing, guided imagery, and relaxation strategies, often supported by visual feedback on a screen. This method is particularly useful in conditions where peripheral vasoconstriction plays a role, such as migraine, Raynaud’s phenomenon, and stress-related disorders.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "migraine-headache-prophylaxis",
+          "condition_name": "Migraine headache prophylaxis",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "raynaud-s-phenomenon",
+          "condition_name": "Raynaud’s phenomenon",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "migraine",
+          "condition_name": "Migraine",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "stress-related-vasoconstriction",
+          "condition_name": "Stress-related vasoconstriction",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-with-peripheral-symptoms",
+          "condition_name": "Anxiety with peripheral symptoms",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-relaxation-training-for-insomnia",
+          "condition_name": "Adjunctive relaxation training for insomnia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "chronic-pain-with-autonomic-dysregulation",
+          "condition_name": "Chronic pain with autonomic dysregulation",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to strong for migraine prophylaxis; moderate for Raynaud’s; low for generalized stress management.",
+      "research_support": "Supported by multiple randomized controlled trials for migraine and Raynaud’s; widely recommended in behavioral medicine guidelines."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Medium-term"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Thermistor or infrared skin temperature sensor with real-time feedback display"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–45 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Very safe; adverse effects are rare and usually mild (temporary skin irritation from sensor, lightheadedness from relaxation).",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild skin indentation from sensor clip"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Lightheadedness from deep relaxation"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Open wounds or skin infection at sensor site"
+        },
+        {
+          "contraindication": "Severe peripheral neuropathy (loss of temperature sensation)"
+        },
+        {
+          "contraindication": "Cognitive impairment limiting participation"
+        }
+      ]
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Thermal Biofeedback, Temperature Biofeedback",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Record baseline temperature for 5 minutes.\nGuide patient through relaxation or imagery while observing live temperature display.\nEncourage strategies that produce warming (e.g., imagining hands in warm water, calm breathing).\nReinforce increases with visual/auditory feedback.\nRepeat for several training blocks."
+      }
+    }
   },
   "sections": [
     {
@@ -151,6 +205,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Nestoriuc Y, Martin A. Efficacy of biofeedback for migraine: a meta-analysis. Pain. 2007;128(1-2):111-127.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17055699/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "O’Connell NE, et al. Interventions for Raynaud’s phenomenon. Cochrane Database Syst Rev. 2012;2012(8):CD006354.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22895982/"
+    }
+  ],
   "seo": {
     "title": "Thermal Biofeedback for Migraine and Raynaud’s: Mechanisms, Protocols, and Evidence",
     "description": "Thermal biofeedback trains relaxation and peripheral warming to reduce migraine and Raynaud’s symptoms. Evidence-based protocols, indications, and outcomes.",
@@ -163,5 +231,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to strong for migraine prophylaxis; moderate for Raynaud’s; low for generalized stress management."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to strong for migraine prophylaxis; moderate for Raynaud’s; low for generalized stress management."
+    ]
   }
 }

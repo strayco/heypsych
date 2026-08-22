@@ -1,82 +1,172 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "brainspotting",
-  "type": "therapy",
-  "name": "Brainspotting (BSP)",
-  "summary": "A focused therapy technique that identifies and processes traumatic memories by guiding attention to 'brainspots' — eye positions that correlate with unresolved emotional experiences.",
-  "description": "Brainspotting (BSP), developed by Dr. David Grand in 2003, is a therapeutic approach that uses eye positions, or 'brainspots,' to access unprocessed trauma and emotional distress stored in the subcortical brain. The therapist helps the client identify relevant eye positions while simultaneously holding awareness of body sensations and emotions. By maintaining attention on these internal experiences, clients are able to process and release trauma more deeply than through talk therapy alone. BSP is rooted in somatic and neurobiological principles, overlapping with EMDR and mindfulness, and is used to treat PTSD, anxiety, depression, performance blocks, and other conditions.",
-  "category": "therapy/trauma-focused",
-  "tags": [
-    "trauma therapy",
-    "somatic therapy",
-    "eye position",
-    "PTSD",
-    "EMDR-related"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "brainspotting",
+    "name": "Brainspotting (BSP)",
+    "generic_name": "brainspotting",
+    "brand_names": [
+      "BSP"
+    ],
+    "wikidata_qid": "Q16840419"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/trauma-focused",
     "intervention_types": [
       "Trauma-focused Therapy",
       "Somatic-based Therapy"
     ],
-    "treatment_types": [
-      "Psychotherapy",
-      "Experiential Therapy"
-    ],
-    "categories": [
-      "Trauma Therapy",
-      "Somatic Processing"
-    ],
-    "delivery_methods": [
-      "Individual therapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Adolescents",
-      "Children (select cases)"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "Short- to medium-term (weeks to months)"
-    ],
-    "specialty_areas": [
+    "tags": [
+      "trauma therapy",
+      "somatic therapy",
+      "eye position",
       "PTSD",
-      "Complex trauma",
-      "Anxiety disorders",
-      "Performance enhancement"
-    ],
-    "wikidata_qid": "Q16840419"
+      "EMDR-related"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Post-traumatic stress disorder (PTSD)",
-      "Complex trauma",
-      "Anxiety disorders",
-      "Depression",
-      "Dissociation",
-      "Performance blocks (e.g., sports, arts, academics)"
-    ],
-    "off_label_uses": [
-      "Chronic pain management",
-      "Enhancing resilience and creativity"
-    ],
-    "contraindications": [
-      "Severe psychosis or mania without stabilization",
-      "Active suicidal crisis"
-    ],
-    "safety_profile": "Generally safe but can temporarily intensify distress during trauma processing.",
-    "evidence_level": "Emerging — growing clinical support but limited large-scale RCTs compared to CBT or EMDR.",
-    "research_support": "Studies and clinical reports suggest effectiveness for trauma and performance issues; more rigorous trials are needed.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 4,
-      "anxiety": 3,
-      "depression": 3,
-      "performance-blocks": 4,
-      "overall_tolerability": 4
+  "summary": "A focused therapy technique that identifies and processes traumatic memories by guiding attention to 'brainspots' — eye positions that correlate with unresolved emotional experiences.",
+  "description": "Brainspotting (BSP), developed by Dr. David Grand in 2003, is a therapeutic approach that uses eye positions, or 'brainspots,' to access unprocessed trauma and emotional distress stored in the subcortical brain. The therapist helps the client identify relevant eye positions while simultaneously holding awareness of body sensations and emotions. By maintaining attention on these internal experiences, clients are able to process and release trauma more deeply than through talk therapy alone. BSP is rooted in somatic and neurobiological principles, overlapping with EMDR and mindfulness, and is used to treat PTSD, anxiety, depression, performance blocks, and other conditions.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-traumatic stress disorder (PTSD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-trauma",
+          "condition_name": "Complex trauma",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "dissociation",
+          "condition_name": "Dissociation",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "performance-blocks-e-g-sports-arts-academics",
+          "condition_name": "Performance blocks (e.g., sports, arts, academics)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain-management",
+          "condition_name": "Chronic pain management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "enhancing-resilience-and-creativity",
+          "condition_name": "Enhancing resilience and creativity",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Emerging — growing clinical support but limited large-scale RCTs compared to CBT or EMDR.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 3
+        },
+        "performance-blocks": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Studies and clinical reports suggest effectiveness for trauma and performance issues; more rigorous trials are needed."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short- to medium-term (weeks to months)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Individual therapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe but can temporarily intensify distress during trauma processing.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary emotional distress"
+        },
+        {
+          "effect": "Fatigue"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dissociative responses if not properly contained"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstabilized psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe suicidal intent",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Dissociation without grounding skills",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Psychotherapy, Experiential Therapy",
+        "key_techniques": [
+          "Trauma Therapy",
+          "Somatic Processing"
+        ],
+        "session_structure": {
+          "pre_session": "Grounding and identifying the target issue.",
+          "during_session": "Locating brainspot, processing emotions and body sensations while maintaining focus.",
+          "post_session": "Integration, reflection, and grounding before session ends."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in Brainspotting (Level 1–3 certification)"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -237,6 +327,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Grand D. Brainspotting: The Revolutionary New Therapy for Rapid and Effective Change.",
+      "url": "https://www.amazon.com/Brainspotting-Revolutionary-Therapy-Effective-Change/dp/1604078901"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Hildebrand A. Effectiveness of Brainspotting in the treatment of PTSD.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28752982/"
+    }
+  ],
   "seo": {
     "title": "Brainspotting Therapy | Trauma-Focused Somatic Psychotherapy",
     "description": "Brainspotting is a somatic trauma therapy using eye positions to process unresolved experiences, treating PTSD, anxiety, depression, and performance blocks.",
@@ -249,5 +353,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Emerging — growing clinical support but limited large-scale RCTs compared to CBT or EMDR."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Emerging — growing clinical support but limited large-scale RCTs compared to CBT or EMDR."
+    ]
   }
 }

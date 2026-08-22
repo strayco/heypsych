@@ -1,83 +1,169 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "authoritative-parenting-training",
-  "type": "therapy",
-  "name": "Authoritative Parenting Training",
-  "summary": "A structured parent training approach that promotes a balanced parenting style combining warmth, responsiveness, and clear expectations to improve child and adolescent behavioral and emotional outcomes.",
-  "description": "Authoritative Parenting Training is a psychoeducational and therapeutic intervention that teaches parents to adopt the authoritative parenting style—characterized by warmth, responsiveness, and consistent, firm but fair discipline. Research shows this parenting style is linked to improved outcomes in children and adolescents, including better emotional regulation, academic performance, and lower rates of conduct problems. Training often includes modeling, role-play, skill-building, and guided practice for parents.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "parenting",
-    "parent training",
-    "behavioral therapy",
-    "child development",
-    "family therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "authoritative-parenting-training",
+    "name": "Authoritative Parenting Training"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Parent Training",
       "Psychoeducation"
     ],
-    "treatment_types": [
-      "Parent Management Training",
-      "Family Intervention"
-    ],
-    "categories": [
-      "Parenting Programs"
-    ],
-    "delivery_methods": [
-      "Group sessions",
-      "Individual parent coaching",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Parents"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–12 sessions typical"
-    ],
-    "specialty_areas": [
-      "Behavioral issues",
-      "ADHD",
-      "Oppositional Defiant Disorder (ODD)",
-      "Anxiety"
+    "tags": [
+      "parenting",
+      "parent training",
+      "behavioral therapy",
+      "child development",
+      "family therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "ADHD",
-      "Oppositional Defiant Disorder",
-      "Conduct Disorder",
-      "Anxiety Disorders",
-      "Depression"
-    ],
-    "off_label_uses": [
-      "School behavior difficulties",
-      "Parent–child relational conflict",
-      "Prevention of substance use"
-    ],
-    "contraindications": [
-      "Unwillingness of parents to engage in behavioral change",
-      "Severe parental psychopathology that interferes with training"
-    ],
-    "safety_profile": "Safe and widely applicable with no medical risks.",
-    "evidence_level": "Strong; well-supported by longitudinal and intervention studies.",
-    "research_support": "Parenting interventions are supported across developmental psychology and clinical research for improving child outcomes.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ADHD": 4,
-      "ODD": 5,
-      "Conduct_Disorder": 4,
-      "Anxiety": 3,
-      "Depression": 3,
-      "overall_tolerability": 5
+  "summary": "A structured parent training approach that promotes a balanced parenting style combining warmth, responsiveness, and clear expectations to improve child and adolescent behavioral and emotional outcomes.",
+  "description": "Authoritative Parenting Training is a psychoeducational and therapeutic intervention that teaches parents to adopt the authoritative parenting style—characterized by warmth, responsiveness, and consistent, firm but fair discipline. Research shows this parenting style is linked to improved outcomes in children and adolescents, including better emotional regulation, academic performance, and lower rates of conduct problems. Training often includes modeling, role-play, skill-building, and guided practice for parents.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "oppositional-defiant-disorder",
+          "condition_name": "Oppositional Defiant Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety Disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "school-behavior-difficulties",
+          "condition_name": "School behavior difficulties",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "parent-child-relational-conflict",
+          "condition_name": "Parent–child relational conflict",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "prevention-of-substance-use",
+          "condition_name": "Prevention of substance use",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong; well-supported by longitudinal and intervention studies.",
+      "efficacy_ratings": {
+        "ADHD": {
+          "rating": 4
+        },
+        "ODD": {
+          "rating": 5
+        },
+        "Conduct_Disorder": {
+          "rating": 4
+        },
+        "Anxiety": {
+          "rating": 3
+        },
+        "Depression": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Parenting interventions are supported across developmental psychology and clinical research for improving child outcomes."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–12 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Group sessions",
+        "Individual parent coaching",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and widely applicable with no medical risks.",
+      "common_adverse_effects": [
+        {
+          "effect": "Initial resistance from child"
+        },
+        {
+          "effect": "Frustration during implementation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Temporary worsening of child behavior as new boundaries are enforced"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "None",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe parental mental illness that impedes training",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not directly applicable"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Parent Management Training, Family Intervention",
+        "key_techniques": [
+          "Parenting Programs"
+        ],
+        "session_structure": {
+          "pre_session": "Parents reflect on recent parent–child interactions and challenges.",
+          "during_session": "Therapist introduces new parenting strategies, demonstrates skills, and facilitates practice.",
+          "post_session": "Parents summarize insights and set goals for implementation at home."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Therapists, psychologists, or parent coaches trained in behavioral parent training methods"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -249,6 +335,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Baumrind, D. (1966). Effects of authoritative parental control on child behavior.",
+      "url": "https://psycnet.apa.org/record/1967-08022-001"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Steinberg, L. et al. (1994). Impact of parenting style on adolescent outcomes.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7932066/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Kazdin, A.E. (1997). Parent management training as treatment for oppositional, aggressive, and antisocial behavior in children.",
+      "url": "https://psycnet.apa.org/record/1997-08161-007"
+    }
+  ],
   "seo": {
     "title": "Authoritative Parenting Training",
     "description": "Authoritative Parenting Training teaches parents a balanced, evidence-based style of warmth, responsiveness, and consistent discipline to improve child and adolescent behavioral outcomes.",
@@ -261,5 +367,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong; well-supported by longitudinal and intervention studies."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong; well-supported by longitudinal and intervention studies."
+    ]
   }
 }

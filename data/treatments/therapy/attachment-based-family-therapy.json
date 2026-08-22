@@ -1,80 +1,161 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "attachment-based-family-therapy",
-  "type": "therapy",
-  "name": "Attachment-Based Family Therapy (ABFT)",
-  "summary": "A manualized, evidence-based family therapy designed to repair ruptured parent–child relationships, reduce adolescent depression, and prevent suicidal ideation.",
-  "description": "Attachment-Based Family Therapy (ABFT) is a short-term, empirically supported family therapy model rooted in attachment theory. It focuses on repairing ruptures in parent–child relationships that contribute to adolescent depression and suicidal ideation. By fostering secure attachment, emotional openness, and trust, ABFT helps adolescents develop resilience and reduces psychological distress. Treatment is structured, emotion-focused, and designed for adolescents and their families.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "attachment",
-    "adolescents",
-    "suicidality",
-    "systemic"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Family-Based Therapy",
-      "Attachment Therapy"
-    ],
-    "categories": [
-      "Family Therapies"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Parents",
-      "Families"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "16–20 sessions typical"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Suicidality",
-      "Family conflict",
-      "Anxiety"
+  "identity": {
+    "slug": "attachment-based-family-therapy",
+    "name": "Attachment-Based Family Therapy (ABFT)",
+    "generic_name": "attachment-based family therapy",
+    "brand_names": [
+      "ABFT"
     ],
     "wikidata_qid": "Q4817980"
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Adolescent depression",
-      "Suicidal ideation",
-      "Family conflict",
-      "Anxiety disorders"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "off_label_uses": [
-      "Trauma recovery",
-      "Behavioral issues",
-      "School-related distress"
-    ],
-    "contraindications": [
-      "Active abuse in the household",
-      "Severe parental psychopathology that prevents engagement"
-    ],
-    "safety_profile": "Safe, non-invasive, and highly collaborative.",
-    "evidence_level": "Strong; multiple randomized controlled trials support efficacy.",
-    "research_support": "Extensively studied with adolescents experiencing depression and suicidality.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "suicidality": 5,
-      "family_conflict": 4,
-      "anxiety": 3,
-      "overall_tolerability": 5
+    "tags": [
+      "family therapy",
+      "attachment",
+      "adolescents",
+      "suicidality",
+      "systemic"
+    ]
+  },
+  "summary": "A manualized, evidence-based family therapy designed to repair ruptured parent–child relationships, reduce adolescent depression, and prevent suicidal ideation.",
+  "description": "Attachment-Based Family Therapy (ABFT) is a short-term, empirically supported family therapy model rooted in attachment theory. It focuses on repairing ruptures in parent–child relationships that contribute to adolescent depression and suicidal ideation. By fostering secure attachment, emotional openness, and trust, ABFT helps adolescents develop resilience and reduces psychological distress. Treatment is structured, emotion-focused, and designed for adolescents and their families.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "adolescent-depression",
+          "condition_name": "Adolescent depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "suicidal-ideation",
+          "condition_name": "Suicidal ideation",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "trauma-recovery",
+          "condition_name": "Trauma recovery",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "behavioral-issues",
+          "condition_name": "Behavioral issues",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "school-related-distress",
+          "condition_name": "School-related distress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong; multiple randomized controlled trials support efficacy.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "suicidality": {
+          "rating": 5
+        },
+        "family_conflict": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Extensively studied with adolescents experiencing depression and suicidality."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "16–20 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, non-invasive, and highly collaborative.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when discussing painful experiences"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased conflict if emotions are not well managed in therapy"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active abuse in the household",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Parental psychopathology preventing engagement",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not directly applicable"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family-Based Therapy, Attachment Therapy",
+        "key_techniques": [
+          "Family Therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Therapist prepares by reviewing family dynamics and identifying relational ruptures.",
+          "during_session": "Structured sequence of individual and family sessions focusing on attachment repair and emotional communication.",
+          "post_session": "Therapist and family summarize progress and reinforce attachment-focused communication."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists, psychologists, or social workers trained in ABFT"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -242,6 +323,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Diamond, G.S. et al. (2002). Attachment-based family therapy for depressed adolescents: A treatment development study.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11837477/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Diamond, G.S. et al. (2010). Attachment-based family therapy for adolescents with suicidal ideation: A randomized controlled trial.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20231193/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Israel, P. et al. (2017). Attachment-based family therapy: A review of empirical support.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28533571/"
+    }
+  ],
   "seo": {
     "title": "Attachment-Based Family Therapy (ABFT)",
     "description": "Attachment-Based Family Therapy (ABFT) is an evidence-based family therapy for adolescent depression, suicidality, and family relational repair.",
@@ -254,5 +355,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong; multiple randomized controlled trials support efficacy."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong; multiple randomized controlled trials support efficacy."
+    ]
   }
 }

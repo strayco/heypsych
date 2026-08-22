@@ -1,88 +1,236 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "rivastigmine-exelon",
-  "type": "medication",
-  "name": "Rivastigmine (Exelon)",
-  "summary": "Cholinesterase inhibitor used for Alzheimer’s and Parkinson’s disease dementia. Can help cognition and, for some people, reduce hallucinations, agitation, and delirium—but GI side effects and weight loss are common, especially with fast titration.",
-  "description": "Rivastigmine is a brain acetylcholine booster used in Alzheimer’s dementia and Parkinson’s disease dementia. In psychiatry-world, it’s most relevant when dementia comes with hallucinations, agitation, or fluctuating confusion. The patch often causes less nausea than pills, but you still have to titrate slowly. Watch for weight loss, dizziness, fainting, and slow heart rate. Never wear more than one patch at a time—patch errors have caused overdoses.",
-  "patient_summary": "Rivastigmine is used for Alzheimer’s and Parkinson’s disease dementia and sometimes helps hallucinations, agitation, and delirium. The patch is usually easier on the stomach than capsules, but you still have to go slow. The biggest issues are nausea, vomiting, diarrhea, weight loss, dizziness, and fainting—especially during dose increases. Only wear ONE patch at a time and remove the old patch before putting on a new one.",
-  "category": "medications/neurocognitive-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "rivastigmine-exelon",
+    "name": "Rivastigmine (Exelon)",
+    "generic_name": "rivastigmine",
+    "brand_names": [
+      "Exelon"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/neurocognitive-disorders",
     "drug_classes": [
       "Cholinesterase Inhibitor",
       "Acetylcholinesterase Inhibitor (Central)",
       "Cholinergic Agent"
-    ],
-    "brand_names": [
-      "Exelon"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Transdermal"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 2000,
-    "pharmacologic_category": "Acetylcholinesterase Inhibitor (Central)",
-    "published_date": "2025-12-28T00:00:00Z",
-    "last_updated": "2025-12-28T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-28T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Dementia of the Alzheimer type (mild to moderate for oral; mild to severe for transdermal)",
-      "Mild to moderate dementia associated with Parkinson disease"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alzheimer-disease",
-        "relationship": "primary_treatment",
-        "context": "Used to support cognition and daily functioning in Alzheimer’s dementia; the transdermal patch is used across mild, moderate, and severe stages."
-      },
-      {
-        "slug": "parkinson-disease-dementia",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for mild to moderate Parkinson’s disease dementia; clinically relevant for hallucinations, fluctuations, and cognitive slowing."
-      },
-      {
-        "slug": "dementia-with-lewy-bodies",
-        "relationship": "off_label",
-        "context": "Often used when Lewy body dementia is driving hallucinations, cognitive fluctuations, or behavioral symptoms."
-      },
-      {
-        "slug": "delirium",
-        "relationship": "off_label",
-        "context": "Sometimes used as a backup option for anticholinergic delirium when physostigmine is unavailable, typically with toxicology guidance."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to rivastigmine, other carbamate derivatives, or any component of the formulation",
-      "History of application-site reactions with rivastigmine patch"
-    ],
-    "efficacy_response": {
-      "metric": "Cognitive and behavioral symptom support",
-      "percentage_value": "Varies by condition and stage",
-      "comparison_data": "Not a “feel it in an hour” medication; benefits are gradual and modest",
-      "patient_text": "Rivastigmine isn’t a fast sedative or a quick fix. When it helps, it tends to show up over weeks as steadier thinking, less confusion, and sometimes fewer hallucinations or less agitation—especially in Parkinson’s disease dementia or Lewy body dementia.",
-      "citation_tag": "FDA Label / Clinical Guidelines"
+  "summary": "Cholinesterase inhibitor used for Alzheimer’s and Parkinson’s disease dementia. Can help cognition and, for some people, reduce hallucinations, agitation, and delirium—but GI side effects and weight loss are common, especially with fast titration.",
+  "description": "Rivastigmine is a brain acetylcholine booster used in Alzheimer’s dementia and Parkinson’s disease dementia. In psychiatry-world, it’s most relevant when dementia comes with hallucinations, agitation, or fluctuating confusion. The patch often causes less nausea than pills, but you still have to titrate slowly. Watch for weight loss, dizziness, fainting, and slow heart rate. Never wear more than one patch at a time—patch errors have caused overdoses.",
+  "patient_summary": "Rivastigmine is used for Alzheimer’s and Parkinson’s disease dementia and sometimes helps hallucinations, agitation, and delirium. The patch is usually easier on the stomach than capsules, but you still have to go slow. The biggest issues are nausea, vomiting, diarrhea, weight loss, dizziness, and fainting—especially during dose increases. Only wear ONE patch at a time and remove the old patch before putting on a new one.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alzheimer-disease",
+          "condition_name": "Alzheimer Disease",
+          "relationship": "primary_indication",
+          "context": "Used to support cognition and daily functioning in Alzheimer’s dementia; the transdermal patch is used across mild, moderate, and severe stages.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "parkinson-disease-dementia",
+          "condition_name": "Parkinson Disease Dementia",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for mild to moderate Parkinson’s disease dementia; clinically relevant for hallucinations, fluctuations, and cognitive slowing.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "dementia-with-lewy-bodies",
+          "condition_name": "Dementia With Lewy Bodies",
+          "relationship": "off_label",
+          "context": "Often used when Lewy body dementia is driving hallucinations, cognitive fluctuations, or behavioral symptoms."
+        },
+        {
+          "condition_slug": "delirium",
+          "condition_name": "Delirium",
+          "relationship": "off_label",
+          "context": "Sometimes used as a backup option for anticholinergic delirium when physostigmine is unavailable, typically with toxicology guidance."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral: rapid; Transdermal: gradual steady delivery",
-      "bioavailability": "Oral: ~36%",
-      "onset": "Oral: within ~1 hour; Patch: begins within 30-60 minutes but clinical effects are gradual over weeks",
-      "peak_plasma": "Oral: ~1 hour; Patch: ~8-16 hours after first application",
-      "half_life": "Oral: ~1.5 hours; Patch: ~3 hours after removal",
-      "duration_IR": "Central anticholinesterase activity can persist for ~10 hours after a 6 mg oral dose",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Primarily via cholinesterase-mediated hydrolysis; CYP involvement is minimal",
-      "excretion": "Urine (mostly metabolites)",
-      "protein_binding": "~40%",
-      "food_effect": "Food delays absorption and lowers peak levels; take oral doses with meals to improve tolerability"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: within ~1 hour; Patch: begins within 30-60 minutes but clinical effects are gradual over weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Transdermal"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea / Vomiting",
+          "incidence": "Oral: nausea ~23-47%; vomiting ~17-31% (rates vary by dose and titration speed)",
+          "notes": "This is the #1 reason people quit or need to slow down. It often spikes right after a dose increase or a too-fast restart. Taking oral doses with meals and titrating slowly helps. The patch tends to be gentler on the stomach."
+        },
+        {
+          "effect": "Diarrhea / GI Upset",
+          "incidence": "Oral: diarrhea ~5-19%; Patch: up to ~7%",
+          "notes": "Diarrhea can lead to dehydration, weakness, and confusion—especially in older adults. If diarrhea is persistent, the plan is usually to pause, step back to a lower dose, and retitrate."
+        },
+        {
+          "effect": "Decreased Appetite / Weight Loss",
+          "incidence": "Weight loss ~1-7% reported; appetite decrease commonly reported",
+          "notes": "Weight loss isn’t just a cosmetic side effect in dementia—it can worsen frailty, falls, and overall outcomes. Low body weight increases exposure and toxicity risk, so weight should be tracked."
+        },
+        {
+          "effect": "Dizziness / Syncope / Fall Risk",
+          "incidence": "Dizziness: oral ~6-21%; syncope: oral ~3%",
+          "notes": "Lightheadedness, near-fainting, or true fainting can happen—especially if rivastigmine slows the heart rate or lowers blood pressure responses. Falls are a major concern."
+        },
+        {
+          "effect": "Agitation / Restlessness / Sleep Disruption",
+          "incidence": "Agitation reported (patch range includes up to ~14%); insomnia can occur",
+          "notes": "It’s a dementia med, but it can still make someone feel wired or restless. If behavior worsens after a dose increase, it may be the medication (or the dose) and needs reassessment."
+        },
+        {
+          "effect": "Patch Site Reactions",
+          "incidence": "Application-site erythema and itching are common; severe irritation is less common",
+          "notes": "Mild redness is common. Allergic contact dermatitis is different: it spreads, swells, or persists, and usually means stopping the patch. Rotate sites and avoid irritated or broken skin."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Bradycardia, heart block, QT prolongation, and rare torsades de pointes: fainting, palpitations, collapse—EMERGENCY symptoms require urgent evaluation."
+        },
+        {
+          "risk": "Severe vomiting with dehydration or complications: persistent vomiting, inability to keep fluids down, confusion, weakness—urgent care risk."
+        },
+        {
+          "risk": "Severe skin reactions (including widespread allergic dermatitis or rare severe cutaneous reactions): stop and seek medical care."
+        },
+        {
+          "risk": "Seizures (rare): new seizure activity requires urgent evaluation."
+        },
+        {
+          "risk": "Overdose from patch errors (wearing multiple patches or not removing old patch): severe nausea/vomiting, sweating, slow heart rate, confusion, collapse—urgent evaluation."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to rivastigmine, other carbamate derivatives, or any component of the formulation"
+        },
+        {
+          "contraindication": "History of application-site reactions with rivastigmine patch"
+        }
+      ],
+      "precautions": [
+        "GI side effects are common and dose-related (nausea, vomiting, diarrhea); dehydration and weight loss can follow",
+        "Bradycardia, fainting, and conduction problems can occur (especially in older adults or people with heart disease)",
+        "May worsen tremor or other extrapyramidal symptoms in Parkinson’s disease",
+        "Patch reactions can range from mild irritation to allergic dermatitis; severe skin reactions require stopping",
+        "CNS effects can include dizziness, drowsiness, and impaired alertness—use caution with driving until you know your response",
+        "MRI caution: patches may contain metal—remove the patch before MRI per product guidance"
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticholinergic medications (diphenhydramine, benztropine, oxybutynin, some antipsychotics with strong anticholinergic effects, TCAs like amitriptyline)",
+          "mechanism": "Pharmacologic tug-of-war: anticholinergics can blunt rivastigmine benefit and worsen confusion; combining can increase delirium risk and side effects.",
+          "action": "Minimize anticholinergic burden whenever possible, especially in dementia. If anticholinergic delirium is being treated, rivastigmine may be used in select cases with specialist guidance."
+        },
+        {
+          "interactant": "Beta-blockers and other heart-rate-lowering meds (and other drugs that affect conduction)",
+          "mechanism": "Additive bradycardia and syncope risk; conduction abnormalities are a known risk with cholinesterase inhibitors.",
+          "action": "Use caution and monitor pulse, dizziness, and fainting. Consider ECG risk assessment in high-risk patients."
+        },
+        {
+          "interactant": "Other cholinesterase inhibitors (donepezil, galantamine)",
+          "mechanism": "Additive cholinergic side effects (GI toxicity, bradycardia) without clear added benefit.",
+          "action": "Avoid combining cholinesterase inhibitors. If switching, follow a clinician-directed plan."
+        },
+        {
+          "interactant": "NSAIDs or history of ulcer disease",
+          "mechanism": "Cholinergic activity can increase gastric acid secretion, potentially increasing bleeding/ulcer risk in susceptible patients.",
+          "action": "Use caution, monitor for GI bleeding symptoms, and reassess if abdominal pain, black stools, or anemia symptoms appear."
+        },
+        {
+          "interactant": "Heat exposure on patch (sauna, prolonged external heat)",
+          "mechanism": "Heat can increase absorption and side effects from the patch.",
+          "action": "Avoid prolonged heat exposure over the patch area and follow patch handling guidance."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cognitive function and day-to-day functioning at periodic intervals (is there meaningful benefit?)"
+        },
+        {
+          "parameter": "Neuropsychiatric symptoms relevant to psychiatry care: hallucinations, agitation, sleep-wake disruption, fluctuating confusion, and distress (track baseline and changes after titration)"
+        },
+        {
+          "parameter": "GI intolerance: nausea, vomiting, diarrhea, abdominal pain—especially during titration or after restarts"
+        },
+        {
+          "parameter": "Weight and appetite: baseline weight and ongoing monitoring; intervene early if weight is trending down"
+        },
+        {
+          "parameter": "Hydration status: watch for dehydration (weakness, confusion, low intake, orthostasis), especially if GI side effects occur"
+        },
+        {
+          "parameter": "Cardiac effects: pulse, dizziness, syncope; consider ECG risk evaluation in high-risk patients (conduction disease, beta-blocker use, arrhythmia history)"
+        },
+        {
+          "parameter": "Falls and balance: increased risk if dizziness, bradycardia, or orthostasis occurs"
+        },
+        {
+          "parameter": "Parkinsonism/extrapyramidal symptoms: tremor or rigidity can worsen in Parkinson’s disease"
+        },
+        {
+          "parameter": "Skin reactions with patch: irritation vs allergic dermatitis; ensure rotation of sites and proper application technique"
+        },
+        {
+          "parameter": "Medication administration safety: confirm only one patch is used at a time and old patch is removed before applying a new one"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human pregnancy data are limited. Animal studies have not shown clear adverse reproductive outcomes, but dementia treatment during pregnancy is uncommon. Use only if clearly needed and guided by specialist risk-benefit discussion.",
+        "lactation": "It is not known whether rivastigmine is present in breast milk. The decision to breastfeed during therapy should weigh potential infant exposure, benefits of breastfeeding, and benefits of treatment to the mother.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing, but monitor closely. Older adults can be more vulnerable to bradycardia, syncope, falls, dehydration, and weight loss. Oral clearance may be reduced in older adults; titrate slowly and reassess function, weight, and vital signs regularly.",
+        "renal_impairment": "No dosage adjustment is generally required for any degree of kidney impairment for oral or transdermal therapy, but exposure can be higher in some patients; monitor tolerability.",
+        "hepatic_impairment": "Oral: clearance can be reduced in hepatic impairment; a conservative approach is slower titration and potentially lower starting frequency (for example, 1.5 mg once daily with cautious titration). Patch: in mild to moderate hepatic impairment, an initial and maximum dose of 4.6 mg/24 hours is recommended in some guidance; severe hepatic impairment has not been well studied."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2000
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral: rapid; Transdermal: gradual steady delivery",
+          "bioavailability": "Oral: ~36%",
+          "peak_plasma": "Oral: ~1 hour; Patch: ~8-16 hours after first application",
+          "half_life": "Oral: ~1.5 hours; Patch: ~3 hours after removal",
+          "metabolism": "Primarily via cholinesterase-mediated hydrolysis; CYP involvement is minimal",
+          "excretion": "Urine (mostly metabolites)",
+          "protein_binding": "~40%",
+          "food_effect": "Food delays absorption and lowers peak levels; take oral doses with meals to improve tolerability"
+        },
+        "dosing": {
+          "titration": "Rivastigmine dosing is slow on purpose. Going too fast is the fastest way to get nausea, vomiting, dizziness, and weight loss—especially in low body weight patients. Oral is typically twice daily with meals; the patch is once daily and often better tolerated."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Rivastigmine does not cause benzodiazepine-style withdrawal. The main risk of stopping is symptom rebound: cognition, hallucinations, or confusion may worsen back toward baseline. If therapy is interrupted for more than a few days, you typically need to restart at a low dose and retitrate—because side effects can hit hard if you jump back to the old dose."
+        }
+      }
     }
   },
   "sections": [
@@ -104,7 +252,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Rivastigmine isn’t a “kick in” medication. If it helps, it’s usually subtle and gradual. These are the patterns people describe most often:",
       "items": [
         {
           "category": "Clearer Moments (weeks, not hours)",
@@ -150,7 +297,8 @@
           ],
           "note": "Patch errors (wearing more than one) can cause overdose-level side effects."
         }
-      ]
+      ],
+      "intro": "Rivastigmine isn’t a “kick in” medication. If it helps, it’s usually subtle and gradual. These are the patterns people describe most often:"
     },
     {
       "type": "onset_duration",
@@ -167,10 +315,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Rivastigmine can help stabilize cognition and day-to-day functioning in dementia, and it may also help neuropsychiatric symptoms that ride along with dementia—like hallucinations, agitation, and fluctuating confusion—especially in Parkinson’s disease dementia and Lewy body dementia. The tradeoff is tolerability: if the dose climbs too fast (or restarts too high after missed doses), nausea, vomiting, dizziness, and weight loss can wipe out any benefit.",
       "metric": "Cognition and behavioral symptom support over time",
       "value": "Modest, variable benefit",
       "comparison": "Best outcomes when titrated slowly and tolerated",
-      "text": "Rivastigmine can help stabilize cognition and day-to-day functioning in dementia, and it may also help neuropsychiatric symptoms that ride along with dementia—like hallucinations, agitation, and fluctuating confusion—especially in Parkinson’s disease dementia and Lewy body dementia. The tradeoff is tolerability: if the dose climbs too fast (or restarts too high after missed doses), nausea, vomiting, dizziness, and weight loss can wipe out any benefit.",
       "clinical_details": "Clinically, rivastigmine is often chosen when dementia symptoms include hallucinations and cognitive fluctuations, and when antipsychotics are risky or poorly tolerated (common in Lewy body spectrum disorders). Benefit is typically assessed over weeks to months, with dose increases spaced out to protect tolerability.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -262,7 +410,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Rivastigmine’s biggest interaction story is pharmacology (cholinergic vs anticholinergic) and additive heart-rate effects—not CYP metabolism.",
       "items": [
         {
           "with": "Anticholinergic medications (diphenhydramine, benztropine, oxybutynin, some antipsychotics with strong anticholinergic effects, TCAs like amitriptyline)",
@@ -289,7 +436,8 @@
           "risk": "Heat can increase absorption and side effects from the patch.",
           "action": "Avoid prolonged heat exposure over the patch area and follow patch handling guidance."
         }
-      ]
+      ],
+      "intro": "Rivastigmine’s biggest interaction story is pharmacology (cholinergic vs anticholinergic) and additive heart-rate effects—not CYP metabolism."
     },
     {
       "type": "tapering",
@@ -380,21 +528,6 @@
       "text": "Rivastigmine is not a primary psychiatry medication, but it shows up constantly in real-world psychiatric care because dementia symptoms are often behavioral. In Lewy body spectrum disorders (Parkinson’s disease dementia and dementia with Lewy bodies), rivastigmine is frequently favored when hallucinations and cognitive fluctuations drive distress—and when antipsychotics are risky or poorly tolerated. The patch is often the practical choice in patients who forget pills or can’t tolerate oral GI effects. The big clinical skill is pacing: slow titration, careful restarts after missed doses, and relentless monitoring of weight, hydration, falls, and heart-rate-related symptoms."
     }
   ],
-  "seo": {
-    "title": "Rivastigmine (Exelon): Uses, Dosing, Side Effects, Patch Safety & Delirium",
-    "description": "Rivastigmine (Exelon) for Alzheimer’s and Parkinson’s disease dementia: dosing for capsules and patch, side effects (nausea, weight loss, dizziness), heart-rate risks, patch safety rules, and psychiatry-relevant uses like hallucinations and delirium.",
-    "canonical": "[https://www.heypsych.com/treatments/rivastigmine-exelon](https://www.heypsych.com/treatments/rivastigmine-exelon)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is rivastigmine (Exelon) used for?",
@@ -440,5 +573,20 @@
       "q": "Is rivastigmine used for delirium?",
       "a": "Sometimes, but this is a niche situation. Rivastigmine has been used as an alternative for anticholinergic delirium when physostigmine isn’t available, typically with poison center or clinical toxicology guidance. The ideal dosing strategy isn’t firmly established, so this isn’t a DIY scenario."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Rivastigmine (Exelon): Uses, Dosing, Side Effects, Patch Safety & Delirium",
+    "description": "Rivastigmine (Exelon) for Alzheimer’s and Parkinson’s disease dementia: dosing for capsules and patch, side effects (nausea, weight loss, dizziness), heart-rate risks, patch safety rules, and psychiatry-relevant uses like hallucinations and delirium.",
+    "canonical": "[https://www.heypsych.com/treatments/rivastigmine-exelon](https://www.heypsych.com/treatments/rivastigmine-exelon)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

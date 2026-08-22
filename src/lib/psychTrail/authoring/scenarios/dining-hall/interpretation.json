@@ -1,0 +1,782 @@
+{
+  "version": "1.0.0",
+  "patternLabelMap": {
+    "catastrophizing": "You jumped to the worst-case",
+    "black_and_white_thinking": "You made it all-or-nothing",
+    "mind_reading": "You filled in what they were thinking",
+    "emotional_reasoning": "You treated the feeling like bad news",
+    "safety_behavior": "You reached for cover",
+    "experiential_avoidance": "You left at the hardest moment",
+    "self_attack": "You turned on yourself",
+    "threshold_collapse": "The bar got too high",
+    "perfectionism": "You needed it to be perfect first",
+    "distress_intolerance": "You couldn't stay with the discomfort",
+    "values_aligned_action": "You moved toward what matters",
+    "repair_attempt": "You tried to fix it",
+    "recovery_success": "You came back after pulling away",
+    "overcontrol": "You tried to control too much",
+    "overforcing": "You pushed and your system pushed back",
+    "grounded_interpretation": "You read the moment for what it was",
+    "micro_step_success": "You found a move small enough to work",
+    "distress_tolerated": "You stayed through the hard part",
+    "support_utilized": "You let someone be there",
+    "direct_communication": "You said what needed to be said",
+    "flexible_response": "You adjusted when it didn't work",
+    "compassionate_response": "You gave yourself room",
+    "premature_exit": "You protected yourself fast, but stayed stuck",
+    "post_event_processing": "You replayed it until it became something worse"
+  },
+  "turningPointConfig": {
+    "maxTurningPoints": 4,
+    "minWeight": 30,
+    "rankingWeights": {
+      "turningPointWeight": 1.0,
+      "interpretationPriority": 0.8,
+      "routeDivergence": 0.6,
+      "patternContribution": 0.7,
+      "mechanismShift": 0.5
+    }
+  },
+  "routeInterpretations": [
+    {
+      "routeId": "route_direct_connect",
+      "routeSummaryLabel": "Direct & Connected",
+      "whatShowedUp": "You entered, sat with people, read the moment accurately, and let it be ordinary.",
+      "dominantInternalPatternIds": ["grounded_interpretation", "distress_tolerated", "direct_communication"],
+      "dominantUserFacingPatternLabel": "You let the room be the room",
+      "routeReinforcement": "You gave your brain data it couldn't get from outside. The room wasn't dangerous. Now it knows that—not because you told it, but because you showed it.",
+      "routeNextRep": "Same move, different room. Sit with strangers somewhere else.",
+      "routeWhyItMatters": "The fear stays believable when you avoid. You stopped avoiding.",
+      "routeIfPatternKeepsRunning": "The gap between what you expect and what actually happens keeps shrinking.",
+      "routeTransferBridge": "One follow-up question. Today. Real conversation.",
+      "routeReflection": "Where else do you assume the room is hostile before it proves anything?",
+      "priority": 100
+    },
+    {
+      "routeId": "route_quiet_meaningful",
+      "routeSummaryLabel": "Quiet But Present",
+      "whatShowedUp": "You chose proximity without forcing interaction. You sat near someone, completed the meal, and let that be the whole thing.",
+      "dominantInternalPatternIds": ["distress_tolerated", "micro_step_success"],
+      "dominantUserFacingPatternLabel": "Smaller worked",
+      "routeReinforcement": "You found a move your brain could say yes to. That's not settling—that's how you expand what's possible.",
+      "routeNextRep": "One table closer. That's the whole upgrade.",
+      "routeWhyItMatters": "You didn't need to be charming or impressive. You just needed to show up. You did.",
+      "routeIfPatternKeepsRunning": "Each time you find a workable step, the next step gets easier to see.",
+      "routeTransferBridge": "Public space. One seat closer than comfortable.",
+      "routeReflection": "Where else do you demand the full performance when presence would count?",
+      "priority": 90
+    },
+    {
+      "routeId": "route_stumble_recover",
+      "routeSummaryLabel": "Stumble Then Recover",
+      "whatShowedUp": "You misread the tone—your brain started building rejection—and then you caught it. You stayed anyway.",
+      "dominantInternalPatternIds": ["recovery_success", "distress_tolerated"],
+      "dominantUserFacingPatternLabel": "You caught the story before it finished writing itself",
+      "routeReinforcement": "Spirals want to complete. You interrupted one mid-sentence. That's harder than never starting.",
+      "routeNextRep": "Catch it earlier. Name the story before it locks in.",
+      "routeWhyItMatters": "You don't have to believe every draft your brain writes.",
+      "routeIfPatternKeepsRunning": "The spiral gets shorter each time you interrupt it.",
+      "routeTransferBridge": "Notice when you're writing a story. Don't finish it.",
+      "routeReflection": "Where else do you finish the rejection story before reality gets a vote?",
+      "priority": 95
+    },
+    {
+      "routeId": "route_comeback",
+      "routeSummaryLabel": "The Comeback",
+      "whatShowedUp": "You left. And then you came back. That second entry is the move almost nobody makes.",
+      "dominantInternalPatternIds": ["recovery_success", "values_aligned_action"],
+      "dominantUserFacingPatternLabel": "Leaving didn't have to be permanent",
+      "routeReinforcement": "Escape usually wins forever. You just proved it doesn't have to. Your brain logged 'I can come back' instead of 'I can't handle it.'",
+      "routeNextRep": "If you bail this week, return within 10 minutes. That's the rep.",
+      "routeWhyItMatters": "Most people who leave stay gone. You didn't.",
+      "routeIfPatternKeepsRunning": "Escape becomes a pause, not a verdict.",
+      "routeTransferBridge": "Next time you bail, give yourself permission to go back.",
+      "routeReflection": "Where else do you treat leaving as final when it doesn't have to be?",
+      "priority": 100
+    },
+    {
+      "routeId": "route_safe_present",
+      "routeSummaryLabel": "Safe But Present",
+      "whatShowedUp": "You stayed in the space. You ate your meal. You didn't leave.",
+      "dominantInternalPatternIds": ["micro_step_success", "distress_tolerated"],
+      "dominantUserFacingPatternLabel": "You showed up and stayed",
+      "routeReinforcement": "The corner is still in the room. You didn't need to connect to count. You just needed to be there. You were.",
+      "routeNextRep": "Same room. One table closer.",
+      "routeWhyItMatters": "You met the baseline. Now you can build.",
+      "routeIfPatternKeepsRunning": "The corner gets less necessary. The room gets less charged.",
+      "routeTransferBridge": "Public space tomorrow. Ten minutes. Just be there.",
+      "routeReflection": "Where else do you show up safely but wonder what happens if you moved one step closer?",
+      "priority": 70
+    },
+    {
+      "routeId": "route_mind_reading",
+      "routeSummaryLabel": "The Mind-Reading Trap",
+      "whatShowedUp": "You did the hard thing—you sat with people. But then you turned their flat face into proof they didn't want you there.",
+      "dominantInternalPatternIds": ["mind_reading", "self_attack"],
+      "dominantUserFacingPatternLabel": "You filled in the blank with rejection",
+      "routeReinforcement": "Their face was neutral. You made it hostile. Now your brain treats the story you wrote as evidence. That's the trap.",
+      "routeNextRep": "Before deciding what their face meant, ask: What's the boring explanation?",
+      "routeWhyItMatters": "You're not reading their mind—you're projecting yours.",
+      "routeIfPatternKeepsRunning": "Every blank face becomes a verdict. The world gets smaller.",
+      "routeTransferBridge": "After your next ambiguous interaction, wait 60 seconds before deciding what it meant.",
+      "routeReflection": "Where else do you give blank data a bad meaning?",
+      "priority": 80
+    },
+    {
+      "routeId": "route_distorted_success",
+      "routeSummaryLabel": "Distorted Success",
+      "whatShowedUp": "You stayed. You talked. And now you're replaying every moment, looking for what went wrong.",
+      "dominantInternalPatternIds": ["post_event_processing", "self_attack"],
+      "dominantUserFacingPatternLabel": "The replay undid the win",
+      "routeReinforcement": "You can do the hard thing and still turn it into evidence against yourself. The replay is where wins go to die.",
+      "routeNextRep": "After your next real interaction, two minutes max. Then: 'Done.'",
+      "routeWhyItMatters": "You did well. The replay lied about it.",
+      "routeIfPatternKeepsRunning": "Every interaction becomes a test you probably failed. Even the ones that went fine.",
+      "routeTransferBridge": "Notice when the replay starts. Label it. Redirect.",
+      "routeReflection": "Where else do you turn wins into losses after the fact?",
+      "priority": 85
+    }
+  ],
+  "stepInterpretations": [
+    {
+      "id": "step_entrance_direct",
+      "choiceIds": ["entrance_step_in"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["values_aligned_action"],
+      "userFacingPatternLabel": "You didn't wait to feel ready",
+      "whatYouChose": "You walked in.",
+      "whatShowedUp": "You entered when your system wanted to hesitate.",
+      "functionalIntent": "Your body wanted more time. You overrode it.",
+      "immediatePayoff": "You're in. The decision is made. No more hovering.",
+      "cost": "The discomfort came with you.",
+      "reinforcement": "Your brain just logged: 'I can enter without waiting for permission from myself.'",
+      "tryNext": "Enter one space 30 seconds faster than feels comfortable.",
+      "whyThisMatters": "The hesitation at the door is where most people get stuck.",
+      "consequenceIfRepeated": "Each direct entry makes the door less significant.",
+      "turningPointWeight": 60,
+      "interpretationPriority": 70,
+      "stepValence": "positive",
+      "mechanismContribution": "activation",
+      "patternContribution": "direct_action"
+    },
+    {
+      "id": "step_entrance_phone",
+      "choiceIds": ["entrance_phone"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["safety_behavior"],
+      "userFacingPatternLabel": "You grabbed armor first",
+      "whatYouChose": "You pulled out your phone.",
+      "whatShowedUp": "The phone became a shield between you and the room.",
+      "functionalIntent": "You needed something to hold.",
+      "immediatePayoff": "You're less visible. Less available.",
+      "cost": "The phone says: 'This room requires protection.'",
+      "reinforcement": "Your brain just logged: 'See, I needed it.' The space stays dangerous because you never let it prove otherwise.",
+      "tryNext": "Phone stays in pocket for the first 2 minutes.",
+      "whyThisMatters": "Every time you use it, you confirm the threat.",
+      "consequenceIfRepeated": "The phone becomes required. You feel naked without it.",
+      "turningPointWeight": 55,
+      "interpretationPriority": 60,
+      "stepValence": "negative",
+      "mechanismContribution": "distress_tolerance",
+      "patternContribution": "safety_behavior"
+    },
+    {
+      "id": "step_entrance_leave",
+      "choiceIds": ["entrance_leave"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["experiential_avoidance", "premature_exit"],
+      "userFacingPatternLabel": "You left before the room got a vote",
+      "whatYouChose": "You turned around and left.",
+      "whatShowedUp": "The door was right there. You turned around.",
+      "functionalIntent": "You wanted to skip finding out.",
+      "immediatePayoff": "Relief. The threat is avoided.",
+      "cost": "Your brain just logged: 'Confirmed: too hard.' Next time starts harder.",
+      "reinforcement": "Avoidance compounds. Each exit teaches your brain the space is dangerous.",
+      "tryNext": "Tomorrow: enter, stand inside for 30 seconds. No expectations.",
+      "whyThisMatters": "The hardest part is entering. You left before testing that.",
+      "consequenceIfRepeated": "The dining hall becomes a place you 'can't go.' Your world shrinks.",
+      "turningPointWeight": 80,
+      "interpretationPriority": 90,
+      "stepValence": "negative",
+      "mechanismContribution": "activation",
+      "patternContribution": "premature_exit"
+    },
+    {
+      "id": "step_seat_group",
+      "choiceIds": ["seat_group"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["values_aligned_action", "direct_communication"],
+      "userFacingPatternLabel": "You picked the hardest option",
+      "whatYouChose": "You sat at the group table.",
+      "whatShowedUp": "You chose the group table.",
+      "functionalIntent": "Part of you wanted the corner. You went the other way.",
+      "immediatePayoff": "You're in the game. The decision is irreversible.",
+      "cost": "Your nervous system is lit up. Stakes feel higher.",
+      "reinforcement": "Your brain just logged: 'I can approach, not just observe.'",
+      "tryNext": "Next time, ask one question after sitting down.",
+      "whyThisMatters": "You went toward the thing your brain said to avoid.",
+      "consequenceIfRepeated": "Approaching gets easier. The group table becomes ordinary.",
+      "turningPointWeight": 75,
+      "interpretationPriority": 80,
+      "stepValence": "positive",
+      "mechanismContribution": "directness",
+      "patternContribution": "direct_action"
+    },
+    {
+      "id": "step_seat_alone",
+      "choiceIds": ["seat_alone", "scan_corner_first"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["safety_behavior", "micro_step_success"],
+      "userFacingPatternLabel": "You stayed, but behind a buffer",
+      "whatYouChose": "You picked the corner table.",
+      "whatShowedUp": "The corner table. Safe. Separate. Still in the room.",
+      "functionalIntent": "You wanted distance from the social pressure.",
+      "immediatePayoff": "You're in the space but protected.",
+      "cost": "You didn't test what happens at the harder option.",
+      "reinforcement": "The corner lets you say 'I went.' But the harder tables stay untested.",
+      "tryNext": "Same scenario, reader table instead.",
+      "whyThisMatters": "There's a difference between showing up and arriving.",
+      "consequenceIfRepeated": "The corner becomes your default. The rest of the room stays dangerous.",
+      "turningPointWeight": 50,
+      "interpretationPriority": 50,
+      "stepValence": "mixed",
+      "mechanismContribution": "threshold_lowering",
+      "patternContribution": "safety_behavior"
+    },
+    {
+      "id": "step_interpret_normal",
+      "choiceIds": ["interpret_normal"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["grounded_interpretation"],
+      "userFacingPatternLabel": "You let neutral be neutral",
+      "whatYouChose": "You read their tone as just... neutral.",
+      "whatShowedUp": "Their response was flat. And you let it stay flat.",
+      "functionalIntent": "Your brain wanted to find a signal. You chose not to invent one.",
+      "immediatePayoff": "The moment didn't spiral. You stayed grounded.",
+      "cost": "None.",
+      "reinforcement": "Your brain just logged: 'Not everything means something. Sometimes people are just there.'",
+      "tryNext": "Next ambiguous moment, ask: What's the boring explanation?",
+      "whyThisMatters": "You didn't add a story.",
+      "consequenceIfRepeated": "If you keep reading moments accurately, the default assumption shifts from threat to neutral.",
+      "turningPointWeight": 85,
+      "interpretationPriority": 90,
+      "stepValence": "positive",
+      "mechanismContribution": "interpretation",
+      "patternContribution": "grounded_interpretation"
+    },
+    {
+      "id": "step_interpret_rejection",
+      "choiceIds": ["interpret_rejection"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["mind_reading", "catastrophizing"],
+      "userFacingPatternLabel": "You wrote rejection onto a blank face",
+      "whatYouChose": "You decided they didn't want you there.",
+      "whatShowedUp": "Their tone was flat. Your brain said: 'They don't want you here.'",
+      "functionalIntent": "Your brain was scanning for threat. It invented one.",
+      "immediatePayoff": "The story makes sense. Your fear feels justified.",
+      "cost": "You just poisoned a neutral moment.",
+      "reinforcement": "Your brain just logged: ambiguity = danger.",
+      "tryNext": "Next flat face, wait 60 seconds before deciding what it meant.",
+      "whyThisMatters": "You're not reading their mind—you're projecting yours.",
+      "consequenceIfRepeated": "Every flat tone becomes rejection. Your world gets smaller.",
+      "turningPointWeight": 80,
+      "interpretationPriority": 85,
+      "stepValence": "negative",
+      "mechanismContribution": "interpretation",
+      "patternContribution": "interpretation_distortion"
+    },
+    {
+      "id": "step_rejection_catch",
+      "choiceIds": ["rejection_catch_yourself", "pity_pause_reconsider", "spiral_catch_yourself"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["recovery_success", "grounded_interpretation"],
+      "userFacingPatternLabel": "You stopped writing the story",
+      "whatYouChose": "You caught yourself mid-spiral.",
+      "whatShowedUp": "Your brain was building a rejection story. You noticed—and stopped.",
+      "functionalIntent": "The spiral wanted to run. You interrupted it.",
+      "immediatePayoff": "You're still here. The moment didn't collapse.",
+      "cost": "The discomfort didn't disappear—you sat with it.",
+      "reinforcement": "Your brain just logged: 'Spirals are interruptible.'",
+      "tryNext": "When the story starts, say: 'That's a guess, not a fact.'",
+      "whyThisMatters": "You interrupted a story before it finished writing itself.",
+      "consequenceIfRepeated": "Spirals get shorter each time you catch them.",
+      "turningPointWeight": 90,
+      "interpretationPriority": 95,
+      "stepValence": "positive",
+      "mechanismContribution": "recovery",
+      "patternContribution": "recovery_success"
+    },
+    {
+      "id": "step_lull_speak_up",
+      "choiceIds": ["lull_speak_up"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["direct_communication", "values_aligned_action"],
+      "userFacingPatternLabel": "You spoke into the silence",
+      "whatYouChose": "You said something.",
+      "whatShowedUp": "There was a lull. You could have let it pass. You didn't.",
+      "functionalIntent": "Part of you wanted to wait. You went first.",
+      "immediatePayoff": "You're in the conversation now. The passive moment became active.",
+      "cost": "Higher stakes. More to potentially replay later.",
+      "reinforcement": "Your brain just logged: 'I can initiate, not just respond.'",
+      "tryNext": "One follow-up question. Today. Real conversation.",
+      "whyThisMatters": "You went first. Most people don't.",
+      "consequenceIfRepeated": "Speaking up gets easier. Silence becomes optional.",
+      "turningPointWeight": 70,
+      "interpretationPriority": 75,
+      "stepValence": "positive",
+      "mechanismContribution": "directness",
+      "patternContribution": "direct_action"
+    },
+    {
+      "id": "step_stay_through_silence",
+      "choiceIds": ["stay_through_silence"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["distress_tolerated"],
+      "userFacingPatternLabel": "You stayed through the awkward part",
+      "whatYouChose": "You stayed through the pause.",
+      "whatShowedUp": "The silence was uncomfortable. You let it be uncomfortable.",
+      "functionalIntent": "You wanted to fill it, escape it, fix it. You did nothing.",
+      "immediatePayoff": "The moment passed. You're still here.",
+      "cost": "The discomfort wasn't avoided—it was felt.",
+      "reinforcement": "Your brain just logged: 'Awkward silences are survivable.'",
+      "tryNext": "Next awkward moment, let 5 seconds pass before acting.",
+      "whyThisMatters": "You can't engage if you can't stay. You stayed.",
+      "consequenceIfRepeated": "Silence becomes less threatening. You outlast what others flee.",
+      "turningPointWeight": 75,
+      "interpretationPriority": 80,
+      "stepValence": "positive",
+      "mechanismContribution": "distress_tolerance",
+      "patternContribution": "distress_tolerated"
+    },
+    {
+      "id": "step_try_again",
+      "choiceIds": ["try_again"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["recovery_success", "values_aligned_action"],
+      "userFacingPatternLabel": "You came back",
+      "whatYouChose": "You went back in.",
+      "whatShowedUp": "You left. And then you walked back in.",
+      "functionalIntent": "The relief of escape wasn't enough. You wanted more than safety.",
+      "immediatePayoff": "Second chance. Different data.",
+      "cost": "Re-entering is harder than entering. You did it anyway.",
+      "reinforcement": "Your brain just logged: 'Setbacks are temporary. Escape isn't final.'",
+      "tryNext": "If you bail this week, return within 10 minutes.",
+      "whyThisMatters": "Most people who leave stay gone. You didn't.",
+      "consequenceIfRepeated": "Leaving becomes a pause, not a verdict.",
+      "turningPointWeight": 95,
+      "interpretationPriority": 100,
+      "stepValence": "positive",
+      "mechanismContribution": "recovery",
+      "patternContribution": "recovery_success"
+    },
+    {
+      "id": "step_metabolize_critical",
+      "choiceIds": ["metabolize_critical", "reflect_critical", "after_exchange_analyze"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["post_event_processing", "self_attack"],
+      "userFacingPatternLabel": "You started the replay",
+      "whatYouChose": "You started analyzing what went wrong.",
+      "whatShowedUp": "The experience was over. Then you started picking it apart.",
+      "functionalIntent": "Your brain started scanning for what went wrong.",
+      "immediatePayoff": "It feels productive—like you're learning something.",
+      "cost": "The replay turns a neutral moment into evidence against yourself.",
+      "reinforcement": "Your brain just logged: 'Every interaction needs post-analysis.' It doesn't.",
+      "tryNext": "Next social moment: two minutes, then done. No replay after.",
+      "whyThisMatters": "The replay is where wins go to die.",
+      "consequenceIfRepeated": "Every interaction becomes a test you probably failed.",
+      "turningPointWeight": 70,
+      "interpretationPriority": 75,
+      "stepValence": "negative",
+      "mechanismContribution": "interpretation",
+      "patternContribution": "interpretation_distortion"
+    },
+    {
+      "id": "step_metabolize_positive",
+      "choiceIds": ["metabolize_positive", "leave_proud", "reflect_proud"],
+      "nodeIds": [],
+      "routeIds": [],
+      "endingIds": [],
+      "internalPatternIds": ["grounded_interpretation", "compassionate_response"],
+      "userFacingPatternLabel": "You let the win stay a win",
+      "whatYouChose": "You let the moment end.",
+      "whatShowedUp": "The experience ended. You let it settle without picking it apart.",
+      "functionalIntent": "Your brain could have started the replay. You didn't let it.",
+      "immediatePayoff": "The win stays a win. No second-guessing.",
+      "cost": "None.",
+      "reinforcement": "Your brain just logged: 'Experiences can end without analysis.'",
+      "tryNext": "Next hard conversation, resist labeling it success or failure. Let it just be.",
+      "whyThisMatters": "How you interpret afterward matters as much as what happened.",
+      "consequenceIfRepeated": "Social moments become data, not trials. You stop draining wins.",
+      "turningPointWeight": 75,
+      "interpretationPriority": 80,
+      "stepValence": "positive",
+      "mechanismContribution": "interpretation",
+      "patternContribution": "grounded_interpretation"
+    }
+  ],
+  "fallbacks": [
+    {
+      "id": "fallback_no_route",
+      "condition": "no_route_match",
+      "routeLevel": {
+        "whatShowedUp": "You took a path that didn't fit a mapped route.",
+        "reinforcement": "Your path was unique. What matters: did you stay, or did you bail?",
+        "nextRep": "Same scenario. Different sequence.",
+        "whyItMatters": "Pay attention to where you felt the pull to leave or stay.",
+        "ifPatternKeepsRunning": "You'll find the routes that fit as you run it again."
+      },
+      "stepLevel": null
+    },
+    {
+      "id": "fallback_default",
+      "condition": "default",
+      "routeLevel": {
+        "whatShowedUp": "You moved through a hard moment. That counts.",
+        "reinforcement": "Every run gives your brain data. Even the messy ones.",
+        "nextRep": "Same scenario. One different choice.",
+        "whyItMatters": "Show up again.",
+        "ifPatternKeepsRunning": "Patterns get clearer with reps."
+      },
+      "stepLevel": {
+        "whatShowedUp": "Something happened here.",
+        "functionalIntent": "Your brain was managing the moment.",
+        "immediatePayoff": "You got through it.",
+        "cost": "There may have been a different path.",
+        "reinforcement": "Each choice gives your brain data about what's possible.",
+        "tryNext": "Notice what you felt here. Try something different next time.",
+        "whyThisMatters": "You're building awareness of the pattern.",
+        "consequenceIfRepeated": "Patterns emerge through repetition."
+      }
+    }
+  ],
+  "insightBeatConfig": {
+    "maxBeatsPerRun": 4,
+    "cooldownSteps": 2,
+    "enabled": true,
+    "maxInterventionShowsPerRun": 3,
+    "interventionCooldownSteps": 2,
+    "interventionsEnabled": true
+  },
+  "insightBeats": [
+    {
+      "id": "beat_phone_shield",
+      "trigger": {
+        "choiceIds": ["entrance_phone", "line_phone_shield"],
+        "minStep": 0,
+        "maxStep": 4
+      },
+      "internalPatternIds": ["safety_behavior"],
+      "userFacingLabel": "The shield",
+      "insightText": "You grabbed armor before anyone fired a shot. Your system traded 'find out if it's safe' for 'assume it's not.'",
+      "whyItMatters": "Every time the phone goes up, your brain logs: 'See? You needed it.' The space stays dangerous because you never let it prove otherwise.",
+      "tryNextCue": "Pocket stays closed for 90 seconds after you enter.",
+      "valence": "negative",
+      "priority": 75,
+      "mechanismContribution": "distress_tolerance",
+      "patternContribution": "safety_behavior",
+      "category": "safety_behavior",
+      "setFlagOnTrigger": "_beat_phone_shown",
+      "internalState": "avoidance_urge",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "phone_pocket",
+          "text": "Put it in your pocket. Leave it there for one minute.",
+          "targetState": "avoidance_urge",
+          "why": "You break the reflex by not completing it."
+        },
+        {
+          "id": "phone_table",
+          "text": "Set it face-down on the table. Hands off.",
+          "targetState": "avoidance_urge",
+          "why": "Present but not protecting. Halfway honest."
+        }
+      ]
+    },
+    {
+      "id": "beat_interpret_rejection",
+      "trigger": {
+        "choiceIds": ["interpret_rejection", "interpret_pity", "interpret_reader_negative"],
+        "minStep": 2
+      },
+      "internalPatternIds": ["mind_reading", "catastrophizing"],
+      "userFacingLabel": "Filled in the blank",
+      "insightText": "Their face gave you nothing. You wrote 'rejection' anyway. You made that up.",
+      "whyItMatters": "Flat face. You filled it in. Now the blank is 'proof.'",
+      "tryNextCue": "Ask: what's the most boring explanation for their face?",
+      "valence": "negative",
+      "priority": 85,
+      "mechanismContribution": "interpretation",
+      "patternContribution": "interpretation_distortion",
+      "category": "interpretation",
+      "setFlagOnTrigger": "_beat_rejection_shown",
+      "internalState": "uncertainty_spiral",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "rejection_boring",
+          "text": "Silently say: 'Or they're just tired.'",
+          "targetState": "uncertainty_spiral",
+          "why": "The boring explanation is almost always the true one."
+        },
+        {
+          "id": "rejection_guess",
+          "text": "Label it out loud: 'That was a guess.'",
+          "targetState": "uncertainty_spiral",
+          "why": "Calling it a guess breaks its authority."
+        },
+        {
+          "id": "rejection_wait",
+          "text": "Don't decide yet. Give it 60 seconds.",
+          "targetState": "uncertainty_spiral",
+          "why": "The spiral needs you to conclude fast. Don't."
+        }
+      ]
+    },
+    {
+      "id": "beat_approach_group",
+      "trigger": {
+        "choiceIds": ["seat_group", "group_ask_direct"],
+        "minStep": 2,
+        "requireFlagAbsent": "satAlone"
+      },
+      "internalPatternIds": ["values_aligned_action", "direct_communication"],
+      "userFacingLabel": "Toward the hard thing",
+      "insightText": "Your system said 'not that table' and you went anyway. That override is the whole skill.",
+      "whyItMatters": "Fear shrinks when you approach what it says to avoid. You just gave your brain data it couldn't get from the corner.",
+      "valence": "positive",
+      "priority": 70,
+      "mechanismContribution": "directness",
+      "patternContribution": "direct_action",
+      "category": "approach",
+      "setFlagOnTrigger": "_beat_approach_shown",
+      "internalState": "grounded_approach",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "approach_stay",
+          "text": "You're here. Don't bolt. Let the discomfort settle.",
+          "targetState": "grounded_approach",
+          "why": "Staying through the spike is what changes it."
+        },
+        {
+          "id": "approach_small",
+          "text": "Say one sentence. Anything. The content doesn't matter.",
+          "targetState": "grounded_approach",
+          "why": "Action solidifies approach. Words are secondary."
+        }
+      ]
+    },
+    {
+      "id": "beat_comeback",
+      "trigger": {
+        "choiceIds": ["try_again"],
+        "requireFlags": { "recoveredFromBail": false }
+      },
+      "internalPatternIds": ["recovery_success", "values_aligned_action"],
+      "userFacingLabel": "The return",
+      "insightText": "You left. And then you walked back in. That second entry is the move almost nobody makes.",
+      "whyItMatters": "Escape usually wins permanently. You just proved it doesn't have to. Your brain logged 'I can come back' instead of 'I can't handle it.'",
+      "valence": "positive",
+      "priority": 95,
+      "mechanismContribution": "recovery",
+      "patternContribution": "recovery_success",
+      "category": "recovery",
+      "setFlagOnTrigger": "_beat_comeback_shown",
+      "internalState": "recovery_window",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "comeback_ground",
+          "text": "You're back. That's the win. Nothing else required.",
+          "targetState": "recovery_window",
+          "why": "Don't add goals. The return is complete."
+        },
+        {
+          "id": "comeback_tiny",
+          "text": "One small thing: sit down, order, look around. Pick one.",
+          "targetState": "recovery_window",
+          "why": "Low bar protects the recovery."
+        }
+      ]
+    },
+    {
+      "id": "beat_catch_spiral",
+      "trigger": {
+        "choiceIds": ["rejection_catch_yourself", "pity_pause_reconsider", "spiral_catch_yourself"],
+        "requireFlags": { "interpretedNegatively": true }
+      },
+      "internalPatternIds": ["recovery_success", "grounded_interpretation"],
+      "userFacingLabel": "Caught mid-story",
+      "insightText": "You were writing a rejection script and you stopped typing. That interrupt is harder than never starting.",
+      "whyItMatters": "The spiral wanted you to finish the story. You refused. That's not nothing—that's the skill working in real time.",
+      "valence": "positive",
+      "priority": 90,
+      "mechanismContribution": "recovery",
+      "patternContribution": "recovery_success",
+      "category": "recovery",
+      "setFlagOnTrigger": "_beat_catch_shown",
+      "internalState": "recovery_window",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "catch_hold",
+          "text": "Don't conclude. Hold the not-knowing for 30 seconds.",
+          "targetState": "recovery_window",
+          "why": "Uncertainty is tolerable. You don't have to resolve it."
+        },
+        {
+          "id": "catch_stay",
+          "text": "Stay until the spike passes. Don't leave at peak.",
+          "targetState": "recovery_window",
+          "why": "Leaving now teaches your brain the peak is unmanageable."
+        },
+        {
+          "id": "catch_look",
+          "text": "Look at them again. Check if the data matches your story.",
+          "targetState": "recovery_window",
+          "why": "Second look often contradicts first read."
+        }
+      ]
+    },
+    {
+      "id": "beat_corner_table",
+      "trigger": {
+        "choiceIds": ["seat_alone", "scan_corner_first"],
+        "minStep": 2,
+        "suppressIfFlags": ["satWithGroup", "satWithReader"]
+      },
+      "internalPatternIds": ["safety_behavior", "micro_step_success"],
+      "userFacingLabel": "The buffer zone",
+      "insightText": "You stayed, but in a way that kept the room from really happening to you. That's showing up without arriving.",
+      "whyItMatters": "The corner lets you say 'I went.' But your brain still logged 'too risky to really join.' The fear stays intact.",
+      "tryNextCue": "Same room. One table closer. Let the hiding place get worse.",
+      "valence": "mixed",
+      "priority": 50,
+      "mechanismContribution": "threshold_lowering",
+      "patternContribution": "safety_behavior",
+      "category": "avoidance",
+      "setFlagOnTrigger": "_beat_corner_shown",
+      "internalState": "avoidance_urge",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "corner_look",
+          "text": "Look at the group for 5 seconds. No smile. Just look.",
+          "targetState": "avoidance_urge",
+          "why": "Looking is half the distance to sitting there."
+        },
+        {
+          "id": "corner_spotlight",
+          "text": "Count who's actually looking at you. It's almost always zero.",
+          "targetState": "avoidance_urge",
+          "why": "The spotlight feeling lies. Check it."
+        },
+        {
+          "id": "corner_finish",
+          "text": "Finish the meal here. Don't leave early, even from the corner.",
+          "targetState": "avoidance_urge",
+          "why": "Early exit erases partial credit."
+        }
+      ]
+    },
+    {
+      "id": "beat_threshold_leave",
+      "trigger": {
+        "choiceIds": ["entrance_leave", "seat_bail"],
+        "maxStep": 5
+      },
+      "internalPatternIds": ["experiential_avoidance", "premature_exit"],
+      "userFacingLabel": "Left at the door",
+      "insightText": "You got close enough to feel it—and then you bailed. Your brain just filed 'dining hall' under 'confirmed threat.'",
+      "whyItMatters": "Escape feels like relief. Your body just logged the peak as 'too much to stay.' Next time starts harder.",
+      "tryNextCue": "30 seconds inside. Stand there. That's the whole task.",
+      "valence": "negative",
+      "priority": 80,
+      "mechanismContribution": "activation",
+      "patternContribution": "premature_exit",
+      "category": "avoidance",
+      "setFlagOnTrigger": "_beat_threshold_shown",
+      "internalState": "collapse_after_pressure",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "threshold_one",
+          "text": "One step back in. That's it. No further goal.",
+          "targetState": "collapse_after_pressure",
+          "why": "Tiny reversal breaks the escape momentum."
+        },
+        {
+          "id": "threshold_shrink",
+          "text": "Shrink the goal: 30 seconds inside, then you can leave.",
+          "targetState": "collapse_after_pressure",
+          "why": "The bar was too high. Lower it to survivable."
+        },
+        {
+          "id": "threshold_name",
+          "text": "Say: 'This is the collapse moment.' Don't act on it yet.",
+          "targetState": "collapse_after_pressure",
+          "why": "Naming creates a gap between urge and action."
+        }
+      ]
+    },
+    {
+      "id": "beat_grounded_read",
+      "trigger": {
+        "choiceIds": ["interpret_normal", "interpret_reader_normal"],
+        "minStep": 3,
+        "requireFlagAbsent": "interpretedNegatively"
+      },
+      "internalPatternIds": ["grounded_interpretation"],
+      "userFacingLabel": "Accurate read",
+      "insightText": "Your system scanned for threat and you didn't take the bait. You let neutral be neutral.",
+      "whyItMatters": "This is what recalibration looks like. One accurate read at a time, the threat detector gets retrained.",
+      "valence": "positive",
+      "priority": 65,
+      "mechanismContribution": "interpretation",
+      "patternContribution": "grounded_interpretation",
+      "category": "grounding",
+      "setFlagOnTrigger": "_beat_grounded_shown",
+      "internalState": "grounded_approach",
+      "showInterventions": true,
+      "microInterventions": [
+        {
+          "id": "grounded_log",
+          "text": "Mark it: 'Neutral face. I didn't add a story.'",
+          "targetState": "grounded_approach",
+          "why": "Explicit logging strengthens the accurate pattern."
+        },
+        {
+          "id": "grounded_stay",
+          "text": "Stay a few minutes longer. Extend the data.",
+          "targetState": "grounded_approach",
+          "why": "Duration at accurate interpretation compounds the learning."
+        }
+      ]
+    }
+  ]
+}

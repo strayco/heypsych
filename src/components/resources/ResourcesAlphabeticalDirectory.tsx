@@ -100,8 +100,8 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
   };
 
   return (
-    <div ref={sectionRef} className="mt-12 border-t border-neutral-200 pt-8">
-      <h2 className="mb-6 text-2xl font-bold text-neutral-900">
+    <div ref={sectionRef} className="mt-12 border-t border-separator pt-8">
+      <h2 className="mb-6 text-2xl font-bold text-label-primary">
         All Resources A-Z
       </h2>
 
@@ -124,9 +124,9 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
                     ${
                       hasResources
                         ? isVisibleOnPage
-                          ? "bg-blue-500 text-white shadow-md ring-2 ring-blue-200 ring-offset-2"
-                          : "bg-white border-2 border-neutral-300 text-neutral-800 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700"
-                        : "bg-neutral-100 border-2 border-neutral-200 text-neutral-400 cursor-not-allowed"
+                          ? "bg-accent-tint0 text-white shadow-md ring-2 ring-accent-border ring-offset-2"
+                          : "bg-surface border-2 border-separator text-label-secondary hover:bg-accent-tint hover:border-accent hover:text-accent-700"
+                        : "bg-surface-grouped border-2 border-separator text-label-quaternary cursor-not-allowed"
                     }
                   `}
                   onClick={(e) => {
@@ -150,7 +150,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
             })}
           </div>
         </div>
-        <p className="text-xs text-neutral-600">
+        <p className="text-xs text-label-tertiary">
           <span className="font-semibold">Highlighted letters</span> are currently visible on this page.
           Click any letter to jump to its page.
         </p>
@@ -161,7 +161,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
         <div className="grid grid-cols-3 gap-x-8 gap-y-6">
           {letters.map((letter) => (
             <div key={letter}>
-              <h3 className="mb-3 text-lg font-semibold text-neutral-800">
+              <h3 className="mb-3 text-lg font-semibold text-label-secondary">
                 {letter}
               </h3>
               <ul className="space-y-2">
@@ -176,7 +176,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
                     <li key={resource.slug}>
                       <Link
                         href={href}
-                        className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
+                        className="text-sm text-label-secondary hover:text-accent hover:underline"
                       >
                         {resource.name}
                       </Link>
@@ -195,16 +195,16 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
           const isExpanded = expandedLetters.has(letter);
 
           return (
-            <div key={letter} className="border border-neutral-200 rounded-lg">
+            <div key={letter} className="border border-separator rounded-lg">
               <button
                 onClick={() => toggleLetter(letter)}
                 className="flex w-full items-center justify-between px-4 py-3 text-left"
                 aria-expanded={isExpanded}
               >
-                <span className="text-lg font-semibold text-neutral-800">
+                <span className="text-lg font-semibold text-label-secondary">
                   {letter}
                 </span>
-                <span className="flex items-center gap-2 text-sm text-neutral-600">
+                <span className="flex items-center gap-2 text-sm text-label-tertiary">
                   <span>{groupedResources[letter].length} resources</span>
                   {isExpanded ? (
                     <ChevronUp className="h-4 w-4" />
@@ -232,7 +232,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
                     <li key={resource.slug}>
                       <Link
                         href={href}
-                        className="text-sm text-neutral-700 hover:text-blue-600 hover:underline"
+                        className="text-sm text-label-secondary hover:text-accent hover:underline"
                       >
                         {resource.name}
                       </Link>
@@ -256,7 +256,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
         </div>
       )}
 
-      <p className="mt-6 text-sm text-neutral-600">
+      <p className="mt-6 text-sm text-label-tertiary">
         {totalPages > 1 ? (
           <>
             Showing {(page - 1) * ITEMS_PER_PAGE + 1}-

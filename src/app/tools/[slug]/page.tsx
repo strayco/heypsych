@@ -4,7 +4,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Download } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { ToolService } from "@/lib/tools/tool-service";
 import { DirectAnswerBlock } from "@/components/tools/DirectAnswerBlock";
 import { BoardAttribution } from "@/components/tools/BoardAttribution";
@@ -12,6 +12,13 @@ import { ToolFAQ } from "@/components/tools/ToolFAQ";
 import { RelatedTools } from "@/components/tools/RelatedTools";
 import { RelatedHubs } from "@/components/tools/RelatedHubs";
 import { ClinicianModule } from "@/components/tools/ClinicianModule";
+import { ToolOutboundLinks } from "./ToolOutboundLinks";
+import { siteConfig } from "@/lib/config/site";
+import {
+  getToolCanonicalUrl,
+  getToolRobotsMeta,
+} from "@/lib/tools/tools-seo";
+import { getComplianceDisplayText } from "@/lib/schemas/tool-editorial";
 
 // Generate static params for all tools
 export async function generateStaticParams() {
@@ -25,7 +32,7 @@ export async function generateStaticParams() {
   }
 }
 
-// Generate metadata
+// Generate metadata with SEO control plane integration
 export async function generateMetadata({
   params,
 }: {
@@ -38,19 +45,26 @@ export async function generateMetadata({
     return {
       title: "Tool Not Found | HeyPsych",
       description: "This tool could not be found.",
+      robots: "noindex, nofollow",
     };
   }
+
+  // Get canonical and robots from central SEO control plane
+  const canonicalUrl = getToolCanonicalUrl(slug);
+  const robotsMeta = getToolRobotsMeta(tool);
 
   return {
     title: tool.seo.title,
     description: tool.seo.meta_description,
     alternates: {
-      canonical: tool.seo.canonical_url,
+      canonical: canonicalUrl,
     },
+    // Apply robots decision from central indexation firewall
+    robots: robotsMeta,
     openGraph: {
       title: tool.seo.title,
       description: tool.seo.meta_description,
-      url: tool.seo.canonical_url,
+      url: canonicalUrl,
       type: "website",
     },
   };
@@ -124,51 +138,14 @@ export default async function ToolPage({
             </div>
           </section>
 
-          {/* Download Links */}
-          {(tool.app_metadata?.app_store_url || tool.app_metadata?.google_play_url || tool.app_metadata?.website) && (
-            <section className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
-              <h2 className="text-lg font-bold text-neutral-900 mb-4">
-                Get {tool.name}
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {tool.app_metadata?.app_store_url && (
-                  <a
-                    href={tool.app_metadata.app_store_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-11 px-6 rounded-xl font-medium border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-900 transition-all"
-                  >
-                    <Download className="h-4 w-4" />
-                    App Store
-                    <ExternalLink className="h-3 w-3 opacity-50" />
-                  </a>
-                )}
-                {tool.app_metadata?.google_play_url && (
-                  <a
-                    href={tool.app_metadata.google_play_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-11 px-6 rounded-xl font-medium border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-900 transition-all"
-                  >
-                    <Download className="h-4 w-4" />
-                    Google Play
-                    <ExternalLink className="h-3 w-3 opacity-50" />
-                  </a>
-                )}
-                {tool.app_metadata?.website && (
-                  <a
-                    href={tool.app_metadata.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-11 px-6 rounded-xl font-medium border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-900 transition-all"
-                  >
-                    Website
-                    <ExternalLink className="h-3 w-3 opacity-50" />
-                  </a>
-                )}
-              </div>
-            </section>
-          )}
+          {/* Download Links - with analytics tracking */}
+          <ToolOutboundLinks
+            toolSlug={tool.slug}
+            toolName={tool.name}
+            appStoreUrl={tool.app_metadata?.app_store_url}
+            googlePlayUrl={tool.app_metadata?.google_play_url}
+            websiteUrl={tool.app_metadata?.website}
+          />
 
           {/* Clinical Evidence */}
           {tool.clinical_metadata?.clinical_trials && tool.clinical_metadata.clinical_trials.length > 0 && (
@@ -209,7 +186,7 @@ export default async function ToolPage({
               <div className="p-4 bg-neutral-50 rounded-lg">
                 <dt className="text-sm text-neutral-500">HIPAA Compliant</dt>
                 <dd className="mt-1 text-lg font-bold text-neutral-900">
-                  {tool.privacy.hipaa_compliant ? "Yes" : "No"}
+                  {getComplianceDisplayText(tool.privacy.hipaa_compliant)}
                 </dd>
               </div>
               <div className="p-4 bg-neutral-50 rounded-lg">
@@ -242,14 +219,16 @@ export default async function ToolPage({
 }
 
 // Generate structured data for the tool
+// Uses siteConfig.url for all URLs - never hardcoded
 function generateStructuredData(tool: any): object[] {
   const schemas: object[] = [];
+  const baseUrl = siteConfig.url;
 
   // SoftwareApplication schema
   const appSchema: any = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": `https://heypsych.com/tools/${tool.slug}/#app`,
+    "@id": `${baseUrl}/tools/${tool.slug}/#app`,
     name: tool.name,
     description: tool.short_description,
     applicationCategory: "HealthApplication",
@@ -301,13 +280,13 @@ function generateStructuredData(tool: any): object[] {
         "@type": "ListItem",
         position: 1,
         name: "Tools",
-        item: "https://heypsych.com/tools/",
+        item: `${baseUrl}/tools/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: tool.name,
-        item: `https://heypsych.com/tools/${tool.slug}/`,
+        item: `${baseUrl}/tools/${tool.slug}/`,
       },
     ],
   });

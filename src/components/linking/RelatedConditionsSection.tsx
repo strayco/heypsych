@@ -70,15 +70,15 @@ export function RelatedConditionsSection({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5 text-blue-600" />
+            <Activity className="h-5 w-5 text-accent" />
             {title}
           </CardTitle>
         </CardHeader>
         <CardContent>
           {comorbidities.length > 0 && (
             <div className="mb-6">
-              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-neutral-900">
-                <AlertCircle className="h-4 w-4 text-orange-600" />
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-label-primary">
+                <AlertCircle className="h-4 w-4 text-caution-500" />
                 Common Comorbidities
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -90,7 +90,7 @@ export function RelatedConditionsSection({
                   >
                     <Badge
                       variant="outline"
-                      className="cursor-pointer border-orange-200 bg-orange-50 text-orange-900 transition-colors hover:border-orange-400 hover:bg-orange-100"
+                      className="cursor-pointer border-caution-border bg-caution-tint text-caution-700 transition-colors hover:border-caution-500 hover:bg-caution-900/40"
                     >
                       {link.anchorOptions[0]}
                     </Badge>
@@ -103,7 +103,7 @@ export function RelatedConditionsSection({
           {related.length > 0 && (
             <div>
               {comorbidities.length > 0 && (
-                <h4 className="mb-3 text-sm font-semibold text-neutral-900">
+                <h4 className="mb-3 text-sm font-semibold text-label-primary">
                   Related Conditions
                 </h4>
               )}
@@ -112,10 +112,10 @@ export function RelatedConditionsSection({
                   <Link
                     key={`related-${link.targetSlug}-${index}`}
                     href={`/conditions/${link.targetSlug}`}
-                    className="group block rounded-lg border border-neutral-200 bg-neutral-50 p-3 transition-all hover:border-blue-300 hover:bg-blue-50"
+                    className="group block rounded-lg border border-separator bg-surface-grouped p-3 transition-all hover:border-accent-border hover:bg-fill-secondary"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-neutral-900 group-hover:text-blue-700">
+                      <span className="font-medium text-label-primary group-hover:text-accent">
                         {link.anchorOptions[0]}
                       </span>
                       {showBadges && (

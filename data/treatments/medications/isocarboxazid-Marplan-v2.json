@@ -1,82 +1,274 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "isocarboxazid-marplan",
-  "type": "medication",
-  "name": "Isocarboxazid (Marplan)",
-  "summary": "Older-school MAOI antidepressant for major depression when other treatments haven’t worked. Can be effective, but it comes with strict food/drug rules and real safety risks (hypertensive crisis, serotonin syndrome).",
-  "description": "Marplan is an MAOI antidepressant used for major depressive disorder when other antidepressants haven’t helped enough. It can take a few weeks to kick in, and it requires a tyramine-restricted diet plus serious caution with other meds (especially SSRIs/SNRIs, stimulants, dextromethorphan, and certain pain meds). Biggest headline risks: hypertensive crisis, serotonin syndrome, orthostatic hypotension, and the standard antidepressant suicidality boxed warning in younger patients. This is a specialist-level medication—worth it for the right person, not casual.",
-  "patient_summary": "Marplan is a MAOI antidepressant used for major depression when other meds haven’t worked. It takes weeks to build benefit and requires strict food/drug restrictions to avoid dangerous blood pressure spikes or serotonin syndrome. It can cause dizziness, headaches, sleep disruption, and blood pressure drops when standing. Like other antidepressants, it carries a boxed warning for increased suicidal thoughts/behavior in some younger people early in treatment—close monitoring matters.",
-  "category": "medications/depression-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "isocarboxazid-marplan",
+    "name": "Isocarboxazid (Marplan)",
+    "generic_name": "isocarboxazid",
+    "brand_names": [
+      "Marplan"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression-disorders",
     "drug_classes": [
       "Monoamine Oxidase Inhibitor (MAOI)",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Marplan"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": "Unknown",
-    "pharmacologic_category": "Antidepressant, Monoamine Oxidase Inhibitor (nonselective, irreversible)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for unipolar major depression as an alternative option when more standard antidepressants haven’t helped enough or weren’t tolerated. Because MAOIs have high interaction risk, they’re typically reserved for treatment-resistant cases and managed carefully."
-      },
-      {
-        "slug": "treatment-resistant-depression",
-        "relationship": "off_label",
-        "context": "Often considered when multiple adequate antidepressant trials have failed. This is a common real-world use-case for MAOIs, but it requires strict diet/medication rules and close monitoring."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to isocarboxazid or any component of the formulation",
-      "Cardiovascular disease (including hypertension)",
-      "Cerebrovascular defect (suspected or confirmed)",
-      "History of headache (per labeling/precautions context due to hypertensive crisis risk)",
-      "History of hepatic disease or abnormal liver function tests",
-      "Pheochromocytoma",
-      "Severe renal impairment",
-      "Concurrent use with contraindicated medications or foods high in tyramine (risk of hypertensive crisis) and serotonergic agents (risk of serotonin syndrome)"
-    ],
-    "efficacy_response": {
-      "metric": "Time-to-benefit in depression",
-      "percentage_value": "Not established as a single number",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With Marplan, you’re usually looking for early shifts in 1–2 weeks, but the real lift often takes 3–6 weeks. If nothing is moving by about 6 weeks at an adequate dose, pushing higher is less likely to suddenly make it work.",
-      "citation_tag": "Labeling/clinical guidance summary"
+  "summary": "Older-school MAOI antidepressant for major depression when other treatments haven’t worked. Can be effective, but it comes with strict food/drug rules and real safety risks (hypertensive crisis, serotonin syndrome).",
+  "description": "Marplan is an MAOI antidepressant used for major depressive disorder when other antidepressants haven’t helped enough. It can take a few weeks to kick in, and it requires a tyramine-restricted diet plus serious caution with other meds (especially SSRIs/SNRIs, stimulants, dextromethorphan, and certain pain meds). Biggest headline risks: hypertensive crisis, serotonin syndrome, orthostatic hypotension, and the standard antidepressant suicidality boxed warning in younger patients. This is a specialist-level medication—worth it for the right person, not casual.",
+  "patient_summary": "Marplan is a MAOI antidepressant used for major depression when other meds haven’t worked. It takes weeks to build benefit and requires strict food/drug restrictions to avoid dangerous blood pressure spikes or serotonin syndrome. It can cause dizziness, headaches, sleep disruption, and blood pressure drops when standing. Like other antidepressants, it carries a boxed warning for increased suicidal thoughts/behavior in some younger people early in treatment—close monitoring matters.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for unipolar major depression as an alternative option when more standard antidepressants haven’t helped enough or weren’t tolerated. Because MAOIs have high interaction risk, they’re typically reserved for treatment-resistant cases and managed carefully.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment Resistant Depression",
+          "relationship": "off_label",
+          "context": "Often considered when multiple adequate antidepressant trials have failed. This is a common real-world use-case for MAOIs, but it requires strict diet/medication rules and close monitoring."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral administration; clinical effect is delayed compared with dose timing",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Depression: initial effects may appear within 1–2 weeks",
-      "peak_plasma": "Not applicable for this medication.",
-      "half_life": "Not applicable for this medication.",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Not applicable for this medication.",
-      "excretion": "Not applicable for this medication.",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Food interactions are clinically critical: tyramine-containing foods can trigger hypertensive crisis. Freshness/spoilage matters because tyramine rises as foods age or are improperly stored.",
-      "clinical_time_course": "Mood benefit typically builds through 4–6 weeks. MAOI enzyme inhibition can persist after stopping, which is why washout periods are required before switching to other antidepressants."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: initial effects may appear within 1–2 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "29%",
+          "notes": "This can feel like lightheadedness or wobbliness, especially when standing up. Hydration, slow position changes, and checking blood pressure can help."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "15%",
+          "notes": "Headaches can occur, but a sudden severe headache with sweating, neck stiffness, or nausea/vomiting is a red flag for hypertensive crisis—don’t ignore that."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "7%",
+          "notes": "Hydration, fiber, and gentle stool softeners (when appropriate and cleared by a clinician) can help."
+        },
+        {
+          "effect": "Dry mouth (xerostomia)",
+          "incidence": "9%",
+          "notes": "Sugar-free gum, hydration, and oral care matter—dry mouth can sneak up on your teeth and gums."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "6%",
+          "notes": "Sometimes improves over time. If it’s persistent, dose timing and split dosing can help."
+        },
+        {
+          "effect": "Sleep disturbance",
+          "incidence": "5%",
+          "notes": "This can be insomnia or fragmented sleep. If sleep is getting worse, talk with your prescriber early rather than suffering in silence."
+        },
+        {
+          "effect": "Drowsiness / sedated state",
+          "incidence": "4% (drowsiness); 2% (sedated state)",
+          "notes": "If you feel overly sedated, avoid driving and risky tasks until you know your baseline."
+        },
+        {
+          "effect": "Orthostatic hypotension / syncope",
+          "incidence": "4% (orthostatic hypotension); 2% (syncope)",
+          "notes": "Lightheadedness and fainting risk increase with dehydration, hot showers, alcohol, and certain medications."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypertensive crisis (sometimes fatal): severe headache, sweating, nausea/vomiting, stiff/sore neck, photophobia, dangerously high blood pressure. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Serotonin syndrome: agitation/confusion, fever, sweating, diarrhea, tremor, muscle rigidity, fast heart rate, high blood pressure. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Seizures: risk may increase in susceptible patients; severe withdrawal/discontinuation can also involve seizures. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Hepatotoxicity: abnormal liver function tests, jaundice; risk is higher with pre-existing liver disease. Stop and evaluate urgently if jaundice or severe right-upper-abdominal pain occurs."
+        },
+        {
+          "risk": "Severe mood/behavior change: suicidal ideation/tendencies, abrupt worsening depression, new agitation/hostility/impulsivity, mania/hypomania. Urgent clinical evaluation needed."
+        }
+      ],
+      "black_box_warning": "Suicidality and antidepressant drugs: Antidepressants increased the risk (vs placebo) of suicidal thinking and behavior in short-term studies in children, adolescents, and young adults with MDD and other psychiatric disorders. Closely monitor patients of all ages for clinical worsening, suicidality, or unusual behavior changes—especially in the first 1–2 months and during dose changes. Advise families/caregivers to observe closely and communicate with the prescriber. Marplan is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to isocarboxazid or any component of the formulation"
+        },
+        {
+          "contraindication": "Cardiovascular disease (including hypertension)"
+        },
+        {
+          "contraindication": "Cerebrovascular defect (suspected or confirmed)"
+        },
+        {
+          "contraindication": "History of headache (per labeling/precautions context due to hypertensive crisis risk)"
+        },
+        {
+          "contraindication": "History of hepatic disease or abnormal liver function tests"
+        },
+        {
+          "contraindication": "Pheochromocytoma"
+        },
+        {
+          "contraindication": "Severe renal impairment"
+        },
+        {
+          "contraindication": "Concurrent use with contraindicated medications or foods high in tyramine (risk of hypertensive crisis) and serotonergic agents (risk of serotonin syndrome)"
+        }
+      ],
+      "precautions": [
+        "Hypertensive crisis: Sometimes fatal blood pressure spikes can occur, especially with tyramine-rich foods or interacting meds. Symptoms can include severe headache, nausea/vomiting, neck stiffness/soreness, photophobia, sweating, and dangerously high blood pressure.",
+        "Serotonin syndrome: Can occur if combined with serotonergic medications (SSRIs/SNRIs, certain TCAs, linezolid, dextromethorphan, some opioids, and others). This can be life-threatening.",
+        "Orthostatic hypotension and syncope: Standing-related dizziness/fainting can happen—risk rises with dehydration, certain BP meds, and older age.",
+        "Mania/hypomania risk: Antidepressants can precipitate mania/hypomania in bipolar disorder. Screen for bipolar history before starting; avoid antidepressant monotherapy in bipolar depression.",
+        "Seizure threshold: Can lower seizure threshold; use caution in seizure risk states (history of seizures, head trauma, alcohol use disorder, interacting meds).",
+        "Liver and kidney risk: Contraindicated with hepatic disease/abnormal LFTs and contraindicated in severe renal impairment.",
+        "Surgery/anesthesia: Certain anesthetic and pain medication combinations are dangerous. Manufacturer guidance includes stopping prior to elective surgery; if continued, anesthesia must be MAOI-safe (no meperidine; avoid indirect-acting adrenergic agents).",
+        "Discontinuation syndrome: Abrupt stopping can cause severe neuropsychiatric symptoms (agitation, delirium, insomnia, irritability, myoclonic jerks, seizures, hallucinations)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Tyramine-rich foods (aged cheeses, cured/aged meats, tap/draft beer, fermented soy products, sauerkraut, spoiled/improperly stored foods)",
+          "mechanism": "Hypertensive crisis (sometimes fatal).",
+          "action": "Strict avoidance. Food freshness/storage matters because tyramine rises as foods age or spoil. If severe headache, sweating, chest pain, stiff neck, or severe nausea/vomiting occurs—go to urgent care/ER."
+        },
+        {
+          "interactant": "SSRIs and SNRIs",
+          "mechanism": "High risk of serotonin syndrome and other severe reactions.",
+          "action": "Do not combine. Washout rules matter: typically wait at least 14 days between stopping most antidepressants and starting isocarboxazid; wait 5 weeks after fluoxetine before starting isocarboxazid; and wait at least 7–14 days after stopping isocarboxazid before starting another antidepressant (longer depending on the agent)."
+        },
+        {
+          "interactant": "Other MAOIs",
+          "mechanism": "Excess MAOI effect and severe adverse reactions (hypertensive crisis, serotonin syndrome).",
+          "action": "Avoid overlap. Follow washout periods before switching."
+        },
+        {
+          "interactant": "Sympathomimetics and stimulants (amphetamines, cocaine, pseudoephedrine, phenylephrine and related agents)",
+          "mechanism": "Hypertensive crisis, severe blood pressure spikes, arrhythmias.",
+          "action": "Avoid. This includes many decongestants and “energy” products."
+        },
+        {
+          "interactant": "Dextromethorphan (common cough suppressant)",
+          "mechanism": "Serotonin syndrome and severe CNS reactions.",
+          "action": "Avoid. Check cough/cold labels carefully."
+        },
+        {
+          "interactant": "Meperidine and certain opioids / CNS depressants (including alcohol)",
+          "mechanism": "Severe CNS depression, dangerous interactions, and potentially life-threatening reactions.",
+          "action": "Avoid. If pain control or anesthesia is needed, the treating team must use an MAOI-safe plan."
+        },
+        {
+          "interactant": "Bupropion",
+          "mechanism": "Severe interaction risk.",
+          "action": "Do not combine. Allow at least 14 days between stopping an MAOI and starting bupropion (or vice versa per switching guidance)."
+        },
+        {
+          "interactant": "Buspirone",
+          "mechanism": "Severe interaction risk.",
+          "action": "Do not combine. Allow at least 10 days between stopping isocarboxazid and starting buspirone per guidance."
+        },
+        {
+          "interactant": "Antihypertensives and diuretics",
+          "mechanism": "Exaggerated hypotension and fainting risk.",
+          "action": "Avoid certain combinations per labeling and monitor blood pressure closely if any BP-lowering agents are necessary."
+        },
+        {
+          "interactant": "Caffeine (excessive use)",
+          "mechanism": "Can contribute to adverse reactions and blood pressure instability.",
+          "action": "Avoid excessive caffeine and monitor how your body responds."
+        },
+        {
+          "interactant": "General and spinal anesthesia; local vasoconstrictors",
+          "mechanism": "Potential exaggerated hypotension or severe reactions depending on agents used.",
+          "action": "Surgeon/anesthesiologist must be informed. Elective surgery planning may require stopping medication ahead of time or using an MAOI-safe anesthetic approach."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and suicidality: especially early in treatment (first 1–2 months) and during dose changes. Monitor for clinical worsening, suicidal ideation, agitation, hostility, impulsivity, insomnia, and unusual behavior changes."
+        },
+        {
+          "parameter": "Blood pressure and heart rate: baseline and ongoing. Monitor for hypertensive crisis symptoms and orthostatic hypotension (standing BP checks can be useful)."
+        },
+        {
+          "parameter": "Diet adherence and medication reconciliation: review food restrictions and all meds/supplements at every visit (including OTC cold meds and stimulants)."
+        },
+        {
+          "parameter": "Renal function: baseline and periodic, especially if any impairment is present."
+        },
+        {
+          "parameter": "Liver function tests: baseline and periodic; stop and evaluate if jaundice or significant LFT abnormalities occur."
+        },
+        {
+          "parameter": "Sleep and activation: insomnia, agitation, hyperactive behavior, and anxiety can worsen in some patients—track and adjust plan early."
+        },
+        {
+          "parameter": "Mania/hypomania screening: monitor for mood elevation, decreased need for sleep, risky behavior, pressured speech, and irritability—especially if bipolar risk factors exist."
+        },
+        {
+          "parameter": "Seizure risk: monitor patients with seizure history or risk factors and avoid combinations that lower seizure threshold."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal reproduction studies have not been conducted (per provided notes). If pregnant while taking antidepressants, consider enrolling in the National Pregnancy Registry for Antidepressants (NPRAD). Because MAOIs require strict interaction management and can cause significant cardiovascular effects, many clinicians prefer alternative antidepressants with more pregnancy safety data when possible.",
+        "lactation": "It is not known if isocarboxazid is present in breast milk. Manufacturer guidance recommends use in nursing only if clearly needed. If breastfeeding, this should be a deliberate, specialist-level risk/benefit discussion with close infant monitoring if used.",
+        "pediatric": "Not approved for use in pediatric patients (per boxed warning language provided). If a young patient is being considered for an MAOI at all, this should be managed by a specialist with very close monitoring and clear rationale.",
+        "geriatric": "Refer to adult dosing (per provided notes). In real-world practice, older adults may be more vulnerable to orthostatic hypotension, falls, and medication interactions—so dosing and titration should be cautious, with close blood pressure monitoring.",
+        "renal_impairment": "Contraindicated in severe renal impairment. Use with caution in mild-to-moderate impairment to reduce risk of accumulation and adverse effects.",
+        "hepatic_impairment": "Contraindicated in patients with a history of liver disease or abnormal liver function tests."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral administration; clinical effect is delayed compared with dose timing",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Not applicable for this medication.",
+          "half_life": "Not applicable for this medication.",
+          "metabolism": "Not applicable for this medication.",
+          "excretion": "Not applicable for this medication.",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Food interactions are clinically critical: tyramine-containing foods can trigger hypertensive crisis. Freshness/spoilage matters because tyramine rises as foods age or are improperly stored."
+        },
+        "dosing": {
+          "titration": "Marplan dosing is typically split into multiple doses per day and titrated upward based on response and tolerability. Antidepressant benefit can take weeks—so dose changes should be deliberate, not chaotic."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping Marplan abruptly (or with an overly fast taper) can trigger a discontinuation syndrome—sometimes intense—with agitation, delirium/confusion, insomnia, irritability, mood crash, myoclonic jerks, and in severe cases seizures. Tapering also gives you a chance to catch returning depression early rather than being blindsided."
+        }
+      }
     }
   },
   "sections": [
@@ -97,7 +289,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This one has a very specific vibe: it’s not usually an instant “I feel it in an hour” med. It’s more like a slow shift—plus you’ll notice the body stuff (blood pressure, dizziness) before you notice the mood lift. Common experiences look like this:",
       "items": [
         {
           "category": "Early weeks: subtle changes (not fireworks)",
@@ -133,7 +324,8 @@
           ],
           "note": "MAOIs require strict avoidance of tyramine-heavy foods and a long list of medication interactions. This is non-negotiable safety-wise."
         }
-      ]
+      ],
+      "intro": "This one has a very specific vibe: it’s not usually an instant “I feel it in an hour” med. It’s more like a slow shift—plus you’ll notice the body stuff (blood pressure, dizziness) before you notice the mood lift. Common experiences look like this:"
     },
     {
       "type": "onset_duration",
@@ -149,10 +341,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Marplan can be effective for major depression, especially in people who haven’t had enough benefit from more standard antidepressants. The trade-off is the complexity: diet restrictions, dangerous interactions, and a need for close monitoring. If you’re going to use an MAOI, you’re doing it on purpose—and you’re doing it carefully.",
       "metric": "Clinical response in depression (real-world expectation)",
       "value": "Varies by person",
       "comparison": "Not applicable for this medication.",
-      "text": "Marplan can be effective for major depression, especially in people who haven’t had enough benefit from more standard antidepressants. The trade-off is the complexity: diet restrictions, dangerous interactions, and a need for close monitoring. If you’re going to use an MAOI, you’re doing it on purpose—and you’re doing it carefully.",
       "clinical_details": "MAOIs are typically positioned as later-line antidepressants because of interaction risks and the possibility of hypertensive crisis or serotonin syndrome. When selected thoughtfully (and paired with strict education and monitoring), they can provide meaningful symptom improvement for some patients with persistent depression.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -255,7 +447,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "MAOI interactions are not “minor.” Some combinations can be fatal. The safest approach is: assume an interaction until proven otherwise and confirm with a pharmacist/clinician before adding anything new.",
       "items": [
         {
           "with": "Tyramine-rich foods (aged cheeses, cured/aged meats, tap/draft beer, fermented soy products, sauerkraut, spoiled/improperly stored foods)",
@@ -312,7 +503,8 @@
           "risk": "Potential exaggerated hypotension or severe reactions depending on agents used.",
           "action": "Surgeon/anesthesiologist must be informed. Elective surgery planning may require stopping medication ahead of time or using an MAOI-safe anesthetic approach."
         }
-      ]
+      ],
+      "intro": "MAOI interactions are not “minor.” Some combinations can be fatal. The safest approach is: assume an interaction until proven otherwise and confirm with a pharmacist/clinician before adding anything new."
     },
     {
       "type": "tapering",
@@ -386,21 +578,6 @@
       "text": "Marplan is typically a later-line antidepressant—meaning it’s usually considered after first-line and second-line options (like SSRIs, SNRIs, bupropion, mirtazapine, psychotherapy, and augmentation strategies) haven’t delivered enough benefit. The reason isn’t that it “doesn’t work”—it’s that MAOIs demand real structure: strict diet rules, medication interaction vigilance, and close monitoring for blood pressure and dangerous syndromes. When used intentionally (and correctly), it can be a powerful tool for the right depression picture."
     }
   ],
-  "seo": {
-    "title": "Isocarboxazid (Marplan): Uses, Dosing, Food Interactions, Warnings & Switching",
-    "description": "Marplan (isocarboxazid) is an MAOI antidepressant for major depression when other options fail. Learn dosing, time-to-benefit, tyramine diet rules, dangerous drug interactions, boxed warning, and safe taper/switch guidance.",
-    "canonical": "[https://www.heypsych.com/treatments/isocarboxazid-marplan](https://www.heypsych.com/treatments/isocarboxazid-marplan)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Marplan used for?",
@@ -446,5 +623,20 @@
       "q": "How do I stop Marplan safely?",
       "a": "If you’ve been on it for at least 4 weeks, a gradual taper over about 2–4 weeks is commonly recommended to reduce discontinuation symptoms and watch for relapse. MAOIs can have more intense discontinuation syndromes, so some people need slower tapers—especially at higher doses or longer durations. If withdrawal symptoms are severe, the usual move is to return to the prior dose and taper more slowly."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Isocarboxazid (Marplan): Uses, Dosing, Food Interactions, Warnings & Switching",
+    "description": "Marplan (isocarboxazid) is an MAOI antidepressant for major depression when other options fail. Learn dosing, time-to-benefit, tyramine diet rules, dangerous drug interactions, boxed warning, and safe taper/switch guidance.",
+    "canonical": "[https://www.heypsych.com/treatments/isocarboxazid-marplan](https://www.heypsych.com/treatments/isocarboxazid-marplan)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

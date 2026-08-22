@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "5-htp",
-  "type": "supplement",
-  "name": "5-HTP (5-Hydroxytryptophan)",
-  "summary": "A naturally occurring amino acid and chemical precursor to serotonin, often used as a dietary supplement to support mood, sleep, and appetite regulation.",
-  "description": "5-HTP is derived from the seeds of the African plant Griffonia simplicifolia. It serves as a direct precursor to serotonin and indirectly to melatonin. As a supplement, it is marketed for improving mood, alleviating depression, supporting sleep, reducing anxiety, and assisting with weight management. Evidence is mixed, with some small studies showing benefits in depression, insomnia, and fibromyalgia, while larger high-quality trials are limited.",
-  "category": "supplements",
-  "tags": [
-    "serotonin-precursor",
-    "mood-support",
-    "sleep",
-    "natural-supplement",
-    "anxiety"
-  ],
-  "metadata": {
-    "compound_type": "Amino Acid Derivative",
-    "natural_source": "Seeds of Griffonia simplicifolia",
+  "identity": {
+    "slug": "5-htp",
+    "name": "5-HTP (5-Hydroxytryptophan)",
+    "generic_name": "5-htp",
+    "brand_names": [
+      "Natrol 5-HTP",
+      "NOW 5-HTP",
+      "Doctor’s Best 5-HTP"
+    ],
+    "aliases": [
+      "Oxitriptan"
+    ],
+    "wikidata_qid": "Q413382"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Mood Support",
       "Sleep",
@@ -25,76 +27,185 @@
       "Serotonin Precursor",
       "Melatonin Precursor"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (supplement form)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Natrol 5-HTP",
-      "NOW 5-HTP",
-      "Doctor’s Best 5-HTP"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term (with caution)"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Psychiatry (adjunct)",
-      "Sleep Medicine"
-    ],
-    "wikidata_qid": "Q413382"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild to moderate depression",
-      "Insomnia",
-      "Anxiety",
-      "Fibromyalgia",
-      "Appetite suppression / weight loss"
-    ],
-    "off_label_uses": [
-      "Migraines",
-      "Menopausal symptoms"
-    ],
-    "contraindications": [
-      "Concurrent SSRI or MAOI use",
-      "Carcinoid tumors",
-      "Pregnancy and breastfeeding (safety not established)"
-    ],
-    "monitoring_required": [
-      "Signs of serotonin syndrome if combined with serotonergic drugs",
-      "GI tolerance"
-    ],
-    "efficacy_rating": {
-      "depression": 2,
-      "insomnia": 2,
-      "fibromyalgia": 2,
-      "anxiety": 1,
-      "overall-tolerability": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "5-HTP",
-      "5 hydroxytryptophan",
-      "serotonin precursor supplement"
-    ],
-    "synonyms": [
-      "Oxitriptan"
-    ],
-    "common_misspellings": [
-      "5htp",
-      "5 htp",
-      "5-hydroxtryptophan"
+    "tags": [
+      "serotonin-precursor",
+      "mood-support",
+      "sleep",
+      "natural-supplement",
+      "anxiety"
     ]
+  },
+  "summary": "A naturally occurring amino acid and chemical precursor to serotonin, often used as a dietary supplement to support mood, sleep, and appetite regulation.",
+  "description": "5-HTP is derived from the seeds of the African plant Griffonia simplicifolia. It serves as a direct precursor to serotonin and indirectly to melatonin. As a supplement, it is marketed for improving mood, alleviating depression, supporting sleep, reducing anxiety, and assisting with weight management. Evidence is mixed, with some small studies showing benefits in depression, insomnia, and fibromyalgia, while larger high-quality trials are limited.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-to-moderate-depression",
+          "condition_name": "Mild to moderate depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "fibromyalgia",
+          "condition_name": "Fibromyalgia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "appetite-suppression-weight-loss",
+          "condition_name": "Appetite suppression / weight loss",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "migraines",
+          "condition_name": "Migraines",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "menopausal-symptoms",
+          "condition_name": "Menopausal symptoms",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 2
+        },
+        "insomnia": {
+          "rating": 2
+        },
+        "fibromyalgia": {
+          "rating": 2
+        },
+        "anxiety": {
+          "rating": 1
+        },
+        "overall-tolerability": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term (with caution)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "nausea"
+        },
+        {
+          "effect": "diarrhea"
+        },
+        {
+          "effect": "drowsiness"
+        },
+        {
+          "effect": "vivid dreams"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "serotonin syndrome (with serotonergic medications)"
+        },
+        {
+          "risk": "eosinophilia-myalgia syndrome (rare, linked to contaminated batches)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Concurrent SSRI or MAOI use"
+        },
+        {
+          "contraindication": "Carcinoid tumors"
+        },
+        {
+          "contraindication": "Pregnancy and breastfeeding (safety not established)"
+        }
+      ],
+      "precautions": [
+        "Do not combine with SSRIs, SNRIs, MAOIs, or triptans due to risk of serotonin syndrome.",
+        "Not regulated like prescription medications; quality of supplements varies.",
+        "Caution in individuals with cardiovascular disease or GI disorders."
+      ],
+      "interactions": [
+        {
+          "interactant": "SSRIs/SNRIs (e.g., sertraline, venlafaxine)",
+          "mechanism": "Serotonin syndrome",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "MAOIs",
+          "mechanism": "Hypertensive crisis or serotonin syndrome",
+          "action": "Contraindicated"
+        },
+        {
+          "interactant": "Carbidopa",
+          "mechanism": "Increased risk of scleroderma-like illness",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "Alcohol or sedatives",
+          "mechanism": "Additive CNS depression",
+          "action": "Use caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Signs of serotonin excess"
+        },
+        {
+          "parameter": "GI side effects"
+        },
+        {
+          "parameter": "Sleep quality"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid use.",
+        "lactation": "Not recommended; excretion unknown.",
+        "pediatric": "Safety not established.",
+        "geriatric": "Use lower doses; monitor closely."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino Acid Derivative",
+        "natural_source": "Seeds of Griffonia simplicifolia",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +337,35 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "MedlinePlus: 5-HTP",
+      "url": "https://medlineplus.gov/druginfo/natural/794.html"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com: 5-HTP",
+      "url": "https://examine.com/supplements/5-htp/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "5-HTP",
+      "5 hydroxytryptophan",
+      "serotonin precursor supplement"
+    ],
+    "synonyms": [
+      "Oxitriptan"
+    ],
+    "common_misspellings": [
+      "5htp",
+      "5 htp",
+      "5-hydroxtryptophan"
+    ]
+  },
   "seo": {
     "title": "5-HTP (5-Hydroxytryptophan): Benefits, Uses, Side Effects",
     "description": "Comprehensive guide to 5-HTP, a serotonin precursor supplement for mood, sleep, and appetite. Includes dosing, safety, interactions, and evidence.",

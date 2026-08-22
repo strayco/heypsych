@@ -1,71 +1,212 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "methamphetamine-desoxyn",
-  "type": "medication",
-  "name": "Methamphetamine (Desoxyn)",
-  "summary": "Prescription stimulant (C-II) sometimes used for ADHD in patients age 6+ when other options aren’t workable. Effective for focus and impulse control, but carries high misuse/addiction risk and can trigger insomnia, anxiety, or stimulant-induced psychosis.",
-  "description": "Desoxyn is a prescription form of methamphetamine used for ADHD in patients over age 6. It can improve attention, reduce hyperactivity, and help with impulse control—but it’s a high-risk medication with a serious potential for misuse, addiction, and overdose. It can raise blood pressure and heart rate, worsen anxiety or irritability, and in some people trigger paranoia or psychotic symptoms. Dosing is usually started low and increased slowly, with morning dosing to reduce insomnia.",
-  "patient_summary": "Desoxyn can help ADHD symptoms, but it’s not a casual med. It’s a controlled stimulant with a real risk of misuse, dependence, and overdose—especially at higher doses or if taken in unsafe ways. Most people feel more focused and driven, but side effects like insomnia, appetite loss, jitteriness, and mood swings can show up fast. If you have a history of substance use, bipolar disorder, or psychosis, this medication needs extra caution and close monitoring.",
-  "category": "medications/adhd",
-  "metadata": {
+  "identity": {
+    "slug": "methamphetamine-desoxyn",
+    "name": "Methamphetamine (Desoxyn)",
+    "generic_name": "methamphetamine",
+    "brand_names": [
+      "Desoxyn"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd",
     "drug_classes": [
       "Central Nervous System Stimulant",
       "Sympathomimetic",
       "Anorexiant"
-    ],
-    "brand_names": [
-      "Desoxyn"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule II (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1943,
-    "pharmacologic_category": "CNS Stimulant (amphetamine-like)",
-    "published_date": "2026-01-20T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for ADHD in patients age 6+. In real-world practice, it’s rarely used and generally reserved for situations where more standard ADHD medications aren’t appropriate or haven’t worked."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to amphetamine-type stimulants or any component of the formulation",
-      "Use during or within 14 days of monoamine oxidase inhibitors (MAOIs), including linezolid or methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "ADHD symptom improvement",
-      "percentage_value": "Varies by individual",
-      "comparison_data": "Not specified in provided notes",
-      "patient_text": "For many people, stimulants reduce distractibility, restlessness, and impulsive behavior. The tradeoff is that side effects (like insomnia, appetite loss, irritability, or anxiety) can limit how high you can go on the dose—and this particular stimulant comes with a higher misuse risk than most ADHD options.",
-      "citation_tag": "FDA Label: DESOXYN"
+  "summary": "Prescription stimulant (C-II) sometimes used for ADHD in patients age 6+ when other options aren’t workable. Effective for focus and impulse control, but carries high misuse/addiction risk and can trigger insomnia, anxiety, or stimulant-induced psychosis.",
+  "description": "Desoxyn is a prescription form of methamphetamine used for ADHD in patients over age 6. It can improve attention, reduce hyperactivity, and help with impulse control—but it’s a high-risk medication with a serious potential for misuse, addiction, and overdose. It can raise blood pressure and heart rate, worsen anxiety or irritability, and in some people trigger paranoia or psychotic symptoms. Dosing is usually started low and increased slowly, with morning dosing to reduce insomnia.",
+  "patient_summary": "Desoxyn can help ADHD symptoms, but it’s not a casual med. It’s a controlled stimulant with a real risk of misuse, dependence, and overdose—especially at higher doses or if taken in unsafe ways. Most people feel more focused and driven, but side effects like insomnia, appetite loss, jitteriness, and mood swings can show up fast. If you have a history of substance use, bipolar disorder, or psychosis, this medication needs extra caution and close monitoring.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for ADHD in patients age 6+. In real-world practice, it’s rarely used and generally reserved for situations where more standard ADHD medications aren’t appropriate or haven’t worked.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid from the GI tract",
-      "bioavailability": "Not specified in provided notes",
-      "onset": "Often felt within about an hour for oral immediate-release stimulants (individual variation)",
-      "peak_plasma": "Not specified in provided notes",
-      "half_life": "4 to 5 hours (elimination half-life)",
-      "duration_IR": "Not specified in provided notes (clinical effects commonly last several hours; varies)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Predominantly hepatic (aromatic hydroxylation, N-dealkylation, deamination) with multiple metabolites",
-      "excretion": "Urine (strongly influenced by urine pH; alkaline urine prolongs half-life); ~62% eliminated in first 24 hours with ~33% as unchanged drug",
-      "protein_binding": "Not specified in provided notes",
-      "food_effect": "Acidic foods/juices or vitamin C can lower amphetamine-type stimulant levels; taking the dose about 30 minutes before meals is sometimes advised"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Often felt within about an hour for oral immediate-release stimulants (individual variation)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Insomnia / Overstimulation",
+          "incidence": "Not specified in provided notes",
+          "notes": "This is one of the most common reasons people stop stimulants. If you’re staring at the ceiling at night, the fix is usually dosing time, dose size, or switching medications—don’t just power through."
+        },
+        {
+          "effect": "Restlessness / Tremor",
+          "incidence": "Not specified in provided notes",
+          "notes": "Feeling wired, shaky, or on edge often means the dose is too high, the timing is off, or you’re stacking caffeine on top."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia) / Unpleasant Taste",
+          "incidence": "Not specified in provided notes",
+          "notes": "Dry mouth is common. Hydration helps, and so does avoiding extra stimulants (like high caffeine)."
+        },
+        {
+          "effect": "Cardiovascular Effects (BP/HR increases, palpitations, tachycardia)",
+          "incidence": "Not specified in provided notes",
+          "notes": "Stimulants can push heart rate and blood pressure up. That’s why baseline vitals and ongoing checks are part of the deal."
+        },
+        {
+          "effect": "Mood Changes (Irritability, Dysphoria, Euphoria)",
+          "incidence": "Not specified in provided notes",
+          "notes": "Some people feel more confident and upbeat; others feel tense, irritable, or emotionally brittle. If you notice a pattern of mood swings, bring it up early."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Misuse, addiction, overdose, and death (risk increases with higher doses or unsafe routes like snorting/injecting)"
+        },
+        {
+          "risk": "Psychotic symptoms or mania (new onset or worsening of preexisting conditions)"
+        },
+        {
+          "risk": "Peripheral vasculopathy (Raynaud-like symptoms, digital ulceration or tissue breakdown in rare cases)"
+        },
+        {
+          "risk": "Priapism or problematic erections (rare but urgent if prolonged/painful)"
+        },
+        {
+          "risk": "Rhabdomyolysis (rare; seek urgent care for severe muscle pain, weakness, dark urine)"
+        },
+        {
+          "risk": "Mesenteric ischemia (rare; severe abdominal pain is an emergency)"
+        },
+        {
+          "risk": "Severe cardiovascular events in high-risk patients (requires careful screening and monitoring)"
+        }
+      ],
+      "black_box_warning": "Methamphetamine has a high potential for abuse and misuse, which can lead to substance use disorder, including addiction. Misuse and abuse of CNS stimulants can result in overdose and death, and risk increases with higher doses or unapproved methods of administration such as snorting or injection.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to amphetamine-type stimulants or any component of the formulation"
+        },
+        {
+          "contraindication": "Use during or within 14 days of monoamine oxidase inhibitors (MAOIs), including linezolid or methylene blue"
+        }
+      ],
+      "precautions": [
+        "Assess risk for misuse before prescribing; educate on locked storage and safe disposal",
+        "Monitor frequently for misuse, escalating dose requests, early refills, or compulsive use patterns",
+        "Can raise blood pressure and heart rate; cardiovascular monitoring is not optional",
+        "Can trigger new psychosis or mania, and can worsen preexisting bipolar disorder or psychotic disorders",
+        "Can worsen tics/Tourette symptoms in some patients",
+        "Abrupt discontinuation after prolonged/high-dose use can cause extreme fatigue and depression-like symptoms"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (and within 14 days of stopping an MAOI)",
+          "mechanism": "Dangerous interaction; can cause severe reactions and is a formal contraindication.",
+          "action": "Do not combine. A full 14-day washout is required."
+        },
+        {
+          "interactant": "Serotonergic medications (SSRIs, SNRIs, TCAs, triptans, lithium, tramadol, buspirone, St. John’s wort, tryptophan, fentanyl)",
+          "mechanism": "Risk of serotonin syndrome when combined with amphetamine-type stimulants in some situations.",
+          "action": "If combination is clinically necessary, start stimulant low, go slow, and monitor closely for agitation, sweating, tremor, diarrhea, confusion, fever, or muscle rigidity."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors",
+          "mechanism": "May increase amphetamine-type stimulant exposure and side effects in some patients.",
+          "action": "Consider lower starting doses and closer monitoring if combined."
+        },
+        {
+          "interactant": "Acidic foods/juices or vitamin C",
+          "mechanism": "May lower stimulant levels and reduce effect.",
+          "action": "If you notice inconsistency, discuss timing; some clinicians advise taking the dose ~30 minutes before meals."
+        },
+        {
+          "interactant": "Other stimulants (high caffeine, decongestants, other ADHD stimulants)",
+          "mechanism": "Additive stimulation: anxiety, insomnia, heart racing, blood pressure elevation.",
+          "action": "Limit caffeine and avoid stacking stimulants unless explicitly directed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Baseline cardiovascular assessment (history, family history, exam). Evaluate promptly if chest pain, fainting, unexplained shortness of breath, or other cardiac symptoms occur."
+        },
+        {
+          "parameter": "Blood pressure and heart rate: baseline, after dose increases, and periodically throughout treatment."
+        },
+        {
+          "parameter": "Sleep: insomnia is common and can worsen anxiety, irritability, and ADHD symptoms; monitor dosing time and sleep quality."
+        },
+        {
+          "parameter": "Appetite and weight: monitor regularly; in children, track height/weight/growth curve over time."
+        },
+        {
+          "parameter": "Mood and behavior: monitor for irritability, aggression/hostility, dysphoria, anxiety, or emotional lability."
+        },
+        {
+          "parameter": "Psychosis/mania screening: use caution in patients with bipolar disorder or psychotic disorders; discontinue and reassess if hallucinations, delusional thinking, or manic symptoms emerge."
+        },
+        {
+          "parameter": "Tics/Tourette symptoms: assess prior to treatment and monitor for worsening motor/vocal tics."
+        },
+        {
+          "parameter": "Peripheral vasculopathy: ask about cold, numb, painful fingers/toes; watch for color changes or sores and evaluate if concerning."
+        },
+        {
+          "parameter": "Misuse risk: assess before prescribing and reassess frequently—early refills, escalating dose requests, lost prescriptions, multiple prescribers, non-oral use, cravings, or use outside ADHD treatment goals."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human pregnancy data for therapeutic methamphetamine is limited; much of what exists is influenced by nonprescribed exposures, which are hard to interpret due to other substance use and unclear dose timing. Stimulant-related vasoconstriction may reduce placental perfusion, and exposures have been associated with higher risk of low birth weight and prematurity in broader amphetamine exposure data. Newborns may show withdrawal-type symptoms or dysregulation (irritability, agitation, excessive sleepiness, feeding problems). If exposure occurs, monitor the newborn and consider enrollment in the National Pregnancy Registry for ADHD Medications (866-961-2388).",
+        "lactation": "Methamphetamine and amphetamine are present in breast milk. Because of the potential for serious adverse effects in the infant, the manufacturer does not recommend breastfeeding while taking this medication. If a stimulant is used during breastfeeding in shared decision-making situations, infants should be monitored closely for irritability, insomnia, and feeding difficulties—however, this specific medication is generally not a preferred choice in lactation due to risk profile.",
+        "pediatric": "Labeled for ADHD in children age 6 and older. Pediatric dosing: start 5 mg PO once or twice daily; increase by 5 mg weekly until optimal response; usual effective dose 20–25 mg/day, often divided twice daily. Monitor appetite, weight, and growth; treatment interruptions may be considered if growth trajectory is affected.",
+        "geriatric": "Use with caution and start low. Older adults may be more vulnerable to insomnia, appetite loss, blood pressure/heart rate effects, and confusion/agitation.",
+        "renal_impairment": "No dosage adjustments provided in labeling; elimination is influenced by urine pH (alkaline urine can prolong exposure).",
+        "hepatic_impairment": "No dosage adjustments provided in labeling; monitor closely for tolerability and overstimulation."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1943
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid from the GI tract",
+          "bioavailability": "Not specified in provided notes",
+          "peak_plasma": "Not specified in provided notes",
+          "half_life": "4 to 5 hours (elimination half-life)",
+          "metabolism": "Predominantly hepatic (aromatic hydroxylation, N-dealkylation, deamination) with multiple metabolites",
+          "excretion": "Urine (strongly influenced by urine pH; alkaline urine prolongs half-life); ~62% eliminated in first 24 hours with ~33% as unchanged drug",
+          "protein_binding": "Not specified in provided notes",
+          "food_effect": "Acidic foods/juices or vitamin C can lower amphetamine-type stimulant levels; taking the dose about 30 minutes before meals is sometimes advised"
+        },
+        "dosing": {
+          "titration": "Desoxyn dosing for ADHD typically starts low and increases slowly, aiming for the lowest dose that clearly helps. Dosing is timed early in the day to reduce insomnia."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping stimulants doesn’t usually require the same kind of slow taper as benzodiazepines, but abrupt discontinuation after high doses or prolonged use can cause a real crash: extreme fatigue, low mood, and changes in sleep. If you’ve been taking higher doses for a long time, your prescriber may step the dose down to reduce rebound symptoms and to monitor for misuse-related patterns."
+        }
+      }
     }
   },
   "sections": [
@@ -84,7 +225,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Stimulants can feel like a switch flips—sometimes in a good way, sometimes not. Here’s how people commonly describe the experience:",
       "items": [
         {
           "category": "Focus & Follow-Through",
@@ -138,7 +278,8 @@
           ],
           "note": "If you notice cravings, dose escalation thoughts, or using it for reasons other than ADHD treatment, tell your prescriber immediately."
         }
-      ]
+      ],
+      "intro": "Stimulants can feel like a switch flips—sometimes in a good way, sometimes not. Here’s how people commonly describe the experience:"
     },
     {
       "type": "onset_duration",
@@ -154,10 +295,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Stimulants are a mainstay for ADHD because they can improve attention, reduce hyperactivity, and help with impulse control. With methamphetamine specifically, the bigger issue is usually not whether it can work—it’s whether the risk profile makes sense for you, given the high misuse/addiction potential and the risk of psychiatric side effects like anxiety, irritability, or stimulant-induced psychosis.",
       "metric": "ADHD symptom control",
       "value": "Varies",
       "comparison": "Not specified",
-      "text": "Stimulants are a mainstay for ADHD because they can improve attention, reduce hyperactivity, and help with impulse control. With methamphetamine specifically, the bigger issue is usually not whether it can work—it’s whether the risk profile makes sense for you, given the high misuse/addiction potential and the risk of psychiatric side effects like anxiety, irritability, or stimulant-induced psychosis.",
       "clinical_details": "Desoxyn is FDA-labeled for ADHD in patients over age 6. However, modern expert recommendations generally prioritize other ADHD medications, and this medication is typically considered only in unusual circumstances (for example, if more standard options are not appropriate, not tolerated, or not effective).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -246,7 +387,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "With stimulants, interactions can be about safety (blood pressure, heart rate, serotonin toxicity) and also about drug levels (metabolism and absorption).",
       "items": [
         {
           "with": "MAOIs (and within 14 days of stopping an MAOI)",
@@ -273,7 +413,8 @@
           "risk": "Additive stimulation: anxiety, insomnia, heart racing, blood pressure elevation.",
           "action": "Limit caffeine and avoid stacking stimulants unless explicitly directed."
         }
-      ]
+      ],
+      "intro": "With stimulants, interactions can be about safety (blood pressure, heart rate, serotonin toxicity) and also about drug levels (metabolism and absorption)."
     },
     {
       "type": "tapering",
@@ -347,21 +488,6 @@
       "text": "For ADHD, most treatment pathways prioritize more commonly used stimulants (like methylphenidate or amphetamine derivatives) and non-stimulants (like atomoxetine, guanfacine, or clonidine), plus behavioral supports. Desoxyn is FDA-labeled for ADHD but is rarely a first-line choice because of its high misuse/addiction potential and the need for stricter risk controls. If it’s used at all, it’s typically in carefully selected cases with close monitoring and clear treatment goals."
     }
   ],
-  "seo": {
-    "title": "Methamphetamine (Desoxyn): Uses, Dosage, Side Effects & Addiction Risk",
-    "description": "Desoxyn (methamphetamine) for ADHD in age 6+: dosing (5 mg start), what it feels like, insomnia/anxiety risks, psychosis/mania warning, blood pressure monitoring, interactions (MAOIs/serotonergic meds), and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/methamphetamine-desoxyn](https://www.heypsych.com/treatments/methamphetamine-desoxyn)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Desoxyn used for?",
@@ -411,5 +537,20 @@
       "q": "Is Desoxyn safe in pregnancy or breastfeeding?",
       "a": "It requires extra caution. Data specific to therapeutic use is limited, and methamphetamine/amphetamine can be present in breast milk. The manufacturer does not recommend breastfeeding while taking this medication due to potential serious adverse effects in the infant. Pregnancy decisions should be shared decision-making and usually emphasize the lowest effective dose and non-medication strategies when symptoms are mild to moderate."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Methamphetamine (Desoxyn): Uses, Dosage, Side Effects & Addiction Risk",
+    "description": "Desoxyn (methamphetamine) for ADHD in age 6+: dosing (5 mg start), what it feels like, insomnia/anxiety risks, psychosis/mania warning, blood pressure monitoring, interactions (MAOIs/serotonergic meds), and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/methamphetamine-desoxyn](https://www.heypsych.com/treatments/methamphetamine-desoxyn)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

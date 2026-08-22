@@ -246,10 +246,10 @@ export function CrisisAtoZSection({ hotlines, page = 1 }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h2 className="mb-4 text-2xl font-bold text-slate-900">
+          <h2 className="mb-4 text-2xl font-bold text-label-primary">
             Specialized Crisis Hotlines
           </h2>
-          <p className="mb-6 text-slate-900">
+          <p className="mb-6 text-label-primary">
             Find specialized support for specific communities, situations, and needs. All hotlines
             are free and confidential.
           </p>
@@ -316,7 +316,7 @@ export function CrisisAtoZSection({ hotlines, page = 1 }: Props) {
         </>
       ) : (
         <Card>
-          <CardContent className="p-8 text-center text-slate-900">
+          <CardContent className="p-8 text-center text-label-primary">
             <p className="mb-2 text-lg font-medium">No hotlines found</p>
             <p className="text-sm">
               {searchQuery
@@ -338,7 +338,7 @@ export function CrisisAtoZSection({ hotlines, page = 1 }: Props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h2 className="mb-4 text-2xl font-bold text-slate-900">International Support</h2>
+            <h2 className="mb-4 text-2xl font-bold text-label-primary">International Support</h2>
             <InternationalToggle hotlines={internationalHotlines} />
           </motion.div>
         )}

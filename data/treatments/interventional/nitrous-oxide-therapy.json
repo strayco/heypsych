@@ -1,84 +1,185 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "nitrous-oxide-therapy",
-  "type": "interventional",
-  "name": "Nitrous Oxide Therapy (Inhaled Nitrous Oxide)",
-  "summary": "An inhaled analgesic/anxiolytic gas (N₂O–O₂ mixture) administered in medical or dental settings; also under investigation as a rapid-acting antidepressant for treatment-resistant depression.",
-  "description": "Nitrous oxide (N₂O) is a colorless gas with analgesic and anxiolytic properties used for minimal-to-moderate procedural sedation in dentistry, emergency/ambulatory care, and minor procedures. It is delivered as a controlled blend with oxygen via mask systems equipped with scavenging to prevent environmental exposure. At subanesthetic concentrations, N₂O modulates glutamatergic neurotransmission—principally via noncompetitive NMDA receptor antagonism—producing rapid anxiolysis and analgesia.\n\nBeyond procedural use, several clinical trials suggest that brief inhalation of N₂O at controlled concentrations can produce rapid antidepressant effects in individuals with treatment-resistant major depressive disorder. These effects may emerge within hours and persist for days to weeks in some patients. Use for mood disorders remains investigational and should occur in controlled clinical settings with appropriate screening and monitoring.",
-  "category": "interventional/psychedelic-assisted-therapy",
-  "tags": [
-    "nitrous-oxide",
-    "inhalation-sedation",
-    "analgesia",
-    "anxiolysis",
-    "rapid-acting-antidepressant",
-    "NMDA-antagonist"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "nitrous-oxide-therapy",
+    "name": "Nitrous Oxide Therapy (Inhaled Nitrous Oxide)",
+    "generic_name": "nitrous oxide therapy",
+    "brand_names": [
+      "Inhaled Nitrous Oxide"
+    ]
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/psychedelic-assisted-therapy",
     "intervention_types": [
       "Pharmacologic (inhaled anesthetic/analgesic)"
     ],
-    "treatment_types": [
-      "Procedural sedation",
-      "Investigational antidepressant"
-    ],
-    "categories": [
-      "Dentistry",
-      "Emergency/Procedural Care",
-      "Psychiatry"
-    ],
-    "delivery_methods": [
-      "Inhaled N₂O–O₂ via nasal or full-face mask with scavenging"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Pediatric",
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "5–45 minutes depending on indication",
-    "treatment_duration": [
-      "Single-session use for procedures",
-      "Short-series for investigational depression protocols"
-    ],
-    "specialty_areas": [
-      "Sedation Dentistry",
-      "Ambulatory Procedures",
-      "Mood Disorders (investigational)"
+    "tags": [
+      "nitrous-oxide",
+      "inhalation-sedation",
+      "analgesia",
+      "anxiolysis",
+      "rapid-acting-antidepressant",
+      "NMDA-antagonist"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Procedural anxiety and analgesia (dental and minor procedures)",
-      "Treatment-resistant major depressive disorder (investigational)"
-    ],
-    "conditions_treated": [
-      "Procedural anxiety",
-      "Acute procedural pain",
-      "Major depressive disorder (treatment-resistant; investigational)"
-    ],
-    "off_label_uses": [
-      "Adjunct for migraine or headache procedures",
-      "Short-term anxiolysis in emergency settings"
-    ],
-    "contraindications": [
-      "Known or suspected vitamin B12 or folate deficiency, or disorders of cobalamin metabolism",
-      "Pneumothorax, air embolism, bowel obstruction, middle ear surgery/pathology (trapped gas risk)",
-      "Severe COPD with CO₂ retention or significant hypoxemia",
-      "First trimester of pregnancy (avoid elective exposure); avoid prolonged/repeated exposure during pregnancy",
-      "Recent eye surgery with intraocular gas"
-    ],
-    "safety_profile": "Generally safe with scavenging and monitoring. Common transient effects include dizziness, euphoria, nausea, and paresthesias; rare risks include diffusion hypoxia without supplemental oxygen, and neurologic injury with unrecognized B12 deficiency or prolonged/repeated exposure.",
-    "evidence_level": "High for procedural sedation analgesia; moderate/emerging for antidepressant effect in treatment-resistant depression.",
-    "research_support": "Randomized and crossover trials show rapid—sometimes within hours—improvement in depressive symptoms after brief N₂O inhalation; durability varies and remains under study.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "procedural_anxiolysis_analgesia": 5,
-      "treatment_resistant_depression": 3,
-      "overall_tolerability": 5
+  "summary": "An inhaled analgesic/anxiolytic gas (N₂O–O₂ mixture) administered in medical or dental settings; also under investigation as a rapid-acting antidepressant for treatment-resistant depression.",
+  "description": "Nitrous oxide (N₂O) is a colorless gas with analgesic and anxiolytic properties used for minimal-to-moderate procedural sedation in dentistry, emergency/ambulatory care, and minor procedures. It is delivered as a controlled blend with oxygen via mask systems equipped with scavenging to prevent environmental exposure. At subanesthetic concentrations, N₂O modulates glutamatergic neurotransmission—principally via noncompetitive NMDA receptor antagonism—producing rapid anxiolysis and analgesia.\n\nBeyond procedural use, several clinical trials suggest that brief inhalation of N₂O at controlled concentrations can produce rapid antidepressant effects in individuals with treatment-resistant major depressive disorder. These effects may emerge within hours and persist for days to weeks in some patients. Use for mood disorders remains investigational and should occur in controlled clinical settings with appropriate screening and monitoring.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "procedural-anxiety-and-analgesia-dental-and-minor-procedures",
+          "condition_name": "Procedural anxiety and analgesia (dental and minor procedures)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-major-depressive-disorder-investigational",
+          "condition_name": "Treatment-resistant major depressive disorder (investigational)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "procedural-anxiety",
+          "condition_name": "Procedural anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "acute-procedural-pain",
+          "condition_name": "Acute procedural pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "major-depressive-disorder-treatment-resistant-investigational",
+          "condition_name": "Major depressive disorder (treatment-resistant; investigational)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-for-migraine-or-headache-procedures",
+          "condition_name": "Adjunct for migraine or headache procedures",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "short-term-anxiolysis-in-emergency-settings",
+          "condition_name": "Short-term anxiolysis in emergency settings",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for procedural sedation analgesia; moderate/emerging for antidepressant effect in treatment-resistant depression.",
+      "efficacy_ratings": {
+        "procedural_anxiolysis_analgesia": {
+          "rating": 5
+        },
+        "treatment_resistant_depression": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Randomized and crossover trials show rapid—sometimes within hours—improvement in depressive symptoms after brief N₂O inhalation; durability varies and remains under study."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Single-session use for procedures; Short-series for investigational depression protocols"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Inhaled N₂O–O₂ via nasal or full-face mask with scavenging"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "5–45 minutes depending on indication"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe with scavenging and monitoring. Common transient effects include dizziness, euphoria, nausea, and paresthesias; rare risks include diffusion hypoxia without supplemental oxygen, and neurologic injury with unrecognized B12 deficiency or prolonged/repeated exposure.",
+      "common_adverse_effects": [
+        {
+          "effect": "Lightheadedness"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Paresthesias"
+        },
+        {
+          "effect": "Euphoria"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neurologic injury with repeated/prolonged exposure in B12 deficiency"
+        },
+        {
+          "risk": "Diffusion hypoxia if oxygen not provided at end"
+        },
+        {
+          "risk": "Occupational exposure effects without proper scavenging"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known/suspected B12 deficiency or methionine synthase disorders",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pneumothorax or other trapped-gas conditions",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Recent intraocular gas injection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cardiorespiratory compromise where hypoxemia risk cannot be mitigated",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Early pregnancy (avoid elective exposure)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe COPD with CO₂ retention",
+          "type": "relative"
+        },
+        {
+          "contraindication": "History of severe nausea/vomiting with N₂O",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid elective exposure, especially in first trimester; ensure robust scavenging to minimize occupational exposure."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Pharmacologic (inhaled anesthetic/analgesic)",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Apply nasal or face mask connected to calibrated mixer with scavenging.\nTitrate nitrous oxide in oxygen to effect while maintaining adequate oxygenation (clinical devices commonly limit N₂O and ensure ≥30% O₂).\nContinuous observation of responsiveness and comfort; monitor vitals per sedation standards.\nAt completion, deliver 100% oxygen for several minutes to prevent diffusion hypoxia."
+      }
     }
   },
   "sections": [
@@ -257,6 +358,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Nagele P, et al. Nitrous Oxide for Treatment-Resistant Major Depression: Proof-of-Concept Trial. JAMA Psychiatry (2015).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26018408/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Nagele P, et al. A Phase 2 RCT of 25% vs 50% Nitrous Oxide for TRD: Efficacy and Tolerability. JAMA Psychiatry (2021).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34115277/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "American Dental Association. Guidelines for the Use of Sedation and General Anesthesia by Dentists.",
+      "url": "https://www.ada.org/"
+    }
+  ],
   "seo": {
     "title": "Nitrous Oxide Therapy (Inhaled Nitrous Oxide)",
     "description": "Clinical overview of nitrous oxide for procedural sedation and its investigational use as a rapid-acting antidepressant in treatment-resistant depression.",
@@ -269,5 +390,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for procedural sedation analgesia; moderate/emerging for antidepressant effect in treatment-resistant depression."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for procedural sedation analgesia; moderate/emerging for antidepressant effect in treatment-resistant depression."
+    ]
   }
 }

@@ -123,7 +123,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
       id: "self-help-and-wellness",
       name: "Self-Help & Wellness",
       icon: Heart,
-      gradient: "from-rose-500 to-pink-600",
+      gradient: "from-negative to-negative-600",
       bgColor: "bg-rose-50",
       iconColor: "text-rose-600",
       borderColor: "border-rose-200",
@@ -248,7 +248,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
           <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
             {/* Featured Image */}
             {imageUrl && (
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-fill-secondary to-fill-tertiary">
                 <img
                   src={imageUrl}
                   alt={resource.name || "Article image"}
@@ -277,12 +277,12 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
               )}
 
               {/* Title */}
-              <h3 className="mb-2 line-clamp-2 text-lg font-bold text-slate-900 transition-colors group-hover:text-purple-600">
+              <h3 className="mb-2 line-clamp-2 text-lg font-bold text-label-primary transition-colors group-hover:text-purple-600">
                 {resource.name}
               </h3>
 
               {/* Meta Info */}
-              <div className="mb-3 flex items-center gap-3 text-xs text-slate-500">
+              <div className="mb-3 flex items-center gap-3 text-xs text-label-primary0">
                 {author && (
                   <div className="flex items-center gap-1">
                     <User className="h-3 w-3" />
@@ -302,7 +302,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
               </div>
 
               {/* Description */}
-              <p className="mb-4 line-clamp-3 text-sm text-slate-600">
+              <p className="mb-4 line-clamp-3 text-sm text-label-tertiary">
                 {resource.description ||
                   data?.summary ||
                   "Read more to discover insights on mental health and wellness."}
@@ -314,7 +314,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                   {topics.slice(0, 3).map((topic, idx) => (
                     <span
                       key={idx}
-                      className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-700"
+                      className="inline-flex items-center gap-1 rounded-full bg-surface-grouped px-2 py-1 text-xs text-label-secondary"
                     >
                       <Tag className="h-3 w-3" />
                       {topic}
@@ -336,7 +336,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50">
+    <div className="min-h-screen bg-canvas">
       {/* Hero Section */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -355,7 +355,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                 Knowledge Hub
               </span>
             </h1>
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-slate-600">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-tertiary">
               Explore our 4-pillar content hub: self-help resources, scientific research, practical guides, and community stories
             </p>
           </motion.div>
@@ -379,7 +379,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                 className={`group relative overflow-hidden rounded-lg border-2 p-4 text-left transition-all duration-300 ${
                   selectedPillar === pillar.id
                     ? `${pillar.borderColor} bg-gradient-to-br ${pillar.gradient} shadow-lg`
-                    : `border-slate-200 ${pillar.bgColor} hover:border-slate-300 hover:shadow-md`
+                    : `border-separator ${pillar.bgColor} hover:border-separator-opaque hover:shadow-md`
                 }`}
               >
                 {/* Background gradient overlay when selected */}
@@ -394,7 +394,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                     <div className="flex-1">
                       <h3
                         className={`text-sm font-bold ${
-                          selectedPillar === pillar.id ? "text-white" : "text-slate-900"
+                          selectedPillar === pillar.id ? "text-white" : "text-label-primary"
                         }`}
                       >
                         {pillar.name}
@@ -403,7 +403,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                         className={`text-xs ${
                           selectedPillar === pillar.id
                             ? "text-white/90"
-                            : "text-slate-600"
+                            : "text-label-tertiary"
                         }`}
                       >
                         {pillar.description}
@@ -415,7 +415,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                       variant={selectedPillar === pillar.id ? "default" : "outline"}
                       className={`text-xs ${
                         selectedPillar === pillar.id
-                          ? "bg-white/20 text-white border-white/30"
+                          ? "bg-surface/20 text-white border-white/30"
                           : ""
                       }`}
                     >
@@ -434,7 +434,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
               onClick={() => setSelectedPillar("latest")}
               className={`gap-2 transition-all ${
                 selectedPillar === "latest"
-                  ? "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+                  ? "bg-linear-to-r from-accent-600 to-accent hover:from-accent-700 hover:to-accent-600"
                   : ""
               }`}
             >
@@ -452,8 +452,8 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
           {filteredResources.length > 0 ? (
             <>
               <div className="mb-6 flex items-center gap-3">
-                {selectedPillar === "latest" && <Sparkles className="h-6 w-6 text-blue-600" />}
-                <h2 className="text-2xl font-bold text-slate-900">
+                {selectedPillar === "latest" && <Sparkles className="h-6 w-6 text-accent" />}
+                <h2 className="text-2xl font-bold text-label-primary">
                   {selectedPillar === "latest"
                     ? "Latest & Trending"
                     : selectedPillar !== "all"
@@ -462,7 +462,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                 </h2>
               </div>
               {selectedPillar === "latest" && (
-                <p className="mb-6 text-sm text-slate-600">
+                <p className="mb-6 text-sm text-label-tertiary">
                   Our 10 most recent articles across all pillars, sorted by publication date
                 </p>
               )}
@@ -475,9 +475,9 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
           ) : (
             <Card>
               <CardContent className="p-12 text-center">
-                <Newspaper className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                <h3 className="mb-2 text-xl font-semibold text-slate-900">No Articles Found</h3>
-                <p className="mb-6 text-slate-600">
+                <Newspaper className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">No Articles Found</h3>
+                <p className="mb-6 text-label-tertiary">
                   {searchQuery ? `No results for "${searchQuery}"` : "Try adjusting your filters"}
                 </p>
                 <Button onClick={clearFilters} variant="outline">

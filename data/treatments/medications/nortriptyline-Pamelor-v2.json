@@ -1,83 +1,245 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "nortriptyline-pamelor",
-  "type": "medication",
-  "name": "Nortriptyline (Pamelor)",
-  "summary": "Tricyclic antidepressant (TCA) used for major depression and sometimes for sleep and smoking cessation support. Effective for some people when SSRIs don’t work, but comes with real risks: heart rhythm problems, strong anticholinergic side effects, and dangerous overdose toxicity.",
-  "description": "Nortriptyline is an older antidepressant (a tricyclic) that can help with mood, anxiety that rides along with depression, and sometimes sleep—especially when taken at bedtime. It’s not a “light” medication: it can cause dry mouth, constipation, dizziness, and heart rhythm changes, and it’s one of the more dangerous antidepressants in overdose. It also carries the standard antidepressant warning about increased suicidal thoughts/behaviors in younger patients. If you use it, you use it intentionally: start low, go slow, and monitor closely.",
-  "patient_summary": "Nortriptyline is an older antidepressant (a tricyclic) that can help with mood and sometimes sleep—especially when taken at bedtime. It’s not a “light” medication: dry mouth, constipation, dizziness, and heart rhythm changes are common, and overdose can be dangerous. It also carries the antidepressant suicidality warning in younger patients. Start low, go slow, and don’t change the dose without your prescriber.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "nortriptyline-pamelor",
+    "name": "Nortriptyline (Pamelor)",
+    "generic_name": "nortriptyline",
+    "brand_names": [
+      "Pamelor"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Tricyclic Antidepressant (Secondary Amine)",
       "Norepinephrine Reuptake Inhibitor (predominant)",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Pamelor"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 1964,
-    "pharmacologic_category": "Tricyclic Antidepressant, Secondary Amine",
-    "published_date": "2025-12-02T00:00:00Z",
-    "last_updated": "2025-12-04T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-04T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (Unipolar)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "An alternative antidepressant option for unipolar depression, especially when first-line options aren’t effective or tolerated. Usually taken at bedtime to improve tolerability."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Sometimes used at low bedtime doses when depression/anxiety is tangled up with poor sleep. Not a dedicated sleep medication, but the bedtime dosing and antihistamine-like effects can help some people."
-      },
-      {
-        "slug": "tobacco-use-disorder",
-        "relationship": "off_label",
-        "context": "May be used with behavioral support as an alternative/adjunct for smoking cessation in select cases, started at least 2 weeks before a planned quit date."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to nortriptyline or related dibenzazepines, or any component of the formulation",
-      "Use during the acute recovery phase after myocardial infarction",
-      "Concomitant use with monoamine oxidase inhibitors (MAOIs) or use within 14 days of stopping nortriptyline or the MAOI",
-      "Initiation of nortriptyline in a patient receiving IV methylene blue",
-      "High risk of dangerous arrhythmia in patients with known serious conduction disease (relative contraindication; requires specialist-level caution)"
-    ],
-    "efficacy_response": {
-      "metric": "Depression symptom improvement",
-      "percentage_value": "Varies",
-      "comparison_data": "Varies by individual and baseline severity",
-      "patient_text": "Nortriptyline can work well for some people—especially when other antidepressants haven’t helped—but it’s not an instant switch. Most people who benefit notice early changes in 1 to 2 weeks, with fuller improvement building over 4 to 6 weeks at a therapeutic dose.",
-      "citation_tag": "Product labeling; clinical pharmacology references"
+  "summary": "Tricyclic antidepressant (TCA) used for major depression and sometimes for sleep and smoking cessation support. Effective for some people when SSRIs don’t work, but comes with real risks: heart rhythm problems, strong anticholinergic side effects, and dangerous overdose toxicity.",
+  "description": "Nortriptyline is an older antidepressant (a tricyclic) that can help with mood, anxiety that rides along with depression, and sometimes sleep—especially when taken at bedtime. It’s not a “light” medication: it can cause dry mouth, constipation, dizziness, and heart rhythm changes, and it’s one of the more dangerous antidepressants in overdose. It also carries the standard antidepressant warning about increased suicidal thoughts/behaviors in younger patients. If you use it, you use it intentionally: start low, go slow, and monitor closely.",
+  "patient_summary": "Nortriptyline is an older antidepressant (a tricyclic) that can help with mood and sometimes sleep—especially when taken at bedtime. It’s not a “light” medication: dry mouth, constipation, dizziness, and heart rhythm changes are common, and overdose can be dangerous. It also carries the antidepressant suicidality warning in younger patients. Start low, go slow, and don’t change the dose without your prescriber.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "An alternative antidepressant option for unipolar depression, especially when first-line options aren’t effective or tolerated. Usually taken at bedtime to improve tolerability.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Sometimes used at low bedtime doses when depression/anxiety is tangled up with poor sleep. Not a dedicated sleep medication, but the bedtime dosing and antihistamine-like effects can help some people."
+        },
+        {
+          "condition_slug": "tobacco-use-disorder",
+          "condition_name": "Tobacco Use Disorder",
+          "relationship": "off_label",
+          "context": "May be used with behavioral support as an alternative/adjunct for smoking cessation in select cases, started at least 2 weeks before a planned quit date."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (oral)",
-      "bioavailability": "46% to 70%",
-      "onset": "Depression: early effects often 1-2 weeks; fuller response typically 4-6 weeks",
-      "peak_plasma": "4 to 9 hours",
-      "half_life": "14 to 51 hours (mean ~26 hours); longer in older adults (mean ~45 hours reported)",
-      "duration_IR": "Once-daily dosing is common due to long half-life; effects are steady-state over days",
-      "metabolism": "Hepatic, extensive first-pass; CYP2D6 is the major pathway (CYP1A2/CYP2C19/CYP3A4 minor)",
-      "excretion": "Urine (mostly as metabolites; small amounts unchanged)",
-      "protein_binding": "Extensively protein-bound",
-      "food_effect": "May be taken without regard to food (practical dosing guidance)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: early effects often 1-2 weeks; fuller response typically 4-6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, urinary hesitancy, blurred vision)",
+          "incidence": "Common (frequency varies)",
+          "notes": "This is the TCA signature. Dry mouth and constipation are the usual headline. Constipation can become severe—hydrate, fiber, movement, and talk to your clinician early rather than later."
+        },
+        {
+          "effect": "Dizziness / Orthostatic hypotension",
+          "incidence": "Common (especially early and in older adults)",
+          "notes": "Standing up too fast can make you lightheaded. It can show up in the first week and stick around. Move slower, hydrate, and report fainting or near-fainting."
+        },
+        {
+          "effect": "Sedation / Fatigue",
+          "incidence": "Variable",
+          "notes": "Some people feel sleepy; others just feel ‘slower’ for a bit. Bedtime dosing often improves tolerability. If you feel unsafe to drive, don’t drive."
+        },
+        {
+          "effect": "Heart rate changes / Palpitations",
+          "incidence": "Variable",
+          "notes": "Nortriptyline can increase heart rate and affect conduction. New palpitations, chest pain, fainting, or severe dizziness need prompt evaluation."
+        },
+        {
+          "effect": "Cognitive effects (confusion, disorientation, slowed thinking)",
+          "incidence": "More likely in older adults or at higher doses",
+          "notes": "If you feel confused, disoriented, or ‘not yourself,’ that’s not a side effect to ignore—especially in older adults."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Cardiac conduction abnormalities and life-threatening arrhythmias (risk increases with overdose, preexisting conduction disease, and higher doses)"
+        },
+        {
+          "risk": "Seizures (especially in overdose or in patients with seizure vulnerability)"
+        },
+        {
+          "risk": "Serotonin syndrome (especially with other serotonergic agents; can include agitation, confusion, sweating, tremor, muscle rigidity, high fever)"
+        },
+        {
+          "risk": "Severe urinary retention or paralytic ileus (medical emergency risk)"
+        },
+        {
+          "risk": "Acute angle-closure glaucoma (eye pain, redness, vision changes—emergency)"
+        },
+        {
+          "risk": "Hyponatremia/SIADH (rare; higher risk in older adults—confusion, weakness, headache)"
+        },
+        {
+          "risk": "Mania/hypomania or severe agitation (especially if bipolar disorder is present)"
+        }
+      ],
+      "black_box_warning": "Suicidality in children, adolescents, and young adults: Antidepressants increased the risk compared with placebo of suicidal thinking and behavior (suicidality) in children, adolescents, and young adults in short-term studies of major depressive disorder (MDD) and other psychiatric disorders. Anyone considering the use of nortriptyline or any other antidepressant in a child, adolescent, or young adult must balance this risk with the clinical need. Appropriately monitor patients of all ages who are started on antidepressant therapy and observe them closely for clinical worsening, suicidality, or unusual changes in behavior. Advise families and caregivers of the need for close observation and communication with the health care provider. Nortriptyline is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to nortriptyline or related dibenzazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Use during the acute recovery phase after myocardial infarction"
+        },
+        {
+          "contraindication": "Concomitant use with monoamine oxidase inhibitors (MAOIs) or use within 14 days of stopping nortriptyline or the MAOI"
+        },
+        {
+          "contraindication": "Initiation of nortriptyline in a patient receiving IV methylene blue"
+        },
+        {
+          "contraindication": "High risk of dangerous arrhythmia in patients with known serious conduction disease (relative contraindication; requires specialist-level caution)"
+        }
+      ],
+      "precautions": [
+        "Cardiac conduction and rhythm risk: TCAs can prolong PR/QRS/QT and may trigger serious arrhythmias—risk rises with higher doses, overdose, and preexisting heart disease or conduction disorders",
+        "Overdose toxicity: Tricyclic antidepressants are among the most dangerous antidepressants in overdose (life-threatening arrhythmias, seizures, coma)",
+        "Serotonin syndrome risk: Especially when combined with other serotonergic drugs; can be severe and rapid-onset",
+        "Anticholinergic burden: Constipation, urinary retention, blurred vision, confusion—higher risk in older adults and at higher doses",
+        "Orthostatic hypotension and falls: Dizziness/syncope can happen, especially early and in older adults",
+        "Mania/hypomania switch: Can precipitate mania in bipolar disorder—screen before starting and avoid antidepressant monotherapy in bipolar disorder",
+        "Angle-closure glaucoma risk in susceptible individuals due to pupil dilation/anticholinergic effects",
+        "Do not combine with MAOIs (or within 14 days): serious interaction risk"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (phenelzine, tranylcypromine, isocarboxazid, selegiline; also IV methylene blue)",
+          "mechanism": "Contraindicated: serious interaction risk (including serotonin toxicity and dangerous blood pressure/neurologic effects).",
+          "action": "Do not combine. Allow 14 days between stopping an MAOI and starting nortriptyline, and 14 days between stopping nortriptyline and starting an MAOI."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs/SNRIs, tramadol, linezolid, triptans, St. John’s wort, certain opioids)",
+          "mechanism": "Serotonin syndrome risk increases when multiple serotonergic drugs are combined.",
+          "action": "Use caution, monitor closely for serotonin syndrome symptoms (agitation, confusion, sweating, tremor, muscle rigidity, fever). Seek urgent care for severe symptoms."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (examples: fluoxetine, paroxetine, bupropion; some antipsychotics)",
+          "mechanism": "Can increase nortriptyline levels and side effects (anticholinergic effects, sedation, cardiac effects).",
+          "action": "Dose adjustments and/or therapeutic drug monitoring may be needed. Report side effects early."
+        },
+        {
+          "interactant": "QT-prolonging medications or other arrhythmia-risk meds",
+          "mechanism": "Additive risk for QT prolongation and arrhythmias.",
+          "action": "Avoid high-risk combinations when possible and consider ECG monitoring in at-risk patients."
+        },
+        {
+          "interactant": "Alcohol and other CNS depressants",
+          "mechanism": "Additive sedation, dizziness, impaired coordination; higher fall risk.",
+          "action": "Avoid or minimize. If combined, use extreme caution with driving and activities requiring alertness."
+        },
+        {
+          "interactant": "Anticholinergic medications (diphenhydramine, benztropine, oxybutynin, many sleep aids)",
+          "mechanism": "Anticholinergic burden skyrockets: constipation, urinary retention, confusion, blurred vision, falls.",
+          "action": "Avoid stacking anticholinergics when possible—especially in older adults."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: monitor all ages, especially <25 and during the first 1-2 months or dose changes (watch for agitation, insomnia, irritability, impulsivity, akathisia, hypomania/mania)."
+        },
+        {
+          "parameter": "Cardiac monitoring: heart rate, blood pressure, and ECG in older adults and in patients with preexisting cardiac disease or conduction risk; reassess if palpitations, syncope, or chest symptoms occur."
+        },
+        {
+          "parameter": "Orthostatic vitals: monitor for dizziness/syncope, especially early and after dose increases."
+        },
+        {
+          "parameter": "Anticholinergic effects: constipation severity, urinary retention symptoms, blurred vision, confusion—especially in older adults and those on other anticholinergics."
+        },
+        {
+          "parameter": "Serum sodium in at-risk populations (older adults, diuretic use, low baseline sodium, severe medical illness), particularly during initiation and dose changes."
+        },
+        {
+          "parameter": "Weight/BMI and appetite changes."
+        },
+        {
+          "parameter": "Blood glucose in patients with diabetes or metabolic risk; monitor adherence and overall stability since mood symptoms can impact diabetes management."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring when clinically indicated: draw a trough level just before the next dose; typical therapeutic range 50 to 170 ng/mL; laboratory alert level around 300 ng/mL."
+        },
+        {
+          "parameter": "Functional outcomes: sleep quality, daytime alertness, ability to work/school, and overall impairment—because “less depressed” isn’t enough if the medication makes life unlivable."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Nortriptyline crosses the placenta and may have altered clearance during pregnancy (CYP2D6 activity can increase, especially in the third trimester), meaning dose adjustments may be needed. Therapeutic drug monitoring is often recommended monthly during pregnancy and again 2 to 6 weeks postpartum to avoid toxicity while maintaining efficacy. Untreated depression also carries pregnancy risks (preterm birth, low birth weight, preeclampsia, postpartum depression), so the decision is not simply “meds or no meds.” TCAs are generally not first-line for treatment-naïve pregnant patients, but nortriptyline may be considered as an alternative when other options are ineffective or contraindicated, using the lowest effective dose of a single agent whenever possible.",
+        "lactation": "Nortriptyline is present in breast milk. Available data suggest relatively low infant exposure (reported relative infant dose around 1.3% in one case report) and adverse events have not been consistently observed. Even so, infants should be monitored for sedation and poor feeding. If starting a new antidepressant in a treatment-naïve breastfeeding patient, other agents are often preferred; however, nortriptyline may be a preferred TCA if a TCA is needed.",
+        "pediatric": "Nortriptyline is not approved for pediatric patients. Antidepressants carry an increased risk of suicidal thinking and behavior in children, adolescents, and young adults in short-term studies. Controlled trials have not shown TCAs to be superior to placebo for pediatric depression, and SSRIs are typically first-line. Nortriptyline may be considered only in select cases after other options fail and when comorbid conditions influence the decision, with close monitoring.",
+        "geriatric": "Avoid when possible. Nortriptyline is identified as potentially inappropriate in adults ≥65 due to strong anticholinergic effects and risk of sedation and orthostatic hypotension, with higher risks for falls, confusion, and hyponatremia/SIADH. If used despite this, start very low, titrate slowly, consider ECG and sodium monitoring, and reassess frequently.",
+        "renal_impairment": "No dosage adjustment is typically required, including in dialysis settings, but use with caution due to variability in clearance and increased sensitivity to anticholinergic and QT-prolonging effects in dialysis patients.",
+        "hepatic_impairment": "Metabolized hepatically; use with caution. Many experts reduce initial and maintenance doses by ~50% in hepatic impairment with cautious titration based on response and tolerability, especially given the narrow therapeutic index."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1964
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (oral)",
+          "bioavailability": "46% to 70%",
+          "peak_plasma": "4 to 9 hours",
+          "half_life": "14 to 51 hours (mean ~26 hours); longer in older adults (mean ~45 hours reported)",
+          "metabolism": "Hepatic, extensive first-pass; CYP2D6 is the major pathway (CYP1A2/CYP2C19/CYP3A4 minor)",
+          "excretion": "Urine (mostly as metabolites; small amounts unchanged)",
+          "protein_binding": "Extensively protein-bound",
+          "food_effect": "May be taken without regard to food (practical dosing guidance)"
+        },
+        "dosing": {
+          "titration": "Nortriptyline dosing is usually bedtime-based for tolerability. The goal is the lowest effective dose that improves mood without causing intolerable anticholinergic or cardiac side effects. Some people need therapeutic drug monitoring when response or side effects don’t match the dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Nortriptyline should usually be tapered—not stopped abruptly—especially after you’ve been on it for 4 weeks or longer. Tapering helps reduce withdrawal symptoms and makes it easier to tell the difference between discontinuation effects and depression returning."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +260,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Real talk: nortriptyline can be a solid med for the right person, but it has a “TCA personality.” Here’s what people commonly report:",
       "items": [
         {
           "category": "Early Days (first week or two)",
@@ -144,7 +305,8 @@
           ],
           "note": "New palpitations, fainting, severe dizziness, confusion, or agitation are not “push through it” symptoms—those are check-in-now symptoms."
         }
-      ]
+      ],
+      "intro": "Real talk: nortriptyline can be a solid med for the right person, but it has a “TCA personality.” Here’s what people commonly report:"
     },
     {
       "type": "onset_duration",
@@ -161,10 +323,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Nortriptyline can be very effective for some people with major depression—especially when other antidepressants didn’t land well. The catch is the timeline: you usually need a real trial (weeks, not days), and you often need dose adjustments based on both symptoms and tolerability. If it’s going to work, you often see the first signs within 1 to 2 weeks, with continued gains through weeks 4 to 6.",
       "metric": "Depression improvement timeline",
       "value": "Early changes in 1-2 weeks; fuller effect in 4-6 weeks",
       "comparison": "Not a fast-acting medication",
-      "text": "Nortriptyline can be very effective for some people with major depression—especially when other antidepressants didn’t land well. The catch is the timeline: you usually need a real trial (weeks, not days), and you often need dose adjustments based on both symptoms and tolerability. If it’s going to work, you often see the first signs within 1 to 2 weeks, with continued gains through weeks 4 to 6.",
       "clinical_details": "Response varies widely. A practical assessment window is a consistent therapeutic dose for several weeks, with close monitoring for side effects and safety issues (especially cardiac and anticholinergic effects). Therapeutic drug monitoring can help confirm whether blood levels are in a typical effective range when response is unclear or side effects are significant.",
       "citation": {
         "authors": "Multiple sources summarized from product labeling and clinical pharmacology references",
@@ -255,7 +417,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Nortriptyline has meaningful interaction risk because it affects serotonin/norepinephrine systems, has anticholinergic properties, and is metabolized mainly by CYP2D6. Translation: some combinations can raise blood levels, increase side effects, or raise cardiac risk.",
       "items": [
         {
           "with": "MAOIs (phenelzine, tranylcypromine, isocarboxazid, selegiline; also IV methylene blue)",
@@ -287,7 +448,8 @@
           "risk": "Anticholinergic burden skyrockets: constipation, urinary retention, confusion, blurred vision, falls.",
           "action": "Avoid stacking anticholinergics when possible—especially in older adults."
         }
-      ]
+      ],
+      "intro": "Nortriptyline has meaningful interaction risk because it affects serotonin/norepinephrine systems, has anticholinergic properties, and is metabolized mainly by CYP2D6. Translation: some combinations can raise blood levels, increase side effects, or raise cardiac risk."
     },
     {
       "type": "tapering",
@@ -366,21 +528,6 @@
       "text": "Nortriptyline is usually not a first-choice antidepressant today because TCAs have more side effects and higher overdose danger than SSRIs/SNRIs. But it still has a real role: it can be effective for unipolar depression when first-line options fail or aren’t tolerated, and it’s sometimes chosen when a clinician wants a more norepinephrine-forward antidepressant. Bedtime dosing can help people who struggle with sleep during depression, but it’s not a clean insomnia medication. It requires intentional prescribing: screening for bipolar disorder, checking cardiac risk, cautious titration, and close monitoring—especially early and in older adults."
     }
   ],
-  "seo": {
-    "title": "Nortriptyline (Pamelor): Uses, Dosage, Side Effects, and Safety Warnings",
-    "description": "Nortriptyline (Pamelor) is a tricyclic antidepressant used for major depression and sometimes for sleep or smoking cessation support. Learn dosing, side effects (dry mouth, constipation, dizziness), cardiac risks, suicidality warning, interactions, and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/nortriptyline-pamelor](https://www.heypsych.com/treatments/nortriptyline-pamelor)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-20",
-    "lastUpdated": "2026-01-20",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is nortriptyline used for in psychiatry?",
@@ -426,5 +573,20 @@
       "q": "Is nortriptyline okay in pregnancy or breastfeeding?",
       "a": "It can be used in select situations, but it’s usually not the first choice for someone starting treatment for the first time during pregnancy or while breastfeeding. Pregnancy can change how the body clears nortriptyline (especially later in pregnancy), so monitoring and dose adjustments may be needed. In breastfeeding, infant exposure appears low in available reports, but infants should be monitored for sedation or poor feeding. Decisions should be individualized and shared with your clinician."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Nortriptyline (Pamelor): Uses, Dosage, Side Effects, and Safety Warnings",
+    "description": "Nortriptyline (Pamelor) is a tricyclic antidepressant used for major depression and sometimes for sleep or smoking cessation support. Learn dosing, side effects (dry mouth, constipation, dizziness), cardiac risks, suicidality warning, interactions, and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/nortriptyline-pamelor](https://www.heypsych.com/treatments/nortriptyline-pamelor)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-20",
+    "lastUpdated": "2026-01-20",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

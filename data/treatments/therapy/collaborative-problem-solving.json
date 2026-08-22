@@ -1,83 +1,166 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "collaborative-problem-solving",
-  "type": "therapy",
-  "name": "Collaborative Problem Solving (CPS)",
-  "summary": "A parent–child intervention that emphasizes empathy, collaboration, and skill-building rather than punishment to address challenging behaviors in children.",
-  "description": "Collaborative Problem Solving (CPS), developed by Dr. Ross Greene and Dr. Stuart Ablon, is a parent-training and therapeutic approach designed to help children with oppositional, defiant, or explosive behaviors. CPS is based on the principle that 'children do well if they can,' emphasizing that challenging behaviors arise from lagging cognitive skills such as flexibility, frustration tolerance, and problem-solving. Instead of relying on traditional consequences or rewards, CPS engages children and caregivers in a structured problem-solving process to build skills and strengthen relationships. It is widely applied in clinical, educational, and family contexts.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "parenting",
-    "behavioral",
-    "collaborative",
-    "family",
-    "skills-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "collaborative-problem-solving",
+    "name": "Collaborative Problem Solving (CPS)",
+    "generic_name": "collaborative problem solving",
+    "brand_names": [
+      "CPS"
+    ],
+    "wikidata_qid": "Q64387113"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Parent Training",
       "Family Therapy"
     ],
-    "treatment_types": [
-      "Behavioral",
-      "Relational"
-    ],
-    "categories": [
-      "Parent Training",
-      "Child Behavior Management"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Group sessions"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Parents"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "12–16 sessions typical"
-    ],
-    "specialty_areas": [
-      "Oppositional Behavior",
-      "Family Conflict"
-    ],
-    "wikidata_qid": "Q64387113"
+    "tags": [
+      "parenting",
+      "behavioral",
+      "collaborative",
+      "family",
+      "skills-based"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Oppositional Defiant Disorder (ODD)",
-      "Disruptive Behavior Disorders"
-    ],
-    "conditions_treated": [
-      "ADHD",
-      "ODD",
-      "Conduct Disorder",
-      "Aggression",
-      "Family conflict"
-    ],
-    "off_label_uses": [
-      "Autism-related behavioral challenges",
-      "School-based interventions"
-    ],
-    "contraindications": [
-      "Families unwilling to collaborate",
-      "Contexts requiring immediate safety interventions for severe aggression"
-    ],
-    "safety_profile": "Safe and non-invasive. No known adverse effects.",
-    "evidence_level": "Moderate—supported by randomized controlled trials and implementation studies in schools and clinics.",
-    "research_support": "Evidence suggests CPS improves parent–child relationships, reduces oppositional behavior, and enhances emotional regulation.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "oppositional_behavior": 4,
-      "adhd": 3,
-      "conduct_disorder": 3,
-      "overall_tolerability": 5
+  "summary": "A parent–child intervention that emphasizes empathy, collaboration, and skill-building rather than punishment to address challenging behaviors in children.",
+  "description": "Collaborative Problem Solving (CPS), developed by Dr. Ross Greene and Dr. Stuart Ablon, is a parent-training and therapeutic approach designed to help children with oppositional, defiant, or explosive behaviors. CPS is based on the principle that 'children do well if they can,' emphasizing that challenging behaviors arise from lagging cognitive skills such as flexibility, frustration tolerance, and problem-solving. Instead of relying on traditional consequences or rewards, CPS engages children and caregivers in a structured problem-solving process to build skills and strengthen relationships. It is widely applied in clinical, educational, and family contexts.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional Defiant Disorder (ODD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "disruptive-behavior-disorders",
+          "condition_name": "Disruptive Behavior Disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "odd",
+          "condition_name": "ODD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "aggression",
+          "condition_name": "Aggression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "autism-related-behavioral-challenges",
+          "condition_name": "Autism-related behavioral challenges",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "school-based-interventions",
+          "condition_name": "School-based interventions",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—supported by randomized controlled trials and implementation studies in schools and clinics.",
+      "efficacy_ratings": {
+        "oppositional_behavior": {
+          "rating": 4
+        },
+        "adhd": {
+          "rating": 3
+        },
+        "conduct_disorder": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Evidence suggests CPS improves parent–child relationships, reduces oppositional behavior, and enhances emotional regulation."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–16 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Group sessions"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive. No known adverse effects.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary frustration when adjusting to new interaction style"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Immediate safety concerns requiring crisis management",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Families with low engagement or unwillingness to collaborate",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Behavioral, Relational",
+        "key_techniques": [
+          "Parent Training",
+          "Child Behavior Management"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in on recent behavioral challenges and parent–child interactions.",
+          "during_session": "Skill-building, guided collaborative conversations, modeling problem-solving.",
+          "post_session": "Assign parent–child practice tasks at home."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Therapists or parent coaches trained in CPS model"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -226,6 +309,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Greene RW, Ablon JS. Treating Explosive Kids: The Collaborative Problem-Solving Approach. Guilford Press, 2006.",
+      "url": "https://www.guilford.com/books/Treating-Explosive-Kids/Ross-Greene/J-Stuart-Ablon/9781593852126"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Ollendick TH et al. (2016). A randomized controlled trial of Collaborative Problem Solving for children with oppositional defiant disorder. Journal of Consulting and Clinical Psychology.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27196393/"
+    }
+  ],
   "seo": {
     "title": "Collaborative Problem Solving (CPS)",
     "description": "Collaborative Problem Solving (CPS) is a family-based therapy approach for children with oppositional or disruptive behaviors, emphasizing empathy, collaboration, and skill-building over punishment.",
@@ -238,5 +335,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—supported by randomized controlled trials and implementation studies in schools and clinics."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—supported by randomized controlled trials and implementation studies in schools and clinics."
+    ]
   }
 }

@@ -22,7 +22,7 @@ export function TopPicks({ tools, title = "Top Picks" }: TopPicksProps) {
   return (
     <section className="py-8 bg-gradient-to-br from-amber-50 to-orange-50 border-b border-amber-200">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-neutral-900 mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-bold text-label-primary mb-4 flex items-center gap-2">
           <Trophy className="h-5 w-5 text-amber-600" />
           {title}
         </h2>

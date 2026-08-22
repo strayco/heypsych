@@ -1,79 +1,236 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "stiripentol-diacomit",
-  "type": "medication",
-  "name": "Stiripentol (Diacomit)",
+  "identity": {
+    "slug": "stiripentol-diacomit",
+    "name": "Stiripentol (Diacomit)",
+    "generic_name": "stiripentol",
+    "brand_names": [
+      "Diacomit"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/seizure-disorders",
+    "drug_classes": [
+      "Antiseizure Agent, Miscellaneous"
+    ]
+  },
   "summary": "Adjunct antiseizure medication for Dravet syndrome—used with clobazam (and often valproate internationally). Not a psychiatric medication, but it can strongly affect sleep, energy, behavior, and sedation.",
   "description": "Diacomit (stiripentol) is an add-on seizure medication for Dravet syndrome. In the U.S., it’s approved with clobazam—not as monotherapy. International guidance commonly uses it with both clobazam and valproic acid. It can cause heavy drowsiness, agitation, insomnia, and appetite/weight loss, and it has major drug interaction potential because it inhibits multiple liver enzymes. If you’re switching between capsules and powder, your exposure can change—so monitoring matters.",
   "patient_summary": "Diacomit (stiripentol) is an add-on seizure medication for Dravet syndrome. It’s not a psychiatric med, but it can seriously impact sedation, sleep, agitation, appetite, and mood. It’s used with clobazam (and often valproate internationally), and it has big interaction risk—so med list reviews and monitoring aren’t optional.",
-  "category": "medications/seizure-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Antiseizure Agent, Miscellaneous"
-    ],
-    "brand_names": [
-      "Diacomit"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (DEA scheduling not applicable)",
-    "generic_available": false,
-    "fda_approval_year": 2018,
-    "pharmacologic_category": "Antiseizure Agent, Miscellaneous",
-    "published_date": "2026-01-15T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Dravet syndrome–associated seizures (adjunctive therapy)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "dravet-syndrome",
-        "relationship": "primary_treatment",
-        "context": "Used as adjunct therapy for seizures associated with Dravet syndrome. In the U.S., it’s FDA-approved in combination with clobazam; international labeling commonly recommends combination with clobazam and valproic acid. Not appropriate for monotherapy."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "not_indicated",
-        "context": "Not indicated to treat insomnia. Sleep changes (including insomnia or sedation) are side effects, not treatment targets."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "not_indicated",
-        "context": "Not indicated to treat agitation. Agitation and aggressive behavior can occur as adverse effects and should prompt reassessment."
-      }
-    ],
-    "contraindications": [
-      "None listed in U.S. manufacturer labeling",
-      "Canadian labeling: Hypersensitivity to stiripentol or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Seizure reduction in Dravet syndrome (adjunctive therapy)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "This article focuses on psychiatry-relevant effects (sedation, sleep, behavior, mood risk) rather than seizure efficacy metrics. Stiripentol is used for Dravet syndrome seizures as add-on therapy with clobazam (and often valproate internationally).",
-      "citation_tag": "FDA Label: 2018"
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "dravet-syndrome",
+          "condition_name": "Dravet Syndrome",
+          "relationship": "primary_indication",
+          "context": "Used as adjunct therapy for seizures associated with Dravet syndrome. In the U.S., it’s FDA-approved in combination with clobazam; international labeling commonly recommends combination with clobazam and valproic acid. Not appropriate for monotherapy.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "Not indicated to treat insomnia. Sleep changes (including insomnia or sedation) are side effects, not treatment targets."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "secondary_indication",
+          "context": "Not indicated to treat agitation. Agitation and aggressive behavior can occur as adverse effects and should prompt reassessment."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed; extensive first-pass metabolism",
-      "bioavailability": "~30%",
-      "onset": "Not applicable for this medication.",
-      "peak_plasma": "Median 2 to 3 hours",
-      "half_life": "Adults: ~4.5 to 13 hours (dose-dependent); pediatric half-life increases with body weight in modeling studies",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via demethylenation (CYP1A2, CYP2C19, CYP3A4) and glucuronidation",
-      "excretion": "Urine (~73% as metabolites); feces (~18% unchanged drug)",
-      "protein_binding": "~99%",
-      "food_effect": "Administer with meals/food; powder may produce slightly higher systemic exposure than capsules"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not applicable for this medication."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sleepiness",
+          "incidence": "67%",
+          "notes": "This can feel like a heavy blanket over the day—slower thinking, less energy, more naps. If it’s interfering with functioning, clinicians often reassess clobazam dosing (and other sedating meds) because interactions can amplify sedation."
+        },
+        {
+          "effect": "Agitation",
+          "incidence": "27%",
+          "notes": "Agitation can show up as restlessness, irritability, or a shorter fuse. If agitation increases after starting or titrating, it deserves a full medication review—not just “wait it out.”"
+        },
+        {
+          "effect": "Ataxia (unsteadiness)",
+          "incidence": "27%",
+          "notes": "Unsteady gait and clumsiness increase fall risk. This matters even more if sedation is also present."
+        },
+        {
+          "effect": "Hypotonia",
+          "incidence": "18% to 24%",
+          "notes": "Lower muscle tone can look like “floppier” posture or less physical stability—often alongside fatigue/sedation."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "12%",
+          "notes": "Sleep can get disrupted in either direction—some get sleepy, others get wired or wakeful. Track sleep patterns because it helps guide adjustments."
+        },
+        {
+          "effect": "Decreased appetite",
+          "incidence": "45% to 46%",
+          "notes": "Loss of appetite can be a big deal, especially in kids. Weight trends matter more than a single day of picky eating—monitor consistently."
+        },
+        {
+          "effect": "Weight loss",
+          "incidence": "27%",
+          "notes": "Weight loss can follow appetite suppression. If weight drops or growth slows, the regimen may need adjustment."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "15%",
+          "notes": "GI side effects can worsen appetite and weight loss—treating nausea and timing with meals may help."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "15%",
+          "notes": "Tremor can be subtle or obvious and may interfere with fine motor tasks; it can also overlap with other antiseizure meds’ side effects."
+        },
+        {
+          "effect": "Decreased platelet count",
+          "incidence": "13%",
+          "notes": "Low platelets can increase bruising/bleeding risk. This is why CBC monitoring isn’t optional."
+        },
+        {
+          "effect": "Neutropenia",
+          "incidence": "13%",
+          "notes": "Low neutrophils can increase infection risk. If fevers or recurrent infections occur, labs should be checked promptly."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thoughts/behavior warning (antiseizure medication class): Monitor for new or worsening depression, unusual behavior changes, or self-harm thoughts"
+        },
+        {
+          "risk": "Clinically significant blood dyscrasias (neutropenia, thrombocytopenia): Requires CBC monitoring and clinical correlation"
+        },
+        {
+          "risk": "Severe sedation/CNS depression with impaired functioning: Particularly relevant when combined with clobazam and other sedating medications"
+        },
+        {
+          "risk": "Worsening seizure control if stopped abruptly: Increased seizure frequency and risk of status epilepticus"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "None listed in U.S. manufacturer labeling"
+        },
+        {
+          "contraindication": "Canadian labeling: Hypersensitivity to stiripentol or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Appropriate use: Not for monotherapy. In the U.S., approved as adjunct treatment with clobazam; international guidance often recommends use with both clobazam and valproic acid",
+        "CNS depression: Can cause significant drowsiness and impair alertness; caution with driving or hazardous activities when applicable",
+        "Suicidal ideation/behavior warning (antiseizure medication class): Increased risk has been observed across antiseizure medications; monitor for mood/behavior changes",
+        "Blood dyscrasias: Neutropenia and thrombocytopenia have been reported; CBC monitoring is recommended",
+        "Appetite/weight loss: Can be clinically significant—especially in children; monitor growth and weight closely",
+        "Renal/hepatic impairment: Not studied for dose adjustments; avoid in moderate to severe renal or hepatic impairment; use caution and titrate carefully in mild impairment",
+        "Powder contains phenylalanine (aspartame): Use caution in phenylketonuria",
+        "Hazardous handling considerations: May meet criteria for hazardous drugs; use appropriate precautions per institutional policy"
+      ],
+      "interactions": [
+        {
+          "interactant": "Clobazam",
+          "mechanism": "Sedation and CNS depression can increase due to interaction-driven higher exposure to clobazam and/or active metabolites.",
+          "action": "Monitor closely for excessive drowsiness, slowed cognition, or functional impairment. Dose adjustment of clobazam may be needed when stiripentol is initiated or titrated."
+        },
+        {
+          "interactant": "Valproic acid (valproate)",
+          "mechanism": "International regimens commonly include valproate; appetite/weight loss and sedation may worsen depending on the full combination.",
+          "action": "Monitor appetite, weight, and overall tolerability. In some regimens, clinicians consider valproate dose reduction to help minimize appetite/weight loss."
+        },
+        {
+          "interactant": "Other CNS depressants (including sedating antihistamines, sleep meds, alcohol, cannabis products)",
+          "mechanism": "Additive sedation, impaired coordination, increased fall risk, and worse cognitive slowing.",
+          "action": "Avoid stacking sedatives when possible. If unavoidable, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "Medications metabolized by CYP1A2, CYP2C19, CYP3A4",
+          "mechanism": "Stiripentol inhibits CYP1A2 (moderate), CYP2C19 (moderate), and CYP3A4 (weak), which can raise levels of co-medications and increase side effects.",
+          "action": "Do a full medication reconciliation and interaction review whenever starting, stopping, or changing stiripentol dose. Adjust companion drug doses as needed based on clinical response and side effects."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "CBC: Prior to initiation and every 6 months (or as clinically indicated) due to neutropenia and thrombocytopenia risk"
+        },
+        {
+          "parameter": "Weight and appetite: Track weight trends; in children, monitor growth rate closely"
+        },
+        {
+          "parameter": "Sedation and functioning: Watch for excessive drowsiness, slowed cognition, and impaired coordination—especially in combination with clobazam and other sedating meds"
+        },
+        {
+          "parameter": "Behavior and mood: Monitor for agitation, aggression, irritability, insomnia, and any new or worsening depression or suicidal thoughts/behavior"
+        },
+        {
+          "parameter": "Medication interactions: Re-check the full medication list whenever doses change or when switching formulations (capsule ↔ powder) because exposure and companion-drug levels can shift"
+        },
+        {
+          "parameter": "Formulation switches: Systemic exposure may be slightly higher with powder for suspension than capsules; monitor clinically when switching"
+        },
+        {
+          "parameter": "PKU considerations: Powder for suspension contains phenylalanine (aspartame); use caution and monitor as appropriate"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Outcome data are limited and insufficient to define specific risks for major congenital malformations or neurodevelopmental outcomes with stiripentol exposure. Epilepsy management during pregnancy should use shared decision-making to optimize seizure control and plan for pregnancy when possible. Patients should be encouraged to enroll in the North American Antiepileptic Drug (NAAED) Pregnancy Registry.",
+        "lactation": "It is not known if stiripentol is present in breast milk. The decision to breastfeed should consider potential infant exposure, benefits of breastfeeding, and benefits of treatment to the parent. If breastfeeding occurs while on antiseizure meds, monitor the infant for sedation, poor sucking, weight gain issues, abnormal platelet counts, abnormal liver function, and developmental milestones.",
+        "pediatric": "FDA-labeled for adjunctive treatment of Dravet syndrome seizures in patients ≥6 months of age and weighing ≥7 kg (with clobazam). Psychiatric relevance in pediatrics is mainly side effects: sedation, agitation/aggression, sleep disruption, and appetite/weight impacts that can affect development and daily functioning.",
+        "geriatric": "Refer to adult dosing. Not applicable for this medication in typical practice, as Dravet syndrome is primarily pediatric-onset; if used in older patients, titrate cautiously due to sedation and interaction risk.",
+        "renal_impairment": "No manufacturer-provided dose adjustments (not studied). Use caution in mild impairment and titrate based on seizure control and tolerability; avoid use in moderate to severe renal impairment.",
+        "hepatic_impairment": "No manufacturer-provided dose adjustments (not studied). Use caution in mild impairment and titrate based on seizure control and tolerability; avoid use in moderate to severe hepatic impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2018
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed; extensive first-pass metabolism",
+          "bioavailability": "~30%",
+          "peak_plasma": "Median 2 to 3 hours",
+          "half_life": "Adults: ~4.5 to 13 hours (dose-dependent); pediatric half-life increases with body weight in modeling studies",
+          "metabolism": "Hepatic via demethylenation (CYP1A2, CYP2C19, CYP3A4) and glucuronidation",
+          "excretion": "Urine (~73% as metabolites); feces (~18% unchanged drug)",
+          "protein_binding": "~99%",
+          "food_effect": "Administer with meals/food; powder may produce slightly higher systemic exposure than capsules"
+        },
+        "dosing": {
+          "titration": "Diacomit dosing is weight-based and designed for seizure control in Dravet syndrome as adjunct therapy (not monotherapy). There are no psychiatric dosing indications for this medication."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stiripentol isn’t a psychiatric medication, but stopping it abruptly can still be dangerous—because seizure medications should generally be withdrawn gradually to avoid rebound seizure worsening and status epilepticus. If urgent safety concerns exist, the prescriber will weigh a faster change against seizure risk."
+        }
+      }
     }
   },
   "sections": [
@@ -92,7 +249,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This medication isn’t prescribed for mood or anxiety—but it can absolutely change how someone feels day to day. These are the psychiatry-relevant patterns people commonly report when sedation, sleep, appetite, and behavior shift on stiripentol-based regimens:",
       "items": [
         {
           "category": "Sedation / “Too sleepy”",
@@ -130,7 +286,8 @@
           ],
           "note": "Decreased appetite and weight loss are common and need proactive monitoring—especially in children. Dose adjustments of valproate may be considered in some regimens to help minimize appetite/weight loss."
         }
-      ]
+      ],
+      "intro": "This medication isn’t prescribed for mood or anxiety—but it can absolutely change how someone feels day to day. These are the psychiatry-relevant patterns people commonly report when sedation, sleep, appetite, and behavior shift on stiripentol-based regimens:"
     },
     {
       "type": "onset_duration",
@@ -146,10 +303,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Stiripentol isn’t used to treat psychiatric conditions like anxiety, panic, or insomnia. Its benefits are measured in seizure control for Dravet syndrome. From a psychiatry lens, the “efficacy” conversation is really about tolerability—how sedation, sleep disruption, appetite/weight loss, and behavioral changes impact quality of life and day-to-day functioning.",
       "metric": "Psychiatry-relevant symptom relief",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Stiripentol isn’t used to treat psychiatric conditions like anxiety, panic, or insomnia. Its benefits are measured in seizure control for Dravet syndrome. From a psychiatry lens, the “efficacy” conversation is really about tolerability—how sedation, sleep disruption, appetite/weight loss, and behavioral changes impact quality of life and day-to-day functioning.",
       "clinical_details": "Clinical trial experience is largely in patients receiving stiripentol alongside clobazam and valproic acid, and real-world regimens may require adjustment of those companion medications because stiripentol can increase exposure via enzyme inhibition. When psychiatric or behavioral side effects show up, the fix is often a regimen-level adjustment—not just blaming one medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -265,7 +422,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Stiripentol is an interaction-heavy medication. It inhibits multiple CYP enzymes and can raise levels of other drugs—especially relevant when the regimen includes clobazam (and often valproate). From a psychiatry perspective, interaction-driven over-sedation or behavior changes are the red flags.",
       "items": [
         {
           "with": "Clobazam",
@@ -287,7 +443,8 @@
           "risk": "Stiripentol inhibits CYP1A2 (moderate), CYP2C19 (moderate), and CYP3A4 (weak), which can raise levels of co-medications and increase side effects.",
           "action": "Do a full medication reconciliation and interaction review whenever starting, stopping, or changing stiripentol dose. Adjust companion drug doses as needed based on clinical response and side effects."
         }
-      ]
+      ],
+      "intro": "Stiripentol is an interaction-heavy medication. It inhibits multiple CYP enzymes and can raise levels of other drugs—especially relevant when the regimen includes clobazam (and often valproate). From a psychiatry perspective, interaction-driven over-sedation or behavior changes are the red flags."
     },
     {
       "type": "tapering",
@@ -354,21 +511,6 @@
       "text": "Diacomit is a specialized add-on medication for Dravet syndrome seizures, typically used in combination with clobazam (and often valproate internationally). From a psychiatry perspective, the key clinical issue is not “using it for mood,” but managing neurobehavioral and sleep side effects that can mimic or worsen psychiatric symptoms—especially when interaction effects push companion drug levels higher."
     }
   ],
-  "seo": {
-    "title": "Stiripentol (Diacomit): Uses, Side Effects, Interactions, and Monitoring",
-    "description": "Diacomit (stiripentol) is an adjunct seizure medication for Dravet syndrome used with clobazam (and often valproate internationally). Learn psychiatry-relevant effects like sedation, agitation, insomnia, appetite/weight loss, major drug interactions, and key monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/stiripentol-diacomit](https://www.heypsych.com/treatments/stiripentol-diacomit)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is Diacomit (stiripentol) a psychiatric medication?",
@@ -410,5 +552,20 @@
       "q": "Can I stop stiripentol suddenly if side effects are bad?",
       "a": "Don’t stop abruptly unless a clinician directs it for an urgent safety reason. Sudden discontinuation of antiseizure medications can increase seizure frequency and raise the risk of status epilepticus. If side effects feel severe, contact the prescriber quickly to adjust the plan safely."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Stiripentol (Diacomit): Uses, Side Effects, Interactions, and Monitoring",
+    "description": "Diacomit (stiripentol) is an adjunct seizure medication for Dravet syndrome used with clobazam (and often valproate internationally). Learn psychiatry-relevant effects like sedation, agitation, insomnia, appetite/weight loss, major drug interactions, and key monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/stiripentol-diacomit](https://www.heypsych.com/treatments/stiripentol-diacomit)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

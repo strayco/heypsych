@@ -1,21 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lion-mane-mushroom",
-  "type": "supplement",
-  "name": "Lion’s Mane Mushroom",
-  "summary": "Lion’s mane mushroom (*Hericium erinaceus*) is a medicinal mushroom studied for its potential neuroprotective, cognitive-enhancing, and mood-supporting effects.",
-  "description": "Lion’s mane mushroom is a culinary and medicinal mushroom traditionally used in East Asian medicine. Modern research has focused on its neurotrophic effects, particularly its ability to stimulate nerve growth factor (NGF) synthesis, which supports neuroplasticity and repair. Preclinical and early clinical studies suggest potential benefits for cognitive decline, anxiety, depression, and neuropathy. Active compounds include hericenones and erinacines, which may cross the blood-brain barrier and promote neurogenesis. While promising, large-scale clinical trials are still lacking, and lion’s mane is considered investigational for mental health indications.",
-  "category": "supplements",
-  "tags": [
-    "nootropic",
-    "cognitive support",
-    "neuroprotection",
-    "mood support",
-    "mushroom supplement"
-  ],
-  "metadata": {
-    "compound_type": "Medicinal mushroom extract",
-    "natural_source": "Lion’s mane mushroom (*Hericium erinaceus*)",
+  "identity": {
+    "slug": "lion-mane-mushroom",
+    "name": "Lion’s Mane Mushroom",
+    "brand_names": [
+      "Host Defense Lion’s Mane",
+      "Real Mushrooms Lion’s Mane",
+      "FreshCap Lion’s Mane"
+    ],
+    "aliases": [
+      "Hericium erinaceus",
+      "yamabushitake",
+      "hedgehog mushroom"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cognitive Support",
       "Neuroprotection",
@@ -27,73 +29,155 @@
       "Anti-inflammatory effects",
       "Antioxidant effects"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Host Defense Lion’s Mane",
-      "Real Mushrooms Lion’s Mane",
-      "FreshCap Lion’s Mane"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for cognitive or psychiatric conditions)",
-    "age_groups": [
-      "Adult",
-      "Older Adult"
-    ],
-    "treatment_duration": [
-      "Chronic supplementation"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Neurology",
-      "Psychiatry"
+    "tags": [
+      "nootropic",
+      "cognitive support",
+      "neuroprotection",
+      "mood support",
+      "mushroom supplement"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cognitive support",
-      "Memory enhancement",
-      "Neuroprotection"
-    ],
-    "off_label_uses": [
-      "Mild depression and anxiety",
-      "Peripheral neuropathy",
-      "Adjunctive support in neurodegenerative disorders"
-    ],
-    "contraindications": [
-      "Allergy to mushrooms",
-      "Use with caution in patients with bleeding disorders (theoretical risk)"
-    ],
-    "monitoring_required": [
-      "Cognitive performance",
-      "Mood and anxiety symptoms"
-    ],
-    "efficacy_rating": {
-      "cognition": 3,
-      "mood_support": 2,
-      "neuroprotection": 3
+  "summary": "Lion’s mane mushroom (*Hericium erinaceus*) is a medicinal mushroom studied for its potential neuroprotective, cognitive-enhancing, and mood-supporting effects.",
+  "description": "Lion’s mane mushroom is a culinary and medicinal mushroom traditionally used in East Asian medicine. Modern research has focused on its neurotrophic effects, particularly its ability to stimulate nerve growth factor (NGF) synthesis, which supports neuroplasticity and repair. Preclinical and early clinical studies suggest potential benefits for cognitive decline, anxiety, depression, and neuropathy. Active compounds include hericenones and erinacines, which may cross the blood-brain barrier and promote neurogenesis. While promising, large-scale clinical trials are still lacking, and lion’s mane is considered investigational for mental health indications.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "memory-enhancement",
+          "condition_name": "Memory enhancement",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neuroprotection",
+          "condition_name": "Neuroprotection",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "mild-depression-and-anxiety",
+          "condition_name": "Mild depression and anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "peripheral-neuropathy",
+          "condition_name": "Peripheral neuropathy",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-support-in-neurodegenerative-disorders",
+          "condition_name": "Adjunctive support in neurodegenerative disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cognition": {
+          "rating": 3
+        },
+        "mood_support": {
+          "rating": 2
+        },
+        "neuroprotection": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Chronic supplementation"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Gastrointestinal discomfort"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Skin rash (rare)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "None widely reported"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to mushrooms"
+        },
+        {
+          "contraindication": "Use with caution in patients with bleeding disorders (theoretical risk)"
+        }
+      ],
+      "precautions": [
+        "Not a substitute for prescription treatments for neurodegenerative disease",
+        "Safety in pregnancy and lactation unknown",
+        "May interact with immunomodulating therapies"
+      ],
+      "interactions": [
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "Possible immune modulation",
+          "action": "Use caution"
+        },
+        {
+          "interactant": "Anticoagulants",
+          "mechanism": "Theoretical increased bleeding risk",
+          "action": "Monitor closely"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cognitive function tests"
+        },
+        {
+          "parameter": "Mood symptom scales"
+        },
+        {
+          "parameter": "Adverse reactions"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not enough evidence; avoid unless medically supervised",
+        "lactation": "Insufficient safety data; not recommended",
+        "pediatric": "Not well studied; generally not recommended",
+        "geriatric": "May be particularly beneficial for mild cognitive impairment"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Medicinal mushroom extract",
+        "natural_source": "Lion’s mane mushroom (*Hericium erinaceus*)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for cognitive or psychiatric conditions)"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "lion’s mane mushroom supplement",
-      "Hericium erinaceus",
-      "lion mane mushroom brain health"
-    ],
-    "synonyms": [
-      "Hericium erinaceus",
-      "yamabushitake",
-      "hedgehog mushroom"
-    ],
-    "common_misspellings": [
-      "lionmane",
-      "lion's main",
-      "lions mane"
-    ]
   },
   "sections": [
     {
@@ -212,6 +296,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Mori et al., 2009 – Lion’s mane and mild cognitive impairment (RCT)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18844328/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Review: Neurohealth-promoting effects of Lion’s Mane",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32023528/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Examine.com – Lion’s Mane Mushroom",
+      "url": "https://examine.com/supplements/lions-mane-mushroom/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "lion’s mane mushroom supplement",
+      "Hericium erinaceus",
+      "lion mane mushroom brain health"
+    ],
+    "synonyms": [
+      "Hericium erinaceus",
+      "yamabushitake",
+      "hedgehog mushroom"
+    ],
+    "common_misspellings": [
+      "lionmane",
+      "lion's main",
+      "lions mane"
+    ]
+  },
   "seo": {
     "title": "Lion’s Mane Mushroom – Cognitive and Mood Support",
     "description": "Lion’s mane mushroom (*Hericium erinaceus*) is a medicinal mushroom studied for cognitive enhancement, neuroprotection, and mood support. Learn about benefits, dosage, mechanisms, and safety.",

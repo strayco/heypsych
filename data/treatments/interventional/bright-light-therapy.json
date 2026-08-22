@@ -1,88 +1,175 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bright-light-therapy",
-  "type": "interventional",
-  "name": "Bright Light Therapy",
-  "summary": "A non-invasive phototherapy technique that uses high-intensity, full-spectrum or white light to regulate circadian rhythms and treat mood disorders, especially seasonal affective disorder (SAD).",
-  "description": "Bright light therapy delivers controlled exposure to high-intensity light, typically between 2,500–10,000 lux, to influence circadian rhythms and improve mood. By stimulating intrinsically photosensitive retinal ganglion cells, light signals are transmitted to the brain’s suprachiasmatic nucleus (SCN), the body’s master clock, resulting in adjustments to melatonin and serotonin regulation.\n\nThis treatment is widely used for seasonal affective disorder, certain circadian rhythm sleep-wake disorders, and as an adjunct in non-seasonal depression. The therapy involves sitting near a specially designed light box each morning, usually during the fall and winter months, to simulate natural outdoor light exposure.\n\nBright light therapy is safe for most individuals when used as directed, though proper screening for ocular health and photosensitivity is recommended before starting treatment.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "light-therapy",
-    "SAD",
-    "depression",
-    "circadian-rhythm",
-    "sleep-disorders",
-    "phototherapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "bright-light-therapy",
+    "name": "Bright Light Therapy",
+    "wikidata_qid": "Q1334698"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Light Therapy",
       "Phototherapy"
     ],
-    "treatment_types": [
-      "Non-pharmacologic",
-      "Chronotherapy"
-    ],
-    "categories": [
-      "Mood Disorders",
-      "Sleep Medicine"
-    ],
-    "delivery_methods": [
-      "Light box",
-      "Desk-mounted light panel",
-      "Wearable light device"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "20–40 minutes daily",
-    "treatment_duration": [
-      "Short-term",
-      "Medium-term",
-      "Long-term maintenance"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep Medicine",
-      "Primary Care"
-    ],
-    "wikidata_qid": "Q1334698"
+    "tags": [
+      "light-therapy",
+      "SAD",
+      "depression",
+      "circadian-rhythm",
+      "sleep-disorders",
+      "phototherapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Seasonal affective disorder",
-      "Circadian rhythm sleep-wake disorders"
-    ],
-    "conditions_treated": [
-      "Seasonal affective disorder",
-      "Non-seasonal depression (adjunctive)",
-      "Delayed sleep phase syndrome",
-      "Shift-work disorder",
-      "Insomnia (circadian-related)"
-    ],
-    "off_label_uses": [
-      "Bipolar depression (with monitoring)",
-      "ADHD (adjunctive)",
-      "Dementia-related sleep disturbances"
-    ],
-    "contraindications": [
-      "Photosensitive epilepsy",
-      "Active ocular disease sensitive to light",
-      "Use of photosensitizing medications without precautions"
-    ],
-    "safety_profile": "Generally well tolerated; may cause mild headache, eye strain, or agitation early in treatment. Rarely, may trigger mania in susceptible individuals.",
-    "evidence_level": "Strong for SAD and delayed sleep phase disorder; moderate for non-seasonal depression; emerging for other indications.",
-    "research_support": "Multiple randomized controlled trials and meta-analyses support efficacy for SAD and circadian rhythm disorders; ongoing research for broader psychiatric and neurological applications.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "seasonal-affective-disorder": 5,
-      "delayed-sleep-phase-syndrome": 4,
-      "overall_tolerability": 5
+  "summary": "A non-invasive phototherapy technique that uses high-intensity, full-spectrum or white light to regulate circadian rhythms and treat mood disorders, especially seasonal affective disorder (SAD).",
+  "description": "Bright light therapy delivers controlled exposure to high-intensity light, typically between 2,500–10,000 lux, to influence circadian rhythms and improve mood. By stimulating intrinsically photosensitive retinal ganglion cells, light signals are transmitted to the brain’s suprachiasmatic nucleus (SCN), the body’s master clock, resulting in adjustments to melatonin and serotonin regulation.\n\nThis treatment is widely used for seasonal affective disorder, certain circadian rhythm sleep-wake disorders, and as an adjunct in non-seasonal depression. The therapy involves sitting near a specially designed light box each morning, usually during the fall and winter months, to simulate natural outdoor light exposure.\n\nBright light therapy is safe for most individuals when used as directed, though proper screening for ocular health and photosensitivity is recommended before starting treatment.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "seasonal-affective-disorder",
+          "condition_name": "Seasonal affective disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "circadian-rhythm-sleep-wake-disorders",
+          "condition_name": "Circadian rhythm sleep-wake disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "non-seasonal-depression-adjunctive",
+          "condition_name": "Non-seasonal depression (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "delayed-sleep-phase-syndrome",
+          "condition_name": "Delayed sleep phase syndrome",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "shift-work-disorder",
+          "condition_name": "Shift-work disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia-circadian-related",
+          "condition_name": "Insomnia (circadian-related)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-depression-with-monitoring",
+          "condition_name": "Bipolar depression (with monitoring)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adhd-adjunctive",
+          "condition_name": "ADHD (adjunctive)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "dementia-related-sleep-disturbances",
+          "condition_name": "Dementia-related sleep disturbances",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for SAD and delayed sleep phase disorder; moderate for non-seasonal depression; emerging for other indications.",
+      "efficacy_ratings": {
+        "seasonal-affective-disorder": {
+          "rating": 5
+        },
+        "delayed-sleep-phase-syndrome": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Multiple randomized controlled trials and meta-analyses support efficacy for SAD and circadian rhythm disorders; ongoing research for broader psychiatric and neurological applications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Medium-term; Long-term maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Light box",
+        "Desk-mounted light panel",
+        "Wearable light device"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–40 minutes daily"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well tolerated; may cause mild headache, eye strain, or agitation early in treatment. Rarely, may trigger mania in susceptible individuals.",
+      "common_adverse_effects": [
+        {
+          "effect": "Eye strain"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Mild agitation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypomania or mania in bipolar disorder"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Photosensitive epilepsy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe retinal disease",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Glaucoma",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Macular degeneration",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Bipolar disorder without mood stabilizer",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Considered safe; may help with perinatal depression."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light Therapy, Phototherapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Place the light device at the manufacturer-recommended distance (typically 30–60 cm).\nExpose eyes indirectly to light for the prescribed duration, usually in the morning.\nAvoid looking directly at the light source for prolonged periods."
+      }
     }
   },
   "sections": [
@@ -250,6 +337,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Lam RW, Levitt AJ, et al. Efficacy of light therapy for SAD: A meta-analysis. Am J Psychiatry. 2006;163(4):656-662.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16585449/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Terman M, et al. Light therapy for seasonal and nonseasonal depression: efficacy, protocol, safety, and side effects. CNS Spectr. 2005;10(8):647-663.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16041296/"
+    }
+  ],
   "seo": {
     "title": "Bright Light Therapy for Seasonal Affective Disorder and Sleep Disorders",
     "description": "Bright light therapy is a safe, effective treatment for seasonal affective disorder, delayed sleep phase, and other circadian-related mood disorders.",
@@ -262,5 +363,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for SAD and delayed sleep phase disorder; moderate for non-seasonal depression; emerging for other indications."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for SAD and delayed sleep phase disorder; moderate for non-seasonal depression; emerging for other indications."
+    ]
   }
 }

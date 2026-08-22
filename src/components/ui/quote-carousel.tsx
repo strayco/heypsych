@@ -62,12 +62,12 @@ export function QuoteCarousel({
   return (
     <div className="space-y-4">
       {intro && (
-        <p className="text-neutral-800 mb-4">
+        <p className="text-label-secondary mb-4">
           <ParsedContent content={intro} />
         </p>
       )}
 
-      <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 p-8 shadow-lg min-h-[200px] flex items-center">
+      <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-accent-border p-8 shadow-lg min-h-[200px] flex items-center">
         {/* Quote Icon */}
         <div className={`absolute top-6 left-6 ${colors.text} opacity-20`}>
           <MessageCircle className="h-12 w-12" strokeWidth={1.5} />
@@ -81,14 +81,14 @@ export function QuoteCarousel({
               className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 hover:bg-white shadow-md transition-all hover:scale-110"
               aria-label="Previous quote"
             >
-              <ChevronLeft className="h-5 w-5 text-blue-700" />
+              <ChevronLeft className="h-5 w-5 text-accent-700" />
             </button>
             <button
               onClick={goToNext}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 hover:bg-white shadow-md transition-all hover:scale-110"
               aria-label="Next quote"
             >
-              <ChevronRight className="h-5 w-5 text-blue-700" />
+              <ChevronRight className="h-5 w-5 text-accent-700" />
             </button>
           </>
         )}
@@ -104,11 +104,11 @@ export function QuoteCarousel({
               transition={{ duration: 0.5 }}
             >
               {currentQuote.category && (
-                <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">
+                <p className="text-sm font-semibold uppercase tracking-wide text-accent-700 mb-3">
                   {currentQuote.category}
                 </p>
               )}
-              <blockquote className="text-lg sm:text-xl text-neutral-800 italic leading-relaxed">
+              <blockquote className="text-lg sm:text-xl text-label-secondary italic leading-relaxed">
                 "{currentQuote.text}"
               </blockquote>
             </motion.div>
@@ -125,8 +125,8 @@ export function QuoteCarousel({
                 className={`
                   h-2 rounded-full transition-all
                   ${index === currentIndex
-                    ? 'w-8 bg-blue-600'
-                    : 'w-2 bg-blue-300 hover:bg-blue-400'
+                    ? 'w-8 bg-accent'
+                    : 'w-2 bg-accent-border hover:bg-accent'
                   }
                 `}
                 aria-label={`Go to quote ${index + 1}`}

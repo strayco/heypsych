@@ -41,8 +41,8 @@ const navigationItems = [
     icon: Brain,
     gradient: "from-blue-500 to-cyan-500",
     hoverGradient: "group-hover:from-blue-600 group-hover:to-cyan-600",
-    bgColor: "bg-blue-50",
-    iconColor: "text-blue-600",
+    bgColor: "bg-accent-tint",
+    iconColor: "text-accent",
     emoji: "🧠",
   },
   {
@@ -75,14 +75,14 @@ const navigationItems = [
 
 export function NavigationGrid() {
   return (
-    <section className="bg-gradient-to-br from-white via-slate-50 to-white px-4 py-4 sm:px-6 lg:px-8">
+    <section className="bg-canvas px-4 py-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:gap-8">
           {navigationItems.map((item) => {
             const IconComponent = item.icon;
             return (
               <Link key={item.href} href={item.href} className="group block">
-                <div className="relative h-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg transition-all duration-500 group-hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative h-full overflow-hidden rounded-2xl border border-separator bg-white shadow-lg transition-all duration-500 group-hover:-translate-y-1 hover:shadow-xl">
                   {/* Gradient overlay */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${item.gradient} ${item.hoverGradient} opacity-5 transition-opacity duration-500 group-hover:opacity-10`}
@@ -96,23 +96,23 @@ export function NavigationGrid() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="mb-1 flex items-center gap-2">
-                          <h3 className="text-xl font-bold text-neutral-900">
+                          <h3 className="text-xl font-bold text-label-primary">
                             {item.title}
                           </h3>
                           <span className="text-xl">{item.emoji}</span>
                         </div>
-                        <p className="text-lg font-semibold text-neutral-700">{item.stat}</p>
+                        <p className="text-lg font-semibold text-label-secondary">{item.stat}</p>
                       </div>
                     </div>
-                    <p className="text-base text-neutral-700 mb-4 flex-1">{item.description}</p>
-                    <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 group-hover:gap-3 transition-all">
+                    <p className="text-base text-label-secondary mb-4 flex-1">{item.description}</p>
+                    <div className="flex items-center gap-2 text-sm font-medium text-label-primary group-hover:gap-3 transition-all">
                       <span>{item.cta}</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
 
                   {/* Hover ring effect */}
-                  <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent transition-all duration-300 group-hover:ring-slate-200" />
+                  <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent transition-all duration-300 group-hover:ring-separator-opaque" />
                 </div>
               </Link>
             );

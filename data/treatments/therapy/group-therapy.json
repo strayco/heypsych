@@ -1,97 +1,204 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "group-therapy",
-  "type": "therapy",
-  "name": "Group Therapy",
-  "summary": "A therapeutic approach where individuals work on personal challenges within a supportive group setting guided by a trained therapist.",
-  "description": "Group therapy involves one or more therapists working with several people at the same time. It provides a safe, structured environment for individuals to share experiences, gain support, and practice new behaviors. The group dynamic fosters learning from others’ perspectives, reduces isolation, and builds interpersonal skills. Sessions may be structured (e.g., skills training) or process-oriented (e.g., exploring emotions and interactions). Groups can be tailored to specific concerns, such as depression, trauma, addiction, or social skills.",
-  "category": "therapy/group-therapy",
-  "tags": [
-    "group-therapy",
-    "interpersonal",
-    "supportive",
-    "psychotherapy",
-    "skills-training"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "group-therapy",
+    "name": "Group Therapy",
+    "wikidata_qid": "Q1547235"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/group-therapy",
     "intervention_types": [
       "Psychotherapy",
       "Skills training",
       "Support groups"
     ],
-    "treatment_types": [
-      "Talk therapy",
-      "Interpersonal therapy"
-    ],
-    "categories": [
-      "Group therapy",
-      "Psychotherapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Online"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "60–120 minutes",
-    "treatment_duration": [
-      "8–12 sessions (short-term)",
-      "Ongoing (long-term groups)"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Anxiety",
-      "Addiction recovery",
-      "Trauma",
-      "Interpersonal skills"
-    ],
-    "wikidata_qid": "Q1547235"
+    "tags": [
+      "group-therapy",
+      "interpersonal",
+      "supportive",
+      "psychotherapy",
+      "skills-training"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression",
-      "Anxiety disorders",
-      "Addiction and recovery support",
-      "Post-traumatic stress disorder",
-      "Interpersonal difficulties"
-    ],
-    "conditions_treated": [
-      "Mood disorders",
-      "Trauma-related disorders",
-      "Substance use disorders",
-      "Social skill deficits",
-      "Grief and loss"
-    ],
-    "off_label_uses": [
-      "Chronic illness coping",
-      "Stress management",
-      "Workplace support groups"
-    ],
-    "contraindications": [
-      "Severe psychosis",
-      "High suicide risk without stabilization",
-      "Severe antisocial behavior that disrupts group safety"
-    ],
-    "safety_profile": "Safe and supportive when facilitated by trained therapists; potential for emotional discomfort.",
-    "evidence_level": "Strong—supported by extensive clinical and research evidence across multiple conditions.",
-    "research_support": "Research demonstrates effectiveness for depression, anxiety, trauma, and addiction recovery.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 4,
-      "anxiety": 4,
-      "trauma": 4,
-      "addiction": 4,
-      "social-skills": 5,
-      "overall_tolerability": 5
+  "summary": "A therapeutic approach where individuals work on personal challenges within a supportive group setting guided by a trained therapist.",
+  "description": "Group therapy involves one or more therapists working with several people at the same time. It provides a safe, structured environment for individuals to share experiences, gain support, and practice new behaviors. The group dynamic fosters learning from others’ perspectives, reduces isolation, and builds interpersonal skills. Sessions may be structured (e.g., skills training) or process-oriented (e.g., exploring emotions and interactions). Groups can be tailored to specific concerns, such as depression, trauma, addiction, or social skills.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "addiction-and-recovery-support",
+          "condition_name": "Addiction and recovery support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "interpersonal-difficulties",
+          "condition_name": "Interpersonal difficulties",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "mood-disorders",
+          "condition_name": "Mood disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-disorders",
+          "condition_name": "Trauma-related disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "social-skill-deficits",
+          "condition_name": "Social skill deficits",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "grief-and-loss",
+          "condition_name": "Grief and loss",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-illness-coping",
+          "condition_name": "Chronic illness coping",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "stress-management",
+          "condition_name": "Stress management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "workplace-support-groups",
+          "condition_name": "Workplace support groups",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—supported by extensive clinical and research evidence across multiple conditions.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "trauma": {
+          "rating": 4
+        },
+        "addiction": {
+          "rating": 4
+        },
+        "social-skills": {
+          "rating": 5
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Research demonstrates effectiveness for depression, anxiety, trauma, and addiction recovery."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–12 sessions (short-term); Ongoing (long-term groups)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Online"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–120 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and supportive when facilitated by trained therapists; potential for emotional discomfort.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when sharing personal issues"
+        },
+        {
+          "effect": "Group anxiety"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Re-traumatization if not well facilitated"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Active suicidal crisis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Disruptive antisocial traits",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unwillingness to engage in group setting",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Talk therapy, Interpersonal therapy",
+        "key_techniques": [
+          "Group therapy",
+          "Psychotherapy"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in or mindfulness exercise.",
+          "during_session": "Group discussion, skill practice, role-play, or processing of interpersonal dynamics.",
+          "post_session": "Reflection, feedback, and assignment of practice activities."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed mental health professionals trained in group therapy facilitation"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -251,6 +358,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Yalom, I. D., & Leszcz, M. (2020). The Theory and Practice of Group Psychotherapy.",
+      "url": "https://www.worldcat.org/title/the-theory-and-practice-of-group-psychotherapy/oclc/1151956373"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "American Psychological Association – Group Therapy",
+      "url": "https://www.apa.org/ptsd-guideline/treatments/group"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Burlingame, G. M., et al. (2013). Effectiveness of group therapy across conditions: A meta-analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23357096/"
+    }
+  ],
   "seo": {
     "title": "Group Therapy | Evidence-Based Supportive Psychotherapy",
     "description": "Group therapy provides peer support, skill building, and therapist-guided sessions for depression, anxiety, trauma, and more.",
@@ -263,5 +390,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—supported by extensive clinical and research evidence across multiple conditions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—supported by extensive clinical and research evidence across multiple conditions."
+    ]
   }
 }

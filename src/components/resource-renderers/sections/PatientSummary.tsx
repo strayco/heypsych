@@ -9,15 +9,15 @@ interface PatientSummaryProps {
 
 export function PatientSummary({ text }: PatientSummaryProps) {
   return (
-    <Card className="border-blue-200 bg-blue-50">
+    <Card className="border-accent-border bg-accent-tint">
       <CardContent className="pt-6">
         <div className="flex gap-4">
           <div className="flex-shrink-0">
-            <Info className="h-6 w-6 text-blue-600" />
+            <Info className="h-6 w-6 text-accent" />
           </div>
           <div>
-            <h3 className="mb-2 font-semibold text-blue-900">In Plain Terms</h3>
-            <p className="text-sm leading-relaxed text-blue-800">{text}</p>
+            <h3 className="mb-2 font-semibold text-accent-700">In Plain Terms</h3>
+            <p className="text-sm leading-relaxed text-accent-700">{text}</p>
           </div>
         </div>
       </CardContent>

@@ -18,7 +18,7 @@ interface ConditionBreadcrumbsProps {
  *
  * Pattern: Home > Conditions > {Category} > {Condition}
  *
- * Styling: Subtle (small type, muted color) matching Apple aesthetic
+ * Styling: Subtle (small type, muted color) matching graphite dark mode
  *
  * Examples:
  * - Home > Conditions > ADHD & Learning Disorders > Attention-Deficit/Hyperactivity Disorder
@@ -32,23 +32,23 @@ export function ConditionBreadcrumbs({
 }: ConditionBreadcrumbsProps) {
   return (
     <nav
-      className={cn("flex items-center gap-2 text-sm text-slate-600", className)}
+      className={cn("flex items-center gap-2 text-sm text-label-tertiary", className)}
       aria-label="Breadcrumb"
     >
       {/* Home */}
       <Link
         href="/"
-        className="transition-colors hover:text-slate-900"
+        className="transition-colors hover:text-label-secondary"
       >
         Home
       </Link>
 
-      <ChevronRight className="h-4 w-4 text-slate-400" />
+      <ChevronRight className="h-4 w-4 text-label-quaternary" />
 
       {/* Conditions */}
       <Link
         href="/conditions"
-        className="transition-colors hover:text-slate-900"
+        className="transition-colors hover:text-label-secondary"
       >
         Conditions
       </Link>
@@ -56,16 +56,16 @@ export function ConditionBreadcrumbs({
       {/* Category (if provided) */}
       {category && (
         <>
-          <ChevronRight className="h-4 w-4 text-slate-400" />
+          <ChevronRight className="h-4 w-4 text-label-quaternary" />
           {conditionName ? (
             <Link
               href={category.href}
-              className="transition-colors hover:text-slate-900"
+              className="transition-colors hover:text-label-secondary"
             >
               {category.displayTitle}
             </Link>
           ) : (
-            <span className="font-medium text-slate-900">{category.displayTitle}</span>
+            <span className="font-medium text-label-primary">{category.displayTitle}</span>
           )}
         </>
       )}
@@ -73,8 +73,8 @@ export function ConditionBreadcrumbs({
       {/* Condition Name (if provided) */}
       {conditionName && (
         <>
-          <ChevronRight className="h-4 w-4 text-slate-400" />
-          <span className="font-medium text-slate-900">{conditionName}</span>
+          <ChevronRight className="h-4 w-4 text-label-quaternary" />
+          <span className="font-medium text-label-primary">{conditionName}</span>
         </>
       )}
     </nav>

@@ -1,87 +1,180 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "person-centered-therapy",
-  "type": "therapy",
-  "name": "Person-Centered Therapy (PCT)",
-  "summary": "Person-Centered Therapy (PCT), developed by Carl Rogers, is a humanistic, non-directive form of talk therapy that emphasizes empathy, unconditional positive regard, and authenticity to help clients achieve personal growth and self-actualization.",
-  "description": "Person-Centered Therapy (PCT), also known as Client-Centered or Rogerian Therapy, is a humanistic therapeutic approach that focuses on creating a supportive and nonjudgmental environment where clients can explore their feelings, experiences, and values. Developed by Carl Rogers, PCT is grounded in the belief that individuals have an innate tendency toward growth and self-actualization when provided with the right conditions: empathy, unconditional positive regard, and genuineness from the therapist. Unlike more directive therapies, PCT avoids giving advice or interpretation, instead emphasizing the therapeutic relationship as the primary driver of change.",
-  "category": "therapy/humanistic",
-  "tags": [
-    "talk therapy",
-    "humanistic therapy",
-    "counseling",
-    "self-growth",
-    "non-directive therapy"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Individual therapy",
-      "Group therapy"
-    ],
-    "categories": [
-      "Humanistic therapy",
-      "Talk therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Group-based"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Adolescents (13–17 years)",
-      "Adults (18+)",
-      "Older adults"
-    ],
-    "session_duration": "45–60 minutes",
-    "treatment_duration": [
-      "Open-ended, depending on client needs"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Anxiety",
-      "Adjustment issues",
-      "Self-esteem",
-      "Personal growth"
+  "identity": {
+    "slug": "person-centered-therapy",
+    "name": "Person-Centered Therapy (PCT)",
+    "generic_name": "person-centered therapy",
+    "brand_names": [
+      "PCT"
     ],
     "wikidata_qid": "Q1338823"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression",
-      "Anxiety",
-      "Adjustment disorders",
-      "Low self-esteem",
-      "Relationship issues"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/humanistic",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "conditions_treated": [
-      "Mood disorders",
-      "Stress and life transitions",
-      "Grief and loss",
-      "Identity and self-concept issues"
-    ],
-    "off_label_uses": [
-      "Enhancing self-actualization",
-      "Facilitating spiritual or existential growth"
-    ],
-    "contraindications": [
-      "Individuals needing highly structured, directive approaches",
-      "Severe mental illness requiring crisis intervention or medication management"
-    ],
-    "safety_profile": "Safe, non-invasive, with minimal risks. Some clients may experience emotional discomfort as they explore painful experiences.",
-    "evidence_level": "Moderate—supported by clinical research and qualitative studies.",
-    "research_support": "Effective for a broad range of psychological issues, though less structured than evidence-based therapies such as CBT.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 4,
-      "anxiety": 4,
-      "self-esteem": 5,
-      "relationship-issues": 4
+    "tags": [
+      "talk therapy",
+      "humanistic therapy",
+      "counseling",
+      "self-growth",
+      "non-directive therapy"
+    ]
+  },
+  "summary": "Person-Centered Therapy (PCT), developed by Carl Rogers, is a humanistic, non-directive form of talk therapy that emphasizes empathy, unconditional positive regard, and authenticity to help clients achieve personal growth and self-actualization.",
+  "description": "Person-Centered Therapy (PCT), also known as Client-Centered or Rogerian Therapy, is a humanistic therapeutic approach that focuses on creating a supportive and nonjudgmental environment where clients can explore their feelings, experiences, and values. Developed by Carl Rogers, PCT is grounded in the belief that individuals have an innate tendency toward growth and self-actualization when provided with the right conditions: empathy, unconditional positive regard, and genuineness from the therapist. Unlike more directive therapies, PCT avoids giving advice or interpretation, instead emphasizing the therapeutic relationship as the primary driver of change.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "low-self-esteem",
+          "condition_name": "Low self-esteem",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "relationship-issues",
+          "condition_name": "Relationship issues",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "mood-disorders",
+          "condition_name": "Mood disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "stress-and-life-transitions",
+          "condition_name": "Stress and life transitions",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "grief-and-loss",
+          "condition_name": "Grief and loss",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "identity-and-self-concept-issues",
+          "condition_name": "Identity and self-concept issues",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "enhancing-self-actualization",
+          "condition_name": "Enhancing self-actualization",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "facilitating-spiritual-or-existential-growth",
+          "condition_name": "Facilitating spiritual or existential growth",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—supported by clinical research and qualitative studies.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "self-esteem": {
+          "rating": 5
+        },
+        "relationship-issues": {
+          "rating": 4
+        }
+      },
+      "research_support": "Effective for a broad range of psychological issues, though less structured than evidence-based therapies such as CBT."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Open-ended, depending on client needs"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Group-based"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, non-invasive, with minimal risks. Some clients may experience emotional discomfort as they explore painful experiences.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when discussing sensitive topics"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Prolonged distress if unresolved trauma surfaces without additional support"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active suicidal ideation requiring crisis intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Clients who prefer structured, skills-based approaches such as CBT or DBT",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual therapy, Group therapy",
+        "key_techniques": [
+          "Humanistic therapy",
+          "Talk therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Client may reflect on recent experiences or issues they wish to discuss.",
+          "during_session": "Dialogue focused on exploring thoughts, feelings, and self-perception, guided by therapist empathy and validation.",
+          "post_session": "Ongoing reflection and integration of insights into daily life."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in humanistic and person-centered approaches"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -223,6 +316,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Rogers, C. R. (1951). Client-Centered Therapy: Its Current Practice, Implications, and Theory.",
+      "url": "https://psycnet.apa.org/record/1951-05936-000"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Elliott, R., Greenberg, L. S., & Lietaer, G. (2004). Research on experiential psychotherapies. In M. J. Lambert (Ed.), Bergin and Garfield’s Handbook of Psychotherapy and Behavior Change.",
+      "url": "https://psycnet.apa.org/record/2004-17324-005"
+    }
+  ],
   "seo": {
     "title": "Person-Centered Therapy (PCT) | Humanistic, Client-Centered Counseling",
     "description": "Person-Centered Therapy (PCT) helps individuals grow through empathy, unconditional positive regard, and authenticity in a supportive therapeutic relationship.",
@@ -235,5 +342,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—supported by clinical research and qualitative studies."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—supported by clinical research and qualitative studies."
+    ]
   }
 }

@@ -49,9 +49,13 @@ import {
 import { ConditionBreadcrumbs } from "@/components/conditions/ConditionBreadcrumbs";
 import { MedicationsList } from "@/components/conditions/MedicationsList";
 import { getCategoryBySlug } from "@/lib/config/condition-categories";
+import { NextStepsSection } from "@/components/navigation";
+import type { NextStep } from "@/domains/navigation/types";
 
 interface ConditionClientWrapperProps {
   entity: Entity;
+  /** Optional next steps for contextual navigation (Navigation V1) */
+  nextSteps?: NextStep[];
 }
 
 // Tile configuration from JSON
@@ -247,7 +251,7 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
   return str || fallback;
 };
 
-export default function ConditionClientWrapper({ entity }: ConditionClientWrapperProps) {
+export default function ConditionClientWrapper({ entity, nextSteps }: ConditionClientWrapperProps) {
   const [expandedTiles, setExpandedTiles] = useState<Record<string, boolean>>({});
   const [activeTile, setActiveTile] = useState<string | null>(null);
   const detailPanelRef = useRef<HTMLDivElement>(null);
@@ -300,17 +304,17 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
     if (!obj || typeof obj !== 'object') return null;
 
     return (
-      <div className={depth > 0 ? "pl-3 border-l-2 border-neutral-100" : ""}>
+      <div className={depth > 0 ? "pl-3 border-l-2 border-separator" : ""}>
         {Object.entries(obj).map(([key, value]) => {
           // Skip internal/meta fields
           if (['id', 'nav', 'deep_link', 'content_refs'].includes(key)) return null;
 
           return (
             <div key={key} className="mb-3">
-              <h5 className="text-sm font-medium text-neutral-700 capitalize mb-1">
+              <h5 className="text-sm font-medium text-label-secondary capitalize mb-1">
                 {formatTitle(key)}
               </h5>
-              <div className="text-sm text-neutral-800">
+              <div className="text-sm text-label-secondary">
                 {renderAnyValue(value, depth + 1)}
               </div>
             </div>
@@ -324,7 +328,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
   const renderAnyValue = (value: any, depth = 0): React.ReactNode => {
     // Null/undefined
     if (value === null || value === undefined) {
-      return <span className="text-neutral-400 italic">Not available</span>;
+      return <span className="text-label-primary0 italic">Not available</span>;
     }
 
     // Primitives
@@ -332,21 +336,21 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
       // Check if it's a quote
       if (value.startsWith('"') && value.endsWith('"')) {
         return (
-          <blockquote className="border-l-4 border-blue-300 pl-3 py-1 bg-blue-50 rounded-r text-neutral-700 italic">
+          <blockquote className="border-l-4 border-accent-border pl-3 py-1 bg-accent-tint rounded-r text-label-secondary italic">
             {value}
           </blockquote>
         );
       }
-      return <ParsedContent content={value} className="text-neutral-800" />;
+      return <ParsedContent content={value} className="text-label-secondary" />;
     }
 
     if (typeof value === 'number' || typeof value === 'boolean') {
-      return <span>{String(value)}</span>;
+      return <span className="text-label-secondary">{String(value)}</span>;
     }
 
     // Arrays
     if (Array.isArray(value)) {
-      if (value.length === 0) return <span className="text-neutral-400 italic">None</span>;
+      if (value.length === 0) return <span className="text-label-primary0 italic">None</span>;
 
       const firstItem = value[0];
 
@@ -357,7 +361,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           return (
             <div className="space-y-2">
               {value.map((item, i) => (
-                <blockquote key={i} className="border-l-4 border-blue-300 pl-3 py-1 bg-blue-50 rounded-r text-sm text-neutral-700 italic">
+                <blockquote key={i} className="border-l-4 border-accent-border pl-3 py-1 bg-accent-tint rounded-r text-sm text-label-secondary italic">
                   {item}
                 </blockquote>
               ))}
@@ -369,8 +373,8 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           <ul className="space-y-1">
             {value.map((item, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
-                <ParsedContent content={String(item)} />
+                <span className="h-1.5 w-1.5 bg-label-quaternary rounded-full mt-1.5 shrink-0" />
+                <ParsedContent content={String(item)} className="text-label-secondary" />
               </li>
             ))}
           </ul>
@@ -384,9 +388,9 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           return (
             <div className="space-y-3">
               {value.map((item, i) => (
-                <div key={i} className="rounded-lg border border-neutral-200 bg-white p-4">
-                  <h5 className="font-semibold text-neutral-900 mb-2">{item.question || item.q}</h5>
-                  <p className="text-sm text-neutral-700">{item.answer || item.a}</p>
+                <div key={i} className="rounded-lg border border-separator bg-surface-grouped p-4">
+                  <h5 className="font-semibold text-label-primary mb-2">{item.question || item.q}</h5>
+                  <p className="text-sm text-label-secondary">{item.answer || item.a}</p>
                 </div>
               ))}
             </div>
@@ -398,7 +402,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           return (
             <div className="space-y-3">
               {value.map((item, i) => (
-                <div key={i} className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+                <div key={i} className="rounded-lg border border-separator bg-surface-grouped/50 p-4">
                   {(item.age_group || item.demographic) && (
                     <div className="flex gap-2 mb-2">
                       {item.age_group && (
@@ -413,7 +417,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                       )}
                     </div>
                   )}
-                  <p className="text-sm text-neutral-700 italic">&ldquo;{item.story}&rdquo;</p>
+                  <p className="text-sm text-label-secondary italic">&ldquo;{item.story}&rdquo;</p>
                 </div>
               ))}
             </div>
@@ -426,14 +430,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
             <ul className="space-y-2">
               {value.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
+                  <span className="h-1.5 w-1.5 bg-label-quaternary rounded-full mt-1.5 shrink-0" />
                   <div>
-                    <span className="font-medium text-neutral-900">{item.name}</span>
+                    <span className="font-medium text-label-primary">{item.name}</span>
                     {item.description && (
-                      <p className="text-sm text-neutral-600 mt-0.5">{item.description}</p>
+                      <p className="text-sm text-label-tertiary mt-0.5">{item.description}</p>
                     )}
                     {item.dsm5_code && (
-                      <span className="text-xs bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded ml-2">
+                      <span className="text-xs bg-accent-tint text-accent-700 px-1.5 py-0.5 rounded ml-2">
                         DSM-5: {item.dsm5_code}
                       </span>
                     )}
@@ -453,14 +457,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 const isStoryExpanded = expandedTiles[storyId] || false;
 
                 return (
-                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
-                      <h6 className="font-semibold text-neutral-900">{item.title}</h6>
+                      <h6 className="font-semibold text-label-primary">{item.title}</h6>
                       <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-neutral-400" />
+                        <ChevronDown className="h-5 w-5 text-label-primary0" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
@@ -471,35 +475,35 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-4 pb-4 space-y-3 border-t border-neutral-100">
+                          <div className="px-4 pb-4 space-y-3 border-t border-separator">
                             {item.baseline && (
                               <div className="pt-3">
-                                <h6 className="text-xs font-medium text-neutral-500 uppercase tracking-wide mb-1">Background</h6>
-                                <p className="text-sm text-neutral-700">{item.baseline}</p>
+                                <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Background</h6>
+                                <p className="text-sm text-label-secondary">{item.baseline}</p>
                               </div>
                             )}
                             {item.first_change && (
                               <div>
-                                <h6 className="text-xs font-medium text-orange-600 uppercase tracking-wide mb-1">First Signs</h6>
-                                <p className="text-sm text-neutral-700">{item.first_change}</p>
+                                <h6 className="text-xs font-medium text-caution uppercase tracking-wide mb-1">First Signs</h6>
+                                <p className="text-sm text-label-secondary">{item.first_change}</p>
                               </div>
                             )}
                             {item.behaviors && (
                               <div>
-                                <h6 className="text-xs font-medium text-red-600 uppercase tracking-wide mb-1">Behaviors</h6>
-                                <p className="text-sm text-neutral-700">{item.behaviors}</p>
+                                <h6 className="text-xs font-medium text-negative uppercase tracking-wide mb-1">Behaviors</h6>
+                                <p className="text-sm text-label-secondary">{item.behaviors}</p>
                               </div>
                             )}
                             {item.consequences && (
                               <div>
-                                <h6 className="text-xs font-medium text-purple-600 uppercase tracking-wide mb-1">Impact</h6>
-                                <p className="text-sm text-neutral-700">{item.consequences}</p>
+                                <h6 className="text-xs font-medium text-accent uppercase tracking-wide mb-1">Impact</h6>
+                                <p className="text-sm text-label-secondary">{item.consequences}</p>
                               </div>
                             )}
                             {item.aftermath && (
                               <div>
-                                <h6 className="text-xs font-medium text-green-600 uppercase tracking-wide mb-1">Resolution</h6>
-                                <p className="text-sm text-neutral-700">{item.aftermath}</p>
+                                <h6 className="text-xs font-medium text-positive-600 uppercase tracking-wide mb-1">Resolution</h6>
+                                <p className="text-sm text-label-secondary">{item.aftermath}</p>
                               </div>
                             )}
                           </div>
@@ -524,14 +528,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 const preview = item.person.length > 150 ? item.person.substring(0, 150) + "..." : item.person;
 
                 return (
-                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
-                      <p className="text-sm text-neutral-700 line-clamp-2 pr-4">{preview}</p>
+                      <p className="text-sm text-label-secondary line-clamp-2 pr-4">{preview}</p>
                       <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-neutral-400 shrink-0" />
+                        <ChevronDown className="h-5 w-5 text-label-primary0 shrink-0" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
@@ -542,8 +546,8 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-4 pb-4 border-t border-neutral-100 pt-3">
-                            <p className="text-sm text-neutral-700 leading-relaxed">{item.person}</p>
+                          <div className="px-4 pb-4 border-t border-separator pt-3">
+                            <p className="text-sm text-label-secondary leading-relaxed">{item.person}</p>
                           </div>
                         </motion.div>
                       )}
@@ -564,14 +568,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 const isStoryExpanded = expandedTiles[storyId] || false;
 
                 return (
-                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
-                      <h6 className="font-semibold text-neutral-900">{item.title}</h6>
+                      <h6 className="font-semibold text-label-primary">{item.title}</h6>
                       <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-neutral-400" />
+                        <ChevronDown className="h-5 w-5 text-label-primary0" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
@@ -582,14 +586,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-4 pb-4 space-y-3 border-t border-neutral-100">
+                          <div className="px-4 pb-4 space-y-3 border-t border-separator">
                             <div className="pt-3">
-                              <p className="text-sm text-neutral-700 leading-relaxed">{item.scenario}</p>
+                              <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
                             </div>
                             {item.clinical_note && (
-                              <div className="bg-indigo-50 rounded-lg p-3 border-l-4 border-indigo-400">
-                                <h6 className="text-xs font-medium text-indigo-700 uppercase tracking-wide mb-1">Clinical Note</h6>
-                                <p className="text-sm text-indigo-900">{item.clinical_note}</p>
+                              <div className="bg-accent-tint rounded-lg p-3 border-l-4 border-accent-border">
+                                <h6 className="text-xs font-medium text-accent uppercase tracking-wide mb-1">Clinical Note</h6>
+                                <p className="text-sm text-accent-700">{item.clinical_note}</p>
                               </div>
                             )}
                           </div>
@@ -613,14 +617,14 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 const preview = item.scenario.length > 120 ? item.scenario.substring(0, 120) + "..." : item.scenario;
 
                 return (
-                  <div key={i} className="rounded-lg border border-neutral-200 bg-white overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
-                      className="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 transition-colors"
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
-                      <p className="text-sm text-neutral-700 line-clamp-2 pr-4">{preview}</p>
+                      <p className="text-sm text-label-secondary line-clamp-2 pr-4">{preview}</p>
                       <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-neutral-400 shrink-0" />
+                        <ChevronDown className="h-5 w-5 text-label-primary0 shrink-0" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
@@ -631,8 +635,8 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-4 pb-4 border-t border-neutral-100 pt-3">
-                            <p className="text-sm text-neutral-700 leading-relaxed">{item.scenario}</p>
+                          <div className="px-4 pb-4 border-t border-separator pt-3">
+                            <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
                           </div>
                         </motion.div>
                       )}
@@ -649,10 +653,10 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           return (
             <div className="space-y-3">
               {value.map((item, i) => (
-                <div key={i} className="p-3 bg-neutral-50 rounded-lg">
-                  <h6 className="font-medium text-neutral-900">{item.title}</h6>
-                  {item.description && <p className="text-sm text-neutral-600 mt-1">{item.description}</p>}
-                  {item.teaser && <p className="text-sm text-neutral-600 mt-1">{item.teaser}</p>}
+                <div key={i} className="p-3 bg-surface-grouped/50 rounded-lg">
+                  <h6 className="font-medium text-label-primary">{item.title}</h6>
+                  {item.description && <p className="text-sm text-label-tertiary mt-1">{item.description}</p>}
+                  {item.teaser && <p className="text-sm text-label-tertiary mt-1">{item.teaser}</p>}
                 </div>
               ))}
             </div>
@@ -663,7 +667,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
         return (
           <div className="space-y-3">
             {value.map((item, i) => (
-              <div key={i} className="p-3 bg-neutral-50 rounded-lg">
+              <div key={i} className="p-3 bg-surface-grouped/50 rounded-lg">
                 {renderObject(item, depth)}
               </div>
             ))}
@@ -676,8 +680,8 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
         <ul className="space-y-1">
           {value.map((item, i) => (
             <li key={i} className="flex items-start gap-2">
-              <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" />
-              <span>{String(item)}</span>
+              <span className="h-1.5 w-1.5 bg-label-quaternary rounded-full mt-1.5 shrink-0" />
+              <span className="text-label-secondary">{String(item)}</span>
             </li>
           ))}
         </ul>
@@ -690,12 +694,12 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
       if (value.overview) {
         return (
           <div className="space-y-3">
-            <p className="text-neutral-800">{value.overview}</p>
+            <p className="text-label-secondary">{value.overview}</p>
             {Object.entries(value).map(([k, v]) => {
               if (k === 'overview') return null;
               return (
                 <div key={k}>
-                  <h5 className="text-sm font-medium text-neutral-700 capitalize mb-1">{formatTitle(k)}</h5>
+                  <h5 className="text-sm font-medium text-label-secondary capitalize mb-1">{formatTitle(k)}</h5>
                   {renderAnyValue(v, depth + 1)}
                 </div>
               );
@@ -709,7 +713,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
     }
 
     // Fallback
-    return <span>{String(value)}</span>;
+    return <span className="text-label-secondary">{String(value)}</span>;
   };
 
   // Render content from a single reference - now using universal renderer
@@ -749,21 +753,24 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
           className="h-full"
         >
           <Card
-            className={`h-full transition-all ${hasContent ? "cursor-pointer hover:shadow-lg hover:scale-[1.02] hover:border-blue-300" : ""}`}
+            className={`h-full transition-all ${hasContent ? "cursor-pointer hover:shadow-card-2 hover:scale-[1.02] active:scale-[0.98] border-2 border-transparent hover:border-accent-border" : "opacity-75"}`}
             onClick={hasContent ? () => setActiveTile(activeTile === tile.id ? null : tile.id) : undefined}
           >
             <CardHeader className="pb-2">
-              <div className="flex items-center gap-3 mb-2">
-                <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+              <div className="flex items-center justify-between mb-2">
+                <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
                   {icon}
                 </div>
+                {hasContent && (
+                  <ChevronRight className="h-5 w-5 text-label-primary0" />
+                )}
               </div>
-              <CardTitle className="text-base font-semibold text-neutral-900 leading-tight">
+              <CardTitle className="text-base font-semibold text-label-primary leading-tight">
                 {tile.title}
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
-              <p className="text-sm text-neutral-600 line-clamp-3">{tileDescription}</p>
+              <p className="text-sm text-label-secondary line-clamp-3">{tileDescription}</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -783,23 +790,23 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
       >
         <Card className="overflow-hidden">
           <CardHeader
-            className="cursor-pointer transition-colors hover:bg-neutral-50"
+            className="cursor-pointer transition-colors hover:bg-fill-quaternary"
             onClick={() => toggleTile(tile.id)}
           >
             <CardTitle className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+                <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
                   {icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900">{tile.title}</h3>
+                  <h3 className="text-lg font-semibold text-label-primary">{tile.title}</h3>
                   {!isExpanded && (
-                    <p className="text-sm text-neutral-600 font-normal mt-0.5">{tile.teaser}</p>
+                    <p className="text-sm text-label-tertiary font-normal mt-0.5">{tile.teaser}</p>
                   )}
                 </div>
               </div>
               <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown className="h-5 w-5 text-neutral-400" />
+                <ChevronDown className="h-5 w-5 text-label-primary0" />
               </motion.div>
             </CardTitle>
           </CardHeader>
@@ -813,7 +820,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
               >
                 <CardContent className="pt-0 space-y-6">
                   {resolvedContent.map(({ ref, data }, idx) => (
-                    <div key={ref} className={idx > 0 ? "pt-4 border-t border-neutral-100" : ""}>
+                    <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
                       {renderContentRef(data, ref)}
                     </div>
                   ))}
@@ -852,16 +859,16 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
         >
           <Card>
             <CardHeader
-              className="cursor-pointer transition-colors hover:bg-neutral-50"
+              className="cursor-pointer transition-colors hover:bg-fill-quaternary"
               onClick={() => toggleTile(fieldName)}
             >
               <CardTitle className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-neutral-900">
+                <div className="flex items-center gap-2 text-label-primary">
                   {icon}
                   {formatTitle(fieldName)}
                 </div>
                 <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown className="h-5 w-5 text-neutral-600" />
+                  <ChevronDown className="h-5 w-5 text-label-tertiary" />
                 </motion.div>
               </CardTitle>
             </CardHeader>
@@ -893,7 +900,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
     descriptionText?.toLowerCase().includes('suicide');
 
   return (
-    <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
+    <main className="min-h-screen bg-canvas" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         {category && (
@@ -937,11 +944,11 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                 />
               )}
             </div>
-            <h1 className="text-4xl font-bold text-neutral-900" itemProp="name headline">{entity.name}</h1>
+            <h1 className="text-4xl font-bold text-label-primary" itemProp="name headline">{entity.name}</h1>
             {shortDefinition && (
-              <article itemProp="abstract description" className="text-lg text-neutral-700 leading-relaxed max-w-4xl">
+              <article itemProp="abstract description" className="text-lg text-label-secondary leading-relaxed max-w-4xl">
                 <p>
-                  <strong>To define {entity.name}:</strong> {shortDefinition}
+                  <strong className="text-label-primary">To define {entity.name}:</strong> {shortDefinition}
                 </p>
               </article>
             )}
@@ -980,9 +987,9 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                   <CardContent>
                     <div className="space-y-4">
                       {content.description && (
-                        <article className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4" itemProp="description">
-                          <h4 className="mb-2 font-semibold text-blue-900">Description</h4>
-                          <div className="text-sm text-blue-800">
+                        <article className="rounded-lg border-l-4 border-accent-500 bg-accent-tint p-4" itemProp="description">
+                          <h4 className="mb-2 font-semibold text-accent-700">Description</h4>
+                          <div className="text-sm text-label-secondary">
                             <ParsedContent content={extractSafeText(content.description)} />
                           </div>
                         </article>
@@ -990,18 +997,18 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
 
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         {content.prevalence && (
-                          <div className="rounded-lg border-l-4 border-green-500 bg-green-50 p-3">
-                            <h4 className="mb-1 font-semibold text-green-900">Prevalence</h4>
-                            <div className="text-sm text-green-800">
+                          <div className="rounded-lg border-l-4 border-positive-500 bg-positive-tint p-3">
+                            <h4 className="mb-1 font-semibold text-positive-700">Prevalence</h4>
+                            <div className="text-sm text-label-secondary">
                               <ParsedContent content={String(content.prevalence)} />
                             </div>
                           </div>
                         )}
 
                         {content.age_of_onset && (
-                          <div className="rounded-lg border-l-4 border-purple-500 bg-purple-50 p-3">
-                            <h4 className="mb-1 font-semibold text-purple-900">Age of Onset</h4>
-                            <div className="text-sm text-purple-800">
+                          <div className="rounded-lg border-l-4 border-accent-400 bg-surface-grouped p-3">
+                            <h4 className="mb-1 font-semibold text-accent-700">Age of Onset</h4>
+                            <div className="text-sm text-label-secondary">
                               <ParsedContent content={String(content.age_of_onset)} />
                             </div>
                           </div>
@@ -1016,16 +1023,16 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                         return dsm5 || icd10 ? (
                           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                             {dsm5 && (
-                              <div className="rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-3">
-                                <h4 className="mb-1 font-semibold text-indigo-900">DSM-5 Code</h4>
-                                <p className="font-mono text-sm text-indigo-800">{String(dsm5)}</p>
+                              <div className="rounded-lg border-l-4 border-accent-border bg-surface-grouped p-3">
+                                <h4 className="mb-1 font-semibold text-accent-700">DSM-5 Code</h4>
+                                <p className="font-mono text-sm text-label-secondary">{String(dsm5)}</p>
                               </div>
                             )}
 
                             {icd10 && (
-                              <div className="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-3">
-                                <h4 className="mb-1 font-semibold text-amber-900">ICD-10 Code</h4>
-                                <p className="font-mono text-sm text-amber-800">{String(icd10)}</p>
+                              <div className="rounded-lg border-l-4 border-caution-border bg-surface-grouped p-3">
+                                <h4 className="mb-1 font-semibold text-caution-700">ICD-10 Code</h4>
+                                <p className="font-mono text-sm text-label-secondary">{String(icd10)}</p>
                               </div>
                             )}
                           </div>
@@ -1125,10 +1132,10 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Card className="border-2 border-blue-200 shadow-lg">
+                      <Card className="border-2 border-accent-border shadow-card-2">
                         <CardHeader className="flex flex-row items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <div className={`p-2 rounded-lg bg-${color}-100 text-${color}-600`}>
+                            <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
                               {icon}
                             </div>
                             <CardTitle className="text-xl">{tile.title}</CardTitle>
@@ -1143,7 +1150,7 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
                         </CardHeader>
                         <CardContent className="space-y-6">
                           {resolvedContent.map(({ ref, data }, idx) => (
-                            <div key={ref} className={idx > 0 ? "pt-4 border-t border-neutral-100" : ""}>
+                            <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
                               {renderContentRef(data, ref)}
                             </div>
                           ))}
@@ -1207,31 +1214,51 @@ export default function ConditionClientWrapper({ entity }: ConditionClientWrappe
             />
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45 }}
-          >
-            <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
-              <CardContent className="p-8 text-center">
-                <h3 className="mb-4 text-2xl font-bold text-neutral-900">
-                  Seeking Help for {entity.name}?
-                </h3>
-                <div className="mx-auto mb-6 max-w-2xl text-neutral-800">
-                  <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
-                </div>
-                <div className="flex justify-center">
-                  <Link
-                    href="/psychiatrists"
-                    className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg h-14 px-8 text-lg"
-                  >
-                    Locate Psychiatrists
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+          {/* Contextual Next Steps (Navigation V1) */}
+          {nextSteps && nextSteps.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+            >
+              <NextStepsSection
+                steps={nextSteps}
+                heading="What's Next?"
+                audience="patient"
+                maxSteps={6}
+                sourceType="condition"
+                sourceSlug={entity.slug}
+              />
+            </motion.div>
+          )}
+
+          {/* Call to Action (fallback when no next steps) */}
+          {(!nextSteps || nextSteps.length === 0) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+            >
+              <Card className="border-accent-border bg-linear-to-r from-accent-tint to-surface">
+                <CardContent className="p-8 text-center">
+                  <h3 className="mb-4 text-2xl font-bold text-label-primary">
+                    Seeking Help for {entity.name}?
+                  </h3>
+                  <div className="mx-auto mb-6 max-w-2xl text-label-secondary">
+                    <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
+                  </div>
+                  <div className="flex justify-center">
+                    <Link
+                      href="/psychiatrists"
+                      className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 bg-accent text-white hover:bg-accent-hover shadow-soft hover:shadow-medium h-14 px-8 text-lg"
+                    >
+                      Locate Psychiatrists
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
         </div>
       </div>
     </main>

@@ -1,79 +1,217 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "tiagabine-gabitril",
-  "type": "medication",
-  "name": "Tiagabine (Gabitril)",
-  "summary": "Tiagabine (Gabitril) is an antiseizure medication that boosts the brain’s calming neurotransmitter GABA. In psychiatry, it’s sometimes brought up for anxiety or sleep—but that off-label use has a real seizure risk and isn’t recommended.",
-  "description": "Tiagabine is FDA-approved only as add-on treatment for focal (partial) seizures in adults and kids age 12+. It increases available GABA, which can feel calming or sedating for some people. Here’s the catch: when tiagabine is used for off-label psychiatric reasons (like anxiety or insomnia), new-onset seizures and even status epilepticus have been reported—even at low doses and even in people without epilepsy. Because of that, tiagabine is generally not a go-to psychiatric med.",
-  "patient_summary": "Tiagabine is a seizure medication that can feel calming because it increases GABA. But using it for anxiety or sleep (off-label) has been linked to seizures—even in people without a seizure disorder—so it’s usually not recommended for psychiatric use.",
-  "category": "medications/other-psychiatric-medications",
-  "metadata": {
+  "identity": {
+    "slug": "tiagabine-gabitril",
+    "name": "Tiagabine (Gabitril)",
+    "generic_name": "tiagabine",
+    "brand_names": [
+      "Gabitril [DSC]"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/other-psychiatric-medications",
     "drug_classes": [
       "Antiseizure Agent",
       "GABA Reuptake Inhibitor (GAT-1 Inhibitor)"
-    ],
-    "brand_names": [
-      "Gabitril [DSC]"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (DEA)",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "Antiseizure Agent, Miscellaneous",
-    "published_date": "2025-11-07T00:00:00Z",
-    "last_updated": "2025-11-07T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-07T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Not applicable for this medication."
-    ],
-    "linked_conditions": [
-      {
-        "slug": "anxiety",
-        "relationship": "not_recommended",
-        "context": "Tiagabine has been explored off-label for anxiety because it increases GABA, but off-label use has been linked to new-onset seizures and status epilepticus—even at low doses and even in people without epilepsy. Because of this, psychiatric use is generally not recommended."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "not_recommended",
-        "context": "It may feel sedating for some people, but using tiagabine for sleep off-label has been associated with seizures. Safer, evidence-based insomnia options are preferred."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "not_recommended",
-        "context": "Even if the goal is calming or sedation, off-label tiagabine has a seizure risk and is not considered a standard option for psychiatric agitation."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to tiagabine or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Psychiatric symptom response",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Tiagabine is not an FDA-approved psychiatric medication, and psychiatric efficacy data are not the reason it’s prescribed. If it’s being considered for anxiety or sleep, the bigger clinical issue is safety—off-label use has been linked to seizures, even in people without epilepsy.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Tiagabine (Gabitril) is an antiseizure medication that boosts the brain’s calming neurotransmitter GABA. In psychiatry, it’s sometimes brought up for anxiety or sleep—but that off-label use has a real seizure risk and isn’t recommended.",
+  "description": "Tiagabine is FDA-approved only as add-on treatment for focal (partial) seizures in adults and kids age 12+. It increases available GABA, which can feel calming or sedating for some people. Here’s the catch: when tiagabine is used for off-label psychiatric reasons (like anxiety or insomnia), new-onset seizures and even status epilepticus have been reported—even at low doses and even in people without epilepsy. Because of that, tiagabine is generally not a go-to psychiatric med.",
+  "patient_summary": "Tiagabine is a seizure medication that can feel calming because it increases GABA. But using it for anxiety or sleep (off-label) has been linked to seizures—even in people without a seizure disorder—so it’s usually not recommended for psychiatric use.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "not-applicable-for-this-medication",
+          "condition_name": "Not applicable for this medication.",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Tiagabine has been explored off-label for anxiety because it increases GABA, but off-label use has been linked to new-onset seizures and status epilepticus—even at low doses and even in people without epilepsy. Because of this, psychiatric use is generally not recommended."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "It may feel sedating for some people, but using tiagabine for sleep off-label has been associated with seizures. Safer, evidence-based insomnia options are preferred."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "secondary_indication",
+          "context": "Even if the goal is calming or sedation, off-label tiagabine has a seizure risk and is not considered a standard option for psychiatric agitation."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid; well absorbed (>95%). Food slows the rate of absorption.",
-      "bioavailability": "~90% (absolute).",
-      "onset": "Fast absorption; peak around 45 minutes fasting (may be delayed with food).",
-      "peak_plasma": "~45 minutes fasting; prolonged with food.",
-      "half_life": "Adults: 7-9 hours; with enzyme-inducing antiseizure meds: 2-5 hours.",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic (primarily CYP3A4); undergoes enterohepatic recirculation.",
-      "excretion": "Feces (63%), urine (25%); ~2% unchanged.",
-      "protein_binding": "96%.",
-      "food_effect": "Food reduces absorption rate (slower rise) but not overall extent; administer with food to reduce rapid plasma increases and CNS effects."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Fast absorption; peak around 45 minutes fasting (may be delayed with food)."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "27% to 31%",
+          "notes": "This can feel like lightheadedness, unsteadiness, or a “woozy” brain-body mismatch. It increases fall and accident risk—especially early on or after dose increases."
+        },
+        {
+          "effect": "Drowsiness",
+          "incidence": "18% to 21%",
+          "notes": "Sleepiness is common and can hit hard. If you feel overly sedated, your prescriber may slow titration or adjust the dose."
+        },
+        {
+          "effect": "Weakness",
+          "incidence": "18% to 23%",
+          "notes": "Some people report generalized weakness that can be significant. If it’s intense, dose reduction or stopping can resolve it."
+        },
+        {
+          "effect": "Nervousness",
+          "incidence": "10% to 14%",
+          "notes": "Yes—ironically, an antiseizure med can still make you feel keyed up or edgy. If that happens, it matters clinically because it can look like anxiety worsening."
+        },
+        {
+          "effect": "Lack of concentration",
+          "incidence": "7% to 14%",
+          "notes": "Brain fog, attention drift, and slower thinking are common complaints. This can impact work/school performance."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "9% to 21%",
+          "notes": "Shakiness can range from mild to annoying. If tremor worsens after a dose change, tell your prescriber."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "11%",
+          "notes": "Taking with food can help. Persistent nausea should be reported."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "New-onset seizures and status epilepticus (especially when used off-label for non-seizure indications): can occur even at low doses and after dose changes; urgent medical evaluation is needed."
+        },
+        {
+          "risk": "Severe dermatologic reactions (including Stevens-Johnson syndrome): rash with blistering, mucosal sores, fever—medical emergency."
+        },
+        {
+          "risk": "Suicidal ideation/behavior: monitor for mood changes, agitation, hopelessness, or self-harm thoughts."
+        },
+        {
+          "risk": "Severe CNS depression: profound sedation, confusion, ataxia, falls, accidents—risk increases with other sedating meds."
+        },
+        {
+          "risk": "Withdrawal-related seizure worsening if stopped abruptly."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to tiagabine or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "CNS depression: Can cause dizziness, drowsiness, slowed reaction time, and impaired judgment—use caution with driving and machinery.",
+        "Severe skin reactions: Rare but serious reactions (including Stevens-Johnson syndrome) have been reported and can be fatal.",
+        "Suicidal thoughts/behavior: Like other antiseizure medications, there is an increased risk of suicidal ideation/behavior; monitor for mood or behavior changes.",
+        "Generalized weakness: Sometimes reported as moderately severe to incapacitating; typically improves with dose reduction or stopping.",
+        "Ophthalmic uncertainty: Animal data suggest binding in melanin-containing eye tissues; long-term clinical significance is unknown."
+      ],
+      "interactions": [
+        {
+          "interactant": "Enzyme-inducing antiseizure meds (e.g., carbamazepine, phenytoin, phenobarbital, primidone)",
+          "mechanism": "Lower tiagabine levels and shorter half-life, which can reduce effect and change dosing needs.",
+          "action": "Use the enzyme-inducer dosing approach. If the inducer is added, stopped, or dose-changed, tiagabine usually needs adjustment and sometimes retitration."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (varies by agent)",
+          "mechanism": "May increase tiagabine exposure and side effects (sedation, dizziness, cognitive slowing).",
+          "action": "Use caution, monitor closely for CNS side effects, and consider dose reduction if clinically needed."
+        },
+        {
+          "interactant": "Other CNS depressants (alcohol, sedating antihistamines, benzodiazepines, sleep meds, opioids)",
+          "mechanism": "Additive sedation, dizziness, impaired coordination, and accident risk.",
+          "action": "Avoid stacking sedatives when possible. If combined, go low, go slow, and monitor for impairment."
+        },
+        {
+          "interactant": "Psych meds in off-label scenarios (antidepressants, antipsychotics, stimulants, opioids)",
+          "mechanism": "Off-label tiagabine use alongside these has been reported in cases of new-onset seizures/status epilepticus.",
+          "action": "Psychiatric off-label use is not recommended; if seizures occur, discontinue and evaluate for underlying seizure disorder."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and mood changes: Monitor for new or worsening depression, irritability, behavioral changes, or suicidal thoughts (risk can appear early)."
+        },
+        {
+          "parameter": "CNS side effects: Drowsiness, dizziness, confusion, ataxia, memory issues—especially during titration and after medication changes."
+        },
+        {
+          "parameter": "Functional safety: Driving risk, work/school performance, falls, accidental injury risk."
+        },
+        {
+          "parameter": "Liver function tests: Periodically, especially if there is hepatic impairment or symptoms suggest liver issues."
+        },
+        {
+          "parameter": "Seizure activity: If being used for seizures, track seizure frequency; if seizures occur during off-label use, discontinue and evaluate for underlying seizure disorder."
+        },
+        {
+          "parameter": "Drug interaction shifts: If enzyme-inducing status changes (starting/stopping an inducer), reassess dose, side effects, and whether retitration is needed."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (optional/clinically targeted): No established therapeutic range, but plasma levels may be useful before and after regimen changes when interactions are likely."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Pregnancy data are limited and insufficient to define the risk of specific congenital malformations or neurodevelopmental outcomes. If antiseizure medication is used in pregnancy, monitor fetal growth and screen for major congenital malformations. Track antiseizure medication concentrations and adjust dosing based on seizure control and changing drug levels during pregnancy, then plan a return to pre-pregnancy dosing postpartum. Encourage folic acid supplementation and consider enrollment in the North American Antiepileptic Drug Pregnancy Registry.",
+        "lactation": "It is not known if tiagabine is present in breast milk. Limited data exist. The manufacturer recommends use in breastfeeding only when benefits outweigh risks. Monitor the infant for sedation, poor feeding/sucking, weight gain, liver function concerns, platelet issues, and developmental milestones; check infant serum concentrations if toxicity is suspected.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing. Start cautiously in older adults due to higher risk of sedation, dizziness, and falls.",
+        "renal_impairment": "No dosage adjustment necessary.",
+        "hepatic_impairment": "No specific manufacturer adjustment is provided, but clearance is reduced in hepatic impairment (unbound clearance decreased ~60% in moderate impairment). Dose reduction may be necessary; titrate slowly and monitor for CNS adverse effects."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid; well absorbed (>95%). Food slows the rate of absorption.",
+          "bioavailability": "~90% (absolute).",
+          "peak_plasma": "~45 minutes fasting; prolonged with food.",
+          "half_life": "Adults: 7-9 hours; with enzyme-inducing antiseizure meds: 2-5 hours.",
+          "metabolism": "Hepatic (primarily CYP3A4); undergoes enterohepatic recirculation.",
+          "excretion": "Feces (63%), urine (25%); ~2% unchanged.",
+          "protein_binding": "96%.",
+          "food_effect": "Food reduces absorption rate (slower rise) but not overall extent; administer with food to reduce rapid plasma increases and CNS effects."
+        },
+        "dosing": {
+          "titration": "Tiagabine dosing is built around seizure treatment, not psychiatric symptoms. Because off-label psychiatric use has been linked to seizures, tiagabine is generally not recommended as an anxiety or insomnia medication. If it is used for any reason, dosing must be slow—no loading dose, no rapid titration, and no big dose jumps."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Tiagabine should not be stopped abruptly because it can increase seizure frequency. If it needs to be discontinued, taper gradually unless a safety emergency requires faster action."
+        }
+      }
     }
   },
   "sections": [
@@ -93,7 +231,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People don’t usually take tiagabine for psychiatric symptoms, but when it’s used, these are the kinds of experiences that get reported:",
       "items": [
         {
           "category": "Calm / Quieting (sometimes)",
@@ -139,7 +276,8 @@
           ],
           "note": "New-onset seizures and status epilepticus have been associated with tiagabine when used for unapproved indications, including in people without a seizure disorder."
         }
-      ]
+      ],
+      "intro": "People don’t usually take tiagabine for psychiatric symptoms, but when it’s used, these are the kinds of experiences that get reported:"
     },
     {
       "type": "onset_duration",
@@ -155,10 +293,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Tiagabine is not an FDA-approved psychiatric treatment, and psychiatric symptom control is not its evidence-based role. Even if someone feels calmer or sleepier on it, off-label psychiatric use is not considered reliably safe because seizures (including status epilepticus) have been reported—even in people without epilepsy.",
       "metric": "Psychiatric effectiveness",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Tiagabine is not an FDA-approved psychiatric treatment, and psychiatric symptom control is not its evidence-based role. Even if someone feels calmer or sleepier on it, off-label psychiatric use is not considered reliably safe because seizures (including status epilepticus) have been reported—even in people without epilepsy.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -253,7 +391,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Tiagabine is metabolized mainly by CYP3A4. Enzyme-inducing antiseizure meds can dramatically lower tiagabine levels (requiring higher doses), and stopping those inducers can raise tiagabine exposure (requiring dose reduction and careful retitration).",
       "items": [
         {
           "with": "Enzyme-inducing antiseizure meds (e.g., carbamazepine, phenytoin, phenobarbital, primidone)",
@@ -275,7 +412,8 @@
           "risk": "Off-label tiagabine use alongside these has been reported in cases of new-onset seizures/status epilepticus.",
           "action": "Psychiatric off-label use is not recommended; if seizures occur, discontinue and evaluate for underlying seizure disorder."
         }
-      ]
+      ],
+      "intro": "Tiagabine is metabolized mainly by CYP3A4. Enzyme-inducing antiseizure meds can dramatically lower tiagabine levels (requiring higher doses), and stopping those inducers can raise tiagabine exposure (requiring dose reduction and careful retitration)."
     },
     {
       "type": "tapering",
@@ -343,21 +481,6 @@
       "text": "In psychiatry, tiagabine is a classic “sounds calming on paper” medication that doesn’t belong in routine anxiety or insomnia treatment. Yes, it increases GABA. But off-label use has been associated with new-onset seizures and status epilepticus, including in people without epilepsy—often alongside common psych meds. So in real-world psychiatric algorithms, tiagabine is generally a no. If someone is already on tiagabine for seizures and develops anxiety or insomnia, treat the psychiatric symptoms with evidence-based options that don’t add seizure risk, and coordinate with neurology before any antiseizure med changes."
     }
   ],
-  "seo": {
-    "title": "Tiagabine (Gabitril): Why It’s Not a Go-To Anxiety or Sleep Medication",
-    "description": "Tiagabine (Gabitril) increases GABA and can feel calming, but off-label psychiatric use has been linked to seizures—even without epilepsy. Learn effects, risks, interactions, and monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/tiagabine-gabitril](https://www.heypsych.com/treatments/tiagabine-gabitril)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is tiagabine (Gabitril) used for anxiety?",
@@ -395,5 +518,20 @@
       "q": "Is tiagabine safe in pregnancy or breastfeeding?",
       "a": "Pregnancy outcome data are limited, so risks aren’t well defined. If it’s being used for seizure control, pregnancy decisions should prioritize seizure stability and involve shared decision-making with neurology and OB teams. For breastfeeding, it’s unknown if tiagabine is present in breast milk; infant monitoring is recommended if used."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Tiagabine (Gabitril): Why It’s Not a Go-To Anxiety or Sleep Medication",
+    "description": "Tiagabine (Gabitril) increases GABA and can feel calming, but off-label psychiatric use has been linked to seizures—even without epilepsy. Learn effects, risks, interactions, and monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/tiagabine-gabitril](https://www.heypsych.com/treatments/tiagabine-gabitril)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,0 +1,158 @@
+{
+  "routes": [
+    {
+      "id": "route_direct_connect",
+      "name": "Direct & Connected",
+      "description": "Grounded entry, sat with group, made small talk, interpreted accurately, left feeling present",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "satWithGroup": true, "askedFollowUp": true, "leftProud": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 60, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["directness", "interpretation", "distress_tolerance"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["direct_action", "grounded_interpretation", "distress_tolerated"],
+        "negative": []
+      },
+      "transferMapping": "Try sitting at a table with one stranger at a coffee shop or library"
+    },
+    {
+      "id": "route_quiet_meaningful",
+      "name": "Quiet But Meaningful",
+      "description": "Sat near the reader, didn't force it, completed the meal in regulated calm",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "satWithReader": true, "completedMeal": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 60, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["distress_tolerance", "threshold_lowering"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["distress_tolerated", "threshold_lowered"],
+        "negative": []
+      },
+      "transferMapping": "Sit near but not with someone at a cafe; let proximity be enough"
+    },
+    {
+      "id": "route_stumble_recover",
+      "name": "Stumble Then Recover",
+      "description": "Misread the tone, caught yourself, stayed anyway, recovered into acceptance",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "interpretedNegatively": true, "stayedThroughAwkward": true, "completedMeal": true }
+      },
+      "isHidden": false,
+      "isRecovery": true,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 75, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["recovery", "persistence", "self_compassion"],
+        "negative": ["interpretation"]
+      },
+      "associatedPatterns": {
+        "positive": ["recovery_success", "distress_tolerated"],
+        "negative": ["interpretation_distortion"]
+      },
+      "transferMapping": "Notice when you misread a social cue and practice staying instead of leaving"
+    },
+    {
+      "id": "route_comeback",
+      "name": "The Comeback",
+      "description": "Left, returned with intention, succeeded on the second attempt",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "recoveredFromBail": true }
+      },
+      "isHidden": true,
+      "isRecovery": true,
+      "discoveryHint": "What if leaving isn't the end?",
+      "discoveryReward": { "xpBonus": 100, "achievementId": "hidden_route_found" },
+      "mechanismSignature": {
+        "positive": ["recovery", "persistence", "activation"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["recovery_success"],
+        "negative": ["avoidance_at_threshold"]
+      },
+      "transferMapping": "If you leave a social situation, try returning within 10 minutes"
+    },
+    {
+      "id": "route_safe_present",
+      "name": "Safe But Present",
+      "description": "Used shields, sat alone, but stayed in the space",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "satAlone": true, "completedMeal": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 50, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["threshold_lowering", "persistence"],
+        "negative": ["directness"]
+      },
+      "associatedPatterns": {
+        "positive": ["threshold_lowered", "micro_progress"],
+        "negative": ["safety_behavior"]
+      },
+      "transferMapping": "Show up to the space; staying is enough for now"
+    },
+    {
+      "id": "route_mind_reading",
+      "name": "The Mind-Reading Trap",
+      "description": "Did the hard thing, then turned neutral into rejection in your head",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "interpretedNegatively": true, "leftCritical": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 50, "achievementId": null },
+      "mechanismSignature": {
+        "positive": [],
+        "negative": ["interpretation", "self_compassion"]
+      },
+      "associatedPatterns": {
+        "positive": [],
+        "negative": ["interpretation_distortion", "self_attack_spiral"]
+      },
+      "transferMapping": "Practice asking: 'What's the most neutral reading of this?' before assuming rejection"
+    },
+    {
+      "id": "route_distorted_success",
+      "name": "Distorted Success",
+      "description": "Stayed, made conversation, but left replaying every moment critically",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "askedFollowUp": true, "leftCritical": true }
+      },
+      "isHidden": true,
+      "isRecovery": false,
+      "discoveryHint": "Success doesn't always feel like success",
+      "discoveryReward": { "xpBonus": 80, "achievementId": "distorted_success" },
+      "mechanismSignature": {
+        "positive": ["directness", "persistence"],
+        "negative": ["interpretation", "self_compassion"]
+      },
+      "associatedPatterns": {
+        "positive": ["direct_action"],
+        "negative": ["interpretation_distortion", "self_attack_spiral"]
+      },
+      "transferMapping": "After your next social interaction, notice the replay—and label it as 'post-event processing' instead of truth"
+    }
+  ]
+}

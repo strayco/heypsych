@@ -17,17 +17,17 @@ interface ConditionChipsProps {
 }
 
 const relationshipColors = {
-  supportive: "bg-green-100 text-green-800 border-green-300",
-  adjunctive: "bg-blue-100 text-blue-800 border-blue-300",
+  supportive: "bg-positive-tint text-green-800 border-positive-border",
+  adjunctive: "bg-accent-tint-hover text-accent-700 border-accent-border",
   complementary: "bg-purple-100 text-purple-800 border-purple-300",
   investigational: "bg-amber-100 text-amber-800 border-amber-300"
 };
 
 const evidenceColors = {
-  high: "text-green-700",
-  moderate: "text-blue-700",
+  high: "text-positive-700",
+  moderate: "text-accent-700",
   low: "text-amber-700",
-  anecdotal: "text-gray-600"
+  anecdotal: "text-label-secondary"
 };
 
 export function ConditionChips({ conditions }: ConditionChipsProps) {
@@ -37,18 +37,18 @@ export function ConditionChips({ conditions }: ConditionChipsProps) {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-3">
-          <Link2 className="h-5 w-5 text-blue-600" />
+          <Link2 className="h-5 w-5 text-accent" />
           <CardTitle className="text-lg">Related Mental Health Conditions</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {conditions.map((condition, i) => (
-            <div key={i} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <div key={i} className="rounded-lg border border-separator bg-fill-quaternary p-4">
               <div className="mb-2 flex items-start justify-between gap-4">
                 <Link
                   href={`/conditions/${condition.slug}`}
-                  className="font-semibold text-blue-600 hover:text-blue-700 hover:underline"
+                  className="font-semibold text-accent hover:text-accent-700 hover:underline"
                 >
                   {condition.slug
                     .split("-")
@@ -71,7 +71,7 @@ export function ConditionChips({ conditions }: ConditionChipsProps) {
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-gray-700">{condition.context}</p>
+              <p className="text-sm text-label-primary">{condition.context}</p>
             </div>
           ))}
         </div>

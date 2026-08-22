@@ -29,9 +29,9 @@ export function CollapsibleButton({
   variant = "default",
 }: CollapsibleButtonProps) {
   const variantStyles = {
-    default: "text-blue-600 hover:text-blue-700",
-    neutral: "text-neutral-600 hover:text-neutral-700",
-    subtle: "text-neutral-500 hover:text-neutral-600",
+    default: "text-accent hover:text-accent-700",
+    neutral: "text-label-tertiary hover:text-label-secondary",
+    subtle: "text-label-primary0 hover:text-label-tertiary",
   };
 
   return (
@@ -41,7 +41,7 @@ export function CollapsibleButton({
         flex items-center gap-2
         text-sm font-medium
         transition-colors duration-200
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
         rounded-md px-2 py-1 -ml-2
         min-h-[44px] min-w-[44px]
         touch-manipulation

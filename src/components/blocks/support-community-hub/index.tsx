@@ -96,10 +96,10 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
       id: "crisis",
       name: "Crisis Support",
       icon: Shield,
-      gradient: "from-red-500 to-rose-600",
-      bgColor: "bg-red-50",
-      iconColor: "text-red-600",
-      borderColor: "border-red-200",
+      gradient: "from-negative to-negative-600",
+      bgColor: "bg-negative-tint",
+      iconColor: "text-negative",
+      borderColor: "border-negative-border",
       description: "24/7 immediate help and emergency hotlines",
       count: resourcesByCategory.crisis?.length || 0,
       emoji: "🆘",
@@ -180,7 +180,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Hero Section */}
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -199,7 +199,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                 </span>
               </h1>
             </div>
-            <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-label-tertiary sm:text-lg">
               Find help, connect with others, and access support resources for your mental health
               journey
             </p>
@@ -211,16 +211,16 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <Card className="mb-8 border-red-400 bg-gradient-to-r from-red-500 to-rose-600 shadow-xl">
+            <Card className="mb-8 border-negative-border bg-gradient-to-r from-negative to-negative-600 shadow-xl">
               <CardContent className="p-6">
                 <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface/20">
                       <Shield className="h-6 w-6 text-white" />
                     </div>
                     <div className="text-white">
                       <div className="text-lg font-bold">In Crisis? Get Help Now</div>
-                      <div className="text-sm text-red-100">
+                      <div className="text-sm text-negative-200">
                         24/7 confidential support available
                       </div>
                     </div>
@@ -228,14 +228,14 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                   <div className="flex gap-3">
                     <a
                       href="tel:988"
-                      className="rounded-xl bg-white px-5 py-2.5 font-bold text-red-600 shadow-lg transition-all hover:bg-red-50 hover:shadow-xl"
+                      className="rounded-xl bg-surface px-5 py-2.5 font-bold text-negative shadow-lg transition-all hover:bg-negative-tint hover:shadow-xl"
                     >
                       <Phone className="mr-2 inline h-4 w-4" />
                       Call 988
                     </a>
                     <a
                       href="sms:741741&body=HELLO"
-                      className="rounded-xl bg-red-400 px-5 py-2.5 font-bold text-white shadow-lg transition-all hover:bg-red-500 hover:shadow-xl"
+                      className="rounded-xl bg-negative-400 px-5 py-2.5 font-bold text-white shadow-lg transition-all hover:bg-negative-tint0 hover:shadow-xl"
                     >
                       <MessageCircle className="mr-2 inline h-4 w-4" />
                       Text 741741
@@ -278,8 +278,8 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                         <category.icon className={`h-6 w-6 ${category.iconColor}`} />
                       </div>
                       <div className="mb-2 text-3xl">{category.emoji}</div>
-                      <h3 className="mb-2 font-bold text-slate-900">{category.name}</h3>
-                      <p className="mb-3 min-h-[2.5rem] text-sm text-slate-600">
+                      <h3 className="mb-2 font-bold text-label-primary">{category.name}</h3>
+                      <p className="mb-3 min-h-[2.5rem] text-sm text-label-tertiary">
                         {category.description}
                       </p>
                       <Badge variant="outline" className="text-xs">
@@ -302,11 +302,11 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
               {/* Search Bar */}
               <div className="mb-4">
                 <div className="relative">
-                  <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transform text-slate-400" />
+                  <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transform text-label-primary0" />
                   <input
                     type="text"
                     placeholder="Search organizations, support groups, or resources..."
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pr-4 pl-12 transition-all focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+                    className="w-full rounded-xl border border-separator bg-surface py-3 pr-4 pl-12 transition-all focus:border-transparent focus:ring-2 focus:ring-emerald-500"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -316,8 +316,8 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
               {/* Filters */}
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-slate-600" />
-                  <span className="text-sm font-medium text-slate-700">Filter by:</span>
+                  <Filter className="h-4 w-4 text-label-tertiary" />
+                  <span className="text-sm font-medium text-label-secondary">Filter by:</span>
                 </div>
 
                 {/* Condition Filter */}
@@ -325,7 +325,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                   <select
                     value={selectedCondition}
                     onChange={(e) => setSelectedCondition(e.target.value)}
-                    className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500"
+                    className="rounded-lg border border-separator bg-surface px-3 py-2 text-sm focus:border-positive focus:ring-2 focus:ring-positive"
                   >
                     <option value="all">All Conditions</option>
                     {allConditions.map((condition) => (
@@ -341,7 +341,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                   <Button
                     variant="ghost"
                     onClick={clearFilters}
-                    className="text-slate-600 hover:text-slate-800"
+                    className="text-label-tertiary hover:text-label-primary"
                   >
                     <X className="mr-2 h-4 w-4" />
                     Clear Filters ({activeFiltersCount})
@@ -349,21 +349,21 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                 )}
 
                 {/* Results Count */}
-                <div className="ml-auto text-sm text-slate-600">
+                <div className="ml-auto text-sm text-label-tertiary">
                   Showing {filteredResources.length} of {resources.length} resources
                 </div>
               </div>
 
               {/* Active Filter Tags */}
               {activeFiltersCount > 0 && (
-                <div className="mt-4 flex items-center gap-2 border-t border-slate-200 pt-4">
-                  <span className="text-sm text-slate-600">Active filters:</span>
+                <div className="mt-4 flex items-center gap-2 border-t border-separator pt-4">
+                  <span className="text-sm text-label-tertiary">Active filters:</span>
                   <div className="flex flex-wrap gap-2">
                     {selectedCategory !== "all" && (
                       <Badge variant="outline" className="flex items-center gap-1">
                         <span>{categories.find((c) => c.id === selectedCategory)?.name}</span>
                         <X
-                          className="h-3 w-3 cursor-pointer hover:text-red-600"
+                          className="h-3 w-3 cursor-pointer hover:text-negative"
                           onClick={() => setSelectedCategory("all")}
                         />
                       </Badge>
@@ -374,7 +374,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                           {selectedCondition.charAt(0).toUpperCase() + selectedCondition.slice(1)}
                         </span>
                         <X
-                          className="h-3 w-3 cursor-pointer hover:text-red-600"
+                          className="h-3 w-3 cursor-pointer hover:text-negative"
                           onClick={() => setSelectedCondition("all")}
                         />
                       </Badge>
@@ -392,12 +392,12 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
         <div className="mx-auto max-w-7xl">
           <Card className="shadow-xl">
             <CardHeader>
-              <CardTitle className="text-center text-2xl font-bold text-slate-900">
+              <CardTitle className="text-center text-2xl font-bold text-label-primary">
                 {selectedCategory !== "all"
                   ? categories.find((c) => c.id === selectedCategory)?.name
                   : "All Support Resources"}
               </CardTitle>
-              <p className="text-center text-sm text-slate-600">
+              <p className="text-center text-sm text-label-tertiary">
                 Click on any resource to view full details
               </p>
             </CardHeader>
@@ -426,7 +426,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.03 }}
-                          className="group cursor-pointer rounded-xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:border-emerald-300 hover:shadow-lg"
+                          className="group cursor-pointer rounded-xl border border-separator bg-surface p-6 transition-all duration-300 hover:border-emerald-300 hover:shadow-lg"
                         >
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1">
@@ -435,7 +435,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                 <div
                                   className={`rounded-lg p-2 ${
                                     subcategory === "crisis"
-                                      ? "bg-red-50"
+                                      ? "bg-negative-tint"
                                       : subcategory === "communities"
                                         ? "bg-purple-50"
                                         : subcategory === "recovery"
@@ -444,7 +444,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                   } transition-transform group-hover:scale-110`}
                                 >
                                   {subcategory === "crisis" ? (
-                                    <Shield className="h-5 w-5 text-red-600" />
+                                    <Shield className="h-5 w-5 text-negative" />
                                   ) : subcategory === "communities" ? (
                                     <Users className="h-5 w-5 text-purple-600" />
                                   ) : subcategory === "recovery" ? (
@@ -454,11 +454,11 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                   )}
                                 </div>
                                 <div className="flex-1">
-                                  <h3 className="mb-1 text-lg font-bold text-slate-900 transition-colors group-hover:text-emerald-600">
+                                  <h3 className="mb-1 text-lg font-bold text-label-primary transition-colors group-hover:text-emerald-600">
                                     {resource.name}
                                   </h3>
                                   {data?.organization && (
-                                    <p className="mb-2 text-sm text-slate-500">
+                                    <p className="mb-2 text-sm text-label-primary0">
                                       {data.organization}
                                     </p>
                                   )}
@@ -488,7 +488,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                               </div>
 
                               {/* Description */}
-                              <p className="mb-3 line-clamp-2 text-sm text-slate-600">
+                              <p className="mb-3 line-clamp-2 text-sm text-label-tertiary">
                                 {resource.description || "Support resource"}
                               </p>
 
@@ -498,13 +498,13 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                   {conditions.slice(0, 3).map((condition, idx) => (
                                     <span
                                       key={idx}
-                                      className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-700"
+                                      className="rounded-full bg-surface-grouped px-2 py-1 text-xs text-label-secondary"
                                     >
                                       {condition}
                                     </span>
                                   ))}
                                   {conditions.length > 3 && (
-                                    <span className="px-2 py-1 text-xs text-slate-500">
+                                    <span className="px-2 py-1 text-xs text-label-primary0">
                                       +{conditions.length - 3} more
                                     </span>
                                   )}
@@ -512,7 +512,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                               )}
                             </div>
 
-                            <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-slate-400 transition-all group-hover:translate-x-1 group-hover:text-emerald-500" />
+                            <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-label-primary0 transition-all group-hover:translate-x-1 group-hover:text-emerald-500" />
                           </div>
                         </motion.div>
                       </Link>
@@ -521,9 +521,9 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                 </div>
               ) : (
                 <div className="py-12 text-center">
-                  <Users className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                  <h3 className="mb-2 text-xl font-semibold text-slate-900">No Resources Found</h3>
-                  <p className="mb-6 text-slate-600">
+                  <Users className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                  <h3 className="mb-2 text-xl font-semibold text-label-primary">No Resources Found</h3>
+                  <p className="mb-6 text-label-tertiary">
                     {searchQuery ? `No results for "${searchQuery}"` : "Try adjusting your filters"}
                   </p>
                   <Button onClick={clearFilters} variant="outline">

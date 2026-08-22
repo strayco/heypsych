@@ -55,7 +55,7 @@ export function CollapsibleSection({
       </AnimatePresence>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="mt-4 flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 -ml-2 min-h-[44px] min-w-[44px] touch-manipulation"
+        className="mt-4 flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-700 underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2 py-1 -ml-2 min-h-[44px] min-w-[44px] touch-manipulation"
         aria-expanded={isExpanded}
         aria-controls="collapsible-content"
       >
@@ -69,7 +69,7 @@ export function CollapsibleSection({
         </motion.span>
       </button>
       {!isExpanded && (
-        <div className="mt-4 text-sm text-neutral-500 italic">
+        <div className="mt-4 text-sm text-label-primary0 italic">
           {toggleLabel.collapsed} to see full content
         </div>
       )}

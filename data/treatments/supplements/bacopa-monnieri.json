@@ -1,22 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bacopa-monnieri",
-  "type": "supplement",
-  "name": "Bacopa monnieri (Brahmi)",
-  "summary": "An Ayurvedic herb used for memory, learning, attention, stress resilience, and anxiety reduction; standardized extracts (e.g., 20–55% bacosides) have the best evidence.",
-  "description": "Bacopa monnieri, also known as Brahmi, is a creeping marsh plant long used in Ayurveda as a medhya rasayana (nootropic). Active constituents—bacosides (A, B), bacopasaponins—appear to enhance synaptic communication, support cholinergic transmission, and provide antioxidant and neuroprotective effects. Modern trials suggest benefits for memory acquisition and retention, processing speed, and anxiety/stress measures, with greatest effects after 4–12 weeks of continuous use. The most common adverse effect is dose-related gastrointestinal upset.",
-  "category": "supplements",
-  "tags": [
-    "nootropic",
-    "memory",
-    "attention",
-    "anxiolytic",
-    "Ayurveda",
-    "neuroprotection"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract (aerial parts/leaves)",
-    "natural_source": "Bacopa monnieri (Scrophulariaceae/Plantaginaceae)",
+  "identity": {
+    "slug": "bacopa-monnieri",
+    "name": "Bacopa monnieri (Brahmi)",
+    "generic_name": "bacopa monnieri",
+    "brand_names": [
+      "Bacognize®",
+      "BacoMind®",
+      "Synapsa®",
+      "Generic Bacopa"
+    ],
+    "aliases": [
+      "Brahmi",
+      "Water hyssop"
+    ],
+    "wikidata_qid": "Q764507"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cognitive Support",
       "Anxiety & Stress",
@@ -28,75 +31,167 @@
       "Neuroplasticity/BDNF signaling",
       "HPA-axis Modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Bacognize®",
-      "BacoMind®",
-      "Synapsa®",
-      "Generic Bacopa"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement in U.S.",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q764507"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cognitive enhancement (memory, learning, processing speed)",
-      "Anxiety reduction",
-      "Stress resilience"
-    ],
-    "off_label_uses": [
-      "ADHD (adjunctive, limited evidence)",
-      "Age-related cognitive decline (supportive)"
-    ],
-    "contraindications": [
-      "Hypersensitivity to Bacopa species"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Sedation/fatigue in sensitive users"
-    ],
-    "efficacy_rating": {
-      "memory_learning": 3,
-      "attention_processing": 2,
-      "anxiety_stress": 3,
-      "overall-tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "bacopa monnieri",
-      "brahmi",
-      "bacosides",
-      "nootropic herb"
-    ],
-    "synonyms": [
-      "Brahmi",
-      "Water hyssop"
-    ],
-    "common_misspellings": [
-      "bacoba",
-      "bakopa",
-      "brahimi"
+    "tags": [
+      "nootropic",
+      "memory",
+      "attention",
+      "anxiolytic",
+      "Ayurveda",
+      "neuroprotection"
     ]
+  },
+  "summary": "An Ayurvedic herb used for memory, learning, attention, stress resilience, and anxiety reduction; standardized extracts (e.g., 20–55% bacosides) have the best evidence.",
+  "description": "Bacopa monnieri, also known as Brahmi, is a creeping marsh plant long used in Ayurveda as a medhya rasayana (nootropic). Active constituents—bacosides (A, B), bacopasaponins—appear to enhance synaptic communication, support cholinergic transmission, and provide antioxidant and neuroprotective effects. Modern trials suggest benefits for memory acquisition and retention, processing speed, and anxiety/stress measures, with greatest effects after 4–12 weeks of continuous use. The most common adverse effect is dose-related gastrointestinal upset.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cognitive-enhancement-memory-learning-processing-speed",
+          "condition_name": "Cognitive enhancement (memory, learning, processing speed)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-reduction",
+          "condition_name": "Anxiety reduction",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-resilience",
+          "condition_name": "Stress resilience",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adhd-adjunctive-limited-evidence",
+          "condition_name": "ADHD (adjunctive, limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "age-related-cognitive-decline-supportive",
+          "condition_name": "Age-related cognitive decline (supportive)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "memory_learning": {
+          "rating": 3
+        },
+        "attention_processing": {
+          "rating": 2
+        },
+        "anxiety_stress": {
+          "rating": 3
+        },
+        "overall-tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "nausea"
+        },
+        {
+          "effect": "abdominal cramping"
+        },
+        {
+          "effect": "increased stool frequency/diarrhea"
+        },
+        {
+          "effect": "fatigue or sedation in some users"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "idiosyncratic reactions are rare; discontinue if severe GI or allergic symptoms occur"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to Bacopa species"
+        }
+      ],
+      "precautions": [
+        "Take with meals to reduce GI upset.",
+        "May cause mild sedation; caution with other sedatives.",
+        "Standardization matters—use products specifying bacoside content."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticholinergic drugs (e.g., benztropine)",
+          "mechanism": "Opposing pharmacodynamics",
+          "action": "Monitor or avoid"
+        },
+        {
+          "interactant": "Cholinesterase inhibitors",
+          "mechanism": "Additive cholinergic effects (theoretical)",
+          "action": "Monitor for cholinergic symptoms"
+        },
+        {
+          "interactant": "Sedatives (benzodiazepines, antihistamines)",
+          "mechanism": "Additive CNS sedation",
+          "action": "Use caution"
+        },
+        {
+          "interactant": "Thyroid medications",
+          "mechanism": "Preclinical data suggest thyroid modulation",
+          "action": "Monitor thyroid function if clinically indicated"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI tolerance and adherence"
+        },
+        {
+          "parameter": "Daytime sedation/fatigue"
+        },
+        {
+          "parameter": "Cognitive endpoints (e.g., delayed recall tests, self-report scales)"
+        },
+        {
+          "parameter": "Anxiety/stress scales (e.g., GAD-7, PSS) as applicable"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid use",
+        "lactation": "Not recommended due to limited data",
+        "pediatric": "Limited evidence; avoid unless supervised in clinical context",
+        "geriatric": "Often well tolerated at standardized doses; monitor for GI effects"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract (aerial parts/leaves)",
+        "natural_source": "Bacopa monnieri (Scrophulariaceae/Plantaginaceae)",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement in U.S."
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +321,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Bacopa monnieri",
+      "url": "https://examine.com/supplements/bacopa-monnieri/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Systematic reviews & RCTs on Bacopa for cognition/anxiety (overview)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "bacopa monnieri",
+      "brahmi",
+      "bacosides",
+      "nootropic herb"
+    ],
+    "synonyms": [
+      "Brahmi",
+      "Water hyssop"
+    ],
+    "common_misspellings": [
+      "bacoba",
+      "bakopa",
+      "brahimi"
+    ]
+  },
   "seo": {
     "title": "Bacopa monnieri (Brahmi): Memory, Attention, and Anxiety Support",
     "description": "Evidence-based guide to Bacopa monnieri for cognitive enhancement and stress/anxiety relief. Includes dosing, mechanisms, side effects, interactions, and research.",

@@ -1,16 +1,22 @@
 export const siteConfig = {
   name: "HeyPsych",
-  description: "Comprehensive mental health treatment information and comparison platform",
+  description: "Navigate your mental health journey. Understand conditions, explore treatments, find tools, and connect with care.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  email: "hello@heypsych.com",
 
-  // Navigation (easily reorderable)
-  // Order optimized for SEO sitelinks: priority pages first
+  // Navigation V1 - Mental health navigation hierarchy
+  // Primary surfaces: Conditions, Treatments, Tools, Find Care, For Clinicians
   navigation: [
-    { name: "PsychTrails™", href: "/psychtrails", icon: "compass" }, // Unique differentiator
+    { name: "Conditions", href: "/conditions", icon: "heart-pulse" },
     { name: "Treatments", href: "/treatments", icon: "pill" },
-    { name: "Conditions", href: "/conditions", icon: "brain" },
+    { name: "Tools", href: "/tools", icon: "smartphone" },
+    { name: "Find Care", href: "/psychiatrists", icon: "map-pin" },
+    { name: "For Clinicians", href: "/for-clinicians", icon: "stethoscope" },
+  ],
+
+  // Secondary navigation (footer, mobile menu expanded)
+  secondaryNavigation: [
     { name: "Resources", href: "/resources", icon: "book-open" },
-    { name: "For Clinicians", href: "/tools/for-clinicians", icon: "stethoscope" },
     { name: "About", href: "/about", icon: "info" },
   ],
 
@@ -20,7 +26,7 @@ export const siteConfig = {
     enableComparisons: true,
     showCostData: true,
     enableAnimations: process.env.NEXT_PUBLIC_ENABLE_ANIMATIONS === "true",
-    showProviderDirectory: false,
+    showProviderDirectory: true, // Enabled for Navigation V1
   },
 
   // Visual preferences

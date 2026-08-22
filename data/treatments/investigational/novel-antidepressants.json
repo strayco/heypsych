@@ -1,105 +1,191 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "novel-antidepressants",
-  "type": "investigational",
-  "name": "Novel Antidepressants",
-  "summary": "Novel antidepressants encompass emerging classes of medications with mechanisms of action distinct from traditional SSRIs, SNRIs, and TCAs. These agents target glutamatergic, serotonergic, opioid, and neurotrophic pathways to provide faster, more effective, and tolerable treatments for depression.",
-  "description": "Novel antidepressants represent a new wave of pharmacological strategies for mood disorders, particularly treatment-resistant depression (TRD). Unlike conventional antidepressants, which primarily act on monoamine neurotransmitters (serotonin, norepinephrine, dopamine), these therapies focus on alternative systems, including NMDA receptor modulation, AMPA potentiation, kappa-opioid receptor antagonism, and neurotrophic pathways such as BDNF signaling. Examples include esketamine (NMDA antagonist, FDA-approved), zuranolone (neurosteroid modulator), and investigational compounds like rapastinel, an NMDA partial agonist, and SAGE-217. They hold promise for rapid-acting effects, better safety profiles, and improved outcomes in TRD and comorbid psychiatric conditions.",
-  "category": "investigational/pharmacological",
-  "tags": [
-    "novel antidepressants",
-    "glutamatergic agents",
-    "neurosteroids",
-    "opioid modulators",
-    "treatment-resistant depression",
-    "rapid-acting antidepressants"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "novel-antidepressants",
+    "name": "Novel Antidepressants",
+    "aliases": [
+      "next-generation antidepressants",
+      "rapid-acting antidepressants",
+      "innovative depression treatments"
+    ],
+    "wikidata_qid": "Q29391785"
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/pharmacological",
     "intervention_types": [
       "Oral agents",
       "Intranasal sprays",
       "Intravenous infusions"
     ],
-    "treatment_types": [
-      "Pharmacological treatment"
-    ],
-    "categories": [
-      "Depression",
-      "Anxiety",
-      "Suicidality",
-      "Mood disorders"
-    ],
-    "delivery_methods": [
-      "Oral capsules/tablets",
-      "Intranasal sprays (e.g., esketamine)",
-      "IV infusion (e.g., ketamine, investigational agents)"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": "Standard medical monitoring equipment",
-    "training_required": "Medical prescriber with psychiatric pharmacology expertise",
-    "age_groups": [
-      "Adults"
-    ],
-    "session_duration": "30–120 minutes (depending on administration)",
-    "treatment_duration": [
-      "Acute courses with possible maintenance protocols"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Psychopharmacology",
-      "Emergency psychiatry"
-    ],
-    "trial_phase": "Phase II–III for most investigational agents; some FDA-approved",
-    "regulatory_status": "Esketamine and zuranolone FDA-approved; other agents investigational",
-    "wikidata_qid": "Q29391785"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-resistant depression",
-      "Major depressive disorder"
-    ],
-    "conditions_treated": [
-      "MDD",
-      "TRD",
-      "Suicidal ideation",
-      "Bipolar depression (exploratory)"
-    ],
-    "off_label_uses": [
-      "PTSD",
-      "Anxiety disorders",
-      "Substance use disorders"
-    ],
-    "contraindications": [
-      "Uncontrolled cardiovascular conditions (for some agents)",
-      "History of psychosis (for glutamatergic modulators)",
-      "Pregnancy (for neurosteroids)"
-    ],
-    "safety_profile": "Varies by class: some agents show transient dissociative or sedative effects; long-term safety still under study.",
-    "evidence_level": "Strong RCT evidence for esketamine and zuranolone; mixed and emerging evidence for other compounds.",
-    "research_support": "Broad academic, NIH, and pharmaceutical investment; multiple active clinical trials.",
-    "efficacy_rating": {
-      "TRD": 4,
-      "suicidality": 3,
-      "anxiety_disorders": 2,
-      "safety_tolerability": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
+    "tags": [
       "novel antidepressants",
-      "zuranolone depression",
-      "rapastinel NMDA",
-      "opioid modulators psychiatry"
-    ],
-    "synonyms": [
-      "next-generation antidepressants",
-      "rapid-acting antidepressants",
-      "innovative depression treatments"
-    ],
-    "common_misspellings": [
-      "novel antidepresants",
-      "new antidepressants"
+      "glutamatergic agents",
+      "neurosteroids",
+      "opioid modulators",
+      "treatment-resistant depression",
+      "rapid-acting antidepressants"
     ]
+  },
+  "summary": "Novel antidepressants encompass emerging classes of medications with mechanisms of action distinct from traditional SSRIs, SNRIs, and TCAs. These agents target glutamatergic, serotonergic, opioid, and neurotrophic pathways to provide faster, more effective, and tolerable treatments for depression.",
+  "description": "Novel antidepressants represent a new wave of pharmacological strategies for mood disorders, particularly treatment-resistant depression (TRD). Unlike conventional antidepressants, which primarily act on monoamine neurotransmitters (serotonin, norepinephrine, dopamine), these therapies focus on alternative systems, including NMDA receptor modulation, AMPA potentiation, kappa-opioid receptor antagonism, and neurotrophic pathways such as BDNF signaling. Examples include esketamine (NMDA antagonist, FDA-approved), zuranolone (neurosteroid modulator), and investigational compounds like rapastinel, an NMDA partial agonist, and SAGE-217. They hold promise for rapid-acting effects, better safety profiles, and improved outcomes in TRD and comorbid psychiatric conditions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "mdd",
+          "condition_name": "MDD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trd",
+          "condition_name": "TRD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "suicidal-ideation",
+          "condition_name": "Suicidal ideation",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression-exploratory",
+          "condition_name": "Bipolar depression (exploratory)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong RCT evidence for esketamine and zuranolone; mixed and emerging evidence for other compounds.",
+      "efficacy_ratings": {
+        "TRD": {
+          "rating": 4
+        },
+        "suicidality": {
+          "rating": 3
+        },
+        "anxiety_disorders": {
+          "rating": 2
+        },
+        "safety_tolerability": {
+          "rating": 3
+        }
+      },
+      "research_support": "Broad academic, NIH, and pharmaceutical investment; multiple active clinical trials."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute courses with possible maintenance protocols"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Oral capsules/tablets",
+        "Intranasal sprays (e.g., esketamine)",
+        "IV infusion (e.g., ketamine, investigational agents)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–120 minutes (depending on administration)"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Medical prescriber with psychiatric pharmacology expertise"
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Varies by class: some agents show transient dissociative or sedative effects; long-term safety still under study.",
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation"
+        },
+        {
+          "effect": "Dissociation (for NMDA agents)"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Abuse liability (NMDA agents)"
+        },
+        {
+          "risk": "Withdrawal with abrupt discontinuation"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe uncontrolled medical illness",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy (neurosteroids)",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Active psychosis (glutamatergic drugs)",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of substance misuse",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Liver impairment",
+          "type": "relative"
+        }
+      ]
+    },
+    "access": {
+      "regulatory_status": "fda_approved"
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "procedure_type": "Oral agents, Intranasal sprays, Intravenous infusions",
+        "equipment_required": [
+          "Standard medical monitoring equipment"
+        ],
+        "session_protocol": "Oral daily dosing (zuranolone, investigational agents).\nIntranasal esketamine administered under supervision in clinic.\nIV infusion protocols for ketamine or trial drugs."
+      }
+    }
   },
   "sections": [
     {
@@ -221,6 +307,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Daly EJ et al., Esketamine in TRD, JAMA Psychiatry (2019)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30840002/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Gunduz-Bruce H et al., Zuranolone in MDD, NEJM (2019)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31851838/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Preskorn SH et al., Rapastinel in MDD, J Clin Psychiatry (2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25844961/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "novel antidepressants",
+      "zuranolone depression",
+      "rapastinel NMDA",
+      "opioid modulators psychiatry"
+    ],
+    "synonyms": [
+      "next-generation antidepressants",
+      "rapid-acting antidepressants",
+      "innovative depression treatments"
+    ],
+    "common_misspellings": [
+      "novel antidepresants",
+      "new antidepressants"
+    ]
+  },
   "seo": {
     "title": "Novel Antidepressants for Depression",
     "description": "Novel antidepressants target glutamatergic, neurosteroid, and opioid systems, offering rapid relief and improved tolerability for treatment-resistant depression and major depressive disorder.",
@@ -233,5 +356,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong RCT evidence for esketamine and zuranolone; mixed and emerging evidence for other compounds."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong RCT evidence for esketamine and zuranolone; mixed and emerging evidence for other compounds."
+    ]
   }
 }

@@ -1,75 +1,220 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ramelteon-rozerem",
-  "type": "medication",
-  "name": "Ramelteon (Rozerem)",
-  "summary": "Non-habit-forming sleep-onset medication that works on melatonin receptors (MT1/MT2). Helps you fall asleep within ~30 minutes without the classic benzo/Z-drug dependence profile.",
-  "description": "Rozerem is a prescription sleep medication for trouble falling asleep. It works by targeting melatonin receptors that help regulate your sleep-wake clock, rather than sedating your brain like benzodiazepines or Z-drugs. Most people take 8 mg within 30 minutes of bedtime. Avoid taking it with a high-fat meal (it slows and blunts the effect). Call your prescriber right away if you have swelling of the face/lips/tongue (angioedema) or if you have any unusual sleep behaviors.",
-  "patient_summary": "Rozerem helps with sleep-onset insomnia (trouble falling asleep) by acting on melatonin receptors instead of “knocking you out.” Most people take 8 mg near bedtime. Don’t take it with a high-fat meal, and don’t mix it with fluvoxamine. If you ever have swelling (angioedema) or complex sleep behaviors, stop it and get medical help.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "ramelteon-rozerem",
+    "name": "Ramelteon (Rozerem)",
+    "generic_name": "ramelteon",
+    "brand_names": [
+      "Rozerem"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Melatonin Receptor Agonist",
       "Hypnotic (Miscellaneous)"
-    ],
-    "brand_names": [
-      "Rozerem"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 2005,
-    "pharmacologic_category": "Hypnotic, Miscellaneous; Melatonin Receptor Agonist",
-    "published_date": "2025-12-24T00:00:00Z",
-    "last_updated": "2025-12-24T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-24T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep-onset)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for insomnia characterized by difficulty falling asleep (sleep-onset insomnia)."
-      },
-      {
-        "slug": "delirium",
-        "relationship": "off_label",
-        "context": "Sometimes used in ICU-related delirium prevention/sleep protocols as an alternative to melatonin, when a clinician wants a melatonin-receptor option without typical sedative-hypnotic dependence risk."
-      }
-    ],
-    "contraindications": [
-      "History of angioedema with previous ramelteon therapy (do not rechallenge)",
-      "Concurrent use with fluvoxamine"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep onset (time to fall asleep)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Rozerem is designed for sleep-onset insomnia—meaning it helps you fall asleep. It’s not meant to keep you asleep all night, and it doesn’t work like a sedative “knockout” pill. If your main problem is waking up repeatedly, your clinician may choose a different approach.",
-      "citation_tag": "FDA Label (Ramelteon)"
+  "summary": "Non-habit-forming sleep-onset medication that works on melatonin receptors (MT1/MT2). Helps you fall asleep within ~30 minutes without the classic benzo/Z-drug dependence profile.",
+  "description": "Rozerem is a prescription sleep medication for trouble falling asleep. It works by targeting melatonin receptors that help regulate your sleep-wake clock, rather than sedating your brain like benzodiazepines or Z-drugs. Most people take 8 mg within 30 minutes of bedtime. Avoid taking it with a high-fat meal (it slows and blunts the effect). Call your prescriber right away if you have swelling of the face/lips/tongue (angioedema) or if you have any unusual sleep behaviors.",
+  "patient_summary": "Rozerem helps with sleep-onset insomnia (trouble falling asleep) by acting on melatonin receptors instead of “knocking you out.” Most people take 8 mg near bedtime. Don’t take it with a high-fat meal, and don’t mix it with fluvoxamine. If you ever have swelling (angioedema) or complex sleep behaviors, stop it and get medical help.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for insomnia characterized by difficulty falling asleep (sleep-onset insomnia).",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "delirium",
+          "condition_name": "Delirium",
+          "relationship": "off_label",
+          "context": "Sometimes used in ICU-related delirium prevention/sleep protocols as an alternative to melatonin, when a clinician wants a melatonin-receptor option without typical sedative-hypnotic dependence risk."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid; high-fat meal delays absorption and changes exposure",
-      "bioavailability": "Absolute ~1.8% (extensive first-pass metabolism)",
-      "onset": "~30 minutes",
-      "peak_plasma": "Median 0.5 to 1.5 hours",
-      "half_life": "Ramelteon: 1 to 2.6 hours; active metabolite (M-II): 2 to 5 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive first-pass oxidative metabolism primarily via CYP1A2, with contributions from CYP2C and CYP3A4; forms active metabolite (M-II)",
-      "excretion": "Primarily as metabolites: urine (~84%) and feces (~4%)",
-      "protein_binding": "~82%",
-      "food_effect": "High-fat meal delays Tmax, reduces Cmax, and increases AUC (~31%); avoid taking with or right after a high-fat meal"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "~30 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "4% to 5%",
+          "notes": "Can feel like lightheadedness or being a little off-balance. Taking it only at bedtime and getting up slowly can help."
+        },
+        {
+          "effect": "Somnolence (sleepiness)",
+          "incidence": "3% to 5%",
+          "notes": "This is the intended direction, but it can spill into the next morning if you take it too late or don’t allow enough sleep time."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "3% to 4%",
+          "notes": "Some people feel low-energy the next day early in treatment. If it’s persistent, your clinician may reassess timing, sleep schedule, or whether this is the right tool."
+        },
+        {
+          "effect": "Insomnia worsened",
+          "incidence": "3%",
+          "notes": "Yes, it’s ironic—but it happens. If your sleep gets worse, don’t just push through for weeks. Tell your prescriber."
+        },
+        {
+          "effect": "Depression",
+          "incidence": "2%",
+          "notes": "If your mood dips, motivation drops, or suicidal thoughts show up, treat that as urgent and loop in your clinician."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "3%",
+          "notes": "Usually mild. If nausea is significant, your clinician may adjust the plan."
+        },
+        {
+          "effect": "Taste perversion",
+          "incidence": "2%",
+          "notes": "Some people notice an odd taste. Not dangerous, just annoying."
+        },
+        {
+          "effect": "Myalgia / Arthralgia",
+          "incidence": "2% / 2%",
+          "notes": "Aches can happen. If pain is severe or new, rule out other causes."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypersensitivity reactions (rare): anaphylaxis, angioedema—do not rechallenge if it occurs"
+        },
+        {
+          "risk": "Complex sleep behaviors (reported): sleep-driving, cooking/eating, phone calls while asleep; may include amnesia—discontinue if this happens"
+        },
+        {
+          "risk": "Clinically meaningful mood worsening or suicidal ideation (reported with hypnotics)—requires urgent clinical reassessment"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "History of angioedema with previous ramelteon therapy (do not rechallenge)"
+        },
+        {
+          "contraindication": "Concurrent use with fluvoxamine"
+        }
+      ],
+      "precautions": [
+        "Complex sleep behaviors have been reported (sleep-driving, cooking/eating, phone calls) and may occur with amnesia; discontinue if this happens",
+        "May cause CNS depression (impaired alertness); use caution with driving or hazardous tasks—especially early on",
+        "Abnormal thinking/behavior changes have been reported with hypnotics (agitation, hallucinations, depersonalization, decreased inhibition)",
+        "Use caution in depression; worsening depression and suicidal ideation have been reported with hypnotics",
+        "Use caution in respiratory compromise (COPD, sleep apnea); not recommended in severe sleep apnea (not studied)",
+        "Hepatic impairment increases exposure substantially; not recommended in severe hepatic impairment",
+        "May affect reproductive hormones (prolactin increase, testosterone decrease); monitor if symptoms suggest hormonal disruption"
+      ],
+      "interactions": [
+        {
+          "interactant": "Fluvoxamine",
+          "mechanism": "Contraindicated. Can significantly increase ramelteon exposure and side effects.",
+          "action": "Do not use together. Choose a different sleep strategy if you’re on fluvoxamine."
+        },
+        {
+          "interactant": "Other CNS depressants (alcohol, sedatives, sleep meds, some antihistamines, cannabis)",
+          "mechanism": "Additive impairment and next-day sedation; may increase risk of unusual sleep behaviors.",
+          "action": "Avoid alcohol. Use extra caution combining with anything sedating. If you’re already on a sedating medication, your prescriber should know."
+        },
+        {
+          "interactant": "Strong CYP1A2 inhibitors (class effect)",
+          "mechanism": "Can raise ramelteon levels and increase side effects like dizziness/somnolence.",
+          "action": "Clinician should review your medication list for interaction risk and either avoid the combo or monitor closely."
+        },
+        {
+          "interactant": "CYP inducers (class effect)",
+          "mechanism": "May reduce effectiveness by lowering medication levels.",
+          "action": "If Rozerem suddenly stops working, review recent medication/supplement changes with your clinician."
+        },
+        {
+          "interactant": "High-fat meal",
+          "mechanism": "Delays Tmax and changes exposure; can make the bedtime effect less predictable.",
+          "action": "Do not take with or right after a high-fat meal."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sleep target clarity: Is the problem sleep onset vs sleep maintenance vs early-morning awakening? Rozerem is mainly for sleep onset."
+        },
+        {
+          "parameter": "Next-day impairment: dizziness, sleepiness, slowed reaction time—especially early in treatment and in older adults."
+        },
+        {
+          "parameter": "Mood symptoms: worsening depression, irritability, suicidal ideation—monitor closely in anyone with depression history."
+        },
+        {
+          "parameter": "Complex sleep behaviors: sleep-driving, cooking/eating, phone calls while asleep; discontinue if reported."
+        },
+        {
+          "parameter": "Hypersensitivity: swelling of face/lips/tongue, hives, breathing difficulty—urgent evaluation; do not rechallenge after angioedema."
+        },
+        {
+          "parameter": "Hormonal symptoms: decreased libido, menstrual disruption, galactorrhea, sexual dysfunction—consider checking prolactin and testosterone if clinically indicated."
+        },
+        {
+          "parameter": "Medication interaction review: especially CYP1A2 inhibitors/fluvoxamine and other sedatives."
+        },
+        {
+          "parameter": "If insomnia persists beyond 7 to 10 days, reassess for psychiatric/medical causes (anxiety, depression, substance use, medication effects, sleep apnea, circadian rhythm disruption)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal reproduction studies observed adverse events. If you’re pregnant or trying to conceive, discuss non-medication insomnia treatments first (like CBT-I) and weigh risks vs benefits with your clinician.",
+        "lactation": "Ramelteon and its active metabolite (M-II) are present in breast milk. A case report estimated a low relative infant dose (RID ~0.24%). Manufacturer recommends weighing benefits vs infant exposure. If used while breastfeeding, monitor the infant for somnolence and feeding problems. Some clinicians may recommend pumping and discarding breast milk during treatment and for 25 hours after the last dose to reduce exposure.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing; use with caution. Older adults have higher exposure (AUC and Cmax substantially increased vs younger adults), which can increase dizziness/somnolence risk—start with strict bedtime-only use and reassess frequently.",
+        "renal_impairment": "No dosage adjustment necessary.",
+        "hepatic_impairment": "Mild impairment: no manufacturer-provided adjustment; moderate impairment: use with caution (exposure can increase markedly). Severe impairment: use is not recommended."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2005
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid; high-fat meal delays absorption and changes exposure",
+          "bioavailability": "Absolute ~1.8% (extensive first-pass metabolism)",
+          "peak_plasma": "Median 0.5 to 1.5 hours",
+          "half_life": "Ramelteon: 1 to 2.6 hours; active metabolite (M-II): 2 to 5 hours",
+          "metabolism": "Extensive first-pass oxidative metabolism primarily via CYP1A2, with contributions from CYP2C and CYP3A4; forms active metabolite (M-II)",
+          "excretion": "Primarily as metabolites: urine (~84%) and feces (~4%)",
+          "protein_binding": "~82%",
+          "food_effect": "High-fat meal delays Tmax, reduces Cmax, and increases AUC (~31%); avoid taking with or right after a high-fat meal"
+        },
+        "dosing": {
+          "titration": "Ramelteon is typically taken as a single bedtime dose. It works best when it’s paired with a consistent sleep schedule and when you avoid taking it with a high-fat meal."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Rozerem is not a benzodiazepine and is not a controlled substance. In most cases, it does not require a taper and can be stopped without a withdrawal-style discontinuation plan. That said, if you stop it and your sleep rebounds worse, that’s usually your underlying insomnia returning—not a dangerous withdrawal. The fix is reassessing the sleep plan (schedule, CBT-I, anxiety management, timing of caffeine/light) rather than chasing higher and higher doses."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +232,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s the vibe people commonly describe. Not everyone feels all of this, but these patterns show up a lot:",
       "items": [
         {
           "category": "Sleepiness (not a “knockout”)",
@@ -124,7 +268,8 @@
           ],
           "note": "Complex sleep behaviors (like sleep-driving, cooking/eating, phone calls) have been reported. If it happens, discontinue and contact a clinician immediately."
         }
-      ]
+      ],
+      "intro": "Here’s the vibe people commonly describe. Not everyone feels all of this, but these patterns show up a lot:"
     },
     {
       "type": "onset_duration",
@@ -140,10 +285,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Rozerem’s sweet spot is sleep onset: it helps some people fall asleep faster and reduces that “stuck awake” feeling at bedtime. It’s not usually the best standalone choice if your main problem is waking up repeatedly or waking up too early—those patterns often need different strategies (behavioral work, addressing anxiety, or a medication that targets sleep maintenance).",
       "metric": "Sleep onset improvement",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Rozerem’s sweet spot is sleep onset: it helps some people fall asleep faster and reduces that “stuck awake” feeling at bedtime. It’s not usually the best standalone choice if your main problem is waking up repeatedly or waking up too early—those patterns often need different strategies (behavioral work, addressing anxiety, or a medication that targets sleep maintenance).",
       "clinical_details": "Clinically, Rozerem is often chosen when a prescriber wants a non-controlled, melatonin-receptor approach—especially for people with a history of substance use, sensitivity to sedatives, or concern about dependence. Response is very individual, and bedtime habits matter a lot (light exposure, caffeine timing, screens, and consistent wake time).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -244,7 +389,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Ramelteon is heavily affected by metabolism interactions (especially CYP1A2). Some combinations can drastically raise levels and side effects.",
       "items": [
         {
           "with": "Fluvoxamine",
@@ -271,7 +415,8 @@
           "risk": "Delays Tmax and changes exposure; can make the bedtime effect less predictable.",
           "action": "Do not take with or right after a high-fat meal."
         }
-      ]
+      ],
+      "intro": "Ramelteon is heavily affected by metabolism interactions (especially CYP1A2). Some combinations can drastically raise levels and side effects."
     },
     {
       "type": "tapering",
@@ -339,21 +484,6 @@
       "text": "Rozerem fits best for sleep-onset insomnia—especially when you want to avoid controlled substances, dependence risk, and heavy sedation. It’s often paired with CBT-I and sleep routine changes (consistent wake time, light management, caffeine timing). In higher-risk patients (substance use history, sensitivity to sedatives, older adults), it can be an appealing first medication trial. If insomnia is driven by anxiety, trauma, depression, or a circadian rhythm mismatch, treating the underlying driver usually matters more than any single sleep pill."
     }
   ],
-  "seo": {
-    "title": "Ramelteon (Rozerem): Uses, Dosage, Side Effects & Sleep Behaviors",
-    "description": "Rozerem (ramelteon) for sleep-onset insomnia: how to take 8 mg at bedtime, how fast it works (~30 min), common side effects (dizziness, sleepiness), major interaction with fluvoxamine, and rare complex sleep behaviors.",
-    "canonical": "[https://www.heypsych.com/treatments/ramelteon-rozerem](https://www.heypsych.com/treatments/ramelteon-rozerem)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Rozerem used for?",
@@ -403,5 +533,20 @@
       "q": "Can I take Rozerem while breastfeeding?",
       "a": "Ramelteon and its metabolite are present in breast milk. A case report estimated low infant exposure, but the decision should weigh infant exposure risk vs benefits to the parent. If used, monitor the baby for sleepiness and feeding problems; some clinicians may recommend pumping and discarding milk during treatment and for 25 hours after the last dose."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Ramelteon (Rozerem): Uses, Dosage, Side Effects & Sleep Behaviors",
+    "description": "Rozerem (ramelteon) for sleep-onset insomnia: how to take 8 mg at bedtime, how fast it works (~30 min), common side effects (dizziness, sleepiness), major interaction with fluvoxamine, and rare complex sleep behaviors.",
+    "canonical": "[https://www.heypsych.com/treatments/ramelteon-rozerem](https://www.heypsych.com/treatments/ramelteon-rozerem)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

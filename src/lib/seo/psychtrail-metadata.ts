@@ -9,7 +9,7 @@
  */
 
 import type { Metadata } from 'next';
-import type { Scenario } from '@/lib/psychTrail/types';
+import type { ScenarioV2 as Scenario } from '@/lib/psychTrail/types-v2';
 import { SITE_CONFIG, METADATA_LIMITS } from './config';
 
 /**
@@ -80,9 +80,9 @@ function generateDescription(scenario: Scenario): string {
   // Add educational disclaimer
   description += ' Educational simulation only. Fictional scenarios. Not medical advice.';
 
-  // Add clinical review signal if available
-  if (scenario.medicalReviewer) {
-    description += ` Clinically reviewed by ${scenario.medicalReviewer}.`;
+  // Add clinical review signal if available via llmHints
+  if (scenario.llmHints?.scenarioContext) {
+    description += ' Clinically designed scenario.';
   }
 
   return ensureDescriptionLength(description);
@@ -93,11 +93,6 @@ function generateDescription(scenario: Scenario): string {
  */
 function extractKeywords(scenario: Scenario): string[] {
   const keywords = new Set<string>();
-
-  // Add explicit keywords if provided
-  if (scenario.keywords) {
-    scenario.keywords.forEach(kw => keywords.add(kw));
-  }
 
   // Add scenario title
   keywords.add(scenario.title.toLowerCase());

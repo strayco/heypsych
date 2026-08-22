@@ -1,92 +1,280 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "galantamine-razadyne-er",
-  "type": "medication",
-  "name": "Galantamine (Razadyne ER)",
-  "summary": "Cholinesterase inhibitor used to treat cognitive symptoms in Alzheimer’s dementia. It won’t stop the disease, but it can modestly support memory, attention, and daily functioning for some people—while GI side effects and weight loss are the usual limiting factors.",
-  "description": "Galantamine is a centrally acting acetylcholinesterase inhibitor used for dementia of the Alzheimer’s type. This is symptom treatment, not a cure and not disease-modifying. If it helps, it’s usually subtle and gradual—small gains in attention, communication, or everyday functioning that caregivers often notice more than patients do. The tradeoff is tolerability: nausea and vomiting are common (especially during titration), and weight loss, dizziness, bradycardia, and fainting can be clinically important in older adults.",
-  "patient_summary": "Galantamine is used for Alzheimer’s dementia symptoms. It may modestly help thinking and day-to-day function for some people, but it doesn’t cure dementia or stop progression. The most common problems are nausea/vomiting and appetite or weight loss. It can also slow the heart rate and contribute to fainting or falls in vulnerable patients, so titration is slow and monitoring matters.",
-  "category": "medications/neurocognitive-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "galantamine-razadyne-er",
+    "name": "Galantamine (Razadyne ER)",
+    "generic_name": "galantamine",
+    "brand_names": [
+      "Razadyne ER",
+      "Razadyne"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/neurocognitive-disorders",
     "drug_classes": [
       "Cholinesterase Inhibitor",
       "Acetylcholinesterase Inhibitor (Central)",
       "Cognitive Enhancer"
-    ],
-    "brand_names": [
-      "Razadyne ER",
-      "Razadyne"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a Controlled Substance",
-    "generic_available": true,
-    "fda_approval_year": 2001,
-    "pharmacologic_category": "Acetylcholinesterase Inhibitor (Central)",
-    "published_date": "2025-11-17T00:00:00Z",
-    "last_updated": "2025-11-17T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-17T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Alzheimer Disease, Mild to Moderate Dementia (dementia of the Alzheimer’s type)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alzheimer-disease",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for mild to moderate dementia of the Alzheimer’s type. This is symptom treatment (cognition/function), not a cure or disease-modifying therapy."
-      },
-      {
-        "slug": "alzheimer-disease-severe",
-        "relationship": "off_label",
-        "context": "Sometimes used off-label in severe Alzheimer disease. Some experts use it in combination with memantine for moderate to severe disease."
-      },
-      {
-        "slug": "dementia-with-lewy-bodies",
-        "relationship": "off_label",
-        "context": "Off-label option for dementia with Lewy bodies, typically considered when donepezil or rivastigmine are not tolerated."
-      },
-      {
-        "slug": "parkinson-disease-dementia",
-        "relationship": "off_label",
-        "context": "Off-label option for Parkinson disease dementia, usually considered when other cholinesterase inhibitors are not tolerated."
-      },
-      {
-        "slug": "vascular-dementia",
-        "relationship": "off_label",
-        "context": "Sometimes used when vascular dementia is suspected to be mixed with Alzheimer, Parkinson disease dementia, or dementia with Lewy bodies (comorbid/mixed dementia picture)."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to galantamine or any component of the formulation",
-      "Canadian labeling: hypersensitivity to other tertiary alkaloids (additional contraindication in Canada)"
-    ],
-    "efficacy_response": {
-      "metric": "Modest improvement in cognitive and global symptom measures in Alzheimer dementia trials",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Galantamine can modestly improve (or slow worsening of) thinking and overall dementia symptoms for some people with Alzheimer’s dementia compared with placebo in clinical trials. It’s measured as small but meaningful shifts in cognition and clinician-rated overall function over months—not a quick, dramatic change.",
-      "citation_tag": "FDA Prescribing Information"
+  "summary": "Cholinesterase inhibitor used to treat cognitive symptoms in Alzheimer’s dementia. It won’t stop the disease, but it can modestly support memory, attention, and daily functioning for some people—while GI side effects and weight loss are the usual limiting factors.",
+  "description": "Galantamine is a centrally acting acetylcholinesterase inhibitor used for dementia of the Alzheimer’s type. This is symptom treatment, not a cure and not disease-modifying. If it helps, it’s usually subtle and gradual—small gains in attention, communication, or everyday functioning that caregivers often notice more than patients do. The tradeoff is tolerability: nausea and vomiting are common (especially during titration), and weight loss, dizziness, bradycardia, and fainting can be clinically important in older adults.",
+  "patient_summary": "Galantamine is used for Alzheimer’s dementia symptoms. It may modestly help thinking and day-to-day function for some people, but it doesn’t cure dementia or stop progression. The most common problems are nausea/vomiting and appetite or weight loss. It can also slow the heart rate and contribute to fainting or falls in vulnerable patients, so titration is slow and monitoring matters.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alzheimer-disease",
+          "condition_name": "Alzheimer Disease",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for mild to moderate dementia of the Alzheimer’s type. This is symptom treatment (cognition/function), not a cure or disease-modifying therapy.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "alzheimer-disease-severe",
+          "condition_name": "Alzheimer Disease Severe",
+          "relationship": "off_label",
+          "context": "Sometimes used off-label in severe Alzheimer disease. Some experts use it in combination with memantine for moderate to severe disease."
+        },
+        {
+          "condition_slug": "dementia-with-lewy-bodies",
+          "condition_name": "Dementia With Lewy Bodies",
+          "relationship": "off_label",
+          "context": "Off-label option for dementia with Lewy bodies, typically considered when donepezil or rivastigmine are not tolerated."
+        },
+        {
+          "condition_slug": "parkinson-disease-dementia",
+          "condition_name": "Parkinson Disease Dementia",
+          "relationship": "off_label",
+          "context": "Off-label option for Parkinson disease dementia, usually considered when other cholinesterase inhibitors are not tolerated."
+        },
+        {
+          "condition_slug": "vascular-dementia",
+          "condition_name": "Vascular Dementia",
+          "relationship": "off_label",
+          "context": "Sometimes used when vascular dementia is suspected to be mixed with Alzheimer, Parkinson disease dementia, or dementia with Lewy bodies (comorbid/mixed dementia picture)."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption is high; taking with food is often recommended to improve GI tolerability.",
-      "bioavailability": "~90%",
-      "onset": "Side effects (especially nausea) can appear early; potential cognitive benefit is typically gradual over weeks.",
-      "peak_plasma": "Immediate release: ~1 hour (delayed with food); extended release: ~4.5 to 5 hours",
-      "half_life": "~7 hours",
-      "duration_IR": "Typically dosed twice daily for steady symptom coverage.",
-      "duration_XR": "Designed for once-daily dosing with smoother coverage across the day.",
-      "metabolism": "Hepatic metabolism primarily via CYP2D6 and CYP3A4; metabolites are not considered clinically relevant for effect.",
-      "excretion": "Urine (approximately 20%); exposure increases with renal impairment.",
-      "protein_binding": "~18%",
-      "food_effect": "Food can delay peak levels and is commonly used to improve tolerability; IR is typically taken with breakfast and dinner, ER with breakfast."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Side effects (especially nausea) can appear early; potential cognitive benefit is typically gradual over weeks."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea",
+          "incidence": "21%",
+          "notes": "Often shows up early or around dose increases. Taking with food and slowing titration can reduce it. Persistent nausea can lead to dehydration and weight loss."
+        },
+        {
+          "effect": "Vomiting",
+          "incidence": "11%",
+          "notes": "More likely during titration. If vomiting is happening, the plan usually needs adjusting (slower titration, dose reduction, or stopping)."
+        },
+        {
+          "effect": "Decreased appetite",
+          "incidence": "7%",
+          "notes": "Can quietly lead to weight loss. In older adults, weight loss is a safety problem, not a cosmetic one."
+        },
+        {
+          "effect": "Weight loss",
+          "incidence": "5%",
+          "notes": "Monitor weight. If weight drops, reassess risk/benefit and consider dose adjustment or discontinuation."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "7%",
+          "notes": "Stay hydrated. If severe or persistent, reassess dosing and tolerability."
+        },
+        {
+          "effect": "Abdominal pain",
+          "incidence": "4%",
+          "notes": "Can occur with other GI symptoms; evaluate for ulcer risk if pain is significant or bleeding symptoms appear."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "8%",
+          "notes": "Increases fall risk. If dizziness pairs with slow pulse or fainting, consider bradycardia and get evaluated."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "7%",
+          "notes": "Often mild. Persistent headaches can be a dehydration clue if nausea reduces intake."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "4%",
+          "notes": "Can feel like a general slowdown early on; assess for dehydration, sleep disruption, and medication interactions."
+        },
+        {
+          "effect": "Drowsiness",
+          "incidence": "2%",
+          "notes": "Some people feel sleepy or less alert, especially early on or with other sedating meds."
+        },
+        {
+          "effect": "Falling",
+          "incidence": "4%",
+          "notes": "Falls can reflect dizziness, syncope, or frailty. Treat falls as a serious signal in older adults."
+        },
+        {
+          "effect": "Depression",
+          "incidence": "4%",
+          "notes": "Mood symptoms can be part of dementia, but if depression worsens after starting, reassess."
+        },
+        {
+          "effect": "Bradycardia",
+          "incidence": "1%",
+          "notes": "Slow heart rate can become clinically important. Watch for dizziness, fainting, and unexplained fatigue."
+        },
+        {
+          "effect": "Syncope",
+          "incidence": "1%",
+          "notes": "Fainting can occur, especially in patients with conduction disease or those on other rate-slowing medications."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complete atrioventricular block or clinically significant heart block: may present as syncope, near-syncope, extreme fatigue, or recurrent falls."
+        },
+        {
+          "risk": "Severe skin reactions (including Stevens-Johnson syndrome): stop medication and seek urgent evaluation if suspected."
+        },
+        {
+          "risk": "GI bleeding: black stools, vomiting blood, new anemia symptoms—especially in ulcer history or NSAID use."
+        },
+        {
+          "risk": "Seizure: reported postmarketing; use caution in patients with seizure history."
+        },
+        {
+          "risk": "Hepatitis or elevated liver enzymes: reported postmarketing; evaluate if jaundice or unexplained fatigue occurs."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to galantamine or any component of the formulation"
+        },
+        {
+          "contraindication": "Canadian labeling: hypersensitivity to other tertiary alkaloids (additional contraindication in Canada)"
+        }
+      ],
+      "precautions": [
+        "Hydration matters: patients and caregivers should ensure adequate fluid intake during treatment, especially if GI side effects occur.",
+        "Vagotonic effects: cholinesterase inhibitors may cause bradycardia and/or heart block, with or without a history of cardiac disease.",
+        "Serious skin reactions (including Stevens-Johnson syndrome and acute generalized exanthematous pustulosis) have been reported; discontinue and do not restart if a drug-related rash is suspected.",
+        "Weight loss has been observed; monitor body weight.",
+        "Peptic ulcer/GI bleeding risk: may increase gastric acid secretion; use caution in patients with ulcer history or NSAID use and monitor for bleeding.",
+        "CNS depression/dizziness: may impair alertness and increase fall risk; caution with driving and machinery until response is known.",
+        "Extrapyramidal symptoms: may exacerbate movement symptoms due to increased cholinergic tone.",
+        "Use caution in COPD/asthma, seizure disorder history, and bladder outlet obstruction."
+      ],
+      "interactions": [
+        {
+          "interactant": "Strong CYP2D6 or CYP3A4 inhibitors (examples include certain SSRIs for 2D6 inhibition; certain macrolides/azole antifungals for 3A4 inhibition)",
+          "mechanism": "Higher galantamine exposure and amplified side effects (nausea, dizziness, bradycardia).",
+          "action": "Use caution, titrate slower, and monitor for intolerable GI symptoms, weight loss, and pulse changes."
+        },
+        {
+          "interactant": "Anticholinergic medications (eg, oxybutynin, benztropine, high-anticholinergic antihistamines)",
+          "mechanism": "Can blunt cognitive benefit and worsen confusion while increasing overall side-effect burden.",
+          "action": "Reduce anticholinergic load when possible to preserve cognitive benefit and reduce delirium risk."
+        },
+        {
+          "interactant": "Other cholinesterase inhibitors (donepezil, rivastigmine)",
+          "mechanism": "Additive cholinergic side effects (GI distress, dizziness, bradycardia).",
+          "action": "Avoid combining cholinesterase inhibitors. Use structured switching guidance when transitioning."
+        },
+        {
+          "interactant": "Heart-rate–lowering drugs (beta blockers, some calcium channel blockers, digoxin, antiarrhythmics)",
+          "mechanism": "Higher risk of symptomatic bradycardia, syncope, and falls.",
+          "action": "Review baseline pulse and conduction history; monitor closely after initiation and dose increases."
+        },
+        {
+          "interactant": "NSAIDs or other ulcer-risk meds",
+          "mechanism": "Potentially increased GI irritation/bleeding risk in vulnerable patients.",
+          "action": "Use caution in patients with ulcer history and monitor for GI bleeding symptoms."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and functional trajectory: cognition, daily functioning, caregiver reports (is it helping enough to justify side effects?)"
+        },
+        {
+          "parameter": "Body weight: baseline and periodically; intervene early if weight is trending down"
+        },
+        {
+          "parameter": "GI tolerability: nausea, vomiting, diarrhea, decreased appetite; monitor hydration and nutrition"
+        },
+        {
+          "parameter": "Symptoms of dehydration: low intake, dizziness, lethargy, reduced urination"
+        },
+        {
+          "parameter": "Heart rate and conduction-related symptoms: bradycardia, dizziness, syncope, near-syncope, unexplained fatigue"
+        },
+        {
+          "parameter": "Falls and gait stability: especially during initiation and titration or when other sedating meds are present"
+        },
+        {
+          "parameter": "Symptoms of active or occult GI bleeding: black stools, anemia symptoms, abdominal pain, vomiting blood"
+        },
+        {
+          "parameter": "Movement symptoms in Parkinsonism/DLB: monitor for worsening extrapyramidal symptoms"
+        },
+        {
+          "parameter": "Renal and hepatic function context: ensure maximum dose limits in moderate impairment and avoid in severe impairment"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Adverse events have been observed in animal reproduction studies. Human data are limited. Galantamine is rarely used during pregnancy because its primary indication (dementia) is uncommon in pregnant patients.",
+        "lactation": "It is not known if galantamine is present in breast milk. The decision to breastfeed during therapy should consider the risk of infant exposure, the benefits of breastfeeding to the infant, and the benefits of treatment to the mother.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Use with caution in older adults, particularly those with low body weight and/or serious comorbidities. Limited safety data exist in patients ≥85 years of age. Monitor closely for weight loss, dehydration, dizziness, syncope, and falls.",
+        "renal_impairment": "Mild impairment: no dosage adjustment provided. Moderate (CrCl 9 to 59 mL/min): maximum 16 mg/day. Severe (CrCl <9 mL/min): use is not recommended.",
+        "hepatic_impairment": "Mild impairment (Child-Pugh A): no formal adjustment provided, but use caution. Moderate (Child-Pugh B): maximum 16 mg/day. Severe (Child-Pugh C): use is not recommended."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2001
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption is high; taking with food is often recommended to improve GI tolerability.",
+          "bioavailability": "~90%",
+          "peak_plasma": "Immediate release: ~1 hour (delayed with food); extended release: ~4.5 to 5 hours",
+          "half_life": "~7 hours",
+          "metabolism": "Hepatic metabolism primarily via CYP2D6 and CYP3A4; metabolites are not considered clinically relevant for effect.",
+          "excretion": "Urine (approximately 20%); exposure increases with renal impairment.",
+          "protein_binding": "~18%",
+          "food_effect": "Food can delay peak levels and is commonly used to improve tolerability; IR is typically taken with breakfast and dinner, ER with breakfast."
+        },
+        "dosing": {
+          "titration": "Galantamine dosing is slow on purpose. Start low, hold long enough to prove tolerability, then increase stepwise. Taking it with food and maintaining good fluid intake are key real-world strategies for staying on therapy."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Galantamine doesn’t cause a classic dangerous withdrawal syndrome. The issue with stopping is clinical: some patients show noticeable decline in cognition, function, or overall stability after discontinuation, and that decline may not fully reverse. Because of that, many clinicians prefer a gradual step-down rather than abruptly stopping—especially if the patient seemed to benefit."
+        }
+      }
     }
   },
   "sections": [
@@ -109,7 +297,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This isn’t the kind of med where you feel it “kick in.” If it helps, it’s usually a slow, subtle shift—while side effects can show up fast if titration is too aggressive.",
       "items": [
         {
           "category": "Cognition & Daily Function (weeks, not days)",
@@ -147,7 +334,8 @@
           ],
           "note": "Weight loss can be clinically important in frail or low-body-weight patients."
         }
-      ]
+      ],
+      "intro": "This isn’t the kind of med where you feel it “kick in.” If it helps, it’s usually a slow, subtle shift—while side effects can show up fast if titration is too aggressive."
     },
     {
       "type": "onset_duration",
@@ -164,10 +352,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In clinical trials, galantamine shows modest improvements in cognition and overall dementia symptom measures compared with placebo. Translation: some people stabilize or function a bit better for a period of time, but responses vary widely. The win is usually small, and tolerability often decides whether it’s worth continuing.",
       "metric": "Modest symptom benefit in Alzheimer dementia",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "In clinical trials, galantamine shows modest improvements in cognition and overall dementia symptom measures compared with placebo. Translation: some people stabilize or function a bit better for a period of time, but responses vary widely. The win is usually small, and tolerability often decides whether it’s worth continuing.",
       "clinical_details": "Galantamine is typically evaluated using cognitive scales (like ADAS-cog) and clinician-rated global measures over months. Benefits are generally modest at the group level and not universal. In real practice, the decision to continue is based on a clear, measurable benefit (or meaningful stabilization) versus side effects like nausea, weight loss, dizziness, or fainting.",
       "citation": {
         "authors": "U.S. Food and Drug Administration",
@@ -299,7 +487,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Interactions with galantamine mostly show up as increased side effects (GI intolerance, dizziness, bradycardia) or reduced cognitive benefit due to competing medications.",
       "items": [
         {
           "with": "Strong CYP2D6 or CYP3A4 inhibitors (examples include certain SSRIs for 2D6 inhibition; certain macrolides/azole antifungals for 3A4 inhibition)",
@@ -326,7 +513,8 @@
           "risk": "Potentially increased GI irritation/bleeding risk in vulnerable patients.",
           "action": "Use caution in patients with ulcer history and monitor for GI bleeding symptoms."
         }
-      ]
+      ],
+      "intro": "Interactions with galantamine mostly show up as increased side effects (GI intolerance, dizziness, bradycardia) or reduced cognitive benefit due to competing medications."
     },
     {
       "type": "tapering",
@@ -409,21 +597,6 @@
       "text": "In geriatric psychiatry and memory care, galantamine is a symptom-support option for Alzheimer dementia—often chosen when the goal is to preserve cognition and daily functioning as long as possible. It’s not a psychiatric sedative, not an anxiolytic, and not a sleep medication. Where it intersects with psychiatry is the real-world ripple effect: improved cognition can sometimes reduce distress, confusion, or caregiver strain, while poor tolerability (nausea, weight loss, dizziness, syncope) can worsen overall functioning and increase fall risk. In Lewy body or Parkinson disease dementia, it may be considered when other cholinesterase inhibitors aren’t tolerated, while watching closely for movement and autonomic side effects."
     }
   ],
-  "seo": {
-    "title": "Galantamine (Razadyne ER): Uses, Dosing, Side Effects & Monitoring",
-    "description": "Galantamine (Razadyne ER) for Alzheimer’s dementia symptoms: dosing and titration, common side effects (nausea, vomiting, weight loss), bradycardia/fainting risks, interactions, monitoring, and safe discontinuation.",
-    "canonical": "https://www.heypsych.com/treatments/galantamine-razadyne-er",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is galantamine used for?",
@@ -461,5 +634,20 @@
       "q": "Can galantamine be used in severe Alzheimer’s disease?",
       "a": "It’s FDA-approved for mild to moderate Alzheimer dementia, but some clinicians use it off-label in severe disease, particularly when a patient has tolerated it and there is perceived benefit, sometimes alongside memantine. The decision is individualized and heavily influenced by side effects and goals of care."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Galantamine (Razadyne ER): Uses, Dosing, Side Effects & Monitoring",
+    "description": "Galantamine (Razadyne ER) for Alzheimer’s dementia symptoms: dosing and titration, common side effects (nausea, vomiting, weight loss), bradycardia/fainting risks, interactions, monitoring, and safe discontinuation.",
+    "canonical": "https://www.heypsych.com/treatments/galantamine-razadyne-er",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

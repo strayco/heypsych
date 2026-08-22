@@ -91,7 +91,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
     (searchQuery ? 1 : 0) + (selectedType !== "all" ? 1 : 0) + (selectedRegion !== "all" ? 1 : 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-negative-tint to-surface">
       {/* Hero */}
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
@@ -101,12 +101,12 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                 <Shield className="h-8 w-8 text-rose-600" />
               </div>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className="bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-negative to-negative-600 bg-clip-text text-transparent">
                   Crisis & Helplines
                 </span>
               </h1>
             </div>
-            <p className="mx-auto mb-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mx-auto mb-6 max-w-3xl text-base leading-relaxed text-label-tertiary sm:text-lg">
               Immediate help is available 24/7. You are not alone — crisis support, suicide
               prevention hotlines, and emergency resources are here for you.
             </p>
@@ -118,7 +118,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
       <section className="px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-            <Card className="border-0 bg-gradient-to-r from-rose-600 to-orange-600 text-white shadow-2xl">
+            <Card className="border-0 bg-gradient-to-r from-negative to-negative-600 text-white shadow-2xl">
               <CardContent className="p-8 text-center">
                 <AlertTriangle className="mx-auto mb-4 h-12 w-12" />
                 <h2 className="mb-3 text-2xl font-bold">If you're in crisis right now</h2>
@@ -129,7 +129,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                   <a href="tel:988">
                     <Button
                       size="lg"
-                      className="bg-white px-8 text-lg text-rose-600 hover:bg-rose-50"
+                      className="bg-surface px-8 text-lg text-rose-600 hover:bg-rose-50"
                     >
                       <Phone className="mr-2 h-5 w-5" />
                       Call 988
@@ -162,20 +162,20 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="mb-4 flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-slate-600" />
-                  <span className="text-sm font-medium text-slate-700">Find helplines:</span>
+                  <Filter className="h-4 w-4 text-label-tertiary" />
+                  <span className="text-sm font-medium text-label-secondary">Find helplines:</span>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Search */}
                   <div className="relative">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
                     <input
                       type="text"
                       placeholder="Search helplines..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full rounded-md border border-neutral-300 py-2 pr-3 pl-10 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
+                      className="w-full rounded-md border border-separator py-2 pr-3 pl-10 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
                     />
                   </div>
 
@@ -183,7 +183,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
                   >
                     <option value="all">All Types</option>
                     {types.map((t) => (
@@ -197,7 +197,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                   <select
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500"
                   >
                     <option value="all">All Regions</option>
                     {regions.map((r) => (
@@ -210,7 +210,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
 
                 {activeFiltersCount > 0 && (
                   <div className="flex items-center justify-between border-t pt-4">
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-label-tertiary">
                       Showing {filteredResources.length} of {resources.length} helplines
                     </span>
                     <Button variant="ghost" size="sm" onClick={clearFilters}>
@@ -251,7 +251,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                           <div className="flex-1">
                             <CardTitle className="mb-2 text-lg">{resource.name}</CardTitle>
                             {resource.description && (
-                              <p className="text-sm text-slate-600">{resource.description}</p>
+                              <p className="text-sm text-label-tertiary">{resource.description}</p>
                             )}
                           </div>
                         </div>
@@ -279,12 +279,12 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
 
                         {/* Metadata */}
                         <div className="space-y-2 text-sm">
-                          <div className="flex items-center gap-2 text-slate-600">
+                          <div className="flex items-center gap-2 text-label-tertiary">
                             <Clock className="h-4 w-4" />
                             <span>{hours}</span>
                           </div>
                           {languages.length > 0 && (
-                            <div className="flex items-center gap-2 text-slate-600">
+                            <div className="flex items-center gap-2 text-label-tertiary">
                               <Languages className="h-4 w-4" />
                               <span>{languages.join(", ")}</span>
                             </div>
@@ -321,9 +321,9 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
           ) : (
             <Card>
               <CardContent className="p-12 text-center">
-                <Shield className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                <h3 className="mb-2 text-xl font-semibold text-slate-900">No helplines found</h3>
-                <p className="mb-6 text-slate-600">Try adjusting your filters</p>
+                <Shield className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">No helplines found</h3>
+                <p className="mb-6 text-label-tertiary">Try adjusting your filters</p>
                 <Button onClick={clearFilters}>Clear Filters</Button>
               </CardContent>
             </Card>

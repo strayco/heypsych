@@ -1,6 +1,7 @@
 // src/lib/schemas/digital-tool-v3.ts
 // V3 Digital Tool Schema - AEO/SEO First, Fully Dynamic
 import { z } from "zod";
+import { UncertaintyBooleanZ } from "./tool-editorial";
 
 // ============================================================================
 // TAXONOMY ENUMS
@@ -117,11 +118,21 @@ export const PricingZ = z.object({
   notes: z.string().optional(),
 });
 
+/**
+ * Privacy compliance value - backwards compatible
+ * Accepts boolean (legacy) or UncertaintyBoolean (new)
+ * - true/"yes" = confirmed HIPAA compliant
+ * - false/"no" = confirmed NOT HIPAA compliant
+ * - "unknown" = compliance status not verified
+ * - "not_applicable" = not a healthcare tool
+ */
+export const PrivacyComplianceValueZ = z.union([z.boolean(), UncertaintyBooleanZ]);
+
 export const PrivacyZ = z.object({
   grade: PrivacyGradeZ,
-  hipaa_compliant: z.boolean().default(false),
-  gdpr_compliant: z.boolean().default(true),
-  data_sold: z.boolean().default(false),
+  hipaa_compliant: PrivacyComplianceValueZ.default(false),
+  gdpr_compliant: PrivacyComplianceValueZ.default(true),
+  data_sold: PrivacyComplianceValueZ.default(false),
   notes: z.string().optional(),
   sources: z.array(z.string()).optional(),
 });

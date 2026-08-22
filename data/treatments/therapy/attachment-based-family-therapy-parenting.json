@@ -1,81 +1,166 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "attachment-based-family-therapy-parenting",
-  "type": "therapy",
-  "name": "Attachment-Based Family Therapy – Parenting (ABFT-P)",
-  "summary": "A structured adaptation of ABFT focusing on strengthening parent-child attachment to improve adolescent emotional and behavioral health.",
-  "description": "Attachment-Based Family Therapy for Parenting (ABFT-P) is an evidence-based, manualized family therapy model adapted from ABFT, designed to repair and strengthen the parent–child attachment bond. It aims to reduce adolescent distress, depression, and conflict by fostering open communication, rebuilding trust, and supporting parents in developing healthier relationships with their children. The therapy emphasizes emotion-focused discussions, parental attunement, and collaborative problem-solving to address relational ruptures and promote resilience.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "attachment",
-    "parenting",
-    "adolescent",
-    "systemic"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "attachment-based-family-therapy-parenting",
+    "name": "Attachment-Based Family Therapy – Parenting (ABFT-P)",
+    "generic_name": "attachment-based family therapy – parenting",
+    "brand_names": [
+      "ABFT-P"
+    ]
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Psychotherapy"
     ],
-    "treatment_types": [
-      "Family-Based Therapy",
-      "Attachment Therapy"
-    ],
-    "categories": [
-      "Family Therapies",
-      "Parenting Interventions"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Parents",
-      "Families"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "16–20 sessions typical"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Family conflict",
-      "Parenting support",
-      "Suicidality"
+    "tags": [
+      "family therapy",
+      "attachment",
+      "parenting",
+      "adolescent",
+      "systemic"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Adolescent depression",
-      "Suicidal ideation",
-      "Family conflict",
-      "Parent-child relational difficulties",
-      "Anxiety disorders"
-    ],
-    "off_label_uses": [
-      "School-related difficulties",
-      "Behavioral problems",
-      "Trauma-related distress"
-    ],
-    "contraindications": [
-      "Families unwilling to engage in therapy",
-      "Active abuse in the household"
-    ],
-    "safety_profile": "Safe and non-invasive.",
-    "evidence_level": "Strong; supported by randomized controlled trials.",
-    "research_support": "ABFT and ABFT-P are well-researched interventions with demonstrated efficacy for adolescent depression and suicidality.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "suicidality": 5,
-      "family_conflict": 4,
-      "anxiety": 3,
-      "overall_tolerability": 5
+  "summary": "A structured adaptation of ABFT focusing on strengthening parent-child attachment to improve adolescent emotional and behavioral health.",
+  "description": "Attachment-Based Family Therapy for Parenting (ABFT-P) is an evidence-based, manualized family therapy model adapted from ABFT, designed to repair and strengthen the parent–child attachment bond. It aims to reduce adolescent distress, depression, and conflict by fostering open communication, rebuilding trust, and supporting parents in developing healthier relationships with their children. The therapy emphasizes emotion-focused discussions, parental attunement, and collaborative problem-solving to address relational ruptures and promote resilience.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "adolescent-depression",
+          "condition_name": "Adolescent depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "suicidal-ideation",
+          "condition_name": "Suicidal ideation",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-difficulties",
+          "condition_name": "Parent-child relational difficulties",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "school-related-difficulties",
+          "condition_name": "School-related difficulties",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "behavioral-problems",
+          "condition_name": "Behavioral problems",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "trauma-related-distress",
+          "condition_name": "Trauma-related distress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong; supported by randomized controlled trials.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "suicidality": {
+          "rating": 5
+        },
+        "family_conflict": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "ABFT and ABFT-P are well-researched interventions with demonstrated efficacy for adolescent depression and suicidality."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "16–20 sessions typical"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort during difficult discussions"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict if sessions are poorly managed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active abuse in the household",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe parental psychopathology interfering with participation",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not directly applicable"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family-Based Therapy, Attachment Therapy",
+        "key_techniques": [
+          "Family Therapies",
+          "Parenting Interventions"
+        ],
+        "session_structure": {
+          "pre_session": "Review goals, emotional climate, and readiness for attachment-focused work.",
+          "during_session": "Facilitate emotionally focused conversations, strengthen attachment bonds, repair relational ruptures.",
+          "post_session": "Summarize progress and assign home-based communication tasks."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists, psychologists, or social workers trained in ABFT"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -238,6 +323,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Diamond, G.S. et al. (2002). Attachment-based family therapy for depressed adolescents: A treatment development study.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11837477/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Diamond, G.S. et al. (2010). Attachment-based family therapy for adolescents with suicidal ideation: A randomized controlled trial.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20231193/"
+    }
+  ],
   "seo": {
     "title": "Attachment-Based Family Therapy – Parenting (ABFT-P)",
     "description": "Attachment-Based Family Therapy – Parenting (ABFT-P) is an evidence-based family therapy for adolescent depression, suicidality, and parent-child relational repair.",
@@ -250,5 +349,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong; supported by randomized controlled trials."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong; supported by randomized controlled trials."
+    ]
   }
 }

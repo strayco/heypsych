@@ -1,0 +1,110 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_no_phone",
+      "title": "No Phone Shield",
+      "description": "Complete without using your phone as a safety behavior",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "dining_hall" }
+      ],
+      "modifiers": [
+        {
+          "type": "forbid-choices",
+          "choiceIds": ["entrance_phone", "line_phone_shield", "escape_to_phone", "lull_check_phone"]
+        }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": "no_safety_behaviors",
+      "targetMechanisms": ["distress_tolerance", "directness"],
+      "targetPatterns": {
+        "trains": ["distress_tolerated", "direct_action"],
+        "prevents": ["safety_behavior", "avoidance_at_threshold"]
+      },
+      "transferFocus": "Try one real-world meal in public without checking your phone as a shield"
+    },
+    {
+      "id": "challenge_full_meal",
+      "title": "Stay for the Full Meal",
+      "description": "Sit down and don't leave until you've finished eating",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "dining_hall" }
+      ],
+      "modifiers": [
+        { "type": "require-objectives", "objectiveIds": ["obj_stay_full_meal"] }
+      ],
+      "xpMultiplier": 1.8,
+      "masteryCredit": "silver",
+      "achievementId": null,
+      "targetMechanisms": ["persistence", "distress_tolerance"],
+      "targetPatterns": {
+        "trains": ["distress_tolerated"],
+        "prevents": ["premature_exit", "avoidance_at_threshold"]
+      },
+      "transferFocus": "Commit to staying through an uncomfortable social situation for a set time"
+    },
+    {
+      "id": "challenge_one_more_step",
+      "title": "One More Step",
+      "description": "After any successful interaction, push for one more small risk",
+      "unlockRequirements": [
+        { "type": "scenario-mastery", "scenarioId": "dining_hall", "minTier": "silver" }
+      ],
+      "modifiers": [
+        { "type": "require-objectives", "objectiveIds": ["obj_accurate_read", "obj_stay_full_meal"] }
+      ],
+      "xpMultiplier": 2.2,
+      "masteryCredit": "gold",
+      "achievementId": null,
+      "targetMechanisms": ["directness", "persistence"],
+      "targetPatterns": {
+        "trains": ["direct_action", "micro_progress"],
+        "prevents": ["premature_exit"]
+      },
+      "transferFocus": "After any successful social interaction, add one small follow-up before leaving"
+    },
+    {
+      "id": "challenge_comeback_strong",
+      "title": "Come Back Strong",
+      "description": "Leave the dining hall, then return and reach a positive ending",
+      "unlockRequirements": [
+        { "type": "scenario-mastery", "scenarioId": "dining_hall", "minTier": "bronze" }
+      ],
+      "modifiers": [
+        { "type": "require-route", "routeId": "route_comeback" }
+      ],
+      "xpMultiplier": 2.5,
+      "masteryCredit": "platinum",
+      "achievementId": "comeback_champion",
+      "targetMechanisms": ["recovery", "persistence", "activation"],
+      "targetPatterns": {
+        "trains": ["recovery_success"],
+        "prevents": ["premature_exit"]
+      },
+      "transferFocus": "If you leave a social situation, practice returning within 10 minutes"
+    },
+    {
+      "id": "challenge_accurate_interpreter",
+      "title": "Don't Let Neutral Turn Negative",
+      "description": "Reach a positive ending without catastrophizing any neutral moment",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "dining_hall" }
+      ],
+      "modifiers": [
+        {
+          "type": "forbid-choices",
+          "choiceIds": ["interpret_rejection", "interpret_pity", "rejection_spiral_more"]
+        }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": "accurate_interpreter",
+      "targetMechanisms": ["interpretation", "self_compassion"],
+      "targetPatterns": {
+        "trains": ["grounded_interpretation", "compassion_applied"],
+        "prevents": ["interpretation_distortion", "self_attack_spiral"]
+      },
+      "transferFocus": "Before interpreting a social response, ask: 'What's the neutral reading?'"
+    }
+  ]
+}

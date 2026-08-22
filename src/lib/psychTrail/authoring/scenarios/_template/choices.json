@@ -1,0 +1,86 @@
+{
+  "choices": [
+    {
+      "id": "choice_continue",
+      "text": "Continue forward",
+      "description": "Move to the next step",
+      "resultText": "You proceed.",
+      "condition": null,
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 10 }
+      ],
+      "nextNodeId": "middle",
+      "advancesTime": true,
+      "scoreEffects": [
+        { "category": "directness", "points": 20, "reason": "Moving forward" }
+      ],
+      "routeTags": ["direct"],
+      "style": "direct",
+      "riskLevel": "moderate",
+      "objectiveEffects": [],
+      "skillSignals": []
+    },
+    {
+      "id": "choice_leave",
+      "text": "Leave now",
+      "description": "Exit the scenario early",
+      "resultText": "You decide to leave.",
+      "condition": null,
+      "effects": [
+        { "type": "end", "endingId": "ending_early_exit" }
+      ],
+      "nextNodeId": null,
+      "advancesTime": true,
+      "scoreEffects": [
+        { "category": "persistence", "points": -20, "reason": "Left early" }
+      ],
+      "routeTags": ["avoidant"],
+      "style": "avoidant",
+      "riskLevel": "safe",
+      "objectiveEffects": [],
+      "skillSignals": []
+    },
+    {
+      "id": "choice_finish",
+      "text": "Complete the scenario",
+      "description": "Reach a successful ending",
+      "resultText": "You did it.",
+      "condition": null,
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": 20 },
+        { "type": "end", "endingId": "ending_success" }
+      ],
+      "nextNodeId": null,
+      "advancesTime": true,
+      "scoreEffects": [
+        { "category": "directness", "points": 30, "reason": "Completed successfully" },
+        { "category": "persistence", "points": 25, "reason": "Saw it through" }
+      ],
+      "routeTags": ["direct", "complete"],
+      "style": "direct",
+      "riskLevel": "moderate",
+      "objectiveEffects": [
+        { "objectiveId": "obj_complete", "action": "complete" }
+      ],
+      "skillSignals": []
+    },
+    {
+      "id": "choice_back",
+      "text": "Go back",
+      "description": "Return to the start",
+      "resultText": "You reconsider.",
+      "condition": null,
+      "effects": [
+        { "type": "metric", "metric": "comfort", "change": -5 }
+      ],
+      "nextNodeId": "start",
+      "advancesTime": true,
+      "scoreEffects": [],
+      "routeTags": [],
+      "style": "indirect",
+      "riskLevel": "safe",
+      "objectiveEffects": [],
+      "skillSignals": []
+    }
+  ]
+}

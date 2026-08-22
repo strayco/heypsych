@@ -1,22 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b7-biotin",
-  "type": "supplement",
-  "name": "Vitamin B7 (Biotin)",
-  "summary": "Vitamin B7, commonly known as biotin, is a water-soluble B-complex vitamin that supports fatty acid synthesis, glucose metabolism, and amino acid breakdown. It is often marketed for hair, skin, and nail health.",
-  "description": "Biotin is an essential coenzyme for carboxylase enzymes involved in critical metabolic pathways, including fatty acid synthesis, gluconeogenesis, and branched-chain amino acid metabolism. Although true biotin deficiency is rare, it can cause symptoms such as hair loss, brittle nails, dermatitis, neurological disturbances, and developmental delays in infants. Biotin supplementation is commonly marketed for cosmetic benefits such as hair and nail strength, although clinical evidence for these effects in healthy individuals is limited. High-dose biotin may interfere with certain laboratory tests, including thyroid function and troponin assays.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "metabolism",
-    "hair",
-    "skin",
-    "nails"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Egg yolk, nuts, seeds, legumes, whole grains, organ meats",
+  "identity": {
+    "slug": "vitamin-b7-biotin",
+    "name": "Vitamin B7 (Biotin)",
+    "generic_name": "vitamin b7",
+    "brand_names": [
+      "Biotin",
+      "Vitamin B7"
+    ],
+    "aliases": [
+      "Vitamin H",
+      "Coenzyme R"
+    ]
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Dermatology",
@@ -27,72 +27,144 @@
       "Fatty acid synthesis",
       "Gluconeogenesis"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-counter supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Biotin",
-      "Vitamin B7"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Dermatology",
-      "Endocrinology"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "metabolism",
+      "hair",
+      "skin",
+      "nails"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of biotin deficiency",
-      "Biotinidase deficiency (inborn error of metabolism)"
-    ],
-    "off_label_uses": [
-      "Support for brittle nails",
-      "Hair thinning or alopecia",
-      "Diabetes (insulin sensitivity; limited evidence)"
-    ],
-    "contraindications": [
-      "Known hypersensitivity to biotin"
-    ],
-    "monitoring_required": [
-      "Awareness of lab test interference with high-dose use"
-    ],
-    "efficacy_rating": {
-      "deficiency_treatment": 5,
-      "biotinidase deficiency": 5,
-      "hair/nail health": 2,
-      "diabetes": 2
+  "summary": "Vitamin B7, commonly known as biotin, is a water-soluble B-complex vitamin that supports fatty acid synthesis, glucose metabolism, and amino acid breakdown. It is often marketed for hair, skin, and nail health.",
+  "description": "Biotin is an essential coenzyme for carboxylase enzymes involved in critical metabolic pathways, including fatty acid synthesis, gluconeogenesis, and branched-chain amino acid metabolism. Although true biotin deficiency is rare, it can cause symptoms such as hair loss, brittle nails, dermatitis, neurological disturbances, and developmental delays in infants. Biotin supplementation is commonly marketed for cosmetic benefits such as hair and nail strength, although clinical evidence for these effects in healthy individuals is limited. High-dose biotin may interfere with certain laboratory tests, including thyroid function and troponin assays.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-biotin-deficiency",
+          "condition_name": "Prevention and treatment of biotin deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "biotinidase-deficiency-inborn-error-of-metabolism",
+          "condition_name": "Biotinidase deficiency (inborn error of metabolism)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-for-brittle-nails",
+          "condition_name": "Support for brittle nails",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "hair-thinning-or-alopecia",
+          "condition_name": "Hair thinning or alopecia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "diabetes-insulin-sensitivity-limited-evidence",
+          "condition_name": "Diabetes (insulin sensitivity; limited evidence)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency_treatment": {
+          "rating": 5
+        },
+        "biotinidase deficiency": {
+          "rating": 5
+        },
+        "hair/nail health": {
+          "rating": 2
+        },
+        "diabetes": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated"
+        },
+        {
+          "effect": "Mild digestive upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Interference with laboratory assays leading to false results"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity to biotin"
+        }
+      ],
+      "precautions": [
+        "High-dose biotin can interfere with lab tests, including thyroid function, hormone levels, and troponin assays.",
+        "Use caution in patients undergoing diagnostic testing."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticonvulsants (e.g., valproate, carbamazepine)",
+          "mechanism": "May reduce biotin levels",
+          "action": "Monitor for deficiency"
+        },
+        {
+          "interactant": "Lab tests (thyroid, troponin, hormones)",
+          "mechanism": "False high or low readings",
+          "action": "Discontinue biotin 2–3 days before testing"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Symptom resolution in deficiency"
+        },
+        {
+          "parameter": "Consider lab interference if abnormal test results occur"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at dietary intake levels; higher doses should be supervised",
+        "lactation": "Safe at dietary intake levels",
+        "pediatric": "Safe at recommended intakes; therapeutic doses used for biotinidase deficiency",
+        "geriatric": "Safe at recommended intakes"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Egg yolk, nuts, seeds, legumes, whole grains, organ meats",
+        "regulatory_notes": "Dietary supplement"
+      }
     }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B7",
-      "Biotin",
-      "Vitamin H",
-      "Coenzyme R"
-    ],
-    "synonyms": [
-      "Vitamin H",
-      "Coenzyme R"
-    ],
-    "common_misspellings": [
-      "biaton",
-      "bitoin",
-      "byotin"
-    ]
   },
   "sections": [
     {
@@ -206,6 +278,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Biotin",
+      "url": "https://ods.od.nih.gov/factsheets/Biotin-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Mock DM. Biotin: From Nutrition to Therapeutics. J Nutr. 2017",
+      "url": "https://academic.oup.com/jn/article/147/8/1487/4593564"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Zempleni J, Hassan YI, Wijeratne SS. Biotin and biotinidase deficiency. Expert Rev Endocrinol Metab. 2008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19803817/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B7",
+      "Biotin",
+      "Vitamin H",
+      "Coenzyme R"
+    ],
+    "synonyms": [
+      "Vitamin H",
+      "Coenzyme R"
+    ],
+    "common_misspellings": [
+      "biaton",
+      "bitoin",
+      "byotin"
+    ]
+  },
   "seo": {
     "title": "Vitamin B7 (Biotin) – Metabolism and Hair/Nail Health",
     "description": "Vitamin B7 (Biotin) is essential for metabolism and is often marketed for hair and nail support. Learn about uses, dosing, safety, lab test interference, and evidence.",

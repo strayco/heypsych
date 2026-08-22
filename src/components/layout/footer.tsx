@@ -3,142 +3,107 @@
 import React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config/site";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Heart, ExternalLink } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {
-      title: "Treatments",
+      title: "Explore",
       links: [
-        { name: "Medications", href: "/treatments/medications" },
-        { name: "Interventional", href: "/treatments/interventional" },
-        { name: "Investigational", href: "/treatments/investigational" },
-        { name: "Alternative", href: "/treatments/alternative" },
-        { name: "Therapy", href: "/treatments/therapy" },
-        { name: "Supplements", href: "/treatments/supplements" },
-      ],
-    },
-    {
-      title: "Conditions",
-      links: [
-        { name: "Depression", href: "/conditions/major-depressive-disorder" },
-        { name: "Anxiety", href: "/conditions/generalized-anxiety-disorder" },
-        { name: "ADHD", href: "/conditions/attention-deficit-hyperactivity-disorder" },
-        { name: "Bipolar", href: "/conditions/bipolar-i-disorder" },
-        { name: "All Conditions", href: "/conditions" },
+        { name: "Conditions", href: "/conditions" },
+        { name: "Treatments", href: "/treatments" },
+        { name: "Tools", href: "/tools" },
+        { name: "Find Care", href: "/psychiatrists" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { name: "Assessments & Screeners", href: "/resources/assessments-screeners" },
-        { name: "Support & Community", href: "/resources/support-community" },
-        { name: "Digital Tools", href: "/resources/digital-tools" },
         { name: "Knowledge Hub", href: "/resources/knowledge-hub" },
-        { name: "PsychTrails™", href: "/psychtrails" },
+        { name: "Assessments", href: "/resources/assessments-screeners" },
+        { name: "For Clinicians", href: "/for-clinicians" },
       ],
     },
     {
       title: "Company",
       links: [
-        { name: "About Us", href: "/about" },
-        { name: "Privacy Policy", href: "/privacy" },
-        { name: "Terms of Service", href: "/terms" },
+        { name: "About", href: "/about" },
+        { name: "Privacy", href: "/privacy" },
+        { name: "Terms", href: "/terms" },
         { name: "Contact", href: "mailto:hello@heypsych.com" },
       ],
     },
   ];
 
-  const socialLinks: any[] = [];
-
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Newsletter Section */}
-      <div className="border-b border-gray-800">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h3 className="mb-4 text-2xl font-bold">Stay updated on mental health treatments</h3>
-            <p className="mx-auto mb-6 max-w-2xl text-gray-400">
-              Get the latest research, treatment updates, and evidence-based insights delivered to
-              your inbox. No spam, just valuable mental health information.
-            </p>
-            <div className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row opacity-60">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                disabled
-                className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 cursor-not-allowed opacity-50"
-              />
-              <Button
-                size="lg"
-                className="px-8"
-                disabled
-              >
-                Subscribe
-              </Button>
+    <footer className="border-t border-separator bg-surface">
+      {/* Crisis Support Banner */}
+      <div className="bg-negative-tint border-b border-negative-border">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-negative text-white">
+                <Phone className="h-4 w-4" />
+              </div>
+              <p className="text-sm font-medium text-negative-700">
+                If you&apos;re in crisis, help is available 24/7
+              </p>
             </div>
-            <p className="mt-3 text-sm text-yellow-400">
-              Coming Soon
-            </p>
-            <p className="mt-2 text-xs text-gray-500">
-              Newsletter subscription will be available soon.
-            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="tel:988"
+                className="text-sm font-semibold text-negative hover:underline"
+              >
+                Call or text 988
+              </a>
+              <span className="text-negative-border">|</span>
+              <Link
+                href="/resources/support-community/immediate-crisis"
+                className="text-sm font-medium text-negative-600 hover:text-negative hover:underline"
+              >
+                More resources
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="mb-4 flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
-                <span className="text-lg font-bold text-white">H</span>
-              </div>
-              <span className="text-xl font-bold">{siteConfig.name}</span>
+          <div className="col-span-2 lg:col-span-2">
+            <div className="mb-4">
+              <img
+                src="/logo.svg"
+                alt={siteConfig.name}
+                className="h-10 w-auto"
+              />
             </div>
-            <p className="mb-6 max-w-sm text-gray-400">
-              Evidence-based mental health treatment education platform. Helping you make informed
-              decisions about your mental health journey.
+            <p className="mb-6 max-w-xs text-sm leading-relaxed text-label-secondary">
+              Understand your mental health. Explore your options. Find your next step.
             </p>
-
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const IconComponent = social.icon;
-                return (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    className="text-gray-400 transition-colors hover:text-white"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <IconComponent className="h-5 w-5" />
-                  </Link>
-                );
-              })}
-            </div>
+            <p className="text-xs text-label-tertiary">
+              Evidence-based information reviewed by mental health professionals.
+            </p>
           </div>
 
           {/* Footer Links */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 text-lg font-semibold">{section.title}</h4>
+              <h4 className="mb-4 text-sm font-semibold text-label-primary">
+                {section.title}
+              </h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="flex items-center text-sm text-gray-400 transition-colors hover:text-white"
+                      className="text-sm text-label-secondary transition-colors hover:text-accent"
                     >
                       {link.name}
-                      {link.href.startsWith("http") && <ExternalLink className="ml-1 h-3 w-3" />}
                     </Link>
                   </li>
                 ))}
@@ -149,18 +114,15 @@ export function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <p className="text-sm text-gray-400">
-              © {currentYear} {siteConfig.name} (PsychTrails™). All rights reserved.
+      <div className="border-t border-separator">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-sm text-label-tertiary">
+              © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
-            <div className="flex items-center gap-4">
-              <div className="inline-flex items-center rounded-full border border-gray-600 px-3 py-1 text-xs font-medium text-gray-400">
-                Made with <Heart className="mx-1 h-3 w-3 text-red-500" /> for better mental health
-              </div>
-              <span className="text-xs text-gray-600">v2.2.0</span>
-            </div>
+            <p className="text-xs text-label-quaternary">
+              HeyPsych provides educational information only. Not a substitute for professional medical advice.
+            </p>
           </div>
         </div>
       </div>

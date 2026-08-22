@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "chromium",
-  "type": "supplement",
-  "name": "Chromium (Chromium Picolinate, Chromium Chloride, Trivalent Chromium)",
-  "summary": "An essential trace mineral involved in glucose metabolism and insulin sensitivity, studied as an adjunct in atypical depression, polycystic ovary syndrome (PCOS), and weight management.",
-  "description": "Chromium is a dietary trace mineral that enhances the action of insulin and is essential for carbohydrate, fat, and protein metabolism. The most commonly studied supplemental form is chromium picolinate. Clinical studies suggest that chromium may benefit individuals with atypical depression, particularly those with carbohydrate craving and weight gain, as well as in improving glucose tolerance in type 2 diabetes and PCOS. However, evidence is mixed, and benefits appear modest. Chromium is generally safe at low doses, but high doses may cause kidney or liver toxicity.",
-  "category": "supplements",
-  "tags": [
-    "glucose-metabolism",
-    "insulin-sensitivity",
-    "atypical-depression",
-    "weight-management"
-  ],
-  "metadata": {
-    "compound_type": "Trace mineral supplement",
-    "natural_source": "Whole grains, broccoli, meats, nuts, brewer’s yeast",
+  "identity": {
+    "slug": "chromium",
+    "name": "Chromium (Chromium Picolinate, Chromium Chloride, Trivalent Chromium)",
+    "generic_name": "chromium",
+    "brand_names": [
+      "Chromium Picolinate",
+      "Chromax",
+      "GTF Chromium"
+    ],
+    "aliases": [
+      "Chromax",
+      "Chromium supplement"
+    ],
+    "wikidata_qid": "Q725"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Metabolic support",
       "Depression (adjunct)",
@@ -24,76 +28,157 @@
       "Insulin potentiation",
       "Neurotransmitter modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Chromium Picolinate",
-      "Chromax",
-      "GTF Chromium"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Endocrinology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q725"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Adjunct in atypical depression",
-      "Insulin resistance",
-      "PCOS (polycystic ovary syndrome)"
-    ],
-    "off_label_uses": [
-      "Weight loss adjunct",
-      "Improved glucose tolerance in type 2 diabetes",
-      "Carbohydrate craving reduction"
-    ],
-    "contraindications": [
-      "Renal impairment",
-      "Hepatic impairment"
-    ],
-    "monitoring_required": [
-      "Blood glucose",
-      "Liver and kidney function in long-term or high-dose use"
-    ],
-    "efficacy_rating": {
-      "atypical_depression": 2,
-      "insulin_resistance": 3,
-      "weight_management": 2,
-      "pcos": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Chromium",
-      "Chromium picolinate",
-      "Chromium chloride",
-      "GTF Chromium"
-    ],
-    "synonyms": [
-      "Chromax",
-      "Chromium supplement"
-    ],
-    "common_misspellings": [
-      "chromim",
-      "chormium",
-      "chomium"
+    "tags": [
+      "glucose-metabolism",
+      "insulin-sensitivity",
+      "atypical-depression",
+      "weight-management"
     ]
+  },
+  "summary": "An essential trace mineral involved in glucose metabolism and insulin sensitivity, studied as an adjunct in atypical depression, polycystic ovary syndrome (PCOS), and weight management.",
+  "description": "Chromium is a dietary trace mineral that enhances the action of insulin and is essential for carbohydrate, fat, and protein metabolism. The most commonly studied supplemental form is chromium picolinate. Clinical studies suggest that chromium may benefit individuals with atypical depression, particularly those with carbohydrate craving and weight gain, as well as in improving glucose tolerance in type 2 diabetes and PCOS. However, evidence is mixed, and benefits appear modest. Chromium is generally safe at low doses, but high doses may cause kidney or liver toxicity.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "adjunct-in-atypical-depression",
+          "condition_name": "Adjunct in atypical depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insulin-resistance",
+          "condition_name": "Insulin resistance",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "pcos-polycystic-ovary-syndrome",
+          "condition_name": "PCOS (polycystic ovary syndrome)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "weight-loss-adjunct",
+          "condition_name": "Weight loss adjunct",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "improved-glucose-tolerance-in-type-2-diabetes",
+          "condition_name": "Improved glucose tolerance in type 2 diabetes",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "carbohydrate-craving-reduction",
+          "condition_name": "Carbohydrate craving reduction",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "atypical_depression": {
+          "rating": 2
+        },
+        "insulin_resistance": {
+          "rating": 3
+        },
+        "weight_management": {
+          "rating": 2
+        },
+        "pcos": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild gastrointestinal upset"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Liver dysfunction (rare, high doses)"
+        },
+        {
+          "risk": "Kidney impairment (rare, high doses)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Renal impairment"
+        },
+        {
+          "contraindication": "Hepatic impairment"
+        }
+      ],
+      "precautions": [
+        "High doses may cause organ toxicity.",
+        "Not recommended for patients with significant renal or hepatic disease.",
+        "Long-term safety at high doses remains uncertain."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antidiabetic medications (insulin, metformin)",
+          "mechanism": "Hypoglycemia",
+          "action": "Monitor glucose closely"
+        },
+        {
+          "interactant": "Corticosteroids",
+          "mechanism": "Altered glucose metabolism",
+          "action": "Monitor blood sugar"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood glucose control"
+        },
+        {
+          "parameter": "Liver and kidney function with prolonged or high-dose use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid high doses",
+        "lactation": "Unknown safety; avoid high-dose supplementation",
+        "pediatric": "Not established; use only under medical advice",
+        "geriatric": "Generally safe at recommended doses"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Trace mineral supplement",
+        "natural_source": "Whole grains, broccoli, meats, nuts, brewer’s yeast",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -208,6 +293,37 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Davidson JR et al. Chromium picolinate for atypical depression. J Psychiatr Pract. 2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12823077/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com – Chromium",
+      "url": "https://examine.com/supplements/chromium/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Chromium",
+      "Chromium picolinate",
+      "Chromium chloride",
+      "GTF Chromium"
+    ],
+    "synonyms": [
+      "Chromax",
+      "Chromium supplement"
+    ],
+    "common_misspellings": [
+      "chromim",
+      "chormium",
+      "chomium"
+    ]
+  },
   "seo": {
     "title": "Chromium Supplements: Role in Depression, Insulin Sensitivity, and Weight Management",
     "description": "Learn about chromium’s role in insulin sensitivity, atypical depression, PCOS, and weight management. Includes clinical evidence, dosing, and safety.",

@@ -1,88 +1,266 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "fluphenazine-prolixin",
-  "type": "medication",
-  "name": "Fluphenazine (Prolixin)",
-  "summary": "First-generation (typical) antipsychotic used for psychotic disorders and, in specific settings, severe acute agitation. Effective, but higher risk of movement side effects (EPS) and serious reactions like tardive dyskinesia and neuroleptic malignant syndrome.",
-  "description": "Fluphenazine is a dopamine-blocking antipsychotic (phenothiazine) used to treat psychosis (like schizophrenia) and, in some cases, severe acute agitation when psychosis is driving the behavior. It can be taken by mouth or as an injection, including a long-acting form for maintenance. The tradeoff: it can cause stiffness, restlessness, tremor, and other movement side effects, and it carries serious risks like tardive dyskinesia and neuroleptic malignant syndrome. In older adults with dementia-related psychosis, antipsychotics are linked with higher death rates—fluphenazine is not approved for that use.",
-  "patient_summary": "Fluphenazine is a dopamine-blocking antipsychotic used for psychosis (like schizophrenia) and sometimes severe acute agitation when psychosis is the main driver. It comes as pills/liquid, a short-acting injection, and a long-acting injection. It can work, but it’s more likely than many newer antipsychotics to cause movement side effects (restlessness, stiffness, tremor) and rare but dangerous reactions like neuroleptic malignant syndrome. In older adults with dementia-related psychosis, antipsychotics increase the risk of death—this medication is not approved for that condition.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "fluphenazine-prolixin",
+    "name": "Fluphenazine (Prolixin)",
+    "generic_name": "fluphenazine",
+    "brand_names": [
+      "Prolixin"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
     "drug_classes": [
       "First Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative",
       "D2 Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Prolixin"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (IM)",
-      "Subcutaneous (SUBQ) (labeling exists for some LAI products; often avoided by experts)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a Controlled Substance",
-    "generic_available": true,
-    "fda_approval_year": 1959,
-    "pharmacologic_category": "First Generation (Typical) Antipsychotic; Phenothiazine Derivative",
-    "published_date": "2025-12-18T00:00:00Z",
-    "last_updated": "2025-12-18T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-18T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Psychotic disorders (eg, schizophrenia)",
-      "Severe acute agitation associated with psychiatric disorders (short-acting IM hydrochloride only)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used to treat psychotic symptoms (hallucinations, delusions, disorganization). Some clinicians prefer second-generation antipsychotics first because fluphenazine has a higher EPS/tardive dyskinesia risk."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "primary_treatment",
-        "context": "Short-acting IM fluphenazine may be used for severe, acute agitation when psychosis is suspected to be the main cause. After stabilization, transition to oral maintenance therapy."
-      },
-      {
-        "slug": "tic-disorders",
-        "relationship": "off_label",
-        "context": "Sometimes used for severe tics/Tourette syndrome when other options aren’t effective or tolerated, but side effect tradeoffs matter."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to fluphenazine or any component (possible cross-reactivity among phenothiazines)",
-      "Severe CNS depression, coma, or subcortical brain damage",
-      "Concurrent use in patients receiving large doses of hypnotics",
-      "Blood dyscrasias",
-      "Hepatic disease/hepatic impairment (contraindicated by manufacturer)",
-      "Children <12 years of age (long-acting injectable decanoate only)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in psychosis",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For fluphenazine, the practical goal is symptom control (fewer hallucinations/delusions, less disorganization, improved function) at the lowest dose that works, while actively watching for movement side effects.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "First-generation (typical) antipsychotic used for psychotic disorders and, in specific settings, severe acute agitation. Effective, but higher risk of movement side effects (EPS) and serious reactions like tardive dyskinesia and neuroleptic malignant syndrome.",
+  "description": "Fluphenazine is a dopamine-blocking antipsychotic (phenothiazine) used to treat psychosis (like schizophrenia) and, in some cases, severe acute agitation when psychosis is driving the behavior. It can be taken by mouth or as an injection, including a long-acting form for maintenance. The tradeoff: it can cause stiffness, restlessness, tremor, and other movement side effects, and it carries serious risks like tardive dyskinesia and neuroleptic malignant syndrome. In older adults with dementia-related psychosis, antipsychotics are linked with higher death rates—fluphenazine is not approved for that use.",
+  "patient_summary": "Fluphenazine is a dopamine-blocking antipsychotic used for psychosis (like schizophrenia) and sometimes severe acute agitation when psychosis is the main driver. It comes as pills/liquid, a short-acting injection, and a long-acting injection. It can work, but it’s more likely than many newer antipsychotics to cause movement side effects (restlessness, stiffness, tremor) and rare but dangerous reactions like neuroleptic malignant syndrome. In older adults with dementia-related psychosis, antipsychotics increase the risk of death—this medication is not approved for that condition.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used to treat psychotic symptoms (hallucinations, delusions, disorganization). Some clinicians prefer second-generation antipsychotics first because fluphenazine has a higher EPS/tardive dyskinesia risk.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "primary_indication",
+          "context": "Short-acting IM fluphenazine may be used for severe, acute agitation when psychosis is suspected to be the main cause. After stabilization, transition to oral maintenance therapy.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "tic-disorders",
+          "condition_name": "Tic Disorders",
+          "relationship": "off_label",
+          "context": "Sometimes used for severe tics/Tourette syndrome when other options aren’t effective or tolerated, but side effect tradeoffs matter."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability is variable",
-      "bioavailability": "About 35%",
-      "onset": "Oral: initial effects often within 1-2 weeks; LAI decanoate: 24-72 hours",
-      "peak_plasma": "Oral: ~2.8 hours; LAI decanoate: peak effect often 48-96 hours (time to peak reported ~8-10 hours)",
-      "half_life": "Oral: ~14.4-16.4 hours; LAI decanoate: ~14 days",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via CYP2D6 (minor substrate classification noted; clinically relevant interactions still possible)",
-      "excretion": "Limited urinary excretion; renal dose adjustment usually not needed",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: initial effects often within 1-2 weeks; LAI decanoate: 24-72 hours"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (IM)",
+        "Subcutaneous (SUBQ) (labeling exists for some LAI products; often avoided by experts)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal Symptoms (EPS)",
+          "incidence": "Common (frequency varies by dose and patient factors)",
+          "notes": "This is the signature problem set for fluphenazine: stiffness, tremor, inner restlessness, and muscle spasms. Higher doses raise risk. Younger patients and males may be more prone to dystonia; older age increases tardive dyskinesia vulnerability."
+        },
+        {
+          "effect": "Akathisia (inner restlessness)",
+          "incidence": "Common",
+          "notes": "Feels like agitation in the body—pacing, leg bouncing, unable to sit. This can be mistaken for “worsening anxiety.” It’s treatable, but you have to name it."
+        },
+        {
+          "effect": "Sedation / CNS slowing",
+          "incidence": "Common",
+          "notes": "Sleepiness and slowed reaction time can show up early and after dose changes. This is where falls, driving risk, and work impairment can creep in."
+        },
+        {
+          "effect": "Orthostatic hypotension",
+          "incidence": "Common",
+          "notes": "Lightheaded when you stand up. Hydration helps, but persistent dizziness needs a plan—especially if you’re on blood pressure meds or are older."
+        },
+        {
+          "effect": "Hyperprolactinemia effects",
+          "incidence": "Variable",
+          "notes": "Prolactin-related side effects can show up as libido changes, erectile/ejaculatory issues, menstrual changes, breast tenderness, galactorrhea, or gynecomastia."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Tardive dyskinesia: abnormal involuntary movements that may be irreversible (risk increases with duration and cumulative exposure; higher risk with older age and certain comorbidities)."
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, altered mental status, autonomic instability—MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe cardiac conduction problems/arrhythmias: rare but potentially life-threatening."
+        },
+        {
+          "risk": "Blood dyscrasias (leukopenia, neutropenia, agranulocytosis): may be fatal; stop if ANC <1000/mm3 or concerning declines occur."
+        },
+        {
+          "risk": "Cholestatic jaundice/hepatic injury: liver damage and jaundice reported; medication is contraindicated in hepatic impairment."
+        },
+        {
+          "risk": "Rhabdomyolysis: rare but serious muscle breakdown."
+        },
+        {
+          "risk": "Aspiration pneumonia: risk rises with age and swallowing dysfunction."
+        },
+        {
+          "risk": "Withdrawal syndrome with abrupt cessation of high-dose oral therapy: agitation, insomnia, GI symptoms, dyskinesias, anxiety, sweating, tremor, vertigo, and rebound psychosis."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. In placebo-controlled trials (modal duration ~10 weeks), death occurred in about 4.5% of drug-treated patients versus about 2.6% of placebo-treated patients, with a relative risk about 1.6 to 1.7. Causes were often cardiovascular (eg, heart failure, sudden death) or infectious (eg, pneumonia). Fluphenazine is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to fluphenazine or any component (possible cross-reactivity among phenothiazines)"
+        },
+        {
+          "contraindication": "Severe CNS depression, coma, or subcortical brain damage"
+        },
+        {
+          "contraindication": "Concurrent use in patients receiving large doses of hypnotics"
+        },
+        {
+          "contraindication": "Blood dyscrasias"
+        },
+        {
+          "contraindication": "Hepatic disease/hepatic impairment (contraindicated by manufacturer)"
+        },
+        {
+          "contraindication": "Children <12 years of age (long-acting injectable decanoate only)"
+        }
+      ],
+      "precautions": [
+        "Movement disorders (EPS): akathisia, dystonia, parkinsonism; tardive dyskinesia may be irreversible",
+        "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, autonomic instability—medical emergency",
+        "Cardiac conduction/arrhythmia risk: antipsychotics can alter conduction; use caution in cardiac disease",
+        "Orthostatic hypotension and falls: especially in older adults or medically fragile patients",
+        "Blood dyscrasias: leukopenia, neutropenia, agranulocytosis—monitor if risk factors",
+        "Aspiration risk: esophageal dysmotility/aspiration pneumonia risk increases with age",
+        "Hepatic impairment: contraindicated by manufacturer",
+        "Catatonia: antipsychotics are not indicated for catatonia and may worsen outcomes and raise NMS risk"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol and other sedatives (benzodiazepines, sleep meds, opioids, sedating antihistamines)",
+          "mechanism": "Additive sedation, impaired coordination, falls, and dangerous CNS depression—especially in older adults.",
+          "action": "Avoid or minimize combinations. If a combo is clinically necessary, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "Anticholinergic medications (eg, benztropine, diphenhydramine; also many bladder meds, some antidepressants)",
+          "mechanism": "More constipation, urinary retention, blurry vision, confusion—can tip older adults into delirium. Can also mask early movement symptoms until they’re severe.",
+          "action": "Use deliberately (sometimes short-term to prevent acute dystonia with IM dosing), but don’t stack anticholinergics casually. Monitor bowel/bladder function."
+        },
+        {
+          "interactant": "Medications that prolong QT or increase arrhythmia risk",
+          "mechanism": "Higher risk of dangerous rhythm problems, especially with electrolyte abnormalities or underlying heart disease.",
+          "action": "Review QT-risk meds, correct electrolytes, and consider ECG monitoring in higher-risk patients."
+        },
+        {
+          "interactant": "Dopamine-blocking agents or antiemetics (eg, metoclopramide, prochlorperazine)",
+          "mechanism": "EPS and tardive dyskinesia risk stacks.",
+          "action": "Avoid double dopamine-blockade when possible."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (clinically relevant examples include some SSRIs like fluoxetine/paroxetine; bupropion; quinidine)",
+          "mechanism": "Can increase fluphenazine exposure and side effects (EPS, sedation).",
+          "action": "If combined, consider dose reduction and tighter monitoring for EPS and sedation."
+        },
+        {
+          "interactant": "Levodopa and other dopaminergic Parkinson’s meds",
+          "mechanism": "Fluphenazine can blunt their effect and worsen parkinsonism.",
+          "action": "Avoid when possible; if unavoidable, monitor closely for worsening motor symptoms."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Adherence and response at every visit: symptoms, functioning, sleep, agitation, and relapse warning signs"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (EPS) every visit, with a formal rating scale at least annually (or every 6 months if high risk); reassess 4 weeks after initiation and after dose changes"
+        },
+        {
+          "parameter": "Tardive dyskinesia: check every visit and formally at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Mental status and alertness every visit: sedation, cognition, delirium risk (especially older adults)"
+        },
+        {
+          "parameter": "Fall risk assessments as clinically indicated, especially in patients ≥60 years and after dose changes"
+        },
+        {
+          "parameter": "Vital signs as clinically indicated: blood pressure (including orthostatics), pulse, temperature; watch for infection symptoms (pneumonia risk in vulnerable older adults)"
+        },
+        {
+          "parameter": "Weight/height/BMI: every visit for the first 6 months, then at least quarterly; consider waist circumference at baseline and annually"
+        },
+        {
+          "parameter": "Fasting glucose/HbA1c: about 4 months after initiation, then annually (more often if abnormal)"
+        },
+        {
+          "parameter": "Lipid panel: about 4 months after initiation, then annually (more often if abnormal)"
+        },
+        {
+          "parameter": "Blood chemistries as clinically indicated: electrolytes, renal function, liver function tests, TSH (especially if symptoms suggest an issue)"
+        },
+        {
+          "parameter": "CBC as clinically indicated; monitor more frequently in the first few months if low baseline WBC or history of drug-induced leukopenia/neutropenia; stop for severe neutropenia or concerning declines"
+        },
+        {
+          "parameter": "Prolactin: ask about symptoms at every visit until dose is stable; check a level if symptoms occur (menstrual changes, sexual dysfunction, galactorrhea, gynecomastia)"
+        },
+        {
+          "parameter": "ECG/arrhythmia risk: consider baseline and follow-up ECGs in patients with cardiac disease, QT-risk meds, or concerning symptoms (syncope, palpitations)"
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (optional, not routine): draw trough just before next dose if using levels to support adherence checks; dosing should be guided by clinical response rather than levels"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for first-generation antipsychotics do not show a clear major increase in overall congenital malformations, but individual-drug data are more limited. Third-trimester exposure to antipsychotics can cause newborn EPS and/or withdrawal symptoms (agitation, feeding problems, abnormal muscle tone, respiratory distress, sleepiness, tremor). Tapering late in pregnancy to prevent neonatal symptoms is generally not recommended. The guiding principles: don’t discontinue effective treatment just because someone is pregnant, avoid polytherapy when possible, and use the lowest effective dose with close symptom monitoring.",
+        "lactation": "It’s not known if fluphenazine is present in human milk. Infants exposed to antipsychotics through breast milk have been reported to experience drowsiness, irritability, poor feeding, sedation, motor abnormalities, and slowed development. If breastfeeding while using an antipsychotic, monitor the infant closely—especially if premature or low birth weight, or if other sedating meds are in the mix. When starting postpartum, less-sedating agents are often preferred.",
+        "pediatric": "Not commonly used in pediatrics due to higher risk of acute dystonic reactions and prolactin-related effects. Off-label: chronic tic disorders may be treated in select cases, but this is specialist-level care with careful risk-benefit discussion and monitoring.",
+        "geriatric": "High-risk medication in adults ≥65. Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic options failed and there is risk of harm. Boxed warning: higher death risk in dementia-related psychosis; fluphenazine is not approved for that use. If used for appropriate indications (eg, schizophrenia), start low, titrate slowly, and monitor closely for orthostasis, falls, sedation, EPS, swallowing/aspiration risk, and hyponatremia/SIADH concerns.",
+        "renal_impairment": "No manufacturer-provided renal dose adjustment; dosage adjustment is usually unlikely because urinary excretion is limited. Use caution and monitor clinically; discontinue if BUN becomes abnormal.",
+        "hepatic_impairment": "Contraindicated by manufacturer in hepatic impairment/hepatic disease. Avoid use."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1959
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability is variable",
+          "bioavailability": "About 35%",
+          "peak_plasma": "Oral: ~2.8 hours; LAI decanoate: peak effect often 48-96 hours (time to peak reported ~8-10 hours)",
+          "half_life": "Oral: ~14.4-16.4 hours; LAI decanoate: ~14 days",
+          "metabolism": "Hepatic via CYP2D6 (minor substrate classification noted; clinically relevant interactions still possible)",
+          "excretion": "Limited urinary excretion; renal dose adjustment usually not needed",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Fluphenazine dosing depends on the goal: oral dosing for ongoing psychosis treatment, short-acting IM for severe acute agitation, and long-acting IM decanoate for maintenance when consistent adherence is critical. Use the lowest effective dose and titrate slowly, watching closely for akathisia and parkinsonism."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’re stopping oral fluphenazine after long-term use, the safest move is usually a gradual taper over weeks to months—unless you’re stopping because of a serious adverse reaction. The goal is to watch for relapse early and reduce withdrawal/rebound symptoms (agitation, insomnia, anxiety, sweating, GI symptoms, dyskinesias, restlessness, tremor, vertigo, and rebound psychosis)."
+        }
+      }
     }
   },
   "sections": [
@@ -101,7 +279,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People describe fluphenazine in a very “this helped… but I paid for it” kind of way. Here are the common themes:",
       "items": [
         {
           "category": "Psychosis Quieting (days to weeks)",
@@ -139,7 +316,8 @@
           ],
           "note": "Tardive dyskinesia can be irreversible. The goal is always the lowest effective dose and regular movement screening."
         }
-      ]
+      ],
+      "intro": "People describe fluphenazine in a very “this helped… but I paid for it” kind of way. Here are the common themes:"
     },
     {
       "type": "onset_duration",
@@ -156,10 +334,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Fluphenazine can be effective for psychotic symptoms—especially when adherence is a challenge and the long-acting injection is used. The main clinical challenge is balancing benefit against a higher rate of movement side effects compared with many second-generation antipsychotics. In real life, “works” means fewer hallucinations/delusions, less agitation tied to psychosis, improved sleep and functioning, and fewer relapses—at the lowest dose that holds stability.",
       "metric": "Symptom control in psychosis",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Fluphenazine can be effective for psychotic symptoms—especially when adherence is a challenge and the long-acting injection is used. The main clinical challenge is balancing benefit against a higher rate of movement side effects compared with many second-generation antipsychotics. In real life, “works” means fewer hallucinations/delusions, less agitation tied to psychosis, improved sleep and functioning, and fewer relapses—at the lowest dose that holds stability.",
       "clinical_details": "Some experts prefer second-generation antipsychotics first due to potentially fewer extrapyramidal symptoms, with no consistent evidence that typicals are more effective overall. Fluphenazine’s long-acting injectable form is often chosen when consistent dosing is critical and relapse risk from missed oral doses is high.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -251,7 +429,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Fluphenazine has meaningful interaction risk—especially anything that increases sedation, worsens movement symptoms, affects heart rhythm, or alters metabolism through CYP2D6.",
       "items": [
         {
           "with": "Alcohol and other sedatives (benzodiazepines, sleep meds, opioids, sedating antihistamines)",
@@ -283,7 +460,8 @@
           "risk": "Fluphenazine can blunt their effect and worsen parkinsonism.",
           "action": "Avoid when possible; if unavoidable, monitor closely for worsening motor symptoms."
         }
-      ]
+      ],
+      "intro": "Fluphenazine has meaningful interaction risk—especially anything that increases sedation, worsens movement symptoms, affects heart rhythm, or alters metabolism through CYP2D6."
     },
     {
       "type": "tapering",
@@ -372,21 +550,6 @@
       "note": "Antipsychotics are not indicated for catatonia and may worsen outcomes and raise NMS risk in catatonic patients. When catatonia is suspected, management should be specialist-guided."
     }
   ],
-  "seo": {
-    "title": "Fluphenazine (Prolixin): Uses, Dosing, Side Effects, EPS & Safety Warnings",
-    "description": "Fluphenazine (Prolixin) is a first-generation antipsychotic used for schizophrenia/psychosis and sometimes severe acute agitation. Learn dosing (oral, IM, long-acting decanoate), movement side effects (EPS, tardive dyskinesia), NMS warning, and dementia boxed warning.",
-    "canonical": "[https://www.heypsych.com/treatments/fluphenazine-prolixin](https://www.heypsych.com/treatments/fluphenazine-prolixin)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is fluphenazine used for?",
@@ -432,5 +595,20 @@
       "q": "What labs and monitoring do people usually need?",
       "a": "Movement screening (EPS and tardive dyskinesia) is the big one—checked every visit with formal tools at least yearly (more often if high risk). Weight and metabolic labs (glucose/HbA1c and lipids) are typically checked after a few months and then yearly. CBC is checked if there are risk factors for low white blood cells. ECG and electrolytes come into play if you have cardiac risk factors or are on QT-risk meds."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Fluphenazine (Prolixin): Uses, Dosing, Side Effects, EPS & Safety Warnings",
+    "description": "Fluphenazine (Prolixin) is a first-generation antipsychotic used for schizophrenia/psychosis and sometimes severe acute agitation. Learn dosing (oral, IM, long-acting decanoate), movement side effects (EPS, tardive dyskinesia), NMS warning, and dementia boxed warning.",
+    "canonical": "[https://www.heypsych.com/treatments/fluphenazine-prolixin](https://www.heypsych.com/treatments/fluphenazine-prolixin)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

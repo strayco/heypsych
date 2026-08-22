@@ -1,99 +1,265 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "clonazepam-klonopin",
-  "type": "medication",
-  "name": "Clonazepam (Klonopin)",
-  "summary": "Long-acting benzodiazepine used for seizure disorders and panic disorder. Helps calm the brain but carries serious risks of dependence, withdrawal, and breathing problems—especially with opioids or alcohol.",
-  "description": "Clonazepam (Klonopin) is a long-acting benzodiazepine that calms overactive brain activity. It’s used to treat certain seizure disorders and panic disorder. It usually starts working within an hour and can last 8–12 hours. Common side effects include sleepiness, dizziness, and trouble with coordination or memory. Regular use can lead to physical dependence and a difficult withdrawal if stopped suddenly. Never mix clonazepam with alcohol or opioids—this combination can slow breathing and be life-threatening.",
-  "patient_summary": "Clonazepam (Klonopin) is a calming medicine used for seizures and panic attacks. It usually works within about an hour and lasts most of the day or night. Many people feel sleepy, unsteady, or foggy on it. Using it every day for a while can make your body depend on it, so stopping suddenly can be dangerous. It should be used at the lowest dose for the shortest time needed, and never mixed with alcohol or opioids because that can slow or stop breathing.",
-  "category": "medications/anxiety-and-seizure-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "Antiseizure Agent",
-      "GABA-A Receptor Modulator"
-    ],
+  "identity": {
+    "slug": "clonazepam-klonopin",
+    "name": "Clonazepam (Klonopin)",
+    "generic_name": "clonazepam",
     "brand_names": [
       "Klonopin",
       "Rivotril"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1975,
-    "pharmacologic_category": "Benzodiazepine, Intermediate- to Long-Acting; Antiseizure Agent",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q417201"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Panic Disorder (with or without agoraphobia)",
-      "Lennox-Gastaut Syndrome",
-      "Myoclonic Seizures",
-      "Akinetic Seizures",
-      "Absence Seizures (refractory)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "panic-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for panic disorder with or without agoraphobia. Typically used short-term while SSRIs and therapy are started, or as an adjunct when other treatments are insufficient."
-      },
-      {
-        "slug": "lennox-gastaut-syndrome",
-        "relationship": "primary_treatment",
-        "context": "Approved as monotherapy or add-on therapy for Lennox-Gastaut syndrome and certain other difficult-to-treat seizure types."
-      },
-      {
-        "slug": "epilepsy",
-        "relationship": "primary_treatment",
-        "context": "Used as an antiseizure medication for myoclonic, akinetic, and absence seizures, often when first-line options are not enough."
-      },
-      {
-        "slug": "rapid-eye-movement-sleep-behavior-disorder",
-        "relationship": "off_label",
-        "context": "Common off-label treatment for REM sleep behavior disorder, especially in older adults with Parkinson’s disease or related conditions."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used short-term for severe generalized anxiety, but not first-line. SSRIs, SNRIs, and therapy are preferred for long-term treatment."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to clonazepam, other benzodiazepines, or any component of the formulation",
-      "Significant hepatic impairment (severe liver disease)",
-      "Acute narrow-angle glaucoma",
-      "History of serious benzodiazepine misuse or dependence (relative contraindication)",
-      "Severe respiratory insufficiency or sleep apnea (particularly per Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response rates vary",
-      "percentage_value": "N/A",
-      "comparison_data": "Clonazepam is well established as effective for certain seizure types and panic disorder in multiple trials, but modern large-scale, easy-to-summarize percentage data are limited.",
-      "patient_text": "Clonazepam is considered an effective medication for many people with panic disorder and certain seizure disorders, especially when other options have not worked well. How well it works can vary a lot between people, and benefits must be weighed against dependence, withdrawal, and side-effect risks.",
-      "citation_tag": ""
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-and-seizure-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "Antiseizure Agent",
+      "GABA-A Receptor Modulator"
+    ]
+  },
+  "summary": "Long-acting benzodiazepine used for seizure disorders and panic disorder. Helps calm the brain but carries serious risks of dependence, withdrawal, and breathing problems—especially with opioids or alcohol.",
+  "description": "Clonazepam (Klonopin) is a long-acting benzodiazepine that calms overactive brain activity. It’s used to treat certain seizure disorders and panic disorder. It usually starts working within an hour and can last 8–12 hours. Common side effects include sleepiness, dizziness, and trouble with coordination or memory. Regular use can lead to physical dependence and a difficult withdrawal if stopped suddenly. Never mix clonazepam with alcohol or opioids—this combination can slow breathing and be life-threatening.",
+  "patient_summary": "Clonazepam (Klonopin) is a calming medicine used for seizures and panic attacks. It usually works within about an hour and lasts most of the day or night. Many people feel sleepy, unsteady, or foggy on it. Using it every day for a while can make your body depend on it, so stopping suddenly can be dangerous. It should be used at the lowest dose for the shortest time needed, and never mixed with alcohol or opioids because that can slow or stop breathing.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for panic disorder with or without agoraphobia. Typically used short-term while SSRIs and therapy are started, or as an adjunct when other treatments are insufficient.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "lennox-gastaut-syndrome",
+          "condition_name": "Lennox Gastaut Syndrome",
+          "relationship": "primary_indication",
+          "context": "Approved as monotherapy or add-on therapy for Lennox-Gastaut syndrome and certain other difficult-to-treat seizure types.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "primary_indication",
+          "context": "Used as an antiseizure medication for myoclonic, akinetic, and absence seizures, often when first-line options are not enough.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "rapid-eye-movement-sleep-behavior-disorder",
+          "condition_name": "Rapid Eye Movement Sleep Behavior Disorder",
+          "relationship": "off_label",
+          "context": "Common off-label treatment for REM sleep behavior disorder, especially in older adults with Parkinson’s disease or related conditions."
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used short-term for severe generalized anxiety, but not first-line. SSRIs, SNRIs, and therapy are preferred for long-term treatment."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and almost complete after oral dosing",
-      "bioavailability": "≈90%",
-      "onset": "About 20–40 minutes after a dose",
-      "peak_plasma": "1–4 hours",
-      "half_life": "17–60 hours (adults; long-acting)",
-      "duration_IR": "6–8 hours in children; about 8–12 hours in adults",
-      "metabolism": "Extensive hepatic metabolism via CYP3A4 and conjugation; major metabolite is 7-aminoclonazepam (inactive or weakly active)",
-      "excretion": "Urine (<2% as unchanged drug; mostly as glucuronide or sulfate conjugates)",
-      "protein_binding": "≈85%",
-      "food_effect": "Food has minimal effect on overall absorption but may slightly delay onset."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "About 20–40 minutes after a dose"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness and Fatigue",
+          "incidence": "Very common (up to ~50% in seizure studies; 25–50% in panic disorder)",
+          "notes": "Expect to feel more tired, especially when first starting or after dose increases. This is often strongest a few hours after a dose and may partially improve over 1–2 weeks, but some sedation usually remains."
+        },
+        {
+          "effect": "Ataxia and Coordination Problems",
+          "incidence": "Common (~30% in seizure patients; lower in panic disorder but still notable)",
+          "notes": "You may feel unsteady on your feet, bump into things, or feel like your legs are heavy. This increases the risk of falls and accidents, especially in older adults."
+        },
+        {
+          "effect": "Cognitive Slowing and Memory Issues",
+          "incidence": "Common (4–10% or more, dose-related)",
+          "notes": "Many people feel mentally slower, with trouble focusing or remembering things that happen after they take a dose. It may be harder to do school, work, or complex tasks."
+        },
+        {
+          "effect": "Depressed Mood or Emotional Changes",
+          "incidence": "Common (roughly 6–8% in panic trials)",
+          "notes": "Clonazepam can sometimes worsen or unmask depression, cause emotional blunting, or increase irritability. Any major mood changes should be discussed with your prescriber."
+        },
+        {
+          "effect": "Sexual Side Effects",
+          "incidence": "Uncommon but reported (eg, decreased libido, erectile issues, delayed ejaculation)",
+          "notes": "Some people notice reduced sexual desire or performance problems. These effects may improve with dose changes or after stopping, but discuss with your clinician before adjusting your dose."
+        },
+        {
+          "effect": "Respiratory Effects",
+          "incidence": "More likely in people with lung disease or using other sedatives",
+          "notes": "Clonazepam can slow breathing, especially at higher doses or when combined with alcohol, opioids, or other sedating drugs. Snoring, pauses in breathing, or extreme daytime sleepiness need urgent review."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe respiratory depression: Very slow or shallow breathing, bluish lips or fingertips, extreme sleepiness or difficulty waking up. MEDICAL EMERGENCY—call 911."
+        },
+        {
+          "risk": "Severe allergic or skin reactions: Swelling of face or tongue, trouble breathing, rash with fever or blisters."
+        },
+        {
+          "risk": "Withdrawal seizures and severe withdrawal: New or increased seizures, hallucinations, severe anxiety, agitation, confusion, or delirium if the medicine is stopped too quickly."
+        },
+        {
+          "risk": "Suicidal thoughts or behavior: New or worsening depression, irritability, or self-harm thoughts—contact a clinician immediately."
+        },
+        {
+          "risk": "Paradoxical reactions: Instead of calming, some people (especially children and older adults) can become more agitated, aggressive, restless, or disinhibited."
+        },
+        {
+          "risk": "Blood and liver problems (rare): Unexplained bruising, frequent infections, pale skin, severe fatigue, yellowing of eyes or skin (jaundice)."
+        }
+      ],
+      "black_box_warning": "Combining benzodiazepines like clonazepam with opioids can cause extreme sleepiness, dangerous breathing problems, coma, and death. Use together only if there are no safer options, at the lowest doses for the shortest time, with close monitoring.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to clonazepam, other benzodiazepines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Significant hepatic impairment (severe liver disease)"
+        },
+        {
+          "contraindication": "Acute narrow-angle glaucoma"
+        },
+        {
+          "contraindication": "History of serious benzodiazepine misuse or dependence (relative contraindication)"
+        },
+        {
+          "contraindication": "Severe respiratory insufficiency or sleep apnea (particularly per Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "High risk of physical dependence and withdrawal: Using clonazepam daily, especially for more than a few weeks, can make your body dependent. Stopping suddenly can cause severe withdrawal, including seizures, agitation, and insomnia.",
+        "Abuse and misuse: Clonazepam has a high potential for misuse, especially in people with a history of substance use disorders. Misuse often involves taking higher doses or combining with alcohol or other drugs.",
+        "Withdrawal can be life-threatening: Never stop clonazepam suddenly without medical guidance. Tapers often take weeks to months.",
+        "Suicidal thoughts and behavior: All antiseizure medicines have a small increased risk of suicidal thoughts or behavior. Report new or worsening mood changes, irritability, or thoughts of self-harm right away.",
+        "Severe sedation and accidents: Clonazepam can cause significant drowsiness, dizziness, and slowed reaction times. This increases the risk of falls, car crashes, and workplace accidents.",
+        "Pregnancy and newborn risks: Use during pregnancy may harm the baby, including withdrawal symptoms or breathing problems at birth. Use only when clearly needed and after discussing risks and benefits.",
+        "Breastfeeding: Clonazepam passes into breast milk and may cause sleepiness, poor feeding, or poor weight gain in the baby.",
+        "Older adults: Higher risk of confusion, falls, memory problems, and daytime sedation. Guidelines generally advise avoiding benzodiazepines in people 65+ unless clearly necessary (for example, for seizures or REM sleep behavior disorder)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
+          "mechanism": "BLACK BOX WARNING: Breathing can slow or stop, especially in higher doses or when started together.",
+          "action": "Avoid if at all possible. If absolutely necessary, both drugs should be at the lowest possible doses, for the shortest time, with close monitoring. Keep naloxone at home and teach family how to use it."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Major increase in sedation and breathing suppression. Strongly increases risk of overdose and accidents.",
+          "action": "Do not drink alcohol while taking clonazepam. Even small amounts can be dangerous."
+        },
+        {
+          "interactant": "Other CNS Depressants (sleeping pills, other benzodiazepines, barbiturates, gabapentin/pregabalin, muscle relaxants, sedating antihistamines, antipsychotics)",
+          "mechanism": "Additive or synergistic sedation, confusion, falls, and breathing problems.",
+          "action": "Avoid combining when possible. If you must combine, your prescriber may lower doses and monitor closely for sedation and breathing problems."
+        },
+        {
+          "interactant": "Strong CYP3A4 Inhibitors (ketoconazole, itraconazole, certain HIV protease inhibitors, some macrolide antibiotics like clarithromycin)",
+          "mechanism": "Can raise clonazepam levels, making you much more sedated and increasing overdose risk.",
+          "action": "Use with caution or avoid; dose reductions are often needed. In some cases, an alternative medication with fewer interactions may be safer."
+        },
+        {
+          "interactant": "CYP3A4 Inducers (carbamazepine, phenytoin, phenobarbital, rifampin, St. John’s wort)",
+          "mechanism": "Can lower clonazepam levels and reduce its effect, potentially triggering seizures or breakthrough anxiety.",
+          "action": "Your prescriber may need to adjust doses or choose different medications. Never add or stop these on your own."
+        },
+        {
+          "interactant": "Other Antiseizure or Psychotropic Medications",
+          "mechanism": "Complex interactions affecting sedation, seizure threshold, mood, and liver function.",
+          "action": "Always let your neurologist or psychiatrist review your full medication list, including over-the-counter drugs and supplements."
+        },
+        {
+          "interactant": "Grapefruit and Grapefruit Juice",
+          "mechanism": "Moderate increase in clonazepam levels due to CYP3A4 inhibition.",
+          "action": "Best to avoid grapefruit products regularly while on clonazepam."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and alertness: Watch for excessive drowsiness, slow thinking, or trouble waking."
+        },
+        {
+          "parameter": "Breathing: Especially important if you have asthma, COPD, sleep apnea, or are on opioids or other sedatives."
+        },
+        {
+          "parameter": "Falls and coordination: Monitor for unsteadiness, especially in older adults."
+        },
+        {
+          "parameter": "Mood and behavior: Screen for new or worsening depression, irritability, impulsivity, or suicidal thoughts."
+        },
+        {
+          "parameter": "Seizure control: Track frequency and severity of seizures if used as an antiseizure medication."
+        },
+        {
+          "parameter": "Signs of misuse or dependence: Taking more than prescribed, running out early, doctor-shopping, or combining with alcohol or other drugs."
+        },
+        {
+          "parameter": "Withdrawal symptoms: Anxiety spikes, insomnia, tremors, sweating, or seizures after missed doses or dose reductions."
+        },
+        {
+          "parameter": "Liver and blood tests: Periodic liver function tests and blood counts may be checked in long-term or high-dose use, or if symptoms suggest a problem."
+        },
+        {
+          "parameter": "Prescription monitoring: In many regions, prescribers check prescription monitoring databases regularly to track controlled substance use."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use during pregnancy may increase the risk of certain birth problems and cause newborn withdrawal or breathing difficulties. For epilepsy, stopping an effective antiseizure medication can also be dangerous. Decisions about clonazepam in pregnancy should be made with a neurologist or psychiatrist and obstetric provider, balancing seizure or panic risks against medicine risks. If used, the lowest effective dose is preferred.",
+        "lactation": "Clonazepam passes into breast milk. Most reports show low to moderate levels in babies, but some infants have had sedation, poor feeding, or poor weight gain. If used while breastfeeding, use the lowest effective dose and watch the baby for unusual sleepiness, trouble feeding, or poor growth. A shorter-acting benzodiazepine may sometimes be preferred.",
+        "pediatric": "Clonazepam is used in children for certain seizure disorders, but doses are weight-based and require specialist care. For anxiety, benzodiazepines are usually avoided in children and teens due to risks of disinhibition, learning problems, and dependence.",
+        "geriatric": "Older adults are much more sensitive to clonazepam’s sedating and cognitive effects. Guidelines (like the Beers Criteria) recommend avoiding benzodiazepines in most adults 65 and older, except for limited uses (eg, seizure disorders, REM sleep behavior disorder). If used, start low, go slow, and reassess often.",
+        "renal_impairment": "Only a small amount of clonazepam is excreted unchanged in the urine, so kidney disease usually doesn’t require dose adjustment. Still, people with kidney problems may be more sensitive to side effects and should be monitored closely.",
+        "hepatic_impairment": "Clonazepam is processed in the liver. In significant liver disease, levels can build up and cause extreme sedation and confusion. It is generally avoided in severe hepatic impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1975
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and almost complete after oral dosing",
+          "bioavailability": "≈90%",
+          "peak_plasma": "1–4 hours",
+          "half_life": "17–60 hours (adults; long-acting)",
+          "metabolism": "Extensive hepatic metabolism via CYP3A4 and conjugation; major metabolite is 7-aminoclonazepam (inactive or weakly active)",
+          "excretion": "Urine (<2% as unchanged drug; mostly as glucuronide or sulfate conjugates)",
+          "protein_binding": "≈85%",
+          "food_effect": "Food has minimal effect on overall absorption but may slightly delay onset."
+        },
+        "dosing": {
+          "titration": "Doses are highly individualized. Doctors start low and increase slowly based on your response and side effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Because clonazepam is long-acting and can cause strong dependence, stopping must be slow and carefully planned with your prescriber."
+        }
+      }
     }
   },
   "sections": [
@@ -118,7 +284,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experiences vary widely, but these are common reports from people taking clonazepam:",
       "items": [
         {
           "category": "Calm and Reduced Panic",
@@ -154,7 +319,8 @@
           ],
           "note": "Physical dependence can develop within weeks of daily use. Stopping suddenly can cause severe withdrawal, including seizures."
         }
-      ]
+      ],
+      "intro": "Experiences vary widely, but these are common reports from people taking clonazepam:"
     },
     {
       "type": "onset_duration",
@@ -171,10 +337,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Clonazepam has been used for decades and is considered effective for many people with panic disorder and certain seizure disorders. For some, it dramatically reduces panic attacks or seizure frequency. For others, benefits are modest or limited by side effects like sedation and cognitive fog. Because long-term use carries significant risks, prescribers weigh symptom relief very carefully against dependence, withdrawal, and safety concerns.",
       "metric": "Response Rates Vary",
       "value": "N/A",
       "comparison": "N/A",
-      "text": "Clonazepam has been used for decades and is considered effective for many people with panic disorder and certain seizure disorders. For some, it dramatically reduces panic attacks or seizure frequency. For others, benefits are modest or limited by side effects like sedation and cognitive fog. Because long-term use carries significant risks, prescribers weigh symptom relief very carefully against dependence, withdrawal, and safety concerns.",
       "clinical_details": "Older randomized and open-label trials show that clonazepam reduces panic attacks and improves anxiety scores compared to placebo, and add-on studies in epilepsy show meaningful seizure reduction for many patients. However, most studies are small, and long-term dependence and withdrawal risks are now better recognized. Modern guidelines generally recommend using clonazepam as a second-line or adjunctive option rather than first-line chronic therapy for anxiety disorders.",
       "citation": {
         "authors": "",
@@ -269,7 +435,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Clonazepam is processed by the liver (mainly CYP3A4) and strongly depresses the central nervous system (CNS). Other sedatives or certain liver-affecting drugs can dramatically change its safety.",
       "items": [
         {
           "with": "Opioids (oxycodone, hydrocodone, morphine, fentanyl, etc.)",
@@ -306,7 +471,8 @@
           "risk": "Moderate increase in clonazepam levels due to CYP3A4 inhibition.",
           "action": "Best to avoid grapefruit products regularly while on clonazepam."
         }
-      ]
+      ],
+      "intro": "Clonazepam is processed by the liver (mainly CYP3A4) and strongly depresses the central nervous system (CNS). Other sedatives or certain liver-affecting drugs can dramatically change its safety."
     },
     {
       "type": "tapering",
@@ -424,22 +590,50 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Clonazepam (Klonopin): Uses, Dosage, Side Effects, Withdrawal & Safety",
-    "description": "Clonazepam (Klonopin) for seizures and panic: how it works, typical dosing, side effects, risks of dependence and withdrawal, dangerous interactions with opioids and alcohol, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/clonazepam-klonopin](https://www.heypsych.com/treatments/clonazepam-klonopin)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists",
-      "board-certified-neurologists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, major epilepsy and anxiety treatment guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current FDA boxed warnings for benzodiazepines and opioid co-prescribing."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information (Clonazepam / Klonopin)",
+      "url": "[https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/017533s062lbl.pdf](https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/017533s062lbl.pdf)",
+      "description": "Official FDA-approved labeling with complete prescribing information and boxed warnings"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Epilepsy Foundation – Clonazepam",
+      "url": "[https://www.epilepsy.com](https://www.epilepsy.com)",
+      "description": "Patient-friendly overview of clonazepam use in seizure disorders"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "American Psychiatric Association – Anxiety and Panic Guidelines",
+      "url": "[https://www.psychiatry.org](https://www.psychiatry.org)",
+      "description": "Guidelines on when and how to use benzodiazepines for anxiety"
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "American Geriatrics Society Beers Criteria (2023)",
+      "url": "[https://agsjournals.onlinelibrary.wiley.com](https://agsjournals.onlinelibrary.wiley.com)",
+      "description": "Recommends avoiding most benzodiazepines in older adults due to fall and cognitive risks"
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "Ashton Manual – Benzodiazepine Withdrawal",
+      "url": "[https://www.benzo.org.uk/manual/](https://www.benzo.org.uk/manual/)",
+      "description": "Detailed guidance on tapering and managing benzodiazepine withdrawal"
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "International League Against Epilepsy (ILAE) Treatment Guidelines",
+      "url": "[https://www.ilae.org](https://www.ilae.org)",
+      "description": "Evidence-based recommendations on antiseizure medication use, including clonazepam"
+    }
+  ],
   "faqs": [
     {
       "q": "What is clonazepam used for?",
@@ -489,5 +683,21 @@
       "q": "Can clonazepam be used long-term?",
       "a": "Clonazepam is sometimes used long-term for certain seizure disorders and, less commonly, for conditions like REM sleep behavior disorder under specialist care. For anxiety and panic disorder, long-term daily use is generally discouraged due to dependence, tolerance, withdrawal, and cognitive side effects. If you’ve been on clonazepam for a long time, do not stop suddenly—talk to your prescriber about whether a slow taper and alternative treatments make sense for you."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Clonazepam (Klonopin): Uses, Dosage, Side Effects, Withdrawal & Safety",
+    "description": "Clonazepam (Klonopin) for seizures and panic: how it works, typical dosing, side effects, risks of dependence and withdrawal, dangerous interactions with opioids and alcohol, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/clonazepam-klonopin](https://www.heypsych.com/treatments/clonazepam-klonopin)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists",
+      "board-certified-neurologists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, major epilepsy and anxiety treatment guidelines, and current peer-reviewed literature. Updated to reflect 2023 Beers Criteria and current FDA boxed warnings for benzodiazepines and opioid co-prescribing."
+  }
 }

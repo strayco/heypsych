@@ -38,10 +38,14 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-  console.error("❌ Missing required environment variables:");
-  console.error("   NEXT_PUBLIC_SUPABASE_URL");
-  console.error("   SUPABASE_SERVICE_ROLE_KEY");
-  process.exit(1);
+  // Exit cleanly (code 0) when DB credentials are missing
+  // This allows builds to proceed without database sync
+  // Database sync is optional - JSON files are the source of truth
+  console.log("ℹ️  Database sync skipped: Missing database credentials");
+  console.log("   NEXT_PUBLIC_SUPABASE_URL:", SUPABASE_URL ? "✓" : "✗");
+  console.log("   SUPABASE_SERVICE_ROLE_KEY:", SUPABASE_SERVICE_KEY ? "✓" : "✗");
+  console.log("   Build will continue without database sync.");
+  process.exit(0);
 }
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);

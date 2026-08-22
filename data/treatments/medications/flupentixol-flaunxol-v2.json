@@ -1,83 +1,286 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "flupentixol-flaunxol",
-  "type": "medication",
-  "name": "Flupentixol (Fluanxol)",
-  "summary": "First-generation (typical) antipsychotic, used mainly as a maintenance treatment for schizophrenia—often as a long-acting depot injection. Not available in the US.",
-  "description": "Flupentixol is a first-generation (typical) antipsychotic used primarily for chronic schizophrenia, especially when you want stable coverage with a depot (long-acting) injection. It’s a dopamine-blocking medication, so it can help with hallucinations, delusions, and disorganized thinking, but it also carries classic risks like extrapyramidal symptoms (stiffness, tremor, restlessness), prolactin elevation, and QT prolongation. It is not available in the United States and is not a first-line option in most modern guidelines compared with atypical antipsychotics.",
-  "patient_summary": "Flupentixol is an older antipsychotic used mostly for long-term treatment of schizophrenia, often as a depot injection every few weeks so you don’t have to remember daily pills. It can help stabilize voices, paranoia, and disorganized thinking, but it can also cause stiffness, shaking, restlessness, and high prolactin (menstrual or sexual side effects). It can affect the heart’s rhythm and blood pressure and is not approved in the US. This is not a medication for everyday anxiety or sleep—this is a serious antipsychotic that needs close psychiatric follow-up.",
-  "category": "medications/schizophrenia",
-  "metadata": {
-    "drug_classes": [
-      "First-generation (typical) antipsychotic",
-      "Thioxanthene derivative",
-      "D2 receptor antagonist"
-    ],
+  "identity": {
+    "slug": "flupentixol-flaunxol",
+    "name": "Flupentixol (Fluanxol)",
+    "generic_name": "flupentixol",
     "brand_names": [
       "Fluanxol",
       "Fluanxol Depot"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (depot)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable (not FDA-approved in the United States)",
-    "pharmacologic_category": "First Generation (Typical) Antipsychotic",
-    "published_date": "2025-12-24T00:00:00Z",
-    "last_updated": "2025-12-24T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-24T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q27164953"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia (maintenance treatment, including long-acting depot formulation)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used as a maintenance antipsychotic for chronic schizophrenia, often after stabilization on oral therapy and then transition to depot for adherence."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to flupentixol, thioxanthenes, or any component of the formulation",
-      "Acute intoxication with alcohol, barbiturates, or opioids",
-      "CNS depression of any cause or coma",
-      "Severely agitated psychotic patients, psychoneurotic patients, or geriatric patients with confusion and/or agitation",
-      "Suspected or established subcortical brain damage",
-      "Cerebrovascular or renal insufficiency",
-      "Severe cardiovascular disease or circulatory collapse",
-      "Liver damage or significant hepatic impairment",
-      "Concomitant use with large doses of hypnotics",
-      "Known QT prolongation, history of torsades de pointes, or use of other QT-prolonging drugs when risk is high",
-      "Use in catatonia (may worsen psychosis and increase risk of neuroleptic malignant syndrome)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in schizophrenia",
-      "percentage_value": "Not precisely defined in modern comparative trials",
-      "comparison_data": "Clinical experience suggests similar antipsychotic efficacy to other first-generation depot agents when equivalent D2-blocking doses are used.",
-      "patient_text": "Flupentixol is not the newest antipsychotic on the block. When doses are optimized and injections are given on schedule, many people see steady improvement in hallucinations, paranoia, and disorganization over several weeks. It’s usually chosen for people who benefit from antipsychotic medication but struggle to take daily pills.",
-      "citation_tag": "Clinical experience and guideline-based use of first-generation depot antipsychotics"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/schizophrenia",
+    "drug_classes": [
+      "First-generation (typical) antipsychotic",
+      "Thioxanthene derivative",
+      "D2 receptor antagonist"
+    ]
+  },
+  "summary": "First-generation (typical) antipsychotic, used mainly as a maintenance treatment for schizophrenia—often as a long-acting depot injection. Not available in the US.",
+  "description": "Flupentixol is a first-generation (typical) antipsychotic used primarily for chronic schizophrenia, especially when you want stable coverage with a depot (long-acting) injection. It’s a dopamine-blocking medication, so it can help with hallucinations, delusions, and disorganized thinking, but it also carries classic risks like extrapyramidal symptoms (stiffness, tremor, restlessness), prolactin elevation, and QT prolongation. It is not available in the United States and is not a first-line option in most modern guidelines compared with atypical antipsychotics.",
+  "patient_summary": "Flupentixol is an older antipsychotic used mostly for long-term treatment of schizophrenia, often as a depot injection every few weeks so you don’t have to remember daily pills. It can help stabilize voices, paranoia, and disorganized thinking, but it can also cause stiffness, shaking, restlessness, and high prolactin (menstrual or sexual side effects). It can affect the heart’s rhythm and blood pressure and is not approved in the US. This is not a medication for everyday anxiety or sleep—this is a serious antipsychotic that needs close psychiatric follow-up.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used as a maintenance antipsychotic for chronic schizophrenia, often after stabilization on oral therapy and then transition to depot for adherence.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability about 40%; depot formulation provides slow, sustained release from the muscle.",
-      "bioavailability": "Oral: ~40%",
-      "onset": "IM depot: 24–72 hours after injection; oral: initial symptom improvement generally within 1–2 weeks.",
-      "peak_plasma": "Oral: 3–8 hours; depot: 4–7 days after injection",
-      "half_life": "Oral: ~35 hours; depot: ~3 weeks",
-      "duration_IR": "Oral tablets: continuous effect with regular daily dosing",
-      "duration_XR": "Depot: 2–4 weeks per injection depending on dose and individual metabolism",
-      "metabolism": "Extensive hepatic metabolism via sulfoxidation and dealkylation; also undergoes glucuronidation; metabolites are inactive.",
-      "excretion": "Mostly in feces as metabolites; small amount in urine.",
-      "protein_binding": "~99%",
-      "food_effect": "Oral tablets can be taken with or without food; no major clinically relevant food effect noted."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IM depot: 24–72 hours after injection; oral: initial symptom improvement generally within 1–2 weeks."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (depot)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal reactions (stiffness, tremor, akathisia, dystonia)",
+          "incidence": "Up to ~30% depending on dose and vulnerability",
+          "notes": "These are classic ‘stiff and shaky’ side effects: tremor, slowed movement, muscle rigidity, or painful muscle contractions. Akathisia feels like internal restlessness—you can’t sit still. Early detection is key; dose adjustments, adjunct meds, or switching agents may be needed."
+        },
+        {
+          "effect": "Sedation, fatigue, dizziness",
+          "incidence": "Variable, often less sedating than some other typicals but still clinically significant",
+          "notes": "You may feel sleepy or mentally slowed, especially when starting or after dose changes. Avoid driving or operating machinery until you know how you respond."
+        },
+        {
+          "effect": "Mood and mental changes",
+          "incidence": "Not well quantified; reported depression, hypomania, psychomotor agitation, insomnia",
+          "notes": "Some patients feel emotionally flat or depressed; others can feel more agitated or restless. Report mood changes promptly—this is not just ‘part of the illness’ and may need treatment changes."
+        },
+        {
+          "effect": "Hormonal / prolactin-related effects",
+          "incidence": "Not precisely defined; hyperprolactinemia is a class effect",
+          "notes": "Watch for missed periods, breast discharge, breast enlargement, low libido, or erectile problems. These can be medication-related and reversible if the treatment plan is adjusted."
+        },
+        {
+          "effect": "Anticholinergic effects",
+          "incidence": "Variable; flupentixol has relatively low anticholinergic potency but effects still occur",
+          "notes": "Dry mouth, blurred vision, constipation, urinary hesitancy or retention can occur. Severe constipation or belly pain needs urgent attention."
+        },
+        {
+          "effect": "Cardiovascular symptoms",
+          "incidence": "Not fully quantified; includes palpitations, syncope, QT prolongation",
+          "notes": "Dizziness on standing, feeling like you might pass out, or a racing/irregular heartbeat should be reported urgently. Your clinician may order an ECG."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): Fever, severe muscle rigidity, confusion, autonomic instability, elevated CPK, and possible kidney injury. This is a medical emergency and requires immediate discontinuation and hospital care."
+        },
+        {
+          "risk": "Tardive dyskinesia: Involuntary, repetitive movements (tongue, lips, face, trunk, limbs) that can become irreversible, especially after long-term use in older adults and women."
+        },
+        {
+          "risk": "Severe arrhythmias: Prolonged QT interval, torsades de pointes, ventricular tachycardia, ventricular fibrillation, and sudden cardiac death, particularly in high-risk patients."
+        },
+        {
+          "risk": "Serious blood dyscrasias: Neutropenia, agranulocytosis, granulocytopenia, thrombocytopenia. Symptoms may include fever, sore throat, infections, or unexplained bruising/bleeding."
+        },
+        {
+          "risk": "Severe hepatic injury: Jaundice, markedly elevated AST/ALT or alkaline phosphatase, and clinical signs of liver dysfunction."
+        },
+        {
+          "risk": "Severe dermatologic reactions: Exfoliative dermatitis or widespread rash with systemic symptoms."
+        },
+        {
+          "risk": "Severe GI complications: Paralytic ileus with abdominal distension, pain, and absent bowel movements—requires urgent evaluation."
+        },
+        {
+          "risk": "Venous thromboembolism: Deep vein thrombosis or pulmonary embolism with leg swelling, chest pain, or shortness of breath."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis who are treated with antipsychotic drugs are at an increased risk of death compared with placebo. Most deaths are cardiovascular or infectious. Flupentixol is not approved for dementia-related psychosis. Neuroleptic malignant syndrome (NMS) has been reported with flupentixol and other antipsychotics and can be fatal. Monitor closely for fever, rigidity, confusion, and autonomic instability and stop the medication immediately if NMS is suspected.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to flupentixol, thioxanthenes, or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute intoxication with alcohol, barbiturates, or opioids"
+        },
+        {
+          "contraindication": "CNS depression of any cause or coma"
+        },
+        {
+          "contraindication": "Severely agitated psychotic patients, psychoneurotic patients, or geriatric patients with confusion and/or agitation"
+        },
+        {
+          "contraindication": "Suspected or established subcortical brain damage"
+        },
+        {
+          "contraindication": "Cerebrovascular or renal insufficiency"
+        },
+        {
+          "contraindication": "Severe cardiovascular disease or circulatory collapse"
+        },
+        {
+          "contraindication": "Liver damage or significant hepatic impairment"
+        },
+        {
+          "contraindication": "Concomitant use with large doses of hypnotics"
+        },
+        {
+          "contraindication": "Known QT prolongation, history of torsades de pointes, or use of other QT-prolonging drugs when risk is high"
+        },
+        {
+          "contraindication": "Use in catatonia (may worsen psychosis and increase risk of neuroleptic malignant syndrome)"
+        }
+      ],
+      "precautions": [
+        "Cardiac conduction risk: May prolong QT interval and trigger serious arrhythmias, including torsades de pointes, especially in patients with heart disease, bradycardia, electrolyte abnormalities, or other QT-prolonging medications.",
+        "Neuroleptic malignant syndrome (NMS): Life-threatening reaction with fever, severe muscle rigidity, confusion, autonomic instability, and elevated CPK. Requires immediate discontinuation and emergency care.",
+        "Not for catatonia: Antipsychotics can worsen outcomes and increase NMS risk in catatonia. Benzodiazepines or ECT are preferred in that setting.",
+        "Extrapyramidal symptoms (EPS): High risk of parkinsonism, dystonia, akathisia, and, with long-term use, tardive dyskinesia.",
+        "Metabolic effects: Can worsen glucose tolerance and cause diabetic ketoacidosis even in people without known diabetes. Monitor weight and metabolic parameters.",
+        "Blood dyscrasias: Risk of neutropenia, leukopenia, and agranulocytosis. Monitor CBC if symptoms or risk factors are present.",
+        "Orthostatic hypotension and falls: Can lower blood pressure and increase fall risk, especially in older adults.",
+        "Hyperprolactinemia: Can cause amenorrhea, galactorrhea, gynecomastia, sexual dysfunction, and possibly impact fertility.",
+        "Seizure risk: May lower seizure threshold; use caution in patients with seizure history, head trauma, or alcohol use disorder.",
+        "Hepatic and renal impairment: Contraindicated in liver damage and renal insufficiency; drug exposure may be unpredictable and toxicity risk increased."
+      ],
+      "interactions": [
+        {
+          "interactant": "QT-prolonging medications (eg, certain antiarrhythmics, macrolide antibiotics, fluoroquinolones, methadone)",
+          "mechanism": "Additive QT prolongation and risk of torsades de pointes or sudden death.",
+          "action": "Avoid combinations when possible. If unavoidable, obtain baseline and follow-up ECGs, correct electrolytes, and use the lowest effective doses."
+        },
+        {
+          "interactant": "Other antipsychotics or dopamine-blocking agents",
+          "mechanism": "Increased risk of EPS, NMS, hyperprolactinemia, and QT prolongation.",
+          "action": "Avoid routine antipsychotic polypharmacy. If overlap is needed during switching, keep it brief and monitor closely for side effects."
+        },
+        {
+          "interactant": "CNS depressants (benzodiazepines, opioids, sedating antihistamines, alcohol)",
+          "mechanism": "Additive sedation, respiratory depression, impaired cognition, and falls.",
+          "action": "Use lowest effective doses, avoid alcohol, and monitor for oversedation and respiratory compromise. In older adults, these combinations are particularly risky."
+        },
+        {
+          "interactant": "Antihypertensives and vasodilators",
+          "mechanism": "Enhanced hypotension and dizziness, especially when standing.",
+          "action": "Monitor blood pressure, particularly after starting or increasing flupentixol. Educate patients on slow position changes and fall risk."
+        },
+        {
+          "interactant": "Drugs that lower seizure threshold (eg, bupropion, tramadol, some antidepressants and stimulants)",
+          "mechanism": "Increased risk of seizures, particularly in patients with seizure history or brain injury.",
+          "action": "Use caution, avoid high doses, and consider alternatives if possible. Monitor for neurologic symptoms."
+        },
+        {
+          "interactant": "Dopamine agonists and levodopa",
+          "mechanism": "Pharmacodynamic opposition—flupentixol blocks dopamine, potentially worsening Parkinsonian symptoms or reducing efficacy of dopaminergic treatment.",
+          "action": "Avoid if possible in patients with Parkinson disease or those needing dopaminergic therapy. If used together, carefully balance benefits and motor side effects."
+        },
+        {
+          "interactant": "Strong CYP inhibitors or inducers (class effect caution)",
+          "mechanism": "While specific CYP pathways are less emphasized clinically for flupentixol than for some atypicals, potent inducers or inhibitors may alter exposure.",
+          "action": "When major CYP-modifying drugs are added or removed, monitor for loss of efficacy or increased side effects and adjust doses based on clinical response."
+        },
+        {
+          "interactant": "Other anticholinergic medications",
+          "mechanism": "Additive constipation, urinary retention, and blurred vision; may increase risk of heat illness.",
+          "action": "Use with caution, especially in older adults or those with BPH, glaucoma, or chronic constipation."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Adherence: Assess at every visit, especially in patients on oral therapy or who may miss depot appointments."
+        },
+        {
+          "parameter": "Mental status and psychotic symptoms: Track hallucinations, delusions, disorganization, mood, and functioning at every visit."
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (EPS): Screen at each visit; use a rating scale (eg, for parkinsonism and akathisia) about 4 weeks after initiation or dose changes and at least annually, more often if high risk."
+        },
+        {
+          "parameter": "Tardive dyskinesia: Assess visually at every visit and complete a standardized rating scale (eg, AIMS) at least annually or every 6 months in high-risk groups (older adults, women, long-term exposure)."
+        },
+        {
+          "parameter": "Fall risk: Reassess fall risk periodically, especially in adults ≥60 years or those with sedation, orthostasis, or gait impairment."
+        },
+        {
+          "parameter": "Vital signs: Monitor blood pressure (including orthostatics), heart rate, temperature, and signs of infection as clinically indicated."
+        },
+        {
+          "parameter": "ECG and cardiac status: Obtain baseline and follow-up ECG in patients with cardiovascular risk factors, existing heart disease, electrolyte abnormalities, or concurrent QT-prolonging drugs."
+        },
+        {
+          "parameter": "Weight, height, BMI, and waist circumference: Check weight and BMI at every visit for the first 6 months, then at least quarterly; consider waist circumference at baseline and annually."
+        },
+        {
+          "parameter": "Metabolic labs: Fasting plasma glucose/HbA1c and lipid panel around 4 months after initiation and annually thereafter, or more often if abnormal."
+        },
+        {
+          "parameter": "Blood chemistries: Monitor electrolytes, renal function, liver function, and TSH as clinically indicated, especially in medically complex patients."
+        },
+        {
+          "parameter": "CBC: Check as clinically indicated, and more frequently in patients with low baseline WBC or a history of drug-induced leukopenia or neutropenia."
+        },
+        {
+          "parameter": "Prolactin and hormone-related symptoms: Ask at each visit about menstrual changes, libido, galactorrhea, gynecomastia, and sexual function; obtain prolactin levels if symptoms are present."
+        },
+        {
+          "parameter": "Ocular health: Eye examinations as clinically indicated, especially if visual symptoms arise or in patients at risk for ocular disease."
+        },
+        {
+          "parameter": "Metabolic syndrome and cardiovascular history: Periodically review personal and family history of obesity, diabetes, dyslipidemia, hypertension, and cardiovascular disease."
+        },
+        {
+          "parameter": "Overall function and quality of life: Work, school, relationships, self-care, and independent living capacity should be routinely tracked to ensure the medication is helping more than it harms."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Flupentixol crosses the placenta. As a class, first-generation antipsychotics have not shown a large increase in major congenital malformations overall, but individual data for flupentixol are limited. Third-trimester exposure to antipsychotics can cause extrapyramidal or withdrawal symptoms in newborns (restlessness, feeding issues, abnormal tone, respiratory distress, tremor). Tapering late in pregnancy solely to reduce neonatal symptoms is generally not recommended because relapse risk for the parent is high. If the patient is well-controlled on flupentixol and alternative options are limited or have failed, continuing at the lowest effective dose with close monitoring may be reasonable as part of a shared decision-making process.",
+        "lactation": "Flupentixol is present in breast milk at low concentrations. The manufacturer notes that adverse effects in nursing infants are unlikely at therapeutic maternal doses, but data are limited. If used during breastfeeding, monitor the infant for sedation, feeding difficulties, poor weight gain, or unusual movements. As always, balance the benefits of breastfeeding, the importance of maternal psychiatric stability, and the availability of alternative treatments.",
+        "pediatric": "Safety and efficacy in children and adolescents are not established. Extrapyramidal symptoms, prolactin-related issues, and metabolic effects are concerns. This medication should generally be avoided in pediatric patients outside of specialized settings with strong justification and careful monitoring.",
+        "geriatric": "Flupentixol is a high-risk medication in older adults. Antipsychotics in general are linked to higher stroke risk, cognitive decline, falls, and mortality, especially in dementia. It should not be used for behavioral symptoms of dementia or delirium unless nonpharmacologic options have failed and the patient poses a significant safety risk. If used (eg, for schizophrenia with long-standing psychosis), start at very low doses, titrate slowly, monitor sodium (risk of SIADH/hyponatremia), and reassess the need regularly.",
+        "renal_impairment": "Product labeling both suggests no dose adjustment and lists renal insufficiency as a contraindication. Given predominant fecal excretion and limited data, best practice is to avoid flupentixol in clinically significant renal impairment and choose an alternative antipsychotic.",
+        "hepatic_impairment": "Flupentixol is heavily hepatically metabolized and is contraindicated in liver damage. In any degree of hepatic impairment, use extreme caution if considered; in most cases, an alternative with a safer hepatic profile is preferred."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability about 40%; depot formulation provides slow, sustained release from the muscle.",
+          "bioavailability": "Oral: ~40%",
+          "peak_plasma": "Oral: 3–8 hours; depot: 4–7 days after injection",
+          "half_life": "Oral: ~35 hours; depot: ~3 weeks",
+          "metabolism": "Extensive hepatic metabolism via sulfoxidation and dealkylation; also undergoes glucuronidation; metabolites are inactive.",
+          "excretion": "Mostly in feces as metabolites; small amount in urine.",
+          "protein_binding": "~99%",
+          "food_effect": "Oral tablets can be taken with or without food; no major clinically relevant food effect noted."
+        },
+        "dosing": {
+          "titration": "Flupentixol is usually started orally, then transitioned to a depot injection for maintenance once tolerability and response are established. Doses must be individualized and adjusted slowly based on clinical response and side effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping flupentixol needs a plan. With oral tablets, abrupt discontinuation can cause withdrawal-like symptoms and relapse. Depot formulations wear off slowly, so classic withdrawal is less of an issue, but relapse risk remains high if underlying illness is active."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +301,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experiences with flupentixol vary a lot. Below are common themes from patients when the dose is in the usual maintenance range.",
       "items": [
         {
           "category": "Slow but Steady Effect",
@@ -150,7 +352,8 @@
             "The depot wears off slowly, so I didn’t crash overnight, but I did relapse when I skipped appointments."
           ]
         }
-      ]
+      ],
+      "intro": "Experiences with flupentixol vary a lot. Below are common themes from patients when the dose is in the usual maintenance range."
     },
     {
       "type": "onset_duration",
@@ -168,10 +371,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Flupentixol can be an effective maintenance antipsychotic for people with schizophrenia, particularly when adherence to daily tablets is difficult. Its value is less about being ‘stronger’ than other antipsychotics and more about providing steady dopamine blockade via long-acting injections. For many patients, staying on a consistent depot schedule reduces relapse rates, emergency visits, and rehospitalizations. Tradeoffs include a higher risk of movement side effects and prolactin elevation compared with many atypical antipsychotics.",
       "metric": "Symptom improvement and relapse prevention in schizophrenia",
       "value": "Clinically effective when dosed appropriately and maintained over time",
       "comparison": "Generally comparable to other first-generation depot antipsychotics when using equivalent doses",
-      "text": "Flupentixol can be an effective maintenance antipsychotic for people with schizophrenia, particularly when adherence to daily tablets is difficult. Its value is less about being ‘stronger’ than other antipsychotics and more about providing steady dopamine blockade via long-acting injections. For many patients, staying on a consistent depot schedule reduces relapse rates, emergency visits, and rehospitalizations. Tradeoffs include a higher risk of movement side effects and prolactin elevation compared with many atypical antipsychotics.",
       "clinical_details": "Evidence for flupentixol comes largely from older studies and clinical experience with first-generation depot antipsychotics. Typical response patterns include gradual reduction in hallucinations, delusions, and disorganized thought, often over 4–6 weeks. Depot formulations may improve adherence and reduce relapse risk compared with oral-only regimens, especially in patients with chronic illness and prior nonadherence. However, modern guidelines usually favor second-generation antipsychotics first due to a more favorable extrapyramidal symptom profile. Flupentixol is more commonly encountered in regions where it remains marketed and where cost, availability, or prior response drive antipsychotic selection.",
       "citation": {
         "authors": "Clinical guideline groups and historical depot antipsychotic trials",
@@ -273,7 +476,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Like other typical antipsychotics, flupentixol has important interactions via cardiac conduction, CNS depression, blood pressure, and seizure threshold. A full interaction check is essential before starting or changing doses.",
       "items": [
         {
           "with": "QT-prolonging medications (eg, certain antiarrhythmics, macrolide antibiotics, fluoroquinolones, methadone)",
@@ -315,7 +517,8 @@
           "risk": "Additive constipation, urinary retention, and blurred vision; may increase risk of heat illness.",
           "action": "Use with caution, especially in older adults or those with BPH, glaucoma, or chronic constipation."
         }
-      ]
+      ],
+      "intro": "Like other typical antipsychotics, flupentixol has important interactions via cardiac conduction, CNS depression, blood pressure, and seizure threshold. A full interaction check is essential before starting or changing doses."
     },
     {
       "type": "tapering",
@@ -437,21 +640,43 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Flupentixol (Fluanxol): Uses, Depot Dosing, Side Effects & Monitoring",
-    "description": "Flupentixol (Fluanxol) is a first-generation antipsychotic used mainly as a long-acting depot for schizophrenia. Learn about dosing, depot conversion, side effects (EPS, QT prolongation, prolactin), pregnancy and older adult considerations.",
-    "canonical": "[https://www.heypsych.com/treatments/flupentixol-fluanxol](https://www.heypsych.com/treatments/flupentixol-fluanxol)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Flupentixol Canadian Product Monograph (Fluanxol / Fluanxol Depot)",
+      "url": "[https://www.canada.ca/en/health-canada/services/drugs-health-products.html](https://www.canada.ca/en/health-canada/services/drugs-health-products.html)",
+      "description": "Official Canadian prescribing information including dosing, warnings, and pharmacology."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Guidelines on Antipsychotic Use in Schizophrenia",
+      "url": "[https://www.psychiatry.org/psychiatrists/practice/clinical-practice-guidelines](https://www.psychiatry.org/psychiatrists/practice/clinical-practice-guidelines)",
+      "description": "Professional guidelines discussing antipsychotic selection, monitoring, and long-acting injectable strategies."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Beers Criteria for Potentially Inappropriate Medication Use in Older Adults",
+      "url": "[https://www.americangeriatrics.org](https://www.americangeriatrics.org)",
+      "description": "Guidance on antipsychotic risks, stroke, mortality, and fall risk in older adults, including dementia-related psychosis."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "Perinatal Mental Health and Antipsychotic Treatment",
+      "url": "[https://www.acog.org](https://www.acog.org)",
+      "description": "Obstetric-focused guidance on managing antipsychotics during pregnancy and postpartum."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "Consensus Statements on Depot/Long-acting Antipsychotics",
+      "url": "[https://www.ncbi.nlm.nih.gov/pubmed/](https://www.ncbi.nlm.nih.gov/pubmed/)",
+      "description": "Review articles and expert consensus papers on the use of long-acting injectables for schizophrenia maintenance."
+    }
+  ],
   "faqs": [
     {
       "q": "What is flupentixol used for in psychiatry?",
@@ -497,5 +722,20 @@
       "q": "Why would someone choose flupentixol instead of a newer atypical antipsychotic?",
       "a": "In many systems, second-generation antipsychotics are preferred first because they usually have fewer movement side effects. Flupentixol sometimes enters the picture when a patient has done well on it historically, has limited access to atypicals, or needs a specific depot option that fits their context. It can be a reasonable choice when the benefits for a particular person outweigh the risks, but it’s not a modern ‘go-to’ for first-line treatment in most guidelines."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Flupentixol (Fluanxol): Uses, Depot Dosing, Side Effects & Monitoring",
+    "description": "Flupentixol (Fluanxol) is a first-generation antipsychotic used mainly as a long-acting depot for schizophrenia. Learn about dosing, depot conversion, side effects (EPS, QT prolongation, prolactin), pregnancy and older adult considerations.",
+    "canonical": "[https://www.heypsych.com/treatments/flupentixol-fluanxol](https://www.heypsych.com/treatments/flupentixol-fluanxol)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -301,8 +301,8 @@ function TagFilter({ tags, selectedTag, onSelectTag }: TagFilterProps) {
         onClick={() => onSelectTag(null)}
         className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
           selectedTag === null
-            ? "bg-blue-600 text-white shadow-md"
-            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+            ? "bg-accent text-white shadow-md"
+            : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
         }`}
       >
         All
@@ -313,8 +313,8 @@ function TagFilter({ tags, selectedTag, onSelectTag }: TagFilterProps) {
           onClick={() => onSelectTag(tag.id)}
           className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
             selectedTag === tag.id
-              ? "bg-blue-600 text-white shadow-md"
-              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+              ? "bg-accent text-white shadow-md"
+              : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
           }`}
         >
           {tag.label}
@@ -339,11 +339,11 @@ function SearchInput({ value, onChange, resultCount }: SearchInputProps) {
         placeholder="Search organizations by name, condition, or focus..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        className="w-full rounded-lg border border-separator px-4 py-3 text-label-primary placeholder:text-label-quaternary focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-900/40"
         aria-label="Search organizations"
       />
       {value && (
-        <p className="text-sm text-slate-900" role="status" aria-live="polite">
+        <p className="text-sm text-label-primary" role="status" aria-live="polite">
           Found {resultCount} {resultCount === 1 ? "organization" : "organizations"}
         </p>
       )}
@@ -371,21 +371,21 @@ function OrganizationCard({ organization }: OrganizationCardProps) {
         <div className="space-y-4">
           {/* Header */}
           <div className="space-y-2">
-            <h3 className="text-xl font-bold text-slate-900">{organization.name}</h3>
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+            <h3 className="text-xl font-bold text-label-primary">{organization.name}</h3>
+            <span className="inline-flex items-center rounded-full bg-surface-grouped px-3 py-1 text-xs font-semibold text-label-secondary">
               {primaryPillLabel}
             </span>
           </div>
 
           {/* Description */}
-          <p className="text-slate-900">{organization.description}</p>
+          <p className="text-label-primary">{organization.description}</p>
 
           {/* Tags/Labels */}
           <div className="flex flex-wrap gap-2">
             {accessLabels.map((access) => (
               <span
                 key={access}
-                className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700"
+                className="rounded-full bg-accent-tint px-3 py-1 text-xs font-medium text-accent-700"
               >
                 {access}
               </span>
@@ -393,7 +393,7 @@ function OrganizationCard({ organization }: OrganizationCardProps) {
             {secondaryTags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700"
+                className="rounded-full bg-positive-tint px-3 py-1 text-xs font-medium text-positive-700"
               >
                 {tag}
               </span>
@@ -406,31 +406,31 @@ function OrganizationCard({ organization }: OrganizationCardProps) {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-2 border-t border-slate-200 pt-4">
+          <div className="space-y-2 border-t border-separator pt-4">
             {organization.phones?.map((phone, index) => (
               <div key={index} className="flex items-center gap-2 text-sm">
-                <span className="font-medium text-slate-700">{phone.label}:</span>
+                <span className="font-medium text-label-secondary">{phone.label}:</span>
                 <a
                   href={`tel:${phone.number}`}
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  className="text-accent hover:text-accent-700 hover:underline"
                 >
                   {phone.number}
                 </a>
               </div>
             ))}
             <div className="flex items-center gap-2 text-sm">
-              <span className="font-medium text-slate-700">Website:</span>
+              <span className="font-medium text-label-secondary">Website:</span>
               {websiteUrl ? (
                 <a
                   href={websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  className="text-accent hover:text-accent-700 hover:underline"
                 >
                   {websiteUrl.replace(/^https?:\/\/(www\.)?/, "")}
                 </a>
               ) : (
-                <span className="text-slate-500">Not provided</span>
+                <span className="text-label-tertiary">Not provided</span>
               )}
             </div>
           </div>
@@ -493,10 +493,10 @@ export function OrganizationsAtoZSection({ organizations, page = 1 }: Props) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">
+        <h2 className="mb-4 text-2xl font-bold text-label-primary">
           Mental Health Organizations & Support Groups
         </h2>
-        <p className="mb-6 text-slate-900">
+        <p className="mb-6 text-label-primary">
           Find peer support groups, advocacy organizations, and communities for specific conditions,
           identities, and life situations. All organizations offer free or low-cost support.
         </p>
@@ -566,7 +566,7 @@ export function OrganizationsAtoZSection({ organizations, page = 1 }: Props) {
         </>
       ) : (
         <Card>
-          <CardContent className="p-8 text-center text-slate-900">
+          <CardContent className="p-8 text-center text-label-primary">
             <p className="mb-2 text-lg font-medium">No organizations found</p>
             <p className="text-sm">
               {searchQuery

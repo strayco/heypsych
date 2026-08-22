@@ -65,13 +65,13 @@ export function CrisisCard({ hotline }: Props) {
       <CardContent className="p-6">
         {/* Header */}
         <div className="mb-4">
-          <h3 className="mb-2 text-xl font-bold text-slate-900 group-hover:text-blue-600">
+          <h3 className="mb-2 text-xl font-bold text-label-primary group-hover:text-accent">
             {hotline.name}
           </h3>
           {hotline.org.name && hotline.org.name !== hotline.name && (
-            <p className="mb-2 text-sm text-slate-900">{hotline.org.name}</p>
+            <p className="mb-2 text-sm text-label-primary">{hotline.org.name}</p>
           )}
-          <p className="text-sm leading-relaxed text-slate-900">{hotline.summary}</p>
+          <p className="text-sm leading-relaxed text-label-primary">{hotline.summary}</p>
         </div>
 
         {/* Details Bar */}
@@ -92,7 +92,7 @@ export function CrisisCard({ hotline }: Props) {
             </Badge>
           ))}
           {hotline.labels.verified && (
-            <Badge variant="default" size="sm" className="bg-blue-100 text-blue-700">
+            <Badge variant="default" size="sm" className="bg-accent-tint text-accent-700">
               <Shield className="mr-1 h-3 w-3" />
               Verified
             </Badge>
@@ -129,7 +129,7 @@ export function CrisisCard({ hotline }: Props) {
                 onClick={() => handleClick("call")}
                 aria-label={`Call ${hotline.name} hotline at ${phoneNumber}`}
               >
-                <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                <Button size="sm" className="bg-negative hover:bg-negative-600">
                   <Phone className="mr-2 h-4 w-4" />
                   {call.label}
                   {phoneNumber && phoneNumber !== "1" && `: ${phoneNumber}`}
@@ -150,7 +150,7 @@ export function CrisisCard({ hotline }: Props) {
                 onClick={() => handleClick("text")}
                 aria-label={`Text ${hotline.name} at ${textNumber}`}
               >
-                <Button size="sm" variant="outline" className="border-red-300 hover:bg-red-50">
+                <Button size="sm" variant="outline" className="border-negative-border hover:bg-negative-tint">
                   <MessageSquare className="mr-2 h-4 w-4" />
                   {text.label}
                   {textNumber && !text.label.includes("to") && `: ${textNumber}`}
@@ -168,7 +168,7 @@ export function CrisisCard({ hotline }: Props) {
               onClick={() => handleClick("chat")}
               aria-label={`Chat with ${hotline.name} online`}
             >
-              <Button size="sm" variant="outline" className="border-red-300 hover:bg-red-50">
+              <Button size="sm" variant="outline" className="border-negative-border hover:bg-negative-tint">
                 <Globe className="mr-2 h-4 w-4" />
                 Chat Online
               </Button>

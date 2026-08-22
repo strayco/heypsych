@@ -20,11 +20,11 @@ export function ToolGrid({ tools, emptyMessage, onClearFilters }: ToolGridProps)
   if (!tools || tools.length === 0) {
     return (
       <div className="py-12 text-center">
-        <Smartphone className="mx-auto h-12 w-12 text-neutral-400" />
-        <h3 className="mt-4 text-lg font-semibold text-neutral-900">
+        <Smartphone className="mx-auto h-12 w-12 text-label-quaternary" />
+        <h3 className="mt-4 text-lg font-semibold text-label-primary">
           No tools found
         </h3>
-        <p className="mt-2 text-neutral-600">
+        <p className="mt-2 text-label-tertiary">
           {emptyMessage || "Try adjusting your filters to see more results."}
         </p>
         {onClearFilters && (

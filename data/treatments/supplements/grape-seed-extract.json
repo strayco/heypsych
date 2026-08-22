@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "grape-seed-extract",
-  "type": "supplement",
-  "name": "Grape Seed Extract",
-  "summary": "Grape seed extract is a natural supplement rich in proanthocyanidins (OPCs), studied for its antioxidant, cardiovascular, and neuroprotective effects, with potential benefits for cognition, anxiety, and metabolic health.",
-  "description": "Grape seed extract (GSE) is derived from the seeds of Vitis vinifera and contains high levels of oligomeric proanthocyanidins (OPCs), which are potent antioxidants. These compounds protect against oxidative stress, improve vascular health, and support microcirculation. Emerging research suggests possible benefits for cognitive function, stress reduction, and adjunctive support in anxiety and metabolic disorders. GSE is commonly used in integrative medicine as a cardiometabolic and neuroprotective supplement.",
-  "category": "supplements",
-  "tags": [
-    "antioxidant",
-    "vascular health",
-    "cognitive support",
-    "anxiety"
-  ],
-  "metadata": {
-    "compound_type": "Polyphenol-rich botanical extract",
-    "natural_source": "Seeds of grapes (Vitis vinifera)",
+  "identity": {
+    "slug": "grape-seed-extract",
+    "name": "Grape Seed Extract",
+    "brand_names": [
+      "MegaNatural-BP",
+      "Masquelier’s OPCs"
+    ],
+    "aliases": [
+      "GSE",
+      "Vitis vinifera seed extract"
+    ],
+    "wikidata_qid": "Q5597007"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cardiovascular Health",
       "Neuroprotection",
@@ -25,72 +27,151 @@
       "Anti-inflammatory",
       "Endothelial support"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "MegaNatural-BP",
-      "Masquelier’s OPCs"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Cardiology",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q5597007"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Cardiovascular support (blood pressure, endothelial function)",
-      "Antioxidant and anti-inflammatory support"
-    ],
-    "off_label_uses": [
-      "Cognitive protection and memory support",
-      "Anxiety reduction (mild evidence)",
-      "Metabolic health (blood sugar regulation)"
-    ],
-    "contraindications": [
-      "Allergy to grapes or grape-derived products",
-      "Caution with bleeding disorders"
-    ],
-    "monitoring_required": [
-      "Blood pressure in hypertensive patients",
-      "Bleeding risk in patients on anticoagulants"
-    ],
-    "efficacy_rating": {
-      "cardiovascular_support": 3,
-      "cognitive_support": 2,
-      "anxiety_relief": 2,
-      "antioxidant_effects": 4,
-      "metabolic_support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Grape seed extract",
-      "OPCs",
-      "proanthocyanidins"
-    ],
-    "synonyms": [
-      "GSE",
-      "Vitis vinifera seed extract"
-    ],
-    "common_misspellings": [
-      "grapeseed extract",
-      "grap seed extract"
+    "tags": [
+      "antioxidant",
+      "vascular health",
+      "cognitive support",
+      "anxiety"
     ]
+  },
+  "summary": "Grape seed extract is a natural supplement rich in proanthocyanidins (OPCs), studied for its antioxidant, cardiovascular, and neuroprotective effects, with potential benefits for cognition, anxiety, and metabolic health.",
+  "description": "Grape seed extract (GSE) is derived from the seeds of Vitis vinifera and contains high levels of oligomeric proanthocyanidins (OPCs), which are potent antioxidants. These compounds protect against oxidative stress, improve vascular health, and support microcirculation. Emerging research suggests possible benefits for cognitive function, stress reduction, and adjunctive support in anxiety and metabolic disorders. GSE is commonly used in integrative medicine as a cardiometabolic and neuroprotective supplement.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "cardiovascular-support-blood-pressure-endothelial-function",
+          "condition_name": "Cardiovascular support (blood pressure, endothelial function)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "antioxidant-and-anti-inflammatory-support",
+          "condition_name": "Antioxidant and anti-inflammatory support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-protection-and-memory-support",
+          "condition_name": "Cognitive protection and memory support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-reduction-mild-evidence",
+          "condition_name": "Anxiety reduction (mild evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "metabolic-health-blood-sugar-regulation",
+          "condition_name": "Metabolic health (blood sugar regulation)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cardiovascular_support": {
+          "rating": 3
+        },
+        "cognitive_support": {
+          "rating": 2
+        },
+        "anxiety_relief": {
+          "rating": 2
+        },
+        "antioxidant_effects": {
+          "rating": 4
+        },
+        "metabolic_support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Mild GI upset"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Bleeding risk in sensitive individuals or those on anticoagulants"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to grapes or grape-derived products"
+        },
+        {
+          "contraindication": "Caution with bleeding disorders"
+        }
+      ],
+      "precautions": [
+        "May increase risk of bleeding in individuals taking anticoagulant or antiplatelet medications.",
+        "Limited data in pregnancy and lactation; avoid unless prescribed."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin or anticoagulants",
+          "mechanism": "Increased bleeding risk",
+          "action": "Monitor INR and bleeding symptoms"
+        },
+        {
+          "interactant": "Antiplatelet agents (e.g., aspirin, clopidogrel)",
+          "mechanism": "Enhanced antiplatelet effect",
+          "action": "Use with caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure"
+        },
+        {
+          "parameter": "Signs of bleeding or bruising"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid",
+        "lactation": "Avoid due to lack of data",
+        "pediatric": "Not established; avoid",
+        "geriatric": "Generally safe at standard doses; monitor for bleeding risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Polyphenol-rich botanical extract",
+        "natural_source": "Seeds of grapes (Vitis vinifera)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -207,6 +288,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Sano T, et al. Beneficial effects of grape seed extract on blood pressure and oxidative stress. J Med Food. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17651062/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Chis IC, et al. Protective effects of grape seed extract in oxidative stress-related conditions. Oxid Med Cell Longev. 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20108747/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "National Center for Complementary and Integrative Health – Grape Seed Extract",
+      "url": "https://www.nccih.nih.gov/health/grape-seed-extract"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Grape seed extract",
+      "OPCs",
+      "proanthocyanidins"
+    ],
+    "synonyms": [
+      "GSE",
+      "Vitis vinifera seed extract"
+    ],
+    "common_misspellings": [
+      "grapeseed extract",
+      "grap seed extract"
+    ]
+  },
   "seo": {
     "title": "Grape Seed Extract – Antioxidant Supplement for Cardiovascular and Cognitive Health",
     "description": "Grape seed extract is a supplement rich in proanthocyanidins, studied for cardiovascular support, antioxidant protection, and potential cognitive and anxiety benefits.",

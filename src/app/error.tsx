@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 
 export default function Error({
@@ -18,26 +17,25 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-      <Card className="w-full max-w-lg">
-        <CardHeader>
-          <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-red-100 p-2">
-              <AlertTriangle className="h-6 w-6 text-red-600" />
-            </div>
-            <CardTitle className="text-xl">Something went wrong</CardTitle>
+    <div className="flex min-h-screen items-center justify-center bg-canvas p-4">
+      <div className="w-full max-w-lg rounded-xl border border-separator bg-surface-grouped p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="rounded-lg bg-negative-tint border border-negative-700/30 p-2">
+            <AlertTriangle className="h-6 w-6 text-negative" />
           </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-gray-600">
+          <h1 className="text-xl font-semibold text-label-primary">Something went wrong</h1>
+        </div>
+
+        <div className="space-y-4">
+          <p className="text-label-tertiary">
             We encountered an unexpected error. This has been logged and we will look into it.
           </p>
 
           {process.env.NODE_ENV === "development" && (
-            <div className="rounded-lg bg-gray-100 p-4">
-              <p className="font-mono text-sm break-all text-gray-800">{error.message}</p>
+            <div className="rounded-lg bg-surface border border-separator p-4">
+              <p className="font-mono text-sm break-all text-label-secondary">{error.message}</p>
               {error.digest && (
-                <p className="mt-2 text-xs text-gray-500">Error ID: {error.digest}</p>
+                <p className="mt-2 text-xs text-label-primary0">Error ID: {error.digest}</p>
               )}
             </div>
           )}
@@ -57,11 +55,11 @@ export default function Error({
             </Button>
           </div>
 
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm text-label-primary0">
             If the problem persists, please contact support.
           </p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

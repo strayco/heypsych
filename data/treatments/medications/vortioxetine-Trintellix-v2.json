@@ -1,79 +1,232 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vortioxetine-trintellix",
-  "type": "medication",
-  "name": "Vortioxetine (Trintellix)",
-  "summary": "Once-daily antidepressant for major depression. Usually starts helping within 1-2 weeks, with bigger gains over 4-6 weeks. Watch closely for mood worsening or suicidal thoughts early on—especially ages 18-24.",
-  "description": "Trintellix (vortioxetine) is a once-daily antidepressant used for major depressive disorder (unipolar). It works by increasing serotonin signaling in a few different ways (not just reuptake blockade). Many people notice early shifts in mood, energy, or thinking within 1-2 weeks, with fuller benefit by 4-6 weeks. The most common side effect is nausea. Like all antidepressants, it can temporarily increase suicidal thoughts in some younger patients, and it can trigger mania in people with bipolar disorder—so screening and close monitoring matter.",
-  "patient_summary": "Trintellix is a once-daily antidepressant for major depression. Some people feel subtle improvements in 1-2 weeks, but the real change usually builds over 4-6 weeks. Nausea is the big one early. If you're 18-24 or have a history of bipolar symptoms, you need closer monitoring—because antidepressants can sometimes make things worse before they get better.",
-  "category": "medications/depression",
-  "metadata": {
-    "drug_classes": [
-      "Serotonin Modulator",
-      "Antidepressant"
-    ],
+  "identity": {
+    "slug": "vortioxetine-trintellix",
+    "name": "Vortioxetine (Trintellix)",
+    "generic_name": "vortioxetine",
     "brand_names": [
       "Trintellix",
       "APO-Vortioxetine"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": 2013,
-    "pharmacologic_category": "Antidepressant, Selective Serotonin Reuptake Inhibitor/5-HT1A Receptor Partial Agonist; Serotonin 5-HT3 Receptor Antagonist; Serotonin Modulator",
-    "published_date": "2026-01-04T00:00:00Z",
-    "last_updated": "2026-01-04T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-04T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD), unipolar"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for major depressive disorder (unipolar). Usually dosed once daily and adjusted based on response and tolerability."
-      },
-      {
-        "slug": "depression-with-cognitive-symptoms",
-        "relationship": "clinical_consideration",
-        "context": "Often considered when depression includes prominent “brain fog” complaints (attention, processing speed, executive function), since its serotonergic receptor profile is different from standard SSRIs."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to vortioxetine or any component of the formulation (including angioedema/anaphylaxis history)",
-      "Concomitant use of MAOIs intended to treat psychiatric disorders",
-      "Use of psychiatric MAOI within 14 days before starting vortioxetine",
-      "Starting an MAOI intended to treat psychiatric disorders within 21 days after stopping vortioxetine",
-      "Initiation of vortioxetine in a patient receiving IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful improvement timeline",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Some people notice early changes within 1-2 weeks (like slightly better energy, less emotional heaviness, or clearer thinking). The bigger mood shift typically builds over 4-6 weeks.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
+    "drug_classes": [
+      "Serotonin Modulator",
+      "Antidepressant"
+    ]
+  },
+  "summary": "Once-daily antidepressant for major depression. Usually starts helping within 1-2 weeks, with bigger gains over 4-6 weeks. Watch closely for mood worsening or suicidal thoughts early on—especially ages 18-24.",
+  "description": "Trintellix (vortioxetine) is a once-daily antidepressant used for major depressive disorder (unipolar). It works by increasing serotonin signaling in a few different ways (not just reuptake blockade). Many people notice early shifts in mood, energy, or thinking within 1-2 weeks, with fuller benefit by 4-6 weeks. The most common side effect is nausea. Like all antidepressants, it can temporarily increase suicidal thoughts in some younger patients, and it can trigger mania in people with bipolar disorder—so screening and close monitoring matter.",
+  "patient_summary": "Trintellix is a once-daily antidepressant for major depression. Some people feel subtle improvements in 1-2 weeks, but the real change usually builds over 4-6 weeks. Nausea is the big one early. If you're 18-24 or have a history of bipolar symptoms, you need closer monitoring—because antidepressants can sometimes make things worse before they get better.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for major depressive disorder (unipolar). Usually dosed once daily and adjusted based on response and tolerability.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression-with-cognitive-symptoms",
+          "condition_name": "Depression With Cognitive Symptoms",
+          "relationship": "secondary_indication",
+          "context": "Often considered when depression includes prominent “brain fog” complaints (attention, processing speed, executive function), since its serotonergic receptor profile is different from standard SSRIs."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with prolonged time to peak",
-      "bioavailability": "75%",
-      "onset": "Initial antidepressant effects may be noticed within 1-2 weeks; continued improvement through 4-6 weeks",
-      "peak_plasma": "7-11 hours (Tmax up to 36 hours reported)",
-      "half_life": "~66 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic oxidation primarily via CYP2D6 (major) with subsequent glucuronidation to inactive metabolites",
-      "excretion": "Urine (~59%), feces (~26%)",
-      "protein_binding": "98%",
-      "food_effect": "Can be taken without regard to meals"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Initial antidepressant effects may be noticed within 1-2 weeks; continued improvement through 4-6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea",
+          "incidence": "21% to 32%",
+          "notes": "This is the headline side effect. It often shows up early and may improve over 1-2 weeks. Some people do better taking it with food or at a consistent time each day."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "8% to 9%",
+          "notes": "Usually mild, but it can mess with driving or workouts at first. If you feel off-balance, slow down and reassess after a week or two."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "7% to 10%",
+          "notes": "Can be part of the early GI adjustment. If it’s severe, persistent, or you’re getting dehydrated, it’s a medical issue—not something to tough out."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "5% to 6%",
+          "notes": "Hydration, fiber, and routine movement help. If constipation becomes significant, address it early rather than waiting."
+        },
+        {
+          "effect": "Dry mouth (xerostomia)",
+          "incidence": "7% to 8%",
+          "notes": "Annoying but manageable—water, sugar-free gum, and good dental care matter if it persists."
+        },
+        {
+          "effect": "Abnormal dreams",
+          "incidence": "2% to 3%",
+          "notes": "Some people get vivid dreams or weird sleep texture. If it’s disrupting sleep, timing the dose earlier in the day can help for some people."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thoughts/behaviors (especially ages 18-24 early in treatment or after dose changes): urgent clinical follow-up needed"
+        },
+        {
+          "risk": "Mania/hypomania (rare): decreased need for sleep, racing thoughts, impulsivity, unusually elevated or irritable mood—stop and contact prescriber urgently"
+        },
+        {
+          "risk": "Serotonin syndrome (rare but potentially life-threatening): agitation/confusion, tremor, rigidity, fever, sweating, diarrhea, seizures—emergency evaluation"
+        },
+        {
+          "risk": "Hyponatremia/SIADH (rare): headache, confusion, weakness, falls, seizures—especially in older adults or those on diuretics"
+        },
+        {
+          "risk": "Bleeding complications (risk increased with NSAIDs/aspirin/anticoagulants): easy bruising, nosebleeds, black stools, vomiting blood—urgent evaluation"
+        },
+        {
+          "risk": "Seizure (rare): emergency evaluation"
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies. Closely monitor all antidepressant-treated patients for clinical worsening, and for emergence of suicidal thoughts and behaviors. Vortioxetine is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to vortioxetine or any component of the formulation (including angioedema/anaphylaxis history)"
+        },
+        {
+          "contraindication": "Concomitant use of MAOIs intended to treat psychiatric disorders"
+        },
+        {
+          "contraindication": "Use of psychiatric MAOI within 14 days before starting vortioxetine"
+        },
+        {
+          "contraindication": "Starting an MAOI intended to treat psychiatric disorders within 21 days after stopping vortioxetine"
+        },
+        {
+          "contraindication": "Initiation of vortioxetine in a patient receiving IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Screen for bipolar disorder before starting: antidepressants can trigger mania/hypomania in vulnerable people",
+        "Serotonin syndrome risk (rare): higher risk when combined with other serotonergic meds or MAOIs",
+        "Bleeding risk: serotonergic antidepressants can increase bleeding risk, especially with NSAIDs, aspirin, antiplatelets, or anticoagulants",
+        "Hyponatremia/SIADH risk (rare but real): more likely in older adults, people on diuretics, or those with low baseline sodium",
+        "Narrow-angle glaucoma risk in susceptible individuals due to mild pupillary dilation",
+        "CNS effects: dizziness, abnormal dreams, cognitive slowing in some people—be cautious with driving until you know your response",
+        "Seizures reported rarely; use caution if seizure risk is present"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs used for psychiatric disorders (and related serotonin-toxicity risk agents)",
+          "mechanism": "Contraindicated. High risk of serotonin syndrome.",
+          "action": "Wait 14 days after stopping an MAOI before starting vortioxetine. Wait 21 days after stopping vortioxetine before starting an MAOI (consider longer—up to 32 days—in severe obesity due to prolonged half-life)."
+        },
+        {
+          "interactant": "Other serotonergic meds (SSRIs/SNRIs, TCAs, triptans, tramadol, fentanyl, methadone, meperidine, lithium, buspirone, amphetamines, St John’s wort, tryptophan)",
+          "mechanism": "Increased serotonin syndrome risk, especially when stacking multiple agents.",
+          "action": "Avoid unnecessary combinations. If combination is intentional, use the lowest effective doses and educate on serotonin syndrome symptoms."
+        },
+        {
+          "interactant": "NSAIDs, aspirin, antiplatelets, anticoagulants (eg, warfarin, DOACs)",
+          "mechanism": "Increased bleeding risk due to impaired platelet aggregation.",
+          "action": "Use caution and monitor for bruising, nosebleeds, GI bleeding symptoms. Consider gastroprotection if clinically appropriate and risk is high."
+        },
+        {
+          "interactant": "CYP2D6 considerations (poor metabolizers or strong CYP2D6 inhibitors)",
+          "mechanism": "Higher vortioxetine exposure may increase side effects.",
+          "action": "In known CYP2D6 poor metabolizers, maximum recommended dose is 10 mg/day. If side effects spike after adding interacting meds, reassess dose."
+        },
+        {
+          "interactant": "Alcohol and other sedating substances",
+          "mechanism": "Additive CNS effects (dizziness, impaired alertness) in some people.",
+          "action": "Use caution. Don’t assume you’re safe to drive until you know how you respond."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Depression severity and function: track mood, motivation, sleep, appetite, cognition, work/school function, relationships, and daily functioning"
+        },
+        {
+          "parameter": "Suicidal ideation and behavior: especially at the beginning of therapy and during dose increases/decreases; involve family/caregiver observation when appropriate"
+        },
+        {
+          "parameter": "Activation symptoms: anxiety, agitation, panic attacks, insomnia, irritability, hostility, impulsivity, akathisia—especially early on"
+        },
+        {
+          "parameter": "Mania/hypomania: decreased need for sleep, racing thoughts, risky behavior, unusually elevated/irritable mood—screen before starting and reassess if symptoms emerge"
+        },
+        {
+          "parameter": "Serotonin syndrome: mental status changes, autonomic instability, neuromuscular findings, GI symptoms; higher vigilance when combined with other serotonergic agents"
+        },
+        {
+          "parameter": "Hyponatremia/SIADH: monitor for confusion, weakness, headache, falls; check sodium in higher-risk patients (older adults, low body weight, on diuretics, prior hyponatremia) especially after starting or dose changes"
+        },
+        {
+          "parameter": "Bleeding: bruising, nosebleeds, GI bleeding signs (black stools, vomiting blood), especially with NSAIDs/aspirin/anticoagulants"
+        },
+        {
+          "parameter": "Adverse effects burden: nausea severity, dizziness, sleep changes, sexual functioning, and adherence"
+        },
+        {
+          "parameter": "Drug interaction review: reassess when adding serotonergic meds, anticoagulants/NSAIDs, or when MAOI exposure is possible"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Data specific to vortioxetine in pregnancy are limited. As a serotonergic antidepressant with SSRI-like properties, late-pregnancy exposure in the SSRI class is associated with neonatal adaptation syndrome (usually resolves within ~2 weeks) and a rare risk of persistent pulmonary hypertension of the newborn. Stopping or lowering antidepressants right before delivery to “prevent” neonatal symptoms is generally not recommended because relapse risk is real and untreated depression carries its own risks (preterm birth, low birth weight, preeclampsia, postpartum depression, impaired bonding). Use the lowest effective dose of a single agent, optimize dosing before switching, and monitor monthly with a validated tool when possible. Encourage enrollment in the National Pregnancy Registry for Antidepressants when eligible.",
+        "lactation": "Vortioxetine is present in breast milk. Available reports suggest low infant exposure (relative infant dose roughly ~1% to ~2% in limited data). Breastfeeding may be reasonable in some cases, but monitoring matters: watch infant sleep, feeding, irritability, and growth. If starting a new antidepressant postpartum in a breastfeeding, treatment-naïve patient, another agent may be preferred depending on clinical context.",
+        "pediatric": "Not approved for use in pediatric patients. Antidepressants carry an increased risk of suicidal thoughts/behaviors in children, adolescents, and young adults; close monitoring is required.",
+        "geriatric": "US labeling refers to adult dosing. In older adults, SSRIs and similar serotonergic antidepressants are used with caution due to SIADH/hyponatremia risk and fall risk from dizziness. Consider starting at the lower end of dosing and monitor sodium closely during initiation and dose changes, especially in patients ≥65 or on diuretics.",
+        "renal_impairment": "No dosage adjustment necessary for any degree of kidney impairment. Unlikely to be significantly dialyzed; no supplemental dosing needed with hemodialysis, peritoneal dialysis, CRRT, or PIRRT.",
+        "hepatic_impairment": "No dosage adjustment necessary."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2013
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with prolonged time to peak",
+          "bioavailability": "75%",
+          "peak_plasma": "7-11 hours (Tmax up to 36 hours reported)",
+          "half_life": "~66 hours",
+          "metabolism": "Hepatic oxidation primarily via CYP2D6 (major) with subsequent glucuronidation to inactive metabolites",
+          "excretion": "Urine (~59%), feces (~26%)",
+          "protein_binding": "98%",
+          "food_effect": "Can be taken without regard to meals"
+        },
+        "dosing": {
+          "titration": "Trintellix is taken once daily and adjusted slowly based on response and side effects. The goal is to land on the lowest dose that actually helps—without you feeling wrecked by nausea or activation."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Trintellix has a relatively long half-life, so many people have fewer discontinuation symptoms than with shorter half-life antidepressants. Still: don’t wing it. If you’ve been on it for at least 2 weeks, you and your prescriber can either taper over 1-2 weeks or stop more directly depending on dose, history, and sensitivity."
+        }
+      }
     }
   },
   "sections": [
@@ -91,7 +244,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This isn’t instant relief. Most people describe it as a slow turn of the dimmer switch over a few weeks. Here’s what tends to come up:",
       "items": [
         {
           "category": "Early shift (week 1-2)",
@@ -137,7 +289,8 @@
           ],
           "note": "Antidepressants can trigger hypomania/mania in people with bipolar disorder or bipolar risk—screening matters."
         }
-      ]
+      ],
+      "intro": "This isn’t instant relief. Most people describe it as a slow turn of the dimmer switch over a few weeks. Here’s what tends to come up:"
     },
     {
       "type": "onset_duration",
@@ -152,10 +305,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For most people, the question isn’t “does it work today?” It’s “is my baseline getting better over the next month?” If Trintellix is going to help, you usually see at least some movement by week 2-4, with continued improvement through week 6. If you’re at a therapeutic dose and nothing is changing by week 6-8, it may not be the right fit—or something else needs adjusting.",
       "metric": "Response timeline in depression",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "For most people, the question isn’t “does it work today?” It’s “is my baseline getting better over the next month?” If Trintellix is going to help, you usually see at least some movement by week 2-4, with continued improvement through week 6. If you’re at a therapeutic dose and nothing is changing by week 6-8, it may not be the right fit—or something else needs adjusting.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -248,7 +401,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Trintellix has important serotonin-related interaction rules (especially MAOIs). It’s also metabolized mainly through CYP2D6, so genetics and drug interactions can affect dosing.",
       "items": [
         {
           "with": "MAOIs used for psychiatric disorders (and related serotonin-toxicity risk agents)",
@@ -275,7 +427,8 @@
           "risk": "Additive CNS effects (dizziness, impaired alertness) in some people.",
           "action": "Use caution. Don’t assume you’re safe to drive until you know how you respond."
         }
-      ]
+      ],
+      "intro": "Trintellix has important serotonin-related interaction rules (especially MAOIs). It’s also metabolized mainly through CYP2D6, so genetics and drug interactions can affect dosing."
     },
     {
       "type": "tapering",
@@ -349,21 +502,6 @@
       "text": "Trintellix is a reasonable option for unipolar major depression, especially when someone hasn’t tolerated or hasn’t benefited from a first-line SSRI/SNRI—or when cognitive symptoms (“brain fog”) are part of the depression picture. It is not used as a PRN anxiety med, not a sedative, and not a rapid tranquilizer. If bipolar disorder is on the table, don’t use it as monotherapy—screen carefully and treat mood stability first."
     }
   ],
-  "seo": {
-    "title": "Vortioxetine (Trintellix): Uses, Dosing, Side Effects & Safety",
-    "description": "Trintellix (vortioxetine) for major depressive disorder: once-daily dosing (5-20 mg), when it starts working (1-2 weeks, builds to 4-6 weeks), common side effects (nausea), boxed warning on suicidality in young adults, serotonin syndrome risk, MAOI washout rules, and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/vortioxetine-trintellix](https://www.heypsych.com/treatments/vortioxetine-trintellix)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Trintellix used for?",
@@ -409,5 +547,20 @@
       "q": "Does Trintellix help anxiety or insomnia?",
       "a": "It’s not primarily an anxiety PRN medication and it isn’t a sleep medication. If your anxiety is part of depression, improving depression can indirectly help. Early on, some people feel more activated or restless, and sleep can temporarily worsen—so monitoring and adjusting the plan matters."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Vortioxetine (Trintellix): Uses, Dosing, Side Effects & Safety",
+    "description": "Trintellix (vortioxetine) for major depressive disorder: once-daily dosing (5-20 mg), when it starts working (1-2 weeks, builds to 4-6 weeks), common side effects (nausea), boxed warning on suicidality in young adults, serotonin syndrome risk, MAOI washout rules, and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/vortioxetine-trintellix](https://www.heypsych.com/treatments/vortioxetine-trintellix)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

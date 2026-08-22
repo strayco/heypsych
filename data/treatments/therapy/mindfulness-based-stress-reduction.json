@@ -1,97 +1,195 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "mindfulness-based-stress-reduction",
-  "type": "therapy",
-  "name": "Mindfulness-Based Stress Reduction (MBSR)",
-  "summary": "An evidence-based, structured 8-week group program that teaches mindfulness meditation and gentle yoga to reduce stress, anxiety, and chronic pain.",
-  "description": "Mindfulness-Based Stress Reduction (MBSR) is a standardized program developed by Dr. Jon Kabat-Zinn in 1979 at the University of Massachusetts Medical School. It integrates mindfulness meditation, body awareness, and gentle yoga to help individuals cope with stress, chronic pain, anxiety, and illness. MBSR emphasizes cultivating present-moment awareness and nonjudgmental acceptance of experiences, reducing the impact of stress and improving overall well-being. It is widely used in medical, psychological, and community settings, with extensive research supporting its effectiveness.",
-  "category": "therapy/mindfulness",
-  "tags": [
-    "stress reduction",
-    "mindfulness",
-    "chronic pain",
-    "anxiety",
-    "well-being",
-    "group therapy",
-    "resilience"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "mindfulness-based-stress-reduction",
+    "name": "Mindfulness-Based Stress Reduction (MBSR)",
+    "generic_name": "mindfulness-based stress reduction",
+    "brand_names": [
+      "MBSR"
+    ],
+    "wikidata_qid": "Q341036"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/mindfulness",
     "intervention_types": [
       "Psychotherapy",
       "Mind-body intervention"
     ],
-    "treatment_types": [
-      "Group therapy",
-      "Individual adaptation"
-    ],
-    "categories": [
-      "Mindfulness-based",
-      "Complementary therapy",
-      "Evidence-based program"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Group sessions"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "Yoga mat (optional)",
-      "Comfortable clothing"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Older adults",
-      "Adolescents (adapted versions)"
-    ],
-    "session_duration": "2.5 hours (group sessions)",
-    "treatment_duration": [
-      "8 weeks (standard course)",
-      "One-day retreat included"
-    ],
-    "specialty_areas": [
-      "Stress management",
-      "Chronic illness coping",
-      "Pain management",
-      "Anxiety reduction",
-      "Mind-body wellness"
-    ],
-    "wikidata_qid": "Q341036"
+    "tags": [
+      "stress reduction",
+      "mindfulness",
+      "chronic pain",
+      "anxiety",
+      "well-being",
+      "group therapy",
+      "resilience"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic stress",
-      "Chronic pain",
-      "Anxiety"
-    ],
-    "conditions_treated": [
-      "Stress-related disorders",
-      "Generalized anxiety disorder",
-      "Chronic pain syndromes",
-      "Cancer-related distress",
-      "Hypertension"
-    ],
-    "off_label_uses": [
-      "Depression relapse prevention",
-      "Sleep disturbances",
-      "Immune system regulation"
-    ],
-    "contraindications": [
-      "Active psychosis",
-      "Severe cognitive impairment",
-      "Unstable psychiatric conditions without stabilization"
-    ],
-    "safety_profile": "Generally safe; emotional discomfort can occur as individuals confront difficult thoughts and emotions.",
-    "evidence_level": "High—supported by decades of research, including randomized controlled trials and meta-analyses.",
-    "research_support": "Extensively researched for stress reduction, pain management, and mental health benefits.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "stress-reduction": 5,
-      "anxiety-management": 4,
-      "chronic-pain-relief": 4,
-      "well-being-improvement": 5,
-      "overall-tolerability": 5
+  "summary": "An evidence-based, structured 8-week group program that teaches mindfulness meditation and gentle yoga to reduce stress, anxiety, and chronic pain.",
+  "description": "Mindfulness-Based Stress Reduction (MBSR) is a standardized program developed by Dr. Jon Kabat-Zinn in 1979 at the University of Massachusetts Medical School. It integrates mindfulness meditation, body awareness, and gentle yoga to help individuals cope with stress, chronic pain, anxiety, and illness. MBSR emphasizes cultivating present-moment awareness and nonjudgmental acceptance of experiences, reducing the impact of stress and improving overall well-being. It is widely used in medical, psychological, and community settings, with extensive research supporting its effectiveness.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-stress",
+          "condition_name": "Chronic stress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "stress-related-disorders",
+          "condition_name": "Stress-related disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain-syndromes",
+          "condition_name": "Chronic pain syndromes",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cancer-related-distress",
+          "condition_name": "Cancer-related distress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "hypertension",
+          "condition_name": "Hypertension",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "depression-relapse-prevention",
+          "condition_name": "Depression relapse prevention",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "sleep-disturbances",
+          "condition_name": "Sleep disturbances",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "immune-system-regulation",
+          "condition_name": "Immune system regulation",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—supported by decades of research, including randomized controlled trials and meta-analyses.",
+      "efficacy_ratings": {
+        "stress-reduction": {
+          "rating": 5
+        },
+        "anxiety-management": {
+          "rating": 4
+        },
+        "chronic-pain-relief": {
+          "rating": 4
+        },
+        "well-being-improvement": {
+          "rating": 5
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Extensively researched for stress reduction, pain management, and mental health benefits."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8 weeks (standard course); One-day retreat included"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Group sessions"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "2.5 hours (group sessions)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; emotional discomfort can occur as individuals confront difficult thoughts and emotions.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when facing difficult thoughts or feelings"
+        },
+        {
+          "effect": "Restlessness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of trauma symptoms in individuals with PTSD"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unwillingness to engage in meditation or group setting discomfort",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Group therapy, Individual adaptation",
+        "key_techniques": [
+          "Mindfulness-based",
+          "Complementary therapy",
+          "Evidence-based program"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in and reflection on home practice.",
+          "during_session": "Guided meditation, mindfulness exercises, group discussion.",
+          "post_session": "Homework assignment with mindfulness practices."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Certified MBSR instructors",
+            "Healthcare professionals with mindfulness training"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -247,6 +345,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kabat-Zinn, J. (1990). Full Catastrophe Living.",
+      "url": "https://www.penguinrandomhouse.com/books/92182/full-catastrophe-living-revised-edition-by-jon-kabat-zinn/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "American Mindfulness Research Association – MBSR",
+      "url": "https://goamra.org"
+    }
+  ],
   "seo": {
     "title": "Mindfulness-Based Stress Reduction (MBSR) | Stress & Anxiety Management",
     "description": "Mindfulness-Based Stress Reduction (MBSR) is an 8-week evidence-based program using mindfulness meditation and yoga to reduce stress, anxiety, and chronic pain.",
@@ -259,5 +371,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—supported by decades of research, including randomized controlled trials and meta-analyses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—supported by decades of research, including randomized controlled trials and meta-analyses."
+    ]
   }
 }

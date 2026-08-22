@@ -68,17 +68,17 @@ export function InternationalToggle({ hotlines }: Props) {
       >
         <CardContent className="p-6">
           <button
-            className="flex w-full items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+            className="flex w-full items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
             aria-expanded={isExpanded}
             aria-controls="international-content"
           >
             <div className="flex items-center gap-3">
-              <Globe2 className="h-6 w-6 text-blue-600" aria-hidden="true" />
+              <Globe2 className="h-6 w-6 text-accent" aria-hidden="true" />
               <div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-label-primary">
                   Outside the U.S.? International Crisis Support
                 </h3>
-                <p className="text-sm text-slate-900">
+                <p className="text-sm text-label-primary">
                   Find crisis hotlines and resources in other countries
                 </p>
               </div>
@@ -87,7 +87,7 @@ export function InternationalToggle({ hotlines }: Props) {
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ChevronDown className="h-5 w-5 text-slate-400" aria-hidden="true" />
+              <ChevronDown className="h-5 w-5 text-label-primary0" aria-hidden="true" />
             </motion.div>
           </button>
         </CardContent>

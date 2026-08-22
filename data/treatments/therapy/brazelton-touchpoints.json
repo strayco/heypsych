@@ -1,90 +1,165 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "brazelton-touchpoints",
-  "type": "therapy",
-  "name": "Brazelton Touchpoints®",
-  "summary": "A relationship-centered, developmental guidance model that equips caregivers and providers to anticipate child development spurts and regressions, strengthening the parent–child relationship from birth through early childhood.",
-  "description": "Brazelton Touchpoints® is an evidence-informed, strengths-based approach to early relational health and child development. The model helps caregivers and professionals anticipate predictable periods of disorganization that precede developmental leaps (“touchpoints”), reframing regressions as signs of growth rather than problems. Through collaborative, culturally responsive guidance, providers partner with families to read infant and toddler cues, support co-regulation, and scaffold routines that enhance attachment, development, and caregiver confidence across medical, home-visiting, and early education settings.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "early childhood",
-    "parent training",
-    "infant mental health",
-    "attachment",
-    "developmental guidance",
-    "caregiver-child relationship"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "brazelton-touchpoints",
+    "name": "Brazelton Touchpoints®"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Parent Training",
       "Developmental Guidance",
       "Relationship-Based Care"
     ],
-    "treatment_types": [
-      "Preventive Intervention",
-      "Psychoeducation",
-      "Family Support"
-    ],
-    "categories": [
-      "Early Childhood",
-      "Parenting Interventions",
-      "Infant Mental Health"
-    ],
-    "delivery_methods": [
-      "Pediatric primary care",
-      "Home visiting",
-      "Early education settings",
-      "Outpatient family sessions",
-      "Group workshops"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Infants (0–12 mo)",
-      "Toddlers (1–3 yr)",
-      "Preschoolers (3–5 yr)",
-      "Caregivers/Parents"
-    ],
-    "session_duration": "30–60 minutes (brief pediatric visits) or 60–90 minutes (home/clinic sessions)",
-    "treatment_duration": [
-      "Short- to medium-term",
-      "Ongoing preventive contacts across key developmental transitions"
-    ],
-    "specialty_areas": [
-      "Attachment & bonding",
-      "Caregiver coaching",
-      "Developmental promotion",
-      "Regulation and routines"
+    "tags": [
+      "early childhood",
+      "parent training",
+      "infant mental health",
+      "attachment",
+      "developmental guidance",
+      "caregiver-child relationship"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Parent–child relational difficulties",
-      "Regulatory problems (sleep, feeding, soothing)",
-      "Adjustment to developmental transitions (e.g., new sibling, childcare entry)",
-      "Early behavioral concerns (tantrums, separation distress)"
-    ],
-    "off_label_uses": [
-      "Support families facing social determinants of health stressors",
-      "Caregiver confidence building in high-risk perinatal/early childhood contexts",
-      "Adjunct to treatment plans for developmental delays"
-    ],
-    "contraindications": [
-      "Immediate safety risks (e.g., active abuse) requiring protective intervention",
-      "Acute caregiver psychiatric crisis without stabilization"
-    ],
-    "safety_profile": "Very safe, collaborative, and non-stigmatizing; focuses on strengths and relationship building.",
-    "evidence_level": "Moderate; supported by implementation studies and early relational health literature; complements evidence-based home-visiting and pediatric models.",
-    "research_support": "Practice-based evidence and program evaluations show improvements in caregiver self-efficacy, shared understanding of child cues, and relational health; aligns with infant mental health and developmental science.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "parent-child-relationship": 4,
-      "regulatory-problems": 3,
-      "early-behavioral-concerns": 3,
-      "caregiver-confidence": 5,
-      "overall_tolerability": 5
+  "summary": "A relationship-centered, developmental guidance model that equips caregivers and providers to anticipate child development spurts and regressions, strengthening the parent–child relationship from birth through early childhood.",
+  "description": "Brazelton Touchpoints® is an evidence-informed, strengths-based approach to early relational health and child development. The model helps caregivers and professionals anticipate predictable periods of disorganization that precede developmental leaps (“touchpoints”), reframing regressions as signs of growth rather than problems. Through collaborative, culturally responsive guidance, providers partner with families to read infant and toddler cues, support co-regulation, and scaffold routines that enhance attachment, development, and caregiver confidence across medical, home-visiting, and early education settings.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "parent-child-relational-difficulties",
+          "condition_name": "Parent–child relational difficulties",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "regulatory-problems-sleep-feeding-soothing",
+          "condition_name": "Regulatory problems (sleep, feeding, soothing)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adjustment-to-developmental-transitions-e-g-new-sibling-childcare-entry",
+          "condition_name": "Adjustment to developmental transitions (e.g., new sibling, childcare entry)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "early-behavioral-concerns-tantrums-separation-distress",
+          "condition_name": "Early behavioral concerns (tantrums, separation distress)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "support-families-facing-social-determinants-of-health-stressors",
+          "condition_name": "Support families facing social determinants of health stressors",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "caregiver-confidence-building-in-high-risk-perinatal-early-childhood-contexts",
+          "condition_name": "Caregiver confidence building in high-risk perinatal/early childhood contexts",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-to-treatment-plans-for-developmental-delays",
+          "condition_name": "Adjunct to treatment plans for developmental delays",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate; supported by implementation studies and early relational health literature; complements evidence-based home-visiting and pediatric models.",
+      "efficacy_ratings": {
+        "parent-child-relationship": {
+          "rating": 4
+        },
+        "regulatory-problems": {
+          "rating": 3
+        },
+        "early-behavioral-concerns": {
+          "rating": 3
+        },
+        "caregiver-confidence": {
+          "rating": 5
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Practice-based evidence and program evaluations show improvements in caregiver self-efficacy, shared understanding of child cues, and relational health; aligns with infant mental health and developmental science."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short- to medium-term; Ongoing preventive contacts across key developmental transitions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Pediatric primary care",
+        "Home visiting",
+        "Early education settings",
+        "Outpatient family sessions",
+        "Group workshops"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes (brief pediatric visits) or 60–90 minutes (home/clinic sessions)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Very safe, collaborative, and non-stigmatizing; focuses on strengths and relationship building.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary frustration while changing routines"
+        },
+        {
+          "effect": "Emotional reactions when discussing parenting stress"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict if safety concerns are unaddressed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active abuse or immediate safety risk",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe untreated caregiver mental health conditions",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Preventive Intervention, Psychoeducation, Family Support",
+        "key_techniques": [
+          "Early Childhood",
+          "Parenting Interventions",
+          "Infant Mental Health"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in on recent changes; identify an upcoming or current touchpoint and caregiver goals.",
+          "during_session": "Live observation and guided reflection; coach co-regulation and routines; model sensitive responding.",
+          "post_session": "Summarize small next steps; provide handouts; schedule follow-up around next transition."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Pediatric clinicians, home visitors, early educators, or mental health providers trained in Brazelton Touchpoints principles"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -259,6 +334,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Brazelton Touchpoints Center – Overview & Training",
+      "url": "https://www.brazeltontouchpoints.org/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Brazelton TB & Sparrow JD. Touchpoints: Birth to Three (Rev. Ed.).",
+      "url": "https://www.worldcat.org/title/48224623"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Center on the Developing Child (Harvard) – Serve and Return",
+      "url": "https://developingchild.harvard.edu/science/key-concepts/serve-and-return/"
+    }
+  ],
   "seo": {
     "title": "Brazelton Touchpoints® | Relationship-Centered Early Childhood Parenting Program",
     "description": "Brazelton Touchpoints is a strengths-based, developmental guidance model that helps caregivers anticipate growth-related regressions, build secure attachment, and support infant–toddler development.",
@@ -271,5 +366,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate; supported by implementation studies and early relational health literature; complements evidence-based home-visiting and pediatric models."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate; supported by implementation studies and early relational health literature; complements evidence-based home-visiting and pediatric models."
+    ]
   }
 }

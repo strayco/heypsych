@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "melatonin",
-  "type": "supplement",
-  "name": "Melatonin",
-  "summary": "Melatonin is a naturally occurring hormone produced by the pineal gland that regulates circadian rhythms and sleep-wake cycles. Supplementation is widely used for insomnia, jet lag, and circadian rhythm disorders.",
-  "description": "Melatonin is an endogenous indoleamine synthesized from serotonin in the pineal gland, primarily secreted at night. As a supplement, it is used for sleep initiation, jet lag, shift work sleep disorder, and circadian rhythm disturbances. Beyond sleep, melatonin has antioxidant, anti-inflammatory, and neuroprotective properties, and has been investigated in psychiatric and neurodegenerative conditions. It is generally considered safe, non-habit forming, and well tolerated at standard doses.",
-  "category": "supplements",
-  "tags": [
-    "sleep",
-    "circadian rhythm",
-    "antioxidant",
-    "hormone supplement"
-  ],
-  "metadata": {
-    "compound_type": "Endogenous hormone supplement",
-    "natural_source": "Pineal gland secretion (synthetic form used in supplements)",
+  "identity": {
+    "slug": "melatonin",
+    "name": "Melatonin",
+    "brand_names": [
+      "Circadin",
+      "Natrol Melatonin",
+      "Melatonex"
+    ],
+    "aliases": [
+      "N-acetyl-5-methoxytryptamine"
+    ],
+    "wikidata_qid": "Q191290"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Sleep",
       "Circadian rhythm disorders",
@@ -25,79 +27,178 @@
       "MT1/MT2 receptor agonist",
       "Antioxidant"
     ],
-    "administration_routes": [
-      "Oral",
-      "Sublingual"
-    ],
-    "prescription_status": "OTC supplement in most countries; prescription required in some (e.g., UK, EU for higher doses)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Circadin",
-      "Natrol Melatonin",
-      "Melatonex"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (prescription form 'Circadin' in EU)",
-    "age_groups": [
-      "Adult",
-      "Pediatric (with caution)",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Acute use",
-      "Chronic supplementation"
-    ],
-    "specialty_areas": [
-      "Sleep Medicine",
-      "Psychiatry",
-      "Chronobiology"
-    ],
-    "wikidata_qid": "Q191290"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset)",
-      "Jet lag",
-      "Delayed sleep phase disorder",
-      "Shift work sleep disorder"
-    ],
-    "off_label_uses": [
-      "Generalized anxiety disorder",
-      "Depression (adjunctive)",
-      "ADHD-related sleep issues",
-      "Neurodegenerative disease support (e.g., Alzheimer’s, Parkinson’s)"
-    ],
-    "contraindications": [
-      "Pregnancy and breastfeeding (safety not fully established)",
-      "Autoimmune disorders (theoretical risk of immune modulation)"
-    ],
-    "monitoring_required": [
-      "Daytime sleepiness",
-      "Interaction with sedatives or anticoagulants"
-    ],
-    "efficacy_rating": {
-      "insomnia": 4,
-      "jet_lag": 4,
-      "circadian_rhythm_disorders": 4,
-      "anxiety": 2,
-      "depression": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "melatonin",
-      "MT1 receptor agonist",
-      "MT2 receptor agonist",
-      "circadian hormone"
-    ],
-    "synonyms": [
-      "N-acetyl-5-methoxytryptamine"
-    ],
-    "common_misspellings": [
-      "melotonin",
-      "melanotin"
+    "tags": [
+      "sleep",
+      "circadian rhythm",
+      "antioxidant",
+      "hormone supplement"
     ]
+  },
+  "summary": "Melatonin is a naturally occurring hormone produced by the pineal gland that regulates circadian rhythms and sleep-wake cycles. Supplementation is widely used for insomnia, jet lag, and circadian rhythm disorders.",
+  "description": "Melatonin is an endogenous indoleamine synthesized from serotonin in the pineal gland, primarily secreted at night. As a supplement, it is used for sleep initiation, jet lag, shift work sleep disorder, and circadian rhythm disturbances. Beyond sleep, melatonin has antioxidant, anti-inflammatory, and neuroprotective properties, and has been investigated in psychiatric and neurodegenerative conditions. It is generally considered safe, non-habit forming, and well tolerated at standard doses.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia-sleep-onset",
+          "condition_name": "Insomnia (sleep onset)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "jet-lag",
+          "condition_name": "Jet lag",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "delayed-sleep-phase-disorder",
+          "condition_name": "Delayed sleep phase disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "shift-work-sleep-disorder",
+          "condition_name": "Shift work sleep disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "depression-adjunctive",
+          "condition_name": "Depression (adjunctive)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adhd-related-sleep-issues",
+          "condition_name": "ADHD-related sleep issues",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neurodegenerative-disease-support-e-g-alzheimer-s-parkinson-s",
+          "condition_name": "Neurodegenerative disease support (e.g., Alzheimer’s, Parkinson’s)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "insomnia": {
+          "rating": 4
+        },
+        "jet_lag": {
+          "rating": 4
+        },
+        "circadian_rhythm_disorders": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 2
+        },
+        "depression": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Acute use; Chronic supplementation"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Sublingual"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Vivid dreams"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of autoimmune conditions (theoretical)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy and breastfeeding (safety not fully established)"
+        },
+        {
+          "contraindication": "Autoimmune disorders (theoretical risk of immune modulation)"
+        }
+      ],
+      "precautions": [
+        "May cause daytime sedation if taken late at night or in high doses.",
+        "Caution with long-term use in children—safety not well established."
+      ],
+      "interactions": [
+        {
+          "interactant": "CNS depressants",
+          "mechanism": "Additive sedation",
+          "action": "Monitor for drowsiness"
+        },
+        {
+          "interactant": "Anticoagulants/antiplatelet drugs",
+          "mechanism": "Potential increased bleeding risk",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "May counteract effects",
+          "action": "Use caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sleep quality and latency"
+        },
+        {
+          "parameter": "Daytime sedation"
+        },
+        {
+          "parameter": "Potential drug interactions"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended—safety data insufficient",
+        "lactation": "Not recommended",
+        "pediatric": "May be used short-term under medical supervision for sleep/circadian disorders",
+        "geriatric": "Effective and safe; often used for insomnia and circadian rhythm disorders"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Endogenous hormone supplement",
+        "natural_source": "Pineal gland secretion (synthetic form used in supplements)",
+        "regulatory_notes": "Dietary supplement (prescription form 'Circadin' in EU)"
+      }
+    }
   },
   "sections": [
     {
@@ -225,6 +326,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Brzezinski A. Melatonin in humans. N Engl J Med. 1997.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8988888/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Examine.com – Melatonin",
+      "url": "https://examine.com/supplements/melatonin/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Ferracioli-Oda E et al. Meta-analysis of melatonin for insomnia. PLoS One. 2013.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23691095/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "melatonin",
+      "MT1 receptor agonist",
+      "MT2 receptor agonist",
+      "circadian hormone"
+    ],
+    "synonyms": [
+      "N-acetyl-5-methoxytryptamine"
+    ],
+    "common_misspellings": [
+      "melotonin",
+      "melanotin"
+    ]
+  },
   "seo": {
     "title": "Melatonin – Sleep and Circadian Rhythm Supplement",
     "description": "Melatonin is a natural hormone and supplement used to regulate circadian rhythms and improve sleep. Learn about its benefits, dosing, formulations, and safety profile.",

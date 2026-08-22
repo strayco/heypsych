@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "nicotine-replacement-therapy-nrt",
-  "type": "medication",
-  "name": "Nicotine Replacement Therapy (NRT)",
-  "summary": "Nicotine replacement (patch, gum, lozenge, nasal spray) helps you quit smoking by taking the edge off withdrawal—cravings, irritability, restlessness, and that “I can’t think about anything else” feeling—without the thousands of toxic chemicals in cigarettes.",
-  "description": "NRT gives your brain a controlled, cleaner nicotine “bridge” so quitting doesn’t feel like getting hit by a truck. It won’t magically erase habit and triggers, but it can dramatically reduce cravings, agitation, and withdrawal-driven anxiety. The big rule: you’re quitting smoking—don’t keep smoking on NRT (overdose risk). Best outcomes happen when you pair NRT with a quit plan and behavioral support.",
-  "patient_summary": "NRT helps you quit by easing nicotine withdrawal (cravings, irritability, restlessness, anxiety-ish agitation). Patch = steady background relief. Gum/lozenge = fast rescue for cravings. Nasal spray = fastest (prescription). Don’t smoke while using NRT—too much nicotine can make you sick. Use it long enough (often 8–12+ weeks) and pair it with a plan.",
-  "category": "medications/substance-use-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Nicotine Replacement Therapy (NRT)",
-      "Smoking Cessation Aid",
-      "Nicotinic Acetylcholine Receptor Agonist"
-    ],
+  "identity": {
+    "slug": "nicotine-replacement-therapy-nrt",
+    "name": "Nicotine Replacement Therapy (NRT)",
+    "generic_name": "nicotine replacement therapy",
     "brand_names": [
       "Nicoderm CQ",
       "Habitrol",
@@ -21,75 +13,213 @@
       "Nicotrol NS",
       "FT Nicotine",
       "Thrive"
-    ],
-    "administration_routes": [
-      "Transdermal",
-      "Buccal (gum/lozenge)",
-      "Intranasal"
-    ],
-    "prescription_status": "OTC (patch/gum/lozenge); Prescription Required (Nicotrol NS nasal spray)",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1998,
-    "pharmacologic_category": "Smoking cessation aid (nicotine replacement)",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Tobacco Use Disorder (smoking cessation)",
-      "Relief of nicotine withdrawal symptoms (including craving)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "tobacco-use-disorder",
-        "relationship": "primary_treatment",
-        "context": "NRT is a first-line medication option to support quitting combustible tobacco by reducing withdrawal symptoms that drive relapse."
-      },
-      {
-        "slug": "nicotine-withdrawal",
-        "relationship": "symptom_target",
-        "context": "Targets the withdrawal cluster that often looks psychiatric: irritability, restlessness, agitation, sleep disruption, and concentration problems."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "clinical_consideration",
-        "context": "Quitting smoking can wreck sleep early on. Patch can help nighttime withdrawal for some people, but can also cause vivid dreams; some people do better removing the patch at bedtime."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "clinical_consideration",
-        "context": "Withdrawal can feel like anxiety (tight chest, edgy body, racing thoughts). NRT can lower that physiologic drive, but behavioral tools still matter for triggers."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to nicotine or any component of the formulation",
-      "OTC lozenge (self-care labeling): Do not use if allergic to soya (product dependent)"
-    ],
-    "efficacy_response": {
-      "metric": "Withdrawal symptom relief (cravings/irritability/restlessness)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "NRT doesn’t “treat anxiety” in the psychiatric sense—it treats nicotine withdrawal. When the withdrawal volume turns down, a lot of people feel calmer, less irritable, and less driven to smoke.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/substance-use-disorders",
+    "drug_classes": [
+      "Nicotine Replacement Therapy (NRT)",
+      "Smoking Cessation Aid",
+      "Nicotinic Acetylcholine Receptor Agonist"
+    ]
+  },
+  "summary": "Nicotine replacement (patch, gum, lozenge, nasal spray) helps you quit smoking by taking the edge off withdrawal—cravings, irritability, restlessness, and that “I can’t think about anything else” feeling—without the thousands of toxic chemicals in cigarettes.",
+  "description": "NRT gives your brain a controlled, cleaner nicotine “bridge” so quitting doesn’t feel like getting hit by a truck. It won’t magically erase habit and triggers, but it can dramatically reduce cravings, agitation, and withdrawal-driven anxiety. The big rule: you’re quitting smoking—don’t keep smoking on NRT (overdose risk). Best outcomes happen when you pair NRT with a quit plan and behavioral support.",
+  "patient_summary": "NRT helps you quit by easing nicotine withdrawal (cravings, irritability, restlessness, anxiety-ish agitation). Patch = steady background relief. Gum/lozenge = fast rescue for cravings. Nasal spray = fastest (prescription). Don’t smoke while using NRT—too much nicotine can make you sick. Use it long enough (often 8–12+ weeks) and pair it with a plan.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "tobacco-use-disorder",
+          "condition_name": "Tobacco Use Disorder",
+          "relationship": "primary_indication",
+          "context": "NRT is a first-line medication option to support quitting combustible tobacco by reducing withdrawal symptoms that drive relapse.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "nicotine-withdrawal",
+          "condition_name": "Nicotine Withdrawal",
+          "relationship": "secondary_indication",
+          "context": "Targets the withdrawal cluster that often looks psychiatric: irritability, restlessness, agitation, sleep disruption, and concentration problems."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "Quitting smoking can wreck sleep early on. Patch can help nighttime withdrawal for some people, but can also cause vivid dreams; some people do better removing the patch at bedtime."
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Withdrawal can feel like anxiety (tight chest, edgy body, racing thoughts). NRT can lower that physiologic drive, but behavioral tools still matter for triggers."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Patch provides slow, steady absorption; gum/lozenge absorb through the mouth; nasal spray absorbs through nasal mucosa",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Nasal spray is fastest; gum/lozenge are next; patch is slowest but steady",
-      "peak_plasma": "Nasal spray: ~10–20 minutes; inhalation: ≤15 minutes; gum: ~30 minutes; patch: ~2–8 hours",
-      "half_life": "Varies by formulation; nasal/inhaled forms are shorter; patch provides sustained delivery",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic (major), kidney and lung; many metabolites (including cotinine)",
-      "excretion": "Urine (~10% unchanged)",
-      "protein_binding": "Low (reported range ~5%–20%)",
-      "food_effect": "Acidic foods/beverages can decrease absorption of buccal nicotine (gum/lozenge)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Nasal spray is fastest; gum/lozenge are next; patch is slowest but steady"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Transdermal",
+        "Buccal (gum/lozenge)",
+        "Intranasal"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Oral irritation / throat irritation (gum/lozenge)",
+          "incidence": "Common",
+          "notes": "A peppery or tingly sensation is expected. If you chew too fast or swallow too much nicotine, you may get hiccups, heartburn, or nausea. Slow down and use proper technique."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common",
+          "notes": "Can be nicotine withdrawal, nicotine itself, or both. If headaches worsen after dosing, consider nicotine overload or spacing doses out."
+        },
+        {
+          "effect": "Nausea / dizziness / sweating (nicotine overload)",
+          "incidence": "Common when dosing is too high or if you keep smoking",
+          "notes": "This is your early warning system. Reduce dose, space doses, and confirm you’re not smoking on top of NRT."
+        },
+        {
+          "effect": "Nasal irritation (nasal spray)",
+          "incidence": "Very common",
+          "notes": "Burning/irritation, sneezing, watery eyes, runny nose are extremely common early on and often improve with continued use."
+        },
+        {
+          "effect": "Sleep disturbance / vivid dreams (patch)",
+          "incidence": "Common",
+          "notes": "If dreams get wild or sleep is worse, remove patch at bedtime and apply a new patch in the morning."
+        },
+        {
+          "effect": "Skin irritation (patch)",
+          "incidence": "Common",
+          "notes": "Rotate sites. Mild redness is common; if redness doesn’t resolve or you get significant rash/swelling, stop and contact a clinician."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe nicotine toxicity: persistent vomiting, severe dizziness, confusion, weakness, cold sweat, fast/irregular pulse, fainting"
+        },
+        {
+          "risk": "Seizure (rare; has been reported postmarketing)"
+        },
+        {
+          "risk": "Severe allergic reaction/anaphylaxis (rare): trouble breathing, swelling, widespread rash"
+        },
+        {
+          "risk": "Serious cardiac symptoms in high-risk patients: chest pain, dangerous arrhythmias (seek urgent care)"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to nicotine or any component of the formulation"
+        },
+        {
+          "contraindication": "OTC lozenge (self-care labeling): Do not use if allergic to soya (product dependent)"
+        }
+      ],
+      "precautions": [
+        "Cardiovascular risk: Nicotine can raise heart rate and blood pressure. Use caution if you have serious heart disease, recent heart attack, severe/worsening angina, significant arrhythmias, or uncontrolled hypertension.",
+        "Stop and get help if you have chest pain, severe palpitations, fainting, or signs of nicotine overdose (nausea/vomiting, dizziness, sweating, weakness, fast/irregular heartbeat).",
+        "GI disease: Use caution with active esophagitis or peptic ulcer disease (can worsen irritation).",
+        "Seizure history (OTC counseling): Some OTC labeling recommends medical advice before use if you have a history of seizures (product dependent).",
+        "Patch + MRI: Some patches may contain conducting metal; remove patch before MRI.",
+        "Do not use more than one patch at a time, and do not cut patches (can break delivery and irritate skin)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Clozapine and olanzapine (CYP1A2 substrates)",
+          "mechanism": "When smoking stops, medication levels can rise significantly, increasing side effect/toxicity risk (sedation, dizziness, seizures for clozapine). NRT does NOT maintain the smoking-induced enzyme induction.",
+          "action": "Tell your prescriber immediately if you’re quitting or cutting down. Plan for closer monitoring and possible dose adjustment. If you’re on clozapine, therapeutic drug monitoring is often needed."
+        },
+        {
+          "interactant": "Other CYP1A2-sensitive drugs (psychiatry-adjacent): caffeine, theophylline, some tricyclics (eg, imipramine), propranolol",
+          "mechanism": "Quitting smoking can increase levels/effects of these substances, which can feel like anxiety, insomnia, tremor, or nausea (especially with caffeine).",
+          "action": "As you quit, consider reducing caffeine and monitor for increased side effects from CYP1A2-metabolized medications."
+        },
+        {
+          "interactant": "Acidic foods/beverages (gum/lozenge)",
+          "mechanism": "Acidic drinks/foods can reduce absorption of buccal nicotine, making it feel like the product “isn’t working.”",
+          "action": "Avoid eating/drinking for 15 minutes before and while using gum/lozenge (especially coffee, soda, citrus)."
+        },
+        {
+          "interactant": "Continued smoking while on NRT",
+          "mechanism": "Nicotine overload (nausea, dizziness, sweating, palpitations), especially if stacking multiple NRT forms without a plan.",
+          "action": "Quit smoking when you start NRT. If slips happen, don’t hide it—adjust the plan and get support."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Smoking status and relapse risk: confirm complete smoking cessation (or slips) and adjust the plan rather than pretending slips didn’t happen."
+        },
+        {
+          "parameter": "Withdrawal symptom control (psychiatry-relevant): cravings, irritability, agitation, restlessness, anxiety-like symptoms, sleep disruption, concentration problems."
+        },
+        {
+          "parameter": "Nicotine toxicity symptoms: severe headache, dizziness, confusion, disturbed vision/hearing, abdominal pain; rapid/weak/irregular pulse; salivation, nausea, vomiting, diarrhea, cold sweat, weakness."
+        },
+        {
+          "parameter": "Cardiovascular symptoms (especially in high-risk patients): chest pain, palpitations, irregular heartbeat, elevated blood pressure."
+        },
+        {
+          "parameter": "Sleep and dreams (patch): insomnia, vivid dreams, nighttime awakenings; adjust patch wear time if needed."
+        },
+        {
+          "parameter": "Skin reactions (patch): persistent redness, rash, blistering; rotate sites and discontinue if severe or persistent."
+        },
+        {
+          "parameter": "Drug level/side-effect changes after quitting smoking (CYP1A2 shift): watch closely if patient uses clozapine/olanzapine or other CYP1A2-sensitive meds; consider therapeutic drug monitoring when indicated."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Nicotine crosses the placenta. Behavioral support is first-line in pregnancy. Evidence for medication in pregnancy is more limited and mixed; if NRT is used, it should be under close medical supervision and with a clear commitment to quit smoking. Pregnancy can increase nicotine clearance, so withdrawal may still break through—this requires clinician-guided adjustment rather than self-escalation.",
+        "lactation": "Nicotine and cotinine can appear in breast milk. Breastfeeding is still generally recommended over formula even if a parent smokes, but reducing/stopping nicotine exposure is ideal. NRT may reduce the infant’s exposure to secondhand smoke compared to continued smoking. If using short-acting NRT (gum/lozenge), avoid dosing immediately before breastfeeding to create a longer nicotine-free interval. Individualize decisions with shared decision-making.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing. Older adults may be more sensitive to nicotine effects like palpitations and sleep disruption; start with the lowest effective approach and monitor closely, especially if cardiovascular disease is present.",
+        "renal_impairment": "No specific manufacturer dose adjustments are provided, but nicotine clearance can be decreased in moderate to severe renal impairment. Use caution, monitor for adverse effects, and consider dose reduction if needed.",
+        "hepatic_impairment": "No specific manufacturer dose adjustments are provided, but nicotine clearance can be decreased in moderate to severe hepatic impairment. Use caution, monitor for adverse effects (nausea, dizziness, palpitations), and consider dose reduction if needed."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1998
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Patch provides slow, steady absorption; gum/lozenge absorb through the mouth; nasal spray absorbs through nasal mucosa",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Nasal spray: ~10–20 minutes; inhalation: ≤15 minutes; gum: ~30 minutes; patch: ~2–8 hours",
+          "half_life": "Varies by formulation; nasal/inhaled forms are shorter; patch provides sustained delivery",
+          "metabolism": "Hepatic (major), kidney and lung; many metabolites (including cotinine)",
+          "excretion": "Urine (~10% unchanged)",
+          "protein_binding": "Low (reported range ~5%–20%)",
+          "food_effect": "Acidic foods/beverages can decrease absorption of buccal nicotine (gum/lozenge)"
+        },
+        "dosing": {
+          "titration": "Dosing depends on the form. Patch is your steady baseline. Gum/lozenge are fast “rescue” for cravings. The #1 rule is to stop smoking when you start, and dose consistently enough early on (under-dosing is one of the biggest reasons people think NRT “doesn’t work”)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "NRT isn’t a benzo taper situation—there’s no seizure-risk withdrawal from stopping NRT itself. The goal is to step down nicotine gradually so cravings don’t boomerang you back to cigarettes."
+        }
+      }
     }
   },
   "sections": [
@@ -110,7 +240,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "NRT doesn’t feel like a “buzz” when it’s dosed right. It usually feels like withdrawal is quieter. Here’s what people commonly report:",
       "items": [
         {
           "category": "Cravings Turn Down (the “edge” lifts)",
@@ -156,7 +285,8 @@
           ],
           "note": "Nausea, dizziness, sweating, weakness, fast heartbeat = your body asking for less nicotine (or asking you to stop smoking while on NRT)."
         }
-      ]
+      ],
+      "intro": "NRT doesn’t feel like a “buzz” when it’s dosed right. It usually feels like withdrawal is quieter. Here’s what people commonly report:"
     },
     {
       "type": "onset_duration",
@@ -173,10 +303,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "NRT works best when you treat it like a system: steady baseline nicotine (patch) plus targeted rescue doses (gum/lozenge) for triggers. The goal isn’t to feel “nothing.” The goal is to keep withdrawal quiet enough that your plan and skills can actually work.",
       "metric": "Craving and withdrawal control",
       "value": "Varies person-to-person",
       "comparison": "Not applicable for this medication.",
-      "text": "NRT works best when you treat it like a system: steady baseline nicotine (patch) plus targeted rescue doses (gum/lozenge) for triggers. The goal isn’t to feel “nothing.” The goal is to keep withdrawal quiet enough that your plan and skills can actually work.",
       "clinical_details": "Many people relapse because withdrawal symptoms feel psychiatric—irritability, agitation, insomnia, restlessness, and concentration problems. NRT reduces that physiologic withdrawal drive so behavioral support (quit plan, trigger management, accountability) becomes doable instead of brutal.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -266,7 +396,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug & Food Interactions",
-      "intro": "The biggest “interaction” in psychiatry isn’t nicotine itself—it’s what happens when you stop smoking. Cigarette smoke (not nicotine) induces CYP1A2. When you quit smoking, CYP1A2 activity can drop within about a week, and blood levels of some psychiatric meds can rise.",
       "items": [
         {
           "with": "Clozapine and olanzapine (CYP1A2 substrates)",
@@ -288,7 +417,8 @@
           "risk": "Nicotine overload (nausea, dizziness, sweating, palpitations), especially if stacking multiple NRT forms without a plan.",
           "action": "Quit smoking when you start NRT. If slips happen, don’t hide it—adjust the plan and get support."
         }
-      ]
+      ],
+      "intro": "The biggest “interaction” in psychiatry isn’t nicotine itself—it’s what happens when you stop smoking. Cigarette smoke (not nicotine) induces CYP1A2. When you quit smoking, CYP1A2 activity can drop within about a week, and blood levels of some psychiatric meds can rise."
     },
     {
       "type": "tapering",
@@ -374,21 +504,6 @@
       "text": "For tobacco use disorder, NRT is a frontline medication option—especially when withdrawal symptoms look and feel psychiatric (agitation, insomnia, irritability, restlessness, anxious body). Patch + a short-acting form (gum/lozenge) is a common, practical approach. Nasal spray can be useful when cravings hit fast and hard, but irritation limits tolerability. The best outcomes come from combining NRT with behavioral support (skills + plan + accountability)."
     }
   ],
-  "seo": {
-    "title": "Nicotine Replacement Therapy (NRT): Patch, Gum, Lozenge & Nasal Spray for Quitting Smoking",
-    "description": "Nicotine replacement therapy (NRT) helps you quit smoking by reducing withdrawal (cravings, irritability, agitation, sleep disruption). Patch dosing steps, gum/lozenge 12-week schedule, nasal spray dosing, side effects, interactions with psych meds after quitting smoking, and safe step-down.",
-    "canonical": "[https://www.heypsych.com/treatments/nicotine-replacement-therapy-nrt](https://www.heypsych.com/treatments/nicotine-replacement-therapy-nrt)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is nicotine replacement therapy (NRT) used for?",
@@ -434,5 +549,20 @@
       "q": "What’s the fastest form of NRT?",
       "a": "Nicotine nasal spray (prescription) is the fastest and can feel closest to cigarette timing. Gum/lozenge are next. The patch is slowest to build but gives steady all-day coverage."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Nicotine Replacement Therapy (NRT): Patch, Gum, Lozenge & Nasal Spray for Quitting Smoking",
+    "description": "Nicotine replacement therapy (NRT) helps you quit smoking by reducing withdrawal (cravings, irritability, agitation, sleep disruption). Patch dosing steps, gum/lozenge 12-week schedule, nasal spray dosing, side effects, interactions with psych meds after quitting smoking, and safe step-down.",
+    "canonical": "[https://www.heypsych.com/treatments/nicotine-replacement-therapy-nrt](https://www.heypsych.com/treatments/nicotine-replacement-therapy-nrt)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

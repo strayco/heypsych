@@ -1,90 +1,188 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "multisystemic-therapy-families",
-  "type": "therapy",
-  "name": "Multisystemic Therapy (MST) for Families",
-  "summary": "An intensive, evidence-based, home- and community-based intervention designed to address serious behavioral, emotional, and criminal problems in adolescents by targeting the multiple systems influencing their lives.",
-  "description": "Multisystemic Therapy (MST) for Families is an intensive, family- and community-based treatment that addresses the serious clinical, social, and behavioral challenges of adolescents at risk for out-of-home placement due to delinquency, conduct disorder, substance use, or other severe behavioral problems. MST integrates cognitive-behavioral, family systems, and ecological approaches, working with caregivers, schools, peers, and community systems to build sustainable support. Treatment is delivered in the home, is highly individualized, and emphasizes empowering parents to manage their child’s behavior effectively while reducing reliance on formal systems.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "juvenile justice",
-    "community-based intervention",
-    "behavioral disorders",
-    "conduct disorder",
-    "evidence-based therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "multisystemic-therapy-families",
+    "name": "Multisystemic Therapy (MST) for Families"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family-based",
       "Community-based",
       "Behavioral intervention"
     ],
-    "treatment_types": [
-      "Systems therapy",
-      "Home-based therapy"
-    ],
-    "categories": [
-      "Family systems",
-      "Juvenile justice",
-      "Behavioral health"
-    ],
-    "delivery_methods": [
-      "In-home sessions",
-      "Community coordination",
-      "Family therapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Families"
-    ],
-    "session_duration": "60–120 minutes",
-    "treatment_duration": [
-      "3–5 months (typical)",
-      "Flexible based on needs"
-    ],
-    "specialty_areas": [
-      "Juvenile delinquency",
-      "Conduct problems",
-      "Substance use",
-      "Family conflict",
-      "Community reintegration"
+    "tags": [
+      "family therapy",
+      "juvenile justice",
+      "community-based intervention",
+      "behavioral disorders",
+      "conduct disorder",
+      "evidence-based therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic delinquency",
-      "Serious antisocial behavior",
-      "Substance use in adolescents"
-    ],
-    "conditions_treated": [
-      "Conduct disorder",
-      "Oppositional defiant disorder",
-      "Substance use disorder (adolescents)",
-      "Family conflict",
-      "Trauma-related behavioral difficulties"
-    ],
-    "off_label_uses": [
-      "Reducing recidivism",
-      "Improving school engagement"
-    ],
-    "contraindications": [
-      "Families unwilling to participate",
-      "Adolescents with severe psychosis or acute psychiatric crises requiring hospitalization"
-    ],
-    "safety_profile": "Safe and effective; requires intensive family engagement and trained providers.",
-    "evidence_level": "High—multiple RCTs and meta-analyses; endorsed by Blueprints for Healthy Youth Development and SAMHSA.",
-    "research_support": "Well-established in the U.S. and internationally; strong evidence for reducing recidivism and improving family functioning.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "delinquency-reduction": 5,
-      "family-functioning": 5,
-      "behavioral-problem-reduction": 5,
-      "emotional-symptom-relief": 4,
-      "overall-tolerability": 5
+  "summary": "An intensive, evidence-based, home- and community-based intervention designed to address serious behavioral, emotional, and criminal problems in adolescents by targeting the multiple systems influencing their lives.",
+  "description": "Multisystemic Therapy (MST) for Families is an intensive, family- and community-based treatment that addresses the serious clinical, social, and behavioral challenges of adolescents at risk for out-of-home placement due to delinquency, conduct disorder, substance use, or other severe behavioral problems. MST integrates cognitive-behavioral, family systems, and ecological approaches, working with caregivers, schools, peers, and community systems to build sustainable support. Treatment is delivered in the home, is highly individualized, and emphasizes empowering parents to manage their child’s behavior effectively while reducing reliance on formal systems.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-delinquency",
+          "condition_name": "Chronic delinquency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "serious-antisocial-behavior",
+          "condition_name": "Serious antisocial behavior",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "substance-use-in-adolescents",
+          "condition_name": "Substance use in adolescents",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "oppositional-defiant-disorder",
+          "condition_name": "Oppositional defiant disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorder-adolescents",
+          "condition_name": "Substance use disorder (adolescents)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "trauma-related-behavioral-difficulties",
+          "condition_name": "Trauma-related behavioral difficulties",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "reducing-recidivism",
+          "condition_name": "Reducing recidivism",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "improving-school-engagement",
+          "condition_name": "Improving school engagement",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—multiple RCTs and meta-analyses; endorsed by Blueprints for Healthy Youth Development and SAMHSA.",
+      "efficacy_ratings": {
+        "delinquency-reduction": {
+          "rating": 5
+        },
+        "family-functioning": {
+          "rating": 5
+        },
+        "behavioral-problem-reduction": {
+          "rating": 5
+        },
+        "emotional-symptom-relief": {
+          "rating": 4
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Well-established in the U.S. and internationally; strong evidence for reducing recidivism and improving family functioning."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "3–5 months (typical); Flexible based on needs"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-home sessions",
+        "Community coordination",
+        "Family therapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–120 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and effective; requires intensive family engagement and trained providers.",
+      "common_adverse_effects": [
+        {
+          "effect": "Family resistance to intensive engagement"
+        },
+        {
+          "effect": "Increased stress during early intervention"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout due to family disengagement"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe psychosis requiring hospitalization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Immediate danger to self or others requiring inpatient care",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Low family engagement",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unstable home environment with no caregiver involvement",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Systems therapy, Home-based therapy",
+        "key_techniques": [
+          "Family systems",
+          "Juvenile justice",
+          "Behavioral health"
+        ],
+        "session_structure": {
+          "pre_session": "Review of goals, progress, and family environment updates.",
+          "during_session": "Direct work with family members, skill-building, crisis management.",
+          "post_session": "Homework assignments, monitoring, and coordination with external systems."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in MST protocols"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -237,6 +335,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Multisystemic Therapy Services",
+      "url": "https://mstservices.com"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Henggeler, S. W. et al. (1998). Multisystemic Treatment of Antisocial Behavior in Children and Adolescents.",
+      "url": "https://psycnet.apa.org/record/1998-06530-000"
+    }
+  ],
   "seo": {
     "title": "Multisystemic Therapy (MST) for Families | Evidence-Based Family & Community Intervention",
     "description": "Multisystemic Therapy (MST) is an intensive, evidence-based treatment for adolescents with serious behavioral problems, targeting family, peers, school, and community to reduce delinquency and improve functioning.",
@@ -249,5 +361,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—multiple RCTs and meta-analyses; endorsed by Blueprints for Healthy Youth Development and SAMHSA."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—multiple RCTs and meta-analyses; endorsed by Blueprints for Healthy Youth Development and SAMHSA."
+    ]
   }
 }

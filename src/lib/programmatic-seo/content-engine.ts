@@ -270,7 +270,7 @@ async function generateTreatmentForCondition(config: DynamicPageConfig): Promise
   sections.push({
     id: 'how-it-works',
     heading: `How ${brandName} Works for ${conditionName}`,
-    content: specificContext || `${brandName} belongs to the ${treatment.metadata?.drug_classes?.[0] || 'medication'} class. ${treatment.description?.split('.').slice(0, 2).join('. ') || ''}`,
+    content: specificContext || `${brandName} belongs to the ${treatment.metadata?.drug_classes?.[0] || 'medication'} class. ${typeof treatment.description === 'string' ? treatment.description.split('.').slice(0, 2).join('. ') : ''}`,
     type: 'text',
   });
 
@@ -510,7 +510,7 @@ async function generateTreatmentComparison(config: DynamicPageConfig): Promise<G
   
   const metaDescription = `Compare ${brand1} and ${brand2}${forCondition}. Side-by-side analysis of effectiveness, side effects, dosing, cost, and which might be better for you.`;
 
-  const quickAnswer = `Both ${brand1} and ${brand2} are effective${forCondition ? ` for ${conditionName}` : ''}, but they differ in side effect profiles, onset time, and individual tolerability. ${brand1} ${treatment1.summary?.split('.')[0] || 'works differently'} while ${brand2} ${treatment2.summary?.split('.')[0] || 'has its own mechanism'}.`;
+  const quickAnswer = `Both ${brand1} and ${brand2} are effective${forCondition ? ` for ${conditionName}` : ''}, but they differ in side effect profiles, onset time, and individual tolerability. ${brand1} ${typeof treatment1.summary === 'string' ? treatment1.summary.split('.')[0] : 'works differently'} while ${brand2} ${typeof treatment2.summary === 'string' ? treatment2.summary.split('.')[0] : 'has its own mechanism'}.`;
 
   // Comparison table
   const comparisonTable: ComparisonTable = {
@@ -1582,7 +1582,7 @@ async function generateConditionDiagnosis(config: DynamicPageConfig): Promise<Ge
     : `Understanding how ${conditionName} is diagnosed. Learn about the evaluation process, diagnostic criteria, and what to expect.`;
 
   const evaluation = condition.content.evaluation || {};
-  const diagnosticCriteria = condition.content.diagnostic_criteria || '';
+  const diagnosticCriteria = typeof condition.content.diagnostic_criteria === 'string' ? condition.content.diagnostic_criteria : '';
 
   // Build evaluation methods list for non-self-test pages
   const evaluationMethods = [
@@ -1822,6 +1822,7 @@ function getGenericName(treatment: any): string {
 }
 
 function formatDemographic(demo: string): string {
+  if (typeof demo !== 'string') return '';
   const labels: Record<string, string> = {
     'elderly': 'Older Adults',
     'seniors': 'Seniors',

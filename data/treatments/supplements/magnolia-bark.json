@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "magnolia-bark",
-  "type": "supplement",
-  "name": "Magnolia Bark",
-  "summary": "Magnolia bark, derived from Magnolia officinalis, has been used in traditional Chinese medicine for anxiety, stress, and sleep. Its active compounds, honokiol and magnolol, exert GABAergic, anti-inflammatory, and neuroprotective effects.",
-  "description": "Magnolia bark extract has a long history of use in traditional Chinese and Japanese medicine as an anxiolytic, sedative, and digestive aid. Modern research highlights honokiol and magnolol, its primary bioactive compounds, for their potential to modulate GABA-A receptors, reduce cortisol, and support neuroprotection. It is being studied for anxiety, depression, insomnia, neurodegenerative disorders, and metabolic conditions, though robust human clinical trials remain limited.",
-  "category": "supplements",
-  "tags": [
-    "herbal medicine",
-    "anxiolytic",
-    "sleep",
-    "adaptogen"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract",
-    "natural_source": "Magnolia officinalis bark",
+  "identity": {
+    "slug": "magnolia-bark",
+    "name": "Magnolia Bark",
+    "brand_names": [
+      "Magnolia Extract",
+      "Relora (Magnolia + Phellodendron blend)"
+    ],
+    "aliases": [
+      "Magnolia officinalis extract",
+      "honokiol extract"
+    ],
+    "wikidata_qid": "Q27640061"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Anxiety",
       "Sleep",
@@ -26,71 +28,148 @@
       "Neuroprotection",
       "Cortisol reduction"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Magnolia Extract",
-      "Relora (Magnolia + Phellodendron blend)"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for psychiatric indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Chronic supplementation",
-      "Short-term stress relief"
-    ],
-    "specialty_areas": [
-      "Integrative Psychiatry",
-      "Sleep Medicine",
-      "Herbal Medicine"
-    ],
-    "wikidata_qid": "Q27640061"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety",
-      "Stress-related insomnia"
-    ],
-    "off_label_uses": [
-      "Depression (adjunctive)",
-      "Neurodegenerative support",
-      "Metabolic syndrome"
-    ],
-    "contraindications": [
-      "Pregnancy and breastfeeding (safety not established)",
-      "Concurrent CNS depressant use (risk of additive sedation)"
-    ],
-    "monitoring_required": [
-      "Monitor for excessive sedation if combined with other calming agents"
-    ],
-    "efficacy_rating": {
-      "anxiety": 3,
-      "sleep": 2,
-      "depression": 2,
-      "stress": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "magnolia bark",
-      "honokiol",
-      "magnolol",
-      "Magnolia officinalis"
-    ],
-    "synonyms": [
-      "Magnolia officinalis extract",
-      "honokiol extract"
-    ],
-    "common_misspellings": [
-      "magnolia-barc",
-      "magnolia-bak"
+    "tags": [
+      "herbal medicine",
+      "anxiolytic",
+      "sleep",
+      "adaptogen"
     ]
+  },
+  "summary": "Magnolia bark, derived from Magnolia officinalis, has been used in traditional Chinese medicine for anxiety, stress, and sleep. Its active compounds, honokiol and magnolol, exert GABAergic, anti-inflammatory, and neuroprotective effects.",
+  "description": "Magnolia bark extract has a long history of use in traditional Chinese and Japanese medicine as an anxiolytic, sedative, and digestive aid. Modern research highlights honokiol and magnolol, its primary bioactive compounds, for their potential to modulate GABA-A receptors, reduce cortisol, and support neuroprotection. It is being studied for anxiety, depression, insomnia, neurodegenerative disorders, and metabolic conditions, though robust human clinical trials remain limited.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-related-insomnia",
+          "condition_name": "Stress-related insomnia",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "depression-adjunctive",
+          "condition_name": "Depression (adjunctive)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neurodegenerative-support",
+          "condition_name": "Neurodegenerative support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "metabolic-syndrome",
+          "condition_name": "Metabolic syndrome",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiety": {
+          "rating": 3
+        },
+        "sleep": {
+          "rating": 2
+        },
+        "depression": {
+          "rating": 2
+        },
+        "stress": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Chronic supplementation; Short-term stress relief"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "GI upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Excessive sedation (rare, typically in high doses or with co-sedatives)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy and breastfeeding (safety not established)"
+        },
+        {
+          "contraindication": "Concurrent CNS depressant use (risk of additive sedation)"
+        }
+      ],
+      "precautions": [
+        "Avoid concurrent use with strong sedatives, alcohol, or hypnotics.",
+        "Not recommended during pregnancy due to insufficient safety data."
+      ],
+      "interactions": [
+        {
+          "interactant": "CNS depressants (benzodiazepines, alcohol)",
+          "mechanism": "Additive sedation",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "May potentiate blood pressure reduction",
+          "action": "Monitor blood pressure"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation level when combined with other calming agents"
+        },
+        {
+          "parameter": "Daytime drowsiness or impaired alertness"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid—insufficient data",
+        "lactation": "Avoid—insufficient data",
+        "pediatric": "Not recommended",
+        "geriatric": "Generally safe but may increase sedation risk"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract",
+        "natural_source": "Magnolia officinalis bark",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for psychiatric indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -208,6 +287,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kuribara H et al. Anxiolytic effects of honokiol. Neuropharmacology. 1998.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9696434/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Nguyen M et al. Honokiol: A natural compound with promising neuroprotective properties. CNS Drug Rev. 2007.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17461881/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Examine.com – Magnolia officinalis",
+      "url": "https://examine.com/supplements/magnolia-officinalis/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "magnolia bark",
+      "honokiol",
+      "magnolol",
+      "Magnolia officinalis"
+    ],
+    "synonyms": [
+      "Magnolia officinalis extract",
+      "honokiol extract"
+    ],
+    "common_misspellings": [
+      "magnolia-barc",
+      "magnolia-bak"
+    ]
+  },
   "seo": {
     "title": "Magnolia Bark – Herbal Supplement for Anxiety, Stress, and Sleep",
     "description": "Magnolia bark (Magnolia officinalis) is a traditional herbal remedy studied for anxiety, stress, and sleep. Learn about its bioactive compounds, benefits, dosing, and safety.",

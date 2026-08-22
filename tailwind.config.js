@@ -1,4 +1,5 @@
-// tailwind.config.js - Apple-inspired design system
+// tailwind.config.js - HeyPsych Design System
+// Apple-Inspired Light-First Foundation
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,90 +9,226 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Apple-inspired color system
+      // =======================================================================
+      // HeyPsych Color System - Light-First, Semantically Named
+      // =======================================================================
       colors: {
-        // Primary palette (easily swappable)
-        primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554",
+        // Canvas & Surface - Light neutral foundation
+        canvas: {
+          DEFAULT: "#F5F5F7",
+          elevated: "#FBFBFD",
+        },
+        surface: {
+          DEFAULT: "#FFFFFF",
+          grouped: "#F2F2F7",
+          control: "rgba(255, 255, 255, 0.88)",
         },
 
-        // Semantic colors for treatment types
+        // Label colors - Opacity-based hierarchy
+        label: {
+          primary: "rgba(0, 0, 0, 0.88)",
+          secondary: "rgba(60, 60, 67, 0.72)",
+          tertiary: "rgba(60, 60, 67, 0.52)",
+          quaternary: "rgba(60, 60, 67, 0.36)",
+        },
+
+        // Separator colors
+        separator: {
+          DEFAULT: "rgba(60, 60, 67, 0.18)",
+          opaque: "#C6C6C8",
+        },
+
+        // Fill colors for controls
+        fill: {
+          primary: "rgba(120, 120, 128, 0.2)",
+          secondary: "rgba(120, 120, 128, 0.16)",
+          tertiary: "rgba(120, 120, 128, 0.12)",
+          quaternary: "rgba(120, 120, 128, 0.08)",
+        },
+
+        // Primary accent - Apple-inspired blue
+        accent: {
+          DEFAULT: "#007AFF",
+          hover: "#0062CC",
+          pressed: "#004999",
+          tint: "rgba(0, 122, 255, 0.12)",
+          "tint-hover": "rgba(0, 122, 255, 0.18)",
+          border: "rgba(0, 122, 255, 0.3)",
+          foreground: "#FFFFFF",
+        },
+
+        // Semantic: Positive / Success / Available
+        positive: {
+          DEFAULT: "#34C759",
+          50: "#F0FDF4",
+          100: "#DCFCE7",
+          200: "#BBF7D0",
+          300: "#86EFAC",
+          400: "#4ADE80",
+          500: "#34C759",
+          600: "#16A34A",
+          700: "#15803D",
+          800: "#166534",
+          900: "#14532D",
+          tint: "rgba(52, 199, 89, 0.12)",
+          border: "rgba(52, 199, 89, 0.3)",
+        },
+
+        // Semantic: Caution / Warning
+        caution: {
+          DEFAULT: "#FF9500",
+          50: "#FFFBEB",
+          100: "#FEF3C7",
+          200: "#FDE68A",
+          300: "#FCD34D",
+          400: "#FBBF24",
+          500: "#FF9500",
+          600: "#D97706",
+          700: "#B45309",
+          800: "#92400E",
+          900: "#78350F",
+          tint: "rgba(255, 149, 0, 0.12)",
+          border: "rgba(255, 149, 0, 0.3)",
+        },
+
+        // Semantic: Critical / Error / Danger
+        negative: {
+          DEFAULT: "#FF3B30",
+          50: "#FEF2F2",
+          100: "#FEE2E2",
+          200: "#FECACA",
+          300: "#FCA5A5",
+          400: "#F87171",
+          500: "#FF3B30",
+          600: "#DC2626",
+          700: "#B91C1C",
+          800: "#991B1B",
+          900: "#7F1D1D",
+          tint: "rgba(255, 59, 48, 0.12)",
+          border: "rgba(255, 59, 48, 0.3)",
+        },
+
+        // Semantic: Treatment / Clinical (indigo)
         treatment: {
-          medication: "#3b82f6",
-          supplement: "#10b981",
-          intervention: "#8b5cf6",
-          therapy: "#f59e0b",
+          DEFAULT: "#5856D6",
+          50: "#EEF2FF",
+          100: "#E0E7FF",
+          200: "#C7D2FE",
+          300: "#A5B4FC",
+          400: "#818CF8",
+          500: "#5856D6",
+          600: "#4F46E5",
+          700: "#4338CA",
+          800: "#3730A3",
+          900: "#312E81",
+          tint: "rgba(88, 86, 214, 0.12)",
+          border: "rgba(88, 86, 214, 0.3)",
         },
 
-        // Status colors
-        success: "#10b981",
-        warning: "#f59e0b",
-        error: "#ef4444",
-        info: "#06b6d4",
+        // Semantic: Tools / Technology (teal)
+        tools: {
+          DEFAULT: "#30B0C7",
+          50: "#F0FDFA",
+          100: "#CCFBF1",
+          200: "#99F6E4",
+          300: "#5EEAD4",
+          400: "#2DD4BF",
+          500: "#30B0C7",
+          600: "#0891B2",
+          700: "#0E7490",
+          800: "#155E75",
+          900: "#164E63",
+          tint: "rgba(48, 176, 199, 0.12)",
+          border: "rgba(48, 176, 199, 0.3)",
+        },
 
-        // Neutral system (refined grays)
-        gray: {
-          50: "#f9fafb",
-          100: "#f3f4f6",
-          200: "#e5e7eb",
-          300: "#d1d5db",
-          400: "#9ca3af",
-          500: "#6b7280",
-          600: "#4b5563",
-          700: "#374151",
-          800: "#1f2937",
-          900: "#111827",
-          950: "#030712",
+        // =======================================================================
+        // Legacy Graphite Compatibility (maps to light values)
+        // Will be deprecated - use semantic names instead
+        // =======================================================================
+        graphite: {
+          950: "#F5F5F7", // Maps to canvas
+          900: "#F5F5F7", // Maps to canvas
+          850: "#FBFBFD", // Maps to canvas-elevated
+          800: "#FFFFFF", // Maps to surface
+          750: "#F2F2F7", // Maps to surface-grouped
+          700: "#E5E5EA", // Light separator
+          600: "#C6C6C8", // Separator opaque
+          500: "rgba(60, 60, 67, 0.36)",
+          400: "rgba(60, 60, 67, 0.52)",
+          300: "rgba(60, 60, 67, 0.72)",
+          200: "rgba(0, 0, 0, 0.72)",
+          100: "rgba(0, 0, 0, 0.84)",
+          50: "rgba(0, 0, 0, 0.88)",
         },
       },
 
-      // Typography system
+      // =======================================================================
+      // Typography - System font stack
+      // =======================================================================
       fontFamily: {
-        sans: ["Inter Variable", "Inter", "system-ui", "sans-serif"],
-        display: ["Cal Sans", "Inter Variable", "Inter", "sans-serif"],
-        mono: ["JetBrains Mono Variable", "ui-monospace", "monospace"],
+        sans: [
+          "ui-sans-serif",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        display: [
+          "ui-sans-serif",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          '"SF Mono"',
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
       },
 
+      // Font sizes with appropriate line heights
       fontSize: {
-        "2xs": ["0.625rem", { lineHeight: "0.75rem" }],
-        xs: ["0.75rem", { lineHeight: "1rem" }],
-        sm: ["0.875rem", { lineHeight: "1.25rem" }],
-        base: ["1rem", { lineHeight: "1.5rem" }],
-        lg: ["1.125rem", { lineHeight: "1.75rem" }],
-        xl: ["1.25rem", { lineHeight: "1.75rem" }],
-        "2xl": ["1.5rem", { lineHeight: "2rem" }],
-        "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
-        "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
-        "5xl": ["3rem", { lineHeight: "1" }],
-        "6xl": ["3.75rem", { lineHeight: "1" }],
+        "2xs": ["0.6875rem", { lineHeight: "1rem", letterSpacing: "0.01em" }],
+        xs: ["0.75rem", { lineHeight: "1.125rem", letterSpacing: "0.01em" }],
+        sm: ["0.875rem", { lineHeight: "1.375rem", letterSpacing: "0.005em" }],
+        base: ["1rem", { lineHeight: "1.625rem", letterSpacing: "0" }],
+        lg: ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "-0.005em" }],
+        xl: ["1.25rem", { lineHeight: "1.875rem", letterSpacing: "-0.01em" }],
+        "2xl": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.015em" }],
+        "3xl": ["1.875rem", { lineHeight: "2.375rem", letterSpacing: "-0.02em" }],
+        "4xl": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.025em" }],
+        "5xl": ["3rem", { lineHeight: "3.5rem", letterSpacing: "-0.025em" }],
+        "6xl": ["3.75rem", { lineHeight: "1.1", letterSpacing: "-0.03em" }],
       },
 
-      // Spacing system (consistent across all components)
+      // =======================================================================
+      // Spacing
+      // =======================================================================
       spacing: {
         18: "4.5rem",
+        22: "5.5rem",
         88: "22rem",
       },
 
-      // Animation system
+      // =======================================================================
+      // Animation - Subtle, purposeful
+      // =======================================================================
       animation: {
-        "fade-in": "fadeIn 0.3s ease-out",
-        "fade-in-up": "fadeInUp 0.4s ease-out",
-        "slide-up": "slideUp 0.4s ease-out",
-        "slide-down": "slideDown 0.4s ease-out",
-        "scale-in": "scaleIn 0.2s ease-out",
-        shimmer: "shimmer 2s linear infinite",
-        "pulse-soft": "pulseSoft 2s ease-in-out infinite",
-        "bounce-soft": "bounceSoft 1s ease-in-out infinite",
+        "fade-in": "fadeIn 0.2s ease-out",
+        "fade-in-up": "fadeInUp 0.3s ease-out",
+        "slide-up": "slideUp 0.3s ease-out",
+        "slide-down": "slideDown 0.3s ease-out",
+        "scale-in": "scaleIn 0.15s ease-out",
       },
 
       keyframes: {
@@ -100,75 +237,86 @@ module.exports = {
           "100%": { opacity: "1" },
         },
         fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "0%": { opacity: "0", transform: "translateY(8px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         slideUp: {
-          "0%": { transform: "translateY(100%)" },
-          "100%": { transform: "translateY(0)" },
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
         },
         slideDown: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(0)" },
+          "0%": { transform: "translateY(-100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
         },
         scaleIn: {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "0%": { opacity: "0", transform: "scale(0.97)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.8" },
-        },
-        bounceSoft: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-4px)" },
-        },
       },
 
-      // Shadow system (Apple-like depth)
+      // =======================================================================
+      // Shadows - Soft, structural
+      // =======================================================================
       boxShadow: {
-        soft: "0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)",
-        medium: "0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04)",
-        large: "0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06)",
-        xl: "0 12px 48px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08)",
-        glow: "0 0 24px rgba(59, 130, 246, 0.15)",
-        "glow-lg": "0 0 48px rgba(59, 130, 246, 0.2)",
-        inner: "inset 0 2px 4px rgba(0, 0, 0, 0.04)",
+        subtle: "0 1px 2px rgba(0, 0, 0, 0.04)",
+        soft: "0 2px 8px rgba(0, 0, 0, 0.06)",
+        control: "0 2px 8px rgba(0, 0, 0, 0.06)",
+        medium: "0 4px 16px rgba(0, 0, 0, 0.08)",
+        elevated: "0 10px 30px rgba(0, 0, 0, 0.08)",
+        floating: "0 18px 50px rgba(0, 0, 0, 0.10)",
+        // Card elevation system
+        "card-1": "0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)",
+        "card-2": "0 3px 10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)",
+        "card-3": "0 6px 20px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06)",
       },
 
-      // Border radius (consistent curves)
+      // =======================================================================
+      // Border Radius - Soft, coherent family
+      // =======================================================================
       borderRadius: {
-        xs: "0.25rem",
-        sm: "0.375rem",
-        md: "0.5rem",
-        lg: "0.75rem",
-        xl: "1rem",
-        "2xl": "1.25rem",
-        "3xl": "1.5rem",
-        "4xl": "2rem",
+        xs: "0.25rem",   // 4px
+        sm: "0.375rem",  // 6px
+        md: "0.5rem",    // 8px
+        DEFAULT: "0.75rem", // 12px - control default
+        lg: "0.75rem",   // 12px
+        xl: "1rem",      // 16px - card default
+        "2xl": "1.25rem", // 20px
+        "3xl": "1.5rem", // 24px - panel default
+        "4xl": "2rem",   // 32px
       },
 
-      // Backdrop blur
+      // =======================================================================
+      // Backdrop Blur
+      // =======================================================================
       backdropBlur: {
         xs: "2px",
         sm: "4px",
         md: "8px",
         lg: "12px",
         xl: "16px",
-        "2xl": "24px",
-        "3xl": "40px",
+        "2xl": "20px",
+        "3xl": "24px",
       },
 
-      // Grid system
+      // =======================================================================
+      // Grid System
+      // =======================================================================
       gridTemplateColumns: {
         "auto-fit-xs": "repeat(auto-fit, minmax(16rem, 1fr))",
         "auto-fit-sm": "repeat(auto-fit, minmax(20rem, 1fr))",
         "auto-fit-md": "repeat(auto-fit, minmax(24rem, 1fr))",
         "auto-fit-lg": "repeat(auto-fit, minmax(32rem, 1fr))",
+      },
+
+      // =======================================================================
+      // Max Widths
+      // =======================================================================
+      maxWidth: {
+        "prose-narrow": "55ch",
+        "prose-normal": "65ch",
+        "prose-wide": "75ch",
+        shell: "1280px",
+        content: "1120px",
       },
     },
   },
@@ -176,28 +324,31 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
 
-    // Custom utilities plugin
+    // Custom utilities
     function ({ addUtilities }) {
       addUtilities({
-        ".glass": {
-          background: "rgba(255, 255, 255, 0.7)",
-          "backdrop-filter": "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
+        // Material (glass) effect - for navigation layer only
+        ".hp-material": {
+          background: "rgba(255, 255, 255, 0.82)",
+          "backdrop-filter": "saturate(180%) blur(20px)",
+          "-webkit-backdrop-filter": "saturate(180%) blur(20px)",
         },
-        ".glass-dark": {
-          background: "rgba(0, 0, 0, 0.7)",
-          "backdrop-filter": "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+        ".hp-material-solid": {
+          background: "rgba(255, 255, 255, 0.95)",
         },
-        ".shimmer-bg": {
-          background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent)",
-          "background-size": "200% 100%",
+        // Focus ring
+        ".focus-ring": {
+          outline: "none",
+          "box-shadow": "0 0 0 3px rgba(0, 122, 255, 0.4)",
         },
-        ".gradient-text": {
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-          "background-clip": "text",
-          "-webkit-background-clip": "text",
-          "-webkit-text-fill-color": "transparent",
+        // Scrollbar styling
+        ".scrollbar-thin": {
+          "scrollbar-width": "thin",
+          "scrollbar-color": "#C6C6C8 transparent",
+        },
+        // Tabular numerals
+        ".tabular-nums": {
+          "font-variant-numeric": "tabular-nums",
         },
       });
     },

@@ -54,13 +54,13 @@ export function ComparisonTable({
     return (
       <Card className={`${className}`}>
         <CardContent className="flex flex-col items-center justify-center py-12">
-          <div className="mb-4 text-neutral-600">
+          <div className="mb-4 text-label-tertiary">
             <BarChart3 className="h-12 w-12" />
           </div>
-          <h3 className="mb-2 text-lg font-semibold text-neutral-900">
+          <h3 className="mb-2 text-lg font-semibold text-label-primary">
             No treatments selected for comparison
           </h3>
-          <p className="max-w-sm text-center text-neutral-800">
+          <p className="max-w-sm text-center text-label-secondary">
             Add treatments to your comparison by clicking the "Add to Compare" button on treatment
             cards.
           </p>
@@ -116,27 +116,27 @@ export function ComparisonTable({
   // Get color for numeric values based on whether higher is better
   const getValueColor = (value: any, metric: any, allValues: any[]): string => {
     if (metric.type !== "numeric" || !metric.scale) {
-      return "text-neutral-900";
+      return "text-label-primary";
     }
 
     const numValue = Number(value);
-    if (isNaN(numValue)) return "text-neutral-900";
+    if (isNaN(numValue)) return "text-label-primary";
 
     const validValues = allValues.filter((v) => !isNaN(Number(v)));
-    if (validValues.length < 2) return "text-neutral-900";
+    if (validValues.length < 2) return "text-label-primary";
 
     const min = Math.min(...validValues.map(Number));
     const max = Math.max(...validValues.map(Number));
 
     if (metric.higherIsBetter) {
       if (numValue === max) return "text-green-600 font-semibold";
-      if (numValue === min) return "text-red-600";
+      if (numValue === min) return "text-negative";
     } else {
       if (numValue === min) return "text-green-600 font-semibold";
-      if (numValue === max) return "text-red-600";
+      if (numValue === max) return "text-negative";
     }
 
-    return "text-neutral-900";
+    return "text-label-primary";
   };
 
   // Render progress bar for numeric values
@@ -151,11 +151,11 @@ export function ComparisonTable({
     const [min, max] = metric.scale;
     const percentage = ((numValue - min) / (max - min)) * 100;
 
-    const barColor = metric.higherIsBetter ? "bg-blue-500" : "bg-red-500";
+    const barColor = metric.higherIsBetter ? "bg-accent-tint0" : "bg-negative-tint0";
 
     return (
       <div className="mt-1">
-        <div className="h-1.5 w-full rounded-full bg-gray-200">
+        <div className="h-1.5 w-full rounded-full bg-fill-secondary">
           <div
             className={`h-1.5 rounded-full ${barColor} transition-all duration-300`}
             style={{ width: `${Math.max(0, Math.min(100, percentage))}%` }}
@@ -173,7 +173,7 @@ export function ComparisonTable({
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">Treatment Comparison</CardTitle>
-              <p className="mt-1 text-neutral-800">
+              <p className="mt-1 text-label-secondary">
                 Compare {treatments.length} treatment{treatments.length !== 1 ? "s" : ""} side by
                 side
               </p>
@@ -231,13 +231,13 @@ export function ComparisonTable({
             {/* Treatment Headers */}
             <thead>
               <tr className="border-b">
-                <th className="w-48 p-4 text-left font-medium text-neutral-700">Metric</th>
+                <th className="w-48 p-4 text-left font-medium text-label-secondary">Metric</th>
                 {treatments.map((treatment) => (
                   <th key={treatment.id} className="min-w-48 p-4 text-center">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
-                          <h3 className="text-left font-semibold text-neutral-900">
+                          <h3 className="text-left font-semibold text-label-primary">
                             {treatment.name}
                           </h3>
                           <Badge
@@ -251,7 +251,7 @@ export function ComparisonTable({
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-6 w-6 text-neutral-600 hover:text-neutral-800"
+                          className="h-6 w-6 text-label-tertiary hover:text-label-secondary"
                           onClick={() => onRemoveTreatment(treatment.id)}
                         >
                           <X className="h-4 w-4" />
@@ -275,13 +275,13 @@ export function ComparisonTable({
                     key={metric.key}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="border-b hover:bg-neutral-50"
+                    className="border-b hover:bg-surface"
                   >
                     {/* Metric Label */}
                     <td className="p-4">
                       <div className="space-y-1">
-                        <div className="font-medium text-neutral-900">{metric.label}</div>
-                        <div className="text-sm text-neutral-700">{metric.description}</div>
+                        <div className="font-medium text-label-primary">{metric.label}</div>
+                        <div className="text-sm text-label-secondary">{metric.description}</div>
                         <Badge variant="outline" size="sm">
                           {metricCategories.find((c) => c.key === metric.category)?.label}
                         </Badge>
@@ -326,17 +326,17 @@ export function ComparisonTable({
 
               return (
                 <div key={treatment.id} className="space-y-2">
-                  <h4 className="font-semibold text-neutral-900">{treatment.name}</h4>
+                  <h4 className="font-semibold text-label-primary">{treatment.name}</h4>
                   <div className="space-y-1 text-sm">
                     {costValue && (
                       <div className="flex justify-between">
-                        <span className="text-neutral-800">Cost:</span>
+                        <span className="text-label-secondary">Cost:</span>
                         <span className="font-medium">{formatCurrency(costValue)}</span>
                       </div>
                     )}
                     {efficacyValue && (
                       <div className="flex justify-between">
-                        <span className="text-neutral-800">Depression:</span>
+                        <span className="text-label-secondary">Depression:</span>
                         <span className="font-medium">{efficacyValue}/5 ⭐</span>
                       </div>
                     )}

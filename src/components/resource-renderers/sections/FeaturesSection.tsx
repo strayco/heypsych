@@ -26,9 +26,9 @@ export function FeaturesSection({ heading, items }: FeaturesSectionProps) {
       <CardContent>
         <div className="space-y-6">
           {items.map((item, i) => (
-            <div key={i} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
-              <h4 className="mb-2 font-semibold text-gray-900">{item.feature}</h4>
-              <p className="mb-2 text-sm text-gray-700">{item.description}</p>
+            <div key={i} className="border-b border-separator pb-6 last:border-b-0 last:pb-0">
+              <h4 className="mb-2 font-semibold text-label-primary">{item.feature}</h4>
+              <p className="mb-2 text-sm text-label-primary">{item.description}</p>
               {item.evidence && (
                 <div className="rounded-lg border border-purple-200 bg-purple-50 px-3 py-2">
                   <div className="flex items-start gap-2">

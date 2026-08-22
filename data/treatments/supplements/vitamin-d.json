@@ -1,20 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-d",
-  "type": "supplement",
-  "name": "Vitamin D (Cholecalciferol, Ergocalciferol)",
-  "summary": "Vitamin D is a fat-soluble vitamin essential for calcium and phosphate homeostasis, bone health, and immune function. Its main forms are D2 (ergocalciferol, plant-derived) and D3 (cholecalciferol, synthesized in skin or from animal sources).",
-  "description": "Vitamin D plays a critical role in calcium absorption, bone mineralization, and maintaining serum calcium and phosphorus levels. It also influences muscle function, immune regulation, and cell differentiation. Vitamin D can be obtained from sunlight exposure, diet, or supplements. Deficiency is common and can cause rickets in children, osteomalacia in adults, and contribute to osteoporosis. Supplementation is used to prevent and treat deficiency, with emerging research on roles in immunity, cardiovascular health, mood disorders, and cancer prevention.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "bone health",
-    "immune support",
-    "hormone-like vitamin"
-  ],
-  "metadata": {
-    "compound_type": "Fat-soluble vitamin",
-    "natural_source": "Sunlight (UVB-induced skin synthesis), fatty fish, egg yolk, fortified dairy and cereals",
+  "identity": {
+    "slug": "vitamin-d",
+    "name": "Vitamin D (Cholecalciferol, Ergocalciferol)",
+    "generic_name": "vitamin d",
+    "brand_names": [
+      "Calciferol",
+      "Drisdol (D2)",
+      "D-Vi-Sol",
+      "Cholecalciferol"
+    ],
+    "aliases": [
+      "D2",
+      "D3"
+    ],
+    "wikidata_qid": "Q175853"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Endocrinology",
       "Bone health",
@@ -25,85 +30,178 @@
       "Hormone receptor signaling",
       "Immune modulation"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular injection"
-    ],
-    "prescription_status": "OTC (low dose), prescription (high dose or injectable)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Calciferol",
-      "Drisdol (D2)",
-      "D-Vi-Sol",
-      "Cholecalciferol"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term deficiency correction",
-      "Long-term maintenance"
-    ],
-    "specialty_areas": [
-      "Endocrinology",
-      "Orthopedics",
-      "Geriatrics",
-      "Immunology"
-    ],
-    "wikidata_qid": "Q175853"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of vitamin D deficiency",
-      "Rickets (children)",
-      "Osteomalacia (adults)",
-      "Osteoporosis adjunct therapy"
-    ],
-    "off_label_uses": [
-      "Immune support (respiratory infections, autoimmune disorders)",
-      "Adjunctive therapy in depression",
-      "Fall and fracture prevention in elderly",
-      "Possible role in cancer prevention (under investigation)"
-    ],
-    "contraindications": [
-      "Hypercalcemia",
-      "Hypervitaminosis D",
-      "Granulomatous disorders (e.g., sarcoidosis) with risk of excessive vitamin D activation"
-    ],
-    "monitoring_required": [
-      "Serum 25-hydroxyvitamin D levels",
-      "Calcium and phosphorus levels",
-      "Renal function (especially with high-dose therapy)"
-    ],
-    "efficacy_rating": {
-      "deficiency treatment": 5,
-      "bone health/osteoporosis": 4,
-      "immune modulation": 3,
-      "mood support": 2,
-      "cancer prevention": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin D",
-      "Cholecalciferol",
-      "Ergocalciferol",
-      "Calciferol"
-    ],
-    "synonyms": [
-      "D2",
-      "D3"
-    ],
-    "common_misspellings": [
-      "vit d",
-      "vitamen d",
-      "cholecalciferole"
+    "tags": [
+      "vitamin",
+      "bone health",
+      "immune support",
+      "hormone-like vitamin"
     ]
+  },
+  "summary": "Vitamin D is a fat-soluble vitamin essential for calcium and phosphate homeostasis, bone health, and immune function. Its main forms are D2 (ergocalciferol, plant-derived) and D3 (cholecalciferol, synthesized in skin or from animal sources).",
+  "description": "Vitamin D plays a critical role in calcium absorption, bone mineralization, and maintaining serum calcium and phosphorus levels. It also influences muscle function, immune regulation, and cell differentiation. Vitamin D can be obtained from sunlight exposure, diet, or supplements. Deficiency is common and can cause rickets in children, osteomalacia in adults, and contribute to osteoporosis. Supplementation is used to prevent and treat deficiency, with emerging research on roles in immunity, cardiovascular health, mood disorders, and cancer prevention.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-vitamin-d-deficiency",
+          "condition_name": "Prevention and treatment of vitamin D deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "rickets-children",
+          "condition_name": "Rickets (children)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "osteomalacia-adults",
+          "condition_name": "Osteomalacia (adults)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "osteoporosis-adjunct-therapy",
+          "condition_name": "Osteoporosis adjunct therapy",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "immune-support-respiratory-infections-autoimmune-disorders",
+          "condition_name": "Immune support (respiratory infections, autoimmune disorders)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-therapy-in-depression",
+          "condition_name": "Adjunctive therapy in depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fall-and-fracture-prevention-in-elderly",
+          "condition_name": "Fall and fracture prevention in elderly",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "possible-role-in-cancer-prevention-under-investigation",
+          "condition_name": "Possible role in cancer prevention (under investigation)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency treatment": {
+          "rating": 5
+        },
+        "bone health/osteoporosis": {
+          "rating": 4
+        },
+        "immune modulation": {
+          "rating": 3
+        },
+        "mood support": {
+          "rating": 2
+        },
+        "cancer prevention": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term deficiency correction; Long-term maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular injection"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated at recommended doses"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypercalcemia"
+        },
+        {
+          "risk": "Nephrolithiasis"
+        },
+        {
+          "risk": "Renal impairment with excessive intake"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypercalcemia"
+        },
+        {
+          "contraindication": "Hypervitaminosis D"
+        },
+        {
+          "contraindication": "Granulomatous disorders (e.g., sarcoidosis) with risk of excessive vitamin D activation"
+        }
+      ],
+      "precautions": [
+        "Risk of hypercalcemia with excessive doses or in patients with granulomatous disease.",
+        "Use with caution in renal insufficiency."
+      ],
+      "interactions": [
+        {
+          "interactant": "Thiazide diuretics",
+          "mechanism": "Increased hypercalcemia risk",
+          "action": "Monitor calcium"
+        },
+        {
+          "interactant": "Corticosteroids",
+          "mechanism": "Reduced vitamin D metabolism",
+          "action": "Adjust dosing"
+        },
+        {
+          "interactant": "Anticonvulsants (phenytoin, carbamazepine)",
+          "mechanism": "Increased catabolism of vitamin D",
+          "action": "May require higher doses"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum 25(OH)D levels (target: >30 ng/mL)"
+        },
+        {
+          "parameter": "Serum calcium and phosphorus"
+        },
+        {
+          "parameter": "Renal function"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at recommended doses; avoid excessive intake",
+        "lactation": "Safe; supplementation may be necessary for mother and infant",
+        "pediatric": "Safe; essential for rickets prevention",
+        "geriatric": "Safe; may require higher doses due to reduced skin synthesis"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Fat-soluble vitamin",
+        "natural_source": "Sunlight (UVB-induced skin synthesis), fatty fish, egg yolk, fortified dairy and cereals",
+        "regulatory_notes": "Approved vitamin; dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -231,6 +329,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Vitamin D",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminD-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Holick MF. Vitamin D deficiency. N Engl J Med. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17634462/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Pilz S, et al. Vitamin D and health: review of clinical evidence. Eur J Clin Nutr. 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30760829/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin D",
+      "Cholecalciferol",
+      "Ergocalciferol",
+      "Calciferol"
+    ],
+    "synonyms": [
+      "D2",
+      "D3"
+    ],
+    "common_misspellings": [
+      "vit d",
+      "vitamen d",
+      "cholecalciferole"
+    ]
+  },
   "seo": {
     "title": "Vitamin D – Deficiency, D2 vs D3, Bone Health, Immunity, Dosing, Safety",
     "description": "Vitamin D is essential for bone health, immunity, and calcium regulation. Learn about D2 vs D3, deficiency treatment, dosing, and safety considerations.",

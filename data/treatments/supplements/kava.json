@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "kava",
-  "type": "supplement",
-  "name": "Kava (Piper methysticum)",
-  "summary": "Kava is a traditional South Pacific plant-based supplement used for its calming, anxiolytic, and sleep-promoting properties. Its active compounds, kavalactones, modulate neurotransmission to reduce anxiety and promote relaxation.",
-  "description": "Kava, derived from the root of the Piper methysticum plant, has been consumed ceremonially in Pacific Island cultures for centuries as a calming and social beverage. Its bioactive compounds, known as kavalactones, influence GABAergic, dopaminergic, and serotonergic pathways to reduce anxiety and induce relaxation. Modern use focuses on anxiety relief, sleep support, and stress reduction. While generally effective, kava has been associated with rare but serious hepatotoxicity, leading to restrictions or warnings in several countries.",
-  "category": "supplements",
-  "tags": [
-    "anxiolytic",
-    "sleep aid",
-    "herbal medicine",
-    "stress relief",
-    "GABA modulator"
-  ],
-  "metadata": {
-    "compound_type": "Herbal supplement",
-    "natural_source": "Root of Piper methysticum (kava plant)",
+  "identity": {
+    "slug": "kava",
+    "name": "Kava (Piper methysticum)",
+    "generic_name": "kava",
+    "brand_names": [
+      "Kava Kava",
+      "Kavain Extract"
+    ],
+    "aliases": [
+      "Kava Kava",
+      "Awa",
+      "Yaqona"
+    ],
+    "wikidata_qid": "Q156168"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Anxiety",
       "Sleep",
@@ -26,73 +29,172 @@
       "Dopaminergic activity",
       "Serotonin modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "OTC supplement (restricted in some countries)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Kava Kava",
-      "Kavain Extract"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical treatment)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term use (up to 8 weeks recommended)"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Herbal Medicine",
-      "Psychiatry"
-    ],
-    "wikidata_qid": "Q156168"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Generalized anxiety disorder",
-      "Stress-related tension",
-      "Mild insomnia"
-    ],
-    "off_label_uses": [
-      "Muscle relaxation",
-      "Social anxiety",
-      "Adjunctive therapy in depression"
-    ],
-    "contraindications": [
-      "Liver disease or hepatic impairment",
-      "Concurrent alcohol use",
-      "Pregnancy and breastfeeding",
-      "History of substance use disorder"
-    ],
-    "monitoring_required": [
-      "Liver function tests for prolonged use",
-      "Signs of hepatotoxicity (jaundice, fatigue, abdominal pain)"
-    ],
-    "efficacy_rating": {
-      "anxiety_relief": 4,
-      "sleep_support": 3,
-      "stress_relief": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Kava supplement",
-      "Piper methysticum",
-      "Kavalactones"
-    ],
-    "synonyms": [
-      "Kava Kava",
-      "Awa",
-      "Yaqona"
-    ],
-    "common_misspellings": [
-      "kavva",
-      "cava"
+    "tags": [
+      "anxiolytic",
+      "sleep aid",
+      "herbal medicine",
+      "stress relief",
+      "GABA modulator"
     ]
+  },
+  "summary": "Kava is a traditional South Pacific plant-based supplement used for its calming, anxiolytic, and sleep-promoting properties. Its active compounds, kavalactones, modulate neurotransmission to reduce anxiety and promote relaxation.",
+  "description": "Kava, derived from the root of the Piper methysticum plant, has been consumed ceremonially in Pacific Island cultures for centuries as a calming and social beverage. Its bioactive compounds, known as kavalactones, influence GABAergic, dopaminergic, and serotonergic pathways to reduce anxiety and induce relaxation. Modern use focuses on anxiety relief, sleep support, and stress reduction. While generally effective, kava has been associated with rare but serious hepatotoxicity, leading to restrictions or warnings in several countries.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-related-tension",
+          "condition_name": "Stress-related tension",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mild-insomnia",
+          "condition_name": "Mild insomnia",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "muscle-relaxation",
+          "condition_name": "Muscle relaxation",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "social-anxiety",
+          "condition_name": "Social anxiety",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-therapy-in-depression",
+          "condition_name": "Adjunctive therapy in depression",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiety_relief": {
+          "rating": 4
+        },
+        "sleep_support": {
+          "rating": 3
+        },
+        "stress_relief": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term use (up to 8 weeks recommended)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness"
+        },
+        {
+          "effect": "GI discomfort"
+        },
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hepatotoxicity (rare but serious)"
+        },
+        {
+          "risk": "Severe allergic reactions"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Liver disease or hepatic impairment"
+        },
+        {
+          "contraindication": "Concurrent alcohol use"
+        },
+        {
+          "contraindication": "Pregnancy and breastfeeding"
+        },
+        {
+          "contraindication": "History of substance use disorder"
+        }
+      ],
+      "precautions": [
+        "Reports of hepatotoxicity have led to restrictions in some countries.",
+        "Avoid alcohol and other hepatotoxic drugs when using kava.",
+        "Long-term or high-dose use may cause 'kava dermopathy' (dry, scaly skin)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive hepatotoxicity and sedation",
+          "action": "Avoid concurrent use"
+        },
+        {
+          "interactant": "Sedatives (benzodiazepines, barbiturates, hypnotics)",
+          "mechanism": "Increased CNS depression",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "Hepatotoxic drugs (e.g., acetaminophen, isoniazid)",
+          "mechanism": "Increased liver injury",
+          "action": "Avoid combination"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver function (ALT, AST, bilirubin) if used >4 weeks"
+        },
+        {
+          "parameter": "Signs of excessive sedation"
+        },
+        {
+          "parameter": "Dermatological changes with long-term use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended (insufficient safety data, potential risk)",
+        "lactation": "Avoid (excreted in breast milk, safety not established)",
+        "pediatric": "Not recommended",
+        "geriatric": "Use with caution; monitor liver function and sedation"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal supplement",
+        "natural_source": "Root of Piper methysticum (kava plant)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical treatment)"
+      }
+    }
   },
   "sections": [
     {
@@ -215,6 +317,36 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Cochrane Review on Kava for Anxiety",
+      "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003383.pub2/full"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "NIH NCCIH – Kava",
+      "url": "https://www.nccih.nih.gov/health/kava"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Kava supplement",
+      "Piper methysticum",
+      "Kavalactones"
+    ],
+    "synonyms": [
+      "Kava Kava",
+      "Awa",
+      "Yaqona"
+    ],
+    "common_misspellings": [
+      "kavva",
+      "cava"
+    ]
+  },
   "seo": {
     "title": "Kava (Piper methysticum) – Herbal Anxiolytic and Sleep Aid",
     "description": "Kava is a traditional herbal supplement used for anxiety and relaxation. Learn about its benefits, risks, dosing, and safety concerns including liver toxicity.",

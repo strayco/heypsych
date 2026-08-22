@@ -1,65 +1,159 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "acamprosate-campral",
-  "type": "medication",
-  "name": "Acamprosate (Campral)",
-  "summary": "A medication used to support continued abstinence in people with alcohol use disorder.",
-  "description": "Acamprosate is a synthetic amino acid derivative that helps normalize the imbalance between excitatory (glutamate) and inhibitory (GABA) signaling that develops after long-term alcohol use. By modulating glutamatergic transmission, it reduces the brain hyperexcitability associated with early abstinence.",
-  "patient_summary": "Acamprosate is a medicine for people who have already stopped drinking and want help staying sober. It can lessen the physical drive to drink and make it easier to maintain abstinence over time.",
-  "category": "medications/addiction-treatment",
-  "metadata": {
+  "identity": {
+    "slug": "acamprosate-campral",
+    "name": "Acamprosate (Campral)",
+    "generic_name": "acamprosate",
+    "brand_names": [
+      "Campral"
+    ],
+    "wikidata_qid": "Q415178"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/addiction-treatment",
     "drug_classes": [
       "GABA Agonist/Glutamate Antagonist",
       "Glutamate Modulator",
       "Anti-craving Agent"
-    ],
-    "brand_names": [
-      "Campral"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 2004,
-    "pharmacologic_category": "GABA Agonist/Glutamate Antagonist",
-    "published_date": "2025-11-24T00:00:00Z",
-    "last_updated": "2025-11-28T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-24T00:00:00Z",
-      "reviewer_name": "John Lee, MD"
-    },
-    "wikidata_qid": "Q415178"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Alcohol Use Disorder (Maintenance of Abstinence)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alcohol-use-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used to maintain abstinence after detoxification."
-      }
-    ],
-    "contraindications": [
-      "Severe renal impairment (CrCl 30 mL/min or less)",
-      "Known hypersensitivity to acamprosate"
-    ],
-    "efficacy_response": {
-      "metric": "Continuous abstinence rate at 6 months (Meta-Analysis)",
-      "percentage_value": "36%",
-      "comparison_data": "23.4% for placebo",
-      "patient_text": "Across studies, about 36 out of 100 people taking acamprosate remained completely sober for 6 months, compared with about 23 out of 100 people taking a placebo (sugar pill).",
-      "citation_tag": "PMC2994241"
+  "summary": "A medication used to support continued abstinence in people with alcohol use disorder.",
+  "description": "Acamprosate is a synthetic amino acid derivative that helps normalize the imbalance between excitatory (glutamate) and inhibitory (GABA) signaling that develops after long-term alcohol use. By modulating glutamatergic transmission, it reduces the brain hyperexcitability associated with early abstinence.",
+  "patient_summary": "Acamprosate is a medicine for people who have already stopped drinking and want help staying sober. It can lessen the physical drive to drink and make it easier to maintain abstinence over time.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alcohol-use-disorder",
+          "condition_name": "Alcohol Use Disorder",
+          "relationship": "primary_indication",
+          "context": "Used to maintain abstinence after detoxification.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "metabolism": "Not metabolized",
-      "excretion": "Urine (as unchanged drug)",
-      "half_life": "20-33 hours (longer in renal impairment)",
-      "bioavailability": "Approx. 11%"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical benefit often begins within 5–8 days after starting acamprosate.; Full effect may take several weeks of sustained abstinence and regular dosing.; Benefits are maintained only while the medication is continued and alcohol use remains minimal or absent."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Diarrhea",
+          "incidence": "17%",
+          "notes": "This is the most common side effect, affecting roughly 1 in 6 people."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "9%"
+        },
+        {
+          "effect": "Anxiety",
+          "incidence": "8%"
+        },
+        {
+          "effect": "Depression",
+          "incidence": "8%"
+        },
+        {
+          "effect": "Asthenia (weakness)",
+          "incidence": "7%"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal ideation or tendencies (monitor mood closely)."
+        },
+        {
+          "risk": "Severe allergic reaction (Angioedema)."
+        },
+        {
+          "risk": "CNS depression or impairment (caution with driving and operating machinery until effects are known)."
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe renal impairment (CrCl 30 mL/min or less)"
+        },
+        {
+          "contraindication": "Known hypersensitivity to acamprosate"
+        }
+      ],
+      "precautions": [
+        "Monitor mood closely; may be associated with worsening depression or suicidal thoughts in some patients.",
+        "Not effective in individuals who continue to drink heavily or have not yet achieved abstinence.",
+        "Does not relieve or prevent the symptoms of acute alcohol withdrawal.",
+        "Should always be integrated into a broader treatment plan that includes psychosocial interventions (e.g., counseling, mutual support groups)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Continued alcohol use can blunt the medication’s benefit on abstinence.",
+          "action": "Avoid alcohol to get the full benefit of treatment."
+        },
+        {
+          "interactant": "No significant CYP interactions",
+          "mechanism": "Minimal, as acamprosate is not metabolized hepatically.",
+          "action": "No major cytochrome P450–related precautions are needed, but always review your full medication list with your prescriber."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Renal function at baseline and periodically, especially in older adults or those with known kidney disease."
+        },
+        {
+          "parameter": "Ongoing alcohol use and adherence to the medication regimen."
+        },
+        {
+          "parameter": "Mood symptoms and suicidality, particularly during early recovery."
+        },
+        {
+          "parameter": "Engagement in psychosocial treatment (counseling, mutual support groups, recovery programs)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use only if the potential benefit justifies the possible risk to the fetus (often classified as Category C).",
+        "lactation": "It is not clear whether acamprosate passes into breast milk; use cautiously and consider the risks and benefits with the patient.",
+        "pediatric": "Safety and efficacy have not been established in children and adolescents; not recommended.",
+        "geriatric": "Dosage should be adjusted according to renal function, which often declines with age."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2004
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "bioavailability": "Approx. 11%",
+          "half_life": "20-33 hours (longer in renal impairment)",
+          "metabolism": "Not metabolized",
+          "excretion": "Urine (as unchanged drug)"
+        },
+        "dosing": {
+          "max_dose": "1998 mg/day",
+          "titration": "Dosing is weight- and kidney-function–sensitive. Standard dosing is three times daily, and tablets should be swallowed whole."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Acamprosate is not associated with physiological dependence, so it can typically be stopped without tapering. Clinical follow-up is still important, as stopping may affect relapse risk."
+        }
+      }
     }
   },
   "sections": [
@@ -75,7 +169,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are common experiences people report while taking acamprosate after they stop drinking:",
       "items": [
         {
           "category": "Cravings and Urges",
@@ -111,7 +204,8 @@
             "It’s more like a quiet support in the background than a noticeable “buzz” or high."
           ]
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are common experiences people report while taking acamprosate after they stop drinking:"
     },
     {
       "type": "onset_duration",
@@ -126,10 +220,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "A meta-analysis of randomized clinical trials found that 36% of patients treated with acamprosate maintained continuous abstinence at 6 months, compared with 23.4% of those receiving placebo. The benefit is modest but clinically important when combined with behavioral treatment.",
       "metric": "Continuous abstinence rate at 6 months",
       "value": "36%",
       "comparison": "23.4% for placebo",
-      "text": "A meta-analysis of randomized clinical trials found that 36% of patients treated with acamprosate maintained continuous abstinence at 6 months, compared with 23.4% of those receiving placebo. The benefit is modest but clinically important when combined with behavioral treatment.",
       "clinical_details": "Rösner et al. (2010) analyzed multiple randomized controlled trials of acamprosate for alcohol dependence. Across studies, acamprosate was associated with a significantly higher rate of continuous abstinence at 6 months (36% vs 23.4% with placebo), with the greatest benefits seen when combined with psychosocial interventions.",
       "patient_text": "In research studies, people taking acamprosate were more likely to stay completely alcohol-free for 6 months than those taking a placebo—36% versus 23.4%. It is most helpful when used together with counseling or support programs.",
       "citation": {
@@ -196,7 +290,6 @@
     {
       "type": "interactions",
       "heading": "Drug Interactions",
-      "intro": "Acamprosate is renally excreted and not metabolized by the liver, so it has very few pharmacokinetic drug interactions compared with many other medications used in alcohol use disorder.",
       "items": [
         {
           "with": "Alcohol",
@@ -208,7 +301,8 @@
           "risk": "Minimal, as acamprosate is not metabolized hepatically.",
           "action": "No major cytochrome P450–related precautions are needed, but always review your full medication list with your prescriber."
         }
-      ]
+      ],
+      "intro": "Acamprosate is renally excreted and not metabolized by the liver, so it has very few pharmacokinetic drug interactions compared with many other medications used in alcohol use disorder."
     },
     {
       "type": "tapering",
@@ -310,26 +404,26 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Campral (Acamprosate): 36% Abstinence Rate, Dosing & Clinical Guide",
-    "description": "Detailed guide to Acamprosate (Campral): evidence for a 36% 6-month abstinence rate, standard dosing (666 mg TID), renal dose adjustments, side effects, and counseling tips for alcohol use disorder recovery.",
-    "canonical": "https://www.heypsych.com/treatments/acamprosate-campral",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "john-lee-md"
-    ],
-    "reviewBoard": "official",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information and current evidence-based guidelines for alcohol use disorder treatment.",
-    "lastReviewed": "2025-11-24",
-    "lastUpdated": "2025-11-28",
-    "citations": [
-      "https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/021431s015lbl.pdf",
-      "https://www.ncbi.nlm.nih.gov/books/NBK64035/",
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC2994241/"
-    ]
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/021431s015lbl.pdf"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "NCBI StatPearls - Acamprosate",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK64035/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Rösner S, et al. Acamprosate for alcohol dependence. Cochrane Database Syst Rev. 2010",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2994241/"
+    }
+  ],
   "faqs": [
     {
       "q": "What is Acamprosate (Campral) used for?",
@@ -351,5 +445,25 @@
       "q": "Do I need to taper off Acamprosate when stopping it?",
       "a": "No taper is usually required because acamprosate does not cause physical dependence. However, you should still talk with your clinician before stopping, since changes in medication may affect your relapse risk and overall treatment plan."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Campral (Acamprosate): 36% Abstinence Rate, Dosing & Clinical Guide",
+    "description": "Detailed guide to Acamprosate (Campral): evidence for a 36% 6-month abstinence rate, standard dosing (666 mg TID), renal dose adjustments, side effects, and counseling tips for alcohol use disorder recovery.",
+    "canonical": "https://www.heypsych.com/treatments/acamprosate-campral",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "john-lee-md"
+    ],
+    "reviewBoard": "official",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information and current evidence-based guidelines for alcohol use disorder treatment.",
+    "lastReviewed": "2025-11-24",
+    "lastUpdated": "2025-11-28",
+    "citations": [
+      "https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/021431s015lbl.pdf",
+      "https://www.ncbi.nlm.nih.gov/books/NBK64035/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC2994241/"
+    ]
+  }
 }

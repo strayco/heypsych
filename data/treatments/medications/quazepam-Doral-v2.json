@@ -1,72 +1,178 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "quazepam",
-  "type": "medication",
-  "name": "Quazepam",
-  "summary": "Long-acting benzodiazepine hypnotic used for short-term treatment of insomnia involving difficulty falling asleep or staying asleep.",
-  "description": "Quazepam is a long-acting benzodiazepine prescribed for insomnia related to sleep onset and sleep maintenance. It promotes sedation by enhancing GABA activity in the brain. Because of its long half-life and active metabolites, next-day impairment, tolerance, dependence, and withdrawal are significant risks. Use is generally limited to short-term situations when safer insomnia treatments have failed.",
-  "patient_summary": "Quazepam helps people fall asleep and stay asleep, but it can cause next-day drowsiness, memory problems, and dependence. It is typically used only short-term and only when other sleep treatments haven’t worked.",
-  "category": "medications/sleep-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "quazepam",
+    "name": "Quazepam",
+    "brand_names": [
+      "Doral (discontinued)"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-disorders",
     "drug_classes": [
       "Benzodiazepine",
       "Sedative-Hypnotic",
       "GABA-A Receptor Modulator"
-    ],
-    "brand_names": [
-      "Doral (discontinued)"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1985,
-    "pharmacologic_category": "Long-Acting Benzodiazepine Hypnotic",
-    "published_date": "2026-02-09T00:00:00Z",
-    "last_updated": "2026-02-09T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-09T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia — sleep onset difficulty",
-      "Insomnia — sleep maintenance difficulty"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for insomnia characterized by difficulty falling asleep, frequent awakenings, or early morning awakening."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to quazepam or other benzodiazepines",
-      "Established or suspected sleep apnea",
-      "Pulmonary insufficiency",
-      "Severe respiratory disease"
-    ],
-    "efficacy_response": {
-      "metric": "Improved sleep latency and maintenance",
-      "percentage_value": "Not established as a fixed responder rate",
-      "comparison_data": "Demonstrated superiority to placebo in sleep onset and total sleep time",
-      "patient_text": "Clinical trials show quazepam helps people fall asleep faster and reduces nighttime awakenings compared with placebo.",
-      "citation_tag": "FDA Label"
+  "summary": "Long-acting benzodiazepine hypnotic used for short-term treatment of insomnia involving difficulty falling asleep or staying asleep.",
+  "description": "Quazepam is a long-acting benzodiazepine prescribed for insomnia related to sleep onset and sleep maintenance. It promotes sedation by enhancing GABA activity in the brain. Because of its long half-life and active metabolites, next-day impairment, tolerance, dependence, and withdrawal are significant risks. Use is generally limited to short-term situations when safer insomnia treatments have failed.",
+  "patient_summary": "Quazepam helps people fall asleep and stay asleep, but it can cause next-day drowsiness, memory problems, and dependence. It is typically used only short-term and only when other sleep treatments haven’t worked.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for insomnia characterized by difficulty falling asleep, frequent awakenings, or early morning awakening.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "High",
-      "onset": "Within 30–60 minutes",
-      "peak_plasma": "~2 hours",
-      "half_life": "Quazepam and 2-oxoquazepam: ~39 hours; N-desalkyl metabolite: ~73 hours",
-      "duration_IR": "Long-acting (residual next-day effects common)",
-      "metabolism": "Hepatic via CYP3A4, CYP2C9, CYP2C19",
-      "excretion": "Urine (31%), feces (23%)",
-      "protein_binding": ">95%"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Within 30–60 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Daytime sedation",
+          "incidence": "12%",
+          "notes": "More likely due to long half-life and active metabolites."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "5%",
+          "notes": "Usually mild but may persist early in treatment."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression"
+        },
+        {
+          "risk": "Complex sleep behaviors (sleep-driving, sleep-eating)"
+        },
+        {
+          "risk": "Memory impairment and amnesia"
+        },
+        {
+          "risk": "Paradoxical agitation or aggression"
+        },
+        {
+          "risk": "Severe withdrawal symptoms including seizures"
+        },
+        {
+          "risk": "Anaphylaxis or angioedema"
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to quazepam or other benzodiazepines"
+        },
+        {
+          "contraindication": "Established or suspected sleep apnea"
+        },
+        {
+          "contraindication": "Pulmonary insufficiency"
+        },
+        {
+          "contraindication": "Severe respiratory disease"
+        }
+      ],
+      "precautions": [
+        "High risk of abuse, misuse, and addiction",
+        "Physical dependence may develop with continued use",
+        "Abrupt discontinuation can cause life-threatening withdrawal",
+        "Next-day psychomotor impairment is common",
+        "Avoid in patients with sleep apnea or pulmonary disease"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids",
+          "mechanism": "Profound sedation, respiratory depression, coma, death",
+          "action": "Avoid if possible; use lowest doses with close monitoring"
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Marked CNS depression and overdose risk",
+          "action": "Absolute avoidance required"
+        },
+        {
+          "interactant": "Other sedatives or sleep medications",
+          "mechanism": "Additive sedation and impaired breathing",
+          "action": "Avoid combination therapy"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Level of sedation and alertness"
+        },
+        {
+          "parameter": "Respiratory status in high-risk patients"
+        },
+        {
+          "parameter": "Signs of misuse or dependence"
+        },
+        {
+          "parameter": "Cognitive or memory impairment"
+        },
+        {
+          "parameter": "Falls or balance problems"
+        },
+        {
+          "parameter": "Liver function tests when clinically indicated"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Benzodiazepines may cause fetal harm. Late-pregnancy exposure can result in neonatal sedation or withdrawal. Nonpharmacologic insomnia treatment preferred.",
+        "lactation": "Quazepam and metabolites enter breast milk. Infants should be monitored for sedation, feeding difficulty, and poor weight gain.",
+        "pediatric": "Not recommended. Safety and efficacy not established.",
+        "geriatric": "Avoid use. Listed in Beers Criteria due to increased risk of confusion, falls, fractures, and mortality.",
+        "renal_impairment": "No dosage adjustment recommended.",
+        "hepatic_impairment": "No formal dose adjustment provided; use caution."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1985
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "High",
+          "peak_plasma": "~2 hours",
+          "half_life": "Quazepam and 2-oxoquazepam: ~39 hours; N-desalkyl metabolite: ~73 hours",
+          "metabolism": "Hepatic via CYP3A4, CYP2C9, CYP2C19",
+          "excretion": "Urine (31%), feces (23%)",
+          "protein_binding": ">95%"
+        },
+        "dosing": {
+          "titration": "Quazepam is taken once nightly at bedtime when adequate sleep time is available."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Quazepam should never be stopped abruptly after repeated use."
+        }
+      }
     }
   },
   "sections": [
@@ -84,7 +190,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experiences vary, but commonly reported effects include:",
       "items": [
         {
           "category": "Sleep Initiation",
@@ -115,7 +220,8 @@
             "Stopping suddenly made my insomnia rebound badly."
           ]
         }
-      ]
+      ],
+      "intro": "Experiences vary, but commonly reported effects include:"
     },
     {
       "type": "onset_duration",
@@ -191,7 +297,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Quazepam interacts with other sedatives and medications affecting the central nervous system.",
       "items": [
         {
           "with": "Opioids",
@@ -208,7 +313,8 @@
           "risk": "Additive sedation and impaired breathing",
           "action": "Avoid combination therapy"
         }
-      ]
+      ],
+      "intro": "Quazepam interacts with other sedatives and medications affecting the central nervous system."
     },
     {
       "type": "tapering",
@@ -272,21 +378,6 @@
       "text": "Quazepam is not first-line therapy for insomnia. It may be considered only when cognitive behavioral therapy for insomnia (CBT-I) and safer pharmacologic options have failed, and when short-term use is appropriate."
     }
   ],
-  "seo": {
-    "title": "Quazepam: Uses, Dosage, Side Effects & Withdrawal",
-    "description": "Quazepam is a long-acting benzodiazepine used short-term for insomnia. Learn dosing, risks, side effects, dependence, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/quazepam](https://www.heypsych.com/treatments/quazepam)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is quazepam used for?",
@@ -312,5 +403,20 @@
       "q": "Is quazepam safe for older adults?",
       "a": "No. It is listed in the Beers Criteria as potentially inappropriate for adults aged 65 and older."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Quazepam: Uses, Dosage, Side Effects & Withdrawal",
+    "description": "Quazepam is a long-acting benzodiazepine used short-term for insomnia. Learn dosing, risks, side effects, dependence, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/quazepam](https://www.heypsych.com/treatments/quazepam)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,89 +1,243 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "guanfacine-intuniv",
-  "type": "medication",
-  "name": "Guanfacine (Intuniv)",
-  "summary": "Non-stimulant alpha-2A agonist that can calm hyperactivity, impulsivity, and emotional reactivity—especially when stimulants aren’t a great fit. Common tradeoff: sleepiness and low blood pressure/slow heart rate.",
-  "description": "Guanfacine (brand: Intuniv for the extended-release form) is a non-stimulant medication most often used for ADHD symptoms like impulsivity, hyperactivity, and emotional “overdrive.” It can be a smart option when stimulants cause side effects, aren’t effective, or diversion/misuse is a concern—and it’s often chosen when tics/Tourette’s are in the picture. The downside is predictable: sedation, dizziness, low blood pressure, and a slower heart rate. Don’t stop it abruptly—withdrawal can cause a rebound blood pressure spike and a jittery, revved-up feeling.",
-  "patient_summary": "Guanfacine (Intuniv) is a non-stimulant used to help ADHD symptoms like impulsivity, hyperactivity, and emotional “overdrive,” especially when stimulants aren’t a great fit or tics/Tourette’s are involved. It can also be used alongside a stimulant. The tradeoff is sedation and cardiovascular effects like low blood pressure and slower heart rate. Don’t stop it suddenly—withdrawal can cause rebound hypertension and nervous, agitated symptoms.",
-  "category": "medications/adhd",
-  "metadata": {
-    "drug_classes": [
-      "Alpha-2A Adrenergic Agonist",
-      "Centrally Acting Sympatholytic",
-      "Nonstimulant ADHD Medication"
-    ],
+  "identity": {
+    "slug": "guanfacine-intuniv",
+    "name": "Guanfacine (Intuniv)",
+    "generic_name": "guanfacine",
     "brand_names": [
       "Intuniv",
       "Intuniv XR",
       "APO-Guanfacine XR",
       "JAMP-Guanfacine XR",
       "Tenex"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1986,
-    "pharmacologic_category": "Selective Alpha2A-Adrenergic Agonist; Antihypertensive (IR), Nonstimulant for ADHD (ER)",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD) (extended-release)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "Extended-release guanfacine (Intuniv) is used for ADHD, especially when stimulants aren’t tolerated, aren’t effective, or diversion/misuse is a concern. It can be used alone or as an add-on to a stimulant."
-      },
-      {
-        "slug": "tourette-syndrome",
-        "relationship": "off_label",
-        "context": "Sometimes used to target tics, particularly when ADHD is also present. Results across studies are mixed, but many clinicians consider it when tics + impulsivity/hyperactivity travel together."
-      },
-      {
-        "slug": "tic-disorder",
-        "relationship": "off_label",
-        "context": "May reduce tic severity for some patients, especially in comorbid ADHD, but it’s not a guaranteed win."
-      },
-      {
-        "slug": "autism-spectrum-disorder",
-        "relationship": "off_label",
-        "context": "Used in some kids/teens with ASD when hyperactivity/impulsivity is a major driver. Benefit is variable, and irritability can be a bigger issue in this population."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to guanfacine or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "ADHD symptom improvement",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "In clinical trials of extended-release guanfacine for ADHD, many patients show meaningful improvement in hyperactivity, impulsivity, and emotional reactivity. It’s not a stimulant, so the goal is steadier behavioral control—not a “boost.” Response varies, and side effects (especially sleepiness and low blood pressure/slow heart rate) often determine the usable dose.",
-      "citation_tag": "FDA Label: Intuniv"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd",
+    "drug_classes": [
+      "Alpha-2A Adrenergic Agonist",
+      "Centrally Acting Sympatholytic",
+      "Nonstimulant ADHD Medication"
+    ]
+  },
+  "summary": "Non-stimulant alpha-2A agonist that can calm hyperactivity, impulsivity, and emotional reactivity—especially when stimulants aren’t a great fit. Common tradeoff: sleepiness and low blood pressure/slow heart rate.",
+  "description": "Guanfacine (brand: Intuniv for the extended-release form) is a non-stimulant medication most often used for ADHD symptoms like impulsivity, hyperactivity, and emotional “overdrive.” It can be a smart option when stimulants cause side effects, aren’t effective, or diversion/misuse is a concern—and it’s often chosen when tics/Tourette’s are in the picture. The downside is predictable: sedation, dizziness, low blood pressure, and a slower heart rate. Don’t stop it abruptly—withdrawal can cause a rebound blood pressure spike and a jittery, revved-up feeling.",
+  "patient_summary": "Guanfacine (Intuniv) is a non-stimulant used to help ADHD symptoms like impulsivity, hyperactivity, and emotional “overdrive,” especially when stimulants aren’t a great fit or tics/Tourette’s are involved. It can also be used alongside a stimulant. The tradeoff is sedation and cardiovascular effects like low blood pressure and slower heart rate. Don’t stop it suddenly—withdrawal can cause rebound hypertension and nervous, agitated symptoms.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "Extended-release guanfacine (Intuniv) is used for ADHD, especially when stimulants aren’t tolerated, aren’t effective, or diversion/misuse is a concern. It can be used alone or as an add-on to a stimulant.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "tourette-syndrome",
+          "condition_name": "Tourette Syndrome",
+          "relationship": "off_label",
+          "context": "Sometimes used to target tics, particularly when ADHD is also present. Results across studies are mixed, but many clinicians consider it when tics + impulsivity/hyperactivity travel together."
+        },
+        {
+          "condition_slug": "tic-disorder",
+          "condition_name": "Tic Disorder",
+          "relationship": "off_label",
+          "context": "May reduce tic severity for some patients, especially in comorbid ADHD, but it’s not a guaranteed win."
+        },
+        {
+          "condition_slug": "autism-spectrum-disorder",
+          "condition_name": "Autism Spectrum Disorder",
+          "relationship": "off_label",
+          "context": "Used in some kids/teens with ASD when hyperactivity/impulsivity is a major driver. Benefit is variable, and irritability can be a bigger issue in this population."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Readily absorbed (oral)",
-      "bioavailability": "Immediate-release ~80%; extended-release has lower relative bioavailability vs IR (~58%) when compared at the same mg dose",
-      "onset": "Clinical effects are gradual (days to weeks), while sedation/dizziness can show up early (first weeks) and after dose increases",
-      "peak_plasma": "Immediate-release ~2.6 hours (range 1 to 4 hours); extended-release ~4 to 8 hours in adults (about ~5 hours in pediatric data)",
-      "half_life": "Immediate-release ~17 hours (range 10 to 30 hours); extended-release ~18 ± 4 hours in adults",
-      "duration_IR": "Sedation can last into the next day in some people; cardiovascular effects can persist through the day",
-      "duration_XR": "Designed for once-daily coverage; antihypertensive effect reported around 24 hours after a single dose",
-      "metabolism": "Hepatic via CYP3A4; about 50% of clearance is hepatic",
-      "excretion": "Urine (~50% as unchanged drug; reported range 40% to 75%)",
-      "protein_binding": "~70%",
-      "food_effect": "High-fat meals can increase exposure for extended-release; extended-release should not be taken with a high-fat meal"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical effects are gradual (days to weeks), while sedation/dizziness can show up early (first weeks) and after dose increases"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Immediate-release: 5% to 39%; Extended-release (pediatric trials): 28% to 57%",
+          "notes": "Sedation often hits early (first few weeks) and after dose increases. For some people it fades; for others it’s the limiting factor. Timing the dose (morning vs evening) is often adjusted around this."
+        },
+        {
+          "effect": "Dizziness / Lightheadedness",
+          "incidence": "Immediate-release: 12% to 15%; Extended-release (pediatric trials): 4% to 16%",
+          "notes": "This is often a low blood pressure/orthostatic issue. Dehydration and rapid position changes make it worse."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "Immediate-release: 5% to 10%; Extended-release (pediatric trials): 10% to 22%",
+          "notes": "Fatigue can look like low motivation, slowed drive, or needing naps—especially early on."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Immediate-release: 3% to 13%; Extended-release (pediatric trials): 16% to 28%",
+          "notes": "Headache can occur early in treatment and during dose changes. Hydration and slow titration matter."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "Immediate-release: 10% to 54%; Extended-release (pediatric trials): 3% to 8%",
+          "notes": "Classic central alpha-agonist side effect. Water, sugar-free gum, and oral care help."
+        },
+        {
+          "effect": "GI Effects (abdominal pain, constipation, nausea)",
+          "incidence": "Extended-release (pediatric trials): abdominal pain 8% to 19%; constipation 2% to 4%; nausea 5% to 7%; vomiting 2% to 7%",
+          "notes": "Often dose-related and sometimes improves over time."
+        },
+        {
+          "effect": "Irritability / Emotional Lability",
+          "incidence": "Extended-release (pediatric trials): irritability 5% to 8%; emotional lability 2% to 3%; agitation ≥2%",
+          "notes": "Some patients—especially those with ASD—seem more sensitive to irritability-type effects. Slower titration can help clarify if this is a temporary adjustment effect or a deal-breaker."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Syncope (fainting), marked hypotension, or clinically significant bradycardia: higher risk with dehydration, heart disease, conduction abnormalities, or other sympatholytic/blood pressure meds"
+        },
+        {
+          "risk": "Atrioventricular (AV) block or rhythm disturbances (rare): evaluate if palpitations, fainting, or severe dizziness occur"
+        },
+        {
+          "risk": "Withdrawal syndrome with abrupt discontinuation: nervousness/agitation symptoms and rebound hypertension; in severe cases, hypertensive complications have been reported"
+        },
+        {
+          "risk": "Seizure (rare; reported postmarketing): evaluate urgently if seizure occurs"
+        },
+        {
+          "risk": "Hallucinations or confusion (rare; postmarketing): consider medication contribution and evaluate medically"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to guanfacine or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Cardiovascular effects can occur: bradycardia, hypotension, orthostatic hypotension, syncope, and (rarely) conduction abnormalities like AV block",
+        "Sedation and drowsiness can impair driving, school/work performance, and reaction time—especially early in treatment and after dose increases",
+        "Risk increases with dehydration, underlying cardiovascular disease, conduction abnormalities, and use with other sympatholytic or blood pressure–lowering medications",
+        "Immediate-release and extended-release guanfacine are not interchangeable mg-for-mg due to different pharmacokinetics",
+        "Extended-release tablets must be swallowed whole and should not be taken with a high-fat meal (can increase exposure)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive sedation and dizziness; worsens impaired alertness and increases fall/fainting risk.",
+          "action": "Avoid or minimize. If alcohol is used, it should be discussed explicitly because sedation can stack fast."
+        },
+        {
+          "interactant": "Other sedating medications (benzodiazepines, barbiturates, sedating antihistamines, antipsychotics, sleep meds)",
+          "mechanism": "Additive CNS depression: more sedation, slower reaction time, impaired driving/school/work performance.",
+          "action": "Use caution. Consider dose timing, slower titration, or non-sedating alternatives when possible."
+        },
+        {
+          "interactant": "Antihypertensives and sympatholytic agents (beta blockers, alpha blockers, mixed alpha/beta blockers)",
+          "mechanism": "More hypotension, bradycardia, orthostasis, and fainting risk.",
+          "action": "Monitor blood pressure and heart rate closely, especially during initiation and dose changes."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (examples: ketoconazole, clarithromycin, some HIV protease inhibitors)",
+          "mechanism": "Higher guanfacine levels → more sedation, hypotension, bradycardia.",
+          "action": "Dose/frequency adjustment or avoidance may be needed; monitor for excess effects."
+        },
+        {
+          "interactant": "CYP3A4 inducers (examples: carbamazepine, phenytoin, rifampin, St. John’s wort)",
+          "mechanism": "Lower guanfacine levels → reduced benefit and potential rebound symptoms if levels drop quickly.",
+          "action": "Avoid when possible; if used, clinical response may change and dose adjustments may be needed."
+        },
+        {
+          "interactant": "Grapefruit juice/products",
+          "mechanism": "May increase guanfacine concentrations (more sedation and cardiovascular effects).",
+          "action": "Avoid grapefruit products, or consider dose reduction (commonly by ~50% when grapefruit is consistently used) with monitoring."
+        },
+        {
+          "interactant": "Stimulants (adjunct use)",
+          "mechanism": "Often a helpful combination, but blood pressure/heart rate effects can be less predictable and sedation can still be limiting.",
+          "action": "Monitor vitals at baseline, after dose changes, and periodically; adjust timing/dosing based on alertness and vitals."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Blood pressure and heart rate: check before starting, after dose increases, and periodically thereafter; watch for hypotension, bradycardia, and orthostatic symptoms"
+        },
+        {
+          "parameter": "Syncope risk: ask about fainting, near-fainting, dizziness on standing; assess hydration and other BP-lowering meds"
+        },
+        {
+          "parameter": "Sedation/alertness: monitor daytime sleepiness, school/work functioning, driving safety, and morning “hangover” effects"
+        },
+        {
+          "parameter": "Mood/behavior: track irritability, agitation, emotional lability, anxiety-like activation with missed doses, and any worsening mood symptoms"
+        },
+        {
+          "parameter": "ADHD cardiovascular screening (pediatrics): thorough patient/family history and physical exam focused on cardiovascular risk; ECG is not mandatory but can be reasonable to consider, especially if risk factors or symptoms exist"
+        },
+        {
+          "parameter": "Medication adherence: missed doses matter with guanfacine (withdrawal/rebound risk). Create a plan for missed doses and retitration when needed"
+        },
+        {
+          "parameter": "Drug interactions: review CYP3A4 inhibitors/inducers, grapefruit intake, and all sedating meds at every visit"
+        },
+        {
+          "parameter": "Growth/weight (pediatrics): appetite changes and weight gain are possible; monitor trends over time"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Guanfacine is not considered a preferred medication for chronic hypertension in pregnancy, and outcome data for guanfacine exposure in pregnancy are limited. For ADHD, many experts recommend discontinuing guanfacine during pregnancy when possible due to limited data and the availability of non-medication supports. If exposure occurs, discuss risks and monitoring, and consider enrolling in the National Pregnancy Registry for ADHD Medications.",
+        "lactation": "It is not known whether guanfacine is present in breast milk. If used during breastfeeding, monitor the infant for lethargy, poor feeding, and sedation. Decisions should weigh infant exposure risk, breastfeeding benefits, and maternal treatment benefits.",
+        "pediatric": "ADHD (extended-release, ages 6 to 17): Start 1 mg once daily at the same time each day (morning or evening). Titrate by no more than 1 mg per week based on response and tolerability. Target range commonly referenced: 0.05 to 0.12 mg/kg/day (or roughly 1 to 7 mg/day within age-based maximums). Maximums not evaluated above: monotherapy—children 6 to 12 years: 4 mg/day; adolescents 13 to 17 years: 7 mg/day. Adjunct to stimulants: doses above 4 mg/day have not been evaluated. If converting from IR to ER: discontinue IR and start ER using ER titration (do not convert mg-for-mg). Missed ER doses: if ≥2 consecutive doses missed, consider repeating titration. Discontinuation ER: taper by ≤1 mg every 3 to 7 days. ASD + ADHD (comorbidity, limited data, often IR in reports): dosing is individualized with slow increments and close monitoring for irritability. Tourette/tics (limited data, often IR): titration schedules exist in studies, commonly starting low at bedtime and increasing in small steps every few days toward a divided-dose total, with careful monitoring of sedation and vitals.",
+        "geriatric": "Avoid as a routine antihypertensive in adults ≥65 per Beers Criteria due to CNS adverse effects and risk of bradycardia/orthostatic hypotension. For psychiatric use in older adults, if considered at all, start very low, titrate slowly, and monitor vitals and falls risk closely.",
+        "renal_impairment": "Adult labeling does not provide a specific adjustment, and dose adjustment is often unlikely based on pharmacokinetic evidence; however, use caution in chronic renal impairment. Pediatric IR guidance commonly recommends using the lower end of dosing in renal impairment. Hemodialysis clearance is low (~15% of total clearance).",
+        "hepatic_impairment": "No specific adult dose adjustment is provided in labeling, but use caution in chronic hepatic impairment. For ER in pediatrics, it has not been studied in significant hepatic impairment; dose adjustments may be necessary. Consider slower titration and lower target doses if side effects emerge."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1986
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Readily absorbed (oral)",
+          "bioavailability": "Immediate-release ~80%; extended-release has lower relative bioavailability vs IR (~58%) when compared at the same mg dose",
+          "peak_plasma": "Immediate-release ~2.6 hours (range 1 to 4 hours); extended-release ~4 to 8 hours in adults (about ~5 hours in pediatric data)",
+          "half_life": "Immediate-release ~17 hours (range 10 to 30 hours); extended-release ~18 ± 4 hours in adults",
+          "metabolism": "Hepatic via CYP3A4; about 50% of clearance is hepatic",
+          "excretion": "Urine (~50% as unchanged drug; reported range 40% to 75%)",
+          "protein_binding": "~70%",
+          "food_effect": "High-fat meals can increase exposure for extended-release; extended-release should not be taken with a high-fat meal"
+        },
+        "dosing": {
+          "titration": "Psychiatry dosing for guanfacine depends heavily on the formulation and the population. Extended-release guanfacine (Intuniv) is dosed once daily and is the standard product used for ADHD. Immediate-release guanfacine is a different product with different pharmacokinetics and is not interchangeable mg-for-mg with extended-release."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Guanfacine should be tapered—not stopped abruptly—because sudden discontinuation can trigger a withdrawal syndrome and rebound hypertension. Withdrawal symptoms can look like a catecholamine “surge”: nervousness/anxiety feelings, agitation, headache, tremor, and a rise in blood pressure (sometimes above baseline)."
+        }
+      }
     }
   },
   "sections": [
@@ -106,7 +260,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Guanfacine is one of those meds where the “feel” can be the whole story—because the same calming effect that helps ADHD can also make you sleepy or lightheaded.",
       "items": [
         {
           "category": "Calmer Body, Quieter Reactivity",
@@ -152,7 +305,8 @@
           ],
           "note": "Abrupt discontinuation can cause a withdrawal syndrome including rebound hypertension."
         }
-      ]
+      ],
+      "intro": "Guanfacine is one of those meds where the “feel” can be the whole story—because the same calming effect that helps ADHD can also make you sleepy or lightheaded."
     },
     {
       "type": "onset_duration",
@@ -169,10 +323,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Guanfacine extended-release can meaningfully improve ADHD symptoms—especially hyperactivity, impulsivity, and emotional snap-reactivity—without being a stimulant. The usable dose is often limited by sedation and cardiovascular effects (low blood pressure and slow heart rate), so the “best” dose is the one that helps symptoms without turning you into a sleep-walking zombie.",
       "metric": "ADHD symptom improvement (hyperactivity/impulsivity, emotional reactivity)",
       "value": "Varies by person and dose tolerance",
       "comparison": "Not applicable for this medication.",
-      "text": "Guanfacine extended-release can meaningfully improve ADHD symptoms—especially hyperactivity, impulsivity, and emotional snap-reactivity—without being a stimulant. The usable dose is often limited by sedation and cardiovascular effects (low blood pressure and slow heart rate), so the “best” dose is the one that helps symptoms without turning you into a sleep-walking zombie.",
       "clinical_details": "Guanfacine ER is commonly used when stimulants are poorly tolerated, ineffective after an adequate trial, or when tics/Tourette’s or diversion risk makes a non-stimulant more appealing. It can be used alone or as an adjunct to a stimulant, with careful monitoring of blood pressure, heart rate, and daytime sedation.",
       "citation": {
         "authors": "U.S. Food and Drug Administration",
@@ -268,7 +422,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Guanfacine is a CYP3A4 substrate and also has additive effects with other meds that lower blood pressure/heart rate or cause sedation. The biggest practical problems are: getting too sleepy, getting too dizzy, or having your heart rate/blood pressure drop too far.",
       "items": [
         {
           "with": "Alcohol",
@@ -305,7 +458,8 @@
           "risk": "Often a helpful combination, but blood pressure/heart rate effects can be less predictable and sedation can still be limiting.",
           "action": "Monitor vitals at baseline, after dose changes, and periodically; adjust timing/dosing based on alertness and vitals."
         }
-      ]
+      ],
+      "intro": "Guanfacine is a CYP3A4 substrate and also has additive effects with other meds that lower blood pressure/heart rate or cause sedation. The biggest practical problems are: getting too sleepy, getting too dizzy, or having your heart rate/blood pressure drop too far."
     },
     {
       "type": "tapering",
@@ -375,21 +529,6 @@
       "text": "In ADHD treatment, guanfacine ER sits in the non-stimulant lane. It’s often used when stimulants aren’t tolerated, don’t work after an adequate trial, or aren’t a good idea due to diversion/misuse concerns. Clinically, it’s also a frequent choice when tics/Tourette’s are comorbid, because it can support ADHD symptoms without the same tic-worsening worries some patients have with stimulants. It can be used as monotherapy or added to a stimulant when the stimulant helps but doesn’t fully cover impulsivity, emotional reactivity, or late-day rebound. The main limiter is side effects: sedation, dizziness, hypotension, and bradycardia—so titration speed and dose timing are everything."
     }
   ],
-  "seo": {
-    "title": "Guanfacine (Intuniv): Uses, Dosing, Side Effects, and Safe Tapering",
-    "description": "Intuniv (guanfacine ER) is a non-stimulant for ADHD that can help hyperactivity, impulsivity, and emotional reactivity—especially with tics/Tourette’s or stimulant issues. Learn dosing basics, common side effects (sleepiness, dizziness), interactions (grapefruit/CYP3A4), and how to taper safely to avoid rebound hypertension.",
-    "canonical": "[https://www.heypsych.com/treatments/guanfacine-intuniv](https://www.heypsych.com/treatments/guanfacine-intuniv)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-10",
-    "lastUpdated": "2026-01-10",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Intuniv used for in psychiatry?",
@@ -443,5 +582,20 @@
       "q": "Do grapefruit products matter with guanfacine?",
       "a": "Yes. Grapefruit can increase guanfacine levels, which can mean more sedation and more blood pressure/heart rate effects. Many clinicians recommend avoiding grapefruit products while taking guanfacine."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Guanfacine (Intuniv): Uses, Dosing, Side Effects, and Safe Tapering",
+    "description": "Intuniv (guanfacine ER) is a non-stimulant for ADHD that can help hyperactivity, impulsivity, and emotional reactivity—especially with tics/Tourette’s or stimulant issues. Learn dosing basics, common side effects (sleepiness, dizziness), interactions (grapefruit/CYP3A4), and how to taper safely to avoid rebound hypertension.",
+    "canonical": "[https://www.heypsych.com/treatments/guanfacine-intuniv](https://www.heypsych.com/treatments/guanfacine-intuniv)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-10",
+    "lastUpdated": "2026-01-10",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

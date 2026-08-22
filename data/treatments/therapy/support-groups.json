@@ -1,89 +1,181 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "support-groups",
-  "type": "therapy",
-  "name": "Support Groups",
-  "summary": "Support groups bring together individuals facing similar challenges to share experiences, receive encouragement, and build coping strategies in a safe, facilitated environment.",
-  "description": "Support groups are structured gatherings where people experiencing similar mental health, medical, or life challenges meet to provide mutual support. These groups can be professionally led by a therapist or peer-led by individuals with lived experience. Through open sharing, active listening, and mutual encouragement, participants develop a sense of belonging, reduce isolation, and gain coping skills. Support groups are used for a wide range of conditions, including depression, anxiety, addiction recovery, grief, trauma, and chronic illness. They may be in-person or virtual and vary in structure, size, and focus.",
-  "category": "therapy/group",
-  "tags": [
-    "support groups",
-    "group therapy",
-    "peer support",
-    "community",
-    "recovery"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "support-groups",
+    "name": "Support Groups",
+    "wikidata_qid": "Q65537759"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/group",
     "intervention_types": [
       "Group therapy",
       "Peer support"
     ],
-    "treatment_types": [
-      "Psychotherapy",
-      "Community support"
-    ],
-    "categories": [
-      "Supportive interventions",
-      "Group-based care"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Online/Virtual"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": "Recommended for facilitators",
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "60–120 minutes",
-    "treatment_duration": [
-      "Ongoing",
-      "Time-limited (6–12 weeks)"
-    ],
-    "specialty_areas": [
-      "Addiction recovery",
-      "Grief and loss",
-      "Chronic illness",
-      "Trauma support",
-      "Parenting support"
-    ],
-    "wikidata_qid": "Q65537759"
+    "tags": [
+      "support groups",
+      "group therapy",
+      "peer support",
+      "community",
+      "recovery"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression",
-      "Anxiety disorders",
-      "Substance use disorders",
-      "Grief and bereavement",
-      "Chronic illness management"
-    ],
-    "conditions_treated": [
-      "Alcohol and drug addiction",
-      "Major depressive disorder",
-      "Generalized anxiety disorder",
-      "Post-traumatic stress disorder (PTSD)",
-      "Chronic health conditions"
-    ],
-    "off_label_uses": [
-      "Community building and peer mentoring"
-    ],
-    "contraindications": [
-      "Individuals requiring intensive one-on-one therapy",
-      "Situations involving high risk of harm or suicidality without clinical oversight"
-    ],
-    "safety_profile": "Safe and non-invasive; emotional intensity may be triggering for some participants.",
-    "evidence_level": "Moderate",
-    "research_support": "Peer support has been shown to improve recovery, reduce relapse rates in addiction, and enhance overall well-being.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "addiction-recovery": 5,
-      "grief-support": 4,
-      "chronic-illness": 4,
-      "anxiety": 3,
-      "depression": 3
+  "summary": "Support groups bring together individuals facing similar challenges to share experiences, receive encouragement, and build coping strategies in a safe, facilitated environment.",
+  "description": "Support groups are structured gatherings where people experiencing similar mental health, medical, or life challenges meet to provide mutual support. These groups can be professionally led by a therapist or peer-led by individuals with lived experience. Through open sharing, active listening, and mutual encouragement, participants develop a sense of belonging, reduce isolation, and gain coping skills. Support groups are used for a wide range of conditions, including depression, anxiety, addiction recovery, grief, trauma, and chronic illness. They may be in-person or virtual and vary in structure, size, and focus.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance use disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "grief-and-bereavement",
+          "condition_name": "Grief and bereavement",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-illness-management",
+          "condition_name": "Chronic illness management",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "alcohol-and-drug-addiction",
+          "condition_name": "Alcohol and drug addiction",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-traumatic stress disorder (PTSD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-health-conditions",
+          "condition_name": "Chronic health conditions",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "community-building-and-peer-mentoring",
+          "condition_name": "Community building and peer mentoring",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level": "moderate",
+      "efficacy_ratings": {
+        "addiction-recovery": {
+          "rating": 5
+        },
+        "grief-support": {
+          "rating": 4
+        },
+        "chronic-illness": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 3
+        }
+      },
+      "research_support": "Peer support has been shown to improve recovery, reduce relapse rates in addiction, and enhance overall well-being."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Ongoing; Time-limited (6–12 weeks)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Online/Virtual"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–120 minutes"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Recommended for facilitators"
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive; emotional intensity may be triggering for some participants.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when discussing personal issues"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Triggering of past trauma if not well-facilitated"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active suicidal ideation requiring one-on-one intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Individuals unwilling to participate in group sharing",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Psychotherapy, Community support",
+        "key_techniques": [
+          "Supportive interventions",
+          "Group-based care"
+        ],
+        "session_structure": {
+          "pre_session": "Orientation, ground rules, and confidentiality agreements.",
+          "during_session": "Group discussion, shared experiences, and mutual support.",
+          "post_session": "Reflections, goal setting, and follow-up encouragement."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists for professionally led groups",
+            "Experienced peers for peer-led groups (e.g., AA sponsors)"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -231,6 +323,20 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/26168082/"
         }
       ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kelly, J. F., et al. (2020). Alcoholics Anonymous and 12-step facilitation treatments for alcohol use disorder.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32237214/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Shear, M. K. (2015). Complicated grief treatment and support groups.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26168082/"
     }
   ],
   "seo": {

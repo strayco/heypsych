@@ -1,85 +1,179 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "photobiomodulation",
-  "type": "interventional",
-  "name": "Photobiomodulation (PBM) Therapy",
-  "summary": "A non-invasive light therapy that uses red or near-infrared light to stimulate cellular activity, reduce inflammation, and promote tissue repair.",
-  "description": "Photobiomodulation (PBM), also known as low-level laser therapy (LLLT) or red light therapy, is a non-invasive technique that uses specific wavelengths of red and near-infrared light to influence cellular metabolism. The therapy is thought to act through absorption by cytochrome c oxidase in mitochondria, leading to improved ATP production, modulation of reactive oxygen species, and upregulation of signaling pathways that promote healing and reduce inflammation. PBM is used across a variety of medical fields including neurology, psychiatry, dermatology, and rehabilitation medicine.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "photobiomodulation",
-    "red-light-therapy",
-    "LLLT",
-    "neurorehabilitation",
-    "neuromodulation"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "photobiomodulation",
+    "name": "Photobiomodulation (PBM) Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
     "intervention_types": [
       "Light-based neuromodulation"
     ],
-    "treatment_types": [
-      "Non-invasive device therapy"
-    ],
-    "categories": [
-      "Neurology",
-      "Pain Management",
-      "Rehabilitation",
-      "Psychiatry"
-    ],
-    "delivery_methods": [
-      "LED or laser light devices delivering red/near-infrared light to target areas"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "10–30 minutes",
-    "treatment_duration": [
-      "2–5 sessions per week for 4–12 weeks depending on condition"
-    ],
-    "specialty_areas": [
-      "Neurology",
-      "Physical Medicine & Rehabilitation",
-      "Integrative Psychiatry",
-      "Dermatology"
+    "tags": [
+      "photobiomodulation",
+      "red-light-therapy",
+      "LLLT",
+      "neurorehabilitation",
+      "neuromodulation"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Chronic pain syndromes",
-      "Traumatic brain injury (mild-to-moderate)",
-      "Neurorehabilitation after stroke"
-    ],
-    "conditions_treated": [
-      "Chronic musculoskeletal pain",
-      "Neuropathic pain",
-      "Post-stroke motor dysfunction",
-      "Mild traumatic brain injury",
-      "Depression (emerging evidence)"
-    ],
-    "off_label_uses": [
-      "Cognitive decline and dementia",
-      "Migraine prophylaxis",
-      "Sleep disorders"
-    ],
-    "contraindications": [
-      "Active cancer at treatment site",
-      "Direct irradiation of eyes",
-      "Photosensitivity disorders",
-      "Pregnancy (relative, safety not well established)"
-    ],
-    "safety_profile": "Generally safe with minimal side effects; mild warmth, redness, or temporary headache may occur. Avoid direct eye exposure.",
-    "evidence_level": "Moderate and growing; supported in pain management and rehabilitation, with emerging evidence in psychiatry and neurology.",
-    "research_support": "Numerous clinical and preclinical studies support benefits in pain, inflammation, and neuroplasticity. Large RCTs are still needed for psychiatric indications.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "pain_management": 4,
-      "neurorehabilitation": 3,
-      "psychiatric_applications": 2
+  "summary": "A non-invasive light therapy that uses red or near-infrared light to stimulate cellular activity, reduce inflammation, and promote tissue repair.",
+  "description": "Photobiomodulation (PBM), also known as low-level laser therapy (LLLT) or red light therapy, is a non-invasive technique that uses specific wavelengths of red and near-infrared light to influence cellular metabolism. The therapy is thought to act through absorption by cytochrome c oxidase in mitochondria, leading to improved ATP production, modulation of reactive oxygen species, and upregulation of signaling pathways that promote healing and reduce inflammation. PBM is used across a variety of medical fields including neurology, psychiatry, dermatology, and rehabilitation medicine.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "chronic-pain-syndromes",
+          "condition_name": "Chronic pain syndromes",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "traumatic-brain-injury-mild-to-moderate",
+          "condition_name": "Traumatic brain injury (mild-to-moderate)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neurorehabilitation-after-stroke",
+          "condition_name": "Neurorehabilitation after stroke",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "chronic-musculoskeletal-pain",
+          "condition_name": "Chronic musculoskeletal pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "neuropathic-pain",
+          "condition_name": "Neuropathic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-stroke-motor-dysfunction",
+          "condition_name": "Post-stroke motor dysfunction",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "mild-traumatic-brain-injury",
+          "condition_name": "Mild traumatic brain injury",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression-emerging-evidence",
+          "condition_name": "Depression (emerging evidence)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-decline-and-dementia",
+          "condition_name": "Cognitive decline and dementia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "migraine-prophylaxis",
+          "condition_name": "Migraine prophylaxis",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "sleep-disorders",
+          "condition_name": "Sleep disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate and growing; supported in pain management and rehabilitation, with emerging evidence in psychiatry and neurology.",
+      "efficacy_ratings": {
+        "pain_management": {
+          "rating": 4
+        },
+        "neurorehabilitation": {
+          "rating": 3
+        },
+        "psychiatric_applications": {
+          "rating": 2
+        }
+      },
+      "research_support": "Numerous clinical and preclinical studies support benefits in pain, inflammation, and neuroplasticity. Large RCTs are still needed for psychiatric indications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "2–5 sessions per week for 4–12 weeks depending on condition"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "LED or laser light devices delivering red/near-infrared light to target areas"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "10–30 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe with minimal side effects; mild warmth, redness, or temporary headache may occur. Avoid direct eye exposure.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild redness at treatment site"
+        },
+        {
+          "effect": "Temporary headache"
+        },
+        {
+          "effect": "Warmth or tingling"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Photosensitive reactions"
+        },
+        {
+          "risk": "Worsening of symptoms if overdosed (biphasic dose response)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Direct irradiation of the eyes",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Active cancerous lesions in treatment area",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy (safety data insufficient)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Photosensitivity due to medications or medical conditions",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid due to insufficient safety data."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light-based neuromodulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Target area (scalp, joint, or skin) exposed to PBM device.\nDevice delivers red (600–700 nm) or near-infrared (800–1100 nm) light.\nTreatment parameters include wavelength, power density, pulse frequency, and duration tailored to indication."
+      }
     }
   },
   "sections": [
@@ -254,6 +348,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Hamblin MR. Mechanisms and applications of photobiomodulation in neuroscience. Brain. (2016).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26889958/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Chow RT, et al. Efficacy of low-level laser therapy in pain and rehabilitation. Lancet. (2009).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19682727/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Salehpour F, et al. Transcranial photobiomodulation therapy for neurorehabilitation. J Biophotonics. (2019).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30569605/"
+    }
+  ],
   "seo": {
     "title": "Photobiomodulation (PBM) Therapy | Red & Near-Infrared Light Treatment",
     "description": "Photobiomodulation (red/near-infrared light therapy) for pain, neurorehabilitation, and emerging psychiatric applications. Evidence, protocols, and safety.",
@@ -266,5 +380,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate and growing; supported in pain management and rehabilitation, with emerging evidence in psychiatry and neurology."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate and growing; supported in pain management and rehabilitation, with emerging evidence in psychiatry and neurology."
+    ]
   }
 }

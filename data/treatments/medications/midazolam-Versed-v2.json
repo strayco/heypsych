@@ -1,106 +1,258 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "midazolam-versed-nayzilam",
-  "type": "medication",
-  "name": "Midazolam (Versed, Nayzilam)",
-  "summary": "Ultra–fast-acting benzodiazepine used for rapid calming, procedural anxiety relief, and short-term sedation. Works in minutes, but carries serious respiratory depression risk—especially with opioids or other sedatives—and is meant for monitored settings.",
-  "description": "Midazolam is a short-acting benzodiazepine that can shut down severe agitation and panic-fast anxiety in minutes, depending on the route (IV is the quickest). It can also cause deep sedation, breathing suppression, and even respiratory arrest—especially when combined with opioids, alcohol, or other sedatives. This is not a “daily anxiety med.” It’s a monitored, short-term tool used when speed and control matter.",
-  "patient_summary": "Midazolam works fast—sometimes within minutes—to calm severe agitation or procedural anxiety, but it can also slow breathing and cause dangerous sedation. Mixing it with opioids, alcohol, or other sedatives can be fatal. It’s typically used in hospitals, ambulatory procedure centers, or supervised settings with monitoring and rescue equipment available.",
-  "category": "medications/acute-agitation",
-  "metadata": {
+  "identity": {
+    "slug": "midazolam-versed-nayzilam",
+    "name": "Midazolam (Versed, Nayzilam)",
+    "generic_name": "midazolam",
+    "brand_names": [
+      "Versed",
+      "Nayzilam",
+      "Seizalam"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/acute-agitation",
     "drug_classes": [
       "Benzodiazepine",
       "GABA-A Receptor Modulator",
       "Sedative-Hypnotic",
       "Anxiolytic"
-    ],
-    "brand_names": [
-      "Versed",
-      "Nayzilam",
-      "Seizalam"
-    ],
-    "administration_routes": [
-      "Intravenous (IV)",
-      "Intramuscular (IM)",
-      "Intranasal",
-      "Oral",
-      "Subcutaneous (SUBQ) (specialty settings)",
-      "Buccal (off-label using injectable solution)",
-      "Rectal (off-label using injectable solution)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1985,
-    "pharmacologic_category": "Benzodiazepine, Short-Acting",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Acute severe agitation (rapid tranquilization, monitored setting)",
-      "Procedural anxiety (short-term anxiolysis with monitoring)",
-      "Short-term ICU sedation (intubated/mechanically ventilated patients)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "acute-agitation",
-        "relationship": "off_label",
-        "context": "Used for rapid calming when agitation is severe, unsafe, or escalating and a fast-onset benzodiazepine is clinically appropriate. Monitoring is essential due to respiratory depression risk."
-      },
-      {
-        "slug": "procedural-anxiety",
-        "relationship": "off_label",
-        "context": "Used as a short-term anxiolytic for procedures when immediate relief is needed and monitoring/resuscitation resources are available."
-      },
-      {
-        "slug": "icu-sedation",
-        "relationship": "primary_treatment",
-        "context": "Used for sedation of intubated and mechanically ventilated patients as part of critical care management. Many ICUs prefer non-benzodiazepine sedation when feasible due to delirium and prolonged sedation risk, but midazolam remains a common alternative or adjunct."
-      },
-      {
-        "slug": "substance-withdrawal",
-        "relationship": "off_label",
-        "context": "Sometimes used as an alternative benzodiazepine in severe withdrawal-related agitation when other options are unavailable, typically in monitored settings."
-      },
-      {
-        "slug": "palliative-sedation",
-        "relationship": "off_label",
-        "context": "Used in refractory anxiety/agitation at end of life under experienced palliative care supervision, often alongside opioids and other symptom-targeted meds."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to midazolam or any component of the formulation",
-      "Acute narrow-angle glaucoma",
-      "Intrathecal or epidural administration of parenteral forms containing preservatives (eg, benzyl alcohol)",
-      "Use in premature infants for parenteral forms containing benzyl alcohol",
-      "Concurrent use of oral midazolam with specific HIV protease inhibitor regimens (clinically significant CYP3A interaction risk)",
-      "Concurrent use of oral or injectable midazolam with fosamprenavir (per labeling warnings for significant interaction risk)"
-    ],
-    "efficacy_response": {
-      "metric": "Not applicable for a single psychiatric efficacy metric",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Midazolam is chosen for speed and controllability, not for long-term psychiatric symptom control. In real-world monitored settings, it’s typically effective at quickly reducing dangerous agitation or procedure-related panic, but the tradeoff is higher sedation and breathing-risk—especially when combined with other depressants.",
-      "citation_tag": "FDA labeling (midazolam injection; Nayzilam; Seizalam)"
+  "summary": "Ultra–fast-acting benzodiazepine used for rapid calming, procedural anxiety relief, and short-term sedation. Works in minutes, but carries serious respiratory depression risk—especially with opioids or other sedatives—and is meant for monitored settings.",
+  "description": "Midazolam is a short-acting benzodiazepine that can shut down severe agitation and panic-fast anxiety in minutes, depending on the route (IV is the quickest). It can also cause deep sedation, breathing suppression, and even respiratory arrest—especially when combined with opioids, alcohol, or other sedatives. This is not a “daily anxiety med.” It’s a monitored, short-term tool used when speed and control matter.",
+  "patient_summary": "Midazolam works fast—sometimes within minutes—to calm severe agitation or procedural anxiety, but it can also slow breathing and cause dangerous sedation. Mixing it with opioids, alcohol, or other sedatives can be fatal. It’s typically used in hospitals, ambulatory procedure centers, or supervised settings with monitoring and rescue equipment available.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "icu-sedation",
+          "condition_name": "Icu Sedation",
+          "relationship": "primary_indication",
+          "context": "Used for sedation of intubated and mechanically ventilated patients as part of critical care management. Many ICUs prefer non-benzodiazepine sedation when feasible due to delirium and prolonged sedation risk, but midazolam remains a common alternative or adjunct.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "off_label",
+          "context": "Used for rapid calming when agitation is severe, unsafe, or escalating and a fast-onset benzodiazepine is clinically appropriate. Monitoring is essential due to respiratory depression risk."
+        },
+        {
+          "condition_slug": "procedural-anxiety",
+          "condition_name": "Procedural Anxiety",
+          "relationship": "off_label",
+          "context": "Used as a short-term anxiolytic for procedures when immediate relief is needed and monitoring/resuscitation resources are available."
+        },
+        {
+          "condition_slug": "substance-withdrawal",
+          "condition_name": "Substance Withdrawal",
+          "relationship": "off_label",
+          "context": "Sometimes used as an alternative benzodiazepine in severe withdrawal-related agitation when other options are unavailable, typically in monitored settings."
+        },
+        {
+          "condition_slug": "palliative-sedation",
+          "condition_name": "Palliative Sedation",
+          "relationship": "off_label",
+          "context": "Used in refractory anxiety/agitation at end of life under experienced palliative care supervision, often alongside opioids and other symptom-targeted meds."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (route-dependent); intranasal and oral absorb quickly, IV is immediate delivery",
-      "bioavailability": "Oral: ~40-50%; Intranasal (nasal spray): ~44%; IM: >90% (approximate, route-specific variability)",
-      "onset": "IV: 1-5 minutes; IM (adults): ~15 minutes; Oral: ~10-20 minutes; Intranasal (spray): within ~10 minutes",
-      "peak_plasma": "IV peak effect ~3-5 minutes; IM adults peak effect ~30-60 minutes; Intranasal spray peak effect ~30 minutes (route-dependent)",
-      "half_life": "Adults: ~3 hours (range ~1.8-6.4 hours), prolonged in older adults, obesity, cirrhosis, and critical illness",
-      "duration_IR": "Typically short; sedation effects may last minutes to a couple hours depending on route, dose, and patient factors",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism via CYP3A4 to active 1-hydroxymidazolam (and conjugates)",
-      "excretion": "Urine (primarily as glucuronide conjugates of hydroxylated metabolites)",
-      "protein_binding": "~97% (mainly albumin); free fraction increases in cirrhosis",
-      "food_effect": "Oral: slower/more variable effect with food; commonly administered on an empty stomach for procedural use"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV: 1-5 minutes; IM (adults): ~15 minutes; Oral: ~10-20 minutes; Intranasal (spray): within ~10 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intravenous (IV)",
+        "Intramuscular (IM)",
+        "Intranasal",
+        "Oral",
+        "Subcutaneous (SUBQ) (specialty settings)",
+        "Buccal (off-label using injectable solution)",
+        "Rectal (off-label using injectable solution)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Apnea / hypoventilation",
+          "incidence": "Apnea reported up to ~15% in some adult procedural/anesthesia settings (varies by setting and co-meds)",
+          "notes": "This is why monitoring matters. Midazolam can suppress breathing—risk climbs with opioids, alcohol, sleep meds, or underlying lung/sleep apnea problems."
+        },
+        {
+          "effect": "Bradypnea / decreased tidal volume",
+          "incidence": "Reported in adults in some monitored settings; highly dose- and context-dependent",
+          "notes": "Even if you feel calm, your breathing can slow more than you realize. Clinicians watch oxygen saturation and respiratory rate closely."
+        },
+        {
+          "effect": "Drowsiness / prolonged sedated state",
+          "incidence": "Common; intranasal drowsiness reported around ~9-10% in some populations",
+          "notes": "Some people feel calm but functional. Others get knocked out. Response is extremely individualized."
+        },
+        {
+          "effect": "Nasal discomfort (intranasal)",
+          "incidence": "Common for intranasal products (burning/irritation can occur)",
+          "notes": "Intranasal midazolam can sting. Using an atomizer and minimizing volume can help. Some clinicians use intranasal lidocaine first in select cases."
+        },
+        {
+          "effect": "Nausea / vomiting",
+          "incidence": "Vomiting reported up to ~11% in some pediatric settings",
+          "notes": "Not everyone gets this, but it’s common enough that teams watch for aspiration risk when sedation is deeper."
+        },
+        {
+          "effect": "Agitation / paradoxical reaction",
+          "incidence": "Uncommon (reported in small percentages), but clinically important",
+          "notes": "Rarely, benzodiazepines can flip the script and make someone more agitated, combative, or disinhibited—especially with poor dosing, hypoxia, or certain risk factors."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression or respiratory arrest (medical emergency), especially with opioids, alcohol, or other CNS depressants"
+        },
+        {
+          "risk": "Cardiac arrest or severe hypotension in vulnerable patients (risk increases with rapid administration, critical illness, or opioid co-use)"
+        },
+        {
+          "risk": "Severe oversedation with airway obstruction, hypoxia, and potential brain injury if not rapidly recognized"
+        },
+        {
+          "risk": "Severe withdrawal reactions (including seizures) after frequent/repeated use with abrupt discontinuation"
+        },
+        {
+          "risk": "Suicidal ideation warning exists for some antiseizure-labeled contexts; any new/worsening mood or behavioral change should be taken seriously and evaluated promptly"
+        }
+      ],
+      "black_box_warning": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death. Reserve combined use for patients where alternatives are inadequate. Use the minimum effective dose and duration, and monitor closely for respiratory depression and sedation.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to midazolam or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute narrow-angle glaucoma"
+        },
+        {
+          "contraindication": "Intrathecal or epidural administration of parenteral forms containing preservatives (eg, benzyl alcohol)"
+        },
+        {
+          "contraindication": "Use in premature infants for parenteral forms containing benzyl alcohol"
+        },
+        {
+          "contraindication": "Concurrent use of oral midazolam with specific HIV protease inhibitor regimens (clinically significant CYP3A interaction risk)"
+        },
+        {
+          "contraindication": "Concurrent use of oral or injectable midazolam with fosamprenavir (per labeling warnings for significant interaction risk)"
+        }
+      ],
+      "precautions": [
+        "Profound sedation and respiratory arrest have been reported, especially when used outside critical care without proper monitoring and rescue capability",
+        "Airway obstruction, oxygen desaturation, hypoxia, and apnea can occur—risk rises sharply with other CNS depressants (opioids, alcohol, sedating antihistamines, sleep meds)",
+        "Midazolam should be used only where continuous respiratory/cardiac monitoring is available (eg, pulse oximetry) and resuscitation equipment/personnel can respond immediately",
+        "Abuse, misuse, addiction: benzodiazepines carry real overdose/death risk, especially with alcohol, opioids, or illicit substances",
+        "Dependence and withdrawal: repeated or prolonged use can cause physical dependence; abrupt stopping can trigger dangerous withdrawal (including seizures)",
+        "Neonates: rapid IV administration can cause severe hypotension and seizures (risk increases with fentanyl co-use)",
+        "High-risk groups: older adults, COPD/sleep apnea, severe illness, cirrhosis, obesity, and anyone on other sedatives"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (fentanyl, oxycodone, hydrocodone, morphine, etc.)",
+          "mechanism": "Profound sedation, respiratory depression, coma, death (boxed warning).",
+          "action": "Avoid when possible. If required, use the lowest doses for the shortest time with close monitoring and immediate rescue capability."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Dangerous additive CNS depression with high overdose risk.",
+          "action": "Do not combine."
+        },
+        {
+          "interactant": "Other CNS depressants (sleep meds, sedating antihistamines, muscle relaxants, antipsychotics used for sedation, gabapentinoids, cannabis in some users)",
+          "mechanism": "Sedation stacks. Breathing risk rises. Confusion and falls increase.",
+          "action": "Reduce doses, avoid unnecessary combinations, and monitor closely—especially in older adults and those with sleep apnea/COPD."
+        },
+        {
+          "interactant": "Strong CYP3A4 inhibitors (certain azole antifungals, macrolides, some antivirals/protease inhibitors)",
+          "mechanism": "Markedly increased midazolam exposure and prolonged sedation/respiratory depression.",
+          "action": "Avoid high-risk combinations. Some protease inhibitor combinations are contraindicated with oral midazolam per labeling."
+        },
+        {
+          "interactant": "CYP3A4 inducers (eg, certain anticonvulsants, rifampin, St. John’s wort)",
+          "mechanism": "Reduced effect and unpredictable response; may lead to dose escalation attempts that increase risk.",
+          "action": "Avoid when possible; if used, expect variability and use cautious titration."
+        },
+        {
+          "interactant": "Grapefruit juice (oral midazolam)",
+          "mechanism": "Increased serum concentrations and stronger/prolonged sedation.",
+          "action": "Avoid grapefruit products with oral formulations."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Level of sedation and clinical effect: target light sedation when possible; use a scoring system in ICU settings (eg, RASS) alongside bedside assessment"
+        },
+        {
+          "parameter": "Respiratory status: respiratory rate, depth, airway patency, oxygen saturation (continuous pulse oximetry when sedating), and signs of apnea or obstruction"
+        },
+        {
+          "parameter": "Cardiovascular status: heart rate and blood pressure; watch for hypotension, especially with rapid administration, pediatric patients, or opioid co-use"
+        },
+        {
+          "parameter": "Medication stacking risk: actively review opioids, alcohol exposure, sleep meds, sedating antihistamines, antipsychotics used for sedation, gabapentinoids, and other CNS depressants"
+        },
+        {
+          "parameter": "High-risk populations: older adults, sleep apnea/COPD, severe illness, cirrhosis, renal failure, obesity, and pediatric patients need tighter monitoring and slower titration"
+        },
+        {
+          "parameter": "Withdrawal risk (repeated/frequent dosing or infusions): watch for rebound agitation, tremor, insomnia, autonomic symptoms, and seizures during down-titration"
+        },
+        {
+          "parameter": "Safety readiness: ensure immediate access to airway equipment and trained personnel whenever midazolam is used for sedation/anxiolysis in monitored settings"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Midazolam crosses the placenta. Benzodiazepine exposure late in pregnancy can cause neonatal sedation (hypotonia, lethargy, respiratory depression) and/or neonatal withdrawal symptoms. For procedures, medically necessary care should not be withheld, but risk-benefit should be deliberate, and prolonged/repeated exposures in late pregnancy raise additional developmental concerns. If exposure occurs, newborn monitoring is important.",
+        "lactation": "Midazolam and metabolites can appear in breast milk, usually at very low levels after single doses. Breastfeeding may be acceptable in many cases once the parent is awake, stable, and alert; some guidance suggests waiting at least 4 hours after a procedural dose before resuming breastfeeding when feasible. Monitor infants for sedation, poor feeding, and poor weight gain.",
+        "pediatric": "Pediatric patients—especially infants—are more vulnerable to airway obstruction and hypoventilation. Dosing is weight-based and must be titrated slowly with careful monitoring. Upper-airway procedures increase desaturation risk. Some pediatric patients experience paradoxical agitation.",
+        "geriatric": "Older adults have higher risk of hypoventilation, airway obstruction, delirium, falls, fractures, and prolonged recovery. Use reduced doses, slower titration, and avoid oral midazolam when possible. Consider alternatives when clinically appropriate.",
+        "renal_impairment": "No routine initial dose adjustment is typically required for single/intermittent use, but active metabolites can accumulate in severe kidney impairment and critical illness—especially with continuous infusions—leading to prolonged sedation. Use caution, longer intervals for intermittent dosing, and slower titration for infusions.",
+        "hepatic_impairment": "In cirrhosis, clearance drops and half-life increases substantially. Use the lowest effective dose, avoid repeat dosing when possible, and avoid continuous infusion unless benefits clearly outweigh risks. Intranasal/buccal use is often avoided in significant cirrhosis unless absolutely necessary and closely monitored."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1985
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (route-dependent); intranasal and oral absorb quickly, IV is immediate delivery",
+          "bioavailability": "Oral: ~40-50%; Intranasal (nasal spray): ~44%; IM: >90% (approximate, route-specific variability)",
+          "peak_plasma": "IV peak effect ~3-5 minutes; IM adults peak effect ~30-60 minutes; Intranasal spray peak effect ~30 minutes (route-dependent)",
+          "half_life": "Adults: ~3 hours (range ~1.8-6.4 hours), prolonged in older adults, obesity, cirrhosis, and critical illness",
+          "metabolism": "Extensive hepatic metabolism via CYP3A4 to active 1-hydroxymidazolam (and conjugates)",
+          "excretion": "Urine (primarily as glucuronide conjugates of hydroxylated metabolites)",
+          "protein_binding": "~97% (mainly albumin); free fraction increases in cirrhosis",
+          "food_effect": "Oral: slower/more variable effect with food; commonly administered on an empty stomach for procedural use"
+        },
+        "dosing": {
+          "titration": "Midazolam dosing is highly individualized. In psychiatry-adjacent use, it’s mainly about rapid control (agitation/anxiety) with careful titration and real monitoring. Exact dosing depends on route, age, medical fragility, and what else is on board (especially opioids)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Midazolam is often used intermittently, but withdrawal becomes a real problem when it’s used repeatedly or as a continuous infusion (especially in ICU care). If someone has been getting midazolam frequently, stopping abruptly can trigger dangerous withdrawal, including seizures."
+        }
+      }
     }
   },
   "sections": [
@@ -121,7 +273,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Because midazolam is used in “fast + monitored” situations, the experience tends to be intense and short. Here’s what people commonly describe:",
       "items": [
         {
           "category": "Rapid Calm (minutes)",
@@ -158,7 +309,8 @@
           ],
           "note": "Paradoxical agitation can happen, especially in pediatric/adolescent patients, older adults, or people with certain substance use or personality vulnerabilities."
         }
-      ]
+      ],
+      "intro": "Because midazolam is used in “fast + monitored” situations, the experience tends to be intense and short. Here’s what people commonly describe:"
     },
     {
       "type": "onset_duration",
@@ -176,10 +328,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Midazolam is not about long-term symptom relief—it’s about fast, controllable sedation/anxiolysis when a situation demands immediate stabilization. When titrated carefully in a monitored setting, it’s typically effective for rapid calming. The clinical downside is the same thing that makes it useful: it can push into deep sedation and suppress breathing, especially when combined with opioids or other sedatives.",
       "metric": "Clinical goal: rapid calming / short-term sedation",
       "value": "Minutes-to-effect when properly dosed and monitored",
       "comparison": "Not applicable for this medication.",
-      "text": "Midazolam is not about long-term symptom relief—it’s about fast, controllable sedation/anxiolysis when a situation demands immediate stabilization. When titrated carefully in a monitored setting, it’s typically effective for rapid calming. The clinical downside is the same thing that makes it useful: it can push into deep sedation and suppress breathing, especially when combined with opioids or other sedatives.",
       "clinical_details": "Effectiveness is judged in real time: level of agitation, ability to cooperate with care, procedural tolerance, and sedation scoring (when applicable). Because patient factors (age, body composition, liver function, concurrent meds) drastically change response, midazolam must be individualized and titrated slowly—especially with IV dosing.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -269,7 +421,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Midazolam is a major CYP3A4 substrate and a powerful CNS depressant. The biggest dangers are additive sedation and breathing suppression.",
       "items": [
         {
           "with": "Opioids (fentanyl, oxycodone, hydrocodone, morphine, etc.)",
@@ -301,7 +452,8 @@
           "risk": "Increased serum concentrations and stronger/prolonged sedation.",
           "action": "Avoid grapefruit products with oral formulations."
         }
-      ]
+      ],
+      "intro": "Midazolam is a major CYP3A4 substrate and a powerful CNS depressant. The biggest dangers are additive sedation and breathing suppression."
     },
     {
       "type": "tapering",
@@ -383,21 +535,6 @@
       "text": "Midazolam isn’t a first-line medication for everyday anxiety, insomnia, or panic disorder management. It lives in the “urgent stabilization” lane: severe agitation, procedure-related panic, and ICU sedation where speed matters and monitoring is available. If someone needs ongoing anxiety treatment, the long-term plan usually involves therapy and non-benzodiazepine medications, not repeated midazolam."
     }
   ],
-  "seo": {
-    "title": "Midazolam (Versed, Nayzilam): Rapid Calm, Dosing, Side Effects & Safety",
-    "description": "Midazolam for acute agitation, procedural anxiety, and short-term ICU sedation: how fast it works, dosing by setting/route, common side effects (amnesia, sedation), and serious risks (respiratory depression—especially with opioids or alcohol).",
-    "canonical": "[https://www.heypsych.com/treatments/midazolam-versed-nayzilam](https://www.heypsych.com/treatments/midazolam-versed-nayzilam)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is midazolam an “anxiety medication” like Xanax?",
@@ -443,5 +580,20 @@
       "q": "How long do the effects last?",
       "a": "Often the noticeable sedating effects are relatively short, but the ‘hangover’ can last longer depending on dose, route, age, liver function, critical illness, and other medications. Some people are back quickly; others feel foggy or sedated for much longer—especially older adults or ICU patients."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Midazolam (Versed, Nayzilam): Rapid Calm, Dosing, Side Effects & Safety",
+    "description": "Midazolam for acute agitation, procedural anxiety, and short-term ICU sedation: how fast it works, dosing by setting/route, common side effects (amnesia, sedation), and serious risks (respiratory depression—especially with opioids or alcohol).",
+    "canonical": "[https://www.heypsych.com/treatments/midazolam-versed-nayzilam](https://www.heypsych.com/treatments/midazolam-versed-nayzilam)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

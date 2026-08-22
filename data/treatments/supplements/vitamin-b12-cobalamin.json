@@ -1,21 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-b12-cobalamin",
-  "type": "supplement",
-  "name": "Vitamin B12 (Cobalamin)",
-  "summary": "Vitamin B12, or cobalamin, is an essential water-soluble vitamin required for red blood cell formation, neurological function, and DNA synthesis. Deficiency can lead to megaloblastic anemia and irreversible neurological damage.",
-  "description": "Vitamin B12 is unique among vitamins as it contains cobalt and is found naturally only in animal-derived foods. It is essential for methylation reactions, homocysteine metabolism, and myelin synthesis. Deficiency is common in strict vegans, older adults with malabsorption, and patients with pernicious anemia. Treatment often requires high-dose oral supplementation or intramuscular injections. Active forms include methylcobalamin and adenosylcobalamin, while cyanocobalamin is a common supplemental form.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "B-complex",
-    "anemia",
-    "neuropathy",
-    "methylation"
-  ],
-  "metadata": {
-    "compound_type": "Water-soluble vitamin",
-    "natural_source": "Animal products (meat, fish, eggs, dairy), fortified cereals",
+  "identity": {
+    "slug": "vitamin-b12-cobalamin",
+    "name": "Vitamin B12 (Cobalamin)",
+    "generic_name": "vitamin b12",
+    "brand_names": [
+      "Cyanocobalamin",
+      "Methylcobalamin",
+      "Hydroxocobalamin",
+      "Nascobal"
+    ],
+    "aliases": [
+      "Hydroxocobalamin",
+      "Adenosylcobalamin"
+    ],
+    "wikidata_qid": "Q187706"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Nutrition",
       "Hematology",
@@ -26,81 +30,170 @@
       "Methylation",
       "Myelin synthesis"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular",
-      "Sublingual"
-    ],
-    "prescription_status": "Available OTC and by prescription",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Cyanocobalamin",
-      "Methylcobalamin",
-      "Hydroxocobalamin",
-      "Nascobal"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Nutrition",
-      "Hematology",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q187706"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Vitamin B12 deficiency and pernicious anemia",
-      "Megaloblastic anemia",
-      "Neuropathy due to B12 deficiency"
-    ],
-    "off_label_uses": [
-      "Adjunct in cognitive decline and dementia",
-      "Adjunct in depression",
-      "Supportive therapy in fatigue"
-    ],
-    "contraindications": [
-      "Hypersensitivity to cobalamin",
-      "Caution with Leber hereditary optic neuropathy (risk of worsening vision loss)"
-    ],
-    "monitoring_required": [
-      "CBC",
-      "Serum B12 levels",
-      "Methylmalonic acid and homocysteine levels"
-    ],
-    "efficacy_rating": {
-      "deficiency treatment": 5,
-      "pernicious anemia": 5,
-      "neuropathy (deficiency-related)": 4,
-      "cognitive decline": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin B12",
-      "Cobalamin",
-      "Cyanocobalamin",
-      "Methylcobalamin"
-    ],
-    "synonyms": [
-      "Hydroxocobalamin",
-      "Adenosylcobalamin"
-    ],
-    "common_misspellings": [
-      "cobolamin",
-      "cobalmine",
-      "vit b12"
+    "tags": [
+      "vitamin",
+      "B-complex",
+      "anemia",
+      "neuropathy",
+      "methylation"
     ]
+  },
+  "summary": "Vitamin B12, or cobalamin, is an essential water-soluble vitamin required for red blood cell formation, neurological function, and DNA synthesis. Deficiency can lead to megaloblastic anemia and irreversible neurological damage.",
+  "description": "Vitamin B12 is unique among vitamins as it contains cobalt and is found naturally only in animal-derived foods. It is essential for methylation reactions, homocysteine metabolism, and myelin synthesis. Deficiency is common in strict vegans, older adults with malabsorption, and patients with pernicious anemia. Treatment often requires high-dose oral supplementation or intramuscular injections. Active forms include methylcobalamin and adenosylcobalamin, while cyanocobalamin is a common supplemental form.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "vitamin-b12-deficiency-and-pernicious-anemia",
+          "condition_name": "Vitamin B12 deficiency and pernicious anemia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "megaloblastic-anemia",
+          "condition_name": "Megaloblastic anemia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "neuropathy-due-to-b12-deficiency",
+          "condition_name": "Neuropathy due to B12 deficiency",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunct-in-cognitive-decline-and-dementia",
+          "condition_name": "Adjunct in cognitive decline and dementia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-in-depression",
+          "condition_name": "Adjunct in depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "supportive-therapy-in-fatigue",
+          "condition_name": "Supportive therapy in fatigue",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency treatment": {
+          "rating": 5
+        },
+        "pernicious anemia": {
+          "rating": 5
+        },
+        "neuropathy (deficiency-related)": {
+          "rating": 4
+        },
+        "cognitive decline": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular",
+        "Sublingual"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Injection site pain"
+        },
+        {
+          "effect": "Mild diarrhea"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypersensitivity reaction"
+        },
+        {
+          "risk": "Hypokalemia during initial treatment of severe anemia"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to cobalamin"
+        },
+        {
+          "contraindication": "Caution with Leber hereditary optic neuropathy (risk of worsening vision loss)"
+        }
+      ],
+      "precautions": [
+        "High doses are generally safe, but caution is advised in patients with Leber optic atrophy.",
+        "Monitor potassium levels in severe megaloblastic anemia during treatment."
+      ],
+      "interactions": [
+        {
+          "interactant": "Metformin",
+          "mechanism": "Decreases B12 absorption",
+          "action": "Monitor and supplement"
+        },
+        {
+          "interactant": "Proton pump inhibitors",
+          "mechanism": "Reduced gastric absorption",
+          "action": "Consider higher doses or IM administration"
+        },
+        {
+          "interactant": "Chloramphenicol",
+          "mechanism": "May interfere with hematologic response",
+          "action": "Monitor CBC"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "CBC response"
+        },
+        {
+          "parameter": "Serum B12 levels"
+        },
+        {
+          "parameter": "Methylmalonic acid"
+        },
+        {
+          "parameter": "Homocysteine levels"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at recommended doses; often included in prenatal vitamins",
+        "lactation": "Safe and important for infant development",
+        "pediatric": "Safe at RDA levels; deficiency must be corrected promptly",
+        "geriatric": "Higher risk of deficiency due to malabsorption; monitoring recommended"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Water-soluble vitamin",
+        "natural_source": "Animal products (meat, fish, eggs, dairy), fortified cereals",
+        "regulatory_notes": "Approved vitamin; dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -228,6 +321,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Vitamin B12",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminB12-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "O'Leary F, Samman S. Vitamin B12 in health and disease. Nutrients. 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22254022/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Stabler SP. Clinical practice. Vitamin B12 deficiency. N Engl J Med. 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24088046/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin B12",
+      "Cobalamin",
+      "Cyanocobalamin",
+      "Methylcobalamin"
+    ],
+    "synonyms": [
+      "Hydroxocobalamin",
+      "Adenosylcobalamin"
+    ],
+    "common_misspellings": [
+      "cobolamin",
+      "cobalmine",
+      "vit b12"
+    ]
+  },
   "seo": {
     "title": "Vitamin B12 (Cobalamin) – Uses, Deficiency, Anemia, Neuropathy, Dosing",
     "description": "Vitamin B12 (Cobalamin) is essential for DNA synthesis and nerve health. Learn about deficiency, pernicious anemia, supplementation, dosing, and safety.",

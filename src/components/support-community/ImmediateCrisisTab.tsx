@@ -11,8 +11,10 @@ interface Props {
   page?: number;
 }
 
+// Pinned resources always shown at top - moved outside component to avoid dependency issues
+const PINNED_IDS = ["988-lifeline", "crisis-text-line"];
+
 export function ImmediateCrisisTab({ resources, hotlines, page = 1 }: Props) {
-  const PINNED_IDS = ["988-lifeline", "crisis-text-line"];
 
   // Pin 988 and Crisis Text Line
   const pinnedResources = useMemo(
@@ -32,11 +34,11 @@ export function ImmediateCrisisTab({ resources, hotlines, page = 1 }: Props) {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="rounded-2xl border-2 border-red-400 bg-gradient-to-r from-red-500 to-rose-600 p-6 shadow-xl"
+        className="rounded-2xl border-2 border-negative-border bg-negative p-6 shadow-xl"
       >
         <div className="text-center text-white">
           <h2 className="mb-2 text-2xl font-bold">In Crisis? Get Help Now</h2>
-          <p className="text-red-100">Free, confidential support available 24/7</p>
+          <p className="text-negative-200">Free, confidential support available 24/7</p>
         </div>
       </motion.div>
 
@@ -56,7 +58,7 @@ export function ImmediateCrisisTab({ resources, hotlines, page = 1 }: Props) {
 
       {/* A-Z Specialized Crisis Hotlines */}
       {atozHotlines.length > 0 && (
-        <div className="mt-12 border-t border-slate-200 pt-12">
+        <div className="mt-12 border-t border-separator pt-12">
           <CrisisAtoZSection hotlines={atozHotlines} page={page} />
         </div>
       )}

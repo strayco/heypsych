@@ -1,88 +1,178 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "red-light-therapy",
-  "type": "interventional",
-  "name": "Red Light Therapy",
-  "summary": "A non-invasive treatment that uses red and near-infrared wavelengths of light to stimulate cellular repair, reduce inflammation, and improve healing.",
-  "description": "Red light therapy (RLT), also known as low-level laser therapy (LLLT) or photobiomodulation, uses specific wavelengths of red and near-infrared light to stimulate mitochondrial activity and cellular repair. It is a non-invasive approach that has been studied for pain reduction, wound healing, skin rejuvenation, and neurological recovery. Unlike UV light, red light does not damage skin cells, and the therapy is generally considered safe when administered properly.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "red light therapy",
-    "photobiomodulation",
-    "low-level laser therapy",
-    "infrared therapy",
-    "light-based treatment"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "red-light-therapy",
+    "name": "Red Light Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Light-based therapy",
       "Photobiomodulation"
     ],
-    "treatment_types": [
-      "Non-invasive therapy"
-    ],
-    "categories": [
-      "Dermatology",
-      "Neurology",
-      "Rehabilitation",
-      "Pain Management"
-    ],
-    "delivery_methods": [
-      "LED devices",
-      "Low-level lasers"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "10–30 minutes",
-    "treatment_duration": [
-      "Multiple sessions, typically 2–5 times per week"
-    ],
-    "specialty_areas": [
-      "Dermatology",
-      "Physical therapy",
-      "Neurology",
-      "Aesthetic medicine"
+    "tags": [
+      "red light therapy",
+      "photobiomodulation",
+      "low-level laser therapy",
+      "infrared therapy",
+      "light-based treatment"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Wound healing",
-      "Pain reduction",
-      "Skin rejuvenation"
-    ],
-    "conditions_treated": [
-      "Chronic pain",
-      "Arthritis",
-      "Neuropathic pain",
-      "Skin aging",
-      "Wound healing",
-      "Traumatic brain injury (experimental)"
-    ],
-    "off_label_uses": [
-      "Cognitive enhancement",
-      "Mood disorders",
-      "Hair regrowth"
-    ],
-    "contraindications": [
-      "Direct eye exposure without protective eyewear",
-      "Active cancerous lesions",
-      "Photosensitive conditions"
-    ],
-    "safety_profile": "Generally safe; mild temporary redness or warmth at the treatment site may occur. Avoid direct eye exposure without protection.",
-    "evidence_level": "Moderate for pain and wound healing; emerging for neurological applications.",
-    "research_support": "Extensive preclinical and clinical research supports effects on mitochondrial function and healing.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "chronic_pain": 3,
-      "wound_healing": 4,
-      "skin_rejuvenation": 3,
-      "neurological_recovery": 2
+  "summary": "A non-invasive treatment that uses red and near-infrared wavelengths of light to stimulate cellular repair, reduce inflammation, and improve healing.",
+  "description": "Red light therapy (RLT), also known as low-level laser therapy (LLLT) or photobiomodulation, uses specific wavelengths of red and near-infrared light to stimulate mitochondrial activity and cellular repair. It is a non-invasive approach that has been studied for pain reduction, wound healing, skin rejuvenation, and neurological recovery. Unlike UV light, red light does not damage skin cells, and the therapy is generally considered safe when administered properly.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "wound-healing",
+          "condition_name": "Wound healing",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "pain-reduction",
+          "condition_name": "Pain reduction",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "skin-rejuvenation",
+          "condition_name": "Skin rejuvenation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "arthritis",
+          "condition_name": "Arthritis",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "neuropathic-pain",
+          "condition_name": "Neuropathic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "skin-aging",
+          "condition_name": "Skin aging",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "traumatic-brain-injury-experimental",
+          "condition_name": "Traumatic brain injury (experimental)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-disorders",
+          "condition_name": "Mood disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "hair-regrowth",
+          "condition_name": "Hair regrowth",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for pain and wound healing; emerging for neurological applications.",
+      "efficacy_ratings": {
+        "chronic_pain": {
+          "rating": 3
+        },
+        "wound_healing": {
+          "rating": 4
+        },
+        "skin_rejuvenation": {
+          "rating": 3
+        },
+        "neurological_recovery": {
+          "rating": 2
+        }
+      },
+      "research_support": "Extensive preclinical and clinical research supports effects on mitochondrial function and healing."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Multiple sessions, typically 2–5 times per week"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "LED devices",
+        "Low-level lasers"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "10–30 minutes"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; mild temporary redness or warmth at the treatment site may occur. Avoid direct eye exposure without protection.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild skin redness"
+        },
+        {
+          "effect": "Warmth at site"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Photosensitivity reactions in predisposed individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Direct irradiation of eyes without protection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Active skin cancer lesions",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy (use with caution)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Photosensitive medications or conditions",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; use with caution and avoid abdominal application."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light-based therapy, Photobiomodulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Patient positioned near LED panel or handheld red light device.\nDevice emits red and near-infrared light directly onto skin.\nTypical exposure lasts 10–30 minutes."
+      }
     }
   },
   "sections": [
@@ -258,6 +348,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Hamblin MR. Mechanisms and applications of the anti-inflammatory effects of photobiomodulation. AIMS Biophysics. (2017).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28989944/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Barolet D, et al. Light-emitting diode (LED) therapy in dermatology. Seminars in Cutaneous Medicine and Surgery. (2008).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19150294/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Chung H, et al. The nuts and bolts of low-level laser (light) therapy. Annals of Biomedical Engineering. (2012).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22888665/"
+    }
+  ],
   "seo": {
     "title": "Red Light Therapy | Photobiomodulation for Pain, Skin, and Healing",
     "description": "Red light therapy (LLLT/photobiomodulation) for pain relief, wound healing, and skin rejuvenation. Learn evidence, protocols, safety, and cost.",
@@ -270,5 +380,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for pain and wound healing; emerging for neurological applications."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for pain and wound healing; emerging for neurological applications."
+    ]
   }
 }

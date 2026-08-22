@@ -1,80 +1,174 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "transcranial-direct-current-stimulation",
-  "type": "interventional",
-  "name": "Transcranial Direct Current Stimulation (tDCS)",
-  "summary": "A non-invasive brain stimulation technique that applies weak electrical currents to modulate neuronal excitability and improve symptoms in depression, anxiety, and other conditions.",
-  "description": "Transcranial Direct Current Stimulation (tDCS) is a form of non-invasive neuromodulation that uses constant, low-amplitude electrical currents delivered via scalp electrodes to alter cortical excitability. Unlike TMS, it does not induce action potentials but instead modulates neuronal firing thresholds. It has been investigated for depression, anxiety, chronic pain, and cognitive enhancement. tDCS is portable, relatively inexpensive, and well tolerated, though its clinical efficacy varies by condition and stimulation protocol.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "tDCS",
-    "neuromodulation",
-    "brain stimulation",
-    "non-invasive",
-    "cognitive enhancement",
-    "depression"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "transcranial-direct-current-stimulation",
+    "name": "Transcranial Direct Current Stimulation (tDCS)",
+    "generic_name": "transcranial direct current stimulation",
+    "brand_names": [
+      "tDCS"
+    ],
+    "wikidata_qid": "Q56887451"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
     "intervention_types": [
       "Electrical neuromodulation",
       "Non-invasive brain stimulation"
     ],
-    "treatment_types": [
-      "Neurostimulation"
-    ],
-    "categories": [
-      "Neurology",
-      "Psychiatry"
-    ],
-    "delivery_methods": [
-      "Scalp electrodes"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "20–30 minutes",
-    "treatment_duration": "Typically 5–20 sessions over 2–4 weeks, sometimes with maintenance",
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Rehabilitation Medicine"
-    ],
-    "wikidata_qid": "Q56887451"
+    "tags": [
+      "tDCS",
+      "neuromodulation",
+      "brain stimulation",
+      "non-invasive",
+      "cognitive enhancement",
+      "depression"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder",
-      "Chronic pain",
-      "Stroke rehabilitation"
-    ],
-    "conditions_treated": [
-      "Depression",
-      "Anxiety",
-      "Chronic pain",
-      "Post-stroke motor deficits",
-      "Cognitive impairment"
-    ],
-    "off_label_uses": [
-      "ADHD",
-      "Schizophrenia (cognitive symptoms)",
-      "Fatigue in multiple sclerosis"
-    ],
-    "contraindications": [
-      "Epilepsy (relative)",
-      "Implanted medical devices (e.g., pacemakers, deep brain stimulators)",
-      "Open scalp wounds or lesions at electrode sites"
-    ],
-    "safety_profile": "Generally safe with mild transient side effects such as tingling, itching, or mild headache. Rare risk of skin irritation or burns with improper electrode placement.",
-    "evidence_level": "Moderate—well-studied in depression and motor rehabilitation, mixed results across other conditions.",
-    "research_support": "Dozens of RCTs support efficacy in depression and stroke recovery; evidence for other uses is less consistent.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 3,
-      "chronic_pain": 3,
-      "stroke_rehabilitation": 4
+  "summary": "A non-invasive brain stimulation technique that applies weak electrical currents to modulate neuronal excitability and improve symptoms in depression, anxiety, and other conditions.",
+  "description": "Transcranial Direct Current Stimulation (tDCS) is a form of non-invasive neuromodulation that uses constant, low-amplitude electrical currents delivered via scalp electrodes to alter cortical excitability. Unlike TMS, it does not induce action potentials but instead modulates neuronal firing thresholds. It has been investigated for depression, anxiety, chronic pain, and cognitive enhancement. tDCS is portable, relatively inexpensive, and well tolerated, though its clinical efficacy varies by condition and stimulation protocol.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stroke-rehabilitation",
+          "condition_name": "Stroke rehabilitation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-stroke-motor-deficits",
+          "condition_name": "Post-stroke motor deficits",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "cognitive-impairment",
+          "condition_name": "Cognitive impairment",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adhd",
+          "condition_name": "ADHD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "schizophrenia-cognitive-symptoms",
+          "condition_name": "Schizophrenia (cognitive symptoms)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fatigue-in-multiple-sclerosis",
+          "condition_name": "Fatigue in multiple sclerosis",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—well-studied in depression and motor rehabilitation, mixed results across other conditions.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "chronic_pain": {
+          "rating": 3
+        },
+        "stroke_rehabilitation": {
+          "rating": 4
+        }
+      },
+      "research_support": "Dozens of RCTs support efficacy in depression and stroke recovery; evidence for other uses is less consistent."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Typically 5–20 sessions over 2–4 weeks, sometimes with maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Scalp electrodes"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–30 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe with mild transient side effects such as tingling, itching, or mild headache. Rare risk of skin irritation or burns with improper electrode placement.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild scalp tingling"
+        },
+        {
+          "effect": "Itching"
+        },
+        {
+          "effect": "Redness at electrode site"
+        },
+        {
+          "effect": "Headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Skin burns (improper electrode use)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Epilepsy (relative)"
+        },
+        {
+          "contraindication": "Implanted medical devices (e.g., pacemakers, deep brain stimulators)"
+        },
+        {
+          "contraindication": "Open scalp wounds or lesions at electrode sites"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient evidence for safety; generally avoided."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Electrical neuromodulation, Non-invasive brain stimulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Current set to 1–2 mA, ramped up gradually.\nStimulation delivered for 20–30 minutes.\nSessions repeated daily or several times weekly."
+      }
     }
   },
   "sections": [
@@ -220,6 +314,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Brunoni AR, et al. Transcranial direct current stimulation for acute major depressive episodes. JAMA Psychiatry. (2017).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28346578/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Nitsche MA & Paulus W. Excitability changes induced in the human motor cortex by weak tDCS. J Physiol. (2000).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10990547/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Fregni F, et al. Transcranial direct current stimulation: State of the art 2008. Brain Stimulation. (2008).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20633386/"
+    }
+  ],
   "seo": {
     "title": "Transcranial Direct Current Stimulation (tDCS) | Non-invasive Brain Stimulation",
     "description": "Learn about transcranial direct current stimulation (tDCS), a non-invasive brain stimulation treatment for depression, chronic pain, and rehabilitation.",
@@ -232,5 +346,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—well-studied in depression and motor rehabilitation, mixed results across other conditions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—well-studied in depression and motor rehabilitation, mixed results across other conditions."
+    ]
   }
 }

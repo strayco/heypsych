@@ -1,88 +1,170 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "coherence-training",
-  "type": "interventional",
-  "name": "Coherence Training",
-  "summary": "A biofeedback-based intervention designed to improve physiological and emotional regulation by training individuals to achieve a state of heart rate variability (HRV) coherence.",
-  "description": "Coherence training, often facilitated through heart rate variability (HRV) biofeedback, teaches individuals to regulate their breathing, heart rhythms, and emotional states to achieve a state known as psychophysiological coherence. In this state, breathing, heart rate, and blood pressure patterns become synchronized, supporting improved autonomic nervous system balance.\n\nThis approach has applications in stress reduction, anxiety management, trauma recovery, and performance optimization. Sessions often use computer or wearable devices that measure HRV and provide visual or auditory feedback to guide the participant toward optimal breathing patterns (often ~6 breaths per minute).\n\nBy training consistent, rhythmic breathing and positive emotional focus, coherence training aims to enhance resilience, cognitive performance, and emotional stability.",
-  "category": "interventional/biofeedback",
-  "tags": [
-    "biofeedback",
-    "hrv",
-    "stress-reduction",
-    "emotional-regulation",
-    "coherence",
-    "performance-training"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "coherence-training",
+    "name": "Coherence Training",
+    "wikidata_qid": "Q63844250"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/biofeedback",
     "intervention_types": [
       "Biofeedback",
       "Mind-body training"
     ],
-    "treatment_types": [
-      "Non-pharmacologic",
-      "Self-regulation training"
-    ],
-    "categories": [
-      "Behavioral Medicine",
-      "Stress Management",
-      "Peak Performance"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Digital app",
-      "Wearable device"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "20–30 minutes",
-    "treatment_duration": [
-      "Short-term",
-      "Ongoing maintenance"
-    ],
-    "specialty_areas": [
-      "Psychology",
-      "Psychophysiology",
-      "Sports Performance"
-    ],
-    "wikidata_qid": "Q63844250"
+    "tags": [
+      "biofeedback",
+      "hrv",
+      "stress-reduction",
+      "emotional-regulation",
+      "coherence",
+      "performance-training"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety disorders",
-      "Stress-related disorders",
-      "Performance optimization"
-    ],
-    "conditions_treated": [
-      "Generalized anxiety disorder",
-      "Post-traumatic stress disorder",
-      "Depression (adjunctive)",
-      "Hypertension (adjunctive)",
-      "Chronic pain"
-    ],
-    "off_label_uses": [
-      "Attention-deficit/hyperactivity disorder",
-      "Sleep disturbances",
-      "Asthma self-regulation"
-    ],
-    "contraindications": [
-      "Severe psychiatric instability without concurrent care",
-      "Uncontrolled cardiac arrhythmia"
-    ],
-    "safety_profile": "Generally safe; mild dizziness or lightheadedness may occur if breathing too deeply or rapidly.",
-    "evidence_level": "Moderate for anxiety and stress-related disorders; emerging for performance enhancement.",
-    "research_support": "Multiple controlled studies support HRV biofeedback for anxiety and stress reduction; growing evidence for trauma recovery and peak performance.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "anxiety": 4,
-      "stress": 5,
-      "performance": 3
+  "summary": "A biofeedback-based intervention designed to improve physiological and emotional regulation by training individuals to achieve a state of heart rate variability (HRV) coherence.",
+  "description": "Coherence training, often facilitated through heart rate variability (HRV) biofeedback, teaches individuals to regulate their breathing, heart rhythms, and emotional states to achieve a state known as psychophysiological coherence. In this state, breathing, heart rate, and blood pressure patterns become synchronized, supporting improved autonomic nervous system balance.\n\nThis approach has applications in stress reduction, anxiety management, trauma recovery, and performance optimization. Sessions often use computer or wearable devices that measure HRV and provide visual or auditory feedback to guide the participant toward optimal breathing patterns (often ~6 breaths per minute).\n\nBy training consistent, rhythmic breathing and positive emotional focus, coherence training aims to enhance resilience, cognitive performance, and emotional stability.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "stress-related-disorders",
+          "condition_name": "Stress-related disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "performance-optimization",
+          "condition_name": "Performance optimization",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depression-adjunctive",
+          "condition_name": "Depression (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "hypertension-adjunctive",
+          "condition_name": "Hypertension (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention-deficit/hyperactivity disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "sleep-disturbances",
+          "condition_name": "Sleep disturbances",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "asthma-self-regulation",
+          "condition_name": "Asthma self-regulation",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for anxiety and stress-related disorders; emerging for performance enhancement.",
+      "efficacy_ratings": {
+        "anxiety": {
+          "rating": 4
+        },
+        "stress": {
+          "rating": 5
+        },
+        "performance": {
+          "rating": 3
+        }
+      },
+      "research_support": "Multiple controlled studies support HRV biofeedback for anxiety and stress reduction; growing evidence for trauma recovery and peak performance."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Ongoing maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Digital app",
+        "Wearable device"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–30 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; mild dizziness or lightheadedness may occur if breathing too deeply or rapidly.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild dizziness"
+        },
+        {
+          "effect": "Sleepiness post-session"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hyperventilation if breathing too rapidly"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstable cardiac conditions",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe panic disorder without concurrent therapy",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe with moderate breathing rates."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Biofeedback, Mind-body training",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Attach HRV sensor to ear clip, chest strap, or wrist device.\nFollow paced breathing cues (typically 5–6 breaths per minute).\nUse visual or auditory feedback to adjust breathing and emotional focus."
+      }
     }
   },
   "sections": [
@@ -244,6 +326,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Lehrer PM, et al. Heart rate variability biofeedback increases baroreflex gain and peak expiratory flow. Appl Psychophysiol Biofeedback. 2003;28(1):13–25.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12737054/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Tan G, et al. Efficacy of HRV biofeedback for PTSD symptoms: A pilot study. Appl Psychophysiol Biofeedback. 2011;36(1):27–35.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21213096/"
+    }
+  ],
   "seo": {
     "title": "Coherence Training with HRV Biofeedback",
     "description": "Coherence training uses heart rate variability biofeedback to enhance stress resilience, emotional regulation, and performance.",
@@ -256,5 +352,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for anxiety and stress-related disorders; emerging for performance enhancement."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for anxiety and stress-related disorders; emerging for performance enhancement."
+    ]
   }
 }

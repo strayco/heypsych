@@ -1,88 +1,215 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "naloxone-narcan",
-  "type": "medication",
-  "name": "Naloxone (Narcan)",
-  "summary": "Fast opioid antidote that can reverse an overdose in minutes. It’s a rescue med, not a treatment plan—effects can wear off before the opioid does, so emergency care is still mandatory.",
-  "description": "Naloxone is an opioid blocker used to reverse opioid overdose (slow or stopped breathing, extreme sleepiness, unresponsiveness). It can work within 2 to 5 minutes (IV/IM) or within minutes intranasally, but it doesn’t last long—people can slip back into overdose when it wears off. It can also trigger sudden, intense opioid withdrawal (agitation, vomiting, sweating, pain). Give naloxone, call 911, and stay with the person until help arrives.",
-  "patient_summary": "Naloxone is an opioid blocker used to reverse opioid overdose (slow or stopped breathing, extreme sleepiness, unresponsiveness). It can work fast, but it doesn’t last long—people can slip back into overdose when it wears off. It can also trigger sudden, intense opioid withdrawal (agitation, vomiting, sweating, pain). Give naloxone, call 911, and stay with the person until help arrives.",
-  "category": "medications/substance-use-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Opioid Antagonist",
-      "Antidote"
-    ],
+  "identity": {
+    "slug": "naloxone-narcan",
+    "name": "Naloxone (Narcan)",
+    "generic_name": "naloxone",
     "brand_names": [
       "Narcan",
       "Kloxxado",
       "Rextovy",
       "RiVive",
       "Zimhi"
-    ],
-    "administration_routes": [
-      "Intranasal",
-      "Intramuscular",
-      "Subcutaneous",
-      "Intravenous"
-    ],
-    "prescription_status": "Varies by product (some OTC intranasal products; others prescription)",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1971,
-    "pharmacologic_category": "Opioid Antagonist (Pure Antagonist)",
-    "published_date": "2026-01-26T00:00:00Z",
-    "last_updated": "2026-01-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Emergency treatment of known or suspected opioid overdose (respiratory and/or CNS depression)",
-      "Complete or partial reversal of opioid-induced respiratory depression",
-      "Diagnostic use in suspected acute opioid overdose (clinical setting)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "opioid-overdose",
-        "relationship": "emergency_rescue",
-        "context": "Naloxone is a first-line rescue medication when opioid overdose is suspected—especially when breathing is slow, shallow, or absent. It buys time, but it does not replace emergency medical care."
-      },
-      {
-        "slug": "opioid-use-disorder",
-        "relationship": "harm_reduction",
-        "context": "Naloxone is a harm-reduction tool. Many clinical guidelines recommend making naloxone available to people at risk for overdose and to family/friends likely to witness one."
-      },
-      {
-        "slug": "substance-induced-respiratory-depression",
-        "relationship": "differential",
-        "context": "Naloxone only reverses opioid-related respiratory depression. If there is no meaningful response after adequate dosing, clinicians should urgently consider other causes (non-opioid sedatives, medical illness, hypoglycemia, stroke, etc.)."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to naloxone or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Return of adequate breathing after administration",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Naloxone can rapidly reverse opioid-related slowed or stopped breathing. If the person doesn’t improve after repeated doses, it’s a major red flag that something else may be going on—or the opioid exposure is unusually potent/long-acting—so emergency care is non-negotiable.",
-      "citation_tag": "AHA Opioid-Associated Emergency Guidance; FDA labeling"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/substance-use-disorders",
+    "drug_classes": [
+      "Opioid Antagonist",
+      "Antidote"
+    ]
+  },
+  "summary": "Fast opioid antidote that can reverse an overdose in minutes. It’s a rescue med, not a treatment plan—effects can wear off before the opioid does, so emergency care is still mandatory.",
+  "description": "Naloxone is an opioid blocker used to reverse opioid overdose (slow or stopped breathing, extreme sleepiness, unresponsiveness). It can work within 2 to 5 minutes (IV/IM) or within minutes intranasally, but it doesn’t last long—people can slip back into overdose when it wears off. It can also trigger sudden, intense opioid withdrawal (agitation, vomiting, sweating, pain). Give naloxone, call 911, and stay with the person until help arrives.",
+  "patient_summary": "Naloxone is an opioid blocker used to reverse opioid overdose (slow or stopped breathing, extreme sleepiness, unresponsiveness). It can work fast, but it doesn’t last long—people can slip back into overdose when it wears off. It can also trigger sudden, intense opioid withdrawal (agitation, vomiting, sweating, pain). Give naloxone, call 911, and stay with the person until help arrives.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "emergency-treatment-of-known-or-suspected-opioid-overdose-respiratory-and-or-cns-depression",
+          "condition_name": "Emergency treatment of known or suspected opioid overdose (respiratory and/or CNS depression)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "complete-or-partial-reversal-of-opioid-induced-respiratory-depression",
+          "condition_name": "Complete or partial reversal of opioid-induced respiratory depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "diagnostic-use-in-suspected-acute-opioid-overdose-clinical-setting",
+          "condition_name": "Diagnostic use in suspected acute opioid overdose (clinical setting)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "opioid-overdose",
+          "condition_name": "Opioid Overdose",
+          "relationship": "secondary_indication",
+          "context": "Naloxone is a first-line rescue medication when opioid overdose is suspected—especially when breathing is slow, shallow, or absent. It buys time, but it does not replace emergency medical care."
+        },
+        {
+          "condition_slug": "opioid-use-disorder",
+          "condition_name": "Opioid Use Disorder",
+          "relationship": "secondary_indication",
+          "context": "Naloxone is a harm-reduction tool. Many clinical guidelines recommend making naloxone available to people at risk for overdose and to family/friends likely to witness one."
+        },
+        {
+          "condition_slug": "substance-induced-respiratory-depression",
+          "condition_name": "Substance Induced Respiratory Depression",
+          "relationship": "secondary_indication",
+          "context": "Naloxone only reverses opioid-related respiratory depression. If there is no meaningful response after adequate dosing, clinicians should urgently consider other causes (non-opioid sedatives, medical illness, hypoglycemia, stroke, etc.)."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Intranasal, IM, and SUBQ absorption can be delayed or variable (especially with poor perfusion); IV provides the fastest, most predictable effect.",
-      "bioavailability": "Intranasal bioavailability is lower than IV; product-specific performance varies by formulation and concentration.",
-      "onset": "IV ~2 minutes; IM/SUBQ ~2 to 5 minutes; intranasal ~3 to 17 minutes (varies by product and situation).",
-      "peak_plasma": "Intranasal and IM peak concentrations typically occur within ~15 to 30 minutes depending on product.",
-      "half_life": "Adults: ~0.5 to 1.5 hours (IM/IV/SUBQ); intranasal ~1.1 to 2 hours (product-dependent).",
-      "duration_IR": "~30 to 120 minutes depending on route and dose; often shorter than the opioid involved, so repeat dosing and observation are commonly required.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Primarily hepatic (glucuronidation) to inactive metabolites.",
-      "excretion": "Urine (as metabolites).",
-      "protein_binding": "Relatively weak (binds to albumin and other plasma constituents).",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV ~2 minutes; IM/SUBQ ~2 to 5 minutes; intranasal ~3 to 17 minutes (varies by product and situation)."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intranasal",
+        "Intramuscular",
+        "Subcutaneous",
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Acute opioid withdrawal",
+          "incidence": "Frequency varies (more likely in opioid-dependent patients and with higher doses)",
+          "notes": "This can feel brutal: sweating, shaking, nausea, vomiting, diarrhea, cramps, gooseflesh, yawning, agitation, anxiety, and intense body pain. It’s not “an allergy”—it’s the opioid being kicked off receptors fast."
+        },
+        {
+          "effect": "Agitation / irritability / restlessness",
+          "incidence": "Frequency not defined",
+          "notes": "Some people wake up disoriented and reactive. This is common enough that responders plan for it. Safety first."
+        },
+        {
+          "effect": "Blood pressure and heart rate changes",
+          "incidence": "Frequency not defined",
+          "notes": "Withdrawal can spike heart rate and blood pressure. In medically fragile patients, clinicians monitor closely."
+        },
+        {
+          "effect": "Nasal symptoms (intranasal products)",
+          "incidence": "Frequency not defined",
+          "notes": "Runny nose, congestion, sneezing, nasal discomfort can happen. In an overdose rescue, this is background noise compared to restoring breathing."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Recurrent respiratory depression after initial improvement (medical emergency): give another dose and get emergency help"
+        },
+        {
+          "risk": "Pulmonary edema (rare but reported): severe shortness of breath, frothy sputum, low oxygen—medical emergency"
+        },
+        {
+          "risk": "Severe agitation or violence after reversal (safety risk)"
+        },
+        {
+          "risk": "Seizures (rare; reported particularly in neonates and in specific clinical contexts)"
+        },
+        {
+          "risk": "Serious cardiovascular instability (rare): arrhythmias and other events reported after abrupt reversal in high-risk patients"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to naloxone or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Recurrence risk: Naloxone can wear off before the opioid does. Breathing problems can return and can be fatal without monitoring.",
+        "Acute opioid withdrawal: Can be sudden and severe (vomiting, diarrhea, sweating, agitation, pain, fast heart rate, high blood pressure).",
+        "Agitation/combativeness: Some people wake up confused, frightened, and reactive—keep safety in mind.",
+        "Cardiovascular risk: Abrupt reversal can stress the body; use caution in people with cardiovascular disease (rare serious events reported).",
+        "Partial agonists: Overdoses involving buprenorphine or mixed agonist/antagonists may respond incompletely and may require repeated dosing plus ventilatory support."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (any opioid agonist, including prescription opioids, heroin, fentanyl)",
+          "mechanism": "Reverses opioid effects, including pain relief; may trigger acute withdrawal in opioid-dependent people.",
+          "action": "In overdose, give naloxone and call 911. In medical settings (post-op, chronic pain), clinicians often titrate small IV doses to restore breathing without fully wiping out analgesia."
+        },
+        {
+          "interactant": "Buprenorphine and mixed agonist/antagonists (e.g., buprenorphine, pentazocine)",
+          "mechanism": "Reversal may be incomplete and may require repeated doses; ventilatory support may still be necessary.",
+          "action": "Give naloxone per protocol, repeat as needed, and prioritize airway/ventilation. Don’t assume “it didn’t work” means “not an overdose.”"
+        },
+        {
+          "interactant": "Non-opioid sedatives (benzodiazepines, alcohol, sedating antihistamines, etc.)",
+          "mechanism": "Naloxone does not reverse non-opioid sedation; overdose may be mixed.",
+          "action": "If there’s limited response to naloxone, treat as a medical emergency and continue supportive care (breathing support, EMS)."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Breathing and oxygenation: respiratory rate, effort, oxygen saturation; be ready for repeat dosing and ventilatory support"
+        },
+        {
+          "parameter": "Level of consciousness and airway protection: improvement after dosing, aspiration risk if vomiting occurs"
+        },
+        {
+          "parameter": "Recurrence: watch for return of sedation or slowed breathing as naloxone wears off (especially with long-acting opioids or large exposures)"
+        },
+        {
+          "parameter": "Vital signs: heart rate, blood pressure, temperature (withdrawal can drive spikes; abrupt reversal can stress high-risk patients)"
+        },
+        {
+          "parameter": "Withdrawal symptoms: agitation, sweating, yawning, vomiting, diarrhea, abdominal cramps, muscle aches, tremor"
+        },
+        {
+          "parameter": "Pain control (in therapeutic opioid settings): titrate to restore ventilation without unnecessarily eliminating analgesia"
+        },
+        {
+          "parameter": "Need for escalation: if minimal response after adequate dosing, consider mixed overdose or non-opioid causes and escalate care immediately"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Naloxone crosses the placenta and can trigger withdrawal in the fetus as well as the mother, but guidelines emphasize it should not be withheld in maternal overdose because maternal survival is the priority. In clinical settings, clinicians may start at the low end and titrate to restore breathing while minimizing abrupt withdrawal when feasible.",
+        "lactation": "It’s not clearly known how much naloxone enters breast milk, and oral absorption is minimal. In real-world practice, naloxone use for overdose rescue is not a reason to withhold lifesaving care. If ongoing treatment decisions are needed, clinicians weigh infant exposure risk against benefits of breastfeeding and maternal health.",
+        "pediatric": "Used for pediatric opioid overdose with weight-based dosing in younger children and fixed dosing in older children/adolescents in many emergency protocols. IM and intranasal administration may be delayed or erratic in low-perfusion states, so careful monitoring and repeat dosing are often required.",
+        "geriatric": "Dose is generally the same as in younger adults, but older adults may have more cardiovascular vulnerability and may be more sensitive to abrupt physiologic stress; monitor closely after reversal.",
+        "renal_impairment": "No dosage adjustment is generally needed, but prolonged effects have been reported in advanced kidney impairment during continuous infusion; monitor for extended opioid antagonism and recurrence of symptoms.",
+        "hepatic_impairment": "No specific manufacturer dose adjustment guidance. Because metabolism is hepatic, clinicians monitor response and adverse effects in significant liver disease, especially if continuous infusion is used."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1971
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Intranasal, IM, and SUBQ absorption can be delayed or variable (especially with poor perfusion); IV provides the fastest, most predictable effect.",
+          "bioavailability": "Intranasal bioavailability is lower than IV; product-specific performance varies by formulation and concentration.",
+          "peak_plasma": "Intranasal and IM peak concentrations typically occur within ~15 to 30 minutes depending on product.",
+          "half_life": "Adults: ~0.5 to 1.5 hours (IM/IV/SUBQ); intranasal ~1.1 to 2 hours (product-dependent).",
+          "metabolism": "Primarily hepatic (glucuronidation) to inactive metabolites.",
+          "excretion": "Urine (as metabolites).",
+          "protein_binding": "Relatively weak (binds to albumin and other plasma constituents).",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Naloxone dosing is about getting breathing back, fast, while avoiding unnecessary full-on withdrawal when possible (especially in clinical settings). In the community, follow the product directions and keep repeating doses until emergency help takes over."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Not applicable for this medication."
+        }
+      }
     }
   },
   "sections": [
@@ -103,7 +230,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Naloxone isn’t a “feel better” med—it's a rescue reversal. When it works, the experience can be intense and abrupt:",
       "items": [
         {
           "category": "Sudden wake-up (when it works)",
@@ -140,7 +266,8 @@
           ],
           "note": "Naloxone can wear off before the opioid does. That’s why calling 911 and monitoring is essential."
         }
-      ]
+      ],
+      "intro": "Naloxone isn’t a “feel better” med—it's a rescue reversal. When it works, the experience can be intense and abrupt:"
     },
     {
       "type": "onset_duration",
@@ -157,10 +284,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Naloxone is highly effective at reversing opioid effects when opioids are the reason a person’s breathing is dangerously slowed or stopped. The exact response depends on the opioid (short vs long acting), potency (including fentanyl analogs), the dose taken, and how quickly help arrives. If there’s no meaningful response after repeated dosing, clinicians should urgently consider other causes of respiratory depression.",
       "metric": "Reversal of opioid-related respiratory depression",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Naloxone is highly effective at reversing opioid effects when opioids are the reason a person’s breathing is dangerously slowed or stopped. The exact response depends on the opioid (short vs long acting), potency (including fentanyl analogs), the dose taken, and how quickly help arrives. If there’s no meaningful response after repeated dosing, clinicians should urgently consider other causes of respiratory depression.",
       "clinical_details": "Guidelines for opioid-associated emergencies recommend naloxone when opioid poisoning is suspected, alongside immediate activation of emergency response and airway/breathing support. For cardiac arrest, CPR and AED take priority, with naloxone considered as part of the response when opioid poisoning is suspected.",
       "citation": {
         "authors": "American Heart Association",
@@ -238,7 +365,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Naloxone’s “interaction” is the point: it blocks opioids. That’s lifesaving in overdose, but it can also reverse pain control and trigger withdrawal.",
       "items": [
         {
           "with": "Opioids (any opioid agonist, including prescription opioids, heroin, fentanyl)",
@@ -255,7 +381,8 @@
           "risk": "Naloxone does not reverse non-opioid sedation; overdose may be mixed.",
           "action": "If there’s limited response to naloxone, treat as a medical emergency and continue supportive care (breathing support, EMS)."
         }
-      ]
+      ],
+      "intro": "Naloxone’s “interaction” is the point: it blocks opioids. That’s lifesaving in overdose, but it can also reverse pain control and trigger withdrawal."
     },
     {
       "type": "tapering",
@@ -332,21 +459,6 @@
       "text": "Naloxone is harm reduction, period. If opioids are in the picture—prescribed or illicit—naloxone belongs in the safety plan. For people with opioid use disorder, it’s standard to educate patients and their support network on overdose recognition, naloxone administration, and immediate activation of emergency response. In medical settings, clinicians often titrate smaller doses when the goal is partial reversal (restore breathing without fully reversing analgesia)."
     }
   ],
-  "seo": {
-    "title": "Naloxone (Narcan): How It Reverses Opioid Overdose, Dosing, and What to Do Next",
-    "description": "Naloxone (Narcan) is a fast opioid antidote that can reverse overdose in minutes. Learn dosing by route (nasal, IM, IV), how long it lasts, withdrawal effects, repeat dosing, and why calling 911 is mandatory.",
-    "canonical": "[https://www.heypsych.com/treatments/naloxone-narcan](https://www.heypsych.com/treatments/naloxone-narcan)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is naloxone (Narcan) used for?",
@@ -392,5 +504,20 @@
       "q": "Should people on opioids have naloxone at home?",
       "a": "Often, yes—especially if there are overdose risk factors (higher doses, combining opioids with other sedatives, history of overdose or substance use disorder). Many guidelines encourage offering naloxone not only to patients but also to family members or caregivers who might be present in an emergency."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Naloxone (Narcan): How It Reverses Opioid Overdose, Dosing, and What to Do Next",
+    "description": "Naloxone (Narcan) is a fast opioid antidote that can reverse overdose in minutes. Learn dosing by route (nasal, IM, IV), how long it lasts, withdrawal effects, repeat dosing, and why calling 911 is mandatory.",
+    "canonical": "[https://www.heypsych.com/treatments/naloxone-narcan](https://www.heypsych.com/treatments/naloxone-narcan)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

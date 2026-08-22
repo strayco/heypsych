@@ -72,16 +72,16 @@ export function AlphabeticalDirectory({ conditions }: AlphabeticalDirectoryProps
   }
 
   return (
-    <section className="bg-slate-50 border-t border-slate-200 px-4 py-12 sm:px-6 lg:px-8">
+    <section className="bg-surface border-t border-separator px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-6 text-center text-2xl font-bold text-slate-900 sm:text-3xl">
+        <h2 className="mb-6 text-center text-2xl font-bold text-label-primary sm:text-3xl">
           All Conditions A–Z
         </h2>
-        <p className="mb-8 text-center text-sm text-slate-600">
+        <p className="mb-8 text-center text-sm text-label-tertiary">
           Complete directory of mental health conditions
         </p>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {availableLetters.map((letter) => {
             const letterConditions = groupedConditions[letter];
             const isExpanded = expandedLetters.has(letter);
@@ -89,34 +89,34 @@ export function AlphabeticalDirectory({ conditions }: AlphabeticalDirectoryProps
             return (
               <div
                 key={letter}
-                className="rounded-lg border border-slate-200 bg-white shadow-sm"
+                className="rounded-xl border border-separator bg-surface-grouped shadow-card-1"
               >
                 {/* Letter Header (mobile: clickable to expand/collapse) */}
                 <button
                   onClick={() => toggleLetter(letter)}
                   className={cn(
                     "flex w-full items-center justify-between px-4 py-3",
-                    "text-left font-bold text-slate-900",
-                    "transition-colors hover:bg-slate-50",
+                    "text-left font-bold text-label-primary",
+                    "transition-colors hover:bg-fill-secondary",
                     "sm:cursor-default sm:pointer-events-none"
                   )}
                   aria-expanded={isExpanded}
                   aria-controls={`letter-${letter}-content`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-xl font-bold text-blue-700">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-fill-secondary text-xl font-bold text-label-secondary">
                       {letter}
                     </div>
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-label-tertiary">
                       {letterConditions.length} condition{letterConditions.length !== 1 ? "s" : ""}
                     </span>
                   </div>
                   {/* Mobile expand/collapse icon */}
                   <span className="sm:hidden">
                     {isExpanded ? (
-                      <ChevronDown className="h-5 w-5 text-slate-400" />
+                      <ChevronDown className="h-5 w-5 text-label-primary0" />
                     ) : (
-                      <ChevronRight className="h-5 w-5 text-slate-400" />
+                      <ChevronRight className="h-5 w-5 text-label-primary0" />
                     )}
                   </span>
                 </button>
@@ -125,7 +125,7 @@ export function AlphabeticalDirectory({ conditions }: AlphabeticalDirectoryProps
                 <div
                   id={`letter-${letter}-content`}
                   className={cn(
-                    "border-t border-slate-100 px-4 py-4",
+                    "border-t border-separator px-4 py-4",
                     // Mobile: hide with display-none (links still in DOM)
                     // Desktop: always visible
                     !isExpanded && "hidden sm:block"
@@ -137,8 +137,8 @@ export function AlphabeticalDirectory({ conditions }: AlphabeticalDirectoryProps
                         <Link
                           href={`/conditions/${condition.slug}`}
                           className={cn(
-                            "block rounded-md px-3 py-2 text-sm text-slate-700",
-                            "transition-colors hover:bg-blue-50 hover:text-blue-700"
+                            "block rounded-md px-3 py-2 text-sm text-label-secondary",
+                            "transition-colors hover:bg-fill-secondary hover:text-label-primary"
                           )}
                         >
                           {condition.name}

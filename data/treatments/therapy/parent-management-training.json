@@ -1,87 +1,177 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "parent-management-training",
-  "type": "therapy",
-  "name": "Parent Management Training (PMT)",
-  "summary": "Parent Management Training (PMT) is an evidence-based behavioral intervention that teaches parents strategies to improve child behavior, reduce disruptive conduct, and strengthen positive family relationships.",
-  "description": "Parent Management Training (PMT) is a structured, skills-based therapy that helps parents develop effective strategies for managing their child’s behavioral problems. Rooted in social learning theory and cognitive-behavioral principles, PMT focuses on reinforcing prosocial behaviors, reducing oppositional and defiant behaviors, and improving the parent-child relationship. Parents learn to use consistent discipline, positive reinforcement, and effective communication techniques to guide their child’s behavior. PMT is one of the most widely studied interventions for conduct problems, ADHD, and oppositional defiant disorder, and has been shown to reduce disruptive behaviors and improve family functioning.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "behavioral therapy",
-    "parenting",
-    "family therapy",
-    "skills training",
-    "ADHD",
-    "conduct problems"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "parent-management-training",
+    "name": "Parent Management Training (PMT)",
+    "generic_name": "parent management training",
+    "brand_names": [
+      "PMT"
+    ],
+    "wikidata_qid": "Q7136757"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Behavioral intervention",
       "Parent training"
     ],
-    "treatment_types": [
-      "Family therapy",
-      "Behavioral skills training"
-    ],
-    "categories": [
-      "Parent training",
-      "Child behavioral management"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Group-based",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Children (3–12 years)",
-      "Adolescents (13–17 years)",
-      "Parents"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–20 weekly sessions"
-    ],
-    "specialty_areas": [
-      "Disruptive behavior disorders",
+    "tags": [
+      "behavioral therapy",
+      "parenting",
+      "family therapy",
+      "skills training",
       "ADHD",
-      "Parenting skills",
-      "Family conflict resolution"
-    ],
-    "wikidata_qid": "Q7136757"
+      "conduct problems"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Oppositional Defiant Disorder (ODD)",
-      "Conduct Disorder",
-      "ADHD with disruptive behaviors",
-      "Parent-child relational difficulties"
-    ],
-    "conditions_treated": [
-      "Disruptive behavior disorders",
-      "ADHD-related behavioral issues",
-      "Family conflict",
-      "Aggression and defiance"
-    ],
-    "off_label_uses": [
-      "Prevention of juvenile delinquency",
-      "Improving school adjustment"
-    ],
-    "contraindications": [
-      "Parents unable or unwilling to participate consistently",
-      "Situations requiring immediate child protection intervention"
-    ],
-    "safety_profile": "Safe and non-invasive, with minimal risks. May cause temporary stress in families during adjustment to new parenting strategies.",
-    "evidence_level": "High—supported by multiple randomized controlled trials and meta-analyses.",
-    "research_support": "Strong evidence for effectiveness in reducing child disruptive behavior and improving family dynamics.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "disruptive-behavior": 5,
-      "parenting-skills": 5,
-      "family-functioning": 4,
-      "ADHD-behavioral-symptoms": 4
+  "summary": "Parent Management Training (PMT) is an evidence-based behavioral intervention that teaches parents strategies to improve child behavior, reduce disruptive conduct, and strengthen positive family relationships.",
+  "description": "Parent Management Training (PMT) is a structured, skills-based therapy that helps parents develop effective strategies for managing their child’s behavioral problems. Rooted in social learning theory and cognitive-behavioral principles, PMT focuses on reinforcing prosocial behaviors, reducing oppositional and defiant behaviors, and improving the parent-child relationship. Parents learn to use consistent discipline, positive reinforcement, and effective communication techniques to guide their child’s behavior. PMT is one of the most widely studied interventions for conduct problems, ADHD, and oppositional defiant disorder, and has been shown to reduce disruptive behaviors and improve family functioning.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional Defiant Disorder (ODD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct Disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adhd-with-disruptive-behaviors",
+          "condition_name": "ADHD with disruptive behaviors",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-difficulties",
+          "condition_name": "Parent-child relational difficulties",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "disruptive-behavior-disorders",
+          "condition_name": "Disruptive behavior disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adhd-related-behavioral-issues",
+          "condition_name": "ADHD-related behavioral issues",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "aggression-and-defiance",
+          "condition_name": "Aggression and defiance",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "prevention-of-juvenile-delinquency",
+          "condition_name": "Prevention of juvenile delinquency",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "improving-school-adjustment",
+          "condition_name": "Improving school adjustment",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—supported by multiple randomized controlled trials and meta-analyses.",
+      "efficacy_ratings": {
+        "disruptive-behavior": {
+          "rating": 5
+        },
+        "parenting-skills": {
+          "rating": 5
+        },
+        "family-functioning": {
+          "rating": 4
+        },
+        "ADHD-behavioral-symptoms": {
+          "rating": 4
+        }
+      },
+      "research_support": "Strong evidence for effectiveness in reducing child disruptive behavior and improving family dynamics."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–20 weekly sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Group-based",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive, with minimal risks. May cause temporary stress in families during adjustment to new parenting strategies.",
+      "common_adverse_effects": [
+        {
+          "effect": "Family stress during adjustment to new parenting methods"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Resistance from child to new discipline strategies"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Parents unwilling or unable to commit to training process",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe parental mental health issues that require separate treatment first",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family therapy, Behavioral skills training",
+        "key_techniques": [
+          "Parent training",
+          "Child behavioral management"
+        ],
+        "session_structure": {
+          "pre_session": "Review of homework and progress with parenting strategies.",
+          "during_session": "Skills instruction, role-play, and discussion of child behavior management.",
+          "post_session": "Homework assignments for parents to practice skills with child at home."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in PMT methods"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -225,6 +315,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kazdin, A. E. (2005). Parent Management Training: Treatment for Oppositional, Aggressive, and Antisocial Behavior in Children and Adolescents.",
+      "url": "https://www.worldcat.org/title/parent-management-training-treatment-for-oppositional-aggressive-and-antisocial-behavior-in-children-and-adolescents/oclc/57349756"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Eyberg, S. M., Nelson, M. M., & Boggs, S. R. (2008). Evidence-based psychosocial treatments for children and adolescents with disruptive behavior. Journal of Clinical Child & Adolescent Psychology, 37(1), 215–237.",
+      "url": "https://doi.org/10.1080/15374410701820117"
+    }
+  ],
   "seo": {
     "title": "Parent Management Training (PMT) | Evidence-Based Parent Training for Child Behavior",
     "description": "Parent Management Training (PMT) teaches parents skills to reduce disruptive behaviors, improve child compliance, and strengthen family functioning through evidence-based behavioral strategies.",
@@ -237,5 +341,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—supported by multiple randomized controlled trials and meta-analyses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—supported by multiple randomized controlled trials and meta-analyses."
+    ]
   }
 }

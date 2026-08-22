@@ -1,68 +1,209 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "chlordiazepoxide-librium",
-  "type": "medication",
-  "name": "Chlordiazepoxide",
-  "summary": "A long-acting benzodiazepine used mainly to treat alcohol withdrawal and short-term anxiety, but with important risks of dependence, withdrawal, and overdose—especially when combined with opioids, alcohol, or other sedatives.",
-  "description": "Chlordiazepoxide is one of the earliest benzodiazepines, introduced around 1960. It calms the nervous system and can reduce anxiety and alcohol withdrawal symptoms. Because it stays in the body a long time and has active metabolites, it can be very effective for withdrawal but also carries a higher risk of oversedation, falls, and accumulation in older adults or people with liver problems. Modern guidelines generally reserve it for specific situations (like alcohol withdrawal) and encourage short-term, lowest-effective-dose use when it is prescribed for anxiety.",
-  "patient_summary": "Chlordiazepoxide is a calming medicine in the benzodiazepine family. It can help with anxiety and is commonly used in hospitals or detox programs to manage alcohol withdrawal. Like other benzodiazepines, it can make you sleepy, dizzy, and unsteady, and it can be habit-forming. Stopping it suddenly after regular use may trigger withdrawal symptoms, some of which can be serious. The risks are much higher if it’s taken with opioids, alcohol, or other drugs that cause drowsiness. For these reasons, chlordiazepoxide is usually used for short periods and under close medical supervision.",
-  "category": "medications/benzodiazepines",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "Anxiolytic",
-      "Sedative-hypnotic"
-    ],
+  "identity": {
+    "slug": "chlordiazepoxide-librium",
+    "name": "Chlordiazepoxide",
     "brand_names": [
       "Librium (common brand, US/Canada)",
       "Various generics"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance_schedule_us": "C-IV",
-    "generic_available": true,
-    "first_marketed_year": 1960,
-    "notes": [
-      "Considered a long-acting benzodiazepine due to long half-life of parent drug and active metabolites.",
-      "Often used in inpatient or structured outpatient settings for alcohol withdrawal."
-    ],
     "wikidata_qid": "Q417129"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Acute alcohol withdrawal syndrome",
-      "Short-term treatment of anxiety disorders or severe anxiety symptoms"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alcohol-use-disorder",
-        "relationship": "direct",
-        "context": "Used to manage withdrawal symptoms when stopping or cutting down heavy alcohol use."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "adjunctive",
-        "context": "Sometimes used temporarily while longer-term treatments (like SSRIs) take effect."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/benzodiazepines",
+    "drug_classes": [
+      "Benzodiazepine",
+      "Anxiolytic",
+      "Sedative-hypnotic"
+    ]
+  },
+  "summary": "A long-acting benzodiazepine used mainly to treat alcohol withdrawal and short-term anxiety, but with important risks of dependence, withdrawal, and overdose—especially when combined with opioids, alcohol, or other sedatives.",
+  "description": "Chlordiazepoxide is one of the earliest benzodiazepines, introduced around 1960. It calms the nervous system and can reduce anxiety and alcohol withdrawal symptoms. Because it stays in the body a long time and has active metabolites, it can be very effective for withdrawal but also carries a higher risk of oversedation, falls, and accumulation in older adults or people with liver problems. Modern guidelines generally reserve it for specific situations (like alcohol withdrawal) and encourage short-term, lowest-effective-dose use when it is prescribed for anxiety.",
+  "patient_summary": "Chlordiazepoxide is a calming medicine in the benzodiazepine family. It can help with anxiety and is commonly used in hospitals or detox programs to manage alcohol withdrawal. Like other benzodiazepines, it can make you sleepy, dizzy, and unsteady, and it can be habit-forming. Stopping it suddenly after regular use may trigger withdrawal symptoms, some of which can be serious. The risks are much higher if it’s taken with opioids, alcohol, or other drugs that cause drowsiness. For these reasons, chlordiazepoxide is usually used for short periods and under close medical supervision.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "acute-alcohol-withdrawal-syndrome",
+          "condition_name": "Acute alcohol withdrawal syndrome",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "short-term-treatment-of-anxiety-disorders-or-severe-anxiety-symptoms",
+          "condition_name": "Short-term treatment of anxiety disorders or severe anxiety symptoms",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "alcohol-use-disorder",
+          "condition_name": "Alcohol Use Disorder",
+          "relationship": "secondary_indication",
+          "context": "Used to manage withdrawal symptoms when stopping or cutting down heavy alcohol use."
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "adjunctive",
+          "context": "Sometimes used temporarily while longer-term treatments (like SSRIs) take effect."
+        }
+      ]
+    },
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Calming and sedating effects often begin within the first hour after a dose."
+        }
       }
-    ],
-    "contraindications": [
-      "Allergy to chlordiazepoxide or any ingredient in the product",
-      "Breastfeeding (not recommended due to long half-life and risk of infant sedation/withdrawal)",
-      "Children younger than 6 years old",
-      "History of serious benzodiazepine misuse or high risk of substance use disorder (relative contraindication; requires extreme caution)",
-      "Severe respiratory disease or sleep apnea where further respiratory depression would be dangerous (relative/clinical contraindication)",
-      "Severe liver dysfunction (use only with great caution, if at all)"
-    ],
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth; peak blood levels reached within about 0.5–2 hours.",
-      "onset": "Calming and sedating effects often begin within the first hour after a dose.",
-      "duration": "Overall effect is long-lasting due to active metabolites; repeated dosing can lead to accumulation.",
-      "metabolism": "Processed in the liver into several active metabolites, including desmethyldiazepam and demoxepam, which have long half-lives.",
-      "half_life": "Parent drug roughly 24–48 hours; active metabolites can last from many hours to several days.",
-      "excretion": "Mainly excreted in the urine as metabolites.",
-      "protein_binding": "Highly protein bound (~96%)."
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness and fatigue",
+          "incidence": "Very common",
+          "notes": "Most people feel at least somewhat sleepy. Plan activities so you don’t need to drive or make important decisions until you know how it affects you."
+        },
+        {
+          "effect": "Dizziness and unsteady gait",
+          "incidence": "Common",
+          "notes": "Getting up slowly and using support when walking can help prevent falls, especially in older adults."
+        },
+        {
+          "effect": "Cognitive slowing and memory issues",
+          "incidence": "Common with higher or ongoing doses",
+          "notes": "You may notice difficulty remembering new information or feeling mentally ‘slower’ while on the medication."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe allergic reactions with rash, swelling, or difficulty breathing."
+        },
+        {
+          "risk": "Severe confusion, agitation, paradoxical aggression, or dramatic behavior changes."
+        },
+        {
+          "risk": "Signs of liver injury: yellowing of the skin or eyes, dark urine, pale stools, severe fatigue, or upper right abdominal pain."
+        },
+        {
+          "risk": "Signs of bone marrow problems: frequent infections, fever, unusual bruising or bleeding, or extreme fatigue."
+        },
+        {
+          "risk": "Marked drowsiness, very slow or shallow breathing, or inability to wake fully—especially if taken with opioids, alcohol, or other sedatives."
+        },
+        {
+          "risk": "Withdrawal symptoms (anxiety, tremors, sweating, insomnia, hallucinations, seizures) if the drug is stopped abruptly after prolonged use."
+        }
+      ],
+      "black_box_warning": [
+        "Benzodiazepines plus opioids: Using chlordiazepoxide together with opioid medications (like oxycodone, codeine, or morphine) or with illicit opioids can lead to profound sedation, slow or stopped breathing, coma, and death. This combination should only be used if there are no safer options, at the lowest effective doses, and with close monitoring.",
+        "Abuse, misuse, and addiction: Chlordiazepoxide, like other benzodiazepines, can be misused for its calming or sedating effects. Misuse often involves combining it with alcohol or other drugs, which raises the risk of overdose and death. People with a history of substance use should be monitored very closely or offered alternative treatments.",
+        "Dependence and withdrawal: Regular use can lead to physical dependence. Stopping suddenly or cutting the dose too quickly after ongoing use can trigger severe withdrawal symptoms (anxiety, tremor, agitation, hallucinations, seizures) that can be life-threatening. Chlordiazepoxide must be tapered slowly under medical guidance."
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Allergy to chlordiazepoxide or any ingredient in the product"
+        },
+        {
+          "contraindication": "Breastfeeding (not recommended due to long half-life and risk of infant sedation/withdrawal)"
+        },
+        {
+          "contraindication": "Children younger than 6 years old"
+        },
+        {
+          "contraindication": "History of serious benzodiazepine misuse or high risk of substance use disorder (relative contraindication; requires extreme caution)"
+        },
+        {
+          "contraindication": "Severe respiratory disease or sleep apnea where further respiratory depression would be dangerous (relative/clinical contraindication)"
+        },
+        {
+          "contraindication": "Severe liver dysfunction (use only with great caution, if at all)"
+        }
+      ],
+      "precautions": [
+        "Can cause significant drowsiness and slow reaction time—driving, operating machinery, or performing tasks that require full alertness can be dangerous.",
+        "In older adults, benzodiazepines are linked to confusion, delirium, falls, fractures, and car accidents; they also clear more slowly from the body.",
+        "People with breathing problems (such as COPD or sleep apnea) are at greater risk of respiratory depression.",
+        "Because the drug is metabolized in the liver and has long-acting metabolites, people with liver disease may experience prolonged and unpredictable sedation.",
+        "Paradoxical reactions can occur—some people, especially children, older adults, or those with certain psychiatric conditions, may become more agitated, disinhibited, or aggressive instead of calmer."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioid pain medicines and cough syrups (eg, oxycodone, hydrocodone, codeine, morphine, methadone, illicit opioids)",
+          "mechanism": "Very high risk of life-threatening respiratory depression, coma, and death.",
+          "action": "Avoid combination whenever possible. If absolutely necessary, use the lowest possible doses for the shortest time with close monitoring."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Strong additive sedative effect, greatly increasing the risk of overdose, falls, and accidents.",
+          "action": "Avoid alcohol completely while taking this medication."
+        },
+        {
+          "interactant": "Other benzodiazepines, sleep medicines, certain antipsychotics, sedating antidepressants, antihistamines, or muscle relaxants",
+          "mechanism": "Additive sedation and impaired coordination, increasing risk of falls, confusion, and breathing problems.",
+          "action": "Avoid overlapping sedatives unless specifically coordinated by your prescriber."
+        },
+        {
+          "interactant": "Drugs affecting liver enzymes (especially certain strong CYP3A4 inhibitors or inducers)",
+          "mechanism": "May change how much chlordiazepoxide or its metabolites build up, altering sedation level and side effect risk.",
+          "action": "Your prescriber or pharmacist should review your full medication list for interactions and adjust doses if needed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Breathing and heart function: Watch for slow or shallow breathing, especially if the patient is also taking opioids or has lung disease."
+        },
+        {
+          "parameter": "Blood pressure and pulse, especially when starting or increasing doses or during alcohol withdrawal management."
+        },
+        {
+          "parameter": "Mental status: Look for confusion, excessive sedation, or paradoxical agitation or aggression."
+        },
+        {
+          "parameter": "Fall risk: Pay attention to balance, gait, and history of falls, particularly in older adults."
+        },
+        {
+          "parameter": "Withdrawal symptoms: When tapering, watch for return of anxiety, tremors, sweating, sleep problems, mood swings, hallucinations, or seizures."
+        },
+        {
+          "parameter": "Laboratory tests: If used long-term or if there are symptoms suggestive of blood or liver problems, periodic blood counts and liver function tests may be recommended."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Chlordiazepoxide crosses the placenta. Use in pregnancy has been linked to possible birth defects in some studies (though data are mixed) and may cause sedation or withdrawal in the newborn, especially when used later in pregnancy. On the other hand, untreated severe anxiety and alcohol withdrawal can also be dangerous for both parent and baby. Decisions about use during pregnancy should be made carefully with a specialist, weighing all risks and benefits. Short-term use for alcohol withdrawal in a hospital setting may be appropriate.",
+        "lactation": "Benzodiazepines, including chlordiazepoxide, pass into breast milk. Because chlordiazepoxide is long-acting and can build up in the infant, there is a risk of sedation, poor feeding, and withdrawal symptoms. Safer, shorter-acting benzodiazepines are generally preferred if a benzodiazepine is needed while breastfeeding. In many cases, non-benzodiazepine approaches to anxiety are better choices.",
+        "pediatric": "Younger patients are more prone to paradoxical reactions (agitation, disinhibition) and to oversedation. Long-acting benzodiazepines are usually avoided unless there is a very clear benefit and close monitoring.",
+        "geriatric": "Older adults metabolize benzodiazepines more slowly and are more sensitive to their effects. Even standard doses can cause confusion, daytime sedation, falls, fractures, and worsened memory. Guidelines generally recommend avoiding long-acting benzodiazepines like chlordiazepoxide in this age group except for specific uses such as withdrawal management.",
+        "renal_impairment": "Severe kidney impairment can affect how the drug and its metabolites are cleared. Lower doses and careful monitoring are generally recommended.",
+        "hepatic_impairment": "Significant liver disease slows metabolism and increases the risk of prolonged sedation, confusion, and drug accumulation. Alternative benzodiazepines with simpler metabolism (or non-benzodiazepine strategies) are often preferred."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth; peak blood levels reached within about 0.5–2 hours.",
+          "half_life": "Parent drug roughly 24–48 hours; active metabolites can last from many hours to several days.",
+          "metabolism": "Processed in the liver into several active metabolites, including desmethyldiazepam and demoxepam, which have long half-lives.",
+          "excretion": "Mainly excreted in the urine as metabolites.",
+          "protein_binding": "Highly protein bound (~96%)."
+        },
+        "dosing": {
+          "titration": "Exact dosing must be individualized, especially in alcohol withdrawal and in people who are older or medically fragile. Never adjust your own dose without talking to your prescriber."
+        }
+      }
     }
   },
   "sections": [
@@ -81,7 +222,6 @@
     {
       "type": "patient_experience",
       "heading": "What It Feels Like",
-      "intro": "People’s experiences with chlordiazepoxide vary depending on the dose, how long they’ve been taking it, and whether they’re withdrawing from alcohol.",
       "items": [
         {
           "category": "Calming and sedation",
@@ -106,7 +246,8 @@
             "Memory for events that happen while under the influence can be patchy (anterograde amnesia)."
           ]
         }
-      ]
+      ],
+      "intro": "People’s experiences with chlordiazepoxide vary depending on the dose, how long they’ve been taking it, and whether they’re withdrawing from alcohol."
     },
     {
       "type": "onset_duration",
@@ -186,7 +327,6 @@
     {
       "type": "interactions",
       "heading": "Drug and Substance Interactions",
-      "intro": "Chlordiazepoxide depresses the central nervous system, so combining it with other sedating or psychoactive substances greatly increases risks.",
       "items": [
         {
           "with": "Opioid pain medicines and cough syrups (eg, oxycodone, hydrocodone, codeine, morphine, methadone, illicit opioids)",
@@ -208,7 +348,8 @@
           "risk": "May change how much chlordiazepoxide or its metabolites build up, altering sedation level and side effect risk.",
           "action": "Your prescriber or pharmacist should review your full medication list for interactions and adjust doses if needed."
         }
-      ]
+      ],
+      "intro": "Chlordiazepoxide depresses the central nervous system, so combining it with other sedating or psychoactive substances greatly increases risks."
     },
     {
       "type": "dosing",
@@ -269,12 +410,6 @@
       "text": "Chlordiazepoxide played a major role in early anxiolytic treatment after its introduction around 1960. Today, long-acting benzodiazepines are used more cautiously. For anxiety disorders, antidepressants (like SSRIs/SNRIs), psychotherapy (especially CBT), and lifestyle interventions are preferred for long-term management. Chlordiazepoxide is now used most often for alcohol withdrawal, where its long-lasting calming and anti-seizure effects are useful if carefully monitored. When it is used for anxiety, it is usually short term and part of a broader plan that includes safer long-term treatments."
     }
   ],
-  "seo": {
-    "title": "Chlordiazepoxide (Librium): Uses, Risks, Alcohol Withdrawal, and Tapering",
-    "description": "Learn how chlordiazepoxide (Librium) is used for alcohol withdrawal and short-term anxiety, plus important information about addiction, withdrawal, side effects, and safe use.",
-    "canonical": "[https://www.heypsych.com/treatments/chlordiazepoxide](https://www.heypsych.com/treatments/chlordiazepoxide)",
-    "no_index": false
-  },
   "faqs": [
     {
       "q": "What is chlordiazepoxide used for?",
@@ -300,5 +435,23 @@
       "q": "What happens if I stop chlordiazepoxide suddenly?",
       "a": "If you’ve been taking chlordiazepoxide regularly, stopping abruptly can trigger withdrawal symptoms like anxiety, restlessness, shaking, sweating, trouble sleeping, mood changes, and in severe cases, hallucinations or seizures. These can be dangerous. Always speak with your prescriber before stopping the medication so they can help you taper the dose safely."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Chlordiazepoxide (Librium): Uses, Risks, Alcohol Withdrawal, and Tapering",
+    "description": "Learn how chlordiazepoxide (Librium) is used for alcohol withdrawal and short-term anxiety, plus important information about addiction, withdrawal, side effects, and safe use.",
+    "canonical": "[https://www.heypsych.com/treatments/chlordiazepoxide](https://www.heypsych.com/treatments/chlordiazepoxide)",
+    "no_index": false
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "unmapped_fields": {
+      "metadata.controlled_substance_schedule_us": "C-IV",
+      "metadata.first_marketed_year": 1960,
+      "metadata.notes": [
+        "Considered a long-acting benzodiazepine due to long half-life of parent drug and active metabolites.",
+        "Often used in inpatient or structured outpatient settings for alcohol withdrawal."
+      ]
+    },
+    "requires_review": false
+  }
 }

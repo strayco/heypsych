@@ -1,85 +1,178 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "parent-child-interaction-therapy",
-  "type": "therapy",
-  "name": "Parent-Child Interaction Therapy (PCIT)",
-  "summary": "Parent-Child Interaction Therapy (PCIT) is a structured, evidence-based intervention that improves parent-child relationships, reduces disruptive behaviors in children, and enhances positive parenting skills.",
-  "description": "Parent-Child Interaction Therapy (PCIT) is an evidence-based behavioral parent training program designed for families with young children (typically ages 2–7) who display disruptive behaviors such as aggression, defiance, tantrums, or hyperactivity. The therapy involves live coaching of parents while they interact with their child, often through a one-way mirror and earpiece system, with a therapist providing real-time guidance. PCIT has two main phases: Child-Directed Interaction (CDI), which enhances the parent-child relationship through positive attention and play, and Parent-Directed Interaction (PDI), which teaches effective discipline and limit-setting strategies. The approach strengthens attachment, improves behavior regulation, and fosters healthier family dynamics.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "parenting",
-    "behavioral",
-    "family therapy",
-    "evidence-based",
-    "childhood disorders"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "parent-child-interaction-therapy",
+    "name": "Parent-Child Interaction Therapy (PCIT)",
+    "generic_name": "parent-child interaction therapy",
+    "brand_names": [
+      "PCIT"
+    ],
+    "wikidata_qid": "Q7135848"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Behavioral therapy",
       "Parent training"
     ],
-    "treatment_types": [
-      "Family therapy",
-      "Parent-child intervention"
-    ],
-    "categories": [
-      "Behavioral parent training",
-      "Child therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth adaptations"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "One-way mirror, earpiece, or telehealth setup (optional)",
-    "training_required": true,
-    "age_groups": [
-      "Toddlers",
-      "Preschool children",
-      "Young children"
-    ],
-    "session_duration": "60 minutes",
-    "treatment_duration": [
-      "12–20 sessions"
-    ],
-    "specialty_areas": [
-      "Disruptive behavior disorders",
-      "Parenting skills",
-      "Attachment and bonding",
-      "Early intervention"
-    ],
-    "wikidata_qid": "Q7135848"
+    "tags": [
+      "parenting",
+      "behavioral",
+      "family therapy",
+      "evidence-based",
+      "childhood disorders"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Disruptive behaviors",
-      "Oppositional defiant disorder (ODD)",
-      "Conduct problems",
-      "Parenting stress"
-    ],
-    "conditions_treated": [
-      "Oppositional defiant disorder",
-      "Attention-deficit/hyperactivity disorder (ADHD)",
-      "Conduct disorder",
-      "Disruptive mood dysregulation disorder (DMDD)"
-    ],
-    "off_label_uses": [
-      "Prevention of child maltreatment",
-      "Strengthening attachment in high-risk families"
-    ],
-    "contraindications": [
-      "Families unable to commit to regular sessions",
-      "Children with severe developmental delays where alternative approaches may be more appropriate"
-    ],
-    "safety_profile": "Safe and well-tolerated. Some initial resistance from children to new limit-setting strategies is common.",
-    "evidence_level": "High—multiple randomized controlled trials (RCTs) support its efficacy for disruptive behaviors and parent-child relationship improvement.",
-    "research_support": "Well-established in clinical trials across diverse populations. Endorsed by the APA and SAMHSA as an evidence-based practice.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "behavior-improvement": 5,
-      "parenting-skills": 5,
-      "attachment-enhancement": 4,
-      "long-term-outcomes": 4
+  "summary": "Parent-Child Interaction Therapy (PCIT) is a structured, evidence-based intervention that improves parent-child relationships, reduces disruptive behaviors in children, and enhances positive parenting skills.",
+  "description": "Parent-Child Interaction Therapy (PCIT) is an evidence-based behavioral parent training program designed for families with young children (typically ages 2–7) who display disruptive behaviors such as aggression, defiance, tantrums, or hyperactivity. The therapy involves live coaching of parents while they interact with their child, often through a one-way mirror and earpiece system, with a therapist providing real-time guidance. PCIT has two main phases: Child-Directed Interaction (CDI), which enhances the parent-child relationship through positive attention and play, and Parent-Directed Interaction (PDI), which teaches effective discipline and limit-setting strategies. The approach strengthens attachment, improves behavior regulation, and fosters healthier family dynamics.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "disruptive-behaviors",
+          "condition_name": "Disruptive behaviors",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional defiant disorder (ODD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "conduct-problems",
+          "condition_name": "Conduct problems",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parenting-stress",
+          "condition_name": "Parenting stress",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder",
+          "condition_name": "Oppositional defiant disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder-adhd",
+          "condition_name": "Attention-deficit/hyperactivity disorder (ADHD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "disruptive-mood-dysregulation-disorder-dmdd",
+          "condition_name": "Disruptive mood dysregulation disorder (DMDD)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "prevention-of-child-maltreatment",
+          "condition_name": "Prevention of child maltreatment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "strengthening-attachment-in-high-risk-families",
+          "condition_name": "Strengthening attachment in high-risk families",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—multiple randomized controlled trials (RCTs) support its efficacy for disruptive behaviors and parent-child relationship improvement.",
+      "efficacy_ratings": {
+        "behavior-improvement": {
+          "rating": 5
+        },
+        "parenting-skills": {
+          "rating": 5
+        },
+        "attachment-enhancement": {
+          "rating": 4
+        },
+        "long-term-outcomes": {
+          "rating": 4
+        }
+      },
+      "research_support": "Well-established in clinical trials across diverse populations. Endorsed by the APA and SAMHSA as an evidence-based practice."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth adaptations"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated. Some initial resistance from children to new limit-setting strategies is common.",
+      "common_adverse_effects": [
+        {
+          "effect": "Child resistance during initial sessions"
+        },
+        {
+          "effect": "Temporary increase in tantrums as limits are enforced"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Family drop-out due to difficulty adhering to structure"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Parents unable to attend or engage in active participation",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Children with severe developmental or communication impairments may need adapted protocols",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family therapy, Parent-child intervention",
+        "key_techniques": [
+          "Behavioral parent training",
+          "Child therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review behavior logs and parent progress.",
+          "during_session": "Live parent coaching via observation and earpiece.",
+          "post_session": "Assign home practice and review skills."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in PCIT certification programs"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -222,6 +315,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Eyberg, S.M., & Funderburk, B. (2011). Parent-Child Interaction Therapy Protocol.",
+      "url": "https://pcit.ucdavis.edu/pcit-research/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Thomas, R., & Zimmer-Gembeck, M.J. (2012). Parent-Child Interaction Therapy: An Evidence-Based Treatment for Child Maltreatment. Child Maltreatment, 17(3), 253-266.",
+      "url": "https://doi.org/10.1177/1077559512459555"
+    }
+  ],
   "seo": {
     "title": "Parent-Child Interaction Therapy (PCIT) | Evidence-Based Parenting Intervention",
     "description": "Parent-Child Interaction Therapy (PCIT) is an evidence-based treatment that helps families reduce disruptive behaviors in children while strengthening attachment and improving parenting skills.",
@@ -234,5 +341,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—multiple randomized controlled trials (RCTs) support its efficacy for disruptive behaviors and parent-child relationship improvement."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—multiple randomized controlled trials (RCTs) support its efficacy for disruptive behaviors and parent-child relationship improvement."
+    ]
   }
 }

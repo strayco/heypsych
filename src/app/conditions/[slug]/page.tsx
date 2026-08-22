@@ -17,6 +17,12 @@ import { SchemaFactory } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import ConditionClientWrapper from "./client-wrapper";
 import { getEntityType } from "@/lib/utils/entity-type";
+import { featureFlags } from "@/lib/config/feature-flags";
+import {
+  getNextStepsForEntity,
+  createProviderQuestionsNextStep,
+} from "@/domains/navigation/service";
+import type { NextStep } from "@/domains/navigation/types";
 
 // Generate static params for ALL conditions
 // Pre-renders all condition pages at build time for instant page loads
@@ -108,6 +114,22 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
   // 5. FAQPage (auto-generated or explicit)
   const schemas = SchemaFactory.generateAll(entity);
 
+  // Fetch contextual next steps for Navigation V1
+  // Currently enabled for OCD vertical slice when feature flags permit
+  let nextSteps: NextStep[] = [];
+  if (featureFlags.contextualNextSteps && featureFlags.ocdJourneyEnabled) {
+    // For OCD vertical slice, fetch curated next steps
+    if (slug === "obsessive-compulsive-disorder") {
+      nextSteps = await getNextStepsForEntity("condition", slug, "patient");
+
+      // Add provider questions as a next step if no assessment is available
+      const hasAssessment = nextSteps.some((step) => step.kind === "assessment");
+      if (!hasAssessment) {
+        nextSteps.push(createProviderQuestionsNextStep(slug, entity.name || "OCD"));
+      }
+    }
+  }
+
   return (
     <>
       {/* Inject schema.org JSON-LD into page head */}
@@ -121,7 +143,7 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
 
       {/* Pass enhanced entity data to client component for interactivity */}
       {/* Entity names are automatically linked inline via {link:} syntax */}
-      <ConditionClientWrapper entity={enhancedEntity} />
+      <ConditionClientWrapper entity={enhancedEntity} nextSteps={nextSteps} />
     </>
   );
 }

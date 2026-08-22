@@ -1,75 +1,252 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "sodium-oxybate-xyrem-lumryz",
-  "type": "medication",
-  "name": "Sodium Oxybate (Xyrem, Lumryz)",
-  "summary": "Powerful nighttime CNS depressant for narcolepsy with cataplexy or excessive daytime sleepiness. Very fast onset, high sodium load, boxed warnings for respiratory depression, abuse, and REMS-only access.",
-  "description": "Sodium oxybate (brand names Xyrem and Lumryz) is a potent central nervous system depressant used at night to treat narcolepsy with cataplexy or excessive daytime sleepiness. It is the sodium salt of gamma-hydroxybutyrate (GHB), a substance that exists naturally in the brain but is also used illicitly as a \"club drug.\" At therapeutic doses, sodium oxybate can deepen nighttime sleep and improve daytime alertness and cataplexy. At the same time, it carries serious risks: respiratory depression, sudden loss of consciousness, complex sleep behaviors, mood changes, and a high potential for abuse and misuse. It also delivers a substantial sodium load, which can aggravate heart, kidney, or blood pressure problems. Because of these dangers, sodium oxybate is available only through strict REMS programs and must be taken exactly as directed.",
-  "patient_summary": "Sodium oxybate (Xyrem, Lumryz) is a strong nighttime medicine for narcolepsy. It can help you sleep more deeply at night so your daytime sleepiness and cataplexy improve. But it is also powerful and risky. The active ingredient is related to GHB, a drug that can be abused. Even at prescribed doses, sodium oxybate can slow your breathing, knock you out quickly, and cause strange sleep behaviors like sleepwalking or doing things you don’t remember. It also contains a lot of sodium (salt), which can be a problem if you have heart, kidney, or blood pressure issues. Because of these risks, it is tightly controlled through special REMS programs, and doses must be carefully measured, mixed, and taken on an empty stomach while you are already in bed.",
-  "category": "medications/sleep-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "sodium-oxybate-xyrem-lumryz",
+    "name": "Sodium Oxybate (Xyrem, Lumryz)",
+    "generic_name": "sodium oxybate",
+    "brand_names": [
+      "Xyrem",
+      "Lumryz"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-disorders",
     "drug_classes": [
       "Central Nervous System Depressant",
       "GABAB Receptor Modulator",
       "Sleep Medicine"
-    ],
-    "brand_names": [
-      "Xyrem",
-      "Lumryz"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required (REMS-Restricted)",
-    "controlled_substance": "Schedule III (US medical use); Schedule I for illicit GHB",
-    "generic_available": true,
-    "fda_approval_year": 2002,
-    "pharmacologic_category": "Central Nervous System Depressant",
-    "published_date": "2026-01-02T00:00:00Z",
-    "last_updated": "2026-01-02T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-02T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Narcolepsy with Cataplexy",
-      "Narcolepsy with Excessive Daytime Sleepiness"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "narcolepsy",
-        "relationship": "primary_treatment",
-        "context": "Approved for the treatment of cataplexy or excessive daytime sleepiness in adults and in pediatric patients 7 years and older with narcolepsy."
-      }
-    ],
-    "contraindications": [
-      "Concomitant use with alcohol",
-      "Concomitant use with sedative-hypnotic agents",
-      "Succinic semialdehyde dehydrogenase deficiency",
-      "Hypersensitivity to sodium oxybate or any component of the formulation (Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Improvement in daytime sleepiness and cataplexy",
-      "percentage_value": null,
-      "comparison_data": null,
-      "patient_text": "In clinical use, many patients have fewer cataplexy attacks and less overwhelming daytime sleepiness once they reach a stable sodium oxybate dose, but not everyone can tolerate the side effects, and careful titration is required.",
-      "citation_tag": null
+  "summary": "Powerful nighttime CNS depressant for narcolepsy with cataplexy or excessive daytime sleepiness. Very fast onset, high sodium load, boxed warnings for respiratory depression, abuse, and REMS-only access.",
+  "description": "Sodium oxybate (brand names Xyrem and Lumryz) is a potent central nervous system depressant used at night to treat narcolepsy with cataplexy or excessive daytime sleepiness. It is the sodium salt of gamma-hydroxybutyrate (GHB), a substance that exists naturally in the brain but is also used illicitly as a \"club drug.\" At therapeutic doses, sodium oxybate can deepen nighttime sleep and improve daytime alertness and cataplexy. At the same time, it carries serious risks: respiratory depression, sudden loss of consciousness, complex sleep behaviors, mood changes, and a high potential for abuse and misuse. It also delivers a substantial sodium load, which can aggravate heart, kidney, or blood pressure problems. Because of these dangers, sodium oxybate is available only through strict REMS programs and must be taken exactly as directed.",
+  "patient_summary": "Sodium oxybate (Xyrem, Lumryz) is a strong nighttime medicine for narcolepsy. It can help you sleep more deeply at night so your daytime sleepiness and cataplexy improve. But it is also powerful and risky. The active ingredient is related to GHB, a drug that can be abused. Even at prescribed doses, sodium oxybate can slow your breathing, knock you out quickly, and cause strange sleep behaviors like sleepwalking or doing things you don’t remember. It also contains a lot of sodium (salt), which can be a problem if you have heart, kidney, or blood pressure issues. Because of these risks, it is tightly controlled through special REMS programs, and doses must be carefully measured, mixed, and taken on an empty stomach while you are already in bed.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "narcolepsy",
+          "condition_name": "Narcolepsy",
+          "relationship": "primary_indication",
+          "context": "Approved for the treatment of cataplexy or excessive daytime sleepiness in adults and in pediatric patients 7 years and older with narcolepsy.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid; significant first-pass metabolism; high-fat meals delay and blunt peak levels.",
-      "bioavailability": "≈88%",
-      "onset": "5–15 minutes (rapid sleep onset)",
-      "peak_plasma": "Immediate-release: 30–75 minutes; Extended-release: ≈90 minutes",
-      "half_life": "30–60 minutes",
-      "duration_IR": "Short-acting; requires 2 nightly doses for sustained effect",
-      "duration_XR": "Once-nightly ER dose intended to cover the night",
-      "metabolism": "Primarily via the Krebs cycle to carbon dioxide and water; secondarily via beta-oxidation; no active metabolites; saturable metabolism",
-      "excretion": "Primarily as carbon dioxide via the lungs; <5% excreted unchanged in urine; negligible fecal excretion",
-      "protein_binding": "<1%",
-      "food_effect": "High-fat meals delay absorption (Tmax ↑ ~1–1.25 hours) and reduce Cmax by ~33–59% and AUC by ~14–37%. Take at least 2 hours after eating."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "5–15 minutes (rapid sleep onset)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Weight Loss",
+          "incidence": "Children/adolescents ≈13%; adults ≈1–4%",
+          "notes": "Weight loss may be noticeable in children and adolescents. Regular weight checks are important, especially if appetite is poor or vomiting is frequent."
+        },
+        {
+          "effect": "Nausea and Vomiting",
+          "incidence": "Nausea 6–20%; vomiting 2–18%",
+          "notes": "Nausea and vomiting are common during titration. Taking doses exactly as directed (on an empty stomach with proper dilution) can help. Persistent vomiting or inability to keep doses down requires medical attention."
+        },
+        {
+          "effect": "Urinary Incontinence",
+          "incidence": "Children/adolescents ≈19%; adults ≈2–9%",
+          "notes": "Nighttime bedwetting can be distressing but is a known side effect. Practical strategies (protective bedding, bathroom planning) and possible dose adjustments can help."
+        },
+        {
+          "effect": "Confusion and Cognitive Changes",
+          "incidence": "Confusion 2–17%; disturbance in attention 1–4%",
+          "notes": "Some people feel confused, disoriented, or \"out of it,\" especially at night or shortly after dosing. This is a safety concern around stairs, bathrooms, and other hazards."
+        },
+        {
+          "effect": "Dizziness and Drowsiness",
+          "incidence": "Dizziness 4–15%; drowsiness 2–8%; intoxicated feeling 3%",
+          "notes": "You may feel dizzy, very sleepy, or as if you are intoxicated. Avoid getting out of bed unless absolutely necessary and move slowly if you must stand."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Children/adolescents ≈17%; adults ≈7%",
+          "notes": "Headaches can occur, sometimes more often in older adults. Persistent or severe headaches should prompt reassessment."
+        },
+        {
+          "effect": "Mood and Anxiety Symptoms",
+          "incidence": "Anxiety 2–8%; depression 1–7%; irritability 3%",
+          "notes": "New or worsening anxiety, low mood, irritability, or emotional swings should be monitored closely. Suicidal thoughts are an emergency."
+        },
+        {
+          "effect": "Sweating (Hyperhidrosis)",
+          "incidence": "≈1–3%",
+          "notes": "You may notice increased sweating or feeling clammy, especially at night. This can be uncomfortable but is usually not dangerous by itself."
+        },
+        {
+          "effect": "Somnambulism (Sleepwalking) and Parasomnias",
+          "incidence": "Somnambulism 1–6%; parasomnias (including sleep eating/driving) reported",
+          "notes": "Sleepwalking and complex sleep behaviors may put you at risk for injury. Bed partners often notice this first. Any concerning behaviors should be reported immediately."
+        },
+        {
+          "effect": "Limb and Joint Pain",
+          "incidence": "Limb pain ≈3%; arthralgia (postmarketing)",
+          "notes": "Some patients report limb or joint discomfort. This is rarely dangerous but can affect quality of life."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression and oxygen desaturation, including sleep apnea and central sleep apnea."
+        },
+        {
+          "risk": "Severe CNS depression, obtundation, and delirium with impaired consciousness."
+        },
+        {
+          "risk": "Serious psychiatric reactions: aggression, agitation, paranoia, psychosis (including acute psychosis), hallucinations, emotional lability, and panic attacks."
+        },
+        {
+          "risk": "Suicidal ideation and suicidal tendencies in adults and pediatric patients."
+        },
+        {
+          "risk": "Complex parasomnias, including sleep driving and sleep eating, with risk of injury."
+        },
+        {
+          "risk": "Cardiovascular effects: hypertension and fluid retention (postmarketing)."
+        },
+        {
+          "risk": "Severe falls or injuries related to sedation, dizziness, or parasomnias."
+        },
+        {
+          "risk": "Abuse-related harms: overdose, blackouts, and life-threatening toxicity when misused or combined with other depressants."
+        }
+      ],
+      "black_box_warning": "Sodium oxybate is a central nervous system (CNS) depressant. At recommended doses, obtundation and clinically significant respiratory depression have occurred in clinical trials. Sodium oxybate is the sodium salt of gamma-hydroxybutyrate (GHB). Abuse or misuse of illicit GHB, especially when combined with other CNS depressants, has been associated with seizures, respiratory depression, reduced consciousness, coma, and death. Because of these risks, sodium oxybate is only available through restricted REMS programs (Lumryz REMS or Xywav and Xyrem REMS).",
+      "contraindications": [
+        {
+          "contraindication": "Concomitant use with alcohol"
+        },
+        {
+          "contraindication": "Concomitant use with sedative-hypnotic agents"
+        },
+        {
+          "contraindication": "Succinic semialdehyde dehydrogenase deficiency"
+        },
+        {
+          "contraindication": "Hypersensitivity to sodium oxybate or any component of the formulation (Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "CNS depression: Impairs mental alertness and motor coordination. Patients must avoid hazardous activities (like driving) for at least 6 hours after a dose.",
+        "Respiratory depression: Can slow or suppress breathing, especially in people with underlying respiratory disease or when combined with other CNS depressants.",
+        "Behavioral and psychiatric effects: Associated with aggression, agitation, anxiety, confusion, emotional lability, depression, paranoia, psychosis, hallucinations, panic attacks, and suicidality.",
+        "Parasomnias: Sleepwalking and complex sleep behaviors (including sleep driving and sleep eating) have been reported.",
+        "High sodium load: Each nightly dose delivers substantial sodium; may worsen heart failure, hypertension, or kidney disease.",
+        "Abuse, misuse, diversion: Because sodium oxybate is closely related to illicit GHB, it has significant abuse potential. Misuse has been associated with blackouts, amnesia, and serious toxicity.",
+        "Withdrawal/tolerance: Tolerance and withdrawal have been reported at higher illicit doses, though not clearly defined at therapeutic doses."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Profound CNS depression, respiratory depression, coma, and death.",
+          "action": "Absolute contraindication. Do not use sodium oxybate if you drink alcohol; do not drink alcohol at any point while on therapy."
+        },
+        {
+          "interactant": "Sedative-Hypnotics (sleeping pills, benzodiazepines, \"Z-drugs\")",
+          "mechanism": "Markedly increased risk of respiratory depression, severe sedation, hypotension, and loss of consciousness.",
+          "action": "Contraindicated. Avoid all sedative-hypnotic agents with sodium oxybate."
+        },
+        {
+          "interactant": "Other CNS Depressants (opioids, sedating antidepressants, antipsychotics, antiseizure agents, muscle relaxants, general anesthetics, illicit depressants)",
+          "mechanism": "Additive or synergistic CNS and respiratory depression, hypotension, and risk of death.",
+          "action": "Avoid whenever possible. If no alternative exists, use the lowest effective doses with very close monitoring by experienced clinicians."
+        },
+        {
+          "interactant": "High Sodium Intake (diet + medication)",
+          "mechanism": "Worsening hypertension, heart failure, or kidney disease due to cumulative sodium burden.",
+          "action": "Monitor total daily sodium intake. Counsel patients with cardiovascular or renal disease to restrict dietary sodium and consider alternative treatments if the sodium load is unsafe."
+        },
+        {
+          "interactant": "High-Fat Meal Near Dose",
+          "mechanism": "Delayed absorption and reduced peak levels, which may blunt effect and alter timing of sleep onset.",
+          "action": "Administer sodium oxybate at least 2 hours after eating; avoid high-fat meals close to dosing."
+        },
+        {
+          "interactant": "Other Oxybate Products (eg, mixed-salt oxybate/Xywav)",
+          "mechanism": "Dose stacking, overdose, and severe CNS depression.",
+          "action": "Do not combine oxybate formulations. When switching between IR Xyrem and ER Lumryz, use the nearest equivalent total nightly dose as directed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and suicidality: new or worsening depression, suicidal ideation, suicidal behavior."
+        },
+        {
+          "parameter": "Behavioral and psychiatric symptoms: aggression, agitation, emotional lability, anxiety, confusion, paranoia, psychosis, hallucinations, panic attacks."
+        },
+        {
+          "parameter": "CNS depression and motor function: level of alertness, coordination, falls, ability to avoid hazardous activities for at least 6 hours after dosing."
+        },
+        {
+          "parameter": "Respiratory status: signs of respiratory depression, central or obstructive sleep apnea, and oxygen desaturation (especially in patients with obesity, narcolepsy, or pre-existing breathing disorders)."
+        },
+        {
+          "parameter": "Sleep-related behaviors: sleepwalking, sleep driving, sleep eating, and other parasomnias; evaluate for injury risk and safety concerns."
+        },
+        {
+          "parameter": "Weight and nutrition: weight loss and appetite, particularly in children and adolescents."
+        },
+        {
+          "parameter": "Genitourinary effects: urinary incontinence and nocturia."
+        },
+        {
+          "parameter": "Sodium-related effects: blood pressure, edema, heart failure symptoms, and kidney function in patients at risk."
+        },
+        {
+          "parameter": "Signs of abuse, misuse, and diversion: early refill requests, dose escalation, multiple prescribers or pharmacies, inconsistent histories, or evidence of recreational use."
+        },
+        {
+          "parameter": "Adherence to REMS requirements and safe storage/disposal instructions."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Sodium oxybate crosses the placenta. When used as an anesthetic during labor, it has been associated with slightly lower Apgar scores due to neonatal sleepiness. Data on therapeutic use in pregnancy are limited. Use only if potential benefits clearly outweigh risks and alternative treatments are not suitable.",
+        "lactation": "GHB is naturally present in breast milk and increases with sodium oxybate therapy. Limited data suggest avoiding breastfeeding between the two bedtime doses and for 6–8 hours after the second dose to reduce infant exposure. The decision to continue breastfeeding should weigh the benefits of breastfeeding, the importance of therapy to the mother, and potential risks to the infant.",
+        "pediatric": "Approved for narcolepsy with cataplexy or excessive daytime sleepiness in patients ≥7 years. Pediatric dosing is weight-based and typically uses the IR formulation for initiation. Children and adolescents may be more prone to weight loss, urinary incontinence, and behavioral effects and require close monitoring.",
+        "geriatric": "Limited data suggest a higher incidence of headaches and potentially increased vulnerability to CNS effects in older adults (≥65 years). Use extra caution, start low, titrate slowly, and monitor for cognitive changes, falls, and respiratory issues.",
+        "renal_impairment": "Although only a small amount of drug is excreted unchanged in urine, the high sodium content can worsen renal and cardiovascular conditions. Use with caution in patients with kidney disease and those on sodium-restricted diets.",
+        "hepatic_impairment": "In cirrhosis (Child-Pugh A and C), AUC is doubled, half-life is prolonged, and clearance is reduced. IR dosing should begin at 50% of the usual starting dose with slow titration. ER Lumryz should not be used to start therapy in patients with hepatic impairment."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2002
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid; significant first-pass metabolism; high-fat meals delay and blunt peak levels.",
+          "bioavailability": "≈88%",
+          "peak_plasma": "Immediate-release: 30–75 minutes; Extended-release: ≈90 minutes",
+          "half_life": "30–60 minutes",
+          "metabolism": "Primarily via the Krebs cycle to carbon dioxide and water; secondarily via beta-oxidation; no active metabolites; saturable metabolism",
+          "excretion": "Primarily as carbon dioxide via the lungs; <5% excreted unchanged in urine; negligible fecal excretion",
+          "protein_binding": "<1%",
+          "food_effect": "High-fat meals delay absorption (Tmax ↑ ~1–1.25 hours) and reduce Cmax by ~33–59% and AUC by ~14–37%. Take at least 2 hours after eating."
+        },
+        "dosing": {
+          "titration": "Sodium oxybate dosing is highly individualized. Doses are titrated slowly based on response and side effects, and differ by formulation (Xyrem IR vs Lumryz ER), age, and weight."
+        }
+      }
     }
   },
   "sections": [
@@ -87,7 +264,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experiences on sodium oxybate vary widely, but these patterns show up often in clinical practice:",
       "items": [
         {
           "category": "Rapid \"Lights Out\" Effect",
@@ -142,7 +318,8 @@
           ],
           "note": "Weight loss, urinary incontinence, and sodium-related fluid shifts can occur, especially in children and adolescents."
         }
-      ]
+      ],
+      "intro": "Experiences on sodium oxybate vary widely, but these patterns show up often in clinical practice:"
     },
     {
       "type": "warnings",
@@ -250,7 +427,6 @@
     {
       "type": "interactions",
       "heading": "Drug, Sodium, & Food Interactions",
-      "intro": "Sodium oxybate is highly interactive with other CNS depressants and delivers a large sodium load. Food strongly affects how quickly and how much drug is absorbed.",
       "items": [
         {
           "with": "Alcohol",
@@ -282,7 +458,8 @@
           "risk": "Dose stacking, overdose, and severe CNS depression.",
           "action": "Do not combine oxybate formulations. When switching between IR Xyrem and ER Lumryz, use the nearest equivalent total nightly dose as directed."
         }
-      ]
+      ],
+      "intro": "Sodium oxybate is highly interactive with other CNS depressants and delivers a large sodium load. Food strongly affects how quickly and how much drug is absorbed."
     },
     {
       "type": "onset_duration",
@@ -405,21 +582,6 @@
       "text": "Sodium oxybate is a specialized therapy reserved for moderate to severe narcolepsy with cataplexy or marked daytime sleepiness when other approaches are not enough. It is usually prescribed and monitored by clinicians with experience in sleep medicine and psychopharmacology. Because of its boxed warnings, REMS restrictions, abuse potential, complex dosing, and high sodium content, sodium oxybate is not appropriate for routine insomnia or milder sleep complaints. Mixed-salt oxybate (Xywav) may be favored when sodium load is a major concern, whereas sodium oxybate may be used where its particular formulation or accessibility is preferred and the sodium burden is acceptable."
     }
   ],
-  "seo": {
-    "title": "Sodium Oxybate (Xyrem, Lumryz): Uses, Dosing, Side Effects, Sodium Load & REMS",
-    "description": "Sodium oxybate for narcolepsy: how Xyrem and Lumryz work, once- vs twice-nightly dosing, boxed warning for respiratory depression and abuse, high sodium content, REMS access, side effects, and safety monitoring.",
-    "canonical": "https://www.heypsych.com/treatments/sodium-oxybate-xyrem-lumryz",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is sodium oxybate used for?",
@@ -465,5 +627,20 @@
       "q": "Is sodium oxybate safe during pregnancy or breastfeeding?",
       "a": "Sodium oxybate crosses the placenta and appears in breast milk. Data are limited, but fetal and infant exposure can lead to sedation and breathing problems. Decisions about using it during pregnancy or breastfeeding must be individualized and made with a clinician who understands your sleep disorder and overall medical situation."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Sodium Oxybate (Xyrem, Lumryz): Uses, Dosing, Side Effects, Sodium Load & REMS",
+    "description": "Sodium oxybate for narcolepsy: how Xyrem and Lumryz work, once- vs twice-nightly dosing, boxed warning for respiratory depression and abuse, high sodium content, REMS access, side effects, and safety monitoring.",
+    "canonical": "https://www.heypsych.com/treatments/sodium-oxybate-xyrem-lumryz",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,83 +1,192 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "iv-ketamine-infusion",
-  "type": "interventional",
-  "name": "IV Ketamine Infusion",
-  "summary": "An interventional psychiatric treatment delivering ketamine intravenously for rapid relief of certain mood and pain disorders, particularly treatment-resistant depression.",
-  "description": "IV ketamine infusion involves administering a sub-anesthetic dose of ketamine via intravenous drip under medical supervision. It is known for its rapid onset antidepressant effects, often within hours, making it a promising option for treatment-resistant depression, suicidal ideation, and certain pain syndromes. Ketamine acts primarily as an NMDA receptor antagonist, leading to downstream effects on glutamate signaling, neuroplasticity, and brain-derived neurotrophic factor (BDNF) release. Treatments are performed in clinical settings with continuous monitoring due to the potential for dissociation, cardiovascular effects, and other acute side effects.",
-  "category": "interventional/psychedelic-assisted-therapy",
-  "tags": [
-    "ketamine",
-    "psychedelic",
-    "NMDA antagonist",
-    "rapid-acting antidepressant",
-    "infusion therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "iv-ketamine-infusion",
+    "name": "IV Ketamine Infusion"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/psychedelic-assisted-therapy",
     "intervention_types": [
       "Pharmacologic",
       "Infusion therapy"
     ],
-    "treatment_types": [
-      "Psychedelic-assisted therapy",
-      "Rapid-acting antidepressant"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Pain Management"
-    ],
-    "delivery_methods": [
-      "Intravenous drip in clinic"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "40–60 minutes",
-    "treatment_duration": [
-      "Short-term induction",
-      "Maintenance"
-    ],
-    "specialty_areas": [
-      "Mood Disorders",
-      "Pain Medicine"
+    "tags": [
+      "ketamine",
+      "psychedelic",
+      "NMDA antagonist",
+      "rapid-acting antidepressant",
+      "infusion therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-resistant depression",
-      "Acute suicidal ideation"
-    ],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Bipolar depression (depressive episodes)",
-      "Post-traumatic stress disorder",
-      "Obsessive-compulsive disorder (off-label)",
-      "Chronic neuropathic pain",
-      "Complex regional pain syndrome"
-    ],
-    "off_label_uses": [
-      "Anxiety disorders",
-      "Substance use disorder relapse prevention"
-    ],
-    "contraindications": [
-      "Uncontrolled hypertension",
-      "History of psychosis",
-      "Aneurysmal vascular disease",
-      "Pregnancy or breastfeeding"
-    ],
-    "safety_profile": "Generally safe under medical supervision. Transient increases in blood pressure and heart rate are common; dissociation, dizziness, nausea, and perceptual disturbances may occur.",
-    "evidence_level": "High for treatment-resistant depression; moderate for PTSD and chronic pain.",
-    "research_support": "Multiple randomized controlled trials support rapid antidepressant effects; emerging evidence for PTSD and pain conditions.",
-    "invasiveness": "Minimally invasive",
-    "efficacy_rating": {
-      "treatment_resistant_depression": 5,
-      "suicidal_ideation": 5,
-      "ptsd": 3,
-      "chronic_pain": 3,
-      "overall_tolerability": 4
+  "summary": "An interventional psychiatric treatment delivering ketamine intravenously for rapid relief of certain mood and pain disorders, particularly treatment-resistant depression.",
+  "description": "IV ketamine infusion involves administering a sub-anesthetic dose of ketamine via intravenous drip under medical supervision. It is known for its rapid onset antidepressant effects, often within hours, making it a promising option for treatment-resistant depression, suicidal ideation, and certain pain syndromes. Ketamine acts primarily as an NMDA receptor antagonist, leading to downstream effects on glutamate signaling, neuroplasticity, and brain-derived neurotrophic factor (BDNF) release. Treatments are performed in clinical settings with continuous monitoring due to the potential for dissociation, cardiovascular effects, and other acute side effects.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "acute-suicidal-ideation",
+          "condition_name": "Acute suicidal ideation",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression-depressive-episodes",
+          "condition_name": "Bipolar depression (depressive episodes)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder-off-label",
+          "condition_name": "Obsessive-compulsive disorder (off-label)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-neuropathic-pain",
+          "condition_name": "Chronic neuropathic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-regional-pain-syndrome",
+          "condition_name": "Complex regional pain syndrome",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "substance-use-disorder-relapse-prevention",
+          "condition_name": "Substance use disorder relapse prevention",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for treatment-resistant depression; moderate for PTSD and chronic pain.",
+      "efficacy_ratings": {
+        "treatment_resistant_depression": {
+          "rating": 5
+        },
+        "suicidal_ideation": {
+          "rating": 5
+        },
+        "ptsd": {
+          "rating": 3
+        },
+        "chronic_pain": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Multiple randomized controlled trials support rapid antidepressant effects; emerging evidence for PTSD and pain conditions."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term induction; Maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Intravenous drip in clinic"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "40–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe under medical supervision. Transient increases in blood pressure and heart rate are common; dissociation, dizziness, nausea, and perceptual disturbances may occur.",
+      "common_adverse_effects": [
+        {
+          "effect": "Dissociation"
+        },
+        {
+          "effect": "Increased blood pressure"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hallucinations causing severe distress"
+        },
+        {
+          "risk": "Loss of consciousness"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled hypertension",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Aneurysmal vascular disease",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Substance use disorders",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Pregnancy",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe cardiovascular disease",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid unless benefits clearly outweigh risks."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Pharmacologic, Infusion therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Administer ketamine 0.5 mg/kg IV over 40 minutes (common research protocol).\nMonitor vitals continuously.\nProvide a calm, low-stimulation environment to minimize distress from dissociation."
+      }
     }
   },
   "sections": [
@@ -226,6 +335,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Zarate CA Jr, et al. A randomized trial of an NMDA antagonist in treatment-resistant major depression. Arch Gen Psychiatry. 2006.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16490897/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Feder A, et al. Efficacy of intravenous ketamine for treatment of chronic PTSD: A randomized clinical trial. Am J Psychiatry. 2014.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25024300/"
+    }
+  ],
   "seo": {
     "title": "IV Ketamine Infusion",
     "description": "Clinical guide to IV ketamine infusion for treatment-resistant depression, suicidal ideation, PTSD, and chronic pain.",
@@ -238,5 +361,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for treatment-resistant depression; moderate for PTSD and chronic pain."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for treatment-resistant depression; moderate for PTSD and chronic pain."
+    ]
   }
 }

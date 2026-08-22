@@ -1,88 +1,259 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "methadone",
-  "type": "medication",
-  "name": "Methadone (Dolophine, Methadose)",
-  "summary": "Long-acting opioid agonist used to treat opioid use disorder (OUD). It reduces withdrawal and cravings, but carries serious overdose and heart-rhythm risks—especially early in treatment and when mixed with sedatives.",
-  "description": "Methadone is a long-acting opioid medicine used in structured programs to treat opioid use disorder. At the right dose, it stops withdrawal, quiets cravings, and blocks the “high” from other opioids. It can also slow breathing and, in some people, prolong the QT interval (a heart rhythm risk), especially during dose changes. Mixing methadone with alcohol, benzodiazepines, gabapentinoids, or other sedatives can be fatal. Dosing must be individualized and increased slowly because methadone builds up over several days.",
-  "patient_summary": "Methadone is a long-acting opioid medicine used in structured programs to treat opioid use disorder. At the right dose, it stops withdrawal, quiets cravings, and blocks the “high” from other opioids. It can also slow breathing and, in some people, prolong the QT interval (a heart rhythm risk), especially during dose changes. Mixing methadone with alcohol, benzodiazepines, gabapentinoids, or other sedatives can be fatal. Dosing must be individualized and increased slowly because methadone builds up over several days.",
-  "category": "medications/opioid-use-disorder",
-  "metadata": {
-    "drug_classes": [
-      "Opioid Agonist",
-      "Medication for Opioid Use Disorder (MOUD)",
-      "Analgesic (Opioid)"
-    ],
+  "identity": {
+    "slug": "methadone",
+    "name": "Methadone (Dolophine, Methadose)",
+    "generic_name": "methadone",
     "brand_names": [
       "Dolophine",
       "Methadose",
       "Diskets",
       "Methadone HCl Intensol",
       "Methadose Sugar-Free"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Injection (IM/IV/SUBQ)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule II (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1947,
-    "pharmacologic_category": "Opioid Agonist, Long-Acting",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Opioid Use Disorder (OUD), Maintenance Treatment",
-      "Opioid Withdrawal, Short-Term Medically Supervised"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "opioid-use-disorder",
-        "relationship": "primary_treatment",
-        "context": "Methadone is a core medication treatment for OUD. The goal isn’t to “snow” someone—it’s to hold them steady: no withdrawal, no cravings, and less reinforcement from other opioids."
-      },
-      {
-        "slug": "opioid-withdrawal",
-        "relationship": "primary_treatment",
-        "context": "Methadone can be used short-term to stabilize opioid withdrawal, but outcomes are generally better with ongoing maintenance treatment when appropriate."
-      },
-      {
-        "slug": "substance-induced-anxiety",
-        "relationship": "supportive_treatment",
-        "context": "When opioid withdrawal is driving anxiety, agitation, and insomnia, treating the withdrawal can dramatically improve those symptoms. Methadone doesn’t treat primary anxiety disorders—it treats opioid physiology."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to methadone or any component of the formulation",
-      "Significant respiratory depression",
-      "Acute or severe bronchial asthma in an unmonitored setting or in the absence of resuscitative equipment",
-      "Known or suspected gastrointestinal obstruction, including paralytic ileus"
-    ],
-    "efficacy_response": {
-      "metric": "Stabilization of withdrawal and cravings",
-      "percentage_value": "Varies",
-      "comparison_data": "Varies by dose, tolerance, and treatment setting",
-      "patient_text": "When methadone dosing is done carefully and monitored closely, many people feel a very clear shift: withdrawal calms down, cravings get quieter, and daily life becomes more manageable. The dose has to be individualized and increased slowly because methadone accumulates over the first several days.",
-      "citation_tag": "FDA Labeling / SAMHSA Guidance"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/opioid-use-disorder",
+    "drug_classes": [
+      "Opioid Agonist",
+      "Medication for Opioid Use Disorder (MOUD)",
+      "Analgesic (Opioid)"
+    ]
+  },
+  "summary": "Long-acting opioid agonist used to treat opioid use disorder (OUD). It reduces withdrawal and cravings, but carries serious overdose and heart-rhythm risks—especially early in treatment and when mixed with sedatives.",
+  "description": "Methadone is a long-acting opioid medicine used in structured programs to treat opioid use disorder. At the right dose, it stops withdrawal, quiets cravings, and blocks the “high” from other opioids. It can also slow breathing and, in some people, prolong the QT interval (a heart rhythm risk), especially during dose changes. Mixing methadone with alcohol, benzodiazepines, gabapentinoids, or other sedatives can be fatal. Dosing must be individualized and increased slowly because methadone builds up over several days.",
+  "patient_summary": "Methadone is a long-acting opioid medicine used in structured programs to treat opioid use disorder. At the right dose, it stops withdrawal, quiets cravings, and blocks the “high” from other opioids. It can also slow breathing and, in some people, prolong the QT interval (a heart rhythm risk), especially during dose changes. Mixing methadone with alcohol, benzodiazepines, gabapentinoids, or other sedatives can be fatal. Dosing must be individualized and increased slowly because methadone builds up over several days.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "opioid-use-disorder",
+          "condition_name": "Opioid Use Disorder",
+          "relationship": "primary_indication",
+          "context": "Methadone is a core medication treatment for OUD. The goal isn’t to “snow” someone—it’s to hold them steady: no withdrawal, no cravings, and less reinforcement from other opioids.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "opioid-withdrawal",
+          "condition_name": "Opioid Withdrawal",
+          "relationship": "primary_indication",
+          "context": "Methadone can be used short-term to stabilize opioid withdrawal, but outcomes are generally better with ongoing maintenance treatment when appropriate.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "substance-induced-anxiety",
+          "condition_name": "Substance Induced Anxiety",
+          "relationship": "secondary_indication",
+          "context": "When opioid withdrawal is driving anxiety, agitation, and insomnia, treating the withdrawal can dramatically improve those symptoms. Methadone doesn’t treat primary anxiety disorders—it treats opioid physiology."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well-absorbed orally with highly variable bioavailability",
-      "bioavailability": "36% to 100% (highly variable)",
-      "onset": "Oral: ~0.5 to 1 hour (analgesic onset); stabilization effects may evolve over the first several days as levels accumulate",
-      "peak_plasma": "1 to 7.5 hours",
-      "half_life": "8 to 59 hours (may be longer in hepatic impairment; changes during early treatment can occur due to auto-induction in some patients)",
-      "duration_oral": "Craving suppression: ~24 to 36 hours; early analgesic duration may be shorter than respiratory depressant effects",
-      "metabolism": "Hepatic (primarily CYP3A4, CYP2B6; also CYP2C19, CYP2C9, CYP2D6) to inactive metabolites",
-      "excretion": "Urine (<10% unchanged); excretion increases with acidic urine; tissue storage can prolong effect",
-      "protein_binding": "85% to 90%",
-      "food_effect": "Grapefruit can raise levels (CYP interaction)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: ~0.5 to 1 hour (analgesic onset); stabilization effects may evolve over the first several days as levels accumulate"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Injection (IM/IV/SUBQ)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Common (dose- and interaction-dependent)",
+          "notes": "Sedation is not just annoying—it can be a warning sign. If you’re getting visibly sleepy, nodding, or hard to wake (especially 2 to 4 hours after dosing), the dose may be too high or you may be combining methadone with something sedating."
+        },
+        {
+          "effect": "Constipation (Opioid-Induced Constipation)",
+          "incidence": "Common (often persistent)",
+          "notes": "Constipation is a top reason people hate opioids, and methadone is no exception. Plan for it early: hydration, fiber if tolerated, activity, and clinician-approved bowel regimens. Don’t wait until it becomes severe."
+        },
+        {
+          "effect": "Nausea / GI Upset",
+          "incidence": "Common",
+          "notes": "Nausea often shows up early and may settle as your body adjusts. If vomiting or dehydration happens, your dosing and safety plan may need reassessment."
+        },
+        {
+          "effect": "Sweating",
+          "incidence": "Common",
+          "notes": "Some people sweat a lot on methadone. It’s not dangerous by itself, but it can be uncomfortable and socially stressful."
+        },
+        {
+          "effect": "Sex Hormone Suppression (long-term opioid effect)",
+          "incidence": "Variable",
+          "notes": "Long-term opioid exposure can reduce sex hormones and impact libido, mood, energy, and bone health. If you feel flat, exhausted, or your sexual function changes, bring it up—this is a real medical issue, not a character flaw."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression / overdose: slow, shallow breathing; extreme sleepiness; blue lips; unresponsiveness. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "QT prolongation and torsades de pointes: fainting, palpitations, sudden dizziness. EMERGENCY EVALUATION NEEDED."
+        },
+        {
+          "risk": "Severe sedation from interactions (benzodiazepines, alcohol, gabapentinoids, sleep meds): can progress to coma/death."
+        },
+        {
+          "risk": "Opioid withdrawal if abruptly reduced or stopped: agitation, anxiety, insomnia, GI distress, muscle aches; can be prolonged."
+        },
+        {
+          "risk": "Opioid-induced hyperalgesia: pain sensitivity can worsen paradoxically; may require dose reduction or opioid rotation under expert care."
+        },
+        {
+          "risk": "Hypoglycemia: uncommon but potentially serious—watch for sweating, shakiness, confusion, faintness (especially at higher doses or in people with diabetes risk factors)."
+        }
+      ],
+      "black_box_warning": "Methadone exposes patients and other users to the risks of opioid addiction, abuse, and misuse, which can lead to overdose and death. Serious, life-threatening, or fatal respiratory depression may occur, especially during initiation or following a dose increase. Methadone can prolong the QT interval and cause dangerous arrhythmias (including torsades de pointes). Concomitant use with benzodiazepines or other CNS depressants, including alcohol, may result in profound sedation, respiratory depression, coma, and death.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to methadone or any component of the formulation"
+        },
+        {
+          "contraindication": "Significant respiratory depression"
+        },
+        {
+          "contraindication": "Acute or severe bronchial asthma in an unmonitored setting or in the absence of resuscitative equipment"
+        },
+        {
+          "contraindication": "Known or suspected gastrointestinal obstruction, including paralytic ileus"
+        }
+      ],
+      "precautions": [
+        "Methadone accumulates: full effect on a dose may not be seen for 3 to 5 days—this is why fast titration can be deadly",
+        "QT prolongation risk: higher doses, electrolyte problems, liver impairment, and QT-prolonging meds increase risk",
+        "Accidental ingestion of even one dose (especially in children) can be fatal",
+        "Medication errors: oral solutions come in different concentrations—mixing up mg and mL can cause overdose and death",
+        "Pregnancy: neonatal opioid withdrawal syndrome (NOWS) is expected and treatable, but can be life-threatening if not recognized and managed",
+        "Long-term opioid risks are now emphasized in FDA labeling updates (addiction, misuse, overdose, and harm from unsafe discontinuation), plus stronger interaction warnings including with gabapentinoids"
+      ],
+      "interactions": [
+        {
+          "interactant": "Benzodiazepines (alprazolam, clonazepam, lorazepam) and other sedatives",
+          "mechanism": "Profound sedation, respiratory depression, coma, death.",
+          "action": "Avoid when possible. If there is no alternative, use the lowest effective doses, limit duration, and monitor closely. Visible sedation is a red flag—consider holding or adjusting dosing under medical supervision."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "High-risk, potentially fatal respiratory depression.",
+          "action": "Do not drink alcohol while on methadone."
+        },
+        {
+          "interactant": "Gabapentinoids (gabapentin, pregabalin)",
+          "mechanism": "Additive CNS and respiratory depression (risk is higher with higher doses, older age, sleep apnea, and other sedatives).",
+          "action": "Use extreme caution; avoid stacking sedatives. Monitor for oversedation and breathing changes."
+        },
+        {
+          "interactant": "CYP inhibitors (CYP3A4, 2B6, 2C19, 2C9, 2D6 inhibitors)",
+          "mechanism": "Increased methadone levels → sedation and potentially fatal respiratory depression.",
+          "action": "If an inhibitor is started, stopped, or dose-changed, reassess sedation/withdrawal and adjust methadone dosing carefully."
+        },
+        {
+          "interactant": "CYP inducers (especially CYP3A4/2B6 inducers)",
+          "mechanism": "Lower methadone levels → withdrawal, cravings, destabilization; stopping an inducer can then raise methadone levels and cause overdose.",
+          "action": "Treat inducer changes as high-risk transitions. Monitor closely and adjust dosing cautiously."
+        },
+        {
+          "interactant": "QT-prolonging medications",
+          "mechanism": "Additive QT prolongation → torsades de pointes risk.",
+          "action": "Check QTc risk factors, correct electrolytes, and consider ECG monitoring when combining QT-prolonging meds."
+        },
+        {
+          "interactant": "Grapefruit or grapefruit juice",
+          "mechanism": "Can raise methadone levels in some people.",
+          "action": "Avoid or use consistently with monitoring; report increased sedation."
+        },
+        {
+          "interactant": "Mixed agonist/antagonist opioids or partial agonists (e.g., buprenorphine started too early)",
+          "mechanism": "Precipitated withdrawal if transitioned incorrectly.",
+          "action": "Transitions must be planned. For buprenorphine, methadone is often tapered to ~30 to 40 mg and held before a carefully timed induction."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and mental status (especially during initiation and dose changes): watch for nodding, confusion, slowed thinking, or being hard to arouse"
+        },
+        {
+          "parameter": "Respiratory status: slow or shallow breathing, snoring/apnea, daytime sleepiness—risk rises with other sedatives, sleep apnea, COPD, and early titration"
+        },
+        {
+          "parameter": "QTc monitoring (ECG): baseline ECG for patients with risk factors; repeat after initiation and after significant dose increases; reassess if syncope/palpitations occur"
+        },
+        {
+          "parameter": "Electrolytes (when QT risk is present): potassium and magnesium, especially with vomiting/diuretics or other medical illness"
+        },
+        {
+          "parameter": "Drug interactions: review changes in CYP inhibitors/inducers, QT-prolonging meds, and all CNS depressants (including gabapentinoids)"
+        },
+        {
+          "parameter": "Misuse/diversion risk: early refills, lost medication reports, escalating dose requests, use of multiple prescribers, or continued use despite harm"
+        },
+        {
+          "parameter": "Toxicology testing: baseline and periodic monitoring as clinically appropriate (especially in long-term treatment)"
+        },
+        {
+          "parameter": "PDMP checks: baseline and periodically to reduce duplicate controlled prescriptions"
+        },
+        {
+          "parameter": "In OUD treatment: monitor cravings, withdrawal breakthrough, illicit opioid use, and functional outcomes (housing, work, relationships, safety)"
+        },
+        {
+          "parameter": "Infectious disease screening in OUD care: hepatitis and HIV testing per clinical guidance"
+        },
+        {
+          "parameter": "Constipation plan: bowel regimen and monitoring for severe constipation or obstruction symptoms"
+        },
+        {
+          "parameter": "Metabolic/endocrine symptoms: libido changes, fatigue, mood flattening, possible hypogonadism; consider glucose monitoring if symptoms suggest hypoglycemia or at higher doses"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Methadone crosses the placenta. For pregnant patients with OUD, opioid agonist treatment is recommended by major guidelines. Neonatal opioid withdrawal syndrome (NOWS/NAS) is expected and treatable but can be life-threatening if not recognized and managed. As pregnancy progresses, methadone clearance may increase and the half-life may decrease, sometimes requiring dose adjustments or split dosing. Do not abruptly discontinue opioids during pregnancy; tapering, if appropriate, should be planned to minimize maternal withdrawal risk.",
+        "lactation": "Methadone is present in breast milk and infants can be exposed. Breastfeeding is often allowed and may help mitigate newborn withdrawal in OUD treatment when there are no contraindications (e.g., ongoing illicit substance use). Infants should be monitored for excessive sleepiness, poor feeding, limpness, or breathing difficulty—especially during maternal dose titration or if methadone is started postpartum.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Use extreme caution and start low. Older adults may be more sensitive to sedation, respiratory depression, falls, constipation, and delirium. For OUD treatment, lower initial oral doses (e.g., 10 to 20 mg) are commonly recommended in patients >60 years of age, with slow titration and close monitoring.",
+        "renal_impairment": "Methadone levels are not substantially altered in many patients with kidney impairment, but advanced kidney disease often comes with multiple comorbidities and higher interaction/QT risk. In severe renal impairment (e.g., CrCl ≤10 mL/min) or dialysis, some references recommend starting at 50% to 75% of typical doses and titrating gradually with close monitoring.",
+        "hepatic_impairment": "Use with caution. Methadone is hepatically metabolized and the half-life can be prolonged in severe liver impairment. In cirrhosis or significant hepatic dysfunction, use the lowest effective dose and titrate more gradually; monitor for oversedation and encephalopathy risk."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1947
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well-absorbed orally with highly variable bioavailability",
+          "bioavailability": "36% to 100% (highly variable)",
+          "peak_plasma": "1 to 7.5 hours",
+          "half_life": "8 to 59 hours (may be longer in hepatic impairment; changes during early treatment can occur due to auto-induction in some patients)",
+          "metabolism": "Hepatic (primarily CYP3A4, CYP2B6; also CYP2C19, CYP2C9, CYP2D6) to inactive metabolites",
+          "excretion": "Urine (<10% unchanged); excretion increases with acidic urine; tissue storage can prolong effect",
+          "protein_binding": "85% to 90%",
+          "food_effect": "Grapefruit can raise levels (CYP interaction)"
+        },
+        "dosing": {
+          "titration": "Methadone dosing for opioid use disorder is highly individualized. The biggest safety rule: go slow. Methadone builds up over several days, so a dose that feels fine on day 1 can become too strong by day 3 to 5."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping methadone abruptly can trigger a long, miserable withdrawal and can increase overdose risk if someone returns to opioids after losing tolerance. Tapering should be individualized, slow, and collaborative—especially in OUD, where stability and relapse prevention matter."
+        }
+      }
     }
   },
   "sections": [
@@ -101,7 +272,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s experience is different, but these are common themes people report when methadone is started and dosed carefully:",
       "items": [
         {
           "category": "Withdrawal Relief (first 1-4 hours, then steadier over days)",
@@ -146,7 +316,8 @@
             "It’s hard, but stability is worth it."
           ]
         }
-      ]
+      ],
+      "intro": "Everyone’s experience is different, but these are common themes people report when methadone is started and dosed carefully:"
     },
     {
       "type": "onset_duration",
@@ -163,10 +334,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Methadone’s effectiveness is about stability: no withdrawal, reduced cravings, and less reinforcement from other opioids. The key is individualized dosing and slow titration—methadone can feel “fine” at first and then become too strong as it accumulates over the next few days. When it’s done right, people often report they can finally focus on therapy, relationships, work, and the bigger recovery plan.",
       "metric": "Stability Over 24 Hours",
       "value": "Dose-dependent",
       "comparison": "Not applicable",
-      "text": "Methadone’s effectiveness is about stability: no withdrawal, reduced cravings, and less reinforcement from other opioids. The key is individualized dosing and slow titration—methadone can feel “fine” at first and then become too strong as it accumulates over the next few days. When it’s done right, people often report they can finally focus on therapy, relationships, work, and the bigger recovery plan.",
       "clinical_details": "Methadone is a long-acting opioid agonist used in structured OUD treatment. Clinical outcomes depend heavily on careful induction, appropriate dose titration, treatment retention, and wraparound services. In real life, the biggest risks cluster early: initiation, conversion from other opioids, and dose increases—because methadone’s peak respiratory depressant effects can lag behind the perceived effects.",
       "citation": {
         "authors": "Not applicable",
@@ -253,7 +424,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Methadone interactions can be life-threatening because they can either raise methadone levels (causing overdose) or disrupt heart rhythm (QT prolongation). The most dangerous interactions are with other CNS depressants.",
       "items": [
         {
           "with": "Benzodiazepines (alprazolam, clonazepam, lorazepam) and other sedatives",
@@ -295,7 +465,8 @@
           "risk": "Precipitated withdrawal if transitioned incorrectly.",
           "action": "Transitions must be planned. For buprenorphine, methadone is often tapered to ~30 to 40 mg and held before a carefully timed induction."
         }
-      ]
+      ],
+      "intro": "Methadone interactions can be life-threatening because they can either raise methadone levels (causing overdose) or disrupt heart rhythm (QT prolongation). The most dangerous interactions are with other CNS depressants."
     },
     {
       "type": "tapering",
@@ -378,21 +549,6 @@
       "text": "Methadone is one of the core medications for opioid use disorder. It’s especially helpful for people who need strong withdrawal and craving control, who have not done well on other treatments, or who benefit from the structure of an opioid treatment program. It requires careful induction and monitoring because methadone accumulates and can cause delayed overdose. In many regions, outpatient OUD methadone is dispensed under strict regulations (often through certified programs), which is about safety as much as it is about policy."
     }
   ],
-  "seo": {
-    "title": "Methadone: Uses for Opioid Use Disorder, Dosing, Risks, QT Prolongation & Withdrawal",
-    "description": "Methadone for opioid use disorder: what it’s for, how dosing works, why it accumulates, major risks (overdose, QT prolongation), dangerous interactions with benzos/alcohol/gabapentin, naloxone safety, and tapering basics.",
-    "canonical": "[https://www.heypsych.com/treatments/methadone](https://www.heypsych.com/treatments/methadone)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is methadone used for in psychiatry/addiction treatment?",
@@ -438,5 +594,20 @@
       "q": "How do people taper off methadone safely?",
       "a": "Slowly and with a plan. A common long-term approach is reducing by about 5% to 10% every 1 to 2 weeks, with pauses when withdrawal or cravings break through. The taper schedule should match your goals and stability, and it should include relapse-prevention planning because overdose risk rises after tolerance drops."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Methadone: Uses for Opioid Use Disorder, Dosing, Risks, QT Prolongation & Withdrawal",
+    "description": "Methadone for opioid use disorder: what it’s for, how dosing works, why it accumulates, major risks (overdose, QT prolongation), dangerous interactions with benzos/alcohol/gabapentin, naloxone safety, and tapering basics.",
+    "canonical": "[https://www.heypsych.com/treatments/methadone](https://www.heypsych.com/treatments/methadone)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,11 +1,25 @@
 /**
+ * @deprecated This module is deprecated in favor of the Central Indexation Firewall.
+ * Use `@/lib/seo/index-decision-service` instead for all indexability decisions.
+ *
+ * MIGRATION STATUS:
+ * - Guide sitemap: Migrated to index-decision-service
+ * - Guide page metadata: Migrated to index-decision-service
+ * - Content engine: Still imports checkIndexEligibility (needs migration)
+ *
+ * DO NOT ADD NEW CONSUMERS. This file will be removed after full migration.
+ *
+ * @see src/lib/seo/index-decision-service.ts - The new Central Indexation Firewall
+ *
+ * -------- LEGACY DOCUMENTATION --------
+ *
  * INDEX ELIGIBILITY GATE
- * 
+ *
  * The difference between dominance and death.
- * 
+ *
  * RULE: Generate unlimited pages. Index ONLY pages that earn it.
  * Everything else renders with noindex,follow.
- * 
+ *
  * This prevents:
  * - Crawl budget waste
  * - Spam signals

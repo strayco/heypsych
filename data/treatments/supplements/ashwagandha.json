@@ -1,22 +1,25 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ashwagandha",
-  "type": "supplement",
-  "name": "Ashwagandha (Withania somnifera)",
-  "summary": "An adaptogenic herb traditionally used in Ayurvedic medicine for stress relief, anxiety reduction, improved sleep, and enhanced vitality.",
-  "description": "Ashwagandha (Withania somnifera), also known as Indian ginseng or winter cherry, is a well-known adaptogen in Ayurvedic medicine. Its active compounds, called withanolides, are thought to modulate stress responses, reduce cortisol, and improve sleep quality. Modern research supports its use for anxiety, stress, mild depression, sleep disturbances, and physical performance. It has also been studied for potential cognitive benefits and hormonal balance, particularly in men with low testosterone.",
-  "category": "supplements",
-  "tags": [
-    "adaptogen",
-    "herbal",
-    "stress",
-    "anxiety",
-    "sleep",
-    "cognition"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract (root, sometimes leaf)",
-    "natural_source": "Withania somnifera root",
+  "identity": {
+    "slug": "ashwagandha",
+    "name": "Ashwagandha (Withania somnifera)",
+    "generic_name": "ashwagandha",
+    "brand_names": [
+      "KSM-66 Ashwagandha",
+      "Sensoril",
+      "Withania somnifera"
+    ],
+    "aliases": [
+      "Withania somnifera",
+      "Indian ginseng",
+      "Winter cherry"
+    ],
+    "wikidata_qid": "Q158856"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Stress Reduction",
       "Anxiety",
@@ -28,81 +31,186 @@
       "Endocrine Modulation",
       "Neuroprotective"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "KSM-66 Ashwagandha",
-      "Sensoril",
-      "Withania somnifera"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Not FDA-approved; marketed as dietary supplement in U.S.",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Integrative Medicine",
-      "Endocrinology",
-      "Sports Medicine"
-    ],
-    "wikidata_qid": "Q158856"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Stress",
-      "Anxiety",
-      "Sleep disturbances",
-      "Mild depression"
-    ],
-    "off_label_uses": [
-      "Cognitive enhancement",
-      "Testosterone support",
-      "Exercise recovery",
-      "Fatigue"
-    ],
-    "contraindications": [
-      "Pregnancy (risk of uterine stimulation)",
-      "Hypersensitivity to ashwagandha"
-    ],
-    "monitoring_required": [
-      "Thyroid function (in susceptible individuals)",
-      "Sedation effects"
-    ],
-    "efficacy_rating": {
-      "stress_anxiety": 4,
-      "sleep": 3,
-      "mild_depression": 2,
-      "cognition": 2,
-      "hormonal_support": 3,
-      "tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "ashwagandha",
-      "withania somnifera",
-      "indian ginseng",
-      "winter cherry"
-    ],
-    "synonyms": [
-      "Withania somnifera",
-      "Indian ginseng",
-      "Winter cherry"
-    ],
-    "common_misspellings": [
-      "ashwaghanda",
-      "ashwaganda",
-      "ashwagonda"
+    "tags": [
+      "adaptogen",
+      "herbal",
+      "stress",
+      "anxiety",
+      "sleep",
+      "cognition"
     ]
+  },
+  "summary": "An adaptogenic herb traditionally used in Ayurvedic medicine for stress relief, anxiety reduction, improved sleep, and enhanced vitality.",
+  "description": "Ashwagandha (Withania somnifera), also known as Indian ginseng or winter cherry, is a well-known adaptogen in Ayurvedic medicine. Its active compounds, called withanolides, are thought to modulate stress responses, reduce cortisol, and improve sleep quality. Modern research supports its use for anxiety, stress, mild depression, sleep disturbances, and physical performance. It has also been studied for potential cognitive benefits and hormonal balance, particularly in men with low testosterone.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "stress",
+          "condition_name": "Stress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "sleep-disturbances",
+          "condition_name": "Sleep disturbances",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "mild-depression",
+          "condition_name": "Mild depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "testosterone-support",
+          "condition_name": "Testosterone support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "exercise-recovery",
+          "condition_name": "Exercise recovery",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fatigue",
+          "condition_name": "Fatigue",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "stress_anxiety": {
+          "rating": 4
+        },
+        "sleep": {
+          "rating": 3
+        },
+        "mild_depression": {
+          "rating": 2
+        },
+        "cognition": {
+          "rating": 2
+        },
+        "hormonal_support": {
+          "rating": 3
+        },
+        "tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "drowsiness"
+        },
+        {
+          "effect": "headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "liver injury (rare case reports)"
+        },
+        {
+          "risk": "abortifacient effects (pregnancy)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy (risk of uterine stimulation)"
+        },
+        {
+          "contraindication": "Hypersensitivity to ashwagandha"
+        }
+      ],
+      "precautions": [
+        "Avoid during pregnancy due to potential uterine stimulation.",
+        "Use caution in thyroid disorders; may increase thyroid hormone levels.",
+        "Possible additive sedation with CNS depressants."
+      ],
+      "interactions": [
+        {
+          "interactant": "Benzodiazepines or sedatives",
+          "mechanism": "Additive sedation",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Thyroid medications",
+          "mechanism": "Potential additive thyroid effects",
+          "action": "Monitor thyroid function"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "May reduce effectiveness due to immunostimulation",
+          "action": "Avoid or monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Stress/anxiety symptoms"
+        },
+        {
+          "parameter": "Sleep quality"
+        },
+        {
+          "parameter": "Thyroid function (if relevant)"
+        },
+        {
+          "parameter": "Signs of sedation"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid due to potential abortifacient effects",
+        "lactation": "Not recommended; insufficient safety data",
+        "pediatric": "Not well studied; not routinely recommended",
+        "geriatric": "Generally well tolerated; start low and monitor"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract (root, sometimes leaf)",
+        "natural_source": "Withania somnifera root",
+        "regulatory_notes": "Not FDA-approved; marketed as dietary supplement in U.S."
+      }
+    }
   },
   "sections": [
     {
@@ -231,6 +339,38 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Ashwagandha",
+      "url": "https://examine.com/supplements/ashwagandha/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubMed: Withania somnifera clinical trials",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "ashwagandha",
+      "withania somnifera",
+      "indian ginseng",
+      "winter cherry"
+    ],
+    "synonyms": [
+      "Withania somnifera",
+      "Indian ginseng",
+      "Winter cherry"
+    ],
+    "common_misspellings": [
+      "ashwaghanda",
+      "ashwaganda",
+      "ashwagonda"
+    ]
+  },
   "seo": {
     "title": "Ashwagandha (Withania somnifera): Stress, Anxiety, and Sleep Aid",
     "description": "Comprehensive evidence-based guide to Ashwagandha, an Ayurvedic adaptogen for stress, anxiety, sleep, and cognition. Includes dosing, benefits, and safety.",

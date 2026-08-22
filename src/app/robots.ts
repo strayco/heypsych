@@ -36,6 +36,19 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         crawlDelay: 2,
       },
+      // OAI-SearchBot: OpenAI's search crawler (distinct from GPTBot training)
+      // Critical for ChatGPT Search inclusion
+      {
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+        crawlDelay: 2,
+      },
+      // Perplexity AI search crawler
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+        crawlDelay: 2,
+      },
       // Block content scrapers (non-AI training bots)
       {
         userAgent: "CCBot",

@@ -87,7 +87,7 @@ const otherCategories: CategoryTile[] = [
 
 export function OtherConditionsClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -103,29 +103,27 @@ export function OtherConditionsClient() {
 
             {/* Title Section */}
             <div className="flex-1 text-center">
-              <div className="mb-4 inline-flex rounded-2xl bg-slate-50 p-4">
-                <MoreHorizontal className="h-8 w-8 text-slate-600" />
+              <div className="mb-4 inline-flex rounded-2xl bg-surface p-4">
+                <MoreHorizontal className="h-8 w-8 text-label-tertiary" />
               </div>
 
-              <h1 className="mb-4 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-900 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
-                <span className="bg-gradient-to-r from-slate-600 to-slate-600 bg-clip-text text-transparent">
-                  🔍 Other Conditions
-                </span>
+              <h1 className="mb-4 text-3xl font-bold text-label-primary sm:text-4xl lg:text-5xl">
+                🔍 Other Conditions
               </h1>
 
-              <p className="mx-auto mb-6 max-w-3xl text-lg text-slate-600">
+              <p className="mx-auto mb-6 max-w-3xl text-lg text-label-tertiary">
                 Sleep disorders, sexual health, dissociative disorders, and other specialized mental
                 health conditions.
               </p>
 
               {/* Stats */}
-              <div className="flex items-center justify-center gap-6 text-sm text-slate-500">
+              <div className="flex items-center justify-center gap-6 text-sm text-label-primary0">
                 <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-slate-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-surface0"></div>
                   {otherCategories.length} Categories
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-positive-tint0"></div>
                   Evidence-Based
                 </div>
               </div>
@@ -149,31 +147,31 @@ export function OtherConditionsClient() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg transition-all duration-500 group-hover:-translate-y-1 hover:shadow-xl"
+                    className="relative h-full overflow-hidden rounded-2xl border border-separator bg-surface shadow-lg transition-all duration-500 group-hover:-translate-y-1 hover:shadow-xl"
                   >
                     <div className="relative p-6">
                       {/* Icon and title */}
                       <div className="mb-4 text-center">
                         <div className="mb-3 flex items-center justify-center gap-3">
-                          <div className="inline-flex rounded-xl bg-slate-50 p-3 transition-transform duration-300 group-hover:scale-110">
-                            <IconComponent className="h-6 w-6 text-slate-600" />
+                          <div className="inline-flex rounded-xl bg-surface p-3 transition-transform duration-300 group-hover:scale-110">
+                            <IconComponent className="h-6 w-6 text-label-tertiary" />
                           </div>
                           <div className="text-2xl">{category.emoji}</div>
                         </div>
-                        <h3 className="mb-2 text-lg font-bold text-slate-900 transition-colors group-hover:text-slate-700">
+                        <h3 className="mb-2 text-lg font-bold text-label-primary transition-colors group-hover:text-label-secondary">
                           {category.title}
                         </h3>
                       </div>
 
                       {/* Description */}
-                      <p className="mb-4 min-h-[3rem] text-center text-sm leading-relaxed text-slate-600">
+                      <p className="mb-4 min-h-[3rem] text-center text-sm leading-relaxed text-label-tertiary">
                         {category.description}
                       </p>
 
                       {/* Call to action */}
                       <div className="flex items-center justify-center gap-2 text-sm font-semibold">
-                        <span className="text-slate-600">Explore</span>
-                        <ArrowRight className="h-4 w-4 text-slate-400 transition-transform duration-300 group-hover:translate-x-1" />
+                        <span className="text-label-tertiary">Explore</span>
+                        <ArrowRight className="h-4 w-4 text-label-primary0 transition-transform duration-300 group-hover:translate-x-1" />
                       </div>
                     </div>
                   </motion.div>

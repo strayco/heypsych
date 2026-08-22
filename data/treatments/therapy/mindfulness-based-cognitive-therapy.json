@@ -1,91 +1,189 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "mindfulness-based-cognitive-therapy",
-  "type": "therapy",
-  "name": "Mindfulness-Based Cognitive Therapy (MBCT)",
-  "summary": "An evidence-based psychotherapy that integrates cognitive-behavioral techniques with mindfulness practices to prevent relapse in depression and improve emotional regulation.",
-  "description": "Mindfulness-Based Cognitive Therapy (MBCT) combines the principles of cognitive-behavioral therapy with mindfulness meditation practices to help individuals better manage thoughts, feelings, and behaviors. Originally developed to prevent relapse in major depressive disorder, MBCT emphasizes awareness of present-moment experiences, acceptance of difficult emotions, and decentering from negative thought patterns. It is typically delivered in a group format over 8 weeks, with structured mindfulness exercises, psychoeducation, and cognitive strategies to reduce vulnerability to depression and stress.",
-  "category": "therapy/mindfulness",
-  "tags": [
-    "depression",
-    "mindfulness",
-    "cognitive therapy",
-    "relapse prevention",
-    "stress reduction",
-    "group therapy"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Group therapy",
-      "Individual therapy (adapted)"
-    ],
-    "categories": [
-      "Mindfulness-based",
-      "Cognitive-behavioral",
-      "Evidence-based therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Group sessions"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "2 hours (group sessions)",
-    "treatment_duration": [
-      "8 weeks (standard course)",
-      "Extended practice for ongoing benefits"
-    ],
-    "specialty_areas": [
-      "Depression relapse prevention",
-      "Anxiety management",
-      "Chronic stress",
-      "Emotional regulation"
+  "identity": {
+    "slug": "mindfulness-based-cognitive-therapy",
+    "name": "Mindfulness-Based Cognitive Therapy (MBCT)",
+    "generic_name": "mindfulness-based cognitive therapy",
+    "brand_names": [
+      "MBCT"
     ],
     "wikidata_qid": "Q3314642"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (relapse prevention)",
-      "Recurrent depression"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/mindfulness",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "conditions_treated": [
-      "Depression",
-      "Anxiety disorders",
-      "Chronic stress",
-      "Bipolar disorder (depressive relapse prevention)",
-      "Chronic pain (adjunctive)"
-    ],
-    "off_label_uses": [
-      "Substance use relapse prevention",
-      "Eating disorders",
-      "Cancer-related distress"
-    ],
-    "contraindications": [
-      "Acute psychosis",
-      "Severe cognitive impairment",
-      "High suicide risk without stabilization"
-    ],
-    "safety_profile": "Considered safe and well-tolerated; requires careful monitoring in individuals with trauma or high distress tolerance issues.",
-    "evidence_level": "High—multiple randomized controlled trials and meta-analyses support MBCT for depression relapse prevention.",
-    "research_support": "Strong evidence for preventing depression relapse, with growing support for anxiety and stress management applications.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression-relapse-prevention": 5,
-      "anxiety-management": 4,
-      "stress-reduction": 4,
-      "emotional-regulation": 4,
-      "overall-tolerability": 5
+    "tags": [
+      "depression",
+      "mindfulness",
+      "cognitive therapy",
+      "relapse prevention",
+      "stress reduction",
+      "group therapy"
+    ]
+  },
+  "summary": "An evidence-based psychotherapy that integrates cognitive-behavioral techniques with mindfulness practices to prevent relapse in depression and improve emotional regulation.",
+  "description": "Mindfulness-Based Cognitive Therapy (MBCT) combines the principles of cognitive-behavioral therapy with mindfulness meditation practices to help individuals better manage thoughts, feelings, and behaviors. Originally developed to prevent relapse in major depressive disorder, MBCT emphasizes awareness of present-moment experiences, acceptance of difficult emotions, and decentering from negative thought patterns. It is typically delivered in a group format over 8 weeks, with structured mindfulness exercises, psychoeducation, and cognitive strategies to reduce vulnerability to depression and stress.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder-relapse-prevention",
+          "condition_name": "Major Depressive Disorder (relapse prevention)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "recurrent-depression",
+          "condition_name": "Recurrent depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-stress",
+          "condition_name": "Chronic stress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder-depressive-relapse-prevention",
+          "condition_name": "Bipolar disorder (depressive relapse prevention)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain-adjunctive",
+          "condition_name": "Chronic pain (adjunctive)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "substance-use-relapse-prevention",
+          "condition_name": "Substance use relapse prevention",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "eating-disorders",
+          "condition_name": "Eating disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cancer-related-distress",
+          "condition_name": "Cancer-related distress",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—multiple randomized controlled trials and meta-analyses support MBCT for depression relapse prevention.",
+      "efficacy_ratings": {
+        "depression-relapse-prevention": {
+          "rating": 5
+        },
+        "anxiety-management": {
+          "rating": 4
+        },
+        "stress-reduction": {
+          "rating": 4
+        },
+        "emotional-regulation": {
+          "rating": 4
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Strong evidence for preventing depression relapse, with growing support for anxiety and stress management applications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8 weeks (standard course); Extended practice for ongoing benefits"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Group sessions"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "2 hours (group sessions)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Considered safe and well-tolerated; requires careful monitoring in individuals with trauma or high distress tolerance issues.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when confronting distressing thoughts"
+        },
+        {
+          "effect": "Restlessness during meditation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of trauma-related symptoms in vulnerable individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive decline",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unwillingness to engage in meditation or reflective practices",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Group therapy, Individual therapy (adapted)",
+        "key_techniques": [
+          "Mindfulness-based",
+          "Cognitive-behavioral",
+          "Evidence-based therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of homework practice logs and experiences.",
+          "during_session": "Guided mindfulness meditation and cognitive restructuring exercises.",
+          "post_session": "Discussion of insights, challenges, and home practice assignments."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Psychologists",
+            "Licensed therapists trained in MBCT",
+            "Mindfulness instructors with CBT training"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -240,6 +338,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Segal ZV, Williams JMG, Teasdale JD. Mindfulness-Based Cognitive Therapy for Depression. Guilford Press, 2002.",
+      "url": "https://www.guilford.com/books/Mindfulness-Based-Cognitive-Therapy-for-Depression/Segal-Williams-Teasdale/9781462507504"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "American Psychological Association – Mindfulness-Based Cognitive Therapy",
+      "url": "https://www.apa.org"
+    }
+  ],
   "seo": {
     "title": "Mindfulness-Based Cognitive Therapy (MBCT) | Relapse Prevention for Depression",
     "description": "Mindfulness-Based Cognitive Therapy (MBCT) integrates mindfulness meditation and CBT to prevent depression relapse, reduce rumination, and improve emotional regulation.",
@@ -252,5 +364,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—multiple randomized controlled trials and meta-analyses support MBCT for depression relapse prevention."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—multiple randomized controlled trials and meta-analyses support MBCT for depression relapse prevention."
+    ]
   }
 }

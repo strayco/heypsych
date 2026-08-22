@@ -1,81 +1,217 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ketamine-ketalar",
-  "type": "medication",
-  "name": "Ketamine (Ketalar)",
-  "summary": "Dissociative anesthetic that, in psychiatry, is used off-label for rapid relief in severe treatment-resistant depression and, in acute settings, for severe agitation when standard meds fail. Fast onset, powerful effects, and real monitoring requirements.",
-  "description": "Ketamine is best known as an anesthetic, but in psychiatry it’s sometimes used off-label for treatment-resistant depression because it can work within hours instead of weeks. It can also be used in emergency settings for severe, dangerous agitation when benzodiazepines and antipsychotics haven’t worked. Ketamine can cause dissociation, vivid perceptual changes, blood pressure spikes, and rare breathing problems—so it’s not a “take-at-home” med in most cases. This is a monitored-medication lane, not a casual one.",
-  "patient_summary": "Ketamine is best known as an anesthetic, but in psychiatry it’s sometimes used off-label for treatment-resistant depression because it can work within hours instead of weeks. It can also be used in emergency settings for severe, dangerous agitation when benzodiazepines and antipsychotics haven’t worked. Ketamine can cause dissociation, vivid perceptual changes, blood pressure spikes, and rare breathing problems—so it’s not a “take-at-home” med in most cases. This is a monitored-medication lane, not a casual one.",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "ketamine-ketalar",
+    "name": "Ketamine (Ketalar)",
+    "generic_name": "ketamine",
+    "brand_names": [
+      "Ketalar"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Dissociative Anesthetic",
       "NMDA Receptor Antagonist",
       "Rapid-Acting Antidepressant (off-label use)"
-    ],
-    "brand_names": [
-      "Ketalar"
-    ],
-    "administration_routes": [
-      "Intravenous (IV)",
-      "Intramuscular (IM)",
-      "Intranasal (off-label route)",
-      "Oral (off-label route)",
-      "Subcutaneous (SUBQ, off-label route)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule III (US); C-III (Canada)",
-    "generic_available": true,
-    "fda_approval_year": 1970,
-    "pharmacologic_category": "General Anesthetic; Rapid-Acting Antidepressant (off-label, psychiatry use)",
-    "published_date": "2025-12-21T00:00:00Z",
-    "last_updated": "2025-12-21T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-21T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depressive episode (severe, treatment resistant) associated with major depressive disorder (unipolar) (off-label)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "off_label",
-        "context": "Used off-label for severe, treatment-resistant depressive episodes when multiple standard treatments (meds and/or therapy) have failed. Often delivered as a monitored IV infusion series; effects can be rapid but durability varies and ongoing plan still matters."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "Used off-label in acute care settings for severe or refractory agitation when benzodiazepines and/or antipsychotics have failed, especially when safety is an immediate concern and rapid sedation is required."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to ketamine or any component",
-      "Conditions in which an increase in blood pressure would be hazardous",
-      "Known or suspected schizophrenia (commonly listed as an absolute contraindication for ED procedural sedation use due to risk of psychiatric destabilization)"
-    ],
-    "efficacy_response": {
-      "metric": "Rapid antidepressant effect (time-to-response)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Ketamine’s psychiatric claim to fame is speed. In some people with treatment-resistant depression, mood and suicidal thinking can improve within hours to a day after an infusion. That doesn’t mean it’s a cure, and it doesn’t replace a long-term plan—it’s more like a rapid-reset option that still needs follow-through.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Dissociative anesthetic that, in psychiatry, is used off-label for rapid relief in severe treatment-resistant depression and, in acute settings, for severe agitation when standard meds fail. Fast onset, powerful effects, and real monitoring requirements.",
+  "description": "Ketamine is best known as an anesthetic, but in psychiatry it’s sometimes used off-label for treatment-resistant depression because it can work within hours instead of weeks. It can also be used in emergency settings for severe, dangerous agitation when benzodiazepines and antipsychotics haven’t worked. Ketamine can cause dissociation, vivid perceptual changes, blood pressure spikes, and rare breathing problems—so it’s not a “take-at-home” med in most cases. This is a monitored-medication lane, not a casual one.",
+  "patient_summary": "Ketamine is best known as an anesthetic, but in psychiatry it’s sometimes used off-label for treatment-resistant depression because it can work within hours instead of weeks. It can also be used in emergency settings for severe, dangerous agitation when benzodiazepines and antipsychotics haven’t worked. Ketamine can cause dissociation, vivid perceptual changes, blood pressure spikes, and rare breathing problems—so it’s not a “take-at-home” med in most cases. This is a monitored-medication lane, not a casual one.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depressive-episode-severe-treatment-resistant-associated-with-major-depressive-disorder-unipolar-off-label",
+          "condition_name": "Depressive episode (severe, treatment resistant) associated with major depressive disorder (unipolar) (off-label)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "off_label",
+          "context": "Used off-label for severe, treatment-resistant depressive episodes when multiple standard treatments (meds and/or therapy) have failed. Often delivered as a monitored IV infusion series; effects can be rapid but durability varies and ongoing plan still matters."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "Used off-label in acute care settings for severe or refractory agitation when benzodiazepines and/or antipsychotics have failed, especially when safety is an immediate concern and rapid sedation is required."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Route-dependent; IV has immediate bioavailability; IM is high; oral is low due to first-pass metabolism",
-      "bioavailability": "IM ~93%; oral ~20-30%; intranasal ~35-50% (variable by device and technique)",
-      "onset": "IV anesthetic effect within ~30 seconds; IM within ~3-4 minutes; psychiatric infusion protocols commonly use slow IV administration over ~40 minutes",
-      "peak_plasma": "IM ~5-30 minutes; intranasal ~10-20 minutes; oral ~30 minutes",
-      "half_life": "Distribution (alpha) ~10-15 minutes; elimination (beta) ~2.5 hours (adult data)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism primarily via CYP2B6 and CYP3A4 to norketamine (active) and other metabolites (eg, hydroxynorketamine, dehydronorketamine)",
-      "excretion": "Urine (major), feces (minor)",
-      "protein_binding": "10% to 50%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV anesthetic effect within ~30 seconds; IM within ~3-4 minutes; psychiatric infusion protocols commonly use slow IV administration over ~40 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intravenous (IV)",
+        "Intramuscular (IM)",
+        "Intranasal (off-label route)",
+        "Oral (off-label route)",
+        "Subcutaneous (SUBQ, off-label route)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Emergence reactions (dreamlike state, hallucinations, delirium-like confusion)",
+          "incidence": "≥10% reported in labeling for prolonged emergence phenomena (varies widely by setting/dose)",
+          "notes": "This can look like vivid dreams, perceptual distortion, agitation, or confusion during recovery. A calm environment helps. Fast IV pushes and higher doses increase risk. Some clinicians use a benzodiazepine to treat severe reactions, but premedication can prolong recovery."
+        },
+        {
+          "effect": "Dissociation / perceptual changes",
+          "incidence": "Common (dose-related; frequency varies by protocol)",
+          "notes": "Feeling detached from your body, time distortion, or intensified sensory input can happen during dosing. In depression protocols, slower infusions are often used to reduce the whiplash effect."
+        },
+        {
+          "effect": "Increased blood pressure and heart rate",
+          "incidence": "Frequency not defined; clinically common",
+          "notes": "Ketamine often increases sympathetic tone—BP and pulse can jump quickly and usually settle within minutes after peak. This matters a lot if you have uncontrolled hypertension or heart disease."
+        },
+        {
+          "effect": "Nausea / vomiting",
+          "incidence": "Frequency not defined",
+          "notes": "Can occur during or after dosing. Clinics often plan around this (hydration, anti-nausea meds if needed)."
+        },
+        {
+          "effect": "Sedation / impaired coordination",
+          "incidence": "Frequency not defined",
+          "notes": "Even when it’s not used as a full anesthetic, it can still impair coordination and judgment. No driving, no risky decisions, no “let me just run errands after.”"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression or apnea (rare; higher risk with rapid IV administration, IM dosing, overdose, or co-use of other CNS depressants): MEDICAL EMERGENCY if unresponsive or breathing is slowed."
+        },
+        {
+          "risk": "Severe emergence delirium (agitation, hallucinations, confusion) that threatens safety: may require medical management and a low-stimulation recovery setting."
+        },
+        {
+          "risk": "Cardiac decompensation or arrhythmia in vulnerable patients (especially if myocardial dysfunction or significant coronary disease): requires monitoring and risk assessment."
+        },
+        {
+          "risk": "Urinary tract injury with chronic/repeated exposure (ketamine cystitis, bladder dysfunction, hematuria, hydronephrosis): can become persistent if not addressed early."
+        },
+        {
+          "risk": "Liver/biliary injury with recurrent or continuous use (cholestatic pattern, biliary duct changes, sclerosing cholangitis reports): evaluate symptoms and labs if long-term or repeated treatments."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to ketamine or any component"
+        },
+        {
+          "contraindication": "Conditions in which an increase in blood pressure would be hazardous"
+        },
+        {
+          "contraindication": "Known or suspected schizophrenia (commonly listed as an absolute contraindication for ED procedural sedation use due to risk of psychiatric destabilization)"
+        }
+      ],
+      "precautions": [
+        "Requires clinical monitoring: heart rate, blood pressure, breathing, oxygen saturation, and level of sedation",
+        "Respiratory depression/apnea can occur (rare but real), most associated with rapid IV administration, overdose, IM dosing, or combining with other CNS depressants",
+        "Cardiovascular effects: often raises blood pressure and heart rate; can be risky when increased BP would be hazardous",
+        "Emergence reactions: vivid dreams, hallucinations, delirium-like confusion can occur during recovery and up to 24 hours",
+        "Genitourinary toxicity with chronic/repeated use: urinary urgency, frequency, pain, hematuria; cystitis and bladder dysfunction have been reported with long-term exposure (especially misuse)",
+        "Liver injury with recurrent or continuous use has been reported (cholestatic patterns, biliary changes, sclerosing cholangitis reports)",
+        "Misuse/dependence risk exists, especially with repeated exposure, dose escalation, and substance use history",
+        "Psychiatric destabilization risk: can worsen psychosis-like symptoms in vulnerable patients; avoid or use extreme caution in patients with known/suspected schizophrenia"
+      ],
+      "interactions": [
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, opioids, alcohol, sedating antihistamines, sleep meds)",
+          "mechanism": "Additive sedation, impaired airway reflexes, and increased risk of respiratory depression/apnea. Can also worsen confusion or delirium during recovery.",
+          "action": "Avoid alcohol. Use extreme caution with sedatives. If co-administration is medically necessary, dosing and monitoring must be clinician-directed in a supervised setting."
+        },
+        {
+          "interactant": "Stimulants and sympathomimetics (including some ADHD meds and decongestants)",
+          "mechanism": "May amplify increases in blood pressure and heart rate.",
+          "action": "Clinician should review meds and vitals. Consider holding nonessential sympathomimetics around treatment time depending on protocol and patient risk."
+        },
+        {
+          "interactant": "CYP inducers or inhibitors (CYP2B6/CYP3A4)",
+          "mechanism": "May change ketamine and active metabolite exposure (effect and side effects can shift unpredictably).",
+          "action": "Medication review matters. If you’re on strong enzyme modifiers, dosing and monitoring plans may need adjustment."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Vital signs during and after dosing: heart rate, blood pressure, respiratory rate, and oxygen saturation"
+        },
+        {
+          "parameter": "Level of sedation and airway status, especially with higher doses or when combined with other sedatives"
+        },
+        {
+          "parameter": "Emergence reactions: agitation, confusion, hallucinations; maintain a low-stimulation recovery environment and have a plan for severe reactions"
+        },
+        {
+          "parameter": "Cardiac monitoring in patients at risk from blood pressure/heart rate increases (eg, known coronary disease, heart failure, uncontrolled hypertension)"
+        },
+        {
+          "parameter": "Mood and safety monitoring for depression treatment: symptom scales, suicidality checks, functional improvement, and relapse prevention planning"
+        },
+        {
+          "parameter": "Urinary symptoms with repeated exposure: dysuria, urgency, frequency, hematuria; evaluate early to prevent persistent bladder injury"
+        },
+        {
+          "parameter": "Liver labs with repeated or prolonged use: LFTs, alkaline phosphatase, and gamma-glutamyl transferase at baseline and periodically if treatment is ongoing"
+        },
+        {
+          "parameter": "Misuse risk screening: escalating use, cravings, nonmedical use patterns, diversion risk, and co-occurring substance use disorders"
+        },
+        {
+          "parameter": "Medication review for interaction risks: sedatives (respiratory depression), sympathomimetics (BP/HR), and CYP modifiers (exposure changes)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Ketamine crosses the placenta. Large doses around delivery have been associated with dose-related neonatal depression and lower Apgar scores, and ketamine can increase uterine contractions (effects may vary by trimester). The manufacturer does not recommend obstetric use, though ketamine has been studied in obstetric anesthesia and as adjunct analgesia in some settings. For psychiatric depression treatment, weigh severity of illness, alternatives, and the risks of untreated depression using shared decision-making. Repeated or prolonged exposure to anesthetic/sedation agents in pregnancy (especially when procedures are lengthy, eg >3 hours) has been associated with potential neurodevelopmental risk signals based on animal data and FDA warnings; human data are limited and not definitive.",
+        "lactation": "Ketamine and metabolites are present in breast milk. Available case reports/series suggest low relative infant doses after maternal ketamine infusions or injections, and some reports did not observe adverse events in infants, but data are still limited. In general, breastfeeding may resume once the mother is awake, stable, and alert after anesthesia; extra caution is warranted for infants at higher risk of apnea/hypotonia. For repeated ketamine treatments for depression while breastfeeding, decision-making should consider infant age, dosing schedule, maternal benefit, and monitoring for sedation or feeding issues.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Older adults can be more vulnerable to falls, confusion, and hemodynamic stress. Some prescribing-safety frameworks consider ketamine potentially inappropriate for depression in adults ≥65 due to fall risk. If used, start with cautious protocols, monitor vitals closely, and prioritize safety (mobility support, low stimulation recovery, careful medication interaction review).",
+        "renal_impairment": "Parenteral: no initial dose adjustment is generally required, but steady-state concentrations may be higher in severe kidney dysfunction and metabolites (eg, dehydronorketamine) can accumulate; avoid prolonged use or monitor for toxicity with repeated/prolonged exposure. Oral (off-label): no initial adjustment suggested, but oral PK data are limited and first-pass metabolism yields higher metabolite exposure; use caution and close monitoring in severe kidney impairment.",
+        "hepatic_impairment": "No specific manufacturer labeling adjustments provided. Because ketamine is hepatically metabolized, use caution in liver disease and consider closer monitoring if repeated or prolonged courses are used; recurrent/continuous exposure has been associated with hepatobiliary lab abnormalities and cholestatic patterns."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1970
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Route-dependent; IV has immediate bioavailability; IM is high; oral is low due to first-pass metabolism",
+          "bioavailability": "IM ~93%; oral ~20-30%; intranasal ~35-50% (variable by device and technique)",
+          "peak_plasma": "IM ~5-30 minutes; intranasal ~10-20 minutes; oral ~30 minutes",
+          "half_life": "Distribution (alpha) ~10-15 minutes; elimination (beta) ~2.5 hours (adult data)",
+          "metabolism": "Extensive hepatic metabolism primarily via CYP2B6 and CYP3A4 to norketamine (active) and other metabolites (eg, hydroxynorketamine, dehydronorketamine)",
+          "excretion": "Urine (major), feces (minor)",
+          "protein_binding": "10% to 50%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Psychiatric ketamine dosing is off-label and protocol-driven. The best-studied depression approach is a monitored IV infusion. For severe agitation in emergency/ICU settings, ketamine is used as a rapid sedative when standard meds fail. Doses below are examples from clinical guidance; local protocols vary and monitoring is required."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Ketamine isn’t typically “tapered” the way SSRIs or benzodiazepines are when it’s used as an intermittent infusion series. That said, with prolonged or frequent use, tolerance and dependence can occur, and withdrawal symptoms have been reported after stopping—especially in misuse scenarios or long-term high-dose exposure."
+        }
+      }
     }
   },
   "sections": [
@@ -96,7 +232,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Ketamine is one of those meds where the experience is part of the medication. Some people feel relief; others feel thrown into a weird dream-like state. Here’s what people commonly describe:",
       "items": [
         {
           "category": "Rapid mood shift (hours to 1 day, depression protocols)",
@@ -141,7 +276,8 @@
           ],
           "note": "In severe agitation, the goal is rapid control of dangerous behavior and physiologic stabilization—this is a different use-case than depression protocols."
         }
-      ]
+      ],
+      "intro": "Ketamine is one of those meds where the experience is part of the medication. Some people feel relief; others feel thrown into a weird dream-like state. Here’s what people commonly describe:"
     },
     {
       "type": "onset_duration",
@@ -159,10 +295,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Ketamine is not a classic daily antidepressant. It’s a rapid-acting intervention sometimes used when depression is severe and stubborn. Many protocols use a monitored IV infusion and repeat dosing (often weekly or multiple times per week early on). Some people feel a noticeable shift quickly; others don’t respond, or the benefit fades without a structured continuation strategy.",
       "metric": "Rapid antidepressant response (clinical pattern)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Ketamine is not a classic daily antidepressant. It’s a rapid-acting intervention sometimes used when depression is severe and stubborn. Many protocols use a monitored IV infusion and repeat dosing (often weekly or multiple times per week early on). Some people feel a noticeable shift quickly; others don’t respond, or the benefit fades without a structured continuation strategy.",
       "clinical_details": "In psychiatric practice, IV ketamine for treatment-resistant depression is typically delivered as a slow infusion (commonly 0.5 mg/kg over 40 minutes) with repeat sessions based on response and tolerability. Treatment courses up to ~6 weeks have been studied, but optimal duration and maintenance strategy are not fully defined. Ketamine may be used alongside oral antidepressants and psychotherapy rather than replacing them.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -250,7 +386,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Ketamine can stack dangerously with other sedatives and can be affected by medications that change CYP metabolism (especially CYP2B6 and CYP3A4). In psychiatry, the biggest practical issue is additive sedation and cardiorespiratory risk when combined with other CNS depressants.",
       "items": [
         {
           "with": "Other CNS depressants (benzodiazepines, opioids, alcohol, sedating antihistamines, sleep meds)",
@@ -267,7 +402,8 @@
           "risk": "May change ketamine and active metabolite exposure (effect and side effects can shift unpredictably).",
           "action": "Medication review matters. If you’re on strong enzyme modifiers, dosing and monitoring plans may need adjustment."
         }
-      ]
+      ],
+      "intro": "Ketamine can stack dangerously with other sedatives and can be affected by medications that change CYP metabolism (especially CYP2B6 and CYP3A4). In psychiatry, the biggest practical issue is additive sedation and cardiorespiratory risk when combined with other CNS depressants."
     },
     {
       "type": "tapering",
@@ -341,21 +477,6 @@
       "text": "For depression, ketamine is typically considered when the episode is severe and treatment-resistant—after standard first-line and second-line approaches (medications, therapy, combined strategies) haven’t produced adequate relief. It’s often used as a rapid intervention to reduce symptom severity quickly while a longer-term plan is built or optimized. For agitation, ketamine is an acute-care tool: it’s for situations where someone is severely agitated, unsafe, and not responding to benzodiazepines and/or antipsychotics—where speed and safety drive the decision."
     }
   ],
-  "seo": {
-    "title": "Ketamine (Ketalar): Rapid Depression Treatment, Agitation Use, Side Effects & Safety",
-    "description": "Ketamine (Ketalar) in psychiatry: off-label rapid treatment-resistant depression dosing (0.5 mg/kg IV over 40 min), severe agitation sedation dosing, dissociation effects, blood pressure spikes, interactions, and monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/ketamine-ketalar](https://www.heypsych.com/treatments/ketamine-ketalar)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is ketamine actually an antidepressant?",
@@ -401,5 +522,20 @@
       "q": "Is ketamine okay in pregnancy or breastfeeding?",
       "a": "Ketamine crosses the placenta and is present in breast milk. In pregnancy it’s generally not a first-choice psychiatric medication, but medically necessary procedures shouldn’t be withheld solely due to pregnancy. For breastfeeding, limited data suggest low infant exposure in some cases, but decisions should weigh infant age/risk and the treatment plan, and should be guided by your clinician."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Ketamine (Ketalar): Rapid Depression Treatment, Agitation Use, Side Effects & Safety",
+    "description": "Ketamine (Ketalar) in psychiatry: off-label rapid treatment-resistant depression dosing (0.5 mg/kg IV over 40 min), severe agitation sedation dosing, dissociation effects, blood pressure spikes, interactions, and monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/ketamine-ketalar](https://www.heypsych.com/treatments/ketamine-ketalar)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

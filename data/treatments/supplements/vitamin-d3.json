@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "vitamin-d3",
-  "type": "supplement",
-  "name": "Vitamin D3 (Cholecalciferol)",
-  "summary": "Vitamin D3 (cholecalciferol) is the animal-derived form of vitamin D, synthesized in the skin from sunlight and commonly used in supplements. It is more effective than D2 in raising and maintaining serum vitamin D levels.",
-  "description": "Vitamin D3 is a fat-soluble secosteroid that plays a vital role in calcium and phosphate balance, bone mineralization, muscle function, and immune regulation. It is synthesized in the skin upon exposure to ultraviolet B (UVB) light and is also obtained from dietary sources like fatty fish, egg yolks, and fortified foods. Compared to vitamin D2 (ergocalciferol), D3 is more potent and maintains higher serum 25-hydroxyvitamin D concentrations. Supplementation with D3 is the preferred choice for preventing and treating deficiency, supporting bone and muscle health, and potentially modulating immune and mood-related conditions.",
-  "category": "supplements",
-  "tags": [
-    "vitamin",
-    "bone health",
-    "immune support",
-    "cholecalciferol"
-  ],
-  "metadata": {
-    "compound_type": "Fat-soluble vitamin",
-    "natural_source": "Sunlight (UVB-induced skin synthesis), fatty fish, liver, egg yolks, fortified foods",
+  "identity": {
+    "slug": "vitamin-d3",
+    "name": "Vitamin D3 (Cholecalciferol)",
+    "generic_name": "vitamin d3",
+    "brand_names": [
+      "D-Vi-Sol",
+      "Vitamin D3",
+      "Cholecalciferol"
+    ],
+    "aliases": [
+      "D3",
+      "Cholecalciferol"
+    ],
+    "wikidata_qid": "Q175621"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Endocrinology",
       "Bone health",
@@ -25,80 +29,170 @@
       "Hormone receptor signaling",
       "Immune modulation"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular injection"
-    ],
-    "prescription_status": "OTC (nutritional doses), prescription (high dose or injectable)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "D-Vi-Sol",
-      "Vitamin D3",
-      "Cholecalciferol"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Approved vitamin; dietary supplement",
-    "age_groups": [
-      "Pediatric",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Deficiency correction (weeks to months)",
-      "Long-term maintenance"
-    ],
-    "specialty_areas": [
-      "Endocrinology",
-      "Orthopedics",
-      "Geriatrics",
-      "Immunology"
-    ],
-    "wikidata_qid": "Q175621"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Prevention and treatment of vitamin D deficiency",
-      "Rickets (children)",
-      "Osteomalacia (adults)",
-      "Adjunctive therapy in osteoporosis and fracture prevention"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in immune function (respiratory infections, autoimmune disorders)",
-      "Potential adjunct in depression management",
-      "Fall and fracture prevention in the elderly"
-    ],
-    "contraindications": [
-      "Hypercalcemia",
-      "Hypervitaminosis D",
-      "Granulomatous disorders (e.g., sarcoidosis) with risk of excess conversion to calcitriol"
-    ],
-    "monitoring_required": [
-      "Serum 25-hydroxyvitamin D levels",
-      "Calcium and phosphorus",
-      "Renal function"
-    ],
-    "efficacy_rating": {
-      "deficiency treatment": 5,
-      "bone health/osteoporosis": 4,
-      "immune modulation": 3,
-      "mood support": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Vitamin D3",
-      "Cholecalciferol"
-    ],
-    "synonyms": [
-      "D3",
-      "Cholecalciferol"
-    ],
-    "common_misspellings": [
-      "vit d3",
-      "vitamen d3",
-      "colecalciferol"
+    "tags": [
+      "vitamin",
+      "bone health",
+      "immune support",
+      "cholecalciferol"
     ]
+  },
+  "summary": "Vitamin D3 (cholecalciferol) is the animal-derived form of vitamin D, synthesized in the skin from sunlight and commonly used in supplements. It is more effective than D2 in raising and maintaining serum vitamin D levels.",
+  "description": "Vitamin D3 is a fat-soluble secosteroid that plays a vital role in calcium and phosphate balance, bone mineralization, muscle function, and immune regulation. It is synthesized in the skin upon exposure to ultraviolet B (UVB) light and is also obtained from dietary sources like fatty fish, egg yolks, and fortified foods. Compared to vitamin D2 (ergocalciferol), D3 is more potent and maintains higher serum 25-hydroxyvitamin D concentrations. Supplementation with D3 is the preferred choice for preventing and treating deficiency, supporting bone and muscle health, and potentially modulating immune and mood-related conditions.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "prevention-and-treatment-of-vitamin-d-deficiency",
+          "condition_name": "Prevention and treatment of vitamin D deficiency",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "rickets-children",
+          "condition_name": "Rickets (children)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "osteomalacia-adults",
+          "condition_name": "Osteomalacia (adults)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunctive-therapy-in-osteoporosis-and-fracture-prevention",
+          "condition_name": "Adjunctive therapy in osteoporosis and fracture prevention",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-immune-function-respiratory-infections-autoimmune-disorders",
+          "condition_name": "Adjunctive support in immune function (respiratory infections, autoimmune disorders)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "potential-adjunct-in-depression-management",
+          "condition_name": "Potential adjunct in depression management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fall-and-fracture-prevention-in-the-elderly",
+          "condition_name": "Fall and fracture prevention in the elderly",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "deficiency treatment": {
+          "rating": 5
+        },
+        "bone health/osteoporosis": {
+          "rating": 4
+        },
+        "immune modulation": {
+          "rating": 3
+        },
+        "mood support": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Deficiency correction (weeks to months); Long-term maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular injection"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Generally well tolerated at recommended doses"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypercalcemia"
+        },
+        {
+          "risk": "Kidney stones"
+        },
+        {
+          "risk": "Renal impairment with overdose"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hypercalcemia"
+        },
+        {
+          "contraindication": "Hypervitaminosis D"
+        },
+        {
+          "contraindication": "Granulomatous disorders (e.g., sarcoidosis) with risk of excess conversion to calcitriol"
+        }
+      ],
+      "precautions": [
+        "Avoid excessive doses due to risk of hypercalcemia and toxicity.",
+        "Use cautiously in renal disease or granulomatous disorders."
+      ],
+      "interactions": [
+        {
+          "interactant": "Thiazide diuretics",
+          "mechanism": "Increased risk of hypercalcemia",
+          "action": "Monitor calcium"
+        },
+        {
+          "interactant": "Anticonvulsants (phenytoin, carbamazepine)",
+          "mechanism": "Accelerated vitamin D catabolism",
+          "action": "May require higher dose"
+        },
+        {
+          "interactant": "Corticosteroids",
+          "mechanism": "Reduced vitamin D metabolism and calcium absorption",
+          "action": "Monitor and adjust dose"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum 25(OH)D concentration (target >30 ng/mL)"
+        },
+        {
+          "parameter": "Serum calcium and phosphate"
+        },
+        {
+          "parameter": "Renal function in long-term or high-dose therapy"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe at RDA doses; high doses require medical supervision",
+        "lactation": "Safe; may improve breast milk vitamin D content",
+        "pediatric": "Safe; essential for rickets prevention",
+        "geriatric": "Safe; supplementation recommended due to reduced cutaneous synthesis"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Fat-soluble vitamin",
+        "natural_source": "Sunlight (UVB-induced skin synthesis), fatty fish, liver, egg yolks, fortified foods",
+        "regulatory_notes": "Approved vitamin; dietary supplement"
+      }
+    }
   },
   "sections": [
     {
@@ -226,6 +320,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Vitamin D",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminD-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Tripkovic L, et al. Comparison of vitamin D2 and vitamin D3 supplementation. Am J Clin Nutr. 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22552031/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Holick MF. Vitamin D deficiency. N Engl J Med. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17634462/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Vitamin D3",
+      "Cholecalciferol"
+    ],
+    "synonyms": [
+      "D3",
+      "Cholecalciferol"
+    ],
+    "common_misspellings": [
+      "vit d3",
+      "vitamen d3",
+      "colecalciferol"
+    ]
+  },
   "seo": {
     "title": "Vitamin D3 (Cholecalciferol) – Deficiency Treatment, Dosing, Bone & Immune Health",
     "description": "Vitamin D3 is the preferred form of vitamin D for supplements. Learn about deficiency correction, dosing, benefits for bone and immune health, and safety.",

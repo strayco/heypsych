@@ -56,18 +56,18 @@ export function MedicalDisclaimer({
 
   if (config?.prominent) {
     return (
-      <Card className="border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50">
+      <Card className="border-caution-500/30 bg-linear-to-r from-caution-900/20 to-surface-grouped">
         <CardContent className={compact ? "p-4" : "p-6"}>
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-amber-100">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-caution-tint">
+              <AlertTriangle className="h-5 w-5 text-caution" />
             </div>
             <div className="flex-1 space-y-2">
-              <h3 className="font-semibold text-amber-900">Important Medical Disclaimer</h3>
-              <p className="text-sm leading-relaxed text-amber-800">{disclaimerText}</p>
+              <h3 className="font-semibold text-caution-700">Important Medical Disclaimer</h3>
+              <p className="text-sm leading-relaxed text-label-secondary">{disclaimerText}</p>
               {config?.include_crisis_line && (
-                <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3">
-                  <p className="text-sm font-medium text-red-900">{CRISIS_LINE_TEXT}</p>
+                <div className="mt-3 rounded-lg border border-negative-500/30 bg-negative-tint p-3">
+                  <p className="text-sm font-medium text-negative-700">{CRISIS_LINE_TEXT}</p>
                 </div>
               )}
             </div>
@@ -78,14 +78,14 @@ export function MedicalDisclaimer({
   }
 
   return (
-    <div className={`rounded-lg border border-neutral-300 bg-neutral-50 ${compact ? 'p-3' : 'p-4'}`}>
+    <div className={`rounded-lg border border-separator bg-surface-grouped ${compact ? 'p-3' : 'p-4'}`}>
       <div className="flex items-start gap-2">
-        <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-neutral-600" />
+        <Info className="mt-0.5 h-4 w-4 shrink-0 text-label-tertiary" />
         <div className="flex-1 space-y-2">
-          <p className="text-xs leading-relaxed text-neutral-700">{disclaimerText}</p>
+          <p className="text-xs leading-relaxed text-label-secondary">{disclaimerText}</p>
           {config?.include_crisis_line && (
-            <div className="mt-2 rounded border border-red-200 bg-red-50 p-2">
-              <p className="text-xs font-medium text-red-900">{CRISIS_LINE_TEXT}</p>
+            <div className="mt-2 rounded border border-negative-500/30 bg-negative-tint p-2">
+              <p className="text-xs font-medium text-negative-700">{CRISIS_LINE_TEXT}</p>
             </div>
           )}
         </div>

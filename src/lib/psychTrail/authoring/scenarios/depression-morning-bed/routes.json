@@ -1,0 +1,246 @@
+{
+  "routes": [
+    {
+      "id": "route_gradual_activation",
+      "name": "Gradual Activation",
+      "description": "Built momentum through sequential small steps—sit, feet down, stand, one task",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "gotVertical": true, "leftBed": true, "completedOneTask": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 70, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["activation", "persistence", "threshold_lowering"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["micro_progress"],
+        "negative": []
+      },
+      "transferMapping": "Tomorrow morning: sit up, feet down, stand, one small task. Sequence matters."
+    },
+    {
+      "id": "route_tiny_steps",
+      "name": "Radical Lowering",
+      "description": "Found the smallest possible step and started there—one leg, ten seconds, just water",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "loweredThreshold": true, "completedOneTask": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 75, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["threshold_lowering", "activation"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["threshold_lowered", "micro_progress"],
+        "negative": []
+      },
+      "transferMapping": "Find the smallest possible task: just put feet on floor, just drink water, just stand for 10 seconds"
+    },
+    {
+      "id": "route_self_compassion",
+      "name": "The Kinder Path",
+      "description": "Used self-compassion to counter the inner critic and enable action",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "usedSelfCompassion": true, "leftBed": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 80, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["self_compassion", "activation"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["compassion_applied"],
+        "negative": []
+      },
+      "transferMapping": "When you hear 'what's wrong with you': say 'I'm struggling. That's what this is.'"
+    },
+    {
+      "id": "route_connection",
+      "name": "Supported Movement",
+      "description": "Reached out for help and used connection to enable activation",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "askedForHelp": true, "leftBed": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 85, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["support_seeking", "activation"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["support_utilized"],
+        "negative": []
+      },
+      "transferMapping": "Set up a morning accountability text with someone who will check in"
+    },
+    {
+      "id": "route_recovery",
+      "name": "The Second Try",
+      "description": "Collapsed back into bed, then found a way to try again with a gentler approach",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "collapsedBack": true, "recoveredAfterCollapse": true }
+      },
+      "isHidden": true,
+      "isRecovery": true,
+      "discoveryHint": "What happens if you don't stay down after falling?",
+      "discoveryReward": { "xpBonus": 100, "achievementId": "second_try" },
+      "mechanismSignature": {
+        "positive": ["recovery", "persistence", "threshold_lowering"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["recovery_success"],
+        "negative": []
+      },
+      "transferMapping": "If you collapse back into bed, give yourself 5 minutes, then try a smaller step"
+    },
+    {
+      "id": "route_awareness",
+      "name": "Pattern Spotter",
+      "description": "Noticed the thought loops while they were happening",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "notedThoughtLoop": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 65, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["flexibility"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["grounded_interpretation"],
+        "negative": []
+      },
+      "transferMapping": "Name the pattern out loud when you notice it: 'There's the self-attack script again'"
+    },
+    {
+      "id": "route_acceptance",
+      "name": "Partial Is Progress",
+      "description": "Accepted that less than everything still counts",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "acceptedPartialDay": true }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 60, "achievementId": null },
+      "mechanismSignature": {
+        "positive": ["flexibility", "self_compassion"],
+        "negative": []
+      },
+      "associatedPatterns": {
+        "positive": ["threshold_lowered"],
+        "negative": []
+      },
+      "transferMapping": "Define 'enough' before you start: what's the minimum that counts today?"
+    },
+    {
+      "id": "route_shutdown",
+      "name": "The Heavy Day",
+      "description": "Stayed in bed—the weight was too much today",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "leftBed": false, "completedOneTask": false }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 40, "achievementId": null },
+      "mechanismSignature": {
+        "positive": [],
+        "negative": ["activation"]
+      },
+      "associatedPatterns": {
+        "positive": [],
+        "negative": ["avoidance_at_threshold"]
+      },
+      "transferMapping": "Tomorrow: set up one tiny step before you go to sleep tonight"
+    },
+    {
+      "id": "route_overreach",
+      "name": "Too Much Too Fast",
+      "description": "Tried to do the full routine and crashed from overreach",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "triedTooMuch": true, "collapsedBack": true }
+      },
+      "isHidden": true,
+      "isRecovery": false,
+      "discoveryHint": "What happens when you demand everything?",
+      "discoveryReward": { "xpBonus": 70, "achievementId": "overreach_learned" },
+      "mechanismSignature": {
+        "positive": [],
+        "negative": ["threshold_lowering", "flexibility"]
+      },
+      "associatedPatterns": {
+        "positive": [],
+        "negative": ["overreach_collapse", "perfectionism_trap"]
+      },
+      "transferMapping": "Before starting, ask: Is this the smallest version? Can I do even less?"
+    },
+    {
+      "id": "route_self_attack",
+      "name": "The Inner Critic Wins",
+      "description": "Let the self-attack pattern drive behavior into shutdown",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "usedSelfAttack": true, "leftBed": false }
+      },
+      "isHidden": false,
+      "isRecovery": false,
+      "discoveryHint": null,
+      "discoveryReward": { "xpBonus": 50, "achievementId": null },
+      "mechanismSignature": {
+        "positive": [],
+        "negative": ["self_compassion", "activation"]
+      },
+      "associatedPatterns": {
+        "positive": [],
+        "negative": ["self_attack_spiral"]
+      },
+      "transferMapping": "Notice the self-attack voice and name it: 'That's the critic, not the truth'"
+    },
+    {
+      "id": "route_all_or_nothing",
+      "name": "The Perfectionism Trap",
+      "description": "All-or-nothing thinking collapsed partial progress into nothing",
+      "identifiedBy": {
+        "type": "flag-combination",
+        "flags": { "hitAllOrNothing": true, "collapsedBack": true }
+      },
+      "isHidden": true,
+      "isRecovery": false,
+      "discoveryHint": "Notice when 'not enough' appears",
+      "discoveryReward": { "xpBonus": 75, "achievementId": "aon_spotted" },
+      "mechanismSignature": {
+        "positive": [],
+        "negative": ["flexibility", "threshold_lowering"]
+      },
+      "associatedPatterns": {
+        "positive": [],
+        "negative": ["perfectionism_trap"]
+      },
+      "transferMapping": "When 'not enough' appears, ask: Is this observation or all-or-nothing thinking?"
+    }
+  ]
+}

@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "passionflower",
-  "type": "supplement",
-  "name": "Passionflower",
-  "summary": "Passionflower (Passiflora incarnata) is a traditional herbal supplement used for anxiety, insomnia, and stress relief, with mild sedative and anxiolytic properties.",
-  "description": "Passionflower is an herbal remedy derived from Passiflora incarnata, historically used in European and Native American medicine for nervous restlessness, anxiety, and sleep disturbances. Its compounds, including flavonoids and alkaloids, are thought to modulate GABAergic neurotransmission, producing calming effects similar to benzodiazepines but generally milder. Modern clinical evidence suggests possible benefits in generalized anxiety disorder, adjustment disorder, and sleep initiation, though high-quality trials remain limited. It is often used as a gentler alternative to prescription sedatives.",
-  "category": "supplements",
-  "tags": [
-    "herbal medicine",
-    "anxiety relief",
-    "sleep aid",
-    "stress support"
-  ],
-  "metadata": {
-    "compound_type": "Herbal extract",
-    "natural_source": "Leaves, stems, and flowers of Passiflora incarnata",
+  "identity": {
+    "slug": "passionflower",
+    "name": "Passionflower",
+    "brand_names": [
+      "Sedapass",
+      "Passiflora Extract",
+      "Passionflower Tea"
+    ],
+    "aliases": [
+      "Passiflora incarnata",
+      "Maypop",
+      "Apricot vine"
+    ],
+    "wikidata_qid": "Q158968"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Herbal Medicine",
       "Integrative Psychiatry",
@@ -25,77 +29,162 @@
       "Mild sedative",
       "Anxiolytic"
     ],
-    "administration_routes": [
-      "Oral",
-      "Tea infusion"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Sedapass",
-      "Passiflora Extract",
-      "Passionflower Tea"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Intermittent use"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep Medicine",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q158968"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mild to moderate anxiety",
-      "Insomnia and sleep disturbances",
-      "Nervous restlessness and stress"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in generalized anxiety disorder",
-      "Supportive use in benzodiazepine tapering",
-      "Adjunct in ADHD-related restlessness (limited evidence)"
-    ],
-    "contraindications": [
-      "Pregnancy (possible uterine stimulation)",
-      "Concurrent use with strong sedatives"
-    ],
-    "monitoring_required": [
-      "Sedation and drowsiness",
-      "Interactions with CNS depressants"
-    ],
-    "efficacy_rating": {
-      "anxiety": 3,
-      "insomnia": 3,
-      "stress_resilience": 2,
-      "adjunctive_psychiatry": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Passionflower",
-      "Passiflora incarnata",
-      "herbal anxiolytic",
-      "natural sleep aid"
-    ],
-    "synonyms": [
-      "Passiflora incarnata",
-      "Maypop",
-      "Apricot vine"
-    ],
-    "common_misspellings": [
-      "pashionflower",
-      "passionflour",
-      "passaflora"
+    "tags": [
+      "herbal medicine",
+      "anxiety relief",
+      "sleep aid",
+      "stress support"
     ]
+  },
+  "summary": "Passionflower (Passiflora incarnata) is a traditional herbal supplement used for anxiety, insomnia, and stress relief, with mild sedative and anxiolytic properties.",
+  "description": "Passionflower is an herbal remedy derived from Passiflora incarnata, historically used in European and Native American medicine for nervous restlessness, anxiety, and sleep disturbances. Its compounds, including flavonoids and alkaloids, are thought to modulate GABAergic neurotransmission, producing calming effects similar to benzodiazepines but generally milder. Modern clinical evidence suggests possible benefits in generalized anxiety disorder, adjustment disorder, and sleep initiation, though high-quality trials remain limited. It is often used as a gentler alternative to prescription sedatives.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mild-to-moderate-anxiety",
+          "condition_name": "Mild to moderate anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insomnia-and-sleep-disturbances",
+          "condition_name": "Insomnia and sleep disturbances",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "nervous-restlessness-and-stress",
+          "condition_name": "Nervous restlessness and stress",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-generalized-anxiety-disorder",
+          "condition_name": "Adjunctive support in generalized anxiety disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "supportive-use-in-benzodiazepine-tapering",
+          "condition_name": "Supportive use in benzodiazepine tapering",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunct-in-adhd-related-restlessness-limited-evidence",
+          "condition_name": "Adjunct in ADHD-related restlessness (limited evidence)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "anxiety": {
+          "rating": 3
+        },
+        "insomnia": {
+          "rating": 3
+        },
+        "stress_resilience": {
+          "rating": 2
+        },
+        "adjunctive_psychiatry": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Intermittent use"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Tea infusion"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "GI upset"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Excessive sedation when combined with other CNS depressants"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy (possible uterine stimulation)"
+        },
+        {
+          "contraindication": "Concurrent use with strong sedatives"
+        }
+      ],
+      "precautions": [
+        "Avoid in pregnancy due to potential uterine stimulation.",
+        "May potentiate sedative medications including benzodiazepines, barbiturates, and antihistamines."
+      ],
+      "interactions": [
+        {
+          "interactant": "Benzodiazepines",
+          "mechanism": "Additive sedation",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Excessive CNS depression",
+          "action": "Avoid combination"
+        },
+        {
+          "interactant": "Antihistamines (sedating)",
+          "mechanism": "Enhanced drowsiness",
+          "action": "Caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation level"
+        },
+        {
+          "parameter": "Daytime drowsiness"
+        },
+        {
+          "parameter": "Drug interactions with CNS depressants"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid due to uterine stimulation risk",
+        "lactation": "Insufficient safety data; avoid",
+        "pediatric": "Not well studied; avoid routine use",
+        "geriatric": "Generally safe at low doses; monitor for fall risk due to sedation"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Herbal extract",
+        "natural_source": "Leaves, stems, and flowers of Passiflora incarnata",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -218,6 +307,44 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Passionflower",
+      "url": "https://www.nccih.nih.gov/health/passionflower"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Mori A, et al. Passionflower in the treatment of generalized anxiety: A pilot double-blind RCT. J Clin Pharm Ther. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11679026/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Sarris J, Herbal medicines in the treatment of psychiatric disorders: A systematic review. Phytother Res. 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17380591/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Passionflower",
+      "Passiflora incarnata",
+      "herbal anxiolytic",
+      "natural sleep aid"
+    ],
+    "synonyms": [
+      "Passiflora incarnata",
+      "Maypop",
+      "Apricot vine"
+    ],
+    "common_misspellings": [
+      "pashionflower",
+      "passionflour",
+      "passaflora"
+    ]
+  },
   "seo": {
     "title": "Passionflower – Herbal Supplement for Anxiety and Sleep",
     "description": "Passionflower (Passiflora incarnata) is a traditional herbal supplement used for anxiety, restlessness, and insomnia. Learn about its calming effects, dosing, and safety.",

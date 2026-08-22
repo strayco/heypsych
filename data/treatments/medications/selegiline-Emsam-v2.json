@@ -1,87 +1,250 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "selegiline-emsam-zelapar",
-  "type": "medication",
-  "name": "Selegiline (Emsam, Zelapar)",
-  "summary": "Selegiline is an MAOI that can treat major depression (Emsam patch) and is also used in Parkinson’s disease (oral forms). In psychiatry, it’s mainly the transdermal patch for unipolar depression—powerful, but with serious interaction and safety rules.",
-  "description": "Selegiline is a monoamine oxidase inhibitor (MAOI). The transdermal patch (Emsam) is used for unipolar major depression in adults. It can be a good option when other antidepressants haven’t worked, but it comes with strict medication interaction rules, a suicide-risk warning for younger patients, and (at higher patch doses) dietary tyramine restrictions to avoid dangerous blood pressure spikes. Oral selegiline is primarily for Parkinson’s and has different risks and dosing.",
-  "patient_summary": "Emsam (selegiline patch) is an MAOI antidepressant for adults with major depression. It can help when other meds fail, but you have to respect the rules: major drug interactions, watch closely for mood changes or suicidality (especially early), and avoid tyramine-rich foods at higher patch doses (9 or 12 mg/24 hours).",
-  "category": "medications/depression",
-  "metadata": {
+  "identity": {
+    "slug": "selegiline-emsam-zelapar",
+    "name": "Selegiline (Emsam, Zelapar)",
+    "generic_name": "selegiline",
+    "brand_names": [
+      "Emsam",
+      "Zelapar"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
     "drug_classes": [
       "Monoamine Oxidase Inhibitor (MAOI)",
       "MAO-B Inhibitor (dose-dependent selectivity)",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Emsam",
-      "Zelapar"
-    ],
-    "administration_routes": [
-      "Transdermal",
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 2006,
-    "pharmacologic_category": "Monoamine Oxidase Inhibitor; MAO-B Inhibitor (selectivity decreases with higher exposure)",
-    "published_date": "2026-02-07T00:00:00Z",
-    "last_updated": "2026-02-07T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-07T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (unipolar) — transdermal patch (Emsam)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Emsam (selegiline transdermal system) is labeled for adult unipolar major depression. It’s typically considered when first-line antidepressants or therapy haven’t been enough, or when a patient needs a different mechanism and can follow MAOI safety rules."
-      },
-      {
-        "slug": "treatment-resistant-depression",
-        "relationship": "off_label",
-        "context": "In practice, MAOIs (including selegiline patch) often come up in treatment-resistant depression discussions because they work differently than SSRIs/SNRIs."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "not_recommended",
-        "context": "Selegiline is not FDA-approved for bipolar depression and can trigger mania/hypomania. Screen for bipolar disorder before starting; avoid antidepressant monotherapy in bipolar disorder."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to selegiline or any component of the formulation",
-      "Concomitant use with meperidine (any formulation)",
-      "Transdermal patch: Pheochromocytoma",
-      "Transdermal patch: Patients <12 years of age (increased risk of hypertensive crisis)",
-      "Transdermal patch: Use with carbamazepine, SSRIs/SNRIs, tricyclic antidepressants (eg, clomipramine, imipramine), tramadol, propoxyphene, meperidine, methadone, pentazocine, and dextromethorphan (concurrently or within required washout windows)",
-      "Orally disintegrating tablet: Concomitant use or within 14 days of other MAOIs (including linezolid), opioids (eg, meperidine, methadone, tramadol), cyclobenzaprine, dextromethorphan, St. John's wort"
-    ],
-    "efficacy_response": {
-      "metric": "Depression symptom improvement timeline",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With the patch, some people notice early changes in 1 to 2 weeks, but the more meaningful improvement usually builds across 4 to 6 weeks.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Selegiline is an MAOI that can treat major depression (Emsam patch) and is also used in Parkinson’s disease (oral forms). In psychiatry, it’s mainly the transdermal patch for unipolar depression—powerful, but with serious interaction and safety rules.",
+  "description": "Selegiline is a monoamine oxidase inhibitor (MAOI). The transdermal patch (Emsam) is used for unipolar major depression in adults. It can be a good option when other antidepressants haven’t worked, but it comes with strict medication interaction rules, a suicide-risk warning for younger patients, and (at higher patch doses) dietary tyramine restrictions to avoid dangerous blood pressure spikes. Oral selegiline is primarily for Parkinson’s and has different risks and dosing.",
+  "patient_summary": "Emsam (selegiline patch) is an MAOI antidepressant for adults with major depression. It can help when other meds fail, but you have to respect the rules: major drug interactions, watch closely for mood changes or suicidality (especially early), and avoid tyramine-rich foods at higher patch doses (9 or 12 mg/24 hours).",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Emsam (selegiline transdermal system) is labeled for adult unipolar major depression. It’s typically considered when first-line antidepressants or therapy haven’t been enough, or when a patient needs a different mechanism and can follow MAOI safety rules.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "secondary_indication",
+          "context": "Selegiline is not FDA-approved for bipolar depression and can trigger mania/hypomania. Screen for bipolar disorder before starting; avoid antidepressant monotherapy in bipolar disorder."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment Resistant Depression",
+          "relationship": "off_label",
+          "context": "In practice, MAOIs (including selegiline patch) often come up in treatment-resistant depression discussions because they work differently than SSRIs/SNRIs."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Patch provides steady delivery with higher systemic selegiline exposure and lower metabolite exposure vs oral forms; oral capsule/tablet has significant first-pass metabolism with higher metabolite exposure",
-      "bioavailability": "Transdermal about 73% (adult PK data); oral capsule about 4% (adult PK data)",
-      "onset": "Depression: early effects may be seen in 1-2 weeks; continued improvement through 4-6 weeks",
-      "peak_plasma": "Transdermal: time to peak ~20 hours; ODT: 10-15 minutes; capsule: ~0.86 hours (adult PK data)",
-      "half_life": "Oral: ~10 hours; transdermal: ~20 hours (adult PK data)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via CYP2B6, CYP2C9, CYP3A4, CYP2A6 (minor) to active (N-desmethylselegiline, amphetamine, methamphetamine) and inactive metabolites",
-      "excretion": "Urine (primarily metabolites); feces",
-      "protein_binding": "85-90%",
-      "food_effect": "Capsule/tablet bioavailability increases 3- to 4-fold with food; ODT exposure decreases with food; patch avoids gut MAO-A inhibition relative to oral"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: early effects may be seen in 1-2 weeks; continued improvement through 4-6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Transdermal",
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Application-site reaction (patch)",
+          "incidence": "24% (patch; includes erythema)",
+          "notes": "Redness or irritation where the patch sits is common. Rotating sites and applying to clean, dry, intact skin helps. If you get blistering, ulcers, or severe rash, tell your prescriber."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Patch: 18%; oral/ODT: 2-7%",
+          "notes": "Headache can happen, especially early. If headache is sudden and severe—especially with chest pain, palpitations, sweating, or nausea—treat it like a hypertensive crisis warning sign and seek urgent help."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "ODT/patch: 7-12%",
+          "notes": "Sleep can get rocky at first. If insomnia is severe, your prescriber may adjust timing, address sleep hygiene, or reassess the dose."
+        },
+        {
+          "effect": "Hypotension / orthostatic hypotension",
+          "incidence": "ODT: 12-21%; patch: 3-10%",
+          "notes": "Standing up too fast can hit like a wave. Hydrate, rise slowly, and report fainting or frequent dizziness—especially if you’re older or on blood pressure meds."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "ODT: 11%; oral: 10%",
+          "notes": "Nausea is fairly common. If you can’t keep food down or it’s persistent, tell your prescriber."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "ODT: 11%; oral: ≤7%",
+          "notes": "Dizziness can be from blood pressure shifts or CNS effects. Avoid driving until you know how you respond."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypertensive crisis: severe headache, dangerously high blood pressure, chest pain, palpitations, sweating, nausea/vomiting—medical emergency"
+        },
+        {
+          "risk": "Serotonin syndrome: agitation/confusion, sweating, fever, tremor/rigidity, diarrhea, labile blood pressure—medical emergency"
+        },
+        {
+          "risk": "Mania/hypomania: decreased need for sleep, racing thoughts, impulsivity, irritability, grandiosity—urgent reassessment needed"
+        },
+        {
+          "risk": "Psychosis/hallucinations (more noted with oral formulations in Parkinson’s): paranoia, delusions, severe confusion—urgent evaluation"
+        },
+        {
+          "risk": "Suicidal ideation or abrupt worsening depression—urgent evaluation"
+        },
+        {
+          "risk": "Seizure (postmarketing)—seek emergency care"
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies. Closely monitor all antidepressant-treated patients for clinical worsening and for emergence of suicidal thoughts and behaviors.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to selegiline or any component of the formulation"
+        },
+        {
+          "contraindication": "Concomitant use with meperidine (any formulation)"
+        },
+        {
+          "contraindication": "Transdermal patch: Pheochromocytoma"
+        },
+        {
+          "contraindication": "Transdermal patch: Patients <12 years of age (increased risk of hypertensive crisis)"
+        },
+        {
+          "contraindication": "Transdermal patch: Use with carbamazepine, SSRIs/SNRIs, tricyclic antidepressants (eg, clomipramine, imipramine), tramadol, propoxyphene, meperidine, methadone, pentazocine, and dextromethorphan (concurrently or within required washout windows)"
+        },
+        {
+          "contraindication": "Orally disintegrating tablet: Concomitant use or within 14 days of other MAOIs (including linezolid), opioids (eg, meperidine, methadone, tramadol), cyclobenzaprine, dextromethorphan, St. John's wort"
+        }
+      ],
+      "precautions": [
+        "Age restriction (patch): Contraindicated in patients <12 years due to increased risk of hypertensive crisis",
+        "Mania/hypomania risk (patch): Can trigger a switch in people with bipolar disorder; screen before starting",
+        "Serotonin syndrome risk: Can happen with serotonergic meds (SSRIs/SNRIs, TCAs, tramadol, triptans, fentanyl, lithium, buspirone, St. John’s wort, tryptophan) or other MAOIs (including linezolid and IV methylene blue)",
+        "Hypertensive crisis risk: Especially with tyramine-rich foods at patch doses ≥9 mg/24 hours, or with interacting meds",
+        "CNS impairment: Can cause drowsiness and impair driving/operating machinery; sudden sleep episodes have been reported (notably with orally disintegrating tablets)",
+        "Blood pressure effects: Can worsen hypertension or cause orthostatic hypotension—monitor especially during titration and in older adults",
+        "Psychosis/hallucinations (notably oral forms used in Parkinson’s): Can worsen mental status; avoid in major psychotic disorders",
+        "Heat warning (patch): Heat exposure (heating pads, saunas, hot tubs, prolonged sunlight) can increase absorption"
+      ],
+      "interactions": [
+        {
+          "interactant": "Other antidepressants (SSRIs, SNRIs, TCAs like clomipramine/imipramine) and other MAOIs",
+          "mechanism": "Serotonin syndrome and other serious toxicity; some combinations are contraindicated.",
+          "action": "Follow washout rules. In general: wait 14 days between stopping most antidepressants/MAOIs and starting selegiline, and wait 14 days after stopping selegiline before starting another antidepressant/MAOI. Fluoxetine requires a longer washout (5 weeks) before starting selegiline."
+        },
+        {
+          "interactant": "Opioids (especially meperidine; also methadone, tramadol; certain opioid-like meds)",
+          "mechanism": "Severe, potentially fatal reactions; multiple opioids are contraindicated depending on formulation.",
+          "action": "Avoid contraindicated opioids. Tell every clinician you’re on an MAOI before receiving pain meds or anesthesia."
+        },
+        {
+          "interactant": "Dextromethorphan (common in cough/cold meds)",
+          "mechanism": "Serious CNS toxicity and serotonin syndrome risk; contraindicated with certain formulations and timing windows.",
+          "action": "Avoid dextromethorphan products unless your prescriber explicitly clears it."
+        },
+        {
+          "interactant": "St. John’s wort, tryptophan, and other serotonergic supplements",
+          "mechanism": "Serotonin syndrome risk.",
+          "action": "Avoid unless specifically approved by your prescriber."
+        },
+        {
+          "interactant": "Carbamazepine (patch contraindication list)",
+          "mechanism": "Significant interaction risk listed as contraindicated for transdermal system.",
+          "action": "Avoid combination; coordinate alternatives."
+        },
+        {
+          "interactant": "Tyramine-rich foods and beverages (dose-dependent, patch)",
+          "mechanism": "Hypertensive crisis, especially at 9 mg/24h and 12 mg/24h patch doses.",
+          "action": "At doses ≥9 mg/24h: avoid tyramine-rich foods and drinks starting day 1 and continuing for 2 weeks after stopping or reducing to 6 mg/24h."
+        },
+        {
+          "interactant": "Surgery/anesthesia",
+          "mechanism": "MAOIs have special anesthesia rules; some manufacturers list use within 10 days of elective surgery as contraindicated due to interaction risks.",
+          "action": "Coordinate with psychiatry + anesthesia. If continued, use an MAOI-safe anesthetic plan (avoid meperidine and indirect-acting adrenergic agonists)."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and behavior changes: worsening depression, irritability, agitation, panic symptoms, insomnia, impulsivity, akathisia, hypomania/mania—especially during the first 1-2 months and when the dose changes"
+        },
+        {
+          "parameter": "Suicidal ideation and behaviors: close monitoring in pediatric and young adult patients and anyone with past suicidality, especially early in treatment and around dose increases/decreases"
+        },
+        {
+          "parameter": "Blood pressure: watch for new or worsening hypertension, orthostatic hypotension, and any signs suggesting hypertensive crisis"
+        },
+        {
+          "parameter": "Serotonin syndrome symptoms if any serotonergic exposure occurs: mental status changes, autonomic instability, tremor/rigidity, GI symptoms, seizures—stop meds and seek urgent care if suspected"
+        },
+        {
+          "parameter": "Sleep: insomnia vs daytime sleepiness; assess safety for driving and tasks requiring alertness"
+        },
+        {
+          "parameter": "Patch site skin checks: irritation, rash, ulceration; confirm site rotation and proper application technique"
+        },
+        {
+          "parameter": "Medication and supplement reconciliation at every visit: OTC cold/cough meds, herbal supplements, new prescriptions from other clinicians"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Information on selegiline use in pregnancy is limited. For major depression in pregnancy, other treatments are often preferred unless benefits clearly outweigh risks and alternatives aren’t appropriate.",
+        "lactation": "It’s not known whether selegiline is present in breast milk. Because of potential serious adverse reactions in a breastfeeding infant, the manufacturer does not recommend breastfeeding while on selegiline. If selegiline is stopped, guidance suggests waiting 5 days after the final patch is removed before breastfeeding.",
+        "pediatric": "Patch is contraindicated in children <12 years due to increased risk of hypertensive crisis. Adolescents >17 years may use the patch per adult dosing when clinically appropriate, with close monitoring for suicidality and mood activation.",
+        "geriatric": "For depression with the patch: 6 mg/24 hours once daily is commonly used. Older adults may have higher exposure and may be more sensitive to blood pressure changes (orthostasis) and CNS effects; monitor closely.",
+        "renal_impairment": "Patch: eGFR ≥15 mL/minute/1.73 m2: no adjustment necessary. eGFR <15 or ESRD: no specific adjustment provided in labeling (not studied); use caution.",
+        "hepatic_impairment": "Patch: Mild to moderate impairment (Child-Pugh A/B): no adjustment necessary. Severe impairment (Child-Pugh C): no specific patch adjustment provided in labeling (not well studied); use caution. Oral ODT has specific limits (not recommended in Child-Pugh C), but that’s typically Parkinson-focused dosing."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2006
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Patch provides steady delivery with higher systemic selegiline exposure and lower metabolite exposure vs oral forms; oral capsule/tablet has significant first-pass metabolism with higher metabolite exposure",
+          "bioavailability": "Transdermal about 73% (adult PK data); oral capsule about 4% (adult PK data)",
+          "peak_plasma": "Transdermal: time to peak ~20 hours; ODT: 10-15 minutes; capsule: ~0.86 hours (adult PK data)",
+          "half_life": "Oral: ~10 hours; transdermal: ~20 hours (adult PK data)",
+          "metabolism": "Hepatic via CYP2B6, CYP2C9, CYP3A4, CYP2A6 (minor) to active (N-desmethylselegiline, amphetamine, methamphetamine) and inactive metabolites",
+          "excretion": "Urine (primarily metabolites); feces",
+          "protein_binding": "85-90%",
+          "food_effect": "Capsule/tablet bioavailability increases 3- to 4-fold with food; ODT exposure decreases with food; patch avoids gut MAO-A inhibition relative to oral"
+        },
+        "dosing": {
+          "titration": "Psychiatry dosing here focuses on the transdermal patch for unipolar major depression. The patch is changed once daily. Dose changes are slow (every 2 weeks) so your brain can catch up and so side effects don’t get out of hand."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been on the antidepressant patch for 4+ weeks, don’t just rip it off and hope for the best. MAOIs can come with more intense discontinuation symptoms in some people, so tapering tends to be more conservative."
+        }
+      }
     }
   },
   "sections": [
@@ -99,7 +262,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s what people commonly describe—especially with the Emsam patch. Your mileage may vary.",
       "items": [
         {
           "category": "Mood lift that builds (not instant)",
@@ -145,7 +307,8 @@
           ],
           "note": "This medication has major interaction risks. Planning and communication are part of the treatment."
         }
-      ]
+      ],
+      "intro": "Here’s what people commonly describe—especially with the Emsam patch. Your mileage may vary."
     },
     {
       "type": "onset_duration",
@@ -161,10 +324,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Clinically, the patch is considered a legitimate antidepressant option—especially when people haven’t responded to typical first-line meds. The key thing to know is that benefit is usually gradual (weeks, not hours), and safety hinges on following the interaction and (at higher doses) dietary rules.",
       "metric": "Response timeline in depression",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Clinically, the patch is considered a legitimate antidepressant option—especially when people haven’t responded to typical first-line meds. The key thing to know is that benefit is usually gradual (weeks, not hours), and safety hinges on following the interaction and (at higher doses) dietary rules.",
       "clinical_details": "Early improvement may be seen in the first 1 to 2 weeks, with ongoing gains over 4 to 6 weeks. If there’s no meaningful movement after an adequate trial at an adequate dose—while following washout rules and avoiding contraindicated meds—your prescriber usually reassesses the plan.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -258,7 +421,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "This is the part you do not wing. Selegiline (especially the antidepressant patch) has major interaction risks. Some combos can trigger serotonin syndrome or hypertensive crisis.",
       "items": [
         {
           "with": "Other antidepressants (SSRIs, SNRIs, TCAs like clomipramine/imipramine) and other MAOIs",
@@ -295,7 +457,8 @@
           "risk": "MAOIs have special anesthesia rules; some manufacturers list use within 10 days of elective surgery as contraindicated due to interaction risks.",
           "action": "Coordinate with psychiatry + anesthesia. If continued, use an MAOI-safe anesthetic plan (avoid meperidine and indirect-acting adrenergic agonists)."
         }
-      ]
+      ],
+      "intro": "This is the part you do not wing. Selegiline (especially the antidepressant patch) has major interaction risks. Some combos can trigger serotonin syndrome or hypertensive crisis."
     },
     {
       "type": "tapering",
@@ -367,21 +530,6 @@
       "text": "Emsam sits in the “powerful but rules-heavy” corner of depression treatment. It’s not usually a first pick for mild depression. It becomes more relevant when depression is persistent, recurrent, or not responding well to standard options—and when someone can reliably follow MAOI safety rules (interaction checks, washout periods, and tyramine restrictions at higher doses). It also matters in complex cases where side effect profiles of SSRIs/SNRIs aren’t a fit. The big clinical job is screening for bipolar disorder, planning interactions and washouts, and monitoring early for agitation, insomnia, and suicidality."
     }
   ],
-  "seo": {
-    "title": "Selegiline (Emsam, Zelapar): Uses, Dosing, Interactions, Tyramine Diet & Safety",
-    "description": "Selegiline (Emsam patch) is an MAOI antidepressant for unipolar major depression in adults. Learn dosing (6–12 mg/24h), washout rules, dangerous interactions, tyramine diet at higher doses, side effects, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/selegiline-emsam-zelapar](https://www.heypsych.com/treatments/selegiline-emsam-zelapar)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is selegiline (Emsam) used for in psychiatry?",
@@ -431,5 +579,20 @@
       "q": "How do I stop the selegiline patch safely?",
       "a": "If you’ve been on it for 4+ weeks, tapering over about 2 to 4 weeks is commonly recommended to reduce withdrawal symptoms and to catch returning depression early. If you get significant discontinuation symptoms, the usual move is to go back to the prior dose and taper more slowly."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Selegiline (Emsam, Zelapar): Uses, Dosing, Interactions, Tyramine Diet & Safety",
+    "description": "Selegiline (Emsam patch) is an MAOI antidepressant for unipolar major depression in adults. Learn dosing (6–12 mg/24h), washout rules, dangerous interactions, tyramine diet at higher doses, side effects, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/selegiline-emsam-zelapar](https://www.heypsych.com/treatments/selegiline-emsam-zelapar)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,78 +1,174 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "transcranial-ultrasound",
-  "type": "interventional",
-  "name": "Transcranial Ultrasound (TUS)",
-  "summary": "A non-invasive neuromodulation technique using focused or low-intensity ultrasound waves to modulate brain activity, currently under investigation for psychiatric and neurological disorders.",
-  "description": "Transcranial Ultrasound (TUS), also called low-intensity focused ultrasound (LIFU), is an emerging brain stimulation method that uses acoustic energy to modulate neuronal excitability and network dynamics. Unlike magnetic stimulation, ultrasound can target deeper brain structures with millimeter precision. Research suggests it may influence neuroplasticity, brain oscillations, and functional connectivity. Clinical applications are still largely experimental, but early studies show promise in treating mood disorders, movement disorders, and chronic pain.",
-  "category": "interventional/neuromodulation",
-  "tags": [
-    "TUS",
-    "LIFU",
-    "low-intensity focused ultrasound",
-    "ultrasonic neuromodulation",
-    "neuromodulation"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Ultrasound neuromodulation"
-    ],
-    "treatment_types": [
-      "Neurostimulation"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "External ultrasound transducer"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "10–40 minutes (experimental protocols)",
-    "treatment_duration": "Varies by study; not standardized",
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Neuroscience research"
+  "identity": {
+    "slug": "transcranial-ultrasound",
+    "name": "Transcranial Ultrasound (TUS)",
+    "generic_name": "transcranial ultrasound",
+    "brand_names": [
+      "TUS"
     ],
     "wikidata_qid": "Q61980038"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Investigational for depression",
-      "Investigational for epilepsy",
-      "Investigational for movement disorders"
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neuromodulation",
+    "intervention_types": [
+      "Ultrasound neuromodulation"
     ],
-    "conditions_treated": [
-      "Depression",
-      "Chronic pain",
-      "Epilepsy",
-      "Essential tremor",
-      "Parkinson’s disease"
-    ],
-    "off_label_uses": [
-      "PTSD",
-      "Anxiety disorders",
-      "Cognitive enhancement"
-    ],
-    "contraindications": [
-      "Unstable medical conditions",
-      "Pregnancy (precautionary)",
-      "Implanted devices in skull/brain"
-    ],
-    "safety_profile": "Generally safe at low intensities; transient headache, dizziness, or scalp sensations may occur. Long-term safety is still under study.",
-    "evidence_level": "Preliminary — early human trials and animal studies.",
-    "research_support": "Ongoing clinical trials in psychiatry and neurology; strong preclinical evidence for neuromodulatory effects.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 2,
-      "chronic-pain": 2,
-      "movement-disorders": 2
+    "tags": [
+      "TUS",
+      "LIFU",
+      "low-intensity focused ultrasound",
+      "ultrasonic neuromodulation",
+      "neuromodulation"
+    ]
+  },
+  "summary": "A non-invasive neuromodulation technique using focused or low-intensity ultrasound waves to modulate brain activity, currently under investigation for psychiatric and neurological disorders.",
+  "description": "Transcranial Ultrasound (TUS), also called low-intensity focused ultrasound (LIFU), is an emerging brain stimulation method that uses acoustic energy to modulate neuronal excitability and network dynamics. Unlike magnetic stimulation, ultrasound can target deeper brain structures with millimeter precision. Research suggests it may influence neuroplasticity, brain oscillations, and functional connectivity. Clinical applications are still largely experimental, but early studies show promise in treating mood disorders, movement disorders, and chronic pain.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "investigational-for-depression",
+          "condition_name": "Investigational for depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "investigational-for-epilepsy",
+          "condition_name": "Investigational for epilepsy",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "investigational-for-movement-disorders",
+          "condition_name": "Investigational for movement disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-pain",
+          "condition_name": "Chronic pain",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "essential-tremor",
+          "condition_name": "Essential tremor",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parkinson-s-disease",
+          "condition_name": "Parkinson’s disease",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-enhancement",
+          "condition_name": "Cognitive enhancement",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Preliminary — early human trials and animal studies.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 2
+        },
+        "chronic-pain": {
+          "rating": 2
+        },
+        "movement-disorders": {
+          "rating": 2
+        }
+      },
+      "research_support": "Ongoing clinical trials in psychiatry and neurology; strong preclinical evidence for neuromodulatory effects."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Varies by study; not standardized"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "External ultrasound transducer"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "10–40 minutes (experimental protocols)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe at low intensities; transient headache, dizziness, or scalp sensations may occur. Long-term safety is still under study.",
+      "common_adverse_effects": [
+        {
+          "effect": "Scalp warmth"
+        },
+        {
+          "effect": "Mild headache"
+        },
+        {
+          "effect": "Dizziness"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Unknown long-term effects (under investigation)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstable medical conditions"
+        },
+        {
+          "contraindication": "Pregnancy (precautionary)"
+        },
+        {
+          "contraindication": "Implanted devices in skull/brain"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Avoid until safety data are available"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Ultrasound neuromodulation",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Ultrasound transducer positioned on the scalp over target brain region.\nLow-intensity ultrasound pulses delivered under controlled parameters.\nNeuronavigation or MRI guidance often used to enhance precision."
+      }
     }
   },
   "sections": [
@@ -210,6 +306,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Legon W, et al. Transcranial focused ultrasound modulates the activity of primary somatosensory cortex in humans. Nat Neurosci. (2014).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24463648/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Fomenko A, et al. Low-intensity ultrasound neuromodulation: An overview of mechanisms and emerging human applications. Brain Stimul. (2018).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29425597/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Reznik SJ, et al. Targeted transcranial ultrasound neuromodulation of the human primary motor cortex. Brain Stimul. (2020).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32217413/"
+    }
+  ],
   "seo": {
     "title": "Transcranial Ultrasound (TUS) | Experimental Neuromodulation",
     "description": "Learn about Transcranial Ultrasound (TUS / LIFU), an experimental non-invasive brain stimulation technique being studied for depression, epilepsy, and movement disorders.",
@@ -222,5 +338,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Preliminary — early human trials and animal studies."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Preliminary — early human trials and animal studies."
+    ]
   }
 }

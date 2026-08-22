@@ -1,86 +1,184 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cognitive-processing-therapy",
-  "type": "therapy",
-  "name": "Cognitive Processing Therapy (CPT)",
-  "summary": "A structured, evidence-based cognitive-behavioral therapy developed to help individuals recover from post-traumatic stress disorder (PTSD) and related conditions by addressing maladaptive trauma-related thoughts.",
-  "description": "Cognitive Processing Therapy (CPT) is a manualized, trauma-focused cognitive-behavioral treatment primarily used for post-traumatic stress disorder (PTSD). It was originally developed for survivors of sexual assault but has since been widely applied to military veterans, first responders, and other trauma survivors. CPT helps individuals identify and challenge maladaptive trauma-related beliefs (e.g., about safety, trust, power, control, self-worth, and intimacy). By restructuring these cognitions, CPT reduces symptoms of re-experiencing, avoidance, negative alterations in cognition and mood, and hyperarousal. CPT is typically delivered in 12 structured sessions and can be conducted individually or in group settings.",
-  "category": "therapy/individual",
-  "tags": [
-    "cognitive",
-    "behavioral",
-    "trauma-focused",
-    "ptsd",
-    "evidence-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "cognitive-processing-therapy",
+    "name": "Cognitive Processing Therapy (CPT)",
+    "generic_name": "cognitive processing therapy",
+    "brand_names": [
+      "CPT"
+    ],
+    "wikidata_qid": "Q5140219"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Psychotherapy",
       "Cognitive Therapy"
     ],
-    "treatment_types": [
-      "Cognitive",
-      "Behavioral"
-    ],
-    "categories": [
-      "Individual Therapy",
-      "Trauma-Focused Therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Telehealth",
-      "Group"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "50–60 minutes",
-    "treatment_duration": [
-      "12 sessions standard"
-    ],
-    "specialty_areas": [
-      "PTSD",
-      "Trauma Recovery",
-      "Veterans & Military Populations"
-    ],
-    "wikidata_qid": "Q5140219"
+    "tags": [
+      "cognitive",
+      "behavioral",
+      "trauma-focused",
+      "ptsd",
+      "evidence-based"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Post-Traumatic Stress Disorder (PTSD)"
-    ],
-    "conditions_treated": [
-      "PTSD",
-      "Complex Trauma",
-      "Sexual Assault Trauma",
-      "Combat-Related Trauma",
-      "Childhood Abuse",
-      "Other Trauma-Related Disorders"
-    ],
-    "off_label_uses": [
-      "Depression related to trauma",
-      "Anxiety disorders with trauma history",
-      "Complicated grief"
-    ],
-    "contraindications": [
-      "Severe dissociation",
-      "Active psychosis",
-      "Severe substance dependence without stabilization",
-      "Acute suicidality"
-    ],
-    "safety_profile": "Generally safe and well-tolerated; temporary symptom exacerbation is possible when processing trauma.",
-    "evidence_level": "Strong—endorsed by the VA/DoD Clinical Practice Guidelines, APA, and WHO as a frontline PTSD treatment.",
-    "research_support": "Decades of randomized controlled trials demonstrate CPT’s efficacy in reducing PTSD and associated symptoms across populations.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ptsd": 5,
-      "depression": 4,
-      "anxiety": 4,
-      "overall_tolerability": 4
+  "summary": "A structured, evidence-based cognitive-behavioral therapy developed to help individuals recover from post-traumatic stress disorder (PTSD) and related conditions by addressing maladaptive trauma-related thoughts.",
+  "description": "Cognitive Processing Therapy (CPT) is a manualized, trauma-focused cognitive-behavioral treatment primarily used for post-traumatic stress disorder (PTSD). It was originally developed for survivors of sexual assault but has since been widely applied to military veterans, first responders, and other trauma survivors. CPT helps individuals identify and challenge maladaptive trauma-related beliefs (e.g., about safety, trust, power, control, self-worth, and intimacy). By restructuring these cognitions, CPT reduces symptoms of re-experiencing, avoidance, negative alterations in cognition and mood, and hyperarousal. CPT is typically delivered in 12 structured sessions and can be conducted individually or in group settings.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "post-traumatic-stress-disorder-ptsd",
+          "condition_name": "Post-Traumatic Stress Disorder (PTSD)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "complex-trauma",
+          "condition_name": "Complex Trauma",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "sexual-assault-trauma",
+          "condition_name": "Sexual Assault Trauma",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "combat-related-trauma",
+          "condition_name": "Combat-Related Trauma",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "childhood-abuse",
+          "condition_name": "Childhood Abuse",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "other-trauma-related-disorders",
+          "condition_name": "Other Trauma-Related Disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "depression-related-to-trauma",
+          "condition_name": "Depression related to trauma",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-disorders-with-trauma-history",
+          "condition_name": "Anxiety disorders with trauma history",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "complicated-grief",
+          "condition_name": "Complicated grief",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—endorsed by the VA/DoD Clinical Practice Guidelines, APA, and WHO as a frontline PTSD treatment.",
+      "efficacy_ratings": {
+        "ptsd": {
+          "rating": 5
+        },
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Decades of randomized controlled trials demonstrate CPT’s efficacy in reducing PTSD and associated symptoms across populations."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12 sessions standard"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Telehealth",
+        "Group"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe and well-tolerated; temporary symptom exacerbation is possible when processing trauma.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary increase in distress when confronting trauma memories"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe emotional flooding leading to dropout"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Acute suicidality without stabilization",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dissociative symptoms",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Uncontrolled substance abuse",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive, Behavioral",
+        "key_techniques": [
+          "Individual Therapy",
+          "Trauma-Focused Therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of homework and symptom check-in.",
+          "during_session": "Introduction of cognitive skills, identification of stuck points, processing of trauma-related thoughts.",
+          "post_session": "Assignment of practice exercises and monitoring of symptom changes."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed psychologist, psychiatrist, or clinical social worker trained in CPT"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -243,6 +341,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Resick PA, Monson CM, Chard KM. Cognitive Processing Therapy for PTSD: A Comprehensive Manual.",
+      "url": "https://www.apa.org/pubs/books/4317327"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "VA/DoD Clinical Practice Guideline for the Management of PTSD (2023).",
+      "url": "https://www.healthquality.va.gov/guidelines/MH/ptsd/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Watts BV et al. (2013). Meta-analysis of the efficacy of treatments for PTSD.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23876148/"
+    }
+  ],
   "seo": {
     "title": "Cognitive Processing Therapy (CPT) for PTSD",
     "description": "Cognitive Processing Therapy (CPT) is a structured, evidence-based treatment for PTSD and trauma recovery. Learn about techniques, outcomes, and research support.",
@@ -255,5 +373,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—endorsed by the VA/DoD Clinical Practice Guidelines, APA, and WHO as a frontline PTSD treatment."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—endorsed by the VA/DoD Clinical Practice Guidelines, APA, and WHO as a frontline PTSD treatment."
+    ]
   }
 }

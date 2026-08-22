@@ -40,10 +40,10 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white">
+      <div className="flex min-h-screen items-center justify-center bg-canvas">
         <div className="space-y-4 text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
-          <h1 className="text-xl font-semibold text-neutral-900">Loading provider...</h1>
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-accent-500 border-t-transparent"></div>
+          <h1 className="text-xl font-semibold text-label-primary">Loading provider...</h1>
         </div>
       </div>
     );
@@ -87,7 +87,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
             <Star
               key={i}
               className={`${starSize} ${
-                i < Math.floor(rating) ? "fill-current text-yellow-400" : "text-gray-300"
+                i < Math.floor(rating) ? "fill-current text-caution" : "text-label-quaternary"
               }`}
             />
           ))}
@@ -122,7 +122,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-canvas">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Back Button */}
         <motion.div
@@ -133,7 +133,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
           <Button
             variant="ghost"
             onClick={() => window.history.back()}
-            className="flex items-center space-x-2 text-neutral-800 hover:text-neutral-900"
+            className="flex items-center space-x-2 text-label-secondary hover:text-label-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Psychiatrists</span>
@@ -144,13 +144,13 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="shadow-soft mb-8 rounded-2xl border border-neutral-200 bg-white"
+          className="shadow-card-1 mb-8 rounded-2xl border border-separator bg-surface"
         >
           <div className="p-8">
             <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-8">
               {/* Provider Photo & Basic Info */}
-              <div className="mb-6 flex-shrink-0 lg:mb-0">
-                <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-blue-600">
+              <div className="mb-6 shrink-0 lg:mb-0">
+                <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-linear-to-br from-positive-500 to-accent-500">
                   <User className="h-16 w-16 text-white" />
                 </div>
               </div>
@@ -159,8 +159,8 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
               <div className="flex-1">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
                   <div className="mb-6 lg:mb-0">
-                    <h1 className="mb-2 text-3xl font-bold text-neutral-900">{data.full_name}</h1>
-                    <p className="mb-4 text-lg text-neutral-800">{data.credentials}</p>
+                    <h1 className="mb-2 text-3xl font-bold text-label-primary">{data.full_name}</h1>
+                    <p className="mb-4 text-lg text-label-secondary">{data.credentials}</p>
 
                     <div className="mb-4 flex flex-wrap items-center gap-3">
                       <Badge variant="primary" size="sm">
@@ -170,7 +170,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
 
                     {/* Location */}
                     {data.address && (
-                      <div className="flex items-center space-x-4 text-neutral-800">
+                      <div className="flex items-center space-x-4 text-label-secondary">
                         <div className="flex items-center space-x-2">
                           <MapPin className="h-4 w-4" />
                           <span>{data.address.city}, {data.address.state}</span>
@@ -205,7 +205,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <div className="flex w-fit space-x-1 rounded-lg bg-gray-100 p-1">
+          <div className="flex w-fit space-x-1 rounded-lg bg-surface-grouped p-1">
             {[
               { key: "overview", label: "Overview" },
               { key: "reviews", label: "Reviews" },
@@ -215,8 +215,8 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                 onClick={() => setActiveTab(tab.key as any)}
                 className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   activeTab === tab.key
-                    ? "bg-white text-blue-600 shadow-sm"
-                    : "text-neutral-800 hover:text-neutral-900"
+                    ? "bg-fill-tertiary text-accent shadow-sm"
+                    : "text-label-tertiary hover:text-label-secondary"
                 }`}
               >
                 {tab.label}
@@ -243,7 +243,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         <CardTitle>About Dr. {data.full_name?.split(" ").pop()}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="leading-relaxed text-neutral-800">
+                        <div className="leading-relaxed text-label-secondary">
                           <ParsedContent content={data.bio} />
                         </div>
                       </CardContent>
@@ -267,31 +267,31 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     <CardContent className="space-y-4">
                       {data.medical_school && (
                         <div>
-                          <h4 className="font-semibold text-neutral-900">Medical School</h4>
-                          <div className="text-neutral-800">
+                          <h4 className="font-semibold text-label-primary">Medical School</h4>
+                          <div className="text-label-secondary">
                             <ParsedContent content={data.medical_school} />
                           </div>
                         </div>
                       )}
                       {data.residency && (
                         <div>
-                          <h4 className="font-semibold text-neutral-900">Psychiatry Residency</h4>
-                          <div className="text-neutral-800">
+                          <h4 className="font-semibold text-label-primary">Psychiatry Residency</h4>
+                          <div className="text-label-secondary">
                             <ParsedContent content={data.residency} />
                           </div>
                         </div>
                       )}
                       {data.fellowship && (
                         <div>
-                          <h4 className="font-semibold text-neutral-900">Fellowship</h4>
-                          <div className="text-neutral-800">
+                          <h4 className="font-semibold text-label-primary">Fellowship</h4>
+                          <div className="text-label-secondary">
                             <ParsedContent content={data.fellowship} />
                           </div>
                         </div>
                       )}
                       {data.subspecialties && data.subspecialties.length > 0 && (
                         <div>
-                          <h4 className="font-semibold text-neutral-900">Board Certifications</h4>
+                          <h4 className="font-semibold text-label-primary">Board Certifications</h4>
                           <div className="mt-2 flex flex-wrap gap-2">
                             {data.subspecialties.map((cert: string, idx: number) => (
                               <Badge key={idx} variant="outline">
@@ -319,7 +319,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     <CardContent className="space-y-6">
                       {data.specialties && data.specialties.length > 0 && (
                         <div>
-                          <h4 className="mb-3 font-semibold text-neutral-900">Clinical Specialties</h4>
+                          <h4 className="mb-3 font-semibold text-label-primary">Clinical Specialties</h4>
                           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                             {data.specialties.map((specialty: string, idx: number) => (
                               <Badge key={idx} variant="outline" className="justify-start p-3">
@@ -332,7 +332,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
 
                       {data.treatment_approaches && data.treatment_approaches.length > 0 && (
                         <div>
-                          <h4 className="mb-3 font-semibold text-neutral-900">Treatment Approaches</h4>
+                          <h4 className="mb-3 font-semibold text-label-primary">Treatment Approaches</h4>
                           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                             {data.treatment_approaches.map((approach: string, idx: number) => (
                               <Badge key={idx} variant="therapy" className="justify-start p-3">
@@ -350,9 +350,9 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                       {/* Enhanced treatment philosophy with links */}
                       {data.treatment_philosophy && (
                         <div>
-                          <h4 className="mb-3 font-semibold text-neutral-900">Treatment Philosophy</h4>
-                          <div className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4">
-                            <div className="text-sm text-blue-800">
+                          <h4 className="mb-3 font-semibold text-label-primary">Treatment Philosophy</h4>
+                          <div className="rounded-lg border-l-4 border-accent-500 bg-accent-tint p-4">
+                            <div className="text-sm text-label-secondary">
                               <ParsedContent content={data.treatment_philosophy} />
                             </div>
                           </div>
@@ -381,10 +381,10 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           {data.hospital_affiliations.map((hospital: string, idx: number) => (
                             <div
                               key={idx}
-                              className="flex items-center space-x-2 rounded-lg bg-neutral-50 p-3"
+                              className="flex items-center space-x-2 rounded-lg bg-surface-grouped p-3"
                             >
-                              <Building className="h-4 w-4 text-neutral-700" />
-                              <div className="font-medium">
+                              <Building className="h-4 w-4 text-label-tertiary" />
+                              <div className="font-medium text-label-secondary">
                                 <ParsedContent content={hospital} />
                               </div>
                             </div>
@@ -407,7 +407,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         <CardTitle>Research & Clinical Interests</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="text-neutral-800">
+                        <div className="text-label-secondary">
                           <ParsedContent content={data.research_interests} />
                         </div>
                       </CardContent>
@@ -432,11 +432,11 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                   </CardHeader>
                   <CardContent>
                     <div className="py-12 text-center">
-                      <MessageCircle className="mx-auto mb-4 h-12 w-12 text-neutral-600" />
-                      <h3 className="mb-2 text-lg font-semibold text-neutral-900">
+                      <MessageCircle className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
+                      <h3 className="mb-2 text-lg font-semibold text-label-primary">
                         Reviews Coming Soon
                       </h3>
-                      <div className="text-neutral-800">
+                      <div className="text-label-secondary">
                         <ParsedContent content="Patient reviews and ratings will be displayed here once our review system is live. Meanwhile, our Provider Review Guide (coming soon) will walk through how to choose the right provider." />
                       </div>
                     </div>
@@ -461,7 +461,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                 <CardContent className="space-y-4">
                   {data.practice_name && (
                     <div>
-                      <h4 className="font-semibold text-neutral-900">
+                      <h4 className="font-semibold text-label-primary">
                         <ParsedContent content={data.practice_name} />
                       </h4>
                     </div>
@@ -469,8 +469,8 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
 
                   {data.address && (
                     <div className="flex items-start space-x-3">
-                      <MapPin className="mt-1 h-4 w-4 text-neutral-700" />
-                      <div className="text-sm text-neutral-900">
+                      <MapPin className="mt-1 h-4 w-4 text-label-tertiary" />
+                      <div className="text-sm text-label-secondary">
                         <p>{data.address.street}</p>
                         <p>
                           {data.address.city}, {data.address.state} {data.address.zip}
@@ -512,14 +512,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         href={data.online_presence.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 rounded-lg border border-neutral-200 p-3 transition-colors hover:bg-neutral-50"
+                        className="flex items-center space-x-3 rounded-lg border border-separator p-3 transition-colors hover:bg-fill-secondary"
                       >
-                        <ExternalLink className="h-4 w-4 text-blue-600" />
+                        <ExternalLink className="h-4 w-4 text-accent" />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-neutral-900">Website</p>
-                          <p className="text-xs text-neutral-700">Visit provider's website</p>
+                          <p className="text-sm font-medium text-label-primary">Website</p>
+                          <p className="text-xs text-label-tertiary">Visit provider's website</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-neutral-600" />
+                        <ExternalLink className="h-3 w-3 text-label-primary0" />
                       </a>
                     )}
 
@@ -528,14 +528,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         href={data.online_presence.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 rounded-lg border border-neutral-200 p-3 transition-colors hover:bg-neutral-50"
+                        className="flex items-center space-x-3 rounded-lg border border-separator p-3 transition-colors hover:bg-fill-secondary"
                       >
-                        <Linkedin className="h-4 w-4 text-blue-600" />
+                        <Linkedin className="h-4 w-4 text-accent" />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-neutral-900">LinkedIn Profile</p>
-                          <p className="text-xs text-neutral-700">Professional background</p>
+                          <p className="text-sm font-medium text-label-primary">LinkedIn Profile</p>
+                          <p className="text-xs text-label-tertiary">Professional background</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-neutral-600" />
+                        <ExternalLink className="h-3 w-3 text-label-primary0" />
                       </a>
                     )}
 
@@ -544,14 +544,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         href={data.online_presence.academic_profile}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 rounded-lg border border-neutral-200 p-3 transition-colors hover:bg-neutral-50"
+                        className="flex items-center space-x-3 rounded-lg border border-separator p-3 transition-colors hover:bg-fill-secondary"
                       >
-                        <GraduationCap className="h-4 w-4 text-blue-600" />
+                        <GraduationCap className="h-4 w-4 text-accent" />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-neutral-900">Academic Profile</p>
-                          <p className="text-xs text-neutral-700">Research & publications</p>
+                          <p className="text-sm font-medium text-label-primary">Academic Profile</p>
+                          <p className="text-xs text-label-tertiary">Research & publications</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-neutral-600" />
+                        <ExternalLink className="h-3 w-3 text-label-primary0" />
                       </a>
                     )}
 
@@ -560,14 +560,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         href={data.online_presence.practice_profile}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 rounded-lg border border-neutral-200 p-3 transition-colors hover:bg-neutral-50"
+                        className="flex items-center space-x-3 rounded-lg border border-separator p-3 transition-colors hover:bg-fill-secondary"
                       >
-                        <Building2 className="h-4 w-4 text-blue-600" />
+                        <Building2 className="h-4 w-4 text-accent" />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-neutral-900">Practice Profile</p>
-                          <p className="text-xs text-neutral-700">Group or hospital profile</p>
+                          <p className="text-sm font-medium text-label-primary">Practice Profile</p>
+                          <p className="text-xs text-label-tertiary">Group or hospital profile</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-neutral-600" />
+                        <ExternalLink className="h-3 w-3 text-label-primary0" />
                       </a>
                     )}
 
@@ -577,14 +577,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 rounded-lg border border-neutral-200 p-3 transition-colors hover:bg-neutral-50"
+                        className="flex items-center space-x-3 rounded-lg border border-separator p-3 transition-colors hover:bg-fill-secondary"
                       >
-                        <ExternalLink className="h-4 w-4 text-blue-600" />
+                        <ExternalLink className="h-4 w-4 text-accent" />
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-neutral-900">{link.label}</p>
-                          <p className="text-xs text-neutral-700">External link</p>
+                          <p className="text-sm font-medium text-label-primary">{link.label}</p>
+                          <p className="text-xs text-label-tertiary">External link</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-neutral-600" />
+                        <ExternalLink className="h-3 w-3 text-label-primary0" />
                       </a>
                     ))}
                   </CardContent>
@@ -606,19 +606,19 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                   <CardContent className="space-y-4">
                     {/* Insurance with link parsing */}
                     <div>
-                      <h4 className="mb-3 flex items-center space-x-2 font-semibold text-neutral-900">
+                      <h4 className="mb-3 flex items-center space-x-2 font-semibold text-label-primary">
                         <Shield className="h-4 w-4" />
                         <span>Insurance Accepted</span>
                       </h4>
                       <div className="space-y-1">
                         {data.insurance_accepted.map((insurance: string, idx: number) => (
-                          <div key={idx} className="text-sm text-neutral-800">
+                          <div key={idx} className="text-sm text-label-secondary">
                             <ParsedContent content={insurance} />
                           </div>
                         ))}
                       </div>
-                      <div className="mt-3 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-3">
-                        <div className="text-xs text-blue-800">
+                      <div className="mt-3 rounded-lg border-l-4 border-accent-500 bg-accent-tint p-3">
+                        <div className="text-xs text-label-secondary">
                           <ParsedContent content="Always verify your insurance coverage before booking. Check our {link:resource:insurance-guide} for help understanding benefits." />
                         </div>
                       </div>

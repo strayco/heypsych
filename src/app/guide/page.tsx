@@ -217,7 +217,7 @@ export default async function GuidePage() {
             <Link
               key={term}
               href={`/guide/${term.toLowerCase().replace(/\s+/g, '-')}`}
-              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-full text-sm text-slate-700 transition-colors"
+              className="px-3 py-1.5 bg-surface-grouped hover:bg-fill-secondary rounded-full text-sm text-label-secondary transition-colors"
             >
               {term}
             </Link>
@@ -227,17 +227,17 @@ export default async function GuidePage() {
 
       {/* CTA Section */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <Card variant="gradient" size="lg" className="text-center">
+        <Card variant="accent" size="lg" className="text-center border-accent-500/30 bg-accent-tint">
           <CardContent className="pt-0">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-label-primary mb-4">
               Can&apos;t find what you&apos;re looking for?
             </h2>
-            <p className="text-slate-600 mb-6">
+            <p className="text-label-tertiary mb-6">
               Use our search to find specific treatments, conditions, or comparisons.
             </p>
-            <Link 
+            <Link
               href="/search"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-600 text-white font-semibold rounded-xl hover:bg-accent-700 transition-colors"
             >
               Search All Content
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

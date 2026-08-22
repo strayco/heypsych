@@ -15,7 +15,7 @@ import Link from "next/link";
  */
 export function PsychTrail() {
   return (
-    <section className="border-t border-neutral-200 bg-white px-4 py-8 sm:px-6 lg:px-8">
+    <section className="border-t border-separator bg-white px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <Link href="/psychtrails" className="block">
           <div className="group relative overflow-hidden rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 via-blue-50 to-white p-6 transition-all duration-300 hover:border-purple-400 hover:shadow-xl cursor-pointer">
@@ -39,7 +39,7 @@ export function PsychTrail() {
               </div>
 
               {/* Heading */}
-              <h2 className="mb-2 text-2xl font-bold text-neutral-900 transition-colors duration-300 group-hover:text-purple-700">
+              <h2 className="mb-2 text-2xl font-bold text-label-primary transition-colors duration-300 group-hover:text-purple-700">
                 PsychTrails™
               </h2>
 
@@ -49,12 +49,12 @@ export function PsychTrail() {
               </p>
 
               {/* Description */}
-              <p className="mb-2 text-sm text-neutral-700 max-w-2xl mx-auto">
+              <p className="mb-2 text-sm text-label-secondary max-w-2xl mx-auto">
                 Explore fictional, educational scenarios that show how treatment paths unfold over time.
               </p>
 
               {/* Disclaimer */}
-              <p className="text-xs text-neutral-600 italic">
+              <p className="text-xs text-label-tertiary italic">
                 Educational simulations only. Fictional scenarios. Not medical advice.
               </p>
             </div>

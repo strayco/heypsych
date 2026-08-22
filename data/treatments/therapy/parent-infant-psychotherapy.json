@@ -1,85 +1,179 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "parent-infant-psychotherapy",
-  "type": "therapy",
-  "name": "Parent-Infant Psychotherapy (PIP)",
-  "summary": "Parent-Infant Psychotherapy (PIP) is a relational and psychodynamic intervention designed to support parents and their infants by addressing attachment difficulties, unresolved trauma, and early relational stressors.",
-  "description": "Parent-Infant Psychotherapy (PIP) is a therapeutic approach aimed at enhancing the parent-infant relationship during the critical early years of development. It is often provided to families experiencing bonding difficulties, maternal or paternal mental health concerns, or when the infant shows signs of distress or developmental challenges. PIP typically involves both parent(s) and infant in the therapy sessions, where the therapist helps parents reflect on their own experiences, understand the infant’s emotional needs, and strengthen attachment security. It draws from psychodynamic, attachment, and developmental psychology frameworks and can prevent the intergenerational transmission of trauma and maladaptive relational patterns.",
-  "category": "therapy/parent-infant",
-  "tags": [
-    "attachment",
-    "parenting",
-    "infant development",
-    "psychodynamic",
-    "trauma-informed"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "parent-infant-psychotherapy",
+    "name": "Parent-Infant Psychotherapy (PIP)",
+    "generic_name": "parent-infant psychotherapy",
+    "brand_names": [
+      "PIP"
+    ],
+    "wikidata_qid": "Q55628622"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-infant",
     "intervention_types": [
       "Psychodynamic therapy",
       "Attachment-based intervention"
     ],
-    "treatment_types": [
-      "Parent-infant therapy",
-      "Family therapy"
-    ],
-    "categories": [
-      "Infant mental health",
-      "Attachment-focused therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Home-based",
-      "Clinic-based"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Infants (0–3 years)",
-      "Parents and caregivers"
-    ],
-    "session_duration": "50–60 minutes",
-    "treatment_duration": [
-      "12–20 sessions (variable based on needs)"
-    ],
-    "specialty_areas": [
-      "Attachment security",
-      "Parental mental health",
-      "Trauma recovery",
-      "Early intervention"
-    ],
-    "wikidata_qid": "Q55628622"
+    "tags": [
+      "attachment",
+      "parenting",
+      "infant development",
+      "psychodynamic",
+      "trauma-informed"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Parent-infant bonding difficulties",
-      "Maternal postnatal depression or anxiety",
-      "Infant developmental or emotional distress",
-      "Parental trauma history affecting caregiving"
-    ],
-    "conditions_treated": [
-      "Attachment disorders",
-      "Postpartum depression",
-      "Infant regulatory difficulties",
-      "Early relational trauma"
-    ],
-    "off_label_uses": [
-      "Prevention of child maltreatment",
-      "Support in foster/adoptive placements"
-    ],
-    "contraindications": [
-      "Families unable to engage in joint parent-infant sessions",
-      "Severe parental psychiatric illness requiring individual stabilization first"
-    ],
-    "safety_profile": "Safe, with a supportive and reflective structure. May evoke distressing emotions in parents as past traumas are explored.",
-    "evidence_level": "Moderate—supported by clinical trials and longitudinal studies, though less standardized than some structured interventions.",
-    "research_support": "Evidence shows benefits in improving attachment security, reducing maternal depression, and enhancing infant socioemotional development.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "attachment-improvement": 4,
-      "parental-mental-health": 4,
-      "infant-development": 3,
-      "long-term-prevention": 3
+  "summary": "Parent-Infant Psychotherapy (PIP) is a relational and psychodynamic intervention designed to support parents and their infants by addressing attachment difficulties, unresolved trauma, and early relational stressors.",
+  "description": "Parent-Infant Psychotherapy (PIP) is a therapeutic approach aimed at enhancing the parent-infant relationship during the critical early years of development. It is often provided to families experiencing bonding difficulties, maternal or paternal mental health concerns, or when the infant shows signs of distress or developmental challenges. PIP typically involves both parent(s) and infant in the therapy sessions, where the therapist helps parents reflect on their own experiences, understand the infant’s emotional needs, and strengthen attachment security. It draws from psychodynamic, attachment, and developmental psychology frameworks and can prevent the intergenerational transmission of trauma and maladaptive relational patterns.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "parent-infant-bonding-difficulties",
+          "condition_name": "Parent-infant bonding difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "maternal-postnatal-depression-or-anxiety",
+          "condition_name": "Maternal postnatal depression or anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "infant-developmental-or-emotional-distress",
+          "condition_name": "Infant developmental or emotional distress",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parental-trauma-history-affecting-caregiving",
+          "condition_name": "Parental trauma history affecting caregiving",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "attachment-disorders",
+          "condition_name": "Attachment disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "postpartum-depression",
+          "condition_name": "Postpartum depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "infant-regulatory-difficulties",
+          "condition_name": "Infant regulatory difficulties",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "early-relational-trauma",
+          "condition_name": "Early relational trauma",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "prevention-of-child-maltreatment",
+          "condition_name": "Prevention of child maltreatment",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-in-foster-adoptive-placements",
+          "condition_name": "Support in foster/adoptive placements",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—supported by clinical trials and longitudinal studies, though less standardized than some structured interventions.",
+      "efficacy_ratings": {
+        "attachment-improvement": {
+          "rating": 4
+        },
+        "parental-mental-health": {
+          "rating": 4
+        },
+        "infant-development": {
+          "rating": 3
+        },
+        "long-term-prevention": {
+          "rating": 3
+        }
+      },
+      "research_support": "Evidence shows benefits in improving attachment security, reducing maternal depression, and enhancing infant socioemotional development."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions (variable based on needs)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Home-based",
+        "Clinic-based"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, with a supportive and reflective structure. May evoke distressing emotions in parents as past traumas are explored.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional distress when discussing trauma"
+        },
+        {
+          "effect": "Resistance to revisiting painful memories"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Temporary strain in parent-infant relationship as new patterns are formed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Parents unable to engage in joint therapy sessions due to psychiatric instability",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Families needing more structured behavioral approaches first",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Parent-infant therapy, Family therapy",
+        "key_techniques": [
+          "Infant mental health",
+          "Attachment-focused therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of recent parent-infant experiences.",
+          "during_session": "Parent-infant interaction observed and reflected upon with therapist guidance.",
+          "post_session": "Summary of insights and encouragement of continued reflective practice at home."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Psychotherapists with training in infant mental health and attachment theory"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -222,6 +316,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Fraiberg, S., Adelson, E., & Shapiro, V. (1975). Ghosts in the nursery: A psychoanalytic approach to the problems of impaired infant-mother relationships. Journal of the American Academy of Child Psychiatry, 14(3), 387–421.",
+      "url": "https://doi.org/10.1016/S0002-7138(09)61442-4"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Baradon, T. (2010). Working with the parents and infants together: A contemporary perspective on Parent-Infant Psychotherapy. Infant Mental Health Journal, 31(5), 497–509.",
+      "url": "https://doi.org/10.1002/imhj.20275"
+    }
+  ],
   "seo": {
     "title": "Parent-Infant Psychotherapy (PIP) | Attachment-Based Early Intervention",
     "description": "Parent-Infant Psychotherapy (PIP) supports bonding and attachment by addressing parental trauma, maternal mental health, and early relational challenges in families with infants.",
@@ -234,5 +342,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—supported by clinical trials and longitudinal studies, though less standardized than some structured interventions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—supported by clinical trials and longitudinal studies, though less standardized than some structured interventions."
+    ]
   }
 }

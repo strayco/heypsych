@@ -1,122 +1,303 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "sertraline-zoloft",
-  "type": "medication",
-  "name": "Sertraline (Zoloft)",
-  "summary": "SSRI antidepressant used for depression, panic, OCD, PTSD, social anxiety, and PMDD. Usually takes a few weeks to feel a real shift, and it’s not physically addictive—but stopping abruptly can still feel rough.",
-  "description": "Sertraline is a selective serotonin reuptake inhibitor (SSRI). It’s commonly prescribed for depression and anxiety-spectrum conditions like panic disorder, OCD, PTSD, and social anxiety. The first 1–2 weeks are often about side effects (nausea, jittery energy, insomnia). The “this is actually helping” part usually builds over 4–6 weeks, and sometimes longer for OCD/PTSD. There’s a boxed warning about increased suicidal thoughts/behavior in people under 25 in short-term studies—so early monitoring matters. Don’t mix with MAOIs, and watch for serotonin syndrome if you combine serotonergic meds.",
-  "patient_summary": "Sertraline (Zoloft) is an SSRI used for depression, panic, OCD, PTSD, social anxiety, and PMDD. It usually takes weeks—not hours—to work. Early side effects like nausea, diarrhea, insomnia, or feeling “activated” can show up before benefits. There’s a known increased risk of suicidal thoughts/behavior in people under 25 early in treatment, so close follow-up is important. Not physically addictive, but you still want a gradual taper to avoid withdrawal symptoms.",
-  "category": "medications/antidepressants",
-  "metadata": {
+  "identity": {
+    "slug": "sertraline-zoloft",
+    "name": "Sertraline (Zoloft)",
+    "generic_name": "sertraline",
+    "brand_names": [
+      "Zoloft"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antidepressants",
     "drug_classes": [
       "Selective Serotonin Reuptake Inhibitor (SSRI)",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Zoloft"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1991,
-    "pharmacologic_category": "Antidepressant, Selective Serotonin Reuptake Inhibitor",
-    "published_date": "2026-01-29T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD) in adults",
-      "Obsessive-Compulsive Disorder (OCD)",
-      "Panic Disorder (with or without agoraphobia) in adults",
-      "Posttraumatic Stress Disorder (PTSD) in adults",
-      "Social Anxiety Disorder in adults",
-      "Premenstrual Dysphoric Disorder (PMDD) in adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "A core SSRI option for unipolar depression. Expect early side effects first; mood and motivation improvements usually build over weeks."
-      },
-      {
-        "slug": "obsessive-compulsive-disorder",
-        "relationship": "primary_treatment",
-        "context": "One of the go-to SSRIs for OCD. OCD often needs a longer trial and higher end dosing compared to depression."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "primary_treatment",
-        "context": "Effective for panic attacks and anticipatory anxiety. Starting low helps reduce early jitteriness that can mimic panic."
-      },
-      {
-        "slug": "posttraumatic-stress-disorder",
-        "relationship": "primary_treatment",
-        "context": "A first-line SSRI option for PTSD symptoms. Benefits can take several weeks and may continue building for 8–12 weeks."
-      },
-      {
-        "slug": "social-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Helpful for persistent social anxiety (not just performance moments). Usually needs steady daily dosing and patience."
-      },
-      {
-        "slug": "premenstrual-dysphoric-disorder",
-        "relationship": "primary_treatment",
-        "context": "Can be used daily or intermittently (luteal-phase or symptom-onset dosing). Some people feel improvement within the first cycle."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Common off-label SSRI option for chronic worry/tension. Slow titration helps if you’re sensitive to activation."
-      },
-      {
-        "slug": "body-dysmorphic-disorder",
-        "relationship": "off_label",
-        "context": "Often treated with SSRI-style dosing strategies, sometimes requiring higher doses and longer trials for full effect."
-      },
-      {
-        "slug": "bulimia-nervosa",
-        "relationship": "off_label",
-        "context": "Sometimes used when binge/purge symptoms are prominent and mood/anxiety are part of the picture."
-      },
-      {
-        "slug": "binge-eating-disorder",
-        "relationship": "off_label",
-        "context": "May reduce binge frequency in some patients; dosing is typically similar to depression-range dosing."
-      }
-    ],
-    "contraindications": [
-      "Concurrent use of monoamine oxidase inhibitors (MAOIs), including methylene blue, or use within 14 days of stopping an MAOI or sertraline",
-      "Concurrent use with pimozide",
-      "Hypersensitivity to sertraline or any component of the formulation (eg, anaphylaxis, angioedema)",
-      "Concurrent use with disulfiram (oral solution only)"
-    ],
-    "efficacy_response": {
-      "metric": "Time to clinically meaningful improvement",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Sertraline doesn’t work like a rescue med. Many people notice small shifts (less edge, fewer spirals, slightly easier mornings) within 1–2 weeks, but the stronger, steadier benefits usually build over 4–6 weeks. OCD and PTSD often take longer—sometimes up to 12 weeks for a fair trial.",
-      "citation_tag": "FDA Label / SSRI clinical guidance"
+  "summary": "SSRI antidepressant used for depression, panic, OCD, PTSD, social anxiety, and PMDD. Usually takes a few weeks to feel a real shift, and it’s not physically addictive—but stopping abruptly can still feel rough.",
+  "description": "Sertraline is a selective serotonin reuptake inhibitor (SSRI). It’s commonly prescribed for depression and anxiety-spectrum conditions like panic disorder, OCD, PTSD, and social anxiety. The first 1–2 weeks are often about side effects (nausea, jittery energy, insomnia). The “this is actually helping” part usually builds over 4–6 weeks, and sometimes longer for OCD/PTSD. There’s a boxed warning about increased suicidal thoughts/behavior in people under 25 in short-term studies—so early monitoring matters. Don’t mix with MAOIs, and watch for serotonin syndrome if you combine serotonergic meds.",
+  "patient_summary": "Sertraline (Zoloft) is an SSRI used for depression, panic, OCD, PTSD, social anxiety, and PMDD. It usually takes weeks—not hours—to work. Early side effects like nausea, diarrhea, insomnia, or feeling “activated” can show up before benefits. There’s a known increased risk of suicidal thoughts/behavior in people under 25 early in treatment, so close follow-up is important. Not physically addictive, but you still want a gradual taper to avoid withdrawal symptoms.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "A core SSRI option for unipolar depression. Expect early side effects first; mood and motivation improvements usually build over weeks.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive Compulsive Disorder",
+          "relationship": "primary_indication",
+          "context": "One of the go-to SSRIs for OCD. OCD often needs a longer trial and higher end dosing compared to depression.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "primary_indication",
+          "context": "Effective for panic attacks and anticipatory anxiety. Starting low helps reduce early jitteriness that can mimic panic.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "posttraumatic-stress-disorder",
+          "condition_name": "Posttraumatic Stress Disorder",
+          "relationship": "primary_indication",
+          "context": "A first-line SSRI option for PTSD symptoms. Benefits can take several weeks and may continue building for 8–12 weeks.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "social-anxiety-disorder",
+          "condition_name": "Social Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Helpful for persistent social anxiety (not just performance moments). Usually needs steady daily dosing and patience.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "premenstrual-dysphoric-disorder",
+          "condition_name": "Premenstrual Dysphoric Disorder",
+          "relationship": "primary_indication",
+          "context": "Can be used daily or intermittently (luteal-phase or symptom-onset dosing). Some people feel improvement within the first cycle.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Common off-label SSRI option for chronic worry/tension. Slow titration helps if you’re sensitive to activation."
+        },
+        {
+          "condition_slug": "body-dysmorphic-disorder",
+          "condition_name": "Body Dysmorphic Disorder",
+          "relationship": "off_label",
+          "context": "Often treated with SSRI-style dosing strategies, sometimes requiring higher doses and longer trials for full effect."
+        },
+        {
+          "condition_slug": "bulimia-nervosa",
+          "condition_name": "Bulimia Nervosa",
+          "relationship": "off_label",
+          "context": "Sometimes used when binge/purge symptoms are prominent and mood/anxiety are part of the picture."
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge Eating Disorder",
+          "relationship": "off_label",
+          "context": "May reduce binge frequency in some patients; dosing is typically similar to depression-range dosing."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with measurable plasma levels after dosing",
-      "bioavailability": "Tablets and oral solution considered equivalent",
-      "onset": "Depression: initial effects may appear within 1–2 weeks; anxiety-spectrum conditions often show early changes around 2 weeks with continued improvement through 4–6 weeks (sometimes longer for OCD/PTSD)",
-      "peak_plasma": "4.5 to 8.4 hours",
-      "half_life": "Sertraline ~26 hours (average); active metabolite (N-desmethylsertraline) ~62 to 104 hours",
-      "duration_IR": "Once-daily dosing due to half-life and steady-state pharmacology",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic metabolism (multiple CYP pathways; clinically relevant interaction potential with CYP inducers/inhibitors)",
-      "excretion": "Urine and feces primarily as metabolites",
-      "protein_binding": "98%",
-      "food_effect": "Can be taken with or without food; choose a consistent routine if GI side effects are an issue"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Depression: initial effects may appear within 1–2 weeks; anxiety-spectrum conditions often show early changes around 2 weeks with continued improvement through 4–6 weeks (sometimes longer for OCD/PTSD)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea",
+          "incidence": "26%",
+          "notes": "Usually shows up early and often fades within 1–2 weeks. Taking it with food or switching dosing time can help."
+        },
+        {
+          "effect": "Diarrhea",
+          "incidence": "20%",
+          "notes": "Common early SSRI side effect. Hydration matters. If severe or persistent, dose adjustments or a slower titration can help."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "20%",
+          "notes": "Often worse early. Taking sertraline in the morning can help if it’s activating; some people do better at night if it makes them sleepy."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "12%",
+          "notes": "Some people feel sluggish early; this can improve. If fatigue persists, timing changes or dose adjustments may help."
+        },
+        {
+          "effect": "Drowsiness",
+          "incidence": "11% (adults)",
+          "notes": "Less common than insomnia, but it happens. Don’t drive or operate machinery if you feel impaired until you know your baseline."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "12%",
+          "notes": "Can happen during initiation or dose increases. Rising slowly and hydration can help."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "9%",
+          "notes": "Often mild but annoying. Can be dose-related."
+        },
+        {
+          "effect": "Agitation / activation",
+          "incidence": "8%",
+          "notes": "This can feel like anxiety got worse. Starting at 12.5–25 mg and titrating slowly is often the fix."
+        },
+        {
+          "effect": "Sexual dysfunction",
+          "incidence": "Common (rates vary; may be underreported)",
+          "notes": "Decreased libido, delayed orgasm, erectile dysfunction, or orgasm disruption can occur. It’s a real quality-of-life issue—bring it up early so you have options."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serotonin syndrome: agitation, confusion, hyperreflexia, rigidity, fever, sweating, diarrhea, rapid heart rate. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Suicidal thinking/behavior in pediatric and young adult patients in short-term studies: monitor closely, especially during the first 1–2 months or dose changes."
+        },
+        {
+          "risk": "Mania/hypomania: decreased need for sleep, racing thoughts, impulsive behavior, grandiosity—especially if bipolar disorder is present or unrecognized."
+        },
+        {
+          "risk": "Severe hyponatremia/SIADH: confusion, headache, weakness, seizures (higher risk in older adults and with diuretics)."
+        },
+        {
+          "risk": "Serious skin reactions (rare): SJS/TEN or other severe rashes—stop and seek urgent care if rash is severe, blistering, or involves mucous membranes."
+        },
+        {
+          "risk": "Significant bleeding: especially with anticoagulants/antiplatelets/NSAIDs (black stools, vomiting blood, unexplained bruising)."
+        },
+        {
+          "risk": "QT prolongation/torsades (rare): typically with other risk factors or interacting meds."
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thoughts and behavior in pediatric and young adult patients in short-term studies. Closely monitor all antidepressant-treated patients for clinical worsening, and for emergence of suicidal thoughts and behaviors.",
+      "contraindications": [
+        {
+          "contraindication": "Concurrent use of monoamine oxidase inhibitors (MAOIs), including methylene blue, or use within 14 days of stopping an MAOI or sertraline"
+        },
+        {
+          "contraindication": "Concurrent use with pimozide"
+        },
+        {
+          "contraindication": "Hypersensitivity to sertraline or any component of the formulation (eg, anaphylaxis, angioedema)"
+        },
+        {
+          "contraindication": "Concurrent use with disulfiram (oral solution only)"
+        }
+      ],
+      "precautions": [
+        "Serotonin syndrome risk—especially if combined with other serotonergic meds (or overdose): agitation, confusion, tremor, rigidity, fever, diarrhea, rapid heart rate",
+        "Activation of mania/hypomania: antidepressants can trigger mood switching, especially in undiagnosed bipolar disorder",
+        "Bleeding risk: SSRIs can increase bleeding risk, especially with NSAIDs, antiplatelets, or anticoagulants",
+        "Hyponatremia/SIADH risk: higher risk in older adults, low body weight, diuretic use, or prior low sodium",
+        "Angle-closure glaucoma risk in susceptible patients (rare but urgent)",
+        "QT prolongation and torsades have been reported (typically with other risk factors)"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAO inhibitors (including methylene blue)",
+          "mechanism": "Contraindicated. High risk of serious serotonin toxicity and dangerous reactions.",
+          "action": "Allow 14 days between stopping an MAOI and starting sertraline, and 14 days between stopping sertraline and starting an MAOI."
+        },
+        {
+          "interactant": "Pimozide",
+          "mechanism": "Contraindicated. Increased risk of serious cardiac effects (including QT-related risks).",
+          "action": "Do not combine."
+        },
+        {
+          "interactant": "Other serotonergic meds (other SSRIs/SNRIs, triptans, tramadol, linezolid, lithium, St. John’s wort, MDMA, some migraine meds)",
+          "mechanism": "Serotonin syndrome risk (can be rapid and severe).",
+          "action": "Use caution, avoid unnecessary stacking, and educate patients on warning signs (agitation, confusion, tremor, rigidity, fever, diarrhea)."
+        },
+        {
+          "interactant": "NSAIDs, antiplatelets (aspirin, clopidogrel), anticoagulants (warfarin, DOACs)",
+          "mechanism": "Higher bleeding risk (bruising, GI bleed, intracranial bleed—rare but serious).",
+          "action": "Use with caution, monitor, and minimize avoidable NSAID use when possible."
+        },
+        {
+          "interactant": "Alcohol and other sedatives",
+          "mechanism": "Not a classic “don’t ever” like benzos + alcohol, but alcohol can worsen depression/anxiety and amplify sedation or impairment in some people.",
+          "action": "If you drink, keep it minimal and pay attention to mood, sleep, and impulsivity."
+        },
+        {
+          "interactant": "Disulfiram (oral solution only)",
+          "mechanism": "Contraindicated with sertraline oral solution.",
+          "action": "Use tablets/capsules instead, or choose a different antidepressant plan."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and clinical worsening: especially during the first 1–2 months and during dose increases/decreases, with extra attention for patients under 25"
+        },
+        {
+          "parameter": "Activation symptoms: anxiety, agitation, insomnia, irritability, impulsivity, akathisia—these can look like ‘it’s making me worse’ and may require dose/time adjustments or slower titration"
+        },
+        {
+          "parameter": "Mania/hypomania screening: new decreased need for sleep, racing thoughts, risky behavior, grandiosity—especially if bipolar disorder is possible"
+        },
+        {
+          "parameter": "Serum sodium in at-risk patients (older adults, diuretic use, low baseline sodium, low body weight, prior hyponatremia), particularly after initiation or dose adjustments"
+        },
+        {
+          "parameter": "Bleeding risk: bruising, GI bleeding symptoms, and interactions if taking NSAIDs, antiplatelets, or anticoagulants"
+        },
+        {
+          "parameter": "Weight/height/BMI over time (especially in pediatrics); appetite/weight trends in adults during longer treatment"
+        },
+        {
+          "parameter": "Sexual function and relationship impact: track it, don’t ignore it"
+        },
+        {
+          "parameter": "Symptom scales when possible: PHQ-9 for depression; GAD-7 for anxiety; panic tracking; OCD symptom measures; PTSD check-ins"
+        },
+        {
+          "parameter": "Adherence and timing: consistent daily dosing is a big part of whether SSRIs work"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Evaluate pregnancy status before starting when relevant. SSRIs as a class have extensive pregnancy data; overall, a clear increased risk of major congenital malformations has not been consistently observed for sertraline across studies, though results can vary by design and confounders. Late pregnancy SSRI exposure can be associated with neonatal adaptation syndrome (usually resolves within ~2 weeks) and a rare risk of persistent pulmonary hypertension of the newborn (PPHN). Reducing or stopping an effective SSRI right before delivery is not recommended solely to reduce neonatal symptoms. Untreated or undertreated depression/anxiety/PTSD/OCD can also worsen pregnancy outcomes, so treatment decisions should be individualized and collaborative.",
+        "lactation": "Sertraline is present in breast milk, but infant exposure is generally low (relative infant dose typically well below thresholds commonly considered acceptable). Sertraline is often a preferred SSRI in breastfeeding when an antidepressant is needed. Monitor the infant for irritability, feeding changes, sleep changes, and growth/development.",
+        "pediatric": "Psychiatry-focused pediatric use includes OCD and sometimes depression (depending on clinical context). Children may be more prone to behavioral activation (restlessness/hyperactivity/agitation). Start low and titrate slowly, and monitor growth (weight/height/BMI) over time.",
+        "geriatric": "Use with caution in older adults due to higher risk of hyponatremia/SIADH and falls (especially if there’s a history of recurrent falls). Lower starting doses (often 25 mg/day) may be better tolerated. Consider checking sodium after initiation and dose changes.",
+        "renal_impairment": "Mild to severe renal impairment: no dosage adjustment typically necessary; sertraline is not dialyzable and does not require dialysis-related adjustments.",
+        "hepatic_impairment": "Hepatic impairment increases exposure and prolongs half-life. In cirrhosis (Child-Turcotte-Pugh A or B), use 50% of the usual indication-specific dose and increase slowly in small increments (≤25 mg) at intervals of at least 2 weeks; maximum often limited to 100 mg/day in this context. Child-Turcotte-Pugh C: use is not recommended. Sertraline capsules are not recommended in liver impairment because you can’t adjust dose flexibly."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1991
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with measurable plasma levels after dosing",
+          "bioavailability": "Tablets and oral solution considered equivalent",
+          "peak_plasma": "4.5 to 8.4 hours",
+          "half_life": "Sertraline ~26 hours (average); active metabolite (N-desmethylsertraline) ~62 to 104 hours",
+          "metabolism": "Hepatic metabolism (multiple CYP pathways; clinically relevant interaction potential with CYP inducers/inhibitors)",
+          "excretion": "Urine and feces primarily as metabolites",
+          "protein_binding": "98%",
+          "food_effect": "Can be taken with or without food; choose a consistent routine if GI side effects are an issue"
+        },
+        "dosing": {
+          "titration": "Sertraline is usually taken once daily. Most people do best starting low (especially if you’re anxiety-sensitive) and increasing gradually. The goal is a dose that actually treats the condition—not just a starter dose you stay stuck on."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Sertraline isn’t physically addictive, but stopping suddenly can still trigger a withdrawal-like discontinuation syndrome—especially after 4+ weeks of use. The safest move is a gradual taper so your brain has time to adapt."
+        }
+      }
     }
   },
   "sections": [
@@ -143,7 +324,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is the real-world pattern people describe most often—especially in the first month:",
       "items": [
         {
           "category": "Week 1: “Side effects before benefits”",
@@ -189,7 +369,8 @@
           ],
           "note": "Antidepressants can increase suicidal thoughts/behavior in pediatric and young adult patients in short-term studies. Close monitoring early on is essential."
         }
-      ]
+      ],
+      "intro": "This is the real-world pattern people describe most often—especially in the first month:"
     },
     {
       "type": "onset_duration",
@@ -206,10 +387,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Sertraline is widely used because it can reduce both emotional symptoms (sadness, fear, intrusive thoughts) and physical symptoms (panic sensations, tension, hypervigilance). The catch is timing: you usually have to stay consistent long enough for the medication to actually do its job.",
       "metric": "Typical clinical response window",
       "value": "4–6 weeks for many conditions; up to 12 weeks for OCD/PTSD in some patients",
       "comparison": "Not applicable for this medication.",
-      "text": "Sertraline is widely used because it can reduce both emotional symptoms (sadness, fear, intrusive thoughts) and physical symptoms (panic sensations, tension, hypervigilance). The catch is timing: you usually have to stay consistent long enough for the medication to actually do its job.",
       "clinical_details": "Many patients experience early side effects that fade over 1–2 weeks, while benefits build gradually over 4–6 weeks. OCD and PTSD often need longer trials and sometimes higher-end doses before response is obvious. For PMDD, some patients respond within the first menstrual cycle, especially with symptom-linked dosing strategies.",
       "citation": {
         "authors": "FDA Label (Sertraline) and psychiatry guideline consensus",
@@ -316,7 +497,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Sertraline has meaningful interactions mostly through serotonin effects (serotonin syndrome risk) and bleeding risk. Some combinations are flat-out contraindicated.",
       "items": [
         {
           "with": "MAO inhibitors (including methylene blue)",
@@ -348,7 +528,8 @@
           "risk": "Contraindicated with sertraline oral solution.",
           "action": "Use tablets/capsules instead, or choose a different antidepressant plan."
         }
-      ]
+      ],
+      "intro": "Sertraline has meaningful interactions mostly through serotonin effects (serotonin syndrome risk) and bleeding risk. Some combinations are flat-out contraindicated."
     },
     {
       "type": "tapering",
@@ -454,21 +635,6 @@
       "text": "Sertraline is a classic first-line medication across multiple psychiatric conditions: depression, panic disorder, OCD, PTSD, social anxiety, and PMDD. It’s a “foundation” med—best when taken consistently and given enough time at a therapeutic dose. For panic/anxiety-sensitive patients, starting low (12.5–25 mg) and titrating slowly can prevent early activation from derailing treatment. For OCD and related conditions, higher doses and longer trials are often necessary. Medication works best when paired with skills-based therapy (CBT, exposure/response prevention for OCD, trauma-focused therapy for PTSD) and lifestyle supports."
     }
   ],
-  "seo": {
-    "title": "Sertraline (Zoloft): Uses, Dosage, Side Effects, Warnings & Tapering",
-    "description": "Sertraline (Zoloft) is an SSRI for depression, panic disorder, OCD, PTSD, social anxiety, and PMDD. Learn dosing, how long it takes to work, common side effects (GI, insomnia, sexual), key interactions, boxed warning, and safe tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/sertraline-zoloft](https://www.heypsych.com/treatments/sertraline-zoloft)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is sertraline (Zoloft) used for?",
@@ -518,5 +684,20 @@
       "q": "Can sertraline be used for insomnia?",
       "a": "Sertraline isn’t an insomnia medication. It can improve sleep if depression or anxiety is driving the insomnia—but it can also cause insomnia (especially early) or, in some people, drowsiness. If sleep is the main issue, dosing time adjustments and sleep-focused strategies are usually part of the plan."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Sertraline (Zoloft): Uses, Dosage, Side Effects, Warnings & Tapering",
+    "description": "Sertraline (Zoloft) is an SSRI for depression, panic disorder, OCD, PTSD, social anxiety, and PMDD. Learn dosing, how long it takes to work, common side effects (GI, insomnia, sexual), key interactions, boxed warning, and safe tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/sertraline-zoloft](https://www.heypsych.com/treatments/sertraline-zoloft)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

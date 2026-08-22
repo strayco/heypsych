@@ -16,9 +16,9 @@ export function BackToResourcesButton({
     <Link
       href={href}
       className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5
-                 text-sm font-medium text-neutral-900
-                 bg-white hover:bg-neutral-50
-                 border border-neutral-200
+                 text-sm font-medium text-label-primary
+                 bg-surface hover:bg-surface
+                 border border-separator
                  shadow-sm
                  transition-all duration-200
                  focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2

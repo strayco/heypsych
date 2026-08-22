@@ -1,85 +1,249 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "cariprazine-vraylar",
-  "type": "medication",
-  "name": "Cariprazine (Vraylar)",
-  "summary": "Second-generation antipsychotic used for schizophrenia, bipolar I disorder (mania and depression), and as an add-on treatment for major depressive disorder. Not approved for dementia-related psychosis.",
-  "description": "Cariprazine (Vraylar) is an atypical antipsychotic that fine-tunes dopamine and serotonin signaling in the brain. It’s used to treat schizophrenia, manic or mixed episodes in bipolar I disorder, bipolar depression, and as an adjunct when antidepressants alone aren’t enough for major depressive disorder. Because it has very long-acting metabolites, it builds up slowly and can keep working for weeks after dose changes or stopping. It is not approved for behavior problems in older adults with dementia-related psychosis due to an increased risk of death in this population.",
-  "patient_summary": "Vraylar helps with mood swings, severe depression, and symptoms like hearing voices or feeling paranoid. Many people take it for bipolar disorder or schizophrenia, and some use it along with an antidepressant for stubborn depression. It’s taken once a day and builds up gradually in your system, so changes are slow and steady rather than overnight. Common issues are feeling restless, having trouble sitting still, or feeling a bit wired or sleepy. It is not meant for memory problems or behavior changes in dementia.",
-  "category": "medications/psychosis-and-bipolar",
-  "metadata": {
+  "identity": {
+    "slug": "cariprazine-vraylar",
+    "name": "Cariprazine (Vraylar)",
+    "generic_name": "cariprazine",
+    "brand_names": [
+      "Vraylar"
+    ],
+    "wikidata_qid": "Q15412242"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychosis-and-bipolar",
     "drug_classes": [
       "Second Generation (Atypical) Antipsychotic",
       "Antimanic Agent",
       "Dopamine D2/D3 Partial Agonist"
-    ],
-    "brand_names": [
-      "Vraylar"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": null,
-    "generic_available": false,
-    "fda_approval_year": 2015,
-    "pharmacologic_category": "Atypical Antipsychotic",
-    "published_date": "2025-12-10T00:00:00Z",
-    "last_updated": "2025-12-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q15412242"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Bipolar I Disorder – acute mania and mixed episodes",
-      "Bipolar I Disorder – bipolar depression",
-      "Major Depressive Disorder – adjunctive"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Approved for schizophrenia to help with hallucinations, disorganized thinking, and lack of motivation."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for acute manic or mixed episodes and bipolar depression in bipolar I disorder."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "adjunct",
-        "context": "Added to antidepressants in adults when response to antidepressant alone is incomplete."
-      }
-    ],
-    "contraindications": [
-      "Known hypersensitivity (rash, hives, angioedema) to cariprazine or formulation components",
-      "Use with strong or moderate CYP3A4 inhibitors or inducers in some regions (eg, Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical symptom improvement",
-      "percentage_value": null,
-      "comparison_data": null,
-      "patient_text": "In clinical trials, more people taking Vraylar had meaningful improvements in mood and psychotic symptoms compared to placebo, particularly for bipolar mania, bipolar depression, and schizophrenia.",
-      "citation_tag": null
+  "summary": "Second-generation antipsychotic used for schizophrenia, bipolar I disorder (mania and depression), and as an add-on treatment for major depressive disorder. Not approved for dementia-related psychosis.",
+  "description": "Cariprazine (Vraylar) is an atypical antipsychotic that fine-tunes dopamine and serotonin signaling in the brain. It’s used to treat schizophrenia, manic or mixed episodes in bipolar I disorder, bipolar depression, and as an adjunct when antidepressants alone aren’t enough for major depressive disorder. Because it has very long-acting metabolites, it builds up slowly and can keep working for weeks after dose changes or stopping. It is not approved for behavior problems in older adults with dementia-related psychosis due to an increased risk of death in this population.",
+  "patient_summary": "Vraylar helps with mood swings, severe depression, and symptoms like hearing voices or feeling paranoid. Many people take it for bipolar disorder or schizophrenia, and some use it along with an antidepressant for stubborn depression. It’s taken once a day and builds up gradually in your system, so changes are slow and steady rather than overnight. Common issues are feeling restless, having trouble sitting still, or feeling a bit wired or sleepy. It is not meant for memory problems or behavior changes in dementia.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Approved for schizophrenia to help with hallucinations, disorganized thinking, and lack of motivation.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for acute manic or mixed episodes and bipolar depression in bipolar I disorder.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication",
+          "context": "Added to antidepressants in adults when response to antidepressant alone is incomplete."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth with peak levels in about 3–6 hours",
-      "bioavailability": null,
-      "onset": "Initial benefit often within 1–2 weeks depending on condition",
-      "peak_plasma": "3–6 hours (parent drug)",
-      "half_life": "Cariprazine: 2–4 days; active metabolites: 1–3 weeks",
-      "duration_IR": null,
-      "duration_XR": null,
-      "metabolism": "Extensively metabolized in the liver by CYP3A4 and, to a lesser extent, CYP2D6 to active metabolites (DCAR and DDCAR)",
-      "excretion": "Urine (about 21% of dose, ~1% as unchanged drug)",
-      "protein_binding": "Approximately 91–97%",
-      "food_effect": "Can be taken with or without food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Initial benefit often within 1–2 weeks depending on condition"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Akathisia (inner restlessness, urge to move)",
+          "incidence": "About 6–20%",
+          "notes": "Often appears in first 2–6 weeks or after dose increases; can feel like you ‘can’t sit still’. Dose changes or add-on treatments sometimes help."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (stiffness, tremor, slowed movement)",
+          "incidence": "Roughly 4–26%",
+          "notes": "Range from mild stiffness or shakiness to more disabling movement changes; usually improve with dose adjustments or medications, but can occasionally persist."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Around 14%",
+          "notes": "Often improves with time; hydration, sleep, and dose timing may help."
+        },
+        {
+          "effect": "Insomnia or sleep disruption",
+          "incidence": "Roughly 9–13%",
+          "notes": "May feel wired at night or sleepy in the day until your body adjusts."
+        },
+        {
+          "effect": "Nausea, vomiting, stomach upset",
+          "incidence": "Nausea 7–13%; vomiting up to 10%",
+          "notes": "Taking with food and slow dose increases may help; let your prescriber know if persistent."
+        },
+        {
+          "effect": "Weight gain",
+          "incidence": "About 1–8%",
+          "notes": "Usually mild compared with some other antipsychotics but still important to monitor with weight, labs, and lifestyle."
+        },
+        {
+          "effect": "Drowsiness or fatigue",
+          "incidence": "Approximately 5–8%",
+          "notes": "May be worse at higher doses; timing the dose or adjusting the dose can sometimes help."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Tardive dyskinesia: Involuntary movements of face, tongue, or body that may become permanent."
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome: High fever, rigidity, confusion, unstable blood pressure and heart rate; medical emergency."
+        },
+        {
+          "risk": "Severe extrapyramidal symptoms: Very stiff muscles, difficulty moving, problems swallowing or speaking."
+        },
+        {
+          "risk": "Falls and injuries due to dizziness, sedation, or low blood pressure when standing."
+        },
+        {
+          "risk": "Severe changes in blood sugar or lipids, new or worsening diabetes (rare but possible)."
+        },
+        {
+          "risk": "Low white blood cell counts (leukopenia, neutropenia), which can increase infection risk."
+        },
+        {
+          "risk": "Seizures in people with lowered seizure threshold."
+        },
+        {
+          "risk": "Severe rash or skin reaction (very rare)."
+        },
+        {
+          "risk": "Sudden worsening of mood, new suicidal thoughts, or dangerous impulsive behavior."
+        }
+      ],
+      "black_box_warning": "Elderly people with dementia-related psychosis who are treated with antipsychotic drugs have a higher risk of death, mostly from heart problems or infections. Cariprazine is not approved for dementia-related psychosis. Antidepressants can raise the risk of suicidal thoughts and behaviors in children, teens, and young adults; cariprazine is sometimes used with antidepressants, so careful monitoring is essential. Vraylar is not approved for use in children.",
+      "contraindications": [
+        {
+          "contraindication": "Known hypersensitivity (rash, hives, angioedema) to cariprazine or formulation components"
+        },
+        {
+          "contraindication": "Use with strong or moderate CYP3A4 inhibitors or inducers in some regions (eg, Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "May cause sudden or delayed suicidal thoughts or behavior changes, especially when used with antidepressants and early in treatment or after dose changes.",
+        "Can cause movement disorders (stiffness, tremor, restlessness, tardive dyskinesia). Some movement problems can become long-lasting.",
+        "May worsen or trigger neuroleptic malignant syndrome, a rare but life-threatening reaction with fever, rigidity, and confusion.",
+        "May contribute to weight gain, elevated blood sugar, and cholesterol changes over time.",
+        "Can cause dizziness or drops in blood pressure, especially when first starting or increasing the dose, increasing the risk of falls.",
+        "Can lower seizure threshold in people with seizure risk.",
+        "Plasma levels build up slowly; adverse effects may appear weeks after starting or changing dose."
+      ],
+      "interactions": [
+        {
+          "interactant": "Strong or moderate CYP3A4 inhibitors (eg, certain antifungals, some macrolide antibiotics, some HIV medications)",
+          "mechanism": "Can raise cariprazine levels and increase side effects (especially restlessness, movement problems, and sedation).",
+          "action": "In some regions (eg, Canada) combination is not recommended. In general, prescribers may avoid combination or adjust doses very cautiously."
+        },
+        {
+          "interactant": "Strong or moderate CYP3A4 inducers (eg, some seizure medicines, rifampin, St. John’s wort)",
+          "mechanism": "Can lower cariprazine levels and reduce effectiveness.",
+          "action": "Avoid if possible; prescribers may choose a different antipsychotic if a strong inducer is needed."
+        },
+        {
+          "interactant": "Other medications that cause drowsiness or lower blood pressure",
+          "mechanism": "Increased risk of sedation, dizziness, falls, and blood pressure drops on standing.",
+          "action": "Use caution, rise slowly from sitting or lying positions, and report frequent lightheadedness or falls."
+        },
+        {
+          "interactant": "Other antipsychotics or dopamine-blocking drugs",
+          "mechanism": "Higher risk of movement disorders, NMS, and metabolic side effects.",
+          "action": "Usually avoided unless carefully planned cross-tapering is being done by a psychiatry specialist."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Symptom control and adherence at every visit."
+        },
+        {
+          "parameter": "Blood pressure, pulse, temperature, and signs of infection at each visit early in treatment and after dose changes."
+        },
+        {
+          "parameter": "Weight, height, and BMI at baseline; again at 8 and 12 weeks; then at least every 3–6 months. Consider waist circumference yearly in those at metabolic risk."
+        },
+        {
+          "parameter": "Fasting blood glucose or HbA1c and lipid panel about 4 months after starting and at least annually (or more often if abnormal)."
+        },
+        {
+          "parameter": "Ask about symptoms of high prolactin (changes in periods, libido, breast changes, sexual dysfunction); check levels if symptomatic."
+        },
+        {
+          "parameter": "Watch for extrapyramidal symptoms and akathisia at every visit; use a formal movement rating scale at least annually, or every 6 months if high risk."
+        },
+        {
+          "parameter": "Screen for tardive dyskinesia at every visit; use a formal scale (eg, AIMS) at least yearly or more often if risk factors present."
+        },
+        {
+          "parameter": "Review fall risk, especially in older adults, at each visit."
+        },
+        {
+          "parameter": "CBC as clinically indicated, particularly if there is a history of low white blood cell counts or drug-induced neutropenia."
+        },
+        {
+          "parameter": "Metabolic syndrome history and cardiovascular risk factors annually."
+        },
+        {
+          "parameter": "Consider therapeutic drug monitoring in special situations to assess adherence or unexplained side effects; a reference trough range of about 10–20 ng/mL has been proposed, with alert levels above ~40 ng/mL."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Overall, second-generation antipsychotics do not appear to dramatically increase the risk of major birth defects, but data for cariprazine itself are limited. Using any antipsychotic in the third trimester can cause temporary withdrawal or movement symptoms in newborns (such as agitation, abnormal tone, feeding problems, or breathing issues). Untreated psychosis, depression, or bipolar disorder also carries serious risks for parent and baby. Treatment choices should be made through shared decision-making with psychiatry and obstetrics, using the lowest effective dose and avoiding unnecessary polypharmacy.",
+        "lactation": "It is not known if cariprazine passes into human breast milk. Other antipsychotics can appear in breast milk and may cause sleepiness, feeding difficulties, or slowed development in infants. Decisions about breastfeeding while on Vraylar should weigh the benefits of breastfeeding, the importance of treatment for the parent, and the potential risks for the infant. If breastfeeding continues, monitor the infant for sedation, poor feeding, poor weight gain, or unusual movements.",
+        "pediatric": "Safety and effectiveness have not been established in people under 18 years old. Second-generation antipsychotics can increase risks of weight gain, diabetes, abnormal lipids, and hyperprolactinemia in children and teens. Use is generally avoided outside of research or specialist-directed care.",
+        "geriatric": "In adults ≥65 years, especially those with dementia, antipsychotics increase the risk of stroke, cognitive decline, and death. Vraylar is not approved for dementia-related psychosis. In older adults with schizophrenia, bipolar disorder, or depression, start with very low doses, titrate slowly, and monitor closely for EPS, falls, hyponatremia/SIADH, and metabolic changes.",
+        "renal_impairment": "Use with caution in reduced kidney function; avoid when CrCl <30 mL/minute due to lack of data.",
+        "hepatic_impairment": "Use with caution in mild to moderate liver impairment and avoid in severe impairment. Monitor liver function tests periodically."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": false,
+      "fda_approval_year": 2015
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth with peak levels in about 3–6 hours",
+          "bioavailability": null,
+          "peak_plasma": "3–6 hours (parent drug)",
+          "half_life": "Cariprazine: 2–4 days; active metabolites: 1–3 weeks",
+          "metabolism": "Extensively metabolized in the liver by CYP3A4 and, to a lesser extent, CYP2D6 to active metabolites (DCAR and DDCAR)",
+          "excretion": "Urine (about 21% of dose, ~1% as unchanged drug)",
+          "protein_binding": "Approximately 91–97%",
+          "food_effect": "Can be taken with or without food"
+        },
+        "dosing": {
+          "titration": "Cariprazine is usually taken once daily, with or without food. Doses are increased slowly to balance benefit and side effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Because cariprazine and its active metabolites hang around in the body for a long time, both stopping and switching need planning."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +262,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Commonly Notice",
-      "intro": "People’s experiences vary, but these are common patterns reported in real-world use:",
       "items": [
         {
           "category": "Mood and thinking",
@@ -133,7 +296,8 @@
           ],
           "note": "Cariprazine has a lower metabolic risk than some antipsychotics, but weight and labs still need monitoring."
         }
-      ]
+      ],
+      "intro": "People’s experiences vary, but these are common patterns reported in real-world use:"
     },
     {
       "type": "onset_duration",
@@ -150,10 +314,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Across trials in schizophrenia, bipolar I mania/mixed states, bipolar depression, and major depressive disorder, cariprazine consistently outperformed placebo for reducing core symptoms such as hallucinations, disorganized thinking, elevated mood, irritability, and depressive symptoms. Benefits are most apparent when it is titrated carefully and continued long enough to reach steady state.",
       "metric": "Symptom response vs placebo",
       "value": null,
       "comparison": null,
-      "text": "Across trials in schizophrenia, bipolar I mania/mixed states, bipolar depression, and major depressive disorder, cariprazine consistently outperformed placebo for reducing core symptoms such as hallucinations, disorganized thinking, elevated mood, irritability, and depressive symptoms. Benefits are most apparent when it is titrated carefully and continued long enough to reach steady state.",
       "clinical_details": "Cariprazine has been studied as monotherapy for schizophrenia and bipolar I disorder (mania and mixed features), and as adjunctive therapy to antidepressants in major depressive disorder. Doses above labeled maximums (eg, 12 mg/day) have not shown greater benefit but may increase adverse effects such as akathisia and extrapyramidal symptoms. Because of very long-acting metabolites, both efficacy and side effects can lag behind dose changes by several weeks.",
       "citation": {
         "authors": null,
@@ -254,7 +418,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug Interactions",
-      "intro": "Cariprazine is processed mainly by the liver enzyme CYP3A4. Drugs that strongly affect this pathway can dramatically change its levels.",
       "items": [
         {
           "with": "Strong or moderate CYP3A4 inhibitors (eg, certain antifungals, some macrolide antibiotics, some HIV medications)",
@@ -276,7 +439,8 @@
           "risk": "Higher risk of movement disorders, NMS, and metabolic side effects.",
           "action": "Usually avoided unless carefully planned cross-tapering is being done by a psychiatry specialist."
         }
-      ]
+      ],
+      "intro": "Cariprazine is processed mainly by the liver enzyme CYP3A4. Drugs that strongly affect this pathway can dramatically change its levels."
     },
     {
       "type": "tapering",
@@ -385,21 +549,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Cariprazine (Vraylar): Uses, Dosing, Side Effects & Warnings",
-    "description": "Learn how Vraylar (cariprazine) is used for schizophrenia, bipolar I disorder, and treatment-resistant depression—plus common side effects, black box warnings, dosing, and monitoring.",
-    "canonical": "https://www.heypsych.com/treatments/cariprazine-vraylar",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-10",
-    "lastUpdated": "2025-12-10",
-    "reviewStatement": "Content rewritten for the general public from specialist sources, while preserving key safety information and psychiatric clinical context."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Vraylar",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/204370s012lbl.pdf",
+      "description": "Official US prescribing information including dosing, warnings, and study data."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "APA Practice Guideline for the Treatment of Patients With Schizophrenia (2020)",
+      "url": "https://psychiatryonline.org/",
+      "description": "Guideline on antipsychotic use and monitoring, including cariprazine."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Beers Criteria for Potentially Inappropriate Medication Use in Older Adults (2023)",
+      "url": "https://agsjournals.onlinelibrary.wiley.com/",
+      "description": "Highlights risks of antipsychotics in older adults, including dementia-related mortality and SIADH."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "National Pregnancy Registry for Psychiatric Medications",
+      "url": "https://womensmentalhealth.org/research/pregnancyregistry/",
+      "description": "Registry collecting outcome data on antipsychotic and other psychiatric medication exposure in pregnancy."
+    }
+  ],
   "faqs": [
     {
       "q": "What is Vraylar used for?",
@@ -429,5 +608,20 @@
       "q": "Is Vraylar safe during pregnancy or breastfeeding?",
       "a": "Data specific to Vraylar are limited. Antipsychotics as a group do not appear to dramatically increase birth defect risk, but they can cause temporary withdrawal or movement symptoms in newborns if used late in pregnancy. It isn’t known if Vraylar passes into breast milk. Decisions about pregnancy and breastfeeding on Vraylar should be made with your psychiatrist and obstetric provider, weighing the risks of untreated illness against medication risks."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Cariprazine (Vraylar): Uses, Dosing, Side Effects & Warnings",
+    "description": "Learn how Vraylar (cariprazine) is used for schizophrenia, bipolar I disorder, and treatment-resistant depression—plus common side effects, black box warnings, dosing, and monitoring.",
+    "canonical": "https://www.heypsych.com/treatments/cariprazine-vraylar",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-10",
+    "lastUpdated": "2025-12-10",
+    "reviewStatement": "Content rewritten for the general public from specialist sources, while preserving key safety information and psychiatric clinical context."
+  }
 }

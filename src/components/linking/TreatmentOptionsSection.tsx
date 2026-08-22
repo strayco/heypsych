@@ -65,7 +65,7 @@ export function TreatmentOptionsSection({
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Heart className="h-5 w-5 text-green-600" />
+            <Heart className="h-5 w-5 text-positive-600" />
             {title}
           </CardTitle>
         </CardHeader>
@@ -124,7 +124,6 @@ function CategoryGroup({
   title,
   icon,
   links,
-  baseColor,
 }: {
   title: string;
   icon: React.ReactNode;
@@ -133,7 +132,7 @@ function CategoryGroup({
 }) {
   return (
     <div>
-      <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-neutral-900">
+      <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-label-primary">
         {icon}
         {title}
       </h4>
@@ -142,9 +141,9 @@ function CategoryGroup({
           <Link
             key={`${link.targetSlug}-${index}`}
             href={`/treatments/${link.targetSlug}`}
-            className={`group block rounded-lg border border-${baseColor}-200 bg-${baseColor}-50 p-3 transition-all hover:border-${baseColor}-400 hover:bg-${baseColor}-100`}
+            className="group block rounded-lg border border-separator bg-surface-grouped p-3 transition-all hover:border-accent-border hover:bg-fill-secondary"
           >
-            <span className={`text-sm font-medium text-${baseColor}-900 group-hover:text-${baseColor}-700`}>
+            <span className="text-sm font-medium text-label-primary group-hover:text-accent">
               {link.anchorOptions[0]}
             </span>
           </Link>
@@ -164,7 +163,7 @@ function renderSimpleList(links: CandidateLink[], title: string) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Heart className="h-5 w-5 text-green-600" />
+            <Heart className="h-5 w-5 text-positive-600" />
             {title}
           </CardTitle>
         </CardHeader>
@@ -174,9 +173,9 @@ function renderSimpleList(links: CandidateLink[], title: string) {
               <Link
                 key={`${link.targetSlug}-${index}`}
                 href={`/treatments/${link.targetSlug}`}
-                className="group block rounded-lg border border-neutral-200 bg-neutral-50 p-3 transition-all hover:border-blue-300 hover:bg-blue-50"
+                className="group block rounded-lg border border-separator bg-surface-grouped p-3 transition-all hover:border-accent-border hover:bg-fill-secondary"
               >
-                <span className="text-sm font-medium text-neutral-900 group-hover:text-blue-700">
+                <span className="text-sm font-medium text-label-primary group-hover:text-accent">
                   {link.anchorOptions[0]}
                 </span>
               </Link>

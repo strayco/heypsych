@@ -1,89 +1,261 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "zuclopenthixol-clopixol",
-  "type": "medication",
-  "name": "Zuclopenthixol (Clopixol)",
-  "summary": "Typical (first-generation) antipsychotic used for schizophrenia and for short-term control of acute agitation in psychotic episodes. Strong calming effect, but higher risk of movement side effects (EPS) and elevated prolactin compared with many newer options.",
-  "description": "Clopixol (zuclopenthixol) is a first-generation antipsychotic used to treat schizophrenia and to quickly settle severe agitation or aggression during psychosis. It comes as tablets, a short-acting IM injection for acute agitation (Acuphase), and a long-acting depot injection for maintenance (Depot). It can be very effective for reducing hallucinations, delusions, and agitation—but it also has real downsides: stiffness, restlessness (akathisia), tremor, sedation, dry mouth/constipation, and rare but serious risks like neuroleptic malignant syndrome (NMS) and dangerous heart rhythm changes (QT prolongation).",
-  "patient_summary": "Clopixol can quiet psychosis and agitation fast—sometimes that’s exactly what you need. But it’s not a “light” medication. Expect a real chance of sleepiness and movement side effects, and you’ll want careful monitoring (especially for EPS, blood pressure drops, and heart rhythm risk). The depot can be a game-changer for relapse prevention if daily pills are a struggle.",
-  "category": "medications/schizophrenia",
-  "metadata": {
-    "drug_classes": [
-      "First Generation (Typical) Antipsychotic",
-      "Thioxanthene Antipsychotic",
-      "Dopamine (D2) Receptor Antagonist"
-    ],
+  "identity": {
+    "slug": "zuclopenthixol-clopixol",
+    "name": "Zuclopenthixol (Clopixol)",
+    "generic_name": "zuclopenthixol",
     "brand_names": [
       "Clopixol",
       "Clopixol Acuphase",
       "Clopixol Depot"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable (not available in the United States).",
-    "pharmacologic_category": "First Generation (Typical) Antipsychotic",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-29T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-29T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia (maintenance treatment)",
-      "Acute agitation/aggression associated with schizophrenia or psychotic episodes (short-term control)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used for acute symptom control and long-term relapse prevention. Depot formulations can improve adherence and reduce relapse risk when daily pills are inconsistent. ([UNC School of Medicine][1])"
-      },
-      {
-        "slug": "acute-psychosis",
-        "relationship": "primary_treatment",
-        "context": "Short-acting IM zuclopenthixol acetate (Acuphase) is used short-term to rapidly settle severe agitation in acute psychotic episodes. ([Electronic Medicines Compendium][2])"
-      },
-      {
-        "slug": "catatonia",
-        "relationship": "not_indicated",
-        "context": "Antipsychotics are not indicated for catatonia and may worsen symptoms and increase NMS risk; treat catatonia directly (often benzodiazepines and/or ECT) before considering antipsychotics."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to zuclopenthixol, thioxanthenes, or any component of the formulation",
-      "Acute intoxication with alcohol, barbiturates, or opioids",
-      "Severe CNS depression",
-      "Coma",
-      "Suspected or established subcortical brain damage",
-      "Circulatory collapse"
-    ],
-    "efficacy_response": {
-      "metric": "Reduction in acute agitation (sedation effect)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With the short-acting injection, the calming/sedating effect can start within a couple of hours, which is the whole point when someone is severely agitated during psychosis. ([Electronic Medicines Compendium][2])",
-      "citation_tag": "Product monograph / SmPC"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/schizophrenia",
+    "drug_classes": [
+      "First Generation (Typical) Antipsychotic",
+      "Thioxanthene Antipsychotic",
+      "Dopamine (D2) Receptor Antagonist"
+    ]
+  },
+  "summary": "Typical (first-generation) antipsychotic used for schizophrenia and for short-term control of acute agitation in psychotic episodes. Strong calming effect, but higher risk of movement side effects (EPS) and elevated prolactin compared with many newer options.",
+  "description": "Clopixol (zuclopenthixol) is a first-generation antipsychotic used to treat schizophrenia and to quickly settle severe agitation or aggression during psychosis. It comes as tablets, a short-acting IM injection for acute agitation (Acuphase), and a long-acting depot injection for maintenance (Depot). It can be very effective for reducing hallucinations, delusions, and agitation—but it also has real downsides: stiffness, restlessness (akathisia), tremor, sedation, dry mouth/constipation, and rare but serious risks like neuroleptic malignant syndrome (NMS) and dangerous heart rhythm changes (QT prolongation).",
+  "patient_summary": "Clopixol can quiet psychosis and agitation fast—sometimes that’s exactly what you need. But it’s not a “light” medication. Expect a real chance of sleepiness and movement side effects, and you’ll want careful monitoring (especially for EPS, blood pressure drops, and heart rhythm risk). The depot can be a game-changer for relapse prevention if daily pills are a struggle.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used for acute symptom control and long-term relapse prevention. Depot formulations can improve adherence and reduce relapse risk when daily pills are inconsistent. ([UNC School of Medicine][1])",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "acute-psychosis",
+          "condition_name": "Acute Psychosis",
+          "relationship": "primary_indication",
+          "context": "Short-acting IM zuclopenthixol acetate (Acuphase) is used short-term to rapidly settle severe agitation in acute psychotic episodes. ([Electronic Medicines Compendium][2])",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "catatonia",
+          "condition_name": "Catatonia",
+          "relationship": "secondary_indication",
+          "context": "Antipsychotics are not indicated for catatonia and may worsen symptoms and increase NMS risk; treat catatonia directly (often benzodiazepines and/or ECT) before considering antipsychotics."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral bioavailability ~44%; IM oil-based injections release medication slowly over days (acetate) or weeks (decanoate). ([Lundbeck][3])",
-      "bioavailability": "~44% (oral). ([Lundbeck][3])",
-      "onset": "Acute agitation: sedation may begin within ~2 hours after acetate injection; schizophrenia symptom improvement is typically noticed over 1-2 weeks with continued gains over 4-6 weeks. ([Electronic Medicines Compendium][2])",
-      "peak_plasma": "Tablet ~4 hours; acetate/decanoate injections often 24-48 hours (slow-release oil preparations). ([Lundbeck][3])",
-      "half_life": "Oral terminal half-life ~20 hours (range ~12-28 hours); decanoate terminal half-life ~19 days. ([Lundbeck][3])",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism (multiple pathways; CYP2D6 major and CYP3A4 minor involvement is clinically relevant for interaction risk). ([Lundbeck][3])",
-      "excretion": "Mostly feces; urine ~10% (minimal unchanged drug). ([Lundbeck][3])",
-      "protein_binding": "~98%. ([Lundbeck][3])",
-      "food_effect": "May be taken without regard to meals (practical guidance). ([Lundbeck][3])"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Acute agitation: sedation may begin within ~2 hours after acetate injection; schizophrenia symptom improvement is typically noticed over 1-2 weeks with continued gains over 4-6 weeks. ([Electronic Medicines Compendium][2])"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "Oral: ~32%; Injection: ~16-20%",
+          "notes": "Expect more sleepiness early on, especially after dose increases. If you feel dangerously sedated (can’t stay awake, slurred speech, unsafe walking), that’s a dose/interaction red flag."
+        },
+        {
+          "effect": "Dry mouth (xerostomia)",
+          "incidence": "13-25%",
+          "notes": "Annoying but common. Hydration, sugar-free gum, and oral care help. Tell your clinician if constipation also ramps up."
+        },
+        {
+          "effect": "Akathisia (inner restlessness)",
+          "incidence": "13-16%",
+          "notes": "This one is brutal if it hits. People describe it as “my body can’t stop.” Don’t power through—call your prescriber. Dose adjustments or meds can help."
+        },
+        {
+          "effect": "Tremor / Hypertonia / Other EPS",
+          "incidence": "Tremor: 8-21%; Hypertonia: 5-26%; Extrapyramidal reactions reported",
+          "notes": "Stiffness, shakiness, slowed movements—classic typical antipsychotic tradeoffs. The goal is symptom control without turning you into a statue."
+        },
+        {
+          "effect": "Insomnia / Nervousness / Anxiety",
+          "incidence": "Insomnia: 5-16%; Nervousness/anxiety up to ~17%",
+          "notes": "Yes, an antipsychotic can still leave you keyed up—especially if akathisia is part of it. If your sleep worsens, talk to your clinician instead of self-medicating."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, unstable blood pressure/heart rate. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Prolonged QT / torsades risk: palpitations, fainting, sudden dizziness—especially with interacting QT-prolonging meds. URGENT evaluation."
+        },
+        {
+          "risk": "Tardive dyskinesia: involuntary mouth/tongue/facial movements or limb movements that may persist after stopping."
+        },
+        {
+          "risk": "Severe dystonia (acute muscle spasms): neck/jaw/eye spasms (oculogyric crisis) can be painful and frightening but treatable."
+        },
+        {
+          "risk": "Blood dyscrasias: unusual infections, fever, sore throat, bruising—needs evaluation (CBC)."
+        },
+        {
+          "risk": "Venous thromboembolism: leg swelling/pain, chest pain, shortness of breath—EMERGENCY symptoms."
+        },
+        {
+          "risk": "Hyperglycemia or diabetic ketoacidosis: excessive thirst/urination, confusion, abdominal pain, vomiting—EMERGENCY symptoms."
+        }
+      ],
+      "black_box_warning": "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death and cerebrovascular adverse events (stroke/TIA). Zuclopenthixol is not approved for dementia-related psychosis. ([UConn Health][4])",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to zuclopenthixol, thioxanthenes, or any component of the formulation"
+        },
+        {
+          "contraindication": "Acute intoxication with alcohol, barbiturates, or opioids"
+        },
+        {
+          "contraindication": "Severe CNS depression"
+        },
+        {
+          "contraindication": "Coma"
+        },
+        {
+          "contraindication": "Suspected or established subcortical brain damage"
+        },
+        {
+          "contraindication": "Circulatory collapse"
+        }
+      ],
+      "precautions": [
+        "Catatonia warning: Antipsychotics are not indicated for catatonia and may worsen symptoms and increase NMS risk.",
+        "Neuroleptic malignant syndrome (NMS): rare but life-threatening (fever, severe rigidity, confusion, autonomic instability). Stop medication and seek emergency care immediately if suspected.",
+        "QT prolongation/arrhythmia risk: use caution in patients with known QT prolongation or when combined with QT-prolonging medications; depot adverse effects can last longer due to slow elimination.",
+        "Extrapyramidal symptoms (EPS): akathisia, dystonia, tremor, rigidity; risk rises with dose, younger age, and typical antipsychotics.",
+        "Tardive dyskinesia: potentially irreversible abnormal movements; risk rises with duration, cumulative dose, and older age.",
+        "Orthostatic hypotension and falls: dizziness and blood pressure drops can increase fall risk—especially in older adults.",
+        "Metabolic risk: hyperglycemia and dyslipidemia can occur; monitor even though this is a typical antipsychotic.",
+        "Blood dyscrasias: leukopenia/neutropenia/agranulocytosis have been reported; monitor if risk factors or symptoms appear.",
+        "Aspiration risk: antipsychotics can worsen swallowing coordination in vulnerable patients; caution in those at aspiration risk."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol, barbiturates, opioids (acute intoxication)",
+          "mechanism": "Contraindicated situations include acute intoxication/CNS depression; additive sedation can become dangerous (falls, respiratory compromise, impaired judgment).",
+          "action": "Avoid alcohol. If opioids or other sedatives are medically necessary, prescriber should use the lowest doses, monitor closely, and reassess safety frequently."
+        },
+        {
+          "interactant": "QT-prolonging medications (certain antiarrhythmics, some antibiotics, methadone, many other antipsychotics, some antidepressants)",
+          "mechanism": "Higher risk of QT prolongation and potentially life-threatening arrhythmias, especially in vulnerable patients.",
+          "action": "Review medication list for QT risk, consider baseline and follow-up ECGs, correct electrolytes (K/Mg), and avoid high-risk combinations when possible."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (e.g., fluoxetine, paroxetine, bupropion) and CYP3A4 inhibitors (minor pathway)",
+          "mechanism": "May increase medication levels and side effects (sedation, EPS).",
+          "action": "If combined, monitor closely for EPS/sedation and consider dose adjustments based on tolerability."
+        },
+        {
+          "interactant": "Other dopamine-blocking meds (metoclopramide, prochlorperazine, additional antipsychotics)",
+          "mechanism": "Stacked dopamine blockade increases EPS and tardive dyskinesia risk.",
+          "action": "Avoid duplication when possible; if overlap is needed during switching, do it intentionally with a plan and monitoring."
+        },
+        {
+          "interactant": "Blood pressure–lowering medications",
+          "mechanism": "Orthostatic hypotension and dizziness can worsen, increasing fall risk.",
+          "action": "Monitor blood pressure and symptoms; adjust timing and doses if needed."
+        },
+        {
+          "interactant": "Anticholinergic medications (e.g., diphenhydramine, some bladder meds, tricyclics)",
+          "mechanism": "Constipation, urinary retention, blurred vision, and confusion can worsen—especially in older adults.",
+          "action": "Minimize anticholinergic load; treat constipation early; reassess if urinary retention or severe dry mouth occurs."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and alertness: every visit (sedation, confusion, agitation, psychosis severity)."
+        },
+        {
+          "parameter": "EPS monitoring: every visit; reassess 4 weeks after initiation and after dose changes; use a formal rating scale at least annually (or every 6 months if high risk)."
+        },
+        {
+          "parameter": "Tardive dyskinesia: screen every visit for early signs; use a formal tool at least annually (or more often if high risk)."
+        },
+        {
+          "parameter": "Vitals and orthostatics: as clinically indicated, especially early in treatment and in older adults (dizziness, syncope, falls)."
+        },
+        {
+          "parameter": "Weight/BMI: every visit for first 6 months, then at least quarterly; consider waist circumference at baseline and annually."
+        },
+        {
+          "parameter": "Glucose (fasting glucose or HbA1c): around 4 months after starting, then annually (more often if abnormal)."
+        },
+        {
+          "parameter": "Lipids: around 4 months after starting, then annually (more often if abnormal)."
+        },
+        {
+          "parameter": "CBC: as clinically indicated; monitor closely during first months if low WBC history or prior drug-induced leukopenia/neutropenia."
+        },
+        {
+          "parameter": "Electrolytes, renal function, liver function, TSH: as clinically indicated (baseline and symptom-driven checks are reasonable)."
+        },
+        {
+          "parameter": "ECG: consider baseline and follow-up when QT risk factors exist (cardiac history, electrolyte issues, QT-prolonging meds, high doses)."
+        },
+        {
+          "parameter": "Prolactin: ask about symptoms each visit until stable (sexual dysfunction, menstrual changes, galactorrhea, gynecomastia); check a level if symptoms appear."
+        },
+        {
+          "parameter": "Fall risk: evaluate regularly in older adults and anyone with sedation/orthostasis."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (optional): trough level just before next dose; therapeutic reference range reported as 4 to 50 ng/mL; use clinically (adherence/side effect questions), not as the main driver of dosing. ([Lippincott Journals][6])"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human outcome data for zuclopenthixol are limited. Manufacturer guidance generally advises use during pregnancy only if benefits outweigh risks. Like other antipsychotics, third-trimester exposure can be associated with newborn EPS or withdrawal symptoms (agitation, abnormal tone, tremor, feeding problems, respiratory distress, somnolence) that may be self-limited or require hospitalization. Use the lowest effective dose and avoid unnecessary polypharmacy when possible; don’t abruptly stop effective antipsychotic treatment solely because of pregnancy without a risk-benefit plan. ([ACOG][5])",
+        "lactation": "Zuclopenthixol is present in human milk, and safe use during breastfeeding has not been established by the manufacturer. If breastfeeding is being considered, this should be a deliberate risk-benefit conversation (infant sedation, feeding issues, and monitoring). ([Lundbeck][3])",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Avoid for behavioral problems of dementia or delirium unless nonpharmacologic strategies failed and the person may harm self/others; if used, reassess regularly and attempt deprescribing when safe. For late-onset psychosis/schizophrenia, lower doses are often sufficient; start ~25% to 50% of usual adult initiation and titrate slowly with close monitoring for orthostasis, falls, EPS, confusion, and hyponatremia/SIADH risk. ([UConn Health][4])",
+        "renal_impairment": "No formal manufacturer dose adjustment; need for adjustment is unlikely because urinary excretion is limited. Use caution in significant renal impairment due to limited study and overall vulnerability. ([Lundbeck][3])",
+        "hepatic_impairment": "No formal manufacturer dose adjustment, but use caution because metabolism is extensive and hepatic impairment can increase exposure and side effects. Start low, go slow, and monitor sedation/EPS carefully. ([Lundbeck][3])"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral bioavailability ~44%; IM oil-based injections release medication slowly over days (acetate) or weeks (decanoate). ([Lundbeck][3])",
+          "bioavailability": "~44% (oral). ([Lundbeck][3])",
+          "peak_plasma": "Tablet ~4 hours; acetate/decanoate injections often 24-48 hours (slow-release oil preparations). ([Lundbeck][3])",
+          "half_life": "Oral terminal half-life ~20 hours (range ~12-28 hours); decanoate terminal half-life ~19 days. ([Lundbeck][3])",
+          "metabolism": "Extensive hepatic metabolism (multiple pathways; CYP2D6 major and CYP3A4 minor involvement is clinically relevant for interaction risk). ([Lundbeck][3])",
+          "excretion": "Mostly feces; urine ~10% (minimal unchanged drug). ([Lundbeck][3])",
+          "protein_binding": "~98%. ([Lundbeck][3])",
+          "food_effect": "May be taken without regard to meals (practical guidance). ([Lundbeck][3])"
+        },
+        "dosing": {
+          "titration": "Dosing depends on whether you’re treating acute agitation (short-term calming) or schizophrenia maintenance (stability and relapse prevention). Oral dosing is usually divided at first, then may be simplified once stable. The acute IM acetate injection is short-term only; the depot is for ongoing maintenance. ([Lundbeck][3])"
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "With chronic psychotic disorders, stopping antipsychotics outright is often not the goal—switching is usually safer if the medication isn’t tolerable or isn’t working. If someone insists on stopping, tapering oral therapy gradually over weeks to months helps you catch early relapse signs and reduces the chance of withdrawal-type symptoms (agitation, insomnia, sweating, GI symptoms, restlessness, rebound psychosis). For long-acting injectables, a “taper” is usually not needed because the medication leaves the body slowly, but you still need close monitoring for relapse as levels drift down over time."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +274,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med tends to be “felt” — not subtle. Here’s the real-world vibe people describe (in plain English):",
       "items": [
         {
           "category": "Calming the storm (acute agitation)",
@@ -139,7 +310,8 @@
             "It helped the psychosis, but I had to find my ‘normal’ again."
           ]
         }
-      ]
+      ],
+      "intro": "This med tends to be “felt” — not subtle. Here’s the real-world vibe people describe (in plain English):"
     },
     {
       "type": "onset_duration",
@@ -155,10 +327,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Clopixol is used because it can reduce psychotic symptoms (hallucinations, delusions, disorganization) and, in the acute setting, rapidly reduce agitation that can be dangerous. The depot formulation is especially helpful when missed doses are driving relapses—steady medication levels can mean fewer crises and fewer hospitalizations (when it’s the right fit). ([UNC School of Medicine][1])",
       "metric": "Symptom control in schizophrenia + rapid calming in acute agitation",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Clopixol is used because it can reduce psychotic symptoms (hallucinations, delusions, disorganization) and, in the acute setting, rapidly reduce agitation that can be dangerous. The depot formulation is especially helpful when missed doses are driving relapses—steady medication levels can mean fewer crises and fewer hospitalizations (when it’s the right fit). ([UNC School of Medicine][1])",
       "clinical_details": "In practice, effectiveness is judged by real outcomes: fewer psychotic episodes, fewer emergency escalations, improved sleep and behavioral control during acute agitation, and better day-to-day functioning. Response varies, and the “cost” can be EPS and sedation—so the goal is always the lowest effective dose with close monitoring.",
       "citation": {
         "authors": "HeyPsych Editorial Team",
@@ -248,7 +420,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Zuclopenthixol has additive sedation with other depressants, can worsen QT-related risk when paired with QT-prolonging meds, and has clinically relevant metabolism pathways (CYP2D6 major; CYP3A4 minor) that can matter depending on what else you’re taking. ([Lundbeck][3])",
       "items": [
         {
           "with": "Alcohol, barbiturates, opioids (acute intoxication)",
@@ -280,7 +451,8 @@
           "risk": "Constipation, urinary retention, blurred vision, and confusion can worsen—especially in older adults.",
           "action": "Minimize anticholinergic load; treat constipation early; reassess if urinary retention or severe dry mouth occurs."
         }
-      ]
+      ],
+      "intro": "Zuclopenthixol has additive sedation with other depressants, can worsen QT-related risk when paired with QT-prolonging meds, and has clinically relevant metabolism pathways (CYP2D6 major; CYP3A4 minor) that can matter depending on what else you’re taking. ([Lundbeck][3])"
     },
     {
       "type": "tapering",
@@ -373,21 +545,6 @@
       "text": "Clopixol is typically chosen when schizophrenia symptoms require a strong antipsychotic effect, when agitation is severe and immediate calming is needed (Acuphase), or when adherence is a major driver of relapse and a depot option is clinically preferred (Depot). Like other first-generation antipsychotics, it comes with a higher EPS burden, so treatment is a constant balancing act: symptom control vs side effects, with the lowest effective dose and a real monitoring plan. Guideline-level care emphasizes antipsychotic treatment with monitoring for effectiveness and side effects, and individualized selection based on patient factors and preferences. ([Access Behavioral Health][7])"
     }
   ],
-  "seo": {
-    "title": "Zuclopenthixol (Clopixol): Uses, Dosing (Oral/Depot/Acuphase), Side Effects & Monitoring",
-    "description": "Clopixol (zuclopenthixol) for schizophrenia and acute agitation in psychosis: oral and injection dosing, how fast it works, EPS risks, QT precautions, prolactin effects, and what to monitor.",
-    "canonical": "[https://www.heypsych.com/treatments/zuclopenthixol-clopixol](https://www.heypsych.com/treatments/zuclopenthixol-clopixol)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Clopixol used for?",
@@ -433,5 +590,20 @@
       "q": "What happens if I stop Clopixol suddenly?",
       "a": "For chronic psychotic disorders, sudden stopping raises relapse risk. Some people can also feel withdrawal-type symptoms (insomnia, agitation, sweating, restlessness). If the plan is to stop, it’s usually safer to taper oral medication gradually or switch to another antipsychotic with a structured cross-titration plan. Depot injections wash out slowly, so tapering isn’t usually needed—but relapse monitoring is still crucial."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Zuclopenthixol (Clopixol): Uses, Dosing (Oral/Depot/Acuphase), Side Effects & Monitoring",
+    "description": "Clopixol (zuclopenthixol) for schizophrenia and acute agitation in psychosis: oral and injection dosing, how fast it works, EPS risks, QT precautions, prolactin effects, and what to monitor.",
+    "canonical": "[https://www.heypsych.com/treatments/zuclopenthixol-clopixol](https://www.heypsych.com/treatments/zuclopenthixol-clopixol)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

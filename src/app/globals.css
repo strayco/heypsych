@@ -1,21 +1,309 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   HEYPSYCH DESIGN SYSTEM - Apple-Inspired Light-First Foundation
+   ============================================================================
+
+   Design Principles:
+   - Calm, clear, precise, human
+   - Clinically credible yet approachable
+   - Light-first with soft neutral canvas
+   - Hierarchy through typography, spacing, and alignment
+   - Color used semantically and sparingly
+
+   ============================================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---------------------------------------------------------------------------
+     Canvas & Surface Tokens
+     Light-first neutral foundation
+     --------------------------------------------------------------------------- */
+  --hp-canvas: #F5F5F7;
+  --hp-canvas-elevated: #FBFBFD;
+  --hp-surface: #FFFFFF;
+  --hp-surface-grouped: #F2F2F7;
+  --hp-surface-control: rgba(255, 255, 255, 0.88);
+
+  /* ---------------------------------------------------------------------------
+     Label (Text) Tokens
+     Clear hierarchy through opacity-based system
+     --------------------------------------------------------------------------- */
+  --hp-label-primary: rgba(0, 0, 0, 0.88);
+  --hp-label-secondary: rgba(60, 60, 67, 0.72);
+  --hp-label-tertiary: rgba(60, 60, 67, 0.52);
+  --hp-label-quaternary: rgba(60, 60, 67, 0.36);
+
+  /* Inverted labels for dark backgrounds */
+  --hp-label-primary-inverted: rgba(255, 255, 255, 0.92);
+  --hp-label-secondary-inverted: rgba(255, 255, 255, 0.72);
+  --hp-label-tertiary-inverted: rgba(255, 255, 255, 0.52);
+
+  /* ---------------------------------------------------------------------------
+     Separator Tokens
+     --------------------------------------------------------------------------- */
+  --hp-separator: rgba(60, 60, 67, 0.18);
+  --hp-separator-opaque: #C6C6C8;
+
+  /* ---------------------------------------------------------------------------
+     Fill Tokens (for controls, backgrounds)
+     --------------------------------------------------------------------------- */
+  --hp-fill-primary: rgba(120, 120, 128, 0.2);
+  --hp-fill-secondary: rgba(120, 120, 128, 0.16);
+  --hp-fill-tertiary: rgba(120, 120, 128, 0.12);
+  --hp-fill-quaternary: rgba(120, 120, 128, 0.08);
+
+  /* ---------------------------------------------------------------------------
+     Primary Brand Accent - Accessible Blue
+     Apple-inspired #007AFF with full semantic range
+     --------------------------------------------------------------------------- */
+  --hp-accent: #007AFF;
+  --hp-accent-hover: #0062CC;
+  --hp-accent-pressed: #004999;
+  --hp-accent-tint: rgba(0, 122, 255, 0.12);
+  --hp-accent-tint-hover: rgba(0, 122, 255, 0.18);
+  --hp-accent-border: rgba(0, 122, 255, 0.3);
+  --hp-accent-foreground: #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     Semantic Colors
+     Used only for specific meanings, never decoratively
+     --------------------------------------------------------------------------- */
+
+  /* Positive / Success / Available */
+  --hp-positive: #34C759;
+  --hp-positive-tint: rgba(52, 199, 89, 0.12);
+  --hp-positive-border: rgba(52, 199, 89, 0.3);
+  --hp-positive-foreground: #FFFFFF;
+
+  /* Caution / Warning / Attention */
+  --hp-caution: #FF9500;
+  --hp-caution-tint: rgba(255, 149, 0, 0.12);
+  --hp-caution-border: rgba(255, 149, 0, 0.3);
+  --hp-caution-foreground: #FFFFFF;
+
+  /* Critical / Error / Danger */
+  --hp-critical: #FF3B30;
+  --hp-critical-tint: rgba(255, 59, 48, 0.12);
+  --hp-critical-border: rgba(255, 59, 48, 0.3);
+  --hp-critical-foreground: #FFFFFF;
+
+  /* Treatment / Clinical / Mechanism (indigo/purple) */
+  --hp-treatment: #5856D6;
+  --hp-treatment-tint: rgba(88, 86, 214, 0.12);
+  --hp-treatment-border: rgba(88, 86, 214, 0.3);
+  --hp-treatment-foreground: #FFFFFF;
+
+  /* Technology / Tools (teal) */
+  --hp-tools: #30B0C7;
+  --hp-tools-tint: rgba(48, 176, 199, 0.12);
+  --hp-tools-border: rgba(48, 176, 199, 0.3);
+  --hp-tools-foreground: #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     Shadow Tokens
+     Soft, structural depth - not decorative
+     --------------------------------------------------------------------------- */
+  --hp-shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --hp-shadow-control: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --hp-shadow-elevated: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --hp-shadow-floating: 0 18px 50px rgba(0, 0, 0, 0.10);
+
+  /* ---------------------------------------------------------------------------
+     Border Radius Tokens
+     Coherent family of concentric, soft shapes
+     --------------------------------------------------------------------------- */
+  --hp-radius-control: 12px;
+  --hp-radius-button: 14px;
+  --hp-radius-card: 16px;
+  --hp-radius-card-lg: 20px;
+  --hp-radius-panel: 24px;
+  --hp-radius-full: 9999px;
+
+  /* ---------------------------------------------------------------------------
+     Focus Ring
+     --------------------------------------------------------------------------- */
+  --hp-focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.4);
+  --hp-focus-ring-offset: 0 0 0 2px var(--hp-surface);
+
+  /* ---------------------------------------------------------------------------
+     Motion Timing
+     --------------------------------------------------------------------------- */
+  --hp-duration-press: 80ms;
+  --hp-duration-hover: 150ms;
+  --hp-duration-disclosure: 200ms;
+  --hp-duration-panel: 280ms;
+  --hp-ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --hp-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---------------------------------------------------------------------------
+     Material (Glass) Tokens
+     For navigation and functional layers only
+     --------------------------------------------------------------------------- */
+  --hp-material-light: rgba(255, 255, 255, 0.82);
+  --hp-material-light-hover: rgba(255, 255, 255, 0.92);
+  --hp-material-blur: saturate(180%) blur(20px);
+
+  /* ---------------------------------------------------------------------------
+     Legacy Compatibility Layer
+     These map old graphite tokens to new light tokens
+     Will be removed after full migration
+     --------------------------------------------------------------------------- */
+  --background: var(--hp-canvas);
+  --foreground: var(--hp-label-primary);
+  --surface-1: var(--hp-surface);
+  --surface-2: var(--hp-surface-grouped);
+  --surface-3: var(--hp-canvas-elevated);
+  --border: var(--hp-separator-opaque);
+  --border-subtle: var(--hp-separator);
+  --text-primary: var(--hp-label-primary);
+  --text-secondary: var(--hp-label-secondary);
+  --text-muted: var(--hp-label-tertiary);
+  --accent: var(--hp-accent);
+  --accent-hover: var(--hp-accent-hover);
 }
 
+/* Tailwind theme extension */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--hp-canvas);
+  --color-foreground: var(--hp-label-primary);
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* Canvas & Surface */
+  --color-canvas: #F5F5F7;
+  --color-canvas-elevated: #FBFBFD;
+  --color-surface: #FFFFFF;
+  --color-surface-grouped: #F2F2F7;
+  --color-surface-control: rgba(255, 255, 255, 0.88);
+
+  /* Labels */
+  --color-label-primary: rgba(0, 0, 0, 0.88);
+  --color-label-secondary: rgba(60, 60, 67, 0.72);
+  --color-label-tertiary: rgba(60, 60, 67, 0.52);
+  --color-label-quaternary: rgba(60, 60, 67, 0.36);
+
+  /* Separators */
+  --color-separator: rgba(60, 60, 67, 0.18);
+  --color-separator-opaque: #C6C6C8;
+
+  /* Fills */
+  --color-fill-primary: rgba(120, 120, 128, 0.2);
+  --color-fill-secondary: rgba(120, 120, 128, 0.16);
+  --color-fill-tertiary: rgba(120, 120, 128, 0.12);
+  --color-fill-quaternary: rgba(120, 120, 128, 0.08);
+
+  /* Accent - Full scale */
+  --color-accent: #007AFF;
+  --color-accent-50: #EFF6FF;
+  --color-accent-100: #DBEAFE;
+  --color-accent-200: #BFDBFE;
+  --color-accent-300: #93C5FD;
+  --color-accent-400: #60A5FA;
+  --color-accent-500: #007AFF;
+  --color-accent-600: #0062CC;
+  --color-accent-700: #004999;
+  --color-accent-800: #003166;
+  --color-accent-900: #001833;
+  --color-accent-hover: #0062CC;
+  --color-accent-pressed: #004999;
+  --color-accent-tint: rgba(0, 122, 255, 0.12);
+  --color-accent-tint-hover: rgba(0, 122, 255, 0.18);
+  --color-accent-border: rgba(0, 122, 255, 0.3);
+  --color-accent-foreground: #FFFFFF;
+
+  /* Positive / Success - Full scale */
+  --color-positive: #34C759;
+  --color-positive-50: #F0FDF4;
+  --color-positive-100: #DCFCE7;
+  --color-positive-500: #34C759;
+  --color-positive-600: #16A34A;
+  --color-positive-700: #15803D;
+  --color-positive-tint: rgba(52, 199, 89, 0.12);
+  --color-positive-border: rgba(52, 199, 89, 0.3);
+  --color-positive-foreground: #FFFFFF;
+
+  /* Caution / Warning - Full scale */
+  --color-caution: #FF9500;
+  --color-caution-50: #FFFBEB;
+  --color-caution-100: #FEF3C7;
+  --color-caution-500: #FF9500;
+  --color-caution-600: #D97706;
+  --color-caution-700: #B45309;
+  --color-caution-tint: rgba(255, 149, 0, 0.12);
+  --color-caution-border: rgba(255, 149, 0, 0.3);
+  --color-caution-foreground: #FFFFFF;
+
+  /* Negative / Error - Full scale */
+  --color-negative: #FF3B30;
+  --color-negative-50: #FEF2F2;
+  --color-negative-100: #FEE2E2;
+  --color-negative-500: #FF3B30;
+  --color-negative-600: #DC2626;
+  --color-negative-700: #B91C1C;
+  --color-negative-tint: rgba(255, 59, 48, 0.12);
+  --color-negative-border: rgba(255, 59, 48, 0.3);
+  --color-negative-foreground: #FFFFFF;
+
+  /* Treatment / Clinical - Full scale */
+  --color-treatment: #5856D6;
+  --color-treatment-50: #EEF2FF;
+  --color-treatment-100: #E0E7FF;
+  --color-treatment-500: #5856D6;
+  --color-treatment-600: #4F46E5;
+  --color-treatment-700: #4338CA;
+  --color-treatment-tint: rgba(88, 86, 214, 0.12);
+  --color-treatment-border: rgba(88, 86, 214, 0.3);
+  --color-treatment-foreground: #FFFFFF;
+
+  /* Tools / Technology - Full scale */
+  --color-tools: #30B0C7;
+  --color-tools-50: #F0FDFA;
+  --color-tools-100: #CCFBF1;
+  --color-tools-500: #30B0C7;
+  --color-tools-600: #0891B2;
+  --color-tools-700: #0E7490;
+  --color-tools-tint: rgba(48, 176, 199, 0.12);
+  --color-tools-border: rgba(48, 176, 199, 0.3);
+  --color-tools-foreground: #FFFFFF;
+
+  /* Legacy graphite mapping */
+  --color-graphite-50: rgba(0, 0, 0, 0.88);
+  --color-graphite-100: rgba(0, 0, 0, 0.84);
+  --color-graphite-200: rgba(0, 0, 0, 0.72);
+  --color-graphite-300: rgba(60, 60, 67, 0.72);
+  --color-graphite-400: rgba(60, 60, 67, 0.52);
+  --color-graphite-500: rgba(60, 60, 67, 0.36);
+  --color-graphite-600: #C6C6C8;
+  --color-graphite-700: #E5E5EA;
+  --color-graphite-750: #F2F2F7;
+  --color-graphite-800: #FFFFFF;
+  --color-graphite-850: #FBFBFD;
+  --color-graphite-900: #F5F5F7;
+  --color-graphite-950: #F5F5F7;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -27,20 +315,250 @@ body {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--hp-canvas);
+  color: var(--hp-label-primary);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  line-height: 1.6;
 }
 
-/* Ensure form controls use readable text colors */
+/* Selection styling */
+::selection {
+  background: rgba(0, 122, 255, 0.2);
+  color: var(--hp-label-primary);
+}
+
+/* ============================================================================
+   SCROLLBAR STYLING
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hp-separator-opaque);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hp-label-tertiary);
+}
+
+/* ============================================================================
+   FORM CONTROLS
+   ============================================================================ */
+
 input,
 textarea,
 select {
-  color: #0f172a;
+  color: var(--hp-label-primary);
+  background: var(--hp-surface);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #475569;
+  color: var(--hp-label-tertiary);
   opacity: 1;
+}
+
+/* Focus styles */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--hp-focus-ring);
+}
+
+/* ============================================================================
+   LINK STYLES
+   ============================================================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================================
+   TRANSITIONS
+   ============================================================================ */
+
+button,
+a,
+input,
+textarea,
+select {
+  transition: all var(--hp-duration-hover) var(--hp-ease-default);
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Card hover effect - subtle elevation */
+.card-hover {
+  transition: transform var(--hp-duration-hover) var(--hp-ease-default),
+              box-shadow var(--hp-duration-hover) var(--hp-ease-default);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hp-shadow-elevated);
+}
+
+/* Prose adjustments for light mode */
+.prose {
+  --tw-prose-body: var(--hp-label-primary);
+  --tw-prose-headings: var(--hp-label-primary);
+  --tw-prose-links: var(--hp-accent);
+  --tw-prose-bold: var(--hp-label-primary);
+  --tw-prose-quotes: var(--hp-label-secondary);
+  --tw-prose-quote-borders: var(--hp-separator-opaque);
+  --tw-prose-code: var(--hp-label-primary);
+  --tw-prose-pre-bg: var(--hp-surface-grouped);
+}
+
+/* Utility for hiding scrollbar but keeping scroll functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================================
+   ANIMATION KEYFRAMES
+   ============================================================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hp-fill-quaternary) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================================
+   MATERIAL (GLASS) UTILITIES
+   For navigation layer only - NOT for content
+   ============================================================================ */
+
+.hp-material {
+  background: var(--hp-material-light);
+  backdrop-filter: var(--hp-material-blur);
+  -webkit-backdrop-filter: var(--hp-material-blur);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  .hp-material {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ============================================================================
+   FOCUS VISIBLE UTILITY
+   ============================================================================ */
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--hp-focus-ring);
+}
+
+/* ============================================================================
+   TABULAR NUMERALS
+   For scores, doses, dates, statistics
+   ============================================================================ */
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================================
+   LEGACY GRAPHITE COMPATIBILITY
+   These provide fallbacks during migration
+   Will be removed after full migration
+   ============================================================================ */
+
+/* Map old graphite classes to new light values */
+.bg-graphite-900,
+.bg-graphite-950 {
+  background-color: var(--hp-canvas) !important;
+}
+
+.bg-graphite-800,
+.bg-graphite-850 {
+  background-color: var(--hp-surface) !important;
+}
+
+.bg-graphite-700,
+.bg-graphite-750 {
+  background-color: var(--hp-surface-grouped) !important;
+}
+
+.text-graphite-50,
+.text-graphite-100 {
+  color: var(--hp-label-primary) !important;
+}
+
+.text-graphite-200,
+.text-graphite-300 {
+  color: var(--hp-label-secondary) !important;
+}
+
+.text-graphite-400,
+.text-graphite-500 {
+  color: var(--hp-label-tertiary) !important;
+}
+
+.border-graphite-700,
+.border-graphite-800 {
+  border-color: var(--hp-separator) !important;
 }

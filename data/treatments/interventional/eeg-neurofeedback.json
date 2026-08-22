@@ -1,88 +1,167 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "eeg-neurofeedback",
-  "type": "interventional",
-  "name": "EEG Neurofeedback",
-  "summary": "A non-invasive brain training method using real-time EEG feedback to help individuals learn to regulate their brain activity, applied in ADHD, anxiety, epilepsy, and other conditions.",
-  "description": "EEG neurofeedback, also called EEG biofeedback or neurotherapy, uses electroencephalography (EEG) to measure brainwave activity and provides real-time feedback to the participant, often through visual or auditory cues. The participant learns to increase or decrease certain brainwave patterns associated with improved cognitive or emotional functioning.\n\nIt is used both as a therapeutic intervention for clinical conditions and as a performance enhancement tool. Protocols are tailored to the individual's EEG profile and treatment goals, and sessions are typically repeated over several weeks.",
-  "category": "interventional/neurostimulation",
-  "tags": [
-    "neurofeedback",
-    "biofeedback",
-    "brain-training",
-    "non-invasive",
-    "neurotherapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "eeg-neurofeedback",
+    "name": "EEG Neurofeedback",
+    "wikidata_qid": "Q36762182"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurostimulation",
     "intervention_types": [
       "Neurofeedback",
       "EEG-based biofeedback"
     ],
-    "treatment_types": [
-      "Non-invasive",
-      "Behavioral training"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Neurology",
-      "Rehabilitation"
-    ],
-    "delivery_methods": [
-      "EEG sensors with computer feedback system"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "20–40 sessions",
-      "Typically over 8–12 weeks"
-    ],
-    "specialty_areas": [
-      "Neurorehabilitation",
-      "Behavioral Health",
-      "Cognitive Enhancement"
-    ],
-    "wikidata_qid": "Q36762182"
+    "tags": [
+      "neurofeedback",
+      "biofeedback",
+      "brain-training",
+      "non-invasive",
+      "neurotherapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-deficit/hyperactivity disorder",
-      "Anxiety disorders",
-      "Epilepsy"
-    ],
-    "conditions_treated": [
-      "Attention-deficit/hyperactivity disorder",
-      "Anxiety disorders",
-      "Epilepsy",
-      "Depression",
-      "Post-traumatic stress disorder",
-      "Sleep disorders",
-      "Traumatic brain injury"
-    ],
-    "off_label_uses": [
-      "Autism spectrum disorder",
-      "Addiction recovery",
-      "Cognitive performance enhancement"
-    ],
-    "contraindications": [
-      "Severe intellectual disability without capacity for training",
-      "Active psychosis"
-    ],
-    "safety_profile": "Generally well-tolerated; occasional transient fatigue, headache, or increased anxiety.",
-    "evidence_level": "Moderate for ADHD and epilepsy; limited or emerging for other conditions.",
-    "research_support": "Several controlled trials for ADHD; mixed evidence for other uses.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "adhd": 4,
-      "anxiety": 3,
-      "epilepsy": 3,
-      "depression": 2
+  "summary": "A non-invasive brain training method using real-time EEG feedback to help individuals learn to regulate their brain activity, applied in ADHD, anxiety, epilepsy, and other conditions.",
+  "description": "EEG neurofeedback, also called EEG biofeedback or neurotherapy, uses electroencephalography (EEG) to measure brainwave activity and provides real-time feedback to the participant, often through visual or auditory cues. The participant learns to increase or decrease certain brainwave patterns associated with improved cognitive or emotional functioning.\n\nIt is used both as a therapeutic intervention for clinical conditions and as a performance enhancement tool. Protocols are tailored to the individual's EEG profile and treatment goals, and sessions are typically repeated over several weeks.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention-deficit/hyperactivity disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "sleep-disorders",
+          "condition_name": "Sleep disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "traumatic-brain-injury",
+          "condition_name": "Traumatic brain injury",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "autism-spectrum-disorder",
+          "condition_name": "Autism spectrum disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "addiction-recovery",
+          "condition_name": "Addiction recovery",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-performance-enhancement",
+          "condition_name": "Cognitive performance enhancement",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for ADHD and epilepsy; limited or emerging for other conditions.",
+      "efficacy_ratings": {
+        "adhd": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "epilepsy": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 2
+        }
+      },
+      "research_support": "Several controlled trials for ADHD; mixed evidence for other uses."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "20–40 sessions; Typically over 8–12 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "EEG sensors with computer feedback system"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well-tolerated; occasional transient fatigue, headache, or increased anxiety.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild fatigue"
+        },
+        {
+          "effect": "Temporary headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Seizure provocation in uncontrolled epilepsy"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Inability to engage in training exercises",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe sensory processing disorders",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Neurofeedback, EEG-based biofeedback",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Placement of EEG electrodes on scalp.\nMeasurement of brainwave activity in real-time.\nDelivery of visual/auditory feedback contingent on brainwave changes.\nGradual shaping of target EEG patterns over repeated sessions."
+      }
     }
   },
   "sections": [
@@ -240,6 +319,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Arns M, et al. Efficacy of neurofeedback treatment in ADHD: a meta-analysis. Clin EEG Neurosci. 2009;40(3):180–189.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19715181/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Tan G, et al. Efficacy of EEG biofeedback in treating epilepsy. Appl Psychophysiol Biofeedback. 2009;34(3):211–227.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19771348/"
+    }
+  ],
   "seo": {
     "title": "EEG Neurofeedback Therapy",
     "description": "EEG neurofeedback uses real-time brainwave monitoring to train self-regulation, applied in ADHD, anxiety, epilepsy, and cognitive enhancement.",
@@ -252,5 +345,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for ADHD and epilepsy; limited or emerging for other conditions."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for ADHD and epilepsy; limited or emerging for other conditions."
+    ]
   }
 }

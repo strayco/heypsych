@@ -83,7 +83,7 @@ export function TreatmentsClient({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -93,8 +93,8 @@ export function TreatmentsClient({
               Back
             </Button>
 
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
+              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
                 {title}
               </span>
             </h1>
@@ -103,18 +103,18 @@ export function TreatmentsClient({
           </div>
 
           <div className="mb-4 text-center">
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-neutral-800">{description}</p>
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">{description}</p>
 
-            <div className="flex items-center justify-center gap-4 text-xs text-neutral-900">
+            <div className="flex items-center justify-center gap-4 text-xs text-label-primary">
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint0"></div>
                 {sortedTreatments?.length || 0} {title}
                 {filteredTreatments?.length !== treatments?.length && (
                   <span className="text-orange-600">(filtered from {treatments?.length})</span>
                 )}
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint0"></div>
                 Evidence-Based
               </div>
             </div>
@@ -126,7 +126,7 @@ export function TreatmentsClient({
       <section className="px-4 py-2 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-900" />
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-label-primary" />
             <input
               type="text"
               value={searchInput}
@@ -138,12 +138,12 @@ export function TreatmentsClient({
                 }
               }}
               placeholder="Search by name or description... (Press Enter)"
-              className="w-full rounded-xl border border-slate-200 bg-white py-3 pl-12 pr-4 text-sm text-neutral-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              className="w-full rounded-xl border border-separator bg-surface py-3 pl-12 pr-4 text-sm text-label-primary placeholder:text-label-tertiary shadow-sm transition-all duration-200 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
             />
             {searchQuery && (
               <button
                 onClick={clearSearch}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-900"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-label-quaternary hover:text-label-primary"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -157,14 +157,14 @@ export function TreatmentsClient({
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 flex items-center justify-end">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-neutral-800">Sort by:</label>
+              <label className="text-sm font-medium text-label-secondary">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => {
                   setSortBy(e.target.value);
                   setVisibleCount(20);
                 }}
-                className="rounded-md border border-neutral-300 bg-white px-3 py-1 text-sm"
+                className="rounded-md border border-separator bg-surface px-3 py-1 text-sm"
               >
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
@@ -190,7 +190,7 @@ export function TreatmentsClient({
                   variant="default"
                   showFilters={false}
                   showComparison={true}
-                  className="rounded-3xl bg-white p-8 shadow-xl"
+                  className="rounded-3xl bg-surface p-8 shadow-xl"
                 />
               </motion.div>
 
@@ -201,7 +201,7 @@ export function TreatmentsClient({
                   transition={{ delay: 0.3 }}
                   className="mt-8 flex flex-col items-center gap-4"
                 >
-                  <p className="text-sm text-neutral-800">
+                  <p className="text-sm text-label-secondary">
                     Showing {visibleCount} of {sortedTreatments.length} items
                   </p>
                   <Button
@@ -224,10 +224,10 @@ export function TreatmentsClient({
             >
               <Card className="mx-auto max-w-md">
                 <CardContent className="p-8">
-                  <h3 className="mb-2 text-xl font-semibold text-neutral-900">
+                  <h3 className="mb-2 text-xl font-semibold text-label-primary">
                     {searchQuery.trim() ? "No Results Found" : "No Data Available"}
                   </h3>
-                  <p className="mb-6 text-neutral-800">
+                  <p className="mb-6 text-label-secondary">
                     {searchQuery.trim()
                       ? "Try adjusting your search."
                       : "Data hasn't been imported yet."}

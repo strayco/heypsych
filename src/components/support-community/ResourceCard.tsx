@@ -31,14 +31,14 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
   if (variant === "crisis") {
     // Large crisis card format
     return (
-      <Card className="border-red-200 bg-gradient-to-br from-white to-red-50">
+      <Card className="border-negative-border bg-negative-tint">
         <CardContent className="p-6">
           <div className="mb-4">
-            <h3 className="mb-2 text-xl font-bold text-slate-900">{resource.name}</h3>
+            <h3 className="mb-2 text-xl font-bold text-label-primary">{resource.name}</h3>
             {resource.organization && (
-              <p className="mb-2 text-sm text-slate-900">{resource.organization}</p>
+              <p className="mb-2 text-sm text-label-primary">{resource.organization}</p>
             )}
-            <p className="text-sm text-slate-900">{resource.description}</p>
+            <p className="text-sm text-label-primary">{resource.description}</p>
           </div>
 
           <div className="mb-4 flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
                 onClick={handleClick}
                 className="flex-1"
               >
-                <Button className="w-full bg-red-600 hover:bg-red-700">
+                <Button className="w-full bg-negative hover:bg-negative-600">
                   <Phone className="mr-2 h-4 w-4" />
                   {resource.phones![0].label}: {resource.phones![0].number}
                 </Button>
@@ -73,7 +73,7 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
                 onClick={handleClick}
                 className="flex-1"
               >
-                <Button variant="outline" className="w-full border-red-300 hover:bg-red-50">
+                <Button variant="outline" className="w-full border-negative-border hover:bg-negative-tint">
                   <MessageSquare className="mr-2 h-4 w-4" />
                   Text: {resource.phones![0].number}
                 </Button>
@@ -81,7 +81,7 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
             )}
             {hasChat && (
               <a href={resource.url} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
-                <Button variant="outline" className="border-red-300 hover:bg-red-50">
+                <Button variant="outline" className="border-negative-border hover:bg-negative-tint">
                   <Globe className="mr-2 h-4 w-4" />
                   Chat Online
                 </Button>
@@ -99,16 +99,16 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
       <CardContent className="p-5">
         <div className="mb-3 flex items-start justify-between">
           <div className="flex-1">
-            <h3 className="mb-1 text-lg font-bold text-slate-900 group-hover:text-blue-600">
+            <h3 className="mb-1 text-lg font-bold text-label-primary group-hover:text-accent">
               {resource.name}
             </h3>
             {resource.organization && (
-              <p className="mb-2 text-sm text-slate-900">{resource.organization}</p>
+              <p className="mb-2 text-sm text-label-primary">{resource.organization}</p>
             )}
           </div>
         </div>
 
-        <p className="mb-3 text-sm text-slate-900">{resource.description}</p>
+        <p className="mb-3 text-sm text-label-primary">{resource.description}</p>
 
         <div className="mb-3 flex flex-wrap gap-2">
           {resource.cost.includes("free") && (

@@ -17,15 +17,15 @@ export function EducationRenderer({ resource }: ResourceRendererProps) {
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <BookOpen className="h-6 w-6 text-purple-600" />
+            <BookOpen className="h-6 w-6 text-label-secondary" />
             <CardTitle>Educational Resource</CardTitle>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           {data.learning_objectives && (
             <div>
-              <h4 className="mb-2 font-semibold text-gray-900">Learning Objectives</h4>
-              <ul className="list-inside list-disc space-y-1 text-sm text-gray-900">
+              <h4 className="mb-2 font-semibold text-label-primary">Learning Objectives</h4>
+              <ul className="list-inside list-disc space-y-1 text-sm text-label-secondary">
                 {data.learning_objectives.map((objective: string, i: number) => (
                   <li key={i}>{objective}</li>
                 ))}
@@ -48,14 +48,14 @@ export function EducationRenderer({ resource }: ResourceRendererProps) {
           )}
 
           {data.downloadable && (
-            <Button variant="outline">
+            <Button variant="secondary">
               <Download className="mr-2 h-4 w-4" />
               Download Resource
             </Button>
           )}
 
           {data.external_url && (
-            <Button variant="outline">
+            <Button variant="secondary">
               <a
                 href={data.external_url}
                 target="_blank"

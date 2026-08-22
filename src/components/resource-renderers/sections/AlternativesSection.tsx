@@ -30,16 +30,16 @@ export function AlternativesSection({
           {items.map((alt, i) => (
             <div
               key={i}
-              className="rounded-lg border border-gray-200 bg-gray-50 p-4"
+              className="rounded-lg border border-separator bg-fill-quaternary p-4"
             >
               <div className="mb-2 flex items-start justify-between">
-                <h4 className="font-semibold text-gray-900">
+                <h4 className="font-semibold text-label-primary">
                   {alt.name || alt.slug?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}
                 </h4>
                 {alt.slug && (
                   <Link
                     href={`/resources/${alt.slug}`}
-                    className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
+                    className="flex items-center gap-1 text-sm text-accent hover:text-accent-700"
                   >
                     View
                     <ArrowRight className="h-4 w-4" />
@@ -50,14 +50,14 @@ export function AlternativesSection({
                     href={alt.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
+                    className="flex items-center gap-1 text-sm text-accent hover:text-accent-700"
                   >
                     Visit
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
               </div>
-              <p className="text-sm text-gray-700">{alt.comparison}</p>
+              <p className="text-sm text-label-primary">{alt.comparison}</p>
             </div>
           ))}
         </div>

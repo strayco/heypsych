@@ -47,22 +47,22 @@ export default async function Image() {
             zIndex: 1,
           }}
         >
-          {/* Logo - using the H mark */}
+          {/* Logo mark with gradient */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '200px',
-              height: '200px',
+              width: '120px',
+              height: '120px',
               borderRadius: '24px',
-              backgroundColor: '#4f46e5',
-              boxShadow: '0 10px 40px rgba(79, 70, 229, 0.3)',
+              background: 'linear-gradient(135deg, #3b82f6 0%, #9333ea 100%)',
+              boxShadow: '0 10px 40px rgba(99, 102, 241, 0.3)',
             }}
           >
             <div
               style={{
-                fontSize: '120px',
+                fontSize: '72px',
                 fontWeight: 700,
                 color: '#ffffff',
                 letterSpacing: '-0.05em',

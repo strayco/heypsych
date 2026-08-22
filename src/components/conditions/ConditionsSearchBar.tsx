@@ -135,7 +135,7 @@ export function ConditionsSearchBar({
     <div className="relative w-full max-w-2xl mx-auto">
       {/* Search Input */}
       <div className="relative">
-        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-slate-400" />
+        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-label-primary0" />
         <input
           ref={inputRef}
           type="text"
@@ -145,11 +145,11 @@ export function ConditionsSearchBar({
           onFocus={() => searchTerm && setIsOpen(true)}
           placeholder={placeholder}
           className={cn(
-            "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 pl-12 pr-10",
-            "text-slate-900 placeholder-slate-400",
+            "w-full rounded-xl border border-separator bg-surface-grouped px-4 py-3 pl-12 pr-10",
+            "text-label-primary placeholder:text-label-quaternary",
             "transition-all duration-200",
-            "focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200",
-            "hover:border-slate-400"
+            "focus:border-separator focus:outline-none focus:ring-2 focus:ring-separator",
+            "hover:border-separator"
           )}
           aria-label="Search mental health conditions"
           aria-autocomplete="list"
@@ -159,7 +159,7 @@ export function ConditionsSearchBar({
         {searchTerm && (
           <button
             onClick={clearSearch}
-            className="absolute top-1/2 right-4 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+            className="absolute top-1/2 right-4 -translate-y-1/2 text-label-primary0 hover:text-label-secondary transition-colors"
             aria-label="Clear search"
           >
             <X className="h-5 w-5" />
@@ -174,7 +174,7 @@ export function ConditionsSearchBar({
           id="conditions-search-results"
           className={cn(
             "absolute z-50 mt-2 w-full",
-            "rounded-lg border border-slate-200 bg-white shadow-lg",
+            "rounded-xl border border-separator bg-surface-grouped shadow-card-2",
             "overflow-hidden"
           )}
           role="listbox"
@@ -189,17 +189,17 @@ export function ConditionsSearchBar({
                 href={`/conditions/${condition.slug}`}
                 className={cn(
                   "block px-4 py-3 transition-colors",
-                  "hover:bg-blue-50",
-                  index === highlightedIndex && "bg-blue-50",
-                  index !== filteredConditions.length - 1 && "border-b border-slate-100"
+                  "hover:bg-fill-secondary",
+                  index === highlightedIndex && "bg-fill-secondary",
+                  index !== filteredConditions.length - 1 && "border-b border-separator"
                 )}
                 role="option"
                 aria-selected={index === highlightedIndex}
                 onMouseEnter={() => setHighlightedIndex(index)}
               >
-                <div className="font-medium text-slate-900">{condition.name}</div>
+                <div className="font-medium text-label-primary">{condition.name}</div>
                 {category && (
-                  <div className="text-xs text-slate-600 mt-0.5">
+                  <div className="text-xs text-label-tertiary mt-0.5">
                     Category: {category.replace(/-/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase())}
                   </div>
                 )}
@@ -215,8 +215,8 @@ export function ConditionsSearchBar({
           ref={dropdownRef}
           className={cn(
             "absolute z-50 mt-2 w-full",
-            "rounded-lg border border-slate-200 bg-white shadow-lg",
-            "px-4 py-3 text-center text-sm text-slate-600"
+            "rounded-xl border border-separator bg-surface-grouped shadow-card-2",
+            "px-4 py-3 text-center text-sm text-label-tertiary"
           )}
         >
           No conditions found for "{searchTerm}"

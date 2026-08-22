@@ -1,0 +1,153 @@
+{
+  "objectives": [
+    {
+      "id": "obj_get_up",
+      "type": "primary",
+      "title": "Get Out of Bed",
+      "description": "Stand up and leave the bed",
+      "condition": { "type": "flag-set", "flag": "leftBed", "value": true },
+      "showPreRun": true,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 60, "starBonus": 1, "achievementId": null }
+    },
+    {
+      "id": "obj_one_thing",
+      "type": "primary",
+      "title": "Complete One Task",
+      "description": "Do at least one thing beyond getting up",
+      "condition": { "type": "flag-set", "flag": "completedOneTask", "value": true },
+      "showPreRun": true,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 50, "starBonus": 1, "achievementId": null }
+    },
+    {
+      "id": "obj_tiny_step",
+      "type": "primary",
+      "title": "Find a Tiny Step",
+      "description": "Lower the bar to something achievable",
+      "condition": { "type": "flag-set", "flag": "loweredThreshold", "value": true },
+      "showPreRun": true,
+      "showInRun": false,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 40, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_accept_partial",
+      "type": "primary",
+      "title": "Accept Partial Progress",
+      "description": "Let 'enough' be less than everything",
+      "condition": { "type": "flag-set", "flag": "acceptedPartialDay", "value": true },
+      "showPreRun": true,
+      "showInRun": false,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 50, "starBonus": 1, "achievementId": null }
+    },
+    {
+      "id": "obj_get_vertical",
+      "type": "challenge",
+      "title": "Get Vertical",
+      "description": "Achieve sitting up position",
+      "condition": { "type": "flag-set", "flag": "gotVertical", "value": true },
+      "showPreRun": false,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 30, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_feet_floor",
+      "type": "challenge",
+      "title": "Feet on Floor",
+      "description": "Get your feet on the ground",
+      "condition": {
+        "type": "any-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "leftBed", "value": true }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": true,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 35, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_notice_loop",
+      "type": "hidden",
+      "title": "Caught the Loop",
+      "description": "Notice a thought pattern while it's happening",
+      "condition": { "type": "flag-set", "flag": "notedThoughtLoop", "value": true },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 75, "starBonus": 0, "achievementId": "pattern_spotter" }
+    },
+    {
+      "id": "obj_self_compassion",
+      "type": "hidden",
+      "title": "Kinder Voice",
+      "description": "Use self-compassion instead of self-attack",
+      "condition": { "type": "flag-set", "flag": "usedSelfCompassion", "value": true },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 70, "starBonus": 0, "achievementId": "self_compassion" }
+    },
+    {
+      "id": "obj_lower_bar",
+      "type": "hidden",
+      "title": "Lowered the Bar",
+      "description": "Deliberately reduce expectations to something achievable",
+      "condition": { "type": "flag-set", "flag": "loweredThreshold", "value": true },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 60, "starBonus": 0, "achievementId": null }
+    },
+    {
+      "id": "obj_reach_out",
+      "type": "hidden",
+      "title": "Connection Made",
+      "description": "Text someone about your struggle",
+      "condition": { "type": "flag-set", "flag": "askedForHelp", "value": true },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 80, "starBonus": 0, "achievementId": "reached_out" }
+    },
+    {
+      "id": "obj_recovery",
+      "type": "hidden",
+      "title": "Second Attempt",
+      "description": "Get up after collapsing back into bed",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "collapsedBack", "value": true },
+          { "type": "flag-set", "flag": "recoveredAfterCollapse", "value": true }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": true,
+      "reward": { "xpBonus": 100, "starBonus": 0, "achievementId": "recovery_champion" }
+    },
+    {
+      "id": "obj_no_self_attack",
+      "type": "challenge",
+      "title": "No Self-Attack",
+      "description": "Get up without engaging the self-critical voice",
+      "condition": {
+        "type": "all-of",
+        "conditions": [
+          { "type": "flag-set", "flag": "leftBed", "value": true },
+          { "type": "flag-set", "flag": "usedSelfAttack", "value": false }
+        ]
+      },
+      "showPreRun": false,
+      "showInRun": false,
+      "revealOnComplete": false,
+      "reward": { "xpBonus": 60, "starBonus": 1, "achievementId": null }
+    }
+  ]
+}

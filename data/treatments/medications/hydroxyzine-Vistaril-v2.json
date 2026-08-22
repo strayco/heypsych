@@ -1,87 +1,221 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "hydroxyzine-vistaril-atarax",
-  "type": "medication",
-  "name": "Hydroxyzine (Vistaril, Atarax)",
-  "summary": "Sedating antihistamine sometimes used as a non-benzodiazepine option for short-term anxiety, bedtime anxiety insomnia, or acute “take the edge off” agitation. Works fast, but can leave you groggy and has QT-prolongation risk in susceptible people.",
-  "description": "Hydroxyzine is a first-generation antihistamine that can calm anxiety and help with sleep when anxiety is driving the problem. It can kick in within 15–30 minutes by mouth, but the sedation can carry into the next morning. It’s not a benzo and doesn’t create the same dependence pattern, but it’s still a real sedative—mixing with alcohol or other downers can get dangerous. It also has a conditional QT-prolongation risk, so it’s not for everyone.",
-  "patient_summary": "Hydroxyzine can be a quick, non-benzodiazepine way to calm anxiety or help you sleep when anxiety is the main issue. It works fast, but it can make you drowsy (sometimes into the next day), and it’s not a great fit if you’re older, have heart rhythm risk, or take other meds that prolong QT. No alcohol. No “let’s see how this feels” before driving.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "First-Generation Antihistamine",
-      "Histamine H1 Antagonist",
-      "Sedating Anxiolytic (Off-Label Use Pattern)"
-    ],
+  "identity": {
+    "slug": "hydroxyzine-vistaril-atarax",
+    "name": "Hydroxyzine (Vistaril, Atarax)",
+    "generic_name": "hydroxyzine",
     "brand_names": [
       "Vistaril [DSC]",
       "Atarax",
       "NOVO-Hydroxyzin [DSC]"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular (IM)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": true,
-    "fda_approval_year": 1956,
-    "pharmacologic_category": "Antiemetic; Histamine H1 Antagonist (First Generation); Piperazine Derivative",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Anxiety (symptomatic relief)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "adjunctive_treatment",
-        "context": "Often used as a short-term or as-needed option for anxiety symptoms, especially when benzodiazepines are not preferred. It can be a temporary bridge while maintenance treatments (therapy, SSRIs/SNRIs) ramp up."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Sometimes used at bedtime when anxiety is the main driver of insomnia. The tradeoff is next-day grogginess, especially at higher doses or in people who metabolize it slowly."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "May help mild-to-moderate anxiety-related agitation as a sedating PRN, but it is not a primary emergency tranquilizer and can impair cognition and coordination."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to hydroxyzine or any component of the formulation",
-      "Prolonged QT interval (oral hydroxyzine is contraindicated in patients with prolonged QT)",
-      "Early pregnancy (contraindicated based on animal reproduction data and labeling)",
-      "Oral formulation: hypersensitivity to cetirizine or levocetirizine",
-      "Injection: IV, subcutaneous, or intra-arterial administration (contraindicated; IM only)"
-    ],
-    "efficacy_response": {
-      "metric": "Short-term symptom relief (anxiety tension and somatic arousal)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Hydroxyzine can take the edge off quickly for some people, especially when anxiety feels physical (tight chest, jittery, wired-but-tired). It’s best thought of as a short-term symptom-relief tool—not a long-term anxiety plan.",
-      "citation_tag": "Product labeling and clinical use patterns"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "First-Generation Antihistamine",
+      "Histamine H1 Antagonist",
+      "Sedating Anxiolytic (Off-Label Use Pattern)"
+    ]
+  },
+  "summary": "Sedating antihistamine sometimes used as a non-benzodiazepine option for short-term anxiety, bedtime anxiety insomnia, or acute “take the edge off” agitation. Works fast, but can leave you groggy and has QT-prolongation risk in susceptible people.",
+  "description": "Hydroxyzine is a first-generation antihistamine that can calm anxiety and help with sleep when anxiety is driving the problem. It can kick in within 15–30 minutes by mouth, but the sedation can carry into the next morning. It’s not a benzo and doesn’t create the same dependence pattern, but it’s still a real sedative—mixing with alcohol or other downers can get dangerous. It also has a conditional QT-prolongation risk, so it’s not for everyone.",
+  "patient_summary": "Hydroxyzine can be a quick, non-benzodiazepine way to calm anxiety or help you sleep when anxiety is the main issue. It works fast, but it can make you drowsy (sometimes into the next day), and it’s not a great fit if you’re older, have heart rhythm risk, or take other meds that prolong QT. No alcohol. No “let’s see how this feels” before driving.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "anxiety-symptomatic-relief",
+          "condition_name": "Anxiety (symptomatic relief)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "secondary_indication",
+          "context": "Often used as a short-term or as-needed option for anxiety symptoms, especially when benzodiazepines are not preferred. It can be a temporary bridge while maintenance treatments (therapy, SSRIs/SNRIs) ramp up."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Sometimes used at bedtime when anxiety is the main driver of insomnia. The tradeoff is next-day grogginess, especially at higher doses or in people who metabolize it slowly."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "May help mild-to-moderate anxiety-related agitation as a sedating PRN, but it is not a primary emergency tranquilizer and can impair cognition and coordination."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid after oral administration",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Oral: 15–30 minutes; IM: rapid",
-      "peak_plasma": "~2 hours (oral serum peak reported in adult data)",
-      "half_life": "~20 hours in adults (can be longer in older adults and hepatic dysfunction)",
-      "duration_IR": "Sedation and symptom effects can vary widely; next-day drowsiness is possible, especially after bedtime dosing",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic to multiple metabolites, including cetirizine (active)",
-      "excretion": "Urine; active metabolite (cetirizine) is renally eliminated and may accumulate in kidney impairment",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Can be taken without regard to food"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: 15–30 minutes; IM: rapid"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular (IM)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / CNS Depression",
+          "incidence": "Frequency not defined (common in practice)",
+          "notes": "This is the headline effect. It can help anxiety and sleep, but it can also make you feel ‘heavy,’ foggy, and uncoordinated. Bedtime dosing can spill into the next morning."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "Especially noticeable when standing quickly or combining with other sedatives. Falls are a bigger risk in older adults."
+        },
+        {
+          "effect": "Dry Mouth",
+          "incidence": "Frequency not defined",
+          "notes": "Classic first-generation antihistamine effect. Hydration and sugar-free gum can help, but if you also get constipation or urinary retention, that’s a sign the anticholinergic burden is too high."
+        },
+        {
+          "effect": "Cognitive Dysfunction",
+          "incidence": "Postmarketing reports",
+          "notes": "Some people feel slower or less sharp, especially with morning + evening dosing. If your job requires high-alert performance, this may be a bad fit."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "QT prolongation and torsades de pointes (rare): higher risk with existing QT prolongation, electrolyte abnormalities, bradycardia, structural heart disease, kidney/liver impairment, and other QT-prolonging medications."
+        },
+        {
+          "risk": "Severe oversedation (especially with other CNS depressants): confusion, falls, accidents, and impaired breathing risk at high doses or when combined with sedatives."
+        },
+        {
+          "risk": "Severe skin reactions (rare): acute generalized exanthematous pustulosis (AGEP) has been reported."
+        },
+        {
+          "risk": "Neuropsychiatric effects (rare): hallucinations or involuntary movements have been reported; seizures have been reported at high doses."
+        },
+        {
+          "risk": "IM administration injury (serious if incorrect route): tissue necrosis and vascular complications have been reported with inadvertent IV/intra-arterial/subcutaneous exposure."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to hydroxyzine or any component of the formulation"
+        },
+        {
+          "contraindication": "Prolonged QT interval (oral hydroxyzine is contraindicated in patients with prolonged QT)"
+        },
+        {
+          "contraindication": "Early pregnancy (contraindicated based on animal reproduction data and labeling)"
+        },
+        {
+          "contraindication": "Oral formulation: hypersensitivity to cetirizine or levocetirizine"
+        },
+        {
+          "contraindication": "Injection: IV, subcutaneous, or intra-arterial administration (contraindicated; IM only)"
+        }
+      ],
+      "precautions": [
+        "QT prolongation/torsades risk: Hydroxyzine has a conditional risk of QT prolongation and torsades de pointes in susceptible patients (especially with other QT-prolonging meds, electrolyte disturbances, kidney/liver impairment, bradycardia, or structural heart disease).",
+        "CNS depression: Drowsiness and dizziness can impair driving and operating machinery—sometimes into the next morning after bedtime dosing.",
+        "Older adults: Generally avoid due to strong anticholinergic burden (confusion, constipation, urinary retention, falls).",
+        "Pregnancy: Contraindicated in early pregnancy; neonatal withdrawal symptoms (including seizures) have been reported after chronic maternal use or large doses near term.",
+        "IM safety: IM only. IV, subcutaneous, and intra-arterial administration are contraindicated and can cause severe tissue injury and vascular complications."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: worse sedation, impaired judgment and coordination, higher accident risk, and potentially dangerous oversedation.",
+          "action": "Avoid alcohol while using hydroxyzine."
+        },
+        {
+          "interactant": "Other CNS depressants (opioids, benzodiazepines, Z-drugs, muscle relaxants, sedating antihistamines, some antipsychotics)",
+          "mechanism": "Sedation stacking: confusion, falls, driving impairment, and higher risk of dangerous oversedation.",
+          "action": "Use the lowest effective doses, avoid combining when possible, and do not drive until you know the combined effect."
+        },
+        {
+          "interactant": "QT-prolonging medications (multiple antidepressants, antipsychotics, certain antibiotics/antiarrhythmics, methadone, etc.)",
+          "mechanism": "QT risk stacking: higher chance of significant QTc prolongation and torsades in susceptible patients.",
+          "action": "Avoid combinations when possible. If combination is necessary, assess risk factors and consider baseline/interval ECG monitoring."
+        },
+        {
+          "interactant": "Anticholinergic medications (tricyclics, benztropine, oxybutynin, diphenhydramine, some antipsychotics)",
+          "mechanism": "Higher anticholinergic burden: constipation, urinary retention, blurred vision, confusion, delirium, and fall risk—especially in older adults.",
+          "action": "Minimize overlap; choose less anticholinergic alternatives when available."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Symptom response: Is anxiety intensity decreasing? Is sleep improving without next-day impairment?"
+        },
+        {
+          "parameter": "Sedation and functional safety: next-day grogginess, driving impairment, falls risk, work/school performance."
+        },
+        {
+          "parameter": "Mental status: confusion, delirium, hallucinations (especially in older adults or with medication stacking)."
+        },
+        {
+          "parameter": "Anticholinergic side effects: dry mouth, constipation, urinary retention, blurred vision—watch the total anticholinergic burden."
+        },
+        {
+          "parameter": "Cardiac risk (QT): assess history of prolonged QT, fainting, palpitations, family history of sudden cardiac death; consider ECG monitoring in high-risk patients or when combined with other QT-prolonging meds."
+        },
+        {
+          "parameter": "Electrolytes and medical risk factors when QT risk is relevant: hypokalemia/hypomagnesemia, kidney impairment, liver impairment, bradycardia, structural heart disease."
+        },
+        {
+          "parameter": "Hypersensitivity or rash: monitor for new or worsening skin reactions; stop and evaluate for severe reactions if concerning rash develops."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Contraindicated in early pregnancy. Hydroxyzine crosses the placenta. Neonatal withdrawal symptoms (including seizures) have been reported with chronic maternal use or large doses near term. If anxiety treatment is needed in pregnancy, clinicians usually prioritize psychotherapy and medications with better pregnancy safety data.",
+        "lactation": "It’s not confirmed whether hydroxyzine is present in breast milk. Drowsiness and irritability have been reported in breastfed infants exposed to antihistamines, and sedation has been reported with hydroxyzine exposure. If a first-generation antihistamine is used while breastfeeding, monitor the infant for sedation or irritability. Second-generation antihistamines are generally preferred when an antihistamine is needed.",
+        "pediatric": "Not a preferred treatment for pediatric anxiety disorders in modern expert guidance, even though dosing exists. If used, the decision should be cautious and individualized, with a strong bias toward psychotherapy-first strategies.",
+        "geriatric": "Avoid use in adults ≥65 when possible. Hydroxyzine has strong anticholinergic effects and can increase confusion, constipation, urinary retention, delirium, and fall risk. Reduced clearance with age can amplify sedation and next-day impairment.",
+        "renal_impairment": "Because the active metabolite (cetirizine) is renally cleared, reduce dosing in kidney impairment. Practical approach: CrCl ≥50 mL/min: no adjustment; CrCl 10 to <50 mL/min: ~50% of usual dose; CrCl <10 mL/min: ~25% to 50% of usual dose. In dialysis contexts, it is unlikely to be significantly dialyzed; dose reductions (25% to 50% of usual dose) are commonly used.",
+        "hepatic_impairment": "In cirrhosis or significant liver impairment: Use the minimum effective dose; do not exceed a total maximum daily dose of 25 mg/day. Use with extra caution if there is any concern for hepatic encephalopathy; discontinue if encephalopathy worsens."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1956
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid after oral administration",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "~2 hours (oral serum peak reported in adult data)",
+          "half_life": "~20 hours in adults (can be longer in older adults and hepatic dysfunction)",
+          "metabolism": "Hepatic to multiple metabolites, including cetirizine (active)",
+          "excretion": "Urine; active metabolite (cetirizine) is renally eliminated and may accumulate in kidney impairment",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Can be taken without regard to food"
+        },
+        "dosing": {
+          "titration": "Hydroxyzine dosing for psychiatric use is usually PRN (as-needed) and usually kept lower than the absolute maximum because the limiting factor is sedation and next-day impairment."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Hydroxyzine does not have the classic benzodiazepine-style withdrawal or dependence pattern, so most people can stop it without a formal taper. If you’ve been taking it nightly for a long time, you can step down gradually to reduce rebound insomnia or rebound anxiety (which is usually mild and short-lived)."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +236,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Hydroxyzine experiences tend to fall into a few predictable buckets:",
       "items": [
         {
           "category": "Calm without the “benzo vibe”",
@@ -139,7 +272,8 @@
           ],
           "note": "Cognitive slowing can happen, especially with morning and evening dosing."
         }
-      ]
+      ],
+      "intro": "Hydroxyzine experiences tend to fall into a few predictable buckets:"
     },
     {
       "type": "onset_duration",
@@ -156,10 +290,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Hydroxyzine can be genuinely helpful for short-term anxiety relief—especially when anxiety is loud in the body (restless, tense, keyed-up). It’s not a “fix the anxiety disorder” medication. Think of it as a PRN calming tool or a bedtime anxiety helper, not a long-term plan.",
       "metric": "Short-term anxiety symptom reduction",
       "value": "Varies widely",
       "comparison": "Not applicable for this medication.",
-      "text": "Hydroxyzine can be genuinely helpful for short-term anxiety relief—especially when anxiety is loud in the body (restless, tense, keyed-up). It’s not a “fix the anxiety disorder” medication. Think of it as a PRN calming tool or a bedtime anxiety helper, not a long-term plan.",
       "clinical_details": "In real-world psychiatry use, hydroxyzine is often positioned as an alternative to benzodiazepines for situational anxiety or a bridge while maintenance therapy becomes effective. The tradeoff is sedation and anticholinergic side effects, and it carries QT-prolongation risk in susceptible patients.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -238,7 +372,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Hydroxyzine is a sedating, anticholinergic antihistamine. The biggest interaction problems are sedation stacking and QT risk stacking.",
       "items": [
         {
           "with": "Alcohol",
@@ -260,7 +393,8 @@
           "risk": "Higher anticholinergic burden: constipation, urinary retention, blurred vision, confusion, delirium, and fall risk—especially in older adults.",
           "action": "Minimize overlap; choose less anticholinergic alternatives when available."
         }
-      ]
+      ],
+      "intro": "Hydroxyzine is a sedating, anticholinergic antihistamine. The biggest interaction problems are sedation stacking and QT risk stacking."
     },
     {
       "type": "tapering",
@@ -330,21 +464,6 @@
       "text": "Hydroxyzine is best viewed as a short-term, symptom-focused tool: a PRN alternative when you want to avoid benzodiazepines, or a bedtime helper when anxiety is blocking sleep. It’s not a first-line long-term treatment for anxiety disorders. If you find yourself needing it daily for months, that’s usually a sign to build a maintenance plan (therapy, SSRIs/SNRIs, skill-based anxiety treatment, and a real sleep strategy). The two main reasons clinicians avoid it are (1) sedation/anticholinergic burden—especially in older adults—and (2) QT-prolongation risk in susceptible patients."
     }
   ],
-  "seo": {
-    "title": "Hydroxyzine (Vistaril, Atarax) for Anxiety & Sleep: Dosing, Side Effects, QT Risk",
-    "description": "Hydroxyzine for anxiety and anxiety-related insomnia: how fast it works (15–30 min), PRN dosing, sedation/next-day grogginess, QT prolongation risk, interactions, and who should avoid it.",
-    "canonical": "[https://www.heypsych.com/treatments/hydroxyzine-vistaril-atarax](https://www.heypsych.com/treatments/hydroxyzine-vistaril-atarax)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is hydroxyzine used for in psychiatry?",
@@ -386,5 +505,20 @@
       "q": "What’s a typical PRN dose for anxiety?",
       "a": "A common PRN range is 25–50 mg by mouth up to 4 times per day as needed. Some regimens increase based on response and tolerability up to 100 mg four times daily (maximum 400 mg/day), but higher dosing increases sedation and safety risks."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Hydroxyzine (Vistaril, Atarax) for Anxiety & Sleep: Dosing, Side Effects, QT Risk",
+    "description": "Hydroxyzine for anxiety and anxiety-related insomnia: how fast it works (15–30 min), PRN dosing, sedation/next-day grogginess, QT prolongation risk, interactions, and who should avoid it.",
+    "canonical": "[https://www.heypsych.com/treatments/hydroxyzine-vistaril-atarax](https://www.heypsych.com/treatments/hydroxyzine-vistaril-atarax)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

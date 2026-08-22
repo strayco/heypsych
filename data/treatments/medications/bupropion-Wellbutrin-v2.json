@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bupropion-wellbutrin",
-  "type": "medication",
-  "name": "Bupropion (Wellbutrin, Zyban)",
-  "summary": "Activating antidepressant that boosts energy and motivation, with less sexual side effects and weight gain than many SSRIs. Also used to help people quit smoking.",
-  "description": "Bupropion is an antidepressant that tends to feel more \"activating\" than sedating. People often notice more energy, better focus, and less emotional numbness compared with some other antidepressants. It can also help reduce cigarette cravings and withdrawal. Downsides: it can worsen anxiety or insomnia in some people and has a dose-related seizure risk, so doses have to be spaced out and caps are strict.",
-  "patient_summary": "Bupropion helps with depression and seasonal low mood, and it can make it easier to quit smoking. Many people feel more energy and fewer sexual side effects than with SSRIs. The main things to watch for are trouble sleeping, feeling more wired or anxious, and seizures at high doses or in people with risk factors.",
-  "category": "medications/depression",
-  "metadata": {
-    "drug_classes": [
-      "Antidepressant",
-      "Dopamine/Norepinephrine Reuptake Inhibitor",
-      "Smoking Cessation Aid"
-    ],
+  "identity": {
+    "slug": "bupropion-wellbutrin",
+    "name": "Bupropion (Wellbutrin, Zyban)",
+    "generic_name": "bupropion",
     "brand_names": [
       "Aplenzin",
       "Forfivo XL",
@@ -20,81 +12,244 @@
       "Wellbutrin XL",
       "Zyban"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (US)",
-    "generic_available": true,
-    "fda_approval_year": 1985,
-    "pharmacologic_category": "Antidepressant, Dopamine/Norepinephrine-Reuptake Inhibitor",
-    "published_date": "2025-11-30T00:00:00Z",
-    "last_updated": "2025-11-30T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-30T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q422221"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)",
-      "Seasonal Affective Disorder (SAD)",
-      "Smoking Cessation (Zyban formulation)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "First-line antidepressant option in many guidelines, especially when low energy, fatigue, or SSRI sexual side effects are major issues."
-      },
-      {
-        "slug": "seasonal-affective-disorder",
-        "relationship": "primary_treatment",
-        "context": "XL formulations are FDA-approved to prevent fall/winter depressive episodes in people with a history of SAD."
-      },
-      {
-        "slug": "tobacco-use-disorder",
-        "relationship": "primary_treatment",
-        "context": "Bupropion SR (Zyban) is FDA-approved to help people quit smoking; typically doubles quit rates vs placebo when combined with counseling."
-      },
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used off-label when ADHD co-occurs with depression or when stimulants are not a good fit."
-      },
-      {
-        "slug": "sexual-dysfunction",
-        "relationship": "off_label",
-        "context": "Often added when SSRIs cause sexual side effects; may improve libido and orgasm difficulties for some people."
-      }
-    ],
-    "contraindications": [
-      "Seizure disorder or history of seizures",
-      "Current or past anorexia nervosa or bulimia",
-      "Abrupt stopping of alcohol, benzodiazepines, barbiturates, or seizure medicines",
-      "Use of MAOIs now or within the last 14 days",
-      "Current use of another bupropion-containing product",
-      "Known hypersensitivity to bupropion or any component"
-    ],
-    "efficacy_response": {
-      "metric": "Smoking quit rate at ~7–12 weeks",
-      "percentage_value": "≈25%",
-      "comparison_data": "≈13% with placebo (roughly doubles quit rates; NNT ~8–10)",
-      "patient_text": "In smoking-cessation studies, about 1 in 4 people on bupropion were smoke-free at the end of treatment, compared with about 1 in 8 on placebo.",
-      "citation_tag": "Typical values from large Zyban smoking cessation trials"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depression",
+    "drug_classes": [
+      "Antidepressant",
+      "Dopamine/Norepinephrine Reuptake Inhibitor",
+      "Smoking Cessation Aid"
+    ]
+  },
+  "summary": "Activating antidepressant that boosts energy and motivation, with less sexual side effects and weight gain than many SSRIs. Also used to help people quit smoking.",
+  "description": "Bupropion is an antidepressant that tends to feel more \"activating\" than sedating. People often notice more energy, better focus, and less emotional numbness compared with some other antidepressants. It can also help reduce cigarette cravings and withdrawal. Downsides: it can worsen anxiety or insomnia in some people and has a dose-related seizure risk, so doses have to be spaced out and caps are strict.",
+  "patient_summary": "Bupropion helps with depression and seasonal low mood, and it can make it easier to quit smoking. Many people feel more energy and fewer sexual side effects than with SSRIs. The main things to watch for are trouble sleeping, feeling more wired or anxious, and seizures at high doses or in people with risk factors.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "First-line antidepressant option in many guidelines, especially when low energy, fatigue, or SSRI sexual side effects are major issues.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "seasonal-affective-disorder",
+          "condition_name": "Seasonal Affective Disorder",
+          "relationship": "primary_indication",
+          "context": "XL formulations are FDA-approved to prevent fall/winter depressive episodes in people with a history of SAD.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "tobacco-use-disorder",
+          "condition_name": "Tobacco Use Disorder",
+          "relationship": "primary_indication",
+          "context": "Bupropion SR (Zyban) is FDA-approved to help people quit smoking; typically doubles quit rates vs placebo when combined with counseling.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used off-label when ADHD co-occurs with depression or when stimulants are not a good fit."
+        },
+        {
+          "condition_slug": "sexual-dysfunction",
+          "condition_name": "Sexual Dysfunction",
+          "relationship": "off_label",
+          "context": "Often added when SSRIs cause sexual side effects; may improve libido and orgasm difficulties for some people."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid oral absorption",
-      "bioavailability": "Extensive first-pass metabolism; effective systemic exposure via active metabolites",
-      "onset": "Some people feel small changes in 1–2 weeks; full antidepressant effects usually take 4–6 weeks",
-      "peak_plasma": "IR: ~2 hours; SR: ~3 hours; XL: ~5 hours",
-      "half_life": "Parent drug ~21 hours; active metabolites ~20–37 hours",
-      "duration": "Once or twice daily dosing maintains 24-hour coverage",
-      "metabolism": "Hepatic via CYP2B6 to hydroxybupropion and other active metabolites; also a strong CYP2D6 inhibitor",
-      "excretion": "Mostly in urine as metabolites",
-      "protein_binding": "≈84%"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Some people feel small changes in 1–2 weeks; full antidepressant effects usually take 4–6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Insomnia / Trouble Sleeping",
+          "incidence": "Up to ~40% in some trials",
+          "notes": "Most people do best taking it in the morning. If you take it in the afternoon or evening, you may find your brain is too ‘on’ to fall asleep easily."
+        },
+        {
+          "effect": "Anxiety / Jitteriness",
+          "incidence": "Roughly 5–10%",
+          "notes": "Some people feel more wired or restless, especially in the first week or if they already have high anxiety. This often calms down with time or dose adjustment."
+        },
+        {
+          "effect": "Dry Mouth",
+          "incidence": "Very common",
+          "notes": "Feels like your mouth is sticky or cottony. Sipping water, sugar-free gum, or lozenges can help."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common",
+          "notes": "Usually mild and temporary. If headaches are severe or persistent, let your prescriber know."
+        },
+        {
+          "effect": "GI Upset (Nausea, Stomach Discomfort, Constipation)",
+          "incidence": "Common",
+          "notes": "Often improves after your body adjusts. Taking it with food can help, as can fluids and fiber for constipation."
+        },
+        {
+          "effect": "Weight Change",
+          "incidence": "Variable",
+          "notes": "Some people lose a modest amount of weight due to decreased appetite. This can be good or bad depending on your situation."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Seizures (rare but serious; risk increases at higher doses, with certain medical conditions, or with alcohol/other drugs)"
+        },
+        {
+          "risk": "Severe allergic reactions (rash, swelling of face/lips/tongue, trouble breathing)"
+        },
+        {
+          "risk": "Severe skin reactions like Stevens–Johnson syndrome (painful rash, blisters, peeling skin, sores in mouth/eyes)"
+        },
+        {
+          "risk": "Big mood or behavior changes (agitation, aggression, suicidal thoughts, hallucinations, mania)"
+        },
+        {
+          "risk": "Severe or sudden high blood pressure (very bad headache, chest pain, vision changes)"
+        },
+        {
+          "risk": "Sudden eye pain, vision changes, or red, swollen eyes (possible acute angle-closure glaucoma)"
+        }
+      ],
+      "black_box_warning": "Antidepressants, including bupropion, can increase suicidal thoughts and behaviors in children, teenagers, and young adults, especially when starting or changing the dose. Families and caregivers should watch closely for sudden changes in mood, behavior, or thinking and contact a doctor right away if they appear.",
+      "contraindications": [
+        {
+          "contraindication": "Seizure disorder or history of seizures"
+        },
+        {
+          "contraindication": "Current or past anorexia nervosa or bulimia"
+        },
+        {
+          "contraindication": "Abrupt stopping of alcohol, benzodiazepines, barbiturates, or seizure medicines"
+        },
+        {
+          "contraindication": "Use of MAOIs now or within the last 14 days"
+        },
+        {
+          "contraindication": "Current use of another bupropion-containing product"
+        },
+        {
+          "contraindication": "Known hypersensitivity to bupropion or any component"
+        }
+      ],
+      "precautions": [
+        "Seizures: Risk goes up at higher doses, in people with seizure risk factors, and if doses are taken too close together.",
+        "Eating disorders: People with a current or past history of anorexia or bulimia should NOT take bupropion due to a significantly higher seizure risk.",
+        "Alcohol: Heavy use or suddenly stopping heavy alcohol use while on bupropion can trigger seizures.",
+        "Blood pressure: Bupropion can raise blood pressure; rarely it can cause severe hypertension.",
+        "Mental health changes: Can cause agitation, anxiety, irritability, and, rarely, hallucinations or mania—especially in people with bipolar disorder or a history of psychosis.",
+        "Eye problems: Rare cases of acute angle-closure glaucoma—sudden eye pain, red eyes, and vision changes are emergencies."
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol (heavy use, binges, or suddenly stopping)",
+          "mechanism": "Much higher seizure risk and more side effects.",
+          "action": "If you drink heavily, talk to your prescriber honestly. Do not suddenly stop heavy drinking on your own while taking bupropion—this needs medical supervision."
+        },
+        {
+          "interactant": "Other bupropion products (Wellbutrin + Zyban, or multiple strengths)",
+          "mechanism": "Accidental overdose and seizures due to double dosing.",
+          "action": "You should only be on ONE bupropion product at a time. Always check your bottles—different brand names can be the same drug."
+        },
+        {
+          "interactant": "Medicines that lower seizure threshold (some antipsychotics, antidepressants, tramadol, stimulants, certain antibiotics, etc.)",
+          "mechanism": "Stacked seizure risk.",
+          "action": "Your prescriber may choose different meds or keep doses conservative and watch more closely."
+        },
+        {
+          "interactant": "MAOIs (older antidepressants like phenelzine, tranylcypromine, selegiline, etc.)",
+          "mechanism": "Dangerous blood pressure spikes and other serious reactions.",
+          "action": "Do NOT mix. There must be at least 14 days between stopping one and starting the other."
+        },
+        {
+          "interactant": "Medicines metabolized by CYP2D6 (for example some SSRIs, SNRIs, antipsychotics, beta-blockers, tamoxifen)",
+          "mechanism": "Bupropion can raise their levels and side effects.",
+          "action": "Your doctor may lower the dose of those other meds or choose alternatives. Don’t adjust on your own."
+        },
+        {
+          "interactant": "Nicotine replacement (patch, gum, lozenges)",
+          "mechanism": "Mild increase in blood pressure; otherwise generally safe and often helpful together.",
+          "action": "Often used in combination for smoking cessation. Your provider may monitor your blood pressure more closely."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood, anxiety, and suicidal thoughts—especially in the first 1–2 months and after dose changes."
+        },
+        {
+          "parameter": "Blood pressure and heart rate, particularly if you have hypertension or are using nicotine replacement."
+        },
+        {
+          "parameter": "Sleep patterns and daytime activation (too wired, too flat, or just right)."
+        },
+        {
+          "parameter": "Appetite and weight changes."
+        },
+        {
+          "parameter": "Any signs of seizures (even brief episodes of staring, jerking, or confusion)."
+        },
+        {
+          "parameter": "Interactions with other meds metabolized by CYP2D6 (for example some antidepressants, antipsychotics, and heart medications)."
+        },
+        {
+          "parameter": "For smoking cessation: number of cigarettes per day, cravings, and triggers."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Overall, bupropion is not a ‘first pick’ if you’re starting an antidepressant while pregnant, but many people who are already stable on it stay on it through pregnancy when the risk of relapse is high. Data so far do not show a big overall rise in birth defects, but there have been mixed signals about heart defects in some studies. Untreated depression also carries real risks for both parent and baby, so the decision is about balancing risks, not chasing zero risk.",
+        "lactation": "Small amounts of bupropion and its metabolites appear in breast milk. Most reports show no obvious problems in nursing infants, but there have been rare reports of possible seizures and irritability. If used while breastfeeding, babies should be watched for unusual sleepiness, feeding problems, or strange movements.",
+        "pediatric": "Not approved for depression or smoking cessation in children. Sometimes used off-label in teens with careful monitoring, especially if there’s comorbid ADHD and depression. Suicidality monitoring is critical.",
+        "geriatric": "Older adults may be more sensitive to side effects, especially blood pressure changes, insomnia, and agitation. Start low, go slow, and monitor blood pressure and mood closely."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1985
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid oral absorption",
+          "bioavailability": "Extensive first-pass metabolism; effective systemic exposure via active metabolites",
+          "peak_plasma": "IR: ~2 hours; SR: ~3 hours; XL: ~5 hours",
+          "half_life": "Parent drug ~21 hours; active metabolites ~20–37 hours",
+          "metabolism": "Hepatic via CYP2B6 to hydroxybupropion and other active metabolites; also a strong CYP2D6 inhibitor",
+          "excretion": "Mostly in urine as metabolites",
+          "protein_binding": "≈84%"
+        },
+        "dosing": {
+          "titration": "There are three main versions: IR (immediate-release, 3×/day), SR (sustained-release, 2×/day), and XL (extended-release, 1×/day). Most people today use SR or XL."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Bupropion does not usually cause the same intense withdrawal symptoms that SSRIs or benzodiazepines can, but you still don’t want to stop suddenly if you’ve been on it for a while."
+        }
+      }
     }
   },
   "sections": [
@@ -117,7 +272,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s experience is different, but people often describe bupropion like this:",
       "items": [
         {
           "category": "Energy & Motivation",
@@ -161,7 +315,8 @@
             "It gave me just enough space between the urge and the action to actually choose not to smoke."
           ]
         }
-      ]
+      ],
+      "intro": "Everyone’s experience is different, but people often describe bupropion like this:"
     },
     {
       "type": "onset_duration",
@@ -178,10 +333,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For depression, bupropion works about as well as other modern antidepressants, but feels more activating and tends to have fewer sexual and weight side effects. For smoking cessation, it roughly doubles your odds of quitting compared with going cold turkey, especially when you also get counseling and support.",
       "metric": "Chance of quitting smoking",
       "value": "≈25%",
       "comparison": "≈13% without medication",
-      "text": "For depression, bupropion works about as well as other modern antidepressants, but feels more activating and tends to have fewer sexual and weight side effects. For smoking cessation, it roughly doubles your odds of quitting compared with going cold turkey, especially when you also get counseling and support.",
       "clinical_details": "In large clinical trials, bupropion SR (Zyban) plus behavioral counseling led to continuous abstinence rates of roughly 20–30% at the end of treatment, compared with about 10–15% with placebo. For depression, head-to-head trials generally show similar response and remission rates compared to SSRIs, with a different side effect profile (more activation/insomnia, fewer sexual side effects, less weight gain).",
       "citation": {
         "authors": "Multiple randomized controlled trials of bupropion SR for smoking cessation and MDD",
@@ -274,7 +429,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug & Alcohol Interactions",
-      "intro": "Bupropion has two big interaction themes: seizure risk and how it affects other medications’ levels via CYP2D6.",
       "items": [
         {
           "with": "Alcohol (heavy use, binges, or suddenly stopping)",
@@ -306,7 +460,8 @@
           "risk": "Mild increase in blood pressure; otherwise generally safe and often helpful together.",
           "action": "Often used in combination for smoking cessation. Your provider may monitor your blood pressure more closely."
         }
-      ]
+      ],
+      "intro": "Bupropion has two big interaction themes: seizure risk and how it affects other medications’ levels via CYP2D6."
     },
     {
       "type": "tapering",
@@ -411,21 +566,36 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Bupropion (Wellbutrin, Zyban): Uses, Side Effects, Dosing & Smoking Cessation",
-    "description": "Bupropion (Wellbutrin, Zyban) for depression, seasonal affective disorder, and quitting smoking. How it works, how long it takes, seizure risk, side effects (anxiety, insomnia, weight, sex), and who it’s best for.",
-    "canonical": "https://www.heypsych.com/treatments/bupropion-wellbutrin",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and aligned with current FDA labeling and major practice guidelines for depression and smoking cessation."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information – Wellbutrin XL",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/021515s049lbl.pdf#page=29",
+      "description": "Official FDA label with full dosing, warnings, and clinical trial data."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "FDA Prescribing Information – Zyban",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/020711s052lbl.pdf#page=38",
+      "description": "Smoking cessation–focused labeling for bupropion SR."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "APA Practice Guideline for the Treatment of Patients With Major Depressive Disorder",
+      "url": "https://psychiatryonline.org",
+      "description": "Guideline including where bupropion fits among first-line antidepressants."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "USPHS Clinical Practice Guideline: Treating Tobacco Use and Dependence",
+      "url": "https://www.ahrq.gov",
+      "description": "Smoking-cessation recommendations including bupropion."
+    }
+  ],
   "faqs": [
     {
       "q": "What is bupropion used for?",
@@ -475,5 +645,20 @@
       "q": "What happens if I miss a dose?",
       "a": "If you miss a dose, just skip it and take your next dose at the normal time. Don’t double up. Taking two doses too close together can raise seizure risk."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Bupropion (Wellbutrin, Zyban): Uses, Side Effects, Dosing & Smoking Cessation",
+    "description": "Bupropion (Wellbutrin, Zyban) for depression, seasonal affective disorder, and quitting smoking. How it works, how long it takes, seizure risk, side effects (anxiety, insomnia, weight, sex), and who it’s best for.",
+    "canonical": "https://www.heypsych.com/treatments/bupropion-wellbutrin",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and aligned with current FDA labeling and major practice guidelines for depression and smoking cessation."
+  }
 }

@@ -1,93 +1,246 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "propranolol",
-  "type": "medication",
-  "name": "Propranolol (Inderal LA, Inderal XL, InnoPran XL, Hemangeol)",
-  "summary": "Nonselective beta-blocker used in psychiatry mainly for the body symptoms of anxiety (performance anxiety), antipsychotic-induced akathisia, and medication-related tremor. Works in about 30–60 minutes for situational use, but it can lower heart rate and trigger bronchospasm in people with asthma.",
-  "description": "Propranolol doesn’t “erase” anxiety thoughts — it turns down the adrenaline surge (shaky hands, pounding heart, sweating, voice tremor). That makes it a go-to for performance anxiety and sometimes for antipsychotic-induced akathisia or lithium tremor. Biggest risks are low heart rate, low blood pressure, dizziness, fatigue, and breathing trouble in people with asthma/COPD. Don’t stop it abruptly if you’ve been taking it daily.",
-  "patient_summary": "Propranolol is for the physical side of anxiety — not the mental spiral. If your issue is shaky hands, racing heart, or visible nerves before a talk, it can be a game-changer. If your issue is constant worry all day, it’s usually not the right tool by itself. The tradeoff: it can make you feel tired, lightheaded, or “slower,” and it’s a no-go for many people with asthma.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Beta-Blocker, Nonselective",
-      "Antihypertensive",
-      "Antianginal Agent",
-      "Antiarrhythmic Agent, Class II"
-    ],
+  "identity": {
+    "slug": "propranolol",
+    "name": "Propranolol (Inderal LA, Inderal XL, InnoPran XL, Hemangeol)",
+    "generic_name": "propranolol",
     "brand_names": [
       "Hemangeol",
       "Inderal LA",
       "Inderal XL",
       "InnoPran XL"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1967,
-    "pharmacologic_category": "Nonselective beta-adrenergic blocker",
-    "published_date": "2025-12-21T00:00:00Z",
-    "last_updated": "2025-12-21T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-21T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Performance anxiety (situational, off-label)",
-      "Antipsychotic-induced akathisia (off-label)",
-      "Medication-induced tremor (eg, lithium tremor, off-label)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "performance-anxiety",
-        "relationship": "off_label",
-        "context": "Best fit when anxiety shows up as a strong body response (tremor, palpitations, sweating) right before a specific event. Not a primary treatment for ongoing generalized anxiety."
-      },
-      {
-        "slug": "akathisia",
-        "relationship": "off_label",
-        "context": "Often used when antipsychotics cause restlessness and an inability to sit still. Typically used as a symptom-targeting add-on while the main medication plan is adjusted."
-      },
-      {
-        "slug": "medication-induced-tremor",
-        "relationship": "off_label",
-        "context": "Can reduce tremor from psychiatric meds (especially lithium) when dose reduction or switching isn’t possible or would destabilize mood."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to propranolol, beta-blockers, or any component of the formulation",
-      "Bronchial asthma",
-      "Cardiogenic shock",
-      "Uncompensated heart failure (except select tachyarrhythmia-related scenarios under specialist care)",
-      "Severe sinus bradycardia",
-      "Sick sinus syndrome",
-      "Second- or third-degree heart block (unless a functioning pacemaker is present)"
-    ],
-    "efficacy_response": {
-      "metric": "Reduction of physical anxiety symptoms during a performance situation",
-      "percentage_value": "Varies",
-      "comparison_data": "Depends on dose, timing, and baseline heart rate; not a one-size-fits-all response",
-      "patient_text": "For performance anxiety, propranolol tends to help the visible and uncomfortable “adrenaline” symptoms (shaking, pounding heart, voice tremor). It usually doesn’t fix anxious thoughts by itself — it just makes your body stop yelling so your brain can do the job.",
-      "citation_tag": "General clinical use; evidence quality varies by indication"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Beta-Blocker, Nonselective",
+      "Antihypertensive",
+      "Antianginal Agent",
+      "Antiarrhythmic Agent, Class II"
+    ]
+  },
+  "summary": "Nonselective beta-blocker used in psychiatry mainly for the body symptoms of anxiety (performance anxiety), antipsychotic-induced akathisia, and medication-related tremor. Works in about 30–60 minutes for situational use, but it can lower heart rate and trigger bronchospasm in people with asthma.",
+  "description": "Propranolol doesn’t “erase” anxiety thoughts — it turns down the adrenaline surge (shaky hands, pounding heart, sweating, voice tremor). That makes it a go-to for performance anxiety and sometimes for antipsychotic-induced akathisia or lithium tremor. Biggest risks are low heart rate, low blood pressure, dizziness, fatigue, and breathing trouble in people with asthma/COPD. Don’t stop it abruptly if you’ve been taking it daily.",
+  "patient_summary": "Propranolol is for the physical side of anxiety — not the mental spiral. If your issue is shaky hands, racing heart, or visible nerves before a talk, it can be a game-changer. If your issue is constant worry all day, it’s usually not the right tool by itself. The tradeoff: it can make you feel tired, lightheaded, or “slower,” and it’s a no-go for many people with asthma.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "performance-anxiety-situational-off-label",
+          "condition_name": "Performance anxiety (situational, off-label)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "antipsychotic-induced-akathisia-off-label",
+          "condition_name": "Antipsychotic-induced akathisia (off-label)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "medication-induced-tremor-eg-lithium-tremor-off-label",
+          "condition_name": "Medication-induced tremor (eg, lithium tremor, off-label)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "performance-anxiety",
+          "condition_name": "Performance Anxiety",
+          "relationship": "off_label",
+          "context": "Best fit when anxiety shows up as a strong body response (tremor, palpitations, sweating) right before a specific event. Not a primary treatment for ongoing generalized anxiety."
+        },
+        {
+          "condition_slug": "akathisia",
+          "condition_name": "Akathisia",
+          "relationship": "off_label",
+          "context": "Often used when antipsychotics cause restlessness and an inability to sit still. Typically used as a symptom-targeting add-on while the main medication plan is adjusted."
+        },
+        {
+          "condition_slug": "medication-induced-tremor",
+          "condition_name": "Medication Induced Tremor",
+          "relationship": "off_label",
+          "context": "Can reduce tremor from psychiatric meds (especially lithium) when dose reduction or switching isn’t possible or would destabilize mood."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete (oral), with significant first-pass metabolism",
-      "bioavailability": "~25% (variable; can increase with food and higher-protein diets)",
-      "onset": "Oral beta-blockade: ~1 to 2 hours; IV: ≤5 minutes",
-      "peak_plasma": "Immediate-release: ~1 to 4 hours; some extended-release products peak later",
-      "half_life": "Immediate-release: ~3 to 6 hours; extended-release: ~8 to 10 hours",
-      "duration_IR": "6 to 12 hours",
-      "duration_XR": "~24 to 27 hours",
-      "metabolism": "Extensive hepatic metabolism (CYP2D6 and CYP1A2 major pathways; CYP2C19 minor; CYP3A4 minor); active metabolite 4-hydroxypropranolol has beta-blocking activity",
-      "excretion": "Urine as metabolites (major); <1% unchanged",
-      "protein_binding": "~90% (adults)",
-      "food_effect": "IR tablets are typically taken on an empty stomach; food can increase serum levels. ER capsules may be taken with or without food but should be consistent."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral beta-blockade: ~1 to 2 hours; IV: ≤5 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Fatigue / low energy",
+          "incidence": "Common",
+          "notes": "Some people feel a “weighted blanket” body sensation — calmer, but also less pep. This is one reason performance dosing is often kept low and tested in advance."
+        },
+        {
+          "effect": "Dizziness / lightheadedness",
+          "incidence": "Common",
+          "notes": "Usually related to blood pressure lowering. If you’re feeling faint or getting tunnel vision when you stand, the dose may be too high or you may not be a good match for this medication."
+        },
+        {
+          "effect": "Sleep disturbance / vivid dreams",
+          "incidence": "Variable",
+          "notes": "Propranolol can affect sleep quality in some people. If dreams get intense or insomnia ramps up, dose timing changes or switching strategies may help."
+        },
+        {
+          "effect": "Bradycardia (slow heart rate)",
+          "incidence": "Dose-dependent",
+          "notes": "If your heart rate drops too low (or you feel weak, faint, or short of breath), this needs medical attention and dose adjustment."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Bronchospasm (especially in asthma/COPD): wheezing, shortness of breath, chest tightness. MEDICAL EMERGENCY if severe."
+        },
+        {
+          "risk": "Severe bradycardia, heart block, or fainting episodes: urgent evaluation needed."
+        },
+        {
+          "risk": "Worsening heart failure symptoms: swelling, shortness of breath, rapid weight gain, fatigue out of proportion."
+        },
+        {
+          "risk": "Severe hypoglycemia risk and masked warning signs (especially in infants/children, and in adults with diabetes on glucose-lowering therapy)."
+        },
+        {
+          "risk": "Withdrawal reactions after abrupt stoppage in chronic users: rebound tachycardia, hypertension, chest pain, arrhythmias."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to propranolol, beta-blockers, or any component of the formulation"
+        },
+        {
+          "contraindication": "Bronchial asthma"
+        },
+        {
+          "contraindication": "Cardiogenic shock"
+        },
+        {
+          "contraindication": "Uncompensated heart failure (except select tachyarrhythmia-related scenarios under specialist care)"
+        },
+        {
+          "contraindication": "Severe sinus bradycardia"
+        },
+        {
+          "contraindication": "Sick sinus syndrome"
+        },
+        {
+          "contraindication": "Second- or third-degree heart block (unless a functioning pacemaker is present)"
+        }
+      ],
+      "precautions": [
+        "Do not use if you have bronchial asthma; nonselective beta-blockers can cause bronchospasm and breathing emergencies",
+        "Can cause bradycardia (slow heart rate), hypotension (low blood pressure), dizziness, fainting, and worsening conduction problems (heart block)",
+        "May worsen or unmask heart failure in susceptible patients; requires careful monitoring if there is underlying cardiac disease",
+        "Can mask warning signs of hypoglycemia (like tremor and palpitations); sweating may be the only obvious symptom",
+        "May cause fatigue, sleep disruption, vivid dreams, and (less commonly) mood changes",
+        "Do not stop abruptly if taken daily — sudden withdrawal can cause rebound tachycardia, elevated blood pressure, and (in high-risk patients) chest pain or arrhythmias"
+      ],
+      "interactions": [
+        {
+          "interactant": "Other AV node / heart-rate lowering meds (verapamil, diltiazem, digoxin, ivabradine; some antiarrhythmics)",
+          "mechanism": "Excessive bradycardia, hypotension, heart block, fainting.",
+          "action": "Use only with clinician oversight. Monitor heart rate, blood pressure, and symptoms closely, especially after dose changes."
+        },
+        {
+          "interactant": "Bronchodilators and beta-agonists (albuterol, formoterol, etc.)",
+          "mechanism": "Propranolol can blunt the effect of rescue inhalers and may worsen bronchospasm.",
+          "action": "Avoid if you have asthma. If you have COPD or reactive airway symptoms, discuss safer alternatives (often a beta-1 selective blocker if a beta-blocker is needed at all)."
+        },
+        {
+          "interactant": "Diabetes medications (insulin, sulfonylureas and others that can cause hypoglycemia)",
+          "mechanism": "Propranolol can prolong hypoglycemia and hide warning signs like tremor and palpitations.",
+          "action": "Monitor glucose carefully, especially during dose changes or illness/poor intake. Educate that sweating may be the main visible warning sign."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Alcohol can unpredictably raise or lower propranolol levels and can worsen dizziness and blood pressure drops.",
+          "action": "Use caution. If you’re using propranolol for performance, avoid experimenting with alcohol the same day."
+        },
+        {
+          "interactant": "Smoking",
+          "mechanism": "Cigarette smoking can lower propranolol levels and reduce effect in some people.",
+          "action": "If you change smoking status (start/stop), your dose response may change too."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Heart rate and blood pressure: baseline and after dose changes; watch for symptomatic bradycardia or hypotension (dizziness, fainting)."
+        },
+        {
+          "parameter": "Respiratory symptoms: wheezing, shortness of breath, chest tightness — especially in anyone with asthma/COPD history."
+        },
+        {
+          "parameter": "Mental alertness and fatigue: sedation-like tiredness can show up, especially early or at higher doses."
+        },
+        {
+          "parameter": "Sleep effects: insomnia, vivid dreams, nightmares — track whether timing changes help."
+        },
+        {
+          "parameter": "Akathisia tracking (if relevant): symptom rating over time (restlessness, pacing, inner agitation) and safety monitoring for severe distress."
+        },
+        {
+          "parameter": "Tremor tracking (if relevant): functional impact (writing, eating, phone use) and whether benefit is worth side effects."
+        },
+        {
+          "parameter": "Blood glucose awareness in diabetes: propranolol can mask hypoglycemia symptoms; educate on sweating as a key warning sign."
+        },
+        {
+          "parameter": "Medication review for interactions: especially other heart-rate-lowering agents and any regimen changes."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Crosses the placenta. Third-trimester exposure may increase risk of neonatal bradycardia, hypoglycemia, hypotension, and respiratory depression. If used during pregnancy, clinicians typically monitor fetal growth and monitor the newborn for at least 48 hours after delivery for bradycardia, hypoglycemia, and respiratory effects. For psychiatric performance anxiety, clinicians often try non-med options first in pregnancy unless symptoms are significantly impairing and benefits outweigh risks.",
+        "lactation": "Propranolol and inactive metabolites appear in breast milk. At usual doses it is often considered compatible with breastfeeding, but monitor the infant for bradycardia, cyanosis, and hypoglycemia, especially in very young infants or if maternal doses are higher.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Use caution and consider lower starting doses. Older adults are more prone to bradycardia, hypotension, dizziness, and falls. If used, titrate slowly and monitor closely, especially with other heart-rate-lowering medications.",
+        "renal_impairment": "No dosage adjustment is generally required for kidney impairment or dialysis, but use caution during initiation in advanced kidney disease because patients may be more prone to side effects.",
+        "hepatic_impairment": "Use caution in hepatic impairment; accumulation can be significant with cirrhosis. For many non-variceal indications, immediate-release is preferred for flexible titration. In moderate to severe cirrhosis (Child-Pugh B/C), a common approach is ≤50% of the usual indication-specific dose no more frequently than twice daily, with slower adjustments (every 3 to 5 days or longer) based on response and tolerability."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1967
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete (oral), with significant first-pass metabolism",
+          "bioavailability": "~25% (variable; can increase with food and higher-protein diets)",
+          "peak_plasma": "Immediate-release: ~1 to 4 hours; some extended-release products peak later",
+          "half_life": "Immediate-release: ~3 to 6 hours; extended-release: ~8 to 10 hours",
+          "metabolism": "Extensive hepatic metabolism (CYP2D6 and CYP1A2 major pathways; CYP2C19 minor; CYP3A4 minor); active metabolite 4-hydroxypropranolol has beta-blocking activity",
+          "excretion": "Urine as metabolites (major); <1% unchanged",
+          "protein_binding": "~90% (adults)",
+          "food_effect": "IR tablets are typically taken on an empty stomach; food can increase serum levels. ER capsules may be taken with or without food but should be consistent."
+        },
+        "dosing": {
+          "titration": "Psychiatry dosing is usually immediate-release (IR), because you either want predictable timing (performance anxiety) or flexible titration (akathisia, tremor). Extended-release is more of a “steady all-day” option and is not typically necessary for performance-only use."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been taking propranolol daily (akathisia or tremor schedules), don’t stop abruptly. A gradual taper helps prevent rebound symptoms like fast heart rate and blood pressure spikes. If you only use it rarely (performance PRN), tapering usually isn’t necessary."
+        }
+      }
     }
   },
   "sections": [
@@ -108,7 +261,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s different, but this is the usual “feel” of propranolol when it’s working — and when it’s not.",
       "items": [
         {
           "category": "Performance anxiety: body quiets down",
@@ -144,7 +296,8 @@
           ],
           "note": "Propranolol is lipophilic and can affect the central nervous system in some people (fatigue, insomnia, vivid dreams)."
         }
-      ]
+      ],
+      "intro": "Everyone’s different, but this is the usual “feel” of propranolol when it’s working — and when it’s not."
     },
     {
       "type": "onset_duration",
@@ -161,10 +314,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Propranolol is usually most effective when the problem is the adrenaline surge — tremor, pounding heart, sweating, shaky voice — especially in performance situations. If the main issue is nonstop worry, rumination, dread, or panic spirals, propranolol tends to be less satisfying as a standalone treatment.",
       "metric": "Best-case target symptom",
       "value": "Physical adrenergic symptoms",
       "comparison": "Thought-based anxiety symptoms",
-      "text": "Propranolol is usually most effective when the problem is the adrenaline surge — tremor, pounding heart, sweating, shaky voice — especially in performance situations. If the main issue is nonstop worry, rumination, dread, or panic spirals, propranolol tends to be less satisfying as a standalone treatment.",
       "clinical_details": "For performance anxiety, clinicians commonly use immediate-release dosing ahead of an event, with a trial run beforehand to check tolerability (blood pressure, dizziness, fatigue). For akathisia and medication-induced tremor, dosing is typically scheduled (not just PRN) and adjusted gradually based on response and heart rate/blood pressure tolerance."
     },
     {
@@ -234,7 +387,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Most dangerous interactions are the ones that stack heart-rate-lowering effects or worsen breathing/glucose risk.",
       "items": [
         {
           "with": "Other AV node / heart-rate lowering meds (verapamil, diltiazem, digoxin, ivabradine; some antiarrhythmics)",
@@ -261,7 +413,8 @@
           "risk": "Cigarette smoking can lower propranolol levels and reduce effect in some people.",
           "action": "If you change smoking status (start/stop), your dose response may change too."
         }
-      ]
+      ],
+      "intro": "Most dangerous interactions are the ones that stack heart-rate-lowering effects or worsen breathing/glucose risk."
     },
     {
       "type": "tapering",
@@ -337,21 +490,6 @@
       "text": "Propranolol is a symptom-targeting tool. For performance anxiety, it’s often used PRN when physical symptoms are the main problem and you need predictable timing. For akathisia, it’s typically used as part of a broader plan that also addresses the causative antipsychotic (dose reduction, switch, or additional treatments). For medication-induced tremor (like lithium tremor), it can reduce tremor without destabilizing mood when changing the primary medication isn’t feasible."
     }
   ],
-  "seo": {
-    "title": "Propranolol (Inderal): Performance Anxiety, Akathisia, Tremor — Uses, Dosing, Side Effects",
-    "description": "Propranolol for psychiatry uses: performance anxiety (PRN 10–20 mg), antipsychotic-induced akathisia, and medication tremor. Onset, dosing, side effects (fatigue, dizziness, low heart rate), and key safety warnings (asthma, bradycardia, tapering).",
-    "canonical": "[https://www.heypsych.com/treatments/propranolol](https://www.heypsych.com/treatments/propranolol)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-02",
-    "lastUpdated": "2025-12-02",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Does propranolol treat anxiety?",
@@ -389,5 +527,20 @@
       "q": "How long does propranolol last?",
       "a": "Immediate-release tablets often last about 6–12 hours. Extended-release forms can cover about a full day. For performance anxiety, many people only need the immediate-release effect window around the event."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Propranolol (Inderal): Performance Anxiety, Akathisia, Tremor — Uses, Dosing, Side Effects",
+    "description": "Propranolol for psychiatry uses: performance anxiety (PRN 10–20 mg), antipsychotic-induced akathisia, and medication tremor. Onset, dosing, side effects (fatigue, dizziness, low heart rate), and key safety warnings (asthma, bradycardia, tapering).",
+    "canonical": "[https://www.heypsych.com/treatments/propranolol](https://www.heypsych.com/treatments/propranolol)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-02",
+    "lastUpdated": "2025-12-02",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

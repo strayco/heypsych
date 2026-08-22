@@ -1,21 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bifidobacterium-breve",
-  "type": "supplement",
-  "name": "Bifidobacterium breve",
-  "summary": "A probiotic species studied for gut health, immune modulation, and potential benefits in mood, cognition, and metabolic conditions.",
-  "description": "Bifidobacterium breve is a gram-positive, anaerobic probiotic bacterium commonly found in the human gut microbiome, particularly in infants. It contributes to digestive health by fermenting carbohydrates into short-chain fatty acids (SCFAs), modulating the immune system, and competing against pathogenic bacteria. It has been studied for gastrointestinal disorders, allergic diseases, metabolic syndrome, and emerging applications in psychiatry (gut–brain axis).",
-  "category": "supplements",
-  "tags": [
-    "probiotic",
-    "gut-microbiome",
-    "digestive-health",
-    "immune-modulation",
-    "gut-brain-axis"
-  ],
-  "metadata": {
-    "compound_type": "Probiotic bacterium",
-    "natural_source": "Human gut microbiota (especially infant gut); fermented foods",
+  "identity": {
+    "slug": "bifidobacterium-breve",
+    "name": "Bifidobacterium breve",
+    "brand_names": [
+      "Yakult B. breve strains",
+      "Various probiotic blends"
+    ],
+    "aliases": [
+      "B. breve",
+      "Probiotic bacterium breve"
+    ],
+    "wikidata_qid": "Q310698"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Digestive Health",
       "Allergy/Immune Support",
@@ -27,76 +28,162 @@
       "SCFA Production",
       "Immune Modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter (dietary supplement/probiotic)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Yakult B. breve strains",
-      "Various probiotic blends"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Generally Recognized as Safe (GRAS) for some strains",
-    "age_groups": [
-      "Infant",
-      "Child",
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term (strain-dependent)"
-    ],
-    "specialty_areas": [
-      "Gastroenterology",
-      "Allergy/Immunology",
-      "Psychiatry (investigational)"
-    ],
-    "wikidata_qid": "Q310698"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Irritable Bowel Syndrome (IBS)",
-      "Constipation",
-      "Allergic rhinitis and atopic dermatitis (in children)",
-      "Supportive gut microbiome health"
-    ],
-    "off_label_uses": [
-      "Metabolic syndrome (lipid and glucose metabolism support)",
-      "Adjunctive use in depression and anxiety (gut-brain axis, limited evidence)",
-      "Cognitive function in elderly populations (strain-dependent)"
-    ],
-    "contraindications": [
-      "Severe immunocompromise (risk of bacteremia, though rare)",
-      "Central venous catheters (risk of contamination/infection)"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Infection risk in immunocompromised patients"
-    ],
-    "efficacy_rating": {
-      "gut-health": 3,
-      "immune-support": 3,
-      "psychiatric-applications": 2,
-      "safety-tolerability": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Bifidobacterium breve",
-      "B. breve",
-      "probiotic"
-    ],
-    "synonyms": [
-      "B. breve",
-      "Probiotic bacterium breve"
-    ],
-    "common_misspellings": [
-      "bifidobactrium breve",
-      "bifidobacter brevi"
+    "tags": [
+      "probiotic",
+      "gut-microbiome",
+      "digestive-health",
+      "immune-modulation",
+      "gut-brain-axis"
     ]
+  },
+  "summary": "A probiotic species studied for gut health, immune modulation, and potential benefits in mood, cognition, and metabolic conditions.",
+  "description": "Bifidobacterium breve is a gram-positive, anaerobic probiotic bacterium commonly found in the human gut microbiome, particularly in infants. It contributes to digestive health by fermenting carbohydrates into short-chain fatty acids (SCFAs), modulating the immune system, and competing against pathogenic bacteria. It has been studied for gastrointestinal disorders, allergic diseases, metabolic syndrome, and emerging applications in psychiatry (gut–brain axis).",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "irritable-bowel-syndrome-ibs",
+          "condition_name": "Irritable Bowel Syndrome (IBS)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "constipation",
+          "condition_name": "Constipation",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "allergic-rhinitis-and-atopic-dermatitis-in-children",
+          "condition_name": "Allergic rhinitis and atopic dermatitis (in children)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "supportive-gut-microbiome-health",
+          "condition_name": "Supportive gut microbiome health",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "metabolic-syndrome-lipid-and-glucose-metabolism-support",
+          "condition_name": "Metabolic syndrome (lipid and glucose metabolism support)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adjunctive-use-in-depression-and-anxiety-gut-brain-axis-limited-evidence",
+          "condition_name": "Adjunctive use in depression and anxiety (gut-brain axis, limited evidence)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cognitive-function-in-elderly-populations-strain-dependent",
+          "condition_name": "Cognitive function in elderly populations (strain-dependent)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "gut-health": {
+          "rating": 3
+        },
+        "immune-support": {
+          "rating": 3
+        },
+        "psychiatric-applications": {
+          "rating": 2
+        },
+        "safety-tolerability": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term (strain-dependent)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Mild bloating"
+        },
+        {
+          "effect": "Gas"
+        },
+        {
+          "effect": "Abdominal discomfort (transient)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Rare bacteremia in severely immunocompromised individuals"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe immunocompromise (risk of bacteremia, though rare)"
+        },
+        {
+          "contraindication": "Central venous catheters (risk of contamination/infection)"
+        }
+      ],
+      "precautions": [
+        "Use caution in immunocompromised individuals.",
+        "Strain-specific efficacy: clinical benefits depend on the exact strain used.",
+        "Not a substitute for standard medical therapy."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antibiotics",
+          "mechanism": "Reduced probiotic viability",
+          "action": "Separate dosing by several hours"
+        },
+        {
+          "interactant": "Immunosuppressants",
+          "mechanism": "Theoretical increased infection risk",
+          "action": "Use with caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI symptom changes"
+        },
+        {
+          "parameter": "Allergic response in pediatric patients"
+        },
+        {
+          "parameter": "Signs of systemic infection in high-risk populations"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally considered safe; often included in perinatal probiotic blends",
+        "lactation": "Safe; may support infant microbiome development",
+        "pediatric": "Extensively studied in infants and children; commonly used",
+        "geriatric": "Safe; studied for cognition and gut health"
+      }
+    },
+    "access": {
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Probiotic bacterium",
+        "natural_source": "Human gut microbiota (especially infant gut); fermented foods",
+        "regulatory_notes": "Generally Recognized as Safe (GRAS) for some strains"
+      }
+    }
   },
   "sections": [
     {
@@ -213,6 +300,35 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com: Bifidobacterium breve",
+      "url": "https://examine.com/supplements/bifidobacterium-breve/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "PubMed: Bifidobacterium breve clinical studies",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Bifidobacterium breve",
+      "B. breve",
+      "probiotic"
+    ],
+    "synonyms": [
+      "B. breve",
+      "Probiotic bacterium breve"
+    ],
+    "common_misspellings": [
+      "bifidobactrium breve",
+      "bifidobacter brevi"
+    ]
+  },
   "seo": {
     "title": "Bifidobacterium breve: Probiotic for Gut, Immune, and Brain Health",
     "description": "Comprehensive guide to Bifidobacterium breve, a probiotic studied for digestive health, immunity, allergies, metabolism, and emerging psychiatric applications.",

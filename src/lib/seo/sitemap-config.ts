@@ -121,6 +121,18 @@ export const HUB_SITEMAP_CONFIG: Record<string, SitemapEntryConfig> = {
     priority: 0.7,
     changefreq: 'weekly',
   },
+  '/resources/support-community': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
+  '/resources/support-community/immediate-crisis': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  '/resources/support-community/organizations-communities': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
   '/psychiatrists': {
     priority: 0.9,
     changefreq: 'daily',

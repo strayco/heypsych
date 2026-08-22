@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "potassium",
-  "type": "supplement",
-  "name": "Potassium",
-  "summary": "Potassium is an essential mineral and electrolyte critical for nerve transmission, muscle contraction, cardiovascular health, and fluid balance. Supplementation is mainly used to treat deficiency states.",
-  "description": "Potassium is the primary intracellular cation, playing a vital role in maintaining fluid balance, acid-base homeostasis, neuromuscular function, and cardiac rhythm. It is widely obtained from dietary sources such as fruits, vegetables, legumes, and whole grains. Deficiency (hypokalemia) can result from diuretic use, gastrointestinal losses, or chronic medical conditions, and may cause fatigue, weakness, cramps, and arrhythmias. While supplementation can correct deficiency, it must be used cautiously since excessive potassium (hyperkalemia) can cause life-threatening cardiac arrhythmias. Over-the-counter potassium supplements are generally limited in dose due to safety concerns, with prescription formulations used for clinical management of hypokalemia.",
-  "category": "supplements",
-  "tags": [
-    "mineral",
-    "electrolyte",
-    "nerve function",
-    "cardiovascular health"
-  ],
-  "metadata": {
-    "compound_type": "Essential mineral (electrolyte)",
-    "natural_source": "Fruits (bananas, oranges), vegetables (potatoes, spinach, tomatoes), legumes, whole grains",
+  "identity": {
+    "slug": "potassium",
+    "name": "Potassium",
+    "brand_names": [
+      "Klor-Con",
+      "Micro-K",
+      "K-Dur",
+      "K-Tab"
+    ],
+    "aliases": [
+      "K+",
+      "Potassium ion"
+    ],
+    "wikidata_qid": "Q703"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Cardiology",
       "Nephrology",
@@ -25,78 +29,166 @@
       "Neuromuscular regulation",
       "Cardiac rhythm stabilization"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous (clinical use)"
-    ],
-    "prescription_status": "Over-the-Counter (low-dose) and Prescription (therapeutic doses)",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Klor-Con",
-      "Micro-K",
-      "K-Dur",
-      "K-Tab"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement and prescription medication",
-    "age_groups": [
-      "Adult",
-      "Pediatric (under supervision)"
-    ],
-    "treatment_duration": [
-      "Short-term (deficiency correction)",
-      "Long-term (maintenance in chronic conditions)"
-    ],
-    "specialty_areas": [
-      "Cardiology",
-      "Nephrology",
-      "Nutrition"
-    ],
-    "wikidata_qid": "Q703"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment and prevention of hypokalemia",
-      "Maintenance of normal neuromuscular function",
-      "Cardiac rhythm support"
-    ],
-    "off_label_uses": [
-      "Adjunctive therapy in hypertension management",
-      "Potential role in reducing kidney stone risk"
-    ],
-    "contraindications": [
-      "Hyperkalemia",
-      "Severe kidney impairment",
-      "Use with potassium-sparing diuretics without monitoring"
-    ],
-    "monitoring_required": [
-      "Serum potassium levels",
-      "Kidney function",
-      "Electrocardiogram (ECG) in at-risk patients"
-    ],
-    "efficacy_rating": {
-      "cardiovascular_health": 5,
-      "nerve_function": 5,
-      "muscle_function": 5,
-      "psychiatric_applications": 1,
-      "nutritional_support": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Potassium supplement",
-      "K+ supplement",
-      "hypokalemia treatment"
-    ],
-    "synonyms": [
-      "K+",
-      "Potassium ion"
-    ],
-    "common_misspellings": [
-      "potasium",
-      "potashium"
+    "tags": [
+      "mineral",
+      "electrolyte",
+      "nerve function",
+      "cardiovascular health"
     ]
+  },
+  "summary": "Potassium is an essential mineral and electrolyte critical for nerve transmission, muscle contraction, cardiovascular health, and fluid balance. Supplementation is mainly used to treat deficiency states.",
+  "description": "Potassium is the primary intracellular cation, playing a vital role in maintaining fluid balance, acid-base homeostasis, neuromuscular function, and cardiac rhythm. It is widely obtained from dietary sources such as fruits, vegetables, legumes, and whole grains. Deficiency (hypokalemia) can result from diuretic use, gastrointestinal losses, or chronic medical conditions, and may cause fatigue, weakness, cramps, and arrhythmias. While supplementation can correct deficiency, it must be used cautiously since excessive potassium (hyperkalemia) can cause life-threatening cardiac arrhythmias. Over-the-counter potassium supplements are generally limited in dose due to safety concerns, with prescription formulations used for clinical management of hypokalemia.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-and-prevention-of-hypokalemia",
+          "condition_name": "Treatment and prevention of hypokalemia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "maintenance-of-normal-neuromuscular-function",
+          "condition_name": "Maintenance of normal neuromuscular function",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cardiac-rhythm-support",
+          "condition_name": "Cardiac rhythm support",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-therapy-in-hypertension-management",
+          "condition_name": "Adjunctive therapy in hypertension management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "potential-role-in-reducing-kidney-stone-risk",
+          "condition_name": "Potential role in reducing kidney stone risk",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "cardiovascular_health": {
+          "rating": 5
+        },
+        "nerve_function": {
+          "rating": 5
+        },
+        "muscle_function": {
+          "rating": 5
+        },
+        "psychiatric_applications": {
+          "rating": 1
+        },
+        "nutritional_support": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term (deficiency correction); Long-term (maintenance in chronic conditions)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous (clinical use)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Diarrhea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hyperkalemia with arrhythmia"
+        },
+        {
+          "risk": "Cardiac arrest (if overdosed or renal impairment present)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hyperkalemia"
+        },
+        {
+          "contraindication": "Severe kidney impairment"
+        },
+        {
+          "contraindication": "Use with potassium-sparing diuretics without monitoring"
+        }
+      ],
+      "precautions": [
+        "Excess supplementation may cause life-threatening arrhythmias.",
+        "Avoid high-dose use without medical monitoring, especially in kidney disease."
+      ],
+      "interactions": [
+        {
+          "interactant": "ACE inhibitors / ARBs",
+          "mechanism": "Increase serum potassium",
+          "action": "Monitor closely"
+        },
+        {
+          "interactant": "Potassium-sparing diuretics (spironolactone, eplerenone)",
+          "mechanism": "Risk of severe hyperkalemia",
+          "action": "Avoid or monitor"
+        },
+        {
+          "interactant": "NSAIDs",
+          "mechanism": "May impair renal potassium excretion",
+          "action": "Monitor"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Serum potassium levels"
+        },
+        {
+          "parameter": "Renal function (BUN, creatinine)"
+        },
+        {
+          "parameter": "ECG monitoring in high-risk patients"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally considered safe within dietary limits; supplementation requires supervision",
+        "lactation": "Safe in dietary amounts; supplement only if needed",
+        "pediatric": "Use under supervision; dose-adjusted to body weight",
+        "geriatric": "Increased risk of hyperkalemia; monitor kidney function and medications"
+      }
+    },
+    "access": {
+      "regulatory_status": "unregulated",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Essential mineral (electrolyte)",
+        "natural_source": "Fruits (bananas, oranges), vegetables (potatoes, spinach, tomatoes), legumes, whole grains",
+        "regulatory_notes": "Dietary supplement and prescription medication"
+      }
+    }
   },
   "sections": [
     {
@@ -222,6 +314,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH Office of Dietary Supplements – Potassium",
+      "url": "https://ods.od.nih.gov/factsheets/Potassium-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Gums JG. Clinical use of potassium supplements. Am J Health Syst Pharm. 1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10030528/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "He FJ, MacGregor GA. Potassium intake and blood pressure. Am J Hypertens. 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29309536/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Potassium supplement",
+      "K+ supplement",
+      "hypokalemia treatment"
+    ],
+    "synonyms": [
+      "K+",
+      "Potassium ion"
+    ],
+    "common_misspellings": [
+      "potasium",
+      "potashium"
+    ]
+  },
   "seo": {
     "title": "Potassium – Essential Electrolyte for Heart, Nerve, and Muscle Health",
     "description": "Potassium is an essential mineral that supports heart rhythm, nerve function, and blood pressure regulation. Learn about potassium supplementation, dosing, and safety.",

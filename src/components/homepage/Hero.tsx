@@ -1,129 +1,83 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const randomPages = [
-  // Specific conditions
-  "/conditions/major-depressive-disorder",
-  "/conditions/bipolar-i-disorder",
-  "/conditions/panic-disorder",
-  "/conditions/social-anxiety-disorder",
-  "/conditions/attention-deficit-hyperactivity-disorder",
-  "/conditions/posttraumatic-stress-disorder",
-  "/conditions/obsessive-compulsive-disorder",
-  "/conditions/anorexia-nervosa",
-  "/conditions/schizophrenia",
-  "/conditions/alcohol",
-  // Specific treatments
-  "/treatments/citalopram-celexa",
-  "/treatments/escitalopram-lexapro",
-  "/treatments/fluoxetine-prozac",
-  "/treatments/bupropion-wellbutrin",
-  "/treatments/transcranial-magnetic-stimulation",
-  "/treatments/electroconvulsive-therapy",
-  "/treatments/cognitive-behavioral-therapy",
-  "/treatments/meditation",
-  "/treatments/yoga-therapy",
-  // Specific resources
-  "/resources/phq-9",
-  "/resources/gad-7",
-  "/resources/headspace",
-  "/resources/calm",
-  // Articles & Knowledge Hub
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/ketamine-therapy-2024",
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/adhd-medication-shortage",
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/ai-therapy-apps",
-  "/resources/knowledge-hub/research-and-science/psychology/exercise-antidepressant-study",
-  "/resources/knowledge-hub/research-and-science/psychology/psychedelics-depression-study",
-  "/resources/knowledge-hub/research-and-science/psychology/sleep-mental-health-link",
-  "/resources/knowledge-hub/how-to-guides/therapy-access/finding-a-therapist",
-  "/resources/knowledge-hub/how-to-guides/therapy-access/find-adhd-therapist",
-  "/resources/knowledge-hub/how-to-guides/health-systems/manage-anxiety-attacks",
-  "/resources/knowledge-hub/how-to-guides/health-systems/talk-to-doctor-antidepressants",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/adhd-women-thirties",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/bipolar-diagnosis-journey",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/ocd-intrusive-thoughts",
-];
+import Link from "next/link";
+import { ArrowRight, Play } from "lucide-react";
+import {
+  trackHomepagePsychTrailsClick,
+  trackHomepageHowItWorksClick,
+} from "@/lib/analytics/product-events";
 
 /**
- * Hero Section - Search + Trust
+ * Hero Section - Premium Product-First Design
  *
- * Purpose: Instant clarity, high trust, immediate direction
- *
- * Spec Requirements:
- * - H1: "Mental health guidance. Grounded in science."
- * - Subhead: "Clear answers on conditions, treatments, and tools. Always clinical."
- * - Large, center-aligned search bar with "Take me anywhere" button
- * - Trust indicators: "Evidence-Based · Clinically Reviewed · Updated Weekly"
- * - White background, generous spacing, center-aligned
+ * Design principles:
+ * - Dark, premium feel that matches the product
+ * - Flagship product positioning
+ * - High-contrast typography
+ * - Restrained accent usage
+ * - Clear visual hierarchy
  */
 export function Hero() {
-  const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
-      setSearchQuery("");
-    }
-  };
-
-  const handleRandomClick = () => {
-    const randomPage = randomPages[Math.floor(Math.random() * randomPages.length)];
-    router.push(randomPage);
-  };
-
   return (
-    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 py-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl text-center">
-        {/* H1 */}
-        <h1 className="mb-3 text-2xl font-bold sm:text-3xl">
-          <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            Everything Mental Health—One Trusted Place.
+    <section className="relative overflow-hidden bg-canvas px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(139,92,246,0.12),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_80%,rgba(139,92,246,0.06),transparent)]" />
+
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.015]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '64px 64px'
+        }}
+      />
+
+      <div className="relative mx-auto max-w-4xl text-center">
+        {/* Product badge - subtle, premium */}
+        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-accent-600/30 bg-accent-tint px-4 py-1.5 backdrop-blur-sm">
+          <div className="h-1.5 w-1.5 rounded-full bg-accent-400 animate-pulse-subtle" />
+          <span className="text-sm font-medium text-accent-700">PsychTrails</span>
+        </div>
+
+        {/* H1 - Strong hierarchy, premium typography */}
+        <h1 className="mb-6 text-4xl font-semibold tracking-tight text-label-primary sm:text-5xl lg:text-6xl">
+          Practice hard moments
+          <span className="block mt-2 text-gradient">
+            before they happen.
           </span>
         </h1>
 
-        {/* Subhead */}
-        <p className="mx-auto mb-4 max-w-2xl text-sm text-neutral-800">
-          Clear answers on conditions, treatments, and tools. Always clinical.
+        {/* Subhead - Clear, readable secondary text */}
+        <p className="mx-auto mb-10 max-w-2xl text-lg text-label-secondary sm:text-xl">
+          Scenario-based training for anxiety, social situations, and real-life challenges.
+          Build the patterns that matter.
         </p>
 
-        {/* Search Bar + Take me anywhere */}
-        <div className="mx-auto mb-3 flex max-w-2xl flex-col gap-2 sm:flex-row">
-          <form onSubmit={handleSearchSubmit} className="flex-1">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for anxiety, CBT, psychiatrists…"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-12 w-full rounded-xl border border-slate-300 bg-white px-6 pl-12 text-sm text-slate-900 shadow-sm transition-all placeholder:text-slate-400 hover:border-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
-              />
-              <Search className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            </div>
-          </form>
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-12 whitespace-nowrap"
-            onClick={handleRandomClick}
+        {/* CTAs - Premium button styling */}
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            href="/psychtrails"
+            onClick={trackHomepagePsychTrailsClick}
+            className="group inline-flex h-12 items-center justify-center gap-2.5 rounded-xl bg-canvas-elevated px-7 text-base font-semibold text-label-primary shadow-medium transition-all hover:bg-white hover:shadow-large"
           >
-            Take me anywhere
-          </Button>
+            <Play className="h-4 w-4" />
+            <span>Start Playing</span>
+          </Link>
+          <Link
+            href="/how-it-works"
+            onClick={trackHomepageHowItWorksClick}
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-separator bg-surface-grouped/50 px-7 text-base font-medium text-label-secondary transition-all hover:border-separator-opaque hover:bg-surface-grouped hover:text-label-primary"
+          >
+            <span>How It Works</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
-          <span>Evidence-Based</span>
-          <span className="text-slate-300">·</span>
-          <span>Clinically Reviewed</span>
-          <span className="text-slate-300">·</span>
-          <span>Updated Weekly</span>
-        </div>
+        {/* Trust indicator - Subtle, professional */}
+        <p className="mt-12 text-sm text-label-primary0">
+          Evidence-based scenarios designed with clinical psychologists
+        </p>
       </div>
     </section>
   );

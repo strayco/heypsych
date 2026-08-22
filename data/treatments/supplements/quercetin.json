@@ -1,20 +1,23 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "quercetin",
-  "type": "supplement",
-  "name": "Quercetin",
-  "summary": "Quercetin is a plant flavonoid with antioxidant, anti-inflammatory, and neuroprotective properties, studied for immune, cardiovascular, and potential mental health benefits.",
-  "description": "Quercetin is a bioflavonoid naturally found in fruits, vegetables, tea, and red wine. It acts as a potent antioxidant and anti-inflammatory compound, modulating cellular signaling pathways, histamine release, and cytokine activity. Quercetin has been studied for its potential in supporting immune resilience, reducing allergy symptoms, improving cardiovascular health, and providing neuroprotective effects. In mental health, quercetin may influence oxidative stress, neuroinflammation, and mitochondrial function, though psychiatric evidence remains preliminary.",
-  "category": "supplements",
-  "tags": [
-    "flavonoid",
-    "antioxidant",
-    "immune support",
-    "neuroprotection"
-  ],
-  "metadata": {
-    "compound_type": "Flavonoid (polyphenol)",
-    "natural_source": "Onions, apples, berries, green tea, red wine, capers",
+  "identity": {
+    "slug": "quercetin",
+    "name": "Quercetin",
+    "brand_names": [
+      "Quercetin Complex",
+      "Quercesorb",
+      "Quercetin Phytosome"
+    ],
+    "aliases": [
+      "Quercetin dihydrate",
+      "Quercetin phytosome"
+    ],
+    "wikidata_qid": "Q414416"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Immunology",
       "Cardiology",
@@ -27,76 +30,161 @@
       "Immune modulation",
       "Neuroprotection"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Quercetin Complex",
-      "Quercesorb",
-      "Quercetin Phytosome"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Immunology",
-      "Cardiology",
-      "Neurology",
-      "Psychiatry (adjunctive)"
-    ],
-    "wikidata_qid": "Q414416"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Allergy symptom relief (adjunctive)",
-      "Immune system support",
-      "Cardiovascular health",
-      "Oxidative stress reduction"
-    ],
-    "off_label_uses": [
-      "Adjunctive neuroprotection in cognitive decline",
-      "Mood support via anti-inflammatory pathways",
-      "Potential antiviral effects (preclinical)"
-    ],
-    "contraindications": [
-      "Pregnancy and lactation (limited data)",
-      "Kidney disease (high doses may increase risk of nephrotoxicity)"
-    ],
-    "monitoring_required": [
-      "Renal function in high-dose or prolonged use",
-      "Signs of GI intolerance"
-    ],
-    "efficacy_rating": {
-      "immune_support": 3,
-      "allergy_relief": 3,
-      "cardiovascular": 3,
-      "neuroprotection": 2,
-      "mood": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Quercetin",
-      "Flavonoid supplement"
-    ],
-    "synonyms": [
-      "Quercetin dihydrate",
-      "Quercetin phytosome"
-    ],
-    "common_misspellings": [
-      "querctin",
-      "quercitine",
-      "qurcetin"
+    "tags": [
+      "flavonoid",
+      "antioxidant",
+      "immune support",
+      "neuroprotection"
     ]
+  },
+  "summary": "Quercetin is a plant flavonoid with antioxidant, anti-inflammatory, and neuroprotective properties, studied for immune, cardiovascular, and potential mental health benefits.",
+  "description": "Quercetin is a bioflavonoid naturally found in fruits, vegetables, tea, and red wine. It acts as a potent antioxidant and anti-inflammatory compound, modulating cellular signaling pathways, histamine release, and cytokine activity. Quercetin has been studied for its potential in supporting immune resilience, reducing allergy symptoms, improving cardiovascular health, and providing neuroprotective effects. In mental health, quercetin may influence oxidative stress, neuroinflammation, and mitochondrial function, though psychiatric evidence remains preliminary.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "allergy-symptom-relief-adjunctive",
+          "condition_name": "Allergy symptom relief (adjunctive)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "immune-system-support",
+          "condition_name": "Immune system support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cardiovascular-health",
+          "condition_name": "Cardiovascular health",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "oxidative-stress-reduction",
+          "condition_name": "Oxidative stress reduction",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-neuroprotection-in-cognitive-decline",
+          "condition_name": "Adjunctive neuroprotection in cognitive decline",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-support-via-anti-inflammatory-pathways",
+          "condition_name": "Mood support via anti-inflammatory pathways",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "potential-antiviral-effects-preclinical",
+          "condition_name": "Potential antiviral effects (preclinical)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "immune_support": {
+          "rating": 3
+        },
+        "allergy_relief": {
+          "rating": 3
+        },
+        "cardiovascular": {
+          "rating": 3
+        },
+        "neuroprotection": {
+          "rating": 2
+        },
+        "mood": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Tingling in extremities"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Kidney toxicity at very high doses (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Pregnancy and lactation (limited data)"
+        },
+        {
+          "contraindication": "Kidney disease (high doses may increase risk of nephrotoxicity)"
+        }
+      ],
+      "precautions": [
+        "High doses may increase risk of kidney stress.",
+        "Bioavailability is low; specialized formulations (e.g., phytosome) improve absorption."
+      ],
+      "interactions": [
+        {
+          "interactant": "Cytochrome P450 substrates (e.g., certain drugs)",
+          "mechanism": "May alter metabolism",
+          "action": "Monitor drug levels"
+        },
+        {
+          "interactant": "Anticoagulants",
+          "mechanism": "Potential additive blood-thinning effects",
+          "action": "Use with caution"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Renal function in high-dose use"
+        },
+        {
+          "parameter": "Signs of allergy or intolerance"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Insufficient safety data; avoid unless prescribed",
+        "lactation": "Not recommended due to lack of safety data",
+        "pediatric": "Not well studied; avoid supplementation outside clinical supervision",
+        "geriatric": "Generally safe; monitor renal function with prolonged use"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Flavonoid (polyphenol)",
+        "natural_source": "Onions, apples, berries, green tea, red wine, capers",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -213,6 +301,41 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NIH – Quercetin",
+      "url": "https://ods.od.nih.gov/factsheets/Quercetin-Consumer/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Li Y, et al. Quercetin, inflammation and immunity. Nutrients. 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27187333/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Costa LG, et al. Quercetin and neuroprotection: a review. Brain Res Bull. 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26456674/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Quercetin",
+      "Flavonoid supplement"
+    ],
+    "synonyms": [
+      "Quercetin dihydrate",
+      "Quercetin phytosome"
+    ],
+    "common_misspellings": [
+      "querctin",
+      "quercitine",
+      "qurcetin"
+    ]
+  },
   "seo": {
     "title": "Quercetin – Flavonoid Supplement for Immune, Allergy, and Brain Support",
     "description": "Quercetin is a plant-derived flavonoid with antioxidant and anti-inflammatory effects, studied for immune support, allergy relief, cardiovascular health, and neuroprotection.",

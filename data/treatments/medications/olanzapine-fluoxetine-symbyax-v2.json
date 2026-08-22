@@ -1,79 +1,264 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "olanzapine-fluoxetine-symbyax",
-  "type": "medication",
-  "name": "Olanzapine/Fluoxetine (Symbyax)",
-  "summary": "Once-daily combination capsule used for bipolar I depression and treatment-resistant depression. Can be very effective, but comes with real baggage: weight gain/metabolic risk, sedation, and a boxed warning about suicidality in younger people.",
-  "description": "Symbyax combines olanzapine (an atypical antipsychotic) with fluoxetine (an SSRI). It’s used for bipolar I depression and for depression that hasn’t responded to multiple antidepressant trials. It’s taken once nightly and can help mood and sleep, but it commonly causes weight gain and metabolic changes (blood sugar, cholesterol, triglycerides). It also carries antidepressant boxed warnings about suicidal thoughts/behaviors in children, teens, and young adults, plus an antipsychotic boxed warning about increased mortality in older adults with dementia-related psychosis.",
-  "patient_summary": "Symbyax is a nightly capsule that combines an antipsychotic (olanzapine) with an SSRI (fluoxetine). It’s used for bipolar I depression and for treatment-resistant depression. It can help when other meds haven’t, but it often causes weight gain and metabolic changes, and it has serious boxed warnings—especially about suicidality risk in younger people and higher mortality in older adults with dementia-related psychosis.",
-  "category": "medications/mood-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "olanzapine-fluoxetine-symbyax",
+    "name": "Olanzapine/Fluoxetine (Symbyax)",
+    "generic_name": "olanzapine/fluoxetine",
+    "brand_names": [
+      "Symbyax"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/mood-disorders",
     "drug_classes": [
       "Selective Serotonin Reuptake Inhibitor (SSRI)",
       "Second-Generation (Atypical) Antipsychotic",
       "Antidepressant-Antipsychotic Combination"
-    ],
-    "brand_names": [
-      "Symbyax"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a Controlled Substance",
-    "generic_available": true,
-    "fda_approval_year": 2003,
-    "pharmacologic_category": "SSRI + Second-Generation Antipsychotic Combination",
-    "published_date": "2026-02-11T00:00:00Z",
-    "last_updated": "2026-02-11T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-11T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bipolar I Disorder (Acute Depressive Episodes)",
-      "Treatment-Resistant Depression (TRD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Labeled for acute depressive episodes associated with bipolar I disorder. Taken once daily in the evening; dose is adjusted based on response and tolerability."
-      },
-      {
-        "slug": "treatment-resistant-depression",
-        "relationship": "primary_treatment",
-        "context": "Labeled for treatment-resistant depression (typically defined clinically as nonresponse to at least 2 adequate antidepressant trials in the current episode)."
-      }
-    ],
-    "contraindications": [
-      "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently, within 5 weeks of discontinuing olanzapine/fluoxetine, or within 2 weeks of discontinuing the MAOI)",
-      "Initiation in a patient receiving IV methylene blue",
-      "Use with pimozide",
-      "Use with thioridazine (do not initiate thioridazine until 5 weeks after stopping fluoxetine-containing therapy)"
-    ],
-    "efficacy_response": {
-      "metric": "Clinical response in bipolar depression or treatment-resistant depression",
-      "percentage_value": "Varies by person and study design",
-      "comparison_data": "Not specified in provided notes",
-      "patient_text": "Symbyax is one of those meds that can move the needle when standard antidepressants haven’t—especially in bipolar depression and treatment-resistant depression. The tradeoff is tolerability: weight gain, sedation, and metabolic changes are common and can become the reason people stop it.",
-      "citation_tag": "FDA Label (Symbyax)"
+  "summary": "Once-daily combination capsule used for bipolar I depression and treatment-resistant depression. Can be very effective, but comes with real baggage: weight gain/metabolic risk, sedation, and a boxed warning about suicidality in younger people.",
+  "description": "Symbyax combines olanzapine (an atypical antipsychotic) with fluoxetine (an SSRI). It’s used for bipolar I depression and for depression that hasn’t responded to multiple antidepressant trials. It’s taken once nightly and can help mood and sleep, but it commonly causes weight gain and metabolic changes (blood sugar, cholesterol, triglycerides). It also carries antidepressant boxed warnings about suicidal thoughts/behaviors in children, teens, and young adults, plus an antipsychotic boxed warning about increased mortality in older adults with dementia-related psychosis.",
+  "patient_summary": "Symbyax is a nightly capsule that combines an antipsychotic (olanzapine) with an SSRI (fluoxetine). It’s used for bipolar I depression and for treatment-resistant depression. It can help when other meds haven’t, but it often causes weight gain and metabolic changes, and it has serious boxed warnings—especially about suicidality risk in younger people and higher mortality in older adults with dementia-related psychosis.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Labeled for acute depressive episodes associated with bipolar I disorder. Taken once daily in the evening; dose is adjusted based on response and tolerability.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment Resistant Depression",
+          "relationship": "primary_indication",
+          "context": "Labeled for treatment-resistant depression (typically defined clinically as nonresponse to at least 2 adequate antidepressant trials in the current episode).",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral capsule; can be taken without regard to meals",
-      "bioavailability": "Not specified in provided notes",
-      "onset": "Not specified in provided notes",
-      "peak_plasma": "Not specified in provided notes",
-      "half_life": "Long half-life effects due to fluoxetine and active metabolites; interactions may persist for prolonged periods after discontinuation",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Refer to individual components (fluoxetine and olanzapine); smoking may lower olanzapine levels; hepatic impairment can decrease clearance and increase exposure",
-      "excretion": "Refer to individual components",
-      "protein_binding": "Not specified in provided notes",
-      "food_effect": "May be taken without regard to meals"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not specified in provided notes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Weight Gain",
+          "incidence": "Adults: 25% to 66% (reported in labeling)",
+          "notes": "This is one of the most common reasons people stop Symbyax. Hunger can feel louder, cravings can spike, and weight can move fast. Plan early: weigh-ins, waist measurement, nutrition strategy, and labs—don’t wait until it’s already a problem."
+        },
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "24% to 27% (reported in labeling)",
+          "notes": "It can help sleep, but it can also make you feel slowed down. Night dosing helps. If mornings feel like wet cement, talk with your prescriber about dose adjustments or alternatives."
+        },
+        {
+          "effect": "Metabolic and Lipid Changes",
+          "incidence": "Triglycerides increased (adults: 16% to 51%); LDL/total cholesterol increases reported (ranges vary by age group)",
+          "notes": "This med can raise triglycerides and cholesterol and can worsen blood sugar control. Labs aren’t optional—this is the 'check the numbers' medication."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "15% (reported in labeling)",
+          "notes": "Annoying but common. Sugar-free gum, hydration, and dental care matter because chronic dry mouth can wreck teeth."
+        },
+        {
+          "effect": "Edema",
+          "incidence": "15% (reported in labeling)",
+          "notes": "Swelling (often ankles/legs) can happen. If it’s severe, painful, one-sided, or comes with shortness of breath, get evaluated urgently."
+        },
+        {
+          "effect": "Orthostatic Hypotension",
+          "incidence": "4% (reported in labeling)",
+          "notes": "Stand up slowly. This is more likely in older adults and in people prone to low blood pressure. Falls risk is real."
+        },
+        {
+          "effect": "Tremor",
+          "incidence": "Up to 9% (reported in labeling)",
+          "notes": "Can feel like jittery hands or internal vibration. If it’s new, worsening, or comes with sweating/fever/confusion, think serotonin toxicity and get help."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thoughts/behaviors (especially in children, adolescents, and young adults early in treatment or during dose changes)"
+        },
+        {
+          "risk": "Mania/hypomania (mood elevation, decreased need for sleep, risky behavior)"
+        },
+        {
+          "risk": "Serotonin syndrome: agitation, confusion, sweating, tremor, diarrhea, fever, rigidity"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, autonomic instability"
+        },
+        {
+          "risk": "Severe metabolic complications: marked hyperglycemia, ketoacidosis, hyperosmolar coma"
+        },
+        {
+          "risk": "QT prolongation and serious arrhythmias (higher risk with predisposition, electrolyte issues, or interacting drugs)"
+        },
+        {
+          "risk": "DRESS and severe hypersensitivity reactions (rash with systemic symptoms, eosinophilia, organ involvement)"
+        },
+        {
+          "risk": "Blood dyscrasias (neutropenia/agranulocytosis): infection risk, fever, sore throat"
+        },
+        {
+          "risk": "Venous thromboembolism (DVT/PE) reported postmarketing"
+        }
+      ],
+      "black_box_warning": "Suicidal thoughts and behaviors: Antidepressants increase the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies. Monitor closely for clinical worsening and emergence of suicidal thoughts and behaviors, especially during the first 1 to 2 months of therapy and during dose changes. Olanzapine/fluoxetine is not approved for children younger than 10 years.\n\nIncreased mortality in elderly patients with dementia-related psychosis: Antipsychotic drugs increase the risk of death in elderly patients with dementia-related psychosis. Olanzapine/fluoxetine is not approved for the treatment of dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Use with monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently, within 5 weeks of discontinuing olanzapine/fluoxetine, or within 2 weeks of discontinuing the MAOI)"
+        },
+        {
+          "contraindication": "Initiation in a patient receiving IV methylene blue"
+        },
+        {
+          "contraindication": "Use with pimozide"
+        },
+        {
+          "contraindication": "Use with thioridazine (do not initiate thioridazine until 5 weeks after stopping fluoxetine-containing therapy)"
+        }
+      ],
+      "precautions": [
+        "Metabolic risk: weight gain, increased triglycerides and cholesterol, hyperglycemia—monitor labs and body weight",
+        "Sedation and CNS depression: can impair driving, reaction time, and judgment",
+        "Mania/hypomania risk: antidepressant component can precipitate mood elevation—screen for bipolar disorder and monitor",
+        "QT prolongation risk (fluoxetine): higher concern with risk factors, electrolyte issues, and other QT-prolonging meds",
+        "Serotonin syndrome risk when combined with other serotonergic agents",
+        "SIADH/hyponatremia risk (SSRIs), especially in older adults and those on diuretics",
+        "Blood dyscrasias: leukopenia/neutropenia/agranulocytosis reported with antipsychotics—monitor CBC when clinically indicated",
+        "Neuroleptic malignant syndrome (NMS): rare but life-threatening antipsychotic reaction",
+        "DRESS and severe hypersensitivity reactions (olanzapine-associated): discontinue if suspected",
+        "Increased fall risk from somnolence and orthostasis"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (psychiatric MAOIs) and IV methylene blue",
+          "mechanism": "Contraindicated due to high risk of serious toxicity, including serotonin syndrome.",
+          "action": "Allow 14 days between stopping an MAOI and starting olanzapine/fluoxetine. Allow 5 weeks between stopping olanzapine/fluoxetine and starting an MAOI."
+        },
+        {
+          "interactant": "Pimozide or thioridazine",
+          "mechanism": "Contraindicated due to risk of serious cardiac arrhythmias/QT issues and drug interaction risk.",
+          "action": "Avoid combination. Thioridazine should not be started until 5 weeks after discontinuing fluoxetine-containing therapy."
+        },
+        {
+          "interactant": "Other serotonergic agents (SNRIs, other SSRIs, triptans, TCAs, tramadol, fentanyl, methadone, lithium, buspirone, St. John’s wort, tryptophan, amphetamines)",
+          "mechanism": "Serotonin syndrome (can be life-threatening).",
+          "action": "Avoid risky combinations when possible. If used, educate on symptoms and monitor closely—especially during dose changes."
+        },
+        {
+          "interactant": "QT-prolonging meds or electrolyte problems (low potassium/magnesium)",
+          "mechanism": "Higher risk of QT prolongation and dangerous arrhythmias.",
+          "action": "Review med list carefully. Consider baseline and follow-up ECG in higher-risk patients and correct electrolytes."
+        },
+        {
+          "interactant": "Alcohol, benzodiazepines, opioids, sedating antihistamines, sleep meds",
+          "mechanism": "Additive CNS depression → worse sedation, impaired coordination, higher fall risk.",
+          "action": "Avoid or minimize sedatives. Counsel about driving and safety. If combined, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "NSAIDs/aspirin/anticoagulants (warfarin, etc.)",
+          "mechanism": "Increased bleeding risk (SSRI effect on platelet aggregation).",
+          "action": "Use caution and monitor for bruising, nosebleeds, GI bleeding symptoms—especially if combined with other bleeding-risk meds."
+        },
+        {
+          "interactant": "Smoking",
+          "mechanism": "Smoking may lower olanzapine levels, potentially reducing effect.",
+          "action": "Tell your prescriber if you start/stop smoking—dose and response can change."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidality and behavioral change: closely monitor for worsening depression, suicidal thoughts/behaviors, and activation symptoms (anxiety, agitation, panic attacks, insomnia, irritability, hostility, impulsivity, akathisia, hypomania, mania), especially during the first 1-2 months and during dose adjustments"
+        },
+        {
+          "parameter": "Weight/BMI: baseline; check at 8 and 12 weeks after initiation and dose changes; then at least quarterly (some clinicians check every visit)"
+        },
+        {
+          "parameter": "Waist circumference: baseline and annually (especially if metabolic risk)"
+        },
+        {
+          "parameter": "Fasting plasma glucose or A1C: baseline; ~4 months after initiation; then annually (more often if abnormal or high risk)"
+        },
+        {
+          "parameter": "Lipid panel: baseline; ~4 months after initiation; then annually (more often if abnormal)"
+        },
+        {
+          "parameter": "Vital signs including orthostatics: every visit (at least weekly in early weeks per higher-risk monitoring frameworks); reassess after dose changes"
+        },
+        {
+          "parameter": "Sedation/alertness and fall risk: every visit, especially in older adults and during early treatment"
+        },
+        {
+          "parameter": "CBC: as clinically indicated; monitor more closely in patients with low baseline WBC or history of drug-induced leukopenia/neutropenia"
+        },
+        {
+          "parameter": "Electrolytes/chemistries (including sodium): at least annually; check sodium as clinically indicated in at-risk populations (older adults, diuretics, prior hyponatremia/SIADH risk)"
+        },
+        {
+          "parameter": "Liver function: periodically and as clinically indicated (olanzapine can increase transaminases; hepatic impairment increases exposure)"
+        },
+        {
+          "parameter": "EPS and tardive dyskinesia: assess at every visit; formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "ECG: as clinically indicated in patients with QT-prolongation risk factors or concerning symptoms"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Olanzapine and fluoxetine cross the placenta. Refer to individual component guidance for risk/benefit decisions in pregnancy. Monitor closely if used, and involve psychiatry/OB when possible.",
+        "lactation": "Olanzapine and fluoxetine are present in breast milk. The manufacturer advises weighing infant exposure risk, breastfeeding benefits, and maternal treatment benefits. Refer to individual component guidance and monitor the infant if therapy is continued.",
+        "pediatric": "Approved for acute depressive episodes associated with bipolar I disorder in children ≥10 years. Not approved for children <10 years. Pediatric patients have higher concern for metabolic syndrome risk with long-term olanzapine exposure; use caution and monitor metabolic parameters closely.",
+        "geriatric": "Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic options failed and the patient is at risk of harming self or others. Boxed warning: increased mortality in dementia-related psychosis. If used for labeled indications (e.g., bipolar depression), consider starting lower (olanzapine 3 to 6 mg / fluoxetine 25 mg once daily in the evening) and adjust cautiously due to reduced metabolism and higher risks (falls, orthostasis, hyponatremia).",
+        "renal_impairment": "No dosage adjustment necessary (adult).",
+        "hepatic_impairment": "Start lower: olanzapine 3 to 6 mg / fluoxetine 25 mg PO once daily in the evening; adjust cautiously because metabolism may be decreased. Individual ingredient products may allow lower dose strengths if needed."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2003
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral capsule; can be taken without regard to meals",
+          "bioavailability": "Not specified in provided notes",
+          "peak_plasma": "Not specified in provided notes",
+          "half_life": "Long half-life effects due to fluoxetine and active metabolites; interactions may persist for prolonged periods after discontinuation",
+          "metabolism": "Refer to individual components (fluoxetine and olanzapine); smoking may lower olanzapine levels; hepatic impairment can decrease clearance and increase exposure",
+          "excretion": "Refer to individual components",
+          "protein_binding": "Not specified in provided notes",
+          "food_effect": "May be taken without regard to meals"
+        },
+        "dosing": {
+          "titration": "Symbyax is typically taken once daily in the evening. Dosing is described in paired amounts: olanzapine (mg) + fluoxetine (mg). Your prescriber adjusts the dose based on response and tolerability. Safety of daily doses above olanzapine 18 mg and fluoxetine 75 mg has not been evaluated."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping Symbyax isn’t usually a cold-turkey situation. Even though fluoxetine has a long half-life (which can blunt classic SSRI withdrawal), both components can cause rebound symptoms if you stop abruptly—especially the olanzapine side (sleep, anxiety, agitation, and return of mood symptoms). Taper with your clinician unless there’s an emergency reason to stop."
+        }
+      }
     }
   },
   "sections": [
@@ -92,7 +277,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s how this med tends to feel in real life. Not everyone gets all of this, but these are the patterns people describe:",
       "items": [
         {
           "category": "Mood Lift (not instant, but real)",
@@ -129,7 +313,8 @@
           ],
           "note": "Fluoxetine can trigger activation; antidepressants can precipitate mania/hypomania in vulnerable people—screening and monitoring matter."
         }
-      ]
+      ],
+      "intro": "Here’s how this med tends to feel in real life. Not everyone gets all of this, but these are the patterns people describe:"
     },
     {
       "type": "onset_duration",
@@ -144,10 +329,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Symbyax is specifically positioned for people with bipolar I depression or depression that hasn’t responded to multiple antidepressants. In practice, it can be a strong option when standard SSRI/SNRI strategies aren’t enough—but tolerability (especially weight/metabolic effects and sedation) often decides whether someone can stay on it long-term.",
       "metric": "Symptom improvement in bipolar depression and treatment-resistant depression",
       "value": "Clinically meaningful for many patients",
       "comparison": "Not specified in provided notes",
-      "text": "Symbyax is specifically positioned for people with bipolar I depression or depression that hasn’t responded to multiple antidepressants. In practice, it can be a strong option when standard SSRI/SNRI strategies aren’t enough—but tolerability (especially weight/metabolic effects and sedation) often decides whether someone can stay on it long-term.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -252,7 +437,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Because this med includes fluoxetine (SSRI) and olanzapine (antipsychotic), interactions can be wide-ranging. The big ones are MAOIs, other serotonergic meds, QT-prolonging meds, and anything that increases sedation or orthostasis.",
       "items": [
         {
           "with": "MAOIs (psychiatric MAOIs) and IV methylene blue",
@@ -289,7 +473,8 @@
           "risk": "Smoking may lower olanzapine levels, potentially reducing effect.",
           "action": "Tell your prescriber if you start/stop smoking—dose and response can change."
         }
-      ]
+      ],
+      "intro": "Because this med includes fluoxetine (SSRI) and olanzapine (antipsychotic), interactions can be wide-ranging. The big ones are MAOIs, other serotonergic meds, QT-prolonging meds, and anything that increases sedation or orthostasis."
     },
     {
       "type": "tapering",
@@ -372,21 +557,6 @@
       "text": "Symbyax is a targeted tool, not a casual antidepressant. It’s typically considered when (1) someone has bipolar I depression and needs an evidence-based option that covers depression without using antidepressant monotherapy, or (2) someone has treatment-resistant depression and standard antidepressant strategies haven’t worked. The major limiting factor is metabolic and weight-related side effects—so the clinical conversation is usually: “Is the benefit worth the metabolic cost, and how are we going to monitor and protect you if we use it?”"
     }
   ],
-  "seo": {
-    "title": "Olanzapine/Fluoxetine (Symbyax): Uses, Dosage, Side Effects & Warnings",
-    "description": "Symbyax (olanzapine/fluoxetine) for bipolar I depression and treatment-resistant depression: nightly dosing, major side effects (weight gain, metabolic changes, sedation), boxed warnings, interactions, and monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/olanzapine-fluoxetine-symbyax](https://www.heypsych.com/treatments/olanzapine-fluoxetine-symbyax)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Symbyax used for?",
@@ -432,5 +602,20 @@
       "q": "If Symbyax works, can I stay on it long-term?",
       "a": "Some people do, but the decision usually comes down to whether the benefits outweigh the metabolic cost. If weight or labs shift significantly, the plan may include lifestyle interventions, closer monitoring, dose adjustments, or switching medications."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Olanzapine/Fluoxetine (Symbyax): Uses, Dosage, Side Effects & Warnings",
+    "description": "Symbyax (olanzapine/fluoxetine) for bipolar I depression and treatment-resistant depression: nightly dosing, major side effects (weight gain, metabolic changes, sedation), boxed warnings, interactions, and monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/olanzapine-fluoxetine-symbyax](https://www.heypsych.com/treatments/olanzapine-fluoxetine-symbyax)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

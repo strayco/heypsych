@@ -1,95 +1,193 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "functional-family-therapy-parenting",
-  "type": "therapy",
-  "name": "Functional Family Therapy – Parenting (FFT-Parenting)",
-  "summary": "An evidence-based, family-focused intervention that helps parents and caregivers of at-risk youth build positive parenting practices, improve communication, and reduce behavioral and emotional problems in children.",
-  "description": "Functional Family Therapy for Parenting (FFT-Parenting) is a structured, short-term therapeutic model adapted from Functional Family Therapy (FFT). It emphasizes improving parent–child relationships, enhancing parenting skills, and addressing family dynamics that contribute to child and adolescent behavioral issues. The therapy integrates cognitive-behavioral, systemic, and relational techniques to help parents reframe negative interactions, implement effective discipline, and foster resilience. FFT-Parenting has been used with families at risk for child maltreatment, youth behavioral disorders, and other relational challenges, with strong evidence for reducing disruptive behaviors and preventing out-of-home placements.",
-  "category": "therapy/parenting",
-  "tags": [
-    "parent-training",
-    "family-therapy",
-    "behavior-management",
-    "communication",
-    "child-behavior",
-    "evidence-based"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "functional-family-therapy-parenting",
+    "name": "Functional Family Therapy – Parenting (FFT-Parenting)",
+    "generic_name": "functional family therapy – parenting",
+    "brand_names": [
+      "FFT-Parenting"
+    ]
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parenting",
     "intervention_types": [
       "Family therapy",
       "Parent skills training",
       "Systems-based intervention"
     ],
-    "treatment_types": [
-      "Cognitive-behavioral",
-      "Systemic therapy",
-      "Relational reframing"
-    ],
-    "categories": [
-      "Parenting",
-      "Family therapy",
-      "Youth behavior interventions"
-    ],
-    "delivery_methods": [
-      "Outpatient clinics",
-      "Home-based services",
-      "Community-based programs",
-      "Telehealth (emerging)"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None beyond therapeutic materials (handouts, worksheets)"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Parents/Caregivers"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "12–30 sessions depending on severity",
-      "Average course: 3–6 months"
-    ],
-    "specialty_areas": [
-      "Behavioral problems",
-      "Juvenile justice diversion",
-      "Family conflict",
-      "Prevention of out-of-home placement"
+    "tags": [
+      "parent-training",
+      "family-therapy",
+      "behavior-management",
+      "communication",
+      "child-behavior",
+      "evidence-based"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Disruptive behavior disorders",
-      "Parent–child relationship difficulties",
-      "Family conflict with at-risk youth"
-    ],
-    "conditions_treated": [
-      "Oppositional Defiant Disorder (ODD)",
-      "Conduct Disorder",
-      "ADHD-related behavioral challenges",
-      "Family relational problems",
-      "At-risk parenting/family stress"
-    ],
-    "off_label_uses": [
-      "Juvenile justice populations",
-      "Prevention of child abuse/neglect",
-      "School engagement difficulties"
-    ],
-    "contraindications": [
-      "Severe untreated parental mental illness without parallel treatment",
-      "Active substance abuse without stabilization",
-      "Acute safety risks (e.g., active abuse, imminent violence) requiring higher-level intervention"
-    ],
-    "safety_profile": "Generally safe, non-invasive; may temporarily increase family conflict as sensitive topics are addressed.",
-    "evidence_level": "Strong—multiple RCTs and implementation studies support FFT and FFT-Parenting effectiveness.",
-    "research_support": "Well-studied in juvenile justice and community mental health settings; outcomes include reduced reoffending, improved parenting practices, and decreased child behavioral symptoms.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "externalizing-symptoms": 4,
-      "family-functioning": 5,
-      "prevention-out-of-home-placement": 4,
-      "overall_tolerability": 5
+  "summary": "An evidence-based, family-focused intervention that helps parents and caregivers of at-risk youth build positive parenting practices, improve communication, and reduce behavioral and emotional problems in children.",
+  "description": "Functional Family Therapy for Parenting (FFT-Parenting) is a structured, short-term therapeutic model adapted from Functional Family Therapy (FFT). It emphasizes improving parent–child relationships, enhancing parenting skills, and addressing family dynamics that contribute to child and adolescent behavioral issues. The therapy integrates cognitive-behavioral, systemic, and relational techniques to help parents reframe negative interactions, implement effective discipline, and foster resilience. FFT-Parenting has been used with families at risk for child maltreatment, youth behavioral disorders, and other relational challenges, with strong evidence for reducing disruptive behaviors and preventing out-of-home placements.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "disruptive-behavior-disorders",
+          "condition_name": "Disruptive behavior disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relationship-difficulties",
+          "condition_name": "Parent–child relationship difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "family-conflict-with-at-risk-youth",
+          "condition_name": "Family conflict with at-risk youth",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional Defiant Disorder (ODD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adhd-related-behavioral-challenges",
+          "condition_name": "ADHD-related behavioral challenges",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-relational-problems",
+          "condition_name": "Family relational problems",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "at-risk-parenting-family-stress",
+          "condition_name": "At-risk parenting/family stress",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "juvenile-justice-populations",
+          "condition_name": "Juvenile justice populations",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "prevention-of-child-abuse-neglect",
+          "condition_name": "Prevention of child abuse/neglect",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "school-engagement-difficulties",
+          "condition_name": "School engagement difficulties",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong—multiple RCTs and implementation studies support FFT and FFT-Parenting effectiveness.",
+      "efficacy_ratings": {
+        "externalizing-symptoms": {
+          "rating": 4
+        },
+        "family-functioning": {
+          "rating": 5
+        },
+        "prevention-out-of-home-placement": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Well-studied in juvenile justice and community mental health settings; outcomes include reduced reoffending, improved parenting practices, and decreased child behavioral symptoms."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–30 sessions depending on severity; Average course: 3–6 months"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Outpatient clinics",
+        "Home-based services",
+        "Community-based programs",
+        "Telehealth (emerging)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe, non-invasive; may temporarily increase family conflict as sensitive topics are addressed.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary increase in family tension as issues are addressed"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout due to low motivation or high family stress"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active abuse without safeguards",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Imminent risk requiring crisis intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unstable housing or extreme caregiver unavailability",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe parental psychiatric instability without support",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive-behavioral, Systemic therapy, Relational reframing",
+        "key_techniques": [
+          "Parenting",
+          "Family therapy",
+          "Youth behavior interventions"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in with parents about challenges and successes since last session.",
+          "during_session": "Active skills training, role play, and family communication restructuring.",
+          "post_session": "Assign home practice tasks, review goals, reinforce progress."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed clinicians trained in FFT model",
+            "Supervision by FFT-certified supervisors recommended"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -251,6 +349,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Alexander JF, Parsons BV. (1982). Functional Family Therapy. Brooks/Cole.",
+      "url": "https://psycnet.apa.org/record/1982-21978-000"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Sexton T, Turner CW. (2010). The effectiveness of Functional Family Therapy for youth with behavioral problems in a community practice setting. Journal of Family Psychology.",
+      "url": "https://doi.org/10.1037/a0020734"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Blueprints for Healthy Youth Development – Functional Family Therapy",
+      "url": "https://www.blueprintsprograms.org/programs/88-functional-family-therapy/"
+    }
+  ],
   "seo": {
     "title": "Functional Family Therapy – Parenting (FFT-Parenting) | Evidence-Based Family Intervention",
     "description": "FFT-Parenting is a short-term, evidence-based family therapy program that improves parenting, reduces disruptive youth behavior, and strengthens family communication and resilience.",
@@ -263,5 +381,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong—multiple RCTs and implementation studies support FFT and FFT-Parenting effectiveness."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong—multiple RCTs and implementation studies support FFT and FFT-Parenting effectiveness."
+    ]
   }
 }

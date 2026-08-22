@@ -1,94 +1,270 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "loxapine-adasuve",
-  "type": "medication",
-  "name": "Loxapine (Adasuve Inhalation; Oral Loxapine)",
-  "summary": "First-generation (typical) antipsychotic used for acute agitation (inhaled Adasuve) and schizophrenia (oral). Inhaled loxapine can calm agitation within minutes, but it carries a serious bronchospasm risk and must be given in a certified setting.",
-  "description": "Loxapine is a typical antipsychotic that can rapidly reduce agitation when inhaled (Adasuve) and can treat schizophrenia when taken orally. The inhaled form has a real bronchospasm risk that can lead to respiratory distress or respiratory arrest—so it’s only given in certified health care settings with emergency airway support and a rescue inhaler on site. Oral loxapine can cause sedation, movement side effects (EPS), low blood pressure, and other antipsychotic risks like neuroleptic malignant syndrome (NMS).",
-  "patient_summary": "Inhaled loxapine (Adasuve) is designed for fast calming of acute agitation in adults with schizophrenia or bipolar I disorder—often within about 10 minutes. The tradeoff: it can trigger dangerous bronchospasm, especially in people with asthma or COPD, so it must be administered in a certified setting with monitoring and a rescue bronchodilator available. Oral loxapine is used for schizophrenia and is titrated over days to weeks based on response and side effects.",
-  "category": "medications/schizophrenia",
-  "metadata": {
-    "drug_classes": [
-      "First Generation (Typical) Antipsychotic",
-      "Dopamine (D1/D2) Receptor Antagonist",
-      "Serotonin (5-HT2) Antagonist (some activity)"
-    ],
+  "identity": {
+    "slug": "loxapine-adasuve",
+    "name": "Loxapine (Adasuve Inhalation; Oral Loxapine)",
+    "generic_name": "loxapine",
     "brand_names": [
       "Adasuve",
       "APO-Loxapine",
       "Loxapac",
       "Xylac"
-    ],
-    "administration_routes": [
-      "Inhalation",
-      "Oral",
-      "Intramuscular (Canada)"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1975,
-    "pharmacologic_category": "Typical Antipsychotic (Dibenzoxazepine)",
-    "published_date": "2025-11-30T00:00:00Z",
-    "last_updated": "2025-11-30T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-30T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Acute agitation associated with schizophrenia (inhalation)",
-      "Acute agitation associated with bipolar I disorder (inhalation)",
-      "Schizophrenia (oral)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Oral loxapine is used to treat schizophrenia. Some experts prefer second-generation antipsychotics first due to potentially fewer extrapyramidal symptoms, but efficacy differences are not consistent across patients."
-      },
-      {
-        "slug": "bipolar-1-disorder",
-        "relationship": "primary_treatment",
-        "context": "Inhaled loxapine is used for the acute treatment of agitation associated with bipolar I disorder in adults when rapid calming is needed in a supervised setting."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "primary_treatment",
-        "context": "Inhaled loxapine is intended for fast de-escalation of acute agitation associated with schizophrenia or bipolar I disorder, administered only by health care professionals with post-dose monitoring."
-      }
-    ],
-    "contraindications": [
-      "Inhalation: Current diagnosis or history of asthma, COPD, or other lung disease associated with bronchospasm",
-      "Inhalation: Acute respiratory signs or symptoms (eg, wheezing)",
-      "Inhalation: Current use of medications to treat airways disease (eg, asthma/COPD meds)",
-      "Inhalation: History of bronchospasm following loxapine treatment",
-      "Inhalation: Known hypersensitivity to loxapine, amoxapine, or any component of the formulation",
-      "Oral: Hypersensitivity to loxapine or any component of the formulation",
-      "Oral: Severe drug-induced CNS depression",
-      "Oral: Coma"
-    ],
-    "efficacy_response": {
-      "metric": "Time to initial calming effect (inhalation for agitation)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "The inhaled form is designed for speed: many patients start to feel de-escalation within about 10 minutes. The goal is rapid calming in a supervised medical setting, not long-term symptom control.",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/schizophrenia",
+    "drug_classes": [
+      "First Generation (Typical) Antipsychotic",
+      "Dopamine (D1/D2) Receptor Antagonist",
+      "Serotonin (5-HT2) Antagonist (some activity)"
+    ]
+  },
+  "summary": "First-generation (typical) antipsychotic used for acute agitation (inhaled Adasuve) and schizophrenia (oral). Inhaled loxapine can calm agitation within minutes, but it carries a serious bronchospasm risk and must be given in a certified setting.",
+  "description": "Loxapine is a typical antipsychotic that can rapidly reduce agitation when inhaled (Adasuve) and can treat schizophrenia when taken orally. The inhaled form has a real bronchospasm risk that can lead to respiratory distress or respiratory arrest—so it’s only given in certified health care settings with emergency airway support and a rescue inhaler on site. Oral loxapine can cause sedation, movement side effects (EPS), low blood pressure, and other antipsychotic risks like neuroleptic malignant syndrome (NMS).",
+  "patient_summary": "Inhaled loxapine (Adasuve) is designed for fast calming of acute agitation in adults with schizophrenia or bipolar I disorder—often within about 10 minutes. The tradeoff: it can trigger dangerous bronchospasm, especially in people with asthma or COPD, so it must be administered in a certified setting with monitoring and a rescue bronchodilator available. Oral loxapine is used for schizophrenia and is titrated over days to weeks based on response and side effects.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Oral loxapine is used to treat schizophrenia. Some experts prefer second-generation antipsychotics first due to potentially fewer extrapyramidal symptoms, but efficacy differences are not consistent across patients.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-1-disorder",
+          "condition_name": "Bipolar 1 Disorder",
+          "relationship": "primary_indication",
+          "context": "Inhaled loxapine is used for the acute treatment of agitation associated with bipolar I disorder in adults when rapid calming is needed in a supervised setting.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "primary_indication",
+          "context": "Inhaled loxapine is intended for fast de-escalation of acute agitation associated with schizophrenia or bipolar I disorder, administered only by health care professionals with post-dose monitoring.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete (oral, inhalation, IM)",
-      "bioavailability": "Inhalation: 91%",
-      "onset": "Agitation (inhalation): initial effects within ~10 minutes; Oral/IM: within ~30 minutes for acute effects; Schizophrenia (oral): early benefit may appear in 1-2 weeks with continued improvement over 4-6 weeks",
-      "peak_plasma": "Oral/IM: peak effect ~1.5 to 3 hours",
-      "half_life": "Oral: biphasic (initial ~5 hours; terminal ~19 hours); Inhalation: ~6 to 8 hours",
-      "duration_IR": "Oral/IM: ~12 hours (clinical duration)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic demethylation and hydroxylation to active metabolites (including desmethylloxapine/amoxapine and hydroxy-metabolites), followed by conjugation",
-      "excretion": "Urine and feces (as metabolites)",
-      "protein_binding": "Inhalation: ~97%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Agitation (inhalation): initial effects within ~10 minutes; Oral/IM: within ~30 minutes for acute effects; Schizophrenia (oral): early benefit may appear in 1-2 weeks with continued improvement over 4-6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Inhalation",
+        "Oral",
+        "Intramuscular (Canada)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dysgeusia (taste disturbance) (inhalation)",
+          "incidence": "14%",
+          "notes": "This can hit immediately after inhalation—unpleasant but usually not dangerous. It’s one of the most common ‘yep, that happened’ effects with Adasuve."
+        },
+        {
+          "effect": "Sedated state / Sleepiness",
+          "incidence": "12% (inhalation; frequency varies with oral dosing)",
+          "notes": "Sedation can be helpful when agitation is the problem, but it can also impair coordination and decision-making. It can also make it harder to notice early breathing changes after inhalation—so monitoring matters."
+        },
+        {
+          "effect": "Respiratory distress (includes bronchospasm-related symptoms) (inhalation)",
+          "incidence": "Asthma patients: 54%; COPD patients: 19% (includes bronchospasm, chest pain, cough, dyspnea, pharyngeal edema, wheezing)",
+          "notes": "This is the reason for the REMS and certified-setting requirement. Any wheezing, chest tightness, or shortness of breath after inhalation is treated as urgent."
+        },
+        {
+          "effect": "Hypotension / Syncope",
+          "incidence": "Hypotension: 3%; Syncope: 2% (inhalation labeling data)",
+          "notes": "Feeling lightheaded or faint—especially when standing—can happen. It’s more likely if you’re dehydrated, on blood pressure meds, or sensitive to orthostasis."
+        },
+        {
+          "effect": "Throat irritation (inhalation)",
+          "incidence": "3%",
+          "notes": "A scratchy, irritated throat can show up after inhalation. Usually mild, but report any swelling sensation, especially if breathing feels affected."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Bronchospasm (inhalation): can progress to respiratory distress or respiratory arrest; requires immediate bronchodilator treatment and emergency support if severe"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, altered mental status, autonomic instability—medical emergency"
+        },
+        {
+          "risk": "Severe blood dyscrasias: leukopenia, neutropenia, agranulocytosis (sometimes fatal); stop if significant decline or ANC < 1,000/mm3"
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially irreversible involuntary movements; risk increases with cumulative exposure and vulnerability factors"
+        },
+        {
+          "risk": "Seizures: risk is higher in predisposed patients or with interacting medications/substances"
+        },
+        {
+          "risk": "Severe EPS: acute dystonia, severe akathisia, drug-induced parkinsonism; can be intensely distressing and may require medication changes"
+        },
+        {
+          "risk": "Aspiration pneumonia risk: especially in older adults or those with swallowing difficulties"
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Loxapine is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Inhalation: Current diagnosis or history of asthma, COPD, or other lung disease associated with bronchospasm"
+        },
+        {
+          "contraindication": "Inhalation: Acute respiratory signs or symptoms (eg, wheezing)"
+        },
+        {
+          "contraindication": "Inhalation: Current use of medications to treat airways disease (eg, asthma/COPD meds)"
+        },
+        {
+          "contraindication": "Inhalation: History of bronchospasm following loxapine treatment"
+        },
+        {
+          "contraindication": "Inhalation: Known hypersensitivity to loxapine, amoxapine, or any component of the formulation"
+        },
+        {
+          "contraindication": "Oral: Hypersensitivity to loxapine or any component of the formulation"
+        },
+        {
+          "contraindication": "Oral: Severe drug-induced CNS depression"
+        },
+        {
+          "contraindication": "Oral: Coma"
+        }
+      ],
+      "precautions": [
+        "Bronchospasm risk (inhalation): Only administer in a certified health care setting with immediate access to a short-acting bronchodilator (eg, albuterol), trained staff, and emergency assistance",
+        "REMS restriction (inhalation): Available only through a restricted program under a REMS (Adasuve REMS) to mitigate bronchospasm risk",
+        "Sedation/CNS depression: Can impair alertness, coordination, and judgment; sedation can also mask early breathing problems after inhalation",
+        "Extrapyramidal symptoms (EPS) and tardive dyskinesia: Risk increases with dose and vulnerability factors; monitor closely during titration",
+        "Orthostatic hypotension/syncope and fall risk: Higher risk in older adults and during initiation or dose increases",
+        "Neuroleptic malignant syndrome (NMS): Rare but life-threatening—fever, rigidity, confusion, autonomic instability",
+        "Blood dyscrasias: Leukopenia/neutropenia/agranulocytosis reported; higher concern with preexisting low WBC or prior drug-induced neutropenia",
+        "Aspiration risk: Antipsychotics can be associated with dysphagia/esophageal dysmotility; risk rises with age and frailty",
+        "Seizure threshold: Use caution in patients at risk for seizures (history of seizures, head trauma, brain injury, alcohol use disorder, or other pro-convulsant meds)",
+        "Catatonia caution: Antipsychotics are not indicated for catatonia and may worsen psychosis and increase NMS risk in catatonic patients"
+      ],
+      "interactions": [
+        {
+          "interactant": "Other CNS depressants (alcohol, benzodiazepines, opioids, sedating antihistamines, sleep meds)",
+          "mechanism": "Additive sedation, impaired coordination, falls, confusion, and respiratory risk—especially dangerous when inhalation monitoring is already focused on breathing safety.",
+          "action": "Avoid stacking sedatives when possible. If combination is clinically necessary, use the lowest effective doses and monitor closely."
+        },
+        {
+          "interactant": "Antihypertensives or meds that lower blood pressure",
+          "mechanism": "Increased risk of orthostatic hypotension and syncope.",
+          "action": "Monitor blood pressure and orthostatic symptoms, especially early in treatment and during titration."
+        },
+        {
+          "interactant": "Anticholinergic medications (eg, diphenhydramine, benztropine, many TCAs, some bladder meds)",
+          "mechanism": "Higher constipation/ileus risk, urinary retention, blurred vision, dry mouth, and delirium risk—especially in older adults.",
+          "action": "Keep the anticholinergic load as low as possible. Monitor bowel/bladder function and cognition."
+        },
+        {
+          "interactant": "Medications that lower seizure threshold (including some antidepressants, stimulants, bupropion, tramadol)",
+          "mechanism": "Higher seizure risk in predisposed patients.",
+          "action": "Use caution in seizure-prone patients; minimize other seizure-threshold-lowering exposures when possible."
+        },
+        {
+          "interactant": "Metoclopramide (Canadian labeling concern)",
+          "mechanism": "Increased risk of extrapyramidal symptoms due to combined dopamine blockade.",
+          "action": "Avoid concomitant use where this contraindication applies; choose alternatives when possible."
+        },
+        {
+          "interactant": "Smoking changes (CYP1A2-related considerations)",
+          "mechanism": "Potential for modest changes in drug levels due to CYP1A2 effects; clinical impact varies by patient.",
+          "action": "If smoking status changes, reassess side effects and response rather than guessing—adjust if clinically needed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Inhalation-specific: Monitor for signs and symptoms of bronchospasm for at least 1 hour after administration; ensure immediate access to a short-acting bronchodilator (eg, albuterol) delivered by inhaler (with spacer) or nebulizer"
+        },
+        {
+          "parameter": "Respiratory screening before inhalation: Screen for asthma/COPD/other lung disease, ask about symptoms, assess for respiratory signs, and perform chest auscultation"
+        },
+        {
+          "parameter": "Mental status and alertness: Every visit; assess sedation, confusion, and functional impairment"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms (EPS): Every visit; reassess 4 weeks after initiation and dose changes; use a formal rating scale at least annually (or every 6 months if high risk)"
+        },
+        {
+          "parameter": "Tardive dyskinesia: Every visit observation and at least annual structured assessment (more frequent if high risk factors present)"
+        },
+        {
+          "parameter": "Vital signs: Blood pressure (including orthostatics), pulse, temperature as clinically indicated; watch for syncope, dehydration, autonomic instability, and infection signals"
+        },
+        {
+          "parameter": "Falls risk: Evaluate regularly in adults ≥60 and anyone with orthostasis/sedation; reassess after dose increases"
+        },
+        {
+          "parameter": "CBC: As clinically indicated; monitor more frequently early in therapy if preexisting low WBC or history of drug-induced leukopenia/neutropenia; discontinue if significant blood dyscrasia or ANC <1,000/mm3"
+        },
+        {
+          "parameter": "Metabolic monitoring: Weight/BMI every visit for first 6 months then quarterly; fasting glucose/HbA1c at ~4 months then annually; lipid panel at ~4 months then annually; assess metabolic syndrome history annually"
+        },
+        {
+          "parameter": "Electrolytes/renal/liver/TSH: As clinically indicated based on symptoms, comorbidities, and adverse effect concerns"
+        },
+        {
+          "parameter": "Prolactin: Ask about symptoms (menstrual changes, libido changes, gynecomastia, galactorrhea, sexual function) at visits until stable; check level if symptomatic"
+        },
+        {
+          "parameter": "Ocular effects: Eye exam as clinically indicated, especially if visual complaints or comorbidities that affect sight"
+        },
+        {
+          "parameter": "Therapeutic drug monitoring (when used): Draw trough just before next dose; therapeutic reference range cited as 5 to 10 ng/mL, but dosing should be guided by clinical response and tolerability rather than chasing a lab number"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for first-generation antipsychotics do not show a large, consistent increase in major congenital malformations, but outcomes vary by study and individual agent data are limited. Third-trimester exposure to antipsychotics can increase the risk of newborn EPS and/or withdrawal symptoms (eg, agitation, feeding issues, tone changes, somnolence, tremor, respiratory distress). Treatment decisions should use shared decision-making, prioritize the lowest effective dose of a single agent, and avoid polytherapy when possible. Do not taper late in pregnancy solely to reduce newborn symptoms if it risks maternal relapse.",
+        "lactation": "It is not known if loxapine is present in human milk. The decision to breastfeed during therapy should weigh infant exposure risk, breastfeeding benefits, and the benefits of treatment to the parent. If breastfeeding while treated, clinicians typically monitor the infant for sedation, feeding problems, and abnormal tone or movement symptoms.",
+        "pediatric": "Avoid in patients ≤18 years when possible due to higher risk of acute dystonic reactions and hyperprolactinemia concerns. Use requires specialist oversight and strong justification.",
+        "geriatric": "High-risk medication in older adults. Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic strategies fail and there is risk of harm. Antipsychotics increase stroke risk, cognitive decline, and mortality in dementia. If used for appropriate indications (eg, schizophrenia or bipolar disorder), start at the low end of adult dosing, titrate slowly, and monitor closely for orthostasis, falls, sedation, EPS, and hyponatremia/SIADH concerns.",
+        "renal_impairment": "Inhalation: No dosage adjustment necessary. Oral: Manufacturer labeling does not provide a specific adjustment; monitor clinically.",
+        "hepatic_impairment": "Inhalation: No dosage adjustment necessary. Oral: Manufacturer labeling does not provide a specific adjustment; use cautious titration and monitor for sedation, orthostasis, and adverse effects."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1975
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete (oral, inhalation, IM)",
+          "bioavailability": "Inhalation: 91%",
+          "peak_plasma": "Oral/IM: peak effect ~1.5 to 3 hours",
+          "half_life": "Oral: biphasic (initial ~5 hours; terminal ~19 hours); Inhalation: ~6 to 8 hours",
+          "metabolism": "Hepatic demethylation and hydroxylation to active metabolites (including desmethylloxapine/amoxapine and hydroxy-metabolites), followed by conjugation",
+          "excretion": "Urine and feces (as metabolites)",
+          "protein_binding": "Inhalation: ~97%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Dosing depends on the formulation and clinical goal. Inhaled loxapine is for one-time acute agitation dosing in a certified medical setting. Oral loxapine is titrated for schizophrenia based on response and side effects."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "For chronic psychiatric illness, stopping antipsychotic treatment abruptly can backfire—either with symptom relapse or with physical withdrawal-type symptoms. If loxapine needs to be stopped and there isn’t a dangerous adverse effect forcing an immediate stop, the safest move is usually a gradual taper over weeks to months with close monitoring."
+        }
+      }
     }
   },
   "sections": [
@@ -107,7 +283,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are the patterns that show up again and again—especially when loxapine is used for agitation or when oral dosing is being titrated:",
       "items": [
         {
           "category": "Fast calming (inhalation)",
@@ -154,7 +329,8 @@
           ],
           "note": "EPS (akathisia, dystonia, parkinsonism) can happen, especially with dose increases or higher doses."
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are the patterns that show up again and again—especially when loxapine is used for agitation or when oral dosing is being titrated:"
     },
     {
       "type": "onset_duration",
@@ -171,10 +347,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For acute agitation associated with schizophrenia or bipolar I disorder, inhaled loxapine is used because it can calm quickly in a supervised clinical setting. For schizophrenia, oral loxapine is a maintenance-style medication—benefit typically builds over the first few weeks, with continued improvement across the first month or two.",
       "metric": "Speed of calming in acute agitation (inhalation)",
       "value": "Initial effects within ~10 minutes",
       "comparison": "Not applicable for this medication.",
-      "text": "For acute agitation associated with schizophrenia or bipolar I disorder, inhaled loxapine is used because it can calm quickly in a supervised clinical setting. For schizophrenia, oral loxapine is a maintenance-style medication—benefit typically builds over the first few weeks, with continued improvement across the first month or two.",
       "clinical_details": "Inhaled loxapine is selected when rapid de-escalation is clinically necessary and monitoring is available. Oral loxapine is titrated gradually to balance symptom control with tolerability, especially sedation, orthostasis, anticholinergic effects, and movement side effects.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -266,7 +442,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Loxapine has meaningful interaction risk through additive side effects (sedation, hypotension, anticholinergic load, EPS, and seizure threshold effects). It is a minor substrate of CYP1A2/CYP2D6/CYP3A4, so the biggest day-to-day issues are usually pharmacodynamic (how effects stack) rather than dramatic metabolism swings.",
       "items": [
         {
           "with": "Other CNS depressants (alcohol, benzodiazepines, opioids, sedating antihistamines, sleep meds)",
@@ -298,7 +473,8 @@
           "risk": "Potential for modest changes in drug levels due to CYP1A2 effects; clinical impact varies by patient.",
           "action": "If smoking status changes, reassess side effects and response rather than guessing—adjust if clinically needed."
         }
-      ]
+      ],
+      "intro": "Loxapine has meaningful interaction risk through additive side effects (sedation, hypotension, anticholinergic load, EPS, and seizure threshold effects). It is a minor substrate of CYP1A2/CYP2D6/CYP3A4, so the biggest day-to-day issues are usually pharmacodynamic (how effects stack) rather than dramatic metabolism swings."
     },
     {
       "type": "tapering",
@@ -381,21 +557,6 @@
       "text": "Loxapine sits in two different clinical roles. Inhaled loxapine is a niche, high-supervision tool for rapid calming of acute agitation in adults with schizophrenia or bipolar I disorder—used when speed matters and monitoring is available. Oral loxapine is a typical antipsychotic option for schizophrenia, but many clinicians consider second-generation agents first because typical antipsychotics can carry a heavier EPS burden. In older adults—especially those with dementia—antipsychotics require extreme caution due to increased mortality and adverse outcomes."
     }
   ],
-  "seo": {
-    "title": "Loxapine (Adasuve): Uses for Agitation, Dosing, Side Effects & Bronchospasm REMS",
-    "description": "Loxapine (Adasuve inhalation; oral loxapine) for acute agitation in schizophrenia/bipolar I and schizophrenia treatment: dosing, fast onset, key side effects (sedation, EPS), and the serious bronchospasm risk requiring REMS-certified administration.",
-    "canonical": "[https://www.heypsych.com/treatments/loxapine-adasuve](https://www.heypsych.com/treatments/loxapine-adasuve)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is loxapine used for in psychiatry?",
@@ -445,5 +606,20 @@
       "q": "Is Adasuve something you take at home like an asthma inhaler?",
       "a": "No. Adasuve is not a home rescue inhaler. It’s administered by health care professionals in a certified setting with monitoring and emergency support because of the bronchospasm risk."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Loxapine (Adasuve): Uses for Agitation, Dosing, Side Effects & Bronchospasm REMS",
+    "description": "Loxapine (Adasuve inhalation; oral loxapine) for acute agitation in schizophrenia/bipolar I and schizophrenia treatment: dosing, fast onset, key side effects (sedation, EPS), and the serious bronchospasm risk requiring REMS-certified administration.",
+    "canonical": "[https://www.heypsych.com/treatments/loxapine-adasuve](https://www.heypsych.com/treatments/loxapine-adasuve)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

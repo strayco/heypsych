@@ -1,20 +1,22 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "glutamine",
-  "type": "supplement",
-  "name": "Glutamine",
-  "summary": "Glutamine is a conditionally essential amino acid that supports gut health, immune function, and may play a role in stress response and mental health.",
-  "description": "Glutamine is the most abundant amino acid in the body and serves as a critical fuel source for rapidly dividing cells, including those in the immune system and the gastrointestinal tract. It is also a precursor for neurotransmitters such as glutamate and GABA, which are essential for brain function and mood regulation. While commonly used in sports nutrition and recovery, glutamine supplementation has also been investigated for its role in reducing stress-related gut permeability, supporting immune health, and aiding in mood stabilization. Evidence in psychiatric applications remains limited and largely experimental.",
-  "category": "supplements",
-  "tags": [
-    "amino acid",
-    "gut health",
-    "neurotransmitters",
-    "immune support"
-  ],
-  "metadata": {
-    "compound_type": "Amino acid",
-    "natural_source": "Protein-rich foods such as meat, fish, eggs, dairy, legumes",
+  "identity": {
+    "slug": "glutamine",
+    "name": "Glutamine",
+    "brand_names": [
+      "L-Glutamine",
+      "Glutapak",
+      "Glutasolve"
+    ],
+    "aliases": [
+      "L-Glutamine"
+    ],
+    "wikidata_qid": "Q181619"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Sports Nutrition",
       "Integrative Medicine",
@@ -25,73 +27,156 @@
       "Gut barrier support",
       "Immune modulation"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "L-Glutamine",
-      "Glutapak",
-      "Glutasolve"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sports Medicine",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q181619"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Support of gut health and integrity",
-      "Immune system support",
-      "Sports recovery and muscle repair"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in stress-related gut dysfunction",
-      "Possible role in mood stabilization",
-      "Supportive use in alcohol withdrawal or cravings (limited evidence)"
-    ],
-    "contraindications": [
-      "Severe liver disease",
-      "History of seizures (due to potential effects on glutamate balance)"
-    ],
-    "monitoring_required": [
-      "Neurological symptoms in high-dose use",
-      "GI tolerance"
-    ],
-    "efficacy_rating": {
-      "gut_health": 4,
-      "immune_support": 3,
-      "stress_resilience": 2,
-      "mood": 2,
-      "sports_recovery": 4
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Glutamine",
-      "L-Glutamine",
-      "amino acid supplement"
-    ],
-    "synonyms": [
-      "L-Glutamine"
-    ],
-    "common_misspellings": [
-      "glutamin",
-      "glutimane"
+    "tags": [
+      "amino acid",
+      "gut health",
+      "neurotransmitters",
+      "immune support"
     ]
+  },
+  "summary": "Glutamine is a conditionally essential amino acid that supports gut health, immune function, and may play a role in stress response and mental health.",
+  "description": "Glutamine is the most abundant amino acid in the body and serves as a critical fuel source for rapidly dividing cells, including those in the immune system and the gastrointestinal tract. It is also a precursor for neurotransmitters such as glutamate and GABA, which are essential for brain function and mood regulation. While commonly used in sports nutrition and recovery, glutamine supplementation has also been investigated for its role in reducing stress-related gut permeability, supporting immune health, and aiding in mood stabilization. Evidence in psychiatric applications remains limited and largely experimental.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "support-of-gut-health-and-integrity",
+          "condition_name": "Support of gut health and integrity",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "immune-system-support",
+          "condition_name": "Immune system support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "sports-recovery-and-muscle-repair",
+          "condition_name": "Sports recovery and muscle repair",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-stress-related-gut-dysfunction",
+          "condition_name": "Adjunctive support in stress-related gut dysfunction",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "possible-role-in-mood-stabilization",
+          "condition_name": "Possible role in mood stabilization",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "supportive-use-in-alcohol-withdrawal-or-cravings-limited-evidence",
+          "condition_name": "Supportive use in alcohol withdrawal or cravings (limited evidence)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "gut_health": {
+          "rating": 4
+        },
+        "immune_support": {
+          "rating": 3
+        },
+        "stress_resilience": {
+          "rating": 2
+        },
+        "mood": {
+          "rating": 2
+        },
+        "sports_recovery": {
+          "rating": 4
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Bloating"
+        },
+        {
+          "effect": "Mild headache"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Seizures in predisposed individuals (rare)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe liver disease"
+        },
+        {
+          "contraindication": "History of seizures (due to potential effects on glutamate balance)"
+        }
+      ],
+      "precautions": [
+        "High doses may alter neurotransmitter balance.",
+        "Use with caution in individuals with liver disease or seizure disorders."
+      ],
+      "interactions": [
+        {
+          "interactant": "Antiepileptic medications",
+          "mechanism": "Potential interference with glutamate-GABA balance",
+          "action": "Monitor"
+        },
+        {
+          "interactant": "Chemotherapy drugs",
+          "mechanism": "May alter effectiveness in some regimens",
+          "action": "Consult oncology provider"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI tolerance"
+        },
+        {
+          "parameter": "Neurological status in high-dose use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited safety data; use only under supervision",
+        "lactation": "Insufficient data; avoid unless prescribed",
+        "pediatric": "Use only under clinical supervision",
+        "geriatric": "Generally well tolerated; monitor renal and hepatic function if high-dose"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Amino acid",
+        "natural_source": "Protein-rich foods such as meat, fish, eggs, dairy, legumes",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -208,6 +293,40 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Glutamine",
+      "url": "https://www.nccih.nih.gov/health/glutamine"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Newsholme P. Why is L-glutamine metabolism important to cells of the immune system in health, postinjury, surgery or infection? J Nutr. 2001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11238729/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "De Souza HM, et al. Glutamine supplementation and stress responses: a systematic review. Nutrition. 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31155371/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Glutamine",
+      "L-Glutamine",
+      "amino acid supplement"
+    ],
+    "synonyms": [
+      "L-Glutamine"
+    ],
+    "common_misspellings": [
+      "glutamin",
+      "glutimane"
+    ]
+  },
   "seo": {
     "title": "Glutamine – Amino Acid Supplement for Gut, Immune, and Stress Support",
     "description": "Glutamine is a conditionally essential amino acid supplement used for gut health, immune support, sports recovery, and stress-related resilience. Learn about benefits, dosing, and safety.",

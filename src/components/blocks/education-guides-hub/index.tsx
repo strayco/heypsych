@@ -109,7 +109,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                 </span>
               </h1>
             </div>
-            <p className="mx-auto mb-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mx-auto mb-6 max-w-3xl text-base leading-relaxed text-label-tertiary sm:text-lg">
               Practical how-tos for finding care, understanding therapy types, navigating insurance,
               learning about treatments, and advocating for your mental health.
             </p>
@@ -157,20 +157,20 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="mb-4 flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-slate-600" />
-                  <span className="text-sm font-medium text-slate-700">Find guides:</span>
+                  <Filter className="h-4 w-4 text-label-tertiary" />
+                  <span className="text-sm font-medium text-label-secondary">Find guides:</span>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Search */}
                   <div className="relative">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
                     <input
                       type="text"
                       placeholder="Search guides..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full rounded-md border border-neutral-300 py-2 pr-3 pl-10 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
+                      className="w-full rounded-md border border-separator py-2 pr-3 pl-10 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
                     />
                   </div>
 
@@ -178,7 +178,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
                   >
                     <option value="all">All Topics</option>
                     {categories.map((c) => (
@@ -192,7 +192,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                   <select
                     value={selectedLevel}
                     onChange={(e) => setSelectedLevel(e.target.value)}
-                    className="rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
+                    className="rounded-md border border-separator px-3 py-2 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500"
                   >
                     <option value="all">All Levels</option>
                     {levels.map((l) => (
@@ -205,7 +205,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
 
                 {activeFiltersCount > 0 && (
                   <div className="flex items-center justify-between border-t pt-4">
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-label-tertiary">
                       Showing {filteredResources.length} of {resources.length} guides
                     </span>
                     <Button variant="ghost" size="sm" onClick={clearFilters}>
@@ -249,10 +249,10 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                                   <FileText className="h-5 w-5 text-amber-600" />
                                 </div>
                                 <div>
-                                  <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-amber-600">
+                                  <h3 className="text-lg font-bold text-label-primary transition-colors group-hover:text-amber-600">
                                     {resource.name}
                                   </h3>
-                                  <div className="mt-1 flex items-center gap-3 text-sm text-slate-500">
+                                  <div className="mt-1 flex items-center gap-3 text-sm text-label-primary0">
                                     {readingTime && (
                                       <div className="flex items-center gap-1">
                                         <Clock className="h-3 w-3" />
@@ -267,7 +267,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                                     {downloadable && (
                                       <Badge
                                         variant="outline"
-                                        className="border-green-200 text-xs text-green-600"
+                                        className="border-positive-border text-xs text-green-600"
                                       >
                                         <Download className="mr-1 h-3 w-3" />
                                         PDF
@@ -278,17 +278,17 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                               </div>
 
                               {resource.description && (
-                                <p className="mb-3 ml-12 text-sm text-slate-600">
+                                <p className="mb-3 ml-12 text-sm text-label-tertiary">
                                   {resource.description}
                                 </p>
                               )}
 
                               {objectives.length > 0 && (
                                 <div className="ml-12">
-                                  <p className="mb-1 text-xs font-medium text-slate-700">
+                                  <p className="mb-1 text-xs font-medium text-label-secondary">
                                     What you'll learn:
                                   </p>
-                                  <ul className="space-y-1 text-xs text-slate-600">
+                                  <ul className="space-y-1 text-xs text-label-tertiary">
                                     {objectives.slice(0, 3).map((obj: string, i: number) => (
                                       <li key={i}>• {obj}</li>
                                     ))}
@@ -297,7 +297,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                               )}
                             </div>
 
-                            <ArrowRight className="mt-2 h-5 w-5 flex-shrink-0 text-slate-400" />
+                            <ArrowRight className="mt-2 h-5 w-5 flex-shrink-0 text-label-primary0" />
                           </div>
                         </CardContent>
                       </Card>
@@ -309,9 +309,9 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
           ) : (
             <Card>
               <CardContent className="p-12 text-center">
-                <GraduationCap className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                <h3 className="mb-2 text-xl font-semibold text-slate-900">No guides found</h3>
-                <p className="mb-6 text-slate-600">Try adjusting your filters</p>
+                <GraduationCap className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                <h3 className="mb-2 text-xl font-semibold text-label-primary">No guides found</h3>
+                <p className="mb-6 text-label-tertiary">Try adjusting your filters</p>
                 <Button onClick={clearFilters}>Clear Filters</Button>
               </CardContent>
             </Card>

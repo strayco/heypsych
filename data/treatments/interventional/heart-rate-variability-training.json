@@ -1,93 +1,187 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "heart-rate-variability-training",
-  "type": "interventional",
-  "name": "Heart Rate Variability (HRV) Biofeedback / Coherence Training",
-  "summary": "A noninvasive biofeedback method that trains paced breathing at an individual's resonance frequency to increase HRV coherence, improving autonomic balance, stress resilience, and emotional regulation.",
-  "description": "HRV biofeedback (often called coherence training) uses sensors to measure beat-to-beat heart rate changes and provides real-time feedback to guide slow, diaphragmatic breathing near the individual's resonance frequency (~4.5–6.5 breaths/min). Training increases vagal tone and baroreflex sensitivity, promoting parasympathetic dominance and improved stress recovery.\n\nClinically, HRV training is used for anxiety and stress-related disorders, PTSD adjunctive care, insomnia, functional somatic syndromes, and performance optimization. Sessions combine breathing pacers, HRV coherence targets, and brief challenge–recovery drills to generalize self-regulation skills to daily life.",
-  "category": "interventional/biofeedback",
-  "tags": [
-    "biofeedback",
-    "HRV",
-    "coherence",
-    "resonance-breathing",
-    "stress",
-    "anxiety",
-    "sleep",
-    "trauma",
-    "performance"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "heart-rate-variability-training",
+    "name": "Heart Rate Variability (HRV) Biofeedback / Coherence Training"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/biofeedback",
     "intervention_types": [
       "HRV biofeedback",
       "Respiratory sinus arrhythmia training"
     ],
-    "treatment_types": [
-      "Biofeedback",
-      "Mind–body therapy"
-    ],
-    "categories": [
-      "Behavioral Medicine",
-      "Psychiatry",
-      "Sleep Medicine"
-    ],
-    "delivery_methods": [
-      "Clinic-based sensors with software",
-      "Wearable/app-guided home practice"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "20–30 minutes",
-    "treatment_duration": [
-      "Short-term",
-      "Maintenance"
-    ],
-    "specialty_areas": [
-      "Psychophysiology",
-      "Anxiety Disorders",
-      "Trauma Care",
-      "Performance Psychology"
+    "tags": [
+      "biofeedback",
+      "HRV",
+      "coherence",
+      "resonance-breathing",
+      "stress",
+      "anxiety",
+      "sleep",
+      "trauma",
+      "performance"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Generalized anxiety and stress-related disorders",
-      "Post-traumatic stress disorder (adjunctive)",
-      "Insomnia (behavioral component)"
-    ],
-    "conditions_treated": [
-      "Generalized anxiety disorder",
-      "Post-traumatic stress disorder",
-      "Panic symptoms (arousal regulation adjunct)",
-      "Insomnia",
-      "Functional somatic symptoms (e.g., tension headaches, IBS) adjunctive",
-      "Hypertension (adjunctive behavioral)"
-    ],
-    "off_label_uses": [
-      "Performance anxiety and optimization",
-      "ADHD adjunctive self-regulation",
-      "Depression (adjunctive behavioral activation)"
-    ],
-    "contraindications": [
-      "Unstable cardiac arrhythmias without cardiology clearance",
-      "Severe respiratory compromise (modify pacing and depth)",
-      "Acute psychiatric instability limiting participation"
-    ],
-    "safety_profile": "Excellent overall safety. Possible transient lightheadedness, tingling, or anxiety if over-breathing; resolve by reducing depth/rate and providing coaching.",
-    "evidence_level": "Moderate for anxiety/stress and PTSD symptoms; moderate for insomnia adjunct; mixed but promising for somatic pain and hypertension adjunct.",
-    "research_support": "Multiple controlled trials and practice guidelines in psychophysiology show HRV biofeedback improves autonomic regulation, anxiety, and sleep; benefits depend on adherence and quality of home practice.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "anxiety_stress": 4,
-      "ptsd_adjunct": 3,
-      "insomnia_adjunct": 3,
-      "overall_tolerability": 5
+  "summary": "A noninvasive biofeedback method that trains paced breathing at an individual's resonance frequency to increase HRV coherence, improving autonomic balance, stress resilience, and emotional regulation.",
+  "description": "HRV biofeedback (often called coherence training) uses sensors to measure beat-to-beat heart rate changes and provides real-time feedback to guide slow, diaphragmatic breathing near the individual's resonance frequency (~4.5–6.5 breaths/min). Training increases vagal tone and baroreflex sensitivity, promoting parasympathetic dominance and improved stress recovery.\n\nClinically, HRV training is used for anxiety and stress-related disorders, PTSD adjunctive care, insomnia, functional somatic syndromes, and performance optimization. Sessions combine breathing pacers, HRV coherence targets, and brief challenge–recovery drills to generalize self-regulation skills to daily life.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-and-stress-related-disorders",
+          "condition_name": "Generalized anxiety and stress-related disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder-adjunctive",
+          "condition_name": "Post-traumatic stress disorder (adjunctive)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "insomnia-behavioral-component",
+          "condition_name": "Insomnia (behavioral component)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "panic-symptoms-arousal-regulation-adjunct",
+          "condition_name": "Panic symptoms (arousal regulation adjunct)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "functional-somatic-symptoms-e-g-tension-headaches-ibs-adjunctive",
+          "condition_name": "Functional somatic symptoms (e.g., tension headaches, IBS) adjunctive",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "hypertension-adjunctive-behavioral",
+          "condition_name": "Hypertension (adjunctive behavioral)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "performance-anxiety-and-optimization",
+          "condition_name": "Performance anxiety and optimization",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adhd-adjunctive-self-regulation",
+          "condition_name": "ADHD adjunctive self-regulation",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "depression-adjunctive-behavioral-activation",
+          "condition_name": "Depression (adjunctive behavioral activation)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for anxiety/stress and PTSD symptoms; moderate for insomnia adjunct; mixed but promising for somatic pain and hypertension adjunct.",
+      "efficacy_ratings": {
+        "anxiety_stress": {
+          "rating": 4
+        },
+        "ptsd_adjunct": {
+          "rating": 3
+        },
+        "insomnia_adjunct": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Multiple controlled trials and practice guidelines in psychophysiology show HRV biofeedback improves autonomic regulation, anxiety, and sleep; benefits depend on adherence and quality of home practice."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Clinic-based sensors with software",
+        "Wearable/app-guided home practice"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–30 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Excellent overall safety. Possible transient lightheadedness, tingling, or anxiety if over-breathing; resolve by reducing depth/rate and providing coaching.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild lightheadedness if over-breathing"
+        },
+        {
+          "effect": "Transient fatigue or drowsiness post-session"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Vasovagal symptoms in highly anxious individuals; mitigate with seated posture and gradual pacing"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstable cardiac arrhythmia",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Recent myocardial infarction without clearance",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe COPD/asthma (modify depth/rate; medical input)",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Pregnancy—avoid excessive Valsalva-like effort",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe with gentle breathing; avoid straining maneuvers."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "HRV biofeedback, Respiratory sinus arrhythmia training",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "3–5 training blocks of 4–6 minutes at resonance breathing (typically 5–6 breaths/min) using visual pacer and feedback gauges (coherence/low-frequency power).\nCoaching on diaphragmatic breathing, posture, and gentle breath depth to avoid over-breathing.\nIntroduce brief cognitive/emotional stressors followed by recovery breathing to train generalization.\nTrack session metrics (coherence score, LF power, recovery slope) and set home plan."
+      }
     }
   },
   "sections": [
@@ -269,6 +363,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Lehrer PM, Gevirtz R. Heart rate variability biofeedback: how and why does it work? Front Psychol. 2014;5:756.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25071612/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Lehrer PM, et al. HRV biofeedback for anxiety and depression: a review of clinical evidence. Appl Psychophysiol Biofeedback. 2020;45(2):109–129.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32162255/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Tan G, et al. Efficacy of HRV biofeedback for PTSD symptoms: a pilot study. Appl Psychophysiol Biofeedback. 2011;36(1):27–35.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21213096/"
+    }
+  ],
   "seo": {
     "title": "Heart Rate Variability (HRV) Biofeedback / Coherence Training",
     "description": "Evidence-informed HRV biofeedback that trains resonance breathing to boost autonomic balance, reduce anxiety, improve sleep, and enhance resilience.",
@@ -281,5 +395,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for anxiety/stress and PTSD symptoms; moderate for insomnia adjunct; mixed but promising for somatic pain and hypertension adjunct."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for anxiety/stress and PTSD symptoms; moderate for insomnia adjunct; mixed but promising for somatic pain and hypertension adjunct."
+    ]
   }
 }

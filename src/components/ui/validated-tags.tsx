@@ -141,7 +141,7 @@ export function ValidatedTags({ tags, className = "" }: ValidatedTagsProps) {
         <Link key={i} href={tag.route}>
           <Badge
             variant="outline"
-            className="cursor-pointer transition-colors hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700"
+            className="cursor-pointer transition-colors hover:bg-accent-tint hover:border-accent-border hover:text-accent-700"
           >
             {tag.text}
           </Badge>

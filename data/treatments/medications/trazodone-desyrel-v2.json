@@ -1,82 +1,241 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "trazodone",
-  "type": "medication",
-  "name": "Trazodone",
-  "summary": "Sedating serotonin modulator used for depression and (more commonly) as an off-label sleep medication. Can help with sleep quickly, but depression benefits take weeks.",
-  "description": "Trazodone is an antidepressant that also has strong calming, sleep-promoting effects. In psychiatry, it’s often used off-label for insomnia—especially when you want a medication with low abuse potential. It can also treat major depression at higher, scheduled doses. Common issues include grogginess, dizziness, dry mouth, and low blood pressure when standing. Rare but serious risks include priapism (a prolonged, painful erection), abnormal heart rhythms (QT prolongation), serotonin syndrome (especially with other serotonergic meds), and liver injury.",
-  "patient_summary": "Trazodone is an antidepressant that’s commonly used off-label to help with sleep. It can work for sleep the first night, but depression improvement usually takes weeks. Expect possible morning grogginess and dizziness—especially if you stand up fast. Rare but urgent risks include priapism, serotonin syndrome, and heart rhythm problems.",
-  "category": "medications/sleep-and-depression",
-  "metadata": {
+  "identity": {
+    "slug": "trazodone",
+    "name": "Trazodone",
+    "brand_names": [
+      "Raldesy"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/sleep-and-depression",
     "drug_classes": [
       "Serotonin Modulator",
       "Serotonin Reuptake Inhibitor/Antagonist",
       "Antidepressant"
-    ],
-    "brand_names": [
-      "Raldesy"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1981,
-    "pharmacologic_category": "Antidepressant (Serotonin Modulator)",
-    "published_date": "2025-12-26T00:00:00Z",
-    "last_updated": "2025-12-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder (MDD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for unipolar major depression. At antidepressant doses, it is typically taken on a schedule and titrated over time."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Commonly used off-label for sleep onset and sleep maintenance insomnia, especially when low abuse potential is a priority or when insomnia is linked to depression/anxiety."
-      },
-      {
-        "slug": "agitation-in-dementia",
-        "relationship": "off_label",
-        "context": "Sometimes used as an alternative agent for agitation or aggressive behavior associated with dementia, usually at low bedtime doses and with careful monitoring for falls and low blood pressure."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to trazodone or any component of the formulation",
-      "Use with MAOIs intended to treat psychiatric disorders (concurrently or within 14 days of discontinuing either trazodone or the MAOI)",
-      "Initiation of trazodone in a patient receiving IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep improvement (off-label use)",
-      "percentage_value": "Varies",
-      "comparison_data": "Not applicable",
-      "patient_text": "For sleep, trazodone can help quickly (often the first night), but the tradeoff is next-day grogginess for some people. For depression, the benefits are slower—initial improvement may show up in 1 to 2 weeks, with fuller effects closer to 4 to 6 weeks.",
-      "citation_tag": "FDA Label / Clinical practice experience"
+  "summary": "Sedating serotonin modulator used for depression and (more commonly) as an off-label sleep medication. Can help with sleep quickly, but depression benefits take weeks.",
+  "description": "Trazodone is an antidepressant that also has strong calming, sleep-promoting effects. In psychiatry, it’s often used off-label for insomnia—especially when you want a medication with low abuse potential. It can also treat major depression at higher, scheduled doses. Common issues include grogginess, dizziness, dry mouth, and low blood pressure when standing. Rare but serious risks include priapism (a prolonged, painful erection), abnormal heart rhythms (QT prolongation), serotonin syndrome (especially with other serotonergic meds), and liver injury.",
+  "patient_summary": "Trazodone is an antidepressant that’s commonly used off-label to help with sleep. It can work for sleep the first night, but depression improvement usually takes weeks. Expect possible morning grogginess and dizziness—especially if you stand up fast. Rare but urgent risks include priapism, serotonin syndrome, and heart rhythm problems.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for unipolar major depression. At antidepressant doses, it is typically taken on a schedule and titrated over time.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Commonly used off-label for sleep onset and sleep maintenance insomnia, especially when low abuse potential is a priority or when insomnia is linked to depression/anxiety."
+        },
+        {
+          "condition_slug": "agitation-in-dementia",
+          "condition_name": "Agitation In Dementia",
+          "relationship": "off_label",
+          "context": "Sometimes used as an alternative agent for agitation or aggressive behavior associated with dementia, usually at low bedtime doses and with careful monitoring for falls and low blood pressure."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed; food increases absorption and delays peak levels",
-      "bioavailability": "Approximately complete (reported as 100% in some sources)",
-      "onset": "Sleep: often same night; Depression: 1-2 weeks for early effects, 4-6 weeks for fuller response",
-      "peak_plasma": "Tablets: ~30 to 100 minutes (may be delayed up to ~2.5 hours with food); Oral solution: ~60 minutes (fed state)",
-      "half_life": "Tablets: ~5 to 9 hours; Oral solution: ~18 hours (fed state); may be prolonged in obesity",
-      "duration_IR": "Sedation may last into the next morning depending on dose and sensitivity",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic via CYP3A4 (major) to active metabolite mCPP",
-      "excretion": "Primarily urine (~74%, <1% unchanged); secondarily feces (~21%)",
-      "protein_binding": "89% to 95%",
-      "food_effect": "Food may increase overall absorption and delay time to peak; often recommended after a meal or light snack to improve tolerability"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sleep: often same night; Depression: 1-2 weeks for early effects, 4-6 weeks for fuller response"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "24% to 41%",
+          "notes": "This is often the point (for sleep), but it can spill into the next morning. Taking it earlier in the evening and using the lowest effective dose helps. Combining with alcohol or other sedatives increases risk fast."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "20% to 28%",
+          "notes": "Dizziness is common and can be worse when you stand up quickly. Nighttime bathroom trips are a classic fall-risk moment—go slow."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "15% to 34%",
+          "notes": "Dry mouth can be annoying and can affect dental health over time. Hydration, sugar-free gum, and saliva substitutes can help."
+        },
+        {
+          "effect": "Nausea / Vomiting",
+          "incidence": "10% to 13%",
+          "notes": "Taking it after a meal or light snack can make it easier on your stomach."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "10% to 20%",
+          "notes": "Often improves over time. If headaches are severe or persistent, dose adjustments or alternatives may be needed."
+        },
+        {
+          "effect": "Confusion / Cognitive Fog",
+          "incidence": "Up to ~5%",
+          "notes": "More likely at higher doses, in older adults, or when mixed with other sedating meds."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Priapism: Rare but urgent. Prolonged/painful erection requires emergency care."
+        },
+        {
+          "risk": "Cardiac arrhythmias/QT prolongation (with or without torsades): Palpitations, fainting, or sudden dizziness can be warning signs—seek evaluation."
+        },
+        {
+          "risk": "Serotonin syndrome: Agitation, confusion, sweating, tremor, muscle rigidity, fever—especially with serotonergic combinations. Medical emergency if severe."
+        },
+        {
+          "risk": "Orthostatic hypotension with syncope: Can lead to serious falls and fractures, especially in older adults."
+        },
+        {
+          "risk": "Activation of mania/hypomania: New decreased need for sleep, risky behavior, racing thoughts—report immediately."
+        },
+        {
+          "risk": "Hepatotoxicity: Jaundice, dark urine, severe fatigue, right upper abdominal pain—stop and evaluate urgently if suspected."
+        },
+        {
+          "risk": "Suicidal thoughts/behavior: Increased risk in younger patients early in treatment; monitor closely."
+        }
+      ],
+      "black_box_warning": "Antidepressants increase the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies. Closely monitor all antidepressant-treated patients for clinical worsening and for emergence of suicidal thoughts and behaviors. Trazodone is not approved for use in pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to trazodone or any component of the formulation"
+        },
+        {
+          "contraindication": "Use with MAOIs intended to treat psychiatric disorders (concurrently or within 14 days of discontinuing either trazodone or the MAOI)"
+        },
+        {
+          "contraindication": "Initiation of trazodone in a patient receiving IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Serotonin syndrome: Risk rises when combined with other serotonergic medications (SSRIs/SNRIs, MAOIs, triptans, linezolid, methylene blue, certain opioids like tramadol)",
+        "Mania or hypomania: Any antidepressant can trigger mood switching in people with bipolar disorder (known or unrecognized)",
+        "QT prolongation/arrhythmias: Risk is higher with heart disease, electrolyte issues, higher doses, or other QT-prolonging meds",
+        "Orthostatic hypotension and falls: Especially in older adults or anyone prone to dizziness/fainting",
+        "CNS depression: Can impair driving and decision-making, especially when combined with alcohol or other sedatives",
+        "Bleeding risk: Can increase bleeding risk when combined with NSAIDs, aspirin, antiplatelets, or anticoagulants",
+        "Hepatotoxicity: Rare but serious liver injury has been reported"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (and IV methylene blue)",
+          "mechanism": "Contraindicated: High risk of serious serotonin toxicity.",
+          "action": "Do not combine. Allow 14 days between stopping an MAOI and starting trazodone, and 14 days between stopping trazodone and starting an MAOI."
+        },
+        {
+          "interactant": "Other serotonergic medications (SSRIs/SNRIs, certain opioids like tramadol, triptans, lithium, St. John’s wort, etc.)",
+          "mechanism": "Serotonin syndrome risk increases with combinations.",
+          "action": "Use caution, start low, and monitor. Educate on serotonin syndrome symptoms; seek urgent care for severe symptoms."
+        },
+        {
+          "interactant": "Alcohol, benzodiazepines, Z-drugs, sedating antihistamines, muscle relaxants",
+          "mechanism": "Additive CNS depression: Increased sedation, impaired driving, falls, breathing risk in vulnerable patients.",
+          "action": "Avoid or minimize combinations. If used together, use the lowest doses and monitor closely."
+        },
+        {
+          "interactant": "CYP3A4 inhibitors (examples: certain azole antifungals, some macrolide antibiotics, some HIV meds)",
+          "mechanism": "Can raise trazodone levels, increasing sedation, low blood pressure, and QT risk.",
+          "action": "Consider dose reduction and monitor for oversedation, dizziness, and cardiac symptoms."
+        },
+        {
+          "interactant": "CYP3A4 inducers (examples: carbamazepine, phenytoin, rifampin, St. John’s wort)",
+          "mechanism": "Can lower trazodone levels and reduce benefit.",
+          "action": "Monitor for loss of efficacy; dose adjustment or alternative may be needed."
+        },
+        {
+          "interactant": "Anticoagulants/antiplatelets/NSAIDs",
+          "mechanism": "Potential increased bleeding risk due to serotonin effects on platelets.",
+          "action": "Use caution and monitor for bruising, nosebleeds, GI bleeding, or unusual bleeding."
+        },
+        {
+          "interactant": "QT-prolonging medications or electrolyte-lowering agents",
+          "mechanism": "Higher risk of QT prolongation and arrhythmias.",
+          "action": "Avoid stacking QT-risk meds when possible; consider ECG and electrolyte monitoring in higher-risk patients."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mood and safety: Monitor for clinical worsening, suicidality, agitation, irritability, impulsivity, akathisia, hypomania/mania—especially in the first 1 to 2 months and during dose changes."
+        },
+        {
+          "parameter": "Sleep outcomes: Sleep onset, awakenings, total sleep time, next-day functioning (grogginess is the most common reason people quit)."
+        },
+        {
+          "parameter": "Blood pressure and falls risk: Check for orthostasis, dizziness, fainting, and fall history—especially in older adults and those on other BP-lowering meds."
+        },
+        {
+          "parameter": "Sedation and impairment: Driving safety, morning confusion, slowed reaction time, and additive sedation with other CNS depressants."
+        },
+        {
+          "parameter": "Cardiac risk: Consider baseline ECG in higher-risk patients (history of arrhythmia, structural heart disease, syncope, QT prolongation risk factors, multiple QT-prolonging meds). Monitor electrolytes when clinically relevant."
+        },
+        {
+          "parameter": "Serotonin syndrome vigilance: Especially with serotonergic combinations or recent dose changes."
+        },
+        {
+          "parameter": "Liver function: Consider baseline LFTs and periodic monitoring in patients with liver disease, symptoms of liver injury, or higher-dose/longer-term use."
+        },
+        {
+          "parameter": "Bleeding risk: Watch for bruising or unusual bleeding in patients on NSAIDs, antiplatelets, or anticoagulants."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Available data on trazodone in pregnancy are limited but have not shown a clear signal of increased adverse pregnancy outcomes. Trazodone is not typically a first-line choice for depression in pregnancy if starting fresh, but patients who are stable and doing well may continue after a shared decision-making discussion. Use the lowest effective dose of a single medication when possible and monitor symptoms regularly during pregnancy.",
+        "lactation": "Trazodone is present in breast milk at low relative infant doses in limited data. Breastfeeding may be acceptable in some cases, but infants should be monitored for sedation, poor feeding, or unusual sleepiness—especially in younger or medically fragile infants. If starting an antidepressant for the first time while breastfeeding, other agents are often preferred; if trazodone is used primarily for sleep, keep the dose as low as possible.",
+        "pediatric": "Not approved for pediatric patients. Antidepressants also carry an increased suicidality warning in children, adolescents, and young adults, especially early in treatment. If used off-label for sleep in select pediatric cases, it should be done cautiously with attention to QT risk and close monitoring.",
+        "geriatric": "Older adults are more vulnerable to dizziness, orthostatic hypotension, confusion, and falls. Start low and go slow. Avoid or use extreme caution in patients with recurrent falls. Nighttime dosing can increase fall risk during nighttime awakenings—safety planning matters.",
+        "renal_impairment": "No dosage adjustment is generally necessary in mild to severe kidney impairment, and the medication is not significantly dialyzed. Titrate cautiously and monitor for side effects.",
+        "hepatic_impairment": "Effects in hepatic impairment are not well studied. In cirrhosis, use the lowest indication-specific dose and titrate gradually with frequent monitoring for oversedation (which can resemble encephalopathy). Do not exceed the usual indication-specific maximum dose or 400 mg/day (whichever is lower). If new/worsening oversedation or encephalopathy occurs, consider dose reduction (often by ~50% steps weekly) or discontinuation if needed."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1981
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed; food increases absorption and delays peak levels",
+          "bioavailability": "Approximately complete (reported as 100% in some sources)",
+          "peak_plasma": "Tablets: ~30 to 100 minutes (may be delayed up to ~2.5 hours with food); Oral solution: ~60 minutes (fed state)",
+          "half_life": "Tablets: ~5 to 9 hours; Oral solution: ~18 hours (fed state); may be prolonged in obesity",
+          "metabolism": "Hepatic via CYP3A4 (major) to active metabolite mCPP",
+          "excretion": "Primarily urine (~74%, <1% unchanged); secondarily feces (~21%)",
+          "protein_binding": "89% to 95%",
+          "food_effect": "Food may increase overall absorption and delay time to peak; often recommended after a meal or light snack to improve tolerability"
+        },
+        "dosing": {
+          "titration": "Trazodone dosing depends on the goal. For sleep, doses are usually low and taken at bedtime. For depression, doses are higher and typically divided across the day with a larger portion at night if sedation is an issue."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Even though trazodone isn’t “addictive” in the controlled-substance sense, stopping abruptly can still cause a withdrawal-style rebound—especially rebound insomnia, vivid dreams, irritability, and flu-like symptoms. If you’ve been on it for a while, taper it."
+        }
+      }
     }
   },
   "sections": [
@@ -97,7 +256,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone’s experience is different, but these are the patterns I hear most often:",
       "items": [
         {
           "category": "Sleepiness (same night)",
@@ -143,7 +301,8 @@
           ],
           "note": "Priapism, arrhythmias/QT prolongation, and serotonin syndrome are uncommon but urgent when they happen."
         }
-      ]
+      ],
+      "intro": "Everyone’s experience is different, but these are the patterns I hear most often:"
     },
     {
       "type": "onset_duration",
@@ -160,10 +319,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For insomnia, trazodone often helps people fall asleep faster and/or stay asleep longer—sometimes immediately. The main limiter is tolerability (morning grogginess, dizziness, low blood pressure). For depression, trazodone can be effective, but it usually isn’t the first choice today because other antidepressants tend to be easier to tolerate and simpler to dose.",
       "metric": "Sleep benefit (off-label)",
       "value": "Often noticeable quickly",
       "comparison": "Not applicable",
-      "text": "For insomnia, trazodone often helps people fall asleep faster and/or stay asleep longer—sometimes immediately. The main limiter is tolerability (morning grogginess, dizziness, low blood pressure). For depression, trazodone can be effective, but it usually isn’t the first choice today because other antidepressants tend to be easier to tolerate and simpler to dose.",
       "clinical_details": "In practice, trazodone is frequently chosen for patients whose insomnia is tightly linked to mood symptoms, or for those where avoiding controlled substances matters. At antidepressant doses, it’s a scheduled medication that is titrated gradually, and response is assessed over weeks rather than days.",
       "citation": {
         "authors": "FDA Prescribing Information (Desyrel / Trazodone) and clinical practice context",
@@ -258,7 +417,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Trazodone is serotonergic and is mainly metabolized by CYP3A4. The highest-risk interactions involve serotonin syndrome, excess sedation, and heart rhythm risk.",
       "items": [
         {
           "with": "MAOIs (and IV methylene blue)",
@@ -295,7 +453,8 @@
           "risk": "Higher risk of QT prolongation and arrhythmias.",
           "action": "Avoid stacking QT-risk meds when possible; consider ECG and electrolyte monitoring in higher-risk patients."
         }
-      ]
+      ],
+      "intro": "Trazodone is serotonergic and is mainly metabolized by CYP3A4. The highest-risk interactions involve serotonin syndrome, excess sedation, and heart rhythm risk."
     },
     {
       "type": "tapering",
@@ -374,21 +533,6 @@
       "text": "In modern psychiatry, trazodone is often a “sleep tool” more than a first-line antidepressant. If the primary problem is insomnia (especially sleep maintenance) and you want to avoid controlled substances, trazodone can be a reasonable off-label option—ideally as a short-term bridge while you work on behavioral sleep treatment. For major depression, it can work, but it’s commonly reserved for cases where other antidepressants weren’t tolerated or when sedation is actually helpful (for example, severe insomnia in depression). In older adults and medically complex patients, the fall/orthostasis and cardiac considerations matter a lot."
     }
   ],
-  "seo": {
-    "title": "Trazodone: Uses for Sleep & Depression, Dosage, Side Effects, and Warnings",
-    "description": "Trazodone for insomnia (off-label) and depression: how fast it works for sleep, dosing ranges, common side effects like grogginess and dizziness, and serious risks like priapism, serotonin syndrome, and QT prolongation.",
-    "canonical": "[https://www.heypsych.com/treatments/trazodone](https://www.heypsych.com/treatments/trazodone)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is trazodone used for in psychiatry?",
@@ -438,5 +582,20 @@
       "q": "Should trazodone be used long-term for insomnia?",
       "a": "Usually, long-term nightly use for insomnia isn’t the ideal plan unless non-medication sleep treatments aren’t available or haven’t worked and the benefits clearly outweigh the downsides. If you’re using trazodone mainly for sleep, it’s worth pairing it with behavioral sleep strategies so you’re not stuck needing a pill to sleep."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Trazodone: Uses for Sleep & Depression, Dosage, Side Effects, and Warnings",
+    "description": "Trazodone for insomnia (off-label) and depression: how fast it works for sleep, dosing ranges, common side effects like grogginess and dizziness, and serious risks like priapism, serotonin syndrome, and QT prolongation.",
+    "canonical": "[https://www.heypsych.com/treatments/trazodone](https://www.heypsych.com/treatments/trazodone)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -19,7 +19,7 @@ interface ToolCardProps {
 export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
   return (
     <Link href={`/tools/${tool.slug}/`} className="group block h-full">
-      <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-neutral-200 bg-white">
+      <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-separator bg-surface">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1 min-w-0">
@@ -31,11 +31,11 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
               {tool.app_rating && (
                 <div className="flex items-center gap-1 mt-1">
                   <Star className="h-4 w-4 fill-current text-yellow-500" />
-                  <span className="font-medium text-sm text-neutral-900">
+                  <span className="font-medium text-sm text-label-primary">
                     {tool.app_rating}
                   </span>
                   {tool.total_reviews && (
-                    <span className="text-xs text-neutral-500">
+                    <span className="text-xs text-label-primary0">
                       ({formatReviews(tool.total_reviews)})
                     </span>
                   )}
@@ -55,7 +55,7 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
 
         <CardContent className="space-y-3">
           {/* One-liner */}
-          <p className="text-sm text-neutral-600 line-clamp-2">
+          <p className="text-sm text-label-tertiary line-clamp-2">
             {tool.short_description || tool.one_liner}
           </p>
 
@@ -77,12 +77,12 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
             <div className="flex items-center gap-2">
               {/* Pricing */}
               {tool.pricing.free_tier && (
-                <span className="text-xs font-medium text-green-700">Free</span>
+                <span className="text-xs font-medium text-positive-700">Free</span>
               )}
               
               {/* Privacy */}
               {tool.privacy.grade && tool.privacy.grade !== "unknown" && (
-                <div className="flex items-center gap-1 text-blue-700">
+                <div className="flex items-center gap-1 text-accent-700">
                   <Shield className="h-3 w-3" />
                   <span className="text-xs font-medium">{tool.privacy.grade}</span>
                 </div>
@@ -90,7 +90,7 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-1 text-indigo-600 group-hover:text-indigo-700">
+            <div className="flex items-center gap-1 text-indigo-600 group-hover:text-accent">
               <span className="text-xs font-medium">View</span>
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </div>

@@ -83,18 +83,18 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
                 {config.title}
               </h1>
 
-              <p className="mx-auto mb-6 max-w-3xl text-lg text-slate-600">
+              <p className="mx-auto mb-6 max-w-3xl text-lg text-label-tertiary">
                 {config.description}
               </p>
 
               {/* Stats */}
-              <div className="flex items-center justify-center gap-6 text-sm text-slate-500">
+              <div className="flex items-center justify-center gap-6 text-sm text-label-primary0">
                 <div className="flex items-center gap-2">
                   <div className={`h-2 w-2 rounded-full ${config.iconColor.replace('text-', 'bg-')}`}></div>
                   {conditions.length} Conditions
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-positive-tint0"></div>
                   Evidence-Based
                 </div>
               </div>
@@ -116,11 +116,11 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
                 return (
                   <div
                     key={index}
-                    className={`rounded-xl border ${config.bgColor.replace('from-', 'border-').split(' ')[0].replace('bg-', 'border-')} bg-white/50 p-4 text-center backdrop-blur-sm`}
+                    className={`rounded-xl border ${config.bgColor.replace('from-', 'border-').split(' ')[0].replace('bg-', 'border-')} bg-surface/50 p-4 text-center backdrop-blur-sm`}
                   >
                     <FeatureIcon className={`mx-auto mb-2 h-6 w-6 ${config.iconColor}`} />
-                    <h3 className="mb-1 font-semibold text-slate-900">{feature.title}</h3>
-                    <p className="text-sm text-slate-600">{feature.description}</p>
+                    <h3 className="mb-1 font-semibold text-label-primary">{feature.title}</h3>
+                    <p className="text-sm text-label-tertiary">{feature.description}</p>
                   </div>
                 );
               })}
@@ -134,8 +134,8 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
         <div className="mx-auto max-w-6xl">
           {conditions.length === 0 ? (
             <div className="py-12 text-center">
-              <IconComponent className="mx-auto mb-4 h-12 w-12 text-slate-400" />
-              <p className="text-slate-600">No conditions found in this category yet.</p>
+              <IconComponent className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
+              <p className="text-label-tertiary">No conditions found in this category yet.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -150,15 +150,15 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className={`h-full border-${config.iconColor.split('-')[1]}-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 hover:shadow-lg`}>
+                    <Card className={`h-full border-${config.iconColor.split('-')[1]}-100 bg-surface/80 backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 hover:shadow-lg`}>
                       <CardHeader className="pb-3">
-                        <CardTitle className={`text-lg font-bold text-slate-900 transition-colors group-hover:${config.iconColor}`}>
+                        <CardTitle className={`text-lg font-bold text-label-primary transition-colors group-hover:${config.iconColor}`}>
                           {condition.name}
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0">
                         {condition.data?.description && (
-                          <p className="mb-4 line-clamp-3 text-sm text-slate-600">
+                          <p className="mb-4 line-clamp-3 text-sm text-label-tertiary">
                             {typeof condition.data.description === 'string' 
                               ? condition.data.description 
                               : 'Click to learn more about this condition'}
@@ -173,7 +173,7 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
                             </span>
                           )}
                           {condition.metadata?.dsm5_code && (
-                            <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">
+                            <span className="inline-flex items-center rounded-full bg-accent-tint px-2 py-1 text-xs font-medium text-accent-700">
                               DSM-5: {condition.metadata.dsm5_code}
                             </span>
                           )}

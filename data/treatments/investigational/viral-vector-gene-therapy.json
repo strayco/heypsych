@@ -1,100 +1,167 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "viral-vector-gene-therapy",
-  "type": "investigational",
-  "name": "Viral Vector Gene Therapy",
-  "summary": "Viral vector gene therapy uses modified viruses to deliver therapeutic genes into a patient's cells. In psychiatry and neurology, this investigational approach seeks to correct dysfunctional pathways by introducing or regulating gene expression relevant to mental health disorders.",
-  "description": "Viral vector gene therapy is an investigational approach that leverages engineered viruses—such as adeno-associated virus (AAV), lentivirus, or retrovirus—to deliver therapeutic genetic material into specific brain regions. The goal is to restore or modulate neural function by altering gene expression. While gene therapies are established in rare monogenic neurological diseases, their application to psychiatric conditions is still highly experimental. Early-stage studies suggest potential for disorders such as major depression, addiction, and neurodegenerative diseases, though safety, specificity, and ethical concerns remain significant challenges.",
-  "category": "investigational/experimental-gene-therapy",
-  "tags": [
-    "viral vector gene therapy",
-    "AAV therapy",
-    "lentivirus",
-    "genetic psychiatry",
-    "experimental gene therapy",
-    "neurological disorders",
-    "psychiatric disorders"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "viral-vector-gene-therapy",
+    "name": "Viral Vector Gene Therapy",
+    "aliases": [
+      "viral-mediated gene transfer",
+      "AAV gene delivery",
+      "lentiviral gene therapy"
+    ]
+  },
+  "taxonomy": {
+    "modality": "investigational",
+    "category": "investigational/experimental-gene-therapy",
     "intervention_types": [
       "Gene therapy",
       "Biological"
     ],
-    "treatment_types": [
-      "Genetic intervention"
-    ],
-    "categories": [
-      "Neuropsychiatric disorders",
-      "Mood disorders",
-      "Addiction",
-      "Neurodegeneration"
-    ],
-    "delivery_methods": [
-      "Intracranial injection",
-      "Intravenous infusion (experimental)"
-    ],
-    "invasiveness_level": "Highly invasive",
-    "equipment_required": "Specialized viral vector preparation, neurosurgical tools",
-    "training_required": "Advanced expertise in neurosurgery, molecular genetics, and clinical gene therapy",
-    "age_groups": [
-      "Adults (18+)"
-    ],
-    "session_duration": "Single administration (potentially long-lasting or permanent effects)",
-    "treatment_duration": "One-time or infrequent dosing; long-term effects under study",
-    "specialty_areas": [
-      "Psychiatry",
-      "Neurology",
-      "Neurosurgery",
-      "Molecular Genetics"
-    ],
-    "trial_phase": "Phase I–II (early clinical investigations in neurology and psychiatry)",
-    "regulatory_status": "Investigational, not FDA-approved for psychiatric use"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Genetic neurological disorders",
-      "Experimental use in mood disorders and addiction"
-    ],
-    "conditions_treated": [
-      "Parkinson’s disease (neurological precedent)",
-      "Addiction (experimental)",
-      "Major depressive disorder (preclinical)"
-    ],
-    "off_label_uses": [
-      "None – investigational only"
-    ],
-    "contraindications": [
-      "Severe immunodeficiency",
-      "Active infection",
-      "Contraindication to neurosurgery"
-    ],
-    "safety_profile": "Potential risks include immune response to viral vector, insertional mutagenesis, and unintended gene expression. Long-term safety is not yet established.",
-    "evidence_level": "Preclinical to early clinical; robust evidence in psychiatric disorders is lacking.",
-    "research_support": "Extensive preclinical work; limited psychiatric clinical trials underway.",
-    "efficacy_rating": {
-      "major_depressive_disorder": 1,
-      "addiction": 1,
-      "neurodegenerative_disorders": 2,
-      "safety_tolerability": 1
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "viral vector gene therapy psychiatry",
-      "AAV gene therapy depression",
-      "gene therapy for addiction",
-      "experimental viral gene delivery mental health"
-    ],
-    "synonyms": [
-      "viral-mediated gene transfer",
-      "AAV gene delivery",
-      "lentiviral gene therapy"
-    ],
-    "common_misspellings": [
-      "viral vetor gene therapy",
-      "gene theraphy virus",
-      "virall gene treatment"
+    "tags": [
+      "viral vector gene therapy",
+      "AAV therapy",
+      "lentivirus",
+      "genetic psychiatry",
+      "experimental gene therapy",
+      "neurological disorders",
+      "psychiatric disorders"
     ]
+  },
+  "summary": "Viral vector gene therapy uses modified viruses to deliver therapeutic genes into a patient's cells. In psychiatry and neurology, this investigational approach seeks to correct dysfunctional pathways by introducing or regulating gene expression relevant to mental health disorders.",
+  "description": "Viral vector gene therapy is an investigational approach that leverages engineered viruses—such as adeno-associated virus (AAV), lentivirus, or retrovirus—to deliver therapeutic genetic material into specific brain regions. The goal is to restore or modulate neural function by altering gene expression. While gene therapies are established in rare monogenic neurological diseases, their application to psychiatric conditions is still highly experimental. Early-stage studies suggest potential for disorders such as major depression, addiction, and neurodegenerative diseases, though safety, specificity, and ethical concerns remain significant challenges.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "genetic-neurological-disorders",
+          "condition_name": "Genetic neurological disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "experimental-use-in-mood-disorders-and-addiction",
+          "condition_name": "Experimental use in mood disorders and addiction",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "parkinson-s-disease-neurological-precedent",
+          "condition_name": "Parkinson’s disease (neurological precedent)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "addiction-experimental",
+          "condition_name": "Addiction (experimental)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "major-depressive-disorder-preclinical",
+          "condition_name": "Major depressive disorder (preclinical)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "none-investigational-only",
+          "condition_name": "None – investigational only",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Preclinical to early clinical; robust evidence in psychiatric disorders is lacking.",
+      "efficacy_ratings": {
+        "major_depressive_disorder": {
+          "rating": 1
+        },
+        "addiction": {
+          "rating": 1
+        },
+        "neurodegenerative_disorders": {
+          "rating": 2
+        },
+        "safety_tolerability": {
+          "rating": 1
+        }
+      },
+      "research_support": "Extensive preclinical work; limited psychiatric clinical trials underway."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "One-time or infrequent dosing; long-term effects under study"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Intracranial injection",
+        "Intravenous infusion (experimental)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Single administration (potentially long-lasting or permanent effects)"
+      },
+      "professional_required": {
+        "required": false,
+        "notes": "Advanced expertise in neurosurgery, molecular genetics, and clinical gene therapy"
+      }
+    },
+    "safety": {
+      "overall_safety": "Potential risks include immune response to viral vector, insertional mutagenesis, and unintended gene expression. Long-term safety is not yet established.",
+      "common_adverse_effects": [
+        {
+          "effect": "Injection site reactions"
+        },
+        {
+          "effect": "Immune response (flu-like symptoms)"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Insertional mutagenesis"
+        },
+        {
+          "risk": "Severe immune reaction"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active systemic infection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe immune compromise",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Contraindication to neurosurgery",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of autoimmune disease",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Unstable psychiatric state (risk of exacerbation post-surgery)",
+          "type": "relative"
+        }
+      ]
+    },
+    "access": {
+      "regulatory_status": "fda_approved"
+    },
+    "modality_details": {
+      "modality": "investigational",
+      "details": {
+        "procedure_type": "Gene therapy, Biological",
+        "equipment_required": [
+          "Specialized viral vector preparation, neurosurgical tools"
+        ],
+        "session_protocol": "Engineering and validation of viral vector with therapeutic gene construct.\nDelivery via stereotactic neurosurgery (direct brain injection) or intravenous infusion for systemic targeting.\nPost-administration monitoring for immune response and functional outcomes."
+      }
+    }
   },
   "sections": [
     {
@@ -208,6 +275,38 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kaplitt MG et al., Lancet (2007)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17382879/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kay MA, Nat Rev Genet (2011)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21386865/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "viral vector gene therapy psychiatry",
+      "AAV gene therapy depression",
+      "gene therapy for addiction",
+      "experimental viral gene delivery mental health"
+    ],
+    "synonyms": [
+      "viral-mediated gene transfer",
+      "AAV gene delivery",
+      "lentiviral gene therapy"
+    ],
+    "common_misspellings": [
+      "viral vetor gene therapy",
+      "gene theraphy virus",
+      "virall gene treatment"
+    ]
+  },
   "seo": {
     "title": "Viral Vector Gene Therapy – Experimental Psychiatric and Neurological Applications",
     "description": "Viral vector gene therapy is an investigational treatment delivering therapeutic genes using engineered viruses. Explore its mechanisms, clinical research, safety profile, and potential applications in psychiatry and neurology.",
@@ -220,5 +319,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Preclinical to early clinical; robust evidence in psychiatric disorders is lacking."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Preclinical to early clinical; robust evidence in psychiatric disorders is lacking."
+    ]
   }
 }

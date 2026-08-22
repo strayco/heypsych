@@ -1,85 +1,183 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "exposure-response-prevention",
-  "type": "therapy",
-  "name": "Exposure and Response Prevention (ERP)",
-  "summary": "A specialized form of cognitive-behavioral therapy that involves systematic exposure to anxiety-provoking thoughts or situations while preventing the compulsive responses that usually follow.",
-  "description": "Exposure and Response Prevention (ERP) is a frontline, evidence-based treatment primarily for Obsessive-Compulsive Disorder (OCD). It involves gradually and systematically exposing individuals to feared thoughts, images, or situations that trigger anxiety, while guiding them to refrain from performing compulsive behaviors or rituals. Over time, this reduces the distress associated with obsessive triggers and helps break the cycle of obsessions and compulsions. ERP can be delivered in individual therapy, group therapy, or intensive outpatient programs, and is considered one of the most effective interventions for OCD.",
-  "category": "therapy/cognitive-behavioral",
-  "tags": [
-    "cbt",
-    "ocd",
-    "anxiety",
-    "exposure-therapy",
-    "behavioral-therapy"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Exposure-based therapy",
-      "Cognitive-behavioral therapy"
-    ],
-    "categories": [
-      "Anxiety treatment",
-      "OCD-focused therapy"
-    ],
-    "delivery_methods": [
-      "Individual therapy",
-      "Group therapy",
-      "Intensive outpatient or residential"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "12–20 sessions (typical course)"
-    ],
-    "specialty_areas": [
-      "Obsessive-Compulsive Disorder",
-      "Anxiety disorders"
+  "identity": {
+    "slug": "exposure-response-prevention",
+    "name": "Exposure and Response Prevention (ERP)",
+    "generic_name": "exposure and response prevention",
+    "brand_names": [
+      "ERP"
     ],
     "wikidata_qid": "Q5421633"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Obsessive-compulsive disorder (OCD)",
-      "Compulsive behaviors",
-      "Avoidance behaviors"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/cognitive-behavioral",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "conditions_treated": [
-      "Obsessive-Compulsive Disorder",
-      "Health anxiety",
-      "Body Dysmorphic Disorder",
-      "Phobias (selected cases)",
-      "Generalized Anxiety Disorder (sometimes as adjunct)"
-    ],
-    "off_label_uses": [
-      "Tourette syndrome (tic-related compulsions)",
-      "Eating disorders (with compulsive rituals)"
-    ],
-    "contraindications": [
-      "Unstable psychosis",
-      "Acute suicidal risk",
-      "Severe cognitive impairment"
-    ],
-    "safety_profile": "Safe and effective, though it can produce significant short-term anxiety during exposures.",
-    "evidence_level": "High—considered gold-standard treatment for OCD.",
-    "research_support": "Decades of clinical trials confirm ERP’s efficacy in reducing OCD symptoms, with effect sizes comparable or superior to medication in many cases.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "ocd-symptom-reduction": 5,
-      "anxiety-reduction": 4,
-      "functioning-improvement": 5,
-      "overall_tolerability": 4
+    "tags": [
+      "cbt",
+      "ocd",
+      "anxiety",
+      "exposure-therapy",
+      "behavioral-therapy"
+    ]
+  },
+  "summary": "A specialized form of cognitive-behavioral therapy that involves systematic exposure to anxiety-provoking thoughts or situations while preventing the compulsive responses that usually follow.",
+  "description": "Exposure and Response Prevention (ERP) is a frontline, evidence-based treatment primarily for Obsessive-Compulsive Disorder (OCD). It involves gradually and systematically exposing individuals to feared thoughts, images, or situations that trigger anxiety, while guiding them to refrain from performing compulsive behaviors or rituals. Over time, this reduces the distress associated with obsessive triggers and helps break the cycle of obsessions and compulsions. ERP can be delivered in individual therapy, group therapy, or intensive outpatient programs, and is considered one of the most effective interventions for OCD.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder-ocd",
+          "condition_name": "Obsessive-compulsive disorder (OCD)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "compulsive-behaviors",
+          "condition_name": "Compulsive behaviors",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "avoidance-behaviors",
+          "condition_name": "Avoidance behaviors",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-Compulsive Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "health-anxiety",
+          "condition_name": "Health anxiety",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "body-dysmorphic-disorder",
+          "condition_name": "Body Dysmorphic Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "phobias-selected-cases",
+          "condition_name": "Phobias (selected cases)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder-sometimes-as-adjunct",
+          "condition_name": "Generalized Anxiety Disorder (sometimes as adjunct)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "tourette-syndrome-tic-related-compulsions",
+          "condition_name": "Tourette syndrome (tic-related compulsions)",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "eating-disorders-with-compulsive-rituals",
+          "condition_name": "Eating disorders (with compulsive rituals)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—considered gold-standard treatment for OCD.",
+      "efficacy_ratings": {
+        "ocd-symptom-reduction": {
+          "rating": 5
+        },
+        "anxiety-reduction": {
+          "rating": 4
+        },
+        "functioning-improvement": {
+          "rating": 5
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Decades of clinical trials confirm ERP’s efficacy in reducing OCD symptoms, with effect sizes comparable or superior to medication in many cases."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions (typical course)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Individual therapy",
+        "Group therapy",
+        "Intensive outpatient or residential"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and effective, though it can produce significant short-term anxiety during exposures.",
+      "common_adverse_effects": [
+        {
+          "effect": "Temporary anxiety or distress"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Exacerbation of symptoms if not properly supported"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unstable psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe suicidality",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Lack of engagement or support system",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe cognitive limitations",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Exposure-based therapy, Cognitive-behavioral therapy",
+        "key_techniques": [
+          "Anxiety treatment",
+          "OCD-focused therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review homework and anxiety triggers.",
+          "during_session": "Engage in structured exposure tasks while preventing rituals.",
+          "post_session": "Process experience, assign new exposures, reinforce learning."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in ERP or CBT for OCD"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -229,6 +327,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "International OCD Foundation: ERP Overview",
+      "url": "https://iocdf.org/about-ocd/ocd-treatment/erp/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Foa EB, Kozak MJ. (1986). Emotional processing of fear.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3743719/"
+    }
+  ],
   "seo": {
     "title": "Exposure and Response Prevention (ERP) Therapy for OCD",
     "description": "Exposure and Response Prevention (ERP) is the gold-standard therapy for OCD, helping individuals confront fears while resisting compulsions to reduce symptoms and improve functioning.",
@@ -241,5 +353,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—considered gold-standard treatment for OCD."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—considered gold-standard treatment for OCD."
+    ]
   }
 }

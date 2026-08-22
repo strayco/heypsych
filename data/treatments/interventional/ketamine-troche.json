@@ -1,77 +1,169 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ketamine-troche",
-  "type": "interventional",
-  "name": "Ketamine Troche",
-  "summary": "An oral, sublingual, or buccal form of ketamine used for at-home or clinic-based maintenance therapy following initial ketamine treatment, primarily for mood disorders and chronic pain.",
-  "description": "Ketamine troches are small, dissolvable lozenges containing ketamine, typically compounded by specialty pharmacies. They are placed under the tongue or between the cheek and gum to allow absorption through oral mucosa. Troches are often prescribed as part of a maintenance plan following in-clinic ketamine infusions or intramuscular injections, extending therapeutic benefits for depression, anxiety, PTSD, or chronic pain. They are used off-label in psychiatry and pain management, with dosing protocols tailored to individual tolerance and therapeutic goals.",
-  "category": "interventional/psychedelic-assisted-therapy",
-  "tags": [
-    "ketamine",
-    "oral ketamine",
-    "troche",
-    "maintenance therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "ketamine-troche",
+    "name": "Ketamine Troche"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/psychedelic-assisted-therapy",
     "intervention_types": [
       "Pharmacologic"
     ],
-    "treatment_types": [
-      "Psychedelic-assisted therapy",
-      "Maintenance pharmacotherapy"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Pain Management"
-    ],
-    "delivery_methods": [
-      "Sublingual",
-      "Buccal"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "20–45 minutes (dissolution and onset)",
-    "treatment_duration": [
-      "Ongoing maintenance"
-    ],
-    "specialty_areas": [
-      "Mood Disorders",
-      "Chronic Pain"
+    "tags": [
+      "ketamine",
+      "oral ketamine",
+      "troche",
+      "maintenance therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-resistant depression",
-      "Anxiety disorders"
-    ],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Bipolar depression",
-      "PTSD",
-      "Generalized anxiety disorder",
-      "Chronic neuropathic pain"
-    ],
-    "off_label_uses": [
-      "Obsessive-compulsive disorder",
-      "Fibromyalgia"
-    ],
-    "contraindications": [
-      "Uncontrolled hypertension",
-      "History of psychosis",
-      "Pregnancy or breastfeeding"
-    ],
-    "safety_profile": "Generally well-tolerated when prescribed and monitored by a clinician. Dissociation, mild dizziness, and changes in perception are possible during onset. Risk of misuse if not controlled.",
-    "evidence_level": "Emerging for maintenance therapy following ketamine induction.",
-    "research_support": "Small observational studies and clinical experience suggest troches help sustain mood benefits achieved from initial ketamine treatments.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "maintenance_depression": 4,
-      "maintenance_anxiety": 3,
-      "overall_tolerability": 4
+  "summary": "An oral, sublingual, or buccal form of ketamine used for at-home or clinic-based maintenance therapy following initial ketamine treatment, primarily for mood disorders and chronic pain.",
+  "description": "Ketamine troches are small, dissolvable lozenges containing ketamine, typically compounded by specialty pharmacies. They are placed under the tongue or between the cheek and gum to allow absorption through oral mucosa. Troches are often prescribed as part of a maintenance plan following in-clinic ketamine infusions or intramuscular injections, extending therapeutic benefits for depression, anxiety, PTSD, or chronic pain. They are used off-label in psychiatry and pain management, with dosing protocols tailored to individual tolerance and therapeutic goals.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized anxiety disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "chronic-neuropathic-pain",
+          "condition_name": "Chronic neuropathic pain",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "fibromyalgia",
+          "condition_name": "Fibromyalgia",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Emerging for maintenance therapy following ketamine induction.",
+      "efficacy_ratings": {
+        "maintenance_depression": {
+          "rating": 4
+        },
+        "maintenance_anxiety": {
+          "rating": 3
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Small observational studies and clinical experience suggest troches help sustain mood benefits achieved from initial ketamine treatments."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Ongoing maintenance"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Sublingual",
+        "Buccal"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "20–45 minutes (dissolution and onset)"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well-tolerated when prescribed and monitored by a clinician. Dissociation, mild dizziness, and changes in perception are possible during onset. Risk of misuse if not controlled.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild dissociation"
+        },
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Altered sensory perception"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hallucinations"
+        },
+        {
+          "risk": "Severe dissociation"
+        },
+        {
+          "risk": "Urinary discomfort with long-term high use"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled hypertension",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Substance misuse risk",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Liver disease",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Not recommended."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Pharmacologic",
+        "session_protocol": "Place troche under tongue or between cheek and gum.\nAllow to dissolve completely without chewing or swallowing.\nAvoid eating or drinking for 30 minutes after administration."
+      }
     }
   },
   "sections": [
@@ -218,6 +310,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Glue P, et al. Ketamine’s role in the treatment of mood disorders. Br J Psychiatry. 2018.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29607867/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Wilkinson ST, et al. Oral ketamine for depression: A systematic review. J Affect Disord. 2019.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30743140/"
+    }
+  ],
   "seo": {
     "title": "Ketamine Troche",
     "description": "Guide to ketamine troches for maintenance therapy in depression, anxiety, PTSD, and chronic pain.",
@@ -230,5 +336,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Emerging for maintenance therapy following ketamine induction."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Emerging for maintenance therapy following ketamine induction."
+    ]
   }
 }

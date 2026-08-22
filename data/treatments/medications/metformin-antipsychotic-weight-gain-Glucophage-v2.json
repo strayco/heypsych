@@ -1,85 +1,205 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "metformin-psychiatry-weight-gain",
-  "type": "medication",
-  "name": "Metformin (Glucophage)",
-  "summary": "Metformin is a diabetes medication that psychiatrists commonly use off-label to help prevent or treat antipsychotic-related weight gain. It’s not a stimulant and it doesn’t “melt fat,” but it can help slow weight creep, reduce insulin resistance, and make weight management more realistic—especially early.",
-  "description": "Metformin is best known for type 2 diabetes, but in psychiatry it’s often used off-label to prevent or reduce weight gain from antipsychotics (like olanzapine, quetiapine, risperidone, clozapine). It’s usually started low and increased slowly to avoid stomach side effects. The rare but serious risk is lactic acidosis—especially in people with kidney problems, severe dehydration, heavy alcohol use, or low-oxygen medical states. It can also lower vitamin B12 over time, which matters because B12 deficiency can look like depression, brain fog, and neuropathy. The goal is usually to plateau weight gain and improve metabolic labs—not to create rapid weight loss.",
-  "patient_summary": "In psych care, metformin is used off-label to help stop antipsychotic weight gain from running away. Think: “put the brakes on” rather than “instant weight loss.” Most people notice the biggest change over weeks to months. The main downside is GI stuff (diarrhea, nausea), especially if you increase too fast or use immediate-release without food. The rare scary risk is lactic acidosis—most relevant if kidney function is low, you’re dehydrated, you drink heavily, or you’re medically unstable.",
-  "category": "medications/antipsychotic-side-effects",
-  "metadata": {
-    "drug_classes": [
-      "Biguanide",
-      "Antidiabetic Agent",
-      "Insulin Sensitizer"
-    ],
+  "identity": {
+    "slug": "metformin-psychiatry-weight-gain",
+    "name": "Metformin (Glucophage)",
+    "generic_name": "metformin",
     "brand_names": [
       "Glucophage",
       "Glucophage XR",
       "Riomet",
       "Glumetza"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1994,
-    "pharmacologic_category": "Biguanide Antihyperglycemic",
-    "published_date": "2025-12-26T00:00:00Z",
-    "last_updated": "2025-12-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Antipsychotic-Induced Weight Gain (off-label, psychiatry use)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "antipsychotic-induced-weight-gain",
-        "relationship": "primary_treatment",
-        "context": "Common off-label strategy in psychiatry to prevent or reduce weight gain and metabolic risk from antipsychotics. Early use is often aimed at stopping the upward trajectory (plateau), but some patients also lose weight over time."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "not_indicated",
-        "context": "Not used to treat insomnia. Any sleep changes are usually indirect (eg, improved energy from better metabolic health, or GI upset disrupting sleep)."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "not_indicated",
-        "context": "Not an anxiolytic. It does not treat anxiety directly."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to metformin or any component",
-      "Severe renal dysfunction (eGFR <30 mL/minute/1.73 m2)",
-      "Acute or chronic metabolic acidosis (including diabetic ketoacidosis)"
-    ],
-    "efficacy_response": {
-      "metric": "Weight-gain plateau or modest weight loss over months (psychiatric off-label use)",
-      "percentage_value": "Variable",
-      "comparison_data": "Most effective when started early and titrated as tolerated; benefits are modest rather than dramatic",
-      "patient_text": "In psych care, metformin usually helps by slowing or stopping antipsychotic weight gain and improving insulin resistance. It’s not a quick fix, but it can shift the trend in the right direction over weeks to months—especially if you start it early instead of waiting for large weight gain.",
-      "citation_tag": "Clinical practice use (off-label)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antipsychotic-side-effects",
+    "drug_classes": [
+      "Biguanide",
+      "Antidiabetic Agent",
+      "Insulin Sensitizer"
+    ]
+  },
+  "summary": "Metformin is a diabetes medication that psychiatrists commonly use off-label to help prevent or treat antipsychotic-related weight gain. It’s not a stimulant and it doesn’t “melt fat,” but it can help slow weight creep, reduce insulin resistance, and make weight management more realistic—especially early.",
+  "description": "Metformin is best known for type 2 diabetes, but in psychiatry it’s often used off-label to prevent or reduce weight gain from antipsychotics (like olanzapine, quetiapine, risperidone, clozapine). It’s usually started low and increased slowly to avoid stomach side effects. The rare but serious risk is lactic acidosis—especially in people with kidney problems, severe dehydration, heavy alcohol use, or low-oxygen medical states. It can also lower vitamin B12 over time, which matters because B12 deficiency can look like depression, brain fog, and neuropathy. The goal is usually to plateau weight gain and improve metabolic labs—not to create rapid weight loss.",
+  "patient_summary": "In psych care, metformin is used off-label to help stop antipsychotic weight gain from running away. Think: “put the brakes on” rather than “instant weight loss.” Most people notice the biggest change over weeks to months. The main downside is GI stuff (diarrhea, nausea), especially if you increase too fast or use immediate-release without food. The rare scary risk is lactic acidosis—most relevant if kidney function is low, you’re dehydrated, you drink heavily, or you’re medically unstable.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "antipsychotic-induced-weight-gain",
+          "condition_name": "Antipsychotic Induced Weight Gain",
+          "relationship": "primary_indication",
+          "context": "Common off-label strategy in psychiatry to prevent or reduce weight gain and metabolic risk from antipsychotics. Early use is often aimed at stopping the upward trajectory (plateau), but some patients also lose weight over time.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "secondary_indication",
+          "context": "Not used to treat insomnia. Any sleep changes are usually indirect (eg, improved energy from better metabolic health, or GI upset disrupting sleep)."
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "secondary_indication",
+          "context": "Not an anxiolytic. It does not treat anxiety directly."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Food decreases and delays absorption; taking with meals improves tolerability",
-      "bioavailability": "About 50-60% fasting",
-      "onset": "Within days",
-      "peak_plasma": "IR: 2-3 hours; ER: 6-8 hours",
-      "half_life": "Plasma: 4-9 hours; blood: ~17.6 hours",
-      "duration_IR": "Metabolic effect builds over days; maximum effect may take up to 2 weeks",
-      "duration_XR": "Metabolic effect builds over days; maximum effect may take up to 2 weeks",
-      "metabolism": "Not metabolized by the liver",
-      "excretion": "Urine (~90% unchanged)",
-      "protein_binding": "Negligible",
-      "food_effect": "Food reduces GI upset; ER is typically taken with the evening meal"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Within days"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Diarrhea",
+          "incidence": ">10% (rates vary by formulation; higher with IR, lower with ER)",
+          "notes": "This is the headline side effect. It’s usually worst at the start or after dose increases. Taking with meals, going slow, and switching to extended-release can make a huge difference."
+        },
+        {
+          "effect": "Nausea / GI Upset",
+          "incidence": ">10% (varies by formulation)",
+          "notes": "Often improves after a few weeks. If you’re miserable, the usual fix is slower titration, taking it with food, or using ER."
+        },
+        {
+          "effect": "Abdominal Pain / Bloating / Gas",
+          "incidence": "1-10% (variable)",
+          "notes": "Can happen early or with dose jumps. If symptoms persist, reassess dose, formulation, and other GI contributors."
+        },
+        {
+          "effect": "Asthenia / Fatigue",
+          "incidence": "Up to ~10% (variable)",
+          "notes": "Sometimes it’s transient. If fatigue is persistent months in, think about B12 (and anemia) rather than blaming your brain."
+        },
+        {
+          "effect": "Vitamin B12 Deficiency",
+          "incidence": "Reported; risk increases with duration and higher doses",
+          "notes": "B12 deficiency can look like depression, brain fog, and neuropathy. It’s reversible when caught. This is why periodic B12 checks matter."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Metformin-associated lactic acidosis: rare but life-threatening; can present with malaise, muscle aches, abdominal pain, sleepiness, shortness of breath, hypotension, and bradyarrhythmias. Higher risk with kidney impairment, hypoxic medical states (shock, sepsis, acute heart failure/MI), severe dehydration, heavy alcohol use, hepatic impairment, and certain interacting medications. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe dehydration/acute kidney injury during illness: can increase metformin levels and lactic acidosis risk; hold medication and seek care if significantly ill."
+        },
+        {
+          "risk": "Hepatotoxicity: rare case reports; jaundice, fatigue, elevated liver enzymes—stop medication and evaluate."
+        }
+      ],
+      "black_box_warning": "Postmarketing cases of metformin-associated lactic acidosis have resulted in death and severe cardiovascular instability. Symptoms can be subtle (malaise, muscle aches, sleepiness, abdominal pain, shortness of breath). If suspected, stop metformin and seek urgent hospital care; hemodialysis may be needed.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to metformin or any component"
+        },
+        {
+          "contraindication": "Severe renal dysfunction (eGFR <30 mL/minute/1.73 m2)"
+        },
+        {
+          "contraindication": "Acute or chronic metabolic acidosis (including diabetic ketoacidosis)"
+        }
+      ],
+      "precautions": [
+        "Kidney function matters: do not use if eGFR <30 mL/min/1.73 m2",
+        "Hold metformin during acute illness with dehydration, severe vomiting/diarrhea, or suspected acute kidney injury",
+        "Temporarily hold around iodinated contrast in higher-risk situations (especially AKI or low eGFR) and restart only after kidney function is stable",
+        "Surgery/procedures: commonly held the day of surgery and resumed when stable and eating with acceptable renal function",
+        "Long-term use can lower vitamin B12 and contribute to anemia or neuropathy"
+      ],
+      "interactions": [
+        {
+          "interactant": "Carbonic anhydrase inhibitors (eg, topiramate)",
+          "mechanism": "Increased risk of metabolic acidosis and metformin-associated lactic acidosis, especially in higher-risk patients.",
+          "action": "Use caution. Consider closer monitoring (renal function, symptoms of acidosis) and avoid risky combos in medically fragile patients."
+        },
+        {
+          "interactant": "Iodinated contrast (imaging studies)",
+          "mechanism": "Contrast-associated acute kidney injury can reduce metformin clearance and increase lactic acidosis risk.",
+          "action": "Temporarily withhold metformin in higher-risk situations (eg, AKI, eGFR <30; some clinicians are more conservative with lower eGFR or additional risk factors). Recheck kidney function ≥48 hours after contrast and restart only if stable."
+        },
+        {
+          "interactant": "Alcohol (especially heavy use or binge drinking)",
+          "mechanism": "Alcohol can increase lactate production and worsen dehydration, raising lactic acidosis risk.",
+          "action": "Avoid heavy alcohol intake. If alcohol use is significant, reassess whether metformin is appropriate and emphasize hydration and sick-day rules."
+        },
+        {
+          "interactant": "Medications that worsen kidney function or cause significant hemodynamic changes (eg, severe dehydration from diuretics in vulnerable patients)",
+          "mechanism": "Reduced metformin clearance and higher lactic acidosis risk if kidney function drops.",
+          "action": "Use caution in high-risk patients. Reinforce holding metformin during acute illness, dehydration, or AKI risk."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Weight and waist circumference: baseline and follow-up (trend matters more than a single number)"
+        },
+        {
+          "parameter": "Metabolic labs: fasting glucose and/or HbA1c as clinically appropriate; lipid profile based on overall metabolic risk and antipsychotic monitoring protocols"
+        },
+        {
+          "parameter": "Renal function (eGFR): before starting; at least annually; more often (every 3-6 months) if eGFR <60 or if risk factors are present"
+        },
+        {
+          "parameter": "Vitamin B12: periodic monitoring (commonly every 1-2 years, sooner if anemia, neuropathy, fatigue, or cognitive symptoms)"
+        },
+        {
+          "parameter": "GI tolerability: diarrhea, nausea, abdominal pain—especially during titration; adjust pace or switch to ER if needed"
+        },
+        {
+          "parameter": "Lactic acidosis vigilance in high-risk situations: acute illness, severe dehydration, hypoxic states, heavy alcohol intake, declining kidney function, interacting medications (eg, topiramate)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Metformin crosses the placenta. In psychiatry, it’s not typically prescribed specifically for weight gain during pregnancy; decisions about continuing metformin are usually driven by diabetes/GDM/PCOS management and pregnancy-specific risks/benefits. Avoid use in pregnant patients who are at risk for intrauterine growth restriction, preeclampsia, or significant medical instability per guideline-based care.",
+        "lactation": "Metformin is present in breast milk in low amounts; reported relative infant doses are generally well below typical safety thresholds in available studies. Breastfeeding decisions should consider infant exposure, maternal benefit, and alternative options.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Higher risk of renal impairment and dehydration-related complications. Start low, titrate slowly, monitor eGFR more frequently, and reinforce sick-day rules (hold during significant illness, dehydration, or AKI risk).",
+        "renal_impairment": "Renal function drives safety. Contraindicated if eGFR <30. Increased monitoring is recommended when eGFR is <60, and initiation is generally avoided at eGFR 30-45 unless a cautious expert plan is used.",
+        "hepatic_impairment": "Liver disease increases lactic acidosis risk because the liver clears lactate. Avoid in severe hepatic impairment and be cautious in moderate impairment, especially if other risk factors exist (alcohol use, dehydration, hypotension, sepsis, reduced cardiac function, reduced kidney function)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1994
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Food decreases and delays absorption; taking with meals improves tolerability",
+          "bioavailability": "About 50-60% fasting",
+          "peak_plasma": "IR: 2-3 hours; ER: 6-8 hours",
+          "half_life": "Plasma: 4-9 hours; blood: ~17.6 hours",
+          "metabolism": "Not metabolized by the liver",
+          "excretion": "Urine (~90% unchanged)",
+          "protein_binding": "Negligible",
+          "food_effect": "Food reduces GI upset; ER is typically taken with the evening meal"
+        },
+        "dosing": {
+          "titration": "Psychiatry use is off-label and usually aimed at preventing or reducing antipsychotic weight gain. Start low, go slow, and take it with meals. If the stomach can’t tolerate it, extended-release is often the move."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Metformin does not cause dependence, withdrawal, or rebound anxiety. You typically do not need to taper it. If you stop it, the main risk is that weight and metabolic markers may drift back in the wrong direction over time—especially if the antipsychotic is still on board."
+        }
+      }
     }
   },
   "sections": [
@@ -99,7 +219,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is what patients commonly describe when metformin is used for antipsychotic weight gain in real life:",
       "items": [
         {
           "category": "Appetite & Weight Trend (Weeks to Months)",
@@ -137,7 +256,8 @@
           ],
           "note": "B12 deficiency can show up as fatigue, cognitive fog, low mood, or neuropathy—so it matters in psych patients."
         }
-      ]
+      ],
+      "intro": "This is what patients commonly describe when metformin is used for antipsychotic weight gain in real life:"
     },
     {
       "type": "onset_duration",
@@ -153,10 +273,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In psychiatric practice, metformin is commonly used because it can reduce the slope of weight gain from antipsychotics and improve metabolic labs. The effect is usually modest, and it’s strongest when started early and titrated to a tolerated target dose.",
       "metric": "Plateau of antipsychotic weight gain",
       "value": "Common outcome",
       "comparison": "Weight gain continues without intervention in many patients",
-      "text": "In psychiatric practice, metformin is commonly used because it can reduce the slope of weight gain from antipsychotics and improve metabolic labs. The effect is usually modest, and it’s strongest when started early and titrated to a tolerated target dose.",
       "clinical_details": "Metformin’s benefit in antipsychotic-associated weight gain is best framed as metabolic support: improved insulin sensitivity and a reduced tendency toward ongoing gain. Patients often see the biggest difference when metformin is paired with realistic lifestyle interventions and when the titration is slow enough to keep GI side effects from forcing discontinuation.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -238,7 +358,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Most metformin interaction risk in psych practice is about lactic acidosis risk, kidney stress, or acid-base balance—not serotonin syndrome or QT issues.",
       "items": [
         {
           "with": "Carbonic anhydrase inhibitors (eg, topiramate)",
@@ -260,7 +379,8 @@
           "risk": "Reduced metformin clearance and higher lactic acidosis risk if kidney function drops.",
           "action": "Use caution in high-risk patients. Reinforce holding metformin during acute illness, dehydration, or AKI risk."
         }
-      ]
+      ],
+      "intro": "Most metformin interaction risk in psych practice is about lactic acidosis risk, kidney stress, or acid-base balance—not serotonin syndrome or QT issues."
     },
     {
       "type": "tapering",
@@ -334,21 +454,6 @@
       "text": "For antipsychotic weight gain, metformin is one of the most commonly used off-label meds because it’s familiar, generally safe when kidney function is adequate, and it targets the metabolic side of the problem. It works best as an early intervention (before weight gain becomes entrenched), alongside realistic nutrition and activity changes, and with ongoing monitoring of weight and metabolic labs. If weight gain is severe or metabolic markers worsen despite metformin, clinicians may reassess the antipsychotic choice/dose and consider additional metabolic strategies."
     }
   ],
-  "seo": {
-    "title": "Metformin for Antipsychotic Weight Gain: Dosing, Side Effects, and Safety",
-    "description": "Metformin in psychiatry: off-label use for antipsychotic-related weight gain and metabolic risk. How it works, dosing (IR vs ER), GI side effects, vitamin B12 deficiency, lactic acidosis risk, interactions, and monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/metformin-psychiatry-weight-gain](https://www.heypsych.com/treatments/metformin-psychiatry-weight-gain)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Why would a psychiatrist prescribe metformin?",
@@ -394,5 +499,20 @@
       "q": "When should I temporarily stop metformin?",
       "a": "Common ‘hold’ situations include severe vomiting/diarrhea or dehydration, suspected acute kidney injury, or certain higher-risk contrast imaging or surgical situations (based on your kidney function and overall risk). If you’re not sure, ask your clinician—this is one place where playing it safe is smart."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Metformin for Antipsychotic Weight Gain: Dosing, Side Effects, and Safety",
+    "description": "Metformin in psychiatry: off-label use for antipsychotic-related weight gain and metabolic risk. How it works, dosing (IR vs ER), GI side effects, vitamin B12 deficiency, lactic acidosis risk, interactions, and monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/metformin-psychiatry-weight-gain](https://www.heypsych.com/treatments/metformin-psychiatry-weight-gain)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

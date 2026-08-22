@@ -1,86 +1,175 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "play-therapy-family",
-  "type": "therapy",
-  "name": "Family Play Therapy",
-  "summary": "Family Play Therapy is a therapeutic approach that uses play-based activities to improve family communication, strengthen relationships, and resolve conflicts by engaging both children and caregivers in structured, guided play sessions.",
-  "description": "Family Play Therapy integrates principles of play therapy with family systems approaches. It provides a safe and engaging environment where children and their caregivers can express feelings, explore dynamics, and practice healthier patterns of interaction through play. By observing and participating in play, therapists can identify relational patterns, emotional needs, and communication barriers within the family. This approach is especially effective for children who may not have the verbal capacity to articulate their experiences but can express themselves through play. Family Play Therapy is flexible, incorporating art, role-play, sandtray, storytelling, and games to foster family connection, empathy, and problem-solving skills.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "play therapy",
-    "child-focused",
-    "systems approach",
-    "creative therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "play-therapy-family",
+    "name": "Family Play Therapy"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Psychotherapy"
     ],
-    "treatment_types": [
-      "Family therapy",
-      "Child and adolescent therapy"
-    ],
-    "categories": [
-      "Family therapy",
-      "Play-based therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Outpatient clinic",
-      "Community setting"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "Toys, art supplies, play materials",
-    "training_required": true,
-    "age_groups": [
-      "Children (3–12 years)",
-      "Adolescents (13–17 years)",
-      "Families with young children"
-    ],
-    "session_duration": "50–75 minutes",
-    "treatment_duration": [
-      "12–20 sessions on average"
-    ],
-    "specialty_areas": [
-      "Behavioral problems",
-      "Attachment difficulties",
-      "Family conflict",
-      "Trauma recovery",
-      "Parent-child relationship strengthening"
+    "tags": [
+      "family therapy",
+      "play therapy",
+      "child-focused",
+      "systems approach",
+      "creative therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Disruptive behavior disorders",
-      "Parent-child relational difficulties",
-      "Family conflict",
-      "Trauma exposure"
-    ],
-    "conditions_treated": [
-      "Oppositional Defiant Disorder",
-      "Adjustment disorders",
-      "Attachment disruptions",
-      "Anxiety and stress in children"
-    ],
-    "off_label_uses": [
-      "Sibling rivalry",
-      "Enhancing family bonding",
-      "Communication skills training"
-    ],
-    "contraindications": [
-      "Families unwilling to engage in play-based approaches",
-      "Severe psychiatric disorders requiring intensive individual care"
-    ],
-    "safety_profile": "Safe, non-invasive, with low risk. May evoke strong emotions during sessions.",
-    "evidence_level": "Emerging—growing empirical support, particularly within child and family therapy research.",
-    "research_support": "Demonstrates effectiveness in improving parent-child communication, emotional regulation, and reducing behavioral problems.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-conflict": 4,
-      "child-behavior": 4,
-      "trauma": 3,
-      "attachment": 4
+  "summary": "Family Play Therapy is a therapeutic approach that uses play-based activities to improve family communication, strengthen relationships, and resolve conflicts by engaging both children and caregivers in structured, guided play sessions.",
+  "description": "Family Play Therapy integrates principles of play therapy with family systems approaches. It provides a safe and engaging environment where children and their caregivers can express feelings, explore dynamics, and practice healthier patterns of interaction through play. By observing and participating in play, therapists can identify relational patterns, emotional needs, and communication barriers within the family. This approach is especially effective for children who may not have the verbal capacity to articulate their experiences but can express themselves through play. Family Play Therapy is flexible, incorporating art, role-play, sandtray, storytelling, and games to foster family connection, empathy, and problem-solving skills.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "disruptive-behavior-disorders",
+          "condition_name": "Disruptive behavior disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-difficulties",
+          "condition_name": "Parent-child relational difficulties",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "trauma-exposure",
+          "condition_name": "Trauma exposure",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder",
+          "condition_name": "Oppositional Defiant Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "attachment-disruptions",
+          "condition_name": "Attachment disruptions",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-and-stress-in-children",
+          "condition_name": "Anxiety and stress in children",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "sibling-rivalry",
+          "condition_name": "Sibling rivalry",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "enhancing-family-bonding",
+          "condition_name": "Enhancing family bonding",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "communication-skills-training",
+          "condition_name": "Communication skills training",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Emerging—growing empirical support, particularly within child and family therapy research.",
+      "efficacy_ratings": {
+        "family-conflict": {
+          "rating": 4
+        },
+        "child-behavior": {
+          "rating": 4
+        },
+        "trauma": {
+          "rating": 3
+        },
+        "attachment": {
+          "rating": 4
+        }
+      },
+      "research_support": "Demonstrates effectiveness in improving parent-child communication, emotional regulation, and reducing behavioral problems."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–20 sessions on average"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Outpatient clinic",
+        "Community setting"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–75 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, non-invasive, with low risk. May evoke strong emotions during sessions.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort during difficult play themes"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Temporary increase in conflict as sensitive issues surface"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Families in acute crisis needing immediate intervention",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Caregivers resistant to play-based engagement",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Family therapy, Child and adolescent therapy",
+        "key_techniques": [
+          "Family therapy",
+          "Play-based therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Therapist prepares play materials tailored to family needs.",
+          "during_session": "Guided family play, observation of interactions, therapeutic reflection and facilitation.",
+          "post_session": "Debrief with family, highlight positive interactions, assign practice activities."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed family therapists with training in play therapy techniques"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -222,6 +311,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Gil, E. (1994). Play in Family Therapy.",
+      "url": "https://psycnet.apa.org/record/1994-98349-000"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Landreth, G. L. (2012). Play Therapy: The Art of the Relationship.",
+      "url": "https://www.routledge.com/Play-Therapy-The-Art-of-the-Relationship/Landreth/p/book/9780415886819"
+    }
+  ],
   "seo": {
     "title": "Family Play Therapy | Strengthening Families Through Play",
     "description": "Family Play Therapy uses play-based activities to improve communication, resolve conflicts, and strengthen parent-child relationships in a safe therapeutic setting.",
@@ -234,5 +337,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Emerging—growing empirical support, particularly within child and family therapy research."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Emerging—growing empirical support, particularly within child and family therapy research."
+    ]
   }
 }

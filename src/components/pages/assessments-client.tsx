@@ -64,7 +64,7 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
   const activeFiltersCount = selectedCondition !== "all" ? 1 : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Hero */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -74,8 +74,8 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
               Back
             </Button>
 
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
+              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
                 Assessments & Screeners
               </span>
             </h1>
@@ -84,18 +84,18 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
           </div>
 
           <div className="mb-4 text-center">
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-neutral-800">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">
               Evidence-based screening tools and assessments for mental health conditions. These
               tools are for educational purposes and do not replace professional diagnosis.
             </p>
 
-            <div className="flex items-center justify-center gap-4 text-xs text-neutral-700">
+            <div className="flex items-center justify-center gap-4 text-xs text-label-secondary">
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint0"></div>
                 {assessments.length} Assessment Tools
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint0"></div>
                 Clinically Validated
               </div>
               <div className="flex items-center gap-1.5">
@@ -136,15 +136,15 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
             <CardContent className="p-6">
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center space-x-2">
-                  <Filter className="h-4 w-4 text-neutral-800" />
-                  <span className="text-sm font-medium text-neutral-800">Filter by Condition:</span>
+                  <Filter className="h-4 w-4 text-label-secondary" />
+                  <span className="text-sm font-medium text-label-secondary">Filter by Condition:</span>
                 </div>
 
                 <div>
                   <select
                     value={selectedCondition}
                     onChange={(e) => setSelectedCondition(e.target.value)}
-                    className="rounded-lg border border-neutral-300 px-4 py-2 text-sm shadow-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                    className="rounded-lg border border-separator px-4 py-2 text-sm shadow-sm transition-all focus:border-accent focus:ring-2 focus:ring-accent/20"
                   >
                     <option value="all">All Conditions</option>
                     {conditions.map((cond) => (
@@ -160,27 +160,27 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
                     variant="ghost"
                     size="sm"
                     onClick={clearFilters}
-                    className="text-neutral-800 hover:text-neutral-900"
+                    className="text-label-secondary hover:text-label-primary"
                   >
                     <X className="mr-2 h-4 w-4" />
                     Clear Filters
                   </Button>
                 )}
 
-                <div className="ml-auto text-sm text-neutral-800">
+                <div className="ml-auto text-sm text-label-secondary">
                   Showing {filteredAssessments.length} of {assessments.length}
                 </div>
               </div>
 
               {activeFiltersCount > 0 && (
-                <div className="mt-4 flex items-center space-x-2 border-t border-neutral-200 pt-4">
-                  <span className="text-sm text-neutral-800">Active filter:</span>
+                <div className="mt-4 flex items-center space-x-2 border-t border-separator pt-4">
+                  <span className="text-sm text-label-secondary">Active filter:</span>
                   <Badge variant="outline" className="flex items-center space-x-1">
                     <span>
                       {selectedCondition.charAt(0).toUpperCase() + selectedCondition.slice(1)}
                     </span>
                     <X
-                      className="h-3 w-3 cursor-pointer hover:text-red-600"
+                      className="h-3 w-3 cursor-pointer hover:text-negative"
                       onClick={() => setSelectedCondition("all")}
                     />
                   </Badge>
@@ -194,12 +194,12 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
       {/* Assessment list */}
       <section className="px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <Card className="rounded-3xl bg-white shadow-xl">
+          <Card className="rounded-3xl bg-surface shadow-xl">
             <CardHeader>
-              <CardTitle className="text-center text-2xl font-bold text-neutral-900">
+              <CardTitle className="text-center text-2xl font-bold text-label-primary">
                 Assessment Tools
               </CardTitle>
-              <p className="text-center text-sm text-neutral-800">
+              <p className="text-center text-sm text-label-secondary">
                 Browse our collection of validated screening instruments
               </p>
             </CardHeader>
@@ -225,23 +225,23 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.05 }}
-                          className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-300 hover:shadow-md group-hover:bg-blue-50/30"
+                          className="rounded-xl border border-separator bg-surface p-6 shadow-sm transition-all duration-300 hover:border-accent-border hover:shadow-md group-hover:bg-accent-tint/30"
                         >
                           <div className="flex items-center justify-between gap-4">
                             <div className="flex min-w-0 flex-1 items-start gap-4">
-                              <div className="flex-shrink-0 rounded-lg bg-blue-50 p-3 transition-colors group-hover:bg-blue-100">
-                                <ClipboardCheck className="h-6 w-6 text-blue-600" />
+                              <div className="flex-shrink-0 rounded-lg bg-accent-tint p-3 transition-colors group-hover:bg-accent-tint-hover">
+                                <ClipboardCheck className="h-6 w-6 text-accent" />
                               </div>
                               <div className="min-w-0 flex-1 overflow-hidden">
                                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                                  <h3 className="break-words text-lg font-bold text-neutral-900 transition-colors group-hover:text-blue-600">
+                                  <h3 className="break-words text-lg font-bold text-label-primary transition-colors group-hover:text-accent">
                                     {name}
                                   </h3>
                                   <div className="flex flex-wrap gap-2">
                                     {validated && (
                                       <Badge
                                         variant="outline"
-                                        className="border-green-200 bg-green-50 text-xs text-green-700"
+                                        className="border-positive-border bg-positive-tint text-xs text-positive-700"
                                       >
                                         Validated
                                       </Badge>
@@ -249,36 +249,36 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
                                     {free && (
                                       <Badge
                                         variant="outline"
-                                        className="border-blue-200 bg-blue-50 text-xs text-blue-700"
+                                        className="border-accent-border bg-accent-tint text-xs text-accent-700"
                                       >
                                         Free
                                       </Badge>
                                     )}
                                   </div>
                                 </div>
-                                <p className="mb-2 break-words text-sm text-neutral-700">{fullName}</p>
-                                <p className="mb-3 break-words text-sm text-neutral-800">
+                                <p className="mb-2 break-words text-sm text-label-secondary">{fullName}</p>
+                                <p className="mb-3 break-words text-sm text-label-secondary">
                                   {description.length > 150
                                     ? `${description.substring(0, 150)}...`
                                     : description}
                                 </p>
-                                <div className="grid grid-cols-1 gap-2 text-xs text-neutral-700 sm:grid-cols-3 sm:gap-4">
+                                <div className="grid grid-cols-1 gap-2 text-xs text-label-secondary sm:grid-cols-3 sm:gap-4">
                                   <div>
-                                    <span className="font-medium text-neutral-800">Duration: </span>
+                                    <span className="font-medium text-label-secondary">Duration: </span>
                                     {duration}
                                   </div>
                                   <div>
-                                    <span className="font-medium text-neutral-800">Age: </span>
+                                    <span className="font-medium text-label-secondary">Age: </span>
                                     {ageRange}
                                   </div>
                                   <div>
-                                    <span className="font-medium text-neutral-800">Items: </span>
+                                    <span className="font-medium text-label-secondary">Items: </span>
                                     {Array.isArray(d?.items) ? d.items.length : "N/A"}
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <ArrowRight className="hidden h-5 w-5 flex-shrink-0 text-neutral-400 transition-all group-hover:translate-x-1 group-hover:text-blue-500 sm:block" />
+                            <ArrowRight className="hidden h-5 w-5 flex-shrink-0 text-label-quaternary transition-all group-hover:translate-x-1 group-hover:text-accent sm:block" />
                           </div>
                         </motion.div>
                       </Link>
@@ -288,10 +288,10 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
               ) : (
                 <div className="py-12 text-center">
                   <ClipboardCheck className="mx-auto mb-4 h-16 w-16 text-neutral-300" />
-                  <h3 className="mb-2 text-xl font-semibold text-neutral-900">
+                  <h3 className="mb-2 text-xl font-semibold text-label-primary">
                     No Assessments Found
                   </h3>
-                  <p className="mb-6 text-neutral-800">
+                  <p className="mb-6 text-label-secondary">
                     Try adjusting your filters or clearing them to see all assessments.
                   </p>
                   {activeFiltersCount > 0 && (
@@ -323,7 +323,7 @@ export function AssessmentsClient({ assessments }: AssessmentsClientProps) {
 
               {filteredAssessments.length > 20 && visibleCount >= filteredAssessments.length && (
                 <div className="mt-8 text-center">
-                  <p className="mb-4 text-sm text-neutral-800">
+                  <p className="mb-4 text-sm text-label-secondary">
                     Showing all {filteredAssessments.length} assessments
                   </p>
                   <Button size="lg" variant="ghost" onClick={() => setVisibleCount(20)}>

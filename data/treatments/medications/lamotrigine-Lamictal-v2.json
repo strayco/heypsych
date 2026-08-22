@@ -1,17 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lamotrigine-lamictal",
-  "type": "medication",
-  "name": "Lamotrigine (Lamictal)",
-  "summary": "Mood stabilizer best known for preventing bipolar depression. It’s not a fast “calm down” med—this one is slow-build by design because rushing the dose can trigger dangerous rashes.",
-  "description": "Lamotrigine is a long-game medication for bipolar disorder—especially the depression side. The tradeoff is titration: you start low and increase slowly to reduce the risk of serious skin reactions like Stevens-Johnson syndrome (SJS). If you get a new rash during the first 2–8 weeks, treat it like an emergency until proven otherwise and call your prescriber right away. It’s not effective for acute mania, and it’s not a PRN medication.",
-  "patient_summary": "Lamotrigine is a long-game medication for bipolar disorder—especially the depression side. You don’t feel it in an hour. You build it over weeks. The slow titration isn’t optional: rushing can trigger dangerous rashes. New rash early on? Don’t “wait it out”—call your prescriber immediately. It’s not for acute mania and not a PRN.",
-  "category": "medications/bipolar-disorder",
-  "metadata": {
-    "drug_classes": [
-      "Antiseizure Medication",
-      "Mood Stabilizer"
-    ],
+  "identity": {
+    "slug": "lamotrigine-lamictal",
+    "name": "Lamotrigine (Lamictal)",
+    "generic_name": "lamotrigine",
     "brand_names": [
       "Lamictal",
       "Lamictal ODT",
@@ -19,62 +12,212 @@
       "Lamictal XR",
       "Subvenite",
       "Subvenite Starter Kit"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not Controlled",
-    "generic_available": true,
-    "fda_approval_year": 1994,
-    "pharmacologic_category": "Antiseizure Agent (Miscellaneous)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Bipolar I Disorder (Maintenance)",
-      "Bipolar Depression (Acute episodes: commonly used; not for acute mania)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "bipolar-i-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for maintenance treatment to delay mood episodes. Clinically, it’s often chosen when depression is the bigger problem than mania."
-      },
-      {
-        "slug": "bipolar-depression",
-        "relationship": "off_label",
-        "context": "Often used for bipolar major depression as an alternative option, but it’s not a rapid antidepressant and it’s not effective for acute mania or hypomania."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to lamotrigine or any component of the formulation (eg, rash, angioedema, urticaria, mucosal ulceration)"
-    ],
-    "efficacy_response": {
-      "metric": "Relapse prevention (bipolar maintenance)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Lamotrigine’s strength is maintenance—staying well over time, especially reducing the odds of sliding back into bipolar depression. It is not a fast-acting medication for acute mania.",
-      "citation_tag": "FDA Label: Lamictal"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/bipolar-disorder",
+    "drug_classes": [
+      "Antiseizure Medication",
+      "Mood Stabilizer"
+    ]
+  },
+  "summary": "Mood stabilizer best known for preventing bipolar depression. It’s not a fast “calm down” med—this one is slow-build by design because rushing the dose can trigger dangerous rashes.",
+  "description": "Lamotrigine is a long-game medication for bipolar disorder—especially the depression side. The tradeoff is titration: you start low and increase slowly to reduce the risk of serious skin reactions like Stevens-Johnson syndrome (SJS). If you get a new rash during the first 2–8 weeks, treat it like an emergency until proven otherwise and call your prescriber right away. It’s not effective for acute mania, and it’s not a PRN medication.",
+  "patient_summary": "Lamotrigine is a long-game medication for bipolar disorder—especially the depression side. You don’t feel it in an hour. You build it over weeks. The slow titration isn’t optional: rushing can trigger dangerous rashes. New rash early on? Don’t “wait it out”—call your prescriber immediately. It’s not for acute mania and not a PRN.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "bipolar-i-disorder",
+          "condition_name": "Bipolar I Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for maintenance treatment to delay mood episodes. Clinically, it’s often chosen when depression is the bigger problem than mania.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "bipolar-depression",
+          "condition_name": "Bipolar Depression",
+          "relationship": "off_label",
+          "context": "Often used for bipolar major depression as an alternative option, but it’s not a rapid antidepressant and it’s not effective for acute mania or hypomania."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth; food does not meaningfully change absorption",
-      "bioavailability": "High (immediate-release reported ~98%)",
-      "onset": "Not rapid; benefits typically emerge over weeks due to required slow titration",
-      "peak_plasma": "Immediate-release: ~1 to 5 hours; extended-release: ~4 to 11 hours (varies with interacting meds)",
-      "half_life": "Adults: ~25 to 33 hours (longer with valproate; shorter with enzyme inducers)",
-      "duration_IR": "Typically dosed once or twice daily depending on dose and formulation",
-      "duration_XR": "Once daily",
-      "metabolism": "Primarily glucuronidation; major interactions with inhibitors (valproate) and inducers (carbamazepine/phenytoin/phenobarbital/primidone; rifampin)",
-      "excretion": "Mostly urine (primarily metabolites)",
-      "protein_binding": "~55%",
-      "food_effect": "Food has no major effect on absorption"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not rapid; benefits typically emerge over weeks due to required slow titration"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "Common",
+          "notes": "Often shows up during dose increases. Standing up slowly, hydration, and avoiding alcohol/other sedatives can help. If dizziness is severe or persistent, the dose may be moving too fast."
+        },
+        {
+          "effect": "Nausea / GI upset",
+          "incidence": "Common (label reports nausea in a notable minority of adults)",
+          "notes": "Taking with food can help. Many people find it fades after the first couple of weeks."
+        },
+        {
+          "effect": "Insomnia or sleep disruption",
+          "incidence": "Common",
+          "notes": "Some people feel more alert or have vivid dreams. Timing the dose earlier in the day can help for some, but dosing decisions should match your formulation and plan."
+        },
+        {
+          "effect": "Agitation / anxiety",
+          "incidence": "Uncommon to occasional",
+          "notes": "Not everyone gets this, but if you feel activated, irritable, or emotionally edgy after increases, tell your prescriber—sometimes slowing the titration fixes it."
+        },
+        {
+          "effect": "Rash (non-serious)",
+          "incidence": "Reported; serious rash is rare but high-stakes",
+          "notes": "Any new rash early on should be treated seriously until proven otherwise. Do not try to self-diagnose this."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Serious skin reactions: Stevens-Johnson syndrome (SJS), toxic epidermal necrolysis (TEN), and rash-related hospitalization or death (rare but real)."
+        },
+        {
+          "risk": "DRESS (drug reaction with eosinophilia and systemic symptoms): rash plus fever, lymph node swelling, and possible organ involvement."
+        },
+        {
+          "risk": "Hemophagocytic lymphohistiocytosis (HLH): persistent fever, rash, organ dysfunction, and blood count abnormalities."
+        },
+        {
+          "risk": "Aseptic meningitis: headache, fever, neck stiffness, photophobia; can recur rapidly on re-exposure."
+        },
+        {
+          "risk": "Blood dyscrasias: neutropenia, pancytopenia, agranulocytosis, aplastic anemia (rare)."
+        },
+        {
+          "risk": "Cardiac conduction issues/proarrhythmia risk in susceptible patients (especially with underlying conduction disease or other sodium channel blockers)."
+        },
+        {
+          "risk": "Suicidal thoughts or behavior (class warning for antiseizure medications)."
+        }
+      ],
+      "black_box_warning": "Lamotrigine can cause serious rashes that require hospitalization and stopping the medication, including Stevens-Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN). Risk increases with high starting doses, rapid titration, and use with valproate. Most life-threatening rashes occur within 2–8 weeks after starting, but rare late cases have been reported. Lamotrigine is usually stopped at the first sign of rash unless the rash is clearly not medication-related.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to lamotrigine or any component of the formulation (eg, rash, angioedema, urticaria, mucosal ulceration)"
+        }
+      ],
+      "precautions": [
+        "Do not exceed recommended starting doses or titration schedules—this is one of the clearest ways to reduce serious rash risk",
+        "Higher rash risk with valproate (valproic acid/divalproex) because it raises lamotrigine levels",
+        "Genetic risk: HLA-B*15:02 is linked to increased SJS/TEN risk in some populations (screening may be recommended based on ancestry and clinical context)",
+        "Multiorgan hypersensitivity reactions can occur (DRESS, blood dyscrasias, organ involvement). Fever + rash + swollen nodes = urgent evaluation",
+        "Rare immune syndrome: hemophagocytic lymphohistiocytosis (HLH) can present with fever, rash, organ dysfunction, and blood count changes",
+        "Rare aseptic meningitis: headache, fever, neck stiffness, photophobia—especially if paired with rash or systemic symptoms",
+        "Suicidal thoughts/behavior warning applies to antiseizure medications as a class—monitor mood changes closely",
+        "Cardiac caution in people with structural/functional heart disease or conduction disorders (including Brugada pattern risk); extra monitoring may be needed in higher-risk patients"
+      ],
+      "interactions": [
+        {
+          "interactant": "Valproate (valproic acid, divalproex)",
+          "mechanism": "Raises lamotrigine exposure and increases serious rash risk when dosing is not adjusted.",
+          "action": "Use a lower starting dose and slower titration schedule. Never copy a ‘standard’ titration if valproate is on board."
+        },
+        {
+          "interactant": "Enzyme-inducing antiseizure meds (carbamazepine, phenytoin, phenobarbital, primidone) and other inducers (eg, rifampin)",
+          "mechanism": "Lowers lamotrigine levels, which can reduce effectiveness and complicate switching between IR and XR.",
+          "action": "Higher dosing targets and different titration schedules may be needed. If an inducer is stopped, lamotrigine levels can rise—dose adjustments should be planned, not reactive."
+        },
+        {
+          "interactant": "Estrogen-containing oral contraceptives (and other estrogen derivatives)",
+          "mechanism": "Can lower lamotrigine levels by up to about half; during the pill-free interval, levels can rise—sometimes dramatically—creating a ‘roller coaster’ of side effects and symptom control.",
+          "action": "Plan contraception and lamotrigine dosing together. Consider extended-cycle options and therapeutic drug monitoring when starting/stopping estrogen-containing contraception."
+        },
+        {
+          "interactant": "Other sodium channel blockers or conduction-impairing substances",
+          "mechanism": "May increase proarrhythmic risk in susceptible patients.",
+          "action": "Use extra caution in patients with known cardiac disease or conduction disorders; consider ECG monitoring strategies when indicated."
+        },
+        {
+          "interactant": "Alcohol and other sedatives",
+          "mechanism": "Can worsen dizziness, sedation, and coordination issues.",
+          "action": "If you drink, keep it minimal and consistent and avoid combining with dose increases; safest option is to avoid alcohol during titration."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Rash surveillance (especially weeks 2–8): new rash, blistering, mucosal sores, facial swelling, eye irritation, fever, or feeling systemically ill needs prompt evaluation."
+        },
+        {
+          "parameter": "DRESS/HLH red flags: rash + fever + swollen lymph nodes + fatigue + lab abnormalities (CBC, LFTs) should trigger urgent assessment."
+        },
+        {
+          "parameter": "Mood tracking: depressive symptoms, mixed features, irritability, activation, and suicidality—especially early treatment and after dose changes."
+        },
+        {
+          "parameter": "Medication interaction monitoring: changes in valproate, enzyme-inducing meds, or estrogen-containing contraception can shift lamotrigine levels and side effects."
+        },
+        {
+          "parameter": "CBC if symptoms suggest blood dyscrasia: fever, sore throat, mouth ulcers, unusual bruising, petechiae, recurrent infections."
+        },
+        {
+          "parameter": "Liver and renal function if clinically indicated or if symptoms suggest organ involvement (especially with hypersensitivity reactions)."
+        },
+        {
+          "parameter": "ECG monitoring in higher-risk cardiac patients (eg, older adults with cardiac disease/risk factors, conduction disease, syncope without clear cause, or use of other sodium channel blockers) and repeat when target dose is reached if indicated."
+        },
+        {
+          "parameter": "Therapeutic drug monitoring when clinically useful (pregnancy, postpartum, major interaction changes, suspected toxicity or nonresponse)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Lamotrigine crosses the placenta. During pregnancy, lamotrigine levels can drop significantly due to physiologic changes, which may require gradual dose adjustments and periodic blood level monitoring. After delivery, levels can rebound back toward baseline within weeks, so a plan to return to pre-pregnancy dosing helps reduce toxicity risk. In bipolar disorder, untreated illness also carries real risks, so decisions should be shared, individualized, and stability-focused rather than fear-based.",
+        "lactation": "Lamotrigine is present in breast milk, and infant serum levels can be measurable. Some infants exposed via breast milk have had drowsiness, poor feeding, poor weight gain, apnea, or rash. Many infants do well, but monitoring matters—especially in newborns and young infants who clear the drug more slowly.",
+        "pediatric": "For psychiatric use, safety and efficacy for bipolar disorder in pediatric patients are not established in the same way as adult bipolar maintenance. Pediatric use is primarily in seizure disorders and requires careful titration due to rash risk.",
+        "geriatric": "Older adults may be more sensitive to dizziness and fall risk. Use cautious titration, review other meds that increase falls, and consider additional cardiac risk screening when clinically appropriate.",
+        "renal_impairment": "No routine dose adjustment is typically required in mild to severe kidney impairment, but half-life can vary widely in significant renal disease. Titrate cautiously and monitor tolerability.",
+        "hepatic_impairment": "If starting in moderate hepatic impairment, reduce initial and titration doses by about 25%. In severe hepatic impairment, reduction may be about 50%, especially if ascites is present. Immediate-release formulations can be easier to fine-tune when dose adjustments are needed."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true,
+      "fda_approval_year": 1994
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth; food does not meaningfully change absorption",
+          "bioavailability": "High (immediate-release reported ~98%)",
+          "peak_plasma": "Immediate-release: ~1 to 5 hours; extended-release: ~4 to 11 hours (varies with interacting meds)",
+          "half_life": "Adults: ~25 to 33 hours (longer with valproate; shorter with enzyme inducers)",
+          "metabolism": "Primarily glucuronidation; major interactions with inhibitors (valproate) and inducers (carbamazepine/phenytoin/phenobarbital/primidone; rifampin)",
+          "excretion": "Mostly urine (primarily metabolites)",
+          "protein_binding": "~55%",
+          "food_effect": "Food has no major effect on absorption"
+        },
+        "dosing": {
+          "titration": "Lamotrigine dosing is all about the titration schedule. The starting dose and weekly increases change depending on interacting medications—especially valproate (lower/slow) and enzyme inducers (higher/faster)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Lamotrigine should not be stopped abruptly unless there’s a serious safety concern (like a suspected severe rash). For routine discontinuation, tapering lowers the risk of withdrawal symptoms and helps prevent mood destabilization."
+        }
+      }
     }
   },
   "sections": [
@@ -94,7 +237,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Lamotrigine is not the kind of med you “feel” right away. Most people describe it as subtle—until they look back and realize things got steadier.",
       "items": [
         {
           "category": "The slow-build reality",
@@ -130,7 +272,8 @@
           ],
           "note": "Most rashes are benign, but you can’t reliably predict which ones turn serious—so prescribers treat early rashes seriously."
         }
-      ]
+      ],
+      "intro": "Lamotrigine is not the kind of med you “feel” right away. Most people describe it as subtle—until they look back and realize things got steadier."
     },
     {
       "type": "onset_duration",
@@ -147,10 +290,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Lamotrigine is best thought of as a mood-stability and relapse-prevention medication—particularly for bipolar depression. It is not effective for acute mania or hypomania, and it’s not designed to be a rapid “rescue” medication.",
       "metric": "Bipolar maintenance (especially depression prevention)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Lamotrigine is best thought of as a mood-stability and relapse-prevention medication—particularly for bipolar depression. It is not effective for acute mania or hypomania, and it’s not designed to be a rapid “rescue” medication.",
       "clinical_details": "In clinical practice, lamotrigine is often chosen when a person’s bipolar pattern is depression-heavy, or when preventing depressive relapses is the priority. The slow titration is a built-in limitation for urgent symptom relief, so clinicians typically use other tools if someone is acutely manic or severely agitated.",
       "citation": {
         "authors": "FDA Prescribing Information",
@@ -238,7 +381,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Lamotrigine interactions can be big enough to change the entire titration schedule. The two biggest categories are: (1) valproate, which raises lamotrigine levels, and (2) enzyme inducers, which lower levels. Hormonal estrogen can also lower levels and create swings across the pill cycle.",
       "items": [
         {
           "with": "Valproate (valproic acid, divalproex)",
@@ -265,7 +407,8 @@
           "risk": "Can worsen dizziness, sedation, and coordination issues.",
           "action": "If you drink, keep it minimal and consistent and avoid combining with dose increases; safest option is to avoid alcohol during titration."
         }
-      ]
+      ],
+      "intro": "Lamotrigine interactions can be big enough to change the entire titration schedule. The two biggest categories are: (1) valproate, which raises lamotrigine levels, and (2) enzyme inducers, which lower levels. Hormonal estrogen can also lower levels and create swings across the pill cycle."
     },
     {
       "type": "tapering",
@@ -345,21 +488,6 @@
       "text": "Lamotrigine is a strong choice when bipolar depression is the main recurring problem and you need a maintenance plan that doesn’t rely on heavy sedation or weight-gain tradeoffs. It’s not a first-choice medication for acute mania because it titrates too slowly. In real-world care, it often pairs well with psychotherapy and lifestyle stabilization, and it may be combined with other mood stabilizers when mania risk is high—while keeping a close eye on interaction-driven dosing changes."
     }
   ],
-  "seo": {
-    "title": "Lamotrigine (Lamictal): Uses, Dosing, Side Effects & Rash Warning",
-    "description": "Lamotrigine (Lamictal) for bipolar disorder: what it treats, why titration is slow, dosing schedules with valproate/inducers, side effects, major interactions, and what to do about rash risk.",
-    "canonical": "[https://www.heypsych.com/treatments/lamotrigine-lamictal](https://www.heypsych.com/treatments/lamotrigine-lamictal)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is lamotrigine used for in psychiatry?",
@@ -405,5 +533,20 @@
       "q": "Does lamotrigine work for acute mania?",
       "a": "No—lamotrigine is not effective for treating acute mania or hypomania, and the slow titration makes it a poor tool for urgent manic symptoms. Clinicians typically use other medications for acute mania and use lamotrigine for longer-term mood stability."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lamotrigine (Lamictal): Uses, Dosing, Side Effects & Rash Warning",
+    "description": "Lamotrigine (Lamictal) for bipolar disorder: what it treats, why titration is slow, dosing schedules with valproate/inducers, side effects, major interactions, and what to do about rash risk.",
+    "canonical": "[https://www.heypsych.com/treatments/lamotrigine-lamictal](https://www.heypsych.com/treatments/lamotrigine-lamictal)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,78 +1,154 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "dawn-simulation-therapy",
-  "type": "interventional",
-  "name": "Dawn Simulation Therapy",
-  "summary": "A light-based intervention that gradually increases light intensity in the morning to simulate a natural sunrise, aiming to improve circadian rhythm alignment and mood.",
-  "description": "Dawn simulation therapy uses a timed light device that gradually brightens over 30–90 minutes before a person wakes, mimicking the gradual light changes of a sunrise. This approach aims to gently shift the body's circadian rhythm, enhance morning alertness, and improve mood.\n\nUnlike bright light therapy, which uses high-intensity light shortly after waking, dawn simulation operates at lower lux levels (typically 100–300 lux at eye level) but over a longer ramp-up period. This gradual light increase can be less disruptive for light-sensitive individuals and may improve adherence.\n\nIt is most often applied in treating seasonal affective disorder (SAD), circadian rhythm sleep-wake disorders, and certain cases of non-seasonal depression.",
-  "category": "interventional/light-therapy",
-  "tags": [
-    "light-therapy",
-    "circadian-rhythm",
-    "seasonal-affective-disorder",
-    "mood-disorders",
-    "sleep-phase-shift"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "dawn-simulation-therapy",
+    "name": "Dawn Simulation Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/light-therapy",
     "intervention_types": [
       "Light therapy"
     ],
-    "treatment_types": [
-      "Non-pharmacologic"
-    ],
-    "categories": [
-      "Sleep Medicine",
-      "Mood Disorders"
-    ],
-    "delivery_methods": [
-      "Home-based",
-      "Device-assisted"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": true,
-    "training_required": false,
-    "age_groups": [
-      "Adolescent",
-      "Adult",
-      "Geriatric"
-    ],
-    "session_duration": "30–90 minutes (automatic during sleep)",
-    "treatment_duration": [
-      "Daily ongoing use"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Sleep Medicine",
-      "Chronobiology"
+    "tags": [
+      "light-therapy",
+      "circadian-rhythm",
+      "seasonal-affective-disorder",
+      "mood-disorders",
+      "sleep-phase-shift"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Seasonal affective disorder",
-      "Circadian rhythm sleep-wake disorders"
-    ],
-    "conditions_treated": [
-      "Seasonal affective disorder",
-      "Delayed sleep phase disorder",
-      "Non-seasonal depression (adjunctive)",
-      "Shift work disorder"
-    ],
-    "off_label_uses": [
-      "Insomnia",
-      "Jet lag adjustment"
-    ],
-    "contraindications": [
-      "Bipolar disorder without mood stabilizer (risk of mania)",
-      "Severe ocular conditions sensitive to light"
-    ],
-    "safety_profile": "Generally safe; minimal side effects compared to bright light therapy.",
-    "evidence_level": "Moderate for SAD; emerging for circadian rhythm disorders.",
-    "research_support": "Randomized controlled trials show benefit for SAD; mixed evidence for other indications.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "SAD": 4,
-      "circadian-shift": 3,
-      "non-seasonal-depression": 2
+  "summary": "A light-based intervention that gradually increases light intensity in the morning to simulate a natural sunrise, aiming to improve circadian rhythm alignment and mood.",
+  "description": "Dawn simulation therapy uses a timed light device that gradually brightens over 30–90 minutes before a person wakes, mimicking the gradual light changes of a sunrise. This approach aims to gently shift the body's circadian rhythm, enhance morning alertness, and improve mood.\n\nUnlike bright light therapy, which uses high-intensity light shortly after waking, dawn simulation operates at lower lux levels (typically 100–300 lux at eye level) but over a longer ramp-up period. This gradual light increase can be less disruptive for light-sensitive individuals and may improve adherence.\n\nIt is most often applied in treating seasonal affective disorder (SAD), circadian rhythm sleep-wake disorders, and certain cases of non-seasonal depression.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "seasonal-affective-disorder",
+          "condition_name": "Seasonal affective disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "circadian-rhythm-sleep-wake-disorders",
+          "condition_name": "Circadian rhythm sleep-wake disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "delayed-sleep-phase-disorder",
+          "condition_name": "Delayed sleep phase disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "non-seasonal-depression-adjunctive",
+          "condition_name": "Non-seasonal depression (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "shift-work-disorder",
+          "condition_name": "Shift work disorder",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "jet-lag-adjustment",
+          "condition_name": "Jet lag adjustment",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate for SAD; emerging for circadian rhythm disorders.",
+      "efficacy_ratings": {
+        "SAD": {
+          "rating": 4
+        },
+        "circadian-shift": {
+          "rating": 3
+        },
+        "non-seasonal-depression": {
+          "rating": 2
+        }
+      },
+      "research_support": "Randomized controlled trials show benefit for SAD; mixed evidence for other indications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Daily ongoing use"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Home-based",
+        "Device-assisted"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–90 minutes (automatic during sleep)"
+      },
+      "professional_required": {
+        "required": false
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; minimal side effects compared to bright light therapy.",
+      "common_adverse_effects": [
+        {
+          "effect": "Mild eye strain"
+        },
+        {
+          "effect": "Glare discomfort"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Mania induction in bipolar disorder"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active manic episode in bipolar disorder",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe ocular disease with light sensitivity",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Photosensitive epilepsy",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Recent eye surgery",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Safe with moderate light levels."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Light therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Light begins to increase 30–90 minutes before scheduled wake time.\nLight intensity peaks at wake time (100–300 lux at eye level).\nUser wakes to brightened environment simulating sunrise."
+      }
     }
   },
   "sections": [
@@ -233,6 +309,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Avery DH, et al. Dawn simulation and bright light in the treatment of SAD: a controlled study. Biol Psychiatry. 2001;50(3):205–216.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11522260/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Terman M, et al. Light therapy for SAD: A review of efficacy. Am J Psychiatry. 1998;155(5):665–672.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9585715/"
+    }
+  ],
   "seo": {
     "title": "Dawn Simulation Therapy for SAD and Circadian Rhythm Disorders",
     "description": "Dawn simulation therapy uses gradual morning light to improve circadian alignment and mood, offering a gentler alternative to bright light therapy.",
@@ -245,5 +335,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate for SAD; emerging for circadian rhythm disorders."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate for SAD; emerging for circadian rhythm disorders."
+    ]
   }
 }

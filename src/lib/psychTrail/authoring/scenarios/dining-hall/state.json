@@ -1,0 +1,38 @@
+{
+  "startNodeId": "entrance",
+  "initialMetrics": {
+    "groundedness": 25,
+    "socialEnergy": 30,
+    "interpretationAccuracy": 50
+  },
+  "initialFlags": {
+    "usedPhoneShield": false,
+    "recoveredFromBail": false,
+    "satAlone": false,
+    "satWithReader": false,
+    "satWithGroup": false,
+    "askedFollowUp": false,
+    "interpretedNegatively": false,
+    "stayedThroughAwkward": false,
+    "leftProud": false,
+    "leftCritical": false
+  },
+  "unlockRequirements": [
+    { "type": "always" }
+  ],
+  "timeConfig": {
+    "stepLabel": "moment",
+    "stepLabelPlural": "moments",
+    "maxSteps": 12
+  },
+  "uiConfig": {
+    "metrics": [
+      { "key": "groundedness", "label": "Groundedness", "min": 0, "max": 100, "higherIsBetter": true },
+      { "key": "socialEnergy", "label": "Social Energy", "min": 0, "max": 100, "higherIsBetter": true },
+      { "key": "interpretationAccuracy", "label": "Reality Check", "min": 0, "max": 100, "higherIsBetter": true }
+    ],
+    "showTimeline": true,
+    "showEventLog": false,
+    "themeColor": "#3b82f6"
+  }
+}

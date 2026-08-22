@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "zopiclone-imovane",
-  "type": "medication",
-  "name": "Zopiclone (Imovane)",
-  "summary": "Short-term prescription sleep medication used for insomnia (trouble falling asleep, staying asleep, or waking too early). Works fast, but next-day grogginess, dependence, and dangerous sleep behaviors are real risks—especially if you mix it with alcohol, opioids, or take it without a full night to sleep.",
-  "description": "Zopiclone is a non-benzodiazepine hypnotic (“Z-drug”) that helps you fall asleep faster, sleep longer, and wake up less during the night. It should be taken right before bed, only when you can get a full night of sleep. It’s meant for short-term use; if you’re needing it beyond a few weeks, that’s a sign to step back and address the underlying insomnia drivers (CBT-I, anxiety, depression, substances, sleep apnea, meds). It can cause next-day impairment, memory gaps, and rare but serious complex sleep behaviors like sleep-walking or sleep-driving—stop it immediately if that happens.",
-  "patient_summary": "Zopiclone is a fast-onset sleep medication for short-term insomnia. Take it right before bed only if you can sleep a full night. It can cause a bitter taste, grogginess, dizziness, and memory gaps—and in rare cases, dangerous “complex sleep behaviors” like sleep-walking or sleep-driving. Avoid alcohol and opioids. Don’t use long-term unless benefits clearly outweigh risks and non-med options aren’t working.",
-  "category": "medications/insomnia",
-  "metadata": {
-    "drug_classes": [
-      "Nonbenzodiazepine Benzodiazepine Receptor Agonist",
-      "Hypnotic (Miscellaneous)",
-      "Sedative-Hypnotic (Z-drug class)"
-    ],
+  "identity": {
+    "slug": "zopiclone-imovane",
+    "name": "Zopiclone (Imovane)",
+    "generic_name": "zopiclone",
     "brand_names": [
       "Imovane",
       "ACT Zopiclone",
@@ -29,72 +21,217 @@
       "RIVA-Zopiclone",
       "TARO-Zopiclone",
       "TEVA-Zopiclone"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not applicable for this medication.",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "Hypnotic; Nonbenzodiazepine Benzodiazepine Receptor Agonist",
-    "published_date": "2025-11-23T00:00:00Z",
-    "last_updated": "2025-11-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset insomnia)",
-      "Insomnia (sleep maintenance insomnia)",
-      "Insomnia with early-morning awakenings"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "Short-term symptomatic relief of insomnia when sleep is disrupted by difficulty falling asleep, frequent awakenings, and/or early-morning awakenings. Best used as a time-limited tool while CBT-I and the root cause of insomnia are addressed."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "supportive",
-        "context": "Not an anxiety treatment. But if anxiety is driving insomnia, short-term bedtime use may reduce nighttime arousal while core treatment (CBT, SSRIs/SNRIs, sleep work) ramps up."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "caution",
-        "context": "Use with caution. Worsening depression and suicidal thoughts have been reported with hypnotics in patients with or without depression; prescribe the smallest amount needed."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to zopiclone or any component of the formulation",
-      "Severe respiratory impairment (including significant sleep apnea syndrome)",
-      "Myasthenia gravis",
-      "Severe hepatic insufficiency",
-      "History of complex sleep behaviors after taking any nonbenzodiazepine sedative/hypnotic"
-    ],
-    "efficacy_response": {
-      "metric": "Symptomatic insomnia relief",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Zopiclone can help you fall asleep faster, wake up less during the night, and sleep longer. The trade-off is next-day impairment risk—so the goal is the lowest effective dose for the shortest time while you build durable sleep skills (CBT-I).",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
+    "drug_classes": [
+      "Nonbenzodiazepine Benzodiazepine Receptor Agonist",
+      "Hypnotic (Miscellaneous)",
+      "Sedative-Hypnotic (Z-drug class)"
+    ]
+  },
+  "summary": "Short-term prescription sleep medication used for insomnia (trouble falling asleep, staying asleep, or waking too early). Works fast, but next-day grogginess, dependence, and dangerous sleep behaviors are real risks—especially if you mix it with alcohol, opioids, or take it without a full night to sleep.",
+  "description": "Zopiclone is a non-benzodiazepine hypnotic (“Z-drug”) that helps you fall asleep faster, sleep longer, and wake up less during the night. It should be taken right before bed, only when you can get a full night of sleep. It’s meant for short-term use; if you’re needing it beyond a few weeks, that’s a sign to step back and address the underlying insomnia drivers (CBT-I, anxiety, depression, substances, sleep apnea, meds). It can cause next-day impairment, memory gaps, and rare but serious complex sleep behaviors like sleep-walking or sleep-driving—stop it immediately if that happens.",
+  "patient_summary": "Zopiclone is a fast-onset sleep medication for short-term insomnia. Take it right before bed only if you can sleep a full night. It can cause a bitter taste, grogginess, dizziness, and memory gaps—and in rare cases, dangerous “complex sleep behaviors” like sleep-walking or sleep-driving. Avoid alcohol and opioids. Don’t use long-term unless benefits clearly outweigh risks and non-med options aren’t working.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "Short-term symptomatic relief of insomnia when sleep is disrupted by difficulty falling asleep, frequent awakenings, and/or early-morning awakenings. Best used as a time-limited tool while CBT-I and the root cause of insomnia are addressed.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "secondary_indication",
+          "context": "Not an anxiety treatment. But if anxiety is driving insomnia, short-term bedtime use may reduce nighttime arousal while core treatment (CBT, SSRIs/SNRIs, sleep work) ramps up."
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication",
+          "context": "Use with caution. Worsening depression and suicidal thoughts have been reported with hypnotics in patients with or without depression; prescribe the smallest amount needed."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "77% (elderly: ~94%)",
-      "onset": "Rapid onset after bedtime dosing",
-      "peak_plasma": "<2 hours (hepatic impairment: ~3.5 hours)",
-      "half_life": "~5 hours (elderly: ~7 hours; hepatic impairment: ~12 hours)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Extensive hepatic metabolism primarily via CYP3A4 (major) and CYP2C8 (minor); metabolites have minimal or no activity",
-      "excretion": "Urine ~75% (about 4-5% unchanged) and feces ~16%",
-      "protein_binding": "~45%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Rapid onset after bedtime dosing"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Bitter taste (dysgeusia) / bad breath (halitosis)",
+          "incidence": "Frequency not defined",
+          "notes": "This is one of the most recognizable side effects with zopiclone. It can show up quickly and can be annoying enough that people stop the medication even if sleep improves."
+        },
+        {
+          "effect": "Daytime sedation / “next-day impairment”",
+          "incidence": "Frequency not defined",
+          "notes": "You can feel slowed, foggy, or less coordinated the next day—especially at higher doses, if you took it late, or if you didn’t get enough sleep. Driving impairment has been reported up to 11 hours after a dose."
+        },
+        {
+          "effect": "Dizziness / ataxia / falls",
+          "incidence": "Frequency not defined",
+          "notes": "Unsteadiness can look like mild intoxication. This is a big deal for anyone with fall risk—especially older adults."
+        },
+        {
+          "effect": "Anterograde amnesia / confusion",
+          "incidence": "Frequency not defined",
+          "notes": "You might not form clear memories after you take it. If you take it and stay up, the odds of weird behavior + memory gaps go up."
+        },
+        {
+          "effect": "Mood and behavior changes (agitation, irritability, aggression, hallucinations)",
+          "incidence": "Frequency not defined",
+          "notes": "Most people don’t get this, but when it happens it can be intense and unpredictable. If you feel activated, aggressive, detached, or hallucinate—stop the medication and contact your prescriber."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors (sleep-walking, sleep-driving, sleep-eating, sleep-talking, somnambulism) with amnesia: can cause serious injury or death; discontinue immediately if this occurs"
+        },
+        {
+          "risk": "Respiratory depression (especially with opioids, alcohol, or other sedatives): slow or shallow breathing, blue lips, unresponsiveness—medical emergency"
+        },
+        {
+          "risk": "Severe allergic reactions (anaphylaxis, angioedema): facial swelling, throat tightness, trouble breathing—medical emergency"
+        },
+        {
+          "risk": "Dependence and withdrawal syndrome: rebound insomnia, anxiety, tremor, agitation; rarely seizures or delirium after abrupt discontinuation, especially after sustained use or higher doses"
+        },
+        {
+          "risk": "Worsening depression or suicidal ideation/attempts in susceptible patients"
+        }
+      ],
+      "black_box_warning": "[Canadian Boxed Warning]: Zopiclone can cause complex sleep behaviors (including sleep-walking and sleep-driving) that may result in serious injuries or death. Zopiclone can also cause addiction, abuse, and misuse, and severe or life-threatening withdrawal. Concomitant use with opioids may cause profound sedation, respiratory depression, coma, and death.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to zopiclone or any component of the formulation"
+        },
+        {
+          "contraindication": "Severe respiratory impairment (including significant sleep apnea syndrome)"
+        },
+        {
+          "contraindication": "Myasthenia gravis"
+        },
+        {
+          "contraindication": "Severe hepatic insufficiency"
+        },
+        {
+          "contraindication": "History of complex sleep behaviors after taking any nonbenzodiazepine sedative/hypnotic"
+        }
+      ],
+      "precautions": [
+        "Next-day impairment: Mental and physical performance can be impaired the next day—risk increases with higher doses, short sleep time, and other sedatives",
+        "Anterograde amnesia: Memory gaps can occur; don’t take it unless a full night of sleep is possible",
+        "Abnormal thinking/behavior: Agitation, aggression, hallucinations, disinhibition can occur unpredictably",
+        "Depression/suicidality: Worsening depression and suicidal ideation/attempts have been reported with hypnotics; prescribe the smallest amount needed",
+        "Respiratory disease: Use caution in chronic respiratory disease; contraindicated in severe respiratory impairment (including significant sleep apnea)",
+        "Hepatic impairment: Dose reduce in mild-to-moderate impairment; contraindicated in severe hepatic impairment",
+        "Fall risk: Especially in older adults or anyone at risk for falls"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression, profound sedation, respiratory depression, abnormal behaviors, severe impairment. Complex sleep behaviors can occur with or without alcohol—but alcohol increases overall risk.",
+          "action": "Avoid completely."
+        },
+        {
+          "interactant": "Opioids (e.g., oxycodone, hydromorphone, morphine, fentanyl)",
+          "mechanism": "[Canadian Boxed Warning]: Profound sedation, respiratory depression, coma, and death.",
+          "action": "Avoid whenever possible. If unavoidable, use minimum doses/duration and monitor closely for sedation and slowed breathing."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, sedating antihistamines, antipsychotics, muscle relaxants, gabapentinoids, cannabis)",
+          "mechanism": "Stacked sedation, impaired coordination, falls, memory problems, respiratory suppression in high-risk scenarios.",
+          "action": "Use caution, minimize combinations, and reassess if next-day impairment occurs."
+        },
+        {
+          "interactant": "Grapefruit juice",
+          "mechanism": "Can increase zopiclone effects/toxicity via CYP3A4 inhibition (more drowsiness, confusion, ataxia, respiratory depression).",
+          "action": "Avoid grapefruit products. If exposure happens, stick to the lowest effective bedtime dose and monitor closely for toxicity."
+        },
+        {
+          "interactant": "Strong/moderate CYP3A4 inhibitors (class effect: some macrolides, azoles, protease inhibitors)",
+          "mechanism": "Higher zopiclone exposure and next-day impairment risk.",
+          "action": "Consider avoidance or dose reduction; reassess sedation and driving risk."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Next-day impairment: morning grogginess, slowed reaction time, balance problems—especially after dose increases or if sleep time was shortened"
+        },
+        {
+          "parameter": "Abnormal behaviors or thinking: agitation, aggression, hallucinations, disinhibition, confusion"
+        },
+        {
+          "parameter": "Complex sleep behaviors: sleep-walking, sleep-driving, sleep-eating, phone calls, sex while not fully awake—stop immediately if this occurs"
+        },
+        {
+          "parameter": "Respiratory status in higher-risk patients: chronic lung disease, suspected sleep apnea, or any sedative combinations (especially opioids)"
+        },
+        {
+          "parameter": "Mood: worsening depression, suicidal thoughts, irritability—especially in patients with underlying mood disorders"
+        },
+        {
+          "parameter": "Misuse/dependence signals: escalating dose, early refills, “can’t sleep at all without it,” combining with alcohol or other sedatives"
+        },
+        {
+          "parameter": "Rebound insomnia and withdrawal symptoms during discontinuation: restlessness, anxiety, tremor, insomnia flare"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Zopiclone crosses the placenta. Human outcome data exist, but risk concerns are similar to benzodiazepines: possible congenital malformations with first-trimester exposure and neonatal CNS/respiratory depression and withdrawal symptoms with later exposure. The manufacturer does not recommend use during pregnancy; short-term use may be considered only in severe, intractable insomnia after careful risk-benefit discussion, with close newborn monitoring if exposure occurs.",
+        "lactation": "Zopiclone is present in breast milk and breast milk concentrations may be substantial relative to maternal plasma. The manufacturer does not recommend breastfeeding during zopiclone therapy. If exposure occurs, monitor the infant for sedation, feeding problems, hypotonia, and respiratory issues.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Avoid use when possible. If used despite risks: start 3.75 mg at bedtime as needed and do not exceed 5 mg/day. Older adults are more sensitive to confusion, amnesia, falls, and next-day impairment; benefits on sleep are often modest while harms can be significant.",
+        "renal_impairment": "Labeling recommends a max of 5 mg/day in kidney impairment (exact eGFR threshold may not be specified in labeling). Practical approach: eGFR ≥30 mL/min/1.73 m2: no adjustment. eGFR <30 mL/min/1.73 m2 (and dialysis/CRRT/PIRRT): start 3.75 mg at bedtime; may cautiously increase to 5 mg at bedtime if needed; max 5 mg/day due to higher next-day impairment risk.",
+        "hepatic_impairment": "Mild-to-moderate hepatic impairment: Start 3.75 mg PO at bedtime; may cautiously increase up to 5 mg at bedtime if clinically indicated. Severe hepatic impairment: Contraindicated."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "77% (elderly: ~94%)",
+          "peak_plasma": "<2 hours (hepatic impairment: ~3.5 hours)",
+          "half_life": "~5 hours (elderly: ~7 hours; hepatic impairment: ~12 hours)",
+          "metabolism": "Extensive hepatic metabolism primarily via CYP3A4 (major) and CYP2C8 (minor); metabolites have minimal or no activity",
+          "excretion": "Urine ~75% (about 4-5% unchanged) and feces ~16%",
+          "protein_binding": "~45%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Zopiclone is taken by mouth, right before bedtime. The goal is the lowest effective dose, used for the shortest time. If you can’t get a full night of sleep, skip it—next-day impairment risk jumps."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been taking zopiclone regularly, don’t stop abruptly. The most common problem is rebound insomnia (your sleep briefly gets worse), but withdrawal symptoms can happen—especially at higher doses or longer use. A slow taper plus CBT-I is the cleanest exit strategy."
+        }
+      }
     }
   },
   "sections": [
@@ -115,7 +252,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "People’s sleep meds stories are all over the map, but these themes show up a lot:",
       "items": [
         {
           "category": "Sleep On (Fast)",
@@ -169,7 +305,8 @@
           ],
           "note": "Dependence and withdrawal can happen, especially with higher doses or longer use. That’s why this is meant to be short-term."
         }
-      ]
+      ],
+      "intro": "People’s sleep meds stories are all over the map, but these themes show up a lot:"
     },
     {
       "type": "onset_duration",
@@ -186,10 +323,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Zopiclone can reduce how long it takes to fall asleep, increase total sleep time, and reduce awakenings. The main limitation is that benefits are often modest, while risks (next-day impairment, dependence, abnormal behaviors) can be meaningful. That’s why this medication is best treated like a short-term tool, not your long-term sleep plan.",
       "metric": "Insomnia symptom relief",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Zopiclone can reduce how long it takes to fall asleep, increase total sleep time, and reduce awakenings. The main limitation is that benefits are often modest, while risks (next-day impairment, dependence, abnormal behaviors) can be meaningful. That’s why this medication is best treated like a short-term tool, not your long-term sleep plan.",
       "clinical_details": "Not applicable for this medication.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -275,7 +412,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Zopiclone is primarily metabolized by CYP3A4, so inhibitors can raise levels and increase next-day impairment. Anything that adds sedation (alcohol, opioids, other sleep meds) stacks risk fast.",
       "items": [
         {
           "with": "Alcohol",
@@ -302,7 +438,8 @@
           "risk": "Higher zopiclone exposure and next-day impairment risk.",
           "action": "Consider avoidance or dose reduction; reassess sedation and driving risk."
         }
-      ]
+      ],
+      "intro": "Zopiclone is primarily metabolized by CYP3A4, so inhibitors can raise levels and increase next-day impairment. Anything that adds sedation (alcohol, opioids, other sleep meds) stacks risk fast."
     },
     {
       "type": "tapering",
@@ -374,21 +511,6 @@
       "text": "Zopiclone sits in the short-term insomnia toolbox. It can be helpful when you need rapid symptom relief, but it should not replace CBT-I or a real insomnia workup. If insomnia persists beyond 7-10 days (or you’re needing treatment beyond 2-3 consecutive weeks), that’s a signal to reassess for psychiatric drivers (anxiety, depression, trauma), substances (alcohol/cannabis), circadian issues, sleep apnea, restless legs, medication side effects, or environmental/schedule factors. Older adults (65+) are a special caution zone: Z-drugs act a lot like benzos in the real world—delirium, falls, fractures, car crashes—so avoidance is usually the right call."
     }
   ],
-  "seo": {
-    "title": "Zopiclone (Imovane): Uses, Dosage, Side Effects & Safe Tapering",
-    "description": "Zopiclone (Imovane) for short-term insomnia: bedtime dosing (3.75–7.5 mg), bitter taste, next-day impairment, complex sleep behaviors, dangerous mixing with alcohol/opioids, and how to taper safely.",
-    "canonical": "[https://www.heypsych.com/treatments/zopiclone-imovane](https://www.heypsych.com/treatments/zopiclone-imovane)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is zopiclone used for?",
@@ -438,5 +560,20 @@
       "q": "Is zopiclone safe in pregnancy or breastfeeding?",
       "a": "It’s generally not recommended. Zopiclone crosses the placenta and is found in breast milk. Exposure can lead to newborn sedation, breathing problems, feeding difficulties, hypotonia, and withdrawal-like symptoms. Short-term use may be considered only in severe, intractable insomnia after careful risk-benefit discussion with your clinician."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Zopiclone (Imovane): Uses, Dosage, Side Effects & Safe Tapering",
+    "description": "Zopiclone (Imovane) for short-term insomnia: bedtime dosing (3.75–7.5 mg), bitter taste, next-day impairment, complex sleep behaviors, dangerous mixing with alcohol/opioids, and how to taper safely.",
+    "canonical": "[https://www.heypsych.com/treatments/zopiclone-imovane](https://www.heypsych.com/treatments/zopiclone-imovane)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

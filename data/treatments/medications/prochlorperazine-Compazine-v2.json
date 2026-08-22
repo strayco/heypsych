@@ -1,88 +1,251 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "prochlorperazine-compazine",
-  "type": "medication",
-  "name": "Prochlorperazine (Compazine, Compro)",
-  "summary": "A first-generation antipsychotic (phenothiazine) that’s mostly used for nausea—but it has older, rarely-used psychiatric indications (schizophrenia, anxiety). High side effect risk (EPS, sedation, low blood pressure), so it’s not a modern first-line psych med.",
-  "description": "Prochlorperazine is a dopamine-blocking medication. In psychiatry, it’s an older antipsychotic that can reduce severe agitation or psychotic symptoms, and it has a labeled anxiety indication that’s largely outdated. The tradeoff is side effects: sleepiness, dizziness, restlessness/akathisia, muscle stiffness, tremor, and rare but dangerous reactions like neuroleptic malignant syndrome. In older adults—especially dementia—antipsychotics can raise the risk of stroke and death, so this med is generally avoided there.",
-  "patient_summary": "Prochlorperazine is a dopamine-blocking medication. In psychiatry, it’s an older antipsychotic that can calm severe psychosis or agitation, and it has a labeled anxiety use that most clinicians don’t rely on anymore. The downside is side effects: sedation, dizziness, low blood pressure, and movement symptoms like restlessness or stiffness. It’s usually not a first-choice psychiatric medication today, especially in older adults or anyone at risk for falls or dementia-related complications.",
-  "category": "medications/psychosis",
-  "metadata": {
+  "identity": {
+    "slug": "prochlorperazine-compazine",
+    "name": "Prochlorperazine (Compazine, Compro)",
+    "generic_name": "prochlorperazine",
+    "brand_names": [
+      "Compro",
+      "Compazine"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychosis",
     "drug_classes": [
       "First Generation (Typical) Antipsychotic",
       "Phenothiazine Derivative",
       "Dopamine Receptor Antagonist"
-    ],
-    "brand_names": [
-      "Compro",
-      "Compazine"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intramuscular",
-      "Intravenous",
-      "Rectal"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1956,
-    "pharmacologic_category": "Phenothiazine, First-Generation Antipsychotic (Piperazine)",
-    "published_date": "2026-01-27T00:00:00Z",
-    "last_updated": "2026-01-27T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-27T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia (legacy use; not a modern first-line option)",
-      "Anxiety (labeled, but largely replaced by safer modern treatments)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Labeled indication, but it’s an older typical antipsychotic with a higher risk of movement side effects. Modern guidelines usually prefer newer antipsychotics unless there’s a specific reason."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "off_label",
-        "context": "Listed as a labeled use historically, but contemporary anxiety guidelines generally do not recommend prochlorperazine due to side effects and safer alternatives."
-      },
-      {
-        "slug": "acute-agitation",
-        "relationship": "off_label",
-        "context": "May be used in urgent settings to calm severe agitation, but it’s not a preferred first-line choice compared with more commonly used agents due to EPS and hypotension risk."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to phenothiazines",
-      "Coma or severe CNS depression (eg, large amounts of alcohol, opioids, barbiturates)",
-      "Use in infants and children <2 years or <9 kg",
-      "Pediatric postoperative nausea/vomiting management (contraindicated in labeling)",
-      "Do not use for dementia-related psychosis (not approved; increased mortality risk in elderly patients with dementia-related psychosis treated with antipsychotics)"
-    ],
-    "efficacy_response": {
-      "metric": "Psychiatric symptom reduction",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "For psychiatric use, prochlorperazine is considered a legacy medication. While dopamine-blocking effects can reduce psychosis or severe agitation, modern practice usually favors other antipsychotics because this one is more likely to cause movement side effects and sedation.",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "A first-generation antipsychotic (phenothiazine) that’s mostly used for nausea—but it has older, rarely-used psychiatric indications (schizophrenia, anxiety). High side effect risk (EPS, sedation, low blood pressure), so it’s not a modern first-line psych med.",
+  "description": "Prochlorperazine is a dopamine-blocking medication. In psychiatry, it’s an older antipsychotic that can reduce severe agitation or psychotic symptoms, and it has a labeled anxiety indication that’s largely outdated. The tradeoff is side effects: sleepiness, dizziness, restlessness/akathisia, muscle stiffness, tremor, and rare but dangerous reactions like neuroleptic malignant syndrome. In older adults—especially dementia—antipsychotics can raise the risk of stroke and death, so this med is generally avoided there.",
+  "patient_summary": "Prochlorperazine is a dopamine-blocking medication. In psychiatry, it’s an older antipsychotic that can calm severe psychosis or agitation, and it has a labeled anxiety use that most clinicians don’t rely on anymore. The downside is side effects: sedation, dizziness, low blood pressure, and movement symptoms like restlessness or stiffness. It’s usually not a first-choice psychiatric medication today, especially in older adults or anyone at risk for falls or dementia-related complications.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Labeled indication, but it’s an older typical antipsychotic with a higher risk of movement side effects. Modern guidelines usually prefer newer antipsychotics unless there’s a specific reason.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "off_label",
+          "context": "Listed as a labeled use historically, but contemporary anxiety guidelines generally do not recommend prochlorperazine due to side effects and safer alternatives."
+        },
+        {
+          "condition_slug": "acute-agitation",
+          "condition_name": "Acute Agitation",
+          "relationship": "off_label",
+          "context": "May be used in urgent settings to calm severe agitation, but it’s not a preferred first-line choice compared with more commonly used agents due to EPS and hypotension risk."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption is limited; clinical effects may still occur quickly",
-      "bioavailability": "Low (reported around 12.5%)",
-      "onset": "Oral: ~30-40 minutes; IM: ~10-20 minutes; Rectal: ~60 minutes",
-      "peak_plasma": "Variable; peak antiemetic effect with IV reported ~30-60 minutes",
-      "half_life": "Oral: ~6-10 hours (single dose); ~14-22 hours (repeated dosing)",
-      "duration_IR": "IM/Oral: ~3-4 hours (clinical effect); Rectal: ~3-12 hours",
-      "metabolism": "Primarily hepatic (active metabolite reported: N-desmethyl prochlorperazine)",
-      "excretion": "Mainly in feces",
-      "protein_binding": "Not applicable for this medication.",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral: ~30-40 minutes; IM: ~10-20 minutes; Rectal: ~60 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intramuscular",
+        "Intravenous",
+        "Rectal"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "Frequency not defined (commonly reported)",
+          "notes": "Can feel like heavy tiredness, slowed thinking, and poor coordination. This is a major fall risk in older adults and anyone combining other sedatives."
+        },
+        {
+          "effect": "Akathisia (Inner Restlessness)",
+          "incidence": "Frequency not defined (risk increases with IV administration, younger age, pregnancy, and higher dopamine blockade)",
+          "notes": "Feels like you can’t sit still and your body is buzzing. It can be mistaken for worsening anxiety, but it’s a medication effect and needs a different fix."
+        },
+        {
+          "effect": "Acute Dystonia (Muscle Spasm / Abnormal Posture)",
+          "incidence": "Frequency not defined (higher risk in younger patients and males)",
+          "notes": "Sudden painful stiffness—jaw/neck/eyes can be involved. This is treatable but urgent. If it happens, call your clinician or seek urgent care."
+        },
+        {
+          "effect": "Drug-Induced Parkinsonism",
+          "incidence": "Frequency not defined (higher risk with older age and longer exposure)",
+          "notes": "Tremor, stiffness, slowed movement. May fade after stopping, but it can linger for weeks or longer."
+        },
+        {
+          "effect": "Orthostatic Hypotension",
+          "incidence": "Frequency not defined",
+          "notes": "Lightheadedness when standing. Risk increases with parenteral dosing, older age, higher doses, and certain heart/blood pressure meds."
+        },
+        {
+          "effect": "Anticholinergic Effects",
+          "incidence": "Frequency not defined",
+          "notes": "Dry mouth, constipation, urinary retention, blurry vision, and confusion—especially in older adults."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Tardive dyskinesia: involuntary movements (face/tongue/limbs) that may be irreversible, especially with higher cumulative dose and longer duration"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, severe rigidity, confusion, unstable blood pressure/heart rate (MEDICAL EMERGENCY)"
+        },
+        {
+          "risk": "Severe arrhythmias/conduction changes: palpitations, fainting, chest symptoms—seek urgent evaluation"
+        },
+        {
+          "risk": "Agranulocytosis or severe neutropenia: infection risk with fever/sore throat—requires immediate evaluation"
+        },
+        {
+          "risk": "Seizures (risk increases with seizure history or meds that lower seizure threshold)"
+        },
+        {
+          "risk": "Aspiration events (especially in older adults with swallowing risk)"
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Prochlorperazine is not approved for the treatment of patients with dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to phenothiazines"
+        },
+        {
+          "contraindication": "Coma or severe CNS depression (eg, large amounts of alcohol, opioids, barbiturates)"
+        },
+        {
+          "contraindication": "Use in infants and children <2 years or <9 kg"
+        },
+        {
+          "contraindication": "Pediatric postoperative nausea/vomiting management (contraindicated in labeling)"
+        },
+        {
+          "contraindication": "Do not use for dementia-related psychosis (not approved; increased mortality risk in elderly patients with dementia-related psychosis treated with antipsychotics)"
+        }
+      ],
+      "precautions": [
+        "Movement disorders (EPS): akathisia, dystonia, parkinsonism, and tardive dyskinesia (which can be irreversible)",
+        "Neuroleptic malignant syndrome (NMS): rare, life-threatening reaction with fever, rigidity, confusion, and autonomic instability",
+        "Sedation and CNS depression: higher fall and injury risk, especially in older adults and when combined with other sedatives",
+        "Orthostatic hypotension: dizziness, fainting, fall risk (especially with IV/IM dosing)",
+        "Cardiac conduction effects and arrhythmia risk: caution with QT risk and heart disease",
+        "Anticholinergic effects: confusion, constipation, urinary retention, blurry vision, dry mouth (especially in older adults)",
+        "Blood dyscrasias (rare but serious): leukopenia, neutropenia, agranulocytosis—monitor if risk factors exist",
+        "Aspiration risk: antipsychotics can be associated with swallowing issues and aspiration, especially in older adults"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol, opioids, benzodiazepines, sleep meds, sedating antihistamines",
+          "mechanism": "Additive CNS depression: worse sedation, impaired breathing/alertness, falls, accidents.",
+          "action": "Avoid combining when possible. If combination is unavoidable, use the lowest effective doses and monitor closely for excessive sedation and safety issues."
+        },
+        {
+          "interactant": "Other dopamine blockers (many antipsychotics, metoclopramide)",
+          "mechanism": "Higher EPS and tardive dyskinesia risk; higher NMS risk.",
+          "action": "Avoid duplicate dopamine blockade unless there’s a very clear reason and careful monitoring."
+        },
+        {
+          "interactant": "Levodopa and dopamine agonists (Parkinson’s meds)",
+          "mechanism": "Can counteract Parkinson’s treatment and worsen movement symptoms.",
+          "action": "Avoid when possible; coordinate with neurology if Parkinson’s disease is in the picture."
+        },
+        {
+          "interactant": "QT-prolonging medications (multiple antidepressants, antipsychotics, antibiotics, antiarrhythmics)",
+          "mechanism": "Increased risk of dangerous heart rhythm problems, especially with electrolyte abnormalities.",
+          "action": "Review QT risk before combining. Consider ECG monitoring and correct potassium/magnesium if needed."
+        },
+        {
+          "interactant": "Anticholinergic medications (diphenhydramine, tricyclics, some bladder meds)",
+          "mechanism": "More constipation, urinary retention, confusion, blurred vision—especially in older adults.",
+          "action": "Use the minimum necessary and monitor bowel/bladder function and mental status."
+        },
+        {
+          "interactant": "Blood pressure–lowering medications",
+          "mechanism": "Worse orthostatic hypotension and fainting.",
+          "action": "Monitor orthostatics and counsel about slow position changes; consider dose adjustments."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and alertness: sedation, confusion, worsening cognition—especially in older adults"
+        },
+        {
+          "parameter": "Movement side effects (EPS): check at every visit; reassess after initiation and dose changes; consider formal scales when risk is high"
+        },
+        {
+          "parameter": "Tardive dyskinesia: screen regularly (at least annually; more often if high risk or symptoms appear)"
+        },
+        {
+          "parameter": "Blood pressure and orthostatics: especially with parenteral dosing, older age, or fainting/fall risk"
+        },
+        {
+          "parameter": "Fall risk: reassess regularly in adults ≥60 and anyone with dizziness, sedation, or prior falls"
+        },
+        {
+          "parameter": "Cardiac risk: review QT risk factors and consider ECG monitoring when clinically indicated (especially with other QT-prolonging meds)"
+        },
+        {
+          "parameter": "CBC: as clinically indicated, especially with preexisting low WBC or history of drug-induced leukopenia/neutropenia"
+        },
+        {
+          "parameter": "Electrolytes, renal and liver function: as clinically indicated (particularly if medically complex or on multiple meds)"
+        },
+        {
+          "parameter": "Prolactin-related symptoms: ask about menstrual changes, libido changes, galactorrhea, gynecomastia, erectile/ejaculatory issues; check prolactin if symptomatic"
+        },
+        {
+          "parameter": "Metabolic monitoring: weight/BMI trend (even though this is not the most metabolic-heavy antipsychotic, baseline and periodic checks still matter in real life)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Antipsychotic exposure data for first-generation antipsychotics as a class do not show a clear major malformation signal overall, but individual-drug data and long-term neurodevelopment data are limited. Third-trimester exposure to antipsychotics can lead to newborn EPS and/or withdrawal-like symptoms (agitation, feeding issues, tone changes, respiratory distress, sleepiness, tremor). Do not taper late in pregnancy solely to prevent newborn symptoms; instead, use the lowest effective dose and avoid polypharmacy when possible.",
+        "lactation": "It is not known if prochlorperazine is present in human milk. Other phenothiazines can be excreted in breast milk, so monitor the infant for sedation, poor feeding, or unusual sleepiness if exposure occurs. Use the lowest effective dose and consider alternatives when feasible.",
+        "pediatric": "Avoid in children <2 years or <9 kg. In pediatric patients, use the lowest possible dose due to higher risk of extrapyramidal reactions and sedation. Movement reactions can be dramatic (eg, oculogyric crisis, torticollis).",
+        "geriatric": "High-risk medication in older adults. Avoid for behavioral problems of dementia or delirium unless nonpharmacologic options failed and there is risk of harm. Antipsychotics in dementia are associated with increased stroke, cognitive decline, and mortality. If used, start at the low end of the adult range, titrate slowly, reassess frequently, and attempt deprescribing when clinically appropriate.",
+        "renal_impairment": "No dosage adjustment is generally necessary (minimal renal clearance). Use caution in medically fragile patients due to hypotension and CNS effects rather than renal clearance.",
+        "hepatic_impairment": "No specific manufacturer dose adjustment is provided, but systemic exposure may be increased because the drug is hepatically metabolized. Use caution, start low, and monitor for sedation, hypotension, and EPS."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1956
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption is limited; clinical effects may still occur quickly",
+          "bioavailability": "Low (reported around 12.5%)",
+          "peak_plasma": "Variable; peak antiemetic effect with IV reported ~30-60 minutes",
+          "half_life": "Oral: ~6-10 hours (single dose); ~14-22 hours (repeated dosing)",
+          "metabolism": "Primarily hepatic (active metabolite reported: N-desmethyl prochlorperazine)",
+          "excretion": "Mainly in feces",
+          "protein_binding": "Not applicable for this medication.",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Psychiatric dosing exists, but this is not a commonly recommended psychiatric medication today. If it’s used for mental health symptoms, it should be at the lowest effective dose with careful monitoring for movement side effects, sedation, low blood pressure, and confusion—especially in older adults."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If prochlorperazine is being used for psychiatric symptoms (rare in modern practice), don’t stop abruptly after sustained use without a plan. A gradual taper helps reduce rebound symptoms and lowers the chance of withdrawal-like agitation or symptom relapse."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +265,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med tends to feel like a blunt instrument: it can quiet things down, but it can also make people feel heavy, foggy, or physically uncomfortable.",
       "items": [
         {
           "category": "Calm / Quieting",
@@ -139,7 +301,8 @@
           ],
           "note": "These movement side effects are more likely with higher doses, longer use, and in older adults."
         }
-      ]
+      ],
+      "intro": "This med tends to feel like a blunt instrument: it can quiet things down, but it can also make people feel heavy, foggy, or physically uncomfortable."
     },
     {
       "type": "onset_duration",
@@ -156,10 +319,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For psychiatric treatment, prochlorperazine is mostly a legacy option. Dopamine blockade can reduce psychosis and severe agitation in some people, but the side effect profile makes it a less common choice compared with newer antipsychotics.",
       "metric": "Psychiatric effectiveness in modern practice",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "For psychiatric treatment, prochlorperazine is mostly a legacy option. Dopamine blockade can reduce psychosis and severe agitation in some people, but the side effect profile makes it a less common choice compared with newer antipsychotics.",
       "clinical_details": "This medication’s psychiatric indications exist historically, but contemporary guidelines generally do not prioritize it for anxiety management or as a preferred antipsychotic for schizophrenia due to tolerability concerns (especially EPS, sedation, orthostatic hypotension, and anticholinergic effects).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -252,7 +415,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Prochlorperazine stacks side effects with other sedating, anticholinergic, or heart-rhythm–affecting medications. It can also interfere with dopamine-based Parkinson’s meds.",
       "items": [
         {
           "with": "Alcohol, opioids, benzodiazepines, sleep meds, sedating antihistamines",
@@ -284,7 +446,8 @@
           "risk": "Worse orthostatic hypotension and fainting.",
           "action": "Monitor orthostatics and counsel about slow position changes; consider dose adjustments."
         }
-      ]
+      ],
+      "intro": "Prochlorperazine stacks side effects with other sedating, anticholinergic, or heart-rhythm–affecting medications. It can also interfere with dopamine-based Parkinson’s meds."
     },
     {
       "type": "tapering",
@@ -362,21 +525,6 @@
       "text": "In modern psychiatry, prochlorperazine is rarely a first-choice medication. For schizophrenia and related psychotic disorders, clinicians usually choose other antipsychotics that are better studied and often better tolerated. For anxiety, this medication is considered outdated because the side effect burden is high compared with modern options. If it shows up in psychiatric care today, it’s usually in unusual situations—short-term symptom control, special circumstances, or when other options aren’t feasible—and it requires careful monitoring."
     }
   ],
-  "seo": {
-    "title": "Prochlorperazine (Compazine): Psychiatric Uses, Dosing, Side Effects & Warnings",
-    "description": "Prochlorperazine (Compazine/Compro) is a first-generation antipsychotic mostly used for nausea, with legacy psychiatric uses (schizophrenia, anxiety). Learn dosing, sedation and EPS risks, dementia boxed warning, interactions, and monitoring.",
-    "canonical": "[https://www.heypsych.com/treatments/prochlorperazine-compazine](https://www.heypsych.com/treatments/prochlorperazine-compazine)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-27",
-    "lastUpdated": "2026-01-27",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is prochlorperazine actually an antipsychotic?",
@@ -418,5 +566,20 @@
       "q": "Is it safe in pregnancy or breastfeeding?",
       "a": "This is a shared decision-making situation. Class-level data for first-generation antipsychotics don’t show a clear major malformation signal overall, but newborn EPS/withdrawal-like symptoms can occur with third-trimester exposure. For breastfeeding, it’s not well established whether prochlorperazine is in human milk, but related phenothiazines can be, so infant sedation and feeding should be monitored if exposure happens."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Prochlorperazine (Compazine): Psychiatric Uses, Dosing, Side Effects & Warnings",
+    "description": "Prochlorperazine (Compazine/Compro) is a first-generation antipsychotic mostly used for nausea, with legacy psychiatric uses (schizophrenia, anxiety). Learn dosing, sedation and EPS risks, dementia boxed warning, interactions, and monitoring.",
+    "canonical": "[https://www.heypsych.com/treatments/prochlorperazine-compazine](https://www.heypsych.com/treatments/prochlorperazine-compazine)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-27",
+    "lastUpdated": "2026-01-27",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

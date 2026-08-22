@@ -1,87 +1,188 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "deep-brain-stimulation",
-  "type": "interventional",
-  "name": "Deep Brain Stimulation",
-  "summary": "A neurosurgical procedure that implants electrodes into specific brain regions to modulate abnormal neural activity, used for treatment-resistant movement and psychiatric disorders.",
-  "description": "Deep brain stimulation (DBS) involves the stereotactic surgical implantation of electrodes into targeted brain structures, connected via subcutaneous leads to a neurostimulator (implanted pulse generator). The device delivers continuous or programmed electrical pulses to modulate abnormal neural circuit activity.\n\nDBS is FDA-approved for movement disorders such as Parkinson’s disease, essential tremor, and dystonia, and more recently for obsessive-compulsive disorder (OCD). Research is ongoing for treatment-resistant depression, Tourette syndrome, and other neuropsychiatric conditions.\n\nUnlike ablative neurosurgery, DBS is adjustable and reversible, allowing fine-tuning of stimulation parameters and the possibility of device removal if necessary.",
-  "category": "interventional/neurosurgical",
-  "tags": [
-    "neurostimulation",
-    "neurosurgery",
-    "movement-disorders",
-    "psychiatric-disorders",
-    "implantable-device"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "deep-brain-stimulation",
+    "name": "Deep Brain Stimulation",
+    "wikidata_qid": "Q1182247"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/neurosurgical",
     "intervention_types": [
       "Electrical neurostimulation",
       "Neurosurgical"
     ],
-    "treatment_types": [
-      "Device-based",
-      "Invasive"
-    ],
-    "categories": [
-      "Neurology",
-      "Neurosurgery",
-      "Psychiatry"
-    ],
-    "delivery_methods": [
-      "Surgically implanted device"
-    ],
-    "invasiveness_level": "Highly invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "Surgery: 4–8 hours; follow-up programming visits: 30–60 minutes",
-    "treatment_duration": [
-      "Long-term (years)"
-    ],
-    "specialty_areas": [
-      "Functional Neurosurgery",
-      "Movement Disorders",
-      "Neuropsychiatry"
-    ],
-    "wikidata_qid": "Q1182247"
+    "tags": [
+      "neurostimulation",
+      "neurosurgery",
+      "movement-disorders",
+      "psychiatric-disorders",
+      "implantable-device"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Parkinson's disease",
-      "Essential tremor",
-      "Dystonia",
-      "Obsessive-compulsive disorder"
-    ],
-    "conditions_treated": [
-      "Parkinson's disease",
-      "Essential tremor",
-      "Primary dystonia",
-      "Obsessive-compulsive disorder",
-      "Treatment-resistant depression (investigational)",
-      "Tourette syndrome (investigational)"
-    ],
-    "off_label_uses": [
-      "Chronic pain syndromes",
-      "Epilepsy",
-      "Cluster headache"
-    ],
-    "contraindications": [
-      "Severe cognitive impairment",
-      "Uncontrolled psychiatric illness",
-      "Contraindication to surgery or anesthesia"
-    ],
-    "safety_profile": "Risks include surgical complications, infection, device malfunction, and stimulation-related side effects.",
-    "evidence_level": "High for approved movement disorders; moderate for OCD; preliminary for depression and other indications.",
-    "research_support": "Extensive for Parkinson’s and essential tremor; growing for psychiatric applications.",
-    "invasiveness": "Highly invasive",
-    "efficacy_rating": {
-      "parkinsons-disease": 5,
-      "essential-tremor": 5,
-      "dystonia": 4,
-      "ocd": 3,
-      "depression": 2
+  "summary": "A neurosurgical procedure that implants electrodes into specific brain regions to modulate abnormal neural activity, used for treatment-resistant movement and psychiatric disorders.",
+  "description": "Deep brain stimulation (DBS) involves the stereotactic surgical implantation of electrodes into targeted brain structures, connected via subcutaneous leads to a neurostimulator (implanted pulse generator). The device delivers continuous or programmed electrical pulses to modulate abnormal neural circuit activity.\n\nDBS is FDA-approved for movement disorders such as Parkinson’s disease, essential tremor, and dystonia, and more recently for obsessive-compulsive disorder (OCD). Research is ongoing for treatment-resistant depression, Tourette syndrome, and other neuropsychiatric conditions.\n\nUnlike ablative neurosurgery, DBS is adjustable and reversible, allowing fine-tuning of stimulation parameters and the possibility of device removal if necessary.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "parkinson-s-disease",
+          "condition_name": "Parkinson's disease",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "essential-tremor",
+          "condition_name": "Essential tremor",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "dystonia",
+          "condition_name": "Dystonia",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "obsessive-compulsive-disorder",
+          "condition_name": "Obsessive-compulsive disorder",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "primary-dystonia",
+          "condition_name": "Primary dystonia",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression-investigational",
+          "condition_name": "Treatment-resistant depression (investigational)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "tourette-syndrome-investigational",
+          "condition_name": "Tourette syndrome (investigational)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain-syndromes",
+          "condition_name": "Chronic pain syndromes",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "epilepsy",
+          "condition_name": "Epilepsy",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "cluster-headache",
+          "condition_name": "Cluster headache",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High for approved movement disorders; moderate for OCD; preliminary for depression and other indications.",
+      "efficacy_ratings": {
+        "parkinsons-disease": {
+          "rating": 5
+        },
+        "essential-tremor": {
+          "rating": 5
+        },
+        "dystonia": {
+          "rating": 4
+        },
+        "ocd": {
+          "rating": 3
+        },
+        "depression": {
+          "rating": 2
+        }
+      },
+      "research_support": "Extensive for Parkinson’s and essential tremor; growing for psychiatric applications."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Long-term (years)"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Surgically implanted device"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "Surgery: 4–8 hours; follow-up programming visits: 30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      }
+    },
+    "safety": {
+      "overall_safety": "Risks include surgical complications, infection, device malfunction, and stimulation-related side effects.",
+      "common_adverse_effects": [
+        {
+          "effect": "Paresthesias"
+        },
+        {
+          "effect": "Speech disturbances"
+        },
+        {
+          "effect": "Balance issues"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Intracranial hemorrhage"
+        },
+        {
+          "risk": "Seizure"
+        },
+        {
+          "risk": "Infection"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active systemic infection",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Uncontrolled coagulopathy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe dementia",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Poor compliance with follow-up",
+          "type": "relative"
+        },
+        {
+          "contraindication": "High surgical risk",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Device can remain in place; avoid surgery during pregnancy unless urgent."
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Electrical neurostimulation, Neurosurgical",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Stereotactic implantation of intracranial electrodes under local or general anesthesia.\nConnection of electrodes to an implantable pulse generator placed subcutaneously in the chest wall.\nPostoperative programming of stimulation parameters over multiple visits."
+      }
     }
   },
   "sections": [
@@ -251,6 +352,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Weaver FM, et al. Bilateral deep brain stimulation vs best medical therapy for patients with advanced Parkinson disease: a randomized controlled trial. JAMA. 2009;301(1):63–73.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19126811/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Greenberg BD, et al. Deep brain stimulation of the ventral internal capsule/ventral striatum for OCD: worldwide experience. Mol Psychiatry. 2010;15(1):64–79.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18779713/"
+    }
+  ],
   "seo": {
     "title": "Deep Brain Stimulation for Movement and Psychiatric Disorders",
     "description": "Deep brain stimulation is a surgical neuromodulation therapy for movement disorders and select psychiatric conditions, offering adjustable and reversible symptom control.",
@@ -263,5 +378,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High for approved movement disorders; moderate for OCD; preliminary for depression and other indications."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High for approved movement disorders; moderate for OCD; preliminary for depression and other indications."
+    ]
   }
 }

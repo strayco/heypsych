@@ -1,72 +1,225 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "molindone-moban",
-  "type": "medication",
-  "name": "Molindone (Moban)",
-  "summary": "Older “typical” antipsychotic used for schizophrenia. Less sedating than many first-gen options, but still carries serious risks (EPS, NMS, orthostasis, and a boxed warning for increased death risk in elderly patients with dementia-related psychosis).",
-  "description": "Molindone is a first-generation antipsychotic used to treat schizophrenia. It can help reduce hallucinations, delusions, severe agitation tied to psychosis, and disorganized thinking—but it’s not a casual medication. Side effects can include movement problems (EPS), restlessness, dizziness with standing, and rare but life-threatening reactions like neuroleptic malignant syndrome (NMS). In older adults with dementia-related psychosis, antipsychotics increase the risk of death. Molindone is not approved for dementia-related psychosis.",
-  "patient_summary": "Molindone is a first-generation antipsychotic used to treat schizophrenia. It can help reduce hallucinations, delusions, severe agitation tied to psychosis, and disorganized thinking—but it’s not a casual medication. Side effects can include movement problems (EPS), restlessness, dizziness with standing, and rare but life-threatening reactions like neuroleptic malignant syndrome (NMS). In older adults with dementia-related psychosis, antipsychotics increase the risk of death. Molindone is not approved for dementia-related psychosis.",
-  "category": "medications/psychotic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "molindone-moban",
+    "name": "Molindone (Moban)",
+    "generic_name": "molindone",
+    "brand_names": [
+      "Moban"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/psychotic-disorders",
     "drug_classes": [
       "First-Generation (Typical) Antipsychotic",
       "D2 Receptor Antagonist",
       "Antipsychotic"
-    ],
-    "brand_names": [
-      "Moban"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not controlled",
-    "generic_available": true,
-    "fda_approval_year": 1974,
-    "pharmacologic_category": "First-Generation (Typical) Antipsychotic (Dihydroindolone Derivative)",
-    "published_date": "2026-01-26T00:00:00Z",
-    "last_updated": "2026-01-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for the management of schizophrenia. Typically considered when an antipsychotic is needed and you want a first-generation option with relatively lower sedation compared to many other typical antipsychotics."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to molindone or any component of the formulation",
-      "Severe CNS depression",
-      "Coma"
-    ],
-    "efficacy_response": {
-      "metric": "Typical clinical timeline for symptom improvement",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "With antipsychotics like molindone, you may notice early shifts (less agitation, better sleep, less intensity of voices/paranoia) within 1 to 2 weeks, with fuller improvement often building over 4 to 6 weeks.",
-      "citation_tag": "FDA Label / Clinical Pharmacology References"
+  "summary": "Older “typical” antipsychotic used for schizophrenia. Less sedating than many first-gen options, but still carries serious risks (EPS, NMS, orthostasis, and a boxed warning for increased death risk in elderly patients with dementia-related psychosis).",
+  "description": "Molindone is a first-generation antipsychotic used to treat schizophrenia. It can help reduce hallucinations, delusions, severe agitation tied to psychosis, and disorganized thinking—but it’s not a casual medication. Side effects can include movement problems (EPS), restlessness, dizziness with standing, and rare but life-threatening reactions like neuroleptic malignant syndrome (NMS). In older adults with dementia-related psychosis, antipsychotics increase the risk of death. Molindone is not approved for dementia-related psychosis.",
+  "patient_summary": "Molindone is a first-generation antipsychotic used to treat schizophrenia. It can help reduce hallucinations, delusions, severe agitation tied to psychosis, and disorganized thinking—but it’s not a casual medication. Side effects can include movement problems (EPS), restlessness, dizziness with standing, and rare but life-threatening reactions like neuroleptic malignant syndrome (NMS). In older adults with dementia-related psychosis, antipsychotics increase the risk of death. Molindone is not approved for dementia-related psychosis.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for the management of schizophrenia. Typically considered when an antipsychotic is needed and you want a first-generation option with relatively lower sedation compared to many other typical antipsychotics.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Clinical effects may begin within 1 to 2 weeks; continued improvement over 4 to 6 weeks",
-      "peak_plasma": "~1.5 hours",
-      "half_life": "~1.5 hours",
-      "duration_IR": "24 to 36 hours (pharmacologic effect)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic",
-      "excretion": "Urine and feces; <2% to 3% excreted unchanged",
-      "protein_binding": "76%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Clinical effects may begin within 1 to 2 weeks; continued improvement over 4 to 6 weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Extrapyramidal symptoms (EPS)",
+          "incidence": "Frequency not defined",
+          "notes": "This can look like stiffness, tremor, slowed movement, inner restlessness, or sudden muscle spasms. Dose increases can raise risk. EPS is treatable—don’t white-knuckle it."
+        },
+        {
+          "effect": "Akathisia (inner restlessness)",
+          "incidence": "Frequency not defined",
+          "notes": "Feels like you have to move even if you’re not anxious. This can be miserable and can worsen sleep and mood. Tell your prescriber quickly."
+        },
+        {
+          "effect": "Orthostatic hypotension / dizziness",
+          "incidence": "Frequency not defined",
+          "notes": "Lightheadedness when standing can lead to falls. It’s worse with dehydration, heat, alcohol, and blood pressure meds."
+        },
+        {
+          "effect": "Sedation / drowsiness",
+          "incidence": "Frequency not defined",
+          "notes": "Molindone may be less sedating than some typical antipsychotics, but sedation can still happen—especially early on or with dose increases."
+        },
+        {
+          "effect": "Prolactin-related effects",
+          "incidence": "Frequency not defined",
+          "notes": "Possible: missed periods, breast discharge, breast enlargement, sexual side effects. If you notice these, bring it up—there are options."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Neuroleptic malignant syndrome (NMS): fever, rigidity, confusion, unstable blood pressure/heart rate (MEDICAL EMERGENCY)."
+        },
+        {
+          "risk": "Tardive dyskinesia: potentially irreversible involuntary movements (risk increases with longer use and higher cumulative exposure)."
+        },
+        {
+          "risk": "Cardiac arrhythmias: rare but potentially life-threatening rhythm changes."
+        },
+        {
+          "risk": "Blood dyscrasias: severe low white blood cell counts can increase infection risk."
+        },
+        {
+          "risk": "Seizures: risk may increase in vulnerable patients."
+        },
+        {
+          "risk": "Aspiration pneumonia: swallowing dysfunction/aspiration risk increases with age and frailty."
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death compared to placebo. Deaths are often cardiovascular (heart failure, sudden death) or infectious (pneumonia). Molindone is not approved for dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to molindone or any component of the formulation"
+        },
+        {
+          "contraindication": "Severe CNS depression"
+        },
+        {
+          "contraindication": "Coma"
+        }
+      ],
+      "precautions": [
+        "Neuroleptic malignant syndrome (NMS): rare but life-threatening (fever, muscle rigidity, confusion, autonomic instability)",
+        "Extrapyramidal symptoms (EPS): akathisia, dystonia, parkinsonism; tardive dyskinesia risk increases with duration and cumulative exposure",
+        "Orthostatic hypotension and falls: dizziness/fainting risk, especially in older adults",
+        "Cardiac conduction/arrhythmias: rare but serious rhythm problems have occurred with antipsychotics",
+        "Blood dyscrasias: leukopenia/neutropenia/agranulocytosis reported with antipsychotics—monitor if risk factors",
+        "Aspiration risk: antipsychotics can contribute to swallowing issues; aspiration pneumonia risk rises with age",
+        "Seizure risk: use caution in people with seizure history or higher risk",
+        "Temperature regulation problems: overheating/dehydration risk, especially with heat exposure or strenuous activity"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol, opioids, benzos, sedating antihistamines, sleep meds",
+          "mechanism": "Additive CNS depression (more sedation, worse coordination, higher fall risk).",
+          "action": "Avoid mixing when possible. If combination is unavoidable, go low, go slow, and watch for oversedation and impaired functioning."
+        },
+        {
+          "interactant": "Other medications that can prolong QT or increase arrhythmia risk",
+          "mechanism": "Potentially higher risk of dangerous rhythm problems in susceptible patients.",
+          "action": "Review the full med list for QT risk. Consider baseline ECG and follow-up if risk factors exist."
+        },
+        {
+          "interactant": "Blood pressure medications",
+          "mechanism": "Greater orthostatic hypotension (dizziness/fainting).",
+          "action": "Monitor blood pressure/orthostatics during initiation and dose changes. Hydration and slow position changes matter."
+        },
+        {
+          "interactant": "Anticholinergic medications (and meds that worsen constipation/urinary retention)",
+          "mechanism": "More constipation, urinary retention, blurred vision, dry mouth, confusion risk (especially in older adults).",
+          "action": "Use the lowest effective anticholinergic burden possible; treat constipation proactively."
+        },
+        {
+          "interactant": "Dopamine agonists (e.g., Parkinson’s meds) or stimulants that worsen psychosis",
+          "mechanism": "Antipsychotic effects can be reduced, or psychosis can worsen.",
+          "action": "Coordinate care across prescribers; adjust plans based on symptom stability and safety."
+        },
+        {
+          "interactant": "Seizure-threshold lowering meds",
+          "mechanism": "Higher seizure risk in vulnerable patients.",
+          "action": "Use caution in seizure disorders or high-risk situations; monitor clinically."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Mental status and symptom tracking (every visit): psychosis intensity, agitation, sleep, functioning, insight, safety risk."
+        },
+        {
+          "parameter": "Movement side effects (every visit; formal scale at least annually): akathisia, tremor, rigidity, dystonia; screen for tardive dyskinesia at baseline and regularly (more often if high risk)."
+        },
+        {
+          "parameter": "Vitals and orthostatics (as clinically indicated, especially early): blood pressure standing/sitting, pulse, falls, dizziness."
+        },
+        {
+          "parameter": "Fall risk assessment (as clinically indicated; more often ≥60): gait stability, sedation, orthostasis, home safety."
+        },
+        {
+          "parameter": "CBC (as clinically indicated): especially if history of low WBC or prior medication-related neutropenia; act fast on infection signs."
+        },
+        {
+          "parameter": "Metabolic monitoring (baseline and periodically): weight/BMI frequently early, then ongoing; fasting glucose/HbA1c and lipids around 3–4 months after start and then at least annually."
+        },
+        {
+          "parameter": "Electrolytes and sodium (older adults / high risk): antipsychotics can contribute to SIADH/hyponatremia—monitor when starting or adjusting dose in high-risk patients."
+        },
+        {
+          "parameter": "Cardiac risk (as clinically indicated): review QT/arrhythmia risks, consider ECG when risk factors exist or symptoms develop."
+        },
+        {
+          "parameter": "Prolactin symptoms check (every visit until stable): menstrual changes, sexual side effects, galactorrhea, gynecomastia; check labs if symptomatic."
+        },
+        {
+          "parameter": "Aspiration/swallowing risk (older adults, frail patients): coughing during meals, choking, recurrent pneumonia; act early."
+        },
+        {
+          "parameter": "Adherence and substance use (every visit): missed doses and substance use can mimic “med failure” or trigger relapse."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Class-level data for first-generation antipsychotics do not show a clear major increase in congenital malformations, but data for individual agents can be limited. Third-trimester exposure to antipsychotics can be associated with newborn EPS and/or withdrawal symptoms (agitation, abnormal muscle tone, tremor, feeding problems, respiratory distress, sleepiness). Do not taper late in pregnancy purely to prevent newborn symptoms—relapse risk matters. Shared decision-making and the lowest effective dose of a single agent is the usual strategy.",
+        "lactation": "It is not known whether molindone is excreted in human milk. If breastfeeding while on an antipsychotic is being considered, the plan should include infant monitoring (sedation, feeding, weight gain, tone) and coordination with pediatrics.",
+        "pediatric": "Schizophrenia dosing has been described for children ≥12 years and adolescents, but in many settings use has been replaced by second-generation antipsychotics. If used, stick to the lowest effective dose, titrate carefully, and reassess regularly. Children and adolescents can be more vulnerable to dystonia and other EPS.",
+        "geriatric": "High-risk medication in older adults. Avoid for behavioral symptoms of dementia or delirium unless nonpharmacologic approaches failed and there is imminent risk of harm. If used for a clear psychiatric indication (like schizophrenia), start low, titrate slowly, and monitor carefully for falls, orthostasis, EPS, swallowing/aspiration risk, and sodium issues.",
+        "renal_impairment": "No labeled adjustment provided; use clinical judgment and monitor, especially in medically complex or older patients.",
+        "hepatic_impairment": "Use with caution in hepatic impairment; rare liver enzyme changes have been reported with antipsychotics. Monitor clinically and consider labs if symptoms suggest liver issues."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1974
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "~1.5 hours",
+          "half_life": "~1.5 hours",
+          "metabolism": "Hepatic",
+          "excretion": "Urine and feces; <2% to 3% excreted unchanged",
+          "protein_binding": "76%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Molindone dosing is usually divided throughout the day (3 to 4 doses). Clinicians start in a moderate range and adjust based on response and side effects, aiming for the lowest effective dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If molindone is working for chronic psychotic illness, abruptly stopping is a classic setup for relapse. If someone needs to come off—because it’s not working or side effects are too much—the usual move is switching to another antipsychotic with a plan (often cross-titration). If a patient insists on stopping, a gradual taper over weeks to months helps reduce withdrawal reactions and lets you catch early warning signs of relapse."
+        }
+      }
     }
   },
   "sections": [
@@ -84,7 +237,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s what people commonly notice—good, bad, and weird—especially in the first few weeks:",
       "items": [
         {
           "category": "Psychosis quieting down (weeks, not hours)",
@@ -128,7 +280,8 @@
             "I learned the hard way: hydrate and stand up like a grandma."
           ]
         }
-      ]
+      ],
+      "intro": "Here’s what people commonly notice—good, bad, and weird—especially in the first few weeks:"
     },
     {
       "type": "onset_duration",
@@ -145,10 +298,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Molindone is used for schizophrenia to reduce psychosis symptoms over weeks. Some people notice early benefits in the first couple of weeks (less agitation, less intensity), but meaningful stabilization often takes a month or more. If someone is not improving at all after a reasonable trial (and dose is adequate), clinicians usually consider switching rather than dragging it out forever.",
       "metric": "Clinical response in schizophrenia",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Molindone is used for schizophrenia to reduce psychosis symptoms over weeks. Some people notice early benefits in the first couple of weeks (less agitation, less intensity), but meaningful stabilization often takes a month or more. If someone is not improving at all after a reasonable trial (and dose is adequate), clinicians usually consider switching rather than dragging it out forever.",
       "clinical_details": "Response depends on symptom type (positive vs negative symptoms), dose, adherence, substance use, and whether side effects are forcing under-dosing. Because relapse risk is real, long-term schizophrenia care is usually about optimizing a tolerable antipsychotic plan—not cycling on/off meds abruptly.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -240,7 +393,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Molindone doesn’t have famous “one enzyme” interactions like some meds, but it still has real-world interaction landmines—mostly around sedation, blood pressure, heart rhythm, and dopamine effects.",
       "items": [
         {
           "with": "Alcohol, opioids, benzos, sedating antihistamines, sleep meds",
@@ -272,7 +424,8 @@
           "risk": "Higher seizure risk in vulnerable patients.",
           "action": "Use caution in seizure disorders or high-risk situations; monitor clinically."
         }
-      ]
+      ],
+      "intro": "Molindone doesn’t have famous “one enzyme” interactions like some meds, but it still has real-world interaction landmines—mostly around sedation, blood pressure, heart rhythm, and dopamine effects."
     },
     {
       "type": "tapering",
@@ -348,21 +501,6 @@
       "text": "Molindone is an older first-generation antipsychotic primarily used for schizophrenia. In modern practice, many clinicians reach for second-generation antipsychotics first because they’re often easier to tolerate day-to-day, but “easier” doesn’t always mean “better for you.” Molindone can still be a reasonable option when a patient needs an effective antipsychotic and is trying to avoid heavy sedation or weight gain—while accepting that EPS risk is still on the table. In older adults with dementia-related psychosis, antipsychotics raise mortality risk, so use is generally avoided unless the situation is dangerous and alternatives failed."
     }
   ],
-  "seo": {
-    "title": "Molindone (Moban): Uses, Dosing, Side Effects, EPS Risk & Dementia Boxed Warning",
-    "description": "Molindone (Moban) is a first-generation antipsychotic for schizophrenia. Learn dosing (50–75 mg/day start), how long it takes to work (weeks), EPS/tardive dyskinesia risk, NMS warning, and the boxed warning for increased death risk in elderly patients with dementia-related psychosis.",
-    "canonical": "[https://www.heypsych.com/treatments/molindone-moban](https://www.heypsych.com/treatments/molindone-moban)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is molindone (Moban) used for?",
@@ -400,5 +538,20 @@
       "q": "What should I watch for that’s an emergency?",
       "a": "Seek urgent help for: high fever with severe stiffness and confusion (possible NMS), fainting or serious falls, severe allergic reaction, signs of serious infection (especially if told your white count is low), or dangerous rhythm symptoms (passing out, severe palpitations)."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Molindone (Moban): Uses, Dosing, Side Effects, EPS Risk & Dementia Boxed Warning",
+    "description": "Molindone (Moban) is a first-generation antipsychotic for schizophrenia. Learn dosing (50–75 mg/day start), how long it takes to work (weeks), EPS/tardive dyskinesia risk, NMS warning, and the boxed warning for increased death risk in elderly patients with dementia-related psychosis.",
+    "canonical": "[https://www.heypsych.com/treatments/molindone-moban](https://www.heypsych.com/treatments/molindone-moban)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

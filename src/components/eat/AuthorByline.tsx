@@ -67,7 +67,7 @@ export function AuthorByline({
 
   if (compact) {
     return (
-      <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-700">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-label-tertiary">
         {isAnonymousAuthor ? (
           <div className="flex items-center gap-1">
             <User className="h-3.5 w-3.5" />
@@ -78,26 +78,26 @@ export function AuthorByline({
             <User className="h-3.5 w-3.5" />
             <span>
               {author.name}
-              {author.credentials && <span className="ml-1 text-neutral-700">{author.credentials}</span>}
+              {author.credentials && <span className="ml-1 text-label-tertiary">{author.credentials}</span>}
             </span>
-            {author.verified && <CheckCircle className="h-3.5 w-3.5 text-green-600" />}
+            {author.verified && <CheckCircle className="h-3.5 w-3.5 text-positive-600" />}
           </div>
         )}
         {/* Always show Medical Review Board in compact mode */}
         <div className="flex items-center gap-1">
-          <Shield className="h-3.5 w-3.5 text-green-600" />
+          <Shield className="h-3.5 w-3.5 text-positive-600" />
           <span>
             {medicalReviewer ? (
               <>Reviewed by {medicalReviewer.name}</>
             ) : (
-              <Link href="/about/medical-review-board" className="text-green-700 hover:underline">
+              <Link href="/about/medical-review-board" className="text-positive-700 hover:underline">
                 Reviewed by the HeyPsych Medical Review Board
               </Link>
             )}
           </span>
         </div>
         {reviewDate && (
-          <span className="text-neutral-700">
+          <span className="text-label-tertiary">
             • Last reviewed {new Date(reviewDate).toLocaleDateString()}
           </span>
         )}
@@ -106,19 +106,19 @@ export function AuthorByline({
   }
 
   return (
-    <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+    <div className="rounded-lg border border-separator bg-surface p-4">
       <div className="space-y-3">
         {/* Author - Show "HeyPsych Contributor" for anonymous authors */}
         {isAnonymousAuthor ? (
           <div className="flex items-start gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200">
-              <User className="h-6 w-6 text-neutral-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fill-tertiary">
+              <User className="h-6 w-6 text-label-primary0" />
             </div>
             <div className="flex-1">
-              <div className="font-semibold text-neutral-900">By HeyPsych Contributor</div>
-              <div className="mt-1 text-sm text-neutral-700">
+              <div className="font-semibold text-label-primary">By HeyPsych Contributor</div>
+              <div className="mt-1 text-sm text-label-tertiary">
                 Reviewed by the{" "}
-                <Link href="/about/medical-review-board" className="font-medium text-green-700 hover:text-green-800 hover:underline">
+                <Link href="/about/medical-review-board" className="font-medium text-positive-700 hover:text-positive-700 hover:underline">
                   HeyPsych Medical Review Board
                 </Link>
               </div>
@@ -133,32 +133,32 @@ export function AuthorByline({
                 className="h-12 w-12 rounded-full object-cover"
               />
             ) : (
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200">
-                <User className="h-6 w-6 text-neutral-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fill-tertiary">
+                <User className="h-6 w-6 text-label-primary0" />
               </div>
             )}
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <div className="font-semibold text-neutral-900">{author.name}</div>
+                <div className="font-semibold text-label-primary">{author.name}</div>
                 {author.verified && (
-                  <CheckCircle className="h-4 w-4 text-green-600" aria-label="Verified professional" />
+                  <CheckCircle className="h-4 w-4 text-positive-600" aria-label="Verified professional" />
                 )}
               </div>
               {author.credentials && (
-                <div className="text-sm text-neutral-700">{author.credentials}</div>
+                <div className="text-sm text-label-tertiary">{author.credentials}</div>
               )}
               {author.role && (
                 <Badge variant="outline" className="mt-1 text-xs">
                   {author.role}
                 </Badge>
               )}
-              {author.bio && <p className="mt-1 text-sm text-neutral-700">{author.bio}</p>}
+              {author.bio && <p className="mt-1 text-sm text-label-tertiary">{author.bio}</p>}
             </div>
           </div>
         )}
 
         {/* Medical Reviewer - ALWAYS SHOW (either individual or board) - Skip for anonymous authors (already shown above) */}
-        <div className={`flex items-start gap-3 ${(author || isAnonymousAuthor) ? 'border-t border-neutral-200 pt-3' : ''} ${isAnonymousAuthor && !medicalReviewer ? 'hidden' : ''}`}>
+        <div className={`flex items-start gap-3 ${(author || isAnonymousAuthor) ? 'border-t border-separator pt-3' : ''} ${isAnonymousAuthor && !medicalReviewer ? 'hidden' : ''}`}>
           {medicalReviewer ? (
             <>
               {medicalReviewer.image_url ? (
@@ -168,44 +168,44 @@ export function AuthorByline({
                   className="h-12 w-12 rounded-full object-cover"
                 />
               ) : (
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
-                  <CheckCircle className="h-6 w-6 text-blue-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-tint">
+                  <CheckCircle className="h-6 w-6 text-accent" />
                 </div>
               )}
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <div className="font-semibold text-neutral-900">{medicalReviewer.name}</div>
+                  <div className="font-semibold text-label-primary">{medicalReviewer.name}</div>
                   {medicalReviewer.verified && (
-                    <CheckCircle className="h-4 w-4 text-green-600" aria-label="Verified professional" />
+                    <CheckCircle className="h-4 w-4 text-positive-600" aria-label="Verified professional" />
                   )}
                 </div>
                 {medicalReviewer.credentials && (
-                  <div className="text-sm text-neutral-700">{medicalReviewer.credentials}</div>
+                  <div className="text-sm text-label-tertiary">{medicalReviewer.credentials}</div>
                 )}
-                <Badge variant="outline" className="mt-1 bg-blue-50 text-xs text-blue-700">
+                <Badge variant="outline" className="mt-1 bg-accent-tint text-xs text-accent-700">
                   Medical Reviewer
                 </Badge>
                 {medicalReviewer.bio && (
-                  <p className="mt-1 text-sm text-neutral-700">{medicalReviewer.bio}</p>
+                  <p className="mt-1 text-sm text-label-tertiary">{medicalReviewer.bio}</p>
                 )}
               </div>
             </>
           ) : (
             // Fallback: Show Medical Review Board when no individual reviewer
             <>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                <Shield className="h-6 w-6 text-green-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-positive-tint">
+                <Shield className="h-6 w-6 text-positive-600" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-neutral-900">
-                  <Link href="/about/medical-review-board" className="text-green-700 hover:underline">
+                <div className="font-semibold text-label-primary">
+                  <Link href="/about/medical-review-board" className="text-positive-700 hover:underline">
                     Reviewed by the HeyPsych Medical Review Board
                   </Link>
                 </div>
-                <div className="text-sm text-neutral-700">
+                <div className="text-sm text-label-tertiary">
                   Board-certified psychiatrists and mental health professionals
                 </div>
-                <Badge variant="outline" className="mt-1 bg-green-50 text-xs text-green-700">
+                <Badge variant="outline" className="mt-1 bg-positive-tint text-xs text-positive-700">
                   Medical Review Board
                 </Badge>
               </div>
@@ -214,7 +214,7 @@ export function AuthorByline({
         </div>
 
         {/* Dates - Always show review date */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-neutral-200 pt-2 text-xs text-neutral-700">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-separator pt-2 text-xs text-label-tertiary">
           {publishedDate && (
             <div>
               Published: {new Date(publishedDate).toLocaleDateString('en-US', {
@@ -234,7 +234,7 @@ export function AuthorByline({
             </div>
           )}
           {reviewDate && (
-            <div className="font-semibold text-green-700">
+            <div className="font-semibold text-positive-700">
               Last Reviewed: {new Date(reviewDate).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',

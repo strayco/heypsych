@@ -1,86 +1,177 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "behavioral-parent-training",
-  "type": "therapy",
-  "name": "Behavioral Parent Training (BPT)",
-  "summary": "An evidence-based therapy that trains parents in behavioral strategies to manage child behavior problems, particularly disruptive behaviors and ADHD.",
-  "description": "Behavioral Parent Training (BPT), also called Parent Management Training (PMT), is a structured intervention that teaches parents strategies to reinforce desirable child behavior, reduce disruptive behaviors, and improve parent–child relationships. Rooted in behavioral principles, it uses modeling, role-play, and homework practice. BPT has extensive evidence for reducing oppositional, aggressive, and noncompliant behaviors in children, and is considered a first-line treatment for ADHD and disruptive behavior disorders.",
-  "category": "therapy/parent-training",
-  "tags": [
-    "parenting",
-    "ADHD",
-    "behavioral problems",
-    "family therapy",
-    "children"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "behavioral-parent-training",
+    "name": "Behavioral Parent Training (BPT)",
+    "generic_name": "behavioral parent training",
+    "brand_names": [
+      "BPT"
+    ],
+    "wikidata_qid": "Q4880796"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/parent-training",
     "intervention_types": [
       "Parent Training",
       "Family Therapy"
     ],
-    "treatment_types": [
-      "Behavioral",
-      "Skills-based"
-    ],
-    "categories": [
-      "Parenting Interventions",
-      "Behavioral Therapies"
-    ],
-    "delivery_methods": [
-      "Group sessions",
-      "Individual parent coaching",
-      "Telehealth programs"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Children (3–12)",
-      "Adolescents (with adaptations)",
-      "Parents/caregivers"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "8–16 sessions",
-      "Booster sessions as needed"
-    ],
-    "specialty_areas": [
+    "tags": [
+      "parenting",
       "ADHD",
-      "Oppositional Defiant Disorder",
-      "Conduct Disorder",
-      "Parent–child relationship difficulties"
-    ],
-    "wikidata_qid": "Q4880796"
+      "behavioral problems",
+      "family therapy",
+      "children"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)",
-      "Oppositional Defiant Disorder (ODD)",
-      "Conduct Disorder (CD)",
-      "Disruptive Mood Dysregulation Disorder",
-      "Autism spectrum disorder (behavioral management support)",
-      "General parent–child conflict"
-    ],
-    "off_label_uses": [
-      "Supporting behavior management in children with chronic illness",
-      "Parent stress reduction and improved parental mental health"
-    ],
-    "contraindications": [
-      "Parents unable to participate due to severe mental illness or substance use disorder",
-      "Situations with ongoing abuse or unsafe home environment"
-    ],
-    "safety_profile": "Very safe. No direct risks. Can cause temporary frustration as new strategies are implemented.",
-    "evidence_level": "Strong for ADHD and disruptive behavior disorders.",
-    "research_support": "Multiple RCTs and meta-analyses support BPT as first-line treatment for ADHD, ODD, and disruptive behaviors.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "adhd": 5,
-      "odd": 5,
-      "conduct_disorder": 4,
-      "autism": 3,
-      "parent-child-relationship": 5,
-      "overall_tolerability": 5
+  "summary": "An evidence-based therapy that trains parents in behavioral strategies to manage child behavior problems, particularly disruptive behaviors and ADHD.",
+  "description": "Behavioral Parent Training (BPT), also called Parent Management Training (PMT), is a structured intervention that teaches parents strategies to reinforce desirable child behavior, reduce disruptive behaviors, and improve parent–child relationships. Rooted in behavioral principles, it uses modeling, role-play, and homework practice. BPT has extensive evidence for reducing oppositional, aggressive, and noncompliant behaviors in children, and is considered a first-line treatment for ADHD and disruptive behavior disorders.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder-adhd",
+          "condition_name": "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional Defiant Disorder (ODD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder-cd",
+          "condition_name": "Conduct Disorder (CD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "disruptive-mood-dysregulation-disorder",
+          "condition_name": "Disruptive Mood Dysregulation Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "autism-spectrum-disorder-behavioral-management-support",
+          "condition_name": "Autism spectrum disorder (behavioral management support)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "general-parent-child-conflict",
+          "condition_name": "General parent–child conflict",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "supporting-behavior-management-in-children-with-chronic-illness",
+          "condition_name": "Supporting behavior management in children with chronic illness",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "parent-stress-reduction-and-improved-parental-mental-health",
+          "condition_name": "Parent stress reduction and improved parental mental health",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Strong for ADHD and disruptive behavior disorders.",
+      "efficacy_ratings": {
+        "adhd": {
+          "rating": 5
+        },
+        "odd": {
+          "rating": 5
+        },
+        "conduct_disorder": {
+          "rating": 4
+        },
+        "autism": {
+          "rating": 3
+        },
+        "parent-child-relationship": {
+          "rating": 5
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Multiple RCTs and meta-analyses support BPT as first-line treatment for ADHD, ODD, and disruptive behaviors."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–16 sessions; Booster sessions as needed"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Group sessions",
+        "Individual parent coaching",
+        "Telehealth programs"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Very safe. No direct risks. Can cause temporary frustration as new strategies are implemented.",
+      "common_adverse_effects": [
+        {
+          "effect": "Child resistance during early implementation"
+        },
+        {
+          "effect": "Parental frustration when changing routines"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout if engagement is low or barriers are not addressed"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Unsafe home environment (abuse, neglect)",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Parents unable to participate due to severe illness",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Significant marital conflict that undermines consistent parenting",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Behavioral, Skills-based",
+        "key_techniques": [
+          "Parenting Interventions",
+          "Behavioral Therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Check-in on home practice, review successes and challenges.",
+          "during_session": "Teach/practice new skill, role-play scenarios, assign homework.",
+          "post_session": "Confirm next steps, anticipate barriers, plan reinforcement strategies."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists or psychologists trained in parent management training models (e.g., PMT, Triple P, Incredible Years)"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -256,6 +347,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Kazdin AE. Parent Management Training: Treatment for Oppositional, Aggressive, and Antisocial Behavior in Children and Adolescents.",
+      "url": "https://psycnet.apa.org/record/2005-09773-000"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Eyberg SM, Nelson MM, Boggs SR. Evidence-based psychosocial treatments for children and adolescents with disruptive behavior. J Clin Child Adolesc Psychol. 2008.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18444059/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Chronis-Tuscano A, et al. Evidence-based assessment and treatment of youth with ADHD. J Clin Child Adolesc Psychol. 2010.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20589580/"
+    }
+  ],
   "seo": {
     "title": "Behavioral Parent Training (BPT) | Parent Management Training for ADHD & Disruptive Behaviors",
     "description": "Behavioral Parent Training is a proven therapy that equips parents with skills to manage ADHD and disruptive behaviors, improving child outcomes and family functioning.",
@@ -268,5 +379,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Strong for ADHD and disruptive behavior disorders."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Strong for ADHD and disruptive behavior disorders."
+    ]
   }
 }

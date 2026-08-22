@@ -1,0 +1,176 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_no_collapse",
+      "title": "No Collapse",
+      "description": "Get up and stay up—don't fall back into bed at any point",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "depression_morning_bed" }
+      ],
+      "modifiers": [
+        {
+          "type": "forbid-choices",
+          "choiceIds": ["sit_fall_back", "sitting_lie_back", "floor_lie_back", "one_back_to_bed", "another_collapse", "forced_collapse", "aon_collapse"]
+        }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": "no_collapse",
+      "targetMechanisms": ["persistence", "activation"],
+      "targetPatterns": {
+        "trains": ["micro_progress"],
+        "prevents": ["overreach_collapse", "avoidance_at_threshold"]
+      },
+      "transferFocus": "Tomorrow, commit to staying up once you're up—even if it's just for 10 minutes"
+    },
+    {
+      "id": "challenge_minimum_viable",
+      "title": "Minimum Viable Morning",
+      "description": "Complete at least one task without overreaching",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "depression_morning_bed" }
+      ],
+      "modifiers": [
+        { "type": "require-objectives", "objectiveIds": ["obj_one_thing"] },
+        { "type": "forbid-choices", "choiceIds": ["stand_full_routine"] }
+      ],
+      "xpMultiplier": 1.8,
+      "masteryCredit": "silver",
+      "achievementId": null,
+      "targetMechanisms": ["threshold_lowering", "activation"],
+      "targetPatterns": {
+        "trains": ["threshold_lowered", "micro_progress"],
+        "prevents": ["perfectionism_trap", "overreach_collapse"]
+      },
+      "transferFocus": "Define minimum viable before you start: what's the absolute least that counts?"
+    },
+    {
+      "id": "challenge_no_self_attack",
+      "title": "Silence the Critic",
+      "description": "Get up without engaging self-attack patterns",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "depression_morning_bed" }
+      ],
+      "modifiers": [
+        {
+          "type": "forbid-choices",
+          "choiceIds": ["sitting_self_attack", "collapse_self_attack", "attack_believe_it", "soft_seems_fake", "text_regret"]
+        },
+        { "type": "require-objectives", "objectiveIds": ["obj_get_up"] }
+      ],
+      "xpMultiplier": 2.2,
+      "masteryCredit": "gold",
+      "achievementId": "critic_silenced",
+      "targetMechanisms": ["self_compassion", "activation"],
+      "targetPatterns": {
+        "trains": ["compassion_applied"],
+        "prevents": ["self_attack_spiral"]
+      },
+      "transferFocus": "Notice the first self-attack thought and name it: 'There's the critic'"
+    },
+    {
+      "id": "challenge_tiny_steps_only",
+      "title": "Baby Steps",
+      "description": "Get up using only the smallest possible increments",
+      "unlockRequirements": [
+        { "type": "scenario-mastery", "scenarioId": "depression_morning_bed", "minTier": "bronze" }
+      ],
+      "modifiers": [
+        { "type": "require-route", "routeId": "route_tiny_steps" }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": null,
+      "targetMechanisms": ["threshold_lowering"],
+      "targetPatterns": {
+        "trains": ["threshold_lowered", "micro_progress"],
+        "prevents": ["perfectionism_trap"]
+      },
+      "transferFocus": "Find the smallest possible step—just wiggle one toe, just open one eye"
+    },
+    {
+      "id": "challenge_recovery_required",
+      "title": "Fall and Rise",
+      "description": "Collapse back into bed, then recover and get up anyway",
+      "unlockRequirements": [
+        { "type": "scenario-mastery", "scenarioId": "depression_morning_bed", "minTier": "silver" }
+      ],
+      "modifiers": [
+        { "type": "require-route", "routeId": "route_recovery" }
+      ],
+      "xpMultiplier": 2.5,
+      "masteryCredit": "platinum",
+      "achievementId": "resilience_master",
+      "targetMechanisms": ["recovery", "persistence"],
+      "targetPatterns": {
+        "trains": ["recovery_success"],
+        "prevents": ["avoidance_at_threshold"]
+      },
+      "transferFocus": "If you collapse back, set a 5-minute timer. Then try a smaller step."
+    },
+    {
+      "id": "challenge_self_compassion_path",
+      "title": "Kinder Words",
+      "description": "Use self-compassion as the primary activation strategy",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "depression_morning_bed" }
+      ],
+      "modifiers": [
+        { "type": "require-objectives", "objectiveIds": ["obj_self_compassion", "obj_get_up"] }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": "compassion_route",
+      "targetMechanisms": ["self_compassion", "activation"],
+      "targetPatterns": {
+        "trains": ["compassion_applied"],
+        "prevents": ["self_attack_spiral"]
+      },
+      "transferFocus": "Speak to yourself like you'd speak to a struggling friend"
+    },
+    {
+      "id": "challenge_no_phone",
+      "title": "No Scrolling",
+      "description": "Get up without retreating to phone scrolling",
+      "unlockRequirements": [
+        { "type": "scenario-complete", "scenarioId": "depression_morning_bed" }
+      ],
+      "modifiers": [
+        {
+          "type": "forbid-choices",
+          "choiceIds": ["wake_phone", "phone_keep_going"]
+        },
+        { "type": "require-objectives", "objectiveIds": ["obj_get_up"] }
+      ],
+      "xpMultiplier": 1.6,
+      "masteryCredit": "silver",
+      "achievementId": null,
+      "targetMechanisms": ["distress_tolerance", "activation"],
+      "targetPatterns": {
+        "trains": ["distress_tolerated"],
+        "prevents": ["safety_behavior"]
+      },
+      "transferFocus": "Put your phone across the room before bed—make scrolling require getting up"
+    },
+    {
+      "id": "challenge_connection_first",
+      "title": "Reach Out Early",
+      "description": "Text someone before attempting to get up, then get up with their support",
+      "unlockRequirements": [
+        { "type": "scenario-mastery", "scenarioId": "depression_morning_bed", "minTier": "bronze" }
+      ],
+      "modifiers": [
+        { "type": "require-route", "routeId": "route_connection" }
+      ],
+      "xpMultiplier": 2.0,
+      "masteryCredit": "gold",
+      "achievementId": "support_used",
+      "targetMechanisms": ["support_seeking", "activation"],
+      "targetPatterns": {
+        "trains": ["support_utilized"],
+        "prevents": ["avoidance_at_threshold"]
+      },
+      "transferFocus": "Set up a morning accountability text with someone before you go to sleep"
+    }
+  ]
+}

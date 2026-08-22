@@ -1,93 +1,187 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "logotherapy",
-  "type": "therapy",
-  "name": "Logotherapy",
-  "summary": "An existential psychotherapy developed by Viktor Frankl that emphasizes finding meaning in life as the primary motivation for human beings.",
-  "description": "Logotherapy, created by psychiatrist Viktor Frankl, is a form of existential analysis that centers on the belief that the search for meaning is the core driving force in human life. Unlike therapies that focus primarily on symptom reduction, Logotherapy helps individuals confront existential concerns such as freedom, responsibility, suffering, and mortality. It aims to help patients identify meaning in their experiences and pursue purposeful living, which in turn reduces psychological distress.",
-  "category": "therapy/existential",
-  "tags": [
-    "existential therapy",
-    "meaning-centered",
-    "psychotherapy",
-    "depression",
-    "anxiety",
-    "purpose"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "logotherapy",
+    "name": "Logotherapy",
+    "wikidata_qid": "Q845712"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/existential",
     "intervention_types": [
       "Psychotherapy",
       "Existential analysis"
     ],
-    "treatment_types": [
-      "Individual therapy",
-      "Group therapy"
-    ],
-    "categories": [
-      "Existential therapies",
-      "Humanistic approaches"
-    ],
-    "delivery_methods": [
-      "In-person sessions",
-      "Teletherapy",
-      "Group work"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "45–60 minutes",
-    "treatment_duration": [
-      "Varies—can be short-term or ongoing"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Existential crises",
-      "Terminal illness and palliative care",
-      "Post-traumatic growth"
-    ],
-    "wikidata_qid": "Q845712"
+    "tags": [
+      "existential therapy",
+      "meaning-centered",
+      "psychotherapy",
+      "depression",
+      "anxiety",
+      "purpose"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Depression",
-      "Existential anxiety",
-      "Adjustment to illness",
-      "Grief and bereavement"
-    ],
-    "conditions_treated": [
-      "Depression",
-      "Anxiety disorders",
-      "Post-traumatic stress",
-      "End-of-life distress",
-      "Existential crises"
-    ],
-    "off_label_uses": [
-      "Addiction recovery support",
-      "Enhancing resilience in chronic illness",
-      "Personal development"
-    ],
-    "contraindications": [
-      "Severe cognitive impairment",
-      "Acute psychosis",
-      "Patients requiring highly structured behavioral interventions"
-    ],
-    "safety_profile": "Safe and well-tolerated; may temporarily increase existential distress as meaning-related issues are explored.",
-    "evidence_level": "Moderate—qualitative and clinical reports support effectiveness; limited large-scale RCT evidence compared to CBT or IPT.",
-    "research_support": "Growing support in palliative care, oncology, and existential distress interventions.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "existential-distress": 5,
-      "depression": 4,
-      "anxiety": 3,
-      "post-traumatic-growth": 4,
-      "overall-tolerability": 5
+  "summary": "An existential psychotherapy developed by Viktor Frankl that emphasizes finding meaning in life as the primary motivation for human beings.",
+  "description": "Logotherapy, created by psychiatrist Viktor Frankl, is a form of existential analysis that centers on the belief that the search for meaning is the core driving force in human life. Unlike therapies that focus primarily on symptom reduction, Logotherapy helps individuals confront existential concerns such as freedom, responsibility, suffering, and mortality. It aims to help patients identify meaning in their experiences and pursue purposeful living, which in turn reduces psychological distress.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "existential-anxiety",
+          "condition_name": "Existential anxiety",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjustment-to-illness",
+          "condition_name": "Adjustment to illness",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "grief-and-bereavement",
+          "condition_name": "Grief and bereavement",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress",
+          "condition_name": "Post-traumatic stress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "end-of-life-distress",
+          "condition_name": "End-of-life distress",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "existential-crises",
+          "condition_name": "Existential crises",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "addiction-recovery-support",
+          "condition_name": "Addiction recovery support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "enhancing-resilience-in-chronic-illness",
+          "condition_name": "Enhancing resilience in chronic illness",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "personal-development",
+          "condition_name": "Personal development",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—qualitative and clinical reports support effectiveness; limited large-scale RCT evidence compared to CBT or IPT.",
+      "efficacy_ratings": {
+        "existential-distress": {
+          "rating": 5
+        },
+        "depression": {
+          "rating": 4
+        },
+        "anxiety": {
+          "rating": 3
+        },
+        "post-traumatic-growth": {
+          "rating": 4
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Growing support in palliative care, oncology, and existential distress interventions."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Varies—can be short-term or ongoing"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person sessions",
+        "Teletherapy",
+        "Group work"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated; may temporarily increase existential distress as meaning-related issues are explored.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort when confronting existential concerns"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Temporary worsening of existential anxiety"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Profound cognitive decline",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Individuals unwilling to engage in existential discussion",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual therapy, Group therapy",
+        "key_techniques": [
+          "Existential therapies",
+          "Humanistic approaches"
+        ],
+        "session_structure": {
+          "pre_session": "Review patient’s current struggles and sense of meaning.",
+          "during_session": "Dialogue and exercises aimed at reframing experiences in terms of values and purpose.",
+          "post_session": "Encourage application of meaning-centered strategies in daily life."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Psychologists trained in existential or humanistic approaches",
+            "Psychiatrists with psychotherapy expertise",
+            "Licensed therapists familiar with Frankl’s Logotherapy"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -242,6 +336,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Frankl, V. E. (2006). Man’s Search for Meaning.",
+      "url": "https://www.goodreads.com/book/show/4069.Man_s_Search_for_Meaning"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Southwick, S. M., Gilmartin, R., McDonough, P., & Morrissey, P. (2006). Logotherapy as an adjunctive treatment for chronic combat-related PTSD: A meaning-based intervention.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16692251/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "International Association of Logotherapy and Existential Analysis (Viktor Frankl Institute)",
+      "url": "https://www.viktorfranklinstitute.org/"
+    }
+  ],
   "seo": {
     "title": "Logotherapy | Viktor Frankl’s Meaning-Centered Therapy",
     "description": "Logotherapy is an existential psychotherapy focused on finding meaning and purpose, especially useful for depression, grief, and palliative care. Learn about its principles, applications, and evidence base.",
@@ -254,5 +368,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—qualitative and clinical reports support effectiveness; limited large-scale RCT evidence compared to CBT or IPT."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—qualitative and clinical reports support effectiveness; limited large-scale RCT evidence compared to CBT or IPT."
+    ]
   }
 }

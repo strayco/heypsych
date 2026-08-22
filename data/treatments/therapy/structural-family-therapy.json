@@ -1,83 +1,170 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "structural-family-therapy",
-  "type": "therapy",
-  "name": "Structural Family Therapy (SFT)",
-  "summary": "Structural Family Therapy is a therapeutic approach developed by Salvador Minuchin that focuses on restructuring family organization and boundaries to improve family functioning and resolve individual and relational problems.",
-  "description": "Structural Family Therapy (SFT) was developed in the 1960s by psychiatrist Salvador Minuchin. It emphasizes the structure of the family system — its hierarchy, boundaries, and subsystems — as a central factor influencing individual and relational health. The therapist works actively with families to identify dysfunctional patterns, realign roles, and strengthen boundaries. Through direct engagement, role-playing, and restructuring interventions, SFT seeks to create healthier family dynamics and improve functioning across the family unit. It is widely used in the treatment of child and adolescent behavioral problems, family conflict, and psychosomatic disorders.",
-  "category": "therapy/family",
-  "tags": [
-    "family therapy",
-    "systems therapy",
-    "structural therapy",
-    "relationships",
-    "psychosomatic disorders"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "structural-family-therapy",
+    "name": "Structural Family Therapy (SFT)",
+    "generic_name": "structural family therapy",
+    "brand_names": [
+      "SFT"
+    ],
+    "wikidata_qid": "Q2357300"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "Systems therapy"
     ],
-    "treatment_types": [
-      "Psychotherapy"
-    ],
-    "categories": [
-      "Family-based interventions",
-      "Systemic therapy"
-    ],
-    "delivery_methods": [
-      "In-person",
-      "Teletherapy (adapted forms)"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "None",
-    "training_required": true,
-    "age_groups": [
-      "Children",
-      "Adolescents",
-      "Adults",
-      "Families"
-    ],
-    "session_duration": "50–90 minutes",
-    "treatment_duration": [
-      "8–20 sessions"
-    ],
-    "specialty_areas": [
-      "Child and adolescent behavior problems",
-      "Family conflict",
-      "Psychosomatic disorders",
-      "Couples and marital therapy"
-    ],
-    "wikidata_qid": "Q2357300"
+    "tags": [
+      "family therapy",
+      "systems therapy",
+      "structural therapy",
+      "relationships",
+      "psychosomatic disorders"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Family conflict",
-      "Child and adolescent behavioral issues",
-      "Marital conflict",
-      "Psychosomatic disorders"
-    ],
-    "conditions_treated": [
-      "Oppositional defiant disorder (ODD)",
-      "Conduct disorder",
-      "Psychosomatic complaints",
-      "Parent–child relational problems"
-    ],
-    "off_label_uses": [
-      "School-based interventions for classroom management"
-    ],
-    "contraindications": [
-      "Families with active domestic violence where conjoint sessions may be unsafe"
-    ],
-    "safety_profile": "Generally safe; potential for emotional discomfort when addressing conflict.",
-    "evidence_level": "Moderate to strong",
-    "research_support": "Supported by controlled trials showing effectiveness in reducing child behavior problems and improving family functioning.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-conflict": 5,
-      "child-behavior": 4,
-      "psychosomatic-disorders": 3,
-      "marital-issues": 4
+  "summary": "Structural Family Therapy is a therapeutic approach developed by Salvador Minuchin that focuses on restructuring family organization and boundaries to improve family functioning and resolve individual and relational problems.",
+  "description": "Structural Family Therapy (SFT) was developed in the 1960s by psychiatrist Salvador Minuchin. It emphasizes the structure of the family system — its hierarchy, boundaries, and subsystems — as a central factor influencing individual and relational health. The therapist works actively with families to identify dysfunctional patterns, realign roles, and strengthen boundaries. Through direct engagement, role-playing, and restructuring interventions, SFT seeks to create healthier family dynamics and improve functioning across the family unit. It is widely used in the treatment of child and adolescent behavioral problems, family conflict, and psychosomatic disorders.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "child-and-adolescent-behavioral-issues",
+          "condition_name": "Child and adolescent behavioral issues",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "marital-conflict",
+          "condition_name": "Marital conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "psychosomatic-disorders",
+          "condition_name": "Psychosomatic disorders",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "oppositional-defiant-disorder-odd",
+          "condition_name": "Oppositional defiant disorder (ODD)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "conduct-disorder",
+          "condition_name": "Conduct disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "psychosomatic-complaints",
+          "condition_name": "Psychosomatic complaints",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "parent-child-relational-problems",
+          "condition_name": "Parent–child relational problems",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "school-based-interventions-for-classroom-management",
+          "condition_name": "School-based interventions for classroom management",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate to strong",
+      "efficacy_ratings": {
+        "family-conflict": {
+          "rating": 5
+        },
+        "child-behavior": {
+          "rating": 4
+        },
+        "psychosomatic-disorders": {
+          "rating": 3
+        },
+        "marital-issues": {
+          "rating": 4
+        }
+      },
+      "research_support": "Supported by controlled trials showing effectiveness in reducing child behavior problems and improving family functioning."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–20 sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person",
+        "Teletherapy (adapted forms)"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "50–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe; potential for emotional discomfort when addressing conflict.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort during confrontation of family conflicts"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Escalation of conflict outside session if not managed carefully"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active domestic violence where conjoint sessions increase risk",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Families unwilling to engage in interactive sessions",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Psychotherapy",
+        "key_techniques": [
+          "Family-based interventions",
+          "Systemic therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Review of presenting problems and family dynamics.",
+          "during_session": "Live observation, enactments, and structural interventions.",
+          "post_session": "Reflection and integration of new interactional patterns."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Mental health professionals trained in Structural Family Therapy and systemic approaches"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -223,6 +310,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Minuchin, S. (1974). Families and Family Therapy.",
+      "url": "https://books.google.com/books?id=bJ1HAAAAMAAJ"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Szapocznik, J., et al. (1988). Structural Family Therapy with Hispanic families.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3282596/"
+    }
+  ],
   "seo": {
     "title": "Structural Family Therapy (SFT) | Family Systems Therapy",
     "description": "Structural Family Therapy (SFT), developed by Salvador Minuchin, restructures family dynamics, roles, and boundaries to resolve conflict and improve functioning.",
@@ -235,5 +336,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate to strong"
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate to strong"
+    ]
   }
 }

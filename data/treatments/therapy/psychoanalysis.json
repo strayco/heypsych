@@ -1,81 +1,176 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "psychoanalysis",
-  "type": "therapy",
-  "name": "Psychoanalysis",
-  "summary": "Psychoanalysis is a long-term, intensive form of talk therapy developed by Sigmund Freud, focused on exploring unconscious conflicts, childhood experiences, and repressed emotions to promote insight and psychological healing.",
-  "description": "Psychoanalysis is one of the earliest forms of psychotherapy, founded by Sigmund Freud in the late 19th century. It is based on the theory that unconscious processes, unresolved childhood conflicts, and repressed emotions shape current behavior and mental health. The therapy aims to bring unconscious material to conscious awareness through free association, dream interpretation, and analysis of transference. Psychoanalysis is typically intensive, involving multiple sessions per week over several years, and is designed to foster deep insight, personality restructuring, and long-term change.",
-  "category": "therapy/psychodynamic",
-  "tags": [
-    "psychoanalysis",
-    "psychodynamic therapy",
-    "Freud",
-    "unconscious processes",
-    "insight-oriented therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "psychoanalysis",
+    "name": "Psychoanalysis",
+    "wikidata_qid": "Q41630"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/psychodynamic",
     "intervention_types": [
       "Psychodynamic therapy",
       "Insight-oriented therapy"
     ],
-    "treatment_types": [
-      "Long-term psychotherapy"
-    ],
-    "categories": [
-      "Depth therapy",
-      "Exploratory therapy"
-    ],
-    "delivery_methods": [
-      "In-person therapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": "Couch or chair; no special equipment",
-    "training_required": true,
-    "age_groups": [
-      "Adults",
-      "Older adults"
-    ],
-    "session_duration": "45–50 minutes",
-    "treatment_duration": [
-      "Several years, often 3–5 sessions per week"
-    ],
-    "specialty_areas": [
-      "Personality disorders",
-      "Chronic depression",
-      "Complex relational issues"
-    ],
-    "wikidata_qid": "Q41630"
+    "tags": [
+      "psychoanalysis",
+      "psychodynamic therapy",
+      "Freud",
+      "unconscious processes",
+      "insight-oriented therapy"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Personality disorders",
-      "Chronic depression",
-      "Unresolved trauma",
-      "Interpersonal difficulties"
-    ],
-    "conditions_treated": [
-      "Neurotic disorders",
-      "Depressive disorders",
-      "Anxiety disorders",
-      "Personality disorders"
-    ],
-    "off_label_uses": [
-      "Creative blocks",
-      "Exploration of identity and meaning"
-    ],
-    "contraindications": [
-      "Severe psychosis",
-      "Acute suicidality",
-      "Cognitive impairment that limits abstract thinking"
-    ],
-    "safety_profile": "Generally safe, but emotionally intense; may temporarily increase distress before improvement.",
-    "evidence_level": "Moderate—some research supports its effectiveness, though less robust compared to CBT and other structured approaches.",
-    "research_support": "Meta-analyses suggest long-term benefits for complex disorders, though effectiveness varies and treatment requires substantial time and commitment.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "personality-disorders": 3,
-      "chronic-depression": 3,
-      "anxiety-disorders": 2
+  "summary": "Psychoanalysis is a long-term, intensive form of talk therapy developed by Sigmund Freud, focused on exploring unconscious conflicts, childhood experiences, and repressed emotions to promote insight and psychological healing.",
+  "description": "Psychoanalysis is one of the earliest forms of psychotherapy, founded by Sigmund Freud in the late 19th century. It is based on the theory that unconscious processes, unresolved childhood conflicts, and repressed emotions shape current behavior and mental health. The therapy aims to bring unconscious material to conscious awareness through free association, dream interpretation, and analysis of transference. Psychoanalysis is typically intensive, involving multiple sessions per week over several years, and is designed to foster deep insight, personality restructuring, and long-term change.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "personality-disorders",
+          "condition_name": "Personality disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-depression",
+          "condition_name": "Chronic depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "unresolved-trauma",
+          "condition_name": "Unresolved trauma",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "interpersonal-difficulties",
+          "condition_name": "Interpersonal difficulties",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "neurotic-disorders",
+          "condition_name": "Neurotic disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "depressive-disorders",
+          "condition_name": "Depressive disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "creative-blocks",
+          "condition_name": "Creative blocks",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "exploration-of-identity-and-meaning",
+          "condition_name": "Exploration of identity and meaning",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Moderate—some research supports its effectiveness, though less robust compared to CBT and other structured approaches.",
+      "efficacy_ratings": {
+        "personality-disorders": {
+          "rating": 3
+        },
+        "chronic-depression": {
+          "rating": 3
+        },
+        "anxiety-disorders": {
+          "rating": 2
+        }
+      },
+      "research_support": "Meta-analyses suggest long-term benefits for complex disorders, though effectiveness varies and treatment requires substantial time and commitment."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Several years, often 3–5 sessions per week"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person therapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–50 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally safe, but emotionally intense; may temporarily increase distress before improvement.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort"
+        },
+        {
+          "effect": "Temporary increase in distress or anxiety"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Therapy fatigue"
+        },
+        {
+          "risk": "Dependency on therapist"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Uncontrolled psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe suicidality",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Low motivation for introspection",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Cognitive limitations",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Long-term psychotherapy",
+        "key_techniques": [
+          "Depth therapy",
+          "Exploratory therapy"
+        ],
+        "session_structure": {
+          "pre_session": "Patient reflects on recent experiences, dreams, or troubling thoughts.",
+          "during_session": "Free association, exploration of unconscious material, interpretation by therapist.",
+          "post_session": "Integration of insights; continued reflection outside therapy."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Psychoanalysts with extensive post-doctoral training in psychoanalytic institutes"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -222,6 +317,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Freud, S. (1917). Introductory Lectures on Psycho-Analysis.",
+      "url": "https://www.gutenberg.org/ebooks/38219"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Leichsenring, F., & Rabung, S. (2008). Effectiveness of long-term psychodynamic psychotherapy: a meta-analysis.",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/182015"
+    }
+  ],
   "seo": {
     "title": "Psychoanalysis | Insight-Oriented Psychodynamic Therapy",
     "description": "Psychoanalysis is a long-term, intensive therapy developed by Freud, focusing on unconscious conflicts, childhood experiences, and personality restructuring to promote lasting psychological growth.",
@@ -234,5 +343,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Moderate—some research supports its effectiveness, though less robust compared to CBT and other structured approaches."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Moderate—some research supports its effectiveness, though less robust compared to CBT and other structured approaches."
+    ]
   }
 }

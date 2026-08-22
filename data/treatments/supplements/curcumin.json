@@ -1,21 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "curcumin",
-  "type": "supplement",
-  "name": "Curcumin",
-  "summary": "Curcumin is the primary bioactive compound in turmeric (Curcuma longa) with anti-inflammatory, antioxidant, and potential antidepressant and neuroprotective effects.",
-  "description": "Curcumin is a polyphenolic compound derived from turmeric, a spice long used in traditional Ayurvedic and Chinese medicine. It exerts broad biological effects including inhibition of inflammatory pathways, modulation of neurotransmitters, enhancement of neurogenesis, and protection against oxidative stress. Curcumin is being studied for its role in mood disorders, cognitive decline, and neurodegenerative diseases, though its clinical impact is limited by poor bioavailability unless formulated with absorption enhancers (e.g., piperine).",
-  "category": "supplements",
-  "tags": [
-    "anti-inflammatory",
-    "neuroprotection",
-    "mood support",
-    "antioxidant",
-    "nootropic"
-  ],
-  "metadata": {
-    "compound_type": "Polyphenol",
-    "natural_source": "Turmeric root (Curcuma longa)",
+  "identity": {
+    "slug": "curcumin",
+    "name": "Curcumin",
+    "brand_names": [
+      "Meriva",
+      "Theracurmin",
+      "BCM-95",
+      "CurcuWin"
+    ],
+    "aliases": [
+      "Turmeric",
+      "Curcuma longa"
+    ],
+    "wikidata_qid": "Q422212"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Mood support",
       "Neuroprotection",
@@ -26,77 +29,166 @@
       "Oxidative stress reduction",
       "Neurotransmitter balance"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Meriva",
-      "Theracurmin",
-      "BCM-95",
-      "CurcuWin"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved as a drug)",
-    "age_groups": [
-      "Adult",
-      "Geriatric"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Integrative Medicine",
-      "Psychiatry",
-      "Neurology"
-    ],
-    "wikidata_qid": "Q422212"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Mood support (adjunct in depression)",
-      "Cognitive support",
-      "Anti-inflammatory conditions"
-    ],
-    "off_label_uses": [
-      "Alzheimer’s disease support",
-      "Anxiety reduction",
-      "Arthritis symptom management"
-    ],
-    "contraindications": [
-      "Biliary obstruction or gallstones",
-      "Bleeding disorders",
-      "Concurrent use with anticoagulants (caution)"
-    ],
-    "monitoring_required": [
-      "Bleeding risk if on anticoagulants",
-      "Liver function if used long-term in high doses"
-    ],
-    "efficacy_rating": {
-      "depression": 3,
-      "cognitive_support": 3,
-      "anti-inflammatory": 4,
-      "neuroprotection": 2
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Curcumin",
-      "Turmeric extract",
-      "Diferuloylmethane"
-    ],
-    "synonyms": [
-      "Turmeric",
-      "Curcuma longa"
-    ],
-    "common_misspellings": [
-      "kurkumin",
-      "curcumine",
-      "curcman"
+    "tags": [
+      "anti-inflammatory",
+      "neuroprotection",
+      "mood support",
+      "antioxidant",
+      "nootropic"
     ]
+  },
+  "summary": "Curcumin is the primary bioactive compound in turmeric (Curcuma longa) with anti-inflammatory, antioxidant, and potential antidepressant and neuroprotective effects.",
+  "description": "Curcumin is a polyphenolic compound derived from turmeric, a spice long used in traditional Ayurvedic and Chinese medicine. It exerts broad biological effects including inhibition of inflammatory pathways, modulation of neurotransmitters, enhancement of neurogenesis, and protection against oxidative stress. Curcumin is being studied for its role in mood disorders, cognitive decline, and neurodegenerative diseases, though its clinical impact is limited by poor bioavailability unless formulated with absorption enhancers (e.g., piperine).",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "mood-support-adjunct-in-depression",
+          "condition_name": "Mood support (adjunct in depression)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cognitive-support",
+          "condition_name": "Cognitive support",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anti-inflammatory-conditions",
+          "condition_name": "Anti-inflammatory conditions",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "alzheimer-s-disease-support",
+          "condition_name": "Alzheimer’s disease support",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-reduction",
+          "condition_name": "Anxiety reduction",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "arthritis-symptom-management",
+          "condition_name": "Arthritis symptom management",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 3
+        },
+        "cognitive_support": {
+          "rating": 3
+        },
+        "anti-inflammatory": {
+          "rating": 4
+        },
+        "neuroprotection": {
+          "rating": 2
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Gastrointestinal upset"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Diarrhea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased bleeding risk with anticoagulants"
+        },
+        {
+          "risk": "Gallbladder contraction"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Biliary obstruction or gallstones"
+        },
+        {
+          "contraindication": "Bleeding disorders"
+        },
+        {
+          "contraindication": "Concurrent use with anticoagulants (caution)"
+        }
+      ],
+      "precautions": [
+        "Avoid high doses in individuals with bleeding disorders or those on anticoagulants.",
+        "May exacerbate gallbladder disease.",
+        "Choose high-bioavailability formulations for effectiveness."
+      ],
+      "interactions": [
+        {
+          "interactant": "Warfarin and anticoagulants",
+          "mechanism": "Increased bleeding risk",
+          "action": "Avoid or monitor closely"
+        },
+        {
+          "interactant": "NSAIDs",
+          "mechanism": "Additive bleeding risk",
+          "action": "Use caution"
+        },
+        {
+          "interactant": "Chemotherapy drugs",
+          "mechanism": "Potential CYP enzyme interactions",
+          "action": "Consult oncologist"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Bleeding symptoms if combined with anticoagulants"
+        },
+        {
+          "parameter": "Liver function in high-dose long-term use"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Likely safe in dietary amounts; avoid high-dose supplements",
+        "lactation": "Limited evidence; caution advised",
+        "pediatric": "Not well studied; avoid unless directed by clinician",
+        "geriatric": "Potentially beneficial for inflammation and cognition"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Polyphenol",
+        "natural_source": "Turmeric root (Curcuma longa)",
+        "regulatory_notes": "Dietary supplement (not FDA-approved as a drug)"
+      }
+    }
   },
   "sections": [
     {
@@ -221,6 +313,42 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Examine.com – Curcumin",
+      "url": "https://examine.com/supplements/curcumin/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Lopresti AL, et al. Curcumin for the treatment of major depression: a randomised, double-blind, placebo controlled study. J Affect Disord. 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24856508/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Small GW, et al. Memory and Brain Amyloid and Tau Effects of a Bioavailable Form of Curcumin in Non-Demented Adults: A Double-Blind, Placebo-Controlled 18-Month Trial. Am J Geriatr Psychiatry. 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29246723/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Curcumin",
+      "Turmeric extract",
+      "Diferuloylmethane"
+    ],
+    "synonyms": [
+      "Turmeric",
+      "Curcuma longa"
+    ],
+    "common_misspellings": [
+      "kurkumin",
+      "curcumine",
+      "curcman"
+    ]
+  },
   "seo": {
     "title": "Curcumin (Turmeric Extract) – Anti-Inflammatory and Mood Support",
     "description": "Curcumin is the active compound in turmeric with anti-inflammatory, antioxidant, and neuropsychiatric potential. Learn about its uses, dosing, and clinical research.",

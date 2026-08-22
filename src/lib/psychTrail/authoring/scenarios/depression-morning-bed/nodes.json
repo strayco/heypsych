@@ -1,0 +1,294 @@
+{
+  "nodes": [
+    {
+      "id": "wake_up",
+      "text": "You're awake. You know because the ceiling is there and your eyes are open.\n\nThe alarm went off ten minutes ago. Or twenty. Time moves strangely when you're lying here.\n\nYour body feels like it's made of concrete. Not tired exactly—you slept. This is something else. A heaviness that has nothing to do with sleep. The day is out there waiting, and you already know you don't have what it takes to meet it.\n\nThe thought of standing up is overwhelming. Not the standing itself. The everything that comes after.",
+      "choiceIds": ["wake_try_sit", "wake_negotiate", "wake_phone", "wake_pull_covers"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": true
+    },
+    {
+      "id": "trying_to_sit",
+      "text": "You push yourself toward sitting. Your arms feel weak—not physically, but in some other way. Like the signal from your brain isn't getting through clearly.\n\nYou make it halfway. Propped on your elbows, staring at the wall.\n\nThis is harder than it should be. The voice in your head has opinions about that.",
+      "choiceIds": ["sit_full", "sit_fall_back", "sit_pause_here"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": ["route_gradual_activation"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "negotiating",
+      "text": "Okay. What's the smallest thing you could do?\n\nNot get up. Not shower. Not face the day. Just... something smaller than that.\n\nYour brain offers options: open your eyes wider. Move one leg. Sit up for ten seconds. Text someone that you're struggling.\n\nAll of them feel like climbing a mountain. But some mountains are smaller than others.",
+      "choiceIds": ["negotiate_one_leg", "negotiate_ten_seconds", "negotiate_text", "negotiate_nothing"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": ["route_tiny_steps"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "phone_scroll",
+      "text": "You reach for your phone. The light hurts your eyes but you don't put it down.\n\nScrolling. Nothing registers. You're not reading, you're just... moving your thumb. Time passes. Fifteen minutes. Thirty. The world outside gets brighter.\n\nYour body hasn't moved. Part of you knows this isn't helping. Another part doesn't care.",
+      "choiceIds": ["phone_put_down", "phone_keep_going", "phone_text_someone"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "numb", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "covers_over",
+      "text": "You pull the covers over your head. The world gets smaller. Darker. Safer.\n\nThis is what you do. Hide from the day until the day goes away. Except it doesn't go away. It just waits.\n\nUnder here, you can pretend nothing exists. You can pretend you don't have to be a person today. The relief is real. The cost comes later.",
+      "choiceIds": ["covers_stay", "covers_emerge", "covers_cry"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "numb", "pacing": "slow" },
+      "routeMarkers": ["route_shutdown"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "fully_sitting",
+      "text": "You're sitting up. Feet not on the floor yet, but vertical. That's something.\n\nThe room looks the same as always. Clothes on the chair you meant to put away. Light coming through the curtains. A day that exists whether you participate in it or not.\n\nYour brain is already suggesting you lie back down. It would be so easy. Just fall backward. The bed is right there.",
+      "choiceIds": ["sitting_feet_down", "sitting_stay_moment", "sitting_lie_back", "sitting_self_attack"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": ["route_gradual_activation"],
+      "objectiveTriggers": [{ "objectiveId": "obj_get_vertical", "action": "complete" }],
+      "isCheckpoint": true
+    },
+    {
+      "id": "one_leg_moved",
+      "text": "You moved one leg. Just slightly. Toward the edge of the bed.\n\nIt's absurd how much that took. A person who isn't you would laugh at how pathetic this is. But you're not that person right now. You're the person for whom moving one leg is a real thing you did.\n\nThe other leg is still there. The floor is still distant. But something shifted.",
+      "choiceIds": ["leg_other_leg", "leg_pause", "leg_give_up"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": ["route_tiny_steps"],
+      "objectiveTriggers": [{ "objectiveId": "obj_tiny_step", "action": "progress" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "ten_second_sit",
+      "text": "You sit up. You count.\n\nOne. Two. Three. Your body wants to fall back. Four. Five. Six. This is stupid. Seven. Eight. Who counts to ten while sitting up. Nine. Ten.\n\nYou did it. You sat for ten seconds. The smallest possible victory. But your body is now vertical, which it wasn't before.",
+      "choiceIds": ["ten_extend", "ten_back_down", "ten_feet"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": ["route_tiny_steps"],
+      "objectiveTriggers": [{ "objectiveId": "obj_tiny_step", "action": "progress" }, { "objectiveId": "obj_get_vertical", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "texted_someone",
+      "text": "You type: \"having a hard morning. can't get up.\"\n\nYou stare at it. Too honest? Too dramatic? They'll worry. They'll judge. They'll tell you to just get up, like that's something you haven't thought of.\n\nYou send it anyway. Then you wait, phone in hand, still horizontal.",
+      "choiceIds": ["text_wait", "text_put_down", "text_regret"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "vulnerable", "pacing": "slow" },
+      "routeMarkers": ["route_connection"],
+      "objectiveTriggers": [{ "objectiveId": "obj_reach_out", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "feet_on_floor",
+      "text": "Your feet touch the floor. It's cold. Real.\n\nYou're sitting on the edge of the bed now. Technically, you could still fall back. The bed is right behind you, gravitational, patient. But your feet are on the ground.\n\nFrom here, standing is possible. Not easy. Not guaranteed. But possible.\n\nWhat's the next smallest thing?",
+      "choiceIds": ["floor_stand", "floor_stay_here", "floor_lie_back", "floor_one_thing"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "tense", "pacing": "normal" },
+      "routeMarkers": ["route_gradual_activation"],
+      "objectiveTriggers": [{ "objectiveId": "obj_feet_floor", "action": "complete" }],
+      "isCheckpoint": true
+    },
+    {
+      "id": "standing",
+      "text": "You're standing. Swaying slightly, but upright.\n\nThe room feels different from this angle. More real. More demanding. There are things to do here—clothes to put on, teeth to brush, a life to perform.\n\nBut you don't have to do all of them. You just have to do one.\n\nOr not. You could sit back down. No one would know.",
+      "choiceIds": ["stand_bathroom", "stand_clothes", "stand_sit_back", "stand_one_thing", "stand_full_routine"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": ["route_gradual_activation"],
+      "objectiveTriggers": [{ "objectiveId": "obj_get_up", "action": "complete" }],
+      "isCheckpoint": true
+    },
+    {
+      "id": "forced_full_routine",
+      "text": "No. You're going to do this properly. Shower, get dressed, make the bed, have breakfast, be a normal person who does normal things.\n\nYou start the shower. The water is too cold, then too hot. You stand under it feeling nothing. The shampoo bottle is heavy. Everything takes twice as long.\n\nBy the time you're dried off, you're exhausted. More exhausted than before you started. The bed is right there. You haven't made it yet.\n\nMaybe just sit for a second.",
+      "choiceIds": ["forced_collapse", "forced_push_through", "forced_modify"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "fast" },
+      "routeMarkers": ["route_overreach"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "collapsed_back",
+      "text": "You're back in bed. It happened fast—one moment you were trying, the next you were horizontal again.\n\nThe failure settles over you like another blanket. You couldn't even do the basics. What's wrong with you?\n\nThe day continues outside. You're still here.",
+      "choiceIds": ["collapse_stay", "collapse_gentler_try", "collapse_self_compassion", "collapse_self_attack"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "self_attack_spiral",
+      "text": "What is wrong with you? Normal people get out of bed. Normal people don't lie here feeling like the world is too heavy to face. You're lazy. You're broken. You're wasting your life.\n\nThe thoughts pile on. Each one true. Each one making it harder to move. The criticism doesn't motivate—it paralyzes. But it feels deserved, which is almost the same as feeling right.\n\nYou're still in bed. The attack continues.",
+      "choiceIds": ["attack_believe_it", "attack_notice_pattern", "attack_different_voice"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_self_attack"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "noticed_pattern",
+      "text": "Wait.\n\nYou've heard this before. This exact script. The \"what's wrong with you\" voice that shows up when you're already down and pushes you further.\n\nIt's not new information. It's just the same loop, playing again.\n\nNoticing it doesn't make it stop. But it does create a tiny gap between you and the voice. A moment where you can see it as a pattern instead of the truth.",
+      "choiceIds": ["pattern_try_anyway", "pattern_softer_voice", "pattern_still_stuck"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": ["route_awareness"],
+      "objectiveTriggers": [{ "objectiveId": "obj_notice_loop", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "softer_voice",
+      "text": "You try a different voice. Not cheerful—that would be fake. Just... less cruel.\n\n\"This is hard. It's hard for a reason. You're not lazy—you're struggling. And struggling while lying in bed still counts as struggling.\"\n\nThe words feel foreign. Unearned. But also true?\n\nYou're still in bed. But the weight is slightly different.",
+      "choiceIds": ["soft_try_move", "soft_stay_moment", "soft_seems_fake"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "hopeful", "pacing": "slow" },
+      "routeMarkers": ["route_self_compassion"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "text_response",
+      "text": "Your phone buzzes.\n\n\"that sucks. can I call you? or do you want me to just come over and sit with you?\"\n\nSomeone knows. Someone responded without judgment. The weight doesn't lift, but it shifts slightly—less alone, less invisible.\n\nYou could say yes. You could say no. You could not respond and just lie here knowing someone out there knows.",
+      "choiceIds": ["text_yes_call", "text_yes_come", "text_no_thanks", "text_just_knowing"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_connection"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "one_small_thing",
+      "text": "What's the smallest thing that would count as doing something?\n\nNot the shower. Not getting dressed. Not the full routine that normal people do without thinking. Just... one thing. The minimum viable morning.\n\nWater. You could drink water. That's a thing.\nTeeth. You could brush your teeth.\nPants. You could put on pants.\n\nPick one. The smallest one you can actually do.",
+      "choiceIds": ["small_water", "small_teeth", "small_pants", "small_nothing"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "neutral", "pacing": "slow" },
+      "routeMarkers": ["route_tiny_steps"],
+      "objectiveTriggers": [{ "objectiveId": "obj_lower_bar", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "did_one_thing",
+      "text": "You did one thing.\n\nIt wasn't much. In the grand scheme of a day, it was almost nothing. But you moved. You did something besides lie there.\n\nYour body is still heavy. The day is still out there. But you're no longer at zero. You're at one.\n\nOne is enough to build on. Or one is enough for today. Both are valid.",
+      "choiceIds": ["one_try_another", "one_enough", "one_back_to_bed", "one_all_or_nothing"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "neutral", "pacing": "normal" },
+      "routeMarkers": ["route_tiny_steps"],
+      "objectiveTriggers": [{ "objectiveId": "obj_one_thing", "action": "complete" }],
+      "isCheckpoint": true
+    },
+    {
+      "id": "did_another_thing",
+      "text": "Two things. Water and teeth. Or pants and water. Whatever combination you managed.\n\nYou're not dressed. You haven't showered. By most standards, you're not ready for anything. But you're more ready than you were an hour ago.\n\nThe momentum is fragile—you can feel it. One wrong move and you're back in bed. But right now, you're moving.",
+      "choiceIds": ["another_keep_going", "another_pause", "another_enough", "another_collapse"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_tiny_steps", "route_gradual_activation"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "enough_for_now",
+      "text": "This is enough.\n\nNot enough by some external standard. Not enough to feel proud or accomplished. But enough for what you could do today.\n\nYou're vertical. You did something. The day will continue with or without your full participation, and today you're offering partial participation.\n\nThat's real. That counts. It has to count.",
+      "choiceIds": ["enough_accept", "enough_shame", "enough_one_more"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": ["route_acceptance"],
+      "objectiveTriggers": [{ "objectiveId": "obj_accept_partial", "action": "complete" }],
+      "isCheckpoint": false
+    },
+    {
+      "id": "all_or_nothing_trap",
+      "text": "If you can do one thing, you should be able to do everything.\n\nThat's how it works, right? Normal people don't stop after drinking water. Normal people get dressed and go to work and live their lives. If you can't do that, what's the point of the water?\n\n**[The all-or-nothing pattern is taking over]**\n\nThe water feels pointless now. The momentum drains away. You're back to thinking about everything you're not doing instead of the one thing you did.",
+      "choiceIds": ["aon_collapse", "aon_catch_it", "aon_fight_it"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "anxious", "pacing": "fast" },
+      "routeMarkers": ["route_all_or_nothing"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "gentle_recovery",
+      "text": "You fell back, but you're trying again. Gentler this time.\n\nNo big plans. No full routine. Just: what can you do from here?\n\nThe bed is warm. The world is hard. But somewhere between \"do everything\" and \"do nothing\" there's a middle path. You just have to find it.",
+      "choiceIds": ["gentle_smallest_thing", "gentle_stay_lying", "gentle_text_help"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "hopeful", "pacing": "slow" },
+      "routeMarkers": ["route_recovery"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "with_support",
+      "text": "You're not alone anymore.\n\nThey're here—on the phone or in person. Not fixing anything, just present. Witness to the struggle. It's embarrassing and it's also a relief.\n\n\"I know it's hard,\" they say. \"What do you need?\"\n\nYou don't know what you need. But the question opens something.",
+      "choiceIds": ["support_try_with_them", "support_just_talk", "support_ask_to_stay"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_connection"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "tried_with_support",
+      "text": "They don't do it for you. But they're there while you do it.\n\nYou sit up. They wait. You put your feet on the floor. They say nothing. You stand, and they nod, and somehow that small acknowledgment matters.\n\nYou're doing the same things you couldn't do alone. The physics haven't changed. But having a witness makes the impossible slightly more possible.",
+      "choiceIds": ["supported_keep_going", "supported_enough", "supported_thank_them"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "hopeful", "pacing": "normal" },
+      "routeMarkers": ["route_connection", "route_gradual_activation"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "staying_in_bed",
+      "text": "You're still in bed. Hours have passed or minutes—it's hard to tell.\n\nThe day is happening out there. You're not part of it. The weight hasn't lifted; if anything, it's settled deeper.\n\nThis is what depression looks like from the inside. Not dramatic. Not visible. Just... immobile.",
+      "choiceIds": ["staying_accept", "staying_last_try", "staying_cry"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": ["route_shutdown"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "the_cry",
+      "text": "The tears come. You're not sure why now—nothing changed. Just suddenly you're crying.\n\nIt's not dramatic crying. Just quiet, leaking tears and a tightness in your chest that finally releases. All the weight you've been lying under, finally expressed.\n\nAfter a while, it stops. You're still in bed. But something is different. Lighter? Emptier? You're not sure.",
+      "choiceIds": ["cry_try_now", "cry_rest", "cry_realize"],
+      "isEnding": false,
+      "presentation": { "type": "narrative", "mood": "vulnerable", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "final_acceptance",
+      "text": "You're up. Partially. You did some things, not all things. The day will be incomplete, reduced, smaller than it was supposed to be.\n\nBut you're not still in bed. That's the difference between today and the version of today where you never moved at all.\n\nPartial is not failure. Partial is what you could do. And you did it.",
+      "choiceIds": ["accept_end_okay", "accept_end_progress", "accept_end_uncertain"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "calm", "pacing": "slow" },
+      "routeMarkers": [],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    },
+    {
+      "id": "shutdown_acceptance",
+      "text": "You stayed in bed. The day happened without you.\n\nThere will be consequences—things undone, people wondering, the accumulated weight of another lost day. But right now, in this moment, you survived it.\n\nSurvival isn't progress. But it's also not nothing. You're still here. Tomorrow exists. That's something.",
+      "choiceIds": ["shutdown_end_survived", "shutdown_end_tomorrow"],
+      "isEnding": false,
+      "presentation": { "type": "thought", "mood": "heavy", "pacing": "slow" },
+      "routeMarkers": ["route_shutdown"],
+      "objectiveTriggers": [],
+      "isCheckpoint": false
+    }
+  ]
+}

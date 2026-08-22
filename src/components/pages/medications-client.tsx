@@ -29,6 +29,37 @@ interface MedicationsClientProps {
   medications: Entity[];
 }
 
+// Filter category definitions - static, moved outside component to avoid dependency issues
+const FILTER_CATEGORIES: FilterCategory[] = [
+  {
+    id: "mechanism",
+    label: "Mechanism of Action",
+    options: [],
+    getValues: (entity) => {
+      const values = entity.metadata?.mechanism_categories || [];
+      return Array.isArray(values) ? values.filter(Boolean) : [];
+    },
+  },
+  {
+    id: "uses",
+    label: "Uses",
+    options: [],
+    getValues: (entity) => {
+      const values = entity.data?.clinical_metadata?.primary_indications || [];
+      return Array.isArray(values) ? values.filter(Boolean) : [];
+    },
+  },
+  {
+    id: "route",
+    label: "Route of Administration",
+    options: [],
+    getValues: (entity) => {
+      const values = entity.metadata?.administration_routes || [];
+      return Array.isArray(values) ? values.filter(Boolean) : [];
+    },
+  },
+];
+
 export function MedicationsClient({ medications }: MedicationsClientProps) {
   const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
   const [showFilters, setShowFilters] = useState(false);
@@ -38,40 +69,9 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
   const [visibleCount, setVisibleCount] = useState(20);
   const ITEMS_PER_PAGE = 20;
 
-  // Define filter categories
-  const filterCategories: FilterCategory[] = [
-    {
-      id: "mechanism",
-      label: "Mechanism of Action",
-      options: [],
-      getValues: (entity) => {
-        const values = entity.metadata?.mechanism_categories || [];
-        return Array.isArray(values) ? values.filter(Boolean) : [];
-      },
-    },
-    {
-      id: "uses",
-      label: "Uses",
-      options: [],
-      getValues: (entity) => {
-        const values = entity.data?.clinical_metadata?.primary_indications || [];
-        return Array.isArray(values) ? values.filter(Boolean) : [];
-      },
-    },
-    {
-      id: "route",
-      label: "Route of Administration",
-      options: [],
-      getValues: (entity) => {
-        const values = entity.metadata?.administration_routes || [];
-        return Array.isArray(values) ? values.filter(Boolean) : [];
-      },
-    },
-  ];
-
   // Extract unique options for each filter category
   const enrichedFilterCategories = useMemo(() => {
-    return filterCategories.map((category) => {
+    return FILTER_CATEGORIES.map((category) => {
       const allValues = new Set<string>();
       medications.forEach((med) => {
         const values = category.getValues(med);
@@ -183,7 +183,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -193,8 +193,8 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
               Back
             </Button>
 
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
+              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
                 Medications
               </span>
             </h1>
@@ -203,22 +203,22 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
           </div>
 
           <div className="mb-4 text-center">
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-neutral-800">
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">
               FDA-approved prescription medications for depression, anxiety, and other mental health
               conditions. All medications should be prescribed and monitored by a qualified healthcare
               provider.
             </p>
 
-            <div className="flex items-center justify-center gap-4 text-xs text-neutral-900">
+            <div className="flex items-center justify-center gap-4 text-xs text-label-primary">
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint0"></div>
                 {sortedMedications?.length || 0} Medications
                 {filteredMedications?.length !== medications?.length && (
                   <span className="text-orange-600">(filtered from {medications?.length})</span>
                 )}
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint0"></div>
                 FDA Approved
               </div>
               <div className="flex items-center gap-1.5">
@@ -234,7 +234,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
       <section className="px-4 py-2 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-900" />
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-label-primary" />
             <input
               type="text"
               value={searchInput}
@@ -246,7 +246,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                 }
               }}
               placeholder="Search medications by name, description, or indication... (Press Enter)"
-              className="w-full rounded-xl border border-slate-200 bg-white py-3 pl-12 pr-4 text-sm text-neutral-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              className="w-full rounded-xl border border-separator bg-surface py-3 pl-12 pr-4 text-sm text-label-primary placeholder:text-label-tertiary shadow-sm transition-all duration-200 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
             />
           </div>
         </div>
@@ -279,7 +279,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                   variant="ghost"
                   size="sm"
                   onClick={clearAllFilters}
-                  className="text-neutral-900 hover:text-neutral-800"
+                  className="text-label-primary hover:text-label-secondary"
                 >
                   <X className="mr-1 h-4 w-4" />
                   Clear All
@@ -288,14 +288,14 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
             </div>
 
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-neutral-800">Sort by:</label>
+              <label className="text-sm font-medium text-label-secondary">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => {
                   setSortBy(e.target.value);
                   setVisibleCount(20);
                 }}
-                className="rounded-md border border-neutral-300 bg-white px-3 py-1 text-sm"
+                className="rounded-md border border-separator bg-surface px-3 py-1 text-sm"
               >
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
@@ -318,7 +318,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                     {enrichedFilterCategories.map((category) => (
                       <div key={category.id}>
-                        <h4 className="mb-3 font-semibold text-neutral-900">{category.label}</h4>
+                        <h4 className="mb-3 font-semibold text-label-primary">{category.label}</h4>
                         <div className="max-h-48 space-y-2 overflow-y-auto">
                           {category.options.map((option) => (
                             <label key={option} className="flex items-center">
@@ -326,9 +326,9 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                                 type="checkbox"
                                 checked={activeFilters[category.id]?.includes(option) || false}
                                 onChange={() => handleFilterToggle(category.id, option)}
-                                className="mr-2 rounded border-neutral-300 text-blue-600"
+                                className="mr-2 rounded border-separator text-accent"
                               />
-                              <span className="text-sm text-neutral-800">{option}</span>
+                              <span className="text-sm text-label-secondary">{option}</span>
                             </label>
                           ))}
                         </div>
@@ -351,7 +351,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                       <Badge
                         key={`${categoryId}-${value}`}
                         variant="outline"
-                        className="cursor-pointer hover:bg-neutral-50"
+                        className="cursor-pointer hover:bg-surface"
                         onClick={() => handleFilterToggle(categoryId, value)}
                       >
                         {category?.label}: {value} <X className="ml-1 h-3 w-3" />
@@ -381,7 +381,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                   variant="default"
                   showFilters={false}
                   showComparison={true}
-                  className="rounded-3xl bg-white p-8 shadow-xl"
+                  className="rounded-3xl bg-surface p-8 shadow-xl"
                 />
               </motion.div>
 
@@ -393,7 +393,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
                   transition={{ delay: 0.3 }}
                   className="mt-8 flex flex-col items-center gap-4"
                 >
-                  <p className="text-sm text-neutral-800">
+                  <p className="text-sm text-label-secondary">
                     Showing {visibleCount} of {sortedMedications.length} medications
                   </p>
                   <Button
@@ -416,13 +416,13 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
             >
               <Card className="mx-auto max-w-md">
                 <CardContent className="p-8">
-                  <Pill className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-                  <h3 className="mb-2 text-xl font-semibold text-neutral-900">
+                  <Pill className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
+                  <h3 className="mb-2 text-xl font-semibold text-label-primary">
                     {getActiveFilterCount() > 0 || searchQuery.trim()
                       ? "No Medications Match"
                       : "No Medications Found"}
                   </h3>
-                  <p className="mb-6 text-neutral-800">
+                  <p className="mb-6 text-label-secondary">
                     {getActiveFilterCount() > 0 || searchQuery.trim()
                       ? "Try adjusting your search or filter criteria."
                       : "It looks like the medications data hasn't been imported yet."}

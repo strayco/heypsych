@@ -32,7 +32,7 @@ export function BoardAttribution({
         {label}
       </Link>
       {lastReviewed && (
-        <span className="text-neutral-500">
+        <span className="text-label-primary0">
           · Last reviewed {formatDate(lastReviewed)}
         </span>
       )}

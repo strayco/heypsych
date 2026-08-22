@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "bromazepam-lexotan",
-  "type": "medication",
-  "name": "Bromazepam (Lexotan, Lectopam)",
-  "summary": "Intermediate-acting benzodiazepine used outside the US for short-term treatment of severe anxiety. Starts working within about an hour and lasts most of the day, but can cause dependence and withdrawal if used regularly.",
-  "description": "Bromazepam is an anti-anxiety medicine in the benzodiazepine family. It is used in many countries (but not the United States) for short-term relief of severe anxiety and tension. It works by boosting the calming chemical GABA in the brain, which can quickly reduce physical and emotional symptoms of anxiety. Because it can cause dependence and uncomfortable withdrawal symptoms, it is usually prescribed for short periods or occasional use, not as a long-term daily solution.",
-  "patient_summary": "Bromazepam is a calming medicine used in some countries (not in the US) to treat strong anxiety. It usually starts to work within about an hour and can last through much of the day. Many people feel less tense and less on edge, but also more sleepy or mentally slowed. It can be habit-forming, especially if taken every day for weeks or months. Stopping suddenly after regular use can cause strong rebound anxiety and other withdrawal symptoms, so doses must be reduced slowly with a doctor’s guidance. Never mix bromazepam with alcohol, opioids, or other strong sedatives.",
-  "category": "medications/anxiety-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Benzodiazepine",
-      "GABA-A Receptor Modulator",
-      "Anxiolytic"
-    ],
+  "identity": {
+    "slug": "bromazepam-lexotan",
+    "name": "Bromazepam (Lexotan, Lectopam)",
+    "generic_name": "bromazepam",
     "brand_names": [
       "Lexotan",
       "Lectopam",
@@ -24,73 +16,225 @@
       "MED Bromazepam",
       "TEVA-Bromazepam"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required (not marketed in the US)",
-    "controlled_substance": "Schedule IV (Canada; UN Psychotropic Convention)",
-    "generic_available": true,
-    "first_marketed_year": 1963,
-    "pharmacologic_category": "Benzodiazepine, Intermediate-Acting",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
     "wikidata_qid": "Q419116"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Short-term treatment of severe anxiety",
-      "Generalized Anxiety Disorder (GAD) – when faster relief is needed",
-      "Panic symptoms (off-label in some countries)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used for short-term relief of persistent, excessive worry while longer-term treatments (like SSRIs or CBT) are started or adjusted."
-      },
-      {
-        "slug": "severe-situational-anxiety",
-        "relationship": "primary_treatment",
-        "context": "Used for brief periods when anxiety is very strong and disabling (for example around major life events or procedures)."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used to calm intense panic symptoms, usually for short stretches or as backup while other treatments are optimized."
-      }
-    ],
-    "contraindications": [
-      "Allergy to bromazepam, other benzodiazepines, or any ingredient in the tablet",
-      "Severe breathing problems (eg, severe COPD, severe respiratory failure)",
-      "Sleep apnea syndrome",
-      "Severe liver disease",
-      "Myasthenia gravis (a muscle-weakness condition)",
-      "History of serious benzodiazepine or substance misuse, unless under very close specialist supervision",
-      "Use in children (safety data are limited; generally not recommended)"
-    ],
-    "efficacy_response": {
-      "metric": "Change in anxiety scores at 4 weeks (Hamilton Anxiety Rating Scale)",
-      "percentage_value": "Not reported",
-      "comparison_data": "In a 4-week randomized trial of adults with generalized anxiety, both bromazepam (18 mg/day) and diazepam (15 mg/day) reduced anxiety more than placebo beginning in week 1. Bromazepam showed somewhat stronger improvement than diazepam on physical anxiety symptoms and overall anxiety scores.",
-      "patient_text": "In a 4-week study of adults with generalized anxiety, people taking bromazepam or diazepam had larger drops in anxiety scores than those taking a sugar pill. Bromazepam was slightly better than diazepam at easing physical anxiety symptoms like muscle tension and stomach discomfort.",
-      "citation_tag": "PMID:6132936"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/anxiety-disorders",
+    "drug_classes": [
+      "Benzodiazepine",
+      "GABA-A Receptor Modulator",
+      "Anxiolytic"
+    ]
+  },
+  "summary": "Intermediate-acting benzodiazepine used outside the US for short-term treatment of severe anxiety. Starts working within about an hour and lasts most of the day, but can cause dependence and withdrawal if used regularly.",
+  "description": "Bromazepam is an anti-anxiety medicine in the benzodiazepine family. It is used in many countries (but not the United States) for short-term relief of severe anxiety and tension. It works by boosting the calming chemical GABA in the brain, which can quickly reduce physical and emotional symptoms of anxiety. Because it can cause dependence and uncomfortable withdrawal symptoms, it is usually prescribed for short periods or occasional use, not as a long-term daily solution.",
+  "patient_summary": "Bromazepam is a calming medicine used in some countries (not in the US) to treat strong anxiety. It usually starts to work within about an hour and can last through much of the day. Many people feel less tense and less on edge, but also more sleepy or mentally slowed. It can be habit-forming, especially if taken every day for weeks or months. Stopping suddenly after regular use can cause strong rebound anxiety and other withdrawal symptoms, so doses must be reduced slowly with a doctor’s guidance. Never mix bromazepam with alcohol, opioids, or other strong sedatives.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "primary_indication",
+          "context": "Used for short-term relief of persistent, excessive worry while longer-term treatments (like SSRIs or CBT) are started or adjusted.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "severe-situational-anxiety",
+          "condition_name": "Severe Situational Anxiety",
+          "relationship": "primary_indication",
+          "context": "Used for brief periods when anxiety is very strong and disabling (for example around major life events or procedures).",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used to calm intense panic symptoms, usually for short stretches or as backup while other treatments are optimized."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed by mouth; reaches useful levels in the blood within the first few hours after a dose.",
-      "bioavailability": "About 60–84% of the dose reaches the bloodstream after oral dosing.",
-      "onset": "Calming effects often begin within about 30–60 minutes.",
-      "peak_plasma": "Around 1–4 hours after a dose.",
-      "half_life": "Roughly 10–20 hours in healthy adults (may be longer in older adults or those with liver problems).",
-      "duration_IR": "Effects typically last most of a workday; many people take it 2–3 times per day if used regularly.",
-      "metabolism": "Processed mainly in the liver into active and inactive breakdown products (including 3-hydroxybromazepam).",
-      "excretion": "Leaves the body mainly through the kidneys in the urine as metabolites (about two-thirds of a dose).",
-      "protein_binding": "About 70% bound to proteins in the blood.",
-      "food_effect": "Food may slow or slightly reduce absorption, but does not appear to change how long it lasts."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Calming effects often begin within about 30–60 minutes."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sleepiness and Fatigue",
+          "incidence": "Very common",
+          "notes": "You may feel calmer but also more tired, especially when starting or after dose increases. Try to take doses at times when feeling sleepy will be less disruptive, and avoid driving until you know how you react."
+        },
+        {
+          "effect": "Dizziness and Unsteady Gait",
+          "incidence": "Common",
+          "notes": "You may feel off-balance or light-headed, similar to having had a few drinks. This can increase the chance of falls, especially in older adults. Be careful on stairs and in the bathroom."
+        },
+        {
+          "effect": "Cognitive Slowing and Memory Problems",
+          "incidence": "Common",
+          "notes": "You may think more slowly, have trouble focusing, or notice gaps in memory for events that happened after taking a dose. Important decisions or detailed work are best done before taking bromazepam."
+        },
+        {
+          "effect": "Mood and Behavior Changes",
+          "incidence": "Less common",
+          "notes": "A small number of people can have the opposite reaction: agitation, irritability, unusual risk-taking, or aggression. If you or others notice big behavior changes, contact your doctor right away."
+        },
+        {
+          "effect": "Liver or Blood Test Changes",
+          "incidence": "Uncommon",
+          "notes": "Occasionally, routine blood tests may show mild changes in liver or kidney markers. Your doctor may check labs if you are taking bromazepam regularly for a longer time."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe sleepiness, confusion, or difficulty staying awake."
+        },
+        {
+          "risk": "Slow, shallow, or difficult breathing – especially if combined with opioids, alcohol, or other sedatives (medical emergency)."
+        },
+        {
+          "risk": "New or worse depression, suicidal thoughts, or feeling emotionally numb and detached."
+        },
+        {
+          "risk": "Unusual agitation, rage, hallucinations (seeing or hearing things that aren’t there), or very out-of-character behavior."
+        },
+        {
+          "risk": "Seizures, especially after abruptly stopping bromazepam or rapidly cutting the dose."
+        },
+        {
+          "risk": "Severe allergic reaction: swelling of the lips, tongue, or throat; trouble breathing; hives (call emergency services)."
+        }
+      ],
+      "black_box_warning": "Taking benzodiazepines like bromazepam with opioid pain medicines or other strong sedatives greatly increases the risk of extreme drowsiness, breathing problems, coma, and death. These medicines should only be used together when absolutely necessary, at the lowest effective doses, and under careful medical monitoring.",
+      "contraindications": [
+        {
+          "contraindication": "Allergy to bromazepam, other benzodiazepines, or any ingredient in the tablet"
+        },
+        {
+          "contraindication": "Severe breathing problems (eg, severe COPD, severe respiratory failure)"
+        },
+        {
+          "contraindication": "Sleep apnea syndrome"
+        },
+        {
+          "contraindication": "Severe liver disease"
+        },
+        {
+          "contraindication": "Myasthenia gravis (a muscle-weakness condition)"
+        },
+        {
+          "contraindication": "History of serious benzodiazepine or substance misuse, unless under very close specialist supervision"
+        },
+        {
+          "contraindication": "Use in children (safety data are limited; generally not recommended)"
+        }
+      ],
+      "precautions": [
+        "Bromazepam can quickly lead to physical dependence if taken regularly, especially at higher doses or for more than a few weeks.",
+        "Stopping suddenly after regular use can trigger severe withdrawal, including seizures, very high anxiety, and agitation.",
+        "Use during pregnancy may harm the baby, especially later in pregnancy (risk of newborn withdrawal, breathing problems, and low muscle tone).",
+        "Use while breastfeeding can cause sleepiness, poor feeding, or weight loss in the baby; many experts recommend avoiding regular use while breastfeeding.",
+        "Older adults are more sensitive to side effects like confusion, falls, and memory problems.",
+        "Driving, cycling, or operating machinery can be unsafe while taking bromazepam, especially when starting, after dose increases, or when combined with other sedating drugs."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioid pain medicines (eg, codeine, oxycodone, morphine, hydromorphone, fentanyl)",
+          "mechanism": "Very high risk of dangerous sleepiness, slowed breathing, coma, and death when combined.",
+          "action": "Avoid combining whenever possible. If your doctor feels both are absolutely necessary, they should use the lowest effective doses and monitor you closely. Loved ones should know overdose warning signs and how to get emergency help."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Major increase in drowsiness, poor coordination, and breathing suppression. Strongly increases accident and overdose risk.",
+          "action": "Do not drink alcohol while taking bromazepam. Even small amounts (1–2 drinks) can be risky."
+        },
+        {
+          "interactant": "Other sedating medicines (sleeping pills, other benzodiazepines, some antihistamines like diphenhydramine, muscle relaxants, antipsychotics, some antidepressants)",
+          "mechanism": "Add-on effects: more sedation, worse balance, slower thinking, and more trouble breathing.",
+          "action": "Your doctor may lower doses or avoid these combinations. Always tell your prescriber and pharmacist about all medicines, including over-the-counter sleep aids or allergy pills."
+        },
+        {
+          "interactant": "Medicines that affect liver enzymes (eg, cimetidine, some antifungals, certain antibiotics, HIV medicines)",
+          "mechanism": "Can raise bromazepam blood levels, leading to stronger and longer-lasting effects.",
+          "action": "Your doctor may adjust your dose or choose a different medicine. Do not start or stop these medicines without medical advice."
+        },
+        {
+          "interactant": "Cannabis, opioids for cough or diarrhea, gabapentin/pregabalin, or other calming herbal products (eg, valerian, kava)",
+          "mechanism": "Extra sedation, slower reaction time, and higher risk of accidents or breathing problems.",
+          "action": "Use together only if your doctor agrees and monitors you. Avoid driving and other risky activities, and report any extreme drowsiness or breathing issues."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Anxiety symptoms and overall functioning: Is day-to-day life getting easier, or is sedation getting in the way?"
+        },
+        {
+          "parameter": "Signs of misuse: running out early, taking higher doses than prescribed, or using with alcohol or other drugs."
+        },
+        {
+          "parameter": "Sleepiness, balance, and falls: especially in older adults or those taking other sedating medicines."
+        },
+        {
+          "parameter": "Breathing: in people with lung disease or sleep apnea, or in anyone also taking opioids or other respiratory depressants."
+        },
+        {
+          "parameter": "Mood and behavior: new or worse depression, irritability, or unusual behavior changes."
+        },
+        {
+          "parameter": "Withdrawal signs: if doses are missed or reduced, especially after long-term use."
+        },
+        {
+          "parameter": "Lab tests (if used longer term): occasional liver and kidney function tests, and blood counts, based on individual risk."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use during pregnancy is generally avoided unless there is no safer option and the anxiety is severe. Benzodiazepines can cross the placenta and may cause low muscle tone, breathing problems, and withdrawal symptoms in newborns, especially with regular use later in pregnancy. Anxiety itself can also affect pregnancy outcomes, so any decision about treatment should be made together with your obstetric and mental health providers.",
+        "lactation": "Bromazepam passes into breast milk. Case reports with benzodiazepines describe sleepy or poorly feeding infants. Many guidelines advise avoiding regular use while breastfeeding or using the lowest effective dose for the shortest time, with close monitoring of the baby for sleepiness, poor feeding, or poor weight gain.",
+        "pediatric": "Not recommended for children due to limited safety data and higher risk of behavior changes and breathing problems.",
+        "geriatric": "Older adults are more sensitive to bromazepam’s effects. They have higher risks of confusion, memory problems, and falls. If used at all, doses should be low, increased slowly, and reviewed often. Many guidelines suggest avoiding benzodiazepines in older adults when possible.",
+        "renal_impairment": "Kidney disease may change how long breakdown products stay in the body. Doctors may start with lower doses and monitor more carefully.",
+        "hepatic_impairment": "Because bromazepam is processed in the liver, people with liver disease may clear it more slowly and be more prone to side effects. Severe liver disease is a contraindication."
+      }
+    },
+    "access": {
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed by mouth; reaches useful levels in the blood within the first few hours after a dose.",
+          "bioavailability": "About 60–84% of the dose reaches the bloodstream after oral dosing.",
+          "peak_plasma": "Around 1–4 hours after a dose.",
+          "half_life": "Roughly 10–20 hours in healthy adults (may be longer in older adults or those with liver problems).",
+          "metabolism": "Processed mainly in the liver into active and inactive breakdown products (including 3-hydroxybromazepam).",
+          "excretion": "Leaves the body mainly through the kidneys in the urine as metabolites (about two-thirds of a dose).",
+          "protein_binding": "About 70% bound to proteins in the blood.",
+          "food_effect": "Food may slow or slightly reduce absorption, but does not appear to change how long it lasts."
+        },
+        "dosing": {
+          "titration": "Exact dosing must be decided by your prescriber. The numbers below are typical ranges used in adults and are provided to help you understand what to expect, not to self-dose."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you have been taking bromazepam regularly, your brain and body can get used to it. Stopping suddenly can cause significant withdrawal symptoms, including severe anxiety and, in some cases, seizures. A gradual dose reduction (taper) is usually needed."
+        }
+      }
     }
   },
   "sections": [
@@ -112,7 +256,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Notice",
-      "intro": "Everyone is different, but these are common things people report while taking bromazepam:",
       "items": [
         {
           "category": "Relief of Anxiety (First Hour or Two)",
@@ -148,7 +291,8 @@
           ],
           "note": "Your brain can get used to bromazepam. Taking it every day for weeks can lead to physical dependence, so doses must be reduced gradually, not stopped abruptly."
         }
-      ]
+      ],
+      "intro": "Everyone is different, but these are common things people report while taking bromazepam:"
     },
     {
       "type": "onset_duration",
@@ -165,10 +309,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In a 4-week clinical trial, adults with generalized anxiety were randomly assigned to bromazepam, diazepam, or placebo (a sugar pill). Starting in the first week, both medications reduced anxiety more than placebo. Bromazepam showed somewhat stronger improvement than diazepam on physical anxiety symptoms (like muscle tension and bodily discomfort) and overall anxiety scores on standard rating scales.",
       "metric": "Improvement in Anxiety Symptoms at 4 Weeks",
       "value": "Active treatment better than placebo",
       "comparison": "Bromazepam slightly stronger than diazepam on some measures",
-      "text": "In a 4-week clinical trial, adults with generalized anxiety were randomly assigned to bromazepam, diazepam, or placebo (a sugar pill). Starting in the first week, both medications reduced anxiety more than placebo. Bromazepam showed somewhat stronger improvement than diazepam on physical anxiety symptoms (like muscle tension and bodily discomfort) and overall anxiety scores on standard rating scales.",
       "clinical_details": "Fontaine et al. (1983) studied 48 outpatients with generalized anxiety in a double-blind, placebo-controlled trial. Participants were randomly assigned to bromazepam 18 mg/day, diazepam 15 mg/day, or placebo for 4 weeks, after a 1-week washout. From week 1 onward, both benzodiazepines were superior to placebo on anxiety measures. Bromazepam produced greater reductions than diazepam on the somatic anxiety factor and total Hamilton Anxiety Rating Scale score, as well as the fear/anxiety factor of a patient self-rating scale.",
       "citation": {
         "authors": "Fontaine R, Annable L, Chouinard G, Ogilvie RI.",
@@ -255,7 +399,6 @@
     {
       "type": "interactions",
       "heading": "Important Drug and Substance Interactions",
-      "intro": "Bromazepam is processed by the liver and strongly affects the brain. Many medicines and substances can increase its side effects or change how long it stays in your body.",
       "items": [
         {
           "with": "Opioid pain medicines (eg, codeine, oxycodone, morphine, hydromorphone, fentanyl)",
@@ -282,7 +425,8 @@
           "risk": "Extra sedation, slower reaction time, and higher risk of accidents or breathing problems.",
           "action": "Use together only if your doctor agrees and monitors you. Avoid driving and other risky activities, and report any extreme drowsiness or breathing issues."
         }
-      ]
+      ],
+      "intro": "Bromazepam is processed by the liver and strongly affects the brain. Many medicines and substances can increase its side effects or change how long it stays in your body."
     },
     {
       "type": "tapering",
@@ -386,21 +530,43 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Bromazepam (Lexotan, Lectopam): Uses, Side Effects, and Withdrawal",
-    "description": "Patient-friendly guide to bromazepam for anxiety: how it works, how fast it starts, typical dosing ranges, side effects (sleepiness, dependence, withdrawal), dangerous interactions (alcohol, opioids), and how to stop safely.",
-    "canonical": "https://www.heypsych.com/treatments/bromazepam",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and checked against official Lexotan product information, peer-reviewed clinical trials of bromazepam in anxiety disorders, and current guidance on benzodiazepine safety, pregnancy, lactation, and deprescribing."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Fontaine et al. (1983) – Bromazepam and Diazepam in Generalized Anxiety",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6132936/",
+      "description": "Placebo-controlled trial comparing bromazepam, diazepam, and placebo in generalized anxiety."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Lexotan (Bromazepam) Product Information",
+      "url": "https://e-lactancia.org/media/papers/Bromazepam-DS-2012.pdf",
+      "description": "Official product monograph with detailed prescribing and safety information."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Bromazepam – PubChem Entry",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/compound/Bromazepam",
+      "description": "Chemical and pharmacologic data, including classification as a benzodiazepine."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "DrugBank: Bromazepam (DB01558)",
+      "url": "https://go.drugbank.com/drugs/DB01558",
+      "description": "Mechanism of action, pharmacokinetics, and international brand information."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "e-Lactancia – Bromazepam and Breastfeeding",
+      "url": "https://e-lactancia.org/breastfeeding/bromazepam/product/",
+      "description": "Information on bromazepam use while breastfeeding, including monitoring recommendations."
+    }
+  ],
   "faqs": [
     {
       "q": "What is bromazepam used for?",
@@ -450,5 +616,27 @@
       "q": "What should I do if I miss a dose?",
       "a": "If you take bromazepam regularly and miss a dose, take it when you remember unless it is close to the time for your next dose. Do not double up doses to ‘catch up.’ If you are unsure what to do, contact your prescriber or pharmacist. If you start feeling withdrawal symptoms (strong anxiety, restlessness, trouble sleeping), let your doctor know."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Bromazepam (Lexotan, Lectopam): Uses, Side Effects, and Withdrawal",
+    "description": "Patient-friendly guide to bromazepam for anxiety: how it works, how fast it starts, typical dosing ranges, side effects (sleepiness, dependence, withdrawal), dangerous interactions (alcohol, opioids), and how to stop safely.",
+    "canonical": "https://www.heypsych.com/treatments/bromazepam",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and checked against official Lexotan product information, peer-reviewed clinical trials of bromazepam in anxiety disorders, and current guidance on benzodiazepine safety, pregnancy, lactation, and deprescribing."
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "unmapped_fields": {
+      "metadata.first_marketed_year": 1963
+    },
+    "requires_review": false
+  }
 }

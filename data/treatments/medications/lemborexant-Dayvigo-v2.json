@@ -1,70 +1,197 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "lemborexant-dayvigo",
-  "type": "medication",
-  "name": "Lemborexant (DayVigo)",
-  "summary": "Nighttime sleep medication for insomnia that helps with falling asleep and staying asleep by turning down the brain’s wake signal (orexin). Works fast, but can cause next-day drowsiness—especially at 10 mg or if you don’t get a full 7+ hours.",
-  "description": "DayVigo is an orexin receptor antagonist used for adult insomnia (sleep onset and/or sleep maintenance). Most people take it only at bedtime, and only when they can commit to at least 7 hours before waking. It can work quickly (often within 15–20 minutes), but sedation and balance impairment can spill into the next day—particularly at 10 mg, in older adults, or when combined with other sedatives or alcohol. Rarely, it can trigger complex sleep behaviors (sleep-walking, sleep-driving) or narcolepsy-like effects (sleep paralysis, vivid hallucinations, cataplexy-like episodes).",
-  "patient_summary": "DayVigo is a bedtime insomnia med that helps you fall asleep and stay asleep by blocking orexin (the brain’s “stay awake” signal). It can kick in fast, but the tradeoff is next-day drowsiness or fogginess—especially at 10 mg or if you don’t get a full night of sleep. Avoid alcohol and other sedatives. If you ever have sleep-walking/sleep-driving or scary sleep paralysis/hallucinations, stop and call your prescriber.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "lemborexant-dayvigo",
+    "name": "Lemborexant (DayVigo)",
+    "generic_name": "lemborexant",
+    "brand_names": [
+      "DayVigo"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Hypnotic, Miscellaneous",
       "Orexin Receptor Antagonist"
-    ],
-    "brand_names": [
-      "DayVigo"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule IV (US); Schedule IV (Canada)",
-    "generic_available": false,
-    "fda_approval_year": 2019,
-    "pharmacologic_category": "Orexin Receptor Antagonist (OX1R/OX2R)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Insomnia (sleep onset and/or sleep maintenance) in adults"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for insomnia when the core problem is trouble falling asleep, staying asleep, or both. Best outcomes usually happen when it’s paired with CBT-I and sleep scheduling, not used as the only tool."
-      }
-    ],
-    "contraindications": [
-      "Narcolepsy",
-      "Hypersensitivity to lemborexant or any component of the formulation (explicitly listed in Canadian labeling)"
-    ],
-    "efficacy_response": {
-      "metric": "Sleep onset and sleep maintenance in insomnia",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "DayVigo is designed to help with both falling asleep and staying asleep. In real-world use, people often notice faster sleep onset and fewer middle-of-the-night wake-ups, but the benefits are dose- and sleep-schedule-dependent: if you take it too late or don’t allow a full night of sleep, next-day impairment becomes much more likely.",
-      "citation_tag": "FDA Label: DayVigo (lemborexant)"
+  "summary": "Nighttime sleep medication for insomnia that helps with falling asleep and staying asleep by turning down the brain’s wake signal (orexin). Works fast, but can cause next-day drowsiness—especially at 10 mg or if you don’t get a full 7+ hours.",
+  "description": "DayVigo is an orexin receptor antagonist used for adult insomnia (sleep onset and/or sleep maintenance). Most people take it only at bedtime, and only when they can commit to at least 7 hours before waking. It can work quickly (often within 15–20 minutes), but sedation and balance impairment can spill into the next day—particularly at 10 mg, in older adults, or when combined with other sedatives or alcohol. Rarely, it can trigger complex sleep behaviors (sleep-walking, sleep-driving) or narcolepsy-like effects (sleep paralysis, vivid hallucinations, cataplexy-like episodes).",
+  "patient_summary": "DayVigo is a bedtime insomnia med that helps you fall asleep and stay asleep by blocking orexin (the brain’s “stay awake” signal). It can kick in fast, but the tradeoff is next-day drowsiness or fogginess—especially at 10 mg or if you don’t get a full night of sleep. Avoid alcohol and other sedatives. If you ever have sleep-walking/sleep-driving or scary sleep paralysis/hallucinations, stop and call your prescriber.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for insomnia when the core problem is trouble falling asleep, staying asleep, or both. Best outcomes usually happen when it’s paired with CBT-I and sleep scheduling, not used as the only tool.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Food can slow it down. A high-fat/high-calorie meal lowers the peak level, slightly increases overall exposure, and can delay the time to peak by about 2 hours—meaning it may take longer to kick in.",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Rapid. Sleep onset is often within ~15 to 20 minutes in adult data; in adults ≥55 years, onset is commonly reported in the ~23 to 28 minute range.",
-      "peak_plasma": "About 1 to 3 hours (can be later if taken with/after a heavy meal).",
-      "half_life": "About 17 to 19 hours.",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic metabolism mainly via CYP3A4 (and to a lesser extent CYP3A5). Major active circulating metabolite: M10. Also a minor P-glycoprotein substrate. Weak inducer of CYP2B6.",
-      "excretion": "Feces ~57%; urine ~29% (less than 1% as unchanged drug).",
-      "protein_binding": "~94%.",
-      "food_effect": "High-fat/high-calorie meals can delay effect and push the peak later; taking it with or soon after a meal can make sleep onset less predictable."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Rapid. Sleep onset is often within ~15 to 20 minutes in adult data; in adults ≥55 years, onset is commonly reported in the ~23 to 28 minute range."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Drowsiness / Next-day sleepiness",
+          "incidence": "7% to 10%",
+          "notes": "This is the big one. Risk increases with 10 mg, taking it too late, sleeping less than ~7 hours, older age, and combining with other sedatives. If you feel impaired the next day, don’t drive and talk to your prescriber about dose reduction."
+        },
+        {
+          "effect": "Fatigue",
+          "incidence": "7% to 10%",
+          "notes": "Some people describe this as a heavy, low-energy next day rather than pure sleepiness. If it’s persistent, consider stepping down to 5 mg, tightening your sleep schedule, and avoiding late dosing."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "5% to 6%",
+          "notes": "Usually mild. If headaches cluster around nights with short sleep or late dosing, timing is often part of the problem."
+        },
+        {
+          "effect": "Abnormal dreams / Nightmares",
+          "incidence": "≤2%",
+          "notes": "Vivid dreams can be tolerable or annoying depending on the person. If it becomes distressing or triggers anxiety about sleep, that’s a valid reason to adjust or switch."
+        },
+        {
+          "effect": "Sleep paralysis",
+          "incidence": "1% to 2%",
+          "notes": "This can feel intense: awake mind, body won’t move, lasts minutes. If it happens, it often shows up early in treatment (sometimes within the first 1–2 doses). Let your prescriber know—especially if it’s frightening."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Complex sleep behaviors (rare): sleep-walking, sleep-driving, cooking/eating, phone calls, sex while asleep, often with amnesia afterward. Stop the medication and contact your prescriber immediately."
+        },
+        {
+          "risk": "Severe next-day impairment: dangerous driving impairment has been reported in some patients, particularly with 10 mg. Do not drive until you know your response."
+        },
+        {
+          "risk": "Narcolepsy-like effects (rare): hypnagogic/hypnopompic hallucinations, cataplexy-like episodes. Stop and call your prescriber if these occur."
+        },
+        {
+          "risk": "Worsening depression, suicidal thinking, or intentional overdose risk in vulnerable patients: use the smallest effective dose and close monitoring."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Narcolepsy"
+        },
+        {
+          "contraindication": "Hypersensitivity to lemborexant or any component of the formulation (explicitly listed in Canadian labeling)"
+        }
+      ],
+      "precautions": [
+        "Next-day drowsiness and slowed reaction time can happen, especially at 10 mg, in older adults, or when sleep time is shortened",
+        "Nighttime balance impairment has been observed; fall risk matters most in older adults and anyone who gets up at night",
+        "Rare complex sleep behaviors can occur (sleep-walking, sleep-driving, cooking/eating, phone calls, sex while asleep), sometimes with no memory afterward",
+        "Narcolepsy-like symptoms can occur: sleep paralysis, vivid hypnagogic/hypnopompic hallucinations, and cataplexy-like episodes",
+        "Depression: hypnotics have been associated with worsening mood, suicidal thinking, and intentional overdose risk in vulnerable patients—use the smallest effective dose and prescribe the smallest quantity consistent with good care",
+        "Respiratory disease: use caution in sleep apnea, COPD, or respiratory compromise",
+        "If insomnia doesn’t improve after 7–10 days, don’t just keep escalating—re-evaluate for medical or psychiatric drivers of sleep disturbance"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Increases CNS depression, daytime impairment, postural instability, and memory impairment.",
+          "action": "Avoid alcohol completely while taking DayVigo."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, opioids, sedating antihistamines, sleep meds, muscle relaxants, cannabis)",
+          "mechanism": "Additive sedation and impaired coordination; higher fall risk and higher risk of next-day impairment.",
+          "action": "Avoid combinations when possible. If a combo is medically necessary, use the lowest effective doses and counsel hard on safety (no driving, fall precautions)."
+        },
+        {
+          "interactant": "Strong or moderate CYP3A4 inhibitors (examples: azole antifungals, macrolide antibiotics, certain antivirals)",
+          "mechanism": "Higher lemborexant exposure and increased sedation/impairment risk.",
+          "action": "Dose adjustment or avoidance may be needed. If you’re on interacting meds, treat DayVigo dosing as a prescriber-level decision, not a DIY adjustment."
+        },
+        {
+          "interactant": "CYP3A4 inducers (examples: rifampin, carbamazepine, phenytoin, St. John’s Wort)",
+          "mechanism": "Lower lemborexant levels and reduced effectiveness; more insomnia breakthrough.",
+          "action": "Avoid if possible. If the inducer is necessary, consider a different insomnia strategy."
+        },
+        {
+          "interactant": "Food (high-fat/high-calorie meal)",
+          "mechanism": "Delayed onset and later peak effect; the timing becomes less predictable.",
+          "action": "If you need it to work quickly, don’t take it with or right after a heavy meal."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Next-day impairment: morning sleepiness, slowed reaction time, cognitive fog, driving impairment (especially with 10 mg or short sleep windows)."
+        },
+        {
+          "parameter": "Falls and balance: night-time unsteadiness, particularly in older adults or anyone who gets up at night."
+        },
+        {
+          "parameter": "Mood changes: worsening depression, suicidal thoughts, irritability, emotional flattening—especially in patients with baseline depression."
+        },
+        {
+          "parameter": "Complex sleep behaviors: any sleep-walking, sleep-driving, cooking/eating while asleep, phone calls, sex while asleep, or amnesia for events."
+        },
+        {
+          "parameter": "Narcolepsy-like symptoms: sleep paralysis, hallucinations around sleep, cataplexy-like episodes."
+        },
+        {
+          "parameter": "Sedative stacking: review alcohol use and other CNS depressants at every visit."
+        },
+        {
+          "parameter": "Hepatic and renal function: baseline and as clinically indicated, especially in known impairment or when sedation is unexpectedly strong."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Lemborexant crosses the placenta and outcome data in pregnancy are limited. If exposure occurs, consider enrolling in the National Pregnancy Registry for Psychiatric Medications (1-866-961-2388; womensmentalhealth.org/research/pregnancyregistry). Use the smallest effective dose and avoid poly-sedation whenever possible.",
+        "lactation": "Lemborexant is present in breast milk. Case reports and small studies estimate a relative infant dose (RID) around ~1% to ~2% of the weight-adjusted maternal dose in available data, which is generally below the commonly used 10% threshold. Even with a low RID, practical risk still exists because this medication can reduce alertness. If used during breastfeeding, monitor the infant for excessive sedation and feeding issues, and discuss timing/avoidance strategies with a clinician.",
+        "pediatric": "Not applicable for this medication. Safety and efficacy in pediatric patients are not established.",
+        "geriatric": "Use adult dosing but lean conservative. Doses above 5 mg increase the risk of next-day sedation, night-time balance impairment, and falls—especially if the patient gets up to use the bathroom at night or is on other sedatives.",
+        "renal_impairment": "No formal dose adjustment is required, but patients with severe renal impairment may have increased exposure and a higher chance of somnolence—so the safety margin is tighter.",
+        "hepatic_impairment": "Moderate hepatic impairment: do not exceed 5 mg/day. Severe hepatic impairment: not recommended because it has not been studied and exposure may be higher."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2019
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Food can slow it down. A high-fat/high-calorie meal lowers the peak level, slightly increases overall exposure, and can delay the time to peak by about 2 hours—meaning it may take longer to kick in.",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "About 1 to 3 hours (can be later if taken with/after a heavy meal).",
+          "half_life": "About 17 to 19 hours.",
+          "metabolism": "Hepatic metabolism mainly via CYP3A4 (and to a lesser extent CYP3A5). Major active circulating metabolite: M10. Also a minor P-glycoprotein substrate. Weak inducer of CYP2B6.",
+          "excretion": "Feces ~57%; urine ~29% (less than 1% as unchanged drug).",
+          "protein_binding": "~94%.",
+          "food_effect": "High-fat/high-calorie meals can delay effect and push the peak later; taking it with or soon after a meal can make sleep onset less predictable."
+        },
+        "dosing": {
+          "titration": "DayVigo is a bedtime-only medication. The goal is the lowest dose that gets you to sleep without wrecking the next day. Most adults start at 5 mg at bedtime when needed, with at least 7 hours before waking. If 5 mg isn’t enough and you tolerate it well, some people go to 10 mg. Max is 10 mg/day."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "DayVigo is not a benzodiazepine, and it is not typically tapered the way benzos are. Many people can stop without a formal taper. That said, if you’ve been taking it nightly for a long time, some people notice rebound insomnia (your sleep feels worse for a few nights) just because your brain got used to a medication-assisted bedtime. If you want a smoother landing, you can step down the dose or shift to intermittent use while you strengthen CBT-I skills and sleep scheduling."
+        }
+      }
     }
   },
   "sections": [
@@ -84,7 +211,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is the vibe people describe most often. It’s not everyone, but it’s common enough that you should recognize it quickly:",
       "items": [
         {
           "category": "Sleep turns on faster",
@@ -120,7 +246,8 @@
           ],
           "note": "Sleep paralysis, hypnagogic/hypnopompic hallucinations, and cataplexy-like episodes have been reported. If it’s scary or unsafe, stop and call your prescriber."
         }
-      ]
+      ],
+      "intro": "This is the vibe people describe most often. It’s not everyone, but it’s common enough that you should recognize it quickly:"
     },
     {
       "type": "onset_duration",
@@ -137,10 +264,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "DayVigo targets insomnia from a different angle than older hypnotics: it reduces the brain’s “stay awake” drive instead of directly amplifying sedation pathways. In practice, people often notice easier sleep onset and fewer/shorter awakenings—especially when the medication is taken correctly (bedtime only, no alcohol, and a full night available).",
       "metric": "Sleep onset + sleep maintenance",
       "value": "Improves both (dose- and schedule-dependent)",
       "comparison": "Not applicable for this medication.",
-      "text": "DayVigo targets insomnia from a different angle than older hypnotics: it reduces the brain’s “stay awake” drive instead of directly amplifying sedation pathways. In practice, people often notice easier sleep onset and fewer/shorter awakenings—especially when the medication is taken correctly (bedtime only, no alcohol, and a full night available).",
       "clinical_details": "Clinical data referenced in your notes describe rapid sleep onset in many users and sustained benefit over long-term follow-up in at least one 1-year study. The clinical takeaway is less about “stronger is better” and more about choosing the lowest effective dose—because next-day impairment and fall risk rise with higher dosing, short sleep windows, and combinations with other sedatives.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -225,7 +352,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "DayVigo is mainly metabolized by CYP3A4, so strong CYP3A4 inhibitors can raise levels and increase sedation and next-day impairment. Alcohol and other sedatives are the most dangerous combo clinically.",
       "items": [
         {
           "with": "Alcohol",
@@ -252,7 +378,8 @@
           "risk": "Delayed onset and later peak effect; the timing becomes less predictable.",
           "action": "If you need it to work quickly, don’t take it with or right after a heavy meal."
         }
-      ]
+      ],
+      "intro": "DayVigo is mainly metabolized by CYP3A4, so strong CYP3A4 inhibitors can raise levels and increase sedation and next-day impairment. Alcohol and other sedatives are the most dangerous combo clinically."
     },
     {
       "type": "tapering",
@@ -324,21 +451,6 @@
       "text": "DayVigo fits best as a targeted insomnia medication when CBT-I isn’t available, hasn’t worked well enough, or you need additional support for a period of time. Clinically, the main skill is dosing discipline: bedtime only, full night available, avoid sedative stacking. Compared with older hypnotics, orexin antagonists are conceptually more about reducing wakefulness than forcing sedation—but the real-world safety issues still revolve around next-day impairment, falls, and rare complex sleep behaviors. If sleep isn’t improving after about a week of appropriate use, it’s a sign to re-check the diagnosis (depression, anxiety, PTSD nightmares, sleep apnea, restless legs, circadian misalignment, substance use) rather than simply increasing the dose or adding more sedatives."
     }
   ],
-  "seo": {
-    "title": "Lemborexant (DayVigo): Uses, Dosage, Side Effects & Next-Day Drowsiness",
-    "description": "DayVigo (lemborexant) for insomnia: bedtime dosing (5–10 mg), how fast it works, common side effects (drowsiness, fatigue, vivid dreams), rare complex sleep behaviors, interactions (alcohol/sedatives), and special considerations for pregnancy and breastfeeding.",
-    "canonical": "[https://www.heypsych.com/treatments/lemborexant-dayvigo](https://www.heypsych.com/treatments/lemborexant-dayvigo)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is DayVigo used for?",
@@ -392,5 +504,20 @@
       "q": "Is DayVigo a controlled substance?",
       "a": "Yes. Your notes list lemborexant (DayVigo) as a Schedule IV controlled substance."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Lemborexant (DayVigo): Uses, Dosage, Side Effects & Next-Day Drowsiness",
+    "description": "DayVigo (lemborexant) for insomnia: bedtime dosing (5–10 mg), how fast it works, common side effects (drowsiness, fatigue, vivid dreams), rare complex sleep behaviors, interactions (alcohol/sedatives), and special considerations for pregnancy and breastfeeding.",
+    "canonical": "[https://www.heypsych.com/treatments/lemborexant-dayvigo](https://www.heypsych.com/treatments/lemborexant-dayvigo)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

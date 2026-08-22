@@ -1,83 +1,242 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "dextroamphetamine-amphetamine-adderall",
-  "type": "medication",
-  "name": "Dextroamphetamine/Amphetamine (Adderall, Adderall XR, Mydayis)",
-  "summary": "Prescription stimulant used for ADHD (and IR Adderall for narcolepsy). Helps with focus and impulse control, but can worsen anxiety, appetite, and sleep—plus it carries real misuse/addiction and cardiovascular risks.",
-  "description": "Adderall-type stimulants can seriously improve attention, follow-through, and daytime functioning. They can also crank up insomnia, appetite loss, jitteriness, and irritability—especially if the dose is too high or timing is off. This medication is a Schedule II controlled substance for a reason: misuse can lead to overdose and death. If you have a history of substance use, bipolar disorder, psychosis, tics, or heart disease, your prescriber should treat that as a big deal and plan monitoring accordingly.",
-  "patient_summary": "Adderall-type stimulants can seriously improve attention, follow-through, and daytime functioning. They can also crank up insomnia, appetite loss, jitteriness, and irritability—especially if the dose is too high or timing is off. This medication is a Schedule II controlled substance for a reason: misuse can lead to overdose and death. If you have a history of substance use, bipolar disorder, psychosis, tics, or heart disease, your prescriber should treat that as a big deal and plan monitoring accordingly.",
-  "category": "medications/adhd",
-  "metadata": {
-    "drug_classes": [
-      "Central Nervous System Stimulant",
-      "Amphetamine (Mixed Salts)",
-      "Dopamine/Norepinephrine Enhancer"
-    ],
+  "identity": {
+    "slug": "dextroamphetamine-amphetamine-adderall",
+    "name": "Dextroamphetamine/Amphetamine (Adderall, Adderall XR, Mydayis)",
+    "generic_name": "dextroamphetamine/amphetamine",
     "brand_names": [
       "Adderall",
       "Adderall XR",
       "Mydayis"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule II (DEA)",
-    "generic_available": true,
-    "fda_approval_year": 1960,
-    "pharmacologic_category": "CNS Stimulant (Amphetamine Mixed Salts; Immediate- and Extended-Release Formulations)",
-    "published_date": "2026-02-08T00:00:00Z",
-    "last_updated": "2026-01-26T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-26T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)",
-      "Narcolepsy (Immediate-Release Only)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "Stimulants are a first-line option for ADHD. The goal is not to make you feel 'wired'—it’s to improve attention, task initiation, impulse control, and follow-through with the lowest effective dose."
-      },
-      {
-        "slug": "narcolepsy",
-        "relationship": "primary_treatment",
-        "context": "Immediate-release mixed amphetamine salts are FDA-approved for narcolepsy-related daytime sleepiness. Extended-release use for narcolepsy is sometimes used off-label after a stable effective dose is found."
-      },
-      {
-        "slug": "cocaine-use-disorder",
-        "relationship": "off_label",
-        "context": "Some clinicians use extended-release amphetamine as an alternative agent in cocaine use disorder (sometimes alongside topiramate). This is off-label and requires careful risk-benefit thinking, especially around misuse risk."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to amphetamine or any component of the formulation (eg, angioedema, anaphylaxis)",
-      "Use during or within 14 days of monoamine oxidase inhibitors (MAOIs), including linezolid or IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful ADHD symptom improvement",
-      "percentage_value": "Most patients respond",
-      "comparison_data": "Stimulants consistently outperform placebo in controlled trials",
-      "patient_text": "When stimulants work, the change is usually obvious: less mental static, better follow-through, fewer impulsive detours, and fewer 'I know what to do, I just can’t start' moments. If you feel only side effects with no functional benefit, that’s a dosing/timing/problem-to-solve—not a reason to just push higher.",
-      "citation_tag": "Cochrane Review (Amphetamines for ADHD)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd",
+    "drug_classes": [
+      "Central Nervous System Stimulant",
+      "Amphetamine (Mixed Salts)",
+      "Dopamine/Norepinephrine Enhancer"
+    ]
+  },
+  "summary": "Prescription stimulant used for ADHD (and IR Adderall for narcolepsy). Helps with focus and impulse control, but can worsen anxiety, appetite, and sleep—plus it carries real misuse/addiction and cardiovascular risks.",
+  "description": "Adderall-type stimulants can seriously improve attention, follow-through, and daytime functioning. They can also crank up insomnia, appetite loss, jitteriness, and irritability—especially if the dose is too high or timing is off. This medication is a Schedule II controlled substance for a reason: misuse can lead to overdose and death. If you have a history of substance use, bipolar disorder, psychosis, tics, or heart disease, your prescriber should treat that as a big deal and plan monitoring accordingly.",
+  "patient_summary": "Adderall-type stimulants can seriously improve attention, follow-through, and daytime functioning. They can also crank up insomnia, appetite loss, jitteriness, and irritability—especially if the dose is too high or timing is off. This medication is a Schedule II controlled substance for a reason: misuse can lead to overdose and death. If you have a history of substance use, bipolar disorder, psychosis, tics, or heart disease, your prescriber should treat that as a big deal and plan monitoring accordingly.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "Stimulants are a first-line option for ADHD. The goal is not to make you feel 'wired'—it’s to improve attention, task initiation, impulse control, and follow-through with the lowest effective dose.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "narcolepsy",
+          "condition_name": "Narcolepsy",
+          "relationship": "primary_indication",
+          "context": "Immediate-release mixed amphetamine salts are FDA-approved for narcolepsy-related daytime sleepiness. Extended-release use for narcolepsy is sometimes used off-label after a stable effective dose is found.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "cocaine-use-disorder",
+          "condition_name": "Cocaine Use Disorder",
+          "relationship": "off_label",
+          "context": "Some clinicians use extended-release amphetamine as an alternative agent in cocaine use disorder (sometimes alongside topiramate). This is off-label and requires careful risk-benefit thinking, especially around misuse risk."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with formulation-dependent release patterns",
-      "onset": "Often felt the same day; timing depends on IR vs ER",
-      "time_to_peak": "Immediate release ~3 hours; Adderall XR ~7 hours; Mydayis ~8 hours (and can be later in some people)",
-      "half_life": "Adults: d-amphetamine ~10 hours; l-amphetamine ~13 hours (varies by age and individual metabolism)",
-      "duration_IR": "4-6 hours",
-      "duration_adderall_xr": "8-12 hours",
-      "duration_mydayis": "Up to ~16 hours",
-      "metabolism": "Hepatic oxidation; CYP2D6 contributes to metabolite formation",
-      "excretion": "Urine; elimination strongly affected by urinary pH (acidic urine clears faster; alkaline urine clears slower)",
-      "food_effect": "Food may delay peak levels for some extended-release products; consistency matters for predictable timing"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Often felt the same day; timing depends on IR vs ER"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Appetite suppression / Weight loss",
+          "incidence": "Common (varies by age and dose)",
+          "notes": "This is the side effect that sneaks up on people. If you’re skipping meals, your anxiety, mood, and sleep often get worse. For kids, weight and growth need to be treated as core safety outcomes—not an afterthought."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "Common (timing-sensitive)",
+          "notes": "If you’re taking it late or the duration is longer than your day, sleep gets wrecked. Once sleep goes, everything else follows (irritability, anxiety, focus). Timing and formulation matter a lot here."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common",
+          "notes": "Often related to dehydration, not eating, or the medication wearing off. Hydration + food + smoother coverage can help."
+        },
+        {
+          "effect": "Anxiety / Agitation / Irritability",
+          "incidence": "1% to 10% (varies)",
+          "notes": "This usually means the dose is too high, the timing is off, caffeine is stacking, sleep is insufficient, or there’s untreated anxiety underneath. The fix is adjustment—not just pushing through."
+        },
+        {
+          "effect": "Dry mouth",
+          "incidence": "Common (especially in adults)",
+          "notes": "Annoying but manageable: water, sugar-free gum, and dental care matter more than people think."
+        },
+        {
+          "effect": "Palpitations / Increased heart rate",
+          "incidence": "1% to 10% (varies)",
+          "notes": "Stimulants can raise heart rate and blood pressure. If it feels intense, scary, or new—don’t ignore it. Dose and medical screening matter."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Cardiovascular events: acute MI, stroke, sudden cardiac death (rare but high-stakes), especially with underlying heart disease or misuse/overdose"
+        },
+        {
+          "risk": "Psychosis or mania: hallucinations, paranoia, delusions, manic escalation (can occur at therapeutic doses)"
+        },
+        {
+          "risk": "Serotonin syndrome (when combined with serotonergic agents): agitation, sweating, tremor, diarrhea, fever, confusion—medical emergency"
+        },
+        {
+          "risk": "Peripheral vasculopathy (Raynaud phenomenon): painful, color-changing digits; rare cases with ulceration/skin breakdown"
+        },
+        {
+          "risk": "Severe weight loss or growth suppression in pediatrics (risk is higher for extended-release products in children <6)"
+        },
+        {
+          "risk": "Rhabdomyolysis (rare): muscle pain/weakness, dark urine—medical emergency"
+        },
+        {
+          "risk": "Priapism (rare): prolonged painful erection—medical emergency"
+        }
+      ],
+      "black_box_warning": "Dextroamphetamine/amphetamine has a high potential for abuse and misuse, which can lead to substance use disorder, including addiction. Misuse and abuse of CNS stimulants can result in overdose and death, and risk increases with higher doses or unapproved methods of administration (like snorting or injection). Prescribers should assess risk before starting and monitor throughout treatment.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to amphetamine or any component of the formulation (eg, angioedema, anaphylaxis)"
+        },
+        {
+          "contraindication": "Use during or within 14 days of monoamine oxidase inhibitors (MAOIs), including linezolid or IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Kids <6 years: Extended-release stimulants have higher plasma exposure and higher side effect rates than in older kids, including clinically significant weight loss. If a child <6 is on an extended-release stimulant and losing weight or having other adverse reactions, clinicians should consider stopping and/or switching to an alternative (like an immediate-release option).",
+        "Cardiovascular risk: Stimulants can raise heart rate and blood pressure. Serious events (MI, stroke, sudden cardiac death) have been reported, especially in people with underlying heart disease or in overdose/misuse.",
+        "Psychiatric risk: New or worsening psychosis or mania can occur—even in people without a prior history. Aggression/hostility can also show up.",
+        "Serotonin syndrome: Risk increases when combined with serotonergic meds or CYP2D6 inhibitors that raise amphetamine exposure.",
+        "Peripheral vasculopathy: Raynaud-like symptoms can happen (cold, painful, color-changing fingers/toes). Severe cases with ulceration have been reported.",
+        "Growth and weight: Appetite suppression and weight loss can be significant; growth slowing has been reported with long-term pediatric treatment.",
+        "Seizure considerations: Data are mixed, but if seizures occur, stimulants are typically stopped and reassessed."
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (including linezolid or IV methylene blue)",
+          "mechanism": "Contraindicated. Risk of dangerously high blood pressure, hyperthermia, and severe reactions.",
+          "action": "Do not use within 14 days of MAOI therapy."
+        },
+        {
+          "interactant": "SSRIs/SNRIs/other serotonergic meds (eg, duloxetine, venlafaxine, sertraline, fluoxetine; also triptans, tramadol, some migraine meds)",
+          "mechanism": "Higher serotonin syndrome risk, especially with higher doses or multiple serotonergic agents.",
+          "action": "Use with caution. Educate on early warning signs (agitation, sweating, tremor, diarrhea, fever) and seek urgent care if they appear."
+        },
+        {
+          "interactant": "CYP2D6 inhibitors (eg, fluoxetine, paroxetine, bupropion; some antipsychotics)",
+          "mechanism": "Can raise amphetamine exposure in some patients, increasing side effects (anxiety, insomnia, HR/BP effects).",
+          "action": "Consider lower starting doses and slower titration; monitor side effects closely."
+        },
+        {
+          "interactant": "Acidic foods/juices or vitamin C",
+          "mechanism": "May reduce serum levels and shorten effect in some people.",
+          "action": "If you notice the medication feels weaker when taken with acidic drinks, separate timing and monitor response."
+        },
+        {
+          "interactant": "Urinary alkalinizing agents (eg, sodium bicarbonate) or alkalinizing diets",
+          "mechanism": "Can slow elimination and increase exposure, potentially increasing side effects.",
+          "action": "Avoid manipulating urinary pH to change stimulant effects. Tell your prescriber about supplements."
+        },
+        {
+          "interactant": "Other stimulants (including high caffeine, nicotine, decongestants like pseudoephedrine)",
+          "mechanism": "Stacks stimulation: more anxiety, insomnia, palpitations, blood pressure rise.",
+          "action": "Limit caffeine and avoid combining with other stimulants unless your clinician explicitly plans for it."
+        },
+        {
+          "interactant": "Antihypertensives",
+          "mechanism": "Stimulants can counteract blood pressure-lowering effects.",
+          "action": "Monitor BP/HR; adjust treatment plan if BP rises."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Baseline cardiac assessment: personal and family history of sudden death or ventricular arrhythmia; ECG if indicated by history/exam"
+        },
+        {
+          "parameter": "Blood pressure and heart rate: baseline, after dose changes, and periodically during treatment"
+        },
+        {
+          "parameter": "Weight and appetite: baseline and routinely (adults); height/weight growth tracking in children and adolescents"
+        },
+        {
+          "parameter": "Sleep: onset insomnia, shortened sleep duration, delayed bedtime, and rebound sleepiness; adjust timing/formulation accordingly"
+        },
+        {
+          "parameter": "Mood and behavior: irritability, anxiety, emotional lability; screen for depression and suicidality when clinically indicated"
+        },
+        {
+          "parameter": "Psychosis/mania monitoring: new hallucinations, paranoia, delusions, or manic escalation; screen for bipolar risk before starting"
+        },
+        {
+          "parameter": "Substance use risk: assess before prescribing and monitor throughout (early refills, dose escalation, lost prescriptions, multiple prescribers, non-oral routes)"
+        },
+        {
+          "parameter": "Peripheral vasculopathy: cold/painful/color-changing digits; evaluate persistent symptoms and reduce dose or discontinue if needed"
+        },
+        {
+          "parameter": "Tics/Tourette symptoms: assess history before starting; monitor for tic worsening during treatment"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human outcome data exist, but there are still meaningful concerns: stimulants can cause vasoconstriction and may reduce placental perfusion. Use during pregnancy may be associated with risks like low birth weight or premature birth, and newborns may show withdrawal-like symptoms (agitation, irritability, feeding issues, excessive drowsiness). Nonpharmacologic options are preferred for mild-to-moderate ADHD during pregnancy. If medication is used, shared decision-making matters: lowest effective dose, simplest regimen, and careful monitoring.",
+        "lactation": "Amphetamine and dextroamphetamine pass into breast milk. Reported relative infant dose ranges are variable, and manufacturers generally do not recommend breastfeeding due to potential infant risks (blood pressure/heart rate effects, irritability, poor feeding, sleep disruption, growth concerns). If treatment is considered essential, risk-benefit decisions should be individualized with infant monitoring for feeding difficulties, irritability, and insomnia.",
+        "pediatric": "Extended-release stimulants: Not recommended for children younger than 6 years because younger kids can have higher plasma exposure and higher rates of adverse reactions, including clinically significant weight loss. If a child <6 is experiencing weight loss or other adverse effects on an extended-release stimulant, clinicians should consider stopping and/or switching to an alternative (like an immediate-release formulation). For all pediatric patients, growth (height/weight), appetite, sleep, and behavior need routine tracking.",
+        "geriatric": "Refer to adult dosing but start low and go slow. Older adults may be more sensitive to blood pressure/heart rate effects, insomnia, and appetite/weight changes. Cardiac screening and BP/HR monitoring become especially important.",
+        "renal_impairment": "Use caution. For certain extended-release products, severe renal impairment requires lower dosing limits and end-stage renal disease may make use not recommended.",
+        "hepatic_impairment": "No formal manufacturer dose adjustments are provided, but use caution; reduced elimination can increase exposure and side effects."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1960
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with formulation-dependent release patterns",
+          "half_life": "Adults: d-amphetamine ~10 hours; l-amphetamine ~13 hours (varies by age and individual metabolism)",
+          "metabolism": "Hepatic oxidation; CYP2D6 contributes to metabolite formation",
+          "excretion": "Urine; elimination strongly affected by urinary pH (acidic urine clears faster; alkaline urine clears slower)",
+          "food_effect": "Food may delay peak levels for some extended-release products; consistency matters for predictable timing"
+        },
+        "dosing": {
+          "titration": "Dosing is individualized. Most titration is done weekly, using the lowest dose that improves function without turning you into a sleepless, snack-avoiding stress machine. Extended-release products are not interchangeable mg-for-mg—product-specific dosing matters."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stimulants don’t have the same seizure-risk withdrawal pattern as benzodiazepines, but stopping abruptly—especially after high doses or long-term daily use—can cause a crash: intense fatigue, low mood, irritability, and sleep changes. If you’re discontinuing, a planned step-down is often smoother."
+        }
+      }
     }
   },
   "sections": [
@@ -96,7 +255,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Here’s the real-world vibe people report. Not everyone feels all of this, but the patterns are common:",
       "items": [
         {
           "category": "Focus turns on (when it’s the right dose)",
@@ -141,7 +299,8 @@
           ],
           "note": "Crashes can improve with dose adjustments, smoother extended-release coverage, food/hydration, or a carefully planned schedule."
         }
-      ]
+      ],
+      "intro": "Here’s the real-world vibe people report. Not everyone feels all of this, but the patterns are common:"
     },
     {
       "type": "onset_duration",
@@ -158,10 +317,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Stimulants are one of the most consistently effective medication classes in psychiatry for ADHD. The point isn’t just symptom scores—it’s whether you can start tasks, finish tasks, regulate attention, and show up more consistently in your real life. If you’re only getting side effects, your plan needs a rethink (dose, timing, formulation, sleep, anxiety, or whether a different medication fits better).",
       "metric": "ADHD Symptom Improvement (Functional Outcomes)",
       "value": "Often strong",
       "comparison": "Placebo (significantly lower)",
-      "text": "Stimulants are one of the most consistently effective medication classes in psychiatry for ADHD. The point isn’t just symptom scores—it’s whether you can start tasks, finish tasks, regulate attention, and show up more consistently in your real life. If you’re only getting side effects, your plan needs a rethink (dose, timing, formulation, sleep, anxiety, or whether a different medication fits better).",
       "clinical_details": "Across controlled trials and meta-analyses, amphetamine formulations show reliable benefits for ADHD symptoms. Benefits are typically noticeable quickly, while side effects (sleep/appetite/irritability) are often dose- and timing-dependent and can be the limiting factor.",
       "citation": {
         "authors": "Castells X, Blanco-Silvente L, Cunill R",
@@ -256,7 +415,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Stimulants interact in two main ways: (1) they can dangerously stack stimulation or serotonin effects, and (2) they can be pushed up or down depending on metabolism and urinary pH.",
       "items": [
         {
           "with": "MAOIs (including linezolid or IV methylene blue)",
@@ -293,7 +451,8 @@
           "risk": "Stimulants can counteract blood pressure-lowering effects.",
           "action": "Monitor BP/HR; adjust treatment plan if BP rises."
         }
-      ]
+      ],
+      "intro": "Stimulants interact in two main ways: (1) they can dangerously stack stimulation or serotonin effects, and (2) they can be pushed up or down depending on metabolism and urinary pH."
     },
     {
       "type": "tapering",
@@ -380,21 +539,6 @@
       "text": "For ADHD, stimulants are commonly first-line because the benefits can be fast and meaningful. The trade-off is tolerability and risk management: appetite, sleep, anxiety/irritability, cardiovascular monitoring, and misuse risk. If you have significant anxiety, bipolar disorder risk, psychosis history, active substance use, or cardiac disease, the decision is more nuanced and sometimes an alternative (non-stimulant ADHD meds and behavioral strategies) fits better."
     }
   ],
-  "seo": {
-    "title": "Dextroamphetamine/Amphetamine (Adderall): Uses, Dosage, Side Effects & Safety",
-    "description": "Adderall, Adderall XR, and Mydayis for ADHD (and IR for narcolepsy): dosing basics, how long it lasts, common side effects (sleep/appetite/anxiety), boxed warning on misuse/addiction, psychosis/mania risk, and key interactions.",
-    "canonical": "[https://www.heypsych.com/treatments/dextroamphetamine-amphetamine-adderall](https://www.heypsych.com/treatments/dextroamphetamine-amphetamine-adderall)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Adderall used for?",
@@ -440,5 +584,20 @@
       "q": "Why does it feel like it wears off and I crash?",
       "a": "Wearing off can bring rebound ADHD symptoms, fatigue, headache, or mood drop. This can improve with smoother extended-release coverage, better meal timing, hydration, sleep stabilization, or a medication schedule adjustment. If you’re crashing hard every day, that’s a solvable problem—not something you should just accept."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Dextroamphetamine/Amphetamine (Adderall): Uses, Dosage, Side Effects & Safety",
+    "description": "Adderall, Adderall XR, and Mydayis for ADHD (and IR for narcolepsy): dosing basics, how long it lasts, common side effects (sleep/appetite/anxiety), boxed warning on misuse/addiction, psychosis/mania risk, and key interactions.",
+    "canonical": "[https://www.heypsych.com/treatments/dextroamphetamine-amphetamine-adderall](https://www.heypsych.com/treatments/dextroamphetamine-amphetamine-adderall)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,75 +1,98 @@
 // src/app/sitemap-tools.xml/route.ts
 // Sitemap for /tools/ section
 
+/**
+ * SITEMAP FRESHNESS POLICY:
+ * Hub/landing pages do NOT get lastmod timestamps - these are navigation pages.
+ * Tool detail pages use actual governance.last_reviewed dates when available.
+ * Fabricating "today" dates destroys trust signals.
+ *
+ * SITEMAP ELIGIBILITY:
+ * Uses central SEO control plane for inclusion decisions.
+ * Draft, archived, retired, thin, or ineligible tools are excluded.
+ *
+ * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
+ */
+
 import { NextResponse } from "next/server";
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import { ToolService } from "@/lib/tools/tool-service";
-
-const BASE_URL = "https://heypsych.com";
+import { filterToolsForSitemap } from "@/lib/tools/tools-seo";
+import { siteConfig } from "@/lib/config/site";
 
 export async function GET() {
   try {
     const urls: SitemapURL[] = [];
 
-    // 1. Tools directory landing
+    // 1. Tools directory landing (no lastmod - static hub page)
     urls.push({
-      loc: `${BASE_URL}/tools/`,
-      lastmod: new Date().toISOString().split("T")[0],
+      loc: `${siteConfig.url}/tools/`,
       changefreq: "weekly",
       priority: 0.9,
     });
 
-    // 2. All hub pages
+    // 2. Audience landing pages
+    urls.push({
+      loc: `${siteConfig.url}/tools/for-patients/`,
+      changefreq: "weekly",
+      priority: 0.85,
+    });
+    urls.push({
+      loc: `${siteConfig.url}/tools/for-clinicians/`,
+      changefreq: "weekly",
+      priority: 0.85,
+    });
+
+    // 3. All patient hub pages (no lastmod - static hub pages)
     const hubs = TaxonomyService.getAllHubs();
     for (const hub of hubs) {
       urls.push({
-        loc: `${BASE_URL}${hub.url}`,
-        lastmod: new Date().toISOString().split("T")[0],
+        loc: `${siteConfig.url}${hub.url}`,
         changefreq: "weekly",
         priority: 0.8,
       });
     }
 
-    // 3. All sub-hub pages
+    // 4. All sub-hub pages (no lastmod - static hub pages)
     const subHubs = TaxonomyService.getAllSubHubs();
     for (const subHub of subHubs) {
       urls.push({
-        loc: `${BASE_URL}${subHub.url}`,
-        lastmod: new Date().toISOString().split("T")[0],
+        loc: `${siteConfig.url}${subHub.url}`,
         changefreq: "weekly",
         priority: 0.7,
       });
     }
 
-    // 4. Clinician landing page
-    const clinicianLanding = TaxonomyService.getClinicianLanding();
-    urls.push({
-      loc: `${BASE_URL}${clinicianLanding.url}`,
-      lastmod: new Date().toISOString().split("T")[0],
-      changefreq: "weekly",
-      priority: 0.8,
-    });
-
-    // 5. All clinician hub pages
+    // 5. All clinician hub pages (no lastmod - static hub pages)
     const clinicianHubs = TaxonomyService.getAllClinicianHubs();
     for (const clinicianHub of clinicianHubs) {
       urls.push({
-        loc: `${BASE_URL}${clinicianHub.url}`,
-        lastmod: new Date().toISOString().split("T")[0],
+        loc: `${siteConfig.url}${clinicianHub.url}`,
         changefreq: "weekly",
         priority: 0.7,
       });
     }
 
-    // 6. All tool pages
-    const tools = await ToolService.getAll();
-    for (const tool of tools) {
-      urls.push({
-        loc: `${BASE_URL}/tools/${tool.slug}/`,
-        lastmod: tool.governance.last_reviewed || new Date().toISOString().split("T")[0],
+    // 6. All eligible tool pages (filtered by SEO control plane)
+    const allTools = await ToolService.getAll();
+    const eligibleTools = filterToolsForSitemap(allTools);
+
+    for (const { tool, decision } of eligibleTools) {
+      // Only include tools that pass sitemap eligibility
+      if (!decision.sitemapEligible) continue;
+
+      const entry: SitemapURL = {
+        loc: `${siteConfig.url}/tools/${tool.slug}/`,
         changefreq: "monthly",
         priority: 0.6,
-      });
+      };
+
+      // Only add lastmod if we have actual review date (not fake "today")
+      if (tool.governance?.last_reviewed) {
+        entry.lastmod = tool.governance.last_reviewed;
+      }
+
+      urls.push(entry);
     }
 
     // Generate XML
@@ -89,21 +112,27 @@ export async function GET() {
 
 interface SitemapURL {
   loc: string;
-  lastmod: string;
+  lastmod?: string; // Optional - only include when we have real data
   changefreq: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority: number;
 }
 
 function generateSitemapXML(urls: SitemapURL[]): string {
   const urlElements = urls
-    .map(
-      (url) => `  <url>
-    <loc>${escapeXml(url.loc)}</loc>
-    <lastmod>${url.lastmod}</lastmod>
+    .map((url) => {
+      let entry = `  <url>
+    <loc>${escapeXml(url.loc)}</loc>`;
+      // Only include lastmod if present
+      if (url.lastmod) {
+        entry += `
+    <lastmod>${url.lastmod}</lastmod>`;
+      }
+      entry += `
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-  </url>`
-    )
+  </url>`;
+      return entry;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>

@@ -1,87 +1,261 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "esketamine-spravato",
-  "type": "medication",
-  "name": "Esketamine (Spravato)",
-  "summary": "Clinic-only intranasal NMDA antagonist for treatment-resistant depression and major depression with suicidal thoughts or behavior. Works fast but requires close monitoring and has abuse, blood pressure, and dissociation risks.",
-  "description": "Esketamine (Spravato) is a fast-acting intranasal antidepressant used in adults with treatment-resistant depression or major depression with suicidal thoughts or behavior. It’s given only in a certified clinic under direct supervision, with at least 2 hours of monitoring after each treatment. Common effects include feeling woozy, disconnected, or “out of body,” along with blood pressure increases and nausea. There is abuse and misuse risk, so access is tightly controlled through a REMS program.",
-  "patient_summary": "Spravato is a nasal spray version of ketamine used when depression is severe and not responding to typical antidepressants, or when there are suicidal thoughts or behavior. You come to a clinic, use the nasal spray under supervision, then stay for at least 2 hours while staff monitor your blood pressure, breathing, and mental state. Many people feel lighter or less suicidal within hours to days, but also feel spacey, sedated, or disconnected for a bit. It has abuse potential and is tightly controlled—you don’t take it home.",
-  "category": "medications/depressive-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "esketamine-spravato",
+    "name": "Esketamine (Spravato)",
+    "generic_name": "esketamine",
+    "brand_names": [
+      "Spravato"
+    ],
+    "wikidata_qid": "Q27106044"
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/depressive-disorders",
     "drug_classes": [
       "Antidepressant",
       "N-Methyl-D-Aspartate (NMDA) Receptor Antagonist",
       "Glutamatergic Modulator"
-    ],
-    "brand_names": [
-      "Spravato"
-    ],
-    "administration_routes": [
-      "Intranasal"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Schedule III (DEA)",
-    "generic_available": false,
-    "fda_approval_year": 2019,
-    "pharmacologic_category": "Antidepressant; NMDA Receptor Antagonist",
-    "published_date": "2026-02-10T00:00:00Z",
-    "last_updated": "2026-02-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-02-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    },
-    "wikidata_qid": "Q27106044"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Treatment-Resistant Depression (TRD)",
-      "Major Depressive Disorder (MDD) with Suicidal Ideation or Behavior"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "treatment-resistant-depression",
-        "relationship": "primary_treatment",
-        "context": "FDA-approved for adults with treatment-resistant depression. Typically used after failure of at least 2 adequate antidepressant trials, as monotherapy or in combination with an oral antidepressant."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Approved to rapidly reduce depressive symptoms in adults with major depressive disorder who have suicidal thoughts or behavior, always in combination with an oral antidepressant."
-      },
-      {
-        "slug": "suicidal-ideation",
-        "relationship": "symptom_target",
-        "context": "Improves depressive symptoms quickly in people with suicidal ideation, but has not been proven to prevent suicide or reduce suicidal behavior long-term—ongoing safety planning and follow-up are still required."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to esketamine, ketamine, or any component of the formulation",
-      "Aneurysmal vascular disease (thoracic or abdominal aorta, intracranial, or peripheral arterial vessels)",
-      "Arteriovenous malformation",
-      "History of intracerebral hemorrhage",
-      "Severe hepatic impairment (Child-Pugh class C)",
-      "Recent major cardiovascular event (eg, myocardial infarction or stroke) – contraindicated in Canadian labeling"
-    ],
-    "efficacy_response": {
-      "metric": "Clinically meaningful depression response within 4 weeks",
-      "percentage_value": "About 50–70% of patients",
-      "comparison_data": "Across trials, esketamine plus an oral antidepressant showed greater and faster reduction in depressive symptoms versus antidepressant plus placebo nasal spray, with some patients noticing benefit within 24 hours.",
-      "patient_text": "In real-world terms, roughly half or more of people who try Spravato after failing multiple antidepressants see a noticeable drop in depression severity within the first month, often with the first few treatments. It’s not magic and it doesn’t work for everyone, but it can shift things when standard meds have stalled.",
-      "citation_tag": "Esketamine TRD and suicidality registration trials (eg, TRANSFORM and ASPIRE programs)"
+  "summary": "Clinic-only intranasal NMDA antagonist for treatment-resistant depression and major depression with suicidal thoughts or behavior. Works fast but requires close monitoring and has abuse, blood pressure, and dissociation risks.",
+  "description": "Esketamine (Spravato) is a fast-acting intranasal antidepressant used in adults with treatment-resistant depression or major depression with suicidal thoughts or behavior. It’s given only in a certified clinic under direct supervision, with at least 2 hours of monitoring after each treatment. Common effects include feeling woozy, disconnected, or “out of body,” along with blood pressure increases and nausea. There is abuse and misuse risk, so access is tightly controlled through a REMS program.",
+  "patient_summary": "Spravato is a nasal spray version of ketamine used when depression is severe and not responding to typical antidepressants, or when there are suicidal thoughts or behavior. You come to a clinic, use the nasal spray under supervision, then stay for at least 2 hours while staff monitor your blood pressure, breathing, and mental state. Many people feel lighter or less suicidal within hours to days, but also feel spacey, sedated, or disconnected for a bit. It has abuse potential and is tightly controlled—you don’t take it home.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment Resistant Depression",
+          "relationship": "primary_indication",
+          "context": "FDA-approved for adults with treatment-resistant depression. Typically used after failure of at least 2 adequate antidepressant trials, as monotherapy or in combination with an oral antidepressant.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Approved to rapidly reduce depressive symptoms in adults with major depressive disorder who have suicidal thoughts or behavior, always in combination with an oral antidepressant.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "suicidal-ideation",
+          "condition_name": "Suicidal Ideation",
+          "relationship": "secondary_indication",
+          "context": "Improves depressive symptoms quickly in people with suicidal ideation, but has not been proven to prevent suicide or reduce suicidal behavior long-term—ongoing safety planning and follow-up are still required."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid after intranasal administration",
-      "bioavailability": "Approximately 48%",
-      "onset": "20–40 minutes to peak plasma levels",
-      "peak_plasma": "20–40 minutes",
-      "half_life": "Esketamine: 7–12 hours; active metabolite (noresketamine): ~8 hours",
-      "duration_IR": "Acute dissociation and sedation typically resolve within 1–2 hours; blood pressure elevations usually normalize within ~4 hours",
-      "duration_XR": "Not applicable (only intranasal formulation is available)",
-      "metabolism": "Hepatic metabolism primarily via CYP2B6 and CYP3A4, with minor contributions from CYP2C9 and CYP2C19 to active metabolite noresketamine",
-      "excretion": "Urine, with <1% as unchanged drug",
-      "protein_binding": "Approximately 43–45%",
-      "food_effect": "Food delays absorption; patients are advised to avoid food for at least 2 hours and liquids for at least 30 minutes before dosing"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "20–40 minutes to peak plasma levels"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intranasal"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dissociation (depersonalization, derealization, altered perception)",
+          "incidence": "≈28%",
+          "notes": "You may feel like you’re watching yourself from the outside, like time is distorted, or the room feels unreal. This typically starts within 20–40 minutes, peaks during the first hour, and improves by around 1–2 hours. Staff should explain this ahead of time and stay with you if it feels uncomfortable."
+        },
+        {
+          "effect": "Dizziness and Vertigo",
+          "incidence": "≈22%",
+          "notes": "Feeling woozy, off-balance, or like the room is spinning is common. You’ll be monitored in a safe setting and helped when you stand up or walk. This is a big part of why you can’t drive yourself home."
+        },
+        {
+          "effect": "Nausea and Vomiting",
+          "incidence": "Nausea ≈25%; vomiting ≈7%",
+          "notes": "Nausea can feel like mild motion sickness. Avoiding food for 2 hours and liquids for 30 minutes before treatment helps. Let staff know if nausea is an issue—anti-nausea medications can be considered."
+        },
+        {
+          "effect": "Sedation, Lethargy, ‘Intoxicated’ Feeling",
+          "incidence": "Sedated state ≈6%; lethargy ≈7%; intoxicated feeling ≈7%",
+          "notes": "Many people describe this as feeling drunk, drugged, or heavy. Thinking may feel slower, and tasks take more effort. You’ll need to rest in the clinic and then take it easy the rest of the day."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "≈19%",
+          "notes": "Headaches can occur during or after sessions. Hydration, rest, and simple pain relievers (if approved by your prescriber) usually help."
+        },
+        {
+          "effect": "Blood Pressure Elevation",
+          "incidence": "Increased blood pressure ≈5% (clinically significant increases may be higher in real-world use)",
+          "notes": "Your blood pressure will be checked before and after each dose. You might notice flushing, pressure in your head, or pounding heartbeat. The team is there to manage this and will refer you to emergency care if concerning symptoms appear."
+        },
+        {
+          "effect": "Sleep and Cognitive Changes",
+          "incidence": "Insomnia ≈5%; attention disturbance ≈2%; hypoesthesia (numbness) ≈4%",
+          "notes": "Some people feel mentally slowed for a few hours and then wired or unable to sleep that night. Others feel calmer and sleepier. Short-term cognitive testing has generally returned to baseline by 2–4 hours, but long-term ketamine misuse is linked to cognitive problems."
+        },
+        {
+          "effect": "Throat or Nasal Discomfort",
+          "incidence": "Throat irritation ≈4%",
+          "notes": "Mild burning, irritation, or an odd taste in the back of your throat is fairly common and usually brief."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression: Slowed or shallow breathing, decreased oxygen levels, or difficulty arousing the patient. This is why continuous observation and pulse oximetry are required for at least 2 hours."
+        },
+        {
+          "risk": "Hypertensive crisis or hypertensive encephalopathy: Severe blood pressure elevation with chest pain, shortness of breath, severe headache, visual changes, seizures, confusion, or focal neurologic deficits. Requires emergency evaluation."
+        },
+        {
+          "risk": "Cardiovascular events: Postmarketing reports include bradycardia and hypotension, particularly in vulnerable patients."
+        },
+        {
+          "risk": "Psychiatric activation: Panic attacks, agitation, mania/hypomania, paranoia, or worsening depression have been described. Any sudden behavior change during or after treatment should be taken seriously."
+        },
+        {
+          "risk": "Abuse, dependence, and misuse: Drug abuse has been reported; risk is higher in people with substance use histories or when supervision is inadequate."
+        },
+        {
+          "risk": "Bladder and urinary symptoms: Frequent urination, urgency, discomfort, or cystitis-like symptoms warrant evaluation, especially with longer-term treatment."
+        },
+        {
+          "risk": "Suicidal thoughts or behavior: Like all antidepressants, esketamine can be associated with emergent or worsening suicidality, especially early in treatment or during dose changes."
+        }
+      ],
+      "black_box_warning": "Antidepressants, including esketamine, increase the risk of suicidal thoughts and behaviors in children, adolescents, and young adults. Esketamine is not approved in pediatric patients. All patients starting antidepressants should be closely watched for clinical worsening, suicidality, or unusual behavior changes—especially in the first few months or when doses change.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to esketamine, ketamine, or any component of the formulation"
+        },
+        {
+          "contraindication": "Aneurysmal vascular disease (thoracic or abdominal aorta, intracranial, or peripheral arterial vessels)"
+        },
+        {
+          "contraindication": "Arteriovenous malformation"
+        },
+        {
+          "contraindication": "History of intracerebral hemorrhage"
+        },
+        {
+          "contraindication": "Severe hepatic impairment (Child-Pugh class C)"
+        },
+        {
+          "contraindication": "Recent major cardiovascular event (eg, myocardial infarction or stroke) – contraindicated in Canadian labeling"
+        }
+      ],
+      "precautions": [
+        "Sedation: Esketamine can cause marked drowsiness, reduced alertness, and impaired coordination. Patients must not drive or operate machinery until the next day after a full night's sleep.",
+        "Dissociation and perceptual changes: Feelings of unreality, time distortion, and being disconnected from body or surroundings are common and can be distressing if not anticipated.",
+        "Respiratory depression: Postmarketing reports include slowed or shallow breathing; continuous clinical monitoring (including pulse oximetry) is required for at least 2 hours after dosing.",
+        "Blood pressure increases: Esketamine can significantly raise blood pressure around 40 minutes after dosing. It is contraindicated in patients where BP or intracranial pressure spikes pose serious risk (eg, aneurysmal vascular disease, AVM, prior intracerebral hemorrhage).",
+        "Abuse and misuse: Esketamine is related to ketamine and has abuse potential. Patients with a history of substance use are at higher risk and require extra caution and monitoring.",
+        "Ulcerative or interstitial cystitis risk (class-related): Chronic ketamine misuse has been linked to bladder damage. In esketamine trials, urinary symptoms were more frequent but no clear esketamine-related interstitial cystitis was seen; ongoing monitoring is still recommended.",
+        "Psychiatric activation: Anxiety, agitation, panic, mania, or psychotic-like symptoms (paranoia, unusual thoughts) have been reported; patients with history of psychosis should be evaluated carefully before use.",
+        "Hepatic impairment: Exposure is increased in moderate hepatic impairment; longer observation after dosing is recommended. Use is not recommended in severe hepatic impairment.",
+        "Pregnancy and breastfeeding: Data in pregnancy and lactation are limited, and potential neurodevelopmental risks can’t be ruled out. Treatment decisions should use a shared decision-making approach weighing maternal mental health against fetal/infant risk."
+      ],
+      "interactions": [
+        {
+          "interactant": "Other CNS Depressants (benzodiazepines, alcohol, opioids, sedative-hypnotics, gabapentinoids)",
+          "mechanism": "Additive or synergistic sedation and respiratory depression; greater risk of impaired consciousness and accidents.",
+          "action": "Use the lowest effective doses when combinations are unavoidable. Monitor closely for excessive sedation and respiratory compromise during and after esketamine sessions. Absolutely no alcohol on treatment days."
+        },
+        {
+          "interactant": "Psychostimulants (eg, amphetamine formulations, methylphenidate) and MAOIs",
+          "mechanism": "Additive increases in blood pressure and heart rate; higher risk for hypertensive events.",
+          "action": "Carefully assess cardiovascular risk before combining. Monitor blood pressure more frequently around the time of esketamine dosing and consider dose or schedule adjustments."
+        },
+        {
+          "interactant": "Drugs Affecting CYP2B6 or CYP3A4 (eg, certain azoles, macrolides, some anticonvulsants)",
+          "mechanism": "Theoretical risk of altered esketamine or metabolite levels (either increased side effects or reduced efficacy).",
+          "action": "Review medication list for strong inducers or inhibitors. Adjust monitoring accordingly and consider alternative agents when feasible."
+        },
+        {
+          "interactant": "Other Dissociative or Hallucinogenic Agents (ketamine, PCP, high-dose dextromethorphan, recreational psychedelics)",
+          "mechanism": "Increased dissociation, perceptual disturbances, and psychiatric destabilization.",
+          "action": "Avoid co-use. Screen for recreational substance use and counsel patients to avoid non-prescribed psychoactive substances, particularly around treatment days."
+        },
+        {
+          "interactant": "Uncontrolled Hypertension or Significant Cardiovascular/Cerebrovascular Disease",
+          "mechanism": "Although not a classic ‘drug–drug’ interaction, underlying vascular disease greatly amplifies risk of dangerous blood pressure rises or neurologic events.",
+          "action": "Thorough cardiovascular review before initiation. If baseline BP is >140/90 mm Hg, weigh risks and benefits of delaying treatment and involve primary care or cardiology as needed."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Observation period: Monitor all patients in a health care setting for at least 2 hours after the last dose, and longer if sedation, dissociation, or blood pressure changes persist."
+        },
+        {
+          "parameter": "Respiratory status: Check respiratory rate, level of consciousness, and oxygen saturation (pulse oximetry) during and after treatment. Watch for respiratory depression, particularly in patients on other CNS depressants."
+        },
+        {
+          "parameter": "Blood pressure and heart rate: Measure BP before dosing. If BP is >140/90 mm Hg, consider risks and benefits of proceeding. Recheck around 40 minutes post-dose and periodically for at least 2 hours or until values trend down."
+        },
+        {
+          "parameter": "Suicidal ideation and behavior: Closely monitor for changes in suicidal thoughts, intent, or behavior, especially early in treatment, during dosing frequency changes, and after missed treatments."
+        },
+        {
+          "parameter": "Abuse and misuse: Before starting, assess history of substance use or addiction. During treatment, monitor for craving, drug-seeking behavior, or non-prescribed ketamine use."
+        },
+        {
+          "parameter": "Psychiatric symptoms: Track mood, anxiety, panic, mania/hypomania, psychotic symptoms, and overall functioning across visits. Watch for emergent agitation, paranoia, or marked behavior changes."
+        },
+        {
+          "parameter": "Cognitive effects: Note short-term cognitive changes during sessions. Ask about memory, attention, and executive function over time, especially in older adults or those with prior cognitive issues."
+        },
+        {
+          "parameter": "Urinary and bladder symptoms: Monitor for urinary frequency, urgency, pain, or cystitis-like symptoms. Refer for evaluation if persistent or severe."
+        },
+        {
+          "parameter": "Cardiovascular and cerebrovascular risk review: Prior to initiation, assess for aneurysms, arteriovenous malformations, prior intracerebral hemorrhage, recent MI or stroke, and uncontrolled hypertension."
+        },
+        {
+          "parameter": "Reproductive status: For patients who could become pregnant, consider pregnancy testing before starting and periodically as clinically indicated, and document contraceptive and reproductive plans."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Esketamine crosses the placenta, and animal data raise concerns about potential effects on brain development with NMDA-blocking drugs. Human data on intranasal esketamine in pregnancy are limited. At the same time, untreated severe depression is clearly associated with preterm birth, low birth weight, preeclampsia, postpartum depression, and long-term impacts on attachment. Decisions about use in pregnancy should involve shared decision making, weighing severity of maternal illness, response to other treatments, and timing in pregnancy. Use the lowest effective dose, avoid unnecessary polypharmacy, and monitor mood monthly with validated tools.",
+        "lactation": "Esketamine is present in breast milk. Based on animal data, NMDA-blocking and GABA-potentiating drugs may affect brain development, especially in the first months to years of life. The manufacturer does not recommend breastfeeding during esketamine treatment. If a patient is stable on esketamine and strongly wishes to breastfeed, risk–benefit discussion is essential, considering infant age, maternal relapse risk, and alternative options.",
+        "pediatric": "Esketamine is not approved in pediatric patients. Antidepressants overall carry an increased risk of suicidal thoughts and behavior in children and adolescents; esketamine should not be used in this group outside of research settings.",
+        "geriatric": "Older adults have higher esketamine exposure (Cmax and AUC) and are more vulnerable to blood pressure spikes, sedation, falls, and cognitive effects. Start low, go slow, monitor closely, and reassess frequently whether benefits continue to outweigh risks.",
+        "renal_impairment": "Because very little esketamine is excreted unchanged in urine, dose adjustment is generally not required; however, comorbidities and overall medical fragility in advanced kidney disease still warrant caution and close monitoring.",
+        "hepatic_impairment": "In moderate hepatic impairment, esketamine exposure and half-life are increased; patients may need extended monitoring after each dose. Use is not recommended in severe hepatic impairment (Child-Pugh C)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2019
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid after intranasal administration",
+          "bioavailability": "Approximately 48%",
+          "peak_plasma": "20–40 minutes",
+          "half_life": "Esketamine: 7–12 hours; active metabolite (noresketamine): ~8 hours",
+          "metabolism": "Hepatic metabolism primarily via CYP2B6 and CYP3A4, with minor contributions from CYP2C9 and CYP2C19 to active metabolite noresketamine",
+          "excretion": "Urine, with <1% as unchanged drug",
+          "protein_binding": "Approximately 43–45%",
+          "food_effect": "Food delays absorption; patients are advised to avoid food for at least 2 hours and liquids for at least 30 minutes before dosing"
+        },
+        "dosing": {
+          "titration": "Esketamine dosing is structured around supervised clinic visits. The dose is fixed per device (28 mg), and each full dose uses 2–3 devices. Frequency is higher early on and then tapered to weekly or every 2 weeks if it’s helping."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Esketamine is not a daily home medication; it’s a clinic-based series of treatments. There isn’t a classic ‘taper’ like with SSRIs or benzodiazepines, but you still don’t want to stop abruptly in someone who is unstable."
+        }
+      }
     }
   },
   "sections": [
@@ -102,7 +276,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Experience with Spravato is very different from swallowing a typical antidepressant pill. It’s a monitored treatment session, not a quick prescription pick-up.",
       "items": [
         {
           "category": "During the Session (First 1–2 Hours)",
@@ -146,7 +319,8 @@
           ],
           "note": "Esketamine has abuse and misuse potential, particularly in people with a history of substance use. The REMS program and in-clinic only use are designed to reduce that risk."
         }
-      ]
+      ],
+      "intro": "Experience with Spravato is very different from swallowing a typical antidepressant pill. It’s a monitored treatment session, not a quick prescription pick-up."
     },
     {
       "type": "onset_duration",
@@ -163,10 +337,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Esketamine stands out for speed: many patients notice some shift in depressive symptoms or suicidal intensity within days, sometimes within 24 hours. It does not work for everyone, and it is not a cure, but in people who have already failed multiple antidepressants, adding or using esketamine can significantly increase the odds of getting at least partial relief.",
       "metric": "Meaningful symptom improvement in treatment-resistant depression within 4 weeks",
       "value": "Roughly 50–70% of patients respond",
       "comparison": "Higher and faster response rates than oral antidepressant plus placebo nasal spray in registration trials.",
-      "text": "Esketamine stands out for speed: many patients notice some shift in depressive symptoms or suicidal intensity within days, sometimes within 24 hours. It does not work for everyone, and it is not a cure, but in people who have already failed multiple antidepressants, adding or using esketamine can significantly increase the odds of getting at least partial relief.",
       "clinical_details": "Across pivotal trials in adults with treatment-resistant depression, esketamine nasal spray combined with an oral antidepressant produced a greater decrease in depression rating scale scores compared with oral antidepressant plus placebo nasal spray, with separation from placebo emerging as early as 24 hours in some studies and persisting through the 4-week induction phase. In patients with major depressive disorder and suicidal ideation or behavior, esketamine produced more rapid improvement in depressive symptoms, though it was not shown to reduce suicide attempts or completed suicide. Long-term maintenance studies suggest that continuing esketamine in responders reduces risk of relapse compared with switching to antidepressant alone.",
       "citation": {
         "authors": "Esketamine clinical trial programs (eg, TRANSFORM and ASPIRE studies)",
@@ -275,7 +449,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Esketamine is metabolized mainly by CYP2B6 and CYP3A4 and acts as a CNS depressant. The biggest concerns are combinations that further depress the brain, raise blood pressure, or alter its metabolism.",
       "items": [
         {
           "with": "Other CNS Depressants (benzodiazepines, alcohol, opioids, sedative-hypnotics, gabapentinoids)",
@@ -302,7 +475,8 @@
           "risk": "Although not a classic ‘drug–drug’ interaction, underlying vascular disease greatly amplifies risk of dangerous blood pressure rises or neurologic events.",
           "action": "Thorough cardiovascular review before initiation. If baseline BP is >140/90 mm Hg, weigh risks and benefits of delaying treatment and involve primary care or cardiology as needed."
         }
-      ]
+      ],
+      "intro": "Esketamine is metabolized mainly by CYP2B6 and CYP3A4 and acts as a CNS depressant. The biggest concerns are combinations that further depress the brain, raise blood pressure, or alter its metabolism."
     },
     {
       "type": "tapering",
@@ -417,21 +591,50 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Esketamine (Spravato): Dosing, Monitoring, Side Effects & REMS",
-    "description": "Esketamine (Spravato) for treatment-resistant depression and major depression with suicidal thoughts: how it works, intranasal dosing schedule, 2-hour monitoring requirements, side effects (sedation, dissociation, blood pressure changes), abuse risk, and REMS clinic restrictions.",
-    "canonical": "[https://www.heypsych.com/treatments/esketamine-spravato](https://www.heypsych.com/treatments/esketamine-spravato)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "FDA Prescribing Information (Spravato)",
+      "url": "[https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/211243s016lbl.pdf](https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/211243s016lbl.pdf)",
+      "description": "Official US labeling with full safety, dosing, and REMS information for esketamine nasal spray."
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Spravato REMS Program",
+      "url": "[https://www.spravatorems.com](https://www.spravatorems.com)",
+      "description": "Details on certification requirements, monitoring, and patient enrollment for esketamine REMS."
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "JANSSEN JOURNEY Program (Canada)",
+      "url": "[https://www.janssenjourney.ca/en/](https://www.janssenjourney.ca/en/)",
+      "description": "Canadian access program for Spravato, including prescriber, pharmacy, and patient enrollment details."
+    },
+    {
+      "id": "ref-4",
+      "type": "other",
+      "title": "ACOG Clinical Practice Guidance on Mental Health in Pregnancy (2023)",
+      "url": "[https://www.acog.org](https://www.acog.org)",
+      "description": "Framework for balancing depression treatment and reproductive safety, including antidepressants in pregnancy."
+    },
+    {
+      "id": "ref-5",
+      "type": "other",
+      "title": "CANMAT Guidelines for the Management of Major Depressive Disorder",
+      "url": "[https://www.canmat.org](https://www.canmat.org)",
+      "description": "Evidence-based guidance on sequencing treatments for major depressive disorder, including treatment-resistant cases."
+    },
+    {
+      "id": "ref-6",
+      "type": "other",
+      "title": "UpToDate: Esketamine for Treatment-Resistant Depression",
+      "url": "[https://www.uptodate.com](https://www.uptodate.com)",
+      "description": "Subscription resource summarizing clinical trial data, dosing, and safety considerations for esketamine."
+    }
+  ],
   "faqs": [
     {
       "q": "What is Spravato (esketamine) actually used for?",
@@ -481,5 +684,20 @@
       "q": "If Spravato works for me, do I have to stay on it forever?",
       "a": "Not necessarily. Many people complete the 4-week induction and then move into a maintenance phase with weekly or every-other-week sessions if they’re still benefiting. Over time, if your mood is stable and you’re doing well on other treatments (like oral antidepressants and therapy), your clinician may gradually space out or discontinue Spravato. The goal is not to keep you in the chair forever—it’s to use this tool strategically as part of a broader, long-term plan."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Esketamine (Spravato): Dosing, Monitoring, Side Effects & REMS",
+    "description": "Esketamine (Spravato) for treatment-resistant depression and major depression with suicidal thoughts: how it works, intranasal dosing schedule, 2-hour monitoring requirements, side effects (sedation, dissociation, blood pressure changes), abuse risk, and REMS clinic restrictions.",
+    "canonical": "[https://www.heypsych.com/treatments/esketamine-spravato](https://www.heypsych.com/treatments/esketamine-spravato)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

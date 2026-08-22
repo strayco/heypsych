@@ -28,7 +28,7 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
       description,
       keywords: keywords.join(', '),
       alternates: { canonical },
-      // robots: this.generateRobots(entity), // TODO: Tune robots logic - currently too aggressive
+      robots: this.generateRobots(entity), // Uses Central Indexation Firewall
       openGraph: this.generateOpenGraph(title, description, canonical, 'article'),
       twitter: this.generateTwitterCard(title, description)
     };

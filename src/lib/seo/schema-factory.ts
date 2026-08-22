@@ -38,7 +38,18 @@ import {
   buildMedicalReviewBoardSchema,
   buildDefaultReviewBoardPersonSchema
 } from './schema-builders/organization';
-import { hasAuthor, hasMedicalReviewer } from '@/lib/types/editorial';
+import { hasAuthor, hasMedicalReviewer, AuthorInfo, MedicalReviewerInfo } from '@/lib/types/editorial';
+import {
+  getContributorBySlug,
+  passesEEATRequirements,
+  type Contributor,
+} from '@/lib/trust/contributor-registry';
+import {
+  reconcileAllSchemas,
+  schemasAreValid,
+  getCriticalMismatches,
+  type ReconciliationResult,
+} from '@/lib/trust/schema-content-reconciler';
 
 /**
  * SchemaFactory
@@ -116,7 +127,49 @@ export class SchemaFactory {
       }
     }
 
+    // 7. Schema-Content Reconciliation (build-time validation)
+    // Validates that generated schemas match visible entity content
+    // @see schema-content-reconciler.ts Phase F
+    if (process.env.NODE_ENV === 'development' || process.env.NEXT_PHASE === 'phase-production-build') {
+      this.reconcileSchemas(schemas, entity);
+    }
+
     return schemas;
+  }
+
+  /**
+   * Validate schemas against entity content
+   * Logs warnings for critical mismatches during build
+   *
+   * INTEGRATION: Schema-Content Reconciler → Schema Generation
+   * @see schema-content-reconciler.ts Phase F
+   */
+  private static reconcileSchemas(schemas: Record<string, any>[], entity: Entity): void {
+    try {
+      const results = reconcileAllSchemas(schemas, entity);
+      const criticalMismatches = results.flatMap(r => r.mismatches.filter(m => m.severity === 'critical'));
+
+      if (criticalMismatches.length > 0) {
+        console.warn(
+          `⚠️ Schema-content mismatches for ${entity.slug}:`,
+          criticalMismatches.map(m => `${m.schemaPath}: ${m.message}`).join('; ')
+        );
+      }
+
+      // In development, also log warnings
+      if (process.env.NODE_ENV === 'development') {
+        const warnings = results.flatMap(r => r.mismatches.filter(m => m.severity === 'warning'));
+        if (warnings.length > 0) {
+          console.info(
+            `ℹ️ Schema warnings for ${entity.slug}:`,
+            warnings.slice(0, 3).map(m => `${m.schemaPath}: ${m.message}`).join('; ')
+          );
+        }
+      }
+    } catch (error) {
+      // Don't crash the build on reconciliation errors
+      console.warn(`Schema reconciliation failed for ${entity.slug}:`, error);
+    }
   }
 
   /**
@@ -158,6 +211,10 @@ export class SchemaFactory {
   /**
    * Generate Person schemas for author and medical reviewer
    * CRITICAL: Always generates at least default Medical Review Board Person schema
+   *
+   * INTEGRATION: Contributor Registry → Person Schemas
+   * Looks up contributors in the registry to add verification data (NPI, ORCID)
+   * @see contributor-registry.ts Phase E
    */
   private static generatePersonSchemas(entity: Entity): Record<string, any>[] {
     const schemas: Record<string, any>[] = [];
@@ -165,7 +222,10 @@ export class SchemaFactory {
     // Author schema
     if (hasAuthor(entity)) {
       try {
-        schemas.push(buildAuthorSchema(entity.editorial!.author!));
+        const authorInfo = entity.editorial!.author!;
+        // Enrich with contributor registry data
+        const enrichedAuthor = this.enrichAuthorWithRegistry(authorInfo);
+        schemas.push(buildAuthorSchema(enrichedAuthor));
       } catch (error) {
         console.error('Error generating author schema:', error);
       }
@@ -174,7 +234,10 @@ export class SchemaFactory {
     // Medical reviewer schema (individual OR default board)
     if (hasMedicalReviewer(entity)) {
       try {
-        schemas.push(buildMedicalReviewerSchema(entity.editorial!.medicalReviewer!));
+        const reviewerInfo = entity.editorial!.medicalReviewer!;
+        // Enrich with contributor registry data
+        const enrichedReviewer = this.enrichReviewerWithRegistry(reviewerInfo);
+        schemas.push(buildMedicalReviewerSchema(enrichedReviewer));
       } catch (error) {
         console.error('Error generating reviewer schema:', error);
       }
@@ -185,6 +248,109 @@ export class SchemaFactory {
     }
 
     return schemas;
+  }
+
+  /**
+   * Enrich author info with data from Contributor Registry
+   * Adds NPI, ORCID, and verification data if available
+   */
+  private static enrichAuthorWithRegistry(authorInfo: AuthorInfo): AuthorInfo {
+    // Create slug from author name for registry lookup
+    const slug = authorInfo.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const contributor = getContributorBySlug(slug);
+
+    if (!contributor) {
+      return authorInfo;
+    }
+
+    // Merge registry data into author info
+    const enriched: AuthorInfo = { ...authorInfo };
+
+    // Add ORCID if not already present
+    if (!enriched.orcid) {
+      const orcidCred = contributor.credentials.find(c => c.type === 'orcid');
+      if (orcidCred?.value) {
+        enriched.orcid = orcidCred.value;
+      }
+    }
+
+    // Add affiliations if not already present
+    if (!enriched.affiliations && contributor.affiliations) {
+      enriched.affiliations = contributor.affiliations;
+    }
+
+    // Add specialty as jobTitle if not already present
+    if (!enriched.jobTitle && contributor.specialty) {
+      enriched.jobTitle = contributor.specialty;
+    }
+
+    return enriched;
+  }
+
+  /**
+   * Enrich medical reviewer info with data from Contributor Registry
+   * Adds NPI, ORCID, and verification data if available
+   *
+   * IMPORTANT: Only uses verified contributors for medical reviewer schema
+   * Unverified contributors are NOT used to avoid E-E-A-T issues
+   */
+  private static enrichReviewerWithRegistry(reviewerInfo: MedicalReviewerInfo): MedicalReviewerInfo {
+    // Create slug from reviewer name for registry lookup
+    const slug = reviewerInfo.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const contributor = getContributorBySlug(slug);
+
+    if (!contributor) {
+      return reviewerInfo;
+    }
+
+    // CRITICAL: Only use verified contributors for medical reviewers
+    // This prevents unverified credentials from appearing in schema
+    if (!passesEEATRequirements(contributor)) {
+      console.warn(`Contributor ${contributor.name} does not pass E-E-A-T requirements, using entity data only`);
+      return reviewerInfo;
+    }
+
+    // Merge registry data into reviewer info
+    const enriched: MedicalReviewerInfo = { ...reviewerInfo };
+
+    // Add NPI if not already present
+    if (!enriched.npi) {
+      const npiCred = contributor.credentials.find(c => c.type === 'npi');
+      if (npiCred?.value) {
+        enriched.npi = npiCred.value;
+      }
+    }
+
+    // Add ORCID if not already present
+    if (!enriched.orcid) {
+      const orcidCred = contributor.credentials.find(c => c.type === 'orcid');
+      if (orcidCred?.value) {
+        enriched.orcid = orcidCred.value;
+      }
+    }
+
+    // Add board certifications if not already present
+    if (!enriched.boardCertifications) {
+      const boardCerts = contributor.credentials
+        .filter(c => c.type === 'board_cert')
+        .map(c => c.issuer || 'Board Certified')
+        .filter(Boolean);
+      if (boardCerts.length > 0) {
+        enriched.boardCertifications = boardCerts;
+      }
+    }
+
+    // Add affiliation if not already present
+    if (!enriched.affiliation && contributor.affiliations?.[0]) {
+      enriched.affiliation = contributor.affiliations[0];
+    }
+
+    // Add specialty if not already present
+    if (!enriched.specialty && contributor.specialty) {
+      enriched.specialty = contributor.specialty;
+    }
+
+    return enriched;
   }
 
   /**

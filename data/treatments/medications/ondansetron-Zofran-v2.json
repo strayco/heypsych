@@ -1,89 +1,210 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "ondansetron-zofran",
-  "type": "medication",
-  "name": "Ondansetron (Zofran)",
-  "summary": "Fast-acting anti-nausea medication that’s commonly used to control nausea from anxiety, panic, or psychiatric medications. Usually works within ~30 minutes. Main watch-outs: constipation, headache, and rare but serious QT prolongation (heart rhythm risk).",
-  "description": "Ondansetron (Zofran) is a serotonin 5-HT3 blocker that calms nausea and vomiting fast—often within about 30 minutes. In psychiatry, it’s most often used as a “support med” for nausea from SSRIs/SNRIs, stimulants, lithium, opioid withdrawal, or intense anxiety/panic. It’s not sedating for most people, but constipation and headaches are common. It can also prolong the QT interval (a heart rhythm issue), especially with higher IV doses or in people with risk factors—so dosing and interactions matter.",
-  "patient_summary": "Zofran can shut down nausea fast and help you stay on your psych meds when your stomach is trying to sabotage you. Most people feel relief within about 30 minutes. The tradeoff is usually constipation or headaches. The rare-but-serious risk is QT prolongation (heart rhythm problems), especially with higher IV doses or if you’re on other QT-prolonging meds.",
-  "category": "medications/side-effect-management",
-  "metadata": {
-    "drug_classes": [
-      "Antiemetic",
-      "Selective 5-HT3 Receptor Antagonist"
-    ],
+  "identity": {
+    "slug": "ondansetron-zofran",
+    "name": "Ondansetron (Zofran)",
+    "generic_name": "ondansetron",
     "brand_names": [
       "Zofran",
       "Zofran ODT",
       "Zuplenz (oral soluble film; discontinued in the United States)"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous",
-      "Intramuscular"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1991,
-    "pharmacologic_category": "Selective 5-HT3 Receptor Antagonist (Antiemetic)",
-    "published_date": "2026-01-10T00:00:00Z",
-    "last_updated": "2026-01-20T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-20T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Medication-induced nausea (supportive care with psychiatric medications)",
-      "Anxiety- or panic-associated nausea (symptom relief)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "supportive_care",
-        "context": "Can be used as a symptom-focused option when anxiety shows up in the body as persistent nausea, especially during acute flares."
-      },
-      {
-        "slug": "panic-disorder",
-        "relationship": "supportive_care",
-        "context": "Helpful for nausea during panic surges (especially when nausea triggers more panic). Not a panic treatment—just stomach support."
-      },
-      {
-        "slug": "ssri-side-effects",
-        "relationship": "supportive_care",
-        "context": "Commonly used short-term to get people through SSRI/SNRI start-up nausea so they can actually stay on the medication long enough to benefit."
-      },
-      {
-        "slug": "substance-withdrawal",
-        "relationship": "supportive_care",
-        "context": "Sometimes used to reduce nausea during withdrawal (e.g., opioids). This is supportive symptom care, not treatment of the withdrawal syndrome itself."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to ondansetron or any component of the formulation",
-      "Concomitant use with apomorphine (risk of profound hypotension and loss of consciousness)"
-    ],
-    "efficacy_response": {
-      "metric": "Nausea relief (supportive symptom control)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Ondansetron isn’t a psychiatry med by itself, but it’s a high-impact helper when nausea is blocking treatment—especially early SSRI/SNRI nausea or anxiety-driven nausea. The practical win is keeping you hydrated, functional, and able to stay on your primary plan.",
-      "citation_tag": "FDA Label: ZOFRAN"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/side-effect-management",
+    "drug_classes": [
+      "Antiemetic",
+      "Selective 5-HT3 Receptor Antagonist"
+    ]
+  },
+  "summary": "Fast-acting anti-nausea medication that’s commonly used to control nausea from anxiety, panic, or psychiatric medications. Usually works within ~30 minutes. Main watch-outs: constipation, headache, and rare but serious QT prolongation (heart rhythm risk).",
+  "description": "Ondansetron (Zofran) is a serotonin 5-HT3 blocker that calms nausea and vomiting fast—often within about 30 minutes. In psychiatry, it’s most often used as a “support med” for nausea from SSRIs/SNRIs, stimulants, lithium, opioid withdrawal, or intense anxiety/panic. It’s not sedating for most people, but constipation and headaches are common. It can also prolong the QT interval (a heart rhythm issue), especially with higher IV doses or in people with risk factors—so dosing and interactions matter.",
+  "patient_summary": "Zofran can shut down nausea fast and help you stay on your psych meds when your stomach is trying to sabotage you. Most people feel relief within about 30 minutes. The tradeoff is usually constipation or headaches. The rare-but-serious risk is QT prolongation (heart rhythm problems), especially with higher IV doses or if you’re on other QT-prolonging meds.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "medication-induced-nausea-supportive-care-with-psychiatric-medications",
+          "condition_name": "Medication-induced nausea (supportive care with psychiatric medications)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "anxiety-or-panic-associated-nausea-symptom-relief",
+          "condition_name": "Anxiety- or panic-associated nausea (symptom relief)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "secondary_indication",
+          "context": "Can be used as a symptom-focused option when anxiety shows up in the body as persistent nausea, especially during acute flares."
+        },
+        {
+          "condition_slug": "panic-disorder",
+          "condition_name": "Panic Disorder",
+          "relationship": "secondary_indication",
+          "context": "Helpful for nausea during panic surges (especially when nausea triggers more panic). Not a panic treatment—just stomach support."
+        },
+        {
+          "condition_slug": "ssri-side-effects",
+          "condition_name": "Ssri Side Effects",
+          "relationship": "secondary_indication",
+          "context": "Commonly used short-term to get people through SSRI/SNRI start-up nausea so they can actually stay on the medication long enough to benefit."
+        },
+        {
+          "condition_slug": "substance-withdrawal",
+          "condition_name": "Substance Withdrawal",
+          "relationship": "secondary_indication",
+          "context": "Sometimes used to reduce nausea during withdrawal (e.g., opioids). This is supportive symptom care, not treatment of the withdrawal syndrome itself."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral absorption with peak around ~2 hours (varies by formulation); oral disintegrating tablets are bioequivalent to tablets and are not absorbed through the oral mucosa",
-      "bioavailability": "Oral bioavailability reduced by first-pass metabolism (range varies by patient and setting)",
-      "onset": "About 30 minutes",
-      "peak_plasma": "Around 2 hours (oral; varies by formulation)",
-      "half_life": "About 3 to 6 hours in adults; prolonged with hepatic impairment",
-      "duration_IR": "Often provides several hours of symptom relief; dosing commonly spaced every 8 to 12 hours when used PRN",
-      "metabolism": "Extensive hepatic metabolism (multiple CYP pathways)",
-      "excretion": "Primarily as metabolites in urine and feces",
-      "protein_binding": "Approximately 70% to 76%",
-      "food_effect": "Food may slightly increase absorption; can be taken without regard to meals"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "About 30 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous",
+        "Intramuscular"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache",
+          "incidence": "Commonly reported",
+          "notes": "If you get headaches easily (especially migraine history), you might notice this more. Hydration helps; if headaches are severe or persistent, reassess dosing and alternatives."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "Common",
+          "notes": "Ondansetron can slow gut motility. If you’re already constipation-prone (low fiber, dehydration, opioids, anticholinergics, some psych meds), plan ahead: fluids, fiber, movement, and a clinician-approved bowel regimen if needed."
+        },
+        {
+          "effect": "Dizziness / Lightheadedness",
+          "incidence": "Less common",
+          "notes": "More likely if you’re dehydrated from nausea, or if you stand up quickly. Hydration and slow position changes help."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "QT prolongation and torsades de pointes (rare but serious): higher risk with IV dosing, higher doses, electrolyte abnormalities, underlying heart disease, bradyarrhythmias, or concurrent QT-prolonging meds."
+        },
+        {
+          "risk": "Serotonin syndrome (rare): risk increases when combined with serotonergic agents (e.g., SSRIs/SNRIs/MAOIs, mirtazapine, fentanyl, lithium, tramadol, methylene blue)."
+        },
+        {
+          "risk": "Immediate hypersensitivity reactions including anaphylaxis: hives, swelling, wheeze, shortness of breath, hypotension—medical emergency."
+        },
+        {
+          "risk": "Severe constipation/possible bowel obstruction (rare): worsening abdominal pain, no bowel movement, vomiting—seek urgent evaluation."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to ondansetron or any component of the formulation"
+        },
+        {
+          "contraindication": "Concomitant use with apomorphine (risk of profound hypotension and loss of consciousness)"
+        }
+      ],
+      "precautions": [
+        "QT prolongation and torsades de pointes have been reported; risk increases with higher doses and risk factors (electrolyte abnormalities, underlying heart disease, bradyarrhythmias, or other QT-prolonging drugs).",
+        "No single IV dose should exceed 16 mg due to QT prolongation risk.",
+        "Avoid in congenital long-QT syndrome when possible; treat as a high-risk situation requiring clinician oversight.",
+        "Serotonin syndrome has been reported with 5-HT3 antagonists, especially when combined with serotonergic medications (SSRIs, SNRIs, MAOIs, mirtazapine, fentanyl, lithium, tramadol, methylene blue). Some reported cases were fatal.",
+        "Hypersensitivity reactions, including anaphylaxis, can occur."
+      ],
+      "interactions": [
+        {
+          "interactant": "Apomorphine",
+          "mechanism": "Contraindicated: reports of profound hypotension and loss of consciousness.",
+          "action": "Do not combine."
+        },
+        {
+          "interactant": "QT-prolonging medications (multiple classes, including some antipsychotics and antidepressants)",
+          "mechanism": "Additive QT prolongation risk; higher chance of dangerous arrhythmias in high-risk patients.",
+          "action": "Before stacking QT-risk meds, do an interaction check and consider ECG/electrolytes if you have risk factors."
+        },
+        {
+          "interactant": "Serotonergic medications (SSRIs, SNRIs, MAOIs, mirtazapine, lithium, tramadol, fentanyl, methylene blue)",
+          "mechanism": "Serotonin syndrome has been reported with 5-HT3 antagonists, especially with concomitant serotonergic drugs; some cases were fatal.",
+          "action": "Monitor for serotonin syndrome symptoms; if symptoms occur, stop and seek urgent care."
+        },
+        {
+          "interactant": "Electrolyte-lowering risks (vomiting, diarrhea, diuretics)",
+          "mechanism": "Low potassium or magnesium increases QT-related risk.",
+          "action": "Correct electrolytes in higher-risk situations, especially if using IV dosing or multiple QT-risk meds."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "ECG when clinically indicated: congenital long-QT, history of arrhythmia, heart failure, bradyarrhythmias, older adults with multiple QT-risk meds, or if giving IV dosing."
+        },
+        {
+          "parameter": "Electrolytes (potassium, magnesium) when risk is present: ongoing vomiting/diarrhea, diuretics, malnutrition, or medical illness that increases QT vulnerability."
+        },
+        {
+          "parameter": "Serotonin syndrome symptoms when combined with serotonergic meds: agitation, confusion, sweating, tremor, muscle rigidity, diarrhea, fever, hyperreflexia—stop and seek urgent care if suspected."
+        },
+        {
+          "parameter": "Hypersensitivity reactions: hives, swelling, wheezing, hypotension—medical emergency."
+        },
+        {
+          "parameter": "Bowel function: constipation monitoring, especially if the patient is already prone to constipation or is taking constipating medications (opioids, anticholinergics, some psych meds)."
+        },
+        {
+          "parameter": "Functional outcome: Are you able to eat, hydrate, and stay on your primary psychiatric treatment plan?"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Ondansetron may be considered for severe or persistent nausea and vomiting of pregnancy when preferred agents have failed. Safety data are mixed; absolute risk appears low, but some guideline language recommends individualized decision-making—especially before 10 weeks gestation. Dose-dependent QT prolongation is also a consideration, so higher-risk patients may need ECG/electrolyte monitoring.",
+        "lactation": "Ondansetron is present in human milk. Available data suggest infant exposure is low and reported adverse events in studied infants were not observed; breastfeeding is often considered acceptable when the relative infant dose is <10%, but this should be individualized (especially for premature infants or medically fragile infants).",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "No routine oral dose adjustment is generally required, but older adults may have higher baseline QT risk (more cardiac disease, more QT-prolonging meds). If QT risk factors exist, consider ECG/electrolyte monitoring.",
+        "renal_impairment": "No dose adjustment is usually necessary because renal clearance accounts for a small fraction of total clearance; dialysis is unlikely to remove significant amounts.",
+        "hepatic_impairment": "Mild to moderate hepatic impairment: typically no adjustment; severe hepatic impairment: do not exceed 8 mg/day total."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1991
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral absorption with peak around ~2 hours (varies by formulation); oral disintegrating tablets are bioequivalent to tablets and are not absorbed through the oral mucosa",
+          "bioavailability": "Oral bioavailability reduced by first-pass metabolism (range varies by patient and setting)",
+          "peak_plasma": "Around 2 hours (oral; varies by formulation)",
+          "half_life": "About 3 to 6 hours in adults; prolonged with hepatic impairment",
+          "metabolism": "Extensive hepatic metabolism (multiple CYP pathways)",
+          "excretion": "Primarily as metabolites in urine and feces",
+          "protein_binding": "Approximately 70% to 76%",
+          "food_effect": "Food may slightly increase absorption; can be taken without regard to meals"
+        },
+        "dosing": {
+          "titration": "Psychiatry-relevant use is usually PRN nausea control (for medication side effects or anxiety/panic-related nausea). Dosing is individualized—especially if you have QT risk factors or liver disease."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Not applicable for this medication."
+        }
+      }
     }
   },
   "sections": [
@@ -106,7 +227,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is the real-world vibe people report most often (and yes, it varies):",
       "items": [
         {
           "category": "Nausea shuts up (often within ~30 minutes)",
@@ -143,7 +263,8 @@
           ],
           "note": "QT prolongation is uncommon, but it’s a real safety consideration—especially with IV dosing or multiple QT-prolonging meds."
         }
-      ]
+      ],
+      "intro": "This is the real-world vibe people report most often (and yes, it varies):"
     },
     {
       "type": "onset_duration",
@@ -159,10 +280,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In psychiatric care, ondansetron is mainly used as a practical tool: reduce nausea enough to keep you hydrated, eating, and able to continue the medication or treatment plan that’s actually targeting anxiety, panic, or mood.",
       "metric": "Practical symptom control (nausea relief)",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "In psychiatric care, ondansetron is mainly used as a practical tool: reduce nausea enough to keep you hydrated, eating, and able to continue the medication or treatment plan that’s actually targeting anxiety, panic, or mood.",
       "clinical_details": "This medication’s strongest evidence base is in prevention and treatment of nausea/vomiting in medical settings (e.g., chemotherapy, postoperative care). Psychiatry-relevant use is typically supportive—managing nausea from anxiety physiology or medication side effects so adherence and functioning improve.",
       "citation": {
         "authors": "FDA (U.S. Food & Drug Administration)",
@@ -234,7 +355,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Ondansetron interactions matter most for heart rhythm risk (QT prolongation) and serotonin syndrome risk—both can show up in psychiatry because polypharmacy is common.",
       "items": [
         {
           "with": "Apomorphine",
@@ -256,7 +376,8 @@
           "risk": "Low potassium or magnesium increases QT-related risk.",
           "action": "Correct electrolytes in higher-risk situations, especially if using IV dosing or multiple QT-risk meds."
         }
-      ]
+      ],
+      "intro": "Ondansetron interactions matter most for heart rhythm risk (QT prolongation) and serotonin syndrome risk—both can show up in psychiatry because polypharmacy is common."
     },
     {
       "type": "tapering",
@@ -325,21 +446,6 @@
       "text": "In psychiatry, ondansetron is a supportive care medication. It doesn’t treat anxiety, panic, depression, or insomnia directly—but it can keep nausea from wrecking adherence and recovery. It’s especially useful early in SSRI/SNRI treatment, during med switches, and in people whose anxiety lives in their GI tract. The main clinical decision points are: (1) do you actually need it regularly, or can you use it PRN, and (2) are there QT or serotonin-syndrome risks because of your other meds and medical history?"
     }
   ],
-  "seo": {
-    "title": "Ondansetron (Zofran): Uses, Dosing, Side Effects, QT Risk & Interactions",
-    "description": "Ondansetron (Zofran) for nausea from anxiety or psychiatric medications: how fast it works (~30 min), PRN dosing, common side effects (headache, constipation), QT prolongation risk, serotonin syndrome warning, and key interactions.",
-    "canonical": "[https://www.heypsych.com/treatments/ondansetron-zofran](https://www.heypsych.com/treatments/ondansetron-zofran)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-20",
-    "lastUpdated": "2026-01-20",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is Zofran a psychiatric medication?",
@@ -385,5 +491,20 @@
       "q": "What’s a practical PRN plan for psych-med nausea?",
       "a": "A common approach is 4 to 8 mg by mouth as needed, spaced out (often every 8 to 12 hours if symptoms persist). The goal is the lowest effective dose for the shortest time—especially if you’re on other QT-risk meds or have cardiac risk factors."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Ondansetron (Zofran): Uses, Dosing, Side Effects, QT Risk & Interactions",
+    "description": "Ondansetron (Zofran) for nausea from anxiety or psychiatric medications: how fast it works (~30 min), PRN dosing, common side effects (headache, constipation), QT prolongation risk, serotonin syndrome warning, and key interactions.",
+    "canonical": "[https://www.heypsych.com/treatments/ondansetron-zofran](https://www.heypsych.com/treatments/ondansetron-zofran)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-20",
+    "lastUpdated": "2026-01-20",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

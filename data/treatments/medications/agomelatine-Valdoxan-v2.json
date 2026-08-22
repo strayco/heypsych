@@ -1,66 +1,153 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "agomelatine-valdoxan",
-  "type": "medication",
-  "name": "Agomelatine (Valdoxan)",
-  "summary": "An atypical, melatonergic antidepressant that helps reset disrupted sleep–wake cycles and treats major depressive disorder (not marketed in the U.S.).",
-  "description": "Agomelatine is a novel antidepressant that acts as an agonist at melatonin MT1 and MT2 receptors and as an antagonist at serotonin 5-HT2C receptors. Through this dual action it helps resynchronize circadian rhythms and indirectly increases norepinephrine and dopamine release in the frontal cortex, contributing to its antidepressant effects.",
-  "patient_summary": "Agomelatine is an antidepressant tablet taken at night. It works partly by helping your body’s internal clock get back on track, which can improve both mood and sleep. Because it can affect the liver, regular blood tests are needed. It is not currently available in the United States.",
-  "category": "medications/antidepressants",
-  "metadata": {
-    "drug_classes": [
-      "Melatonergic Antidepressant",
-      "Atypical Antidepressant",
-      "5-HT2C Antagonist"
-    ],
+  "identity": {
+    "slug": "agomelatine-valdoxan",
+    "name": "Agomelatine (Valdoxan)",
+    "generic_name": "agomelatine",
     "brand_names": [
       "Valdoxan",
       "Thymanax"
     ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": 2009,
-    "pharmacologic_category": "Melatonergic Antidepressant",
-    "published_date": "2025-11-28T00:00:00Z",
-    "last_updated": "2025-11-28T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-28T00:00:00Z",
-      "reviewer_name": "John Lee, MD"
-    },
     "wikidata_qid": "Q415810"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major Depressive Disorder"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "primary_treatment",
-        "context": "Considered a first-line option for major depressive episodes in adults, particularly when sleep–wake disruption is a prominent feature."
-      }
-    ],
-    "contraindications": [
-      "Hepatic impairment/active liver disease",
-      "Concurrent use with potent CYP1A2 inhibitors (e.g., fluvoxamine, ciprofloxacin)"
-    ],
-    "efficacy_response": {
-      "metric": "Remission rate vs. placebo (Pooled Analysis)",
-      "percentage_value": "26.3%",
-      "comparison_data": "20.1% for placebo (NNT=17)",
-      "patient_text": "In clinical trials, about 26 out of 100 people taking agomelatine went into remission from depression, compared with about 20 out of 100 taking a placebo. The benefit is modest but real, and the medicine is often chosen for its relatively gentle side effect profile.",
-      "citation_tag": "PMC7932987"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antidepressants",
+    "drug_classes": [
+      "Melatonergic Antidepressant",
+      "Atypical Antidepressant",
+      "5-HT2C Antagonist"
+    ]
+  },
+  "summary": "An atypical, melatonergic antidepressant that helps reset disrupted sleep–wake cycles and treats major depressive disorder (not marketed in the U.S.).",
+  "description": "Agomelatine is a novel antidepressant that acts as an agonist at melatonin MT1 and MT2 receptors and as an antagonist at serotonin 5-HT2C receptors. Through this dual action it helps resynchronize circadian rhythms and indirectly increases norepinephrine and dopamine release in the frontal cortex, contributing to its antidepressant effects.",
+  "patient_summary": "Agomelatine is an antidepressant tablet taken at night. It works partly by helping your body’s internal clock get back on track, which can improve both mood and sleep. Because it can affect the liver, regular blood tests are needed. It is not currently available in the United States.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "primary_indication",
+          "context": "Considered a first-line option for major depressive episodes in adults, particularly when sleep–wake disruption is a prominent feature.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "metabolism": "Hepatic, primarily by CYP1A2 (90%) and CYP2C9 (10%)",
-      "excretion": "Urine (as metabolites)",
-      "half_life": "1-2 hours",
-      "bioavailability": "Very low (approx. 5%)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Initial mood improvements may appear within 1–2 weeks.; Full antidepressant response is typically assessed over 4–6 weeks.; Sleep and circadian rhythm benefits often appear early in the course of treatment.; Ongoing benefit is maintained only while the medication is continued and liver function remains normal."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Headache"
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "6%"
+        },
+        {
+          "effect": "Nausea"
+        },
+        {
+          "effect": "Somnolence"
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "3%"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hepatotoxicity (Severe liver injury/elevated transaminases >3x ULN)"
+        },
+        {
+          "risk": "Suicidal ideation or tendencies (monitor mood closely)"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Hepatic impairment/active liver disease"
+        },
+        {
+          "contraindication": "Concurrent use with potent CYP1A2 inhibitors (e.g., fluvoxamine, ciprofloxacin)"
+        }
+      ],
+      "precautions": [
+        "Hepatotoxicity: Regular monitoring of liver function (LFTs) is mandatory before starting treatment and at weeks 3, 6, 12, and 24, or whenever clinically indicated.",
+        "Discontinue treatment if transaminase levels rise to more than 3 times the upper limit of normal (ULN).",
+        "As with all antidepressants, there is a risk of worsening depression or emergent suicidal thoughts, particularly early in treatment or after dose changes; close monitoring is needed."
+      ],
+      "interactions": [
+        {
+          "interactant": "Potent CYP1A2 inhibitors (e.g., fluvoxamine, ciprofloxacin)",
+          "mechanism": "Marked elevation of agomelatine concentrations (up to roughly 60-fold), greatly increasing the risk of liver toxicity.",
+          "action": "Contraindicated. Do not co-prescribe."
+        },
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive risk of liver injury and impaired judgment or coordination.",
+          "action": "Avoid or strictly limit alcohol intake while on this medication."
+        },
+        {
+          "interactant": "Heavy Smoking (induces CYP1A2)",
+          "mechanism": "Increased CYP1A2 activity may lower agomelatine levels, potentially reducing antidepressant effect.",
+          "action": "Inform your prescriber if you are a heavy smoker; dose and response may need closer monitoring."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Liver Function Tests (LFTs) at baseline and at weeks 3, 6, 12, and 24, and thereafter when clinically indicated."
+        },
+        {
+          "parameter": "Clinical monitoring of mood, anxiety, and suicidal ideation, particularly during initiation and dose changes."
+        },
+        {
+          "parameter": "Sleep quality and circadian rhythm patterns (e.g., onset of sleep, nighttime awakenings, daytime functioning)."
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Use only if the potential benefit justifies the potential risk to the fetus; human data are limited (often categorized as Pregnancy Category C).",
+        "lactation": "It is unclear whether agomelatine is excreted in human breast milk. Use with caution and weigh the benefits of treatment against potential risks to the nursing infant.",
+        "pediatric": "Safety and effectiveness in children and adolescents have not been established; not recommended for use in this age group.",
+        "geriatric": "Use cautiously in older adults, with close attention to liver function and comorbidities. Aim for the lowest effective dose."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2009
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "bioavailability": "Very low (approx. 5%)",
+          "half_life": "1-2 hours",
+          "metabolism": "Hepatic, primarily by CYP1A2 (90%) and CYP2C9 (10%)",
+          "excretion": "Urine (as metabolites)"
+        },
+        "dosing": {
+          "max_dose": "50 mg/day"
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Physiologic withdrawal symptoms are not typically expected when stopping agomelatine. A formal taper is usually unnecessary at 25 mg. For patients on 50 mg daily, some clinicians prefer to reduce to 25 mg for about a week before stopping, particularly in those who are sensitive to medication changes."
+        }
+      }
     }
   },
   "sections": [
@@ -75,7 +162,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Everyone responds differently, but these are common experiences people report while taking agomelatine:",
       "items": [
         {
           "category": "Sleep and Rhythm",
@@ -111,7 +197,8 @@
             "It was easier to tolerate than some antidepressants, even if the effect wasn’t dramatic."
           ]
         }
-      ]
+      ],
+      "intro": "Everyone responds differently, but these are common experiences people report while taking agomelatine:"
     },
     {
       "type": "onset_duration",
@@ -127,10 +214,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "A pooled meta-analysis reported a remission rate of 26.3% with agomelatine versus 20.1% with placebo (Number Needed to Treat (NNT) = 17). Overall antidepressant efficacy is modest, but agomelatine tends to be well tolerated, with fewer treatment discontinuations due to side effects compared with several SSRIs and venlafaxine.",
       "metric": "Remission Rate vs. Placebo",
       "value": "26.3%",
       "comparison": "20.1% for placebo",
-      "text": "A pooled meta-analysis reported a remission rate of 26.3% with agomelatine versus 20.1% with placebo (Number Needed to Treat (NNT) = 17). Overall antidepressant efficacy is modest, but agomelatine tends to be well tolerated, with fewer treatment discontinuations due to side effects compared with several SSRIs and venlafaxine.",
       "clinical_details": "Gartlehner et al. (2021) conducted a comparative efficacy and acceptability meta-analysis of antidepressants for acute treatment of major depressive disorder. Agomelatine showed a remission rate of 26.3% versus 20.1% for placebo (NNT=17). While the effect size is modest, it demonstrates a real antidepressant effect, and agomelatine was among the better-tolerated options with respect to treatment discontinuation.",
       "patient_text": "Agomelatine helps some people recover from depression, but the effect size is moderate. One of its main advantages is that many people find it easier to stay on than older antidepressants, especially because it tends to cause fewer sexual problems and less weight gain.",
       "citation": {
@@ -293,25 +380,20 @@
       ]
     }
   ],
-  "seo": {
-    "title": "Valdoxan (Agomelatine): Dosing, Side Effects & Liver Monitoring Guide",
-    "description": "In-depth guide to Agomelatine (Valdoxan) for major depressive disorder: bedtime dosing (25–50 mg), melatonergic mechanism of action, required liver monitoring schedule, and its low rates of sexual dysfunction and weight gain. Not available in the U.S.",
-    "canonical": "https://www.heypsych.com/treatments/agomelatine-valdoxan",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "john-lee-md"
-    ],
-    "reviewBoard": "official",
-    "lastReviewed": "2025-11-28",
-    "lastUpdated": "2025-11-28",
-    "citations": [
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7932987/",
-      "https://www.ema.europa.eu/en/medicines/human/EPAR/valdoxan"
-    ],
-    "reviewStatement": "This article has been medically reviewed and cross-checked against EMA product information and contemporary comparative antidepressant efficacy data."
-  },
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Gartlehner G, et al. Comparative efficacy and acceptability of antidepressants in the acute treatment of major depressive disorder. BMC Med. 2021",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7932987/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "EMA Product Information",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/valdoxan"
+    }
+  ],
   "faqs": [
     {
       "q": "What is Agomelatine (Valdoxan) used for?",
@@ -333,5 +415,24 @@
       "q": "Does Agomelatine cause weight gain or sexual side effects?",
       "a": "Agomelatine is generally not associated with significant weight gain or sexual dysfunction. For people who have had troublesome sexual or weight-related side effects on other antidepressants such as SSRIs or SNRIs, agomelatine may be a more comfortable alternative, if available and appropriate."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Valdoxan (Agomelatine): Dosing, Side Effects & Liver Monitoring Guide",
+    "description": "In-depth guide to Agomelatine (Valdoxan) for major depressive disorder: bedtime dosing (25–50 mg), melatonergic mechanism of action, required liver monitoring schedule, and its low rates of sexual dysfunction and weight gain. Not available in the U.S.",
+    "canonical": "https://www.heypsych.com/treatments/agomelatine-valdoxan",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "john-lee-md"
+    ],
+    "reviewBoard": "official",
+    "lastReviewed": "2025-11-28",
+    "lastUpdated": "2025-11-28",
+    "citations": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7932987/",
+      "https://www.ema.europa.eu/en/medicines/human/EPAR/valdoxan"
+    ],
+    "reviewStatement": "This article has been medically reviewed and cross-checked against EMA product information and contemporary comparative antidepressant efficacy data."
+  }
 }

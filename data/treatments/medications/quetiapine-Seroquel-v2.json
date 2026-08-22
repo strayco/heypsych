@@ -1,102 +1,281 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "quetiapine-seroquel",
-  "type": "medication",
-  "name": "Quetiapine (Seroquel)",
-  "summary": "Second-generation antipsychotic used for bipolar disorder, schizophrenia, and as an add-on for major depression. Often causes sedation and weight gain; can affect blood sugar, cholesterol, and heart rhythm—especially at higher doses or with other risk factors.",
-  "description": "Quetiapine (Seroquel) is an atypical antipsychotic that can stabilize mood, reduce psychotic symptoms, and (at lower doses) help with sleep and anxiety in some people. It can be very sedating and is known for metabolic side effects like weight gain, higher triglycerides, and increased blood sugar. It can also cause orthostatic dizziness and, rarely, QTc prolongation—so dosing and monitoring matter. It is not approved for dementia-related psychosis due to increased mortality risk in older adults.",
-  "patient_summary": "Quetiapine (Seroquel) can help with bipolar mood episodes, schizophrenia symptoms, and can be added to antidepressants for major depression. It can also be used off-label for anxiety or insomnia in select cases. Biggest tradeoffs: sleepiness, dizziness/low blood pressure, and metabolic changes (weight, cholesterol, blood sugar). It is not approved for dementia-related psychosis because antipsychotics increase death risk in that group.",
-  "category": "medications/antipsychotics",
-  "metadata": {
-    "drug_classes": [
-      "Second Generation (Atypical) Antipsychotic",
-      "Antimanic Agent"
-    ],
+  "identity": {
+    "slug": "quetiapine-seroquel",
+    "name": "Quetiapine (Seroquel)",
+    "generic_name": "quetiapine",
     "brand_names": [
       "Seroquel",
       "Seroquel XR"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": "Not applicable for this medication.",
-    "pharmacologic_category": "Second-generation (atypical) antipsychotic",
-    "published_date": "2025-12-30T00:00:00Z",
-    "last_updated": "2025-12-30T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-30T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Bipolar I Disorder (acute mania; bipolar depression; maintenance as monotherapy or adjunct depending on formulation/plan)",
-      "Major Depressive Disorder (adjunctive therapy; XR labeled)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Used to reduce hallucinations, delusions, disorganization, and agitation; titration is usually gradual to balance symptom control with sedation and orthostatic side effects."
-      },
-      {
-        "slug": "bipolar-disorder",
-        "relationship": "primary_treatment",
-        "context": "Used across bipolar illness: acute mania/mixed features (higher doses) and bipolar depression (often a bedtime-target dose)."
-      },
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "adjunct",
-        "context": "Used as an add-on when antidepressants alone aren’t enough; XR is a labeled option for adjunctive treatment."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "off_label",
-        "context": "Sometimes used in refractory cases as monotherapy or add-on, usually in specialist settings because of sedation and metabolic risks."
-      },
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Sometimes used for insomnia when there is a clear psychiatric comorbidity (like bipolar disorder or severe anxiety) and other options aren’t a fit."
-      },
-      {
-        "slug": "ptsd",
-        "relationship": "off_label",
-        "context": "May be used as an alternative agent for sleep, hyperarousal, or severe agitation, typically as adjunct to first-line therapies."
-      },
-      {
-        "slug": "ocd",
-        "relationship": "off_label",
-        "context": "May be used as augmentation in treatment-resistant OCD, usually as add-on to an SSRI/SNRI or clomipramine under specialty care."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to quetiapine or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Time to initial symptom improvement (varies by condition)",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Quetiapine can start helping within days for agitation/mania in some people, within about a week for bipolar depression or as add-on for depression, and over 1–6 weeks for schizophrenia symptoms depending on the target and dose. The right question isn’t just “does it work,” but “does it work without causing too much sedation, metabolic change, or dizziness.”",
-      "citation_tag": "Not applicable for this medication."
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antipsychotics",
+    "drug_classes": [
+      "Second Generation (Atypical) Antipsychotic",
+      "Antimanic Agent"
+    ]
+  },
+  "summary": "Second-generation antipsychotic used for bipolar disorder, schizophrenia, and as an add-on for major depression. Often causes sedation and weight gain; can affect blood sugar, cholesterol, and heart rhythm—especially at higher doses or with other risk factors.",
+  "description": "Quetiapine (Seroquel) is an atypical antipsychotic that can stabilize mood, reduce psychotic symptoms, and (at lower doses) help with sleep and anxiety in some people. It can be very sedating and is known for metabolic side effects like weight gain, higher triglycerides, and increased blood sugar. It can also cause orthostatic dizziness and, rarely, QTc prolongation—so dosing and monitoring matter. It is not approved for dementia-related psychosis due to increased mortality risk in older adults.",
+  "patient_summary": "Quetiapine (Seroquel) can help with bipolar mood episodes, schizophrenia symptoms, and can be added to antidepressants for major depression. It can also be used off-label for anxiety or insomnia in select cases. Biggest tradeoffs: sleepiness, dizziness/low blood pressure, and metabolic changes (weight, cholesterol, blood sugar). It is not approved for dementia-related psychosis because antipsychotics increase death risk in that group.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Used to reduce hallucinations, delusions, disorganization, and agitation; titration is usually gradual to balance symptom control with sedation and orthostatic side effects.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "primary_indication",
+          "context": "Used across bipolar illness: acute mania/mixed features (higher doses) and bipolar depression (often a bedtime-target dose).",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "secondary_indication",
+          "context": "Used as an add-on when antidepressants alone aren’t enough; XR is a labeled option for adjunctive treatment."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "off_label",
+          "context": "Sometimes used in refractory cases as monotherapy or add-on, usually in specialist settings because of sedation and metabolic risks."
+        },
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Sometimes used for insomnia when there is a clear psychiatric comorbidity (like bipolar disorder or severe anxiety) and other options aren’t a fit."
+        },
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "Ptsd",
+          "relationship": "off_label",
+          "context": "May be used as an alternative agent for sleep, hyperarousal, or severe agitation, typically as adjunct to first-line therapies."
+        },
+        {
+          "condition_slug": "ocd",
+          "condition_name": "Ocd",
+          "relationship": "off_label",
+          "context": "May be used as augmentation in treatment-resistant OCD, usually as add-on to an SSRI/SNRI or clomipramine under specialty care."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapidly absorbed orally; XR exposure increases with high-fat meals; light meals (~300 calories) have minimal effect on XR exposure",
-      "bioavailability": "Not applicable for this medication.",
-      "onset": "Condition-dependent; sedation can be felt quickly, while mood/psychosis benefits typically build over days to weeks",
-      "peak_plasma": "Immediate release: ~1.5 hours; Extended release: ~6 hours",
-      "half_life": "Quetiapine: ~6–7 hours (adults); active metabolite norquetiapine: ~12 hours",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Primarily hepatic via CYP3A4; forms active metabolite norquetiapine and inactive metabolites",
-      "excretion": "Urine (~73% as metabolites; <1% unchanged) and feces (~20%)",
-      "protein_binding": "83%",
-      "food_effect": "IR with food increases peak and AUC modestly; XR with high-fat meals increases exposure; XR should be taken without food or with a light meal (≤300 calories)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Condition-dependent; sedation can be felt quickly, while mood/psychosis benefits typically build over days to weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Sedation / Drowsiness",
+          "incidence": "18% to 57% (reported ranges vary by study/population and dose)",
+          "notes": "This is one of the most noticeable effects. It can be helpful if sleep is part of the problem—but if you’re using it for mood/psychosis and feel flattened or foggy, the dose/timing may need adjusting."
+        },
+        {
+          "effect": "Orthostatic Hypotension / Dizziness",
+          "incidence": "2% to 7% in adults; higher rates reported in some older-adult data",
+          "notes": "Lightheadedness is most common in the first days of starting or after dose increases. Hydration, slower titration, and reviewing other blood-pressure-lowering meds can help."
+        },
+        {
+          "effect": "Dry Mouth (Xerostomia)",
+          "incidence": "Up to 9% to 44% (varies by age group and reporting source)",
+          "notes": "Dry mouth can be annoying and can increase dental risk. Water, sugar-free gum, and dental hygiene matter more than people think."
+        },
+        {
+          "effect": "Weight Gain / Increased Appetite",
+          "incidence": "Weight gain reported 4% to 23% (significant gain possible over time)",
+          "notes": "This can happen fast and can be dramatic for some people. If weight is climbing early, it’s worth intervening early (nutrition plan, activity, and sometimes medication strategy changes)."
+        },
+        {
+          "effect": "Metabolic changes (lipids/glucose)",
+          "incidence": "Triglycerides 8% to 28%; hypercholesterolemia 7% to 18%; hyperglycemia reported",
+          "notes": "Even if you feel fine, labs can shift. That’s why baseline and follow-up monitoring is part of responsible prescribing."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "2% to 10%",
+          "notes": "Dose-related anticholinergic effects can contribute. Constipation can get severe if ignored—bring it up early so it’s manageable."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Increased mortality in elderly patients with dementia-related psychosis (class warning)"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (rare): fever, rigidity, altered mental status, autonomic instability—EMERGENCY"
+        },
+        {
+          "risk": "Severe metabolic complications (rare but real): new-onset diabetes, diabetic ketoacidosis, severe hypertriglyceridemia, pancreatitis"
+        },
+        {
+          "risk": "QT prolongation and rare torsades de pointes (usually overdose or multiple risk factors): palpitations, syncope—urgent evaluation"
+        },
+        {
+          "risk": "Severe hypotension/syncope and falls, especially in older adults or during rapid titration"
+        },
+        {
+          "risk": "Blood dyscrasias (rare): leukopenia, neutropenia, thrombocytopenia; higher concern with low baseline counts or prior history"
+        },
+        {
+          "risk": "Hepatotoxicity (rare severe injury): jaundice, dark urine, severe fatigue; stop and evaluate"
+        },
+        {
+          "risk": "Tardive dyskinesia (risk increases with duration and total exposure): abnormal involuntary movements"
+        },
+        {
+          "risk": "Angioedema/hypersensitivity (rare): facial/lip/tongue swelling—EMERGENCY"
+        },
+        {
+          "risk": "Temperature dysregulation (rare): heat stroke risk in heat/exertion; reported hypothermia cases"
+        }
+      ],
+      "black_box_warning": "Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Quetiapine is not approved for the treatment of patients with dementia-related psychosis. Antidepressants increased the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies. Monitor closely for clinical worsening and emergence of suicidal thoughts and behaviors, especially during the first weeks and after dose changes.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to quetiapine or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Suicidality monitoring: Watch closely in children, adolescents, and young adults when used in depression contexts; counsel families/caregivers to monitor and communicate changes",
+        "Sedation and falls: Can impair alertness and coordination; higher fall/fracture risk in older adults",
+        "Orthostatic hypotension and syncope: Especially during initiation or rapid titration",
+        "Metabolic effects: Weight gain, triglycerides and cholesterol changes, hyperglycemia/new-onset diabetes; rare severe hypertriglyceridemia and pancreatitis reported",
+        "QTc prolongation: Dose-related risk in susceptible patients; avoid or be cautious with QT-prolonging meds, electrolyte issues, or baseline prolonged QTc",
+        "Neuroleptic malignant syndrome (rare): Medical emergency—fever, rigidity, confusion, autonomic instability",
+        "Tardive dyskinesia/EPS: Lower risk than many antipsychotics, but not zero—risk rises with dose, duration, and vulnerability",
+        "Blood dyscrasias (rare): Leukopenia/neutropenia/thrombocytopenia reported; higher concern with low baseline counts or history",
+        "Catatonia: Antipsychotics aren’t indicated for catatonia and may worsen outcomes; specialist input is essential",
+        "Hepatic impairment: Clearance reduced; start low and titrate slowly; avoid in severe cirrhosis (high risk)"
+      ],
+      "interactions": [
+        {
+          "interactant": "Strong CYP3A4 inhibitors (example: certain azole antifungals, some macrolides, some HIV meds)",
+          "mechanism": "Higher quetiapine levels → more sedation, hypotension, and side effects; toxicity risk rises.",
+          "action": "Avoid or use specialist-guided dose reduction and close monitoring. If a strong inhibitor is unavoidable, reassess whether quetiapine is the right choice."
+        },
+        {
+          "interactant": "CYP3A4 inducers (example: carbamazepine, phenytoin, rifampin, St. John’s Wort)",
+          "mechanism": "Lower quetiapine levels → reduced efficacy and symptom breakthrough.",
+          "action": "Avoid if possible. If used together, expect reduced effect and need for careful reassessment (and possibly an alternative medication strategy)."
+        },
+        {
+          "interactant": "Other sedatives (alcohol, benzodiazepines, opioids, sedating antihistamines, sleep meds)",
+          "mechanism": "Additive CNS depression → heavy sedation, impaired coordination, falls, and overdose risk (especially with opioids/alcohol).",
+          "action": "Minimize combinations. Avoid alcohol. Use the lowest effective doses and reassess daytime functioning and safety."
+        },
+        {
+          "interactant": "Blood pressure–lowering medications",
+          "mechanism": "More orthostatic hypotension, dizziness, and fainting.",
+          "action": "Go slow with titration, monitor orthostatics, and adjust the overall regimen if syncope/dizziness emerges."
+        },
+        {
+          "interactant": "QT-prolonging medications or electrolyte abnormalities",
+          "mechanism": "Higher QTc prolongation risk → rare but serious arrhythmias.",
+          "action": "Review QT risk before starting and after major dose changes; correct electrolytes; consider ECG monitoring in higher-risk patients."
+        },
+        {
+          "interactant": "Valproate",
+          "mechanism": "Reports suggest increased quetiapine exposure and higher rates of blood count abnormalities in some cases.",
+          "action": "Use thoughtfully, monitor side effects and CBC if clinically indicated, and reassess if excessive sedation or hematologic issues occur."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Sedation and functional impairment: daytime sleepiness, reaction time, work/school performance; reassess after initiation and dose changes"
+        },
+        {
+          "parameter": "Orthostatic vitals and fall risk: especially in older adults and during early titration; ask about dizziness, near-falls, fainting"
+        },
+        {
+          "parameter": "Weight/BMI: baseline, early follow-up (weeks 8–12), then periodic monitoring; intervene early if rapid gain occurs"
+        },
+        {
+          "parameter": "Metabolic labs: fasting glucose/HbA1c and lipid panel at baseline and follow-up (often around 3–4 months), then at least annually or more often if abnormal"
+        },
+        {
+          "parameter": "Blood pressure and heart rate: monitor for tachycardia and BP changes; pediatric patients can show hypertension signals"
+        },
+        {
+          "parameter": "Movement side effects: akathisia, parkinsonism, dystonia, and tardive dyskinesia; use a standardized scale periodically (and more often if high risk)"
+        },
+        {
+          "parameter": "ECG/QTc monitoring: as clinically indicated—baseline if risk factors; recheck after major dose increases or adding QT-prolonging meds"
+        },
+        {
+          "parameter": "CBC: as clinically indicated, especially if low baseline WBC/ANC or history of drug-induced leukopenia/neutropenia"
+        },
+        {
+          "parameter": "Liver function tests: baseline and follow-up when hepatic disease is present or if symptoms suggest liver injury; in cirrhosis, more structured monitoring early in treatment is often used"
+        },
+        {
+          "parameter": "Thyroid labs (TSH/T4): if symptoms suggest thyroid changes or if clinically indicated"
+        },
+        {
+          "parameter": "Mental status and safety: suicidality monitoring (especially in younger patients when used in depression contexts), worsening agitation, emerging mania, psychosis relapse signals"
+        },
+        {
+          "parameter": "Hyponatremia/SIADH risk in older adults: consider sodium monitoring with initiation and dose adjustments in higher-risk patients"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Quetiapine crosses the placenta. Large-class data for atypical antipsychotics do not show a clear major increase in congenital malformations overall, but individual outcome data vary and the safest plan depends on the psychiatric risk of relapse. Third-trimester exposure to antipsychotics can lead to newborn EPS and/or withdrawal symptoms (agitation, feeding issues, tone changes, respiratory distress, somnolence, tremor). Tapering late in pregnancy solely to reduce newborn symptoms is generally not recommended; instead, use the lowest effective dose and monitor. Quetiapine has meaningful metabolic risk; monitor for gestational diabetes as part of standard prenatal care.",
+        "lactation": "Quetiapine is present in breast milk, and published reports typically suggest very low relative infant doses. Breastfeeding is often considered acceptable when infant exposure is low, but infants should still be monitored for sedation, poor feeding, irritability, or developmental concerns—especially if premature, low birth weight, or if other sedatives are used. Use the lowest effective dose and avoid unnecessary medication combinations.",
+        "pediatric": "Not approved for use in pediatric patients younger than 10 years. For older pediatric patients, quetiapine may be used for specific severe psychiatric conditions in a comprehensive treatment program, with close monitoring for weight gain, metabolic effects, blood pressure changes, and movement side effects.",
+        "geriatric": "High-risk medication in adults ≥65. Avoid for behavioral problems associated with dementia or delirium unless nonpharmacologic approaches failed and there is a risk of harm to self/others. If used, start low, titrate slowly, reassess often, and attempt deprescribing when appropriate. For labeled indications like schizophrenia or bipolar disorder, use may be appropriate but requires careful monitoring for falls, orthostasis, sedation, metabolic changes, hyponatremia/SIADH, and QT risk.",
+        "renal_impairment": "No dosage adjustment is generally needed across degrees of kidney impairment; quetiapine is not significantly removed by dialysis.",
+        "hepatic_impairment": "Hepatic impairment reduces clearance and increases exposure. In cirrhosis, start very low (IR 25 mg once daily) and titrate gradually; avoid in severe cirrhosis when risk is high. Monitor liver biochemistries when clinically indicated; in cirrhosis, baseline and early follow-up labs are often recommended."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapidly absorbed orally; XR exposure increases with high-fat meals; light meals (~300 calories) have minimal effect on XR exposure",
+          "bioavailability": "Not applicable for this medication.",
+          "peak_plasma": "Immediate release: ~1.5 hours; Extended release: ~6 hours",
+          "half_life": "Quetiapine: ~6–7 hours (adults); active metabolite norquetiapine: ~12 hours",
+          "metabolism": "Primarily hepatic via CYP3A4; forms active metabolite norquetiapine and inactive metabolites",
+          "excretion": "Urine (~73% as metabolites; <1% unchanged) and feces (~20%)",
+          "protein_binding": "83%",
+          "food_effect": "IR with food increases peak and AUC modestly; XR with high-fat meals increases exposure; XR should be taken without food or with a light meal (≤300 calories)"
+        },
+        "dosing": {
+          "titration": "Quetiapine dosing is highly diagnosis- and formulation-dependent. Lower doses are often used for sedation/sleep or anxiety-adjacent targets, while schizophrenia and acute mania typically require higher doses. Immediate-release (IR) can be divided 1–3 times daily; extended-release (XR) is usually once daily (often evening) and should be swallowed whole."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Quetiapine isn’t a “stop it suddenly” medication for most people—especially after long-term use. If you stop abruptly, you can get withdrawal-like symptoms and rebound insomnia/anxiety, and your underlying condition can flare. If you’re stopping because of a serious adverse effect, switching strategies may matter more than taper speed."
+        }
+      }
     }
   },
   "sections": [
@@ -122,7 +301,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Quetiapine can feel wildly different depending on dose and what you’re treating (sleep/anxiety vs mood/psychosis). Here’s what people commonly describe:",
       "items": [
         {
           "category": "Sedation / “Knocked out” sleepiness",
@@ -159,7 +337,8 @@
           ],
           "note": "Weight gain, lipid/glucose changes, and orthostatic dizziness are common reasons people stop."
         }
-      ]
+      ],
+      "intro": "Quetiapine can feel wildly different depending on dose and what you’re treating (sleep/anxiety vs mood/psychosis). Here’s what people commonly describe:"
     },
     {
       "type": "onset_duration",
@@ -176,10 +355,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Quetiapine is a core medication in several psychiatric conditions: schizophrenia and bipolar disorder (including bipolar depression), and it’s also used as an add-on option for major depression. Off-label, it may help anxiety or insomnia in select cases—but the benefit often comes from sedation, and that’s not free. The goal is symptom relief with tolerable side effects: stable mood without metabolic harm, psychosis control without disabling daytime sedation, and sleep help without turning the next day into a fog.",
       "metric": "Symptom response depends on diagnosis and dose",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Quetiapine is a core medication in several psychiatric conditions: schizophrenia and bipolar disorder (including bipolar depression), and it’s also used as an add-on option for major depression. Off-label, it may help anxiety or insomnia in select cases—but the benefit often comes from sedation, and that’s not free. The goal is symptom relief with tolerable side effects: stable mood without metabolic harm, psychosis control without disabling daytime sedation, and sleep help without turning the next day into a fog.",
       "clinical_details": "Clinical response is typically evaluated by target symptoms (psychosis, mania, depression, agitation, sleep) and functional outcomes (work/school performance, relationships, self-care), while tracking adverse effects closely (weight, glucose, lipids, orthostasis, QTc risk, EPS/akathisia, and rare syndromes like NMS).",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -282,7 +461,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Quetiapine is primarily metabolized by CYP3A4. Interactions and additive side effects (sedation, low blood pressure, QTc effects) are the big practical issues.",
       "items": [
         {
           "with": "Strong CYP3A4 inhibitors (example: certain azole antifungals, some macrolides, some HIV meds)",
@@ -314,7 +492,8 @@
           "risk": "Reports suggest increased quetiapine exposure and higher rates of blood count abnormalities in some cases.",
           "action": "Use thoughtfully, monitor side effects and CBC if clinically indicated, and reassess if excessive sedation or hematologic issues occur."
         }
-      ]
+      ],
+      "intro": "Quetiapine is primarily metabolized by CYP3A4. Interactions and additive side effects (sedation, low blood pressure, QTc effects) are the big practical issues."
     },
     {
       "type": "tapering",
@@ -425,21 +604,6 @@
       "text": "Quetiapine is a first-line or core option in bipolar disorder (including bipolar depression) and a standard option for schizophrenia. In major depression, it’s usually considered when a person has had an inadequate response to antidepressants alone (as an add-on). Off-label use for anxiety or insomnia can be reasonable in select cases—especially when there’s bipolar disorder or significant agitation in the picture—but it’s not a casual sleep med. If the main goal is sleep and the person doesn’t have a strong psychiatric indication, the metabolic and cardiovascular tradeoffs often outweigh the benefit."
     }
   ],
-  "seo": {
-    "title": "Quetiapine (Seroquel): Uses, Dosage, Side Effects, Weight Gain & Safety",
-    "description": "Quetiapine (Seroquel/Seroquel XR) for bipolar disorder, schizophrenia, and depression add-on: dosing, sedation, weight gain, metabolic labs, QT risk, interactions, tapering, and special populations.",
-    "canonical": "[https://www.heypsych.com/treatments/quetiapine-seroquel](https://www.heypsych.com/treatments/quetiapine-seroquel)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is quetiapine (Seroquel) used for?",
@@ -481,5 +645,20 @@
       "q": "Is quetiapine safe in pregnancy or breastfeeding?",
       "a": "It can be used in pregnancy or breastfeeding when clinically indicated, but it should be individualized. In pregnancy, the big issues are relapse risk if you stop treatment and metabolic monitoring (including gestational diabetes screening as part of routine prenatal care). In breastfeeding, reported infant exposure is generally low, but infants should be monitored for sedation or feeding issues—especially if premature or if other sedatives are involved."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Quetiapine (Seroquel): Uses, Dosage, Side Effects, Weight Gain & Safety",
+    "description": "Quetiapine (Seroquel/Seroquel XR) for bipolar disorder, schizophrenia, and depression add-on: dosing, sedation, weight gain, metabolic labs, QT risk, interactions, tapering, and special populations.",
+    "canonical": "[https://www.heypsych.com/treatments/quetiapine-seroquel](https://www.heypsych.com/treatments/quetiapine-seroquel)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

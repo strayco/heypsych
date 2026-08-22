@@ -1,20 +1,24 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "phosphatidylcholine",
-  "type": "supplement",
-  "name": "Phosphatidylcholine",
-  "summary": "Phosphatidylcholine is a major phospholipid component of cell membranes and a source of choline, supporting liver health, cognitive function, and cell membrane integrity.",
-  "description": "Phosphatidylcholine (PC) is a naturally occurring phospholipid found in high concentrations in soybeans, eggs, sunflower seeds, and other foods. It serves as a key source of choline, an essential nutrient required for acetylcholine synthesis, membrane repair, and lipid metabolism. Supplementation has been studied for supporting liver health (including fatty liver disease and hepatoprotection), enhancing cognitive function, and improving cell membrane stability. While widely available as a dietary supplement, clinical evidence for psychiatric and cognitive indications remains preliminary. PC is often used in functional medicine and integrative approaches for detoxification and metabolic support.",
-  "category": "supplements",
-  "tags": [
-    "phospholipid",
-    "choline source",
-    "cognitive health",
-    "liver support"
-  ],
-  "metadata": {
-    "compound_type": "Phospholipid",
-    "natural_source": "Egg yolk, soybeans, sunflower seeds, liver, peanuts",
+  "identity": {
+    "slug": "phosphatidylcholine",
+    "name": "Phosphatidylcholine",
+    "brand_names": [
+      "Leci-PS",
+      "PhosChol",
+      "Lecithin (phosphatidylcholine-rich)"
+    ],
+    "aliases": [
+      "PC",
+      "lecithin (PC-rich)",
+      "choline phosphoglyceride"
+    ],
+    "wikidata_qid": "Q422677"
+  },
+  "taxonomy": {
+    "modality": "supplement",
+    "category": "supplements",
     "therapeutic_categories": [
       "Hepatology",
       "Neurology",
@@ -25,76 +29,154 @@
       "Neurotransmitter precursor (acetylcholine)",
       "Lipid metabolism support"
     ],
-    "administration_routes": [
-      "Oral",
-      "Intravenous (clinical use)"
-    ],
-    "prescription_status": "Over-the-Counter Supplement",
-    "controlled_substance": false,
-    "generic_available": true,
-    "brand_names": [
-      "Leci-PS",
-      "PhosChol",
-      "Lecithin (phosphatidylcholine-rich)"
-    ],
-    "dea_schedule": null,
-    "fda_status": "Dietary supplement (not FDA-approved for medical indications)",
-    "age_groups": [
-      "Adult"
-    ],
-    "treatment_duration": [
-      "Short-term",
-      "Long-term"
-    ],
-    "specialty_areas": [
-      "Hepatology",
-      "Neurology",
-      "Integrative Medicine"
-    ],
-    "wikidata_qid": "Q422677"
-  },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Support for liver health and detoxification",
-      "Nutritional support as a choline source",
-      "Cell membrane repair and stabilization"
-    ],
-    "off_label_uses": [
-      "Adjunctive support in cognitive decline and dementia",
-      "Mood support via acetylcholine and methylation pathways",
-      "IV use in lipid apheresis or hepatology (investigational)"
-    ],
-    "contraindications": [
-      "Soy allergy (if derived from soy)",
-      "Excessive choline intake may cause hypotension, sweating, or fishy odor"
-    ],
-    "monitoring_required": [
-      "GI tolerance",
-      "Choline-related side effects at high doses"
-    ],
-    "efficacy_rating": {
-      "liver_health": 4,
-      "cognition": 2,
-      "mood": 2,
-      "cell_membrane_support": 3
-    }
-  },
-  "search_metadata": {
-    "searchable_terms": [
-      "Phosphatidylcholine",
-      "PC",
-      "lecithin",
-      "choline supplement"
-    ],
-    "synonyms": [
-      "PC",
-      "lecithin (PC-rich)",
-      "choline phosphoglyceride"
-    ],
-    "common_misspellings": [
-      "phosphatidcholine",
-      "phosphaditylcholine"
+    "tags": [
+      "phospholipid",
+      "choline source",
+      "cognitive health",
+      "liver support"
     ]
+  },
+  "summary": "Phosphatidylcholine is a major phospholipid component of cell membranes and a source of choline, supporting liver health, cognitive function, and cell membrane integrity.",
+  "description": "Phosphatidylcholine (PC) is a naturally occurring phospholipid found in high concentrations in soybeans, eggs, sunflower seeds, and other foods. It serves as a key source of choline, an essential nutrient required for acetylcholine synthesis, membrane repair, and lipid metabolism. Supplementation has been studied for supporting liver health (including fatty liver disease and hepatoprotection), enhancing cognitive function, and improving cell membrane stability. While widely available as a dietary supplement, clinical evidence for psychiatric and cognitive indications remains preliminary. PC is often used in functional medicine and integrative approaches for detoxification and metabolic support.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "support-for-liver-health-and-detoxification",
+          "condition_name": "Support for liver health and detoxification",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "nutritional-support-as-a-choline-source",
+          "condition_name": "Nutritional support as a choline source",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "cell-membrane-repair-and-stabilization",
+          "condition_name": "Cell membrane repair and stabilization",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "adjunctive-support-in-cognitive-decline-and-dementia",
+          "condition_name": "Adjunctive support in cognitive decline and dementia",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "mood-support-via-acetylcholine-and-methylation-pathways",
+          "condition_name": "Mood support via acetylcholine and methylation pathways",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "iv-use-in-lipid-apheresis-or-hepatology-investigational",
+          "condition_name": "IV use in lipid apheresis or hepatology (investigational)",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "efficacy_ratings": {
+        "liver_health": {
+          "rating": 4
+        },
+        "cognition": {
+          "rating": 2
+        },
+        "mood": {
+          "rating": 2
+        },
+        "cell_membrane_support": {
+          "rating": 3
+        }
+      }
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Long-term"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Intravenous (clinical use)"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "GI upset"
+        },
+        {
+          "effect": "Loose stools"
+        },
+        {
+          "effect": "Nausea"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Hypotension or excessive cholinergic symptoms with very high intake"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Soy allergy (if derived from soy)"
+        },
+        {
+          "contraindication": "Excessive choline intake may cause hypotension, sweating, or fishy odor"
+        }
+      ],
+      "precautions": [
+        "Excessive intake of choline-containing compounds may cause fishy body odor.",
+        "Caution in individuals with soy allergy (soy-derived PC)."
+      ],
+      "interactions": [
+        {
+          "interactant": "Anticholinergic drugs",
+          "mechanism": "May reduce effectiveness",
+          "action": "Monitor clinical effect"
+        },
+        {
+          "interactant": "Cholinergic drugs (e.g., donepezil, rivastigmine)",
+          "mechanism": "Additive cholinergic activity",
+          "action": "Monitor for cholinergic side effects"
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "GI tolerance"
+        },
+        {
+          "parameter": "Signs of excess choline (sweating, odor, hypotension)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Generally regarded as safe from dietary sources; supplement use should be supervised",
+        "lactation": "Likely safe in dietary amounts; limited data for high-dose supplementation",
+        "pediatric": "Not routinely recommended outside clinical contexts",
+        "geriatric": "Generally well tolerated; may have added value in cognitive health support"
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": false,
+      "controlled_substance": {
+        "is_controlled": false
+      },
+      "generic_available": true
+    },
+    "modality_details": {
+      "modality": "supplement",
+      "details": {
+        "compound_type": "Phospholipid",
+        "natural_source": "Egg yolk, soybeans, sunflower seeds, liver, peanuts",
+        "regulatory_notes": "Dietary supplement (not FDA-approved for medical indications)"
+      }
+    }
   },
   "sections": [
     {
@@ -212,6 +294,43 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "NCCIH – Choline",
+      "url": "https://www.nccih.nih.gov/health/choline"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Zeisel SH. Choline: Critical role during fetal development and dietary requirements in adults. Annu Rev Nutr. 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16848706/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "Li Z, et al. Phosphatidylcholine and liver disease. Am J Clin Nutr. 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16365067/"
+    }
+  ],
+  "search_metadata": {
+    "searchable_terms": [
+      "Phosphatidylcholine",
+      "PC",
+      "lecithin",
+      "choline supplement"
+    ],
+    "synonyms": [
+      "PC",
+      "lecithin (PC-rich)",
+      "choline phosphoglyceride"
+    ],
+    "common_misspellings": [
+      "phosphatidcholine",
+      "phosphaditylcholine"
+    ]
+  },
   "seo": {
     "title": "Phosphatidylcholine – Choline-Rich Phospholipid for Liver and Cognitive Health",
     "description": "Phosphatidylcholine is a phospholipid supplement and choline source used for liver health, cognitive support, and cell membrane integrity. Learn about benefits, dosing, and safety.",

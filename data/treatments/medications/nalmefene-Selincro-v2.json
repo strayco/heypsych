@@ -1,82 +1,210 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "nalmefene-opvee",
-  "type": "medication",
-  "name": "Nalmefene (Opvee, Zurnai)",
-  "summary": "Fast opioid antidote used in emergencies to reverse opioid overdose—especially dangerous slowed or stopped breathing. Can trigger abrupt withdrawal in opioid-dependent people, so expect agitation and vomiting once they wake up.",
-  "description": "Nalmefene is an opioid blocker used for suspected opioid overdose when breathing is slow, irregular, or stopped. It can restore breathing within minutes, and it tends to last longer than naloxone. The tradeoff: if someone is opioid-dependent, it can cause sudden, intense withdrawal (agitation, sweating, vomiting, diarrhea). Even if they wake up, you still need emergency care—overdose can come back, especially with long-acting opioids or when huge doses were taken.",
-  "patient_summary": "Nalmefene is an opioid antidote for suspected overdose. It can restart normal breathing in minutes and may last longer than naloxone, but it can cause abrupt withdrawal in opioid-dependent people. Always call emergency services and keep monitoring—breathing problems can return.",
-  "category": "medications/substance-use-disorders",
-  "metadata": {
-    "drug_classes": [
-      "Opioid Antagonist",
-      "Antidote"
-    ],
+  "identity": {
+    "slug": "nalmefene-opvee",
+    "name": "Nalmefene (Opvee, Zurnai)",
+    "generic_name": "nalmefene",
     "brand_names": [
       "Opvee",
       "Zurnai"
-    ],
-    "administration_routes": [
-      "Intranasal",
-      "Intravenous",
-      "Intramuscular",
-      "Subcutaneous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1995,
-    "pharmacologic_category": "Antidote; Opioid Antagonist",
-    "published_date": "2026-01-22T00:00:00Z",
-    "last_updated": "2026-01-22T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-22T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Known or suspected opioid overdose with respiratory and/or central nervous system (CNS) depression"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "opioid-overdose",
-        "relationship": "emergency_treatment",
-        "context": "Used when opioid overdose is suspected—especially when breathing is slow, irregular, or stopped. It’s emergency rescue medication, not a substitute for medical care."
-      },
-      {
-        "slug": "opioid-use-disorder",
-        "relationship": "harm_reduction",
-        "context": "Often provided to people at higher overdose risk (or their family/friends) as part of overdose prevention and response planning."
-      },
-      {
-        "slug": "sedative-overdose",
-        "relationship": "not_effective",
-        "context": "Nalmefene only works on opioids. If the problem is alcohol, benzodiazepines, or other sedatives without opioids, it won’t reverse that."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to nalmefene or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Reversal of opioid-induced respiratory depression",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "When opioids are the cause of slowed or stopped breathing, nalmefene can rapidly reverse those effects—often within minutes—by blocking opioid receptors. Response depends on the opioid involved, the dose taken, and how quickly rescue medication is given.",
-      "citation_tag": "FDA labeling"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/substance-use-disorders",
+    "drug_classes": [
+      "Opioid Antagonist",
+      "Antidote"
+    ]
+  },
+  "summary": "Fast opioid antidote used in emergencies to reverse opioid overdose—especially dangerous slowed or stopped breathing. Can trigger abrupt withdrawal in opioid-dependent people, so expect agitation and vomiting once they wake up.",
+  "description": "Nalmefene is an opioid blocker used for suspected opioid overdose when breathing is slow, irregular, or stopped. It can restore breathing within minutes, and it tends to last longer than naloxone. The tradeoff: if someone is opioid-dependent, it can cause sudden, intense withdrawal (agitation, sweating, vomiting, diarrhea). Even if they wake up, you still need emergency care—overdose can come back, especially with long-acting opioids or when huge doses were taken.",
+  "patient_summary": "Nalmefene is an opioid antidote for suspected overdose. It can restart normal breathing in minutes and may last longer than naloxone, but it can cause abrupt withdrawal in opioid-dependent people. Always call emergency services and keep monitoring—breathing problems can return.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "known-or-suspected-opioid-overdose-with-respiratory-and-or-central-nervous-system-cns-depression",
+          "condition_name": "Known or suspected opioid overdose with respiratory and/or central nervous system (CNS) depression",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "opioid-overdose",
+          "condition_name": "Opioid Overdose",
+          "relationship": "secondary_indication",
+          "context": "Used when opioid overdose is suspected—especially when breathing is slow, irregular, or stopped. It’s emergency rescue medication, not a substitute for medical care."
+        },
+        {
+          "condition_slug": "opioid-use-disorder",
+          "condition_name": "Opioid Use Disorder",
+          "relationship": "secondary_indication",
+          "context": "Often provided to people at higher overdose risk (or their family/friends) as part of overdose prevention and response planning."
+        },
+        {
+          "condition_slug": "sedative-overdose",
+          "condition_name": "Sedative Overdose",
+          "relationship": "secondary_indication",
+          "context": "Nalmefene only works on opioids. If the problem is alcohol, benzodiazepines, or other sedatives without opioids, it won’t reverse that."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid (route-dependent)",
-      "bioavailability": "IM/SUBQ: ~100%; Intranasal: ~80%",
-      "onset": "IV: 2 to 5 minutes; IM/SUBQ: 5 to 15 minutes; Intranasal: ~2.5 to 5 minutes (range up to hours reported in some data sets)",
-      "peak_plasma": "Intranasal: ~15 minutes (range ~10 minutes to 3 hours); IM: ~2.3 hours; SUBQ: ~1.5 hours",
-      "half_life": "~11 hours (may be longer with severe kidney disease)",
-      "duration": "At fully reversing doses: >4 hours; recurrence of respiratory depression can still occur, especially with long-acting opioids",
-      "metabolism": "Hepatic (primarily glucuronidation to inactive metabolite; trace inactive N-dealkylated metabolite); may undergo enterohepatic recycling",
-      "excretion": "Urine (<5% unchanged) and feces (~17%)",
-      "protein_binding": "45%",
-      "distribution": "Vdss ~8.6 L/kg (adult data)"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "IV: 2 to 5 minutes; IM/SUBQ: 5 to 15 minutes; Intranasal: ~2.5 to 5 minutes (range up to hours reported in some data sets)"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Intranasal",
+        "Intravenous",
+        "Intramuscular",
+        "Subcutaneous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Opioid withdrawal syndrome",
+          "incidence": "Variable (depends on opioid dependence and dose)",
+          "notes": "This is the big one. If the person is opioid-dependent, nalmefene can cause abrupt withdrawal: agitation, sweating, abdominal pain, diarrhea, feverish feelings, nausea/vomiting, tachycardia, and blood pressure swings. Withdrawal can look intense and may require emergency care, but it’s rarely life-threatening by itself."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "Common (reported across formulations)",
+          "notes": "Headache is frequently reported after administration, especially with intranasal dosing. In an overdose situation, treat headache as secondary—breathing and monitoring come first."
+        },
+        {
+          "effect": "Hot flush / feeling hot",
+          "incidence": "Common (noted in labeling; more noticeable in some routes)",
+          "notes": "People may describe a sudden hot, flushed sensation. This can overlap with the stress response and withdrawal symptoms."
+        },
+        {
+          "effect": "Nausea / vomiting",
+          "incidence": "Common (particularly when withdrawal is triggered)",
+          "notes": "Nausea and vomiting can occur as part of withdrawal. Protect the airway—vomiting plus sedation is a dangerous combination."
+        },
+        {
+          "effect": "Nasal discomfort (intranasal)",
+          "incidence": "Common with nasal spray products",
+          "notes": "Burning, nasal pain, congestion, or throat irritation can happen with intranasal administration. It’s unpleasant, but the priority is reversal of respiratory depression."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Pulmonary edema and cardiovascular instability (rare but reported with abrupt opioid reversal): severe shortness of breath, chest pain, pink frothy sputum, new oxygen requirement. MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Severe agitation, confusion, or aggressive behavior (often withdrawal-driven): may require restraint and medical sedation in an emergency setting."
+        },
+        {
+          "risk": "Arrhythmias or extreme blood pressure changes (more likely with preexisting cardiac disease or interacting cardiovascular meds). MEDICAL EMERGENCY."
+        },
+        {
+          "risk": "Recurrent respiratory depression after initial reversal: can happen with long-acting opioids or massive exposures—continuous monitoring is required."
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to nalmefene or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Airway first: Opioid antagonists should be used alongside a patent airway, ventilatory support, oxygen, and circulatory access when possible.",
+        "Withdrawal risk: Nalmefene may precipitate opioid withdrawal syndrome in opioid-dependent patients (agitation, sweating, vomiting, diarrhea, fast heart rate, blood pressure swings).",
+        "Cardiovascular instability: Use caution in people with cardiovascular disease or when the patient is on meds with cardiovascular effects; abrupt reversal has been associated with pulmonary edema, arrhythmias, and severe blood pressure changes.",
+        "Recurrence is real: Respiratory depression can recur even after an initial response—especially with long-acting opioids (e.g., methadone) or repeated high-dose exposures.",
+        "Partial agonists: Reversal may be incomplete for partial opioid agonists (e.g., buprenorphine); larger or repeat doses may be needed, with careful monitoring.",
+        "Sound-alike risk: Nalmefene may be confused with nalbuphine—double-check the vial/device before giving."
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids (natural or synthetic, including high-potency illicit opioids)",
+          "mechanism": "Rapid reversal of opioid effects can trigger abrupt withdrawal in opioid-dependent people. Some may try to override the blockade by taking more opioids, which can lead to re-intoxication and death as nalmefene wears off.",
+          "action": "Use only when overdose is suspected and breathing/CNS depression is present. After reversal, seek emergency care and monitor continuously for recurrence of respiratory depression."
+        },
+        {
+          "interactant": "Partial opioid agonists (e.g., buprenorphine)",
+          "mechanism": "Reversal of respiratory depression may be incomplete; larger or repeat doses may be required. Withdrawal can still be triggered.",
+          "action": "Do not delay emergency care. Continue ventilation support and follow emergency protocols if response is incomplete."
+        },
+        {
+          "interactant": "Medications with adverse cardiovascular effects",
+          "mechanism": "Abrupt reversal plus physiologic stress can worsen blood pressure swings, arrhythmias, or pulmonary edema risk in vulnerable patients.",
+          "action": "Use caution, monitor vitals closely, and treat in a medically supervised setting whenever possible."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Respiratory rate and pattern: watch for recurrent respiratory depression after initial reversal"
+        },
+        {
+          "parameter": "Oxygenation: pulse oximetry and/or arterial blood gas when available"
+        },
+        {
+          "parameter": "Heart rate and rhythm: monitor for tachycardia, arrhythmias, and instability after abrupt reversal"
+        },
+        {
+          "parameter": "Blood pressure: monitor for hypertension or hypotension, especially in patients with cardiac disease"
+        },
+        {
+          "parameter": "Temperature: fever can occur and withdrawal can look like flu symptoms"
+        },
+        {
+          "parameter": "Level of consciousness: track responsiveness, agitation, confusion, and ability to protect airway"
+        },
+        {
+          "parameter": "Vomiting/aspiration risk: protect airway and position patient appropriately (recovery position when breathing normally)"
+        },
+        {
+          "parameter": "Withdrawal severity: agitation, diaphoresis, diarrhea, abdominal pain, nausea/vomiting, irritability—may require medical support"
+        },
+        {
+          "parameter": "Need for repeat dosing: if symptoms return, repeat per dosing instructions while continuing CPR/ventilation support and awaiting emergency care"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human pregnancy outcome data are limited for nalmefene. Based on other opioid antagonists, use can precipitate opioid withdrawal in a pregnant patient and may precipitate withdrawal in the fetus as well. In a life-threatening overdose, administer the antidote when clearly indicated—the risk of untreated hypoxia is immediate and severe.",
+        "lactation": "It is not known if nalmefene is present in breast milk. In an overdose emergency, treat the emergency first. After stabilization, discuss breastfeeding plans and monitoring with a clinician.",
+        "pediatric": "Intranasal nalmefene (Opvee) is indicated for adults and pediatric patients aged 12 years and older for emergency treatment of known or suspected opioid overdose with respiratory and/or CNS depression. Follow product-specific instructions and seek emergency medical care immediately after the first dose.",
+        "geriatric": "Refer to adult dosing. Older adults may have age-related changes in drug distribution that can increase initial concentrations. In practice, the emergency indication drives dosing; monitor closely for blood pressure changes, arrhythmias, and agitation after reversal.",
+        "renal_impairment": "No dosage adjustment is necessary per provided dosing guidance. In severe kidney disease, clearance may be reduced and half-life prolonged; in clinical settings, consider slower IV administration over ~60 seconds to minimize hypertension and dizziness, and monitor longer.",
+        "hepatic_impairment": "No dosage adjustment is necessary per provided dosing guidance. Clearance may be decreased in liver disease, so observe closely for duration and adverse effects after administration."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1995
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid (route-dependent)",
+          "bioavailability": "IM/SUBQ: ~100%; Intranasal: ~80%",
+          "peak_plasma": "Intranasal: ~15 minutes (range ~10 minutes to 3 hours); IM: ~2.3 hours; SUBQ: ~1.5 hours",
+          "half_life": "~11 hours (may be longer with severe kidney disease)",
+          "metabolism": "Hepatic (primarily glucuronidation to inactive metabolite; trace inactive N-dealkylated metabolite); may undergo enterohepatic recycling",
+          "excretion": "Urine (<5% unchanged) and feces (~17%)",
+          "protein_binding": "45%"
+        },
+        "dosing": {
+          "titration": "Nalmefene is emergency rescue dosing for suspected opioid overdose with respiratory and/or CNS depression. In medical settings, airway and ventilation come first (oxygen, assisted breathing, circulation access). Do not keep giving dose after dose once adequate initial reversal has been achieved—over-treatment increases withdrawal and cardiovascular stress without improving outcomes."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Not applicable for this medication."
+        }
+      }
     }
   },
   "sections": [
@@ -96,7 +224,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This is not a “daily med” experience. It’s an emergency moment. Here’s what people commonly report after nalmefene is given and they start coming back:",
       "items": [
         {
           "category": "Breathing Comes Back (Fast)",
@@ -131,7 +258,8 @@
             "Nose discomfort was real—even when it worked."
           ]
         }
-      ]
+      ],
+      "intro": "This is not a “daily med” experience. It’s an emergency moment. Here’s what people commonly report after nalmefene is given and they start coming back:"
     },
     {
       "type": "onset_duration",
@@ -148,10 +276,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Nalmefene works when opioids are the problem. It blocks opioid receptors, which can reverse slowed or stopped breathing and severe sedation. But it’s not magic and it’s not “one and done.” If the opioid is long-acting, super potent, or taken in massive amounts, breathing problems can come back even after an initial good response—so ongoing monitoring and emergency care are still required.",
       "metric": "Reversal of opioid-induced respiratory depression",
       "value": "Rapid (minutes), route-dependent",
       "comparison": "Not applicable for this medication.",
-      "text": "Nalmefene works when opioids are the problem. It blocks opioid receptors, which can reverse slowed or stopped breathing and severe sedation. But it’s not magic and it’s not “one and done.” If the opioid is long-acting, super potent, or taken in massive amounts, breathing problems can come back even after an initial good response—so ongoing monitoring and emergency care are still required.",
       "clinical_details": "Nalmefene has high affinity for opioid receptors and a longer duration of action than naloxone at fully reversing doses, which can be helpful in some overdose patterns. The tradeoff is that longer and stronger blockade can also mean longer and more intense withdrawal symptoms in opioid-dependent patients.",
       "citation": {
         "authors": "FDA Prescribing Information",
@@ -235,7 +363,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Nalmefene’s ‘interaction’ is the point: it blocks opioids. That’s lifesaving in overdose—and brutal in opioid dependence.",
       "items": [
         {
           "with": "Opioids (natural or synthetic, including high-potency illicit opioids)",
@@ -252,7 +379,8 @@
           "risk": "Abrupt reversal plus physiologic stress can worsen blood pressure swings, arrhythmias, or pulmonary edema risk in vulnerable patients.",
           "action": "Use caution, monitor vitals closely, and treat in a medically supervised setting whenever possible."
         }
-      ]
+      ],
+      "intro": "Nalmefene’s ‘interaction’ is the point: it blocks opioids. That’s lifesaving in overdose—and brutal in opioid dependence."
     },
     {
       "type": "tapering",
@@ -322,21 +450,6 @@
       "text": "Nalmefene is not a psychiatric “maintenance medication.” It’s emergency harm-reduction—especially relevant in opioid use disorder care plans. In suspected opioid overdose, priorities are airway + breathing + circulation, rapid administration of an opioid antagonist, and immediate emergency medical care. Even when the person wakes up, observation matters because breathing problems can return, and withdrawal-driven agitation can escalate quickly."
     }
   ],
-  "seo": {
-    "title": "Nalmefene (Opvee, Zurnai): Emergency Opioid Overdose Reversal, Dosing, Side Effects",
-    "description": "Nalmefene (Opvee nasal spray; Zurnai auto-injector) is an opioid antagonist for emergency overdose reversal. Learn how fast it works, dosing (intranasal and injection), withdrawal risk, monitoring, and when to repeat doses.",
-    "canonical": "[https://www.heypsych.com/treatments/nalmefene-opvee](https://www.heypsych.com/treatments/nalmefene-opvee)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-26",
-    "lastUpdated": "2026-01-26",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is nalmefene used for?",
@@ -378,5 +491,20 @@
       "q": "Is nalmefene safe in pregnancy?",
       "a": "In a life-threatening overdose, the antidote should not be withheld because of pregnancy. Data specific to nalmefene are limited, and opioid antagonists can precipitate withdrawal in the pregnant patient (and potentially the fetus), but untreated hypoxia is an immediate severe risk. Treat the emergency and get medical care immediately."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Nalmefene (Opvee, Zurnai): Emergency Opioid Overdose Reversal, Dosing, Side Effects",
+    "description": "Nalmefene (Opvee nasal spray; Zurnai auto-injector) is an opioid antagonist for emergency overdose reversal. Learn how fast it works, dosing (intranasal and injection), withdrawal risk, monitoring, and when to repeat doses.",
+    "canonical": "[https://www.heypsych.com/treatments/nalmefene-opvee](https://www.heypsych.com/treatments/nalmefene-opvee)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-26",
+    "lastUpdated": "2026-01-26",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

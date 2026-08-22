@@ -1,70 +1,218 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "viloxazine-qelbree",
-  "type": "medication",
-  "name": "Viloxazine ER (Qelbree)",
-  "summary": "Once-daily, non-stimulant ADHD medication that works on norepinephrine. Not a controlled substance, but it carries a serious warning about suicidal thoughts—especially early on or with dose changes.",
-  "description": "Qelbree (viloxazine ER) is a non-stimulant medication for ADHD in kids (6+) and adults. It’s taken once daily and can help with focus, follow-through, and impulsivity over time—not usually within hours. The biggest safety headline is suicidal thoughts/behaviors: people need close monitoring for mood or behavior changes, especially in the first few months and whenever the dose changes. It can also raise heart rate and blood pressure, and it can make some people sleepy while making others more wired or insomniac.",
-  "patient_summary": "Qelbree is a once-daily, non-stimulant ADHD med. It’s not typically an “instant fix”—most people notice benefits over weeks. The big safety issue is suicidal thoughts/behaviors, so you (and anyone close to you) should watch for mood changes, irritability, agitation, or dark thoughts—especially early on and when the dose changes. It can also raise heart rate and blood pressure, and it may cause sleepiness or insomnia.",
-  "category": "medications/adhd",
-  "metadata": {
+  "identity": {
+    "slug": "viloxazine-qelbree",
+    "name": "Viloxazine ER (Qelbree)",
+    "generic_name": "viloxazine er",
+    "brand_names": [
+      "Qelbree"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/adhd",
     "drug_classes": [
       "Selective Norepinephrine Reuptake Inhibitor (NRI)",
       "Non-stimulant ADHD Medication"
-    ],
-    "brand_names": [
-      "Qelbree"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": 2021,
-    "pharmacologic_category": "Selective Norepinephrine Reuptake Inhibitor (NRI)",
-    "published_date": "2025-11-25T00:00:00Z",
-    "last_updated": "2025-11-25T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-25T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Attention-Deficit/Hyperactivity Disorder (ADHD)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "attention-deficit-hyperactivity-disorder",
-        "relationship": "primary_treatment",
-        "context": "FDA-labeled for ADHD in adults and in children ages 6 and older. Often considered when someone wants a non-stimulant option, can’t tolerate stimulants, or has concern about stimulant misuse."
-      }
-    ],
-    "contraindications": [
-      "Concomitant use with monoamine oxidase inhibitors (MAOIs) or within 14 days of stopping an MAOI",
-      "Concomitant use of sensitive CYP1A2 substrates or CYP1A2 substrates with a narrow therapeutic range"
-    ],
-    "efficacy_response": {
-      "metric": "ADHD symptom improvement vs placebo",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "In clinical trials, Qelbree improved core ADHD symptoms (inattention, impulsivity, hyperactivity) compared with placebo. It’s typically not an immediate “same-day” switch—most people notice meaningful change over weeks, with dose adjustments based on benefit and side effects.",
-      "citation_tag": "FDA label"
+  "summary": "Once-daily, non-stimulant ADHD medication that works on norepinephrine. Not a controlled substance, but it carries a serious warning about suicidal thoughts—especially early on or with dose changes.",
+  "description": "Qelbree (viloxazine ER) is a non-stimulant medication for ADHD in kids (6+) and adults. It’s taken once daily and can help with focus, follow-through, and impulsivity over time—not usually within hours. The biggest safety headline is suicidal thoughts/behaviors: people need close monitoring for mood or behavior changes, especially in the first few months and whenever the dose changes. It can also raise heart rate and blood pressure, and it can make some people sleepy while making others more wired or insomniac.",
+  "patient_summary": "Qelbree is a once-daily, non-stimulant ADHD med. It’s not typically an “instant fix”—most people notice benefits over weeks. The big safety issue is suicidal thoughts/behaviors, so you (and anyone close to you) should watch for mood changes, irritability, agitation, or dark thoughts—especially early on and when the dose changes. It can also raise heart rate and blood pressure, and it may cause sleepiness or insomnia.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "attention-deficit-hyperactivity-disorder",
+          "condition_name": "Attention Deficit Hyperactivity Disorder",
+          "relationship": "primary_indication",
+          "context": "FDA-labeled for ADHD in adults and in children ages 6 and older. Often considered when someone wants a non-stimulant option, can’t tolerate stimulants, or has concern about stimulant misuse.",
+          "fda_approved": true
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "May be decreased with a high-fat meal; high-fat meals may delay time to peak concentration by about 2 hours",
-      "bioavailability": "~88%",
-      "onset": "Not a rapid-onset medication; benefits usually build over days to weeks",
-      "peak_plasma": "~5 hours (range 3 to 9 hours)",
-      "half_life": "About 7 hours (reported variability)",
-      "duration_IR": "Not applicable for this medication.",
-      "duration_XR": "Extended-release; designed for once-daily dosing",
-      "metabolism": "CYP2D6, UGT1A9, UGT2B15",
-      "excretion": "Primarily renal (urine ~90%); feces <1%",
-      "protein_binding": "76% to 82%",
-      "food_effect": "High-fat meal may delay Tmax by ~2 hours; absorption may be reduced with high-fat intake"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not a rapid-onset medication; benefits usually build over days to weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Increased heart rate",
+          "incidence": "22% to 34% (tachycardia reported at ~4% in adults)",
+          "notes": "Some people notice a faster pulse, palpitations, or feeling “keyed up.” This is a monitor-it side effect—especially if you have cardiac history or symptoms."
+        },
+        {
+          "effect": "Increased diastolic blood pressure",
+          "incidence": "13% to 25%",
+          "notes": "This is why baseline and follow-up BP checks are not optional. If readings climb or you feel symptoms (headache, chest discomfort, dizziness), tell your clinician."
+        },
+        {
+          "effect": "Drowsiness / Sedation",
+          "incidence": "6% to 19%",
+          "notes": "You might feel slowed down, heavy, or foggy—especially early on. Don’t gamble with driving until you know your response."
+        },
+        {
+          "effect": "Headache (including migraine)",
+          "incidence": "10% to 17%",
+          "notes": "Often shows up early. If it’s severe, persistent, or paired with concerning BP changes, it needs attention."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "Adults: 23% (children/adolescents: 2% to 5%)",
+          "notes": "Some people get more awake or restless. Sleep changes can be a side effect—and can also be an early warning sign for mood activation. Report it if it’s new or escalating."
+        },
+        {
+          "effect": "Nausea",
+          "incidence": "4% to 12%",
+          "notes": "GI side effects are common early. Food timing may help, but don’t crush or chew the capsule."
+        },
+        {
+          "effect": "Decreased appetite",
+          "incidence": "5% to 10%",
+          "notes": "Not everyone gets appetite suppression, but if you do, it can sneak up. Track meals and weight, especially in adolescents."
+        },
+        {
+          "effect": "Irritability",
+          "incidence": "2% to 5%",
+          "notes": "If irritability feels like a personality change, or it escalates quickly, don’t brush it off—especially early in treatment."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thoughts or behaviors: needs urgent clinical contact and close monitoring, especially in the first months and during dose changes"
+        },
+        {
+          "risk": "Mania/hypomania or mixed symptoms: decreased need for sleep, racing thoughts, risky behavior, extreme irritability—stop-and-call-your-clinician territory"
+        },
+        {
+          "risk": "Clinically significant cardiovascular symptoms: exertional chest pain, fainting, severe palpitations, or other signs of heart disease need prompt evaluation"
+        },
+        {
+          "risk": "Severe allergic reaction (rare): swelling, rash with breathing difficulty—emergency care"
+        }
+      ],
+      "black_box_warning": "In clinical studies, higher rates of suicidal thoughts and behavior were reported in patients with ADHD treated with viloxazine than with placebo. Closely monitor all viloxazine-treated patients for clinical worsening, and for emergence of suicidal thoughts and behaviors.",
+      "contraindications": [
+        {
+          "contraindication": "Concomitant use with monoamine oxidase inhibitors (MAOIs) or within 14 days of stopping an MAOI"
+        },
+        {
+          "contraindication": "Concomitant use of sensitive CYP1A2 substrates or CYP1A2 substrates with a narrow therapeutic range"
+        }
+      ],
+      "precautions": [
+        "Mood and behavior changes can be warning signs: new or worsening depression, irritability, agitation, insomnia, impulsivity, aggression/hostility, panic symptoms, or unusual behavior changes",
+        "Cardiovascular effects: can increase heart rate and diastolic blood pressure; tachycardia has been reported",
+        "Sedation/fatigue can impair driving and tasks that require alertness",
+        "Mania/hypomania risk: use caution in bipolar disorder; screen for bipolar history and family history before starting",
+        "Pregnancy risk: animal data suggest fetal harm; consider discontinuing if pregnancy occurs during treatment (per manufacturer guidance)",
+        "MAOI interaction is a hard stop: do not use with MAOIs or within 14 days of stopping an MAOI"
+      ],
+      "interactions": [
+        {
+          "interactant": "Monoamine oxidase inhibitors (MAOIs)",
+          "mechanism": "Contraindicated. Serious interaction risk if used together or too close together.",
+          "action": "Do not use Qelbree with an MAOI or within 14 days of stopping an MAOI."
+        },
+        {
+          "interactant": "Sensitive CYP1A2 substrates (or CYP1A2 substrates with a narrow therapeutic range)",
+          "mechanism": "Qelbree strongly inhibits CYP1A2, which can raise levels of certain medications to unsafe ranges.",
+          "action": "Avoid these combinations or use an alternative ADHD medication. If a combination is being considered, the prescriber needs a plan—not vibes."
+        },
+        {
+          "interactant": "Other medications that raise heart rate or blood pressure",
+          "mechanism": "Additive cardiovascular effects (higher pulse/BP).",
+          "action": "Monitor BP and pulse closely, especially during titration and dose increases."
+        },
+        {
+          "interactant": "Alcohol or sedating medications",
+          "mechanism": "Can worsen drowsiness/fatigue and impair alertness.",
+          "action": "Use caution and avoid risky activities until you know your level of sedation."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidal thoughts/behavior monitoring: clinical worsening, new or worsening depression, irritability, agitation, insomnia, anxiety/panic symptoms, impulsivity, aggression/hostility, akathisia, psychosis, hypomania, or mania—especially during the first few months and at times of dose changes"
+        },
+        {
+          "parameter": "Baseline screening for personal/family history of suicide, bipolar disorder, and depression before starting"
+        },
+        {
+          "parameter": "Blood pressure and pulse: baseline, after dose increases, and periodically during treatment"
+        },
+        {
+          "parameter": "Cardiac risk assessment before treatment: patient history, family history of sudden death/ventricular arrhythmia, medication review, and focused cardiovascular exam; additional evaluation (ECG/echo) if findings suggest risk"
+        },
+        {
+          "parameter": "Prompt cardiac evaluation during treatment if exertional chest pain, unexplained syncope, or other cardiac symptoms develop"
+        },
+        {
+          "parameter": "Sedation and functional safety: assess daytime sleepiness, driving safety, and performance at school/work"
+        },
+        {
+          "parameter": "Sleep tracking: insomnia vs hypersomnia, plus sleep changes as a potential mood-activation signal"
+        },
+        {
+          "parameter": "Weight and appetite (especially in adolescents): watch for decreased appetite and weight loss"
+        },
+        {
+          "parameter": "Kidney function: serum creatinine and GFR, especially if impairment is present or suspected"
+        },
+        {
+          "parameter": "Liver enzymes: monitor as clinically indicated and if symptoms suggest hepatic issues"
+        },
+        {
+          "parameter": "Periodic reassessment of long-term usefulness: is it improving functioning enough to justify continued use at the current dose?"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Animal reproduction studies suggest in utero exposure may cause fetal harm. For mild to moderate ADHD in pregnancy, nonpharmacologic approaches are generally preferred. If pregnancy occurs during treatment, the manufacturer recommends considering discontinuation, using shared decision-making that weighs the risks of untreated ADHD versus medication exposure. Patients can be enrolled in the National Pregnancy Registry for Psychiatric Medications (1-866-961-2388).",
+        "lactation": "Viloxazine and its metabolite are present in breast milk. In a small dataset (15 lactating women taking 600 mg daily for 3 days), estimated relative infant doses were low (around 1% for viloxazine and 0.7% for the metabolite). The decision to breastfeed during therapy should weigh infant exposure risk, breastfeeding benefits, and the benefits of treating the parent. Monitor infants for feeding difficulties, irritability, and insomnia.",
+        "pediatric": "Labeled for ADHD in ages 6 and older. Because it can raise heart rate and blood pressure and has a suicidality warning, pediatric patients need baseline cardiovascular assessment (history, family history, meds list, focused exam) and close behavioral monitoring—especially in the first months and during dose changes. Family members/caregivers should watch daily for mood or behavior changes.",
+        "geriatric": "Not applicable for this medication.",
+        "renal_impairment": "Mild to moderate renal impairment (eGFR 30 to 89 mL/min/1.73 m2): no dose adjustment. Severe impairment (eGFR <30 mL/min/1.73 m2): lower starting dose and lower max dose (see adult dosing section).",
+        "hepatic_impairment": "No specific dose adjustments are provided in manufacturer labeling for mild to severe hepatic impairment. Use clinical judgment and monitor tolerability, especially sedation and mood changes."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2021
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "May be decreased with a high-fat meal; high-fat meals may delay time to peak concentration by about 2 hours",
+          "bioavailability": "~88%",
+          "peak_plasma": "~5 hours (range 3 to 9 hours)",
+          "half_life": "About 7 hours (reported variability)",
+          "metabolism": "CYP2D6, UGT1A9, UGT2B15",
+          "excretion": "Primarily renal (urine ~90%); feces <1%",
+          "protein_binding": "76% to 82%",
+          "food_effect": "High-fat meal may delay Tmax by ~2 hours; absorption may be reduced with high-fat intake"
+        },
+        "dosing": {
+          "titration": "Qelbree is taken once daily. Adult titration is usually weekly, with dose increases based on response and side effects. Capsules must be swallowed whole or opened and sprinkled (no chewing)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Qelbree is not a benzodiazepine and is not typically associated with dangerous withdrawal the way sedatives are. That said, don’t stop abruptly just to “see what happens.” If you stop suddenly, you can get rebound ADHD symptoms (worse focus/impulsivity), mood swings, or sleep disruption. If discontinuation is needed, a clinician may recommend a gradual step-down based on your dose, side effects, and how you’re functioning."
+        }
+      }
     }
   },
   "sections": [
@@ -82,7 +230,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Real talk: this one can feel different depending on your baseline (already tired vs already wired) and where your dose lands. Here’s what people commonly report:",
       "items": [
         {
           "category": "Focus & Follow-Through (over weeks, not hours)",
@@ -118,7 +265,8 @@
           ],
           "note": "This medication has a warning for suicidal thoughts/behaviors. You’re not being dramatic by taking mood changes seriously—early reporting is the whole point."
         }
-      ]
+      ],
+      "intro": "Real talk: this one can feel different depending on your baseline (already tired vs already wired) and where your dose lands. Here’s what people commonly report:"
     },
     {
       "type": "onset_duration",
@@ -134,10 +282,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "In clinical trials, Qelbree improved ADHD symptoms compared with placebo. The effect is usually more “my day runs smoother” than “my brain changed in 30 minutes.” Dose adjustments are typically weekly, and the goal is steady benefit without mood or cardiovascular side effects.",
       "metric": "ADHD symptom improvement",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "In clinical trials, Qelbree improved ADHD symptoms compared with placebo. The effect is usually more “my day runs smoother” than “my brain changed in 30 minutes.” Dose adjustments are typically weekly, and the goal is steady benefit without mood or cardiovascular side effects.",
       "clinical_details": "Viloxazine ER is a non-stimulant option for ADHD with once-daily dosing. Response is assessed by functional outcomes (task completion, sustained attention, impulsivity, organization) and tolerability (sleep, appetite, mood, blood pressure/heart rate). Because the medication has a suicidality warning, symptom improvement isn’t the only target—mood stability and safety monitoring are part of the treatment plan from day one.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -239,7 +387,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "The big interaction themes with Qelbree are: MAOIs (contraindicated) and CYP enzyme effects—especially strong CYP1A2 inhibition, which can dangerously raise levels of certain medications.",
       "items": [
         {
           "with": "Monoamine oxidase inhibitors (MAOIs)",
@@ -261,7 +408,8 @@
           "risk": "Can worsen drowsiness/fatigue and impair alertness.",
           "action": "Use caution and avoid risky activities until you know your level of sedation."
         }
-      ]
+      ],
+      "intro": "The big interaction themes with Qelbree are: MAOIs (contraindicated) and CYP enzyme effects—especially strong CYP1A2 inhibition, which can dangerously raise levels of certain medications."
     },
     {
       "type": "tapering",
@@ -335,21 +483,6 @@
       "text": "Qelbree is a non-stimulant ADHD option that fits best when someone wants once-daily coverage and would rather avoid a controlled substance, or when stimulants aren’t tolerated (side effects, anxiety, sleep disruption, appetite issues) or aren’t appropriate. The tradeoff is that it usually builds benefit over time and requires real monitoring—especially for mood changes and suicidal thoughts early in treatment and around dose changes. It can also push heart rate and blood pressure up, so cardiovascular check-ins are part of the deal."
     }
   ],
-  "seo": {
-    "title": "Viloxazine ER (Qelbree): Uses, Dosing, Side Effects & Suicidality Warning",
-    "description": "Qelbree (viloxazine ER) is a once-daily, non-stimulant ADHD medication. Learn dosing (200–600 mg), kidney adjustments, common side effects (sleep changes, nausea, headache), blood pressure/heart rate monitoring, and the suicidal thoughts warning.",
-    "canonical": "[https://www.heypsych.com/treatments/viloxazine-qelbree](https://www.heypsych.com/treatments/viloxazine-qelbree)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-29",
-    "lastUpdated": "2026-01-29",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is Qelbree used for?",
@@ -399,5 +532,20 @@
       "q": "Can Qelbree cause mania?",
       "a": "It can potentially trigger mania/hypomania or a mixed episode in people with bipolar disorder. Clinicians should screen for bipolar disorder and risk factors before starting, and any signs of mood activation (decreased need for sleep, racing thoughts, risky behavior, extreme irritability) should be reported immediately."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Viloxazine ER (Qelbree): Uses, Dosing, Side Effects & Suicidality Warning",
+    "description": "Qelbree (viloxazine ER) is a once-daily, non-stimulant ADHD medication. Learn dosing (200–600 mg), kidney adjustments, common side effects (sleep changes, nausea, headache), blood pressure/heart rate monitoring, and the suicidal thoughts warning.",
+    "canonical": "[https://www.heypsych.com/treatments/viloxazine-qelbree](https://www.heypsych.com/treatments/viloxazine-qelbree)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-29",
+    "lastUpdated": "2026-01-29",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

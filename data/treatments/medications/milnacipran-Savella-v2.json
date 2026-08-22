@@ -1,81 +1,244 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "milnacipran-savella",
-  "type": "medication",
-  "name": "Milnacipran (Savella)",
-  "summary": "SNRI that’s FDA-approved for fibromyalgia—not depression. In psychiatry it’s sometimes used off-label for major depression, but it comes with the standard antidepressant suicidality warning (especially ages 18–24) and can raise blood pressure and heart rate.",
-  "description": "Milnacipran (Savella) is an SNRI that increases serotonin and norepinephrine. In the US it’s approved for fibromyalgia, but psychiatrists may see it used off-label for depression. Like other antidepressants, it can temporarily increase suicidal thinking/behavior in some younger people early in treatment or after dose changes, so close monitoring matters. It can also cause nausea, insomnia, sweating, sexual side effects, and increases in blood pressure or pulse.",
-  "patient_summary": "Milnacipran (Savella) is an SNRI. It’s not FDA-approved for depression in the US, but some clinicians use it off-label. Early on (or after a dose change), some people feel more keyed up, restless, or more suicidal—especially ages 18–24—so you don’t “set it and forget it.” It can also cause nausea, insomnia, sweating, sexual side effects, and higher blood pressure/heart rate.",
-  "category": "medications/antidepressants",
-  "metadata": {
-    "drug_classes": [
-      "Serotonin-Norepinephrine Reuptake Inhibitor (SNRI)",
-      "Antidepressant (pharmacologic class)"
-    ],
+  "identity": {
+    "slug": "milnacipran-savella",
+    "name": "Milnacipran (Savella)",
+    "generic_name": "milnacipran",
     "brand_names": [
       "Savella",
       "Savella Titration Pack"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": 2009,
-    "pharmacologic_category": "Antidepressant, Serotonin/Norepinephrine Reuptake Inhibitor",
-    "published_date": "2025-11-10T00:00:00Z",
-    "last_updated": "2025-11-10T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-11-10T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Fibromyalgia (FDA-approved)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "major-depressive-disorder",
-        "relationship": "off_label",
-        "context": "Milnacipran is not FDA-approved for major depressive disorder (MDD) in the US, but it is sometimes used off-label as an SNRI option when other antidepressants aren’t a fit or haven’t worked."
-      },
-      {
-        "slug": "suicidal-ideation",
-        "relationship": "clinical_consideration",
-        "context": "Like other antidepressants, starting milnacipran (or changing the dose) can be associated with new or worsening suicidal thinking/behavior in some patients—highest concern in children, adolescents, and young adults (18–24). Close monitoring is a must."
-      },
-      {
-        "slug": "generalized-anxiety-disorder",
-        "relationship": "clinical_consideration",
-        "context": "SNRIs can reduce anxiety in some people, but they can also rev up anxiety, restlessness, or insomnia early in treatment. If anxiety or agitation spikes after starting or increasing the dose, the plan may need to change."
-      }
-    ],
-    "contraindications": [
-      "Use of monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 5 days of discontinuing milnacipran, or within 2 weeks of discontinuing the MAOI)",
-      "Initiation of milnacipran in a patient receiving IV methylene blue"
-    ],
-    "efficacy_response": {
-      "metric": "Off-label antidepressant response",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Milnacipran is not FDA-approved for depression in the US, and response rates vary depending on the person and the situation. If it’s used off-label for depression, the goal is the same as other SNRIs: fewer depressive symptoms over weeks (not hours or days).",
-      "citation_tag": "Savella Prescribing Information (US)"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/antidepressants",
+    "drug_classes": [
+      "Serotonin-Norepinephrine Reuptake Inhibitor (SNRI)",
+      "Antidepressant (pharmacologic class)"
+    ]
+  },
+  "summary": "SNRI that’s FDA-approved for fibromyalgia—not depression. In psychiatry it’s sometimes used off-label for major depression, but it comes with the standard antidepressant suicidality warning (especially ages 18–24) and can raise blood pressure and heart rate.",
+  "description": "Milnacipran (Savella) is an SNRI that increases serotonin and norepinephrine. In the US it’s approved for fibromyalgia, but psychiatrists may see it used off-label for depression. Like other antidepressants, it can temporarily increase suicidal thinking/behavior in some younger people early in treatment or after dose changes, so close monitoring matters. It can also cause nausea, insomnia, sweating, sexual side effects, and increases in blood pressure or pulse.",
+  "patient_summary": "Milnacipran (Savella) is an SNRI. It’s not FDA-approved for depression in the US, but some clinicians use it off-label. Early on (or after a dose change), some people feel more keyed up, restless, or more suicidal—especially ages 18–24—so you don’t “set it and forget it.” It can also cause nausea, insomnia, sweating, sexual side effects, and higher blood pressure/heart rate.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "fibromyalgia-fda-approved",
+          "condition_name": "Fibromyalgia (FDA-approved)",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "suicidal-ideation",
+          "condition_name": "Suicidal Ideation",
+          "relationship": "secondary_indication",
+          "context": "Like other antidepressants, starting milnacipran (or changing the dose) can be associated with new or worsening suicidal thinking/behavior in some patients—highest concern in children, adolescents, and young adults (18–24). Close monitoring is a must."
+        },
+        {
+          "condition_slug": "generalized-anxiety-disorder",
+          "condition_name": "Generalized Anxiety Disorder",
+          "relationship": "secondary_indication",
+          "context": "SNRIs can reduce anxiety in some people, but they can also rev up anxiety, restlessness, or insomnia early in treatment. If anxiety or agitation spikes after starting or increasing the dose, the plan may need to change."
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major Depressive Disorder",
+          "relationship": "off_label",
+          "context": "Milnacipran is not FDA-approved for major depressive disorder (MDD) in the US, but it is sometimes used off-label as an SNRI option when other antidepressants aren’t a fit or haven’t worked."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed",
-      "bioavailability": "~85% to 90%",
-      "onset": "Not a fast-acting sedative; antidepressant effects (when used off-label) typically build over days to weeks",
-      "peak_plasma": "2 to 4 hours",
-      "half_life": "~6 to 8 hours",
-      "duration_IR": "Typically dosed twice daily",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic to inactive metabolites",
-      "excretion": "Urine (~55% as unchanged drug)",
-      "protein_binding": "13%",
-      "food_effect": "Can be taken with or without food; food may improve tolerability"
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Not a fast-acting sedative; antidepressant effects (when used off-label) typically build over days to weeks"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Nausea",
+          "incidence": "35% to 39%",
+          "notes": "This is the big one. Taking it with food and titrating more slowly can help. It often improves over time, but if it’s persistent or severe, dose changes or a different medication may be a better move."
+        },
+        {
+          "effect": "Constipation",
+          "incidence": "15% to 16%",
+          "notes": "Hydration, fiber, and routine movement matter here. If constipation is severe, don’t just suffer—tell your clinician."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "17% to 19%",
+          "notes": "Headaches can show up early and sometimes fade as your body adjusts. If headaches are intense or persistent, it’s worth re-checking blood pressure and dose timing."
+        },
+        {
+          "effect": "Insomnia",
+          "incidence": "12%",
+          "notes": "Milnacipran can be activating for some people. If sleep gets worse, your prescriber may adjust timing, slow the titration, or reconsider the medication—especially if insomnia triggers anxiety or suicidal thinking."
+        },
+        {
+          "effect": "Dizziness",
+          "incidence": "10% to 11%",
+          "notes": "Dizziness can happen during titration. Stand up slowly, stay hydrated, and let your clinician know if you’re having near-fainting or falls."
+        },
+        {
+          "effect": "Hot flash / Flushing",
+          "incidence": "11% to 12% (hot flash); 2% to 3% (flushing)",
+          "notes": "Heat/sweating symptoms are a common SNRI vibe. If you’re also having agitation, tremor, diarrhea, fever, or confusion, that’s a different story—think serotonin syndrome and get help."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Suicidal thinking/behavior (highest concern in ages 18–24 early in treatment or after dose changes): urgent evaluation needed if worsening"
+        },
+        {
+          "risk": "Mania/hypomania: decreased need for sleep, racing thoughts, impulsivity, grandiosity—especially if bipolar risk"
+        },
+        {
+          "risk": "Serotonin syndrome: agitation, confusion, sweating, tremor, diarrhea, fever, muscle rigidity (medical emergency)"
+        },
+        {
+          "risk": "Hypertensive crisis or sustained hypertension/tachycardia: severe headache, chest pain, shortness of breath, neurologic symptoms (medical emergency)"
+        },
+        {
+          "risk": "Severe skin reactions (Stevens-Johnson syndrome/erythema multiforme): blistering rash, mucosal involvement (medical emergency)"
+        },
+        {
+          "risk": "Hyponatremia/SIADH: confusion, severe headache, weakness, seizures (medical emergency)"
+        },
+        {
+          "risk": "Seizures (rare but reported; higher risk with predisposition)"
+        },
+        {
+          "risk": "Severe urinary retention (painful inability to urinate, distended bladder): urgent evaluation"
+        }
+      ],
+      "black_box_warning": "Antidepressants increased the risk of suicidal thinking and behavior in children, adolescents, and young adults (18 to 24) in short-term studies of major depressive disorder and other psychiatric disorders. Closely monitor for clinical worsening, suicidality, or unusual changes in behavior, especially during the first months of therapy and after dose changes. Milnacipran is not approved for treatment of major depressive disorder in the US and is not approved for pediatric patients.",
+      "contraindications": [
+        {
+          "contraindication": "Use of monoamine oxidase inhibitors (MAOIs) intended to treat psychiatric disorders (concurrently or within 5 days of discontinuing milnacipran, or within 2 weeks of discontinuing the MAOI)"
+        },
+        {
+          "contraindication": "Initiation of milnacipran in a patient receiving IV methylene blue"
+        }
+      ],
+      "precautions": [
+        "Activation symptoms can happen early: anxiety, agitation, panic attacks, insomnia, irritability, hostility, impulsivity, akathisia, hypomania, or mania",
+        "Serotonin syndrome is rare but potentially life-threatening—risk rises when combined with other serotonergic meds",
+        "Blood pressure and heart rate can increase; sustained hypertension or tachycardia may require dose reduction or discontinuation",
+        "Bleeding risk may increase, especially with NSAIDs, aspirin, anticoagulants, or other agents that affect clotting",
+        "Hyponatremia/SIADH risk (especially older adults)",
+        "Urinary hesitation/retention can occur (higher concern in people with prostate issues or baseline urinary problems)",
+        "May precipitate mania/hypomania in people with bipolar disorder; screen before treating depressive symptoms"
+      ],
+      "interactions": [
+        {
+          "interactant": "MAOIs (psychiatric MAOIs; also IV methylene blue)",
+          "mechanism": "Contraindicated due to serotonin syndrome risk (potentially life-threatening).",
+          "action": "Do not combine. Allow at least 14 days between stopping an MAOI and starting milnacipran. Allow at least 5 days between stopping milnacipran and starting an MAOI."
+        },
+        {
+          "interactant": "Other serotonergic agents (SSRIs/SNRIs, TCAs, triptans, fentanyl, lithium, tramadol, buspirone, amphetamines, St. John’s wort, tryptophan, methadone, meperidine)",
+          "mechanism": "Increased risk of serotonin syndrome.",
+          "action": "Use caution and monitor closely. Educate on serotonin syndrome symptoms and stop the drug(s) and seek urgent care if symptoms appear."
+        },
+        {
+          "interactant": "NSAIDs/aspirin/anticoagulants (warfarin) and other drugs that affect clotting",
+          "mechanism": "Increased bleeding risk due to impaired platelet aggregation.",
+          "action": "Use caution, especially if there’s a history of GI bleeding or you’re on multiple agents that increase bleeding risk. Monitor for bruising, nosebleeds, black stools, or unusual bleeding."
+        },
+        {
+          "interactant": "Medications that raise blood pressure/heart rate (some stimulants, decongestants, certain activating agents)",
+          "mechanism": "Additive increases in BP/HR; higher risk in people with hypertension or tachyarrhythmias.",
+          "action": "Monitor BP/HR and reconsider combinations if BP/pulse climbs or symptoms develop."
+        },
+        {
+          "interactant": "Linezolid (special case)",
+          "mechanism": "Traditionally listed as contraindicated due to serotonin syndrome concerns; emerging evidence suggests low absolute risk in many scenarios, but monitoring is required.",
+          "action": "If combination is necessary, monitor carefully for serotonin toxicity and educate the patient on symptoms; risk may increase with longer overlapping durations."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Suicidal ideation and behavior: monitor closely at the beginning of therapy and after dose increases or decreases, especially in ages 18–24; watch for sudden behavior changes and clinical worsening"
+        },
+        {
+          "parameter": "Mood activation: anxiety, agitation, insomnia, irritability, impulsivity, akathisia, hypomania/mania; screen for bipolar disorder if depressive symptoms present"
+        },
+        {
+          "parameter": "Blood pressure and heart rate: check baseline and periodically; consider dose reduction or discontinuation if sustained hypertension or tachycardia develops"
+        },
+        {
+          "parameter": "Serotonin syndrome: monitor for agitation, confusion, diaphoresis, tremor, diarrhea, fever—especially with serotonergic combinations"
+        },
+        {
+          "parameter": "Hyponatremia/SIADH risk: consider sodium monitoring in older adults and those on diuretics or with volume depletion; monitor for confusion, weakness, headaches"
+        },
+        {
+          "parameter": "Renal function: monitor for dosing purposes, especially in older adults and those with known kidney disease"
+        },
+        {
+          "parameter": "Ocular effects: monitor intraocular pressure in those with baseline elevations or glaucoma risk; watch for narrow-angle glaucoma symptoms"
+        },
+        {
+          "parameter": "Sexual function: ask directly before and during treatment; assess for libido changes, orgasm changes, erectile/ejaculatory problems"
+        },
+        {
+          "parameter": "Urinary symptoms: hesitancy, retention, decreased output; higher concern in patients with prostate/lower urinary tract issues"
+        },
+        {
+          "parameter": "Bleeding risk: monitor for bruising, epistaxis, GI bleeding signs when combined with NSAIDs/aspirin/anticoagulants"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human data are insufficient to define risk. SNRI exposure in the third trimester can be associated with neonatal adaptation syndrome (usually resolves within 2 weeks) and has been associated with persistent pulmonary hypertension of the newborn (rare). SNRIs may increase bleeding risk and may be associated with postpartum hemorrhage when used close to delivery. For patients who are pregnant or planning pregnancy, decisions should be individualized and made with shared decision-making; if initiating an SNRI in pregnancy, start at half the lowest recommended dose and titrate gradually over 4 to 10 days, using the lowest effective single agent when possible.",
+        "lactation": "Milnacipran is present in human milk. Limited data (single-dose 50 mg in lactating women ≥12 weeks postpartum) estimate infant exposure around 5% of the maternal dose. Monitor infants for agitation, irritability, poor feeding, and poor weight gain. The decision to breastfeed during treatment should weigh infant exposure risk, the benefits of breastfeeding, and the benefits of maternal treatment.",
+        "pediatric": "Not approved for pediatric patients and not approved for pediatric depression treatment.",
+        "geriatric": "Use caution in adults ≥65. SNRIs are flagged as potentially inappropriate to use with caution due to SIADH/hyponatremia risk; monitor sodium closely when initiating or adjusting doses. Older adults may also have higher exposure due to reduced renal function.",
+        "renal_impairment": "Mild impairment: no adjustment typically needed. Moderate impairment: use with caution. Severe impairment (CrCl ≤29): reduce maintenance to 25 mg twice daily; may increase to 50 mg twice daily if tolerated. ESRD: not recommended.",
+        "hepatic_impairment": "No dosage adjustment generally necessary even in severe impairment based on single-dose data; use caution. Manufacturer suggests generally avoiding use in patients with substantial ethanol intake or evidence of chronic liver disease (risk factors for drug-induced liver injury)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2009
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed",
+          "bioavailability": "~85% to 90%",
+          "peak_plasma": "2 to 4 hours",
+          "half_life": "~6 to 8 hours",
+          "metabolism": "Hepatic to inactive metabolites",
+          "excretion": "Urine (~55% as unchanged drug)",
+          "protein_binding": "13%",
+          "food_effect": "Can be taken with or without food; food may improve tolerability"
+        },
+        "dosing": {
+          "titration": "Milnacipran is dosed with a starter titration when used for fibromyalgia. In psychiatry, if it’s used off-label for depression, dosing is typically started low and increased based on response and tolerability. Because this can be activating for some people (and because of suicidality monitoring early on), the goal is steady, deliberate titration—not rushing."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "If you’ve been on milnacipran for more than a few weeks, don’t stop abruptly. Antidepressant discontinuation can feel awful and can also make it harder to tell whether symptoms are withdrawal or relapse. The safest move is a planned taper."
+        }
+      }
     }
   },
   "sections": [
@@ -94,7 +257,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "Not everyone experiences this the same way, but here’s the common “real life” pattern clinicians hear about:",
       "items": [
         {
           "category": "Early activation (first days to 2 weeks)",
@@ -141,7 +303,8 @@
           ],
           "note": "Sexual dysfunction and urinary hesitation/retention can happen—bring it up early so the plan can be adjusted."
         }
-      ]
+      ],
+      "intro": "Not everyone experiences this the same way, but here’s the common “real life” pattern clinicians hear about:"
     },
     {
       "type": "onset_duration",
@@ -157,10 +320,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Milnacipran is FDA-approved for fibromyalgia, not depression. When psychiatrists use it off-label for MDD, expectations are similar to other SNRIs: a gradual shift over weeks, with early side effects sometimes showing up before benefits. If there’s no meaningful improvement after an adequate trial at a tolerable dose, the plan usually shifts (optimize dose, switch, or augment).",
       "metric": "Off-label antidepressant effectiveness",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Milnacipran is FDA-approved for fibromyalgia, not depression. When psychiatrists use it off-label for MDD, expectations are similar to other SNRIs: a gradual shift over weeks, with early side effects sometimes showing up before benefits. If there’s no meaningful improvement after an adequate trial at a tolerable dose, the plan usually shifts (optimize dose, switch, or augment).",
       "clinical_details": "Off-label antidepressant dosing strategies commonly start low and titrate based on tolerability, watching closely for activation, insomnia, blood pressure/heart rate increases, serotonin syndrome risk with interacting drugs, and any emergence or worsening of suicidal thinking—especially during the first weeks and after dose changes.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -258,7 +421,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Milnacipran interacts most dangerously with MAOIs and other serotonergic medications. It can also raise bleeding risk with certain meds and increase blood pressure/pulse alongside stimulatory agents.",
       "items": [
         {
           "with": "MAOIs (psychiatric MAOIs; also IV methylene blue)",
@@ -285,7 +447,8 @@
           "risk": "Traditionally listed as contraindicated due to serotonin syndrome concerns; emerging evidence suggests low absolute risk in many scenarios, but monitoring is required.",
           "action": "If combination is necessary, monitor carefully for serotonin toxicity and educate the patient on symptoms; risk may increase with longer overlapping durations."
         }
-      ]
+      ],
+      "intro": "Milnacipran interacts most dangerously with MAOIs and other serotonergic medications. It can also raise bleeding risk with certain meds and increase blood pressure/pulse alongside stimulatory agents."
     },
     {
       "type": "tapering",
@@ -362,21 +525,6 @@
       "text": "In psychiatry, milnacipran is not a first-line antidepressant in the US because it isn’t FDA-approved for MDD. If used off-label, it functions like an SNRI option when standard first-line antidepressants aren’t tolerated, aren’t effective, or when clinicians want an SNRI-style approach while keeping a close eye on activation, sleep disruption, blood pressure/pulse, and suicidality—especially early on. It is not a go-to sedating agent, and it’s not a PRN anxiety medication."
     }
   ],
-  "seo": {
-    "title": "Milnacipran (Savella): Psychiatric Uses, Dosing, Side Effects & Discontinuation",
-    "description": "Milnacipran (Savella) is an SNRI approved for fibromyalgia and sometimes used off-label for depression. Learn dosing, common side effects (nausea, insomnia), suicidality warning in young adults, interactions (MAOIs/serotonergic meds), and tapering.",
-    "canonical": "[https://www.heypsych.com/treatments/milnacipran-savella](https://www.heypsych.com/treatments/milnacipran-savella)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is milnacipran (Savella) actually an antidepressant?",
@@ -422,5 +570,20 @@
       "q": "Is milnacipran safe in pregnancy or breastfeeding?",
       "a": "Human pregnancy data are limited. Like other SNRIs, late-pregnancy exposure can be associated with neonatal adaptation symptoms, and rare persistent pulmonary hypertension of the newborn has been reported with SNRIs as a class. Milnacipran is present in breast milk; infants should be monitored for irritability, poor feeding, and poor weight gain. Decisions should be individualized with shared decision-making that weighs the risks of untreated illness against medication exposure."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Milnacipran (Savella): Psychiatric Uses, Dosing, Side Effects & Discontinuation",
+    "description": "Milnacipran (Savella) is an SNRI approved for fibromyalgia and sometimes used off-label for depression. Learn dosing, common side effects (nausea, insomnia), suicidality warning in young adults, interactions (MAOIs/serotonergic meds), and tapering.",
+    "canonical": "[https://www.heypsych.com/treatments/milnacipran-savella](https://www.heypsych.com/treatments/milnacipran-savella)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

@@ -1,89 +1,168 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "families-schools-together",
-  "type": "therapy",
-  "name": "Families and Schools Together (FAST)",
-  "summary": "An evidence-based, multi-family group program designed to strengthen family functioning and improve children's behavior and academic performance by building collaboration between families, schools, and communities.",
-  "description": "Families and Schools Together (FAST) is a structured, evidence-based, multi-family intervention aimed at preventing school failure, substance abuse, juvenile delinquency, and child abuse. The program brings together parents, children, teachers, and community members in weekly sessions that combine family-strengthening activities, parent empowerment, social support, and school engagement. FAST emphasizes building protective factors in children through enhanced family functioning, improved parent–child relationships, and stronger school–family connections. It is often implemented in schools, community centers, or social service agencies.",
-  "category": "therapy/family",
-  "tags": [
-    "family-therapy",
-    "school-based",
-    "community-program",
-    "parenting",
-    "child-development"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "families-schools-together",
+    "name": "Families and Schools Together (FAST)",
+    "generic_name": "families and schools together",
+    "brand_names": [
+      "FAST"
+    ],
+    "wikidata_qid": "Q24013782"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/family",
     "intervention_types": [
       "Family therapy",
       "School-based program",
       "Community intervention"
     ],
-    "treatment_types": [
-      "Prevention program",
-      "Family systems approach"
-    ],
-    "categories": [
-      "Child development",
-      "Family support",
-      "School-community partnerships"
-    ],
-    "delivery_methods": [
-      "Group sessions",
-      "School-based programs",
-      "Community centers"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "Program materials",
-      "School or community meeting space"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Children (K–8)",
-      "Parents",
-      "Families"
-    ],
-    "session_duration": "2–3 hours",
-    "treatment_duration": [
-      "8–10 weekly sessions",
-      "Follow-up booster sessions"
-    ],
-    "specialty_areas": [
-      "Child behavior management",
-      "School engagement",
-      "Parent empowerment"
-    ],
-    "wikidata_qid": "Q24013782"
+    "tags": [
+      "family-therapy",
+      "school-based",
+      "community-program",
+      "parenting",
+      "child-development"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Behavioral difficulties in children",
-      "Family conflict",
-      "Low parental engagement with schools"
-    ],
-    "conditions_treated": [
-      "Disruptive behavior",
-      "Academic disengagement",
-      "Family stress"
-    ],
-    "off_label_uses": [
-      "Prevention of substance use in adolescents",
-      "Support for immigrant and refugee families"
-    ],
-    "contraindications": [
-      "Families unable to commit to group participation",
-      "Severe untreated psychiatric conditions requiring individualized care"
-    ],
-    "safety_profile": "Safe, supportive, and community-based with no known risks.",
-    "evidence_level": "High—multiple randomized controlled trials support its effectiveness.",
-    "research_support": "FAST has been implemented in over 25 countries and is backed by decades of research showing reductions in problem behaviors, improved academic outcomes, and stronger family-school bonds.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "family-functioning": 5,
-      "child-behavior-improvement": 4,
-      "school-engagement": 5,
-      "overall_tolerability": 5
+  "summary": "An evidence-based, multi-family group program designed to strengthen family functioning and improve children's behavior and academic performance by building collaboration between families, schools, and communities.",
+  "description": "Families and Schools Together (FAST) is a structured, evidence-based, multi-family intervention aimed at preventing school failure, substance abuse, juvenile delinquency, and child abuse. The program brings together parents, children, teachers, and community members in weekly sessions that combine family-strengthening activities, parent empowerment, social support, and school engagement. FAST emphasizes building protective factors in children through enhanced family functioning, improved parent–child relationships, and stronger school–family connections. It is often implemented in schools, community centers, or social service agencies.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "behavioral-difficulties-in-children",
+          "condition_name": "Behavioral difficulties in children",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "family-conflict",
+          "condition_name": "Family conflict",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "low-parental-engagement-with-schools",
+          "condition_name": "Low parental engagement with schools",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "disruptive-behavior",
+          "condition_name": "Disruptive behavior",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "academic-disengagement",
+          "condition_name": "Academic disengagement",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "family-stress",
+          "condition_name": "Family stress",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "prevention-of-substance-use-in-adolescents",
+          "condition_name": "Prevention of substance use in adolescents",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "support-for-immigrant-and-refugee-families",
+          "condition_name": "Support for immigrant and refugee families",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—multiple randomized controlled trials support its effectiveness.",
+      "efficacy_ratings": {
+        "family-functioning": {
+          "rating": 5
+        },
+        "child-behavior-improvement": {
+          "rating": 4
+        },
+        "school-engagement": {
+          "rating": 5
+        },
+        "overall_tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "FAST has been implemented in over 25 countries and is backed by decades of research showing reductions in problem behaviors, improved academic outcomes, and stronger family-school bonds."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "8–10 weekly sessions; Follow-up booster sessions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Group sessions",
+        "School-based programs",
+        "Community centers"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "2–3 hours"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe, supportive, and community-based with no known risks.",
+      "common_adverse_effects": [
+        {
+          "effect": "None reported"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Withdrawal if families feel uncomfortable in group setting"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Families unwilling to participate in group settings",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe psychiatric or safety concerns requiring specialized care",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Prevention program, Family systems approach",
+        "key_techniques": [
+          "Child development",
+          "Family support",
+          "School-community partnerships"
+        ],
+        "session_structure": {
+          "pre_session": "Families gather, check-in, and review the session plan.",
+          "during_session": "Engage in structured family, parent, and community-building activities.",
+          "post_session": "Reflection, goal-setting, and social time to reinforce community ties."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Certified FAST trainers and facilitators"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -230,6 +309,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Families and Schools Together (FAST) Official Site",
+      "url": "https://www.familiesandschools.org/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kratochwill TR, et al. (2004). FAST Program Evaluation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15551253/"
+    }
+  ],
   "seo": {
     "title": "Families and Schools Together (FAST) Program",
     "description": "Families and Schools Together (FAST) is an evidence-based family and school partnership program that improves child behavior, academic performance, and family relationships through multi-family group interventions.",
@@ -242,5 +335,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—multiple randomized controlled trials support its effectiveness."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—multiple randomized controlled trials support its effectiveness."
+    ]
   }
 }

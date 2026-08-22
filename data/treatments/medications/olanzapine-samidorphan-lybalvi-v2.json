@@ -1,85 +1,200 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "olanzapine-samidorphan-lybalvi",
-  "type": "medication",
-  "name": "Olanzapine/Samidorphan (Lybalvi)",
-  "summary": "A combination antipsychotic used for schizophrenia and bipolar I disorder. Designed to maintain olanzapine’s efficacy while helping limit weight gain. Must NOT be used with opioids.",
-  "description": "Lybalvi pairs olanzapine—a highly effective atypical antipsychotic—with samidorphan, an opioid receptor blocker intended to reduce olanzapine-related weight gain. It treats schizophrenia and manic or mixed episodes in bipolar I disorder, and can be continued for maintenance. Because samidorphan blocks opioid effects, Lybalvi cannot be taken with opioid pain medications and should not be started in anyone who is opioid dependent or in acute withdrawal. Like other antipsychotics, it increases mortality risk in older adults with dementia-related psychosis and is not approved for that use.",
-  "patient_summary": "Lybalvi is used for schizophrenia and bipolar I disorder. It works like olanzapine but includes a component to help reduce weight gain. Many people notice calmer thinking and improved mood stability. Sleepiness, dizziness, and metabolic changes can occur, so weight and labs are checked routinely. Do not take opioid pain medicines while using Lybalvi.",
-  "category": "medications/mood-and-psychotic-disorders",
-  "metadata": {
+  "identity": {
+    "slug": "olanzapine-samidorphan-lybalvi",
+    "name": "Olanzapine/Samidorphan (Lybalvi)",
+    "generic_name": "olanzapine/samidorphan",
+    "brand_names": [
+      "Lybalvi"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/mood-and-psychotic-disorders",
     "drug_classes": [
       "Second Generation (Atypical) Antipsychotic",
       "Antimanic Agent",
       "Opioid Antagonist Combination"
-    ],
-    "brand_names": [
-      "Lybalvi"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": false,
-    "fda_approval_year": 2021,
-    "pharmacologic_category": "Atypical Antipsychotic + Opioid Antagonist",
-    "published_date": "2025-11-15T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Schizophrenia",
-      "Bipolar I Disorder (acute mania)",
-      "Bipolar I Disorder (mixed episodes)",
-      "Bipolar I Disorder (maintenance monotherapy)"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "schizophrenia",
-        "relationship": "primary_treatment",
-        "context": "Provides antipsychotic benefit similar to olanzapine with lower rates of substantial weight gain."
-      },
-      {
-        "slug": "bipolar-i-disorder",
-        "relationship": "primary_treatment",
-        "context": "Approved for acute manic or mixed episodes and for maintenance after stabilization."
-      },
-      {
-        "slug": "metabolic-syndrome",
-        "relationship": "risk_modification",
-        "context": "Associated with less weight gain compared with olanzapine, though monitoring remains essential."
-      }
-    ],
-    "contraindications": [
-      "Current opioid use",
-      "Acute opioid withdrawal",
-      "Known opioid dependence",
-      "Hypersensitivity to components"
-    ],
-    "efficacy_response": {
-      "metric": "≥7% weight gain at 24 weeks",
-      "percentage_value": "≈28% with Lybalvi",
-      "comparison_data": "≈43% with olanzapine alone",
-      "patient_text": "In a study comparing Lybalvi with regular olanzapine, fewer people experienced large weight gain."
+  "summary": "A combination antipsychotic used for schizophrenia and bipolar I disorder. Designed to maintain olanzapine’s efficacy while helping limit weight gain. Must NOT be used with opioids.",
+  "description": "Lybalvi pairs olanzapine—a highly effective atypical antipsychotic—with samidorphan, an opioid receptor blocker intended to reduce olanzapine-related weight gain. It treats schizophrenia and manic or mixed episodes in bipolar I disorder, and can be continued for maintenance. Because samidorphan blocks opioid effects, Lybalvi cannot be taken with opioid pain medications and should not be started in anyone who is opioid dependent or in acute withdrawal. Like other antipsychotics, it increases mortality risk in older adults with dementia-related psychosis and is not approved for that use.",
+  "patient_summary": "Lybalvi is used for schizophrenia and bipolar I disorder. It works like olanzapine but includes a component to help reduce weight gain. Many people notice calmer thinking and improved mood stability. Sleepiness, dizziness, and metabolic changes can occur, so weight and labs are checked routinely. Do not take opioid pain medicines while using Lybalvi.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "schizophrenia",
+          "condition_name": "Schizophrenia",
+          "relationship": "primary_indication",
+          "context": "Provides antipsychotic benefit similar to olanzapine with lower rates of substantial weight gain.",
+          "fda_approved": true
+        },
+        {
+          "condition_slug": "bipolar-i-disorder",
+          "condition_name": "Bipolar I Disorder",
+          "relationship": "primary_indication",
+          "context": "Approved for acute manic or mixed episodes and for maintenance after stabilization.",
+          "fda_approved": true
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "metabolic-syndrome",
+          "condition_name": "Metabolic Syndrome",
+          "relationship": "secondary_indication",
+          "context": "Associated with less weight gain compared with olanzapine, though monitoring remains essential."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Oral; food does not meaningfully affect exposure.",
-      "bioavailability": "Samidorphan ~69%.",
-      "onset": "Sedation may appear in days; psychosis and mania improve over weeks.",
-      "peak_plasma": "Olanzapine 4.5–7h; samidorphan 1–2h.",
-      "half_life": "Olanzapine ~35–52h; samidorphan ~7–11h.",
-      "duration_IR": "Once-daily dosing provides full-day coverage.",
-      "duration_XR": "Not an XR product.",
-      "metabolism": "Olanzapine via UGT1A4, CYP1A2 (minor CYP2D6); samidorphan via CYP3A4 and other CYPs.",
-      "excretion": "Primarily urine and feces as drug plus metabolites.",
-      "protein_binding": "Olanzapine ~93%; samidorphan ~23–33%.",
-      "food_effect": "Take with or without food."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Sedation may appear in days; psychosis and mania improve over weeks."
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Weight gain",
+          "incidence": "Less than olanzapine alone",
+          "notes": "Monitoring weight, diet, and activity helps."
+        },
+        {
+          "effect": "Sedation",
+          "incidence": "Common",
+          "notes": "Often improves over weeks."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe metabolic changes"
+        },
+        {
+          "risk": "Neutropenia or blood dyscrasias"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome"
+        },
+        {
+          "risk": "Seizures"
+        },
+        {
+          "risk": "Severe rash or DRESS"
+        },
+        {
+          "risk": "Significant orthostatic hypotension"
+        }
+      ],
+      "black_box_warning": "Increased mortality in elderly patients with dementia-related psychosis. Not approved for dementia-related psychosis.",
+      "contraindications": [
+        {
+          "contraindication": "Current opioid use"
+        },
+        {
+          "contraindication": "Acute opioid withdrawal"
+        },
+        {
+          "contraindication": "Known opioid dependence"
+        },
+        {
+          "contraindication": "Hypersensitivity to components"
+        }
+      ],
+      "precautions": [
+        "Sedation and impaired alertness (caution with driving/machinery)",
+        "Metabolic changes (weight, glucose, lipids)",
+        "Blood count changes including neutropenia",
+        "Orthostatic hypotension and falls",
+        "Neuroleptic malignant syndrome (rare)",
+        "Increased prolactin",
+        "Seizure risk in vulnerable individuals"
+      ],
+      "interactions": [
+        {
+          "interactant": "Opioids",
+          "mechanism": "Can cause withdrawal or dangerous attempts to overcome blockade.",
+          "action": "Avoid completely; coordinate pain management carefully."
+        },
+        {
+          "interactant": "CNS depressants",
+          "mechanism": "Additive sedation.",
+          "action": "Use caution."
+        },
+        {
+          "interactant": "Smoking",
+          "mechanism": "May lower olanzapine levels.",
+          "action": "Dose adjustments may be needed if smoking status changes."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Weight, BMI, and waist circumference"
+        },
+        {
+          "parameter": "Fasting glucose/A1C and lipids"
+        },
+        {
+          "parameter": "CBC if low baseline counts or symptoms"
+        },
+        {
+          "parameter": "Mental status and alertness"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms"
+        },
+        {
+          "parameter": "Prolactin symptoms"
+        },
+        {
+          "parameter": "Blood pressure and orthostatics"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Limited data; discuss risks and benefits. Newborn may show withdrawal-like symptoms.",
+        "lactation": "Present in breast milk at low levels; monitor infant for sedation or feeding issues.",
+        "pediatric": "Not established for people under 18.",
+        "geriatric": "Higher sensitivity to side effects; not approved for dementia-related psychosis.",
+        "renal_impairment": "Severe impairment may increase exposure; avoid end-stage until more data.",
+        "hepatic_impairment": "Use caution; exposure may increase."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": false,
+      "fda_approval_year": 2021
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Oral; food does not meaningfully affect exposure.",
+          "bioavailability": "Samidorphan ~69%.",
+          "peak_plasma": "Olanzapine 4.5–7h; samidorphan 1–2h.",
+          "half_life": "Olanzapine ~35–52h; samidorphan ~7–11h.",
+          "metabolism": "Olanzapine via UGT1A4, CYP1A2 (minor CYP2D6); samidorphan via CYP3A4 and other CYPs.",
+          "excretion": "Primarily urine and feces as drug plus metabolites.",
+          "protein_binding": "Olanzapine ~93%; samidorphan ~23–33%.",
+          "food_effect": "Take with or without food."
+        },
+        "dosing": {
+          "titration": "Typical adult doses are taken once daily. Doses are based on the olanzapine component and adjusted for response and tolerability."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Antipsychotics should be tapered gradually when possible to reduce withdrawal or symptom rebound."
+        }
+      }
     }
   },
   "sections": [
@@ -98,7 +213,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Often Notice",
-      "intro": "Common experiences based on patient reports:",
       "items": [
         {
           "category": "Symptom Relief",
@@ -130,7 +244,8 @@
           ],
           "note": "Very important for pain treatment planning."
         }
-      ]
+      ],
+      "intro": "Common experiences based on patient reports:"
     },
     {
       "type": "onset_duration",
@@ -199,7 +314,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Samidorphan blocks opioid receptors.",
       "items": [
         {
           "with": "Opioids",
@@ -216,7 +330,8 @@
           "risk": "May lower olanzapine levels.",
           "action": "Dose adjustments may be needed if smoking status changes."
         }
-      ]
+      ],
+      "intro": "Samidorphan blocks opioid receptors."
     },
     {
       "type": "tapering",
@@ -284,21 +399,6 @@
       "text": "Useful when olanzapine is effective but metabolic risk is a concern. Requires planning around pain management due to opioid blockade."
     }
   ],
-  "seo": {
-    "title": "Olanzapine/Samidorphan (Lybalvi): Uses, Safety, Interactions, and Weight Impact",
-    "description": "Learn how Lybalvi treats schizophrenia and bipolar I disorder, how it differs from olanzapine, its weight impact, opioid precautions, and common side effects.",
-    "canonical": "https://www.heypsych.com/treatments/olanzapine-samidorphan-lybalvi",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA recommendations, and current psychiatric literature."
-  },
   "faqs": [
     {
       "q": "What is Lybalvi used for?",
@@ -320,5 +420,20 @@
       "q": "Is Lybalvi safe for older adults with dementia?",
       "a": "No. Like other antipsychotics, it carries a higher mortality risk and is not approved for dementia-related psychosis."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Olanzapine/Samidorphan (Lybalvi): Uses, Safety, Interactions, and Weight Impact",
+    "description": "Learn how Lybalvi treats schizophrenia and bipolar I disorder, how it differs from olanzapine, its weight impact, opioid precautions, and common side effects.",
+    "canonical": "https://www.heypsych.com/treatments/olanzapine-samidorphan-lybalvi",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA recommendations, and current psychiatric literature."
+  }
 }

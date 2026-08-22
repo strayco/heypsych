@@ -109,7 +109,7 @@ export function TreatmentGrid({
       {/* Header */}
       {title && (
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl font-bold text-neutral-900">{title}</h2>
+          <h2 className="text-3xl font-bold text-label-primary">{title}</h2>
           <div className="flex items-center gap-3">
             <Button
               size="sm"
@@ -118,7 +118,7 @@ export function TreatmentGrid({
             >
               {showCharts ? "Hide Charts" : "Show Charts"}
             </Button>
-            <span className="text-sm text-neutral-700">{filteredEntities.length} treatments</span>
+            <span className="text-sm text-label-secondary">{filteredEntities.length} treatments</span>
           </div>
         </div>
       )}
@@ -151,11 +151,11 @@ export function TreatmentGrid({
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-xl border border-blue-200 bg-blue-50 p-4"
+          className="rounded-xl border border-accent-border bg-accent-tint p-4"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-blue-900">
+              <span className="text-sm font-medium text-accent-700">
                 Compare Selected ({selectedTreatments.length}/4)
               </span>
               <div className="flex gap-2">
@@ -227,8 +227,8 @@ export function TreatmentGrid({
       {/* Empty State */}
       {filteredEntities.length === 0 && (
         <div className="py-12 text-center">
-          <p className="text-lg text-neutral-700">No treatments found</p>
-          <p className="mt-2 text-sm text-neutral-600">Try adjusting your filters</p>
+          <p className="text-lg text-label-secondary">No treatments found</p>
+          <p className="mt-2 text-sm text-label-tertiary">Try adjusting your filters</p>
         </div>
       )}
     </div>

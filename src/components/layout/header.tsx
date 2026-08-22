@@ -1,27 +1,53 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/config/site";
-import { Menu, X, Search, Pill, Brain, BookOpen, Users, Compass, Info, Stethoscope } from "lucide-react";
+import {
+  Menu,
+  X,
+  Search,
+  HeartPulse,
+  Pill,
+  Smartphone,
+  MapPin,
+  Stethoscope,
+  BookOpen,
+  Info,
+  Compass,
+  Users,
+  ChevronRight,
+} from "lucide-react";
 
-const iconMap = {
+// Icon mapping for navigation items
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  "heart-pulse": HeartPulse,
   pill: Pill,
-  brain: Brain,
-  "book-open": BookOpen,
-  users: Users,
-  compass: Compass,
-  info: Info,
+  smartphone: Smartphone,
+  "map-pin": MapPin,
   stethoscope: Stethoscope,
+  "book-open": BookOpen,
+  info: Info,
+  compass: Compass,
+  users: Users,
 };
 
 export function Header() {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track scroll position for header styling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -36,36 +62,41 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header
+      className={`
+        sticky top-0 z-50 w-full transition-all duration-200
+        ${isScrolled
+          ? "hp-material border-b border-separator shadow-subtle"
+          : "bg-canvas/80 backdrop-blur-md border-b border-transparent"
+        }
+      `}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <motion.div
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center space-x-2"
-              >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
-                  <span className="text-lg font-bold text-white">H</span>
-                </div>
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
-                  {siteConfig.name}
-                </span>
-              </motion.div>
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center group transition-transform group-hover:scale-[1.02]">
+            <img
+              src="/logo.svg"
+              alt={siteConfig.name}
+              className="h-10 w-auto"
+            />
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center space-x-8 md:flex">
+          <nav className="hidden items-center gap-1 md:flex">
             {siteConfig.navigation.map((item) => {
-              const IconComponent = iconMap[item.icon as keyof typeof iconMap];
+              const IconComponent = iconMap[item.icon];
 
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex items-center space-x-1 text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-700"
+                  className="
+                    flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium
+                    text-label-secondary transition-all duration-150
+                    hover:bg-fill-secondary hover:text-label-primary
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+                  "
                 >
                   {IconComponent && <IconComponent className="h-4 w-4" />}
                   <span>{item.name}</span>
@@ -75,75 +106,117 @@ export function Header() {
           </nav>
 
           {/* Search and Actions */}
-          <div className="flex items-center space-x-4">
-            {/* Search */}
+          <div className="flex items-center gap-3">
+            {/* Desktop Search */}
             <div className="relative hidden sm:flex">
               <form onSubmit={handleSearchSubmit}>
                 <input
                   type="text"
-                  placeholder="Search treatments, conditions, resources..."
+                  placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-64 rounded-lg border border-gray-300 px-4 py-2 pl-10 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="
+                    w-44 rounded-xl border border-separator bg-surface/80 px-3.5 py-2 pl-9
+                    text-sm text-label-primary placeholder:text-label-tertiary
+                    transition-all duration-200
+                    hover:border-separator-opaque
+                    focus:w-56 focus:border-accent focus:bg-surface focus:shadow-soft
+                    focus:outline-none focus:ring-2 focus:ring-accent/20
+                  "
                 />
-                <Search className="absolute top-2.5 left-3 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-label-tertiary" />
               </form>
             </div>
 
             {/* Mobile menu button */}
-            <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMobileMenu}>
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            <button
+              onClick={toggleMobileMenu}
+              className="
+                flex h-10 w-10 items-center justify-center rounded-xl
+                text-label-secondary transition-all duration-150
+                hover:bg-fill-secondary hover:text-label-primary
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+                md:hidden
+              "
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="border-t md:hidden"
-          >
-            <nav className="space-y-2 py-4">
-              {/* Mobile Search */}
-              <div className="relative mb-4">
-                <form
-                  onSubmit={(e) => {
-                    handleSearchSubmit(e);
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  <input
-                    type="text"
-                    placeholder="Search treatments, conditions, resources..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 pl-10 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  />
-                  <Search className="absolute top-2.5 left-3 h-4 w-4 text-gray-400" />
-                </form>
-              </div>
-
-              {/* Mobile Navigation Links */}
-              {siteConfig.navigation.map((item) => {
-                const IconComponent = iconMap[item.icon as keyof typeof iconMap];
-
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 hover:text-neutral-700"
-                    onClick={() => setIsMobileMenuOpen(false)}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="border-t border-separator md:hidden overflow-hidden"
+            >
+              <nav className="py-4 space-y-1">
+                {/* Mobile Search */}
+                <div className="relative mb-4 px-1">
+                  <form
+                    onSubmit={(e) => {
+                      handleSearchSubmit(e);
+                      setIsMobileMenuOpen(false);
+                    }}
                   >
-                    {IconComponent && <IconComponent className="h-5 w-5" />}
-                    <span>{item.name}</span>
-                  </Link>
-                );
-              })}
-            </nav>
-          </motion.div>
-        )}
+                    <input
+                      type="text"
+                      placeholder="Search conditions, treatments, tools..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="
+                        w-full rounded-xl border border-separator bg-surface px-4 py-3 pl-10
+                        text-sm text-label-primary placeholder:text-label-tertiary
+                        focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20
+                      "
+                    />
+                    <Search className="absolute left-4 top-3.5 h-4 w-4 text-label-tertiary" />
+                  </form>
+                </div>
+
+                {/* Mobile Navigation Links */}
+                {siteConfig.navigation.map((item) => {
+                  const IconComponent = iconMap[item.icon];
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="
+                        flex items-center justify-between rounded-xl px-3 py-3
+                        text-sm font-medium text-label-primary
+                        transition-colors duration-150
+                        hover:bg-fill-quaternary
+                        active:bg-fill-tertiary
+                      "
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <div className="flex items-center gap-3">
+                        {IconComponent && (
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-fill-quaternary">
+                            <IconComponent className="h-4 w-4 text-label-secondary" />
+                          </div>
+                        )}
+                        <span>{item.name}</span>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-label-quaternary" />
+                    </Link>
+                  );
+                })}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

@@ -1,79 +1,169 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "xenon-therapy",
-  "type": "interventional",
-  "name": "Xenon Therapy",
-  "summary": "An investigational therapy using inhaled xenon gas as an anesthetic and neuroprotective agent, studied for depression, anxiety, and neuroprotection.",
-  "description": "Xenon Therapy involves the controlled inhalation of xenon gas, a noble gas with established anesthetic properties and potential neuroprotective effects. Xenon acts as an NMDA receptor antagonist, similar to ketamine, and may modulate glutamatergic signaling while providing neuroprotection against excitotoxicity. Clinically, it has been used in anesthesia and is being studied as a possible intervention for treatment-resistant depression, anxiety disorders, post-traumatic stress disorder, and neuroprotection after traumatic brain injury. \n\nUnlike ketamine, xenon is chemically inert, rapidly eliminated through respiration, and does not undergo metabolic breakdown, contributing to a favorable safety profile. Research is still in early stages, and xenon therapy is not yet FDA-approved for psychiatric indications, though it shows promise as a novel neuromodulatory approach.",
-  "category": "interventional/ketamine",
-  "tags": [
-    "xenon",
-    "inhaled anesthetic",
-    "NMDA antagonist",
-    "neuroprotection",
-    "depression therapy"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "xenon-therapy",
+    "name": "Xenon Therapy"
+  },
+  "taxonomy": {
+    "modality": "interventional",
+    "category": "interventional/ketamine",
     "intervention_types": [
       "Gas inhalation therapy"
     ],
-    "treatment_types": [
-      "Neuromodulation",
-      "Pharmacologic adjunct"
-    ],
-    "categories": [
-      "Psychiatry",
-      "Anesthesiology",
-      "Neurology"
-    ],
-    "delivery_methods": [
-      "Inhaled xenon gas via closed-circuit breathing system"
-    ],
-    "invasiveness_level": "Minimally invasive",
-    "equipment_required": true,
-    "training_required": true,
-    "age_groups": [
-      "Adult"
-    ],
-    "session_duration": "30–60 minutes",
-    "treatment_duration": [
-      "Short-term",
-      "Medium-term"
-    ],
-    "specialty_areas": [
-      "Psychiatry",
-      "Anesthesiology",
-      "Neurocritical care"
+    "tags": [
+      "xenon",
+      "inhaled anesthetic",
+      "NMDA antagonist",
+      "neuroprotection",
+      "depression therapy"
     ]
   },
-  "clinical_metadata": {
-    "primary_indications": [],
-    "conditions_treated": [
-      "Major depressive disorder",
-      "Treatment-resistant depression",
-      "Anxiety disorders",
-      "Post-traumatic stress disorder",
-      "Neuroprotection after brain injury"
-    ],
-    "off_label_uses": [
-      "PTSD",
-      "Neuroprotection",
-      "Anxiety spectrum disorders"
-    ],
-    "contraindications": [
-      "Severe respiratory disease",
-      "Unstable cardiovascular disease",
-      "Pregnancy"
-    ],
-    "safety_profile": "Generally well tolerated under controlled settings. Side effects may include dizziness, mild dissociation, and transient sedation. Long-term safety data in psychiatric populations is limited.",
-    "evidence_level": "Preliminary; early-stage clinical studies and translational research.",
-    "research_support": "Investigational with small clinical trials and animal data suggesting antidepressant and neuroprotective effects.",
-    "invasiveness": "Minimally invasive",
-    "efficacy_rating": {
-      "treatment-resistant-depression": 3,
-      "anxiety-disorders": 2,
-      "ptsd": 2,
-      "overall_tolerability": 4
+  "summary": "An investigational therapy using inhaled xenon gas as an anesthetic and neuroprotective agent, studied for depression, anxiety, and neuroprotection.",
+  "description": "Xenon Therapy involves the controlled inhalation of xenon gas, a noble gas with established anesthetic properties and potential neuroprotective effects. Xenon acts as an NMDA receptor antagonist, similar to ketamine, and may modulate glutamatergic signaling while providing neuroprotection against excitotoxicity. Clinically, it has been used in anesthesia and is being studied as a possible intervention for treatment-resistant depression, anxiety disorders, post-traumatic stress disorder, and neuroprotection after traumatic brain injury. \n\nUnlike ketamine, xenon is chemically inert, rapidly eliminated through respiration, and does not undergo metabolic breakdown, contributing to a favorable safety profile. Research is still in early stages, and xenon therapy is not yet FDA-approved for psychiatric indications, though it shows promise as a novel neuromodulatory approach.",
+  "clinical_profile": {
+    "indications": {
+      "secondary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "treatment-resistant-depression",
+          "condition_name": "Treatment-resistant depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-traumatic stress disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "neuroprotection-after-brain-injury",
+          "condition_name": "Neuroprotection after brain injury",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "ptsd",
+          "condition_name": "PTSD",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "neuroprotection",
+          "condition_name": "Neuroprotection",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "anxiety-spectrum-disorders",
+          "condition_name": "Anxiety spectrum disorders",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Preliminary; early-stage clinical studies and translational research.",
+      "efficacy_ratings": {
+        "treatment-resistant-depression": {
+          "rating": 3
+        },
+        "anxiety-disorders": {
+          "rating": 2
+        },
+        "ptsd": {
+          "rating": 2
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "Investigational with small clinical trials and animal data suggesting antidepressant and neuroprotective effects."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "Short-term; Medium-term"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Inhaled xenon gas via closed-circuit breathing system"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "30–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "minimally_invasive"
+    },
+    "safety": {
+      "overall_safety": "Generally well tolerated under controlled settings. Side effects may include dizziness, mild dissociation, and transient sedation. Long-term safety data in psychiatric populations is limited.",
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness"
+        },
+        {
+          "effect": "Sedation"
+        },
+        {
+          "effect": "Mild dissociation"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression"
+        },
+        {
+          "risk": "Cardiovascular instability"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe respiratory insufficiency",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Unstable cardiac disease",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Pregnancy",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "History of substance use disorder",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe claustrophobia",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Contraindicated"
+      }
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "interventional",
+      "details": {
+        "procedure_type": "Gas inhalation therapy",
+        "equipment_required": [
+          "true"
+        ],
+        "session_protocol": "Patient fitted with closed-circuit breathing apparatus.\nXenon gas delivered in controlled concentration, often mixed with oxygen.\nMonitoring of vitals and mental state throughout session."
+      }
     }
   },
   "sections": [
@@ -242,6 +332,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Dinis-Oliveira RJ. Xenon: A noble gas with potential clinical applications in neuroprotection. J Clin Pharm Ther. (2016).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27170208/"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Ostrovskaya RU, et al. Xenon for treatment-resistant depression: Clinical pilot study. Eur Neuropsychopharmacol. (2015).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25769518/"
+    }
+  ],
   "seo": {
     "title": "Xenon Therapy | Investigational NMDA Antagonist for Depression & Neuroprotection",
     "description": "Xenon Therapy is an investigational inhaled gas treatment studied for depression, anxiety, PTSD, and neuroprotection. Learn about its mechanism, potential benefits, and clinical research.",
@@ -254,5 +358,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Preliminary; early-stage clinical studies and translational research."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Preliminary; early-stage clinical studies and translational research."
+    ]
   }
 }

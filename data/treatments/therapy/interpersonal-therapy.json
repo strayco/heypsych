@@ -1,97 +1,202 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "interpersonal-therapy",
-  "type": "therapy",
-  "name": "Interpersonal Therapy (IPT)",
-  "summary": "A structured, time-limited psychotherapy that focuses on improving interpersonal relationships and social functioning to alleviate psychological distress.",
-  "description": "Interpersonal Therapy (IPT) is an evidence-based, time-limited treatment originally developed for major depressive disorder. It emphasizes the role of interpersonal relationships, social support, and life events in the onset and maintenance of psychological symptoms. IPT helps patients identify and address problem areas in relationships, such as role disputes, role transitions, grief, and interpersonal deficits. Through structured sessions, patients learn strategies to improve communication, resolve conflicts, and build stronger social support, which in turn reduces psychiatric symptoms.",
-  "category": "therapy/individual",
-  "tags": [
-    "psychotherapy",
-    "evidence-based",
-    "depression",
-    "anxiety",
-    "relationships",
-    "time-limited"
-  ],
-  "metadata": {
+  "identity": {
+    "slug": "interpersonal-therapy",
+    "name": "Interpersonal Therapy (IPT)",
+    "generic_name": "interpersonal therapy",
+    "brand_names": [
+      "IPT"
+    ],
+    "wikidata_qid": "Q1665986"
+  },
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/individual",
     "intervention_types": [
       "Psychotherapy",
       "Interpersonal skills training"
     ],
-    "treatment_types": [
-      "Individual therapy",
-      "Group therapy",
-      "Time-limited therapy"
-    ],
-    "categories": [
-      "Psychotherapy",
-      "Mood disorders",
-      "Relationship-focused therapies"
-    ],
-    "delivery_methods": [
-      "In-person sessions",
-      "Telehealth",
-      "Group therapy"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": [
-      "None"
-    ],
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults",
-      "Older Adults"
-    ],
-    "session_duration": "45–60 minutes",
-    "treatment_duration": [
-      "12–16 sessions (typical)",
-      "Extended versions for chronic conditions"
-    ],
-    "specialty_areas": [
-      "Depression",
-      "Bipolar disorder (adjunctive)",
-      "Postpartum depression",
-      "Anxiety disorders",
-      "Eating disorders"
-    ],
-    "wikidata_qid": "Q1665986"
+    "tags": [
+      "psychotherapy",
+      "evidence-based",
+      "depression",
+      "anxiety",
+      "relationships",
+      "time-limited"
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Major depressive disorder",
-      "Postpartum depression",
-      "Adjustment disorders",
-      "Grief"
-    ],
-    "conditions_treated": [
-      "Depression",
-      "Bipolar disorder (adjunctive)",
-      "Anxiety disorders",
-      "Bulimia nervosa",
-      "Binge-eating disorder",
-      "Post-traumatic stress disorder (sometimes)"
-    ],
-    "off_label_uses": [
-      "Chronic pain with comorbid depression",
-      "Interpersonal difficulties in borderline traits"
-    ],
-    "contraindications": [
-      "Severe cognitive impairment",
-      "Active psychosis",
-      "Immediate safety risks requiring crisis intervention"
-    ],
-    "safety_profile": "Safe and well-tolerated; emotional distress may temporarily increase when processing grief or conflicts.",
-    "evidence_level": "High—supported by numerous randomized controlled trials and meta-analyses.",
-    "research_support": "Robust evidence for depression and growing evidence for eating disorders, bipolar disorder, and anxiety.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "depression": 5,
-      "anxiety": 4,
-      "grief": 4,
-      "interpersonal-functioning": 5,
-      "overall-tolerability": 5
+  "summary": "A structured, time-limited psychotherapy that focuses on improving interpersonal relationships and social functioning to alleviate psychological distress.",
+  "description": "Interpersonal Therapy (IPT) is an evidence-based, time-limited treatment originally developed for major depressive disorder. It emphasizes the role of interpersonal relationships, social support, and life events in the onset and maintenance of psychological symptoms. IPT helps patients identify and address problem areas in relationships, such as role disputes, role transitions, grief, and interpersonal deficits. Through structured sessions, patients learn strategies to improve communication, resolve conflicts, and build stronger social support, which in turn reduces psychiatric symptoms.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "major-depressive-disorder",
+          "condition_name": "Major depressive disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "postpartum-depression",
+          "condition_name": "Postpartum depression",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjustment-disorders",
+          "condition_name": "Adjustment disorders",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "grief",
+          "condition_name": "Grief",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder-adjunctive",
+          "condition_name": "Bipolar disorder (adjunctive)",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "anxiety-disorders",
+          "condition_name": "Anxiety disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bulimia-nervosa",
+          "condition_name": "Bulimia nervosa",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "binge-eating-disorder",
+          "condition_name": "Binge-eating disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder-sometimes",
+          "condition_name": "Post-traumatic stress disorder (sometimes)",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "chronic-pain-with-comorbid-depression",
+          "condition_name": "Chronic pain with comorbid depression",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "interpersonal-difficulties-in-borderline-traits",
+          "condition_name": "Interpersonal difficulties in borderline traits",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "High—supported by numerous randomized controlled trials and meta-analyses.",
+      "efficacy_ratings": {
+        "depression": {
+          "rating": 5
+        },
+        "anxiety": {
+          "rating": 4
+        },
+        "grief": {
+          "rating": 4
+        },
+        "interpersonal-functioning": {
+          "rating": 5
+        },
+        "overall-tolerability": {
+          "rating": 5
+        }
+      },
+      "research_support": "Robust evidence for depression and growing evidence for eating disorders, bipolar disorder, and anxiety."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "12–16 sessions (typical); Extended versions for chronic conditions"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "In-person sessions",
+        "Telehealth",
+        "Group therapy"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "45–60 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and well-tolerated; emotional distress may temporarily increase when processing grief or conflicts.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort during sessions"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Temporary symptom exacerbation when discussing distressing relationships"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Active psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Lack of engagement in structured therapy",
+          "type": "relative"
+        },
+        {
+          "contraindication": "Severe interpersonal avoidance without readiness",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Individual therapy, Group therapy, Time-limited therapy",
+        "key_techniques": [
+          "Psychotherapy",
+          "Mood disorders",
+          "Relationship-focused therapies"
+        ],
+        "session_structure": {
+          "pre_session": "Review mood and interpersonal events since last session.",
+          "during_session": "Focused discussion of interpersonal problem area with skill-building exercises.",
+          "post_session": "Assign interpersonal tasks or role-play for practice outside therapy."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed clinical psychologists",
+            "Psychiatrists",
+            "Licensed clinical social workers",
+            "Therapists trained in IPT model"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -250,6 +355,26 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Weissman, M. M., Markowitz, J. C., & Klerman, G. L. (2017). The Guide to Interpersonal Psychotherapy.",
+      "url": "https://global.oup.com/academic/product/the-guide-to-interpersonal-psychotherapy-9780190662592"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Cuijpers P, et al. (2011). Interpersonal psychotherapy for depression: a meta-analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21934034/"
+    },
+    {
+      "id": "ref-3",
+      "type": "other",
+      "title": "IPT Institute",
+      "url": "https://iptinstitute.com"
+    }
+  ],
   "seo": {
     "title": "Interpersonal Therapy (IPT) | Evidence-Based Psychotherapy for Depression & Relationships",
     "description": "Interpersonal Therapy (IPT) is a structured, time-limited psychotherapy effective for depression, grief, and relationship difficulties. Learn about its techniques, uses, and evidence base.",
@@ -262,5 +387,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: High—supported by numerous randomized controlled trials and meta-analyses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: High—supported by numerous randomized controlled trials and meta-analyses."
+    ]
   }
 }

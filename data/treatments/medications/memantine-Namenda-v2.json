@@ -1,18 +1,10 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "memantine-namenda",
-  "type": "medication",
-  "name": "Memantine (Namenda)",
-  "summary": "NMDA receptor blocker used for moderate-to-severe Alzheimer’s dementia. Not a sedative, not a cure—think “slow stabilization,” with a real risk of confusion, dizziness, and (rarely) hallucinations during titration.",
-  "description": "Memantine is used in moderate-to-severe Alzheimer’s dementia to help slow symptom worsening and support day-to-day function. It’s not a fast-acting “calm down” med and it won’t reverse dementia, but it can smooth the trajectory for some people—especially when combined with a cholinesterase inhibitor. Biggest watch-outs are dizziness, confusion, sleep disruption, and neuropsychiatric flare-ups (agitation, delusions, hallucinations), particularly during dose increases or in Lewy body dementia.",
-  "patient_summary": "Memantine is for moderate-to-severe Alzheimer’s dementia. It doesn’t work overnight and it doesn’t “fix” memory, but some people look steadier over weeks—less decline, a little more function, sometimes fewer behavioral spikes. The tradeoff: dizziness and confusion are common early on, and a small group can get more agitated or even hallucinate (especially during titration or with Lewy body dementia). Don’t stop it abruptly unless there’s a serious reaction—step down slowly.",
-  "category": "medications/neurocognitive-disorders",
-  "metadata": {
-    "drug_classes": [
-      "N-Methyl-D-Aspartate (NMDA) Receptor Antagonist",
-      "Glutamate Modulator",
-      "Cognitive Enhancer (Dementia)"
-    ],
+  "identity": {
+    "slug": "memantine-namenda",
+    "name": "Memantine (Namenda)",
+    "generic_name": "memantine",
     "brand_names": [
       "Namenda",
       "Namenda XR",
@@ -23,79 +15,218 @@
       "PMS-Memantine",
       "RIVA-Memantine",
       "SANDOZ Memantine"
-    ],
-    "administration_routes": [
-      "Oral"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 2003,
-    "pharmacologic_category": "NMDA Receptor Antagonist (Uncompetitive)",
-    "published_date": "2026-01-23T00:00:00Z",
-    "last_updated": "2026-01-23T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2026-01-23T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Moderate-to-Severe Dementia of the Alzheimer Type"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "alzheimer-disease",
-        "relationship": "primary_treatment",
-        "context": "FDA-indicated for moderate-to-severe dementia of the Alzheimer type. It’s often used when symptoms have progressed beyond “mild,” either alone or layered on top of a cholinesterase inhibitor for a combined approach."
-      },
-      {
-        "slug": "dementia-with-lewy-bodies",
-        "relationship": "off_label",
-        "context": "Sometimes used in Lewy body dementia, but neuropsychiatric sensitivity is real: hallucinations, delusions, and agitation can worsen—especially during titration."
-      },
-      {
-        "slug": "parkinson-disease-dementia",
-        "relationship": "off_label",
-        "context": "Used off-label in Parkinson disease dementia. Monitor closely for worsening confusion, sleep disruption, or hallucinations."
-      },
-      {
-        "slug": "vascular-dementia",
-        "relationship": "off_label",
-        "context": "Sometimes considered when vascular disease is part of the dementia picture, typically as an adjunct rather than a stand-alone solution."
-      },
-      {
-        "slug": "trichotillomania",
-        "relationship": "off_label",
-        "context": "Evidence supports memantine as a glutamate-targeting option for hair-pulling in adults, with improvement over placebo in an 8-week randomized trial."
-      },
-      {
-        "slug": "excoriation-disorder",
-        "relationship": "off_label",
-        "context": "Also studied for skin-picking (excoriation) disorder in adults, with meaningful symptom improvement in an 8-week randomized trial."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity to memantine or any component of the formulation"
-    ],
-    "efficacy_response": {
-      "metric": "Much/Very Much Improved at 8 Weeks (Trichotillomania / Skin-Picking Disorder)",
-      "percentage_value": "60.5%",
-      "comparison_data": "8.3% with placebo (NNT ≈ 1.9)",
-      "patient_text": "In an 8-week study of adults with hair-pulling or skin-picking disorder, about 6 in 10 people on memantine were rated “much” or “very much” improved, compared with about 1 in 12 on placebo. Translation: this wasn’t a tiny effect—when it works, it can be a real shift.",
-      "citation_tag": "PMID:36856701"
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/neurocognitive-disorders",
+    "drug_classes": [
+      "N-Methyl-D-Aspartate (NMDA) Receptor Antagonist",
+      "Glutamate Modulator",
+      "Cognitive Enhancer (Dementia)"
+    ]
+  },
+  "summary": "NMDA receptor blocker used for moderate-to-severe Alzheimer’s dementia. Not a sedative, not a cure—think “slow stabilization,” with a real risk of confusion, dizziness, and (rarely) hallucinations during titration.",
+  "description": "Memantine is used in moderate-to-severe Alzheimer’s dementia to help slow symptom worsening and support day-to-day function. It’s not a fast-acting “calm down” med and it won’t reverse dementia, but it can smooth the trajectory for some people—especially when combined with a cholinesterase inhibitor. Biggest watch-outs are dizziness, confusion, sleep disruption, and neuropsychiatric flare-ups (agitation, delusions, hallucinations), particularly during dose increases or in Lewy body dementia.",
+  "patient_summary": "Memantine is for moderate-to-severe Alzheimer’s dementia. It doesn’t work overnight and it doesn’t “fix” memory, but some people look steadier over weeks—less decline, a little more function, sometimes fewer behavioral spikes. The tradeoff: dizziness and confusion are common early on, and a small group can get more agitated or even hallucinate (especially during titration or with Lewy body dementia). Don’t stop it abruptly unless there’s a serious reaction—step down slowly.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "alzheimer-disease",
+          "condition_name": "Alzheimer Disease",
+          "relationship": "primary_indication",
+          "context": "FDA-indicated for moderate-to-severe dementia of the Alzheimer type. It’s often used when symptoms have progressed beyond “mild,” either alone or layered on top of a cholinesterase inhibitor for a combined approach.",
+          "fda_approved": true
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "dementia-with-lewy-bodies",
+          "condition_name": "Dementia With Lewy Bodies",
+          "relationship": "off_label",
+          "context": "Sometimes used in Lewy body dementia, but neuropsychiatric sensitivity is real: hallucinations, delusions, and agitation can worsen—especially during titration."
+        },
+        {
+          "condition_slug": "parkinson-disease-dementia",
+          "condition_name": "Parkinson Disease Dementia",
+          "relationship": "off_label",
+          "context": "Used off-label in Parkinson disease dementia. Monitor closely for worsening confusion, sleep disruption, or hallucinations."
+        },
+        {
+          "condition_slug": "vascular-dementia",
+          "condition_name": "Vascular Dementia",
+          "relationship": "off_label",
+          "context": "Sometimes considered when vascular disease is part of the dementia picture, typically as an adjunct rather than a stand-alone solution."
+        },
+        {
+          "condition_slug": "trichotillomania",
+          "condition_name": "Trichotillomania",
+          "relationship": "off_label",
+          "context": "Evidence supports memantine as a glutamate-targeting option for hair-pulling in adults, with improvement over placebo in an 8-week randomized trial."
+        },
+        {
+          "condition_slug": "excoriation-disorder",
+          "condition_name": "Excoriation Disorder",
+          "relationship": "off_label",
+          "context": "Also studied for skin-picking (excoriation) disorder in adults, with meaningful symptom improvement in an 8-week randomized trial."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Well absorbed",
-      "time_to_peak_IR": "3 to 7 hours",
-      "time_to_peak_XR": "9 to 12 hours",
-      "half_life": "~60 to 80 hours (terminal)",
-      "distribution": "9 to 11 L/kg",
-      "protein_binding": "45%",
-      "metabolism": "Partially hepatic; primarily independent of CYP enzymes; forms 3 metabolites with minimal activity",
-      "excretion": "Urine (~74%); ~48% unchanged; active tubular secretion with pH-dependent reabsorption",
-      "special_notes": "Clearance drops with alkaline urine (levels rise). Exposure increases with renal impairment (AUC increases ~60% in moderate and ~115% in severe impairment)."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Hours: The medication is absorbed and reaches peak levels (IR peaks ~3–7 hours; XR peaks ~9–12 hours); Days: Side effects (dizziness, confusion) often show up early—especially during titration; Weeks: Clinical benefit is usually assessed over several weeks (dementia care) or over ~8 weeks in body-focused repetitive behavior trials; 60–80 hours: Long half-life means changes (including side effects) can linger after dose changes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "Dizziness",
+          "incidence": "5% to 7%",
+          "notes": "This is a big one—especially early. Falls risk matters in dementia. If dizziness is intense, slow the titration or hold the dose longer before increasing."
+        },
+        {
+          "effect": "Headache",
+          "incidence": "6%",
+          "notes": "Often shows up early and may fade with time. If headaches are persistent or severe, reassess dosing and hydration, and rule out other causes."
+        },
+        {
+          "effect": "Confusion",
+          "incidence": "Immediate-release: 6%",
+          "notes": "Paradoxical but real: some people get more confused during titration. Dose increases can be a trigger. If confusion spikes, pause the titration or step back."
+        },
+        {
+          "effect": "Drowsiness",
+          "incidence": "3%",
+          "notes": "Memantine isn’t designed as a sedative, but sleepiness can happen. If daytime sleepiness increases, consider morning dosing (and make sure nothing else sedating was added)."
+        },
+        {
+          "effect": "Hallucinations",
+          "incidence": "Immediate-release: 3%",
+          "notes": "More likely in people with Lewy body dementia or baseline hallucinations. If hallucinations worsen after an increase, treat it like a medication signal—not a behavior problem."
+        },
+        {
+          "effect": "Anxiety / Irritability",
+          "incidence": "Extended-release: 4%",
+          "notes": "Some people feel more keyed up during titration. If anxiety or agitation ramps up, slow down or reassess whether memantine is a net win."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Severe neuropsychiatric worsening: agitation, delusions, hallucinations, delirium—especially in susceptible dementias or during titration"
+        },
+        {
+          "risk": "Seizures (reported): higher caution in people with seizure history"
+        },
+        {
+          "risk": "Syncope, bradycardia, heart failure, prolonged QT (postmarketing reports): evaluate if fainting, palpitations, or new cardiac symptoms appear"
+        },
+        {
+          "risk": "Severe hypersensitivity reactions (rare): including Stevens-Johnson syndrome—urgent evaluation for rash or mucosal symptoms"
+        },
+        {
+          "risk": "Acute kidney injury (postmarketing reports): assess if sudden decline, dehydration, or medication interactions are present"
+        },
+        {
+          "risk": "Suicidal ideation (reported): monitor mood and safety, especially if neuropsychiatric symptoms shift"
+        }
+      ],
+      "black_box_warning": "Not applicable for this medication.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity to memantine or any component of the formulation"
+        }
+      ],
+      "precautions": [
+        "Neuropsychiatric effects can occur: confusion, dizziness, drowsiness, sleep disturbance; less commonly agitation, delusions, hallucinations",
+        "Higher risk of neuropsychiatric worsening in Lewy body dementia or in people with baseline hallucinations",
+        "Renal impairment increases exposure—dose adjustments may be needed",
+        "Alkaline urine reduces clearance (levels rise) and can increase side effects",
+        "Use caution in seizure disorders (seizures have been reported)",
+        "Use caution in cardiovascular disease (hypertension/hypotension, bradycardia, syncope have been reported)"
+      ],
+      "interactions": [
+        {
+          "interactant": "NMDA antagonist stacking (amantadine, ketamine; caution also with high-dose dextromethorphan)",
+          "mechanism": "Additive NMDA-related effects can increase confusion, dizziness, and psychotomimetic symptoms (agitation, hallucinations).",
+          "action": "Avoid unnecessary stacking. If overlap is unavoidable, go slower with titration and monitor neuropsychiatric status closely."
+        },
+        {
+          "interactant": "Urine alkalinizing agents or conditions (eg, sodium bicarbonate, major dietary shifts toward alkalinization)",
+          "mechanism": "Alkaline urine significantly reduces memantine clearance, increasing blood levels and side effects (confusion, dizziness, agitation).",
+          "action": "Use caution. If alkalinization is needed medically, consider dose adjustment and tighter monitoring."
+        },
+        {
+          "interactant": "Other CNS-active medications (sedatives, anticholinergics, polypharmacy in dementia)",
+          "mechanism": "Not a classic “dangerous combo,” but additive cognitive burden can look like memantine intolerance (confusion, falls, sleep disruption).",
+          "action": "If side effects show up, review the whole med list—memantine is often blamed when polypharmacy is the real driver."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Cognitive function over time (trend matters more than a single score)"
+        },
+        {
+          "parameter": "Functional outcomes: Activities of Daily Living (ADLs) and Instrumental ADLs (IADLs)"
+        },
+        {
+          "parameter": "Neuropsychiatric symptoms: agitation, irritability, sleep disturbance, delusions, hallucinations—especially during titration or in Lewy body dementia"
+        },
+        {
+          "parameter": "Falls and gait stability (dizziness/ataxia = safety risk)"
+        },
+        {
+          "parameter": "Renal function for dosing decisions (use Cockcroft-Gault for adjustment in many clinical settings)"
+        },
+        {
+          "parameter": "Blood pressure and cardiovascular symptoms in patients with cardiac disease (hypertension/hypotension, syncope risk)"
+        },
+        {
+          "parameter": "Ophthalmic monitoring when clinically indicated (Canada recommends periodic ophthalmic exam; consider if corneal symptoms or eye disease are present)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Human data are limited; adverse events have been observed in animal reproduction studies. Use during pregnancy only if the potential benefit justifies the potential risk.",
+        "lactation": "It is not known whether memantine is present in human breast milk. The manufacturer advises weighing infant exposure risk, breastfeeding benefits, and the mother’s treatment benefit. If used, monitor the infant for unusual sleepiness, feeding problems, or irritability.",
+        "pediatric": "Not applicable for this medication.",
+        "geriatric": "Refer to adult dosing, but monitor more aggressively for dizziness, falls, confusion, sleep disturbance, and neuropsychiatric changes—especially during titration.",
+        "renal_impairment": "Dose adjustments are commonly needed in renal impairment; exposure rises substantially as kidney function declines. Extended-release is generally avoided in dialysis and CRRT-type settings.",
+        "hepatic_impairment": "Mild-to-moderate impairment: no adjustment. Severe impairment: limited data; use with caution (Canada: not recommended)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 2003
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Well absorbed",
+          "half_life": "~60 to 80 hours (terminal)",
+          "metabolism": "Partially hepatic; primarily independent of CYP enzymes; forms 3 metabolites with minimal activity",
+          "excretion": "Urine (~74%); ~48% unchanged; active tubular secretion with pH-dependent reabsorption",
+          "protein_binding": "45%"
+        },
+        "dosing": {
+          "titration": "Memantine is titrated slowly to reduce side effects—especially confusion and dizziness. For dementia, it’s a weekly step-up schedule to a target dose. For hair-pulling/skin-picking, dosing is typically 10 mg/day then 20 mg/day after 2 weeks (adult data)."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Stopping memantine abruptly can backfire—some people worsen cognitively or behaviorally, and a subset can develop withdrawal-like symptoms (confusion, hallucinations, delusions, insomnia, increased anxiety and agitation). Unless there’s a severe adverse reaction, step it down gradually."
+        }
+      }
     }
   },
   "sections": [
@@ -117,7 +248,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med has two storylines: dementia care and compulsive behaviors. Either way, it’s not a “feel it in an hour” medication. People usually notice changes over weeks—and sometimes the first thing they notice is side effects.",
       "items": [
         {
           "category": "Subtle Stabilization (Weeks, not days)",
@@ -163,7 +293,8 @@
           ],
           "note": "In trials for body-focused repetitive behaviors, dosing was typically 10–20 mg/day over 8 weeks."
         }
-      ]
+      ],
+      "intro": "This med has two storylines: dementia care and compulsive behaviors. Either way, it’s not a “feel it in an hour” medication. People usually notice changes over weeks—and sometimes the first thing they notice is side effects."
     },
     {
       "type": "onset_duration",
@@ -179,10 +310,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "For hair-pulling and skin-picking, memantine has surprisingly strong signal in an 8-week randomized, double-blind trial: about 6 in 10 people on memantine were rated “much” or “very much” improved, compared with under 1 in 10 on placebo. That’s the kind of difference patients actually feel.",
       "metric": "Much/Very Much Improved at 8 Weeks (Trichotillomania / Skin-Picking Disorder)",
       "value": "60.5%",
       "comparison": "8.3%",
-      "text": "For hair-pulling and skin-picking, memantine has surprisingly strong signal in an 8-week randomized, double-blind trial: about 6 in 10 people on memantine were rated “much” or “very much” improved, compared with under 1 in 10 on placebo. That’s the kind of difference patients actually feel.",
       "clinical_details": "In a double-blind 8-week study of 100 adults with trichotillomania or skin-picking disorder, participants received memantine (10–20 mg/day) or placebo. Memantine produced significantly greater improvement on the NIMH symptom severity scale and functional impairment measures. At endpoint, 60.5% of the memantine group were “much” or “very much” improved versus 8.3% on placebo (NNT ≈ 1.9).",
       "citation": {
         "authors": "Grant JE, Chesivoir E, Valle S, Ehsan D, Chamberlain SR",
@@ -275,7 +406,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Memantine doesn’t run through CYP the way many psych meds do, but it has two interaction “lanes” that matter: (1) stacking NMDA-like agents and (2) anything that alkalinizes urine and slows memantine clearance.",
       "items": [
         {
           "with": "NMDA antagonist stacking (amantadine, ketamine; caution also with high-dose dextromethorphan)",
@@ -292,7 +422,8 @@
           "risk": "Not a classic “dangerous combo,” but additive cognitive burden can look like memantine intolerance (confusion, falls, sleep disruption).",
           "action": "If side effects show up, review the whole med list—memantine is often blamed when polypharmacy is the real driver."
         }
-      ]
+      ],
+      "intro": "Memantine doesn’t run through CYP the way many psych meds do, but it has two interaction “lanes” that matter: (1) stacking NMDA-like agents and (2) anything that alkalinizes urine and slows memantine clearance."
     },
     {
       "type": "tapering",
@@ -376,21 +507,6 @@
       "text": "Memantine is a standard option once Alzheimer’s dementia is moderate to severe. It’s often used alone or paired with a cholinesterase inhibitor when the goal is function and stability, not “symptom elimination.” From a psychiatry perspective, the key is behavior: dementia symptoms often come with agitation, sleep disruption, paranoia, or hallucinations, and memantine can be either a stabilizer or a trigger depending on the person. Separately, for trichotillomania and skin-picking disorder, memantine is an evidence-based off-label option that targets glutamate rather than serotonin—often considered when first-line behavioral approaches and/or SSRIs haven’t been enough."
     }
   ],
-  "seo": {
-    "title": "Memantine (Namenda): Uses, Dosing, Side Effects & Neuropsychiatric Risks",
-    "description": "Memantine (Namenda) for moderate-to-severe Alzheimer’s dementia and off-label hair-pulling/skin-picking: dosing titration, common side effects (dizziness, confusion), hallucination risk, renal adjustments, and safe discontinuation.",
-    "canonical": "[https://www.heypsych.com/treatments/memantine-namenda](https://www.heypsych.com/treatments/memantine-namenda)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2026-01-23",
-    "lastUpdated": "2026-01-23",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "What is memantine used for in psychiatry?",
@@ -436,5 +552,20 @@
       "q": "Is memantine a cure for Alzheimer’s?",
       "a": "No. It doesn’t reverse dementia. The realistic goal is slowing decline and supporting function and behavior for some people—often as part of a bigger plan that includes safety, routines, caregiver support, and (sometimes) other medications."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Memantine (Namenda): Uses, Dosing, Side Effects & Neuropsychiatric Risks",
+    "description": "Memantine (Namenda) for moderate-to-severe Alzheimer’s dementia and off-label hair-pulling/skin-picking: dosing titration, common side effects (dizziness, confusion), hallucination risk, renal adjustments, and safe discontinuation.",
+    "canonical": "[https://www.heypsych.com/treatments/memantine-namenda](https://www.heypsych.com/treatments/memantine-namenda)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2026-01-23",
+    "lastUpdated": "2026-01-23",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

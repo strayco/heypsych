@@ -1,89 +1,186 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "dialectical-behavior-therapy",
-  "type": "therapy",
-  "name": "Dialectical Behavior Therapy (DBT)",
-  "summary": "A structured, skills-based psychotherapy that combines cognitive-behavioral strategies with mindfulness to treat emotion dysregulation, self-destructive behaviors, and interpersonal difficulties.",
-  "description": "Dialectical Behavior Therapy (DBT) is an evidence-based psychotherapy originally developed for borderline personality disorder and chronic suicidality, but now applied to a wide range of conditions involving emotion dysregulation. DBT integrates cognitive-behavioral techniques with mindfulness and dialectical philosophy, emphasizing acceptance and change. It is structured, skills-oriented, and delivered in multiple formats including individual therapy, skills groups, and phone coaching.",
-  "category": "therapy/cbt",
-  "tags": [
-    "cognitive-behavioral",
-    "mindfulness",
-    "skills-training",
-    "emotional-regulation",
-    "borderline-personality-disorder"
-  ],
-  "metadata": {
-    "intervention_types": [
-      "Psychotherapy"
-    ],
-    "treatment_types": [
-      "Cognitive-behavioral",
-      "Skills-based",
-      "Mindfulness-based"
-    ],
-    "categories": [
-      "Behavioral",
-      "Dialectical",
-      "Evidence-based"
-    ],
-    "delivery_methods": [
-      "Individual sessions",
-      "Group skills training",
-      "Phone coaching",
-      "Telehealth"
-    ],
-    "invasiveness_level": "Non-invasive",
-    "equipment_required": false,
-    "training_required": true,
-    "age_groups": [
-      "Adolescents",
-      "Adults"
-    ],
-    "session_duration": "60–90 minutes",
-    "treatment_duration": [
-      "6–12 months standard program",
-      "Extended for complex cases"
-    ],
-    "specialty_areas": [
-      "Emotion regulation",
-      "Self-harm prevention",
-      "Borderline Personality Disorder"
+  "identity": {
+    "slug": "dialectical-behavior-therapy",
+    "name": "Dialectical Behavior Therapy (DBT)",
+    "generic_name": "dialectical behavior therapy",
+    "brand_names": [
+      "DBT"
     ],
     "wikidata_qid": "Q1205945"
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Borderline Personality Disorder",
-      "Chronic suicidality",
-      "Self-harm behaviors"
+  "taxonomy": {
+    "modality": "therapy",
+    "category": "therapy/cbt",
+    "intervention_types": [
+      "Psychotherapy"
     ],
-    "conditions_treated": [
-      "Borderline Personality Disorder",
-      "Depression",
-      "Bipolar Disorder",
-      "Eating Disorders",
-      "Post-Traumatic Stress Disorder",
-      "Substance Use Disorders"
-    ],
-    "off_label_uses": [
-      "Anger management",
-      "Adolescents with severe mood dysregulation",
-      "Correctional settings for impulse control"
-    ],
-    "contraindications": [
-      "Severe cognitive impairment preventing skills learning",
-      "Lack of safety in high-risk patients without adequate support"
-    ],
-    "safety_profile": "Safe and non-invasive, but intense emotional work may temporarily increase distress.",
-    "evidence_level": "Very strong—supported by numerous randomized controlled trials and meta-analyses.",
-    "research_support": "DBT has the strongest empirical base for BPD and suicidality, with growing evidence in eating disorders, PTSD, and substance use.",
-    "invasiveness": "Non-invasive",
-    "efficacy_rating": {
-      "emotion_regulation": 5,
-      "suicidality_reduction": 5,
-      "interpersonal_functioning": 4,
-      "overall_tolerability": 4
+    "tags": [
+      "cognitive-behavioral",
+      "mindfulness",
+      "skills-training",
+      "emotional-regulation",
+      "borderline-personality-disorder"
+    ]
+  },
+  "summary": "A structured, skills-based psychotherapy that combines cognitive-behavioral strategies with mindfulness to treat emotion dysregulation, self-destructive behaviors, and interpersonal difficulties.",
+  "description": "Dialectical Behavior Therapy (DBT) is an evidence-based psychotherapy originally developed for borderline personality disorder and chronic suicidality, but now applied to a wide range of conditions involving emotion dysregulation. DBT integrates cognitive-behavioral techniques with mindfulness and dialectical philosophy, emphasizing acceptance and change. It is structured, skills-oriented, and delivered in multiple formats including individual therapy, skills groups, and phone coaching.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "borderline-personality-disorder",
+          "condition_name": "Borderline Personality Disorder",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "chronic-suicidality",
+          "condition_name": "Chronic suicidality",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "self-harm-behaviors",
+          "condition_name": "Self-harm behaviors",
+          "relationship": "primary_indication"
+        }
+      ],
+      "secondary": [
+        {
+          "condition_slug": "depression",
+          "condition_name": "Depression",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "bipolar-disorder",
+          "condition_name": "Bipolar Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "eating-disorders",
+          "condition_name": "Eating Disorders",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "post-traumatic-stress-disorder",
+          "condition_name": "Post-Traumatic Stress Disorder",
+          "relationship": "secondary_indication"
+        },
+        {
+          "condition_slug": "substance-use-disorders",
+          "condition_name": "Substance Use Disorders",
+          "relationship": "secondary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "anger-management",
+          "condition_name": "Anger management",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "adolescents-with-severe-mood-dysregulation",
+          "condition_name": "Adolescents with severe mood dysregulation",
+          "relationship": "off_label"
+        },
+        {
+          "condition_slug": "correctional-settings-for-impulse-control",
+          "condition_name": "Correctional settings for impulse control",
+          "relationship": "off_label"
+        }
+      ]
+    },
+    "evidence": {
+      "overall_level_original": "Very strong—supported by numerous randomized controlled trials and meta-analyses.",
+      "efficacy_ratings": {
+        "emotion_regulation": {
+          "rating": 5
+        },
+        "suicidality_reduction": {
+          "rating": 5
+        },
+        "interpersonal_functioning": {
+          "rating": 4
+        },
+        "overall_tolerability": {
+          "rating": 4
+        }
+      },
+      "research_support": "DBT has the strongest empirical base for BPD and suicidality, with growing evidence in eating disorders, PTSD, and substance use."
+    },
+    "experience": {
+      "duration": {
+        "typical_course": {
+          "unit": "ongoing",
+          "display": "6–12 months standard program; Extended for complex cases"
+        }
+      }
+    },
+    "delivery": {
+      "format": [
+        "Individual sessions",
+        "Group skills training",
+        "Phone coaching",
+        "Telehealth"
+      ],
+      "session_duration": {
+        "unit": "minutes",
+        "display": "60–90 minutes"
+      },
+      "professional_required": {
+        "required": true
+      },
+      "invasiveness": "non_invasive"
+    },
+    "safety": {
+      "overall_safety": "Safe and non-invasive, but intense emotional work may temporarily increase distress.",
+      "common_adverse_effects": [
+        {
+          "effect": "Emotional discomfort during exposure to painful memories"
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Dropout due to intensity of treatment demands"
+        }
+      ],
+      "contraindications": [
+        {
+          "contraindication": "Severe untreated psychosis",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Severe cognitive impairment",
+          "type": "absolute"
+        },
+        {
+          "contraindication": "Low motivation for structured skills training",
+          "type": "relative"
+        }
+      ],
+      "special_populations": {}
+    },
+    "access": {},
+    "modality_details": {
+      "modality": "therapy",
+      "details": {
+        "therapy_type": "Cognitive-behavioral, Skills-based, Mindfulness-based",
+        "key_techniques": [
+          "Behavioral",
+          "Dialectical",
+          "Evidence-based"
+        ],
+        "session_structure": {
+          "pre_session": "Diary card review of behaviors and skills practice.",
+          "during_session": "Target behaviors through chain analysis, practice DBT skills.",
+          "post_session": "Homework assignments and skill application plans."
+        },
+        "training_requirements": {
+          "practitioner": [
+            "Licensed therapists trained in DBT through formal certification programs"
+          ]
+        }
+      }
     }
   },
   "sections": [
@@ -235,6 +332,20 @@
       ]
     }
   ],
+  "sources": [
+    {
+      "id": "ref-1",
+      "type": "other",
+      "title": "Linehan MM et al. (2006). Two-year randomized controlled trial of DBT for borderline personality disorder. Arch Gen Psychiatry.",
+      "url": "https://doi.org/10.1001/archpsyc.63.7.757"
+    },
+    {
+      "id": "ref-2",
+      "type": "other",
+      "title": "Kliem S, Kröger C, Kosfelder J. (2010). DBT for borderline personality disorder: A meta-analysis using random effects. J Consult Clin Psychol.",
+      "url": "https://doi.org/10.1037/a0019999"
+    }
+  ],
   "seo": {
     "title": "Dialectical Behavior Therapy (DBT)",
     "description": "Dialectical Behavior Therapy (DBT) is an evidence-based psychotherapy that combines cognitive-behavioral strategies with mindfulness to treat borderline personality disorder, suicidality, and emotion dysregulation.",
@@ -247,5 +358,15 @@
     "reviewBoard": "official",
     "lastReviewed": "2025-11-24",
     "lastUpdated": "2025-11-24"
+  },
+  "legacy_preservation": {
+    "original_schema_version": 2,
+    "migration_notes": [
+      "evidence_level: Unknown evidence level: Very strong—supported by numerous randomized controlled trials and meta-analyses."
+    ],
+    "requires_review": true,
+    "review_reasons": [
+      "Unknown evidence level: Very strong—supported by numerous randomized controlled trials and meta-analyses."
+    ]
   }
 }

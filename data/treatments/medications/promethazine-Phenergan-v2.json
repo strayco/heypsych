@@ -1,92 +1,243 @@
 {
+  "schema_version": 3,
   "kind": "treatment",
-  "slug": "promethazine-phenergan",
-  "type": "medication",
-  "name": "Promethazine (Phenergan, Promethegan)",
-  "summary": "Sedating first-generation antihistamine with anti-nausea effects. Can knock down nausea and make you sleepy fast, but it’s high-risk in young kids and the injectable form can cause severe tissue injury.",
-  "description": "Promethazine is a very sedating antihistamine that’s sometimes used when nausea is driving anxiety, insomnia, or agitation — especially as short-term rescue. The tradeoff: it can cause heavy sedation, confusion, anticholinergic side effects (dry mouth, constipation, urinary retention), and movement-related side effects (like dystonia). A boxed warning exists for fatal respiratory depression in children under 2. Injectable promethazine is a vesicant and has caused tissue necrosis and even amputations when given the wrong way.",
-  "patient_summary": "Promethazine can calm nausea and make you sleepy pretty quickly — which is why some people feel “finally relaxed” after a dose. But it’s not a gentle sleep med. It can cause next-day grogginess, confusion, dry mouth/constipation, and (rarely) scary movement symptoms. It should NEVER be used in kids under 2. And the injectable version is notorious for severe tissue damage if it infiltrates or hits an artery.",
-  "category": "medications/insomnia",
-  "metadata": {
+  "identity": {
+    "slug": "promethazine-phenergan",
+    "name": "Promethazine (Phenergan, Promethegan)",
+    "generic_name": "promethazine",
+    "brand_names": [
+      "Phenergan",
+      "Promethegan"
+    ]
+  },
+  "taxonomy": {
+    "modality": "medication",
+    "category": "medications/insomnia",
     "drug_classes": [
       "Antiemetic",
       "Histamine H1 Antagonist (First Generation)",
       "Phenothiazine Derivative"
-    ],
-    "brand_names": [
-      "Phenergan",
-      "Promethegan"
-    ],
-    "administration_routes": [
-      "Oral",
-      "Rectal",
-      "Intramuscular",
-      "Intravenous"
-    ],
-    "prescription_status": "Prescription Required",
-    "controlled_substance": "Not a controlled substance",
-    "generic_available": true,
-    "fda_approval_year": 1951,
-    "pharmacologic_category": "First-generation antihistamine with dopamine-blocking and anticholinergic effects",
-    "published_date": "2025-12-01T00:00:00Z",
-    "last_updated": "2025-12-01T00:00:00Z",
-    "medical_review": {
-      "reviewed": true,
-      "review_date": "2025-12-01T00:00:00Z",
-      "reviewer_name": "HeyPsych Medical Review Board"
-    }
+    ]
   },
-  "clinical_metadata": {
-    "primary_indications": [
-      "Nausea and/or vomiting (acute)",
-      "Motion sickness",
-      "Adjunct to opioids in peripartum management"
-    ],
-    "linked_conditions": [
-      {
-        "slug": "insomnia",
-        "relationship": "off_label",
-        "context": "Not a primary insomnia medication, but its strong sedation is sometimes leveraged short-term when nausea, vertigo, or acute illness is wrecking sleep. High side-effect burden limits routine use."
-      },
-      {
-        "slug": "anxiety",
-        "relationship": "off_label",
-        "context": "Not an anxiolytic, but when nausea is driving panic-y body symptoms, promethazine can indirectly calm the situation by reducing nausea and producing sedation."
-      },
-      {
-        "slug": "agitation",
-        "relationship": "off_label",
-        "context": "Sedation can reduce agitation in the short term, but promethazine can also cause delirium, akathisia, or paradoxical activation in some people — so it’s not a clean “calm-down” med."
-      }
-    ],
-    "contraindications": [
-      "Hypersensitivity or idiosyncratic reaction to promethazine, other phenothiazines, or any component of the formulation",
-      "Coma",
-      "Treatment of lower respiratory tract symptoms, including asthma",
-      "Children <2 years of age (boxed warning: risk of fatal respiratory depression)",
-      "Intra-arterial administration (injection)",
-      "Subcutaneous administration (injection)",
-      "IV administration at concentrations >1 mg/mL (injection)"
-    ],
-    "efficacy_response": {
-      "metric": "Psychiatry-focused symptom relief",
-      "percentage_value": "Not applicable for this medication.",
-      "comparison_data": "Not applicable for this medication.",
-      "patient_text": "Promethazine isn’t a primary psychiatric treatment with a clean “response rate” the way SSRIs or antipsychotics are. In psych-land, its value is practical: short-term nausea relief plus heavy sedation — which can temporarily help sleep and calm, but also brings real risk (delirium, falls, respiratory depression in high-risk patients).",
-      "citation_tag": "Not applicable for this medication."
+  "summary": "Sedating first-generation antihistamine with anti-nausea effects. Can knock down nausea and make you sleepy fast, but it’s high-risk in young kids and the injectable form can cause severe tissue injury.",
+  "description": "Promethazine is a very sedating antihistamine that’s sometimes used when nausea is driving anxiety, insomnia, or agitation — especially as short-term rescue. The tradeoff: it can cause heavy sedation, confusion, anticholinergic side effects (dry mouth, constipation, urinary retention), and movement-related side effects (like dystonia). A boxed warning exists for fatal respiratory depression in children under 2. Injectable promethazine is a vesicant and has caused tissue necrosis and even amputations when given the wrong way.",
+  "patient_summary": "Promethazine can calm nausea and make you sleepy pretty quickly — which is why some people feel “finally relaxed” after a dose. But it’s not a gentle sleep med. It can cause next-day grogginess, confusion, dry mouth/constipation, and (rarely) scary movement symptoms. It should NEVER be used in kids under 2. And the injectable version is notorious for severe tissue damage if it infiltrates or hits an artery.",
+  "clinical_profile": {
+    "indications": {
+      "primary": [
+        {
+          "condition_slug": "nausea-and-or-vomiting-acute",
+          "condition_name": "Nausea and/or vomiting (acute)",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "motion-sickness",
+          "condition_name": "Motion sickness",
+          "relationship": "primary_indication"
+        },
+        {
+          "condition_slug": "adjunct-to-opioids-in-peripartum-management",
+          "condition_name": "Adjunct to opioids in peripartum management",
+          "relationship": "primary_indication"
+        }
+      ],
+      "off_label": [
+        {
+          "condition_slug": "insomnia",
+          "condition_name": "Insomnia",
+          "relationship": "off_label",
+          "context": "Not a primary insomnia medication, but its strong sedation is sometimes leveraged short-term when nausea, vertigo, or acute illness is wrecking sleep. High side-effect burden limits routine use."
+        },
+        {
+          "condition_slug": "anxiety",
+          "condition_name": "Anxiety",
+          "relationship": "off_label",
+          "context": "Not an anxiolytic, but when nausea is driving panic-y body symptoms, promethazine can indirectly calm the situation by reducing nausea and producing sedation."
+        },
+        {
+          "condition_slug": "agitation",
+          "condition_name": "Agitation",
+          "relationship": "off_label",
+          "context": "Sedation can reduce agitation in the short term, but promethazine can also cause delirium, akathisia, or paradoxical activation in some people — so it’s not a clean “calm-down” med."
+        }
+      ]
     },
-    "pharmacokinetics": {
-      "absorption": "Rapid and complete after oral dosing, with significant first-pass effect",
-      "bioavailability": "Oral: ~25%; Rectal: ~21.7% to 23.4%",
-      "onset": "Oral/IM: ~20 minutes; IV: ~5 minutes",
-      "peak_plasma": "Oral syrup: ~2.8 hours; Rectal: ~8.2 hours (adult data unless noted)",
-      "half_life": "IM: ~10 hours; IV: 9 to 16 hours; Suppositories/syrup: 16 to 19 hours (range: 4 to 34 hours)",
-      "duration_IR": "Usually 4 to 6 hours (up to 12 hours)",
-      "duration_XR": "Not applicable for this medication.",
-      "metabolism": "Hepatic; hydroxylation via CYP2D6 and N-demethylation via CYP2B6; significant first-pass effect",
-      "excretion": "Urine and feces as inactive metabolites",
-      "protein_binding": "93%",
-      "food_effect": "Not applicable for this medication."
+    "evidence": {},
+    "experience": {
+      "onset": {
+        "therapeutic_response": {
+          "unit": "days",
+          "display": "Oral/IM: ~20 minutes; IV: ~5 minutes"
+        }
+      }
+    },
+    "delivery": {
+      "routes": [
+        "Oral",
+        "Rectal",
+        "Intramuscular",
+        "Intravenous"
+      ]
+    },
+    "safety": {
+      "common_adverse_effects": [
+        {
+          "effect": "CNS depression (drowsiness, dizziness, sedation)",
+          "incidence": "Frequency not defined",
+          "notes": "This can feel like being tranquilized. Expect impaired coordination and slowed thinking. If you need to be alert for work, school, driving, or childcare — treat that as a serious limitation."
+        },
+        {
+          "effect": "Anticholinergic effects (dry mouth, constipation, blurred vision, urinary retention, confusion)",
+          "incidence": "Frequency not defined",
+          "notes": "The anticholinergic load is why this is often a bad fit for older adults. It can worsen constipation, urinary retention, and confusion — and it stacks with other anticholinergic meds."
+        },
+        {
+          "effect": "Orthostatic hypotension",
+          "incidence": "Frequency not defined",
+          "notes": "You can feel lightheaded or wobbly, especially after higher doses or parenteral administration. Falls are a real concern."
+        },
+        {
+          "effect": "Extrapyramidal symptoms (akathisia, dystonia, parkinsonism, tardive dyskinesia)",
+          "incidence": "Frequency not defined",
+          "notes": "These can look like restlessness, neck/jaw tightness, eye deviation, tremor, or stiffness. If you develop unusual muscle spasms or severe restlessness, get medical help — especially in kids and adolescents."
+        }
+      ],
+      "serious_risks": [
+        {
+          "risk": "Respiratory depression (rare but can be fatal, especially in children <2, excessive dosing, combined sedatives, or compromised respiratory function)"
+        },
+        {
+          "risk": "Severe tissue injury with injection (necrosis, thrombophlebitis, gangrene; may require surgical intervention including fasciotomy, grafting, or amputation)"
+        },
+        {
+          "risk": "Neuroleptic malignant syndrome (fever, rigidity, confusion, autonomic instability) — medical emergency"
+        },
+        {
+          "risk": "Severe delirium or profound confusion (higher risk with anticholinergic burden, overdose, or older age)"
+        },
+        {
+          "risk": "Life-threatening arrhythmias related to altered cardiac conduction (reported with phenothiazines)"
+        }
+      ],
+      "black_box_warning": "Promethazine should not be used in pediatric patients younger than 2 years because of the potential for fatal respiratory depression. Postmarketing cases, including fatalities, have been reported in this age group across a wide range of weight-based doses.",
+      "contraindications": [
+        {
+          "contraindication": "Hypersensitivity or idiosyncratic reaction to promethazine, other phenothiazines, or any component of the formulation"
+        },
+        {
+          "contraindication": "Coma"
+        },
+        {
+          "contraindication": "Treatment of lower respiratory tract symptoms, including asthma"
+        },
+        {
+          "contraindication": "Children <2 years of age (boxed warning: risk of fatal respiratory depression)"
+        },
+        {
+          "contraindication": "Intra-arterial administration (injection)"
+        },
+        {
+          "contraindication": "Subcutaneous administration (injection)"
+        },
+        {
+          "contraindication": "IV administration at concentrations >1 mg/mL (injection)"
+        }
+      ],
+      "precautions": [
+        "Pediatrics ≥2 years: Use extreme caution, use the lowest effective dose, and avoid combining with other respiratory-depressant drugs",
+        "Respiratory risk: Avoid in patients with compromised respiratory function or those at risk for respiratory failure (eg, COPD, sleep apnea)",
+        "CNS depression: Can cause marked drowsiness, delirium, impaired coordination, and slowed reaction time—higher risk with alcohol, opioids, and other sedatives",
+        "Severe tissue injury with injection: Promethazine injection has caused tissue necrosis, thrombophlebitis, gangrene, and amputations from inadvertent intra-arterial injection or extravasation",
+        "Injection route restrictions: Contraindicated intra-arterial and subcutaneous; IV use at concentrations >1 mg/mL is contraindicated; deep IM is the preferred parenteral route when injection is unavoidable",
+        "Neuroleptic malignant syndrome (rare): Reported with dopamine receptor antagonists, including promethazine; can be fatal",
+        "Cardiac conduction risk: Phenothiazines may alter conduction and have caused life-threatening arrhythmias"
+      ],
+      "interactions": [
+        {
+          "interactant": "Alcohol",
+          "mechanism": "Additive CNS depression: extreme sedation, impaired coordination, delirium risk, and potential respiratory compromise in vulnerable patients.",
+          "action": "Avoid alcohol while taking promethazine."
+        },
+        {
+          "interactant": "Opioids",
+          "mechanism": "Higher risk of profound sedation and respiratory depression, especially in people with sleep apnea, COPD, or other respiratory vulnerability.",
+          "action": "Avoid stacking unless explicitly prescribed together with a clear plan and monitoring."
+        },
+        {
+          "interactant": "Other CNS depressants (benzodiazepines, sleep meds, sedating antihistamines, muscle relaxants, cannabis)",
+          "mechanism": "Sedation and cognitive impairment multiply. Fall risk and delirium risk increase — especially in older adults.",
+          "action": "Use the lowest effective doses, avoid unnecessary combinations, and don’t assume “a little extra” is safe."
+        },
+        {
+          "interactant": "Anticholinergic medications (many TCAs, some antipsychotics, benztropine, oxybutynin, diphenhydramine)",
+          "mechanism": "Higher anticholinergic burden: confusion, constipation, urinary retention, blurred vision, delirium.",
+          "action": "Minimize overlap; consider total anticholinergic load, especially in patients ≥65."
+        },
+        {
+          "interactant": "Other dopamine receptor antagonists",
+          "mechanism": "Increased risk of extrapyramidal symptoms and rare neuroleptic malignant syndrome.",
+          "action": "Use cautiously and monitor for movement symptoms, fever/rigidity, and mental status changes."
+        }
+      ],
+      "monitoring_requirements": [
+        {
+          "parameter": "Relief of symptoms (and whether sedation is helping or just impairing function)"
+        },
+        {
+          "parameter": "Mental status and CNS effects: sedation, delirium, slowed reaction time, dizziness"
+        },
+        {
+          "parameter": "Extrapyramidal symptoms: akathisia, dystonia, tremor, parkinsonism; watch closely in pediatric patients"
+        },
+        {
+          "parameter": "Respiratory status in high-risk patients (sleep apnea, COPD, concurrent CNS depressants) and in pediatric patients ≥2 years if used"
+        },
+        {
+          "parameter": "Orthostatic symptoms and fall risk, especially in older adults"
+        },
+        {
+          "parameter": "Signs and symptoms of tissue injury with parenteral administration: burning or pain at injection site, phlebitis, edema, skin discoloration; discontinue immediately if pain/burning occurs during IV infusion and evaluate for arterial injection or extravasation"
+        },
+        {
+          "parameter": "Total anticholinergic burden (especially in patients ≥65 or those on multiple anticholinergic medications)"
+        }
+      ],
+      "special_populations": {
+        "pregnancy": "Outcome data following maternal use are available. Promethazine crosses the placenta. It may be used as adjunctive therapy for nausea and vomiting of pregnancy when preferred agents don’t provide improvement or when symptoms persist. Platelet aggregation may be inhibited in newborns following maternal use within 2 weeks of delivery.",
+        "lactation": "It is not known if promethazine is present in breast milk. Drowsiness and irritability have been reported in breastfed infants exposed to other antihistamines. Antihistamines may decrease maternal prolactin if given before lactation is established (effect observed after postpartum injection prior to breastfeeding). Manufacturer recommends deciding whether to discontinue breastfeeding or discontinue the drug, weighing importance to the mother. Single maternal doses may be compatible with breastfeeding; repeated doses should be avoided. Consider a second-generation antihistamine when an oral antihistamine is needed. Monitor infant for irritability, jitteriness, or drowsiness.",
+        "pediatric": "Contraindicated in children <2 years due to potential for fatal respiratory depression (boxed warning). For children ≥2 years: use extreme caution, use the lowest effective dose, and avoid coadministration with other drugs that have respiratory-depressant effects. Antiemetics are not recommended for uncomplicated vomiting in pediatric patients; limit use to prolonged vomiting of known etiology. Avoid in children who may have Reye syndrome or hepatic disease because adverse reactions may be confused with primary disease.",
+        "geriatric": "Avoid use. Promethazine is identified as potentially inappropriate in patients ≥65 due to potent anticholinergic properties and increased risk of confusion, dry mouth, constipation, and other anticholinergic toxicity. Reduced clearance with age and tolerance when used as a hypnotic are additional concerns. Exposure to concurrent anticholinergic drugs increases risk of falls, delirium, and dementia; consider total anticholinergic burden.",
+        "renal_impairment": "Adult: No dosage adjustment necessary for any degree of kidney dysfunction (only ~0.6% of dose excreted unchanged). Unlikely to be dialyzed; no supplemental dose needed. Pediatric: No dosage adjustments provided in manufacturer labeling.",
+        "hepatic_impairment": "Adult: No manufacturer-provided dose adjustment; use with caution (cholestatic jaundice has been reported). Pediatric: Manufacturer recommends avoiding use in pediatric patients with signs and symptoms of hepatic disease (EPS may be confused with CNS signs of hepatic disease)."
+      }
+    },
+    "access": {
+      "regulatory_status": "fda_approved",
+      "prescription_required": true,
+      "generic_available": true,
+      "fda_approval_year": 1951
+    },
+    "modality_details": {
+      "modality": "medication",
+      "details": {
+        "pharmacokinetics": {
+          "absorption": "Rapid and complete after oral dosing, with significant first-pass effect",
+          "bioavailability": "Oral: ~25%; Rectal: ~21.7% to 23.4%",
+          "peak_plasma": "Oral syrup: ~2.8 hours; Rectal: ~8.2 hours (adult data unless noted)",
+          "half_life": "IM: ~10 hours; IV: 9 to 16 hours; Suppositories/syrup: 16 to 19 hours (range: 4 to 34 hours)",
+          "metabolism": "Hepatic; hydroxylation via CYP2D6 and N-demethylation via CYP2B6; significant first-pass effect",
+          "excretion": "Urine and feces as inactive metabolites",
+          "protein_binding": "93%",
+          "food_effect": "Not applicable for this medication."
+        },
+        "dosing": {
+          "titration": "Promethazine is not dosed as a standard psychiatric medication. When it shows up in psychiatry-adjacent situations, it’s usually for short-term symptom relief where sedation is expected (and sometimes desired). Because of serious safety risks, especially in pediatrics and with injectable use, dosing should be conservative and individualized."
+        },
+        "discontinuation": {
+          "taper_required": true,
+          "taper_guidance": "Not applicable for this medication."
+        }
+      }
     }
   },
   "sections": [
@@ -108,7 +259,6 @@
     {
       "type": "patient_experience",
       "heading": "What People Feel",
-      "intro": "This med has a personality. For some people it’s “finally, sleep.” For others it’s “why do I feel like a dehydrated zombie?”",
       "items": [
         {
           "category": "Sedation (the main event)",
@@ -143,7 +293,8 @@
           ],
           "note": "Extrapyramidal symptoms can happen (dystonia, akathisia, drug-induced parkinsonism, tardive dyskinesia)."
         }
-      ]
+      ],
+      "intro": "This med has a personality. For some people it’s “finally, sleep.” For others it’s “why do I feel like a dehydrated zombie?”"
     },
     {
       "type": "onset_duration",
@@ -159,10 +310,10 @@
     {
       "type": "efficacy",
       "heading": "How Well It Works",
+      "text": "Promethazine isn’t a first-line psychiatric medication, and it’s not typically measured by anxiety or insomnia remission rates. Clinically, its usefulness in psychiatry is situational: strong sedation plus relief of nausea can temporarily reduce distress, improve sleep, and calm nausea-driven anxiety — but the side-effect burden and safety concerns limit how often it should be used.",
       "metric": "Psychiatric symptom control",
       "value": "Not applicable for this medication.",
       "comparison": "Not applicable for this medication.",
-      "text": "Promethazine isn’t a first-line psychiatric medication, and it’s not typically measured by anxiety or insomnia remission rates. Clinically, its usefulness in psychiatry is situational: strong sedation plus relief of nausea can temporarily reduce distress, improve sleep, and calm nausea-driven anxiety — but the side-effect burden and safety concerns limit how often it should be used.",
       "clinical_details": "In psychiatry-adjacent use, the key question isn’t “Does it work?” — it’s “Is it worth the tradeoff today?” Sedation can be helpful in the short term, but the medication can cause delirium (especially in older adults), anticholinergic toxicity, extrapyramidal symptoms, orthostatic hypotension, and (in vulnerable patients) respiratory depression.",
       "citation": {
         "authors": "Not applicable for this medication.",
@@ -242,7 +393,6 @@
     {
       "type": "interactions",
       "heading": "Critical Drug Interactions",
-      "intro": "Promethazine is a sedation amplifier. The most dangerous combinations are the ones that also slow your brain and breathing.",
       "items": [
         {
           "with": "Alcohol",
@@ -269,7 +419,8 @@
           "risk": "Increased risk of extrapyramidal symptoms and rare neuroleptic malignant syndrome.",
           "action": "Use cautiously and monitor for movement symptoms, fever/rigidity, and mental status changes."
         }
-      ]
+      ],
+      "intro": "Promethazine is a sedation amplifier. The most dangerous combinations are the ones that also slow your brain and breathing."
     },
     {
       "type": "tapering",
@@ -337,21 +488,6 @@
       "text": "In psychiatry, promethazine is not a first-line treatment for anxiety, insomnia, or agitation. Its role is situational: short-term, symptom-driven sedation when nausea/vertigo/acute illness is feeding distress and sleep loss. Because it’s strongly sedating and anticholinergic — and because pediatrics and injectable use carry serious safety warnings — it’s usually a last-mile option rather than a routine plan."
     }
   ],
-  "seo": {
-    "title": "Promethazine (Phenergan): Sedation, Safety Warnings, Side Effects & Dosing Notes",
-    "description": "Promethazine (Phenergan/Promethegan) is a sedating antihistamine used for nausea and motion sickness that can also cause heavy sleepiness. Learn key risks: boxed warning in kids <2, respiratory depression risk, anticholinergic side effects, EPS, and severe tissue injury with injection.",
-    "canonical": "[https://www.heypsych.com/treatments/promethazine-phenergan](https://www.heypsych.com/treatments/promethazine-phenergan)",
-    "no_index": false
-  },
-  "editorial": {
-    "medicalReviewerIds": [
-      "board-certified-psychiatrists"
-    ],
-    "reviewBoard": "HeyPsych Medical Review Board",
-    "lastReviewed": "2025-12-01",
-    "lastUpdated": "2025-12-01",
-    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
-  },
   "faqs": [
     {
       "q": "Is promethazine an anxiety medication?",
@@ -397,5 +533,20 @@
       "q": "Is promethazine considered high-risk in older adults?",
       "a": "Yes. Promethazine is considered potentially inappropriate in patients 65 and older due to strong anticholinergic effects and increased risk of confusion, constipation, dry mouth, urinary retention, delirium, and falls — especially when combined with other anticholinergic medications."
     }
-  ]
+  ],
+  "seo": {
+    "title": "Promethazine (Phenergan): Sedation, Safety Warnings, Side Effects & Dosing Notes",
+    "description": "Promethazine (Phenergan/Promethegan) is a sedating antihistamine used for nausea and motion sickness that can also cause heavy sleepiness. Learn key risks: boxed warning in kids <2, respiratory depression risk, anticholinergic side effects, EPS, and severe tissue injury with injection.",
+    "canonical": "[https://www.heypsych.com/treatments/promethazine-phenergan](https://www.heypsych.com/treatments/promethazine-phenergan)",
+    "no_index": false
+  },
+  "editorial": {
+    "medicalReviewerIds": [
+      "board-certified-psychiatrists"
+    ],
+    "reviewBoard": "HeyPsych Medical Review Board",
+    "lastReviewed": "2025-12-01",
+    "lastUpdated": "2025-12-01",
+    "reviewStatement": "Content medically reviewed and verified against FDA prescribing information, APA clinical practice guidelines, and current peer-reviewed literature."
+  }
 }

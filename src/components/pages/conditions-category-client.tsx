@@ -55,13 +55,13 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
                 <Brain className={`h-8 w-8 ${category.iconColor}`} />
               </div>
 
-              <h1 className="mb-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
+              <h1 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
                 <span className={`bg-linear-to-r ${category.gradient} bg-clip-text text-transparent`}>
                   {category.emoji} {category.displayTitle}
                 </span>
               </h1>
 
-              <p className="mx-auto mb-6 max-w-3xl text-lg text-neutral-800">
+              <p className="mx-auto mb-6 max-w-3xl text-lg text-label-secondary">
                 {category.subtitle}
               </p>
 
@@ -76,13 +76,13 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
               </div>
 
               {/* Stats */}
-              <div className="flex items-center justify-center gap-6 text-sm text-neutral-700">
+              <div className="flex items-center justify-center gap-6 text-sm text-label-secondary">
                 <div className="flex items-center gap-2">
                   <div className={`h-2 w-2 rounded-full ${category.iconColor.replace('text-', 'bg-')}`}></div>
                   {conditions.length} Conditions
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-positive-tint0"></div>
                   Evidence-Based
                 </div>
               </div>
@@ -97,9 +97,9 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
       {/* Conditions List */}
       <section className="px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <Card className="rounded-3xl bg-white shadow-xl">
+          <Card className="rounded-3xl bg-surface shadow-xl">
             <CardHeader>
-              <CardTitle className="text-center text-2xl font-bold text-neutral-900">
+              <CardTitle className="text-center text-2xl font-bold text-label-primary">
                 All {category.displayTitle} Conditions
               </CardTitle>
             </CardHeader>
@@ -150,7 +150,7 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className={`rounded-xl border border-neutral-200 p-6 transition-all duration-300 group-hover:${category.bgColor} hover:border-${category.iconColor.replace('text-', '')} hover:shadow-md`}
+                          className={`rounded-xl border border-separator p-6 transition-all duration-300 group-hover:${category.bgColor} hover:border-${category.iconColor.replace('text-', '')} hover:shadow-md`}
                         >
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
@@ -158,10 +158,10 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
                                 <Brain className={`h-6 w-6 ${category.iconColor}`} />
                               </div>
                               <div>
-                                <h3 className={`text-lg font-semibold text-neutral-900 transition-colors group-hover:${category.iconColor}`}>
+                                <h3 className={`text-lg font-semibold text-label-primary transition-colors group-hover:${category.iconColor}`}>
                                   {conditionName}
                                 </h3>
-                                <p className="mt-1 text-sm text-neutral-800">
+                                <p className="mt-1 text-sm text-label-secondary">
                                   {typeof conditionDescription === "string"
                                     ? conditionDescription.length > 100
                                       ? `${conditionDescription.substring(0, 100)}...`
@@ -170,7 +170,7 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
                                 </p>
                               </div>
                             </div>
-                            <ArrowRight className={`h-5 w-5 text-neutral-600 transition-all group-hover:translate-x-1 group-hover:${category.iconColor}`} />
+                            <ArrowRight className={`h-5 w-5 text-label-tertiary transition-all group-hover:translate-x-1 group-hover:${category.iconColor}`} />
                           </div>
                         </motion.div>
                       </Link>
@@ -180,8 +180,8 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
               ) : (
                 <div className="py-12 text-center">
                   <Brain className="mx-auto mb-4 h-16 w-16 text-neutral-300" />
-                  <h3 className="mb-2 text-xl font-semibold text-neutral-900">No Conditions Found</h3>
-                  <p className="mb-6 text-neutral-800">
+                  <h3 className="mb-2 text-xl font-semibold text-label-primary">No Conditions Found</h3>
+                  <p className="mb-6 text-label-secondary">
                     We couldn't find any conditions in this category yet.
                   </p>
                 </div>
