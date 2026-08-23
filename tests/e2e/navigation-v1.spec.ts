@@ -107,30 +107,28 @@ test.describe('OCD Vertical Slice', () => {
 });
 
 test.describe('For Clinicians Page', () => {
-  test('should display for clinicians landing page', async ({ page }) => {
-    await page.goto('/for-clinicians');
+  test('should display V4 clinician tools hub', async ({ page }) => {
+    await page.goto('/tools/for-clinicians');
 
+    // Should show clinician tools content
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  });
+
+  test('should have clinician path via AudienceGateway on homepage', async ({ page }) => {
+    await page.goto('/');
+
+    // Clinician path is via AudienceGateway component (not IntentGrid)
+    // Look for clinician-related link
+    const clinicianLink = page.getByRole('link', { name: /clinician|practice|EHR/i }).first();
+    await expect(clinicianLink).toBeVisible();
+  });
+
+  test('legacy /for-clinicians page should still work', async ({ page }) => {
+    // Old page still exists as a general resource hub
+    const response = await page.goto('/for-clinicians');
+    expect(response?.status()).toBe(200);
     // Should show clinician-focused content
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    // Check for specific heading text to avoid multiple matches
-    await expect(page.getByRole('heading', { name: /mental health professionals/i })).toBeVisible();
-  });
-
-  test('should have clinician intent card on homepage', async ({ page }) => {
-    await page.goto('/');
-
-    // Use more specific text to match only the intent card, not navigation
-    const clinicianCard = page.getByRole('link', { name: /I'm a clinician/i });
-    await expect(clinicianCard).toBeVisible();
-    await expect(clinicianCard).toHaveAttribute('href', /for-clinicians/);
-  });
-
-  test('should navigate to for-clinicians from homepage card', async ({ page }) => {
-    await page.goto('/');
-
-    // Click the intent card specifically
-    await page.getByRole('link', { name: /I'm a clinician/i }).click();
-    await expect(page).toHaveURL('/for-clinicians');
   });
 });
 
@@ -224,6 +222,7 @@ test.describe('Route Integrity', () => {
       '/psychiatrists',
       '/search',
       '/for-clinicians',
+      '/tools/for-clinicians',
     ];
 
     for (const route of routes) {

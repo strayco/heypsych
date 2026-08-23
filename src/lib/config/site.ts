@@ -11,7 +11,7 @@ export const siteConfig = {
     { name: "Treatments", href: "/treatments", icon: "pill" },
     { name: "Tools", href: "/tools", icon: "smartphone" },
     { name: "Find Care", href: "/psychiatrists", icon: "map-pin" },
-    { name: "For Clinicians", href: "/for-clinicians", icon: "stethoscope" },
+    { name: "For Clinicians", href: "/tools/for-clinicians", icon: "stethoscope" },
   ],
 
   // Secondary navigation (footer, mobile menu expanded)

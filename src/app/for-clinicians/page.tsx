@@ -47,7 +47,7 @@ const clinicianResources = [
     title: "Clinical Tools & Technology",
     description:
       "Review of digital mental health tools including AI scribes, EHR integrations, measurement-based care, and telehealth platforms.",
-    href: "/tools?audience=clinician",
+    href: "/tools/for-clinicians",
     icon: Smartphone,
     color: "bg-purple-50 text-purple-600",
   },

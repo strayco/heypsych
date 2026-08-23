@@ -23,7 +23,7 @@ export function Footer() {
       links: [
         { name: "Knowledge Hub", href: "/resources/knowledge-hub" },
         { name: "Assessments", href: "/resources/assessments-screeners" },
-        { name: "For Clinicians", href: "/for-clinicians" },
+        { name: "For Clinicians", href: "/tools/for-clinicians" },
       ],
     },
     {

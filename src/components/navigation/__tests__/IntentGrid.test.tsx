@@ -115,12 +115,13 @@ describe("IntentGrid", () => {
     expect(sections.length).toBeGreaterThanOrEqual(2);
   });
 
-  it("renders clinician section separately", () => {
+  it("does not render clinician section (handled by AudienceGateway)", () => {
     render(<IntentGrid />);
 
-    // Clinician intent should be rendered
-    const clinicianLink = screen.getByRole("link", { name: /clinician/i });
-    expect(clinicianLink).toHaveAttribute("href", "/for-clinicians");
+    // Clinician intent is now handled by AudienceGateway, not IntentGrid
+    // IntentGrid should only show patient intents
+    const clinicianLink = screen.queryByRole("link", { name: /I'm a clinician/i });
+    expect(clinicianLink).not.toBeInTheDocument();
   });
 
   it("exports defaultIntents with all required fields", () => {
