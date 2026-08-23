@@ -1,0 +1,250 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "3a237701-c35c-48a5-9db1-4b223d4fbc98",
+  "slug": "oq-analyst",
+  "name": "OQ-Analyst",
+  "company_name": "OQ Measures LLC",
+  "import_ref": {
+    "record_id": "MH-0458",
+    "source_row": 459,
+    "import_timestamp": "2026-08-22T20:50:40.812Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "measurement-based-care",
+  "secondary_categories": [
+    "outcome-measurement",
+    "clinical-feedback",
+    "quality-improvement"
+  ],
+  "capabilities": [
+    "measurement-based-care",
+    "oq-45-assessment",
+    "y-oq-assessment",
+    "outcome-questionnaire",
+    "clinical-feedback-system",
+    "treatment-outcome-tracking",
+    "session-by-session-monitoring",
+    "expected-treatment-response",
+    "alert-system",
+    "benchmarking",
+    "aggregate-reporting",
+    "hipaa-compliant"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "counselor",
+      "clinical-director",
+      "quality-officer"
+    ],
+    "practice_settings": [
+      "group-practice",
+      "community-mental-health",
+      "university-counseling",
+      "inpatient-facility",
+      "outpatient-clinic",
+      "employee-assistance-program"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "counseling"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": true,
+    "has_mbc": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "Gold-standard outcome measurement system featuring OQ-45, Y-OQ, and OQ-30 assessments with real-time clinical feedback, expected treatment response algorithms, and 30+ years of validation research.",
+  "long_description": "OQ-Analyst is the definitive platform for administering and analyzing the Outcome Questionnaire family of assessments, the most extensively validated outcome measures in psychotherapy. Developed by Dr. Michael Lambert at Brigham Young University, the OQ-45 (adult), Y-OQ (youth), and OQ-30 (brief) have been validated in over 200 peer-reviewed studies spanning 30+ years. The system provides real-time clinical feedback including Expected Treatment Response (ETR) algorithms that predict treatment trajectory, red/yellow/green alert signals for patients at risk of treatment failure, and Clinical Support Tools (CST) for struggling cases. OQ-Analyst supports session-by-session administration via paper, kiosk, or online delivery, with instant scoring and visual progress graphs. Research shows that using OQ feedback systems can improve outcomes by 50% and reduce treatment failure rates by 50% compared to treatment-as-usual.",
+  "one_liner": "Gold-standard OQ-45 outcome measurement with clinical feedback and 30+ years of validation.",
+  "best_for": [
+    "Community mental health centers implementing measurement-based care",
+    "University counseling centers tracking student outcomes",
+    "Group practices seeking validated outcome tracking",
+    "Organizations requiring research-grade outcome data"
+  ],
+  "not_for": [
+    "Practices seeking comprehensive EHR with MBC built-in",
+    "Organizations wanting only brief screeners like PHQ-9",
+    "Solo practitioners with very limited budgets"
+  ],
+  "website_url": "https://www.oqmeasures.com",
+  "pricing_url": "https://www.oqmeasures.com/pricing",
+  "support_url": "https://www.oqmeasures.com/support",
+  "logo_url": "https://www.oqmeasures.com/logo.png",
+  "pricing": {
+    "model": "subscription",
+    "starting_price_cents": 25000,
+    "starting_price_display": "$250/year (small practice)",
+    "free_tier": false,
+    "free_trial_days": 30,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "pricing_structure": {
+      "model": "Site license based on organization size",
+      "small_practice": "$250-500/year",
+      "medium_organization": "$1,000-3,000/year",
+      "large_organization": "$5,000-15,000/year",
+      "enterprise": "Custom pricing"
+    },
+    "includes": [
+      "OQ-45 (adult)",
+      "Y-OQ 2.01 (youth)",
+      "OQ-30 (brief)",
+      "OQ-Analyst software",
+      "Expected Treatment Response",
+      "Clinical Support Tools"
+    ],
+    "notes": "Site licensing based on organization size and number of clinicians. Volume discounts available. Academic and research pricing available.",
+    "last_verified": "2026-08-22"
+  },
+  "assessments": {
+    "oq_45": {
+      "name": "Outcome Questionnaire-45 (OQ-45)",
+      "items": 45,
+      "administration_time": "5-10 minutes",
+      "population": "Adults 18+",
+      "subscales": ["Symptom Distress", "Interpersonal Relations", "Social Role"],
+      "validation_studies": "200+",
+      "languages": "20+"
+    },
+    "y_oq": {
+      "name": "Youth Outcome Questionnaire (Y-OQ 2.01)",
+      "items": 64,
+      "population": "Youth ages 4-17",
+      "versions": ["Parent report", "Self-report (12+)"],
+      "subscales": ["Intrapersonal Distress", "Somatic", "Interpersonal Relations", "Social Problems", "Behavioral Dysfunction", "Critical Items"]
+    },
+    "oq_30": {
+      "name": "OQ-30 (Brief Version)",
+      "items": 30,
+      "administration_time": "3-5 minutes",
+      "population": "Adults",
+      "use_case": "Quicker administration when full OQ-45 not feasible"
+    }
+  },
+  "clinical_feedback_features": {
+    "expected_treatment_response": {
+      "description": "Algorithm predicting expected trajectory based on initial severity and session number",
+      "research_basis": "Derived from thousands of treatment courses"
+    },
+    "alert_system": {
+      "green": "Patient on track for positive outcome",
+      "yellow": "Patient at risk - may need extended treatment",
+      "red": "Patient at high risk of treatment failure - intervention needed"
+    },
+    "clinical_support_tools": {
+      "description": "Structured interventions for patients showing warning signs",
+      "components": ["Therapeutic alliance assessment", "Motivation enhancement", "Social support review"]
+    }
+  },
+  "clinical_evidence": {
+    "validation_studies": "200+ peer-reviewed publications",
+    "research_span": "30+ years",
+    "primary_developer": "Dr. Michael Lambert, Brigham Young University",
+    "key_findings": [
+      "50% improvement in outcomes when using feedback",
+      "50% reduction in deterioration rates",
+      "67% of at-risk patients show better outcomes with CST intervention"
+    ]
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "baa_available": true
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "data-export",
+      "verified": true
+    },
+    {
+      "name": "Manual Export (CSV/PDF)",
+      "slug": "manual-export",
+      "category": "reporting",
+      "integration_type": "export",
+      "verified": true
+    }
+  ],
+  "company_info": {
+    "founded_year": 1996,
+    "headquarters": "Salt Lake City, Utah, USA",
+    "academic_origin": "Brigham Young University",
+    "developer": "Dr. Michael Lambert",
+    "focus": "Evidence-based outcome measurement and clinical feedback systems"
+  },
+  "seo": {
+    "title": "OQ-Analyst: OQ-45 Outcome Measurement System | HeyPsych",
+    "meta_description": "OQ-Analyst provides the gold-standard OQ-45 outcome measurement system with 30+ years of validation. Real-time feedback improves outcomes by 50%.",
+    "faqs": [
+      {
+        "q": "What is the OQ-45 assessment?",
+        "a": "The OQ-45 (Outcome Questionnaire-45) is a 45-item self-report measure assessing patient progress across three domains: Symptom Distress, Interpersonal Relations, and Social Role. It's the most validated outcome measure in psychotherapy with 200+ peer-reviewed studies."
+      },
+      {
+        "q": "How does OQ clinical feedback improve outcomes?",
+        "a": "Research shows that providing therapists with real-time OQ feedback improves outcomes by 50% and reduces treatment failure by 50%. The Expected Treatment Response algorithm identifies at-risk patients early."
+      },
+      {
+        "q": "What is the difference between OQ-45 and OQ-30?",
+        "a": "The OQ-45 is the full 45-item assessment taking 5-10 minutes. The OQ-30 is a shorter 30-item version for situations where briefer administration is needed, while maintaining strong psychometric properties."
+      },
+      {
+        "q": "Is there a version of OQ for children and adolescents?",
+        "a": "Yes, the Y-OQ 2.01 (Youth Outcome Questionnaire) is designed for ages 4-17, with parent-report and self-report (ages 12+) versions available."
+      }
+    ],
+    "keywords": [
+      "OQ-45",
+      "OQ-Analyst",
+      "Outcome Questionnaire",
+      "Lambert OQ",
+      "treatment outcome measurement",
+      "clinical feedback system",
+      "Y-OQ youth"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "greenspace-health",
+    "mirah",
+    "blueprint"
+  ],
+  "competitor_tools": [
+    "greenspace-health",
+    "myoutcomes"
+  ],
+  "created_at": "2026-08-22T20:50:40.812Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

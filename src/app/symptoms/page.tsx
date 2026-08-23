@@ -87,7 +87,7 @@ export default async function SymptomsPage() {
 
       <main className="min-h-screen bg-canvas">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-surface to-canvas pb-12 pt-16 md:pb-16 md:pt-24">
+        <section className="relative bg-gradient-to-b from-surface to-canvas pb-12 pt-16 md:pb-16 md:pt-24">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <h1 className="text-3xl font-bold tracking-tight text-label-primary md:text-5xl">
               Explore Mental Health Symptoms

@@ -1,0 +1,222 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "d4e5f6a7-58cc-4372-a567-0e02b2c3d483",
+  "slug": "valant",
+  "name": "Valant EHR Suite",
+  "company_name": "Valant Medical Solutions",
+  "import_ref": {
+    "record_id": "MH-0006",
+    "source_file": "ehr-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "measurement-outcomes-dtx"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "phq9-gad7",
+    "reporting-dashboards",
+    "hipaa-compliant",
+    "baa-available",
+    "note-generation"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only",
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "IOP",
+      "PHP"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "Behavioral health EHR and practice management platform designed by a psychiatrist for psychiatrists, therapists, and mental health practices.",
+  "long_description": "Valant is a comprehensive behavioral health EHR and practice management platform founded in 2005 in Seattle, Washington by a psychiatrist. The platform is purpose-built for behavioral health providers including psychiatrists, psychologists, therapists, and practice managers. Valant offers clinical documentation with specialty-specific templates, integrated scheduling, patient engagement tools, billing and revenue cycle management, HIPAA-compliant telehealth, and built-in outcome measurement tracking (PHQ-9, GAD-7, and more). The platform includes e-prescribing with EPCS for controlled substances and PDMP integration. In March 2026, Valant launched Revenue Cycle Management (RCM) services to help practices achieve predictable revenue. The system supports various practice sizes from solo practitioners to large organizations, including specialized programs like Intensive Outpatient Programs (IOP) and Partial Hospitalization Programs (PHP).",
+  "one_liner": "Behavioral health EHR designed by psychiatrists, for psychiatrists and mental health providers.",
+  "best_for": [
+    "Psychiatrists and psychiatric practices needing e-prescribing with EPCS",
+    "Behavioral health practices wanting built-in outcome measurement",
+    "Group practices seeking comprehensive revenue cycle management",
+    "IOP/PHP programs needing specialized clinical workflows"
+  ],
+  "not_for": [
+    "General medical practices outside behavioral health",
+    "Practices seeking mobile-first EHR solutions",
+    "Small solo practices on tight budgets",
+    "Large enterprise organizations with complex multi-state requirements"
+  ],
+  "website_url": "https://www.valant.io",
+  "pricing_url": "https://www.valant.io/plans-pricing/",
+  "support_url": "https://www.valant.io/support/",
+  "logo_url": "https://www.valant.io/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 10000,
+    "starting_price_display": "$100-$300/provider/month",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "notes": "Customized pricing based on practice size, provider type, workflow needs, and add-on functionality. Tiered pricing allows practices to scale. Additional fees may apply for e-prescribing, faxes, or API usage. Contact for personalized quote.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
+  },
+  "integrations": [
+    {
+      "name": "DrFirst",
+      "slug": "drfirst",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "PDMP",
+      "slug": "pdmp",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Prescription drug monitoring program integration"
+    },
+    {
+      "name": "Change Healthcare",
+      "slug": "change-healthcare",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Clearinghouse for electronic claims"
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Valant EHR Suite | HeyPsych",
+    "meta_description": "Valant is a behavioral health EHR designed by psychiatrists. Clinical documentation, e-prescribing, outcome tracking, and billing for mental health practices.",
+    "faqs": [
+      {
+        "q": "How much does Valant EHR cost per month?",
+        "a": "Valant EHR pricing typically ranges from $100-$300 per provider per month, with customized pricing based on practice size, provider types, and selected features. Implementation costs may apply. Contact Valant for a personalized quote."
+      },
+      {
+        "q": "Does Valant include e-prescribing for controlled substances?",
+        "a": "Yes, Valant includes e-prescribing with EPCS (Electronic Prescribing for Controlled Substances) and PDMP integration, making it well-suited for psychiatrists who prescribe medications."
+      },
+      {
+        "q": "What outcome measures does Valant support?",
+        "a": "Valant includes built-in outcome measurement tracking with standard assessments like PHQ-9 and GAD-7. The platform supports tracking patient progress over time and generating outcome reports."
+      },
+      {
+        "q": "Is Valant good for psychiatrists?",
+        "a": "Yes, Valant was founded by a psychiatrist and is specifically designed for behavioral health. It includes features psychiatrists need like e-prescribing with EPCS, PDMP integration, psychiatric-specific note templates, and medication management tools."
+      }
+    ],
+    "keywords": [
+      "Valant EHR",
+      "behavioral health EHR",
+      "psychiatrist EHR",
+      "mental health practice management",
+      "e-prescribing behavioral health",
+      "outcome measurement EHR"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "simplepractice",
+    "therapynotes",
+    "icanotes",
+    "advancedmd"
+  ],
+  "competitor_tools": [
+    "simplepractice",
+    "therapynotes",
+    "advancedmd"
+  ],
+  "company_info": {
+    "founded_year": 2005,
+    "headquarters": "Seattle, Washington, USA",
+    "employee_count": "137",
+    "funding_status": "Private Equity (Resurgens Technology Partners)",
+    "total_funding": "$28.9M",
+    "founder": "David M.D. Lischner",
+    "investors": "Resurgens Technology Partners, Gemspring Capital, Alliance of Angels, TSVC"
+  },
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

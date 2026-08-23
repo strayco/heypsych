@@ -1,0 +1,259 @@
+{
+  "schema_version": "4.0",
+  "kind": "telehealth-tool",
+  "id": "2c05365b-8158-4fed-aa1f-2cbe3c05184b",
+  "slug": "vsee-clinic",
+  "name": "VSee Clinic",
+  "company_name": "VSee",
+  "one_liner": "Customizable telehealth platform trusted by NASA with low-bandwidth video optimization, virtual waiting rooms, and complete practice management features.",
+  "best_for": [
+    "Solo and small practices seeking an affordable all-in-one solution",
+    "Providers with patients in areas with limited internet connectivity",
+    "Practices needing integrated scheduling, payments, and video",
+    "Mental health clinicians wanting customizable patient intake forms",
+    "Providers seeking a free starter option to test telehealth"
+  ],
+  "not_for": [
+    "Large health systems requiring enterprise EHR integration",
+    "Practices heavily invested in another PM system (some redundancy)",
+    "Organizations needing advanced group therapy features beyond 4 participants",
+    "Providers requiring session recording capabilities"
+  ],
+  "support_level": "clinical",
+  "short_description": "HIPAA-compliant telehealth platform with low-bandwidth video, virtual waiting rooms, scheduling, and payment processing built for healthcare practices.",
+  "long_description": "VSee Clinic is a comprehensive telehealth platform that combines HD video conferencing with practice management features including online scheduling, custom intake forms, and payment processing. Originally developed for NASA to enable telemedicine on the International Space Station, VSee is known for its low-bandwidth optimization that maintains video quality even on slow internet connections, making it ideal for serving patients in rural or underserved areas. The platform offers a free tier for solo practitioners with limited features, making it accessible for those starting with telehealth. VSee Clinic includes virtual waiting rooms, screen sharing, and customizable patient experiences with your practice branding. Mental health providers appreciate the built-in secure messaging, appointment reminders, and custom intake forms that can be completed before sessions. The platform supports multiple providers, making it suitable for group practices, and offers API access for custom integrations.",
+  "primary_hubs": ["telehealth", "practice-management"],
+  "sub_hubs": ["video-conferencing", "low-bandwidth"],
+  "primary_category": "telehealth-communication",
+  "secondary_categories": ["practice-management", "scheduling"],
+  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "ptsd", "substance-use-disorders"],
+  "tool_types": ["telehealth-platform", "practice-management"],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false
+  },
+  "pricing": {
+    "model": "freemium",
+    "free_tier": true,
+    "free_trial_days": 0,
+    "quote_required": false,
+    "starting_price": "Free",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "features": ["1 provider", "Unlimited video visits", "Basic waiting room", "1 intake form", "Manual scheduling", "Email support"]
+      },
+      {
+        "name": "Basic",
+        "price": "$49/month",
+        "features": ["1 provider", "All Free features", "Online scheduling", "Custom branding", "Multiple intake forms", "Payment processing", "SMS reminders"]
+      },
+      {
+        "name": "Plus",
+        "price": "$99/month",
+        "features": ["1 provider", "All Basic features", "Group video (4 participants)", "Screen sharing", "Priority support", "API access"]
+      },
+      {
+        "name": "Pro",
+        "price": "$199/month",
+        "features": ["Multiple providers", "All Plus features", "Advanced analytics", "Custom integrations", "Dedicated support"]
+      }
+    ],
+    "notes": "Free tier available for solo providers. Per-provider pricing for group practices. Annual billing discounts available."
+  },
+  "capabilities": ["video-conferencing", "low-bandwidth-optimized", "scheduling", "payment-processing", "intake-forms", "virtual-waiting-room"],
+  "audiences": {
+    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "social-worker", "psychiatric-nurse"],
+    "practice_settings": ["solo-practice", "group-practice", "private-practice", "community-mental-health"],
+    "organization_sizes": ["solo", "small-2-10", "medium-11-50"],
+    "specialties": ["mental-health", "psychiatry", "psychology", "counseling", "behavioral-health", "primary-care"]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "low_bandwidth_optimized": true,
+      "minimum_bandwidth": "50 kbps",
+      "bandwidth_requirements": "Works on 3G connections",
+      "reliability": "NASA-tested reliability"
+    },
+    "features": {
+      "waiting_room": true,
+      "customizable_waiting_room": true,
+      "screen_share": true,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": true,
+      "max_participants": 4,
+      "text_chat": true,
+      "file_sharing": true,
+      "picture_in_picture": true
+    },
+    "patient_experience": {
+      "no_download_required": true,
+      "browser_based": true,
+      "no_account_required": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "custom_branding": true,
+      "online_scheduling": true,
+      "intake_forms": true,
+      "payment_at_booking": true
+    },
+    "mobile_apps": {
+      "provider_ios": true,
+      "provider_android": true,
+      "patient_ios": false,
+      "patient_android": false,
+      "browser_mobile": true,
+      "notes": "Providers use VSee Clinic app; patients join via browser on any device."
+    }
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "baa_included_free": true,
+    "soc2": "yes",
+    "hitrust": "no",
+    "gdpr_compliant": "yes",
+    "encryption": "AES 256-bit encryption",
+    "end_to_end_encryption": true,
+    "certifications": ["HIPAA", "SOC 2"],
+    "audit_logging": true,
+    "notes": "BAA provided even on free tier. End-to-end encryption for all video sessions."
+  },
+  "integrations": {
+    "ehr_integrations": [],
+    "calendar_integrations": ["Google Calendar", "Outlook Calendar", "Apple Calendar"],
+    "billing_integrations": ["Stripe"],
+    "payment_processors": ["Stripe", "Square"],
+    "api_available": true,
+    "webhooks": true,
+    "zapier_integration": true,
+    "notes": "Open API for custom integrations. Native payment processing via Stripe."
+  },
+  "additional_tools": {
+    "secure_messaging": true,
+    "appointment_reminders": true,
+    "intake_forms": true,
+    "e_prescribing": false,
+    "payment_processing": true,
+    "scheduling": true,
+    "online_booking": true,
+    "notes": "Comprehensive practice tools beyond just video. Can replace basic practice management systems."
+  },
+  "privacy": {
+    "grade": "A",
+    "hipaa_compliant": true,
+    "gdpr_compliant": true,
+    "data_sold": false,
+    "notes": "Strong security heritage from NASA development. End-to-end encryption."
+  },
+  "seo": {
+    "title": "VSee Clinic: Low-Bandwidth Telehealth Platform | HeyPsych",
+    "meta_description": "VSee Clinic offers HIPAA-compliant telehealth with low-bandwidth video, virtual waiting rooms, and practice management. Free tier available. Used by NASA.",
+    "canonical_url": "https://heypsych.com/tools/vsee-clinic/",
+    "keywords": ["VSee Clinic", "low bandwidth telehealth", "HIPAA telehealth", "virtual waiting room", "telehealth scheduling"],
+    "faqs": [
+      {
+        "q": "Does VSee work with slow internet connections?",
+        "a": "Yes, VSee was originally developed for NASA and is specifically optimized for low-bandwidth environments. The video maintains quality even on 3G cellular connections or slow rural internet. This makes it ideal for serving patients in areas with limited connectivity."
+      },
+      {
+        "q": "Is the free VSee Clinic plan really HIPAA compliant?",
+        "a": "Yes, even the free tier of VSee Clinic is fully HIPAA compliant with a signed Business Associate Agreement (BAA) included. All video sessions use end-to-end encryption regardless of plan level."
+      },
+      {
+        "q": "Can patients book appointments online with VSee?",
+        "a": "Yes, VSee Clinic includes online scheduling where patients can view your availability and book appointments directly. Paid plans include SMS and email reminders, intake forms, and payment collection at booking."
+      },
+      {
+        "q": "Does VSee support group therapy sessions?",
+        "a": "Yes, VSee Plus and Pro plans support group video sessions with up to 4 participants, suitable for couples therapy, family sessions, and small group therapy. Larger group sessions would require a different platform."
+      }
+    ]
+  },
+  "governance": {
+    "reviewed_by_label": "Reviewed by HeyPsych Board",
+    "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 89
+  },
+  "app_metadata": {
+    "publisher": "VSee Lab, Inc.",
+    "app_store_url": "https://apps.apple.com/us/app/vsee-clinic-for-providers/id1503955498",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.vsee.clinic",
+    "website": "https://vsee.com/clinic",
+    "founded": "2008",
+    "headquarters": "Sunnyvale, California",
+    "public_company": false,
+    "total_funding": "$15M+",
+    "notable_clients": ["NASA", "United Nations", "US Veterans Affairs"],
+    "customer_count": "50,000+ providers"
+  },
+  "clinical_metadata": {
+    "evidence_based": true,
+    "primary_uses": [
+      "Individual therapy sessions",
+      "Psychiatric consultations",
+      "Couples and family therapy",
+      "Remote patient monitoring",
+      "Clinical consultations"
+    ]
+  },
+  "clinician": {
+    "is_clinician_relevant": true,
+    "primary_clinician_hubs": ["telehealth", "practice-management"],
+    "clinician_workflows": ["telehealth_video", "scheduling", "payment_collection"],
+    "how_clinicians_use_it": [
+      "Conducting video sessions with patients anywhere",
+      "Collecting intake forms before appointments",
+      "Accepting payments online at booking",
+      "Sending automated appointment reminders",
+      "Serving patients with limited internet access"
+    ],
+    "implementation_notes": "Easy setup with free tier for testing. Consider paid plans for full scheduling and payment features.",
+    "target_practice_size": ["Solo practitioners", "Small group practices", "Community clinics"],
+    "billing_notes": "Built-in payment processing via Stripe. Can replace separate payment system."
+  },
+  "market_position": {
+    "primary_competitors": ["Doxy.me", "Zoom for Healthcare", "SimplePractice Telehealth", "Thera-LINK"],
+    "differentiators": ["NASA-tested low-bandwidth technology", "Free tier with BAA", "Built-in scheduling and payments", "Works on slow connections"],
+    "market_segment": "Solo and small practices, rural healthcare",
+    "niche": "Low-bandwidth and all-in-one telehealth"
+  },
+  "related_tools": ["doxy-me", "zoom-for-healthcare", "thera-link", "simplepractice-telehealth"],
+  "order": 4,
+  "featured": false,
+  "status": "active",
+  "import_ref": {
+    "record_id": "MH-0253",
+    "source_row": 254,
+    "import_timestamp": "2026-08-22T20:50:40.794Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "created_at": "2026-08-22T20:50:40.794Z",
+  "updated_at": "2026-08-22T23:00:00.000Z"
+}

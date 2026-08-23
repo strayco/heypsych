@@ -6,7 +6,8 @@ import Link from "next/link";
 import { Shield, CheckCircle, XCircle, ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 
-const canonicalUrl = `${siteConfig.url}/about/sponsorship-policy/`;
+// Slashless canonical for consistency with sitemap
+const canonicalUrl = `${siteConfig.url}/about/sponsorship-policy`;
 
 export const metadata: Metadata = {
   title: "Sponsorship & Editorial Independence Policy | HeyPsych",

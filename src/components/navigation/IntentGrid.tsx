@@ -7,7 +7,6 @@ import {
   Scale,
   MapPin,
   Smartphone,
-  GraduationCap,
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
@@ -24,7 +23,6 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   scale: Scale,
   "map-pin": MapPin,
   smartphone: Smartphone,
-  "graduation-cap": GraduationCap,
 };
 
 /**
@@ -107,14 +105,7 @@ export const defaultIntents: IntentEntryPoint[] = [
     icon: "smartphone",
     audience: "patient",
   },
-  {
-    id: "clinician_resources",
-    label: "I'm a clinician",
-    description: "Clinical resources, tools, and treatment information",
-    href: "/for-clinicians",
-    icon: "graduation-cap",
-    audience: "clinician",
-  },
+  // Note: Clinician path is handled by AudienceGateway component, not IntentGrid
 ];
 
 /**
@@ -128,9 +119,8 @@ export const defaultIntents: IntentEntryPoint[] = [
 export function IntentGrid({
   intents = defaultIntents,
 }: IntentGridProps) {
-  // Separate patient intents from clinician intent
+  // Filter to patient intents only (clinician path handled by AudienceGateway)
   const patientIntents = intents.filter((i) => i.audience === "patient");
-  const clinicianIntent = intents.find((i) => i.audience === "clinician");
 
   // Primary actions (first 2 patient intents - most common entry points)
   const primaryIntents = patientIntents.slice(0, 2);
@@ -224,35 +214,7 @@ export function IntentGrid({
         })}
       </div>
 
-      {/* Clinician Section - Distinct, professional */}
-      {clinicianIntent && (
-        <Link
-          href={clinicianIntent.href}
-          onClick={() => trackIntentSelect(clinicianIntent.id)}
-          className={cn(
-            "group flex items-center justify-between rounded-xl px-5 py-4",
-            "bg-surface-grouped border border-transparent",
-            "transition-all duration-150",
-            "hover:bg-fill-tertiary",
-            "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-          )}
-        >
-          <div className="flex items-center gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-fill-secondary">
-              <GraduationCap className="h-5 w-5 text-label-secondary" />
-            </div>
-            <div>
-              <h3 className="font-medium text-label-primary group-hover:text-accent">
-                {clinicianIntent.label}
-              </h3>
-              <p className="text-sm text-label-tertiary">
-                {clinicianIntent.description}
-              </p>
-            </div>
-          </div>
-          <ChevronRight className="h-5 w-5 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
-        </Link>
-      )}
+      {/* Clinician Section removed - now handled by AudienceGateway (Mission FIX 3) */}
     </div>
   );
 }

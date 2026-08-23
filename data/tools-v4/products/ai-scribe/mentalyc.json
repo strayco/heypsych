@@ -1,0 +1,264 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "22b5c356-b96e-40c7-86d0-bb384b07ae2b",
+  "slug": "mentalyc",
+  "name": "Mentalyc",
+  "company_name": "Mentalyc",
+  "website": "https://www.mentalyc.com",
+  "description": "Mentalyc is an AI-powered documentation tool built specifically for mental health professionals. It listens to therapy sessions and automatically generates progress notes, treatment plans, and other clinical documentation in formats required by insurance companies. Mentalyc understands therapeutic modalities like CBT, DBT, and psychodynamic therapy.",
+  "import_ref": {
+    "record_id": "MH-0158",
+    "source_row": 159,
+    "import_timestamp": "2026-08-22T20:50:40.783Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["mental-health-documentation", "therapy-notes"],
+  "capabilities": [
+    "ambient-listening",
+    "therapy-progress-notes",
+    "treatment-plans",
+    "insurance-compliant-notes",
+    "dap-notes",
+    "soap-notes",
+    "telehealth-support",
+    "modality-aware"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "licensed-counselor",
+      "psychiatric-nurse-practitioner"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "group-practice",
+      "outpatient-clinic",
+      "telehealth",
+      "community-mental-health"
+    ],
+    "organization_sizes": ["solo", "small", "medium"],
+    "specialties": [
+      "therapy",
+      "psychiatry",
+      "psychology",
+      "counseling",
+      "anxiety-disorders",
+      "depression",
+      "trauma-ptsd",
+      "couples-therapy"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "company": {
+    "founded_year": 2022,
+    "headquarters": "New York, NY",
+    "employee_count": "20-50",
+    "funding_total": "$5M+",
+    "funding_stage": "Seed",
+    "customer_count": "5,000+ mental health providers"
+  },
+  "pricing": {
+    "model": "per-provider-monthly",
+    "quote_required": false,
+    "starting_price": 49,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": 49,
+        "period": "monthly",
+        "features": [
+          "30 session notes per month",
+          "Progress notes",
+          "DAP notes",
+          "Web app access",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": 99,
+        "period": "monthly",
+        "features": [
+          "Unlimited session notes",
+          "All note formats (SOAP, DAP, BIRP)",
+          "Treatment plans",
+          "Mobile app",
+          "Priority support",
+          "EHR integrations"
+        ]
+      },
+      {
+        "name": "Group Practice",
+        "price": 79,
+        "period": "monthly",
+        "features": [
+          "Everything in Professional",
+          "Team management",
+          "Shared templates",
+          "Usage analytics",
+          "Onboarding support"
+        ],
+        "notes": "Per provider, minimum 3 providers"
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "duration_days": 7,
+      "credit_card_required": false
+    },
+    "notes": "Annual billing offers 20% discount. Educational discounts available."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "hipaa": "https://www.mentalyc.com/hipaa",
+      "security": "https://www.mentalyc.com/security"
+    }
+  },
+  "integrations": [
+    {
+      "name": "SimplePractice",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "TherapyNotes",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Jane App",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "TheraNest",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Zoom",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    },
+    {
+      "name": "Doxy.me",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to therapy sessions and generates modality-aware progress notes"
+    },
+    "note_types": [
+      "DAP notes",
+      "SOAP notes",
+      "BIRP notes",
+      "GIRP notes",
+      "Progress notes",
+      "Treatment plans",
+      "Intake assessments"
+    ],
+    "therapeutic_modalities": [
+      "CBT",
+      "DBT",
+      "Psychodynamic",
+      "EMDR",
+      "Solution-focused",
+      "Motivational Interviewing",
+      "Family Systems"
+    ],
+    "insurance_compliance": true,
+    "custom_templates": true,
+    "multi_language": false,
+    "accuracy_rate": "Therapy-specific AI trained on mental health documentation"
+  },
+  "best_for": [
+    "Private practice therapists and counselors",
+    "Psychologists seeking insurance-compliant documentation",
+    "Solo practitioners wanting affordable AI scribe",
+    "Clinicians using SimplePractice, TherapyNotes, or Jane App",
+    "Therapists wanting modality-aware note generation",
+    "Telehealth-focused mental health practices"
+  ],
+  "not_for": [
+    "Medical practices outside mental health",
+    "Psychiatrists primarily doing medication management",
+    "Large health systems requiring enterprise EHR integration",
+    "Practices needing HITRUST certification"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["upheal", "autonotes", "blueprint", "simplepractice-note-taker"],
+  "created_at": "2026-08-22T20:50:40.783Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Mentalyc: AI Therapy Notes for Mental Health Professionals | HeyPsych",
+    "meta_description": "Mentalyc AI therapy documentation review. Starting at $49/month for therapists. Generates DAP, SOAP, BIRP notes. SimplePractice integration. HIPAA compliant.",
+    "faqs": [
+      {
+        "question": "How much does Mentalyc cost?",
+        "answer": "Mentalyc starts at $49/month for 30 session notes (Starter plan). The Professional plan at $99/month offers unlimited notes and EHR integrations. Group practices pay $79/provider/month with minimum 3 providers."
+      },
+      {
+        "question": "Does Mentalyc understand different therapy modalities?",
+        "answer": "Yes, Mentalyc is trained on mental health documentation and understands therapeutic modalities including CBT, DBT, psychodynamic therapy, EMDR, and solution-focused therapy. Notes reflect the appropriate terminology and interventions."
+      },
+      {
+        "question": "Can Mentalyc generate insurance-compliant notes?",
+        "answer": "Yes, Mentalyc generates notes in formats required by insurance companies including DAP, SOAP, BIRP, and GIRP notes. The AI ensures documentation meets medical necessity requirements."
+      },
+      {
+        "question": "Does Mentalyc integrate with SimplePractice?",
+        "answer": "Yes, Mentalyc has native integration with SimplePractice, TherapyNotes, and Jane App. Notes can be exported directly to these EHRs. Other EHRs work via copy-paste or browser extension."
+      }
+    ],
+    "keywords": [
+      "Mentalyc",
+      "therapy AI scribe",
+      "mental health documentation",
+      "DAP note generator",
+      "SOAP note therapist",
+      "AI progress notes therapy",
+      "SimplePractice AI",
+      "therapist documentation AI"
+    ]
+  }
+}

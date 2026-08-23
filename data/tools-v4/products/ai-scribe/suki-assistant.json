@@ -1,0 +1,260 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "58d2db65-a740-49ea-9421-fd9eb61441e1",
+  "slug": "suki-assistant",
+  "name": "Suki Assistant",
+  "company_name": "Suki AI",
+  "website": "https://www.suki.ai",
+  "description": "Suki is an AI-powered voice assistant designed specifically for clinicians. It combines ambient AI documentation with voice commands to help physicians complete notes, navigate EHRs, and manage clinical workflows. Suki learns each clinician's preferences and documentation style to improve accuracy over time.",
+  "import_ref": {
+    "record_id": "MH-0187",
+    "source_row": 188,
+    "import_timestamp": "2026-08-22T20:50:40.786Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["clinical-documentation", "voice-assistant", "workflow-automation"],
+  "capabilities": [
+    "ambient-listening",
+    "voice-assistant",
+    "dictation",
+    "soap-note-generation",
+    "ehr-navigation",
+    "icd-coding-suggestions",
+    "custom-templates",
+    "multi-specialty-support"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "physician",
+      "nurse-practitioner",
+      "physician-assistant",
+      "psychiatrist"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "outpatient-clinic",
+      "group-practice",
+      "hospital-system",
+      "academic-medical-center"
+    ],
+    "organization_sizes": ["small", "medium", "large", "enterprise"],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "internal-medicine",
+      "cardiology",
+      "orthopedics",
+      "dermatology",
+      "gastroenterology",
+      "psychiatry",
+      "oncology",
+      "urgent-care"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "founded_year": 2017,
+    "headquarters": "Redwood City, CA",
+    "employee_count": "100-250",
+    "funding_total": "$165M+",
+    "funding_stage": "Series C",
+    "notable_investors": ["Venrock", "First Round Capital", "Flare Capital", "March Capital"],
+    "customer_count": "250+ health systems and practices"
+  },
+  "pricing": {
+    "model": "per-provider-monthly",
+    "quote_required": true,
+    "starting_price": 199,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Professional",
+        "price": 199,
+        "period": "monthly",
+        "features": [
+          "Ambient documentation",
+          "Voice assistant",
+          "EHR integration",
+          "Custom templates",
+          "Mobile app",
+          "Standard support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Everything in Professional",
+          "Advanced EHR integrations",
+          "Custom workflows",
+          "Analytics dashboard",
+          "Dedicated success manager",
+          "Premium support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "$199-350 per provider per month",
+    "free_trial": {
+      "available": true,
+      "duration_days": 14,
+      "credit_card_required": false
+    },
+    "notes": "Annual contracts available with discount. Enterprise pricing negotiable for 50+ providers."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "security": "https://www.suki.ai/security"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "eClinicalWorks",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "NextGen",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Greenway Health",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "ModMed",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Elation Health",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to patient-clinician conversations and generates structured notes"
+    },
+    "voice_assistant": {
+      "supported": true,
+      "description": "Natural language voice commands for EHR navigation and queries"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes",
+      "Procedure notes"
+    ],
+    "specialty_templates": true,
+    "custom_templates": true,
+    "voice_commands": true,
+    "multi_language": false,
+    "learning": "Learns clinician preferences over time for improved accuracy",
+    "accuracy_rate": "90%+ first-pass accuracy reported"
+  },
+  "best_for": [
+    "Physicians wanting voice-first documentation workflow",
+    "Practices using Epic, Cerner, or Athenahealth",
+    "Clinicians who want EHR voice navigation alongside scribing",
+    "Mid-size to large practices (20-500 providers)",
+    "Organizations seeking HITRUST-certified solutions"
+  ],
+  "not_for": [
+    "Solo practitioners on tight budgets (consider Freed instead)",
+    "Mental health-specific practices (consider Mentalyc or Upheal)",
+    "Practices using less common EHR systems",
+    "Organizations needing multi-language support"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 91,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["freed", "nuance-dax-copilot", "abridge", "deepscribe"],
+  "created_at": "2026-08-22T20:50:40.786Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Suki AI Assistant: Pricing, Review & EHR Integrations | HeyPsych",
+    "meta_description": "Suki AI voice assistant review for physicians. Starting at $199/month with 14-day free trial. Native Epic, Cerner, Athenahealth integration. HITRUST certified.",
+    "faqs": [
+      {
+        "question": "How much does Suki cost per month?",
+        "answer": "Suki starts at $199 per provider per month for the Professional plan. Enterprise pricing is available for larger organizations with volume discounts. A 14-day free trial is available without credit card."
+      },
+      {
+        "question": "Does Suki integrate with Epic?",
+        "answer": "Yes, Suki has native integration with Epic and can write notes directly into the EHR. It also integrates with Cerner, Athenahealth, eClinicalWorks, NextGen, and many other major EHR systems."
+      },
+      {
+        "question": "Can Suki be used for mental health documentation?",
+        "answer": "While Suki can generate psychiatry notes, it's not specifically designed for mental health. For therapy-specific documentation needs, consider mental health-focused tools like Mentalyc or Upheal."
+      },
+      {
+        "question": "How does Suki learn my documentation preferences?",
+        "answer": "Suki uses machine learning to analyze your edits and documentation patterns over time. The more you use it, the better it understands your preferred note structure, terminology, and style."
+      }
+    ],
+    "keywords": [
+      "Suki AI",
+      "Suki voice assistant",
+      "AI medical scribe",
+      "voice documentation",
+      "Epic voice assistant",
+      "clinical documentation AI",
+      "physician voice assistant"
+    ]
+  }
+}

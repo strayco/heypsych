@@ -1,0 +1,273 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "a0ed5024-15d6-4479-92f1-a275bc2d1672",
+  "slug": "upheal",
+  "name": "Upheal",
+  "company_name": "Upheal",
+  "website": "https://www.upheal.io",
+  "description": "Upheal is an AI-powered documentation and analytics platform designed specifically for mental health professionals. Beyond generating progress notes, Upheal provides session analytics including talk-time ratios, topic tracking, and sentiment analysis to help therapists gain insights into their practice patterns and client progress.",
+  "import_ref": {
+    "record_id": "MH-0159",
+    "source_row": 160,
+    "import_timestamp": "2026-08-22T20:50:40.784Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["mental-health-documentation", "therapy-analytics", "session-insights"],
+  "capabilities": [
+    "ambient-listening",
+    "therapy-progress-notes",
+    "session-analytics",
+    "talk-time-tracking",
+    "sentiment-analysis",
+    "topic-tracking",
+    "telehealth-support",
+    "treatment-plans"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "licensed-counselor",
+      "psychiatric-nurse-practitioner"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "group-practice",
+      "outpatient-clinic",
+      "telehealth"
+    ],
+    "organization_sizes": ["solo", "small", "medium"],
+    "specialties": [
+      "therapy",
+      "psychiatry",
+      "psychology",
+      "counseling",
+      "anxiety-disorders",
+      "depression",
+      "trauma-ptsd"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "company": {
+    "founded_year": 2021,
+    "headquarters": "Prague, Czech Republic",
+    "employee_count": "20-50",
+    "funding_total": "$5M+",
+    "funding_stage": "Seed",
+    "customer_count": "10,000+ mental health providers globally"
+  },
+  "pricing": {
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price": 0,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": 0,
+        "period": "monthly",
+        "features": [
+          "3 sessions per month",
+          "Basic progress notes",
+          "Session transcription",
+          "Web app access"
+        ]
+      },
+      {
+        "name": "Essential",
+        "price": 59,
+        "period": "monthly",
+        "features": [
+          "Unlimited sessions",
+          "All note formats",
+          "Session analytics",
+          "Topic tracking",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": 99,
+        "period": "monthly",
+        "features": [
+          "Everything in Essential",
+          "Talk-time analysis",
+          "Sentiment tracking",
+          "EHR integrations",
+          "Custom templates",
+          "Priority support"
+        ]
+      },
+      {
+        "name": "Team",
+        "price": 79,
+        "period": "monthly",
+        "features": [
+          "Everything in Professional",
+          "Team dashboard",
+          "Practice analytics",
+          "Shared templates",
+          "Onboarding support"
+        ],
+        "notes": "Per provider, minimum 3 providers"
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "notes": "Free tier available indefinitely with 3 sessions/month"
+    },
+    "notes": "Annual billing offers 20% discount."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "hipaa": "https://www.upheal.io/hipaa",
+      "privacy": "https://www.upheal.io/privacy"
+    }
+  },
+  "integrations": [
+    {
+      "name": "SimplePractice",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "TherapyNotes",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Jane App",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Zoom",
+      "type": "telehealth",
+      "method": "native",
+      "native": true
+    },
+    {
+      "name": "Google Meet",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    },
+    {
+      "name": "Doxy.me",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to therapy sessions and generates notes with analytics"
+    },
+    "session_analytics": {
+      "supported": true,
+      "description": "Provides talk-time ratios, topic tracking, and sentiment analysis"
+    },
+    "note_types": [
+      "DAP notes",
+      "SOAP notes",
+      "BIRP notes",
+      "Progress notes",
+      "Treatment plans",
+      "Session summaries"
+    ],
+    "analytics_features": [
+      "Talk-time ratios",
+      "Topic frequency tracking",
+      "Sentiment trends",
+      "Session comparison",
+      "Practice patterns"
+    ],
+    "custom_templates": true,
+    "multi_language": true,
+    "supported_languages": ["English", "Spanish", "German", "French"],
+    "accuracy_rate": "Mental health-specific AI with analytics"
+  },
+  "best_for": [
+    "Therapists wanting session analytics beyond just notes",
+    "Clinicians interested in tracking client progress patterns",
+    "Private practice therapists seeking affordable AI documentation",
+    "Practitioners wanting to understand their talk-time ratios",
+    "Telehealth-focused mental health providers",
+    "Group practices wanting practice-level analytics"
+  ],
+  "not_for": [
+    "Medical practices outside mental health",
+    "Clinicians only needing basic documentation",
+    "Large health systems requiring deep EHR integration",
+    "Practices needing HITRUST certification"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["mentalyc", "autonotes", "blueprint", "eleos-health"],
+  "created_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Upheal: AI Therapy Notes + Session Analytics | HeyPsych",
+    "meta_description": "Upheal review - AI therapy documentation with session analytics. Free tier available. Talk-time tracking, sentiment analysis. $59-99/month for therapists.",
+    "faqs": [
+      {
+        "question": "What makes Upheal different from other therapy AI scribes?",
+        "answer": "Upheal combines documentation with session analytics including talk-time ratios, topic tracking, and sentiment analysis. This helps therapists understand practice patterns and track client progress beyond just generating notes."
+      },
+      {
+        "question": "How much does Upheal cost?",
+        "answer": "Upheal offers a free tier with 3 sessions/month. Paid plans start at $59/month (Essential) for unlimited sessions, with the Professional plan at $99/month including full analytics. Group practices pay $79/provider/month."
+      },
+      {
+        "question": "Does Upheal have a free version?",
+        "answer": "Yes, Upheal's free tier allows 3 sessions per month indefinitely. This lets therapists try the platform before committing to a paid plan."
+      },
+      {
+        "question": "Can Upheal track my talk-time during sessions?",
+        "answer": "Yes, the Professional plan includes talk-time analysis showing the ratio of therapist vs client speaking time. This helps therapists monitor whether they're maintaining appropriate therapeutic presence."
+      }
+    ],
+    "keywords": [
+      "Upheal",
+      "therapy AI scribe",
+      "session analytics",
+      "talk-time tracking",
+      "mental health documentation",
+      "therapist progress notes",
+      "therapy sentiment analysis",
+      "SimplePractice AI"
+    ]
+  }
+}

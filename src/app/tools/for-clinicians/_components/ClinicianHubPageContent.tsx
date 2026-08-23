@@ -115,16 +115,13 @@ export function ClinicianHubPageContent({
         {/* FAQ */}
         <HubFAQ faqs={hub.faqs} hubName={hub.display_name} />
 
-        {/* Trust Signal */}
+        {/* Trust Signal - P0 FIX: Removed unsupported "all tools reviewed" claim */}
         <section className="px-4 pb-10 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full">
-              <Shield className="h-5 w-5 text-emerald-600" />
-              <span className="text-sm font-medium text-emerald-800">
-                All tools reviewed by the{" "}
-                <Link href="/about/medical-review-board" className="underline hover:no-underline">
-                  HeyPsych Medical Board
-                </Link>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full">
+              <Shield className="h-5 w-5 text-slate-600" />
+              <span className="text-sm font-medium text-slate-700">
+                Verify compliance directly with vendors before use
               </span>
             </div>
           </div>

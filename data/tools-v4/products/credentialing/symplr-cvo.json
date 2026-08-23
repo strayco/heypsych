@@ -1,0 +1,220 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "0d6fa78f-485c-4bcc-912c-96e0fdae191b",
+  "slug": "symplr-cvo",
+  "name": "symplr CVO",
+  "company_name": "symplr",
+  "description": "symplr CVO (Credentials Verification Organization) provides comprehensive healthcare credentialing services including primary source verification, payer enrollment, and privileging support. As an NCQA-certified CVO, symplr offers fully outsourced credentialing services for health systems, hospitals, and managed care organizations.",
+  "website_url": "https://www.symplr.com/solutions/credentialing",
+  "import_ref": {
+    "record_id": "MH-0646",
+    "source_row": 647,
+    "import_timestamp": "2026-08-22T20:50:40.829Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "credentialing-workforce",
+  "secondary_categories": ["compliance", "workforce-management"],
+  "capabilities": [
+    "credentials-verification-organization",
+    "primary-source-verification",
+    "delegated-credentialing",
+    "privileging-management",
+    "payer-enrollment",
+    "sanctions-monitoring",
+    "license-tracking",
+    "peer-review-support"
+  ],
+  "audiences": {
+    "clinician_roles": ["practice-administrator", "medical-staff-coordinator", "credentialing-specialist"],
+    "practice_settings": ["hospital", "health-system", "managed-care-organization", "large-medical-group", "aco"],
+    "organization_sizes": ["large", "enterprise"],
+    "specialties": ["multi-specialty", "behavioral-health", "primary-care"]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company_info": {
+    "founded_year": 2006,
+    "headquarters": "Houston, TX",
+    "employee_count": "2,000+",
+    "funding_stage": "Private Equity",
+    "total_funding": "Private (Clearlake Capital)",
+    "key_investors": ["Clearlake Capital Group"],
+    "customer_count": "2,900+ healthcare organizations"
+  },
+  "features": {
+    "core_features": [
+      {
+        "name": "NCQA-Certified Primary Source Verification",
+        "description": "Comprehensive PSV services meeting NCQA, Joint Commission, and state regulatory requirements for all provider credential types"
+      },
+      {
+        "name": "Delegated Credentialing",
+        "description": "Full credentialing services that can be delegated from health plans and hospitals under formal delegation agreements"
+      },
+      {
+        "name": "Privileging Management",
+        "description": "Support for medical staff privileging processes including FPPE/OPPE tracking, privilege delineation, and committee workflows"
+      },
+      {
+        "name": "Payer Enrollment Services",
+        "description": "Managed services for commercial, Medicare, and Medicaid payer enrollment with status tracking and follow-up"
+      },
+      {
+        "name": "Continuous Monitoring",
+        "description": "Ongoing monitoring of provider licenses, certifications, sanctions, and malpractice across multiple data sources"
+      },
+      {
+        "name": "Credentialing Committee Support",
+        "description": "Preparation of credentialing packets, committee presentations, and documentation for medical staff committees"
+      }
+    ],
+    "mental_health_specific": [
+      "Behavioral health privileging criteria support",
+      "Psychology and counseling license verification",
+      "Psychiatric facility credentialing",
+      "Telehealth behavioral health credentialing"
+    ]
+  },
+  "pricing": {
+    "model": "enterprise-custom",
+    "starting_price": null,
+    "price_unit": "per provider/year or per verification",
+    "has_free_tier": false,
+    "has_free_trial": false,
+    "quote_required": true,
+    "tiers": [
+      {
+        "name": "PSV Services",
+        "price_range": "$75-150 per provider verification",
+        "features": ["Primary source verification", "Sanctions screening", "License verification", "DEA verification"]
+      },
+      {
+        "name": "Managed Credentialing",
+        "price_range": "$200-400/provider/year",
+        "features": ["Full PSV package", "Ongoing monitoring", "Expiration management", "Reporting"]
+      },
+      {
+        "name": "Full CVO Services",
+        "price_range": "Custom enterprise pricing",
+        "features": ["Delegated credentialing", "Privileging support", "Payer enrollment", "Committee preparation"]
+      }
+    ],
+    "implementation_cost": "$25,000-100,000+",
+    "notes": "Enterprise pricing based on provider count, scope of services, and implementation complexity. Multi-year contracts standard."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "type-2",
+    "hitrust": "certified",
+    "gdpr_compliant": "yes",
+    "ncqa_certified": true,
+    "additional_certifications": ["NCQA CVO Certification", "Joint Commission Recognized", "SOC 2 Type II", "HITRUST CSF Certified"]
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "description": "Medical staff and credentialing integration"
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "description": "Provider data integration"
+    },
+    {
+      "name": "Meditech",
+      "type": "ehr",
+      "description": "Medical staff services integration"
+    },
+    {
+      "name": "symplr Provider",
+      "type": "credentialing",
+      "description": "Native integration with symplr credentialing software"
+    },
+    {
+      "name": "CAQH ProView",
+      "type": "credentialing",
+      "description": "CAQH data integration"
+    },
+    {
+      "name": "NPDB",
+      "type": "verification",
+      "description": "National Practitioner Data Bank queries"
+    },
+    {
+      "name": "State Medical Boards",
+      "type": "verification",
+      "description": "Direct license verification connections"
+    }
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92,
+    "last_verified": "2026-08-22"
+  },
+  "best_for": [
+    "Large health systems needing outsourced credentialing",
+    "Hospitals requiring NCQA-certified CVO services",
+    "Managed care organizations with delegated credentialing needs",
+    "Organizations seeking comprehensive medical staff services"
+  ],
+  "not_ideal_for": [
+    "Small to mid-size practices",
+    "Organizations needing only basic verification",
+    "Practices with tight budgets",
+    "Solo practitioners or small group practices"
+  ],
+  "related_tools": ["symplr-provider", "symplr-workforce", "medallion-credentialing", "healthstream-credentialstream"],
+  "created_at": "2026-08-22T20:50:40.829Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "symplr CVO: Enterprise Credentialing Services | HeyPsych",
+    "meta_description": "symplr CVO review: NCQA-certified credentials verification organization for health systems. Primary source verification, delegated credentialing, and privileging support.",
+    "faqs": [
+      {
+        "question": "What makes symplr CVO different from credentialing software?",
+        "answer": "symplr CVO is a full-service Credentials Verification Organization that performs credentialing work on your behalf, while credentialing software is a tool you use to manage the process yourself. symplr CVO handles primary source verification, document collection, and ongoing monitoring as an outsourced service."
+      },
+      {
+        "question": "Is symplr CVO NCQA certified?",
+        "answer": "Yes, symplr CVO maintains NCQA certification for credentials verification organization services. This certification meets the requirements for delegated credentialing from health plans and ensures compliance with industry standards for primary source verification."
+      },
+      {
+        "question": "How does symplr CVO handle privileging for behavioral health providers?",
+        "answer": "symplr CVO supports privileging for all provider types including psychiatrists, psychologists, and behavioral health specialists. They work with your medical staff office to apply appropriate privilege criteria, track FPPE/OPPE requirements, and prepare credentials packets for committee review."
+      },
+      {
+        "question": "What is the typical turnaround time for symplr CVO verifications?",
+        "answer": "Standard primary source verifications are typically completed within 5-10 business days. Complex cases requiring additional outreach may take longer. symplr offers expedited verification services for urgent credentialing needs with faster turnaround for additional fees."
+      }
+    ],
+    "keywords": [
+      "symplr CVO",
+      "credentials verification organization",
+      "healthcare credentialing services",
+      "primary source verification",
+      "NCQA certified CVO",
+      "delegated credentialing",
+      "hospital credentialing",
+      "medical staff services",
+      "privileging services"
+    ]
+  }
+}

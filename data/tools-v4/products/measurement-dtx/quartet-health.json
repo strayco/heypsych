@@ -1,0 +1,241 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "quartet-health-neuroflow",
+  "slug": "quartet-health",
+  "name": "Quartet Health (NeuroFlow)",
+  "company_name": "NeuroFlow (acquired Quartet Health January 2025)",
+  "import_ref": {
+    "record_id": "MBC-0007",
+    "source_file": "measurement-dtx-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active",
+    "acquisition": {
+      "acquired_by": "NeuroFlow",
+      "acquisition_date": "January 2025",
+      "notes": "NeuroFlow acquired Quartet to expand behavioral health care enablement capabilities"
+    }
+  },
+  "primary_category": "care-enablement",
+  "secondary_categories": [
+    "behavioral-health-integration",
+    "value-based-care",
+    "referral-management",
+    "population-health"
+  ],
+  "capabilities": [
+    "behavioral-health-integration",
+    "care-enablement",
+    "referral-management",
+    "patient-provider-matching",
+    "machine-learning-risk-identification",
+    "ehr-integration",
+    "claims-analysis",
+    "value-based-care",
+    "smi-care",
+    "hipaa-compliant"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "care-coordinator",
+      "clinical-director",
+      "population-health-manager"
+    ],
+    "practice_settings": [
+      "health-plan",
+      "health-system",
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "behavioral-health",
+      "integrated-care",
+      "population-health"
+    ],
+    "customer_types": [
+      "health-plans",
+      "health-systems",
+      "community-mental-health-centers"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": true,
+    "has_mbc": true,
+    "has_referral_management": true,
+    "has_risk_stratification": true,
+    "is_mental_health_specific": true
+  },
+  "short_description": "Value-based behavioral health care enablement platform with ML-powered patient matching and risk identification. Acquired by NeuroFlow in January 2025.",
+  "long_description": "Quartet Health is a value-based behavioral healthcare company focused on expanding access to care through care enablement, patient-provider matching, and behavioral health integration. The platform uses machine learning algorithms to analyze EHR, claims, and self-reported patient data to identify patients who would benefit from mental health interventions and match them with appropriate providers. A peer-reviewed AJMC study using Independence Blue Cross data showed Quartet members were 68% more likely to receive outpatient behavioral health services, had 35% fewer behavioral health ED visits, 43% fewer behavioral health inpatient admissions, and saw total medical costs fall by $27.63 PMPM at 18 months. In January 2025, NeuroFlow acquired Quartet Health to expand its behavioral health technology platform, building on NeuroFlow's prior acquisitions of Owl Health and Intermountain Health's behavioral health analytics. Quartet's Whole Health program specifically targets serious mental illness (SMI) populations.",
+  "one_liner": "Value-based behavioral health care enablement with ML-powered patient matching - now part of NeuroFlow.",
+  "best_for": [
+    "Health plans implementing value-based behavioral health programs",
+    "Health systems seeking to integrate behavioral and physical health",
+    "Organizations targeting SMI populations with whole-person care",
+    "Payers wanting to reduce behavioral health ED and inpatient utilization"
+  ],
+  "not_for": [
+    "Solo practitioners or small practices",
+    "Organizations seeking assessment-only MBC platforms",
+    "Those needing direct clinical care delivery"
+  ],
+  "website_url": "https://www.quartethealth.com",
+  "secondary_url": "https://www.neuroflow.com",
+  "pricing_url": "https://www.neuroflow.com/contact",
+  "logo_url": "https://www.quartethealth.com/logo.png",
+  "pricing": {
+    "model": "enterprise",
+    "starting_price_cents": null,
+    "starting_price_display": "Contact for pricing",
+    "free_tier": false,
+    "free_trial_days": null,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "Enterprise pricing for health plans and health systems. Contact NeuroFlow for current pricing.",
+    "last_verified": "2026-08-22"
+  },
+  "products": [
+    {
+      "name": "Quartet Care Enablement",
+      "description": "Patient identification, provider matching, and care coordination platform",
+      "features": [
+        "ML-powered patient identification",
+        "Provider network matching",
+        "Referral management",
+        "Care coordination"
+      ]
+    },
+    {
+      "name": "Whole Health Program",
+      "description": "Specialized program for serious mental illness (SMI) populations",
+      "target": "SMI community",
+      "partnerships": [
+        {
+          "partner": "Clover Health",
+          "date": "October 2024",
+          "focus": "Mental illness care for seniors through home-based care"
+        }
+      ]
+    }
+  ],
+  "technology_capabilities": {
+    "machine_learning": true,
+    "data_sources": [
+      "EHR data",
+      "Claims data",
+      "Self-reported patient data"
+    ],
+    "capabilities": [
+      "Patient risk identification",
+      "Provider matching",
+      "Intervention prediction",
+      "Care plan personalization"
+    ]
+  },
+  "clinical_evidence": {
+    "study": {
+      "publication": "AJMC",
+      "data_source": "Independence Blue Cross claims data",
+      "timeframe": "18 months post-intervention"
+    },
+    "outcomes": {
+      "outpatient_bh_services": "68% more likely to receive",
+      "bh_ed_visits": "35% fewer",
+      "bh_inpatient_admissions": "43% fewer",
+      "total_medical_cost_reduction": "$27.63 PMPM"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Various EHRs",
+      "category": "ehr",
+      "integration_type": "api",
+      "notes": "Integrates with major EHR systems"
+    }
+  ],
+  "neuroflow_integration": {
+    "combined_capabilities": [
+      "Behavioral health measurement (from Owl)",
+      "Care enablement (from Quartet)",
+      "Population analytics (from Intermountain model)",
+      "IntegrateBH workflow platform",
+      "BHIQ analytics layer"
+    ],
+    "scale": "17M+ lives across platform"
+  },
+  "notable_customers": [
+    "Independence Blue Cross"
+  ],
+  "company_info": {
+    "founded_year": 2014,
+    "headquarters": "New York, New York, USA",
+    "current_parent": "NeuroFlow",
+    "acquisition_date": "January 2025",
+    "focus_areas": [
+      "Value-based behavioral health",
+      "Care enablement",
+      "SMI populations",
+      "Total cost of care accountability"
+    ]
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "baa_available": true
+  },
+  "seo": {
+    "title": "Quartet Health: Value-Based Behavioral Health (NeuroFlow) | HeyPsych",
+    "meta_description": "Quartet Health offers ML-powered behavioral health care enablement. 35% fewer BH ED visits, $27.63 PMPM savings. Now part of NeuroFlow platform.",
+    "faqs": [
+      {
+        "q": "What happened to Quartet Health?",
+        "a": "Quartet Health was acquired by NeuroFlow in January 2025. The platform continues to operate, with capabilities integrated into NeuroFlow's behavioral health technology suite."
+      },
+      {
+        "q": "What outcomes does Quartet Health achieve?",
+        "a": "Per an AJMC study with Independence Blue Cross, Quartet members were 68% more likely to receive outpatient BH services, had 35% fewer BH ED visits, 43% fewer BH inpatient admissions, and $27.63 PMPM total medical cost reduction."
+      },
+      {
+        "q": "What is Quartet's Whole Health program?",
+        "a": "Whole Health is Quartet's specialized program for serious mental illness (SMI) populations, launched in partnership with organizations like Clover Health for senior mental health care."
+      }
+    ],
+    "keywords": [
+      "Quartet Health",
+      "NeuroFlow",
+      "behavioral health care enablement",
+      "value-based behavioral health",
+      "SMI mental health",
+      "ML patient matching"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "owl-insights",
+    "greenspace-health"
+  ],
+  "competitor_tools": [],
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

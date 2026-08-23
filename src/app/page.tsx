@@ -2,24 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, ChevronRight } from "lucide-react";
 import { IntentGrid } from "@/components/navigation/IntentGrid";
+import { AudienceGateway } from "@/components/home/AudienceGateway";
 
-// SEO-optimized metadata - Navigation V1 positioning
+// SEO-optimized metadata - Mission FIX 3 dual-audience positioning
 export const metadata: Metadata = {
-  title: "HeyPsych - Understand Mental Health, Explore Options, Find Care",
+  title: "HeyPsych - Mental Health for Everyone Involved",
   description:
-    "Navigate your mental health journey. Understand conditions, compare treatments, find tools, and connect with care. Free, evidence-based information to help you take the next step.",
+    "Mental health resources for patients, families, and clinicians. Understand conditions, compare treatments, find care, or discover EHR and practice tools. Evidence-based information to help you take the next step.",
   openGraph: {
-    title: "HeyPsych - Understand Mental Health, Explore Options, Find Care",
+    title: "HeyPsych - Mental Health for Everyone Involved",
     description:
-      "Navigate your mental health journey. Understand conditions, compare treatments, and find the right care for you.",
+      "Mental health resources for patients and clinicians. Understand conditions, find care, or discover practice tools.",
     type: "website",
     url: "https://heypsych.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HeyPsych - Mental Health Navigation",
+    title: "HeyPsych - Mental Health for Everyone Involved",
     description:
-      "Understand mental health. Explore your options. Find your next step.",
+      "Resources for patients seeking care and clinicians running practices.",
   },
 };
 
@@ -37,11 +38,11 @@ const organizationSchema = {
     height: 64,
   },
   description:
-    "Mental health navigation platform helping people understand conditions, compare treatments, and find appropriate care.",
+    "Mental health for everyone involved. Resources for patients seeking understanding and care, and clinicians running mental health practices.",
   sameAs: ["https://twitter.com/heypsych", "https://linkedin.com/company/heypsych"],
 };
 
-// WebSite schema with navigation focus
+// WebSite schema with dual-audience focus
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -49,7 +50,7 @@ const websiteSchema = {
   name: "HeyPsych",
   url: "https://heypsych.com",
   description:
-    "Navigate your mental health journey. Understand conditions, explore treatments, find tools, and connect with care.",
+    "Mental health for everyone involved. Patients can understand conditions and find care. Clinicians can discover EHR and practice management tools.",
   publisher: {
     "@id": "https://heypsych.com/#organization",
   },
@@ -64,19 +65,14 @@ const websiteSchema = {
 };
 
 /**
- * Homepage - Navigation V1
+ * Homepage - Dual-audience positioning (Mission FIX 3)
  *
- * HeyPsych's core product is mental-health navigation powered by structured
- * clinical knowledge.
+ * HeyPsych serves two audiences with equal prominence:
+ * - Patients & families seeking mental health understanding and care
+ * - Clinicians seeking EHR and practice management tools
  *
- * Core promise:
- *   Understand your mental health.
- *   Explore your options.
- *   Find your next step.
- *
- * This homepage provides intent-based navigation to help users find
- * their path through understanding conditions, comparing treatments,
- * finding tools, and connecting with care.
+ * The AudienceGateway replaces the traditional hero, with H1:
+ * "Mental health, for everyone involved."
  */
 export default function HomePage() {
   return (
@@ -91,44 +87,32 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
-      {/* Homepage Sections - Navigation V1 */}
+      {/* Homepage Sections */}
       <div className="min-h-screen bg-canvas">
-        {/* Hero Section */}
-        <section className="px-4 pb-12 pt-12 sm:px-6 md:pt-20 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* Primary Heading */}
-            <h1 className="text-3xl font-bold tracking-tight text-label-primary sm:text-4xl md:text-5xl">
-              What can we help you figure out?
-            </h1>
+        {/* AudienceGateway is the new hero - contains H1 */}
+        <AudienceGateway />
 
-            {/* Supporting Copy */}
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary sm:mt-6 sm:text-xl">
-              Understand your mental health. Explore your options. Find your next step.
-            </p>
-
-            {/* Search Bar */}
-            <div className="mx-auto mt-8 max-w-xl">
-              <Link
-                href="/search"
-                className="
-                  group flex w-full items-center gap-3 rounded-full
-                  border border-separator bg-surface px-5 py-3.5
-                  text-label-tertiary shadow-subtle
-                  transition-all duration-200
-                  hover:border-accent hover:shadow-soft
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
-                "
-              >
-                <Search className="h-5 w-5 text-label-tertiary group-hover:text-accent" />
-                <span className="flex-1 text-left">Search conditions, treatments, tools...</span>
-                <kbd className="hidden rounded-md bg-fill-quaternary px-2 py-1 text-xs font-medium text-label-tertiary sm:inline-block">
-                  /
-                </kbd>
-              </Link>
-            </div>
-
-            {/* Trust Cues */}
-            <p className="mt-4 text-sm text-label-tertiary">
+        {/* Search Bar - below audience gateway */}
+        <section className="px-4 pb-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-xl">
+            <Link
+              href="/search"
+              className="
+                group flex w-full items-center gap-3 rounded-full
+                border border-separator bg-surface px-5 py-3.5
+                text-label-tertiary shadow-subtle
+                transition-all duration-200
+                hover:border-accent hover:shadow-soft
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+              "
+            >
+              <Search className="h-5 w-5 text-label-tertiary group-hover:text-accent" />
+              <span className="flex-1 text-left">Search conditions, treatments, tools...</span>
+              <kbd className="hidden rounded-md bg-fill-quaternary px-2 py-1 text-xs font-medium text-label-tertiary sm:inline-block">
+                /
+              </kbd>
+            </Link>
+            <p className="mt-3 text-center text-sm text-label-tertiary">
               Evidence-based information reviewed by mental health professionals
             </p>
           </div>

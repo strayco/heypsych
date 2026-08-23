@@ -30,7 +30,8 @@ import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
-const canonicalUrl = `${siteConfig.url}/tools/for-patients/`;
+// Slashless canonical for consistency with sitemap
+const canonicalUrl = `${siteConfig.url}/tools/for-patients`;
 
 export const metadata: Metadata = {
   title: "Mental Health Apps for Patients | HeyPsych Tools",

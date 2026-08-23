@@ -1,0 +1,216 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "6e2296a9-053a-413a-b5ab-cfc2e89a5db2",
+  "slug": "nextgen-office",
+  "name": "NextGen Office",
+  "company_name": "NextGen Healthcare, Inc.",
+  "import_ref": {
+    "record_id": "MH-0080",
+    "source_row": 81,
+    "import_timestamp": "2026-08-22T20:50:40.776Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "reporting-dashboards",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "billing-specialist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "primary-care",
+      "multi-specialty"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Cloud-based EHR and practice management for small to mid-sized practices with integrated billing, telehealth, and patient engagement tools.",
+  "long_description": "NextGen Office (formerly MediTouch) is a cloud-based EHR and practice management solution from NextGen Healthcare designed for small to mid-sized medical practices. While NextGen Healthcare offers enterprise solutions for larger organizations, NextGen Office targets independent practices with a more affordable, user-friendly platform. The solution includes electronic health records, practice management, medical billing, patient portal, telehealth, and e-prescribing with EPCS support. NextGen Office offers behavioral health capabilities and specialty-specific templates, though the company's primary behavioral health offering is the NextGen Behavioral Health Suite for larger organizations. NextGen Healthcare was founded in 1974 as Quality Systems, Inc. (QSI) in Irvine, California, and rebranded to NextGen Healthcare in 2018. The company is publicly traded (NASDAQ: NXGN) and acquired MediTouch in 2013 to create the NextGen Office product line. NextGen Office is known for its Apple-like design philosophy and usability focus.",
+  "one_liner": "The cloud EHR bringing NextGen Healthcare's capabilities to independent practices.",
+  "best_for": [
+    "Small to mid-sized multi-specialty practices",
+    "Independent practices wanting established vendor",
+    "Practices needing integrated billing and RCM options",
+    "Clinicians preferring user-friendly cloud interface"
+  ],
+  "not_for": [
+    "Mental health practices wanting specialized behavioral health EHR",
+    "Large enterprise behavioral health organizations",
+    "Budget-conscious solo practitioners",
+    "Community mental health centers (CMHCs)"
+  ],
+  "website_url": "https://www.nextgen.com/products/office",
+  "pricing_url": "https://www.nextgen.com/products/office/pricing",
+  "support_url": "https://www.nextgen.com/support",
+  "logo_url": "https://www.nextgen.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 29900,
+    "starting_price_display": "$299-$549/provider/month",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "notes": "NextGen Office pricing varies by selected modules. Estimated $299-$549/provider/month for full suite. Implementation and training fees apply. Multi-year contracts typical. RCM services available at percentage of collections. Contact NextGen for custom quote.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.nextgen.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.nextgen.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": true,
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "Quest, LabCorp integration"
+    },
+    {
+      "name": "Clearinghouses",
+      "slug": "clearinghouses",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Apple Health",
+      "slug": "apple-health",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "NextGen Office: Cloud EHR for Independent Practices | HeyPsych",
+    "meta_description": "NextGen Office is a cloud-based EHR and practice management solution for small to mid-sized practices with integrated billing, telehealth, and e-prescribing.",
+    "faqs": [
+      {
+        "q": "How much does NextGen Office cost?",
+        "a": "NextGen Office pricing typically ranges from $299-$549 per provider per month depending on selected modules. Implementation fees apply and multi-year contracts are standard. Contact NextGen for a custom quote."
+      },
+      {
+        "q": "What is the difference between NextGen Office and NextGen Enterprise?",
+        "a": "NextGen Office is designed for small to mid-sized independent practices with cloud-based simplicity. NextGen Enterprise is for larger organizations and health systems with more complex workflows and customization needs."
+      },
+      {
+        "q": "Is NextGen Office good for behavioral health?",
+        "a": "NextGen Office includes behavioral health capabilities but is a multi-specialty platform. For dedicated behavioral health features, NextGen offers the Behavioral Health Suite for larger organizations. Smaller mental health practices may prefer specialized EHRs."
+      },
+      {
+        "q": "Does NextGen Office include telehealth?",
+        "a": "Yes, NextGen Office includes integrated telehealth capabilities allowing providers to conduct virtual visits with patients directly from the platform."
+      }
+    ],
+    "keywords": [
+      "NextGen Office",
+      "NextGen Healthcare",
+      "cloud EHR",
+      "small practice EHR",
+      "practice management software",
+      "medical billing software"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 86
+  },
+  "related_tools": [
+    "nextgen-behavioral-health-suite",
+    "advancedmd",
+    "athenaone"
+  ],
+  "competitor_tools": [
+    "advancedmd",
+    "athenaone",
+    "tebra"
+  ],
+  "company_info": {
+    "founded_year": 1974,
+    "headquarters": "Irvine, California, USA",
+    "employee_count": "2500+",
+    "funding_status": "Public (NASDAQ: NXGN)",
+    "original_name": "Quality Systems, Inc. (QSI)",
+    "rebranded": 2018,
+    "customer_count": "100,000+ providers"
+  },
+  "created_at": "2026-08-22T20:50:40.776Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

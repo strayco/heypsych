@@ -1,0 +1,245 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "53fa1033-3e37-4531-94e4-8bdca57fc965",
+  "slug": "eclinicalworks-ehr",
+  "name": "eClinicalWorks",
+  "company_name": "eClinicalWorks, LLC",
+  "import_ref": {
+    "record_id": "MH-0794",
+    "source_row": 795,
+    "import_timestamp": "2026-08-22T20:50:40.843Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "analytics-reporting"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "prior-authorization",
+    "payment-processing",
+    "denial-management",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "reporting-dashboards",
+    "population-health",
+    "ehr-integration",
+    "api-access",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty",
+      "community-health-center",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "psychiatry",
+      "primary-care",
+      "multi-specialty"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "One of the largest ambulatory EHR vendors serving 180,000+ providers with cloud-based EHR, practice management, RCM, and telehealth.",
+  "long_description": "eClinicalWorks (eCW) is one of the largest ambulatory electronic health record companies in the United States, serving over 180,000 providers and nearly 1 million medical professionals across the country. Founded in 1999 by Girish Navani and Sameer Bhat in Westborough, Massachusetts, the privately held company offers a comprehensive cloud-based platform including EHR (V12), practice management, revenue cycle management, population health, telehealth (healow), and patient engagement tools. The healow suite includes the healow app for patient engagement, healow Meet for telehealth visits, and healow Insights for analytics. eClinicalWorks serves practices across all specialties including behavioral health, though it is not mental health-specific. The company faced a $155 million settlement with the DOJ in 2017 over False Claims Act allegations but has since implemented compliance improvements. eCW is known for competitive pricing compared to enterprise vendors, with options ranging from cloud subscription to on-premise deployment.",
+  "one_liner": "Major ambulatory EHR vendor serving 180,000+ providers with comprehensive practice management and telehealth.",
+  "best_for": [
+    "Multi-specialty practices seeking comprehensive EHR platform",
+    "Community health centers (FQHCs) with diverse patient populations",
+    "Practices wanting cloud or on-premise deployment options",
+    "Organizations prioritizing population health and analytics"
+  ],
+  "not_for": [
+    "Practices seeking mental health-specific workflows",
+    "Small solo practitioners wanting simple solutions",
+    "Organizations requiring premium support experience",
+    "Practices sensitive to company compliance history"
+  ],
+  "website_url": "https://www.eclinicalworks.com",
+  "pricing_url": "https://www.eclinicalworks.com/pricing/",
+  "support_url": "https://www.eclinicalworks.com/support/",
+  "logo_url": "https://www.eclinicalworks.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 44900,
+    "starting_price_display": "$449-$599/provider/month",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "notes": "eCW 10e Cloud: approximately $449/provider/month. Full EHR+PM: $499-$599/provider/month. Implementation fees: $2,000-$10,000+. RCM services: 2.9-7% of collections. On-premise option available with higher upfront costs. Volume discounts for large groups. Multi-year contracts typical.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.eclinicalworks.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.eclinicalworks.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": true,
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "Quest, Labcorp, and 100+ labs"
+    },
+    {
+      "name": "Clearinghouses",
+      "slug": "clearinghouses",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Change Healthcare, Availity, Trizetto"
+    },
+    {
+      "name": "Carequality",
+      "slug": "carequality",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "CommonWell",
+      "slug": "commonwell",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "healow",
+      "slug": "healow",
+      "category": "patient-engagement",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Patient app, telehealth, online scheduling"
+    }
+  ],
+  "seo": {
+    "title": "eClinicalWorks: Ambulatory EHR for 180,000+ Providers | HeyPsych",
+    "meta_description": "eClinicalWorks is a leading ambulatory EHR serving 180,000+ providers. Cloud-based platform with practice management, RCM, telehealth, and population health.",
+    "faqs": [
+      {
+        "q": "How much does eClinicalWorks cost per month?",
+        "a": "eClinicalWorks pricing starts around $449/provider/month for cloud EHR. Full EHR+PM runs $499-$599/provider/month. Implementation fees of $2,000-$10,000+. RCM services are 2.9-7% of collections. Volume discounts available."
+      },
+      {
+        "q": "Is eClinicalWorks good for behavioral health?",
+        "a": "eClinicalWorks supports behavioral health practices but is not mental health-specific. It's a multi-specialty platform with general behavioral health templates. Practices wanting specialized mental health workflows may prefer dedicated behavioral health EHRs."
+      },
+      {
+        "q": "What is healow by eClinicalWorks?",
+        "a": "healow is eClinicalWorks' patient engagement suite including the healow app (patient portal), healow Meet (telehealth), healow Pay (patient payments), and healow Insights (analytics). It enables patient communication and virtual visits."
+      },
+      {
+        "q": "What was the eClinicalWorks settlement?",
+        "a": "In 2017, eClinicalWorks paid $155 million to settle False Claims Act allegations related to certification testing. The company has since implemented compliance improvements and continues as a major EHR vendor serving 180,000+ providers."
+      }
+    ],
+    "keywords": [
+      "eClinicalWorks",
+      "eCW EHR",
+      "ambulatory EHR",
+      "healow",
+      "practice management software",
+      "cloud EHR"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "athenaone",
+    "nextgen-behavioral-health-suite",
+    "advancedmd"
+  ],
+  "competitor_tools": [
+    "athenaone",
+    "nextgen-behavioral-health-suite",
+    "advancedmd",
+    "practice-fusion"
+  ],
+  "company_info": {
+    "founded_year": 1999,
+    "headquarters": "Westborough, Massachusetts, USA",
+    "employee_count": "6,000+",
+    "funding_status": "Private (Bootstrapped)",
+    "customer_count": "180,000+ providers, 1M medical professionals",
+    "founders": "Girish Navani, Sameer Bhat",
+    "notes": "$155M DOJ settlement in 2017"
+  },
+  "created_at": "2026-08-22T20:50:40.843Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

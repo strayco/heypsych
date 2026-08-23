@@ -1,0 +1,246 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "1a3a61e4-ff8a-49e8-ba4c-66acba6db3b1",
+  "slug": "heidi-health",
+  "name": "Heidi Health",
+  "company_name": "Heidi Health",
+  "website": "https://www.heidihealth.com",
+  "description": "Heidi Health is an AI clinical assistant that automatically converts patient consultations into structured clinical notes. Originally developed in Australia, Heidi has expanded globally and is known for its fast note generation and focus on primary care workflows. It offers a generous free tier for individual practitioners.",
+  "import_ref": {
+    "record_id": "MH-0185",
+    "source_row": 186,
+    "import_timestamp": "2026-08-22T20:50:40.786Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "capabilities": [
+    "ambient-listening",
+    "soap-note-generation",
+    "letter-generation",
+    "referral-letters",
+    "telehealth-support",
+    "custom-templates"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "physician",
+      "nurse-practitioner",
+      "physician-assistant",
+      "general-practitioner"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "outpatient-clinic",
+      "group-practice",
+      "telehealth"
+    ],
+    "organization_sizes": ["solo", "small", "medium"],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "general-practice",
+      "internal-medicine",
+      "pediatrics"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": false
+  },
+  "company": {
+    "founded_year": 2021,
+    "headquarters": "Melbourne, Australia",
+    "employee_count": "50-100",
+    "funding_total": "$10M+",
+    "funding_stage": "Series A",
+    "notable_investors": ["Tiger Global", "Blackbird Ventures"],
+    "customer_count": "10,000+ clinicians globally"
+  },
+  "pricing": {
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price": 0,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": 0,
+        "period": "monthly",
+        "features": [
+          "Limited consultations per month",
+          "Basic SOAP notes",
+          "Web app access",
+          "Community support"
+        ]
+      },
+      {
+        "name": "Pro",
+        "price": 89,
+        "period": "monthly",
+        "features": [
+          "Unlimited consultations",
+          "All note templates",
+          "Referral letters",
+          "Patient instructions",
+          "Mobile app",
+          "Priority support"
+        ]
+      },
+      {
+        "name": "Team",
+        "price": 79,
+        "period": "monthly",
+        "features": [
+          "Everything in Pro",
+          "Team management",
+          "Shared templates",
+          "Usage analytics"
+        ],
+        "notes": "Per provider, minimum 3 users"
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "duration_days": 14,
+      "notes": "Free tier available indefinitely with usage limits"
+    },
+    "notes": "Generous free tier available. Annual billing offers 20% discount."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "security": "https://www.heidihealth.com/security"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Best Practice (Australia)",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Medical Director (Australia)",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Zoom",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to patient consultations and generates clinical notes automatically"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Referral letters",
+      "Patient instructions",
+      "Sick certificates"
+    ],
+    "specialty_templates": true,
+    "custom_templates": true,
+    "voice_commands": false,
+    "multi_language": false,
+    "letter_generation": true,
+    "accuracy_rate": "90%+ accuracy reported"
+  },
+  "best_for": [
+    "Solo practitioners wanting free AI scribe option",
+    "Primary care and family medicine practices",
+    "Australian healthcare providers (native EHR integrations)",
+    "Clinicians wanting to try AI scribing without commitment",
+    "Small practices seeking affordable documentation AI",
+    "Telehealth-focused practices"
+  ],
+  "not_for": [
+    "Large US health systems requiring deep Epic integration",
+    "Specialty practices outside primary care",
+    "Mental health-specific documentation needs",
+    "Organizations requiring HITRUST certification",
+    "Practices needing native US EHR integration"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["freed", "nabla-copilot", "deepscribe", "suki-assistant"],
+  "created_at": "2026-08-22T20:50:40.786Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Heidi Health AI Scribe: Free Tier & Pricing Review | HeyPsych",
+    "meta_description": "Heidi Health AI scribe review with free tier option. Pro plan $89/month. HIPAA compliant, best for primary care. Compare features, pricing, and alternatives.",
+    "faqs": [
+      {
+        "question": "Is Heidi Health really free?",
+        "answer": "Yes, Heidi offers a free tier with limited consultations per month. This allows clinicians to try AI scribing without commitment. The Pro plan at $89/month offers unlimited consultations."
+      },
+      {
+        "question": "How much does Heidi Health cost?",
+        "answer": "Heidi offers a free tier with usage limits. The Pro plan is $89 per provider per month for unlimited consultations. The Team plan is $79 per provider per month (minimum 3 users). Annual billing offers 20% discount."
+      },
+      {
+        "question": "Does Heidi Health integrate with US EHRs?",
+        "answer": "Heidi works with Epic, Cerner, and Athenahealth via browser extension. Native integrations are available for Australian EHRs (Best Practice, Medical Director). For native US EHR integration, consider Suki or Freed."
+      },
+      {
+        "question": "Is Heidi Health good for mental health practices?",
+        "answer": "Heidi is primarily designed for primary care and general practice. Mental health practices would benefit more from specialized tools like Mentalyc, Upheal, or Blueprint that offer therapy-specific templates."
+      }
+    ],
+    "keywords": [
+      "Heidi Health",
+      "Heidi AI scribe",
+      "free AI scribe",
+      "primary care AI scribe",
+      "Australian AI scribe",
+      "clinical documentation AI",
+      "ambient AI scribe"
+    ]
+  }
+}

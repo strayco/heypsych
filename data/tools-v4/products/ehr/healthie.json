@@ -1,0 +1,225 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "e1f2a3b4-58cc-4372-a567-0e02b2c3d490",
+  "slug": "healthie",
+  "name": "Healthie",
+  "company_name": "Healthie, Inc.",
+  "import_ref": {
+    "record_id": "MH-HEALTHIE",
+    "source_file": "ehr-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "api-platform"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "superbills",
+    "eligibility-verification",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "mobile-app",
+    "group-telehealth",
+    "api-access",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "dietitian",
+      "nutritionist",
+      "health-coach",
+      "therapist-lcsw-lmft",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only",
+      "digital-health-company"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "nutrition",
+      "dietetics",
+      "MNT",
+      "wellness",
+      "chronic-care",
+      "virtual-care"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "All-in-one EHR and practice management platform for dietitians, nutritionists, and digital health companies with insurance billing and API infrastructure.",
+  "long_description": "Healthie is an all-in-one EHR and practice management platform built primarily for US-based dietitians, nutritionists, and other allied health professionals. Founded in 2016 in New York by Erica Jain and Cavan Klinsky (who dropped out of school after Techstars NYC), Healthie has grown to serve 37,000+ providers delivering care to over 12 million patients across 25+ medical specialties. The platform was designed from the start around HIPAA compliance, insurance billing, and dietetics workflows. Healthie offers scheduling, SOAP charting, HIPAA-compliant Zoom telehealth, secure messaging, superbills, insurance claim submission, payments, and meal plan templates. A key differentiator is Healthie's API-first architecture, processing 2.5 billion API calls monthly, making it popular infrastructure for digital health companies building virtual care products.",
+  "one_liner": "The EHR infrastructure powering modern nutrition and virtual care practices.",
+  "best_for": [
+    "US registered dietitians taking in-network insurance (Medicare MNT)",
+    "Nutritionists wanting robust insurance billing features",
+    "Digital health companies needing EHR infrastructure via API",
+    "Virtual-first nutrition and wellness practices"
+  ],
+  "not_for": [
+    "Mental health practices needing clinical documentation features",
+    "Practices outside the US (limited international support)",
+    "Psychiatrists or prescribing providers",
+    "Organizations not focused on nutrition/wellness"
+  ],
+  "website_url": "https://www.gethealthie.com",
+  "pricing_url": "https://www.gethealthie.com/healthie-pricing",
+  "support_url": "https://www.gethealthie.com/support/",
+  "logo_url": "https://www.gethealthie.com/logo.png",
+  "pricing": {
+    "model": "tiered-subscription",
+    "starting_price_cents": 1999,
+    "starting_price_display": "$19.99-$279/month",
+    "free_tier": false,
+    "free_trial_days": 14,
+    "quote_required": false,
+    "price_range": "mid-market",
+    "notes": "Core: $19.99/mo (or $17/mo annual, up to 10 clients). Essentials: $49/mo (up to 250 clients, custom forms, superbills). Plus: $129/mo (unlimited clients, group telehealth, dedicated eFax). Group: $149/mo (multiple practitioners). Enterprise: custom pricing. Insurance claim integrations (ClaimMD) starting $25/mo additional. Transaction fee: 2.9%.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.gethealthie.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.gethealthie.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
+  },
+  "integrations": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "billing",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "HIPAA-compliant Zoom for telehealth"
+    },
+    {
+      "name": "ClaimMD",
+      "slug": "claimmd",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Insurance claims ($25/mo add-on)"
+    },
+    {
+      "name": "API",
+      "slug": "healthie-api",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "2.5B API calls/month - infrastructure for digital health"
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Healthie: EHR for Dietitians & Digital Health Companies | HeyPsych",
+    "meta_description": "Healthie is an EHR platform for dietitians and nutritionists with insurance billing, telehealth, and API infrastructure for digital health companies.",
+    "faqs": [
+      {
+        "q": "How much does Healthie cost?",
+        "a": "Healthie offers tiered pricing: Core ($19.99/mo, 10 clients), Essentials ($49/mo, 250 clients), Plus ($129/mo, unlimited), Group ($149/mo, multi-practitioner), and Enterprise (custom). Insurance billing is an additional $25/mo."
+      },
+      {
+        "q": "Is Healthie good for dietitians taking insurance?",
+        "a": "Yes, Healthie is particularly strong for US registered dietitians taking in-network insurance, especially Medicare MNT. The platform was built around HIPAA compliance and insurance billing workflows for clinical dietetics."
+      },
+      {
+        "q": "What is Healthie's API used for?",
+        "a": "Healthie is API-first, processing 2.5 billion API calls monthly. Digital health companies use Healthie's API to build virtual care products, making it popular infrastructure beyond individual practitioners."
+      },
+      {
+        "q": "Is Healthie good for mental health therapists?",
+        "a": "Healthie is primarily designed for dietitians and nutrition professionals. Mental health therapists may find better-suited options in SimplePractice, TherapyNotes, or other mental health-specific EHRs."
+      }
+    ],
+    "keywords": [
+      "Healthie",
+      "dietitian EHR",
+      "nutrition practice software",
+      "digital health infrastructure",
+      "Medicare MNT EHR"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "practice-better",
+    "jane-app",
+    "simplepractice"
+  ],
+  "competitor_tools": [
+    "practice-better",
+    "jane-app"
+  ],
+  "company_info": {
+    "founded_year": 2016,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "100-200",
+    "funding_status": "Series B ($40.3M total)",
+    "founders": "Erica Jain, Cavan Klinsky",
+    "customer_count": "37,000+ providers serving 12M+ patients",
+    "specialties_served": "25+",
+    "api_volume": "2.5 billion API calls/month"
+  },
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

@@ -1,0 +1,204 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "ff13e416-3646-4b65-b9f1-0b6f41d287f4",
+  "slug": "modio-health-oneview",
+  "name": "Modio Health OneView",
+  "company_name": "Modio Health",
+  "description": "Modio Health OneView is a comprehensive credentialing and provider enrollment platform that automates the entire credentialing lifecycle. The platform combines provider data management, primary source verification, payer enrollment, and ongoing monitoring into a single solution, helping healthcare organizations reduce credentialing time by up to 80% while maintaining compliance with NCQA and CMS requirements.",
+  "website_url": "https://www.modiohealth.com",
+  "import_ref": {
+    "record_id": "MH-0644",
+    "source_row": 645,
+    "import_timestamp": "2026-08-22T20:50:40.829Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "credentialing-workforce",
+  "secondary_categories": ["payer-enrollment", "provider-data-management", "compliance-monitoring"],
+  "capabilities": [
+    "Automated primary source verification",
+    "NPDB continuous query enrollment",
+    "State license verification",
+    "DEA verification",
+    "Board certification verification",
+    "OIG/SAM exclusion monitoring",
+    "Payer enrollment automation",
+    "CAQH ProView integration",
+    "Credentialing workflow management",
+    "Document management system",
+    "Expiration tracking and alerts",
+    "Privilege delineation",
+    "Committee management tools",
+    "Custom reporting and analytics",
+    "Provider onboarding portal",
+    "Multi-state credentialing support",
+    "Re-credentialing automation"
+  ],
+  "audiences": {
+    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "psychiatric_nurse", "physician", "nurse_practitioner", "physician_assistant"],
+    "practice_settings": ["group_practice", "hospital", "health_system", "community_mental_health", "telehealth", "behavioral_health_organization"],
+    "organization_sizes": ["medium", "large", "enterprise"],
+    "specialties": ["general", "psychiatry", "psychology", "mental_health", "multi_specialty"]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "per-provider",
+    "starting_price": 150,
+    "price_unit": "per provider/month",
+    "quote_required": true,
+    "has_free_tier": false,
+    "free_trial_days": 0,
+    "pricing_tiers": [
+      {
+        "name": "OneView Credentialing",
+        "price_range": "$100-200 per provider/month",
+        "features": ["Primary source verification", "License monitoring", "Expiration alerts", "Document management"]
+      },
+      {
+        "name": "OneView + Payer Enrollment",
+        "price_range": "$200-350 per provider/month",
+        "features": ["Full credentialing suite", "Automated payer enrollment", "CAQH management", "Enrollment tracking"]
+      },
+      {
+        "name": "Enterprise",
+        "price_range": "Custom pricing",
+        "features": ["All features", "Dedicated account manager", "Custom integrations", "API access", "Advanced analytics"]
+      }
+    ],
+    "notes": "Pricing varies based on provider count, modules selected, and contract length. Volume discounts available for 50+ providers. Implementation fees typically range from $5,000-25,000 depending on scope."
+  },
+  "company": {
+    "legal_name": "Modio Health, Inc.",
+    "founded_year": 2015,
+    "headquarters": "Atlanta, GA",
+    "company_type": "private",
+    "description": "Modio Health is a healthcare technology company focused on streamlining provider credentialing and enrollment through automation and intelligent workflows.",
+    "funding_stage": "Series B",
+    "total_funding": "$35M+",
+    "employee_count_range": "100-250",
+    "customer_count": "500+ healthcare organizations",
+    "notable_customers": ["Large health systems", "Telehealth companies", "MSOs", "Behavioral health organizations"]
+  },
+  "processing_times": {
+    "initial_credentialing": "14-30 days (vs 90-120 industry average)",
+    "primary_source_verification": "24-72 hours",
+    "payer_enrollment": "30-90 days depending on payer",
+    "re_credentialing": "5-10 days",
+    "license_verification": "Same day to 48 hours"
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "ncqa_accredited": true,
+    "cms_compliant": true,
+    "urac_compliant": true,
+    "notes": "Modio Health maintains NCQA CVO accreditation and supports all major accreditation standards for credentialing"
+  },
+  "integrations": [
+    {
+      "name": "CAQH ProView",
+      "type": "data_sync",
+      "description": "Bi-directional sync with CAQH provider profiles"
+    },
+    {
+      "name": "NPDB",
+      "type": "verification",
+      "description": "Continuous query and direct querying for malpractice data"
+    },
+    {
+      "name": "State Medical Boards",
+      "type": "verification",
+      "description": "Direct connections to state licensing boards"
+    },
+    {
+      "name": "OIG/SAM",
+      "type": "exclusion_monitoring",
+      "description": "Real-time exclusion list monitoring"
+    },
+    {
+      "name": "Major EHR Systems",
+      "type": "ehr_integration",
+      "description": "Integration with Epic, Cerner, and other major EHRs"
+    },
+    {
+      "name": "HR/Payroll Systems",
+      "type": "data_sync",
+      "description": "Integration with Workday, ADP, and similar platforms"
+    }
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_enriched": "2026-08-22"
+  },
+  "related_tools": ["caqh-proview", "medallion", "verifiable", "symplr-cvo", "certifyos"],
+  "created_at": "2026-08-22T20:50:40.829Z",
+  "updated_at": "2026-08-22T21:00:00.000Z",
+  "status": "active",
+  "best_for": [
+    "Mid-size to large healthcare organizations",
+    "Multi-specialty group practices",
+    "Health systems managing 50+ providers",
+    "Telehealth companies with rapid hiring needs",
+    "Behavioral health organizations needing payer enrollment",
+    "Organizations seeking NCQA-accredited CVO services"
+  ],
+  "not_ideal_for": [
+    "Solo practitioners (pricing may not be cost-effective)",
+    "Small practices under 10 providers",
+    "Organizations only needing basic license tracking",
+    "Cash-only practices not requiring payer credentialing"
+  ],
+  "seo": {
+    "title": "Modio Health OneView: Credentialing & Enrollment Platform | HeyPsych",
+    "meta_description": "Modio Health OneView automates provider credentialing and payer enrollment. NCQA-accredited CVO reducing credentialing time by 80%. Pricing from $100-350/provider.",
+    "faqs": [
+      {
+        "question": "How much does Modio Health OneView cost?",
+        "answer": "Modio Health OneView pricing typically ranges from $100-350 per provider per month depending on the modules selected. Basic credentialing starts around $100-200/provider, while full credentialing plus payer enrollment runs $200-350/provider. Enterprise pricing with custom integrations requires a quote. Implementation fees range from $5,000-25,000."
+      },
+      {
+        "question": "How long does credentialing take with Modio Health?",
+        "answer": "Modio Health OneView typically completes initial credentialing in 14-30 days, compared to the industry average of 90-120 days. Primary source verification is completed within 24-72 hours. Re-credentialing takes 5-10 days. Payer enrollment timelines vary by payer but typically range from 30-90 days."
+      },
+      {
+        "question": "Is Modio Health NCQA accredited?",
+        "answer": "Yes, Modio Health maintains NCQA CVO (Credentials Verification Organization) accreditation. This means their primary source verification processes meet the highest industry standards and are accepted by most health plans and healthcare organizations for delegated credentialing."
+      },
+      {
+        "question": "Does Modio Health integrate with CAQH ProView?",
+        "answer": "Yes, Modio Health OneView has bi-directional integration with CAQH ProView. This allows organizations to pull provider data from CAQH, keep profiles synchronized, and reduce duplicate data entry. The integration helps streamline both initial credentialing and ongoing re-attestation workflows."
+      }
+    ],
+    "keywords": [
+      "Modio Health",
+      "OneView credentialing",
+      "provider credentialing software",
+      "payer enrollment automation",
+      "NCQA accredited CVO",
+      "primary source verification",
+      "credentialing automation",
+      "healthcare credentialing platform",
+      "provider enrollment",
+      "mental health credentialing"
+    ]
+  }
+}

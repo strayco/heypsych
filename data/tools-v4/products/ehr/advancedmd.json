@@ -1,0 +1,230 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "c5d6e7f8-58cc-4372-a567-0e02b2c3d494",
+  "slug": "advancedmd",
+  "name": "AdvancedMD",
+  "company_name": "AdvancedMD, Inc.",
+  "import_ref": {
+    "record_id": "MH-ADVANCEDMD",
+    "source_file": "ehr-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "analytics-reporting"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "prior-authorization",
+    "payment-processing",
+    "denial-management",
+    "video-sessions",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "reporting-dashboards",
+    "ehr-integration",
+    "api-access",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "primary-care",
+      "multi-specialty"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Comprehensive cloud-based EHR and practice management with modular pricing for independent medical practices including behavioral health.",
+  "long_description": "AdvancedMD is a cloud-based practice management, medical billing, and electronic health record (EHR) platform serving independent medical practices across the United States. Founded in 1999 as Perfect Practice.MD and rebranded in 2000, AdvancedMD was an early pioneer of cloud-based (web-native) practice management and EHR software. Headquartered in South Jordan, Utah (Greater Salt Lake City area), the company serves over 22,500 practitioners across 8,000 practices and 600 medical billing companies. AdvancedMD offers a modular, per-provider-per-month pricing model allowing practices to select only the modules they need. The platform includes specific mental health and behavioral health bundles starting at $130/month for small practices with the self-service AdvancedMD Now option. Full bundles for larger practices include scheduling, EHR, practice management, billing, patient portal, telehealth, and analytics. The company was acquired by Francisco Partners for approximately $1.1 billion in late 2024.",
+  "one_liner": "The modular cloud EHR giving independent practices the flexibility to choose what they need.",
+  "best_for": [
+    "Multi-specialty practices needing comprehensive modular platform",
+    "Behavioral health practices wanting mental health-specific bundles",
+    "Practices seeking full RCM services with software",
+    "Groups preferring per-encounter pricing options"
+  ],
+  "not_for": [
+    "Small solo practices with tight budgets",
+    "Practices wanting simple all-inclusive pricing",
+    "Organizations avoiding long-term contracts",
+    "Large enterprise behavioral health (CMHCs, CCBHCs)"
+  ],
+  "website_url": "https://www.advancedmd.com",
+  "pricing_url": "https://www.advancedmd.com/software-pricing/",
+  "support_url": "https://www.advancedmd.com/support/",
+  "logo_url": "https://www.advancedmd.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 13000,
+    "starting_price_display": "$130-$729/provider/month",
+    "free_tier": false,
+    "free_trial_days": 30,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "notes": "Mental health bundle: $130/mo (AdvancedMD Now self-service), $299/mo complete bundle, $399/mo for larger practices. General EHR-only: ~$229/provider/month. EHR+PM: $329-$429/month. Full suite: $629-$729/provider/month. Per-encounter pricing: $0.87-$2.17 per claim. EPCS: $35/month. RCM services: 4-8% of collections. Multi-year contracts common.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.advancedmd.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.advancedmd.com/security/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "DrFirst",
+      "slug": "drfirst",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS and PDMP"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true
+    },
+    {
+      "name": "Clearinghouses",
+      "slug": "clearinghouses",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Including proprietary clearinghouse from NueMD acquisition"
+    },
+    {
+      "name": "PDMP",
+      "slug": "pdmp",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "AdvancedMD: Modular Cloud EHR for Independent Practices | HeyPsych",
+    "meta_description": "AdvancedMD is a comprehensive cloud EHR with modular pricing for independent practices. Mental health bundles start at $130/month with EHR, billing, and telehealth.",
+    "faqs": [
+      {
+        "q": "How much does AdvancedMD cost for mental health practices?",
+        "a": "AdvancedMD mental health bundles start at $130/month (self-service Now option), $299/month for complete bundle, and $399/month for larger practices with up to 40% discounts. Full suite can reach $729/provider/month."
+      },
+      {
+        "q": "Does AdvancedMD offer per-encounter pricing?",
+        "a": "Yes, AdvancedMD offers per-encounter pricing at $0.87-$1.74 per claim for practice management alone, or $1.08-$2.17 per claim bundled with EHR. This is an alternative to monthly subscription pricing."
+      },
+      {
+        "q": "Does AdvancedMD require long-term contracts?",
+        "a": "Multi-year contracts are common with AdvancedMD, and early termination fees apply. The AdvancedMD Now option for mental health is month-to-month at $130/provider with cancel anytime."
+      },
+      {
+        "q": "What is AdvancedMD best for?",
+        "a": "AdvancedMD is best for independent medical and behavioral health practices wanting modular pricing flexibility. It serves over 22,500 practitioners and offers full RCM services at 4-8% of collections."
+      }
+    ],
+    "keywords": [
+      "AdvancedMD",
+      "medical practice management",
+      "behavioral health EHR",
+      "cloud EHR software",
+      "modular practice management"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "tebra",
+    "nextgen-behavioral-health",
+    "valant"
+  ],
+  "competitor_tools": [
+    "tebra",
+    "nextgen-behavioral-health",
+    "athenahealth"
+  ],
+  "company_info": {
+    "founded_year": 1999,
+    "rebranded_year": 2000,
+    "headquarters": "South Jordan, Utah, USA",
+    "employee_count": "650",
+    "funding_status": "Private Equity (Francisco Partners)",
+    "acquisition_value": "$1.1 billion (2024)",
+    "customer_count": "22,500+ practitioners, 8,000 practices",
+    "ownership_history": "Francisco Partners (2008), ADP (2011), Marlin Equity (2015), Global Payments (2018), Francisco Partners (2024)"
+  },
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

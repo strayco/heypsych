@@ -1,0 +1,261 @@
+{
+  "schema_version": "4.0",
+  "kind": "telehealth-tool",
+  "id": "8c2973c0-69ea-4450-8a9b-1b007717278d",
+  "slug": "spruce-health",
+  "name": "Spruce Health",
+  "company_name": "Spruce Health, Inc.",
+  "one_liner": "All-in-one healthcare communication platform with HIPAA-compliant messaging, video visits, phone system, and team collaboration for modern practices.",
+  "best_for": [
+    "Practices seeking a unified communication platform (phone, text, video)",
+    "Mental health providers wanting HIPAA-compliant texting with patients",
+    "Clinicians who need a professional business phone line on personal devices",
+    "Group practices needing team messaging and call routing",
+    "Practices wanting to offer asynchronous care alongside video visits"
+  ],
+  "not_for": [
+    "Providers only needing video visits (Spruce is communication-focused)",
+    "Solo practitioners on tight budgets (pricing adds up)",
+    "Practices needing deep EHR integration or billing features",
+    "Organizations requiring advanced group video (limited participants)"
+  ],
+  "support_level": "clinical",
+  "short_description": "HIPAA-compliant communication platform combining secure messaging, video visits, VoIP phone system, and team collaboration for healthcare practices.",
+  "long_description": "Spruce Health is a comprehensive healthcare communication platform that consolidates patient communication into a single HIPAA-compliant inbox. Unlike video-only telehealth platforms, Spruce provides a complete communication solution including secure text messaging, video visits, VoIP phone calls, voicemail, and fax, all accessible from a single app. Practices get a dedicated business phone number that works on personal smartphones, allowing providers to maintain work-life boundaries while staying accessible to patients. Spruce's team collaboration features include shared inboxes, internal messaging, task assignment, and call routing, making it ideal for group practices. The video visit feature integrates seamlessly with the messaging platform, allowing providers to easily transition from text to video when needed. Mental health practices appreciate Spruce for its ability to conduct asynchronous care through secure messaging, check in with patients between sessions, and maintain clear communication boundaries with a separate professional phone number.",
+  "primary_hubs": ["telehealth", "communication"],
+  "sub_hubs": ["secure-messaging", "voip-phone", "team-collaboration"],
+  "primary_category": "telehealth-communication",
+  "secondary_categories": ["secure-messaging", "practice-communication"],
+  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "substance-use-disorders"],
+  "tool_types": ["communication-platform", "telehealth-platform"],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false
+  },
+  "pricing": {
+    "model": "per-user-subscription",
+    "free_tier": false,
+    "free_trial_days": 14,
+    "quote_required": false,
+    "starting_price": "$24/month per user",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "$24/month per user",
+        "features": ["Secure messaging", "VoIP phone/text", "Dedicated business number", "Voicemail transcription", "Basic video visits"]
+      },
+      {
+        "name": "Communicator",
+        "price": "$49/month per user",
+        "features": ["All Basic features", "Team inbox", "Auto-attendant", "Call routing", "Scheduled messages", "On-call management"]
+      },
+      {
+        "name": "Plus",
+        "price": "$79/month per user",
+        "features": ["All Communicator features", "Advanced video", "Patient portal", "Online scheduling", "Intake forms", "E-fax"]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom pricing",
+        "features": ["All Plus features", "EHR integration", "Analytics", "Dedicated support", "Custom workflows"]
+      }
+    ],
+    "notes": "Per-user pricing. Volume discounts available for larger teams. 14-day free trial available."
+  },
+  "capabilities": ["secure-messaging", "video-conferencing", "voip-phone", "team-messaging", "fax", "scheduling", "intake-forms"],
+  "audiences": {
+    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "social-worker", "psychiatric-nurse", "physician"],
+    "practice_settings": ["solo-practice", "group-practice", "private-practice", "community-mental-health"],
+    "organization_sizes": ["solo", "small-2-10", "medium-11-50", "large-51-200"],
+    "specialties": ["mental-health", "psychiatry", "psychology", "counseling", "behavioral-health", "primary-care"]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "bandwidth_requirements": "1 Mbps recommended",
+      "reliability": "Good for one-on-one and small groups"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": true,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": true,
+      "max_participants": 4,
+      "text_chat": true,
+      "file_sharing": true,
+      "voip_calling": true,
+      "sms_messaging": true,
+      "fax": true,
+      "voicemail_transcription": true
+    },
+    "patient_experience": {
+      "no_download_required": true,
+      "browser_based": true,
+      "no_account_required": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "patient_texting": true,
+      "custom_branding": true
+    },
+    "mobile_apps": {
+      "provider_ios": true,
+      "provider_android": true,
+      "patient_ios": false,
+      "patient_android": false,
+      "browser_mobile": true,
+      "app_store_rating": "4.7/5",
+      "notes": "Providers use Spruce app; patients join video via browser and text via standard SMS."
+    }
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "baa_included_free": true,
+    "soc2": "yes",
+    "hitrust": "no",
+    "gdpr_compliant": "yes",
+    "encryption": "AES 256-bit encryption",
+    "certifications": ["HIPAA", "SOC 2 Type II"],
+    "audit_logging": true,
+    "notes": "All communications (text, voice, video, fax) are HIPAA compliant with BAA."
+  },
+  "integrations": {
+    "ehr_integrations": ["Epic (Enterprise)", "athenahealth (Enterprise)"],
+    "calendar_integrations": ["Google Calendar", "Outlook Calendar"],
+    "billing_integrations": [],
+    "api_available": true,
+    "webhooks": true,
+    "zapier_integration": true,
+    "notes": "API access for custom integrations. EHR integration available on Enterprise plan."
+  },
+  "additional_tools": {
+    "secure_messaging": true,
+    "appointment_reminders": true,
+    "intake_forms": true,
+    "e_prescribing": false,
+    "payment_processing": false,
+    "scheduling": true,
+    "voip_phone": true,
+    "efax": true,
+    "team_messaging": true,
+    "call_routing": true,
+    "on_call_management": true,
+    "notes": "Communication-focused platform; pair with EHR for full practice management."
+  },
+  "privacy": {
+    "grade": "A",
+    "hipaa_compliant": true,
+    "gdpr_compliant": true,
+    "data_sold": false,
+    "notes": "All patient communications encrypted and HIPAA compliant."
+  },
+  "seo": {
+    "title": "Spruce Health: HIPAA-Compliant Communication Platform | HeyPsych",
+    "meta_description": "Spruce Health offers HIPAA-compliant messaging, video visits, and VoIP phone in one platform. Perfect for mental health practices. From $24/month per user.",
+    "canonical_url": "https://heypsych.com/tools/spruce-health/",
+    "keywords": ["Spruce Health", "HIPAA texting", "healthcare communication", "medical phone system", "telehealth platform"],
+    "faqs": [
+      {
+        "q": "What makes Spruce different from other telehealth platforms?",
+        "a": "Spruce is a complete communication platform, not just video. You get secure texting, a professional phone number, video visits, voicemail, and fax in one HIPAA-compliant app. Patients text and call your Spruce number, keeping your personal number private."
+      },
+      {
+        "q": "Can patients text me directly through Spruce?",
+        "a": "Yes, patients can send HIPAA-compliant text messages to your Spruce number. You receive messages in the Spruce app alongside voicemails, video visit requests, and team messages. Patient texts are encrypted and stored securely."
+      },
+      {
+        "q": "Do I need separate phone service if I use Spruce?",
+        "a": "Spruce provides a complete business phone system including a dedicated phone number, VoIP calling, voicemail with transcription, and SMS. Many providers use Spruce as their primary practice phone, keeping personal and professional calls separate."
+      },
+      {
+        "q": "Is Spruce good for solo mental health practitioners?",
+        "a": "Yes, the Basic plan ($24/month) is well-suited for solo practitioners who want secure patient communication and occasional video visits. However, if you only need video visits, a simpler platform like Doxy.me may be more cost-effective."
+      }
+    ]
+  },
+  "governance": {
+    "reviewed_by_label": "Reviewed by HeyPsych Board",
+    "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "app_metadata": {
+    "publisher": "Spruce Health, Inc.",
+    "app_store_url": "https://apps.apple.com/us/app/spruce-health/id923676818",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.sprucehealth.spruce",
+    "website": "https://www.sprucehealth.com",
+    "founded": "2013",
+    "headquarters": "San Francisco, California",
+    "public_company": false,
+    "total_funding": "$35M+",
+    "investors": ["Index Ventures", "Social Capital", "Accel"],
+    "employees": "50-100",
+    "customer_count": "15,000+ practices"
+  },
+  "clinical_metadata": {
+    "evidence_based": true,
+    "primary_uses": [
+      "Patient communication between sessions",
+      "Medication check-ins via secure text",
+      "Video therapy sessions",
+      "Appointment scheduling via text",
+      "Team care coordination"
+    ]
+  },
+  "clinician": {
+    "is_clinician_relevant": true,
+    "primary_clinician_hubs": ["telehealth", "communication"],
+    "clinician_workflows": ["patient_communication", "telehealth_video", "care_coordination"],
+    "how_clinicians_use_it": [
+      "Texting patients between sessions for check-ins",
+      "Conducting video sessions from the Spruce app",
+      "Taking patient calls on business line from personal phone",
+      "Collaborating with team members via internal messaging",
+      "Managing on-call coverage and call routing"
+    ],
+    "implementation_notes": "Simple setup with 14-day trial. Port existing practice number or get new number. Works alongside existing EHR.",
+    "target_practice_size": ["Solo practitioners", "Small group practices", "Multi-provider clinics"],
+    "billing_notes": "Communication platform; use separate billing software or EHR for claims."
+  },
+  "market_position": {
+    "primary_competitors": ["Klara", "OhMD", "TigerConnect", "Halo Health"],
+    "differentiators": ["Complete communication suite", "VoIP phone system included", "Team collaboration features", "Asynchronous care support"],
+    "market_segment": "Modern healthcare practices seeking unified communication",
+    "niche": "Healthcare communication platform"
+  },
+  "related_tools": ["klara", "ohmd", "zoom-for-healthcare", "doxy-me"],
+  "order": 6,
+  "featured": false,
+  "status": "active",
+  "import_ref": {
+    "record_id": "MH-0256",
+    "source_row": 257,
+    "import_timestamp": "2026-08-22T20:50:40.794Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "created_at": "2026-08-22T20:50:40.794Z",
+  "updated_at": "2026-08-22T23:00:00.000Z"
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": "4.0",
+  "kind": "provider-network",
+  "id": "e1edbf53-1414-4042-b59f-16eee00f45fc",
+  "slug": "rula-provider-platform",
+  "name": "Rula Provider Platform",
+  "company_name": "Rula Health",
+  "import_ref": {
+    "record_id": "MH-0451",
+    "source_row": 452,
+    "import_timestamp": "2026-08-22T20:50:40.811Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "provider-network-virtual-care",
+  "secondary_categories": [
+    "insurance-credentialing",
+    "billing-platform",
+    "provider-enablement",
+    "psychiatry-platform"
+  ],
+  "capabilities": [
+    "insurance-credentialing",
+    "claims-billing",
+    "patient-referrals",
+    "telehealth-platform",
+    "scheduling",
+    "payment-processing",
+    "insurance-verification",
+    "client-matching",
+    "therapy-sessions",
+    "psychiatry-services",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "counselor",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "telehealth-only",
+      "hybrid"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "anxiety",
+      "depression",
+      "trauma",
+      "adhd",
+      "relationships",
+      "stress",
+      "bipolar",
+      "ocd"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false,
+    "has_credentialing": true,
+    "has_billing": true,
+    "has_client_matching": true,
+    "has_psychiatry": true
+  },
+  "short_description": "Provider enablement platform offering insurance credentialing, billing, and client matching for therapists and psychiatrists, with a focus on fast credentialing and high reimbursement rates.",
+  "long_description": "Rula (formerly Path Mental Health) is a provider enablement platform designed to help therapists and psychiatrists build thriving insurance-based practices. Founded in 2019 and headquartered in Los Angeles, California, Rula has raised over $100 million in funding to eliminate the barriers that prevent mental health providers from accepting insurance. The platform handles insurance credentialing, claims submission, payment processing, and actively matches providers with patients seeking care. Rula differentiates itself through faster-than-average credentialing times and competitive reimbursement rates, often claiming to offer higher rates than other platforms. The company is in-network with major insurance carriers including Aetna, Cigna, UnitedHealthcare, Anthem, and various Blue Cross Blue Shield plans. Providers maintain their independence as contractors while Rula handles the administrative complexity. Both therapists and psychiatric prescribers can join, with psychiatrists and PMHNPs benefiting from built-in e-prescribing capabilities. Rula takes a percentage of each session (approximately 10-15%) in exchange for credentialing, billing, and patient referrals. The platform's active matching system helps fill provider caseloads with patients covered by their accepted insurance plans.",
+  "one_liner": "Provider platform with fast credentialing, high reimbursement rates, and active patient matching for therapists and psychiatrists.",
+  "best_for": [
+    "Therapists wanting to accept insurance without administrative burden",
+    "Psychiatrists and PMHNPs seeking e-prescribing capable platforms",
+    "Providers seeking higher reimbursement rates than competitors",
+    "Clinicians wanting fast insurance credentialing",
+    "Solo practitioners building insurance-based practices"
+  ],
+  "not_for": [
+    "Therapists preferring cash-pay only practices",
+    "Clinicians wanting lowest possible platform fees",
+    "Providers at large group practices with existing infrastructure",
+    "Therapists who already have full caseloads",
+    "Clinicians uncomfortable with percentage-based fees"
+  ],
+  "website_url": "https://www.rula.com",
+  "provider_url": "https://www.rula.com/for-providers",
+  "pricing_url": "https://www.rula.com/for-providers",
+  "support_url": "https://help.rula.com",
+  "logo_url": "https://www.rula.com/logo.png",
+  "pricing": {
+    "model": "percentage-fee",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free to join",
+    "free_tier": true,
+    "free_trial_days": 0,
+    "quote_required": false,
+    "price_range": "percentage-based",
+    "platform_fee": {
+      "percentage": "~10-15%",
+      "description": "Rula takes approximately 10-15% of each session reimbursement",
+      "notes": "Fee covers credentialing, billing, and patient matching"
+    },
+    "provider_compensation": {
+      "model": "insurance-reimbursement",
+      "employment_type": "Independent Contractor",
+      "reimbursement_range": "$90-160+ per session net (after Rula fee)",
+      "factors_affecting_rate": [
+        "License type",
+        "Geographic location",
+        "Insurance payer",
+        "Session codes",
+        "Prescriber vs therapist"
+      ],
+      "payment_schedule": "Weekly direct deposit",
+      "insurance_billing": "Handled by Rula",
+      "notes": "Rula claims higher reimbursement rates than competitors. Psychiatrists typically earn more per session. Fast credentialing (often 2-4 weeks)."
+    },
+    "notes": "Free to join. Percentage-based fee covers credentialing, billing, and patient referrals. Weekly direct deposit payments.",
+    "last_verified": "2025-03-15"
+  },
+  "provider_requirements": {
+    "license_required": true,
+    "license_types": [
+      "LCSW",
+      "LMFT",
+      "LPC",
+      "LCPC",
+      "LMHC",
+      "PsyD",
+      "PhD",
+      "MD (Psychiatry)",
+      "PMHNP"
+    ],
+    "minimum_experience": "Fully licensed",
+    "state_licensure": "Must be licensed in state where practicing",
+    "malpractice_insurance": "Provider must maintain own malpractice insurance",
+    "background_check": true,
+    "independent_contractor": true,
+    "equipment_needed": [
+      "Reliable internet connection",
+      "Computer with webcam",
+      "HIPAA-compliant workspace"
+    ],
+    "credentialing_timeline": "2-4 weeks (faster than industry average)"
+  },
+  "services_offered": {
+    "credentialing": {
+      "available": true,
+      "insurance_panels": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealthcare",
+        "Anthem",
+        "Blue Cross Blue Shield (various)",
+        "Humana"
+      ],
+      "timeline": "2-4 weeks typically",
+      "notes": "Faster credentialing than industry average"
+    },
+    "billing": {
+      "available": true,
+      "features": [
+        "Claims submission",
+        "Payment posting",
+        "Insurance verification",
+        "Denial management",
+        "Weekly direct deposit"
+      ]
+    },
+    "patient_referrals": {
+      "available": true,
+      "directory_listing": true,
+      "matching_algorithm": true,
+      "notes": "Active matching connects patients with providers"
+    },
+    "telehealth": {
+      "available": true,
+      "platform_provided": true,
+      "video_sessions": true
+    },
+    "prescribing": {
+      "available": true,
+      "e_prescribing": true,
+      "controlled_substances": "Per state regulations",
+      "notes": "E-prescribing for psychiatrists and PMHNPs"
+    }
+  },
+  "network_details": {
+    "provider_count": "10,000+",
+    "countries_covered": "US only",
+    "states_covered": "All 50 states",
+    "provider_types": [
+      "therapists",
+      "psychologists",
+      "psychiatrists",
+      "psychiatric-nurse-practitioners"
+    ],
+    "client_matching": "Active matching based on insurance, specialty, and availability"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.rula.com/privacy",
+      "verified_date": "2025-03-15",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.rula.com/privacy",
+      "verified_date": "2025-03-15",
+      "confidence": "high"
+    },
+    "soc2": "certified",
+    "hitrust": "unknown",
+    "gdpr_compliant": "not-applicable"
+  },
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "in-network",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "in-network",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "united",
+      "category": "payer",
+      "integration_type": "in-network",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "in-network",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield (various)",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "in-network",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Rula for Therapists & Psychiatrists: Provider Platform Review | HeyPsych",
+    "meta_description": "Rula provider platform review: credentialing, pay rates, and comparison with Headway and Grow Therapy. 10,000+ therapists and psychiatrists nationwide.",
+    "faqs": [
+      {
+        "q": "How much do Rula therapists make per session?",
+        "a": "Rula providers typically receive $90-160+ per session net after the platform fee, with psychiatrists generally earning more than therapists. Rula claims higher reimbursement rates than competitors. Actual rates depend on license type, location, and insurance payer. Payment is weekly via direct deposit."
+      },
+      {
+        "q": "How long does Rula credentialing take?",
+        "a": "Rula credentialing typically takes 2-4 weeks, faster than the industry average of 4-8 weeks. Rula handles all paperwork and follow-up with insurance companies. You can start building your practice as soon as credentialing completes."
+      },
+      {
+        "q": "How does Rula compare to Headway and Grow Therapy?",
+        "a": "Rula differentiates itself through faster credentialing times and claims of higher reimbursement rates. All three platforms offer similar services: credentialing, billing, and patient matching. Rula also supports psychiatrists with e-prescribing. Compare fees and rates for your specific situation."
+      },
+      {
+        "q": "Can psychiatrists use Rula?",
+        "a": "Yes, Rula supports both therapists and psychiatric prescribers (psychiatrists and PMHNPs). The platform includes e-prescribing capabilities for controlled and non-controlled medications per state regulations. Psychiatrists typically earn higher per-session rates than therapists."
+      }
+    ],
+    "keywords": [
+      "Rula therapist pay",
+      "Rula provider platform",
+      "Rula vs Headway",
+      "Rula vs Grow Therapy",
+      "Rula credentialing",
+      "Path Mental Health",
+      "Rula psychiatrist",
+      "mental health billing platform"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2025-03-15",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "headway-provider-platform",
+    "grow-therapy-provider-platform",
+    "alma-provider-platform"
+  ],
+  "competitor_tools": [
+    "headway",
+    "grow-therapy",
+    "alma",
+    "sondermind"
+  ],
+  "company_info": {
+    "founded_year": 2019,
+    "headquarters": "Los Angeles, California, USA",
+    "previous_name": "Path Mental Health",
+    "employee_count": "100-200",
+    "funding_status": "Series B",
+    "total_funding": "$100M+",
+    "key_investors": [
+      "Khosla Ventures",
+      "Oak HC/FT",
+      "First Round Capital"
+    ],
+    "provider_count": "10,000+ therapists and psychiatrists",
+    "notable_events": [
+      "Founded 2019 as Path Mental Health",
+      "Rebranded to Rula 2023",
+      "Series B funding",
+      "Expanded nationwide",
+      "Added psychiatry services"
+    ]
+  },
+  "geographic_coverage": {
+    "countries": [
+      "United States"
+    ],
+    "us_states": "All 50 states + D.C.",
+    "licensing_support": "Providers must be licensed in state where practicing",
+    "expansion_notes": "Nationwide coverage with ongoing payer expansion"
+  },
+  "created_at": "2026-08-22T20:50:40.811Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

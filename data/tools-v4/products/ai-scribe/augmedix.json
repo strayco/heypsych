@@ -1,0 +1,239 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "3eb49e83-70d2-4293-96c3-c17f209df8cd",
+  "slug": "augmedix",
+  "name": "Augmedix",
+  "company_name": "Commure (Augmedix)",
+  "website": "https://www.augmedix.com",
+  "description": "Augmedix is a medical documentation company acquired by Commure in 2024. They offer both AI-powered ambient documentation (Augmedix Go) and hybrid human+AI scribing services. The platform captures patient conversations and generates clinical notes, with options for human quality assurance review for organizations requiring additional accuracy guarantees.",
+  "import_ref": {
+    "record_id": "MH-0193",
+    "source_row": 194,
+    "import_timestamp": "2026-08-22T20:50:40.788Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["clinical-documentation", "hybrid-human-ai"],
+  "capabilities": [
+    "ambient-listening",
+    "hybrid-human-ai-scribing",
+    "soap-note-generation",
+    "ehr-integration",
+    "multi-specialty-support",
+    "real-time-transcription",
+    "human-qa-review"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "physician",
+      "nurse-practitioner",
+      "physician-assistant"
+    ],
+    "practice_settings": [
+      "hospital-system",
+      "academic-medical-center",
+      "large-health-system",
+      "outpatient-clinic",
+      "group-practice"
+    ],
+    "organization_sizes": ["medium", "large", "enterprise"],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "internal-medicine",
+      "cardiology",
+      "emergency-medicine",
+      "urgent-care",
+      "hospitalist"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "founded_year": 2013,
+    "headquarters": "San Francisco, CA",
+    "employee_count": "500-1000",
+    "parent_company": "Commure",
+    "acquisition_year": 2024,
+    "funding_total": "$100M+ (pre-acquisition)",
+    "customer_count": "30,000+ providers served",
+    "notable_clients": ["Dignity Health", "HCA Healthcare", "MultiCare"]
+  },
+  "pricing": {
+    "model": "per-provider-monthly",
+    "quote_required": true,
+    "starting_price": null,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Augmedix Go (AI-Only)",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Ambient AI documentation",
+          "Real-time transcription",
+          "EHR integration",
+          "Mobile app",
+          "Multi-specialty templates"
+        ],
+        "quote_required": true
+      },
+      {
+        "name": "Augmedix Live (Hybrid)",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "AI-powered documentation",
+          "Human scribe QA review",
+          "Real-time support",
+          "Deep EHR integration",
+          "Complex specialty support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "$150-400 per provider per month (varies by service level)",
+    "free_trial": {
+      "available": false,
+      "notes": "Pilot programs available for health systems"
+    },
+    "notes": "Pricing varies significantly based on AI-only vs hybrid human+AI model. Enterprise contracts typical."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "security": "https://www.augmedix.com/security"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true
+    },
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "MEDITECH",
+      "type": "ehr",
+      "method": "api",
+      "native": false
+    },
+    {
+      "name": "eClinicalWorks",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Augmedix Go provides fully automated ambient documentation"
+    },
+    "hybrid_model": {
+      "supported": true,
+      "description": "Augmedix Live combines AI with human scribe review for maximum accuracy"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes",
+      "Procedure notes"
+    ],
+    "specialty_templates": true,
+    "custom_templates": true,
+    "voice_commands": false,
+    "multi_language": false,
+    "human_qa": true,
+    "accuracy_rate": "98%+ with human QA (Live model), 90%+ AI-only"
+  },
+  "best_for": [
+    "Health systems wanting hybrid human+AI option",
+    "Organizations requiring 98%+ documentation accuracy",
+    "Practices using Epic, Cerner, or Athenahealth",
+    "Emergency medicine and hospitalist programs",
+    "Organizations already using Commure products",
+    "Practices that tried AI-only and want human oversight"
+  ],
+  "not_for": [
+    "Solo practitioners (enterprise focus)",
+    "Budget-conscious small practices",
+    "Mental health-specific practices",
+    "Organizations wanting AI-only without human review costs",
+    "Practices seeking quick self-service setup"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["nuance-dax-copilot", "abridge", "deepscribe", "commure-scribe"],
+  "created_at": "2026-08-22T20:50:40.788Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Augmedix AI Scribe: Hybrid Human+AI Documentation Review | HeyPsych",
+    "meta_description": "Augmedix review - hybrid AI + human scribe documentation by Commure. 98%+ accuracy with human QA. Epic/Cerner integration. Enterprise pricing for health systems.",
+    "faqs": [
+      {
+        "question": "What is the difference between Augmedix Go and Augmedix Live?",
+        "answer": "Augmedix Go is their fully AI-powered ambient documentation service. Augmedix Live combines AI with human medical scribes who review and refine the notes, providing 98%+ accuracy for organizations requiring maximum documentation quality."
+      },
+      {
+        "question": "How much does Augmedix cost?",
+        "answer": "Augmedix requires a custom quote with pricing typically ranging from $150-400 per provider per month. The AI-only Augmedix Go is less expensive than the hybrid Augmedix Live service that includes human QA."
+      },
+      {
+        "question": "Is Augmedix part of Commure?",
+        "answer": "Yes, Augmedix was acquired by Commure in 2024. The acquisition combined Augmedix's documentation expertise with Commure's healthcare platform capabilities."
+      },
+      {
+        "question": "Does Augmedix integrate with Epic?",
+        "answer": "Yes, Augmedix has native integration with Epic and can write documentation directly into the EHR. It also integrates with Cerner, Athenahealth, MEDITECH, and eClinicalWorks."
+      }
+    ],
+    "keywords": [
+      "Augmedix",
+      "Augmedix Go",
+      "Augmedix Live",
+      "Commure Augmedix",
+      "hybrid AI scribe",
+      "human medical scribe",
+      "AI documentation",
+      "ambient clinical documentation"
+    ]
+  }
+}

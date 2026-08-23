@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Search, Pill, Brain, BookOpen } from "lucide-react";
@@ -31,7 +31,10 @@ interface GroupedResults {
 
 function SearchPageContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const query = searchParams.get("q") || "";
+  const [inputValue, setInputValue] = useState(query);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [groupedResults, setGroupedResults] = useState<GroupedResults>({
     conditions: [],
     treatments: [],
@@ -47,6 +50,26 @@ function SearchPageContent() {
     treatment: false,
     resource: false,
   });
+
+  // Sync input value with URL query
+  useEffect(() => {
+    setInputValue(query);
+  }, [query]);
+
+  // Auto-focus input when landing on page with no query
+  useEffect(() => {
+    if (!query && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [query]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = inputValue.trim();
+    if (trimmed.length >= 2) {
+      router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+    }
+  };
 
   useEffect(() => {
     if (!query || query.trim().length < 2) {
@@ -321,12 +344,27 @@ function SearchPageContent() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <div className="mb-4 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 shadow-soft">
               <Search className="h-6 w-6 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-label-primary">Search Results</h1>
+            <h1 className="text-3xl font-bold text-label-primary">Search</h1>
           </div>
+
+          {/* Search Input */}
+          <form onSubmit={handleSearch} className="mb-6">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-label-tertiary" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Search conditions, treatments, tools..."
+                className="w-full rounded-full border border-separator bg-surface py-3.5 pl-12 pr-4 text-label-primary placeholder:text-label-tertiary shadow-subtle transition-all duration-200 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              />
+            </div>
+          </form>
 
           {query && (
             <div className="text-lg text-label-secondary">
@@ -347,9 +385,9 @@ function SearchPageContent() {
         {!query && !isLoading && (
           <div className="rounded-xl border border-separator bg-surface-grouped p-12 text-center">
             <Search className="mx-auto mb-4 h-16 w-16 text-label-quaternary" />
-            <h3 className="mb-2 text-xl font-semibold text-label-primary">No search query</h3>
+            <h3 className="mb-2 text-xl font-semibold text-label-primary">Start searching</h3>
             <p className="text-label-tertiary">
-              Use the search bar above to search for treatments, conditions, and resources.
+              Find conditions, treatments, and mental health resources.
             </p>
           </div>
         )}

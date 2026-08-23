@@ -1,0 +1,251 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "7d3fb542-3501-40f7-94bf-1d7fd02a2cd0",
+  "slug": "nextgen-behavioral-health-suite",
+  "name": "NextGen Behavioral Health Suite",
+  "company_name": "NextGen Healthcare, Inc.",
+  "import_ref": {
+    "record_id": "MH-0009",
+    "source_row": 10,
+    "import_timestamp": "2026-08-22T20:50:40.770Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "measurement-outcomes-dtx"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "prior-authorization",
+    "payment-processing",
+    "denial-management",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "phq9-gad7",
+    "reporting-dashboards",
+    "ehr-integration",
+    "api-access",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director",
+      "case-manager"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "psychiatry",
+      "therapy",
+      "substance-use-disorder",
+      "IOP",
+      "PHP"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "Comprehensive behavioral health EHR suite from NextGen Healthcare designed for ambulatory behavioral health practices and community mental health centers.",
+  "long_description": "NextGen Behavioral Health Suite is a specialized EHR solution from NextGen Healthcare (NASDAQ: NXGN), one of the largest ambulatory healthcare IT vendors in the United States. Founded in 1974 as Quality Systems Inc. (QSI) and rebranded to NextGen Healthcare in 2017, the company serves over 100,000 providers across ambulatory care. The Behavioral Health Suite combines NextGen's clinical EHR, practice management, and patient engagement capabilities with specialty-specific workflows for psychiatry, psychology, therapy, and substance use disorder treatment. The platform includes behavioral health-specific templates, integrated outcome measurement (PHQ-9, GAD-7, and more), e-prescribing with EPCS, telehealth, and comprehensive revenue cycle management. NextGen serves practices ranging from small groups to large community mental health centers (CMHCs) and Certified Community Behavioral Health Clinics (CCBHCs). The company went private in 2023 after being acquired by Thoma Bravo in a $1.8 billion deal.",
+  "one_liner": "Enterprise behavioral health EHR from one of the largest ambulatory healthcare IT companies.",
+  "best_for": [
+    "Mid-to-large behavioral health practices seeking enterprise EHR",
+    "Community mental health centers (CMHCs) and CCBHCs",
+    "Multi-site behavioral health organizations",
+    "Practices needing integrated RCM with specialty workflows"
+  ],
+  "not_for": [
+    "Small solo practices with simple needs",
+    "Practices seeking simple, low-cost EHR solutions",
+    "Organizations wanting rapid implementation",
+    "Practices focused exclusively on cash-pay services"
+  ],
+  "website_url": "https://www.nextgen.com/products-and-services/specialty/behavioral-health",
+  "pricing_url": "https://www.nextgen.com/contact-us",
+  "support_url": "https://www.nextgen.com/support",
+  "logo_url": "https://www.nextgen.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 30000,
+    "starting_price_display": "$300-$700/provider/month",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "Enterprise pricing varies significantly based on practice size, selected modules, and contract terms. NextGen Office (cloud) typically runs $300-$500/provider/month. Enterprise Suite ranges $500-$700+/provider/month. Implementation fees of $5,000-$50,000+ depending on complexity. Multi-year contracts standard. RCM services available at 4-7% of collections.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.nextgen.com/trust-center",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.nextgen.com/trust-center",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": true,
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "PDMP",
+      "slug": "pdmp",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "State PDMP integrations"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "Quest, Labcorp, and regional labs"
+    },
+    {
+      "name": "Clearinghouses",
+      "slug": "clearinghouses",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Change Healthcare, Availity"
+    },
+    {
+      "name": "Carequality",
+      "slug": "carequality",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Health information exchange"
+    },
+    {
+      "name": "CommonWell",
+      "slug": "commonwell",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "NextGen Behavioral Health Suite: Enterprise EHR for Mental Health | HeyPsych",
+    "meta_description": "NextGen Behavioral Health Suite is an enterprise EHR for psychiatry, therapy, and CMHCs. Integrated scheduling, billing, telehealth, and outcome tracking.",
+    "faqs": [
+      {
+        "q": "How much does NextGen Behavioral Health cost?",
+        "a": "NextGen Behavioral Health pricing typically ranges from $300-$700 per provider per month depending on modules selected. Implementation fees range from $5,000-$50,000+. Enterprise pricing requires custom quote based on practice size and complexity."
+      },
+      {
+        "q": "Is NextGen good for community mental health centers?",
+        "a": "Yes, NextGen Behavioral Health Suite is well-suited for community mental health centers (CMHCs) and CCBHCs. The platform includes workflows for substance use disorder, sliding fee scales, grant reporting, and complex multi-payer billing common in community settings."
+      },
+      {
+        "q": "Does NextGen include outcome measurement?",
+        "a": "Yes, NextGen Behavioral Health includes integrated outcome tracking with standardized assessments like PHQ-9 and GAD-7. The platform supports tracking patient progress and generating outcome reports for quality measurement."
+      },
+      {
+        "q": "What happened to NextGen Healthcare ownership?",
+        "a": "NextGen Healthcare was acquired by private equity firm Thoma Bravo in 2023 for approximately $1.8 billion. The company was previously publicly traded on NASDAQ under the ticker NXGN. Originally founded in 1974 as Quality Systems Inc."
+      }
+    ],
+    "keywords": [
+      "NextGen Behavioral Health",
+      "NextGen EHR",
+      "behavioral health EHR",
+      "CMHC software",
+      "CCBHC EHR",
+      "enterprise mental health EHR"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "advancedmd",
+    "qualifacts-credible",
+    "netsmart-myavatar"
+  ],
+  "competitor_tools": [
+    "advancedmd",
+    "qualifacts-credible",
+    "netsmart-myavatar",
+    "eclinicalworks"
+  ],
+  "company_info": {
+    "founded_year": 1974,
+    "rebranded_year": 2017,
+    "headquarters": "Atlanta, Georgia, USA",
+    "employee_count": "2,800+",
+    "funding_status": "Private Equity (Thoma Bravo)",
+    "acquisition_value": "$1.8 billion (2023)",
+    "customer_count": "100,000+ providers",
+    "former_ticker": "NXGN (NASDAQ, delisted 2023)",
+    "original_name": "Quality Systems Inc. (QSI)"
+  },
+  "created_at": "2026-08-22T20:50:40.770Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

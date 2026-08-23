@@ -1,0 +1,244 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "f4f3998f-0e9b-4d97-a3fa-0c8cde526179",
+  "slug": "cerner-millennium",
+  "name": "Oracle Health Millennium (Cerner)",
+  "company_name": "Oracle Health (formerly Cerner Corporation)",
+  "import_ref": {
+    "record_id": "MH-0110",
+    "source_row": 111,
+    "import_timestamp": "2026-08-22T20:50:40.779Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active",
+    "notes": "Cerner was acquired by Oracle in June 2022 for $28.3 billion and rebranded as Oracle Health"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "analytics-reporting"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "prior-authorization",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "reporting-dashboards",
+    "ehr-integration",
+    "api-access",
+    "fhir-api",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "medical-director",
+      "case-manager"
+    ],
+    "practice_settings": [
+      "hospital-system",
+      "health-system",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "psychiatry",
+      "multi-specialty",
+      "hospital-medicine"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Enterprise hospital and health system EHR platform, one of the two dominant hospital EHR systems in the US, now owned by Oracle.",
+  "long_description": "Oracle Health Millennium (formerly Cerner Millennium) is one of the two dominant enterprise electronic health record platforms for hospitals and large health systems in the United States, alongside Epic. Cerner Corporation was founded in 1979 in Kansas City, Missouri, and was acquired by Oracle Corporation in June 2022 for $28.3 billion, becoming Oracle Health. The Millennium platform serves over 27,500 facilities globally across acute care, ambulatory, and post-acute settings. The platform includes PowerChart (clinical documentation), FirstNet (emergency department), SurgiNet (surgery), PharmNet (pharmacy), and behavioral health modules. Cerner's behavioral health solution supports inpatient psychiatric units, crisis centers, and integrated behavioral health within medical settings. The platform emphasizes interoperability through FHIR APIs, health information exchange, and population health analytics. Oracle Health serves major hospital systems including the U.S. Department of Veterans Affairs (VA), which selected Cerner/Oracle in 2017 to replace VistA.",
+  "one_liner": "Enterprise hospital EHR from Oracle serving 27,500+ facilities, one of two dominant US hospital systems.",
+  "best_for": [
+    "Large hospital systems with behavioral health departments",
+    "Health systems wanting single vendor across acute and ambulatory",
+    "Organizations integrating behavioral health into primary care",
+    "Academic medical centers and government health systems"
+  ],
+  "not_for": [
+    "Small ambulatory behavioral health practices",
+    "Solo practitioners or small group practices",
+    "Practices seeking affordable, simple EHR solutions",
+    "Outpatient-only mental health practices"
+  ],
+  "website_url": "https://www.oracle.com/health/",
+  "pricing_url": "https://www.oracle.com/health/contact/",
+  "support_url": "https://www.oracle.com/health/support/",
+  "logo_url": "https://www.oracle.com/health/logo.png",
+  "pricing": {
+    "model": "enterprise-custom",
+    "starting_price_cents": 0,
+    "starting_price_display": "Enterprise pricing (millions)",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "Oracle Health Millennium is enterprise software with pricing in the millions of dollars for health systems. Typical implementations range from $10 million to $500+ million depending on health system size. CommunityWorks offers scaled-down pricing for smaller hospitals starting around $1-5 million. Annual maintenance fees of 18-22% of license cost. Oracle is transitioning to subscription/cloud pricing.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.oracle.com/health/security-compliance/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.oracle.com/health/security-compliance/",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": true,
+    "gdpr_compliant": true,
+    "onc_certified": true,
+    "fedramp": true
+  },
+  "integrations": [
+    {
+      "name": "FHIR API",
+      "slug": "fhir",
+      "category": "interoperability",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "FHIR R4 and Smart on FHIR"
+    },
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "All major reference labs"
+    },
+    {
+      "name": "CommonWell",
+      "slug": "commonwell",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Cerner founded CommonWell Health Alliance"
+    },
+    {
+      "name": "Carequality",
+      "slug": "carequality",
+      "category": "hie",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oracle Cloud",
+      "slug": "oracle-cloud",
+      "category": "cloud",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Oracle Cloud Infrastructure integration"
+    }
+  ],
+  "seo": {
+    "title": "Oracle Health Millennium (Cerner): Enterprise Hospital EHR | HeyPsych",
+    "meta_description": "Oracle Health Millennium (formerly Cerner) is a leading enterprise hospital EHR serving 27,500+ facilities. Includes behavioral health modules for inpatient psychiatry.",
+    "faqs": [
+      {
+        "q": "What is Cerner now called?",
+        "a": "Cerner is now called Oracle Health after Oracle Corporation acquired Cerner for $28.3 billion in June 2022. The Millennium platform continues under the Oracle Health brand."
+      },
+      {
+        "q": "How much does Oracle Health (Cerner) cost?",
+        "a": "Oracle Health Millennium is enterprise software with pricing typically ranging from $10 million to $500+ million for health systems. CommunityWorks for smaller hospitals starts around $1-5 million. Annual maintenance is 18-22% of license cost."
+      },
+      {
+        "q": "Does Oracle Health have behavioral health?",
+        "a": "Yes, Oracle Health Millennium includes behavioral health modules for inpatient psychiatric units, crisis stabilization, and integrated behavioral health. It's designed for hospital-based behavioral health rather than outpatient private practices."
+      },
+      {
+        "q": "Is Oracle Health used in the VA?",
+        "a": "Yes, the U.S. Department of Veterans Affairs selected Cerner (now Oracle Health) in 2017 to replace its legacy VistA system. The rollout has faced challenges and timeline extensions but continues across VA facilities."
+      }
+    ],
+    "keywords": [
+      "Oracle Health",
+      "Cerner Millennium",
+      "hospital EHR",
+      "enterprise EHR",
+      "health system EHR",
+      "PowerChart"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "epic-hyperspace",
+    "meditech-expanse",
+    "netsmart-myavatar"
+  ],
+  "competitor_tools": [
+    "epic-hyperspace",
+    "meditech-expanse",
+    "allscripts-sunrise"
+  ],
+  "company_info": {
+    "founded_year": 1979,
+    "acquired_year": 2022,
+    "headquarters": "Kansas City, Missouri, USA (Oracle HQ: Austin, Texas)",
+    "employee_count": "28,000+",
+    "funding_status": "Public (Oracle: NYSE ORCL)",
+    "acquisition_value": "$28.3 billion (2022)",
+    "customer_count": "27,500+ facilities globally",
+    "parent_company": "Oracle Corporation",
+    "former_ticker": "CERN (NASDAQ, delisted 2022)"
+  },
+  "created_at": "2026-08-22T20:50:40.779Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

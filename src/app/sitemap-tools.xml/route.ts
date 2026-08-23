@@ -1,5 +1,7 @@
 // src/app/sitemap-tools.xml/route.ts
 // Sitemap for /tools/ section
+//
+// P0 FIX: Now includes V4 clinician tools filtered by publication gate
 
 /**
  * SITEMAP FRESHNESS POLICY:
@@ -11,6 +13,11 @@
  * Uses central SEO control plane for inclusion decisions.
  * Draft, archived, retired, thin, or ineligible tools are excluded.
  *
+ * V4 TOOLS:
+ * V4 clinician tools are included only if they pass the publication gate
+ * (status === "active" and lifecycle.status in ["active", "beta"]).
+ * Additional quality gates (description length) are applied for indexation.
+ *
  * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
  */
 
@@ -19,6 +26,7 @@ import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import { ToolService } from "@/lib/tools/tool-service";
 import { filterToolsForSitemap } from "@/lib/tools/tools-seo";
 import { siteConfig } from "@/lib/config/site";
+import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 
 export async function GET() {
   try {
@@ -26,19 +34,19 @@ export async function GET() {
 
     // 1. Tools directory landing (no lastmod - static hub page)
     urls.push({
-      loc: `${siteConfig.url}/tools/`,
+      loc: `${siteConfig.url}/tools`,
       changefreq: "weekly",
       priority: 0.9,
     });
 
     // 2. Audience landing pages
     urls.push({
-      loc: `${siteConfig.url}/tools/for-patients/`,
+      loc: `${siteConfig.url}/tools/for-patients`,
       changefreq: "weekly",
       priority: 0.85,
     });
     urls.push({
-      loc: `${siteConfig.url}/tools/for-clinicians/`,
+      loc: `${siteConfig.url}/tools/for-clinicians`,
       changefreq: "weekly",
       priority: 0.85,
     });
@@ -47,7 +55,7 @@ export async function GET() {
     const hubs = TaxonomyService.getAllHubs();
     for (const hub of hubs) {
       urls.push({
-        loc: `${siteConfig.url}${hub.url}`,
+        loc: `${siteConfig.url}${normalizeUrl(hub.url)}`,
         changefreq: "weekly",
         priority: 0.8,
       });
@@ -57,7 +65,7 @@ export async function GET() {
     const subHubs = TaxonomyService.getAllSubHubs();
     for (const subHub of subHubs) {
       urls.push({
-        loc: `${siteConfig.url}${subHub.url}`,
+        loc: `${siteConfig.url}${normalizeUrl(subHub.url)}`,
         changefreq: "weekly",
         priority: 0.7,
       });
@@ -67,13 +75,13 @@ export async function GET() {
     const clinicianHubs = TaxonomyService.getAllClinicianHubs();
     for (const clinicianHub of clinicianHubs) {
       urls.push({
-        loc: `${siteConfig.url}${clinicianHub.url}`,
+        loc: `${siteConfig.url}${normalizeUrl(clinicianHub.url)}`,
         changefreq: "weekly",
         priority: 0.7,
       });
     }
 
-    // 6. All eligible tool pages (filtered by SEO control plane)
+    // 6. All eligible V3 tool pages (filtered by SEO control plane)
     const allTools = await ToolService.getAll();
     const eligibleTools = filterToolsForSitemap(allTools);
 
@@ -82,7 +90,7 @@ export async function GET() {
       if (!decision.sitemapEligible) continue;
 
       const entry: SitemapURL = {
-        loc: `${siteConfig.url}/tools/${tool.slug}/`,
+        loc: `${siteConfig.url}/tools/${tool.slug}`,
         changefreq: "monthly",
         priority: 0.6,
       };
@@ -94,6 +102,63 @@ export async function GET() {
 
       urls.push(entry);
     }
+
+    // 7. V4 Clinician tool product pages (P0 FIX: now included)
+    // Publication gate filters to only active, non-draft tools
+    const v4Tools = await ClinicianToolService.loadClinicianTools();
+
+    // Track which V4 categories have tools for sitemap inclusion
+    const v4CategoriesWithTools = new Set<string>();
+
+    for (const tool of v4Tools) {
+      // Additional quality gate: require meaningful description for indexation
+      const hasSubstantiveContent =
+        tool.short_description && tool.short_description.length > 50;
+
+      if (!hasSubstantiveContent) continue;
+
+      // Track this category
+      v4CategoriesWithTools.add(tool.primary_category);
+
+      const entry: SitemapURL = {
+        loc: `${siteConfig.url}/tools/for-clinicians/${tool.primary_category}/${tool.slug}`,
+        changefreq: "monthly",
+        priority: 0.6,
+      };
+
+      // Add lastmod from governance if available
+      if (tool.governance?.last_reviewed) {
+        entry.lastmod = tool.governance.last_reviewed;
+      }
+
+      urls.push(entry);
+    }
+
+    // 8. V4 Category hub pages (only categories with tools)
+    // Empty categories are excluded from sitemap to avoid thin content
+    for (const category of v4CategoriesWithTools) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/for-clinicians/${category}`,
+        changefreq: "weekly",
+        priority: 0.75,
+      });
+    }
+
+    // 9. EHR Matcher page (interactive tool, always include)
+    if (v4CategoriesWithTools.has("ehr-practice-management")) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/for-clinicians/ehr-practice-management/match`,
+        changefreq: "weekly",
+        priority: 0.7,
+      });
+    }
+
+    // 10. Compare page
+    urls.push({
+      loc: `${siteConfig.url}/tools/compare`,
+      changefreq: "weekly",
+      priority: 0.6,
+    });
 
     // Generate XML
     const xml = generateSitemapXML(urls);
@@ -148,4 +213,9 @@ function escapeXml(str: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
+}
+
+// Remove trailing slashes from URLs (canonical = no trailing slash)
+function normalizeUrl(url: string): string {
+  return url.endsWith("/") ? url.slice(0, -1) : url;
 }

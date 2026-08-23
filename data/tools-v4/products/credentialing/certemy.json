@@ -1,0 +1,221 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "0a0737e5-9f85-407f-84e4-b4b32be1709a",
+  "slug": "certemy",
+  "name": "Certemy",
+  "company_name": "Certemy",
+  "description": "Certemy is a license tracking and primary source verification platform that helps healthcare organizations automate compliance management for professional licenses, certifications, and credentials. The platform provides real-time tracking, automated renewals, and compliance reporting across all 50 states.",
+  "website_url": "https://www.certemy.com",
+  "import_ref": {
+    "record_id": "MH-0659",
+    "source_row": 660,
+    "import_timestamp": "2026-08-22T20:50:40.830Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "credentialing-workforce",
+  "secondary_categories": ["compliance", "workforce-management"],
+  "capabilities": [
+    "license-tracking",
+    "primary-source-verification",
+    "compliance-management",
+    "automated-renewals",
+    "ce-tracking",
+    "multi-state-compliance",
+    "workflow-automation",
+    "audit-reporting"
+  ],
+  "audiences": {
+    "clinician_roles": ["practice-administrator", "hr-manager", "compliance-officer", "credentialing-specialist"],
+    "practice_settings": ["group-practice", "health-system", "behavioral-health-organization", "staffing-agency", "large-employer"],
+    "organization_sizes": ["medium", "large", "enterprise"],
+    "specialties": ["multi-specialty", "behavioral-health", "nursing", "healthcare-staffing"]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company_info": {
+    "founded_year": 2014,
+    "headquarters": "Austin, TX",
+    "employee_count": "100-200",
+    "funding_stage": "Series B",
+    "total_funding": "$30M",
+    "key_investors": ["Susquehanna Growth Equity", "LiveOak Venture Partners"],
+    "customer_count": "500+"
+  },
+  "features": {
+    "core_features": [
+      {
+        "name": "Automated License Tracking",
+        "description": "Real-time monitoring of professional licenses across all 50 states with automated expiration alerts and renewal reminders"
+      },
+      {
+        "name": "Primary Source Verification",
+        "description": "Direct verification of licenses, certifications, and credentials from issuing authorities with documented audit trails"
+      },
+      {
+        "name": "Continuing Education Tracking",
+        "description": "CE credit tracking, requirements mapping by state and license type, and completion documentation"
+      },
+      {
+        "name": "Compliance Workflows",
+        "description": "Configurable workflows for license renewal, document collection, and approval processes"
+      },
+      {
+        "name": "Multi-State Compliance",
+        "description": "Centralized management of license requirements across multiple states for mobile workforce and telehealth providers"
+      },
+      {
+        "name": "Audit-Ready Reporting",
+        "description": "Comprehensive compliance reports, license verification documentation, and audit preparation tools"
+      }
+    ],
+    "mental_health_specific": [
+      "Psychology license (50 states) tracking and verification",
+      "LCSW, LMFT, LPC license management",
+      "PSYPACT and Counseling Compact tracking",
+      "Board certification tracking (ABPN, ABPP)",
+      "CEU tracking for mental health continuing education"
+    ]
+  },
+  "pricing": {
+    "model": "per-employee",
+    "starting_price": 8,
+    "price_unit": "per employee/month",
+    "has_free_tier": false,
+    "has_free_trial": true,
+    "free_trial_days": 14,
+    "quote_required": true,
+    "tiers": [
+      {
+        "name": "Essentials",
+        "price_range": "$8-12/employee/month",
+        "features": ["License tracking", "Expiration alerts", "Document storage", "Basic reporting"]
+      },
+      {
+        "name": "Professional",
+        "price_range": "$12-18/employee/month",
+        "features": ["All Essentials features", "Primary source verification", "CE tracking", "Custom workflows"]
+      },
+      {
+        "name": "Enterprise",
+        "price_range": "Custom pricing",
+        "features": ["All Professional features", "API access", "SSO", "Dedicated support", "Custom integrations"]
+      }
+    ],
+    "implementation_cost": "$2,500-15,000",
+    "notes": "Pricing based on employee count with volume discounts for 500+ employees. Annual contracts available."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "type-2",
+    "hitrust": "no",
+    "gdpr_compliant": "yes",
+    "additional_certifications": ["SOC 2 Type II"]
+  },
+  "integrations": [
+    {
+      "name": "Workday",
+      "type": "hr",
+      "description": "Employee data synchronization"
+    },
+    {
+      "name": "ADP",
+      "type": "hr",
+      "description": "HR and payroll integration"
+    },
+    {
+      "name": "BambooHR",
+      "type": "hr",
+      "description": "HR management integration"
+    },
+    {
+      "name": "UKG",
+      "type": "hr",
+      "description": "Workforce management sync"
+    },
+    {
+      "name": "Salesforce",
+      "type": "crm",
+      "description": "Provider data integration"
+    },
+    {
+      "name": "State Licensing Boards",
+      "type": "verification",
+      "description": "Direct connections for primary source verification"
+    },
+    {
+      "name": "Okta",
+      "type": "identity",
+      "description": "Single sign-on integration"
+    }
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 89,
+    "last_verified": "2026-08-22"
+  },
+  "best_for": [
+    "Healthcare staffing agencies with mobile workforce",
+    "Multi-state behavioral health organizations",
+    "Organizations with complex CE compliance requirements",
+    "Practices needing automated license renewal tracking"
+  ],
+  "not_ideal_for": [
+    "Small practices with few providers",
+    "Organizations needing payer enrollment services",
+    "Those requiring full credentialing/privileging workflow",
+    "Single-state practices with simple license needs"
+  ],
+  "related_tools": ["evercheck", "ce-broker", "medallion-credentialing", "symplr-workforce"],
+  "created_at": "2026-08-22T20:50:40.830Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Certemy: License Tracking & Compliance Software | HeyPsych",
+    "meta_description": "Certemy license tracking review for healthcare organizations. Automated license verification, CE tracking, multi-state compliance. Pricing from $8/employee/month.",
+    "faqs": [
+      {
+        "question": "What types of mental health licenses can Certemy track?",
+        "answer": "Certemy can track all mental health professional licenses including psychology licenses in all 50 states, LCSW, LMFT, LPC, LMHC, psychiatry medical licenses, DEA registrations, and state-specific licenses. They also track board certifications and specialty credentials."
+      },
+      {
+        "question": "How does Certemy handle primary source verification?",
+        "answer": "Certemy verifies licenses directly with state licensing boards and issuing authorities, creating a documented audit trail. Verifications are refreshed on a configurable schedule (typically monthly or quarterly) and stored with timestamps for compliance documentation."
+      },
+      {
+        "question": "Can Certemy help with multi-state telehealth licensure?",
+        "answer": "Yes, Certemy excels at tracking multi-state licensure for telehealth providers. They track requirements for all 50 states, monitor compact membership (PSYPACT, Counseling Compact), and provide expiration alerts for each jurisdiction."
+      },
+      {
+        "question": "Does Certemy integrate with HR systems?",
+        "answer": "Yes, Certemy integrates with major HR systems including Workday, ADP, BambooHR, and UKG. This allows automatic employee data sync, streamlined onboarding workflows, and centralized compliance management connected to your HR records."
+      }
+    ],
+    "keywords": [
+      "Certemy",
+      "license tracking software",
+      "compliance management",
+      "primary source verification",
+      "CE tracking",
+      "healthcare compliance",
+      "license renewal management",
+      "multi-state license tracking",
+      "continuing education tracking"
+    ]
+  }
+}

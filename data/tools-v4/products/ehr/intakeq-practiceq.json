@@ -1,0 +1,241 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "0781ec24-3dcb-4a06-9911-6bf7eda577ee",
+  "slug": "intakeq-practiceq",
+  "name": "IntakeQ / PracticeQ",
+  "company_name": "IntakeQ Inc.",
+  "import_ref": {
+    "record_id": "MH-0126",
+    "source_row": 127,
+    "import_timestamp": "2026-08-22T20:50:40.780Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "intake-scheduling-forms",
+    "telehealth-communication",
+    "billing-rcm-insurance"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "online-intake-forms",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "outcome-tracking",
+    "phq9-gad7",
+    "hipaa-compliant",
+    "baa-available",
+    "note-generation"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "counselor",
+      "social-worker",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only",
+      "multi-specialty"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "counseling",
+      "psychiatry",
+      "wellness",
+      "nutrition",
+      "physical-therapy"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "Flexible practice management platform known for customizable intake forms, scheduling, and clinical documentation for health and wellness practitioners.",
+  "long_description": "IntakeQ is a cloud-based practice management platform that started as a digital intake form solution and evolved into a comprehensive EHR under the PracticeQ brand. Founded in 2014 in Ontario, Canada, the platform serves mental health therapists, counselors, nutritionists, chiropractors, and other health and wellness practitioners. IntakeQ is particularly known for its highly customizable intake forms, questionnaires, and assessments that can be branded and automated. PracticeQ extends the platform with full EHR capabilities including scheduling, clinical notes with templates, HIPAA-compliant telehealth, secure messaging, insurance billing, and a patient portal. The platform includes e-prescribing capabilities and supports outcome measurement with customizable questionnaires including PHQ-9 and GAD-7. IntakeQ/PracticeQ emphasizes ease of use, automation, and flexibility, making it popular with practices that have specific workflow requirements or want highly customized client intake experiences.",
+  "one_liner": "The customizable intake forms platform that grew into a flexible mental health practice management solution.",
+  "best_for": [
+    "Practices wanting highly customizable intake forms and questionnaires",
+    "Mental health clinicians needing flexible documentation templates",
+    "Solo and small practices seeking affordable all-in-one solution",
+    "Practitioners wanting branded client-facing experience"
+  ],
+  "not_for": [
+    "Large enterprise behavioral health organizations",
+    "Practices needing specialized addiction treatment features",
+    "Organizations requiring full revenue cycle management services",
+    "Practices wanting AI-powered documentation"
+  ],
+  "website_url": "https://intakeq.com",
+  "pricing_url": "https://intakeq.com/pricing",
+  "support_url": "https://support.intakeq.com",
+  "logo_url": "https://intakeq.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 4900,
+    "starting_price_display": "$49-$99/provider/month",
+    "free_tier": false,
+    "free_trial_days": 14,
+    "quote_required": false,
+    "price_range": "budget",
+    "notes": "IntakeQ Intake Forms: $49.90/month for unlimited forms and 100 clients/month, $99.90/month for unlimited. PracticeQ (full EHR): starts at $59/month for solo, scaling with providers. Annual billing discounts available. Add-ons for telehealth, e-prescribing, and additional features.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "source_url": "https://intakeq.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "source_url": "https://intakeq.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes"
+  },
+  "integrations": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "payment",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Payment processing"
+    },
+    {
+      "name": "Square",
+      "slug": "square",
+      "category": "payment",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Outlook Calendar",
+      "slug": "outlook-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zapier",
+      "slug": "zapier",
+      "category": "automation",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Office Ally",
+      "slug": "office-ally",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Insurance claims submission"
+    }
+  ],
+  "seo": {
+    "title": "IntakeQ / PracticeQ: Customizable Mental Health Practice Management | HeyPsych",
+    "meta_description": "IntakeQ and PracticeQ offer flexible practice management with customizable intake forms, scheduling, notes, and telehealth for mental health practitioners.",
+    "faqs": [
+      {
+        "q": "How much does IntakeQ/PracticeQ cost?",
+        "a": "IntakeQ for intake forms starts at $49.90/month. PracticeQ (full EHR) starts at $59/month for solo practitioners and scales with practice size. A 14-day free trial is available. Annual billing provides discounts."
+      },
+      {
+        "q": "What is the difference between IntakeQ and PracticeQ?",
+        "a": "IntakeQ is the intake forms and questionnaire product, while PracticeQ is the full EHR platform built on top of IntakeQ. PracticeQ includes all IntakeQ features plus scheduling, clinical notes, telehealth, billing, and a patient portal."
+      },
+      {
+        "q": "Is IntakeQ/PracticeQ HIPAA compliant?",
+        "a": "Yes, both IntakeQ and PracticeQ are HIPAA compliant with BAA available. The platform uses encryption, secure data centers, and follows healthcare security best practices."
+      },
+      {
+        "q": "Can I customize intake forms in IntakeQ?",
+        "a": "Yes, IntakeQ is known for highly customizable intake forms. You can create branded questionnaires, consent forms, and assessments using a drag-and-drop builder. Templates can include conditional logic and scoring."
+      }
+    ],
+    "keywords": [
+      "IntakeQ",
+      "PracticeQ",
+      "intake forms software",
+      "mental health practice management",
+      "customizable EHR",
+      "therapy intake forms"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87
+  },
+  "related_tools": [
+    "simplepractice",
+    "jane-app",
+    "healthie"
+  ],
+  "competitor_tools": [
+    "simplepractice",
+    "jane-app",
+    "carepatron"
+  ],
+  "company_info": {
+    "founded_year": 2014,
+    "headquarters": "Ontario, Canada",
+    "employee_count": "20-50",
+    "funding_status": "Bootstrapped",
+    "customer_count": "10,000+ practitioners"
+  },
+  "created_at": "2026-08-22T20:50:40.780Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

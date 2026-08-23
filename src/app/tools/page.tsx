@@ -26,7 +26,8 @@ import { TrustSignal } from "./_components/TrustSignal";
 import { VendorCTA } from "./_components/VendorCTA";
 import { FeaturedTools } from "./_components/FeaturedTools";
 
-const canonicalUrl = `${siteConfig.url}/tools/`;
+// Slashless canonical for consistency with sitemap
+const canonicalUrl = `${siteConfig.url}/tools`;
 
 export const metadata: Metadata = {
   title: "Mental Health Tools & Apps | HeyPsych",
@@ -168,6 +169,30 @@ export default async function ToolsDirectoryPage() {
               className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
             >
               Browse all
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+
+          {/* EHR Matcher CTA */}
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-treatment/20 bg-treatment/5 p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-treatment/10">
+                <Sparkles className="h-5 w-5 text-treatment" />
+              </div>
+              <div>
+                <p className="font-medium text-label-primary">
+                  Find Your EHR Match
+                </p>
+                <p className="text-sm text-label-secondary">
+                  Answer 7 questions to find the best EHR for your practice
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/tools/for-clinicians/ehr-practice-management/match/"
+              className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-white transition-all hover:bg-treatment-600"
+            >
+              Start Matching
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>

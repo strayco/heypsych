@@ -1,0 +1,208 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "3975d5c1-5e3a-4fa5-867f-9186ebe7dcb5",
+  "slug": "therapyappointment",
+  "name": "TherapyAppointment",
+  "company_name": "TherapyAppointment LLC",
+  "import_ref": {
+    "record_id": "MH-0123",
+    "source_row": 124,
+    "import_timestamp": "2026-08-22T20:50:40.780Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "intake-scheduling-forms"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "outcome-tracking",
+    "phq9-gad7",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "counselor",
+      "social-worker",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "counseling"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "Affordable mental health EHR and practice management for therapists and counselors with scheduling, billing, notes, and telehealth.",
+  "long_description": "TherapyAppointment is a cloud-based practice management and EHR platform designed specifically for mental health therapists and counselors. Founded around 2006 in Indiana, TherapyAppointment targets solo practitioners and small group practices with an affordable, straightforward solution. The platform includes online scheduling with client self-booking, clinical documentation with progress note templates, insurance billing with clearinghouse connectivity, payment processing, HIPAA-compliant telehealth, a client portal, and secure messaging. TherapyAppointment offers outcome tracking with standardized assessments including PHQ-9 and GAD-7. The platform emphasizes simplicity and value, positioning itself as a cost-effective alternative to more feature-rich (and expensive) competitors. TherapyAppointment does not include e-prescribing, making it best suited for non-prescribing therapists and counselors rather than psychiatrists. The company offers straightforward per-clinician pricing without long-term contracts.",
+  "one_liner": "The budget-friendly practice management solution for therapists and counselors.",
+  "best_for": [
+    "Solo therapists seeking affordable practice management",
+    "Small counseling practices with straightforward needs",
+    "Non-prescribing clinicians needing basic EHR and billing",
+    "Therapists wanting simple, no-frills solution"
+  ],
+  "not_for": [
+    "Psychiatrists and prescribing providers (no e-prescribing)",
+    "Large group practices with complex workflows",
+    "Practices needing advanced AI documentation",
+    "Organizations requiring enterprise features"
+  ],
+  "website_url": "https://www.therapyappointment.com",
+  "pricing_url": "https://www.therapyappointment.com/pricing",
+  "support_url": "https://www.therapyappointment.com/support",
+  "logo_url": "https://www.therapyappointment.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 3900,
+    "starting_price_display": "$39-$59/provider/month",
+    "free_tier": false,
+    "free_trial_days": 30,
+    "quote_required": false,
+    "price_range": "budget",
+    "notes": "Individual plan approximately $39-$49/month, group practice pricing scales per provider. 30-day free trial available. No long-term contracts required. Additional charges for credit card processing.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.therapyappointment.com/hipaa",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.therapyappointment.com/hipaa",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
+  },
+  "integrations": [
+    {
+      "name": "Clearinghouse",
+      "slug": "clearinghouse",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Insurance claims submission"
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "payment",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Telehealth",
+      "slug": "therapyappointment-telehealth",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "TherapyAppointment: Affordable Mental Health Practice Management | HeyPsych",
+    "meta_description": "TherapyAppointment is an affordable EHR for therapists and counselors with scheduling, notes, billing, and telehealth starting at $39/month.",
+    "faqs": [
+      {
+        "q": "How much does TherapyAppointment cost?",
+        "a": "TherapyAppointment pricing starts at approximately $39-$49 per month for individual practitioners. Group practice pricing scales per provider. A 30-day free trial is available with no long-term contract required."
+      },
+      {
+        "q": "Does TherapyAppointment include e-prescribing?",
+        "a": "No, TherapyAppointment does not include e-prescribing functionality. It is designed for non-prescribing therapists and counselors. Psychiatrists should consider alternatives with e-prescribing capabilities."
+      },
+      {
+        "q": "Is TherapyAppointment HIPAA compliant?",
+        "a": "Yes, TherapyAppointment is HIPAA compliant with BAA available. The platform includes secure data handling and HIPAA-compliant telehealth."
+      },
+      {
+        "q": "What is TherapyAppointment best for?",
+        "a": "TherapyAppointment is best for solo therapists and small counseling practices seeking an affordable, straightforward practice management solution without complex features or high costs."
+      }
+    ],
+    "keywords": [
+      "TherapyAppointment",
+      "affordable therapy EHR",
+      "therapist practice management",
+      "counselor billing software",
+      "budget mental health EHR"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
+  },
+  "related_tools": [
+    "therapynotes",
+    "simplepractice",
+    "theranest"
+  ],
+  "competitor_tools": [
+    "therapynotes",
+    "simplepractice",
+    "theranest"
+  ],
+  "company_info": {
+    "founded_year": 2006,
+    "headquarters": "Indiana, USA",
+    "employee_count": "10-25",
+    "funding_status": "Bootstrapped"
+  },
+  "created_at": "2026-08-22T20:50:40.780Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

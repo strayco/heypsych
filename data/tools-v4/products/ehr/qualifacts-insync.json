@@ -1,0 +1,220 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "b8bd8eb6-3751-4a83-9c86-532d6717af6d",
+  "slug": "qualifacts-insync",
+  "name": "Qualifacts InSync",
+  "company_name": "Qualifacts Systems, Inc.",
+  "import_ref": {
+    "record_id": "MH-0030",
+    "source_row": 31,
+    "import_timestamp": "2026-08-22T20:50:40.772Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "phq9-gad7",
+    "reporting-dashboards",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "counselor",
+      "practice-administrator",
+      "billing-specialist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "psychiatry",
+      "counseling",
+      "primary-care",
+      "multi-specialty"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Cloud-based EHR for small to mid-sized practices with specialty-specific templates including behavioral health, acquired by Qualifacts from InSync Healthcare.",
+  "long_description": "InSync EHR (now Qualifacts InSync) is a cloud-based electronic health record and practice management platform originally developed by InSync Healthcare Solutions for small to mid-sized medical practices. The platform serves multiple specialties including behavioral health, primary care, pediatrics, and other outpatient settings. Qualifacts Systems acquired InSync Healthcare Solutions to expand its portfolio beyond enterprise behavioral health into the private practice market. InSync offers clinical documentation with specialty-specific templates, scheduling, patient portal, billing and revenue cycle management, telehealth, and e-prescribing with EPCS. The platform includes outcome measurement capabilities and integrates with labs and clearinghouses. InSync is positioned as a more affordable alternative to enterprise EHRs while offering robust functionality. Qualifacts (backed by Warburg Pincus) also owns CareLogic and Credible, creating a comprehensive behavioral health technology portfolio spanning from solo practices to large enterprises.",
+  "one_liner": "Qualifacts' EHR for private practices, bridging the gap between solo and enterprise behavioral health.",
+  "best_for": [
+    "Small to mid-sized behavioral health practices",
+    "Multi-specialty groups needing flexible templates",
+    "Private practices wanting established vendor backing",
+    "Clinicians seeking affordable full-featured EHR"
+  ],
+  "not_for": [
+    "Large enterprise behavioral health organizations (use CareLogic/Credible)",
+    "Community mental health centers with complex funding",
+    "Practices needing highly specialized mental health features",
+    "Budget-conscious solo practitioners"
+  ],
+  "website_url": "https://www.qualifacts.com/insync",
+  "pricing_url": "https://www.qualifacts.com/insync/pricing",
+  "support_url": "https://www.qualifacts.com/support",
+  "logo_url": "https://www.qualifacts.com/logo.png",
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 15000,
+    "starting_price_display": "$150-$350/provider/month",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "notes": "Pricing varies by practice size and selected modules. Implementation fees may apply. Contact Qualifacts for custom quote. Part of Qualifacts portfolio which also includes CareLogic and Credible for larger organizations.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.qualifacts.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.qualifacts.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing with EPCS"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "Quest, LabCorp, and regional labs"
+    },
+    {
+      "name": "Clearinghouses",
+      "slug": "clearinghouses",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Telehealth",
+      "slug": "insync-telehealth",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Qualifacts InSync: EHR for Private Behavioral Health Practices | HeyPsych",
+    "meta_description": "Qualifacts InSync is a cloud-based EHR for small to mid-sized behavioral health and multi-specialty practices with billing, telehealth, and e-prescribing.",
+    "faqs": [
+      {
+        "q": "How much does Qualifacts InSync cost?",
+        "a": "Qualifacts InSync pricing typically ranges from $150-$350 per provider per month depending on practice size and selected features. Implementation fees may apply. Contact Qualifacts for a custom quote."
+      },
+      {
+        "q": "What is the difference between InSync, CareLogic, and Credible?",
+        "a": "All three are owned by Qualifacts. InSync targets small to mid-sized private practices. CareLogic and Credible serve larger behavioral health organizations, community mental health centers, and enterprise settings with more complex workflows."
+      },
+      {
+        "q": "Is Qualifacts InSync good for behavioral health?",
+        "a": "Yes, InSync includes behavioral health templates and workflows. However, practices seeking highly specialized mental health features may prefer dedicated behavioral health EHRs. InSync is a multi-specialty platform with strong behavioral health support."
+      },
+      {
+        "q": "Does InSync include e-prescribing?",
+        "a": "Yes, Qualifacts InSync includes e-prescribing with EPCS (Electronic Prescribing for Controlled Substances) for prescribing providers."
+      }
+    ],
+    "keywords": [
+      "Qualifacts InSync",
+      "InSync EHR",
+      "behavioral health EHR",
+      "private practice EHR",
+      "multi-specialty EHR",
+      "Qualifacts"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
+  },
+  "related_tools": [
+    "qualifacts-carelogic",
+    "qualifacts-credible",
+    "advancedmd"
+  ],
+  "competitor_tools": [
+    "advancedmd",
+    "tebra",
+    "athenaone"
+  ],
+  "company_info": {
+    "headquarters": "Nashville, Tennessee, USA",
+    "employee_count": "500+",
+    "funding_status": "Private Equity (Warburg Pincus)",
+    "parent_company": "Qualifacts Systems, Inc.",
+    "acquisitions": "InSync Healthcare Solutions acquired by Qualifacts"
+  },
+  "created_at": "2026-08-22T20:50:40.772Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

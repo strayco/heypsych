@@ -1,0 +1,215 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "21cc4625-3ca1-45a5-9251-c874dbc0809a",
+  "slug": "verifiable",
+  "name": "Verifiable",
+  "company_name": "Verifiable",
+  "description": "Verifiable is an API-first healthcare credentialing platform that automates provider verification and network management. The platform provides real-time primary source verification, continuous monitoring, and a comprehensive provider data API, making it popular with digital health companies, health plans, and healthcare organizations that need to programmatically verify and manage provider credentials at scale.",
+  "website_url": "https://www.verifiable.com",
+  "import_ref": {
+    "record_id": "MH-0645",
+    "source_row": 646,
+    "import_timestamp": "2026-08-22T20:50:40.829Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "credentialing-workforce",
+  "secondary_categories": ["provider-data-management", "api-platform", "network-management"],
+  "capabilities": [
+    "Real-time primary source verification",
+    "Automated license verification",
+    "DEA verification",
+    "Board certification verification",
+    "NPI validation",
+    "NPDB queries",
+    "OIG/SAM exclusion screening",
+    "State sanctions monitoring",
+    "Continuous credential monitoring",
+    "Provider data API",
+    "Bulk verification processing",
+    "Webhook notifications",
+    "Provider roster management",
+    "Network adequacy analytics",
+    "Credentialing workflow automation",
+    "Document collection",
+    "Provider directory data",
+    "Multi-state verification"
+  ],
+  "audiences": {
+    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "physician", "nurse_practitioner", "physician_assistant", "allied_health"],
+    "practice_settings": ["health_plan", "digital_health", "telehealth", "health_system", "mso", "staffing_agency"],
+    "organization_sizes": ["medium", "large", "enterprise"],
+    "specialties": ["general", "psychiatry", "psychology", "mental_health", "multi_specialty"]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "usage-based",
+    "starting_price": 5,
+    "price_unit": "per verification",
+    "quote_required": true,
+    "has_free_tier": false,
+    "free_trial_days": 0,
+    "pricing_tiers": [
+      {
+        "name": "API Platform",
+        "price_range": "$5-15 per verification",
+        "features": ["Real-time PSV", "License verification", "DEA/NPI checks", "API access", "Webhooks"]
+      },
+      {
+        "name": "Continuous Monitoring",
+        "price_range": "$2-5 per provider/month",
+        "features": ["Ongoing license monitoring", "Exclusion screening", "Expiration alerts", "Change notifications"]
+      },
+      {
+        "name": "Credentialing Platform",
+        "price_range": "$50-150 per provider/month",
+        "features": ["Full workflow automation", "Document collection", "Provider portal", "Reporting"]
+      },
+      {
+        "name": "Enterprise",
+        "price_range": "Custom pricing",
+        "features": ["Unlimited API calls", "Dedicated support", "Custom integrations", "SLA guarantees"]
+      }
+    ],
+    "notes": "Verifiable offers flexible pricing models including per-verification, per-provider, and enterprise arrangements. Volume discounts available. API-first approach means pricing can be tailored to specific use cases."
+  },
+  "company": {
+    "legal_name": "Verifiable Inc.",
+    "founded_year": 2019,
+    "headquarters": "San Francisco, CA",
+    "company_type": "private",
+    "description": "Verifiable is a venture-backed healthcare technology company focused on automating provider verification through API-first infrastructure and real-time data connections.",
+    "funding_stage": "Series B",
+    "total_funding": "$50M+",
+    "key_investors": ["Craft Ventures", "Define Ventures", "Struck Capital"],
+    "employee_count_range": "100-200",
+    "customer_count": "300+ healthcare organizations",
+    "notable_customers": ["Major health plans", "Telehealth platforms", "Healthcare staffing companies", "Provider networks"]
+  },
+  "processing_times": {
+    "license_verification": "Seconds to minutes (real-time)",
+    "full_psv": "24-48 hours",
+    "bulk_verification": "1-3 days depending on volume",
+    "continuous_monitoring": "Daily checks",
+    "api_response": "Sub-second for cached data"
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "in_progress",
+    "gdpr_compliant": "yes",
+    "ncqa_compliant": true,
+    "cms_compliant": true,
+    "notes": "Verifiable maintains SOC 2 Type II certification and supports NCQA credentialing requirements"
+  },
+  "integrations": [
+    {
+      "name": "REST API",
+      "type": "api",
+      "description": "Comprehensive REST API for all verification and credentialing functions"
+    },
+    {
+      "name": "Webhooks",
+      "type": "events",
+      "description": "Real-time notifications for credential changes and expirations"
+    },
+    {
+      "name": "State Medical Boards",
+      "type": "verification",
+      "description": "Direct connections to state licensing boards for real-time verification"
+    },
+    {
+      "name": "DEA",
+      "type": "verification",
+      "description": "DEA registration verification"
+    },
+    {
+      "name": "NPDB",
+      "type": "verification",
+      "description": "National Practitioner Data Bank queries"
+    },
+    {
+      "name": "OIG/SAM",
+      "type": "exclusion_monitoring",
+      "description": "Federal exclusion list screening"
+    },
+    {
+      "name": "ABMS",
+      "type": "verification",
+      "description": "Board certification verification"
+    }
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 91,
+    "last_enriched": "2026-08-22"
+  },
+  "related_tools": ["caqh-proview", "medallion", "modio-health-oneview", "certifyos"],
+  "created_at": "2026-08-22T20:50:40.829Z",
+  "updated_at": "2026-08-22T21:00:00.000Z",
+  "status": "active",
+  "best_for": [
+    "Health plans needing provider verification at scale",
+    "Digital health companies with API integration needs",
+    "Organizations wanting real-time verification",
+    "Healthcare staffing agencies",
+    "Provider networks needing continuous monitoring",
+    "Companies building credentialing into their platforms"
+  ],
+  "not_ideal_for": [
+    "Small practices without development resources",
+    "Organizations needing full managed services",
+    "Those requiring CVO accreditation from vendor",
+    "Organizations primarily focused on hospital privileging"
+  ],
+  "seo": {
+    "title": "Verifiable: API-First Provider Verification & Credentialing | HeyPsych",
+    "meta_description": "Verifiable provides real-time provider verification and credentialing via API. Automate license checks, PSV, and continuous monitoring. Trusted by 300+ healthcare organizations.",
+    "faqs": [
+      {
+        "question": "How much does Verifiable cost per verification?",
+        "answer": "Verifiable pricing starts at $5-15 per individual verification for their API platform. Continuous monitoring runs $2-5 per provider per month. Full credentialing platform access is $50-150 per provider per month. Enterprise pricing with unlimited API calls is available for high-volume users."
+      },
+      {
+        "question": "How fast is Verifiable's license verification?",
+        "answer": "Verifiable provides real-time license verification that typically returns results in seconds to minutes, depending on the state. Full primary source verification takes 24-48 hours. Their API responses for cached data are sub-second, making it ideal for real-time verification workflows."
+      },
+      {
+        "question": "Does Verifiable have an API?",
+        "answer": "Yes, Verifiable is built API-first with a comprehensive REST API for all verification and credentialing functions. The platform includes webhooks for real-time notifications, bulk verification endpoints, and is designed for programmatic integration into existing healthcare systems and workflows."
+      },
+      {
+        "question": "What can Verifiable verify?",
+        "answer": "Verifiable can verify state medical licenses, DEA registrations, board certifications, NPI numbers, education credentials, and work history. They also provide NPDB queries, OIG/SAM exclusion screening, state sanctions monitoring, and continuous credential monitoring across all verification types."
+      }
+    ],
+    "keywords": [
+      "Verifiable",
+      "provider verification API",
+      "real-time credentialing",
+      "license verification",
+      "primary source verification",
+      "healthcare API",
+      "credential monitoring",
+      "provider data platform",
+      "automated credentialing",
+      "mental health credentialing"
+    ]
+  }
+}

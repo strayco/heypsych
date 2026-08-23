@@ -1,0 +1,229 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "13405bbf-d5d7-4d50-b45d-1c1b5b00ef76",
+  "slug": "quenza",
+  "name": "Quenza",
+  "company_name": "Quenza B.V.",
+  "import_ref": {
+    "record_id": "MH-0461",
+    "source_row": 462,
+    "import_timestamp": "2026-08-22T20:50:40.812Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [
+    "client-engagement",
+    "digital-homework",
+    "practice-management"
+  ],
+  "capabilities": [
+    "client-engagement",
+    "digital-homework-assignments",
+    "psychoeducation-delivery",
+    "activity-builder",
+    "pathway-automation",
+    "outcome-tracking",
+    "secure-messaging",
+    "white-label-branding",
+    "group-activities",
+    "reflection-journals",
+    "hipaa-compliant",
+    "gdpr-compliant"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "counselor",
+      "life-coach",
+      "health-coach"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "coaching-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "coaching",
+      "wellness"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Client engagement and digital homework platform for therapists and coaches, featuring customizable activities, pathways, and outcome tracking with white-label branding.",
+  "long_description": "Quenza is a practitioner-focused client engagement platform designed to extend care between sessions through digital activities, homework assignments, and psychoeducation. The platform features a drag-and-drop Activity Builder for creating custom interventions, pre-built activity templates based on evidence-based approaches (CBT, ACT, mindfulness), and automated Pathways for sequenced client journeys. Quenza supports outcome tracking through custom forms and assessments, secure client messaging, reflection journals, and group activities. The platform offers white-label branding allowing practitioners to customize the client experience with their own logo and colors. Quenza is popular among therapists, psychologists, counselors, and coaches seeking to increase client engagement and track progress between appointments.",
+  "one_liner": "Client engagement platform with digital homework and customizable activities for therapists and coaches.",
+  "best_for": [
+    "Therapists wanting to extend care with digital homework between sessions",
+    "Coaches seeking client engagement and accountability tools",
+    "Solo practitioners needing affordable client-facing technology",
+    "Practitioners wanting white-label branded client experiences"
+  ],
+  "not_for": [
+    "Large health systems needing enterprise MBC integrations",
+    "Practices requiring full EHR functionality",
+    "Organizations needing insurance billing features"
+  ],
+  "website_url": "https://quenza.com",
+  "pricing_url": "https://quenza.com/pricing",
+  "support_url": "https://quenza.com/support",
+  "logo_url": "https://quenza.com/logo.png",
+  "pricing": {
+    "model": "subscription",
+    "starting_price_cents": 4900,
+    "starting_price_display": "$49/month (Lite) billed annually",
+    "free_tier": false,
+    "free_trial_days": 30,
+    "quote_required": false,
+    "price_range": "budget",
+    "tiers": [
+      {
+        "name": "Lite",
+        "price_monthly": "$64/month",
+        "price_annual": "$49/month (billed annually)",
+        "description": "1 practitioner, unlimited clients, basic features, activity builder, pathways"
+      },
+      {
+        "name": "Standard",
+        "price_monthly": "$89/month",
+        "price_annual": "$69/month (billed annually)",
+        "description": "Advanced features, white-label branding, group activities, custom domain"
+      },
+      {
+        "name": "Unlimited",
+        "price_monthly": "$149/month",
+        "price_annual": "$99/month (billed annually)",
+        "description": "Unlimited team members, priority support, all features included"
+      }
+    ],
+    "notes": "30-day free trial available. All plans include unlimited clients. Annual billing saves up to 33%.",
+    "last_verified": "2026-08-22"
+  },
+  "features": {
+    "activity_builder": {
+      "description": "Drag-and-drop builder for creating custom digital activities",
+      "includes": ["Text", "Images", "Video", "Audio", "Questions", "Scales", "Signatures"]
+    },
+    "pathways": {
+      "description": "Automated activity sequences triggered by time or completion",
+      "use_cases": ["Onboarding", "Treatment protocols", "Coaching programs"]
+    },
+    "expansion_library": {
+      "description": "Pre-built activities based on evidence-based approaches",
+      "approaches": ["CBT", "ACT", "Mindfulness", "Positive Psychology", "Motivational Interviewing"]
+    },
+    "outcome_tracking": {
+      "description": "Custom assessments and progress monitoring",
+      "features": ["Custom forms", "Progress visualization", "Client results dashboard"]
+    },
+    "white_label": {
+      "description": "Brand customization for client-facing experience",
+      "features": ["Custom logo", "Custom colors", "Custom domain (Standard+)"]
+    }
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://quenza.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "gdpr_compliant": true,
+    "encryption": "AES-256",
+    "data_hosting": "AWS (EU and US regions available)"
+  },
+  "integrations": [
+    {
+      "name": "Zapier",
+      "slug": "zapier",
+      "category": "automation",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "company_info": {
+    "founded_year": 2019,
+    "headquarters": "Amsterdam, Netherlands",
+    "funding_status": "Bootstrapped",
+    "target_market": "Therapists, coaches, counselors globally"
+  },
+  "seo": {
+    "title": "Quenza: Client Engagement Platform for Therapists | HeyPsych",
+    "meta_description": "Quenza offers digital homework and client engagement tools for therapists and coaches. Activity builder, pathways, white-label branding. From $49/month.",
+    "faqs": [
+      {
+        "q": "What is Quenza used for in therapy?",
+        "a": "Quenza is used to extend therapeutic care between sessions through digital homework assignments, psychoeducation activities, reflection journals, and automated pathways. It helps increase client engagement and track progress."
+      },
+      {
+        "q": "How much does Quenza cost?",
+        "a": "Quenza offers three tiers: Lite at $49/month (annual), Standard at $69/month (annual) with white-label branding, and Unlimited at $99/month (annual) for teams. A 30-day free trial is available."
+      },
+      {
+        "q": "Is Quenza HIPAA compliant?",
+        "a": "Yes, Quenza is HIPAA compliant and provides Business Associate Agreements (BAAs) for US healthcare providers. It is also GDPR compliant with data encryption and secure AWS hosting."
+      },
+      {
+        "q": "Can I create custom activities in Quenza?",
+        "a": "Yes, Quenza features a drag-and-drop Activity Builder for creating custom digital activities with text, images, video, audio, questions, scales, and electronic signatures."
+      }
+    ],
+    "keywords": [
+      "Quenza",
+      "client engagement platform",
+      "digital homework therapy",
+      "therapy activities app",
+      "between session homework",
+      "coaching platform"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "blueprint",
+    "greenspace-health"
+  ],
+  "competitor_tools": [
+    "theranest",
+    "simplepractice"
+  ],
+  "created_at": "2026-08-22T20:50:40.812Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

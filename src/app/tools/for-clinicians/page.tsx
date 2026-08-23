@@ -1,5 +1,5 @@
 // src/app/tools/for-clinicians/page.tsx
-// Clinician-focused tools landing page
+// Clinician-focused tools landing page with V4 categories
 // Professional software for mental health practices
 
 import { Metadata } from "next";
@@ -9,37 +9,40 @@ import {
   ArrowRight,
   Search,
   Stethoscope,
-  FileText,
-  Receipt,
-  Pill,
-  Building2,
-  MessageSquare,
-  Star,
-  Monitor,
+  Shield,
   CheckCircle,
   Clock,
-  Shield,
-  Users,
+  Receipt,
+  Laptop,
+  Mic,
+  Video,
+  LineChart,
+  Sparkles,
 } from "lucide-react";
-import { TaxonomyService } from "@/lib/tools/taxonomy-service";
-import { ToolService } from "@/lib/tools/tool-service";
-import { CampaignService } from "@/lib/tools/campaign-service";
 import { siteConfig } from "@/lib/config/site";
 import { ToolsHeroSearch } from "../_components/ToolsHeroSearch";
-import { SponsoredSection } from "../_components/SponsoredSection";
 import { TrustSignal } from "../_components/TrustSignal";
 import { VendorCTA } from "../_components/VendorCTA";
 import { HubFAQ } from "@/components/tools/hubs";
-import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
+import {
+  CategoryGrid,
+  BuyerIntentRouter,
+  ClinicianToolCard,
+} from "@/components/tools/clinician";
+import {
+  ClinicianToolService,
+  type ClinicianToolV4,
+} from "@/lib/tools/clinician-tool-service";
+import clinicianCategoriesData from "../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
-const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/`;
+// Slashless canonical for consistency with sitemap
+const canonicalUrl = `${siteConfig.url}/tools/for-clinicians`;
 
 export const metadata: Metadata = {
-  title: "Mental Health Software for Clinicians | HeyPsych Tools",
-  description:
-    "Professional tools for psychiatrists, therapists, and mental health practices. Compare AI scribes, EHR systems, billing software, clinical decision support, and more.",
+  title: clinicianCategoriesData.landing_page.seo_title,
+  description: clinicianCategoriesData.landing_page.meta_description,
   keywords: [
     "psychiatry software",
     "mental health EHR",
@@ -55,57 +58,61 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Mental Health Software for Clinicians | HeyPsych",
-    description: "Professional tools for psychiatrists, therapists, and mental health practices.",
+    description:
+      "Professional tools for psychiatrists, therapists, and mental health practices.",
     url: canonicalUrl,
     type: "website",
   },
 };
 
-// Hub icon mapping for clinician categories
-const hubIcons: Record<string, LucideIcon> = {
-  "clinical-answers-evidence": Search,
-  "ai-scribes-documentation": FileText,
-  "billing-coding": Receipt,
-  "prescribing-medication-support": Pill,
-  "practice-admin-operations": Building2,
-  "patient-engagement-between-visits": MessageSquare,
+// V4 category icon mapping
+const categoryIcons: Record<string, LucideIcon> = {
+  "ehr-practice-management": Laptop,
+  "ai-scribe-documentation": Mic,
+  "billing-rcm": Receipt,
+  "telehealth-communication": Video,
+  "measurement-outcomes": LineChart,
 };
 
-// Accent colors for variety
-const hubColors: Record<string, string> = {
-  "clinical-answers-evidence": "bg-blue-500/10 text-blue-600",
-  "ai-scribes-documentation": "bg-purple-500/10 text-purple-600",
-  "billing-coding": "bg-emerald-500/10 text-emerald-600",
-  "prescribing-medication-support": "bg-orange-500/10 text-orange-600",
-  "practice-admin-operations": "bg-slate-500/10 text-slate-600",
-  "patient-engagement-between-visits": "bg-cyan-500/10 text-cyan-600",
+// V4 category color mapping
+const categoryColors: Record<string, string> = {
+  "ehr-practice-management": "bg-blue-500/10 text-blue-600",
+  "ai-scribe-documentation": "bg-purple-500/10 text-purple-600",
+  "billing-rcm": "bg-emerald-500/10 text-emerald-600",
+  "telehealth-communication": "bg-cyan-500/10 text-cyan-600",
+  "measurement-outcomes": "bg-emerald-500/10 text-emerald-600",
 };
 
 export default async function ForCliniciansPage() {
-  const landing = TaxonomyService.getClinicianLanding();
-  const hubs = TaxonomyService.getAllClinicianHubs();
-  const allTools = await ToolService.getAll();
+  // Load V4 tools
+  const allV4Tools = await ClinicianToolService.loadClinicianTools();
+  const categoryCounts = await ClinicianToolService.getCategoryCounts();
+  const featuredTools = await ClinicianToolService.getFeatured(6);
 
-  // Filter to clinician-relevant tools
-  const clinicianTools = allTools.filter((t) => t.clinician?.is_clinician_relevant);
+  // Get landing page content from V4 taxonomy
+  const landingPage = clinicianCategoriesData.landing_page;
+  const v4Categories = clinicianCategoriesData.categories;
 
-  // Get sponsored tools for clinicians
-  const sponsoredTools = await CampaignService.getSponsoredTools(
-    "tools-landing-featured",
-    "clinician",
-    undefined,
-    2
-  );
-
-  // Get featured clinician tools (by rating or relevance)
-  const topPicks = await ToolService.getClinicianTopPicks("for-clinicians");
-  const featuredClinicianTools = topPicks.length > 0 ? topPicks : clinicianTools
-    .filter((t) => t.app_rating && t.app_rating >= 4.0)
-    .sort((a, b) => (b.app_rating || 0) - (a.app_rating || 0))
-    .slice(0, 6);
+  // Map categories with counts - only include categories with tools (Mission 3: truthful directory)
+  const categoriesWithCounts = v4Categories
+    .map((cat) => {
+      const countData = categoryCounts.find((c) => c.slug === cat.slug);
+      return {
+        slug: cat.slug,
+        display_name: cat.display_name,
+        short_name: cat.short_name,
+        url: cat.url,
+        count: countData?.count || 0,
+        intro: cat.intro,
+      };
+    })
+    .filter((cat) => cat.count > 0); // Only show categories with inventory
 
   // Generate structured data
-  const structuredData = generateClinicianLandingStructuredData(landing, hubs);
+  const structuredData = generateClinicianLandingStructuredData(
+    landingPage,
+    v4Categories
+  );
 
   return (
     <>
@@ -125,11 +132,16 @@ export default async function ForCliniciansPage() {
           <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
             {/* Breadcrumb */}
             <nav className="mb-6 flex items-center gap-2 text-sm">
-              <Link href="/tools/" className="text-label-secondary hover:text-treatment transition-colors">
+              <Link
+                href="/tools/"
+                className="text-label-secondary hover:text-treatment transition-colors"
+              >
                 Tools
               </Link>
               <span className="text-label-quaternary">/</span>
-              <span className="text-label-primary font-medium">For Clinicians</span>
+              <span className="text-label-primary font-medium">
+                For Clinicians
+              </span>
             </nav>
 
             <div className="flex items-center gap-3 mb-4">
@@ -138,7 +150,7 @@ export default async function ForCliniciansPage() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight text-label-primary sm:text-4xl lg:text-5xl">
-                  Tools for Clinicians
+                  {landingPage.display_name}
                 </h1>
               </div>
             </div>
@@ -146,16 +158,16 @@ export default async function ForCliniciansPage() {
             {/* Direct Answer Block */}
             <div className="mt-4 rounded-xl border border-treatment/20 bg-treatment/5 p-5">
               <p className="text-lg text-label-primary leading-relaxed">
-                {landing.direct_answer}
+                {landingPage.direct_answer}
               </p>
             </div>
 
             <p className="mt-4 max-w-2xl text-lg text-label-secondary">
-              {landing.intro}
+              {landingPage.intro}
             </p>
 
             <p className="mt-2 text-sm text-label-tertiary">
-              {clinicianTools.length} tools across {hubs.length} categories
+              {allV4Tools.length} tools across {categoriesWithCounts.length} categories
             </p>
 
             {/* Search */}
@@ -167,69 +179,91 @@ export default async function ForCliniciansPage() {
           </div>
         </section>
 
-        {/* Sponsored Section (if any active) */}
-        {sponsoredTools.length > 0 && (
-          <SponsoredSection sponsoredTools={sponsoredTools} />
-        )}
-
-        {/* Browse by Category */}
+        {/* Buyer Intent Router */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-              Pick what you&apos;re trying to do
+              Find the right tools for you
             </h2>
             <p className="mt-1 text-sm text-label-secondary">
-              Professional tools organized by function
+              Tell us about your practice and needs
             </p>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {hubs.map((hub) => {
-                const Icon = hubIcons[hub.slug] || Building2;
-                const colorClass = hubColors[hub.slug] || "bg-gray-500/10 text-gray-600";
+            <div className="mt-6">
+              <Suspense fallback={<div className="h-48 animate-pulse bg-surface rounded-xl" />}>
+                <BuyerIntentRouter />
+              </Suspense>
+            </div>
 
-                return (
-                  <Link
-                    key={hub.slug}
-                    href={hub.url}
-                    className="group relative flex flex-col rounded-xl border border-separator bg-surface p-5 transition-all hover:border-treatment/30 hover:shadow-soft"
-                  >
-                    <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl", colorClass)}>
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mt-4 font-semibold text-label-primary group-hover:text-treatment transition-colors">
-                      {hub.display_name}
-                    </h3>
-                    {hub.intro && (
-                      <p className="mt-1 text-sm text-label-tertiary line-clamp-2">
-                        {hub.intro.slice(0, 80)}...
-                      </p>
-                    )}
-                    <div className="mt-3 flex items-center gap-1 text-sm font-medium text-treatment opacity-0 group-hover:opacity-100 transition-opacity">
-                      Browse tools
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </Link>
-                );
-              })}
+            {/* EHR Matcher CTA */}
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-accent/20 bg-gradient-to-r from-accent/5 to-treatment/5 p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
+                  <Sparkles className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <p className="font-semibold text-label-primary">
+                    Looking for an EHR?
+                  </p>
+                  <p className="text-sm text-label-secondary">
+                    Answer 7 questions to find your perfect match
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/tools/for-clinicians/ehr-practice-management/match/"
+                className="group flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-hover"
+              >
+                Find My EHR
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Top Picks */}
-        {featuredClinicianTools.length > 0 && (
-          <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+        {/* Browse by Category */}
+        <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
+                  Browse by Category
+                </h2>
+                <p className="mt-1 text-sm text-label-secondary">
+                  {categoriesWithCounts.length} categories of professional tools
+                </p>
+              </div>
+              <Link
+                href="/tools/search/?audience=clinician"
+                className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
+              >
+                View all tools
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+
+            <div className="mt-6">
+              <CategoryGrid categories={categoriesWithCounts} />
+            </div>
+          </div>
+        </section>
+
+        {/* Featured / Top Picks */}
+        {featuredTools.length > 0 && (
+          <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                    Top Picks for Clinicians
+                    Featured Tools
                   </h2>
                   <p className="mt-1 text-sm text-label-secondary">
-                    Highest rated by mental health professionals
+                    {/* P0 FIX: Removed "highly rated" claim - no ratings data exists */}
+                    Popular tools for mental health practices
                   </p>
                 </div>
                 <Link
-                  href="/tools/search/?audience=clinician"
+                  href="/tools/search/?audience=clinician&featured=true"
                   className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
                 >
                   View all
@@ -238,9 +272,45 @@ export default async function ForCliniciansPage() {
               </div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {featuredClinicianTools.map((tool) => (
-                  <ClinicianToolCard key={tool.slug} tool={tool} />
+                {featuredTools.map((tool) => (
+                  <ClinicianToolCard
+                    key={tool.slug}
+                    tool={tool}
+                    showCategory
+                    variant="featured"
+                  />
                 ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Popular Categories with Tools - only show categories that have tools */}
+        {categoriesWithCounts.length > 0 && (
+          <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
+                Popular Categories
+              </h2>
+              <p className="mt-1 text-sm text-label-secondary">
+                Browse tools by category
+              </p>
+
+              <div className="mt-6 space-y-10">
+                {/* Only show categories with tools (up to 3) */}
+                {categoriesWithCounts.slice(0, 3).map((cat) => {
+                  const categoryData = v4Categories.find((c) => c.slug === cat.slug);
+                  if (!categoryData) return null;
+                  return (
+                    <CategoryPreview
+                      key={cat.slug}
+                      category={categoryData}
+                      tools={allV4Tools.filter(
+                        (t) => t.primary_category === cat.slug
+                      )}
+                    />
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -261,7 +331,9 @@ export default async function ForCliniciansPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-treatment/10">
                   <Shield className="h-5 w-5 text-treatment" />
                 </div>
-                <h3 className="mt-3 font-medium text-label-primary">HIPAA Compliance</h3>
+                <h3 className="mt-3 font-medium text-label-primary">
+                  HIPAA Compliance
+                </h3>
                 <p className="mt-1 text-sm text-label-secondary">
                   Required for patient data handling in clinical settings.
                 </p>
@@ -271,7 +343,9 @@ export default async function ForCliniciansPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-positive/10">
                   <CheckCircle className="h-5 w-5 text-positive" />
                 </div>
-                <h3 className="mt-3 font-medium text-label-primary">EHR Integration</h3>
+                <h3 className="mt-3 font-medium text-label-primary">
+                  EHR Integration
+                </h3>
                 <p className="mt-1 text-sm text-label-secondary">
                   Seamless workflow with your existing systems.
                 </p>
@@ -281,7 +355,9 @@ export default async function ForCliniciansPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
                   <Clock className="h-5 w-5 text-accent" />
                 </div>
-                <h3 className="mt-3 font-medium text-label-primary">Time Savings</h3>
+                <h3 className="mt-3 font-medium text-label-primary">
+                  Time Savings
+                </h3>
                 <p className="mt-1 text-sm text-label-secondary">
                   Reduces administrative burden so you can focus on patients.
                 </p>
@@ -291,7 +367,9 @@ export default async function ForCliniciansPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-caution/10">
                   <Receipt className="h-5 w-5 text-caution" />
                 </div>
-                <h3 className="mt-3 font-medium text-label-primary">ROI & Pricing</h3>
+                <h3 className="mt-3 font-medium text-label-primary">
+                  ROI & Pricing
+                </h3>
                 <p className="mt-1 text-sm text-label-secondary">
                   Clear pricing models and demonstrable return on investment.
                 </p>
@@ -301,9 +379,35 @@ export default async function ForCliniciansPage() {
         </section>
 
         {/* FAQ */}
-        {landing.faqs && landing.faqs.length > 0 && (
-          <HubFAQ faqs={landing.faqs} hubName="Tools for Clinicians" />
-        )}
+        <HubFAQ
+          faqs={[
+            {
+              q: "What tools do solo therapists need most?",
+              a: "Solo therapists typically benefit most from an integrated EHR/practice management platform like SimplePractice or TherapyNotes, which handles scheduling, notes, billing, and telehealth in one system. AI scribes are increasingly popular for reducing documentation time. The key is avoiding tool sprawl by choosing platforms that handle multiple functions.",
+            },
+            {
+              q: "How do AI scribes work for therapy sessions?",
+              a: "AI scribes use ambient listening (with patient consent) to record and transcribe your sessions. The AI then analyzes the conversation, identifies clinically relevant information, and generates a structured note in your preferred format (SOAP, DAP, etc.). Most clinicians report saving 1-2 hours daily on documentation.",
+            },
+            {
+              q: "Are these tools HIPAA compliant?",
+              a: "Many tools in our directory claim HIPAA compliance, but we do not independently verify these claims. Compliance status varies: some tools have confirmed HIPAA support, others are unknown. Always verify directly with vendors, obtain a signed BAA, and conduct your own security review before implementing any tool with patient data. Look for the HIPAA badge on tool listings to identify confirmed compliant options.",
+            },
+            {
+              q: "How should I evaluate tools for my practice?",
+              a: "Start with your biggest pain point (documentation, billing, scheduling). Research 3-4 options in that category, request demos, and trial each with real workflows. Consider: total cost of ownership, integration with existing tools, learning curve, and vendor stability. Ask colleagues what they use and read recent reviews.",
+            },
+            {
+              q: "What's the difference between practice management and EHR?",
+              a: "Practice management handles administrative functions: scheduling, billing, payments, and patient communication. EHR (Electronic Health Record) focuses on clinical documentation: notes, treatment plans, and medical history. Many mental health platforms combine both, but some clinicians use separate specialized tools for each function.",
+            },
+            {
+              q: "Do I need separate telehealth software?",
+              a: "Most modern EHR platforms include HIPAA-compliant telehealth. Standalone telehealth (like Doxy.me or Zoom for Healthcare) is useful if your EHR's video quality is poor, you need specific features like virtual waiting rooms, or you want to keep telehealth separate from your main system.",
+            },
+          ]}
+          hubName="Clinician Tools"
+        />
 
         {/* Trust Signal */}
         <TrustSignal />
@@ -337,52 +441,60 @@ export default async function ForCliniciansPage() {
   );
 }
 
-function ClinicianToolCard({ tool }: { tool: DigitalToolV3 }) {
+// Category preview component
+function CategoryPreview({
+  category,
+  tools,
+}: {
+  category: (typeof clinicianCategoriesData.categories)[0];
+  tools: ClinicianToolV4[];
+}) {
+  const Icon = categoryIcons[category.slug] || Laptop;
+  const colorClass = categoryColors[category.slug] || "bg-gray-500/10 text-gray-600";
+  const displayTools = tools.slice(0, 3);
+
   return (
-    <Link
-      href={`/tools/${tool.slug}/`}
-      className="group flex items-start gap-4 rounded-xl border border-separator bg-surface p-4 transition-all hover:border-treatment/20 hover:shadow-soft"
-    >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-treatment/5">
-        <Monitor className="h-6 w-6 text-treatment/70" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-label-primary group-hover:text-treatment transition-colors truncate">
-            {tool.name}
-          </h3>
-          {tool.app_rating && (
-            <div className="flex shrink-0 items-center gap-1 text-sm text-label-secondary">
-              <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-              <span>{tool.app_rating}</span>
-            </div>
-          )}
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <div
+            className={cn(
+              "flex h-10 w-10 items-center justify-center rounded-xl",
+              colorClass
+            )}
+          >
+            <Icon className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-label-primary">
+              {category.display_name}
+            </h3>
+            <p className="text-sm text-label-tertiary">
+              {tools.length} tools
+            </p>
+          </div>
         </div>
-        <p className="mt-1 text-sm text-label-secondary line-clamp-2">
-          {tool.one_liner || tool.short_description}
-        </p>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          {tool.privacy.hipaa_compliant && (
-            <span className="rounded bg-treatment/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-treatment-700">
-              HIPAA
-            </span>
-          )}
-          {tool.clinician?.integrations?.includes("ehr") && (
-            <span className="rounded bg-positive/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-positive-700">
-              EHR Integration
-            </span>
-          )}
-          {tool.clinician?.clinician_workflows && tool.clinician.clinician_workflows.slice(0, 1).map((wf) => (
-            <span
-              key={wf}
-              className="rounded bg-accent/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent"
-            >
-              {wf.replace(/_/g, " ")}
-            </span>
+        <Link
+          href={category.url}
+          className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
+        >
+          View all
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+
+      {displayTools.length > 0 ? (
+        <div className="grid gap-3 sm:grid-cols-3">
+          {displayTools.map((tool) => (
+            <ClinicianToolCard key={tool.slug} tool={tool} variant="compact" />
           ))}
         </div>
-      </div>
-    </Link>
+      ) : (
+        <p className="text-sm text-label-tertiary italic">
+          No tools in this category yet
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -397,8 +509,8 @@ function SearchFallback() {
 
 // Generate structured data for clinician landing
 function generateClinicianLandingStructuredData(
-  landing: ReturnType<typeof TaxonomyService.getClinicianLanding>,
-  hubs: ReturnType<typeof TaxonomyService.getAllClinicianHubs>
+  landing: typeof clinicianCategoriesData.landing_page,
+  categories: typeof clinicianCategoriesData.categories
 ): object[] {
   const schemas: object[] = [];
 
@@ -422,34 +534,37 @@ function generateClinicianLandingStructuredData(
     ],
   });
 
-  // FAQPage
-  if (landing.faqs && landing.faqs.length > 0) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: landing.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.a,
-        },
-      })),
-    });
-  }
-
-  // ItemList for hubs
+  // ItemList for categories
   schemas.push({
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Clinician Tool Categories",
-    numberOfItems: hubs.length,
-    itemListElement: hubs.map((hub, index) => ({
+    numberOfItems: categories.length,
+    itemListElement: categories.map((cat, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: hub.display_name,
-      url: `${siteConfig.url}${hub.url}`,
+      name: cat.display_name,
+      url: `${siteConfig.url}${cat.url}`,
     })),
+  });
+
+  // WebPage
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: landing.seo_title,
+    description: landing.meta_description,
+    url: `${siteConfig.url}/tools/for-clinicians/`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    about: {
+      "@type": "Thing",
+      name: "Mental Health Software",
+      description: "Professional tools for mental health clinicians",
+    },
   });
 
   return schemas;

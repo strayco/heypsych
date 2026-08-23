@@ -1,0 +1,222 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "118b0199-9012-470f-b3d7-7b0b3572d6e6",
+  "slug": "modio-payer-enrollment",
+  "name": "Modio Payer Enrollment",
+  "company_name": "Modio Health",
+  "description": "Modio Health is a comprehensive provider enrollment and credentialing platform that automates payer contracting, CAQH management, and credential verification. The platform specializes in helping healthcare organizations streamline insurance panel enrollment and maintain provider data across multiple payers.",
+  "website_url": "https://www.modiohealth.com",
+  "import_ref": {
+    "record_id": "MH-0668",
+    "source_row": 669,
+    "import_timestamp": "2026-08-22T20:50:40.831Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "credentialing-workforce",
+  "secondary_categories": ["revenue-cycle", "practice-management"],
+  "capabilities": [
+    "payer-enrollment",
+    "caqh-management",
+    "provider-credentialing",
+    "contract-management",
+    "license-tracking",
+    "primary-source-verification",
+    "enrollment-tracking",
+    "provider-data-management"
+  ],
+  "audiences": {
+    "clinician_roles": ["psychiatrist", "psychologist", "lcsw", "lmft", "lpc", "pmhnp", "practice-administrator", "billing-specialist"],
+    "practice_settings": ["solo-practice", "group-practice", "community-mental-health", "behavioral-health-organization", "mso"],
+    "organization_sizes": ["small", "medium", "large"],
+    "specialties": ["psychiatry", "psychology", "behavioral-health", "primary-care"]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company_info": {
+    "founded_year": 2016,
+    "headquarters": "Nashville, TN",
+    "employee_count": "50-100",
+    "funding_stage": "Series A",
+    "total_funding": "$12M",
+    "key_investors": ["Martin Ventures", "Vocap Partners"],
+    "customer_count": "1,500+"
+  },
+  "features": {
+    "core_features": [
+      {
+        "name": "Payer Enrollment Automation",
+        "description": "Automated enrollment applications for 1,000+ commercial, Medicare, and Medicaid payers with status tracking and follow-up management"
+      },
+      {
+        "name": "CAQH ProView Management",
+        "description": "Complete CAQH profile management including initial setup, updates, attestation reminders, and data accuracy monitoring"
+      },
+      {
+        "name": "Contract Management",
+        "description": "Centralized payer contract repository with fee schedule tracking, renewal alerts, and negotiation support"
+      },
+      {
+        "name": "Credentialing Workflow",
+        "description": "End-to-end credentialing process management with document collection, verification tracking, and status dashboards"
+      },
+      {
+        "name": "Provider Data Hub",
+        "description": "Single source of truth for provider information with automatic updates to all connected payer systems"
+      },
+      {
+        "name": "Enrollment Status Tracking",
+        "description": "Real-time visibility into enrollment application status with payer-specific timelines and issue resolution"
+      }
+    ],
+    "mental_health_specific": [
+      "Behavioral health payer panel expertise",
+      "Medicare Part B psychiatric enrollment",
+      "Medicaid behavioral health MCO enrollment",
+      "Telehealth credentialing for mental health",
+      "Psychology and counseling license tracking"
+    ]
+  },
+  "pricing": {
+    "model": "per-provider",
+    "starting_price": 100,
+    "price_unit": "per provider/month",
+    "has_free_tier": false,
+    "has_free_trial": true,
+    "free_trial_days": 30,
+    "quote_required": true,
+    "tiers": [
+      {
+        "name": "Essentials",
+        "price_range": "$100-150/provider/month",
+        "features": ["CAQH management", "License tracking", "Basic reporting", "Email support"]
+      },
+      {
+        "name": "Professional",
+        "price_range": "$150-250/provider/month",
+        "features": ["All Essentials features", "Payer enrollment", "Contract management", "Phone support"]
+      },
+      {
+        "name": "Enterprise",
+        "price_range": "Custom pricing",
+        "features": ["All Professional features", "Dedicated account manager", "Custom integrations", "SLA guarantees"]
+      }
+    ],
+    "per_enrollment_fee": "$150-300 per new payer enrollment",
+    "implementation_cost": "$1,000-5,000",
+    "notes": "Pricing varies by number of providers and payers. Volume discounts for 25+ providers."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "type-2",
+    "hitrust": "no",
+    "gdpr_compliant": "not-applicable",
+    "additional_certifications": ["SOC 2 Type II"]
+  },
+  "integrations": [
+    {
+      "name": "CAQH ProView",
+      "type": "credentialing",
+      "description": "Automated CAQH profile synchronization"
+    },
+    {
+      "name": "Availity",
+      "type": "clearinghouse",
+      "description": "Payer enrollment submission"
+    },
+    {
+      "name": "Change Healthcare",
+      "type": "clearinghouse",
+      "description": "Enrollment and eligibility"
+    },
+    {
+      "name": "Salesforce",
+      "type": "crm",
+      "description": "Provider relationship tracking"
+    },
+    {
+      "name": "SimplePractice",
+      "type": "ehr",
+      "description": "Practice management integration"
+    },
+    {
+      "name": "TherapyNotes",
+      "type": "ehr",
+      "description": "Mental health EHR integration"
+    },
+    {
+      "name": "NPPES",
+      "type": "verification",
+      "description": "NPI registry synchronization"
+    }
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_verified": "2026-08-22"
+  },
+  "best_for": [
+    "Growing mental health practices needing payer enrollment help",
+    "Group practices managing multiple provider panels",
+    "Organizations struggling with CAQH maintenance",
+    "Practices expanding to new insurance networks"
+  ],
+  "not_ideal_for": [
+    "Solo practitioners with simple enrollment needs",
+    "Large health systems with in-house credentialing teams",
+    "Organizations needing only credential verification without enrollment",
+    "Practices not accepting insurance"
+  ],
+  "related_tools": ["medallion-credentialing", "medallion-payer-enrollment", "verifiable-credentialing"],
+  "created_at": "2026-08-22T20:50:40.831Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Modio Payer Enrollment: Insurance Credentialing Made Easy | HeyPsych",
+    "meta_description": "Modio Health payer enrollment review for mental health practices. Automate insurance panel enrollment, CAQH management, and provider credentialing. Pricing from $100/provider.",
+    "faqs": [
+      {
+        "question": "How long does payer enrollment take with Modio?",
+        "answer": "Payer enrollment timelines vary by insurance company, but Modio typically completes commercial payer enrollment in 30-60 days, Medicare enrollment in 60-90 days, and Medicaid enrollment in 45-90 days. Their automation and follow-up processes help avoid common delays."
+      },
+      {
+        "question": "Does Modio handle CAQH attestation reminders?",
+        "answer": "Yes, Modio automatically tracks CAQH attestation deadlines and sends reminders before the quarterly re-attestation is due. They can also complete attestation on your behalf if you grant them access to your CAQH ProView account."
+      },
+      {
+        "question": "Can Modio help mental health providers get on insurance panels?",
+        "answer": "Absolutely. Modio specializes in behavioral health payer enrollment, including psychiatrists, psychologists, LCSWs, LMFTs, and LPCs. They handle enrollment with major behavioral health networks, Medicare Part B, and Medicaid managed care organizations."
+      },
+      {
+        "question": "What information does Modio need to start the enrollment process?",
+        "answer": "Modio requires basic provider information (licenses, DEA, NPI), practice details (tax ID, address, contact info), malpractice insurance certificates, and completed W-9. Their onboarding process guides you through gathering all required documentation."
+      }
+    ],
+    "keywords": [
+      "Modio Health",
+      "payer enrollment",
+      "insurance credentialing",
+      "CAQH management",
+      "provider enrollment",
+      "mental health payer enrollment",
+      "insurance panel enrollment",
+      "credentialing services",
+      "behavioral health credentialing"
+    ]
+  }
+}

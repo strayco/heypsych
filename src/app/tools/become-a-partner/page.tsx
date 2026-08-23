@@ -15,7 +15,8 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 
-const canonicalUrl = `${siteConfig.url}/tools/become-a-partner/`;
+// Slashless canonical for consistency with sitemap
+const canonicalUrl = `${siteConfig.url}/tools/become-a-partner`;
 
 export const metadata: Metadata = {
   title: "Become a Partner | HeyPsych Tools Directory",

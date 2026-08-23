@@ -1,0 +1,273 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "blueprint-sondermind-mbc",
+  "slug": "blueprint",
+  "name": "Blueprint",
+  "company_name": "Blueprint (SonderMind)",
+  "import_ref": {
+    "record_id": "MBC-0001",
+    "source_file": "measurement-dtx-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "measurement-based-care",
+  "secondary_categories": [
+    "ai-documentation",
+    "ehr-practice-management",
+    "outcomes-tracking"
+  ],
+  "capabilities": [
+    "measurement-based-care",
+    "phq-9",
+    "gad-7",
+    "automated-assessments",
+    "outcomes-tracking",
+    "ai-documentation",
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "telehealth",
+    "billing",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "counselor"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "counseling"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_mbc": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "short_description": "AI-powered EHR and measurement-based care platform for mental health clinicians with free EHR, per-session AI notes, and integrated outcome tracking.",
+  "long_description": "Blueprint is an AI-powered platform combining a full-featured electronic health record with an AI assistant and measurement-based care tools. Originally focused on MBC, Blueprint now offers a free EHR with optional AI documentation capabilities priced per session. The platform supports automated delivery of validated assessments (PHQ-9, GAD-7, and others), real-time outcome visualization, and AI-generated progress notes. Blueprint integrates with major practice management systems including SimplePractice, TherapyNotes, and TheraNest. The platform serves over 70,000 mental health professionals and has generated over 10 million clinical notes. Blueprint promotes measurement-based care adoption as the new standard across mental healthcare settings.",
+  "one_liner": "Free EHR with AI assistant and measurement-based care for therapists.",
+  "best_for": [
+    "Solo therapists wanting a free, comprehensive EHR with AI documentation",
+    "Mental health practices adopting measurement-based care",
+    "Clinicians seeking per-session AI pricing without monthly minimums",
+    "Practices wanting automated outcome tracking and visualization"
+  ],
+  "not_for": [
+    "Large enterprise health systems requiring deep EHR integrations",
+    "Organizations needing real-time API integrations with TherapyNotes or SimplePractice",
+    "Practices requiring 42 CFR Part 2 compliance"
+  ],
+  "website_url": "https://www.blueprint.ai",
+  "pricing_url": "https://www.blueprint.ai/pricing",
+  "support_url": "https://www.blueprint.ai/support",
+  "logo_url": "https://www.blueprint.ai/logo.png",
+  "pricing": {
+    "model": "per-session",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free EHR + $0.99-$1.49/session AI",
+    "free_tier": true,
+    "free_trial_days": null,
+    "quote_required": false,
+    "price_range": "budget",
+    "tiers": [
+      {
+        "name": "Core (Free)",
+        "price": "Free",
+        "description": "Full EHR with scheduling, telehealth, notes, treatment plans, intake forms, payments, claims submission"
+      },
+      {
+        "name": "Plus",
+        "price": "$0.99/session",
+        "description": "AI-powered notes and documentation for non-Blueprint EHR users"
+      },
+      {
+        "name": "Pro",
+        "price": "$1.49/session",
+        "description": "Advanced AI assistant features for non-Blueprint EHR users"
+      }
+    ],
+    "legacy_pricing": {
+      "basic": "$39/month per user",
+      "professional": "$59/month per user",
+      "enterprise": "Custom"
+    },
+    "notes": "Core EHR is free forever. AI Assistant priced per session. No monthly minimum. Works with any EHR via copy/paste.",
+    "last_verified": "2026-08-22"
+  },
+  "mbc_details": {
+    "assessments_included": [
+      "PHQ-9",
+      "GAD-7",
+      "PCL-5",
+      "PHQ-A",
+      "Columbia Suicide Severity Rating Scale"
+    ],
+    "assessment_delivery": [
+      "email",
+      "sms",
+      "patient-portal",
+      "in-session"
+    ],
+    "automated_scoring": true,
+    "automated_delivery": true,
+    "real_time_visualization": true,
+    "outcome_dashboards": true,
+    "provider_benchmarking": true,
+    "insurance_claims_support": true,
+    "session_by_session_tracking": true
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.blueprint.ai/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.blueprint.ai/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": "type2",
+    "soc2_provenance": {
+      "source_url": "https://www.blueprint.ai/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "phipa_compliant": true,
+    "encryption": "AES-256",
+    "annual_security_audits": true,
+    "audit_track_record": "6 years perfect scores"
+  },
+  "integrations": [
+    {
+      "name": "SimplePractice",
+      "slug": "simplepractice",
+      "category": "ehr",
+      "integration_type": "data-import",
+      "verified": true
+    },
+    {
+      "name": "TherapyNotes",
+      "slug": "therapynotes",
+      "category": "ehr",
+      "integration_type": "data-import",
+      "verified": true
+    },
+    {
+      "name": "TheraNest",
+      "slug": "theranest",
+      "category": "ehr",
+      "integration_type": "data-import",
+      "verified": true
+    },
+    {
+      "name": "Headway",
+      "slug": "headway",
+      "category": "billing",
+      "integration_type": "compatible",
+      "verified": true
+    },
+    {
+      "name": "Alma",
+      "slug": "alma",
+      "category": "billing",
+      "integration_type": "compatible",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Blueprint: Free EHR + AI for Therapists with MBC | HeyPsych",
+    "meta_description": "Blueprint offers a free EHR for mental health clinicians with AI-powered documentation at $0.99/session. Measurement-based care, PHQ-9, GAD-7 tracking included.",
+    "faqs": [
+      {
+        "q": "Is Blueprint really free for therapists?",
+        "a": "Yes, Blueprint's Core EHR is completely free and includes scheduling, telehealth, clinical notes, treatment plans, intake forms, payments, and claims submission. The AI assistant add-on costs $0.99-$1.49 per session."
+      },
+      {
+        "q": "What assessments does Blueprint support for measurement-based care?",
+        "a": "Blueprint supports validated assessments including PHQ-9 for depression, GAD-7 for anxiety, PCL-5 for PTSD, PHQ-A for adolescents, and the Columbia Suicide Severity Rating Scale. Assessments are delivered automatically via email, SMS, or patient portal."
+      },
+      {
+        "q": "Does Blueprint integrate with SimplePractice or TherapyNotes?",
+        "a": "Blueprint pulls clients, notes, and billing history from SimplePractice, TherapyNotes, and TheraNest. AI assistant output is copy/paste-friendly into any EHR system."
+      },
+      {
+        "q": "Is Blueprint HIPAA compliant with a BAA?",
+        "a": "Yes, Blueprint is HIPAA-compliant, SOC 2 Type II certified, PHIPA compliant, and provides a signed BAA. Data is protected with AES-256 encryption and annual security audits."
+      }
+    ],
+    "keywords": [
+      "Blueprint AI",
+      "measurement-based care",
+      "free EHR therapists",
+      "AI therapy notes",
+      "PHQ-9 tracking",
+      "mental health outcomes"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92
+  },
+  "related_tools": [
+    "greenspace-health",
+    "mirah",
+    "simplepractice",
+    "therapynotes"
+  ],
+  "competitor_tools": [
+    "greenspace-health",
+    "mirah",
+    "owl-insights"
+  ],
+  "company_info": {
+    "founded_year": 2018,
+    "headquarters": "San Francisco, California, USA",
+    "funding_status": "Series A ($9M)",
+    "funding_details": {
+      "total_raised": "$9M",
+      "latest_round": "Series A",
+      "latest_date": "2022"
+    },
+    "customer_count": "70,000+ mental health professionals",
+    "notes_generated": "10,000,000+"
+  },
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

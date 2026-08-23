@@ -3,6 +3,8 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// P0-8: Service role key for server-only operations (NOT exposed to client)
+const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 /**
  * Build-time resilience flag
@@ -176,6 +178,51 @@ export type Database = {
         Update: Partial<Database["public"]["Tables"]["newsletter_subscribers"]["Insert"]>;
         Relationships: [];
       };
+
+      // Demo request leads for clinician tools
+      demo_requests: {
+        Row: {
+          id: string;
+          email: string;
+          first_name: string;
+          last_name: string;
+          phone: string | null;
+          practice_name: string | null;
+          practice_size: string;
+          practice_setting: string;
+          role: string;
+          tool_slug: string;
+          tool_name: string;
+          message: string | null;
+          timeline: string | null;
+          utm_source: string | null;
+          utm_medium: string | null;
+          utm_campaign: string | null;
+          matcher_source: boolean;
+          agreed_to_terms: boolean;
+          marketing_consent: boolean;
+          status: string;
+          // Migration 041: Notification tracking
+          notification_status_operator: string | null;
+          notification_status_buyer: string | null;
+          notification_sent_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["demo_requests"]["Row"],
+          "id" | "created_at" | "updated_at" | "notification_status_operator" | "notification_status_buyer" | "notification_sent_at"
+        > & {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          notification_status_operator?: string | null;
+          notification_status_buyer?: string | null;
+          notification_sent_at?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["demo_requests"]["Insert"]>;
+        Relationships: [];
+      };
     };
     Views: {};
     Functions: {};
@@ -270,4 +317,33 @@ export function supabaseRequired(): SupabaseClient<Database> {
     );
   }
   return _supabaseClient;
+}
+
+/**
+ * P0-8: Service role client for SERVER-ONLY operations
+ *
+ * This bypasses RLS and should ONLY be used in server-side code (API routes, server components).
+ * NEVER expose this to the client or use in client components.
+ *
+ * Use cases:
+ * - Writing to tables with restrictive RLS (demo_requests)
+ * - Admin operations
+ * - Background jobs
+ *
+ * @returns Supabase client with service role privileges, or null if not configured
+ */
+export function supabaseServiceRole(): SupabaseClient<Database> | null {
+  if (!url || !serviceRole) {
+    console.warn("[Database] Service role key not configured - using anon client fallback");
+    return null;
+  }
+
+  // Create a new client with service role key
+  // This is created on-demand rather than cached to avoid memory leaks in serverless
+  return createClient<Database>(url, serviceRole, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
 }

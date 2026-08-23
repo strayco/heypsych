@@ -1,0 +1,251 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "423417ba-d526-4d3b-9334-128ee0b108ee",
+  "slug": "nabla-copilot",
+  "name": "Nabla Copilot",
+  "company_name": "Nabla",
+  "website": "https://www.nabla.com",
+  "description": "Nabla Copilot is an AI-powered medical assistant that automatically generates clinical notes from patient conversations. Founded in France and now operating globally, Nabla offers ambient documentation with a focus on privacy-first design and support for multiple languages including English, French, Spanish, and German.",
+  "import_ref": {
+    "record_id": "MH-0188",
+    "source_row": 189,
+    "import_timestamp": "2026-08-22T20:50:40.786Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "capabilities": [
+    "ambient-listening",
+    "soap-note-generation",
+    "multi-language-support",
+    "ehr-integration",
+    "telehealth-support",
+    "custom-templates",
+    "patient-instructions"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "physician",
+      "nurse-practitioner",
+      "physician-assistant",
+      "psychiatrist"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "outpatient-clinic",
+      "group-practice",
+      "telehealth"
+    ],
+    "organization_sizes": ["solo", "small", "medium", "large"],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "internal-medicine",
+      "psychiatry",
+      "dermatology",
+      "pediatrics",
+      "urgent-care"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "founded_year": 2018,
+    "headquarters": "Paris, France",
+    "employee_count": "50-100",
+    "funding_total": "$25M+",
+    "funding_stage": "Series A",
+    "notable_investors": ["Cathay Innovation", "Elaia"],
+    "customer_count": "5,000+ clinicians globally"
+  },
+  "pricing": {
+    "model": "per-provider-monthly",
+    "quote_required": false,
+    "starting_price": 99,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": 99,
+        "period": "monthly",
+        "features": [
+          "Unlimited patient visits",
+          "Ambient documentation",
+          "SOAP notes",
+          "Patient instructions",
+          "Mobile app",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": 149,
+        "period": "monthly",
+        "features": [
+          "Everything in Starter",
+          "Custom templates",
+          "EHR integrations",
+          "Multi-language support",
+          "Priority support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Everything in Professional",
+          "Custom integrations",
+          "Analytics dashboard",
+          "Dedicated success manager",
+          "GDPR compliance support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "duration_days": 7,
+      "credit_card_required": false
+    },
+    "notes": "Annual billing discounts available. Enterprise pricing for 20+ providers."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "privacy": "https://www.nabla.com/privacy"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Doctolib",
+      "type": "ehr",
+      "method": "api",
+      "native": true,
+      "notes": "Popular in France/Europe"
+    },
+    {
+      "name": "Zoom",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    },
+    {
+      "name": "Doxy.me",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Captures patient conversations and generates structured clinical notes"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Patient instructions",
+      "Consult notes"
+    ],
+    "specialty_templates": true,
+    "custom_templates": true,
+    "voice_commands": false,
+    "multi_language": true,
+    "supported_languages": ["English", "French", "Spanish", "German"],
+    "patient_instructions": true,
+    "accuracy_rate": "90%+ accuracy reported"
+  },
+  "best_for": [
+    "International and multilingual practices",
+    "European healthcare providers needing GDPR compliance",
+    "Solo and small practices seeking affordable AI scribe",
+    "Telehealth-heavy practices",
+    "Clinicians wanting patient instruction generation",
+    "Practices comfortable with browser extension integrations"
+  ],
+  "not_for": [
+    "Large US health systems requiring deep Epic integration",
+    "Organizations requiring HITRUST certification",
+    "Practices needing native EHR integration",
+    "Mental health-specific documentation needs"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 86,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["freed", "heidi-health", "deepscribe", "suki-assistant"],
+  "created_at": "2026-08-22T20:50:40.786Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Nabla Copilot AI Scribe: Multilingual Documentation Review | HeyPsych",
+    "meta_description": "Nabla Copilot review - multilingual AI medical scribe. Starting at $99/month. GDPR compliant, supports English, French, Spanish, German. 7-day free trial.",
+    "faqs": [
+      {
+        "question": "What languages does Nabla Copilot support?",
+        "answer": "Nabla Copilot supports multiple languages including English, French, Spanish, and German. This makes it ideal for international practices or clinicians seeing multilingual patient populations."
+      },
+      {
+        "question": "How much does Nabla Copilot cost?",
+        "answer": "Nabla starts at $99 per provider per month for the Starter plan. The Professional plan with multi-language support and EHR integrations is $149/month. A 7-day free trial is available."
+      },
+      {
+        "question": "Is Nabla GDPR compliant?",
+        "answer": "Yes, Nabla was founded in France and is fully GDPR compliant. It's an excellent choice for European healthcare providers or practices requiring EU data privacy compliance."
+      },
+      {
+        "question": "Does Nabla integrate with US EHRs like Epic?",
+        "answer": "Nabla works with Epic, Cerner, and Athenahealth via browser extension rather than native API integration. For practices requiring deep native EHR integration, consider alternatives like Suki or Abridge."
+      }
+    ],
+    "keywords": [
+      "Nabla Copilot",
+      "Nabla AI scribe",
+      "multilingual medical scribe",
+      "GDPR compliant AI scribe",
+      "European AI scribe",
+      "French AI scribe",
+      "ambient documentation"
+    ]
+  }
+}

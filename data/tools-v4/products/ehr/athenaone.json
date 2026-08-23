@@ -1,0 +1,235 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "3fd89c4a-ebe4-4e2e-ae87-574db62d2b08",
+  "slug": "athenaone",
+  "name": "athenaOne",
+  "company_name": "athenahealth, Inc.",
+  "import_ref": {
+    "record_id": "MH-0788",
+    "source_row": 789,
+    "import_timestamp": "2026-08-22T20:50:40.843Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ehr-practice-management",
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "telehealth-communication",
+    "analytics-reporting"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "prior-authorization",
+    "payment-processing",
+    "denial-management",
+    "video-sessions",
+    "secure-messaging",
+    "e-prescribing",
+    "epcs-controlled",
+    "reporting-dashboards",
+    "ehr-integration",
+    "api-access",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-specialty",
+      "multi-site-enterprise",
+      "hospital-system"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200+"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "primary-care",
+      "multi-specialty"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Cloud-based EHR and practice management platform with integrated revenue cycle management, serving medical practices and health systems across specialties.",
+  "long_description": "athenahealth is a leading cloud-based healthcare technology company offering athenaOne, an integrated suite combining electronic health records (athenaClinicals), practice management and billing (athenaCollector), patient engagement (athenaCommunicator), and care coordination tools. Founded in 1997 by Jonathan Bush and Todd Park in Watertown, Massachusetts, athenahealth pioneered the cloud-based EHR model. The platform serves over 160,000 providers and processes billions in medical claims annually. athenahealth uses a unique revenue-share pricing model where practices pay a percentage of collections rather than flat monthly fees. The company was acquired by Veritas Capital and Evergreen Coast Capital in 2019 for $5.7 billion and merged with Virence Health. athenahealth offers behavioral health capabilities but is a multi-specialty platform rather than mental health-specific. The platform includes telehealth (athenaTelehealth), e-prescribing with EPCS, patient portal, and extensive payer network connectivity.",
+  "one_liner": "The cloud EHR pioneer with percentage-of-collections pricing and deep payer network connectivity.",
+  "best_for": [
+    "Multi-specialty medical practices wanting integrated EHR and RCM",
+    "Practices preferring percentage-of-collections pricing over flat fees",
+    "Organizations needing extensive insurance payer connectivity",
+    "Growing practices wanting scalable enterprise platform"
+  ],
+  "not_for": [
+    "Mental health-only practices wanting specialized features",
+    "Small solo practices seeking budget-friendly options",
+    "Practices wanting simple flat-rate monthly pricing",
+    "Community mental health centers (CMHCs) with complex funding"
+  ],
+  "website_url": "https://www.athenahealth.com",
+  "pricing_url": "https://www.athenahealth.com/solutions/pricing",
+  "support_url": "https://www.athenahealth.com/support",
+  "logo_url": "https://www.athenahealth.com/logo.png",
+  "pricing": {
+    "model": "revenue-share",
+    "starting_price_cents": 0,
+    "starting_price_display": "4-8% of collections",
+    "free_tier": false,
+    "free_trial_days": 0,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "athenahealth uses a unique percentage-of-collections pricing model rather than per-provider-per-month fees. Typical rates range from 4-8% of net collections depending on specialty, volume, and services selected. This aligns athenahealth's incentives with practice revenue. Implementation fees may apply. Multi-year contracts are standard.",
+    "last_verified": "2026-08-22"
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "hipaa_provenance": {
+      "source_url": "https://www.athenahealth.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "baa_available": true,
+    "baa_provenance": {
+      "source_url": "https://www.athenahealth.com/security",
+      "verified_date": "2026-08-22",
+      "confidence": "high"
+    },
+    "soc2": true,
+    "hitrust": true,
+    "gdpr_compliant": "unknown",
+    "onc_certified": true
+  },
+  "integrations": [
+    {
+      "name": "Surescripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "e-Prescribing network with EPCS"
+    },
+    {
+      "name": "Labs",
+      "slug": "lab-integrations",
+      "category": "lab",
+      "integration_type": "hl7",
+      "verified": true,
+      "notes": "Quest, LabCorp, and regional labs"
+    },
+    {
+      "name": "Payer Network",
+      "slug": "athenanet-payer-network",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Direct connections to major payers"
+    },
+    {
+      "name": "Apple Health",
+      "slug": "apple-health",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Marketplace Partners",
+      "slug": "athena-marketplace",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "200+ third-party integrations"
+    }
+  ],
+  "seo": {
+    "title": "athenaOne: Cloud EHR with Revenue-Share Pricing | HeyPsych",
+    "meta_description": "athenaOne by athenahealth is a cloud-based EHR with percentage-of-collections pricing. Serving 160,000+ providers with EHR, billing, and patient engagement.",
+    "faqs": [
+      {
+        "q": "How much does athenahealth cost?",
+        "a": "athenahealth uses a unique percentage-of-collections pricing model typically ranging from 4-8% of net collections. This differs from traditional per-provider monthly fees. The exact rate depends on specialty, volume, and selected services. Contact athenahealth for a custom quote."
+      },
+      {
+        "q": "Is athenahealth good for mental health practices?",
+        "a": "athenahealth offers behavioral health capabilities but is a multi-specialty platform. Mental health-specific EHRs like SimplePractice, TherapyNotes, or Valant may offer more specialized features. athenahealth is better suited for multi-specialty groups or larger behavioral health organizations."
+      },
+      {
+        "q": "What is included in athenaOne?",
+        "a": "athenaOne includes athenaClinicals (EHR), athenaCollector (practice management and billing), athenaCommunicator (patient engagement), and athenaTelehealth. The integrated suite covers clinical documentation, scheduling, billing, patient portal, e-prescribing, and reporting."
+      },
+      {
+        "q": "Who owns athenahealth?",
+        "a": "athenahealth was acquired by Veritas Capital and Evergreen Coast Capital (Elliott Management affiliate) in 2019 for $5.7 billion. The company merged with Virence Health (formerly GE Healthcare's revenue cycle business) and remains privately held."
+      }
+    ],
+    "keywords": [
+      "athenahealth",
+      "athenaOne",
+      "cloud EHR",
+      "revenue cycle management",
+      "practice management software",
+      "percentage of collections pricing"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "advancedmd",
+    "nextgen-behavioral-health-suite",
+    "tebra"
+  ],
+  "competitor_tools": [
+    "advancedmd",
+    "nextgen-healthcare",
+    "eclinicalworks"
+  ],
+  "company_info": {
+    "founded_year": 1997,
+    "headquarters": "Watertown, Massachusetts, USA",
+    "employee_count": "5000+",
+    "funding_status": "Private Equity (Veritas Capital, Evergreen Coast Capital)",
+    "acquisition_value": "$5.7 billion (2019)",
+    "founders": "Jonathan Bush, Todd Park",
+    "customer_count": "160,000+ providers"
+  },
+  "created_at": "2026-08-22T20:50:40.843Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

@@ -1,0 +1,265 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "mirah-mbc",
+  "slug": "mirah",
+  "name": "Mirah",
+  "company_name": "Mirah",
+  "import_ref": {
+    "record_id": "MBC-0004",
+    "source_file": "measurement-dtx-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "measurement-based-care",
+  "secondary_categories": [
+    "collaborative-care",
+    "pediatric-behavioral-health",
+    "outcomes-tracking"
+  ],
+  "capabilities": [
+    "measurement-based-care",
+    "collaborative-care",
+    "automated-assessments",
+    "phq-9",
+    "gad-7",
+    "adaptive-assessments",
+    "pediatric-specialized",
+    "outcomes-tracking",
+    "ehr-integration",
+    "va-approved",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "pediatrician",
+      "primary-care-physician",
+      "care-coordinator"
+    ],
+    "practice_settings": [
+      "group-practice",
+      "health-system",
+      "pediatric-clinic",
+      "primary-care",
+      "integrated-care"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "pediatric-mental-health",
+      "collaborative-care",
+      "integrated-care"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": true,
+    "has_mbc": true,
+    "has_collaborative_care": true,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_pediatric_optimized": true
+  },
+  "short_description": "Measurement-based care and collaborative care platform with 400+ measures, proprietary adaptive assessments, and the only integrated care technology optimized for pediatrics.",
+  "long_description": "Mirah is a powerful measurement-based care platform designed to support patient-centered, data-driven behavioral healthcare. The platform offers over 400 clinically validated measures that can be customized at the individual patient level or auto-assigned via measurement protocols. Mirah's proprietary Computer Adapted Multidimensional Scale (CAMS) tracks 16 dimensions (12 symptoms and 4 strengths) using adaptive questioning that adds more questions when concerning behaviors are detected. Uniquely, Mirah is the only integrated care technology optimized for pediatrics, making it ideal for child and adolescent behavioral health settings. The platform integrates with major EHRs including AdvancedMD and Athenahealth, and is approved by the VA for federal use.",
+  "one_liner": "MBC platform with 400+ measures, adaptive assessments, and pediatric optimization.",
+  "best_for": [
+    "Pediatric behavioral health clinics needing specialized assessments",
+    "Organizations implementing collaborative care (CoCM) billing",
+    "Health systems seeking adaptive, precision measurement tools",
+    "Primary care practices integrating behavioral health"
+  ],
+  "not_for": [
+    "Solo practitioners seeking simple assessment tools",
+    "Practices wanting all-in-one EHR with MBC built-in",
+    "Organizations without EHR infrastructure for integration"
+  ],
+  "website_url": "https://www.mirah.com",
+  "pricing_url": "https://www.mirah.com/contact",
+  "support_url": "https://mbc.help.mirah.com",
+  "logo_url": "https://www.mirah.com/logo.png",
+  "pricing": {
+    "model": "hybrid",
+    "starting_price_cents": 7500,
+    "starting_price_display": "$75/provider/month (standard) or $48/patient/year",
+    "free_tier": false,
+    "free_trial_days": null,
+    "quote_required": true,
+    "price_range": "mid-market",
+    "tiers": [
+      {
+        "name": "Per-Provider",
+        "price": "$75/provider/month",
+        "description": "Unlimited assessments per provider. Best for smaller organizations."
+      },
+      {
+        "name": "Per-Patient",
+        "price": "$48/patient/year",
+        "description": "Unlimited providers. Best for larger organizations with many providers."
+      }
+    ],
+    "contract_terms": {
+      "minimum_term": "1 year",
+      "termination_window": "90 days after first year"
+    },
+    "notes": "Pricing from 2022 - contact Mirah for current pricing. Custom enterprise pricing available.",
+    "last_verified": "2026-08-22"
+  },
+  "mbc_details": {
+    "assessment_count": "400+",
+    "assessments_included": [
+      "PHQ-9",
+      "PHQ-A",
+      "GAD-7",
+      "PCL-5",
+      "Columbia Suicide Severity Rating Scale",
+      "CAMS (proprietary adaptive)",
+      "Pediatric-specific measures"
+    ],
+    "proprietary_measures": {
+      "cams": {
+        "name": "Computer Adapted Multidimensional Scale",
+        "dimensions": 16,
+        "symptom_dimensions": 12,
+        "strength_dimensions": 4,
+        "adaptive": true,
+        "description": "Tracks overall functioning with adaptive questioning that adds more questions when concerning behaviors are detected"
+      }
+    },
+    "assessment_delivery": [
+      "email",
+      "sms",
+      "patient-portal",
+      "in-session"
+    ],
+    "automated_scoring": true,
+    "automated_delivery": true,
+    "customizable_protocols": true,
+    "unit_level_protocols": true,
+    "patient_level_customization": true,
+    "real_time_visualization": true,
+    "outcome_dashboards": true
+  },
+  "collaborative_care": {
+    "cocm_support": true,
+    "care_manager_workflows": true,
+    "psychiatric_consultant_tools": true,
+    "registry_functionality": true,
+    "billing_support": true
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "baa_available": true,
+    "va_approved": true,
+    "va_trm_listed": true
+  },
+  "integrations": [
+    {
+      "name": "AdvancedMD",
+      "slug": "advancedmd",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "features": [
+        "Patient demographic sync",
+        "Clinician sync",
+        "Scheduling sync",
+        "In-EHR clinical feedback reports"
+      ]
+    },
+    {
+      "name": "Athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Healthie",
+      "slug": "healthie",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "clinical_benefits": {
+    "no_show_reduction": true,
+    "patient_engagement": "Sending assessments day before session reminds patients of appointments",
+    "cpt_reimbursement": "Up to 25% additional revenue via CPT codes"
+  },
+  "seo": {
+    "title": "Mirah: Pediatric-Optimized MBC & Collaborative Care | HeyPsych",
+    "meta_description": "Mirah offers 400+ measures with proprietary adaptive assessments and pediatric optimization. Collaborative care platform with AdvancedMD and Athenahealth integration.",
+    "faqs": [
+      {
+        "q": "How much does Mirah cost per provider?",
+        "a": "Mirah offers two pricing models: $75 per provider per month (unlimited assessments) or $48 per patient per year (unlimited providers). Minimum 1-year contract with 90-day termination window after the first year."
+      },
+      {
+        "q": "What is Mirah's CAMS assessment?",
+        "a": "CAMS (Computer Adapted Multidimensional Scale) is Mirah's proprietary adaptive assessment that tracks 16 dimensions (12 symptoms and 4 strengths). It adapts by adding more questions when concerning behaviors are detected."
+      },
+      {
+        "q": "Is Mirah good for pediatric behavioral health?",
+        "a": "Yes, Mirah is uniquely optimized for pediatrics and is described as the only integrated care technology specifically designed for pediatric behavioral health settings."
+      },
+      {
+        "q": "Does Mirah support collaborative care billing?",
+        "a": "Yes, Mirah supports CoCM (Collaborative Care Model) workflows and can help unlock up to 25% additional revenues via CPT reimbursement codes."
+      }
+    ],
+    "keywords": [
+      "Mirah",
+      "measurement-based care",
+      "collaborative care platform",
+      "pediatric behavioral health",
+      "CAMS assessment",
+      "CoCM billing"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "greenspace-health",
+    "blueprint",
+    "owl-insights"
+  ],
+  "competitor_tools": [
+    "greenspace-health",
+    "blueprint",
+    "owl-insights"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "focus_areas": [
+      "Measurement-based care",
+      "Collaborative care",
+      "Pediatric behavioral health"
+    ],
+    "federal_approval": "VA TRM listed"
+  },
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

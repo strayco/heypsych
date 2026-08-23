@@ -5,24 +5,24 @@ const BASE_URL = "https://heypsych.com";
 
 /**
  * Get canonical URL for a tool page
- * Each tool has exactly one canonical: /tools/{slug}/
+ * Each tool has exactly one canonical: /tools/{slug} (no trailing slash)
  */
 export function getToolCanonical(slug: string): string {
-  return `${BASE_URL}/tools/${slug}/`;
+  return `${BASE_URL}/tools/${slug}`;
 }
 
 /**
  * Get canonical URL for a hub page
  */
 export function getHubCanonical(hubSlug: string): string {
-  return `${BASE_URL}/tools/${hubSlug}/`;
+  return `${BASE_URL}/tools/${hubSlug}`;
 }
 
 /**
  * Get canonical URL for a sub-hub page
  */
 export function getSubHubCanonical(parentSlug: string, subHubSlug: string): string {
-  return `${BASE_URL}/tools/${parentSlug}/${subHubSlug}/`;
+  return `${BASE_URL}/tools/${parentSlug}/${subHubSlug}`;
 }
 
 /**
@@ -30,14 +30,14 @@ export function getSubHubCanonical(parentSlug: string, subHubSlug: string): stri
  * Filter states always canonical to base hub URL (noindex, not in sitemap)
  */
 export function getFilterCanonical(hubSlug: string): string {
-  return `${BASE_URL}/tools/${hubSlug}/`;
+  return `${BASE_URL}/tools/${hubSlug}`;
 }
 
 /**
  * Get tools directory canonical
  */
 export function getToolsDirectoryCanonical(): string {
-  return `${BASE_URL}/tools/`;
+  return `${BASE_URL}/tools`;
 }
 
 /**
@@ -61,8 +61,8 @@ export function shouldNoIndex(pathname: string, searchParams?: URLSearchParams):
  * Build canonical URL from pathname
  */
 export function buildCanonicalFromPath(pathname: string): string {
-  // Ensure trailing slash
-  const cleanPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  // Remove trailing slash for canonical consistency
+  const cleanPath = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
   return `${BASE_URL}${cleanPath}`;
 }
 
@@ -70,7 +70,8 @@ export function buildCanonicalFromPath(pathname: string): string {
  * Validate canonical URL format for tools
  */
 export function isValidToolCanonical(url: string): boolean {
-  const pattern = /^https:\/\/heypsych\.com\/tools\/[\w-]+\/$/;
+  // Accept both slashed and slashless for validation, canonical is slashless
+  const pattern = /^https:\/\/heypsych\.com\/tools\/[\w-]+\/?$/;
   return pattern.test(url);
 }
 
@@ -78,7 +79,8 @@ export function isValidToolCanonical(url: string): boolean {
  * Validate canonical URL format for hubs
  */
 export function isValidHubCanonical(url: string): boolean {
-  const pattern = /^https:\/\/heypsych\.com\/tools\/[\w-]+\/$/;
+  // Accept both slashed and slashless for validation, canonical is slashless
+  const pattern = /^https:\/\/heypsych\.com\/tools\/[\w-]+\/?$/;
   return pattern.test(url);
 }
 

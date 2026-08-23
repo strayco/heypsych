@@ -1,0 +1,258 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "big-health-sleepio-daylight",
+  "slug": "big-health",
+  "name": "Big Health (Sleepio, Daylight)",
+  "company_name": "Big Health",
+  "import_ref": {
+    "record_id": "DTX-0004",
+    "source_file": "measurement-dtx-research-2026",
+    "import_timestamp": "2026-08-22T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "digital-therapeutics",
+  "secondary_categories": [
+    "prescription-digital-therapeutic",
+    "insomnia-treatment",
+    "anxiety-treatment",
+    "employer-wellness"
+  ],
+  "capabilities": [
+    "fda-cleared-dtx",
+    "prescription-digital-therapeutic",
+    "chronic-insomnia-treatment",
+    "gad-treatment",
+    "cbt-i-delivery",
+    "cbt-delivery",
+    "employer-wellness",
+    "pbm-integration",
+    "medicare-reimbursable",
+    "hipaa-compliant"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "primary-care-physician",
+      "sleep-medicine-physician"
+    ],
+    "practice_settings": [
+      "primary-care",
+      "sleep-clinic",
+      "psychiatry-practice",
+      "health-system",
+      "employer-wellness"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "sleep-medicine",
+      "psychiatry",
+      "primary-care",
+      "behavioral-health"
+    ],
+    "customer_types": [
+      "employers",
+      "health-plans",
+      "health-systems",
+      "benefits-consultants"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_dtx": true,
+    "has_fda_clearance": true,
+    "has_medicare_coverage": true,
+    "is_mental_health_specific": true
+  },
+  "short_description": "FDA-cleared prescription digital therapeutics for chronic insomnia (SleepioRx) and generalized anxiety disorder (DaylightRx), with Medicare coverage effective January 2025.",
+  "long_description": "Big Health offers FDA-cleared prescription digital therapeutics for two of the most prevalent mental health conditions: chronic insomnia (SleepioRx) and generalized anxiety disorder (DaylightRx). SleepioRx, cleared in August 2024, delivers Cognitive Behavioral Therapy for Insomnia (CBT-I) as a 90-day treatment, with clinical trials showing 76% of patients achieve improvement. DaylightRx, cleared in September 2024, is the first FDA-cleared digital treatment for GAD, with 71% improvement rates. Both products received Medicare coverage effective January 2025 through new CMS Digital Mental Health Treatment (DMHT) G-codes - a landmark achievement for the DTx industry. Big Health's employer-focused model features utilization-based pricing with no PEPM fees, billing through PBM integration. The company raised $23.7M in February 2026 to accelerate adoption and has supported over 750,000 individuals.",
+  "one_liner": "First FDA-cleared DTx for anxiety (DaylightRx) and insomnia (SleepioRx) with Medicare coverage.",
+  "best_for": [
+    "Employers seeking clinically validated digital mental health for insomnia and anxiety",
+    "Health plans implementing FDA-cleared digital therapeutics",
+    "Health systems prescribing evidence-based insomnia and anxiety treatment",
+    "Benefits consultants recommending proven digital health solutions"
+  ],
+  "not_for": [
+    "Solo practitioners (enterprise/B2B model)",
+    "Organizations seeking comprehensive MBC platforms",
+    "Practices treating conditions beyond insomnia and GAD"
+  ],
+  "website_url": "https://www.bighealth.com",
+  "secondary_urls": {
+    "sleepio": "https://www.bighealth.com/sleepio-rx",
+    "daylight": "https://www.bighealth.com/daylight"
+  },
+  "pricing_url": "https://www.bighealth.com/contact",
+  "logo_url": "https://www.bighealth.com/logo.png",
+  "pricing": {
+    "model": "utilization-based",
+    "starting_price_cents": null,
+    "starting_price_display": "Utilization-based (no PEPM fees)",
+    "free_tier": false,
+    "free_trial_days": null,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "pricing_model_details": {
+      "employer_model": "Utilization-based with no Per Employee Per Month (PEPM) fees",
+      "billing_method": "Claims billed via PBM to pharmacy budget when employees enroll",
+      "integration": "Two-page PBM addendum to enable coverage",
+      "cost_sharing": "Subject to regular cost-share requirements under Medicare"
+    },
+    "medicare_coverage": {
+      "effective_date": "2025-01-01",
+      "billing_codes": "CMS DMHT G-codes",
+      "coverage_type": "Medicare Fee-for-Service and Medicare Advantage"
+    },
+    "notes": "Big Health's model avoids traditional PEPM wellness fees by billing through pharmacy benefits. Partners include Evernorth and CVS Caremark Point Solutions Management.",
+    "last_verified": "2026-08-22"
+  },
+  "products": [
+    {
+      "name": "SleepioRx",
+      "description": "FDA-cleared prescription digital therapeutic for chronic insomnia delivering CBT-I",
+      "fda_cleared": true,
+      "fda_clearance_date": "2024-08-08",
+      "indication": "Chronic insomnia/insomnia disorder as adjunct to usual care in adults 18+",
+      "mechanism": "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
+      "treatment_duration": "90 days (depending on severity)",
+      "efficacy": "76% of patients achieve improvement in insomnia",
+      "clinical_trials": 26,
+      "rcts": 18,
+      "nice_guidance": true,
+      "nice_milestone": "First digital therapeutic to receive NICE guidance confirming clinical and cost effectiveness",
+      "status": "active"
+    },
+    {
+      "name": "DaylightRx",
+      "description": "FDA-cleared prescription digital therapeutic for generalized anxiety disorder delivering CBT",
+      "fda_cleared": true,
+      "fda_clearance_date": "2024-09-04",
+      "indication": "Generalized anxiety disorder (GAD) as adjunct to usual care in patients 22+",
+      "mechanism": "Cognitive Behavioral Therapy (CBT)",
+      "efficacy": "71% of patients experience improvement in anxiety disorder",
+      "milestone": "First FDA-cleared digital treatment for generalized anxiety disorder",
+      "status": "active"
+    }
+  ],
+  "fda_status": {
+    "sleepiorx": {
+      "cleared": true,
+      "clearance_date": "August 8, 2024",
+      "indication": "Chronic insomnia in adults 18+"
+    },
+    "daylightrx": {
+      "cleared": true,
+      "clearance_date": "September 4, 2024",
+      "indication": "GAD in adults 22+",
+      "milestone": "First FDA-cleared digital treatment for GAD"
+    }
+  },
+  "regulatory_milestones": {
+    "nice_guidance": {
+      "product": "Sleepio",
+      "milestone": "First-ever digital therapeutic to receive NICE guidance",
+      "significance": "Confirmed clinical and cost effectiveness for NHS (UK)"
+    },
+    "cms_dmht_codes": {
+      "effective_date": "January 1, 2025",
+      "significance": "First national Medicare coverage for FDA-cleared digital mental health treatments",
+      "products_covered": ["SleepioRx", "DaylightRx"]
+    }
+  },
+  "distribution_partnerships": [
+    {
+      "partner": "Evernorth",
+      "integration": "Digital Health Formulary"
+    },
+    {
+      "partner": "CVS Caremark",
+      "integration": "Point Solutions Management program"
+    }
+  ],
+  "clinical_evidence": {
+    "total_individuals_supported": "750,000+",
+    "sleepiorx": {
+      "improvement_rate": "76%",
+      "clinical_trials": 26,
+      "rcts": 18
+    },
+    "daylightrx": {
+      "improvement_rate": "71%"
+    }
+  },
+  "company_info": {
+    "headquarters": "San Francisco, California, USA / London, UK",
+    "funding_status": "Venture-backed",
+    "latest_funding": {
+      "amount": "$23.7M",
+      "date": "February 2026",
+      "lead_investors": [".406 Ventures", "AlleyCorp"],
+      "purpose": "Accelerate adoption of prescription digital therapeutics following Medicare coverage"
+    }
+  },
+  "compliance": {
+    "hipaa_support": true,
+    "baa_available": true,
+    "fda_regulated": true
+  },
+  "seo": {
+    "title": "Big Health: FDA-Cleared SleepioRx & DaylightRx DTx | HeyPsych",
+    "meta_description": "SleepioRx (insomnia) and DaylightRx (anxiety) are FDA-cleared digital therapeutics with Medicare coverage as of January 2025. 76% and 71% improvement rates.",
+    "faqs": [
+      {
+        "q": "Is SleepioRx FDA approved?",
+        "a": "Yes, SleepioRx received FDA clearance on August 8, 2024 for treatment of chronic insomnia in adults 18+ as an adjunct to usual care. It delivers CBT-I through a 90-day digital program."
+      },
+      {
+        "q": "Is DaylightRx FDA approved for anxiety?",
+        "a": "Yes, DaylightRx received FDA clearance on September 4, 2024, becoming the first FDA-cleared digital treatment for generalized anxiety disorder (GAD) in adults 22+."
+      },
+      {
+        "q": "Does Medicare cover SleepioRx and DaylightRx?",
+        "a": "Yes, as of January 1, 2025, CMS established new DMHT G-codes enabling Medicare Fee-for-Service and Medicare Advantage coverage for SleepioRx and DaylightRx."
+      },
+      {
+        "q": "How effective is SleepioRx for insomnia?",
+        "a": "Clinical studies show 76% of SleepioRx patients achieve improvement in insomnia. The product has been tested in 26 clinical trials including 18 RCTs."
+      }
+    ],
+    "keywords": [
+      "Big Health",
+      "SleepioRx",
+      "DaylightRx",
+      "FDA digital therapeutic insomnia",
+      "FDA digital therapeutic anxiety",
+      "CBT-I app",
+      "Medicare digital therapeutics"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-22",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 95
+  },
+  "related_tools": [
+    "pear-therapeutics",
+    "koa-health"
+  ],
+  "competitor_tools": [
+    "pear-therapeutics"
+  ],
+  "created_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-08-22T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

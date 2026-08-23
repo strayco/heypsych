@@ -1,0 +1,270 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "966874fc-70fd-4de8-b74c-19dce979fb30",
+  "slug": "freed",
+  "name": "Freed",
+  "company_name": "Freed",
+  "website": "https://www.getfreed.ai",
+  "description": "Freed is an AI medical scribe that listens to patient visits and automatically generates clinical documentation. It uses ambient AI technology to capture conversations during in-person or telehealth visits and creates structured SOAP notes, progress notes, and other documentation formats within seconds of the encounter ending.",
+  "import_ref": {
+    "record_id": "MH-0186",
+    "source_row": 187,
+    "import_timestamp": "2026-08-22T20:50:40.786Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "capabilities": [
+    "ambient-listening",
+    "soap-note-generation",
+    "progress-note-generation",
+    "telehealth-support",
+    "ehr-integration",
+    "voice-commands",
+    "custom-templates",
+    "multi-specialty-support"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "physician",
+      "nurse-practitioner",
+      "physician-assistant",
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "private-practice",
+      "outpatient-clinic",
+      "group-practice",
+      "hospital-system",
+      "telehealth"
+    ],
+    "organization_sizes": ["solo", "small", "medium", "large"],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "internal-medicine",
+      "psychiatry",
+      "therapy",
+      "cardiology",
+      "dermatology",
+      "gastroenterology",
+      "orthopedics",
+      "pediatrics"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "founded_year": 2023,
+    "headquarters": "San Francisco, CA",
+    "employee_count": "50-100",
+    "funding_total": "$10M+",
+    "funding_stage": "Series A",
+    "customer_count": "10,000+ clinicians",
+    "notable_investors": ["General Catalyst", "Sequoia Capital"]
+  },
+  "pricing": {
+    "model": "per-provider-monthly",
+    "quote_required": false,
+    "starting_price": 99,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": 99,
+        "period": "monthly",
+        "features": [
+          "Unlimited patient visits",
+          "SOAP notes",
+          "Basic EHR copy-paste",
+          "Mobile app access",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": 149,
+        "period": "monthly",
+        "features": [
+          "Everything in Basic",
+          "Custom note templates",
+          "EHR integrations",
+          "Priority support",
+          "Team management"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Everything in Professional",
+          "Custom integrations",
+          "Dedicated success manager",
+          "Advanced analytics",
+          "SLA guarantees"
+        ],
+        "quote_required": true
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "duration_days": 7,
+      "credit_card_required": false
+    },
+    "notes": "Pricing as of 2024. Annual billing discounts available."
+  },
+  "compliance": {
+    "hipaa_support": "full",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "hipaa": "https://www.getfreed.ai/security",
+      "baa": "https://www.getfreed.ai/security"
+    }
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "api",
+      "native": false,
+      "notes": "Via browser extension and copy-paste"
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "eClinicalWorks",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "DrChrono",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Practice Fusion",
+      "type": "ehr",
+      "method": "browser-extension",
+      "native": false
+    },
+    {
+      "name": "Zoom",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    },
+    {
+      "name": "Doxy.me",
+      "type": "telehealth",
+      "method": "browser-extension",
+      "native": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to patient conversations in real-time without requiring dictation"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes",
+      "Procedure notes",
+      "Psychiatry notes",
+      "Therapy progress notes"
+    ],
+    "specialty_templates": true,
+    "custom_templates": true,
+    "voice_commands": true,
+    "multi_language": false,
+    "accuracy_rate": "95%+ reported by users"
+  },
+  "best_for": [
+    "Solo practitioners looking for affordable AI scribe",
+    "Primary care physicians with high patient volumes",
+    "Telehealth providers needing quick documentation",
+    "Clinicians wanting to reduce documentation time by 70%+",
+    "Practices using various EHRs (works via browser extension)"
+  ],
+  "not_for": [
+    "Large health systems requiring deep EHR integration",
+    "Practices needing on-premise solutions",
+    "Clinicians requiring specialty-specific coding assistance",
+    "Organizations requiring HITRUST certification"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_verified": "2024-12-01"
+  },
+  "related_tools": ["suki-assistant", "nuance-dax-copilot", "abridge", "deepscribe"],
+  "created_at": "2026-08-22T20:50:40.786Z",
+  "updated_at": "2026-08-22T21:30:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Freed AI Scribe: Pricing, Features & Review 2024 | HeyPsych",
+    "meta_description": "Freed AI medical scribe review for clinicians. Starting at $99/month with 7-day free trial. Compare features, pricing, EHR integrations and HIPAA compliance.",
+    "faqs": [
+      {
+        "question": "How accurate is Freed AI for clinical documentation?",
+        "answer": "Freed reports 95%+ accuracy rates for clinical documentation. The AI learns your preferences over time and improves accuracy. Most clinicians report minimal editing needed after the first few visits."
+      },
+      {
+        "question": "Does Freed work with my EHR system?",
+        "answer": "Freed works with virtually any EHR through its browser extension, allowing you to copy notes directly into your system. Native integrations are available for select EHRs. The setup takes about 5 minutes."
+      },
+      {
+        "question": "Can I use Freed for psychiatry and mental health notes?",
+        "answer": "Yes, Freed supports psychiatry and mental health documentation including therapy progress notes, psychiatric evaluations, and SOAP notes. It can capture longer sessions typical in mental health settings."
+      },
+      {
+        "question": "What happens to my patient data with Freed?",
+        "answer": "Freed is HIPAA compliant and offers BAAs. Audio recordings are processed in real-time and not stored long-term. All data is encrypted in transit and at rest. The company has SOC 2 Type II certification."
+      }
+    ],
+    "keywords": [
+      "Freed AI",
+      "Freed medical scribe",
+      "AI scribe documentation",
+      "ambient AI scribe",
+      "medical documentation AI",
+      "SOAP note generator",
+      "clinical documentation AI"
+    ]
+  }
+}

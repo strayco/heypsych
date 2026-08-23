@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0",
+  "description": "Entity resolution for duplicate canonical keys in the master tools spreadsheet",
+  "generated_at": "2026-08-22T00:00:00.000Z",
+  "resolution_rules": {
+    "keep_primary": "Keep the record with more complete data or from the primary category sheet",
+    "merge_metadata": "Combine unique metadata from both records into the canonical version",
+    "create_redirect": "Create a redirect from deprecated slug to canonical slug"
+  },
+  "duplicates": [
+    {
+      "canonical_key": "array-behavioral-care-insight-telepsychiatry",
+      "canonical_slug": "insight-telepsychiatry",
+      "record_ids": ["MH-0296", "MH-0853"],
+      "resolution": "merge",
+      "primary_record": "MH-0296",
+      "deprecated_record": "MH-0853",
+      "notes": "Array Behavioral Care acquired Insight Telepsychiatry. Primary record is in Provider Networks category.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "array-behavioral-care-regroup-telehealth",
+      "canonical_slug": "regroup-telehealth",
+      "record_ids": ["MH-0297", "MH-0852"],
+      "resolution": "merge",
+      "primary_record": "MH-0297",
+      "deprecated_record": "MH-0852",
+      "notes": "Array Behavioral Care also owns Regroup Telehealth brand. Primary in Provider Networks.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "athenahealth-athenacollector",
+      "canonical_slug": "athenacollector",
+      "record_ids": ["MH-0619", "MH-0790"],
+      "resolution": "merge",
+      "primary_record": "MH-0619",
+      "deprecated_record": "MH-0790",
+      "notes": "athenaCollector is athenahealth's RCM module. Appears in both Billing/RCM and Legacy sheets.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "brightside-health-brightside-health",
+      "canonical_slug": "brightside-health",
+      "record_ids": ["MH-0303", "MH-0385"],
+      "resolution": "merge",
+      "primary_record": "MH-0303",
+      "deprecated_record": "MH-0385",
+      "notes": "Brightside Health appears in both Provider Networks and Measurement/DTx categories. Both are valid - it's a virtual mental health platform with outcomes tracking.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "cerebral-cerebral",
+      "canonical_slug": "cerebral",
+      "record_ids": ["MH-0306", "MH-0384"],
+      "resolution": "merge",
+      "primary_record": "MH-0306",
+      "deprecated_record": "MH-0384",
+      "notes": "Cerebral virtual mental health platform. Appears in Provider Networks and Measurement/DTx.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "doximity-doxgpt",
+      "canonical_slug": "doximity-doxgpt",
+      "record_ids": ["MH-0674", "MH-0847"],
+      "resolution": "merge",
+      "primary_record": "MH-0674",
+      "deprecated_record": "MH-0847",
+      "notes": "DoxGPT is Doximity's AI documentation assistant. Duplicate entries in AI Scribe category.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "foresight-mental-health-foresight-mental-health",
+      "canonical_slug": "foresight-mental-health",
+      "record_ids": ["MH-0305", "MH-0386"],
+      "resolution": "merge",
+      "primary_record": "MH-0305",
+      "deprecated_record": "MH-0386",
+      "notes": "Foresight Mental Health virtual psychiatry practice. Appears in Provider Networks and Measurement/DTx.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "headspace-health-ginger",
+      "canonical_slug": "ginger",
+      "record_ids": ["MH-0389", "MH-0850"],
+      "resolution": "merge",
+      "primary_record": "MH-0389",
+      "deprecated_record": "MH-0850",
+      "notes": "Ginger was acquired by Headspace Health in 2021. Legacy brand entry exists.",
+      "redirects": [
+        {"from": "ginger-io", "to": "ginger"}
+      ]
+    },
+    {
+      "canonical_key": "included-health-doctor-on-demand",
+      "canonical_slug": "doctor-on-demand",
+      "record_ids": ["MH-0308", "MH-0855"],
+      "resolution": "merge",
+      "primary_record": "MH-0308",
+      "deprecated_record": "MH-0855",
+      "notes": "Doctor On Demand merged with Grand Rounds to form Included Health in 2021.",
+      "redirects": [
+        {"from": "grand-rounds", "to": "included-health"}
+      ]
+    },
+    {
+      "canonical_key": "talkiatry-talkiatry",
+      "canonical_slug": "talkiatry",
+      "record_ids": ["MH-0302", "MH-0383"],
+      "resolution": "merge",
+      "primary_record": "MH-0302",
+      "deprecated_record": "MH-0383",
+      "notes": "Talkiatry virtual psychiatry practice. Appears in Provider Networks and Measurement/DTx.",
+      "redirects": []
+    },
+    {
+      "canonical_key": "tebra-legacy-kareo-kareo-billing",
+      "canonical_slug": "kareo-billing",
+      "record_ids": ["MH-0623", "MH-0843"],
+      "resolution": "merge",
+      "primary_record": "MH-0623",
+      "deprecated_record": "MH-0843",
+      "notes": "Kareo rebranded to Tebra in 2022. Kareo Billing is the RCM module.",
+      "redirects": [
+        {"from": "kareo", "to": "tebra"}
+      ]
+    },
+    {
+      "canonical_key": "valera-health-valera-health",
+      "canonical_slug": "valera-health",
+      "record_ids": ["MH-0304", "MH-0387"],
+      "resolution": "merge",
+      "primary_record": "MH-0304",
+      "deprecated_record": "MH-0387",
+      "notes": "Valera Health virtual mental health platform. Appears in Provider Networks and Measurement/DTx.",
+      "redirects": []
+    }
+  ],
+  "acquisitions": [
+    {
+      "acquirer": "headspace-health",
+      "acquired": ["ginger", "ginger-io"],
+      "date": "2021-08",
+      "notes": "Headspace and Ginger merged to form Headspace Health"
+    },
+    {
+      "acquirer": "included-health",
+      "acquired": ["doctor-on-demand", "grand-rounds"],
+      "date": "2021-03",
+      "notes": "Doctor On Demand and Grand Rounds merged to form Included Health"
+    },
+    {
+      "acquirer": "tebra",
+      "acquired": ["kareo", "patientpop"],
+      "date": "2022-02",
+      "notes": "Kareo and PatientPop merged to form Tebra"
+    },
+    {
+      "acquirer": "array-behavioral-care",
+      "acquired": ["insight-telepsychiatry", "regroup-telehealth"],
+      "date": "2021-01",
+      "notes": "Array Behavioral Care acquired both Insight and Regroup"
+    },
+    {
+      "acquirer": "ensora-health",
+      "acquired": ["theranest", "therapynotes-brand", "fusion-web-clinic"],
+      "date": "2021-05",
+      "notes": "Therapy Brands (now Ensora Health) acquired by KKR for $1.25B"
+    }
+  ],
+  "rebrands": [
+    {
+      "old_name": "Therapy Brands",
+      "new_name": "Ensora Health",
+      "date": "2025-04",
+      "products_affected": ["theranest", "fusion-web-clinic"]
+    },
+    {
+      "old_name": "Kareo",
+      "new_name": "Tebra",
+      "date": "2022-02",
+      "products_affected": ["kareo-clinical", "kareo-billing", "kareo-engage"]
+    },
+    {
+      "old_name": "Cerner",
+      "new_name": "Oracle Health",
+      "date": "2022-06",
+      "products_affected": ["cerner-millennium", "cerner-powerchart"]
+    }
+  ]
+}
