@@ -4,16 +4,23 @@
 import type { Metadata } from "next";
 import { EHRMatcherClient } from "@/components/tools/clinician/EHRMatcherClient";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { siteConfig } from "@/lib/config/site";
+
+const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/ehr-practice-management/match/`;
 
 export const metadata: Metadata = {
-  title: "Find the Best EHR for Your Practice | HeyPsych",
+  title: "EHR Finder for Mental Health Practices | HeyPsych",
   description:
-    "Answer 7 quick questions to find the best EHR and practice management software for your mental health practice. Compare features, pricing, and compliance.",
+    "Answer a few questions to find EHR and practice management software options for your mental health practice. Compare features, pricing, and compliance.",
+  alternates: {
+    canonical: canonicalUrl,
+  },
   openGraph: {
-    title: "Find the Best EHR for Your Practice",
+    title: "EHR Finder for Mental Health Practices",
     description:
-      "Answer 7 quick questions to find the best EHR for your mental health practice.",
+      "Answer a few questions to find EHR options for your mental health practice.",
     type: "website",
+    url: canonicalUrl,
   },
 };
 
