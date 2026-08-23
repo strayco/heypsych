@@ -322,7 +322,7 @@ function formatBuyerConfirmationHtml(data: DemoRequest, requestId: string): stri
 
       <p>In the meantime, you can:</p>
       <ul>
-        <li><a href="https://heypsych.com/tools/for-clinicians/${data.toolSlug}/">Learn more about ${data.toolName}</a></li>
+        <li><a href="https://heypsych.com/tools/for-clinicians/ehr-practice-management/${data.toolSlug}/">Learn more about ${data.toolName}</a></li>
         <li><a href="https://heypsych.com/tools/for-clinicians/">Browse other clinician tools</a></li>
       </ul>
 
@@ -347,7 +347,7 @@ What you requested:
 ${data.message ? `- Your message: ${data.message}` : ""}
 
 In the meantime, you can learn more at:
-https://heypsych.com/tools/for-clinicians/${data.toolSlug}/
+https://heypsych.com/tools/for-clinicians/ehr-practice-management/${data.toolSlug}/
 
 Reference: ${requestId}
 If you have questions, reply to this email or contact us at hello@heypsych.com
