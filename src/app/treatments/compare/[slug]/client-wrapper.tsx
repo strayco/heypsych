@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Scale, ChevronDown, ChevronUp, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,11 +19,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
     <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
-        <motion.nav
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 text-sm text-neutral-500"
-        >
+        <nav className="mb-6 text-sm text-neutral-500">
           <Link href="/" className="hover:text-neutral-700 transition-colors">
             Home
           </Link>
@@ -38,28 +33,20 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
           </Link>
           <span className="mx-2">/</span>
           <span className="text-neutral-900">{data.name}</span>
-        </motion.nav>
+        </nav>
 
         {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Link href="/treatments/compare">
             <Button variant="ghost" className="group">
               <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               All Comparisons
             </Button>
           </Link>
-        </motion.div>
+        </div>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-10"
-        >
+        <div className="mb-10">
           <div className="space-y-4">
             <div className="mb-3 flex flex-wrap gap-2">
               <Badge variant="primary" size="md" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
@@ -79,15 +66,10 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
               {data.description}
             </p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Bottom Line Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-10"
-        >
+        <div className="mb-10">
           <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-blue-900">
@@ -103,15 +85,10 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
               </p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Quick Links to Both Treatments */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           <Link
             href={`/treatments/${data.entities.entity_a.slug}`}
             className="group block"
@@ -156,15 +133,10 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
               </CardContent>
             </Card>
           </Link>
-        </motion.div>
+        </div>
 
         {/* Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-12"
-        >
+        <div className="mb-12">
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl">Side-by-Side Comparison</CardTitle>
@@ -208,17 +180,12 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Content Sections */}
         <div className="space-y-8 mb-12">
           {data.sections.map((section, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 + index * 0.05 }}
-            >
+            <div key={index}>
               <Card>
                 <CardHeader>
                   <CardTitle className="text-xl">{section.heading}</CardTitle>
@@ -281,18 +248,13 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
                   )}
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* FAQs */}
         {data.faqs && data.faqs.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <Card>
               <CardHeader>
                 <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
@@ -314,37 +276,22 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
                           <ChevronDown className="h-5 w-5 text-neutral-400 shrink-0" />
                         )}
                       </button>
-                      <AnimatePresence>
-                        {expandedFaq === index && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="overflow-hidden"
-                          >
-                            <p className="faq-answer px-5 pb-5 text-neutral-600 leading-relaxed">
-                              {faq.a}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      {expandedFaq === index && (
+                        <p className="faq-answer px-5 pb-5 text-neutral-600 leading-relaxed">
+                          {faq.a}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         )}
 
         {/* Related Comparisons */}
         {data.related_comparisons && data.related_comparisons.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h2 className="text-xl font-bold text-neutral-900 mb-4">
               Related Comparisons
             </h2>
@@ -364,16 +311,11 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* Medical Disclaimer */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 pt-8 border-t border-neutral-200"
-        >
+        <footer className="mt-12 pt-8 border-t border-neutral-200">
           <div className="bg-neutral-50 rounded-lg p-6">
             <p className="text-sm text-neutral-600 leading-relaxed">
               <strong className="text-neutral-700">Medical Disclaimer:</strong> This comparison is for
@@ -385,7 +327,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
               Last reviewed: {data.editorial.lastReviewed} by HeyPsych Medical Review Board
             </p>
           </div>
-        </motion.footer>
+        </footer>
       </div>
     </main>
   );

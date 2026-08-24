@@ -87,9 +87,12 @@ export default async function SymptomsPage() {
 
       <main className="min-h-screen bg-canvas">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-surface to-canvas pb-12 pt-16 md:pb-16 md:pt-24">
+        <section className="bg-surface border-b border-separator pb-12 pt-16 md:pb-16 md:pt-24">
           <div className="mx-auto max-w-4xl px-4 text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-label-primary md:text-5xl">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Symptom Explorer
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary md:text-4xl">
               Explore Mental Health Symptoms
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary md:text-xl">
@@ -179,9 +182,7 @@ export default async function SymptomsPage() {
                     className="rounded-xl border border-separator bg-surface p-6"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-tint">
-                        <IconComponent className="h-5 w-5 text-accent" />
-                      </div>
+                      <IconComponent className="h-5 w-5 text-label-tertiary" />
                       <div>
                         <h3 className="font-semibold text-label-primary">
                           {category.name}
@@ -319,11 +320,9 @@ export default async function SymptomsPage() {
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <Link
                 href="/resources/assessments-screeners"
-                className="group flex items-start gap-4 rounded-xl border border-separator p-5 transition-all hover:border-accent/30 hover:shadow-card-2"
+                className="group flex items-start gap-4 rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-treatment-tint">
-                  <ClipboardList className="h-5 w-5 text-treatment" />
-                </div>
+                <ClipboardList className="h-5 w-5 text-label-tertiary shrink-0" />
                 <div>
                   <h3 className="font-medium text-label-primary group-hover:text-accent">
                     Take an Assessment
@@ -336,11 +335,9 @@ export default async function SymptomsPage() {
 
               <Link
                 href="/psychiatrists"
-                className="group flex items-start gap-4 rounded-xl border border-separator p-5 transition-all hover:border-accent/30 hover:shadow-card-2"
+                className="group flex items-start gap-4 rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-positive-tint">
-                  <Users className="h-5 w-5 text-positive" />
-                </div>
+                <Users className="h-5 w-5 text-label-tertiary shrink-0" />
                 <div>
                   <h3 className="font-medium text-label-primary group-hover:text-accent">
                     Find a Provider
@@ -353,11 +350,9 @@ export default async function SymptomsPage() {
 
               <Link
                 href="/resources/support-community/immediate-crisis"
-                className="group flex items-start gap-4 rounded-xl border border-separator p-5 transition-all hover:border-accent/30 hover:shadow-card-2"
+                className="group flex items-start gap-4 rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-caution-tint">
-                  <Phone className="h-5 w-5 text-caution" />
-                </div>
+                <Phone className="h-5 w-5 text-label-tertiary shrink-0" />
                 <div>
                   <h3 className="font-medium text-label-primary group-hover:text-accent">
                     Crisis Support

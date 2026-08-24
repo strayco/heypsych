@@ -5,126 +5,86 @@
 // Mission 1: Fix homepage positioning to serve both audiences.
 
 import Link from "next/link";
-import { User, Stethoscope, ArrowRight } from "lucide-react";
-
-interface AudienceCardProps {
-  title: string;
-  description: string;
-  primaryLink: { href: string; label: string };
-  secondaryLink?: { href: string; label: string };
-  icon: React.ReactNode;
-  variant: "patient" | "clinician";
-}
-
-function AudienceCard({
-  title,
-  description,
-  primaryLink,
-  secondaryLink,
-  icon,
-  variant,
-}: AudienceCardProps) {
-  const variantStyles = {
-    patient: {
-      border: "border-accent/20",
-      bg: "bg-accent/5",
-      iconBg: "bg-accent/10",
-      iconColor: "text-accent",
-      primaryBtn: "bg-accent hover:bg-accent/90 text-white",
-      secondaryBtn: "border-accent/30 hover:bg-accent/5",
-    },
-    clinician: {
-      border: "border-treatment/20",
-      bg: "bg-treatment/5",
-      iconBg: "bg-treatment/10",
-      iconColor: "text-treatment",
-      primaryBtn: "bg-treatment hover:bg-treatment/90 text-white",
-      secondaryBtn: "border-treatment/30 hover:bg-treatment/5",
-    },
-  };
-
-  const styles = variantStyles[variant];
-
-  return (
-    <div
-      className={`rounded-2xl border ${styles.border} ${styles.bg} p-6 transition-shadow hover:shadow-soft`}
-    >
-      <div className="flex items-center gap-3 mb-4">
-        <div
-          className={`flex h-10 w-10 items-center justify-center rounded-xl ${styles.iconBg}`}
-        >
-          {icon}
-        </div>
-        <h3 className="text-lg font-semibold text-label-primary">{title}</h3>
-      </div>
-
-      <p className="text-label-secondary mb-5">{description}</p>
-
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <Link
-          href={primaryLink.href}
-          className={`group inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${styles.primaryBtn}`}
-        >
-          {primaryLink.label}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </Link>
-        {secondaryLink && (
-          <Link
-            href={secondaryLink.href}
-            className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg border bg-surface px-4 py-2.5 text-sm font-medium text-label-primary transition-all ${styles.secondaryBtn}`}
-          >
-            {secondaryLink.label}
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-}
+import { ArrowRight } from "lucide-react";
 
 export function AudienceGateway() {
   return (
-    <section className="px-4 pb-12 pt-12 sm:px-6 md:pt-20 lg:px-8">
+    <section className="px-4 pb-16 pt-16 sm:px-6 md:pt-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        {/* Primary H1 - Mission FIX 3 */}
-        <h1 className="text-3xl font-bold tracking-tight text-label-primary text-center sm:text-4xl md:text-5xl mb-4">
-          Mental health, for everyone involved.
+        {/* Primary H1 */}
+        <h1 className="text-center text-2xl font-semibold tracking-tight text-label-primary whitespace-nowrap sm:text-3xl md:text-4xl lg:text-5xl">
+          Better mental health starts with better decisions.
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-label-secondary text-center sm:text-xl mb-10">
-          Whether you&apos;re seeking understanding or running a practice, start here.
+        <p className="mt-4 text-center text-lg text-label-secondary">
+          Find the right care. Build the right practice.
         </p>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {/* Patient Path */}
-          <AudienceCard
-            variant="patient"
-            title="For Patients & Families"
-            description="Understand mental health conditions, explore treatment options, and find tools to support your journey."
-            icon={<User className="h-5 w-5 text-accent" />}
-            primaryLink={{
-              href: "/tools/for-patients",
-              label: "Find Self-Help Tools",
-            }}
-            secondaryLink={{
-              href: "/conditions",
-              label: "Explore Conditions",
-            }}
-          />
+          <div className="group relative rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-neutral-300 hover:shadow-soft sm:p-8">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              For Patients & Families
+            </p>
+            <h2 className="mt-3 text-xl font-semibold text-label-primary sm:text-2xl">
+              Find the right support
+            </h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-label-secondary">
+              Explore therapy platforms, mental health apps, conditions, and treatment options.
+            </p>
 
-          {/* Clinician Path - with attribution tracking */}
-          <AudienceCard
-            variant="clinician"
-            title="For Mental Health Clinicians"
-            description="Build your ideal practice technology stack with Practice Architect™ — transparent fit scores, real pricing."
-            icon={<Stethoscope className="h-5 w-5 text-treatment" />}
-            primaryLink={{
-              href: "/architect?source=homepage_audience_gateway",
-              label: "Open Practice Architect™",
-            }}
-            secondaryLink={{
-              href: "/tools/for-clinicians?source=homepage_audience_gateway",
-              label: "Browse All Tools",
-            }}
-          />
+            <div className="mt-6 flex flex-col gap-2">
+              <Link
+                href="/tools/find-support"
+                className="group/link inline-flex items-center justify-between rounded-lg bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              >
+                <span className="text-white">Find Therapy & Support</span>
+                <ArrowRight className="h-4 w-4 text-white transition-transform group-hover/link:translate-x-0.5" />
+              </Link>
+              <div className="flex gap-2">
+                <Link
+                  href="/conditions"
+                  className="flex-1 rounded-lg border border-separator bg-canvas px-3 py-2.5 text-center text-sm font-medium text-label-primary transition-colors hover:border-neutral-300"
+                >
+                  Conditions
+                </Link>
+                <Link
+                  href="/tools/for-patients"
+                  className="flex-1 rounded-lg border border-separator bg-canvas px-3 py-2.5 text-center text-sm font-medium text-label-primary transition-colors hover:border-neutral-300"
+                >
+                  Apps & Tools
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Clinician Path */}
+          <div className="group relative rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-neutral-300 hover:shadow-soft sm:p-8">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              For Mental Health Clinicians
+            </p>
+            <h2 className="mt-3 text-xl font-semibold text-label-primary sm:text-2xl">
+              Build your practice stack
+            </h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-label-secondary">
+              Compare EHRs, AI scribes, and billing tools with transparent fit scores.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-2">
+              <Link
+                href="/architect?source=homepage"
+                className="group/link inline-flex items-center justify-between rounded-lg border border-neutral-900 bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+              >
+                <span className="text-white">Practice Architect™</span>
+                <ArrowRight className="h-4 w-4 text-white transition-transform group-hover/link:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/tools/for-clinicians?source=homepage"
+                className="rounded-lg border border-separator bg-canvas px-3 py-2.5 text-center text-sm font-medium text-label-primary transition-colors hover:border-neutral-300 hover:bg-neutral-50"
+              >
+                Browse All Clinician Tools
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

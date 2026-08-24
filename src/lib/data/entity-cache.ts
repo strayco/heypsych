@@ -92,10 +92,39 @@ export const getCachedEntity = cache(
 // =============================================================================
 
 /**
+ * Process items with limited concurrency to avoid overwhelming the database.
+ */
+async function processWithConcurrency<T, R>(
+  items: T[],
+  fn: (item: T) => Promise<R>,
+  concurrency: number = 5
+): Promise<R[]> {
+  const results: R[] = [];
+  const queue = [...items];
+
+  async function worker() {
+    while (queue.length > 0) {
+      const item = queue.shift()!;
+      const result = await fn(item);
+      results.push(result);
+    }
+  }
+
+  // Spawn workers up to concurrency limit
+  const workers = Array.from({ length: Math.min(concurrency, items.length) }, () => worker());
+  await Promise.all(workers);
+
+  return results;
+}
+
+/**
  * Fetch multiple entities by slug with request-level memoization.
  *
  * Each slug is fetched through the cache, so subsequent calls
  * for the same slug will return the cached result.
+ *
+ * Uses limited concurrency (5) to prevent overwhelming the database
+ * during static generation.
  *
  * @param slugs - Array of entity slugs to fetch
  * @returns Map of slug to EntityLookupResult
@@ -104,13 +133,15 @@ export const getEntitiesBySlugs = cache(
   async (slugs: string[]): Promise<Map<string, EntityLookupResult>> => {
     const results = new Map<string, EntityLookupResult>();
 
-    // Fetch all entities in parallel
-    const promises = slugs.map(async (slug) => {
-      const result = await getEntityBySlug(slug);
-      return [slug, result] as const;
-    });
-
-    const entries = await Promise.all(promises);
+    // Use concurrency limit to avoid overwhelming database during build
+    const entries = await processWithConcurrency(
+      slugs,
+      async (slug) => {
+        const result = await getEntityBySlug(slug);
+        return [slug, result] as const;
+      },
+      5 // Max 5 concurrent requests
+    );
 
     for (const [slug, result] of entries) {
       results.set(slug, result);

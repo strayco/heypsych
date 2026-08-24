@@ -11,6 +11,8 @@ import {
   type ClinicianToolV4,
   type ClinicianProductCategory,
   CLINICIAN_PRODUCT_CATEGORY_LABELS,
+  SCHEMA_TO_TAXONOMY_CATEGORY,
+  TAXONOMY_TO_SCHEMA_CATEGORIES,
 } from "../schemas/clinician-tool-v4";
 
 // ============================================================================
@@ -450,31 +452,60 @@ export class ClinicianToolService {
   }
 
   /**
-   * Get tools by primary category
+   * Get tools by category.
+   * Accepts both schema category slugs and V4 taxonomy slugs.
    */
   static async getByCategory(
-    category: string
+    categorySlug: string
   ): Promise<ClinicianToolV4[]> {
     const allTools = await this.loadClinicianTools();
-    return allTools.filter((tool) => tool.primary_category === category);
+
+    // Get schema categories that map to this taxonomy slug
+    const schemaCategories = TAXONOMY_TO_SCHEMA_CATEGORIES[categorySlug];
+
+    if (schemaCategories && schemaCategories.length > 0) {
+      // This is a taxonomy slug - filter by mapped schema categories
+      return allTools.filter((tool) =>
+        schemaCategories.includes(tool.primary_category)
+      );
+    }
+
+    // Fallback: treat as schema category slug (direct match)
+    return allTools.filter((tool) => tool.primary_category === categorySlug);
   }
 
   /**
-   * Get tools by category (including secondary categories)
+   * Get tools by category (including secondary categories).
+   * Accepts both schema category slugs and V4 taxonomy slugs.
    */
   static async getByCategoryInclusive(
-    category: string
+    categorySlug: string
   ): Promise<ClinicianToolV4[]> {
     const allTools = await this.loadClinicianTools();
+
+    // Get schema categories that map to this taxonomy slug
+    const schemaCategories = TAXONOMY_TO_SCHEMA_CATEGORIES[categorySlug];
+
+    if (schemaCategories && schemaCategories.length > 0) {
+      // This is a taxonomy slug
+      return allTools.filter(
+        (tool) =>
+          schemaCategories.includes(tool.primary_category) ||
+          tool.secondary_categories.some((cat) => schemaCategories.includes(cat))
+      );
+    }
+
+    // Fallback: treat as schema category slug
     return allTools.filter(
       (tool) =>
-        tool.primary_category === category ||
-        tool.secondary_categories.includes(category as ClinicianProductCategory)
+        tool.primary_category === categorySlug ||
+        tool.secondary_categories.includes(categorySlug as ClinicianProductCategory)
     );
   }
 
   /**
-   * Get tool counts per category (publishable only)
+   * Get tool counts per category (publishable only).
+   * Returns counts by SCHEMA category slugs (as stored in tool data).
    */
   static async getToolCounts(): Promise<Record<string, number>> {
     const allTools = await this.loadClinicianTools();
@@ -488,17 +519,35 @@ export class ClinicianToolService {
   }
 
   /**
-   * Get tool counts with category metadata
+   * Get tool counts by V4 TAXONOMY category slugs (SEO-friendly URLs).
+   * Maps schema categories to taxonomy categories for consistent URL structure.
+   */
+  static async getToolCountsByTaxonomy(): Promise<Record<string, number>> {
+    const allTools = await this.loadClinicianTools();
+    const counts: Record<string, number> = {};
+
+    for (const tool of allTools) {
+      // Map schema category to taxonomy category
+      const taxonomySlug = SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category];
+      if (taxonomySlug) {
+        counts[taxonomySlug] = (counts[taxonomySlug] || 0) + 1;
+      }
+    }
+
+    return counts;
+  }
+
+  /**
+   * Get tool counts with category metadata using V4 taxonomy slugs.
+   * This is the primary method for the landing page.
    */
   static async getCategoryCounts(): Promise<CategoryCount[]> {
-    const counts = await this.getToolCounts();
+    const counts = await this.getToolCountsByTaxonomy();
 
     return Object.entries(counts)
       .map(([slug, count]) => ({
         slug,
-        display_name:
-          CLINICIAN_PRODUCT_CATEGORY_LABELS[slug as ClinicianProductCategory] ||
-          slug,
+        display_name: slug, // Will be enriched by page from taxonomy JSON
         count,
         url: `/tools/for-clinicians/${slug}/`,
       }))

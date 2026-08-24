@@ -22,3 +22,13 @@ export {
   CLINICIAN_ROLE_TO_CLINICAL,
   CATEGORY_CORE_CAPABILITIES,
 } from "./v4-product-adapter";
+
+// V4 category to Architect stage mapping
+export {
+  V4_CATEGORY_TO_ARCHITECT_STAGE,
+  ARCHITECT_STAGE_TO_V4_CATEGORIES,
+  STAGE_TO_CATEGORY_DISPLAY,
+  getStageForCategory,
+  getCategoriesForStage,
+  getPrimaryCategoryForStage,
+} from "./category-stage-mapping";

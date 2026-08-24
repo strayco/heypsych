@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, ChevronRight } from "lucide-react";
-import { IntentGrid } from "@/components/navigation/IntentGrid";
 import { AudienceGateway } from "@/components/home/AudienceGateway";
 
 // SEO-optimized metadata - Mission FIX 3 dual-audience positioning
@@ -89,125 +88,79 @@ export default function HomePage() {
 
       {/* Homepage Sections */}
       <div className="min-h-screen bg-canvas">
-        {/* AudienceGateway is the new hero - contains H1 */}
+        {/* AudienceGateway - contains H1 and primary navigation */}
         <AudienceGateway />
 
-        {/* Search Bar - below audience gateway */}
-        <section className="px-4 pb-8 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-xl">
+        {/* Search Bar */}
+        <section className="px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-lg">
             <Link
               href="/search"
-              className="
-                group flex w-full items-center gap-3 rounded-full
-                border border-separator bg-surface px-5 py-3.5
-                text-label-tertiary shadow-subtle
-                transition-all duration-200
-                hover:border-accent hover:shadow-soft
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
-              "
+              className="group flex w-full items-center gap-3 rounded-full border border-separator bg-surface px-5 py-3 text-label-tertiary transition-all hover:border-accent/50 hover:shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              <Search className="h-5 w-5 text-label-tertiary group-hover:text-accent" />
-              <span className="flex-1 text-left">Search conditions, treatments, tools...</span>
-              <kbd className="hidden rounded-md bg-fill-quaternary px-2 py-1 text-xs font-medium text-label-tertiary sm:inline-block">
+              <Search className="h-5 w-5 text-label-quaternary group-hover:text-accent" />
+              <span className="flex-1 text-left text-[15px]">Search conditions, treatments, tools...</span>
+              <kbd className="hidden rounded bg-fill-quaternary px-2 py-1 text-xs font-medium text-label-tertiary sm:inline-block">
                 /
               </kbd>
             </Link>
-            <p className="mt-3 text-center text-sm text-label-tertiary">
-              Evidence-based information reviewed by mental health professionals
-            </p>
           </div>
         </section>
 
-        {/* Intent Grid Section */}
-        <section className="px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <IntentGrid />
-          </div>
-        </section>
-
-        {/* Quick Navigation Section */}
+        {/* Quick Links */}
         <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-8 text-center text-xl font-semibold text-label-primary">
-              Explore by category
-            </h2>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto max-w-4xl">
+            <div className="grid gap-px overflow-hidden rounded-xl border border-separator bg-separator sm:grid-cols-2 lg:grid-cols-4">
               {[
-                {
-                  href: "/conditions",
-                  label: "Conditions",
-                  description: "Understand symptoms and diagnoses",
-                },
-                {
-                  href: "/treatments/compare",
-                  label: "Compare Treatments",
-                  description: "Compare therapy and medication",
-                },
-                {
-                  href: "/tools",
-                  label: "Tools",
-                  description: "Discover apps and resources",
-                },
-                {
-                  href: "/psychiatrists",
-                  label: "Find Care",
-                  description: "Search for providers near you",
-                },
+                { href: "/conditions", label: "Conditions", desc: "Symptoms & diagnoses" },
+                { href: "/treatments/compare", label: "Treatments", desc: "Therapy & medication" },
+                { href: "/tools", label: "Tools", desc: "Apps & resources" },
+                { href: "/psychiatrists", label: "Find Care", desc: "Providers near you" },
               ].map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="
-                    group flex items-center justify-between rounded-xl
-                    border border-separator bg-surface p-4
-                    transition-all duration-150
-                    hover:border-accent/30 hover:shadow-subtle
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
-                  "
+                  className="group flex items-center justify-between bg-surface p-4 transition-colors hover:bg-fill-quaternary focus:outline-none focus-visible:bg-accent-tint"
                 >
                   <div>
-                    <p className="font-medium text-label-primary group-hover:text-accent">
-                      {item.label}
-                    </p>
-                    <p className="mt-0.5 text-sm text-label-tertiary">
-                      {item.description}
-                    </p>
+                    <p className="font-medium text-label-primary group-hover:text-accent">{item.label}</p>
+                    <p className="text-sm text-label-tertiary">{item.desc}</p>
                   </div>
-                  <ChevronRight className="h-5 w-5 shrink-0 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+                  <ChevronRight className="h-5 w-5 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
+        {/* Stats */}
         <section className="px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="grid gap-8 text-center sm:grid-cols-3">
+          <div className="mx-auto max-w-3xl">
+            <div className="flex items-center justify-center gap-12 text-center sm:gap-16">
               <div>
-                <p className="text-3xl font-bold text-accent tabular-nums">130+</p>
-                <p className="mt-1 text-sm text-label-secondary">Mental health conditions covered</p>
+                <p className="text-2xl font-semibold tabular-nums text-label-primary">130+</p>
+                <p className="text-sm text-label-tertiary">Conditions</p>
               </div>
+              <div className="h-8 w-px bg-separator" />
               <div>
-                <p className="text-3xl font-bold text-accent tabular-nums">650+</p>
-                <p className="mt-1 text-sm text-label-secondary">Treatment options explained</p>
+                <p className="text-2xl font-semibold tabular-nums text-label-primary">650+</p>
+                <p className="text-sm text-label-tertiary">Treatments</p>
               </div>
+              <div className="h-8 w-px bg-separator" />
               <div>
-                <p className="text-3xl font-bold text-accent tabular-nums">100+</p>
-                <p className="mt-1 text-sm text-label-secondary">Digital tools reviewed</p>
+                <p className="text-2xl font-semibold tabular-nums text-label-primary">100+</p>
+                <p className="text-sm text-label-tertiary">Tools</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Medical Disclaimer Footer */}
+        {/* Medical Disclaimer */}
         <section className="border-t border-separator bg-surface-grouped px-4 py-8 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm text-label-secondary">
-              HeyPsych provides educational information about mental health conditions and
-              treatments. This content is not a substitute for professional medical advice,
-              diagnosis, or treatment. Always seek the advice of a qualified healthcare
-              provider with questions about a medical condition.
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm leading-relaxed text-label-tertiary">
+              HeyPsych provides educational information about mental health. This is not a substitute
+              for professional medical advice. Always consult a qualified healthcare provider.
             </p>
           </div>
         </section>

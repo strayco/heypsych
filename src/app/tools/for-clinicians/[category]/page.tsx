@@ -1,6 +1,6 @@
 // src/app/tools/for-clinicians/[category]/page.tsx
 // Category hub page for V4 clinician tool categories
-// Dynamic route that renders each of the 15 V4 categories
+// Dynamic route that renders each of the 16 V4 categories
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -53,6 +53,7 @@ interface CategoryPageProps {
 
 // Icon mapping for V4 categories
 const categoryIcons: Record<string, LucideIcon> = {
+  "marketing-patient-acquisition": LineChart, // TrendingUp equivalent
   "ehr-practice-management": Laptop,
   "ai-scribe-documentation": Mic,
   "billing-rcm": Receipt,
@@ -70,24 +71,8 @@ const categoryIcons: Record<string, LucideIcon> = {
   "digital-therapeutics": Sparkles,
 };
 
-// Color mapping for V4 categories
-const categoryColors: Record<string, string> = {
-  "ehr-practice-management": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "ai-scribe-documentation": "bg-purple-500/10 text-purple-600 border-purple-200",
-  "billing-rcm": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
-  "telehealth-communication": "bg-cyan-500/10 text-cyan-600 border-cyan-200",
-  "provider-networks": "bg-indigo-500/10 text-indigo-600 border-indigo-200",
-  "measurement-outcomes": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
-  "prescribing-erx": "bg-red-500/10 text-red-600 border-red-200",
-  "credentialing-workforce": "bg-amber-500/10 text-amber-600 border-amber-200",
-  "patient-engagement": "bg-pink-500/10 text-pink-600 border-pink-200",
-  "clinical-decision-support": "bg-blue-500/10 text-blue-600 border-blue-200",
-  "scheduling-intake": "bg-orange-500/10 text-orange-600 border-orange-200",
-  "compliance-security": "bg-slate-500/10 text-slate-600 border-slate-200",
-  "analytics-reporting": "bg-violet-500/10 text-violet-600 border-violet-200",
-  "care-coordination": "bg-sky-500/10 text-sky-600 border-sky-200",
-  "digital-therapeutics": "bg-pink-500/10 text-pink-600 border-pink-200",
-};
+// Unified neutral style for all categories
+const categoryColorClass = "bg-surface border-separator text-label-tertiary";
 
 // Get category from slug
 function getCategoryBySlug(slug: string) {
@@ -165,9 +150,8 @@ export default async function CategoryHubPage({
   // Get related categories
   const relatedCategories = getRelatedCategories(categorySlug);
 
-  // Get icon and color
+  // Get icon
   const Icon = categoryIcons[categorySlug] || Laptop;
-  const colorClass = categoryColors[categorySlug] || "bg-gray-500/10 text-gray-600";
 
   // Generate structured data
   const structuredData = generateCategoryStructuredData(
@@ -188,21 +172,20 @@ export default async function CategoryHubPage({
 
       <div className="min-h-screen bg-canvas">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-surface border-b border-separator">
-          <div className="absolute inset-0 bg-gradient-to-br from-treatment/3 via-transparent to-accent/2" />
-          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <section className="bg-surface border-b border-separator">
+          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             {/* Breadcrumb */}
             <nav className="mb-6 flex items-center gap-2 text-sm">
               <Link
                 href="/tools/"
-                className="text-label-secondary hover:text-treatment transition-colors"
+                className="text-label-secondary hover:text-accent transition-colors"
               >
                 Tools
               </Link>
               <span className="text-label-quaternary">/</span>
               <Link
                 href="/tools/for-clinicians/"
-                className="text-label-secondary hover:text-treatment transition-colors"
+                className="text-label-secondary hover:text-accent transition-colors"
               >
                 For Clinicians
               </Link>
@@ -213,16 +196,12 @@ export default async function CategoryHubPage({
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
-              <div
-                className={cn(
-                  "flex h-14 w-14 items-center justify-center rounded-2xl border",
-                  colorClass
-                )}
-              >
-                <Icon className="h-7 w-7" />
-              </div>
+              <Icon className="h-8 w-8 text-label-tertiary" />
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-label-primary sm:text-3xl lg:text-4xl">
+                <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                  Clinician Tools
+                </p>
+                <h1 className="text-2xl font-semibold tracking-tight text-label-primary sm:text-3xl">
                   {category.display_name}
                 </h1>
                 <p className="mt-1 text-sm text-label-tertiary">
@@ -232,7 +211,7 @@ export default async function CategoryHubPage({
             </div>
 
             {/* Direct Answer Block */}
-            <div className="mt-4 rounded-xl border border-treatment/20 bg-treatment/5 p-5">
+            <div className="mt-4 rounded-xl border border-separator bg-canvas p-5">
               <p className="text-lg text-label-primary leading-relaxed">
                 {category.direct_answer}
               </p>
@@ -248,11 +227,9 @@ export default async function CategoryHubPage({
         {categorySlug === "ehr-practice-management" && (
           <section className="border-b border-separator bg-canvas px-4 py-6 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-accent/20 bg-accent/5 p-4 sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-surface p-4 sm:p-6">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
-                    <Sparkles className="h-6 w-6 text-accent" />
-                  </div>
+                  <Sparkles className="h-6 w-6 text-label-tertiary" />
                   <div>
                     <p className="font-semibold text-label-primary text-lg">
                       Find Your EHR Match
@@ -264,10 +241,10 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href="/tools/for-clinicians/ehr-practice-management/match/"
-                  className="group flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-hover"
+                  className="group flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-neutral-800"
                 >
                   Start Matching
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>
@@ -278,11 +255,9 @@ export default async function CategoryHubPage({
         {comparisonCandidates.length >= 2 && (
           <section className="border-b border-separator bg-canvas px-4 py-6 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div className="flex items-center justify-between rounded-xl border border-treatment/20 bg-treatment/5 p-4">
+              <div className="flex items-center justify-between rounded-xl border border-separator bg-surface p-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-treatment/10">
-                    <GitCompare className="h-5 w-5 text-treatment" />
-                  </div>
+                  <GitCompare className="h-5 w-5 text-label-tertiary" />
                   <div>
                     <p className="font-medium text-label-primary">
                       Compare {category.short_name || category.display_name}
@@ -295,10 +270,10 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href={`/tools/compare/?tools=${comparisonCandidates.map(t => t.slug).join(",")}`}
-                  className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-white transition-all hover:bg-treatment-600"
+                  className="group flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800"
                 >
                   Compare tools
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>
@@ -526,6 +501,11 @@ function applyFilters(
 function getRelatedCategories(currentSlug: string) {
   // Related category mapping from category-mappings.json structure
   const relatedMap: Record<string, string[]> = {
+    "marketing-patient-acquisition": [
+      "provider-networks",
+      "scheduling-intake",
+      "analytics-reporting",
+    ],
     "ehr-practice-management": [
       "scheduling-intake",
       "billing-rcm",
@@ -540,7 +520,7 @@ function getRelatedCategories(currentSlug: string) {
       "ehr-practice-management",
       "patient-engagement",
     ],
-    "provider-networks": ["credentialing-workforce", "billing-rcm"],
+    "provider-networks": ["marketing-patient-acquisition", "credentialing-workforce", "billing-rcm"],
     "measurement-outcomes": ["patient-engagement", "analytics-reporting"],
     "prescribing-erx": ["ehr-practice-management", "clinical-decision-support"],
     "credentialing-workforce": ["provider-networks", "billing-rcm"],
@@ -549,7 +529,7 @@ function getRelatedCategories(currentSlug: string) {
       "ai-scribe-documentation",
       "prescribing-erx",
     ],
-    "scheduling-intake": ["ehr-practice-management", "patient-engagement"],
+    "scheduling-intake": ["ehr-practice-management", "patient-engagement", "marketing-patient-acquisition"],
     "compliance-security": ["ehr-practice-management", "telehealth-communication"],
     "analytics-reporting": ["measurement-outcomes", "billing-rcm"],
     "care-coordination": ["telehealth-communication", "ehr-practice-management"],

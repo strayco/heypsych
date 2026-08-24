@@ -397,13 +397,16 @@ export class EntityService {
     }
 
     const { data, error } = await query;
-    if (error) throw error;
-    
+    if (error) {
+      console.error(`Error in getBySchemaType for ${schemaName}:`, error);
+      return [];
+    }
+
     const normalized = normalizeEntities(data || []);
-    
+
     // Cache the result
     legacyCache.bySchema.set(schema, { data: normalized, fetchedAt: Date.now() });
-    
+
     return normalized;
   }
 
@@ -415,23 +418,32 @@ export class EntityService {
       return legacyCache.resources!.data;
     }
 
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("type", entityType)
-      .eq("status", "active")
-      .order("title");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("type", entityType)
+        .eq("status", "active")
+        .order("title")
+        .limit(500);
 
-    if (error) throw error;
-    const normalized = normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in getByEntityType for ${entityType}:`, error);
+        return [];
+      }
+      const normalized = normalizeEntities(data || []);
 
-    if (entityType === "condition") {
-      legacyCache.conditions = { data: normalized, fetchedAt: Date.now() };
-    } else if (entityType === "resource") {
-      legacyCache.resources = { data: normalized, fetchedAt: Date.now() };
+      if (entityType === "condition") {
+        legacyCache.conditions = { data: normalized, fetchedAt: Date.now() };
+      } else if (entityType === "resource") {
+        legacyCache.resources = { data: normalized, fetchedAt: Date.now() };
+      }
+
+      return normalized;
+    } catch (err) {
+      console.error(`Exception in getByEntityType for ${entityType}:`, err);
+      return [];
     }
-
-    return normalized;
   }
 
   /** Get all active entities across all types */
@@ -464,19 +476,27 @@ export class EntityService {
     }
 
     // Use Supabase (build-time and client-safe)
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("status", "active")
-      .order("type")
-      .order("title")
-      .limit(1000);
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("status", "active")
+        .order("type")
+        .order("title")
+        .limit(1000);
 
-    if (error) throw error;
+      if (error) {
+        console.error("Error in getAll:", error);
+        return [];
+      }
 
-    const normalized = normalizeEntities(data || []);
-    legacyCache.all = { data: normalized, fetchedAt: Date.now() };
-    return normalized;
+      const normalized = normalizeEntities(data || []);
+      legacyCache.all = { data: normalized, fetchedAt: Date.now() };
+      return normalized;
+    } catch (err) {
+      console.error("Exception in getAll:", err);
+      return [];
+    }
   }
 
   /** Get all entities by type (alias for getByEntityType) */
@@ -491,114 +511,158 @@ export class EntityService {
       return limit ? legacyCache.treatments!.data.slice(0, limit) : legacyCache.treatments!.data;
     }
 
-    // Exclude non-treatment types instead of listing all treatment types
-    const excludedTypes = ["condition", "resource", "provider"];
+    try {
+      // Exclude non-treatment types instead of listing all treatment types
+      const excludedTypes = ["condition", "resource", "provider"];
 
-    const query = supabase
-      .from("entities")
-      .select("*")
-      .eq("status", "active")
-      .not("type", "in", `(${excludedTypes.join(",")})`)
-      .order("title")
-      .limit(800);
+      const query = supabase
+        .from("entities")
+        .select("*")
+        .eq("status", "active")
+        .not("type", "in", `(${excludedTypes.join(",")})`)
+        .order("title")
+        .limit(800);
 
-    const { data, error } = await query;
-    if (error) throw error;
-
-    const normalized = normalizeEntities(data || []);
-
-    // Deduplicate by slug, preferring entities with more complete metadata
-    const bySlug = new Map<string, Entity>();
-    normalized.forEach((entity) => {
-      const existing = bySlug.get(entity.slug);
-
-      // If no existing entry, add it
-      if (!existing) {
-        bySlug.set(entity.slug, entity);
-        return;
+      const { data, error } = await query;
+      if (error) {
+        console.error("Error in getAllTreatments:", error);
+        return [];
       }
 
-      // Prefer entity with mechanism_categories populated
-      const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
-      const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
+      const normalized = normalizeEntities(data || []);
 
-      if (currentHasMechanism && !existingHasMechanism) {
-        bySlug.set(entity.slug, entity);
-      }
-      // If both or neither have mechanisms, keep the one with more metadata fields
-      else if (currentHasMechanism === existingHasMechanism) {
-        const existingMetadataCount = Object.keys(existing.metadata || {}).length;
-        const currentMetadataCount = Object.keys(entity.metadata || {}).length;
+      // Deduplicate by slug, preferring entities with more complete metadata
+      const bySlug = new Map<string, Entity>();
+      normalized.forEach((entity) => {
+        const existing = bySlug.get(entity.slug);
 
-        if (currentMetadataCount > existingMetadataCount) {
+        // If no existing entry, add it
+        if (!existing) {
+          bySlug.set(entity.slug, entity);
+          return;
+        }
+
+        // Prefer entity with mechanism_categories populated
+        const existingHasMechanism = (existing.metadata?.mechanism_categories?.length ?? 0) > 0;
+        const currentHasMechanism = (entity.metadata?.mechanism_categories?.length ?? 0) > 0;
+
+        if (currentHasMechanism && !existingHasMechanism) {
           bySlug.set(entity.slug, entity);
         }
-      }
-    });
+        // If both or neither have mechanisms, keep the one with more metadata fields
+        else if (currentHasMechanism === existingHasMechanism) {
+          const existingMetadataCount = Object.keys(existing.metadata || {}).length;
+          const currentMetadataCount = Object.keys(entity.metadata || {}).length;
 
-    const deduplicated = Array.from(bySlug.values());
-    legacyCache.treatments = { data: deduplicated, fetchedAt: Date.now() };
+          if (currentMetadataCount > existingMetadataCount) {
+            bySlug.set(entity.slug, entity);
+          }
+        }
+      });
 
-    return limit ? deduplicated.slice(0, limit) : deduplicated;
+      const deduplicated = Array.from(bySlug.values());
+      legacyCache.treatments = { data: deduplicated, fetchedAt: Date.now() };
+
+      return limit ? deduplicated.slice(0, limit) : deduplicated;
+    } catch (err) {
+      console.error("Exception in getAllTreatments:", err);
+      return [];
+    }
   }
 
   static async getConditionsByCategory(category: string): Promise<Entity[]> {
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("type", "condition")
-      .eq("status", "active")
-      .eq("metadata->>category", category)
-      .order("title");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("type", "condition")
+        .eq("status", "active")
+        .eq("metadata->>category", category)
+        .order("title")
+        .limit(100);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in getConditionsByCategory for ${category}:`, error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error(`Exception in getConditionsByCategory for ${category}:`, err);
+      return [];
+    }
   }
 
   static async getConditionsByCategoryFlexible(category: string): Promise<Entity[]> {
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("type", "condition")
-      .eq("status", "active")
-      .or(`metadata->>category.eq.${category},slug.ilike.${category}%,slug.ilike.%${category}%`)
-      .order("title");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("type", "condition")
+        .eq("status", "active")
+        .or(`metadata->>category.eq.${category},slug.ilike.${category}%,slug.ilike.%${category}%`)
+        .order("title")
+        .limit(100);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in getConditionsByCategoryFlexible for ${category}:`, error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error(`Exception in getConditionsByCategoryFlexible for ${category}:`, err);
+      return [];
+    }
   }
 
   static async getByTypeAndCategory(entityType: EntityType, category: string): Promise<Entity[]> {
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("type", entityType)
-      .eq("status", "active")
-      .eq("metadata->>category", category)
-      .order("title");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("type", entityType)
+        .eq("status", "active")
+        .eq("metadata->>category", category)
+        .order("title")
+        .limit(100);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in getByTypeAndCategory for ${entityType}/${category}:`, error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error(`Exception in getByTypeAndCategory for ${entityType}/${category}:`, err);
+      return [];
+    }
   }
 
   static async getCategoriesByType(entityType: EntityType): Promise<string[]> {
-    const { data, error } = await supabase
-      .from("entities")
-      .select("metadata")
-      .eq("type", entityType)
-      .eq("status", "active");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("metadata")
+        .eq("type", entityType)
+        .eq("status", "active")
+        .limit(500);
 
-    if (error) throw error;
+      if (error) {
+        console.error(`Error in getCategoriesByType for ${entityType}:`, error);
+        return [];
+      }
 
-    const categories = new Set<string>();
+      const categories = new Set<string>();
 
-    data?.forEach((row) => {
-      const metadata = row.metadata as EntityMetadata | null;
-      const metaCategory = metadata?.category;
-      if (metaCategory) categories.add(metaCategory);
-    });
+      data?.forEach((row) => {
+        const metadata = row.metadata as EntityMetadata | null;
+        const metaCategory = metadata?.category;
+        if (metaCategory) categories.add(metaCategory);
+      });
 
-    return Array.from(categories).sort();
+      return Array.from(categories).sort();
+    } catch (err) {
+      console.error(`Exception in getCategoriesByType for ${entityType}:`, err);
+      return [];
+    }
   }
 
   static async getCollections(collectionType?: string): Promise<Collection[]> {
@@ -611,50 +675,67 @@ export class EntityService {
 
   // FIXED: Include all treatment types
   static async getTreatmentsByCategory(category: string): Promise<Entity[]> {
-    const treatmentTypes = [
-      "medication",
-      "therapy",
-      "interventional",
-      "supplement",
-      "treatment",
-      "alternative",
-      "investigational",
-    ];
+    try {
+      const treatmentTypes = [
+        "medication",
+        "therapy",
+        "interventional",
+        "supplement",
+        "treatment",
+        "alternative",
+        "investigational",
+      ];
 
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .in("type", treatmentTypes)
-      .like("metadata->>category", `${category}%`)
-      .eq("status", "active")
-      .order("title");
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .in("type", treatmentTypes)
+        .like("metadata->>category", `${category}%`)
+        .eq("status", "active")
+        .order("title")
+        .limit(200);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in getTreatmentsByCategory for ${category}:`, error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error(`Exception in getTreatmentsByCategory for ${category}:`, err);
+      return [];
+    }
   }
 
   // FIXED: Include all treatment types
   static async searchTreatments(query: string): Promise<Entity[]> {
-    const treatmentTypes = [
-      "medication",
-      "therapy",
-      "interventional",
-      "supplement",
-      "treatment",
-      "alternative",
-      "investigational",
-    ];
+    try {
+      const treatmentTypes = [
+        "medication",
+        "therapy",
+        "interventional",
+        "supplement",
+        "treatment",
+        "alternative",
+        "investigational",
+      ];
 
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .in("type", treatmentTypes)
-      .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
-      .eq("status", "active")
-      .limit(20);
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .in("type", treatmentTypes)
+        .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
+        .eq("status", "active")
+        .limit(20);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error(`Error in searchTreatments for "${query}":`, error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error(`Exception in searchTreatments for "${query}":`, err);
+      return [];
+    }
   }
 
   // Updated convenience methods
@@ -672,14 +753,23 @@ export class EntityService {
   }
 
   static async getByCollection(_collectionSlug: string): Promise<Entity[]> {
-    const { data, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("status", "active")
-      .order("title");
+    try {
+      const { data, error } = await supabase
+        .from("entities")
+        .select("*")
+        .eq("status", "active")
+        .order("title")
+        .limit(500);
 
-    if (error) throw error;
-    return normalizeEntities(data || []);
+      if (error) {
+        console.error("Error in getByCollection:", error);
+        return [];
+      }
+      return normalizeEntities(data || []);
+    } catch (err) {
+      console.error("Exception in getByCollection:", err);
+      return [];
+    }
   }
 
   // comparisons

@@ -293,20 +293,27 @@ export async function getConditionsServer(): Promise<Entity[]> {
 }
 
 export async function getConditionsByCategoryServer(category: string): Promise<Entity[]> {
-  const { data, error } = await supabase
-    .from("entities")
-    .select("*")
-    .eq("type", "condition")
-    .eq("status", "active")
-    .eq("metadata->>category", category)
-    .order("title");
+  try {
+    const { data, error } = await supabase
+      .from("entities")
+      .select("*")
+      .eq("type", "condition")
+      .eq("status", "active")
+      .eq("metadata->>category", category)
+      .order("title")
+      .limit(100); // Limit to prevent timeout on large categories
 
-  if (error) {
-    console.error(`Error fetching conditions for category ${category}:`, error);
+    if (error) {
+      console.error(`Error fetching conditions for category ${category}:`, error);
+      return [];
+    }
+
+    return (data || []).map((row) => mapRowToEntity(row, "condition"));
+  } catch (err) {
+    // Handle network/timeout errors gracefully during build
+    console.error(`Exception fetching conditions for category ${category}:`, err);
     return [];
   }
-
-  return (data || []).map((row) => mapRowToEntity(row, "condition"));
 }
 
 export async function getResourcesServer(): Promise<Entity[]> {

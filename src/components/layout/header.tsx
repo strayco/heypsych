@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/config/site";
 import {
   Menu,
@@ -151,15 +150,8 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="border-t border-separator md:hidden overflow-hidden"
-            >
+        {isMobileMenuOpen && (
+          <div className="border-t border-separator md:hidden">
               <nav className="py-4 space-y-1">
                 {/* Mobile Search */}
                 <div className="relative mb-4 px-1">
@@ -214,9 +206,8 @@ export function Header() {
                   );
                 })}
               </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </div>
     </header>
   );

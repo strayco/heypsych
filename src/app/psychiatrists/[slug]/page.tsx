@@ -2,8 +2,7 @@
 
 import React, { useState, use } from "react";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
-import { useEntity } from "@/lib/hooks/use-entities";
+import { useProvider } from "@/lib/hooks/use-entities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
   // Unwrap the params Promise using React.use()
   const { slug } = use(params);
 
-  const { data: provider, isLoading, error } = useEntity(slug);
+  const { data: provider, isLoading, error } = useProvider(slug);
   const [activeTab, setActiveTab] = useState<"overview" | "reviews">("overview");
 
   if (isLoading) {
@@ -125,11 +124,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
     <div className="min-h-screen bg-canvas">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-6"
-        >
+        <div className="mb-6">
           <Button
             variant="ghost"
             onClick={() => window.history.back()}
@@ -138,20 +133,16 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Psychiatrists</span>
           </Button>
-        </motion.div>
+        </div>
 
         {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="shadow-card-1 mb-8 rounded-2xl border border-separator bg-surface"
-        >
+        <div className="mb-8 rounded-2xl border border-separator bg-surface">
           <div className="p-8">
             <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-8">
               {/* Provider Photo & Basic Info */}
               <div className="mb-6 shrink-0 lg:mb-0">
-                <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-linear-to-br from-positive-500 to-accent-500">
-                  <User className="h-16 w-16 text-white" />
+                <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-neutral-100 border border-separator">
+                  <User className="h-16 w-16 text-label-tertiary" />
                 </div>
               </div>
 
@@ -196,15 +187,10 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Navigation Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="flex w-fit space-x-1 rounded-lg bg-surface-grouped p-1">
             {[
               { key: "overview", label: "Overview" },
@@ -223,7 +209,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Tab Content */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -233,11 +219,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
               <>
                 {/* About Section with link parsing */}
                 {data.bio && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <div>
                     <Card>
                       <CardHeader>
                         <CardTitle>About Dr. {data.full_name?.split(" ").pop()}</CardTitle>
@@ -248,15 +230,11 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         </div>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* Education & Training with link parsing */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
+                <div>
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center space-x-2">
@@ -304,14 +282,10 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                       )}
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
 
                 {/* Specialties & Treatment Approaches with enhanced linking */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
+                <div>
                   <Card>
                     <CardHeader>
                       <CardTitle>Specialties & Treatment Approaches</CardTitle>
@@ -351,7 +325,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                       {data.treatment_philosophy && (
                         <div>
                           <h4 className="mb-3 font-semibold text-label-primary">Treatment Philosophy</h4>
-                          <div className="rounded-lg border-l-4 border-accent-500 bg-accent-tint p-4">
+                          <div className="rounded-lg border border-separator bg-surface p-4">
                             <div className="text-sm text-label-secondary">
                               <ParsedContent content={data.treatment_philosophy} />
                             </div>
@@ -360,15 +334,11 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                       )}
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
 
                 {/* Hospital Affiliations with link parsing */}
                 {data.hospital_affiliations && data.hospital_affiliations.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
+                  <div>
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center space-x-2">
@@ -392,16 +362,12 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         </div>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* Research & Publications with links */}
                 {data.research_interests && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                  >
+                  <div>
                     <Card>
                       <CardHeader>
                         <CardTitle>Research & Clinical Interests</CardTitle>
@@ -412,17 +378,13 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                         </div>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </div>
                 )}
               </>
             )}
 
             {activeTab === "reviews" && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+              <div>
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
@@ -442,18 +404,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             )}
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Contact & Practice Info with link parsing */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
+            <div>
               <Card>
                 <CardHeader>
                   <CardTitle>Practice Information</CardTitle>
@@ -487,18 +445,14 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                   )}
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Online Presence */}
             {data.online_presence && Object.values(data.online_presence).some((val) => {
               if (Array.isArray(val)) return val.length > 0;
               return val !== null && val !== undefined;
             }) && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-              >
+              <div>
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
@@ -589,16 +543,12 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     ))}
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             )}
 
             {/* Insurance with enhanced content */}
             {data.insurance_accepted && data.insurance_accepted.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
+              <div>
                 <Card>
                   <CardHeader>
                     <CardTitle>Insurance</CardTitle>
@@ -617,7 +567,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           </div>
                         ))}
                       </div>
-                      <div className="mt-3 rounded-lg border-l-4 border-accent-500 bg-accent-tint p-3">
+                      <div className="mt-3 rounded-lg border border-separator bg-surface p-3">
                         <div className="text-xs text-label-secondary">
                           <ParsedContent content="Always verify your insurance coverage before booking. Check our {link:resource:insurance-guide} for help understanding benefits." />
                         </div>
@@ -625,7 +575,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             )}
 
           </div>

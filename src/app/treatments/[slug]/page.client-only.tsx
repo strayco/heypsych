@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
-import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { EntityService } from "@/lib/data/entity-service";
 import { supabase } from "@/lib/config/database";
@@ -470,19 +469,15 @@ export default function TreatmentPage() {
     <div className="min-h-screen bg-white">
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Button variant="ghost" onClick={() => window.history.back()} className="group">
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back
           </Button>
-        </motion.div>
+        </div>
 
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+        <div className="mb-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
               {displayCategory && (
@@ -517,25 +512,15 @@ export default function TreatmentPage() {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Dynamic Sections */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="space-y-6"
-        >
+        <div className="space-y-6">
           {sections.map(renderSection)}
-        </motion.div>
+        </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mt-12"
-        >
+        <div className="mt-12">
           <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
             <CardContent className="p-8 text-center">
               <h3 className="mb-4 text-2xl font-bold text-neutral-900">
@@ -553,7 +538,7 @@ export default function TreatmentPage() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

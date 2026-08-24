@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import { Filter, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import type { DigitalToolV3, ToolType, PrivacyGrade } from "@/lib/schemas/digital-tool-v3";
 
@@ -24,7 +23,7 @@ interface FilterState {
 
 /**
  * HubFilters Component
- * 
+ *
  * Client-side filtering for hub pages.
  * Filter states are noindex, canonical to base hub.
  */
@@ -107,7 +106,7 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
     const updated = current.includes(value)
       ? current.filter((v) => v !== value)
       : [...current, value];
-    
+
     applyFilters({ ...filters, [category]: updated });
   };
 
@@ -122,7 +121,7 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
     applyFilters(empty);
   };
 
-  const activeCount = 
+  const activeCount =
     filters.toolTypes.length +
     filters.pricing.length +
     filters.privacy.length +
@@ -130,32 +129,28 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
     filters.aiAttributes.length;
 
   return (
-    <Card className="border-separator bg-surface/80 backdrop-blur">
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Filter className="h-5 w-5 text-indigo-600" />
-            <CardTitle className="text-lg">Filters</CardTitle>
-            {activeCount > 0 && (
-              <Badge variant="primary" className="ml-2">
-                {activeCount} active
-              </Badge>
-            )}
-          </div>
+    <div className="rounded-xl border border-separator bg-surface p-5">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <Filter className="h-4 w-4 text-label-tertiary" />
+          <h3 className="font-medium text-label-primary">Filters</h3>
           {activeCount > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={clearAllFilters}
-              className="text-indigo-600 hover:text-accent"
-            >
-              <X className="mr-1 h-4 w-4" />
-              Clear all
-            </Button>
+            <span className="text-xs text-label-tertiary">
+              ({activeCount})
+            </span>
           )}
         </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
+        {activeCount > 0 && (
+          <button
+            onClick={clearAllFilters}
+            className="text-sm text-label-secondary hover:text-accent transition-colors"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      <div className="space-y-5">
         {/* Tool Type Filter */}
         {filterOptions.toolTypes.length > 1 && (
           <FilterSection
@@ -207,8 +202,8 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
             formatLabel={formatAI}
           />
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
@@ -224,16 +219,18 @@ interface FilterSectionProps {
 function FilterSection({ title, options, selected, onToggle, formatLabel }: FilterSectionProps) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-semibold text-label-secondary">{title}</h3>
+      <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-label-tertiary">
+        {title}
+      </h4>
       <div className="flex flex-wrap gap-2">
         {options.map((option) => (
           <button
             key={option}
             onClick={() => onToggle(option)}
-            className={`rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
+            className={`rounded-lg px-3 py-1.5 text-sm transition-all ${
               selected.includes(option)
-                ? "bg-indigo-600 text-white shadow-md"
-                : "bg-surface-grouped text-label-secondary hover:bg-fill-secondary"
+                ? "bg-neutral-900 text-white"
+                : "bg-canvas text-label-secondary border border-separator hover:border-neutral-300"
             }`}
           >
             {formatLabel ? formatLabel(option) : option}

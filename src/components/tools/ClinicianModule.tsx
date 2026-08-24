@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Stethoscope, CheckCircle, Info, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 
@@ -11,7 +11,7 @@ interface ClinicianModuleProps {
 
 /**
  * ClinicianModule Component
- * 
+ *
  * Conditional module that appears on tool pages when the tool is clinician-relevant.
  * Displays how clinicians use the tool, workflow fit, and implementation notes.
  */
@@ -36,25 +36,23 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
   }).filter(Boolean);
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-surface to-indigo-50 border-y border-accent-border">
-      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+    <section className="border-t border-separator bg-canvas">
+      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-accent-tint-hover rounded-lg">
-            <Stethoscope className="h-5 w-5 text-accent" />
-          </div>
-          <h2 className="text-xl font-bold text-label-primary">For Clinicians</h2>
-        </div>
+        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+          Clinical Use
+        </p>
+        <h2 className="mt-1 text-xl font-semibold text-label-primary">For Clinicians</h2>
 
         {/* How Clinicians Use It */}
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+        <div className="mt-6">
+          <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
             How Clinicians Use This
           </h3>
           <ul className="space-y-2">
             {clinician.how_clinicians_use_it.map((item, index) => (
               <li key={index} className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-label-tertiary mt-0.5 shrink-0" />
                 <span className="text-label-secondary">{item}</span>
               </li>
             ))}
@@ -62,15 +60,15 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
         </div>
 
         {/* Workflow Fit Chips */}
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+        <div className="mt-6">
+          <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
             Workflow Fit
           </h3>
           <div className="flex flex-wrap gap-2">
             {workflowConfigs.map((wf) => (
               <span
                 key={wf.workflowSlug}
-                className="px-3 py-1.5 bg-accent-tint-hover text-accent-700 text-sm font-medium rounded-full"
+                className="px-3 py-1.5 bg-surface border border-separator text-label-secondary text-sm rounded-lg"
               >
                 {wf.chip_label}
               </span>
@@ -80,28 +78,27 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
 
         {/* Implementation Notes */}
         {clinician.implementation_notes && (
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+          <div className="mt-6">
+            <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
               Implementation Notes
             </h3>
-            <div className="flex items-start gap-2 p-4 bg-surface border border-accent-border rounded-lg">
-              <Info className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-              <p className="text-label-secondary">{clinician.implementation_notes}</p>
-            </div>
+            <p className="text-label-secondary p-4 bg-surface border border-separator rounded-xl">
+              {clinician.implementation_notes}
+            </p>
           </div>
         )}
 
         {/* Integrations */}
         {clinician.integrations && clinician.integrations.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+          <div className="mt-6">
+            <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
               Known Integrations
             </h3>
             <div className="flex flex-wrap gap-2">
               {clinician.integrations.map((integration) => (
                 <span
                   key={integration}
-                  className="px-3 py-1.5 bg-surface-grouped text-label-secondary text-sm rounded-full"
+                  className="px-3 py-1.5 bg-surface border border-separator text-label-secondary text-sm rounded-lg"
                 >
                   {integration}
                 </span>
@@ -112,11 +109,11 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
 
         {/* Billing Notes */}
         {clinician.billing_notes && (
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+          <div className="mt-6">
+            <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
               Billing Notes
             </h3>
-            <p className="text-label-secondary bg-surface p-4 border border-separator rounded-lg">
+            <p className="text-label-secondary p-4 bg-surface border border-separator rounded-xl">
               {clinician.billing_notes}
             </p>
           </div>
@@ -124,19 +121,19 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
 
         {/* Related Clinician Hubs */}
         {hubLinks.length > 0 && (
-          <div className="pt-4 border-t border-accent-border">
-            <h3 className="text-sm font-semibold text-label-secondary uppercase tracking-wide mb-3">
+          <div className="mt-8 pt-6 border-t border-separator">
+            <h3 className="text-xs font-medium uppercase tracking-wider text-label-tertiary mb-3">
               Explore More Clinician Tools
             </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {hubLinks.map((hub) => hub && (
                 <Link
                   key={hub.slug}
                   href={hub.url}
-                  className="inline-flex items-center gap-1 px-4 py-2 bg-surface border border-accent-border rounded-lg text-sm font-medium text-accent-700 hover:bg-accent-tint hover:border-accent-600 transition-colors"
+                  className="group inline-flex items-center gap-2 px-3 py-1.5 border border-separator rounded-lg text-sm text-label-secondary hover:border-neutral-300 hover:text-accent transition-colors"
                 >
                   {hub.display_name}
-                  <ArrowRight className="h-3 w-3" />
+                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               ))}
             </div>

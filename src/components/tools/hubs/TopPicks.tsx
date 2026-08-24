@@ -1,6 +1,5 @@
 "use client";
 
-import { Trophy } from "lucide-react";
 import { ToolCard } from "../ToolCard";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 
@@ -11,7 +10,7 @@ interface TopPicksProps {
 
 /**
  * TopPicks Component
- * 
+ *
  * Featured tools section for hub pages.
  */
 export function TopPicks({ tools, title = "Top Picks" }: TopPicksProps) {
@@ -20,14 +19,16 @@ export function TopPicks({ tools, title = "Top Picks" }: TopPicksProps) {
   }
 
   return (
-    <section className="py-8 bg-gradient-to-br from-amber-50 to-orange-50 border-b border-amber-200">
+    <section className="border-b border-separator bg-canvas py-10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-label-primary mb-4 flex items-center gap-2">
-          <Trophy className="h-5 w-5 text-amber-600" />
+        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+          Featured
+        </p>
+        <h2 className="mt-1 text-xl font-semibold text-label-primary">
           {title}
         </h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.slice(0, 3).map((tool) => (
             <ToolCard key={tool.slug} tool={tool} />
           ))}

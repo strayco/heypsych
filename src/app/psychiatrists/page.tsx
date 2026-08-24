@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, ChangeEvent, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ProviderCard } from "@/components/blocks/provider-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -327,21 +326,15 @@ export default function ProvidersPage() {
             </Button>
           </Link>
 
-          <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
-            <span className="bg-linear-to-r from-positive-400 to-accent-400 bg-clip-text text-transparent">
-              Psychiatrists
-            </span>
+          <h1 className="text-2xl font-semibold text-label-primary sm:text-3xl">
+            Psychiatrists
           </h1>
 
           <div className="w-[140px]"></div>
         </div>
 
         {/* Page Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8 text-center"
-        >
+        <div className="mb-8 text-center">
           <p className="mx-auto mb-3 max-w-2xl text-sm text-label-tertiary">
             Find psychiatrists in your area. Psychiatrists are medical doctors who
             can prescribe medication and provide comprehensive mental health treatment.
@@ -366,15 +359,10 @@ export default function ProvidersPage() {
               </div>
             </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Search and Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Card className="border-separator bg-surface">
             <CardContent className="p-6">
               {/* Search Bar */}
@@ -441,14 +429,8 @@ export default function ProvidersPage() {
               </div>
 
               {/* Expanded Filters */}
-              <AnimatePresence>
-                {showFilters && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="border-t border-separator pt-4"
-                  >
+              {showFilters && (
+                <div className="border-t border-separator pt-4">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                       {/* Location Filters */}
                       <div className="space-y-3">
@@ -644,21 +626,15 @@ export default function ProvidersPage() {
                         )}
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Results Summary */}
         {hasSearched && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <div className="flex items-center justify-between">
               {totalCount > 0 && (
                 <p className="text-label-secondary">
@@ -731,15 +707,11 @@ export default function ProvidersPage() {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
         )}
 
         {/* Providers Grid/List */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
+        <div>
           {!hasSearched ? (
             <Card className="py-12 text-center border-separator bg-surface">
               <CardContent>
@@ -818,33 +790,23 @@ export default function ProvidersPage() {
                   : "space-y-4"
               }
             >
-              {filteredProviders.map((provider, index) => (
-                <motion.div
-                  key={provider.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
+              {filteredProviders.map((provider) => (
+                <div key={provider.id}>
                   <ProviderCard
                     provider={provider as any}
                     variant={viewMode === "list" ? "detailed" : "default"}
                     onContact={() => handleContactProvider(provider)}
                     onViewProfile={() => handleViewProfile(provider)}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Pagination Controls */}
         {hasSearched && totalCount > PROVIDERS_PER_PAGE && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 flex items-center justify-center gap-4"
-          >
+          <div className="mt-8 flex items-center justify-center gap-4">
             <Button
               variant="outline"
               disabled={currentPage === 1 || isLoading}
@@ -870,18 +832,13 @@ export default function ProvidersPage() {
             >
               Next
             </Button>
-          </motion.div>
+          </div>
         )}
 
         {/* Call to Action */}
         {providers && providers.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-12"
-          >
-            <Card className="border-accent-500/30 bg-linear-to-r from-accent-900/30 to-positive-900/20 shadow-card-1">
+          <div className="mt-12">
+            <Card className="border-separator bg-surface">
               <CardContent className="p-8 text-center">
                 <h3 className="mb-2 text-xl font-semibold text-label-primary">
                   Can't find the right psychiatrist?
@@ -902,7 +859,7 @@ export default function ProvidersPage() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         )}
       </div>
     </div>

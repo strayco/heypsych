@@ -5,7 +5,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ParsedContent, Indications, ParsedLinkList } from "@/components/ui/parsed-content";
@@ -1690,18 +1689,14 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
   return (
     <main className="min-h-screen bg-canvas" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Button variant="ghost" onClick={() => window.history.back()} className="group text-label-secondary hover:text-label-primary hover:bg-surface-grouped">
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back
           </Button>
-        </motion.div>
+        </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 sm:mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl font-bold text-label-primary leading-tight" itemProp="name headline">{title}</h1>
@@ -1793,16 +1788,11 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Floating Expand All / Collapse All Button */}
         {sections.some((s) => s.collapsible !== false && !shouldSectionBeExpandedByDefault(s.type)) && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="fixed bottom-24 right-6 z-50"
-          >
+          <div className="fixed bottom-24 right-6 z-50">
             <Button
               variant="primary"
               size="lg"
@@ -1822,16 +1812,11 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 </>
               )}
             </Button>
-          </motion.div>
+          </div>
         )}
 
         <section itemProp="mainEntityOfPage">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="space-y-4 sm:space-y-6"
-          >
+          <div className="space-y-4 sm:space-y-6">
             {sections.filter(s => s.type !== 'references').map((section) => (
               <SectionCard
                 key={section.type}
@@ -1841,17 +1826,12 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 renderSectionContent={renderSectionContent}
               />
             ))}
-          </motion.div>
+          </div>
         </section>
 
         {/* FAQs */}
         {faqs.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="mt-8"
-          >
+          <div className="mt-8">
             <Card className="border-separator bg-surface">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-label-primary">
@@ -1870,7 +1850,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         )}
 
         {/* Citations/References */}
@@ -1878,24 +1858,14 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           const references = data.sections?.find((s: any) => s.type === 'references')?.references ||
             entity.metadata?.references;
           return references && references.length > 0 ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.23 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <CitationList citations={references} title="Scientific References" />
-            </motion.div>
+            </div>
           ) : null;
         })()}
 
         {/* Medical Disclaimer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.24 }}
-          className="mt-8"
-        >
+        <div className="mt-8">
           <MedicalDisclaimer
             config={{
               entity_type: treatmentType === 'medication' ? 'medication' :
@@ -1903,14 +1873,9 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
               prominent: false,
             }}
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="mt-12"
-        >
+        <div className="mt-12">
           <Card className="border-accent-border bg-linear-to-r from-accent-tint to-surface">
             <CardContent className="p-8 text-center">
               <h3 className="mb-4 text-2xl font-bold text-label-primary">
@@ -1930,7 +1895,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
 
       {/* Floating Compare Button - uses canonical slug */}

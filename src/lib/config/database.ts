@@ -7,12 +7,23 @@ const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 /**
+ * Build-time database skip flag
+ *
+ * Set SKIP_DB_DURING_BUILD=true in Vercel env vars to avoid hitting
+ * Supabase quota during static generation. Pages will use local JSON
+ * files during build and fetch from database at runtime.
+ */
+const isBuild = process.env.NEXT_PHASE === 'phase-production-build';
+const skipDbDuringBuild = process.env.SKIP_DB_DURING_BUILD === 'true';
+
+/**
  * Build-time resilience flag
  *
- * When true, the app is building without Supabase credentials.
+ * When true, the app is building without Supabase credentials OR
+ * we're explicitly skipping database during build to preserve quota.
  * EntityService and other data layers should fall back to local JSON files.
  */
-export const SUPABASE_UNAVAILABLE = !url || !anon;
+export const SUPABASE_UNAVAILABLE = !url || !anon || (isBuild && skipDbDuringBuild);
 
 if (SUPABASE_UNAVAILABLE) {
   console.warn(
@@ -231,6 +242,31 @@ export type Database = {
 };
 
 /**
+ * Fetch wrapper for Supabase with timeout
+ *
+ * No retries to avoid burning egress quota when over limit.
+ */
+async function fetchWithTimeout(
+  input: RequestInfo | URL,
+  init?: RequestInit
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 25000); // 25s timeout
+
+  try {
+    const response = await fetch(input, {
+      ...init,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
+}
+
+/**
  * Internal Supabase client - DO NOT export directly
  *
  * Use supabaseOptional() for nullable access or supabaseRequired() for operations
@@ -242,11 +278,8 @@ const _supabaseClient: SupabaseClient<Database> | null = SUPABASE_UNAVAILABLE
       auth: { persistSession: true, autoRefreshToken: true },
       global: {
         fetch: (url, options = {}) => {
-          // Increase timeout to 30 seconds for long-running queries like full-text search
-          return fetch(url, {
-            ...options,
-            signal: AbortSignal.timeout(30000),
-          });
+          // Use timeout-enabled fetch (no retries to preserve quota)
+          return fetchWithTimeout(url, options);
         },
       },
     });

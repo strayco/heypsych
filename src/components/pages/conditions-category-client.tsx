@@ -2,10 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Brain, ArrowRight, AlertCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertCircle } from "lucide-react";
 import type { Entity } from "@/lib/types/database";
 import type { CategoryConfig } from "@/lib/config/condition-categories";
 import { ConditionBreadcrumbs } from "@/components/conditions/ConditionBreadcrumbs";
@@ -30,195 +27,148 @@ interface ConditionsCategoryClientProps {
 
 export function ConditionsCategoryClient({ conditions, category }: ConditionsCategoryClientProps) {
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${category.bgColor} via-white to-${category.bgColor}`}>
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
-      <section className="relative px-4 py-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
           {/* Breadcrumbs */}
           <div className="mb-6">
             <ConditionBreadcrumbs category={category} />
           </div>
 
-          {/* Header Row */}
-          <div className="mb-8 flex items-start justify-between">
-            {/* Back Button */}
-            <Link href="/conditions">
-              <Button variant="ghost" className="group">
-                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                Back to Conditions
-              </Button>
-            </Link>
+          {/* Back Link */}
+          <Link
+            href="/conditions"
+            className="mb-6 inline-flex items-center gap-2 text-sm text-label-secondary hover:text-accent transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            All Conditions
+          </Link>
 
-            {/* Title Section */}
-            <div className="flex-1 text-center">
-              <div className={`mb-4 inline-flex rounded-2xl ${category.bgColor} p-4`}>
-                <Brain className={`h-8 w-8 ${category.iconColor}`} />
-              </div>
+          {/* Title Section */}
+          <div className="mt-6">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Condition Category
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
+              {category.displayTitle}
+            </h1>
+            <p className="mt-3 text-lg text-label-secondary">
+              {category.subtitle}
+            </p>
 
-              <h1 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className={`bg-linear-to-r ${category.gradient} bg-clip-text text-transparent`}>
-                  {category.emoji} {category.displayTitle}
-                </span>
-              </h1>
-
-              <p className="mx-auto mb-6 max-w-3xl text-lg text-label-secondary">
-                {category.subtitle}
-              </p>
-
-              {/* Educational Disclaimer */}
-              <div className="mx-auto mb-6 max-w-2xl rounded-lg border border-amber-200 bg-amber-50 p-4">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 flex-shrink-0 text-amber-600 mt-0.5" />
-                  <div className="text-sm text-amber-900">
-                    <strong>Educational Resource:</strong> This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider.
-                  </div>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="flex items-center justify-center gap-6 text-sm text-label-secondary">
-                <div className="flex items-center gap-2">
-                  <div className={`h-2 w-2 rounded-full ${category.iconColor.replace('text-', 'bg-')}`}></div>
-                  {conditions.length} Conditions
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-positive-tint0"></div>
-                  Evidence-Based
-                </div>
-              </div>
+            {/* Stats */}
+            <div className="mt-4 text-sm text-label-tertiary">
+              {conditions.length} conditions
             </div>
+          </div>
 
-            {/* Spacer for alignment */}
-            <div className="w-[180px]"></div>
+          {/* Educational Disclaimer */}
+          <div className="mt-8 rounded-lg border border-separator bg-canvas p-4">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="h-5 w-5 flex-shrink-0 text-label-tertiary mt-0.5" />
+              <p className="text-sm text-label-secondary">
+                <strong className="text-label-primary">Educational Resource:</strong> This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Conditions List */}
-      <section className="px-4 py-8 sm:px-6 lg:px-8">
+      <section className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <Card className="rounded-3xl bg-surface shadow-xl">
-            <CardHeader>
-              <CardTitle className="text-center text-2xl font-bold text-label-primary">
-                All {category.displayTitle} Conditions
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              {conditions && conditions.length > 0 ? (
-                <div className="space-y-4">
-                  {conditions.map((condition, index) => {
-                    const conditionName = condition.name || "Unknown Condition";
-                    const conditionData = condition.data as ConditionContent | null;
+          <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+            Browse
+          </p>
+          <h2 className="mt-1 text-xl font-semibold text-label-primary">
+            All {category.displayTitle} Conditions
+          </h2>
 
-                    let conditionDescription = "No description available";
+          {conditions && conditions.length > 0 ? (
+            <div className="mt-6 space-y-3">
+              {conditions.map((condition, index) => {
+                const conditionName = condition.name || "Unknown Condition";
+                const conditionData = condition.data as ConditionContent | null;
 
-                    if (conditionData?.description) {
-                      if (typeof conditionData.description === "string") {
-                        conditionDescription = conditionData.description;
-                      } else if (typeof conditionData.description === "object") {
-                        const descObj = conditionData.description as any;
-                        if (descObj.summary) {
-                          conditionDescription = String(descObj.summary);
-                        } else if (descObj.overview) {
-                          conditionDescription = String(descObj.overview);
-                        } else if (descObj.general) {
-                          conditionDescription = String(descObj.general);
-                        } else {
-                          const keys = Object.keys(descObj);
-                          conditionDescription = `Covers: ${keys.join(", ")}`;
-                        }
-                      }
+                let conditionDescription = "No description available";
+
+                if (conditionData?.description) {
+                  if (typeof conditionData.description === "string") {
+                    conditionDescription = conditionData.description;
+                  } else if (typeof conditionData.description === "object") {
+                    const descObj = conditionData.description as any;
+                    if (descObj.summary) {
+                      conditionDescription = String(descObj.summary);
+                    } else if (descObj.overview) {
+                      conditionDescription = String(descObj.overview);
+                    } else if (descObj.general) {
+                      conditionDescription = String(descObj.general);
+                    } else {
+                      const keys = Object.keys(descObj);
+                      conditionDescription = `Covers: ${keys.join(", ")}`;
                     }
+                  }
+                }
 
-                    if (conditionDescription === "No description available" && conditionData) {
-                      if (conditionData.summary && typeof conditionData.summary === "string") {
-                        conditionDescription = conditionData.summary;
-                      } else if (conditionData.overview && typeof conditionData.overview === "string") {
-                        conditionDescription = conditionData.overview;
-                      }
-                    }
+                if (conditionDescription === "No description available" && conditionData) {
+                  if (conditionData.summary && typeof conditionData.summary === "string") {
+                    conditionDescription = conditionData.summary;
+                  } else if (conditionData.overview && typeof conditionData.overview === "string") {
+                    conditionDescription = conditionData.overview;
+                  }
+                }
 
-                    const conditionSlug = condition.slug || `condition-${index}`;
+                const conditionSlug = condition.slug || `condition-${index}`;
 
-                    return (
-                      <Link
-                        key={conditionSlug}
-                        href={`/conditions/${conditionSlug}`}
-                        className="group block"
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className={`rounded-xl border border-separator p-6 transition-all duration-300 group-hover:${category.bgColor} hover:border-${category.iconColor.replace('text-', '')} hover:shadow-md`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className={`rounded-lg ${category.bgColor} p-3 transition-colors group-hover:opacity-80`}>
-                                <Brain className={`h-6 w-6 ${category.iconColor}`} />
-                              </div>
-                              <div>
-                                <h3 className={`text-lg font-semibold text-label-primary transition-colors group-hover:${category.iconColor}`}>
-                                  {conditionName}
-                                </h3>
-                                <p className="mt-1 text-sm text-label-secondary">
-                                  {typeof conditionDescription === "string"
-                                    ? conditionDescription.length > 100
-                                      ? `${conditionDescription.substring(0, 100)}...`
-                                      : conditionDescription
-                                    : "Complex condition data - click to view details"}
-                                </p>
-                              </div>
-                            </div>
-                            <ArrowRight className={`h-5 w-5 text-label-tertiary transition-all group-hover:translate-x-1 group-hover:${category.iconColor}`} />
-                          </div>
-                        </motion.div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className="py-12 text-center">
-                  <Brain className="mx-auto mb-4 h-16 w-16 text-neutral-300" />
-                  <h3 className="mb-2 text-xl font-semibold text-label-primary">No Conditions Found</h3>
-                  <p className="mb-6 text-label-secondary">
-                    We couldn't find any conditions in this category yet.
-                  </p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+                return (
+                  <Link
+                    key={conditionSlug}
+                    href={`/conditions/${conditionSlug}`}
+                    className="group block"
+                  >
+                    <div className="flex items-center justify-between rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-medium text-label-primary group-hover:text-accent transition-colors">
+                          {conditionName}
+                        </h3>
+                        <p className="mt-1 text-sm text-label-secondary line-clamp-2">
+                          {typeof conditionDescription === "string"
+                            ? conditionDescription.length > 120
+                              ? `${conditionDescription.substring(0, 120)}...`
+                              : conditionDescription
+                            : "View details"}
+                        </p>
+                      </div>
+                      <ArrowRight className="ml-4 h-4 w-4 flex-shrink-0 text-label-quaternary transition-all group-hover:translate-x-0.5 group-hover:text-accent" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="mt-8 rounded-xl border border-separator bg-surface p-12 text-center">
+              <h3 className="text-lg font-medium text-label-primary">No Conditions Found</h3>
+              <p className="mt-2 text-label-secondary">
+                We couldn't find any conditions in this category yet.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Back to Conditions */}
-      <section className="px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <Link href="/conditions">
-            <Button variant="outline" size="lg">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to All Conditions
-            </Button>
+      <section className="border-t border-separator px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <Link
+            href="/conditions"
+            className="inline-flex items-center gap-2 text-sm font-medium text-label-secondary hover:text-accent transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to All Conditions
           </Link>
         </div>
       </section>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

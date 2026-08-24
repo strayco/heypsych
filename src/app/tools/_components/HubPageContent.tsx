@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Shield } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { HubHero, TopPicks, ToolGrid, HubFilters, HubFAQ } from "@/components/tools/hubs";
 import type { HubConfig, SubHubConfig } from "@/lib/tools/taxonomy-service";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
@@ -17,7 +17,7 @@ interface HubPageContentProps {
 
 /**
  * HubPageContent Component
- * 
+ *
  * Shared content component for hub and sub-hub pages.
  * Handles client-side filtering while keeping page server-rendered.
  */
@@ -44,13 +44,13 @@ export function HubPageContent({
         />
       ))}
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+      <div className="min-h-screen bg-canvas">
         {/* Back Navigation */}
-        <nav className="border-b border-neutral-200 bg-white">
+        <nav className="border-b border-separator bg-surface">
           <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
             <Link
               href={parentHubUrl || "/tools/"}
-              className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-indigo-600 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-label-secondary hover:text-accent transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               {parentHubUrl ? "Back to Find Support" : "Back to Tools"}
@@ -86,7 +86,7 @@ export function HubPageContent({
               {/* Tool Grid */}
               <div className={hideFilters ? "" : "lg:col-span-3"}>
                 <div className="mb-4 flex items-center justify-between">
-                  <p className="text-sm text-neutral-600">
+                  <p className="text-sm text-label-tertiary">
                     Showing {filteredTools.length} of {tools.length} tools
                   </p>
                 </div>
@@ -104,17 +104,14 @@ export function HubPageContent({
         <HubFAQ faqs={hub.faqs} hubName={hub.display_name} />
 
         {/* Trust Signal */}
-        <section className="px-4 pb-10 sm:px-6 lg:px-8">
+        <section className="border-t border-separator px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full">
-              <Shield className="h-5 w-5 text-emerald-600" />
-              <span className="text-sm font-medium text-emerald-800">
-                All tools reviewed by the{" "}
-                <Link href="/about/medical-review-board" className="underline hover:no-underline">
-                  HeyPsych Medical Board
-                </Link>
-              </span>
-            </div>
+            <p className="text-sm text-label-secondary">
+              All tools reviewed by the{" "}
+              <Link href="/about/medical-review-board" className="text-accent hover:underline">
+                HeyPsych Medical Board
+              </Link>
+            </p>
           </div>
         </section>
       </div>

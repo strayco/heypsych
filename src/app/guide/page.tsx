@@ -7,8 +7,7 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { ArrowRight } from 'lucide-react';
 import { getDynamicPageStats } from '@/lib/programmatic-seo/dynamic-generator';
 
 export const metadata: Metadata = {
@@ -118,23 +117,21 @@ export default async function GuidePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <main className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-indigo-50/50 to-purple-50/30" />
-        
-        <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
-          <Badge variant="primary" size="md" className="mb-4">
+      <section className="bg-surface border-b border-separator">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
+          <p className="text-xs font-medium uppercase tracking-wider text-label-secondary mb-2">
             {stats.total > 0 ? `${stats.total.toLocaleString()}+` : 'Thousands of'} Guides
-          </Badge>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6">
+          </p>
+
+          <h1 className="text-3xl md:text-4xl font-semibold text-label-primary tracking-tight mb-4">
             Mental Health Treatment Guides
           </h1>
-          
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl">
-            Evidence-based guides on medications, therapies, and treatments for mental health 
-            conditions. Find detailed information tailored to specific conditions, demographics, 
+
+          <p className="text-lg text-label-secondary leading-relaxed max-w-3xl">
+            Evidence-based guides on medications, therapies, and treatments for mental health
+            conditions. Find detailed information tailored to specific conditions, demographics,
             and treatment goals.
           </p>
         </div>
@@ -142,7 +139,7 @@ export default async function GuidePage() {
 
       {/* Stats */}
       {stats.total > 0 && (
-        <section className="max-w-6xl mx-auto px-6 -mt-8">
+        <section className="max-w-6xl mx-auto px-6 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { label: 'Treatment Guides', value: stats.byType['treatment-for-condition'] || 0 },
@@ -150,48 +147,42 @@ export default async function GuidePage() {
               { label: 'Symptom Guides', value: stats.byType['condition-symptoms-demographic'] || 0 },
               { label: 'High-Volume Pages', value: stats.bySearchVolume['high'] || 0 },
             ].map((stat) => (
-              <Card key={stat.label} variant="glass" size="sm">
-                <CardContent className="pt-0 text-center">
-                  <div className="text-2xl font-bold text-blue-600">{stat.value.toLocaleString()}</div>
-                  <div className="text-sm text-slate-500">{stat.label}</div>
-                </CardContent>
-              </Card>
+              <div key={stat.label} className="rounded-xl border border-separator bg-surface p-4 text-center">
+                <div className="text-2xl font-semibold text-label-primary">{stat.value.toLocaleString()}</div>
+                <div className="text-sm text-label-secondary">{stat.label}</div>
+              </div>
             ))}
           </div>
         </section>
       )}
 
       {/* Guide Categories */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+          Explore
+        </p>
+        <h2 className="mt-1 text-xl font-semibold text-label-primary sm:text-2xl mb-8">
           Browse by Category
         </h2>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {GUIDE_CATEGORIES.map((category) => (
-            <Card key={category.title} variant="default" className="h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <span className="text-2xl">{category.icon}</span>
-                  <span>{category.title}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-600 text-sm mb-4">{category.description}</p>
-                <ul className="space-y-2">
-                  {category.links.map((link) => (
-                    <li key={link.href}>
-                      <Link 
-                        href={link.href}
-                        className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline"
-                      >
-                        {link.title} →
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div key={category.title} className="rounded-xl border border-separator bg-surface p-6">
+              <h3 className="font-semibold text-label-primary">{category.title}</h3>
+              <p className="text-label-secondary text-sm mt-2 mb-4">{category.description}</p>
+              <ul className="space-y-2">
+                {category.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-label-primary hover:text-accent text-sm font-medium"
+                    >
+                      {link.title} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </section>
@@ -227,31 +218,21 @@ export default async function GuidePage() {
 
       {/* CTA Section */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <Card variant="accent" size="lg" className="text-center border-accent-500/30 bg-accent-tint">
-          <CardContent className="pt-0">
-            <h2 className="text-2xl font-bold text-label-primary mb-4">
-              Can&apos;t find what you&apos;re looking for?
-            </h2>
-            <p className="text-label-tertiary mb-6">
-              Use our search to find specific treatments, conditions, or comparisons.
-            </p>
-            <Link
-              href="/search"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-600 text-white font-semibold rounded-xl hover:bg-accent-700 transition-colors"
-            >
-              Search All Content
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path 
-                  d="M8 4L14 10L8 16" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-          </CardContent>
-        </Card>
+        <div className="rounded-xl border border-separator bg-surface p-8 text-center">
+          <h2 className="text-xl font-semibold text-label-primary mb-4">
+            Can&apos;t find what you&apos;re looking for?
+          </h2>
+          <p className="text-label-secondary mb-6">
+            Use our search to find specific treatments, conditions, or comparisons.
+          </p>
+          <Link
+            href="/search"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
+          >
+            Search All Content
+            <ArrowRight className="h-4 w-4 text-white" />
+          </Link>
+        </div>
       </section>
     </main>
   );

@@ -27,6 +27,10 @@ export interface LifecycleStageDefinition {
   name: string;
   description: string;
   order: number;
+  /** Primary V4 category slug for this stage (for linking to /tools/for-clinicians/) */
+  primaryCategorySlug: string;
+  /** URL path to the primary category page */
+  primaryCategoryUrl: string;
 }
 
 export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition> = {
@@ -35,36 +39,48 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     name: "Grow",
     description: "Patient acquisition and referral management",
     order: 1,
+    primaryCategorySlug: "marketing-patient-acquisition",
+    primaryCategoryUrl: "/tools/for-clinicians/marketing-patient-acquisition/",
   },
   access: {
     id: "access",
     name: "Access",
     description: "Intake, scheduling, and patient access",
     order: 2,
+    primaryCategorySlug: "scheduling-intake",
+    primaryCategoryUrl: "/tools/for-clinicians/scheduling-intake/",
   },
   engage: {
     id: "engage",
     name: "Engage",
     description: "Patient communication and engagement",
     order: 3,
+    primaryCategorySlug: "telehealth-communication",
+    primaryCategoryUrl: "/tools/for-clinicians/telehealth-communication/",
   },
   care: {
     id: "care",
     name: "Care",
     description: "Clinical documentation and care delivery",
     order: 4,
+    primaryCategorySlug: "ehr-practice-management",
+    primaryCategoryUrl: "/tools/for-clinicians/ehr-practice-management/",
   },
   revenue: {
     id: "revenue",
     name: "Revenue",
     description: "Billing, coding, and revenue cycle",
     order: 5,
+    primaryCategorySlug: "billing-rcm",
+    primaryCategoryUrl: "/tools/for-clinicians/billing-rcm/",
   },
   operate: {
     id: "operate",
     name: "Operate",
     description: "Practice operations and compliance",
     order: 6,
+    primaryCategorySlug: "compliance-security",
+    primaryCategoryUrl: "/tools/for-clinicians/compliance-security/",
   },
 };
 

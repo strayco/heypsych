@@ -6,7 +6,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -130,34 +129,6 @@ const getIconForTile = (id: string): React.ReactNode => {
   }
 
   return iconMap["default"];
-};
-
-// Color mapping for tiles
-const getColorForTile = (id: string): string => {
-  const colorMap: Record<string, string> = {
-    overview: "blue",
-    symptoms: "orange",
-    diagnosis: "indigo",
-    causes: "purple",
-    treatment: "green",
-    living_with: "yellow",
-    support: "pink",
-    resources: "slate",
-    prognosis: "teal",
-    risk_factors: "red",
-    complications: "red",
-    prevention: "emerald",
-    research: "cyan",
-    faq: "gray",
-  };
-
-  if (id) {
-    for (const [key, color] of Object.entries(colorMap)) {
-      if (id.includes(key)) return color;
-    }
-  }
-
-  return "gray";
 };
 
 // Smart title formatting
@@ -336,7 +307,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
       // Check if it's a quote
       if (value.startsWith('"') && value.endsWith('"')) {
         return (
-          <blockquote className="border-l-4 border-accent-border pl-3 py-1 bg-accent-tint rounded-r text-label-secondary italic">
+          <blockquote className="border-l-2 border-separator pl-3 py-1 text-label-secondary italic">
             {value}
           </blockquote>
         );
@@ -361,7 +332,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           return (
             <div className="space-y-2">
               {value.map((item, i) => (
-                <blockquote key={i} className="border-l-4 border-accent-border pl-3 py-1 bg-accent-tint rounded-r text-sm text-label-secondary italic">
+                <blockquote key={i} className="border-l-2 border-separator pl-3 py-1 text-sm text-label-secondary italic">
                   {item}
                 </blockquote>
               ))}
@@ -437,7 +408,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                       <p className="text-sm text-label-tertiary mt-0.5">{item.description}</p>
                     )}
                     {item.dsm5_code && (
-                      <span className="text-xs bg-accent-tint text-accent-700 px-1.5 py-0.5 rounded ml-2">
+                      <span className="text-xs bg-canvas text-label-tertiary px-1.5 py-0.5 rounded border border-separator ml-2">
                         DSM-5: {item.dsm5_code}
                       </span>
                     )}
@@ -457,59 +428,48 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                 const isStoryExpanded = expandedTiles[storyId] || false;
 
                 return (
-                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
                       <h6 className="font-semibold text-label-primary">{item.title}</h6>
-                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-label-primary0" />
-                      </motion.div>
+                      <ChevronDown className={`h-5 w-5 text-label-tertiary transition-transform ${isStoryExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                    <AnimatePresence>
-                      {isStoryExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div className="px-4 pb-4 space-y-3 border-t border-separator">
-                            {item.baseline && (
-                              <div className="pt-3">
-                                <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Background</h6>
-                                <p className="text-sm text-label-secondary">{item.baseline}</p>
-                              </div>
-                            )}
-                            {item.first_change && (
-                              <div>
-                                <h6 className="text-xs font-medium text-caution uppercase tracking-wide mb-1">First Signs</h6>
-                                <p className="text-sm text-label-secondary">{item.first_change}</p>
-                              </div>
-                            )}
-                            {item.behaviors && (
-                              <div>
-                                <h6 className="text-xs font-medium text-negative uppercase tracking-wide mb-1">Behaviors</h6>
-                                <p className="text-sm text-label-secondary">{item.behaviors}</p>
-                              </div>
-                            )}
-                            {item.consequences && (
-                              <div>
-                                <h6 className="text-xs font-medium text-accent uppercase tracking-wide mb-1">Impact</h6>
-                                <p className="text-sm text-label-secondary">{item.consequences}</p>
-                              </div>
-                            )}
-                            {item.aftermath && (
-                              <div>
-                                <h6 className="text-xs font-medium text-positive-600 uppercase tracking-wide mb-1">Resolution</h6>
-                                <p className="text-sm text-label-secondary">{item.aftermath}</p>
-                              </div>
-                            )}
+                    {isStoryExpanded && (
+                      <div className="px-4 pb-4 space-y-3 border-t border-separator">
+                        {item.baseline && (
+                          <div className="pt-3">
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Background</h6>
+                            <p className="text-sm text-label-secondary">{item.baseline}</p>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        )}
+                        {item.first_change && (
+                          <div>
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">First Signs</h6>
+                            <p className="text-sm text-label-secondary">{item.first_change}</p>
+                          </div>
+                        )}
+                        {item.behaviors && (
+                          <div>
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Behaviors</h6>
+                            <p className="text-sm text-label-secondary">{item.behaviors}</p>
+                          </div>
+                        )}
+                        {item.consequences && (
+                          <div>
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Impact</h6>
+                            <p className="text-sm text-label-secondary">{item.consequences}</p>
+                          </div>
+                        )}
+                        {item.aftermath && (
+                          <div>
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Resolution</h6>
+                            <p className="text-sm text-label-secondary">{item.aftermath}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -528,30 +488,19 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                 const preview = item.person.length > 150 ? item.person.substring(0, 150) + "..." : item.person;
 
                 return (
-                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
                       <p className="text-sm text-label-secondary line-clamp-2 pr-4">{preview}</p>
-                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-label-primary0 shrink-0" />
-                      </motion.div>
+                      <ChevronDown className={`h-5 w-5 text-label-tertiary shrink-0 transition-transform ${isStoryExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                    <AnimatePresence>
-                      {isStoryExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div className="px-4 pb-4 border-t border-separator pt-3">
-                            <p className="text-sm text-label-secondary leading-relaxed">{item.person}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {isStoryExpanded && (
+                      <div className="px-4 pb-4 border-t border-separator pt-3">
+                        <p className="text-sm text-label-secondary leading-relaxed">{item.person}</p>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -568,38 +517,27 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                 const isStoryExpanded = expandedTiles[storyId] || false;
 
                 return (
-                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
                       <h6 className="font-semibold text-label-primary">{item.title}</h6>
-                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-label-primary0" />
-                      </motion.div>
+                      <ChevronDown className={`h-5 w-5 text-label-tertiary transition-transform ${isStoryExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                    <AnimatePresence>
-                      {isStoryExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div className="px-4 pb-4 space-y-3 border-t border-separator">
-                            <div className="pt-3">
-                              <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
-                            </div>
-                            {item.clinical_note && (
-                              <div className="bg-accent-tint rounded-lg p-3 border-l-4 border-accent-border">
-                                <h6 className="text-xs font-medium text-accent uppercase tracking-wide mb-1">Clinical Note</h6>
-                                <p className="text-sm text-accent-700">{item.clinical_note}</p>
-                              </div>
-                            )}
+                    {isStoryExpanded && (
+                      <div className="px-4 pb-4 space-y-3 border-t border-separator">
+                        <div className="pt-3">
+                          <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
+                        </div>
+                        {item.clinical_note && (
+                          <div className="bg-surface-grouped rounded-lg p-3 border-l-2 border-separator">
+                            <h6 className="text-xs font-medium text-label-tertiary uppercase tracking-wide mb-1">Clinical Note</h6>
+                            <p className="text-sm text-label-secondary">{item.clinical_note}</p>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                        )}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -617,30 +555,19 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                 const preview = item.scenario.length > 120 ? item.scenario.substring(0, 120) + "..." : item.scenario;
 
                 return (
-                  <div key={i} className="rounded-lg border border-separator bg-surface-grouped overflow-hidden">
+                  <div key={i} className="rounded-lg border border-separator bg-surface overflow-hidden">
                     <button
                       onClick={() => toggleTile(storyId)}
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-fill-quaternary transition-colors"
                     >
                       <p className="text-sm text-label-secondary line-clamp-2 pr-4">{preview}</p>
-                      <motion.div animate={{ rotate: isStoryExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronDown className="h-5 w-5 text-label-primary0 shrink-0" />
-                      </motion.div>
+                      <ChevronDown className={`h-5 w-5 text-label-tertiary shrink-0 transition-transform ${isStoryExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                    <AnimatePresence>
-                      {isStoryExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div className="px-4 pb-4 border-t border-separator pt-3">
-                            <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {isStoryExpanded && (
+                      <div className="px-4 pb-4 border-t border-separator pt-3">
+                        <p className="text-sm text-label-secondary leading-relaxed">{item.scenario}</p>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -728,7 +655,6 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
   const renderTile = (tile: TileConfig, index: number) => {
     const isExpanded = expandedTiles[tile.id] || false;
     const icon = getIconForTile(tile.id);
-    const color = getColorForTile(tile.id);
 
     // Resolve all content refs for this tile
     const contentRefs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
@@ -745,24 +671,18 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
     // Grid mode: compact clickable cards
     if (isGridLayout) {
       return (
-        <motion.div
-          key={tile.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.03 * index }}
-          className="h-full"
-        >
+        <div key={tile.id} className="h-full">
           <Card
-            className={`h-full transition-all ${hasContent ? "cursor-pointer hover:shadow-card-2 hover:scale-[1.02] active:scale-[0.98] border-2 border-transparent hover:border-accent-border" : "opacity-75"}`}
+            className={`h-full transition-all ${hasContent ? "cursor-pointer hover:shadow-soft hover:border-neutral-300" : "opacity-75"}`}
             onClick={hasContent ? () => setActiveTile(activeTile === tile.id ? null : tile.id) : undefined}
           >
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between mb-2">
-                <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
+                <div className="text-label-tertiary">
                   {icon}
                 </div>
                 {hasContent && (
-                  <ChevronRight className="h-5 w-5 text-label-primary0" />
+                  <ChevronRight className="h-5 w-5 text-label-quaternary" />
                 )}
               </div>
               <CardTitle className="text-base font-semibold text-label-primary leading-tight">
@@ -773,7 +693,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
               <p className="text-sm text-label-secondary line-clamp-3">{tileDescription}</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       );
     }
 
@@ -782,12 +702,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
 
     // List mode: expandable accordion
     return (
-      <motion.div
-        key={tile.id}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.05 * index }}
-      >
+      <div key={tile.id}>
         <Card className="overflow-hidden">
           <CardHeader
             className="cursor-pointer transition-colors hover:bg-fill-quaternary"
@@ -795,7 +710,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           >
             <CardTitle className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
+                <div className="text-label-tertiary">
                   {icon}
                 </div>
                 <div>
@@ -805,31 +720,20 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                   )}
                 </div>
               </div>
-              <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown className="h-5 w-5 text-label-primary0" />
-              </motion.div>
+              <ChevronDown className={`h-5 w-5 text-label-tertiary transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
             </CardTitle>
           </CardHeader>
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <CardContent className="pt-0 space-y-6">
-                  {resolvedContent.map(({ ref, data }, idx) => (
-                    <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
-                      {renderContentRef(data, ref)}
-                    </div>
-                  ))}
-                </CardContent>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isExpanded && (
+            <CardContent className="pt-0 space-y-6">
+              {resolvedContent.map(({ ref, data }, idx) => (
+                <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
+                  {renderContentRef(data, ref)}
+                </div>
+              ))}
+            </CardContent>
+          )}
         </Card>
-      </motion.div>
+      </div>
     );
   };
 
@@ -844,19 +748,13 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
       (field) => !excludeFields.includes(field) && content[field]
     );
 
-    return dynamicFields.map((fieldName, index) => {
+    return dynamicFields.map((fieldName) => {
       const fieldData = content[fieldName];
       const isExpanded = expandedTiles[fieldName] || false;
       const icon = getIconForTile(fieldName);
-      const color = getColorForTile(fieldName);
 
       return (
-        <motion.div
-          key={fieldName}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 * index }}
-        >
+        <div key={fieldName}>
           <Card>
             <CardHeader
               className="cursor-pointer transition-colors hover:bg-fill-quaternary"
@@ -864,30 +762,19 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
             >
               <CardTitle className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-label-primary">
-                  {icon}
+                  <span className="text-label-tertiary">{icon}</span>
                   {formatTitle(fieldName)}
                 </div>
-                <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown className="h-5 w-5 text-label-tertiary" />
-                </motion.div>
+                <ChevronDown className={`h-5 w-5 text-label-tertiary transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
               </CardTitle>
             </CardHeader>
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <CardContent className="pt-0">
-                    {renderContentRef(fieldData, fieldName)}
-                  </CardContent>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {isExpanded && (
+              <CardContent className="pt-0">
+                {renderContentRef(fieldData, fieldName)}
+              </CardContent>
+            )}
           </Card>
-        </motion.div>
+        </div>
       );
     });
   };
@@ -904,29 +791,21 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         {category && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <ConditionBreadcrumbs category={category} conditionName={entity.name} />
-          </motion.div>
+          </div>
         )}
 
         {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Button variant="ghost" className="group" onClick={() => window.history.back()}>
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back
           </Button>
-        </motion.div>
+        </div>
 
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+        <div className="mb-8">
           <div className="space-y-4">
             <div className="mb-3 flex flex-wrap gap-2">
               <Badge variant="primary" size="md">
@@ -953,96 +832,85 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
               </article>
             )}
           </div>
-        </motion.div>
+        </div>
 
         {/* Crisis Support Banner (for sensitive conditions) */}
         {isSensitive && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
-            className="mb-8"
-          >
+          <div className="mb-8">
             <CrisisSupportBanner prominent />
-          </motion.div>
+          </div>
         )}
 
         {/* Content Sections */}
         <div className="space-y-6">
           {/* Overview Card - Always show for key stats */}
           {(content.description || content.prevalence || content.age_of_onset) && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <section itemProp="mainEntityOfPage">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Info className="h-5 w-5" />
-                      Overview
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {content.description && (
-                        <article className="rounded-lg border-l-4 border-accent-500 bg-accent-tint p-4" itemProp="description">
-                          <h4 className="mb-2 font-semibold text-accent-700">Description</h4>
+            <section itemProp="mainEntityOfPage">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Info className="h-5 w-5 text-label-tertiary" />
+                    Overview
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {content.description && (
+                      <article className="rounded-lg border-l-2 border-separator bg-surface-grouped p-4" itemProp="description">
+                        <h4 className="mb-2 font-semibold text-label-primary">Description</h4>
+                        <div className="text-sm text-label-secondary">
+                          <ParsedContent content={extractSafeText(content.description)} />
+                        </div>
+                      </article>
+                    )}
+
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                      {content.prevalence && (
+                        <div className="rounded-lg border border-separator bg-surface p-3">
+                          <h4 className="mb-1 font-semibold text-label-primary">Prevalence</h4>
                           <div className="text-sm text-label-secondary">
-                            <ParsedContent content={extractSafeText(content.description)} />
+                            <ParsedContent content={String(content.prevalence)} />
                           </div>
-                        </article>
+                        </div>
                       )}
 
-                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        {content.prevalence && (
-                          <div className="rounded-lg border-l-4 border-positive-500 bg-positive-tint p-3">
-                            <h4 className="mb-1 font-semibold text-positive-700">Prevalence</h4>
-                            <div className="text-sm text-label-secondary">
-                              <ParsedContent content={String(content.prevalence)} />
-                            </div>
+                      {content.age_of_onset && (
+                        <div className="rounded-lg border border-separator bg-surface p-3">
+                          <h4 className="mb-1 font-semibold text-label-primary">Age of Onset</h4>
+                          <div className="text-sm text-label-secondary">
+                            <ParsedContent content={String(content.age_of_onset)} />
                           </div>
-                        )}
-
-                        {content.age_of_onset && (
-                          <div className="rounded-lg border-l-4 border-accent-400 bg-surface-grouped p-3">
-                            <h4 className="mb-1 font-semibold text-accent-700">Age of Onset</h4>
-                            <div className="text-sm text-label-secondary">
-                              <ParsedContent content={String(content.age_of_onset)} />
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* DSM-5 and ICD-10 Codes */}
-                      {(() => {
-                        const dsm5 = entity.metadata?.dsm5_code;
-                        const icd10 = entity.metadata?.icd10_code;
-
-                        return dsm5 || icd10 ? (
-                          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            {dsm5 && (
-                              <div className="rounded-lg border-l-4 border-accent-border bg-surface-grouped p-3">
-                                <h4 className="mb-1 font-semibold text-accent-700">DSM-5 Code</h4>
-                                <p className="font-mono text-sm text-label-secondary">{String(dsm5)}</p>
-                              </div>
-                            )}
-
-                            {icd10 && (
-                              <div className="rounded-lg border-l-4 border-caution-border bg-surface-grouped p-3">
-                                <h4 className="mb-1 font-semibold text-caution-700">ICD-10 Code</h4>
-                                <p className="font-mono text-sm text-label-secondary">{String(icd10)}</p>
-                              </div>
-                            )}
-                          </div>
-                        ) : null;
-                      })()}
+                        </div>
+                      )}
                     </div>
-                  </CardContent>
-                </Card>
-              </section>
-            </motion.div>
+
+                    {/* DSM-5 and ICD-10 Codes */}
+                    {(() => {
+                      const dsm5 = entity.metadata?.dsm5_code;
+                      const icd10 = entity.metadata?.icd10_code;
+
+                      return dsm5 || icd10 ? (
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                          {dsm5 && (
+                            <div className="rounded-lg border border-separator bg-surface p-3">
+                              <h4 className="mb-1 font-semibold text-label-primary">DSM-5 Code</h4>
+                              <p className="font-mono text-sm text-label-secondary">{String(dsm5)}</p>
+                            </div>
+                          )}
+
+                          {icd10 && (
+                            <div className="rounded-lg border border-separator bg-surface p-3">
+                              <h4 className="mb-1 font-semibold text-label-primary">ICD-10 Code</h4>
+                              <p className="font-mono text-sm text-label-secondary">{String(icd10)}</p>
+                            </div>
+                          )}
+                        </div>
+                      ) : null;
+                    })()}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
           )}
 
           {/* Author & Review Information */}
@@ -1076,19 +944,13 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
             };
 
             return (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
-              >
-                <AuthorByline
-                  author={author}
-                  medicalReviewer={medicalReviewer}
-                  publishedDate={timestamps.published_date}
-                  lastUpdated={timestamps.last_updated}
-                  lastReviewed={timestamps.last_reviewed}
-                />
-              </motion.div>
+              <AuthorByline
+                author={author}
+                medicalReviewer={medicalReviewer}
+                publishedDate={timestamps.published_date}
+                lastUpdated={timestamps.last_updated}
+                lastReviewed={timestamps.last_reviewed}
+              />
             );
           })()}
 
@@ -1107,59 +969,49 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
               </div>
 
               {/* Expanded tile detail panel (for grid mode) */}
-              <AnimatePresence>
-                {isGridLayout && activeTile && (() => {
-                  const tile = tiles.find(t => t.id === activeTile);
-                  if (!tile) return null;
+              {isGridLayout && activeTile && (() => {
+                const tile = tiles.find(t => t.id === activeTile);
+                if (!tile) return null;
 
-                  const contentRefs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
-                  const resolvedContent = contentRefs
-                    .map((ref) => ({
-                      ref,
-                      data: resolveContentRef(content, ref),
-                    }))
-                    .filter(({ data }) => data !== null && data !== undefined);
+                const contentRefs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
+                const resolvedContent = contentRefs
+                  .map((ref) => ({
+                    ref,
+                    data: resolveContentRef(content, ref),
+                  }))
+                  .filter(({ data }) => data !== null && data !== undefined);
 
-                  const icon = getIconForTile(tile.id);
-                  const color = getColorForTile(tile.id);
+                const icon = getIconForTile(tile.id);
 
-                  return (
-                    <motion.div
-                      ref={detailPanelRef}
-                      key="detail-panel"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Card className="border-2 border-accent-border shadow-card-2">
-                        <CardHeader className="flex flex-row items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-fill-secondary text-label-secondary">
-                              {icon}
-                            </div>
-                            <CardTitle className="text-xl">{tile.title}</CardTitle>
+                return (
+                  <div ref={detailPanelRef}>
+                    <Card className="border border-separator shadow-soft">
+                      <CardHeader className="flex flex-row items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="text-label-tertiary">
+                            {icon}
                           </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => setActiveTile(null)}
-                          >
-                            Close
-                          </Button>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                          {resolvedContent.map(({ ref, data }, idx) => (
-                            <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
-                              {renderContentRef(data, ref)}
-                            </div>
-                          ))}
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  );
-                })()}
-              </AnimatePresence>
+                          <CardTitle className="text-xl">{tile.title}</CardTitle>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setActiveTile(null)}
+                        >
+                          Close
+                        </Button>
+                      </CardHeader>
+                      <CardContent className="space-y-6">
+                        {resolvedContent.map(({ ref, data }, idx) => (
+                          <div key={ref} className={idx > 0 ? "pt-4 border-t border-separator" : ""}>
+                            {renderContentRef(data, ref)}
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              })()}
             </>
           ) : (
             // Legacy field-based layout
@@ -1175,13 +1027,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
             const medications = treatmentApproaches?.linkedMedications || linkedMedications;
 
             return medications && Array.isArray(medications) && medications.length > 0 ? (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <MedicationsList medications={medications} />
-              </motion.div>
+              <MedicationsList medications={medications} />
             ) : null;
           })()}
 
@@ -1189,75 +1035,54 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           {(() => {
             const citations = content.citations || content.references || entity.metadata?.references;
             return citations && citations.length > 0 ? (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-              >
-                <CitationList citations={citations} title="Scientific References" />
-              </motion.div>
+              <CitationList citations={citations} title="Scientific References" />
             ) : null;
           })()}
 
           {/* Medical Disclaimer */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <MedicalDisclaimer
-              config={{
-                entity_type: 'condition',
-                prominent: false,
-                include_crisis_line: isSensitive,
-              }}
-            />
-          </motion.div>
+          <MedicalDisclaimer
+            config={{
+              entity_type: 'condition',
+              prominent: false,
+              include_crisis_line: isSensitive,
+            }}
+          />
 
           {/* Contextual Next Steps (Navigation V1) */}
           {nextSteps && nextSteps.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-            >
-              <NextStepsSection
-                steps={nextSteps}
-                heading="What's Next?"
-                audience="patient"
-                maxSteps={6}
-                sourceType="condition"
-                sourceSlug={entity.slug}
-              />
-            </motion.div>
+            <NextStepsSection
+              steps={nextSteps}
+              heading="What's Next?"
+              audience="patient"
+              maxSteps={6}
+              sourceType="condition"
+              sourceSlug={entity.slug}
+            />
           )}
 
           {/* Call to Action (fallback when no next steps) */}
           {(!nextSteps || nextSteps.length === 0) && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-            >
-              <Card className="border-accent-border bg-linear-to-r from-accent-tint to-surface">
-                <CardContent className="p-8 text-center">
-                  <h3 className="mb-4 text-2xl font-bold text-label-primary">
-                    Seeking Help for {entity.name}?
-                  </h3>
-                  <div className="mx-auto mb-6 max-w-2xl text-label-secondary">
-                    <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
-                  </div>
-                  <div className="flex justify-center">
-                    <Link
-                      href="/psychiatrists"
-                      className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 bg-accent text-white hover:bg-accent-hover shadow-soft hover:shadow-medium h-14 px-8 text-lg"
-                    >
-                      Locate Psychiatrists
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <Card className="border-separator">
+              <CardContent className="p-8 text-center">
+                <p className="text-xs font-medium uppercase tracking-wider text-label-secondary mb-2">
+                  Get Support
+                </p>
+                <h3 className="mb-4 text-2xl font-bold text-label-primary">
+                  Seeking Help for {entity.name}?
+                </h3>
+                <div className="mx-auto mb-6 max-w-2xl text-label-secondary">
+                  <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
+                </div>
+                <div className="flex justify-center">
+                  <Link
+                    href="/psychiatrists"
+                    className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 bg-neutral-900 text-white hover:bg-neutral-800 h-14 px-8 text-lg"
+                  >
+                    Locate Psychiatrists
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           )}
         </div>
       </div>

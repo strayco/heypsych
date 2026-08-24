@@ -51,9 +51,6 @@ const ARCHITECT_MODES = [
     title: "Build for Me",
     description: "Tell us about your practice and get personalized stack recommendations",
     icon: Sparkles,
-    iconBg: "bg-accent/10",
-    iconColor: "text-accent",
-    ctaColor: "bg-accent hover:bg-accent-hover text-white",
     href: "/architect/build?mode=build-for-me",
     features: [
       "Answer 7 practice questions",
@@ -68,9 +65,6 @@ const ARCHITECT_MODES = [
     title: "Build Myself",
     description: "Explore all options and craft your stack capability by capability",
     icon: Settings,
-    iconBg: "bg-treatment/10",
-    iconColor: "text-treatment",
-    ctaColor: "bg-treatment hover:bg-treatment-600 text-white",
     href: "/architect/build?mode=build-myself",
     features: [
       "Browse 6 lifecycle stages",
@@ -85,9 +79,6 @@ const ARCHITECT_MODES = [
     title: "Audit My Stack",
     description: "Enter your current tools to find gaps, overlaps, and better alternatives",
     icon: ClipboardCheck,
-    iconBg: "bg-success/10",
-    iconColor: "text-success",
-    ctaColor: "bg-success hover:bg-success/90 text-white",
     href: "/architect/audit",
     features: [
       "Add your current products",
@@ -122,9 +113,8 @@ export default function ArchitectEntryPage() {
   return (
     <div className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-separator bg-surface">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.02] via-transparent to-treatment/[0.02]" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <section className="border-b border-separator bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="text-center">
             {/* Breadcrumb */}
             <div className="mb-6 flex items-center justify-center gap-2 text-sm text-label-tertiary">
@@ -135,14 +125,15 @@ export default function ArchitectEntryPage() {
               <span className="text-label-secondary">Practice Architect™</span>
             </div>
 
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Building2 className="h-8 w-8 text-accent" />
-            </div>
+            <Building2 className="mx-auto h-8 w-8 text-label-tertiary mb-4" />
 
-            <h1 className="text-4xl font-bold tracking-tight text-label-primary sm:text-5xl">
-              Practice Architect<sup className="text-xl">™</sup>
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Practice Stack Builder
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
+              Practice Architect<sup className="text-lg">™</sup>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary sm:text-xl">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary">
               Build your ideal mental health practice technology stack.
               Transparent fit scores. Real cost estimates. Zero guesswork.
             </p>
@@ -166,12 +157,10 @@ export default function ArchitectEntryPage() {
               return (
                 <div
                   key={mode.id}
-                  className="group relative flex flex-col rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-soft"
+                  className="group relative flex flex-col rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-neutral-300 hover:shadow-soft"
                 >
                   {/* Icon */}
-                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${mode.iconBg}`}>
-                    <Icon className={`h-6 w-6 ${mode.iconColor}`} />
-                  </div>
+                  <Icon className="mb-4 h-6 w-6 text-label-tertiary" />
 
                   {/* Title & Description */}
                   <h3 className="text-lg font-semibold text-label-primary">
@@ -201,10 +190,10 @@ export default function ArchitectEntryPage() {
                   {/* CTA */}
                   <Link
                     href={mode.href}
-                    className={`mt-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-medium transition-all ${mode.ctaColor}`}
+                    className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-all hover:bg-neutral-800"
                   >
-                    Get Started
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span className="text-white">Get Started</span>
+                    <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
               );
@@ -238,9 +227,7 @@ export default function ArchitectEntryPage() {
               const Icon = prop.icon;
               return (
                 <div key={idx} className="text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
-                    <Icon className="h-6 w-6 text-accent" />
-                  </div>
+                  <Icon className="mx-auto h-6 w-6 text-label-tertiary" />
                   <h3 className="mt-4 font-semibold text-label-primary">
                     {prop.title}
                   </h3>
@@ -303,11 +290,11 @@ export default function ArchitectEntryPage() {
           </p>
           <Link
             href="/architect/build?mode=build-for-me"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-medium text-white transition-all hover:bg-accent-hover"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-neutral-900 px-6 py-3 font-medium text-white transition-all hover:bg-neutral-800"
           >
-            <Sparkles className="h-5 w-5" />
-            Build for Me
-            <ArrowRight className="h-4 w-4" />
+            <Sparkles className="h-5 w-5 text-white" />
+            <span className="text-white">Build for Me</span>
+            <ArrowRight className="h-4 w-4 text-white" />
           </Link>
         </div>
       </section>

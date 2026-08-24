@@ -5,19 +5,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import {
-  ArrowRight,
-  Stethoscope,
-  Shield,
-  CheckCircle,
-  Clock,
-  Receipt,
-  Laptop,
-  Mic,
-  Video,
-  LineChart,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { TrustSignal } from "../_components/TrustSignal";
 import { VendorCTA } from "../_components/VendorCTA";
@@ -32,8 +20,6 @@ import {
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
 import clinicianCategoriesData from "../../../../data/tools-v4/taxonomies/clinician-categories.json";
-import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
 
 // Slashless canonical for consistency with sitemap
 const canonicalUrl = `${siteConfig.url}/tools/for-clinicians`;
@@ -61,24 +47,6 @@ export const metadata: Metadata = {
     url: canonicalUrl,
     type: "website",
   },
-};
-
-// V4 category icon mapping
-const categoryIcons: Record<string, LucideIcon> = {
-  "ehr-practice-management": Laptop,
-  "ai-scribe-documentation": Mic,
-  "billing-rcm": Receipt,
-  "telehealth-communication": Video,
-  "measurement-outcomes": LineChart,
-};
-
-// V4 category color mapping
-const categoryColors: Record<string, string> = {
-  "ehr-practice-management": "bg-blue-500/10 text-blue-600",
-  "ai-scribe-documentation": "bg-purple-500/10 text-purple-600",
-  "billing-rcm": "bg-emerald-500/10 text-emerald-600",
-  "telehealth-communication": "bg-cyan-500/10 text-cyan-600",
-  "measurement-outcomes": "bg-emerald-500/10 text-emerald-600",
 };
 
 export default async function ForCliniciansPage() {
@@ -125,14 +93,13 @@ export default async function ForCliniciansPage() {
 
       <div className="min-h-screen bg-canvas">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-surface border-b border-separator">
-          <div className="absolute inset-0 bg-gradient-to-br from-treatment/[0.03] via-transparent to-accent/[0.02]" />
-          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <div className="mx-auto max-w-6xl">
             {/* Breadcrumb */}
             <nav className="mb-6 flex items-center gap-2 text-sm">
               <Link
                 href="/tools/"
-                className="text-label-secondary hover:text-treatment transition-colors"
+                className="text-label-secondary hover:text-accent transition-colors"
               >
                 Tools
               </Link>
@@ -142,30 +109,35 @@ export default async function ForCliniciansPage() {
               </span>
             </nav>
 
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-treatment/10">
-                <Stethoscope className="h-6 w-6 text-treatment" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold tracking-tight text-label-primary sm:text-4xl lg:text-5xl">
-                  {landingPage.display_name}
-                </h1>
-              </div>
-            </div>
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              For Mental Health Clinicians
+            </p>
 
-            {/* Direct Answer Block */}
-            <div className="mt-4 rounded-xl border border-treatment/20 bg-treatment/5 p-5">
-              <p className="text-lg text-label-primary leading-relaxed">
-                {landingPage.direct_answer}
-              </p>
+            {/* Title row with Architect CTA */}
+            <div className="mt-2 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h1 className="text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
+                  Practice Software
+                </h1>
+                <p className="mt-1 text-label-tertiary">
+                  {allV4Tools.length} tools across {categoriesWithCounts.length} categories
+                </p>
+              </div>
+
+              <Link
+                href="/architect?source=for-clinicians"
+                className="group flex flex-col items-start rounded-xl border-2 border-neutral-900 bg-neutral-900 px-5 py-4 shadow-md transition-all hover:bg-neutral-800 hover:shadow-lg sm:items-end"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base font-semibold text-white">Practice Architect™</span>
+                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-1" />
+                </div>
+                <span className="mt-1 text-sm text-neutral-300">Build your ideal tech stack</span>
+              </Link>
             </div>
 
             <p className="mt-4 max-w-2xl text-lg text-label-secondary">
-              {landingPage.intro}
-            </p>
-
-            <p className="mt-2 text-sm text-label-tertiary">
-              {allV4Tools.length} tools across {categoriesWithCounts.length} categories
+              Compare EHRs, AI scribes, billing platforms, and telehealth tools with transparent pricing and fit scores for your practice.
             </p>
           </div>
         </section>
@@ -173,12 +145,12 @@ export default async function ForCliniciansPage() {
         {/* Buyer Intent Router */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-              Find the right tools for you
-            </h2>
-            <p className="mt-1 text-sm text-label-secondary">
-              Tell us about your practice and needs
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Get Started
             </p>
+            <h2 className="mt-1 text-xl font-semibold text-label-primary">
+              Find the Right Tools
+            </h2>
 
             <div className="mt-6">
               <Suspense fallback={<div className="h-48 animate-pulse bg-surface rounded-xl" />}>
@@ -187,26 +159,19 @@ export default async function ForCliniciansPage() {
             </div>
 
             {/* EHR Matcher CTA */}
-            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-accent/20 bg-gradient-to-r from-accent/5 to-treatment/5 p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
-                  <Sparkles className="h-6 w-6 text-accent" />
-                </div>
-                <div>
-                  <p className="font-semibold text-label-primary">
-                    Looking for an EHR?
-                  </p>
-                  <p className="text-sm text-label-secondary">
-                    Answer 7 questions to find your perfect match
-                  </p>
-                </div>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-surface p-5">
+              <div>
+                <p className="font-medium text-label-primary">Looking for an EHR?</p>
+                <p className="text-sm text-label-secondary">
+                  Answer 7 questions to find your perfect match
+                </p>
               </div>
               <Link
                 href="/tools/for-clinicians/ehr-practice-management/match/"
-                className="group flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-hover"
+                className="group flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
               >
-                Find My EHR
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <span className="text-white">Find My EHR</span>
+                <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>
@@ -215,14 +180,12 @@ export default async function ForCliniciansPage() {
         {/* Browse by Category */}
         <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div>
-              <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                Browse by Category
-              </h2>
-              <p className="mt-1 text-sm text-label-secondary">
-                {categoriesWithCounts.length} categories of professional tools
-              </p>
-            </div>
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Categories
+            </p>
+            <h2 className="mt-1 text-xl font-semibold text-label-primary">
+              Browse by Type
+            </h2>
 
             <div className="mt-6">
               <CategoryGrid categories={categoriesWithCounts} />
@@ -234,15 +197,12 @@ export default async function ForCliniciansPage() {
         {featuredTools.length > 0 && (
           <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div>
-                <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                  Featured Tools
-                </h2>
-                <p className="mt-1 text-sm text-label-secondary">
-                  {/* P0 FIX: Removed "highly rated" claim - no ratings data exists */}
-                  Popular tools for mental health practices
-                </p>
-              </div>
+              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                Featured
+              </p>
+              <h2 className="mt-1 text-xl font-semibold text-label-primary">
+                Popular Tools
+              </h2>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {featuredTools.map((tool) => (
@@ -262,15 +222,14 @@ export default async function ForCliniciansPage() {
         {categoriesWithCounts.length > 0 && (
           <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                Popular Categories
-              </h2>
-              <p className="mt-1 text-sm text-label-secondary">
-                Browse tools by category
+              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                Explore
               </p>
+              <h2 className="mt-1 text-xl font-semibold text-label-primary">
+                By Category
+              </h2>
 
               <div className="mt-6 space-y-10">
-                {/* Only show categories with tools (up to 3) */}
                 {categoriesWithCounts.slice(0, 3).map((cat) => {
                   const categoryData = v4Categories.find((c) => c.slug === cat.slug);
                   if (!categoryData) return null;
@@ -291,60 +250,40 @@ export default async function ForCliniciansPage() {
 
         {/* What Clinicians Look For */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-              Evaluating Clinical Software
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-label-secondary">
-              Key considerations for mental health professionals
+          <div className="mx-auto max-w-4xl">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Guidance
             </p>
+            <h2 className="mt-1 text-xl font-semibold text-label-primary">
+              Evaluating Software
+            </h2>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-left">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-xl border border-separator bg-surface p-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-treatment/10">
-                  <Shield className="h-5 w-5 text-treatment" />
-                </div>
-                <h3 className="mt-3 font-medium text-label-primary">
-                  HIPAA Compliance
-                </h3>
-                <p className="mt-1 text-sm text-label-secondary">
+                <h3 className="font-medium text-label-primary">HIPAA Compliance</h3>
+                <p className="mt-2 text-sm text-label-secondary">
                   Required for patient data handling in clinical settings.
                 </p>
               </div>
 
               <div className="rounded-xl border border-separator bg-surface p-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-positive/10">
-                  <CheckCircle className="h-5 w-5 text-positive" />
-                </div>
-                <h3 className="mt-3 font-medium text-label-primary">
-                  EHR Integration
-                </h3>
-                <p className="mt-1 text-sm text-label-secondary">
+                <h3 className="font-medium text-label-primary">EHR Integration</h3>
+                <p className="mt-2 text-sm text-label-secondary">
                   Seamless workflow with your existing systems.
                 </p>
               </div>
 
               <div className="rounded-xl border border-separator bg-surface p-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <Clock className="h-5 w-5 text-accent" />
-                </div>
-                <h3 className="mt-3 font-medium text-label-primary">
-                  Time Savings
-                </h3>
-                <p className="mt-1 text-sm text-label-secondary">
+                <h3 className="font-medium text-label-primary">Time Savings</h3>
+                <p className="mt-2 text-sm text-label-secondary">
                   Reduces administrative burden so you can focus on patients.
                 </p>
               </div>
 
               <div className="rounded-xl border border-separator bg-surface p-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-caution/10">
-                  <Receipt className="h-5 w-5 text-caution" />
-                </div>
-                <h3 className="mt-3 font-medium text-label-primary">
-                  ROI & Pricing
-                </h3>
-                <p className="mt-1 text-sm text-label-secondary">
-                  Clear pricing models and demonstrable return on investment.
+                <h3 className="font-medium text-label-primary">ROI & Pricing</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  Clear pricing and demonstrable return on investment.
                 </p>
               </div>
             </div>
@@ -386,23 +325,23 @@ export default async function ForCliniciansPage() {
         <TrustSignal />
 
         {/* CTA for Patients */}
-        <section className="bg-gradient-to-br from-accent/5 to-positive/5 px-4 py-12 sm:px-6 lg:px-8">
+        <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-medium uppercase tracking-wide text-label-tertiary">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
               Looking for patient-facing tools?
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-label-primary">
+            <h2 className="mt-2 text-xl font-semibold text-label-primary">
               Apps for Your Patients
             </h2>
-            <p className="mx-auto mt-2 max-w-xl text-label-secondary">
+            <p className="mx-auto mt-2 max-w-md text-label-secondary">
               Recommend evidence-based apps to supplement treatment.
             </p>
             <Link
               href="/tools/for-patients/"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-accent-hover"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
             >
-              Browse Patient Apps
-              <ArrowRight className="h-4 w-4" />
+              <span className="text-white">Browse Patient Apps</span>
+              <ArrowRight className="h-4 w-4 text-white" />
             </Link>
           </div>
         </section>
@@ -422,34 +361,22 @@ function CategoryPreview({
   category: (typeof clinicianCategoriesData.categories)[0];
   tools: ClinicianToolV4[];
 }) {
-  const Icon = categoryIcons[category.slug] || Laptop;
-  const colorClass = categoryColors[category.slug] || "bg-gray-500/10 text-gray-600";
   const displayTools = tools.slice(0, 3);
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div
-            className={cn(
-              "flex h-10 w-10 items-center justify-center rounded-xl",
-              colorClass
-            )}
-          >
-            <Icon className="h-5 w-5" />
-          </div>
-          <div>
-            <h3 className="font-semibold text-label-primary">
-              {category.display_name}
-            </h3>
-            <p className="text-sm text-label-tertiary">
-              {tools.length} tools
-            </p>
-          </div>
+        <div>
+          <h3 className="font-semibold text-label-primary">
+            {category.display_name}
+          </h3>
+          <p className="text-sm text-label-tertiary">
+            {tools.length} tools
+          </p>
         </div>
         <Link
           href={category.url}
-          className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
+          className="group flex items-center gap-1 text-sm font-medium text-label-primary hover:text-accent"
         >
           View all
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

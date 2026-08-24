@@ -66,6 +66,55 @@ export const CLINICIAN_PRODUCT_CATEGORY_LABELS: Record<
   "care-coordination-referrals": "Care Coordination & Referrals",
 };
 
+/**
+ * Mapping from tool schema category slugs to V4 taxonomy URL slugs.
+ * The V4 taxonomy uses shorter, SEO-friendly slugs for URLs.
+ */
+export const SCHEMA_TO_TAXONOMY_CATEGORY: Record<
+  z.infer<typeof ClinicianProductCategoryZ>,
+  string
+> = {
+  "ehr-practice-management": "ehr-practice-management",
+  "billing-rcm-insurance": "billing-rcm",
+  "telehealth-communication": "telehealth-communication",
+  "credentialing-workforce": "credentialing-workforce",
+  "provider-network-virtual-care": "provider-networks",
+  "measurement-outcomes-dtx": "measurement-outcomes",
+  "ai-scribe-documentation": "ai-scribe-documentation",
+  "ai-copilot-clinical": "clinical-decision-support", // AI clinical tools → CDS
+  "clinical-decision-support": "clinical-decision-support",
+  "patient-engagement": "patient-engagement",
+  "intake-scheduling-forms": "scheduling-intake",
+  "prescribing-erx": "prescribing-erx",
+  "compliance-consent-security": "compliance-security",
+  "analytics-reporting": "analytics-reporting",
+  "care-coordination-referrals": "care-coordination",
+};
+
+/**
+ * Reverse mapping: V4 taxonomy slug → schema category slugs that map to it.
+ * Multiple schema categories can map to the same taxonomy category.
+ */
+export const TAXONOMY_TO_SCHEMA_CATEGORIES: Record<string, z.infer<typeof ClinicianProductCategoryZ>[]> = {
+  "ehr-practice-management": ["ehr-practice-management"],
+  "billing-rcm": ["billing-rcm-insurance"],
+  "telehealth-communication": ["telehealth-communication"],
+  "credentialing-workforce": ["credentialing-workforce"],
+  "provider-networks": ["provider-network-virtual-care"],
+  "measurement-outcomes": ["measurement-outcomes-dtx"],
+  "ai-scribe-documentation": ["ai-scribe-documentation"],
+  "clinical-decision-support": ["clinical-decision-support", "ai-copilot-clinical"],
+  "patient-engagement": ["patient-engagement"],
+  "scheduling-intake": ["intake-scheduling-forms"],
+  "prescribing-erx": ["prescribing-erx"],
+  "compliance-security": ["compliance-consent-security"],
+  "analytics-reporting": ["analytics-reporting"],
+  "care-coordination": ["care-coordination-referrals"],
+  // Categories with no current tool data mapping (need new tools)
+  "marketing-patient-acquisition": [],
+  "digital-therapeutics": [], // Could map from measurement-outcomes-dtx
+};
+
 // ============================================================================
 // AUDIENCE ENUMS
 // ============================================================================

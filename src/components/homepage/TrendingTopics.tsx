@@ -44,33 +44,25 @@ const trendingTopics = [
 
 export function TrendingTopics() {
   return (
-    <section className="bg-canvas px-4 py-4 sm:px-6 lg:px-8">
+    <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Title */}
-        <h2 className="mb-4 text-center text-2xl font-bold leading-tight sm:text-3xl">
-          <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
-            Trending Mental Health Topics
-          </span>
+        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary text-center">
+          Popular
+        </p>
+        <h2 className="mt-1 mb-6 text-center text-xl font-semibold text-label-primary sm:text-2xl">
+          Trending Mental Health Topics
         </h2>
 
         {/* Tiles Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {trendingTopics.map((topic) => (
             <Link key={topic.title} href={topic.href} className="group block">
-              <div className="relative h-full overflow-hidden rounded-2xl border border-separator bg-white shadow-lg transition-all duration-500 group-hover:-translate-y-1 hover:shadow-xl">
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-400 to-accent-600 opacity-5 transition-opacity duration-500 group-hover:opacity-10" />
-
-                {/* Content */}
-                <div className="relative p-6">
-                  <h3 className="mb-2 text-lg font-bold text-label-primary">
-                    {topic.title}
-                  </h3>
-                  <p className="text-sm text-label-secondary">{topic.description}</p>
-                </div>
-
-                {/* Hover ring effect */}
-                <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent transition-all duration-300 group-hover:ring-separator-opaque" />
+              <div className="h-full rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft">
+                <h3 className="mb-2 font-semibold text-label-primary group-hover:text-accent transition-colors">
+                  {topic.title}
+                </h3>
+                <p className="text-sm text-label-secondary">{topic.description}</p>
               </div>
             </Link>
           ))}

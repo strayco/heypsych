@@ -448,3 +448,32 @@ export function useTreatment<T = any>(slug: string) {
 export function useTherapyTreatments() {
   return useTherapies();
 }
+
+/**
+ * Fetch individual provider from NPI Registry API
+ * Extracts NPI number from slug format: dr-firstname-lastname-XXXXXXXXXX
+ */
+export function useProvider(slug: string) {
+  // Extract NPI number from slug (last 10 digits)
+  const npiMatch = slug.match(/(\d{10})$/);
+  const npi = npiMatch?.[1];
+
+  return useQuery({
+    queryKey: ["provider", npi],
+    enabled: !!npi,
+    queryFn: async () => {
+      if (!npi) return null;
+
+      const response = await fetch(`/api/providers/${npi}`);
+      if (!response.ok) {
+        if (response.status === 404) return null;
+        throw new Error("Failed to fetch provider");
+      }
+
+      const data = await response.json();
+      return data.provider;
+    },
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+    retry: 1,
+  });
+}

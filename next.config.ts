@@ -179,6 +179,45 @@ const nextConfig: NextConfig = {
       },
       // SEO: Domain canonicalization (www → non-www) handled at Vercel DNS level
       // Canonical domain: heypsych.com (non-www)
+
+      // SEO: Legacy clinician hub redirects → V4 category pages
+      // Old 6-category system migrated to new 16-category V4 taxonomy
+      {
+        source: "/tools/for-clinicians/clinical-answers-evidence",
+        destination: "/tools/for-clinicians/clinical-decision-support",
+        permanent: true,
+      },
+      {
+        source: "/tools/for-clinicians/ai-scribes-documentation",
+        destination: "/tools/for-clinicians/ai-scribe-documentation",
+        permanent: true,
+      },
+      {
+        source: "/tools/for-clinicians/billing-coding",
+        destination: "/tools/for-clinicians/billing-rcm",
+        permanent: true,
+      },
+      {
+        source: "/tools/for-clinicians/prescribing-medication-support",
+        destination: "/tools/for-clinicians/prescribing-erx",
+        permanent: true,
+      },
+      {
+        source: "/tools/for-clinicians/practice-admin-operations",
+        destination: "/tools/for-clinicians/ehr-practice-management",
+        permanent: true,
+      },
+      {
+        source: "/tools/for-clinicians/patient-engagement-between-visits",
+        destination: "/tools/for-clinicians/patient-engagement",
+        permanent: true,
+      },
+      // SEO: Redirect programmatic-style treatment URLs to canonical treatment pages
+      {
+        source: "/treatments/electroconvulsive-therapy-for-severe-depression",
+        destination: "/treatments/electroconvulsive-therapy",
+        permanent: true,
+      },
     ];
   },
 };

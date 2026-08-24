@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Search, Pill, Brain, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { logger } from "@/lib/utils/logger";
@@ -251,12 +250,7 @@ function SearchPageContent() {
 
     return (
       <Link key={result.id} href={getResultUrl(result)}>
-        <motion.div
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.02 }}
-        >
-          <div className="rounded-xl border border-separator bg-surface-grouped px-3 py-2.5 transition-all hover:border-accent-border hover:bg-fill-secondary shadow-card-1 hover:shadow-card-2">
+        <div className="rounded-xl border border-separator bg-surface-grouped px-3 py-2.5 transition-all hover:border-accent-border hover:bg-fill-secondary shadow-card-1 hover:shadow-card-2">
             <div className="flex items-start gap-2.5">
               {/* Icon */}
               <div className="mt-0.5 shrink-0">{getResultIcon(result.type)}</div>
@@ -323,7 +317,6 @@ function SearchPageContent() {
               </div>
             </div>
           </div>
-        </motion.div>
       </Link>
     );
   };
@@ -339,11 +332,7 @@ function SearchPageContent() {
     <div className="min-h-screen bg-canvas">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="mb-6 flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 shadow-soft">
               <Search className="h-6 w-6 text-white" />
@@ -372,7 +361,7 @@ function SearchPageContent() {
               <span className="font-semibold text-label-primary">&ldquo;{query}&rdquo;</span>
             </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Loading State */}
         {isLoading && (
@@ -408,12 +397,7 @@ function SearchPageContent() {
           <div className="space-y-8">
             {/* Conditions */}
             {groupedResults.conditions.length > 0 && (
-              <motion.div
-                id="conditions"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
+              <div id="conditions">
                 <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
                   <Brain className="h-5 w-5 text-accent" />
                   <h2 className="text-lg font-semibold text-label-primary">
@@ -435,17 +419,12 @@ function SearchPageContent() {
                       : `Show All ${groupedResults.conditionsTotal} Conditions`}
                   </button>
                 )}
-              </motion.div>
+              </div>
             )}
 
             {/* Treatments */}
             {groupedResults.treatments.length > 0 && (
-              <motion.div
-                id="treatments"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+              <div id="treatments">
                 <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
                   <Pill className="h-5 w-5 text-blue-400" />
                   <h2 className="text-lg font-semibold text-label-primary">
@@ -467,17 +446,12 @@ function SearchPageContent() {
                       : `Show All ${groupedResults.treatmentsTotal} Treatments`}
                   </button>
                 )}
-              </motion.div>
+              </div>
             )}
 
             {/* Resources */}
             {groupedResults.resources.length > 0 && (
-              <motion.div
-                id="resources"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
+              <div id="resources">
                 <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
                   <BookOpen className="h-5 w-5 text-positive-600" />
                   <h2 className="text-lg font-semibold text-label-primary">
@@ -499,7 +473,7 @@ function SearchPageContent() {
                       : `Show All ${groupedResults.resourcesTotal} Resources`}
                   </button>
                 )}
-              </motion.div>
+              </div>
             )}
           </div>
         )}

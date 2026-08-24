@@ -24,15 +24,15 @@ export function BoardAttribution({
 }: BoardAttributionProps) {
   return (
     <div className={`flex items-center gap-2 text-sm ${className}`}>
-      <Shield className="h-4 w-4 text-emerald-600" />
+      <Shield className="h-4 w-4 text-label-tertiary" />
       <Link
         href={url}
-        className="text-emerald-700 hover:text-emerald-800 hover:underline font-medium"
+        className="text-label-secondary hover:text-accent hover:underline font-medium"
       >
         {label}
       </Link>
       {lastReviewed && (
-        <span className="text-label-primary0">
+        <span className="text-label-tertiary">
           · Last reviewed {formatDate(lastReviewed)}
         </span>
       )}

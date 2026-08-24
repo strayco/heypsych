@@ -12,7 +12,7 @@ interface RelatedHubsProps {
 
 /**
  * RelatedHubs Component
- * 
+ *
  * Links to hub pages that contain this tool.
  */
 export function RelatedHubs({ hubSlugs, currentToolSlug }: RelatedHubsProps) {
@@ -29,21 +29,24 @@ export function RelatedHubs({ hubSlugs, currentToolSlug }: RelatedHubsProps) {
   }
 
   return (
-    <section className="py-6 border-t border-separator">
+    <section className="border-t border-separator py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-lg font-semibold text-label-primary mb-4">
+        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+          Categories
+        </p>
+        <h2 className="mt-1 text-lg font-semibold text-label-primary">
           Browse More Tools
         </h2>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="mt-4 flex flex-wrap gap-2">
           {hubs.map((hub) => (
             <Link
               key={hub.slug}
               href={hub.url}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-separator rounded-full text-sm font-medium text-label-secondary hover:border-accent-500 hover:text-accent hover:bg-accent-tint transition-colors"
+              className="group inline-flex items-center gap-2 px-3 py-1.5 border border-separator rounded-lg text-sm text-label-secondary hover:border-neutral-300 hover:text-accent transition-colors"
             >
               {hub.display_name}
-              <ArrowRight className="h-3 w-3" />
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
           ))}
         </div>

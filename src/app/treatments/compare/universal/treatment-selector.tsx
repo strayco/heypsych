@@ -39,7 +39,6 @@ export function TreatmentSelector({
   maxSelections = 4,
 }: TreatmentSelectorProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedModality, setSelectedModality] = useState<string | null>(null);
   const [treatments, setTreatments] = useState<TreatmentOption[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -61,14 +60,9 @@ export function TreatmentSelector({
     loadTreatments();
   }, []);
 
-  // Filter treatments based on search and modality
+  // Filter treatments based on search
   const filteredTreatments = useMemo(() => {
     let result = treatments;
-
-    // Filter by modality
-    if (selectedModality) {
-      result = result.filter((t) => t.modality === selectedModality);
-    }
 
     // Filter by search query
     if (searchQuery.trim()) {
@@ -91,7 +85,7 @@ export function TreatmentSelector({
     });
 
     return result.slice(0, 50); // Limit for performance
-  }, [treatments, selectedModality, searchQuery, selectedSlugs]);
+  }, [treatments, searchQuery, selectedSlugs]);
 
   // Selected treatments info
   const selectedTreatments = useMemo(() => {
@@ -115,11 +109,6 @@ export function TreatmentSelector({
   const handleClear = useCallback(() => {
     onSelectionChange([]);
   }, [onSelectionChange]);
-
-  const modalities = useMemo(() => {
-    const unique = [...new Set(treatments.map((t) => t.modality))];
-    return unique.sort();
-  }, [treatments]);
 
   const canCompare = selectedSlugs.length >= 2;
 
@@ -195,35 +184,6 @@ export function TreatmentSelector({
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
-        </div>
-
-        {/* Modality filters */}
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => setSelectedModality(null)}
-            className={cn(
-              "px-3 py-1.5 text-sm rounded-full transition-colors",
-              selectedModality === null
-                ? "bg-gray-900 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            )}
-          >
-            All
-          </button>
-          {modalities.map((modality) => (
-            <button
-              key={modality}
-              onClick={() => setSelectedModality(modality)}
-              className={cn(
-                "px-3 py-1.5 text-sm rounded-full transition-colors",
-                selectedModality === modality
-                  ? "bg-gray-900 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              )}
-            >
-              {formatModality(modality)}
-            </button>
-          ))}
         </div>
       </div>
 

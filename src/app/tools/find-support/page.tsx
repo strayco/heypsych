@@ -42,7 +42,7 @@ export default async function FindSupportHubPage() {
   const topPicks = await ToolService.getTopPicks(HUB_SLUG);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-canvas">
       {/* Hub Content */}
       <HubPageContent
         hub={hub}
@@ -53,37 +53,38 @@ export default async function FindSupportHubPage() {
 
       {/* Sub-Hub Navigation */}
       {subHubs.length > 0 && (
-        <section className="px-4 py-10 sm:px-6 lg:px-8 bg-white border-t border-neutral-200">
+        <section className="px-4 py-10 sm:px-6 lg:px-8 bg-canvas border-t border-separator">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-2xl font-bold text-neutral-900 mb-6">
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Categories
+            </p>
+            <h2 className="mt-1 text-xl font-semibold text-label-primary sm:text-2xl mb-6">
               Browse by Type
             </h2>
-            
+
             <div className="grid gap-4 sm:grid-cols-3">
               {subHubs.map((subHub) => {
                 const Icon = subHubIcons[subHub.slug] || MessageCircle;
-                
+
                 return (
                   <Link
                     key={subHub.slug}
                     href={subHub.url}
-                    className="group p-6 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all"
+                    className="group p-6 rounded-xl border border-separator bg-surface hover:border-neutral-300 hover:shadow-soft transition-all"
                   >
-                    <div className="inline-flex p-3 rounded-lg bg-blue-600 text-white mb-4">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    
-                    <h3 className="font-semibold text-lg text-neutral-900 group-hover:text-blue-600 transition-colors">
+                    <Icon className="h-6 w-6 text-label-tertiary mb-4" />
+
+                    <h3 className="font-semibold text-lg text-label-primary group-hover:text-accent transition-colors">
                       {subHub.display_name}
                     </h3>
-                    
-                    <p className="mt-2 text-sm text-neutral-600">
+
+                    <p className="mt-2 text-sm text-label-secondary">
                       {subHub.direct_answer.slice(0, 100)}...
                     </p>
-                    
-                    <div className="mt-4 flex items-center gap-1 text-blue-600 text-sm font-medium">
+
+                    <div className="mt-4 flex items-center gap-1 text-label-primary text-sm font-medium">
                       View platforms
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 text-label-tertiary group-hover:translate-x-0.5 group-hover:text-accent transition-all" />
                     </div>
                   </Link>
                 );
