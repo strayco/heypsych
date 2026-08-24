@@ -1,10 +1,6 @@
 // src/app/api/providers/search/route.ts
 // Uses NPI Registry API directly - no database storage needed
 import { NextRequest, NextResponse } from "next/server";
-import { logger } from "@/lib/utils/logger";
-import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
-import { validateQuery } from "@/lib/validation";
-import { providerSearchSchema } from "@/lib/schemas/api";
 
 // NPI Registry API - free, public, always up-to-date
 const NPI_API_BASE = "https://npiregistry.cms.hhs.gov/api/";
@@ -68,24 +64,15 @@ interface NPIResult {
 export async function GET(req: NextRequest) {
   const startTime = Date.now();
 
-  // Rate limiting
-  const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
-  if (rateLimitResponse) {
-    return rateLimitResponse;
-  }
-
-  // Input validation
-  const { data: qParams, error: validationError } = validateQuery(req, providerSearchSchema);
-  if (validationError) {
-    return validationError;
-  }
-  if (!qParams) {
-    return NextResponse.json({ error: "Invalid query parameters" }, { status: 400 });
-  }
-
   try {
-    const limit = Math.min(qParams.limit || 20, 200); // NPI API max is 200
-    const offset = qParams.offset || 0;
+    const { searchParams } = new URL(req.url);
+    const limit = Math.min(Number(searchParams.get("limit")) || 20, 200);
+    const offset = Number(searchParams.get("offset")) || 0;
+    const state = searchParams.get("state");
+    const city = searchParams.get("city");
+    const zip = searchParams.get("zip");
+    const q = searchParams.get("q");
+    const specialization = searchParams.get("specialization");
     const skip = Math.floor(offset / limit) + 1; // NPI uses page numbers
 
     // Build NPI API query
@@ -97,8 +84,8 @@ export async function GET(req: NextRequest) {
     });
 
     // Specialty filter - use specific taxonomy description if provided
-    if (qParams.specialization) {
-      const specialties = qParams.specialization.split(",").map(s => s.trim().toLowerCase().replace(/\s+/g, "_"));
+    if (specialization) {
+      const specialties = specialization.split(",").map(s => s.trim().toLowerCase().replace(/\s+/g, "_"));
       // Use the first specialty's description for the API
       const description = SPECIALTY_TO_DESCRIPTION[specialties[0]];
       if (description) {
@@ -112,19 +99,19 @@ export async function GET(req: NextRequest) {
     }
 
     // Location filters
-    if (qParams.state) {
-      params.append("state", qParams.state.toUpperCase());
+    if (state) {
+      params.append("state", state.toUpperCase());
     }
-    if (qParams.city) {
-      params.append("city", qParams.city);
+    if (city) {
+      params.append("city", city);
     }
-    if (qParams.zip) {
-      params.append("postal_code", qParams.zip);
+    if (zip) {
+      params.append("postal_code", zip);
     }
 
     // Name search
-    if (qParams.q) {
-      const nameParts = qParams.q.trim().split(/\s+/);
+    if (q) {
+      const nameParts = q.trim().split(/\s+/);
       if (nameParts.length >= 2) {
         params.append("first_name", nameParts[0] + "*");
         params.append("last_name", nameParts.slice(1).join(" ") + "*");
@@ -133,7 +120,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    logger.debug("🔍 NPI API query:", Object.fromEntries(params));
+    // Debug: console.log("NPI API query:", Object.fromEntries(params));
 
     // Fetch from NPI Registry
     const response = await fetch(`${NPI_API_BASE}?${params}`, {
@@ -188,11 +175,7 @@ export async function GET(req: NextRequest) {
 
     const loadTime = Date.now() - startTime;
 
-    logger.info(`✅ NPI search complete`, {
-      resultCount: providers.length,
-      totalCount: data.result_count,
-      loadTimeMs: loadTime,
-    });
+    // console.log(`NPI search: ${providers.length} results in ${loadTime}ms`);
 
     // Cache at edge
     const headers = new Headers();
@@ -208,7 +191,7 @@ export async function GET(req: NextRequest) {
       { headers }
     );
   } catch (e: any) {
-    logger.error("NPI search failed", e);
+    console.error("NPI search failed:", e);
 
     return NextResponse.json(
       {
