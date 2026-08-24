@@ -243,8 +243,65 @@ export default async function PracticeTypePage({ params }: PageProps) {
     ? "bg-treatment/10 text-treatment border-treatment/20"
     : "bg-accent/10 text-accent border-accent/20";
 
+  // Structured data
+  const structuredData = [
+    // BreadcrumbList
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Tools", "item": `${siteConfig.url}/tools/` },
+        { "@type": "ListItem", "position": 2, "name": "For Practices", "item": `${siteConfig.url}/tools/for-practices/` },
+        { "@type": "ListItem", "position": 3, "name": config.name, "item": `${siteConfig.url}/tools/for-practices/${type}` },
+      ],
+    },
+    // WebPage
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": config.seoTitle,
+      "description": config.seoDescription,
+      "url": `${siteConfig.url}/tools/for-practices/${type}`,
+      "isPartOf": { "@type": "WebSite", "name": siteConfig.name, "url": siteConfig.url },
+      "about": {
+        "@type": "Thing",
+        "name": config.name,
+        "description": config.description,
+      },
+    },
+    // ItemList for recommended tools
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": `Recommended Software for ${config.name}`,
+      "description": `Top software tools recommended for ${config.name.toLowerCase()} practices`,
+      "numberOfItems": recommendedTools.length,
+      "itemListElement": recommendedTools.slice(0, 6).map((tool, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": tool.name,
+          "applicationCategory": "HealthApplication",
+          "description": tool.short_description,
+          "url": `${siteConfig.url}/tools/for-clinicians/${tool.primary_category}/${tool.slug}/`,
+        },
+      })),
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-canvas">
+    <>
+      {/* Structured Data */}
+      {structuredData.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
+      <div className="min-h-screen bg-canvas">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-separator bg-surface">
         <div className="absolute inset-0 bg-gradient-to-br from-treatment/[0.03] via-transparent to-accent/[0.02]" />
@@ -371,6 +428,7 @@ export default async function PracticeTypePage({ params }: PageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }
 
