@@ -4,6 +4,22 @@
   "id": "f5fb6b53-7b81-4b40-882b-9e967297fe96",
   "slug": "brightside-health",
   "name": "Brightside Health",
+  "company_name": "Brightside Health",
+  "one_liner": "Measurement-based care platform specializing in depression and anxiety with 1,000+ medication combinations via PrecisionRx.",
+  "short_description": "Brightside Health is a mental health platform specializing in evidence-based treatment for depression and anxiety using measurement-based care and PrecisionRx prescribing technology.",
+  "long_description": "Brightside Health is a mental health platform founded in 2019 that specializes in treating depression and anxiety using a measurement-based care model. The platform tracks patient symptoms weekly using validated clinical measures (PHQ-9 for depression, GAD-7 for anxiety) and adjusts treatment accordingly. Brightside offers both therapy (video sessions with unlimited messaging) and psychiatry services, supported by its PrecisionRx decision tool that recommends from over 1,000 medication and dose combinations. Available in all 50 states plus DC, Brightside accepts major insurance including Aetna, Cigna, Anthem, UnitedHealthcare, and notably Medicare and Medicaid. Services extend to teens (ages 13+). Brightside also offers intensive outpatient programs (IOP) and a suicide prevention program.",
+  "best_for": [
+    "Adults and teens with depression or anxiety seeking evidence-based care",
+    "Patients wanting measurement-based treatment with weekly symptom tracking",
+    "Those with insurance including Medicare/Medicaid",
+    "People seeking combined therapy and psychiatry on one platform"
+  ],
+  "not_for": [
+    "Patients needing controlled substances (benzodiazepines, ADHD stimulants)",
+    "Those seeking ADHD treatment (not a specialty focus)",
+    "Patients wanting longer psychotherapy sessions (45 min standard)",
+    "Children under 13"
+  ],
   "import_ref": {
     "record_id": "MH-0303",
     "source_row": 304,
@@ -18,58 +34,242 @@
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "secure-messaging",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychologist",
-      "therapist-lcsw-lmft"
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft",
+      "psychologist"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "depression",
+      "anxiety",
+      "ocd",
+      "bipolar"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": true,
-    "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 9500,
+    "starting_price_display": "$95/month (psychiatry only)",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Psychiatry",
+        "price": "$95/month (self-pay)"
+      },
+      {
+        "name": "Therapy",
+        "price": "$299/month (4 weekly sessions)"
+      },
+      {
+        "name": "Psychiatry + Therapy",
+        "price": "$349/month"
+      },
+      {
+        "name": "With Insurance",
+        "price": "$20-50 copay typical"
+      }
+    ],
+    "notes": "Accepts major insurance including Aetna, Cigna, Anthem, UHC, Medicare, and Medicaid. Therapy includes unlimited messaging with therapist. 68% of therapy users get first appointment within 3 days.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant platform with measurement-based care protocols."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medicare",
+      "slug": "medicare",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medicaid",
+      "slug": "medicaid",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Walgreens",
+      "slug": "walgreens",
+      "category": "pharmacy",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Find Care partnership"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "reliability": "High"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": false,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": true,
+      "text_chat": true,
+      "file_sharing": false,
+      "unlimited_messaging": true
+    },
+    "patient_experience": {
+      "no_download_required": false,
+      "no_account_required": false,
+      "browser_based": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "appointment_availability": "Same or next day often available"
+    }
+  },
+  "services": {
+    "provider_network": true,
+    "mental_health_services": true,
+    "mental_health_notes": "Specializes in depression and anxiety with measurement-based care",
+    "psychiatry_services": true,
+    "medication_management": true,
+    "controlled_substances": false,
+    "controlled_substances_notes": "Cannot prescribe benzodiazepines or ADHD stimulants",
+    "therapy_services": true,
+    "iop_services": true,
+    "suicide_prevention_program": true,
+    "age_range": "Ages 13+",
+    "measurement_tools": {
+      "phq9": "Weekly depression screening",
+      "gad7": "Weekly anxiety screening"
+    }
+  },
+  "clinical_evidence": {
+    "precision_rx": "1,000+ medication/dose combinations",
+    "user_satisfaction": {
+      "therapy": "85% satisfied or very satisfied",
+      "psychiatry": "87% satisfied or very satisfied"
+    },
+    "appointment_speed": "68% therapy, 53% psychiatry within 3 days"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.849Z",
-  "updated_at": "2026-08-22T20:50:40.849Z",
-  "status": "active",
+  "related_tools": [
+    "cerebral",
+    "talkiatry",
+    "talkspace-psychiatry",
+    "done-adhd"
+  ],
+  "competitor_tools": [
+    "cerebral",
+    "talkspace-psychiatry",
+    "mdlive"
+  ],
+  "company_info": {
+    "founded_year": 2019,
+    "headquarters": "San Francisco, California, USA",
+    "employee_count": "200+",
+    "funding_status": "Venture-backed",
+    "notes": "Specializes in measurement-based care for depression and anxiety with PrecisionRx technology"
+  },
   "seo": {
-    "title": "Brightside Health: Review & Pricing | HeyPsych",
-    "meta_description": "Brightside Health review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Brightside Health",
+    "meta_description": "Brightside Health offers online psychiatry and therapy for depression and anxiety. $95/month psychiatry, $299/month therapy. Accepts Medicare, Medicaid, and...",
+    "faqs": [
+      {
+        "q": "How much does Brightside Health cost?",
+        "a": "Self-pay: Psychiatry is $95/month, therapy is $299/month (4 weekly sessions), or $349/month for both. With insurance (Aetna, Cigna, Anthem, UHC, Medicare, Medicaid), copays are typically $20-50."
+      },
+      {
+        "q": "Can Brightside prescribe ADHD medication?",
+        "a": "No, Brightside cannot prescribe controlled substances including ADHD stimulants or benzodiazepines. The platform specializes in depression and anxiety treatment with non-controlled medications."
+      },
+      {
+        "q": "What is Brightside's PrecisionRx?",
+        "a": "PrecisionRx is Brightside's clinical decision tool that helps psychiatrists select from over 1,000 medication and dose combinations for depression and anxiety, combined with weekly PHQ-9 and GAD-7 symptom tracking."
+      },
+      {
+        "q": "Does Brightside accept Medicare and Medicaid?",
+        "a": "Yes, Brightside accepts Medicare and Medicaid in addition to major commercial insurance plans like Aetna, Cigna, Anthem, and UnitedHealthcare."
+      }
+    ],
     "keywords": [
       "Brightside Health",
-      "telehealth communication"
+      "online psychiatry",
+      "depression treatment",
+      "anxiety treatment",
+      "measurement-based care",
+      "telehealth mental health"
     ]
   },
   "entity_resolution": {
@@ -80,5 +280,9 @@
     ],
     "resolution_notes": "Brightside Health appears in both Provider Networks and Measurement/DTx categories. Both are valid - it's a virtual mental health platform with outcomes tracking.",
     "resolved_at": "2026-08-22T21:09:07.537Z"
-  }
+  },
+  "created_at": "2026-08-22T20:50:40.849Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

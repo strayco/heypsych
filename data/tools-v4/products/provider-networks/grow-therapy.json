@@ -1,10 +1,26 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "d1a2b3c4-5678-9abc-def0-123456789009",
+  "id": "4c759bf0-764f-483b-bd9e-897467667ce8",
   "slug": "grow-therapy",
   "name": "Grow Therapy",
   "company_name": "Grow Therapy, Inc.",
+  "one_liner": "Free insurance credentialing in 5-7 days with 19,000+ providers nationwide, guaranteed claims, and weekly payments through revenue sharing.",
+  "short_description": "Grow Therapy is a free-to-join therapist network offering fast insurance credentialing (5-7 days), guaranteed claims, weekly payments, and practice management tools.",
+  "long_description": "Grow Therapy is a free-to-join therapist network available in all 50 states with over 19,000 licensed providers. Unlike subscription-based platforms, Grow Therapy operates on a revenue-sharing model—taking a percentage of insurance reimbursements with no upfront membership fees. Credentialing typically takes just 5-7 days, one of the fastest in the industry. Providers are credentialed with major payers including Aetna, Cigna, Blue Cross Blue Shield, UnitedHealthcare, Optum, Humana, Oscar, Oxford, and Anthem. Reimbursement rates range from $60-160+ per session depending on CPT code, payer, credentials, and location—with PMHNPs averaging $129/hour and LCSWs earning $85-100/session. Grow includes comprehensive practice management tools: EHR, scheduling, secure messaging, telehealth, and AI-assisted documentation, all HIPAA-compliant. Providers join as independent 1099 contractors with full clinical autonomy and flexible scheduling. Claims are guaranteed, and weekly payouts process in about seven business days after insurance pays.",
+  "best_for": [
+    "Therapists wanting completely free credentialing (no membership fees)",
+    "New clinicians seeking fastest credentialing (5-7 days)",
+    "Providers wanting guaranteed claims and weekly payments",
+    "Therapists building initial caseload before transitioning to private practice",
+    "Clinicians wanting included practice management and AI documentation tools"
+  ],
+  "not_for": [
+    "Providers wanting full transparency on fee splits",
+    "Therapists wanting to own their insurance credentials independently",
+    "Clinicians preferring flat-fee models over revenue sharing",
+    "Those wanting highest possible reimbursement rates (consider Alma)"
+  ],
   "import_ref": {
     "record_id": "PN-0009",
     "source_file": "provider-networks-research-2026",
@@ -13,14 +29,24 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
-  "capabilities": [],
+  "primary_category": "provider-network-virtual-care",
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
+  "capabilities": [
+    "secure-messaging",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
@@ -28,67 +54,208 @@
       "medium-11-50"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology",
+      "anxiety",
+      "depression",
+      "trauma",
+      "child-adolescent"
     ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
-  "best_for": [
-    "Therapists seeking to join a rapidly growing insurance-based network",
-    "Employers wanting seamless EAP-to-insurance transitions for employees",
-    "Primary care practices needing mental health referral pathways",
-    "Health systems seeking behavioral health integration partners",
-    "Providers wanting AI documentation tools to reduce administrative burden"
-  ],
-  "not_for": [],
-  "pricing_url": "undefined/pricing",
   "pricing": {
-    "model": "percentage-of-revenue",
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free to join",
     "free_tier": true,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": false,
+    "notes": "Free to join—no membership fees. Grow Therapy retains a portion of insurance reimbursements as an administrative fee. Providers do not always receive full transparency on exact insurer-to-Grow reimbursement before payout. Claims are guaranteed.",
+    "last_verified": "2026-08-23"
+  },
+  "reimbursement_rates": {
+    "general_range": "$60-160+ per session",
+    "pmhnp": "~$129/hour average",
+    "lcsw": "$85-100/session",
+    "high_cost_markets": "$100-140/session for 60-minute sessions",
+    "notes": "Rates vary by CPT code, payer, credentials, and geographic location."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with SOC 2 certification."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Optum",
+      "slug": "optum",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Humana",
+      "slug": "humana",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oscar",
+      "slug": "oscar",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oxford",
+      "slug": "oxford",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "credentialing": {
+      "speed": "5-7 days on average",
+      "note": "One of the fastest in the industry"
+    },
+    "billing": {
+      "payment_schedule": "Weekly (7 business days after insurance pays)",
+      "guaranteed_claims": true
+    },
+    "practice_management": {
+      "ehr": true,
+      "scheduling": true,
+      "telehealth": true,
+      "secure_messaging": true,
+      "ai_documentation": true
+    },
+    "contractor_status": {
+      "type": "1099 Independent Contractor",
+      "clinical_autonomy": "Full autonomy over treatment",
+      "scheduling_flexibility": "Set your own hours"
+    }
+  },
+  "network_info": {
+    "provider_count": "19,000+",
+    "coverage": "All 50 states"
+  },
   "seo": {
-    "title": "Grow Therapy: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
-    "faqs": [],
+    "title": "Grow Therapy: Free Insurance Credentialing for Therapists",
+    "meta_description": "Grow Therapy is free to join with 5-7 day credentialing, guaranteed claims, and weekly payments. 19,000+ providers in all 50 states. Includes EHR and AI...",
+    "faqs": [
+      {
+        "q": "Is Grow Therapy free for therapists?",
+        "a": "Yes, Grow Therapy is completely free to join with no membership fees. The platform operates on a revenue-sharing model, taking a percentage of insurance reimbursements."
+      },
+      {
+        "q": "How fast is credentialing through Grow Therapy?",
+        "a": "Grow Therapy credentials providers in 5-7 days on average—one of the fastest in the industry."
+      },
+      {
+        "q": "What are Grow Therapy reimbursement rates?",
+        "a": "Rates range from $60-160+ per session depending on CPT code, payer, credentials, and location. PMHNPs average ~$129/hour while LCSWs earn $85-100/session."
+      },
+      {
+        "q": "How does Grow Therapy compare to Headway?",
+        "a": "Both are free to join with revenue sharing models. Grow Therapy credentials in 5-7 days vs Headway's 2-4 weeks. Headway has a larger network (70,000+ vs 19,000+) and offers clawback protection. Both pay weekly."
+      }
+    ],
     "keywords": [
       "Grow Therapy",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "free credentialing",
+      "therapist network",
+      "insurance billing",
+      "mental health",
+      "guaranteed claims"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-23",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "headway",
+    "alma",
+    "sondermind",
+    "rula",
+    "tava-health"
+  ],
+  "competitor_tools": [
+    "headway",
+    "alma",
+    "sondermind",
+    "tava-health"
+  ],
+  "company_info": {
+    "founded_year": 2020,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "200-500",
+    "funding_status": "Venture-backed",
+    "notes": "One of the fastest-growing mental health provider networks with 19,000+ therapists in all 50 states."
+  },
   "created_at": "2026-08-22T21:10:17.307Z",
-  "updated_at": "2026-08-22T21:10:17.307Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

@@ -1,64 +1,90 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "nabla",
+  "id": "304c99c6-3950-4d7d-b5b2-567071ac2ae2",
   "slug": "nabla",
   "name": "Nabla",
   "company_name": "Nabla",
+  "website_url": "https://www.nabla.com",
+  "pricing_url": "https://www.nabla.com/pricing",
   "import_ref": {
     "source_file": "ai-scribe-research-2026",
-    "import_timestamp": "2026-08-22T21:10:42.890Z"
+    "import_timestamp": "2026-08-22T21:10:42.890Z",
+    "record_id": "MH-4370"
   },
   "lifecycle": {
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Ambient AI assistant generating structured clinical notes in seconds with 35+ language support, deep EHR integrations, and zero patient data storage on servers.",
+  "long_description": "Nabla is an ambient AI medical assistant that transforms clinical interactions into structured notes within seconds. The platform listens to patient-clinician conversations and generates clinical documentation (SOAP format) with automatic ICD-10 code suggestions. A key differentiator is Nabla's privacy model: audio, transcripts, and notes exist only in the clinician's browser and are never stored on Nabla's servers. The platform supports 35+ languages including Arabic, Mandarin, Spanish, French, Hindi, and Vietnamese. With 150+ health organizations and 85,000+ clinicians using the platform, Nabla reports that 55% of users save at least 1 hour per day on documentation with 27% reduction in burnout. Nabla Connect (launched October 2025) enables any EHR vendor to embed Nabla in days via SMART on FHIR.",
+  "one_liner": "Ambient AI scribe with 35+ languages and zero data storage on servers",
+  "best_for": [
+    "Multi-specialty practices and telehealth providers needing multilingual ambient documentation with strong privacy guarantees and quick EHR integration"
+  ],
+  "not_for": [
+    "Organizations requiring on-premise data storage",
+    "or practices without EHR integration needs (standalone documentation)"
+  ],
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "clinical-summarization",
+    "coding-assistance",
+    "ehr-integration",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatric-np-pa",
+      "psychiatrist"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10",
-      "medium-11-50"
+      "enterprise-200-plus"
     ],
     "specialties": [
+      "multi-specialty",
+      "primary-care",
+      "telehealth",
       "mental-health"
     ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
+    "has_rcm": false,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": true,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": true
   },
-  "short_description": "Ambient AI assistant for clinical documentation that generates structured notes in 5 seconds, with real-time dictation, 35+ language support, and deep EHR integrations via SMART on FHIR.",
-  "long_description": "Ambient AI assistant for clinical documentation that generates structured notes in 5 seconds, with real-time dictation, 35+ language support, and deep EHR integrations via SMART on FHIR.",
-  "one_liner": "Ambient AI assistant for clinical documentation that generates structured notes in 5 seconds, with real-time dictation, 35+ language support, and deep EHR integrations via SMART on FHIR",
-  "best_for": [],
-  "not_for": [],
-  "website_url": "https://www.nabla.com",
-  "pricing_url": "https://www.nabla.com/pricing",
   "pricing": {
-    "model": "subscription",
+    "model": "per-provider-month",
+    "starting_price_cents": 11900,
+    "starting_price_display": "~$119/month (individual), $299-399/month (enterprise)",
     "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
+    "free_trial_days": 14,
+    "quote_required": true,
+    "notes": "Individual plans historically around $119/month. Enterprise plans $299-399/provider/month. No public pricing since 2026; sales conversation required."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "privacy_note": "Patient data never stored on Nabla servers - exists only in clinician's browser"
   },
   "integrations": [
     {
@@ -70,7 +96,7 @@
     },
     {
       "name": "Oracle Health (Cerner)",
-      "slug": "oracle-health-cerner-",
+      "slug": "oracle-health-cerner",
       "category": "ehr",
       "integration_type": "native",
       "verified": true
@@ -104,39 +130,78 @@
       "verified": true
     },
     {
-      "name": "Meditech",
+      "name": "MEDITECH",
       "slug": "meditech",
       "category": "ehr",
       "integration_type": "native",
       "verified": true
     }
   ],
-  "seo": {
-    "title": "Nabla: AI Medical Scribe | HeyPsych",
-    "meta_description": "Ambient AI assistant for clinical documentation that generates structured notes in 5 seconds, with real-time dictation, 35+ language support, and deep EHR ",
-    "faqs": [],
-    "keywords": [
-      "Nabla",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
-    ]
-  },
-  "governance": {
-    "last_reviewed": "2026-08-22",
-    "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 85
-  },
-  "related_tools": [],
-  "competitor_tools": [],
   "company_info": {
     "founded_year": 2018,
-    "headquarters": "Paris, France (with New York office)",
-    "funding_status": "Series C ($120M)"
+    "headquarters": "Paris, France",
+    "us_office": "New York, NY",
+    "funding_status": "Series B",
+    "total_funding": "$24M+",
+    "lead_investor": "Cathay Innovation",
+    "customers": "150+ health organizations",
+    "clinicians": "85,000+"
   },
+  "clinical_evidence": {
+    "time_savings": "55% of users save at least 1 hour/day on documentation",
+    "burnout_reduction": "27% reduction in burnout",
+    "note_generation": "Seconds"
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92
+  },
+  "related_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "suki-ai",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "suki-ai"
+  ],
   "created_at": "2026-08-22T21:10:42.890Z",
-  "updated_at": "2026-08-22T21:10:42.890Z",
-  "featured": false,
-  "status": "active"
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active",
+  "seo": {
+    "title": "Nabla: Multilingual Ambient AI Medical Scribe | HeyPsych",
+    "meta_description": "Nabla AI scribe generates clinical notes in seconds with 35+ language support. Zero data storage on servers. Used by 85,000+ clinicians across 150+...",
+    "faqs": [
+      {
+        "q": "How much does Nabla cost?",
+        "a": "Nabla individual plans were historically around $119/month. Enterprise plans run $299-399 per provider per month. Nabla no longer publishes public pricing and requires a sales conversation for current rates."
+      },
+      {
+        "q": "Does Nabla store patient data?",
+        "a": "No, Nabla never stores patient data on its servers. Audio, transcripts, and notes exist only in the clinician's browser, providing strong privacy guarantees for both HIPAA and GDPR compliance."
+      },
+      {
+        "q": "What languages does Nabla support?",
+        "a": "Nabla supports 35+ languages including Arabic, Mandarin, Spanish, French, Hindi, Vietnamese, and many more - making it ideal for diverse patient populations and international telehealth."
+      },
+      {
+        "q": "Which EHRs does Nabla integrate with?",
+        "a": "Nabla integrates with 20+ EHR systems including Epic, Oracle Health (Cerner), athenahealth, NextGen, Greenway, and MEDITECH via SMART on FHIR and Nabla Connect."
+      }
+    ],
+    "keywords": [
+      "Nabla",
+      "multilingual AI scribe",
+      "ambient documentation",
+      "GDPR compliant AI scribe",
+      "clinical notes AI",
+      "telehealth documentation",
+      "French AI medical scribe"
+    ]
+  }
 }

@@ -15,17 +15,45 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation",
+    "clinical-decision-support"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "note-generation",
+    "clinical-summarization",
+    "ai-suggestions",
+    "reporting-dashboards",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "medical-director",
+      "practice-administrator",
+      "billing-specialist"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "residential-treatment",
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "addiction-treatment"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -39,35 +67,129 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "Sunwave Intelligent Assistant embedded in Sunwave EMR that generates BPS assessments, progress notes, and discharge summaries with 42 CFR Part 2 compliance.",
+  "long_description": "SIA (Sunwave Intelligent Assistant) is an AI documentation tool built directly into Sunwave Health's EMR, CRM, and RCM platform for behavioral health and addiction treatment. Unlike bolt-on AI solutions, SIA is embedded in every workflow - documentation, reporting, and clinical decision support. It generates BPS assessments, group notes, individual progress notes, and discharge summaries while clinicians maintain oversight through human-in-the-loop review. Sunwave is the first behavioral health platform to earn ISO 42001 certification for ethical AI, and SIA meets 42 CFR Part 2 compliance for SUD records. JourneyPure reported 44 minutes saved per BPS assessment, 55%+ documentation time reduction, 46% improvement in documentation quality, and reduced AMA rates from 27% to 19% after implementing SIA.",
+  "one_liner": "ISO 42001 certified AI documentation for Sunwave EMR with 42 CFR Part 2 compliance.",
+  "best_for": [
+    "Addiction treatment centers using Sunwave EMR platform",
+    "Behavioral health facilities requiring 42 CFR Part 2 compliant AI",
+    "Multi-facility organizations seeking embedded AI documentation",
+    "Treatment centers prioritizing ISO 42001 certified ethical AI"
+  ],
+  "not_for": [
+    "Practices not using Sunwave EMR platform",
+    "Solo practitioners or small private practices",
+    "Organizations seeking standalone AI scribe functionality",
+    "Outpatient mental health practices without SUD treatment programs"
+  ],
+  "website_url": "https://sunwavehealth.com/products/ai/",
+  "pricing_url": "https://sunwavehealth.com/",
+  "support_url": "https://sunwavehealth.com/",
+  "logo_url": "https://sunwavehealth.com/logo.png",
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "Pricing not publicly disclosed. SIA is part of Sunwave EMR platform. Sunwave EMR estimated at $800-$4,500/month depending on organization size. Better suited for mid-sized and enterprise behavioral health organizations. Contact Sunwave for quote.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://sunwavehealth.com/"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://sunwavehealth.com/baa/"
+    },
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "First behavioral health platform to earn ISO 42001 certification for ethical, responsible AI. Meets 42 CFR Part 2 compliance requirements for SUD records. BAA available."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
+  "integrations": [
+    {
+      "name": "Sunwave EMR",
+      "slug": "sunwave-emr",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "SIA is built directly into Sunwave EMR"
+    },
+    {
+      "name": "Sunwave CRM",
+      "slug": "sunwave-crm",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "SIA integrates with Sunwave CRM workflows"
+    },
+    {
+      "name": "Sunwave RCM",
+      "slug": "sunwave-rcm",
+      "category": "billing",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "SIA integrates with Sunwave revenue cycle management"
+    }
+  ],
   "seo": {
-    "title": "SIA: Review & Pricing | HeyPsych",
-    "meta_description": "SIA review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "SIA: Sunwave Intelligent Assistant for Behavioral Health",
+    "meta_description": "SIA review. ISO 42001 certified AI documentation for Sunwave EMR with 42 CFR Part 2 compliance. 55% documentation time reduction for addiction treatment.",
+    "faqs": [
+      {
+        "q": "What is SIA by Sunwave Health?",
+        "a": "SIA (Sunwave Intelligent Assistant) is an AI documentation tool embedded in Sunwave's EMR, CRM, and RCM platform. It generates BPS assessments, group notes, progress notes, and discharge summaries with human-in-the-loop review."
+      },
+      {
+        "q": "Is SIA compliant with 42 CFR Part 2 for addiction treatment?",
+        "a": "Yes, SIA meets 42 CFR Part 2 compliance requirements specific to SUD (substance use disorder) records. Sunwave is also the first behavioral health platform to earn ISO 42001 certification for ethical AI."
+      },
+      {
+        "q": "How much time does SIA save clinicians?",
+        "a": "JourneyPure reported 44 minutes saved per BPS assessment alone, with clinicians reclaiming over 55% of documentation time. BPS assessment completion rates improved from 59% to 89%, and documentation quality scores increased 46%."
+      },
+      {
+        "q": "How much does SIA cost?",
+        "a": "SIA is part of the Sunwave EMR platform, which is estimated at $800-$4,500/month depending on organization size. Pricing is best suited for mid-sized and enterprise behavioral health organizations. Contact Sunwave for a custom quote."
+      }
+    ],
     "keywords": [
       "SIA",
-      "ai copilot clinical"
+      "Sunwave Intelligent Assistant",
+      "Sunwave AI",
+      "42 CFR Part 2 AI",
+      "addiction treatment documentation",
+      "ISO 42001 behavioral health"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "sunwave-health",
+    "lia",
+    "kipu-intelligence"
+  ],
+  "competitor_tools": [
+    "kipu-intelligence",
+    "lia"
+  ],
+  "company_info": {
+    "headquarters": "Houston, TX, USA",
+    "address": "24 Greenway Plaza, Suite 1800, Houston, TX 77046",
+    "funding_status": "BVP Forge investment (merged with Lightning Step Oct 2025)",
+    "customer_count": "10,000+ daily users, $1B+ submitted claims"
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

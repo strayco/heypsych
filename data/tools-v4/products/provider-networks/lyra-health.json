@@ -1,10 +1,26 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "d1a2b3c4-5678-9abc-def0-123456789001",
+  "id": "fd7d23e3-3d4c-47fa-8a77-bffd5ba567b2",
   "slug": "lyra-health",
   "name": "Lyra Health",
   "company_name": "Lyra Health, Inc.",
+  "one_liner": "Enterprise workforce mental health platform serving 20M+ people globally with 3:1 ROI, AI-powered matching, and coverage in 90+ countries.",
+  "short_description": "Lyra Health is an enterprise mental health benefits platform serving employers with evidence-based care, AI-powered provider matching, and proven 3:1 ROI.",
+  "long_description": "Lyra Health is the leading enterprise workforce mental health platform, serving more than 20 million people directly through employer contracts and over 100 million through health plan and partner relationships. The platform provides comprehensive mental health benefits in 90+ countries with 40 app languages and 119 counselor languages. Lyra's PEPM (per-employee-per-month) pricing model includes access to therapy, coaching, medication management, and digital tools. In October 2025, Lyra launched Lyra Empower—an AI-powered platform combining Connect (real-time analytics for HR), Engage (employee engagement), and Care (clinical delivery). Extensive peer-reviewed research confirms Lyra's care model helps people recover twice as fast and results in a 26% annual reduction in overall healthcare claims costs, delivering an industry-leading 3:1 ROI. Setup costs range from $5,000 to over $50,000 depending on implementation complexity. In 2026, Lyra began rolling out Lyra AI, a clinical-grade conversational AI for mild to moderate challenges like burnout and sleep.",
+  "best_for": [
+    "Mid-to-large employers seeking comprehensive mental health benefits with guaranteed outcomes",
+    "Global organizations needing mental health support in 90+ countries",
+    "Employers wanting to replace or enhance traditional EAP programs",
+    "Companies prioritizing evidence-based treatment and measurement-based care",
+    "Organizations with complex mental health needs including substance use and neurodiversity"
+  ],
+  "not_for": [
+    "Individual clinicians (this is B2B employer platform)",
+    "Small businesses under 500 employees (better suited for standard EAP)",
+    "Organizations with tight budgets (premium pricing)",
+    "Companies wanting simple EAP without analytics"
+  ],
   "import_ref": {
     "record_id": "PN-0001",
     "source_file": "provider-networks-research-2026",
@@ -13,82 +29,152 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [],
-    "practice_settings": [
-      "solo-practice",
-      "group-practice"
-    ],
+    "practice_settings": [],
     "organization_sizes": [
-      "solo",
-      "small-2-10",
-      "medium-11-50"
+      "large-51-200",
+      "enterprise-200-plus"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "eap",
+      "behavioral-health",
+      "substance-use",
+      "neurodiversity"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
-  "best_for": [
-    "Enterprise employers seeking comprehensive mental health benefits with guaranteed outcomes",
-    "Global organizations needing mental health support in 200+ countries",
-    "Employers wanting to replace or enhance traditional EAP programs",
-    "Companies prioritizing evidence-based treatment and measurement-based care",
-    "Organizations with complex mental health needs including substance use and neurodiversity"
-  ],
-  "not_for": [],
-  "pricing_url": "undefined/pricing",
   "pricing": {
-    "model": "pepm",
+    "model": "per-provider-month",
+    "starting_price_display": "Custom PEPM pricing",
     "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": true,
+    "tiers": [
+      {
+        "name": "Enterprise",
+        "price": "Custom PEPM (contact for quote)"
+      }
+    ],
+    "notes": "Per-employee-per-month pricing tailored to organization size and service level. Setup costs range from $5,000 to $50,000+. ROI: every $1 invested saves $3.04 including all session and support service costs.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "notes": "Enterprise-grade security with SOC 2, HITRUST, and GDPR compliance for global deployments."
   },
   "integrations": [],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "lyra_empower_platform": {
+      "connect": "Real-time HR analytics, engagement trends, ROI tracking",
+      "engage": "Employee engagement and benefit awareness",
+      "care": "Clinical care delivery with AI matching"
+    },
+    "care_delivery": {
+      "therapy": "Evidence-based therapy with vetted providers",
+      "coaching": "Mental health coaching for lower acuity needs",
+      "medication_management": "Psychiatric care and medication",
+      "lyra_ai": "Clinical-grade conversational AI for burnout, sleep (launched 2026)"
+    },
+    "global_coverage": {
+      "countries": "90+",
+      "app_languages": 40,
+      "counselor_languages": 119
+    },
+    "outcomes": {
+      "roi": "3:1 (every $1 saves $3.04)",
+      "recovery_speed": "2x faster recovery",
+      "claims_reduction": "26% reduction in overall healthcare claims",
+      "research": "First workforce mental health company to publish peer-reviewed AI matching results"
+    }
+  },
+  "scale": {
+    "direct_coverage": "20+ million people",
+    "partner_coverage": "100+ million through health plans and partners"
+  },
   "seo": {
-    "title": "Lyra Health: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
-    "faqs": [],
+    "title": "Lyra Health: Enterprise Workforce Mental Health Platform",
+    "meta_description": "Lyra Health is the leading enterprise mental health platform with 3:1 ROI, AI-powered matching, and coverage in 90+ countries. Serves 20M+ people through...",
+    "faqs": [
+      {
+        "q": "How much does Lyra Health cost?",
+        "a": "Lyra Health uses custom per-employee-per-month (PEPM) pricing based on organization size and services. Setup costs range from $5,000 to over $50,000. Contact Lyra for a quote."
+      },
+      {
+        "q": "What is Lyra Health's ROI?",
+        "a": "Lyra delivers an industry-leading 3:1 ROI. Peer-reviewed research shows every $1 invested saves $3.04, including all session and support costs, with a 26% reduction in overall healthcare claims."
+      },
+      {
+        "q": "How many countries does Lyra Health cover?",
+        "a": "Lyra Health provides mental health services in 90+ countries with 40 app languages and 119 counselor languages, serving over 20 million people directly and 100 million through partners."
+      },
+      {
+        "q": "What is Lyra Empower?",
+        "a": "Lyra Empower is Lyra's AI-powered platform launched in 2025, combining Connect (HR analytics), Engage (employee engagement), and Care (clinical delivery) into one integrated solution."
+      }
+    ],
     "keywords": [
       "Lyra Health",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "workforce mental health",
+      "enterprise EAP",
+      "employee benefits",
+      "mental health ROI",
+      "AI mental health"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-23",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 92
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "spring-health",
+    "modern-health",
+    "ginger",
+    "talkspace-enterprise"
+  ],
+  "competitor_tools": [
+    "spring-health",
+    "modern-health",
+    "headspace-health"
+  ],
+  "company_info": {
+    "founded_year": 2015,
+    "headquarters": "Burlingame, California, USA",
+    "employee_count": "1,000+",
+    "funding_status": "Venture-backed ($900M+ raised)",
+    "notes": "Leading enterprise mental health platform with peer-reviewed research on outcomes. First to publish AI provider-matching results."
+  },
   "created_at": "2026-08-22T21:10:17.308Z",
-  "updated_at": "2026-08-22T21:10:17.308Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

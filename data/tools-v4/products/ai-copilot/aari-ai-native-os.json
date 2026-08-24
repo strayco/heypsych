@@ -15,22 +15,47 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ehr-practice-management",
+    "billing-rcm-insurance"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "claims-submission",
+    "note-generation",
+    "ai-suggestions",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "medical-director"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "group-practice",
+      "community-mental-health",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": true,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
@@ -39,35 +64,84 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI-native operating system for behavioral health combining EHR, RCM, CRM, and supervision in one platform with AI-drafted notes and claims checking.",
+  "long_description": "AARI is an AI-native operating system purpose-built for behavioral health practices. The platform unifies EHR, revenue cycle management, client relationship management, and clinical supervision on a single shared context layer that improves with every session. AI drafts clinical notes automatically from sessions, checks claims before submission, and helps supervisors identify what needs their attention first. Designed specifically for outpatient behavioral health including group practices, training clinics, and associate-therapist networks where supervision is central to operations.",
+  "one_liner": "The AI-native operating system for behavioral health with integrated EHR, RCM, and supervision.",
+  "best_for": [
+    "Group behavioral health practices needing unified EHR, billing, and CRM",
+    "Training clinics and associate-therapist networks requiring built-in supervision tools",
+    "Practices wanting AI-assisted documentation and claims processing",
+    "Organizations seeking measurable clinician development tracking"
+  ],
+  "not_for": [
+    "Solo practitioners seeking simple practice management",
+    "Large enterprise health systems with existing EHR infrastructure",
+    "Practices requiring specialized addiction treatment or residential features",
+    "Organizations needing integrated telehealth within the platform"
+  ],
+  "website_url": "https://solhealth.aari.care/",
+  "pricing_url": "https://solhealth.aari.care/",
+  "support_url": "https://aari.care/",
+  "logo_url": "https://aari.care/logo.png",
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "Custom pricing based on practice size and needs. Contact for quote.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
     "hipaa_support": "unknown",
     "baa_available": "unknown",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "Platform describes itself as AI-native for behavioral health but explicit HIPAA compliance documentation not found on website."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.783Z",
-  "updated_at": "2026-08-22T20:50:40.783Z",
-  "status": "active",
   "seo": {
-    "title": "AARI AI-native OS: Review & Pricing | HeyPsych",
-    "meta_description": "AARI AI-native OS review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "AARI AI-native OS: AI Clinical Copilot for Behavioral Health",
+    "meta_description": "AARI AI-native OS review for mental health professionals. AI-driven EHR, RCM, and supervision platform built for behavioral health group practices.",
+    "faqs": [
+      {
+        "q": "What is AARI AI-native OS?",
+        "a": "AARI is an AI-native operating system for behavioral health that combines EHR, revenue cycle management, CRM, and clinical supervision in one platform. AI drafts notes from sessions, checks claims before submission, and helps supervisors prioritize their review work."
+      },
+      {
+        "q": "Who is AARI best suited for?",
+        "a": "AARI is designed for outpatient behavioral health practices including group practices, training clinics, and associate-therapist networks where supervision and clinician development are core to operations."
+      },
+      {
+        "q": "Does AARI include clinical supervision tools?",
+        "a": "Yes, AARI uniquely integrates supervision into care delivery, making clinician development measurable. Note review, sign-off, and skill tracking are built into the platform rather than added as separate features."
+      }
+    ],
     "keywords": [
-      "AARI AI-native OS",
-      "ai copilot clinical"
+      "AARI",
+      "AI-native OS",
+      "behavioral health EHR",
+      "clinical supervision software",
+      "AI documentation",
+      "mental health practice management"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 75
+  },
+  "related_tools": [
+    "mdhub",
+    "qualifacts-iq",
+    "kipu-intelligence"
+  ],
+  "competitor_tools": [
+    "mdhub",
+    "navix-health"
+  ],
+  "created_at": "2026-08-22T20:50:40.783Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

@@ -15,19 +15,44 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation",
+    "clinical-decision-support"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "ai-suggestions",
+    "coding-assistance",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "medical-director",
+      "care-coordinator"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
+    "practice_settings": [
+      "residential-treatment",
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
     "specialties": [
       "mental-health",
-      "behavioral-health"
+      "behavioral-health",
+      "addiction-treatment",
+      "eating-disorders"
     ]
   },
   "feature_flags": {
@@ -42,35 +67,106 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI-powered documentation and clinical insights platform integrated into Kipu Health's EMR for behavioral health and addiction treatment facilities.",
+  "long_description": "Kipu Intelligence is an AI-driven solution integrated into Kipu Health's Electronic Medical Record system, designed to streamline documentation and enhance patient care in behavioral health settings. Key features include AI-generated chart summaries (Chart Snapshot), automated session transcriptions, and instant progress note generation in SOAP, DAP, or PROGRESS formats. The platform provides suggested diagnosis codes, ASAM and LOCUS level-of-care recommendations. Backed by HITRUST and ISO/IEC 42001 certifications for AI management, Kipu Intelligence has demonstrated 42% overall documentation time savings, with Banyan Treatment Centers reporting 67% reduction in biopsychosocial assessment time and improvement from 93% to 100% note compliance.",
+  "one_liner": "AI documentation and clinical decision support for Kipu EMR in addiction and behavioral health.",
+  "best_for": [
+    "Addiction treatment centers using Kipu EMR seeking documentation efficiency",
+    "Multi-facility behavioral health organizations with high documentation volume",
+    "Treatment centers needing AI-assisted level-of-care recommendations",
+    "Organizations prioritizing ISO 42001 certified AI governance"
+  ],
+  "not_for": [
+    "Practices not using Kipu EMR platform",
+    "Solo practitioners or small private practices",
+    "Organizations seeking standalone AI scribe functionality",
+    "Mental health practices without addiction treatment focus"
+  ],
+  "website_url": "https://www.kipuhealth.com/products/kipu-intelligence/",
+  "pricing_url": "https://www.kipuhealth.com/",
+  "support_url": "https://www.kipuhealth.com/",
+  "logo_url": "https://www.kipuhealth.com/logo.png",
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "Pricing not publicly disclosed. Kipu Intelligence is an add-on to Kipu EMR platform. Contact Kipu Health for quote. Sales: (561) 349-5910.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.kipuhealth.com/"
+    },
+    "baa_available": "yes",
     "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "notes": "HITRUST certified platform. ISO/IEC 42001:2023 certified for AI Management Systems, demonstrating commitment to responsible, ethical, and transparent AI practices. Developed on AWS infrastructure."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
+  "integrations": [
+    {
+      "name": "Kipu EMR",
+      "slug": "kipu-emr",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Kipu Intelligence is built directly into Kipu EMR"
+    }
+  ],
   "seo": {
-    "title": "Kipu Intelligence: Review & Pricing | HeyPsych",
-    "meta_description": "Kipu Intelligence review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Kipu Intelligence",
+    "meta_description": "Kipu Intelligence review. AI-powered documentation and clinical insights for addiction treatment centers using Kipu EMR. HITRUST and ISO 42001 certified.",
+    "faqs": [
+      {
+        "q": "What is Kipu Intelligence?",
+        "a": "Kipu Intelligence is an AI-driven solution integrated into Kipu Health's EMR that provides AI-generated chart summaries, automated session transcriptions, instant progress notes in SOAP/DAP/PROGRESS formats, and suggested diagnosis codes with ASAM/LOCUS level-of-care recommendations."
+      },
+      {
+        "q": "How much time does Kipu Intelligence save?",
+        "a": "Kipu Intelligence has demonstrated 42% overall documentation time savings. Banyan Treatment Centers reported 67% reduction in biopsychosocial assessment time, 60% reduction in new client documentation, and 70% reduction in existing client documentation time."
+      },
+      {
+        "q": "Is Kipu Intelligence HIPAA compliant?",
+        "a": "Yes, Kipu Intelligence is built on Kipu's HITRUST certified platform and holds ISO/IEC 42001:2023 certification for AI Management Systems, ensuring responsible, ethical, and transparent AI practices in healthcare."
+      },
+      {
+        "q": "Who can use Kipu Intelligence?",
+        "a": "Kipu Intelligence is available to addiction treatment centers, behavioral health facilities, eating disorder centers, and medication-assisted treatment providers using the Kipu EMR platform. Kipu powers over 4 million episodes of care annually across 4,000 facilities."
+      }
+    ],
     "keywords": [
       "Kipu Intelligence",
-      "ai copilot clinical"
+      "Kipu Health AI",
+      "addiction treatment EMR",
+      "behavioral health AI",
+      "HITRUST certified",
+      "ISO 42001 AI"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "kipu-emr",
+    "sia",
+    "lia"
+  ],
+  "competitor_tools": [
+    "sia",
+    "lia"
+  ],
+  "company_info": {
+    "customer_count": "4,000+ facilities, 140,000+ users",
+    "episodes_of_care": "4 million+ annually"
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

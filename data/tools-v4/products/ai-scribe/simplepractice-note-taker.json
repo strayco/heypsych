@@ -5,6 +5,9 @@
   "slug": "simplepractice-note-taker",
   "name": "SimplePractice Note Taker",
   "company_name": "SimplePractice",
+  "one_liner": "AI-powered session notes for SimplePractice Telehealth users",
+  "short_description": "SimplePractice Note Taker is an AI scribe add-on for SimplePractice that automatically generates therapy notes from telehealth sessions. Priced at $35/month per clinician, it supports SOAP, DAP,...",
+  "long_description": "SimplePractice Note Taker is an AI-powered documentation tool designed exclusively for mental health clinicians using SimplePractice. The feature automatically transcribes and generates structured clinical notes from telehealth sessions conducted through SimplePractice's built-in video platform.\n\nThe Note Taker supports multiple therapy note formats including SOAP, DAP, and BIRP, allowing clinicians to choose the structure that best fits their documentation style and payer requirements. Notes are generated after sessions and can be reviewed and edited before being finalized in the patient's chart.\n\nAs a native SimplePractice feature, Note Taker is tightly integrated with the practice management platform. There's no separate login or external tool to manage—generated notes flow directly into patient records. The service is HITRUST certified and covered under SimplePractice's existing BAA.\n\nKey limitation: Note Taker only works with SimplePractice Telehealth sessions. It cannot transcribe in-person sessions, phone calls, or sessions conducted through other video platforms. Clinicians who see patients in-person or use external telehealth tools will need a different AI scribe solution for those encounters.",
   "import_ref": {
     "record_id": "MH-0171",
     "source_row": 172,
@@ -17,15 +20,36 @@
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
   "capabilities": [],
+  "best_for": [
+    "Mental health clinicians already using SimplePractice",
+    "Therapists conducting primarily telehealth sessions",
+    "Solo practitioners wanting integrated AI documentation",
+    "Clinicians seeking affordable AI scribe options"
+  ],
+  "not_for": [
+    "Clinicians not using SimplePractice as their EHR",
+    "Practices with significant in-person session volume",
+    "Therapists using external telehealth platforms",
+    "Group practices needing enterprise AI scribe features"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "psychiatry",
+      "psychology",
+      "therapy-counseling"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -40,34 +64,110 @@
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price": 35,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Note Taker Add-On",
+        "price": 35,
+        "billing": "per clinician/month",
+        "features": [
+          "AI session transcription",
+          "SOAP/DAP/BIRP formats",
+          "Direct EHR integration"
+        ]
+      }
+    ],
+    "quote_required": false,
+    "notes": "Requires active SimplePractice subscription. Works only with SimplePractice Telehealth."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "SimplePractice",
+      "type": "ehr",
+      "verified": true,
+      "notes": "Native integration - requires SimplePractice subscription"
+    },
+    {
+      "name": "SimplePractice Telehealth",
+      "type": "telehealth",
+      "verified": true,
+      "notes": "Required - Note Taker only works with SP Telehealth"
+    }
+  ],
+  "features": {
+    "ai_documentation": {
+      "ambient_listening": true,
+      "note_generation": true,
+      "template_support": true,
+      "specialty_templates": true,
+      "supported_formats": [
+        "SOAP",
+        "DAP",
+        "BIRP"
+      ]
+    },
+    "limitations": {
+      "telehealth_only": true,
+      "requires_simplepractice": true,
+      "no_in_person": true
+    }
   },
-  "related_tools": [],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Mental health specific AI scribe for SimplePractice users."
+  },
+  "related_tools": [
+    "simplepractice",
+    "blueprint-health",
+    "mentalyc",
+    "freed-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "SimplePractice Note Taker: Review & Pricing | HeyPsych",
-    "meta_description": "SimplePractice Note Taker review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "SimplePractice Note Taker: AI Therapy Notes Review",
+    "meta_description": "SimplePractice Note Taker review for therapists. $35/month AI scribe add-on generating SOAP, DAP, and BIRP notes from telehealth sessions.",
+    "faqs": [
+      {
+        "q": "How much does SimplePractice Note Taker cost?",
+        "a": "SimplePractice Note Taker costs $35 per clinician per month as an add-on to your existing SimplePractice subscription."
+      },
+      {
+        "q": "What note formats does Note Taker support?",
+        "a": "SimplePractice Note Taker generates notes in SOAP, DAP, and BIRP formats, allowing therapists to choose the structure that fits their documentation preferences and payer requirements."
+      },
+      {
+        "q": "Does Note Taker work with in-person sessions?",
+        "a": "No, SimplePractice Note Taker only works with sessions conducted through SimplePractice Telehealth. It cannot transcribe in-person sessions, phone calls, or sessions using other video platforms."
+      },
+      {
+        "q": "Is SimplePractice Note Taker HIPAA compliant?",
+        "a": "Yes, Note Taker is HIPAA compliant and HITRUST certified. It's covered under SimplePractice's existing Business Associate Agreement."
+      }
+    ],
     "keywords": [
       "SimplePractice Note Taker",
-      "ai scribe documentation"
+      "AI therapy notes",
+      "SOAP notes AI",
+      "DAP notes automation",
+      "BIRP notes",
+      "mental health AI scribe",
+      "SimplePractice AI",
+      "telehealth documentation"
     ]
   }
 }

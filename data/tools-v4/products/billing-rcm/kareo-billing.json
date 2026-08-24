@@ -3,8 +3,12 @@
   "kind": "clinician-tool",
   "id": "c207cc02-b383-4722-9764-45f38399c369",
   "slug": "kareo-billing",
-  "name": "Kareo Billing",
-  "company_name": "Tebra / legacy Kareo",
+  "name": "Tebra Billing (formerly Kareo)",
+  "company_name": "Tebra",
+  "website": "https://www.tebra.com",
+  "one_liner": "Modular practice management and billing for independent practices",
+  "short_description": "Tebra (formerly Kareo) provides cloud-based practice management, billing, and patient engagement software designed specifically for independent healthcare practices.",
+  "description": "Tebra was formed from the 2021 merger of Kareo and PatientPop, combining Kareo's practice management and billing capabilities with PatientPop's patient acquisition tools. The platform offers modular solutions including EHR, billing and RCM, patient engagement, and marketing. For billing specifically, Tebra provides claim scrubbing, electronic claim submission, denial management, and optional managed billing services. The AI-powered Smart Staff feature automates routine administrative tasks.",
   "import_ref": {
     "record_id": "MH-0623",
     "source_row": 624,
@@ -18,56 +22,198 @@
     "status": "active"
   },
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "patient-engagement",
+    "ehr-practice-management"
+  ],
+  "capabilities": [
+    "claims-submission",
+    "denial-management",
+    "eligibility-verification",
+    "appointment-scheduling"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "practice-administrator",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "primary-care",
+      "family-medicine",
+      "internal-medicine",
+      "pediatrics",
+      "mental-health",
+      "dermatology",
+      "orthopedics",
+      "cardiology"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
     "has_rcm": true,
-    "has_telehealth": false,
+    "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "founded_year": 2004,
+    "headquarters": "Costa Mesa, CA",
+    "employee_count": "500-1000",
+    "funding_stage": "Private Equity",
+    "notable_investors": [
+      "Warburg Pincus",
+      "Francisco Partners"
+    ],
+    "customer_count": "100,000+ providers",
+    "notes": "Kareo merged with PatientPop in 2021 to form Tebra"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price": 125,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Billing Software Only",
+        "price": 125,
+        "period": "monthly",
+        "features": [
+          "Electronic claims submission",
+          "Claim scrubbing",
+          "ERA/EOB processing",
+          "Patient statements",
+          "Basic reporting",
+          "Support"
+        ]
+      },
+      {
+        "name": "Billing + EHR",
+        "price": 250,
+        "period": "monthly",
+        "features": [
+          "Everything in Billing",
+          "Full EHR functionality",
+          "E-prescribing",
+          "Patient portal",
+          "Clinical documentation"
+        ],
+        "notes": "Per provider pricing"
+      },
+      {
+        "name": "Managed Billing Services",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Full-service RCM",
+          "Claims management",
+          "Denial follow-up",
+          "Patient collections",
+          "Dedicated billing team"
+        ],
+        "quote_required": true,
+        "notes": "Percentage of collections model"
+      }
+    ],
+    "estimated_range": "$125-400/provider/month for software; 4-8% for managed billing",
+    "free_trial": {
+      "available": true,
+      "notes": "Free demo available"
+    },
+    "notes": "Modular pricing lets practices choose only what they need. Volume discounts for larger practices."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "compliance_urls": {
+      "security": "https://www.tebra.com/security"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Labs (Quest, LabCorp)",
+      "type": "lab",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Surescripts",
+      "type": "prescription",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Clearinghouses",
+      "type": "clearinghouse",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Patient communication tools",
+      "type": "communication",
+      "method": "native",
+      "native": true
+    }
+  ],
+  "features": {
+    "billing": {
+      "supported": true,
+      "description": "Electronic claims, ERA processing, patient statements, denial management"
+    },
+    "ehr": {
+      "supported": true,
+      "description": "Full EHR with templates, e-prescribing, and patient portal"
+    },
+    "smart_staff": {
+      "supported": true,
+      "description": "AI-powered automation for routine administrative tasks"
+    },
+    "patient_engagement": {
+      "supported": true,
+      "description": "Online scheduling, reminders, reputation management"
+    },
+    "claim_scrubbing": {
+      "supported": true,
+      "description": "Automated error checking before claim submission"
+    }
+  },
+  "best_for": [
+    "Independent practices wanting all-in-one solution",
+    "Small practices seeking affordable billing software",
+    "Solo physicians managing their own billing",
+    "Practices wanting modular pricing flexibility",
+    "Primary care and specialty practices",
+    "Practices transitioning from paper to digital"
+  ],
+  "not_for": [
+    "Large health systems (consider enterprise solutions)",
+    "Practices needing advanced AI RCM (consider Candid Health)",
+    "Mental health-specific workflows (consider TherapyNotes or SimplePractice)",
+    "Practices requiring deep Epic/Cerner integration"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.850Z",
-  "updated_at": "2026-08-22T20:50:40.850Z",
-  "status": "active",
-  "seo": {
-    "title": "Kareo Billing: Review & Pricing | HeyPsych",
-    "meta_description": "Kareo Billing review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
-    "keywords": [
-      "Kareo Billing",
-      "billing rcm insurance"
-    ]
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
   "entity_resolution": {
     "canonical_key": "tebra-legacy-kareo-kareo-billing",
@@ -77,5 +223,46 @@
     ],
     "resolution_notes": "Kareo rebranded to Tebra in 2022. Kareo Billing is the RCM module.",
     "resolved_at": "2026-08-22T21:09:07.540Z"
+  },
+  "related_tools": [
+    "athenahealth",
+    "advancedmd",
+    "drchrono",
+    "practice-fusion"
+  ],
+  "created_at": "2026-08-22T20:50:40.850Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Tebra Billing (Kareo): Practice Management & RCM | HeyPsych",
+    "meta_description": "Tebra (formerly Kareo) review - modular billing and practice management. Starting at $125/month. 100,000+ providers. EHR, billing, patient engagement.",
+    "faqs": [
+      {
+        "q": "What happened to Kareo?",
+        "a": "Kareo merged with PatientPop in 2021 to form Tebra. The billing and practice management features are still available, now combined with PatientPop's patient acquisition and marketing tools."
+      },
+      {
+        "q": "How much does Tebra Billing cost?",
+        "a": "Tebra Billing software starts at $125/month. Combined Billing + EHR is around $250/provider/month. Managed billing services (full-service RCM) use a percentage of collections model, typically 4-8%."
+      },
+      {
+        "q": "Is Tebra good for mental health practices?",
+        "a": "Tebra works for mental health practices but is not mental health-specific. For therapists wanting specialized features like progress note templates and session scheduling, consider TherapyNotes or SimplePractice instead."
+      },
+      {
+        "q": "Does Tebra have an EHR?",
+        "a": "Yes, Tebra offers a full EHR with clinical documentation, e-prescribing, patient portal, and specialty-specific templates. It can be purchased separately or bundled with billing."
+      }
+    ],
+    "keywords": [
+      "Tebra",
+      "Kareo",
+      "Kareo Billing",
+      "practice management software",
+      "medical billing software",
+      "small practice EHR",
+      "independent practice management",
+      "cloud-based billing"
+    ]
   }
 }

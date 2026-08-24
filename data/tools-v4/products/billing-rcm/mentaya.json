@@ -4,6 +4,22 @@
   "id": "4f43643e-1f46-4761-b6ee-c1656a72feb9",
   "slug": "mentaya",
   "name": "Mentaya",
+  "company_name": "Mentaya",
+  "one_liner": "Free out-of-network claims submission for therapists with 5% client fee and 100% refund guarantee on failed claims.",
+  "short_description": "Mentaya is a free out-of-network claims submission platform for therapists that handles insurance claims with a 5% client fee and guarantees refunds on failed submissions.",
+  "long_description": "Mentaya is an out-of-network claims submission platform designed specifically for mental health providers. The service is completely free for therapists—no monthly fees, no per-session fees—with clients paying a 5% fee per claim (approximately $7.50-$10 per session). Mentaya handles claim submission, denial appeals, and resubmissions automatically with a 100% refund guarantee if they're unable to successfully submit a claim. Optional add-ons include a Benefits Calculator ($29-39/month) and Stripe-based payment processing (2.9% + 30¢ credit, 0.8% ACH). Therapists can optionally absorb the client fee to offer claims submission as a complimentary service. Mentaya integrates with existing EHRs and payment systems or can handle payments directly.",
+  "best_for": [
+    "Out-of-network therapists wanting free claims submission",
+    "Practices seeking guaranteed claim success or refund",
+    "Therapists wanting to offer OON benefits without superbills",
+    "Solo practitioners preferring simple percentage-based client fees"
+  ],
+  "not_for": [
+    "In-network providers",
+    "Therapists wanting reimbursement fronting (use Thrizer)",
+    "Practices needing enterprise billing features",
+    "Those wanting to avoid all client fees (must absorb 5%)"
+  ],
   "import_ref": {
     "record_id": "MH-0544",
     "source_row": 545,
@@ -15,54 +31,179 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "denial-management",
+    "payment-processing",
+    "ehr-integration",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "free",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free for therapists",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Claims Submission",
+        "price": "Free for therapists (clients pay 5% per claim)"
+      },
+      {
+        "name": "Benefits Calculator Add-on",
+        "price": "$29/month (annual) or $39/month (monthly)"
+      },
+      {
+        "name": "Payment Processing (optional)",
+        "price": "2.9% + 30¢ credit card, 0.8% ACH"
+      }
+    ],
+    "notes": "100% free for therapists with no hidden fees. Client fee is 5% per claim (e.g., $200 session = $10 fee). Therapists can absorb the fee to offer free claim submission. 100% refund guarantee if claim cannot be successfully submitted.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant claims and payment platform."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "SimplePractice",
+      "slug": "simplepractice",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Jane App",
+      "slug": "jane",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
-  "status": "active",
+  "features": {
+    "claim_submission": {
+      "automatic": true,
+      "denial_appeals": true,
+      "resubmission": true,
+      "refund_guarantee": "100% refund if claim fails"
+    },
+    "benefits_calculator": {
+      "available": true,
+      "price": "$29-39/month add-on"
+    },
+    "payment_processing": {
+      "optional": true,
+      "stripe_based": true
+    },
+    "fee_absorption": {
+      "description": "Therapists can absorb 5% client fee as complimentary service"
+    }
+  },
   "seo": {
-    "title": "Mentaya: Review & Pricing | HeyPsych",
-    "meta_description": "Mentaya review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Mentaya: Free OON Claims Submission for Therapists",
+    "meta_description": "Mentaya is free out-of-network claims submission for therapists. 5% client fee with 100% refund guarantee on failed claims. No monthly fees or superbills.",
+    "faqs": [
+      {
+        "q": "Is Mentaya free for therapists?",
+        "a": "Yes, Mentaya is completely free for therapists with no monthly fees and no per-session charges. Clients pay a 5% fee per claim upon receiving reimbursement."
+      },
+      {
+        "q": "What does Mentaya charge clients?",
+        "a": "Mentaya charges clients 5% of each claim. For example, a $200 session costs $10 in fees. Therapists can optionally absorb this fee to offer free claim submission."
+      },
+      {
+        "q": "What is Mentaya's refund guarantee?",
+        "a": "Mentaya guarantees a 100% refund of fees if they're unable to successfully submit a claim. They handle denials and resubmissions at no additional cost."
+      },
+      {
+        "q": "How does Mentaya compare to Thrizer?",
+        "a": "Both are free for therapists. Mentaya charges clients 5% per claim; Thrizer charges $1.50 + 1%. Thrizer offers reimbursement fronting so clients pay copay-like amounts; Mentaya does not. Both eliminate superbills."
+      }
+    ],
     "keywords": [
       "Mentaya",
-      "billing rcm insurance"
+      "out-of-network claims",
+      "OON billing",
+      "therapy claims",
+      "superbill alternative",
+      "mental health billing"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "thrizer",
+    "reimbursify",
+    "nirvana-health"
+  ],
+  "competitor_tools": [
+    "thrizer",
+    "reimbursify"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Venture-backed",
+    "notes": "Mentaya simplifies out-of-network claims for mental health providers with a free-for-therapists model and guarantee."
+  },
+  "created_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

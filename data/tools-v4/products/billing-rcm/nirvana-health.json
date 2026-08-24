@@ -4,6 +4,22 @@
   "id": "1c148914-0441-4208-9221-e7c68b91f220",
   "slug": "nirvana-health",
   "name": "Nirvana Health",
+  "company_name": "Nirvana",
+  "one_liner": "AI-powered insurance eligibility verification with 94% accuracy and Cardless Verification™ for behavioral health practices.",
+  "short_description": "Nirvana is an AI-powered insurance eligibility verification platform built for behavioral health that achieves 94% accuracy with Cardless Verification™ technology.",
+  "long_description": "Nirvana is an AI-powered insurance eligibility verification platform originally built for behavioral health that now serves the broader healthcare industry. The platform's flagship product, OneVerify, provides real-time coverage checks with 94% accuracy on patient cost estimates and continuously monitors coverage throughout the care journey. Nirvana's Cardless Verification™ technology can identify active insurance using only name, date of birth, and zip code—even with incorrect member IDs or demographic errors. The platform has supported 100,000+ providers with 2M+ patient visits annually, saving practices an average of 5 hours/day on benefit verification (99% faster). Pricing is available as pay-as-you-go per verification or committed volume with no per-check fees. Nirvana integrates via API, direct EHR connections, or a biller-facing app requiring no coding.",
+  "best_for": [
+    "Behavioral health practices needing accurate eligibility checks",
+    "Multi-provider groups verifying high volumes of benefits",
+    "Practices struggling with inaccurate patient insurance data",
+    "Digital health companies needing API-based verification"
+  ],
+  "not_for": [
+    "Solo practitioners with low verification volumes",
+    "Practices wanting all-in-one EHR (eligibility only)",
+    "Cash-pay only practices",
+    "Those needing claims submission (eligibility only)"
+  ],
   "import_ref": {
     "record_id": "MH-0545",
     "source_row": 546,
@@ -15,12 +31,37 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "eligibility-verification",
+    "ehr-integration",
+    "api-access",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "substance-use",
+      "psychology",
+      "therapy"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -32,37 +73,140 @@
     "has_patient_portal": false,
     "has_mobile_app": false,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_specialty_agnostic": false
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Pay-as-you-go",
+        "price": "Per eligibility check (contact for pricing)"
+      },
+      {
+        "name": "Committed Volume",
+        "price": "No per-check fees with volume commitment"
+      }
+    ],
+    "notes": "Two pricing models: pay-per-check or committed volume with discounts. Higher upfront commitment = lower per-check cost. Contact sales for specific pricing.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA and SOC 2 compliant. Works with major EHRs and payers."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Valant",
+      "slug": "valant",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Optum Marketplace",
+      "slug": "optum",
+      "category": "payer",
+      "integration_type": "api",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
-  "status": "active",
+  "features": {
+    "oneverify": {
+      "description": "Real-time eligibility verification with continuous monitoring",
+      "accuracy": "94% on patient cost estimates"
+    },
+    "cardless_verification": {
+      "description": "Identifies active insurance with just name, DOB, and zip code",
+      "handles_errors": true
+    },
+    "discover": {
+      "description": "AI retrieves complete eligibility from minimal patient data"
+    },
+    "integration_options": [
+      "API",
+      "Direct EHR",
+      "Biller-facing app (no coding)"
+    ],
+    "performance": {
+      "providers_supported": "100,000+",
+      "annual_visits": "2M+",
+      "time_saved": "5 hours/day average",
+      "speed_improvement": "99% faster verifications"
+    }
+  },
   "seo": {
-    "title": "Nirvana Health: Review & Pricing | HeyPsych",
-    "meta_description": "Nirvana Health review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Nirvana Health: AI Insurance Eligibility Verification",
+    "meta_description": "Nirvana is AI-powered insurance eligibility verification with 94% accuracy. Cardless Verification™ finds coverage with minimal patient data. Built for...",
+    "faqs": [
+      {
+        "q": "How accurate is Nirvana's eligibility verification?",
+        "a": "Nirvana claims 94% accuracy on patient cost estimates, significantly higher than traditional verification methods. Their AI-powered system handles data entry errors and incomplete information."
+      },
+      {
+        "q": "What is Nirvana's Cardless Verification?",
+        "a": "Cardless Verification™ identifies active insurance using only name, date of birth, and zip code—even when patients provide incorrect member IDs or don't have their insurance card."
+      },
+      {
+        "q": "How does Nirvana pricing work?",
+        "a": "Nirvana offers two models: pay-as-you-go (per verification) or committed volume (no per-check fees with upfront commitment). Higher volume commitments receive lower per-check pricing."
+      },
+      {
+        "q": "Does Nirvana integrate with EHRs?",
+        "a": "Yes, Nirvana offers API-based integrations, direct EHR connections, and a user-friendly biller app that requires no coding. They work with major behavioral health EHRs."
+      }
+    ],
     "keywords": [
       "Nirvana Health",
-      "billing rcm insurance"
+      "eligibility verification",
+      "insurance verification",
+      "benefits verification",
+      "behavioral health",
+      "cardless verification"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "availity",
+    "waystar",
+    "change-healthcare"
+  ],
+  "competitor_tools": [
+    "availity",
+    "pverify",
+    "ability-network"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Series A ($24.2M)",
+    "notes": "Nirvana started in behavioral health and has expanded to serve multiple healthcare sectors with AI-powered eligibility verification."
+  },
+  "created_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

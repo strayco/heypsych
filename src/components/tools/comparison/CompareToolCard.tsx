@@ -56,7 +56,7 @@ export function CompareToolCard({
           {/* Tool Name */}
           <h3 className="font-semibold text-label-primary truncate">
             <Link
-              href={`/tools/${tool.slug}`}
+              href={`/tools/for-clinicians/${tool.primary_category}/${tool.slug}`}
               className="hover:text-accent transition-colors"
             >
               {tool.name}

@@ -15,22 +15,53 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation",
+    "ehr-practice-management"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "note-generation",
+    "ambient-listening",
+    "voice-transcription",
+    "clinical-summarization",
+    "coding-assistance",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "community-mental-health",
+      "telehealth-only",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "psychiatry"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": true,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
@@ -39,35 +70,104 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI clinical assistant by mdhub that documents behavioral health sessions in real time, generating SOAP, DAP, BIRP, and progress notes automatically.",
+  "long_description": "Emma is mdhub's AI clinical assistant purpose-built for behavioral health documentation. She listens to sessions in real time and automatically generates clinical notes in SOAP, DAP, BIRP, and progress note formats while accurately capturing diagnosis codes, presenting problems, and interventions. Part of mdhub's AI-native operating system for behavioral health, Emma has been used in over 3 million patient sessions, saving clinicians an estimated 500,000+ hours of administrative work. The platform is HIPAA compliant and SOC 2 Type II certified, with audio recordings never stored and data retention controlled by the clinic.",
+  "one_liner": "AI scribe for behavioral health that documents sessions and generates compliant notes automatically.",
+  "best_for": [
+    "Mental health clinicians spending excessive time on documentation",
+    "Psychiatrists and PMHNPs needing real-time note generation",
+    "Group practices wanting to standardize documentation across clinicians",
+    "Behavioral health organizations using mdhub's integrated platform"
+  ],
+  "not_for": [
+    "Practices requiring standalone EHR functionality without mdhub",
+    "Organizations needing telehealth video sessions",
+    "Clinicians preferring manual documentation workflows",
+    "Practices outside behavioral health specialties"
+  ],
+  "website_url": "https://www.mdhub.ai/",
+  "pricing_url": "https://www.mdhub.ai/",
+  "support_url": "https://www.mdhub.ai/",
+  "logo_url": "https://www.mdhub.ai/logo.png",
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "Pricing not publicly disclosed. Contact mdhub for demo and quote. Part of mdhub's integrated AI-native platform.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.mdhub.ai/"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.mdhub.ai/business-associate-agreement"
+    },
+    "soc2": "yes",
+    "soc2_type": "type2",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant and SOC 2 Type II certified. End-to-end encryption. Audio recordings are not stored. Data is de-identified with retention controlled by the clinic."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.783Z",
-  "updated_at": "2026-08-22T20:50:40.783Z",
-  "status": "active",
   "seo": {
-    "title": "Emma: Review & Pricing | HeyPsych",
-    "meta_description": "Emma review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Emma by mdhub: AI Clinical Scribe for Behavioral Health",
+    "meta_description": "Emma by mdhub review. AI clinical assistant that documents behavioral health sessions in real time, generating SOAP, DAP, BIRP notes automatically.",
+    "faqs": [
+      {
+        "q": "What is Emma by mdhub?",
+        "a": "Emma is mdhub's AI clinical assistant that listens to behavioral health sessions in real time and generates clinical notes automatically in SOAP, DAP, BIRP, and progress note formats while capturing diagnosis codes and interventions accurately."
+      },
+      {
+        "q": "Is Emma HIPAA compliant?",
+        "a": "Yes, Emma is HIPAA compliant and SOC 2 Type II certified. Audio recordings are not stored, data is de-identified, and retention is controlled by the clinic. mdhub provides a BAA to all customers."
+      },
+      {
+        "q": "How much time does Emma save clinicians?",
+        "a": "According to mdhub, Emma saves clinicians 2+ hours per day on documentation. The platform has been used in over 3 million patient sessions, returning an estimated 500,000+ hours to clinicians."
+      },
+      {
+        "q": "What note formats does Emma support?",
+        "a": "Emma supports SOAP, DAP, BIRP, progress notes, and treatment plan updates. She is purpose-built for behavioral health and understands mental health documentation formats and language."
+      }
+    ],
     "keywords": [
-      "Emma",
-      "ai copilot clinical"
+      "Emma mdhub",
+      "AI clinical scribe",
+      "behavioral health documentation",
+      "mental health AI",
+      "automated therapy notes",
+      "SOAP notes AI"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "aari-ai-native-os",
+    "qualifacts-iq",
+    "ensai"
+  ],
+  "competitor_tools": [
+    "eleos-health",
+    "freed-ai"
+  ],
+  "company_info": {
+    "headquarters": "San Francisco, CA, USA",
+    "address": "2261 Market Street #10462, San Francisco, CA 94114",
+    "funding_status": "Y Combinator backed"
+  },
+  "created_at": "2026-08-22T20:50:40.783Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

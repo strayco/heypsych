@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import {
   ArrowRight,
-  Search,
   Stethoscope,
   Shield,
   CheckCircle,
@@ -20,7 +19,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
-import { ToolsHeroSearch } from "../_components/ToolsHeroSearch";
 import { TrustSignal } from "../_components/TrustSignal";
 import { VendorCTA } from "../_components/VendorCTA";
 import { HubFAQ } from "@/components/tools/hubs";
@@ -169,13 +167,6 @@ export default async function ForCliniciansPage() {
             <p className="mt-2 text-sm text-label-tertiary">
               {allV4Tools.length} tools across {categoriesWithCounts.length} categories
             </p>
-
-            {/* Search */}
-            <div className="mt-8 max-w-xl">
-              <Suspense fallback={<SearchFallback />}>
-                <ToolsHeroSearch />
-              </Suspense>
-            </div>
           </div>
         </section>
 
@@ -224,22 +215,13 @@ export default async function ForCliniciansPage() {
         {/* Browse by Category */}
         <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                  Browse by Category
-                </h2>
-                <p className="mt-1 text-sm text-label-secondary">
-                  {categoriesWithCounts.length} categories of professional tools
-                </p>
-              </div>
-              <Link
-                href="/tools/search/?audience=clinician"
-                className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
-              >
-                View all tools
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
+            <div>
+              <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
+                Browse by Category
+              </h2>
+              <p className="mt-1 text-sm text-label-secondary">
+                {categoriesWithCounts.length} categories of professional tools
+              </p>
             </div>
 
             <div className="mt-6">
@@ -252,23 +234,14 @@ export default async function ForCliniciansPage() {
         {featuredTools.length > 0 && (
           <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
-                    Featured Tools
-                  </h2>
-                  <p className="mt-1 text-sm text-label-secondary">
-                    {/* P0 FIX: Removed "highly rated" claim - no ratings data exists */}
-                    Popular tools for mental health practices
-                  </p>
-                </div>
-                <Link
-                  href="/tools/search/?audience=clinician&featured=true"
-                  className="group flex items-center gap-1 text-sm font-medium text-treatment hover:text-treatment-600"
-                >
-                  View all
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
+              <div>
+                <h2 className="text-xl font-semibold text-label-primary sm:text-2xl">
+                  Featured Tools
+                </h2>
+                <p className="mt-1 text-sm text-label-secondary">
+                  {/* P0 FIX: Removed "highly rated" claim - no ratings data exists */}
+                  Popular tools for mental health practices
+                </p>
               </div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -494,15 +467,6 @@ function CategoryPreview({
           No tools in this category yet
         </p>
       )}
-    </div>
-  );
-}
-
-function SearchFallback() {
-  return (
-    <div className="flex h-12 items-center justify-center rounded-xl border border-separator bg-surface px-4">
-      <Search className="h-5 w-5 text-label-tertiary" />
-      <span className="ml-3 text-label-tertiary">Search tools...</span>
     </div>
   );
 }

@@ -4,6 +4,8 @@
   "id": "03535ad5-5419-4570-94df-f2c6df58f3a7",
   "slug": "youper",
   "name": "Youper",
+  "company_name": "Youper, Inc.",
+  "website_url": "https://www.youper.ai/",
   "import_ref": {
     "record_id": "MH-0509",
     "source_row": 510,
@@ -11,10 +13,22 @@
     "source_file": "master-records.json"
   },
   "lifecycle": {
-    "status": "active"
+    "status": "active",
+    "sunset_date": "2026-09-30",
+    "notes": "Youper is closing September 30, 2026"
   },
   "primary_category": "measurement-outcomes-dtx",
   "secondary_categories": [],
+  "short_description": "AI-powered mental health chatbot delivering CBT, ACT, DBT, and mindfulness techniques with Stanford-validated efficacy for anxiety and depression symptom reduction.",
+  "long_description": "Youper is an AI-powered mental health chatbot developed by psychiatrist Dr. Jose Hamilton that helps users manage stress, anxiety, and depression through clinically validated techniques. The app incorporates cognitive behavioral therapy (CBT), acceptance and commitment therapy (ACT), dialectical behavior therapy (DBT), problem-solving therapy (PST), and mindfulness exercises. Core features include Quick Chats for instant CBT exercises, daily mood logs and thought journals with visual mood graphs, personalized plans for anxiety, depression, or sleep issues, and integration with Fitbit and Apple Health. Clinically validated by Stanford University researchers, over 83% of users report mood improvements. Named by JAMA as the most engaging digital health tool for anxiety and depression. Note: Youper is closing September 30, 2026.",
+  "one_liner": "AI mental health chatbot with Stanford-validated CBT techniques",
+  "best_for": [
+    "Clinicians seeking to recommend an evidence-based AI self-help tool for patients with mild to moderate anxiety or depression between sessions"
+  ],
+  "not_for": [
+    "Patients with severe mental illness requiring clinical intervention",
+    "or practices seeking tools after September 2026 when Youper closes"
+  ],
   "capabilities": [],
   "audiences": {
     "clinician_roles": [
@@ -22,11 +36,19 @@
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
     "specialties": [
       "mental-health",
-      "behavioral-health"
+      "behavioral-health",
+      "anxiety",
+      "depression"
     ]
   },
   "feature_flags": {
@@ -37,14 +59,17 @@
     "has_measurement": true,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 6999,
+    "starting_price_display": "$69.99/year",
+    "free_trial_days": 7,
+    "quote_required": false,
+    "notes": "Consumer subscription at $69.99 annually with 7-day free trial."
   },
   "compliance": {
     "hipaa_support": "unknown",
@@ -53,23 +78,68 @@
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Apple Health",
+      "category": "other"
+    },
+    {
+      "name": "Fitbit",
+      "category": "other"
+    }
+  ],
+  "company_info": {
+    "headquarters": "San Francisco, CA",
+    "founder": "Dr. Jose Hamilton (Psychiatrist)",
+    "users": "3M+"
   },
-  "related_tools": [],
+  "clinical_evidence": {
+    "validation": "Stanford University",
+    "outcomes": "83% of users report mood improvements",
+    "recognition": "JAMA named it most engaging digital health tool for anxiety/depression"
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
+  },
+  "related_tools": [
+    "wysa-copilot",
+    "woebot"
+  ],
   "created_at": "2026-08-22T20:50:40.816Z",
-  "updated_at": "2026-08-22T20:50:40.816Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Youper: Review & Pricing | HeyPsych",
-    "meta_description": "Youper review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Youper: AI Mental Health Chatbot (Closing Sept 2026)",
+    "meta_description": "Youper is a Stanford-validated AI mental health chatbot for anxiety and depression using CBT, ACT, and DBT. Note: Closing September 30, 2026.",
+    "faqs": [
+      {
+        "q": "What is Youper?",
+        "a": "Youper is an AI-powered mental health chatbot that delivers cognitive behavioral therapy (CBT), acceptance and commitment therapy (ACT), and mindfulness techniques to help users manage anxiety and depression."
+      },
+      {
+        "q": "Is Youper clinically validated?",
+        "a": "Yes, Youper has been clinically validated by Stanford University researchers. Over 83% of users report mood improvements, and JAMA named it the most engaging digital health tool for anxiety and depression."
+      },
+      {
+        "q": "How much does Youper cost?",
+        "a": "Youper costs $69.99 per year with a 7-day free trial."
+      },
+      {
+        "q": "Is Youper still available?",
+        "a": "Youper is closing on September 30, 2026. Users should consider alternative AI mental health chatbots like Wysa or Woebot."
+      }
+    ],
     "keywords": [
       "Youper",
-      "measurement outcomes dtx"
+      "AI mental health chatbot",
+      "CBT chatbot",
+      "anxiety app",
+      "depression app",
+      "Stanford validated",
+      "mental health AI"
     ]
   }
 }

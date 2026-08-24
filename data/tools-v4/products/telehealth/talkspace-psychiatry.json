@@ -5,6 +5,21 @@
   "slug": "talkspace-psychiatry",
   "name": "Talkspace Psychiatry",
   "company_name": "Talkspace",
+  "one_liner": "Psychiatry and medication management from the largest online therapy platform, with most insurance copays at $0.",
+  "short_description": "Talkspace Psychiatry offers psychiatric evaluations and medication management through licensed psychiatrists and psychiatric NPs, with insurance billing and low copays.",
+  "long_description": "Talkspace Psychiatry is the medication management service from Talkspace, one of the largest online therapy platforms in the United States. Available to adults 18 and older, Talkspace Psychiatry provides psychiatric evaluations and ongoing medication management through licensed psychiatrists and psychiatric nurse practitioners. The platform accepts major insurance plans including Aetna, Anthem, Cigna, Optum, BCBS, and TRICARE, with most insured members paying $0 copay. Without insurance, initial evaluations cost $299 and follow-ups $175. Talkspace requires visits at least every 3 months for prescription refills. Unlike some competitors, Talkspace cannot prescribe controlled substances including ADHD stimulants or benzodiazepines. In 2026, Talkspace introduced an AI mental health support tool called Tee ($19.99/month).",
+  "best_for": [
+    "Adults needing psychiatric medication management with insurance coverage",
+    "Talkspace therapy users who want to add psychiatry",
+    "Patients seeking low-cost psychiatric care through insurance",
+    "Those wanting combined therapy and psychiatry on one platform"
+  ],
+  "not_for": [
+    "Patients under 18 (adults only)",
+    "Those needing controlled substances (ADHD stimulants, benzodiazepines)",
+    "Patients wanting longer than 30-minute appointments",
+    "Those with complex psychiatric histories requiring intensive care"
+  ],
   "import_ref": {
     "record_id": "MH-0307",
     "source_row": 308,
@@ -16,19 +31,29 @@
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "secure-messaging",
+    "mobile-app",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "group-practice"
+      "telehealth-only"
     ],
     "organization_sizes": [
-      "small-2-10"
+      "large-51-200",
+      "enterprise-200-plus"
     ],
-    "specialties": []
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "depression",
+      "anxiety"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -36,41 +61,199 @@
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "$0 copay (most insured)",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "With Insurance",
+        "price": "$0-30 copay average"
+      },
+      {
+        "name": "Self-Pay - Initial",
+        "price": "$299"
+      },
+      {
+        "name": "Self-Pay - Follow-up",
+        "price": "$175"
+      },
+      {
+        "name": "Tee AI Support",
+        "price": "$19.99/month"
+      }
+    ],
+    "notes": "Most insured members have $0 copay. Accepts Aetna, Anthem, Cigna, Optum, BCBS, TRICARE, Regence, Carelon. Requires visit every 3 months minimum for prescription refills.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant platform. All providers have 3,000+ hours clinical experience and state licensure."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Optum",
+      "slug": "optum",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "TRICARE",
+      "slug": "tricare",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "reliability": "High"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": false,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": false,
+      "text_chat": true,
+      "file_sharing": false
+    },
+    "patient_experience": {
+      "no_download_required": false,
+      "no_account_required": false,
+      "browser_based": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "appointment_duration": "30 minutes"
+    },
+    "mobile_apps": {
+      "patient_ios": true,
+      "patient_android": true
+    }
+  },
+  "services": {
+    "provider_network": true,
+    "mental_health_services": true,
+    "mental_health_notes": "Psychiatry integrated with therapy platform",
+    "psychiatry_services": true,
+    "medication_management": true,
+    "controlled_substances": false,
+    "controlled_substances_notes": "Cannot prescribe stimulants (ADHD) or benzodiazepines",
+    "therapy_services": true,
+    "therapy_notes": "Available separately via Talkspace Therapy",
+    "age_range": "Adults 18+ only",
+    "refill_policy": "Minimum visit every 3 months for refills"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.798Z",
-  "updated_at": "2026-08-22T20:50:40.798Z",
-  "status": "active",
+  "related_tools": [
+    "talkiatry",
+    "mdlive",
+    "cerebral",
+    "brightside-health"
+  ],
+  "competitor_tools": [
+    "talkiatry",
+    "cerebral",
+    "done-adhd",
+    "brightside-health"
+  ],
+  "company_info": {
+    "founded_year": 2012,
+    "headquarters": "New York, USA",
+    "employee_count": "500+",
+    "funding_status": "Public",
+    "ticker": "TALK",
+    "public_company": true,
+    "notes": "Talkspace is one of the largest online therapy platforms in the US, publicly traded on NASDAQ."
+  },
   "seo": {
-    "title": "Talkspace Psychiatry: Review & Pricing | HeyPsych",
-    "meta_description": "Talkspace Psychiatry review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Talkspace Psychiatry: Online Medication Management",
+    "meta_description": "Talkspace Psychiatry offers online psychiatric evaluations and medication management. Most insurance copays $0. Initial visit $299 self-pay. Cannot...",
+    "faqs": [
+      {
+        "q": "Can Talkspace prescribe ADHD medication?",
+        "a": "No, Talkspace clinicians cannot prescribe controlled substances including stimulants for ADHD or benzodiazepines. If your evaluation determines these are needed, you must transfer care to another provider."
+      },
+      {
+        "q": "How much does Talkspace Psychiatry cost?",
+        "a": "With insurance, most patients pay $0-30 copay. Without insurance, initial evaluations cost $299 and follow-ups $175. Talkspace accepts Aetna, Anthem, Cigna, Optum, BCBS, and TRICARE."
+      },
+      {
+        "q": "How often do I need appointments for refills?",
+        "a": "Talkspace requires that you meet with your psychiatric provider at least every 3 months to receive prescription refills. Some providers may require more frequent visits based on your needs."
+      },
+      {
+        "q": "Is Talkspace Psychiatry for adults only?",
+        "a": "Yes, Talkspace Psychiatry is only available for individuals 18 and older. Children and teens are not able to use the psychiatry services."
+      }
+    ],
     "keywords": [
       "Talkspace Psychiatry",
-      "telehealth communication"
+      "online psychiatry",
+      "medication management",
+      "telehealth psychiatry",
+      "Talkspace medication",
+      "online psychiatric evaluation"
     ]
-  }
+  },
+  "created_at": "2026-08-22T20:50:40.798Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

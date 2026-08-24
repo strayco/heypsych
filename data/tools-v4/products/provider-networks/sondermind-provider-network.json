@@ -5,6 +5,21 @@
   "slug": "sondermind-provider-network",
   "name": "SonderMind Provider Network",
   "company_name": "SonderMind",
+  "one_liner": "Free-to-join insurance billing platform and therapist directory with premium reimbursement rates and VA partnership.",
+  "short_description": "SonderMind is an insurance billing platform and therapist directory that helps mental health providers accept insurance, manage billing, and attract clients.",
+  "long_description": "SonderMind is a mental health platform that connects therapists with clients while handling insurance credentialing, billing, and practice management. The platform is completely free for providers to join—therapists sign on as independent contractors and receive bi-weekly payouts with same-day payment options available. SonderMind offers premium in-network reimbursement rates and helps therapists get credentialed with major insurers including Aetna, Anthem, BCBS, Cigna, and UnitedHealthcare. The platform also accepts HSA, FSA, EAP, Medicare, and Medicare Advantage. Notably, SonderMind is an in-network VA provider where the VA covers 100% of costs for veterans with a valid referral. SonderMind also provides continuing education resources and a built-in provider directory for client matching.",
+  "best_for": [
+    "Therapists wanting free insurance credentialing and billing support",
+    "Providers seeking premium in-network reimbursement rates",
+    "Clinicians wanting to serve VA beneficiaries (100% covered)",
+    "Mental health practitioners building private practices"
+  ],
+  "not_for": [
+    "Clinicians seeking full-service EHR/practice management",
+    "Providers wanting to only accept self-pay clients",
+    "Psychiatrists needing e-prescribing capabilities",
+    "Those seeking deep telehealth platform features"
+  ],
   "import_ref": {
     "record_id": "MH-0452",
     "source_row": 453,
@@ -16,58 +31,218 @@
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "psychiatry",
+      "counseling",
+      "depression",
+      "anxiety",
+      "trauma",
+      "couples-therapy"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_rcm": false,
-    "has_telehealth": false,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "free",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free for providers",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Provider Platform",
+        "price": "Free to join (independent contractor model)"
+      }
+    ],
+    "notes": "SonderMind is free for providers. Therapists receive bi-weekly reimbursement payouts with same-day payment option available. Premium in-network rates negotiated with major insurers.",
+    "last_verified": "2026-08-23"
+  },
+  "client_pricing": {
+    "with_insurance": {
+      "copay_range": "$0-55+",
+      "notes": "Copay varies by insurance plan and deductible"
+    },
+    "self_pay": {
+      "intake_session": "$90-183 (varies by state and session length)",
+      "ongoing_session": "$45-154 (varies by state and credentials)"
+    },
+    "veterans": {
+      "price": "$0 (VA covers 100%)",
+      "notes": "With valid VA referral, therapy is free. Available in all 50 states."
+    }
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant platform. In-network VA provider."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medicare",
+      "slug": "medicare",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medicare Advantage",
+      "slug": "medicare-advantage",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Veterans Affairs (VA)",
+      "slug": "va",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "In-network VA provider. 100% covered for veterans."
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.811Z",
-  "updated_at": "2026-08-22T20:50:40.811Z",
-  "status": "active",
+  "services": {
+    "provider_credentialing": true,
+    "insurance_billing": true,
+    "client_matching": true,
+    "provider_directory": true,
+    "continuing_education": true,
+    "payment_terms": "Bi-weekly with same-day payment option",
+    "contractor_model": "Independent contractor"
+  },
   "seo": {
-    "title": "SonderMind Provider Network: Review & Pricing | HeyPsych",
-    "meta_description": "SonderMind Provider Network review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "SonderMind Provider Network",
+    "meta_description": "SonderMind is a free-to-join insurance billing platform for therapists with premium reimbursement rates. VA partnership covers 100% for veterans. Aetna,...",
+    "faqs": [
+      {
+        "q": "Is SonderMind free for therapists?",
+        "a": "Yes, SonderMind is completely free for therapists to join. Providers sign on as independent contractors and receive bi-weekly reimbursement payouts with an option for same-day payment."
+      },
+      {
+        "q": "What insurance does SonderMind accept?",
+        "a": "SonderMind accepts most major insurance including Aetna, Anthem, BCBS, Cigna, UnitedHealthcare, and many regional carriers. They also accept HSA, FSA, EAP, Medicare, and Medicare Advantage."
+      },
+      {
+        "q": "Does SonderMind work with the VA?",
+        "a": "Yes, SonderMind is an in-network VA provider. With a valid VA referral, therapy is 100% covered by the VA at no cost to veterans, available in all 50 states."
+      },
+      {
+        "q": "How much do clients pay for SonderMind therapy?",
+        "a": "With in-network insurance, clients typically pay a copay between $0-55+ depending on their plan. Self-pay rates range from $45-183 per session depending on session type, length, and provider credentials."
+      }
+    ],
     "keywords": [
-      "SonderMind Provider Network",
-      "provider network virtual care"
+      "SonderMind",
+      "therapist network",
+      "insurance billing",
+      "mental health",
+      "VA therapy",
+      "free credentialing"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "alma-provider-platform",
+    "headway",
+    "grow-therapy",
+    "rula"
+  ],
+  "competitor_tools": [
+    "alma-provider-platform",
+    "headway",
+    "grow-therapy",
+    "tava-health"
+  ],
+  "company_info": {
+    "founded_year": 2017,
+    "headquarters": "Denver, Colorado, USA",
+    "employee_count": "500+",
+    "funding_status": "Venture-backed",
+    "notes": "SonderMind connects therapists with clients through insurance credentialing, billing, and a provider directory."
+  },
+  "created_at": "2026-08-22T20:50:40.811Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

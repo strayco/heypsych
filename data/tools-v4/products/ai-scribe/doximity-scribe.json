@@ -5,6 +5,21 @@
   "slug": "doximity-scribe",
   "name": "Doximity Scribe",
   "company_name": "Doximity",
+  "one_liner": "Free AI medical scribe for all verified US clinicians with 3M+ healthcare professionals on the Doximity network.",
+  "short_description": "Doximity Scribe is a free AI-powered medical documentation tool that listens to patient visits and generates clinical notes for the 3M+ healthcare professionals on Doximity.",
+  "long_description": "Doximity Scribe is an AI medical documentation assistant offered free to all US physicians, nurse practitioners, physician assistants, and medical students with a verified Doximity account. The tool listens securely during patient visits (in-person or telehealth) and drafts clinical notes in real-time, intelligently filtering clinically relevant content from casual conversation. Doximity Scribe supports multiple note formats including SOAP, H&P, Consult notes, and simple dictation, with the ability to create custom templates. Notes can be copied into any EHR—there's no native EHR integration. The platform is HIPAA-compliant and does not store or retain audio recordings. Doximity Scribe integrates with Doximity Ask (formerly DoxGPT) for note refinement and additional documentation like patient care instructions. Enterprise licensing is available separately for hospitals and health systems.",
+  "best_for": [
+    "US clinicians wanting a free AI scribe with no monthly fees",
+    "Physicians already using Doximity for networking and communication",
+    "Practices comfortable with copy-paste EHR workflow",
+    "Medical students and residents needing documentation support"
+  ],
+  "not_for": [
+    "Clinicians needing deep native EHR integration",
+    "International healthcare providers (US verification required)",
+    "Organizations requiring enterprise features and SLAs",
+    "Those needing coding/billing automation"
+  ],
   "import_ref": {
     "record_id": "MH-0195",
     "source_row": 196,
@@ -16,12 +31,35 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "ambient-listening",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "multi-specialty",
+      "primary-care",
+      "psychiatry",
+      "internal-medicine",
+      "family-medicine",
+      "emergency-medicine"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +69,146 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "free",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Individual Clinician",
+        "price": "Free (verified Doximity account required)"
+      },
+      {
+        "name": "Enterprise/Health System",
+        "price": "Custom quote"
+      }
+    ],
+    "notes": "Free for all US physicians, NPs, PAs, and medical students with verified Doximity accounts. No paid tier for individuals—copy-paste EHR only. Enterprise licenses for hospitals quoted separately.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant. Audio is not stored or retained—processed in real-time and immediately discarded after note generation."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Doximity Ask",
+      "slug": "doximity-ask",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Notes can be refined using Doximity Ask (formerly DoxGPT)"
+    },
+    {
+      "name": "Doximity Dialer",
+      "slug": "doximity-dialer",
+      "category": "communication",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Any EHR",
+      "slug": "any-ehr",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Works with any EHR via simple copy-paste"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.788Z",
-  "updated_at": "2026-08-22T20:50:40.788Z",
-  "status": "active",
+  "features": {
+    "note_templates": [
+      "SOAP",
+      "H&P",
+      "Consult",
+      "Dictation",
+      "Custom"
+    ],
+    "real_time_capture": true,
+    "intelligent_filtering": "Filters non-clinical content (e.g., casual conversation) automatically",
+    "audio_storage": "None - immediately discarded after processing",
+    "documentation_modes": [
+      "In-person visits",
+      "Telehealth"
+    ],
+    "doximity_network": "3M+ US healthcare professionals",
+    "physician_coverage": "85%+ of US physicians use Doximity"
+  },
   "seo": {
-    "title": "Doximity Scribe: Review & Pricing | HeyPsych",
-    "meta_description": "Doximity Scribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Doximity Scribe: Free AI Medical Documentation | HeyPsych",
+    "meta_description": "Doximity Scribe is a free AI medical scribe for US clinicians. HIPAA-compliant, no audio storage. SOAP notes, H&P, custom templates. Works with any EHR via...",
+    "faqs": [
+      {
+        "q": "Is Doximity Scribe really free?",
+        "a": "Yes, Doximity Scribe is completely free for all US physicians, nurse practitioners, physician assistants, and medical students with a verified Doximity account. There is no paid tier for individual clinicians."
+      },
+      {
+        "q": "Does Doximity Scribe integrate with my EHR?",
+        "a": "Doximity Scribe does not have native EHR integrations. It generates notes that you copy and paste into any EHR system. No IT setup required."
+      },
+      {
+        "q": "Is Doximity Scribe HIPAA compliant?",
+        "a": "Yes, Doximity Scribe is HIPAA-compliant. Audio is processed securely in real-time and immediately discarded—no recordings are stored or retained."
+      },
+      {
+        "q": "What note formats does Doximity Scribe support?",
+        "a": "Doximity Scribe supports SOAP notes, H&P, Consult notes, simple dictation, and custom templates you can build from scratch to fit your workflow."
+      }
+    ],
     "keywords": [
       "Doximity Scribe",
-      "ai scribe documentation"
+      "free AI scribe",
+      "medical documentation",
+      "SOAP notes",
+      "Doximity",
+      "clinical notes"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "freed",
+    "suki-ai",
+    "abridge",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "freed",
+    "suki-ai",
+    "abridge",
+    "nabla"
+  ],
+  "company_info": {
+    "founded_year": 2010,
+    "headquarters": "San Francisco, California, USA",
+    "employee_count": "1000+",
+    "funding_status": "Public",
+    "ticker": "DOCS",
+    "public_company": true,
+    "notes": "Doximity is the largest professional network for US physicians with 3M+ members. Over 85% of US physicians use the platform."
+  },
+  "created_at": "2026-08-22T20:50:40.788Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

@@ -16,6 +16,69 @@ import { maybeTrackAIBot } from '@/lib/analytics/ai-telemetry';
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   const pathname = request.nextUrl.pathname;
+  const searchParams = request.nextUrl.searchParams;
+
+  // ==========================================================================
+  // LEGACY CLINICIAN REDIRECTS (V3 → V4 Migration)
+  // ==========================================================================
+
+  // Helper to preserve UTM params during redirects
+  const redirectWithUtms = (destination: string, status: 301 | 302 = 301) => {
+    const url = new URL(destination, request.url);
+    // Preserve UTM parameters
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(param => {
+      const value = searchParams.get(param);
+      if (value) url.searchParams.set(param, value);
+    });
+    return NextResponse.redirect(url, status);
+  };
+
+  // Redirect /tools?audience=clinician → /tools/for-clinicians
+  if (pathname === '/tools' && searchParams.get('audience') === 'clinician') {
+    return redirectWithUtms('/tools/for-clinicians');
+  }
+
+  // Redirect /tools/search?audience=clinician → /tools/for-clinicians
+  if (pathname === '/tools/search' && searchParams.get('audience') === 'clinician') {
+    return redirectWithUtms('/tools/for-clinicians');
+  }
+
+  // V3 clinician hub → V4 redirects
+  // practice-admin-operations → ehr-practice-management is a true equivalent (301)
+  // Others redirect temporarily to landing until V4 equivalents have inventory (302)
+  // Using 302 for non-equivalent redirects prevents soft-404 treatment by Google
+  const v3EquivalentRedirects: Record<string, string> = {
+    '/tools/for-clinicians/practice-admin-operations': '/tools/for-clinicians/ehr-practice-management',
+  };
+
+  if (v3EquivalentRedirects[pathname]) {
+    return redirectWithUtms(v3EquivalentRedirects[pathname], 301);
+  }
+
+  // Temporary redirects to landing (302) - not true equivalents
+  const v3TemporaryRedirects: string[] = [
+    '/tools/for-clinicians/clinical-answers-evidence',
+    '/tools/for-clinicians/ai-scribes-documentation',
+    '/tools/for-clinicians/billing-coding',
+    '/tools/for-clinicians/prescribing-medication-support',
+    '/tools/for-clinicians/patient-engagement-between-visits',
+  ];
+
+  if (v3TemporaryRedirects.includes(pathname)) {
+    return redirectWithUtms('/tools/for-clinicians', 302);
+  }
+
+  // Redirect retired V3 clinician tools temporarily to landing (302)
+  // Use 302 since these aren't true equivalents
+  const v3RetiredTools: string[] = [
+    // NOTE: /tools/practiceq removed - intakeq-practiceq not yet publishable
+    '/tools/doximity',
+    '/tools/openevidence',
+  ];
+
+  if (v3RetiredTools.includes(pathname)) {
+    return redirectWithUtms('/tools/for-clinicians', 302);
+  }
 
   // Skip localhost and Vercel preview deployments
   if (hostname.includes('localhost') || hostname.includes('.vercel.app')) {

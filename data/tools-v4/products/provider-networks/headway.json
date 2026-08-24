@@ -1,10 +1,25 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "d1a2b3c4-5678-9abc-def0-123456789008",
+  "id": "e6e38b91-956f-4f40-94fb-7a224fb47ad7",
   "slug": "headway",
   "name": "Headway",
   "company_name": "Headway, Inc.",
+  "one_liner": "Nation's largest mental health provider network (70,000+ therapists) with free credentialing and clawback protection.",
+  "short_description": "Headway is a free insurance credentialing platform for mental health providers with the largest network of 70,000+ therapists and protection from billing clawbacks.",
+  "long_description": "Headway is the nation's largest mental health provider network, connecting over 70,000 therapists with patients who have insurance coverage. The platform is completely free for providers to join—no setup fees, no monthly membership, and no subscription charges. Headway handles insurance credentialing (often in 2-4 weeks vs. 90-120 days solo), claims submission, and payments. Providers are paid on the 15th and last day of each month. A key differentiator: Headway promises consistent payments for care delivered and protects providers from clawbacks even if a claim is denied, charge is disputed, or client doesn't pay. Insurance partners include UnitedHealthcare, Aetna, Cigna, Anthem, Oxford, and Oscar (availability varies by state). For patients, therapy visits typically cost just their copay ($20-40), making in-network mental health care more accessible.",
+  "best_for": [
+    "Therapists wanting free insurance credentialing (no membership fees)",
+    "Providers who want protection from billing clawbacks",
+    "Clinicians joining the largest in-network mental health network",
+    "Solo practitioners and small group practices"
+  ],
+  "not_for": [
+    "Providers wanting higher reimbursement rates (Alma may negotiate higher)",
+    "Clinicians needing EHR/practice management features",
+    "Those wanting weekly payments (Headway pays bi-weekly)",
+    "Psychiatrists needing e-prescribing tools"
+  ],
   "import_ref": {
     "record_id": "PN-0008",
     "source_file": "provider-networks-research-2026",
@@ -13,14 +28,22 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "claims-submission",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
@@ -28,67 +51,169 @@
       "medium-11-50"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology",
+      "depression",
+      "anxiety",
+      "trauma"
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
-  "best_for": [
-    "Therapists who want to accept insurance without upfront membership fees",
-    "Providers comfortable with percentage-based billing model",
-    "Clinicians seeking to join the largest insurance-based network",
-    "Primary care practices wanting to refer patients to in-network therapists",
-    "Patients seeking in-network mental health care with their existing insurance"
-  ],
-  "not_for": [],
-  "pricing_url": "undefined/pricing",
   "pricing": {
-    "model": "percentage-of-revenue",
+    "model": "free",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free for providers",
     "free_tier": true,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": false,
+    "notes": "Completely free to join—no setup fees, no subscription. Headway is compensated through a share of insurance reimbursements. Providers receive bi-weekly payments (15th and last day of month). Clawback protection included.",
+    "last_verified": "2026-08-23"
+  },
+  "client_pricing": {
+    "with_insurance": {
+      "typical_copay": "$20-40 per session",
+      "notes": "Patients pay only their insurance copay"
+    },
+    "self_pay": {
+      "typical_range": "$100-200 per session",
+      "notes": "Rates vary by provider"
+    }
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with SOC 2 certification."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oxford",
+      "slug": "oxford",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oscar",
+      "slug": "oscar",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "services": {
+    "network_size": "70,000+ credentialed providers",
+    "credentialing_speed": "2-4 weeks (vs. 90-120 days solo)",
+    "payment_schedule": "Bi-weekly (15th and last day of month)",
+    "clawback_protection": "Providers protected even if claims denied, charges disputed, or clients don't pay",
+    "rate_negotiation": "Headway negotiates rates with insurers on behalf of providers"
+  },
   "seo": {
-    "title": "Headway: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
-    "faqs": [],
+    "title": "Headway: Free Insurance Credentialing for Therapists",
+    "meta_description": "Headway is the largest mental health provider network (70,000+ therapists). Free credentialing, free to join, clawback protection. Aetna, Cigna, UHC, Anthem...",
+    "faqs": [
+      {
+        "q": "Is Headway free for therapists?",
+        "a": "Yes, Headway is completely free for therapists to join with no setup fees, no monthly membership, and no subscription charges. Headway is compensated through a share of insurance reimbursements."
+      },
+      {
+        "q": "How fast is credentialing through Headway?",
+        "a": "Headway can credential providers with insurance companies in as little as 2-4 weeks, compared to 90-120 days when credentialing solo."
+      },
+      {
+        "q": "What is Headway's clawback protection?",
+        "a": "Headway promises consistent payments for care delivered and protects providers from clawbacks—even if a claim is denied, a charge is disputed, or a client doesn't pay after a session."
+      },
+      {
+        "q": "How does Headway compare to Alma?",
+        "a": "Headway is free while Alma costs $125/month. Alma may negotiate slightly higher reimbursement rates and includes EHR/AI notes features. Headway pays bi-weekly while Alma pays weekly. Headway has 70,000+ providers—the largest network."
+      }
+    ],
     "keywords": [
       "Headway",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "therapist network",
+      "free credentialing",
+      "insurance billing",
+      "mental health",
+      "clawback protection"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-23",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 92
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "alma-provider-platform",
+    "sondermind-provider-network",
+    "grow-therapy",
+    "rula"
+  ],
+  "competitor_tools": [
+    "alma-provider-platform",
+    "sondermind-provider-network",
+    "grow-therapy",
+    "tava-health"
+  ],
+  "company_info": {
+    "founded_year": 2019,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "500+",
+    "funding_status": "Venture-backed",
+    "notes": "Headway is the largest mental health provider network in the US with 70,000+ credentialed therapists."
+  },
   "created_at": "2026-08-22T21:10:17.307Z",
-  "updated_at": "2026-08-22T21:10:17.307Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

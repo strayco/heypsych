@@ -4,6 +4,7 @@
   "id": "85bfd34e-f76b-4d6d-8bd1-616d595bdda4",
   "slug": "bloomapi",
   "name": "BloomAPI",
+  "company_name": "BloomAPI",
   "import_ref": {
     "record_id": "MH-0998",
     "source_row": 999,
@@ -14,16 +15,37 @@
     "status": "active"
   },
   "primary_category": "care-coordination-referrals",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "analytics-reporting"
+  ],
+  "capabilities": [
+    "api-access",
+    "hl7-fhir",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "practice-administrator",
+      "care-coordinator"
+    ],
+    "practice_settings": [
+      "group-practice",
+      "multi-site-enterprise",
+      "integrated-care"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": false,
@@ -31,38 +53,85 @@
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
   },
+  "short_description": "Healthcare data API service providing NPI lookup and provider information for care coordination and referral management applications.",
+  "long_description": "BloomAPI is a healthcare data API service that provides streamlined access to NPI (National Provider Identifier) data and healthcare provider information. The API makes it easy to look up clinician identifiers, names, addresses, and credentials - information that serves as the foundation for referral management, care coordination, and provider directory applications. BloomAPI supports SSL connections and is designed to make healthcare technology accessible by connecting patients, providers, and payers through interoperable data access. The service is used by developers building mobile physician applications, referral platforms, and care coordination tools.",
+  "one_liner": "Healthcare data API for NPI lookup and provider information access.",
+  "best_for": [
+    "Healthcare technology developers building referral or directory features",
+    "Organizations needing programmatic access to NPI and provider data",
+    "Care coordination platforms requiring provider verification",
+    "EHR integrations needing real-time provider lookup"
+  ],
+  "not_for": [
+    "End-user clinicians seeking practice management software",
+    "Organizations without technical development resources",
+    "Practices needing full care coordination workflow tools",
+    "Non-technical healthcare administrators"
+  ],
+  "website_url": "https://www.bloomapi.com/",
+  "pricing_url": "https://www.bloomapi.com/",
+  "support_url": "https://www.bloomapi.com/documentation/",
+  "logo_url": "https://www.bloomapi.com/logo.png",
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "usage-based",
+    "free_tier": true,
+    "quote_required": false,
+    "price_range": "budget",
+    "notes": "API access with usage-based pricing. Free tier available for development and low-volume use cases.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.bloomapi.com/"
+    },
     "baa_available": "unknown",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "Bloom Record Release is 100% HITECH and HIPAA compliant with federal standards. API provides access to public NPI data."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.848Z",
-  "updated_at": "2026-08-22T20:50:40.848Z",
-  "status": "active",
   "seo": {
-    "title": "BloomAPI: Review & Pricing | HeyPsych",
-    "meta_description": "BloomAPI review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "BloomAPI: Healthcare Provider Data API | HeyPsych",
+    "meta_description": "BloomAPI review. Healthcare data API for NPI lookup and provider information access, enabling care coordination and referral management.",
+    "faqs": [
+      {
+        "q": "What is BloomAPI?",
+        "a": "BloomAPI is a healthcare data API service that provides streamlined access to NPI (National Provider Identifier) data and provider information for healthcare application development."
+      },
+      {
+        "q": "Is BloomAPI HIPAA compliant?",
+        "a": "Yes, Bloom services are HITECH and HIPAA compliant with federal standards. The API primarily provides access to public NPI registry data."
+      },
+      {
+        "q": "Who uses BloomAPI?",
+        "a": "BloomAPI is used by healthcare technology developers building referral platforms, care coordination tools, provider directories, and mobile physician applications that require NPI lookup functionality."
+      }
+    ],
     "keywords": [
       "BloomAPI",
-      "care coordination referrals"
+      "NPI API",
+      "healthcare data API",
+      "provider lookup",
+      "care coordination API"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 70
+  },
+  "related_tools": [],
+  "competitor_tools": [],
+  "created_at": "2026-08-22T20:50:40.848Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

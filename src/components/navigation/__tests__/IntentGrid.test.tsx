@@ -46,12 +46,12 @@ describe("IntentGrid", () => {
     render(<IntentGrid />);
 
     // Check that all default intent labels are rendered
+    // Note: Clinician intent was moved to AudienceGateway component
     expect(screen.getByText("I'm concerned about symptoms")).toBeInTheDocument();
     expect(screen.getByText("I want to understand a diagnosis")).toBeInTheDocument();
     expect(screen.getByText("I'm comparing treatments")).toBeInTheDocument();
     expect(screen.getByText("I need to find care")).toBeInTheDocument();
     expect(screen.getByText("I'm looking for a mental-health tool")).toBeInTheDocument();
-    expect(screen.getByText("I'm a clinician")).toBeInTheDocument();
   });
 
   it("renders custom intents when provided", () => {
@@ -125,7 +125,8 @@ describe("IntentGrid", () => {
   });
 
   it("exports defaultIntents with all required fields", () => {
-    expect(defaultIntents).toHaveLength(6);
+    // Note: Clinician intent was moved to AudienceGateway component
+    expect(defaultIntents).toHaveLength(5);
 
     defaultIntents.forEach((intent) => {
       expect(intent).toHaveProperty("id");

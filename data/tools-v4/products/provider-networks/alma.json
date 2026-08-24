@@ -1,26 +1,55 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "d1a2b3c4-5678-9abc-def0-123456789007",
+  "id": "a5baa4ad-02a1-498d-b839-740c0d897515",
   "slug": "alma",
   "name": "Alma",
-  "company_name": "Alma, Inc.",
+  "company_name": "Alma, Inc. (acquired by Spring Health)",
+  "one_liner": "Insurance credentialing + AI notes + EHR for therapists at $125/month with higher negotiated reimbursement rates and weekly payments.",
+  "short_description": "Alma is an all-in-one platform for independent therapists bundling insurance credentialing, billing, AI session notes, EHR, telehealth, and a client directory for $125/month.",
+  "long_description": "Alma is an all-in-one platform for independent therapists that bundles insurance credentialing, in-network billing, AI session note-taking, EHR, scheduling, telehealth, and a client-facing therapist directory—all for $125/month (or $95/month billed annually). Alma credentials therapists with major insurers including Aetna, Cigna, Optum, Anthem, and select Blue Cross Blue Shield plans in under 45 days—3x faster than the average process. The platform often negotiates $10-30 higher reimbursement rates per session than therapists achieve through solo credentialing. Alma pays therapists weekly, eliminating long waits for insurance reimbursement. The AI notes feature processes telehealth session recordings for documentation (in-person sessions not supported). In January 2026, Alma was acquired by Spring Health, bringing it within one of the largest mental health platforms in the market. The platform replaces the need for separate credentialing services ($100-300/month), EHR software ($49-99/month), and directory listings ($30-50/month).",
+  "best_for": [
+    "Independent therapists wanting to accept insurance without administrative burden",
+    "New therapists seeking fast insurance panel credentialing (45 days)",
+    "Solo practitioners who prefer flat monthly fees over percentage-based billing",
+    "Clinicians wanting higher negotiated reimbursement rates ($10-30 extra/session)",
+    "Therapists seeking AI documentation tools to reduce note-writing time"
+  ],
+  "not_for": [
+    "Therapists wanting a completely free platform (use Headway or Grow Therapy)",
+    "Clinicians doing primarily in-person sessions (AI notes only work for video)",
+    "Those who prefer percentage-based billing over flat monthly fees",
+    "Practitioners in areas with saturated Alma directory coverage"
+  ],
   "import_ref": {
     "record_id": "PN-0007",
     "source_file": "provider-networks-research-2026",
     "import_timestamp": "2026-08-22T00:00:00.000Z"
   },
   "lifecycle": {
-    "status": "active"
+    "status": "acquired",
+    "acquired_by": "Spring Health",
+    "acquisition_date": "2026-01-01",
+    "notes": "Acquired by Spring Health in January 2026."
   },
-  "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
-  "capabilities": [],
+  "primary_category": "provider-network-virtual-care",
+  "secondary_categories": [
+    "ehr-practice-management",
+    "ai-scribe-documentation"
+  ],
+  "capabilities": [
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
@@ -28,67 +57,179 @@
       "medium-11-50"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology",
+      "anxiety",
+      "depression",
+      "trauma"
     ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
-  "best_for": [
-    "Independent therapists wanting to accept insurance without administrative burden",
-    "New therapists seeking fast insurance panel credentialing",
-    "Solo practitioners who prefer flat monthly fees over percentage-based billing",
-    "Clinicians wanting higher negotiated reimbursement rates",
-    "Therapists seeking AI documentation tools to reduce note-writing time"
-  ],
-  "not_for": [],
-  "pricing_url": "undefined/pricing",
   "pricing": {
-    "model": "monthly-membership",
+    "model": "per-provider-month",
+    "starting_price_cents": 9500,
+    "starting_price_display": "$95/month (annual) or $125/month",
     "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Annual",
+        "price": "$95/month ($1,140/year)"
+      },
+      {
+        "name": "Monthly",
+        "price": "$125/month"
+      }
+    ],
+    "notes": "No free trial. Replaces separate credentialing services ($100-300/month), EHR software ($49-99/month), and directory listings ($30-50/month). Alma often negotiates $10-30 higher reimbursement rates per session than solo credentialing.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with SOC 2 certification."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Optum",
+      "slug": "optum",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Select plans"
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "credentialing": {
+      "speed": "Under 45 days (3x faster than average)",
+      "rate_negotiation": "$10-30 higher rates than solo credentialing"
+    },
+    "billing": {
+      "payment_schedule": "Weekly payments",
+      "claims_submission": "Through Alma platform"
+    },
+    "ai_notes": {
+      "available": true,
+      "limitation": "Only works for video sessions, not in-person"
+    },
+    "additional": {
+      "ehr": true,
+      "scheduling": true,
+      "telehealth": true,
+      "therapist_directory": true,
+      "community_hub": "Webinars, workshops, peer networking",
+      "continuing_education": "Content provided by NYU"
+    }
+  },
   "seo": {
-    "title": "Alma: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
-    "faqs": [],
+    "title": "Alma: Insurance Credentialing + AI Notes for Therapists",
+    "meta_description": "Alma offers insurance credentialing, AI notes, EHR, and billing for therapists at $125/month. Higher negotiated rates, weekly payments. Acquired by Spring...",
+    "faqs": [
+      {
+        "q": "How much does Alma cost for therapists?",
+        "a": "Alma costs $125/month or $95/month when billed annually ($1,140/year). There is no free trial available."
+      },
+      {
+        "q": "How fast is credentialing through Alma?",
+        "a": "Alma credentials therapists with major insurance payers in under 45 days—3x faster than the average credentialing process."
+      },
+      {
+        "q": "Does Alma negotiate higher reimbursement rates?",
+        "a": "Yes, Alma often negotiates $10-30 higher reimbursement rates per session than therapists achieve through solo credentialing."
+      },
+      {
+        "q": "How does Alma compare to Headway?",
+        "a": "Alma costs $125/month while Headway is free. Alma may negotiate higher rates and includes EHR/AI notes. Headway has the largest network (70,000+ providers) and offers clawback protection. Alma pays weekly while Headway pays bi-weekly."
+      }
+    ],
     "keywords": [
       "Alma",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "therapist credentialing",
+      "insurance billing",
+      "AI notes",
+      "mental health",
+      "Spring Health"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-23",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "headway",
+    "grow-therapy",
+    "sondermind",
+    "rula",
+    "spring-health"
+  ],
+  "competitor_tools": [
+    "headway",
+    "grow-therapy",
+    "sondermind",
+    "tava-health"
+  ],
+  "company_info": {
+    "founded_year": 2018,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "200-500",
+    "funding_status": "Acquired (Spring Health, January 2026)",
+    "notes": "Acquired by Spring Health in January 2026, Alma now sits within one of the largest mental health platforms in the market."
+  },
   "created_at": "2026-08-22T21:10:17.304Z",
-  "updated_at": "2026-08-22T21:10:17.304Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

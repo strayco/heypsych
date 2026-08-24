@@ -4,6 +4,22 @@
   "id": "974d911b-0ed7-4b96-9453-897448b180c3",
   "slug": "motivo",
   "name": "Motivo",
+  "company_name": "Motivo Health",
+  "one_liner": "Managed clinical supervision platform connecting pre-licensed therapists with 1,500+ vetted supervisors across all 50 states.",
+  "short_description": "Motivo is a managed clinical supervision platform that connects pre-licensed mental health professionals with vetted supervisors for virtual supervision sessions.",
+  "long_description": "Motivo is the leading managed clinical supervision platform for behavioral health organizations and pre-licensed therapists. The platform connects pre-licensed staff (associates, interns, trainees) with over 1,500 vetted clinical supervisors across all 50 states for virtual supervision sessions. Motivo handles everything: supervisor vetting, matching, scheduling, HIPAA-compliant video, documentation, and state board compliance. Individual supervision sessions run approximately $75/hour, with group supervision at $55-65/hour. Organizations can purchase custom packages to subsidize intern supervision. Motivo reduces the burden on senior clinicians by outsourcing supervision, saving $1,500-2,500 per therapist position in recruitment costs. The platform is particularly valuable for health plans, health systems, and digital behavioral health companies needing to scale their clinical workforce while maintaining compliance.",
+  "best_for": [
+    "Pre-licensed therapists (associates, interns, trainees) seeking supervision",
+    "Behavioral health organizations wanting to outsource supervision",
+    "Health systems scaling clinical workforce with compliance",
+    "Digital health companies needing supervised clinicians"
+  ],
+  "not_for": [
+    "Fully licensed clinicians (supervision not required)",
+    "Those seeking peer consultation (this is formal supervision)",
+    "Organizations wanting in-house only supervision",
+    "Solo practitioners not pursuing licensure"
+  ],
   "import_ref": {
     "record_id": "MH-0714",
     "source_row": 715,
@@ -15,54 +31,162 @@
   },
   "primary_category": "credentialing-workforce",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "clinical-supervision",
+    "video-sessions",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology",
+      "social-work",
+      "marriage-family-therapy"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
-    "has_telehealth": false,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Individual Supervision",
+        "price": "~$75/hour"
+      },
+      {
+        "name": "Group Supervision",
+        "price": "$55-65/hour"
+      },
+      {
+        "name": "Enterprise/Organization",
+        "price": "Custom pricing (subsidized)"
+      }
+    ],
+    "notes": "Payment charged at time of each session. Free intro call to match with supervisor before billing begins. Organizations can subsidize supervision costs for their pre-licensed staff. Contact sales for enterprise pricing.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant video platform with documentation that meets state board requirements."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": true,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.836Z",
-  "updated_at": "2026-08-22T20:50:40.836Z",
-  "status": "active",
+  "features": {
+    "supervision": {
+      "individual": true,
+      "group": true,
+      "video_platform": "HIPAA-compliant built-in"
+    },
+    "supervisors": {
+      "network_size": "1,500+",
+      "coverage": "All 50 states",
+      "vetting": "Fully vetted and credentialed"
+    },
+    "compliance": {
+      "state_board_requirements": true,
+      "documentation": true,
+      "hour_tracking": true
+    },
+    "for_organizations": {
+      "managed_service": true,
+      "recruitment_savings": "$1,500-2,500 per position",
+      "custom_packages": true
+    }
+  },
   "seo": {
-    "title": "Motivo: Review & Pricing | HeyPsych",
-    "meta_description": "Motivo review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Motivo: Clinical Supervision for Pre-Licensed Therapists",
+    "meta_description": "Motivo connects pre-licensed therapists with 1,500+ vetted supervisors across 50 states. Virtual supervision ~$75/hour individual, $55-65 group. HIPAA...",
+    "faqs": [
+      {
+        "q": "How much does Motivo cost for supervision?",
+        "a": "Individual supervision sessions run approximately $75/hour, while group supervision costs $55-65/hour. Payment is charged at each session. Organizations can purchase custom packages to subsidize costs."
+      },
+      {
+        "q": "How many supervisors does Motivo have?",
+        "a": "Motivo has over 1,500 vetted clinical supervisors available across all 50 states, allowing pre-licensed therapists to find supervisors who meet their state's specific requirements."
+      },
+      {
+        "q": "Is Motivo HIPAA compliant?",
+        "a": "Yes, Motivo provides a HIPAA-compliant video platform for supervision sessions along with documentation that meets state board requirements for licensure."
+      },
+      {
+        "q": "Who uses Motivo?",
+        "a": "Motivo serves pre-licensed therapists (associates, interns, trainees) pursuing licensure, as well as behavioral health organizations, health systems, and digital health companies that want to outsource clinical supervision."
+      }
+    ],
     "keywords": [
       "Motivo",
-      "credentialing workforce"
+      "clinical supervision",
+      "pre-licensed therapist",
+      "LCSW supervision",
+      "LMFT supervision",
+      "LPC supervision",
+      "therapy supervision"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "pesi",
+    "relias",
+    "ce-broker"
+  ],
+  "competitor_tools": [
+    "path2health",
+    "supervisory-alliance"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Venture-backed",
+    "notes": "Motivo is the leading managed clinical supervision platform, helping behavioral health organizations scale their workforce while maintaining compliance."
+  },
+  "created_at": "2026-08-22T20:50:40.836Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

@@ -4,6 +4,7 @@
   "id": "b901588e-d9cf-4c52-815c-3abba68b6dad",
   "slug": "dial3d",
   "name": "DIAL3D",
+  "company_name": "DIAL3D, Inc.",
   "import_ref": {
     "record_id": "MH-0182",
     "source_row": 183,
@@ -14,13 +15,46 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "intake-scheduling-forms",
+    "patient-engagement"
+  ],
+  "capabilities": [
+    "ai-suggestions",
+    "voice-transcription",
+    "eligibility-verification",
+    "secure-messaging",
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available",
+    "api-access"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "care-coordinator"
+    ],
+    "practice_settings": [
+      "group-practice",
+      "residential-treatment",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "addiction-treatment",
+      "eating-disorders"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,35 +68,160 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI voice, chat, and admissions platform for addiction treatment and mental health facilities with real-time insurance verification and crisis protocols.",
+  "long_description": "DIAL3D is an AI-powered voice, chat, and admissions platform built specifically for addiction treatment, mental health, and detox facilities. The platform handles inbound calls and intake with sub-2-second response times, performs real-time insurance verification (VOB lookup), and includes built-in crisis protocols that immediately warm-transfer to human staff or 988 when needed. Founded by operators from multi-facility treatment programs, DIAL3D integrates with major behavioral health EHRs including Kipu, Sunwave, Lightning Step, and BestNotes. Most single-facility programs can go live within two business days.",
+  "one_liner": "AI voice and admissions platform for addiction and mental health treatment centers.",
+  "best_for": [
+    "Addiction treatment centers needing 24/7 admissions coverage",
+    "Multi-facility behavioral health organizations with high call volumes",
+    "Mental health facilities wanting AI-assisted intake with human escalation",
+    "Treatment centers requiring real-time insurance verification during intake"
+  ],
+  "not_for": [
+    "Solo practitioners or small private practices",
+    "Organizations seeking full EHR functionality",
+    "Practices not focused on admissions-heavy workflows",
+    "Facilities preferring human-only intake processes"
+  ],
+  "website_url": "https://dial3d.ai/",
+  "pricing_url": "https://dial3d.ai/",
+  "support_url": "https://dial3d.ai/",
+  "logo_url": "https://dial3d.ai/logo.png",
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "usage-based",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free trial (100 minutes)",
+    "free_tier": true,
+    "free_trial_days": 30,
+    "quote_required": false,
+    "price_range": "premium",
+    "notes": "Trial: Free (100 voice minutes, $0.49/min after). Professional: $2,000/month (5 agents, 10 numbers, $0.44/min, web chat). Enterprise: Custom pricing (unlimited agents/numbers, omnichannel, dedicated support). BAA included on all plans.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://dial3d.ai/"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://dial3d.ai/"
+    },
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-aligned environment with logged access, encrypted transport, and minimum-necessary retention. BAA signed on every plan including 30-day pilots. SOC 2 Type II audit opened Feb 2026, report available Q3 2026 under NDA. 42 CFR Part 2 disclosure handling supported."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
+  "integrations": [
+    {
+      "name": "Kipu EMR",
+      "slug": "kipu-emr",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "KipuCRM",
+      "slug": "kipu-crm",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Sunwave Health",
+      "slug": "sunwave-health",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Lightning Step",
+      "slug": "lightning-step",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "BestNotes",
+      "slug": "bestnotes",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Salesforce Health Cloud",
+      "slug": "salesforce-health-cloud",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "HubSpot",
+      "slug": "hubspot",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "CallTrackingMetrics",
+      "slug": "call-tracking-metrics",
+      "category": "analytics",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
   "seo": {
-    "title": "DIAL3D: Review & Pricing | HeyPsych",
-    "meta_description": "DIAL3D review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "DIAL3D: AI Voice & Admissions Platform for Treatment Centers",
+    "meta_description": "DIAL3D review for behavioral health facilities. AI voice, chat, and admissions platform with real-time insurance verification and crisis protocols.",
+    "faqs": [
+      {
+        "q": "How much does DIAL3D cost?",
+        "a": "DIAL3D offers a free trial with 100 voice minutes ($0.49/min after). Professional plan is $2,000/month including 5 agents, 10 numbers, and $0.44/min usage. Enterprise pricing is custom. BAA included on all plans."
+      },
+      {
+        "q": "Is DIAL3D HIPAA compliant?",
+        "a": "Yes, DIAL3D operates in a HIPAA-aligned environment with logged access, encrypted transport, and minimum-necessary retention. They sign a BAA on every plan, including 30-day pilots."
+      },
+      {
+        "q": "What EHRs does DIAL3D integrate with?",
+        "a": "DIAL3D integrates with 32+ platforms including Kipu, Sunwave, Lightning Step, BestNotes, Salesforce Health Cloud, HubSpot, and CallTrackingMetrics."
+      },
+      {
+        "q": "How does DIAL3D handle crisis situations?",
+        "a": "The crisis-line protocol fires immediately when needed. The AI agent stays on the line with a slower, trauma-informed cadence and warm-transfers to a human within three seconds - either to a designated clinician during business hours or 988 after hours."
+      }
+    ],
     "keywords": [
       "DIAL3D",
-      "ai copilot clinical"
+      "AI admissions",
+      "behavioral health voice AI",
+      "addiction treatment intake",
+      "mental health call center AI",
+      "VOB verification"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "kipu-intelligence",
+    "sunwave-health",
+    "lightning-step"
+  ],
+  "competitor_tools": [],
+  "company_info": {
+    "headquarters": "Delray Beach, FL, USA",
+    "address": "3333 S Congress Ave, Suite 404, Delray Beach, FL 33445"
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

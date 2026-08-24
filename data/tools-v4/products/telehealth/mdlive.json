@@ -4,7 +4,22 @@
   "id": "9fe4a5cf-580d-4f3e-8f75-04163dfabc72",
   "slug": "mdlive",
   "name": "MDLIVE",
-  "company_name": "MDLIVE / Evernorth",
+  "company_name": "MDLIVE / Evernorth (Cigna)",
+  "one_liner": "Major telehealth platform with 24/7 psychiatry and therapy services, backed by Cigna's Evernorth.",
+  "short_description": "MDLIVE is a leading telehealth platform offering 24/7 access to board-certified doctors, licensed therapists, and psychiatrists for mental health care.",
+  "long_description": "MDLIVE is one of the largest telehealth platforms in the United States, providing 24/7 virtual access to board-certified doctors, licensed therapists, and psychiatrists. Founded in 2009 and acquired by Cigna's Evernorth in 2021, MDLIVE serves millions of patients through employer benefits, health plans, and direct-to-consumer access. The platform offers therapy for stress, anxiety, depression, and trauma, as well as psychiatric evaluations and medication management. MDLIVE maintains NCQA certifications and ATA accreditation, with over 2,000 providers averaging 15+ years of clinical experience. The platform is available via web, iOS, and Android apps, with evening and weekend appointments available.",
+  "best_for": [
+    "Patients needing quick access to mental health services through insurance",
+    "Employers and health plans seeking telehealth benefits for members",
+    "Individuals wanting 24/7 access to psychiatric care",
+    "People with busy schedules who need evening/weekend appointments"
+  ],
+  "not_for": [
+    "Patients requiring controlled substances (DEA Schedule II)",
+    "Complex psychiatric cases requiring intensive treatment",
+    "Those seeking long-term psychotherapy relationships",
+    "Independent clinicians looking for practice tools (consumer-focused platform)"
+  ],
   "import_ref": {
     "record_id": "MH-0263",
     "source_row": 264,
@@ -16,54 +31,207 @@
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "secure-messaging",
+    "mobile-app",
+    "appointment-scheduling",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "behavioral-health",
+      "therapy"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 17900,
+    "starting_price_display": "$179/initial therapy visit",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Therapy - Initial",
+        "price": "$179 without insurance"
+      },
+      {
+        "name": "Therapy - Follow-up",
+        "price": "$140 without insurance"
+      },
+      {
+        "name": "Psychiatry - Initial",
+        "price": "$299 without insurance"
+      },
+      {
+        "name": "Psychiatry - Follow-up",
+        "price": "$159 without insurance"
+      }
+    ],
+    "notes": "76% of users pay via insurance with $0-30 average copay. Accepts Cigna, Humana, BCBS, Aetna, some Medicare/Medicaid plans. Enterprise pricing available for employers and health plans.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "certifications": [
+      "HIPAA",
+      "NCQA",
+      "ATA Accredited"
+    ],
+    "notes": "Two NCQA certifications, ATA accredited, enterprise-grade compliance as Cigna subsidiary."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Cigna Healthcare",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Parent company integration"
+    },
+    {
+      "name": "Evernorth",
+      "slug": "evernorth",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Cigna health services subsidiary"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "reliability": "Enterprise-grade"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": false,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": false,
+      "text_chat": true,
+      "file_sharing": false
+    },
+    "patient_experience": {
+      "no_download_required": false,
+      "no_account_required": false,
+      "browser_based": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "24_7_availability": true
+    },
+    "mobile_apps": {
+      "provider_ios": true,
+      "provider_android": true,
+      "patient_ios": true,
+      "patient_android": true
+    }
+  },
+  "services": {
+    "provider_network": true,
+    "provider_network_notes": "2,000+ providers with average 15+ years experience",
+    "mental_health_services": true,
+    "mental_health_notes": "Therapy and psychiatry for anxiety, depression, stress, trauma",
+    "psychiatry_services": true,
+    "medication_management": true,
+    "24_7_coverage": true,
+    "limitations": "Cannot prescribe DEA-controlled substances"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.795Z",
-  "updated_at": "2026-08-22T20:50:40.795Z",
-  "status": "active",
+  "related_tools": [
+    "teladoc-health",
+    "amwell",
+    "talkspace-psychiatry",
+    "talkiatry"
+  ],
+  "competitor_tools": [
+    "teladoc-health",
+    "amwell",
+    "doctor-on-demand"
+  ],
+  "company_info": {
+    "founded_year": 2009,
+    "headquarters": "Sunrise, Florida, USA",
+    "employee_count": "1000+",
+    "funding_status": "Acquired",
+    "parent_company": "Evernorth (Cigna)",
+    "acquisition": "Acquired by Cigna's Evernorth in 2021"
+  },
   "seo": {
-    "title": "MDLIVE: Review & Pricing | HeyPsych",
-    "meta_description": "MDLIVE review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "MDLIVE: 24/7 Telehealth Psychiatry & Therapy | HeyPsych",
+    "meta_description": "MDLIVE offers 24/7 telehealth psychiatry and therapy through 2,000+ providers. Initial therapy $179, psychiatry $299 without insurance. Most insured...",
+    "faqs": [
+      {
+        "q": "How much does MDLIVE cost for therapy?",
+        "a": "MDLIVE therapy costs $179 for an initial appointment and $140 for follow-ups without insurance. With insurance, 76% of users pay $0-30 copay. MDLIVE accepts Cigna, Humana, BCBS, Aetna, and some Medicare/Medicaid plans."
+      },
+      {
+        "q": "Can MDLIVE prescribe controlled substances?",
+        "a": "No, MDLIVE doctors are not authorized to prescribe DEA-controlled substances such as stimulants for ADHD or benzodiazepines. They can prescribe non-controlled psychiatric medications like antidepressants."
+      },
+      {
+        "q": "Is MDLIVE available 24/7?",
+        "a": "Yes, MDLIVE offers 24/7 access to mental health care with evening and weekend appointments available. Doctors are on call around the clock."
+      },
+      {
+        "q": "Who owns MDLIVE?",
+        "a": "MDLIVE was acquired by Cigna's Evernorth health services division in 2021. It operates as part of the Evernorth portfolio of health services companies."
+      }
+    ],
     "keywords": [
       "MDLIVE",
-      "telehealth communication"
+      "telehealth psychiatry",
+      "online therapy",
+      "Cigna telehealth",
+      "virtual mental health",
+      "24/7 psychiatry"
     ]
-  }
+  },
+  "created_at": "2026-08-22T20:50:40.795Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

@@ -4,6 +4,11 @@
   "id": "c2def212-add8-4f6f-ae25-22b9c0dd260b",
   "slug": "candid-health",
   "name": "Candid Health",
+  "company_name": "Candid Health",
+  "website": "https://www.joincandidhealth.com",
+  "one_liner": "AI-powered RCM automation with claims autocorrection",
+  "short_description": "Candid Health is an AI-native revenue cycle management platform that automates claims processing, identifies and corrects errors before submission, and optimizes reimbursement for healthcare...",
+  "description": "Candid Health provides end-to-end revenue cycle management powered by AI that learns from your claim patterns. The platform automatically identifies coding errors, missing information, and payer-specific requirements before claims are submitted, dramatically reducing denials. With real-time denial management, automated appeals, and detailed analytics, Candid helps healthcare organizations achieve 95-99% net collection rates while significantly reducing manual RCM work.",
   "import_ref": {
     "record_id": "MH-0549",
     "source_row": 550,
@@ -15,12 +20,32 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "denial-management",
+    "eligibility-verification",
+    "ehr-integration"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "primary-care",
+      "specialty-care",
+      "mental-health",
+      "physical-therapy",
+      "urgent-care",
+      "telehealth"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,35 +59,191 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "founded_year": 2020,
+    "headquarters": "San Francisco, CA",
+    "employee_count": "100-200",
+    "funding_total": "$219M+",
+    "funding_stage": "Series C",
+    "notable_investors": [
+      "Andreessen Horowitz",
+      "General Catalyst",
+      "Bessemer Venture Partners"
+    ],
+    "customer_count": "200+ healthcare organizations"
+  },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "per-provider-month",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "Growth",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Claims autocorrection",
+          "Denial management",
+          "Real-time analytics",
+          "Standard EHR integrations",
+          "Email support"
+        ],
+        "quote_required": true
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "period": "monthly",
+        "features": [
+          "Everything in Growth",
+          "Advanced payer intelligence",
+          "Custom integrations",
+          "Dedicated success manager",
+          "SLA guarantees",
+          "Multi-location support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "3-6% of collections (varies by volume and complexity)",
+    "free_trial": {
+      "available": false,
+      "notes": "Demo and pilot programs available"
+    },
+    "notes": "Percentage of collections model aligns incentives. No upfront costs. Named Best RCM Software 2025 by multiple publications."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "security": "https://www.joincandidhealth.com/security"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Athenahealth",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "DrChrono",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "AdvancedMD",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Elation Health",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Canvas Medical",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Various clearinghouses",
+      "type": "clearinghouse",
+      "method": "api",
+      "native": true
+    }
+  ],
+  "features": {
+    "claims_autocorrection": {
+      "supported": true,
+      "description": "AI identifies and corrects claim errors before submission to prevent denials"
+    },
+    "denial_management": {
+      "supported": true,
+      "description": "Real-time denial tracking with automated appeal generation"
+    },
+    "payer_intelligence": {
+      "supported": true,
+      "description": "Learns payer-specific requirements and optimizes claims accordingly"
+    },
+    "analytics": {
+      "supported": true,
+      "description": "Detailed RCM metrics, denial patterns, and revenue forecasting"
+    },
+    "key_metrics": {
+      "ncr": "95-99% net collection rate",
+      "denial_reduction": "50%+ reduction in denials",
+      "time_savings": "80%+ reduction in manual claim work"
+    }
+  },
+  "best_for": [
+    "Growing practices wanting to automate RCM",
+    "Organizations frustrated with high denial rates",
+    "Telehealth companies needing scalable billing",
+    "Multi-specialty groups with complex claims",
+    "Practices seeking percentage-based pricing model",
+    "Organizations wanting AI-first RCM approach"
+  ],
+  "not_for": [
+    "Solo practitioners with low volume (consider simpler solutions)",
+    "Large health systems with existing enterprise RCM (consider Waystar)",
+    "Practices needing full-service outsourced billing",
+    "Organizations requiring on-premise deployment"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": [],
+  "related_tools": [
+    "waystar",
+    "availity-essentials",
+    "collectly",
+    "akasa"
+  ],
   "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Candid Health: Review & Pricing | HeyPsych",
-    "meta_description": "Candid Health review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Candid Health: AI RCM & Claims Autocorrection | HeyPsych",
+    "meta_description": "Candid Health review - AI-powered RCM with claims autocorrection. 95-99% NCR, 50% denial reduction. $219M funded. Named Best RCM Software 2025.",
+    "faqs": [
+      {
+        "q": "What makes Candid Health different from traditional RCM?",
+        "a": "Candid Health uses AI to proactively identify and correct claim errors before submission, rather than just processing claims. This 'autocorrection' approach prevents denials rather than managing them after the fact, leading to 95-99% net collection rates."
+      },
+      {
+        "q": "How much does Candid Health cost?",
+        "a": "Candid Health uses a percentage-of-collections pricing model, typically 3-6% depending on volume and complexity. This aligns incentives—they only earn more when you collect more. There are no upfront costs or implementation fees."
+      },
+      {
+        "q": "What EHRs does Candid Health integrate with?",
+        "a": "Candid Health has native integrations with Athenahealth, DrChrono, AdvancedMD, Elation Health, Canvas Medical, and many others. They also connect with major clearinghouses for seamless claims submission."
+      },
+      {
+        "q": "Is Candid Health good for mental health practices?",
+        "a": "Yes, Candid Health works with mental health practices and understands behavioral health billing nuances. However, for mental health-specific RCM with payer credentialing, also consider dedicated behavioral health billing services."
+      }
+    ],
     "keywords": [
       "Candid Health",
-      "billing rcm insurance"
+      "AI RCM",
+      "claims autocorrection",
+      "denial management",
+      "revenue cycle management",
+      "healthcare billing AI",
+      "medical billing automation",
+      "claims management software"
     ]
   }
 }

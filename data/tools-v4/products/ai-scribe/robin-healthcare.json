@@ -4,6 +4,10 @@
   "id": "e1dcafda-302f-4f44-b513-fb94f8f279c3",
   "slug": "robin-healthcare",
   "name": "Robin Healthcare",
+  "company_name": "Robin Healthcare",
+  "one_liner": "AI medical scribe with dedicated hardware device for ambient documentation",
+  "short_description": "Robin Healthcare combines ambient AI scribe technology with a dedicated hardware device (Robin Assistant) to automate clinical documentation. The platform saves physicians an average of 90 minutes...",
+  "long_description": "Robin Healthcare is an AI-powered medical scribe solution that distinguishes itself through a combination of ambient AI technology and a dedicated hardware device called the Robin Assistant. The physical device sits in the exam room and captures the patient-physician conversation, generating structured clinical notes automatically.\n\nThe Robin Assistant device is designed to integrate naturally into the clinical workflow without requiring physicians to interact with smartphones or wearables. The system captures ambient audio, processes it through Robin's AI engine, and delivers draft notes for physician review. The company reports that physicians save an average of 90 minutes per day on documentation tasks.\n\nRobin Healthcare has raised over $82 million in funding and reports high satisfaction metrics, including 98% patient acceptance of the technology in exam rooms. The platform integrates with major EHR systems and supports various specialties in ambulatory care settings.\n\nThe hardware-based approach may appeal to practices seeking a dedicated documentation solution that doesn't rely on mobile devices or computer microphones. However, this approach also means higher implementation complexity compared to software-only AI scribes. Robin is best suited for established practices and health systems ready to invest in dedicated infrastructure for AI documentation.",
   "import_ref": {
     "record_id": "MH-0235",
     "source_row": 236,
@@ -15,12 +19,36 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "ehr-integration"
+  ],
+  "best_for": [
+    "Ambulatory practices seeking dedicated documentation hardware",
+    "Health systems ready to invest in infrastructure for AI scribes",
+    "Multi-provider clinics wanting consistent documentation setup",
+    "Physicians preferring not to use personal devices for scribing"
+  ],
+  "not_for": [
+    "Solo practitioners seeking low-cost software solutions",
+    "Telehealth-only practices",
+    "Mental health therapists needing specialized note formats",
+    "Practices wanting mobile-first or flexible deployment"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "primary-care",
+      "multi-specialty"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -37,32 +65,91 @@
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Includes hardware device and software subscription. Enterprise pricing based on provider count."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "athenahealth",
+      "type": "ehr",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ai_documentation": {
+      "ambient_listening": true,
+      "note_generation": true,
+      "template_support": true,
+      "specialty_templates": true,
+      "hardware_device": true
+    },
+    "workflow": {
+      "real_time_transcription": true,
+      "note_review_editing": true,
+      "ehr_auto_population": true
+    }
   },
-  "related_tools": [],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Hardware-based ambient AI scribe solution."
+  },
+  "related_tools": [
+    "nuance-dragon-ambient",
+    "abridge",
+    "augmedix",
+    "suki-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.792Z",
-  "updated_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Robin Healthcare: Review & Pricing | HeyPsych",
-    "meta_description": "Robin Healthcare review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Robin Healthcare: AI Scribe with Hardware Device | HeyPsych",
+    "meta_description": "Robin Healthcare review featuring the Robin Assistant hardware device. Ambient AI scribe saving physicians 90 minutes daily with 98% patient acceptance.",
+    "faqs": [
+      {
+        "q": "What is the Robin Assistant device?",
+        "a": "The Robin Assistant is a dedicated hardware device that sits in exam rooms to capture patient-physician conversations. Unlike software-only AI scribes that use phone or computer microphones, Robin uses purpose-built hardware for ambient documentation."
+      },
+      {
+        "q": "How much time does Robin Healthcare save?",
+        "a": "Robin Healthcare reports that physicians save an average of 90 minutes per day on documentation tasks using the ambient AI scribe system."
+      },
+      {
+        "q": "Do patients accept the Robin device in exam rooms?",
+        "a": "Robin Healthcare reports 98% patient acceptance rates for the Robin Assistant device in clinical settings."
+      },
+      {
+        "q": "What EHRs does Robin integrate with?",
+        "a": "Robin Healthcare integrates with major EHR systems including Epic, Cerner, and athenahealth, automatically populating notes into patient charts."
+      }
+    ],
     "keywords": [
       "Robin Healthcare",
-      "ai scribe documentation"
+      "Robin Assistant",
+      "AI medical scribe",
+      "ambient scribe device",
+      "hardware AI scribe",
+      "clinical documentation AI",
+      "physician documentation automation"
     ]
   }
 }

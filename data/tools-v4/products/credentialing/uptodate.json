@@ -5,6 +5,21 @@
   "slug": "uptodate",
   "name": "UpToDate",
   "company_name": "Wolters Kluwer",
+  "one_liner": "Evidence-based clinical decision support used by 2M+ clinicians with peer-reviewed recommendations at the point of care ($579/year).",
+  "short_description": "UpToDate is the leading evidence-based clinical decision support resource providing peer-reviewed recommendations for diagnosis and treatment decisions.",
+  "long_description": "UpToDate is the leading evidence-based clinical decision support system used by over 2 million clinicians in 190+ countries. Published by Wolters Kluwer, it provides peer-reviewed, continuously updated clinical recommendations written by physician-authors and editors. Topics cover nearly every medical specialty including psychiatry, psychology, and mental health conditions. Individual subscriptions cost $579/year for US physicians with discounts for students and trainees. Enterprise subscriptions are available for hospitals and health systems. The UpToDate suite includes UpToDate (core clinical content), UpToDate Lexidrug (drug information, formerly Lexicomp), UpToDate Patient Engagement (patient education), and UpToDate Expert AI for clinically grounded AI-assisted decision support. Studies have linked UpToDate use to improved patient outcomes and reduced hospital lengths of stay.",
+  "best_for": [
+    "Clinicians wanting evidence-based point-of-care information",
+    "Psychiatrists and mental health providers making treatment decisions",
+    "Medical residents and students studying clinical medicine",
+    "Health systems wanting standardized clinical references"
+  ],
+  "not_for": [
+    "Those wanting free clinical references (use Medscape/Epocrates)",
+    "Non-clinical administrators",
+    "Practices with institutional access already",
+    "International clinicians without budget for subscription"
+  ],
   "import_ref": {
     "record_id": "MH-0716",
     "source_row": 717,
@@ -14,14 +29,37 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "credentialing-workforce",
+  "primary_category": "clinical-decision-support",
   "secondary_categories": [],
   "capabilities": [],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "psychology",
+      "mental-health",
+      "internal-medicine",
+      "family-medicine",
+      "pediatrics",
+      "neurology",
+      "addiction-medicine"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +69,154 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 57900,
+    "starting_price_display": "$579/year",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Individual Physician",
+        "price": "$579/year"
+      },
+      {
+        "name": "Student/Trainee",
+        "price": "Discounted (proof required)"
+      },
+      {
+        "name": "Group Practice (2-19)",
+        "price": "Volume discounts available"
+      },
+      {
+        "name": "Enterprise (20+)",
+        "price": "Contact sales"
+      }
+    ],
+    "notes": "30-day money-back guarantee for new annual subscriptions. Multi-year discounts available. Free access for clinicians in underserved areas through global health programs.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
     "hipaa_support": "unknown",
     "baa_available": "unknown",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "notes": "Clinical reference tool—does not store patient data. Content peer-reviewed and continuously updated."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cerner",
+      "slug": "cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "EHR Systems",
+      "slug": "ehr-integration",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Integrates with major EHR systems for point-of-care access"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.836Z",
-  "updated_at": "2026-08-22T20:50:40.836Z",
-  "status": "active",
+  "features": {
+    "content": {
+      "topics": "11,000+ topics",
+      "specialties": "25+ specialties",
+      "graphics": "Medical illustrations and images",
+      "calculators": "Medical calculators",
+      "drug_database": "Via Lexidrug"
+    },
+    "ai_features": {
+      "name": "UpToDate Expert AI",
+      "description": "AI-assisted clinical decision support",
+      "included": "Select subscriptions only"
+    },
+    "suite_products": [
+      "UpToDate (clinical content)",
+      "UpToDate Lexidrug (drug info)",
+      "UpToDate Patient Engagement",
+      "UpToDate Digital Architect"
+    ],
+    "cme_credits": true,
+    "offline_access": true
+  },
   "seo": {
-    "title": "UpToDate: Review & Pricing | HeyPsych",
-    "meta_description": "UpToDate review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "UpToDate: Evidence-Based Clinical Decision Support",
+    "meta_description": "UpToDate is the leading clinical decision support tool used by 2M+ clinicians. $579/year. Evidence-based treatment recommendations. AI-assisted support.",
+    "faqs": [
+      {
+        "q": "How much does UpToDate cost?",
+        "a": "UpToDate costs $579/year for individual US physicians. Student and trainee discounts are available with proof of status. Enterprise pricing requires contacting sales."
+      },
+      {
+        "q": "Is UpToDate worth the cost?",
+        "a": "Studies have linked UpToDate use to improved patient outcomes and reduced hospital lengths of stay. Over 2 million clinicians use it globally, making it the industry standard for clinical decision support."
+      },
+      {
+        "q": "Does UpToDate cover psychiatry and mental health?",
+        "a": "Yes, UpToDate includes comprehensive coverage of psychiatry, psychology, and mental health topics including depression, anxiety, bipolar disorder, schizophrenia, and psychopharmacology."
+      },
+      {
+        "q": "Does UpToDate have an AI feature?",
+        "a": "Yes, UpToDate Expert AI provides AI-assisted clinical decision support. It's included in select subscription types and availability varies by region."
+      }
+    ],
     "keywords": [
       "UpToDate",
-      "credentialing workforce"
+      "clinical decision support",
+      "evidence-based medicine",
+      "medical reference",
+      "Wolters Kluwer",
+      "point of care"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "dynamed",
+    "medscape",
+    "epocrates",
+    "lexicomp"
+  ],
+  "competitor_tools": [
+    "dynamed",
+    "medscape",
+    "clinical-key"
+  ],
+  "company_info": {
+    "founded_year": 1992,
+    "headquarters": "Waltham, Massachusetts, USA",
+    "employee_count": "Part of Wolters Kluwer",
+    "funding_status": "Public (Parent: Wolters Kluwer)",
+    "notes": "UpToDate is the world's most widely used clinical decision support resource, used in 190+ countries by 2M+ clinicians."
+  },
+  "created_at": "2026-08-22T20:50:40.836Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

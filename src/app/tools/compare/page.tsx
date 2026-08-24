@@ -26,7 +26,10 @@ import {
   type ToolComparisonContext,
 } from "./comparison-engine";
 import { ComparePageClient } from "./compare-client";
-import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import {
+  ClinicianToolService,
+  isToolPublishable,
+} from "@/lib/tools/clinician-tool-service";
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -80,8 +83,12 @@ async function loadTools(slugs: string[]): Promise<Map<string, ClinicianTool>> {
 
 /**
  * Load curated editorial comparisons from data/tools-v4/comparisons/
+ *
+ * IMPORTANT: Only returns comparisons where ALL tools are publishable.
+ * This prevents displaying comparisons for unpublished tools (e.g., freed-vs-nabla
+ * when Freed and Nabla aren't in the launch allowlist).
  */
-function getCuratedComparisons(): CuratedToolComparison[] {
+async function getCuratedComparisons(): Promise<CuratedToolComparison[]> {
   const comparePath = join(process.cwd(), "data/tools-v4/comparisons");
 
   if (!existsSync(comparePath)) {
@@ -90,7 +97,7 @@ function getCuratedComparisons(): CuratedToolComparison[] {
 
   try {
     const files = readdirSync(comparePath);
-    return files
+    const allComparisons = files
       .filter((f) => f.endsWith(".json"))
       .map((f) => {
         const filePath = join(comparePath, f);
@@ -103,8 +110,25 @@ function getCuratedComparisons(): CuratedToolComparison[] {
           category: content.metadata?.category || "general",
           tools: content.tools || [],
         };
-      })
-      .sort((a, b) => a.name.localeCompare(b.name));
+      });
+
+    // Filter to only include comparisons where all tools are publishable
+    const publishableComparisons: CuratedToolComparison[] = [];
+    for (const comparison of allComparisons) {
+      let allToolsPublishable = true;
+      for (const toolSlug of comparison.tools) {
+        const tool = await ClinicianToolService.getBySlug(toolSlug);
+        if (!tool || !isToolPublishable(tool)) {
+          allToolsPublishable = false;
+          break;
+        }
+      }
+      if (allToolsPublishable && comparison.tools.length >= 2) {
+        publishableComparisons.push(comparison);
+      }
+    }
+
+    return publishableComparisons.sort((a, b) => a.name.localeCompare(b.name));
   } catch (error) {
     console.error("Failed to read tool comparisons", error);
     return [];
@@ -202,7 +226,7 @@ export default async function ToolComparePage({ searchParams }: PageProps) {
   );
 
   // Load curated comparisons and tools manifest for the selector view
-  const curatedComparisons = getCuratedComparisons();
+  const curatedComparisons = await getCuratedComparisons();
   const toolsManifest = await getAllToolsManifest();
 
   // If no items, show the selector/explorer

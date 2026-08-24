@@ -4,6 +4,11 @@
   "id": "3b170324-258a-41cf-9edf-64d74f09308a",
   "slug": "cedar",
   "name": "Cedar",
+  "company_name": "Cedar",
+  "website": "https://www.cedar.com",
+  "one_liner": "AI-powered patient financial engagement platform processing $10B+ in payments with 22% collections lift and 89% patient satisfaction.",
+  "short_description": "Cedar is a patient financial engagement platform for hospitals and health systems that modernizes healthcare payments with digital-first billing, AI-powered personalization, and self-service...",
+  "long_description": "Cedar is a patient self-pay platform that replaces manual revenue cycle workflows with a digital-first billing experience. Founded in 2016 and backed by approximately $425M (peak valuation ~$3.2B), Cedar works with more than 35 provider organizations and has processed over $10 billion in patient payments since 2017. Cedar Pay helps healthcare providers increase revenue with empathetic patient billing, claiming a 22% collections lift and 89% patient satisfaction. The platform streamlines paper-heavy RCM workflows with self-service payment plans, autopay, and plain-language digital statements. In April 2026, Cedar expanded Cedar Intelligence with AI capabilities for personalized outreach timing, channel, tone, and resolution options, plus an AI voice agent for difficult-to-reach patients. Cedar Cover (launched October 2025) screens patients for coverage and routes them through Medicaid enrollment, renewals, and medication assistance. Cedar uses Stripe's Optimized Checkout Suite for payments.",
   "import_ref": {
     "record_id": "MH-0551",
     "source_row": 552,
@@ -14,13 +19,23 @@
     "status": "active"
   },
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "patient-engagement"
+  ],
   "capabilities": [],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "practice-administrator"
+    ],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "multi-specialty",
+      "hospital-medicine"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -29,40 +44,164 @@
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Enterprise pricing not publicly disclosed. Cedar works on negotiated contracts with healthcare organizations. Certain functionalities may require third-party integrations or service-specific fees.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "certifications": [
+      "HIPAA",
+      "SOC 2 Type II",
+      "HITRUST"
+    ],
+    "notes": "Enterprise healthcare security standards with Stripe payment processing"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Uses Stripe Optimized Checkout Suite"
+    },
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Fortuna Health",
+      "slug": "fortuna-health",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Cedar Cover eligibility partnership"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false,
+    "notes": "Patient-facing mobile apps and web portal for digital billing experience"
+  },
+  "features": {
+    "cedar_pay": {
+      "supported": true,
+      "collections_lift": "22%",
+      "patient_satisfaction": "89%",
+      "description": "Digital billing with payment plans, autopay, and plain-language statements"
+    },
+    "cedar_intelligence": {
+      "supported": true,
+      "features": [
+        "Personalized outreach",
+        "AI timing optimization",
+        "Agent copilot",
+        "AI voice agent"
+      ],
+      "description": "AI-powered decision engine for personalized patient engagement"
+    },
+    "cedar_cover": {
+      "supported": true,
+      "launch_date": "October 2025",
+      "description": "Coverage screening, Medicaid enrollment, and medication assistance"
+    }
+  },
+  "clinical_evidence": {
+    "payments_processed": "$10B+ since 2017",
+    "provider_organizations": "35+",
+    "collections_improvement": "22% lift"
+  },
+  "best_for": [
+    "Health systems wanting to modernize patient billing",
+    "Organizations seeking higher patient payment collections",
+    "Hospitals needing digital-first billing experience",
+    "Systems wanting AI-powered patient engagement",
+    "Organizations with high self-pay patient volume"
+  ],
+  "not_for": [
+    "Small private practices",
+    "Practices seeking claims-focused RCM",
+    "Organizations needing clearinghouse services",
+    "Practices with minimal self-pay volume"
+  ],
+  "company_info": {
+    "founded_year": 2016,
+    "headquarters": "New York, NY, USA",
+    "employee_count": "500-1000",
+    "funding_total": "$425M",
+    "funding_status": "Series D",
+    "valuation": "~$3.2B peak",
+    "public_company": false,
+    "notes": "Leading patient financial engagement platform processing $10B+ in payments"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-08-23"
   },
-  "related_tools": [],
+  "related_tools": [
+    "waystar-eligibility",
+    "patientpay",
+    "collectly"
+  ],
+  "competitor_tools": [
+    "patientpay",
+    "collectly",
+    "inbox-health"
+  ],
   "created_at": "2026-08-22T20:50:40.820Z",
-  "updated_at": "2026-08-22T20:50:40.820Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
   "status": "active",
   "seo": {
-    "title": "Cedar: Review & Pricing | HeyPsych",
-    "meta_description": "Cedar review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Cedar: AI Patient Financial Engagement | HeyPsych",
+    "meta_description": "Cedar review - AI patient payment platform. $10B+ processed. 22% collections lift. 89% satisfaction. Digital billing, payment plans. Enterprise healthcare.",
+    "faqs": [
+      {
+        "q": "What is Cedar?",
+        "a": "Cedar is a patient financial engagement platform that modernizes healthcare payments for hospitals and health systems. It provides digital billing, self-service payment plans, and AI-powered personalization to increase collections while improving patient satisfaction."
+      },
+      {
+        "q": "How does Cedar differ from Waystar?",
+        "a": "Cedar focuses on post-visit patient experience - clarifying bills, collecting payments, and connecting patients to coverage. Waystar focuses on claims, clearinghouse, and broad revenue cycle automation. Many health systems use both."
+      },
+      {
+        "q": "What is Cedar Intelligence?",
+        "a": "Cedar Intelligence is Cedar's AI-powered decision engine that personalizes patient outreach timing, channel, tone, and resolution options. It includes an agent copilot for support teams and an AI voice agent for engaging difficult-to-reach patients."
+      },
+      {
+        "q": "What results does Cedar achieve?",
+        "a": "Cedar reports a 22% collections lift and 89% patient satisfaction. The platform has processed over $10 billion in patient payments since 2017 across 35+ provider organizations."
+      }
+    ],
     "keywords": [
       "Cedar",
-      "billing rcm insurance"
+      "patient payments",
+      "patient financial engagement",
+      "healthcare billing",
+      "digital patient billing",
+      "self-pay collections",
+      "Cedar Pay",
+      "Cedar Intelligence"
     ]
   }
 }

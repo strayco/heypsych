@@ -4,7 +4,22 @@
   "id": "46a01d10-ca29-4303-b131-c2a1972f0f95",
   "slug": "alma-provider-platform",
   "name": "Alma Provider Platform",
-  "company_name": "Alma",
+  "company_name": "Alma (Spring Health)",
+  "one_liner": "All-in-one platform for therapists: insurance credentialing, AI notes, EHR, scheduling, and directory for $125/month (acquired by Spring Health).",
+  "short_description": "Alma is a membership-based platform for independent therapists bundling insurance credentialing, billing, AI session notes, EHR, scheduling, and a client-facing directory.",
+  "long_description": "Alma is an all-in-one platform for independent mental health providers that combines insurance credentialing, in-network billing, AI-powered session notes (Note Assist), EHR, scheduling, and a therapist directory—all for $125/month ($95/month billed annually). Alma helps therapists get credentialed with major insurers like Aetna, Cigna, UnitedHealthcare, Oscar, and Oxford, often negotiating $10-30 higher per-session reimbursement rates than solo credentialing. The platform handles all insurance billing and pays therapists weekly (vs. Headway's bi-weekly). In January 2026, Spring Health acquired Alma, creating one of the largest mental health platforms in the US. Alma also provides robust peer consultation groups, continuing education, and access to clinical advisors including Esther Perel, Lori Gottlieb, and Guy Winch. The $500 provider referral bonus incentivizes network growth.",
+  "best_for": [
+    "Independent therapists wanting premium reimbursement rates",
+    "Providers seeking an all-in-one platform (credentialing + EHR + AI notes)",
+    "Clinicians valuing community features (peer consultation, CE)",
+    "Therapists who can see 20+ sessions/week (ROI on membership)"
+  ],
+  "not_for": [
+    "Budget-conscious providers (Headway is free)",
+    "Clinicians with very low session volume",
+    "Those only needing credentialing without EHR",
+    "Psychiatrists needing e-prescribing"
+  ],
   "import_ref": {
     "record_id": "MH-0449",
     "source_row": 450,
@@ -12,62 +27,214 @@
     "source_file": "master-records.json"
   },
   "lifecycle": {
-    "status": "active"
+    "status": "active",
+    "notes": "Acquired by Spring Health in January 2026"
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "counseling",
+      "depression",
+      "anxiety",
+      "trauma",
+      "couples-therapy",
+      "family-therapy"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
+    "has_ehr": true,
+    "has_rcm": true,
     "has_telehealth": false,
-    "has_measurement": false,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 9500,
+    "starting_price_display": "$95/month (annual)",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$125/month"
+      },
+      {
+        "name": "Annual",
+        "price": "$95/month ($1,140/year)"
+      }
+    ],
+    "notes": "No free trial. Alma often negotiates $10-30 higher per-session reimbursement than solo credentialing. At 20 sessions/week, even a $10 rate improvement generates $800/month in additional revenue—more than covering membership. $500 referral bonus for each provider referred.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant platform with secure EHR and billing."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oscar",
+      "slug": "oscar",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oxford",
+      "slug": "oxford",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Spring Health",
+      "slug": "spring-health",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Acquired by Spring Health in January 2026"
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.811Z",
-  "updated_at": "2026-08-22T20:50:40.811Z",
-  "status": "active",
-  "seo": {
-    "title": "Alma Provider Platform: Review & Pricing | HeyPsych",
-    "meta_description": "Alma Provider Platform review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
-    "keywords": [
-      "Alma Provider Platform",
-      "provider network virtual care"
+  "features": {
+    "ai_notes": {
+      "name": "Note Assist",
+      "description": "AI-powered session note generation"
+    },
+    "client_cost_estimator": true,
+    "assessment_tools": true,
+    "treatment_plans": true,
+    "case_notes": true,
+    "payment_schedule": "Weekly (vs. Headway bi-weekly)",
+    "reimbursement_rates": "1-5% higher than Headway on average",
+    "referral_bonus": "$500 per successful provider referral",
+    "clinical_advisors": [
+      "Esther Perel",
+      "Lori Gottlieb",
+      "Guy Winch"
+    ],
+    "community_features": [
+      "Peer consultation groups",
+      "Case conferencing",
+      "Community events",
+      "Continuing education"
     ]
-  }
+  },
+  "seo": {
+    "title": "Alma Provider Platform",
+    "meta_description": "Alma is an all-in-one platform for therapists: insurance credentialing, AI session notes, EHR, scheduling, directory. $95-125/month. Acquired by Spring...",
+    "faqs": [
+      {
+        "q": "How much does Alma cost for therapists?",
+        "a": "Alma costs $125/month or $95/month with annual billing ($1,140/year). There is no free trial or free tier, unlike competitors like Headway."
+      },
+      {
+        "q": "Is Alma worth the cost vs Headway?",
+        "a": "Alma often negotiates $10-30 higher reimbursement rates per session than solo credentialing. At 20 sessions/week, even a $10 increase generates $800/month extra revenue—more than covering the membership. Alma also includes AI notes, EHR, and weekly payments (vs. Headway bi-weekly)."
+      },
+      {
+        "q": "What is Alma's relationship with Spring Health?",
+        "a": "Spring Health acquired Alma in January 2026, creating one of the largest mental health platforms in the US. Alma continues to operate under its own brand."
+      },
+      {
+        "q": "What features does Alma include?",
+        "a": "Alma includes insurance credentialing, in-network billing, AI-powered Note Assist for session notes, EHR with assessments and treatment plans, scheduling, client matching through a provider directory, peer consultation groups, and continuing education."
+      }
+    ],
+    "keywords": [
+      "Alma",
+      "therapist platform",
+      "insurance credentialing",
+      "AI session notes",
+      "Spring Health",
+      "mental health billing"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "headway",
+    "sondermind-provider-network",
+    "grow-therapy",
+    "rula"
+  ],
+  "competitor_tools": [
+    "headway",
+    "sondermind-provider-network",
+    "grow-therapy",
+    "tava-health"
+  ],
+  "company_info": {
+    "founded_year": 2018,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "200+",
+    "funding_status": "Acquired",
+    "parent_company": "Spring Health",
+    "acquisition": "Acquired by Spring Health in January 2026",
+    "notes": "Alma provides insurance credentialing, billing, EHR, and community features for independent therapists."
+  },
+  "created_at": "2026-08-22T20:50:40.811Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

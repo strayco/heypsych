@@ -15,17 +15,44 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "note-generation",
+    "ambient-listening",
+    "voice-transcription",
+    "clinical-summarization",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "counseling",
+      "physical-therapy",
+      "occupational-therapy",
+      "speech-therapy"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -36,38 +63,121 @@
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": false,
-    "is_mental_health_specific": true,
+    "is_mental_health_specific": false,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI assistant for therapists across five disciplines that records sessions and drafts clinical notes within Ensora's TheraNest and Fusion EHR platforms.",
+  "long_description": "Ensai is Ensora Health's AI assistant available to over 200,000 providers across five therapy disciplines: mental health, behavioral health, speech-language pathology, physical therapy, and occupational therapy. Launched in July 2026, Ensai includes Session Assistant for recording sessions and drafting visit notes, AI Case Summaries for compiling client documentation history, and free chat support. The AI lives natively inside TheraNest and Fusion EHRs with nothing to install or bolt on. Session recordings are deleted within 24 hours, and client data never trains the AI. Ensora's research found 81% of counselors report burnout and want tools that ease workload while protecting the therapeutic relationship.",
+  "one_liner": "AI session assistant for TheraNest and Fusion users that drafts notes from recorded sessions.",
+  "best_for": [
+    "TheraNest or Fusion EHR users wanting integrated AI documentation",
+    "Mental health therapists seeking to reduce documentation time",
+    "Multi-discipline practices (PT, OT, speech therapy) using Ensora platforms",
+    "Clinicians who want AI assistance without additional software to install"
+  ],
+  "not_for": [
+    "Practices not using TheraNest or Fusion EHR platforms",
+    "Organizations requiring standalone AI scribe functionality",
+    "Large enterprise behavioral health systems",
+    "Clinicians preferring EHR-agnostic AI tools"
+  ],
+  "website_url": "https://ensorahealth.com/ensai/",
+  "pricing_url": "https://ensorahealth.com/products/",
+  "support_url": "https://ensorahealth.com/",
+  "logo_url": "https://ensorahealth.com/logo.png",
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (basic features)",
+    "free_tier": true,
+    "quote_required": false,
+    "price_range": "budget",
+    "notes": "Ensai Support and Ensai Notes Enhancement are free for all TheraNest and Fusion customers. Ensai Session Assistant is a paid add-on. See TheraNest or Fusion pricing pages for specific costs.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://ensorahealth.com/ensai/"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://ensorahealth.com/ensai/"
+    },
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with data encrypted in transit and at rest. Ensora processes Ensai under a BAA. Client data never trains the AI. Session recordings auto-delete within 24 hours after note finalization."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
+  "integrations": [
+    {
+      "name": "TheraNest",
+      "slug": "theranest",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Ensai is built directly into TheraNest EHR"
+    },
+    {
+      "name": "Fusion",
+      "slug": "fusion",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Ensai is built directly into Fusion EHR"
+    }
+  ],
   "seo": {
-    "title": "Ensai: Review & Pricing | HeyPsych",
-    "meta_description": "Ensai review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Ensai by Ensora Health: AI Session Assistant for Therapists",
+    "meta_description": "Ensai review for mental health professionals. AI session assistant that records and drafts clinical notes within TheraNest and Fusion EHR platforms.",
+    "faqs": [
+      {
+        "q": "What is Ensai by Ensora Health?",
+        "a": "Ensai is an AI assistant for therapists that records sessions with consent and drafts clinical notes for review. It includes AI Case Summaries to compile client history and is built directly into TheraNest and Fusion EHR platforms."
+      },
+      {
+        "q": "Is Ensai HIPAA compliant?",
+        "a": "Yes, Ensai is HIPAA compliant with data encrypted in transit and at rest. Ensora processes Ensai under a BAA, client data never trains the AI, and session recordings are auto-deleted within 24 hours."
+      },
+      {
+        "q": "How much does Ensai cost?",
+        "a": "Ensai Support and Ensai Notes Enhancement are free for all TheraNest and Fusion customers. Ensai Session Assistant, which records and transcribes sessions, is a paid add-on."
+      },
+      {
+        "q": "What therapy disciplines does Ensai support?",
+        "a": "Ensai serves five therapy disciplines: mental health, behavioral health, speech-language pathology, physical therapy, and occupational therapy. It is available to over 200,000 providers using Ensora's platforms."
+      }
+    ],
     "keywords": [
       "Ensai",
-      "ai copilot clinical"
+      "Ensora Health",
+      "TheraNest AI",
+      "Fusion AI",
+      "therapy session assistant",
+      "mental health AI scribe"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "theranest",
+    "emma",
+    "qualifacts-iq"
+  ],
+  "competitor_tools": [
+    "emma",
+    "freed-ai"
+  ],
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

@@ -1,0 +1,241 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "slug": "tableau-healthcare",
+  "name": "Tableau for Healthcare",
+  "company_name": "Salesforce (Tableau)",
+  "website": "https://www.tableau.com/solutions/healthcare-analytics",
+  "one_liner": "Enterprise visual analytics platform with healthcare-specific dashboards for clinical, operational, and financial insights.",
+  "short_description": "Tableau is a leading visual analytics platform that enables healthcare organizations to create interactive dashboards and reports from clinical, operational, and financial data sources.",
+  "long_description": "Tableau for Healthcare is an enterprise visual analytics platform from Salesforce designed to transform complex healthcare data into actionable insights. The platform connects to EHR systems, practice management software, billing systems, and external data sources to create unified dashboards. Healthcare organizations use Tableau to track patient outcomes, monitor operational KPIs, analyze revenue cycle performance, and identify trends across populations. Key features include drag-and-drop dashboard creation, natural language queries (Ask Data), real-time data connections, and mobile-optimized visualizations. For mental health practices, Tableau can visualize session volumes, no-show rates, payer mix analysis, provider productivity, treatment outcomes, and revenue trends. The platform integrates with Epic, Cerner, AdvancedMD, and most practice management systems via direct connectors or data exports. Tableau offers healthcare-specific accelerators with pre-built dashboards for common use cases. Pricing starts at $75/user/month for Tableau Viewer with Creator licenses at $75/month.",
+  "import_ref": {
+    "record_id": "MH-2001",
+    "source_row": 2001,
+    "import_timestamp": "2026-08-24T00:00:00.000Z",
+    "source_file": "operate-tools.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "analytics-reporting",
+  "secondary_categories": [],
+  "capabilities": [
+    "reporting-dashboards",
+    "data-visualization",
+    "business-intelligence",
+    "ehr-integration",
+    "financial-analytics"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "practice-administrator",
+      "medical-director",
+      "billing-specialist"
+    ],
+    "practice_settings": [
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "multi-specialty",
+      "healthcare-general"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 7500,
+    "starting_price_display": "$75/user/month",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Tableau Viewer",
+        "price": "$15/user/month",
+        "features": ["View and interact with dashboards", "Mobile access", "Download data"]
+      },
+      {
+        "name": "Tableau Explorer",
+        "price": "$42/user/month",
+        "features": ["Edit existing dashboards", "Create from data sources", "Web authoring"]
+      },
+      {
+        "name": "Tableau Creator",
+        "price": "$75/user/month",
+        "features": ["Full authoring", "Data prep", "Tableau Desktop", "All Explorer features"]
+      },
+      {
+        "name": "Tableau Enterprise",
+        "price": "Custom",
+        "features": ["Unlimited users", "Advanced governance", "Dedicated support", "Healthcare accelerators"]
+      }
+    ],
+    "notes": "Healthcare-specific pricing may vary. Volume discounts available for enterprise deployments. Tableau Online (cloud) and Tableau Server (on-premise) options available.",
+    "last_verified": "2026-08-24"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "certifications": ["HIPAA", "SOC 2 Type II", "HITRUST", "GDPR", "ISO 27001"],
+    "notes": "Enterprise-grade security with row-level security, data encryption, and comprehensive audit logging."
+  },
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cerner (Oracle Health)",
+      "slug": "cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "AdvancedMD",
+      "slug": "advancedmd",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Salesforce Health Cloud",
+      "slug": "salesforce-health-cloud",
+      "category": "crm",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "QuickBooks",
+      "slug": "quickbooks",
+      "category": "accounting",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false,
+    "notes": "Available on Tableau Cloud (SaaS), Tableau Server (self-hosted), or Tableau Desktop."
+  },
+  "features": {
+    "healthcare_analytics": {
+      "supported": true,
+      "description": "Pre-built healthcare accelerators with dashboards for clinical, operational, and financial analytics"
+    },
+    "ask_data": {
+      "supported": true,
+      "description": "Natural language queries to explore data without technical knowledge"
+    },
+    "einstein_ai": {
+      "supported": true,
+      "description": "AI-powered insights and predictive analytics via Salesforce Einstein"
+    },
+    "data_connectors": {
+      "supported": true,
+      "connectors": "100+",
+      "description": "Connect to virtually any data source including EHRs, databases, and cloud services"
+    }
+  },
+  "best_for": [
+    "Large behavioral health organizations needing enterprise BI",
+    "Multi-site practices requiring unified analytics",
+    "Organizations with complex reporting requirements",
+    "Health systems tracking population health metrics",
+    "Practices wanting sophisticated financial analytics"
+  ],
+  "not_for": [
+    "Solo practitioners (too complex and expensive)",
+    "Small practices with simple reporting needs",
+    "Organizations without dedicated analytics staff",
+    "Practices seeking mental-health-specific metrics out of box"
+  ],
+  "company_info": {
+    "founded_year": 2003,
+    "headquarters": "Seattle, WA, USA",
+    "employee_count": "5000+",
+    "funding_status": "Public (via Salesforce)",
+    "public_company": true,
+    "parent_company": "Salesforce",
+    "notes": "Tableau was acquired by Salesforce in 2019 for $15.7B. Leading enterprise BI platform with deep healthcare vertical focus."
+  },
+  "governance": {
+    "last_reviewed": "2026-08-24",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "power-bi-healthcare",
+    "looker",
+    "sisense"
+  ],
+  "competitor_tools": [
+    "power-bi-healthcare",
+    "looker",
+    "qlik"
+  ],
+  "created_at": "2026-08-24T00:00:00.000Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
+  "featured": false,
+  "status": "active",
+  "seo": {
+    "title": "Tableau for Healthcare: Enterprise Analytics for Mental Health Practices",
+    "meta_description": "Tableau healthcare analytics review. Visual BI for behavioral health organizations. HIPAA compliant, EHR integration. From $15/user/month. Enterprise dashboards.",
+    "faqs": [
+      {
+        "q": "Is Tableau HIPAA compliant?",
+        "a": "Yes, Tableau offers HIPAA-compliant deployment options with BAA available. The platform includes row-level security, data encryption, and comprehensive audit logging for healthcare use."
+      },
+      {
+        "q": "How much does Tableau cost for healthcare organizations?",
+        "a": "Tableau pricing starts at $15/user/month for Viewers, $42/month for Explorers, and $75/month for Creators. Enterprise healthcare deployments typically involve custom pricing with volume discounts."
+      },
+      {
+        "q": "Can Tableau connect to my EHR?",
+        "a": "Yes, Tableau connects to major EHRs including Epic, Cerner, AdvancedMD, and most practice management systems. Connections can be made via native connectors, APIs, or data exports."
+      },
+      {
+        "q": "Is Tableau good for mental health practices?",
+        "a": "Tableau is best suited for larger behavioral health organizations (50+ providers) with complex analytics needs and dedicated staff. Smaller practices may find simpler, mental-health-specific tools more appropriate."
+      }
+    ],
+    "keywords": [
+      "Tableau healthcare",
+      "behavioral health analytics",
+      "mental health BI",
+      "practice analytics dashboard",
+      "healthcare reporting",
+      "clinical analytics platform"
+    ]
+  }
+}

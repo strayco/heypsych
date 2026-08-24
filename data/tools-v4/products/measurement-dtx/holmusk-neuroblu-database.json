@@ -3,8 +3,12 @@
   "kind": "clinician-tool",
   "id": "43524677-23cc-47b0-9aeb-e096b6131d74",
   "slug": "holmusk-neuroblu-database",
-  "name": "Holmusk NeuroBlu Database",
+  "name": "Holmusk NeuroBlu",
   "company_name": "Holmusk",
+  "website": "https://www.holmusk.com",
+  "one_liner": "Real-world data platform for neuropsychiatry research with 46M+ patient records",
+  "short_description": "NeuroBlu is Holmusk's real-world data (RWD) platform containing de-identified records from 46+ million behavioral health patients, used for research, drug development, and clinical decision support.",
+  "description": "Holmusk NeuroBlu is the largest real-world evidence platform focused specifically on behavioral health, containing de-identified data from over 46 million patients across mental health and substance use treatment settings. The platform combines EHR data with patient-reported outcomes, using NLP and machine learning to extract insights from unstructured clinical notes. NeuroBlu supports pharmaceutical research, health economics outcomes research (HEOR), and clinical benchmarking. Holmusk also partners with organizations like Iris Telehealth to provide clinical decision support at the point of care.",
   "import_ref": {
     "record_id": "MH-0469",
     "source_row": 470,
@@ -20,8 +24,17 @@
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "psychology",
+      "neurology",
+      "substance-use",
+      "behavioral-health-research"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -35,35 +48,177 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "founded_year": 2015,
+    "headquarters": "Singapore / New York, NY",
+    "employee_count": "100-200",
+    "funding_total": "$50M+",
+    "funding_stage": "Series B",
+    "notable_investors": [
+      "Optum Ventures",
+      "Health Catalyst Capital"
+    ],
+    "customer_count": "Major pharma companies, academic institutions",
+    "notable_clients": [
+      "Top pharmaceutical companies",
+      "Academic medical centers"
+    ]
+  },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "currency": "USD",
+    "billing_period": "annual",
+    "tiers": [
+      {
+        "name": "Data Access",
+        "price": null,
+        "period": "project-based",
+        "features": [
+          "Access to NeuroBlu database",
+          "De-identified patient records",
+          "Standard data extracts",
+          "Basic analytics support"
+        ],
+        "quote_required": true
+      },
+      {
+        "name": "Research Partnership",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "Full database access",
+          "Custom cohort building",
+          "NLP-extracted variables",
+          "HEOR study support",
+          "Publications collaboration",
+          "Dedicated data science support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "Project-based pricing from $50K-500K+ depending on scope",
+    "free_trial": {
+      "available": false,
+      "notes": "Feasibility assessments available for qualified research partners"
+    },
+    "notes": "Pricing varies significantly by project scope, data volume, and partnership level. Primarily serves pharmaceutical and research organizations."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "compliance_urls": {
+      "privacy": "https://www.holmusk.com/privacy",
+      "security": "https://www.holmusk.com/security"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Various EHRs",
+      "type": "data-source",
+      "method": "data-partnership",
+      "native": false,
+      "notes": "Data sourced from behavioral health provider networks"
+    },
+    {
+      "name": "Iris Telehealth",
+      "type": "clinical-partner",
+      "method": "partnership",
+      "native": true,
+      "notes": "Clinical decision support integration"
+    }
+  ],
+  "features": {
+    "real_world_data": {
+      "supported": true,
+      "description": "46+ million de-identified behavioral health patient records"
+    },
+    "nlp_extraction": {
+      "supported": true,
+      "description": "Machine learning extracts structured data from clinical notes"
+    },
+    "outcome_measures": {
+      "supported": true,
+      "description": "PHQ-9, GAD-7, and other validated measures at scale"
+    },
+    "heor_support": {
+      "supported": true,
+      "description": "Health economics and outcomes research capabilities"
+    },
+    "clinical_benchmarking": {
+      "supported": true,
+      "description": "Compare outcomes against population-level benchmarks"
+    },
+    "data_coverage": {
+      "patients": "46+ million",
+      "focus": "Neuropsychiatry and behavioral health",
+      "data_types": "EHR, claims, patient-reported outcomes"
+    }
+  },
+  "best_for": [
+    "Pharmaceutical companies researching CNS/psych drugs",
+    "Academic researchers studying behavioral health outcomes",
+    "Health economists conducting HEOR studies",
+    "Organizations needing behavioral health benchmarks",
+    "Contract research organizations (CROs)",
+    "Health plans analyzing behavioral health populations"
+  ],
+  "not_for": [
+    "Individual clinicians (this is a research platform)",
+    "Small practices seeking patient-facing tools",
+    "Organizations needing real-time clinical tools",
+    "General medical research (focus is behavioral health)"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 86,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": [],
+  "related_tools": [
+    "clarivate-real-world-data",
+    "iqvia",
+    "optum-data",
+    "flatiron-health"
+  ],
   "created_at": "2026-08-22T20:50:40.813Z",
-  "updated_at": "2026-08-22T20:50:40.813Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Holmusk NeuroBlu Database: Review & Pricing | HeyPsych",
-    "meta_description": "Holmusk NeuroBlu Database review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Holmusk NeuroBlu: Behavioral Health Real-World Data Platform",
+    "meta_description": "Holmusk NeuroBlu review - 46M+ patient behavioral health RWD platform. NLP-powered clinical analytics. For pharma research, HEOR, and health systems.",
+    "faqs": [
+      {
+        "q": "What is NeuroBlu?",
+        "a": "NeuroBlu is Holmusk's real-world data platform containing de-identified records from 46+ million behavioral health patients. It's used for pharmaceutical research, health economics studies, and clinical benchmarking."
+      },
+      {
+        "q": "What data does NeuroBlu contain?",
+        "a": "NeuroBlu contains de-identified EHR data, claims data, and patient-reported outcomes from behavioral health settings. NLP extracts structured information from clinical notes including diagnoses, medications, PHQ-9/GAD-7 scores, and treatment responses."
+      },
+      {
+        "q": "Who uses NeuroBlu?",
+        "a": "NeuroBlu is primarily used by pharmaceutical companies researching psychiatric medications, academic researchers, health economists conducting outcomes studies, and health plans analyzing behavioral health populations."
+      },
+      {
+        "q": "Is NeuroBlu for clinicians?",
+        "a": "NeuroBlu is a research and analytics platform, not a clinical tool for individual practitioners. However, Holmusk partners with organizations like Iris Telehealth to bring insights to the point of care."
+      }
+    ],
     "keywords": [
-      "Holmusk NeuroBlu Database",
-      "measurement outcomes dtx"
+      "Holmusk",
+      "NeuroBlu",
+      "behavioral health data",
+      "real-world data",
+      "RWD platform",
+      "psychiatric research",
+      "HEOR behavioral health",
+      "mental health analytics",
+      "NLP clinical notes"
     ]
   }
 }

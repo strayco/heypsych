@@ -4,6 +4,7 @@
   "id": "49f0efd7-c427-4c69-bc01-33106b37495d",
   "slug": "brellium",
   "name": "Brellium",
+  "company_name": "Brellium",
   "import_ref": {
     "record_id": "MH-0179",
     "source_row": 180,
@@ -14,59 +15,149 @@
     "status": "active"
   },
   "primary_category": "compliance-consent-security",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "analytics-reporting",
+    "billing-rcm-insurance"
+  ],
+  "capabilities": [
+    "audit-logging",
+    "coding-assistance",
+    "reporting-dashboards",
+    "hipaa-compliant",
+    "baa-available",
+    "ehr-integration",
+    "sso-authentication"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": false,
-    "is_mental_health_specific": true,
+    "is_mental_health_specific": false,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI-powered clinical compliance platform that audits 100% of patient charts against payer, regulatory, and quality standards with reimbursement guarantee.",
+  "long_description": "Brellium is an AI-powered clinical compliance platform founded in 2021 that automatically audits 100% of patient charts against payer documentation requirements, regulatory standards, and clinical quality benchmarks. Unlike traditional sampling approaches, Brellium reviews every chart in real-time before claims submission, identifying documentation errors and delivering corrective instructions to providers. The platform offers a reimbursement guarantee if a payer initiates clawbacks on approved charts. Serving 250,000+ providers across all 50 states with 100+ payors supported, Brellium customers including Rula, Headspace, Grow Therapy, Talkiatry, and Lightfully Behavioral Health achieve 99.2% provider compliance with documentation standards. The platform is SOC 2 Type II certified, HIPAA compliant with BAA available, and integrates with existing EHRs via SSO/SAML through Okta and Auth0.",
+  "one_liner": "AI chart auditing platform that reviews 100% of documentation for compliance before billing.",
+  "best_for": [
+    "Large behavioral health organizations needing comprehensive chart auditing",
+    "Telehealth platforms managing documentation across many providers",
+    "Practices concerned about payer audits and clawback risk",
+    "Organizations seeking to improve documentation quality at scale"
+  ],
+  "not_for": [
+    "Solo practitioners or small practices under 10 providers",
+    "Organizations not processing significant claims volume",
+    "Practices without existing EHR infrastructure",
+    "Budget-constrained organizations seeking basic compliance tools"
+  ],
+  "website_url": "https://www.brellium.com/",
+  "pricing_url": "https://www.brellium.com/",
+  "support_url": "https://www.brellium.com/",
+  "logo_url": "https://www.brellium.com/logo.png",
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "Enterprise pricing based on organization size and volume. Request demo for pricing. Includes reimbursement guarantee against payer clawbacks on approved charts.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.brellium.com/"
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.brellium.com/"
+    },
+    "soc2": "yes",
+    "soc2_type": "type2",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "SOC 2 Type II certified. HIPAA compliant with signed BAA. SSO/SAML via Okta and Auth0. 4.8/5 star rating from 50 reviews."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
   "seo": {
-    "title": "Brellium: Review & Pricing | HeyPsych",
-    "meta_description": "Brellium review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Brellium: AI Clinical Compliance & Chart Auditing | HeyPsych",
+    "meta_description": "Brellium review. AI-powered compliance platform auditing 100% of charts against payer and regulatory standards. SOC 2 Type II certified with reimbursement...",
+    "faqs": [
+      {
+        "q": "What is Brellium?",
+        "a": "Brellium is an AI-powered clinical compliance platform that automatically audits 100% of patient charts against payer documentation requirements, regulatory standards, and clinical quality benchmarks before claims submission."
+      },
+      {
+        "q": "Is Brellium HIPAA compliant?",
+        "a": "Yes, Brellium is HIPAA compliant with BAA available and SOC 2 Type II certified. The platform supports SSO/SAML authentication through Okta and Auth0."
+      },
+      {
+        "q": "Who uses Brellium?",
+        "a": "Brellium serves 250,000+ providers across all 50 states. Customers include Rula, Headspace, Grow Therapy, Talkiatry, Hopebridge, and Lightfully Behavioral Health, achieving 99.2% provider compliance."
+      },
+      {
+        "q": "Does Brellium offer a reimbursement guarantee?",
+        "a": "Yes, Brellium offers a reimbursement guarantee if a payer initiates clawbacks on charts that Brellium approved before claims submission."
+      }
+    ],
     "keywords": [
       "Brellium",
-      "compliance consent security"
+      "AI chart auditing",
+      "clinical compliance",
+      "documentation QA",
+      "behavioral health compliance",
+      "payer audit protection"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92
+  },
+  "related_tools": [],
+  "competitor_tools": [],
+  "company_info": {
+    "founded_year": 2021,
+    "headquarters": "New York, NY, USA",
+    "address": "475 Park Avenue South, Floor 3, New York, NY 10016",
+    "customer_count": "250,000+ providers"
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

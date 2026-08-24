@@ -8,7 +8,6 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import {
   ArrowRight,
-  Search,
   ArrowLeft,
   Laptop,
   Mic,
@@ -29,7 +28,6 @@ import {
   Filter,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
-import { ToolsHeroSearch } from "../../_components/ToolsHeroSearch";
 import { TrustSignal } from "../../_components/TrustSignal";
 import { VendorCTA } from "../../_components/VendorCTA";
 import { HubFAQ } from "@/components/tools/hubs";
@@ -243,13 +241,6 @@ export default async function CategoryHubPage({
             <p className="mt-4 max-w-3xl text-label-secondary">
               {category.intro}
             </p>
-
-            {/* Search */}
-            <div className="mt-6 max-w-xl">
-              <Suspense fallback={<SearchFallback />}>
-                <ToolsHeroSearch />
-              </Suspense>
-            </div>
           </div>
         </section>
 
@@ -303,7 +294,7 @@ export default async function CategoryHubPage({
                   </div>
                 </div>
                 <Link
-                  href={`/tools/compare/?category=${categorySlug}`}
+                  href={`/tools/compare/?tools=${comparisonCandidates.map(t => t.slug).join(",")}`}
                   className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-white transition-all hover:bg-treatment-600"
                 >
                   Compare tools
@@ -326,6 +317,7 @@ export default async function CategoryHubPage({
                   <Link
                     key={sub.slug}
                     href={`/tools/for-clinicians/${categorySlug}/?subcategory=${sub.slug}`}
+                    scroll={false}
                     className="rounded-lg border border-separator bg-canvas px-4 py-2 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:text-treatment"
                   >
                     {sub.display_name}
@@ -432,6 +424,46 @@ export default async function CategoryHubPage({
   );
 }
 
+// Subcategory to filter mapping
+const SUBCATEGORY_FILTERS: Record<string, (tool: ClinicianToolV4) => boolean> = {
+  // EHR subcategories → organization_sizes
+  "ehr-solo-practice": (t) =>
+    t.audiences?.organization_sizes?.includes("solo") ?? false,
+  "ehr-group-practice": (t) =>
+    (t.audiences?.organization_sizes?.includes("small-2-10") ||
+     t.audiences?.organization_sizes?.includes("medium-11-50")) ?? false,
+  "ehr-enterprise": (t) =>
+    (t.audiences?.organization_sizes?.includes("large-51-200") ||
+     t.audiences?.organization_sizes?.includes("enterprise-200-plus")) ?? false,
+  // Note: "practice-management-only" has no reliable filter - falls through to show all tools
+
+  // AI Scribe subcategories → capabilities/feature_flags
+  "ambient-scribes": (t) =>
+    t.capabilities?.includes("ambient-listening") ?? false,
+  "dictation-transcription": (t) =>
+    t.capabilities?.includes("voice-transcription") ?? false,
+  "note-assistants": (t) =>
+    t.capabilities?.includes("note-generation") ?? false,
+
+  // Telehealth subcategories
+  "video-platforms": (t) =>
+    t.feature_flags?.has_telehealth ?? false,
+  "secure-messaging": (t) =>
+    t.capabilities?.includes("secure-messaging") ?? false,
+
+  // Provider networks subcategories → use RCM flag as proxy
+  "insurance-enablers": (t) =>
+    t.feature_flags?.has_rcm ?? false,
+
+  // Measurement/DTx subcategories
+  "mbc-platforms": (t) =>
+    t.feature_flags?.has_measurement ?? false,
+
+  // Prescribing subcategories
+  "eprescribing-platforms": (t) =>
+    t.feature_flags?.has_e_prescribing ?? false,
+};
+
 // Apply filters from search params
 function applyFilters(
   tools: ClinicianToolV4[],
@@ -442,9 +474,7 @@ function applyFilters(
   const priceRange = searchParams.priceRange as string | undefined;
   const practiceSize = searchParams.practiceSize as string | undefined;
   const features = (searchParams.features as string)?.split(",").filter(Boolean) || [];
-  // subcategory filter reserved for future implementation
-  const _subcategory = searchParams.subcategory as string | undefined;
-  void _subcategory;
+  const subcategory = searchParams.subcategory as string | undefined;
 
   if (priceRange) {
     filtered = filtered.filter((t) => t.pricing?.price_range === priceRange);
@@ -484,7 +514,10 @@ function applyFilters(
     filtered = filtered.filter((t) => t.feature_flags.has_e_prescribing);
   }
 
-  // Subcategory filter would need secondary_categories support
+  // Apply subcategory filter if defined
+  if (subcategory && SUBCATEGORY_FILTERS[subcategory]) {
+    filtered = filtered.filter(SUBCATEGORY_FILTERS[subcategory]);
+  }
 
   return filtered;
 }
@@ -536,15 +569,6 @@ function getRelatedCategories(currentSlug: string) {
       intro: cat?.intro,
     };
   });
-}
-
-function SearchFallback() {
-  return (
-    <div className="flex h-12 items-center justify-center rounded-xl border border-separator bg-surface px-4">
-      <Search className="h-5 w-5 text-label-tertiary" />
-      <span className="ml-3 text-label-tertiary">Search tools...</span>
-    </div>
-  );
 }
 
 // Generate structured data for category page

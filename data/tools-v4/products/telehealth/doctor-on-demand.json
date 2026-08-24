@@ -5,6 +5,21 @@
   "slug": "doctor-on-demand",
   "name": "Doctor On Demand",
   "company_name": "Included Health",
+  "one_liner": "Major telehealth platform (part of Included Health) with 24/7 access to psychiatry, therapy, and primary care for 98M+ Americans.",
+  "short_description": "Doctor On Demand by Included Health is a comprehensive telehealth platform offering 24/7 video visits with psychiatrists, therapists, and primary care doctors.",
+  "long_description": "Doctor On Demand is a leading telehealth platform that merged with Grand Rounds in 2021 to form Included Health. The platform provides 24/7 video visits for urgent care, primary care, therapy, and psychiatry to over 98 million Americans through employer and insurance benefits. Psychiatrists average 15+ years of experience and provide evaluations, medication management, and treatment for anxiety, depression, and other mental health conditions. The platform maintains a 4.9/5 app store rating and offers same-week psychiatric appointments. Doctor On Demand accepts most major insurance plans including BCBS, UHC, Humana Military, Premera, and Medicare Part B. Self-pay options are available for those without coverage.",
+  "best_for": [
+    "Employees with Doctor On Demand as a covered benefit",
+    "Patients seeking comprehensive telehealth (urgent care + psychiatry)",
+    "Adults needing quick access to psychiatric medication management",
+    "Medicare Part B beneficiaries"
+  ],
+  "not_for": [
+    "Patients needing controlled substances (ADHD stimulants, benzodiazepines)",
+    "Children under 18 without parental consent",
+    "Those seeking specialized ADHD treatment",
+    "Self-pay patients seeking budget options (premium pricing)"
+  ],
   "import_ref": {
     "record_id": "MH-0308",
     "source_row": 309,
@@ -15,58 +30,232 @@
     ]
   },
   "lifecycle": {
-    "status": "active"
+    "status": "active",
+    "notes": "Merged with Grand Rounds to form Included Health in 2021"
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "mobile-app",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "primary-care",
+      "urgent-care",
+      "depression",
+      "anxiety"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "$0 (with employer/insurance benefit)",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "With Employer/Insurance",
+        "price": "$0 (covered benefit)"
+      },
+      {
+        "name": "Medical Visit (Self-Pay)",
+        "price": "$99/15 min"
+      },
+      {
+        "name": "Therapy (Self-Pay)",
+        "price": "$134/25 min"
+      },
+      {
+        "name": "Psychiatry Initial (Self-Pay)",
+        "price": "$299/45 min"
+      },
+      {
+        "name": "Psychiatry Follow-up (Self-Pay)",
+        "price": "$129/15 min"
+      }
+    ],
+    "notes": "Covered benefit for 98M+ Americans through employers and insurers. In-network with BCBS, UHC, Humana Military, Premera, Medicare Part B. Self-pay available.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "Enterprise-grade compliance as part of Included Health."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Humana Military",
+      "slug": "humana-military",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Premera",
+      "slug": "premera",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medicare Part B",
+      "slug": "medicare",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "reliability": "Enterprise-grade"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": false,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": false,
+      "text_chat": true,
+      "file_sharing": false
+    },
+    "patient_experience": {
+      "no_download_required": false,
+      "no_account_required": false,
+      "browser_based": true,
+      "sms_reminders": true,
+      "email_reminders": true,
+      "24_7_availability": true,
+      "appointment_availability": "Same-week typically available"
+    },
+    "mobile_apps": {
+      "patient_ios": true,
+      "patient_android": true,
+      "app_rating": "4.9/5"
+    }
+  },
+  "services": {
+    "provider_network": true,
+    "provider_network_notes": "Psychiatrists average 15+ years experience",
+    "mental_health_services": true,
+    "mental_health_notes": "Therapy and psychiatry for anxiety, depression, and more",
+    "psychiatry_services": true,
+    "medication_management": true,
+    "controlled_substances": false,
+    "controlled_substances_notes": "Cannot prescribe Xanax, Klonopin, Adderall, Ritalin, Vyvanse, or other controlled substances",
+    "therapy_services": true,
+    "primary_care_services": true,
+    "urgent_care_services": true,
+    "age_range": "18+ (Under 18 with parental consent)",
+    "covered_members": "98 million+ Americans"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.849Z",
-  "updated_at": "2026-08-22T20:50:40.849Z",
-  "status": "active",
+  "related_tools": [
+    "teladoc-health",
+    "mdlive",
+    "amwell",
+    "brightside-health"
+  ],
+  "competitor_tools": [
+    "teladoc-health",
+    "mdlive",
+    "amwell"
+  ],
+  "company_info": {
+    "founded_year": 2012,
+    "headquarters": "San Francisco, California, USA",
+    "employee_count": "1000+",
+    "funding_status": "Private",
+    "parent_company": "Included Health",
+    "acquisition": "Merged with Grand Rounds to form Included Health in 2021",
+    "covered_members": "98 million+ Americans"
+  },
   "seo": {
-    "title": "Doctor On Demand: Review & Pricing | HeyPsych",
-    "meta_description": "Doctor On Demand review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Doctor On Demand: 24/7 Telehealth Psychiatry & Therapy",
+    "meta_description": "Doctor On Demand by Included Health offers 24/7 telehealth for psychiatry, therapy, and primary care. $0 for 98M+ covered Americans. Self-pay psychiatry...",
+    "faqs": [
+      {
+        "q": "Is Doctor On Demand free?",
+        "a": "For the 98 million+ Americans covered through employer or insurance benefits, Doctor On Demand visits are often $0. Without coverage, self-pay rates are $99 for medical, $134 for therapy, and $299 for initial psychiatry visits."
+      },
+      {
+        "q": "Can Doctor On Demand prescribe ADHD medication?",
+        "a": "No, Doctor On Demand psychiatrists cannot prescribe controlled substances including ADHD stimulants (Adderall, Ritalin, Vyvanse), benzodiazepines (Xanax, Klonopin), or sleep medications (Lunesta)."
+      },
+      {
+        "q": "What is the relationship between Doctor On Demand and Included Health?",
+        "a": "Doctor On Demand merged with Grand Rounds in 2021 to form Included Health. Doctor On Demand continues as the consumer-facing telehealth brand within the Included Health portfolio."
+      },
+      {
+        "q": "Does Doctor On Demand accept Medicare?",
+        "a": "Yes, Doctor On Demand is in-network with Medicare Part B for eligible telehealth services, along with BCBS, UHC, Humana Military, and Premera."
+      }
+    ],
     "keywords": [
       "Doctor On Demand",
-      "telehealth communication"
+      "Included Health",
+      "telehealth psychiatry",
+      "online therapy",
+      "24/7 telehealth",
+      "virtual mental health"
     ]
   },
   "entity_resolution": {
@@ -77,5 +266,9 @@
     ],
     "resolution_notes": "Doctor On Demand merged with Grand Rounds to form Included Health in 2021.",
     "resolved_at": "2026-08-22T21:09:07.539Z"
-  }
+  },
+  "created_at": "2026-08-22T20:50:40.849Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

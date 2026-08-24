@@ -5,6 +5,9 @@
   "slug": "doximity-dialer",
   "name": "Doximity Dialer",
   "company_name": "Doximity",
+  "one_liner": "Free telehealth calling for verified physicians with number masking",
+  "short_description": "Doximity Dialer is a free telehealth tool used by 85%+ of US physicians that enables HIPAA-compliant video visits and phone calls with caller ID masking. Integrated with Epic Haiku and featuring a...",
+  "long_description": "Doximity Dialer is a telehealth communication tool from Doximity, the largest professional medical network in the US with over 2 million healthcare professional members. The Dialer enables physicians to make HIPAA-compliant video and phone calls to patients while masking their personal phone numbers with their office number.\n\nThe platform is free for verified physicians, which has driven massive adoption—over 85% of US physicians use Doximity, and the Dialer is one of its most popular features. Patients don't need to download an app or create accounts to receive calls, reducing friction for telehealth adoption.\n\nDoximity has expanded Dialer capabilities to include a free AI scribe feature (currently in beta) that transcribes visits and generates clinical notes. The platform also integrates with Epic Haiku, allowing physicians to initiate Dialer calls directly from the Epic mobile app.\n\nOver 150 health systems have enterprise agreements with Doximity, though the basic Dialer functionality remains free for individual physicians. The platform is designed primarily for physician-to-patient communication rather than complex multi-specialty telehealth workflows—health systems with enterprise virtual care needs may need additional platforms alongside Doximity.",
   "import_ref": {
     "record_id": "MH-0264",
     "source_row": 265,
@@ -15,13 +18,37 @@
     "status": "active"
   },
   "primary_category": "telehealth-communication",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "ai-scribe-documentation"
+  ],
   "capabilities": [],
+  "best_for": [
+    "Physicians wanting free HIPAA-compliant calling",
+    "Clinicians needing to protect personal phone numbers",
+    "Practices seeking low-friction patient communication",
+    "Epic Haiku users wanting integrated telehealth"
+  ],
+  "not_for": [
+    "Non-physician clinicians (requires MD/DO verification)",
+    "Health systems needing enterprise telehealth infrastructure",
+    "Organizations requiring complex scheduling and workflows",
+    "Practices needing integrated EHR documentation"
+  ],
   "audiences": {
     "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "multi-specialty",
+      "primary-care"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +58,114 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "starting_price": 0,
+    "currency": "USD",
+    "tiers": [
+      {
+        "name": "Doximity Dialer",
+        "price": 0,
+        "billing": "free for verified physicians",
+        "features": [
+          "Video visits",
+          "Phone calls",
+          "Number masking",
+          "AI scribe (beta)"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "billing": "custom",
+        "features": [
+          "Health system integrations",
+          "Analytics",
+          "Admin controls"
+        ]
+      }
+    ],
+    "quote_required": false,
+    "notes": "Free for individual verified physicians. Enterprise pricing for health system features."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic Haiku",
+      "type": "ehr",
+      "verified": true,
+      "notes": "Direct integration for click-to-call from Epic mobile"
+    }
+  ],
+  "features": {
+    "telehealth": {
+      "video_visits": true,
+      "phone_calls": true,
+      "caller_id_masking": true,
+      "no_patient_app_required": true
+    },
+    "ai_features": {
+      "ai_scribe": true,
+      "transcription": true,
+      "note_generation": true,
+      "beta_status": true
+    }
   },
-  "related_tools": [],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 89,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Most widely adopted physician telehealth tool."
+  },
+  "related_tools": [
+    "doximity",
+    "zoom-healthcare",
+    "doxy-me"
+  ],
   "created_at": "2026-08-22T20:50:40.795Z",
-  "updated_at": "2026-08-22T20:50:40.795Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Doximity Dialer: Review & Pricing | HeyPsych",
-    "meta_description": "Doximity Dialer review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Doximity Dialer: Free Physician Telehealth | HeyPsych",
+    "meta_description": "Doximity Dialer review - free telehealth for 85%+ of US physicians. HIPAA-compliant video calls with number masking, Epic integration, and free AI scribe beta.",
+    "faqs": [
+      {
+        "q": "Is Doximity Dialer free?",
+        "a": "Yes, Doximity Dialer is free for verified physicians (MDs and DOs). The platform includes video visits, phone calls, and caller ID masking at no cost."
+      },
+      {
+        "q": "What is Doximity Dialer caller ID masking?",
+        "a": "Caller ID masking allows physicians to call patients while displaying their office number instead of their personal cell phone, protecting physician privacy while maintaining professional communication."
+      },
+      {
+        "q": "Does Doximity have an AI scribe?",
+        "a": "Yes, Doximity has launched a free AI scribe feature (currently in beta) that transcribes telehealth visits and generates clinical notes for physicians using Dialer."
+      },
+      {
+        "q": "Can non-physicians use Doximity Dialer?",
+        "a": "Doximity Dialer is primarily designed for verified physicians (MDs and DOs). Non-physician clinicians have limited access and may need to use alternative telehealth platforms."
+      }
+    ],
     "keywords": [
       "Doximity Dialer",
-      "telehealth communication"
+      "free physician telehealth",
+      "caller ID masking",
+      "Doximity video",
+      "HIPAA compliant calling",
+      "physician communication",
+      "Epic Haiku telehealth",
+      "Doximity AI scribe"
     ]
   }
 }

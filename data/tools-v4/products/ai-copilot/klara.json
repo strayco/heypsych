@@ -15,21 +15,45 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation",
+    "intake-scheduling-forms"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "hipaa-compliant",
+    "ehr-integration"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "therapy",
+      "counseling"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": true,
+    "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
@@ -39,35 +63,101 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI agent for therapists that handles clinical notes, treatment plans, insurance claims, and between-session resources across 104 languages.",
+  "long_description": "Klara is the AI assistant at the heart of Klarify, a Y Combinator Spring 2026 startup building an AI-native operating system for therapists. Klara handles clinical notes in 20+ formats (SOAP, EMDR, CBT, DAP, BIRP), generates treatment plans and clinical letters, prepares insurance claims, develops between-session client resources, and produces visual session mindmaps to identify patterns across care. Supporting 104 languages, Klara is designed to handle administrative work so therapists can focus on clinical care. At launch, Klarify serves 8,300+ therapists across five countries. The platform is HIPAA, PHIPA, Quebec Law 25, and UK GDPR compliant, and is contractually bound not to train AI on clinical data.",
+  "one_liner": "AI agent for therapists handling notes, treatment plans, and insurance claims in 104 languages.",
+  "best_for": [
+    "Solo therapists and counselors seeking comprehensive AI administrative support",
+    "Private practice clinicians wanting to streamline insurance billing",
+    "Multi-lingual therapists serving diverse client populations",
+    "Clinicians using various therapy modalities (ACT, EMDR, CBT, etc.)"
+  ],
+  "not_for": [
+    "Large enterprise behavioral health organizations",
+    "Practices requiring full EHR functionality",
+    "Addiction treatment centers needing specialized residential features",
+    "Organizations requiring on-premise deployment"
+  ],
+  "website_url": "https://www.klarify.ca/",
+  "pricing_url": "https://www.klarify.ca/",
+  "support_url": "https://www.klarify.ca/",
+  "logo_url": "https://www.klarify.ca/logo.png",
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (10 sessions/month)",
+    "free_tier": true,
+    "free_trial_days": 0,
+    "quote_required": false,
+    "price_range": "budget",
+    "notes": "Seed: Free (10 sessions/month). Sprout: $16/month (70 sessions). Bloom: $32/month (130 sessions) - Most popular. Forest: $71/month (Unlimited sessions). All plans include AI features with scaled session limits.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.klarify.ca/"
+    },
     "baa_available": "unknown",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "notes": "HIPAA, PHIPA, Quebec Law 25, and UK GDPR compliant. Contractually bound not to train AI on clinical data. Session data is never sold or shared."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.783Z",
-  "updated_at": "2026-08-22T20:50:40.783Z",
-  "status": "active",
   "seo": {
-    "title": "Klara: Review & Pricing | HeyPsych",
-    "meta_description": "Klara review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Klara by Klarify: AI Agent for Therapists | HeyPsych",
+    "meta_description": "Klara review for therapists. AI agent handling clinical notes, treatment plans, insurance claims, and client resources in 104 languages.",
+    "faqs": [
+      {
+        "q": "How much does Klara by Klarify cost?",
+        "a": "Klarify offers four tiers: Seed (Free, 10 sessions/month), Sprout ($16/month, 70 sessions), Bloom ($32/month, 130 sessions - most popular), and Forest ($71/month, unlimited sessions). All plans include AI features."
+      },
+      {
+        "q": "Is Klara HIPAA compliant?",
+        "a": "Yes, Klara is HIPAA, PHIPA, Quebec Law 25, and UK GDPR compliant. Klarify is contractually bound not to train AI on clinical data, and session data is never sold or shared."
+      },
+      {
+        "q": "What note formats does Klara support?",
+        "a": "Klara supports 20+ therapy documentation formats including SOAP, EMDR, CBT, DAP, BIRP, ACT, and more. You tell Klara about the session and specify the modality."
+      },
+      {
+        "q": "How many languages does Klara support?",
+        "a": "Klara supports 104 languages for session transcription and note generation, making it suitable for therapists serving diverse multi-lingual client populations."
+      }
+    ],
     "keywords": [
       "Klara",
-      "ai copilot clinical"
+      "Klarify",
+      "AI for therapists",
+      "therapy notes AI",
+      "insurance claims AI",
+      "mental health AI assistant"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "emma",
+    "ensai",
+    "freed-ai"
+  ],
+  "competitor_tools": [
+    "emma",
+    "ensai"
+  ],
+  "company_info": {
+    "funding_status": "Y Combinator Spring 2026",
+    "customer_count": "8,300+ therapists across 5 countries"
+  },
+  "created_at": "2026-08-22T20:50:40.783Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

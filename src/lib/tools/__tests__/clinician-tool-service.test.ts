@@ -10,24 +10,32 @@ import {
 import type { ClinicianToolV4 } from "../../schemas/clinician-tool-v4";
 
 // Mock tool factory - creates minimal valid tool for testing
+// NOTE: Uses "simplepractice" as default slug since it's in LAUNCH_ALLOWLIST
+// All fields required by isPublishReady() are included
 function createMockTool(overrides: Partial<ClinicianToolV4> = {}): ClinicianToolV4 {
   return {
     schema_version: "4.0",
     kind: "clinician-tool",
     id: overrides.id ?? "00000000-0000-0000-0000-000000000001",
-    slug: overrides.slug ?? "test-tool",
+    slug: overrides.slug ?? "simplepractice", // Must be in LAUNCH_ALLOWLIST
     name: overrides.name ?? "Test Tool",
+    short_description: overrides.short_description ?? "A test tool for mental health practices",
     status: overrides.status ?? "active",
     primary_category: overrides.primary_category ?? "ehr-practice-management",
     secondary_categories: overrides.secondary_categories ?? [],
     capabilities: overrides.capabilities ?? ["clinical-notes"],
     integrations: overrides.integrations ?? [],
     compliance: {
-      hipaa_support: "unknown",
-      baa_available: "unknown",
+      hipaa_support: "yes", // Must not be "unknown" for isPublishReady
+      baa_available: "yes",
       soc2_certified: "unknown",
       hitrust_certified: "unknown",
       ...overrides.compliance,
+    },
+    governance: {
+      last_reviewed: "2024-01-01", // Required by isPublishReady
+      needs_review: false, // Must be false for isPublishReady
+      ...overrides.governance,
     },
     feature_flags: {
       has_ai: false,
@@ -119,12 +127,13 @@ describe("isToolPublishable", () => {
 
 describe("filterPublishableTools", () => {
   it("should filter out non-publishable tools", () => {
+    // Use slugs from LAUNCH_ALLOWLIST for publishable tools
     const tools = [
-      createMockTool({ slug: "active-1", status: "active" }),
-      createMockTool({ slug: "draft-1", status: "draft" }),
-      createMockTool({ slug: "active-2", status: "active" }),
+      createMockTool({ slug: "simplepractice", status: "active" }),
+      createMockTool({ slug: "not-in-allowlist", status: "draft" }),
+      createMockTool({ slug: "therapynotes", status: "active" }),
       createMockTool({
-        slug: "acquired-1",
+        slug: "valant",
         status: "active",
         lifecycle: { status: "acquired" },
       }),
@@ -133,7 +142,7 @@ describe("filterPublishableTools", () => {
     const publishable = filterPublishableTools(tools);
 
     expect(publishable).toHaveLength(2);
-    expect(publishable.map((t) => t.slug)).toEqual(["active-1", "active-2"]);
+    expect(publishable.map((t) => t.slug)).toEqual(["simplepractice", "therapynotes"]);
   });
 
   it("should return empty array for all non-publishable tools", () => {
@@ -147,10 +156,11 @@ describe("filterPublishableTools", () => {
   });
 
   it("should return all tools if all are publishable", () => {
+    // Use slugs from LAUNCH_ALLOWLIST
     const tools = [
-      createMockTool({ slug: "active-1", status: "active" }),
+      createMockTool({ slug: "simplepractice", status: "active" }),
       createMockTool({
-        slug: "active-2",
+        slug: "therapynotes",
         status: "active",
         lifecycle: { status: "beta" },
       }),

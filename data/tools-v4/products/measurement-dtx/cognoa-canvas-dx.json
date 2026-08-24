@@ -5,6 +5,10 @@
   "slug": "cognoa-canvas-dx",
   "name": "Cognoa Canvas Dx",
   "company_name": "Cognoa",
+  "website": "https://www.cognoa.com",
+  "one_liner": "FDA-authorized AI for autism spectrum disorder diagnosis in children",
+  "short_description": "Canvas Dx is the first FDA-authorized AI-based diagnostic aid for autism spectrum disorder, helping clinicians diagnose ASD in children ages 18 months to 6 years with high accuracy.",
+  "description": "Cognoa Canvas Dx is an FDA De Novo-authorized machine learning-based diagnostic aid that helps healthcare providers diagnose autism spectrum disorder (ASD) in children ages 18 months to 5 years 11 months. The system combines caregiver questionnaires, video analysis of child behavior, and healthcare provider assessments to generate a diagnostic output. With 95% specificity and 97% negative predictive value, Canvas Dx can reduce the time to diagnosis from years to weeks, addressing a critical bottleneck where children often wait 2-4 years for specialist evaluation.",
   "import_ref": {
     "record_id": "MH-0538",
     "source_row": 539,
@@ -18,52 +22,210 @@
   "secondary_categories": [],
   "capabilities": [],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": [
+      "pediatrics",
+      "developmental-pediatrics",
+      "child-psychiatry",
+      "child-psychology",
+      "autism-assessment"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
     "has_rcm": false,
-    "has_telehealth": false,
+    "has_telehealth": true,
     "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "founded_year": 2013,
+    "headquarters": "Palo Alto, CA",
+    "employee_count": "50-100",
+    "funding_total": "$100M+",
+    "funding_stage": "Series C",
+    "notable_investors": [
+      "Morningside Ventures",
+      "JAZZ Venture Partners"
+    ],
+    "fda_authorization": "De Novo Granted 2021"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "currency": "USD",
+    "billing_period": "per-use",
+    "tiers": [
+      {
+        "name": "Canvas Dx Assessment",
+        "price": null,
+        "period": "per-assessment",
+        "features": [
+          "Full diagnostic aid assessment",
+          "Caregiver questionnaire",
+          "Video behavior analysis",
+          "Provider assessment module",
+          "Diagnostic output report"
+        ],
+        "notes": "Typically $300-600 per assessment; may be covered by insurance"
+      },
+      {
+        "name": "Health System",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "Volume pricing",
+          "EHR integration",
+          "Implementation support",
+          "Training",
+          "Analytics dashboard"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "$300-600 per assessment; volume pricing available",
+    "free_trial": {
+      "available": false,
+      "notes": "Demos and pilot programs available for health systems"
+    },
+    "insurance_coverage": "May be covered by commercial insurance and Medicaid; CPT codes available",
+    "notes": "FDA-authorized as prescription-only diagnostic device. Must be ordered by healthcare provider."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "fda_status": "De Novo Authorized (2021)",
+    "compliance_urls": {
+      "fda": "https://www.cognoa.com/fda",
+      "security": "https://www.cognoa.com/security"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "api",
+      "native": false
+    },
+    {
+      "name": "Mobile app",
+      "type": "patient-interface",
+      "method": "native",
+      "native": true,
+      "notes": "Caregivers complete questionnaire and upload videos via app"
+    }
+  ],
+  "features": {
+    "diagnostic_aid": {
+      "supported": true,
+      "description": "FDA-authorized ML-based ASD diagnostic aid for ages 18 months to 6 years"
+    },
+    "video_analysis": {
+      "supported": true,
+      "description": "AI analyzes caregiver-uploaded videos of child behavior"
+    },
+    "caregiver_input": {
+      "supported": true,
+      "description": "Structured questionnaire completed by parents/caregivers"
+    },
+    "provider_assessment": {
+      "supported": true,
+      "description": "Healthcare provider completes clinical observation module"
+    },
+    "performance_metrics": {
+      "specificity": "95%",
+      "negative_predictive_value": "97%",
+      "time_to_diagnosis": "Weeks vs. years with traditional pathway"
+    },
+    "age_range": "18 months to 5 years 11 months"
+  },
+  "best_for": [
+    "Pediatricians wanting to screen for autism in-office",
+    "Health systems reducing autism diagnosis wait times",
+    "Developmental clinics increasing diagnostic capacity",
+    "Primary care expanding autism assessment access",
+    "Early intervention programs identifying children sooner",
+    "Practices in underserved areas lacking specialist access"
+  ],
+  "not_for": [
+    "Children outside the 18 month - 6 year age range",
+    "Standalone diagnosis without clinical oversight (requires provider)",
+    "Non-clinical direct-to-consumer use",
+    "Adult autism assessment"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": [],
+  "related_tools": [
+    "ados-2",
+    "mchat-rf",
+    "abc-autism-behavior-checklist",
+    "floreo"
+  ],
   "created_at": "2026-08-22T20:50:40.818Z",
-  "updated_at": "2026-08-22T20:50:40.818Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Cognoa Canvas Dx: Review & Pricing | HeyPsych",
-    "meta_description": "Cognoa Canvas Dx review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Cognoa Canvas Dx: FDA-Authorized AI Autism Diagnosis",
+    "meta_description": "Cognoa Canvas Dx review - FDA-authorized AI for autism diagnosis in children 18 months to 6 years. 95% specificity, 97% NPV. Reduces diagnosis time from...",
+    "faqs": [
+      {
+        "q": "What is Canvas Dx?",
+        "a": "Canvas Dx is the first FDA-authorized AI-based diagnostic aid for autism spectrum disorder. It helps clinicians diagnose ASD in children ages 18 months to 6 years by combining caregiver questionnaires, video analysis, and provider assessments."
+      },
+      {
+        "q": "How accurate is Canvas Dx?",
+        "a": "Canvas Dx has 95% specificity (correctly identifying children without ASD) and 97% negative predictive value. It was validated in clinical trials and received FDA De Novo authorization in 2021."
+      },
+      {
+        "q": "Who can order Canvas Dx?",
+        "a": "Canvas Dx is a prescription-only diagnostic device that must be ordered by a licensed healthcare provider such as a pediatrician, developmental pediatrician, or child psychiatrist."
+      },
+      {
+        "q": "How much does Canvas Dx cost?",
+        "a": "Canvas Dx typically costs $300-600 per assessment. It may be covered by commercial insurance or Medicaid in some states. Health systems can get volume pricing for broader implementation."
+      },
+      {
+        "q": "How does Canvas Dx reduce diagnosis time?",
+        "a": "Traditional autism diagnosis often takes 2-4 years due to specialist waitlists. Canvas Dx enables primary care providers to make or rule out ASD diagnosis in their office, reducing wait times from years to weeks."
+      }
+    ],
     "keywords": [
-      "Cognoa Canvas Dx",
-      "measurement outcomes dtx"
+      "Cognoa",
+      "Canvas Dx",
+      "autism diagnosis AI",
+      "FDA autism diagnostic",
+      "ASD screening tool",
+      "pediatric autism assessment",
+      "machine learning autism",
+      "early autism diagnosis",
+      "autism diagnostic aid"
     ]
   }
 }

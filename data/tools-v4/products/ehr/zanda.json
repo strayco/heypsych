@@ -4,6 +4,22 @@
   "id": "2b01c7ea-a134-4260-9425-e0d023794271",
   "slug": "zanda",
   "name": "Zanda",
+  "company_name": "Zanda (formerly Power Diary)",
+  "one_liner": "Cloud-based practice management for allied health with scheduling, notes, billing, and telehealth starting at $19/month.",
+  "short_description": "Zanda (formerly Power Diary) is a cloud-based practice management platform for allied health clinics with scheduling, clinical notes, billing, and telehealth.",
+  "long_description": "Zanda, formerly known as Power Diary, is a cloud-based practice management platform designed for allied health clinics including physiotherapists, chiropractors, psychologists, counselors, and massage therapists. The platform was rebranded in November 2024 to reflect the addition of AI-driven features while remaining the same core practice management software. Zanda offers appointment scheduling, client records, clinical notes, invoicing, online bookings, and secure telehealth. Pricing starts at $19/month (USD) for the Starter plan (1 user, up to 1,000 appointments) with the Growth plan at $49/month offering unlimited appointments and users. Additional practitioners can be added at $9.50/month. The platform is ISO 27001 certified and complies with HIPAA and GDPR standards. Zanda is particularly popular in Australia, UK, and among small allied health practices globally.",
+  "best_for": [
+    "Allied health practices (physio, psych, chiro, massage)",
+    "Solo practitioners and small clinics wanting affordable pricing",
+    "International practices (Australia, UK, Europe)",
+    "Clinics needing multi-location management"
+  ],
+  "not_for": [
+    "Large health systems needing enterprise features",
+    "US practices requiring advanced insurance billing",
+    "Mental health practices needing e-prescribing",
+    "Organizations requiring US-based support"
+  ],
   "import_ref": {
     "record_id": "MH-0001",
     "source_row": 2,
@@ -11,70 +27,199 @@
     "source_file": "master-records.json"
   },
   "lifecycle": {
-    "status": "active"
+    "status": "active",
+    "notes": "Rebranded from Power Diary to Zanda in November 2024"
   },
   "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "telehealth-communication"
+  ],
+  "capabilities": [
+    "appointment-scheduling",
+    "clinical-notes",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychiatric-np-pa"
+      "psychologist",
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
+      "solo-practice",
       "group-practice"
     ],
     "organization_sizes": [
-      "small-2-10"
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ],
     "specialties": [
       "mental-health",
-      "behavioral-health",
-      "psychiatry",
-      "therapy"
+      "psychology",
+      "therapy",
+      "counseling",
+      "chiropractic",
+      "physical-therapy",
+      "massage-therapy"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": true,
     "has_rcm": false,
-    "has_telehealth": false,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 1900,
+    "starting_price_display": "$19/month",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": "$19/month (1 user, up to 1,000 appointments)"
+      },
+      {
+        "name": "Growth",
+        "price": "$49/month (unlimited appointments and users)"
+      },
+      {
+        "name": "Additional Practitioners",
+        "price": "$9.50/month each (promotional)"
+      }
+    ],
+    "notes": "USD pricing shown. AUD pricing: Starter $29/month, Growth $59/month. SMS messaging and Telehealth Plus charged separately. Free trial available. Best for small businesses and solo practitioners.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "iso_27001": true,
+    "notes": "ISO 27001 certified. HIPAA and GDPR compliant."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Xero",
+      "slug": "xero",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Mailchimp",
+      "slug": "mailchimp",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.768Z",
-  "updated_at": "2026-08-22T20:50:40.768Z",
-  "status": "active",
+  "features": {
+    "scheduling": {
+      "online_bookings": true,
+      "appointment_reminders": true,
+      "multi_location": true,
+      "room_scheduling": true
+    },
+    "documentation": {
+      "clinical_notes": true,
+      "templates": true,
+      "forms": true
+    },
+    "telehealth": {
+      "built_in": true,
+      "telehealth_plus": "Additional cost"
+    },
+    "ai_features": {
+      "available": true,
+      "description": "AI-driven features added as part of rebrand"
+    }
+  },
   "seo": {
-    "title": "Zanda: Review & Pricing | HeyPsych",
-    "meta_description": "Zanda review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Zanda (Power Diary): Practice Management for Allied Health",
+    "meta_description": "Zanda (formerly Power Diary) is practice management software for allied health. $19/month starting. Scheduling, notes, telehealth. ISO 27001, HIPAA, GDPR...",
+    "faqs": [
+      {
+        "q": "Is Zanda the same as Power Diary?",
+        "a": "Yes, Zanda is the rebranded name for Power Diary as of November 2024. It's the same practice management software with added AI-driven features."
+      },
+      {
+        "q": "How much does Zanda cost?",
+        "a": "Zanda starts at $19/month (USD) for the Starter plan with 1 user and up to 1,000 appointments. The Growth plan is $49/month with unlimited appointments. Additional practitioners are $9.50/month each."
+      },
+      {
+        "q": "Is Zanda HIPAA compliant?",
+        "a": "Yes, Zanda is ISO 27001 certified and complies with both HIPAA and GDPR standards for protecting patient information."
+      },
+      {
+        "q": "What types of practices use Zanda?",
+        "a": "Zanda is used by allied health practices including psychologists, physiotherapists, chiropractors, massage therapists, and counselors. Most users are small businesses with fewer than 50 employees."
+      }
+    ],
     "keywords": [
       "Zanda",
-      "ehr practice management"
+      "Power Diary",
+      "practice management",
+      "allied health EHR",
+      "clinic software",
+      "physiotherapy software"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "cliniko",
+    "jane",
+    "simplepractice",
+    "noterro"
+  ],
+  "competitor_tools": [
+    "cliniko",
+    "jane",
+    "noterro",
+    "halaxy"
+  ],
+  "company_info": {
+    "headquarters": "Australia",
+    "funding_status": "Private",
+    "notes": "Zanda (formerly Power Diary) is popular globally, especially in Australia and UK for allied health practice management."
+  },
+  "created_at": "2026-08-22T20:50:40.768Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

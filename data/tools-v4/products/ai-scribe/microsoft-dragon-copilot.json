@@ -5,6 +5,21 @@
   "slug": "microsoft-dragon-copilot",
   "name": "Microsoft Dragon Copilot",
   "company_name": "Microsoft",
+  "one_liner": "Microsoft's unified AI clinical assistant combining ambient documentation, voice dictation, and GPT-4 generation for 100,000+ clinicians.",
+  "short_description": "Microsoft Dragon Copilot is an AI-powered clinical assistant that combines ambient note generation, voice dictation, and generative AI to automate clinical documentation.",
+  "long_description": "Microsoft Dragon Copilot is the healthcare industry's first unified voice AI assistant, bringing together ambient capture, clinical dictation (Dragon Medical One), and GPT-4 generation into a single platform. Announced at HIMSS 2025 and expanded at HIMSS 2026, Dragon Copilot serves over 100,000 clinicians supporting care for millions of patients monthly. The platform ambiently captures clinician-patient conversations and generates draft clinical notes for review, eliminating the need to write notes from scratch. Beyond physicians, Dragon Copilot now extends to nurses with features like automatic structured documentation from nurse-patient interactions. The platform integrates with major EHRs including Epic and runs across Windows, macOS, Chromebook, Android, and iOS. Microsoft has deepened its partner ecosystem with Elsevier, OpenEvidence, and Wolters Kluwer to provide evidence-based clinical content directly in the workflow.",
+  "best_for": [
+    "Health systems wanting comprehensive AI documentation (dictation + ambient + AI)",
+    "Organizations already in the Microsoft/Azure healthcare ecosystem",
+    "Multi-disciplinary teams (physicians, nurses, specialists)",
+    "Enterprises seeking partner integrations (Elsevier, Wolters Kluwer)"
+  ],
+  "not_for": [
+    "Solo practices seeking budget-friendly solutions",
+    "Organizations not using major EHRs (Epic, Oracle Health)",
+    "Practices needing only simple dictation (Dragon Medical One alone is cheaper)",
+    "Those seeking mental health-specific documentation features"
+  ],
   "import_ref": {
     "record_id": "MH-0191",
     "source_row": 192,
@@ -16,12 +31,29 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "ambient-listening",
+    "ehr-integration",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "multi-specialty",
+      "primary-care",
+      "psychiatry",
+      "emergency-medicine",
+      "nursing",
+      "cardiology"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +63,167 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "free_tier": false,
+    "notes": "Enterprise pricing not publicly disclosed. Bundles Dragon Medical One dictation with DAX ambient AI and GPT-4 generation. Contact Microsoft healthcare sales for custom quotes. Industry AI scribe average: $150-300/provider/month.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "certifications": [
+      "HIPAA",
+      "SOC 2 Type II",
+      "HITRUST",
+      "ISO 27001",
+      "FedRAMP"
+    ],
+    "notes": "Part of Microsoft Cloud for Healthcare compliance framework. Azure-hosted with enterprise security."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Embedded workflow integration"
+    },
+    {
+      "name": "Oracle Health (Cerner)",
+      "slug": "cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Elsevier",
+      "slug": "elsevier",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Evidence-based clinical content"
+    },
+    {
+      "name": "Wolters Kluwer",
+      "slug": "wolters-kluwer",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "OpenEvidence",
+      "slug": "openevidence",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Microsoft Azure",
+      "slug": "azure",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false,
+    "notes": "Runs on Windows, macOS, Chromebook, Android, iOS. Web browser and desktop app available."
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.787Z",
-  "updated_at": "2026-08-22T20:50:40.787Z",
-  "status": "active",
+  "features": {
+    "ambient_capture": true,
+    "draft_note_generation": true,
+    "voice_dictation": true,
+    "generative_ai": "GPT-4 powered",
+    "nurse_documentation": true,
+    "order_recommendations": true,
+    "flowsheet_documentation": true,
+    "incident_notes": true,
+    "narrative_notes": true,
+    "pause_edit_validate": true,
+    "clinicians_using": "100,000+",
+    "clinical_partners": [
+      "Elsevier",
+      "OpenEvidence",
+      "Wolters Kluwer"
+    ]
+  },
+  "clinical_evidence": {
+    "time_savings": "One nurse reported saving ~2 hours of charting in a 12-hour shift",
+    "adoption": "100,000+ clinicians supporting millions of patients monthly"
+  },
   "seo": {
-    "title": "Microsoft Dragon Copilot: Review & Pricing | HeyPsych",
-    "meta_description": "Microsoft Dragon Copilot review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Microsoft Dragon Copilot: Unified AI Clinical Assistant",
+    "meta_description": "Microsoft Dragon Copilot combines ambient AI, dictation, and GPT-4 for clinical documentation. 100,000+ clinicians. Epic integration. Enterprise pricing.",
+    "faqs": [
+      {
+        "q": "What is Microsoft Dragon Copilot?",
+        "a": "Dragon Copilot is Microsoft's unified AI clinical assistant that combines ambient note generation (like DAX), voice dictation (Dragon Medical One), and GPT-4 generation into a single platform for automating clinical documentation."
+      },
+      {
+        "q": "How much does Microsoft Dragon Copilot cost?",
+        "a": "Microsoft does not publicly disclose Dragon Copilot pricing. It's sold as an enterprise solution requiring custom quotes. Industry estimates for comparable AI scribes range from $150-300 per provider per month."
+      },
+      {
+        "q": "Does Dragon Copilot work with Epic?",
+        "a": "Yes, Dragon Copilot has deep native integration with Epic and embeds directly into Epic workflows. It also integrates with Oracle Health (Cerner) and other major EHR systems."
+      },
+      {
+        "q": "Can Dragon Copilot be used by nurses?",
+        "a": "Yes, in 2026 Microsoft expanded Dragon Copilot to support nurses with features that ambiently capture nurse-patient interactions and convert them into structured documentation automatically filed into EHRs."
+      }
+    ],
     "keywords": [
       "Microsoft Dragon Copilot",
-      "ai scribe documentation"
+      "DAX Copilot",
+      "ambient AI",
+      "clinical documentation",
+      "GPT-4 healthcare",
+      "Epic integration"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "nuance-dragon-medical-one",
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe",
+    "suki-ai"
+  ],
+  "company_info": {
+    "founded_year": 1975,
+    "headquarters": "Redmond, Washington, USA",
+    "employee_count": "220000+",
+    "funding_status": "Public",
+    "ticker": "MSFT",
+    "public_company": true,
+    "notes": "Microsoft acquired Nuance in 2022 for $19.7B. Dragon Copilot announced at HIMSS 2025, expanded at HIMSS 2026."
+  },
+  "created_at": "2026-08-22T20:50:40.787Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

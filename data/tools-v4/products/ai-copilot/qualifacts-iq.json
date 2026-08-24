@@ -15,22 +15,54 @@
     "status": "active"
   },
   "primary_category": "ai-copilot-clinical",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ai-scribe-documentation",
+    "billing-rcm-insurance",
+    "intake-scheduling-forms"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "ai-suggestions",
+    "appointment-scheduling",
+    "coding-assistance",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "practice-administrator",
+      "billing-specialist",
+      "medical-director"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "community-mental-health",
+      "group-practice",
+      "multi-site-enterprise",
+      "integrated-care",
+      "residential-treatment"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "addiction-treatment",
+      "intellectual-developmental-disabilities"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
@@ -39,35 +71,133 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "AI solution for behavioral health across Qualifacts EHRs offering documentation automation, scheduling agents, and billing workflow optimization.",
+  "long_description": "Qualifacts iQ is an AI solution purpose-built for behavioral healthcare, integrated across Qualifacts' Credible, CareLogic, and InSync EHR platforms. The suite includes iQ Assistant (always-on AI chatbot for instant EHR support), iQ Clinical Documentation (reducing note-taking from 15 to 3 minutes - 80% reduction), iQ Agent for Scheduling (chat-based AI for complex scheduling), and iQ Agent for Billing (automated workflows for financial performance). Qualifacts iQ supports AI-powered documentation in 120+ languages and has achieved ISO 42001 certification for AI Management Systems. The platform has saved 50,000+ customer hours with 2-3X realized ROI. Trusted by 2,200+ behavioral health agencies nationwide, Qualifacts iQ includes the free iQ Assistant browser extension trained on 3,000+ knowledge base articles.",
+  "one_liner": "AI suite for Qualifacts EHRs with documentation, scheduling, and billing automation.",
+  "best_for": [
+    "Community mental health centers using Qualifacts EHR platforms",
+    "CCBHCs seeking integrated AI documentation and workflow automation",
+    "Large behavioral health organizations wanting comprehensive AI across clinical and billing",
+    "Agencies using Credible, CareLogic, or InSync needing AI-assisted support"
+  ],
+  "not_for": [
+    "Practices not using Qualifacts EHR platforms",
+    "Solo practitioners or small private practices",
+    "Organizations seeking standalone AI scribe functionality",
+    "Practices outside behavioral health and IDD services"
+  ],
+  "website_url": "https://www.qualifacts.com/qualifacts-iq/",
+  "pricing_url": "https://www.qualifacts.com/",
+  "support_url": "https://www.qualifacts.com/",
+  "logo_url": "https://www.qualifacts.com/logo.png",
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "freemium",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (iQ Assistant)",
+    "free_tier": true,
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "price_range": "enterprise",
+    "notes": "iQ Assistant is free for all Qualifacts customers via browser extension. iQ Clinical Documentation, Scheduling Agent, and Billing Agent are paid add-ons with enterprise pricing. Contact Qualifacts for quote.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": true,
+      "status": "vendor_provided",
+      "source_url": "https://www.qualifacts.com/"
+    },
+    "baa_available": "yes",
+    "soc2": "yes",
+    "soc2_type": "type2",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "SOC II and ONC standards compliant. ISO 42001 certified for AI Management Systems. Data stays secure within Qualifacts EHR infrastructure."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
-  },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
-  "status": "active",
+  "integrations": [
+    {
+      "name": "Credible",
+      "slug": "credible",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Qualifacts iQ is built directly into Credible EHR"
+    },
+    {
+      "name": "CareLogic",
+      "slug": "carelogic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Qualifacts iQ is built directly into CareLogic EHR"
+    },
+    {
+      "name": "InSync",
+      "slug": "insync",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Qualifacts iQ is built directly into InSync EHR"
+    },
+    {
+      "name": "OnCall Virtual Care",
+      "slug": "oncall",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "iQ Clinical Documentation integrates with OnCall telehealth"
+    }
+  ],
   "seo": {
-    "title": "Qualifacts iQ: Review & Pricing | HeyPsych",
-    "meta_description": "Qualifacts iQ review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Qualifacts iQ: AI Suite for Behavioral Health EHRs",
+    "meta_description": "Qualifacts iQ review. AI-powered documentation, scheduling, and billing for Credible, CareLogic, and InSync EHR platforms. 80% reduction in note-taking time.",
+    "faqs": [
+      {
+        "q": "What is Qualifacts iQ?",
+        "a": "Qualifacts iQ is an AI solution for behavioral healthcare that includes iQ Assistant (free AI chatbot), iQ Clinical Documentation (80% reduction in note time), iQ Agent for Scheduling, and iQ Agent for Billing. It's integrated across Credible, CareLogic, and InSync EHRs."
+      },
+      {
+        "q": "How much does Qualifacts iQ cost?",
+        "a": "iQ Assistant is free for all Qualifacts customers as a browser extension. iQ Clinical Documentation, Scheduling Agent, and Billing Agent are paid add-ons. Contact Qualifacts for enterprise pricing."
+      },
+      {
+        "q": "How much time does Qualifacts iQ save on documentation?",
+        "a": "Qualifacts iQ Clinical Documentation reduces note-taking time from 15 minutes to 3 minutes - an 80% reduction. Overall, the platform has saved 50,000+ customer hours with 2-3X realized ROI."
+      },
+      {
+        "q": "Which EHRs does Qualifacts iQ work with?",
+        "a": "Qualifacts iQ is available for Credible, CareLogic, and InSync EHR platforms. iQ Clinical Documentation also integrates with OnCall Virtual Care telehealth solution."
+      }
+    ],
     "keywords": [
       "Qualifacts iQ",
-      "ai copilot clinical"
+      "Credible AI",
+      "CareLogic AI",
+      "behavioral health AI",
+      "CCBHC EHR",
+      "ISO 42001 AI"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92
+  },
+  "related_tools": [
+    "credible",
+    "carelogic",
+    "insync"
+  ],
+  "competitor_tools": [
+    "kipu-intelligence",
+    "emma"
+  ],
+  "company_info": {
+    "customer_count": "2,200+ behavioral health agencies"
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

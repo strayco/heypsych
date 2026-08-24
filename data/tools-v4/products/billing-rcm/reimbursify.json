@@ -4,6 +4,22 @@
   "id": "9cf6a7e3-2da9-4afe-92e4-adbe4380842e",
   "slug": "reimbursify",
   "name": "Reimbursify",
+  "company_name": "Reimbursify",
+  "one_liner": "Out-of-network claims submission app for patients and practitioners with per-claim ($3.99) or subscription ($59-99/month) pricing.",
+  "short_description": "Reimbursify is an out-of-network claims submission platform allowing patients and practitioners to easily file insurance claims via mobile app or web.",
+  "long_description": "Reimbursify is an out-of-network claims submission platform that helps both patients and practitioners file insurance claims easily. The mobile app and web platform allow users to upload superbills, verify benefits, and submit claims directly to insurance companies. For patients, pricing is $3.99 per claim individually or $2.99/claim in 10-packs ($29.99). For practitioners, the free tier allows pay-per-claim with no monthly fee, the Plus plan at $59/month includes coverage verification, and the Pro plan at $99/month adds priority support and API access. One claim equals one date of service. Reimbursify handles therapy, physical therapy, acupuncture, and other out-of-network healthcare claims. The platform offers transparent pricing with no hidden fees and is designed to simplify the traditionally complex OON reimbursement process.",
+  "best_for": [
+    "Patients wanting to file their own OON claims",
+    "Out-of-network therapists offering superbill submission",
+    "Physical therapists and wellness practitioners",
+    "Solo practitioners with low claim volumes (pay-per-claim)"
+  ],
+  "not_for": [
+    "In-network providers",
+    "Therapists wanting reimbursement fronting (use Thrizer)",
+    "Practices wanting free provider pricing (use Mentaya)",
+    "High-volume practices (per-claim fees add up)"
+  ],
   "import_ref": {
     "record_id": "MH-0546",
     "source_row": 547,
@@ -15,54 +31,161 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "mobile-app",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "physical-therapy",
+      "acupuncture",
+      "chiropractic",
+      "wellness"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier available",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Free (Practitioners)",
+        "price": "Pay-per-claim, no monthly fee"
+      },
+      {
+        "name": "Plus (Practitioners)",
+        "price": "$59/month (includes coverage verification)"
+      },
+      {
+        "name": "Pro (Practitioners)",
+        "price": "$99/month (priority support, API, unlimited claims)"
+      },
+      {
+        "name": "Per-Claim (Patients)",
+        "price": "$3.99/claim or $29.99 for 10-pack ($2.99/claim)"
+      }
+    ],
+    "notes": "One claim = one date of service. First claim free for new users. Unlimited claims for specialists seeing up to 30 appointments/week. Higher volume practices may have additional fees.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant claims submission platform."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
-  "status": "active",
+  "features": {
+    "patient_features": {
+      "mobile_app": true,
+      "superbill_upload": true,
+      "benefits_verification": true,
+      "claim_tracking": true
+    },
+    "practitioner_features": {
+      "courtesy_claims": "Submit claims on behalf of patients",
+      "dashboard": true,
+      "api_access": "Pro plan only"
+    },
+    "claim_types": [
+      "Therapy",
+      "Physical Therapy",
+      "Acupuncture",
+      "Chiropractic",
+      "Other OON healthcare"
+    ]
+  },
   "seo": {
-    "title": "Reimbursify: Review & Pricing | HeyPsych",
-    "meta_description": "Reimbursify review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Reimbursify",
+    "meta_description": "Reimbursify helps patients and practitioners file OON claims. $3.99/claim for patients, $59-99/month for providers. Mobile app available. Free tier.",
+    "faqs": [
+      {
+        "q": "How much does Reimbursify cost for patients?",
+        "a": "Reimbursify costs $3.99 per claim or $29.99 for a 10-pack ($2.99/claim). One claim equals one date of service with one practitioner."
+      },
+      {
+        "q": "How much does Reimbursify cost for therapists?",
+        "a": "Reimbursify offers a free tier (pay-per-claim), Plus at $59/month with coverage verification, and Pro at $99/month with API access and unlimited claims."
+      },
+      {
+        "q": "How does Reimbursify compare to Thrizer and Mentaya?",
+        "a": "Reimbursify has both patient and practitioner pricing with a mobile app. Thrizer is free for therapists (3% processing) with reimbursement fronting. Mentaya is free for therapists with a 5% client fee. Reimbursify is unique in having direct-to-patient pricing."
+      },
+      {
+        "q": "Does Reimbursify have a mobile app?",
+        "a": "Yes, Reimbursify has iOS and Android mobile apps allowing patients to upload superbills, submit claims, and track reimbursement status from their phone."
+      }
+    ],
     "keywords": [
       "Reimbursify",
-      "billing rcm insurance"
+      "out-of-network claims",
+      "OON reimbursement",
+      "superbill app",
+      "insurance claims app",
+      "therapy reimbursement"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "thrizer",
+    "mentaya",
+    "nirvana-health"
+  ],
+  "competitor_tools": [
+    "thrizer",
+    "mentaya",
+    "better-superbill"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Private",
+    "notes": "Reimbursify is unique in offering both direct-to-patient and practitioner pricing models for OON claims submission."
+  },
+  "created_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

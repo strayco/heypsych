@@ -4,6 +4,10 @@
   "id": "f9652bb8-e967-46ce-aefb-70ce76cd6e44",
   "slug": "regard",
   "name": "Regard",
+  "company_name": "Regard",
+  "one_liner": "AI clinical co-pilot for automated inpatient diagnosis and condition capture",
+  "short_description": "Regard is an AI-powered clinical co-pilot designed for hospital medicine that automatically identifies missed diagnoses and conditions from patient charts. Used in 150+ hospitals, the platform...",
+  "long_description": "Regard is a clinical AI platform that functions as an automated co-pilot for hospitalists and inpatient physicians. The system continuously analyzes patient charts in real-time, identifying conditions that may be missed during documentation and surfacing evidence-based diagnostic recommendations directly within the clinical workflow.\n\nThe platform excels at condition capture and clinical decision support in the inpatient setting. Regard's AI engine reviews labs, vitals, medications, and clinical notes to identify patterns suggesting undiagnosed conditions, helping improve diagnostic accuracy and clinical documentation integrity. The company reports that physicians accept approximately 70% of the diagnoses Regard recommends.\n\nWith over 150 hospitals using the platform and more than 9 million diagnoses recommended, Regard has established itself as a leader in hospital-focused clinical AI. The company raised $61 million in Series B funding at a $350 million valuation and has partnered with Microsoft to integrate with Dragon Copilot, the leading ambient AI scribe in enterprise healthcare.\n\nRegard integrates natively with Epic and is designed specifically for inpatient settings. The platform is not intended for ambulatory care, therapy notes, or mental health documentation—it focuses squarely on medical diagnosis capture and clinical decision support for hospital medicine.",
   "import_ref": {
     "record_id": "MH-0212",
     "source_row": 213,
@@ -14,13 +18,32 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "clinical-decision-support"
+  ],
   "capabilities": [],
+  "best_for": [
+    "Hospitalists seeking AI-assisted diagnosis capture",
+    "Hospital medicine departments focused on CDI",
+    "Health systems using Epic looking for clinical AI",
+    "Inpatient settings with high patient volumes"
+  ],
+  "not_for": [
+    "Ambulatory or outpatient practices",
+    "Mental health clinicians needing therapy documentation",
+    "Solo practitioners or small practices",
+    "Organizations not using Epic EHR"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "internal-medicine",
+      "hospital-medicine"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -32,37 +55,92 @@
     "has_patient_portal": false,
     "has_mobile_app": false,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_specialty_agnostic": false
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Enterprise hospital licensing. Pricing based on bed count and physician volume."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "verified": true,
+      "notes": "Native Epic integration"
+    },
+    {
+      "name": "Microsoft Dragon Copilot",
+      "type": "ai-scribe",
+      "verified": true,
+      "notes": "Strategic partnership announced 2025"
+    }
+  ],
+  "features": {
+    "ai_documentation": {
+      "ambient_listening": false,
+      "note_generation": false,
+      "template_support": false,
+      "specialty_templates": false
+    },
+    "clinical_ai": {
+      "diagnosis_suggestions": true,
+      "condition_capture": true,
+      "evidence_surfacing": true,
+      "real_time_analysis": true
+    }
   },
-  "related_tools": [],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Hospital-focused clinical AI co-pilot, not ambient scribe."
+  },
+  "related_tools": [
+    "nuance-dragon-ambient",
+    "augmedix",
+    "abridge"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Regard: Review & Pricing | HeyPsych",
-    "meta_description": "Regard review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Regard: AI Clinical Co-Pilot for Hospital Medicine",
+    "meta_description": "Regard AI review for hospitals. Automated diagnosis capture and clinical decision support for hospitalists, used in 150+ hospitals with 9M+ diagnoses...",
+    "faqs": [
+      {
+        "q": "What does Regard AI do?",
+        "a": "Regard is a clinical AI co-pilot that automatically reviews patient charts in hospitals to identify missed diagnoses and conditions. It surfaces evidence-based recommendations to hospitalists, improving diagnosis capture and documentation quality."
+      },
+      {
+        "q": "Is Regard an AI scribe?",
+        "a": "Regard is not an ambient AI scribe—it doesn't transcribe conversations or generate clinical notes. It's a diagnostic support tool that analyzes existing chart data to identify conditions that may need documentation or treatment."
+      },
+      {
+        "q": "What EHRs does Regard support?",
+        "a": "Regard integrates natively with Epic. The company has also partnered with Microsoft to integrate with Dragon Copilot for ambient documentation capabilities."
+      },
+      {
+        "q": "How effective is Regard?",
+        "a": "Regard reports that physicians accept approximately 70% of the diagnoses it recommends. The platform has recommended over 9 million diagnoses across 150+ hospitals."
+      }
+    ],
     "keywords": [
-      "Regard",
-      "ai scribe documentation"
+      "Regard AI",
+      "clinical AI co-pilot",
+      "hospital AI",
+      "diagnosis capture",
+      "CDI automation",
+      "hospitalist AI",
+      "Epic AI integration"
     ]
   }
 }

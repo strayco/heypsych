@@ -5,6 +5,9 @@
   "slug": "notable-ai",
   "name": "Notable AI",
   "company_name": "Notable",
+  "one_liner": "Healthcare automation platform for intelligent patient intake and administrative workflows",
+  "short_description": "Notable is an intelligent automation platform that streamlines patient intake, scheduling, prior authorizations, and billing workflows. Using AI-powered technology, Notable automates repetitive...",
+  "long_description": "Notable is a healthcare automation company that uses artificial intelligence to transform administrative workflows across the patient journey. The platform focuses on automating high-volume, repetitive tasks that typically burden clinical and administrative staff, including patient intake, appointment scheduling, prior authorization, and billing processes.\n\nThe platform's intelligent automation capabilities go beyond simple form digitization. Notable uses AI to pre-populate patient information, verify insurance eligibility in real-time, and automate prior authorization submissions. The system integrates directly with EHR systems to ensure seamless data flow and reduce duplicate data entry.\n\nNotable has gained significant traction with health systems and large medical groups seeking to address staffing challenges while improving operational efficiency. The platform reports significant reductions in administrative time and improvements in revenue capture through more accurate coding and faster authorization approvals.\n\nWhile Notable is categorized as an AI solution, it's important to note that the platform focuses primarily on administrative workflow automation rather than clinical documentation or ambient scribe functionality. Organizations seeking AI-powered clinical note generation should evaluate dedicated ambient AI scribe solutions.",
   "import_ref": {
     "record_id": "MH-0250",
     "source_row": 251,
@@ -16,21 +19,41 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "prior-authorization"
+  ],
+  "best_for": [
+    "Health systems seeking to automate administrative workflows",
+    "Large multi-specialty practices with high patient volumes",
+    "Organizations struggling with staffing for intake and billing",
+    "Revenue cycle teams looking to reduce authorization delays"
+  ],
+  "not_for": [
+    "Solo practitioners needing clinical AI scribes",
+    "Small practices seeking simple documentation tools",
+    "Mental health specialists needing therapy note generation",
+    "Clinicians primarily seeking ambient listening features"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "practice-administrator"
+    ],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "multi-specialty"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
@@ -38,32 +61,85 @@
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Enterprise pricing based on patient volume and modules selected. Implementation fees apply."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "athenahealth",
+      "type": "ehr",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ai_documentation": {
+      "ambient_listening": false,
+      "note_generation": false,
+      "template_support": false,
+      "specialty_templates": false
+    },
+    "workflow": {
+      "patient_intake": true,
+      "prior_auth_automation": true,
+      "insurance_verification": true,
+      "scheduling": true
+    }
   },
-  "related_tools": [],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Note: Platform focuses on workflow automation rather than clinical documentation."
+  },
+  "related_tools": [
+    "olive-ai",
+    "waystar",
+    "availity"
+  ],
   "created_at": "2026-08-22T20:50:40.793Z",
-  "updated_at": "2026-08-22T20:50:40.793Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Notable AI: Review & Pricing | HeyPsych",
-    "meta_description": "Notable AI review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Notable AI: Healthcare Automation Platform Review | HeyPsych",
+    "meta_description": "Notable AI review for healthcare organizations. AI-powered patient intake, prior authorization, and billing automation platform for health systems.",
+    "faqs": [
+      {
+        "q": "Is Notable AI a clinical documentation tool?",
+        "a": "Notable focuses on administrative workflow automation including patient intake, prior authorization, and billing—not clinical documentation or ambient AI scribing. It's best suited for health systems seeking to automate back-office processes."
+      },
+      {
+        "q": "What size organizations use Notable?",
+        "a": "Notable primarily serves health systems, large medical groups, and enterprise healthcare organizations. The platform is designed for high-volume environments where workflow automation delivers significant ROI."
+      },
+      {
+        "q": "How does Notable integrate with EHRs?",
+        "a": "Notable offers direct integrations with major EHR systems including Epic, Cerner, and athenahealth, enabling bidirectional data flow for intake, scheduling, and billing automation."
+      }
+    ],
     "keywords": [
       "Notable AI",
-      "ai scribe documentation"
+      "healthcare automation",
+      "patient intake automation",
+      "prior authorization AI",
+      "revenue cycle automation",
+      "administrative workflow automation"
     ]
   }
 }

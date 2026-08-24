@@ -3,8 +3,12 @@
   "kind": "clinician-tool",
   "id": "0e3b4835-2db8-4255-ade0-d89e910b776b",
   "slug": "tridiuum-one",
-  "name": "Tridiuum ONE",
-  "company_name": "Lucet / legacy Tridiuum",
+  "name": "Lucet (formerly Tridiuum ONE)",
+  "company_name": "Lucet",
+  "website": "https://www.lucet.com",
+  "one_liner": "Behavioral health assessment platform with BHI scoring for treatment matching",
+  "short_description": "Lucet (formerly Tridiuum) provides a behavioral health assessment platform that uses validated instruments to generate Behavioral Health Index (BHI) scores, helping match patients to appropriate...",
+  "description": "Lucet was formed from the merger of Tridiuum and New Directions Behavioral Health, combining Tridiuum's assessment technology with New Directions' managed care expertise. The platform administers validated behavioral health assessments and generates a proprietary Behavioral Health Index (BHI) score that quantifies symptom severity across dimensions. This score helps guide treatment planning, level of care decisions, and ongoing progress monitoring. With over 1.5 million patients and 6 million assessments completed, Lucet serves health plans, employers, and healthcare organizations.",
   "import_ref": {
     "record_id": "MH-0463",
     "source_row": 464,
@@ -16,16 +20,30 @@
   },
   "primary_category": "measurement-outcomes-dtx",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "ehr-integration"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "psychology",
+      "behavioral-health",
+      "substance-use",
+      "care-management"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,40 +52,177 @@
     "has_telehealth": false,
     "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
+  },
+  "company": {
+    "founded_year": 2008,
+    "headquarters": "Leawood, KS",
+    "employee_count": "500-1000",
+    "funding_stage": "Private Equity",
+    "notable_investors": [
+      "New Mountain Capital"
+    ],
+    "customer_count": "1.5+ million patients assessed",
+    "notes": "Formed from merger of Tridiuum and New Directions Behavioral Health"
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "currency": "USD",
+    "billing_period": "annual",
+    "tiers": [
+      {
+        "name": "Assessment Platform",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "Validated BH assessments",
+          "BHI scoring algorithm",
+          "Patient portal",
+          "Basic reporting",
+          "EHR integration"
+        ],
+        "quote_required": true
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "Everything in Platform",
+          "Population health analytics",
+          "Custom assessment protocols",
+          "Advanced reporting",
+          "API access",
+          "Dedicated support"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "Per-member-per-month or per-assessment pricing for organizations",
+    "free_trial": {
+      "available": false,
+      "notes": "Pilots available for qualified organizations"
+    },
+    "notes": "Enterprise pricing based on volume and scope. Primarily serves health plans, employers, and large behavioral health organizations."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "compliance_urls": {
+      "security": "https://www.lucet.com/security"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "method": "api",
+      "native": true
+    },
+    {
+      "name": "Health plan systems",
+      "type": "payer",
+      "method": "api",
+      "native": true
+    }
+  ],
+  "features": {
+    "bhi_scoring": {
+      "supported": true,
+      "description": "Proprietary Behavioral Health Index quantifies symptom severity for treatment matching"
+    },
+    "assessments": {
+      "supported": true,
+      "description": "Validated behavioral health instruments administered via patient portal"
+    },
+    "level_of_care": {
+      "supported": true,
+      "description": "Algorithm-driven recommendations for appropriate treatment intensity"
+    },
+    "progress_monitoring": {
+      "supported": true,
+      "description": "Track patient outcomes over time with repeated assessments"
+    },
+    "population_analytics": {
+      "supported": true,
+      "description": "Aggregate reporting for health plans and large organizations"
+    },
+    "scale": "6+ million assessments completed, 1.5+ million patients"
+  },
+  "best_for": [
+    "Health plans wanting standardized BH assessment",
+    "Large behavioral health organizations",
+    "Employers managing EAP programs",
+    "Systems needing level-of-care determination",
+    "Organizations tracking population outcomes",
+    "HITRUST-certified assessment platform"
+  ],
+  "not_for": [
+    "Individual private practices (consider Blueprint or Owl Practice)",
+    "Small groups seeking simple outcome tracking",
+    "Practices wanting free MBC tools",
+    "Organizations not focused on behavioral health"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": [],
+  "related_tools": [
+    "blueprint-measurement-based-care",
+    "mirah",
+    "owl-practice",
+    "greenspace-mental-health"
+  ],
   "created_at": "2026-08-22T20:50:40.812Z",
-  "updated_at": "2026-08-22T20:50:40.812Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Tridiuum ONE: Review & Pricing | HeyPsych",
-    "meta_description": "Tridiuum ONE review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Lucet (Tridiuum ONE): Behavioral Health Assessment Platform",
+    "meta_description": "Lucet (formerly Tridiuum) review - BHI scoring for treatment matching. 1.5M+ patients, 6M+ assessments. HITRUST certified. For health plans and large...",
+    "faqs": [
+      {
+        "q": "What is the Behavioral Health Index (BHI)?",
+        "a": "The BHI is Lucet's proprietary scoring algorithm that quantifies behavioral health symptom severity across multiple dimensions. It's used to match patients to appropriate levels of care and track treatment progress over time."
+      },
+      {
+        "q": "What happened to Tridiuum?",
+        "a": "Tridiuum merged with New Directions Behavioral Health to form Lucet. The combined company offers both assessment technology (from Tridiuum) and managed behavioral health services (from New Directions)."
+      },
+      {
+        "q": "Is Lucet suitable for private practices?",
+        "a": "Lucet primarily serves health plans, employers, and large behavioral health organizations. For private practices wanting outcome tracking, consider Blueprint (free) or Owl Practice instead."
+      },
+      {
+        "q": "How does Lucet compare to Blueprint?",
+        "a": "Blueprint is designed for individual clinicians with a free EHR and pay-per-use AI. Lucet is an enterprise platform for health plans and large organizations, focusing on population-level assessment and BHI scoring for level-of-care decisions."
+      }
+    ],
     "keywords": [
+      "Lucet",
+      "Tridiuum",
       "Tridiuum ONE",
-      "measurement outcomes dtx"
+      "BHI score",
+      "behavioral health assessment",
+      "level of care matching",
+      "mental health outcomes",
+      "population health behavioral",
+      "health plan behavioral health"
     ]
   }
 }

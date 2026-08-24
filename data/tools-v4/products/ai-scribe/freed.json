@@ -17,34 +17,28 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "secondary_categories": [],
   "capabilities": [
     "ambient-listening",
-    "soap-note-generation",
-    "progress-note-generation",
-    "telehealth-support",
-    "ehr-integration",
-    "voice-commands",
-    "custom-templates",
-    "multi-specialty-support"
+    "ehr-integration"
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
+      "psychiatric-np-pa",
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
     "practice_settings": [
-      "private-practice",
-      "outpatient-clinic",
-      "group-practice",
-      "hospital-system",
-      "telehealth"
+      "solo-practice",
+      "group-practice"
     ],
-    "organization_sizes": ["solo", "small", "medium", "large"],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
     "specialties": [
       "primary-care",
       "family-medicine",
@@ -77,49 +71,64 @@
     "funding_total": "$10M+",
     "funding_stage": "Series A",
     "customer_count": "10,000+ clinicians",
-    "notable_investors": ["General Catalyst", "Sequoia Capital"]
+    "notable_investors": [
+      "General Catalyst",
+      "Sequoia Capital"
+    ]
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": false,
-    "starting_price": 99,
+    "starting_price": 39,
     "currency": "USD",
     "billing_period": "monthly",
     "tiers": [
       {
-        "name": "Basic",
-        "price": 99,
+        "name": "Starter",
+        "price": 39,
         "period": "monthly",
         "features": [
-          "Unlimited patient visits",
-          "SOAP notes",
-          "Basic EHR copy-paste",
-          "Mobile app access",
-          "Email support"
+          "Up to 40 notes/month",
+          "Best-in-class AI scribe",
+          "Specialty-specific templates",
+          "Copy-paste to any EHR",
+          "World-class live support"
         ]
       },
       {
-        "name": "Professional",
-        "price": 149,
+        "name": "Core",
+        "price": 79,
         "period": "monthly",
         "features": [
-          "Everything in Basic",
-          "Custom note templates",
-          "EHR integrations",
-          "Priority support",
-          "Team management"
+          "Unlimited notes",
+          "Instant template builder",
+          "AI clinician assistant for editing",
+          "All Starter features"
         ]
       },
       {
-        "name": "Enterprise",
+        "name": "Premier",
+        "price": 119,
+        "period": "monthly",
+        "features": [
+          "Everything in Core",
+          "Native EHR push integration",
+          "ICD-10 code suggestions",
+          "Patient instructions",
+          "Referral letters",
+          "Visit summaries"
+        ],
+        "notes": "$104/month with annual billing"
+      },
+      {
+        "name": "Groups",
         "price": null,
         "period": "monthly",
         "features": [
-          "Everything in Professional",
-          "Custom integrations",
+          "Custom pricing for practices",
+          "Team management",
           "Dedicated success manager",
-          "Advanced analytics",
-          "SLA guarantees"
+          "Advanced analytics"
         ],
         "quote_required": true
       }
@@ -129,10 +138,10 @@
       "duration_days": 7,
       "credit_card_required": false
     },
-    "notes": "Pricing as of 2024. Annual billing discounts available."
+    "notes": "Pricing as of 2026. Premier includes EHR write-back to Athenahealth, Practice Fusion, SimplePractice, Elation, Tebra. 90+ language transcription. SOC 2 Type II certified."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
@@ -230,9 +239,15 @@
     "needs_review": false,
     "review_priority": "low",
     "data_quality_score": 90,
-    "last_verified": "2024-12-01"
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": ["suki-assistant", "nuance-dax-copilot", "abridge", "deepscribe"],
+  "related_tools": [
+    "suki-assistant",
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe"
+  ],
   "created_at": "2026-08-22T20:50:40.786Z",
   "updated_at": "2026-08-22T21:30:00.000Z",
   "status": "active",
@@ -241,20 +256,20 @@
     "meta_description": "Freed AI medical scribe review for clinicians. Starting at $99/month with 7-day free trial. Compare features, pricing, EHR integrations and HIPAA compliance.",
     "faqs": [
       {
-        "question": "How accurate is Freed AI for clinical documentation?",
-        "answer": "Freed reports 95%+ accuracy rates for clinical documentation. The AI learns your preferences over time and improves accuracy. Most clinicians report minimal editing needed after the first few visits."
+        "q": "How accurate is Freed AI for clinical documentation?",
+        "a": "Freed reports 95%+ accuracy rates for clinical documentation. The AI learns your preferences over time and improves accuracy. Most clinicians report minimal editing needed after the first few visits."
       },
       {
-        "question": "Does Freed work with my EHR system?",
-        "answer": "Freed works with virtually any EHR through its browser extension, allowing you to copy notes directly into your system. Native integrations are available for select EHRs. The setup takes about 5 minutes."
+        "q": "Does Freed work with my EHR system?",
+        "a": "Freed works with virtually any EHR through its browser extension, allowing you to copy notes directly into your system. Native integrations are available for select EHRs. The setup takes about 5 minutes."
       },
       {
-        "question": "Can I use Freed for psychiatry and mental health notes?",
-        "answer": "Yes, Freed supports psychiatry and mental health documentation including therapy progress notes, psychiatric evaluations, and SOAP notes. It can capture longer sessions typical in mental health settings."
+        "q": "Can I use Freed for psychiatry and mental health notes?",
+        "a": "Yes, Freed supports psychiatry and mental health documentation including therapy progress notes, psychiatric evaluations, and SOAP notes. It can capture longer sessions typical in mental health settings."
       },
       {
-        "question": "What happens to my patient data with Freed?",
-        "answer": "Freed is HIPAA compliant and offers BAAs. Audio recordings are processed in real-time and not stored long-term. All data is encrypted in transit and at rest. The company has SOC 2 Type II certification."
+        "q": "What happens to my patient data with Freed?",
+        "a": "Freed is HIPAA compliant and offers BAAs. Audio recordings are processed in real-time and not stored long-term. All data is encrypted in transit and at rest. The company has SOC 2 Type II certification."
       }
     ],
     "keywords": [

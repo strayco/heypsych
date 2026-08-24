@@ -4,6 +4,22 @@
   "id": "7e21445c-30cb-419b-a975-74814b4e9bd1",
   "slug": "cliniko",
   "name": "Cliniko",
+  "company_name": "Cliniko",
+  "one_liner": "Practice management for small health practices with full features at all tiers ($45-395/month) and free data migration.",
+  "short_description": "Cliniko is a cloud-based practice management platform for allied health practices with scheduling, treatment notes, invoicing, and online bookings.",
+  "long_description": "Cliniko is a cloud-based practice management platform designed for small allied health practices including physiotherapists, chiropractors, osteopaths, podiatrists, psychiatrists, psychologists, and massage therapists. The platform includes online bookings, appointment scheduling, treatment notes, invoicing, and patient communication. Uniquely, Cliniko offers the same full feature set at every pricing tier—only the number of practitioners changes the price. Pricing ranges from $45/month for a solo practitioner to $395/month for 26-200 practitioners, with no price increases since the company started in 2011. Cliniko offers a 30-day free trial without credit card, free data migration from other systems, and is free for registered charities and educational institutions. The platform is HIPAA compliant and popular globally, particularly in Australia, UK, and North America.",
+  "best_for": [
+    "Allied health practices (physio, chiro, osteo, psychology)",
+    "Small to mid-size clinics wanting full features without upsells",
+    "Practices migrating from other systems (free migration)",
+    "Charities and educational institutions (free use)"
+  ],
+  "not_for": [
+    "Large health systems needing enterprise features",
+    "Practices requiring advanced US insurance billing",
+    "Clinicians needing e-prescribing",
+    "Mental health-specific features like outcome tracking"
+  ],
   "import_ref": {
     "record_id": "MH-0031",
     "source_row": 32,
@@ -15,66 +31,198 @@
   },
   "primary_category": "ehr-practice-management",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "patient-portal",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychiatric-np-pa"
+      "psychologist",
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
+      "solo-practice",
       "group-practice"
     ],
     "organization_sizes": [
-      "small-2-10"
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
     ],
     "specialties": [
       "mental-health",
-      "behavioral-health",
-      "psychiatry",
-      "therapy"
+      "psychology",
+      "chiropractic",
+      "physical-therapy",
+      "osteopathy",
+      "podiatry",
+      "massage-therapy",
+      "veterinary"
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": true,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 4500,
+    "starting_price_display": "$45/month",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Solo (1 practitioner)",
+        "price": "$45/month"
+      },
+      {
+        "name": "2-5 practitioners",
+        "price": "Scales based on practitioner count"
+      },
+      {
+        "name": "6-25 practitioners",
+        "price": "Scales based on practitioner count"
+      },
+      {
+        "name": "26-200 practitioners",
+        "price": "$395/month"
+      }
+    ],
+    "notes": "All tiers include the same full feature set. SMS billed separately (~$0.10/message). No price increases since 2011. 30-day free trial (no credit card required). Free data migration. Free for registered charities and educational institutions.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "notes": "HIPAA compliant with BAA available. Popular in Australia, UK, and North America."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Xero",
+      "slug": "xero",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Mailchimp",
+      "slug": "mailchimp",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zapier",
+      "slug": "zapier",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.772Z",
-  "updated_at": "2026-08-22T20:50:40.772Z",
-  "status": "active",
+  "features": {
+    "scheduling": {
+      "online_bookings": true,
+      "appointment_reminders": true,
+      "sms_reminders": "~$0.10/message",
+      "calendar_sync": true
+    },
+    "documentation": {
+      "treatment_notes": true,
+      "letter_templates": true,
+      "custom_forms": true
+    },
+    "billing": {
+      "invoicing": true,
+      "online_payments": true,
+      "payment_processing": "2.4-3.5% per transaction"
+    },
+    "pricing_philosophy": "No feature tiers - same features at all pricing levels. No price increases since 2011.",
+    "free_migration": "Data migration from other systems is free",
+    "free_for_charities": "Free for registered charities and educational institutions"
+  },
   "seo": {
-    "title": "Cliniko: Review & Pricing | HeyPsych",
-    "meta_description": "Cliniko review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Cliniko: Practice Management for Allied Health | HeyPsych",
+    "meta_description": "Cliniko is practice management software for allied health practices. $45-395/month with full features at all tiers. 30-day free trial. HIPAA compliant.",
+    "faqs": [
+      {
+        "q": "How much does Cliniko cost?",
+        "a": "Cliniko costs $45/month for solo practitioners up to $395/month for 26-200 practitioners. All tiers include the same full feature set—there are no feature-based upsells. Prices haven't changed since 2011."
+      },
+      {
+        "q": "Does Cliniko have a free trial?",
+        "a": "Yes, Cliniko offers a generous 30-day free trial with nearly every feature available. No credit card is required to start."
+      },
+      {
+        "q": "Is Cliniko HIPAA compliant?",
+        "a": "Yes, Cliniko is HIPAA compliant with a BAA available. It's also GDPR compliant and used by practices in Australia, UK, and North America."
+      },
+      {
+        "q": "Does Cliniko charge for data migration?",
+        "a": "No, Cliniko offers free data migration from many other practice management systems, helping reduce upfront costs when switching."
+      }
+    ],
     "keywords": [
       "Cliniko",
-      "ehr practice management"
+      "practice management",
+      "allied health EHR",
+      "physiotherapy software",
+      "chiropractic software",
+      "psychology practice management"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "jane",
+    "power-diary",
+    "simplepractice",
+    "noterro"
+  ],
+  "competitor_tools": [
+    "jane",
+    "power-diary",
+    "noterro",
+    "halaxy"
+  ],
+  "company_info": {
+    "founded_year": 2011,
+    "headquarters": "Melbourne, Australia",
+    "employee_count": "50+",
+    "funding_status": "Bootstrapped",
+    "notes": "Cliniko is a bootstrapped company known for consistent pricing and customer-focused approach. Popular globally, especially in Australia and UK."
+  },
+  "created_at": "2026-08-22T20:50:40.772Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

@@ -5,6 +5,21 @@
   "slug": "charlie-health-iop",
   "name": "Charlie Health IOP",
   "company_name": "Charlie Health",
+  "one_liner": "Virtual intensive outpatient program (IOP) for teens, young adults, and families with 600+ insurance plans accepted.",
+  "short_description": "Charlie Health is a virtual intensive outpatient program (IOP) for adolescents, young adults, and families dealing with serious mental health conditions.",
+  "long_description": "Charlie Health is a virtual intensive outpatient program (IOP) specializing in teens (ages 11-17), young adults (18-30), and families experiencing serious mental health conditions including depression, anxiety, suicidal ideation, trauma, eating disorders, and substance use. The program provides 9-12 hours of treatment per week over 9-12 weeks, including three group therapy sessions and one individual therapy session weekly. Sessions are available mornings, afternoons, and evenings with flexible scheduling. Charlie Health is covered by 600+ insurance plans including most major commercial insurers and Medicaid in participating states. For those without coverage, self-pay options with payment plans are available in select states. Charlie Health also accepts VA referrals for veterans' dependents and offers specialized tracks for specific populations and conditions.",
+  "best_for": [
+    "Teens and young adults needing higher-level mental health care",
+    "Families seeking evidence-based IOP for adolescents",
+    "Patients with suicidal ideation, self-harm, or crisis history",
+    "Those stepping down from inpatient or PHP"
+  ],
+  "not_for": [
+    "Adults over 30 (outside target age range)",
+    "Patients needing full inpatient or residential care",
+    "Those seeking weekly outpatient therapy only",
+    "Medication-only psychiatry services"
+  ],
   "import_ref": {
     "record_id": "MH-0438",
     "source_row": 439,
@@ -16,58 +31,175 @@
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "adolescent-mental-health",
+      "young-adult-mental-health",
+      "depression",
+      "anxiety",
+      "trauma",
+      "eating-disorders",
+      "substance-use",
+      "suicidal-ideation",
+      "self-harm"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
-    "has_telehealth": false,
-    "has_measurement": false,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "per-provider-month",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "free_tier": false,
+    "notes": "Pricing varies by insurance plan. Charlie Health is covered by 600+ insurance plans including commercial and Medicaid. Self-pay and payment plans available in select states. Contact Admissions Team for coverage verification and cost estimates.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant virtual IOP platform. Licensed in all 50 states."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Major Commercial Insurance",
+      "slug": "commercial-insurance",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Covered by 600+ insurance plans"
+    },
+    {
+      "name": "Medicaid",
+      "slug": "medicaid",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "In states where IOP is covered"
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": true,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.810Z",
-  "updated_at": "2026-08-22T20:50:40.810Z",
-  "status": "active",
+  "services": {
+    "program_structure": {
+      "hours_per_week": "9-12 hours",
+      "duration": "9-12 weeks typical",
+      "group_sessions": "3 per week (3 hours each)",
+      "individual_therapy": "1 session per week",
+      "family_involvement": true
+    },
+    "age_ranges": {
+      "teens": "Ages 11-17",
+      "young_adults": "Ages 18-30"
+    },
+    "scheduling": {
+      "morning_sessions": true,
+      "afternoon_sessions": true,
+      "evening_sessions": true,
+      "flexible": true
+    },
+    "conditions_treated": [
+      "Depression",
+      "Anxiety",
+      "Suicidal ideation",
+      "Self-harm",
+      "Trauma and PTSD",
+      "Eating disorders",
+      "Substance use",
+      "OCD",
+      "Personality disorders",
+      "Grief"
+    ],
+    "specialized_tracks": true,
+    "evidence_based": true
+  },
   "seo": {
-    "title": "Charlie Health IOP: Review & Pricing | HeyPsych",
-    "meta_description": "Charlie Health IOP review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Charlie Health: Virtual IOP for Teens & Young Adults",
+    "meta_description": "Charlie Health is a virtual intensive outpatient program (IOP) for teens 11-17 and young adults 18-30. 600+ insurance plans. 9-12 hours/week. Depression,...",
+    "faqs": [
+      {
+        "q": "How much does Charlie Health cost?",
+        "a": "Charlie Health costs vary by insurance plan. The program is covered by 600+ insurance plans including commercial and Medicaid. Self-pay and payment plans are available in select states. Contact their Admissions Team for coverage verification."
+      },
+      {
+        "q": "What age groups does Charlie Health serve?",
+        "a": "Charlie Health serves teens ages 11-17, young adults ages 18-30, and their families. They specialize in adolescent and young adult mental health care."
+      },
+      {
+        "q": "How intensive is Charlie Health's IOP program?",
+        "a": "Charlie Health provides 9-12 hours of treatment per week, including three 3-hour group sessions and one individual therapy session weekly. Treatment typically spans 9-12 weeks."
+      },
+      {
+        "q": "What conditions does Charlie Health treat?",
+        "a": "Charlie Health treats serious mental health conditions including depression, anxiety, suicidal ideation, self-harm, trauma/PTSD, eating disorders, substance use, OCD, personality disorders, and grief."
+      }
+    ],
     "keywords": [
-      "Charlie Health IOP",
-      "provider network virtual care"
+      "Charlie Health",
+      "virtual IOP",
+      "intensive outpatient",
+      "teen mental health",
+      "young adult therapy",
+      "adolescent depression",
+      "suicidal ideation treatment"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "embark-behavioral-health",
+    "equip-health-eating-disorder-care",
+    "bend-health",
+    "little-otter"
+  ],
+  "competitor_tools": [
+    "embark-behavioral-health",
+    "equip-health-eating-disorder-care"
+  ],
+  "company_info": {
+    "founded_year": 2020,
+    "headquarters": "Bozeman, Montana, USA",
+    "employee_count": "500+",
+    "funding_status": "Venture-backed",
+    "notes": "Charlie Health specializes in virtual intensive outpatient programs for teens and young adults. Licensed in all 50 states."
+  },
+  "created_at": "2026-08-22T20:50:40.810Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

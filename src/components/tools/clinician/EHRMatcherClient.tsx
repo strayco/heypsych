@@ -334,9 +334,9 @@ function ResultsView({ results, tools, onBack, onRestart }: ResultsViewProps) {
                     <h3 className="text-lg font-semibold text-label-primary">
                       {toolData.name}
                     </h3>
-                    {/* FIX 4: Qualified language - show requirement match count */}
+                    {/* Show match percentage - consistent across all tools */}
                     <span className="rounded-full bg-fill-secondary px-2 py-0.5 text-sm font-medium text-label-secondary">
-                      {result.matchReasons.length} of {result.matchReasons.length + result.mismatchReasons.length} criteria
+                      {result.percentage}% match
                     </span>
                   </div>
 

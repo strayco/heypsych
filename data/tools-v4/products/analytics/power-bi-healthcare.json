@@ -1,0 +1,242 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+  "slug": "power-bi-healthcare",
+  "name": "Microsoft Power BI for Healthcare",
+  "company_name": "Microsoft",
+  "website": "https://powerbi.microsoft.com/en-us/industries/healthcare/",
+  "one_liner": "Cloud-based business intelligence with Microsoft 365 integration, starting free for basic users with Pro at $10/user/month.",
+  "short_description": "Microsoft Power BI is a cloud-based business intelligence platform that enables healthcare organizations to visualize data, create reports, and share insights across teams.",
+  "long_description": "Microsoft Power BI for Healthcare is a cloud-based business intelligence platform that transforms raw data into actionable insights through interactive visualizations and reports. For mental health and behavioral health practices, Power BI connects to EHR systems, practice management platforms, and billing systems to create unified dashboards tracking clinical outcomes, operational metrics, and financial performance. Key advantages include deep integration with Microsoft 365 (Excel, Teams, SharePoint), Copilot AI for natural language queries, and a robust free tier. Power BI offers healthcare-specific templates and accelerators including patient outcome dashboards, revenue cycle analytics, and population health visualizations. The platform supports real-time data streaming, mobile access, and embedded analytics. Pricing ranges from free (Power BI Desktop) to $10/user/month (Pro) to $20/user/month (Premium Per User). Power BI is HIPAA-compliant when deployed on Microsoft Azure with proper configuration and BAA.",
+  "import_ref": {
+    "record_id": "MH-2002",
+    "source_row": 2002,
+    "import_timestamp": "2026-08-24T00:00:00.000Z",
+    "source_file": "operate-tools.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "analytics-reporting",
+  "secondary_categories": [],
+  "capabilities": [
+    "reporting-dashboards",
+    "data-visualization",
+    "business-intelligence",
+    "microsoft-365-integration",
+    "ai-insights"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "practice-administrator",
+      "medical-director",
+      "billing-specialist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "mental-health",
+      "behavioral-health",
+      "multi-specialty",
+      "healthcare-general"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (Desktop)",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Power BI Desktop",
+        "price": "Free",
+        "features": ["Create reports locally", "Connect to data sources", "Desktop only", "No sharing"]
+      },
+      {
+        "name": "Power BI Pro",
+        "price": "$10/user/month",
+        "features": ["Share and collaborate", "Publish to web", "Microsoft 365 integration", "1GB model size"]
+      },
+      {
+        "name": "Power BI Premium Per User",
+        "price": "$20/user/month",
+        "features": ["All Pro features", "Larger datasets (100GB)", "Paginated reports", "Advanced AI"]
+      },
+      {
+        "name": "Power BI Premium",
+        "price": "$4,995/month (capacity)",
+        "features": ["Dedicated capacity", "Unlimited users", "On-premises reporting", "Enterprise scale"]
+      }
+    ],
+    "notes": "Power BI Pro is included with Microsoft 365 E5 licenses. Many healthcare organizations already have access through existing Microsoft agreements. Free trial available.",
+    "last_verified": "2026-08-24"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "certifications": ["HIPAA", "SOC 2", "HITRUST", "GDPR", "ISO 27001", "FedRAMP"],
+    "notes": "HIPAA compliance requires proper Azure configuration and Microsoft BAA. Microsoft Cloud for Healthcare provides additional compliance features."
+  },
+  "integrations": [
+    {
+      "name": "Microsoft 365",
+      "slug": "microsoft-365",
+      "category": "productivity",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Microsoft Teams",
+      "slug": "microsoft-teams",
+      "category": "communication",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Azure Synapse",
+      "slug": "azure-synapse",
+      "category": "data",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Dynamics 365",
+      "slug": "dynamics-365",
+      "category": "crm",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Excel",
+      "slug": "excel",
+      "category": "productivity",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false,
+    "notes": "Power BI Desktop (Windows), Power BI Service (web), and mobile apps for iOS/Android."
+  },
+  "features": {
+    "copilot_ai": {
+      "supported": true,
+      "description": "Microsoft Copilot enables natural language queries and AI-generated insights from your data"
+    },
+    "healthcare_templates": {
+      "supported": true,
+      "description": "Pre-built healthcare templates for patient outcomes, revenue cycle, and operational dashboards"
+    },
+    "real_time_streaming": {
+      "supported": true,
+      "description": "Stream data in real-time for live dashboards and alerts"
+    },
+    "embedded_analytics": {
+      "supported": true,
+      "description": "Embed Power BI reports directly into your applications and portals"
+    }
+  },
+  "best_for": [
+    "Practices already using Microsoft 365",
+    "Organizations wanting affordable BI with free tier",
+    "Teams comfortable with Excel-like interfaces",
+    "Health systems with Microsoft enterprise agreements",
+    "Groups needing Teams-integrated reporting"
+  ],
+  "not_for": [
+    "Organizations without Microsoft ecosystem",
+    "Mac-only environments (Desktop is Windows-only)",
+    "Practices needing advanced healthcare-specific metrics",
+    "Those requiring extensive custom development"
+  ],
+  "company_info": {
+    "founded_year": 1975,
+    "headquarters": "Redmond, WA, USA",
+    "employee_count": "200000+",
+    "funding_status": "Public",
+    "public_company": true,
+    "stock_ticker": "MSFT",
+    "notes": "Microsoft is a global technology leader. Power BI is part of the Microsoft Cloud for Healthcare offering."
+  },
+  "governance": {
+    "last_reviewed": "2026-08-24",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90
+  },
+  "related_tools": [
+    "tableau-healthcare",
+    "looker",
+    "qlik"
+  ],
+  "competitor_tools": [
+    "tableau-healthcare",
+    "looker",
+    "qlik"
+  ],
+  "created_at": "2026-08-24T00:00:00.000Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
+  "featured": false,
+  "status": "active",
+  "seo": {
+    "title": "Microsoft Power BI for Healthcare: Affordable Analytics for Mental Health",
+    "meta_description": "Power BI healthcare analytics review. Free tier available, Pro from $10/user/month. Microsoft 365 integration. HIPAA compliant with proper configuration.",
+    "faqs": [
+      {
+        "q": "Is Power BI HIPAA compliant for healthcare?",
+        "a": "Yes, Power BI can be HIPAA-compliant when deployed properly on Microsoft Azure with a BAA. Organizations must configure security settings appropriately and use Microsoft Cloud for Healthcare features."
+      },
+      {
+        "q": "How much does Power BI cost?",
+        "a": "Power BI Desktop is free for local report creation. Power BI Pro is $10/user/month for sharing and collaboration. Premium Per User is $20/user/month for advanced features. Pro is included with Microsoft 365 E5."
+      },
+      {
+        "q": "Can I use Power BI with my EHR?",
+        "a": "Yes, Power BI can connect to most EHRs and practice management systems through APIs, ODBC connections, or data exports. It integrates natively with Microsoft Dynamics 365 for Healthcare."
+      },
+      {
+        "q": "Is Power BI good for small practices?",
+        "a": "Yes, Power BI's free tier and $10/month Pro pricing make it accessible for small practices, especially those already using Microsoft 365. The learning curve is manageable for Excel users."
+      }
+    ],
+    "keywords": [
+      "Power BI healthcare",
+      "Microsoft healthcare analytics",
+      "mental health reporting",
+      "behavioral health BI",
+      "practice dashboard",
+      "free healthcare analytics"
+    ]
+  }
+}

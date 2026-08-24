@@ -4,6 +4,11 @@
   "id": "1072451c-2496-47ea-bc80-12aa3cacf261",
   "slug": "akasa",
   "name": "AKASA",
+  "company_name": "AKASA",
+  "website": "https://www.akasa.com",
+  "one_liner": "AI-powered RCM automation for health systems",
+  "short_description": "AKASA provides AI-driven revenue cycle automation that handles routine administrative tasks like prior authorization, claims status, and payment posting with human-level accuracy.",
+  "description": "AKASA combines artificial intelligence with human expertise to automate healthcare revenue cycle operations. The platform uses machine learning to handle routine tasks like prior authorization, claims status checks, payment posting, and eligibility verification—achieving 80-90% automation rates for routine work. Unlike pure software solutions, AKASA's Unified Automation approach includes AI that learns from human experts, delivering accuracy comparable to trained RCM staff. Designed primarily for mid-to-large health systems using Epic.",
   "import_ref": {
     "record_id": "MH-0559",
     "source_row": 560,
@@ -15,12 +20,24 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "eligibility-verification",
+    "denial-management"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "primary-care",
+      "specialty-care",
+      "hospital-services",
+      "multi-specialty"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,35 +51,176 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "founded_year": 2019,
+    "headquarters": "San Francisco, CA",
+    "employee_count": "200-400",
+    "funding_total": "$85M+",
+    "funding_stage": "Series B",
+    "notable_investors": [
+      "Andreessen Horowitz",
+      "BOND",
+      "Costanoa Ventures"
+    ],
+    "customer_count": "50+ health systems"
+  },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "currency": "USD",
+    "billing_period": "annual",
+    "tiers": [
+      {
+        "name": "Prior Authorization Automation",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "AI-powered prior auth submission",
+          "Status tracking automation",
+          "Appeal automation",
+          "Epic integration",
+          "Analytics dashboard"
+        ],
+        "quote_required": true
+      },
+      {
+        "name": "Full RCM Automation",
+        "price": null,
+        "period": "annual",
+        "features": [
+          "Prior authorization",
+          "Claims status automation",
+          "Payment posting",
+          "Eligibility verification",
+          "Denial management",
+          "Dedicated success team"
+        ],
+        "quote_required": true
+      }
+    ],
+    "estimated_range": "Enterprise pricing based on transaction volume and scope",
+    "free_trial": {
+      "available": false,
+      "notes": "Proof of concept pilots available for qualified health systems"
+    },
+    "notes": "ROI-focused pricing. Typical implementations show 80-90% automation of routine tasks and significant FTE savings."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "compliance_urls": {
+      "security": "https://www.akasa.com/security",
+      "compliance": "https://www.akasa.com/compliance"
+    }
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "method": "native-api",
+      "native": true,
+      "notes": "Deep Epic integration is AKASA's primary focus"
+    },
+    {
+      "name": "Cerner/Oracle Health",
+      "type": "ehr",
+      "method": "api",
+      "native": false
+    },
+    {
+      "name": "Payer portals",
+      "type": "payer",
+      "method": "rpa-ai",
+      "native": true,
+      "notes": "AI navigates payer portals automatically"
+    }
+  ],
+  "features": {
+    "unified_automation": {
+      "supported": true,
+      "description": "AI learns from human experts to achieve human-level accuracy on RCM tasks"
+    },
+    "prior_auth": {
+      "supported": true,
+      "description": "Automated prior authorization submission, status checks, and appeals"
+    },
+    "claims_status": {
+      "supported": true,
+      "description": "Automated claims status checks across payer portals"
+    },
+    "payment_posting": {
+      "supported": true,
+      "description": "Automated posting of payments and adjustments"
+    },
+    "key_metrics": {
+      "automation_rate": "80-90% for routine tasks",
+      "accuracy": "Human-level accuracy with AI efficiency",
+      "fte_savings": "Significant reduction in manual RCM work"
+    }
+  },
+  "best_for": [
+    "Health systems on Epic wanting RCM automation",
+    "Organizations struggling with prior auth volume",
+    "Revenue cycle teams seeking to reduce manual work",
+    "Systems wanting AI that learns from their processes",
+    "HITRUST-certified automation solution",
+    "Organizations needing scalable RCM capacity"
+  ],
+  "not_for": [
+    "Small independent practices (consider Tebra or Athenahealth)",
+    "Non-Epic environments (limited support)",
+    "Organizations seeking full-service outsourced RCM",
+    "Practices needing quick implementation (enterprise rollout typical)"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-08-24"
   },
-  "related_tools": [],
+  "related_tools": [
+    "waystar",
+    "olive-ai",
+    "notable-ai",
+    "ambience-healthcare"
+  ],
   "created_at": "2026-08-22T20:50:40.821Z",
-  "updated_at": "2026-08-22T20:50:40.821Z",
+  "updated_at": "2026-08-23T12:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "AKASA: Review & Pricing | HeyPsych",
-    "meta_description": "AKASA review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "AKASA: AI RCM Automation for Health Systems | HeyPsych",
+    "meta_description": "AKASA review - AI-powered RCM automation. 80-90% automation rate for prior auth, claims status, payment posting. HITRUST certified. For Epic health systems.",
+    "faqs": [
+      {
+        "q": "What does AKASA automate?",
+        "a": "AKASA automates routine RCM tasks including prior authorization submission and status checks, claims status inquiries, payment posting, eligibility verification, and denial management. The AI achieves 80-90% automation rates for routine tasks."
+      },
+      {
+        "q": "Does AKASA work with Epic?",
+        "a": "Yes, AKASA has deep native integration with Epic and this is their primary focus. They also support Cerner/Oracle Health but Epic environments see the most comprehensive automation capabilities."
+      },
+      {
+        "q": "How is AKASA different from RPA?",
+        "a": "AKASA uses 'Unified Automation' which combines AI/ML with human expertise, rather than simple robotic process automation (RPA). The AI learns from human experts and can handle exceptions that break traditional RPA bots."
+      },
+      {
+        "q": "Is AKASA suitable for small practices?",
+        "a": "AKASA is designed for mid-to-large health systems, typically with significant prior authorization volume. Small practices should consider solutions like Tebra, Athenahealth, or Candid Health instead."
+      }
+    ],
     "keywords": [
       "AKASA",
-      "billing rcm insurance"
+      "AI RCM",
+      "prior authorization automation",
+      "revenue cycle automation",
+      "Epic RCM",
+      "healthcare AI automation",
+      "claims status automation",
+      "unified automation"
     ]
   }
 }

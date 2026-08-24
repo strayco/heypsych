@@ -608,13 +608,13 @@ function ComparisonRow({ row, treatments, depthLevel }: ComparisonRowProps) {
       >
         {/* Attribute label column */}
         <div className="p-4 border-r border-separator/30 flex flex-col justify-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between gap-2">
             <span className="font-medium text-sm text-label-primary">
               {attribute.label}
             </span>
             {hasDifferences && (
-              <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded">
-                Key difference
+              <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded shrink-0">
+                Different
               </span>
             )}
           </div>
@@ -657,13 +657,13 @@ function ComparisonRow({ row, treatments, depthLevel }: ComparisonRowProps) {
         )}
       >
         {/* Attribute label */}
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center justify-between gap-2 mb-3">
           <span className="font-medium text-sm text-label-primary">
             {attribute.label}
           </span>
           {hasDifferences && (
-            <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded">
-              Differs
+            <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded shrink-0">
+              Different
             </span>
           )}
         </div>

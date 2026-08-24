@@ -17,6 +17,7 @@ import {
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import { ToolService } from "@/lib/tools/tool-service";
 import { CampaignService, type SponsoredTool } from "@/lib/tools/campaign-service";
+import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { siteConfig } from "@/lib/config/site";
 import { ToolsHeroSearch } from "./_components/ToolsHeroSearch";
 import { AudienceSelector } from "./_components/AudienceSelector";
@@ -56,9 +57,12 @@ export const metadata: Metadata = {
 
 export default async function ToolsDirectoryPage() {
   const patientHubs = TaxonomyService.getAllHubs();
-  const clinicianHubs = TaxonomyService.getAllClinicianHubs();
   const allTools = await ToolService.getAll();
   const featuredTools = await ToolService.getFeatured(6);
+
+  // Get V4 clinician tools (publication-gated)
+  const v4ClinicianTools = await ClinicianToolService.loadClinicianTools();
+  const v4CategoryCounts = await ClinicianToolService.getCategoryCounts();
 
   // Get sponsored tools for landing page (if any active campaigns)
   const sponsoredTools = await CampaignService.getSponsoredTools(
@@ -68,8 +72,8 @@ export default async function ToolsDirectoryPage() {
     3
   );
 
-  const toolCount = allTools.length;
-  const clinicianCount = allTools.filter((t) => t.clinician?.is_clinician_relevant).length;
+  const toolCount = allTools.length + v4ClinicianTools.length;
+  const clinicianCount = v4ClinicianTools.length;
   const patientCount = allTools.filter((t) => !t.clinician?.is_clinician_relevant || t.primary_hubs.length > 0).length;
 
   return (
@@ -147,7 +151,7 @@ export default async function ToolsDirectoryPage() {
         </div>
       </section>
 
-      {/* For Clinicians Section */}
+      {/* For Clinicians Section - V4 Tools */}
       <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center justify-between">
@@ -160,7 +164,7 @@ export default async function ToolsDirectoryPage() {
                   For Clinicians
                 </h2>
                 <p className="text-sm text-label-secondary">
-                  Professional tools for mental health practices
+                  {clinicianCount} professional tools for mental health practices
                 </p>
               </div>
             </div>
@@ -197,11 +201,26 @@ export default async function ToolsDirectoryPage() {
             </Link>
           </div>
 
-          <CategoryGrid
-            categories={clinicianHubs.slice(0, 6)}
-            variant="clinician"
-            className="mt-6"
-          />
+          {/* V4 Category Cards (only categories with inventory) */}
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {v4CategoryCounts.filter(c => c.count > 0).map((category) => (
+              <Link
+                key={category.slug}
+                href={`/tools/for-clinicians/${category.slug}/`}
+                className="group rounded-xl border border-separator bg-surface p-4 transition-all hover:border-treatment/30 hover:shadow-soft"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="font-medium text-label-primary group-hover:text-treatment">
+                    {category.display_name}
+                  </h3>
+                  <ArrowRight className="h-4 w-4 text-label-tertiary transition-transform group-hover:translate-x-0.5 group-hover:text-treatment" />
+                </div>
+                <p className="mt-1 text-sm text-label-tertiary">
+                  {category.count} tools
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

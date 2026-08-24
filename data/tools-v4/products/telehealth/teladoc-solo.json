@@ -5,6 +5,9 @@
   "slug": "teladoc-solo",
   "name": "Teladoc Solo",
   "company_name": "Teladoc Health",
+  "one_liner": "Enterprise virtual care platform for hospitals and health systems",
+  "short_description": "Teladoc Solo is an enterprise telehealth platform from Teladoc Health designed for hospitals and health systems. The platform supports inpatient virtual care, ICU monitoring, specialty...",
+  "long_description": "Teladoc Solo is Teladoc Health's enterprise virtual care platform built specifically for hospitals and health systems. Unlike consumer-facing telehealth services, Solo focuses on enabling virtual care delivery within clinical settings—supporting use cases like tele-ICU monitoring, virtual nursing, specialty consultations, and inpatient rounding.\n\nThe platform integrates with InTouch Health hardware, including medical-grade telehealth carts and devices that Teladoc acquired. This enables clinical-grade video connectivity for bedside consultations, remote patient monitoring, and specialist access without requiring patients to manage their own technology.\n\nTeladoc Solo supports 24/7 managed services options where Teladoc's clinical network can provide coverage for facilities needing round-the-clock specialty access. This hybrid model combines technology with staffing services for health systems that need both.\n\nThe platform is designed for large healthcare organizations with complex virtual care needs across multiple facilities and use cases. It's not intended for individual practices, small clinics, or organizations seeking simple video visit functionality. Teladoc offers other products (like Teladoc for providers) that may be more appropriate for smaller-scale telehealth needs.",
   "import_ref": {
     "record_id": "MH-0348",
     "source_row": 349,
@@ -17,11 +20,29 @@
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
   "capabilities": [],
+  "best_for": [
+    "Hospital systems needing enterprise virtual care infrastructure",
+    "Health systems implementing tele-ICU programs",
+    "Organizations requiring 24/7 specialty coverage",
+    "Multi-facility systems standardizing on virtual care"
+  ],
+  "not_for": [
+    "Solo practitioners or small practices",
+    "Ambulatory-only organizations",
+    "Practices seeking simple video visit software",
+    "Organizations without enterprise IT infrastructure"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "critical-care",
+      "hospital-medicine",
+      "multi-specialty"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -38,32 +59,93 @@
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Enterprise contracts based on facilities, devices, specialties, and managed services. Includes hardware options."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "Cerner",
+      "type": "ehr",
+      "verified": true
+    },
+    {
+      "name": "InTouch Health Devices",
+      "type": "hardware",
+      "verified": true,
+      "notes": "Native integration - Teladoc acquired InTouch Health"
+    }
+  ],
+  "features": {
+    "telehealth": {
+      "video_visits": true,
+      "tele_icu": true,
+      "virtual_nursing": true,
+      "specialty_consults": true,
+      "clinical_telepresence": true
+    },
+    "enterprise": {
+      "multi_facility": true,
+      "managed_services": true,
+      "hardware_integration": true,
+      "twenty_four_seven_coverage": true
+    }
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_reviewed": "2026-08-24",
+    "review_notes": "Complete profile. Enterprise hospital virtual care platform."
   },
-  "related_tools": [],
+  "related_tools": [
+    "amwell-converge",
+    "philips-telehealth",
+    "vidyo-health"
+  ],
   "created_at": "2026-08-22T20:50:40.801Z",
-  "updated_at": "2026-08-22T20:50:40.801Z",
+  "updated_at": "2026-08-24T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Teladoc Solo: Review & Pricing | HeyPsych",
-    "meta_description": "Teladoc Solo review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Teladoc Solo: Enterprise Hospital Telehealth | HeyPsych",
+    "meta_description": "Teladoc Solo review for hospitals. Enterprise virtual care platform for tele-ICU, virtual nursing, and specialty consultations with InTouch Health integration.",
+    "faqs": [
+      {
+        "q": "What is Teladoc Solo?",
+        "a": "Teladoc Solo is Teladoc Health's enterprise virtual care platform designed for hospitals and health systems. It supports inpatient use cases like tele-ICU, virtual nursing, and specialty consultations."
+      },
+      {
+        "q": "Is Teladoc Solo for individual practices?",
+        "a": "No, Teladoc Solo is designed for hospitals and health systems with complex virtual care needs. Individual practices should look at Teladoc's other offerings designed for smaller-scale telehealth."
+      },
+      {
+        "q": "What is InTouch Health integration?",
+        "a": "Teladoc acquired InTouch Health, a medical-grade telehealth hardware company. Teladoc Solo integrates with InTouch devices including telehealth carts for clinical-grade bedside virtual care."
+      },
+      {
+        "q": "Does Teladoc Solo offer staffing services?",
+        "a": "Yes, Teladoc offers 24/7 managed services through Teladoc Solo, providing clinical coverage for health systems that need round-the-clock specialty access."
+      }
+    ],
     "keywords": [
       "Teladoc Solo",
-      "telehealth communication"
+      "enterprise telehealth",
+      "tele-ICU",
+      "virtual nursing",
+      "hospital telehealth",
+      "InTouch Health",
+      "clinical telepresence",
+      "Teladoc Health enterprise"
     ]
   }
 }

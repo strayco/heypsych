@@ -4,6 +4,22 @@
   "id": "a0578a0c-5826-4b03-ae2f-b42b3d4a567a",
   "slug": "heard",
   "name": "Heard",
+  "company_name": "Heard",
+  "one_liner": "Done-for-you bookkeeping and tax services for therapists in private practice starting at $129/month.",
+  "short_description": "Heard is a financial services platform providing done-for-you bookkeeping, quarterly tax estimates, and annual tax filing specifically for therapists in private practice.",
+  "long_description": "Heard is a financial services platform built specifically for therapists in private practice. The service provides done-for-you monthly bookkeeping, quarterly tax estimates, and optional annual tax filing—all designed around the unique needs of mental health providers. Plans start at $129/month for the Lite tier (bookkeeping + quarterly taxes) with Essential and Premium tiers available for sole proprietors and S-Corps. Annual tax filing is available as a $750 add-on. Heard's dedicated bookkeeping team keeps books organized and accurate with connections to bank accounts and payment processors. Additional services include payroll ($39/month + $6/employee) and catch-up bookkeeping ($99/month). Heard offers both monthly and annual billing with 15% savings for annual subscribers. Compared to traditional CPAs ($500+/month), Heard provides a more affordable entry point for solo therapists.",
+  "best_for": [
+    "Solo therapists wanting affordable bookkeeping",
+    "Private practice owners in first 1-2 years",
+    "Therapists needing quarterly tax estimates",
+    "Clinicians who hate managing finances themselves"
+  ],
+  "not_for": [
+    "Large group practices (designed for solo/small)",
+    "Non-therapist healthcare providers",
+    "Those needing complex multi-entity accounting",
+    "Practices with existing CPA relationships"
+  ],
   "import_ref": {
     "record_id": "MH-0542",
     "source_row": 543,
@@ -22,51 +38,173 @@
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_rcm": true,
+    "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 12900,
+    "starting_price_display": "$129/month",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Lite",
+        "price": "$129/month (bookkeeping + quarterly taxes)"
+      },
+      {
+        "name": "Essential",
+        "price": "~$199/month (~$144/month annual)"
+      },
+      {
+        "name": "Premium / S-Corp",
+        "price": "Contact for pricing"
+      }
+    ],
+    "notes": "Save 15% with annual billing. Annual tax filing is $750 add-on (not included in base plans). Payroll add-on: $39/month + $6/employee. Catch-up bookkeeping: $99/month. Monthly subscribers can cancel anytime; annual subscribers commit for full year.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
     "hipaa_support": "unknown",
     "baa_available": "unknown",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "Financial services platform—does not handle patient data directly."
   },
-  "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "integrations": [
+    {
+      "name": "Bank Accounts",
+      "slug": "bank-accounts",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Square",
+      "slug": "square",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "IvyPay",
+      "slug": "ivypay",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
-  "status": "active",
+  "features": {
+    "bookkeeping": {
+      "done_for_you": true,
+      "monthly": true,
+      "bank_connections": true,
+      "expense_categorization": true
+    },
+    "taxes": {
+      "quarterly_estimates": true,
+      "annual_filing": "$750 add-on",
+      "s_corp_support": true
+    },
+    "add_ons": {
+      "payroll": "$39/month + $6/employee",
+      "catch_up_bookkeeping": "$99/month"
+    },
+    "billing_options": {
+      "monthly": true,
+      "annual": "15% savings"
+    }
+  },
   "seo": {
-    "title": "Heard: Review & Pricing | HeyPsych",
-    "meta_description": "Heard review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Heard: Bookkeeping & Taxes for Therapists | HeyPsych",
+    "meta_description": "Heard is done-for-you bookkeeping and tax services for therapists. $129/month starting. Quarterly taxes, annual filing, payroll. Built for private practice.",
+    "faqs": [
+      {
+        "q": "How much does Heard cost?",
+        "a": "Heard starts at $129/month for the Lite plan (bookkeeping + quarterly taxes). Essential runs ~$199/month (~$144 with annual billing). Annual tax filing is a $750 add-on."
+      },
+      {
+        "q": "Does Heard handle annual taxes?",
+        "a": "Yes, but annual tax filing is a $750 one-time add-on. The base Lite plan only includes bookkeeping and quarterly tax estimates."
+      },
+      {
+        "q": "Is Heard only for therapists?",
+        "a": "Yes, Heard is built specifically for therapists and mental health providers in private practice. Their platform and team understand the unique financial needs of therapy practices."
+      },
+      {
+        "q": "How does Heard compare to a traditional CPA?",
+        "a": "Traditional CPAs typically cost $500+ per month. Heard offers comparable services starting at $129/month, making it more affordable for solo practitioners in their first years of practice."
+      }
+    ],
     "keywords": [
       "Heard",
-      "billing rcm insurance"
+      "therapist bookkeeping",
+      "therapy taxes",
+      "private practice accounting",
+      "mental health financial services"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "traktion-accounting",
+    "greenoak-accounting"
+  ],
+  "competitor_tools": [
+    "traktion-accounting",
+    "greenoak-accounting",
+    "bench"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Venture-backed",
+    "notes": "Heard is the leading financial services platform for therapists in private practice, serving thousands of mental health providers."
+  },
+  "created_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

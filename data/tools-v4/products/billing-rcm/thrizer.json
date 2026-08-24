@@ -4,6 +4,22 @@
   "id": "a1f482e9-109c-46ff-8f19-fd981cc3a456",
   "slug": "thrizer",
   "name": "Thrizer",
+  "company_name": "Thrizer",
+  "one_liner": "Out-of-network billing platform that auto-submits claims and fronts reimbursements so clients pay only their copay.",
+  "short_description": "Thrizer is an out-of-network billing platform that automatically submits insurance claims for therapy sessions and fronts reimbursements to reduce client costs.",
+  "long_description": "Thrizer is an out-of-network billing platform designed for private-pay therapists who want to help clients access their OON benefits without the hassle of superbills. When clients pay through Thrizer, claims are submitted automatically and Thrizer fronts the expected reimbursement—so after meeting their deductible, clients pay only a copay-like amount while therapists still receive their full rate upfront. The platform is free for therapists (3% processing fee) with client fees of $1.50/claim + 1% of reimbursement upon payout. Thrizer includes a free instant OON benefits calculator, handles claim resubmissions and denials end-to-end, and manages deductible tracking. Support is email-only currently with no EHR integrations available yet.",
+  "best_for": [
+    "Out-of-network therapists wanting to simplify client reimbursement",
+    "Private-pay practices helping clients use OON benefits",
+    "Therapists who want to offer copay-like pricing without going in-network",
+    "Solo practitioners without billing staff"
+  ],
+  "not_for": [
+    "In-network providers (use Headway/Alma instead)",
+    "Practices needing EHR integration",
+    "Those requiring phone support",
+    "Group practices needing enterprise billing"
+  ],
   "import_ref": {
     "record_id": "MH-0543",
     "source_row": 544,
@@ -15,54 +31,161 @@
   },
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "denial-management",
+    "payment-processing",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ],
+    "specialties": [
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free for therapists",
+    "free_tier": true,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Therapist Fee",
+        "price": "3% processing fee per transaction"
+      },
+      {
+        "name": "Client Fee (post-deductible)",
+        "price": "$1.50/claim + 1% of reimbursement"
+      },
+      {
+        "name": "Client Fee (pre-deductible)",
+        "price": "Free (claim tracking only)"
+      }
+    ],
+    "notes": "No monthly fees. Therapists pay only 3% processing. Client fees charged only upon receiving reimbursement. Pre-deductible claim tracking is free. Therapist can optionally absorb client fees.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant payment and claims platform."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.819Z",
-  "updated_at": "2026-08-22T20:50:40.819Z",
-  "status": "active",
+  "features": {
+    "claim_submission": {
+      "automatic": true,
+      "superbill_upload": true,
+      "denial_resubmission": true
+    },
+    "reimbursement_fronting": {
+      "description": "Thrizer fronts expected reimbursement so clients pay only copay-like amounts",
+      "post_deductible_only": true
+    },
+    "benefits_calculator": {
+      "free": true,
+      "instant": true
+    },
+    "support": {
+      "email": true,
+      "phone": false,
+      "live_chat": false
+    }
+  },
+  "limitations": [
+    "No EHR integrations currently",
+    "Email-only support",
+    "No mobile app"
+  ],
   "seo": {
-    "title": "Thrizer: Review & Pricing | HeyPsych",
-    "meta_description": "Thrizer review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Thrizer: Out-of-Network Billing for Therapists | HeyPsych",
+    "meta_description": "Thrizer auto-submits OON claims and fronts reimbursements so therapy clients pay only a copay. Free for therapists with 3% processing. No superbills needed.",
+    "faqs": [
+      {
+        "q": "How much does Thrizer cost for therapists?",
+        "a": "Thrizer is free for therapists to use with a 3% payment processing fee per transaction. There are no monthly fees or setup costs."
+      },
+      {
+        "q": "How does Thrizer's reimbursement fronting work?",
+        "a": "After clients meet their deductible, Thrizer fronts the expected insurance reimbursement so clients pay only a copay-like amount while therapists receive their full rate upfront."
+      },
+      {
+        "q": "What do clients pay to use Thrizer?",
+        "a": "Clients pay $1.50 per claim plus 1% of the reimbursed amount when they receive their payout. Pre-deductible claim tracking is completely free."
+      },
+      {
+        "q": "How does Thrizer compare to superbills?",
+        "a": "Thrizer eliminates superbills entirely by automatically submitting claims when clients pay, handling denials and resubmissions, and reducing wait times for reimbursement."
+      }
+    ],
     "keywords": [
       "Thrizer",
-      "billing rcm insurance"
+      "out-of-network billing",
+      "OON reimbursement",
+      "therapy billing",
+      "superbill alternative",
+      "insurance claims"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "mentaya",
+    "reimbursify",
+    "nirvana-health"
+  ],
+  "competitor_tools": [
+    "mentaya",
+    "reimbursify"
+  ],
+  "company_info": {
+    "headquarters": "United States",
+    "funding_status": "Venture-backed",
+    "notes": "Thrizer specializes in helping out-of-network therapists offer copay-like pricing to clients without joining insurance panels."
+  },
+  "created_at": "2026-08-22T20:50:40.819Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

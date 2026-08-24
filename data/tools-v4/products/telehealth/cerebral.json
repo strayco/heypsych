@@ -4,6 +4,22 @@
   "id": "2ebd971d-5a2c-494b-bdb4-dee772c6dba1",
   "slug": "cerebral",
   "name": "Cerebral",
+  "company_name": "Cerebral Inc.",
+  "one_liner": "Online therapy and psychiatry platform with medication management, but no longer prescribes controlled substances.",
+  "short_description": "Cerebral is an online mental health platform offering therapy and medication management for anxiety, depression, and insomnia, with broad insurance acceptance.",
+  "long_description": "Cerebral is an online mental health company founded in 2020 that provides therapy and psychiatric medication management through video visits. The platform offers both self-pay and insurance-covered services across most US states. Following a 2022 DOJ investigation into prescribing practices, Cerebral stopped prescribing controlled substances including ADHD stimulants and benzodiazepines. The company now focuses on non-controlled psychiatric medications like SSRIs, SNRIs, and non-stimulant ADHD treatments (atomoxetine, guanfacine). Cerebral accepts major insurance plans including Aetna, BCBS, Cigna, and UnitedHealthcare, with typical copays around $30. Self-pay options include medication management at $60/month and therapy at $175/session.",
+  "best_for": [
+    "Adults seeking online therapy and psychiatry for anxiety or depression",
+    "Patients with insurance wanting affordable copay-based care",
+    "Those needing non-stimulant medication management",
+    "Individuals preferring combined therapy and medication on one platform"
+  ],
+  "not_for": [
+    "Patients needing ADHD stimulant medications (no longer prescribed)",
+    "Those requiring benzodiazepines for anxiety",
+    "Patients under 18 (limited availability)",
+    "Medicaid or TRICARE members (not accepted)"
+  ],
   "import_ref": {
     "record_id": "MH-0306",
     "source_row": 307,
@@ -14,62 +30,223 @@
     ]
   },
   "lifecycle": {
-    "status": "active"
+    "status": "active",
+    "notes": "Company faced DOJ investigation in 2022; no longer prescribes controlled substances"
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "appointment-scheduling",
+    "secure-messaging",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychologist",
+      "psychiatric-np-pa",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "depression",
+      "anxiety",
+      "insomnia"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 6000,
+    "starting_price_display": "$60/month (medication management)",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Medication Management (Self-Pay)",
+        "price": "$180/quarter ($60/month)"
+      },
+      {
+        "name": "Therapy Session (Self-Pay)",
+        "price": "$175/session"
+      },
+      {
+        "name": "Medication + Therapy (Self-Pay)",
+        "price": "$365/month"
+      },
+      {
+        "name": "Couples Therapy",
+        "price": "$325/month"
+      },
+      {
+        "name": "With Insurance",
+        "price": "~$20-50 copay average"
+      }
+    ],
+    "notes": "Insurance accepted: Aetna, Cigna, BCBS, UHC in many states. Average copay $30. Does NOT accept Medicaid or TRICARE.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant telehealth platform."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Optum",
+      "slug": "optum",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "telehealth": {
+    "video_quality": {
+      "standard": "HD video",
+      "hd_available": true,
+      "reliability": "High"
+    },
+    "features": {
+      "waiting_room": true,
+      "screen_share": false,
+      "whiteboard": false,
+      "session_recording": false,
+      "breakout_rooms": false,
+      "group_sessions": false,
+      "text_chat": true,
+      "file_sharing": false
+    },
+    "patient_experience": {
+      "no_download_required": false,
+      "no_account_required": false,
+      "browser_based": true,
+      "sms_reminders": true,
+      "email_reminders": true
+    },
+    "mobile_apps": {
+      "patient_ios": true,
+      "patient_android": true
+    }
+  },
+  "services": {
+    "provider_network": true,
+    "mental_health_services": true,
+    "mental_health_notes": "Therapy and medication management for anxiety, depression, insomnia",
+    "psychiatry_services": true,
+    "medication_management": true,
+    "controlled_substances": false,
+    "controlled_substances_notes": "NO LONGER prescribes stimulants (ADHD) or benzodiazepines since 2022 DOJ investigation. Non-stimulant ADHD options only (atomoxetine, guanfacine).",
+    "therapy_services": true,
+    "child_services": "Limited (CT, MA, NY, NJ, PA)"
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.849Z",
-  "updated_at": "2026-08-22T20:50:40.849Z",
-  "status": "active",
+  "related_tools": [
+    "talkiatry",
+    "talkspace-psychiatry",
+    "brightside-health",
+    "done-adhd"
+  ],
+  "competitor_tools": [
+    "talkiatry",
+    "talkspace-psychiatry",
+    "brightside-health"
+  ],
+  "company_info": {
+    "founded_year": 2020,
+    "headquarters": "San Francisco, California, USA",
+    "employee_count": "500+",
+    "funding_status": "Venture-backed",
+    "notes": "Faced DOJ investigation in 2022 over ADHD stimulant prescribing practices. No longer prescribes controlled substances."
+  },
   "seo": {
-    "title": "Cerebral: Review & Pricing | HeyPsych",
-    "meta_description": "Cerebral review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Cerebral",
+    "meta_description": "Cerebral offers online therapy and medication management for anxiety and depression. $60/month self-pay or insurance copay. Note: No longer prescribes ADHD...",
+    "faqs": [
+      {
+        "q": "Can Cerebral prescribe Adderall for ADHD?",
+        "a": "No. Following a 2022 DOJ investigation, Cerebral stopped prescribing controlled substances including ADHD stimulants like Adderall and Ritalin. They only offer non-stimulant ADHD treatments like atomoxetine (Strattera) and guanfacine."
+      },
+      {
+        "q": "How much does Cerebral cost?",
+        "a": "Self-pay: $60/month for medication management, $175/session for therapy, or $365/month for both. With insurance (Aetna, BCBS, Cigna, UHC), most copays are $20-50 per visit with an average of $30."
+      },
+      {
+        "q": "Does Cerebral accept insurance?",
+        "a": "Yes, Cerebral accepts Aetna, Blue Cross Blue Shield, Cigna, UnitedHealthcare, and Optum in many states. They do NOT accept Medicaid or TRICARE."
+      },
+      {
+        "q": "Is Cerebral safe to use after the DOJ investigation?",
+        "a": "Cerebral remains operational and HIPAA-compliant. The 2022 investigation focused on controlled substance prescribing practices, which they have since stopped. They now only prescribe non-controlled psychiatric medications."
+      }
+    ],
     "keywords": [
       "Cerebral",
-      "telehealth communication"
+      "online psychiatry",
+      "telehealth therapy",
+      "medication management",
+      "online mental health",
+      "Cerebral ADHD"
     ]
   },
   "entity_resolution": {
@@ -80,5 +257,9 @@
     ],
     "resolution_notes": "Cerebral virtual mental health platform. Appears in Provider Networks and Measurement/DTx.",
     "resolved_at": "2026-08-22T21:09:07.538Z"
-  }
+  },
+  "created_at": "2026-08-22T20:50:40.849Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

@@ -4,6 +4,22 @@
   "id": "41617638-0eb8-43f4-900b-2f1f217031af",
   "slug": "monument",
   "name": "Monument",
+  "company_name": "Monument",
+  "one_liner": "Online alcohol treatment platform with therapy, medication (naltrexone/acamprosate), and community support starting at $25/session with insurance.",
+  "short_description": "Monument is an online platform for alcohol treatment offering therapy, FDA-approved medications, physician consultations, and community support groups.",
+  "long_description": "Monument is an online alcohol treatment platform that helps people change their relationship with alcohol through a combination of therapy, medication-assisted treatment (MAT), and community support. The platform offers virtual appointments with licensed physicians and therapists specializing in alcohol use disorder, along with optional prescriptions for FDA-approved medications including naltrexone (including Vivitrol) and acamprosate. With insurance, therapy sessions cost $25 each. Monument supports the Sinclair Method using naltrexone. In May 2025, Monument expanded to offer full primary and urgent care services alongside their alcohol treatment program. The platform includes anonymous 24/7 community forums and free therapist-moderated support groups. Monument raised $10.3M in funding and is available in 18 states including CA, NY, TX, FL, and PA.",
+  "best_for": [
+    "Individuals seeking evidence-based alcohol treatment online",
+    "People interested in medication-assisted treatment for AUD",
+    "Those wanting the Sinclair Method with naltrexone",
+    "Patients preferring virtual therapy for alcohol issues"
+  ],
+  "not_for": [
+    "Severe alcohol use disorder requiring inpatient/detox",
+    "Patients with physical dependence needing medical detox",
+    "Those needing support for multiple addictions",
+    "Residents outside Monument's 18-state coverage"
+  ],
   "import_ref": {
     "record_id": "MH-0426",
     "source_row": 427,
@@ -14,59 +30,185 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "telehealth-communication"
+  ],
   "capabilities": [],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "addiction-medicine",
+      "alcohol-use-disorder",
+      "substance-use",
+      "mental-health"
+    ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
-    "has_telehealth": false,
+    "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "starting_price_cents": 2500,
+    "starting_price_display": "$25/session with insurance",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "With Insurance",
+        "price": "$25/session (therapy and medical)"
+      },
+      {
+        "name": "Self-Pay",
+        "price": "Contact for pricing"
+      }
+    ],
+    "notes": "Insurance accepted includes Aetna, Cigna, Blue Cross/Blue Shield in select states. No hidden fees. Free therapist-moderated support groups and 24/7 community forum included. Expanded to primary/urgent care in May 2025.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA-compliant telehealth platform for alcohol treatment."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
   },
-  "related_tools": [],
-  "created_at": "2026-08-22T20:50:40.809Z",
-  "updated_at": "2026-08-22T20:50:40.809Z",
-  "status": "active",
+  "features": {
+    "treatment_options": {
+      "therapy": "50-minute video sessions with AUD-specialized therapists",
+      "physician_consultations": "Virtual appointments with licensed physicians",
+      "medications": [
+        "Naltrexone (oral)",
+        "Vivitrol (injectable naltrexone)",
+        "Acamprosate",
+        "Disulfiram"
+      ],
+      "sinclair_method": "Explicitly supported"
+    },
+    "therapeutic_approaches": [
+      "Cognitive Behavioral Therapy (CBT)",
+      "Motivational Interviewing",
+      "Acceptance-based approaches"
+    ],
+    "community_support": {
+      "forums": "Anonymous 24/7 community",
+      "support_groups": "Free therapist-moderated groups"
+    },
+    "expanded_services": {
+      "primary_care": "Added May 2025",
+      "urgent_care": "Added May 2025",
+      "general_therapy": "Depression, anxiety, and more"
+    }
+  },
+  "coverage": {
+    "states": [
+      "AZ",
+      "CA",
+      "CO",
+      "CT",
+      "DC",
+      "FL",
+      "GA",
+      "IA",
+      "KY",
+      "NJ",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "SC",
+      "TX",
+      "VA",
+      "WA"
+    ],
+    "insurance_partners": [
+      "Aetna",
+      "Cigna",
+      "Blue Cross Blue Shield"
+    ]
+  },
   "seo": {
-    "title": "Monument: Review & Pricing | HeyPsych",
-    "meta_description": "Monument review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Monument: Online Alcohol Treatment with Therapy & Medication",
+    "meta_description": "Monument offers online alcohol treatment with therapy ($25/session with insurance), naltrexone, and community support. Available in 18 states. Sinclair...",
+    "faqs": [
+      {
+        "q": "How much does Monument cost?",
+        "a": "Monument costs $25 per session for therapy and medical appointments with insurance. Major insurers like Aetna, Cigna, and Blue Cross/Blue Shield are accepted in select states."
+      },
+      {
+        "q": "What medications does Monument prescribe?",
+        "a": "Monument physicians can prescribe FDA-approved medications including naltrexone (daily oral or monthly Vivitrol injection), acamprosate, and disulfiram for alcohol use disorder."
+      },
+      {
+        "q": "Does Monument support the Sinclair Method?",
+        "a": "Yes, Monument explicitly supports the Sinclair Method, which involves taking naltrexone before drinking to reduce the rewarding effects of alcohol over time."
+      },
+      {
+        "q": "What states does Monument cover?",
+        "a": "Monument is available in 18 states: AZ, CA, CO, CT, DC, FL, GA, IA, KY, NJ, NY, OH, OR, PA, SC, TX, VA, and WA."
+      }
+    ],
     "keywords": [
       "Monument",
-      "provider network virtual care"
+      "online alcohol treatment",
+      "naltrexone",
+      "Sinclair Method",
+      "alcohol therapy",
+      "MAT alcohol",
+      "Vivitrol"
     ]
-  }
+  },
+  "governance": {
+    "last_reviewed": "2026-08-23",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88
+  },
+  "related_tools": [
+    "ria-health",
+    "oar-health",
+    "workit-health",
+    "tempest"
+  ],
+  "competitor_tools": [
+    "ria-health",
+    "oar-health",
+    "workit-health"
+  ],
+  "company_info": {
+    "headquarters": "New York, NY, USA",
+    "funding_status": "Private ($10.3M raised)",
+    "notes": "Monument expanded beyond alcohol treatment to offer full primary and urgent care in May 2025."
+  },
+  "created_at": "2026-08-22T20:50:40.809Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
 }

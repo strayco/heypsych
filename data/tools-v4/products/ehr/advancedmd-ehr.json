@@ -4,6 +4,11 @@
   "id": "8a35331f-9d52-4ad3-accb-9e5d825cc5a8",
   "slug": "advancedmd-ehr",
   "name": "AdvancedMD EHR",
+  "company_name": "AdvancedMD",
+  "website": "https://www.advancedmd.com",
+  "one_liner": "Cloud-based EHR with DSM-5 templates, AI ambient listening, and integrated billing starting at $130/month for mental health practices.",
+  "short_description": "AdvancedMD is a comprehensive cloud-based practice management and EHR platform with purpose-built workflows for mental health and behavioral health practices, supporting DSM-5 charting,...",
+  "long_description": "AdvancedMD is a cloud-based EHR and practice management platform designed for independent medical practices with dedicated support for mental health and behavioral health. The platform includes purpose-built workflows aligned to DSM-5 criteria, charting solutions supporting long-form clinical documentation, treatment planning, and progress notes. In October 2025, AdvancedMD launched AdvancedMD Now, a unified platform specifically for mental health practices with up to three providers, offering instant access with a free 30-day trial. An AI Clinical Assistant with ambient listening was released for desktop in early 2026 and mobile in June 2026. Key features include appointment scheduling, billing and claims management, patient intake with electronic signatures, SOAP notes, telemedicine, patient portals, and reporting analytics. AdvancedMD integrates with Eleos Health for enhanced behavioral health AI capabilities. The platform is considered ideal for multi-provider group practices with complex billing needs, though solo therapists may find SimplePractice or TherapyNotes more cost-effective.",
   "import_ref": {
     "record_id": "MH-0086",
     "source_row": 87,
@@ -15,66 +20,272 @@
   },
   "primary_category": "ehr-practice-management",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "appointment-scheduling",
+    "patient-portal",
+    "treatment-planning"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychiatric-np-pa"
+      "psychologist",
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
+      "solo-practice",
       "group-practice"
     ],
     "organization_sizes": [
-      "small-2-10"
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
     ],
     "specialties": [
-      "mental-health",
-      "behavioral-health",
       "psychiatry",
-      "therapy"
+      "psychology",
+      "therapy",
+      "behavioral-health",
+      "primary-care",
+      "multi-specialty"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": true,
-    "has_rcm": false,
-    "has_telehealth": false,
-    "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price": 130,
+    "currency": "USD",
+    "billing_period": "monthly",
+    "tiers": [
+      {
+        "name": "AdvancedMD Now (Mental Health)",
+        "price": 130,
+        "period": "monthly",
+        "features": [
+          "Practice management",
+          "EHR/EMR",
+          "Patient engagement",
+          "Up to 3 providers",
+          "Self-service setup",
+          "30-day free trial"
+        ],
+        "notes": "For small mental health practices"
+      },
+      {
+        "name": "Large/Group Mental Health",
+        "price": 399,
+        "period": "monthly",
+        "features": [
+          "Full suite",
+          "Multi-provider support",
+          "Advanced scheduling",
+          "Custom implementation"
+        ]
+      },
+      {
+        "name": "EHR + Practice Management",
+        "price": 729,
+        "period": "monthly",
+        "features": [
+          "Complete EHR",
+          "Full practice management",
+          "Billing integration"
+        ],
+        "notes": "Per provider"
+      },
+      {
+        "name": "Full Bundle",
+        "price": 999,
+        "period": "monthly",
+        "features": [
+          "EHR",
+          "Practice management",
+          "Patient engagement",
+          "Telehealth",
+          "AI assistant"
+        ],
+        "notes": "Per provider, most comprehensive"
+      }
+    ],
+    "free_trial": {
+      "available": true,
+      "duration_days": 30,
+      "credit_card_required": false,
+      "notes": "30-day free trial for AdvancedMD Now"
+    },
+    "notes": "Setup fees range from free to $1,000 for smaller practices, up to $6,000 for complex enterprise migrations. Managed billing services priced at 3-7% of collections.",
+    "last_verified": "2026-08-23"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "certifications": [
+      "HIPAA",
+      "SOC 2"
+    ],
+    "notes": "Enterprise-grade security and compliance"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Eleos Health",
+      "slug": "eleos-health",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Behavioral health AI documentation"
+    },
+    {
+      "name": "DrFirst",
+      "slug": "drfirst",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "QuickBooks",
+      "slug": "quickbooks",
+      "category": "other",
+      "integration_type": "api",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": true,
+    "wearable": false,
+    "notes": "Cloud-based with web, desktop, and mobile apps. AI assistant available on both desktop and mobile."
+  },
+  "features": {
+    "mental_health_workflows": {
+      "supported": true,
+      "description": "Purpose-built workflows aligned to DSM-5 criteria for behavioral health"
+    },
+    "ai_clinical_assistant": {
+      "supported": true,
+      "release": {
+        "desktop": "Early 2026",
+        "mobile": "June 2026"
+      },
+      "description": "Ambient listening AI clinical assistant"
+    },
+    "advancedmd_now": {
+      "supported": true,
+      "description": "Self-service platform for mental health practices up to 3 providers"
+    },
+    "telemedicine": {
+      "supported": true,
+      "description": "Integrated telehealth for remote sessions"
+    },
+    "billing": {
+      "supported": true,
+      "managed_billing": "3-7% of collections",
+      "description": "Full billing and claims management with optional managed services"
+    }
+  },
+  "best_for": [
+    "Multi-provider mental health group practices",
+    "Practices needing comprehensive billing and RCM",
+    "Organizations wanting integrated telehealth",
+    "Mental health practices with complex scheduling needs",
+    "Groups seeking AI-assisted documentation",
+    "Multi-specialty practices with behavioral health"
+  ],
+  "not_for": [
+    "Solo therapists seeking budget-friendly options",
+    "Simple private practices (SimplePractice/TherapyNotes better fit)",
+    "Practices not needing robust billing features",
+    "Organizations requiring specialized addiction treatment EHR"
+  ],
+  "company_info": {
+    "founded_year": 1999,
+    "headquarters": "South Jordan, Utah, USA",
+    "employee_count": "500-1000",
+    "funding_status": "Private Equity",
+    "public_company": false,
+    "notes": "Owned by Global Payments. Serves multiple medical specialties with dedicated mental health product line."
+  },
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-08-23"
   },
-  "related_tools": [],
+  "related_tools": [
+    "simplepractice",
+    "therapynotes",
+    "kareo",
+    "athenahealth"
+  ],
+  "competitor_tools": [
+    "simplepractice",
+    "therapynotes",
+    "drchrono",
+    "kareo-clinical"
+  ],
   "created_at": "2026-08-22T20:50:40.777Z",
-  "updated_at": "2026-08-22T20:50:40.777Z",
+  "updated_at": "2026-08-23T00:00:00.000Z",
+  "featured": false,
   "status": "active",
   "seo": {
-    "title": "AdvancedMD EHR: Review & Pricing | HeyPsych",
-    "meta_description": "AdvancedMD EHR review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "AdvancedMD EHR for Mental Health: Features & Pricing",
+    "meta_description": "AdvancedMD EHR review for mental health. DSM-5 templates, AI assistant, telehealth. Starting $130/month. 30-day free trial. Best for group practices.",
+    "faqs": [
+      {
+        "q": "How much does AdvancedMD cost for mental health practices?",
+        "a": "AdvancedMD mental health pricing starts at $130/month for small practices (up to 3 providers) with AdvancedMD Now. Larger group practices start at $399/month. The full bundle with EHR, practice management, and patient engagement is $729-999/provider/month."
+      },
+      {
+        "q": "Does AdvancedMD have mental health-specific features?",
+        "a": "Yes, AdvancedMD includes purpose-built workflows for mental health aligned to DSM-5 criteria, long-form clinical documentation, treatment planning, progress notes, and severity disorder monitoring."
+      },
+      {
+        "q": "Does AdvancedMD have AI features?",
+        "a": "Yes, AdvancedMD released an AI Clinical Assistant with ambient listening in early 2026 for desktop and June 2026 for mobile. It also integrates with Eleos Health for enhanced behavioral health AI documentation."
+      },
+      {
+        "q": "Is AdvancedMD good for solo therapists?",
+        "a": "AdvancedMD is best suited for multi-provider group practices with complex billing needs. Solo therapists and small practices may find SimplePractice or TherapyNotes more appropriate and cost-effective."
+      }
+    ],
     "keywords": [
+      "AdvancedMD",
       "AdvancedMD EHR",
-      "ehr practice management"
+      "mental health EHR",
+      "behavioral health practice management",
+      "DSM-5 EHR",
+      "group practice EHR",
+      "AdvancedMD Now",
+      "mental health billing software"
     ]
   }
 }
