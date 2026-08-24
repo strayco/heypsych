@@ -12,7 +12,7 @@ export function AudienceGateway() {
     <section className="px-4 pb-16 pt-16 sm:px-6 md:pt-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
         {/* Primary H1 */}
-        <h1 className="text-center text-2xl font-semibold tracking-tight text-label-primary whitespace-nowrap sm:text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="text-center text-2xl font-semibold tracking-tight text-label-primary sm:text-3xl md:text-4xl lg:text-5xl">
           Better mental health starts with better decisions.
         </h1>
         <p className="mt-4 text-center text-lg text-label-secondary">
