@@ -3,9 +3,10 @@
 // Demo Request Form Component
 // Collects lead information for EHR demo requests
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { Send, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { behavioralFingerprint } from "@/lib/fingerprint/behavioral-fingerprint";
 import {
   DemoRequestZ,
   type DemoRequest,
@@ -45,16 +46,28 @@ export function DemoRequestForm({
   >("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
-  // Capture UTM parameters
+  // Capture UTM parameters and behavioral fingerprint
   useEffect(() => {
+    // Track demo form view in fingerprint
+    behavioralFingerprint.trackDemoRequest(toolSlug);
+
+    // Get fingerprint context for prefill and analytics
+    const fp = behavioralFingerprint.get();
+
     setFormData((prev) => ({
       ...prev,
       utmSource: searchParams.get("utm_source") || undefined,
       utmMedium: searchParams.get("utm_medium") || undefined,
       utmCampaign: searchParams.get("utm_campaign") || undefined,
       matcherSource: searchParams.get("from") === "matcher",
+      // Add fingerprint context (will be sent with request for analytics)
+      fingerprintId: fp.sessionId,
+      productsViewed: fp.productsViewed.slice(0, 10).map(p => p.slug),
+      productsCompared: fp.productsCompared.slice(0, 5),
+      switchingFrom: fp.inferred.switchingFrom,
+      buyerUrgency: fp.inferred.urgency,
     }));
-  }, [searchParams]);
+  }, [searchParams, toolSlug]);
 
   const handleChange = (
     e: React.ChangeEvent<

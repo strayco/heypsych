@@ -114,11 +114,11 @@ export function AudienceGateway() {
           <AudienceCard
             variant="clinician"
             title="For Mental Health Clinicians"
-            description="Find the right EHR and practice management software for your mental health practice."
+            description="Build your ideal practice technology stack with Practice Architect™ — transparent fit scores, real pricing."
             icon={<Stethoscope className="h-5 w-5 text-treatment" />}
             primaryLink={{
-              href: "/tools/for-clinicians/ehr-practice-management/match?source=homepage_audience_gateway",
-              label: "Find My EHR Match",
+              href: "/architect?source=homepage_audience_gateway",
+              label: "Open Practice Architect™",
             }}
             secondaryLink={{
               href: "/tools/for-clinicians?source=homepage_audience_gateway",
