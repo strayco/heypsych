@@ -22,11 +22,16 @@
  */
 
 import { NextResponse } from "next/server";
+import { existsSync, readFileSync, readdirSync } from "fs";
+import { join } from "path";
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import { ToolService } from "@/lib/tools/tool-service";
 import { filterToolsForSitemap } from "@/lib/tools/tools-seo";
 import { siteConfig } from "@/lib/config/site";
-import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import {
+  ClinicianToolService,
+  isToolPublishable,
+} from "@/lib/tools/clinician-tool-service";
 
 export async function GET() {
   try {
@@ -71,15 +76,10 @@ export async function GET() {
       });
     }
 
-    // 5. All clinician hub pages (no lastmod - static hub pages)
-    const clinicianHubs = TaxonomyService.getAllClinicianHubs();
-    for (const clinicianHub of clinicianHubs) {
-      urls.push({
-        loc: `${siteConfig.url}${normalizeUrl(clinicianHub.url)}`,
-        changefreq: "weekly",
-        priority: 0.7,
-      });
-    }
+    // 5. V3 clinician hub pages REMOVED - now redirected to V4
+    // Legacy hubs (clinical-answers-evidence, ai-scribes-documentation, etc.)
+    // are 301-redirected to /tools/for-clinicians in middleware.ts
+    // V4 category pages are added below in section 8.
 
     // 6. All eligible V3 tool pages (filtered by SEO control plane)
     const allTools = await ToolService.getAll();
@@ -153,12 +153,133 @@ export async function GET() {
       });
     }
 
-    // 10. Compare page
+    // 10. Compare page (landing)
     urls.push({
       loc: `${siteConfig.url}/tools/compare`,
       changefreq: "weekly",
       priority: 0.6,
     });
+
+    // 12. Programmatic SEO pages - High-intent buyer journey pages
+    // These are generated for all publishable V4 tools
+
+    // 12a. Alternatives pages (/tools/alternatives/[slug])
+    // High buyer intent - user looking for alternatives
+    urls.push({
+      loc: `${siteConfig.url}/tools/alternatives`,
+      changefreq: "weekly",
+      priority: 0.7,
+    });
+    for (const tool of v4Tools) {
+      if (!tool.short_description || tool.short_description.length < 50) continue;
+      urls.push({
+        loc: `${siteConfig.url}/tools/alternatives/${tool.slug}`,
+        changefreq: "monthly",
+        priority: 0.65,
+      });
+    }
+
+    // 12b. Switch-from pages (/tools/switch-from/[slug])
+    // Highest buyer intent - user actively switching
+    for (const tool of v4Tools) {
+      if (!tool.short_description || tool.short_description.length < 50) continue;
+      urls.push({
+        loc: `${siteConfig.url}/tools/switch-from/${tool.slug}`,
+        changefreq: "monthly",
+        priority: 0.7,
+      });
+    }
+
+    // 12c. Integrations pages (/tools/integrations/[slug])
+    // High intent - checking compatibility before purchase
+    urls.push({
+      loc: `${siteConfig.url}/tools/integrations`,
+      changefreq: "weekly",
+      priority: 0.7,
+    });
+    for (const tool of v4Tools) {
+      if (!tool.short_description || tool.short_description.length < 50) continue;
+      urls.push({
+        loc: `${siteConfig.url}/tools/integrations/${tool.slug}`,
+        changefreq: "monthly",
+        priority: 0.6,
+      });
+    }
+
+    // 12d. Practice type pages (/tools/for-practices/[type])
+    // High intent - user knows their practice type
+    urls.push({
+      loc: `${siteConfig.url}/tools/for-practices`,
+      changefreq: "weekly",
+      priority: 0.75,
+    });
+    const practiceTypes = [
+      "solo-therapist",
+      "therapy-group",
+      "psychiatry",
+      "telehealth-first",
+      "iop-php",
+      "psychological-testing",
+      "addiction-treatment",
+      "starting-out",
+    ];
+    for (const type of practiceTypes) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/for-practices/${type}`,
+        changefreq: "weekly",
+        priority: 0.7,
+      });
+    }
+
+    // 12e. Vendor claim page
+    urls.push({
+      loc: `${siteConfig.url}/tools/claim`,
+      changefreq: "monthly",
+      priority: 0.4,
+    });
+
+    // 12f. Practice Architect landing
+    urls.push({
+      loc: `${siteConfig.url}/architect`,
+      changefreq: "weekly",
+      priority: 0.8,
+    });
+
+    // 11. Curated comparisons (only those with all publishable tools)
+    const comparisonsDir = join(process.cwd(), "data/tools-v4/comparisons");
+    if (existsSync(comparisonsDir)) {
+      const comparisonFiles = readdirSync(comparisonsDir).filter((f) =>
+        f.endsWith(".json")
+      );
+      for (const file of comparisonFiles) {
+        try {
+          const content = JSON.parse(
+            readFileSync(join(comparisonsDir, file), "utf-8")
+          );
+          const toolSlugs: string[] = content.tools || [];
+
+          // Check if all tools are publishable
+          let allPublishable = true;
+          for (const slug of toolSlugs) {
+            const tool = await ClinicianToolService.getBySlug(slug);
+            if (!tool || !isToolPublishable(tool)) {
+              allPublishable = false;
+              break;
+            }
+          }
+
+          if (allPublishable && toolSlugs.length >= 2 && content.slug) {
+            urls.push({
+              loc: `${siteConfig.url}/tools/compare/${content.slug}`,
+              changefreq: "monthly",
+              priority: 0.65,
+            });
+          }
+        } catch {
+          // Skip invalid comparison files
+        }
+      }
+    }
 
     // Generate XML
     const xml = generateSitemapXML(urls);

@@ -16,6 +16,7 @@ import {
   HelpCircle,
   AlertTriangle,
   Plus,
+  Layers,
 } from "lucide-react";
 import {
   type ArchitectMode,
@@ -580,6 +581,23 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
           </div>
         </aside>
       </div>
+
+      {/* Overlap warnings banner */}
+      {overlapResult.some((o) => o.classification === "probable-redundancy") && (
+        <div className="flex items-center gap-2 border-t border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-600">
+          <Layers className="h-4 w-4 shrink-0" />
+          <span>
+            <strong>Feature overlap detected:</strong>{" "}
+            {overlapResult
+              .filter((o) => o.classification === "probable-redundancy")
+              .slice(0, 2)
+              .map((o) => `${o.productA} and ${o.productB} both cover ${o.capabilityId.replace(/-/g, " ")}`)
+              .join("; ")}
+            {overlapResult.filter((o) => o.classification === "probable-redundancy").length > 2 && " and more"}
+            . Consider removing redundant tools to reduce cost.
+          </span>
+        </div>
+      )}
 
       {/* Compatibility warnings banner */}
       {compatibilityResult.some((c) => c.status === "incompatible") && (
