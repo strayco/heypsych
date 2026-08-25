@@ -86,6 +86,15 @@ const getIconForTile = (id: string): React.ReactNode => {
     "how-its-told-apart": <Stethoscope className="h-5 w-5" />,
     "x-vs-other-conditions": <Target className="h-5 w-5" />,
     "treatment-and-next-steps": <Heart className="h-5 w-5" />,
+    // Common tile IDs from data
+    what_is: <Info className="h-5 w-5" />,
+    stories: <BookOpen className="h-5 w-5" />,
+    faqs: <HelpCircle className="h-5 w-5" />,
+    comparisons: <Target className="h-5 w-5" />,
+    common_reactions: <MessageCircle className="h-5 w-5" />,
+    first_person_voices: <Users className="h-5 w-5" />,
+    full_examples: <BookOpen className="h-5 w-5" />,
+    frequently_asked_questions: <HelpCircle className="h-5 w-5" />,
     // Legacy tile IDs (underscored)
     overview: <Info className="h-5 w-5" />,
     symptoms: <AlertCircle className="h-5 w-5" />,
