@@ -99,7 +99,9 @@ function validateAllContent(options: ValidationOptions = {}): ValidationReport {
   const contentDirs = [
     join(process.cwd(), 'data/treatments'),
     join(process.cwd(), 'data/conditions'),
-    join(process.cwd(), 'data/resources')
+    join(process.cwd(), 'data/resources'),
+    join(process.cwd(), 'data/editorial'),
+    join(process.cwd(), 'data/clinician-tools'),
   ];
 
   const allFiles: string[] = [];
