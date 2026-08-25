@@ -276,6 +276,39 @@ function normalizeEntities(rows: any[]): Entity[] {
   return rows.map(normalizeEntity);
 }
 
+// ---------- Retry helper for transient DB errors ----------
+const RETRYABLE_ERROR_CODES = ['57014', '20', 'ETIMEDOUT', 'ECONNRESET'];
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  maxRetries = 3,
+  baseDelayMs = 100
+): Promise<T> {
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error: any) {
+      lastError = error;
+      const errorCode = error?.code || error?.message?.match(/code[:\s'"]*(\w+)/i)?.[1];
+      const isRetryable = RETRYABLE_ERROR_CODES.some(code =>
+        errorCode === code || error?.message?.includes('AbortError') || error?.message?.includes('timeout')
+      );
+
+      if (!isRetryable || attempt === maxRetries - 1) {
+        throw error;
+      }
+
+      // Exponential backoff with jitter
+      const delay = baseDelayMs * Math.pow(2, attempt) + Math.random() * 50;
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+
+  throw lastError;
+}
+
 // ---------- Enhanced service ----------
 type CachedSet<T> = {
   data: T[];
@@ -326,21 +359,26 @@ export class EntityService {
         }
       }
 
-      // Use Supabase (build-time and client-safe)
-      const { data, error } = await supabase
-        .from("entities")
-        .select("*")
-        .eq("slug", slug)
-        .eq("status", "active")
-        .order("type", { ascending: true })
-        .limit(1);
+      // Use Supabase (build-time and client-safe) with retry for transient errors
+      const data = await withRetry(async () => {
+        const result = await supabase
+          .from("entities")
+          .select("*")
+          .eq("slug", slug)
+          .eq("status", "active")
+          .order("type", { ascending: true })
+          .limit(1);
 
-      // Database error - throw to distinguish from "not found"
-      // Callers like entity-cache.ts need to know if this is a transient failure
-      if (error) {
-        console.error("Supabase error in getBySlug:", error);
-        throw new Error(`Database error fetching entity "${slug}": ${error.message}`);
-      }
+        // Throw retryable errors so withRetry can catch them
+        if (result.error) {
+          console.error("Supabase error in getBySlug:", result.error);
+          const err = new Error(`Database error fetching entity "${slug}": ${result.error.message}`) as any;
+          err.code = result.error.code;
+          throw err;
+        }
+
+        return result.data;
+      });
 
       if (data && data.length > 0) {
         return normalizeEntity(data[0]);
