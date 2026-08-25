@@ -36,7 +36,8 @@ export function VendorCTA() {
           <Link
             href="/tools/become-a-partner/"
             onClick={() => trackToolsFeaturedPartnerCTA("landing-footer")}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/20"
+            style={{ color: '#ffffff' }}
           >
             Become a partner
           </Link>
