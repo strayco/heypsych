@@ -1,17 +1,29 @@
 /**
  * Admin Authentication Utilities
  *
- * Provides secure authentication for administrative API endpoints.
+ * Provides secure authentication for administrative API endpoints
+ * and the admin dashboard UI.
+ *
  * All admin endpoints MUST use these utilities to ensure:
  * - Explicit secret configuration required in production
  * - Fail-closed behavior when misconfigured
  * - Timing-safe secret comparison
  * - Authorization header-based authentication
  * - No secrets exposed in responses or logs
+ *
+ * Dashboard authentication uses:
+ * - Password stored in ADMIN_PASSWORD env var
+ * - HttpOnly session cookie
+ * - Timing-safe password comparison
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { timingSafeEqual } from "crypto";
+import { cookies } from "next/headers";
+import { timingSafeEqual, randomBytes, createHmac } from "crypto";
+
+// Session configuration
+const SESSION_COOKIE_NAME = "admin_session";
+const SESSION_MAX_AGE = 60 * 60 * 24; // 24 hours in seconds
 
 // Site URL for URL validation
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://heypsych.com";
@@ -269,4 +281,128 @@ export function createSafeStatusResponse(
   }
 
   return NextResponse.json(safeData);
+}
+
+// ============================================================================
+// Dashboard Session Authentication
+// ============================================================================
+
+/**
+ * Creates a signed session token
+ * Token format: timestamp.randomBytes.signature
+ */
+function createSessionToken(): string {
+  const secret = process.env.ADMIN_PASSWORD;
+  if (!secret) throw new Error("ADMIN_PASSWORD not configured");
+
+  const timestamp = Date.now().toString();
+  const random = randomBytes(32).toString("hex");
+  const data = `${timestamp}.${random}`;
+
+  const signature = createHmac("sha256", secret).update(data).digest("hex");
+
+  return `${data}.${signature}`;
+}
+
+/**
+ * Verifies a session token is valid and not expired
+ */
+function verifySessionToken(token: string): boolean {
+  const secret = process.env.ADMIN_PASSWORD;
+  if (!secret) return false;
+
+  const parts = token.split(".");
+  if (parts.length !== 3) return false;
+
+  const [timestamp, random, signature] = parts;
+  const data = `${timestamp}.${random}`;
+
+  // Verify signature
+  const expectedSignature = createHmac("sha256", secret)
+    .update(data)
+    .digest("hex");
+
+  if (!timingSafeCompare(signature, expectedSignature)) {
+    return false;
+  }
+
+  // Check expiration
+  const tokenTime = parseInt(timestamp, 10);
+  if (isNaN(tokenTime)) return false;
+
+  const age = Date.now() - tokenTime;
+  if (age > SESSION_MAX_AGE * 1000) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Verifies the admin password
+ * FAILS CLOSED: Returns false if password not configured in production
+ */
+export function verifyAdminPassword(password: string): boolean {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  const isProduction = process.env.NODE_ENV === "production";
+
+  // FAIL CLOSED: In production, password MUST be configured
+  if (!adminPassword) {
+    if (isProduction) {
+      console.error("SECURITY: Admin login blocked - ADMIN_PASSWORD not configured");
+    }
+    return false;
+  }
+
+  return timingSafeCompare(password, adminPassword);
+}
+
+/**
+ * Creates a session and sets the cookie
+ * Call this after successful password verification
+ */
+export async function createAdminSession(): Promise<void> {
+  const token = createSessionToken();
+  const cookieStore = await cookies();
+
+  cookieStore.set(SESSION_COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: SESSION_MAX_AGE,
+    path: "/hp-ctrl-8k3m9x",
+  });
+}
+
+/**
+ * Destroys the admin session
+ */
+export async function destroyAdminSession(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete(SESSION_COOKIE_NAME);
+}
+
+/**
+ * Checks if the current request has a valid admin session
+ * Use this in Server Components and Server Actions
+ */
+export async function isAdminAuthenticated(): Promise<boolean> {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  // FAIL CLOSED: No password configured = no access
+  if (!adminPassword) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("SECURITY: Admin access blocked - ADMIN_PASSWORD not configured");
+    }
+    return false;
+  }
+
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get(SESSION_COOKIE_NAME);
+
+  if (!sessionCookie?.value) {
+    return false;
+  }
+
+  return verifySessionToken(sessionCookie.value);
 }
