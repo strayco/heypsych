@@ -359,6 +359,36 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
             </div>
           );
         }
+
+        // Check if "Condition — explanation" pattern (comparison strings)
+        // Em-dash (—) or en-dash (–) separator indicates comparison format
+        const hasComparisonPattern = value.every(item =>
+          typeof item === 'string' && (item.includes(' — ') || item.includes(' – '))
+        );
+
+        if (hasComparisonPattern) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => {
+                // Split on em-dash or en-dash
+                const [condition, ...rest] = item.split(/ [—–] /);
+                const explanation = rest.join(' — ');
+                return (
+                  <div key={i} className="rounded-lg border border-separator bg-surface p-4">
+                    <div className="flex items-start gap-3">
+                      <Target className="h-5 w-5 text-label-tertiary shrink-0 mt-0.5" />
+                      <div>
+                        <h5 className="font-semibold text-label-primary">{condition}</h5>
+                        <p className="text-sm text-label-secondary mt-1">{explanation}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+
         // Regular string list
         return (
           <ul className="space-y-1">
@@ -409,6 +439,25 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                     </div>
                   )}
                   <p className="text-sm text-label-secondary italic">&ldquo;{item.story}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        // Condition comparison pattern: condition + explanation (for "vs. Other Conditions" tiles)
+        if (firstItem.condition && firstItem.explanation) {
+          return (
+            <div className="space-y-4">
+              {value.map((item, i) => (
+                <div key={i} className="rounded-lg border border-separator bg-surface p-4">
+                  <div className="flex items-start gap-3">
+                    <Target className="h-5 w-5 text-label-tertiary shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="font-semibold text-label-primary">{item.condition}</h5>
+                      <p className="text-sm text-label-secondary mt-1">{item.explanation}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
