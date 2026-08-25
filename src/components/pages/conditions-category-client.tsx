@@ -105,8 +105,16 @@ export function ConditionsCategoryClient({ conditions, category }: ConditionsCat
                     } else if (descObj.general) {
                       conditionDescription = String(descObj.general);
                     } else {
-                      const keys = Object.keys(descObj);
-                      conditionDescription = `Covers: ${keys.join(", ")}`;
+                      // Try to extract first meaningful string from any field
+                      const values = Object.values(descObj);
+                      const firstString = values.find(
+                        (v): v is string => typeof v === "string" && v.length > 20
+                      );
+                      if (firstString) {
+                        conditionDescription = firstString;
+                      } else {
+                        conditionDescription = `Learn about ${conditionName}, including symptoms, causes, and treatment options.`;
+                      }
                     }
                   }
                 }
