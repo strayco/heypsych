@@ -51,7 +51,7 @@ export async function generateMetadata({
   if (isEntityUnavailable(result)) {
     console.error("[ResourcePage] Database unavailable for metadata:", slug);
     return {
-      title: "Resource | HeyPsych",
+      title: "Resource",
       description: "Mental health resources and tools.",
     };
   }
@@ -59,7 +59,7 @@ export async function generateMetadata({
   // Entity not found - return appropriate defaults
   if (!isEntityFound(result)) {
     return {
-      title: "Resource | HeyPsych",
+      title: "Resource",
       description: "Mental health resources and tools.",
     };
   }

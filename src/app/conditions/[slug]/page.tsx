@@ -58,7 +58,7 @@ export async function generateMetadata({
   if (isEntityUnavailable(result)) {
     console.error("[ConditionPage] Database unavailable for metadata:", slug);
     return {
-      title: "Condition Information | HeyPsych",
+      title: "Condition Information",
       description: "Learn about mental health conditions with evidence-based information.",
     };
   }
@@ -66,7 +66,7 @@ export async function generateMetadata({
   // Entity not found - return appropriate defaults
   if (!isEntityFound(result)) {
     return {
-      title: "Condition Information | HeyPsych",
+      title: "Condition Information",
       description: "Learn about mental health conditions with evidence-based information.",
     };
   }
@@ -77,7 +77,7 @@ export async function generateMetadata({
   const entityType = getEntityType(entity);
   if (entityType !== "condition") {
     return {
-      title: "Not Found | HeyPsych",
+      title: "Not Found",
       description: "The requested page was not found.",
     };
   }

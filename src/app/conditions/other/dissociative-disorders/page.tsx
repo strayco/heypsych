@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Dissociative Disorders | DID, Dissociative Amnesia | HeyPsych",
+  title: "Dissociative Disorders | DID, Dissociative Amnesia",
   description:
     "Comprehensive guide to dissociative disorders including dissociative identity disorder, amnesia, and depersonalization with evidence-based treatments.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/dissociative-disorders`,
   },
   openGraph: {
-    title: "Dissociative Disorders | HeyPsych",
+    title: "Dissociative Disorders",
     description: "Comprehensive guide to dissociative disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/dissociative-disorders`,
     type: "website",

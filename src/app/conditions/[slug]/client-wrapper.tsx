@@ -76,6 +76,17 @@ interface UIConfig {
 // Icon mapping for tile IDs and field types
 const getIconForTile = (id: string): React.ReactNode => {
   const iconMap: Record<string, React.ReactNode> = {
+    // New V2 tile IDs (hyphenated)
+    "what-this-is": <Info className="h-5 w-5" />,
+    "what-it-feels-like": <Heart className="h-5 w-5" />,
+    "real-life-stories": <BookOpen className="h-5 w-5" />,
+    "signs-and-symptoms": <AlertCircle className="h-5 w-5" />,
+    "early-warning-signs": <AlertTriangle className="h-5 w-5" />,
+    "why-it-happens": <Brain className="h-5 w-5" />,
+    "how-its-told-apart": <Stethoscope className="h-5 w-5" />,
+    "x-vs-other-conditions": <Target className="h-5 w-5" />,
+    "treatment-and-next-steps": <Heart className="h-5 w-5" />,
+    // Legacy tile IDs (underscored)
     overview: <Info className="h-5 w-5" />,
     symptoms: <AlertCircle className="h-5 w-5" />,
     diagnosis: <Stethoscope className="h-5 w-5" />,
@@ -1076,7 +1087,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                 <div className="flex justify-center">
                   <Link
                     href="/psychiatrists"
-                    className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 bg-neutral-900 text-white hover:bg-neutral-800 h-14 px-8 text-lg"
+                    className="inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-treatment focus:ring-offset-2 bg-treatment text-white hover:bg-treatment-600 h-14 px-8 text-lg"
                   >
                     Locate Psychiatrists
                   </Link>

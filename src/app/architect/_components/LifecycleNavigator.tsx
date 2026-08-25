@@ -116,7 +116,7 @@ export function LifecycleNavigator({
   }, [capabilityCoverage, stagesArray]);
 
   return (
-    <nav className="h-full overflow-auto">
+    <nav className="h-full overflow-auto overscroll-contain">
       <div className="p-4">
         <h2 className="text-xs font-semibold uppercase tracking-wider text-label-tertiary">
           Lifecycle Stages

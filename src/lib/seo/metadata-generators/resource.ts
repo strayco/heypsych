@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { MetadataGenerator } from '../metadata-generator';
 import { SITE_CONFIG } from '../config';
+import { renderedTitleLength } from '../title';
 
 export class ResourceMetadataGenerator extends MetadataGenerator {
   async generate(entity: Entity): Promise<Metadata> {
@@ -61,17 +62,17 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
         return this.generateArticleTitle(entity, name);
 
       default:
-        return this.ensureTitleLength(`${name} | ${SITE_CONFIG.name}`);
+        return this.ensureTitleLength(name);
     }
   }
 
   private generateAssessmentTitle(entity: Entity, name: string): string {
-    // Format: "GAD-7: Free Online Anxiety Screening Tool & Scoring Guide | HeyPsych"
+    // Format: "GAD-7: Free Online Anxiety Screening Tool & Scoring Guide"
     const assessmentType = this.extractAssessmentType(entity);
-    const fullTitle = `${name}: Free Online ${assessmentType} Tool & Scoring Guide | HeyPsych`;
+    const fullTitle = `${name}: Free Online ${assessmentType} Tool & Scoring Guide`;
 
-    if (fullTitle.length > 60) {
-      return this.ensureTitleLength(`${name}: Free ${assessmentType} Screening | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      return this.ensureTitleLength(`${name}: Free ${assessmentType} Screening`);
     }
 
     return fullTitle;
@@ -79,40 +80,40 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
 
   private generateDigitalToolTitle(entity: Entity, name: string): string {
     // V2: Include rating and reviews for SEO impact
-    // Format: "Headspace: 4.8★ Meditation App (1.2M reviews) | HeyPsych"
+    // Format: "Headspace: 4.8★ Mental Health App (1.2M reviews)"
     const rating = entity.data?.app_rating;
     const reviews = entity.data?.total_reviews;
 
     if (rating && reviews) {
       const formattedReviews = this.formatReviewCount(reviews);
-      const titleWithRating = `${name}: ${rating}★ Mental Health App (${formattedReviews} reviews) | HeyPsych`;
+      const titleWithRating = `${name}: ${rating}★ Mental Health App (${formattedReviews} reviews)`;
 
-      if (titleWithRating.length <= 60) {
+      if (renderedTitleLength(titleWithRating) <= 60) {
         return titleWithRating;
       }
 
       // Fallback: Shorter version with just rating
-      const shortTitle = `${name}: ${rating}★ Mental Health App | HeyPsych`;
-      if (shortTitle.length <= 60) {
+      const shortTitle = `${name}: ${rating}★ Mental Health App`;
+      if (renderedTitleLength(shortTitle) <= 60) {
         return shortTitle;
       }
     }
 
     // V1 fallback: Generic title
-    const fullTitle = `${name}: Mental Health App Review & Features | HeyPsych`;
+    const fullTitle = `${name}: Mental Health App Review & Features`;
 
-    if (fullTitle.length > 60) {
-      return this.ensureTitleLength(`${name} App Review | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      return this.ensureTitleLength(`${name} App Review`);
     }
 
     return fullTitle;
   }
 
   private generateCrisisTitle(entity: Entity, name: string): string {
-    // Format: "988 Suicide & Crisis Lifeline | 24/7 Mental Health Support"
-    const fullTitle = `${name} | 24/7 Mental Health Crisis Support | HeyPsych`;
+    // Format: "988 Suicide & Crisis Lifeline | 24/7 Mental Health Crisis Support"
+    const fullTitle = `${name} | 24/7 Mental Health Crisis Support`;
 
-    if (fullTitle.length > 60) {
+    if (renderedTitleLength(fullTitle) > 60) {
       return this.ensureTitleLength(`${name} | Crisis Support`);
     }
 
@@ -120,11 +121,11 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
   }
 
   private generateArticleTitle(entity: Entity, name: string): string {
-    // Format: "{Article Title} | Mental Health Guide | HeyPsych"
-    const fullTitle = `${name} | Mental Health Guide | HeyPsych`;
+    // Format: "{Article Title} | Mental Health Guide"
+    const fullTitle = `${name} | Mental Health Guide`;
 
-    if (fullTitle.length > 60) {
-      return this.ensureTitleLength(`${name} | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      return this.ensureTitleLength(name);
     }
 
     return fullTitle;

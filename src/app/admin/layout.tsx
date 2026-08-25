@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard | HeyPsych",
+  title: "Admin Dashboard",
   robots: {
     index: false,
     follow: false,

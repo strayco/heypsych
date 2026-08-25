@@ -13,7 +13,7 @@ const HUB_SLUG = "find-support";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Find Professional Support | HeyPsych" };
+    return { title: "Find Professional Support" };
   }
 
   return {

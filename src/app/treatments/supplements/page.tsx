@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 
 // Generate SEO metadata for supplements hub page
 export const metadata: Metadata = {
-  title: "Mental Health Supplements | Omega-3, Vitamin D, SAMe & Evidence-Based Options | HeyPsych",
+  title: "Mental Health Supplements | Omega-3, Vitamin D, SAMe & Evidence-Based Options",
   description:
     "Evidence-based nutritional supplements for mental health including omega-3 fatty acids, vitamin D, SAMe, magnesium, and other supplements that may support well-being.",
   keywords:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/supplements`,
   },
   openGraph: {
-    title: "Mental Health Supplements | HeyPsych",
+    title: "Mental Health Supplements",
     description:
       "Evidence-based supplements: omega-3, vitamin D, SAMe, magnesium, and other options for mental health.",
     url: `${SITE_CONFIG.url}/treatments/supplements`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mental Health Supplements | HeyPsych",
+    title: "Mental Health Supplements",
     description: "Explore evidence-based supplements: omega-3, vitamin D, SAMe, and more.",
   },
 };

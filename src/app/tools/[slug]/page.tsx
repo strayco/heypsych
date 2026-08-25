@@ -19,6 +19,7 @@ import {
   getToolRobotsMeta,
 } from "@/lib/tools/tools-seo";
 import { getComplianceDisplayText } from "@/lib/schemas/tool-editorial";
+import { stripBrandTitleSuffix } from "@/lib/seo/title";
 
 // Generate static params for all tools
 export async function generateStaticParams() {
@@ -43,7 +44,7 @@ export async function generateMetadata({
 
   if (!tool) {
     return {
-      title: "Tool Not Found | HeyPsych",
+      title: "Tool Not Found",
       description: "This tool could not be found.",
       robots: "noindex, nofollow",
     };
@@ -54,7 +55,10 @@ export async function generateMetadata({
   const robotsMeta = getToolRobotsMeta(tool);
 
   return {
-    title: tool.seo.title,
+    // Tool data authors titles with a trailing "| HeyPsych"; the root layout
+    // template appends the brand too. Open Graph keeps the authored form since
+    // Next.js renders it verbatim without the template.
+    title: stripBrandTitleSuffix(tool.seo.title),
     description: tool.seo.meta_description,
     alternates: {
       canonical: canonicalUrl,

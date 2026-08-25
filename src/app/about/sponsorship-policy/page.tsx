@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/about/sponsorship-policy`;
 
 export const metadata: Metadata = {
-  title: "Sponsorship & Editorial Independence Policy | HeyPsych",
+  title: "Sponsorship & Editorial Independence Policy",
   description:
     "Learn how HeyPsych maintains editorial independence from sponsorship. Our policy ensures sponsored content never influences clinical recommendations or tool evaluations.",
   alternates: {

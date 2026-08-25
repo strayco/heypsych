@@ -52,7 +52,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "Running a solo practice means wearing many hats. Find all-in-one solutions or build a simple, affordable stack that handles scheduling, notes, billing, and telehealth without overwhelming complexity.",
     icon: User,
     color: "treatment",
-    seoTitle: "Best Software for Solo Therapists (2024) | Practice Technology | HeyPsych",
+    seoTitle: "Best Software for Solo Therapists (2024) | Practice Technology",
     seoDescription: "Find the best EHR, billing, and telehealth software for solo therapy practices. Compare SimplePractice, TherapyNotes, and more. Get personalized recommendations.",
     capabilities: ["scheduling", "clinical-notes", "billing", "telehealth", "patient-portal"],
     recommendedCategories: ["ehr-practice-management", "telehealth-communication", "ai-scribe-documentation"],
@@ -70,7 +70,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "Managing multiple clinicians requires robust scheduling, permissions, reporting, and potentially separate billing. Find platforms designed for the complexity of group practice operations.",
     icon: Users,
     color: "accent",
-    seoTitle: "Best Software for Group Therapy Practices (2024) | HeyPsych",
+    seoTitle: "Best Software for Group Therapy Practices (2024)",
     seoDescription: "Find EHR and practice management software designed for group therapy practices. Multi-provider scheduling, reporting, and billing solutions.",
     capabilities: ["multi-provider-scheduling", "permissions", "reporting", "payroll-integration", "group-analytics"],
     recommendedCategories: ["ehr-practice-management", "billing-rcm", "ai-scribe-documentation"],
@@ -88,7 +88,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "Psychiatry practices need specialized features like e-prescribing, EPCS for controlled substances, lab integration, and medication tracking. Generic therapy EHRs often fall short.",
     icon: Stethoscope,
     color: "treatment",
-    seoTitle: "Best EHR & Software for Psychiatrists (2024) | HeyPsych",
+    seoTitle: "Best EHR & Software for Psychiatrists (2024)",
     seoDescription: "Find psychiatry-specific EHR software with e-prescribing, EPCS, and medication management. Compare Valant, SimplePractice, and more.",
     capabilities: ["e-prescribing", "epcs", "lab-integration", "medication-tracking", "prior-auth"],
     recommendedCategories: ["ehr-practice-management", "prescribing-erx", "ai-scribe-documentation"],
@@ -106,7 +106,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "When your practice is primarily or entirely virtual, telehealth quality isn't optional—it's your practice. Find platforms with robust video, digital intake, and seamless patient experience.",
     icon: Video,
     color: "accent",
-    seoTitle: "Best Software for Telehealth Therapy Practices (2024) | HeyPsych",
+    seoTitle: "Best Software for Telehealth Therapy Practices (2024)",
     seoDescription: "Find the best telehealth platform for virtual mental health practices. HIPAA-compliant video, online scheduling, and digital intake solutions.",
     capabilities: ["hipaa-video", "virtual-waiting-room", "online-scheduling", "digital-intake", "secure-messaging"],
     recommendedCategories: ["telehealth-communication", "ehr-practice-management", "ai-scribe-documentation"],
@@ -124,7 +124,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "IOPs and PHPs have unique needs: group therapy tracking, complex treatment planning, outcome measurement at scale, and often more complex billing requirements.",
     icon: Building2,
     color: "treatment",
-    seoTitle: "Best Software for IOP & PHP Programs (2024) | HeyPsych",
+    seoTitle: "Best Software for IOP & PHP Programs (2024)",
     seoDescription: "Find EHR and practice management software designed for intensive outpatient and partial hospitalization programs. Group therapy, outcomes, and compliance tools.",
     capabilities: ["group-therapy-tracking", "outcomes-measurement", "treatment-planning", "utilization-review", "compliance"],
     recommendedCategories: ["ehr-practice-management", "measurement-dtx", "billing-rcm"],
@@ -142,7 +142,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "Testing practices need assessment administration, scoring, and report generation. General EHRs rarely have the depth needed for comprehensive psychological evaluations.",
     icon: Brain,
     color: "accent",
-    seoTitle: "Best Software for Psychological Testing Practices (2024) | HeyPsych",
+    seoTitle: "Best Software for Psychological Testing Practices (2024)",
     seoDescription: "Find assessment administration, scoring, and report generation software for psychological testing practices.",
     capabilities: ["assessment-administration", "automated-scoring", "report-generation", "document-management"],
     recommendedCategories: ["measurement-dtx", "ehr-practice-management"],
@@ -160,7 +160,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "SUD treatment has unique needs: PDMP integration, recovery tracking, group management, and compliance with SAMHSA and state regulations.",
     icon: Heart,
     color: "treatment",
-    seoTitle: "Best Software for Addiction Treatment Centers (2024) | HeyPsych",
+    seoTitle: "Best Software for Addiction Treatment Centers (2024)",
     seoDescription: "Find EHR and practice management software designed for substance use disorder treatment. PDMP integration, recovery tracking, and compliance tools.",
     capabilities: ["pdmp-integration", "recovery-tracking", "group-management", "samhsa-compliance", "residential-features"],
     recommendedCategories: ["ehr-practice-management", "measurement-dtx", "billing-rcm"],
@@ -178,7 +178,7 @@ const PRACTICE_CONFIGS: Record<string, {
     description: "Launching a practice is exciting but overwhelming. Start with the essentials: a solid EHR, reliable telehealth, and simple billing. You can add complexity later.",
     icon: Sparkles,
     color: "accent",
-    seoTitle: "Software Checklist for Starting a Therapy Practice (2024) | HeyPsych",
+    seoTitle: "Software Checklist for Starting a Therapy Practice (2024)",
     seoDescription: "Complete guide to software for starting your therapy practice. EHR, telehealth, billing, and everything you need to launch successfully.",
     capabilities: ["easy-setup", "all-in-one", "affordable", "learning-resources", "scalable"],
     recommendedCategories: ["ehr-practice-management", "telehealth-communication"],
@@ -203,7 +203,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const config = PRACTICE_CONFIGS[type];
 
   if (!config) {
-    return { title: "Practice Type | HeyPsych" };
+    return { title: "Practice Type" };
   }
 
   return {

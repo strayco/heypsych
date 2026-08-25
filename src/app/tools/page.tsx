@@ -23,7 +23,7 @@ import { FeaturedTools } from "./_components/FeaturedTools";
 const canonicalUrl = `${siteConfig.url}/tools`;
 
 export const metadata: Metadata = {
-  title: "Mental Health Tools & Apps | HeyPsych",
+  title: "Mental Health Tools & Apps",
   description:
     "Discover evidence-based mental health apps and tools. Compare therapy platforms, AI scribes, mood trackers, and clinical software. For patients and clinicians.",
   keywords: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "Mental Health Tools & Apps | HeyPsych",
+    title: "Mental Health Tools & Apps",
     description:
       "Discover evidence-based mental health apps and tools for patients and clinicians.",
     url: canonicalUrl,
@@ -162,7 +162,7 @@ export default async function ToolsDirectoryPage() {
             </div>
             <Link
               href="/tools/for-clinicians/ehr-practice-management/match/"
-              className="group flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+              className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
             >
               <span className="text-white">Start Matching</span>
               <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />

@@ -11,7 +11,7 @@ const SUB_HUB_SLUG = "psychiatry-platforms";
 export async function generateMetadata(): Promise<Metadata> {
   const subHub = TaxonomyService.getSubHub(SUB_HUB_SLUG);
   if (!subHub) {
-    return { title: "Online Psychiatry Platforms | HeyPsych" };
+    return { title: "Online Psychiatry Platforms" };
   }
 
   return {

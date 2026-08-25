@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title:
       data?.seo?.title ||
-      "Mental Health Treatment Evidence Matrix | HeyPsych",
+      "Mental Health Treatment Evidence Matrix ",
     description:
       data?.seo?.meta_description ||
       "Compare mental health treatments with evidence levels from systematic reviews.",

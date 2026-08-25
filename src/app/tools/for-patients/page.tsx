@@ -18,7 +18,7 @@ import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 const canonicalUrl = `${siteConfig.url}/tools/for-patients`;
 
 export const metadata: Metadata = {
-  title: "Mental Health Apps for Patients | HeyPsych Tools",
+  title: "Mental Health Apps for Patients ",
   description:
     "Find the right mental health app for you. Compare therapy apps, mood trackers, sleep aids, anxiety tools, and more. Free and paid options reviewed.",
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "Mental Health Apps for Patients | HeyPsych",
+    title: "Mental Health Apps for Patients",
     description: "Find the right mental health app for your needs.",
     url: canonicalUrl,
     type: "website",
@@ -220,7 +220,7 @@ export default async function ForPatientsPage() {
           </p>
           <Link
             href="/tools/for-clinicians/"
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
           >
             <span className="text-white">Browse Clinician Tools</span>
             <ArrowRight className="h-4 w-4 text-white" />

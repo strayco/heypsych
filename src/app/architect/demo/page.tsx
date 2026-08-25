@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/architect/demo`;
 
 export const metadata: Metadata = {
-  title: "Demo | Practice Stack Architect | HeyPsych",
+  title: "Demo | Practice Stack Architect",
   description:
     "Try the Practice Stack Architect with fictional products. Explore all features without commitment.",
   alternates: {

@@ -11,7 +11,7 @@ const HUB_SLUG = "focus-adhd";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Focus & ADHD Tools | HeyPsych" };
+    return { title: "Focus & ADHD Tools" };
   }
 
   return {

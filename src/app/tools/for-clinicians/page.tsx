@@ -20,12 +20,14 @@ import {
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
 import clinicianCategoriesData from "../../../../data/tools-v4/taxonomies/clinician-categories.json";
+import { stripBrandTitleSuffix } from "@/lib/seo/title";
 
 // Slashless canonical for consistency with sitemap
 const canonicalUrl = `${siteConfig.url}/tools/for-clinicians`;
 
 export const metadata: Metadata = {
-  title: clinicianCategoriesData.landing_page.seo_title,
+  // Authored with a trailing "| HeyPsych"; the layout template appends it too.
+  title: stripBrandTitleSuffix(clinicianCategoriesData.landing_page.seo_title),
   description: clinicianCategoriesData.landing_page.meta_description,
   keywords: [
     "psychiatry software",
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "Mental Health Software for Clinicians | HeyPsych",
+    title: "Mental Health Software for Clinicians",
     description:
       "Professional tools for psychiatrists, therapists, and mental health practices.",
     url: canonicalUrl,
@@ -126,7 +128,7 @@ export default async function ForCliniciansPage() {
 
               <Link
                 href="/architect?source=for-clinicians"
-                className="group flex flex-col items-start rounded-xl border-2 border-neutral-900 bg-neutral-900 px-5 py-4 shadow-md transition-all hover:bg-neutral-800 hover:shadow-lg sm:items-end"
+                className="group flex flex-col items-start rounded-xl border-2 border-treatment bg-treatment px-5 py-4 shadow-md transition-all hover:bg-treatment-600 hover:shadow-lg sm:items-end"
               >
                 <div className="flex items-center gap-2">
                   <span className="text-base font-semibold text-white">Practice Architect™</span>
@@ -168,7 +170,7 @@ export default async function ForCliniciansPage() {
               </div>
               <Link
                 href="/tools/for-clinicians/ehr-practice-management/match/"
-                className="group flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+                className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
               >
                 <span className="text-white">Find My EHR</span>
                 <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
@@ -338,7 +340,7 @@ export default async function ForCliniciansPage() {
             </p>
             <Link
               href="/tools/for-patients/"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
             >
               <span className="text-white">Browse Patient Apps</span>
               <ArrowRight className="h-4 w-4 text-white" />

@@ -10,6 +10,7 @@
 import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { MetadataGenerator } from '../metadata-generator';
+import { renderedTitleLength } from '../title';
 
 export class TherapyMetadataGenerator extends MetadataGenerator {
   async generate(entity: Entity): Promise<Metadata> {
@@ -37,14 +38,15 @@ export class TherapyMetadataGenerator extends MetadataGenerator {
   private generateTitle(entity: Entity): string {
     const name = entity.name;
 
-    // Full format
-    const fullTitle = `${name}: What It Is, How It Works, Effectiveness | HeyPsych`;
+    // Full format. The layout template appends " | HeyPsych", so length is
+    // measured against the final rendered form rather than the stem.
+    const fullTitle = `${name}: What It Is, How It Works, Effectiveness`;
 
     // If too long, use shorter version
-    if (fullTitle.length > 60) {
-      const shortTitle = `${name}: How It Works & Effectiveness | HeyPsych`;
-      if (shortTitle.length > 60) {
-        return this.ensureTitleLength(`${name} Therapy | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      const shortTitle = `${name}: How It Works & Effectiveness`;
+      if (renderedTitleLength(shortTitle) > 60) {
+        return this.ensureTitleLength(`${name} Therapy`);
       }
       return shortTitle;
     }

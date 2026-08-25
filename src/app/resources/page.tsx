@@ -19,8 +19,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 
   return {
     title: page > 1
-      ? `Mental Health Resources (Page ${page}) | Assessments, Tools & Support | HeyPsych`
-      : "Mental Health Resources | Assessments, Tools & Support | HeyPsych",
+      ? `Mental Health Resources (Page ${page}) | Assessments, Tools & Support`
+      : "Mental Health Resources | Assessments, Tools & Support ",
     description:
       "Access mental health resources including validated assessments, digital tools, support communities, and educational guides. Free evidence-based resources.",
     keywords:
@@ -32,8 +32,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     },
     openGraph: {
       title: page > 1
-        ? `Mental Health Resources (Page ${page}) | HeyPsych`
-        : "Mental Health Resources | HeyPsych",
+        ? `Mental Health Resources (Page ${page})`
+        : "Mental Health Resources ",
       description: "Free mental health assessments, tools, support communities, and educational resources.",
       url: page === 1
         ? `${SITE_CONFIG.url}/resources`

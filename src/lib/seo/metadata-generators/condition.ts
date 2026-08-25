@@ -3,7 +3,8 @@
  *
  * Generates SEO metadata for mental health condition pages using rules-based approach.
  *
- * Title Formula: "{Condition Name}: Symptoms, Causes, Treatment & Support | HeyPsych"
+ * Title Formula: "{Condition Name}: Symptoms, Causes, Treatment & Support"
+ * (the root layout template appends " | HeyPsych" - see lib/seo/title.ts)
  * Description Formula: "Learn about {condition} symptoms, causes, risk factors, and evidence-based treatments..."
  */
 
@@ -11,6 +12,7 @@ import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { MetadataGenerator } from '../metadata-generator';
 import { needsCrisisWarning } from '../config';
+import { renderedTitleLength } from '../title';
 
 export class ConditionMetadataGenerator extends MetadataGenerator {
   async generate(entity: Entity): Promise<Metadata> {
@@ -50,14 +52,15 @@ export class ConditionMetadataGenerator extends MetadataGenerator {
   private generateTitle(entity: Entity): string {
     const name = entity.name;
 
-    // Try full format first
-    const fullTitle = `${name}: Symptoms, Causes, Treatment & Support | HeyPsych`;
+    // Titles are built without the brand; the layout template appends it, so
+    // length is measured against the final rendered form.
+    const fullTitle = `${name}: Symptoms, Causes, Treatment & Support`;
 
     // If too long, use shorter version
-    if (fullTitle.length > 60) {
-      const shortTitle = `${name}: Symptoms, Treatment & Support | HeyPsych`;
-      if (shortTitle.length > 60) {
-        return this.ensureTitleLength(`${name} | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      const shortTitle = `${name}: Symptoms, Treatment & Support`;
+      if (renderedTitleLength(shortTitle) > 60) {
+        return this.ensureTitleLength(name);
       }
       return shortTitle;
     }

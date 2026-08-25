@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | HeyPsych",
+  title: "Privacy Policy",
   description: "HeyPsych privacy policy - How we collect, use, and protect your information.",
 };
 

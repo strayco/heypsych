@@ -17,6 +17,12 @@
 import { NextResponse } from "next/server";
 import { EntityService } from "@/lib/data/entity-service";
 import { getSitemapGenerator, generateSitemapXml } from "@/lib/seo/sitemap-generator";
+import {
+  filterEntitiesForSitemapWithReport,
+  logSitemapReport,
+  resolveSitemapEntities,
+  sitemapReportHeaders,
+} from "@/lib/seo/sitemap-eligibility";
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 // ISR with daily revalidation - sitemap is cached at edge for 24 hours
@@ -31,18 +37,25 @@ export async function GET() {
     const conditions = await EntityService.getByType("condition");
     const activeConditions = conditions.filter((c) => c.status === "active");
 
-    console.log(
-      `[Sitemap] Generated conditions sitemap from database: ${activeConditions.length} conditions`
+    // Apply the central indexation firewall. Without this the database path
+    // emitted every active condition, including ones whose pages render
+    // `noindex` - asking Google to index URLs that refuse indexation.
+    const report = filterEntitiesForSitemapWithReport(
+      activeConditions,
+      (c) => `/conditions/${c.slug}`
     );
+    logSitemapReport("conditions", report, "database");
 
-    const xml = await generator.generateConditionsSitemap(activeConditions);
+    const xml = await generator.generateConditionsSitemap(
+      resolveSitemapEntities("conditions", report, activeConditions)
+    );
 
     return new NextResponse(xml, {
       status: 200,
       headers: {
         "Content-Type": "application/xml",
         "Cache-Control": "public, max-age=86400, s-maxage=86400",
-        "X-Sitemap-Source": "database",
+        ...sitemapReportHeaders(report, "database"),
       },
     });
   } catch (dbError) {

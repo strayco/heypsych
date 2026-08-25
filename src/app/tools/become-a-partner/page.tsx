@@ -19,14 +19,14 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/tools/become-a-partner`;
 
 export const metadata: Metadata = {
-  title: "Become a Partner | HeyPsych Tools Directory",
+  title: "Become a Partner | Tools Directory",
   description:
     "Partner with HeyPsych to reach mental health professionals and patients. Learn about sponsored placements, audience targeting, and our editorial independence commitment.",
   alternates: {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "Become a Partner | HeyPsych",
+    title: "Become a Partner",
     description: "Partner with HeyPsych to reach mental health professionals and patients.",
     url: canonicalUrl,
     type: "website",

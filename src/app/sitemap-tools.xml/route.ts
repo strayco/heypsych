@@ -32,6 +32,7 @@ import {
   ClinicianToolService,
   isToolPublishable,
 } from "@/lib/tools/clinician-tool-service";
+import { resolveCategoryHubSlug } from "@/lib/tools/category-hub-slug";
 
 export async function GET() {
   try {
@@ -135,10 +136,18 @@ export async function GET() {
     }
 
     // 8. V4 Category hub pages (only categories with tools)
-    // Empty categories are excluded from sitemap to avoid thin content
+    // Empty categories are excluded from sitemap to avoid thin content.
+    // Schema category slugs are translated to the taxonomy slugs the hub route
+    // actually serves; unresolvable categories are skipped rather than emitted
+    // as 404s.
+    const emittedHubSlugs = new Set<string>();
     for (const category of v4CategoriesWithTools) {
+      const hubSlug = resolveCategoryHubSlug(category);
+      if (!hubSlug || emittedHubSlugs.has(hubSlug)) continue;
+      emittedHubSlugs.add(hubSlug);
+
       urls.push({
-        loc: `${siteConfig.url}/tools/for-clinicians/${category}`,
+        loc: `${siteConfig.url}/tools/for-clinicians/${hubSlug}`,
         changefreq: "weekly",
         priority: 0.75,
       });
@@ -164,14 +173,22 @@ export async function GET() {
     // These are generated for all publishable V4 tools
 
     // 12a. Alternatives pages (/tools/alternatives/[slug])
-    // High buyer intent - user looking for alternatives
-    urls.push({
-      loc: `${siteConfig.url}/tools/alternatives`,
-      changefreq: "weekly",
-      priority: 0.7,
-    });
+    // Only include tools that have 3+ alternatives in their category (meaningful content)
+    // Pre-compute category counts
+    const categoryCounts = new Map<string, number>();
+    for (const tool of v4Tools) {
+      const cat = tool.primary_category;
+      categoryCounts.set(cat, (categoryCounts.get(cat) || 0) + 1);
+    }
+
+    // NOTE: /tools/alternatives has no page.tsx (only /tools/alternatives/[slug]),
+    // so advertising the hub submitted a 404 to Google. It is omitted until a
+    // real hub exists; the per-tool alternatives pages below are unaffected.
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
+      // Quality gate: only include if category has 4+ tools (3+ alternatives)
+      const categorySize = categoryCounts.get(tool.primary_category) || 0;
+      if (categorySize < 4) continue;
       urls.push({
         loc: `${siteConfig.url}/tools/alternatives/${tool.slug}`,
         changefreq: "monthly",
@@ -180,9 +197,12 @@ export async function GET() {
     }
 
     // 12b. Switch-from pages (/tools/switch-from/[slug])
-    // Highest buyer intent - user actively switching
+    // Only include tools with 4+ category peers (meaningful alternatives to suggest)
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
+      // Quality gate: only include if category has 4+ tools
+      const categorySize = categoryCounts.get(tool.primary_category) || 0;
+      if (categorySize < 4) continue;
       urls.push({
         loc: `${siteConfig.url}/tools/switch-from/${tool.slug}`,
         changefreq: "monthly",
@@ -191,7 +211,7 @@ export async function GET() {
     }
 
     // 12c. Integrations pages (/tools/integrations/[slug])
-    // High intent - checking compatibility before purchase
+    // QUALITY GATE: Only include if tool has 2+ integrations (avoid thin "no data" pages)
     urls.push({
       loc: `${siteConfig.url}/tools/integrations`,
       changefreq: "weekly",
@@ -199,6 +219,9 @@ export async function GET() {
     });
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
+      // Quality gate: only include if tool has actual integration data
+      const integrationCount = tool.integrations?.length || 0;
+      if (integrationCount < 2) continue;
       urls.push({
         loc: `${siteConfig.url}/tools/integrations/${tool.slug}`,
         changefreq: "monthly",

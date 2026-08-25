@@ -1605,11 +1605,14 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
     }
 
     if (typeof sectionData === "object" && sectionData !== null) {
+      // Internal fields that should never be rendered to the UI
+      const INTERNAL_KEYS = ['ux_display', 'collapsible', 'heading', 'type', 'ui_hints', 'visual_priority', 'card_style'];
+
       return (
         <div className="space-y-3">
           {Object.entries(sectionData).map(([key, value]: [string, any]) => {
-            // Skip null and undefined values
-            if (value === null || value === undefined) {
+            // Skip internal/metadata fields and null/undefined values
+            if (INTERNAL_KEYS.includes(key) || value === null || value === undefined) {
               return null;
             }
             if (Array.isArray(value)) {

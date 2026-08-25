@@ -537,6 +537,26 @@ export class ClinicianToolService {
     return counts;
   }
 
+  // Taxonomy slug to display name mapping
+  private static readonly TAXONOMY_DISPLAY_NAMES: Record<string, string> = {
+    "marketing-patient-acquisition": "Marketing & Patient Acquisition",
+    "ehr-practice-management": "EHR & Practice Management",
+    "ai-scribe-documentation": "AI Scribes & Documentation",
+    "billing-rcm": "Billing & RCM",
+    "telehealth-communication": "Telehealth & Communication",
+    "provider-networks": "Provider Networks",
+    "measurement-outcomes": "Measurement & Outcomes",
+    "prescribing-erx": "Prescribing & e-Rx",
+    "credentialing-workforce": "Credentialing & Workforce",
+    "patient-engagement": "Patient Engagement",
+    "clinical-decision-support": "Clinical Decision Support",
+    "scheduling-intake": "Scheduling & Intake",
+    "compliance-security": "Compliance & Security",
+    "analytics-reporting": "Analytics & Reporting",
+    "care-coordination": "Care Coordination",
+    "digital-therapeutics": "Digital Therapeutics",
+  };
+
   /**
    * Get tool counts with category metadata using V4 taxonomy slugs.
    * This is the primary method for the landing page.
@@ -547,7 +567,7 @@ export class ClinicianToolService {
     return Object.entries(counts)
       .map(([slug, count]) => ({
         slug,
-        display_name: slug, // Will be enriched by page from taxonomy JSON
+        display_name: this.TAXONOMY_DISPLAY_NAMES[slug] || slug,
         count,
         url: `/tools/for-clinicians/${slug}/`,
       }))

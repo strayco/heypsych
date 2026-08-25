@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Paraphilic Disorders | Clinical Information | HeyPsych",
+  title: "Paraphilic Disorders | Clinical Information",
   description:
     "Clinical information about paraphilic disorders with evidence-based treatment approaches and professional resources.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/paraphilic-disorders`,
   },
   openGraph: {
-    title: "Paraphilic Disorders | HeyPsych",
+    title: "Paraphilic Disorders",
     description: "Clinical guide to paraphilic disorders and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/paraphilic-disorders`,
     type: "website",

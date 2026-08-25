@@ -11,7 +11,7 @@ const HUB_SLUG = "trauma-ptsd";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Trauma & PTSD Tools | HeyPsych" };
+    return { title: "Trauma & PTSD Tools" };
   }
 
   return {

@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Sleep Disorders | Insomnia, Sleep Apnea, Narcolepsy | HeyPsych",
+  title: "Sleep Disorders | Insomnia, Sleep Apnea, Narcolepsy",
   description:
     "Comprehensive guide to sleep disorders including insomnia, sleep apnea, narcolepsy, and evidence-based sleep treatments and therapies.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/sleep-disorders`,
   },
   openGraph: {
-    title: "Sleep Disorders | HeyPsych",
+    title: "Sleep Disorders",
     description: "Comprehensive guide to sleep disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/sleep-disorders`,
     type: "website",

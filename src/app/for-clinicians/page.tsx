@@ -12,11 +12,11 @@ import { featureFlags } from "@/lib/config/feature-flags";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "For Clinicians | HeyPsych",
+  title: "For Clinicians",
   description:
     "Clinical resources for mental health professionals. Treatment information, digital tools, assessments, and patient education materials.",
   openGraph: {
-    title: "For Clinicians | HeyPsych",
+    title: "For Clinicians",
     description:
       "Clinical resources for mental health professionals. Treatment information, digital tools, and patient education.",
   },

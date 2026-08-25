@@ -58,6 +58,12 @@ const CuratedComparisonSchema = z.object({
     key_differences: z.record(z.string(), z.string()),
   }).optional(),
   comparison_table: z.any().optional(),
+  // `faqs` is the field the comparison files actually use. Zod strips unknown
+  // keys, so declaring only the legacy singular `faq` silently discarded every
+  // question and left these pages with no FAQ content to mark up.
+  faqs: z
+    .array(z.object({ q: z.string(), a: z.string() }).passthrough())
+    .optional(),
   faq: z.any().optional(),
   seo: z.any().optional(),
 });
@@ -233,7 +239,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!result) {
     // Return noindex metadata for non-publishable comparisons
     return {
-      title: "Comparison Not Found | HeyPsych",
+      title: "Comparison Not Found",
       robots: { index: false, follow: false },
     };
   }
@@ -257,6 +263,95 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       follow: true,
     },
   };
+}
+
+// =============================================================================
+// STRUCTURED DATA
+// =============================================================================
+
+/**
+ * Build the schema.org stack for a head-to-head comparison.
+ *
+ * These pages target the highest-intent query shape the site has ("X vs Y" for
+ * clinician software) but shipped no structured data at all, so they were
+ * ineligible for FAQ rich results and gave AI answer engines nothing explicit
+ * to quote. The curated files already carry the answers; this exposes them.
+ */
+function generateComparisonStructuredData(
+  comparison: CuratedComparison,
+  tools: Map<string, ClinicianToolV4>
+): object[] {
+  const schemas: object[] = [];
+  const pageUrl = `${SITE_CONFIG.url}/tools/compare/${comparison.slug}`;
+
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Tools", item: `${SITE_CONFIG.url}/tools/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Compare",
+        item: `${SITE_CONFIG.url}/tools/compare/`,
+      },
+      { "@type": "ListItem", position: 3, name: comparison.name, item: pageUrl },
+    ],
+  });
+
+  if (comparison.faqs && comparison.faqs.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: comparison.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    });
+  }
+
+  // The products under comparison, so the page states what it is comparing
+  // rather than leaving it implicit in prose.
+  const toolList = comparison.tools
+    .map((slug) => tools.get(slug))
+    .filter((tool): tool is ClinicianToolV4 => Boolean(tool));
+
+  if (toolList.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: comparison.title,
+      numberOfItems: toolList.length,
+      itemListElement: toolList.map((tool, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SoftwareApplication",
+          name: tool.name,
+          applicationCategory: "BusinessApplication",
+          url: `${SITE_CONFIG.url}/tools/${tool.slug}`,
+          ...(tool.company_name
+            ? { publisher: { "@type": "Organization", name: tool.company_name } }
+            : {}),
+        },
+      })),
+    });
+  }
+
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: comparison.title,
+    description: comparison.description,
+    url: pageUrl,
+    ...(comparison.metadata.last_updated
+      ? { dateModified: comparison.metadata.last_updated }
+      : {}),
+    isPartOf: { "@type": "WebSite", name: SITE_CONFIG.name, url: SITE_CONFIG.url },
+  });
+
+  return schemas;
 }
 
 // =============================================================================
@@ -295,15 +390,26 @@ export default async function CuratedComparisonPage({ params }: PageProps) {
   const comparisonResult = generateToolComparison(toolArray, context);
   const serializedComparison = serializeToolComparisonResult(comparisonResult);
 
+  const schemas = generateComparisonStructuredData(comparison, tools);
+
   return (
-    <Suspense fallback={<ComparisonLoadingSkeleton />}>
-      <ComparePageClient
-        initialTools={toolArray}
-        comparison={serializedComparison}
-        curatedComparisons={publishableCurated}
-        toolsManifest={toolsManifest}
-      />
-    </Suspense>
+    <>
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <Suspense fallback={<ComparisonLoadingSkeleton />}>
+        <ComparePageClient
+          initialTools={toolArray}
+          comparison={serializedComparison}
+          curatedComparisons={publishableCurated}
+          toolsManifest={toolsManifest}
+        />
+      </Suspense>
+    </>
   );
 }
 

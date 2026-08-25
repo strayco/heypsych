@@ -133,13 +133,13 @@ export function ClinicianToolCard({
             </div>
 
             {/* Pricing */}
-            <div className="shrink-0 text-right">
+            <div className="shrink-0 text-right max-w-[140px]">
               {tool.pricing?.free_tier ? (
                 <span className="text-xs font-medium text-positive-700">
                   Free tier
                 </span>
               ) : (
-                <span className="text-xs text-label-tertiary">
+                <span className="text-xs text-label-tertiary line-clamp-2">
                   {tool.pricing?.starting_price_display}
                 </span>
               )}

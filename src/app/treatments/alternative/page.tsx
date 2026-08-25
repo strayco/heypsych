@@ -10,7 +10,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 
 // Generate SEO metadata for alternative treatments hub page
 export const metadata: Metadata = {
-  title: "Alternative Mental Health Treatments | Light Therapy, Acupuncture & More | HeyPsych",
+  title: "Alternative Mental Health Treatments | Light Therapy, Acupuncture & More",
   description:
     "Evidence-based alternative treatments for mental health including bright light therapy, acupuncture, mindfulness practices, yoga, and other complementary approaches.",
   keywords:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/alternative`,
   },
   openGraph: {
-    title: "Alternative Mental Health Treatments | HeyPsych",
+    title: "Alternative Mental Health Treatments",
     description:
       "Evidence-based alternative treatments: light therapy, acupuncture, mindfulness, and complementary approaches.",
     url: `${SITE_CONFIG.url}/treatments/alternative`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alternative Mental Health Treatments | HeyPsych",
+    title: "Alternative Mental Health Treatments",
     description: "Explore alternative treatments: light therapy, acupuncture, mindfulness, and more.",
   },
 };

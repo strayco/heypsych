@@ -10,6 +10,7 @@
 import type { Metadata } from 'next';
 import type { Entity } from '@/lib/types/database';
 import { MetadataGenerator } from '../metadata-generator';
+import { renderedTitleLength } from '../title';
 
 export class MedicationMetadataGenerator extends MetadataGenerator {
   async generate(entity: Entity): Promise<Metadata> {
@@ -45,16 +46,17 @@ export class MedicationMetadataGenerator extends MetadataGenerator {
       name.includes(`(${brandName.toUpperCase()})`)
     );
 
-    // Format: "Sertraline (Zoloft): Uses, Side Effects, Dosage | HeyPsych"
-    // But don't add brand suffix if name already contains it
+    // Format: "Sertraline (Zoloft): Uses, Side Effects, Dosage"
+    // The layout template appends " | HeyPsych", so length is measured against
+    // the final rendered form rather than the stem.
     const brandSuffix = (brandName && !nameHasBrand) ? ` (${brandName})` : '';
-    const fullTitle = `${name}${brandSuffix}: Uses, Side Effects, Dosage | HeyPsych`;
+    const fullTitle = `${name}${brandSuffix}: Uses, Side Effects, Dosage`;
 
     // If too long, try shorter version
-    if (fullTitle.length > 60) {
-      const shortTitle = `${name}${brandSuffix}: Uses & Dosage | HeyPsych`;
-      if (shortTitle.length > 60) {
-        return this.ensureTitleLength(`${name} | HeyPsych`);
+    if (renderedTitleLength(fullTitle) > 60) {
+      const shortTitle = `${name}${brandSuffix}: Uses & Dosage`;
+      if (renderedTitleLength(shortTitle) > 60) {
+        return this.ensureTitleLength(name);
       }
       return shortTitle;
     }

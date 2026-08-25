@@ -24,7 +24,7 @@ import { siteConfig } from "@/lib/config/site";
 import { PracticeTypeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 
 export const metadata: Metadata = {
-  title: "Software for Your Practice Type | Mental Health Technology | HeyPsych",
+  title: "Software for Your Practice Type | Mental Health Technology",
   description: "Find the right software for your specific practice type. Solo therapist, group practice, psychiatry, telehealth-first, IOP/PHP, and more. Get personalized recommendations.",
   keywords: [
     "therapy practice software",

@@ -12,7 +12,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/architect/build`;
 
 export const metadata: Metadata = {
-  title: "Build Your Stack | Practice Architect™ | HeyPsych",
+  title: "Build Your Stack | Practice Architect™",
   description:
     "Build your mental health practice technology stack with Practice Architect™. Get personalized recommendations and transparent fit scores.",
   alternates: {

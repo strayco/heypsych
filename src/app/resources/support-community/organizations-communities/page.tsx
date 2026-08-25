@@ -16,7 +16,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Mental Health Organizations & Support Communities | HeyPsych",
+  title: "Mental Health Organizations & Support Communities",
   description:
     "Connect with mental health organizations, peer support groups, and recovery communities. Find NAMI, DBSA, AA, Al-Anon, and specialized support networks for anxiety, depression, eating disorders, and more.",
   keywords:
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mental Health Organizations & Communities | HeyPsych",
+    title: "Mental Health Organizations & Communities",
     description:
       "Find mental health support groups: NAMI, DBSA, AA, and specialized peer communities.",
   },

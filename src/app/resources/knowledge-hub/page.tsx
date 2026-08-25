@@ -4,7 +4,7 @@ import { ArticlesBlogsHub } from "@/components/blocks/articles-blogs-hub";
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Knowledge Hub | Mental Health Articles & Guides | HeyPsych",
+  title: "Knowledge Hub | Mental Health Articles & Guides",
   description:
     "Expert articles, research summaries, and practical guides on mental health topics. Evidence-based information from mental health professionals.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/knowledge-hub`,
   },
   openGraph: {
-    title: "Knowledge Hub | HeyPsych",
+    title: "Knowledge Hub",
     description: "Expert mental health articles, research summaries, and practical guides.",
     url: `${SITE_CONFIG.url}/resources/knowledge-hub`,
     type: "website",

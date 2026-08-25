@@ -4,7 +4,7 @@ import { AssessmentsClient } from "@/components/pages/assessments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Mental Health Assessments & Screeners | Free Clinical Tools | HeyPsych",
+  title: "Mental Health Assessments & Screeners | Free Clinical Tools",
   description:
     "Evidence-based mental health screening tools and assessments. Free validated questionnaires for depression, anxiety, ADHD, and more.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/assessments-screeners`,
   },
   openGraph: {
-    title: "Mental Health Assessments & Screeners | HeyPsych",
+    title: "Mental Health Assessments & Screeners",
     description: "Free evidence-based mental health screening tools and validated assessments.",
     url: `${SITE_CONFIG.url}/resources/assessments-screeners`,
     type: "website",

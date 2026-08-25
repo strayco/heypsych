@@ -16,7 +16,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Crisis Helplines & Hotlines | 24/7 Mental Health Support | HeyPsych",
+  title: "Crisis Helplines & Hotlines | 24/7 Mental Health Support",
   description:
     "Find 24/7 crisis helplines including 988 Suicide & Crisis Lifeline, Crisis Text Line, and specialized hotlines for veterans, LGBTQ+, and more. Free, confidential support available now.",
   keywords:
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crisis Helplines & Hotlines | HeyPsych",
+    title: "Crisis Helplines & Hotlines",
     description:
       "Find 24/7 crisis helplines: 988 Lifeline, Crisis Text Line, and specialized support.",
   },

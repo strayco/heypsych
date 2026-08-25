@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Sexual Health Disorders | Sexual Dysfunction | HeyPsych",
+  title: "Sexual Health Disorders | Sexual Dysfunction",
   description:
     "Comprehensive guide to sexual health disorders and dysfunctions with evidence-based treatment options and supportive resources.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/sexual-disorders`,
   },
   openGraph: {
-    title: "Sexual Health Disorders | HeyPsych",
+    title: "Sexual Health Disorders",
     description: "Comprehensive guide to sexual health conditions and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/sexual-disorders`,
     type: "website",

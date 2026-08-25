@@ -20,7 +20,7 @@
  */
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -127,8 +127,14 @@ export function ComparePageClient({
   toolsManifest,
 }: ComparePageClientProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
+  // NOTE: do not reintroduce `useSearchParams()` here.
+  //
+  // Reading search params opts the nearest Suspense boundary out of
+  // prerendering, so the server emitted only the loading skeleton and the entire
+  // comparison arrived after hydration. In a production build that reduced
+  // /tools/compare/* to 86 words with no <h1>, on the highest-intent pages the
+  // site has. The value was never read. Selection state comes from props.
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>(
     initialTools.map((t) => t.slug)
   );

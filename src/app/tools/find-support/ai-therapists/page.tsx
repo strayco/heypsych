@@ -11,7 +11,7 @@ const SUB_HUB_SLUG = "ai-therapists";
 export async function generateMetadata(): Promise<Metadata> {
   const subHub = TaxonomyService.getSubHub(SUB_HUB_SLUG);
   if (!subHub) {
-    return { title: "AI Therapy Chatbots | HeyPsych" };
+    return { title: "AI Therapy Chatbots" };
   }
 
   return {

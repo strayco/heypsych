@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/architect/audit`;
 
 export const metadata: Metadata = {
-  title: "Audit Your Stack | Practice Stack Architect | HeyPsych",
+  title: "Audit Your Stack | Practice Stack Architect",
   description:
     "Audit your mental health practice technology stack. Find gaps, identify redundancies, and discover better alternatives.",
   alternates: {

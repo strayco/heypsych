@@ -22,7 +22,7 @@ import {
 import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
-  title: "Claim Your Product Profile | Vendor Portal | HeyPsych",
+  title: "Claim Your Product Profile | Vendor Portal",
   description: "Claim and manage your mental health software product on HeyPsych. Update your listing, respond to buyer inquiries, and reach practices actively evaluating your category.",
   keywords: [
     "vendor portal",

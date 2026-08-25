@@ -19,7 +19,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/architect`;
 
 export const metadata: Metadata = {
-  title: "Practice Architect™ | Build Your Mental Health Practice Stack | HeyPsych",
+  title: "Practice Architect™ | Build Your Mental Health Practice Stack",
   description:
     "Build your ideal mental health practice technology stack with Practice Architect™. Compare EHRs, billing software, telehealth platforms, and more with transparent fit scores and pricing.",
   keywords: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "Practice Architect™ | Build Your Mental Health Practice Stack | HeyPsych",
+    title: "Practice Architect™ | Build Your Mental Health Practice Stack",
     description:
       "Build your ideal mental health practice technology stack with Practice Architect™ — transparent fit scores, real pricing.",
     url: canonicalUrl,
@@ -114,30 +114,31 @@ export default function ArchitectEntryPage() {
     <div className="min-h-screen bg-canvas">
       {/* Hero Section */}
       <section className="border-b border-separator bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="text-center">
-            {/* Breadcrumb */}
-            <div className="mb-6 flex items-center justify-center gap-2 text-sm text-label-tertiary">
-              <Link href="/tools/for-clinicians/" className="hover:text-label-secondary">
-                Clinician Tools
-              </Link>
-              <span>/</span>
-              <span className="text-label-secondary">Practice Architect™</span>
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+          {/* Breadcrumb */}
+          <nav className="mb-4 flex items-center gap-2 text-sm text-label-tertiary">
+            <Link href="/tools/for-clinicians/" className="hover:text-label-secondary">
+              Clinician Tools
+            </Link>
+            <span>/</span>
+            <span className="text-label-secondary">Practice Architect™</span>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Building2 className="h-7 w-7 text-label-tertiary" />
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                Practice Stack Builder
+              </p>
+              <h1 className="text-2xl font-semibold tracking-tight text-label-primary sm:text-3xl">
+                Practice Architect<sup className="text-sm">™</sup>
+              </h1>
             </div>
-
-            <Building2 className="mx-auto h-8 w-8 text-label-tertiary mb-4" />
-
-            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-              Practice Stack Builder
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
-              Practice Architect<sup className="text-lg">™</sup>
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary">
-              Build your ideal mental health practice technology stack.
-              Transparent fit scores. Real cost estimates. Zero guesswork.
-            </p>
           </div>
+          <p className="mt-3 max-w-2xl text-label-secondary">
+            Build your ideal mental health practice technology stack.
+            Transparent fit scores. Real cost estimates. Zero guesswork.
+          </p>
         </div>
       </section>
 
@@ -190,7 +191,7 @@ export default function ArchitectEntryPage() {
                   {/* CTA */}
                   <Link
                     href={mode.href}
-                    className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-all hover:bg-neutral-800"
+                    className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-treatment px-4 py-3 text-sm font-medium text-white transition-all hover:bg-treatment-600"
                   >
                     <span className="text-white">Get Started</span>
                     <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
@@ -290,7 +291,7 @@ export default function ArchitectEntryPage() {
           </p>
           <Link
             href="/architect/build?mode=build-for-me"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-neutral-900 px-6 py-3 font-medium text-white transition-all hover:bg-neutral-800"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-treatment px-6 py-3 font-medium text-white transition-all hover:bg-treatment-600"
           >
             <Sparkles className="h-5 w-5 text-white" />
             <span className="text-white">Build for Me</span>

@@ -11,7 +11,7 @@ const HUB_SLUG = "substance-use";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Substance Use & Recovery Tools | HeyPsych" };
+    return { title: "Substance Use & Recovery Tools" };
   }
 
   return {

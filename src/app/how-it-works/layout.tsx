@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How PsychTrails Works | HeyPsych",
+  title: "How PsychTrails Works",
   description:
     "Learn how PsychTrails builds real mental health skills through interactive scenarios. Practice anxiety, social situations, and everyday challenges.",
 };

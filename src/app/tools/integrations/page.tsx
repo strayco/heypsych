@@ -17,7 +17,7 @@ import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { IntegrationArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 
 export const metadata: Metadata = {
-  title: "Mental Health Software Integrations | Compatibility Guide | HeyPsych",
+  title: "Mental Health Software Integrations | Compatibility Guide",
   description: "Check which mental health practice tools work together. Explore EHR integrations, AI scribe compatibility, billing connections, and more. Find products that fit your existing stack.",
   keywords: [
     "mental health software integrations",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.url}/tools/integrations`,
   },
   openGraph: {
-    title: "Mental Health Software Integrations | HeyPsych",
+    title: "Mental Health Software Integrations",
     description: "Check which mental health practice tools work together.",
     url: `${siteConfig.url}/tools/integrations`,
     type: "website",

@@ -10,7 +10,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 
 // Generate SEO metadata for interventional treatments hub page
 export const metadata: Metadata = {
-  title: "Interventional Mental Health Treatments | TMS, ECT, DBS & Brain Stimulation | HeyPsych",
+  title: "Interventional Mental Health Treatments | TMS, ECT, DBS & Brain Stimulation",
   description:
     "Brain stimulation and interventional treatments for treatment-resistant mental health conditions including TMS, ECT, deep brain stimulation, and VNS therapy.",
   keywords:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/interventional`,
   },
   openGraph: {
-    title: "Interventional Mental Health Treatments | HeyPsych",
+    title: "Interventional Mental Health Treatments",
     description:
       "Brain stimulation treatments: TMS, ECT, deep brain stimulation, and VNS for treatment-resistant conditions.",
     url: `${SITE_CONFIG.url}/treatments/interventional`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Interventional Mental Health Treatments | HeyPsych",
+    title: "Interventional Mental Health Treatments",
     description: "Explore brain stimulation treatments: TMS, ECT, DBS, and VNS therapy.",
   },
 };

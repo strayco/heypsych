@@ -22,6 +22,7 @@ import { MedicationMetadataGenerator } from './metadata-generators/medication';
 import { TherapyMetadataGenerator } from './metadata-generators/therapy';
 import { ResourceMetadataGenerator } from './metadata-generators/resource';
 import { getEntityType } from '@/lib/utils/entity-type';
+import { stripBrandTitleSuffix } from './title';
 
 /**
  * MetadataFactory
@@ -29,6 +30,26 @@ import { getEntityType } from '@/lib/utils/entity-type';
  * Central factory for generating SEO metadata for all entity types.
  * Automatically selects the appropriate generator based on entity type.
  */
+/**
+ * Strip a trailing brand suffix from the page title.
+ *
+ * Only `metadata.title` is normalized. Open Graph and Twitter titles are
+ * rendered verbatim by Next.js (no template is applied), so they keep their
+ * single brand suffix - which makes them match the final rendered `<title>`
+ * exactly once the layout template appends the brand.
+ */
+function normalizeTitles(metadata: Metadata): Metadata {
+  const { title } = metadata;
+
+  // Only plain string titles receive the layout template. A `{ absolute: ... }`
+  // title deliberately bypasses the template, so its brand must be left intact.
+  if (typeof title === 'string') {
+    return { ...metadata, title: stripBrandTitleSuffix(title) };
+  }
+
+  return metadata;
+}
+
 export class MetadataFactory {
   /**
    * Generate complete SEO metadata for an entity
@@ -40,7 +61,7 @@ export class MetadataFactory {
     // Handle null entity (404 case)
     if (!entity) {
       return {
-        title: 'Page Not Found | HeyPsych',
+        title: 'Page Not Found',
         description: 'The page you are looking for could not be found.'
       };
     }
@@ -48,8 +69,11 @@ export class MetadataFactory {
     // Get appropriate generator for entity type
     const generator = this.getGenerator(entity);
 
-    // Generate and return metadata
-    return generator.generate(entity);
+    const metadata = await generator.generate(entity);
+
+    // The root layout appends "| HeyPsych" via title.template. Strip any brand
+    // suffix a generator already added so it is never rendered twice.
+    return normalizeTitles(metadata);
   }
 
   /**

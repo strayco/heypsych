@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!symptom) {
     return {
-      title: "Symptom Not Found | HeyPsych",
+      title: "Symptom Not Found",
       robots: { index: false, follow: false },
     };
   }

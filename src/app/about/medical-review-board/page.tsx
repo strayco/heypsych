@@ -45,10 +45,10 @@ const getReviewBoardData = (): ReviewBoardData => {
 };
 
 export const metadata: Metadata = {
-  title: "Medical Review Board | HeyPsych",
+  title: "Medical Review Board",
   description: "Meet the board-certified psychiatrists and mental health professionals who review all medical content on HeyPsych to ensure accuracy and reliability.",
   openGraph: {
-    title: "Medical Review Board | HeyPsych",
+    title: "Medical Review Board",
     description: "Board-certified psychiatrists and mental health professionals ensuring medical accuracy",
     url: "https://heypsych.com/about/medical-review-board",
     type: "website",

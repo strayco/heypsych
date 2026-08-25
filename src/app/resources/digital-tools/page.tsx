@@ -5,7 +5,7 @@ import { DigitalToolsHub } from "@/components/blocks/digital-tools-hub";
 import { logger } from "@/lib/utils/logger";
 
 export const metadata: Metadata = {
-  title: "Digital Tools & Apps | HeyPsych",
+  title: "Digital Tools & Apps",
   description:
     "Curated mental health apps and digital tools for mood tracking, meditation, sleep, therapy, and wellness. Evidence-based apps with privacy ratings.",
   keywords: [

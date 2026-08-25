@@ -13,14 +13,14 @@ const fullCategoryConfig = getCategoryBySlug("substance-use-disorders")!;
 const { icon, ...categoryConfig } = fullCategoryConfig;
 
 export const metadata: Metadata = {
-  title: `${categoryConfig.displayTitle} | HeyPsych`,
+  title: `${categoryConfig.displayTitle}`,
   description: categoryConfig.description,
   keywords: categoryConfig.keywords.join(", "),
   alternates: {
     canonical: `${SITE_CONFIG.url}/conditions/substance-use-disorders`,
   },
   openGraph: {
-    title: `${categoryConfig.displayTitle} | HeyPsych`,
+    title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,
     url: `${SITE_CONFIG.url}/conditions/substance-use-disorders`,
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${categoryConfig.displayTitle} | HeyPsych`,
+    title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,
   },
 };

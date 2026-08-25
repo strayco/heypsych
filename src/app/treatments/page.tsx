@@ -10,7 +10,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 
 // Generate SEO metadata for treatments hub page
 export const metadata: Metadata = {
-  title: "Mental Health Treatments | Medications, Therapy & Evidence-Based Options | HeyPsych",
+  title: "Mental Health Treatments | Medications, Therapy & Evidence-Based Options",
   description:
     "Explore evidence-based mental health treatments including medications, psychotherapy, interventional treatments, and alternative approaches. Find the right treatment option.",
   keywords:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments`,
   },
   openGraph: {
-    title: "Mental Health Treatments | HeyPsych",
+    title: "Mental Health Treatments",
     description:
       "Evidence-based mental health treatments: medications, psychotherapy, interventional options, and alternative approaches.",
     url: `${SITE_CONFIG.url}/treatments`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mental Health Treatments | HeyPsych",
+    title: "Mental Health Treatments",
     description:
       "Explore evidence-based mental health treatments: medications, therapy, and interventional options.",
   },

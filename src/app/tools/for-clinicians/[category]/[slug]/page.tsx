@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!tool || !isToolPublishable(tool)) {
     return {
-      title: "Tool Not Found | HeyPsych",
+      title: "Tool Not Found",
       robots: { index: false, follow: false },
     };
   }
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${categorySlug}/${slug}`;
 
   return {
-    title: `${tool.name} - ${category?.display_name || "Clinician Tool"} | HeyPsych`,
+    title: `${tool.name} - ${category?.display_name || "Clinician Tool"}`,
     description: tool.short_description || tool.one_liner || `${tool.name} for mental health clinicians.`,
     alternates: {
       canonical: canonicalUrl,

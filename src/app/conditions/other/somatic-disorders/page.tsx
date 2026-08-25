@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Somatic Symptom Disorders | Health Anxiety | HeyPsych",
+  title: "Somatic Symptom Disorders | Health Anxiety",
   description:
     "Comprehensive guide to somatic symptom disorders including illness anxiety disorder and conversion disorder with evidence-based treatments.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/somatic-disorders`,
   },
   openGraph: {
-    title: "Somatic Symptom Disorders | HeyPsych",
+    title: "Somatic Symptom Disorders",
     description: "Comprehensive guide to somatic disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/somatic-disorders`,
     type: "website",

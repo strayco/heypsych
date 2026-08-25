@@ -78,14 +78,14 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   // Base metadata for empty state (selector/explorer)
   if (items.length < 2) {
     return {
-      title: "Compare Treatments | Side-by-Side Analysis | HeyPsych",
+      title: "Compare Treatments | Side-by-Side Analysis",
       description:
         "Compare mental health medications and therapies side by side. See differences in effectiveness, side effects, and find which treatment might be right for you.",
       alternates: {
         canonical: `${SITE_CONFIG.url}/treatments/compare`,
       },
       openGraph: {
-        title: "Treatment Comparisons | HeyPsych",
+        title: "Treatment Comparisons",
         description: "Compare mental health medications and therapies side by side.",
       },
       // Prevent indexing of arbitrary query combinations
@@ -97,7 +97,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const treatments = await loadTreatments(items);
   const names = Array.from(treatments.values()).map((t) => t.identity.name);
 
-  const title = `Compare ${names.join(" vs ")} | HeyPsych`;
+  const title = `Compare ${names.join(" vs ")}`;
   const description = `Side-by-side comparison of ${names.join(", ")}. Compare effectiveness, side effects, dosing, and more.`;
 
   return {

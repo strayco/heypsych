@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Elimination Disorders | Enuresis, Encopresis | HeyPsych",
+  title: "Elimination Disorders | Enuresis, Encopresis",
   description:
     "Comprehensive guide to elimination disorders including enuresis (bedwetting) and encopresis with evidence-based treatments for children and adults.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/elimination-disorders`,
   },
   openGraph: {
-    title: "Elimination Disorders | HeyPsych",
+    title: "Elimination Disorders",
     description: "Comprehensive guide to elimination disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/elimination-disorders`,
     type: "website",

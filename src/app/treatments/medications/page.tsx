@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 
 // Generate SEO metadata for medications hub page
 export const metadata: Metadata = {
-  title: "Psychiatric Medications A-Z | Antidepressants, Mood Stabilizers & More | HeyPsych",
+  title: "Psychiatric Medications A-Z | Antidepressants, Mood Stabilizers & More",
   description:
     "Complete guide to psychiatric medications including antidepressants, antipsychotics, mood stabilizers, anxiolytics, and stimulants. Learn about uses, side effects, and dosing.",
   keywords:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/medications`,
   },
   openGraph: {
-    title: "Psychiatric Medications A-Z | HeyPsych",
+    title: "Psychiatric Medications A-Z",
     description:
       "Complete guide to psychiatric medications: antidepressants, antipsychotics, mood stabilizers, and more.",
     url: `${SITE_CONFIG.url}/treatments/medications`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Psychiatric Medications A-Z | HeyPsych",
+    title: "Psychiatric Medications A-Z",
     description:
       "Evidence-based information on psychiatric medications: uses, side effects, and dosing.",
   },

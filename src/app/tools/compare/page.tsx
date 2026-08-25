@@ -171,14 +171,14 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   // Base metadata for empty state (selector/explorer)
   if (items.length < 2) {
     return {
-      title: "Compare Clinician Tools | Side-by-Side Analysis | HeyPsych",
+      title: "Compare Clinician Tools | Side-by-Side Analysis",
       description:
         "Compare EHRs, AI scribes, billing software, and other clinician tools side by side. See differences in features, pricing, integrations, and find the right fit for your practice.",
       alternates: {
         canonical: `${SITE_CONFIG.url}/tools/compare`,
       },
       openGraph: {
-        title: "Clinician Tool Comparisons | HeyPsych",
+        title: "Clinician Tool Comparisons",
         description:
           "Compare mental health practice tools side by side. EHRs, AI scribes, billing, and more.",
       },
@@ -191,7 +191,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const tools = await loadTools(items);
   const names = Array.from(tools.values()).map((t) => t.name);
 
-  const title = `Compare ${names.join(" vs ")} | HeyPsych`;
+  const title = `Compare ${names.join(" vs ")}`;
   const description = `Side-by-side comparison of ${names.join(", ")}. Compare features, pricing, integrations, and compliance.`;
 
   return {

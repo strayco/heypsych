@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | HeyPsych",
+  title: "Terms of Service",
   description: "HeyPsych terms of service - Terms and conditions for using our platform.",
 };
 

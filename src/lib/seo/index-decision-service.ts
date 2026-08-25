@@ -40,6 +40,7 @@ import {
   type ContributorIntegrityFlags,
 } from '@/lib/trust/contributor-registry';
 import { initializeAnswerKings } from './answer-kings';
+import { EditorialService } from '@/lib/data/editorial-service';
 
 // ============ ANSWER KING REGISTRY (PRODUCTION IMPLEMENTATION) ============
 // This is the CANONICAL answer king registry used in production.
@@ -441,33 +442,87 @@ function calculateClinicalCompleteness(entity: Entity, routeFamily: RouteFamily)
 
   const data = entity.data || {};
   const metadata = entity.metadata || {};
-  const content = data.content || {};
+
+  // Clinical fields live at the top level of `data` in current records and under
+  // `data.content` in older ones. Reading only the nested shape scored every
+  // current condition at 1/10 regardless of how complete it actually was, so
+  // resolve each field from whichever level provides it.
+  const nested = data.content || {};
+  const field = (name: string) => nested[name] ?? data[name];
+
+  /** True when any of the given field names carries actual content. */
+  const hasAny = (...names: string[]) =>
+    names.some((name) => {
+      const value = field(name);
+      if (value == null) return false;
+      if (Array.isArray(value)) return value.length > 0;
+      if (typeof value === 'object') return Object.keys(value).length > 0;
+      if (typeof value === 'string') return value.trim().length > 0;
+      return Boolean(value);
+    });
 
   if (routeFamily === 'conditions') {
-    // Conditions have specific requirements
+    // Conditions have specific requirements.
+    //
+    // Each clinical concept is matched against the field names the corpus
+    // actually uses, not a single canonical name. Etiology, for example, is
+    // recorded as `risk_factors` and `neurobiology` rather than `causes`;
+    // scoring only `causes` credited zero for content that was fully present.
     maxScore = 10;
 
-    if (content.symptoms?.core?.length > 0) score += 2;
-    if (content.causes?.length > 0) score += 1.5;
-    if (content.diagnosis) score += 1;
-    if (content.treatment_approaches) score += 2;
-    if (content.prognosis) score += 1;
+    if (hasAny('symptoms', 'warning_signs')) score += 2;
+    if (hasAny('causes', 'etiology', 'etiologies', 'risk_factors', 'neurobiology')) score += 1.5;
+    if (hasAny('diagnosis', 'diagnostic_criteria', 'evaluation', 'evaluation_approach')) score += 1;
+    if (hasAny('treatment_approaches', 'treatment', 'treatments', 'treatment_goals')) score += 2;
+    if (hasAny('prognosis', 'prognosis_factors')) score += 1;
     if (metadata.dsm5_code || metadata.icd10_code) score += 1;
-    if ((metadata.references?.length ?? 0) > 0) score += 1.5;
+
+    const references = metadata.references ?? field('references') ?? field('citations') ?? field('sources');
+    if ((references?.length ?? 0) > 0) score += 1.5;
   } else if (routeFamily === 'treatments') {
     // Treatments have different requirements
     maxScore = 10;
 
-    const clinicalMeta = data.clinical_metadata || {};
-    const sections = data.sections || [];
+    // V3 treatment records carry `clinical_profile` with `sections` whose types
+    // are `adverse_effects` / `dosing`. The previous lookups (`clinical_metadata`,
+    // section types `side_effects` / `dosage`) matched no current record, so
+    // every treatment scored at most 0.2 regardless of its actual depth.
+    const clinicalMeta = data.clinical_profile || data.clinical_metadata || {};
+    const sections: any[] = Array.isArray(data.sections) ? data.sections : [];
 
-    if (clinicalMeta.mechanism_of_action) score += 1.5;
-    if (clinicalMeta.primary_indications?.length > 0) score += 1.5;
-    if (clinicalMeta.contraindications?.length > 0) score += 1;
-    if (sections.some((s: any) => s.type === 'side_effects' || s.type === 'side-effects')) score += 2;
-    if (sections.some((s: any) => s.type === 'dosage')) score += 1.5;
-    if (sections.some((s: any) => s.type === 'interactions')) score += 1;
-    if ((metadata.references?.length ?? 0) > 0) score += 1.5;
+    /** True when any section carries one of the given types. */
+    const hasSection = (...types: string[]) =>
+      sections.some((s) => {
+        const id = String(s?.type ?? s?.id ?? '').toLowerCase().replace(/-/g, '_');
+        return types.includes(id);
+      });
+
+    /** True when a clinical_profile key holds content. */
+    const hasProfile = (...keys: string[]) =>
+      keys.some((k) => {
+        const v = (clinicalMeta as Record<string, unknown>)[k];
+        if (v == null) return false;
+        if (Array.isArray(v)) return v.length > 0;
+        if (typeof v === 'object') return Object.keys(v).length > 0;
+        return Boolean(v);
+      });
+
+    if (hasProfile('mechanism_of_action', 'modality_details') || hasSection('mechanism')) {
+      score += 1.5;
+    }
+    if (hasProfile('primary_indications', 'indications') || hasSection('indications')) {
+      score += 1.5;
+    }
+    if (hasProfile('contraindications', 'safety') || hasSection('warnings', 'contraindications')) {
+      score += 1;
+    }
+    if (hasSection('side_effects', 'adverse_effects')) score += 2;
+    if (hasSection('dosage', 'dosing', 'dosage_forms')) score += 1.5;
+    if (hasSection('interactions')) score += 1;
+
+    const references =
+      metadata.references ?? data.references ?? data.citations ?? data.sources;
+    if ((references?.length ?? 0) > 0) score += 1.5;
   } else if (routeFamily === 'resources') {
     // Resources have simpler requirements
     maxScore = 6;
@@ -488,47 +543,111 @@ function calculateClinicalCompleteness(entity: Entity, routeFamily: RouteFamily)
 }
 
 /**
- * Estimate word count for an entity
+ * Keys that hold structure, identifiers or presentation rather than prose.
+ *
+ * Counting these would inflate the score with slugs, ISO dates and layout hints
+ * that no reader ever sees. `ui` is excluded specifically because it restates
+ * body copy as tile titles, which would double-count the same sentences.
+ */
+const NON_PROSE_KEYS = new Set([
+  'ui',
+  'id',
+  'ids',
+  'slug',
+  'type',
+  'kind',
+  'status',
+  'visibility',
+  'schema_id',
+  'schema_version',
+  'metadata',
+  'editorial',
+  'seo',
+  'created_at',
+  'updated_at',
+  'last_synced',
+  'file_path',
+  'url',
+  'href',
+  'link',
+  'image',
+  'icon',
+  'color',
+  'layout',
+  'content_refs',
+  'wikidata_qid',
+  'dsm5_code',
+  'icd10_code',
+]);
+
+/** Strings that are identifiers rather than readable content. */
+function isProse(value: string): boolean {
+  const trimmed = value.trim();
+  if (trimmed.length === 0) return false;
+  // Slugs and codes: no whitespace and clearly machine-shaped.
+  if (!/\s/.test(trimmed)) {
+    if (/^https?:\/\//i.test(trimmed)) return false;
+    if (/^[a-z0-9]+([-_.][a-z0-9]+)+$/i.test(trimmed)) return false;
+    if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) return false;
+  }
+  return true;
+}
+
+/**
+ * Recursively collect readable text from an arbitrary content value.
+ *
+ * Entity content shapes vary by source and schema version: conditions expose
+ * `symptoms` / `prognosis` / `evaluation` at the top level of `data`, treatments
+ * use a `sections` array, and older records nest everything under `content`. A
+ * shape-specific reader silently scores zero on every shape it does not know,
+ * so this walks whatever it is given.
+ */
+function collectProse(value: unknown, out: string[]): void {
+  if (typeof value === 'string') {
+    if (isProse(value)) out.push(value);
+    return;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) collectProse(item, out);
+    return;
+  }
+  if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      if (NON_PROSE_KEYS.has(key)) continue;
+      collectProse(child, out);
+    }
+  }
+}
+
+/**
+ * Estimate word count for an entity.
+ *
+ * `entity.description` is not always a string - condition records carry a
+ * structured description object (overview plus lived-experience vignettes).
+ * Pushing that object into a string array previously stringified it to
+ * "[object Object]", scoring every such page at 2 words and pushing the entire
+ * conditions corpus below the quality gate into `noindex`.
  */
 function estimateWordCount(entity: Entity): number {
   const textParts: string[] = [];
 
-  // Add description
-  if (entity.description) textParts.push(entity.description);
-
-  // Add data content
-  const data = entity.data || {};
-
-  // Handle sections array
-  if (Array.isArray(data.sections)) {
-    for (const section of data.sections) {
-      if (section.content) textParts.push(section.content);
-      if (Array.isArray(section.items)) {
-        textParts.push(section.items.join(' '));
-      }
-    }
-  }
-
-  // Handle nested content object
-  if (data.content) {
-    const flattenContent = (obj: any): void => {
-      if (typeof obj === 'string') {
-        textParts.push(obj);
-      } else if (Array.isArray(obj)) {
-        obj.forEach(flattenContent);
-      } else if (obj && typeof obj === 'object') {
-        Object.values(obj).forEach(flattenContent);
-      }
-    };
-    flattenContent(data.content);
-  }
-
-  // Handle summary
-  if (data.summary) textParts.push(data.summary);
+  collectProse(entity.description, textParts);
+  collectProse(entity.data || {}, textParts);
 
   const fullText = textParts.join(' ');
   return fullText.split(/\s+/).filter(Boolean).length;
 }
+
+/**
+ * Route families whose page template always renders a medical disclaimer.
+ *
+ * Membership here is a claim about the renderer that must stay true; the
+ * rendered-output test in __tests__/ymyl-disclaimer.test.ts asserts it.
+ */
+const TEMPLATE_DISCLAIMER_ROUTES: ReadonlySet<RouteFamily> = new Set<RouteFamily>([
+  'treatments',
+  'conditions',
+]);
 
 /**
  * Check YMYL compliance for an entity
@@ -548,7 +667,15 @@ function checkYMYLCompliance(entity: Entity, routeFamily: RouteFamily): IndexEvi
     hasDisclaimer: !!(
       data.disclaimer ||
       data.medical_disclaimer ||
-      data.sections?.some((s: any) => s.type === 'disclaimer')
+      data.sections?.some((s: any) => s.type === 'disclaimer') ||
+      // The disclaimer is a property of the rendered page, not of the record.
+      // Treatment and condition templates render <MedicalDisclaimer> on every
+      // page unconditionally, so requiring a per-entity field marked 48
+      // treatments as non-compliant while their pages visibly carried the
+      // disclaimer. Verified against rendered HTML on 2026-08-25.
+      // @see src/app/treatments/[slug]/client-wrapper.tsx
+      // @see src/components/eat/MedicalDisclaimer.tsx
+      TEMPLATE_DISCLAIMER_ROUTES.has(routeFamily)
     ),
     hasAuthorCredentials: !!(
       editorial?.author?.credentials ||
@@ -748,6 +875,32 @@ function assessContributorForEntity(entity: Entity): ContributorAssessmentResult
 // ============ QUALITY CREDIT CALCULATION ============
 
 /**
+ * Whether an entity has been reviewed by a credentialed medical reviewer.
+ *
+ * Accepts both the resolved `medicalReviewer` object and the `medicalReviewerIds`
+ * reference list that records actually store, resolving IDs against the review
+ * board registry so an ID only counts when it names a real reviewer who has
+ * credentials. An unresolvable ID earns nothing.
+ */
+function hasCredentialedMedicalReviewer(entity: Entity): boolean {
+  const editorial = (entity.editorial ?? {}) as Record<string, any>;
+  const dataEditorial = ((entity.data as Record<string, any>)?.editorial ?? {}) as Record<string, any>;
+
+  const resolved = editorial.medicalReviewer;
+  if (resolved?.credentials && resolved.credentials.length > 0) {
+    return true;
+  }
+
+  const ids: unknown =
+    editorial.medicalReviewerIds ?? dataEditorial.medicalReviewerIds;
+
+  if (!Array.isArray(ids) || ids.length === 0) return false;
+
+  const reviewer = EditorialService.resolveReviewerIds(ids as string[]);
+  return !!(reviewer?.credentials && reviewer.credentials.length > 0);
+}
+
+/**
  * Calculate quality credit that can offset word count requirements
  *
  * High-value content signals indicate information density that makes
@@ -771,10 +924,13 @@ function calculateQualityCredit(entity: Entity, evidence: IndexEvidence): number
   }
 
   // +15% for medical review by credentialed reviewer
-  const medicalReviewer = entity.editorial?.medicalReviewer;
-  const hasCredentialedReviewer = !!(
-    medicalReviewer?.credentials && medicalReviewer.credentials.length > 0
-  );
+  //
+  // Records store the review as `medicalReviewerIds` (e.g. ["john-lee-md"]) plus
+  // a `reviewBoard` marker; the resolved `medicalReviewer` object is assembled
+  // for rendering and is not present on the entity here. Reading only the
+  // resolved shape meant 0 of 133 board-reviewed conditions ever earned this
+  // credit, so resolve the IDs the same way the page does.
+  const hasCredentialedReviewer = hasCredentialedMedicalReviewer(entity);
   if (hasCredentialedReviewer) {
     credit += 0.15;
   }

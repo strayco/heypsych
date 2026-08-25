@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { maybeTrackAIBot } from '@/lib/analytics/ai-telemetry';
+import { resolveTreatmentAlias } from '@/lib/treatments/treatment-aliases.generated';
+import { entitySlugExists } from '@/lib/entities/entity-slugs.generated';
 
 /**
  * Middleware for request handling
@@ -32,6 +34,66 @@ export function middleware(request: NextRequest) {
     });
     return NextResponse.redirect(url, status);
   };
+
+  // ==========================================================================
+  // TREATMENT SLUG ALIASES (generic + brand names → canonical page)
+  // ==========================================================================
+
+  // Treatment pages live at compound slugs like `/treatments/sertraline-zoloft`,
+  // but search demand is for the parts: "sertraline", "zoloft". Those bare URLs
+  // matched no page, and because the route streams a prerendered shell the
+  // resulting `notFound()` could not set a status - they answered HTTP 200 with
+  // an empty skeleton, which Google reads as a soft 404.
+  //
+  // Redirecting here resolves the alias before rendering begins, so the response
+  // is a real 301 that consolidates any accumulated signals onto the canonical
+  // page. The alias table is generated from data/treatments at build time; see
+  // scripts/generate-treatment-aliases.ts.
+  if (pathname.startsWith('/treatments/')) {
+    const slug = pathname.slice('/treatments/'.length);
+
+    // Only single-segment slugs are treatment detail pages.
+    if (slug && !slug.includes('/')) {
+      const canonical = resolveTreatmentAlias(slug);
+      if (canonical) {
+        return redirectWithUtms(`/treatments/${canonical}`, 301);
+      }
+    }
+  }
+
+  // ==========================================================================
+  // UNKNOWN DATABASE-BACKED ENTITY URLS → TRUE 404
+  // ==========================================================================
+
+  // `/conditions/[slug]` and `/resources/[slug]` are database-backed, so the
+  // static generation policy renders them on demand: `generateStaticParams`
+  // returns nothing and `dynamicParams` stays true. An unknown slug therefore
+  // reaches the page, which streams a shell before `notFound()` resolves - the
+  // response is HTTP 200 with no content, which Google reads as a soft 404.
+  //
+  // `dynamicParams = false` (the fix used for /treatments) is not available
+  // here: with no pre-rendered params it would 404 the entire section. So the
+  // set of real slugs is snapshotted at build time and checked before rendering
+  // begins, which leaves on-demand rendering of real pages untouched.
+  //
+  // See scripts/generate-entity-slugs.ts.
+  const entityRoute = pathname.startsWith('/conditions/')
+    ? ('conditions' as const)
+    : pathname.startsWith('/resources/')
+      ? ('resources' as const)
+      : null;
+
+  if (entityRoute) {
+    const slug = pathname.slice(`/${entityRoute}/`.length).replace(/\/$/, '');
+
+    // Only single-segment paths are entity detail pages; nested paths belong to
+    // their own route files.
+    if (slug && !slug.includes('/') && !entitySlugExists(entityRoute, slug)) {
+      return NextResponse.rewrite(new URL('/_not-found', request.url), {
+        status: 404,
+      });
+    }
+  }
 
   // Redirect /tools?audience=clinician → /tools/for-clinicians
   if (pathname === '/tools' && searchParams.get('audience') === 'clinician') {

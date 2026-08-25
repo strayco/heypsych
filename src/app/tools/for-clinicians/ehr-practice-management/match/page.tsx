@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/ehr-practice-management/match/`;
 
 export const metadata: Metadata = {
-  title: "EHR Finder for Mental Health Practices | HeyPsych",
+  title: "EHR Finder for Mental Health Practices",
   description:
     "Answer a few questions to find EHR and practice management software options for your mental health practice. Compare features, pricing, and compliance.",
   alternates: {

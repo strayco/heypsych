@@ -11,7 +11,7 @@ const HUB_SLUG = "mood-depression";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Mood & Depression Tools | HeyPsych" };
+    return { title: "Mood & Depression Tools" };
   }
 
   return {

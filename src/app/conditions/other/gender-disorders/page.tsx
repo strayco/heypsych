@@ -4,7 +4,7 @@ import { OtherSubcategoryClient } from "@/components/pages/other-subcategory-cli
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Gender Identity Conditions | Gender Dysphoria | HeyPsych",
+  title: "Gender Identity Conditions | Gender Dysphoria",
   description:
     "Comprehensive guide to gender identity conditions including gender dysphoria with supportive and affirming care information.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/gender-disorders`,
   },
   openGraph: {
-    title: "Gender Identity Conditions | HeyPsych",
+    title: "Gender Identity Conditions",
     description: "Comprehensive guide to gender identity conditions and supportive care options.",
     url: `${SITE_CONFIG.url}/conditions/other/gender-disorders`,
     type: "website",

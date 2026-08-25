@@ -11,7 +11,7 @@ const HUB_SLUG = "anxiety-stress";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Anxiety & Stress Tools | HeyPsych" };
+    return { title: "Anxiety & Stress Tools" };
   }
 
   return {

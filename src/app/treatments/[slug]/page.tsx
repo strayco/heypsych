@@ -28,15 +28,22 @@ import { treatmentV3ToEntity } from "@/lib/comparison/treatment-entity-adapter";
 // Generate static params for ALL treatments
 // Pre-renders all treatment pages at build time for instant page loads
 export async function generateStaticParams() {
-  try {
-    // Use canonical loader to get all treatment slugs
-    const slugs = getAllTreatmentSlugs();
-    console.log(`📦 Generating ${slugs.length} static treatment pages at build time`);
-    return slugs.map((slug) => ({ slug }));
-  } catch (error) {
-    console.error("Failed to generate static params for treatments:", error);
-    return []; // Graceful fallback - all pages will be on-demand
+  // Use canonical loader to get all treatment slugs
+  const slugs = getAllTreatmentSlugs();
+
+  // With `dynamicParams = false`, this list IS the set of URLs that exist.
+  // An empty list would therefore 404 every treatment page on the site, so a
+  // failure to enumerate must break the build rather than ship a silent outage.
+  if (slugs.length === 0) {
+    throw new Error(
+      "[Treatments] generateStaticParams enumerated 0 treatments. " +
+        "Refusing to build, because dynamicParams=false would make every " +
+        "treatment URL return 404. Check that data/treatments/ is present."
+    );
   }
+
+  console.log(`📦 Generating ${slugs.length} static treatment pages at build time`);
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Generate complete SEO metadata using MetadataFactory
@@ -55,7 +62,7 @@ export async function generateMetadata({
 
     if (!treatment) {
       return {
-        title: "Treatment Information | HeyPsych",
+        title: "Treatment Information",
         description: "Learn about mental health treatments with evidence-based information.",
       };
     }
@@ -67,7 +74,7 @@ export async function generateMetadata({
     const entityType = getEntityType(entity);
     if (!isTreatmentType(entityType)) {
       return {
-        title: "Not Found | HeyPsych",
+        title: "Not Found",
         description: "The requested page was not found.",
       };
     }
@@ -78,7 +85,7 @@ export async function generateMetadata({
   } catch (error) {
     console.error("Failed to generate metadata for treatment:", error);
     return {
-      title: "Treatment Information | HeyPsych",
+      title: "Treatment Information",
       description: "Learn about mental health treatments with evidence-based information.",
     };
   }
@@ -140,6 +147,13 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 // Pages are static but refresh daily for updated content
 export const revalidate = 86400;
 
-// Generate static pages at build time
-// Allow dynamic slugs not in generateStaticParams
-export const dynamicParams = true;
+// Treatment pages render only from local JSON, so generateStaticParams above
+// enumerates every treatment that can exist. Refusing dynamic params makes an
+// unknown slug 404 at the routing layer, before rendering begins.
+//
+// This matters because `loading.tsx` gives the segment a streamed shell: the
+// response status is committed as 200 before the page body runs, so a
+// `notFound()` inside the page could no longer change it. Unknown treatment
+// URLs answered HTTP 200 with an empty skeleton, which Google classifies as a
+// soft 404. Known alternate spellings are redirected earlier, in middleware.
+export const dynamicParams = false;

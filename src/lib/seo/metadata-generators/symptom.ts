@@ -10,6 +10,7 @@
 import type { Metadata } from "next";
 import type { SymptomEntity } from "@/domains/symptoms/types";
 import { SITE_CONFIG, METADATA_LIMITS } from "../config";
+import { BRAND_TITLE_SUFFIX, renderedTitleLength } from "../title";
 import { getCategoryMeta } from "@/domains/symptoms";
 
 /**
@@ -77,21 +78,22 @@ export function generateSymptomMetadata(symptom: SymptomEntity): Metadata {
 function generateTitle(symptom: SymptomEntity): string {
   const name = symptom.name;
 
-  // Try full format
-  const fullTitle = `${name}: What It Feels Like & Possible Explanations | HeyPsych`;
+  // Titles omit the brand; the root layout template appends " | HeyPsych", so
+  // length is measured against the final rendered form.
+  const fullTitle = `${name}: What It Feels Like & Possible Explanations`;
 
-  if (fullTitle.length <= 60) {
+  if (renderedTitleLength(fullTitle) <= 60) {
     return fullTitle;
   }
 
   // Shorter version
-  const shortTitle = `${name}: Causes & What to Know | HeyPsych`;
-  if (shortTitle.length <= 60) {
+  const shortTitle = `${name}: Causes & What to Know`;
+  if (renderedTitleLength(shortTitle) <= 60) {
     return shortTitle;
   }
 
   // Minimal version
-  return truncate(`${name} | HeyPsych`, 60);
+  return truncate(name, 60 - BRAND_TITLE_SUFFIX.length);
 }
 
 /**

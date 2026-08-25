@@ -11,7 +11,7 @@ const HUB_SLUG = "serious-mental-illness";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Serious Mental Illness Tools | HeyPsych" };
+    return { title: "Serious Mental Illness Tools" };
   }
 
   return {

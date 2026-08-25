@@ -10,7 +10,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 
 // Generate SEO metadata for conditions hub page
 export const metadata: Metadata = {
-  title: "Mental Health Conditions A-Z | Evidence-Based Information | HeyPsych",
+  title: "Mental Health Conditions A-Z | Evidence-Based Information",
   description:
     "Comprehensive, evidence-based information on mental health conditions including symptoms, diagnosis, treatment options, and support resources. Browse conditions A-Z.",
   keywords:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions`,
   },
   openGraph: {
-    title: "Mental Health Conditions A-Z | HeyPsych",
+    title: "Mental Health Conditions A-Z",
     description:
       "Comprehensive, evidence-based information on mental health conditions including symptoms, diagnosis, treatment, and support.",
     url: `${SITE_CONFIG.url}/conditions`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mental Health Conditions A-Z | HeyPsych",
+    title: "Mental Health Conditions A-Z",
     description:
       "Evidence-based information on mental health conditions: symptoms, diagnosis, treatment, and support.",
   },

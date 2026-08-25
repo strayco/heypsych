@@ -11,13 +11,13 @@ import { ArrowRight } from 'lucide-react';
 import { getDynamicPageStats } from '@/lib/programmatic-seo/dynamic-generator';
 
 export const metadata: Metadata = {
-  title: 'Mental Health Treatment Guides | HeyPsych',
+  title: 'Mental Health Treatment Guides',
   description: 'Comprehensive guides on medications, therapies, and treatments for mental health conditions. Evidence-based information tailored to your needs.',
   alternates: {
     canonical: 'https://heypsych.com/guide',
   },
   openGraph: {
-    title: 'Mental Health Treatment Guides | HeyPsych',
+    title: 'Mental Health Treatment Guides',
     description: 'Comprehensive guides on medications, therapies, and treatments for mental health conditions.',
     url: 'https://heypsych.com/guide',
     type: 'website',
@@ -227,7 +227,7 @@ export default async function GuidePage() {
           </p>
           <Link
             href="/search"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-treatment text-white font-medium rounded-xl hover:bg-treatment-600 transition-colors"
           >
             Search All Content
             <ArrowRight className="h-4 w-4 text-white" />

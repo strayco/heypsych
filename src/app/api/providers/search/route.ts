@@ -134,8 +134,23 @@ export async function GET(req: NextRequest) {
 
     const data: NPIResult = await response.json();
 
+    // Filter results to match name query (NPI API sometimes returns non-matching results)
+    let filteredResults = data.results || [];
+    if (q) {
+      const searchTerms = q.toLowerCase().trim().split(/\s+/);
+      filteredResults = filteredResults.filter((npi) => {
+        const firstName = (npi.basic.first_name || "").toLowerCase();
+        const lastName = (npi.basic.last_name || "").toLowerCase();
+        const fullName = `${firstName} ${lastName}`;
+        // Check if any search term matches the start of first or last name
+        return searchTerms.some(term =>
+          firstName.startsWith(term) || lastName.startsWith(term) || fullName.includes(term)
+        );
+      });
+    }
+
     // Transform NPI results to our format
-    const providers = (data.results || []).map((npi) => {
+    const providers = filteredResults.map((npi) => {
       const practiceAddress = npi.addresses?.find(
         (a) => a.address_purpose === "LOCATION"
       ) || npi.addresses?.[0];
@@ -181,10 +196,13 @@ export async function GET(req: NextRequest) {
     const headers = new Headers();
     headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
 
+    // If we filtered by name, adjust the total count
+    const totalCount = q ? filteredResults.length : (data.result_count || 0);
+
     return NextResponse.json(
       {
         providers,
-        totalCount: data.result_count || 0,
+        totalCount,
         loadTimeMs: loadTime,
         source: "npi-registry",
       },

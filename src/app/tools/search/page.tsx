@@ -35,8 +35,8 @@ export async function generateMetadata({ searchParams }: ToolsSearchPageProps): 
   const params = await searchParams;
   const query = params.q || "";
   const title = query
-    ? `Search: "${query}" | Mental Health Tools | HeyPsych`
-    : "Search Tools | HeyPsych";
+    ? `Search: "${query}" | Mental Health Tools`
+    : "Search Tools ";
 
   return {
     title,

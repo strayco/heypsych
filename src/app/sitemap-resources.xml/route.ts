@@ -14,9 +14,15 @@
  */
 
 import { NextResponse } from "next/server";
-import { supabaseOptional } from "@/lib/config/database";
+import { EntityService } from "@/lib/data/entity-service";
 import type { Entity } from "@/lib/types/database";
 import { getSitemapGenerator, generateSitemapXml } from "@/lib/seo/sitemap-generator";
+import {
+  filterEntitiesForSitemapWithReport,
+  logSitemapReport,
+  resolveSitemapEntities,
+  sitemapReportHeaders,
+} from "@/lib/seo/sitemap-eligibility";
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 // ISR with daily revalidation - sitemap is cached at edge for 24 hours
@@ -27,37 +33,39 @@ export async function GET() {
   const generator = getSitemapGenerator();
 
   try {
-    const supabase = supabaseOptional();
-    if (!supabase) {
-      throw new Error("Supabase client unavailable");
+    // Read through EntityService rather than querying rows directly. Raw
+    // `entities` rows are not the shape the indexation firewall judges: fields
+    // like `visibility` and the nested content are normalized during mapping,
+    // so passing raw rows failed every gate and excluded 100% of resources.
+    // The safety valve then republished the unfiltered list, meaning this
+    // sitemap advertised pages whose own markup says `noindex`.
+    const resources = await EntityService.getByType("resource");
+
+    if (resources.length === 0) {
+      throw new Error("No resources returned");
     }
 
-    // Fetch all resource entities (excluding assessments)
-    const { data: resources, error } = await supabase
-      .from("entities")
-      .select("*")
-      .eq("type", "resource")
-      .eq("status", "active")
-      .order("title");
+    // Assessments are submitted by their own sitemap.
+    const filteredResources = resources.filter((r) => {
+      const metadataCategory = (r.metadata as Record<string, unknown> | undefined)
+        ?.category;
+      return metadataCategory !== "assessments-screeners";
+    });
 
-    if (error) {
-      console.error("Supabase query error:", error);
-      throw error;
-    }
-
-    // Filter out assessments
-    const filteredResources =
-      resources?.filter((r) => {
-        const metadataCategory = (r.metadata as any)?.category;
-        return metadataCategory !== "assessments-screeners";
-      }) || [];
-
-    console.log(
-      `[Sitemap] Generated resources sitemap from database: ${filteredResources.length} resources`
+    // Apply the central indexation firewall so the database path cannot submit
+    // resources whose pages render `noindex`.
+    const report = filterEntitiesForSitemapWithReport(
+      filteredResources as unknown as Entity[],
+      (r) => `/resources/${r.slug}`
     );
+    logSitemapReport("resources", report, "database");
 
     const xml = await generator.generateResourcesSitemap(
-      filteredResources as unknown as Entity[]
+      resolveSitemapEntities(
+        "resources",
+        report,
+        filteredResources as unknown as Entity[]
+      )
     );
 
     return new NextResponse(xml, {
@@ -65,7 +73,7 @@ export async function GET() {
       headers: {
         "Content-Type": "application/xml",
         "Cache-Control": "public, max-age=86400, s-maxage=86400",
-        "X-Sitemap-Source": "database",
+        ...sitemapReportHeaders(report, "database"),
       },
     });
   } catch (dbError) {

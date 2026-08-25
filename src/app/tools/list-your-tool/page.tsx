@@ -18,14 +18,14 @@ import { siteConfig } from "@/lib/config/site";
 const canonicalUrl = `${siteConfig.url}/tools/list-your-tool`;
 
 export const metadata: Metadata = {
-  title: "List Your Tool | HeyPsych Tools Directory",
+  title: "List Your Tool | Tools Directory",
   description:
     "Submit your mental health app or software for listing on HeyPsych. Learn about our review process, eligibility requirements, and editorial standards.",
   alternates: {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "List Your Tool | HeyPsych",
+    title: "List Your Tool",
     description: "Submit your mental health app or software for listing on HeyPsych.",
     url: canonicalUrl,
     type: "website",

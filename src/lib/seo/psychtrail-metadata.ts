@@ -11,6 +11,7 @@
 import type { Metadata } from 'next';
 import type { ScenarioV2 as Scenario } from '@/lib/psychTrail/types-v2';
 import { SITE_CONFIG, METADATA_LIMITS } from './config';
+import { renderedTitleLength } from './title';
 
 /**
  * Generate complete SEO metadata for a PsychTrails scenario
@@ -55,15 +56,17 @@ export function generatePsychTrailScenarioMetadata(scenario: Scenario): Metadata
  * Generate title for scenario page
  */
 function generateTitle(scenario: Scenario): string {
-  // Format: "First Psychiatry Appointment: Interactive Mental Health Simulation | HeyPsych"
-  const baseTitle = `${scenario.title}: Interactive Mental Health Simulation | HeyPsych`;
+  // Format: "First Psychiatry Appointment: Interactive Mental Health Simulation"
+  // The root layout's title template appends " | HeyPsych", so length is
+  // measured against the final rendered form.
+  const baseTitle = `${scenario.title}: Interactive Mental Health Simulation`;
 
   // If too long, try shorter version
-  if (baseTitle.length > 60) {
-    const shortTitle = `${scenario.title}: Mental Health Simulation | HeyPsych`;
-    if (shortTitle.length > 60) {
+  if (renderedTitleLength(baseTitle) > 60) {
+    const shortTitle = `${scenario.title}: Mental Health Simulation`;
+    if (renderedTitleLength(shortTitle) > 60) {
       // Even shorter if needed
-      return ensureTitleLength(`${scenario.title} | HeyPsych`);
+      return ensureTitleLength(scenario.title);
     }
     return shortTitle;
   }

@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 
 // Generate SEO metadata for therapy hub page
 export const metadata: Metadata = {
-  title: "Psychotherapy Types | CBT, DBT, EMDR, Psychodynamic & More | HeyPsych",
+  title: "Psychotherapy Types | CBT, DBT, EMDR, Psychodynamic & More",
   description:
     "Explore evidence-based psychotherapy approaches including CBT, DBT, EMDR, ACT, psychodynamic therapy, and other modalities for mental health treatment.",
   keywords:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/therapy`,
   },
   openGraph: {
-    title: "Psychotherapy Types | HeyPsych",
+    title: "Psychotherapy Types",
     description:
       "Evidence-based psychotherapy approaches: CBT, DBT, EMDR, ACT, and other modalities.",
     url: `${SITE_CONFIG.url}/treatments/therapy`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Psychotherapy Types | HeyPsych",
+    title: "Psychotherapy Types",
     description: "Explore psychotherapy approaches: CBT, DBT, EMDR, ACT, and more.",
   },
 };

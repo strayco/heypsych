@@ -3,7 +3,7 @@ import { OtherConditionsClient } from "@/components/pages/other-conditions-clien
 import { SITE_CONFIG } from "@/lib/seo/config";
 
 export const metadata: Metadata = {
-  title: "Other Mental Health Conditions | Sleep, Sexual, Dissociative | HeyPsych",
+  title: "Other Mental Health Conditions | Sleep, Sexual, Dissociative",
   description:
     "Browse specialized mental health conditions including sleep disorders, sexual health, dissociative disorders, somatic conditions, and more.",
   keywords:
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other`,
   },
   openGraph: {
-    title: "Other Mental Health Conditions | HeyPsych",
+    title: "Other Mental Health Conditions",
     description: "Specialized mental health conditions: sleep, sexual health, dissociative, and more.",
     url: `${SITE_CONFIG.url}/conditions/other`,
     type: "website",

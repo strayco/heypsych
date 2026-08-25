@@ -251,7 +251,8 @@ export class DefaultMetadataGenerator extends MetadataGenerator {
       return this.generateFromOverrides(entity);
     }
 
-    const title = this.ensureTitleLength(`${entity.name} | ${SITE_CONFIG.name}`);
+    // No brand suffix - the root layout's title template appends it.
+    const title = this.ensureTitleLength(entity.name);
     const description = this.ensureDescriptionLength(
       entity.description || `Learn about ${entity.name} on ${SITE_CONFIG.name}.`
     );

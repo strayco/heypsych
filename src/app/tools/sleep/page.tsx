@@ -11,7 +11,7 @@ const HUB_SLUG = "sleep";
 export async function generateMetadata(): Promise<Metadata> {
   const hub = TaxonomyService.getHub(HUB_SLUG);
   if (!hub) {
-    return { title: "Sleep Tools | HeyPsych" };
+    return { title: "Sleep Tools" };
   }
 
   return {

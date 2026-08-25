@@ -4,7 +4,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Suspense } from "react";
 import {
   ArrowRight,
@@ -41,6 +41,8 @@ import {
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
 import clinicianCategoriesData from "../../../../../data/tools-v4/taxonomies/clinician-categories.json";
+import { categoryHubPath } from "@/lib/tools/category-hub-slug";
+import { stripBrandTitleSuffix } from "@/lib/seo/title";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 import { isComplianceConfirmedYes } from "@/lib/schemas/tool-editorial";
@@ -79,6 +81,20 @@ function getCategoryBySlug(slug: string) {
   return clinicianCategoriesData.categories.find((cat) => cat.slug === slug);
 }
 
+/**
+ * Tool records store schema category slugs (e.g. "billing-rcm-insurance") and
+ * product URLs are built from them, but this hub is keyed by taxonomy slugs
+ * (e.g. "billing-rcm"). Requests for a schema slug used to 404, which broke the
+ * breadcrumb parent of every product page in six categories. Send them to the
+ * single canonical hub instead of serving duplicate content at two URLs.
+ */
+function canonicalHubRedirect(slug: string): string | null {
+  if (getCategoryBySlug(slug)) return null;
+
+  const hubPath = categoryHubPath(slug);
+  return hubPath && hubPath !== `/tools/for-clinicians/${slug}` ? hubPath : null;
+}
+
 // Generate static params for all 15 categories
 export async function generateStaticParams() {
   return clinicianCategoriesData.categories.map((cat) => ({
@@ -94,8 +110,11 @@ export async function generateMetadata({
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
+    // Schema-slug aliases redirect at render time; metadata for them must not
+    // claim indexability for a URL that will not serve content.
     return {
-      title: "Category Not Found | HeyPsych",
+      title: "Category Not Found",
+      robots: { index: false, follow: true },
     };
   }
 
@@ -107,7 +126,10 @@ export async function generateMetadata({
   const canonicalUrl = `${siteConfig.url}${category.url}`.replace(/\/$/, "");
 
   return {
-    title: category.seo_title,
+    // Taxonomy seo_title values are authored with a trailing "| HeyPsych"; the
+    // root layout template appends the brand again, so strip it here. The
+    // Open Graph title below is rendered verbatim and keeps its single brand.
+    title: stripBrandTitleSuffix(category.seo_title),
     description: category.meta_description,
     // noindex empty categories to prevent thin content indexation
     robots: hasTools ? undefined : { index: false, follow: true },
@@ -129,6 +151,12 @@ export default async function CategoryHubPage({
 }: CategoryPageProps) {
   const { category: categorySlug } = await params;
   const searchParamsResolved = await searchParams;
+
+  const redirectTo = canonicalHubRedirect(categorySlug);
+  if (redirectTo) {
+    permanentRedirect(redirectTo);
+  }
+
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
@@ -148,7 +176,7 @@ export default async function CategoryHubPage({
   );
 
   // Get related categories
-  const relatedCategories = getRelatedCategories(categorySlug);
+  const relatedCategories = await getRelatedCategories(categorySlug);
 
   // Get icon
   const Icon = categoryIcons[categorySlug] || Laptop;
@@ -241,10 +269,10 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href="/tools/for-clinicians/ehr-practice-management/match/"
-                  className="group flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-neutral-800"
+                  className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-treatment-600"
                 >
                   Start Matching
-                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>
@@ -270,10 +298,10 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href={`/tools/compare/?tools=${comparisonCandidates.map(t => t.slug).join(",")}`}
-                  className="group flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800"
+                  className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-white transition-all hover:bg-treatment-600"
                 >
                   Compare tools
-                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>
@@ -498,7 +526,7 @@ function applyFilters(
 }
 
 // Get related categories based on category mappings
-function getRelatedCategories(currentSlug: string) {
+async function getRelatedCategories(currentSlug: string) {
   // Related category mapping from category-mappings.json structure
   const relatedMap: Record<string, string[]> = {
     "marketing-patient-acquisition": [
@@ -538,17 +566,23 @@ function getRelatedCategories(currentSlug: string) {
 
   const relatedSlugs = relatedMap[currentSlug] || [];
 
-  return relatedSlugs.map((slug) => {
-    const cat = getCategoryBySlug(slug);
-    return {
-      slug,
-      display_name: cat?.display_name || slug,
-      short_name: cat?.short_name,
-      url: cat?.url || `/tools/for-clinicians/${slug}/`,
-      count: 0, // Would need async count
-      intro: cat?.intro,
-    };
-  });
+  // Fetch counts for each related category in parallel
+  const categoriesWithCounts = await Promise.all(
+    relatedSlugs.map(async (slug) => {
+      const cat = getCategoryBySlug(slug);
+      const tools = await ClinicianToolService.getByCategory(slug);
+      return {
+        slug,
+        display_name: cat?.display_name || slug,
+        short_name: cat?.short_name,
+        url: cat?.url || `/tools/for-clinicians/${slug}/`,
+        count: tools.length,
+        intro: cat?.intro,
+      };
+    })
+  );
+
+  return categoriesWithCounts;
 }
 
 // Generate structured data for category page

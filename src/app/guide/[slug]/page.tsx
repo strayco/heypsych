@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!config) {
     return { 
-      title: 'Page Not Found | HeyPsych',
+      title: 'Page Not Found',
       robots: { index: false, follow: false },
     };
   }
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!content) {
     return { 
-      title: 'Page Not Found | HeyPsych',
+      title: 'Page Not Found',
       robots: { index: false, follow: false },
     };
   }

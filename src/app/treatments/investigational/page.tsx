@@ -11,7 +11,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 // Generate SEO metadata for investigational treatments hub page
 export const metadata: Metadata = {
   title:
-    "Investigational Mental Health Treatments | Psilocybin, MDMA & Clinical Trials | HeyPsych",
+    "Investigational Mental Health Treatments | Psilocybin, MDMA & Clinical Trials",
   description:
     "Breakthrough investigational treatments in clinical trials including psilocybin therapy, MDMA-assisted therapy, ketamine, and other novel approaches for mental health.",
   keywords:
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/investigational`,
   },
   openGraph: {
-    title: "Investigational Mental Health Treatments | HeyPsych",
+    title: "Investigational Mental Health Treatments",
     description:
       "Breakthrough investigational treatments: psilocybin, MDMA, ketamine, and other novel therapies in clinical trials.",
     url: `${SITE_CONFIG.url}/treatments/investigational`,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Investigational Mental Health Treatments | HeyPsych",
+    title: "Investigational Mental Health Treatments",
     description:
       "Explore breakthrough therapies in clinical trials: psilocybin, MDMA, ketamine, and more.",
   },

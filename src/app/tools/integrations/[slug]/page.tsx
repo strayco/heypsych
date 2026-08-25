@@ -39,12 +39,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tool = await ClinicianToolService.getBySlug(slug);
 
   if (!tool) {
-    return { title: "Product Not Found | HeyPsych" };
+    return { title: "Product Not Found" };
   }
 
   const integrationCount = tool.integrations?.length || 0;
-  const title = `${tool.name} Integrations | ${integrationCount}+ Connections | HeyPsych`;
+  const title = `${tool.name} Integrations | ${integrationCount}+ Connections`;
   const description = `See all ${tool.name} integrations. Connect with EHRs, billing tools, AI scribes, and more. Check compatibility before you buy.`;
+
+  // Quality gate: noindex pages with insufficient integration data
+  const hasSubstantiveContent = integrationCount >= 2;
 
   return {
     title,
@@ -65,6 +68,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${siteConfig.url}/tools/integrations/${slug}`,
       type: "website",
     },
+    // Noindex thin content pages
+    robots: hasSubstantiveContent ? undefined : { index: false, follow: true },
   };
 }
 

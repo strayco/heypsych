@@ -41,10 +41,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tool = await ClinicianToolService.getBySlug(slug);
 
   if (!tool) {
-    return { title: "Alternatives | HeyPsych" };
+    return { title: "Alternatives" };
   }
 
-  const title = `${tool.name} Alternatives (2024) | Top ${tool.name} Competitors | HeyPsych`;
+  // Check if there are enough alternatives to be useful
+  const categoryTools = await ClinicianToolService.getByCategory(tool.primary_category);
+  const alternativeCount = categoryTools.filter(t => t.slug !== slug).length;
+  const hasSubstantiveContent = alternativeCount >= 3;
+
+  const title = `${tool.name} Alternatives (2024) | Top ${tool.name} Competitors`;
   const description = `Looking for ${tool.name} alternatives? Compare the best ${tool.name} competitors for mental health practices. Find the right replacement based on your practice needs.`;
 
   return {
@@ -67,6 +72,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${siteConfig.url}/tools/alternatives/${slug}`,
       type: "website",
     },
+    // Noindex pages with fewer than 3 alternatives (thin content)
+    robots: hasSubstantiveContent ? undefined : { index: false, follow: true },
   };
 }
 

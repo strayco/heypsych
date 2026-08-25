@@ -118,7 +118,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const partnerTool = await ClinicianToolService.getBySlug(partner);
 
   if (!productTool || !partnerTool) {
-    return { title: "Integration Not Found | HeyPsych" };
+    return { title: "Integration Not Found" };
   }
 
   const title = `Does ${productTool.name} Work With ${partnerTool.name}? | Integration Check`;

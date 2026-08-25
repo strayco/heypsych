@@ -538,7 +538,7 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
         </aside>
 
         {/* Center: Stack Canvas */}
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto overscroll-contain">
           <StackCanvas
             stack={stack}
             metadataMap={metadataMap}
@@ -640,7 +640,7 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileHealthOpen(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[80vh] overflow-auto rounded-t-2xl bg-surface shadow-xl animate-in slide-in-from-bottom">
+          <div className="absolute bottom-0 left-0 right-0 max-h-[80vh] overflow-auto overscroll-contain rounded-t-2xl bg-surface shadow-xl animate-in slide-in-from-bottom">
             <div className="sticky top-0 flex items-center justify-between border-b border-separator bg-surface p-4">
               <h3 className="font-semibold text-label-primary">Stack Health</h3>
               <button
@@ -667,7 +667,7 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileShortlistOpen(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[80vh] overflow-auto rounded-t-2xl bg-surface shadow-xl animate-in slide-in-from-bottom">
+          <div className="absolute bottom-0 left-0 right-0 max-h-[80vh] overflow-auto overscroll-contain rounded-t-2xl bg-surface shadow-xl animate-in slide-in-from-bottom">
             <div className="sticky top-0 flex items-center justify-between border-b border-separator bg-surface p-4">
               <h3 className="font-semibold text-label-primary">Product Recommendations</h3>
               <button

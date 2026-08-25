@@ -11,7 +11,7 @@ const SUB_HUB_SLUG = "therapy-platforms";
 export async function generateMetadata(): Promise<Metadata> {
   const subHub = TaxonomyService.getSubHub(SUB_HUB_SLUG);
   if (!subHub) {
-    return { title: "Online Therapy Platforms | HeyPsych" };
+    return { title: "Online Therapy Platforms" };
   }
 
   return {

@@ -9,7 +9,7 @@ import {
 import { SupportCommunityPage as SupportCommunityClient } from "@/components/support-community/SupportCommunityPage";
 
 export const metadata: Metadata = {
-  title: "Support & Community Resources | HeyPsych",
+  title: "Support & Community Resources",
   description:
     "Find mental health support groups, crisis helplines, recovery programs, and community resources. Connect with others and access 24/7 support services.",
   keywords: [

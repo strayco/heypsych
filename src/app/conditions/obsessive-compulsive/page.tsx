@@ -13,14 +13,14 @@ const fullCategoryConfig = getCategoryBySlug("obsessive-compulsive")!;
 const { icon, ...categoryConfig } = fullCategoryConfig;
 
 export const metadata: Metadata = {
-  title: `${categoryConfig.displayTitle} | HeyPsych`,
+  title: `${categoryConfig.displayTitle}`,
   description: categoryConfig.description,
   keywords: categoryConfig.keywords.join(", "),
   alternates: {
     canonical: `${SITE_CONFIG.url}/conditions/obsessive-compulsive`,
   },
   openGraph: {
-    title: `${categoryConfig.displayTitle} | HeyPsych`,
+    title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,
     url: `${SITE_CONFIG.url}/conditions/obsessive-compulsive`,
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${categoryConfig.displayTitle} | HeyPsych`,
+    title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,
   },
 };

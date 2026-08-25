@@ -43,10 +43,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tool = await ClinicianToolService.getBySlug(slug);
 
   if (!tool) {
-    return { title: "Product Not Found | HeyPsych" };
+    return { title: "Product Not Found" };
   }
 
-  const title = `How to Switch from ${tool.name} | Migration Guide | HeyPsych`;
+  // Check if there are enough alternatives to make switching guide useful
+  const categoryTools = await ClinicianToolService.getByCategory(tool.primary_category);
+  const alternativeCount = categoryTools.filter(t => t.slug !== slug).length;
+  const hasSubstantiveContent = alternativeCount >= 3;
+
+  const title = `How to Switch from ${tool.name} | Migration Guide`;
   const description = `Complete guide to switching from ${tool.name}. Learn about data migration, contract timing, what to expect, and find the best replacement for your practice.`;
 
   return {
@@ -69,6 +74,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${siteConfig.url}/tools/switch-from/${slug}`,
       type: "website",
     },
+    // Noindex pages with fewer than 3 alternatives (thin content)
+    robots: hasSubstantiveContent ? undefined : { index: false, follow: true },
   };
 }
 

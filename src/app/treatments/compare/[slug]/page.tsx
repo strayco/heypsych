@@ -144,7 +144,7 @@ export async function generateMetadata({
   
   if (!data) {
     return {
-      title: "Treatment Comparison | HeyPsych",
+      title: "Treatment Comparison",
       description: "Compare mental health treatments side by side.",
     };
   }
