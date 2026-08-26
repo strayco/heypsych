@@ -10,9 +10,16 @@ import {
   verifyAdminPassword,
   createAdminSession,
 } from "@/lib/auth/admin-auth";
+import { checkRateLimitStrict, loginRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
+    // Strict rate limiting - fails closed in production if Redis unavailable
+    const rateLimitResponse = await checkRateLimitStrict(request, loginRateLimit);
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
+
     const body = await request.json();
     const { password } = body;
 
@@ -22,9 +29,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
-    // Rate limiting hint: Add rate limiting here in production
-    // to prevent brute force attacks
 
     if (!verifyAdminPassword(password)) {
       // Don't reveal whether password is wrong vs not configured

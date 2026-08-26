@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { queryWithRetry } from "@/lib/config/db-pool";
 import { EntityService } from "@/lib/data/entity-service";
 import { logger } from "@/lib/utils/logger";
+import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 
 type SearchSnippet = { term: string; field: string; snippet: string };
 
@@ -38,6 +39,10 @@ type LegacySearchPayload = {
 };
 
 export async function GET(req: NextRequest) {
+  // Rate limiting
+  const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
+  if (rateLimitResponse) return rateLimitResponse;
+
   const startTime = Date.now();
 
   try {

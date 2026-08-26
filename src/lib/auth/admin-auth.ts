@@ -370,7 +370,7 @@ export async function createAdminSession(): Promise<void> {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     maxAge: SESSION_MAX_AGE,
-    path: "/hp-ctrl-8k3m9x",
+    path: "/",
   });
 }
 
@@ -379,7 +379,7 @@ export async function createAdminSession(): Promise<void> {
  */
 export async function destroyAdminSession(): Promise<void> {
   const cookieStore = await cookies();
-  cookieStore.delete(SESSION_COOKIE_NAME);
+  cookieStore.delete({ name: SESSION_COOKIE_NAME, path: "/" });
 }
 
 /**

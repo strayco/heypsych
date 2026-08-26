@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { checkRateLimit, leadCaptureRateLimit } from "@/lib/rate-limit";
 
 // ============================================================================
 // VALIDATION
@@ -93,6 +94,10 @@ function getLeadTier(score: number): "hot" | "warm" | "cold" {
 // ============================================================================
 
 export async function POST(request: NextRequest) {
+  // Rate limiting
+  const rateLimitResponse = await checkRateLimit(request, leadCaptureRateLimit);
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const body = await request.json();
 
@@ -121,12 +126,9 @@ export async function POST(request: NextRequest) {
     // Store in database (Supabase)
     // For now, log and return success - actual Supabase integration handled by existing patterns
     console.log("[Lead Capture]", {
-      email: lead.email,
       intent: lead.intent,
       score,
       tier,
-      productSlugs: lead.productSlugs,
-      source: lead.source,
       timestamp: new Date().toISOString(),
     });
 

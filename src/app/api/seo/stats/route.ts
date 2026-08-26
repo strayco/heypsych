@@ -1,32 +1,39 @@
 /**
  * SEO Stats Dashboard API
- * 
+ *
  * Shows exactly how we're crushing WebMD:
  * - Total pages generated
  * - Coverage by entity
  * - Content depth scores
  * - Indexing status
- * 
+ *
  * GET /api/seo/stats
+ *
+ * PROTECTED: Requires admin authentication
  */
 
 import { NextResponse } from 'next/server';
-import { 
-  getDynamicPageStats, 
-  generateDynamicPageConfigs 
+import { isAdminAuthenticated } from '@/lib/auth/admin-auth';
+import {
+  getDynamicPageStats,
+  generateDynamicPageConfigs
 } from '@/lib/programmatic-seo/dynamic-generator';
-import { 
-  getEntitySaturationScore, 
-  getPublishingVelocity 
+import {
+  getEntitySaturationScore,
+  getPublishingVelocity
 } from '@/lib/programmatic-seo/webmd-killer';
-import { 
-  getAllTreatmentSlugs, 
-  getAllConditionSlugs 
+import {
+  getAllTreatmentSlugs,
+  getAllConditionSlugs
 } from '@/lib/programmatic-seo/data-loader';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
+  // Require admin authentication
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   try {
     // Get core stats
     const pageStats = await getDynamicPageStats();

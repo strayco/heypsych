@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { EntityService } from '@/lib/data/entity-service';
 import { getEntityType, isTreatmentType } from '@/lib/utils/entity-type';
+import { isAdminAuthenticated } from '@/lib/auth/admin-auth';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  // Require admin authentication
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const { slug } = await params;
 
   try {

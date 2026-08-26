@@ -1,6 +1,7 @@
 // src/app/api/providers/search/route.ts
 // Uses NPI Registry API directly - no database storage needed
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 
 // NPI Registry API - free, public, always up-to-date
 const NPI_API_BASE = "https://npiregistry.cms.hhs.gov/api/";
@@ -62,6 +63,10 @@ interface NPIResult {
 }
 
 export async function GET(req: NextRequest) {
+  // Rate limiting
+  const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
+  if (rateLimitResponse) return rateLimitResponse;
+
   const startTime = Date.now();
 
   try {

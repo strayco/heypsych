@@ -10,12 +10,7 @@ export const runtime = "edge";
 
 export async function GET() {
   try {
-    return NextResponse.json({
-      ok: true,
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV,
-      version: "1.0.0",
-    });
+    return NextResponse.json({ ok: true });
   } catch (error) {
     // Generic error without leaking details
     logger.error("Health check failed:", error);

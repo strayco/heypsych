@@ -16,7 +16,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
-import { SchemaFactory } from "@/lib/seo/schema-factory";
+import { SchemaFactory, safeJsonLd } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
 import TreatmentClientWrapper from "./client-wrapper";
 import { getEntityType, isTreatmentType } from "@/lib/utils/entity-type";
@@ -132,7 +132,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
         <script
           key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
         />
       ))}
 

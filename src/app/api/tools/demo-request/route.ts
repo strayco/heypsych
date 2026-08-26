@@ -9,50 +9,13 @@ import {
   isToolPublishable,
 } from "@/lib/tools/clinician-tool-service";
 import { notifyDemoRequestDual } from "@/lib/notifications/demo-request-notifier";
+import { checkRateLimitStrict, demoRequestRateLimit } from "@/lib/rate-limit";
 
 // ============================================================================
 // P0-7: RATE LIMITING & BOT DEFENSE
 // ============================================================================
 
-// Simple in-memory rate limit store (resets on deploy/restart)
-// For production scale, use Redis or a dedicated rate limiting service
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
-
-// Rate limit config
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const RATE_LIMIT_MAX_REQUESTS = 5; // 5 requests per hour per IP
 const MIN_FORM_COMPLETION_MS = 3000; // Minimum 3 seconds to fill form (bot defense)
-
-function getRateLimitKey(request: NextRequest): string {
-  // Use X-Forwarded-For in production (behind proxy), fallback to request IP
-  const forwardedFor = request.headers.get("x-forwarded-for");
-  const ip = forwardedFor?.split(",")[0]?.trim() || "unknown";
-  return `demo-request:${ip}`;
-}
-
-function checkRateLimit(key: string): { allowed: boolean; remaining: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(key);
-
-  // Clean up expired records
-  if (record && record.resetAt < now) {
-    rateLimitStore.delete(key);
-  }
-
-  const current = rateLimitStore.get(key);
-
-  if (!current) {
-    rateLimitStore.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1 };
-  }
-
-  if (current.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return { allowed: false, remaining: 0 };
-  }
-
-  current.count++;
-  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - current.count };
-}
 
 // Sanitize string input (basic XSS prevention)
 function sanitizeString(input: string | undefined): string | undefined {
@@ -67,25 +30,11 @@ function sanitizeString(input: string | undefined): string | undefined {
 
 export async function POST(request: NextRequest) {
   try {
-    // P0-7: Rate limiting check
-    const rateLimitKey = getRateLimitKey(request);
-    const rateLimit = checkRateLimit(rateLimitKey);
-
-    if (!rateLimit.allowed) {
-      console.warn("[Demo Request] Rate limit exceeded:", rateLimitKey);
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Too many requests. Please try again later.",
-        },
-        {
-          status: 429,
-          headers: {
-            "Retry-After": "3600",
-            "X-RateLimit-Remaining": "0",
-          },
-        }
-      );
+    // P0-7: Rate limiting - fails closed if Redis unavailable (prevents email abuse)
+    const rateLimitResponse = await checkRateLimitStrict(request, demoRequestRateLimit);
+    if (rateLimitResponse) {
+      console.warn("[Demo Request] Rate limit exceeded");
+      return rateLimitResponse;
     }
 
     // Parse and validate request body

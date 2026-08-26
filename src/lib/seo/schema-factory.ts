@@ -7,6 +7,8 @@
  * Usage in page components:
  *
  * ```typescript
+ * import { SchemaFactory, safeJsonLd } from '@/lib/seo/schema-factory';
+ *
  * const schemas = SchemaFactory.generateAll(entity);
  *
  * return (
@@ -15,12 +17,14 @@
  *       <script
  *         key={i}
  *         type="application/ld+json"
- *         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+ *         dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
  *       />
  *     ))}
  *   </>
  * );
  * ```
+ *
+ * IMPORTANT: Always use `safeJsonLd()` instead of `JSON.stringify()` to prevent XSS.
  */
 
 import type { Entity, EntityType } from '@/lib/types/database';
@@ -498,6 +502,22 @@ export class SchemaFactory {
  */
 export function generateEntitySchemas(entity: Entity | null): Record<string, any>[] {
   return SchemaFactory.generateAll(entity);
+}
+
+/**
+ * Safely serialize a schema for embedding in HTML script tags.
+ * Escapes `<` to prevent XSS via `</script>` injection.
+ *
+ * Usage:
+ * ```tsx
+ * <script
+ *   type="application/ld+json"
+ *   dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
+ * />
+ * ```
+ */
+export function safeJsonLd(schema: Record<string, unknown>): string {
+  return JSON.stringify(schema).replace(/</g, '\\u003c');
 }
 
 /**

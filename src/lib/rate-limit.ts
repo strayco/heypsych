@@ -59,6 +59,36 @@ export const apiRateLimit = redis
     })
   : null;
 
+// Admin login: Very strict to prevent brute force
+export const loginRateLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(5, "15 m"), // 5 attempts per 15 minutes
+      analytics: true,
+      prefix: "ratelimit:login",
+    })
+  : null;
+
+// Demo requests: Restrictive to prevent email spam
+export const demoRequestRateLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(5, "1 h"), // 5 per hour per IP
+      analytics: true,
+      prefix: "ratelimit:demo",
+    })
+  : null;
+
+// Lead capture: Moderate restriction
+export const leadCaptureRateLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(10, "1 h"), // 10 per hour per IP
+      analytics: true,
+      prefix: "ratelimit:leads",
+    })
+  : null;
+
 /**
  * Get client IP from request headers
  */
