@@ -19,7 +19,6 @@ import {
   ClinicianToolService,
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
-import { TAXONOMY_TO_SCHEMA_CATEGORIES } from "@/lib/schemas/clinician-tool-v4";
 import clinicianCategoriesData from "../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { stripBrandTitleSuffix } from "@/lib/seo/title";
 
@@ -221,38 +220,6 @@ export default async function ForCliniciansPage() {
           </section>
         )}
 
-        {/* Popular Categories with Tools - only show categories that have tools */}
-        {categoriesWithCounts.length > 0 && (
-          <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-                Explore
-              </p>
-              <h2 className="mt-1 text-xl font-semibold text-label-primary">
-                By Category
-              </h2>
-
-              <div className="mt-6 space-y-10">
-                {categoriesWithCounts.slice(0, 3).map((cat) => {
-                  const categoryData = v4Categories.find((c) => c.slug === cat.slug);
-                  if (!categoryData) return null;
-                  return (
-                    <CategoryPreview
-                      key={cat.slug}
-                      category={categoryData}
-                      tools={allV4Tools.filter((t) => {
-                        // Map taxonomy slug to schema categories for proper filtering
-                        const schemaCategories = TAXONOMY_TO_SCHEMA_CATEGORIES[cat.slug] || [];
-                        return schemaCategories.includes(t.primary_category);
-                      })}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* What Clinicians Look For */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -355,51 +322,6 @@ export default async function ForCliniciansPage() {
         <VendorCTA />
       </div>
     </>
-  );
-}
-
-// Category preview component
-function CategoryPreview({
-  category,
-  tools,
-}: {
-  category: (typeof clinicianCategoriesData.categories)[0];
-  tools: ClinicianToolV4[];
-}) {
-  const displayTools = tools.slice(0, 3);
-
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h3 className="font-semibold text-label-primary">
-            {category.display_name}
-          </h3>
-          <p className="text-sm text-label-tertiary">
-            {tools.length} tools
-          </p>
-        </div>
-        <Link
-          href={category.url}
-          className="group flex items-center gap-1 text-sm font-medium text-label-primary hover:text-accent"
-        >
-          View all
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </Link>
-      </div>
-
-      {displayTools.length > 0 ? (
-        <div className="grid gap-3 sm:grid-cols-3">
-          {displayTools.map((tool) => (
-            <ClinicianToolCard key={tool.slug} tool={tool} variant="compact" />
-          ))}
-        </div>
-      ) : (
-        <p className="text-sm text-label-tertiary italic">
-          No tools in this category yet
-        </p>
-      )}
-    </div>
   );
 }
 
