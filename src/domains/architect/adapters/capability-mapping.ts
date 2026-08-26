@@ -117,6 +117,16 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   // ============================================================================
   "clinical-supervision": ["clinical-supervision"],
   "supervision-platform": ["clinical-supervision"],
+
+  // ============================================================================
+  // Financial Operations → OPERATE / REVENUE
+  // ============================================================================
+  "accounting": ["accounting"],
+  "bookkeeping": ["accounting"],
+  "payroll": ["payroll-compensation"],
+  "clearinghouse": ["clearinghouse"],
+  "patient-financing": ["patient-financing"],
+  "payment-plans": ["patient-financing"],
 };
 
 /**
@@ -160,14 +170,10 @@ export const ARCHITECT_ONLY_CAPABILITIES: CapabilityId[] = [
   "ehr-clinical-record", // Core EHR, not a feature
 
   // REVENUE
-  "clearinghouse",
   "billing-rcm", // Composite
-  "patient-financing",
 
   // OPERATE
   "workforce-management",
-  "payroll-compensation",
-  "accounting",
   "quality-assurance",
 ];
 

@@ -9,11 +9,7 @@ import {
   ArrowLeft,
   Menu,
   X,
-  Save,
-  Download,
-  Upload,
   Undo2,
-  HelpCircle,
   AlertTriangle,
   Plus,
   Layers,
@@ -49,10 +45,8 @@ import {
 } from "@/domains/architect/engines";
 import type { FitResult } from "@/domains/architect/schemas";
 import {
-  saveNow,
   loadActiveStack,
   scheduleAutosave,
-  exportStackJson,
 } from "@/domains/architect/persistence";
 import {
   trackArchitectPageView,
@@ -61,8 +55,6 @@ import {
   trackProductAdd,
   trackProductRemove,
   trackStackUndo,
-  trackStackSave,
-  trackStackExport,
 } from "@/domains/architect/analytics";
 
 import { FingerprintWizard } from "./FingerprintWizard";
@@ -382,28 +374,6 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
     setShowFingerprint(false);
   }, []);
 
-  const handleSave = useCallback(() => {
-    const result = saveNow(stack);
-    if (result.success && result.data) {
-      trackStackSave(result.data.id);
-      // TODO: Show success toast
-    }
-  }, [stack]);
-
-  const handleExport = useCallback(() => {
-    const json = exportStackJson(stack);
-    const blob = new Blob([json], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${stack.name || "practice-stack"}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    trackStackExport();
-  }, [stack]);
-
   // Show fingerprint wizard if needed
   if (showFingerprint) {
     return (
@@ -465,28 +435,6 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
               <span className="hidden sm:inline">Undo</span>
             </button>
           )}
-
-          {/* Save (if not demo) */}
-          {!isDemo && (
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-label-secondary hover:bg-fill-secondary"
-              title="Save stack"
-            >
-              <Save className="h-4 w-4" />
-              <span className="hidden sm:inline">Save</span>
-            </button>
-          )}
-
-          {/* Export */}
-          <button
-            onClick={handleExport}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-label-secondary hover:bg-fill-secondary"
-            title="Export as JSON"
-          >
-            <Download className="h-4 w-4" />
-            <span className="hidden sm:inline">Export</span>
-          </button>
 
           {/* Edit Fingerprint */}
           <button
