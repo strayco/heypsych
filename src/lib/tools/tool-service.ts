@@ -56,8 +56,8 @@ async function loadToolsFromFiles(): Promise<DigitalToolV3[]> {
         const content = fs.readFileSync(filePath, "utf-8");
         const data = JSON.parse(content);
 
-        // Only load v3 tools
-        if (data.schema_version === "3.0" && data.kind === "tool") {
+        // Only load v3 tools that aren't retired
+        if (data.schema_version === "3.0" && data.kind === "tool" && data.status !== "retired") {
           tools.push(data as DigitalToolV3);
           toolsCache.set(data.slug, data as DigitalToolV3);
         }

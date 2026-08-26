@@ -1140,7 +1140,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                   Seeking Help for {entity.name}?
                 </h3>
                 <div className="mx-auto mb-6 max-w-2xl text-label-secondary">
-                  <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable with options like {link:treatment:cognitive-behavioral-therapy}, and early intervention can make a significant difference." />
+                  <ParsedContent content="If you recognize these symptoms in yourself or a loved one, know that help is available. Mental health conditions are treatable, and connecting with a qualified professional can make a significant difference." />
                 </div>
                 <div className="flex justify-center">
                   <Link
