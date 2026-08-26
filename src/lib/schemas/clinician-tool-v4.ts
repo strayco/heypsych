@@ -271,6 +271,7 @@ export const CapabilitySlugZ = z.enum([
   "payment-processing",
   "denial-management",
   "coding-assistance",
+  "patient-financing",
 
   // Telehealth Capabilities
   "video-sessions",

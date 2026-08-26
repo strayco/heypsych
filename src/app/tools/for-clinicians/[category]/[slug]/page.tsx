@@ -30,6 +30,7 @@ import {
 import {
   isComplianceConfirmedYes,
 } from "@/lib/schemas/tool-editorial";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import clinicianCategoriesData from "../../../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { ProductDemoCTA } from "@/components/tools/clinician/ProductDemoCTA";
 import { cn } from "@/lib/utils";
@@ -44,17 +45,18 @@ function getCategoryBySlug(slug: string) {
 }
 
 // Generate static params for all publishable tools
+// Uses taxonomy slugs (e.g., "billing-rcm") not schema slugs (e.g., "billing-rcm-insurance")
 export async function generateStaticParams() {
   const tools = await ClinicianToolService.loadClinicianTools();
   return tools.map((tool) => ({
-    category: tool.primary_category,
+    category: SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category,
     slug: tool.slug,
   }));
 }
 
 // Generate metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { category: categorySlug, slug } = await params;
+  const { slug } = await params;
   const tool = await ClinicianToolService.getBySlug(slug);
 
   if (!tool || !isToolPublishable(tool)) {
@@ -64,9 +66,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const category = getCategoryBySlug(categorySlug);
+  // Use taxonomy slug for canonical URL
+  const canonicalCategorySlug = SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category;
+  const category = getCategoryBySlug(canonicalCategorySlug);
   // Slashless canonical for consistency with sitemap
-  const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${categorySlug}/${slug}`;
+  const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${canonicalCategorySlug}/${slug}`;
 
   return {
     title: `${tool.name} - ${category?.display_name || "Clinician Tool"}`,
@@ -96,13 +100,16 @@ export default async function ToolDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // CANONICAL URL ENFORCEMENT: Redirect to primary category if accessed via secondary category
-  // This prevents duplicate content from /ehr-practice-management/tool and /billing-rcm-insurance/tool
-  if (categorySlug !== tool.primary_category) {
-    redirect(`/tools/for-clinicians/${tool.primary_category}/${slug}/`);
+  // Get canonical taxonomy slug for this tool's category
+  const canonicalCategorySlug = SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category;
+
+  // CANONICAL URL ENFORCEMENT: Redirect to taxonomy category if accessed via schema slug or secondary category
+  // This prevents duplicate content from /billing-rcm-insurance/tool (schema) and /billing-rcm/tool (taxonomy)
+  if (categorySlug !== canonicalCategorySlug) {
+    redirect(`/tools/for-clinicians/${canonicalCategorySlug}/${slug}/`);
   }
 
-  const category = getCategoryBySlug(categorySlug);
+  const category = getCategoryBySlug(canonicalCategorySlug);
   const relatedTools = await ClinicianToolService.getRelated(slug, 4);
 
   // Generate structured data

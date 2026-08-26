@@ -19,6 +19,7 @@ import {
   ClinicianToolService,
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
+import { TAXONOMY_TO_SCHEMA_CATEGORIES } from "@/lib/schemas/clinician-tool-v4";
 import clinicianCategoriesData from "../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { stripBrandTitleSuffix } from "@/lib/seo/title";
 
@@ -239,9 +240,11 @@ export default async function ForCliniciansPage() {
                     <CategoryPreview
                       key={cat.slug}
                       category={categoryData}
-                      tools={allV4Tools.filter(
-                        (t) => t.primary_category === cat.slug
-                      )}
+                      tools={allV4Tools.filter((t) => {
+                        // Map taxonomy slug to schema categories for proper filtering
+                        const schemaCategories = TAXONOMY_TO_SCHEMA_CATEGORIES[cat.slug] || [];
+                        return schemaCategories.includes(t.primary_category);
+                      })}
                     />
                   );
                 })}
