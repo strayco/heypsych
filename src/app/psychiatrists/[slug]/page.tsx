@@ -393,14 +393,11 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="py-12 text-center">
-                      <MessageCircle className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
-                      <h3 className="mb-2 text-lg font-semibold text-label-primary">
-                        Reviews Coming Soon
-                      </h3>
-                      <div className="text-label-secondary">
-                        <ParsedContent content="Patient reviews and ratings will be displayed here once our review system is live. Meanwhile, our Provider Review Guide (coming soon) will walk through how to choose the right provider." />
-                      </div>
+                    <div className="py-8 text-center">
+                      <MessageCircle className="mx-auto mb-4 h-10 w-10 text-label-tertiary" />
+                      <p className="text-label-secondary">
+                        No patient reviews yet for this provider.
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
