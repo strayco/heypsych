@@ -1,0 +1,187 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "347fa4c0-4c1a-45d5-89c9-f6bc3e46f0cb",
+  "slug": "drfirst-iprescribe",
+  "name": "DrFirst iPrescribe",
+  "company_name": "DrFirst",
+  "one_liner": "Mobile e-prescribing app with EPCS support for controlled substances, formulary checks, and medication history access.",
+  "short_description": "iPrescribe is DrFirst's mobile e-prescribing application that enables prescribers to send prescriptions including controlled substances (EPCS) directly from their smartphone or tablet.",
+  "long_description": "DrFirst iPrescribe is a mobile e-prescribing application designed for physicians, nurse practitioners, psychiatrists, and other prescribers who need flexibility to prescribe from anywhere. The app supports Electronic Prescribing for Controlled Substances (EPCS), allowing prescribers to send Schedule II-V medications electronically in compliance with DEA requirements. Key features include real-time formulary and benefit checks, patient medication history from SureScripts, drug interaction alerts, and the ability to send prescriptions to any pharmacy. iPrescribe integrates with DrFirst's broader platform including Rcopia for desktop e-prescribing. The app is particularly valuable for psychiatrists and psychiatric nurse practitioners who frequently prescribe controlled substances and need EPCS capability on mobile. Available on iOS and Android with biometric authentication for secure EPCS signing.",
+  "best_for": [
+    "Psychiatrists prescribing controlled substances",
+    "Psychiatric NPs needing mobile EPCS",
+    "Prescribers wanting to e-prescribe from anywhere",
+    "Clinicians who need formulary checks on-the-go"
+  ],
+  "not_for": [
+    "Non-prescribing therapists",
+    "Practices wanting full EHR integration (consider embedded eRx)",
+    "Those needing extensive clinical documentation",
+    "Large systems wanting enterprise-wide deployment"
+  ],
+  "import_ref": {
+    "record_id": "MH-0743",
+    "source_row": 744,
+    "import_timestamp": "2026-08-22T20:50:40.839Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "prescribing-erx",
+  "secondary_categories": [],
+  "capabilities": [
+    "e-prescribing",
+    "epcs-controlled",
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health",
+      "primary-care"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "per-provider-month",
+    "quote_required": true,
+    "notes": "Contact DrFirst for pricing. Typically offered as monthly subscription per prescriber. May be included with EHR integrations."
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "notes": "DEA-certified for EPCS. Compliant with state e-prescribing mandates. SureScripts certified."
+  },
+  "integrations": [
+    {
+      "name": "DrFirst Rcopia",
+      "slug": "drfirst-rcopia",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "SureScripts",
+      "slug": "surescripts",
+      "category": "pharmacy",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": false,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "prescribing": {
+      "epcs_controlled_substances": true,
+      "schedule_ii_v": true,
+      "dea_compliant": true,
+      "state_pdmp_integration": true
+    },
+    "clinical_decision_support": {
+      "drug_interactions": true,
+      "formulary_checks": true,
+      "prior_auth_alerts": true,
+      "allergy_checking": true
+    },
+    "medication_history": {
+      "surescripts_history": true,
+      "patient_med_list": true
+    },
+    "security": {
+      "biometric_auth": true,
+      "two_factor": true,
+      "audit_trail": true
+    }
+  },
+  "seo": {
+    "title": "DrFirst iPrescribe: Mobile EPCS E-Prescribing App | HeyPsych",
+    "meta_description": "DrFirst iPrescribe mobile e-prescribing with EPCS for controlled substances. Formulary checks, medication history, drug interactions. iOS and Android.",
+    "faqs": [
+      {
+        "q": "Can iPrescribe send controlled substance prescriptions?",
+        "a": "Yes, iPrescribe is DEA-certified for Electronic Prescribing of Controlled Substances (EPCS), supporting Schedule II-V medications."
+      },
+      {
+        "q": "What platforms does iPrescribe support?",
+        "a": "iPrescribe is available as a mobile app for iOS and Android devices. It uses biometric authentication for secure EPCS signing."
+      },
+      {
+        "q": "Does iPrescribe check for drug interactions?",
+        "a": "Yes, iPrescribe provides real-time drug interaction alerts, formulary checks, and access to patient medication history via SureScripts."
+      },
+      {
+        "q": "Is iPrescribe good for psychiatrists?",
+        "a": "Yes, iPrescribe is particularly valuable for psychiatrists and psychiatric NPs who frequently prescribe controlled substances and need mobile EPCS capability."
+      }
+    ],
+    "keywords": [
+      "iPrescribe",
+      "DrFirst iPrescribe",
+      "EPCS mobile app",
+      "e-prescribing controlled substances",
+      "mobile prescribing psychiatry"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-27",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 80
+  },
+  "related_tools": [
+    "drfirst-rcopia",
+    "dosespot",
+    "newcrop"
+  ],
+  "competitor_tools": [
+    "dosespot",
+    "newcrop",
+    "erx-network"
+  ],
+  "company_info": {
+    "headquarters": "Rockville, Maryland",
+    "funding_status": "Private",
+    "notes": "DrFirst is a leading healthcare technology company specializing in e-prescribing and medication management solutions."
+  },
+  "created_at": "2026-08-22T20:50:40.839Z",
+  "updated_at": "2026-08-27T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

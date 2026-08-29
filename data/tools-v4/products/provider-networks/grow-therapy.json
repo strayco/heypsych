@@ -1,19 +1,19 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "4c759bf0-764f-483b-bd9e-897467667ce8",
   "slug": "grow-therapy",
   "name": "Grow Therapy",
   "company_name": "Grow Therapy, Inc.",
   "one_liner": "Free insurance credentialing in 5-7 days with 19,000+ providers nationwide, guaranteed claims, and weekly payments through revenue sharing.",
   "short_description": "Grow Therapy is a free-to-join therapist network offering fast insurance credentialing (5-7 days), guaranteed claims, weekly payments, and practice management tools.",
-  "long_description": "Grow Therapy is a free-to-join therapist network available in all 50 states with over 19,000 licensed providers. Unlike subscription-based platforms, Grow Therapy operates on a revenue-sharing model—taking a percentage of insurance reimbursements with no upfront membership fees. Credentialing typically takes just 5-7 days, one of the fastest in the industry. Providers are credentialed with major payers including Aetna, Cigna, Blue Cross Blue Shield, UnitedHealthcare, Optum, Humana, Oscar, Oxford, and Anthem. Reimbursement rates range from $60-160+ per session depending on CPT code, payer, credentials, and location—with PMHNPs averaging $129/hour and LCSWs earning $85-100/session. Grow includes comprehensive practice management tools: EHR, scheduling, secure messaging, telehealth, and AI-assisted documentation, all HIPAA-compliant. Providers join as independent 1099 contractors with full clinical autonomy and flexible scheduling. Claims are guaranteed, and weekly payouts process in about seven business days after insurance pays.",
+  "long_description": "Grow Therapy is a free-to-join therapist network available in all 50 states with over 19,000 licensed providers. Unlike subscription-based platforms, Grow Therapy operates on a revenue-sharing model—taking a percentage of insurance reimbursements with no upfront membership fees. Credentialing typically takes just 5-7 days, one of the fastest in the industry. Providers are credentialed with major payers including Aetna, Cigna, Blue Cross Blue Shield, UnitedHealthcare, Optum, Humana, Oscar, Oxford, and Anthem. Reimbursement rates range from $60-160+ per session depending on CPT code, payer, credentials, and location—with PMHNPs averaging $129/hour and LCSWs earning $85-100/session. Grow includes basic documentation tools, scheduling, secure messaging, and telehealth—but most providers use a separate dedicated EHR for comprehensive clinical records. Providers join as independent 1099 contractors with full clinical autonomy and flexible scheduling. Claims are guaranteed, and weekly payouts process in about seven business days after insurance pays.",
   "best_for": [
     "Therapists wanting completely free credentialing (no membership fees)",
     "New clinicians seeking fastest credentialing (5-7 days)",
     "Providers wanting guaranteed claims and weekly payments",
     "Therapists building initial caseload before transitioning to private practice",
-    "Clinicians wanting included practice management and AI documentation tools"
+    "Clinicians wanting streamlined insurance billing without administrative burden"
   ],
   "not_for": [
     "Providers wanting full transparency on fee splits",
@@ -30,12 +30,14 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [
-    "ehr-practice-management"
-  ],
+  "secondary_categories": [],
   "capabilities": [
+    "appointment-scheduling",
+    "eligibility-verification",
     "secure-messaging",
-    "hipaa-compliant"
+    "video-sessions",
+    "hipaa-compliant",
+    "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
@@ -65,8 +67,8 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
-    "has_ehr": true,
+    "has_ai": false,
+    "has_ehr": false,
     "has_rcm": true,
     "has_telehealth": true,
     "has_measurement": false,
@@ -182,11 +184,13 @@
       "guaranteed_claims": true
     },
     "practice_management": {
-      "ehr": true,
+      "ehr": false,
       "scheduling": true,
+      "intake_forms": true,
+      "eligibility_verification": true,
       "telehealth": true,
       "secure_messaging": true,
-      "ai_documentation": true
+      "ai_documentation": false
     },
     "contractor_status": {
       "type": "1099 Independent Contractor",

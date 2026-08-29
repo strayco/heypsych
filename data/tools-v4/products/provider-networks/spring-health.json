@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "d1a2b3c4-5678-9abc-def0-123456789002",
   "slug": "spring-health",
   "name": "Spring Health",
@@ -13,9 +13,17 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "scheduling",
+    "secure-messaging",
+    "video-sessions",
+    "claims-submission",
+    "credentialing",
+    "measurement-based-care",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [
@@ -32,18 +40,20 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_measurement": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
+  "short_description": "Spring Health is a B2B enterprise mental health benefits platform with precision matching, data-driven outcomes, and global coverage for employers.",
+  "long_description": "Spring Health is an enterprise mental health benefits platform that partners with employers to provide comprehensive mental health support to employees. The platform uses AI-powered precision matching to connect employees with the right level of care, whether that's self-guided digital content, coaching, therapy, or psychiatry. Spring Health is known for same-day appointment availability and measurable clinical outcomes, with peer-reviewed research demonstrating significant improvements in depression and anxiety symptoms. The company serves large enterprises globally and positions itself as a modern EAP replacement with higher utilization rates and better outcomes than traditional employee assistance programs.",
+  "one_liner": "Enterprise mental health benefits platform with precision matching and data-driven outcomes.",
   "best_for": [
     "Enterprise employers seeking data-driven mental health benefits with proven ROI",
     "Organizations wanting to replace low-utilization traditional EAPs",
@@ -52,7 +62,7 @@
     "Global organizations needing multi-country mental health support"
   ],
   "not_for": [],
-  "pricing_url": "undefined/pricing",
+  "pricing_url": null,
   "pricing": {
     "model": "pepm",
     "free_tier": false,
@@ -68,14 +78,14 @@
   },
   "integrations": [],
   "seo": {
-    "title": "Spring Health: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
+    "title": "Spring Health: Enterprise Mental Health Benefits Platform | HeyPsych",
+    "meta_description": "Spring Health is a B2B enterprise mental health benefits platform with precision matching, data-driven outcomes, and global coverage for employers.",
     "faqs": [],
     "keywords": [
       "Spring Health",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "enterprise mental health",
+      "employee benefits",
+      "workplace wellness"
     ]
   },
   "governance": {

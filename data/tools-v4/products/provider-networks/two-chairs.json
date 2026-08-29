@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "d1a2b3c4-5678-9abc-def0-123456789012",
   "slug": "two-chairs",
   "name": "Two Chairs",
@@ -13,9 +13,9 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": ["hipaa-compliant"],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [
@@ -32,18 +32,20 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_measurement": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
+  "short_description": "Two Chairs is a mental health company employing therapists with W2 benefits, known for research-backed matching and outcome tracking.",
+  "long_description": "Two Chairs is a mental health company that employs therapists as W2 employees with full benefits rather than independent contractors. The company is known for its research-backed therapist-patient matching system, which uses data to pair patients with therapists who are likely to be a good fit. Two Chairs emphasizes measurement-based care with ongoing outcome tracking throughout treatment. The company accepts commercial insurance from select carriers including Aetna, Kaiser, and Florida Blue. For therapists, Two Chairs offers stable employment with benefits, a caseload of pre-matched patients, and administrative support so clinicians can focus on clinical work.",
+  "one_liner": "W2 therapist employment with research-backed matching and measurement-based care.",
   "best_for": [
     "Patients seeking research-backed therapist matching with high success rates",
     "Therapists who want to be employees with benefits rather than contractors",
@@ -52,7 +54,7 @@
     "Individuals with Aetna, Kaiser, or Florida Blue insurance"
   ],
   "not_for": [],
-  "pricing_url": "undefined/pricing",
+  "pricing_url": null,
   "pricing": {
     "model": "insurance-based",
     "free_tier": false,
@@ -68,14 +70,14 @@
   },
   "integrations": [],
   "seo": {
-    "title": "Two Chairs: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
+    "title": "Two Chairs: W2 Employment for Therapists | HeyPsych",
+    "meta_description": "Two Chairs is a mental health company employing therapists with W2 benefits, known for research-backed matching and outcome tracking.",
     "faqs": [],
     "keywords": [
       "Two Chairs",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "therapist employment",
+      "W2 benefits",
+      "mental health jobs"
     ]
   },
   "governance": {

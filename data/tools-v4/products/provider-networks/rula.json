@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "d1a2b3c4-5678-9abc-def0-123456789010",
   "slug": "rula",
   "name": "Rula",
@@ -13,9 +13,17 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "appointment-scheduling",
+    "eligibility-verification",
+    "video-sessions",
+    "claims-submission",
+    "e-prescribing",
+    "patient-portal",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [
@@ -32,18 +40,20 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
+  "short_description": "Rula provider platform offers fast credentialing, high reimbursement rates, and weekly payments for therapists and psychiatrists.",
+  "long_description": "Rula (formerly Path Mental Health) is a provider enablement platform that helps therapists and psychiatrists build insurance-based practices. The platform handles credentialing, billing, and patient matching, claiming faster credentialing times and higher reimbursement rates than competitors. Rula supports both therapists and psychiatric prescribers with e-prescribing capabilities for controlled and non-controlled medications. Providers receive weekly direct deposit payments and work as independent contractors. Rula is in-network with major insurers including Optum, Cigna, Aetna, Anthem, and various Blue Cross Blue Shield plans.",
+  "one_liner": "Provider platform with fast credentialing, high reimbursement rates, and e-prescribing for psychiatrists.",
   "best_for": [
     "Patients seeking in-network virtual therapy with specific specialty needs",
     "Therapists wanting to join a fast-growing insurance-based platform",
@@ -52,7 +62,7 @@
     "Individuals with Optum, Cigna, Aetna, Anthem, or Blues insurance"
   ],
   "not_for": [],
-  "pricing_url": "undefined/pricing",
+  "pricing_url": null,
   "pricing": {
     "model": "insurance-based",
     "free_tier": false,
@@ -68,14 +78,14 @@
   },
   "integrations": [],
   "seo": {
-    "title": "Rula: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
+    "title": "Rula: Insurance Credentialing for Therapists & Psychiatrists | HeyPsych",
+    "meta_description": "Rula provider platform: fast credentialing, high reimbursement rates, weekly payments. Supports therapists and psychiatrists with e-prescribing.",
     "faqs": [],
     "keywords": [
       "Rula",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "therapist credentialing",
+      "insurance billing",
+      "mental health platform"
     ]
   },
   "governance": {

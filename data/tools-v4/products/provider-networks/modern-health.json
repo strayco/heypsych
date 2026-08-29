@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "d1a2b3c4-5678-9abc-def0-123456789003",
   "slug": "modern-health",
   "name": "Modern Health",
@@ -13,9 +13,14 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "secure-messaging",
+    "video-sessions",
+    "measurement-based-care",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [
@@ -32,18 +37,20 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_measurement": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
+  "short_description": "Modern Health is a B2B enterprise mental health platform with coaching, therapy, and global coverage in 200+ countries.",
+  "long_description": "Modern Health is a global mental health benefits platform serving enterprise employers in over 200 countries with support for 80+ languages. The platform offers a full continuum of care including digital self-guided content, certified coaching, licensed therapy, and psychiatry services. Modern Health emphasizes a coaching-first model, with fast access to care (typically within one day) and high engagement rates. The platform is designed as a comprehensive EAP replacement with modern technology, personalized care navigation, and robust employer reporting on utilization and outcomes without compromising individual privacy.",
+  "one_liner": "Global enterprise mental health platform with coaching, therapy, and 200+ country coverage.",
   "best_for": [
     "Global enterprises needing mental health support in 200+ countries",
     "Organizations seeking full EAP replacement with modern technology",
@@ -52,7 +59,7 @@
     "Multinational corporations needing 80+ language support"
   ],
   "not_for": [],
-  "pricing_url": "undefined/pricing",
+  "pricing_url": null,
   "pricing": {
     "model": "pepm",
     "free_tier": false,
@@ -68,14 +75,14 @@
   },
   "integrations": [],
   "seo": {
-    "title": "Modern Health: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
+    "title": "Modern Health: Enterprise Mental Health Platform | HeyPsych",
+    "meta_description": "Modern Health is a B2B enterprise mental health platform with coaching, therapy, and global coverage in 200+ countries.",
     "faqs": [],
     "keywords": [
       "Modern Health",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "enterprise mental health",
+      "employee wellness",
+      "workplace benefits"
     ]
   },
   "governance": {

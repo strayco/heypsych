@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "clinician-tool",
+  "kind": "provider-network",
   "id": "d1a2b3c4-5678-9abc-def0-123456789014",
   "slug": "charlie-health",
   "name": "Charlie Health",
@@ -13,9 +13,14 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ehr-practice-management",
+  "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "video-sessions",
+    "outcome-tracking",
+    "patient-portal",
+    "hipaa-compliant"
+  ],
   "audiences": {
     "clinician_roles": [],
     "practice_settings": [
@@ -32,18 +37,20 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_measurement": false,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "",
-  "long_description": "",
-  "one_liner": "",
+  "short_description": "Charlie Health provides virtual intensive outpatient programs (IOP) for teens and young adults with serious mental health conditions.",
+  "long_description": "Charlie Health is a virtual intensive outpatient program (IOP) and partial hospitalization program (PHP) provider focused on adolescents and young adults aged 11-30 with serious mental health conditions. The platform offers evidence-based treatment for depression, anxiety, trauma, suicidal ideation, self-harm, eating disorders, and substance use through a combination of individual therapy, group therapy, and family therapy sessions. Sessions are conducted virtually, allowing patients to receive intensive treatment while maintaining their daily routines. Charlie Health accepts most major insurance plans and is designed as a step-down option for patients transitioning from inpatient care or as a higher-intensity alternative to traditional weekly outpatient therapy.",
+  "one_liner": "Virtual IOP and PHP for teens and young adults with serious mental health conditions.",
   "best_for": [
     "Adolescents and young adults with serious mental health conditions needing more than weekly therapy",
     "Families seeking evidence-based intensive treatment with flexible virtual scheduling",
@@ -52,7 +59,7 @@
     "Patients transitioning from inpatient care who need continued intensive support"
   ],
   "not_for": [],
-  "pricing_url": "undefined/pricing",
+  "pricing_url": null,
   "pricing": {
     "model": "insurance-based",
     "free_tier": false,
@@ -68,14 +75,14 @@
   },
   "integrations": [],
   "seo": {
-    "title": "Charlie Health: AI Medical Scribe | HeyPsych",
-    "meta_description": "",
+    "title": "Charlie Health: Virtual IOP for Teens & Young Adults | HeyPsych",
+    "meta_description": "Charlie Health provides virtual intensive outpatient programs (IOP) for teens and young adults with serious mental health conditions.",
     "faqs": [],
     "keywords": [
       "Charlie Health",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "virtual IOP",
+      "teen mental health",
+      "intensive outpatient"
     ]
   },
   "governance": {
