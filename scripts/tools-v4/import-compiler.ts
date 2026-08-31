@@ -18,7 +18,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
-import { v4 as uuidv4 } from "uuid";
+import { randomUUID } from "crypto";
 
 // ============================================================================
 // CONFIGURATION
@@ -490,7 +490,7 @@ function generateV4Tool(
   const tool: ClinicianToolV4 = {
     schema_version: "4.0",
     kind: "clinician-tool",
-    id: uuidv4(),
+    id: randomUUID(),
     slug,
     name: record.product_tool,
     company_name: record.company_vendor !== record.product_tool ? record.company_vendor : undefined,
@@ -589,7 +589,7 @@ function needsEnrichment(tool: ClinicianToolV4): boolean {
     !tool.short_description ||
     !tool.website_url ||
     tool.compliance.hipaa_support === "unknown" ||
-    tool.pricing.quote_required ||
+    tool.pricing?.quote_required ||
     tool.capabilities.length === 0
   );
 }

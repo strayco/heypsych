@@ -62,6 +62,7 @@ import {
 import {
   loadActiveStack,
   scheduleAutosave,
+  cancelAutosave,
   setActiveStackId,
 } from "@/domains/architect/persistence";
 import {
@@ -624,6 +625,10 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
 
   // Start over - reset stack and clear persistence
   const handleStartOver = useCallback(() => {
+    // Cancel any pending autosave first to prevent race condition
+    // where autosave fires after clearing and restores old state
+    cancelAutosave();
+
     if (isDemo) {
       setStack(createDemoStack());
     } else {

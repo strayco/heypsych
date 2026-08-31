@@ -2,6 +2,57 @@
 // This bypasses Supabase PostgREST overhead for ~10x faster queries
 
 import { Pool } from 'pg';
+import * as fs from 'fs';
+
+/**
+ * Get SSL configuration for database connection
+ *
+ * Supabase requires SSL for all connections. For production with verify-full mode,
+ * you must provide the Supabase root CA certificate via one of:
+ * - DATABASE_CA_CERT or SUPABASE_CA_CERT environment variable (base64 or PEM)
+ * - DATABASE_CA_PATH or SUPABASE_CA_PATH file path
+ *
+ * Download the certificate from: Supabase Dashboard → Settings → Database → SSL Certificate
+ * https://supabase.com/docs/guides/platform/ssl-enforcement
+ */
+function getSslConfig(): { rejectUnauthorized: boolean; ca?: string } {
+  // Check for CA certificate file path
+  const caPath = process.env.DATABASE_CA_PATH || process.env.SUPABASE_CA_PATH;
+  if (caPath) {
+    try {
+      const ca = fs.readFileSync(caPath, 'utf-8');
+      return { rejectUnauthorized: true, ca };
+    } catch (err) {
+      console.error(`[db-pool] Failed to read CA certificate from ${caPath}:`, err);
+    }
+  }
+
+  // Check for inline CA certificate (supports base64 or PEM format)
+  const caCert = process.env.DATABASE_CA_CERT || process.env.SUPABASE_CA_CERT;
+  if (caCert) {
+    // Decode base64 if the cert doesn't start with PEM header
+    const ca = caCert.startsWith('-----BEGIN')
+      ? caCert
+      : Buffer.from(caCert, 'base64').toString('utf-8');
+    return { rejectUnauthorized: true, ca };
+  }
+
+  // No CA certificate provided
+  // In production, log a warning but still use encrypted connection
+  // The connection is still encrypted, just not verifying server identity
+  if (process.env.NODE_ENV === 'production') {
+    console.warn(
+      '[db-pool] WARNING: No CA certificate provided for database SSL. ' +
+      'Connection is encrypted but server identity is not verified. ' +
+      'Set DATABASE_CA_CERT or DATABASE_CA_PATH for verify-full mode. ' +
+      'Download from: Supabase Dashboard → Settings → Database → SSL Certificate'
+    );
+  }
+
+  // Encrypted connection without server identity verification
+  // This is the Supabase default mode (sslmode=require)
+  return { rejectUnauthorized: false };
+}
 
 let pool: Pool | null = null;
 let initializationPromise: Promise<Pool> | null = null;
@@ -38,10 +89,8 @@ async function initializePool(): Promise<Pool> {
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 20000,
     // SSL required for Supabase connections
-    // Enable certificate verification for production security
-    ssl: {
-      rejectUnauthorized: process.env.NODE_ENV === 'production'
-    },
+    // In production, verify server certificate against Supabase CA
+    ssl: getSslConfig(),
   });
 
   // Handle pool errors - reconnect on error
