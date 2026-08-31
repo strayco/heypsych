@@ -182,6 +182,9 @@ const LAUNCH_ALLOWLIST = new Set([
   // Credentialing & payer enrollment (schema-compliant enriched tools)
   "medallion-payer-enrollment",
   "medallion-licensing",
+  // Architect practice area tools
+  "tableau-healthcare",
+  "psychology-today",
 ]);
 
 /**
