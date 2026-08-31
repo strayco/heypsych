@@ -1,18 +1,16 @@
 // src/app/architect/page.tsx
-// Practice Stack Architect - Entry Experience
-// Apple-inspired, mode-first architecture workspace
+// Practice Architect - Gateway Experience
+// Three clear entry paths with equal prominence
 
 import { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
   Sparkles,
-  Settings,
   ClipboardCheck,
+  Compass,
   Building2,
-  Shield,
-  BarChart3,
-  Layers,
+  Check,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 
@@ -21,7 +19,7 @@ const canonicalUrl = `${siteConfig.url}/architect`;
 export const metadata: Metadata = {
   title: "Practice Architect™ | Build Your Mental Health Practice Stack",
   description:
-    "Build your ideal mental health practice technology stack with Practice Architect™. Compare EHRs, billing software, telehealth platforms, and more with transparent fit scores and pricing.",
+    "Build your ideal mental health practice technology stack with Practice Architect™. Visual practice builder with transparent fit scores and real pricing.",
   keywords: [
     "mental health EHR",
     "therapy practice software",
@@ -44,68 +42,55 @@ export const metadata: Metadata = {
   },
 };
 
-// Mode card configuration
-const ARCHITECT_MODES = [
+// Entry mode configurations
+const ENTRY_MODES = [
   {
     id: "build-for-me",
     title: "Build for Me",
     description: "Tell us about your practice and get personalized stack recommendations",
     icon: Sparkles,
-    href: "/architect/build?mode=build-for-me",
-    features: [
+    color: "accent",
+    href: "/architect/my-practice",
+    steps: [
       "Answer 7 practice questions",
       "Get instant stack recommendations",
       "See fit scores for each product",
       "Customize your final stack",
     ],
     bestFor: "New practices or those wanting fresh recommendations",
+    isPrimary: true,
   },
   {
     id: "build-myself",
     title: "Build Myself",
     description: "Explore all options and craft your stack capability by capability",
-    icon: Settings,
-    href: "/architect/build?mode=build-myself",
-    features: [
+    icon: Compass,
+    color: "blue",
+    href: "/architect/my-practice?skip=1",
+    steps: [
       "Browse 6 lifecycle stages",
       "Explore 40+ capabilities",
       "Compare products side-by-side",
       "Build at your own pace",
     ],
     bestFor: "Those who know what they need or want to explore",
+    isPrimary: false,
   },
   {
-    id: "audit",
+    id: "audit-stack",
     title: "Audit My Stack",
     description: "Enter your current tools to find gaps, overlaps, and better alternatives",
     icon: ClipboardCheck,
+    color: "emerald",
     href: "/architect/audit",
-    features: [
+    steps: [
       "Add your current products",
       "See coverage gaps",
       "Identify redundancies",
       "Preview replacements",
     ],
     bestFor: "Established practices looking to optimize",
-  },
-] as const;
-
-// Value props
-const VALUE_PROPS = [
-  {
-    icon: Shield,
-    title: "Transparent Scores",
-    description: "Deterministic fit scores you can trace. No hidden rankings or pay-to-play.",
-  },
-  {
-    icon: BarChart3,
-    title: "Full Cost Visibility",
-    description: "See estimated monthly costs before you commit. Unknown stays unknown.",
-  },
-  {
-    icon: Layers,
-    title: "Complete Coverage",
-    description: "Map your entire practice lifecycle from marketing to operations.",
+    isPrimary: false,
   },
 ];
 
@@ -113,190 +98,191 @@ export default function ArchitectEntryPage() {
   return (
     <div className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <section className="border-b border-separator bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="mb-4 flex items-center gap-2 text-sm text-label-tertiary">
-            <Link href="/tools/for-clinicians/" className="hover:text-label-secondary">
-              Clinician Tools
-            </Link>
-            <span>/</span>
-            <span className="text-label-secondary">Practice Architect™</span>
-          </nav>
+      <section className="relative overflow-hidden border-b border-separator bg-gradient-to-b from-surface to-canvas">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
 
-          <div className="flex items-center gap-3">
-            <Building2 className="h-7 w-7 text-label-tertiary" />
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-                Practice Stack Builder
-              </p>
-              <h1 className="text-2xl font-semibold tracking-tight text-label-primary sm:text-3xl">
-                Practice Architect<sup className="text-sm">™</sup>
-              </h1>
+        <div className="relative mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          <div className="text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+              <Building2 className="h-4 w-4" />
+              Practice Stack Builder
             </div>
+
+            {/* Headline */}
+            <h1 className="mt-6 text-4xl font-bold tracking-tight text-label-primary sm:text-5xl">
+              Practice Architect™
+            </h1>
+
+            {/* Subheadline */}
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary">
+              Build your ideal mental health practice technology stack with transparent fit scores and real pricing.
+            </p>
           </div>
-          <p className="mt-3 max-w-2xl text-label-secondary">
-            Build your ideal mental health practice technology stack.
-            Transparent fit scores. Real cost estimates. Zero guesswork.
-          </p>
         </div>
       </section>
 
-      {/* Mode Selection */}
-      <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
+      {/* Entry Mode Selection */}
+      <section className="bg-canvas px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-xl font-semibold text-label-primary sm:text-2xl">
-            How would you like to start?
-          </h2>
-          <p className="mt-2 text-center text-label-secondary">
-            Choose your approach. You can always switch modes later.
-          </p>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-label-primary sm:text-3xl">
+              How would you like to start?
+            </h2>
+            <p className="mt-3 text-label-secondary">
+              Choose your approach. You can always switch modes later.
+            </p>
+          </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {ARCHITECT_MODES.map((mode) => {
+          {/* Three Cards */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {ENTRY_MODES.map((mode) => {
               const Icon = mode.icon;
+              const colorMap = {
+                accent: {
+                  bg: "bg-accent/5",
+                  border: "border-accent/20 hover:border-accent/40",
+                  icon: "bg-accent text-white",
+                  button: "bg-accent text-white hover:bg-accent-hover",
+                  badge: "bg-accent/10 text-accent",
+                },
+                blue: {
+                  bg: "bg-blue-50",
+                  border: "border-blue-200 hover:border-blue-300",
+                  icon: "bg-blue-600 text-white",
+                  button: "bg-blue-600 text-white hover:bg-blue-700",
+                  badge: "bg-blue-100 text-blue-700",
+                },
+                emerald: {
+                  bg: "bg-emerald-50",
+                  border: "border-emerald-200 hover:border-emerald-300",
+                  icon: "bg-emerald-600 text-white",
+                  button: "bg-emerald-600 text-white hover:bg-emerald-700",
+                  badge: "bg-emerald-100 text-emerald-700",
+                },
+              };
+              const colorClasses = colorMap[mode.color as keyof typeof colorMap];
+
               return (
                 <div
                   key={mode.id}
-                  className="group relative flex flex-col rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-neutral-300 hover:shadow-soft"
+                  className={`
+                    relative flex flex-col rounded-2xl border-2 p-6 transition-all
+                    ${colorClasses.bg} ${colorClasses.border}
+                    ${mode.isPrimary ? "ring-2 ring-accent/20 ring-offset-2" : ""}
+                  `}
                 >
-                  {/* Icon */}
-                  <Icon className="mb-4 h-6 w-6 text-label-tertiary" />
+                  {/* Primary badge */}
+                  {mode.isPrimary && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
+                        Recommended
+                      </span>
+                    </div>
+                  )}
 
-                  {/* Title & Description */}
-                  <h3 className="text-lg font-semibold text-label-primary">
-                    {mode.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-label-secondary">
-                    {mode.description}
-                  </p>
+                  {/* Header */}
+                  <div className="flex items-start gap-4">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${colorClasses.icon}`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-label-primary">{mode.title}</h3>
+                      <p className="mt-1 text-sm text-label-secondary">{mode.description}</p>
+                    </div>
+                  </div>
 
-                  {/* Features */}
-                  <ul className="mt-4 flex-1 space-y-2">
-                    {mode.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-label-tertiary">
-                        <span className="mt-1 flex h-4 w-4 items-center justify-center rounded-full bg-separator text-[10px] font-medium">
-                          {idx + 1}
-                        </span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Steps */}
+                  <div className="mt-6 flex-1">
+                    <ol className="space-y-2">
+                      {mode.steps.map((step, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-sm">
+                          <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${colorClasses.badge}`}>
+                            {idx + 1}
+                          </span>
+                          <span className="text-label-secondary">{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
 
                   {/* Best for */}
-                  <p className="mt-4 text-xs text-label-tertiary italic">
-                    Best for: {mode.bestFor}
+                  <p className="mt-6 text-xs text-label-tertiary">
+                    <strong className="font-medium">Best for:</strong> {mode.bestFor}
                   </p>
 
-                  {/* CTA */}
+                  {/* CTA Button */}
                   <Link
                     href={mode.href}
-                    className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-treatment px-4 py-3 text-sm font-medium text-white transition-all hover:bg-treatment-600"
+                    className={`
+                      mt-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-colors
+                      ${colorClasses.button}
+                    `}
                   >
-                    <span className="text-white">Get Started</span>
-                    <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
+                    Get Started
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               );
             })}
           </div>
 
-          {/* Demo Option */}
+          {/* Demo link */}
           <div className="mt-8 text-center">
-            <p className="text-sm text-label-tertiary">
-              Just exploring?{" "}
-              <Link
-                href="/architect/demo"
-                className="font-medium text-accent hover:text-accent-hover"
-              >
-                Try the demo with fictional products
-              </Link>
-            </p>
+            <Link
+              href="/architect/demo"
+              className="text-sm text-label-secondary hover:text-label-primary transition-colors"
+            >
+              Just want to explore? <span className="underline">Try the interactive demo</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Value Props */}
-      <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-xl font-semibold text-label-primary">
-            Why use Practice Architect™?
-          </h2>
-
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {VALUE_PROPS.map((prop, idx) => {
-              const Icon = prop.icon;
-              return (
-                <div key={idx} className="text-center">
-                  <Icon className="mx-auto h-6 w-6 text-label-tertiary" />
-                  <h3 className="mt-4 font-semibold text-label-primary">
-                    {prop.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-label-secondary">
-                    {prop.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Lifecycle Preview */}
-      <section className="bg-canvas px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-xl font-semibold text-label-primary">
-            Cover your entire practice lifecycle
-          </h2>
-          <p className="mt-2 text-center text-label-secondary">
-            40+ capabilities across 6 stages of running a mental health practice
-          </p>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Features Summary */}
+      <section className="border-y border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { id: "grow", name: "Grow", description: "Attract new clients", count: 5 },
-              { id: "access", name: "Access", description: "Intake & onboarding", count: 7 },
-              { id: "engage", name: "Engage", description: "Client communication", count: 6 },
-              { id: "care", name: "Care", description: "Clinical delivery", count: 10 },
-              { id: "revenue", name: "Revenue", description: "Billing & collections", count: 7 },
-              { id: "operate", name: "Operate", description: "Practice management", count: 5 },
-            ].map((stage) => (
-              <div
-                key={stage.id}
-                className="rounded-xl border border-separator bg-surface p-4 transition-all hover:border-accent/30"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-medium text-label-primary">{stage.name}</h3>
-                  <span className="text-xs text-label-tertiary">
-                    {stage.count} capabilities
-                  </span>
+              { label: "40+ Products", sublabel: "Curated for mental health" },
+              { label: "Transparent Pricing", sublabel: "Real costs, no surprises" },
+              { label: "Fit Scores", sublabel: "Personalized to your practice" },
+              { label: "No Account", sublabel: "Start building immediately" },
+            ].map((feature) => (
+              <div key={feature.label} className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                  <Check className="h-4 w-4 text-emerald-600" />
                 </div>
-                <p className="mt-1 text-sm text-label-secondary">
-                  {stage.description}
-                </p>
+                <div>
+                  <p className="text-sm font-medium text-label-primary">{feature.label}</p>
+                  <p className="text-xs text-label-tertiary">{feature.sublabel}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-xl font-semibold text-label-primary">
-            Ready to build your stack?
-          </h2>
-          <p className="mt-2 text-label-secondary">
-            Start with personalized recommendations in under 2 minutes.
+      {/* Footer note */}
+      <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm text-label-tertiary">
+            Practice Architect™ uses transparent, deterministic scoring.
+            All recommendations are based on your practice profile —{" "}
+            <Link href="/tools/for-clinicians/" className="text-accent hover:underline">
+              learn more about our methodology
+            </Link>
+            .
           </p>
-          <Link
-            href="/architect/build?mode=build-for-me"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-treatment px-6 py-3 font-medium text-white transition-all hover:bg-treatment-600"
-          >
-            <Sparkles className="h-5 w-5 text-white" />
-            <span className="text-white">Build for Me</span>
-            <ArrowRight className="h-4 w-4 text-white" />
-          </Link>
         </div>
       </section>
     </div>

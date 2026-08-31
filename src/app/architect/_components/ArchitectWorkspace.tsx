@@ -13,6 +13,7 @@ import {
   AlertTriangle,
   Plus,
   Layers,
+  RotateCcw,
 } from "lucide-react";
 import {
   type ArchitectMode,
@@ -38,10 +39,13 @@ import type { ArchitectProductDisplay } from "@/domains/architect/services";
 import {
   calculateStackCoverage,
   analyzeOverlaps,
+  analyzeProductPairOverlaps,
   analyzeCompatibility,
   calculateStackCost,
   calculateStackHealth,
   calculateFitScore,
+  generateRecommendation,
+  type StackRecommendation,
 } from "@/domains/architect/engines";
 import type { FitResult } from "@/domains/architect/schemas";
 import {
@@ -62,6 +66,9 @@ import { LifecycleNavigator } from "./LifecycleNavigator";
 import { StackCanvas } from "./StackCanvas";
 import { ShortlistPane } from "./ShortlistPane";
 import { StackHealthPanel } from "./StackHealthPanel";
+import { RecommendationSummary } from "./RecommendationSummary";
+import { OverlapReviewPanel } from "./OverlapReviewPanel";
+import { AuditIntake } from "./AuditIntake";
 
 // Context preloading from URL parameters (via ContextualArchitectCTA)
 export interface ArchitectInitialContext {
@@ -93,7 +100,14 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
     }
     return createEmptyStack();
   });
-  const [showFingerprint, setShowFingerprint] = useState(!isDemo && initialMode !== "audit");
+  // Only show fingerprint wizard for "build-for-me" mode (not for "build-myself" or "audit")
+  const [showFingerprint, setShowFingerprint] = useState(!isDemo && initialMode === "build-for-me");
+  const [showAuditIntake, setShowAuditIntake] = useState(initialMode === "audit" && !isDemo);
+  const [showRecommendation, setShowRecommendation] = useState(false);
+  const [showOverlapReview, setShowOverlapReview] = useState(false);
+  const [recommendation, setRecommendation] = useState<StackRecommendation | null>(null);
+  const [pendingRecommendation, setPendingRecommendation] = useState(false); // Waiting for products to load
+  const [acknowledgedOverlaps, setAcknowledgedOverlaps] = useState<Set<string>>(new Set()); // Track "Keep Both" decisions
   const [activeStage, setActiveStage] = useState<string>("care");
   const [selectedCapability, setSelectedCapability] = useState<CapabilityId | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -105,6 +119,7 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
     metadataMap: realMetadataMap,
     displayMap: realDisplayMap,
     isLoading: productsLoading,
+    error: productsError,
   } = useArchitectProducts();
 
   // Metadata map (demo or real)
@@ -144,6 +159,31 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
     () => calculateStackCost(stack, metadataMap),
     [stack, metadataMap]
   );
+
+  // Enhanced product-pair overlap analysis for review panel
+  const productPairOverlaps = useMemo(() => {
+    // Build cost map for potential savings calculation
+    const costMap = new Map<string, { minMonthlyCents: number | null; maxMonthlyCents: number | null }>();
+    for (const selected of stack.selectedProducts) {
+      const metadata = metadataMap.get(selected.slug);
+      if (metadata?.pricing) {
+        const cost = costResult.productCosts.find((p) => p.slug === selected.slug);
+        costMap.set(selected.slug, {
+          minMonthlyCents: cost?.minMonthlyCents ?? null,
+          maxMonthlyCents: cost?.maxMonthlyCents ?? null,
+        });
+      }
+    }
+    return analyzeProductPairOverlaps(stack, metadataMap, costMap);
+  }, [stack, metadataMap, costResult.productCosts]);
+
+  // Filter out acknowledged overlaps from the list
+  const unacknowledgedOverlaps = useMemo(() => {
+    return productPairOverlaps.filter((overlap) => {
+      const pairKey = [overlap.productASlug, overlap.productBSlug].sort().join(":");
+      return !acknowledgedOverlaps.has(pairKey);
+    });
+  }, [productPairOverlaps, acknowledgedOverlaps]);
 
   // Calculate fit results for all products (for shortlist ranking and health)
   const fitResultsMap = useMemo((): Map<string, FitResult> => {
@@ -203,10 +243,13 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
       const result = loadActiveStack();
       if (result.success && result.data && result.data.selectedProducts.length > 0) {
         setStack(result.data);
-        setShowFingerprint(false);
+        // Only skip fingerprint for "build-myself" mode - "build-for-me" should always show questionnaire
+        if (initialMode !== "build-for-me") {
+          setShowFingerprint(false);
+        }
       }
     }
-  }, [isDemo]);
+  }, [isDemo, initialMode]);
 
   // Handle initial context preloading from URL (from ContextualArchitectCTA)
   useEffect(() => {
@@ -366,13 +409,139 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
     trackStackUndo();
   }, [stack]);
 
-  const handleFingerprintComplete = useCallback((fingerprint: PracticeFingerprint) => {
-    setStack((prev) => ({
-      ...prev,
-      fingerprint,
-    }));
-    setShowFingerprint(false);
+  // Start from scratch - clear everything and go back to mode selection
+  const handleStartFromScratch = useCallback(() => {
+    // Reset to empty stack
+    setStack(createEmptyStack());
+    // Clear all UI state
+    setShowRecommendation(false);
+    setRecommendation(null);
+    setPendingRecommendation(false);
+    setAcknowledgedOverlaps(new Set());
+    setSelectedCapability(null);
+    setActiveStage("care");
+    // Show fingerprint wizard for build-for-me, audit intake for audit
+    if (mode === "build-for-me") {
+      setShowFingerprint(true);
+    } else if (mode === "audit") {
+      setShowAuditIntake(true);
+    }
+    // For build-myself, just clear the stack (no wizard)
+  }, [mode]);
+
+  const handleFingerprintComplete = useCallback(
+    (fingerprint: PracticeFingerprint) => {
+      // Update fingerprint and go straight to workspace
+      setStack((prev) => ({
+        ...prev,
+        fingerprint,
+        mode: mode,
+        // Keep existing products if any, fingerprint just helps with recommendations in shortlist
+      }));
+      setShowFingerprint(false);
+      // Skip recommendation summary - go straight to workspace
+    },
+    [mode]
+  );
+
+  // Handle accepting all recommended products
+  const handleAcceptAllRecommendations = useCallback(() => {
+    if (!recommendation) return;
+
+    setStack((prev) => {
+      // Get existing slugs to prevent duplicates
+      const existingSlugs = new Set(prev.selectedProducts.map((p) => p.slug));
+
+      // Filter out any products that already exist in the stack
+      const newProducts = recommendation.products
+        .filter((p) => !existingSlugs.has(p.slug))
+        .map((p) => ({
+          slug: p.slug,
+          addedAt: new Date().toISOString(),
+          addedFromSource: "recommendation" as const,
+          isDemo: false,
+        }));
+
+      return {
+        ...prev,
+        selectedProducts: [...prev.selectedProducts, ...newProducts],
+      };
+    });
+    setShowRecommendation(false);
+    setRecommendation(null);
+  }, [recommendation]);
+
+  // Handle accepting a single recommended product
+  const handleAcceptRecommendedProduct = useCallback(
+    (slug: string) => {
+      if (hasProduct(stack, slug)) return;
+
+      const newStack = addHistoryEntry(
+        {
+          ...stack,
+          selectedProducts: [
+            ...stack.selectedProducts,
+            {
+              slug,
+              addedAt: new Date().toISOString(),
+              addedFromSource: "recommendation" as const,
+              isDemo: false,
+            },
+          ],
+        },
+        {
+          type: "add-product",
+          productSlug: slug,
+          timestamp: new Date().toISOString(),
+        }
+      );
+
+      setStack(newStack);
+      trackProductAdd(slug, "recommendation", newStack.selectedProducts.length);
+    },
+    [stack]
+  );
+
+  // Handle skipping a recommended product
+  const handleRejectRecommendedProduct = useCallback((slug: string) => {
+    // Remove from recommendation display (don't add to stack)
+    setRecommendation((prev) => {
+      if (!prev) return null;
+      return {
+        ...prev,
+        products: prev.products.filter((p) => p.slug !== slug),
+      };
+    });
   }, []);
+
+  // Handle regenerating recommendations
+  const handleRegenerateRecommendation = useCallback(() => {
+    const availableProducts = Array.from(metadataMap.values());
+
+    if (availableProducts.length > 0) {
+      const rec = generateRecommendation({
+        fingerprint: stack.fingerprint,
+        availableProducts,
+        existingSelectionSlugs: stack.selectedProducts.map((p) => p.slug),
+      });
+      setRecommendation(rec);
+    }
+  }, [metadataMap, stack.fingerprint, stack.selectedProducts]);
+
+  // Generate recommendations once products finish loading (if we were waiting)
+  useEffect(() => {
+    if (pendingRecommendation && !productsLoading && metadataMap.size > 0) {
+      const availableProducts = Array.from(metadataMap.values());
+      const rec = generateRecommendation({
+        fingerprint: stack.fingerprint,
+        availableProducts,
+        existingSelectionSlugs: [],
+      });
+      setRecommendation(rec);
+      setShowRecommendation(true);
+      setPendingRecommendation(false);
+    }
+  }, [pendingRecommendation, productsLoading, metadataMap, stack.fingerprint]);
 
   // Show fingerprint wizard if needed
   if (showFingerprint) {
@@ -382,6 +551,70 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
         mode={mode}
         onComplete={handleFingerprintComplete}
         onSkip={() => setShowFingerprint(false)}
+      />
+    );
+  }
+
+  // Recommendation loading skipped - go straight to workspace
+
+  // Show error state if products failed to load
+  if (!isDemo && productsError && !showFingerprint) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-canvas">
+        <div className="text-center">
+          <p className="text-error">Failed to load products</p>
+          <p className="mt-2 text-sm text-label-secondary">{productsError.message}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Show loading state while products are loading for build-myself mode (no wizard delay)
+  if (!isDemo && productsLoading && metadataMap.size === 0 && !showFingerprint) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-canvas">
+        <div className="text-center">
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-accent border-t-transparent" />
+          <p className="mt-4 text-label-secondary">Loading product catalog...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Recommendation summary skipped - go straight to workspace
+
+  // Show audit intake for audit mode when no products selected
+  if (showAuditIntake && mode === "audit") {
+    return (
+      <AuditIntake
+        metadataMap={metadataMap}
+        productDisplayMap={productDisplayMap}
+        isLoading={productsLoading}
+        onComplete={(selectedSlugs) => {
+          // For audit mode, replace the stack with the user's selected products (fresh audit)
+          const newProducts = selectedSlugs.map((slug) => ({
+            slug,
+            addedAt: new Date().toISOString(),
+            addedFromSource: "audit" as const,
+            isDemo: false,
+          }));
+
+          setStack((prev) => ({
+            ...prev,
+            mode: "audit",
+            selectedProducts: newProducts, // Replace, don't append - this is a fresh audit
+            history: [],
+          }));
+
+          setShowAuditIntake(false);
+        }}
+        onSkip={() => setShowAuditIntake(false)}
       />
     );
   }
@@ -433,6 +666,18 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
             >
               <Undo2 className="h-4 w-4" />
               <span className="hidden sm:inline">Undo</span>
+            </button>
+          )}
+
+          {/* Start from Scratch */}
+          {stack.selectedProducts.length > 0 && (
+            <button
+              onClick={handleStartFromScratch}
+              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-label-secondary hover:bg-fill-secondary"
+              title="Clear stack and start over"
+            >
+              <RotateCcw className="h-4 w-4" />
+              <span className="hidden sm:inline">Start Over</span>
             </button>
           )}
 
@@ -530,20 +775,23 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
         </aside>
       </div>
 
-      {/* Overlap warnings banner */}
-      {overlapResult.some((o) => o.classification === "probable-redundancy") && (
-        <div className="flex items-center gap-2 border-t border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-600">
-          <Layers className="h-4 w-4 shrink-0" />
-          <span>
-            <strong>Feature overlap detected:</strong>{" "}
-            {overlapResult
-              .filter((o) => o.classification === "probable-redundancy")
-              .slice(0, 2)
-              .map((o) => `${o.productA} and ${o.productB} both cover ${o.capabilityId.replace(/-/g, " ")}`)
-              .join("; ")}
-            {overlapResult.filter((o) => o.classification === "probable-redundancy").length > 2 && " and more"}
-            . Consider removing redundant tools to reduce cost.
-          </span>
+      {/* Overlap warnings banner - only show unacknowledged overlaps */}
+      {unacknowledgedOverlaps.some((o) => o.classification === "probable-redundancy" || o.classification === "possible-redundancy") && (
+        <div className="flex items-center justify-between gap-2 border-t border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-600">
+          <div className="flex items-center gap-2">
+            <Layers className="h-4 w-4 shrink-0" />
+            <span>
+              <strong>Feature overlap detected:</strong>{" "}
+              {unacknowledgedOverlaps.length} product pair{unacknowledgedOverlaps.length > 1 ? "s" : ""} share capabilities.
+              Review for potential redundancy.
+            </span>
+          </div>
+          <button
+            onClick={() => setShowOverlapReview(true)}
+            className="shrink-0 rounded-lg bg-amber-600 px-3 py-1 text-xs font-medium text-white hover:bg-amber-700"
+          >
+            Review
+          </button>
         </div>
       )}
 
@@ -639,6 +887,25 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
             />
           </div>
         </div>
+      )}
+
+      {/* Overlap Review Panel */}
+      {showOverlapReview && (
+        <OverlapReviewPanel
+          overlaps={unacknowledgedOverlaps}
+          productDisplayMap={productDisplayMap}
+          onRemoveProduct={(slug) => {
+            const display = productDisplayMap.get(slug);
+            handleRemoveProduct(slug, display?.category || "unknown");
+          }}
+          onKeepBoth={(slugA, slugB) => {
+            // Persist the "Keep Both" decision - use sorted key for consistency
+            const pairKey = [slugA, slugB].sort().join(":");
+            setAcknowledgedOverlaps((prev) => new Set([...prev, pairKey]));
+            // Don't close panel - let user continue reviewing other overlaps
+          }}
+          onClose={() => setShowOverlapReview(false)}
+        />
       )}
     </div>
   );

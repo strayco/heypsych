@@ -4,7 +4,6 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { TrustSignal } from "../_components/TrustSignal";
@@ -12,7 +11,6 @@ import { VendorCTA } from "../_components/VendorCTA";
 import { HubFAQ } from "@/components/tools/hubs";
 import {
   CategoryGrid,
-  BuyerIntentRouter,
   ClinicianToolCard,
 } from "@/components/tools/clinician";
 import {
@@ -115,28 +113,12 @@ export default async function ForCliniciansPage() {
               For Mental Health Clinicians
             </p>
 
-            {/* Title row with Architect CTA */}
-            <div className="mt-2 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h1 className="text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
-                  Practice Software
-                </h1>
-                <p className="mt-1 text-label-tertiary">
-                  {allV4Tools.length} tools across {categoriesWithCounts.length} categories
-                </p>
-              </div>
-
-              <Link
-                href="/architect?source=for-clinicians"
-                className="group flex flex-col items-start rounded-xl border-2 border-treatment bg-treatment px-5 py-4 shadow-md transition-all hover:bg-treatment-600 hover:shadow-lg sm:items-end"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-semibold text-white">Practice Architect™</span>
-                  <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-1" />
-                </div>
-                <span className="mt-1 text-sm text-neutral-300">Build your ideal tech stack</span>
-              </Link>
-            </div>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
+              Practice Software
+            </h1>
+            <p className="mt-1 text-label-tertiary">
+              {allV4Tools.length} tools across {categoriesWithCounts.length} categories
+            </p>
 
             <p className="mt-4 max-w-2xl text-lg text-label-secondary">
               Compare EHRs, AI scribes, billing platforms, and telehealth tools with transparent pricing and fit scores for your practice.
@@ -144,36 +126,71 @@ export default async function ForCliniciansPage() {
           </div>
         </section>
 
-        {/* Buyer Intent Router */}
+        {/* Practice Architect CTA */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-              Get Started
-            </p>
-            <h2 className="mt-1 text-xl font-semibold text-label-primary">
-              Find the Right Tools
-            </h2>
-
-            <div className="mt-6">
-              <Suspense fallback={<div className="h-48 animate-pulse bg-surface rounded-xl" />}>
-                <BuyerIntentRouter />
-              </Suspense>
+            <div className="rounded-2xl border-2 border-treatment/20 bg-linear-to-br from-treatment/5 to-treatment/10 p-8">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-xl">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-treatment">
+                    Practice Architect™
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold text-label-primary">
+                    Build Your Ideal Tech Stack
+                  </h2>
+                  <p className="mt-3 text-label-secondary">
+                    Answer a few questions about your practice and get personalized recommendations with transparent fit scores and real pricing.
+                  </p>
+                  <ul className="mt-4 grid gap-2 text-sm text-label-secondary sm:grid-cols-2">
+                    <li className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
+                      Personalized recommendations
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
+                      Transparent fit scores
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
+                      Real pricing data
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
+                      No account required
+                    </li>
+                  </ul>
+                </div>
+                <Link
+                  href="/architect"
+                  className="group flex flex-col items-center rounded-xl bg-treatment px-8 py-5 shadow-md transition-all hover:bg-treatment-600 hover:shadow-lg"
+                >
+                  <span className="text-sm font-medium text-white/80">Practice Architect™</span>
+                  <span className="mt-1 flex items-center gap-2 text-lg font-semibold text-white">
+                    Build your ideal tech stack
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </div>
             </div>
+          </div>
+        </section>
 
-            {/* EHR Matcher CTA */}
-            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-surface p-5">
+        {/* Provider Platforms CTA */}
+        <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-amber-200 bg-amber-50 p-5">
               <div>
-                <p className="font-medium text-label-primary">Looking for an EHR?</p>
-                <p className="text-sm text-label-secondary">
-                  Answer 7 questions to find your perfect match
+                <p className="font-medium text-amber-900">Not building your own practice?</p>
+                <p className="mt-1 text-sm text-amber-800">
+                  Compare Headway, Grow, Alma, Rula, and other platforms where you work as a contractor.
                 </p>
               </div>
               <Link
-                href="/tools/for-clinicians/ehr-practice-management/match/"
-                className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
+                href="/for-clinicians/platforms"
+                className="group flex items-center justify-center gap-2 rounded-lg border border-amber-300 bg-white px-5 py-2.5 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100"
               >
-                <span className="text-white">Find My EHR</span>
-                <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
+                Compare Platforms
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>

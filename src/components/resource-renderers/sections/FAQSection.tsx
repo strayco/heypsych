@@ -2,6 +2,7 @@
 "use client";
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 
 interface FAQ {
@@ -58,16 +59,16 @@ export function FAQSection({ faqs, entityName, entityUrl }: FAQSectionProps) {
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   className="flex w-full items-center justify-between p-4 text-left hover:bg-fill-quaternary"
                 >
-                  <span className="font-medium text-label-primary">{faq.q}</span>
+                  <span className="font-medium text-label-primary"><ParsedContent content={faq.q} /></span>
                   {openIndex === i ? (
-                    <ChevronUp className="h-5 w-5 flex-shrink-0 text-label-primary0" />
+                    <ChevronUp className="h-5 w-5 shrink-0 text-label-primary0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 flex-shrink-0 text-label-primary0" />
+                    <ChevronDown className="h-5 w-5 shrink-0 text-label-primary0" />
                   )}
                 </button>
                 {openIndex === i && (
                   <div className="border-t border-separator px-4 pb-4 pt-3">
-                    <p className="text-sm text-label-primary">{faq.a}</p>
+                    <p className="text-sm text-label-primary"><ParsedContent content={faq.a} /></p>
                   </div>
                 )}
               </div>

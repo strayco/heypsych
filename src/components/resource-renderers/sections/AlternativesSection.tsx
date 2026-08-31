@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 interface Alternative {
@@ -57,7 +58,7 @@ export function AlternativesSection({
                   </a>
                 )}
               </div>
-              <p className="text-sm text-label-primary">{alt.comparison}</p>
+              <p className="text-sm text-label-primary"><ParsedContent content={alt.comparison} /></p>
             </div>
           ))}
         </div>

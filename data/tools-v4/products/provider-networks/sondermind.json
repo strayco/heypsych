@@ -5,6 +5,23 @@
   "slug": "sondermind",
   "name": "SonderMind",
   "company_name": "SonderMind, Inc.",
+  "one_liner": "Free therapist network with VA partnership (100% covered for veterans), AI matching, measurement-based care, and no-show reimbursement.",
+  "short_description": "SonderMind is a free-to-join therapist network with VA partnership, AI-powered patient matching, measurement-based care emphasis, and no-show reimbursement for insured clients.",
+  "long_description": "SonderMind is a mental health platform operating in all 50 states that connects therapists with clients while handling insurance credentialing, billing, and patient matching. The platform is free for providers to join—therapists work as 1099 independent contractors and receive bi-weekly payouts with same-day payment options available. A key differentiator is SonderMind's VA partnership: therapy is 100% covered for veterans with a valid referral, opening a significant patient population. SonderMind uses AI-powered therapist-patient matching and emphasizes measurement-based care with outcome tracking tools. The company offers no-show reimbursement—providers get paid when insured clients miss appointments. However, compensation ratings are mixed (2.3/5 on Comparably) with some therapists reporting lower effective rates than competitors. SonderMind is headquartered in Denver and works with major insurers including Aetna, Anthem, BCBS, Cigna, and UnitedHealthcare.",
+  "best_for": [
+    "Therapists wanting to serve veterans (VA partnership with 100% coverage)",
+    "Providers seeking no-show reimbursement protection",
+    "Clinicians interested in measurement-based care and outcome tracking",
+    "Therapists wanting same-day payment option (for a fee)",
+    "New clinicians seeking steady client referrals through AI matching"
+  ],
+  "not_for": [
+    "Clinicians building their own independent practice (credentials belong to SonderMind)",
+    "Therapists prioritizing highest compensation (2.3/5 pay rating on Comparably)",
+    "Providers wanting full transparency on revenue split",
+    "Those wanting control over payer contract negotiations",
+    "Clinicians who may want portable credentials when leaving"
+  ],
   "import_ref": {
     "record_id": "PN-0011",
     "source_file": "provider-networks-research-2026",
@@ -22,13 +39,20 @@
     "video-sessions",
     "claims-submission",
     "payment-processing",
-    "hipaa-compliant"
+    "outcome-tracking",
+    "hipaa-compliant",
+    "baa-available"
   ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "counselor"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
@@ -36,67 +60,290 @@
       "medium-11-50"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "therapy",
+      "counseling",
+      "psychology",
+      "anxiety",
+      "depression",
+      "trauma",
+      "veterans",
+      "ptsd"
     ]
   },
   "feature_flags": {
-    "has_ai": false,
+    "has_ai": true,
     "has_ehr": false,
-    "has_measurement": false,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
+    "has_patient_portal": true,
     "has_mobile_app": false,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "SonderMind is a free provider network for therapists with insurance credentialing, billing, and VA partnership.",
-  "long_description": "SonderMind is a mental health platform that connects therapists with clients while handling insurance credentialing, billing, and client matching. The platform is free for providers to join—therapists work as independent contractors and receive bi-weekly payouts with same-day payment options available. SonderMind offers AI-powered therapist-patient matching and emphasizes measurement-based care. The company is an in-network VA provider, meaning therapy is 100% covered for veterans with a valid referral. SonderMind is headquartered in Denver and works with major insurers including Aetna, Anthem, BCBS, Cigna, and UnitedHealthcare.",
-  "one_liner": "Free therapist network with AI matching, insurance billing, and VA partnership.",
-  "best_for": [
-    "Therapists seeking a free platform to join with no membership fees",
-    "Patients wanting AI-powered therapist matching for optimal fit",
-    "Providers interested in measurement-based care practices",
-    "Health plans seeking behavioral health network partners",
-    "Clinicians wanting flexible independent contractor arrangements"
-  ],
-  "not_for": [],
-  "pricing_url": null,
   "pricing": {
     "model": "percentage-of-revenue",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free to join",
     "free_tier": true,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": false,
+    "notes": "Free to join with revenue sharing model. SonderMind takes a percentage of insurance reimbursements. Bi-weekly payouts standard; same-day payment option available for a fee. No-show reimbursement for insured clients.",
+    "last_verified": "2026-08-29"
+  },
+  "reimbursement_rates": {
+    "model": "Revenue sharing (percentage not publicly disclosed)",
+    "compensation_rating": "2.3/5 on Comparably (mixed reviews)",
+    "no_show_policy": "Providers get paid when insured clients no-show",
+    "payment_schedule": "Bi-weekly with same-day option available",
+    "notes": "Some therapists report lower effective rates compared to Headway or direct credentialing."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with SOC 2 certification."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Aetna",
+      "slug": "aetna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Anthem",
+      "slug": "anthem",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Blue Cross Blue Shield",
+      "slug": "bcbs",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cigna",
+      "slug": "cigna",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "UnitedHealthcare",
+      "slug": "uhc",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "VA (Veterans Affairs)",
+      "slug": "va",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "100% covered for veterans with valid referral"
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "va_partnership": {
+      "available": true,
+      "coverage": "100% covered for veterans with valid VA referral",
+      "significance": "Opens significant patient population other platforms don't serve"
+    },
+    "client_matching": {
+      "type": "AI-powered matching",
+      "note": "Algorithm matches patients to therapists based on preferences and specialties"
+    },
+    "measurement_based_care": {
+      "available": true,
+      "note": "Outcome tracking tools built into platform"
+    },
+    "no_show_protection": {
+      "available": true,
+      "coverage": "Reimbursement when insured clients no-show or late cancel"
+    },
+    "billing": {
+      "payment_schedule": "Bi-weekly standard",
+      "same_day_option": "Available for a fee"
+    },
+    "contractor_status": {
+      "type": "1099 Independent Contractor",
+      "clinical_autonomy": "Full autonomy over treatment",
+      "scheduling_flexibility": "Set your own hours"
+    }
+  },
+  "network_info": {
+    "coverage": "All 50 states",
+    "headquarters": "Denver, Colorado"
+  },
+  "fairness_rating": {
+    "overall_score": 47,
+    "grade": "C",
+    "breakdown": {
+      "pay_fairness": {
+        "score": 46,
+        "weight": 30,
+        "notes": "2.3/5 compensation rating on Comparably (below average)"
+      },
+      "credential_portability": {
+        "score": 0,
+        "weight": 20,
+        "notes": "Credentials stay with SonderMind. Must re-credential if you leave"
+      },
+      "compensation_transparency": {
+        "score": 30,
+        "weight": 15,
+        "notes": "Revenue split % undisclosed. Cannot predict exact earnings per session upfront"
+      },
+      "rate_stability": {
+        "score": 65,
+        "weight": 15,
+        "notes": "Fewer reported rate cuts; VA partnership provides stability"
+      },
+      "clinician_founded": {
+        "score": 0,
+        "weight": 10,
+        "notes": "Tech-founded by Mark Frank and Sean Boyd"
+      },
+      "payment_speed": {
+        "score": 65,
+        "weight": 5,
+        "notes": "Bi-weekly standard; same-day option available (for a fee)"
+      },
+      "benefits_protections": {
+        "score": 90,
+        "weight": 5,
+        "notes": "VA partnership (100% covered), no-show reimbursement, measurement-based care"
+      }
+    },
+    "methodology": "HeyPsych Fairness Rating v1.0: Weighted score across pay fairness (30%), credential portability (20%), compensation transparency (15%), rate stability (15%), clinician-founded (10%), payment speed (5%), and benefits (5%). Scale: A (80-100), B (65-79), C (50-64), D (35-49), F (<35)."
+  },
+  "hidden_gotchas": {
+    "credential_portability": {
+      "issue": "Credentials belong to SonderMind, not you",
+      "impact": "If you leave, you lose panel access and must re-credential independently",
+      "mitigation": "Consider dual-credentialing if planning eventual independent practice"
+    },
+    "compensation_concerns": {
+      "issue": "Mixed compensation reviews (2.3/5 on Comparably)",
+      "impact": "Some therapists report lower effective rates than competitors",
+      "context": "Compare actual per-session pay before committing"
+    },
+    "revenue_split_opacity": {
+      "issue": "Exact revenue split percentage not publicly disclosed",
+      "impact": "Hard to calculate your true cut of insurance reimbursements",
+      "comparison": "Similar opacity to Headway and Grow Therapy"
+    },
+    "same_day_payment_fee": {
+      "issue": "Same-day payment option comes with a fee",
+      "note": "Standard bi-weekly payment is free; expedited costs extra"
+    },
+    "measurement_requirements": {
+      "note": "Emphasis on measurement-based care may require additional time for outcome tracking",
+      "benefit": "Can improve clinical outcomes and demonstrate value"
+    }
+  },
   "seo": {
-    "title": "SonderMind: Provider Network & Insurance Billing | HeyPsych",
-    "meta_description": "SonderMind is a free provider network for therapists with insurance credentialing, billing, and VA partnership.",
-    "faqs": [],
+    "title": "SonderMind: VA Partnership & AI Matching for Therapists",
+    "meta_description": "SonderMind is free to join with VA partnership (100% covered for veterans), AI patient matching, no-show reimbursement. All 50 states, bi-weekly payments.",
+    "faqs": [
+      {
+        "q": "Is SonderMind free for therapists?",
+        "a": "Yes, SonderMind is free to join with no membership fees. The platform uses a revenue-sharing model, taking a percentage of insurance reimbursements. However, the exact split isn't publicly disclosed, and compensation ratings are mixed (2.3/5 on Comparably)."
+      },
+      {
+        "q": "What is SonderMind's VA partnership?",
+        "a": "SonderMind is an in-network VA provider. Therapy is 100% covered for veterans with a valid VA referral. This opens a significant patient population that many other platforms don't directly serve."
+      },
+      {
+        "q": "Does SonderMind offer no-show protection?",
+        "a": "Yes, SonderMind reimburses providers when insured clients no-show or late cancel. This provides income stability that independent practice doesn't always offer."
+      },
+      {
+        "q": "How does SonderMind compare to Headway?",
+        "a": "Both are free with revenue sharing. SonderMind uniquely offers VA partnership and no-show reimbursement. Headway has a larger network (70,000+ vs SonderMind's smaller network). Both have undisclosed revenue splits. Compensation reviews are mixed for both."
+      },
+      {
+        "q": "What happens if I leave SonderMind?",
+        "a": "Your insurance credentials stay with SonderMind. You'd need to re-credential independently (60-120 days). This is the same credential lock-in as Headway, Grow, Alma, and Rula."
+      }
+    ],
     "keywords": [
       "SonderMind",
+      "VA therapist",
+      "veteran therapy",
       "therapist network",
       "insurance credentialing",
-      "VA provider"
+      "no-show reimbursement",
+      "measurement-based care"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-29",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 88
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "headway",
+    "grow-therapy",
+    "alma",
+    "rula",
+    "lyra-health"
+  ],
+  "competitor_tools": [
+    "headway",
+    "grow-therapy",
+    "alma",
+    "rula"
+  ],
+  "company_info": {
+    "founded_year": 2017,
+    "headquarters": "Denver, Colorado, USA",
+    "employee_count": "500+",
+    "funding_status": "Venture-backed (Series C)",
+    "clinician_founded": false,
+    "founders": [
+      {
+        "name": "Mark Frank",
+        "title": "CEO & Co-Founder",
+        "background": "Healthcare tech entrepreneur",
+        "is_clinician": false
+      },
+      {
+        "name": "Sean Boyd",
+        "title": "Co-Founder",
+        "background": "Healthcare technology",
+        "is_clinician": false
+      }
+    ],
+    "funding": {
+      "total_raised": "$315M+",
+      "latest_round": "Series C (2021)",
+      "latest_round_amount": "$150M",
+      "valuation": "$1.1B (unicorn status, 2021)",
+      "key_investors": ["General Catalyst", "Drive Capital", "F-Prime Capital", "Premji Invest"],
+      "context": "Reached unicorn status in 2021. One of the higher-valued platforms despite 2.3/5 compensation rating."
+    },
+    "notes": "Colorado-based mental health platform with emphasis on measurement-based care and VA partnership. Tech-founded, not clinician-led. Valued at $1.1B despite compensation concerns."
+  },
   "created_at": "2026-08-22T21:10:17.311Z",
-  "updated_at": "2026-08-22T21:10:17.311Z",
+  "updated_at": "2026-08-29T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

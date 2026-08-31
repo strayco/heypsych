@@ -5,20 +5,23 @@
   "slug": "headway",
   "name": "Headway",
   "company_name": "Headway, Inc.",
-  "one_liner": "Nation's largest mental health provider network (70,000+ therapists) with free credentialing and clawback protection.",
+  "one_liner": "Nation's largest mental health provider network (70,000+ therapists). Clinicians reportedly keep ~90-95% (Headway takes ~5-10%). Free credentialing + clawback protection.",
   "short_description": "Headway is a free insurance credentialing platform for mental health providers with the largest network of 70,000+ therapists and protection from billing clawbacks.",
   "long_description": "Headway is the nation's largest mental health provider network, connecting over 70,000 therapists with patients who have insurance coverage. The platform is completely free for providers to join—no setup fees, no monthly membership, and no subscription charges. Headway handles insurance credentialing (often in 2-4 weeks vs. 90-120 days solo), claims submission, and payments. Providers are paid on the 15th and last day of each month. A key differentiator: Headway promises consistent payments for care delivered and protects providers from clawbacks even if a claim is denied, charge is disputed, or client doesn't pay. Insurance partners include UnitedHealthcare, Aetna, Cigna, Anthem, Oxford, and Oscar (availability varies by state). For patients, therapy visits typically cost just their copay ($20-40), making in-network mental health care more accessible.",
   "best_for": [
     "Therapists wanting free insurance credentialing (no membership fees)",
     "Providers who want protection from billing clawbacks",
-    "Clinicians joining the largest in-network mental health network",
-    "Solo practitioners and small group practices"
+    "Clinicians joining the largest in-network mental health network (70,000+ providers)",
+    "Solo practitioners wanting turnkey insurance billing without administrative burden",
+    "Therapists in states with strong Headway payer contracts"
   ],
   "not_for": [
-    "Providers wanting higher reimbursement rates (Alma may negotiate higher)",
-    "Clinicians needing EHR/practice management features",
-    "Those wanting weekly payments (Headway pays bi-weekly)",
-    "Psychiatrists needing e-prescribing tools"
+    "Clinicians building their own independent practice (credentials stay with Headway)",
+    "Providers wanting full transparency on rate negotiations",
+    "Those affected by late 2024 Optum rate cuts (up to 30% in some markets)",
+    "Therapists wanting weekly payments (Headway pays bi-weekly on 15th and last day)",
+    "Psychiatrists needing e-prescribing tools (not offered)",
+    "Clinicians who may leave and need portable credentials"
   ],
   "import_ref": {
     "record_id": "PN-0008",
@@ -163,25 +166,122 @@
     "clawback_protection": "Providers protected even if claims denied, charges disputed, or clients don't pay",
     "rate_negotiation": "Headway negotiates rates with insurers on behalf of providers"
   },
+  "reimbursement_rates": {
+    "average_hourly": "$107/hour (self-reported average across providers)",
+    "range": "$70-150/session depending on credentials, CPT codes, payer, and location",
+    "lcsw_typical": "$80-110/session for 90837 (53+ min psychotherapy)",
+    "psychologist_typical": "$100-140/session",
+    "optum_note": "Late 2024 Optum rate cuts reduced reimbursements up to 30% in some markets",
+    "rate_transparency": "Providers do not always see Headway's negotiated rates vs. what they receive"
+  },
+  "fee_split": {
+    "estimated_clinician_share": "90-95%",
+    "estimated_headway_share": "5-10%",
+    "source": "Psychiatrist self-report (Reddit 2025): Headway receives ~5-10% more from insurers than they pay providers",
+    "comparison_note": "When this psychiatrist contracted directly, insurers offered 10-15% LOWER rates than Headway—suggesting Headway's group negotiating power benefits providers",
+    "context": "This is dramatically better than platforms like LifeStance (62% to clinician) or typical revenue-share platforms"
+  },
+  "fairness_rating": {
+    "overall_score": 54,
+    "grade": "C",
+    "breakdown": {
+      "pay_fairness": {
+        "score": 70,
+        "weight": 30,
+        "notes": "~$107/hr average. Psychiatrist reports Headway takes only 5-10% (clinician gets 90-95%). Better than direct contracting in some cases."
+      },
+      "credential_portability": {
+        "score": 0,
+        "weight": 20,
+        "notes": "Credentials stay with Headway. Must re-credential if you leave (60-120 days)"
+      },
+      "compensation_transparency": {
+        "score": 45,
+        "weight": 15,
+        "notes": "Fee split not officially disclosed, but psychiatrist reports suggest ~5-10% Headway share (much lower than competitors)"
+      },
+      "rate_stability": {
+        "score": 30,
+        "weight": 15,
+        "notes": "Late 2024 Optum cuts reduced rates 20-30% in some markets"
+      },
+      "clinician_founded": {
+        "score": 0,
+        "weight": 10,
+        "notes": "Tech-founded by Andrew Adams (ex-Livongo)"
+      },
+      "payment_speed": {
+        "score": 50,
+        "weight": 5,
+        "notes": "Bi-weekly (15th and last day of month)"
+      },
+      "benefits_protections": {
+        "score": 85,
+        "weight": 5,
+        "notes": "Strong clawback protection—key differentiator"
+      }
+    },
+    "methodology": "HeyPsych Fairness Rating v1.0: Weighted score across pay fairness (30%), credential portability (20%), compensation transparency (15%), rate stability (15%), clinician-founded (10%), payment speed (5%), and benefits (5%). Scale: A (80-100), B (65-79), C (50-64), D (35-49), F (<35)."
+  },
+  "hidden_gotchas": {
+    "credential_portability": {
+      "issue": "Credentials belong to Headway, not you",
+      "impact": "If you leave Headway, you lose panel access and must re-credential from scratch (60-120 day gap)",
+      "mitigation": "Consider dual-credentialing independently if building long-term practice"
+    },
+    "rate_cuts": {
+      "issue": "Late 2024 Optum/UHC rate reductions",
+      "impact": "Some providers saw 20-30% rate cuts with little notice",
+      "context": "Platform providers have no direct say in contract negotiations"
+    },
+    "fee_transparency": {
+      "issue": "Headway says 'free' but takes a cut of reimbursements",
+      "reality": "Psychiatrist reports suggest Headway keeps ~5-10% (clinician gets 90-95%)—much better than originally estimated",
+      "surprising_finding": "One psychiatrist found insurers offered 10-15% LOWER rates when contracting directly vs. through Headway",
+      "comparison": "This is dramatically better than LifeStance (62% to clinician) but you don't get W-2 benefits"
+    },
+    "client_ownership": {
+      "issue": "Clients find you through Headway directory",
+      "impact": "Switching platforms means potentially losing client relationships",
+      "note": "Some clients follow therapists, but many use insurance directory searches"
+    },
+    "documentation": {
+      "issue": "Notes stored in Headway system",
+      "impact": "May need to export/migrate if leaving platform",
+      "recommendation": "Clarify data portability and export options before joining"
+    }
+  },
   "seo": {
     "title": "Headway: Free Insurance Credentialing for Therapists",
     "meta_description": "Headway is the largest mental health provider network (70,000+ therapists). Free credentialing, free to join, clawback protection. Aetna, Cigna, UHC, Anthem...",
     "faqs": [
       {
         "q": "Is Headway free for therapists?",
-        "a": "Yes, Headway is completely free for therapists to join with no setup fees, no monthly membership, and no subscription charges. Headway is compensated through a share of insurance reimbursements."
+        "a": "Headway has no upfront membership fees. A psychiatrist self-report suggests Headway keeps only ~5-10% of what insurers pay (clinician gets 90-95%). Surprisingly, when this psychiatrist tried contracting directly, insurers offered 10-15% LOWER rates than Headway's—suggesting Headway's negotiating power can benefit providers."
+      },
+      {
+        "q": "How much does Headway take from each session?",
+        "a": "Based on psychiatrist self-reports, Headway's cut is estimated at ~5-10% of insurance reimbursements. This is dramatically better than platforms like LifeStance (which keeps 38%, paying clinicians 62%). However, Headway is a platform, not a W-2 employer—you don't get benefits, malpractice coverage, or admin support."
       },
       {
         "q": "How fast is credentialing through Headway?",
-        "a": "Headway can credential providers with insurance companies in as little as 2-4 weeks, compared to 90-120 days when credentialing solo."
+        "a": "Headway can credential providers with insurance companies in 2-4 weeks, compared to 90-120 days when credentialing solo. However, credentials belong to Headway—if you leave, you must re-credential independently, creating a potential 60-120 day gap."
       },
       {
         "q": "What is Headway's clawback protection?",
-        "a": "Headway promises consistent payments for care delivered and protects providers from clawbacks—even if a claim is denied, a charge is disputed, or a client doesn't pay after a session."
+        "a": "Headway promises consistent payments for care delivered and protects providers from clawbacks—even if a claim is denied, a charge is disputed, or a client doesn't pay. This is a genuine differentiator from direct billing where clawbacks can hit months later."
+      },
+      {
+        "q": "What happened with Optum rates in 2024?",
+        "a": "In late 2024, Optum/UnitedHealthcare implemented rate cuts that reduced some provider reimbursements by 20-30%. Because Headway negotiates contracts on your behalf, providers had no direct say in these changes. This highlights a key tradeoff of platform-based credentialing."
+      },
+      {
+        "q": "What happens if I leave Headway?",
+        "a": "Your insurance credentials stay with Headway. You'd need to re-credential independently with each payer (60-120 day process). Some clients may follow you, but those who found you through insurance directories may not. Consider this lock-in effect before committing exclusively to any platform."
       },
       {
         "q": "How does Headway compare to Alma?",
-        "a": "Headway is free while Alma costs $125/month. Alma may negotiate slightly higher reimbursement rates and includes EHR/AI notes features. Headway pays bi-weekly while Alma pays weekly. Headway has 70,000+ providers—the largest network."
+        "a": "Headway has no monthly fee while Alma costs $125/month. Alma may negotiate slightly higher rates and includes EHR/AI notes. Both experienced 2024 Optum rate cuts. Headway pays bi-weekly; Alma pays weekly. Headway has 70,000+ providers (largest network). Neither gives you portable credentials."
       }
     ],
     "keywords": [
@@ -214,9 +314,46 @@
   "company_info": {
     "founded_year": 2019,
     "headquarters": "New York, New York, USA",
-    "employee_count": "500+",
-    "funding_status": "Venture-backed",
-    "notes": "Headway is the largest mental health provider network in the US with 70,000+ credentialed therapists."
+    "employee_count": "4,200+",
+    "funding_status": "Venture-backed (Series D)",
+    "clinician_founded": false,
+    "founders": [
+      {
+        "name": "Andrew Adams",
+        "title": "CEO & Co-Founder",
+        "background": "Aerospace engineer (NASA), former CEO of Portfolium (acquired by Instructure). Personal experience with mental healthcare access challenges drove him to found Headway.",
+        "is_clinician": false
+      },
+      {
+        "name": "Jake Sussman",
+        "title": "Co-Founder",
+        "background": "Left Headway in 2022 to become an elementary school teacher",
+        "is_clinician": false,
+        "status": "departed"
+      },
+      {
+        "name": "Dan Ross",
+        "title": "Co-Founder & Head of Operations",
+        "background": "Left in 2021 to join Benepass",
+        "is_clinician": false,
+        "status": "departed"
+      },
+      {
+        "name": "Kevin Chan",
+        "title": "Co-Founder & Head of Engineering",
+        "background": "Left in 2021 to start Mayfair (fintech)",
+        "is_clinician": false,
+        "status": "departed"
+      }
+    ],
+    "funding": {
+      "total_raised": "$321M",
+      "latest_round": "Series D",
+      "valuation": "$1B+ (unicorn status)",
+      "key_investors": ["Spark Capital", "Accel", "Andreessen Horowitz (a16z)", "GV (Google Ventures)", "Thrive Capital"],
+      "context": "At $1B+ valuation with 70,000+ providers, valued at ~$14,000 per provider. Has served 1 million+ patients across all 50 states."
+    },
+    "notes": "Headway is the largest mental health provider network in the US with 70,000+ credentialed therapists. Founded by 4 co-founders (3 have since departed). Tech-founded, not clinician-led. Andrew Adams' personal struggles finding affordable therapy drove the company's mission."
   },
   "created_at": "2026-08-22T21:10:17.307Z",
   "updated_at": "2026-08-23T00:00:00.000Z",

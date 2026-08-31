@@ -1,6 +1,7 @@
 // src/components/resource-renderers/sections/PricingSection.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, Gift, Info } from "lucide-react";
 
@@ -37,7 +38,7 @@ export function PricingSection({
       </CardHeader>
       <CardContent className="space-y-6">
         {text && (
-          <p className="text-sm text-label-primary">{text}</p>
+          <p className="text-sm text-label-primary"><ParsedContent content={text} /></p>
         )}
 
         {/* Pricing Plans */}
@@ -62,7 +63,7 @@ export function PricingSection({
                   <p className="text-2xl font-bold text-accent">{plan.price}</p>
                 </div>
                 {plan.best_for && (
-                  <p className="mb-2 text-sm text-label-primary">{plan.best_for}</p>
+                  <p className="mb-2 text-sm text-label-primary"><ParsedContent content={plan.best_for} /></p>
                 )}
                 {plan.annual_cost && (
                   <p className="text-xs text-label-primary0">
@@ -84,7 +85,7 @@ export function PricingSection({
             <ul className="space-y-1">
               {free_features.map((feature, i) => (
                 <li key={i} className="text-sm text-green-800">
-                  • {feature}
+                  • <ParsedContent content={feature} />
                 </li>
               ))}
             </ul>
@@ -98,7 +99,7 @@ export function PricingSection({
             <ul className="space-y-1">
               {discounts.map((discount, i) => (
                 <li key={i} className="text-sm text-label-primary">
-                  • {discount}
+                  • <ParsedContent content={discount} />
                 </li>
               ))}
             </ul>
@@ -112,7 +113,7 @@ export function PricingSection({
               <Info className="h-4 w-4 text-accent-700" />
               <h5 className="text-sm font-semibold text-accent-700">Insurance</h5>
             </div>
-            <p className="text-sm text-accent-700">{insurance}</p>
+            <p className="text-sm text-accent-700"><ParsedContent content={insurance} /></p>
           </div>
         )}
       </CardContent>

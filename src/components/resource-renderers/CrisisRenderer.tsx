@@ -1,6 +1,7 @@
 // src/components/resource-renderers/CrisisRenderer.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Phone, MessageCircle, Clock, MapPin } from "lucide-react";
 import { SEOMeta, SectionList, AutoFields } from "./shared";
@@ -52,14 +53,14 @@ export function CrisisRenderer({ resource }: ResourceRendererProps) {
           {data.hours && (
             <div className="flex items-center gap-2 text-negative">
               <Clock className="h-4 w-4" />
-              <span>{data.hours}</span>
+              <span><ParsedContent content={data.hours} /></span>
             </div>
           )}
 
           {data.coverage_area && (
             <div className="flex items-center gap-2 text-negative">
               <MapPin className="h-4 w-4" />
-              <span>{data.coverage_area}</span>
+              <span><ParsedContent content={data.coverage_area} /></span>
             </div>
           )}
         </CardContent>

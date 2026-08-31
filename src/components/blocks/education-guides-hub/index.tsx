@@ -19,6 +19,7 @@ import {
   Clock,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Entity } from "@/lib/types/database";
@@ -279,7 +280,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
 
                               {resource.description && (
                                 <p className="mb-3 ml-12 text-sm text-label-tertiary">
-                                  {resource.description}
+                                  <ParsedContent content={resource.description} />
                                 </p>
                               )}
 

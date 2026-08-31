@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Phone, MessageSquare, Globe } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Resource } from "@/lib/types/support-community";
@@ -38,7 +39,7 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
             {resource.organization && (
               <p className="mb-2 text-sm text-label-primary">{resource.organization}</p>
             )}
-            <p className="text-sm text-label-primary">{resource.description}</p>
+            <p className="text-sm text-label-primary"><ParsedContent content={resource.description} /></p>
           </div>
 
           <div className="mb-4 flex flex-wrap gap-2">
@@ -108,7 +109,7 @@ export function ResourceCard({ resource, variant = "default" }: Props) {
           </div>
         </div>
 
-        <p className="mb-3 text-sm text-label-primary">{resource.description}</p>
+        <p className="mb-3 text-sm text-label-primary"><ParsedContent content={resource.description} /></p>
 
         <div className="mb-3 flex flex-wrap gap-2">
           {resource.cost.includes("free") && (

@@ -33,9 +33,13 @@ export {
 // Overlap Engine
 export {
   analyzeOverlaps,
+  analyzeProductPairOverlaps,
   countOverlapsByClass,
   getOverlapsForProduct,
+  getProductPairOverlapsForProduct,
   getOverlapForCapability,
+  hasRedundancyConcerns,
+  getOverlapSummary,
 } from "./overlap-engine";
 
 // Compatibility Engine
@@ -64,3 +68,13 @@ export {
   compareHealthImpact,
   type HealthEngineInput,
 } from "./health-engine";
+
+// Recommendation Engine
+export {
+  generateRecommendation,
+  shouldRegenerateRecommendation,
+  getRecommendationSummary,
+  type RecommendationInput,
+  type RecommendedProduct,
+  type StackRecommendation,
+} from "./recommendation-engine";

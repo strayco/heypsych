@@ -2,8 +2,13 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional } from "@/lib/config/database";
 import { normalizeResource } from "@/lib/data/resource-normalizer";
+
+// Helper to get supabase client - returns null if unavailable
+function getDb() {
+  return supabaseOptional();
+}
 
 type EntityRow = {
   content: unknown;
@@ -33,8 +38,11 @@ export function useResource(slug: string) {
     enabled: !!slug,
     staleTime: 5 * 60 * 1000,
     queryFn: async () => {
+      const db = getDb();
+      if (!db) return null;
+
       try {
-        const { data, error } = await supabase
+        const { data, error } = await db
           .from("entities")
           .select("content, slug, status, metadata")
           .eq("type", "resource")

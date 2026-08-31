@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Entity } from "@/lib/types/database";
@@ -298,7 +299,7 @@ export function TreatmentCard({
 
             {/* Show description if available */}
             {getDescription() && variant !== "compact" && (
-              <p className="mt-2 line-clamp-2 text-sm text-label-secondary">{getDescription()}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-label-secondary"><ParsedContent content={getDescription() || ""} /></p>
             )}
           </div>
           <Badge variant={getBadgeVariant() as any} size="sm" className="ml-3 shrink-0">

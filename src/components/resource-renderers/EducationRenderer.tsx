@@ -1,6 +1,7 @@
 // src/components/resource-renderers/EducationRenderer.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Download, ExternalLink } from "lucide-react";
@@ -27,7 +28,7 @@ export function EducationRenderer({ resource }: ResourceRendererProps) {
               <h4 className="mb-2 font-semibold text-label-primary">Learning Objectives</h4>
               <ul className="list-inside list-disc space-y-1 text-sm text-label-secondary">
                 {data.learning_objectives.map((objective: string, i: number) => (
-                  <li key={i}>{objective}</li>
+                  <li key={i}><ParsedContent content={objective} /></li>
                 ))}
               </ul>
             </div>

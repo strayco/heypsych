@@ -6,7 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/config/database';
+import { supabaseOptional } from '@/lib/config/database';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
 import { getAllTreatmentSlugs, loadTreatment } from '@/lib/comparison/treatment-loader';
@@ -23,8 +23,13 @@ export const revalidate = 86400; // Revalidate daily
 
 export async function GET() {
   try {
+    const db = supabaseOptional();
+    if (!db) {
+      return new NextResponse('Database unavailable', { status: 503 });
+    }
+
     // Fetch all treatment-related entities
-    const { data: treatments } = await supabase
+    const { data: treatments } = await db
       .from('entities')
       .select('*')
       .in('type', [

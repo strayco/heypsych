@@ -27,20 +27,29 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   // Billing/RCM Capabilities → REVENUE
   // ============================================================================
   "claims-submission": ["claims-submission"],
+  "electronic-claims": ["claims-submission"],
+  "claim-scrubbing": ["claims-submission", "denial-management"],
   "eligibility-verification": ["eligibility-verification"],
   "prior-authorization": ["eligibility-verification"],
   "payment-processing": ["patient-payments"],
+  "online-patient-payments": ["patient-payments"],
   "denial-management": ["denial-management"],
+  "ar-management": ["denial-management"],
   "coding-assistance": ["coding"],
+  "clearinghouse-integration": ["clearinghouse"],
+  "era-posting": ["billing-rcm"],
+  "batch-claims": ["claims-submission"],
 
   // ============================================================================
   // Telehealth Capabilities → CARE / ENGAGE
   // ============================================================================
   "video-sessions": ["telehealth"],
+  "video-conferencing": ["telehealth"],
   "secure-messaging": ["secure-messaging"],
   "async-video": ["telehealth"],
   "mobile-app": ["patient-portal"],
   "waiting-room": ["telehealth"],
+  "virtual-waiting-room": ["telehealth"],
 
   // ============================================================================
   // AI Capabilities → CARE
@@ -55,10 +64,15 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   // Measurement/Outcomes → CARE
   // ============================================================================
   "outcome-tracking": ["assessments-mbc"],
+  "outcomes-tracking": ["assessments-mbc"],
+  "measurement-based-care": ["assessments-mbc"],
   "phq9-gad7": ["assessments-mbc"],
+  "phq-9": ["assessments-mbc"],
+  "gad-7": ["assessments-mbc"],
   "patient-surveys": ["assessments-mbc"],
   "outcome-measures": ["assessments-mbc"],
   "custom-assessments": ["assessments-mbc"],
+  "automated-assessments": ["assessments-mbc"],
   "progress-monitoring": ["assessments-mbc"],
   "reporting-dashboards": ["analytics-bi"],
 
@@ -82,15 +96,19 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   "audit-logging": ["compliance-security"],
   "consent-management": ["compliance-security", "forms-e-signature"],
   "sso-authentication": ["compliance-security"],
+  "primary-source-verification": ["compliance-security", "credentialing-payer-enrollment"],
 
   // ============================================================================
   // Patient Engagement → ENGAGE / ACCESS
   // ============================================================================
   "patient-reminders": ["appointment-reminders"],
   "patient-communication": ["secure-messaging"],
+  "patient-engagement": ["patient-portal", "secure-messaging"],
   "intake-forms": ["intake", "forms-e-signature"],
   "online-booking": ["scheduling"],
   "calendar-sync": ["scheduling"],
+  "scheduling": ["scheduling"],
+  "low-bandwidth-optimized": ["telehealth"],
 
   // ============================================================================
   // Analytics → OPERATE
@@ -104,12 +122,18 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   // ============================================================================
   "credentialing": ["credentialing-payer-enrollment"],
   "payer-enrollment": ["credentialing-payer-enrollment"],
+  "license-verification": ["credentialing-payer-enrollment"],
+  "board-certification-tracking": ["credentialing-payer-enrollment"],
+  "attestation-management": ["credentialing-payer-enrollment"],
+  "provider-data-management": ["credentialing-payer-enrollment"],
+  "cvo-services": ["credentialing-payer-enrollment"],
 
   // ============================================================================
-  // Care Coordination → CARE
+  // Care Coordination → CARE / GROW
   // ============================================================================
   "care-coordination": ["care-coordination"],
-  "referral-tracking": ["referrals-transitions"],
+  "referral-tracking": ["referrals-transitions", "referral-management"],
+  "patient-referrals": ["referral-management"],
   "care-team-collaboration": ["care-coordination"],
 
   // ============================================================================

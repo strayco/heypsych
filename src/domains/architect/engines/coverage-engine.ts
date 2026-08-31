@@ -61,7 +61,8 @@ function calculateCapabilityCoverage(
 
   // Check each selected product
   for (const selected of stack.selectedProducts) {
-    if (selected.isDemo) continue; // Skip demo products
+    // Skip demo products only when NOT in demo mode
+    if (!stack.isDemoMode && selected.isDemo) continue;
 
     const metadata = metadataMap.get(selected.slug);
     if (!metadata) {
@@ -97,7 +98,10 @@ function calculateCapabilityCoverage(
 
   // Determine coverage status
   let status: CoverageStatus;
-  if (bestValue === 0 && stack.selectedProducts.filter((p) => !p.isDemo).length === 0) {
+  const activeProducts = stack.isDemoMode
+    ? stack.selectedProducts
+    : stack.selectedProducts.filter((p) => !p.isDemo);
+  if (bestValue === 0 && activeProducts.length === 0) {
     status = "missing"; // Empty stack
   } else if (bestValue === 0 && hasUnknownProduct) {
     status = "unknown"; // Has products but no confirmed coverage

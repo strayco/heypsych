@@ -22,6 +22,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Entity } from "@/lib/types/database";
@@ -303,9 +304,9 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
 
               {/* Description */}
               <p className="mb-4 line-clamp-3 text-sm text-label-tertiary">
-                {resource.description ||
+                <ParsedContent content={resource.description ||
                   data?.summary ||
-                  "Read more to discover insights on mental health and wellness."}
+                  "Read more to discover insights on mental health and wellness."} />
               </p>
 
               {/* Topics */}

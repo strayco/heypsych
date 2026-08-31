@@ -10,6 +10,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { checkRateLimit, leadCaptureRateLimit } from "@/lib/rate-limit";
+import { supabaseServiceRole, supabaseOptional } from "@/lib/config/database";
 
 // ============================================================================
 // VALIDATION
@@ -124,27 +125,36 @@ export async function POST(request: NextRequest) {
     const tier = getLeadTier(score);
 
     // Store in database (Supabase)
-    // For now, log and return success - actual Supabase integration handled by existing patterns
-    console.log("[Lead Capture]", {
+    // Use service role to bypass RLS, fall back to anon client
+    const db = supabaseServiceRole() || supabaseOptional();
+
+    if (!db) {
+      console.error("[Lead Capture] No database connection available");
+      return NextResponse.json(
+        { success: false, error: "Service temporarily unavailable. Please try again." },
+        { status: 503 }
+      );
+    }
+
+    const { error: dbError } = await db.from("leads").insert({
+      email: lead.email,
       intent: lead.intent,
+      product_slugs: lead.productSlugs || null,
+      category_slug: lead.categorySlug || null,
+      switching_from: lead.switchingFrom || null,
+      source_path: lead.source || null,
+      referrer: lead.referrer || null,
       score,
       tier,
-      timestamp: new Date().toISOString(),
     });
 
-    // TODO: Actual Supabase insert using existing client patterns
-    // const { error } = await supabase.from("leads").insert({
-    //   email: lead.email,
-    //   intent: lead.intent,
-    //   product_slugs: lead.productSlugs,
-    //   category_slug: lead.categorySlug,
-    //   switching_from: lead.switchingFrom,
-    //   source_path: lead.source,
-    //   referrer: lead.referrer,
-    //   score,
-    //   tier,
-    //   created_at: new Date().toISOString(),
-    // });
+    if (dbError) {
+      console.error("[Lead Capture] Database error:", dbError.message);
+      return NextResponse.json(
+        { success: false, error: "Failed to save your information. Please try again." },
+        { status: 500 }
+      );
+    }
 
     // Trigger appropriate follow-up based on intent
     if (lead.intent === "demo-request") {

@@ -1,6 +1,7 @@
 // src/components/resource-renderers/sections/PlatformComparisonSection.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Smartphone, Monitor, Star, ExternalLink } from "lucide-react";
@@ -53,7 +54,7 @@ export function PlatformComparisonSection({
                   </Badge>
                 )}
               </div>
-              <p className="mb-3 text-sm text-label-primary">{platform.features}</p>
+              <p className="mb-3 text-sm text-label-primary"><ParsedContent content={platform.features} /></p>
               {(platform.download || platform.url) && (
                 <a
                   href={platform.download || platform.url}

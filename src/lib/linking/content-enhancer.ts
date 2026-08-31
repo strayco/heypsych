@@ -81,6 +81,27 @@ const PROSE_FIELDS: Record<string, EntityType[]> = {
 };
 
 /**
+ * Fields that are arrays of objects requiring special processing
+ * These cannot be handled by simple path-based field processing
+ */
+const ARRAY_OBJECT_FIELDS = {
+  // comparisons[].condition_b should link to conditions
+  // comparisons[].explanation is prose that may contain condition/treatment names
+  'data.comparisons': {
+    fields: {
+      condition_b: { types: ['condition'] as EntityType[], isProse: false },
+      explanation: { types: ['condition', 'treatment'] as EntityType[], isProse: true },
+    }
+  },
+  // faqs[].answer is prose that may contain condition/treatment names
+  'data.faqs': {
+    fields: {
+      answer: { types: ['condition', 'treatment'] as EntityType[], isProse: true },
+    }
+  },
+};
+
+/**
  * Extract value from nested object path
  */
 function getNestedValue(obj: any, path: string): any {
@@ -406,6 +427,42 @@ async function processSectionsArray(sections: any[]): Promise<any[]> {
 }
 
 /**
+ * Process array-of-objects fields like comparisons and FAQs
+ * Handles nested fields that need different processing (entity names vs prose)
+ */
+async function processArrayObjectFields(
+  items: any[],
+  fieldConfig: { fields: Record<string, { types: EntityType[]; isProse: boolean }> }
+): Promise<any[]> {
+  if (!Array.isArray(items)) return items;
+
+  const processed = await Promise.all(
+    items.map(async (item) => {
+      if (!item || typeof item !== 'object') return item;
+
+      const processedItem = { ...item };
+
+      // Process each configured field in the item
+      for (const [fieldName, config] of Object.entries(fieldConfig.fields)) {
+        const value = item[fieldName];
+        if (!value || typeof value !== 'string') continue;
+
+        try {
+          processedItem[fieldName] = await enhanceTextField(value, config.types, config.isProse);
+        } catch (error) {
+          // Keep original value on error
+          console.error(`Failed to enhance ${fieldName}:`, error);
+        }
+      }
+
+      return processedItem;
+    })
+  );
+
+  return processed;
+}
+
+/**
  * Validate tags and create pre-validated tag objects
  * Returns array of validated tags with entity info for rendering
  *
@@ -494,6 +551,20 @@ export async function enhanceEntityContent(entity: Entity): Promise<Entity> {
       enhanced.data.sections = await processSectionsArray(entity.data.sections);
     } catch (error) {
       console.error(`Failed to process sections array:`, error);
+    }
+  }
+
+  // SPECIAL CASE: Process array-of-objects fields (comparisons, FAQs)
+  // These have nested fields that need different processing strategies
+  for (const [fieldPath, config] of Object.entries(ARRAY_OBJECT_FIELDS)) {
+    const value = getNestedValue(entity, fieldPath);
+    if (value && Array.isArray(value)) {
+      try {
+        const enhancedArray = await processArrayObjectFields(value, config);
+        setNestedValue(enhanced, fieldPath, enhancedArray);
+      } catch (error) {
+        console.error(`Failed to process array-object field ${fieldPath}:`, error);
+      }
     }
   }
 

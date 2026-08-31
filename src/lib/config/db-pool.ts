@@ -38,8 +38,9 @@ async function initializePool(): Promise<Pool> {
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 20000,
     // SSL required for Supabase connections
+    // Enable certificate verification for production security
     ssl: {
-      rejectUnauthorized: false
+      rejectUnauthorized: process.env.NODE_ENV === 'production'
     },
   });
 

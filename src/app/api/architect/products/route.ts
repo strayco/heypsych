@@ -7,10 +7,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { ArchitectProductService, type ArchitectProductDisplay } from "@/domains/architect/services";
 import type { ProductArchitectureMetadata } from "@/domains/architect/schemas";
+import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 
 // Maximum products per request to prevent payload bloat
 const MAX_LIMIT = 100;
 const DEFAULT_LIMIT = 50;
+
+// In development, clear caches on each request to ensure fresh data
+// This prevents stale data when editing tool files or allowlists
+const isDev = process.env.NODE_ENV === "development";
 
 export interface ArchitectProductsResponse {
   products: Array<{
@@ -25,6 +30,12 @@ export interface ArchitectProductsResponse {
 
 export async function GET(request: NextRequest): Promise<NextResponse<ArchitectProductsResponse>> {
   try {
+    // In development, clear caches to ensure fresh data after file edits
+    if (isDev) {
+      ClinicianToolService.clearCache();
+      ArchitectProductService.clearCache();
+    }
+
     const searchParams = request.nextUrl.searchParams;
 
     // Parse and validate query parameters
@@ -69,11 +80,16 @@ export async function GET(request: NextRequest): Promise<NextResponse<ArchitectP
       hasMore: offset + products.length < total,
     });
 
-    // Cache for 5 minutes, stale-while-revalidate for 10 minutes
-    response.headers.set(
-      "Cache-Control",
-      "public, s-maxage=300, stale-while-revalidate=600"
-    );
+    // In production: Cache for 5 minutes, stale-while-revalidate for 10 minutes
+    // In development: No caching to ensure fresh data
+    if (isDev) {
+      response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+    } else {
+      response.headers.set(
+        "Cache-Control",
+        "public, s-maxage=300, stale-while-revalidate=600"
+      );
+    }
 
     return response;
   } catch (error) {

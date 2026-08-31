@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { TreatmentGrid } from "@/components/blocks/treatment-grid";
 import { Card, CardContent } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -103,7 +104,7 @@ export function TreatmentsClient({
           </div>
 
           <div className="mb-4 text-center">
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">{description}</p>
+            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary"><ParsedContent content={description} /></p>
 
             <div className="flex items-center justify-center gap-4 text-xs text-label-primary">
               <div className="flex items-center gap-1.5">

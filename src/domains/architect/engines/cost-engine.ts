@@ -27,6 +27,7 @@ type ProductCostResult = {
   isEstimate: boolean;
   requiresQuote: boolean;
   notes?: string;
+  priceDisplayText?: string; // Fallback display (e.g., "$49/provider/mo") when total can't be calculated
 };
 
 /**
@@ -45,8 +46,12 @@ function calculateProductCost(
       basis: "unknown",
       isEstimate: false,
       requiresQuote: false,
+      priceDisplayText: undefined,
     };
   }
+
+  // Capture the display text for fallback use (may be updated for percentage pricing)
+  let priceDisplayText = metadata.pricing.priceDisplayText;
 
   const pricing = metadata.pricing;
 
@@ -60,6 +65,7 @@ function calculateProductCost(
       isEstimate: false,
       requiresQuote: true,
       notes: pricing.notes,
+      priceDisplayText,
     };
   }
 
@@ -72,6 +78,7 @@ function calculateProductCost(
       basis: "free",
       isEstimate: false,
       requiresQuote: false,
+      priceDisplayText: "Free",
     };
   }
 
@@ -85,6 +92,7 @@ function calculateProductCost(
       isEstimate: true,
       requiresQuote: false,
       notes: "Free tier available; paid features additional",
+      priceDisplayText: priceDisplayText || "Free tier available",
     };
   }
 
@@ -98,35 +106,55 @@ function calculateProductCost(
   const notes: string[] = [];
 
   switch (pricing.basis) {
-    case "per-provider-month":
+    case "per-provider-month": {
+      const minPerProvider = pricing.minPriceCents ?? 0;
+      const maxPerProvider = pricing.maxPriceCents ?? minPerProvider;
       if (providerCount !== undefined) {
-        minMonthlyCents = (pricing.minPriceCents ?? 0) * providerCount;
-        maxMonthlyCents = pricing.maxPriceCents
-          ? pricing.maxPriceCents * providerCount
-          : minMonthlyCents;
+        minMonthlyCents = minPerProvider * providerCount;
+        maxMonthlyCents = maxPerProvider * providerCount;
         isEstimate = fingerprint.exactProviderCount === undefined;
-        if (isEstimate) {
-          notes.push("Based on estimated provider count");
-        }
+        notes.push(
+          isEstimate
+            ? `Scaled for ~${providerCount} providers`
+            : `Scaled for ${providerCount} provider${providerCount === 1 ? "" : "s"}`
+        );
       } else {
         notes.push("Requires provider count");
+        // Generate fallback display text for per-provider pricing
+        if (!priceDisplayText) {
+          priceDisplayText =
+            minPerProvider === maxPerProvider
+              ? formatCost(minPerProvider) + "/provider/mo"
+              : `${formatCost(minPerProvider)}–${formatCost(maxPerProvider)}/provider/mo`;
+        }
       }
       break;
+    }
 
-    case "per-provider-year":
+    case "per-provider-year": {
+      const minPerProviderYear = pricing.minPriceCents ?? 0;
+      const maxPerProviderYear = pricing.maxPriceCents ?? minPerProviderYear;
       if (providerCount !== undefined) {
-        minMonthlyCents = Math.round(((pricing.minPriceCents ?? 0) * providerCount) / 12);
-        maxMonthlyCents = pricing.maxPriceCents
-          ? Math.round((pricing.maxPriceCents * providerCount) / 12)
-          : minMonthlyCents;
+        minMonthlyCents = Math.round((minPerProviderYear * providerCount) / 12);
+        maxMonthlyCents = Math.round((maxPerProviderYear * providerCount) / 12);
         isEstimate = fingerprint.exactProviderCount === undefined;
-        if (isEstimate) {
-          notes.push("Based on estimated provider count");
-        }
+        notes.push(
+          isEstimate
+            ? `Scaled for ~${providerCount} providers (annual)`
+            : `Scaled for ${providerCount} provider${providerCount === 1 ? "" : "s"} (annual)`
+        );
       } else {
         notes.push("Requires provider count");
+        // Generate fallback display text for per-provider pricing
+        if (!priceDisplayText) {
+          priceDisplayText =
+            minPerProviderYear === maxPerProviderYear
+              ? formatCost(minPerProviderYear) + "/provider/yr"
+              : `${formatCost(minPerProviderYear)}–${formatCost(maxPerProviderYear)}/provider/yr`;
+        }
       }
       break;
+    }
 
     case "flat-monthly":
       minMonthlyCents = pricing.minPriceCents ?? 0;
@@ -189,18 +217,38 @@ function calculateProductCost(
       }
       break;
 
-    case "percentage-collections":
+    case "percentage-collections": {
+      // Pricing stores basis points: 300 = 3%, 600 = 6%
+      const minBasisPoints = pricing.minPriceCents ?? 0;
+      const maxBasisPoints = pricing.maxPriceCents ?? minBasisPoints;
+
+      // For calculation: convert to decimal rate (300 bp → 0.03)
+      const minDecimalRate = minBasisPoints / 10_000;
+      const maxDecimalRate = maxBasisPoints / 10_000;
+
+      // For display: convert to percentage (300 bp → 3%)
+      const minPct = minBasisPoints / 100;
+      const maxPct = maxBasisPoints / 100;
+
       if (fingerprint.monthlyCollections !== undefined) {
-        const minRate = (pricing.minPriceCents ?? 0) / 100; // Convert from basis points
-        const maxRate = (pricing.maxPriceCents ?? minRate * 100) / 100;
-        minMonthlyCents = Math.round(fingerprint.monthlyCollections * 100 * minRate);
-        maxMonthlyCents = Math.round(fingerprint.monthlyCollections * 100 * maxRate);
+        // monthlyCollections is in dollars, convert to cents and apply rate
+        minMonthlyCents = Math.round(fingerprint.monthlyCollections * 100 * minDecimalRate);
+        maxMonthlyCents = Math.round(fingerprint.monthlyCollections * 100 * maxDecimalRate);
         isEstimate = true;
-        notes.push("Based on percentage of collections");
+        notes.push(`${minPct}–${maxPct}% of $${fingerprint.monthlyCollections.toLocaleString()} collections`);
       } else {
-        notes.push("Requires monthly collections");
+        notes.push("Requires monthly collections estimate");
+      }
+
+      // Always generate display text for percentage-based pricing
+      if (!priceDisplayText) {
+        priceDisplayText =
+          minPct === maxPct
+            ? `${minPct}% of collections`
+            : `${minPct}–${maxPct}% of collections`;
       }
       break;
+    }
 
     default:
       basis = "unknown";
@@ -214,6 +262,7 @@ function calculateProductCost(
     isEstimate,
     requiresQuote: false,
     notes: notes.length > 0 ? notes.join("; ") : pricing.notes,
+    priceDisplayText,
   };
 }
 
@@ -239,7 +288,8 @@ export function calculateStackCost(
 
   // Calculate cost for each product
   for (const selected of stack.selectedProducts) {
-    if (selected.isDemo) continue;
+    // Skip demo products only when NOT in demo mode
+    if (!stack.isDemoMode && selected.isDemo) continue;
 
     const metadata = metadataMap.get(selected.slug);
     const cost = calculateProductCost(selected.slug, metadata, stack.fingerprint);

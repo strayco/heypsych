@@ -75,18 +75,18 @@ const CATEGORY_CORE_CAPABILITIES: Record<string, string[]> = {
     "intake", // Standard EHR feature - patient onboarding/intake
   ],
   "ai-scribe-documentation": ["ai-documentation-scribe", "clinical-documentation"],
-  "billing-rcm-insurance": [
-    "claims-submission",
-    "billing-rcm",
-    "denial-management",
-  ],
+  // IMPORTANT: billing-rcm-insurance is too broad - it includes:
+  // - Full RCM platforms (Waystar, Cedar) - have explicit capabilities
+  // - Payment processors (IvyPay, Stripe) - only do payment-processing
+  // - Clearinghouses - have clearinghouse capability
+  // - Denial management tools - have denial-management capability
+  // Don't blanket-map; rely on explicit V4 capabilities for proper mapping
+  "billing-rcm-insurance": [],
   "telehealth-communication": ["telehealth", "secure-messaging"],
-  // IMPORTANT: credentialing-workforce is too broad - it includes:
-  // - Payer credentialing (Medallion, CAQH) - these have capabilities set explicitly
-  // - Clinical supervision (Motivo) - should map to clinical-supervision
-  // - Continuing education (PESI, Relias) - no core capability needed
-  // Don't blanket-map to credentialing-payer-enrollment; rely on explicit capabilities
-  "credentialing-workforce": [],
+  // credentialing-workforce: Most tools here handle payer credentialing
+  "credentialing-workforce": ["credentialing-payer-enrollment"],
+  // clinical-supervision: Supervision platforms for clinicians
+  "clinical-supervision": ["clinical-supervision", "quality-assurance"],
   // Provider networks: NOT all have telehealth (e.g., Headway, Alma are credentialing platforms)
   // Telehealth is derived from feature_flags.has_telehealth instead
   "provider-network-virtual-care": [
@@ -95,11 +95,11 @@ const CATEGORY_CORE_CAPABILITIES: Record<string, string[]> = {
     "credentialing-payer-enrollment",
   ],
   "measurement-outcomes-dtx": ["assessments-mbc"],
+  // Digital therapeutics - FDA-cleared treatment delivery tools
+  "digital-therapeutics": ["assessments-mbc", "treatment-planning"],
   "ai-copilot-clinical": ["ai-documentation-scribe"],
-  // NOTE: clinical-decision-support category only has SimCare (training simulator)
-  // which doesn't fit ai-documentation-scribe or assessments-mbc.
-  // Real CDS tools help with diagnosis/treatment - clear until proper products added.
-  "clinical-decision-support": [],
+  // Clinical decision support tools help with diagnosis and treatment planning
+  "clinical-decision-support": ["treatment-planning"],
   "patient-engagement": ["patient-portal", "secure-messaging", "appointment-reminders"],
   "intake-scheduling-forms": ["intake", "scheduling", "forms-e-signature"],
   "prescribing-erx": ["prescribing-erx", "epcs"],
@@ -263,8 +263,10 @@ function inferStrength(
     }
   }
 
-  // Default to partial
-  return "partial";
+  // If a product explicitly has a V4 capability that maps to this architect capability,
+  // it's reasonable to assume at least "strong" strength (not "partial")
+  // Partial is reserved for capabilities the product barely touches
+  return "strong";
 }
 
 /**

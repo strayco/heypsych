@@ -1,6 +1,7 @@
 // src/components/resource-renderers/sections/GettingStartedSection.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Play, Lightbulb, AlertCircle } from "lucide-react";
 
 interface GettingStartedSectionProps {
@@ -32,10 +33,10 @@ export function GettingStartedSection({
             <ol className="space-y-3">
               {steps.map((step, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-accent-tint-hover text-sm font-bold text-accent-700">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-tint-hover text-sm font-bold text-accent-700">
                     {i + 1}
                   </span>
-                  <span className="pt-0.5 text-sm text-label-primary">{step}</span>
+                  <span className="pt-0.5 text-sm text-label-primary"><ParsedContent content={step} /></span>
                 </li>
               ))}
             </ol>
@@ -52,7 +53,7 @@ export function GettingStartedSection({
             <ul className="space-y-2">
               {tips.map((tip, i) => (
                 <li key={i} className="text-sm text-green-800">
-                  • {tip}
+                  • <ParsedContent content={tip} />
                 </li>
               ))}
             </ul>
@@ -69,7 +70,7 @@ export function GettingStartedSection({
             <ul className="space-y-2">
               {common_mistakes.map((mistake, i) => (
                 <li key={i} className="text-sm text-amber-800">
-                  • {mistake}
+                  • <ParsedContent content={mistake} />
                 </li>
               ))}
             </ul>

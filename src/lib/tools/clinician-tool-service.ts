@@ -166,6 +166,21 @@ const LAUNCH_ALLOWLIST = new Set([
   "youper",
   "zanda",
   "zoom-clinical-notes",
+  // Payment processing
+  "ivypay",
+  // E-prescribing
+  "drfirst-iprescribe",
+  // Malpractice insurance
+  "cph-associates",
+  "hpso",
+  "preferra-insurance",
+  "apa-insurance-trust",
+  "american-professional-agency",
+  "cmf-group",
+  "prms",
+  // Credentialing & payer enrollment (schema-compliant enriched tools)
+  "medallion-payer-enrollment",
+  "medallion-licensing",
 ]);
 
 /**

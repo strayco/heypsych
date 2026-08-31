@@ -18,6 +18,7 @@ import {
   Languages,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Entity } from "@/lib/types/database";
@@ -251,7 +252,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                           <div className="flex-1">
                             <CardTitle className="mb-2 text-lg">{resource.name}</CardTitle>
                             {resource.description && (
-                              <p className="text-sm text-label-tertiary">{resource.description}</p>
+                              <p className="text-sm text-label-tertiary"><ParsedContent content={resource.description} /></p>
                             )}
                           </div>
                         </div>

@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { EntityService } from "@/lib/data/entity-service";
-import { supabase } from "@/lib/config/database";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

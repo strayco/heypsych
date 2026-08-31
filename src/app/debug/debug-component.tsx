@@ -1,9 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional } from "@/lib/config/database";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// Helper to get supabase client - returns null if unavailable
+function getDb() {
+  return supabaseOptional();
+}
 
 export default function DebugComponent() {
   const [results, setResults] = useState<any>({});
@@ -33,7 +38,7 @@ export default function DebugComponent() {
       // Test 2: Basic Supabase Connection
       console.log("Testing basic connection...");
       try {
-        const { data, error, status, statusText } = await supabase
+        const { data, error, status, statusText } = await getDb()!
           .from("entities")
           .select("*")
           .limit(1);
@@ -64,7 +69,7 @@ export default function DebugComponent() {
 
       for (const tableName of tableTests) {
         try {
-          const { data, error } = await supabase
+          const { data, error } = await getDb()!
             .from(tableName as "entities" | "entity_schemas" | "collections")
             .select("count(*)")
             .limit(1);
@@ -84,7 +89,7 @@ export default function DebugComponent() {
       // Test 4: Check for specific data
       console.log("Testing for seeded data...");
       try {
-        const { data: entities, error: entitiesError } = await supabase
+        const { data: entities, error: entitiesError } = await getDb()!
           .from("entities")
           .select("*")
           .limit(5);
@@ -104,7 +109,7 @@ export default function DebugComponent() {
 
       // Test 5: Check schemas
       try {
-        const { data: schemas, error: schemasError } = await supabase
+        const { data: schemas, error: schemasError } = await getDb()!
           .from("entity_schemas")
           .select("*");
 
@@ -129,7 +134,7 @@ export default function DebugComponent() {
       // Test 6: Try the actual EntityService query that's failing
       console.log("Testing failing query...");
       try {
-        const { data, error } = await supabase
+        const { data, error } = await getDb()!
           .from("entities")
           .select(
             `

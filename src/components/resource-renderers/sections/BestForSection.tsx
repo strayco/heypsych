@@ -1,6 +1,7 @@
 // src/components/resource-renderers/sections/BestForSection.tsx
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { CheckCircle2, XCircle } from "lucide-react";
 
 interface BestForSectionProps {
@@ -28,15 +29,15 @@ export function BestForSection({
               <h4 className="font-semibold text-label-primary">Best For:</h4>
             </div>
             {text && (
-              <p className="mb-3 text-sm text-label-primary">{text}</p>
+              <p className="mb-3 text-sm text-label-primary"><ParsedContent content={text} /></p>
             )}
             <ul className="space-y-2">
               {items.map((item, i) => (
                 <li key={i} className="flex gap-3 text-sm">
-                  <span className="mt-1 flex-shrink-0">
+                  <span className="mt-1 shrink-0">
                     <CheckCircle2 className="h-4 w-4 text-green-600" />
                   </span>
-                  <span className="text-label-primary">{item}</span>
+                  <span className="text-label-primary"><ParsedContent content={item} /></span>
                 </li>
               ))}
             </ul>
@@ -53,10 +54,10 @@ export function BestForSection({
             <ul className="space-y-2">
               {not_recommended.map((item, i) => (
                 <li key={i} className="flex gap-3 text-sm">
-                  <span className="mt-1 flex-shrink-0">
+                  <span className="mt-1 shrink-0">
                     <XCircle className="h-4 w-4 text-negative" />
                   </span>
-                  <span className="text-negative-700">{item}</span>
+                  <span className="text-negative-700"><ParsedContent content={item} /></span>
                 </li>
               ))}
             </ul>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Phone, MessageSquare, Globe, Shield } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -71,7 +72,7 @@ export function CrisisCard({ hotline }: Props) {
           {hotline.org.name && hotline.org.name !== hotline.name && (
             <p className="mb-2 text-sm text-label-primary">{hotline.org.name}</p>
           )}
-          <p className="text-sm leading-relaxed text-label-primary">{hotline.summary}</p>
+          <p className="text-sm leading-relaxed text-label-primary"><ParsedContent content={hotline.summary} /></p>
         </div>
 
         {/* Details Bar */}

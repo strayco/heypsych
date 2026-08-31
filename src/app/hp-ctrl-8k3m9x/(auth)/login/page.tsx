@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Shield, Eye, EyeOff, Loader2 } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -117,12 +118,12 @@ export default function AdminLoginPage() {
 
         {/* Back to site link */}
         <p className="text-center mt-4">
-          <a
+          <Link
             href="/"
             className="text-sm text-label-secondary hover:text-label-primary"
           >
             ← Back to site
-          </a>
+          </Link>
         </p>
       </div>
     </div>

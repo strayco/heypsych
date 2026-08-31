@@ -62,6 +62,7 @@ export function Header() {
 
   return (
     <header
+      id="site-header"
       className={`
         sticky top-0 z-50 w-full transition-all duration-200
         ${isScrolled

@@ -190,6 +190,29 @@ export type Database = {
         Relationships: [];
       };
 
+      // General lead capture for various intents
+      leads: {
+        Row: {
+          id: string;
+          email: string;
+          intent: string;
+          product_slugs: string[] | null;
+          category_slug: string | null;
+          switching_from: string | null;
+          source_path: string | null;
+          referrer: string | null;
+          score: number;
+          tier: string;
+          created_at: string;
+        };
+        Insert: Omit<Database["public"]["Tables"]["leads"]["Row"], "id" | "created_at"> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["leads"]["Insert"]>;
+        Relationships: [];
+      };
+
       // Demo request leads for clinician tools
       demo_requests: {
         Row: {

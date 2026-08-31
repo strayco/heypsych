@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ResourceDetailClient } from "@/components/resources/ResourceDetailClient";
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional } from "@/lib/config/database";
 import { normalizeResource } from "@/lib/data/resource-normalizer";
 
 interface KnowledgeHubArticlePageProps {
@@ -21,8 +21,14 @@ export default async function KnowledgeHubArticlePage({ params }: KnowledgeHubAr
     notFound();
   }
 
+  // Get database client - may be null during build without credentials
+  const db = supabaseOptional();
+  if (!db) {
+    notFound();
+  }
+
   // Fetch resource data server-side to prevent client-side navigation issues
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from("entities")
     .select("content, slug, status, metadata")
     .eq("type", "resource")

@@ -1,7 +1,12 @@
 // src/lib/data/entity-service.ts - Server-only safe version
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import type { Entity, Collection, EntityType, SchemaName, EntityMetadata } from "@/lib/types/database";
 import { normalizeEntityContent, categoryToSchemaName } from "@/lib/data/entity-mappers";
+
+// Helper to get supabase client - returns null if unavailable (build without credentials)
+function getDb() {
+  return supabaseOptional();
+}
 
 // Only import fs modules on server side
 // Keep as null initially, will be loaded dynamically on server
@@ -360,8 +365,11 @@ export class EntityService {
       }
 
       // Use Supabase (build-time and client-safe) with retry for transient errors
+      const db = getDb();
+      if (!db) return null; // Build without credentials
+
       const data = await withRetry(async () => {
-        const result = await supabase
+        const result = await db
           .from("entities")
           .select("*")
           .eq("slug", slug)
@@ -422,7 +430,10 @@ export class EntityService {
       return cached.data;
     }
 
-    let query = supabase
+    const db = getDb();
+    if (!db) return [];
+
+    let query = db
       .from("entities")
       .select("*")
       .eq("type", filter.type)
@@ -456,8 +467,11 @@ export class EntityService {
       return legacyCache.resources!.data;
     }
 
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("type", entityType)
@@ -514,8 +528,11 @@ export class EntityService {
     }
 
     // Use Supabase (build-time and client-safe)
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("status", "active")
@@ -550,10 +567,13 @@ export class EntityService {
     }
 
     try {
+      const db = getDb();
+      if (!db) return [];
+
       // Exclude non-treatment types instead of listing all treatment types
       const excludedTypes = ["condition", "resource", "provider"];
 
-      const query = supabase
+      const query = db
         .from("entities")
         .select("*")
         .eq("status", "active")
@@ -609,8 +629,11 @@ export class EntityService {
   }
 
   static async getConditionsByCategory(category: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("type", "condition")
@@ -631,8 +654,11 @@ export class EntityService {
   }
 
   static async getConditionsByCategoryFlexible(category: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("type", "condition")
@@ -653,8 +679,11 @@ export class EntityService {
   }
 
   static async getByTypeAndCategory(entityType: EntityType, category: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("type", entityType)
@@ -675,8 +704,11 @@ export class EntityService {
   }
 
   static async getCategoriesByType(entityType: EntityType): Promise<string[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("metadata")
         .eq("type", entityType)
@@ -704,7 +736,10 @@ export class EntityService {
   }
 
   static async getCollections(collectionType?: string): Promise<Collection[]> {
-    let query = supabase.from("collections").select("*").order("name");
+    const db = supabaseOptional();
+    if (!db) return [];
+
+    let query = db.from("collections").select("*").order("name");
     if (collectionType) query = query.eq("collection_type", collectionType);
     const { data, error } = await query;
     if (error) return [];
@@ -713,6 +748,9 @@ export class EntityService {
 
   // FIXED: Include all treatment types
   static async getTreatmentsByCategory(category: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
       const treatmentTypes = [
         "medication",
@@ -724,7 +762,7 @@ export class EntityService {
         "investigational",
       ];
 
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .in("type", treatmentTypes)
@@ -746,6 +784,9 @@ export class EntityService {
 
   // FIXED: Include all treatment types
   static async searchTreatments(query: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
       const treatmentTypes = [
         "medication",
@@ -757,7 +798,7 @@ export class EntityService {
         "investigational",
       ];
 
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .in("type", treatmentTypes)
@@ -791,8 +832,11 @@ export class EntityService {
   }
 
   static async getByCollection(_collectionSlug: string): Promise<Entity[]> {
+    const db = getDb();
+    if (!db) return []; // Build without credentials
+
     try {
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from("entities")
         .select("*")
         .eq("status", "active")

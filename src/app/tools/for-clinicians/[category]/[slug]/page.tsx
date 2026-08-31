@@ -30,7 +30,11 @@ import {
 import {
   isComplianceConfirmedYes,
 } from "@/lib/schemas/tool-editorial";
-import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
+import {
+  SCHEMA_TO_TAXONOMY_CATEGORY,
+  getRoleLabel,
+  getSettingLabel,
+} from "@/lib/schemas/clinician-tool-v4";
 import clinicianCategoriesData from "../../../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { ProductDemoCTA } from "@/components/tools/clinician/ProductDemoCTA";
 import { cn } from "@/lib/utils";
@@ -352,7 +356,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
                             key={role}
                             className="rounded bg-treatment/10 px-2 py-0.5 text-xs text-treatment-700"
                           >
-                            {role}
+                            {getRoleLabel(role)}
                           </span>
                         ))}
                       </div>
@@ -369,7 +373,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
                             key={setting}
                             className="rounded bg-canvas px-2 py-0.5 text-xs text-label-secondary"
                           >
-                            {setting}
+                            {getSettingLabel(setting)}
                           </span>
                         ))}
                       </div>

@@ -27,12 +27,16 @@ type ArchitectEvent =
   | "architect_page_view"
   | "architect_mode_select"
   | "architect_demo_start"
-  // Fingerprint
+  // Fingerprint / Onboarding
   | "architect_fingerprint_start"
   | "architect_fingerprint_step_complete"
   | "architect_fingerprint_complete"
   | "architect_fingerprint_edit"
-  // Lifecycle navigation
+  // Practice Areas (new visual experience)
+  | "architect_area_view"
+  | "architect_item_view"
+  | "architect_item_action"
+  // Lifecycle navigation (legacy)
   | "architect_stage_view"
   | "architect_capability_view"
   // Stack management
@@ -45,6 +49,12 @@ type ArchitectEvent =
   | "architect_fit_score_view"
   | "architect_why_fits_open"
   | "architect_replacement_preview"
+  | "architect_product_drawer_open"
+  | "architect_product_drawer_close"
+  // Recommendations
+  | "architect_recommendation_shown"
+  | "architect_recommendation_accepted"
+  | "architect_recommendation_customized"
   // Gap analysis
   | "architect_gap_click"
   | "architect_overlap_review"
@@ -52,11 +62,21 @@ type ArchitectEvent =
   // Health & cost
   | "architect_health_view"
   | "architect_cost_view"
+  | "architect_advanced_toggle"
+  // Commercial funnel
+  | "architect_commercial_cta_shown"
+  | "architect_commercial_cta_click"
+  | "architect_demo_request"
+  | "architect_quote_request"
+  | "architect_vendor_visit"
   // Persistence
   | "architect_stack_save"
   | "architect_stack_load"
   | "architect_stack_export"
   | "architect_stack_import"
+  // Blueprint milestones
+  | "architect_blueprint_generated"
+  | "architect_blueprint_complete"
   // Session
   | "architect_session_complete"
   | "architect_help_click";
@@ -74,11 +94,19 @@ interface ArchitectEventProperties {
   practiceType?: string;
   sizeBucket?: string;
   deliveryModel?: string;
+  // Practice Areas (new visual experience)
+  areaId?: string;
+  itemId?: string;
+  itemAction?: "mark-complete" | "not-needed" | "add-later" | "open-drawer";
   // Stack
   productSlug?: string;
   productCategory?: string;
   previousProductSlug?: string;
   productCountBucket?: string;
+  // Recommendations
+  recommendationPosition?: number;
+  recommendationCount?: number;
+  recommendationType?: "primary" | "simpler" | "advanced" | "other";
   // Lifecycle
   stageId?: string;
   capabilityId?: string;
@@ -88,9 +116,16 @@ interface ArchitectEventProperties {
   gapCount?: number;
   overlapCount?: number;
   incompatibilityCount?: number;
+  coveragePercent?: number;
   // Cost (bucketed)
   costBucket?: string;
   isWithinBudget?: boolean;
+  // Commercial
+  ctaType?: "demo" | "quote" | "visit" | "credentialing";
+  isSponsored?: boolean;
+  // Blueprint
+  blueprintReadyPercent?: number;
+  productsCount?: number;
   // Persistence
   stackId?: string;
   // Session
@@ -155,7 +190,7 @@ function getProviderCountBucket(count: number): string {
 /**
  * Bucket fit/health scores (0-100)
  */
-function getScoreBucket(score: number): string {
+export function getScoreBucket(score: number): string {
   if (score >= 80) return "excellent-80-100";
   if (score >= 60) return "good-60-79";
   if (score >= 40) return "fair-40-59";
@@ -398,4 +433,159 @@ export function trackSessionComplete(
 
 export function trackHelpClick(source: string): void {
   trackArchitectEvent("architect_help_click", { source });
+}
+
+// ============================================================================
+// NEW VISUAL EXPERIENCE EVENTS
+// ============================================================================
+
+// Practice Areas
+
+export function trackAreaView(areaId: string): void {
+  trackArchitectEvent("architect_area_view", { areaId });
+}
+
+export function trackItemView(areaId: string, itemId: string): void {
+  trackArchitectEvent("architect_item_view", { areaId, itemId });
+}
+
+export function trackItemAction(
+  areaId: string,
+  itemId: string,
+  action: "mark-complete" | "not-needed" | "add-later" | "open-drawer"
+): void {
+  trackArchitectEvent("architect_item_action", { areaId, itemId, itemAction: action });
+}
+
+// Product Drawer
+
+export function trackProductDrawerOpen(
+  areaId: string,
+  itemId: string,
+  recommendationCount: number
+): void {
+  trackArchitectEvent("architect_product_drawer_open", {
+    areaId,
+    itemId,
+    recommendationCount,
+  });
+}
+
+export function trackProductDrawerClose(areaId: string, itemId: string): void {
+  trackArchitectEvent("architect_product_drawer_close", { areaId, itemId });
+}
+
+// Recommendations
+
+export function trackRecommendationShown(
+  productSlug: string,
+  position: number,
+  type: "primary" | "simpler" | "advanced" | "other",
+  fitScore: number
+): void {
+  trackArchitectEvent("architect_recommendation_shown", {
+    productSlug,
+    recommendationPosition: position,
+    recommendationType: type,
+    fitScoreBucket: getScoreBucket(fitScore),
+  });
+}
+
+export function trackRecommendationAccepted(
+  productSlug: string,
+  position: number,
+  count: number
+): void {
+  trackArchitectEvent("architect_recommendation_accepted", {
+    productSlug,
+    recommendationPosition: position,
+    recommendationCount: count,
+  });
+}
+
+export function trackRecommendationCustomized(): void {
+  trackArchitectEvent("architect_recommendation_customized");
+}
+
+// Advanced View
+
+export function trackAdvancedToggle(enabled: boolean): void {
+  trackArchitectEvent("architect_advanced_toggle", {
+    mode: enabled ? "build-for-me" : "build-myself",
+  });
+}
+
+// Commercial Funnel
+
+export function trackCommercialCtaShown(
+  productSlug: string,
+  ctaType: "demo" | "quote" | "visit" | "credentialing",
+  isSponsored: boolean
+): void {
+  trackArchitectEvent("architect_commercial_cta_shown", {
+    productSlug,
+    ctaType,
+    isSponsored,
+  });
+}
+
+export function trackCommercialCtaClick(
+  productSlug: string,
+  ctaType: "demo" | "quote" | "visit" | "credentialing",
+  isSponsored: boolean
+): void {
+  trackArchitectEvent("architect_commercial_cta_click", {
+    productSlug,
+    ctaType,
+    isSponsored,
+  });
+}
+
+export function trackDemoRequest(productSlug: string, isSponsored: boolean): void {
+  trackArchitectEvent("architect_demo_request", { productSlug, isSponsored });
+}
+
+export function trackQuoteRequest(productSlug: string, isSponsored: boolean): void {
+  trackArchitectEvent("architect_quote_request", { productSlug, isSponsored });
+}
+
+export function trackVendorVisit(productSlug: string, isSponsored: boolean): void {
+  trackArchitectEvent("architect_vendor_visit", { productSlug, isSponsored });
+}
+
+/**
+ * Track when user clicks to view internal HeyPsych product detail page
+ * This is different from vendor_visit which leaves HeyPsych for the vendor's site
+ */
+export function trackProductDetailView(productSlug: string, productCategory: string): void {
+  trackArchitectEvent("architect_fit_score_view", {
+    productSlug,
+    productCategory,
+  });
+}
+
+// Blueprint Milestones
+
+export function trackBlueprintGenerated(
+  practiceType: string,
+  sizeBucket: string,
+  recommendationCount: number
+): void {
+  trackArchitectEvent("architect_blueprint_generated", {
+    practiceType,
+    sizeBucket,
+    recommendationCount,
+  });
+}
+
+export function trackBlueprintComplete(
+  readyPercent: number,
+  productsCount: number,
+  costBucket: string
+): void {
+  trackArchitectEvent("architect_blueprint_complete", {
+    blueprintReadyPercent: Math.round(readyPercent),
+    productsCount,
+    costBucket,
+  });
 }

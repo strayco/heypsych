@@ -3,6 +3,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   ProviderPlatformService,
   PLATFORM_TYPES,
@@ -95,6 +96,7 @@ function PlatformCard({ platform }: { platform: ProviderPlatform }) {
 
 export default async function PlatformsPage() {
   const contractorPlatforms = await ProviderPlatformService.getTherapistContractorPlatforms();
+  const w2Platforms = await ProviderPlatformService.getByType("w2-employer");
   const dtcPlatforms = await ProviderPlatformService.getByType("dtc-provider");
   const b2bPlatforms = await ProviderPlatformService.getByType("b2b-employer");
 
@@ -112,17 +114,42 @@ export default async function PlatformsPage() {
         </p>
       </div>
 
-      {/* Important Disclaimer */}
-      <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-12">
-        <h2 className="font-semibold text-amber-900 mb-2">
-          Important: These are not independent practice
+      {/* How these platforms work */}
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+        <h2 className="font-semibold text-gray-900 mb-2">
+          How these platforms work
         </h2>
-        <p className="text-amber-800 text-sm">
+        <p className="text-gray-700 text-sm">
           With platforms like Headway, Grow, Alma, and Rula, you work as a contractor
-          using <strong>their</strong> insurance credentials. If you leave, those credentials
+          using their insurance credentials. If you leave, those credentials
           and client relationships typically stay with the platform. This is different
           from building your own independent practice with your own panels.
         </p>
+      </div>
+
+      {/* Practice Architect CTA */}
+      <div className="border-2 border-blue-200 bg-linear-to-br from-blue-50 to-indigo-50 rounded-lg p-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-1">
+              Want to build your own practice instead?
+            </p>
+            <h3 className="font-semibold text-gray-900 mb-1">
+              Practice Architect™
+            </h3>
+            <p className="text-gray-600 text-sm">
+              Get personalized recommendations for EHRs, billing, and telehealth tools
+              to build an independent practice where <strong>you</strong> own your credentials and client relationships.
+            </p>
+          </div>
+          <Link
+            href="/architect"
+            className="group flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700 whitespace-nowrap"
+          >
+            Build Your Practice
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
       </div>
 
       {/* Therapist Contractor Platforms */}
@@ -141,6 +168,25 @@ export default async function PlatformsPage() {
           ))}
         </div>
       </section>
+
+      {/* W2 Employer Platforms */}
+      {w2Platforms.length > 0 && (
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            W2 Employer Platforms
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Work as a W2 employee with benefits. Different tradeoff: stability and support,
+            but less autonomy and typically productivity-based compensation.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {w2Platforms.map((platform) => (
+              <PlatformCard key={platform.slug} platform={platform} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* DTC Platforms */}
       {dtcPlatforms.length > 0 && (

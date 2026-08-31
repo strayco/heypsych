@@ -6,7 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/config/database';
+import { supabaseOptional } from '@/lib/config/database';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
 
@@ -15,8 +15,13 @@ export const revalidate = 86400; // Revalidate daily
 
 export async function GET() {
   try {
+    const db = supabaseOptional();
+    if (!db) {
+      return new NextResponse('Database unavailable', { status: 503 });
+    }
+
     // Fetch all assessment resources
-    const { data: assessments, error } = await supabase
+    const { data: assessments, error } = await db
       .from('entities')
       .select('*')
       .eq('type', 'resource')

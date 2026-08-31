@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Link2, FlaskConical } from "lucide-react";
 
@@ -55,7 +56,7 @@ export function ConditionChips({ conditions }: ConditionChipsProps) {
                     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
                     .join(" ")}
                 </Link>
-                <div className="flex flex-shrink-0 gap-2">
+                <div className="flex shrink-0 gap-2">
                   <Badge
                     variant="outline"
                     className={relationshipColors[condition.relationship]}
@@ -71,7 +72,7 @@ export function ConditionChips({ conditions }: ConditionChipsProps) {
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-label-primary">{condition.context}</p>
+              <p className="text-sm text-label-primary"><ParsedContent content={condition.context} /></p>
             </div>
           ))}
         </div>

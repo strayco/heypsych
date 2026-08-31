@@ -103,23 +103,34 @@ export function StackHealthPanel({
           {healthResult.subscores.map((subscore) => (
             <div key={subscore.name} className="flex items-center gap-2">
               <span className="w-24 text-xs text-label-tertiary">{subscore.name}</span>
-              <div className="flex-1 h-1.5 rounded-full bg-surface">
-                <div
-                  className={`h-full rounded-full ${
-                    subscore.score >= 80
-                      ? "bg-success"
-                      : subscore.score >= 60
-                      ? "bg-accent"
-                      : subscore.score >= 40
-                      ? "bg-warning"
-                      : "bg-error"
-                  }`}
-                  style={{ width: `${subscore.score}%` }}
-                />
-              </div>
-              <span className="w-8 text-right text-xs font-medium text-label-secondary">
-                {subscore.score}
-              </span>
+              {subscore.score !== null ? (
+                <>
+                  <div className="flex-1 h-1.5 rounded-full bg-surface">
+                    <div
+                      className={`h-full rounded-full ${
+                        subscore.score >= 80
+                          ? "bg-success"
+                          : subscore.score >= 60
+                          ? "bg-accent"
+                          : subscore.score >= 40
+                          ? "bg-warning"
+                          : "bg-error"
+                      }`}
+                      style={{ width: `${subscore.score}%` }}
+                    />
+                  </div>
+                  <span className="w-8 text-right text-xs font-medium text-label-secondary">
+                    {subscore.score}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <div className="flex-1 h-1.5 rounded-full bg-surface opacity-50" />
+                  <span className="w-8 text-right text-xs text-label-tertiary">
+                    {subscore.isNotApplicable ? "N/A" : "—"}
+                  </span>
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -202,10 +213,22 @@ export function StackHealthPanel({
           </span>
         </div>
         {costResult.unknownPricingCount > 0 && (
-          <p className="mt-1 text-xs text-label-tertiary">
-            {costResult.unknownPricingCount} product
-            {costResult.unknownPricingCount === 1 ? "" : "s"} with usage-based or custom pricing
-          </p>
+          <div className="mt-2 space-y-1">
+            {costResult.productCosts
+              .filter((p) => p.minMonthlyCents === null && p.priceDisplayText)
+              .map((p) => (
+                <p key={p.slug} className="text-xs text-label-tertiary">
+                  + {p.priceDisplayText}
+                </p>
+              ))}
+            {costResult.productCosts.filter(
+              (p) => p.minMonthlyCents === null && !p.priceDisplayText
+            ).length > 0 && (
+              <p className="text-xs text-label-tertiary">
+                + {costResult.productCosts.filter((p) => p.minMonthlyCents === null && !p.priceDisplayText).length} with custom pricing
+              </p>
+            )}
+          </div>
         )}
       </div>
 

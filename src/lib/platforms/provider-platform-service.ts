@@ -92,6 +92,8 @@ export const KEY_COMPARISON_PLATFORMS = [
   "alma",
   "rula",
   "sondermind",
+  "lifestance-health",
+  "talkiatry",
   "thriveworks",
   "talkspace",
   "betterhelp",
@@ -109,6 +111,11 @@ export const PLATFORM_TYPES = {
     "rula",
     "sondermind",
     "thriveworks",
+  ],
+  // W2 employer platforms (employment, not contractor)
+  "w2-employer": [
+    "lifestance-health",
+    "talkiatry",
   ],
   // Direct-to-consumer with provider networks
   "dtc-provider": [

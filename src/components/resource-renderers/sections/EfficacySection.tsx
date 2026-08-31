@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ParsedContent } from '@/components/ui/parsed-content';
 import { Badge } from '@/components/ui/badge';
 import { TrendingUp, ExternalLink } from 'lucide-react';
 
@@ -61,13 +62,13 @@ export function EfficacySection({
             <h4 className="mb-2 text-sm font-semibold text-accent-700">
               In Plain Terms
             </h4>
-            <p className="text-sm text-accent-700">{patient_text}</p>
+            <p className="text-sm text-accent-700"><ParsedContent content={patient_text} /></p>
           </div>
         )}
 
         {/* Clinical Explanation */}
         <div className="text-sm text-label-primary">
-          {text}
+          <ParsedContent content={text} />
         </div>
 
         {/* Citation */}

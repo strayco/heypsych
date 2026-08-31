@@ -22,6 +22,7 @@ import {
   Users,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Entity } from "@/lib/types/database";
@@ -277,7 +278,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                         )}
 
                         {resource.description && (
-                          <p className="mt-2 text-sm text-label-tertiary">{resource.description}</p>
+                          <p className="mt-2 text-sm text-label-tertiary"><ParsedContent content={resource.description} /></p>
                         )}
                       </CardHeader>
                       <CardContent className="space-y-4">

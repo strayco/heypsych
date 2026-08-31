@@ -449,14 +449,14 @@ export function parseEntityNames(text: string): string[] {
 
   // SPECIAL CASE: Therapy names with abbreviations
   // "Cognitive Behavioral Therapy (CBT) — description"
-  // Extract BOTH the full name AND the abbreviation for better matching
-  const therapyNameMatch = contentToParse.match(/^([A-Z][a-z]+(?:\s+(?:and|&|or|for|with|Based|Focused)\s+)?(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*))\s*\(([A-Z-]+)\)\s*[—–-]/);
+  // Only extract the full name - the abbreviation is just an alternate name for the SAME entity
+  // Extracting abbreviations separately causes incorrect matching (e.g., "CBT" → "cbt-e" instead of "cognitive-behavioral-therapy")
+  const therapyNameMatch = contentToParse.match(/^([A-Z][a-z]+(?:\s+(?:and|&|or|for|with|Based|Focused)\s+)?(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*))\s*\([A-Z-]+\)\s*[—–-]/);
   if (therapyNameMatch) {
     const fullName = therapyNameMatch[1].trim();
-    const abbreviation = therapyNameMatch[2].trim();
-    // Add both full name and abbreviation for matching
+    // Only add the full name - DO NOT add the abbreviation separately
+    // The abbreviation (CBT) is just a parenthetical note, not a separate entity to link
     names.push(fullName);
-    names.push(abbreviation);
     return names; // Return early - this is a single therapy description
   }
   
@@ -842,7 +842,11 @@ export async function validateEntityExists(
   // Run first 3 strategies in parallel for better performance
   // Wrap in try-catch to prevent build crashes on timeout
   try {
-    const { supabase } = await import('@/lib/config/database');
+    const { supabaseOptional } = await import('@/lib/config/database');
+    const db = supabaseOptional();
+
+    // If database unavailable (build without credentials), skip DB-based strategies
+    const dbAvailable = !!db;
 
     const strategyPromises: Promise<Entity | null>[] = [
       // Strategy 1: Exact slug match
@@ -850,11 +854,11 @@ export async function validateEntityExists(
         entity => (entity && entity.type === type ? entity : null),
         () => null
       ).catch(() => null),
-    
+
     // Strategy 2: Slug starts with base slug (handles generic → brand combinations)
     // Example: "fluoxetine" → "fluoxetine-prozac"
-    Promise.resolve(
-      supabase
+    !dbAvailable ? Promise.resolve(null) : Promise.resolve(
+      db
         .from('entities')
         .select('slug')
         .eq('type', type)
@@ -874,11 +878,11 @@ export async function validateEntityExists(
           return null;
         })
     ),
-    
+
     // Strategy 2b: Slug ends with base slug (handles brand name lookups)
     // Example: "prozac" → "fluoxetine-prozac", "zoloft" → "sertraline-zoloft"
-    Promise.resolve(
-      supabase
+    !dbAvailable ? Promise.resolve(null) : Promise.resolve(
+      db
         .from('entities')
         .select('slug')
         .eq('type', type)
@@ -926,22 +930,21 @@ export async function validateEntityExists(
     
     // Strategy 3b: Check metadata abbreviations
     (async () => {
-      if (lowerName.length <= 10) {
-        const { data: abbrevMatches } = await supabase
-          .from('entities')
-          .select('slug')
-          .eq('type', type)
-          .eq('status', 'active')
-          .or(`content->abbreviation.ilike.${lowerName},metadata->abbreviation.ilike.${lowerName}`)
-          .limit(1);
-        
-        if (abbrevMatches && abbrevMatches.length > 0) {
-          try {
-            const entity = await EntityService.getBySlug(abbrevMatches[0].slug);
-            return entity || null;
-          } catch {
-            return null;
-          }
+      if (!dbAvailable || lowerName.length > 10) return null;
+      const { data: abbrevMatches } = await db
+        .from('entities')
+        .select('slug')
+        .eq('type', type)
+        .eq('status', 'active')
+        .or(`content->abbreviation.ilike.${lowerName},metadata->abbreviation.ilike.${lowerName}`)
+        .limit(1);
+
+      if (abbrevMatches && abbrevMatches.length > 0) {
+        try {
+          const entity = await EntityService.getBySlug(abbrevMatches[0].slug);
+          return entity || null;
+        } catch {
+          return null;
         }
       }
       return null;
@@ -962,7 +965,13 @@ export async function validateEntityExists(
   const normalizedInput = lowerName.replace(/-/g, '');
   const normalizedSlug = baseSlug.replace(/-/g, '');
 
-  const { data: normalizedMatches } = await supabase
+  // Skip DB-based strategies if database unavailable
+  if (!dbAvailable) {
+    validationCache.set(cacheKey, null);
+    return null;
+  }
+
+  const { data: normalizedMatches } = await db
     .from('entities')
     .select('slug, title')
     .eq('type', type)
@@ -987,7 +996,7 @@ export async function validateEntityExists(
 
   // Strategy 5: Name contains search term (word boundary aware)
   // Example: "cognitive behavioral" → "cognitive-behavioral-therapy"
-  const { data: nameMatches } = await supabase
+  const { data: nameMatches } = await db
     .from('entities')
     .select('slug, title')
     .eq('type', type)
@@ -1029,8 +1038,8 @@ export async function validateEntityExists(
     // This prevents linking generic words to random entities
   }
 
-  // Strategy 5: Check alternative_names array in content
-  const { data: altNameMatches } = await supabase
+  // Strategy 6: Check alternative_names array in content
+  const { data: altNameMatches } = await db
     .from('entities')
     .select('slug')
     .eq('type', type)

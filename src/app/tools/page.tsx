@@ -152,20 +152,23 @@ export default async function ToolsDirectoryPage() {
             </Link>
           </div>
 
-          {/* EHR Matcher CTA */}
+          {/* Practice Architect CTA */}
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-canvas p-4">
             <div>
-              <p className="font-medium text-label-primary">Find Your EHR Match</p>
+              <p className="font-medium text-label-primary">Build Your Practice Stack</p>
               <p className="text-sm text-label-secondary">
-                Answer 7 questions to find the best EHR for your practice
+                Get personalized recommendations with transparent fit scores
               </p>
             </div>
             <Link
-              href="/tools/for-clinicians/ehr-practice-management/match/"
-              className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
+              href="/architect"
+              className="group flex flex-col items-center rounded-lg bg-treatment px-5 py-2.5 transition-colors hover:bg-treatment-600"
             >
-              <span className="text-white">Start Matching</span>
-              <ArrowRight className="h-4 w-4 text-white transition-transform group-hover:translate-x-0.5" />
+              <span className="text-xs font-medium text-white/80">Practice Architect™</span>
+              <span className="flex items-center gap-1.5 text-sm font-medium text-white">
+                Start Building
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
             </Link>
           </div>
 

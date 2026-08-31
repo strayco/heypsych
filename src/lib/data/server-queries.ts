@@ -1,7 +1,12 @@
 // src/lib/data/server-queries.ts - Server-only data fetching utilities
-import { supabase } from "@/lib/config/database";
+import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import { mapRowToEntity, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
 import type { Entity } from "@/lib/types/database";
+
+// Helper to get supabase client - returns null if unavailable (build without credentials)
+function getDb() {
+  return supabaseOptional();
+}
 
 /**
  * Server-side data fetching utilities
@@ -38,8 +43,11 @@ export async function getMedicationsServer(): Promise<Entity[]> {
   const cached = getCached('medications');
   if (cached) return cached;
 
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
   try {
-    const { data, error} = await supabase
+    const { data, error} = await db
       .from("entities")
       .select("*")
       .in("type", TREATMENT_TYPE_MAP.medication)
@@ -93,7 +101,10 @@ export async function getMedicationsServer(): Promise<Entity[]> {
 }
 
 export async function getInterventionalServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "interventional")
@@ -110,7 +121,10 @@ export async function getInterventionalServer(): Promise<Entity[]> {
 }
 
 export async function getSupplementsServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "supplement")
@@ -127,7 +141,10 @@ export async function getSupplementsServer(): Promise<Entity[]> {
 }
 
 export async function getTherapiesServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "therapy")
@@ -144,7 +161,10 @@ export async function getTherapiesServer(): Promise<Entity[]> {
 }
 
 export async function getAlternativeServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "alternative")
@@ -161,7 +181,10 @@ export async function getAlternativeServer(): Promise<Entity[]> {
 }
 
 export async function getInvestigationalServer(): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "investigational")
@@ -227,8 +250,11 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
   }
 
   // Use Supabase client (build-time and fallback)
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
   try {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("entities")
       .select("*")
       .in("type", treatmentTypes)
@@ -269,8 +295,11 @@ export async function getConditionsServer(): Promise<Entity[]> {
   const cached = getCached('conditions');
   if (cached) return cached;
 
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
   try {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("entities")
       .select("*")
       .eq("type", "condition")
@@ -293,8 +322,11 @@ export async function getConditionsServer(): Promise<Entity[]> {
 }
 
 export async function getConditionsByCategoryServer(category: string): Promise<Entity[]> {
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
   try {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("entities")
       .select("*")
       .eq("type", "condition")
@@ -321,10 +353,13 @@ export async function getResourcesServer(): Promise<Entity[]> {
   const cached = getCached('resources');
   if (cached) return cached;
 
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
   // Fetch all resources for client-side search and navigation features
   // Limit set to 500 to support growth while preventing runaway queries
   try {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from("entities")
       .select("*")
       .eq("type", "resource")
@@ -359,7 +394,10 @@ export async function getResourcesServer(): Promise<Entity[]> {
 }
 
 export async function getResourcesByCategoryServer(category: string): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "resource")
@@ -377,7 +415,10 @@ export async function getResourcesByCategoryServer(category: string): Promise<En
 }
 
 export async function getOtherConditionsSubcategoryServer(subcategory: string): Promise<Entity[]> {
-  const { data, error } = await supabase
+  const db = getDb();
+  if (!db) return []; // Build without credentials
+
+  const { data, error } = await db
     .from("entities")
     .select("*")
     .eq("type", "condition")

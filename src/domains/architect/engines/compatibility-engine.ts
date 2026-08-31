@@ -22,7 +22,7 @@ export type ProductMetadataMap = Map<string, ProductArchitectureMetadata>;
 /**
  * Analyze compatibility between two products
  */
-function analyzeProductPair(
+export function analyzeProductPair(
   sourceSlug: string,
   targetSlug: string,
   metadataMap: ProductMetadataMap
@@ -104,13 +104,16 @@ export function analyzeCompatibility(
   metadataMap: ProductMetadataMap
 ): CompatibilityAssessment[] {
   const assessments: CompatibilityAssessment[] = [];
-  const realProducts = stack.selectedProducts.filter((p) => !p.isDemo);
+  // Include demo products when in demo mode
+  const activeProducts = stack.isDemoMode
+    ? stack.selectedProducts
+    : stack.selectedProducts.filter((p) => !p.isDemo);
 
   // Analyze each unique pair
-  for (let i = 0; i < realProducts.length; i++) {
-    for (let j = i + 1; j < realProducts.length; j++) {
-      const sourceSlug = realProducts[i].slug;
-      const targetSlug = realProducts[j].slug;
+  for (let i = 0; i < activeProducts.length; i++) {
+    for (let j = i + 1; j < activeProducts.length; j++) {
+      const sourceSlug = activeProducts[i].slug;
+      const targetSlug = activeProducts[j].slug;
 
       const assessment = analyzeProductPair(sourceSlug, targetSlug, metadataMap);
       assessments.push(assessment);
@@ -171,7 +174,8 @@ export function checkAddProductCompatibility(
   const concerns: CompatibilityAssessment[] = [];
 
   for (const existing of stack.selectedProducts) {
-    if (existing.isDemo) continue;
+    // Skip demo products only when NOT in demo mode
+    if (!stack.isDemoMode && existing.isDemo) continue;
 
     const assessment = analyzeProductPair(
       newProductSlug,

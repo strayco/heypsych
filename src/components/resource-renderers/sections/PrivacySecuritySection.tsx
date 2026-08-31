@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ParsedContent } from '@/components/ui/parsed-content';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Lock, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 
@@ -62,7 +63,7 @@ export function PrivacySecuritySection({
       <CardContent className="space-y-4">
         {/* Summary */}
         {summary && (
-          <p className="text-sm text-label-primary">{summary}</p>
+          <p className="text-sm text-label-primary"><ParsedContent content={summary} /></p>
         )}
 
         {/* Privacy Rating Details */}
@@ -77,7 +78,7 @@ export function PrivacySecuritySection({
                 {privacy_rating.data_collected.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-label-primary">
                     <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-label-tertiary" />
-                    {item}
+                    <ParsedContent content={item} />
                   </li>
                 ))}
               </ul>
@@ -98,7 +99,7 @@ export function PrivacySecuritySection({
                   privacy_rating.data_shared.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-label-primary">
                       <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-label-tertiary" />
-                      {item}
+                      <ParsedContent content={item} />
                     </li>
                   ))
                 )}
@@ -170,7 +171,7 @@ export function PrivacySecuritySection({
             {items.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-label-primary">
                 <CheckCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-green-600" />
-                {item}
+                <ParsedContent content={item} />
               </li>
             ))}
           </ul>
@@ -186,7 +187,7 @@ export function PrivacySecuritySection({
               {concerns.map((concern, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-yellow-800">
                   <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
-                  {concern}
+                  <ParsedContent content={concern} />
                 </li>
               ))}
             </ul>
@@ -202,7 +203,7 @@ export function PrivacySecuritySection({
                 <h4 className="mb-1 text-sm font-semibold text-negative-700">
                   HIPAA Compliance
                 </h4>
-                <p className="text-sm text-negative-700">{hipaa_note}</p>
+                <p className="text-sm text-negative-700"><ParsedContent content={hipaa_note} /></p>
               </div>
             </div>
           </div>

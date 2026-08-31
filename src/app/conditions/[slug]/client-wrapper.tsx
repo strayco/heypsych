@@ -378,8 +378,12 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
                     <div className="flex items-start gap-3">
                       <Target className="h-5 w-5 text-label-tertiary shrink-0 mt-0.5" />
                       <div>
-                        <h5 className="font-semibold text-label-primary">{condition}</h5>
-                        <p className="text-sm text-label-secondary mt-1">{explanation}</p>
+                        <h5 className="font-semibold text-label-primary">
+                          <ParsedContent content={condition} />
+                        </h5>
+                        <p className="text-sm text-label-secondary mt-1">
+                          <ParsedContent content={explanation} />
+                        </p>
                       </div>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 // src/components/resource-renderers/sections/PatientSummary.tsx
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Info } from "lucide-react";
 
 interface PatientSummaryProps {
@@ -17,7 +18,7 @@ export function PatientSummary({ text }: PatientSummaryProps) {
           </div>
           <div>
             <h3 className="mb-2 font-semibold text-accent-700">In Plain Terms</h3>
-            <p className="text-sm leading-relaxed text-accent-700">{text}</p>
+            <p className="text-sm leading-relaxed text-accent-700"><ParsedContent content={text} /></p>
           </div>
         </div>
       </CardContent>

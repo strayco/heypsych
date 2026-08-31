@@ -124,15 +124,42 @@ export type StackCoverageResult = {
 // OVERLAP RESULT
 // ============================================================================
 
+/**
+ * Overlap Classification - 4 categories from least to most concerning
+ *
+ * complementary: Products share minor capabilities but provide materially different core value
+ * intentional-overlap: Shared capability may provide resilience, workflow choice, or valid specialized use case
+ * possible-redundancy: Products strongly cover same capabilities but each retains meaningful unique value
+ * probable-redundancy: Primary/core capabilities substantially overlap, one product adds little unique relevant coverage
+ */
 export type OverlapClassification =
-  | "useful-specialization"
-  | "benign-overlap"
+  | "complementary"
+  | "intentional-overlap"
+  | "possible-redundancy"
   | "probable-redundancy";
 
 export const OVERLAP_CLASSIFICATION_LABELS: Record<OverlapClassification, string> = {
-  "useful-specialization": "Useful specialization",
-  "benign-overlap": "Benign overlap",
+  "complementary": "Complementary",
+  "intentional-overlap": "Intentional overlap",
+  "possible-redundancy": "Possible redundancy",
   "probable-redundancy": "Probable redundancy",
+};
+
+export const OVERLAP_CLASSIFICATION_DESCRIPTIONS: Record<OverlapClassification, string> = {
+  "complementary": "Products share some capabilities but provide materially different core value",
+  "intentional-overlap": "Shared capability provides workflow choice, resilience, or specialized use case",
+  "possible-redundancy": "Products cover similar capabilities, but each provides meaningful unique value",
+  "probable-redundancy": "Core capabilities substantially overlap with limited unique coverage",
+};
+
+/**
+ * Overlap severity for UI styling and sorting
+ */
+export const OVERLAP_SEVERITY: Record<OverlapClassification, "low" | "medium" | "high"> = {
+  "complementary": "low",
+  "intentional-overlap": "low",
+  "possible-redundancy": "medium",
+  "probable-redundancy": "high",
 };
 
 export type OverlapAssessment = {
@@ -148,6 +175,56 @@ export type OverlapAssessment = {
   classification: OverlapClassification;
   explanation: string;
   provenance: ProvenanceStatus;
+};
+
+/**
+ * Product-pair overlap analysis (aggregates all capability overlaps between two products)
+ */
+export type ProductPairOverlap = {
+  productASlug: string;
+  productBSlug: string;
+  // Human-readable names (looked up from product display data)
+  productAName?: string;
+  productBName?: string;
+
+  // Classification of the overall relationship
+  classification: OverlapClassification;
+  explanation: string;
+
+  // Shared capabilities (both products cover these)
+  sharedCapabilities: Array<{
+    capabilityId: CapabilityId;
+    capabilityName: string;
+    productAStrength: CapabilityStrength;
+    productBStrength: CapabilityStrength;
+    isCoreForA: boolean;
+    isCoreForB: boolean;
+  }>;
+
+  // Unique capabilities for each product (relevant to the practice)
+  uniqueToA: Array<{
+    capabilityId: CapabilityId;
+    capabilityName: string;
+    strength: CapabilityStrength;
+    isCore: boolean;
+  }>;
+  uniqueToB: Array<{
+    capabilityId: CapabilityId;
+    capabilityName: string;
+    strength: CapabilityStrength;
+    isCore: boolean;
+  }>;
+
+  // Estimated potential savings if one product were removed
+  potentialMonthlySavingsACents?: number | null; // If A removed
+  potentialMonthlySavingsBCents?: number | null; // If B removed
+
+  // Data quality
+  provenance: ProvenanceStatus;
+  confidenceLevel: "high" | "medium" | "low";
+
+  // User decision (if already made)
+  userDecision?: "keep-both" | "review-later" | null;
 };
 
 // ============================================================================
@@ -210,6 +287,7 @@ export type CostEstimate = {
     isEstimate: boolean;
     requiresQuote: boolean;
     notes?: string;
+    priceDisplayText?: string; // Fallback display (e.g., "$49/provider/mo") when total can't be calculated
   }>;
 };
 
@@ -219,13 +297,15 @@ export type CostEstimate = {
 
 export type HealthSubscore = {
   name: string;
-  score: number; // 0-100
+  score: number | null; // 0-100, null if not applicable or insufficient data
   weight: number;
-  contribution: number; // Weighted contribution to total
+  contribution: number; // Weighted contribution to total (0 if null score)
   explanation: string;
   issues?: string[];
   opportunities?: string[];
   hasData?: boolean;
+  isNotApplicable?: boolean; // e.g., compatibility with 0-1 products
+  isInsufficientData?: boolean; // Can't compute due to missing data
 };
 
 export type StackHealthResult = {

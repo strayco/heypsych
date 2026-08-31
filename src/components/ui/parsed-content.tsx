@@ -34,7 +34,7 @@ export function ParsedContent({ content, className = "", linkClassName = "" }: P
             <Link
               key={index}
               href={getLinkPath(part.linkType, part.slug)}
-              className={`text-accent transition-colors hover:text-accent-700 hover:underline ${linkClassName}`}
+              className={`text-accent underline decoration-accent/40 underline-offset-2 transition-colors hover:text-accent-700 hover:decoration-accent ${linkClassName}`}
             >
               {part.content}
             </Link>

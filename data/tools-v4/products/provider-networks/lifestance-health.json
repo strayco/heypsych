@@ -5,6 +5,23 @@
   "slug": "lifestance-health",
   "name": "LifeStance Health",
   "company_name": "LifeStance Health Group, Inc.",
+  "one_liner": "Publicly traded W2 employer with 7,400+ clinicians. 62% fee split (they keep 38%). 2.5/5 comp rating—fee-for-service means unpaid time off despite W2 status.",
+  "short_description": "LifeStance Health is a publicly traded mental health company (NASDAQ: LFST) employing 7,400+ clinicians as W2 employees across 550+ outpatient centers in 33 states, offering hybrid in-person/virtual care with benefits.",
+  "long_description": "LifeStance Health is one of the largest outpatient mental health companies in the United States, employing over 7,400 psychiatrists, psychologists, therapists, and nurse practitioners as W2 employees with benefits. The company operates over 550 outpatient centers across 33 states, offering both in-person and virtual care options. LifeStance accepts most major commercial insurance plans and provides therapy, psychiatry, and medication management services. For clinicians, LifeStance offers W2 employment with healthcare benefits, steady patient flow, and administrative support including billing and scheduling. However, compensation is fee-for-service—meaning time off, no-shows, and low caseloads directly impact income. The company went public in June 2021 at a $7.5B valuation, with shares now trading significantly below IPO price. TPG Capital, Summit Partners, and Silversmith Capital Partners remain major shareholders.",
+  "best_for": [
+    "Clinicians seeking W2 employment with health insurance and 401(k)",
+    "Therapists wanting hybrid in-person and telehealth flexibility",
+    "Early-career clinicians building experience with administrative support",
+    "Providers who prefer steady patient referrals over marketing themselves",
+    "Those in states with LifeStance presence (33 states, 550+ locations)"
+  ],
+  "not_for": [
+    "Clinicians seeking competitive compensation (2.5/5 Glassdoor rating)",
+    "Therapists wanting paid time off (fee-for-service = no pay when not seeing patients)",
+    "Providers frustrated by caseload volatility and income instability",
+    "Those wanting to build their own independent practice brand",
+    "Clinicians concerned about public company cost-cutting pressures"
+  ],
   "import_ref": {
     "record_id": "PN-0013",
     "source_file": "provider-networks-research-2026",
@@ -15,82 +32,343 @@
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [],
-  "capabilities": ["hipaa-compliant"],
+  "capabilities": [
+    "hipaa-compliant",
+    "video-sessions",
+    "appointment-scheduling",
+    "claims-submission"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [
-      "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only",
+      "hybrid"
     ],
     "organization_sizes": [
-      "solo",
-      "small-2-10",
-      "medium-11-50"
+      "enterprise-200-plus"
     ],
     "specialties": [
-      "mental-health"
+      "mental-health",
+      "psychiatry",
+      "therapy",
+      "psychology"
     ]
   },
   "feature_flags": {
     "has_ai": false,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
+    "has_e_prescribing": true,
     "has_patient_portal": true,
     "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "LifeStance Health is a publicly traded mental health company employing 7,000+ clinicians nationwide with W2 benefits and hybrid in-person/virtual care.",
-  "long_description": "LifeStance Health is one of the largest outpatient mental health companies in the United States, employing over 7,000 psychiatrists, psychologists, therapists, and nurse practitioners as W2 employees with benefits. The company operates over 550 outpatient centers across 33 states, offering both in-person and virtual care options. LifeStance accepts most major commercial insurance plans and provides therapy, psychiatry, and medication management services. For clinicians, LifeStance offers stable W2 employment with healthcare benefits, a steady stream of patients, and administrative support including billing and scheduling.",
-  "one_liner": "Publicly traded mental health company with 7,000+ employed clinicians offering hybrid in-person/virtual care.",
-  "best_for": [
-    "Patients seeking hybrid in-person and virtual therapy options",
-    "Individuals with commercial insurance seeking in-network providers",
-    "Patients needing psychiatry and medication management",
-    "Clinicians seeking employment with benefits at scale",
-    "Health plans seeking large behavioral health network partners"
-  ],
-  "not_for": [],
-  "pricing_url": null,
   "pricing": {
-    "model": "insurance-based",
+    "model": "w2-employment",
+    "starting_price_cents": 0,
+    "starting_price_display": "W2 Employment",
     "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
+    "quote_required": false,
+    "notes": "W2 employment with benefits. Fee-for-service compensation model—paid per session, not salary. Time off, holidays, and no-shows are unpaid. Benefits include health insurance and 401(k).",
+    "last_verified": "2026-08-30"
+  },
+  "provider_compensation": {
+    "model": "fee-for-service",
+    "fee_split": "62% of comp schedule rate to clinician",
+    "therapist_range": "$76,000-$120,000/year (Glassdoor)",
+    "average_therapist": "$95,046/year (based on 276 salaries)",
+    "psychiatrist_range": "$295,000-$406,000/year (based on 8-11 pts/day volume)",
+    "np_rates": "~20-25% lower than MD/DO rates (e.g., $120.58 for 90792 vs $151 for psychiatrist)",
+    "pay_structure": "62% of regional compensation schedule rate per session",
+    "time_off": "Unpaid—fee-for-service means no pay when not seeing patients",
+    "no_show_policy": "Compensation inconsistent; varies by location",
+    "benefits": "Health insurance (high deductibles reported), 401(k) match (annual payout)",
+    "glassdoor_rating": "2.5/5 compensation rating (2.8 company average)",
+    "concerns": "Fee-for-service creates income instability; caseload fluctuations; expensive health insurance"
+  },
+  "compensation_schedules": {
+    "source": "Internal LifeStance Clinician Compensation Schedules",
+    "fee_split_percentage": 62,
+    "notes": "Based on internal LifeStance compensation schedules. Clinicians receive 62% of comp schedule rate. Rates vary by region, payer mix, and provider type.",
+    "child_psychiatrist": {
+      "region": "CA-LA, SF, and Sacramento",
+      "schedule_date": "2021-04-26",
+      "average_per_visit": {
+        "comp_schedule_rate": 253,
+        "clinician_pay": 157
+      },
+      "cpt_codes": {
+        "new_patient": {
+          "90792": { "description": "Psych diag eval w/med srvcs", "rate": 244, "clinician_pay": 151, "percent_of_visits": 11.0 }
+        },
+        "follow_up": {
+          "99212": { "description": "Office/outpatient visit est", "rate": 63, "clinician_pay": 39, "percent_of_visits": 0.0 },
+          "99213": { "description": "Office/outpatient visit est", "rate": 107, "clinician_pay": 66, "percent_of_visits": 12.0 },
+          "99214": { "description": "Office/outpatient visit est", "rate": 159, "clinician_pay": 99, "percent_of_visits": 70.0 },
+          "99215": { "description": "Office/outpatient visit est", "rate": 196, "clinician_pay": 122, "percent_of_visits": 7.0 }
+        },
+        "add_on": {
+          "90833": { "description": "Psytx w pt w e/m 30 min", "rate": 84, "clinician_pay": 52, "percent_of_visits": 30.0 },
+          "90836": { "description": "Psytx w pt w e/m 45 min", "rate": 108, "clinician_pay": 67, "percent_of_visits": 52.0 },
+          "90838": { "description": "Psytx w pt w e/m 60 min", "rate": 119, "clinician_pay": 74, "percent_of_visits": 5.0 }
+        }
+      },
+      "productivity_scenarios": {
+        "low": { "patients_per_day": 8, "daily_fees": 1256, "work_weeks": 47, "work_days": 235, "annual_income": 295160 },
+        "medium": { "patients_per_day": 9, "daily_fees": 1413, "work_weeks": 47, "work_days": 235, "annual_income": 332055 },
+        "high": { "patients_per_day": 10, "daily_fees": 1570, "work_weeks": 47, "work_days": 235, "annual_income": 368950 },
+        "top_performer": { "patients_per_day": 11, "daily_fees": 1727, "work_weeks": 47, "work_days": 235, "annual_income": 405845 }
+      }
+    },
+    "nurse_practitioner": {
+      "region": "Not specified (likely national or regional average)",
+      "cpt_codes": {
+        "new_patient_em": {
+          "90792": { "description": "Diagnostic Eval w/ Med Services", "clinician_pay": 120.58 },
+          "99203": { "description": "New Patient E/M - Expanded", "clinician_pay": 70.77 },
+          "99204": { "description": "New Patient E/M - Moderate", "clinician_pay": 107.15 },
+          "99205": { "description": "New Patient E/M - Complex", "clinician_pay": 133.96 }
+        },
+        "follow_up_em": {
+          "99212": { "description": "Established Patient E/M - Minor", "clinician_pay": 32.22 },
+          "99213": { "description": "Established Patient E/M - Expanded", "clinician_pay": 47.89 },
+          "99214": { "description": "Established Patient E/M - Moderate", "clinician_pay": 73.00 },
+          "99215": { "description": "Established Patient E/M - Complex", "clinician_pay": 99.20 }
+        },
+        "tms": {
+          "90867": { "description": "TMS Motor Threshold Determination, Delivery", "clinician_pay": 119.55 },
+          "90868": { "description": "TMS Subsequent Delivery", "clinician_pay": 58.39 },
+          "90869": { "description": "TMS Subsequent Motor Threshold, Delivery", "clinician_pay": 80.84 }
+        },
+        "therapy_add_on": {
+          "90833": { "description": "Psychotherapy Add-on 16-37 min", "clinician_pay": 30.00 },
+          "90836": { "description": "Psychotherapy Add-on 38-52 min", "clinician_pay": 42.77 },
+          "90838": { "description": "Psychotherapy Add-on 53+ min", "clinician_pay": 62.75 }
+        },
+        "other": {
+          "90785": { "description": "Interactive Complexity Add-on", "clinician_pay": 5.12 },
+          "90847": { "description": "Family/Couples Therapy", "clinician_pay": 89.04 },
+          "90853": { "description": "Group Therapy", "clinician_pay": 48.31 }
+        }
+      },
+      "comparison_to_psychiatrist": "NP rates are ~20-25% lower than MD/DO psychiatrist rates for same CPT codes"
+    }
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "notes": "Publicly traded company with standard healthcare compliance."
   },
   "integrations": [],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "fairness_rating": {
+    "overall_score": 44,
+    "grade": "D",
+    "breakdown": {
+      "pay_fairness": {
+        "score": 50,
+        "weight": 30,
+        "notes": "2.5/5 Glassdoor compensation rating. $95k average therapist salary but fee-for-service structure"
+      },
+      "credential_portability": {
+        "score": 0,
+        "weight": 20,
+        "notes": "Clients belong to LifeStance. Cannot take them when you leave"
+      },
+      "compensation_transparency": {
+        "score": 55,
+        "weight": 15,
+        "notes": "62% fee split documented in internal comp schedules. Regional rates by CPT code available. Unpaid time off not always clear upfront"
+      },
+      "rate_stability": {
+        "score": 45,
+        "weight": 15,
+        "notes": "Caseload fluctuations create income volatility despite W2 status"
+      },
+      "clinician_founded": {
+        "score": 0,
+        "weight": 10,
+        "notes": "PE-backed (TPG). Founded by Michael Lester (business background)"
+      },
+      "payment_speed": {
+        "score": 85,
+        "weight": 5,
+        "notes": "Regular W2 payroll (bi-weekly)"
+      },
+      "benefits_protections": {
+        "score": 60,
+        "weight": 5,
+        "notes": "Health insurance and 401(k) offered, but high deductibles and annual 401(k) match payout"
+      }
+    },
+    "methodology": "HeyPsych Fairness Rating v1.0: Weighted score across pay fairness (30%), credential portability (20%), compensation transparency (15%), rate stability (15%), clinician-founded (10%), payment speed (5%), and benefits (5%). Scale: A (80-100), B (65-79), C (50-64), D (35-49), F (<35)."
+  },
+  "hidden_gotchas": {
+    "fee_split_structure": {
+      "issue": "You receive 62% of the comp schedule rate, not the full insurance reimbursement",
+      "impact": "LifeStance keeps 38% of each session's reimbursement",
+      "example": "If comp schedule rate is $253, you receive $157 (62%)",
+      "context": "This is better transparency than platforms that don't disclose their cut"
+    },
+    "fee_for_service_reality": {
+      "issue": "W2 employment but fee-for-service pay structure",
+      "impact": "Time off, sick days, holidays, and no-shows are UNPAID",
+      "reality": "Despite W2 status, income depends entirely on sessions completed",
+      "comparison": "True salaried positions guarantee pay regardless of caseload"
+    },
+    "caseload_volatility": {
+      "issue": "Patient volume fluctuates significantly",
+      "impact": "Income instability despite employment status",
+      "note": "Must generally remain available during scheduled hours even with low volume"
+    },
+    "compensation_concerns": {
+      "issue": "2.5/5 compensation rating on Glassdoor",
+      "reality": "Multiple reviews cite pay not matching advertised ranges",
+      "quote": "For starters, the pay is an outright lie. You will NOT likely receive the pay advertised"
+    },
+    "expensive_benefits": {
+      "issue": "Health insurance described as expensive with high deductibles",
+      "impact": "Benefits value may be lower than expected",
+      "note": "401(k) match paid annually—leave before payout and you may lose it"
+    },
+    "public_company_pressures": {
+      "context": "LifeStance is publicly traded (NASDAQ: LFST)",
+      "stock_decline": "Trading significantly below $18 IPO price",
+      "impact": "Cost-cutting pressures may affect clinician experience"
+    },
+    "no_practice_building": {
+      "issue": "Clients belong to LifeStance, not you",
+      "impact": "Cannot take clients with you if you leave",
+      "limitation": "No ability to build independent referral base while employed"
+    }
+  },
   "seo": {
-    "title": "LifeStance Health: W2 Employment for Mental Health Clinicians | HeyPsych",
-    "meta_description": "LifeStance Health is a publicly traded mental health company employing 7,000+ clinicians nationwide with W2 benefits and hybrid in-person/virtual care.",
-    "faqs": [],
+    "title": "LifeStance Health: W2 Therapist Jobs Review | HeyPsych",
+    "meta_description": "LifeStance Health employs 7,400+ clinicians across 550+ US locations. W2 with benefits but fee-for-service pay. 2.5/5 compensation rating. Honest review for therapists.",
+    "faqs": [
+      {
+        "q": "How much do LifeStance therapists make?",
+        "a": "LifeStance therapists average $95,046/year according to Glassdoor (276 salaries), with typical range of $76,000-$120,000. However, compensation is fee-for-service—meaning time off, holidays, and no-shows are unpaid. The 2.5/5 compensation rating reflects concerns about actual vs. advertised pay."
+      },
+      {
+        "q": "How much do LifeStance psychiatrists and NPs make?",
+        "a": "LifeStance uses a 62% fee split—you receive 62% of the comp schedule rate. Child psychiatrists in CA can earn $295k-$406k/year depending on volume (8-11 patients/day). NPs earn lower rates: $120.58 for 90792 (psych eval), $73-99 for follow-up E/M codes (99214-99215). NP rates are roughly 20-25% lower than MD/DO rates for the same CPT codes."
+      },
+      {
+        "q": "Is LifeStance Health fee-for-service or salary?",
+        "a": "LifeStance uses fee-for-service compensation despite W2 employment status. You're paid per session, not a guaranteed salary. This means time off, sick days, holidays, and no-shows directly reduce your income. It's not a true salaried position."
+      },
+      {
+        "q": "What benefits does LifeStance offer?",
+        "a": "LifeStance offers health insurance and 401(k) matching. However, reviews note health insurance has high deductibles and is expensive. The 401(k) match is paid annually—if you leave before the payout, you may lose the match for that year."
+      },
+      {
+        "q": "Is LifeStance a good place to work for therapists?",
+        "a": "Mixed reviews. Pros: W2 status, administrative support, steady patient referrals, hybrid options. Cons: Fee-for-service means unpaid time off, 2.5/5 compensation rating, caseload volatility, can't build independent practice. 49% of employees recommend it."
+      },
+      {
+        "q": "Who founded LifeStance Health?",
+        "a": "LifeStance was founded by Michael Lester in 2017. It's PE-backed—TPG Capital acquired majority interest in 2020 for $1.2B. Ken Burdick (former UnitedHealthcare CEO) served as CEO 2022-2025, followed by Dave Bourdon in 2025. Not clinician-founded."
+      },
+      {
+        "q": "What happened to LifeStance stock?",
+        "a": "LifeStance went public in June 2021 at $18/share ($7.5B valuation). The stock has declined significantly since IPO. As a public company facing investor pressure, this may affect decisions around clinician compensation and benefits."
+      }
+    ],
     "keywords": [
       "LifeStance Health",
-      "therapist employment",
-      "psychiatrist jobs",
-      "W2 mental health"
+      "therapist jobs",
+      "mental health employment",
+      "W2 therapist",
+      "LifeStance salary",
+      "LifeStance reviews"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-08-30",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 92
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {},
+  "related_tools": [
+    "thriveworks",
+    "headway",
+    "alma-provider-platform",
+    "grow-therapy"
+  ],
+  "competitor_tools": [
+    "thriveworks",
+    "lyra-health",
+    "spring-health"
+  ],
+  "company_info": {
+    "founded_year": 2017,
+    "headquarters": "Scottsdale, Arizona, USA",
+    "employee_count": "7,400+ clinicians",
+    "funding_status": "Public (NASDAQ: LFST)",
+    "clinician_founded": false,
+    "founders": [
+      {
+        "name": "Michael Lester",
+        "title": "Founding CEO & Chairman (Retired 2022)",
+        "background": "Business/PE background, not a clinician. Built LifeStance through aggressive M&A strategy (53+ acquisitions by IPO)",
+        "is_clinician": false,
+        "status": "retired"
+      }
+    ],
+    "leadership": [
+      {
+        "name": "Dave Bourdon",
+        "title": "CEO (Feb 2025-present)",
+        "background": "Former CFO of LifeStance. Promoted to CEO when Ken Burdick retired",
+        "is_clinician": false
+      },
+      {
+        "name": "Ken Burdick",
+        "title": "Executive Chairman (2025-present), Former CEO (2022-2025)",
+        "background": "Former CEO of UnitedHealthcare and WellCare. 45+ year healthcare executive career",
+        "is_clinician": false
+      }
+    ],
+    "funding": {
+      "total_raised": "$720M (IPO)",
+      "pre_ipo_investment": "$1.2B TPG investment (2020)",
+      "ipo_date": "June 10, 2021",
+      "ipo_price": "$18/share",
+      "ipo_valuation": "$7.5B",
+      "current_status": "Trading significantly below IPO price",
+      "stock_symbol": "LFST (NASDAQ)",
+      "key_investors": ["TPG Capital (48% post-IPO)", "Summit Partners", "Silversmith Capital Partners"],
+      "context": "TPG, Summit, and Silversmith controlled 66% of shares post-IPO. Stock has declined substantially from $7.5B IPO valuation."
+    },
+    "scale": {
+      "clinician_count": "7,400+",
+      "locations": "550+ outpatient centers",
+      "states": "33 states",
+      "acquisitions": "53+ acquisitions since founding"
+    },
+    "notes": "PE-backed (TPG) mental health consolidator built through aggressive M&A. Not clinician-founded. Public company pressures + fee-for-service model creates tension between growth targets and clinician satisfaction. 49% employee recommendation rate."
+  },
   "created_at": "2026-08-22T21:10:17.308Z",
-  "updated_at": "2026-08-22T21:10:17.308Z",
+  "updated_at": "2026-08-30T00:00:00.000Z",
   "featured": true,
   "status": "active"
 }

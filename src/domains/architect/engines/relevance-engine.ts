@@ -442,7 +442,7 @@ const RELEVANCE_RULES: RelevanceRule[] = [
   {
     capabilityId: "patient-payments",
     condition: () => true,
-    level: "strongly-recommended",
+    level: "required",
     reason: "Collecting patient payments is essential for all practices",
   },
   {

@@ -123,17 +123,21 @@ function calculatePracticeFitSubscore(fitResults: FitResult[]): HealthSubscore {
 /**
  * Calculate compatibility subscore from compatibility assessments
  * Penalizes incompatibilities and concerns
+ * Returns null score when not applicable (0-1 products) or all unknown
  */
 function calculateCompatibilitySubscore(
-  compatibilityAssessments: CompatibilityAssessment[]
+  compatibilityAssessments: CompatibilityAssessment[],
+  productCount: number
 ): HealthSubscore {
-  if (compatibilityAssessments.length === 0) {
+  // With 0-1 products, compatibility is not applicable
+  if (productCount <= 1) {
     return {
       name: "Compatibility",
-      score: 100,
+      score: null,
       weight: SUBSCORE_WEIGHTS.compatibility,
-      contribution: Math.round(100 * SUBSCORE_WEIGHTS.compatibility),
-      explanation: "No compatibility concerns with single product",
+      contribution: 0,
+      explanation: productCount === 0 ? "No products to evaluate" : "Not applicable with single product",
+      isNotApplicable: true,
     };
   }
 
@@ -160,15 +164,43 @@ function calculateCompatibilitySubscore(
     }
   }
 
-  // Calculate score
-  // Incompatible = heavy penalty, concern = moderate penalty, unknown = slight uncertainty
   const total = compatibilityAssessments.length;
+
+  // If all integrations are unknown, we cannot score compatibility
+  if (total > 0 && unknownCount === total) {
+    return {
+      name: "Compatibility",
+      score: null,
+      weight: SUBSCORE_WEIGHTS.compatibility,
+      contribution: 0,
+      explanation: `All ${total} product integration${total > 1 ? "s" : ""} have unknown compatibility`,
+      isInsufficientData: true,
+    };
+  }
+
+  // Calculate score only from known integrations
+  // Unknown integrations do not contribute positively or negatively to score,
+  // but we note them in explanation
+  const knownTotal = incompatibleCount + concernCount + compatibleCount;
+
+  if (knownTotal === 0) {
+    // No integration data at all
+    return {
+      name: "Compatibility",
+      score: null,
+      weight: SUBSCORE_WEIGHTS.compatibility,
+      contribution: 0,
+      explanation: "No integration data available",
+      isInsufficientData: true,
+    };
+  }
+
+  // Calculate score from known integrations only
+  // Incompatible = heavy penalty, concern = moderate penalty
   const incompatiblePenalty = incompatibleCount * 40;
   const concernPenalty = concernCount * 15;
-  const unknownPenalty = unknownCount * 5;
-
-  const maxPenalty = total * 40; // If all were incompatible
-  const actualPenalty = incompatiblePenalty + concernPenalty + unknownPenalty;
+  const maxPenalty = knownTotal * 40; // If all known were incompatible
+  const actualPenalty = incompatiblePenalty + concernPenalty;
   const score = Math.max(0, Math.round(100 - (actualPenalty / maxPenalty) * 100));
 
   let explanation: string;
@@ -176,10 +208,13 @@ function calculateCompatibilitySubscore(
     explanation = `${incompatibleCount} incompatible product pair${incompatibleCount > 1 ? "s" : ""} detected`;
   } else if (concernCount > 0) {
     explanation = `${concernCount} potential compatibility concern${concernCount > 1 ? "s" : ""}`;
-  } else if (unknownCount > 0) {
-    explanation = `${unknownCount} integration${unknownCount > 1 ? "s" : ""} with unknown compatibility`;
   } else {
-    explanation = "All products appear compatible";
+    explanation = "All verified integrations appear compatible";
+  }
+
+  // Note unknown integrations separately - they don't affect score but user should know
+  if (unknownCount > 0) {
+    explanation += ` (${unknownCount} unverified)`;
   }
 
   return {
@@ -188,54 +223,81 @@ function calculateCompatibilitySubscore(
     weight: SUBSCORE_WEIGHTS.compatibility,
     contribution: Math.round(score * SUBSCORE_WEIGHTS.compatibility),
     explanation,
+    hasData: knownTotal > 0,
   };
 }
 
 /**
- * Calculate cost efficiency subscore
- * Compares estimated cost to budget if available
+ * Calculate cost subscore
+ * When budget exists: "Cost Efficiency" - compares estimated cost to budget
+ * When no budget: "Cost Visibility" - measures how much pricing data is known
  */
-function calculateCostEfficiencySubscore(
+function calculateCostSubscore(
   costEstimate: CostEstimate,
   monthlyBudget: number | undefined
 ): HealthSubscore {
-  // If no budget specified, use a neutral score based on data availability
-  if (!monthlyBudget) {
-    const knownPricing = costEstimate.knownPricingCount;
-    const total = costEstimate.productCount;
+  const total = costEstimate.productCount;
 
-    if (total === 0) {
-      return {
-        name: "Cost Efficiency",
-        score: 50,
-        weight: SUBSCORE_WEIGHTS.costEfficiency,
-        contribution: Math.round(50 * SUBSCORE_WEIGHTS.costEfficiency),
-        explanation: "No products to evaluate costs",
-      };
-    }
-
-    const knownPercent = Math.round((knownPricing / total) * 100);
-    const score = 50 + (knownPercent / 2); // 50-100 based on how much pricing is known
-
+  // No products - not applicable
+  if (total === 0) {
     return {
-      name: "Cost Efficiency",
-      score: Math.round(score),
+      name: "Cost",
+      score: null,
       weight: SUBSCORE_WEIGHTS.costEfficiency,
-      contribution: Math.round(score * SUBSCORE_WEIGHTS.costEfficiency),
-      explanation: `No budget set; ${knownPricing}/${total} products have known pricing`,
+      contribution: 0,
+      explanation: "No products to evaluate",
+      isNotApplicable: true,
     };
   }
 
-  // We have a budget, compare
+  const knownPricing = costEstimate.knownPricingCount;
+  const knownPercent = Math.round((knownPricing / total) * 100);
+
+  // If no budget specified, show Cost Visibility (not efficiency)
+  if (!monthlyBudget) {
+    // Score based on how much pricing data is available
+    // This is about data completeness, not product quality
+    const score = knownPercent;
+
+    let explanation: string;
+    if (knownPercent === 100) {
+      explanation = "All product pricing is known";
+    } else if (knownPercent >= 75) {
+      explanation = `${knownPricing}/${total} products have known pricing`;
+    } else if (knownPercent >= 50) {
+      explanation = `${knownPricing}/${total} products have known pricing; others require quotes`;
+    } else if (knownPercent > 0) {
+      explanation = `Only ${knownPricing}/${total} products have known pricing`;
+    } else {
+      explanation = "No pricing data available; all products require quotes";
+    }
+
+    if (costEstimate.customQuoteCount > 0) {
+      explanation += ` (${costEstimate.customQuoteCount} custom quote${costEstimate.customQuoteCount > 1 ? "s" : ""})`;
+    }
+
+    return {
+      name: "Cost Visibility",
+      score,
+      weight: SUBSCORE_WEIGHTS.costEfficiency,
+      contribution: Math.round(score * SUBSCORE_WEIGHTS.costEfficiency),
+      explanation,
+      hasData: knownPricing > 0,
+    };
+  }
+
+  // We have a budget - calculate Cost Efficiency
   const budgetCents = monthlyBudget * 100;
 
+  // If we can't estimate total cost, efficiency is unknown
   if (costEstimate.knownMaxMonthlyCents === null) {
     return {
       name: "Cost Efficiency",
-      score: 50,
+      score: null,
       weight: SUBSCORE_WEIGHTS.costEfficiency,
-      contribution: Math.round(50 * SUBSCORE_WEIGHTS.costEfficiency),
+      contribution: 0,
       explanation: "Unable to estimate total cost against budget",
+      isInsufficientData: true,
     };
   }
 
@@ -261,9 +323,9 @@ function calculateCostEfficiencySubscore(
     explanation = `Significantly over budget (${Math.round(percentOfBudget)}% of budget)`;
   }
 
-  // Adjust for unknown pricing
+  // Note unknown pricing - it affects reliability of estimate
   if (costEstimate.unknownPricingCount > 0) {
-    explanation += ` (${costEstimate.unknownPricingCount} products with unknown pricing)`;
+    explanation += ` (${costEstimate.unknownPricingCount} with unknown pricing)`;
   }
 
   return {
@@ -272,6 +334,7 @@ function calculateCostEfficiencySubscore(
     weight: SUBSCORE_WEIGHTS.costEfficiency,
     contribution: Math.round(score * SUBSCORE_WEIGHTS.costEfficiency),
     explanation,
+    hasData: true,
   };
 }
 
@@ -283,7 +346,10 @@ function calculateDataConfidenceSubscore(
   stack: PracticeStack,
   metadataMap: ProductMetadataMap
 ): HealthSubscore {
-  const products = stack.selectedProducts.filter((p) => !p.isDemo);
+  // Include demo products when in demo mode
+  const products = stack.isDemoMode
+    ? stack.selectedProducts
+    : stack.selectedProducts.filter((p) => !p.isDemo);
 
   if (products.length === 0) {
     return {
@@ -377,17 +443,38 @@ export function calculateStackHealth(input: HealthEngineInput): StackHealthResul
     costEstimate,
   } = input;
 
+  // Include demo products when in demo mode
+  const productCount = stack.isDemoMode
+    ? stack.selectedProducts.length
+    : stack.selectedProducts.filter((p) => !p.isDemo).length;
+
   // Calculate all subscores
   const subscores: HealthSubscore[] = [
     calculateCoverageSubscore(coverageResult),
     calculatePracticeFitSubscore(fitResults),
-    calculateCompatibilitySubscore(compatibilityAssessments),
-    calculateCostEfficiencySubscore(costEstimate, stack.fingerprint.monthlyBudget),
+    calculateCompatibilitySubscore(compatibilityAssessments, productCount),
+    calculateCostSubscore(costEstimate, stack.fingerprint.monthlyBudget),
     calculateDataConfidenceSubscore(stack, metadataMap),
   ];
 
-  // Calculate overall score (weighted sum of subscores)
-  const overallScore = subscores.reduce((sum, sub) => sum + sub.contribution, 0);
+  // Calculate overall score
+  // Only include subscores that have a valid score (not null)
+  // Renormalize weights among scoreable dimensions
+  const scoreableSubscores = subscores.filter((s) => s.score !== null);
+  const totalWeight = scoreableSubscores.reduce((sum, sub) => sum + sub.weight, 0);
+
+  let overallScore: number;
+  if (totalWeight > 0 && scoreableSubscores.length > 0) {
+    // Renormalize: calculate weighted average of available scores
+    const weightedSum = scoreableSubscores.reduce(
+      (sum, sub) => sum + (sub.score as number) * sub.weight,
+      0
+    );
+    overallScore = Math.round(weightedSum / totalWeight);
+  } else {
+    // No scoreable dimensions - can't calculate health
+    overallScore = 0;
+  }
 
   // Determine health level
   let healthLevel: "excellent" | "good" | "fair" | "poor";
@@ -403,7 +490,9 @@ export function calculateStackHealth(input: HealthEngineInput): StackHealthResul
 
   // Generate summary
   let summary: string;
-  if (healthLevel === "excellent") {
+  if (productCount === 0) {
+    summary = "Add products to see stack health analysis";
+  } else if (healthLevel === "excellent") {
     summary = "Your stack is well-optimized for your practice";
   } else if (healthLevel === "good") {
     summary = "Your stack is solid with room for improvement";
@@ -413,10 +502,16 @@ export function calculateStackHealth(input: HealthEngineInput): StackHealthResul
     summary = "Your stack needs substantial work to meet practice needs";
   }
 
-  // Find top concerns (lowest subscores)
+  // Note if some dimensions couldn't be scored
+  const unscoredCount = subscores.filter((s) => s.score === null).length;
+  if (unscoredCount > 0 && productCount > 0) {
+    summary += ` (${unscoredCount} dimension${unscoredCount > 1 ? "s" : ""} not scored due to insufficient data)`;
+  }
+
+  // Find top concerns (lowest scoreable subscores)
   const topConcerns = subscores
-    .filter((s) => s.score < 60)
-    .sort((a, b) => a.score - b.score)
+    .filter((s) => s.score !== null && s.score < 60)
+    .sort((a, b) => (a.score as number) - (b.score as number))
     .slice(0, 3)
     .map((s) => s.name);
 
@@ -439,6 +534,9 @@ export function getImprovementSuggestions(
   const suggestions: string[] = [];
 
   for (const subscore of healthResult.subscores) {
+    // Skip N/A subscores
+    if (subscore.score === null) continue;
+
     if (subscore.score < 60) {
       switch (subscore.name) {
         case "Coverage":
@@ -456,6 +554,9 @@ export function getImprovementSuggestions(
           break;
         case "Cost Efficiency":
           suggestions.push("Evaluate cost optimization opportunities or adjust budget");
+          break;
+        case "Cost Visibility":
+          suggestions.push("Request quotes for products with unknown pricing to complete cost estimate");
           break;
         case "Data Confidence":
           suggestions.push("Some product data is unverified; recommendations may be incomplete");
@@ -477,7 +578,7 @@ export function compareHealthImpact(
   scoreDelta: number;
   levelChanged: boolean;
   improved: boolean;
-  subscoreDeltas: Array<{ name: string; delta: number }>;
+  subscoreDeltas: Array<{ name: string; delta: number | null; beforeScore: number | null; afterScore: number | null }>;
 } {
   const scoreDelta = afterHealth.overallScore - beforeHealth.overallScore;
   const levelChanged = afterHealth.healthLevel !== beforeHealth.healthLevel;
@@ -485,9 +586,20 @@ export function compareHealthImpact(
 
   const subscoreDeltas = afterHealth.subscores.map((after) => {
     const before = beforeHealth.subscores.find((b) => b.name === after.name);
+    const beforeScore = before?.score ?? null;
+    const afterScore = after.score;
+
+    // Calculate delta only if both scores exist
+    let delta: number | null = null;
+    if (beforeScore !== null && afterScore !== null) {
+      delta = afterScore - beforeScore;
+    }
+
     return {
       name: after.name,
-      delta: before ? after.score - before.score : after.score,
+      delta,
+      beforeScore,
+      afterScore,
     };
   });
 

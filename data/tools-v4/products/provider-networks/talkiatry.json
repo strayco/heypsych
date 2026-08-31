@@ -1,0 +1,359 @@
+{
+  "schema_version": "4.0",
+  "kind": "provider-network",
+  "id": "talkiatry-provider-network",
+  "slug": "talkiatry",
+  "name": "Talkiatry",
+  "company_name": "Talkiatry",
+  "one_liner": "✓ Clinician co-founded telepsychiatry with 800+ W2 psychiatrists, 90%+ retention. ~47-50% effective split (vs 62% at contractor platforms), but W2 benefits add significant value.",
+  "short_description": "Nation's largest full-stack telepsychiatry provider with 800+ employed psychiatrists as W2 employees, proprietary AI-powered platform, and measurement-based care.",
+  "long_description": "Talkiatry is the nation's largest full-stack telepsychiatry provider, directly employing over 800 board-certified psychiatrists as W-2 employees. Founded in 2019, the company operates on a proprietary AI-powered technology platform that includes a bespoke psychiatry EHR, intelligent patient-provider matching, and automated operational workflows. Talkiatry practices measurement-based care using standardized assessments including PHQ-9 and GAD-7, reporting strong clinical outcomes: 87% of anxiety patients and 86% of depression patients report symptom improvement after just two visits, with 67% and 62% respectively reporting no longer having clinically significant symptoms. The company is in-network with over 100 insurers covering 170+ million lives and has partnered with more than one-third of the nation's top 20 health systems through its Mindshare Partner Program. In February 2026, Talkiatry raised $210M in Series D funding to continue expansion.",
+  "best_for": [
+    "Psychiatrists seeking W2 employment with benefits and admin support",
+    "Clinicians wanting telepsychiatry-only practice (100% virtual)",
+    "Board-certified psychiatrists comfortable with productivity-based incentives",
+    "Providers wanting AI scribe tools and operational efficiency"
+  ],
+  "not_for": [
+    "Psychiatrists seeking high base salary (base reportedly $120-150k before incentives)",
+    "Providers uncomfortable with 6+ new patient minimum daily + follow-ups",
+    "Clinicians who want transparent productivity calculations",
+    "Psychiatrists wanting to build independent private practice",
+    "Non-psychiatric mental health providers (psychiatry only)"
+  ],
+  "import_ref": {
+    "record_id": "PN-TALKIATRY",
+    "source_file": "provider-networks-research-2026",
+    "import_timestamp": "2026-08-30T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "provider-network-w2-employer",
+  "secondary_categories": [
+    "telepsychiatry",
+    "measurement-based-care"
+  ],
+  "capabilities": [
+    "video-sessions",
+    "e-prescribing",
+    "outcome-tracking",
+    "hipaa-compliant",
+    "ai-scribe"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist"
+    ],
+    "practice_settings": [
+      "telepsychiatry",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "enterprise-200-plus"
+    ],
+    "specialties": [
+      "psychiatry",
+      "mental-health"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": true,
+    "has_rcm": false,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "pricing": {
+    "model": "w2-employment",
+    "starting_price_display": "W2 Employment",
+    "free_tier": false,
+    "quote_required": false,
+    "notes": "Talkiatry is a W2 employer, not a contractor platform. Psychiatrists receive base salary plus productivity-based incentives.",
+    "last_verified": "2026-08-30"
+  },
+  "reimbursement_rates": {
+    "employment_model": "W2 with base + productivity",
+    "base_salary_range": "$120,000-$150,000 (reported base before incentives)",
+    "total_comp_range": "$325,000-$375,000+ OTE (South Carolina posting, Aug 2026)",
+    "average_total": "$324,000/year (physician-reported at 90% utilization)",
+    "hourly_range": "$131-$224/hour",
+    "glassdoor_comp_rating": "3.7/5 (above company average)",
+    "productivity_model": "RVU-based incentive pay on top of base"
+  },
+  "compensation_analysis": {
+    "effective_split": {
+      "psychiatrist_share": "~45-55%",
+      "company_share": "~45-55%",
+      "best_estimate": "~50/50 (47-50% to psychiatrist)",
+      "methodology": "Calculated from reported compensation ($324k) divided by estimated professional revenue generated at stated productivity expectations"
+    },
+    "productivity_expectations": {
+      "utilization_target": "90% of 37.5 patient-facing hours/week",
+      "clinical_hours_per_week": "33.75 completed clinical hours (at 90%)",
+      "intake_duration": "60 minutes",
+      "followup_duration": "30 minutes",
+      "daily_new_patients": "6+ new patients plus follow-ups"
+    },
+    "billing_codes_used": {
+      "intakes": "99204 + 90833 (E/M + psychotherapy add-on)",
+      "followups": "99214 + 90833 (E/M + psychotherapy add-on)",
+      "note": "Talkiatry tells patients to ask insurers about 99204 and 90833. Company incentivizes psychotherapy add-on code usage."
+    },
+    "revenue_calculation": {
+      "weekly_model": {
+        "intakes_per_week": 5,
+        "followups_per_week": 57.5,
+        "intake_reimbursement": "$270 average (99204 + 90833)",
+        "followup_reimbursement": "$214 average (99214 + 90833)",
+        "weekly_revenue_estimate": "$13,683",
+        "annual_revenue_estimate": "$643,000-$684,000 (47-50 weeks)"
+      },
+      "reimbursement_benchmarks": {
+        "source": "PayerPrice national negotiated-rate data",
+        "99214_average": "$130 (BCBS $130, UHC $125, Aetna $119, Cigna $145)",
+        "90833_average": "$85 (BCBS $73, UHC $74, Aetna $80, Cigna $111)",
+        "followup_total": "$214 average across major payers",
+        "intake_total": "$270 average (99204 + 90833)"
+      },
+      "talkiatry_negotiated_rates": {
+        "note": "Talkiatry claims 'better reimbursement rates' due to scale and single-specialty model",
+        "evidence": "One Empire BCBS EOB showed $410 allowed amount vs ~$270 benchmark (52% higher)",
+        "caveat": "Cannot assume all contracts pay above market from one datapoint"
+      }
+    },
+    "calculation_result": {
+      "at_benchmark_rates": "$324k comp ÷ $650k revenue = ~50% to psychiatrist",
+      "if_rates_15_percent_higher": "$324k comp ÷ $750k revenue = ~43% to psychiatrist",
+      "if_rates_25_percent_higher": "$324k comp ÷ $815k revenue = ~40% to psychiatrist",
+      "conclusion": "Effective split likely 45-55%, with best estimate around 47-50%"
+    },
+    "comparison_caveat": "W2 employment includes health/dental/vision premiums, malpractice, employer payroll taxes, 401(k) match, PTO, holidays, licensing costs, AI scribe, technology. 50% cash at Talkiatry is worth more than 50% on 1099, but meaningfully less than receiving 62% of collections plus comparable benefits.",
+    "sources": [
+      {
+        "type": "job_posting",
+        "source": "Ashby Jobs - South Carolina psychiatrist posting",
+        "url": "https://jobs.ashbyhq.com/talkiatry/369024c1-f136-4c03-a4a1-c7e52869aaca/",
+        "data": "$325,000-$375,000+ OTE, base + monthly productivity incentive"
+      },
+      {
+        "type": "physician_report",
+        "source": "Reddit r/Psychiatry, January 2025",
+        "url": "https://www.reddit.com/r/Psychiatry/comments/1ia5q2p",
+        "data": "$150k base, $324k total at 90% utilization of 37.5 hours"
+      },
+      {
+        "type": "patient_eob",
+        "source": "Reddit r/mentalhealth, 2026",
+        "url": "https://www.reddit.com/r/mentalhealth/comments/1lvugd6/talkiatry_bill_tf/",
+        "data": "$710 billed, $410 allowed amount (Empire BCBS)"
+      },
+      {
+        "type": "reimbursement_data",
+        "source": "PayerPrice",
+        "url": "https://payerprice.com/rates/90833-CPT-fee-schedule",
+        "data": "National negotiated rate averages for 99214, 99204, 90833"
+      },
+      {
+        "type": "employee_review",
+        "source": "Glassdoor, June 2026",
+        "url": "https://www.glassdoor.co.in/Reviews/Employee-Review-Talkiatry-E5847393-RVW105297004.htm",
+        "data": "Company makes money through psychotherapy add-on code, psychiatrists incentivized accordingly"
+      },
+      {
+        "type": "company_statement",
+        "source": "Talkiatry Help Center",
+        "url": "https://www.talkiatry.com/help-center-articles/how-much-will-my-visit-cost",
+        "data": "Most visits contain two codes: E/M and psychotherapy"
+      }
+    ],
+    "last_analyzed": "2026-08-30"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "notes": "HIPAA compliant with proprietary psychiatry EHR."
+  },
+  "integrations": [
+    {
+      "name": "100+ Insurers",
+      "slug": "insurers",
+      "category": "payer",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "In-network with 100+ insurers covering 170M+ lives"
+    }
+  ],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "fairness_rating": {
+    "overall_score": 68,
+    "grade": "B",
+    "breakdown": {
+      "pay_fairness": {
+        "score": 74,
+        "weight": 30,
+        "notes": "3.7/5 Glassdoor comp rating (above average). $324k average total comp. 17% above national psychiatrist average"
+      },
+      "credential_portability": {
+        "score": 0,
+        "weight": 20,
+        "notes": "Patients belong to Talkiatry platform. Cannot take them when you leave"
+      },
+      "compensation_transparency": {
+        "score": 55,
+        "weight": 15,
+        "notes": "Base salary + productivity unclear upfront. RVU calculations not fully transparent"
+      },
+      "rate_stability": {
+        "score": 65,
+        "weight": 15,
+        "notes": "Productivity-based pay creates some income variability. Time off reduces incentive pay"
+      },
+      "clinician_founded": {
+        "score": 100,
+        "weight": 10,
+        "notes": "Co-founded by Dr. Georgia Gaveras (board-certified psychiatrist)"
+      },
+      "payment_speed": {
+        "score": 85,
+        "weight": 5,
+        "notes": "Regular W2 payroll"
+      },
+      "benefits_protections": {
+        "score": 85,
+        "weight": 5,
+        "notes": "Full W2 benefits. AI scribe included. 90%+ provider retention rate"
+      }
+    },
+    "methodology": "HeyPsych Fairness Rating v1.0: Weighted score across pay fairness (30%), credential portability (20%), compensation transparency (15%), rate stability (15%), clinician-founded (10%), payment speed (5%), and benefits (5%). Scale: A (80-100), B (65-79), C (50-64), D (35-49), F (<35)."
+  },
+  "hidden_gotchas": {
+    "low_base_salary": {
+      "issue": "Base salary reportedly $120-150k before incentives",
+      "impact": "Total comp depends heavily on productivity incentives",
+      "context": "Advertised ranges ($272k-$467k) include productivity pay that requires high volume"
+    },
+    "productivity_requirements": {
+      "issue": "Expected to see 6+ new patients daily plus follow-ups",
+      "impact": "High volume expectations to maximize compensation",
+      "note": "Some reviews cite pressure to maintain patient volume"
+    },
+    "incentive_transparency": {
+      "issue": "RVU-based productivity calculations not fully transparent",
+      "impact": "Difficult to predict exact earnings",
+      "concern": "Some reviews mention lack of clarity in how productivity comp is calculated"
+    },
+    "time_off_impact": {
+      "issue": "Taking time off dramatically reduces incentive pay",
+      "impact": "Vacation and sick time can significantly reduce monthly income",
+      "note": "Productivity-based pay doesn't continue during time off"
+    },
+    "client_ownership": {
+      "issue": "Patients belong to Talkiatry, not you",
+      "impact": "Cannot take patients with you if you leave",
+      "note": "No ability to build independent referral base while employed"
+    }
+  },
+  "seo": {
+    "title": "Talkiatry for Psychiatrists: Employment Review & Compensation | HeyPsych",
+    "meta_description": "Talkiatry employs 800+ psychiatrists as W2 with 90% retention. Clinician co-founded. $324k average comp (3.7/5 rating). Honest review for psychiatrists considering Talkiatry.",
+    "faqs": [
+      {
+        "q": "How much do Talkiatry psychiatrists make?",
+        "a": "Talkiatry advertises $325,000-$375,000+ OTE (on-target earnings). A psychiatrist reported $324k total at 90% utilization of 37.5 patient-facing hours/week in January 2025, with $150k base. Our analysis suggests this works out to approximately 47-50% of generated professional revenue going to the psychiatrist (vs. ~62% at private practice contractor platforms). However, W2 benefits (health insurance, malpractice, 401k match, PTO, licensing) add significant value compared to 1099 arrangements."
+      },
+      {
+        "q": "Is Talkiatry clinician-founded?",
+        "a": "Yes, Talkiatry was co-founded by Dr. Georgia Gaveras (board-certified psychiatrist) and Robert Krayn (tech/business). As Dr. Gaveras says, 'He's the money, I'm the medicine.' She was named to Modern Healthcare's 50 Most Influential Clinical Executives 2025."
+      },
+      {
+        "q": "What is Talkiatry's compensation model?",
+        "a": "Talkiatry uses base salary (~$150k) plus productivity-based incentives. The expected workload is 37.5 patient-facing hours/week at 90% utilization—roughly 6+ new patients daily plus follow-ups. Billing uses 99214/99204 + 90833 (E/M plus psychotherapy add-on). Our analysis of publicly available data suggests the effective split is approximately 47-50% to the psychiatrist, 50-53% to Talkiatry. Taking time off reduces incentive pay."
+      },
+      {
+        "q": "What is Talkiatry's effective compensation split?",
+        "a": "Talkiatry doesn't disclose a fixed collections split like contractor platforms. Based on reported productivity expectations ($324k at 90% of 37.5 hours), visit structure (60-min intakes, 30-min follow-ups), and current reimbursement benchmarks, psychiatrist cash compensation appears to work out to roughly 47-50% of generated professional revenue. The uncertainty range is approximately 40-55% depending on Talkiatry's actual negotiated rates with payers. Evidence suggests Talkiatry may get above-market reimbursement due to scale."
+      },
+      {
+        "q": "What is Talkiatry's psychiatrist retention rate?",
+        "a": "Talkiatry reports 90%+ provider retention rate, compared to 30-40% industry average. This suggests above-average clinician satisfaction despite compensation concerns in some reviews."
+      }
+    ],
+    "keywords": [
+      "Talkiatry",
+      "Talkiatry psychiatrist salary",
+      "Talkiatry jobs",
+      "Talkiatry compensation split",
+      "Talkiatry pay",
+      "telepsychiatry employment",
+      "virtual psychiatry",
+      "Talkiatry compensation",
+      "Talkiatry vs private practice",
+      "Talkiatry reimbursement"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-30",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 93
+  },
+  "related_tools": [
+    "lifestance-health",
+    "cerebral",
+    "headway"
+  ],
+  "competitor_tools": [
+    "lifestance-health",
+    "cerebral"
+  ],
+  "company_info": {
+    "founded_year": 2019,
+    "headquarters": "New York, New York, USA",
+    "employee_count": "800+ psychiatrists",
+    "funding_status": "Series D",
+    "clinician_founded": true,
+    "founders": [
+      {
+        "name": "Robert Krayn",
+        "title": "Co-Founder & CEO",
+        "background": "Tech/business entrepreneur. Works with Dr. Gaveras as 'He's the money, I'm the medicine'",
+        "is_clinician": false
+      },
+      {
+        "name": "Dr. Georgia Gaveras",
+        "title": "Co-Founder & Chief Medical Officer",
+        "background": "Board-certified psychiatrist (DO). Named to Modern Healthcare's 50 Most Influential Clinical Executives 2025",
+        "is_clinician": true,
+        "credentials": ["DO", "Board-certified psychiatrist"]
+      }
+    ],
+    "funding": {
+      "total_raised": "$455M+",
+      "latest_round": "Series D",
+      "latest_round_amount": "$210M",
+      "latest_round_date": "February 2026",
+      "valuation": "Unicorn status",
+      "key_investors": ["Perceptive Advisors", "Sofina", "Andreessen Horowitz (a16z)", "blisce/", "Left Lane Capital"]
+    },
+    "notes": "CLINICIAN CO-FOUNDED by Dr. Georgia Gaveras (psychiatrist) and Robert Krayn (tech). Unlike most telepsychiatry platforms, W2 employment model with 90%+ retention. Named to TIME's World's Top HealthTech Companies 2025."
+  },
+  "created_at": "2026-08-30T00:00:00.000Z",
+  "updated_at": "2026-08-30T00:00:00.000Z",
+  "featured": true,
+  "status": "active"
+}

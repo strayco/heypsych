@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Entity } from "@/lib/types/database";
@@ -249,7 +250,7 @@ export function ProviderCard({
                 {data.bio && (
                   <div className="mt-4 border-t pt-4">
                     <h4 className="mb-2 text-sm font-semibold text-label-secondary">About</h4>
-                    <p className="line-clamp-2 text-sm text-label-secondary">{data.bio}</p>
+                    <p className="line-clamp-2 text-sm text-label-secondary"><ParsedContent content={data.bio} /></p>
                   </div>
                 )}
 

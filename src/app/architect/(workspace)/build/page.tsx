@@ -5,8 +5,8 @@
 
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { ArchitectWorkspace, type ArchitectInitialContext } from "../_components/ArchitectWorkspace";
-import { ArchitectLoading } from "../_components/ArchitectLoading";
+import { ArchitectWorkspace, type ArchitectInitialContext } from "../../_components/ArchitectWorkspace";
+import { ArchitectLoading } from "../../_components/ArchitectLoading";
 import { siteConfig } from "@/lib/config/site";
 
 const canonicalUrl = `${siteConfig.url}/architect/build`;

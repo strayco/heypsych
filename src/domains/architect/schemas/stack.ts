@@ -121,6 +121,26 @@ export const StackHistoryEntryZ = z.object({
 export type StackHistoryEntry = z.infer<typeof StackHistoryEntryZ>;
 
 // ============================================================================
+// ITEM DECISION (for practice area items)
+// ============================================================================
+
+export const ItemDecisionZ = z.enum([
+  "complete", // User marked as done (for foundational items)
+  "not-needed", // User marked as not relevant
+  "add-later", // User deferred for now
+]);
+
+export type ItemDecision = z.infer<typeof ItemDecisionZ>;
+
+export const ItemDecisionRecordZ = z.object({
+  itemKey: z.string(), // Format: "areaId:itemId"
+  decision: ItemDecisionZ,
+  setAt: z.string().datetime(),
+});
+
+export type ItemDecisionRecord = z.infer<typeof ItemDecisionRecordZ>;
+
+// ============================================================================
 // PRACTICE STACK
 // ============================================================================
 
@@ -140,8 +160,11 @@ export const PracticeStackZ = z.object({
   // Selected products
   selectedProducts: z.array(SelectedProductZ).default([]),
 
-  // User overrides
+  // User overrides for capabilities
   relevanceOverrides: z.array(RelevanceOverrideZ).default([]),
+
+  // User decisions for practice items (foundation completions, deferrals, not-needed)
+  itemDecisions: z.array(ItemDecisionRecordZ).default([]),
 
   // History for undo (limited to recent mutations)
   history: z.array(StackHistoryEntryZ).default([]),
@@ -188,6 +211,7 @@ export function createEmptyStack(): PracticeStack {
     },
     selectedProducts: [],
     relevanceOverrides: [],
+    itemDecisions: [],
     history: [],
     isDemoMode: false,
   };
@@ -300,4 +324,82 @@ export function parsePersistenceEnvelope(
     success: false,
     error: result.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "),
   };
+}
+
+// ============================================================================
+// ITEM DECISION HELPERS
+// ============================================================================
+
+/**
+ * Get the decision for a practice item
+ */
+export function getItemDecision(
+  stack: PracticeStack,
+  areaId: string,
+  itemId: string
+): ItemDecision | undefined {
+  const itemKey = `${areaId}:${itemId}`;
+  const record = stack.itemDecisions?.find((d) => d.itemKey === itemKey);
+  return record?.decision;
+}
+
+/**
+ * Set an item decision
+ */
+export function setItemDecision(
+  stack: PracticeStack,
+  areaId: string,
+  itemId: string,
+  decision: ItemDecision
+): PracticeStack {
+  const itemKey = `${areaId}:${itemId}`;
+  const existingIndex = (stack.itemDecisions || []).findIndex((d) => d.itemKey === itemKey);
+
+  const newRecord: ItemDecisionRecord = {
+    itemKey,
+    decision,
+    setAt: new Date().toISOString(),
+  };
+
+  let newDecisions: ItemDecisionRecord[];
+  if (existingIndex >= 0) {
+    newDecisions = [...(stack.itemDecisions || [])];
+    newDecisions[existingIndex] = newRecord;
+  } else {
+    newDecisions = [...(stack.itemDecisions || []), newRecord];
+  }
+
+  return {
+    ...stack,
+    itemDecisions: newDecisions,
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * Clear an item decision
+ */
+export function clearItemDecision(
+  stack: PracticeStack,
+  areaId: string,
+  itemId: string
+): PracticeStack {
+  const itemKey = `${areaId}:${itemId}`;
+  return {
+    ...stack,
+    itemDecisions: (stack.itemDecisions || []).filter((d) => d.itemKey !== itemKey),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * Get all items with a specific decision
+ */
+export function getItemsByDecision(
+  stack: PracticeStack,
+  decision: ItemDecision
+): string[] {
+  return (stack.itemDecisions || [])
+    .filter((d) => d.decision === decision)
+    .map((d) => d.itemKey);
 }

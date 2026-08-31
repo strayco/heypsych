@@ -1336,6 +1336,7 @@ export const CANONICAL_TREATMENT_SLUGS: ReadonlySet<string> = new Set([
   "reiki",
   "reishi-mushroom",
   "relationship-development-intervention",
+  "remoxipride",
   "restorative-yoga",
   "resveratrol",
   "rhodiola",

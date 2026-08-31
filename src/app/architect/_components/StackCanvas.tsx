@@ -345,7 +345,7 @@ export function StackCanvas({
                     )}
                     {display?.category && (
                       <span className="mt-2 inline-block rounded-full bg-fill-secondary px-2 py-0.5 text-xs text-label-tertiary">
-                        {display.category}
+                        {'categoryLabel' in display ? display.categoryLabel : display.category}
                       </span>
                     )}
                   </div>

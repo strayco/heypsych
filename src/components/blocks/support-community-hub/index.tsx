@@ -19,6 +19,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ParsedContent } from "@/components/ui/parsed-content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Entity } from "@/lib/types/database";
@@ -489,7 +490,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
 
                               {/* Description */}
                               <p className="mb-3 line-clamp-2 text-sm text-label-tertiary">
-                                {resource.description || "Support resource"}
+                                <ParsedContent content={resource.description || "Support resource"} />
                               </p>
 
                               {/* Conditions Tags */}
