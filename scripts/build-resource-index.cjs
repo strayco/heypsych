@@ -37,6 +37,13 @@ function scanDirectory(dirPath, category, subCategory) {
           continue;
         }
 
+        // Skip non-active files (draft, archived, pending-review)
+        if (content.status && content.status !== 'active') {
+          console.log(`⏭️  Skipping ${content.status}: ${file.name}`);
+          filesSkipped++;
+          continue;
+        }
+
         // Use slug if available, otherwise use id
         const resourceSlug = content.slug || content.id;
 

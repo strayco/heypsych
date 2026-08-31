@@ -155,29 +155,26 @@ function validateStatus() {
   results.total++;
 
   const files = getAllResourceFiles(DATA_DIR);
-  let draftCount = 0;
-  let archivedCount = 0;
+  const VALID_STATUSES = ['active', 'draft', 'archived', 'pending-review'];
+  let nonActiveCount = 0;
 
   files.forEach(file => {
     const data = readJsonFile(file);
     if (!data) return;
 
-    if (data.status === 'draft') {
-      warning(`Draft resource found: ${path.relative(DATA_DIR, file)}`);
-      draftCount++;
-    } else if (data.status === 'archived') {
-      warning(`Archived resource found: ${path.relative(DATA_DIR, file)}`);
-      archivedCount++;
-    } else if (data.status !== 'active') {
+    if (!VALID_STATUSES.includes(data.status)) {
       error(`Invalid status "${data.status}": ${path.relative(DATA_DIR, file)}`);
+    } else if (data.status !== 'active') {
+      warning(`Non-active resource (${data.status}): ${path.relative(DATA_DIR, file)}`);
+      nonActiveCount++;
     }
   });
 
-  if (draftCount === 0 && archivedCount === 0) {
+  if (nonActiveCount === 0) {
     success(`Status Validation: All resources have status "active"`);
   } else {
-    warning(`Found ${draftCount} draft and ${archivedCount} archived resources`);
-    success(`Status Validation: No invalid statuses found`);
+    warning(`Found ${nonActiveCount} non-active resources (excluded from index)`);
+    success(`Status Validation: All statuses are valid`);
   }
 }
 
