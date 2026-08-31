@@ -2,7 +2,6 @@
 // This bypasses Supabase PostgREST overhead for ~10x faster queries
 
 import { Pool } from 'pg';
-import * as fs from 'fs';
 
 /**
  * Get SSL configuration for database connection
@@ -16,10 +15,13 @@ import * as fs from 'fs';
  * https://supabase.com/docs/guides/platform/ssl-enforcement
  */
 function getSslConfig(): { rejectUnauthorized: boolean; ca?: string } {
-  // Check for CA certificate file path
+  // Check for CA certificate file path (lazy-load fs to avoid bundling issues)
   const caPath = process.env.DATABASE_CA_PATH || process.env.SUPABASE_CA_PATH;
   if (caPath) {
     try {
+      // Dynamic require to avoid bundling fs for all environments
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const fs = require('fs');
       const ca = fs.readFileSync(caPath, 'utf-8');
       return { rejectUnauthorized: true, ca };
     } catch (err) {

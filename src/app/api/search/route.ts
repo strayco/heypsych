@@ -190,6 +190,7 @@ export async function GET(req: NextRequest) {
         message: dbError.message,
         code: dbError.code,
         name: dbError.name,
+        stack: dbError.stack?.split('\n').slice(0, 3).join(' | '),
         query: searchTerm,
       });
 
@@ -234,11 +235,24 @@ export async function GET(req: NextRequest) {
 
       return NextResponse.json(response);
     }
-  } catch (error) {
+  } catch (error: any) {
     const loadTime = Date.now() - startTime;
-    logger.error("Search failed", error, { loadTime });
+    logger.error("Search failed completely", error, {
+      loadTime,
+      message: error?.message,
+      code: error?.code,
+      stack: error?.stack?.split('\n').slice(0, 5).join(' | '),
+    });
 
-    return NextResponse.json({ error: "Search failed. Please try again." }, { status: 500 });
+    // Return empty results instead of 500 for better UX
+    return NextResponse.json({
+      conditions: { results: [], totalCount: 0, hasMore: false },
+      treatments: { results: [], totalCount: 0, hasMore: false },
+      resources: { results: [], totalCount: 0, hasMore: false },
+      loadTimeMs: loadTime,
+      fallbackUsed: true,
+      error: "Search temporarily unavailable",
+    });
   }
 }
 
