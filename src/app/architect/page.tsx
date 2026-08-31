@@ -298,7 +298,7 @@ export default function ArchitectEntryPage() {
           <p className="text-sm text-label-tertiary">
             Practice Architect™ uses transparent, deterministic scoring.
             All recommendations are based on your practice profile —{" "}
-            <Link href="/tools/for-clinicians/" className="text-accent hover:underline">
+            <Link href="/about/review-methodology" className="text-accent hover:underline">
               learn more about our methodology
             </Link>
             .

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "January 2025";
+  const lastUpdated = "August 2026";
 
   return (
     <div className="space-y-8">
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
             <p className="text-sm text-gray-700">
               <strong>Important:</strong> HeyPsych does not collect, store, or process personal
               health information (PHI) or protected health information as defined by HIPAA. We are
-              an informational resource only and do not provide medical services or maintain health
+              a decision-support platform and do not provide medical services or maintain health
               records.
             </p>
           </div>

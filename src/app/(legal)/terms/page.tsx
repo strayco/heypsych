@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const lastUpdated = "January 2025";
+  const lastUpdated = "August 2026";
 
   return (
     <div className="space-y-8">
@@ -39,7 +39,7 @@ export default function TermsPage() {
               <strong>Important Medical Disclaimer:</strong>
             </p>
             <ul className="ml-4 list-inside list-disc space-y-1 text-sm text-gray-700">
-              <li>HeyPsych is an informational resource only</li>
+              <li>HeyPsych is a decision-support platform, not a medical provider</li>
               <li>We do not provide medical advice, diagnosis, or treatment</li>
               <li>Information on this site should not replace professional medical advice</li>
               <li>Always consult with qualified healthcare providers for medical decisions</li>

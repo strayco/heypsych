@@ -83,10 +83,10 @@ export function Footer() {
               />
             </div>
             <p className="mb-6 max-w-xs text-sm leading-relaxed text-label-secondary">
-              Understand your mental health. Explore your options. Find your next step.
+              Better mental health starts with better decisions.
             </p>
             <p className="text-xs text-label-tertiary">
-              Evidence-based information reviewed by mental health professionals.
+              Decision-support reviewed by mental health professionals.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ export function Footer() {
               © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
             <p className="text-xs text-label-quaternary">
-              HeyPsych provides educational information only. Not a substitute for professional medical advice.
+              HeyPsych provides decision-support information. Not a substitute for professional medical advice.
             </p>
           </div>
         </div>

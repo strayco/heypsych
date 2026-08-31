@@ -136,27 +136,27 @@ export default async function ForCliniciansPage() {
                     Practice Architect™
                   </p>
                   <h2 className="mt-2 text-2xl font-bold text-label-primary">
-                    Build Your Ideal Tech Stack
+                    Build Your Practice Tech Stack
                   </h2>
                   <p className="mt-3 text-label-secondary">
-                    Answer a few questions about your practice and get personalized recommendations with transparent fit scores and real pricing.
+                    Explore tools organized by practice lifecycle—from front door to back office. Compare options with transparent pricing and see how they fit together.
                   </p>
                   <ul className="mt-4 grid gap-2 text-sm text-label-secondary sm:grid-cols-2">
                     <li className="flex items-center gap-2">
                       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
-                      Personalized recommendations
+                      6 lifecycle stages
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
-                      Transparent fit scores
+                      40+ capabilities
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
+                      Side-by-side comparisons
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
                       Real pricing data
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-treatment/10 text-xs font-medium text-treatment">✓</span>
-                      No account required
                     </li>
                   </ul>
                 </div>
@@ -166,7 +166,7 @@ export default async function ForCliniciansPage() {
                 >
                   <span className="text-sm font-medium text-white/80">Practice Architect™</span>
                   <span className="mt-1 flex items-center gap-2 text-lg font-semibold text-white">
-                    Build your ideal tech stack
+                    Start building
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>
