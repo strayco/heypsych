@@ -148,9 +148,34 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   "accounting": ["accounting"],
   "bookkeeping": ["accounting"],
   "payroll": ["payroll-compensation"],
+  "payroll-compensation": ["payroll-compensation"],
   "clearinghouse": ["clearinghouse"],
   "patient-financing": ["patient-financing"],
   "payment-plans": ["patient-financing"],
+
+  // ============================================================================
+  // Growth & Marketing → GROW
+  // ============================================================================
+  "patient-acquisition": ["patient-acquisition"],
+  "crm-lead-management": ["crm-lead-management"],
+  "reputation-reviews": ["reputation-reviews"],
+  "referral-management": ["referral-management"],
+
+  // ============================================================================
+  // Analytics & Operations → OPERATE
+  // ============================================================================
+  "analytics-bi": ["analytics-bi"],
+  "quality-assurance": ["quality-assurance"],
+  "compliance-security": ["compliance-security"],
+  "workforce-management": ["workforce-management"],
+
+  // ============================================================================
+  // Care → CARE
+  // ============================================================================
+  "telehealth": ["telehealth"],
+  "ehr-clinical-record": ["ehr-clinical-record"],
+  "billing-rcm": ["billing-rcm"],
+  "coding": ["coding"],
 };
 
 /**
@@ -175,30 +200,16 @@ export const ARCHITECT_TO_V4_CAPABILITY_MAP: Record<CapabilityId, string[]> = ((
 /**
  * Architect capabilities with no V4 equivalent
  * These require explicit Architect metadata or are new concepts
+ * NOTE: Most capabilities now have identity mappings in the map above
  */
 export const ARCHITECT_ONLY_CAPABILITIES: CapabilityId[] = [
-  // GROW
-  "patient-acquisition",
-  "crm-lead-management",
-  "reputation-reviews",
-
-  // ACCESS
+  // ACCESS - these are newer capabilities not yet in V4 schema
   "screening-triage",
   "provider-matching",
   "waitlist-management",
 
   // ENGAGE
   "phone-contact-center",
-
-  // CARE
-  "ehr-clinical-record", // Core EHR, not a feature
-
-  // REVENUE
-  "billing-rcm", // Composite
-
-  // OPERATE
-  "workforce-management",
-  "quality-assurance",
 ];
 
 /**
