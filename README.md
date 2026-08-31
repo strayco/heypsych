@@ -1,4 +1,4 @@
-# HeyPsych - Mental Health Treatment Education Platform
+# HeyPsych - Mental Health Decision Platform
 
 **Status:** ✅ Production Ready
 **Version:** 0.1.0
@@ -8,7 +8,12 @@
 
 ## Overview
 
-HeyPsych is a comprehensive mental health education platform providing evidence-based information about mental health conditions, treatments, resources, and providers. Built with modern web technologies for performance, accessibility, and scalability.
+HeyPsych is a mental health decision-support platform. We help people make better mental health decisions.
+
+- **For patients:** Find the right care, apps, and treatments
+- **For clinicians:** Build the right practice stack with transparent pricing
+
+Filter: "Does this help someone make a decision?"
 
 ### Key Features
 

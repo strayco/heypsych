@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "HeyPsych",
-  description: "Navigate your mental health journey. Understand conditions, explore treatments, find tools, and connect with care.",
+  description: "Make better mental health decisions. For patients: find the right care, apps, and treatments. For clinicians: build the right practice stack with transparent pricing.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   email: "hello@heypsych.com",
 

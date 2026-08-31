@@ -3,23 +3,23 @@ import Link from "next/link";
 import { Search, ChevronRight } from "lucide-react";
 import { AudienceGateway } from "@/components/home/AudienceGateway";
 
-// SEO-optimized metadata - Mission FIX 3 dual-audience positioning
+// SEO-optimized metadata - Decision platform positioning
 export const metadata: Metadata = {
-  title: "HeyPsych - Mental Health for Everyone Involved",
+  title: "HeyPsych - Make Better Mental Health Decisions",
   description:
-    "Mental health resources for patients, families, and clinicians. Understand conditions, compare treatments, find care, or discover EHR and practice tools. Evidence-based information to help you take the next step.",
+    "Make better mental health decisions. For patients: find the right care, apps, and treatments. For clinicians: build the right practice stack with transparent pricing.",
   openGraph: {
-    title: "HeyPsych - Mental Health for Everyone Involved",
+    title: "HeyPsych - Make Better Mental Health Decisions",
     description:
-      "Mental health resources for patients and clinicians. Understand conditions, find care, or discover practice tools.",
+      "Make better mental health decisions. Find the right care, compare treatments, or build your practice stack with transparent pricing.",
     type: "website",
     url: "https://heypsych.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HeyPsych - Mental Health for Everyone Involved",
+    title: "HeyPsych - Make Better Mental Health Decisions",
     description:
-      "Resources for patients seeking care and clinicians running practices.",
+      "Make better mental health decisions. For patients and clinicians.",
   },
 };
 
@@ -37,11 +37,11 @@ const organizationSchema = {
     height: 64,
   },
   description:
-    "Mental health for everyone involved. Resources for patients seeking understanding and care, and clinicians running mental health practices.",
+    "A mental health decision-support platform. Helps patients find the right care, apps, and treatments. Helps clinicians build the right practice stack with transparent pricing.",
   sameAs: ["https://twitter.com/heypsych", "https://linkedin.com/company/heypsych"],
 };
 
-// WebSite schema with dual-audience focus
+// WebSite schema - Decision platform
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -49,7 +49,7 @@ const websiteSchema = {
   name: "HeyPsych",
   url: "https://heypsych.com",
   description:
-    "Mental health for everyone involved. Patients can understand conditions and find care. Clinicians can discover EHR and practice management tools.",
+    "A mental health decision-support platform. Patients find the right care, apps, and treatments. Clinicians build the right practice stack with transparent pricing.",
   publisher: {
     "@id": "https://heypsych.com/#organization",
   },
@@ -64,14 +64,13 @@ const websiteSchema = {
 };
 
 /**
- * Homepage - Dual-audience positioning (Mission FIX 3)
+ * Homepage - Decision platform positioning
  *
- * HeyPsych serves two audiences with equal prominence:
- * - Patients & families seeking mental health understanding and care
- * - Clinicians seeking EHR and practice management tools
+ * HeyPsych is a mental health decision-support platform serving:
+ * - Patients making decisions about care, apps, treatments, and providers
+ * - Clinicians making decisions about EHR, billing, and practice stack
  *
- * The AudienceGateway replaces the traditional hero, with H1:
- * "Mental health, for everyone involved."
+ * Filter: "Does this help someone make a decision?"
  */
 export default function HomePage() {
   return (
@@ -159,7 +158,7 @@ export default function HomePage() {
         <section className="border-t border-separator bg-surface-grouped px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm leading-relaxed text-label-tertiary">
-              HeyPsych provides educational information about mental health. This is not a substitute
+              HeyPsych provides decision-support information about mental health. This is not a substitute
               for professional medical advice. Always consult a qualified healthcare provider.
             </p>
           </div>
