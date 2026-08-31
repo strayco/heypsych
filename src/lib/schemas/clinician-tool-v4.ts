@@ -41,6 +41,9 @@ export const ClinicianProductCategoryZ = z.enum([
   "analytics-reporting",
   "care-coordination-referrals",
   "malpractice-insurance",
+  // Architect practice area categories
+  "marketing-patient-acquisition",
+  "clinical-supervision",
 ]);
 
 /**
@@ -66,6 +69,9 @@ export const CLINICIAN_PRODUCT_CATEGORY_LABELS: Record<
   "analytics-reporting": "Analytics & Reporting",
   "care-coordination-referrals": "Care Coordination & Referrals",
   "malpractice-insurance": "Malpractice Insurance",
+  // Architect practice area categories
+  "marketing-patient-acquisition": "Marketing & Patient Acquisition",
+  "clinical-supervision": "Clinical Supervision",
 };
 
 /**
@@ -92,6 +98,9 @@ export const SCHEMA_TO_TAXONOMY_CATEGORY: Record<
   "analytics-reporting": "analytics-reporting",
   "care-coordination-referrals": "care-coordination",
   "malpractice-insurance": "malpractice-insurance",
+  // Architect practice area categories
+  "marketing-patient-acquisition": "marketing-patient-acquisition",
+  "clinical-supervision": "clinical-supervision",
 };
 
 /**
@@ -114,8 +123,10 @@ export const TAXONOMY_TO_SCHEMA_CATEGORIES: Record<string, z.infer<typeof Clinic
   "analytics-reporting": ["analytics-reporting"],
   "care-coordination": ["care-coordination-referrals"],
   "malpractice-insurance": ["malpractice-insurance"],
+  // Architect practice area categories
+  "marketing-patient-acquisition": ["marketing-patient-acquisition"],
+  "clinical-supervision": ["clinical-supervision"],
   // Categories with no current tool data mapping (need new tools)
-  "marketing-patient-acquisition": [],
   "digital-therapeutics": [], // Could map from measurement-outcomes-dtx
 };
 
@@ -318,6 +329,25 @@ export const CapabilitySlugZ = z.enum([
   "audit-logging",
   "consent-management",
   "sso-authentication",
+
+  // Architect Practice Area Capabilities
+  // Growth
+  "patient-acquisition",
+  "reputation-reviews",
+  "referral-management",
+  "crm-lead-management",
+  // Operations
+  "accounting",
+  "payroll-compensation",
+  "clinical-supervision",
+  "quality-assurance",
+  "analytics-bi",
+  "compliance-security",
+  "workforce-management",
+  // Care
+  "telehealth",
+  "billing-rcm",
+  "coding",
 ]);
 
 // ============================================================================
