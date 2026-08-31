@@ -128,27 +128,36 @@ export async function checkRateLimit(
   }
 
   const ip = getClientIp(req);
-  const { success, limit, reset } = await limiter.limit(ip);
 
-  if (!success) {
-    const retryAfter = Math.ceil((reset - Date.now()) / 1000);
+  try {
+    const { success, limit, reset } = await limiter.limit(ip);
 
-    return NextResponse.json(
-      {
-        error: "Too many requests",
-        message: "You have exceeded the rate limit. Please try again later.",
-        retryAfter,
-      },
-      {
-        status: 429,
-        headers: {
-          "X-RateLimit-Limit": limit.toString(),
-          "X-RateLimit-Remaining": "0",
-          "X-RateLimit-Reset": new Date(reset).toISOString(),
-          "Retry-After": retryAfter.toString(),
+    if (!success) {
+      const retryAfter = Math.ceil((reset - Date.now()) / 1000);
+
+      return NextResponse.json(
+        {
+          error: "Too many requests",
+          message: "You have exceeded the rate limit. Please try again later.",
+          retryAfter,
         },
-      }
-    );
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": limit.toString(),
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": new Date(reset).toISOString(),
+            "Retry-After": retryAfter.toString(),
+          },
+        }
+      );
+    }
+  } catch (error) {
+    // Fail open: if rate limiter is unreachable (DNS, network, etc.), allow request
+    // This prevents rate limiter outages from taking down the entire API
+    console.error("[rate-limit] Redis connection failed, allowing request:",
+      error instanceof Error ? error.message : error);
+    return null;
   }
 
   // Request allowed
