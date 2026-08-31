@@ -12,82 +12,97 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
 
-// Only create Redis client if environment variables are set
+// Lazy initialization - Redis client created on first use
 let redis: Redis | null = null;
 let isRateLimitEnabled = false;
+let rateLimitInitialized = false;
+let rateLimitHealthy = true;
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-  redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
-  });
-  isRateLimitEnabled = true;
+/**
+ * Initialize Redis client lazily to avoid blocking module load
+ * and to allow health checks before enabling rate limiting
+ */
+function initializeRedis(): Redis | null {
+  if (rateLimitInitialized) {
+    return rateLimitHealthy ? redis : null;
+  }
+  rateLimitInitialized = true;
+
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (!url || !token) {
+    return null;
+  }
+
+  try {
+    redis = new Redis({ url, token });
+    isRateLimitEnabled = true;
+    return redis;
+  } catch (error) {
+    console.error("[rate-limit] Failed to initialize Redis client:", error);
+    rateLimitHealthy = false;
+    return null;
+  }
 }
 
 /**
- * Create rate limiters for different use cases
- * If Redis is not configured, rate limiting is disabled (development mode)
+ * Mark rate limiting as unhealthy after connection failures
+ * This prevents repeated connection attempts to a broken instance
+ */
+function markRateLimitUnhealthy() {
+  rateLimitHealthy = false;
+  isRateLimitEnabled = false;
+}
+
+/**
+ * Create rate limiters lazily on first use
+ * If Redis is not configured or unhealthy, returns null
  */
 
-// Newsletter: Very restrictive to prevent spam
-export const newsletterRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(5, "1 h"), // 5 requests per hour per IP
-      analytics: true,
-      prefix: "ratelimit:newsletter",
-    })
-  : null;
+// Cache for rate limiters - created on first use
+const rateLimiters: Record<string, Ratelimit | null> = {};
 
-// Provider search: Moderate to prevent database overload
-export const searchRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(60, "1 m"), // 60 requests per minute
-      analytics: true,
-      prefix: "ratelimit:search",
-    })
-  : null;
+function getRateLimiter(
+  name: string,
+  windowRequests: number,
+  windowDuration: string
+): Ratelimit | null {
+  if (!rateLimitHealthy) return null;
 
-// General API: Generous but prevents abuse
-export const apiRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(100, "1 m"), // 100 requests per minute
-      analytics: true,
-      prefix: "ratelimit:api",
-    })
-  : null;
+  if (!(name in rateLimiters)) {
+    const redisClient = initializeRedis();
+    if (!redisClient) {
+      rateLimiters[name] = null;
+    } else {
+      rateLimiters[name] = new Ratelimit({
+        redis: redisClient,
+        limiter: Ratelimit.slidingWindow(windowRequests, windowDuration as any),
+        analytics: true,
+        prefix: `ratelimit:${name}`,
+      });
+    }
+  }
+  return rateLimiters[name];
+}
 
-// Admin login: Very strict to prevent brute force
-export const loginRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(5, "15 m"), // 5 attempts per 15 minutes
-      analytics: true,
-      prefix: "ratelimit:login",
-    })
-  : null;
+// Newsletter: Very restrictive to prevent spam (5 requests per hour per IP)
+export const newsletterRateLimit = { get: () => getRateLimiter("newsletter", 5, "1 h") };
 
-// Demo requests: Restrictive to prevent email spam
-export const demoRequestRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(5, "1 h"), // 5 per hour per IP
-      analytics: true,
-      prefix: "ratelimit:demo",
-    })
-  : null;
+// Provider search: Moderate to prevent database overload (60 requests per minute)
+export const searchRateLimit = { get: () => getRateLimiter("search", 60, "1 m") };
 
-// Lead capture: Moderate restriction
-export const leadCaptureRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(10, "1 h"), // 10 per hour per IP
-      analytics: true,
-      prefix: "ratelimit:leads",
-    })
-  : null;
+// General API: Generous but prevents abuse (100 requests per minute)
+export const apiRateLimit = { get: () => getRateLimiter("api", 100, "1 m") };
+
+// Admin login: Very strict to prevent brute force (5 attempts per 15 minutes)
+export const loginRateLimit = { get: () => getRateLimiter("login", 5, "15 m") };
+
+// Demo requests: Restrictive to prevent email spam (5 per hour per IP)
+export const demoRequestRateLimit = { get: () => getRateLimiter("demo", 5, "1 h") };
+
+// Lead capture: Moderate restriction (10 per hour per IP)
+export const leadCaptureRateLimit = { get: () => getRateLimiter("leads", 10, "1 h") };
 
 /**
  * Get client IP from request headers
@@ -108,6 +123,9 @@ export function getClientIp(req: NextRequest): string {
   return "unknown";
 }
 
+/** Rate limiter getter type */
+type RateLimiterGetter = { get: () => Ratelimit | null };
+
 /**
  * Apply rate limit to API route
  * Returns null if request is allowed, or NextResponse with 429 if rate limited
@@ -117,10 +135,13 @@ export function getClientIp(req: NextRequest): string {
  */
 export async function checkRateLimit(
   req: NextRequest,
-  limiter: Ratelimit | null
+  limiterGetter: RateLimiterGetter
 ): Promise<NextResponse | null> {
-  // If rate limiting is not enabled (no Redis configured), allow all requests
-  if (!isRateLimitEnabled || !limiter) {
+  // Get limiter lazily - may return null if Redis is not configured or unhealthy
+  const limiter = limiterGetter.get();
+
+  // If rate limiting is not available, allow all requests
+  if (!limiter) {
     if (process.env.NODE_ENV === "development") {
       console.log("⚠️  Rate limiting disabled - configure Upstash Redis for production");
     }
@@ -154,9 +175,10 @@ export async function checkRateLimit(
     }
   } catch (error) {
     // Fail open: if rate limiter is unreachable (DNS, network, etc.), allow request
-    // This prevents rate limiter outages from taking down the entire API
-    console.error("[rate-limit] Redis connection failed, allowing request:",
+    // Mark as unhealthy to avoid repeated connection attempts
+    console.error("[rate-limit] Redis connection failed, disabling rate limiting:",
       error instanceof Error ? error.message : error);
+    markRateLimitUnhealthy();
     return null;
   }
 
@@ -179,12 +201,13 @@ export async function checkRateLimit(
  */
 export async function checkRateLimitStrict(
   req: NextRequest,
-  limiter: Ratelimit | null
+  limiterGetter: RateLimiterGetter
 ): Promise<NextResponse | null> {
   const isProduction = process.env.NODE_ENV === "production";
+  const limiter = limiterGetter.get();
 
   // FAIL CLOSED: In production, rate limiting MUST be enabled
-  if (!isRateLimitEnabled || !limiter) {
+  if (!limiter) {
     if (isProduction) {
       console.error("SECURITY: Rate limiting not configured - blocking admin request");
       return NextResponse.json(
@@ -198,7 +221,7 @@ export async function checkRateLimitStrict(
   }
 
   // Apply standard rate limiting
-  return checkRateLimit(req, limiter);
+  return checkRateLimit(req, limiterGetter);
 }
 
 /**
