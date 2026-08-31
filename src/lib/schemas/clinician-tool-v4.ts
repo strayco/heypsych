@@ -40,6 +40,7 @@ export const ClinicianProductCategoryZ = z.enum([
   "compliance-consent-security",
   "analytics-reporting",
   "care-coordination-referrals",
+  "malpractice-insurance",
 ]);
 
 /**
@@ -64,6 +65,7 @@ export const CLINICIAN_PRODUCT_CATEGORY_LABELS: Record<
   "compliance-consent-security": "Compliance, Consent & Security",
   "analytics-reporting": "Analytics & Reporting",
   "care-coordination-referrals": "Care Coordination & Referrals",
+  "malpractice-insurance": "Malpractice Insurance",
 };
 
 /**
@@ -89,6 +91,7 @@ export const SCHEMA_TO_TAXONOMY_CATEGORY: Record<
   "compliance-consent-security": "compliance-security",
   "analytics-reporting": "analytics-reporting",
   "care-coordination-referrals": "care-coordination",
+  "malpractice-insurance": "malpractice-insurance",
 };
 
 /**
@@ -110,6 +113,7 @@ export const TAXONOMY_TO_SCHEMA_CATEGORIES: Record<string, z.infer<typeof Clinic
   "compliance-security": ["compliance-consent-security"],
   "analytics-reporting": ["analytics-reporting"],
   "care-coordination": ["care-coordination-referrals"],
+  "malpractice-insurance": ["malpractice-insurance"],
   // Categories with no current tool data mapping (need new tools)
   "marketing-patient-acquisition": [],
   "digital-therapeutics": [], // Could map from measurement-outcomes-dtx
@@ -604,6 +608,7 @@ export const ClinicianToolV4Z = z.object({
   demo_url: z.string().url().optional(),
   pricing_url: z.string().url().optional(),
   support_url: z.string().url().optional(),
+  affiliate_url: z.string().url().optional(), // Affiliate link for monetization
 
   // Logo and media
   logo_url: z.string().url().optional(),

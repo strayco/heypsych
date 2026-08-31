@@ -382,8 +382,13 @@ export default async function ToolDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Demo Request CTA */}
-              <ProductDemoCTA toolSlug={tool.slug} toolName={tool.name} />
+              {/* CTA: Affiliate Link > Website > Demo Request */}
+              <ProductDemoCTA
+                toolSlug={tool.slug}
+                toolName={tool.name}
+                affiliateUrl={tool.affiliate_url}
+                websiteUrl={tool.website_url}
+              />
             </div>
           </div>
         </section>

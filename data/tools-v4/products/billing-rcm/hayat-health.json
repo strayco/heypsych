@@ -1,0 +1,210 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "f8a91c2e-4d7b-4e9f-a3c8-9b2e6f1d8a5c",
+  "slug": "hayat-health",
+  "name": "Hayat Health",
+  "one_liner": "Bundled RCM and credentialing services with tiered pricing (3-5% of collections) and a 97% collection guarantee.",
+  "short_description": "Full-service RCM and credentialing for mental health. Tiered pricing (3-5%), 97% collection guarantee, credentialing included free.",
+  "import_ref": {
+    "record_id": "MH-0750",
+    "source_row": 751,
+    "import_timestamp": "2026-08-31T00:00:00.000Z",
+    "source_file": "manual-entry"
+  },
+  "best_for": [
+    "Mental health practices seeking bundled RCM + credentialing",
+    "Group practices with high monthly collections ($100k+)",
+    "Practices wanting performance-based billing (% of collections)",
+    "Providers needing ongoing credentialing support"
+  ],
+  "not_for": [
+    "Solo practitioners with very low volume",
+    "Practices wanting flat-fee billing",
+    "Those needing only software (not services)"
+  ],
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "billing-rcm-insurance",
+  "secondary_categories": ["credentialing-workforce"],
+  "capabilities": ["claims-submission", "eligibility-verification", "denial-management"],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ],
+    "specialties": []
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "revenue-share",
+    "starting_price_display": "3-5% of collections",
+    "free_tier": false,
+    "quote_required": true,
+    "tiers": [
+      {
+        "name": "First $100k/month",
+        "price": "5% of collections"
+      },
+      {
+        "name": "$100k-$300k/month",
+        "price": "4% of collections"
+      },
+      {
+        "name": "Above $300k/month",
+        "price": "3% of collections"
+      },
+      {
+        "name": "Standalone Credentialing (one-time)",
+        "price": "$150/provider/payer"
+      },
+      {
+        "name": "Credentialing Retainer (up to 10 providers)",
+        "price": "$1,600/month"
+      }
+    ],
+    "notes": "Credentialing included free with RCM engagement. 97% collection guarantee - fee reduced proportionally if collections fall below 97%. Tiered pricing means blended rate decreases as volume increases. Example: $500k/month = 3.8% blended rate.",
+    "last_verified": "2026-08-31"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "notes": "RCM service handling PHI requires HIPAA compliance and BAA."
+  },
+  "integrations": [],
+  "platforms": {
+    "ios": false,
+    "android": false,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "features": {
+    "rcm": {
+      "benefit_verification": true,
+      "certified_coding": true,
+      "claim_submission": true,
+      "payment_posting": true,
+      "ar_resolution": true,
+      "denial_management": true,
+      "patient_collections": true,
+      "reporting_analytics": true,
+      "six_specialized_teams": true,
+      "full_service_model": true,
+      "hybrid_support_model": true
+    },
+    "credentialing": {
+      "initial_enrollment": true,
+      "revalidations": true,
+      "caqh_maintenance": true,
+      "pecos": true,
+      "medicaid": true,
+      "commercial_payers": true,
+      "network_relations": true,
+      "license_tracking": true,
+      "primary_source_verification": true
+    },
+    "add_ons": {
+      "ai_call_center_24_7": true,
+      "online_presence_management": true,
+      "staffing_services": true,
+      "office_support": true,
+      "discounted_ehr_access": true
+    }
+  },
+  "seo": {
+    "title": "Hayat Health: RCM & Credentialing Review | HeyPsych",
+    "meta_description": "Hayat Health RCM with tiered pricing (3-5%), 97% collection guarantee, and free credentialing. Compare options.",
+    "faqs": [
+      {
+        "q": "Is credentialing included with Hayat Health's RCM?",
+        "a": "Yes, credentialing is included at no additional charge with all RCM engagements. This covers initial enrollment, revalidations, CAQH maintenance, and payer relations."
+      },
+      {
+        "q": "What is Hayat Health's collection guarantee?",
+        "a": "Hayat Health guarantees 97% collection performance. If collections fall below 97%, their fee is reduced proportionally - for example, a 4.5% fee becomes 3.5% if collections drop to 96%."
+      },
+      {
+        "q": "How does Hayat Health's tiered pricing work?",
+        "a": "Pricing is based on monthly collections: 5% on the first $100k, 4% on $100k-$300k, and 3% above $300k. A practice collecting $500k/month pays a blended rate of about 3.8%."
+      },
+      {
+        "q": "Can I get credentialing without full RCM?",
+        "a": "Yes, Hayat Health offers standalone credentialing at $150 per provider per payer (one-time), or a $1,600/month retainer for up to 10 providers with unlimited support."
+      },
+      {
+        "q": "What RCM teams does Hayat Health have?",
+        "a": "Six specialized teams: Benefit Verification, Certified Coding, Claim Submission, A/R Resolution, Denial Recovery, and Reporting & Quality Management. Each team's output feeds the next."
+      },
+      {
+        "q": "Does Hayat Health offer a hybrid billing model?",
+        "a": "Yes, they offer both Full-Service RCM (they own the complete revenue cycle) and a Hybrid/Support Model where they reinforce your existing billing team by handling backlogs, denials, coding review, or credentialing."
+      },
+      {
+        "q": "What add-on services does Hayat Health offer?",
+        "a": "Optional add-ons include: 24/7 AI-powered call center, online presence management (SEO, social media, reviews), staffing services (hiring, HR, payroll), specialized office support, and access to deeply discounted EHR pricing through their partner network."
+      }
+    ],
+    "keywords": [
+      "Hayat Health",
+      "mental health billing",
+      "RCM services",
+      "credentialing services",
+      "medical billing",
+      "revenue cycle management",
+      "CAQH management",
+      "payer enrollment"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-31",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
+  },
+  "related_tools": [
+    "plutus-health"
+  ],
+  "competitor_tools": [
+    "plutus-health"
+  ],
+  "company_info": {
+    "headquarters": "Glenview, Illinois",
+    "founded": null,
+    "funding_status": "Private",
+    "notes": "Chicago-area RCM and office management company. Offers integrated billing, credentialing, IT, marketing, and accounting services for medical practices."
+  },
+  "website_url": "https://hayathealth.us",
+  "affiliate_url": "https://hayathealth.us/?ref=heypsych",
+  "created_at": "2026-08-31T00:00:00.000Z",
+  "updated_at": "2026-08-31T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

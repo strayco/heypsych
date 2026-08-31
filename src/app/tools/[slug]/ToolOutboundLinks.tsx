@@ -2,8 +2,9 @@
 
 // Tool Outbound Links Component
 // Client component for tracking outbound clicks to vendor websites
+// Priority: affiliate_url > app stores > website
 
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, Sparkles } from "lucide-react";
 import { trackToolsVendorOutboundClick } from "@/lib/analytics/product-events";
 
 interface ToolOutboundLinksProps {
@@ -12,6 +13,7 @@ interface ToolOutboundLinksProps {
   appStoreUrl?: string;
   googlePlayUrl?: string;
   websiteUrl?: string;
+  affiliateUrl?: string; // Affiliate link for monetization
 }
 
 export function ToolOutboundLinks({
@@ -20,8 +22,11 @@ export function ToolOutboundLinks({
   appStoreUrl,
   googlePlayUrl,
   websiteUrl,
+  affiliateUrl,
 }: ToolOutboundLinksProps) {
-  if (!appStoreUrl && !googlePlayUrl && !websiteUrl) {
+  const hasAnyLink = affiliateUrl || appStoreUrl || googlePlayUrl || websiteUrl;
+
+  if (!hasAnyLink) {
     return null;
   }
 
@@ -31,6 +36,22 @@ export function ToolOutboundLinks({
         Get {toolName}
       </h2>
       <div className="flex flex-wrap gap-3">
+        {/* Affiliate Link - Primary CTA when available */}
+        {affiliateUrl && (
+          <a
+            href={affiliateUrl}
+            target="_blank"
+            rel="noopener nofollow sponsored"
+            onClick={() => trackToolsVendorOutboundClick(toolSlug, "affiliate", "profile")}
+            className="inline-flex items-center gap-2 h-11 px-6 rounded-xl font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-all"
+          >
+            <Sparkles className="h-4 w-4" />
+            Try {toolName}
+            <ExternalLink className="h-3 w-3 opacity-70" />
+          </a>
+        )}
+
+        {/* App Store Links */}
         {appStoreUrl && (
           <a
             href={appStoreUrl}
@@ -57,7 +78,9 @@ export function ToolOutboundLinks({
             <ExternalLink className="h-3 w-3 opacity-50" />
           </a>
         )}
-        {websiteUrl && (
+
+        {/* Website - only show if no affiliate link */}
+        {websiteUrl && !affiliateUrl && (
           <a
             href={websiteUrl}
             target="_blank"
@@ -70,6 +93,13 @@ export function ToolOutboundLinks({
           </a>
         )}
       </div>
+
+      {/* Commission disclosure for affiliate links */}
+      {affiliateUrl && (
+        <p className="mt-3 text-xs text-neutral-500">
+          HeyPsych may earn a commission from this link
+        </p>
+      )}
     </section>
   );
 }

@@ -685,7 +685,7 @@ export function trackToolsSponsoredClick(
  */
 export function trackToolsVendorOutboundClick(
   toolSlug: string,
-  destinationType: "website" | "app_store" | "play_store",
+  destinationType: "website" | "app_store" | "play_store" | "affiliate",
   source: string
 ): void {
   trackProductEvent("tools_vendor_outbound_click", {

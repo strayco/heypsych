@@ -873,15 +873,8 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
           {/* Canvas Area */}
           <div className="flex-1 overflow-auto">
             <div className="mx-auto max-w-5xl px-4 py-6 lg:px-6">
-              {/* Next Action Banner - Integrated with practice view */}
-              <NextActionBanner
-                essentialsComplete={essentialsComplete}
-                recommendedItem={recommendedNextItem}
-                onSelectItem={handleSelectItem}
-              />
-
               {/* Practice Canvas - The Visual Hero */}
-              <div className="mt-6">
+              <div>
                 <PracticeCanvas
                   stack={stack}
                   metadataMap={metadataMap}

@@ -195,6 +195,7 @@ export const AppMetadataZ = z.object({
   app_store_url: z.string().url().optional(),
   google_play_url: z.string().url().optional(),
   website: z.string().url().optional(),
+  affiliate_url: z.string().url().optional(), // Affiliate link for monetization
   wikidata_qid: z.string().optional(),
 });
 

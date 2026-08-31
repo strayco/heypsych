@@ -143,12 +143,14 @@ export default async function ToolPage({
           </section>
 
           {/* Download Links - with analytics tracking */}
+          {/* Priority: affiliate_url > app stores > website */}
           <ToolOutboundLinks
             toolSlug={tool.slug}
             toolName={tool.name}
             appStoreUrl={tool.app_metadata?.app_store_url}
             googlePlayUrl={tool.app_metadata?.google_play_url}
             websiteUrl={tool.app_metadata?.website}
+            affiliateUrl={tool.app_metadata?.affiliate_url}
           />
 
           {/* Clinical Evidence */}

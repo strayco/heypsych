@@ -1,32 +1,87 @@
 "use client";
 
-// Product Page Demo Request CTA
-// Shows a CTA card that opens a modal with the demo request form
-// Auto-opens when URL contains #demo anchor (from matcher flow)
+// Product Page CTA - Affiliate Link or Demo Request
+// Priority: affiliate_url > demo form
+// Affiliate links open in new tab with nofollow for monetization tracking
 
 import { useState, useEffect } from "react";
-import { X, Calendar } from "lucide-react";
+import { X, Calendar, ExternalLink, Sparkles } from "lucide-react";
 import { DemoRequestForm } from "./DemoRequestForm";
 
 interface ProductDemoCTAProps {
   toolSlug: string;
   toolName: string;
+  affiliateUrl?: string; // If present, show affiliate link instead of demo form
+  websiteUrl?: string; // Fallback to website if no affiliate
 }
 
-export function ProductDemoCTA({ toolSlug, toolName }: ProductDemoCTAProps) {
+export function ProductDemoCTA({ toolSlug, toolName, affiliateUrl, websiteUrl }: ProductDemoCTAProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Auto-open modal when URL has #demo hash (from matcher flow)
+  // Only applies when no affiliate URL - affiliate products go direct
   useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#demo") {
+    if (!affiliateUrl && typeof window !== "undefined" && window.location.hash === "#demo") {
       setIsModalOpen(true);
-      // FIX 5: Clear the hash but preserve query parameters (UTMs, source, etc.)
+      // Clear the hash but preserve query parameters (UTMs, source, etc.)
       const url = new URL(window.location.href);
       url.hash = "";
       window.history.replaceState(null, "", url.toString());
     }
-  }, []);
+  }, [affiliateUrl]);
 
+  // AFFILIATE LINK MODE: Direct link to vendor (monetization path)
+  if (affiliateUrl) {
+    return (
+      <div id="demo" className="rounded-xl border border-treatment/20 bg-treatment/5 p-4 scroll-mt-24">
+        <h3 className="flex items-center gap-2 font-semibold text-label-primary mb-2">
+          <Sparkles className="h-4 w-4 text-treatment" />
+          Get Started
+        </h3>
+        <p className="text-sm text-label-secondary mb-3">
+          Try {toolName} for your practice.
+        </p>
+        <a
+          href={affiliateUrl}
+          target="_blank"
+          rel="noopener nofollow sponsored"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-treatment px-4 py-2.5 text-sm font-medium text-white hover:bg-treatment-600 transition-colors"
+        >
+          Visit {toolName}
+          <ExternalLink className="h-4 w-4" />
+        </a>
+        <p className="mt-2 text-xs text-label-quaternary text-center">
+          HeyPsych may earn a commission
+        </p>
+      </div>
+    );
+  }
+
+  // WEBSITE FALLBACK: Direct link to website (no demo form)
+  if (websiteUrl) {
+    return (
+      <div id="demo" className="rounded-xl border border-separator bg-surface p-4 scroll-mt-24">
+        <h3 className="flex items-center gap-2 font-semibold text-label-primary mb-2">
+          <ExternalLink className="h-4 w-4 text-label-tertiary" />
+          Learn More
+        </h3>
+        <p className="text-sm text-label-secondary mb-3">
+          Visit {toolName}&apos;s website for more info.
+        </p>
+        <a
+          href={websiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex w-full items-center justify-center gap-2 rounded-lg border border-separator bg-canvas px-4 py-2.5 text-sm font-medium text-label-primary hover:bg-surface transition-colors"
+        >
+          Visit Website
+          <ExternalLink className="h-4 w-4" />
+        </a>
+      </div>
+    );
+  }
+
+  // DEMO REQUEST MODE: Capture lead when no affiliate/website
   return (
     <>
       {/* CTA Card */}

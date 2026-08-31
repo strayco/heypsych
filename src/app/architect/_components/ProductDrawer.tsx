@@ -106,6 +106,40 @@ export function ProductDrawer({
     [item, areaId, itemId]
   );
 
+  // For malpractice, find products by category instead of capability
+  const malpracticeProducts = useMemo((): RecommendedProduct[] => {
+    if (!item || itemId !== "malpractice") return [];
+
+    const products: RecommendedProduct[] = [];
+
+    for (const [slug, display] of productDisplayMap) {
+      if (display.category !== "malpractice-insurance") continue;
+
+      const metadata = metadataMap.get(slug);
+      const fitResult = fitResultsMap.get(slug);
+
+      if (!metadata || !fitResult) continue;
+
+      products.push({
+        slug,
+        display,
+        metadata,
+        fitResult,
+        coveringCapabilities: [],
+      });
+    }
+
+    // Sort by fit score
+    products.sort((a, b) => (b.fitResult.score || 0) - (a.fitResult.score || 0));
+
+    // Mark primary
+    if (products.length > 0) {
+      products[0].isPrimary = true;
+    }
+
+    return products;
+  }, [item, itemId, metadataMap, productDisplayMap, fitResultsMap]);
+
   // Find products that cover this item's capabilities
   const recommendations = useMemo((): RecommendedProduct[] => {
     if (!item || item.isFoundational) return [];
@@ -314,10 +348,50 @@ export function ProductDrawer({
                 </div>
               </div>
 
+              {/* Malpractice has special handling - show insurance options */}
+              {itemId === "malpractice" && malpracticeProducts.length > 0 && (
+                <div className="space-y-3 mb-4">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-amber-500" />
+                    <span className="text-sm font-medium text-label-secondary">Insurance Options</span>
+                  </div>
+                  <div className="space-y-2">
+                    {malpracticeProducts.map((product) => (
+                      <a
+                        key={product.slug}
+                        href={'websiteUrl' in product.display && product.display.websiteUrl ? product.display.websiteUrl : `/tools/for-clinicians/malpractice-insurance/${product.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-start gap-3 rounded-xl border border-separator bg-surface p-3 text-left transition-all hover:border-accent/30 hover:shadow-sm"
+                      >
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-fill-secondary text-label-tertiary">
+                          <Shield className="h-5 w-5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-label-primary">{product.display.name}</span>
+                            {product.isPrimary && (
+                              <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-700">
+                                Popular
+                              </span>
+                            )}
+                            <ExternalLink className="h-3 w-3 text-label-tertiary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                          </div>
+                          <p className="mt-0.5 text-xs text-label-secondary line-clamp-2">
+                            {product.display.tagline}
+                          </p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="flex flex-col gap-2">
                 {/* Malpractice has special handling - own vs employer coverage vs no coverage */}
                 {itemId === "malpractice" ? (
                   <div className="space-y-2">
+                    <p className="text-xs text-label-tertiary text-center mb-1">Already have coverage?</p>
                     {/* Own coverage option - primary action */}
                     <button
                       onClick={() => {

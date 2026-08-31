@@ -58,7 +58,8 @@ const ENTRY_MODES = [
       "Customize your final stack",
     ],
     bestFor: "New practices or those wanting fresh recommendations",
-    isPrimary: true,
+    isPrimary: false,
+    comingSoon: true,
   },
   {
     id: "build-myself",
@@ -74,7 +75,8 @@ const ENTRY_MODES = [
       "Build at your own pace",
     ],
     bestFor: "Those who know what they need or want to explore",
-    isPrimary: false,
+    isPrimary: true,
+    comingSoon: false,
   },
   {
     id: "audit-stack",
@@ -91,6 +93,7 @@ const ENTRY_MODES = [
     ],
     bestFor: "Established practices looking to optimize",
     isPrimary: false,
+    comingSoon: true,
   },
 ];
 
@@ -177,12 +180,12 @@ export default function ArchitectEntryPage() {
                   key={mode.id}
                   className={`
                     relative flex flex-col rounded-2xl border-2 p-6 transition-all
-                    ${colorClasses.bg} ${colorClasses.border}
-                    ${mode.isPrimary ? "ring-2 ring-accent/20 ring-offset-2" : ""}
+                    ${mode.comingSoon ? "bg-neutral-50 border-neutral-200" : `${colorClasses.bg} ${colorClasses.border}`}
+                    ${mode.isPrimary && !mode.comingSoon ? "ring-2 ring-accent/20 ring-offset-2" : ""}
                   `}
                 >
                   {/* Primary badge */}
-                  {mode.isPrimary && (
+                  {mode.isPrimary && !mode.comingSoon && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
                         Recommended
@@ -190,14 +193,23 @@ export default function ArchitectEntryPage() {
                     </div>
                   )}
 
+                  {/* Coming Soon badge */}
+                  {mode.comingSoon && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="rounded-full bg-neutral-500 px-3 py-1 text-xs font-semibold text-white">
+                        Coming Soon
+                      </span>
+                    </div>
+                  )}
+
                   {/* Header */}
                   <div className="flex items-start gap-4">
-                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${colorClasses.icon}`}>
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${mode.comingSoon ? "bg-neutral-300 text-white" : colorClasses.icon}`}>
                       <Icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-label-primary">{mode.title}</h3>
-                      <p className="mt-1 text-sm text-label-secondary">{mode.description}</p>
+                      <h3 className={`text-lg font-semibold ${mode.comingSoon ? "text-label-secondary" : "text-label-primary"}`}>{mode.title}</h3>
+                      <p className={`mt-1 text-sm ${mode.comingSoon ? "text-label-tertiary" : "text-label-secondary"}`}>{mode.description}</p>
                     </div>
                   </div>
 
@@ -206,10 +218,10 @@ export default function ArchitectEntryPage() {
                     <ol className="space-y-2">
                       {mode.steps.map((step, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-sm">
-                          <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${colorClasses.badge}`}>
+                          <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${mode.comingSoon ? "bg-neutral-200 text-neutral-500" : colorClasses.badge}`}>
                             {idx + 1}
                           </span>
-                          <span className="text-label-secondary">{step}</span>
+                          <span className={mode.comingSoon ? "text-label-tertiary" : "text-label-secondary"}>{step}</span>
                         </li>
                       ))}
                     </ol>
@@ -221,16 +233,24 @@ export default function ArchitectEntryPage() {
                   </p>
 
                   {/* CTA Button */}
-                  <Link
-                    href={mode.href}
-                    className={`
-                      mt-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-colors
-                      ${colorClasses.button}
-                    `}
-                  >
-                    Get Started
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  {mode.comingSoon ? (
+                    <div
+                      className="mt-6 flex cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-500"
+                    >
+                      Coming Soon
+                    </div>
+                  ) : (
+                    <Link
+                      href={mode.href}
+                      className={`
+                        mt-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-colors
+                        ${colorClasses.button}
+                      `}
+                    >
+                      Get Started
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </div>
               );
             })}

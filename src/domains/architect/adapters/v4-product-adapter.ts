@@ -150,6 +150,21 @@ function deriveCapabilities(tool: ClinicianToolV4): ProductCapabilityInput[] {
     }
   }
 
+  // Get capabilities from secondary categories (with "strong" strength)
+  for (const secondaryCat of tool.secondary_categories) {
+    const secondaryCaps = CATEGORY_CORE_CAPABILITIES[secondaryCat] ?? [];
+    for (const capId of secondaryCaps) {
+      if (!seenCaps.has(capId)) {
+        seenCaps.add(capId);
+        caps.push({
+          capabilityId: capId as ProductCapabilityInput["capabilityId"],
+          strength: "strong",
+          provenance: "public_source",
+        });
+      }
+    }
+  }
+
   // Map V4 capabilities to Architect
   const architectCaps = mapV4ToArchitectCapabilities(tool.capabilities);
   for (const capId of architectCaps) {
@@ -368,17 +383,21 @@ function derivePricing(tool: ClinicianToolV4): StructuredPricingInput | undefine
 
   const basis = mapPricingBasis(tool.pricing.model);
 
+  // Helper to convert null to undefined for Zod compatibility
+  const orUndefined = <T>(val: T | null | undefined): T | undefined =>
+    val === null ? undefined : val;
+
   return {
     productSlug: tool.slug,
     basis,
-    minPriceCents: tool.pricing.starting_price_cents,
-    priceDisplayText: tool.pricing.starting_price_display,
+    minPriceCents: orUndefined(tool.pricing.starting_price_cents),
+    priceDisplayText: orUndefined(tool.pricing.starting_price_display),
     freeTierAvailable: tool.pricing.free_tier ?? false,
-    freeTrialDays: tool.pricing.free_trial_days,
+    freeTrialDays: orUndefined(tool.pricing.free_trial_days),
     requiresQuote: tool.pricing.quote_required ?? false,
-    notes: tool.pricing.notes,
+    notes: orUndefined(tool.pricing.notes),
     provenance: tool.pricing.last_verified ? "verified" : "vendor_provided",
-    lastVerified: tool.pricing.last_verified,
+    lastVerified: orUndefined(tool.pricing.last_verified),
   };
 }
 

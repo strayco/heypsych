@@ -114,6 +114,7 @@ const LAUNCH_ALLOWLIST = new Set([
   "freed",
   "grow-therapy",
   "headway",
+  "hayat-health",
   "heard",
   "holmusk-neuroblu-database",
   "iris-telehealth",
@@ -570,6 +571,7 @@ export class ClinicianToolService {
     "analytics-reporting": "Analytics & Reporting",
     "care-coordination": "Care Coordination",
     "digital-therapeutics": "Digital Therapeutics",
+    "malpractice-insurance": "Malpractice Insurance",
   };
 
   /**

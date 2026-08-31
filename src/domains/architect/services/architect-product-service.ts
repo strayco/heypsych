@@ -47,6 +47,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   "compliance-consent-security": "Compliance & Security",
   "analytics-reporting": "Analytics & Reporting",
   "care-coordination-referrals": "Care Coordination",
+  "malpractice-insurance": "Malpractice Insurance",
 };
 
 /**

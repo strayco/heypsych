@@ -24,7 +24,7 @@ export interface DualNotificationResult {
 // ============================================================================
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const NOTIFICATION_EMAIL = process.env.DEMO_NOTIFICATION_EMAIL || "team@heypsych.com";
+const NOTIFICATION_EMAIL = process.env.DEMO_NOTIFICATION_EMAIL || "hello@heypsych.com";
 const SLACK_WEBHOOK_URL = process.env.SLACK_DEMO_WEBHOOK_URL;
 
 // ============================================================================
