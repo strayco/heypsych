@@ -13,7 +13,7 @@ import { MyPractice } from "../../_components/MyPractice";
 export const metadata: Metadata = {
   title: "My Practice | Practice Architect™",
   description:
-    "Build your mental health practice technology stack visually. Simple, intuitive, and personalized to your practice.",
+    "Build your mental health practice technology stack visually. Explore 40+ products with transparent pricing and fit criteria.",
 };
 
 interface PageProps {

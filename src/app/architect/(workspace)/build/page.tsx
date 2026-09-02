@@ -14,7 +14,7 @@ const canonicalUrl = `${siteConfig.url}/architect/build`;
 export const metadata: Metadata = {
   title: "Build Your Stack | Practice Architect™",
   description:
-    "Build your mental health practice technology stack with Practice Architect™. Get personalized recommendations and transparent fit scores.",
+    "Build your mental health practice technology stack with Practice Architect™. Explore 40+ products with transparent pricing and fit criteria.",
   alternates: {
     canonical: canonicalUrl,
   },
