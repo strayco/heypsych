@@ -275,7 +275,7 @@ export default function ArchitectEntryPage() {
             {[
               { label: "40+ Products", sublabel: "Curated for mental health" },
               { label: "Transparent Pricing", sublabel: "Real costs, no surprises" },
-              { label: "Fit Scores", sublabel: "Personalized to your practice" },
+              { label: "Fit Scores", sublabel: "Transparent criteria for every product" },
               { label: "No Account", sublabel: "Start building immediately" },
             ].map((feature) => (
               <div key={feature.label} className="flex items-center gap-3">
@@ -296,10 +296,9 @@ export default function ArchitectEntryPage() {
       <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm text-label-tertiary">
-            Practice Architect™ uses transparent, deterministic scoring.
-            All recommendations are based on your practice profile —{" "}
+            Practice Architect™ uses transparent, deterministic scoring —{" "}
             <Link href="/about/review-methodology" className="text-accent hover:underline">
-              learn more about our methodology
+              see how we evaluate products
             </Link>
             .
           </p>

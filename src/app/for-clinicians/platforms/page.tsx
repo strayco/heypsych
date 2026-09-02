@@ -138,7 +138,7 @@ export default async function PlatformsPage() {
               Practice Architect™
             </h3>
             <p className="text-gray-600 text-sm">
-              Get personalized recommendations for EHRs, billing, and telehealth tools
+              Compare EHRs, billing, and telehealth tools with transparent fit scores
               to build an independent practice where <strong>you</strong> own your credentials and client relationships.
             </p>
           </div>
