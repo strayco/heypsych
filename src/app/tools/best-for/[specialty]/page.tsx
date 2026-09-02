@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 import { ContextualArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import type { ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
@@ -467,7 +468,7 @@ export default async function BestForSpecialtyPage({ params }: PageProps) {
           name: tool.name,
           applicationCategory: "HealthApplication",
           description: tool.short_description || tool.one_liner,
-          url: `${siteConfig.url}/tools/for-clinicians/${tool.primary_category}/${tool.slug}/`,
+          url: `${siteConfig.url}/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${tool.slug}/`,
           ...(tool.pricing?.starting_price_display && {
             offers: {
               "@type": "Offer",

@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService, type ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { AlternativeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 
@@ -152,7 +153,7 @@ export default async function AlternativesPage({ params }: PageProps) {
         "@type": "SoftwareApplication",
         name: alt.name,
         applicationCategory: "HealthApplication",
-        url: `${siteConfig.url}/tools/for-clinicians/${alt.primary_category}/${alt.slug}/`,
+        url: `${siteConfig.url}/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`,
       },
     })),
   };
@@ -212,7 +213,7 @@ export default async function AlternativesPage({ params }: PageProps) {
                 Migration Guide
               </Link>
               <Link
-                href={`/tools/for-clinicians/${tool.primary_category}/${slug}/`}
+                href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
                 className="inline-flex items-center gap-2 text-sm text-treatment hover:underline"
               >
                 View {tool.name} profile
@@ -278,7 +279,7 @@ export default async function AlternativesPage({ params }: PageProps) {
 
                       <div className="mt-4 flex gap-2">
                         <Link
-                          href={`/tools/for-clinicians/${alt.primary_category}/${alt.slug}/`}
+                          href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`}
                           className="flex-1 rounded-lg bg-treatment px-3 py-2 text-center text-sm font-medium text-white hover:bg-treatment-600 transition-colors"
                         >
                           View Details
@@ -369,7 +370,7 @@ export default async function AlternativesPage({ params }: PageProps) {
         <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl flex flex-wrap items-center gap-6">
             <Link
-              href={`/tools/for-clinicians/${tool.primary_category}/${slug}/`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
               className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
             >
               {tool.name} profile
@@ -390,7 +391,7 @@ export default async function AlternativesPage({ params }: PageProps) {
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link
-              href={`/tools/for-clinicians/${tool.primary_category}/`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/`}
               className="flex items-center gap-1 text-sm font-medium text-label-secondary hover:text-treatment"
             >
               All {categoryLabel}

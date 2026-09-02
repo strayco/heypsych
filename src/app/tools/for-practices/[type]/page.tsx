@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { PracticeTypeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 
@@ -284,7 +285,7 @@ export default async function PracticeTypePage({ params }: PageProps) {
           "name": tool.name,
           "applicationCategory": "HealthApplication",
           "description": tool.short_description,
-          "url": `${siteConfig.url}/tools/for-clinicians/${tool.primary_category}/${tool.slug}/`,
+          "url": `${siteConfig.url}/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${tool.slug}/`,
         },
       })),
     },

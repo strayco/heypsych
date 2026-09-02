@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService, type ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { IntegrationArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 
 interface PageProps {
@@ -225,7 +226,7 @@ export default async function ProductIntegrationsPage({ params }: PageProps) {
                 <span className="text-label-secondary">{totalIntegrations} total connections</span>
               </div>
               <Link
-                href={`/tools/for-clinicians/${tool.primary_category}/${slug}/`}
+                href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
                 className="flex items-center gap-1 text-sm text-treatment hover:underline"
               >
                 View full profile
@@ -375,7 +376,7 @@ export default async function ProductIntegrationsPage({ params }: PageProps) {
         <section className="bg-surface px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl flex flex-wrap items-center gap-6">
             <Link
-              href={`/tools/for-clinicians/${tool.primary_category}/${slug}/`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
               className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
             >
               {tool.name} profile

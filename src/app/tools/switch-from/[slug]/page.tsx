@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService, type ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { AlternativeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 
@@ -453,7 +454,7 @@ export default async function SwitchFromPage({ params }: PageProps) {
         <section className="bg-surface px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl flex items-center justify-between">
             <Link
-              href={`/tools/for-clinicians/${tool.primary_category}/${slug}/`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
               className="group inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />

@@ -404,7 +404,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
                 {relatedTools.map((related) => (
                   <Link
                     key={related.slug}
-                    href={`/tools/for-clinicians/${related.primary_category}/${related.slug}/`}
+                    href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[related.primary_category] || related.primary_category}/${related.slug}/`}
                     className="rounded-xl border border-separator bg-canvas p-4 hover:border-treatment/30 transition-colors"
                   >
                     <h3 className="font-medium text-label-primary truncate">

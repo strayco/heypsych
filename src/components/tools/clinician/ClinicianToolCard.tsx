@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { cn } from "@/lib/utils";
 import { isComplianceConfirmedYes } from "@/lib/schemas/tool-editorial";
 
@@ -51,9 +52,12 @@ export function ClinicianToolCard({
   const isCompact = variant === "compact";
   const isFeatured = variant === "featured";
 
+  // Map schema category to taxonomy category for correct URL
+  const taxonomyCategory = SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category;
+
   return (
     <Link
-      href={`/tools/for-clinicians/${tool.primary_category}/${tool.slug}/`}
+      href={`/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`}
       className={cn(
         "group relative flex rounded-xl border border-separator bg-surface transition-all",
         "hover:border-treatment/30 hover:shadow-soft",

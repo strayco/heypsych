@@ -10,6 +10,7 @@
 import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import type { ClinicianTool } from "@/app/tools/compare/comparison-engine";
 
 interface ToolAccent {
@@ -56,7 +57,7 @@ export function CompareToolCard({
           {/* Tool Name */}
           <h3 className="font-semibold text-label-primary truncate">
             <Link
-              href={`/tools/for-clinicians/${tool.primary_category}/${tool.slug}`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${tool.slug}`}
               className="hover:text-accent transition-colors"
             >
               {tool.name}

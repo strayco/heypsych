@@ -32,6 +32,7 @@ import {
   ClinicianToolService,
   isToolPublishable,
 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { resolveCategoryHubSlug } from "@/lib/tools/category-hub-slug";
 
 export async function GET() {
@@ -121,8 +122,9 @@ export async function GET() {
       // Track this category
       v4CategoriesWithTools.add(tool.primary_category);
 
+      const taxonomyCategory = SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category;
       const entry: SitemapURL = {
-        loc: `${siteConfig.url}/tools/for-clinicians/${tool.primary_category}/${tool.slug}`,
+        loc: `${siteConfig.url}/tools/for-clinicians/${taxonomyCategory}/${tool.slug}`,
         changefreq: "monthly",
         priority: 0.6,
       };

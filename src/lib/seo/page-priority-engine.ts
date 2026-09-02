@@ -6,6 +6,7 @@
  */
 
 import type { ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 
 // ============================================================================
 // TYPES
@@ -292,7 +293,8 @@ export function generatePagePlan(
 
   // 1. Product profiles
   for (const product of products) {
-    const url = `/tools/for-clinicians/${product.primary_category}/${product.slug}/`;
+    const taxonomyCategory = SCHEMA_TO_TAXONOMY_CATEGORY[product.primary_category] || product.primary_category;
+    const url = `/tools/for-clinicians/${taxonomyCategory}/${product.slug}/`;
     if (!existingPages.has(url)) {
       pages.push(calculatePagePriority(
         "product-profile",
