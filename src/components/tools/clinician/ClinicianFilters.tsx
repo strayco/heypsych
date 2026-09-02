@@ -90,7 +90,7 @@ export function ClinicianFilters({
       const basePath = category
         ? `/tools/for-clinicians/${category}/`
         : "/tools/for-clinicians/";
-      router.push(`${basePath}?${params.toString()}`);
+      router.push(`${basePath}?${params.toString()}`, { scroll: false });
     },
     [router, searchParams, category]
   );
@@ -100,7 +100,7 @@ export function ClinicianFilters({
     const basePath = category
       ? `/tools/for-clinicians/${category}/`
       : "/tools/for-clinicians/";
-    router.push(basePath);
+    router.push(basePath, { scroll: false });
   }, [router, category]);
 
   // Toggle feature filter

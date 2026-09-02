@@ -484,11 +484,16 @@ function applyFilters(
   }
 
   if (practiceSize) {
-    filtered = filtered.filter((t) =>
-      t.audiences?.organization_sizes?.includes(
+    filtered = filtered.filter((t) => {
+      const sizes = t.audiences?.organization_sizes ?? [];
+      // Handle "large-50+" as matching both large and enterprise
+      if (practiceSize === "large-50+") {
+        return sizes.includes("large-51-200") || sizes.includes("enterprise-200-plus");
+      }
+      return sizes.includes(
         practiceSize as "solo" | "small-2-10" | "medium-11-50" | "large-51-200" | "enterprise-200-plus"
-      ) ?? false
-    );
+      );
+    });
   }
 
   // P0 FIX: Use proper compliance checking, not JavaScript truthiness
