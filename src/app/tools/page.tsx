@@ -50,11 +50,10 @@ export const metadata: Metadata = {
 export default async function ToolsDirectoryPage() {
   const patientHubs = TaxonomyService.getAllHubs();
   const allTools = await ToolService.getAll();
-  const featuredTools = await ToolService.getFeatured(6);
+  const featuredTools = await ToolService.getFeatured(9);
 
-  // Get V4 clinician tools (publication-gated)
+  // Get V4 clinician tools count (for audience selector)
   const v4ClinicianTools = await ClinicianToolService.loadClinicianTools();
-  const v4CategoryCounts = await ClinicianToolService.getCategoryCounts();
 
   // Get sponsored tools for landing page (if any active campaigns)
   const sponsoredTools = await CampaignService.getSponsoredTools(
@@ -102,23 +101,28 @@ export default async function ToolsDirectoryPage() {
         <SponsoredSection sponsoredTools={sponsoredTools} />
       )}
 
-      {/* For Patients Section */}
+      {/* Popular Patient Tools - Primary CTA */}
+      {featuredTools.length > 0 && (
+        <FeaturedTools tools={featuredTools} />
+      )}
+
+      {/* Browse by Category */}
       <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-                For Patients & Families
+                Browse by Category
               </p>
               <h2 className="mt-1 text-xl font-semibold text-label-primary">
-                Apps & Platforms
+                Find Tools for Your Needs
               </h2>
             </div>
             <Link
               href="/tools/for-patients/"
               className="group flex items-center gap-1 text-sm font-medium text-label-primary hover:text-accent"
             >
-              Browse all
+              All categories
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
@@ -130,75 +134,6 @@ export default async function ToolsDirectoryPage() {
           />
         </div>
       </section>
-
-      {/* For Clinicians Section - V4 Tools */}
-      <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-                For Mental Health Clinicians
-              </p>
-              <h2 className="mt-1 text-xl font-semibold text-label-primary">
-                Practice Software
-              </h2>
-            </div>
-            <Link
-              href="/tools/for-clinicians/"
-              className="group flex items-center gap-1 text-sm font-medium text-label-primary hover:text-accent"
-            >
-              Browse all
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-
-          {/* Practice Architect CTA */}
-          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-canvas p-4">
-            <div>
-              <p className="font-medium text-label-primary">Build Your Practice Stack</p>
-              <p className="text-sm text-label-secondary">
-                Get personalized recommendations with transparent fit scores
-              </p>
-            </div>
-            <Link
-              href="/architect"
-              className="group flex flex-col items-center rounded-lg bg-treatment px-5 py-2.5 transition-colors hover:bg-treatment-600"
-            >
-              <span className="text-xs font-medium text-white/80">Practice Architect™</span>
-              <span className="flex items-center gap-1.5 text-sm font-medium text-white">
-                Start Building
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
-          </div>
-
-          {/* V4 Category Cards */}
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {v4CategoryCounts.filter(c => c.count > 0).map((category) => (
-              <Link
-                key={category.slug}
-                href={`/tools/for-clinicians/${category.slug}/`}
-                className="group rounded-xl border border-separator bg-canvas p-4 transition-all hover:border-neutral-300 hover:shadow-soft"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-medium text-label-primary group-hover:text-accent">
-                    {category.display_name}
-                  </h3>
-                  <ArrowRight className="h-4 w-4 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
-                </div>
-                <p className="mt-1 text-sm text-label-tertiary">
-                  {category.count} tools
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Tools (Editorial Picks) */}
-      {featuredTools.length > 0 && (
-        <FeaturedTools tools={featuredTools} />
-      )}
 
       {/* Trust Signal */}
       <TrustSignal />

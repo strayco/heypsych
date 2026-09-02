@@ -14,7 +14,7 @@ import { z } from "zod";
  */
 export const ProviderPlatformZ = z.object({
   schema_version: z.literal("4.0"),
-  kind: z.literal("provider-network"),
+  kind: z.enum(["provider-network", "clinician-tool"]),
   id: z.string(),
   slug: z.string(),
   name: z.string(),
@@ -205,8 +205,8 @@ async function loadPlatformsFromFiles(): Promise<ProviderPlatform[]> {
         const content = fs.readFileSync(filePath, "utf-8");
         const data = JSON.parse(content);
 
-        // Only process provider networks
-        if (data.schema_version !== "4.0" || data.kind !== "provider-network") {
+        // Only process provider networks or clinician tools (for platforms like Headway, Alma, etc.)
+        if (data.schema_version !== "4.0" || (data.kind !== "provider-network" && data.kind !== "clinician-tool")) {
           continue;
         }
 

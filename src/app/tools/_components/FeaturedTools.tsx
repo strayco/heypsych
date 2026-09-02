@@ -36,7 +36,7 @@ export function FeaturedTools({ tools }: FeaturedToolsProps) {
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.slice(0, 6).map((tool) => (
+          {tools.slice(0, 9).map((tool) => (
             <FeaturedToolCard key={tool.slug} tool={tool} />
           ))}
         </div>
