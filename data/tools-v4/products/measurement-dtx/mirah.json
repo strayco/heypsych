@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "mirah-mbc",
+  "id": "73c40938-1dde-47b2-8661-54cf6f4700ef",
   "slug": "mirah",
   "name": "Mirah",
   "company_name": "Mirah",
@@ -13,12 +13,8 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "measurement-based-care",
-  "secondary_categories": [
-    "collaborative-care",
-    "pediatric-behavioral-health",
-    "outcomes-tracking"
-  ],
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [],
   "capabilities": [
     "outcome-tracking",
     "phq9-gad7",
@@ -32,15 +28,11 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "pediatrician",
-      "primary-care-physician",
       "care-coordinator"
     ],
     "practice_settings": [
       "group-practice",
-      "health-system",
-      "pediatric-clinic",
-      "primary-care",
+      "multi-site-enterprise",
       "integrated-care"
     ],
     "organization_sizes": [
@@ -48,13 +40,6 @@
       "medium-11-50",
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "pediatric-mental-health",
-      "collaborative-care",
-      "integrated-care"
     ]
   },
   "feature_flags": {
@@ -68,7 +53,9 @@
     "has_patient_portal": true,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
-    "is_pediatric_optimized": true
+    "is_pediatric_optimized": true,
+    "has_e_prescribing": false,
+    "is_specialty_agnostic": false
   },
   "short_description": "Measurement-based care and collaborative care platform with 400+ measures, proprietary adaptive assessments, and the only integrated care technology optimized for pediatrics.",
   "long_description": "Mirah is a powerful measurement-based care platform designed to support patient-centered, data-driven behavioral healthcare. The platform offers over 400 clinically validated measures that can be customized at the individual patient level or auto-assigned via measurement protocols. Mirah's proprietary Computer Adapted Multidimensional Scale (CAMS) tracks 16 dimensions (12 symptoms and 4 strengths) using adaptive questioning that adds more questions when concerning behaviors are detected. Uniquely, Mirah is the only integrated care technology optimized for pediatrics, making it ideal for child and adolescent behavioral health settings. The platform integrates with major EHRs including AdvancedMD and Athenahealth, and is approved by the VA for federal use.",
@@ -89,11 +76,9 @@
   "support_url": "https://mbc.help.mirah.com",
   "logo_url": "https://www.mirah.com/logo.png",
   "pricing": {
-    "model": "hybrid",
     "starting_price_cents": 7500,
     "starting_price_display": "$75/provider/month (standard) or $48/patient/year",
     "free_tier": false,
-    "free_trial_days": null,
     "quote_required": true,
     "price_range": "mid-market",
     "tiers": [
@@ -113,7 +98,8 @@
       "termination_window": "90 days after first year"
     },
     "notes": "Pricing from 2022 - contact Mirah for current pricing. Custom enterprise pricing available.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "mbc_details": {
     "assessment_count": "400+",
@@ -158,10 +144,13 @@
     "billing_support": true
   },
   "compliance": {
-    "hipaa_support": true,
-    "baa_available": true,
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "va_approved": true,
-    "va_trm_listed": true
+    "va_trm_listed": true,
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
@@ -198,8 +187,8 @@
     "cpt_reimbursement": "Up to 25% additional revenue via CPT codes"
   },
   "seo": {
-    "title": "Mirah: Pediatric-Optimized MBC & Collaborative Care | HeyPsych",
-    "meta_description": "Mirah offers 400+ measures with proprietary adaptive assessments and pediatric optimization. Collaborative care platform with AdvancedMD and Athenahealth integration.",
+    "title": "Mirah: Pediatric-Optimized MBC & Collaborative Care",
+    "meta_description": "Mirah offers 400+ measures with proprietary adaptive assessments and pediatric optimization. Collaborative care platform with AdvancedMD and Athenahealth...",
     "faqs": [
       {
         "q": "How much does Mirah cost per provider?",
@@ -253,7 +242,8 @@
     "federal_approval": "VA TRM listed"
   },
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.559Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.mirah.com"
 }

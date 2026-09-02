@@ -17,15 +17,20 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "short_description": "Ambient AI assistant generating structured clinical notes in seconds with 35+ language support, deep EHR integrations, and zero patient data storage on servers.",
-  "long_description": "Nabla is an ambient AI medical assistant that transforms clinical interactions into structured notes within seconds. The platform listens to patient-clinician conversations and generates clinical documentation (SOAP format) with automatic ICD-10 code suggestions. A key differentiator is Nabla's privacy model: audio, transcripts, and notes exist only in the clinician's browser and are never stored on Nabla's servers. The platform supports 35+ languages including Arabic, Mandarin, Spanish, French, Hindi, and Vietnamese. With 150+ health organizations and 85,000+ clinicians using the platform, Nabla reports that 55% of users save at least 1 hour per day on documentation with 27% reduction in burnout. Nabla Connect (launched October 2025) enables any EHR vendor to embed Nabla in days via SMART on FHIR.",
-  "one_liner": "Ambient AI scribe with 35+ languages and zero data storage on servers",
+  "short_description": "Enterprise-grade ambient AI scribe for health systems with 35+ languages and zero server-side data storage. Built for hospitals, not therapy practices. Mental health templates exist but lack specia...",
+  "long_description": "Nabla is an enterprise ambient AI scribe designed for health systems and multi-specialty practices—not therapy-focused documentation. The platform serves 85,000+ clinicians across 150+ healthcare organizations, processing 20 million annual encounters in 35+ languages. Key differentiator: patient audio, transcripts, and notes exist only in the clinician's browser and are never stored on Nabla's servers. Nabla Connect enables rapid EHR integration via SMART on FHIR. Mental health templates cover basic documentation but may not include all MSE domains or structured risk assessment fields. Solo psychiatrists doing routine medication management may find Nabla workable, but therapists needing modality-aware notes (CBT, DBT) should use therapy-specific tools like Mentalyc or Upheal. Pricing is not public; reported at ~$119/month individual, $299-399/provider enterprise.",
+  "one_liner": "Enterprise ambient scribe for health systems with 35+ languages—not designed for therapy.",
   "best_for": [
-    "Multi-specialty practices and telehealth providers needing multilingual ambient documentation with strong privacy guarantees and quick EHR integration"
+    "Health systems needing multilingual ambient documentation across departments",
+    "Multi-specialty practices with strong privacy requirements (zero server storage)",
+    "Organizations requiring rapid EHR integration via SMART on FHIR",
+    "Psychiatrists doing routine medication management (not psychotherapy)"
   ],
   "not_for": [
-    "Organizations requiring on-premise data storage",
-    "or practices without EHR integration needs (standalone documentation)"
+    "Therapists doing psychotherapy—Nabla doesn't understand therapy modalities",
+    "Solo mental health clinicians needing specialty-deep templates",
+    "Practices needing published pricing—Nabla requires sales conversation",
+    "Free-tier users needing a BAA (reported not included on free tier)"
   ],
   "capabilities": [
     "ambient-listening",
@@ -39,24 +44,17 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatric-np-pa",
-      "psychiatrist"
+      "psychiatrist",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "solo-practice",
       "group-practice",
       "telehealth-only"
     ],
     "organization_sizes": [
-      "solo",
-      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "multi-specialty",
-      "primary-care",
-      "telehealth",
-      "mental-health"
     ]
   },
   "feature_flags": {
@@ -72,13 +70,15 @@
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "per-provider-month",
+    "model": "enterprise-custom",
     "starting_price_cents": 11900,
-    "starting_price_display": "~$119/month (individual), $299-399/month (enterprise)",
-    "free_tier": false,
+    "starting_price_display": "~$119/mo (individual, reported); enterprise $299-399/provider",
+    "free_tier": true,
+    "free_tier_notes": "Up to 30 encounters/month reported. BAA not confirmed on free tier—compliance gap for patient encounters.",
     "free_trial_days": 14,
     "quote_required": true,
-    "notes": "Individual plans historically around $119/month. Enterprise plans $299-399/provider/month. No public pricing since 2026; sales conversation required."
+    "notes": "No public pricing since 2026. Sales conversation required. Free tier may not include BAA, which creates HIPAA compliance concerns for clinical use.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
     "hipaa_support": "yes",
@@ -86,7 +86,10 @@
     "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "yes",
-    "privacy_note": "Patient data never stored on Nabla servers - exists only in clinician's browser"
+    "iso_27001": "yes",
+    "texas_ramp": "Level 2",
+    "privacy_note": "Patient data never stored on Nabla servers—exists only in clinician's browser. BAA incorporated into Terms of Service for paid plans.",
+    "free_tier_baa": "Not confirmed—verify before clinical use"
   },
   "integrations": [
     {
@@ -147,7 +150,8 @@
     "total_funding": "$24M+",
     "lead_investor": "Cathay Innovation",
     "customers": "150+ health organizations",
-    "clinicians": "85,000+"
+    "clinicians": "85,000+",
+    "annual_encounters": "20,000,000+"
   },
   "clinical_evidence": {
     "time_savings": "55% of users save at least 1 hour/day on documentation",
@@ -155,7 +159,7 @@
     "note_generation": "Seconds"
   },
   "governance": {
-    "last_reviewed": "2026-08-23",
+    "last_reviewed": "2026-09-01",
     "needs_review": false,
     "review_priority": "low",
     "data_quality_score": 92
@@ -164,46 +168,53 @@
     "nuance-dax-copilot",
     "abridge",
     "suki-ai",
-    "deepscribe"
+    "deepscribe",
+    "freed-ai"
   ],
   "competitor_tools": [
     "nuance-dax-copilot",
     "abridge",
-    "suki-ai"
+    "suki-ai",
+    "ambience-healthcare"
   ],
   "created_at": "2026-08-22T21:10:42.890Z",
-  "updated_at": "2026-08-23T00:00:00.000Z",
-  "featured": true,
+  "updated_at": "2026-09-01T00:00:00.000Z",
+  "featured": false,
   "status": "active",
   "seo": {
-    "title": "Nabla: Multilingual Ambient Mental Health Tool | HeyPsych",
-    "meta_description": "Nabla AI scribe generates clinical notes in seconds with 35+ language support. Zero data storage on servers. Used by 85,000+ clinicians across 150+...",
+    "title": "Nabla AI Scribe: Enterprise 2026 | HeyPsych",
+    "meta_description": "Nabla enterprise AI scribe: ~$119/mo individual, $299-399 enterprise. 35+ languages, zero data storage. Built for health systems, not therapy practices.",
     "faqs": [
       {
-        "q": "How much does Nabla cost?",
-        "a": "Nabla individual plans were historically around $119/month. Enterprise plans run $299-399 per provider per month. Nabla no longer publishes public pricing and requires a sales conversation for current rates."
+        "q": "How much does Nabla cost in 2026?",
+        "a": "Nabla no longer publishes pricing. Reported rates are ~$119/month for individuals and $299-399/provider/month for enterprise contracts. A sales conversation is required. A free tier exists (30 encounters/month) but BAA availability is not confirmed."
+      },
+      {
+        "q": "Is Nabla good for therapists?",
+        "a": "No. Nabla was designed for hospital systems and multi-specialty practices, not therapy. It doesn't understand therapy modalities (CBT, DBT, psychodynamic) and its mental health templates may lack MSE domains and risk assessment fields. Therapists should use Mentalyc or Upheal instead."
       },
       {
         "q": "Does Nabla store patient data?",
-        "a": "No, Nabla never stores patient data on its servers. Audio, transcripts, and notes exist only in the clinician's browser, providing strong privacy guarantees for both HIPAA and GDPR compliance."
+        "a": "No. Patient audio, transcripts, and notes exist only in the clinician's browser and are never stored on Nabla's servers. This provides strong privacy guarantees for HIPAA and GDPR compliance."
       },
       {
         "q": "What languages does Nabla support?",
-        "a": "Nabla supports 35+ languages including Arabic, Mandarin, Spanish, French, Hindi, Vietnamese, and many more - making it ideal for diverse patient populations and international telehealth."
+        "a": "Nabla supports 35+ languages including Arabic, Mandarin, Spanish, French, Hindi, Vietnamese—making it suitable for diverse patient populations and international telehealth."
       },
       {
-        "q": "Which EHRs does Nabla integrate with?",
-        "a": "Nabla integrates with 20+ EHR systems including Epic, Oracle Health (Cerner), athenahealth, NextGen, Greenway, and MEDITECH via SMART on FHIR and Nabla Connect."
+        "q": "Does Nabla's free tier include a BAA?",
+        "a": "BAA availability on the free tier is not confirmed. Using an AI scribe on patient encounters without a BAA is itself a HIPAA compliance gap. Verify with Nabla before clinical use on the free tier."
       }
     ],
     "keywords": [
       "Nabla",
+      "enterprise AI scribe",
       "multilingual AI scribe",
-      "ambient documentation",
+      "Nabla vs Nuance DAX",
+      "hospital AI documentation",
       "GDPR compliant AI scribe",
-      "clinical notes AI",
-      "telehealth documentation",
-      "French AI medical scribe"
+      "Nabla mental health"
     ]
-  }
+  },
+  "affiliate_url": "https://www.nabla.com"
 }

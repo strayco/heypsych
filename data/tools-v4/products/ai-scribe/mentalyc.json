@@ -6,7 +6,7 @@
   "name": "Mentalyc",
   "company_name": "Mentalyc",
   "website": "https://www.mentalyc.com",
-  "description": "Mentalyc is an AI-powered documentation tool built specifically for mental health professionals. It listens to therapy sessions and automatically generates progress notes, treatment plans, and other clinical documentation in formats required by insurance companies. Mentalyc understands therapeutic modalities like CBT, DBT, and psychodynamic therapy.",
+  "description": "Mentalyc is an AI documentation platform built exclusively for therapists, counselors, and mental health professionals. Unlike medical scribes designed for primary care, Mentalyc understands therapy modalities (CBT, DBT, psychodynamic, EMDR) and generates notes in therapy-specific formats (SOAP, DAP, BIRP, PIRP, GIRP, PIE, SIRP, and 100+ custom templates). The platform learns and adapts to individual clinicians' documentation styles. Unique feature: Alliance Genie tracks therapeutic alliance dynamics with data-driven insights—a capability no other scribe offers.",
   "import_ref": {
     "record_id": "MH-0158",
     "source_row": 159,
@@ -17,7 +17,7 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["mental-health-documentation", "therapy-notes"],
+  "secondary_categories": [],
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -31,29 +31,20 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
-      "licensed-counselor",
-      "psychiatric-nurse-practitioner"
+      "psychologist",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
+      "solo-practice",
       "group-practice",
-      "outpatient-clinic",
-      "telehealth",
+      "telehealth-only",
       "community-mental-health"
     ],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": [
-      "therapy",
-      "psychiatry",
-      "psychology",
-      "counseling",
-      "anxiety-disorders",
-      "depression",
-      "trauma-ptsd",
-      "couples-therapy"
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
@@ -77,64 +68,51 @@
     "customer_count": "5,000+ mental health providers"
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": false,
-    "starting_price": 49,
+    "starting_price": 1999,
+    "starting_price_display": "$19.99/mo (Mini, 10 notes)",
     "currency": "USD",
     "billing_period": "monthly",
+    "free_tier": false,
+    "free_trial_days": 14,
     "tiers": [
       {
-        "name": "Starter",
-        "price": 49,
-        "period": "monthly",
-        "features": [
-          "30 session notes per month",
-          "Progress notes",
-          "DAP notes",
-          "Web app access",
-          "Email support"
-        ]
+        "name": "Mini",
+        "price": "$19.99/mo",
+        "description": "10 notes/month. Basic progress notes for very light caseloads."
       },
       {
-        "name": "Professional",
-        "price": 99,
-        "period": "monthly",
-        "features": [
-          "Unlimited session notes",
-          "All note formats (SOAP, DAP, BIRP)",
-          "Treatment plans",
-          "Mobile app",
-          "Priority support",
-          "EHR integrations"
-        ]
+        "name": "Basic",
+        "price": "$39.99/mo",
+        "description": "50 notes/month. All note formats, mobile app access."
+      },
+      {
+        "name": "Pro",
+        "price": "$69.99/mo",
+        "description": "160 notes/month. Treatment plans, EHR integrations, priority support."
+      },
+      {
+        "name": "Super",
+        "price": "$119.99/mo",
+        "description": "330 notes/month. Highest volume for busy practitioners."
       },
       {
         "name": "Group Practice",
-        "price": 79,
-        "period": "monthly",
-        "features": [
-          "Everything in Professional",
-          "Team management",
-          "Shared templates",
-          "Usage analytics",
-          "Onboarding support"
-        ],
-        "notes": "Per provider, minimum 3 providers"
+        "price": "$49.99-59.99/seat/mo",
+        "description": "Unlimited notes. Team management, admin visibility, shared templates."
       }
     ],
-    "free_trial": {
-      "available": true,
-      "duration_days": 7,
-      "credit_card_required": false
-    },
-    "notes": "Annual billing offers 20% discount. Educational discounts available."
+    "notes": "14-day free trial includes 15 notes, no credit card required. Annual billing reduces to $14.99-$99.99/mo. All plans include Alliance Genie therapeutic alliance tracking.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "yes",
+    "notes": "SOC 2 Type II certified. Zero recording storage—audio deleted after note generation.",
     "compliance_urls": {
       "hipaa": "https://www.mentalyc.com/hipaa",
       "security": "https://www.mentalyc.com/security"
@@ -142,55 +120,72 @@
   },
   "integrations": [
     {
-      "name": "SimplePractice",
-      "type": "ehr",
-      "method": "api",
-      "native": true
-    },
-    {
       "name": "TherapyNotes",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "therapynotes",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Jane App",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "name": "ICANotes",
+      "slug": "icanotes",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "TheraNest",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "theranest",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Zoom",
-      "type": "telehealth",
-      "method": "browser-extension",
-      "native": true
+      "name": "Valant",
+      "slug": "valant",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Doxy.me",
-      "type": "telehealth",
-      "method": "browser-extension",
-      "native": true
+      "name": "SimplePractice",
+      "slug": "simplepractice",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "One-click autofill via Chrome Extension"
+    },
+    {
+      "name": "Jane App",
+      "slug": "jane-app",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "TheraBill",
+      "slug": "therabill",
+      "category": "billing",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Listens to therapy sessions and generates modality-aware progress notes"
+      "description": "Listens to sessions and generates modality-aware notes. Accepts recordings, dictation, summaries, transcripts, or typed text."
     },
     "note_types": [
-      "DAP notes",
-      "SOAP notes",
-      "BIRP notes",
-      "GIRP notes",
-      "Progress notes",
+      "SOAP",
+      "DAP",
+      "BIRP",
+      "PIRP",
+      "GIRP",
+      "PIE",
+      "SIRP",
+      "Intake assessments",
       "Treatment plans",
-      "Intake assessments"
+      "100+ custom templates"
     ],
     "therapeutic_modalities": [
       "CBT",
@@ -201,65 +196,88 @@
       "Motivational Interviewing",
       "Family Systems"
     ],
+    "alliance_genie": {
+      "supported": true,
+      "description": "Unique feature: tracks therapeutic alliance dynamics with data-driven insights into relationship patterns."
+    },
     "insurance_compliance": true,
     "custom_templates": true,
-    "multi_language": false,
-    "accuracy_rate": "Therapy-specific AI trained on mental health documentation"
+    "multi_language": false
   },
+  "short_description": "AI therapy notes built for therapists, not medical practices. Understands CBT, DBT, EMDR and generates modality-aware notes. Unique Alliance Genie tracks therapeutic alliance.",
+  "one_liner": "The therapy-specific AI scribe with modality awareness and Alliance Genie tracking.",
   "best_for": [
-    "Private practice therapists and counselors",
-    "Psychologists seeking insurance-compliant documentation",
-    "Solo practitioners wanting affordable AI scribe",
-    "Clinicians using SimplePractice, TherapyNotes, or Jane App",
-    "Therapists wanting modality-aware note generation",
-    "Telehealth-focused mental health practices"
+    "Therapists doing psychotherapy who need modality-aware documentation (CBT, DBT, EMDR)",
+    "Solo practitioners wanting affordable therapy-specific AI notes ($19.99-69.99/mo)",
+    "Clinicians using TherapyNotes, ICANotes, TheraNest, or Valant",
+    "Therapists who want Alliance Genie therapeutic relationship insights",
+    "Group practices needing unlimited notes per seat"
   ],
   "not_for": [
-    "Medical practices outside mental health",
-    "Psychiatrists primarily doing medication management",
+    "Psychiatrists doing medication management—Freed or medical scribes fit better",
+    "Multi-specialty practices needing one tool across medical and therapy",
     "Large health systems requiring enterprise EHR integration",
-    "Practices needing HITRUST certification"
+    "Clinicians needing real-time session analytics (Upheal offers this)"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 92,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 94,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["upheal", "autonotes", "blueprint", "simplepractice-note-taker"],
+  "related_tools": [
+    "upheal",
+    "freed-ai",
+    "autonotes",
+    "blueprint",
+    "simplepractice-note-taker"
+  ],
+  "competitor_tools": [
+    "upheal",
+    "autonotes",
+    "berries",
+    "mh-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.783Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Mentalyc: AI Therapy Notes for Mental Health Professionals | HeyPsych",
-    "meta_description": "Mentalyc AI therapy documentation review. Starting at $49/month for therapists. Generates DAP, SOAP, BIRP notes. SimplePractice integration. HIPAA compliant.",
+    "title": "Mentalyc: AI Therapy Notes 2026 | HeyPsych",
+    "meta_description": "Mentalyc AI therapy notes: $19.99-119.99/mo. Built for therapists, understands CBT/DBT/EMDR. Alliance Genie tracks therapeutic relationship. HIPAA + SOC 2.",
     "faqs": [
       {
-        "question": "How much does Mentalyc cost?",
-        "answer": "Mentalyc starts at $49/month for 30 session notes (Starter plan). The Professional plan at $99/month offers unlimited notes and EHR integrations. Group practices pay $79/provider/month with minimum 3 providers."
+        "q": "How much does Mentalyc cost in 2026?",
+        "a": "Mentalyc offers five tiers: Mini ($19.99/mo, 10 notes), Basic ($39.99/mo, 50 notes), Pro ($69.99/mo, 160 notes), Super ($119.99/mo, 330 notes), and Group Practice ($49.99-59.99/seat, unlimited). Annual billing saves 20%. 14-day free trial includes 15 notes."
       },
       {
-        "question": "Does Mentalyc understand different therapy modalities?",
-        "answer": "Yes, Mentalyc is trained on mental health documentation and understands therapeutic modalities including CBT, DBT, psychodynamic therapy, EMDR, and solution-focused therapy. Notes reflect the appropriate terminology and interventions."
+        "q": "Does Mentalyc understand therapy modalities like CBT and DBT?",
+        "a": "Yes. Unlike medical scribes, Mentalyc was built for therapy and understands modalities including CBT, DBT, psychodynamic, EMDR, solution-focused, and motivational interviewing. Notes reflect the actual therapeutic approach used."
       },
       {
-        "question": "Can Mentalyc generate insurance-compliant notes?",
-        "answer": "Yes, Mentalyc generates notes in formats required by insurance companies including DAP, SOAP, BIRP, and GIRP notes. The AI ensures documentation meets medical necessity requirements."
+        "q": "What is Mentalyc's Alliance Genie?",
+        "a": "Alliance Genie is Mentalyc's unique feature that tracks therapeutic alliance dynamics—providing data-driven insights into the therapist-client relationship. No other AI scribe offers this capability."
       },
       {
-        "question": "Does Mentalyc integrate with SimplePractice?",
-        "answer": "Yes, Mentalyc has native integration with SimplePractice, TherapyNotes, and Jane App. Notes can be exported directly to these EHRs. Other EHRs work via copy-paste or browser extension."
+        "q": "Which EHRs does Mentalyc integrate with?",
+        "a": "Mentalyc has direct integrations with TherapyNotes, ICANotes, TheraNest, Valant, and TheraBill. SimplePractice and Jane App work via Chrome Extension for one-click note autofill."
+      },
+      {
+        "q": "Is Mentalyc better than Freed AI for therapists?",
+        "a": "For psychotherapy documentation, yes. Freed is a medical scribe that doesn't understand therapy modalities or generate therapy-specific notes. Mentalyc was built specifically for therapists with modality-aware AI and formats like DAP, BIRP, and GIRP."
       }
     ],
     "keywords": [
       "Mentalyc",
       "therapy AI scribe",
-      "mental health documentation",
+      "CBT progress notes AI",
+      "DBT documentation",
       "DAP note generator",
-      "SOAP note therapist",
-      "AI progress notes therapy",
-      "SimplePractice AI",
-      "therapist documentation AI"
+      "therapist AI scribe",
+      "Mentalyc vs Freed",
+      "Alliance Genie"
     ]
-  }
+  },
+  "website_url": "https://mentalyc.com",
+  "pricing_url": "https://www.mentalyc.com/pricing",
+  "affiliate_url": "https://mentalyc.com"
 }

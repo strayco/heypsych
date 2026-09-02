@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "2e1bf84f-27f1-44f9-96e5-fe8c8dff3b48",
   "slug": "betterhelp",
   "name": "BetterHelp",
@@ -15,47 +15,24 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [
-    "virtual-therapy-platform",
-    "self-pay-therapy",
-    "subscription-therapy",
-    "text-based-therapy"
-  ],
+  "secondary_categories": [],
   "capabilities": [
-    "therapy-sessions",
-    "text-messaging-therapy",
     "video-sessions",
-    "audio-sessions",
-    "phone-sessions",
-    "self-pay-only",
-    "subscription-model",
     "hipaa-compliant",
     "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
       "psychologist",
-      "therapist-lcsw-lmft",
-      "counselor"
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
       "telehealth-only",
-      "private-practice"
+      "solo-practice"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "anxiety",
-      "depression",
-      "relationships",
-      "stress",
-      "trauma",
-      "grief",
-      "self-esteem",
-      "lgbtq",
-      "career-counseling"
     ]
   },
   "feature_flags": {
@@ -97,13 +74,11 @@
   "support_url": "https://www.betterhelp.com/contact",
   "logo_url": "https://www.betterhelp.com/logo.png",
   "pricing": {
-    "model": "per-engagement",
     "starting_price_cents": 0,
     "starting_price_display": "No upfront cost",
     "free_tier": true,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "percentage-based",
     "provider_compensation": {
       "model": "engagement-based-pay",
       "pay_structure": "Based on client engagement, sessions conducted, and retention",
@@ -114,7 +89,8 @@
       "notes": "Actual compensation varies widely based on client load, engagement levels, session frequency, and performance metrics. Many full-time therapists report $50,000-$80,000 annually working 25-35 hours/week."
     },
     "notes": "Free to join as a provider. No insurance billing - all self-pay subscription clients. BetterHelp handles all billing, client acquisition, and platform infrastructure. Pay is engagement-based, not traditional per-session.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -149,8 +125,15 @@
   "services_offered": {
     "therapy": {
       "available": true,
-      "modalities": ["individual"],
-      "session_types": ["text-messaging", "video", "phone", "live-chat"],
+      "modalities": [
+        "individual"
+      ],
+      "session_types": [
+        "text-messaging",
+        "video",
+        "phone",
+        "live-chat"
+      ],
       "messaging_therapy": {
         "available": true,
         "unlimited": true,
@@ -189,7 +172,12 @@
     "provider_count": "30,000+",
     "countries_covered": "US, UK, Australia, and select international",
     "states_covered": "All 50 US states + D.C.",
-    "provider_types": ["therapists", "counselors", "social-workers", "psychologists"],
+    "provider_types": [
+      "therapists",
+      "counselors",
+      "social-workers",
+      "psychologists"
+    ],
     "client_base": "2+ million clients served",
     "client_matching": "Proprietary algorithm matching based on preferences and availability"
   },
@@ -202,18 +190,8 @@
     }
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.betterhelp.com/privacy-policy",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.betterhelp.com/privacy-policy",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "yes",
@@ -312,8 +290,8 @@
   },
   "integrations": [],
   "seo": {
-    "title": "BetterHelp for Therapists: Provider Jobs, Pay & Reviews | HeyPsych",
-    "meta_description": "BetterHelp therapist review: pay rates, requirements, and what it's like working for the world's largest online therapy platform. 30,000+ therapists, no insurance billing.",
+    "title": "BetterHelp for Therapists: Provider Jobs, Pay & Reviews",
+    "meta_description": "BetterHelp therapist review: pay rates, requirements, and what it's like working for the world's largest online therapy platform. 30,000+ therapists, no...",
     "faqs": [
       {
         "q": "How much do BetterHelp therapists get paid?",
@@ -403,13 +381,19 @@
     ]
   },
   "geographic_coverage": {
-    "countries": ["United States", "United Kingdom", "Australia", "Canada"],
+    "countries": [
+      "United States",
+      "United Kingdom",
+      "Australia",
+      "Canada"
+    ],
     "us_states": "All 50 states + D.C.",
     "international_expansion": "Growing international presence",
     "licensing_support": "Therapists must hold active US state licenses"
   },
   "created_at": "2026-08-22T20:50:40.804Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.567Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.betterhelp.com"
 }

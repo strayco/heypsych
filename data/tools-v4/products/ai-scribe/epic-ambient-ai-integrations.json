@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "be07e139-557e-4351-a93e-3b17304f4f39",
   "slug": "epic-ambient-ai-integrations",
-  "name": "Epic ambient AI integrations",
-  "company_name": "Epic",
+  "name": "Epic Ambient AI Integrations",
+  "company_name": "Epic Systems",
+  "website": "https://www.epic.com",
+  "description": "Epic Systems offers ambient AI documentation through two paths: 1) Epic AI Charting—Epic's own ambient AI rolled out February 2026, pricing not publicly disclosed but may be included with standard licensing; 2) Integrated third-party partners including Nuance DAX Copilot (Dragon Copilot) and Abridge. Epic holds 42% of the acute care EHR market. Nuance DAX is deeply embedded in Epic Hyperspace via Microsoft Pal partnership with native SmartText field population—pricing runs $369-830/provider/month with multi-year contracts required. Abridge holds #1 Best in KLAS for Ambient AI 2025-2026 and is Epic's first official 'Pal.' The depth of Epic integration (auto-populating discrete-data fields rather than free-text dumps) took years to build and competitors are still catching up.",
   "import_ref": {
     "record_id": "MH-0229",
     "source_row": 230,
@@ -16,16 +18,33 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Epic ambient AI: Native AI Charting + Nuance DAX ($369-830/mo) + Abridge integrations. Deep EHR integration via Microsoft Pal.",
+  "one_liner": "Epic ambient AI. Native + DAX ($369-830/mo) + Abridge. Enterprise contracts.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "coding-assistance",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director"
+    ],
+    "practice_settings": [
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
@@ -35,35 +54,167 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 36900,
+    "starting_price_display": "$369-830/provider/month (Nuance DAX)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Epic AI Charting (Native)",
+        "price": "Contact Epic",
+        "description": "Epic's own ambient AI rolled out February 2026. Pricing not publicly disclosed—may be included with standard licensing or require additional fees."
+      },
+      {
+        "name": "Nuance DAX Copilot (Dragon Copilot)",
+        "price": "$369-830/provider/month",
+        "description": "Deep Epic Hyperspace integration via Microsoft Pal. Auto-populates SmartText fields. Multi-year contracts required. 550+ health systems, 200,000+ clinicians."
+      },
+      {
+        "name": "Abridge",
+        "price": "Contact for pricing",
+        "description": "#1 Best in KLAS Ambient AI 2025-2026. Epic's first official 'Pal.' Enterprise contracts for health systems."
+      }
+    ],
+    "notes": "Enterprise pricing requires multi-year contracts. Nuance DAX $369/mo (12-mo via reseller) to $830/mo+ depending on volume and contract length. Budget alternatives: Vero $69/mo, Freed $39-119/mo, but without deep Epic integration.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "security_note": "Epic, Nuance/Microsoft, and Abridge all maintain HIPAA compliance, SOC 2, and enterprise-grade security for health system deployments."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic Hyperspace",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native SmartText field population via Microsoft Pal partnership—not just API calls"
+    },
+    {
+      "name": "Nuance DAX Copilot",
+      "slug": "nuance-dax-copilot",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Deep Epic integration—auto-populates discrete-data fields"
+    },
+    {
+      "name": "Abridge",
+      "slug": "abridge",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Epic's first official 'Pal', #1 Best in KLAS 2025-2026"
+    }
+  ],
+  "features": {
+    "epic_ai_charting": {
+      "supported": true,
+      "description": "Epic's native ambient AI rolled out February 2026. Integrated directly into Epic workflows."
+    },
+    "nuance_dax_integration": {
+      "supported": true,
+      "description": "Nuance DAX Copilot (Dragon Copilot) embedded in Epic Hyperspace via Microsoft Pal partnership."
+    },
+    "discrete_data_population": {
+      "supported": true,
+      "description": "Unlike API-based solutions, notes auto-populate into correct SmartText fields—not free-text dumps."
+    },
+    "enterprise_scale": {
+      "users": "200,000+ clinicians (DAX)",
+      "health_systems": "550+ (DAX)",
+      "description": "Enterprise-scale deployment proven across major health systems."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes",
+      "Discharge summaries"
+    ]
+  },
+  "best_for": [
+    "Health systems using Epic wanting deepest possible EHR integration",
+    "Enterprise organizations with budget for $369-830/provider/month",
+    "Hospitals needing discrete-data field population (not free-text)",
+    "Organizations wanting proven scale (550+ health systems, 200K+ clinicians)",
+    "Epic users wanting Abridge (#1 Best in KLAS) or native Epic AI Charting"
+  ],
+  "not_for": [
+    "Small practices—Freed ($39-119/mo) or Commure ($59-89/mo) far more affordable",
+    "Non-Epic EHR users—integration depth is Epic-specific",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Budget-conscious clinicians—enterprise pricing starts at $369/mo minimum",
+    "Solo practitioners who can't justify enterprise contract requirements"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "epic-hyperspace"
+  ],
+  "competitor_tools": [
+    "athenaone-ambient-notes",
+    "oracle-clinical-ai-agent",
+    "freed-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.792Z",
-  "updated_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Epic ambient AI integrations: Review & Pricing | HeyPsych",
-    "meta_description": "Epic ambient AI integrations review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Epic Ambient AI: DAX + Abridge 2026 | HeyPsych",
+    "meta_description": "Epic ambient AI: Native AI Charting + Nuance DAX ($369-830/mo) + Abridge (#1 KLAS). Deep Hyperspace integration. 550+ health systems. Enterprise contracts re...",
+    "faqs": [
+      {
+        "q": "How much does Epic ambient AI cost in 2026?",
+        "a": "Epic AI Charting (native) pricing is not publicly disclosed—may be included with licensing. Nuance DAX Copilot runs $369-830/provider/month depending on contract. Abridge requires custom enterprise pricing. All require multi-year contracts for health systems."
+      },
+      {
+        "q": "What makes Epic ambient AI integration different?",
+        "a": "Epic's integration depth is unmatched—Nuance DAX auto-populates SmartText discrete-data fields rather than free-text dumps. This native workflow (via Microsoft Pal partnership) took years to build. Competitors are still catching up."
+      },
+      {
+        "q": "What is Abridge and why is it Epic's 'Pal'?",
+        "a": "Abridge holds #1 Best in KLAS for Ambient AI in 2025 and 2026. It's Epic's first official 'Pal'—a designation for deep integration partners. Abridge offers enterprise contracts for health systems using Epic."
+      },
+      {
+        "q": "Is Epic ambient AI good for small practices?",
+        "a": "No. Epic ambient AI is enterprise-focused with $369-830/mo pricing and multi-year contracts. Small practices should consider Freed ($39-119/mo), Commure ($59-89/mo), or PatientNotes ($50/mo) instead."
+      },
+      {
+        "q": "Epic ambient AI vs Freed vs Commure: which is better?",
+        "a": "Epic ambient AI ($369-830/mo) offers deepest EHR integration for health systems. Freed ($39-119/mo) works via browser extension—cheaper but less integrated. Commure ($59-89/mo) offers good integration at mid-tier pricing. For enterprise Epic users, go native. For everyone else, consider alternatives."
+      }
+    ],
     "keywords": [
-      "Epic ambient AI integrations",
-      "ai scribe documentation"
+      "Epic ambient AI",
+      "Epic AI Charting",
+      "Nuance DAX Epic",
+      "Dragon Copilot Epic",
+      "Abridge Epic",
+      "Epic AI scribe pricing 2026",
+      "Epic Hyperspace ambient",
+      "Epic Microsoft Pal"
     ]
-  }
+  },
+  "website_url": "https://www.epic.com",
+  "pricing_url": "https://www.epic.com",
+  "affiliate_url": "https://www.epic.com"
 }

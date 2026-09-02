@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "eb816849-e33e-4da0-ac24-e219dee94b1d",
   "slug": "mend",
   "name": "Mend",
@@ -21,12 +21,23 @@
   "support_level": "clinical",
   "short_description": "Enterprise telehealth platform with AI-powered patient engagement and predictive no-show analytics. Designed for high-volume healthcare organizations.",
   "long_description": "Mend is an enterprise telehealth and patient engagement platform that differentiates itself with AI-powered predictive analytics to reduce patient no-shows. Founded in 2014, the platform uses machine learning to identify patients at high risk of missing appointments and triggers automated outreach via SMS, email, and voice to improve attendance rates. Mend offers HIPAA-compliant video visits, virtual waiting rooms, digital forms and intake, and seamless EHR integration. The platform supports both synchronous video visits and asynchronous telehealth workflows. Mend is particularly popular among behavioral health organizations, FQHCs, and multi-specialty practices that struggle with no-show rates. The company claims to reduce no-shows by up to 35% through its predictive engagement technology.",
-  "primary_hubs": ["telehealth", "patient-engagement"],
-  "sub_hubs": ["video-conferencing", "patient-outreach"],
+  "primary_hubs": [
+    "telehealth",
+    "patient-engagement"
+  ],
+  "sub_hubs": [
+    "video-conferencing",
+    "patient-outreach"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["patient-engagement"],
+  "secondary_categories": [
+    "patient-engagement"
+  ],
   "conditions": [],
-  "tool_types": ["telehealth-platform", "patient-engagement"],
+  "tool_types": [
+    "telehealth-platform",
+    "patient-engagement"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -35,7 +46,6 @@
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
     "free_tier": false,
     "quote_required": true,
     "tiers": [
@@ -74,14 +84,21 @@
         ]
       }
     ],
-    "notes": "Pricing based on organization size and patient volume. Contact sales for quote. Typically structured as per-provider or per-visit pricing."
+    "notes": "Pricing based on organization size and patient volume. Contact sales for quote. Typically structured as per-provider or per-visit pricing.",
+    "model": "enterprise-custom"
   },
-  "capabilities": ["video-conferencing", "patient-engagement", "no-show-prediction", "automated-outreach", "digital-intake"],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["administrator", "practice-manager", "clinician"],
-    "practice_settings": ["multi-specialty", "fqhc", "health-system", "behavioral-health"],
-    "organization_sizes": ["medium", "large", "enterprise"],
-    "specialties": ["behavioral-health", "mental-health", "primary-care", "multi-specialty"]
+    "clinician_roles": [],
+    "practice_settings": [
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -134,36 +151,22 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown",
     "encryption": "End-to-end encryption",
-    "certifications": ["HIPAA", "SOC 2"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2"
+    ],
     "data_residency": "US-based",
     "audit_logging": true,
     "notes": "HIPAA compliant with BAA. SOC 2 certified."
   },
-  "integrations": {
-    "ehr_integrations": [
-      "Epic",
-      "Cerner",
-      "athenahealth",
-      "NextGen",
-      "eClinicalWorks",
-      "Allscripts",
-      "Greenway",
-      "Meditech"
-    ],
-    "calendar_integrations": ["Via EHR integration"],
-    "billing_integrations": ["Via EHR integration"],
-    "api_available": true,
-    "api_plan_required": "Enterprise",
-    "hl7_fhir_support": true,
-    "notes": "Strong EHR integration capabilities. Supports HL7 and FHIR standards."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": true,
@@ -174,7 +177,11 @@
     "no_show_prediction": true,
     "automated_outreach": true,
     "patient_surveys": true,
-    "ai_features": ["Predictive no-show analytics", "Automated patient engagement", "Risk stratification"],
+    "ai_features": [
+      "Predictive no-show analytics",
+      "Automated patient engagement",
+      "Risk stratification"
+    ],
     "notes": "Unique AI-powered patient engagement features focused on reducing no-shows."
   },
   "privacy": {
@@ -185,10 +192,16 @@
     "notes": "Enterprise-grade security with SOC 2 certification."
   },
   "seo": {
-    "title": "Mend: Enterprise Telehealth with AI No-Show Prediction | HeyPsych",
+    "title": "Mend: Enterprise Telehealth with AI No-Show Prediction",
     "meta_description": "Mend is an enterprise telehealth platform with AI-powered no-show prediction and automated patient engagement. Reduce no-shows by up to 35%.",
-    "canonical_url": "https://heypsych.com/tools/mend/",
-    "keywords": ["Mend telehealth", "patient engagement", "no-show prediction", "AI telehealth", "enterprise telehealth"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/mend/",
+    "keywords": [
+      "Mend telehealth",
+      "patient engagement",
+      "no-show prediction",
+      "AI telehealth",
+      "enterprise telehealth"
+    ],
     "faqs": [
       {
         "q": "What makes Mend different from other telehealth platforms?",
@@ -238,8 +251,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "patient-engagement"],
-    "clinician_workflows": ["telehealth_video", "patient_communication"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "patient-engagement"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "patient_communication"
+    ],
     "how_clinicians_use_it": [
       "Conducting video visits with integrated EHR",
       "Receiving AI-powered no-show predictions",
@@ -247,15 +266,34 @@
       "Collecting digital intake forms"
     ],
     "implementation_notes": "Enterprise implementation with EHR integration. Requires IT resources for setup. Best for organizations with high patient volumes.",
-    "target_practice_size": ["Medium practices", "Large practices", "Health systems", "FQHCs"],
+    "target_practice_size": [
+      "Medium practices",
+      "Large practices",
+      "Health systems",
+      "FQHCs"
+    ],
     "billing_notes": "Billing handled through EHR integration."
   },
   "market_position": {
-    "primary_competitors": ["Teladoc Health", "Amwell", "Doxy.me", "VSee"],
-    "differentiators": ["AI no-show prediction", "Automated patient engagement", "Focus on reducing no-shows", "Strong EHR integration"],
+    "primary_competitors": [
+      "Teladoc Health",
+      "Amwell",
+      "Doxy.me",
+      "VSee"
+    ],
+    "differentiators": [
+      "AI no-show prediction",
+      "Automated patient engagement",
+      "Focus on reducing no-shows",
+      "Strong EHR integration"
+    ],
     "market_segment": "Enterprise healthcare organizations focused on patient engagement"
   },
-  "related_tools": ["teladoc-health", "amwell", "vsee"],
+  "related_tools": [
+    "teladoc-health",
+    "amwell",
+    "vsee"
+  ],
   "order": 8,
   "featured": false,
   "status": "active",
@@ -269,5 +307,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.794Z",
-  "updated_at": "2026-08-22T22:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.344Z",
+  "website_url": "https://www.mend.com",
+  "affiliate_url": "https://www.mend.com"
 }

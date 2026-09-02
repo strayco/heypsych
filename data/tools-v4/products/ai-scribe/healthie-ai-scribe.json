@@ -5,6 +5,8 @@
   "slug": "healthie-ai-scribe",
   "name": "Healthie AI Scribe",
   "company_name": "Healthie",
+  "website": "https://www.gethealthie.com",
+  "description": "Healthie AI Scribe is a native AI documentation feature built into the Healthie EHR platform, not a standalone product. Available as add-on for Plus plans ($30/mo+) and above—add-on pricing not publicly disclosed. Generates structured, editable chart notes from telehealth sessions (via HIPAA-compliant Zoom integration) or in-person ambient sessions. Supports SOAP, ADIME, intake forms, and custom charting templates built within Healthie. Over 250,000 minutes of AI-assisted charting logged by Q4 2025 with 75% average reduction in documentation time. HIPAA/HITRUST/ONC certified. Best for practices already on Healthie wanting native AI without third-party integrations. Launched at FNCE 2025, general availability 2026.",
   "import_ref": {
     "record_id": "MH-0222",
     "source_row": 223,
@@ -16,54 +18,194 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Native AI scribe add-on for Healthie EHR. Plus plans ($30/mo+) and above. HIPAA/HITRUST/ONC certified. Contact for add-on pricing.",
+  "one_liner": "Healthie EHR native AI scribe. Plus plans+ only. HIPAA/HITRUST. Contact for pricing.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
-    "has_telehealth": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "per-provider-month",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 0,
+    "starting_price_display": "Add-on for Healthie Plus ($30/mo+) plans",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "AI Scribe Add-on",
+        "price": "Contact for pricing",
+        "description": "Requires Healthie Plus ($30/mo) or higher base plan. AI Charting must be enabled on subscription. Contact hello@gethealthie.com for add-on pricing."
+      }
+    ],
+    "notes": "AI Scribe is an add-on requiring Plus, Group, or Enterprise Healthie plans. Base Healthie starts at $30/mo. Add-on pricing not publicly disclosed—requires sales contact. Not available as standalone product.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "onc_certified": "yes",
+    "security_note": "HIPAA, HITRUST, and ONC certified. AI Scribe uses HIPAA-compliant Zoom integration for telehealth sessions."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Healthie EHR",
+      "slug": "healthie",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Built directly into Healthie platform—not third-party integration"
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "HIPAA-compliant Zoom telehealth with AI scribe enabled"
+    }
+  ],
+  "features": {
+    "native_ehr": {
+      "supported": true,
+      "description": "Built directly into Healthie EHR—works with existing templates and Calendar."
+    },
+    "telehealth_ambient": {
+      "supported": true,
+      "description": "Captures Zoom telehealth sessions or in-person visits via ambient recording."
+    },
+    "instant_transcript": {
+      "supported": true,
+      "description": "Every session produces instant transcript alongside structured note."
+    },
+    "custom_templates": {
+      "supported": true,
+      "description": "Supports any charting form built within Healthie—AI adapts to custom templates."
+    },
+    "time_savings": {
+      "rate": "75%",
+      "description": "Average 75% reduction in documentation time based on usage data."
+    },
+    "usage_stats": {
+      "minutes_logged": "250,000+",
+      "description": "Over 250,000 minutes of AI-assisted charting logged by Q4 2025."
+    },
+    "note_types": [
+      "SOAP notes",
+      "ADIME notes",
+      "Intake forms",
+      "Progress notes",
+      "Custom templates"
+    ]
+  },
+  "best_for": [
+    "Existing Healthie users wanting native AI without third-party integrations",
+    "Nutrition and dietitian practices using Healthie for ADIME documentation",
+    "Health coaches and integrative medicine practices on Healthie",
+    "Multi-disciplinary practices with custom Healthie charting templates",
+    "Practices requiring HITRUST certification (included with Healthie)"
+  ],
+  "not_for": [
+    "Non-Healthie users—requires existing Healthie Plus subscription ($30/mo+)",
+    "Budget-conscious solo practitioners—Carepatron ($0-19.50/mo) includes AI free",
+    "Mental health therapists wanting therapy-specific templates—Mentalyc ($20-70/mo) better",
+    "Practices needing standalone AI scribe—Freed ($39-119/mo) works with any EHR",
+    "Clinicians wanting transparent add-on pricing—contact required for Healthie AI costs"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "healthie",
+    "freed-ai",
+    "carepatron"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "carepatron",
+    "simplepractice-note-taker"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Healthie AI Scribe: Review & Pricing | HeyPsych",
-    "meta_description": "Healthie AI Scribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Healthie AI Scribe Review 2026: Native EHR Add-on | HeyPsych",
+    "meta_description": "Healthie AI Scribe: Native AI documentation for Healthie EHR users. Plus plans ($30/mo+) required. HIPAA/HITRUST/ONC certified. Contact for add-on pricing.",
+    "faqs": [
+      {
+        "q": "How much does Healthie AI Scribe cost in 2026?",
+        "a": "Healthie AI Scribe is an add-on for Plus plans ($30/mo) and above. The add-on pricing is not publicly disclosed—contact hello@gethealthie.com for a quote. You must have AI Charting enabled on your Healthie subscription."
+      },
+      {
+        "q": "Is Healthie AI Scribe available as a standalone product?",
+        "a": "No. Healthie AI Scribe is built directly into the Healthie EHR platform and requires an existing Healthie subscription (Plus, Group, or Enterprise). For standalone AI scribes, consider Freed ($39-119/mo) or Carepatron (free tier available)."
+      },
+      {
+        "q": "Is Healthie AI Scribe HIPAA compliant?",
+        "a": "Yes. Healthie is HIPAA, HITRUST, and ONC certified. AI Scribe uses HIPAA-compliant Zoom integration for telehealth sessions. BAA available for covered entities."
+      },
+      {
+        "q": "What note types does Healthie AI Scribe support?",
+        "a": "Healthie AI Scribe generates SOAP notes, ADIME notes, intake forms, progress notes, and any custom charting templates built within Healthie. It adapts to your existing template structure."
+      },
+      {
+        "q": "Healthie AI Scribe vs Freed: which is better?",
+        "a": "Healthie AI Scribe is native to Healthie EHR—best if you're already on Healthie and want seamless integration. Freed ($39-119/mo) works with any EHR via copy-paste and has transparent pricing. For Healthie users, use Healthie's native scribe. For EHR flexibility, use Freed."
+      }
+    ],
     "keywords": [
       "Healthie AI Scribe",
-      "ai scribe documentation"
+      "Healthie AI scribe pricing 2026",
+      "Healthie documentation",
+      "HITRUST AI scribe",
+      "Healthie vs Freed",
+      "nutrition AI scribe",
+      "health coach AI documentation"
     ]
-  }
+  },
+  "website_url": "https://www.gethealthie.com",
+  "pricing_url": "https://www.gethealthie.com/healthie-pricing",
+  "affiliate_url": "https://www.gethealthie.com"
 }

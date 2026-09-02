@@ -5,6 +5,8 @@
   "slug": "commure-scribe",
   "name": "Commure Scribe",
   "company_name": "Commure",
+  "website": "https://scribe.commure.com",
+  "description": "Commure Scribe is a well-funded ($820M+) AI medical scribe used by 75,000+ clinicians across 25M+ patient encounters annually. Pricing is transparent: $59/month billed annually ($89 monthly). 7-day free trial with no credit card required. Includes AI Copilot, custom templates, ICD-10/CPT coding suggestions, and support for 60+ EHRs with direct synchronization. Multi-language support (90+ languages). Commure acquired Augmedix in 2024 and has major enterprise partnerships including HCA Healthcare. Not built for mental health-specific documentation—therapists should use purpose-built tools.",
   "import_ref": {
     "record_id": "MH-0194",
     "source_row": 195,
@@ -16,12 +18,36 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Well-funded AI scribe at $59-89/mo. 75,000+ clinicians. 7-day free trial. 60+ EHR integrations. ICD-10/CPT coding. Multi-language (90+).",
+  "one_liner": "75,000+ clinician AI scribe. $59/mo annual. 7-day free trial. 60+ EHR integrations.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "ehr-integration",
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +57,197 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "founded_year": 2017,
+    "headquarters": "San Francisco, CA",
+    "funding_total": "$820M+",
+    "notable_investors": [
+      "General Catalyst",
+      "Andreessen Horowitz"
+    ],
+    "customer_count": "75,000+ clinicians",
+    "notable_clients": [
+      "HCA Healthcare"
+    ],
+    "acquisitions": [
+      "Augmedix (2024)"
+    ]
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 5900,
+    "starting_price_display": "$59/mo (annual) or $89/mo (monthly)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "7-day unlimited trial (Scribe Core). No credit card required.",
+    "tiers": [
+      {
+        "name": "Scribe Core (Free Trial)",
+        "price": "$0 for 7 days",
+        "description": "Unlimited notes for 7 days, in-person and telehealth support, 60+ language transcription, multi-speaker recognition."
+      },
+      {
+        "name": "Scribe Pro",
+        "price": "$59/mo (annual) or $89/mo (monthly)",
+        "description": "Unlimited transcription and note generation, custom template builder, AI Copilot, all Core features."
+      },
+      {
+        "name": "Scribe Enterprise",
+        "price": "Custom",
+        "description": "Live onboarding (virtual or onsite), template-building assistance, direct EHR synchronization."
+      }
+    ],
+    "notes": "Pro plan drops from $89/mo to $59/mo when billed annually ($708/year). 7-day free trial with no credit card. Enterprise includes dedicated support and custom integrations.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Oracle Health (Cerner)",
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "eClinicalWorks",
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "60+ EHRs",
+      "slug": "multi-ehr",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Direct note synchronization across 60+ EHR systems"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Captures patient-clinician conversations and generates structured clinical notes."
+    },
+    "coding_suggestions": {
+      "supported": true,
+      "description": "Automated ICD-10 and CPT coding recommendations."
+    },
+    "ai_copilot": {
+      "supported": true,
+      "description": "AI assistant for documentation refinement and clinical queries."
+    },
+    "multi_language": {
+      "supported": true,
+      "description": "Transcription support for 90+ languages with multi-speaker recognition."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes",
+      "Custom templates"
+    ],
+    "pre_charting": true,
+    "custom_templates": true
+  },
+  "best_for": [
+    "Primary care practices wanting affordable AI scribe with transparent pricing ($59-89/mo)",
+    "Practices using Epic, Cerner, athenahealth, or eClinicalWorks",
+    "Multi-language practices (90+ languages supported)",
+    "Organizations wanting to test before commitment (7-day free trial)",
+    "Practices needing ICD-10/CPT coding assistance"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) built for therapy",
+    "Psychiatrists needing MSE and medication management—consider Freed or mdhub",
+    "Organizations wanting hybrid human+AI review—use Augmedix Live instead",
+    "Practices needing HITRUST certification",
+    "Very small practices where $59/mo feels expensive—Freed starts at $39/mo"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 92,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "augmedix",
+    "suki-ai",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "sunoh-ai",
+    "s10-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.788Z",
-  "updated_at": "2026-08-22T20:50:40.788Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Commure Scribe: Review & Pricing | HeyPsych",
-    "meta_description": "Commure Scribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Commure Scribe: $59/mo AI Scribe 2026 | HeyPsych",
+    "meta_description": "Commure Scribe: $59-89/mo AI scribe used by 75,000+ clinicians. 7-day free trial. 60+ EHR integrations. ICD-10/CPT coding. 90+ languages. $820M+ funded.",
+    "faqs": [
+      {
+        "q": "How much does Commure Scribe cost in 2026?",
+        "a": "Commure Scribe Pro costs $59/month when billed annually ($708/year) or $89/month billed monthly. A 7-day free trial (Scribe Core) is available with no credit card required. Enterprise pricing is custom."
+      },
+      {
+        "q": "Does Commure Scribe have a free trial?",
+        "a": "Yes. Scribe Core offers a 7-day unlimited trial with no credit card required. Includes in-person and telehealth support, 60+ language transcription, and multi-speaker recognition."
+      },
+      {
+        "q": "How many EHRs does Commure Scribe integrate with?",
+        "a": "Commure Scribe integrates with 60+ EHR systems including Epic, Cerner (Oracle Health), athenahealth, and eClinicalWorks. Enterprise tier includes direct note synchronization."
+      },
+      {
+        "q": "Is Commure Scribe good for mental health?",
+        "a": "No. Commure Scribe is designed for primary care and medical specialties. Therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider Freed ($39-119/mo) or mdhub."
+      },
+      {
+        "q": "Commure Scribe vs Freed: which is better?",
+        "a": "Both offer transparent pricing. Freed ($39-119/mo) is cheaper and better for solo practitioners. Commure ($59-89/mo) has more EHR integrations (60+) and multi-language support (90+ languages). Commure has more enterprise credibility ($820M+ funding, 75,000+ clinicians)."
+      }
+    ],
     "keywords": [
       "Commure Scribe",
-      "ai scribe documentation"
+      "Commure Scribe pricing 2026",
+      "AI medical scribe",
+      "Commure vs Freed",
+      "medical documentation AI",
+      "ICD-10 coding AI",
+      "Commure Scribe free trial"
     ]
-  }
+  },
+  "website_url": "https://scribe.commure.com",
+  "pricing_url": "https://getscribe.commure.com/pricing-page",
+  "affiliate_url": "https://scribe.commure.com"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "greenspace-health-mbc",
+  "id": "4003077e-aae4-4312-bfb2-49039ec8f0c8",
   "slug": "greenspace-health",
   "name": "Greenspace Health",
   "company_name": "Greenspace Health",
@@ -13,12 +13,8 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "measurement-based-care",
-  "secondary_categories": [
-    "outcomes-tracking",
-    "clinical-analytics",
-    "quality-improvement"
-  ],
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [],
   "capabilities": [
     "outcome-tracking",
     "phq9-gad7",
@@ -32,27 +28,19 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "psychiatric-np-pa",
-      "clinical-director",
-      "quality-officer"
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
       "group-practice",
-      "health-system",
+      "multi-site-enterprise",
       "community-mental-health",
-      "university-counseling",
-      "hospital"
+      "hospital-inpatient"
     ],
     "organization_sizes": [
       "small-2-10",
       "medium-11-50",
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "integrated-care"
     ]
   },
   "feature_flags": {
@@ -65,7 +53,8 @@
     "has_patient_portal": true,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": false,
+    "has_e_prescribing": false
   },
   "short_description": "Enterprise measurement-based care platform with 300+ assessments, 85+ EHR integrations, and automated outcome tracking for behavioral health organizations.",
   "long_description": "Greenspace Health is a best-in-class measurement-based care platform that automates the collection and visualization of patient-reported outcome measures (PROMs) throughout treatment. The platform offers over 300 evidence-based assessments delivered automatically via SMS, email, or kiosk, with instant visualization for clinicians. Greenspace integrates with 85+ EHR/EMR systems including Epic, Oracle Cerner, Athenahealth, and Netsmart using FHIR, HL7, and open APIs. Evidence shows that regularly measuring progress with Greenspace increases the likelihood of significant patient improvement by 3.5x, improves clinical outcomes by 42%, and reduces no-show rates by 40%. The platform achieves an 83% assessment completion rate and is trusted by behavioral health clinics, hospitals, integrated health systems, and university student health centers.",
@@ -86,7 +75,7 @@
   "support_url": "https://greenspacehealth.com/support",
   "logo_url": "https://greenspacehealth.com/logo.png",
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "starting_price_cents": 2499,
     "starting_price_display": "$24.99/month (Basic)",
     "free_tier": false,
@@ -148,16 +137,13 @@
     "no_show_reduction": "40% reduction in cancellations and no-shows"
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://greenspacehealth.com/security",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "soc2": "type2",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "pipeda_compliant": true,
-    "phipa_compliant": true
+    "phipa_compliant": true,
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
@@ -222,12 +208,16 @@
     "fhir_support": true,
     "hl7_support": true,
     "smart_on_fhir": true,
-    "sso_support": ["OAuth2.0", "OpenID Connect", "SAML 2.0"],
+    "sso_support": [
+      "OAuth2.0",
+      "OpenID Connect",
+      "SAML 2.0"
+    ],
     "total_integrations": "85+"
   },
   "seo": {
     "title": "Greenspace Health: Enterprise MBC Platform | HeyPsych",
-    "meta_description": "Greenspace Health offers 300+ evidence-based assessments with 85+ EHR integrations. 3.5x better outcomes. HIPAA compliant MBC for behavioral health organizations.",
+    "meta_description": "Greenspace Health offers 300+ evidence-based assessments with 85+ EHR integrations. 3.5x better outcomes. HIPAA compliant MBC for behavioral health...",
     "faqs": [
       {
         "q": "How many assessments does Greenspace Health offer?",
@@ -273,7 +263,10 @@
   ],
   "company_info": {
     "headquarters": "Toronto, Ontario, Canada",
-    "markets": ["United States", "Canada"],
+    "markets": [
+      "United States",
+      "Canada"
+    ],
     "customer_types": [
       "Behavioral health clinics",
       "Hospitals",
@@ -283,7 +276,8 @@
     ]
   },
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.556Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://greenspacehealth.com"
 }

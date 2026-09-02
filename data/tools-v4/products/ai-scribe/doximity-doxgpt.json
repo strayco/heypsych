@@ -1,91 +1,234 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "doximity-doxgpt",
+  "id": "350def47-8be6-47e0-a7df-074e81e5bd53",
   "slug": "doximity-doxgpt",
-  "name": "Doximity Clinical AI (Ask/DoxGPT)",
+  "name": "Doximity Ask (DoxGPT)",
   "company_name": "Doximity",
+  "website": "https://www.doximity.com/ask/overview",
+  "description": "Doximity Ask (formerly DoxGPT, rebranded May 2026) is a free clinical AI assistant for verified US healthcare professionals as part of the Doximity Clinical AI Suite. Answers clinical questions with PeerCheck™ verification by 12,000+ physician experts co-chaired by Eric Topol and former Surgeon General Regina Benjamin. Includes 3,200+ drug monographs with dosing/interaction data, free full PDF access to top medical journals, and generates SOAP notes, discharge summaries, patient education, and differential diagnoses with guideline citations (AHA, ACC, NCCN, IDSA). ICD-10 and CPT coding assistance built in. 300,000+ unique clinicians used Doximity AI in Q3, deployed at 165+ health systems including 8 of top 20 US hospitals. Free for all verified US physicians, NPs, PAs, and medical students. Enterprise licensing available separately.",
   "import_ref": {
     "source_file": "ai-scribe-research-2026",
-    "import_timestamp": "2026-08-22T21:10:42.881Z"
+    "import_timestamp": "2026-08-22T21:10:42.881Z",
+    "record_id": "doximity-doxgpt"
   },
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ai-scribe",
-  "secondary_categories": [],
-  "capabilities": [],
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": [
+    "clinical-decision-support"
+  ],
+  "short_description": "Free clinical AI for US clinicians. Clinical Q&A with PeerCheck verification. 3,200+ drug monographs. Journal access. SOAP notes + coding.",
+  "one_liner": "Free clinical AI. PeerCheck verified. 3,200+ drugs. Journal access. SOAP notes + coding.",
+  "capabilities": [
+    "note-generation",
+    "ai-suggestions",
+    "coding-assistance",
+    "drug-interaction-check",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "medical-director"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "hospital-inpatient"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10",
-      "medium-11-50"
-    ],
-    "specialties": [
-      "mental-health"
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": true,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": true
   },
-  "short_description": "Free AI clinical assistant suite for verified US healthcare professionals, including Ask (clinical Q&A with PeerCheck physician verification), Scribe (ambient documentation), and Dialer. Handles PHI l",
-  "long_description": "Free AI clinical assistant suite for verified US healthcare professionals, including Ask (clinical Q&A with PeerCheck physician verification), Scribe (ambient documentation), and Dialer. Handles PHI legally within the Doximity network.",
-  "one_liner": "Free AI clinical assistant suite for verified US healthcare professionals, including Ask (clinical Q&A with PeerCheck physician verification), Scribe (ambient documentation), and Dialer",
-  "best_for": [],
-  "not_for": [],
-  "website_url": "https://www.doximity.com",
-  "pricing_url": "https://www.doximity.com/pricing",
+  "company": {
+    "founded_year": 2010,
+    "headquarters": "San Francisco, California, USA",
+    "ticker": "DOCS",
+    "public_company": true
+  },
   "pricing": {
-    "model": "free-ad-supported-",
-    "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": "Custom quotes for health systems"
+    "model": "free",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (verified Doximity account required)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Completely free for verified US physicians, NPs, PAs, and medical students. Ad-supported model.",
+    "tiers": [
+      {
+        "name": "Individual Clinician",
+        "price": "Free",
+        "description": "Full access to Ask (clinical Q&A), Scribe (ambient documentation), and Dialer. Requires verified US Doximity account."
+      },
+      {
+        "name": "Enterprise/Health System",
+        "price": "Custom",
+        "description": "Enterprise licensing with SLAs, deployment support, and organization-wide analytics. 165+ health systems deployed."
+      }
+    ],
+    "notes": "No paid tier for individual clinicians. Enterprise contracts available for hospitals and health systems. Over 100 health systems have enterprise access.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA and SOC 2 compliant. PHI handled legally within Doximity network. Audio processed securely and not retained."
   },
-  "integrations": [],
-  "seo": {
-    "title": "Doximity Clinical AI (Ask/DoxGPT): Mental Health Tool | HeyPsych",
-    "meta_description": "Free AI clinical assistant suite for verified US healthcare professionals, including Ask (clinical Q&A with PeerCheck physician verification), Scribe (ambi",
-    "faqs": [],
-    "keywords": [
-      "Doximity Clinical AI (Ask/DoxGPT)",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+  "integrations": [
+    {
+      "name": "Doximity Scribe",
+      "slug": "doximity-scribe",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Part of Doximity Clinical AI Suite"
+    },
+    {
+      "name": "Doximity Dialer",
+      "slug": "doximity-dialer",
+      "category": "communication",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Medical Journals",
+      "slug": "journal-access",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Free full PDF access to top medical journals"
+    }
+  ],
+  "features": {
+    "clinical_qa": {
+      "supported": true,
+      "description": "Ask clinical questions—drug interactions, dosing, differential diagnoses, guideline summaries, treatment options. Evidence-grounded answers in seconds."
+    },
+    "peercheck": {
+      "supported": true,
+      "description": "PeerCheck™ physician verification by 12,000+ experts co-chaired by Eric Topol and former Surgeon General Regina Benjamin."
+    },
+    "drug_database": {
+      "supported": true,
+      "description": "3,200+ drug monographs with dosing and interaction data."
+    },
+    "journal_access": {
+      "supported": true,
+      "description": "Free full PDF access to top medical journals—only AI platform offering this."
+    },
+    "coding_assistance": {
+      "supported": true,
+      "description": "ICD-10 and CPT coding assistance built in."
+    },
+    "guideline_citations": {
+      "supported": true,
+      "description": "Answers cite clinical guidelines: AHA, ACC, NCCN, IDSA."
+    },
+    "adoption": {
+      "unique_users": "300,000+",
+      "health_systems": "165+",
+      "top_20_hospitals": "8"
+    },
+    "note_types": [
+      "SOAP notes",
+      "Discharge summaries",
+      "Patient education materials",
+      "Differential diagnosis"
     ]
   },
+  "best_for": [
+    "US clinicians wanting free clinical AI with verified physician oversight",
+    "Physicians already using Doximity network (85%+ of US physicians)",
+    "Clinicians needing drug reference with dosing and interactions",
+    "Academic clinicians wanting free journal access",
+    "Medical students and residents needing clinical decision support"
+  ],
+  "not_for": [
+    "International healthcare providers—US verification required",
+    "Clinicians needing native EHR integration—uses copy-paste workflow",
+    "Mental health therapists wanting therapy-specific features—Mentalyc ($20-70/mo) better",
+    "Organizations requiring enterprise SLAs without Doximity contract",
+    "Practices wanting billing/RCM automation beyond coding suggestions"
+  ],
   "governance": {
-    "last_reviewed": "2026-08-22",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 92,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {
-    "founded_year": 2010,
-    "headquarters": "San Francisco, California, USA"
-  },
+  "related_tools": [
+    "doximity-scribe",
+    "glass-ai",
+    "openevidence"
+  ],
+  "competitor_tools": [
+    "glass-ai",
+    "openevidence",
+    "uptodate"
+  ],
   "created_at": "2026-08-22T21:10:42.881Z",
-  "updated_at": "2026-08-22T21:10:42.881Z",
-  "featured": false,
-  "status": "active"
+  "updated_at": "2026-09-01T00:00:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Doximity Ask (DoxGPT): Free AI 2026 | HeyPsych",
+    "meta_description": "Doximity Ask (formerly DoxGPT): Free clinical AI for US clinicians. PeerCheck verified by 12,000+ physicians. 3,200+ drug monographs. Journal access. SOAP no...",
+    "faqs": [
+      {
+        "q": "Is Doximity Ask (DoxGPT) free?",
+        "a": "Yes. Doximity Ask is completely free for verified US physicians, NPs, PAs, and medical students. Part of the Doximity Clinical AI Suite. Enterprise licensing available separately for health systems."
+      },
+      {
+        "q": "What is PeerCheck on Doximity Ask?",
+        "a": "PeerCheck™ is Doximity's physician verification system. Over 12,000 physician experts (co-chaired by Eric Topol and former Surgeon General Regina Benjamin) continuously evaluate and improve AI-generated answers. PeerCheck-certified answers link to reviewing physician profiles."
+      },
+      {
+        "q": "What can I do with Doximity Ask?",
+        "a": "Ask clinical questions (drug interactions, dosing, differential diagnoses, guidelines), access 3,200+ drug monographs, get free full PDF journal access, generate SOAP notes and discharge summaries, and receive ICD-10/CPT coding suggestions."
+      },
+      {
+        "q": "How many clinicians use Doximity AI?",
+        "a": "Over 300,000 unique clinicians used Doximity's AI tools in Q3. The Clinical AI Suite is deployed at 165+ health systems including 8 of the top 20 US hospitals. Enterprise contracts include Scripps, UCHealth, UC San Diego, and others."
+      },
+      {
+        "q": "Doximity Ask vs Glass AI: which is better?",
+        "a": "Doximity Ask is free (ad-supported) with PeerCheck physician verification and journal access. Glass AI ($20-200/mo) offers differential diagnosis generation and EHR integration on higher tiers. For free clinical AI with drug reference, Doximity. For paid clinical decision support with EHR integration, Glass AI."
+      }
+    ],
+    "keywords": [
+      "Doximity Ask",
+      "DoxGPT",
+      "free clinical AI",
+      "Doximity Clinical AI",
+      "PeerCheck",
+      "Doximity Ask vs Glass AI",
+      "physician AI assistant"
+    ]
+  },
+  "website_url": "https://www.doximity.com/ask/overview",
+  "pricing_url": "https://www.doximity.com",
+  "affiliate_url": "https://www.doximity.com"
 }

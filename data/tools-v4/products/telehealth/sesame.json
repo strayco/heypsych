@@ -4,6 +4,7 @@
   "id": "d9244392-e0ac-4383-9e80-bc3e60faa010",
   "slug": "sesame",
   "name": "Sesame",
+  "short_description": "Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance. Cannot prescribe controlled substances.",
   "import_ref": {
     "record_id": "MH-0311",
     "source_row": 312,
@@ -14,13 +15,27 @@
     "status": "active"
   },
   "primary_category": "telehealth-communication",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "provider-network-virtual-care"
+  ],
+  "capabilities": [
+    "video-sessions",
+    "secure-messaging",
+    "hipaa-compliant"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -28,41 +43,80 @@
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
     "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 7500,
+    "starting_price_display": "$75/session",
+    "quote_required": false,
+    "notes": "Patient-facing healthcare marketplace. NO INSURANCE ACCEPTED - cash pay only. Therapy $75-130/session. Psychiatry $100-175/session (initial up to $350). Mental Health Rx subscription $79/month for ongoing med management. Cannot prescribe controlled substances (no Adderall, benzos, opioids). Patients can submit bills to insurance for reimbursement."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
   "integrations": [],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 89,
+    "last_reviewed": "2026-09-01"
   },
   "related_tools": [],
   "created_at": "2026-08-22T20:50:40.798Z",
-  "updated_at": "2026-08-22T20:50:40.798Z",
+  "updated_at": "2026-09-01T19:35:53.834Z",
   "status": "active",
   "seo": {
-    "title": "Sesame: Review & Pricing | HeyPsych",
-    "meta_description": "Sesame review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Sesame Care: Review & Pricing | HeyPsych",
+    "meta_description": "Sesame Care offers affordable cash-pay therapy ($75-130) and psychiatry ($100-175). No insurance accepted. Cannot prescribe controlled substances.",
+    "faqs": [
+      {
+        "q": "Does Sesame Care accept insurance?",
+        "a": "No. Sesame is cash-pay only. You pay upfront and can submit the receipt to your insurance for potential out-of-network reimbursement, but Sesame doesn't bill insurance directly. This keeps prices transparent but means no copay benefits."
+      },
+      {
+        "q": "How much does therapy cost on Sesame?",
+        "a": "$75-130 per session, with most therapists charging around $104. Prices vary by provider and state. You see the exact price before booking. No hidden fees."
+      },
+      {
+        "q": "How much does psychiatry cost on Sesame?",
+        "a": "$100-175 for follow-up visits, but initial psychiatric consultations can run $250-350 depending on location. The $79/month Mental Health Rx subscription is worth considering if you need ongoing medication management."
+      },
+      {
+        "q": "Can Sesame psychiatrists prescribe Adderall or Xanax?",
+        "a": "No. Sesame providers cannot prescribe controlled substances including stimulants (Adderall, Vyvanse, Ritalin), benzodiazepines (Xanax, Klonopin, Ativan, Valium), or opioids. You'll need a different provider for these medications."
+      },
+      {
+        "q": "What is the Mental Health Rx subscription?",
+        "a": "$79/month subscription that includes video visits with a provider, unlimited messaging, and seamless prescription refills for non-controlled medications. Good option if you're stable on SSRIs/SNRIs and just need regular check-ins and refills."
+      },
+      {
+        "q": "How does Sesame compare to Cerebral or Done?",
+        "a": "Sesame is a marketplace (you pick any provider), not a single company. Cerebral and Done specialize in ADHD and can prescribe stimulants—Sesame cannot. Sesame is better for anxiety/depression treatment with non-controlled meds, or general therapy."
+      },
+      {
+        "q": "Is Sesame good for ADHD treatment?",
+        "a": "Only if you don't need stimulant medication. Sesame psychiatrists can prescribe non-stimulant ADHD meds like Strattera or Wellbutrin, but not Adderall, Vyvanse, or Ritalin. For stimulant prescriptions, look at Done, Cerebral, or Talkiatry instead."
+      }
+    ],
     "keywords": [
-      "Sesame",
-      "telehealth communication"
+      "Sesame Care",
+      "affordable therapy",
+      "cash pay psychiatry",
+      "no insurance therapy",
+      "online psychiatry",
+      "telehealth marketplace"
     ]
-  }
+  },
+  "website_url": "https://sesamecare.com",
+  "affiliate_url": "https://sesamecare.com",
+  "one_liner": "Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance. "
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "billing-rcm-tool",
+  "kind": "clinician-tool",
   "id": "14ff3623-aab4-4fb6-b5c4-014daffb2bc0",
   "slug": "simplepractice-insurance-billing",
   "name": "SimplePractice Insurance Billing",
@@ -21,11 +21,19 @@
   "support_level": "clinical",
   "short_description": "Integrated insurance billing within SimplePractice EHR with electronic claims, ERA posting, and eligibility verification for mental health practices.",
   "long_description": "SimplePractice Insurance Billing provides mental health professionals with a streamlined way to submit insurance claims directly from their practice management system. Built into the SimplePractice platform, the billing features include electronic claims submission through Apex EDI and Change Healthcare clearinghouses, real-time eligibility verification, electronic remittance advice (ERA) auto-posting, and automated patient statements. The system supports CMS-1500 claims, handles secondary claims, and provides denial tracking. SimplePractice's AutoPay feature helps practices collect copays and deductibles automatically. Available on Essential and Plus plans, insurance billing adds electronic claims capability without requiring separate billing software, making it ideal for solo practitioners and small practices wanting an all-in-one solution.",
-  "primary_hubs": ["practice-admin-operations"],
+  "primary_hubs": [
+    "practice-admin-operations"
+  ],
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": ["practice-management", "patient-billing"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "conditions": [],
-  "tool_types": ["integrated-billing", "practice-management", "claims-submission"],
+  "tool_types": [
+    "integrated-billing",
+    "practice-management",
+    "claims-submission"
+  ],
   "ai_attributes": [],
   "platforms": {
     "ios": true,
@@ -35,7 +43,7 @@
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "free_tier": false,
     "starting_price": "$29/month",
     "quote_required": false,
@@ -59,18 +67,24 @@
     "notes": "HIPAA compliant with BAA provided. SOC 2 Type II certified. Data encrypted at rest and in transit."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "type-ii",
-    "hitrust": "not-certified",
+    "soc2": "yes",
+    "hitrust": "no",
     "gdpr_compliant": "no",
     "pci_dss": "compliant"
   },
   "seo": {
-    "title": "SimplePractice Insurance Billing: Pricing & Review | HeyPsych",
-    "meta_description": "SimplePractice insurance billing review with 2024 pricing. Electronic claims at $0.25/claim or unlimited on Plus plan ($99/mo). Integrated mental health billing.",
-    "canonical_url": "https://heypsych.com/tools/simplepractice-insurance-billing/",
-    "keywords": ["SimplePractice billing", "SimplePractice insurance", "mental health billing software", "therapy practice billing", "electronic claims submission"],
+    "title": "SimplePractice Insurance Billing: Pricing & Review",
+    "meta_description": "SimplePractice insurance billing review with 2024 pricing. Electronic claims at $0.25/claim or unlimited on Plus plan ($99/mo). Integrated mental health...",
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/simplepractice-insurance-billing/",
+    "keywords": [
+      "SimplePractice billing",
+      "SimplePractice insurance",
+      "mental health billing software",
+      "therapy practice billing",
+      "electronic claims submission"
+    ],
     "faqs": [
       {
         "q": "How much does SimplePractice charge per insurance claim?",
@@ -120,7 +134,14 @@
       "clearinghouse_name": "Apex EDI / Change Healthcare",
       "payer_count": "8000+",
       "payer_count_notes": "Access to all major commercial, Medicare, and Medicaid payers",
-      "major_payers": ["Aetna", "Cigna", "UnitedHealthcare", "Blue Cross Blue Shield", "Medicare", "Medicaid"],
+      "major_payers": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealthcare",
+        "Blue Cross Blue Shield",
+        "Medicare",
+        "Medicaid"
+      ],
       "claims_processed_annual": "Millions annually across SimplePractice user base"
     },
     "services": {
@@ -168,7 +189,9 @@
       "notes": "Built specifically for mental health practices. Supports therapy-specific codes (90834, 90837, 90847, etc.) and telehealth modifiers."
     },
     "ehr_integrations": {
-      "native_integrations": ["SimplePractice EHR"],
+      "native_integrations": [
+        "SimplePractice EHR"
+      ],
       "third_party_integrations": [],
       "api_available": false,
       "hl7_support": false,
@@ -181,7 +204,13 @@
       "dashboards": true,
       "analytics": true,
       "ai_analytics": false,
-      "report_types": ["Claims aging", "Payment tracking", "ERA reconciliation", "Outstanding balances", "Revenue by payer"]
+      "report_types": [
+        "Claims aging",
+        "Payment tracking",
+        "ERA reconciliation",
+        "Outstanding balances",
+        "Revenue by payer"
+      ]
     }
   },
   "company_info": {
@@ -199,8 +228,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["practice-admin-operations"],
-    "clinician_workflows": ["billing_coding", "admin_operations", "revenue_cycle"],
+    "primary_clinician_hubs": [
+      "practice-admin-operations"
+    ],
+    "clinician_workflows": [
+      "billing_coding",
+      "admin_operations",
+      "revenue_cycle"
+    ],
     "how_clinicians_use_it": [
       "Submit insurance claims directly from appointment notes",
       "Verify patient eligibility before sessions",
@@ -212,28 +247,43 @@
     "integrations": [],
     "billing_notes": "Best for solo and small practices wanting simplicity over advanced features. Per-claim fees add up for high-volume practices."
   },
-  "capabilities": [
-    "Electronic CMS-1500 claims submission",
-    "Real-time eligibility verification",
-    "ERA/EOB auto-posting",
-    "Patient responsibility calculation",
-    "AutoPay for copay collection",
-    "Secondary claims submission",
-    "Claim status tracking",
-    "Patient statements and invoicing",
-    "Online payment collection",
-    "Basic denial tracking"
-  ],
+  "capabilities": [],
   "integrations": [
-    {"name": "Apex EDI", "type": "clearinghouse"},
-    {"name": "Change Healthcare", "type": "clearinghouse"},
-    {"name": "Stripe", "type": "payment-processor"}
+    {
+      "name": "Apex EDI",
+      "integration_type": "api",
+      "slug": "apex-edi",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Change Healthcare",
+      "integration_type": "api",
+      "slug": "change-healthcare",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Stripe",
+      "integration_type": "api",
+      "slug": "stripe",
+      "category": "other",
+      "verified": false
+    }
   ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist-lcsw-lmft", "counselor"],
-    "practice_settings": ["solo-practice", "small-group-practice"],
-    "organization_sizes": ["solo", "small"],
-    "specialties": ["mental-health", "behavioral-health", "therapy", "counseling"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -247,7 +297,12 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "related_tools": ["therapynotes-billing", "theranest-billing", "jane-app", "practice-better"],
+  "related_tools": [
+    "therapynotes-billing",
+    "theranest-billing",
+    "jane-app",
+    "practice-better"
+  ],
   "featured": true,
   "status": "active",
   "import_ref": {
@@ -260,5 +315,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.825Z",
-  "updated_at": "2026-08-22T22:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.284Z",
+  "website_url": "https://www.simplepractice.com",
+  "affiliate_url": "https://www.simplepractice.com"
 }

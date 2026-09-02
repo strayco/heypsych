@@ -4,6 +4,9 @@
   "id": "dccfd66c-422c-4ba5-8d77-893345982c3b",
   "slug": "soap-note-buddy",
   "name": "SOAP Note Buddy",
+  "company_name": "SOAP Note Buddy",
+  "website": "https://soapnotebuddy.com",
+  "description": "SOAP Note Buddy is a Chrome extension AI scribe starting at $29/month for 40 notes, with unlimited plans also from $29/mo. Installs in seconds and works with any browser-based EMR through intelligent field detection—no integrations required. Supports SOAP, DAP, BIRP, GIRP, PIE, and EMDR note formats. Voice scribe for ambient documentation and dictation. Key differentiator: automatic PHI scrubbing happens locally in your browser before data leaves device—names, DOB, addresses, SSN removed automatically. HIPAA compliant with BAA available. Originally designed for PT/OT/SLP but supports mental health documentation. Best for rehab therapists (PT/OT/SLP) and clinicians wanting a simple browser-based solution. Mental health therapists may prefer Mentalyc ($20-70/mo) or Upheal ($69/mo) for therapy-specific features.",
   "import_ref": {
     "record_id": "MH-0169",
     "source_row": 170,
@@ -15,16 +18,29 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Chrome extension AI scribe. $29/mo. Works with any browser EMR. SOAP/DAP/BIRP/EMDR formats. Auto PHI scrubbing. Best for PT/OT/SLP.",
+  "one_liner": "Chrome extension AI scribe. $29/mo. Any browser EMR. Auto PHI scrubbing. PT/OT/SLP focus.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -35,38 +51,149 @@
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "headquarters": "United States"
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 2900,
+    "starting_price_display": "$29/month",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": "$29/month",
+        "description": "40 notes/month. All note formats (SOAP, DAP, BIRP, GIRP, PIE, EMDR). Voice scribe. Works with any browser EMR."
+      },
+      {
+        "name": "Unlimited",
+        "price": "From $29/month",
+        "description": "Unlimited notes. All features. Contact for exact unlimited tier pricing."
+      }
+    ],
+    "notes": "Costs less than $2/day. Installs in seconds as Chrome extension. No IT setup required. Works with any browser-based EMR through intelligent field detection.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "Automatic PHI scrubbing before data leaves device—names, DOB, addresses, phone numbers, SSNs removed. No data stored on servers. Patient data stays in browser's secure local storage."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Any Browser-Based EMR",
+      "slug": "browser-emr",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Intelligent field detection adapts to any browser-based EHR—no specific integrations needed"
+    }
+  ],
+  "features": {
+    "voice_scribe": {
+      "supported": true,
+      "description": "Ambient documentation and medical dictation—speak about session and it generates structured notes."
+    },
+    "phi_scrubbing": {
+      "supported": true,
+      "description": "Automatic PHI removal (names, DOB, SSN, addresses) happens locally before data leaves device."
+    },
+    "field_detection": {
+      "supported": true,
+      "description": "Intelligent field detection recognizes and auto-fills fields in any browser-based EMR."
+    },
+    "local_processing": {
+      "supported": true,
+      "description": "Patient data stays in browser's secure local storage—never stored on external servers."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "BIRP notes",
+      "GIRP notes",
+      "PIE notes",
+      "EMDR notes",
+      "Custom formats"
+    ]
+  },
+  "best_for": [
+    "Physical therapists, occupational therapists, and speech therapists (PT/OT/SLP)",
+    "Clinicians wanting simple Chrome extension with zero IT setup",
+    "Practices using any browser-based EMR wanting universal compatibility",
+    "Clinicians prioritizing PHI protection with local-only processing",
+    "Budget-conscious providers wanting affordable AI documentation ($29/mo)"
+  ],
+  "not_for": [
+    "Mental health therapists wanting therapy-specific features—Mentalyc ($20-70/mo) or Upheal ($69/mo) better",
+    "Psychiatrists needing medication management—Freed ($39-119/mo) or DeepCura ($129/mo) better",
+    "Desktop EHR users—requires browser-based EMR for field detection",
+    "Clinicians needing native EHR integrations beyond copy-paste",
+    "Practices requiring mobile apps or iOS/Android support"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "scribeberry",
+    "patientnotes",
+    "mentalyc"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "patientnotes"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "SOAP Note Buddy: Review & Pricing | HeyPsych",
-    "meta_description": "SOAP Note Buddy review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "SOAP Note Buddy: Chrome AI Scribe | HeyPsych",
+    "meta_description": "SOAP Note Buddy: Chrome extension AI scribe for $29/mo. Works with any browser EMR. SOAP/DAP/BIRP/EMDR formats. Auto PHI scrubbing. Best for PT/OT/SLP.",
+    "faqs": [
+      {
+        "q": "How much does SOAP Note Buddy cost in 2026?",
+        "a": "SOAP Note Buddy starts at $29/month for 40 notes (Starter plan). Unlimited plans are also available from $29/month. Costs less than $2/day with no IT setup required."
+      },
+      {
+        "q": "Does SOAP Note Buddy work with my EHR?",
+        "a": "Yes—SOAP Note Buddy works with any browser-based EMR through intelligent field detection. No specific integrations needed. It automatically recognizes and fills EHR fields. Desktop-only EHRs not supported."
+      },
+      {
+        "q": "Is SOAP Note Buddy HIPAA compliant?",
+        "a": "Yes. SOAP Note Buddy is HIPAA compliant with BAA available. Key feature: automatic PHI scrubbing removes names, DOB, SSN, and addresses before data leaves your device. Data stays in browser's secure local storage."
+      },
+      {
+        "q": "Is SOAP Note Buddy good for mental health therapists?",
+        "a": "SOAP Note Buddy supports mental health formats (SOAP, DAP, BIRP, EMDR) but is primarily designed for PT/OT/SLP. Mental health therapists may prefer purpose-built tools like Mentalyc ($20-70/mo) or Upheal ($69/mo) for therapy-specific features."
+      },
+      {
+        "q": "SOAP Note Buddy vs Mentalyc: which is better for therapy?",
+        "a": "Mentalyc ($20-70/mo) is purpose-built for mental health with modality-aware templates (CBT/DBT/IFS) and therapy-specific features. SOAP Note Buddy ($29/mo) is better for PT/OT/SLP and rehab disciplines. For therapy, choose Mentalyc."
+      }
+    ],
     "keywords": [
       "SOAP Note Buddy",
-      "ai scribe documentation"
+      "SOAP Note Buddy pricing 2026",
+      "Chrome extension AI scribe",
+      "PT OT SLP AI scribe",
+      "browser-based EMR scribe",
+      "SOAP Note Buddy vs Mentalyc",
+      "affordable AI scribe"
     ]
-  }
+  },
+  "website_url": "https://soapnotebuddy.com",
+  "pricing_url": "https://soapnotebuddy.com/pricing",
+  "affiliate_url": "https://soapnotebuddy.com"
 }

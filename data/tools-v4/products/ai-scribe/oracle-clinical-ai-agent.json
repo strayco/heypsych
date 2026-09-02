@@ -5,6 +5,8 @@
   "slug": "oracle-clinical-ai-agent",
   "name": "Oracle Clinical AI Agent",
   "company_name": "Oracle Health",
+  "website": "https://www.oracle.com/health/",
+  "description": "Oracle Clinical AI Agent is Oracle Health's (formerly Cerner) ambient AI scribe integrated into their EHR platform. Launched US early 2025, UK NHS February 2026 after pilots at Barts Health, Imperial College Healthcare, and Milton Keynes. Claims 400,000+ hours of documentation time saved. August 2026 expansion added automated professional fee coding, clinician-controlled dictation, and AI-assisted chart review. Pricing is enterprise-custom only—not publicly available—estimated $400-800+/provider/month based on comparable enterprise solutions. Multi-year contracts required. Contact Oracle Health account representative for availability and pricing.",
   "import_ref": {
     "record_id": "MH-0228",
     "source_row": 229,
@@ -16,17 +18,34 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Oracle Health (Cerner) ambient AI scribe. 400K+ hours saved. Enterprise custom pricing (~$400-800/mo estimated). Multi-year contracts.",
+  "one_liner": "Oracle Health ambient AI. Enterprise custom (~$400-800/mo). Multi-year contracts.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director"
+    ],
+    "practice_settings": [
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
+    "has_ehr": true,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
@@ -35,35 +54,145 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 0,
+    "starting_price_display": "Enterprise custom (~$400-800/mo estimated)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Enterprise",
+        "price": "Contact Oracle Health",
+        "description": "Enterprise pricing through Oracle Health account representatives. Multi-year contracts required. Estimated $400-800+/provider/month based on comparable enterprise solutions."
+      }
+    ],
+    "notes": "No public pricing available. Contact Oracle Health account representative for availability and pricing. Enterprise rollout timelines vary by contract. Based on comparable solutions (Microsoft DAX $400-830/mo), expect premium enterprise pricing.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "yes",
+    "security_note": "Oracle Health maintains HIPAA, SOC 2, HITRUST, and GDPR compliance as a major enterprise healthcare technology company with NHS UK deployments."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Oracle Health (Cerner) EHR",
+      "slug": "oracle-health",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration into Oracle Health (formerly Cerner) EHR platform"
+    }
+  ],
+  "features": {
+    "ambient_ai_scribe": {
+      "supported": true,
+      "description": "Ambient voice capture listens to clinician-patient consultations and generates structured clinical notes in real time."
+    },
+    "automated_coding": {
+      "supported": true,
+      "description": "Automated professional fee coding added August 2026 to support revenue capture."
+    },
+    "dictation_control": {
+      "supported": true,
+      "description": "Clinician-controlled dictation added August 2026 for hybrid documentation workflows."
+    },
+    "chart_review": {
+      "supported": true,
+      "description": "AI-assisted chart review added August 2026 for pre-visit preparation."
+    },
+    "time_savings": {
+      "hours_saved": "400,000+",
+      "description": "Oracle reports 400,000+ hours of documentation time saved across US health organizations since launch."
+    },
+    "nhs_deployment": {
+      "supported": true,
+      "description": "UK NHS deployments at Barts Health, Imperial College Healthcare, and Milton Keynes University Hospital."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Clinical notes"
+    ]
+  },
+  "best_for": [
+    "Health systems using Oracle Health (Cerner) EHR wanting native ambient AI",
+    "Enterprise organizations with budget for ~$400-800/provider/month",
+    "Organizations wanting automated professional fee coding alongside documentation",
+    "NHS UK organizations considering Oracle Health AI (proven pilots)",
+    "Large health systems needing proven scale (400K+ hours saved)"
+  ],
+  "not_for": [
+    "Small practices—Freed ($39-119/mo) or Commure ($59-89/mo) far more affordable",
+    "Non-Oracle Health EHR users—integration is platform-specific",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Budget-conscious clinicians—enterprise pricing estimated $400-800+/mo",
+    "Organizations wanting self-serve signup or transparent pricing"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "oracle-health-powerchart",
+    "nuance-dax-copilot"
+  ],
+  "competitor_tools": [
+    "epic-ambient-ai-integrations",
+    "nuance-dax-copilot",
+    "athenaone-ambient-notes"
+  ],
   "created_at": "2026-08-22T20:50:40.792Z",
-  "updated_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Oracle Clinical AI Agent: Review & Pricing | HeyPsych",
-    "meta_description": "Oracle Clinical AI Agent review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Oracle Clinical AI Agent 2026 | HeyPsych",
+    "meta_description": "Oracle Clinical AI Agent: Oracle Health (Cerner) ambient AI scribe. 400K+ hours saved. Automated coding + chart review. Enterprise custom pricing (~$400-800/...",
+    "faqs": [
+      {
+        "q": "How much does Oracle Clinical AI Agent cost in 2026?",
+        "a": "Oracle does not publish pricing for Clinical AI Agent. It's sold through enterprise contracts that require contacting Oracle Health account representatives. Based on comparable enterprise solutions (Microsoft DAX $400-830/mo), expect premium pricing in the $400-800+/provider/month range with multi-year contracts."
+      },
+      {
+        "q": "What EHR does Oracle Clinical AI Agent integrate with?",
+        "a": "Oracle Clinical AI Agent is native to Oracle Health (formerly Cerner) EHR. It's designed specifically for Oracle Health customers and won't work with Epic, athenahealth, or other EHR platforms."
+      },
+      {
+        "q": "What new features were added in August 2026?",
+        "a": "Oracle Health added automated professional fee coding, clinician-controlled dictation, and AI-assisted chart review in August 2026. These expand beyond pure ambient scribing into coding and pre-visit workflows."
+      },
+      {
+        "q": "Is Oracle Clinical AI Agent available in the UK?",
+        "a": "Yes. Oracle Clinical AI Agent launched for NHS organizations in February 2026 after successful pilots at Barts Health, Imperial College Healthcare, and Milton Keynes University Hospital."
+      },
+      {
+        "q": "Oracle Clinical AI Agent vs Nuance DAX: which is better for Cerner users?",
+        "a": "Oracle Clinical AI Agent is native to Oracle Health (Cerner). Nuance DAX Copilot also integrates with Cerner and has deeper Microsoft backing. Both require enterprise contracts. Contact both Oracle Health and Microsoft for comparative pricing and capabilities."
+      }
+    ],
     "keywords": [
       "Oracle Clinical AI Agent",
-      "ai scribe documentation"
+      "Cerner AI scribe",
+      "Oracle Health ambient AI",
+      "Oracle Clinical AI pricing 2026",
+      "Cerner ambient documentation",
+      "Oracle Health AI agent",
+      "NHS Oracle AI",
+      "Oracle vs Nuance DAX"
     ]
-  }
+  },
+  "website_url": "https://www.oracle.com/health/",
+  "pricing_url": "https://www.oracle.com/health/",
+  "affiliate_url": "https://www.oracle.com/health/"
 }

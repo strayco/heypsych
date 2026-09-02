@@ -169,6 +169,11 @@
   --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
+  /* Base colors */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
   /* Canvas & Surface */
   --color-canvas: #F5F5F7;
   --color-canvas-elevated: #FBFBFD;
@@ -215,9 +220,14 @@
   --color-positive: #34C759;
   --color-positive-50: #F0FDF4;
   --color-positive-100: #DCFCE7;
+  --color-positive-200: #BBF7D0;
+  --color-positive-300: #86EFAC;
+  --color-positive-400: #4ADE80;
   --color-positive-500: #34C759;
   --color-positive-600: #16A34A;
   --color-positive-700: #15803D;
+  --color-positive-800: #166534;
+  --color-positive-900: #14532D;
   --color-positive-tint: rgba(52, 199, 89, 0.12);
   --color-positive-border: rgba(52, 199, 89, 0.3);
   --color-positive-foreground: #FFFFFF;
@@ -226,9 +236,14 @@
   --color-caution: #FF9500;
   --color-caution-50: #FFFBEB;
   --color-caution-100: #FEF3C7;
+  --color-caution-200: #FDE68A;
+  --color-caution-300: #FCD34D;
+  --color-caution-400: #FBBF24;
   --color-caution-500: #FF9500;
   --color-caution-600: #D97706;
   --color-caution-700: #B45309;
+  --color-caution-800: #92400E;
+  --color-caution-900: #78350F;
   --color-caution-tint: rgba(255, 149, 0, 0.12);
   --color-caution-border: rgba(255, 149, 0, 0.3);
   --color-caution-foreground: #FFFFFF;
@@ -237,9 +252,14 @@
   --color-negative: #FF3B30;
   --color-negative-50: #FEF2F2;
   --color-negative-100: #FEE2E2;
+  --color-negative-200: #FECACA;
+  --color-negative-300: #FCA5A5;
+  --color-negative-400: #F87171;
   --color-negative-500: #FF3B30;
   --color-negative-600: #DC2626;
   --color-negative-700: #B91C1C;
+  --color-negative-800: #991B1B;
+  --color-negative-900: #7F1D1D;
   --color-negative-tint: rgba(255, 59, 48, 0.12);
   --color-negative-border: rgba(255, 59, 48, 0.3);
   --color-negative-foreground: #FFFFFF;
@@ -248,9 +268,14 @@
   --color-treatment: #5856D6;
   --color-treatment-50: #EEF2FF;
   --color-treatment-100: #E0E7FF;
+  --color-treatment-200: #C7D2FE;
+  --color-treatment-300: #A5B4FC;
+  --color-treatment-400: #818CF8;
   --color-treatment-500: #5856D6;
   --color-treatment-600: #4F46E5;
   --color-treatment-700: #4338CA;
+  --color-treatment-800: #3730A3;
+  --color-treatment-900: #312E81;
   --color-treatment-tint: rgba(88, 86, 214, 0.12);
   --color-treatment-border: rgba(88, 86, 214, 0.3);
   --color-treatment-foreground: #FFFFFF;
@@ -259,9 +284,14 @@
   --color-tools: #30B0C7;
   --color-tools-50: #F0FDFA;
   --color-tools-100: #CCFBF1;
+  --color-tools-200: #99F6E4;
+  --color-tools-300: #5EEAD4;
+  --color-tools-400: #2DD4BF;
   --color-tools-500: #30B0C7;
   --color-tools-600: #0891B2;
   --color-tools-700: #0E7490;
+  --color-tools-800: #155E75;
+  --color-tools-900: #164E63;
   --color-tools-tint: rgba(48, 176, 199, 0.12);
   --color-tools-border: rgba(48, 176, 199, 0.3);
   --color-tools-foreground: #FFFFFF;
@@ -561,4 +591,22 @@ select {
 .border-graphite-700,
 .border-graphite-800 {
   border-color: var(--hp-separator) !important;
+}
+
+/* ============================================================================
+   TAILWIND V4 COLOR FALLBACKS
+   Force colors that aren't working via @theme
+   ============================================================================ */
+
+.text-white,
+.text-treatment-foreground,
+.text-accent-foreground,
+.text-positive-foreground,
+.text-caution-foreground,
+.text-negative-foreground {
+  color: #FFFFFF !important;
+}
+
+.bg-white {
+  background-color: #FFFFFF !important;
 }

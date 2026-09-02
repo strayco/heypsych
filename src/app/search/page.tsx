@@ -3,14 +3,14 @@
 import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, Pill, Brain, BookOpen } from "lucide-react";
+import { Search, Pill, Brain, BookOpen, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { logger } from "@/lib/utils/logger";
 import { trackSearchSubmit } from "@/lib/analytics/product-events";
 import { safeHighlight } from "@/lib/utils/safe-highlight";
 
 interface SearchResult {
-  type: "treatment" | "condition" | "resource";
+  type: "treatment" | "condition" | "resource" | "tool";
   id: string;
   slug: string;
   name: string;
@@ -23,9 +23,11 @@ interface GroupedResults {
   conditions: SearchResult[];
   treatments: SearchResult[];
   resources: SearchResult[];
+  tools: SearchResult[];
   conditionsTotal: number;
   treatmentsTotal: number;
   resourcesTotal: number;
+  toolsTotal: number;
 }
 
 function SearchPageContent() {
@@ -38,9 +40,11 @@ function SearchPageContent() {
     conditions: [],
     treatments: [],
     resources: [],
+    tools: [],
     conditionsTotal: 0,
     treatmentsTotal: 0,
     resourcesTotal: 0,
+    toolsTotal: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [searchedQuery, setSearchedQuery] = useState(""); // Track which query the results are for
@@ -48,6 +52,7 @@ function SearchPageContent() {
     condition: false,
     treatment: false,
     resource: false,
+    tool: false,
   });
 
   // Sync input value with URL query
@@ -111,9 +116,11 @@ function SearchPageContent() {
           conditions: data.conditions?.results || [],
           treatments: data.treatments?.results || [],
           resources: data.resources?.results || [],
+          tools: data.tools?.results || [],
           conditionsTotal: Number(data.conditions?.totalCount) || 0,
           treatmentsTotal: Number(data.treatments?.totalCount) || 0,
           resourcesTotal: Number(data.resources?.totalCount) || 0,
+          toolsTotal: Number(data.tools?.totalCount) || 0,
         };
 
         setGroupedResults(resultsData);
@@ -135,9 +142,11 @@ function SearchPageContent() {
           conditions: [],
           treatments: [],
           resources: [],
+          tools: [],
           conditionsTotal: 0,
           treatmentsTotal: 0,
           resourcesTotal: 0,
+          toolsTotal: 0,
         });
         setSearchedQuery(query); // Mark this query as completed (with error)
       } finally {
@@ -180,6 +189,8 @@ function SearchPageContent() {
         return <Brain className="h-5 w-5 text-accent" />;
       case "resource":
         return <BookOpen className="h-5 w-5 text-positive-600" />;
+      case "tool":
+        return <Wrench className="h-5 w-5 text-treatment" />;
       default:
         return null;
     }
@@ -193,6 +204,8 @@ function SearchPageContent() {
         return `/conditions/${result.slug}`;
       case "resource":
         return `/resources/${result.slug}`;
+      case "tool":
+        return `/tools/${result.slug}`;
       default:
         return "/";
     }
@@ -205,7 +218,7 @@ function SearchPageContent() {
       .join(' & ');
   };
 
-  const toggleCategory = async (category: "condition" | "treatment" | "resource") => {
+  const toggleCategory = async (category: "condition" | "treatment" | "resource" | "tool") => {
     const isExpanded = expandedCategories[category];
 
     if (isExpanded) {
@@ -237,9 +250,9 @@ function SearchPageContent() {
     }
   };
 
-  const getDisplayedResults = (category: "condition" | "treatment" | "resource") => {
+  const getDisplayedResults = (category: "condition" | "treatment" | "resource" | "tool") => {
     const isExpanded = expandedCategories[category];
-    const key = `${category}s` as keyof Pick<GroupedResults, 'conditions' | 'treatments' | 'resources'>;
+    const key = `${category}s` as keyof Pick<GroupedResults, 'conditions' | 'treatments' | 'resources' | 'tools'>;
     const results = groupedResults[key] || [];
     return isExpanded ? results : results.slice(0, 5);
   };
@@ -322,11 +335,12 @@ function SearchPageContent() {
   };
 
   const totalCount =
-    groupedResults.conditionsTotal + groupedResults.treatmentsTotal + groupedResults.resourcesTotal;
+    groupedResults.conditionsTotal + groupedResults.treatmentsTotal + groupedResults.resourcesTotal + groupedResults.toolsTotal;
   const hasResults =
     groupedResults.conditions.length > 0 ||
     groupedResults.treatments.length > 0 ||
-    groupedResults.resources.length > 0;
+    groupedResults.resources.length > 0 ||
+    groupedResults.tools.length > 0;
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -471,6 +485,33 @@ function SearchPageContent() {
                     {expandedCategories.resource
                       ? "Show Less"
                       : `Show All ${groupedResults.resourcesTotal} Resources`}
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Clinician Tools */}
+            {groupedResults.tools.length > 0 && (
+              <div id="tools">
+                <div className="mb-4 flex items-center gap-2 border-b border-separator pb-3">
+                  <Wrench className="h-5 w-5 text-treatment" />
+                  <h2 className="text-lg font-semibold text-label-primary">
+                    Clinician Tools ({groupedResults.toolsTotal})
+                  </h2>
+                </div>
+                <div className="space-y-2">
+                  {getDisplayedResults("tool").map((result, index) =>
+                    renderResult(result, index)
+                  )}
+                </div>
+                {groupedResults.toolsTotal > 5 && (
+                  <button
+                    onClick={() => toggleCategory("tool")}
+                    className="mt-4 w-full rounded-xl border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-colors hover:bg-surface-grouped hover:text-label-primary"
+                  >
+                    {expandedCategories.tool
+                      ? "Show Less"
+                      : `Show All ${groupedResults.toolsTotal} Clinician Tools`}
                   </button>
                 )}
               </div>

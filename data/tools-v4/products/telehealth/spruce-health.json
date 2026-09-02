@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "8c2973c0-69ea-4450-8a9b-1b007717278d",
   "slug": "spruce-health",
   "name": "Spruce Health",
@@ -22,12 +22,26 @@
   "support_level": "clinical",
   "short_description": "HIPAA-compliant communication platform combining secure messaging, video visits, VoIP phone system, and team collaboration for healthcare practices.",
   "long_description": "Spruce Health is a comprehensive healthcare communication platform that consolidates patient communication into a single HIPAA-compliant inbox. Unlike video-only telehealth platforms, Spruce provides a complete communication solution including secure text messaging, video visits, VoIP phone calls, voicemail, and fax, all accessible from a single app. Practices get a dedicated business phone number that works on personal smartphones, allowing providers to maintain work-life boundaries while staying accessible to patients. Spruce's team collaboration features include shared inboxes, internal messaging, task assignment, and call routing, making it ideal for group practices. The video visit feature integrates seamlessly with the messaging platform, allowing providers to easily transition from text to video when needed. Mental health practices appreciate Spruce for its ability to conduct asynchronous care through secure messaging, check in with patients between sessions, and maintain clear communication boundaries with a separate professional phone number.",
-  "primary_hubs": ["telehealth", "communication"],
-  "sub_hubs": ["secure-messaging", "voip-phone", "team-collaboration"],
+  "primary_hubs": [
+    "telehealth",
+    "communication"
+  ],
+  "sub_hubs": [
+    "secure-messaging",
+    "voip-phone",
+    "team-collaboration"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["secure-messaging", "practice-communication"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "substance-use-disorders"],
-  "tool_types": ["communication-platform", "telehealth-platform"],
+  "secondary_categories": [],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "substance-use-disorders"
+  ],
+  "tool_types": [
+    "communication-platform",
+    "telehealth-platform"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -36,7 +50,6 @@
     "wearable": false
   },
   "pricing": {
-    "model": "per-user-subscription",
     "free_tier": false,
     "free_trial_days": 14,
     "quote_required": false,
@@ -45,32 +58,75 @@
       {
         "name": "Basic",
         "price": "$24/month per user",
-        "features": ["Secure messaging", "VoIP phone/text", "Dedicated business number", "Voicemail transcription", "Basic video visits"]
+        "features": [
+          "Secure messaging",
+          "VoIP phone/text",
+          "Dedicated business number",
+          "Voicemail transcription",
+          "Basic video visits"
+        ]
       },
       {
         "name": "Communicator",
         "price": "$49/month per user",
-        "features": ["All Basic features", "Team inbox", "Auto-attendant", "Call routing", "Scheduled messages", "On-call management"]
+        "features": [
+          "All Basic features",
+          "Team inbox",
+          "Auto-attendant",
+          "Call routing",
+          "Scheduled messages",
+          "On-call management"
+        ]
       },
       {
         "name": "Plus",
         "price": "$79/month per user",
-        "features": ["All Communicator features", "Advanced video", "Patient portal", "Online scheduling", "Intake forms", "E-fax"]
+        "features": [
+          "All Communicator features",
+          "Advanced video",
+          "Patient portal",
+          "Online scheduling",
+          "Intake forms",
+          "E-fax"
+        ]
       },
       {
         "name": "Enterprise",
         "price": "Custom pricing",
-        "features": ["All Plus features", "EHR integration", "Analytics", "Dedicated support", "Custom workflows"]
+        "features": [
+          "All Plus features",
+          "EHR integration",
+          "Analytics",
+          "Dedicated support",
+          "Custom workflows"
+        ]
       }
     ],
-    "notes": "Per-user pricing. Volume discounts available for larger teams. 14-day free trial available."
+    "notes": "Per-user pricing. Volume discounts available for larger teams. 14-day free trial available.",
+    "model": "enterprise-custom"
   },
-  "capabilities": ["secure-messaging", "video-conferencing", "voip-phone", "team-messaging", "fax", "scheduling", "intake-forms"],
+  "capabilities": [
+    "secure-messaging"
+  ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "social-worker", "psychiatric-nurse", "physician"],
-    "practice_settings": ["solo-practice", "group-practice", "private-practice", "community-mental-health"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50", "large-51-200"],
-    "specialties": ["mental-health", "psychiatry", "psychology", "counseling", "behavioral-health", "primary-care"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -126,26 +182,21 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
     "hitrust": "no",
     "gdpr_compliant": "yes",
     "encryption": "AES 256-bit encryption",
-    "certifications": ["HIPAA", "SOC 2 Type II"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2 Type II"
+    ],
     "audit_logging": true,
     "notes": "All communications (text, voice, video, fax) are HIPAA compliant with BAA."
   },
-  "integrations": {
-    "ehr_integrations": ["Epic (Enterprise)", "athenahealth (Enterprise)"],
-    "calendar_integrations": ["Google Calendar", "Outlook Calendar"],
-    "billing_integrations": [],
-    "api_available": true,
-    "webhooks": true,
-    "zapier_integration": true,
-    "notes": "API access for custom integrations. EHR integration available on Enterprise plan."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": true,
@@ -168,10 +219,16 @@
     "notes": "All patient communications encrypted and HIPAA compliant."
   },
   "seo": {
-    "title": "Spruce Health: HIPAA-Compliant Communication Platform | HeyPsych",
+    "title": "Spruce Health: HIPAA-Compliant Communication Platform",
     "meta_description": "Spruce Health offers HIPAA-compliant messaging, video visits, and VoIP phone in one platform. Perfect for mental health practices. From $24/month per user.",
-    "canonical_url": "https://heypsych.com/tools/spruce-health/",
-    "keywords": ["Spruce Health", "HIPAA texting", "healthcare communication", "medical phone system", "telehealth platform"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/spruce-health/",
+    "keywords": [
+      "Spruce Health",
+      "HIPAA texting",
+      "healthcare communication",
+      "medical phone system",
+      "telehealth platform"
+    ],
     "faqs": [
       {
         "q": "What makes Spruce different from other telehealth platforms?",
@@ -208,7 +265,11 @@
     "headquarters": "San Francisco, California",
     "public_company": false,
     "total_funding": "$35M+",
-    "investors": ["Index Ventures", "Social Capital", "Accel"],
+    "investors": [
+      "Index Ventures",
+      "Social Capital",
+      "Accel"
+    ],
     "employees": "50-100",
     "customer_count": "15,000+ practices"
   },
@@ -224,8 +285,15 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "communication"],
-    "clinician_workflows": ["patient_communication", "telehealth_video", "care_coordination"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "communication"
+    ],
+    "clinician_workflows": [
+      "patient_communication",
+      "telehealth_video",
+      "care_coordination"
+    ],
     "how_clinicians_use_it": [
       "Texting patients between sessions for check-ins",
       "Conducting video sessions from the Spruce app",
@@ -234,16 +302,35 @@
       "Managing on-call coverage and call routing"
     ],
     "implementation_notes": "Simple setup with 14-day trial. Port existing practice number or get new number. Works alongside existing EHR.",
-    "target_practice_size": ["Solo practitioners", "Small group practices", "Multi-provider clinics"],
+    "target_practice_size": [
+      "Solo practitioners",
+      "Small group practices",
+      "Multi-provider clinics"
+    ],
     "billing_notes": "Communication platform; use separate billing software or EHR for claims."
   },
   "market_position": {
-    "primary_competitors": ["Klara", "OhMD", "TigerConnect", "Halo Health"],
-    "differentiators": ["Complete communication suite", "VoIP phone system included", "Team collaboration features", "Asynchronous care support"],
+    "primary_competitors": [
+      "Klara",
+      "OhMD",
+      "TigerConnect",
+      "Halo Health"
+    ],
+    "differentiators": [
+      "Complete communication suite",
+      "VoIP phone system included",
+      "Team collaboration features",
+      "Asynchronous care support"
+    ],
     "market_segment": "Modern healthcare practices seeking unified communication",
     "niche": "Healthcare communication platform"
   },
-  "related_tools": ["klara", "ohmd", "zoom-for-healthcare", "doxy-me"],
+  "related_tools": [
+    "klara",
+    "ohmd",
+    "zoom-for-healthcare",
+    "doxy-me"
+  ],
   "order": 6,
   "featured": false,
   "status": "active",
@@ -257,5 +344,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.794Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:34:49.830Z",
+  "website_url": "https://www.sprucehealth.com",
+  "affiliate_url": "https://www.sprucehealth.com"
 }

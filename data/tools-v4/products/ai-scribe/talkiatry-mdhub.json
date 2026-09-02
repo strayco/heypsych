@@ -1,92 +1,205 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "talkiatry-mdhub",
+  "id": "39f5f9c9-26c9-43ef-8718-15f0153124e8",
   "slug": "talkiatry-mdhub",
-  "name": "Talkiatry AI (mdhub)",
-  "company_name": "Talkiatry",
+  "name": "mdhub",
+  "company_name": "mdhub",
+  "website": "https://www.mdhub.ai",
+  "description": "mdhub is an AI scribe built specifically for behavioral health—psychiatry, therapy, and mental health documentation. The platform powers Talkiatry (the largest in-network telepsychiatry network in the US), validating it at scale for psychiatric workflows. mdhub's AI assistant 'Emma' captures sessions in real-time, generates SOAP/DAP/BIRP/progress notes, and includes CPT coding suggestions. Key differentiator: purpose-built for psychiatry with medication management, diagnosis codes, presenting problems, and interventions captured accurately. BAA included with every subscription. Audio is processed in real-time and never stored. Pricing requires contact—not publicly listed.",
   "import_ref": {
     "source_file": "ai-scribe-research-2026",
-    "import_timestamp": "2026-08-22T21:10:17.266Z"
+    "import_timestamp": "2026-08-22T21:10:17.266Z",
+    "record_id": "mdhub"
   },
   "lifecycle": {
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Psychiatry-focused AI scribe powering Talkiatry. Emma AI for real-time documentation. SOAP/DAP/BIRP. CPT coding. BAA included. Pricing requires contact.",
+  "one_liner": "AI scribe built for psychiatry. Powers Talkiatry's 700+ psychiatrists. BAA included.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "treatment-planning",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only",
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10",
-      "medium-11-50"
-    ],
-    "specialties": [
-      "mental-health"
+      "medium-11-50",
+      "large-51-200"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": true,
-    "is_mental_health_specific": false,
+    "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "AI clinical documentation platform used by Talkiatry, the nation's largest private employer of psychiatrists. Powered by mdhub's AI scribe, designed specifically for psychiatric and therapy documentat",
-  "long_description": "AI clinical documentation platform used by Talkiatry, the nation's largest private employer of psychiatrists. Powered by mdhub's AI scribe, designed specifically for psychiatric and therapy documentation.",
-  "one_liner": "AI clinical documentation platform used by Talkiatry, the nation's largest private employer of psychiatrists",
-  "best_for": [],
-  "not_for": [],
-  "website_url": "https://www.talkiatry.com",
-  "pricing_url": "https://www.talkiatry.com/pricing",
-  "pricing": {
-    "model": "internal-platform",
-    "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
-  },
-  "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
-  },
-  "integrations": [],
-  "seo": {
-    "title": "Talkiatry AI (mdhub): Mental Health Tool | HeyPsych",
-    "meta_description": "AI clinical documentation platform used by Talkiatry, the nation's largest private employer of psychiatrists. Powered by mdhub's AI scribe, designed specif",
-    "faqs": [],
-    "keywords": [
-      "Talkiatry AI (mdhub)",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+  "company": {
+    "headquarters": "United States",
+    "notable_customers": [
+      "Talkiatry (largest in-network telepsychiatry network)"
     ]
   },
+  "pricing": {
+    "model": "enterprise-custom",
+    "quote_required": true,
+    "starting_price_cents": 0,
+    "starting_price_display": "Contact for pricing",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Individual",
+        "price": "Contact for pricing",
+        "description": "Solo practitioners. Emma AI scribe, SOAP/DAP/BIRP notes, CPT coding."
+      },
+      {
+        "name": "Practice",
+        "price": "Contact for pricing",
+        "description": "Group practices. Team features, analytics, multi-clinician support."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Large organizations. Custom integrations, dedicated support. Used by Talkiatry."
+      }
+    ],
+    "notes": "Pricing not publicly listed—requires contact. BAA included with every subscription. No free trial mentioned. Validated at scale by Talkiatry.",
+    "last_verified": "2026-09-01"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "security_note": "Audio processed in real-time for transcription and note generation—never stored on mdhub servers. All data encrypted in transit and at rest using AES-256."
+  },
+  "integrations": [],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Emma AI listens to sessions in real-time and generates clinical notes automatically."
+    },
+    "psychiatry_specific": {
+      "supported": true,
+      "description": "Captures diagnosis codes, presenting problems, interventions, and medication management accurately for psychiatric workflows."
+    },
+    "pre_charting": {
+      "supported": true,
+      "description": "Pre-fills charts with relevant history, context, and open items before sessions."
+    },
+    "cpt_coding": {
+      "supported": true,
+      "description": "Assigns CPT codes directly from clinical context, reducing manual work and billing errors."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "BIRP notes",
+      "Progress notes",
+      "Treatment plan updates"
+    ],
+    "audio_storage": "Never stored—processed in real-time only"
+  },
+  "best_for": [
+    "Psychiatrists wanting AI specifically designed for psychiatric documentation",
+    "Psychiatric NPs and PAs handling medication management",
+    "Group psychiatric practices wanting validated enterprise solution",
+    "Telepsychiatry practices (proven at scale by Talkiatry)",
+    "Behavioral health clinicians wanting CPT coding suggestions"
+  ],
+  "not_for": [
+    "Budget-conscious solo practitioners—pricing not transparent (consider Freed $39-119/mo)",
+    "Therapists wanting modality-aware notes—Mentalyc ($20-70/mo) better for CBT/DBT",
+    "Clinicians who need public pricing before engaging sales",
+    "Practices wanting native EHR integrations—integrations not published",
+    "Primary care/medical specialties—mdhub is behavioral health only"
+  ],
   "governance": {
-    "last_reviewed": "2026-08-22",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {
-    "founded_year": 2020,
-    "headquarters": "New York, NY, USA",
-    "funding_status": "Series D ($400M+)"
-  },
+  "related_tools": [
+    "freed-ai",
+    "mentalyc",
+    "upheal",
+    "talkiatry"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "mentalyc",
+    "upheal"
+  ],
   "created_at": "2026-08-22T21:10:17.266Z",
-  "updated_at": "2026-08-22T21:10:17.266Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "seo": {
+    "title": "mdhub: Psychiatry AI Scribe 2026 | HeyPsych",
+    "meta_description": "mdhub: AI scribe built for psychiatry and behavioral health. Powers Talkiatry's 700+ psychiatrists. Emma AI for real-time documentation. CPT coding. BAA incl...",
+    "faqs": [
+      {
+        "q": "How much does mdhub cost?",
+        "a": "mdhub does not publish pricing. You must contact their sales team for a quote. BAA is included with every subscription. If you need transparent pricing, consider Freed ($39-119/mo) or Mentalyc ($20-70/mo) instead."
+      },
+      {
+        "q": "What is mdhub's relationship with Talkiatry?",
+        "a": "Talkiatry, the largest in-network telepsychiatry network in the US, has made mdhub available to its psychiatrists and therapists. This validates mdhub at scale for psychiatric workflows—covering both psychiatric and therapy documentation needs."
+      },
+      {
+        "q": "Is mdhub good for therapy or just psychiatry?",
+        "a": "mdhub is designed for the full range of behavioral health—psychiatry and therapy. It supports SOAP, DAP, BIRP, and progress notes. However, if you specifically need modality-aware therapy notes (CBT, DBT), Mentalyc may be more specialized."
+      },
+      {
+        "q": "Does mdhub store session audio?",
+        "a": "No. mdhub processes audio in real-time for transcription and note generation. Audio is never stored on mdhub servers. All data is encrypted in transit and at rest using AES-256 standards."
+      },
+      {
+        "q": "mdhub vs Freed: which is better for psychiatrists?",
+        "a": "mdhub is purpose-built for behavioral health with CPT coding and psychiatric workflows. Freed is more generalist but offers transparent pricing ($39-119/mo) and faster self-signup. If you want psychiatry-specific features and can engage sales, mdhub. If you want to start today with known costs, Freed."
+      }
+    ],
+    "keywords": [
+      "mdhub",
+      "mdhub AI scribe",
+      "psychiatry AI scribe",
+      "Talkiatry AI",
+      "behavioral health documentation",
+      "Emma AI assistant",
+      "mdhub pricing",
+      "psychiatric documentation AI"
+    ]
+  },
+  "website_url": "https://www.mdhub.ai",
+  "pricing_url": "https://www.mdhub.ai/pricing",
+  "affiliate_url": "https://www.mdhub.ai"
 }

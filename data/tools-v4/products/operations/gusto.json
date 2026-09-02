@@ -1,0 +1,160 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "e43cd025-4e06-4dea-a23c-cf0055617f04",
+  "slug": "gusto",
+  "name": "Gusto",
+  "company_name": "Gusto",
+  "one_liner": "Modern payroll and HR platform for small businesses. Full-service payroll, benefits, and compliance from $40/month + $6/person.",
+  "short_description": "Gusto is a cloud-based payroll and HR platform that handles payroll processing, tax filings, benefits administration, and compliance for small to medium businesses including group therapy practices.",
+  "long_description": "Gusto provides full-service payroll, benefits administration, and HR tools for small businesses. For group therapy practices, it handles W-2 employee payroll with automatic tax calculations and filings, direct deposit, health insurance and 401(k) administration, PTO tracking, and new hire onboarding. Gusto automatically files federal, state, and local payroll taxes. The platform also supports contractor payments (1099s) for practices using independent contractors. Pricing starts at $40/month base plus $6 per person for the Simple plan.",
+  "import_ref": {
+    "record_id": "OPS-0002",
+    "source_file": "operations-tools.json",
+    "import_timestamp": "2026-08-31T00:00:00.000Z"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "analytics-reporting",
+  "secondary_categories": [],
+  "capabilities": [
+    "payroll-compensation"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": false,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "pricing": {
+    "model": "flat-monthly",
+    "starting_price_cents": 4000,
+    "starting_price_display": "$40/month + $6/person",
+    "free_tier": false,
+    "quote_required": false,
+    "tiers": [
+      {
+        "name": "Simple",
+        "price": "$40/mo + $6/person",
+        "features": [
+          "Full-service payroll",
+          "Employee self-service",
+          "Health benefits"
+        ]
+      },
+      {
+        "name": "Plus",
+        "price": "$80/mo + $12/person",
+        "features": [
+          "Everything in Simple",
+          "PTO management",
+          "Time tracking",
+          "Hiring tools"
+        ]
+      },
+      {
+        "name": "Premium",
+        "price": "Contact for pricing",
+        "features": [
+          "Everything in Plus",
+          "Dedicated support",
+          "Compliance alerts",
+          "HR resource center"
+        ]
+      }
+    ],
+    "notes": "Contractor-only plan available at $35/month + $6/contractor for practices using only 1099 contractors.",
+    "last_verified": "2026-08-31"
+  },
+  "compliance": {
+    "hipaa_support": "no",
+    "baa_available": "no",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown",
+    "notes": "Gusto is not HIPAA compliant. Use for payroll/HR only, not clinical data."
+  },
+  "integrations": [
+    {
+      "name": "QuickBooks",
+      "slug": "quickbooks",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "platforms": {
+    "ios": true,
+    "android": true,
+    "web": true,
+    "desktop": false,
+    "wearable": false
+  },
+  "seo": {
+    "title": "Gusto Payroll for Therapy Practices | HeyPsych",
+    "meta_description": "Gusto payroll and HR for group therapy practices. Full-service payroll, benefits, tax filings. From $40/mo + $6/person.",
+    "faqs": [
+      {
+        "q": "How much does Gusto cost for a therapy practice?",
+        "a": "Gusto Simple starts at $40/month plus $6 per employee. A 5-person practice would pay around $70/month total."
+      },
+      {
+        "q": "Does Gusto handle 1099 contractor payments?",
+        "a": "Yes. Gusto can process contractor payments and generate 1099 forms. There's also a contractor-only plan at $35/month + $6/contractor."
+      }
+    ],
+    "keywords": [
+      "Gusto therapy practice",
+      "payroll for therapists",
+      "group practice payroll"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-08-31",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
+  },
+  "best_for": [
+    "Group practices with W-2 employees",
+    "Practices offering health benefits to staff",
+    "Practices needing automated tax filing"
+  ],
+  "not_for": [
+    "Solo practitioners with no employees",
+    "Practices needing HIPAA-compliant HR systems"
+  ],
+  "related_tools": [
+    "quickbooks"
+  ],
+  "competitor_tools": [
+    "adp",
+    "paychex"
+  ],
+  "created_at": "2026-08-31T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.565Z",
+  "featured": false,
+  "status": "active",
+  "website_url": "https://gusto.com",
+  "affiliate_url": "https://gusto.com"
+}

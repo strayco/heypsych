@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "e9fa3216-4f71-47f6-8d16-f727152a97d5",
   "slug": "eclinicalworks-ai-medical-scribe",
-  "name": "eClinicalWorks Mental Health Tool",
+  "name": "eClinicalWorks AI Scribe (Sunoh.ai)",
   "company_name": "eClinicalWorks",
+  "website": "https://www.eclinicalworks.com/sunoh-ai-medical-scribe-technology-for-clinical-documentation/",
+  "description": "eClinicalWorks built Sunoh.ai—an ambient AI medical scribe—directly into V12 of its EHR. Unlike athenahealth's free approach, Sunoh is sold as an add-on starting at $149/provider/month. It uses ambient listening to convert natural patient-provider conversations into clinical documentation. Sold through eClinicalWorks/healow sales channels (no self-serve signup). Some users report a one-time setup fee (amount varies). Third-party alternatives like DeepCura ($129/mo including $50 eCW API fee) or Freed ($39-119/mo browser extension) may be more cost-effective. Important: eClinicalWorks charges a $50/mo API access fee for third-party AI scribes with bidirectional integration.",
   "import_ref": {
     "record_id": "MH-0227",
     "source_row": 228,
@@ -16,54 +18,173 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Native eCW AI scribe via Sunoh.ai. $149/mo add-on to eClinicalWorks V12. Ambient listening. Sales required.",
+  "one_liner": "eCW native AI scribe. Sunoh.ai $149/mo add-on. No self-serve signup.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "per-provider-month",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 14900,
+    "starting_price_display": "Starting at $149/provider/month",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Sunoh.ai Add-on",
+        "price": "Starting at $149/provider/month",
+        "description": "Ambient AI scribe add-on to eClinicalWorks V12. Limited-time introductory pricing. One-time setup fee may apply (varies)."
+      }
+    ],
+    "notes": "Sold through eCW/healow sales channels—no self-serve signup. Some users report one-time setup fees. Third-party alternatives may be cheaper: DeepCura $129/mo (includes $50 eCW API fee), Freed $39-119/mo (browser extension).",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "eClinicalWorks maintains HIPAA compliance and BAA availability as a certified EHR vendor."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "eClinicalWorks V12",
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration in eCW V12—ambient notes flow directly into EHR"
+    }
+  ],
+  "features": {
+    "ambient_listening": {
+      "supported": true,
+      "description": "Sunoh.ai uses ambient listening to convert natural patient-provider conversations into clinical documentation."
+    },
+    "native_ehr_integration": {
+      "supported": true,
+      "description": "Built directly into eClinicalWorks V12—no third-party vendor management needed."
+    },
+    "ehr_api_fee": {
+      "note": "$50/mo API access fee",
+      "description": "eClinicalWorks charges $50/mo for third-party AI scribes with bidirectional API access. This fee is relevant when comparing to alternatives like DeepCura."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Clinical notes"
+    ]
+  },
+  "best_for": [
+    "eClinicalWorks V12 users wanting native ambient AI documentation",
+    "Practices preferring single-vendor solution (eCW EHR + eCW AI scribe)",
+    "Organizations with existing eCW relationship and sales contact",
+    "Clinicians wanting seamless EHR integration without third-party setup"
+  ],
+  "not_for": [
+    "Budget-conscious practices—Freed ($39-119/mo) or DeepCura ($129/mo including API fee) cheaper",
+    "Clinicians wanting self-serve signup—Sunoh requires eCW sales engagement",
+    "athenaOne users—athenaOne Ambient Notes is free",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Practices wanting to compare multiple options before committing"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "eclinicalworks-ehr",
+    "freed-ai",
+    "deepcura"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "deepcura",
+    "commure-scribe",
+    "glass-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.792Z",
-  "updated_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "eClinicalWorks Mental Health Tool: Review & Pricing | HeyPsych",
-    "meta_description": "eClinicalWorks Mental Health Tool review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "eCW AI Scribe (Sunoh.ai): $149/mo | HeyPsych",
+    "meta_description": "eClinicalWorks AI Scribe via Sunoh.ai: Native ambient AI for eCW V12. Starting at $149/provider/month. Sales required. Compare to Freed and DeepCura alternat...",
+    "faqs": [
+      {
+        "q": "How much does eClinicalWorks AI Scribe cost in 2026?",
+        "a": "eClinicalWorks AI Scribe (Sunoh.ai) starts at $149/provider/month as an add-on to eClinicalWorks V12. This is 'limited-time' introductory pricing. Some users report one-time setup fees (amount varies). Contact eCW/healow sales for exact quotes."
+      },
+      {
+        "q": "Is eClinicalWorks AI Scribe cheaper than third-party options?",
+        "a": "Not necessarily. Sunoh.ai at $149/mo is more expensive than Freed ($39-119/mo browser extension) or DeepCura ($129/mo including $50 eCW API fee). However, native integration may justify the premium for some practices."
+      },
+      {
+        "q": "What is the eClinicalWorks API fee for third-party AI scribes?",
+        "a": "eClinicalWorks charges a $50/month API access fee for third-party AI scribes with bidirectional integration. DeepCura's $129/mo price includes this fee. This is an important cost consideration when comparing alternatives."
+      },
+      {
+        "q": "Can I try eClinicalWorks AI Scribe before buying?",
+        "a": "Unlike standalone AI scribes with free trials, Sunoh.ai is sold through eCW/healow sales channels with no self-serve signup. You must engage with sales to explore the product."
+      },
+      {
+        "q": "eClinicalWorks AI Scribe vs Freed vs DeepCura: which is better?",
+        "a": "Sunoh.ai ($149/mo) offers native eCW integration. Freed ($39-119/mo) works via browser extension. DeepCura ($129/mo including API fee) has bidirectional integration. For budget-first, Freed. For native simplicity, Sunoh. For bidirectional plus features, DeepCura."
+      }
+    ],
     "keywords": [
-      "eClinicalWorks Mental Health Tool",
-      "ai scribe documentation"
+      "eClinicalWorks AI scribe",
+      "Sunoh.ai",
+      "eCW ambient documentation",
+      "eClinicalWorks V12 AI",
+      "Sunoh pricing 2026",
+      "eCW AI scribe cost",
+      "eClinicalWorks API fee",
+      "Sunoh vs Freed"
     ]
-  }
+  },
+  "website_url": "https://www.eclinicalworks.com/sunoh-ai-medical-scribe-technology-for-clinical-documentation/",
+  "pricing_url": "https://www.eclinicalworks.com",
+  "affiliate_url": "https://www.eclinicalworks.com"
 }

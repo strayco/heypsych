@@ -19,28 +19,26 @@
     "status": "active"
   },
   "primary_category": "credentialing-workforce",
-  "secondary_categories": ["provider-data-management", "payer-enrollment"],
-  "capabilities": [
-    "Universal provider data repository",
-    "Self-service profile management",
-    "Practice location management",
-    "License and certification tracking",
-    "Work history documentation",
-    "Education verification data",
-    "Malpractice history tracking",
-    "DEA registration management",
-    "Board certification tracking",
-    "Multi-payer data sharing",
-    "Attestation management",
-    "Document upload and storage",
-    "Re-attestation reminders",
-    "Data validation checks"
-  ],
+  "secondary_categories": [],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "psychiatric_nurse", "physician", "nurse_practitioner", "physician_assistant"],
-    "practice_settings": ["private_practice", "group_practice", "hospital", "health_system", "community_mental_health", "telehealth"],
-    "organization_sizes": ["solo", "small", "medium", "large", "enterprise"],
-    "specialties": ["general", "psychiatry", "psychology", "mental_health"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "hospital-inpatient",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -68,7 +66,14 @@
     "description": "CAQH is a non-profit alliance of health plans and trade associations that creates shared initiatives to streamline healthcare administration. ProView is their flagship provider credentialing solution.",
     "employee_count_range": "200-500",
     "customer_count": "1.4 million+ providers",
-    "notable_customers": ["Blue Cross Blue Shield", "Aetna", "Cigna", "UnitedHealthcare", "Humana", "Kaiser Permanente"]
+    "notable_customers": [
+      "Blue Cross Blue Shield",
+      "Aetna",
+      "Cigna",
+      "UnitedHealthcare",
+      "Humana",
+      "Kaiser Permanente"
+    ]
   },
   "processing_times": {
     "initial_profile_creation": "2-4 hours for basic setup",
@@ -77,7 +82,7 @@
     "data_sharing": "Real-time once authorized"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -89,18 +94,27 @@
   "integrations": [
     {
       "name": "Health Plan Systems",
-      "type": "data_sharing",
-      "description": "Direct integration with major health plan credentialing systems"
+      "description": "Direct integration with major health plan credentialing systems",
+      "integration_type": "api",
+      "slug": "health-plan-systems",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "CAQH DirectAssure",
-      "type": "verification",
-      "description": "Automated primary source verification service"
+      "description": "Automated primary source verification service",
+      "integration_type": "api",
+      "slug": "caqh-directassure",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Credentialing Software",
-      "type": "api",
-      "description": "API access for credentialing vendors and health systems"
+      "description": "API access for credentialing vendors and health systems",
+      "integration_type": "api",
+      "slug": "credentialing-software",
+      "category": "other",
+      "verified": false
     }
   ],
   "governance": {
@@ -110,9 +124,14 @@
     "last_enriched": "2026-08-22",
     "last_reviewed": "2026-08-30"
   },
-  "related_tools": ["modio-health-oneview", "medallion", "verifiable", "symplr-cvo"],
+  "related_tools": [
+    "modio-health-oneview",
+    "medallion",
+    "verifiable",
+    "symplr-cvo"
+  ],
   "created_at": "2026-08-22T20:50:40.829Z",
-  "updated_at": "2026-08-22T21:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.517Z",
   "status": "active",
   "best_for": [
     "Any healthcare provider requiring credentialing with insurance payers",
@@ -127,26 +146,8 @@
     "International practitioners without US licenses"
   ],
   "seo": {
-    "title": "CAQH ProView: Free Provider Credentialing Repository | HeyPsych",
-    "meta_description": "CAQH ProView is the free, industry-standard credentialing data repository used by 1.4M+ providers. Maintain your credentials once and share with multiple health plans.",
-    "faqs": [
-      {
-        "question": "Is CAQH ProView free for providers?",
-        "answer": "Yes, CAQH ProView is completely free for healthcare providers. The costs are covered by participating health plans and healthcare organizations who pay to access the provider data. Providers can create, maintain, and attest to their profiles at no charge."
-      },
-      {
-        "question": "How often do I need to re-attest my CAQH profile?",
-        "answer": "CAQH requires providers to re-attest (review and confirm) their profile information every 120 days (approximately every 4 months). Re-attestation typically takes 30-60 minutes and ensures your credentialing data remains current and accurate."
-      },
-      {
-        "question": "What information do I need to complete my CAQH ProView profile?",
-        "answer": "You'll need: professional licenses, DEA registration, board certifications, malpractice insurance information, work history (past 5-10 years), education and training history, hospital affiliations, practice location details, and professional references. Having documents ready can speed up the initial 2-4 hour setup."
-      },
-      {
-        "question": "How does CAQH ProView speed up insurance credentialing?",
-        "answer": "Instead of completing separate applications for each health plan, you enter your information once in CAQH ProView. When you apply for credentialing with participating health plans (which includes most major insurers), they pull your verified data directly from CAQH, reducing paperwork and processing time significantly."
-      }
-    ],
+    "title": "CAQH ProView: Free Provider Credentialing Repository",
+    "meta_description": "CAQH ProView is the free, industry-standard credentialing data repository used by 1.4M+ providers. Maintain your credentials once and share with multiple...",
     "keywords": [
       "CAQH ProView",
       "CAQH credentialing",
@@ -159,5 +160,6 @@
       "mental health credentialing",
       "therapist insurance credentialing"
     ]
-  }
+  },
+  "affiliate_url": "https://www.caqh.org/solutions/proview"
 }

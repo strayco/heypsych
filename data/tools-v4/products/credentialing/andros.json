@@ -5,6 +5,7 @@
   "slug": "andros",
   "name": "Andros (symplr)",
   "company_name": "symplr (formerly Cactus Software)",
+  "short_description": "Enterprise credentialing and privileging platform for hospitals and health systems. NCQA-accredited with Joint Commission support, PSV, FPPE/OPPE, and Epic/Cerner integration.",
   "description": "Andros is a comprehensive healthcare credentialing and provider management platform, now part of symplr following the acquisition of Cactus Software. The platform offers end-to-end credentialing workflow management, primary source verification, privileging, and ongoing monitoring. Andros is particularly well-suited for hospitals, health systems, and managed care organizations requiring enterprise-grade credentialing solutions with robust compliance capabilities.",
   "website_url": "https://www.symplr.com/provider-credentialing",
   "import_ref": {
@@ -17,33 +18,21 @@
     "status": "active"
   },
   "primary_category": "credentialing-workforce",
-  "secondary_categories": ["provider-data-management", "privileging", "compliance-monitoring"],
-  "capabilities": [
-    "End-to-end credentialing workflow",
-    "Primary source verification",
-    "NPDB continuous query",
-    "Medical staff privileging",
-    "Focused Professional Practice Evaluation (FPPE)",
-    "Ongoing Professional Practice Evaluation (OPPE)",
-    "Peer review management",
-    "Committee management",
-    "Expiration tracking and alerts",
-    "License verification",
-    "DEA verification",
-    "Board certification verification",
-    "OIG/SAM exclusion monitoring",
-    "Document management",
-    "Credential file management",
-    "Provider portal for self-service",
-    "Custom reporting and analytics",
-    "Delegated credentialing support",
-    "Multi-facility credentialing"
-  ],
+  "secondary_categories": [],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "physician", "nurse_practitioner", "physician_assistant", "allied_health"],
-    "practice_settings": ["hospital", "health_system", "managed_care", "ambulatory_surgery_center", "academic_medical_center"],
-    "organization_sizes": ["large", "enterprise"],
-    "specialties": ["general", "psychiatry", "multi_specialty", "hospital_based"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "hospital-inpatient"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -65,17 +54,32 @@
       {
         "name": "Andros Standard",
         "price_range": "Custom enterprise pricing",
-        "features": ["Credentialing workflow", "Primary source verification", "Document management", "Basic reporting"]
+        "features": [
+          "Credentialing workflow",
+          "Primary source verification",
+          "Document management",
+          "Basic reporting"
+        ]
       },
       {
         "name": "Andros Enterprise",
         "price_range": "Custom enterprise pricing",
-        "features": ["Full credentialing suite", "Privileging", "FPPE/OPPE", "Advanced analytics", "Multi-facility support"]
+        "features": [
+          "Full credentialing suite",
+          "Privileging",
+          "FPPE/OPPE",
+          "Advanced analytics",
+          "Multi-facility support"
+        ]
       },
       {
         "name": "Andros + CVO Services",
         "price_range": "Custom pricing",
-        "features": ["Software platform", "Delegated verification services", "Ongoing monitoring"]
+        "features": [
+          "Software platform",
+          "Delegated verification services",
+          "Ongoing monitoring"
+        ]
       }
     ],
     "notes": "Andros/symplr pricing is enterprise-focused and requires custom quotes. Typical implementations range from $50,000-$500,000+ annually depending on organization size, number of providers, and modules selected. Implementation fees are additional."
@@ -91,7 +95,11 @@
     "description": "symplr is a leading provider of healthcare operations software, including credentialing, compliance, and workforce management solutions. The company has grown through numerous acquisitions to serve over 400 health systems.",
     "employee_count_range": "1,000-2,000",
     "customer_count": "400+ health systems, thousands of hospitals",
-    "notable_customers": ["Major academic medical centers", "Multi-hospital systems", "Large health plans"]
+    "notable_customers": [
+      "Major academic medical centers",
+      "Multi-hospital systems",
+      "Large health plans"
+    ]
   },
   "processing_times": {
     "initial_credentialing": "30-60 days",
@@ -101,7 +109,7 @@
     "continuous_monitoring": "Real-time"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -114,44 +122,69 @@
   "integrations": [
     {
       "name": "NPDB",
-      "type": "verification",
-      "description": "Direct NPDB integration for continuous query and one-time queries"
+      "description": "Direct NPDB integration for continuous query and one-time queries",
+      "integration_type": "api",
+      "slug": "npdb",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "State Medical Boards",
-      "type": "verification",
-      "description": "Automated license verification with state boards"
+      "description": "Automated license verification with state boards",
+      "integration_type": "api",
+      "slug": "state-medical-boards",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Epic",
-      "type": "ehr_integration",
-      "description": "Integration with Epic provider management"
+      "description": "Integration with Epic provider management",
+      "integration_type": "api",
+      "slug": "epic",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Cerner",
-      "type": "ehr_integration",
-      "description": "Integration with Cerner/Oracle Health"
+      "description": "Integration with Cerner/Oracle Health",
+      "integration_type": "api",
+      "slug": "cerner",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "CAQH ProView",
-      "type": "data_sync",
-      "description": "CAQH data import and synchronization"
+      "description": "CAQH data import and synchronization",
+      "integration_type": "api",
+      "slug": "caqh-proview",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "symplr Workforce",
-      "type": "native",
-      "description": "Native integration with symplr workforce management suite"
+      "description": "Native integration with symplr workforce management suite",
+      "integration_type": "api",
+      "slug": "symplr-workforce",
+      "category": "other",
+      "verified": false
     }
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
     "data_quality_score": 88,
-    "last_enriched": "2026-08-22"
+    "last_enriched": "2026-08-22",
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["symplr-cvo", "caqh-proview", "modio-health-oneview", "verifiable", "healthstream-credentialstream"],
+  "related_tools": [
+    "symplr-cvo",
+    "caqh-proview",
+    "modio-health-oneview",
+    "verifiable",
+    "healthstream-credentialstream"
+  ],
   "created_at": "2026-08-22T20:50:40.829Z",
-  "updated_at": "2026-08-22T21:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.517Z",
   "status": "active",
   "best_for": [
     "Large hospitals and health systems",
@@ -169,26 +202,8 @@
     "Organizations primarily focused on payer enrollment"
   ],
   "seo": {
-    "title": "Andros by symplr: Enterprise Credentialing & Privileging | HeyPsych",
-    "meta_description": "Andros (symplr) is an enterprise credentialing and privileging platform for hospitals and health systems. NCQA-accredited with Joint Commission support. Used by 400+ health systems.",
-    "faqs": [
-      {
-        "question": "What is Andros credentialing software?",
-        "answer": "Andros is an enterprise healthcare credentialing and provider management platform, now part of symplr following the acquisition of Cactus Software in 2019. It provides end-to-end credentialing workflow management, primary source verification, privileging, FPPE/OPPE, and ongoing monitoring for hospitals and health systems."
-      },
-      {
-        "question": "How much does Andros/symplr credentialing cost?",
-        "answer": "Andros/symplr pricing is enterprise-focused with custom quotes based on organization size and needs. Typical implementations range from $50,000-$500,000+ annually depending on the number of providers, modules selected, and whether CVO services are included. Implementation fees are additional."
-      },
-      {
-        "question": "Is Andros NCQA accredited?",
-        "answer": "Yes, symplr (which includes Andros) maintains NCQA CVO accreditation. The platform also supports compliance with Joint Commission, DNV, and CMS credentialing requirements, making it suitable for hospitals requiring robust accreditation support."
-      },
-      {
-        "question": "Does Andros integrate with Epic and Cerner?",
-        "answer": "Yes, Andros/symplr offers integrations with major EHR systems including Epic and Cerner (Oracle Health). It also integrates with CAQH ProView, NPDB, state medical boards, and the broader symplr workforce management suite."
-      }
-    ],
+    "title": "Andros by symplr: Enterprise Credentialing & Privileging",
+    "meta_description": "Andros (symplr) is an enterprise credentialing and privileging platform for hospitals and health systems. NCQA-accredited with Joint Commission support....",
     "keywords": [
       "Andros credentialing",
       "symplr credentialing",
@@ -201,5 +216,7 @@
       "Joint Commission credentialing",
       "provider management system"
     ]
-  }
+  },
+  "affiliate_url": "https://www.symplr.com/provider-credentialing",
+  "one_liner": "Enterprise credentialing and privileging platform for hospitals and health systems. NCQA-accredited "
 }

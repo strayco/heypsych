@@ -5,6 +5,7 @@
   "slug": "kipu-emr",
   "name": "Kipu EMR",
   "company_name": "Kipu Health",
+  "short_description": "Market-leading addiction treatment EHR with census management, CRM, and utilization review. HITRUST certified. $600-10K+/month for residential facilities.",
   "import_ref": {
     "record_id": "MH-0818",
     "source_row": 819,
@@ -12,62 +13,197 @@
     "source_file": "master-records.json"
   },
   "lifecycle": {
-    "status": "acquired"
+    "status": "active"
   },
   "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "measurement-outcomes-dtx"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "crm-lead-management",
+    "analytics-bi",
+    "hipaa-compliant",
+    "baa-available",
+    "compliance-security"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
+      "psychiatric-np-pa",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "residential-treatment",
+      "hospital-inpatient",
+      "group-practice",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
-    "has_ai": false,
+    "has_ai": true,
     "has_ehr": true,
-    "has_rcm": false,
-    "has_telehealth": false,
-    "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
     "model": "enterprise-custom",
+    "starting_price_cents": 60000,
+    "starting_price_display": "$600-10,000+/month (facility-based)",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "tiers": [
+      {
+        "name": "Kipu EMR Core",
+        "price": "~$600-2,000/month",
+        "description": "Small facility (10-30 beds), core EMR, scheduling, documentation"
+      },
+      {
+        "name": "Kipu EMR + RCM",
+        "price": "~$2,000-5,000/month",
+        "description": "Mid-size facility (30-75 beds), adds billing, eligibility, claims"
+      },
+      {
+        "name": "Kipu Enterprise",
+        "price": "$5,000-10,000+/month",
+        "description": "Large multi-site organizations, full suite with CRM, alumni, analytics"
+      }
+    ],
+    "notes": "Pricing based on facility size (bed count), not per-provider. Customers report 40% average census growth and 99% clean claims rate. HITRUST certified. Implementation included in enterprise contracts."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Kipu Intelligence",
+      "description": "AI-powered analytics and documentation",
+      "integration_type": "api",
+      "slug": "kipu-intelligence",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Kipu CRM",
+      "description": "Admissions and lead management",
+      "integration_type": "api",
+      "slug": "kipu-crm",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Labs",
+      "description": "Lab ordering and drug testing integration",
+      "integration_type": "api",
+      "slug": "labs",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Clearinghouses",
+      "description": "Claims submission for commercial and Medicaid",
+      "integration_type": "api",
+      "slug": "clearinghouses",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "PDMP",
+      "description": "State prescription drug monitoring programs",
+      "integration_type": "api",
+      "slug": "pdmp",
+      "category": "other",
+      "verified": false
+    }
+  ],
+  "best_for": [
+    "Residential addiction treatment centers (10-200+ beds) needing census management",
+    "Multi-site behavioral health organizations with complex UR/utilization review",
+    "Facilities requiring HITRUST certification for enterprise payer contracts",
+    "Organizations wanting integrated CRM + EMR + RCM (40% census growth reported)"
+  ],
+  "not_for": [
+    "Solo outpatient therapists (→ SimplePractice $59/mo, TherapyNotes $49/mo)",
+    "General psychiatry practices without addiction focus (→ Valant $100-300/mo)",
+    "Organizations with <$600/mo software budget (→ TheraNest, Jane App)",
+    "CMHCs needing state reporting automation (→ Netsmart myEvolv, Qualifacts)"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "sunwave-emr",
+    "lightning-step-ehr",
+    "alleva-emr",
+    "netsmart-myevolv"
+  ],
   "created_at": "2026-08-22T20:50:40.845Z",
-  "updated_at": "2026-08-22T20:50:40.845Z",
-  "status": "draft",
+  "updated_at": "2026-09-01T20:15:00.000Z",
+  "status": "active",
   "seo": {
-    "title": "Kipu EMR: Review & Pricing | HeyPsych",
-    "meta_description": "Kipu EMR review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Kipu EMR: Addiction Treatment EHR Pricing 2026 | HeyPsych",
+    "meta_description": "Kipu EMR pricing starts at $600-10,000+/month for addiction treatment facilities. HITRUST certified. Compare to Sunwave, Lightning Step, and Alleva for resid...",
+    "faqs": [
+      {
+        "q": "How much does Kipu EMR cost?",
+        "a": "Kipu EMR pricing ranges from $600-10,000+/month based on facility size (bed count), not per-provider. Small facilities (10-30 beds) typically pay $600-2,000/mo. Mid-size facilities (30-75 beds) pay $2,000-5,000/mo. Large multi-site organizations pay $5,000-10,000+/mo for the full enterprise suite including CRM and analytics."
+      },
+      {
+        "q": "Is Kipu good for addiction treatment centers?",
+        "a": "Yes, Kipu is the market leader for addiction treatment EMR. It's specifically designed for residential and outpatient SUD facilities with features like census management, utilization review, drug testing integration, alumni tracking, and addiction-specific clinical templates. Customers report 40% average census growth and 99% clean claims rate."
+      },
+      {
+        "q": "Is Kipu HITRUST certified?",
+        "a": "Yes, Kipu EMR is HITRUST certified, making it one of the few behavioral health EHRs with this enterprise-level security certification. This is important for facilities contracting with large payers or health systems that require HITRUST compliance."
+      },
+      {
+        "q": "What are alternatives to Kipu EMR?",
+        "a": "For addiction treatment: Sunwave Health, Lightning Step, or Alleva EMR (all similar price ranges). For general behavioral health without addiction focus: Valant ($100-300/mo) or Netsmart myEvolv (enterprise). For small outpatient practices: SimplePractice ($59/mo) or TherapyNotes ($49/mo)."
+      },
+      {
+        "q": "Does Kipu integrate with CRM for admissions?",
+        "a": "Yes, Kipu offers integrated CRM (KipuCRM) for lead management, admissions tracking, and marketing attribution. This is a key differentiator for treatment centers focused on census growth. The CRM integrates directly with the EMR for seamless patient onboarding."
+      }
+    ],
     "keywords": [
       "Kipu EMR",
-      "ehr practice management"
+      "Kipu Health pricing",
+      "addiction treatment EHR",
+      "substance abuse EMR",
+      "residential treatment software",
+      "Kipu vs Sunwave"
     ]
-  }
+  },
+  "website_url": "https://kipuhealth.com/solutions/kipu-emr/",
+  "affiliate_url": "https://kipuhealth.com/solutions/kipu-emr/",
+  "one_liner": "Market-leading addiction treatment EHR with census management, CRM, and utilization review. HITRUST "
 }

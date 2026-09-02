@@ -19,22 +19,30 @@
     "status": "active"
   },
   "primary_category": "credentialing-workforce",
-  "secondary_categories": ["revenue-cycle", "practice-management"],
-  "capabilities": [
-    "payer-enrollment",
-    "caqh-management",
-    "provider-credentialing",
-    "contract-management",
-    "license-tracking",
-    "primary-source-verification",
-    "enrollment-tracking",
-    "provider-data-management"
+  "secondary_categories": [
+    "billing-rcm-insurance",
+    "ehr-practice-management"
   ],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "lcsw", "lmft", "lpc", "pmhnp", "practice-administrator", "billing-specialist"],
-    "practice_settings": ["solo-practice", "group-practice", "community-mental-health", "behavioral-health-organization", "mso"],
-    "organization_sizes": ["small", "medium", "large"],
-    "specialties": ["psychiatry", "psychology", "behavioral-health", "primary-care"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "practice-administrator",
+      "billing-specialist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -54,7 +62,10 @@
     "employee_count": "50-100",
     "funding_stage": "Series A",
     "total_funding": "$12M",
-    "key_investors": ["Martin Ventures", "Vocap Partners"],
+    "key_investors": [
+      "Martin Ventures",
+      "Vocap Partners"
+    ],
     "customer_count": "1,500+"
   },
   "features": {
@@ -93,7 +104,6 @@
     ]
   },
   "pricing": {
-    "model": "per-provider",
     "starting_price": 100,
     "price_unit": "per provider/month",
     "has_free_tier": false,
@@ -104,66 +114,105 @@
       {
         "name": "Essentials",
         "price_range": "$100-150/provider/month",
-        "features": ["CAQH management", "License tracking", "Basic reporting", "Email support"]
+        "features": [
+          "CAQH management",
+          "License tracking",
+          "Basic reporting",
+          "Email support"
+        ]
       },
       {
         "name": "Professional",
         "price_range": "$150-250/provider/month",
-        "features": ["All Essentials features", "Payer enrollment", "Contract management", "Phone support"]
+        "features": [
+          "All Essentials features",
+          "Payer enrollment",
+          "Contract management",
+          "Phone support"
+        ]
       },
       {
         "name": "Enterprise",
         "price_range": "Custom pricing",
-        "features": ["All Professional features", "Dedicated account manager", "Custom integrations", "SLA guarantees"]
+        "features": [
+          "All Professional features",
+          "Dedicated account manager",
+          "Custom integrations",
+          "SLA guarantees"
+        ]
       }
     ],
     "per_enrollment_fee": "$150-300 per new payer enrollment",
     "implementation_cost": "$1,000-5,000",
-    "notes": "Pricing varies by number of providers and payers. Volume discounts for 25+ providers."
+    "notes": "Pricing varies by number of providers and payers. Volume discounts for 25+ providers.",
+    "model": "enterprise-custom"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "type-2",
+    "soc2": "yes",
     "hitrust": "no",
-    "gdpr_compliant": "not-applicable",
-    "additional_certifications": ["SOC 2 Type II"]
+    "gdpr_compliant": "not_applicable",
+    "additional_certifications": [
+      "SOC 2 Type II"
+    ]
   },
   "integrations": [
     {
       "name": "CAQH ProView",
-      "type": "credentialing",
-      "description": "Automated CAQH profile synchronization"
+      "description": "Automated CAQH profile synchronization",
+      "integration_type": "api",
+      "slug": "caqh-proview",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Availity",
-      "type": "clearinghouse",
-      "description": "Payer enrollment submission"
+      "description": "Payer enrollment submission",
+      "integration_type": "api",
+      "slug": "availity",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Change Healthcare",
-      "type": "clearinghouse",
-      "description": "Enrollment and eligibility"
+      "description": "Enrollment and eligibility",
+      "integration_type": "api",
+      "slug": "change-healthcare",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Salesforce",
-      "type": "crm",
-      "description": "Provider relationship tracking"
+      "description": "Provider relationship tracking",
+      "integration_type": "api",
+      "slug": "salesforce",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "SimplePractice",
-      "type": "ehr",
-      "description": "Practice management integration"
+      "description": "Practice management integration",
+      "integration_type": "api",
+      "slug": "simplepractice",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "TherapyNotes",
-      "type": "ehr",
-      "description": "Mental health EHR integration"
+      "description": "Mental health EHR integration",
+      "integration_type": "api",
+      "slug": "therapynotes",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "NPPES",
-      "type": "verification",
-      "description": "NPI registry synchronization"
+      "description": "NPI registry synchronization",
+      "integration_type": "api",
+      "slug": "nppes",
+      "category": "other",
+      "verified": false
     }
   ],
   "governance": {
@@ -185,31 +234,17 @@
     "Organizations needing only credential verification without enrollment",
     "Practices not accepting insurance"
   ],
-  "related_tools": ["medallion-credentialing", "medallion-payer-enrollment", "verifiable-credentialing"],
+  "related_tools": [
+    "medallion-credentialing",
+    "medallion-payer-enrollment",
+    "verifiable-credentialing"
+  ],
   "created_at": "2026-08-22T20:50:40.831Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.521Z",
   "status": "active",
   "seo": {
-    "title": "Modio Payer Enrollment: Insurance Credentialing Made Easy | HeyPsych",
-    "meta_description": "Modio Health payer enrollment review for mental health practices. Automate insurance panel enrollment, CAQH management, and provider credentialing. Pricing from $100/provider.",
-    "faqs": [
-      {
-        "question": "How long does payer enrollment take with Modio?",
-        "answer": "Payer enrollment timelines vary by insurance company, but Modio typically completes commercial payer enrollment in 30-60 days, Medicare enrollment in 60-90 days, and Medicaid enrollment in 45-90 days. Their automation and follow-up processes help avoid common delays."
-      },
-      {
-        "question": "Does Modio handle CAQH attestation reminders?",
-        "answer": "Yes, Modio automatically tracks CAQH attestation deadlines and sends reminders before the quarterly re-attestation is due. They can also complete attestation on your behalf if you grant them access to your CAQH ProView account."
-      },
-      {
-        "question": "Can Modio help mental health providers get on insurance panels?",
-        "answer": "Absolutely. Modio specializes in behavioral health payer enrollment, including psychiatrists, psychologists, LCSWs, LMFTs, and LPCs. They handle enrollment with major behavioral health networks, Medicare Part B, and Medicaid managed care organizations."
-      },
-      {
-        "question": "What information does Modio need to start the enrollment process?",
-        "answer": "Modio requires basic provider information (licenses, DEA, NPI), practice details (tax ID, address, contact info), malpractice insurance certificates, and completed W-9. Their onboarding process guides you through gathering all required documentation."
-      }
-    ],
+    "title": "Modio Payer Enrollment: Insurance Credentialing Made Easy",
+    "meta_description": "Modio Health payer enrollment review for mental health practices. Automate insurance panel enrollment, CAQH management, and provider credentialing. Pricing...",
     "keywords": [
       "Modio Health",
       "payer enrollment",
@@ -221,5 +256,6 @@
       "credentialing services",
       "behavioral health credentialing"
     ]
-  }
+  },
+  "affiliate_url": "https://www.modiohealth.com"
 }

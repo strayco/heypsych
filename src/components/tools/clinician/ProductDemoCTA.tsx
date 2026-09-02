@@ -50,9 +50,6 @@ export function ProductDemoCTA({ toolSlug, toolName, affiliateUrl, websiteUrl }:
           Visit {toolName}
           <ExternalLink className="h-4 w-4" />
         </a>
-        <p className="mt-2 text-xs text-label-quaternary text-center">
-          HeyPsych may earn a commission
-        </p>
       </div>
     );
   }

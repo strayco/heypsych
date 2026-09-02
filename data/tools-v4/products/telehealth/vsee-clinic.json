@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "2c05365b-8158-4fed-aa1f-2cbe3c05184b",
   "slug": "vsee-clinic",
   "name": "VSee Clinic",
@@ -22,12 +22,29 @@
   "support_level": "clinical",
   "short_description": "HIPAA-compliant telehealth platform with low-bandwidth video, virtual waiting rooms, scheduling, and payment processing built for healthcare practices.",
   "long_description": "VSee Clinic is a comprehensive telehealth platform that combines HD video conferencing with practice management features including online scheduling, custom intake forms, and payment processing. Originally developed for NASA to enable telemedicine on the International Space Station, VSee is known for its low-bandwidth optimization that maintains video quality even on slow internet connections, making it ideal for serving patients in rural or underserved areas. The platform offers a free tier for solo practitioners with limited features, making it accessible for those starting with telehealth. VSee Clinic includes virtual waiting rooms, screen sharing, and customizable patient experiences with your practice branding. Mental health providers appreciate the built-in secure messaging, appointment reminders, and custom intake forms that can be completed before sessions. The platform supports multiple providers, making it suitable for group practices, and offers API access for custom integrations.",
-  "primary_hubs": ["telehealth", "practice-management"],
-  "sub_hubs": ["video-conferencing", "low-bandwidth"],
+  "primary_hubs": [
+    "telehealth",
+    "practice-management"
+  ],
+  "sub_hubs": [
+    "video-conferencing",
+    "low-bandwidth"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["practice-management", "scheduling"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "ptsd", "substance-use-disorders"],
-  "tool_types": ["telehealth-platform", "practice-management"],
+  "secondary_categories": [
+    "ehr-practice-management",
+    "intake-scheduling-forms"
+  ],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "ptsd",
+    "substance-use-disorders"
+  ],
+  "tool_types": [
+    "telehealth-platform",
+    "practice-management"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -45,32 +62,74 @@
       {
         "name": "Free",
         "price": "Free",
-        "features": ["1 provider", "Unlimited video visits", "Basic waiting room", "1 intake form", "Manual scheduling", "Email support"]
+        "features": [
+          "1 provider",
+          "Unlimited video visits",
+          "Basic waiting room",
+          "1 intake form",
+          "Manual scheduling",
+          "Email support"
+        ]
       },
       {
         "name": "Basic",
         "price": "$49/month",
-        "features": ["1 provider", "All Free features", "Online scheduling", "Custom branding", "Multiple intake forms", "Payment processing", "SMS reminders"]
+        "features": [
+          "1 provider",
+          "All Free features",
+          "Online scheduling",
+          "Custom branding",
+          "Multiple intake forms",
+          "Payment processing",
+          "SMS reminders"
+        ]
       },
       {
         "name": "Plus",
         "price": "$99/month",
-        "features": ["1 provider", "All Basic features", "Group video (4 participants)", "Screen sharing", "Priority support", "API access"]
+        "features": [
+          "1 provider",
+          "All Basic features",
+          "Group video (4 participants)",
+          "Screen sharing",
+          "Priority support",
+          "API access"
+        ]
       },
       {
         "name": "Pro",
         "price": "$199/month",
-        "features": ["Multiple providers", "All Plus features", "Advanced analytics", "Custom integrations", "Dedicated support"]
+        "features": [
+          "Multiple providers",
+          "All Plus features",
+          "Advanced analytics",
+          "Custom integrations",
+          "Dedicated support"
+        ]
       }
     ],
     "notes": "Free tier available for solo providers. Per-provider pricing for group practices. Annual billing discounts available."
   },
-  "capabilities": ["video-conferencing", "low-bandwidth-optimized", "scheduling", "payment-processing", "intake-forms", "virtual-waiting-room"],
+  "capabilities": [
+    "payment-processing"
+  ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "social-worker", "psychiatric-nurse"],
-    "practice_settings": ["solo-practice", "group-practice", "private-practice", "community-mental-health"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50"],
-    "specialties": ["mental-health", "psychiatry", "psychology", "counseling", "behavioral-health", "primary-care"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -127,7 +186,7 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
@@ -135,20 +194,14 @@
     "gdpr_compliant": "yes",
     "encryption": "AES 256-bit encryption",
     "end_to_end_encryption": true,
-    "certifications": ["HIPAA", "SOC 2"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2"
+    ],
     "audit_logging": true,
     "notes": "BAA provided even on free tier. End-to-end encryption for all video sessions."
   },
-  "integrations": {
-    "ehr_integrations": [],
-    "calendar_integrations": ["Google Calendar", "Outlook Calendar", "Apple Calendar"],
-    "billing_integrations": ["Stripe"],
-    "payment_processors": ["Stripe", "Square"],
-    "api_available": true,
-    "webhooks": true,
-    "zapier_integration": true,
-    "notes": "Open API for custom integrations. Native payment processing via Stripe."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": true,
@@ -169,8 +222,14 @@
   "seo": {
     "title": "VSee Clinic: Low-Bandwidth Telehealth Platform | HeyPsych",
     "meta_description": "VSee Clinic offers HIPAA-compliant telehealth with low-bandwidth video, virtual waiting rooms, and practice management. Free tier available. Used by NASA.",
-    "canonical_url": "https://heypsych.com/tools/vsee-clinic/",
-    "keywords": ["VSee Clinic", "low bandwidth telehealth", "HIPAA telehealth", "virtual waiting room", "telehealth scheduling"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/vsee-clinic/",
+    "keywords": [
+      "VSee Clinic",
+      "low bandwidth telehealth",
+      "HIPAA telehealth",
+      "virtual waiting room",
+      "telehealth scheduling"
+    ],
     "faqs": [
       {
         "q": "Does VSee work with slow internet connections?",
@@ -207,7 +266,11 @@
     "headquarters": "Sunnyvale, California",
     "public_company": false,
     "total_funding": "$15M+",
-    "notable_clients": ["NASA", "United Nations", "US Veterans Affairs"],
+    "notable_clients": [
+      "NASA",
+      "United Nations",
+      "US Veterans Affairs"
+    ],
     "customer_count": "50,000+ providers"
   },
   "clinical_metadata": {
@@ -222,8 +285,15 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "practice-management"],
-    "clinician_workflows": ["telehealth_video", "scheduling", "payment_collection"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "practice-management"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "scheduling",
+      "payment_collection"
+    ],
     "how_clinicians_use_it": [
       "Conducting video sessions with patients anywhere",
       "Collecting intake forms before appointments",
@@ -232,16 +302,35 @@
       "Serving patients with limited internet access"
     ],
     "implementation_notes": "Easy setup with free tier for testing. Consider paid plans for full scheduling and payment features.",
-    "target_practice_size": ["Solo practitioners", "Small group practices", "Community clinics"],
+    "target_practice_size": [
+      "Solo practitioners",
+      "Small group practices",
+      "Community clinics"
+    ],
     "billing_notes": "Built-in payment processing via Stripe. Can replace separate payment system."
   },
   "market_position": {
-    "primary_competitors": ["Doxy.me", "Zoom for Healthcare", "SimplePractice Telehealth", "Thera-LINK"],
-    "differentiators": ["NASA-tested low-bandwidth technology", "Free tier with BAA", "Built-in scheduling and payments", "Works on slow connections"],
+    "primary_competitors": [
+      "Doxy.me",
+      "Zoom for Healthcare",
+      "SimplePractice Telehealth",
+      "Thera-LINK"
+    ],
+    "differentiators": [
+      "NASA-tested low-bandwidth technology",
+      "Free tier with BAA",
+      "Built-in scheduling and payments",
+      "Works on slow connections"
+    ],
     "market_segment": "Solo and small practices, rural healthcare",
     "niche": "Low-bandwidth and all-in-one telehealth"
   },
-  "related_tools": ["doxy-me", "zoom-for-healthcare", "thera-link", "simplepractice-telehealth"],
+  "related_tools": [
+    "doxy-me",
+    "zoom-for-healthcare",
+    "thera-link",
+    "simplepractice-telehealth"
+  ],
   "order": 4,
   "featured": false,
   "status": "active",
@@ -255,5 +344,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.794Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.350Z",
+  "website_url": "https://vsee.com/clinic/",
+  "affiliate_url": "https://vsee.com/clinic/"
 }

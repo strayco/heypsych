@@ -3,7 +3,10 @@
   "kind": "clinician-tool",
   "id": "d7f00b50-1df2-4ef6-8b75-bbcc4a5d53d5",
   "slug": "tortus",
-  "name": "Tortus",
+  "name": "Tortus AI",
+  "company_name": "Tortus",
+  "website": "https://tortus.ai",
+  "description": "Tortus AI is a UK-focused clinical AI scribe designed specifically for NHS workflows and UK EHR systems like EMIS Web, SystmOne, and Vision. Pricing starts at £44/month for pilot licenses (up to 20 users), with enterprise deployments at £200K/year for NHS Trusts (up to 100,000 audio hours). Tortus is procurable through NHS-compliant routes including Crown Commercial Service and NHS Technology Services 3. Key differentiator: purpose-built for NHS administrative burden—outpatient, ED, and primary care documentation with UK clinical workflows. Partnership tiers offer revenue-share against productivity outcomes. Not for US practices (no HIPAA focus) or non-UK healthcare systems.",
   "import_ref": {
     "record_id": "MH-0202",
     "source_row": 203,
@@ -15,12 +18,34 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "UK NHS-focused AI scribe. £44/mo pilot, £200K/year enterprise. EMIS/SystmOne integration. Crown Commercial Service procurement. UK clinical workflows.",
+  "one_liner": "NHS-focused AI scribe. £44/mo pilot to £200K/year enterprise. EMIS/SystmOne ready.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +55,172 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
+  },
+  "company": {
+    "headquarters": "United Kingdom"
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 4400,
+    "starting_price_display": "From £44/month (pilot licenses)",
+    "currency": "GBP",
+    "billing_period": "annual",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Pilot Licenses",
+        "price": "£44/month per license (excl. VAT)",
+        "description": "Up to 20 licenses. Full platform access for up to 20 pilot participants. Maximum 1-year commitment."
+      },
+      {
+        "name": "3-Month Pilot",
+        "price": "£15,000 (excl. VAT)",
+        "description": "Full platform access for up to 100 pilot participants over 3-month period."
+      },
+      {
+        "name": "Enterprise for NHS Trusts",
+        "price": "£200,000/year",
+        "description": "Up to 100,000 hours of audio processed. Additional usage at £2/hour beyond initial allocation. Trust-wide deployment."
+      },
+      {
+        "name": "Partnership Tier",
+        "price": "Revenue-share",
+        "description": "For trusts pursuing transformation goals. Revenue-share against agreed outcomes: outpatient productivity, ED efficiency, locum substitution, RTT recovery."
+      }
+    ],
+    "notes": "Procurable through NHS-compliant routes: Crown Commercial Service (direct award, no further competition required) and Technology Services 3 DPS for trusts preferring mini-competition. G-Cloud pricing documents available.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "no",
+    "baa_available": "no",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "uk_data_residency": "yes",
+    "security_note": "UK data residency. GDPR compliant. Designed for NHS information governance requirements. Procurable through Crown Commercial Service."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "EMIS Web",
+      "slug": "emis-web",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "UK's most widely used GP clinical system"
+    },
+    {
+      "name": "SystmOne",
+      "slug": "systmone",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Vision",
+      "slug": "vision",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Captures clinician-patient conversations and generates clinical notes for UK documentation standards."
+    },
+    "nhs_workflows": {
+      "supported": true,
+      "description": "Purpose-built for NHS administrative burden—outpatient, ED, and primary care with UK clinical workflows."
+    },
+    "uk_ehr_integration": {
+      "supported": true,
+      "description": "Native integration with EMIS Web, SystmOne, and Vision—the dominant UK GP and hospital systems."
+    },
+    "nhs_procurement": {
+      "supported": true,
+      "description": "Available through Crown Commercial Service and NHS Technology Services 3 DPS for compliant procurement."
+    },
+    "note_types": [
+      "GP consultation notes",
+      "Outpatient notes",
+      "ED documentation",
+      "UK clinical formats"
+    ]
+  },
+  "best_for": [
+    "NHS GP practices wanting AI scribe with EMIS/SystmOne integration",
+    "NHS Trusts seeking compliant procurement through Crown Commercial Service",
+    "UK outpatient and ED departments needing documentation efficiency",
+    "Trusts wanting outcome-based partnership pricing (revenue-share model)",
+    "UK clinicians needing UK data residency and GDPR compliance"
+  ],
+  "not_for": [
+    "US practices—no HIPAA compliance focus (use Freed $39-119/mo or Commure $59-89/mo)",
+    "Canadian practices—use Tali AI or Scribeberry for PIPEDA compliance",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Non-UK healthcare systems—Tortus is UK/NHS-specific",
+    "Budget-conscious solo GPs—£44/mo pilot minimum, enterprise focus"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "heidi-health",
+    "nabla",
+    "abridge"
+  ],
+  "competitor_tools": [
+    "heidi-health",
+    "nabla"
+  ],
   "created_at": "2026-08-22T20:50:40.790Z",
-  "updated_at": "2026-08-22T20:50:40.790Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Tortus: Review & Pricing | HeyPsych",
-    "meta_description": "Tortus review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Tortus AI: NHS AI Scribe 2026 | HeyPsych",
+    "meta_description": "Tortus AI: UK NHS-focused AI scribe. £44/mo pilot to £200K/year enterprise. EMIS Web, SystmOne, Vision integration. Crown Commercial Service procurement.",
+    "faqs": [
+      {
+        "q": "How much does Tortus AI cost for NHS practices?",
+        "a": "Tortus offers pilot licenses at £44/month per user (up to 20 users, 1-year max), 3-month pilots at £15,000 for up to 100 users, and enterprise deployments at £200,000/year for NHS Trusts (up to 100,000 audio hours, then £2/hour). Partnership tiers with revenue-share are also available."
+      },
+      {
+        "q": "Is Tortus available through NHS procurement routes?",
+        "a": "Yes. Tortus is procurable through Crown Commercial Service (direct award, no further competition required) and NHS Technology Services 3 Dynamic Purchasing System for trusts preferring a mini-competition route."
+      },
+      {
+        "q": "What UK EHRs does Tortus integrate with?",
+        "a": "Tortus integrates natively with EMIS Web (UK's most widely used GP system), SystmOne, and Vision—covering the majority of UK primary care and hospital clinical systems."
+      },
+      {
+        "q": "Is Tortus AI HIPAA compliant for US practices?",
+        "a": "No. Tortus is designed specifically for UK NHS workflows with GDPR compliance and UK data residency. US practices should use Freed ($39-119/mo), Commure Scribe ($59-89/mo), or other HIPAA-focused alternatives."
+      },
+      {
+        "q": "Tortus vs Heidi Health for UK GPs: which is better?",
+        "a": "Tortus is purpose-built for NHS workflows with native EMIS/SystmOne integration and NHS-compliant procurement routes. Heidi Health is more international. For UK GPs, Tortus offers tighter NHS alignment; for global practices or those wanting cross-border flexibility, Heidi may be more suitable."
+      }
+    ],
     "keywords": [
-      "Tortus",
-      "ai scribe documentation"
+      "Tortus AI",
+      "NHS AI scribe",
+      "Tortus pricing 2026",
+      "EMIS Web AI scribe",
+      "SystmOne AI scribe",
+      "UK medical scribe AI",
+      "Crown Commercial Service AI scribe",
+      "Tortus vs Heidi"
     ]
-  }
+  },
+  "website_url": "https://tortus.ai",
+  "pricing_url": "https://tortus.ai/hospitals",
+  "affiliate_url": "https://tortus.ai"
 }

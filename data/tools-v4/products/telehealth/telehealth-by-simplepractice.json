@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "6cae6598-650d-4e94-92c2-6429f8d6856d",
   "slug": "telehealth-by-simplepractice",
   "name": "Telehealth by SimplePractice",
@@ -22,12 +22,30 @@
   "support_level": "clinical",
   "short_description": "HIPAA-compliant video telehealth built into SimplePractice, offering seamless scheduling, documentation, and billing integration for mental health practices.",
   "long_description": "Telehealth by SimplePractice is the integrated video conferencing feature within SimplePractice, the leading practice management platform for mental health professionals. Unlike standalone telehealth platforms, SimplePractice Telehealth is deeply integrated with scheduling, documentation, and billing workflows, allowing clinicians to start video sessions with one click from their calendar, take notes during sessions, and bill directly without switching tools. The platform includes HD video, virtual waiting rooms where clients see a calming animation before sessions, screen sharing for psychoeducation materials, and text chat during sessions. Patients join via a link in their appointment reminder without downloading any app. SimplePractice Telehealth is HIPAA compliant with a BAA included in all plans that feature telehealth. The platform works on desktop browsers and offers mobile apps for both iOS and Android, enabling providers to see clients from anywhere. Mental health-specific features include integration with Wiley treatment planners and documentation templates designed for therapy notes.",
-  "primary_hubs": ["telehealth", "practice-management"],
-  "sub_hubs": ["mental-health-specific", "video-conferencing"],
+  "primary_hubs": [
+    "telehealth",
+    "practice-management"
+  ],
+  "sub_hubs": [
+    "mental-health-specific",
+    "video-conferencing"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["practice-management", "mental-health-specific"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "ptsd", "ocd", "eating-disorders", "substance-use-disorders"],
-  "tool_types": ["telehealth-platform", "integrated-telehealth"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "ptsd",
+    "ocd",
+    "eating-disorders",
+    "substance-use-disorders"
+  ],
+  "tool_types": [
+    "telehealth-platform",
+    "integrated-telehealth"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -36,7 +54,6 @@
     "wearable": false
   },
   "pricing": {
-    "model": "included-with-subscription",
     "free_tier": false,
     "free_trial_days": 30,
     "quote_required": false,
@@ -45,27 +62,57 @@
       {
         "name": "Starter (SimplePractice)",
         "price": "$29/month",
-        "features": ["Telehealth NOT included", "Basic EHR features", "Client portal", "Online scheduling"]
+        "features": [
+          "Telehealth NOT included",
+          "Basic EHR features",
+          "Client portal",
+          "Online scheduling"
+        ]
       },
       {
         "name": "Essential (SimplePractice)",
         "price": "$69/month",
-        "features": ["Telehealth INCLUDED", "All Starter features", "Insurance claims", "Appointment reminders", "Professional website"]
+        "features": [
+          "Telehealth INCLUDED",
+          "All Starter features",
+          "Insurance claims",
+          "Appointment reminders",
+          "Professional website"
+        ]
       },
       {
         "name": "Plus (SimplePractice)",
         "price": "$99/month",
-        "features": ["Telehealth INCLUDED", "All Essential features", "Wiley Treatment Planner", "Custom forms", "Advanced reporting"]
+        "features": [
+          "Telehealth INCLUDED",
+          "All Essential features",
+          "Wiley Treatment Planner",
+          "Custom forms",
+          "Advanced reporting"
+        ]
       }
     ],
-    "notes": "Telehealth requires Essential or Plus plan ($69+/month). 30-day free trial available. Group practice pricing available."
+    "notes": "Telehealth requires Essential or Plus plan ($69+/month). 30-day free trial available. Group practice pricing available.",
+    "model": "enterprise-custom"
   },
-  "capabilities": ["video-conferencing", "virtual-waiting-room", "screen-sharing", "text-chat", "ehr-integration", "billing-integration"],
+  "capabilities": [
+    "ehr-integration"
+  ],
   "audiences": {
-    "clinician_roles": ["therapist", "psychologist", "counselor", "social-worker", "marriage-family-therapist", "psychiatric-nurse"],
-    "practice_settings": ["solo-practice", "group-practice", "private-practice"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50"],
-    "specialties": ["mental-health", "psychology", "counseling", "marriage-family-therapy", "behavioral-health"]
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -121,27 +168,21 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
     "hitrust": "no",
     "gdpr_compliant": "yes",
     "encryption": "AES 256-bit encryption",
-    "certifications": ["HIPAA", "SOC 2 Type II"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2 Type II"
+    ],
     "audit_logging": true,
     "notes": "BAA included with all plans. HIPAA-compliant data handling throughout platform."
   },
-  "integrations": {
-    "ehr_integrations": ["SimplePractice (built-in)"],
-    "calendar_integrations": ["Google Calendar", "Apple Calendar", "Outlook"],
-    "billing_integrations": ["SimplePractice billing", "Stripe"],
-    "payment_processors": ["Stripe"],
-    "clearinghouses": ["Office Ally", "Availity", "Trizetto"],
-    "api_available": false,
-    "zapier_integration": true,
-    "notes": "Natively integrated with SimplePractice EHR. External integrations limited to SimplePractice ecosystem."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": true,
@@ -163,10 +204,16 @@
     "notes": "Strong privacy practices as a healthcare-focused platform."
   },
   "seo": {
-    "title": "SimplePractice Telehealth: Built-In Video for Mental Health | HeyPsych",
+    "title": "SimplePractice Telehealth: Built-In Video for Mental Health",
     "meta_description": "SimplePractice Telehealth offers HIPAA-compliant video sessions integrated with EHR, scheduling, and billing. Perfect for therapy practices. From $69/month.",
-    "canonical_url": "https://heypsych.com/tools/telehealth-by-simplepractice/",
-    "keywords": ["SimplePractice Telehealth", "therapy telehealth", "mental health video", "integrated telehealth EHR", "therapist video platform"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/telehealth-by-simplepractice/",
+    "keywords": [
+      "SimplePractice Telehealth",
+      "therapy telehealth",
+      "mental health video",
+      "integrated telehealth EHR",
+      "therapist video platform"
+    ],
     "faqs": [
       {
         "q": "Is SimplePractice Telehealth included with my subscription?",
@@ -219,8 +266,16 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "practice-management"],
-    "clinician_workflows": ["telehealth_video", "documentation", "billing", "scheduling"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "practice-management"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "documentation",
+      "billing",
+      "scheduling"
+    ],
     "how_clinicians_use_it": [
       "Starting video sessions directly from SimplePractice calendar",
       "Taking session notes while in video session",
@@ -229,16 +284,35 @@
       "Sending intake forms through client portal before telehealth session"
     ],
     "implementation_notes": "Already using SimplePractice? Telehealth is available with Essential+ plans. Seamless activation with no additional setup.",
-    "target_practice_size": ["Solo therapists", "Small group practices", "Growing practices"],
+    "target_practice_size": [
+      "Solo therapists",
+      "Small group practices",
+      "Growing practices"
+    ],
     "billing_notes": "Integrated billing allows direct insurance claims for telehealth visits using standard CPT codes."
   },
   "market_position": {
-    "primary_competitors": ["Doxy.me", "Zoom for Healthcare", "TherapyNotes Telehealth", "Jane Telehealth"],
-    "differentiators": ["Deep EHR integration", "One-click session start", "Largest mental health EHR user base", "Unified billing workflow"],
+    "primary_competitors": [
+      "Doxy.me",
+      "Zoom for Healthcare",
+      "TherapyNotes Telehealth",
+      "Jane Telehealth"
+    ],
+    "differentiators": [
+      "Deep EHR integration",
+      "One-click session start",
+      "Largest mental health EHR user base",
+      "Unified billing workflow"
+    ],
     "market_segment": "Mental health practices using SimplePractice",
     "adoption": "Most widely used therapy practice management platform"
   },
-  "related_tools": ["doxy-me", "therapynotes-telehealth", "thera-link", "jane-telehealth"],
+  "related_tools": [
+    "doxy-me",
+    "therapynotes-telehealth",
+    "thera-link",
+    "jane-telehealth"
+  ],
   "order": 2,
   "featured": true,
   "status": "active",
@@ -252,5 +326,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.800Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.348Z",
+  "website_url": "https://www.simplepractice.com/telehealth/",
+  "affiliate_url": "https://www.simplepractice.com/telehealth/"
 }

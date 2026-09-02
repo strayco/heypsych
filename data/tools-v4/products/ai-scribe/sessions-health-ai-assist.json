@@ -5,6 +5,8 @@
   "slug": "sessions-health-ai-assist",
   "name": "Sessions Health AI Assist",
   "company_name": "Sessions Health",
+  "website": "https://www.sessionshealth.com",
+  "description": "Sessions Health AI Assist is a HIPAA-compliant AI documentation add-on for the Sessions Health EHR at ~$40/clinician/month. The platform takes an 'ethical AI' approach: PII is masked before processing, data is never used for model training, and all notes are generated as editable drafts. Supports SOAP, DAP, BIRP, and Narrative formats with live telehealth transcription directly within Sessions Health. Key differentiator: AI Treatment Summaries pull client history into structured overviews for case consultations and transfers of care. Base Sessions Health plan starts at $39/month for first practitioner. Realistic total: $79/month (base + AI Assist). Free tier available with client limits.",
   "import_ref": {
     "record_id": "MH-0172",
     "source_row": 173,
@@ -16,16 +18,32 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Sessions Health's AI scribe add-on at ~$40/mo. Ethical AI approach—PII masked, no model training. SOAP/DAP/BIRP. AI Treatment Summaries for case consultations.",
+  "one_liner": "Sessions Health's ethical AI scribe. ~$40/mo add-on. PII masking. No data training.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
+      "therapist-lcsw-lmft",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -39,35 +57,153 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 4000,
+    "starting_price_display": "~$40/clinician/month (add-on to Sessions Health)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Sessions Health has a free tier with client limits. AI Assist is a paid add-on.",
+    "free_trial_days": 30,
+    "tiers": [
+      {
+        "name": "AI Assist Add-On",
+        "price": "~$40/clinician/month",
+        "description": "AI-generated progress notes, live telehealth transcription, pre-session summaries, AI Treatment Summaries. Requires Sessions Health subscription."
+      }
+    ],
+    "base_requirement": {
+      "name": "Sessions Health subscription required",
+      "plans": "Free (client limits), Professional ($39/mo first, $29/mo additional)"
+    },
+    "realistic_total_cost": "$79/mo = Sessions Health Professional ($39) + AI Assist (~$40). Add $10/mo for Telehealth.",
+    "notes": "30-day free trial. Some users report AI add-on feels pricey at ~$40/mo on top of base subscription. Telehealth is additional $10/month.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "privacy_note": "Ethical AI approach: all data encrypted, PII masked/excluded during processing. AI does not learn from or retain notes. Never used for model training or third-party purposes."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Sessions Health",
+      "slug": "sessions-health",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration—notes flow directly into Sessions Health documentation"
+    },
+    {
+      "name": "Sessions Health Telehealth",
+      "slug": "sessions-health-telehealth",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Live transcription within Sessions Health telehealth"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Record, upload, or summarize sessions. AI drafts complete notes in chosen format."
+    },
+    "ethical_ai": {
+      "supported": true,
+      "description": "PII masked before processing, no model training, all notes are editable drafts requiring clinician review."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "BIRP notes",
+      "Narrative format",
+      "AI Treatment Summaries"
+    ],
+    "treatment_summaries": {
+      "supported": true,
+      "description": "Pull client treatment history into structured, editable overview for case consultations, transfers of care, and discharge."
+    },
+    "pre_session_summaries": true,
+    "live_telehealth_transcription": true
+  },
+  "best_for": [
+    "Sessions Health users wanting native AI documentation",
+    "Therapists who value ethical AI (PII masking, no model training)",
+    "Clinicians needing AI Treatment Summaries for case consultations",
+    "Practices doing case transfers requiring structured client histories",
+    "Solo practitioners wanting affordable all-in-one EHR + AI solution"
+  ],
+  "not_for": [
+    "Clinicians not on Sessions Health—requires Sessions Health subscription",
+    "Budget-conscious users—$40 AI add-on on top of $39 base feels pricey to some",
+    "Psychiatrists needing medication management—not psychiatry-focused",
+    "Practices wanting standalone AI scribe—locked to Sessions Health ecosystem",
+    "High-volume practitioners needing advanced analytics—Upheal offers more"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "sessions-health",
+    "mentalyc",
+    "upheal",
+    "simplepractice-note-taker"
+  ],
+  "competitor_tools": [
+    "simplepractice-note-taker",
+    "therapyfuel",
+    "mentalyc"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Sessions Health AI Assist: Review & Pricing | HeyPsych",
-    "meta_description": "Sessions Health AI Assist review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Sessions Health AI Assist 2026 | HeyPsych",
+    "meta_description": "Sessions Health AI Assist: ~$40/mo ethical AI scribe add-on. PII masking, no model training. SOAP/DAP/BIRP. AI Treatment Summaries for case consultations.",
+    "faqs": [
+      {
+        "q": "How much does Sessions Health AI Assist cost in 2026?",
+        "a": "AI Assist costs approximately $40/clinician/month as an add-on to Sessions Health. Realistic total: Sessions Health Professional ($39/mo) + AI Assist ($40/mo) = $79/month. Telehealth adds another $10/month. A 30-day free trial is available."
+      },
+      {
+        "q": "What is Sessions Health's 'ethical AI' approach?",
+        "a": "Sessions Health masks PII (personally identifiable information) before processing with AI. The AI never learns from or retains your notes, and data is never used for model training or shared with third parties. All AI-generated notes are drafts requiring clinician review."
+      },
+      {
+        "q": "Can I use Sessions Health AI Assist without Sessions Health EHR?",
+        "a": "No. AI Assist is a native add-on exclusively for Sessions Health users. If you use a different EHR, consider standalone options like Mentalyc ($20-70/mo) or Upheal ($69/mo)."
+      },
+      {
+        "q": "What are AI Treatment Summaries?",
+        "a": "AI Treatment Summaries pull a client's treatment history into one structured, editable overview. Useful for case consultations, transfers of care, and discharge planning—saves significant time compared to manual chart review."
+      },
+      {
+        "q": "Sessions Health AI Assist vs Mentalyc: which is better?",
+        "a": "If you're already on Sessions Health, AI Assist ($40/mo add-on) provides seamless integration. If you use a different EHR or want modality-aware notes (CBT, DBT), Mentalyc ($20-70/mo standalone) is more flexible. Both prioritize ethical AI and privacy."
+      }
+    ],
     "keywords": [
       "Sessions Health AI Assist",
-      "ai scribe documentation"
+      "Sessions Health AI scribe",
+      "ethical AI therapy notes",
+      "HIPAA AI scribe",
+      "AI Treatment Summaries",
+      "Sessions Health pricing 2026",
+      "PII masking AI"
     ]
-  }
+  },
+  "website_url": "https://www.sessionshealth.com",
+  "pricing_url": "https://www.sessionshealth.com/pricing",
+  "affiliate_url": "https://www.sessionshealth.com"
 }

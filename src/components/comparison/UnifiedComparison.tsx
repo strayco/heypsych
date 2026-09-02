@@ -54,34 +54,35 @@ interface UnifiedComparisonProps {
 }
 
 // Treatment accent colors (subtle, consistent column styling)
+// Uses white/surface backgrounds with colored accents for guaranteed contrast
 const TREATMENT_ACCENTS = [
   {
-    bg: "bg-blue-50/60",
-    border: "border-blue-100",
-    text: "text-blue-700",
-    headerBg: "bg-blue-50",
-    dot: "bg-blue-400",
+    bg: "bg-surface",
+    border: "border-accent-200",
+    text: "text-accent-600",
+    headerBg: "bg-surface",
+    dot: "bg-accent",
   },
   {
-    bg: "bg-violet-50/60",
-    border: "border-violet-100",
-    text: "text-violet-700",
-    headerBg: "bg-violet-50",
-    dot: "bg-violet-400",
+    bg: "bg-surface",
+    border: "border-treatment-200",
+    text: "text-treatment-600",
+    headerBg: "bg-surface",
+    dot: "bg-treatment",
   },
   {
-    bg: "bg-emerald-50/60",
-    border: "border-emerald-100",
-    text: "text-emerald-700",
-    headerBg: "bg-emerald-50",
-    dot: "bg-emerald-400",
+    bg: "bg-surface",
+    border: "border-positive-200",
+    text: "text-positive-600",
+    headerBg: "bg-surface",
+    dot: "bg-positive",
   },
   {
-    bg: "bg-amber-50/60",
-    border: "border-amber-100",
-    text: "text-amber-700",
-    headerBg: "bg-amber-50",
-    dot: "bg-amber-400",
+    bg: "bg-surface",
+    border: "border-caution-200",
+    text: "text-caution-600",
+    headerBg: "bg-surface",
+    dot: "bg-caution",
   },
 ];
 

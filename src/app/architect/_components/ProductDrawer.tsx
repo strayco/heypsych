@@ -643,6 +643,19 @@ function ProductCard({
 
     if (!minPriceCents && !maxPriceCents) return "Contact for pricing";
 
+    // For percentage-collections, values are basis points (500 = 5%), not cents
+    if (basis === "percentage-collections") {
+      const formatPercent = (basisPoints: number) => {
+        const pct = basisPoints / 100;
+        return pct % 1 === 0 ? `${pct}` : `${pct.toFixed(1)}`;
+      };
+      if (minPriceCents && maxPriceCents && minPriceCents !== maxPriceCents) {
+        return `${formatPercent(minPriceCents)}–${formatPercent(maxPriceCents)}% of collections`;
+      }
+      const basisPoints = minPriceCents || maxPriceCents;
+      return basisPoints ? `${formatPercent(basisPoints)}% of collections` : "Contact for pricing";
+    }
+
     const formatAmount = (cents: number) => {
       if (cents >= 100) return `$${Math.round(cents / 100)}`;
       return `$${(cents / 100).toFixed(2)}`;
@@ -653,8 +666,6 @@ function ProductCard({
         ? "/provider/mo"
         : basis === "per-practice-month"
         ? "/mo"
-        : basis === "percentage-collections"
-        ? "% of collections"
         : "/mo";
 
     if (minPriceCents && maxPriceCents && minPriceCents !== maxPriceCents) {

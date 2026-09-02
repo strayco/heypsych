@@ -1,13 +1,14 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "freed-ai",
+  "id": "605a03c6-88c3-4d97-9038-fd8ca5faac08",
   "slug": "freed-ai",
   "name": "Freed AI",
   "company_name": "Freed",
   "import_ref": {
     "source_file": "ai-scribe-research-2026",
-    "import_timestamp": "2026-08-22T21:10:42.885Z"
+    "import_timestamp": "2026-08-22T21:10:42.885Z",
+    "record_id": "freed-ai"
   },
   "lifecycle": {
     "status": "active"
@@ -25,18 +26,19 @@
     "baa-available"
   ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
     "practice_settings": [
       "solo-practice",
-      "group-practice"
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10",
       "medium-11-50"
-    ],
-    "specialties": [
-      "mental-health"
     ]
   },
   "feature_flags": {
@@ -47,27 +49,63 @@
     "has_patient_portal": false,
     "has_mobile_app": true,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": true,
+    "has_rcm": false,
+    "has_telehealth": false
   },
-  "short_description": "AI-powered medical scribe that listens to patient-clinician conversations and automatically generates clinical notes, with one-click EHR integration and medical coding suggestions.",
-  "long_description": "AI-powered medical scribe that listens to patient-clinician conversations and automatically generates clinical notes, with one-click EHR integration and medical coding suggestions.",
-  "one_liner": "AI-powered medical scribe that listens to patient-clinician conversations and automatically generates clinical notes, with one-click EHR integration and medical coding suggestions",
-  "best_for": [],
-  "not_for": [],
+  "short_description": "Ambient AI scribe that records encounters and generates SOAP notes in 1-2 minutes. Strong for psychiatry medication management; limited for psychotherapy documentation.",
+  "long_description": "Freed AI is an ambient medical scribe that listens to patient encounters and generates structured clinical notes, primarily in SOAP format. The platform serves 25,000+ clinicians across 30+ specialties with 32 million+ visits transcribed. Freed works by recording in-person or telehealth visits, transcribing the conversation, and producing a note within 1-2 minutes. The Premier tier adds direct EHR push via Chrome extension and ICD-10/CPT coding suggestions. Freed is built for breadth across medical specialties, which makes it useful for psychiatrists who also practice in primary care or other settings. However, Freed was not designed for psychotherapy documentation—it does not understand therapy modalities (CBT, DBT, psychodynamic), cannot generate therapy-specific note formats, and lacks session analytics. Therapists seeking AI documentation should evaluate therapy-specific alternatives like Mentalyc or Upheal.",
+  "one_liner": "Ambient AI scribe for medical encounters—works for psychiatry med management, not designed for psychotherapy.",
+  "best_for": [
+    "Psychiatrists doing medication management visits",
+    "PMHNPs and psychiatric PAs seeing high patient volumes",
+    "Multi-specialty clinicians who need one scribe across all settings",
+    "Prescribers wanting ICD-10/CPT coding suggestions (Premier tier)"
+  ],
+  "not_for": [
+    "Therapists doing psychotherapy—Freed does not understand therapy modalities or generate therapy-specific notes",
+    "Clinicians needing session analytics or treatment planning features",
+    "Practices requiring offline or on-premise transcription",
+    "Clinicians who cannot get patient consent for ambient recording"
+  ],
   "website_url": "https://www.getfreed.ai",
   "pricing_url": "https://www.getfreed.ai/pricing",
+  "support_url": "https://www.getfreed.ai/support",
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
+    "starting_price_cents": 3900,
+    "starting_price_display": "$39/mo (Starter, 40 notes)",
     "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
+    "free_trial_days": 7,
+    "quote_required": false,
+    "price_range": "mid-market",
+    "tiers": [
+      {
+        "name": "Starter",
+        "price": "$39/month",
+        "description": "Up to 40 notes/month. SOAP notes, specialty templates, no coding assistance."
+      },
+      {
+        "name": "Core",
+        "price": "$79/month",
+        "description": "Unlimited notes. Instant template builder, AI editing assistant. No EHR push or coding."
+      },
+      {
+        "name": "Premier",
+        "price": "$104-119/month",
+        "description": "Unlimited notes + native EHR push + ICD-10 coding suggestions. $104/mo annual, $119/mo monthly."
+      }
+    ],
+    "notes": "No permanent free tier. 7-day free trial, no credit card required. ICD-10 codes require Premier tier. CPT codes in beta on Premier only. Groups pricing available for multi-clinician practices.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "no",
+    "gdpr_compliant": "unknown",
+    "notes": "SOC 2 Type II certified. Patient audio is not stored after note generation. BAA provided on all paid plans."
   },
   "integrations": [
     {
@@ -75,14 +113,16 @@
       "slug": "athenahealth",
       "category": "ehr",
       "integration_type": "native",
-      "verified": true
+      "verified": true,
+      "notes": "Direct push via Chrome extension (Premier tier)"
     },
     {
       "name": "SimplePractice",
       "slug": "simplepractice",
       "category": "ehr",
       "integration_type": "native",
-      "verified": true
+      "verified": true,
+      "notes": "Direct push via Chrome extension (Premier tier)"
     },
     {
       "name": "DrChrono",
@@ -97,34 +137,82 @@
       "category": "ehr",
       "integration_type": "native",
       "verified": true
+    },
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Direct push via Chrome extension (Premier tier)"
     }
   ],
   "seo": {
-    "title": "Freed AI: Mental Health Tool | HeyPsych",
-    "meta_description": "AI-powered medical scribe that listens to patient-clinician conversations and automatically generates clinical notes, with one-click EHR integration and me",
-    "faqs": [],
+    "title": "Freed AI: Pricing & Alternatives 2026 | HeyPsych",
+    "meta_description": "Freed AI ambient scribe: $39-119/mo, works for psychiatry medication management. Not designed for psychotherapy. Compare to Mentalyc, Upheal for therapists.",
+    "faqs": [
+      {
+        "q": "Does Freed AI work for therapists doing psychotherapy?",
+        "a": "Freed was not designed for psychotherapy documentation. It generates SOAP notes but does not understand therapy modalities (CBT, DBT, psychodynamic), cannot create therapy-specific note formats, and lacks session analytics. Therapists should evaluate Mentalyc, Upheal, or Berries instead."
+      },
+      {
+        "q": "How much does Freed AI cost in 2026?",
+        "a": "Freed offers three tiers: Starter at $39/month (40 notes), Core at $79/month (unlimited notes), and Premier at $104-119/month (adds EHR push and ICD-10 coding). There is no permanent free tier—only a 7-day trial."
+      },
+      {
+        "q": "Is Freed AI HIPAA compliant?",
+        "a": "Yes. Freed is HIPAA compliant and SOC 2 Type II certified. Patient audio is not stored after notes are generated. BAA is provided on all paid plans."
+      },
+      {
+        "q": "Does Freed AI suggest billing codes?",
+        "a": "ICD-10 coding suggestions require the Premier tier ($104-119/mo). CPT code suggestions are in beta on Premier only. Starter and Core tiers receive no coding assistance."
+      },
+      {
+        "q": "What EHRs does Freed integrate with?",
+        "a": "Freed integrates via Chrome extension with Epic, Athenahealth, SimplePractice, DrChrono, eClinicalWorks, and others. Direct EHR push (notes auto-populate into charts) requires the Premier tier."
+      }
+    ],
     "keywords": [
       "Freed AI",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
+      "AI medical scribe",
+      "psychiatry AI scribe",
+      "ambient scribe HIPAA",
+      "Freed vs Mentalyc",
+      "AI scribe for therapists"
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-09-01",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85
+    "data_quality_score": 92
   },
-  "related_tools": [],
-  "competitor_tools": [],
+  "related_tools": [
+    "mentalyc",
+    "upheal",
+    "nabla",
+    "suki-ai",
+    "nuance-dax-copilot"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "nabla",
+    "suki-ai",
+    "deepscribe"
+  ],
   "company_info": {
     "founded_year": 2023,
-    "headquarters": "Santa Rosa, California, USA",
-    "funding_status": "Series A ($34M)"
+    "headquarters": "San Francisco, California, USA",
+    "funding_status": "Series A (Sequoia Capital)",
+    "customer_count": "25,000+ clinicians",
+    "metrics": {
+      "visits_transcribed": "32,000,000+"
+    }
   },
   "created_at": "2026-08-22T21:10:42.885Z",
-  "updated_at": "2026-08-22T21:10:42.885Z",
-  "featured": false,
-  "status": "active"
+  "updated_at": "2026-09-01T00:00:00.000Z",
+  "featured": true,
+  "status": "active",
+  "affiliate_url": "https://www.getfreed.ai"
 }

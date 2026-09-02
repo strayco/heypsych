@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "billing-rcm-tool",
+  "kind": "clinician-tool",
   "id": "c005e57c-17e4-4609-9526-24f1be23b2d2",
   "slug": "claim-md",
   "name": "Claim.MD",
@@ -19,12 +19,19 @@
   "support_level": "clinical",
   "short_description": "Straightforward clearinghouse with unlimited claims at $120/month flat rate and transparent pricing.",
   "long_description": "Claim.MD is a healthcare clearinghouse that differentiates itself through transparent, flat-rate pricing at $120/month for unlimited claims. Founded in 2002 and based in Lubbock, Texas, Claim.MD connects to over 4,000 payers and processes professional (837P), institutional (837I), and dental (837D) claims. The platform is popular among small to mid-size practices, including mental health providers, who appreciate the predictable monthly cost without per-claim fees. Claim.MD offers real-time eligibility verification, electronic remittance advice (ERA), and claim status tracking. While it lacks the AI-powered features of enterprise platforms like Waystar, Claim.MD provides reliable, cost-effective claims processing that meets the needs of most therapy practices.",
-  "primary_hubs": ["practice-admin-operations"],
+  "primary_hubs": [
+    "practice-admin-operations"
+  ],
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": ["clearinghouse", "eligibility-verification"],
+  "secondary_categories": [],
   "conditions": [],
-  "tool_types": ["clearinghouse", "billing-software"],
-  "ai_attributes": ["no-ai"],
+  "tool_types": [
+    "clearinghouse",
+    "billing-software"
+  ],
+  "ai_attributes": [
+    "no-ai"
+  ],
   "platforms": {
     "ios": false,
     "android": false,
@@ -33,7 +40,6 @@
     "wearable": false
   },
   "pricing": {
-    "model": "flat-rate",
     "free_tier": false,
     "free_trial": true,
     "free_trial_days": 30,
@@ -49,7 +55,8 @@
       "era_835": "Included",
       "additional_locations": "$60/month each",
       "contracts": "Month-to-month, no long-term commitment"
-    }
+    },
+    "model": "enterprise-custom"
   },
   "privacy": {
     "grade": "B+",
@@ -59,17 +66,24 @@
     "notes": "HIPAA compliant clearinghouse. BAA available. Standard healthcare security practices."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "no",
     "gdpr_compliant": "no"
   },
   "seo": {
-    "title": "Claim.MD: $120/Month Unlimited Claims Clearinghouse | HeyPsych",
+    "title": "Claim.MD: $120/Month Unlimited Claims Clearinghouse",
     "meta_description": "Claim.MD offers unlimited claims at $120/month flat rate. Affordable clearinghouse for mental health practices with 4,000+ payer connections.",
-    "canonical_url": "https://heypsych.com/tools/claim-md/",
-    "keywords": ["Claim.MD", "clearinghouse", "unlimited claims", "flat rate billing", "healthcare claims", "affordable clearinghouse"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/claim-md/",
+    "keywords": [
+      "Claim.MD",
+      "clearinghouse",
+      "unlimited claims",
+      "flat rate billing",
+      "healthcare claims",
+      "affordable clearinghouse"
+    ],
     "faqs": [
       {
         "q": "How much does Claim.MD cost?",
@@ -119,7 +133,16 @@
       "clearinghouse_name": "Claim.MD",
       "payer_count": "4000+",
       "payer_count_notes": "Comprehensive payer network for professional, institutional, and dental claims",
-      "major_payers": ["Aetna", "Anthem", "Blue Cross Blue Shield", "Cigna", "Humana", "UnitedHealthcare", "Medicare", "Medicaid"]
+      "major_payers": [
+        "Aetna",
+        "Anthem",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Humana",
+        "UnitedHealthcare",
+        "Medicare",
+        "Medicaid"
+      ]
     },
     "services": {
       "claims_submission": {
@@ -165,8 +188,14 @@
       "notes": "General-purpose clearinghouse popular with mental health practices due to affordable flat-rate pricing."
     },
     "ehr_integrations": {
-      "native_integrations": ["Claim.MD Portal"],
-      "third_party_integrations": ["SimplePractice", "TherapyNotes", "Most PM systems via EDI"],
+      "native_integrations": [
+        "Claim.MD Portal"
+      ],
+      "third_party_integrations": [
+        "SimplePractice",
+        "TherapyNotes",
+        "Most PM systems via EDI"
+      ],
       "api_available": true,
       "hl7_support": true,
       "integration_notes": "Standard ANSI X12 EDI integration. Works with most practice management systems."
@@ -176,7 +205,12 @@
       "custom_reports": false,
       "dashboards": true,
       "analytics": false,
-      "report_types": ["Claims status", "Rejection reports", "Eligibility reports", "ERA reports"]
+      "report_types": [
+        "Claims status",
+        "Rejection reports",
+        "Eligibility reports",
+        "ERA reports"
+      ]
     }
   },
   "company_info": {
@@ -189,8 +223,13 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["practice-admin-operations"],
-    "clinician_workflows": ["billing_coding", "admin_operations"],
+    "primary_clinician_hubs": [
+      "practice-admin-operations"
+    ],
+    "clinician_workflows": [
+      "billing_coding",
+      "admin_operations"
+    ],
     "how_clinicians_use_it": [
       "Submit unlimited claims at flat monthly rate",
       "Verify patient eligibility before sessions",
@@ -199,29 +238,53 @@
       "Submit secondary claims"
     ],
     "implementation_notes": "Quick setup with 30-day free trial. Standard EDI integration with most EHR systems. Month-to-month commitment.",
-    "integrations": ["SimplePractice", "TherapyNotes", "Most practice management systems via EDI"],
+    "integrations": [
+      "SimplePractice",
+      "TherapyNotes",
+      "Most practice management systems via EDI"
+    ],
     "billing_notes": "Best value for practices submitting 50+ claims/month. The $120 flat rate beats per-claim pricing at that volume."
   },
-  "capabilities": [
-    "Unlimited electronic claims submission",
-    "Real-time eligibility verification (270/271)",
-    "Electronic remittance advice (835)",
-    "Claim status inquiry",
-    "Professional claims (837P)",
-    "Institutional claims (837I)",
-    "Dental claims (837D)",
-    "Secondary claims processing"
-  ],
+  "capabilities": [],
   "integrations": [
-    {"name": "SimplePractice", "type": "ehr"},
-    {"name": "TherapyNotes", "type": "ehr"},
-    {"name": "Standard EDI", "type": "integration"}
+    {
+      "name": "SimplePractice",
+      "integration_type": "api",
+      "slug": "simplepractice",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "TherapyNotes",
+      "integration_type": "api",
+      "slug": "therapynotes",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Standard EDI",
+      "integration_type": "api",
+      "slug": "standard-edi",
+      "category": "other",
+      "verified": false
+    }
   ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist-lcsw-lmft", "practice-administrator"],
-    "practice_settings": ["solo-practice", "group-practice"],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": ["psychiatry", "psychology", "counseling", "social-work", "multi-specialty"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -235,7 +298,12 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
-  "related_tools": ["office-ally", "availity", "waystar", "trizetto"],
+  "related_tools": [
+    "office-ally",
+    "availity",
+    "waystar",
+    "trizetto"
+  ],
   "featured": true,
   "status": "active",
   "import_ref": {
@@ -248,5 +316,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.822Z",
-  "updated_at": "2026-08-22T21:40:00.000Z"
+  "updated_at": "2026-09-01T19:34:49.756Z",
+  "website_url": "https://www.claim.md",
+  "affiliate_url": "https://www.claim.md"
 }

@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "99aa556d-2307-466f-9caf-cdb20cdfd6b6",
   "slug": "zanda-ai-session-transcription",
-  "name": "Zanda AI Session Transcription",
-  "company_name": "Zanda",
+  "name": "Zanda BizzyAI",
+  "company_name": "Zanda (formerly Power Diary)",
+  "website": "https://zandahealth.com",
+  "description": "Zanda BizzyAI is the AI scribe for Zanda (formerly Power Diary), an Australian-founded practice management platform popular with allied health practitioners. Key differentiator: pay-per-use pricing at $1/hour of transcription—no monthly commitment required. BizzyAI transcribes sessions and generates notes in your personal writing style. Base Zanda plans start at $19/month (Starter), making it one of the most affordable all-in-one options. ISO 27001 certified and HIPAA compliant with no data used for AI training. BizzyAI: Insights (AI-driven reports and clinical data queries) coming soon. Best for allied health and therapy practitioners already on Zanda or in Australia/UK markets.",
   "import_ref": {
     "record_id": "MH-0224",
     "source_row": 225,
@@ -16,12 +18,30 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Zanda's AI scribe at $1/hour transcription. No monthly commitment. ISO 27001 certified. Generates notes in your personal style. Allied health focus.",
+  "one_liner": "Pay-per-use AI scribe at $1/hour. No subscription required. ISO 27001 certified.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -35,35 +55,150 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "founded_year": 2011,
+    "headquarters": "Australia",
+    "former_name": "Power Diary"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 100,
+    "starting_price_display": "$1/hour transcription (pay-per-use)",
+    "currency": "USD",
+    "billing_period": "per-use",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "BizzyAI: Scribe",
+        "price": "$1/hour transcription",
+        "description": "Pay-per-use session transcription and note generation. No monthly commitment. Generates notes in your personal writing style."
+      },
+      {
+        "name": "BizzyAI: Write",
+        "price": "Included with AI Features add-on",
+        "description": "Communication template creation and refinement with AI assistance."
+      },
+      {
+        "name": "BizzyAI: Insights",
+        "price": "Coming soon",
+        "description": "AI-driven insights, professional reports, and clinical data queries."
+      }
+    ],
+    "base_requirement": {
+      "name": "Zanda subscription required",
+      "plans": "Starter ($19/mo solo), Growth ($19/mo per practitioner, 50% promo available)"
+    },
+    "realistic_total_cost": "$19/mo base + ~$20-40/mo transcription (20-40 hours). Scale varies by session volume.",
+    "notes": "Pay-per-use model ideal for part-time practitioners or variable session volumes. No monthly AI commitment—only pay for what you use. Current 50% promo on Growth plan ($9.50/mo per additional practitioner for 6 months).",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "iso_27001": "yes",
+    "privacy_note": "ISO 27001 certified. HIPAA compliant. No data used to train AI model. All information processed securely in real-time."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Zanda",
+      "slug": "zanda",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration—notes flow directly into Zanda clinical records"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Transcribes client sessions and generates notes in your personal writing style."
+    },
+    "pay_per_use": {
+      "supported": true,
+      "description": "$1/hour transcription—no monthly subscription required for AI features."
+    },
+    "note_personalization": {
+      "supported": true,
+      "description": "Generates notes matching your personal writing style and preferences."
+    },
+    "upcoming_features": [
+      "BizzyAI: Insights (AI-driven reports, clinical data queries)"
+    ]
+  },
+  "best_for": [
+    "Part-time practitioners wanting pay-per-use AI without monthly commitment",
+    "Zanda users wanting native AI documentation",
+    "Allied health practitioners (physio, OT, speech) already on Zanda",
+    "Australian/UK practices (Zanda's primary markets)",
+    "Budget-conscious solo practitioners ($19/mo base + variable AI costs)"
+  ],
+  "not_for": [
+    "Clinicians not on Zanda—requires Zanda subscription",
+    "High-volume practitioners—per-hour pricing adds up quickly (40 hrs = $40/mo)",
+    "US mental health practices—Zanda less common in US market",
+    "Psychiatrists needing medication management notes",
+    "Practices wanting fixed monthly costs for predictable budgeting"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "zanda",
+    "jane-app",
+    "cliniko",
+    "mentalyc"
+  ],
+  "competitor_tools": [
+    "jane-app",
+    "cliniko",
+    "heidi-health"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Zanda AI Session Transcription: Review & Pricing | HeyPsych",
-    "meta_description": "Zanda AI Session Transcription review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Zanda BizzyAI: $1/Hour AI Scribe | HeyPsych",
+    "meta_description": "Zanda BizzyAI: pay-per-use AI scribe at $1/hour transcription. No monthly commitment. ISO 27001 certified. Notes in your personal style. Allied health focus.",
+    "faqs": [
+      {
+        "q": "How much does Zanda BizzyAI cost in 2026?",
+        "a": "BizzyAI: Scribe costs $1/hour of transcription—pay-per-use with no monthly commitment. Base Zanda plans start at $19/month (Starter). For a therapist doing 20 one-hour sessions/month: ~$39/month total ($19 base + $20 transcription)."
+      },
+      {
+        "q": "What is Zanda's pay-per-use AI pricing model?",
+        "a": "Unlike monthly subscription AI scribes, BizzyAI charges $1/hour of session transcription. You only pay for what you use—ideal for part-time practitioners or those with variable session volumes. No commitment required."
+      },
+      {
+        "q": "Is Zanda BizzyAI HIPAA compliant?",
+        "a": "Yes. Zanda BizzyAI is HIPAA compliant with BAA available and ISO 27001 certified. No data is used to train AI models, and all information is processed securely in real-time."
+      },
+      {
+        "q": "Can I use BizzyAI without Zanda?",
+        "a": "No. BizzyAI is native to Zanda (formerly Power Diary). If you don't use Zanda, consider standalone options like Mentalyc ($20-70/mo) or Upheal ($69/mo) that work with any EHR."
+      },
+      {
+        "q": "Zanda BizzyAI vs monthly subscription AI scribes: which is better?",
+        "a": "It depends on volume. At $1/hour, BizzyAI is cheaper for low-volume practitioners (under 30 hours/month). High-volume practitioners (40+ sessions/month) may find unlimited monthly plans like Mentalyc more cost-effective."
+      }
+    ],
     "keywords": [
-      "Zanda AI Session Transcription",
-      "ai scribe documentation"
+      "Zanda BizzyAI",
+      "Power Diary AI",
+      "pay-per-use AI scribe",
+      "Zanda pricing 2026",
+      "allied health AI scribe",
+      "$1 per hour transcription",
+      "ISO 27001 AI scribe"
     ]
-  }
+  },
+  "website_url": "https://zandahealth.com",
+  "pricing_url": "https://zandahealth.com/pricing",
+  "affiliate_url": "https://zandahealth.com"
 }

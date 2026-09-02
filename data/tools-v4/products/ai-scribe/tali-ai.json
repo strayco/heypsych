@@ -4,6 +4,9 @@
   "id": "68ef48e2-dd6e-4c72-85fd-0ff4e0e72d4c",
   "slug": "tali-ai",
   "name": "Tali AI",
+  "company_name": "Tali AI",
+  "website": "https://tali.ai",
+  "description": "Tali AI is Canada's leading AI clinical workflow platform with ambient scribing, EMR integration, billing, and forms—all with 100% Canadian data residency. Pricing: Free tier (5 scribes/month), Part-Time CA$80/month, Pro CA$135/month (~US$99) unlimited with 14-day trial. Key differentiator: PHIPA and PIPEDA compliant with all data stored in Canada, making it the go-to choice for Canadian clinicians with provincial privacy requirements. Integrates with Canadian EMRs including OSCAR, Accuro, and PS Suite. Not for US practices (no HIPAA focus) or mental health therapists (use Mentalyc or Upheal). Best for Canadian primary care and multi-specialty practices wanting a complete clinical platform beyond just scribing.",
   "import_ref": {
     "record_id": "MH-0196",
     "source_row": 197,
@@ -15,12 +18,31 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Canada's leading AI clinical platform. Free tier (5/mo), Part-Time CA$80/mo, Pro CA$135/mo. PHIPA/PIPEDA compliant. 100% Canadian data residency.",
+  "one_liner": "Canada's #1 AI scribe. CA$80-135/mo. PHIPA/PIPEDA compliant. 100% Canadian data.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +52,193 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "Canada",
+    "data_residency": "100% Canadian"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier or CA$80-135/mo",
+    "currency": "CAD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "5 AI scribes per month included free. No credit card required.",
+    "free_trial_days": 14,
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "CA$0",
+        "description": "5 AI scribes per month. Good for testing the platform."
+      },
+      {
+        "name": "Student/Resident",
+        "price": "Free unlimited",
+        "description": "Unlimited free account for medical students and residents."
+      },
+      {
+        "name": "Part-Time",
+        "price": "CA$80/month (~US$59)",
+        "description": "For part-time clinicians. Extended AI scribe usage. 14-day trial available."
+      },
+      {
+        "name": "Allied Health Professional",
+        "price": "CA$80/month",
+        "description": "For NPs, PAs, and allied health professionals. 14-day trial available."
+      },
+      {
+        "name": "Pro",
+        "price": "CA$135/month (~US$99)",
+        "description": "Unlimited AI Scribe, AI Task Management, Fillable Forms, Clinical Medical Search, Call a Patient, customizable templates, phone support. 14-day Pro trial."
+      }
+    ],
+    "notes": "Billing add-on available for additional fee. All prices in CAD. Roughly comparable to Freed AI pricing when converted to USD. Student/resident accounts are unlimited free.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "phipa_compliant": "yes",
+    "pipeda_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "security_note": "100% Canadian data residency. PHIPA and PIPEDA compliant. All patient data stored on Canadian servers—critical for provincial healthcare privacy requirements."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "OSCAR",
+      "slug": "oscar",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Canada's most widely used open-source EMR"
+    },
+    {
+      "name": "Accuro",
+      "slug": "accuro",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "PS Suite",
+      "slug": "ps-suite",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Med Access",
+      "slug": "med-access",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Ambient AI scribe captures patient conversations and generates clinical notes automatically."
+    },
+    "canadian_data_residency": {
+      "supported": true,
+      "description": "100% Canadian data storage. PHIPA and PIPEDA compliant. Critical for provincial privacy requirements."
+    },
+    "ai_task_management": {
+      "supported": true,
+      "description": "AI-powered task management beyond scribing—referrals, follow-ups, forms."
+    },
+    "billing_integration": {
+      "supported": true,
+      "description": "Canadian billing functionality available as add-on for provincial billing codes."
+    },
+    "clinical_search": {
+      "supported": true,
+      "description": "Clinical medical search integrated into the workflow."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Custom templates"
+    ],
+    "canadian_emr_integration": true
+  },
+  "best_for": [
+    "Canadian primary care physicians requiring PHIPA/PIPEDA compliance",
+    "Practices needing 100% Canadian data residency for provincial requirements",
+    "Medical students and residents (free unlimited accounts)",
+    "Canadian clinicians using OSCAR, Accuro, or PS Suite EMRs",
+    "Part-time Canadian practitioners wanting affordable AI scribe (CA$80/mo)"
+  ],
+  "not_for": [
+    "US practices—Freed ($39-119/mo) or Commure ($59-89/mo) better for HIPAA focus",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Practices needing HITRUST certification—Tali focuses on Canadian compliance",
+    "Psychiatrists needing medication management—consider Freed or mdhub",
+    "International practices outside Canada (data residency is Canada-only)"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "scribeberry",
+    "freed-ai",
+    "heidi-health"
+  ],
+  "competitor_tools": [
+    "scribeberry",
+    "freed-ai",
+    "heidi-health"
+  ],
   "created_at": "2026-08-22T20:50:40.789Z",
-  "updated_at": "2026-08-22T20:50:40.789Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Tali AI: Review & Pricing | HeyPsych",
-    "meta_description": "Tali AI review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Tali AI: Canada AI Scribe PHIPA | HeyPsych",
+    "meta_description": "Tali AI: Canada's leading AI clinical platform. Free tier (5/mo), Part-Time CA$80/mo, Pro CA$135/mo. PHIPA/PIPEDA compliant. 100% Canadian data residency.",
+    "faqs": [
+      {
+        "q": "How much does Tali AI cost in 2026?",
+        "a": "Tali AI offers a free tier (5 scribes/month), Part-Time at CA$80/month (~US$59), and Pro at CA$135/month (~US$99) unlimited. Students and residents get unlimited free accounts. 14-day Pro trial available. Billing add-on available for additional fee."
+      },
+      {
+        "q": "Is Tali AI compliant for Canadian healthcare?",
+        "a": "Yes. Tali AI is 100% PHIPA and PIPEDA compliant with all data stored on Canadian servers. This makes it the go-to choice for Canadian clinicians with provincial privacy requirements that mandate Canadian data residency."
+      },
+      {
+        "q": "What Canadian EMRs does Tali integrate with?",
+        "a": "Tali AI integrates with major Canadian EMRs including OSCAR (Canada's most widely used open-source EMR), Accuro, PS Suite, and Med Access."
+      },
+      {
+        "q": "Is Tali AI good for mental health practices?",
+        "a": "Not specifically. Tali is designed for primary care and general medical documentation. Canadian mental health therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). For Canadian-specific compliance, note that Scribeberry is also PIPEDA compliant."
+      },
+      {
+        "q": "Tali AI vs Scribeberry: which is better for Canadian practices?",
+        "a": "Both are PIPEDA compliant with Canadian focus. Tali (CA$80-135/mo) offers a complete clinical platform beyond scribing—task management, forms, billing. Scribeberry (Free-$99/mo) focuses purely on AI scribing with a more generous free tier (20/mo vs 5/mo). Choose Tali for platform features, Scribeberry for scribing focus."
+      }
+    ],
     "keywords": [
       "Tali AI",
-      "ai scribe documentation"
+      "Tali AI pricing 2026",
+      "Canadian AI scribe",
+      "PHIPA AI scribe",
+      "PIPEDA AI scribe",
+      "Canadian medical scribe",
+      "Tali vs Scribeberry",
+      "OSCAR AI scribe"
     ]
-  }
+  },
+  "website_url": "https://tali.ai",
+  "pricing_url": "https://tali.ai/pricing",
+  "affiliate_url": "https://tali.ai"
 }

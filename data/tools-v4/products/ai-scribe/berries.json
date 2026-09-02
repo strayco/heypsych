@@ -4,6 +4,9 @@
   "id": "c662ed4d-14b1-47b3-b7da-6f6e3b83dd19",
   "slug": "berries",
   "name": "Berries",
+  "company_name": "Berries AI",
+  "website": "https://heyberries.com",
+  "description": "Berries is an AI-powered therapy scribe that generates clinical notes from session recordings in 45 seconds. The platform offers a generous free tier—20 sessions at signup, then 10 sessions/month indefinitely—making it accessible for low-volume practitioners or those testing AI documentation. Trusted by 10,000+ clinicians with HIPAA + PHIPA compliance and SOC 2 certification. At $79/month Pro pricing, Berries sits mid-market between cheaper options (AutoNotes $24/mo) and premium competitors (Mentalyc $70/mo, Upheal $69/mo). Recordings are not stored after note generation, providing strong privacy guarantees.",
   "import_ref": {
     "record_id": "MH-0164",
     "source_row": 165,
@@ -15,16 +18,32 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "AI therapy scribe with generous free tier (10 sessions/mo forever). 45-second notes. $79/mo Pro. SOC 2 certified. No recording storage.",
+  "one_liner": "Free therapy AI scribe with 10 sessions/month forever. $79/mo for unlimited.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "treatment-planning",
+    "coding-assistance",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
+      "therapist-lcsw-lmft",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,39 +53,137 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "headquarters": "United States",
+    "customer_count": "10,000+ clinicians"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (10 sessions/mo) or $79/mo Pro",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "20 sessions free at signup, then 10 sessions/month indefinitely. No credit card required. No time limit.",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "Free forever",
+        "description": "20 sessions at signup, then 10 sessions/month. Full AI notes, no credit card required."
+      },
+      {
+        "name": "Pro",
+        "price": "$79/month ($948/year)",
+        "description": "Unlimited sessions. AI notes, treatment plans, ICD-10 coding, letters, session preparation."
+      }
+    ],
+    "notes": "Generous free tier covers a meaningful portion of sessions for low-volume practitioners (8-10 clients/week). Pro pricing at $79/mo is mid-market—cheaper than some competitors but more expensive than AutoNotes ($24/mo).",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "phipa_compliant": "yes",
+    "privacy_note": "Session recordings are NOT stored after processing. PHI excluded from AI model training."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Records therapy sessions (in-person or virtual) and generates structured notes in 45 seconds."
+    },
+    "note_generation_speed": "45 seconds",
+    "recording_storage": false,
+    "note_types": [
+      "Progress notes",
+      "Treatment plans",
+      "ICD-10 coding",
+      "Clinical letters",
+      "Session preparation"
+    ],
+    "template_library": true,
+    "custom_templates": true
   },
-  "related_tools": [],
+  "best_for": [
+    "Low-volume therapists who want free AI notes (10 sessions/month covers small caseloads)",
+    "Clinicians testing AI documentation before committing to paid subscriptions",
+    "Privacy-conscious practitioners—recordings deleted after processing",
+    "Therapists in Canada (PHIPA compliant)",
+    "Solo practitioners wanting no-commitment entry to AI scribe"
+  ],
+  "not_for": [
+    "High-volume practitioners—$79/mo is more expensive than AutoNotes ($24/mo) or Mentalyc's lower tiers",
+    "Clinicians wanting native EHR integrations—Berries lacks published integrations",
+    "Therapists wanting session analytics—Upheal offers talk-time and sentiment tracking",
+    "Enterprise organizations requiring documented EHR integration workflows"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
+  },
+  "related_tools": [
+    "mentalyc",
+    "upheal",
+    "autonotes",
+    "mh-scribe",
+    "therapyfuel"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "autonotes",
+    "mh-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Berries: Review & Pricing | HeyPsych",
-    "meta_description": "Berries review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Berries AI: Free Therapy Scribe 2026 | HeyPsych",
+    "meta_description": "Berries: free AI therapy scribe with 10 sessions/month forever. $79/mo Pro for unlimited. SOC 2 certified. No recording storage. HIPAA + PHIPA compliant.",
+    "faqs": [
+      {
+        "q": "How much does Berries cost in 2026?",
+        "a": "Berries offers a free tier with 20 sessions at signup and 10 sessions/month indefinitely (no credit card required). Pro costs $79/month ($948/year) for unlimited sessions, AI notes, treatment plans, ICD-10 coding, and letters."
+      },
+      {
+        "q": "Is Berries free tier really unlimited?",
+        "a": "The free tier provides 10 sessions per month forever with no time limit. For a therapist with 8-10 clients seen weekly, the free tier covers a meaningful portion of documentation needs. No credit card required to start."
+      },
+      {
+        "q": "Does Berries store my session recordings?",
+        "a": "No. Berries explicitly does not store session recordings after note generation. PHI is excluded from AI model training. This provides strong privacy guarantees beyond basic HIPAA compliance."
+      },
+      {
+        "q": "Berries vs Mentalyc vs Upheal: which is best?",
+        "a": "Choose Berries for the free tier (10 sessions/month) or if privacy (no recording storage) is paramount. Choose Mentalyc for modality-aware notes and Alliance Genie. Choose Upheal for session analytics and pay-per-session pricing. All three are therapy-specific and HIPAA compliant."
+      },
+      {
+        "q": "Is Berries HIPAA compliant?",
+        "a": "Yes. Berries is HIPAA and PHIPA (Canadian) compliant with a signed BAA. The platform is SOC 2 certified. Session recordings are not retained after processing and PHI is excluded from AI training data."
+      }
+    ],
     "keywords": [
       "Berries",
-      "ai scribe documentation"
+      "Berries AI",
+      "free therapy AI scribe",
+      "Berries pricing",
+      "SOC 2 therapy scribe",
+      "PHIPA compliant AI",
+      "Berries vs Mentalyc",
+      "therapy notes AI"
     ]
-  }
+  },
+  "website_url": "https://heyberries.com",
+  "pricing_url": "https://heyberries.com/#pricing",
+  "affiliate_url": "https://heyberries.com"
 }

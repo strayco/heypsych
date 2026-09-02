@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "a8bb4250-20a1-4a19-a568-7f98ae6e4a98",
   "slug": "talkspace",
   "name": "Talkspace",
@@ -15,12 +15,7 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [
-    "virtual-therapy-platform",
-    "employer-eap",
-    "psychiatry-platform",
-    "text-based-therapy"
-  ],
+  "secondary_categories": [],
   "capabilities": [
     "video-sessions",
     "secure-messaging",
@@ -36,26 +31,15 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "counselor",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
       "telehealth-only",
-      "private-practice"
+      "solo-practice"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "anxiety",
-      "depression",
-      "relationships",
-      "stress",
-      "trauma",
-      "adhd",
-      "bipolar",
-      "ocd"
     ]
   },
   "feature_flags": {
@@ -96,13 +80,11 @@
   "support_url": "https://help.talkspace.com",
   "logo_url": "https://www.talkspace.com/logo.png",
   "pricing": {
-    "model": "per-engagement",
     "starting_price_cents": 0,
     "starting_price_display": "No upfront cost",
     "free_tier": true,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "percentage-based",
     "provider_compensation": {
       "model": "engagement-based",
       "messaging_pay": "Paid per messaging engagement (not per message)",
@@ -115,7 +97,8 @@
       "notes": "Compensation varies significantly. April 2025 changes to bonus structure reduced effective earnings for many therapists. Many providers report $30-45 per hour effective rate, down from prior levels."
     },
     "notes": "Free to join as a provider. Talkspace handles all billing, insurance claims, and client acquisition. CAUTION: April 2025 bonus structure changes significantly reduced provider compensation. Providers are independent contractors.",
-    "last_verified": "2026-08-29"
+    "last_verified": "2026-08-29",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -201,21 +184,11 @@
     }
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.talkspace.com/privacy",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.talkspace.com/privacy",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "soc2": "certified",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "not-applicable",
+    "gdpr_compliant": "not_applicable",
     "malpractice_coverage": {
       "provided": true,
       "coverage_details": "Professional liability coverage for Talkspace work"
@@ -226,26 +199,26 @@
       "name": "Cigna",
       "slug": "cigna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Aetna",
       "slug": "aetna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Various Blues Plans",
       "slug": "bcbs",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     }
   ],
   "seo": {
-    "title": "Talkspace for Therapists: Provider Network Review & Pay Rates | HeyPsych",
+    "title": "Talkspace for Therapists: Provider Network Review & Pay R...",
     "meta_description": "Talkspace therapist review: compensation, requirements, and what it's like to work as a Talkspace provider. 5,000+ therapists, text and video therapy platform.",
     "faqs": [
       {
@@ -321,7 +294,11 @@
       "ipo_valuation": "$1.4B",
       "current_market_cap": "~$150-200M (as of 2025, down 85%+ from IPO)",
       "stock_symbol": "TALK (NYSE)",
-      "key_investors": ["Spark Capital", "Norwest Venture Partners", "Softbank"],
+      "key_investors": [
+        "Spark Capital",
+        "Norwest Venture Partners",
+        "Softbank"
+      ],
       "context": "Stock has fallen 85%+ since IPO. April 2025 compensation cuts may reflect pressure to improve margins for shareholders."
     },
     "provider_count": "5,000+ therapists and psychiatrists",
@@ -415,7 +392,8 @@
     }
   },
   "created_at": "2026-08-22T20:50:40.803Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.574Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.talkspace.com"
 }

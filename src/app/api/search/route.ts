@@ -4,6 +4,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { queryWithRetry } from "@/lib/config/db-pool";
 import { EntityService } from "@/lib/data/entity-service";
+import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 
@@ -29,6 +30,7 @@ type GroupedSearchResponse = {
   conditions: CategoryResults;
   treatments: CategoryResults;
   resources: CategoryResults;
+  tools: CategoryResults;
   loadTimeMs: number;
   fallbackUsed: boolean;
 };
@@ -56,6 +58,7 @@ export async function GET(req: NextRequest) {
         conditions: { results: [], totalCount: 0, hasMore: false },
         treatments: { results: [], totalCount: 0, hasMore: false },
         resources: { results: [], totalCount: 0, hasMore: false },
+        tools: { results: [], totalCount: 0, hasMore: false },
         loadTimeMs: 0,
         fallbackUsed: false,
         message: "Search query must be at least 2 characters",
@@ -71,6 +74,7 @@ export async function GET(req: NextRequest) {
         conditions: { results: [], totalCount: 0, hasMore: false },
         treatments: { results: [], totalCount: 0, hasMore: false },
         resources: { results: [], totalCount: 0, hasMore: false },
+        tools: { results: [], totalCount: 0, hasMore: false },
         loadTimeMs: 0,
         fallbackUsed: false,
         message: "Search query must contain at least one keyword",
@@ -110,12 +114,16 @@ export async function GET(req: NextRequest) {
       }
 
       // Use grouped search for all types (single DB query)
-      const result = await queryWithRetry(
-        'SELECT * FROM search_entities_grouped($1, $2)',
-        [searchTerm, limit]
-      );
+      // Run database query and V4 tools search in parallel
+      const [dbResult, toolsSearchResult] = await Promise.all([
+        queryWithRetry(
+          'SELECT * FROM search_entities_grouped($1, $2)',
+          [searchTerm, limit]
+        ),
+        ClinicianToolService.searchClinicianTools(searchTerm),
+      ]);
 
-      const allResults = result.rows;
+      const allResults = dbResult.rows;
 
       // Group by entity_type
       const conditionsArray = allResults.filter(r => r.entity_type === 'condition');
@@ -138,6 +146,22 @@ export async function GET(req: NextRequest) {
         .map((row: any) => normalizeSearchResult(row, searchTerms))
         .filter(Boolean) as SearchResult[];
 
+      // Convert V4 clinician tools to SearchResult format
+      const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => ({
+        type: "tool",
+        id: tool.slug,
+        slug: tool.slug,
+        name: tool.name,
+        description: tool.short_description || tool.one_liner || null,
+        category: tool.primary_category,
+        snippets: buildCleanSnippets(
+          tool.name,
+          tool.short_description || tool.one_liner || null,
+          searchTerms
+        ),
+      }));
+      const toolsTotal = toolsSearchResult.total;
+
       const loadTime = Date.now() - startTime;
       logger.info(
         `✅ Search completed: "${searchTerm}" in ${loadTime}ms (source=${source})`,
@@ -145,7 +169,8 @@ export async function GET(req: NextRequest) {
           conditions: conditionsResults.length,
           treatments: treatmentsResults.length,
           resources: resourcesResults.length,
-          totalMatches: conditionsTotal + treatmentsTotal + resourcesTotal,
+          tools: toolsResults.length,
+          totalMatches: conditionsTotal + treatmentsTotal + resourcesTotal + toolsTotal,
         }
       );
 
@@ -173,6 +198,11 @@ export async function GET(req: NextRequest) {
           results: resourcesResults,
           totalCount: resourcesTotal,
           hasMore: resourcesResults.length < resourcesTotal,
+        },
+        tools: {
+          results: toolsResults,
+          totalCount: toolsTotal,
+          hasMore: toolsResults.length < toolsTotal,
         },
         loadTimeMs: loadTime,
         fallbackUsed: false,
@@ -212,6 +242,29 @@ export async function GET(req: NextRequest) {
       const treatmentsResults = fallback.results.filter(r => r.type === "treatment").slice(0, limit);
       const resourcesResults = fallback.results.filter(r => r.type === "resource").slice(0, limit);
 
+      // Also search V4 tools in fallback mode
+      let toolsResults: SearchResult[] = [];
+      let toolsTotal = 0;
+      try {
+        const toolsSearch = await ClinicianToolService.searchClinicianTools(searchTerm);
+        toolsResults = toolsSearch.tools.slice(0, limit).map((tool) => ({
+          type: "tool" as const,
+          id: tool.slug,
+          slug: tool.slug,
+          name: tool.name,
+          description: tool.short_description || tool.one_liner || null,
+          category: tool.primary_category,
+          snippets: buildCleanSnippets(
+            tool.name,
+            tool.short_description || tool.one_liner || null,
+            searchTerms
+          ),
+        }));
+        toolsTotal = toolsSearch.total;
+      } catch (toolsError) {
+        logger.warn("Tools search failed in fallback mode", { error: toolsError });
+      }
+
       const loadTime = Date.now() - startTime;
       const response: GroupedSearchResponse = {
         conditions: {
@@ -228,6 +281,11 @@ export async function GET(req: NextRequest) {
           results: resourcesResults,
           totalCount: fallback.results.filter(r => r.type === "resource").length,
           hasMore: resourcesResults.length < fallback.results.filter(r => r.type === "resource").length,
+        },
+        tools: {
+          results: toolsResults,
+          totalCount: toolsTotal,
+          hasMore: toolsResults.length < toolsTotal,
         },
         loadTimeMs: loadTime,
         fallbackUsed: true,
@@ -249,6 +307,7 @@ export async function GET(req: NextRequest) {
       conditions: { results: [], totalCount: 0, hasMore: false },
       treatments: { results: [], totalCount: 0, hasMore: false },
       resources: { results: [], totalCount: 0, hasMore: false },
+      tools: { results: [], totalCount: 0, hasMore: false },
       loadTimeMs: loadTime,
       fallbackUsed: true,
       error: "Search temporarily unavailable",

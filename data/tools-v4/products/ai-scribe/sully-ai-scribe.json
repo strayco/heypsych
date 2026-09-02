@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "1deb00ec-5998-47fd-aa0d-c54cf7396a81",
   "slug": "sully-ai-scribe",
-  "name": "Sully.ai Scribe",
+  "name": "Sully.ai",
   "company_name": "Sully.ai",
+  "website": "https://www.sully.ai",
+  "description": "Sully.ai is a Khosla-backed healthcare AI platform offering multiple AI 'agents' beyond scribing—AI Scribe, AI Receptionist, AI Medical Coder, AI Nurse, AI Interpreter. Pro tier at $79/provider/month includes AI Scribe, AI Chat, custom templates, and 24/7 support. Premium tier at $99/provider/month adds EHR Integration Agent, Decision Support, and Research/Writer/Interpreter agents. Free trial with 10 visits/month. 50+ specialty support including primary care, cardiology, dermatology. Native EHR integrations with Epic, Cerner, MEDITECH, athenahealth, NextGen, DrChrono, AdvancedMD, Kareo, ModMed. Generates SOAP notes, orders, billing codes, and patient instructions in one pass. 85-95% accuracy on initial drafts.",
   "import_ref": {
     "record_id": "MH-0209",
     "source_row": 210,
@@ -16,54 +18,236 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Khosla-backed AI platform: Scribe + Receptionist + Coder + Nurse + Interpreter. $79-99/mo. 50+ specialties. Free trial.",
+  "one_liner": "Multi-agent AI platform. $79-99/mo. Scribe + Coder + Receptionist. 50+ specialties.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "ehr-integration",
+    "ai-suggestions",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States",
+    "funding": "$25M+ (Khosla Ventures)"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 7900,
+    "starting_price_display": "$79/mo Pro, $99/mo Premium",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Free trial with 10 visits/month for individuals.",
+    "tiers": [
+      {
+        "name": "Free Trial",
+        "price": "$0",
+        "description": "10 free visits/month. Test AI Scribe before committing."
+      },
+      {
+        "name": "Pro",
+        "price": "$79/provider/month",
+        "description": "AI Scribe, AI Chat, custom templates, 24/7 support. Good for individual clinicians."
+      },
+      {
+        "name": "Premium",
+        "price": "$99/provider/month",
+        "description": "All Pro features + EHR Integration Agent, Decision Support, Research/Writer/Interpreter agents."
+      }
+    ],
+    "notes": "Compared to human scribes ($30K-50K/year), Sully.ai costs $3K-5K/year. Multi-agent platform differentiates from pure scribes.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with BAA. Bidirectional PHI sync with encryption and audit trails."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Cerner (Oracle Health)",
+      "slug": "oracle-health",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "NextGen",
+      "slug": "nextgen",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "DrChrono",
+      "slug": "drchrono",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "AdvancedMD",
+      "slug": "advancedmd",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "multi_agent_platform": {
+      "supported": true,
+      "agents": [
+        "AI Scribe",
+        "AI Receptionist",
+        "AI Medical Coder",
+        "AI Nurse",
+        "AI Interpreter"
+      ],
+      "description": "Beyond scribing: multiple AI agents handle documentation, phone calls, coding, intake, and multilingual support."
+    },
+    "ambient_listening": {
+      "supported": true,
+      "description": "Captures natural conversation flow including patient responses without interrupting clinical encounters."
+    },
+    "one_pass_generation": {
+      "supported": true,
+      "description": "Generates SOAP notes, orders, billing codes, and patient instructions in one pass."
+    },
+    "doctor_lm": {
+      "supported": true,
+      "description": "Personalizes to individual clinician voice through Doctor-LM technology."
+    },
+    "accuracy": {
+      "rate": "85-95%",
+      "description": "Most ambient AI platforms achieve 85-95% accuracy on initial draft generation."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Orders",
+      "Patient instructions"
+    ]
+  },
+  "best_for": [
+    "Practices wanting multi-agent AI platform (scribe + coder + receptionist)",
+    "Clinicians wanting EHR integration with Epic, Cerner, athenahealth at mid-range pricing",
+    "50+ specialties including primary care, cardiology, dermatology",
+    "Solo practitioners wanting free trial (10 visits/month)",
+    "Khosla-backed startup with $25M+ funding and enterprise ambitions"
+  ],
+  "not_for": [
+    "Budget-conscious practices—Freed ($39-119/mo) or PatientNotes ($50/mo) cheaper for pure scribing",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Practices wanting only scribing—Sully's multi-agent approach may be overkill",
+    "Organizations requiring HITRUST certification",
+    "Clinicians needing 99%+ accuracy without review"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "deepcura",
+    "commure-scribe"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "deepcura",
+    "commure-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.790Z",
-  "updated_at": "2026-08-22T20:50:40.790Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Sully.ai Scribe: Review & Pricing | HeyPsych",
-    "meta_description": "Sully.ai Scribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Sully.ai: Multi-Agent AI $79-99/mo | HeyPsych",
+    "meta_description": "Sully.ai: Khosla-backed multi-agent AI—Scribe + Receptionist + Coder. $79-99/mo. 50+ specialties. Epic/Cerner/athenahealth. Free trial.",
+    "faqs": [
+      {
+        "q": "How much does Sully.ai cost in 2026?",
+        "a": "Sully.ai Pro costs $79/provider/month (AI Scribe, AI Chat, custom templates). Premium costs $99/provider/month (adds EHR Integration, Decision Support, Research agents). Free trial includes 10 visits/month."
+      },
+      {
+        "q": "What makes Sully.ai different from other AI scribes?",
+        "a": "Sully.ai is a multi-agent platform—beyond scribing, it offers AI Receptionist (patient calls), AI Medical Coder (claims), AI Nurse (intake/triage), and AI Interpreter (multilingual). Most competitors focus only on documentation."
+      },
+      {
+        "q": "What EHRs does Sully.ai integrate with?",
+        "a": "Native integrations include Epic, Cerner (Oracle Health), MEDITECH, athenahealth, NextGen, DrChrono, AdvancedMD, Kareo, and ModMed with bidirectional PHI sync."
+      },
+      {
+        "q": "Is Sully.ai accurate?",
+        "a": "Sully.ai achieves 85-95% accuracy on initial draft generation, which is typical for ambient AI platforms. Physician review and editing is still required."
+      },
+      {
+        "q": "Sully.ai vs Freed vs DeepCura: which is better?",
+        "a": "Sully.ai ($79-99/mo) offers multi-agent platform with broad EHR integrations. Freed ($39-119/mo) is cheaper for pure scribing. DeepCura ($129/mo) focuses on psychiatry with MSE support. For multi-agent needs, Sully. For budget, Freed. For psychiatry, DeepCura."
+      }
+    ],
     "keywords": [
-      "Sully.ai Scribe",
-      "ai scribe documentation"
+      "Sully.ai",
+      "Sully AI pricing 2026",
+      "multi-agent AI healthcare",
+      "AI scribe receptionist coder",
+      "Sully vs Freed",
+      "Khosla AI healthcare",
+      "ambient AI scribe"
     ]
-  }
+  },
+  "website_url": "https://www.sully.ai",
+  "pricing_url": "https://www.sully.ai/pricing",
+  "affiliate_url": "https://www.sully.ai"
 }

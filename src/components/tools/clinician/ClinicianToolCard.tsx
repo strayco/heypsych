@@ -81,21 +81,21 @@ export function ClinicianToolCard({
           {tool.feature_flags.has_ai ? (
             <Bot
               className={cn(
-                "text-purple-600",
+                "text-treatment-600",
                 isCompact ? "h-5 w-5" : "h-6 w-6"
               )}
             />
           ) : tool.feature_flags.has_telehealth ? (
             <Video
               className={cn(
-                "text-cyan-600",
+                "text-tools-600",
                 isCompact ? "h-5 w-5" : "h-6 w-6"
               )}
             />
           ) : tool.feature_flags.has_rcm ? (
             <Receipt
               className={cn(
-                "text-emerald-600",
+                "text-positive-600",
                 isCompact ? "h-5 w-5" : "h-6 w-6"
               )}
             />
@@ -170,20 +170,20 @@ export function ClinicianToolCard({
             )}
 
             {tool.feature_flags.has_ai && (
-              <span className="inline-flex items-center gap-0.5 rounded bg-purple-500/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-purple-700">
+              <span className="inline-flex items-center gap-0.5 rounded bg-treatment/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-treatment-700">
                 <Bot className="h-2.5 w-2.5" />
                 AI
               </span>
             )}
 
             {tool.feature_flags.has_telehealth && !tool.feature_flags.has_ai && (
-              <span className="rounded bg-cyan-500/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-cyan-700">
+              <span className="rounded bg-tools/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-tools-700">
                 Telehealth
               </span>
             )}
 
             {tool.feature_flags.has_e_prescribing && (
-              <span className="rounded bg-red-500/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-red-700">
+              <span className="rounded bg-negative/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-negative-700">
                 e-Rx
               </span>
             )}

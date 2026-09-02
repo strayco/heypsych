@@ -6,7 +6,7 @@
   "name": "DeepScribe",
   "company_name": "DeepScribe",
   "website": "https://www.deepscribe.ai",
-  "description": "DeepScribe is an AI-powered medical scribe that uses ambient voice AI to automatically document patient encounters. It listens to patient-clinician conversations and generates comprehensive clinical notes that can be customized to match each clinician's documentation style and specialty requirements.",
+  "description": "DeepScribe is an enterprise-focused AI medical scribe that does not publish pricing or offer self-service signup. The platform targets mid-size practices and health systems at $350-500+/provider/month with mandatory annual contracts and $500-1,000 setup fees. A 5-provider clinic should expect $21,000-30,000+/year. DeepScribe offers ICD-10 coding suggestions and extensive template customization, but requires going through enterprise sales before learning cost or accessing the platform. Not designed for solo practitioners, small practices, or mental health-specific documentation. Therapists and psychiatrists should use purpose-built tools at 1/10th the cost.",
   "import_ref": {
     "record_id": "MH-0189",
     "source_row": 190,
@@ -17,7 +17,9 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "secondary_categories": [],
+  "short_description": "Enterprise AI scribe at $350-500+/mo. No public pricing. ICD-10 coding. Built for mid-size practices, not solo clinicians or mental health.",
+  "one_liner": "Enterprise ambient scribe at $350-500+/mo. No self-service. Not for solo practices.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -30,30 +32,16 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
-      "psychiatrist"
+      "medical-director"
     ],
     "practice_settings": [
-      "private-practice",
-      "outpatient-clinic",
       "group-practice",
-      "hospital-system",
-      "urgent-care"
+      "hospital-inpatient",
+      "multi-site-enterprise"
     ],
-    "organization_sizes": ["small", "medium", "large"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "orthopedics",
-      "cardiology",
-      "dermatology",
-      "gastroenterology",
-      "urology",
-      "pain-management",
-      "sports-medicine"
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200"
     ]
   },
   "feature_flags": {
@@ -74,64 +62,44 @@
     "employee_count": "100-200",
     "funding_total": "$60M+",
     "funding_stage": "Series B",
-    "notable_investors": ["Index Ventures", "SciFi VC", "Breyer Capital"],
+    "notable_investors": [
+      "Index Ventures",
+      "SciFi VC",
+      "Breyer Capital"
+    ],
     "customer_count": "1,000+ clinicians"
   },
   "pricing": {
-    "model": "per-provider-monthly",
-    "quote_required": false,
-    "starting_price": 299,
+    "model": "enterprise-custom",
+    "quote_required": true,
+    "starting_price_cents": 35000,
+    "starting_price_display": "$350-500+/provider/mo (no public pricing)",
     "currency": "USD",
-    "billing_period": "monthly",
+    "billing_period": "annual",
+    "free_tier": false,
     "tiers": [
       {
-        "name": "Standard",
-        "price": 299,
-        "period": "monthly",
-        "features": [
-          "Unlimited patient visits",
-          "Ambient AI documentation",
-          "Custom note templates",
-          "EHR integration (major EHRs)",
-          "Mobile app",
-          "Email support"
-        ]
+        "name": "Non-EHR Integrated",
+        "price": "~$350/provider/month",
+        "description": "Ambient AI documentation, custom templates, mobile app. No EHR write-back."
       },
       {
-        "name": "Professional",
-        "price": 399,
-        "period": "monthly",
-        "features": [
-          "Everything in Standard",
-          "ICD-10 coding suggestions",
-          "Advanced customization",
-          "Priority support",
-          "Analytics dashboard"
-        ]
+        "name": "EHR-Integrated",
+        "price": "~$450-500+/provider/month",
+        "description": "Full EHR integration (Epic SmartData, athenahealth bidirectional). ICD-10 coding suggestions."
       },
       {
         "name": "Enterprise",
-        "price": null,
-        "period": "monthly",
-        "features": [
-          "Everything in Professional",
-          "Custom EHR integrations",
-          "Dedicated success manager",
-          "SLA guarantees",
-          "Team analytics"
-        ],
-        "quote_required": true
+        "price": "Custom (volume discounts)",
+        "description": "Custom integrations, dedicated success manager, SLA guarantees, team analytics."
       }
     ],
-    "free_trial": {
-      "available": true,
-      "duration_days": 14,
-      "credit_card_required": false
-    },
-    "notes": "Annual billing offers 15% discount. Enterprise pricing available for 20+ providers."
+    "implementation_fees": "$500-1,000 estimated setup fee",
+    "notes": "NO public pricing page. NO free trial. NO self-service signup. Mandatory annual contracts. Must go through enterprise sales. For a 5-provider clinic: ~$21,000-30,000+/year before implementation. Not built for solo practitioners.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
@@ -142,52 +110,61 @@
   },
   "integrations": [
     {
-      "name": "Epic",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
-    },
-    {
-      "name": "Cerner",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
-    },
-    {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Bidirectional integration available"
     },
     {
       "name": "eClinicalWorks",
-      "type": "ehr",
-      "method": "api",
-      "native": true
-    },
-    {
-      "name": "DrChrono",
-      "type": "ehr",
-      "method": "api",
-      "native": true
-    },
-    {
-      "name": "Practice Fusion",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "ModMed",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "modmed",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "DrChrono",
+      "slug": "drchrono",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Browser extension, not native API"
+    },
+    {
+      "name": "Oracle Health (Cerner)",
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
+    },
+    {
+      "name": "Practice Fusion",
+      "slug": "practice-fusion",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Captures patient conversations and generates structured clinical notes"
+      "description": "Captures patient conversations and generates structured clinical notes with personalization over time."
     },
     "note_types": [
       "SOAP notes",
@@ -201,60 +178,79 @@
     "voice_commands": true,
     "multi_language": false,
     "coding_suggestions": true,
-    "accuracy_rate": "90%+ accuracy with personalization over time"
+    "icd_10_coding": true
   },
   "best_for": [
-    "Small to medium practices seeking premium AI scribe",
-    "Specialty practices (orthopedics, cardiology, dermatology)",
-    "Clinicians wanting highly customizable note templates",
-    "Practices using Athenahealth, eClinicalWorks, or ModMed",
-    "Physicians who want ICD coding assistance"
+    "Mid-size specialty practices (5-50 providers) with budget for $350-500+/provider/month",
+    "Practices on athenahealth, eClinicalWorks, or ModMed wanting native integration",
+    "Organizations that need highly customizable note templates per clinician",
+    "Practices prioritizing ICD-10 coding assistance",
+    "Orthopedics, cardiology, dermatology practices with complex documentation needs"
   ],
   "not_for": [
-    "Budget-conscious solo practitioners (consider Freed at $99)",
-    "Large enterprise health systems (consider Nuance DAX)",
-    "Mental health-specific practices",
-    "Practices requiring native Epic integration"
+    "Solo practitioners—no self-serve, pricing prohibitive, enterprise sales required",
+    "Small practices under 5 providers—$21,000+/year minimum is rarely justified",
+    "Mental health practices—Mentalyc ($20-70/mo) or Upheal ($69/mo) cost 90% less",
+    "Psychiatrists—Freed ($39-119/mo) handles medication management at 1/5th the cost",
+    "Practices needing native Epic integration—DeepScribe uses browser extension only",
+    "Budget-conscious practices—Sunoh ($149/mo) or Freed offer similar features cheaper"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 88,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 91,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["freed", "suki-assistant", "abridge", "nabla-copilot"],
+  "related_tools": [
+    "freed-ai",
+    "suki-ai",
+    "abridge",
+    "nabla",
+    "sunoh-ai"
+  ],
+  "competitor_tools": [
+    "suki-ai",
+    "abridge",
+    "nuance-dax-copilot"
+  ],
   "created_at": "2026-08-22T20:50:40.786Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "DeepScribe AI Scribe: Pricing, Features & Review | HeyPsych",
-    "meta_description": "DeepScribe AI medical scribe review. Starting at $299/month with 14-day free trial. Custom templates, ICD coding suggestions, HIPAA compliant.",
+    "title": "DeepScribe: Enterprise AI Scribe 2026 | HeyPsych",
+    "meta_description": "DeepScribe: enterprise AI scribe at $350-500+/provider/mo. No public pricing. ICD-10 coding. Built for mid-size practices, not solo clinicians or mental health.",
     "faqs": [
       {
-        "question": "How much does DeepScribe cost?",
-        "answer": "DeepScribe starts at $299 per provider per month for the Standard plan. The Professional plan with ICD coding suggestions is $399/month. A 14-day free trial is available without credit card required."
+        "q": "How much does DeepScribe cost in 2026?",
+        "a": "DeepScribe does not publish pricing. Estimates from third-party sources: $350/provider/month without EHR integration, $450-500+/month with EHR integration. Mandatory annual contracts with $500-1,000 setup fees. A 5-provider clinic: ~$21,000-30,000+/year."
       },
       {
-        "question": "How accurate is DeepScribe?",
-        "answer": "DeepScribe reports 90%+ accuracy rates that improve over time as the AI learns your documentation preferences. Most clinicians report minimal editing needed after initial customization."
+        "q": "Does DeepScribe have a free trial?",
+        "a": "No. DeepScribe has no public pricing, no free trial, and no self-service signup. You must go through enterprise sales before learning the cost or accessing the platform."
       },
       {
-        "question": "Does DeepScribe integrate with Epic?",
-        "answer": "DeepScribe works with Epic via browser extension rather than native API integration. For practices requiring deep Epic integration, consider Abridge or Nuance DAX Copilot."
+        "q": "Is DeepScribe good for solo practitioners?",
+        "a": "No. DeepScribe was built for enterprise health systems with dedicated IT departments. Solo practitioners should use Freed ($39-119/mo), Sunoh ($149/mo), or Heidi (free tier + $150/mo) instead—all offer self-service signup and transparent pricing."
       },
       {
-        "question": "Can DeepScribe suggest ICD-10 codes?",
-        "answer": "Yes, the Professional plan ($399/month) includes ICD-10 coding suggestions based on the documented encounter. This can help improve coding accuracy and reduce claim denials."
+        "q": "Is DeepScribe good for mental health?",
+        "a": "No. DeepScribe focuses on medical specialties (orthopedics, cardiology, dermatology) and does not offer mental health-specific templates. Therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider Freed ($39-119/mo)."
+      },
+      {
+        "q": "DeepScribe vs Freed: which is better?",
+        "a": "For solo and small practices: Freed. Freed costs $39-119/month with transparent pricing and self-service signup. DeepScribe costs $350-500+/month with mandatory sales calls and annual contracts. DeepScribe's main advantage is ICD-10 coding and extensive customization for specialty practices."
       }
     ],
     "keywords": [
       "DeepScribe",
-      "DeepScribe AI scribe",
-      "AI medical scribe",
-      "ambient AI documentation",
-      "clinical documentation AI",
-      "medical transcription AI",
-      "ICD coding AI"
+      "DeepScribe pricing 2026",
+      "enterprise AI scribe",
+      "DeepScribe vs Freed",
+      "ICD-10 AI scribe",
+      "medical documentation AI",
+      "DeepScribe cost"
     ]
-  }
+  },
+  "website_url": "https://www.deepscribe.ai",
+  "affiliate_url": "https://www.deepscribe.ai"
 }

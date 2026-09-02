@@ -168,41 +168,6 @@ export default async function ForPatientsPage() {
         </section>
       )}
 
-      {/* What to Look For */}
-      <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-            Guidance
-          </p>
-          <h2 className="mt-1 text-xl font-semibold text-label-primary">
-            Choosing the Right App
-          </h2>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border border-separator bg-surface p-5">
-              <h3 className="font-medium text-label-primary">Evidence-Based</h3>
-              <p className="mt-2 text-sm text-label-secondary">
-                Look for apps backed by clinical research or developed with mental health professionals.
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-separator bg-surface p-5">
-              <h3 className="font-medium text-label-primary">Privacy First</h3>
-              <p className="mt-2 text-sm text-label-secondary">
-                Your mental health data is sensitive. Choose apps that protect your privacy.
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-separator bg-surface p-5">
-              <h3 className="font-medium text-label-primary">Right Fit</h3>
-              <p className="mt-2 text-sm text-label-secondary">
-                The best app is one you&apos;ll actually use. Try free tiers to find what works.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Trust Signal */}
       <TrustSignal />
 
@@ -220,10 +185,10 @@ export default async function ForPatientsPage() {
           </p>
           <Link
             href="/tools/for-clinicians/"
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-treatment-foreground transition-colors hover:bg-treatment-600"
           >
-            <span className="text-white">Browse Clinician Tools</span>
-            <ArrowRight className="h-4 w-4 text-white" />
+            <span className="text-treatment-foreground">Browse Clinician Tools</span>
+            <ArrowRight className="h-4 w-4 text-treatment-foreground" />
           </Link>
         </div>
       </section>

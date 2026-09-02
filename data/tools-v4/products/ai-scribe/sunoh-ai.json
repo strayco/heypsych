@@ -5,9 +5,8 @@
   "slug": "sunoh-ai",
   "name": "Sunoh.ai",
   "company_name": "Sunoh",
-  "one_liner": "Affordable AI medical scribe with multi-language support",
-  "short_description": "Sunoh.ai is an ambient AI medical scribe serving over 100,000 providers at $149/month. The platform offers multi-language support and partners with eClinicalWorks for deep EHR integration, making...",
-  "long_description": "Sunoh.ai is an AI-powered ambient medical scribe designed to automate clinical documentation for physicians and healthcare providers. The platform uses natural language processing to listen to patient-provider conversations and generate structured clinical notes, reducing documentation burden.\n\nSunoh has achieved significant market penetration with over 100,000 providers using the platform. A key differentiator is the platform's multi-language support, enabling providers to conduct visits and generate notes in multiple languages—particularly valuable for practices serving diverse patient populations.\n\nThe company has formed a strategic partnership with eClinicalWorks, one of the largest ambulatory EHR vendors, providing deep integration capabilities for practices using that system. Sunoh also integrates with other major EHR platforms.\n\nAt $149 per month, Sunoh positions itself as an affordable alternative to enterprise AI scribe solutions. The pricing makes AI documentation accessible to solo practitioners and small practices that may not qualify for or afford enterprise-level AI scribe products. The platform is HIPAA compliant and SOC 2 certified.",
+  "website": "https://www.sunoh.ai",
+  "description": "Sunoh.ai is an AI medical scribe serving 100,000+ providers at $149/month—making it one of the most affordable ambient AI options with EHR integration. Key differentiator: multi-language support enables providers to conduct visits and generate notes in multiple languages, valuable for practices serving diverse patient populations. Strategic partnership with eClinicalWorks provides deep integration, with Epic, Cerner, and athenahealth also supported. At $149/month with unlimited visits, Sunoh undercuts enterprise options like DeepScribe ($350+/mo) and Suki ($299/mo) while offering similar core functionality. Not built for mental health-specific documentation.",
   "import_ref": {
     "record_id": "MH-0197",
     "source_row": 198,
@@ -19,6 +18,8 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
+  "short_description": "Affordable AI scribe at $149/mo serving 100,000+ providers. Multi-language support. eClinicalWorks partnership. Not for mental health.",
+  "one_liner": "Affordable ambient AI scribe at $149/mo with multi-language support. 100,000+ providers.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -28,20 +29,9 @@
     "hipaa-compliant",
     "baa-available"
   ],
-  "best_for": [
-    "Solo practitioners and small practices seeking affordable AI scribes",
-    "Providers serving multi-lingual patient populations",
-    "eClinicalWorks users wanting integrated AI documentation",
-    "Clinicians looking for straightforward ambient scribe functionality"
-  ],
-  "not_for": [
-    "Enterprise health systems requiring complex integrations",
-    "Mental health therapists needing specialized therapy note formats",
-    "Practices requiring extensive customization or workflows",
-    "Organizations with strict vendor security requirements beyond SOC 2"
-  ],
   "audiences": {
     "clinician_roles": [
+      "medical-director",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
@@ -52,12 +42,6 @@
       "solo",
       "small-2-10",
       "medium-11-50"
-    ],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "multi-specialty"
     ]
   },
   "feature_flags": {
@@ -72,116 +56,154 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "customer_count": "100,000+ providers"
+  },
   "pricing": {
     "model": "per-provider-month",
-    "starting_price": 149,
+    "quote_required": false,
+    "starting_price_cents": 14900,
+    "starting_price_display": "$149/provider/month",
     "currency": "USD",
     "billing_period": "monthly",
+    "free_tier": false,
     "tiers": [
       {
         "name": "Standard",
-        "price": 149,
-        "billing": "per provider/month",
-        "features": [
-          "Unlimited visits",
-          "Multi-language support",
-          "EHR integration",
-          "Mobile app"
-        ]
+        "price": "$149/provider/month",
+        "description": "Unlimited visits. Multi-language support. EHR integration. Mobile app. Real-time transcription."
       }
     ],
-    "quote_required": false,
-    "notes": "Enterprise pricing available for larger organizations"
+    "notes": "One of the most affordable ambient AI scribes with EHR integration. Enterprise pricing available for larger organizations. Undercuts DeepScribe ($350+/mo), Suki ($299/mo), and Heidi Clinician ($150/mo).",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "unknown",
+    "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
       "name": "eClinicalWorks",
-      "type": "ehr",
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
       "verified": true,
-      "notes": "Strategic partnership - deep integration"
+      "notes": "Strategic partnership—deep integration"
     },
     {
       "name": "Epic",
-      "type": "ehr",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
       "verified": true
     },
     {
-      "name": "Cerner",
-      "type": "ehr",
+      "name": "Oracle Health (Cerner)",
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
       "verified": true
     },
     {
       "name": "athenahealth",
-      "type": "ehr",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
       "verified": true
     }
   ],
   "features": {
-    "ai_documentation": {
-      "ambient_listening": true,
-      "note_generation": true,
-      "template_support": true,
-      "specialty_templates": true,
-      "multi_language": true
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to patient-provider conversations and generates structured clinical notes in real-time."
     },
-    "workflow": {
-      "mobile_app": true,
-      "real_time_transcription": true,
-      "ehr_auto_population": true
-    }
+    "multi_language": {
+      "supported": true,
+      "description": "Conduct visits and generate notes in multiple languages—valuable for diverse patient populations."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Specialty templates"
+    ],
+    "specialty_templates": true,
+    "real_time_transcription": true,
+    "ehr_auto_population": true,
+    "mobile_app": true
   },
+  "best_for": [
+    "Solo practitioners and small practices seeking affordable AI scribe ($149/mo)",
+    "Providers serving multi-lingual patient populations",
+    "eClinicalWorks users wanting integrated AI documentation (strategic partnership)",
+    "Practices wanting transparent, simple pricing without enterprise sales calls",
+    "Clinicians looking for straightforward ambient scribe without extensive customization"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) built for therapy",
+    "Psychiatrists needing MSE and risk assessment—Freed ($39-119/mo) handles medication management",
+    "Enterprise health systems requiring complex integrations—consider Abridge or Nuance DAX",
+    "Organizations with strict security requirements beyond SOC 2",
+    "Practices needing extensive template customization per clinician"
+  ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 87,
-    "last_reviewed": "2026-08-24",
-    "review_notes": "Complete profile. Affordable AI scribe with multi-language support."
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
   "related_tools": [
     "freed-ai",
     "abridge",
     "suki-ai",
-    "nuance-dragon-ambient"
+    "heidi-health",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "heidi-health",
+    "deepscribe"
   ],
   "created_at": "2026-08-22T20:50:40.789Z",
-  "updated_at": "2026-08-24T00:00:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Sunoh.ai: Affordable Mental Health Tool Review | HeyPsych",
-    "meta_description": "Sunoh.ai review for healthcare providers. $149/month AI medical scribe with multi-language support, serving 100,000+ providers with eClinicalWorks integration.",
+    "title": "Sunoh.ai: $149/mo AI Scribe 2026 | HeyPsych",
+    "meta_description": "Sunoh.ai: affordable AI medical scribe at $149/mo serving 100,000+ providers. Multi-language support. eClinicalWorks partnership. Epic, Cerner, athena integr...",
     "faqs": [
       {
-        "q": "How much does Sunoh.ai cost?",
-        "a": "Sunoh.ai costs $149 per provider per month for unlimited visits. This positions it as one of the more affordable AI medical scribe options on the market."
+        "q": "How much does Sunoh.ai cost in 2026?",
+        "a": "Sunoh.ai costs $149/provider/month for unlimited visits with EHR integration. This makes it one of the most affordable ambient AI scribes—cheaper than DeepScribe ($350+/mo), Suki ($299/mo), and Heidi Clinician ($150/mo)."
       },
       {
         "q": "Does Sunoh.ai support multiple languages?",
-        "a": "Yes, Sunoh.ai offers multi-language support, allowing providers to conduct visits and generate notes in various languages—valuable for practices serving diverse patient populations."
+        "a": "Yes. Multi-language support is a key differentiator—providers can conduct visits and generate notes in various languages. This is valuable for practices serving diverse patient populations."
       },
       {
         "q": "What EHRs does Sunoh.ai integrate with?",
-        "a": "Sunoh.ai has a strategic partnership with eClinicalWorks and also integrates with Epic, Cerner, athenahealth, and other major EHR systems."
+        "a": "Sunoh.ai has a strategic partnership with eClinicalWorks for deep integration. It also integrates with Epic, Cerner (Oracle Health), and athenahealth."
       },
       {
-        "q": "Is Sunoh.ai HIPAA compliant?",
-        "a": "Yes, Sunoh.ai is HIPAA compliant and SOC 2 certified, with BAA agreements available for healthcare organizations."
+        "q": "Is Sunoh.ai good for mental health practices?",
+        "a": "No. Sunoh.ai is designed for primary care and medical specialties, not mental health-specific documentation. Therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider Freed ($39-119/mo)."
+      },
+      {
+        "q": "Sunoh.ai vs Freed: which is better?",
+        "a": "Both offer transparent pricing. Sunoh ($149/mo) includes multi-language support and deeper EHR integrations. Freed ($39-119/mo) is cheaper and handles psychiatry medication management. For pure cost savings, Freed wins. For multi-language needs, Sunoh wins."
       }
     ],
     "keywords": [
       "Sunoh.ai",
+      "Sunoh pricing 2026",
       "affordable AI scribe",
-      "AI medical scribe",
       "multi-language medical scribe",
       "eClinicalWorks AI scribe",
-      "ambient documentation",
-      "clinical documentation AI"
+      "Sunoh vs Freed",
+      "ambient documentation AI"
     ]
-  }
+  },
+  "website_url": "https://www.sunoh.ai",
+  "affiliate_url": "https://www.sunoh.ai"
 }

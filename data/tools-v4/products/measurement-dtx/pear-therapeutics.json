@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "pear-therapeutics-dtx",
+  "id": "90411b11-f299-4d91-9dea-4706b625921a",
   "slug": "pear-therapeutics",
   "name": "Pear Therapeutics (reSET, Somryst)",
   "company_name": "Pear Therapeutics (Assets acquired by PursueCare and Nox Health)",
@@ -32,44 +32,24 @@
       }
     ]
   },
-  "primary_category": "digital-therapeutics",
-  "secondary_categories": [
-    "prescription-digital-therapeutic",
-    "substance-use-disorder",
-    "insomnia-treatment"
-  ],
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [],
   "capabilities": [
-    "fda-cleared-dtx",
-    "prescription-digital-therapeutic",
-    "substance-use-disorder-treatment",
-    "opioid-use-disorder-treatment",
-    "chronic-insomnia-treatment",
-    "cbt-delivery",
     "hipaa-compliant"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "addiction-medicine-physician",
-      "primary-care-physician",
-      "sleep-medicine-physician"
+      "psychiatrist"
     ],
     "practice_settings": [
-      "addiction-treatment",
-      "outpatient-clinic",
-      "primary-care",
-      "sleep-clinic"
+      "group-practice",
+      "integrated-care"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10",
       "medium-11-50",
       "large-51-200"
-    ],
-    "specialties": [
-      "addiction-medicine",
-      "psychiatry",
-      "sleep-medicine"
     ]
   },
   "feature_flags": {
@@ -81,9 +61,13 @@
     "has_dtx": true,
     "has_fda_clearance": true,
     "is_prescription_required": true,
-    "is_mental_health_specific": true
+    "is_mental_health_specific": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_specialty_agnostic": false
   },
-  "short_description": "First FDA-approved prescription digital therapeutics for substance use disorders (reSET, reSET-O) and chronic insomnia (Somryst). Company filed bankruptcy in 2023; assets now owned by PursueCare and Nox Health.",
+  "short_description": "First FDA-approved prescription digital therapeutics for substance use disorders (reSET, reSET-O) and chronic insomnia (Somryst). Company filed bankruptcy in 2023; assets now owned by PursueCare...",
   "long_description": "Pear Therapeutics pioneered prescription digital therapeutics (PDTs), becoming the first company to receive FDA approval for a mobile app treating substance use disorders when reSET was cleared in 2017. The company developed reSET for general substance use disorder, reSET-O for opioid use disorder, and Somryst for chronic insomnia - all using cognitive behavioral therapy techniques. Despite raising over $400 million and significant clinical validation, Pear filed for Chapter 11 bankruptcy in April 2023, citing slow reimbursement adoption and high costs. The company laid off 90%+ of employees and ceased accepting new prescriptions. In December 2023, PursueCare acquired reSET and reSET-O, now offering them for $90 out of pocket. Nox Health Group acquired Somryst. The products remain available to patients through their new owners.",
   "one_liner": "Pioneer FDA-cleared PDTs for SUD and insomnia - now operated by PursueCare and Nox Health post-bankruptcy.",
   "best_for": [
@@ -104,11 +88,9 @@
   "pricing_url": "https://www.pursuecare.com/contact",
   "logo_url": "https://www.pursuecare.com/logo.png",
   "pricing": {
-    "model": "per-treatment",
     "starting_price_cents": 9000,
     "starting_price_display": "$90/treatment course (reSET/reSET-O via PursueCare)",
     "free_tier": false,
-    "free_trial_days": null,
     "quote_required": false,
     "price_range": "budget",
     "products": {
@@ -128,7 +110,8 @@
       }
     },
     "reimbursement_notes": "Limited insurance coverage was primary driver of Pear's bankruptcy. PursueCare offers direct $90 pricing to avoid reimbursement barriers.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "products": [
     {
@@ -181,8 +164,11 @@
     }
   },
   "compliance": {
-    "hipaa_support": true,
-    "baa_available": true
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "business_context": {
     "original_company": "Pear Therapeutics",
@@ -211,8 +197,8 @@
     "lesson": "Pear's failure highlighted reimbursement challenges for PDTs despite clinical validation"
   },
   "seo": {
-    "title": "Pear Therapeutics: reSET, Somryst FDA DTx (Now PursueCare/Nox) | HeyPsych",
-    "meta_description": "Pear Therapeutics pioneered FDA-cleared digital therapeutics for SUD (reSET) and insomnia (Somryst). After 2023 bankruptcy, products now available via PursueCare ($90/course) and Nox Health.",
+    "title": "Pear Therapeutics: reSET, Somryst FDA DTx (Now PursueCare...",
+    "meta_description": "Pear Therapeutics pioneered FDA-cleared digital therapeutics for SUD (reSET) and insomnia (Somryst). After 2023 bankruptcy, products now available via...",
     "faqs": [
       {
         "q": "What happened to Pear Therapeutics?",
@@ -261,16 +247,22 @@
     "current_owners": [
       {
         "company": "PursueCare",
-        "products": ["reSET", "reSET-O"]
+        "products": [
+          "reSET",
+          "reSET-O"
+        ]
       },
       {
         "company": "Nox Health Group",
-        "products": ["Somryst"]
+        "products": [
+          "Somryst"
+        ]
       }
     ]
   },
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.560Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.pursuecare.com"
 }

@@ -4,6 +4,7 @@
   "id": "aac9682a-7498-4550-86f7-42ebe659955f",
   "slug": "ohmd",
   "name": "OhMD",
+  "short_description": "Patient communication platform with AI automation—HIPAA texting, voicemail transcription, call deflection. Integrates with Epic, Cerner, athenahealth.",
   "import_ref": {
     "record_id": "MH-0259",
     "source_row": 260,
@@ -14,55 +15,135 @@
     "status": "active"
   },
   "primary_category": "telehealth-communication",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "patient-engagement"
+  ],
+  "capabilities": [
+    "secure-messaging",
+    "video-sessions",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "medical-director",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
-    "has_ai": false,
+    "has_ai": true,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "flat-monthly",
+    "starting_price_cents": 12500,
+    "starting_price_display": "$125/month",
+    "quote_required": false,
+    "notes": "Patient communication platform with AI automation. Three tiers: Communicate (~$300/mo), Automate (~$500/mo), Develop (custom). Entry-level around $125-250/mo. Two-week free trial. EHR integrations with Epic, Cerner, athenahealth. 8-12 week onboarding typical due to customization."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "slug": "epic",
+      "name": "Epic",
+      "depth": "moderate",
+      "category": "other",
+      "integration_type": "api",
+      "verified": false
+    },
+    {
+      "slug": "cerner",
+      "name": "Cerner",
+      "depth": "moderate",
+      "category": "other",
+      "integration_type": "api",
+      "verified": false
+    },
+    {
+      "slug": "athenahealth",
+      "name": "athenahealth",
+      "depth": "moderate",
+      "category": "other",
+      "integration_type": "api",
+      "verified": false
+    }
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 86,
+    "last_reviewed": "2026-09-01"
   },
   "related_tools": [],
   "created_at": "2026-08-22T20:50:40.795Z",
-  "updated_at": "2026-08-22T20:50:40.795Z",
+  "updated_at": "2026-09-01T19:35:53.833Z",
   "status": "active",
   "seo": {
-    "title": "OhMD: Review & Pricing | HeyPsych",
-    "meta_description": "OhMD review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "OhMD: AI Patient Messaging Platform Review | HeyPsych",
+    "meta_description": "OhMD combines HIPAA texting with AI automation to reduce practice call volume. Integrates with Epic, Cerner, athenahealth. Starts ~$125/month.",
+    "faqs": [
+      {
+        "q": "What is OhMD?",
+        "a": "Patient communication platform that text-enables your existing office phone number. Combines HIPAA-compliant two-way texting, AI automation for routine requests, voicemail transcription, live chat, and video visits in one inbox. Designed to reduce phone call volume."
+      },
+      {
+        "q": "How much does OhMD cost?",
+        "a": "Three tiers: Communicate (~$300/month), Automate (~$500/month), and Develop (custom API). Entry-level options around $125-250/month depending on features. Two-week free trial available."
+      },
+      {
+        "q": "What AI features does OhMD have?",
+        "a": "AI handles routine patient requests: appointment scheduling, call deflection, voicemail transcription, and common questions. Staff can step in and take over any conversation. The AI reduces workload but doesn't fully replace human oversight."
+      },
+      {
+        "q": "Does OhMD integrate with my EHR?",
+        "a": "Yes. Integrates with 85+ EHR/PM systems including Epic, Cerner, and athenahealth. The integrations allow patient data to sync without duplicate entry."
+      },
+      {
+        "q": "How long does OhMD take to set up?",
+        "a": "Expect 8-12 weeks for onboarding, mainly due to customization and integration setup. This is longer than simpler alternatives like Curogram (which claims 10-minute training)."
+      },
+      {
+        "q": "How does OhMD compare to Curogram?",
+        "a": "Both are HIPAA texting platforms. OhMD has more AI automation and deeper EHR integrations (Epic, Cerner). Curogram is simpler, cheaper, and faster to implement. OhMD is better for larger practices wanting AI call deflection; Curogram is better for smaller practices wanting quick setup."
+      }
+    ],
     "keywords": [
       "OhMD",
-      "telehealth communication"
+      "patient messaging",
+      "HIPAA texting",
+      "AI healthcare communication",
+      "practice management",
+      "patient engagement"
     ]
-  }
+  },
+  "website_url": "https://www.ohmd.com",
+  "affiliate_url": "https://www.ohmd.com",
+  "one_liner": "Patient communication platform with AI automation—HIPAA texting, voicemail transcription, call defle"
 }

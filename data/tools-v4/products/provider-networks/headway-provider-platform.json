@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "b06f42c5-1cca-425b-84c3-93cefab81458",
   "slug": "headway-provider-platform",
   "name": "Headway Provider Platform",
@@ -16,20 +16,10 @@
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [
-    "insurance-credentialing",
-    "practice-management",
-    "billing-platform",
-    "provider-enablement"
+    "ehr-practice-management"
   ],
   "capabilities": [
-    "insurance-credentialing",
-    "claims-billing",
-    "patient-referrals",
-    "telehealth-platform",
-    "scheduling",
     "payment-processing",
-    "insurance-verification",
-    "client-matching",
     "hipaa-compliant",
     "baa-available"
   ],
@@ -38,28 +28,15 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "counselor",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
-      "telehealth-only",
-      "hybrid"
+      "solo-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "anxiety",
-      "depression",
-      "trauma",
-      "adhd",
-      "relationships",
-      "stress",
-      "bipolar",
-      "ocd",
-      "eating-disorders"
     ]
   },
   "feature_flags": {
@@ -77,7 +54,7 @@
     "has_billing": true,
     "has_client_matching": true
   },
-  "short_description": "Provider enablement platform that handles insurance credentialing, billing, and client referrals for independent mental health clinicians, allowing therapists to accept insurance without administrative burden.",
+  "short_description": "Provider enablement platform that handles insurance credentialing, billing, and client referrals for independent mental health clinicians, allowing therapists to accept insurance without...",
   "long_description": "Headway is a leading provider enablement platform that helps mental health clinicians build insurance-based private practices without the traditional administrative headaches. Founded in 2019 and headquartered in New York City, Headway has raised over $200 million in funding and works with over 25,000 therapists and psychiatrists across all 50 states. The platform handles insurance credentialing (typically 4-8 weeks), claims submission, payment processing, and patient referrals. Clinicians maintain their independent practice and set their own schedules while Headway manages the insurance complexity. Headway is in-network with major insurance carriers including Aetna, Cigna, UnitedHealthcare/Optum, Anthem, and various Blue Cross Blue Shield plans. Providers receive reimbursement rates typically ranging from $80-150+ per session depending on license type, location, and payer. Headway takes approximately 10% of each session as a platform fee. The platform also provides a patient directory and matching system, bringing new clients to providers. For clinicians wanting to accept insurance without joining a large telehealth company, Headway offers an attractive middle ground of infrastructure support while maintaining practice independence.",
   "one_liner": "Insurance credentialing and billing platform enabling therapists to build independent insurance-based practices.",
   "best_for": [
@@ -100,13 +77,11 @@
   "support_url": "https://help.headway.co",
   "logo_url": "https://www.headway.co/logo.png",
   "pricing": {
-    "model": "percentage-fee",
     "starting_price_cents": 0,
     "starting_price_display": "Free to join",
     "free_tier": true,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "percentage-based",
     "platform_fee": {
       "percentage": "~10%",
       "description": "Headway takes approximately 10% of each session reimbursement",
@@ -128,7 +103,8 @@
       "notes": "Providers set their own schedule and maintain independent practices. Headway handles credentialing (4-8 weeks), claims submission, and payment processing."
     },
     "notes": "Free to join. No upfront costs. Headway takes approximately 10% of insurance reimbursements. Providers receive the remainder via weekly direct deposit.",
-    "last_verified": "2025-03-15"
+    "last_verified": "2025-03-15",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -206,69 +182,59 @@
     "client_matching": "Directory-based matching with filters for specialty, location, availability"
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.headway.co/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.headway.co/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "soc2": "certified",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "not-applicable"
+    "gdpr_compliant": "not_applicable"
   },
   "integrations": [
     {
       "name": "Aetna",
       "slug": "aetna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Cigna",
       "slug": "cigna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "UnitedHealthcare / Optum",
       "slug": "united-optum",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Anthem",
       "slug": "anthem",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Blue Cross Blue Shield (various)",
       "slug": "bcbs",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Oscar Health",
       "slug": "oscar",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     }
   ],
   "seo": {
-    "title": "Headway for Therapists: Provider Platform Review & Pay Rates | HeyPsych",
-    "meta_description": "Headway provider platform review: insurance credentialing, billing, pay rates, and what it's like working with Headway. 25,000+ therapists and psychiatrists nationwide.",
+    "title": "Headway for Therapists: Provider Platform Review & Pay Rates",
+    "meta_description": "Headway provider platform review: insurance credentialing, billing, pay rates, and what it's like working with Headway. 25,000+ therapists and psychiatrists...",
     "faqs": [
       {
         "q": "How much do Headway therapists make per session?",
@@ -350,7 +316,8 @@
     "expansion_notes": "Nationwide coverage with ongoing insurance panel expansion"
   },
   "created_at": "2026-08-22T20:50:40.811Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.570Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.headway.co"
 }

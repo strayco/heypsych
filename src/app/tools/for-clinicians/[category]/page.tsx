@@ -269,7 +269,7 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href="/tools/for-clinicians/ehr-practice-management/match/"
-                  className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-treatment-600"
+                  className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-treatment-foreground transition-all hover:bg-treatment-600"
                 >
                   Start Matching
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -298,7 +298,7 @@ export default async function CategoryHubPage({
                 </div>
                 <Link
                   href={`/tools/compare/?tools=${comparisonCandidates.map(t => t.slug).join(",")}`}
-                  className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-white transition-all hover:bg-treatment-600"
+                  className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-treatment-foreground transition-all hover:bg-treatment-600"
                 >
                   Compare tools
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

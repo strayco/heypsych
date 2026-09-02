@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "d2166e77-21f4-4fc2-b34d-0ca84122dc9e",
   "slug": "zoom-for-healthcare",
   "name": "Zoom for Healthcare",
@@ -22,12 +22,26 @@
   "support_level": "clinical",
   "short_description": "Enterprise-grade HIPAA-compliant video conferencing for healthcare with virtual waiting rooms, screen sharing, and EHR integrations.",
   "long_description": "Zoom for Healthcare is the HIPAA-compliant version of the popular Zoom video conferencing platform, specifically designed for healthcare providers. Built on Zoom's reliable infrastructure that supports billions of meeting minutes daily, the healthcare version includes a signed Business Associate Agreement (BAA), enhanced security controls, and compliance features required for protected health information. The platform offers HD video and audio, virtual waiting rooms, screen sharing, session recording with cloud storage, and breakout rooms for group therapy sessions. Zoom for Healthcare integrates with major EHR systems including Epic, Cerner, and athenahealth through APIs and embeddable SDKs. Mental health professionals benefit from the platform's widespread patient familiarity, reducing the learning curve for telehealth sessions. Features like virtual backgrounds, noise suppression, and mobile apps for iOS and Android ensure professional, high-quality sessions from any location.",
-  "primary_hubs": ["telehealth", "video-conferencing"],
-  "sub_hubs": ["mental-health-telehealth", "group-therapy"],
+  "primary_hubs": [
+    "telehealth",
+    "video-conferencing"
+  ],
+  "sub_hubs": [
+    "mental-health-telehealth",
+    "group-therapy"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["video-conferencing", "communication-platform"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "ptsd", "substance-use-disorders"],
-  "tool_types": ["telehealth-platform", "video-conferencing"],
+  "secondary_categories": [],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "ptsd",
+    "substance-use-disorders"
+  ],
+  "tool_types": [
+    "telehealth-platform",
+    "video-conferencing"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -36,7 +50,7 @@
     "wearable": false
   },
   "pricing": {
-    "model": "per-host-subscription",
+    "model": "per-provider-month",
     "free_tier": false,
     "free_trial_days": 0,
     "quote_required": false,
@@ -45,27 +59,63 @@
       {
         "name": "Pro (Healthcare)",
         "price": "$15.99/month/host (billed annually)",
-        "features": ["Up to 100 participants", "30-hour meeting limit", "Cloud storage 5GB", "BAA included", "SSO support"]
+        "features": [
+          "Up to 100 participants",
+          "30-hour meeting limit",
+          "Cloud storage 5GB",
+          "BAA included",
+          "SSO support"
+        ]
       },
       {
         "name": "Business (Healthcare)",
         "price": "$21.99/month/host (billed annually)",
-        "features": ["Up to 300 participants", "Unlimited cloud storage", "Company branding", "Recording transcripts", "Admin dashboard"]
+        "features": [
+          "Up to 300 participants",
+          "Unlimited cloud storage",
+          "Company branding",
+          "Recording transcripts",
+          "Admin dashboard"
+        ]
       },
       {
         "name": "Enterprise (Healthcare)",
         "price": "Custom pricing",
-        "features": ["Up to 1000 participants", "Unlimited cloud storage", "Dedicated support", "Custom integrations", "Advanced analytics"]
+        "features": [
+          "Up to 1000 participants",
+          "Unlimited cloud storage",
+          "Dedicated support",
+          "Custom integrations",
+          "Advanced analytics"
+        ]
       }
     ],
     "notes": "HIPAA-compliant features and BAA require Pro plan or higher. Healthcare add-on ensures compliance features are enabled. Volume discounts available for larger organizations."
   },
-  "capabilities": ["video-conferencing", "screen-sharing", "session-recording", "virtual-waiting-room", "breakout-rooms", "group-sessions", "mobile-app"],
+  "capabilities": [
+    "mobile-app"
+  ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "social-worker", "psychiatric-nurse"],
-    "practice_settings": ["solo-practice", "group-practice", "hospital", "health-system", "community-mental-health"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50", "large-51-200", "enterprise"],
-    "specialties": ["mental-health", "psychiatry", "psychology", "counseling", "behavioral-health"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient",
+      "multi-site-enterprise",
+      "community-mental-health"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -126,7 +176,7 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
@@ -134,29 +184,18 @@
     "gdpr_compliant": "yes",
     "encryption": "AES 256-bit GCM encryption",
     "end_to_end_encryption": true,
-    "certifications": ["HIPAA", "SOC 2 Type II", "FedRAMP", "GDPR"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2 Type II",
+      "FedRAMP",
+      "GDPR"
+    ],
     "data_residency": "US, EU, and other regions available",
     "audit_logging": true,
     "role_based_access": true,
     "notes": "BAA covers Zoom Meetings, Zoom Phone, Zoom Team Chat for healthcare use. E2EE available but disables some features."
   },
-  "integrations": {
-    "ehr_integrations": [
-      "Epic (MyChart integration)",
-      "Cerner (Oracle Health)",
-      "athenahealth",
-      "Allscripts",
-      "MEDITECH"
-    ],
-    "calendar_integrations": ["Google Calendar", "Microsoft Outlook", "Apple Calendar"],
-    "billing_integrations": [],
-    "practice_management": ["Epic", "Cerner", "athenahealth"],
-    "api_available": true,
-    "sdk_available": true,
-    "hl7_fhir_support": true,
-    "zapier_integration": true,
-    "notes": "Zoom App Marketplace offers 2000+ integrations. Video SDK enables embedding into EHR workflows."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": false,
     "appointment_reminders": true,
@@ -164,7 +203,12 @@
     "e_prescribing": false,
     "payment_processing": false,
     "scheduling": false,
-    "ai_features": ["Live transcription", "Meeting summaries", "Noise suppression", "Virtual backgrounds"],
+    "ai_features": [
+      "Live transcription",
+      "Meeting summaries",
+      "Noise suppression",
+      "Virtual backgrounds"
+    ],
     "notes": "Focused video platform; pair with practice management software for full workflow."
   },
   "privacy": {
@@ -176,10 +220,16 @@
     "notes": "Healthcare plan includes all necessary privacy controls and audit logging."
   },
   "seo": {
-    "title": "Zoom for Healthcare: HIPAA-Compliant Video Conferencing | HeyPsych",
+    "title": "Zoom for Healthcare: HIPAA-Compliant Video Conferencing",
     "meta_description": "Zoom for Healthcare offers HIPAA-compliant video conferencing with BAA, virtual waiting rooms, and EHR integrations. Starting at $15.99/month per host.",
-    "canonical_url": "https://heypsych.com/tools/zoom-for-healthcare/",
-    "keywords": ["Zoom for Healthcare", "HIPAA-compliant telehealth", "video conferencing healthcare", "Zoom BAA", "telehealth platform"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/zoom-for-healthcare/",
+    "keywords": [
+      "Zoom for Healthcare",
+      "HIPAA-compliant telehealth",
+      "video conferencing healthcare",
+      "Zoom BAA",
+      "telehealth platform"
+    ],
     "faqs": [
       {
         "q": "Is Zoom HIPAA compliant for therapy sessions?",
@@ -233,8 +283,15 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "video-conferencing"],
-    "clinician_workflows": ["telehealth_video", "group_therapy", "clinical_supervision"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "video-conferencing"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "group_therapy",
+      "clinical_supervision"
+    ],
     "how_clinicians_use_it": [
       "Conducting individual therapy sessions via HD video",
       "Running group therapy with breakout rooms for subgroups",
@@ -243,16 +300,36 @@
       "Using virtual backgrounds to maintain home privacy"
     ],
     "implementation_notes": "Quick setup but requires separate practice management software for scheduling, billing, and documentation. Enable security settings before first patient session.",
-    "target_practice_size": ["Solo practices", "Group practices", "Health systems", "Hospitals"],
+    "target_practice_size": [
+      "Solo practices",
+      "Group practices",
+      "Health systems",
+      "Hospitals"
+    ],
     "billing_notes": "Platform only; integrate with billing software or EHR for claims."
   },
   "market_position": {
-    "primary_competitors": ["Doxy.me", "Thera-LINK", "VSee", "Microsoft Teams for Healthcare"],
-    "differentiators": ["Most recognized video platform", "Superior group session features", "Extensive EHR integrations", "Enterprise reliability"],
+    "primary_competitors": [
+      "Doxy.me",
+      "Thera-LINK",
+      "VSee",
+      "Microsoft Teams for Healthcare"
+    ],
+    "differentiators": [
+      "Most recognized video platform",
+      "Superior group session features",
+      "Extensive EHR integrations",
+      "Enterprise reliability"
+    ],
     "market_segment": "General healthcare and mental health",
     "adoption": "Most widely used video platform in healthcare"
   },
-  "related_tools": ["doxy-me", "thera-link", "vsee-clinic", "microsoft-teams-for-healthcare"],
+  "related_tools": [
+    "doxy-me",
+    "thera-link",
+    "vsee-clinic",
+    "microsoft-teams-for-healthcare"
+  ],
   "order": 1,
   "featured": true,
   "status": "active",
@@ -266,5 +343,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.796Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:34:49.834Z",
+  "website_url": "https://zoom.us/healthcare",
+  "affiliate_url": "https://zoom.us/healthcare"
 }

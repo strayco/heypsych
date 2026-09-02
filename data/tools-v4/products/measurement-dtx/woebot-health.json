@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "woebot-health-dtx",
+  "id": "e88285f8-70f8-4f63-9d08-6a8b567f8e32",
   "slug": "woebot-health",
   "name": "Woebot Health",
   "company_name": "Woebot Health",
@@ -18,45 +18,22 @@
       "reason": "Focus on payer, provider, and health-system licensing over DTC subscriptions"
     }
   },
-  "primary_category": "digital-therapeutics",
-  "secondary_categories": [
-    "ai-chatbot-therapy",
-    "postpartum-depression",
-    "enterprise-mental-health"
-  ],
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [],
   "capabilities": [
-    "ai-chatbot-therapy",
-    "cbt-delivery",
-    "postpartum-depression-treatment",
-    "pediatric-mental-health",
-    "enterprise-licensing",
-    "api-integration",
-    "clinical-trials",
-    "fda-breakthrough-designation",
     "hipaa-compliant"
   ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "obgyn",
-      "pediatrician",
       "psychologist"
     ],
     "practice_settings": [
-      "health-system",
-      "pediatric-hospital",
-      "payer",
-      "employer-wellness"
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "perinatal-mental-health",
-      "pediatric-mental-health",
-      "behavioral-health"
     ],
     "customer_types": [
       "health-systems",
@@ -76,7 +53,11 @@
     "has_clinical_trials": true,
     "is_chatbot_based": true,
     "is_mental_health_specific": true,
-    "consumer_app_discontinued": true
+    "consumer_app_discontinued": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_specialty_agnostic": false
   },
   "short_description": "AI-powered conversational mental health platform with FDA Breakthrough Device designation for postpartum depression. Enterprise-focused with 15 RCTs and B2B/payer licensing model.",
   "long_description": "Woebot Health is a clinical-grade AI mental health platform that uses a rule-based conversational chatbot (not generative AI) to deliver evidence-based therapeutic techniques including CBT, DBT, and IPT. The company received FDA Breakthrough Device Designation in 2021 for WB001, its investigational digital therapeutic for postpartum depression, and has been conducting pivotal clinical trials. In June 2025, Woebot discontinued its direct-to-consumer app to focus entirely on enterprise partnerships with payers, providers, and health systems. The platform is backed by 15+ randomized controlled trials showing effect sizes of d=0.57 for anxiety and d=0.46 for depression. Enterprise revenue comes from Per Member Per Month (PMPM) subscriptions and per-treatment cycle fees ($200-$450). Notable partnerships include Akron Children's Hospital for adolescent mental health. The 2025 Open Access API enables third-party healthcare apps to embed Woebot's conversational interface.",
@@ -97,11 +78,8 @@
   "pricing_url": "https://woebothealth.com/contact",
   "logo_url": "https://woebothealth.com/logo.png",
   "pricing": {
-    "model": "enterprise",
-    "starting_price_cents": null,
     "starting_price_display": "Contact for enterprise pricing",
     "free_tier": false,
-    "free_trial_days": null,
     "quote_required": true,
     "price_range": "enterprise",
     "enterprise_pricing_details": {
@@ -120,7 +98,8 @@
       }
     },
     "notes": "Enterprise-only model since June 2025. Performance-based clauses tied to engagement and clinical improvements.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "products": [
     {
@@ -193,8 +172,11 @@
     ]
   },
   "compliance": {
-    "hipaa_support": true,
-    "baa_available": true
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "company_info": {
     "founded_year": 2017,
@@ -203,8 +185,8 @@
     "funding_status": "Venture-backed"
   },
   "seo": {
-    "title": "Woebot Health: Enterprise AI Mental Health Platform | HeyPsych",
-    "meta_description": "Woebot Health offers AI-powered mental health with FDA Breakthrough designation for postpartum depression. 15+ RCTs. Enterprise-only model for payers and health systems.",
+    "title": "Woebot Health: Enterprise AI Mental Health Platform",
+    "meta_description": "Woebot Health offers AI-powered mental health with FDA Breakthrough designation for postpartum depression. 15+ RCTs. Enterprise-only model for payers and...",
     "faqs": [
       {
         "q": "Is the Woebot app still available?",
@@ -247,7 +229,8 @@
     "happify-twill"
   ],
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.564Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://woebothealth.com"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "billing-rcm-tool",
+  "kind": "clinician-tool",
   "id": "705b825f-54b1-49f9-8ddd-b553936dba03",
   "slug": "theranest-billing",
   "name": "TheraNest Billing",
@@ -21,11 +21,20 @@
   "support_level": "clinical",
   "short_description": "Mental health EHR with integrated insurance billing, optional managed RCM services, and flexible client-based pricing through Ensora Health.",
   "long_description": "TheraNest Billing provides mental health practices with comprehensive insurance billing capabilities integrated into the TheraNest practice management platform. Now part of Ensora Health (formerly Therapy Brands), TheraNest offers flexible billing options ranging from self-service electronic claims submission to fully managed RCM services. The platform includes electronic claims through Office Ally or Apex EDI clearinghouses, real-time eligibility verification, ERA auto-posting, and patient billing features. TheraNest uses a client-based pricing model rather than per-provider pricing, making it cost-effective for practices with many part-time clinicians. The optional Managed Billing service provides full-service RCM with a dedicated team handling claims submission, denial management, and AR follow-up at a percentage of collections. Ensora Health's acquisition has expanded integration possibilities across their behavioral health software portfolio.",
-  "primary_hubs": ["practice-admin-operations"],
+  "primary_hubs": [
+    "practice-admin-operations"
+  ],
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": ["practice-management", "patient-billing", "managed-rcm"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "conditions": [],
-  "tool_types": ["integrated-billing", "practice-management", "claims-submission", "managed-billing"],
+  "tool_types": [
+    "integrated-billing",
+    "practice-management",
+    "claims-submission",
+    "managed-billing"
+  ],
   "ai_attributes": [],
   "platforms": {
     "ios": true,
@@ -35,7 +44,7 @@
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "free_tier": false,
     "starting_price": "$39/month",
     "quote_required": false,
@@ -62,18 +71,25 @@
     "notes": "HIPAA compliant with BAA provided. Part of Ensora Health, a major behavioral health technology company with established security practices."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "type-ii",
-    "hitrust": "not-certified",
+    "soc2": "yes",
+    "hitrust": "no",
     "gdpr_compliant": "no",
     "pci_dss": "compliant"
   },
   "seo": {
     "title": "TheraNest Billing: Pricing & Review | HeyPsych",
     "meta_description": "TheraNest billing review with 2024 pricing from $39/month. Client-based pricing, optional managed RCM at 5-7% of collections. Ensora Health behavioral platform.",
-    "canonical_url": "https://heypsych.com/tools/theranest-billing/",
-    "keywords": ["TheraNest billing", "TheraNest insurance", "Ensora Health", "Therapy Brands billing", "mental health billing software", "managed billing therapists"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/theranest-billing/",
+    "keywords": [
+      "TheraNest billing",
+      "TheraNest insurance",
+      "Ensora Health",
+      "Therapy Brands billing",
+      "mental health billing software",
+      "managed billing therapists"
+    ],
     "faqs": [
       {
         "q": "How much does TheraNest charge for insurance billing?",
@@ -123,7 +139,14 @@
       "clearinghouse_name": "Office Ally / Apex EDI",
       "payer_count": "5000+",
       "payer_count_notes": "Access to major commercial and government payers through Office Ally",
-      "major_payers": ["Aetna", "Cigna", "UnitedHealthcare", "Blue Cross Blue Shield", "Medicare", "Medicaid"],
+      "major_payers": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealthcare",
+        "Blue Cross Blue Shield",
+        "Medicare",
+        "Medicaid"
+      ],
       "claims_processed_annual": "Millions across Ensora Health platforms"
     },
     "services": {
@@ -173,8 +196,12 @@
       "notes": "Built for mental health practices. Part of Ensora Health's behavioral health technology ecosystem."
     },
     "ehr_integrations": {
-      "native_integrations": ["TheraNest EHR"],
-      "third_party_integrations": ["Other Ensora Health platforms"],
+      "native_integrations": [
+        "TheraNest EHR"
+      ],
+      "third_party_integrations": [
+        "Other Ensora Health platforms"
+      ],
       "api_available": false,
       "hl7_support": false,
       "fhir_support": false,
@@ -186,7 +213,13 @@
       "dashboards": true,
       "analytics": true,
       "ai_analytics": false,
-      "report_types": ["Claims tracking", "Aging reports", "Payment analysis", "Client billing history", "Practice revenue"]
+      "report_types": [
+        "Claims tracking",
+        "Aging reports",
+        "Payment analysis",
+        "Client billing history",
+        "Practice revenue"
+      ]
     }
   },
   "company_info": {
@@ -205,8 +238,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["practice-admin-operations"],
-    "clinician_workflows": ["billing_coding", "admin_operations", "revenue_cycle"],
+    "primary_clinician_hubs": [
+      "practice-admin-operations"
+    ],
+    "clinician_workflows": [
+      "billing_coding",
+      "admin_operations",
+      "revenue_cycle"
+    ],
     "how_clinicians_use_it": [
       "Submit insurance claims through integrated clearinghouse",
       "Verify patient eligibility before sessions",
@@ -218,28 +257,45 @@
     "integrations": [],
     "billing_notes": "Client-based pricing benefits practices with many part-time therapists. Managed Billing good for practices wanting hands-off approach at 5-7% of collections."
   },
-  "capabilities": [
-    "Electronic CMS-1500 claims submission",
-    "Real-time eligibility verification",
-    "ERA/EOB auto-posting",
-    "Patient statement generation",
-    "Online patient payments",
-    "Optional managed RCM services",
-    "Credentialing assistance",
-    "Secondary insurance billing",
-    "Claim status tracking",
-    "Telehealth billing support"
-  ],
+  "capabilities": [],
   "integrations": [
-    {"name": "Office Ally", "type": "clearinghouse"},
-    {"name": "Apex EDI", "type": "clearinghouse"},
-    {"name": "Stripe", "type": "payment-processor"}
+    {
+      "name": "Office Ally",
+      "integration_type": "api",
+      "slug": "office-ally",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Apex EDI",
+      "integration_type": "api",
+      "slug": "apex-edi",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Stripe",
+      "integration_type": "api",
+      "slug": "stripe",
+      "category": "other",
+      "verified": false
+    }
   ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist-lcsw-lmft", "counselor"],
-    "practice_settings": ["solo-practice", "small-group-practice", "group-practice"],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": ["mental-health", "behavioral-health", "therapy", "counseling"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -253,7 +309,12 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "related_tools": ["simplepractice-insurance-billing", "therapynotes-billing", "therabill", "counsol"],
+  "related_tools": [
+    "simplepractice-insurance-billing",
+    "therapynotes-billing",
+    "therabill",
+    "counsol"
+  ],
   "featured": true,
   "status": "active",
   "import_ref": {
@@ -266,5 +327,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.825Z",
-  "updated_at": "2026-08-22T22:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.285Z",
+  "website_url": "https://www.ensorahealth.com",
+  "affiliate_url": "https://www.ensorahealth.com"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "billing-rcm-tool",
+  "kind": "clinician-tool",
   "id": "c39bfc3f-0d0c-4192-9ab4-f186b420961e",
   "slug": "collaboratemd",
   "name": "CollaborateMD",
@@ -21,11 +21,19 @@
   "support_level": "clinical",
   "short_description": "Cloud-based practice management and billing with built-in clearinghouse, real-time claims editing, and analytics for independent practices.",
   "long_description": "CollaborateMD is a cloud-based medical billing and practice management solution designed for independent healthcare practices and billing services. The platform provides comprehensive billing capabilities including electronic claims submission through their integrated clearinghouse, real-time eligibility verification, ERA/EOB auto-posting, and patient billing features. CollaborateMD's claims editing feature allows real-time corrections before submission, reducing denials. The platform is particularly popular with medical billing companies managing multiple practice clients due to its multi-practice management capabilities. Founded in 1999 and based in Florida, CollaborateMD serves thousands of healthcare providers across multiple specialties. The system integrates with various EHRs and offers comprehensive reporting and analytics dashboards. While not specifically designed for mental health, it supports behavioral health billing codes and workflows.",
-  "primary_hubs": ["practice-admin-operations"],
+  "primary_hubs": [
+    "practice-admin-operations"
+  ],
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": ["practice-management", "clearinghouse"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "conditions": [],
-  "tool_types": ["practice-management", "billing-software", "clearinghouse"],
+  "tool_types": [
+    "practice-management",
+    "billing-software",
+    "clearinghouse"
+  ],
   "ai_attributes": [],
   "platforms": {
     "ios": true,
@@ -35,7 +43,7 @@
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "free_tier": false,
     "starting_price": "$194/month",
     "quote_required": false,
@@ -60,18 +68,25 @@
     "notes": "HIPAA compliant with BAA provided. Cloud-based with data encryption and secure hosting."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
-    "hitrust": "not-certified",
+    "hitrust": "no",
     "gdpr_compliant": "no",
     "pci_dss": "compliant"
   },
   "seo": {
     "title": "CollaborateMD: Medical Billing Software Review | HeyPsych",
     "meta_description": "CollaborateMD review with pricing from $194/month. Cloud-based medical billing with built-in clearinghouse at $0.25/claim. Real-time claims editing.",
-    "canonical_url": "https://heypsych.com/tools/collaboratemd/",
-    "keywords": ["CollaborateMD", "medical billing software", "cloud billing", "practice management", "claims clearinghouse", "ERA auto-posting"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/collaboratemd/",
+    "keywords": [
+      "CollaborateMD",
+      "medical billing software",
+      "cloud billing",
+      "practice management",
+      "claims clearinghouse",
+      "ERA auto-posting"
+    ],
     "faqs": [
       {
         "q": "How much does CollaborateMD cost per month?",
@@ -121,7 +136,14 @@
       "clearinghouse_name": "CollaborateMD (integrated)",
       "payer_count": "4000+",
       "payer_count_notes": "Direct connections to major commercial and government payers",
-      "major_payers": ["Aetna", "Cigna", "UnitedHealthcare", "Blue Cross Blue Shield", "Medicare", "Medicaid"],
+      "major_payers": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealthcare",
+        "Blue Cross Blue Shield",
+        "Medicare",
+        "Medicaid"
+      ],
       "claims_processed_annual": "Millions annually"
     },
     "services": {
@@ -170,7 +192,9 @@
     },
     "ehr_integrations": {
       "native_integrations": [],
-      "third_party_integrations": ["Various EHR systems via HL7"],
+      "third_party_integrations": [
+        "Various EHR systems via HL7"
+      ],
       "api_available": true,
       "hl7_support": true,
       "fhir_support": false,
@@ -182,7 +206,13 @@
       "dashboards": true,
       "analytics": true,
       "ai_analytics": false,
-      "report_types": ["Claims aging", "Denial tracking", "Payment analysis", "Provider productivity", "Payer performance"]
+      "report_types": [
+        "Claims aging",
+        "Denial tracking",
+        "Payment analysis",
+        "Provider productivity",
+        "Payer performance"
+      ]
     }
   },
   "company_info": {
@@ -200,8 +230,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["practice-admin-operations"],
-    "clinician_workflows": ["billing_coding", "admin_operations", "revenue_cycle"],
+    "primary_clinician_hubs": [
+      "practice-admin-operations"
+    ],
+    "clinician_workflows": [
+      "billing_coding",
+      "admin_operations",
+      "revenue_cycle"
+    ],
     "how_clinicians_use_it": [
       "Submit electronic claims through built-in clearinghouse",
       "Edit claims in real-time before submission",
@@ -210,30 +246,42 @@
       "Generate comprehensive billing reports"
     ],
     "implementation_notes": "Implementation typically 1-2 weeks. Training included. Data migration assistance available.",
-    "integrations": ["Various EHR systems via HL7"],
+    "integrations": [
+      "Various EHR systems via HL7"
+    ],
     "billing_notes": "Good value for practices wanting PM + billing with integrated clearinghouse. Better suited for general medical than mental health-specific practices."
   },
-  "capabilities": [
-    "Electronic CMS-1500 claims submission",
-    "Real-time claim editing",
-    "Built-in clearinghouse",
-    "Real-time eligibility verification",
-    "ERA/EOB auto-posting",
-    "Patient statement generation",
-    "Online patient payments",
-    "Multi-practice management",
-    "Comprehensive reporting",
-    "AR follow-up tools"
-  ],
+  "capabilities": [],
   "integrations": [
-    {"name": "CollaborateMD Clearinghouse", "type": "clearinghouse"},
-    {"name": "HL7 Interface", "type": "integration-standard"}
+    {
+      "name": "CollaborateMD Clearinghouse",
+      "integration_type": "api",
+      "slug": "collaboratemd-clearinghouse",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "HL7 Interface",
+      "integration_type": "api",
+      "slug": "hl7-interface",
+      "category": "other",
+      "verified": false
+    }
   ],
   "audiences": {
-    "clinician_roles": ["physician", "practice-administrator", "billing-manager", "billing-service"],
-    "practice_settings": ["solo-practice", "small-group-practice", "group-practice"],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": ["primary-care", "multi-specialty", "medical-billing-service"]
+    "clinician_roles": [
+      "medical-director",
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -247,7 +295,12 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
-  "related_tools": ["advancedmd", "athenahealth", "tebra-billing", "practicesuite"],
+  "related_tools": [
+    "advancedmd",
+    "athenahealth",
+    "tebra-billing",
+    "practicesuite"
+  ],
   "featured": false,
   "status": "active",
   "import_ref": {
@@ -260,5 +313,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.827Z",
-  "updated_at": "2026-08-22T22:00:00.000Z"
+  "updated_at": "2026-09-01T19:34:49.757Z",
+  "website_url": "https://www.collaboratemd.com",
+  "affiliate_url": "https://www.collaboratemd.com"
 }

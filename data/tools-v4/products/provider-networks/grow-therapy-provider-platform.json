@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "b539bceb-e40e-45ce-bb6e-f1a54162781b",
   "slug": "grow-therapy-provider-platform",
   "name": "Grow Therapy Provider Platform",
@@ -16,20 +16,10 @@
   },
   "primary_category": "provider-network-virtual-care",
   "secondary_categories": [
-    "insurance-credentialing",
-    "practice-management",
-    "billing-platform",
-    "provider-enablement"
+    "ehr-practice-management"
   ],
   "capabilities": [
-    "insurance-credentialing",
-    "claims-billing",
-    "patient-referrals",
-    "telehealth-platform",
-    "scheduling",
     "payment-processing",
-    "insurance-verification",
-    "client-matching",
     "hipaa-compliant",
     "baa-available"
   ],
@@ -38,29 +28,15 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "counselor",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
-      "telehealth-only",
-      "hybrid"
+      "solo-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "anxiety",
-      "depression",
-      "trauma",
-      "adhd",
-      "relationships",
-      "stress",
-      "bipolar",
-      "ocd",
-      "eating-disorders",
-      "substance-use"
     ]
   },
   "feature_flags": {
@@ -102,13 +78,11 @@
   "support_url": "https://help.growtherapy.com",
   "logo_url": "https://www.growtherapy.com/logo.png",
   "pricing": {
-    "model": "percentage-fee",
     "starting_price_cents": 0,
     "starting_price_display": "Free to join",
     "free_tier": true,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "percentage-based",
     "platform_fee": {
       "percentage": "~10-15%",
       "description": "Grow Therapy takes approximately 10-15% of each session reimbursement",
@@ -130,7 +104,8 @@
       "notes": "Providers set their own schedule and maintain independent practices. Grow Therapy handles all credentialing and billing."
     },
     "notes": "Free to join with no upfront costs. Percentage-based fee covers credentialing, billing, telehealth, and client matching. Payment via weekly direct deposit.",
-    "last_verified": "2025-03-15"
+    "last_verified": "2025-03-15",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -218,75 +193,65 @@
     "client_matching": "Active matching based on specialty, availability, location, and patient preferences"
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.growtherapy.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.growtherapy.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "soc2": "certified",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "not-applicable"
+    "gdpr_compliant": "not_applicable"
   },
   "integrations": [
     {
       "name": "Aetna",
       "slug": "aetna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Cigna",
       "slug": "cigna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "UnitedHealthcare",
       "slug": "united",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Anthem",
       "slug": "anthem",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Blue Cross Blue Shield (various)",
       "slug": "bcbs",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Oscar Health",
       "slug": "oscar",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Humana",
       "slug": "humana",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     }
   ],
   "seo": {
-    "title": "Grow Therapy for Therapists: Provider Platform Review & Pay Rates | HeyPsych",
+    "title": "Grow Therapy for Therapists: Provider Platform Review & P...",
     "meta_description": "Grow Therapy provider network review: credentialing, billing, pay rates, and comparison with Headway and Alma. 10,000+ therapists nationwide.",
     "faqs": [
       {
@@ -424,7 +389,12 @@
       "total_raised": "$180M+",
       "latest_round": "Series C (2023)",
       "valuation": "$1B+ (unicorn status, 2022)",
-      "key_investors": ["Sequoia Capital", "TCV", "Transformation Capital", "SignalFire"]
+      "key_investors": [
+        "Sequoia Capital",
+        "TCV",
+        "Transformation Capital",
+        "SignalFire"
+      ]
     },
     "provider_count": "10,000+ therapists",
     "notable_events": [
@@ -445,7 +415,8 @@
     "expansion_notes": "Nationwide coverage with ongoing payer network expansion"
   },
   "created_at": "2026-08-22T20:50:40.811Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.569Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.growtherapy.com"
 }

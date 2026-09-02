@@ -19,32 +19,24 @@
     "status": "active"
   },
   "primary_category": "credentialing-workforce",
-  "secondary_categories": ["payer-enrollment", "licensing-services", "provider-data-management"],
-  "capabilities": [
-    "End-to-end credentialing automation",
-    "Multi-state licensing services",
-    "Payer enrollment management",
-    "Primary source verification",
-    "NPDB continuous monitoring",
-    "License expiration tracking",
-    "DEA registration management",
-    "Board certification verification",
-    "OIG/SAM exclusion screening",
-    "CAQH profile management",
-    "Provider data API",
-    "Real-time status dashboards",
-    "Automated document collection",
-    "Privileging support",
-    "Interstate Medical Licensure Compact support",
-    "Ongoing monitoring and alerts",
-    "Custom workflow automation",
-    "White-label provider portal"
-  ],
+  "secondary_categories": [],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist", "counselor", "psychiatric_nurse", "physician", "nurse_practitioner", "physician_assistant"],
-    "practice_settings": ["telehealth", "digital_health", "group_practice", "health_system", "behavioral_health_organization", "startup"],
-    "organization_sizes": ["small", "medium", "large", "enterprise"],
-    "specialties": ["general", "psychiatry", "psychology", "mental_health", "multi_specialty", "telehealth"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -59,7 +51,6 @@
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "per-provider",
     "starting_price": 200,
     "price_unit": "per provider/month",
     "quote_required": true,
@@ -69,25 +60,47 @@
       {
         "name": "Credentialing",
         "price_range": "$150-300 per provider/month",
-        "features": ["Primary source verification", "License monitoring", "CAQH management", "Document collection", "Expiration alerts"]
+        "features": [
+          "Primary source verification",
+          "License monitoring",
+          "CAQH management",
+          "Document collection",
+          "Expiration alerts"
+        ]
       },
       {
         "name": "Licensing",
         "price_range": "$500-1,500 per new license",
-        "features": ["Full-service license applications", "Multi-state support", "IMLC processing", "License renewals"]
+        "features": [
+          "Full-service license applications",
+          "Multi-state support",
+          "IMLC processing",
+          "License renewals"
+        ]
       },
       {
         "name": "Payer Enrollment",
         "price_range": "$200-500 per enrollment",
-        "features": ["Application submission", "Status tracking", "Follow-up management", "Credentialing committee prep"]
+        "features": [
+          "Application submission",
+          "Status tracking",
+          "Follow-up management",
+          "Credentialing committee prep"
+        ]
       },
       {
         "name": "Platform (API Access)",
         "price_range": "Custom pricing",
-        "features": ["Full API access", "Webhooks", "Custom integrations", "White-label options"]
+        "features": [
+          "Full API access",
+          "Webhooks",
+          "Custom integrations",
+          "White-label options"
+        ]
       }
     ],
-    "notes": "Medallion offers both software-only and managed services options. Pricing varies significantly based on services needed, volume, and whether using API/platform access. Volume discounts available. Implementation typically included."
+    "notes": "Medallion offers both software-only and managed services options. Pricing varies significantly based on services needed, volume, and whether using API/platform access. Volume discounts available. Implementation typically included.",
+    "model": "enterprise-custom"
   },
   "company": {
     "legal_name": "Medallion, Inc.",
@@ -97,10 +110,22 @@
     "description": "Medallion is a venture-backed healthcare operations platform founded to modernize provider credentialing and licensing through automation and API-first infrastructure.",
     "funding_stage": "Series B",
     "total_funding": "$85M+",
-    "key_investors": ["Sequoia Capital", "Spark Capital", "Optum Ventures", "a]6z"],
+    "key_investors": [
+      "Sequoia Capital",
+      "Spark Capital",
+      "Optum Ventures",
+      "a]6z"
+    ],
     "employee_count_range": "200-400",
     "customer_count": "1,000+ healthcare organizations",
-    "notable_customers": ["Cerebral", "Headway", "Wheel", "Transcarent", "Lyra Health", "Quartet Health"]
+    "notable_customers": [
+      "Cerebral",
+      "Headway",
+      "Wheel",
+      "Transcarent",
+      "Lyra Health",
+      "Quartet Health"
+    ]
   },
   "processing_times": {
     "initial_credentialing": "7-21 days",
@@ -111,10 +136,10 @@
     "imlc_license": "2-4 weeks"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
-    "hitrust": "in_progress",
+    "hitrust": "unknown",
     "gdpr_compliant": "yes",
     "ncqa_accredited": false,
     "cms_compliant": true,
@@ -123,33 +148,51 @@
   "integrations": [
     {
       "name": "REST API",
-      "type": "api",
-      "description": "Full REST API for programmatic access to all credentialing functions"
+      "description": "Full REST API for programmatic access to all credentialing functions",
+      "integration_type": "api",
+      "slug": "rest-api",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Webhooks",
-      "type": "events",
-      "description": "Real-time event notifications for status changes"
+      "description": "Real-time event notifications for status changes",
+      "integration_type": "api",
+      "slug": "webhooks",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "CAQH ProView",
-      "type": "data_sync",
-      "description": "Automated CAQH profile management and sync"
+      "description": "Automated CAQH profile management and sync",
+      "integration_type": "api",
+      "slug": "caqh-proview",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "NPDB",
-      "type": "verification",
-      "description": "Direct NPDB querying and continuous monitoring"
+      "description": "Direct NPDB querying and continuous monitoring",
+      "integration_type": "api",
+      "slug": "npdb",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Salesforce",
-      "type": "crm",
-      "description": "Native Salesforce integration for provider data"
+      "description": "Native Salesforce integration for provider data",
+      "integration_type": "api",
+      "slug": "salesforce",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Major EHR Systems",
-      "type": "ehr_integration",
-      "description": "Integrations available with major EHR platforms"
+      "description": "Integrations available with major EHR platforms",
+      "integration_type": "api",
+      "slug": "major-ehr-systems",
+      "category": "other",
+      "verified": false
     }
   ],
   "governance": {
@@ -159,9 +202,15 @@
     "last_enriched": "2026-08-22",
     "last_reviewed": "2026-08-30"
   },
-  "related_tools": ["caqh-proview", "modio-health-oneview", "verifiable", "certifyos", "symplr-cvo"],
+  "related_tools": [
+    "caqh-proview",
+    "modio-health-oneview",
+    "verifiable",
+    "certifyos",
+    "symplr-cvo"
+  ],
   "created_at": "2026-08-22T20:50:40.829Z",
-  "updated_at": "2026-08-22T21:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.521Z",
   "status": "active",
   "best_for": [
     "Digital health and telehealth companies",
@@ -178,26 +227,8 @@
     "Organizations only needing basic credentialing tracking"
   ],
   "seo": {
-    "title": "Medallion: Modern Provider Credentialing & Licensing Platform | HeyPsych",
-    "meta_description": "Medallion automates provider credentialing, licensing, and payer enrollment for digital health companies. API-first platform with $85M+ funding. Trusted by Cerebral, Headway, Lyra.",
-    "faqs": [
-      {
-        "question": "How much does Medallion credentialing cost?",
-        "answer": "Medallion pricing varies by service: Credentialing runs $150-300 per provider/month, new state licenses cost $500-1,500 per license, and payer enrollment is $200-500 per enrollment. API platform access has custom pricing. Volume discounts are available, and implementation is typically included in the subscription."
-      },
-      {
-        "question": "How fast can Medallion complete credentialing?",
-        "answer": "Medallion typically completes initial credentialing in 7-21 days, with primary source verification done in 24-48 hours. New state licenses take 4-12 weeks depending on the state, and payer enrollment ranges from 30-90 days. Re-credentialing can be completed in 3-7 days."
-      },
-      {
-        "question": "Does Medallion have an API for credentialing?",
-        "answer": "Yes, Medallion is built API-first and offers a comprehensive REST API for programmatic access to all credentialing functions. This includes webhooks for real-time status updates, making it ideal for digital health companies that want to integrate credentialing into their own platforms and workflows."
-      },
-      {
-        "question": "Who uses Medallion for credentialing?",
-        "answer": "Medallion is popular with digital health companies and telehealth platforms including Cerebral, Headway, Wheel, Transcarent, Lyra Health, and Quartet Health. It's particularly well-suited for fast-growing organizations that need to scale provider networks quickly and want modern API-based infrastructure."
-      }
-    ],
+    "title": "Medallion: Modern Provider Credentialing & Licensing Plat...",
+    "meta_description": "Medallion automates provider credentialing, licensing, and payer enrollment for digital health companies. API-first platform with $85M+ funding. Trusted by...",
     "keywords": [
       "Medallion credentialing",
       "provider licensing platform",
@@ -210,5 +241,6 @@
       "provider network management",
       "mental health credentialing"
     ]
-  }
+  },
+  "affiliate_url": "https://www.medallion.co"
 }

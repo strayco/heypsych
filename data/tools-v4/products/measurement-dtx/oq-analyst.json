@@ -14,53 +14,26 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "measurement-based-care",
-  "secondary_categories": [
-    "outcome-measurement",
-    "clinical-feedback",
-    "quality-improvement"
-  ],
+  "primary_category": "measurement-outcomes-dtx",
+  "secondary_categories": [],
   "capabilities": [
-    "measurement-based-care",
-    "oq-45-assessment",
-    "y-oq-assessment",
-    "outcome-questionnaire",
-    "clinical-feedback-system",
-    "treatment-outcome-tracking",
-    "session-by-session-monitoring",
-    "expected-treatment-response",
-    "alert-system",
-    "benchmarking",
-    "aggregate-reporting",
     "hipaa-compliant"
   ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft",
-      "counselor",
-      "clinical-director",
-      "quality-officer"
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
       "group-practice",
-      "community-mental-health",
-      "university-counseling",
-      "inpatient-facility",
-      "outpatient-clinic",
-      "employee-assistance-program"
+      "community-mental-health"
     ],
     "organization_sizes": [
       "small-2-10",
       "medium-11-50",
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "counseling"
     ]
   },
   "feature_flags": {
@@ -95,7 +68,7 @@
   "support_url": "https://www.oqmeasures.com/support",
   "logo_url": "https://www.oqmeasures.com/logo.png",
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "starting_price_cents": 25000,
     "starting_price_display": "$250/year (small practice)",
     "free_tier": false,
@@ -126,7 +99,11 @@
       "items": 45,
       "administration_time": "5-10 minutes",
       "population": "Adults 18+",
-      "subscales": ["Symptom Distress", "Interpersonal Relations", "Social Role"],
+      "subscales": [
+        "Symptom Distress",
+        "Interpersonal Relations",
+        "Social Role"
+      ],
       "validation_studies": "200+",
       "languages": "20+"
     },
@@ -134,8 +111,18 @@
       "name": "Youth Outcome Questionnaire (Y-OQ 2.01)",
       "items": 64,
       "population": "Youth ages 4-17",
-      "versions": ["Parent report", "Self-report (12+)"],
-      "subscales": ["Intrapersonal Distress", "Somatic", "Interpersonal Relations", "Social Problems", "Behavioral Dysfunction", "Critical Items"]
+      "versions": [
+        "Parent report",
+        "Self-report (12+)"
+      ],
+      "subscales": [
+        "Intrapersonal Distress",
+        "Somatic",
+        "Interpersonal Relations",
+        "Social Problems",
+        "Behavioral Dysfunction",
+        "Critical Items"
+      ]
     },
     "oq_30": {
       "name": "OQ-30 (Brief Version)",
@@ -157,7 +144,11 @@
     },
     "clinical_support_tools": {
       "description": "Structured interventions for patients showing warning signs",
-      "components": ["Therapeutic alliance assessment", "Motivation enhancement", "Social support review"]
+      "components": [
+        "Therapeutic alliance assessment",
+        "Motivation enhancement",
+        "Social support review"
+      ]
     }
   },
   "clinical_evidence": {
@@ -171,22 +162,25 @@
     ]
   },
   "compliance": {
-    "hipaa_support": true,
-    "baa_available": true
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
       "name": "Epic",
       "slug": "epic",
       "category": "ehr",
-      "integration_type": "data-export",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Manual Export (CSV/PDF)",
       "slug": "manual-export",
-      "category": "reporting",
-      "integration_type": "export",
+      "category": "analytics",
+      "integration_type": "file-based",
       "verified": true
     }
   ],
@@ -244,7 +238,8 @@
     "myoutcomes"
   ],
   "created_at": "2026-08-22T20:50:40.812Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.559Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.oqmeasures.com"
 }

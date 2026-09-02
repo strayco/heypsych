@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "b090fc82-f6e8-4818-bd94-4ae457547c31",
   "slug": "thera-link",
   "name": "Thera-LINK",
@@ -22,12 +22,27 @@
   "support_level": "clinical",
   "short_description": "Browser-based telehealth platform built specifically for therapists and mental health professionals with virtual waiting rooms and practice management features.",
   "long_description": "Thera-LINK (now part of Ensora Health) is a telehealth platform designed specifically by and for mental health professionals. Unlike general-purpose video platforms, Thera-LINK was built with therapy workflows in mind, featuring customizable virtual waiting rooms where clients can view relaxing content before sessions, session management tools, and seamless browser-based video that requires no app downloads. The platform offers HIPAA-compliant video sessions with HD quality, screen sharing for worksheets and psychoeducation, and integrated session notes. Thera-LINK integrates with popular practice management systems including SimplePractice and TherapyNotes. Founded by a licensed therapist who understood the unique needs of mental health practice, the platform emphasizes simplicity and a therapeutic environment from the client's first click. Features include customizable waiting room media, session reminders, and mobile-friendly access for both providers and clients.",
-  "primary_hubs": ["telehealth", "mental-health-specific"],
-  "sub_hubs": ["therapy-platform", "video-conferencing"],
+  "primary_hubs": [
+    "telehealth",
+    "mental-health-specific"
+  ],
+  "sub_hubs": [
+    "therapy-platform",
+    "video-conferencing"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["mental-health-specific", "therapy-tools"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "ptsd", "ocd", "eating-disorders"],
-  "tool_types": ["telehealth-platform", "mental-health-specific"],
+  "secondary_categories": [],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "ptsd",
+    "ocd",
+    "eating-disorders"
+  ],
+  "tool_types": [
+    "telehealth-platform",
+    "mental-health-specific"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -36,7 +51,6 @@
     "wearable": false
   },
   "pricing": {
-    "model": "per-provider-subscription",
     "free_tier": false,
     "free_trial_days": 30,
     "quote_required": false,
@@ -45,27 +59,55 @@
       {
         "name": "Solo",
         "price": "$35/month",
-        "features": ["1 provider", "Unlimited sessions", "HD video", "Virtual waiting room", "Screen sharing", "Basic customization"]
+        "features": [
+          "1 provider",
+          "Unlimited sessions",
+          "HD video",
+          "Virtual waiting room",
+          "Screen sharing",
+          "Basic customization"
+        ]
       },
       {
         "name": "Professional",
         "price": "$50/month",
-        "features": ["1 provider", "All Solo features", "Advanced waiting room customization", "Priority support", "Custom branding"]
+        "features": [
+          "1 provider",
+          "All Solo features",
+          "Advanced waiting room customization",
+          "Priority support",
+          "Custom branding"
+        ]
       },
       {
         "name": "Group Practice",
         "price": "$35/month per provider",
-        "features": ["Multiple providers", "Centralized admin", "Practice-wide branding", "Volume discounts available"]
+        "features": [
+          "Multiple providers",
+          "Centralized admin",
+          "Practice-wide branding",
+          "Volume discounts available"
+        ]
       }
     ],
-    "notes": "30-day free trial available. Annual billing discounts offered. All plans include BAA and HIPAA compliance."
+    "notes": "30-day free trial available. Annual billing discounts offered. All plans include BAA and HIPAA compliance.",
+    "model": "enterprise-custom"
   },
-  "capabilities": ["video-conferencing", "virtual-waiting-room", "screen-sharing", "session-notes", "appointment-reminders", "browser-based"],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["therapist", "psychologist", "counselor", "social-worker", "marriage-family-therapist"],
-    "practice_settings": ["solo-practice", "group-practice", "private-practice"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50"],
-    "specialties": ["mental-health", "psychology", "counseling", "marriage-family-therapy", "behavioral-health"]
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -121,7 +163,7 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "unknown",
@@ -129,19 +171,13 @@
     "gdpr_compliant": "yes",
     "encryption": "AES 256-bit encryption",
     "end_to_end_encryption": true,
-    "certifications": ["HIPAA"],
+    "certifications": [
+      "HIPAA"
+    ],
     "audit_logging": true,
     "notes": "BAA included with all plans. Built specifically for healthcare privacy requirements."
   },
-  "integrations": {
-    "ehr_integrations": [],
-    "practice_management": ["SimplePractice", "TherapyNotes", "TherapyAppointment"],
-    "calendar_integrations": ["Google Calendar", "Outlook Calendar"],
-    "billing_integrations": [],
-    "api_available": false,
-    "zapier_integration": false,
-    "notes": "Integrates with major therapy practice management platforms for scheduling coordination."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": true,
@@ -159,10 +195,16 @@
     "notes": "Mental health-focused platform with strong privacy protections."
   },
   "seo": {
-    "title": "Thera-LINK: Telehealth Platform Built for Therapists | HeyPsych",
-    "meta_description": "Thera-LINK is a HIPAA-compliant telehealth platform designed by therapists for mental health practices. Browser-based, no downloads, customizable waiting rooms. From $35/month.",
-    "canonical_url": "https://heypsych.com/tools/thera-link/",
-    "keywords": ["Thera-LINK", "therapy telehealth", "mental health video platform", "HIPAA telehealth", "therapist video sessions"],
+    "title": "Thera-LINK: Telehealth Platform Built for Therapists",
+    "meta_description": "Thera-LINK is a HIPAA-compliant telehealth platform designed by therapists for mental health practices. Browser-based, no downloads, customizable waiting...",
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/thera-link/",
+    "keywords": [
+      "Thera-LINK",
+      "therapy telehealth",
+      "mental health video platform",
+      "HIPAA telehealth",
+      "therapist video sessions"
+    ],
     "faqs": [
       {
         "q": "Do clients need to download an app to use Thera-LINK?",
@@ -211,8 +253,15 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "therapy-practice"],
-    "clinician_workflows": ["telehealth_video", "individual_therapy", "couples_therapy"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "therapy-practice"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "individual_therapy",
+      "couples_therapy"
+    ],
     "how_clinicians_use_it": [
       "Conducting individual therapy sessions via browser-based video",
       "Creating calming waiting room experiences for anxious clients",
@@ -221,16 +270,35 @@
       "Integrating with SimplePractice or TherapyNotes for scheduling"
     ],
     "implementation_notes": "Simple setup designed for non-technical users. Integrates with popular practice management systems.",
-    "target_practice_size": ["Solo therapists", "Small group practices", "Private practice"],
+    "target_practice_size": [
+      "Solo therapists",
+      "Small group practices",
+      "Private practice"
+    ],
     "billing_notes": "Video platform only; use practice management system for billing."
   },
   "market_position": {
-    "primary_competitors": ["Doxy.me", "SimplePractice Telehealth", "Zoom for Healthcare", "VSee"],
-    "differentiators": ["Mental health-specific design", "Customizable calming waiting rooms", "No download required", "Founded by therapist"],
+    "primary_competitors": [
+      "Doxy.me",
+      "SimplePractice Telehealth",
+      "Zoom for Healthcare",
+      "VSee"
+    ],
+    "differentiators": [
+      "Mental health-specific design",
+      "Customizable calming waiting rooms",
+      "No download required",
+      "Founded by therapist"
+    ],
     "market_segment": "Solo and small group therapy practices",
     "niche": "Therapist-designed telehealth"
   },
-  "related_tools": ["doxy-me", "simplepractice-telehealth", "zoom-for-healthcare", "therapynotes-telehealth"],
+  "related_tools": [
+    "doxy-me",
+    "simplepractice-telehealth",
+    "zoom-for-healthcare",
+    "therapynotes-telehealth"
+  ],
   "order": 5,
   "featured": false,
   "status": "active",
@@ -244,5 +312,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.794Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:34:49.831Z",
+  "website_url": "https://www.ensorahealth.com",
+  "affiliate_url": "https://www.ensorahealth.com"
 }

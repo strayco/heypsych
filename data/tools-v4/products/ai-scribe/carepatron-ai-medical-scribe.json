@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "fd6c8b97-034d-4016-8eb3-9e79ac6ad84e",
   "slug": "carepatron-ai-medical-scribe",
-  "name": "Carepatron Mental Health Tool",
+  "name": "Carepatron AI Scribe",
   "company_name": "Carepatron",
+  "website": "https://www.carepatron.com",
+  "description": "Carepatron is an all-in-one practice management platform with built-in AI scribe included on all plans—including the free tier. Pricing: Free ($0 with AI scribe + 1GB storage), Plus $15.50/mo (unlimited AI + storage), Advanced $19.50/mo (team controls + white labeling). The AI Charting Assistant transcribes telehealth sessions or dictation and generates structured notes using Smart Prompts for summarization, client goals, and referral letters. HIPAA, GDPR, and PIPEDA compliant—no transcript data used for AI training. Best value proposition: free AI scribe for solo practitioners who need basic practice management. Strongest competitor to SimplePractice and TherapyNotes for mental health clinicians who want AI included without add-on fees.",
   "import_ref": {
     "record_id": "MH-0221",
     "source_row": 222,
@@ -15,55 +17,209 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
+  "short_description": "All-in-one practice management with AI scribe on all plans. Free tier includes AI. $0-19.50/mo. HIPAA + GDPR + PIPEDA compliant.",
+  "one_liner": "Practice management + AI scribe. Free tier includes AI. $0-19.50/mo. HIPAA/GDPR/PIPEDA.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
-    "has_telehealth": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "International (Global)"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free with AI scribe included",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Free tier includes AI scribe (capped monthly tokens), unlimited clients, telehealth, client portal, and automated payments. 1GB storage limit.",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "$0/month",
+        "description": "AI scribe included (monthly token cap), unlimited clients, telehealth, client portal, automated payments. 1GB storage limit."
+      },
+      {
+        "name": "Plus",
+        "price": "$15.50/month",
+        "description": "Unlimited AI + unlimited storage, group features. Best for growing practices."
+      },
+      {
+        "name": "Advanced",
+        "price": "$19.50/month",
+        "description": "Team controls, white labeling, advanced permissions. Best for group practices."
+      }
+    ],
+    "notes": "Promotional pricing—confirm live rates. AI scribe built into all tiers including Free. No separate AI add-on fees like SimplePractice or TherapyNotes.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "yes",
+    "pipeda_compliant": "yes",
+    "security_note": "HIPAA, GDPR, and PIPEDA compliant. No transcript data used for AI model training."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Built-in telehealth with AI scribe enabled during sessions"
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "billing",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "category": "calendar",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ai_charting": {
+      "supported": true,
+      "description": "AI Charting Assistant transcribes telehealth sessions or dictation and generates structured notes."
+    },
+    "smart_prompts": {
+      "supported": true,
+      "description": "AI Smart Prompts within notes for summarization, client goals, and referral letter generation."
+    },
+    "telehealth": {
+      "supported": true,
+      "description": "Built-in HIPAA-compliant telehealth with optional AI scribe enablement during sessions."
+    },
+    "practice_management": {
+      "supported": true,
+      "description": "Client management, scheduling, billing, payments, and documentation in one platform."
+    },
+    "customization": {
+      "supported": true,
+      "description": "Customize scribe detail level and participant references during setup."
+    },
+    "note_types": [
+      "Progress notes",
+      "Treatment plans",
+      "Referral letters",
+      "Client summaries"
+    ]
+  },
+  "best_for": [
+    "Solo therapists wanting free AI scribe + practice management in one platform",
+    "Budget-conscious practices needing HIPAA-compliant AI without add-on fees",
+    "Coaches and nutritionists wanting simple documentation with AI",
+    "International practices needing GDPR + PIPEDA compliance",
+    "Clinicians frustrated with SimplePractice/TherapyNotes AI add-on pricing"
+  ],
+  "not_for": [
+    "High-volume practices needing unlimited AI on Free tier—upgrade to Plus ($15.50/mo) or use Freed ($39-119/mo)",
+    "Psychiatrists needing medication management—Freed or DeepCura ($129/mo) better",
+    "Practices needing deep specialty templates—Mentalyc ($20-70/mo) has CBT/DBT specificity",
+    "Enterprise organizations requiring SOC 2/HITRUST—verify certifications",
+    "Practices requiring specific EHR integrations—Carepatron is self-contained"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "simplepractice",
+    "therapynotes",
+    "healthie"
+  ],
+  "competitor_tools": [
+    "simplepractice",
+    "therapynotes",
+    "jane-app"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Carepatron Mental Health Tool: Review & Pricing | HeyPsych",
-    "meta_description": "Carepatron Mental Health Tool review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Carepatron AI Scribe: Free AI 2026 | HeyPsych",
+    "meta_description": "Carepatron: Free AI scribe included with practice management. $0-19.50/mo. HIPAA + GDPR + PIPEDA compliant. Best value for solo therapists and coaches.",
+    "faqs": [
+      {
+        "q": "How much does Carepatron AI scribe cost in 2026?",
+        "a": "Carepatron includes AI scribe on all plans: Free ($0/mo with capped tokens), Plus ($15.50/mo unlimited AI), Advanced ($19.50/mo with team controls). No separate AI add-on fees."
+      },
+      {
+        "q": "Is Carepatron AI scribe HIPAA compliant?",
+        "a": "Yes. Carepatron is HIPAA, GDPR, and PIPEDA compliant with BAA available. Transcript data is never used for AI model training."
+      },
+      {
+        "q": "Does Carepatron have a free plan with AI scribe?",
+        "a": "Yes. The Free tier includes AI scribe (with monthly token cap), unlimited clients, telehealth, client portal, and automated payments. 1GB storage limit. Upgrade to Plus ($15.50/mo) for unlimited AI."
+      },
+      {
+        "q": "Carepatron vs SimplePractice: which is better for AI documentation?",
+        "a": "Carepatron includes AI scribe free on all plans. SimplePractice charges extra for its Note Taker ($15/mo add-on on top of base plans $39-59/mo). For budget-conscious practices, Carepatron's free AI scribe is more cost-effective."
+      },
+      {
+        "q": "Is Carepatron good for mental health therapists?",
+        "a": "Yes, for therapists wanting a simple all-in-one platform. However, for therapy-specific templates (CBT/DBT/IFS) and detailed session analysis, Mentalyc ($20-70/mo) or Upheal ($69/mo) offer more specialized features."
+      }
+    ],
     "keywords": [
-      "Carepatron Mental Health Tool",
-      "ai scribe documentation"
+      "Carepatron",
+      "Carepatron AI scribe",
+      "Carepatron pricing 2026",
+      "free AI scribe",
+      "Carepatron vs SimplePractice",
+      "practice management AI",
+      "HIPAA AI scribe free"
     ]
-  }
+  },
+  "website_url": "https://www.carepatron.com",
+  "pricing_url": "https://www.carepatron.com/pricing",
+  "affiliate_url": "https://www.carepatron.com"
 }

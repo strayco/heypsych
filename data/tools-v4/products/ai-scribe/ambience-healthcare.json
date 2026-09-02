@@ -6,7 +6,7 @@
   "name": "Ambience Healthcare",
   "company_name": "Ambience Healthcare",
   "website": "https://www.ambiencehealthcare.com",
-  "description": "Ambience Healthcare (formerly Ambience AI) provides enterprise-grade ambient AI documentation and clinical automation for health systems. Their AutoScribe platform captures patient conversations and generates comprehensive clinical notes, while their broader platform includes pre-visit summaries, care gap identification, and clinical decision support.",
+  "description": "Ambience Healthcare (formerly Ambience AI) delivers enterprise-grade ambient AI with a broader clinical automation platform. Beyond ambient documentation (AutoScribe), Ambience offers pre-visit summaries, care gap identification, clinical decision support, and coding optimization (AutoCDI)—a fuller workflow suite than pure-scribe competitors. Backed by Kleiner Perkins, OpenAI Startup Fund, and Andreessen Horowitz, Ambience serves Sutter Health, UC San Diego Health, and The Permanente Medical Group. Pricing runs $233-417/provider/month base, with full platform costs reaching $4,000-5,000/provider/year. Not built for mental health; behavioral health divisions should verify specialty template support before deployment.",
   "import_ref": {
     "record_id": "MH-0190",
     "source_row": 191,
@@ -17,7 +17,12 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "clinical-decision-support", "enterprise-healthcare-ai"],
+  "secondary_categories": [
+    "clinical-decision-support",
+    "ai-copilot-clinical"
+  ],
+  "short_description": "Enterprise AI platform with ambient scribe + pre-visit summaries + care gap identification. $233-417/mo. Not built for mental health practices.",
+  "one_liner": "Enterprise AI operating system for health systems—ambient scribe plus clinical workflow automation.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -31,26 +36,15 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant"
+      "medical-director"
     ],
     "practice_settings": [
-      "hospital-system",
-      "academic-medical-center",
-      "large-health-system",
-      "fqhc"
+      "hospital-inpatient",
+      "multi-site-enterprise"
     ],
-    "organization_sizes": ["large", "enterprise"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "cardiology",
-      "oncology",
-      "orthopedics",
-      "emergency-medicine",
-      "neurology"
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
@@ -71,54 +65,45 @@
     "employee_count": "100-250",
     "funding_total": "$100M+",
     "funding_stage": "Series B",
-    "notable_investors": ["Kleiner Perkins", "OpenAI Startup Fund", "General Catalyst", "Andreessen Horowitz"],
+    "notable_investors": [
+      "Kleiner Perkins",
+      "OpenAI Startup Fund",
+      "General Catalyst",
+      "Andreessen Horowitz"
+    ],
     "customer_count": "30+ health systems",
-    "notable_clients": ["Sutter Health", "UC San Diego Health", "The Permanente Medical Group"]
+    "notable_clients": [
+      "Sutter Health",
+      "UC San Diego Health",
+      "The Permanente Medical Group"
+    ]
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "starting_price": null,
+    "starting_price_cents": 23300,
+    "starting_price_display": "$233-417/mo per provider; full suite $4,000-5,000/provider/year",
     "currency": "USD",
     "billing_period": "annual",
+    "free_tier": false,
     "tiers": [
       {
-        "name": "AutoScribe",
-        "price": null,
-        "period": "annual",
-        "features": [
-          "Ambient AI documentation",
-          "Multi-specialty templates",
-          "EHR integration",
-          "Real-time transcription"
-        ],
-        "quote_required": true
+        "name": "AutoScribe (Base)",
+        "price": "$233-267/provider/month ($2,800-3,200/year)",
+        "description": "Core ambient documentation. Multi-specialty templates. EHR integration."
       },
       {
-        "name": "Enterprise Platform",
-        "price": null,
-        "period": "annual",
-        "features": [
-          "Everything in AutoScribe",
-          "Pre-visit summaries",
-          "Care gap identification",
-          "Coding optimization",
-          "Clinical decision support",
-          "Analytics dashboard",
-          "Dedicated implementation team"
-        ],
-        "quote_required": true
+        "name": "Full AI Suite",
+        "price": "$333-417/provider/month ($4,000-5,000/year)",
+        "description": "AutoScribe + AutoCDI + AutoAVS + AutoRefer. Pre-visit summaries, care gaps, coding optimization."
       }
     ],
-    "estimated_range": "$200-400 per provider per month (enterprise volume pricing)",
-    "free_trial": {
-      "available": false,
-      "notes": "Pilot programs available for health systems (typically 3-6 months)"
-    },
-    "notes": "Enterprise pricing only. Implementation fees typical. Multi-year contracts with volume discounts."
+    "implementation_fees": "One-time implementation fee for EHR integration and specialty template tuning. Enterprise contracts.",
+    "notes": "No self-serve. No small practice tier. Sales conversation required. Annual per-provider contracts with optional module add-ons. Bronze through Platinum tiers available. Implementation takes weeks to months.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -130,41 +115,49 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Oracle Health (Cerner)",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "MEDITECH",
-      "type": "ehr",
-      "method": "api",
-      "native": false
+      "slug": "meditech",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "api",
-      "native": false
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "AutoScribe captures conversations and generates comprehensive clinical documentation"
+      "description": "AutoScribe captures conversations and generates comprehensive clinical documentation."
     },
     "pre_visit": {
       "supported": true,
-      "description": "AI-generated pre-visit summaries from chart review"
+      "description": "AutoAVS: AI-generated pre-visit summaries from chart review."
     },
     "care_gaps": {
       "supported": true,
-      "description": "Identifies care gaps and quality measure opportunities during visits"
+      "description": "Identifies care gaps and quality measure opportunities during visits."
+    },
+    "coding_optimization": {
+      "supported": true,
+      "description": "AutoCDI: AI-driven coding optimization and clinical documentation improvement."
     },
     "note_types": [
       "SOAP notes",
@@ -177,65 +170,80 @@
     "specialty_templates": true,
     "custom_templates": true,
     "voice_commands": false,
-    "multi_language": false,
-    "coding_optimization": true,
-    "accuracy_rate": "Enterprise-grade with human-in-loop options"
+    "multi_language": false
   },
   "best_for": [
-    "Large health systems seeking comprehensive AI clinical platform",
-    "Academic medical centers requiring enterprise security",
-    "Organizations wanting pre-visit summaries + documentation",
-    "Health systems focused on quality measure optimization",
-    "Epic or Cerner environments with 100+ providers",
-    "Organizations prioritizing care gap identification"
+    "Large health systems wanting ambient scribe + pre-visit + care gap identification in one platform",
+    "Organizations focused on quality measure optimization and HCC capture",
+    "Epic or Cerner environments with 100+ providers and IT resources",
+    "Health systems seeking OpenAI-backed AI infrastructure",
+    "Enterprise behavioral health divisions inside hospital systems (verify template support)"
   ],
   "not_for": [
-    "Solo practitioners or small practices",
-    "Organizations seeking low-cost AI scribe",
-    "Practices without major EHR systems",
-    "Mental health-specific practices",
-    "Organizations needing quick implementation (6+ months typical)"
+    "Solo mental health practices—Mentalyc ($20-70/mo) costs 90% less",
+    "Therapists doing psychotherapy—Ambience doesn't understand therapy modalities",
+    "Small practices under 50 providers—no small practice tier exists",
+    "Organizations needing quick deployment—implementation takes weeks to months",
+    "Budget-conscious practices—Freed ($39-119/mo) offers ambient AI at 1/5th the cost"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 89,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 93,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["nuance-dax-copilot", "abridge", "suki-assistant", "notable-ai"],
+  "related_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "suki-ai",
+    "notable-ai",
+    "nabla"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "suki-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.787Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Ambience Healthcare AI: Enterprise Documentation Platform | HeyPsych",
-    "meta_description": "Ambience Healthcare review - enterprise AI documentation with pre-visit summaries and care gap identification. HITRUST certified. For health systems 100+ providers.",
+    "title": "Ambience Healthcare: AutoScribe 2026 | HeyPsych",
+    "meta_description": "Ambience Healthcare AutoScribe: $233-417/mo enterprise AI platform. Pre-visit summaries, care gaps, coding optimization. Not built for mental health practices.",
     "faqs": [
       {
-        "question": "What makes Ambience Healthcare different from other AI scribes?",
-        "answer": "Ambience goes beyond documentation to offer a comprehensive clinical AI platform including pre-visit chart summaries, care gap identification, and coding optimization. It's designed for large health systems wanting more than just ambient documentation."
+        "q": "How much does Ambience Healthcare cost in 2026?",
+        "a": "AutoScribe base costs $233-267/provider/month ($2,800-3,200/year). The full AI suite with AutoCDI, AutoAVS, and AutoRefer runs $333-417/month ($4,000-5,000/year). Enterprise contracts with implementation fees. No self-serve or small practice pricing."
       },
       {
-        "question": "How much does Ambience Healthcare cost?",
-        "answer": "Ambience is enterprise-priced and requires a custom quote. Typical pricing ranges from $200-400 per provider per month with volume discounts. Implementation fees and multi-year contracts are standard."
+        "q": "Is Ambience Healthcare good for psychiatry?",
+        "a": "Ambience was not designed for behavioral health. The platform focuses on primary care, cardiology, and other medical specialties. Behavioral health divisions inside Ambience-contracted health systems should verify specialty template support before deployment. Solo psychiatrists should use Freed instead."
       },
       {
-        "question": "Does Ambience Healthcare integrate with Epic?",
-        "answer": "Yes, Ambience has native integration with Epic and can write documentation directly into the EHR. It also integrates with Oracle Health (Cerner), MEDITECH, and Athenahealth."
+        "q": "What's the difference between Ambience and Abridge?",
+        "a": "Ambience offers a broader platform: ambient scribe plus pre-visit summaries, care gap identification, and coding optimization. Abridge focuses on ambient documentation with evidence-linked notes. Ambience may be slightly cheaper ($233-417/mo vs Abridge's $400-700/mo) but both are enterprise-only."
       },
       {
-        "question": "Is Ambience Healthcare suitable for small practices?",
-        "answer": "Ambience is designed for large health systems with 100+ providers. Small practices would benefit more from solutions like Freed, Suki, or DeepScribe that are designed for individual practitioners and smaller organizations."
+        "q": "Who invested in Ambience Healthcare?",
+        "a": "Ambience is backed by Kleiner Perkins, the OpenAI Startup Fund, General Catalyst, and Andreessen Horowitz. Total funding exceeds $100M. The OpenAI connection reflects Ambience's use of advanced language models for clinical AI."
+      },
+      {
+        "q": "Is Ambience worth it for mental health practices?",
+        "a": "For most mental health practices, no. Ambience is enterprise-only with no small practice tier. At $233-417+/provider/month, it costs 5-10x more than therapy-specific tools. Mentalyc ($20-70/mo) and Upheal ($69/mo) are built for therapy. Freed ($39-119/mo) works for psychiatry."
       }
     ],
     "keywords": [
       "Ambience Healthcare",
       "Ambience AI",
       "AutoScribe",
+      "Ambience pricing 2026",
       "enterprise AI documentation",
       "clinical AI platform",
       "care gap identification",
       "pre-visit summaries",
       "health system AI"
     ]
-  }
+  },
+  "website_url": "https://www.ambiencehealthcare.com",
+  "affiliate_url": "https://www.ambiencehealthcare.com"
 }

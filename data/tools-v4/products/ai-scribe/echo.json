@@ -3,8 +3,10 @@
   "kind": "clinician-tool",
   "id": "113c0245-64a6-4138-aec1-d8c6e11a7128",
   "slug": "echo",
-  "name": "Echo",
+  "name": "Alleva Echo",
   "company_name": "Alleva",
+  "website": "https://helloalleva.com",
+  "description": "Alleva Echo is a HIPAA-compliant ambient AI scribe built into the Alleva behavioral health operations platform—not available as a standalone product. Listens during sessions and generates structured, audit-ready notes in real time supporting DAP, SOAP, utilization review, and more. Key differentiator: recordings are never saved—only the compliant note remains. Part of the Alleva platform that integrates EHR, CRM, billing, and admissions across the substance use disorder (SUD) treatment continuum. Works alongside TravisAI, Alleva's integrated AI assistant. Custom enterprise pricing starting ~$800/month for the full platform. Best for residential treatment centers, addiction treatment facilities, and behavioral health organizations wanting an all-in-one operations platform with built-in AI documentation.",
   "import_ref": {
     "record_id": "MH-0176",
     "source_row": 177,
@@ -16,58 +18,195 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Alleva's ambient AI for behavioral health. DAP/SOAP/UR notes. No recordings saved. Custom pricing (~$800/mo platform). SUD treatment focus.",
+  "one_liner": "Alleva platform AI scribe. Behavioral health focus. DAP/SOAP/UR. ~$800/mo+ custom.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "residential-treatment",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
+    "has_ehr": true,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
+  },
+  "company": {
+    "headquarters": "United States"
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 80000,
+    "starting_price_display": "~$800/month platform (custom)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Alleva Platform (includes Echo)",
+        "price": "Starting ~$800/month (custom)",
+        "description": "Full Alleva platform: EHR, CRM, billing, admissions, Echo AI scribe, TravisAI assistant. Custom pricing based on organization size and requirements."
+      }
+    ],
+    "notes": "Echo is part of the Alleva platform—not sold separately. Custom enterprise pricing based on facility size and needs. Request demo for personalized quote. Starting estimate ~$800/month for smaller organizations.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with BAA available. Key privacy feature: recordings are never saved—only the compliant note remains. Audit-ready documentation."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Alleva EHR",
+      "slug": "alleva",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Echo is built into the Alleva behavioral health platform"
+    },
+    {
+      "name": "Alleva CRM",
+      "slug": "alleva-crm",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Alleva Billing",
+      "slug": "alleva-billing",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "HIPAA-compliant ambient AI listens during sessions and generates audit-ready notes in real time."
+    },
+    "no_recordings": {
+      "supported": true,
+      "description": "Key privacy feature: recordings are never saved—only the compliant note remains."
+    },
+    "utilization_review": {
+      "supported": true,
+      "description": "Supports utilization review documentation for insurance compliance."
+    },
+    "platform_integration": {
+      "supported": true,
+      "description": "Echo works seamlessly with Alleva EHR, CRM, billing, and admissions modules."
+    },
+    "travisai": {
+      "supported": true,
+      "description": "TravisAI is Alleva's AI assistant providing real-time clinical decision support alongside Echo."
+    },
+    "note_types": [
+      "DAP notes",
+      "SOAP notes",
+      "Utilization review",
+      "Treatment plans",
+      "Discharge summaries"
+    ]
+  },
+  "best_for": [
+    "Residential treatment centers and inpatient behavioral health facilities",
+    "Addiction treatment programs (SUD/MAT) wanting integrated operations",
+    "Behavioral health organizations needing audit-ready documentation",
+    "Facilities requiring no-recording privacy policy (only notes retained)",
+    "Organizations wanting EHR + CRM + billing + AI in one platform"
+  ],
+  "not_for": [
+    "Solo practitioners—Alleva is enterprise-focused (~$800/mo+ pricing)",
+    "Outpatient therapy practices—Mentalyc ($20-70/mo) or Upheal ($69/mo) better for therapy",
+    "Practices wanting standalone AI scribe—Echo requires full Alleva platform",
+    "Budget-conscious practices—Freed ($39-119/mo) or PatientNotes ($50/mo) much cheaper",
+    "Non-behavioral health specialties—Alleva is behavioral health specific"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "alleva",
+    "kipu-health",
+    "lightning-step"
+  ],
+  "competitor_tools": [
+    "kipu-health",
+    "sunwave",
+    "lightning-step"
+  ],
   "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Echo: Review & Pricing | HeyPsych",
-    "meta_description": "Echo review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Alleva Echo: Behavioral Health AI 2026 | HeyPsych",
+    "meta_description": "Alleva Echo: Ambient AI scribe for behavioral health and addiction treatment. DAP/SOAP/UR notes. No recordings saved. Part of Alleva platform (~$800/mo+ cust...",
+    "faqs": [
+      {
+        "q": "How much does Alleva Echo cost in 2026?",
+        "a": "Alleva Echo is part of the Alleva behavioral health platform—not sold separately. Custom enterprise pricing starts around $800/month for the full platform including EHR, CRM, billing, and AI tools. Request a demo for personalized pricing."
+      },
+      {
+        "q": "Can I use Alleva Echo without the full Alleva platform?",
+        "a": "No. Echo is built into the Alleva platform and requires an Alleva subscription. For standalone AI scribes, consider Freed ($39-119/mo), Mentalyc ($20-70/mo for therapy), or Upheal ($69/mo)."
+      },
+      {
+        "q": "Is Alleva Echo HIPAA compliant?",
+        "a": "Yes. Alleva Echo is HIPAA compliant with BAA available. Key privacy feature: recordings are never saved—only the compliant clinical note remains, ensuring audit-ready documentation."
+      },
+      {
+        "q": "What note types does Alleva Echo support?",
+        "a": "Alleva Echo generates DAP notes, SOAP notes, utilization review documentation, treatment plans, and discharge summaries—designed for behavioral health and addiction treatment workflows."
+      },
+      {
+        "q": "Alleva Echo vs standalone AI scribes: which is better?",
+        "a": "Alleva Echo is best for residential treatment centers and addiction facilities wanting an all-in-one operations platform. For outpatient therapy, Mentalyc ($20-70/mo) is purpose-built for therapists. For general practices, Freed ($39-119/mo) offers flexibility with any EHR."
+      }
+    ],
     "keywords": [
-      "Echo",
-      "ai scribe documentation"
+      "Alleva Echo",
+      "Alleva AI scribe",
+      "behavioral health AI scribe",
+      "addiction treatment AI",
+      "SUD AI documentation",
+      "utilization review AI",
+      "Alleva pricing 2026"
     ]
-  }
+  },
+  "website_url": "https://helloalleva.com",
+  "pricing_url": "https://helloalleva.com",
+  "affiliate_url": "https://helloalleva.com"
 }

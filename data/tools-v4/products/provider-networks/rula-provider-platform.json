@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "e1edbf53-1414-4042-b59f-16eee00f45fc",
   "slug": "rula-provider-platform",
   "name": "Rula Provider Platform",
@@ -15,23 +15,9 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [
-    "insurance-credentialing",
-    "billing-platform",
-    "provider-enablement",
-    "psychiatry-platform"
-  ],
+  "secondary_categories": [],
   "capabilities": [
-    "insurance-credentialing",
-    "claims-billing",
-    "patient-referrals",
-    "telehealth-platform",
-    "scheduling",
     "payment-processing",
-    "insurance-verification",
-    "client-matching",
-    "therapy-sessions",
-    "psychiatry-services",
     "hipaa-compliant",
     "baa-available"
   ],
@@ -40,27 +26,15 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "counselor",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
-      "telehealth-only",
-      "hybrid"
+      "solo-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "anxiety",
-      "depression",
-      "trauma",
-      "adhd",
-      "relationships",
-      "stress",
-      "bipolar",
-      "ocd"
     ]
   },
   "feature_flags": {
@@ -102,13 +76,11 @@
   "support_url": "https://help.rula.com",
   "logo_url": "https://www.rula.com/logo.png",
   "pricing": {
-    "model": "percentage-fee",
     "starting_price_cents": 0,
     "starting_price_display": "Free to join",
     "free_tier": true,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "percentage-based",
     "platform_fee": {
       "percentage": "~10-15%",
       "description": "Rula takes approximately 10-15% of each session reimbursement",
@@ -130,7 +102,8 @@
       "notes": "Rula claims higher reimbursement rates than competitors. Psychiatrists typically earn more per session. Fast credentialing (often 2-4 weeks)."
     },
     "notes": "Free to join. Percentage-based fee covers credentialing, billing, and patient referrals. Weekly direct deposit payments.",
-    "last_verified": "2025-03-15"
+    "last_verified": "2025-03-15",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -212,61 +185,51 @@
     "client_matching": "Active matching based on insurance, specialty, and availability"
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.rula.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.rula.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "soc2": "certified",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
-    "gdpr_compliant": "not-applicable"
+    "gdpr_compliant": "not_applicable"
   },
   "integrations": [
     {
       "name": "Aetna",
       "slug": "aetna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Cigna",
       "slug": "cigna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "UnitedHealthcare",
       "slug": "united",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Anthem",
       "slug": "anthem",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Blue Cross Blue Shield (various)",
       "slug": "bcbs",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     }
   ],
   "seo": {
-    "title": "Rula for Therapists & Psychiatrists: Provider Platform Review | HeyPsych",
+    "title": "Rula for Therapists & Psychiatrists: Provider Platform Re...",
     "meta_description": "Rula provider platform review: credentialing, pay rates, and comparison with Headway and Grow Therapy. 10,000+ therapists and psychiatrists nationwide.",
     "faqs": [
       {
@@ -344,7 +307,8 @@
     "expansion_notes": "Nationwide coverage with ongoing payer expansion"
   },
   "created_at": "2026-08-22T20:50:40.811Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.573Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.rula.com"
 }

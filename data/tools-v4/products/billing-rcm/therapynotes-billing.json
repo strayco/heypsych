@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "billing-rcm-tool",
+  "kind": "clinician-tool",
   "id": "cdf8f7af-0a4a-42b4-9a5c-f3dd97387569",
   "slug": "therapynotes-billing",
   "name": "TherapyNotes Billing",
@@ -21,11 +21,19 @@
   "support_level": "clinical",
   "short_description": "Mental health EHR with integrated insurance billing, ERA auto-posting, and eligibility verification at competitive per-claim pricing.",
   "long_description": "TherapyNotes Billing provides mental health professionals with streamlined insurance claims submission integrated directly into their practice management workflow. Founded in 2010 by a licensed psychologist, the platform was built specifically for behavioral health practices. The billing module includes electronic claims submission through Apex EDI clearinghouse, real-time eligibility verification, electronic remittance advice (ERA) auto-posting, and patient billing capabilities. TherapyNotes uses proprietary 'wisp' note templates that automatically suggest appropriate CPT codes based on session content. The system supports professional claims (CMS-1500), handles secondary insurance billing, and provides claim tracking with denial management. With one of the lowest per-claim fees in the industry at $0.14 per claim, TherapyNotes offers excellent value for practices submitting moderate claim volumes.",
-  "primary_hubs": ["practice-admin-operations"],
+  "primary_hubs": [
+    "practice-admin-operations"
+  ],
   "primary_category": "billing-rcm-insurance",
-  "secondary_categories": ["practice-management", "patient-billing"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "conditions": [],
-  "tool_types": ["integrated-billing", "practice-management", "claims-submission"],
+  "tool_types": [
+    "integrated-billing",
+    "practice-management",
+    "claims-submission"
+  ],
   "ai_attributes": [],
   "platforms": {
     "ios": true,
@@ -35,7 +43,7 @@
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "flat-monthly",
     "free_tier": false,
     "starting_price": "$49/month",
     "quote_required": false,
@@ -60,18 +68,24 @@
     "notes": "HIPAA compliant with BAA provided. Data encrypted and hosted on secure servers. Founded by licensed psychologist with understanding of confidentiality requirements."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
-    "hitrust": "not-certified",
+    "hitrust": "no",
     "gdpr_compliant": "no",
     "pci_dss": "compliant"
   },
   "seo": {
     "title": "TherapyNotes Billing: Pricing & Review | HeyPsych",
     "meta_description": "TherapyNotes billing review with $0.14/claim pricing. Mental health EHR with integrated insurance billing, ERA auto-posting, and eligibility verification.",
-    "canonical_url": "https://heypsych.com/tools/therapynotes-billing/",
-    "keywords": ["TherapyNotes billing", "TherapyNotes insurance", "mental health billing software", "therapy EHR billing", "electronic claims therapist"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/therapynotes-billing/",
+    "keywords": [
+      "TherapyNotes billing",
+      "TherapyNotes insurance",
+      "mental health billing software",
+      "therapy EHR billing",
+      "electronic claims therapist"
+    ],
     "faqs": [
       {
         "q": "How much does TherapyNotes charge per insurance claim?",
@@ -121,7 +135,14 @@
       "clearinghouse_name": "Apex EDI",
       "payer_count": "5000+",
       "payer_count_notes": "Access to all major commercial and government payers through Apex EDI",
-      "major_payers": ["Aetna", "Cigna", "UnitedHealthcare", "Blue Cross Blue Shield", "Medicare", "Medicaid"],
+      "major_payers": [
+        "Aetna",
+        "Cigna",
+        "UnitedHealthcare",
+        "Blue Cross Blue Shield",
+        "Medicare",
+        "Medicaid"
+      ],
       "claims_processed_annual": "Millions across TherapyNotes user base"
     },
     "services": {
@@ -169,7 +190,9 @@
       "notes": "Founded by licensed psychologist. Wisp note templates auto-suggest CPT codes. Built specifically for mental health workflows."
     },
     "ehr_integrations": {
-      "native_integrations": ["TherapyNotes EHR"],
+      "native_integrations": [
+        "TherapyNotes EHR"
+      ],
       "third_party_integrations": [],
       "api_available": false,
       "hl7_support": false,
@@ -182,7 +205,13 @@
       "dashboards": true,
       "analytics": true,
       "ai_analytics": false,
-      "report_types": ["Claims tracking", "Aging reports", "Payment history", "Outstanding balances", "Payer analysis"]
+      "report_types": [
+        "Claims tracking",
+        "Aging reports",
+        "Payment history",
+        "Outstanding balances",
+        "Payer analysis"
+      ]
     }
   },
   "company_info": {
@@ -201,8 +230,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["practice-admin-operations"],
-    "clinician_workflows": ["billing_coding", "admin_operations", "revenue_cycle"],
+    "primary_clinician_hubs": [
+      "practice-admin-operations"
+    ],
+    "clinician_workflows": [
+      "billing_coding",
+      "admin_operations",
+      "revenue_cycle"
+    ],
     "how_clinicians_use_it": [
       "Submit insurance claims directly from wisp notes",
       "Auto-post ERA payments to patient accounts",
@@ -214,27 +249,36 @@
     "integrations": [],
     "billing_notes": "Excellent value at $0.14/claim. Best for cost-conscious practices not needing advanced RCM features."
   },
-  "capabilities": [
-    "Electronic CMS-1500 claims submission",
-    "Real-time eligibility verification",
-    "ERA/EOB auto-posting",
-    "Wisp note templates with code suggestions",
-    "Secondary insurance billing",
-    "Patient statement generation",
-    "Online patient payments",
-    "Claim status tracking",
-    "Telehealth billing support",
-    "Denial tracking and resubmission"
-  ],
+  "capabilities": [],
   "integrations": [
-    {"name": "Apex EDI", "type": "clearinghouse"},
-    {"name": "Stripe", "type": "payment-processor"}
+    {
+      "name": "Apex EDI",
+      "integration_type": "api",
+      "slug": "apex-edi",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Stripe",
+      "integration_type": "api",
+      "slug": "stripe",
+      "category": "other",
+      "verified": false
+    }
   ],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "psychologist", "therapist-lcsw-lmft", "counselor"],
-    "practice_settings": ["solo-practice", "small-group-practice"],
-    "organization_sizes": ["solo", "small"],
-    "specialties": ["mental-health", "behavioral-health", "therapy", "counseling", "psychology"]
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -248,7 +292,12 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "related_tools": ["simplepractice-insurance-billing", "theranest-billing", "icanotes-billing", "valant-billing"],
+  "related_tools": [
+    "simplepractice-insurance-billing",
+    "theranest-billing",
+    "icanotes-billing",
+    "valant-billing"
+  ],
   "featured": true,
   "status": "active",
   "import_ref": {
@@ -261,5 +310,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.825Z",
-  "updated_at": "2026-08-22T22:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.286Z",
+  "website_url": "https://www.therapynotes.com",
+  "affiliate_url": "https://www.therapynotes.com"
 }

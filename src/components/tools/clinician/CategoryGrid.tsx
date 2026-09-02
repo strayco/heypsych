@@ -59,23 +59,23 @@ const categoryIcons: Record<string, LucideIcon> = {
   "digital-therapeutics": Sparkles,
 };
 
-// Color mapping for V4 categories
+// Color mapping for V4 categories using semantic design tokens
 const categoryColors: Record<string, string> = {
-  "ehr-practice-management": "bg-blue-500/10 text-blue-600",
-  "ai-scribe-documentation": "bg-purple-500/10 text-purple-600",
-  "billing-rcm": "bg-emerald-500/10 text-emerald-600",
-  "telehealth-communication": "bg-cyan-500/10 text-cyan-600",
-  "provider-networks": "bg-indigo-500/10 text-indigo-600",
-  "measurement-outcomes": "bg-emerald-500/10 text-emerald-600",
-  "prescribing-erx": "bg-red-500/10 text-red-600",
-  "credentialing-workforce": "bg-amber-500/10 text-amber-600",
-  "patient-engagement": "bg-pink-500/10 text-pink-600",
-  "clinical-decision-support": "bg-blue-500/10 text-blue-600",
-  "scheduling-intake": "bg-orange-500/10 text-orange-600",
-  "compliance-security": "bg-slate-500/10 text-slate-600",
-  "analytics-reporting": "bg-violet-500/10 text-violet-600",
-  "care-coordination": "bg-sky-500/10 text-sky-600",
-  "digital-therapeutics": "bg-pink-500/10 text-pink-600",
+  "ehr-practice-management": "bg-accent/10 text-accent-600",
+  "ai-scribe-documentation": "bg-treatment/10 text-treatment-600",
+  "billing-rcm": "bg-positive/10 text-positive-600",
+  "telehealth-communication": "bg-tools/10 text-tools-600",
+  "provider-networks": "bg-treatment/10 text-treatment-600",
+  "measurement-outcomes": "bg-positive/10 text-positive-600",
+  "prescribing-erx": "bg-negative/10 text-negative-600",
+  "credentialing-workforce": "bg-caution/10 text-caution-600",
+  "patient-engagement": "bg-treatment/10 text-treatment-600",
+  "clinical-decision-support": "bg-accent/10 text-accent-600",
+  "scheduling-intake": "bg-caution/10 text-caution-600",
+  "compliance-security": "bg-fill-tertiary text-label-secondary",
+  "analytics-reporting": "bg-treatment/10 text-treatment-600",
+  "care-coordination": "bg-tools/10 text-tools-600",
+  "digital-therapeutics": "bg-treatment/10 text-treatment-600",
 };
 
 export function CategoryGrid({
@@ -106,7 +106,7 @@ export function CategoryGrid({
       {categories.map((category) => {
         const Icon = categoryIcons[category.slug] || Laptop;
         const colorClass =
-          categoryColors[category.slug] || "bg-gray-500/10 text-gray-600";
+          categoryColors[category.slug] || "bg-fill-tertiary text-label-secondary";
 
         return (
           <Link

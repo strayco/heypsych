@@ -381,16 +381,28 @@ function deriveFitEvidence(tool: ClinicianToolV4): PracticeFitEvidenceInput {
 function derivePricing(tool: ClinicianToolV4): StructuredPricingInput | undefined {
   if (!tool.pricing) return undefined;
 
-  const basis = mapPricingBasis(tool.pricing.model);
-
   // Helper to convert null to undefined for Zod compatibility
   const orUndefined = <T>(val: T | null | undefined): T | undefined =>
     val === null ? undefined : val;
 
+  const basis = mapPricingBasis(tool.pricing.model);
+  let minPriceCents = orUndefined(tool.pricing.starting_price_cents);
+  let maxPriceCents: number | undefined;
+
+  // For percentage-based pricing, parse from display text if not in cents field
+  if (basis === "percentage-collections" && !minPriceCents) {
+    const parsed = parsePercentageFromDisplay(tool.pricing.starting_price_display);
+    if (parsed) {
+      minPriceCents = parsed.minBasisPoints;
+      maxPriceCents = parsed.maxBasisPoints;
+    }
+  }
+
   return {
     productSlug: tool.slug,
     basis,
-    minPriceCents: orUndefined(tool.pricing.starting_price_cents),
+    minPriceCents,
+    maxPriceCents,
     priceDisplayText: orUndefined(tool.pricing.starting_price_display),
     freeTierAvailable: tool.pricing.free_tier ?? false,
     freeTrialDays: orUndefined(tool.pricing.free_trial_days),
@@ -402,10 +414,78 @@ function derivePricing(tool: ClinicianToolV4): StructuredPricingInput | undefine
 }
 
 /**
+ * Parse percentage from display text like "5% of collections" or "3-6% of collections"
+ * Returns basis points (5% = 500 basis points)
+ */
+function parsePercentageFromDisplay(
+  display?: string
+): { minBasisPoints: number; maxBasisPoints: number } | null {
+  if (!display) return null;
+
+  // Match patterns like "5%", "3-6%", "2.75%", "5% of collections"
+  const rangeMatch = display.match(/(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*%/);
+  if (rangeMatch) {
+    const min = parseFloat(rangeMatch[1]);
+    const max = parseFloat(rangeMatch[2]);
+    return {
+      minBasisPoints: Math.round(min * 100),
+      maxBasisPoints: Math.round(max * 100),
+    };
+  }
+
+  const singleMatch = display.match(/(\d+(?:\.\d+)?)\s*%/);
+  if (singleMatch) {
+    const pct = parseFloat(singleMatch[1]);
+    const basisPoints = Math.round(pct * 100);
+    return { minBasisPoints: basisPoints, maxBasisPoints: basisPoints };
+  }
+
+  return null;
+}
+
+/**
  * Map V4 pricing model to Architect pricing basis
+ *
+ * V4 models: free, freemium, per-provider-month, per-provider-year,
+ *            per-patient, per-encounter, flat-monthly, flat-annual,
+ *            enterprise-custom, usage-based, revenue-share
+ *
+ * Architect basis: free, freemium, per-provider-month, per-provider-year,
+ *                  per-practice-month, per-practice-year, per-location-month,
+ *                  per-location-year, per-encounter, per-transaction,
+ *                  percentage-collections, flat-monthly, flat-annual, custom-quote
  */
 function mapPricingBasis(v4Model?: string): PricingBasis {
   switch (v4Model) {
+    // Direct mappings (V4 → Architect)
+    case "free":
+      return "free";
+    case "freemium":
+      return "freemium";
+    case "per-provider-month":
+      return "per-provider-month";
+    case "per-provider-year":
+      return "per-provider-year";
+    case "per-encounter":
+      return "per-encounter";
+    case "flat-monthly":
+      return "flat-monthly";
+    case "flat-annual":
+      return "flat-annual";
+
+    // Semantic mappings
+    case "enterprise-custom":
+      return "custom-quote";
+    case "per-patient":
+      return "per-encounter";
+    // usage-based → custom-quote: unit types vary (per-transaction, per-minute, per-verification)
+    // so we can't reliably calculate estimates without knowing the specific unit
+    case "usage-based":
+      return "custom-quote";
+    case "revenue-share":
+      return "percentage-collections";
+
+    // Legacy mappings (for any old data)
     case "subscription":
     case "per-user":
       return "per-provider-month";
@@ -416,15 +496,13 @@ function mapPricingBasis(v4Model?: string): PricingBasis {
       return "percentage-collections";
     case "flat-rate":
       return "flat-monthly";
-    case "freemium":
-      return "freemium";
-    case "free":
-      return "free";
     case "custom":
     case "quote":
       return "custom-quote";
+
     default:
-      return "per-provider-month";
+      // Conservative default for unknown models
+      return "custom-quote";
   }
 }
 

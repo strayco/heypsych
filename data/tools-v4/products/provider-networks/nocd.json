@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "provider-network",
+  "kind": "clinician-tool",
   "id": "0fa537b0-34f1-4e7e-abdc-a4488ece611f",
   "slug": "nocd",
   "name": "NOCD",
@@ -15,20 +15,10 @@
     "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [
-    "specialty-ocd-treatment",
-    "virtual-therapy-platform",
-    "erp-therapy-platform"
-  ],
+  "secondary_categories": [],
   "capabilities": [
-    "erp-therapy",
-    "ocd-specialty-care",
     "video-sessions",
-    "between-session-support",
-    "insurance-accepted",
-    "self-pay-options",
     "outcome-tracking",
-    "specialized-training",
     "hipaa-compliant",
     "baa-available",
     "mobile-app"
@@ -36,8 +26,7 @@
   "audiences": {
     "clinician_roles": [
       "psychologist",
-      "therapist-lcsw-lmft",
-      "counselor"
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
       "telehealth-only"
@@ -45,11 +34,6 @@
     "organization_sizes": [
       "solo",
       "small-2-10"
-    ],
-    "specialties": [
-      "ocd",
-      "anxiety",
-      "related-disorders"
     ]
   },
   "feature_flags": {
@@ -90,13 +74,11 @@
   "support_url": "https://www.treatmyocd.com/contact",
   "logo_url": "https://www.treatmyocd.com/logo.png",
   "pricing": {
-    "model": "per-session",
     "starting_price_cents": 0,
     "starting_price_display": "Insurance-based",
     "free_tier": false,
     "free_trial_days": 0,
     "quote_required": false,
-    "price_range": "insurance-dependent",
     "patient_pricing": {
       "insurance_accepted": true,
       "copay_typical": "$0-60 depending on plan",
@@ -121,7 +103,8 @@
       "notes": "Full-time and part-time W-2 positions available. Comprehensive benefits for full-time. NOCD provides all ERP training, supervision, and ongoing professional development."
     },
     "notes": "Insurance billing handled entirely by NOCD. Most patients pay $0-60 copay. Self-pay options available for uninsured patients.",
-    "last_verified": "2025-03-15"
+    "last_verified": "2025-03-15",
+    "model": "enterprise-custom"
   },
   "provider_requirements": {
     "license_required": true,
@@ -206,21 +189,11 @@
     }
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.treatmyocd.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.treatmyocd.com/privacy",
-      "verified_date": "2025-03-15",
-      "confidence": "high"
-    },
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "not-applicable",
+    "gdpr_compliant": "not_applicable",
     "malpractice_coverage": {
       "provided": true,
       "coverage_details": "Professional liability coverage provided for all NOCD therapists"
@@ -231,40 +204,40 @@
       "name": "Aetna",
       "slug": "aetna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Cigna",
       "slug": "cigna",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "UnitedHealthcare / Optum",
       "slug": "united-optum",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Blue Cross Blue Shield (various)",
       "slug": "bcbs",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Anthem",
       "slug": "anthem",
       "category": "payer",
-      "integration_type": "in-network",
+      "integration_type": "api",
       "verified": true
     }
   ],
   "seo": {
-    "title": "NOCD Therapist Jobs: OCD Treatment Provider Network Review | HeyPsych",
+    "title": "NOCD Therapist Jobs: OCD Treatment Provider Network Review",
     "meta_description": "NOCD therapist review: W-2 employment, ERP training, salary, and benefits for licensed therapists. 500+ OCD specialists treating patients in all 50 states.",
     "faqs": [
       {
@@ -344,7 +317,8 @@
     "expansion_notes": "Nationwide coverage with focus on increasing insurance partnerships"
   },
   "created_at": "2026-08-22T20:50:40.804Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.572Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.treatmyocd.com"
 }

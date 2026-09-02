@@ -71,34 +71,35 @@ interface ComparePageClientProps {
 }
 
 // Tool accent colors (subtle, consistent column styling)
+// Uses white/surface backgrounds with colored accents for guaranteed contrast
 const TOOL_ACCENTS = [
   {
-    bg: "bg-blue-50/60",
-    border: "border-blue-100",
-    text: "text-blue-700",
-    headerBg: "bg-blue-50",
-    dot: "bg-blue-400",
+    bg: "bg-surface",
+    border: "border-accent-200",
+    text: "text-accent-600",
+    headerBg: "bg-surface",
+    dot: "bg-accent",
   },
   {
-    bg: "bg-violet-50/60",
-    border: "border-violet-100",
-    text: "text-violet-700",
-    headerBg: "bg-violet-50",
-    dot: "bg-violet-400",
+    bg: "bg-surface",
+    border: "border-treatment-200",
+    text: "text-treatment-600",
+    headerBg: "bg-surface",
+    dot: "bg-treatment",
   },
   {
-    bg: "bg-emerald-50/60",
-    border: "border-emerald-100",
-    text: "text-emerald-700",
-    headerBg: "bg-emerald-50",
-    dot: "bg-emerald-400",
+    bg: "bg-surface",
+    border: "border-positive-200",
+    text: "text-positive-600",
+    headerBg: "bg-surface",
+    dot: "bg-positive",
   },
   {
-    bg: "bg-amber-50/60",
-    border: "border-amber-100",
-    text: "text-amber-700",
-    headerBg: "bg-amber-50",
-    dot: "bg-amber-400",
+    bg: "bg-surface",
+    border: "border-caution-200",
+    text: "text-caution-600",
+    headerBg: "bg-surface",
+    dot: "bg-caution",
   },
 ];
 
@@ -491,10 +492,10 @@ export function ComparePageClient({
                         className={cn(
                           "p-4 text-left rounded-lg border transition-all",
                           isSelected
-                            ? "bg-blue-50 border-blue-200 ring-2 ring-accent"
+                            ? "bg-accent-50 border-accent-200 ring-2 ring-accent"
                             : isDisabled
                             ? "bg-fill-quaternary border-separator opacity-50 cursor-not-allowed"
-                            : "bg-surface border-separator hover:border-accent hover:bg-blue-50/50"
+                            : "bg-surface border-separator hover:border-accent hover:bg-accent-50/50"
                         )}
                       >
                         <div className="flex items-start justify-between">
@@ -536,7 +537,7 @@ export function ComparePageClient({
                   <Link
                     key={comp.slug}
                     href={`/tools/compare/${comp.slug}`}
-                    className="p-4 text-left bg-surface border border-separator rounded-lg hover:border-accent hover:bg-blue-50/50 transition-colors"
+                    className="p-4 text-left bg-surface border border-separator rounded-lg hover:border-accent hover:bg-accent-50/50 transition-colors"
                   >
                     <p className="font-medium text-label-primary">{comp.name}</p>
                     <p className="text-sm text-label-tertiary">{comp.description}</p>
@@ -1038,12 +1039,6 @@ function DemoRequestSection({ tools }: { tools: ClinicianTool[] }) {
         </div>
       ) : null}
 
-      {/* Commission disclosure for affiliate links */}
-      {toolsWithAffiliates.length > 0 && (
-        <p className="mt-4 text-xs text-label-quaternary text-center">
-          HeyPsych may earn a commission from some links
-        </p>
-      )}
     </div>
   );
 }

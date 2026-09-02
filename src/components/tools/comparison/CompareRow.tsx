@@ -58,11 +58,6 @@ export function CompareRow({
             <span className="font-medium text-sm text-label-primary">
               {attribute.label}
             </span>
-            {hasDifferences && (
-              <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded shrink-0">
-                Different
-              </span>
-            )}
           </div>
           {attribute.description && depthLevel === "detailed" && (
             <p className="text-xs text-label-tertiary mt-1">
@@ -107,11 +102,6 @@ export function CompareRow({
           <span className="font-medium text-sm text-label-primary">
             {attribute.label}
           </span>
-          {hasDifferences && (
-            <span className="text-2xs uppercase tracking-wider font-semibold text-caution-600 bg-caution-100 px-1.5 py-0.5 rounded shrink-0">
-              Different
-            </span>
-          )}
         </div>
 
         {/* Tool values stacked */}

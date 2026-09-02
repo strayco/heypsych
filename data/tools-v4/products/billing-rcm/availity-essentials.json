@@ -23,8 +23,7 @@
   "capabilities": [
     "eligibility-verification",
     "prior-authorization",
-    "claims-submission",
-    "clearinghouse"
+    "claims-submission"
   ],
   "audiences": {
     "clinician_roles": [
@@ -41,14 +40,6 @@
       "medium-11-50",
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "primary-care",
-      "specialty-care",
-      "mental-health",
-      "dental",
-      "physical-therapy",
-      "all-specialties"
     ]
   },
   "feature_flags": {
@@ -135,34 +126,49 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
       "method": "api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "epic",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Cerner",
-      "type": "ehr",
       "method": "api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "cerner",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Athenahealth",
-      "type": "ehr",
       "method": "api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "athenahealth",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "eClinicalWorks",
-      "type": "ehr",
       "method": "api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "eclinicalworks",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Major health plans",
-      "type": "payer",
       "method": "direct-connect",
       "native": true,
-      "notes": "95%+ of US commercial payers"
+      "notes": "95%+ of US commercial payers",
+      "integration_type": "api",
+      "slug": "major-health-plans",
+      "category": "other",
+      "verified": false
     }
   ],
   "features": {
@@ -213,7 +219,7 @@
     "change-healthcare"
   ],
   "created_at": "2026-08-22T20:50:40.822Z",
-  "updated_at": "2026-08-23T12:00:00.000Z",
+  "updated_at": "2026-09-01T19:31:57.275Z",
   "status": "active",
   "seo": {
     "title": "Availity Essentials",
@@ -246,5 +252,7 @@
       "payer connectivity",
       "healthcare clearinghouse"
     ]
-  }
+  },
+  "website_url": "https://www.availity.com/essentials",
+  "affiliate_url": "https://www.availity.com/essentials"
 }

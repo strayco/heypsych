@@ -6,7 +6,7 @@
   "name": "Abridge",
   "company_name": "Abridge",
   "website": "https://www.abridge.com",
-  "description": "Abridge is an AI-powered clinical documentation platform that converts patient-clinician conversations into structured medical notes in real-time. Originally developed with input from UPMC and academic medical centers, Abridge focuses on generating evidence-linked documentation that shows exactly which parts of the conversation support each element of the note.",
+  "description": "Abridge is the Best in KLAS Ambient AI vendor for two consecutive years (2025 and 2026), deployed at Mayo Clinic, Duke Health, Johns Hopkins, Kaiser Permanente, and 250+ health systems. The platform generates evidence-linked notes where each documentation element links back to the specific conversation that supports it—a transparency feature no competitor matches. With $800M+ in funding and deep Epic integration, Abridge has become the enterprise standard for academic medical centers. Pricing runs $400-700/provider/month for full deployment, with a new July 2026 'Unlimited Enterprise Agreement' site-license option. Behavioral health divisions inside Abridge-contracted health systems can access the platform, but solo mental health practices should use therapy-specific tools at 1/10th the cost.",
   "import_ref": {
     "record_id": "MH-0184",
     "source_row": 185,
@@ -17,7 +17,11 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "enterprise-healthcare-ai"],
+  "secondary_categories": [
+    "ai-copilot-clinical"
+  ],
+  "short_description": "Best in KLAS 2025-2026 enterprise ambient AI at Mayo Clinic, Duke, Johns Hopkins. $400-700/mo. Evidence-linked notes. Not for solo mental health practices.",
+  "one_liner": "The enterprise ambient AI standard for academic medical centers. Evidence-linked notes at premium pricing.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -30,30 +34,17 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
+      "medical-director",
+      "psychiatric-np-pa",
       "psychiatrist"
     ],
     "practice_settings": [
-      "hospital-system",
-      "academic-medical-center",
-      "large-health-system",
-      "outpatient-clinic",
-      "group-practice"
+      "hospital-inpatient",
+      "multi-site-enterprise"
     ],
-    "organization_sizes": ["medium", "large", "enterprise"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "cardiology",
-      "oncology",
-      "neurology",
-      "rheumatology",
-      "endocrinology",
-      "pulmonology",
-      "psychiatry"
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
@@ -71,46 +62,58 @@
   "company": {
     "founded_year": 2018,
     "headquarters": "Pittsburgh, PA",
-    "employee_count": "200-500",
-    "funding_total": "$212.5M+",
-    "funding_stage": "Series C",
-    "notable_investors": ["Spark Capital", "Bessemer Venture Partners", "CVS Health Ventures", "UPMC"],
-    "customer_count": "Major health systems including UPMC, UCI Health, Emory Healthcare",
-    "notable_clients": ["UPMC", "UCI Health", "Emory Healthcare", "ChristianaCare"]
+    "employee_count": "500+",
+    "funding_total": "$800M+",
+    "funding_stage": "Series D+",
+    "notable_investors": [
+      "Spark Capital",
+      "Bessemer Venture Partners",
+      "CVS Health Ventures",
+      "UPMC",
+      "Elad Gil"
+    ],
+    "customer_count": "250+ health systems",
+    "notable_clients": [
+      "Mayo Clinic",
+      "Duke Health",
+      "Johns Hopkins",
+      "Kaiser Permanente",
+      "UPMC",
+      "UCI Health",
+      "Emory Healthcare",
+      "ChristianaCare"
+    ],
+    "awards": [
+      "Best in KLAS Ambient AI 2025",
+      "Best in KLAS Ambient AI 2026"
+    ]
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "starting_price": null,
+    "starting_price_cents": 40000,
+    "starting_price_display": "$400-700/provider/mo enterprise; ~$2,500-7,200/provider/year",
     "currency": "USD",
     "billing_period": "annual",
+    "free_tier": false,
     "tiers": [
       {
-        "name": "Enterprise",
-        "price": null,
-        "period": "annual",
-        "features": [
-          "Ambient AI documentation",
-          "Evidence-linked notes",
-          "Real-time transcription",
-          "Native Epic integration",
-          "Patient summary generation",
-          "Multi-specialty templates",
-          "Implementation support",
-          "Dedicated success team"
-        ],
-        "quote_required": true
+        "name": "Enterprise Per-Provider",
+        "price": "$400-700/provider/month",
+        "description": "Per-clinician licensing. Full ambient AI, evidence-linked notes, Epic integration, dedicated success team."
+      },
+      {
+        "name": "Unlimited Enterprise Agreement",
+        "price": "Site license (July 2026)",
+        "description": "Decouples price from clinician headcount. Site-wide license for large health systems."
       }
     ],
-    "estimated_range": "$150-300 per provider per month (enterprise volume pricing)",
-    "free_trial": {
-      "available": false,
-      "notes": "Pilot programs available for health systems"
-    },
-    "notes": "Enterprise pricing only. Health system pilots typically 3-6 months. Annual contracts."
+    "implementation_fees": "Significant—enterprise deployment includes integration, training, change management",
+    "notes": "No self-serve. No free trial. Pilot programs for health systems (3-6 months). For a 200-physician system, expect $1.4M-$1.9M annually before implementation costs. Annual contracts with volume discounts.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -122,32 +125,42 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true,
-      "notes": "Deep Epic integration, featured in Epic App Orchard"
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Deep native integration, Epic App Orchard featured. Core competitive advantage."
     },
     {
       "name": "Oracle Health (Cerner)",
-      "type": "ehr",
-      "method": "api",
-      "native": false
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "api",
-      "native": false
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "MEDITECH",
+      "slug": "meditech",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Listens to conversations and generates evidence-linked documentation"
+      "description": "Multi-party conversation capture with evidence-linked documentation."
     },
     "evidence_linking": {
       "supported": true,
-      "description": "Each element in the note links back to the specific part of the conversation that supports it"
+      "description": "Each note element links to the specific conversation segment that supports it—unique transparency feature."
     },
     "note_types": [
       "SOAP notes",
@@ -161,63 +174,79 @@
     "custom_templates": true,
     "voice_commands": false,
     "multi_language": true,
-    "real_time": true,
-    "accuracy_rate": "Enterprise-grade with evidence linking for verification"
+    "real_time": true
   },
   "best_for": [
-    "Large health systems seeking Epic-native AI documentation",
-    "Academic medical centers requiring evidence-linked notes",
-    "Organizations prioritizing note accuracy verification",
-    "Health systems with 50+ providers",
-    "Practices needing HITRUST-certified solutions",
-    "Multi-specialty health systems"
+    "Academic medical centers requiring evidence-linked documentation for quality assurance",
+    "Health systems already on Epic seeking Best in KLAS ambient AI",
+    "Enterprise behavioral health divisions inside hospital systems",
+    "Organizations with 100+ providers and IT resources for enterprise deployment",
+    "Health systems prioritizing HITRUST certification and audit trails"
   ],
   "not_for": [
-    "Solo practitioners (enterprise focus)",
-    "Small practices under 20 providers",
-    "Mental health-specific practices (consider Mentalyc)",
-    "Organizations without Epic, Cerner, or Athena",
-    "Budget-conscious practices seeking low-cost options"
+    "Solo mental health practices—Mentalyc ($20-70/mo) or Upheal ($69/mo) cost 90% less",
+    "Therapists doing psychotherapy—Abridge doesn't understand therapy modalities",
+    "Small practices under 50 providers—enterprise pricing prohibitive",
+    "Organizations without Epic, Cerner, or athena—value diminishes",
+    "Budget-conscious practices—Freed ($39-119/mo) offers similar ambient AI at 1/5th the cost"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 90,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 95,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["nuance-dax-copilot", "suki-assistant", "ambience-healthcare", "deepscribe"],
+  "related_tools": [
+    "nuance-dax-copilot",
+    "suki-ai",
+    "ambience-healthcare",
+    "deepscribe",
+    "nabla"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "suki-ai",
+    "ambience-healthcare"
+  ],
   "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Abridge AI Scribe: Evidence-Linked Documentation Review | HeyPsych",
-    "meta_description": "Abridge AI documentation review - evidence-linked clinical notes for health systems. Native Epic integration, HITRUST certified. Enterprise pricing for 50+ providers.",
+    "title": "Abridge: Best in KLAS AI Scribe 2026 | HeyPsych",
+    "meta_description": "Abridge AI: Best in KLAS 2025-2026. $400-700/provider/mo. Evidence-linked notes at Mayo Clinic, Duke, Johns Hopkins. Enterprise only—not for solo practices.",
     "faqs": [
       {
-        "question": "What makes Abridge different from other AI scribes?",
-        "answer": "Abridge's key differentiator is evidence-linked documentation - each element of the generated note links back to the specific part of the conversation that supports it. This makes it easy for clinicians to verify accuracy and understand the AI's reasoning."
+        "q": "How much does Abridge cost in 2026?",
+        "a": "Abridge runs $400-700/provider/month for full enterprise deployment ($2,500-7,200/provider/year). A 200-physician health system should expect $1.4M-$1.9M annually before implementation costs. In July 2026, Abridge introduced an 'Unlimited Enterprise Agreement' site-license option that decouples pricing from headcount."
       },
       {
-        "question": "Does Abridge integrate with Epic?",
-        "answer": "Yes, Abridge has deep native integration with Epic and is featured in the Epic App Orchard. Notes can be written directly into Epic without copy-paste. The integration supports real-time documentation."
+        "q": "Is Abridge good for psychiatry?",
+        "a": "Psychiatry departments inside Abridge-contracted health systems can access the platform, but Abridge was not built specifically for behavioral health. It generates broad medical notes, not psychiatry-specific documentation with MSE structure or risk assessment fields. Solo psychiatrists should use Freed ($39-119/mo) instead."
       },
       {
-        "question": "How much does Abridge cost?",
-        "answer": "Abridge is enterprise-priced and requires a custom quote. Typical pricing ranges from $150-300 per provider per month with volume discounts for large health systems. Pilot programs are available."
+        "q": "What makes Abridge different from Nuance DAX?",
+        "a": "Abridge's evidence linking is unique—each note element links to the exact conversation segment that supports it, enabling quality audit. Abridge is also Best in KLAS for two consecutive years (2025-2026). Both serve enterprise health systems at premium pricing; Abridge may be slightly lower cost than DAX's $600-800+/month range."
       },
       {
-        "question": "Is Abridge suitable for mental health practices?",
-        "answer": "While Abridge can generate psychiatry notes, it's primarily designed for general medical specialties. Mental health-specific practices may benefit more from tools like Mentalyc or Upheal that specialize in therapy documentation."
+        "q": "Does Abridge have a free trial?",
+        "a": "No. Abridge is enterprise-only with no self-serve option. Health systems can arrange pilot programs (typically 3-6 months) through the sales process. There is no individual clinician signup."
+      },
+      {
+        "q": "Is Abridge worth it for mental health practices?",
+        "a": "For most mental health practices, no. At $400-700/provider/month, Abridge costs 5-10x more than alternatives. Mentalyc ($20-70/mo) and Upheal ($69/mo) are built for therapy. Freed ($39-119/mo) works for psychiatry. Abridge makes sense only for behavioral health divisions inside large hospital systems already deploying Abridge enterprise-wide."
       }
     ],
     "keywords": [
+      "Abridge",
       "Abridge AI",
-      "Abridge medical scribe",
+      "Abridge pricing 2026",
+      "Best in KLAS ambient AI",
       "evidence-linked documentation",
       "Epic AI scribe",
-      "clinical documentation AI",
-      "ambient AI healthcare",
-      "UPMC AI scribe"
+      "Abridge vs Nuance DAX",
+      "enterprise AI scribe"
     ]
-  }
+  },
+  "website_url": "https://www.abridge.com",
+  "affiliate_url": "https://www.abridge.com"
 }

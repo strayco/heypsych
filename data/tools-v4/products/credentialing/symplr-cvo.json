@@ -19,22 +19,22 @@
     "status": "active"
   },
   "primary_category": "credentialing-workforce",
-  "secondary_categories": ["compliance", "workforce-management"],
-  "capabilities": [
-    "credentials-verification-organization",
-    "primary-source-verification",
-    "delegated-credentialing",
-    "privileging-management",
-    "payer-enrollment",
-    "sanctions-monitoring",
-    "license-tracking",
-    "peer-review-support"
+  "secondary_categories": [
+    "compliance-consent-security"
   ],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["practice-administrator", "medical-staff-coordinator", "credentialing-specialist"],
-    "practice_settings": ["hospital", "health-system", "managed-care-organization", "large-medical-group", "aco"],
-    "organization_sizes": ["large", "enterprise"],
-    "specialties": ["multi-specialty", "behavioral-health", "primary-care"]
+    "clinician_roles": [
+      "practice-administrator"
+    ],
+    "practice_settings": [
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -54,7 +54,9 @@
     "employee_count": "2,000+",
     "funding_stage": "Private Equity",
     "total_funding": "Private (Clearlake Capital)",
-    "key_investors": ["Clearlake Capital Group"],
+    "key_investors": [
+      "Clearlake Capital Group"
+    ],
     "customer_count": "2,900+ healthcare organizations"
   },
   "features": {
@@ -102,66 +104,107 @@
       {
         "name": "PSV Services",
         "price_range": "$75-150 per provider verification",
-        "features": ["Primary source verification", "Sanctions screening", "License verification", "DEA verification"]
+        "features": [
+          "Primary source verification",
+          "Sanctions screening",
+          "License verification",
+          "DEA verification"
+        ]
       },
       {
         "name": "Managed Credentialing",
         "price_range": "$200-400/provider/year",
-        "features": ["Full PSV package", "Ongoing monitoring", "Expiration management", "Reporting"]
+        "features": [
+          "Full PSV package",
+          "Ongoing monitoring",
+          "Expiration management",
+          "Reporting"
+        ]
       },
       {
         "name": "Full CVO Services",
         "price_range": "Custom enterprise pricing",
-        "features": ["Delegated credentialing", "Privileging support", "Payer enrollment", "Committee preparation"]
+        "features": [
+          "Delegated credentialing",
+          "Privileging support",
+          "Payer enrollment",
+          "Committee preparation"
+        ]
       }
     ],
     "implementation_cost": "$25,000-100,000+",
     "notes": "Enterprise pricing based on provider count, scope of services, and implementation complexity. Multi-year contracts standard."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "type-2",
-    "hitrust": "certified",
+    "soc2": "yes",
+    "hitrust": "yes",
     "gdpr_compliant": "yes",
     "ncqa_certified": true,
-    "additional_certifications": ["NCQA CVO Certification", "Joint Commission Recognized", "SOC 2 Type II", "HITRUST CSF Certified"]
+    "additional_certifications": [
+      "NCQA CVO Certification",
+      "Joint Commission Recognized",
+      "SOC 2 Type II",
+      "HITRUST CSF Certified"
+    ]
   },
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
-      "description": "Medical staff and credentialing integration"
+      "description": "Medical staff and credentialing integration",
+      "integration_type": "api",
+      "slug": "epic",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Cerner",
-      "type": "ehr",
-      "description": "Provider data integration"
+      "description": "Provider data integration",
+      "integration_type": "api",
+      "slug": "cerner",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Meditech",
-      "type": "ehr",
-      "description": "Medical staff services integration"
+      "description": "Medical staff services integration",
+      "integration_type": "api",
+      "slug": "meditech",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "symplr Provider",
-      "type": "credentialing",
-      "description": "Native integration with symplr credentialing software"
+      "description": "Native integration with symplr credentialing software",
+      "integration_type": "api",
+      "slug": "symplr-provider",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "CAQH ProView",
-      "type": "credentialing",
-      "description": "CAQH data integration"
+      "description": "CAQH data integration",
+      "integration_type": "api",
+      "slug": "caqh-proview",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "NPDB",
-      "type": "verification",
-      "description": "National Practitioner Data Bank queries"
+      "description": "National Practitioner Data Bank queries",
+      "integration_type": "api",
+      "slug": "npdb",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "State Medical Boards",
-      "type": "verification",
-      "description": "Direct license verification connections"
+      "description": "Direct license verification connections",
+      "integration_type": "api",
+      "slug": "state-medical-boards",
+      "category": "other",
+      "verified": false
     }
   ],
   "governance": {
@@ -183,31 +226,18 @@
     "Practices with tight budgets",
     "Solo practitioners or small group practices"
   ],
-  "related_tools": ["symplr-provider", "symplr-workforce", "medallion-credentialing", "healthstream-credentialstream"],
+  "related_tools": [
+    "symplr-provider",
+    "symplr-workforce",
+    "medallion-credentialing",
+    "healthstream-credentialstream"
+  ],
   "created_at": "2026-08-22T20:50:40.829Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.523Z",
   "status": "active",
   "seo": {
     "title": "symplr CVO: Enterprise Credentialing Services | HeyPsych",
-    "meta_description": "symplr CVO review: NCQA-certified credentials verification organization for health systems. Primary source verification, delegated credentialing, and privileging support.",
-    "faqs": [
-      {
-        "question": "What makes symplr CVO different from credentialing software?",
-        "answer": "symplr CVO is a full-service Credentials Verification Organization that performs credentialing work on your behalf, while credentialing software is a tool you use to manage the process yourself. symplr CVO handles primary source verification, document collection, and ongoing monitoring as an outsourced service."
-      },
-      {
-        "question": "Is symplr CVO NCQA certified?",
-        "answer": "Yes, symplr CVO maintains NCQA certification for credentials verification organization services. This certification meets the requirements for delegated credentialing from health plans and ensures compliance with industry standards for primary source verification."
-      },
-      {
-        "question": "How does symplr CVO handle privileging for behavioral health providers?",
-        "answer": "symplr CVO supports privileging for all provider types including psychiatrists, psychologists, and behavioral health specialists. They work with your medical staff office to apply appropriate privilege criteria, track FPPE/OPPE requirements, and prepare credentials packets for committee review."
-      },
-      {
-        "question": "What is the typical turnaround time for symplr CVO verifications?",
-        "answer": "Standard primary source verifications are typically completed within 5-10 business days. Complex cases requiring additional outreach may take longer. symplr offers expedited verification services for urgent credentialing needs with faster turnaround for additional fees."
-      }
-    ],
+    "meta_description": "symplr CVO review: NCQA-certified credentials verification organization for health systems. Primary source verification, delegated credentialing, and...",
     "keywords": [
       "symplr CVO",
       "credentials verification organization",
@@ -219,5 +249,6 @@
       "medical staff services",
       "privileging services"
     ]
-  }
+  },
+  "affiliate_url": "https://www.symplr.com/solutions/credentialing"
 }

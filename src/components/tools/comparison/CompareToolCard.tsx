@@ -63,8 +63,8 @@ export function CompareToolCard({
             </Link>
           </h3>
 
-          {/* Company */}
-          {tool.company_name && (
+          {/* Company - only show if different from tool name */}
+          {tool.company_name && tool.company_name !== tool.name && (
             <p className="text-xs text-label-tertiary truncate mt-0.5">
               {tool.company_name}
             </p>

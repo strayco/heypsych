@@ -160,16 +160,11 @@ function renderListValue(value: ToolComparisonValue) {
     );
   }
 
-  // Show first 3 items, with indicator if more
-  const displayItems = items.slice(0, 3);
-  const moreCount = items.length - 3;
-
+  // Use the pre-formatted display value which has proper labels
+  // The extractValue already formats lists with proper labels (e.g., "Solo, Small (2-10)")
   return (
     <div className="text-sm text-label-primary">
-      {displayItems.join(", ")}
-      {moreCount > 0 && (
-        <span className="text-label-tertiary"> +{moreCount} more</span>
-      )}
+      {value.display}
     </div>
   );
 }

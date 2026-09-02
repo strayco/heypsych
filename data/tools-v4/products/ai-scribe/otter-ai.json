@@ -1,100 +1,229 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "otter-ai",
+  "id": "11ba15e6-7ea8-418e-84d1-7a536817caff",
   "slug": "otter-ai",
   "name": "Otter.ai",
   "company_name": "Otter.ai",
+  "website": "https://otter.ai",
+  "description": "Otter.ai is a general-purpose AI meeting transcription platform that achieved HIPAA compliance in July 2025 (Enterprise tier only). Pricing: Free (300 min/mo), Pro $16.99/mo monthly ($8.33 annual) with 1,200 min, Business $30/mo ($19.99 annual) with unlimited transcription, Enterprise custom ($17,622/year median). HIPAA compliance and BAA require Enterprise plan as add-on—not included on lower tiers. SOC 2 Type 2 certified. Key limitation: Not purpose-built for clinical documentation—no specialty templates, MSE formats, or EHR integration. Best for healthcare admin teams transcribing meetings and care coordination calls. For clinical documentation, purpose-built tools like Freed ($39-119/mo) or Mentalyc ($20-70/mo) are more appropriate.",
   "import_ref": {
     "source_file": "ai-scribe-research-2026",
-    "import_timestamp": "2026-08-22T21:10:42.891Z"
+    "import_timestamp": "2026-08-22T21:10:42.891Z",
+    "record_id": "otter-ai"
   },
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "ai-scribe",
+  "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
+  "short_description": "Meeting transcription platform with HIPAA on Enterprise tier only. Free-$30/mo consumer tiers. Not clinical-specific. Best for admin/care coordination meetings.",
+  "one_liner": "Meeting transcription. HIPAA on Enterprise only. Free-$30/mo. Not clinical-specific.",
   "capabilities": [
     "voice-transcription",
     "note-generation",
-    "mobile-app",
-    "hipaa-compliant",
-    "baa-available"
+    "mobile-app"
   ],
   "audiences": {
-    "clinician_roles": [],
+    "clinician_roles": [
+      "practice-administrator",
+      "medical-director"
+    ],
     "practice_settings": [
-      "solo-practice",
-      "group-practice"
+      "group-practice",
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
-      "solo",
-      "small-2-10",
-      "medium-11-50"
-    ],
-    "specialties": [
-      "mental-health"
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
     "has_mobile_app": true,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": true
   },
-  "short_description": "AI meeting transcription and note-taking platform that achieved HIPAA compliance in July 2025. Enterprise plan offers BAA for healthcare use cases including clinical documentation and patient coordina",
-  "long_description": "AI meeting transcription and note-taking platform that achieved HIPAA compliance in July 2025. Enterprise plan offers BAA for healthcare use cases including clinical documentation and patient coordination.",
-  "one_liner": "AI meeting transcription and note-taking platform that achieved HIPAA compliance in July 2025",
-  "best_for": [],
-  "not_for": [
-    "Service stops when limit reached",
-    "Only English, French, Spanish"
-  ],
-  "website_url": "https://otter.ai",
-  "pricing_url": "https://otter.ai/pricing",
-  "pricing": {
-    "model": "subscription",
-    "free_tier": false,
-    "free_trial_days": 0,
-    "quote_required": false
-  },
-  "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
-  },
-  "integrations": [],
-  "seo": {
-    "title": "Otter.ai: Mental Health Tool | HeyPsych",
-    "meta_description": "AI meeting transcription and note-taking platform that achieved HIPAA compliance in July 2025. Enterprise plan offers BAA for healthcare use cases includin",
-    "faqs": [],
-    "keywords": [
-      "Otter.ai",
-      "AI scribe",
-      "medical documentation",
-      "clinical notes"
-    ]
-  },
-  "governance": {
-    "last_reviewed": "2026-08-22",
-    "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 85
-  },
-  "related_tools": [],
-  "competitor_tools": [],
-  "company_info": {
+  "company": {
     "founded_year": 2016,
     "headquarters": "Mountain View, California, USA"
   },
+  "pricing": {
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier to $30/mo (Enterprise custom)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Basic tier free with 300 minutes/month. Not HIPAA compliant.",
+    "tiers": [
+      {
+        "name": "Basic (Free)",
+        "price": "$0",
+        "description": "300 minutes/month. NOT HIPAA compliant. Personal use only."
+      },
+      {
+        "name": "Pro",
+        "price": "$16.99/month ($8.33 annual)",
+        "description": "1,200 minutes/month. NOT HIPAA compliant. Individual professionals."
+      },
+      {
+        "name": "Business",
+        "price": "$30/month ($19.99 annual)",
+        "description": "Unlimited transcription, 6,000 imported-file minutes/user. NOT HIPAA compliant. Team collaboration."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom (~$17,622/year median)",
+        "description": "HIPAA compliance add-on, BAA available, SSO, CRM integrations, dedicated CSM. Negotiable—50% discounts reported."
+      }
+    ],
+    "notes": "HIPAA compliance is Enterprise-only add-on. Free through Business tiers are NOT suitable for patient data. Enterprise contracts include 7% annual increases and auto-renewal.",
+    "last_verified": "2026-09-01"
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "no",
+    "gdpr_compliant": "yes",
+    "security_note": "SOC 2 Type 2 certified. AES-256 encryption at rest. HIPAA compliance available only as Enterprise add-on—not on Free/Pro/Business tiers."
+  },
+  "integrations": [
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Video replay for Zoom meetings (Enterprise)"
+    },
+    {
+      "name": "Google Meet",
+      "slug": "google-meet",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "Salesforce",
+      "slug": "salesforce",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Enterprise tier only"
+    },
+    {
+      "name": "HubSpot",
+      "slug": "hubspot",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Enterprise tier only"
+    }
+  ],
+  "features": {
+    "transcription": {
+      "supported": true,
+      "description": "Real-time meeting transcription with speaker identification."
+    },
+    "ai_summary": {
+      "supported": true,
+      "description": "AI-generated meeting summaries and action items."
+    },
+    "languages": {
+      "supported": [
+        "English",
+        "French",
+        "Spanish"
+      ],
+      "description": "Limited to 3 languages—English, French, Spanish."
+    },
+    "clinical_templates": {
+      "supported": false,
+      "description": "No clinical templates, SOAP notes, MSE, or specialty formats available."
+    },
+    "note_types": [
+      "Meeting transcripts",
+      "Meeting summaries",
+      "Action items"
+    ]
+  },
+  "best_for": [
+    "Healthcare admin teams transcribing staff meetings and coordination calls",
+    "Enterprise organizations with existing Otter Enterprise contracts wanting HIPAA",
+    "Care coordination teams documenting interdisciplinary meetings",
+    "Non-clinical staff meetings and training sessions",
+    "Organizations already using Salesforce/HubSpot CRM integrations"
+  ],
+  "not_for": [
+    "Clinical documentation—Freed ($39-119/mo) or Heidi ($99/mo) purpose-built for patient visits",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) have therapy-specific templates",
+    "Budget-conscious practices—HIPAA requires expensive Enterprise tier (~$17K/year)",
+    "Solo clinicians—no clinical templates, no EHR integration, no specialty formats",
+    "Practices needing MSE, risk assessments, or medication management documentation"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
+  },
+  "related_tools": [
+    "freed-ai",
+    "zoom-clinical-notes",
+    "microsoft-dragon-copilot"
+  ],
+  "competitor_tools": [
+    "zoom-clinical-notes"
+  ],
   "created_at": "2026-08-22T21:10:42.891Z",
-  "updated_at": "2026-08-22T21:10:42.891Z",
-  "featured": false,
-  "status": "active"
+  "updated_at": "2026-09-01T00:00:00.000Z",
+  "status": "active",
+  "seo": {
+    "title": "Otter.ai: Meeting Transcription 2026 | HeyPsych",
+    "meta_description": "Otter.ai: Meeting transcription with HIPAA on Enterprise only (~$17K/yr). Free-$30/mo consumer tiers NOT HIPAA compliant. Not clinical-specific. Best for adm...",
+    "faqs": [
+      {
+        "q": "Is Otter.ai HIPAA compliant for clinical use?",
+        "a": "Only the Enterprise tier offers HIPAA compliance as an add-on. Free, Pro, and Business tiers are NOT HIPAA compliant and should NOT be used for patient data. Enterprise costs ~$17,622/year median."
+      },
+      {
+        "q": "How much does Otter.ai cost in 2026?",
+        "a": "Otter.ai has four tiers: Free ($0, 300 min/mo), Pro ($16.99/mo or $8.33 annual, 1,200 min), Business ($30/mo or $19.99 annual, unlimited), Enterprise (custom, ~$17,622/year median). Only Enterprise includes HIPAA."
+      },
+      {
+        "q": "Can I use Otter.ai for therapy sessions?",
+        "a": "Not recommended. Otter.ai lacks clinical templates, therapy-specific note formats (SOAP/DAP/BIRP), MSE documentation, and EHR integration. Use purpose-built tools like Mentalyc ($20-70/mo) or Upheal ($69/mo) for therapy."
+      },
+      {
+        "q": "What is Otter.ai best for in healthcare?",
+        "a": "Otter.ai (Enterprise) is best for healthcare admin teams transcribing staff meetings, care coordination calls, and training sessions—not clinical patient encounters."
+      },
+      {
+        "q": "Otter.ai vs Freed: which is better for clinical documentation?",
+        "a": "Freed ($39-119/mo) is purpose-built for clinical documentation with HIPAA compliance, specialty templates, EHR integration, and MSE formats. Otter.ai is a meeting transcription tool not designed for patient encounters. For clinical use, choose Freed."
+      }
+    ],
+    "keywords": [
+      "Otter.ai",
+      "Otter.ai HIPAA",
+      "Otter.ai healthcare",
+      "Otter.ai pricing 2026",
+      "meeting transcription HIPAA",
+      "Otter.ai vs Freed",
+      "Otter.ai clinical use"
+    ]
+  },
+  "website_url": "https://otter.ai",
+  "pricing_url": "https://otter.ai/pricing",
+  "affiliate_url": "https://otter.ai"
 }

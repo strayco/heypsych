@@ -4,6 +4,9 @@
   "id": "7a7327bd-2901-4a4a-bfac-e7b8fefea305",
   "slug": "scribeberry",
   "name": "Scribeberry",
+  "company_name": "Scribeberry",
+  "website": "https://scribeberry.com",
+  "description": "Scribeberry is an AI medical scribe trusted by 30,000+ providers with transparent pricing: Free tier (20 uses/month after 3-day unlimited trial), Pro at $99/month unlimited, Enterprise from $79/user/month with volume discounts. Claims 99.9% accuracy and finishing charting in 2 minutes instead of 20. HIPAA and PIPEDA compliant—works internationally (Canada focus). Works with every EMR via copy-paste or integration. Ambient scribe, dictation, templates, and forms included in Pro tier. ROI math: $99/mo vs $35,000/year human scribe = break-even by day 12.",
   "import_ref": {
     "record_id": "MH-0201",
     "source_row": 202,
@@ -15,12 +18,30 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "30,000+ provider AI scribe. Free tier (20/mo), Pro $99/mo. 99.9% accuracy. HIPAA + PIPEDA compliant. Works with every EMR.",
+  "one_liner": "30,000+ providers. Free tier + $99/mo Pro. 99.9% accuracy. HIPAA + PIPEDA.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -34,35 +55,148 @@
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "Canada",
+    "customer_count": "30,000+ providers"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier or $99/mo Pro",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "3-day unlimited trial, then 20 uses/month free. No credit card required.",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "$0",
+        "description": "3-day unlimited trial, then 20 uses/month. No credit card required."
+      },
+      {
+        "name": "Pro",
+        "price": "$99/month",
+        "description": "Unlimited use. Ambient scribe, dictation, EMR integration, templates, forms. 99.9% accuracy."
+      },
+      {
+        "name": "Enterprise",
+        "price": "From $79/user/month",
+        "description": "Volume discounts. Team management. Custom integrations."
+      }
+    ],
+    "notes": "ROI math: $99/mo × 12 = $1,188/year vs $35,000 average human scribe cost. Break-even by day 12. PIPEDA compliant for Canadian practices.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "pipeda_compliant": "yes",
+    "security_note": "HIPAA and PIPEDA compliant. Works with Canadian healthcare requirements."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Any EMR",
+      "slug": "universal-emr",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Works with every EMR via copy-paste or direct integration"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Ambient scribe captures conversations and generates structured notes."
+    },
+    "dictation": {
+      "supported": true,
+      "description": "Medical dictation for voice-to-text documentation."
+    },
+    "accuracy": {
+      "rate": "99.9%",
+      "description": "Claims 99.9% accuracy with charting in 2 minutes instead of 20."
+    },
+    "templates": true,
+    "forms": true,
+    "emr_integration": {
+      "supported": true,
+      "description": "Works with every EMR via copy-paste or integration."
+    }
+  },
+  "best_for": [
+    "Canadian practices needing PIPEDA-compliant AI scribe",
+    "Budget-conscious clinicians wanting free tier to test (20 uses/month)",
+    "Solo practitioners wanting $99/mo unlimited AI scribe",
+    "Practices using EMRs without native AI scribe integrations",
+    "Group practices wanting volume discounts (Enterprise from $79/user)"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) built for therapy",
+    "Psychiatrists needing medication management—consider Freed or mdhub",
+    "Practices wanting native EHR integration—Scribeberry is copy-paste focused",
+    "US practices requiring HITRUST certification",
+    "Clinicians wanting completely free tier—20/month may not be enough"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 87,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "commure-scribe",
+    "s10-ai",
+    "chartnote"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "commure-scribe",
+    "s10-ai"
+  ],
   "created_at": "2026-08-22T20:50:40.790Z",
-  "updated_at": "2026-08-22T20:50:40.790Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Scribeberry: Review & Pricing | HeyPsych",
-    "meta_description": "Scribeberry review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Scribeberry: Free + $99/mo AI Scribe | HeyPsych",
+    "meta_description": "Scribeberry: 30,000+ provider AI scribe. Free tier (20/mo) + Pro $99/mo unlimited. 99.9% accuracy. HIPAA + PIPEDA compliant. Works with every EMR.",
+    "faqs": [
+      {
+        "q": "How much does Scribeberry cost in 2026?",
+        "a": "Scribeberry offers a free tier (3-day unlimited trial, then 20 uses/month), Pro at $99/month unlimited, and Enterprise from $79/user/month with volume discounts. No credit card required for free tier."
+      },
+      {
+        "q": "Does Scribeberry have a free tier?",
+        "a": "Yes. After a 3-day unlimited trial, Scribeberry offers 20 free uses per month indefinitely. No credit card required. Pro tier ($99/mo) is unlimited."
+      },
+      {
+        "q": "Is Scribeberry PIPEDA compliant for Canadian practices?",
+        "a": "Yes. Scribeberry is both HIPAA and PIPEDA compliant, making it suitable for Canadian healthcare practices with privacy requirements."
+      },
+      {
+        "q": "What is Scribeberry's accuracy rate?",
+        "a": "Scribeberry claims 99.9% accuracy with charting completed in 2 minutes instead of 20 minutes manually."
+      },
+      {
+        "q": "Scribeberry vs Freed: which is better?",
+        "a": "Both cost $99/mo for Pro tier. Scribeberry has Canadian PIPEDA compliance and a generous free tier (20/month). Freed starts at $39/mo and is stronger in US market. For Canadian practices, Scribeberry. For budget-conscious US practices, Freed."
+      }
+    ],
     "keywords": [
       "Scribeberry",
-      "ai scribe documentation"
+      "Scribeberry pricing 2026",
+      "AI medical scribe Canada",
+      "PIPEDA AI scribe",
+      "Scribeberry free tier",
+      "Scribeberry vs Freed",
+      "Canadian medical scribe AI"
     ]
-  }
+  },
+  "website_url": "https://scribeberry.com",
+  "pricing_url": "https://www.scribeberry.com/pricing",
+  "affiliate_url": "https://scribeberry.com"
 }

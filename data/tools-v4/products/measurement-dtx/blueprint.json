@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "blueprint-sondermind-mbc",
+  "id": "66d47c32-62f2-4be0-849d-f8d4f4692f0d",
   "slug": "blueprint",
   "name": "Blueprint",
   "company_name": "Blueprint (SonderMind)",
@@ -13,11 +13,9 @@
   "lifecycle": {
     "status": "active"
   },
-  "primary_category": "measurement-based-care",
+  "primary_category": "measurement-outcomes-dtx",
   "secondary_categories": [
-    "ai-documentation",
-    "ehr-practice-management",
-    "outcomes-tracking"
+    "ehr-practice-management"
   ],
   "capabilities": [
     "outcome-tracking",
@@ -38,8 +36,7 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "psychiatric-np-pa",
-      "counselor"
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
       "solo-practice",
@@ -51,12 +48,6 @@
       "small-2-10",
       "medium-11-50",
       "large-51-200"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "therapy",
-      "counseling"
     ]
   },
   "feature_flags": {
@@ -69,7 +60,8 @@
     "has_patient_portal": true,
     "has_mobile_app": true,
     "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": false,
+    "has_e_prescribing": false
   },
   "short_description": "AI-powered EHR and measurement-based care platform for mental health clinicians with free EHR, per-session AI notes, and integrated outcome tracking.",
   "long_description": "Blueprint is an AI-powered platform combining a full-featured electronic health record with an AI assistant and measurement-based care tools. Originally focused on MBC, Blueprint now offers a free EHR with optional AI documentation capabilities priced per session. The platform supports automated delivery of validated assessments (PHQ-9, GAD-7, and others), real-time outcome visualization, and AI-generated progress notes. Blueprint integrates with major practice management systems including SimplePractice, TherapyNotes, and TheraNest. The platform serves over 70,000 mental health professionals and has generated over 10 million clinical notes. Blueprint promotes measurement-based care adoption as the new standard across mental healthcare settings.",
@@ -90,11 +82,9 @@
   "support_url": "https://www.blueprint.ai/support",
   "logo_url": "https://www.blueprint.ai/logo.png",
   "pricing": {
-    "model": "per-session",
     "starting_price_cents": 0,
     "starting_price_display": "Free EHR + $0.99-$1.49/session AI",
     "free_tier": true,
-    "free_trial_days": null,
     "quote_required": false,
     "price_range": "budget",
     "tiers": [
@@ -120,7 +110,8 @@
       "enterprise": "Custom"
     },
     "notes": "Core EHR is free forever. AI Assistant priced per session. No monthly minimum. Works with any EHR via copy/paste.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "mbc_details": {
     "assessments_included": [
@@ -145,63 +136,50 @@
     "session_by_session_tracking": true
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.blueprint.ai/security",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "baa_provenance": {
-      "source_url": "https://www.blueprint.ai/security",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "soc2": "type2",
-    "soc2_provenance": {
-      "source_url": "https://www.blueprint.ai/security",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "phipa_compliant": true,
     "encryption": "AES-256",
     "annual_security_audits": true,
-    "audit_track_record": "6 years perfect scores"
+    "audit_track_record": "6 years perfect scores",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
       "name": "SimplePractice",
       "slug": "simplepractice",
       "category": "ehr",
-      "integration_type": "data-import",
+      "integration_type": "file-based",
       "verified": true
     },
     {
       "name": "TherapyNotes",
       "slug": "therapynotes",
       "category": "ehr",
-      "integration_type": "data-import",
+      "integration_type": "file-based",
       "verified": true
     },
     {
       "name": "TheraNest",
       "slug": "theranest",
       "category": "ehr",
-      "integration_type": "data-import",
+      "integration_type": "file-based",
       "verified": true
     },
     {
       "name": "Headway",
       "slug": "headway",
       "category": "billing",
-      "integration_type": "compatible",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Alma",
       "slug": "alma",
       "category": "billing",
-      "integration_type": "compatible",
+      "integration_type": "api",
       "verified": true
     }
   ],
@@ -265,7 +243,8 @@
     "notes_generated": "10,000,000+"
   },
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.554Z",
   "featured": true,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.blueprint.ai"
 }

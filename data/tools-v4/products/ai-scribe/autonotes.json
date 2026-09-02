@@ -6,7 +6,7 @@
   "name": "AutoNotes",
   "company_name": "AutoNotes AI",
   "website": "https://www.autonotes.ai",
-  "description": "AutoNotes is an AI documentation assistant designed for mental health professionals. It offers multiple input methods including audio recording, template-based entry, and text input to generate progress notes, treatment plans, and clinical documentation in various formats required by insurance companies.",
+  "description": "AutoNotes is the most affordable AI therapy scribe, starting at $24/month (annual) with unlimited notes on the Pro plan. Built exclusively for mental health professionals, AutoNotes generates SOAP, DAP, BIRP, GIRP, PIE notes plus treatment plans and intake assessments. The platform uses typed prompts and checkbox-based input rather than ambient recording, making it best for post-session documentation. With 80,000+ clinicians, AutoNotes has grown rapidly on price positioning—but it lacks native EHR integration (copy-paste or Chrome extension only) and doesn't offer real-time ambient AI like Mentalyc or Upheal. Therapists who want the cheapest option accept the workflow tradeoffs.",
   "import_ref": {
     "record_id": "MH-0161",
     "source_row": 162,
@@ -17,37 +17,34 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["mental-health-documentation", "therapy-notes"],
+  "secondary_categories": [],
+  "short_description": "Most affordable therapy scribe at $24-99/mo. 80,000+ clinicians. Post-session documentation via typed prompts—not ambient recording.",
+  "one_liner": "The cheapest mental health AI scribe. Typed prompts, not ambient AI.",
   "capabilities": [
-    "audio-transcription",
-    "template-based-notes",
-    "therapy-progress-notes",
-    "treatment-plans",
-    "soap-notes",
-    "dap-notes",
-    "biopsychosocial-assessments"
+    "note-generation",
+    "voice-transcription",
+    "treatment-planning",
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
-      "licensed-counselor",
-      "social-worker"
+      "psychologist",
+      "psychiatric-np-pa",
+      "psychiatrist"
     ],
     "practice_settings": [
-      "private-practice",
+      "solo-practice",
       "group-practice",
       "community-mental-health",
-      "telehealth"
+      "telehealth-only"
     ],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": [
-      "therapy",
-      "psychiatry",
-      "psychology",
-      "counseling",
-      "social-work"
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
@@ -58,173 +55,188 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": true,
+    "has_mobile_app": false,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "company": {
     "founded_year": 2023,
-    "headquarters": "United States",
-    "employee_count": "10-20",
+    "headquarters": "Delray Beach, Florida",
+    "employee_count": "10-30",
     "funding_stage": "Bootstrapped/Seed",
-    "customer_count": "2,000+ mental health providers"
+    "customer_count": "80,000+ mental health professionals",
+    "founders": [
+      "Liam Callahan (CEO)",
+      "Dimitar Marinov (CTO)"
+    ]
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": false,
-    "starting_price": 29,
+    "starting_price_cents": 2400,
+    "starting_price_display": "$24/mo (annual) or $29/mo (monthly)",
     "currency": "USD",
     "billing_period": "monthly",
+    "free_tier": false,
+    "free_trial_days": 7,
     "tiers": [
       {
-        "name": "Basic",
-        "price": 29,
-        "period": "monthly",
-        "features": [
-          "30 notes per month",
-          "Progress notes",
-          "DAP/SOAP formats",
-          "Template library",
-          "Email support"
-        ]
+        "name": "Economy",
+        "price": "$24/mo (annual) or $29/mo (monthly)",
+        "description": "30 notes/month. AI formats notes from typed recaps. DAP/SOAP formats. Template library."
       },
       {
         "name": "Pro",
-        "price": 49,
-        "period": "monthly",
-        "features": [
-          "Unlimited notes",
-          "All note formats",
-          "Treatment plans",
-          "Biopsychosocial assessments",
-          "Audio transcription",
-          "Priority support"
-        ]
+        "price": "$49/mo (annual) or $59/mo (monthly)",
+        "description": "Unlimited notes. All formats. Treatment plans, biopsychosocial assessments, audio transcription."
       },
       {
         "name": "Team",
-        "price": 39,
-        "period": "monthly",
-        "features": [
-          "Everything in Pro",
-          "Team management",
-          "Shared templates",
-          "Usage tracking"
-        ],
-        "notes": "Per provider, minimum 3 providers"
+        "price": "$39/provider/mo",
+        "description": "Everything in Pro. Team management, shared templates, usage tracking. Minimum 3 providers."
       }
     ],
-    "free_trial": {
-      "available": true,
-      "duration_days": 7,
-      "credit_card_required": false
-    },
-    "notes": "Most affordable mental health AI documentation option. Annual billing discounts available."
+    "notes": "7-day free trial, no credit card required. Most affordable mental health AI scribe on the market. All plans now include unlimited AI-generated progress notes (as of 2026).",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "yes",
     "compliance_urls": {
       "hipaa": "https://www.autonotes.ai/hipaa"
-    }
+    },
+    "notes": "BAA now included for all customers using PHI (updated from older no-PHI policy)."
   },
   "integrations": [
     {
       "name": "SimplePractice",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "simplepractice",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Copy-paste or Chrome extension—no native API integration"
     },
     {
       "name": "TherapyNotes",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "therapynotes",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     },
     {
       "name": "TheraNest",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "theranest",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     }
   ],
   "features": {
+    "ambient_ai": {
+      "supported": false,
+      "description": "AutoNotes uses typed prompts and checkbox-based input, not real-time ambient recording. Post-session documentation workflow."
+    },
     "input_methods": [
-      "Audio recording",
-      "Template-based entry",
-      "Text input",
+      "Typed prompts",
+      "Checkbox-based templates",
+      "Audio upload (transcription)",
       "Dictation"
     ],
     "note_types": [
       "DAP notes",
       "SOAP notes",
       "BIRP notes",
+      "GIRP notes",
+      "PIE notes",
       "Progress notes",
       "Treatment plans",
       "Biopsychosocial assessments",
-      "Intake notes"
+      "Intake notes",
+      "Discharge summaries",
+      "Group therapy notes",
+      "Couples therapy notes",
+      "EMDR notes"
     ],
     "template_library": true,
     "custom_templates": true,
-    "multi_language": false,
-    "accuracy_rate": "AI-assisted with template guidance"
+    "multi_language": false
   },
   "best_for": [
-    "Budget-conscious solo practitioners",
-    "Therapists new to AI documentation",
-    "Clinicians preferring template-based workflows",
-    "Mental health providers wanting affordable option",
-    "Practitioners who prefer post-session documentation",
-    "Community mental health providers"
+    "Budget-conscious therapists who want the cheapest AI option ($24/mo)",
+    "Clinicians comfortable with post-session typed prompts vs ambient recording",
+    "Solo practitioners with simple documentation needs",
+    "Therapists new to AI documentation who want low-risk entry point",
+    "Community mental health providers on tight budgets"
   ],
   "not_for": [
-    "Practices wanting real-time ambient AI",
-    "Clinicians needing native EHR integrations",
-    "Large organizations requiring enterprise features",
-    "Practitioners wanting session analytics"
+    "Clinicians wanting real-time ambient AI—Mentalyc or Upheal record sessions live",
+    "Practices needing native EHR integration—AutoNotes uses copy-paste only",
+    "High-volume practitioners—manual input adds overhead as caseloads rise",
+    "Therapists wanting session analytics—Upheal offers talk-time and sentiment tracking",
+    "Enterprise organizations requiring SOC 2 or HITRUST"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 91,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["mentalyc", "upheal", "blueprint", "therapyfuel"],
+  "related_tools": [
+    "mentalyc",
+    "upheal",
+    "berries",
+    "therapyfuel",
+    "mh-scribe"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "berries",
+    "mh-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "AutoNotes AI: Affordable Therapy Documentation | HeyPsych",
-    "meta_description": "AutoNotes AI review - affordable AI documentation for therapists. Starting at $29/month. DAP, SOAP, treatment plans. HIPAA compliant. 7-day free trial.",
+    "title": "AutoNotes: Cheapest AI Therapy Scribe | HeyPsych",
+    "meta_description": "AutoNotes: cheapest therapy AI scribe at $24-49/mo. 80,000+ clinicians. Post-session typed prompts—not ambient recording. HIPAA compliant with BAA.",
     "faqs": [
       {
-        "question": "How much does AutoNotes cost?",
-        "answer": "AutoNotes is one of the most affordable options starting at $29/month for 30 notes. The Pro plan at $49/month offers unlimited notes and audio transcription. Team pricing is $39/provider/month."
+        "q": "How much does AutoNotes cost in 2026?",
+        "a": "AutoNotes Economy costs $24/month (annual) or $29/month (monthly) for 30 notes. Pro costs $49/month (annual) for unlimited notes. Team plans run $39/provider/month (minimum 3). This makes AutoNotes the most affordable mental health AI scribe on the market."
       },
       {
-        "question": "Does AutoNotes work with SimplePractice?",
-        "answer": "AutoNotes works with SimplePractice, TherapyNotes, and TheraNest via browser extension for easy copy-paste. It does not have native API integrations but the workflow is straightforward."
+        "q": "Does AutoNotes record therapy sessions?",
+        "a": "No. AutoNotes uses typed prompts and checkbox-based input, not real-time ambient recording. You complete documentation after sessions by typing session recaps or uploading audio. If you want live ambient AI, use Mentalyc or Upheal instead."
       },
       {
-        "question": "Can I dictate notes into AutoNotes?",
-        "answer": "Yes, AutoNotes supports audio input and dictation in addition to template-based entry and text input. The Pro plan includes full audio transcription features."
+        "q": "Is AutoNotes HIPAA compliant?",
+        "a": "Yes. AutoNotes is HIPAA compliant and now provides a BAA for all customers using PHI. This is an update from older policies—the platform now explicitly permits PHI per the AutoNotes Trust Center."
       },
       {
-        "question": "Is AutoNotes good for real-time session transcription?",
-        "answer": "AutoNotes is primarily designed for post-session documentation rather than real-time ambient AI. For real-time ambient documentation, consider Mentalyc or Upheal."
+        "q": "AutoNotes vs Mentalyc: which is better?",
+        "a": "Choose AutoNotes if price is your top priority ($24/mo vs Mentalyc's $20-70/mo). Choose Mentalyc if you want ambient session recording, modality-aware notes (CBT, DBT), and Alliance Genie therapeutic tracking. AutoNotes uses post-session typed input; Mentalyc records live."
+      },
+      {
+        "q": "Does AutoNotes integrate with my EHR?",
+        "a": "AutoNotes uses copy-paste or a Chrome extension to insert notes into SimplePractice, TherapyNotes, and TheraNest. There is no native API integration that auto-populates fields. Manual insertion adds overhead as caseloads grow."
       }
     ],
     "keywords": [
       "AutoNotes",
       "AutoNotes AI",
-      "cheap therapy AI",
+      "cheapest therapy AI scribe",
       "affordable therapy documentation",
       "mental health notes AI",
       "DAP note generator",
-      "budget AI scribe"
+      "budget AI scribe",
+      "AutoNotes vs Mentalyc"
     ]
-  }
+  },
+  "website_url": "https://www.autonotes.ai",
+  "pricing_url": "https://www.autonotes.ai/pricing",
+  "affiliate_url": "https://www.autonotes.ai"
 }

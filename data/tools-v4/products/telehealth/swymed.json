@@ -4,6 +4,7 @@
   "id": "e20d43ad-6c74-40df-ab14-4997dc29fd13",
   "slug": "swymed",
   "name": "swyMed",
+  "short_description": "Enterprise telehealth for EMS, ambulances, and rural care with low-bandwidth video (60kbps+). HL7 EMR integration. HIPAA compliant.",
   "import_ref": {
     "record_id": "MH-0285",
     "source_row": 286,
@@ -15,12 +16,24 @@
   },
   "primary_category": "telehealth-communication",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "video-sessions",
+    "secure-messaging",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -37,32 +50,80 @@
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "Enterprise pricing $100-500+/month based on deployment scope (ambulances, clinics, mobile units). Hardware bundles priced separately. No self-service signup."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "HL7-compliant EMRs",
+      "slug": "hl7-emr",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "PACS",
+      "slug": "pacs",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "last_reviewed": "2026-09-01",
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85
   },
-  "related_tools": [],
+  "related_tools": [
+    "doxy-me",
+    "zoom-for-healthcare",
+    "vsee"
+  ],
   "created_at": "2026-08-22T20:50:40.797Z",
-  "updated_at": "2026-08-22T20:50:40.797Z",
+  "updated_at": "2026-09-01T19:35:53.835Z",
   "status": "active",
   "seo": {
-    "title": "swyMed: Review & Pricing | HeyPsych",
-    "meta_description": "swyMed review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "swyMed: Low-Bandwidth Enterprise Telehealth for EMS & Rur...",
+    "meta_description": "swyMed provides enterprise telemedicine for EMS, ambulances, and rural healthcare. Low-bandwidth video (60kbps+), HL7 EMR integration, HIPAA compliant.",
+    "faqs": [
+      {
+        "q": "What makes swyMed different from Doxy.me or Zoom Healthcare?",
+        "a": "swyMed's core differentiator is reliable video at extremely low bandwidths (60kbps vs 1.5+ Mbps for most platforms). This matters in ambulances, rural areas, and international deployments where connectivity is unreliable. Most therapy practices with standard broadband don't need this."
+      },
+      {
+        "q": "Is swyMed appropriate for a private therapy practice?",
+        "a": "No. swyMed is enterprise-grade infrastructure for health systems, EMS, and rural networks. Solo or small practices would find it overly complex and expensive. Use Doxy.me (free) or Zoom for Healthcare instead."
+      },
+      {
+        "q": "How does swyMed pricing work?",
+        "a": "Enterprise pricing requires custom quotes based on deployment scope. Estimates range $100-500+/month plus hardware costs. No free tier or self-service signup."
+      },
+      {
+        "q": "What behavioral health use cases fit swyMed?",
+        "a": "Mobile crisis teams, telepsychiatry into rural clinics or correctional facilities, and health systems with low-connectivity satellite locations. Not for standard outpatient therapy."
+      },
+      {
+        "q": "What are the downsides of swyMed?",
+        "a": "User reviews cite technical glitches and slow customer support. Enterprise deployment requires IT integration work. Overkill for organizations with reliable connectivity."
+      }
+    ],
     "keywords": [
       "swyMed",
-      "telehealth communication"
+      "low bandwidth telehealth",
+      "EMS telemedicine",
+      "ambulance video consultation",
+      "rural telehealth",
+      "enterprise telemedicine"
     ]
-  }
+  },
+  "website_url": "https://www.swymed.com",
+  "affiliate_url": "https://www.swymed.com",
+  "one_liner": "Enterprise telehealth for EMS, ambulances, and rural care with low-bandwidth video (60kbps+). HL7 EM"
 }

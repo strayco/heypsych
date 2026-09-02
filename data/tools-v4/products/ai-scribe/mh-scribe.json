@@ -4,6 +4,9 @@
   "id": "7116017a-f709-4214-ab46-daf77cd4dd7f",
   "slug": "mh-scribe",
   "name": "MH Scribe",
+  "company_name": "MH Scribe",
+  "website": "https://mhscribe.ai",
+  "description": "MH Scribe is an AI medical scribe built specifically for mental health practitioners. The platform differentiates with Advanced AI Clinical Cards—treatment recommendations, diagnostic insights, risk assessment, and billing suggestions that go beyond basic note generation. Built on AWS HIPAA-compliant infrastructure with AES-256 encryption at rest and TLS 1.3 in transit. Data is never used to train AI models. MH Scribe offers 5 free AI notes to start (no credit card required) with Standard and Pro tiers available after a 21-day free trial.",
   "import_ref": {
     "record_id": "MH-0166",
     "source_row": 167,
@@ -15,16 +18,34 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Mental health AI scribe with Clinical Cards: treatment recommendations, diagnostic insights, risk assessment. 5 free notes, 21-day trial.",
+  "one_liner": "AI scribe with clinical decision support—treatment recommendations and risk assessment built in.",
+  "capabilities": [
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "treatment-planning",
+    "coding-assistance",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -38,35 +59,140 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "5 free notes, then Standard/Pro tiers",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "5 free AI notes to start, no credit card required.",
+    "free_trial_days": 21,
+    "tiers": [
+      {
+        "name": "Free Trial",
+        "price": "5 free notes",
+        "description": "5 AI notes to test the platform. No credit card required."
+      },
+      {
+        "name": "Standard",
+        "price": "Contact for pricing",
+        "description": "Unlimited AI notes. Core documentation features. 21-day free trial."
+      },
+      {
+        "name": "Pro",
+        "price": "Contact for pricing",
+        "description": "Advanced AI Clinical Cards: treatment recommendations, diagnostic insights, risk assessment, billing suggestions."
+      }
+    ],
+    "notes": "21-day free trial on paid plans. Can upgrade from Standard to Pro at any time (immediate). Downgrade takes effect at end of billing period. Specific pricing not publicly listed—visit mhscribe.ai/pricing.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "Built on AWS HIPAA-compliant infrastructure. AES-256 encryption at rest, TLS 1.3 in transit. Strict role-based access controls. Data never used to train AI models."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Automates clinical documentation from session recordings."
+    },
+    "clinical_cards": {
+      "supported": true,
+      "description": "Advanced AI Clinical Cards with treatment recommendations, diagnostic insights, risk assessment, and billing suggestions—beyond basic note generation."
+    },
+    "data_privacy": {
+      "ai_training": "Data never used to train AI models",
+      "encryption": "AES-256 at rest, TLS 1.3 in transit"
+    },
+    "note_types": [
+      "Progress notes",
+      "Treatment recommendations",
+      "Diagnostic insights",
+      "Risk assessments",
+      "Billing suggestions"
+    ]
   },
-  "related_tools": [],
+  "best_for": [
+    "Psychiatrists wanting AI clinical decision support beyond documentation",
+    "Clinicians who value treatment recommendations and risk assessment integrated with notes",
+    "Mental health practitioners testing AI scribe options (5 free notes, 21-day trial)",
+    "Privacy-conscious practitioners—data never used for AI training",
+    "Practitioners wanting billing suggestions alongside documentation"
+  ],
+  "not_for": [
+    "Clinicians needing published pricing before commitment—requires contact",
+    "Practices requiring EHR integrations—none published",
+    "Therapists wanting modality-aware notes (CBT, DBT)—Mentalyc specializes in this",
+    "High-volume practitioners wanting session analytics—Upheal offers this"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 82,
+    "last_reviewed": "2026-09-01"
+  },
+  "related_tools": [
+    "mentalyc",
+    "upheal",
+    "autonotes",
+    "berries",
+    "freed-ai"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "autonotes",
+    "berries"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "MH Scribe: Review & Pricing | HeyPsych",
-    "meta_description": "MH Scribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "MH Scribe: AI Clinical Cards 2026 | HeyPsych",
+    "meta_description": "MH Scribe: mental health AI scribe with Clinical Cards—treatment recommendations, diagnostic insights, risk assessment. 5 free notes. HIPAA compliant. AWS se...",
+    "faqs": [
+      {
+        "q": "How much does MH Scribe cost?",
+        "a": "MH Scribe offers 5 free AI notes (no credit card required) to test the platform. Paid plans include Standard and Pro tiers with a 21-day free trial. Specific pricing is not publicly listed—visit mhscribe.ai/pricing for current rates."
+      },
+      {
+        "q": "What are MH Scribe's Clinical Cards?",
+        "a": "Clinical Cards are MH Scribe's AI-powered clinical decision support feature. Beyond basic note generation, they provide treatment recommendations, diagnostic insights, risk assessment, and billing suggestions—helping clinicians with the thinking, not just the typing."
+      },
+      {
+        "q": "Is MH Scribe HIPAA compliant?",
+        "a": "Yes. MH Scribe is built on AWS HIPAA-compliant infrastructure with AES-256 encryption at rest and TLS 1.3 in transit. Strict role-based access controls. Your data is never used to train AI models."
+      },
+      {
+        "q": "MH Scribe vs Mentalyc: which is better?",
+        "a": "MH Scribe differentiates with Clinical Cards (treatment recommendations, risk assessment). Mentalyc focuses on modality-aware therapy notes (CBT, DBT) and Alliance Genie therapeutic tracking. Mentalyc publishes transparent pricing ($20-70/mo); MH Scribe requires contact for pricing."
+      },
+      {
+        "q": "Does MH Scribe integrate with my EHR?",
+        "a": "MH Scribe does not publish EHR integrations. If native EHR integration is critical, consider Mentalyc (TherapyNotes, ICANotes, TheraNest) or Upheal (SimplePractice, Jane App)."
+      }
+    ],
     "keywords": [
       "MH Scribe",
-      "ai scribe documentation"
+      "mental health AI scribe",
+      "clinical decision support",
+      "AI treatment recommendations",
+      "psychiatry AI scribe",
+      "MH Scribe vs Mentalyc",
+      "risk assessment AI"
     ]
-  }
+  },
+  "website_url": "https://mhscribe.ai",
+  "pricing_url": "https://mhscribe.ai/pricing",
+  "affiliate_url": "https://mhscribe.ai"
 }

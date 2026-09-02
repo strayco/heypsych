@@ -4,6 +4,7 @@
   "id": "58d2db65-a740-49ea-9421-fd9eb61441e1",
   "slug": "suki-assistant",
   "name": "Suki Assistant",
+  "short_description": "Premium voice AI + ambient scribe at $199+/mo. Native Epic/Cerner/athena integration. HITRUST certified. Voice commands for EHR navigation. 100+ specialties.",
   "company_name": "Suki AI",
   "website": "https://www.suki.ai",
   "description": "Suki is an AI-powered voice assistant designed specifically for clinicians. It combines ambient AI documentation with voice commands to help physicians complete notes, navigate EHRs, and manage clinical workflows. Suki learns each clinician's preferences and documentation style to improve accuracy over time.",
@@ -17,43 +18,28 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "voice-assistant", "workflow-automation"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "capabilities": [
-    "ambient-listening",
-    "voice-assistant",
-    "dictation",
-    "soap-note-generation",
-    "ehr-navigation",
-    "icd-coding-suggestions",
-    "custom-templates",
-    "multi-specialty-support"
+    "ambient-listening"
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
+      "medical-director",
+      "psychiatric-np-pa",
       "psychiatrist"
     ],
     "practice_settings": [
-      "private-practice",
-      "outpatient-clinic",
+      "solo-practice",
       "group-practice",
-      "hospital-system",
-      "academic-medical-center"
+      "hospital-inpatient"
     ],
-    "organization_sizes": ["small", "medium", "large", "enterprise"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "cardiology",
-      "orthopedics",
-      "dermatology",
-      "gastroenterology",
-      "psychiatry",
-      "oncology",
-      "urgent-care"
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
@@ -74,11 +60,16 @@
     "employee_count": "100-250",
     "funding_total": "$165M+",
     "funding_stage": "Series C",
-    "notable_investors": ["Venrock", "First Round Capital", "Flare Capital", "March Capital"],
+    "notable_investors": [
+      "Venrock",
+      "First Round Capital",
+      "Flare Capital",
+      "March Capital"
+    ],
     "customer_count": "250+ health systems and practices"
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": true,
     "starting_price": 199,
     "currency": "USD",
@@ -121,7 +112,7 @@
     "notes": "Annual contracts available with discount. Enterprise pricing negotiable for 50+ providers."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -133,51 +124,75 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "epic",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Cerner",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "cerner",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Athenahealth",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "athenahealth",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "eClinicalWorks",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "eclinicalworks",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "NextGen",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "nextgen",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Greenway Health",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "greenway-health",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "ModMed",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "modmed",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Elation Health",
-      "type": "ehr",
       "method": "native-api",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "elation-health",
+      "category": "other",
+      "verified": false
     }
   ],
   "features": {
@@ -220,33 +235,21 @@
     "needs_review": false,
     "review_priority": "low",
     "data_quality_score": 91,
-    "last_verified": "2024-12-01"
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["freed", "nuance-dax-copilot", "abridge", "deepscribe"],
+  "related_tools": [
+    "freed",
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe"
+  ],
   "created_at": "2026-08-22T20:50:40.786Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T19:31:57.271Z",
   "status": "active",
   "seo": {
-    "title": "Suki AI Assistant: Pricing, Review & EHR Integrations | HeyPsych",
+    "title": "Suki AI Assistant: Pricing, Review & EHR Integrations",
     "meta_description": "Suki AI voice assistant review for physicians. Starting at $199/month with 14-day free trial. Native Epic, Cerner, Athenahealth integration. HITRUST certified.",
-    "faqs": [
-      {
-        "question": "How much does Suki cost per month?",
-        "answer": "Suki starts at $199 per provider per month for the Professional plan. Enterprise pricing is available for larger organizations with volume discounts. A 14-day free trial is available without credit card."
-      },
-      {
-        "question": "Does Suki integrate with Epic?",
-        "answer": "Yes, Suki has native integration with Epic and can write notes directly into the EHR. It also integrates with Cerner, Athenahealth, eClinicalWorks, NextGen, and many other major EHR systems."
-      },
-      {
-        "question": "Can Suki be used for mental health documentation?",
-        "answer": "While Suki can generate psychiatry notes, it's not specifically designed for mental health. For therapy-specific documentation needs, consider mental health-focused tools like Mentalyc or Upheal."
-      },
-      {
-        "question": "How does Suki learn my documentation preferences?",
-        "answer": "Suki uses machine learning to analyze your edits and documentation patterns over time. The more you use it, the better it understands your preferred note structure, terminology, and style."
-      }
-    ],
     "keywords": [
       "Suki AI",
       "Suki voice assistant",
@@ -256,5 +259,8 @@
       "clinical documentation AI",
       "physician voice assistant"
     ]
-  }
+  },
+  "website_url": "https://www.suki.ai",
+  "affiliate_url": "https://www.suki.ai",
+  "one_liner": "Premium voice AI + ambient scribe at $199+/mo. Native Epic/Cerner/athena integration. HITRUST certif"
 }

@@ -537,6 +537,48 @@ const DEFAULT_FEATURE_FLAGS: z.infer<typeof ClinicianFeatureFlagsZ> = {
 };
 
 // ============================================================================
+// COMPANY INFO SCHEMA
+// ============================================================================
+
+/**
+ * Company information for clinician tools
+ */
+export const ClinicianCompanyInfoZ = z.object({
+  founded_year: z.number().int().min(1900).max(2100).optional(),
+  headquarters: z.string().optional(),
+  employee_count: z.string().optional(),
+  funding_total: z.string().optional(),
+  funding_stage: z.string().optional(),
+  customer_count: z.string().optional(),
+  notable_investors: z.array(z.string()).optional(),
+});
+
+// ============================================================================
+// FEATURES SCHEMA (AI Scribe specific fields)
+// ============================================================================
+
+/**
+ * Ambient AI feature info
+ */
+export const AmbientAIZ = z.object({
+  supported: z.boolean().optional(),
+  description: z.string().optional(),
+});
+
+/**
+ * Extended features for clinician tools (especially AI scribes)
+ */
+export const ClinicianFeaturesZ = z.object({
+  ambient_ai: AmbientAIZ.optional(),
+  note_types: z.array(z.string()).optional(),
+  specialty_templates: z.boolean().optional(),
+  custom_templates: z.boolean().optional(),
+  voice_commands: z.boolean().optional(),
+  multi_language: z.boolean().optional(),
+  accuracy_rate: z.string().optional(),
+});
+
+// ============================================================================
 // SEO SCHEMA
 // ============================================================================
 
@@ -607,6 +649,9 @@ export const ClinicianToolV4Z = z.object({
   name: z.string().min(2).max(150),
   company_name: z.string().min(1).max(150).optional(),
 
+  // Company info (includes founded_year, headquarters, etc.)
+  company: ClinicianCompanyInfoZ.optional(),
+
   // Import reference for traceability
   import_ref: ImportReferenceZ.optional(),
 
@@ -623,6 +668,9 @@ export const ClinicianToolV4Z = z.object({
 
   // Feature flags for filtering
   feature_flags: ClinicianFeatureFlagsZ.default(DEFAULT_FEATURE_FLAGS),
+
+  // Extended features (AI scribe specific fields like ambient_ai, note_types, etc.)
+  features: ClinicianFeaturesZ.optional(),
 
   // Descriptions
   short_description: z.string().max(200).optional(),
@@ -690,6 +738,8 @@ export type ImportReference = z.infer<typeof ImportReferenceZ>;
 export type CapabilitySlug = z.infer<typeof CapabilitySlugZ>;
 export type ClinicianPricingModel = z.infer<typeof ClinicianPricingModelZ>;
 export type ClinicianPricing = z.infer<typeof ClinicianPricingZ>;
+export type ClinicianCompanyInfo = z.infer<typeof ClinicianCompanyInfoZ>;
+export type ClinicianFeatures = z.infer<typeof ClinicianFeaturesZ>;
 export type ClinicianCompliance = z.infer<typeof ClinicianComplianceZ>;
 export type ClinicianIntegration = z.infer<typeof ClinicianIntegrationZ>;
 export type ClinicianAudiences = z.infer<typeof ClinicianAudiencesZ>;

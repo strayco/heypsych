@@ -15,48 +15,21 @@
     "status": "active"
   },
   "primary_category": "measurement-outcomes-dtx",
-  "secondary_categories": [
-    "brain-assessment",
-    "employer-wellness",
-    "mental-health-screening"
-  ],
+  "secondary_categories": [],
   "capabilities": [
-    "brain-assessment",
-    "cognitive-assessment",
-    "mental-health-screening",
-    "depression-screening",
-    "anxiety-screening",
-    "stress-assessment",
-    "brain-training",
-    "meditation-programs",
-    "sleep-programs",
-    "employer-wellness",
-    "population-analytics",
-    "risk-stratification",
     "hipaa-compliant"
   ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychologist",
-      "primary-care-physician",
-      "occupational-health-physician"
+      "psychologist"
     ],
     "practice_settings": [
-      "employer-wellness",
-      "health-plan",
-      "health-system",
-      "occupational-health"
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "occupational-health",
-      "primary-care"
     ],
     "customer_types": [
       "employers",
@@ -77,7 +50,7 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "Brain health assessment and wellness platform measuring 12 core brain capacities. Offers employer mental health screening, brain training, and population risk analytics based on 50+ years of neuroscience research.",
+  "short_description": "Brain health assessment and wellness platform measuring 12 core brain capacities. Offers employer mental health screening, brain training, and population risk analytics based on 50+ years of...",
   "long_description": "Total Brain is a comprehensive brain health and mental wellness platform that measures 12 core brain capacities across emotion, feeling, cognition, and self-control domains. The platform is built on 50+ years of neuroscience research and has been validated in peer-reviewed studies. Total Brain offers a scientifically validated brain assessment taking approximately 20 minutes, followed by personalized brain training exercises, meditation programs, and sleep improvement content. For employers and health plans, Total Brain provides population-level mental health risk analytics, identifying employees at risk for depression, anxiety, and stress before they become clinical. The platform integrates with EAP and healthcare benefits to triage users to appropriate levels of care. Total Brain is publicly traded on the Australian Securities Exchange (ASX: TTB) and serves enterprise customers globally.",
   "one_liner": "Brain health assessment platform measuring 12 capacities with employer wellness analytics.",
   "best_for": [
@@ -96,11 +69,8 @@
   "support_url": "https://www.totalbrain.com/support",
   "logo_url": "https://www.totalbrain.com/logo.png",
   "pricing": {
-    "model": "enterprise",
-    "starting_price_cents": null,
     "starting_price_display": "Contact for enterprise pricing",
     "free_tier": false,
-    "free_trial_days": null,
     "quote_required": true,
     "price_range": "enterprise",
     "pricing_factors": [
@@ -113,7 +83,8 @@
       "Population licensing"
     ],
     "notes": "Enterprise pricing for employers and health plans. Contact Total Brain for custom quote. Available as standalone or integrated with EAP/benefits.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "brain_assessment": {
     "name": "Total Brain Assessment",
@@ -122,19 +93,35 @@
     "domains": [
       {
         "name": "Emotion",
-        "capacities": ["Emotion identification", "Emotion bias", "Emotional resilience"]
+        "capacities": [
+          "Emotion identification",
+          "Emotion bias",
+          "Emotional resilience"
+        ]
       },
       {
         "name": "Feeling",
-        "capacities": ["Anxiety", "Depression", "Stress"]
+        "capacities": [
+          "Anxiety",
+          "Depression",
+          "Stress"
+        ]
       },
       {
         "name": "Cognition",
-        "capacities": ["Sustained attention", "Memory", "Flexibility", "Executive function"]
+        "capacities": [
+          "Sustained attention",
+          "Memory",
+          "Flexibility",
+          "Executive function"
+        ]
       },
       {
         "name": "Self-control",
-        "capacities": ["Impulsivity", "Risk-taking"]
+        "capacities": [
+          "Impulsivity",
+          "Risk-taking"
+        ]
       }
     ],
     "validation": "Peer-reviewed scientific validation"
@@ -142,18 +129,30 @@
   "features": {
     "brain_training": {
       "description": "Personalized cognitive exercises based on assessment results",
-      "areas": ["Attention", "Memory", "Flexibility"]
+      "areas": [
+        "Attention",
+        "Memory",
+        "Flexibility"
+      ]
     },
     "meditation_library": {
       "description": "Guided meditation and mindfulness content",
-      "programs": ["Stress reduction", "Focus", "Sleep"]
+      "programs": [
+        "Stress reduction",
+        "Focus",
+        "Sleep"
+      ]
     },
     "sleep_programs": {
       "description": "Evidence-based sleep improvement content"
     },
     "population_analytics": {
       "description": "Aggregate workforce mental health insights",
-      "features": ["Risk stratification", "Trend analysis", "ROI reporting"]
+      "features": [
+        "Risk stratification",
+        "Trend analysis",
+        "ROI reporting"
+      ]
     },
     "care_navigation": {
       "description": "Triage to EAP, coaching, or clinical care based on risk level"
@@ -165,28 +164,25 @@
     "assessment_basis": "Standardized neuropsychological test paradigms"
   },
   "compliance": {
-    "hipaa_support": true,
-    "hipaa_provenance": {
-      "source_url": "https://www.totalbrain.com/security",
-      "verified_date": "2026-08-22",
-      "confidence": "high"
-    },
-    "baa_available": true,
-    "soc2": "type2"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
       "name": "EAP Integration",
       "slug": "eap",
-      "category": "benefits",
-      "integration_type": "referral",
+      "category": "other",
+      "integration_type": "partner",
       "verified": true
     },
     {
       "name": "HRIS Systems",
       "slug": "hris",
-      "category": "hr",
-      "integration_type": "sso",
+      "category": "other",
+      "integration_type": "api",
       "verified": true
     }
   ],
@@ -200,7 +196,7 @@
   },
   "seo": {
     "title": "Total Brain: Brain Health Assessment & Wellness | HeyPsych",
-    "meta_description": "Total Brain measures 12 brain capacities with validated assessment. Employer mental health screening, brain training, and population analytics. ASX-listed platform.",
+    "meta_description": "Total Brain measures 12 brain capacities with validated assessment. Employer mental health screening, brain training, and population analytics. ASX-listed...",
     "faqs": [
       {
         "q": "What does Total Brain measure?",
@@ -243,7 +239,8 @@
     "neuroflow"
   ],
   "created_at": "2026-08-22T20:50:40.813Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.563Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://www.totalbrain.com"
 }

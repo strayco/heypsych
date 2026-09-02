@@ -6,7 +6,7 @@
   "name": "Heidi Health",
   "company_name": "Heidi Health",
   "website": "https://www.heidihealth.com",
-  "description": "Heidi Health is an AI clinical assistant that automatically converts patient consultations into structured clinical notes. Originally developed in Australia, Heidi has expanded globally and is known for its fast note generation and focus on primary care workflows. It offers a generous free tier for individual practitioners.",
+  "description": "Heidi Health is an Australian-founded AI scribe that has grown to 10,000+ clinicians globally. In February 2026, Heidi rebranded with a significant price increase: the Clinician plan (formerly Pro) now costs $150/month billed annually—up from ~$99. Key limitation: EHR write-back requires the Practice tier ($99/mo with EHR integrations), so the $150 Clinician plan still requires manual copy-paste. Heidi includes a generous free tier (10 Pro Actions/month) and 14-day trial. Best for primary care, family medicine, and Australian practices with native Best Practice/Medical Director integrations. Not built for mental health—therapists should use Mentalyc or Upheal instead.",
   "import_ref": {
     "record_id": "MH-0185",
     "source_row": 186,
@@ -17,12 +17,13 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "secondary_categories": [],
+  "short_description": "Australian AI scribe now at $150/mo (Feb 2026 rebrand). Free tier available. Strong in primary care. EHR write-back requires Practice tier. Not for mental health.",
+  "one_liner": "Australian AI scribe with free tier. $150/mo Clinician plan. Primary care focus.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
     "voice-transcription",
-    "video-sessions",
     "ehr-integration",
     "mobile-app",
     "hipaa-compliant",
@@ -30,24 +31,18 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
-      "general-practitioner"
+      "medical-director",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
-      "outpatient-clinic",
+      "solo-practice",
       "group-practice",
-      "telehealth"
+      "telehealth-only"
     ],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "general-practice",
-      "internal-medicine",
-      "pediatrics"
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
@@ -68,62 +63,54 @@
     "employee_count": "50-100",
     "funding_total": "$10M+",
     "funding_stage": "Series A",
-    "notable_investors": ["Tiger Global", "Blackbird Ventures"],
+    "notable_investors": [
+      "Tiger Global",
+      "Blackbird Ventures"
+    ],
     "customer_count": "10,000+ clinicians globally"
   },
   "pricing": {
     "model": "freemium",
     "quote_required": false,
-    "starting_price": 0,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier or $150/mo Clinician (Feb 2026 rebrand)",
     "currency": "USD",
-    "billing_period": "monthly",
+    "billing_period": "annual",
+    "free_tier": true,
+    "free_tier_notes": "10 Pro Actions/month indefinitely. No credit card required.",
+    "free_trial_days": 14,
     "tiers": [
       {
         "name": "Free",
-        "price": 0,
-        "period": "monthly",
-        "features": [
-          "Limited consultations per month",
-          "Basic SOAP notes",
-          "Web app access",
-          "Community support"
-        ]
+        "price": "$0",
+        "description": "10 Pro Actions/month. Basic notes. Web app. Community support."
       },
       {
-        "name": "Pro",
-        "price": 89,
-        "period": "monthly",
-        "features": [
-          "Unlimited consultations",
-          "All note templates",
-          "Referral letters",
-          "Patient instructions",
-          "Mobile app",
-          "Priority support"
-        ]
+        "name": "Evidence Plus",
+        "price": "$40/user/month",
+        "description": "Extended features. US new subscribers only."
       },
       {
-        "name": "Team",
-        "price": 79,
-        "period": "monthly",
-        "features": [
-          "Everything in Pro",
-          "Team management",
-          "Shared templates",
-          "Usage analytics"
-        ],
-        "notes": "Per provider, minimum 3 users"
+        "name": "Clinician (formerly Pro)",
+        "price": "$150/user/month (billed annually)",
+        "description": "Unlimited Pro Actions, custom templates, unlimited AI documents, priority support. NO EHR write-back—manual copy-paste required."
+      },
+      {
+        "name": "Practice",
+        "price": "$99/user/month (billed annually)",
+        "description": "EHR integrations included. Push-to-chart capability. Team features."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Custom integrations, dedicated support, SLA guarantees."
       }
     ],
-    "free_trial": {
-      "available": true,
-      "duration_days": 14,
-      "notes": "Free tier available indefinitely with usage limits"
-    },
-    "notes": "Generous free tier available. Annual billing offers 20% discount."
+    "notes": "MAJOR Feb 2026 REBRAND: Clinician plan increased from ~$99 to $150/mo. Critical: EHR write-back NOT included in Clinician—requires Practice tier. Legacy Pro/Together plans renamed, restricted to UK/EU.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
@@ -135,45 +122,53 @@
   "integrations": [
     {
       "name": "Best Practice (Australia)",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "best-practice",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration for Australian practices"
     },
     {
       "name": "Medical Director (Australia)",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "medical-director",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Epic",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Browser extension—no native API. Requires Practice tier for write-back."
     },
     {
       "name": "Cerner",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "cerner",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     },
     {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     },
     {
       "name": "Zoom",
-      "type": "telehealth",
-      "method": "browser-extension",
-      "native": true
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Listens to patient consultations and generates clinical notes automatically"
+      "description": "Listens to patient consultations and generates clinical notes automatically."
     },
     "note_types": [
       "SOAP notes",
@@ -187,62 +182,78 @@
     "voice_commands": false,
     "multi_language": false,
     "letter_generation": true,
-    "accuracy_rate": "90%+ accuracy reported"
+    "ehr_write_back_note": "Requires Practice tier ($99/mo). Clinician plan ($150/mo) is copy-paste only."
   },
   "best_for": [
-    "Solo practitioners wanting free AI scribe option",
+    "Australian healthcare providers (native Best Practice/Medical Director integration)",
     "Primary care and family medicine practices",
-    "Australian healthcare providers (native EHR integrations)",
-    "Clinicians wanting to try AI scribing without commitment",
-    "Small practices seeking affordable documentation AI",
-    "Telehealth-focused practices"
+    "Solo practitioners who want a free tier to test AI scribing",
+    "Clinicians comfortable with the Practice tier for EHR integration ($99/mo)",
+    "General practice physicians outside the US"
   ],
   "not_for": [
-    "Large US health systems requiring deep Epic integration",
-    "Specialty practices outside primary care",
-    "Mental health-specific documentation needs",
-    "Organizations requiring HITRUST certification",
-    "Practices needing native US EHR integration"
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) built for therapy",
+    "Psychiatrists—Freed ($39-119/mo) handles medication management better",
+    "US clinicians wanting deep Epic integration—Heidi uses browser extension only",
+    "Practices that need EHR write-back on a budget—Clinician ($150/mo) requires manual copy-paste",
+    "Organizations requiring HITRUST certification"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 85,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["freed", "nabla-copilot", "deepscribe", "suki-assistant"],
+  "related_tools": [
+    "freed-ai",
+    "nabla",
+    "deepscribe",
+    "suki-ai"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "sunoh-ai",
+    "deepscribe"
+  ],
   "created_at": "2026-08-22T20:50:40.786Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Heidi Health AI Scribe: Free Tier & Pricing Review | HeyPsych",
-    "meta_description": "Heidi Health AI scribe review with free tier option. Pro plan $89/month. HIPAA compliant, best for primary care. Compare features, pricing, and alternatives.",
+    "title": "Heidi Health: $150/mo AI Scribe 2026 | HeyPsych",
+    "meta_description": "Heidi Health AI scribe: Feb 2026 rebrand increased Clinician to $150/mo (from $99). Free tier available. Australian native EHRs. Not for mental health.",
     "faqs": [
       {
-        "question": "Is Heidi Health really free?",
-        "answer": "Yes, Heidi offers a free tier with limited consultations per month. This allows clinicians to try AI scribing without commitment. The Pro plan at $89/month offers unlimited consultations."
+        "q": "How much does Heidi Health cost in 2026?",
+        "a": "After Feb 2026 rebrand: Free (10 Pro Actions/month), Evidence Plus ($40/mo), Clinician ($150/mo billed annually—up from ~$99), Practice ($99/mo with EHR integration), Enterprise (custom). Critical: the Clinician plan does NOT include EHR write-back—that requires Practice tier."
       },
       {
-        "question": "How much does Heidi Health cost?",
-        "answer": "Heidi offers a free tier with usage limits. The Pro plan is $89 per provider per month for unlimited consultations. The Team plan is $79 per provider per month (minimum 3 users). Annual billing offers 20% discount."
+        "q": "Why did Heidi Health pricing increase?",
+        "a": "In February 2026, Heidi restructured its plans and raised the main tier (now called Clinician, formerly Pro) from ~$99/month to $150/month. The Practice tier at $99/mo includes EHR integrations that Clinician lacks."
       },
       {
-        "question": "Does Heidi Health integrate with US EHRs?",
-        "answer": "Heidi works with Epic, Cerner, and Athenahealth via browser extension. Native integrations are available for Australian EHRs (Best Practice, Medical Director). For native US EHR integration, consider Suki or Freed."
+        "q": "Is Heidi Health good for therapists?",
+        "a": "No. Heidi was designed for primary care and general practice, not mental health. Therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo) which understand therapy modalities. Psychiatrists should consider Freed ($39-119/mo)."
       },
       {
-        "question": "Is Heidi Health good for mental health practices?",
-        "answer": "Heidi is primarily designed for primary care and general practice. Mental health practices would benefit more from specialized tools like Mentalyc, Upheal, or Blueprint that offer therapy-specific templates."
+        "q": "Does Heidi Health integrate with Epic?",
+        "a": "Heidi uses a browser extension for Epic (not native API). EHR write-back requires the Practice tier ($99/mo)—the Clinician tier ($150/mo) is copy-paste only. US practices wanting deep Epic integration should consider Abridge or Nuance DAX instead."
+      },
+      {
+        "q": "Is Heidi Health worth it for US practices?",
+        "a": "It depends. Heidi's native EHR integrations are strongest in Australia (Best Practice, Medical Director). US practices on Epic/Cerner get browser extension only. At $150/mo without EHR write-back, Freed ($39-119/mo) or Sunoh ($149/mo with EHR integration) may offer better value."
       }
     ],
     "keywords": [
       "Heidi Health",
       "Heidi AI scribe",
-      "free AI scribe",
-      "primary care AI scribe",
+      "Heidi pricing 2026",
       "Australian AI scribe",
-      "clinical documentation AI",
-      "ambient AI scribe"
+      "Heidi vs Freed",
+      "primary care AI scribe",
+      "Heidi Health free tier"
     ]
-  }
+  },
+  "website_url": "https://www.heidihealth.com",
+  "pricing_url": "https://www.heidihealth.com/en-us/pricing",
+  "affiliate_url": "https://www.heidihealth.com"
 }

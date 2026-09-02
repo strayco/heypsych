@@ -190,22 +190,6 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     }),
   },
   {
-    key: "company",
-    label: "Company",
-    shortLabel: "Company",
-    group: "overview",
-    order: 2,
-    applicability: "universal",
-    dataType: "text",
-    comparisonSemantics: "descriptive",
-    missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.company_name,
-      display: tool.company_name || "Unknown",
-      status: tool.company_name ? "known" : "unknown",
-    }),
-  },
-  {
     key: "description",
     label: "What It Is",
     shortLabel: "Summary",
@@ -247,12 +231,15 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "text",
     comparisonSemantics: "descriptive",
     missingBehavior: "Show 'Unknown'",
-    // NOTE: company_info doesn't exist in canonical ClinicianToolV4 schema
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      // company.founded_year is now in the canonical schema
+      const year = tool.company?.founded_year;
+      return {
+        raw: year ?? null,
+        display: year ? String(year) : "Unknown",
+        status: year ? "known" : ("unknown" as const),
+      };
+    },
   },
   {
     key: "best_for",
@@ -488,11 +475,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.has_telehealth,
-      display: tool.feature_flags?.has_telehealth ? "Yes" : "No",
-      status: tool.feature_flags?.has_telehealth !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.has_telehealth;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "has_billing",
@@ -504,11 +494,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.has_rcm,
-      display: tool.feature_flags?.has_rcm ? "Yes" : "No",
-      status: tool.feature_flags?.has_rcm !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.has_rcm;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "has_e_prescribing",
@@ -520,11 +513,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.has_e_prescribing,
-      display: tool.feature_flags?.has_e_prescribing ? "Yes" : "No",
-      status: tool.feature_flags?.has_e_prescribing !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.has_e_prescribing;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "has_patient_portal",
@@ -536,11 +532,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.has_patient_portal,
-      display: tool.feature_flags?.has_patient_portal ? "Yes" : "No",
-      status: tool.feature_flags?.has_patient_portal !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.has_patient_portal;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "has_mobile_app",
@@ -552,11 +551,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.has_mobile_app,
-      display: tool.feature_flags?.has_mobile_app ? "Yes" : "No",
-      status: tool.feature_flags?.has_mobile_app !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.has_mobile_app;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "mental_health_specific",
@@ -568,11 +570,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: (tool) => ({
-      raw: tool.feature_flags?.is_mental_health_specific,
-      display: tool.feature_flags?.is_mental_health_specific ? "Yes" : "No",
-      status: tool.feature_flags?.is_mental_health_specific !== undefined ? "known" : "unknown",
-    }),
+    extractValue: (tool) => {
+      const val = tool.feature_flags?.is_mental_health_specific;
+      return {
+        raw: val ?? false,
+        display: val === true ? "Yes" : val === false ? "No" : "Unknown",
+        status: val !== undefined ? "known" : "unknown",
+      };
+    },
   },
 
   // =========================================================================
@@ -589,11 +594,15 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     comparisonSemantics: "directional",
     missingBehavior: "Show 'Unknown'",
     extractValue: (tool) => {
-      const count = tool.integrations?.length || 0;
+      // If integrations array doesn't exist, we don't have data
+      if (!tool.integrations) {
+        return { raw: null, display: "Unknown", status: "unknown" as const };
+      }
+      const count = tool.integrations.length;
       return {
         raw: count,
-        display: count > 0 ? `${count} integrations` : "Unknown",
-        status: count > 0 ? "known" : "unknown",
+        display: count > 0 ? `${count} integrations` : "None listed",
+        status: "known",
       };
     },
   },
@@ -608,12 +617,16 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
     extractValue: (tool) => {
-      const calendars = tool.integrations?.filter((i) => i.category === "calendar") || [];
+      // If no integrations array, we don't have data
+      if (!tool.integrations) {
+        return { raw: [], display: "Unknown", status: "unknown" as const };
+      }
+      const calendars = tool.integrations.filter((i) => i.category === "calendar");
       const names = calendars.map((c) => c.name);
       return {
         raw: names,
-        display: names.length > 0 ? names.join(", ") : "Unknown",
-        status: names.length > 0 ? "known" : "unknown",
+        display: names.length > 0 ? names.join(", ") : "None",
+        status: "known",
       };
     },
   },
@@ -628,12 +641,16 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
     extractValue: (tool) => {
-      const payers = tool.integrations?.filter((i) => i.category === "payer") || [];
+      // If no integrations array, we don't have data
+      if (!tool.integrations) {
+        return { raw: [], display: "Unknown", status: "unknown" as const };
+      }
+      const payers = tool.integrations.filter((i) => i.category === "payer");
       const names = payers.map((c) => c.name);
       return {
         raw: names,
-        display: names.length > 0 ? names.join(", ") : "Unknown",
-        status: names.length > 0 ? "known" : "unknown",
+        display: names.length > 0 ? names.join(", ") : "None",
+        status: "known",
       };
     },
   },
@@ -654,11 +671,16 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const hasAmbient =
+        tool.features?.ambient_ai?.supported ||
+        tool.capabilities?.includes("ambient-listening");
+      return {
+        raw: hasAmbient ?? null,
+        display: hasAmbient ? "Yes" : hasAmbient === false ? "No" : "Unknown",
+        status: hasAmbient !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "dictation",
@@ -670,11 +692,16 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const hasDictation =
+        tool.features?.voice_commands ||
+        tool.capabilities?.includes("voice-transcription");
+      return {
+        raw: hasDictation ?? null,
+        display: hasDictation ? "Yes" : hasDictation === false ? "No" : "Unknown",
+        status: hasDictation !== undefined ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "note_types_supported",
@@ -686,11 +713,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "list",
     comparisonSemantics: "descriptive",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const noteTypes = tool.features?.note_types || [];
+      return {
+        raw: noteTypes,
+        display: noteTypes.length > 0 ? noteTypes.join(", ") : "Unknown",
+        status: noteTypes.length > 0 ? "known" : "unknown",
+      };
+    },
   },
   {
     key: "languages_supported",
@@ -702,11 +732,15 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "text",
     comparisonSemantics: "directional",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const multiLang = tool.features?.multi_language;
+      if (multiLang === true) {
+        return { raw: true, display: "Multi-language", status: "known" };
+      } else if (multiLang === false) {
+        return { raw: false, display: "English only", status: "known" };
+      }
+      return { raw: null, display: "Unknown", status: "unknown" as const };
+    },
   },
   {
     key: "ehr_integration_method",
@@ -718,11 +752,31 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "text",
     comparisonSemantics: "descriptive",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const hasEhrIntegration = tool.capabilities?.includes("ehr-integration");
+      const integrations = tool.integrations || [];
+      // Use integration_type from the schema
+      const types = new Set(integrations.map((i) => i.integration_type).filter(Boolean));
+      if (types.size > 0) {
+        const typeLabels: Record<string, string> = {
+          api: "API",
+          native: "Native",
+          hl7: "HL7",
+          fhir: "FHIR",
+          zapier: "Zapier",
+          partner: "Partner",
+          "file-based": "File-based",
+        };
+        const display = Array.from(types)
+          .map((t) => typeLabels[t as string] || t)
+          .join(", ");
+        return { raw: Array.from(types), display, status: "known" };
+      }
+      if (hasEhrIntegration) {
+        return { raw: true, display: "Yes", status: "known" };
+      }
+      return { raw: null, display: "Unknown", status: "unknown" as const };
+    },
   },
   {
     key: "native_ehr_integrations",
@@ -734,11 +788,18 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "list",
     comparisonSemantics: "descriptive",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const integrations = tool.integrations || [];
+      // Check integration_type === "native" instead of a native boolean
+      const nativeEhrs = integrations
+        .filter((i) => i.integration_type === "native")
+        .map((i) => i.name);
+      return {
+        raw: nativeEhrs,
+        display: nativeEhrs.length > 0 ? nativeEhrs.join(", ") : "None listed",
+        status: nativeEhrs.length > 0 ? "known" : ("known" as const),
+      };
+    },
   },
   {
     key: "coding_suggestions",
@@ -747,14 +808,20 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     group: "ai_scribe_specific",
     order: 56,
     applicability: ["ai-scribe-documentation"],
-    dataType: "list",
+    dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      // Check for coding-assistance capability or "coding" in secondary capabilities
+      const hasCoding =
+        tool.capabilities?.includes("coding-assistance") ||
+        tool.capabilities?.includes("coding");
+      return {
+        raw: hasCoding ?? null,
+        display: hasCoding ? "Yes" : "No",
+        status: "known",
+      };
+    },
   },
 
   // =========================================================================
@@ -773,9 +840,9 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     extractValue: (tool) => {
       const hasScheduling = tool.capabilities?.includes("appointment-scheduling");
       return {
-        raw: hasScheduling,
-        display: hasScheduling ? "Yes" : "Unknown",
-        status: hasScheduling ? "known" : "unknown",
+        raw: hasScheduling ?? false,
+        display: hasScheduling ? "Yes" : "No",
+        status: "known",
       };
     },
   },
@@ -792,9 +859,9 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     extractValue: (tool) => {
       const hasNotes = tool.capabilities?.includes("clinical-notes");
       return {
-        raw: hasNotes,
-        display: hasNotes ? "Yes" : "Unknown",
-        status: hasNotes ? "known" : "unknown",
+        raw: hasNotes ?? false,
+        display: hasNotes ? "Yes" : "No",
+        status: "known",
       };
     },
   },
@@ -811,9 +878,9 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     extractValue: (tool) => {
       const hasTx = tool.capabilities?.includes("treatment-planning");
       return {
-        raw: hasTx,
-        display: hasTx ? "Yes" : "Unknown",
-        status: hasTx ? "known" : "unknown",
+        raw: hasTx ?? false,
+        display: hasTx ? "Yes" : "No",
+        status: "known",
       };
     },
   },
@@ -834,9 +901,9 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     extractValue: (tool) => {
       const hasClaims = tool.capabilities?.includes("claims-submission");
       return {
-        raw: hasClaims,
-        display: hasClaims ? "Yes" : "Unknown",
-        status: hasClaims ? "known" : "unknown",
+        raw: hasClaims ?? false,
+        display: hasClaims ? "Yes" : "No",
+        status: "known",
       };
     },
   },
@@ -853,9 +920,9 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     extractValue: (tool) => {
       const hasElig = tool.capabilities?.includes("eligibility-verification");
       return {
-        raw: hasElig,
-        display: hasElig ? "Yes" : "Unknown",
-        status: hasElig ? "known" : "unknown",
+        raw: hasElig ?? false,
+        display: hasElig ? "Yes" : "No",
+        status: "known",
       };
     },
   },
@@ -869,12 +936,17 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "boolean",
     comparisonSemantics: "presence",
     missingBehavior: "Show 'Unknown'",
-    // NOTE: "era-processing" capability doesn't exist in canonical CapabilitySlugZ
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      // Check for payment-processing or denial-management as ERA-related capabilities
+      const hasEra =
+        tool.capabilities?.includes("payment-processing") ||
+        tool.capabilities?.includes("denial-management");
+      return {
+        raw: hasEra ?? false,
+        display: hasEra ? "Yes" : "No",
+        status: "known",
+      };
+    },
   },
 
   // =========================================================================
@@ -909,12 +981,14 @@ export const TOOL_COMPARISON_ATTRIBUTES: ToolComparisonAttributeDefinition[] = [
     dataType: "text",
     comparisonSemantics: "descriptive",
     missingBehavior: "Show 'Unknown'",
-    // NOTE: company_info doesn't exist in canonical ClinicianToolV4 schema
-    extractValue: () => ({
-      raw: null,
-      display: "Unknown",
-      status: "unknown" as const,
-    }),
+    extractValue: (tool) => {
+      const count = tool.company?.customer_count;
+      return {
+        raw: count ?? null,
+        display: count || "Unknown",
+        status: count ? "known" : "unknown",
+      };
+    },
   },
 ];
 
@@ -974,6 +1048,7 @@ function formatOrgSize(size: string): string {
     "small-2-10": "Small (2-10)",
     "medium-11-50": "Medium (11-50)",
     "large-51-200": "Large (51-200)",
+    "enterprise-200-plus": "Enterprise (200+)",
     enterprise: "Enterprise (200+)",
   };
   return labels[size] || size;

@@ -3,10 +3,10 @@
   "kind": "clinician-tool",
   "id": "db9b3314-136a-4263-9063-5b0c238d4b0c",
   "slug": "nuance-dax-copilot",
-  "name": "Nuance DAX Copilot",
+  "name": "Nuance DAX Copilot (Microsoft Dragon Copilot)",
   "company_name": "Microsoft / Nuance",
   "website": "https://www.nuance.com/healthcare/dragon-ai-clinical-solutions/dax-copilot.html",
-  "description": "Nuance DAX Copilot (Dragon Ambient eXperience Copilot) is Microsoft's enterprise-grade ambient AI clinical documentation solution. It automatically captures the patient-clinician conversation and generates clinical notes directly in the EHR. Powered by Microsoft Azure OpenAI, DAX Copilot is designed for large health systems requiring deep EHR integration and enterprise security.",
+  "description": "Microsoft Dragon Copilot (formerly Nuance DAX Copilot) is the enterprise-grade ambient AI documentation standard for large health systems. Powered by Azure OpenAI with deep Epic integration, it serves organizations like Mayo Clinic, Cleveland Clinic, and Kaiser Permanente. At $369-830+/provider/month (real-world $150-600 with volume), it's the most expensive option but offers unmatched EHR integration depth. Behavioral health results are reported as 'variable'—DAX was not built specifically for psychiatry and may lack native MSE structure, psychiatry-specific CPT coding, and risk assessment fields. Best fit for enterprise behavioral health divisions inside hospital systems, not solo mental health practices.",
   "import_ref": {
     "record_id": "MH-0192",
     "source_row": 193,
@@ -17,7 +17,11 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "enterprise-healthcare-ai"],
+  "secondary_categories": [
+    "ai-copilot-clinical"
+  ],
+  "short_description": "Enterprise ambient AI documentation for health systems on Epic/Cerner. $369-830+/mo list price. Behavioral health results reported as 'variable'—not built for psychiatry.",
+  "one_liner": "Microsoft's enterprise ambient scribe for Epic health systems. Premium pricing, variable behavioral health results.",
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -31,29 +35,17 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
+      "medical-director",
+      "psychiatric-np-pa",
       "psychiatrist"
     ],
     "practice_settings": [
-      "hospital-system",
-      "academic-medical-center",
-      "large-health-system",
-      "outpatient-clinic"
+      "hospital-inpatient",
+      "multi-site-enterprise"
     ],
-    "organization_sizes": ["large", "enterprise"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "emergency-medicine",
-      "cardiology",
-      "orthopedics",
-      "oncology",
-      "neurology",
-      "psychiatry",
-      "surgery"
+    "organization_sizes": [
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
@@ -76,40 +68,43 @@
     "acquisition_year": 2022,
     "acquisition_price": "$19.7 billion",
     "customer_count": "550,000+ physicians using Nuance solutions",
-    "notable_clients": ["Mayo Clinic", "Cleveland Clinic", "Kaiser Permanente", "HCA Healthcare"]
+    "notable_clients": [
+      "Mayo Clinic",
+      "Cleveland Clinic",
+      "Kaiser Permanente",
+      "HCA Healthcare"
+    ],
+    "rebrand_note": "March 2025: Microsoft merged DAX Copilot with Dragon Medical One under 'Microsoft Dragon Copilot' brand"
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "starting_price": null,
+    "starting_price_cents": 36900,
+    "starting_price_display": "$369-830+/mo list; real-world $150-600 with volume",
     "currency": "USD",
     "billing_period": "annual",
+    "free_tier": false,
     "tiers": [
       {
-        "name": "Enterprise",
-        "price": null,
-        "period": "annual",
-        "features": [
-          "Ambient AI documentation",
-          "Native EHR integration",
-          "Multi-specialty templates",
-          "Mobile app access",
-          "Enterprise security",
-          "Dedicated implementation team",
-          "24/7 support"
-        ],
-        "quote_required": true
+        "name": "Per-User (Unlimited)",
+        "price": "$1,512/user/month (list, May 2026)",
+        "description": "Unlimited ambient use. 57% price cut from prior $3,528. Still requires volume negotiation."
+      },
+      {
+        "name": "Flex",
+        "price": "$604.80/user/month (list, May 2026)",
+        "description": "Base license + pay-as-you-go ambient. For lower-volume users."
       }
     ],
-    "estimated_range": "$200-400 per provider per month (enterprise volume pricing)",
-    "free_trial": {
-      "available": false,
-      "notes": "Pilot programs available for health systems"
+    "implementation_fees": {
+      "first_user": "$650-700",
+      "additional_users": "$250 each"
     },
-    "notes": "Enterprise pricing only. Implementation fees typically required. Multi-year contracts common."
+    "notes": "No self-service signup. Microsoft sales or authorized reseller required. Real-world enterprise deals range $150-600/provider depending on volume, contract length, existing Microsoft relationship. Multi-year contracts common. 6+ month implementation typical.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
@@ -122,52 +117,52 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true,
-      "notes": "Deep native integration, writes directly to Epic"
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Deep native integration—writes directly to SmartText fields"
     },
     {
-      "name": "Cerner (Oracle Health)",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "name": "Oracle Health (Cerner)",
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "MEDITECH",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "slug": "meditech",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Allscripts",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "slug": "allscripts",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Microsoft Teams",
-      "type": "collaboration",
-      "method": "native-api",
-      "native": true
-    },
-    {
-      "name": "Microsoft Azure",
-      "type": "cloud",
-      "method": "native",
-      "native": true
+      "slug": "microsoft-teams",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Captures multi-party conversations and generates documentation automatically"
+      "description": "Multi-party conversation capture with multi-speaker differentiation. Powered by Azure OpenAI."
     },
     "note_types": [
       "SOAP notes",
@@ -176,69 +171,85 @@
       "Consult notes",
       "Discharge summaries",
       "Procedure notes",
-      "Psychiatry evaluations"
+      "Nursing documentation (2026)"
     ],
     "specialty_templates": true,
     "custom_templates": true,
     "voice_commands": true,
     "multi_language": true,
-    "accuracy_rate": "Enterprise-grade accuracy with human-in-loop review options",
-    "azure_openai": true
+    "azure_openai": true,
+    "desktop_copilot": true,
+    "behavioral_health_note": "DAX has added specialty-specific mental health AI model, but psychiatrists report 'variable success.' May lack native MSE structure, psychiatry-specific CPT coding, and risk assessment fields."
   },
   "best_for": [
-    "Large health systems with 100+ providers",
-    "Organizations already using Epic or Cerner",
-    "Academic medical centers",
-    "Health systems requiring HITRUST certification",
-    "Organizations needing enterprise security and compliance",
-    "Multi-specialty hospital systems"
+    "Large health systems (100+ providers) already on Microsoft/Epic stack",
+    "Academic medical centers requiring HITRUST certification",
+    "Enterprise behavioral health divisions inside hospital systems",
+    "Organizations with IT resources for 6+ month implementation"
   ],
   "not_for": [
-    "Solo practitioners (pricing not designed for individual use)",
-    "Small practices under 20 providers",
-    "Organizations seeking quick implementation (6+ month typical)",
-    "Practices without Epic, Cerner, or other major EHR",
-    "Budget-conscious practices (premium enterprise pricing)"
+    "Solo mental health practices—pricing and implementation prohibitive",
+    "Therapists—DAX doesn't understand therapy modalities",
+    "Psychiatry practices needing reliable MSE and risk documentation",
+    "Organizations wanting quick deployment (6+ month typical)",
+    "Practices without Epic/Cerner—value diminishes without deep integration"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 92,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 93,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["nuance-dragon-medical-one", "abridge", "suki-assistant", "ambience-healthcare"],
+  "related_tools": [
+    "suki-ai",
+    "abridge",
+    "ambience-healthcare",
+    "nabla",
+    "nuance-dragon-medical-one"
+  ],
+  "competitor_tools": [
+    "suki-ai",
+    "abridge",
+    "ambience-healthcare"
+  ],
   "created_at": "2026-08-22T20:50:40.787Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Nuance DAX Copilot: Enterprise AI Scribe Review & Pricing | HeyPsych",
-    "meta_description": "Nuance DAX Copilot by Microsoft - enterprise ambient AI documentation for health systems. Deep Epic/Cerner integration, HITRUST certified. Enterprise pricing guide.",
+    "title": "Nuance DAX Copilot: Enterprise 2026 | HeyPsych",
+    "meta_description": "Microsoft Dragon Copilot (DAX): $369-830+/mo enterprise ambient scribe. Deep Epic integration. Behavioral health results 'variable'—not built for psychiatry.",
     "faqs": [
       {
-        "question": "How much does Nuance DAX Copilot cost?",
-        "answer": "DAX Copilot is enterprise-priced and requires a custom quote. Typical pricing ranges from $200-400 per provider per month with volume discounts for large health systems. Implementation fees and multi-year contracts are common."
+        "q": "How much does Nuance DAX Copilot cost in 2026?",
+        "a": "List prices as of May 2026: Per-User $1,512/month (unlimited ambient), Flex $604.80/month (base + pay-as-you-go). Real-world enterprise deals range $150-600/provider with volume. Implementation fees: $650-700 first user, $250 additional. No self-service—requires Microsoft sales."
       },
       {
-        "question": "Does DAX Copilot integrate directly with Epic?",
-        "answer": "Yes, DAX Copilot has native, deep integration with Epic and writes documentation directly into the EHR without copy-paste. It also integrates natively with Cerner, MEDITECH, Allscripts, and other major EHRs."
+        "q": "Is Nuance DAX good for psychiatry?",
+        "a": "Variable results reported. DAX added a mental health AI model but was not built specifically for psychiatry. May lack native MSE structure, psychiatry-specific CPT coding, and risk assessment fields. Best for enterprise behavioral health divisions, not solo psychiatry practices."
       },
       {
-        "question": "How is DAX Copilot different from Dragon Medical One?",
-        "answer": "Dragon Medical One is primarily a dictation solution where clinicians speak their notes. DAX Copilot is an ambient AI that listens to the patient conversation and generates notes automatically without dictation. Many organizations use both together."
+        "q": "What's the difference between Nuance DAX and Microsoft Dragon Copilot?",
+        "a": "Same product. In March 2025, Microsoft merged DAX Copilot with Dragon Medical One under the single brand 'Microsoft Dragon Copilot.' The names are interchangeable."
       },
       {
-        "question": "Is DAX Copilot HIPAA and HITRUST compliant?",
-        "answer": "Yes, DAX Copilot is fully HIPAA compliant with BAAs available, HITRUST CSF certified, SOC 2 Type II certified, and built on Microsoft Azure's enterprise security infrastructure."
+        "q": "How long does DAX Copilot take to implement?",
+        "a": "Typically 6+ months for enterprise deployment. Requires significant IT coordination, especially for deep Epic integration. This is a major differentiator from faster-deploying competitors."
+      },
+      {
+        "q": "Is DAX Copilot worth it for mental health practices?",
+        "a": "For most mental health practices, no. The premium pricing ($369-830+/mo), 6+ month implementation, and variable behavioral health results make alternatives more practical. Freed ($39-119/mo) works for psychiatry med management. Mentalyc/Upheal ($20-120/mo) serve therapists."
       }
     ],
     "keywords": [
       "Nuance DAX Copilot",
-      "Dragon Ambient eXperience",
-      "Microsoft healthcare AI",
-      "Epic AI scribe",
-      "enterprise clinical documentation",
-      "ambient AI documentation",
-      "hospital AI scribe"
+      "Microsoft Dragon Copilot",
+      "DAX Copilot pricing 2026",
+      "enterprise AI scribe",
+      "DAX vs Suki",
+      "Epic ambient scribe",
+      "DAX Copilot psychiatry"
     ]
-  }
+  },
+  "website_url": "https://www.nuance.com/healthcare/ambient-clinical-intelligence.html",
+  "affiliate_url": "https://www.nuance.com/healthcare/ambient-clinical-intelligence.html"
 }

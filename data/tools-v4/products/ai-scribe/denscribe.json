@@ -5,6 +5,7 @@
   "slug": "denscribe",
   "name": "DENscribe",
   "company_name": "DENmaar",
+  "short_description": "AI scribe from DENmaar for behavioral health. Part of the DENmaar ecosystem including Guardian EHR, credentialing, and RCM services.",
   "import_ref": {
     "record_id": "MH-0183",
     "source_row": 184,
@@ -16,16 +17,26 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "capabilities": [
+    "voice-transcription",
+    "note-generation",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -40,34 +51,79 @@
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "flat-monthly",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "notes": "AI scribe from DENmaar for behavioral health practices. Part of the DENmaar ecosystem (Guardian EHR, credentialing, RCM). Contact for pricing."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "slug": "denmaar-guardian",
+      "name": "DENmaar Guardian EHR",
+      "depth": "native",
+      "category": "other",
+      "integration_type": "api",
+      "verified": false
+    }
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 86,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "denmaar-guardian",
+    "denmaar-rcm"
+  ],
   "created_at": "2026-08-22T20:50:40.785Z",
-  "updated_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-09-01T19:34:49.745Z",
   "status": "active",
   "seo": {
-    "title": "DENscribe: Review & Pricing | HeyPsych",
-    "meta_description": "DENscribe review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "DENscribe: DENmaar AI Scribe | HeyPsych",
+    "meta_description": "DENscribe is DENmaar's AI scribe for behavioral health. Integrates with Guardian EHR. Part of the DENmaar ecosystem (EHR, credentialing, RCM).",
+    "faqs": [
+      {
+        "q": "What is DENscribe?",
+        "a": "AI documentation tool from DENmaar for behavioral health providers. Transcribes therapy sessions and generates clinical notes. Part of the DENmaar ecosystem including Guardian EHR, credentialing, and RCM services."
+      },
+      {
+        "q": "Does DENscribe work with DENmaar Guardian EHR?",
+        "a": "Yes. DENscribe integrates natively with DENmaar's Guardian EHR, making it seamless for practices already in the DENmaar ecosystem."
+      },
+      {
+        "q": "Can I use DENscribe without DENmaar Guardian?",
+        "a": "Contact DENmaar for standalone availability. DENscribe is designed to work within their ecosystem, but they may support other EHR integrations."
+      },
+      {
+        "q": "What is the DENmaar ecosystem?",
+        "a": "DENmaar provides behavioral health practice solutions: Guardian EHR, credentialing services, RCM/billing, and now DENscribe for AI documentation. They serve mental health practices of all sizes."
+      },
+      {
+        "q": "Is DENscribe HIPAA compliant?",
+        "a": "Yes. HIPAA compliant with BAA available, consistent with DENmaar's healthcare compliance standards."
+      },
+      {
+        "q": "How does DENscribe compare to standalone AI scribes?",
+        "a": "DENscribe is best for practices already using or considering DENmaar Guardian EHR. If you use a different EHR, compare standalone options like Upheal, Mentalyc, or Blueprint."
+      }
+    ],
     "keywords": [
       "DENscribe",
-      "ai scribe documentation"
+      "DENmaar AI scribe",
+      "behavioral health scribe",
+      "Guardian EHR integration",
+      "mental health documentation",
+      "therapy notes AI"
     ]
-  }
+  },
+  "website_url": "https://denmaar.com",
+  "affiliate_url": "https://denmaar.com",
+  "one_liner": "AI scribe from DENmaar for behavioral health. Part of the DENmaar ecosystem including Guardian EHR, "
 }

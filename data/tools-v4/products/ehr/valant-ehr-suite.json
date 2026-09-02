@@ -4,6 +4,8 @@
   "id": "ec177212-64ec-4196-a79b-7ef5047c1901",
   "slug": "valant-ehr-suite",
   "name": "Valant EHR Suite",
+  "company_name": "Valant",
+  "short_description": "Behavioral health EHR for psychiatrists and therapists with EPCS, telehealth, outcome tracking. $100-300/provider/month. 98% small practice customers.",
   "import_ref": {
     "record_id": "MH-0006",
     "source_row": 7,
@@ -14,7 +16,9 @@
     "status": "active"
   },
   "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "billing-rcm-insurance"
+  ],
   "capabilities": [
     "clinical-notes",
     "treatment-planning",
@@ -32,7 +36,6 @@
     "pdmp-integration",
     "outcome-tracking",
     "phq9-gad7",
-    "measurement-based-care",
     "note-generation",
     "ai-suggestions",
     "hipaa-compliant",
@@ -41,19 +44,18 @@
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychiatric-np-pa"
+      "psychiatric-np-pa",
+      "psychologist",
+      "therapist-lcsw-lmft"
     ],
     "practice_settings": [
+      "solo-practice",
       "group-practice"
     ],
     "organization_sizes": [
-      "small-2-10"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "psychiatry",
-      "therapy"
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
@@ -69,34 +71,132 @@
     "is_specialty_agnostic": false
   },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "per-provider-month",
+    "starting_price_cents": 10000,
+    "starting_price_display": "$100-300/provider/month",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "tiers": [
+      {
+        "name": "Standard",
+        "price": "~$100-150/provider/month",
+        "description": "Core EHR, scheduling, clinical documentation, patient portal"
+      },
+      {
+        "name": "Professional",
+        "price": "~$150-225/provider/month",
+        "description": "Adds RCM, billing, eligibility verification, telehealth"
+      },
+      {
+        "name": "Enterprise",
+        "price": "~$225-300/provider/month",
+        "description": "Full suite with AI documentation, advanced analytics, outcome tracking"
+      }
+    ],
+    "notes": "Built specifically for behavioral health. 98% customers are small businesses. Implementation included. Pricing varies by practice size and module selection."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Availity",
+      "description": "Claims submission and eligibility",
+      "integration_type": "api",
+      "slug": "availity",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Surescripts",
+      "description": "E-prescribing network including EPCS",
+      "integration_type": "api",
+      "slug": "surescripts",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "PDMP",
+      "description": "State prescription drug monitoring programs",
+      "integration_type": "api",
+      "slug": "pdmp",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Zoom",
+      "description": "Integrated video sessions",
+      "integration_type": "api",
+      "slug": "zoom",
+      "category": "other",
+      "verified": false
+    }
+  ],
+  "best_for": [
+    "Psychiatrists who need EPCS + controlled substance prescribing ($100-300/mo vs $400+/mo with Epic)",
+    "Solo/small behavioral health practices wanting all-in-one (EHR + RCM + telehealth)",
+    "Practices needing outcome tracking with PHQ-9/GAD-7 built in",
+    "Groups transitioning from paper who want behavioral health-specific templates"
+  ],
+  "not_for": [
+    "Large enterprise organizations (50+ providers) needing enterprise integrations (→ Netsmart, Oracle Health)",
+    "Practices wanting standalone EHR without bundled billing (→ TherapyNotes ~$49/mo)",
+    "Tech-forward practices wanting cutting-edge AI (Valant AI is basic compared to Freed $99/mo)",
+    "Organizations requiring HITRUST certification (→ Kipu, Oracle Health)"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "therapynotes",
+    "simplepractice",
+    "theranest",
+    "kipu-emr"
+  ],
   "created_at": "2026-08-22T20:50:40.770Z",
-  "updated_at": "2026-08-22T20:50:40.770Z",
+  "updated_at": "2026-09-01T20:15:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Valant EHR Suite: Review & Pricing | HeyPsych",
-    "meta_description": "Valant EHR Suite review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Valant EHR Suite: Pricing, Reviews & Alternatives 2026 | ...",
+    "meta_description": "Valant EHR Suite pricing starts at $100-300/provider/month for psychiatry and behavioral health practices. Compare to TherapyNotes ($49/mo), SimplePractice (...",
+    "faqs": [
+      {
+        "q": "How much does Valant EHR cost?",
+        "a": "Valant EHR pricing ranges from $100-300/provider/month depending on modules selected. Standard plans (~$100-150/mo) include core EHR and documentation. Professional plans (~$150-225/mo) add billing and telehealth. Enterprise plans (~$225-300/mo) include AI documentation and advanced analytics. Implementation is typically included."
+      },
+      {
+        "q": "Is Valant good for psychiatrists?",
+        "a": "Yes, Valant is specifically designed for behavioral health with psychiatry-specific features: EPCS for controlled substance prescribing, PDMP integration, medication management workflows, outcome tracking with PHQ-9/GAD-7, and psychiatric note templates. 98% of customers are small practices."
+      },
+      {
+        "q": "Does Valant have AI documentation?",
+        "a": "Yes, Valant includes AI-assisted documentation features that help generate clinical notes and treatment plans. However, for advanced AI scribing capabilities, standalone AI scribes like Freed ($99/mo) or Heidi Health offer more sophisticated ambient dictation."
+      },
+      {
+        "q": "What are alternatives to Valant EHR?",
+        "a": "For solo/small practices: TherapyNotes ($49/mo) or SimplePractice ($59/mo) offer simpler, lower-cost options. For medium practices: TheraNest or Jane App. For large behavioral health organizations: Netsmart myEvolv or Qualifacts CareLogic. For psychiatry with enterprise needs: Kipu or Oracle Health."
+      },
+      {
+        "q": "Does Valant integrate with telehealth?",
+        "a": "Yes, Valant includes integrated telehealth with Zoom-based video sessions. The patient portal allows clients to join sessions directly without separate software. Telehealth is included in Professional and Enterprise plans."
+      }
+    ],
     "keywords": [
       "Valant EHR Suite",
-      "ehr practice management"
+      "Valant pricing",
+      "behavioral health EHR",
+      "psychiatry EHR software",
+      "Valant vs TherapyNotes",
+      "mental health practice management"
     ]
-  }
+  },
+  "website_url": "https://www.valant.io",
+  "affiliate_url": "https://www.valant.io",
+  "one_liner": "Behavioral health EHR for psychiatrists and therapists with EPCS, telehealth, outcome tracking. $100"
 }

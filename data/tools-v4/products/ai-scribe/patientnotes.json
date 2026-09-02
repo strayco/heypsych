@@ -4,6 +4,9 @@
   "id": "c7f42ed7-e625-41d7-9ceb-c0171c264266",
   "slug": "patientnotes",
   "name": "PatientNotes",
+  "company_name": "PatientNotes.ai",
+  "website": "https://patientnotes.ai",
+  "description": "PatientNotes is positioned as the most affordable AI medical scribe at $50/user/month with annual billing ($70/mo monthly). Unlimited patient visits included—no credit caps like competitors. 37 specialty templates supported. 7-day free trial with no credit card required, plus 14-day money-back guarantee on paid plans. HIPAA compliant with BAA for all paid customers. Key differentiator: strongest value pick for solo and small clinics who need specialty templates at a budget price. Patient data never used for AI training. All data stored in HIPAA-compliant US data centers with AES-256 encryption.",
   "import_ref": {
     "record_id": "MH-0199",
     "source_row": 200,
@@ -15,12 +18,30 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Budget AI scribe at $50/mo annual ($70/mo monthly). Unlimited visits. 37 specialty templates. 7-day free trial. HIPAA + BAA included.",
+  "one_liner": "Budget AI scribe. $50-70/mo unlimited. 37 specialties. HIPAA + BAA. Free trial.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +51,148 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 5000,
+    "starting_price_display": "$50/mo annual or $70/mo monthly",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "free_trial_days": 7,
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$70/user/month",
+        "description": "Unlimited patient visits. 37 specialty templates. HIPAA compliant. BAA included. No contracts."
+      },
+      {
+        "name": "Annual",
+        "price": "$50/user/month ($600/year)",
+        "description": "Save $240/year vs monthly. Same unlimited features. 14-day money-back guarantee."
+      }
+    ],
+    "notes": "No contracts, no setup fees, no hidden charges. 7-day free trial with no credit card required. 14-day money-back guarantee on paid subscriptions. Patient data never used for AI training.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "Bank-level encryption: TLS 1.3 in transit, AES-256 at rest. All data stored in HIPAA-compliant US data centers. Patient data never used for AI training."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "37+ Specialty Templates",
+      "slug": "multi-specialty",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "37 specialty templates included"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Ambient AI scribe captures patient conversations and generates structured clinical notes."
+    },
+    "unlimited_visits": {
+      "supported": true,
+      "description": "Unlimited patient visits included—no credit caps or per-note limits."
+    },
+    "specialty_templates": {
+      "count": "37",
+      "description": "37 specialty templates covering primary care, family medicine, internal medicine, and more."
+    },
+    "data_privacy": {
+      "no_training": true,
+      "description": "Patient data never used to train AI models. All data stays private and encrypted."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Specialty-specific formats"
+    ]
+  },
+  "best_for": [
+    "Budget-conscious solo practitioners needing affordable AI scribe ($50/mo)",
+    "Small clinics wanting unlimited visits without per-note credit caps",
+    "Primary care and family medicine practices with straightforward documentation needs",
+    "Clinicians wanting to test before commitment (7-day free trial + 14-day guarantee)",
+    "Practices needing 37 specialty templates at a budget price point"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Psychiatrists needing MSE and medication management—DeepCura ($129/mo) or mdhub better",
+    "Enterprises needing deep EHR integration—PatientNotes is simpler, copy-paste focused",
+    "Practices requiring HITRUST certification",
+    "Complex multi-specialty organizations needing enterprise features"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 88,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "commure-scribe",
+    "scribeberry"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "commure-scribe",
+    "scribeberry"
+  ],
   "created_at": "2026-08-22T20:50:40.789Z",
-  "updated_at": "2026-08-22T20:50:40.789Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "PatientNotes: Review & Pricing | HeyPsych",
-    "meta_description": "PatientNotes review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "PatientNotes: Budget AI Scribe $50/mo | HeyPsych",
+    "meta_description": "PatientNotes: Budget AI scribe at $50/mo annual ($70/mo monthly). Unlimited visits. 37 specialty templates. 7-day free trial. HIPAA compliant. BAA included.",
+    "faqs": [
+      {
+        "q": "How much does PatientNotes cost in 2026?",
+        "a": "PatientNotes costs $70/user/month on monthly billing, or $50/user/month with annual billing ($600/year). Save $240/year with annual plan. 7-day free trial with no credit card required. 14-day money-back guarantee on paid plans."
+      },
+      {
+        "q": "Is PatientNotes unlimited?",
+        "a": "Yes. PatientNotes includes unlimited patient visits—no credit caps or per-note limits like some competitors. This makes it predictable for high-volume practices."
+      },
+      {
+        "q": "Is PatientNotes HIPAA compliant?",
+        "a": "Yes. PatientNotes is fully HIPAA compliant and signs BAAs with all paid customers. Bank-level encryption (TLS 1.3 in transit, AES-256 at rest). All data stored in US HIPAA-compliant data centers. Patient data never used for AI training."
+      },
+      {
+        "q": "Is PatientNotes good for mental health practices?",
+        "a": "Not specifically. PatientNotes is designed for general medical documentation with 37 specialty templates. Mental health therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider DeepCura ($129/mo) or Freed ($39-119/mo)."
+      },
+      {
+        "q": "PatientNotes vs Freed: which is better?",
+        "a": "PatientNotes ($50-70/mo) is the most affordable option with unlimited visits. Freed ($39-119/mo starting) offers more features and specialty support but at higher price points for full features. For budget-first practices, PatientNotes. For more comprehensive features, Freed."
+      }
+    ],
     "keywords": [
       "PatientNotes",
-      "ai scribe documentation"
+      "PatientNotes pricing 2026",
+      "cheap AI scribe",
+      "budget AI medical scribe",
+      "affordable AI scribe",
+      "PatientNotes vs Freed",
+      "HIPAA AI scribe cheap",
+      "$50 AI scribe"
     ]
-  }
+  },
+  "website_url": "https://patientnotes.ai",
+  "pricing_url": "https://patientnotes.ai/pricing",
+  "affiliate_url": "https://patientnotes.ai"
 }

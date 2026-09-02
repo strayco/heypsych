@@ -4,6 +4,9 @@
   "id": "fbe91b71-b743-4c16-b474-77a3fb7a6fef",
   "slug": "wavo-health",
   "name": "Wavo Health",
+  "company_name": "Wavo Health",
+  "website": "https://wavo.health",
+  "description": "Wavo Health is an AI clinical workspace that turns patient conversations into notes, visit prep, patient context, coding cues, and follow-up content. Claims to save 50% of documentation time. Pricing not publicly listed—offers Pro tier for individuals and Enterprise for larger groups. Free trial available ('Try Wavo Free'). Supports SOAP, consult, progress notes, and specialty templates plus coding cues, patient summaries, letters, and exports. Mental health specialty support mentioned. Best for practices wanting a comprehensive AI workspace beyond pure scribing. Requires contact for specific pricing.",
   "import_ref": {
     "record_id": "MH-0200",
     "source_row": 201,
@@ -15,12 +18,31 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "AI clinical workspace: notes + visit prep + coding cues + follow-up. Pro and Enterprise tiers. Free trial. Contact for pricing.",
+  "one_liner": "AI clinical workspace. Notes + prep + coding cues. Free trial. Contact for pricing.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +52,149 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
+  },
+  "company": {
+    "headquarters": "United States"
   },
   "pricing": {
     "model": "enterprise-custom",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "starting_price_cents": 0,
+    "starting_price_display": "Contact for pricing",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Free trial available ('Try Wavo Free'). Champion week free trial for teams.",
+    "tiers": [
+      {
+        "name": "Pro",
+        "price": "Contact for pricing",
+        "description": "For individual clinicians. AI scribe, visit prep, coding cues, patient context, follow-up content."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Contact for pricing",
+        "description": "For larger groups and health systems. Volume pricing, team management, custom integrations."
+      }
+    ],
+    "notes": "Pricing not publicly listed—requires contact for quotes. Free trial available to test the platform. Compare via their pricing page and compare hub for AI medical scribe comparisons.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with BAA available."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "AI transcribes patient-provider conversations into accurate, structured clinical notes in real time."
+    },
+    "visit_prep": {
+      "supported": true,
+      "description": "Pre-visit preparation with patient context and relevant history."
+    },
+    "coding_cues": {
+      "supported": true,
+      "description": "Coding cues to support accurate charge capture and billing."
+    },
+    "patient_context": {
+      "supported": true,
+      "description": "Patient context and summaries for quick orientation before visits."
+    },
+    "follow_up_content": {
+      "supported": true,
+      "description": "Follow-up letters and patient communication content."
+    },
+    "time_savings": {
+      "rate": "50%",
+      "description": "Claims to save up to 50% of documentation time."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Consult notes",
+      "Progress notes",
+      "Specialty templates",
+      "Patient letters"
+    ]
   },
-  "related_tools": [],
+  "best_for": [
+    "Practices wanting comprehensive AI workspace beyond pure scribing",
+    "Clinicians needing visit prep and patient context alongside documentation",
+    "Practices wanting coding cues for charge capture support",
+    "Groups evaluating AI scribes through free trial",
+    "Mental health practices wanting specialty support (contact for details)"
+  ],
+  "not_for": [
+    "Clinicians needing transparent pricing before engagement—Freed ($39-119/mo) or Commure ($59-89/mo) publish prices",
+    "Mental health therapists wanting purpose-built tools—Mentalyc ($20-70/mo) or Upheal ($69/mo) better",
+    "Budget-conscious solo practitioners—PatientNotes ($50/mo) publishes transparent pricing",
+    "Practices requiring specific EHR integrations—verify before committing",
+    "Organizations requiring HITRUST certification"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 78,
+    "last_reviewed": "2026-09-01"
+  },
+  "related_tools": [
+    "freed-ai",
+    "glass-ai",
+    "commure-scribe"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "glass-ai",
+    "commure-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.789Z",
-  "updated_at": "2026-08-22T20:50:40.789Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Wavo Health: Review & Pricing | HeyPsych",
-    "meta_description": "Wavo Health review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Wavo Health Review 2026: AI Clinical Workspace | HeyPsych",
+    "meta_description": "Wavo Health: AI clinical workspace for notes, visit prep, coding cues, and follow-up. Pro and Enterprise tiers. Free trial available. Contact for pricing.",
+    "faqs": [
+      {
+        "q": "How much does Wavo Health cost in 2026?",
+        "a": "Wavo Health does not publicly list pricing. They offer Pro (individual) and Enterprise (groups) tiers. Contact their sales team for quotes. A free trial is available to test the platform."
+      },
+      {
+        "q": "What makes Wavo Health different from other AI scribes?",
+        "a": "Wavo Health positions itself as an 'AI clinical workspace' rather than just an AI scribe. It includes visit prep, patient context, coding cues, and follow-up content alongside ambient documentation—a more comprehensive workflow tool."
+      },
+      {
+        "q": "Does Wavo Health have a free trial?",
+        "a": "Yes. Wavo Health offers 'Try Wavo Free' to test the platform. Teams can use a 'champion week' free trial to evaluate before committing."
+      },
+      {
+        "q": "Does Wavo Health support mental health documentation?",
+        "a": "Wavo Health mentions mental health specialty support. However, for purpose-built mental health tools, therapists may prefer Mentalyc ($20-70/mo) or Upheal ($69/mo). Contact Wavo for specific mental health capabilities."
+      },
+      {
+        "q": "Wavo Health vs Freed: which is better?",
+        "a": "Freed ($39-119/mo) has transparent pricing and proven mental health support. Wavo Health has undisclosed pricing but offers a broader workspace approach (visit prep, coding cues, follow-up). If you prefer transparent pricing, Freed. If you want comprehensive workspace features, try Wavo's free trial."
+      }
+    ],
     "keywords": [
       "Wavo Health",
-      "ai scribe documentation"
+      "Wavo Health pricing 2026",
+      "AI clinical workspace",
+      "Wavo AI scribe",
+      "visit prep AI",
+      "coding cues AI scribe",
+      "Wavo vs Freed",
+      "clinical documentation AI"
     ]
-  }
+  },
+  "website_url": "https://wavo.health",
+  "pricing_url": "https://wavo.health/en",
+  "affiliate_url": "https://wavo.health"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "owl-insights-neuroflow",
+  "id": "b22510d7-4d22-4a0a-b8f9-01d9f3c3a234",
   "slug": "owl-insights",
   "name": "Owl Insights (NeuroFlow)",
   "company_name": "NeuroFlow (formerly Owl Insights)",
@@ -18,11 +18,9 @@
       "notes": "Owl was acquired by NeuroFlow in June 2024, creating the largest end-to-end behavioral health measurement and engagement platform"
     }
   },
-  "primary_category": "measurement-based-care",
+  "primary_category": "measurement-outcomes-dtx",
   "secondary_categories": [
-    "behavioral-health-analytics",
-    "care-coordination",
-    "population-health"
+    "care-coordination-referrals"
   ],
   "capabilities": [
     "outcome-tracking",
@@ -38,26 +36,17 @@
       "psychiatrist",
       "psychologist",
       "therapist-lcsw-lmft",
-      "care-coordinator",
-      "clinical-director",
-      "population-health-manager"
+      "care-coordinator"
     ],
     "practice_settings": [
-      "health-system",
+      "multi-site-enterprise",
       "integrated-care",
       "community-mental-health",
-      "hospital",
-      "payer"
+      "hospital-inpatient"
     ],
     "organization_sizes": [
       "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "mental-health",
-      "behavioral-health",
-      "integrated-care",
-      "population-health"
     ]
   },
   "feature_flags": {
@@ -70,7 +59,8 @@
     "has_patient_portal": true,
     "has_mobile_app": true,
     "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "is_specialty_agnostic": false,
+    "has_e_prescribing": false
   },
   "short_description": "Enterprise behavioral health measurement and engagement platform with 400+ assessments, AI-powered risk detection, and population health analytics. Now part of NeuroFlow.",
   "long_description": "Owl Insights (now part of NeuroFlow) is an enterprise-grade behavioral health measurement-based care and analytics platform. Originally founded in 2013 as Mental Health Data Services, Owl was acquired by NeuroFlow in June 2024, creating the largest end-to-end platform for behavioral health measurement and engagement. The combined platform offers over 400 behavioral health assessments in multiple languages, automated bi-directional EHR integration, AI/NLP-powered risk detection including suicidal ideation screening, and comprehensive population health analytics. NeuroFlow's BHIQ analytics layer aggregates claims, EMR encounters, pharmacy data, and consumer-generated data for population-level risk management. The platform supports over 17 million lives across 300+ health systems, payers, and organizations in all 50 states.",
@@ -92,15 +82,13 @@
   "support_url": "https://www.neuroflow.com/support",
   "logo_url": "https://owl.health/logo.png",
   "pricing": {
-    "model": "enterprise",
-    "starting_price_cents": null,
     "starting_price_display": "Contact for pricing",
     "free_tier": false,
-    "free_trial_days": null,
     "quote_required": true,
     "price_range": "enterprise",
     "notes": "Enterprise pricing based on lives managed, modules selected, and integration requirements. Contact NeuroFlow for custom quote.",
-    "last_verified": "2026-08-22"
+    "last_verified": "2026-08-22",
+    "model": "enterprise-custom"
   },
   "mbc_details": {
     "assessment_count": "400+",
@@ -140,30 +128,32 @@
     "claims_analysis": true
   },
   "compliance": {
-    "hipaa_support": true,
-    "baa_available": true,
-    "soc2": "type2"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "unknown",
+    "gdpr_compliant": "unknown"
   },
   "integrations": [
     {
       "name": "Epic",
       "slug": "epic",
       "category": "ehr",
-      "integration_type": "bidirectional",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Oracle Cerner",
       "slug": "oracle-cerner",
       "category": "ehr",
-      "integration_type": "bidirectional",
+      "integration_type": "api",
       "verified": true
     },
     {
       "name": "Athenahealth",
       "slug": "athenahealth",
       "category": "ehr",
-      "integration_type": "bidirectional",
+      "integration_type": "api",
       "verified": true
     }
   ],
@@ -179,8 +169,8 @@
     "Polara Health"
   ],
   "seo": {
-    "title": "Owl Insights (NeuroFlow): Enterprise Behavioral Health MBC | HeyPsych",
-    "meta_description": "Owl Insights, now part of NeuroFlow, offers 400+ behavioral health assessments with AI-powered risk detection. Enterprise MBC platform for health systems and payers.",
+    "title": "Owl Insights (NeuroFlow): Enterprise Behavioral Health MBC",
+    "meta_description": "Owl Insights, now part of NeuroFlow, offers 400+ behavioral health assessments with AI-powered risk detection. Enterprise MBC platform for health systems...",
     "faqs": [
       {
         "q": "Is Owl Insights still available after the NeuroFlow acquisition?",
@@ -228,7 +218,8 @@
     "pre_acquisition_funding": "$24.27M"
   },
   "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-08-22T00:00:00.000Z",
+  "updated_at": "2026-09-01T19:25:35.560Z",
   "featured": false,
-  "status": "active"
+  "status": "active",
+  "affiliate_url": "https://owl.health"
 }

@@ -4,6 +4,9 @@
   "id": "951831f0-11f3-46e7-9965-309b05854904",
   "slug": "chartnote",
   "name": "Chartnote",
+  "company_name": "Chartnote",
+  "website": "https://chartnote.com",
+  "description": "Chartnote is an EHR-agnostic AI medical scribe that started as a template and dictation tool before adding AI capabilities. The free Basic plan includes 15 minutes dictation + 15 AI note credits/month. Premium runs $49/month for part-time use, while Max costs $99/month with 300 AI Scribe credits. Key differentiator: extensive smart templates and medical snippets (dot phrases) for structured documentation. Pay-as-you-go AI credits available without subscription. HIPAA compliant with 256-bit AES encryption. Honest assessment: the UX feels older than newer AI-native scribes, and AI is bolted onto a pre-existing template platform rather than being core. Best for clinicians already using Chartnote templates who want to add ambient AI.",
   "import_ref": {
     "record_id": "MH-0219",
     "source_row": 220,
@@ -15,12 +18,29 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "EHR-agnostic AI scribe with strong template/snippet library. Free tier (15 notes/mo), Premium $49/mo, Max $99/mo. Older UX but flexible.",
+  "one_liner": "Template-first AI scribe. Free tier available. $49-99/mo. Works with any EHR.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +50,157 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free tier or $49-99/mo",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "15 minutes dictation + 15 AI note credits/month. Limited templates.",
+    "free_trial_days": 14,
+    "tiers": [
+      {
+        "name": "Basic (Free)",
+        "price": "$0",
+        "description": "15 minutes dictation, 15 AI note credits/month, limited templates."
+      },
+      {
+        "name": "Premium",
+        "price": "$49/month",
+        "description": "Extended dictation, up to 100 AI Scribe notes/month, custom templates. For part-time clinicians."
+      },
+      {
+        "name": "Max",
+        "price": "$99/month",
+        "description": "Unlimited templates and dictation, 300 AI Scribe credits/month. For full-time clinicians."
+      },
+      {
+        "name": "Team",
+        "price": "$99.99/user/month",
+        "description": "Multi-user deployment with team management features."
+      }
+    ],
+    "notes": "Pay-as-you-go AI credits available for AI Scribe and Voice Chart features without subscription. 14-day money-back guarantee for new subscribers.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with 256-bit AES encryption for data security."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Any EHR (copy-paste)",
+      "slug": "any-ehr",
+      "category": "ehr",
+      "integration_type": "file-based",
+      "verified": true,
+      "notes": "EHR-agnostic—works with any system via copy-paste"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "AI Scribe automatically generates SOAP notes from patient conversations."
+    },
+    "medical_dictation": {
+      "supported": true,
+      "description": "Voice Chart provides high-accuracy medical speech-to-text across specialties."
+    },
+    "smart_templates": {
+      "supported": true,
+      "description": "Create and customize note structures with access to thousands of medical snippets (dot phrases)."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "Custom formats"
+    ],
+    "ehr_agnostic": true,
+    "pay_as_you_go": true
+  },
+  "best_for": [
+    "Clinicians already using Chartnote templates wanting to add AI",
+    "Part-time practitioners who only need 100 AI notes/month ($49/mo)",
+    "Practices wanting EHR-agnostic solution that works with any system",
+    "Medical specialties wanting extensive template/snippet libraries",
+    "Budget-conscious users wanting free tier to test AI scribing"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) built for therapy",
+    "Clinicians wanting modern AI-native UX—Chartnote feels generationally older",
+    "Practices wanting native EHR integration—Chartnote is copy-paste only",
+    "High-volume practitioners needing unlimited notes—300/mo cap on Max plan",
+    "Psychiatrists needing medication management and MSE documentation"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "sunoh-ai",
+    "heidi-health",
+    "scribeberry"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "sunoh-ai",
+    "scribeberry"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Chartnote: Review & Pricing | HeyPsych",
-    "meta_description": "Chartnote review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Chartnote: Free + $49-99/mo AI Scribe | HeyPsych",
+    "meta_description": "Chartnote: EHR-agnostic AI scribe with smart templates. Free tier (15 notes/mo), Premium $49/mo, Max $99/mo. Medical snippets library. 256-bit AES encryption.",
+    "faqs": [
+      {
+        "q": "How much does Chartnote cost in 2026?",
+        "a": "Chartnote offers a free Basic plan (15 AI note credits/month), Premium at $49/month (100 credits), Max at $99/month (300 credits), and Team at $99.99/user/month. Pay-as-you-go AI credits available without subscription."
+      },
+      {
+        "q": "Does Chartnote have a free tier?",
+        "a": "Yes. The Basic plan is free forever with 15 minutes dictation and 15 AI note credits per month. Enough to test the platform before committing to a paid plan."
+      },
+      {
+        "q": "Does Chartnote integrate with my EHR?",
+        "a": "Chartnote is EHR-agnostic—it works with any EHR via copy-paste. There's no native API integration, so you'll copy generated notes into your system. This flexibility means it works everywhere but adds a manual step."
+      },
+      {
+        "q": "Is Chartnote good for mental health?",
+        "a": "Not specifically. Chartnote was designed for general medical documentation, not therapy or psychiatry. Mental health clinicians should use purpose-built tools like Mentalyc ($20-70/mo), Upheal ($69/mo), or Freed ($39-119/mo)."
+      },
+      {
+        "q": "Chartnote vs Freed: which is better?",
+        "a": "Freed ($39-119/mo unlimited) is newer, AI-native, and offers unlimited notes. Chartnote ($49-99/mo capped) has stronger template/snippet features for structured documentation. Freed has modern UX; Chartnote feels older but more customizable for templates."
+      }
+    ],
     "keywords": [
       "Chartnote",
-      "ai scribe documentation"
+      "Chartnote pricing 2026",
+      "Chartnote free tier",
+      "EHR-agnostic AI scribe",
+      "medical templates AI",
+      "SOAP notes AI",
+      "Chartnote vs Freed"
     ]
-  }
+  },
+  "website_url": "https://chartnote.com",
+  "pricing_url": "https://chartnote.com/plans",
+  "affiliate_url": "https://chartnote.com"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "kind": "telehealth-tool",
+  "kind": "clinician-tool",
   "id": "bac4cd97-58d3-4a89-b572-710a86adcf7a",
   "slug": "doximity-dialer-video",
   "name": "Doximity Dialer Video",
@@ -23,12 +23,26 @@
   "support_level": "clinical",
   "short_description": "Free HIPAA-compliant video telehealth for verified physicians with caller ID masking and browser-based patient access.",
   "long_description": "Doximity Dialer Video is a free telehealth feature available to verified physicians on the Doximity professional network, the largest network of healthcare professionals in the US with over 2 million members. The video calling feature allows physicians to conduct HIPAA-compliant video visits with patients who can join via any web browser without downloading an app or creating an account. A key differentiator is the caller ID masking feature that displays the physician's office number instead of personal phone number, maintaining professional boundaries. Doximity provides a signed BAA at no cost. The platform is designed for simplicity: physicians initiate calls from the Doximity app (iOS/Android) or web, and patients receive an SMS or email link to join. While the free version has limitations compared to paid telehealth platforms (no screen sharing, no session recording, no group calls), it's an excellent option for physicians seeking a straightforward, zero-cost solution for individual video consultations.",
-  "primary_hubs": ["telehealth", "physician-network"],
-  "sub_hubs": ["video-conferencing", "communication-tools"],
+  "primary_hubs": [
+    "telehealth",
+    "physician-network"
+  ],
+  "sub_hubs": [
+    "video-conferencing",
+    "communication-tools"
+  ],
   "primary_category": "telehealth-communication",
-  "secondary_categories": ["physician-network", "free-telehealth"],
-  "conditions": ["major-depressive-disorder", "generalized-anxiety-disorder", "bipolar-disorder", "adhd"],
-  "tool_types": ["telehealth-platform", "physician-tools"],
+  "secondary_categories": [],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "bipolar-disorder",
+    "adhd"
+  ],
+  "tool_types": [
+    "telehealth-platform",
+    "physician-tools"
+  ],
   "platforms": {
     "ios": true,
     "android": true,
@@ -46,22 +60,47 @@
       {
         "name": "Doximity Dialer Video (Free)",
         "price": "Free",
-        "features": ["Unlimited video calls", "HIPAA compliant", "BAA included", "Caller ID masking", "Browser-based patient access", "SMS/email patient invites"]
+        "features": [
+          "Unlimited video calls",
+          "HIPAA compliant",
+          "BAA included",
+          "Caller ID masking",
+          "Browser-based patient access",
+          "SMS/email patient invites"
+        ]
       },
       {
         "name": "Doximity Enterprise",
         "price": "Custom pricing",
-        "features": ["Admin dashboard", "Analytics", "Enterprise support", "Integration options"]
+        "features": [
+          "Admin dashboard",
+          "Analytics",
+          "Enterprise support",
+          "Integration options"
+        ]
       }
     ],
     "notes": "Free for all verified physicians on Doximity network. Enterprise options available for health systems. Non-physician providers cannot access."
   },
-  "capabilities": ["video-conferencing", "caller-id-masking", "sms-invites", "browser-based"],
+  "capabilities": [],
   "audiences": {
-    "clinician_roles": ["psychiatrist", "physician"],
-    "practice_settings": ["solo-practice", "group-practice", "hospital", "health-system"],
-    "organization_sizes": ["solo", "small-2-10", "medium-11-50", "large-51-200", "enterprise"],
-    "specialties": ["psychiatry", "mental-health", "primary-care", "multi-specialty"]
+    "clinician_roles": [
+      "psychiatrist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": false,
@@ -116,25 +155,21 @@
     }
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "baa_included_free": true,
     "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "yes",
     "encryption": "TLS encryption",
-    "certifications": ["HIPAA", "SOC 2"],
+    "certifications": [
+      "HIPAA",
+      "SOC 2"
+    ],
     "audit_logging": true,
     "notes": "Free BAA for all physicians. HIPAA compliant video and voice calls."
   },
-  "integrations": {
-    "ehr_integrations": ["Epic (limited)", "Cerner (limited)"],
-    "calendar_integrations": [],
-    "billing_integrations": [],
-    "api_available": false,
-    "zapier_integration": false,
-    "notes": "Limited integrations; primarily standalone. Enterprise clients have more integration options."
-  },
+  "integrations": [],
   "additional_tools": {
     "secure_messaging": true,
     "appointment_reminders": false,
@@ -155,10 +190,16 @@
     "notes": "Strong privacy protections for physician network."
   },
   "seo": {
-    "title": "Doximity Dialer Video: Free Telehealth for Physicians | HeyPsych",
+    "title": "Doximity Dialer Video: Free Telehealth for Physicians",
     "meta_description": "Doximity Dialer Video offers free HIPAA-compliant video visits for verified physicians with caller ID masking. No patient downloads required. BAA included.",
-    "canonical_url": "https://heypsych.com/tools/doximity-dialer-video/",
-    "keywords": ["Doximity Dialer", "free telehealth", "physician video calls", "HIPAA compliant telehealth", "Doximity video"],
+    "canonical_url": "https://heypsych.com/tools/for-clinicians/doximity-dialer-video/",
+    "keywords": [
+      "Doximity Dialer",
+      "free telehealth",
+      "physician video calls",
+      "HIPAA compliant telehealth",
+      "Doximity video"
+    ],
     "faqs": [
       {
         "q": "Is Doximity Dialer Video really free?",
@@ -212,8 +253,14 @@
   },
   "clinician": {
     "is_clinician_relevant": true,
-    "primary_clinician_hubs": ["telehealth", "physician-tools"],
-    "clinician_workflows": ["telehealth_video", "medication_management"],
+    "primary_clinician_hubs": [
+      "telehealth",
+      "physician-tools"
+    ],
+    "clinician_workflows": [
+      "telehealth_video",
+      "medication_management"
+    ],
     "how_clinicians_use_it": [
       "Conducting video psychiatric evaluations",
       "Medication management follow-up visits",
@@ -222,16 +269,33 @@
       "Sending secure messages through Doximity network"
     ],
     "implementation_notes": "Requires Doximity account verification as MD, DO, NP, or PA. Simple to start using immediately. No admin setup needed.",
-    "target_practice_size": ["Solo psychiatrists", "Group practices", "Hospital-employed physicians"],
+    "target_practice_size": [
+      "Solo psychiatrists",
+      "Group practices",
+      "Hospital-employed physicians"
+    ],
     "billing_notes": "Bill through standard insurance/Medicare telehealth codes. Platform is free."
   },
   "market_position": {
-    "primary_competitors": ["Zoom for Healthcare", "Doxy.me", "Google Meet"],
-    "differentiators": ["Free for physicians", "Largest US physician network", "Caller ID masking", "No patient downloads"],
+    "primary_competitors": [
+      "Zoom for Healthcare",
+      "Doxy.me",
+      "Google Meet"
+    ],
+    "differentiators": [
+      "Free for physicians",
+      "Largest US physician network",
+      "Caller ID masking",
+      "No patient downloads"
+    ],
     "market_segment": "Physicians seeking free telehealth",
     "adoption": "Over 80% of US physicians on Doximity"
   },
-  "related_tools": ["doxy-me", "zoom-for-healthcare", "vsee-clinic"],
+  "related_tools": [
+    "doxy-me",
+    "zoom-for-healthcare",
+    "vsee-clinic"
+  ],
   "order": 3,
   "featured": false,
   "status": "active",
@@ -245,5 +309,7 @@
     "status": "active"
   },
   "created_at": "2026-08-22T20:50:40.795Z",
-  "updated_at": "2026-08-22T23:00:00.000Z"
+  "updated_at": "2026-09-01T19:31:57.340Z",
+  "website_url": "https://www.doximity.com/clinicians/dialer",
+  "affiliate_url": "https://www.doximity.com/clinicians/dialer"
 }

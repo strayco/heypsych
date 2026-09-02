@@ -4,6 +4,7 @@
   "id": "423417ba-d526-4d3b-9334-128ee0b108ee",
   "slug": "nabla-copilot",
   "name": "Nabla Copilot",
+  "short_description": "Multilingual AI scribe (EN/FR/ES/DE) at $99-149/mo. Paris-based. Zero server-side data storage. GDPR + HIPAA compliant. Best for international practices.",
   "company_name": "Nabla",
   "website": "https://www.nabla.com",
   "description": "Nabla Copilot is an AI-powered medical assistant that automatically generates clinical notes from patient conversations. Founded in France and now operating globally, Nabla offers ambient documentation with a focus on privacy-first design and support for multiple languages including English, French, Spanish, and German.",
@@ -17,7 +18,9 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "workflow-automation"],
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
   "capabilities": [
     "ambient-listening",
     "note-generation",
@@ -30,26 +33,20 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant",
+      "medical-director",
+      "psychiatric-np-pa",
       "psychiatrist"
     ],
     "practice_settings": [
-      "private-practice",
-      "outpatient-clinic",
+      "solo-practice",
       "group-practice",
-      "telehealth"
+      "telehealth-only"
     ],
-    "organization_sizes": ["solo", "small", "medium", "large"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "psychiatry",
-      "dermatology",
-      "pediatrics",
-      "urgent-care"
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
     ]
   },
   "feature_flags": {
@@ -70,11 +67,14 @@
     "employee_count": "50-100",
     "funding_total": "$25M+",
     "funding_stage": "Series A",
-    "notable_investors": ["Cathay Innovation", "Elaia"],
+    "notable_investors": [
+      "Cathay Innovation",
+      "Elaia"
+    ],
     "customer_count": "5,000+ clinicians globally"
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": false,
     "starting_price": 99,
     "currency": "USD",
@@ -127,7 +127,7 @@
     "notes": "Annual billing discounts available. Enterprise pricing for 20+ providers."
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
@@ -139,40 +139,58 @@
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
       "method": "browser-extension",
-      "native": false
+      "native": false,
+      "integration_type": "api",
+      "slug": "epic",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Cerner",
-      "type": "ehr",
       "method": "browser-extension",
-      "native": false
+      "native": false,
+      "integration_type": "api",
+      "slug": "cerner",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Athenahealth",
-      "type": "ehr",
       "method": "browser-extension",
-      "native": false
+      "native": false,
+      "integration_type": "api",
+      "slug": "athenahealth",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Doctolib",
-      "type": "ehr",
       "method": "api",
       "native": true,
-      "notes": "Popular in France/Europe"
+      "notes": "Popular in France/Europe",
+      "integration_type": "api",
+      "slug": "doctolib",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Zoom",
-      "type": "telehealth",
       "method": "browser-extension",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "zoom",
+      "category": "other",
+      "verified": false
     },
     {
       "name": "Doxy.me",
-      "type": "telehealth",
       "method": "browser-extension",
-      "native": true
+      "native": true,
+      "integration_type": "api",
+      "slug": "doxy-me",
+      "category": "other",
+      "verified": false
     }
   ],
   "features": {
@@ -190,7 +208,12 @@
     "custom_templates": true,
     "voice_commands": false,
     "multi_language": true,
-    "supported_languages": ["English", "French", "Spanish", "German"],
+    "supported_languages": [
+      "English",
+      "French",
+      "Spanish",
+      "German"
+    ],
     "patient_instructions": true,
     "accuracy_rate": "90%+ accuracy reported"
   },
@@ -212,33 +235,21 @@
     "needs_review": false,
     "review_priority": "low",
     "data_quality_score": 86,
-    "last_verified": "2024-12-01"
+    "last_verified": "2024-12-01",
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["freed", "heidi-health", "deepscribe", "suki-assistant"],
+  "related_tools": [
+    "freed",
+    "heidi-health",
+    "deepscribe",
+    "suki-assistant"
+  ],
   "created_at": "2026-08-22T20:50:40.786Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T19:31:57.268Z",
   "status": "active",
   "seo": {
-    "title": "Nabla Copilot AI Scribe: Multilingual Documentation Review | HeyPsych",
+    "title": "Nabla Copilot AI Scribe: Multilingual Documentation Review",
     "meta_description": "Nabla Copilot review - multilingual AI medical scribe. Starting at $99/month. GDPR compliant, supports English, French, Spanish, German. 7-day free trial.",
-    "faqs": [
-      {
-        "question": "What languages does Nabla Copilot support?",
-        "answer": "Nabla Copilot supports multiple languages including English, French, Spanish, and German. This makes it ideal for international practices or clinicians seeing multilingual patient populations."
-      },
-      {
-        "question": "How much does Nabla Copilot cost?",
-        "answer": "Nabla starts at $99 per provider per month for the Starter plan. The Professional plan with multi-language support and EHR integrations is $149/month. A 7-day free trial is available."
-      },
-      {
-        "question": "Is Nabla GDPR compliant?",
-        "answer": "Yes, Nabla was founded in France and is fully GDPR compliant. It's an excellent choice for European healthcare providers or practices requiring EU data privacy compliance."
-      },
-      {
-        "question": "Does Nabla integrate with US EHRs like Epic?",
-        "answer": "Nabla works with Epic, Cerner, and Athenahealth via browser extension rather than native API integration. For practices requiring deep native EHR integration, consider alternatives like Suki or Abridge."
-      }
-    ],
     "keywords": [
       "Nabla Copilot",
       "Nabla AI scribe",
@@ -248,5 +259,8 @@
       "French AI scribe",
       "ambient documentation"
     ]
-  }
+  },
+  "website_url": "https://www.nabla.com",
+  "affiliate_url": "https://www.nabla.com",
+  "one_liner": "Multilingual AI scribe (EN/FR/ES/DE) at $99-149/mo. Paris-based. Zero server-side data storage. GDPR"
 }

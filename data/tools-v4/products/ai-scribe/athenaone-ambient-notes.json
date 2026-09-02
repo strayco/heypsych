@@ -5,6 +5,8 @@
   "slug": "athenaone-ambient-notes",
   "name": "athenaOne Ambient Notes",
   "company_name": "athenahealth",
+  "website": "https://www.athenahealth.com/solutions/ambient-notes",
+  "description": "athenaOne Ambient Notes is athenahealth's ambient AI documentation solution with two distinct paths: 1) athenaAmbient—a FREE native AI scribe announced February 2026 and generally available August 2026, included at no extra cost for 160,000+ athenaOne users; 2) Ambient Notes Marketplace—a choose-your-player model letting clinicians pick from embedded AI models including Suki AI, iScribe AI, Abridge, and Microsoft Dragon Copilot (first half 2026). athenaAmbient goes beyond scribing with diagnosis and order suggestions. This is a major market shift: free, built-in ambient AI without third-party vendors—compared to typical $200-600/provider/month alternatives. Best for athenaOne users wanting native, no-additional-cost ambient documentation.",
   "import_ref": {
     "record_id": "MH-0226",
     "source_row": 227,
@@ -16,54 +18,217 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "FREE AI scribe for athenaOne users (August 2026 GA). Marketplace model with Suki, Abridge, iScribe options. No extra cost.",
+  "one_liner": "FREE ambient AI for athenaOne. Native + marketplace options. No extra cost.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "ai-suggestions",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
+    "has_ehr": true,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
     "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (included with athenaOne)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "athenaAmbient is included at no extra cost as part of routine athenaOne updates. No incremental charge.",
+    "tiers": [
+      {
+        "name": "athenaAmbient (Native)",
+        "price": "$0 (included with athenaOne)",
+        "description": "Native AI scribe included free with athenaOne. Ambient documentation + diagnosis and order suggestions. GA August 2026."
+      },
+      {
+        "name": "Ambient Notes Marketplace",
+        "price": "$0 (included with athenaOne)",
+        "description": "Choose from multiple embedded AI models: Suki AI, iScribe AI, Abridge, Microsoft Dragon Copilot. No extra cost."
+      }
+    ],
+    "notes": "Major market shift: athenahealth includes ambient AI at no extra cost, vs. typical $200-600/provider/month third-party alternatives. Embedded in core athenaOne fee.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "security_note": "athenahealth maintains HIPAA compliance, BAA availability, SOC 2, and HITRUST certification as a major healthcare technology company."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "athenaOne EHR",
+      "slug": "athenaone",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration—ambient notes flow directly into athenaOne documentation"
+    },
+    {
+      "name": "Suki AI",
+      "slug": "suki-ai",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Available through Ambient Notes Marketplace"
+    },
+    {
+      "name": "Abridge",
+      "slug": "abridge",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Available through Ambient Notes Marketplace"
+    },
+    {
+      "name": "iScribe AI",
+      "slug": "iscribe-ai",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Available through Ambient Notes Marketplace"
+    },
+    {
+      "name": "Microsoft Dragon Copilot",
+      "slug": "nuance-dax-copilot",
+      "category": "other",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Announced for first half 2026 in Ambient Notes Marketplace"
+    }
+  ],
+  "features": {
+    "athena_ambient": {
+      "supported": true,
+      "description": "Native AI scribe that goes beyond notes—includes diagnosis and order suggestions. Free for athenaOne users."
+    },
+    "marketplace_model": {
+      "supported": true,
+      "description": "Choose-your-player marketplace lets clinicians pick from multiple embedded AI models (Suki, Abridge, iScribe, Dragon Copilot)."
+    },
+    "diagnosis_suggestions": {
+      "supported": true,
+      "description": "athenaAmbient provides diagnosis and order suggestions beyond pure documentation."
+    },
+    "native_ehr_integration": {
+      "supported": true,
+      "description": "Notes flow directly into athenaOne without copy-paste or browser extensions."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Clinical notes"
+    ]
+  },
+  "best_for": [
+    "athenaOne users wanting free, native ambient AI documentation",
+    "Practices wanting to avoid $200-600/mo third-party AI scribe costs",
+    "Clinicians wanting choice between multiple AI models (Suki, Abridge, iScribe)",
+    "160,000+ existing athenaOne providers upgrading to AI documentation",
+    "Organizations wanting native EHR integration without additional vendor management"
+  ],
+  "not_for": [
+    "Practices not using athenaOne EHR—this is athenaOne-only",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Clinicians wanting immediate access—athenaAmbient GA August 2026",
+    "Organizations needing cross-EHR solution for multiple EHR environments",
+    "Practices requiring advanced psychiatry features (MSE, medication management)—consider DeepCura"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "suki-ai",
+    "abridge",
+    "athenaone"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "freed-ai",
+    "commure-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.792Z",
-  "updated_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "athenaOne Ambient Notes: Review & Pricing | HeyPsych",
-    "meta_description": "athenaOne Ambient Notes review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "athenaOne Ambient Notes: Free AI Scribe | HeyPsych",
+    "meta_description": "athenaOne Ambient Notes: FREE AI scribe for 160,000+ athenaOne users. athenaAmbient native + Suki/Abridge/iScribe marketplace. No extra cost. GA August 2026.",
+    "faqs": [
+      {
+        "q": "How much does athenaOne Ambient Notes cost in 2026?",
+        "a": "athenaOne Ambient Notes is FREE—included at no extra cost for all athenaOne users. This includes both athenaAmbient (native AI scribe) and the Ambient Notes Marketplace (Suki, Abridge, iScribe, Dragon Copilot). No incremental charge, embedded in core athenaOne fee."
+      },
+      {
+        "q": "What is athenaAmbient vs Ambient Notes?",
+        "a": "athenaAmbient is athenahealth's native first-party AI scribe (GA August 2026) with diagnosis and order suggestions. Ambient Notes Marketplace is a choose-your-player model letting you pick from embedded third-party AI models like Suki, Abridge, and iScribe. Both are free for athenaOne users."
+      },
+      {
+        "q": "When is athenaAmbient available?",
+        "a": "athenaAmbient entered user testing February 2026 with general availability in August 2026. Ambient Notes Marketplace is live now with multiple AI model options."
+      },
+      {
+        "q": "Is athenaOne Ambient Notes good for mental health practices?",
+        "a": "athenaOne Ambient Notes works for general clinical documentation. Mental health therapists should use purpose-built tools like Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists may want DeepCura ($129/mo) or mdhub for MSE and medication management features."
+      },
+      {
+        "q": "athenaOne Ambient Notes vs third-party AI scribes: which is better?",
+        "a": "For athenaOne users, Ambient Notes is hard to beat—it's free vs. $200-600/mo for alternatives like Nuance DAX. If you already use athenaOne, start with the native solution. Only consider third-party if you need specific features not available in athenaAmbient."
+      }
+    ],
     "keywords": [
       "athenaOne Ambient Notes",
-      "ai scribe documentation"
+      "athenaAmbient",
+      "athenahealth AI scribe",
+      "free AI scribe athenaOne",
+      "athenahealth ambient documentation 2026",
+      "Suki athenahealth",
+      "Abridge athenahealth",
+      "athenaOne AI pricing"
     ]
-  }
+  },
+  "website_url": "https://www.athenahealth.com/solutions/ambient-notes",
+  "pricing_url": "https://www.athenahealth.com/solutions/ambient-notes",
+  "affiliate_url": "https://www.athenahealth.com"
 }

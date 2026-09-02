@@ -94,12 +94,6 @@ export function ToolOutboundLinks({
         )}
       </div>
 
-      {/* Commission disclosure for affiliate links */}
-      {affiliateUrl && (
-        <p className="mt-3 text-xs text-neutral-500">
-          HeyPsych may earn a commission from this link
-        </p>
-      )}
     </section>
   );
 }

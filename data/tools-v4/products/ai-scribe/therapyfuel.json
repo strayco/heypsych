@@ -5,6 +5,8 @@
   "slug": "therapyfuel",
   "name": "TherapyFuel",
   "company_name": "TherapyNotes",
+  "website": "https://www.therapynotes.com",
+  "description": "TherapyFuel is TherapyNotes' native AI scribe add-on at $40/clinician/month. Similar to SimplePractice Note Taker, it only works within its parent EHR—TherapyNotes users get seamless integration, but non-users cannot access it standalone. TherapyFuel Scribe captures in-person and telehealth sessions, generates complete transcripts, and auto-populates documentation. Key differentiator: Clinical Voice Settings allow extensive personalization (tone, formality, note length, language). Audio is encrypted, transcribed, and deleted immediately. Current limitations: no group therapy support, no intake or psychiatry notes (coming soon), and no external audio upload. Realistic cost: TherapyNotes Solo ($59/mo) + TherapyFuel ($40/mo) = $99/month total.",
   "import_ref": {
     "record_id": "MH-0170",
     "source_row": 171,
@@ -16,17 +18,29 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "TherapyNotes' native AI scribe at $40/mo add-on. Clinical Voice Settings for personalization. Audio deleted after transcription. No group therapy or psychiatry notes yet.",
+  "one_liner": "TherapyNotes' built-in AI scribe. $40/mo add-on. Locked to TherapyNotes ecosystem.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
-      "therapist-lcsw-lmft"
+      "therapist-lcsw-lmft",
+      "psychologist"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": [
-      "therapy"
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10"
     ]
   },
   "feature_flags": {
@@ -41,35 +55,155 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "company": {
+    "headquarters": "Horsham, PA",
+    "parent_company": "TherapyNotes, LLC"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 4000,
+    "starting_price_display": "$40/clinician/month (add-on to TherapyNotes)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "TherapyFuel Add-On",
+        "price": "$40/clinician/month",
+        "description": "AI session transcription, Clinical Voice Settings for personalization, client history summaries, contact note generation. Requires TherapyNotes subscription."
+      }
+    ],
+    "base_requirement": {
+      "name": "TherapyNotes subscription required",
+      "plans": "Solo ($59/mo), Group ($59/mo + $39/additional clinician)"
+    },
+    "realistic_total_cost": "$99/mo = TherapyNotes Solo ($59) + TherapyFuel ($40). Most therapists need Solo or Group plan.",
+    "notes": "If at least one clinician subscribes, everyone in practice gets free access to Client History Summaries, Contact Notes generation, and Insurance Policy extraction. Audio encrypted and deleted after transcription.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "privacy_note": "Session audio encrypted, transcribed, and deleted immediately after transcription. Inherits TherapyNotes compliance certifications."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "TherapyNotes",
+      "slug": "therapynotes",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Native integration—notes flow directly into TherapyNotes documentation"
+    },
+    {
+      "name": "TherapyNotes Telehealth",
+      "slug": "therapynotes-telehealth",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Captures in-person and telehealth sessions, transcribes conversations, and auto-populates clinical documentation."
+    },
+    "clinical_voice_settings": {
+      "supported": true,
+      "description": "Extensive personalization: tone, formality, note length, language, and writing style preferences."
+    },
+    "session_types_supported": [
+      "Telehealth (via TherapyNotes Telehealth)",
+      "In-person"
+    ],
+    "note_types": [
+      "Progress notes",
+      "Session transcripts",
+      "Client history summaries",
+      "Contact notes"
+    ],
+    "audio_deletion": "Immediately after transcription",
+    "limitations": {
+      "therapynotes_only": true,
+      "no_group_therapy": "Group therapy sessions not yet supported",
+      "no_psychiatry_notes": "Intake and psychiatry note generation coming soon",
+      "no_external_upload": "Cannot upload recordings from other platforms"
+    }
+  },
+  "best_for": [
+    "Therapists already committed to TherapyNotes wanting native AI documentation",
+    "Clinicians who value extensive note personalization (Clinical Voice Settings)",
+    "Solo practitioners on TherapyNotes wanting seamless workflow",
+    "Practices prioritizing immediate audio deletion for privacy",
+    "Group practices where one subscription unlocks free features for all clinicians"
+  ],
+  "not_for": [
+    "Clinicians not on TherapyNotes—requires TherapyNotes subscription",
+    "Psychiatrists needing medication management notes—not yet supported",
+    "Group therapy providers—group sessions not supported",
+    "Practices wanting external audio upload capability",
+    "Clinicians who may switch EHRs—locked to TherapyNotes ecosystem"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "therapynotes",
+    "simplepractice-note-taker",
+    "mentalyc",
+    "upheal"
+  ],
+  "competitor_tools": [
+    "simplepractice-note-taker",
+    "mentalyc",
+    "upheal"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "TherapyFuel: Review & Pricing | HeyPsych",
-    "meta_description": "TherapyFuel review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "TherapyFuel: $40/mo TherapyNotes AI | HeyPsych",
+    "meta_description": "TherapyFuel: TherapyNotes' native AI scribe at $40/mo add-on. Clinical Voice Settings for personalization. Audio deleted after transcription. Requires Therap...",
+    "faqs": [
+      {
+        "q": "How much does TherapyFuel cost in 2026?",
+        "a": "TherapyFuel costs $40/clinician/month as an add-on to TherapyNotes. Realistic total cost: TherapyNotes Solo ($59/mo) + TherapyFuel ($40/mo) = $99/month. If one clinician subscribes, everyone in the practice gets free access to Client History Summaries and Contact Note generation."
+      },
+      {
+        "q": "Can I use TherapyFuel without TherapyNotes?",
+        "a": "No. TherapyFuel is exclusively available to TherapyNotes users. It's a native add-on, not a standalone product. If you're not on TherapyNotes, consider Mentalyc ($20-70/mo) or Upheal ($69/mo) which work with any EHR."
+      },
+      {
+        "q": "Does TherapyFuel support group therapy sessions?",
+        "a": "No, not yet. TherapyFuel currently only supports individual therapy sessions—both telehealth and in-person. Group therapy support is not available as of 2026."
+      },
+      {
+        "q": "Does TherapyFuel work for psychiatrists?",
+        "a": "Partially. TherapyFuel can transcribe psychiatric sessions, but intake notes and psychiatry-specific documentation (medication management, MSE) are listed as 'coming soon' and not yet available. Psychiatrists should consider Freed ($39-119/mo) or mdhub instead."
+      },
+      {
+        "q": "TherapyFuel vs SimplePractice Note Taker: which is better?",
+        "a": "Both are native AI scribes locked to their parent EHRs. TherapyFuel ($40/mo) offers Clinical Voice Settings for personalization. SimplePractice Note Taker ($35/mo) supports in-person via mobile. Choose based on which EHR you use—switching is difficult with either."
+      }
+    ],
     "keywords": [
       "TherapyFuel",
-      "ai scribe documentation"
+      "TherapyNotes AI scribe",
+      "TherapyFuel pricing 2026",
+      "TherapyNotes documentation",
+      "therapy AI notes",
+      "TherapyFuel vs SimplePractice Note Taker",
+      "Clinical Voice Settings"
     ]
-  }
+  },
+  "website_url": "https://www.therapynotes.com",
+  "pricing_url": "https://www.therapynotes.com/pricing",
+  "affiliate_url": "https://www.therapynotes.com"
 }

@@ -6,7 +6,7 @@
   "name": "Upheal",
   "company_name": "Upheal",
   "website": "https://www.upheal.io",
-  "description": "Upheal is an AI-powered documentation and analytics platform designed specifically for mental health professionals. Beyond generating progress notes, Upheal provides session analytics including talk-time ratios, topic tracking, and sentiment analysis to help therapists gain insights into their practice patterns and client progress.",
+  "description": "Upheal is an AI-native EHR built specifically for therapists that combines documentation with session analytics—a capability no other platform offers. Beyond generating notes in under 60 seconds, Upheal analyzes sessions for talking ratios, sentiment trends, speech patterns, and silence detection. The Golden Thread feature tracks client progress session-to-session. Upheal includes HIPAA-compliant telehealth video, insurance billing ($0.30/claim), and a pay-per-session pricing model ($1/session capped at $69/mo) that works for low-volume practitioners.",
   "import_ref": {
     "record_id": "MH-0159",
     "source_row": 160,
@@ -17,13 +17,18 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["mental-health-documentation", "therapy-analytics", "session-insights"],
+  "secondary_categories": [
+    "measurement-outcomes-dtx",
+    "telehealth-communication"
+  ],
   "capabilities": [
     "ambient-listening",
     "note-generation",
     "voice-transcription",
     "outcome-tracking",
     "treatment-planning",
+    "telehealth",
+    "claims-submission",
     "ehr-integration",
     "mobile-app",
     "hipaa-compliant",
@@ -31,34 +36,26 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
-      "licensed-counselor",
-      "psychiatric-nurse-practitioner"
+      "psychologist",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "private-practice",
+      "solo-practice",
       "group-practice",
-      "outpatient-clinic",
-      "telehealth"
+      "telehealth-only"
     ],
-    "organization_sizes": ["solo", "small", "medium"],
-    "specialties": [
-      "therapy",
-      "psychiatry",
-      "psychology",
-      "counseling",
-      "anxiety-disorders",
-      "depression",
-      "trauma-ptsd"
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
     "has_ai": true,
-    "has_ehr": false,
-    "has_rcm": false,
-    "has_telehealth": false,
+    "has_ehr": true,
+    "has_rcm": true,
+    "has_telehealth": true,
     "has_measurement": true,
     "has_e_prescribing": false,
     "has_patient_portal": false,
@@ -70,75 +67,45 @@
     "founded_year": 2021,
     "headquarters": "Prague, Czech Republic",
     "employee_count": "20-50",
-    "funding_total": "$5M+",
-    "funding_stage": "Seed",
-    "customer_count": "10,000+ mental health providers globally"
+    "funding_total": "$14.35M",
+    "funding_stage": "Series A ($10M, November 2024)",
+    "customer_count": "36,000+ mental health professionals"
   },
   "pricing": {
-    "model": "freemium",
+    "model": "per-provider-month",
     "quote_required": false,
     "starting_price": 0,
+    "starting_price_display": "Free tier or $1/session (capped at $69/mo)",
     "currency": "USD",
-    "billing_period": "monthly",
+    "free_tier": true,
+    "free_trial_days": 30,
     "tiers": [
       {
         "name": "Free",
-        "price": 0,
-        "period": "monthly",
-        "features": [
-          "3 sessions per month",
-          "Basic progress notes",
-          "Session transcription",
-          "Web app access"
-        ]
+        "price": "Free",
+        "description": "Unlimited typed notes. No audio/video recording. Limited session analytics."
       },
       {
-        "name": "Essential",
-        "price": 59,
-        "period": "monthly",
-        "features": [
-          "Unlimited sessions",
-          "All note formats",
-          "Session analytics",
-          "Topic tracking",
-          "Email support"
-        ]
+        "name": "Starter",
+        "price": "$19/mo or $1/session",
+        "description": "50 session notes. Basic analytics, SOAP/DAP formats, manual session uploads."
       },
       {
-        "name": "Professional",
-        "price": 99,
-        "period": "monthly",
-        "features": [
-          "Everything in Essential",
-          "Talk-time analysis",
-          "Sentiment tracking",
-          "EHR integrations",
-          "Custom templates",
-          "Priority support"
-        ]
-      },
-      {
-        "name": "Team",
-        "price": 79,
-        "period": "monthly",
-        "features": [
-          "Everything in Professional",
-          "Team dashboard",
-          "Practice analytics",
-          "Shared templates",
-          "Onboarding support"
-        ],
-        "notes": "Per provider, minimum 3 providers"
+        "name": "Premium",
+        "price": "$69/mo or $1/session capped",
+        "description": "100 session notes. BIRP, EMDR, GIRP formats. Recorder for in-person. Full session analytics. Transcript access."
       }
     ],
-    "free_trial": {
-      "available": true,
-      "notes": "Free tier available indefinitely with 3 sessions/month"
+    "additional_fees": {
+      "card_payments": "2.9% + $0.30",
+      "claims_submission": "$0.30 per claim",
+      "eligibility_check": "$0.15 per check"
     },
-    "notes": "Annual billing offers 20% discount."
+    "notes": "Pay-per-session model works well for low-volume practitioners. Telehealth calls through Upheal count as sessions. Session analytics require paid plan.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "unknown",
@@ -151,113 +118,146 @@
   "integrations": [
     {
       "name": "SimplePractice",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "simplepractice",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "TherapyNotes",
-      "type": "ehr",
-      "method": "browser-extension",
-      "native": false
+      "slug": "therapynotes",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     },
     {
       "name": "Jane App",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "jane-app",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Zoom",
-      "type": "telehealth",
-      "method": "native",
-      "native": true
+      "slug": "zoom",
+      "category": "telehealth",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "Google Meet",
-      "type": "telehealth",
-      "method": "browser-extension",
-      "native": true
+      "slug": "google-meet",
+      "category": "telehealth",
+      "integration_type": "api",
+      "verified": true
     },
     {
       "name": "Doxy.me",
-      "type": "telehealth",
-      "method": "browser-extension",
-      "native": true
+      "slug": "doxy-me",
+      "category": "telehealth",
+      "integration_type": "api",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Listens to therapy sessions and generates notes with analytics"
+      "description": "Notes generated in under 60 seconds. AI learns your writing style with each edit."
     },
     "session_analytics": {
       "supported": true,
-      "description": "Provides talk-time ratios, topic tracking, and sentiment analysis"
+      "description": "Unique feature: talking ratio, sentiment trends, speech patterns, silence detection, topic frequency—tracked along the session timeline."
+    },
+    "golden_thread": {
+      "supported": true,
+      "description": "Tracks client progress session-to-session. Insurance-compliant AI-generated treatment plans."
     },
     "note_types": [
-      "DAP notes",
-      "SOAP notes",
-      "BIRP notes",
-      "Progress notes",
-      "Treatment plans",
-      "Session summaries"
+      "SOAP",
+      "DAP",
+      "BIRP",
+      "GIRP",
+      "PIRP",
+      "SIRP",
+      "PIE",
+      "EMDR",
+      "Psychiatry",
+      "Headway-compliant SOAP",
+      "Medical notes"
     ],
-    "analytics_features": [
-      "Talk-time ratios",
-      "Topic frequency tracking",
-      "Sentiment trends",
-      "Session comparison",
-      "Practice patterns"
-    ],
+    "telehealth": {
+      "supported": true,
+      "description": "Built-in HIPAA-compliant video sessions with integrated AI recording."
+    },
     "custom_templates": true,
     "multi_language": true,
-    "supported_languages": ["English", "Spanish", "German", "French"],
-    "accuracy_rate": "Mental health-specific AI with analytics"
+    "supported_languages": [
+      "English",
+      "Spanish",
+      "German",
+      "French"
+    ]
   },
+  "short_description": "AI-native EHR with session analytics that no other scribe offers: talking ratios, sentiment tracking, Golden Thread progress monitoring. $1/session pricing.",
+  "one_liner": "The only AI therapy scribe with real-time session analytics and pay-per-session pricing.",
   "best_for": [
-    "Therapists wanting session analytics beyond just notes",
-    "Clinicians interested in tracking client progress patterns",
-    "Private practice therapists seeking affordable AI documentation",
-    "Practitioners wanting to understand their talk-time ratios",
-    "Telehealth-focused mental health providers",
-    "Group practices wanting practice-level analytics"
+    "Therapists wanting session analytics (talk-time, sentiment) beyond just notes",
+    "Low-volume practitioners preferring $1/session over monthly subscriptions",
+    "Clinicians who want to track client progress with Golden Thread",
+    "Telehealth-focused therapists needing integrated video + AI notes",
+    "Practitioners wanting to understand their therapeutic patterns objectively"
   ],
   "not_for": [
-    "Medical practices outside mental health",
-    "Clinicians only needing basic documentation",
-    "Large health systems requiring deep EHR integration",
-    "Practices needing HITRUST certification"
+    "Psychiatrists doing medication management—Freed or medical scribes fit better",
+    "Clinicians only needing basic documentation without analytics",
+    "High-volume practitioners (flat-rate subscriptions like Mentalyc may cost less)",
+    "Large health systems requiring enterprise EHR integration"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 90,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 94,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["mentalyc", "autonotes", "blueprint", "eleos-health"],
+  "related_tools": [
+    "mentalyc",
+    "freed-ai",
+    "blueprint",
+    "eleos-health",
+    "autonotes"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "autonotes",
+    "berries",
+    "eleos-health"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Upheal: AI Therapy Notes + Session Analytics | HeyPsych",
-    "meta_description": "Upheal review - AI therapy documentation with session analytics. Free tier available. Talk-time tracking, sentiment analysis. $59-99/month for therapists.",
+    "title": "Upheal: AI Therapy Notes 2026 | HeyPsych",
+    "meta_description": "Upheal AI scribe with unique session analytics: talking ratios, sentiment tracking, Golden Thread. Free tier or $1/session capped at $69/mo. HIPAA compliant.",
     "faqs": [
       {
-        "question": "What makes Upheal different from other therapy AI scribes?",
-        "answer": "Upheal combines documentation with session analytics including talk-time ratios, topic tracking, and sentiment analysis. This helps therapists understand practice patterns and track client progress beyond just generating notes."
+        "q": "How much does Upheal cost in 2026?",
+        "a": "Upheal offers a free tier (typed notes only), Starter at $19/mo or $1/session (50 notes), and Premium at $69/mo or $1/session capped (100 notes). Additional fees: card payments 2.9% + $0.30, claims $0.30 each, eligibility checks $0.15 each."
       },
       {
-        "question": "How much does Upheal cost?",
-        "answer": "Upheal offers a free tier with 3 sessions/month. Paid plans start at $59/month (Essential) for unlimited sessions, with the Professional plan at $99/month including full analytics. Group practices pay $79/provider/month."
+        "q": "What session analytics does Upheal provide?",
+        "a": "Upheal is unique among AI scribes in offering real-time session analytics: talking ratio, sentiment trends, speech patterns, silence detection, and topic frequency. These metrics are tracked along the session timeline to help therapists understand therapeutic dynamics."
       },
       {
-        "question": "Does Upheal have a free version?",
-        "answer": "Yes, Upheal's free tier allows 3 sessions per month indefinitely. This lets therapists try the platform before committing to a paid plan."
+        "q": "What is Upheal's Golden Thread feature?",
+        "a": "Golden Thread tracks client progress session-to-session and generates insurance-compliant treatment plans. It helps maintain documentation continuity that payers require."
       },
       {
-        "question": "Can Upheal track my talk-time during sessions?",
-        "answer": "Yes, the Professional plan includes talk-time analysis showing the ratio of therapist vs client speaking time. This helps therapists monitor whether they're maintaining appropriate therapeutic presence."
+        "q": "Does Upheal include telehealth video?",
+        "a": "Yes. Upheal has built-in HIPAA-compliant video sessions with integrated AI recording. Telehealth calls through Upheal count as sessions for billing purposes."
+      },
+      {
+        "q": "Upheal vs Mentalyc: which is better for therapists?",
+        "a": "Choose Upheal if you want session analytics (talk-time, sentiment) or prefer pay-per-session pricing. Choose Mentalyc if you want Alliance Genie relationship tracking or prefer flat-rate monthly subscriptions. Both are therapy-specific; neither is designed for medication management."
       }
     ],
     "keywords": [
@@ -265,10 +265,13 @@
       "therapy AI scribe",
       "session analytics",
       "talk-time tracking",
-      "mental health documentation",
-      "therapist progress notes",
-      "therapy sentiment analysis",
-      "SimplePractice AI"
+      "Golden Thread",
+      "Upheal vs Mentalyc",
+      "therapist AI notes",
+      "pay per session AI scribe"
     ]
-  }
+  },
+  "website_url": "https://www.upheal.io",
+  "pricing_url": "https://www.upheal.io/pricing",
+  "affiliate_url": "https://www.upheal.io"
 }

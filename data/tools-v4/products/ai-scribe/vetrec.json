@@ -4,6 +4,9 @@
   "id": "9cd8582a-65a4-4ba7-8e01-f648d2530835",
   "slug": "vetrec",
   "name": "VetRec",
+  "company_name": "VetRec",
+  "website": "https://vetrec.io",
+  "description": "VetRec is a Y Combinator-backed AI scribe purpose-built for veterinary medicine at $99/vet/month annual ($150/mo monthly). Techs and front-desk staff included free on all plans. Voice-to-SOAP generation with 30+ specialty templates and custom template builder. 12+ direct PIMS integrations with one-click sync for both cloud and on-premise systems. D.A.V.I.D AI Agent feature and Records Recap for patient history summarization. SOC 2 Type II and HIPAA compliant. Enterprise deployments include Ethos Veterinary Health (140+ hospitals) and Bond Vet (55+ locations). 20,000+ veterinary professionals trust VetRec, saving 10+ hours/week average. Free for veterinary students with extended free access post-graduation. Special nonprofit pricing for shelters and rescues.",
   "import_ref": {
     "record_id": "MH-0243",
     "source_row": 244,
@@ -15,12 +18,29 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "Veterinary AI scribe. $99/vet/mo annual. Techs free. 12+ PIMS integrations. SOC 2 Type II. 20K+ vets. Free for students.",
+  "one_liner": "Veterinary AI scribe. $99/vet/mo. Techs free. 12+ PIMS. SOC 2 Type II. Students free.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +50,180 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
-    "is_specialty_agnostic": true
+    "is_specialty_agnostic": false
+  },
+  "company": {
+    "headquarters": "United States",
+    "funding": "Y Combinator backed"
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 9900,
+    "starting_price_display": "$99/vet/month annual ($150/mo monthly)",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "tiers": [
+      {
+        "name": "Annual",
+        "price": "$99/vet/month",
+        "description": "Unlimited visits, techs + front-desk free, 30+ templates, template builder, multi-pet support, Records Recap, one-click PIMS transfer, D.A.V.I.D AI Agent."
+      },
+      {
+        "name": "Monthly",
+        "price": "$150/vet/month",
+        "description": "Same features as annual. No long-term commitment."
+      },
+      {
+        "name": "Veterinary Students",
+        "price": "Free",
+        "description": "Full access for enrolled students. Partner schools: 1 year free post-graduation. Non-partner: 6 months free post-graduation."
+      },
+      {
+        "name": "Nonprofit",
+        "price": "Special pricing",
+        "description": "Special pricing for animal shelters, rescues, and nonprofit veterinary programs. Contact for details."
+      }
+    ],
+    "notes": "Per-vet pricing only—techs and front-desk staff included free. 3-doctor practice pays $297-450/mo. Enterprise volume discounts available.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "soc2_type": "type2",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "SOC 2 Type II certified with enterprise-grade compliance credentials. HIPAA compliant despite veterinary focus."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "12+ PIMS Systems",
+      "slug": "pims-integrations",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "One-Click Sync supports both cloud and on-premise PIMS systems"
+    }
+  ],
+  "features": {
+    "voice_to_soap": {
+      "supported": true,
+      "description": "Voice-to-SOAP note generation specialized for veterinary workflows."
+    },
+    "specialty_templates": {
+      "count": "30+",
+      "description": "30+ veterinary specialty templates with custom template builder."
+    },
+    "multi_pet": {
+      "supported": true,
+      "description": "Multi-pet support for households with multiple animals."
+    },
+    "records_recap": {
+      "supported": true,
+      "description": "AI-powered patient history summarization for quick case review."
+    },
+    "david_agent": {
+      "supported": true,
+      "description": "D.A.V.I.D AI Agent feature for enhanced clinical support."
+    },
+    "phone_integration": {
+      "supported": true,
+      "description": "Phone call integration for documentation during client calls."
+    },
+    "time_savings": {
+      "rate": "10+ hours/week",
+      "description": "Average 10+ hours saved per week on documentation."
+    },
+    "adoption": {
+      "users": "20,000+",
+      "description": "Trusted by 20,000+ veterinary professionals."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "Surgery notes",
+      "Dental notes",
+      "Custom templates"
+    ]
+  },
+  "enterprise_customers": [
+    "Ethos Veterinary Health (140+ hospitals)",
+    "Bond Vet (55+ locations)"
+  ],
+  "best_for": [
+    "Veterinary practices wanting PIMS integration with one-click sync",
+    "Multi-vet practices—techs and front-desk included free",
+    "Veterinary students—free access during school and post-graduation",
+    "Emergency and specialty veterinary hospitals",
+    "Enterprise veterinary groups (Ethos, Bond Vet deployments)"
+  ],
+  "not_for": [
+    "Human healthcare—VetRec is veterinary-specific",
+    "Solo vets wanting cheaper options—HappyDoc or competitors may offer lower pricing",
+    "Practices with legacy PIMS needing deep bidirectional integration—verify compatibility",
+    "Mental health or medical practices—use Freed ($39-119/mo) or Mentalyc ($20-70/mo)",
+    "Budget-constrained practices—$99+/mo per vet adds up for larger groups"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "happydoc",
+    "scribbles-ai",
+    "vetgeni"
+  ],
+  "competitor_tools": [
+    "happydoc",
+    "scribbles-ai",
+    "vetgeni"
+  ],
   "created_at": "2026-08-22T20:50:40.793Z",
-  "updated_at": "2026-08-22T20:50:40.793Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "VetRec: Review & Pricing | HeyPsych",
-    "meta_description": "VetRec review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "VetRec: Veterinary AI Scribe $99/mo | HeyPsych",
+    "meta_description": "VetRec: Y Combinator-backed veterinary AI scribe. $99/vet/mo annual. Techs free. 12+ PIMS integrations. SOC 2 Type II. 20K+ vets. Free for students.",
+    "faqs": [
+      {
+        "q": "How much does VetRec cost in 2026?",
+        "a": "VetRec costs $99/vet/month annual or $150/mo monthly. Techs and front-desk staff are included free on all plans. A 3-doctor practice pays $297-450/month. Free for veterinary students with extended post-graduation access."
+      },
+      {
+        "q": "Does VetRec integrate with my PIMS?",
+        "a": "VetRec offers 12+ direct PIMS integrations with One-Click Sync supporting both cloud and on-premise systems. Verify compatibility with your specific PIMS before purchase."
+      },
+      {
+        "q": "Is VetRec free for veterinary students?",
+        "a": "Yes. Enrolled veterinary students get full VetRec access free. Partner school students receive 1 year free post-graduation; non-partner students get 6 months free."
+      },
+      {
+        "q": "Is VetRec HIPAA and SOC 2 compliant?",
+        "a": "Yes. VetRec is SOC 2 Type II certified and HIPAA compliant with enterprise-grade compliance credentials. Trusted by major groups like Ethos Veterinary Health (140+ hospitals) and Bond Vet (55+ locations)."
+      },
+      {
+        "q": "VetRec vs HappyDoc: which veterinary AI scribe is better?",
+        "a": "VetRec ($99/vet/mo) offers SOC 2 Type II compliance, 12+ PIMS integrations, and enterprise deployments (Ethos, Bond Vet). HappyDoc may offer different pricing and features. Compare based on your PIMS and compliance needs."
+      }
+    ],
     "keywords": [
       "VetRec",
-      "ai scribe documentation"
+      "VetRec pricing 2026",
+      "veterinary AI scribe",
+      "vet AI scribe",
+      "PIMS integration AI",
+      "VetRec vs HappyDoc",
+      "veterinary documentation AI"
     ]
-  }
+  },
+  "website_url": "https://vetrec.io",
+  "pricing_url": "https://vetrec.io/pricing",
+  "affiliate_url": "https://vetrec.io"
 }

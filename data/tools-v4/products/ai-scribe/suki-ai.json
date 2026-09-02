@@ -17,18 +17,20 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "short_description": "AI-powered voice assistant and ambient medical scribe with deep EHR integrations, voice commands for hands-free chart navigation, and support for 100+ medical specialties.",
-  "long_description": "Suki AI is an AI-powered voice assistant and ambient clinical intelligence platform for healthcare professionals, founded in 2017 by former Google product manager Punit Soni. Unlike pure-ambient scribes, Suki combines ambient documentation with voice commands for ordering, charting, navigation, and clinical Q&A. The platform captures patient-clinician conversations to generate structured clinical notes, provides ICD-10 and HCC coding assistance, and offers multilingual support for 80+ languages. With bi-directional, real-time integration with Epic, Cerner, athenahealth, and MEDITECH Expanse, Suki enables hands-free EHR navigation. The platform serves 400+ healthcare organizations across 100+ medical specialties and has raised $168M in funding from investors including Venrock, Philips Ventures, and Flare Capital.",
-  "one_liner": "AI voice assistant and ambient scribe with EHR commands for 100+ specialties",
+  "short_description": "Premium AI voice assistant + ambient scribe with EHR commands for 100+ specialties. $299-399/mo makes it the most expensive mainstream option. Psychiatry supported but not the design focus.",
+  "long_description": "Suki AI is a premium voice assistant and ambient scribe that combines documentation with voice commands for EHR navigation, ordering, and clinical Q&A. Unlike pure-ambient scribes, Suki enables hands-free chart interaction via bi-directional integration with Epic, Cerner, athenahealth, and MEDITECH Expanse. The platform supports 100+ medical specialties and 80+ languages, serving 400+ healthcare organizations. At $299-399/month per user, Suki is the most expensive mainstream AI scribe—significantly above Freed ($39-119/mo), Mentalyc ($20-120/mo), and Upheal ($1/session). Psychiatry is supported within multi-specialty coverage, but Suki captures broad narrative rather than psychiatry-specific elements; clinicians should expect to edit for diagnostic precision, MSE detail, and risk assessment language. FQHCs and community health centers may access special pricing.",
+  "one_liner": "Premium voice assistant + ambient scribe with EHR commands. $299-399/mo—expensive but powerful.",
   "best_for": [
-    "Multi-specialty physician practices and health systems seeking ambient documentation combined with voice-activated EHR commands and hands-free chart navigation"
+    "Multi-specialty health systems needing voice commands + ambient scribe in one platform",
+    "Organizations on Epic, Cerner, athena, or MEDITECH wanting hands-free EHR navigation",
+    "Practices that can justify $299-399/mo per user for premium capabilities",
+    "Psychiatrists in enterprise settings where Suki is already deployed"
   ],
   "not_for": [
-    "Mental health-specific practices (consider Mentalyc or Upheal)",
-    "or organizations without Epic",
-    "Cerner",
-    "athena",
-    "or MEDITECH integration"
+    "Therapists doing psychotherapy—Suki doesn't understand therapy modalities",
+    "Solo or small practices—pricing is prohibitive vs. Freed, Mentalyc, Upheal",
+    "Organizations without Epic/Cerner/athena/MEDITECH integration",
+    "Budget-conscious practices—Suki costs 3-10x more than competitors"
   ],
   "capabilities": [
     "ambient-listening",
@@ -42,26 +44,17 @@
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatric-np-pa",
-      "psychiatrist"
+      "psychiatrist",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "solo-practice",
-      "group-practice"
+      "group-practice",
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
-      "solo",
-      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
       "enterprise-200-plus"
-    ],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "cardiology",
-      "orthopedics",
-      "dermatology",
-      "psychiatry"
     ]
   },
   "feature_flags": {
@@ -79,28 +72,30 @@
   "pricing": {
     "model": "per-provider-month",
     "starting_price_cents": 29900,
-    "starting_price_display": "$299-$399/month per user",
+    "starting_price_display": "$299/mo (Compose); $399/mo (Assistant)",
     "free_tier": false,
     "free_trial_days": 14,
     "quote_required": true,
+    "price_range": "premium",
     "tiers": [
       {
         "name": "Suki Compose",
         "price": "$299/month/user",
-        "description": "Clinical documentation and note generation"
+        "description": "Ambient documentation, note generation, coding assistance. No voice EHR commands."
       },
       {
         "name": "Suki Assistant",
         "price": "$399/month/user",
-        "description": "Full clinical assistant with deep EHR integrations and voice commands"
+        "description": "Full platform: ambient scribe + voice commands for ordering, charting, navigation, clinical Q&A."
       }
     ],
-    "notes": "Enterprise plans require custom quote. Free trial available."
+    "notes": "Most expensive mainstream AI scribe. Enterprise volume discounts available. FQHCs and community health centers may access special pricing. 14-day free trial available.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "unknown",
+    "soc2": "yes",
     "hitrust": "yes",
     "gdpr_compliant": "unknown"
   },
@@ -110,14 +105,16 @@
       "slug": "epic",
       "category": "ehr",
       "integration_type": "native",
-      "verified": true
+      "verified": true,
+      "notes": "Bi-directional, real-time integration with voice commands"
     },
     {
       "name": "Oracle Health (Cerner)",
       "slug": "oracle-health-cerner",
       "category": "ehr",
       "integration_type": "native",
-      "verified": true
+      "verified": true,
+      "notes": "Bi-directional integration"
     },
     {
       "name": "athenahealth",
@@ -156,55 +153,61 @@
     "note_generation": "Seconds after encounter"
   },
   "governance": {
-    "last_reviewed": "2026-08-23",
+    "last_reviewed": "2026-09-01",
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 92
+    "data_quality_score": 93
   },
   "related_tools": [
     "nuance-dax-copilot",
     "abridge",
-    "deepscribe",
-    "ambience-healthcare"
+    "nabla",
+    "freed-ai",
+    "deepscribe"
   ],
   "competitor_tools": [
     "nuance-dax-copilot",
     "abridge",
-    "nabla"
+    "nabla",
+    "ambience-healthcare"
   ],
   "created_at": "2026-08-22T21:10:42.893Z",
-  "updated_at": "2026-08-23T00:00:00.000Z",
-  "featured": true,
+  "updated_at": "2026-09-01T00:00:00.000Z",
+  "featured": false,
   "status": "active",
   "seo": {
-    "title": "Suki AI: Voice Assistant & Ambient Medical Scribe | HeyPsych",
-    "meta_description": "Suki AI combines ambient documentation with voice commands for 100+ specialties. EHR integration with Epic, Cerner, athena. $299-399/month. Reduces...",
+    "title": "Suki AI: Premium AI Scribe 2026 | HeyPsych",
+    "meta_description": "Suki AI scribe: $299-399/mo—most expensive mainstream option. Voice commands + ambient documentation for 100+ specialties. Psychiatry supported, not optimized.",
     "faqs": [
       {
-        "q": "What is Suki AI?",
-        "a": "Suki AI is an AI-powered voice assistant and ambient medical scribe that captures patient conversations to generate clinical notes, while also providing voice commands for EHR navigation, ordering, and clinical Q&A."
+        "q": "How much does Suki AI cost in 2026?",
+        "a": "Suki Compose costs $299/month/user for ambient documentation. Suki Assistant costs $399/month/user and adds voice commands for EHR navigation, ordering, and clinical Q&A. This makes Suki the most expensive mainstream AI scribe—3-10x higher than Freed, Mentalyc, or Upheal."
       },
       {
-        "q": "How much does Suki AI cost?",
-        "a": "Suki Compose starts at $299/month per user for documentation, while Suki Assistant with full EHR integration starts at $399/month per user. Enterprise pricing requires a custom quote."
+        "q": "Is Suki AI good for psychiatrists?",
+        "a": "Suki supports psychiatry within its 100+ specialties, but it captures broad clinical narrative rather than psychiatry-specific elements. Expect to edit for diagnostic precision, MSE detail, and risk assessment language. Therapists should use Mentalyc or Upheal instead."
       },
       {
         "q": "Which EHRs does Suki integrate with?",
-        "a": "Suki has bi-directional, real-time integration with Epic, Oracle Health (Cerner), athenahealth, and MEDITECH Expanse."
+        "a": "Suki has bi-directional, real-time integration with Epic, Oracle Health (Cerner), athenahealth, and MEDITECH Expanse. The integration enables voice commands for hands-free chart navigation."
       },
       {
-        "q": "How many specialties does Suki support?",
-        "a": "Suki supports 100+ medical specialties with specialty-aware documentation models, including primary care, cardiology, orthopedics, dermatology, psychiatry, and many others."
+        "q": "Why is Suki AI so expensive?",
+        "a": "Suki combines ambient documentation with voice-activated EHR commands—a dual capability most competitors don't offer. The voice assistant enables ordering, charting, and navigation without touching the keyboard. Whether this justifies 3-10x higher cost depends on workflow value."
+      },
+      {
+        "q": "Is there a cheaper alternative to Suki for mental health?",
+        "a": "Yes. Freed ($39-119/mo) works for psychiatry medication management. Mentalyc ($20-120/mo) and Upheal ($1/session, capped $69/mo) are therapy-specific. All cost 80-95% less than Suki."
       }
     ],
     "keywords": [
       "Suki AI",
-      "Suki medical scribe",
-      "AI voice assistant healthcare",
-      "ambient AI documentation",
+      "Suki AI pricing",
+      "Suki vs Nuance DAX",
+      "expensive AI scribe",
       "voice commands EHR",
-      "Epic voice assistant",
-      "clinical documentation AI"
+      "Suki psychiatry"
     ]
-  }
+  },
+  "affiliate_url": "https://www.suki.ai"
 }

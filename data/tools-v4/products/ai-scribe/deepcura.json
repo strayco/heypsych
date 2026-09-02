@@ -4,6 +4,9 @@
   "id": "0fc62267-2d4f-429d-bed9-fa457d2f372f",
   "slug": "deepcura",
   "name": "DeepCura",
+  "company_name": "DeepCura",
+  "website": "https://www.deepcura.com",
+  "description": "DeepCura positions itself as an 'Electronic Health Workforce' (EHW)—AI scribe, receptionist, billing, and EHR integration in one platform. Pricing: $129/month with 1,000 credits (1 credit per note), volume discounts down to $101/mo for 11+ seats, $999/year annual option (35% off). Special: $65/mo flat for Practice Fusion users. Rated as 'best overall AI scribe for psychiatry in 2026' with structured MSE documentation, risk assessment extraction, therapy note formats (SOAP/DAP/BIRP), and medication management notes. Supports 50+ specialties with bidirectional EHR integration. Free trial available with no credit card required. Best for psychiatrists and multi-specialty practices wanting an all-in-one clinical AI platform.",
   "import_ref": {
     "record_id": "MH-0165",
     "source_row": 166,
@@ -15,63 +18,226 @@
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "capabilities": [],
+  "short_description": "All-in-one clinical AI: scribe + receptionist + billing. $129/mo (1,000 notes), $999/yr annual. Rated best for psychiatry. 50+ specialties.",
+  "one_liner": "All-in-one clinical AI. $129/mo or $999/yr. Best-rated for psychiatry. 50+ specialties.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "coding-assistance",
+    "ehr-integration",
+    "treatment-planning",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
-      "psychiatric-np-pa"
+      "psychiatric-np-pa",
+      "medical-director"
     ],
     "practice_settings": [
-      "group-practice"
+      "solo-practice",
+      "group-practice",
+      "telehealth-only"
     ],
     "organization_sizes": [
-      "small-2-10"
-    ],
-    "specialties": [
-      "psychiatry"
+      "solo",
+      "small-2-10",
+      "medium-11-50"
     ]
   },
   "feature_flags": {
     "has_ai": true,
     "has_ehr": false,
-    "has_rcm": false,
+    "has_rcm": true,
     "has_telehealth": false,
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
-    "is_mental_health_specific": true,
-    "is_specialty_agnostic": false
+    "has_mobile_app": true,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "company": {
+    "headquarters": "United States"
   },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 6500,
+    "starting_price_display": "$65/mo (Practice Fusion) to $129/mo standard",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "free_trial_days": 14,
+    "tiers": [
+      {
+        "name": "Practice Fusion",
+        "price": "$65/month",
+        "description": "Flat pricing for Practice Fusion users. No tiers, no seat minimums, no API add-on fees."
+      },
+      {
+        "name": "Standard (1-2 seats)",
+        "price": "$129/month per provider",
+        "description": "1,000 credits/month (1 credit per note). AI scribe, receptionist, billing, EHR integration—all features included."
+      },
+      {
+        "name": "Volume (3-5 seats)",
+        "price": "$116/month per provider",
+        "description": "10% volume discount. All features included."
+      },
+      {
+        "name": "Volume (6-10 seats)",
+        "price": "$110/month per provider",
+        "description": "15% volume discount. All features included."
+      },
+      {
+        "name": "Volume (11+ seats)",
+        "price": "$101/month per provider",
+        "description": "22% volume discount. 10-provider team pays $1,156/mo total."
+      },
+      {
+        "name": "Annual",
+        "price": "$999/year per seat",
+        "description": "35% off monthly pricing. $83.25/mo equivalent."
+      }
+    ],
+    "notes": "Volume discounts apply automatically on monthly plans. Free trial available with no credit card required. All features included at every tier—no feature gating.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with BAA available. Bidirectional EHR integration for secure data exchange."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Practice Fusion",
+      "slug": "practice-fusion",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Special $65/mo pricing for Practice Fusion users"
+    },
+    {
+      "name": "50+ EHRs",
+      "slug": "multi-ehr",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true,
+      "notes": "Bidirectional EHR integration across 50+ systems"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Passive ambient listening captures patient conversations and generates structured clinical notes."
+    },
+    "psychiatry_specific": {
+      "supported": true,
+      "description": "Structured MSE documentation, risk assessment extraction, therapy note formats (SOAP/DAP/BIRP), medication management notes."
+    },
+    "ai_receptionist": {
+      "supported": true,
+      "description": "AI receptionist for patient scheduling and front-desk automation."
+    },
+    "billing_support": {
+      "supported": true,
+      "description": "Integrated billing assistance for charge capture and coding."
+    },
+    "specialties_supported": {
+      "count": "50+",
+      "examples": [
+        "Psychiatry",
+        "Primary care",
+        "Orthopedics",
+        "Veterinary"
+      ],
+      "description": "50+ specialty templates including psychiatry, primary care, orthopedics, and veterinary medicine."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "BIRP notes",
+      "Progress notes",
+      "MSE documentation",
+      "Medication management"
+    ]
+  },
+  "best_for": [
+    "Psychiatrists wanting all-in-one AI with structured MSE and medication management",
+    "Multi-specialty practices wanting 50+ specialty templates in one platform",
+    "Practice Fusion users getting special $65/mo pricing",
+    "Group practices wanting volume discounts (down to $101/mo for 11+ seats)",
+    "Practices wanting AI scribe + receptionist + billing in one platform"
+  ],
+  "not_for": [
+    "Therapists wanting modality-aware notes—Mentalyc ($20-70/mo) better for CBT/DBT specificity",
+    "Budget-conscious solo practitioners—Freed ($39-119/mo) or PatientNotes ($50/mo) cheaper",
+    "Practices only needing scribing—DeepCura's all-in-one approach may be overkill",
+    "Organizations requiring HITRUST certification",
+    "High-volume practices exceeding 1,000 notes/month on standard plan"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "mdhub",
+    "mentalyc"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "mdhub",
+    "commure-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-08-22T20:50:40.784Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "DeepCura: Review & Pricing | HeyPsych",
-    "meta_description": "DeepCura review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "DeepCura: All-in-One Clinical AI 2026 | HeyPsych",
+    "meta_description": "DeepCura: All-in-one clinical AI—scribe + receptionist + billing. $129/mo or $999/yr. Rated best for psychiatry. 50+ specialties. Volume discounts to $101/mo.",
+    "faqs": [
+      {
+        "q": "How much does DeepCura cost in 2026?",
+        "a": "DeepCura costs $129/month per provider with 1,000 note credits. Volume discounts: $116/mo (3-5 seats), $110/mo (6-10 seats), $101/mo (11+ seats). Annual option: $999/year (35% off, $83.25/mo equivalent). Practice Fusion users get special $65/mo flat pricing."
+      },
+      {
+        "q": "Is DeepCura good for psychiatry?",
+        "a": "Yes. DeepCura is rated as the 'best overall AI scribe for psychiatry in 2026' with structured MSE documentation, risk assessment extraction, therapy note formats (SOAP/DAP/BIRP), and medication management notes."
+      },
+      {
+        "q": "What makes DeepCura different from other AI scribes?",
+        "a": "DeepCura positions itself as an 'Electronic Health Workforce' (EHW)—combining AI scribe, AI receptionist, billing support, and bidirectional EHR integration in one platform. Most competitors focus only on scribing."
+      },
+      {
+        "q": "Does DeepCura have a free trial?",
+        "a": "Yes. DeepCura offers a free trial with no credit card required. All features are included so you can test the full platform before committing."
+      },
+      {
+        "q": "DeepCura vs Freed: which is better for psychiatrists?",
+        "a": "DeepCura ($129/mo) is purpose-built for psychiatry with MSE documentation and medication management. Freed ($39-119/mo) is cheaper and excellent for general medical documentation but less psychiatry-specific. For psychiatrists wanting specialized features, DeepCura. For budget-conscious psychiatric practices, Freed."
+      }
+    ],
     "keywords": [
       "DeepCura",
-      "ai scribe documentation"
+      "DeepCura pricing 2026",
+      "AI scribe psychiatry",
+      "MSE AI scribe",
+      "all-in-one clinical AI",
+      "DeepCura vs Freed",
+      "Practice Fusion AI scribe",
+      "psychiatry documentation AI"
     ]
-  }
+  },
+  "website_url": "https://www.deepcura.com",
+  "pricing_url": "https://www.deepcura.com/plans-pricing",
+  "affiliate_url": "https://www.deepcura.com"
 }

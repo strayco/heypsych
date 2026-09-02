@@ -4,6 +4,9 @@
   "id": "3394ffe6-bc2d-4c67-bde6-e93617354efa",
   "slug": "bastiongpt",
   "name": "BastionGPT",
+  "company_name": "Bastion Health",
+  "website": "https://bastiongpt.com",
+  "description": "BastionGPT is a HIPAA-compliant AI assistant and medical scribe offering access to GPT-5.5, Claude Sonnet, and Gemini-3 Pro within a healthcare-grade interface. Professional tier at $20/user/month includes core AI assistant, unlimited transcription, and BAA. Professional Plus at $45/user/month adds extended document capacity and multi-document reference. Ultra tier custom pricing for 100+ users with SSO and dedicated support. Zero PHI breaches across 10,000+ healthcare organizations over 3 years. 99.3% sentence-level accuracy in peer-reviewed Baylor/Texas Children's study. 7-day free trial with 45-day money-back guarantee. Supports HIPAA, 42 CFR Part 2, FERPA, PIPEDA, PHIPA, Australian APP.",
   "import_ref": {
     "record_id": "MH-0208",
     "source_row": 209,
@@ -14,13 +17,38 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "clinical-decision-support"
+  ],
+  "short_description": "HIPAA ChatGPT alternative. $20-75/mo. GPT-5.5/Claude/Gemini. 10K+ orgs. Zero breaches. 99.3% accuracy (peer-reviewed).",
+  "one_liner": "HIPAA-compliant AI assistant. $20-75/mo. GPT-5.5/Claude/Gemini. 10K+ orgs.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ai-suggestions",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "therapist-lcsw-lmft",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -30,39 +58,152 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "per-provider-month",
+    "quote_required": false,
+    "starting_price_cents": 2000,
+    "starting_price_display": "$20/mo Professional to $75/mo Ultra",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": false,
+    "free_trial_days": 7,
+    "tiers": [
+      {
+        "name": "Professional",
+        "price": "$20/user/month",
+        "description": "Core AI assistant, unlimited transcription, BAA included. Access to GPT-5.5, Claude Sonnet, Gemini-3 Pro."
+      },
+      {
+        "name": "Professional Plus",
+        "price": "$45/user/month",
+        "description": "All Professional features + extended document capacity, multi-document reference."
+      },
+      {
+        "name": "Ultra",
+        "price": "$75/user/month (or custom for 100+ users)",
+        "description": "SSO, custom branding, dedicated account management. Contact for enterprise quotes."
+      }
+    ],
+    "notes": "7-day free trial on all plans including BAA. 45-day money-back guarantee on paid plans. API: $45 in monthly credits, then pay-as-you-go.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
+    "hitrust": "yes",
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA, 42 CFR Part 2, FERPA, PIPEDA, PHIPA, Australian APP compliant. AES-256 at rest, TLS in transit. HITRUST CSF certified, SOC 2 Type II attested Azure infrastructure. Zero PHI breaches in 3 years across 10,000+ organizations."
   },
   "integrations": [],
-  "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+  "features": {
+    "multi_model_access": {
+      "supported": true,
+      "models": [
+        "GPT-5.5",
+        "Claude Sonnet",
+        "Gemini-3 Pro"
+      ],
+      "description": "Access to leading AI models within a secure, healthcare-grade interface."
+    },
+    "ambient_scribe": {
+      "supported": true,
+      "description": "Ambient listening or dictation with reliable handling of medical terminology. Identifies up to 10 speakers using acoustic fingerprinting."
+    },
+    "accuracy": {
+      "rate": "99.3%",
+      "description": "Peer-reviewed study (Critical Care Explorations, April 2026) by Baylor/Texas Children's found 99.3% sentence-level accuracy."
+    },
+    "zero_breaches": {
+      "supported": true,
+      "description": "Zero breaches of PHI across 10,000+ healthcare organizations in 3 years."
+    },
+    "note_types": [
+      "SOAP notes",
+      "DAP notes",
+      "BIRP notes",
+      "H&P",
+      "Progress notes",
+      "Custom templates"
+    ]
   },
-  "related_tools": [],
+  "best_for": [
+    "Clinicians wanting HIPAA-compliant ChatGPT alternative at budget pricing ($20/mo)",
+    "Organizations needing SOC 2 + HITRUST certified AI assistant",
+    "Practices wanting access to multiple AI models (GPT-5.5, Claude, Gemini)",
+    "Healthcare organizations prioritizing zero-breach track record",
+    "Clinicians wanting peer-reviewed accuracy validation (99.3% Baylor study)"
+  ],
+  "not_for": [
+    "Practices needing deep EHR integration—BastionGPT is standalone, not bidirectional",
+    "Mental health therapists wanting modality-aware notes—Mentalyc ($20-70/mo) better for CBT/DBT",
+    "Psychiatrists needing MSE and medication management—DeepCura ($129/mo) more specialized",
+    "Organizations needing ambient-only solution—BastionGPT is broader AI assistant",
+    "Practices wanting self-contained workflow—may need additional tools for full documentation"
+  ],
+  "governance": {
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 90,
+    "last_reviewed": "2026-09-01"
+  },
+  "related_tools": [
+    "freed-ai",
+    "glass-ai",
+    "doximity-doxgpt"
+  ],
+  "competitor_tools": [
+    "doximity-doxgpt",
+    "glass-ai",
+    "openevidence"
+  ],
   "created_at": "2026-08-22T20:50:40.790Z",
-  "updated_at": "2026-08-22T20:50:40.790Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "BastionGPT: Review & Pricing | HeyPsych",
-    "meta_description": "BastionGPT review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "BastionGPT: HIPAA-Compliant AI Scribe 2026 | HeyPsych",
+    "meta_description": "BastionGPT: HIPAA-compliant ChatGPT alternative. $20-75/mo. GPT-5.5/Claude/Gemini. SOC 2 + HITRUST. Zero breaches. 99.3% accuracy (peer-reviewed).",
+    "faqs": [
+      {
+        "q": "How much does BastionGPT cost in 2026?",
+        "a": "BastionGPT Professional costs $20/user/month (core AI + transcription + BAA). Professional Plus is $45/month (extended documents). Ultra is $75/month (SSO, custom branding). 7-day free trial with 45-day money-back guarantee."
+      },
+      {
+        "q": "Is BastionGPT HIPAA compliant?",
+        "a": "Yes. BastionGPT signs a BAA on every plan including the free trial. Compliant with HIPAA, 42 CFR Part 2, FERPA, PIPEDA, PHIPA, and Australian APP. HITRUST CSF certified, SOC 2 Type II attested. Zero PHI breaches across 10,000+ organizations in 3 years."
+      },
+      {
+        "q": "What AI models does BastionGPT include?",
+        "a": "BastionGPT provides access to GPT-5.5, Claude Sonnet, and Gemini-3 Pro within a HIPAA-compliant interface. All models run in isolated, encrypted environments."
+      },
+      {
+        "q": "How accurate is BastionGPT?",
+        "a": "A peer-reviewed study in Critical Care Explorations (April 2026) by Baylor College of Medicine and Texas Children's Hospital found 99.3% sentence-level accuracy for BastionGPT."
+      },
+      {
+        "q": "BastionGPT vs Doximity Ask: which is better?",
+        "a": "Doximity Ask is free for US physicians with verified credentials. BastionGPT ($20-75/mo) offers multi-model access (GPT/Claude/Gemini), transcription, and works for all healthcare roles. For free clinical AI, Doximity. For broader capabilities and non-physician roles, BastionGPT."
+      }
+    ],
     "keywords": [
       "BastionGPT",
-      "ai scribe documentation"
+      "BastionGPT pricing 2026",
+      "HIPAA ChatGPT",
+      "healthcare AI assistant",
+      "HIPAA compliant AI",
+      "BastionGPT vs ChatGPT",
+      "medical GPT HIPAA",
+      "SOC 2 healthcare AI"
     ]
-  }
+  },
+  "website_url": "https://bastiongpt.com",
+  "pricing_url": "https://bastiongpt.com/pricing",
+  "affiliate_url": "https://bastiongpt.com"
 }

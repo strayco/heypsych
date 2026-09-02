@@ -4,7 +4,8 @@
   "id": "f98b70a3-2bdb-47e3-ab49-58bd88160607",
   "slug": "qualifacts-carelogic-enterprise",
   "name": "Qualifacts CareLogic Enterprise",
-  "company_name": "Qualifacts",
+  "company_name": "Qualifacts (VeraSci)",
+  "short_description": "Enterprise behavioral health EHR for CMHCs with state reporting, care coordination, and AI copilot. ~$50/provider/month base + implementation.",
   "import_ref": {
     "record_id": "MH-0815",
     "source_row": 816,
@@ -12,62 +13,184 @@
     "source_file": "master-records.json"
   },
   "lifecycle": {
-    "status": "acquired"
+    "status": "active"
   },
   "primary_category": "ehr-practice-management",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "billing-rcm-insurance"
+  ],
+  "capabilities": [
+    "clinical-notes",
+    "treatment-planning",
+    "appointment-scheduling",
+    "patient-portal",
+    "document-management",
+    "claims-submission",
+    "eligibility-verification",
+    "payment-processing",
+    "e-prescribing",
+    "epcs-controlled",
+    "outcome-tracking",
+    "hipaa-compliant",
+    "baa-available",
+    "compliance-security"
+  ],
   "audiences": {
     "clinician_roles": [
       "psychiatrist",
+      "psychiatric-np-pa",
       "psychologist",
       "therapist-lcsw-lmft"
     ],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "practice_settings": [
+      "community-mental-health",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
   },
   "feature_flags": {
-    "has_ai": false,
+    "has_ai": true,
     "has_ehr": true,
-    "has_rcm": false,
-    "has_telehealth": false,
-    "has_measurement": false,
-    "has_e_prescribing": false,
-    "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_rcm": true,
+    "has_telehealth": true,
+    "has_measurement": true,
+    "has_e_prescribing": true,
+    "has_patient_portal": true,
+    "has_mobile_app": true,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
   "pricing": {
     "model": "enterprise-custom",
+    "starting_price_cents": 5000,
+    "starting_price_display": "~$50/provider/month base + implementation",
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "tiers": [
+      {
+        "name": "CareLogic Core",
+        "price": "~$50/provider/month base",
+        "description": "Clinical documentation, scheduling, care coordination"
+      },
+      {
+        "name": "CareLogic + Billing",
+        "price": "~$75-100/provider/month",
+        "description": "Adds claims, eligibility, payment processing"
+      },
+      {
+        "name": "CareLogic Enterprise",
+        "price": "Enterprise custom",
+        "description": "Full suite with analytics, state reporting, integrations"
+      }
+    ],
+    "notes": "Base pricing ~$50/provider/month but total cost depends heavily on implementation ($5K-50K+), training, and support packages. Implementation typically <6 months. Part of Qualifacts family (also Credible, InSync)."
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
-    "soc2": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "yes",
     "hitrust": "unknown",
     "gdpr_compliant": "unknown"
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Qualifacts IQ",
+      "description": "AI-powered clinical decision support",
+      "integration_type": "api",
+      "slug": "qualifacts-iq",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "State HIEs",
+      "description": "Health information exchange connectivity",
+      "integration_type": "api",
+      "slug": "state-hies",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Labs",
+      "description": "Lab ordering and results",
+      "integration_type": "api",
+      "slug": "labs",
+      "category": "other",
+      "verified": false
+    },
+    {
+      "name": "Clearinghouses",
+      "description": "Claims submission and ERA",
+      "integration_type": "api",
+      "slug": "clearinghouses",
+      "category": "other",
+      "verified": false
+    }
+  ],
+  "best_for": [
+    "Mid-size behavioral health agencies (20-200 staff) needing faster implementation than myEvolv",
+    "CMHCs wanting configurable workflows without heavy IT requirements",
+    "Organizations needing multi-service line support (MH, SUD, IDD)",
+    "Agencies seeking Qualifacts IQ AI copilot integration"
+  ],
+  "not_for": [
+    "Solo/small private practices (→ SimplePractice $59/mo, TherapyNotes $49/mo)",
+    "Organizations needing addiction treatment specialization (→ Kipu EMR)",
+    "Practices wanting minimal implementation time (CareLogic is 3-6 months vs 1 month for simple EHRs)",
+    "Small budgets without $5K+ implementation investment"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 85,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "qualifacts-credible",
+    "qualifacts-insync",
+    "netsmart-myevolv",
+    "kipu-emr"
+  ],
   "created_at": "2026-08-22T20:50:40.845Z",
-  "updated_at": "2026-08-22T20:50:40.845Z",
-  "status": "draft",
+  "updated_at": "2026-09-01T20:15:00.000Z",
+  "status": "active",
   "seo": {
-    "title": "Qualifacts CareLogic Enterprise: Review & Pricing | HeyPsych",
-    "meta_description": "Qualifacts CareLogic Enterprise review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Qualifacts CareLogic Enterprise: Pricing & Reviews 2026 |...",
+    "meta_description": "Qualifacts CareLogic pricing starts at ~$50/provider/month for behavioral health organizations. Compare to Netsmart myEvolv, Credible, and alternatives for C...",
+    "faqs": [
+      {
+        "q": "How much does Qualifacts CareLogic cost?",
+        "a": "CareLogic base pricing starts around $50/provider/month, but total cost includes implementation ($5K-50K+), training, and ongoing support. Enterprise deployments with full analytics and integrations cost more. Implementation typically completes in 3-6 months, faster than competitors like myEvolv."
+      },
+      {
+        "q": "What's the difference between CareLogic and Credible?",
+        "a": "Both are Qualifacts products. CareLogic is designed for larger organizations (CMHCs, behavioral health agencies) with complex workflows and state reporting needs. Credible targets smaller practices with simpler needs and lower implementation requirements. CareLogic has more customization but longer setup."
+      },
+      {
+        "q": "Does CareLogic have AI features?",
+        "a": "Yes, Qualifacts offers Qualifacts IQ, an AI-powered copilot that integrates with CareLogic. It provides clinical decision support, documentation assistance, and analytics. This is an add-on to the base EHR."
+      },
+      {
+        "q": "How long does CareLogic implementation take?",
+        "a": "CareLogic implementation typically takes 3-6 months, which is faster than Netsmart myEvolv (9-24 months) but longer than private practice EHRs (1-4 weeks). Implementation includes data migration, workflow configuration, training, and go-live support."
+      },
+      {
+        "q": "What are alternatives to Qualifacts CareLogic?",
+        "a": "For enterprise behavioral health: Netsmart myEvolv (larger organizations, longer implementation) or myAvatar. For mid-size agencies: Qualifacts Credible (simpler) or InSync. For addiction treatment: Kipu EMR. For private practices: SimplePractice or TherapyNotes."
+      }
+    ],
     "keywords": [
-      "Qualifacts CareLogic Enterprise",
-      "ehr practice management"
+      "Qualifacts CareLogic",
+      "CareLogic pricing",
+      "behavioral health EHR",
+      "CMHC EHR software",
+      "CareLogic vs Credible",
+      "CareLogic vs myEvolv"
     ]
-  }
+  },
+  "website_url": "https://www.qualifacts.com/products/carelogic/",
+  "affiliate_url": "https://www.qualifacts.com/products/carelogic/",
+  "one_liner": "Enterprise behavioral health EHR for CMHCs with state reporting, care coordination, and AI copilot. "
 }

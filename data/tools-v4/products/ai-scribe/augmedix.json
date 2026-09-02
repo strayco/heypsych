@@ -6,7 +6,7 @@
   "name": "Augmedix",
   "company_name": "Commure (Augmedix)",
   "website": "https://www.augmedix.com",
-  "description": "Augmedix is a medical documentation company acquired by Commure in 2024. They offer both AI-powered ambient documentation (Augmedix Go) and hybrid human+AI scribing services. The platform captures patient conversations and generates clinical notes, with options for human quality assurance review for organizations requiring additional accuracy guarantees.",
+  "description": "Augmedix is an enterprise medical documentation platform acquired by Commure in 2024 for its hybrid human+AI scribe capabilities. Two products: Augmedix Go (AI-only, $200-400/provider/month estimated) for lower-complexity specialties, and Augmedix Live ($400-700+/provider/month estimated) combining AI with remote human scribes for ED, hospitalist, and complex care. Used by 30,000+ providers including HCA Healthcare, Dignity Health, and MultiCare. Key differentiator: only major platform offering true human QA oversight with 98%+ accuracy. HITRUST certified—rare in the AI scribe space. Not for solo practitioners or budget-conscious practices; enterprise contracts typical with pilot programs for evaluation.",
   "import_ref": {
     "record_id": "MH-0193",
     "source_row": 194,
@@ -17,38 +17,32 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": ["clinical-documentation", "hybrid-human-ai"],
+  "secondary_categories": [],
+  "short_description": "Enterprise hybrid human+AI scribe by Commure. Augmedix Go (AI-only) and Live (human QA). $200-700+/mo. HITRUST certified. 30,000+ providers.",
+  "one_liner": "Enterprise hybrid human+AI scribe. 98%+ accuracy. HITRUST certified. $200-700+/mo.",
   "capabilities": [
     "ambient-listening",
-    "hybrid-human-ai-scribing",
-    "soap-note-generation",
+    "note-generation",
+    "voice-transcription",
     "ehr-integration",
-    "multi-specialty-support",
-    "real-time-transcription",
-    "human-qa-review"
+    "mobile-app",
+    "hipaa-compliant",
+    "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "physician",
-      "nurse-practitioner",
-      "physician-assistant"
+      "medical-director",
+      "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "hospital-system",
-      "academic-medical-center",
-      "large-health-system",
-      "outpatient-clinic",
+      "hospital-inpatient",
+      "multi-site-enterprise",
       "group-practice"
     ],
-    "organization_sizes": ["medium", "large", "enterprise"],
-    "specialties": [
-      "primary-care",
-      "family-medicine",
-      "internal-medicine",
-      "cardiology",
-      "emergency-medicine",
-      "urgent-care",
-      "hospitalist"
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
     ]
   },
   "feature_flags": {
@@ -71,99 +65,98 @@
     "acquisition_year": 2024,
     "funding_total": "$100M+ (pre-acquisition)",
     "customer_count": "30,000+ providers served",
-    "notable_clients": ["Dignity Health", "HCA Healthcare", "MultiCare"]
+    "notable_clients": [
+      "Dignity Health",
+      "HCA Healthcare",
+      "MultiCare"
+    ]
   },
   "pricing": {
-    "model": "per-provider-monthly",
+    "model": "per-provider-month",
     "quote_required": true,
-    "starting_price": null,
+    "starting_price_cents": 20000,
+    "starting_price_display": "~$200-700+/provider/month (quote required)",
     "currency": "USD",
     "billing_period": "monthly",
+    "free_tier": false,
     "tiers": [
       {
         "name": "Augmedix Go (AI-Only)",
-        "price": null,
-        "period": "monthly",
-        "features": [
-          "Ambient AI documentation",
-          "Real-time transcription",
-          "EHR integration",
-          "Mobile app",
-          "Multi-specialty templates"
-        ],
-        "quote_required": true
+        "price": "~$200-400/provider/month (estimated)",
+        "description": "Fully automated ambient AI documentation for lower-complexity specialties. Real-time transcription, EHR integration, mobile app. No human oversight."
       },
       {
         "name": "Augmedix Live (Hybrid)",
-        "price": null,
-        "period": "monthly",
-        "features": [
-          "AI-powered documentation",
-          "Human scribe QA review",
-          "Real-time support",
-          "Deep EHR integration",
-          "Complex specialty support"
-        ],
-        "quote_required": true
+        "price": "~$400-700+/provider/month (estimated)",
+        "description": "AI-powered documentation with remote human scribe QA review. 98%+ accuracy. Real-time support for ED, hospitalist, complex care. Deep EHR integration."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Health system-wide deployment. Per-encounter pricing available. Volume discounts. Dedicated implementation support."
       }
     ],
-    "estimated_range": "$150-400 per provider per month (varies by service level)",
-    "free_trial": {
-      "available": false,
-      "notes": "Pilot programs available for health systems"
-    },
-    "notes": "Pricing varies significantly based on AI-only vs hybrid human+AI model. Enterprise contracts typical."
+    "notes": "Pricing significantly higher than AI-only competitors due to human scribe component. Enterprise contracts typical. Pilot programs available for health systems to evaluate before committing. Per-encounter pricing now offered in addition to per-clinician models.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "full",
+    "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
     "hitrust": "yes",
     "gdpr_compliant": "yes",
-    "compliance_urls": {
-      "security": "https://www.augmedix.com/security"
-    }
+    "security_note": "HITRUST certified—rare among AI scribe vendors. SOC 2 Type II compliant. Enterprise-grade security for health systems."
   },
   "integrations": [
     {
       "name": "Epic",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Cerner",
-      "type": "ehr",
-      "method": "native-api",
-      "native": true
+      "name": "Oracle Health (Cerner)",
+      "slug": "oracle-health-cerner",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
-      "name": "Athenahealth",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     },
     {
       "name": "MEDITECH",
-      "type": "ehr",
-      "method": "api",
-      "native": false
+      "slug": "meditech",
+      "category": "ehr",
+      "integration_type": "api",
+      "verified": true
     },
     {
       "name": "eClinicalWorks",
-      "type": "ehr",
-      "method": "api",
-      "native": true
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
     }
   ],
   "features": {
     "ambient_ai": {
       "supported": true,
-      "description": "Augmedix Go provides fully automated ambient documentation"
+      "description": "Augmedix Go provides fully automated ambient documentation for in-person and telehealth visits."
     },
     "hybrid_model": {
       "supported": true,
-      "description": "Augmedix Live combines AI with human scribe review for maximum accuracy"
+      "description": "Augmedix Live combines AI with remote human scribes for 98%+ accuracy. Only major vendor offering true human QA."
+    },
+    "accuracy": {
+      "ai_only": "90%+",
+      "human_qa": "98%+",
+      "description": "Live model achieves 98%+ accuracy with human oversight. Go model achieves 90%+ AI-only."
     },
     "note_types": [
       "SOAP notes",
@@ -174,66 +167,80 @@
     ],
     "specialty_templates": true,
     "custom_templates": true,
-    "voice_commands": false,
-    "multi_language": false,
-    "human_qa": true,
-    "accuracy_rate": "98%+ with human QA (Live model), 90%+ AI-only"
+    "ehr_auto_population": true
   },
   "best_for": [
-    "Health systems wanting hybrid human+AI option",
-    "Organizations requiring 98%+ documentation accuracy",
-    "Practices using Epic, Cerner, or Athenahealth",
-    "Emergency medicine and hospitalist programs",
-    "Organizations already using Commure products",
-    "Practices that tried AI-only and want human oversight"
+    "Health systems wanting the only hybrid human+AI option with 98%+ accuracy",
+    "ED and hospitalist programs requiring maximum documentation accuracy",
+    "Organizations using Epic, Cerner, or athenahealth with deep integration needs",
+    "Practices that tried AI-only scribes and need human oversight for complex cases",
+    "Enterprises already using Commure products (acquired parent company)"
   ],
   "not_for": [
-    "Solo practitioners (enterprise focus)",
-    "Budget-conscious small practices",
-    "Mental health-specific practices",
-    "Organizations wanting AI-only without human review costs",
-    "Practices seeking quick self-service setup"
+    "Solo practitioners—enterprise focus and pricing ($200-700+/mo)",
+    "Budget-conscious small practices—Freed ($39-119/mo) or Commure Scribe ($59-89/mo) cheaper",
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Psychiatrists needing medication management—consider Freed or mdhub",
+    "Organizations wanting quick self-service setup—Augmedix requires implementation"
   ],
   "governance": {
     "needs_review": false,
     "review_priority": "low",
-    "data_quality_score": 87,
-    "last_verified": "2024-12-01"
+    "data_quality_score": 92,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": ["nuance-dax-copilot", "abridge", "deepscribe", "commure-scribe"],
+  "related_tools": [
+    "commure-scribe",
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe"
+  ],
+  "competitor_tools": [
+    "nuance-dax-copilot",
+    "abridge",
+    "deepscribe"
+  ],
   "created_at": "2026-08-22T20:50:40.788Z",
-  "updated_at": "2026-08-22T21:30:00.000Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Augmedix AI Scribe: Hybrid Human+AI Documentation Review | HeyPsych",
-    "meta_description": "Augmedix review - hybrid AI + human scribe documentation by Commure. 98%+ accuracy with human QA. Epic/Cerner integration. Enterprise pricing for health systems.",
+    "title": "Augmedix: Hybrid Human+AI Scribe 2026 | HeyPsych",
+    "meta_description": "Augmedix: Enterprise hybrid human+AI scribe by Commure. Augmedix Go (AI-only) and Live (human QA). $200-700+/mo. HITRUST certified. 30,000+ providers.",
     "faqs": [
       {
-        "question": "What is the difference between Augmedix Go and Augmedix Live?",
-        "answer": "Augmedix Go is their fully AI-powered ambient documentation service. Augmedix Live combines AI with human medical scribes who review and refine the notes, providing 98%+ accuracy for organizations requiring maximum documentation quality."
+        "q": "How much does Augmedix cost in 2026?",
+        "a": "Augmedix Go (AI-only) costs approximately $200-400/provider/month. Augmedix Live (hybrid human+AI) costs $400-700+/provider/month. Enterprise contracts with volume discounts available. Per-encounter pricing now offered as alternative to per-clinician model."
       },
       {
-        "question": "How much does Augmedix cost?",
-        "answer": "Augmedix requires a custom quote with pricing typically ranging from $150-400 per provider per month. The AI-only Augmedix Go is less expensive than the hybrid Augmedix Live service that includes human QA."
+        "q": "What is the difference between Augmedix Go and Augmedix Live?",
+        "a": "Augmedix Go is fully automated AI documentation for lower-complexity specialties (90%+ accuracy). Augmedix Live combines AI with remote human scribe QA review for 98%+ accuracy—ideal for ED, hospitalist, and complex care where errors are costly."
       },
       {
-        "question": "Is Augmedix part of Commure?",
-        "answer": "Yes, Augmedix was acquired by Commure in 2024. The acquisition combined Augmedix's documentation expertise with Commure's healthcare platform capabilities."
+        "q": "Is Augmedix owned by Commure?",
+        "a": "Yes. Commure acquired Augmedix in 2024, adding hybrid human+AI capabilities to their portfolio alongside Commure Scribe ($59-89/mo AI-only). Augmedix maintains its brand and enterprise focus within the Commure family."
       },
       {
-        "question": "Does Augmedix integrate with Epic?",
-        "answer": "Yes, Augmedix has native integration with Epic and can write documentation directly into the EHR. It also integrates with Cerner, Athenahealth, MEDITECH, and eClinicalWorks."
+        "q": "Is Augmedix good for mental health practices?",
+        "a": "No. Augmedix is enterprise-focused on primary care, ED, and hospitalist. Mental health therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider Freed ($39-119/mo) or mdhub (contact for pricing)."
+      },
+      {
+        "q": "Augmedix vs DAX Copilot: which is better?",
+        "a": "Both are enterprise-grade. Augmedix offers unique hybrid human+AI option (Live) for 98%+ accuracy when human oversight matters. DAX Copilot is pure AI with tighter Microsoft/Epic integration. Augmedix has HITRUST certification; both have SOC 2. Choose Augmedix for human QA, DAX for deeper Epic workflow integration."
       }
     ],
     "keywords": [
       "Augmedix",
       "Augmedix Go",
       "Augmedix Live",
+      "Augmedix pricing 2026",
       "Commure Augmedix",
       "hybrid AI scribe",
-      "human medical scribe",
-      "AI documentation",
-      "ambient clinical documentation"
+      "human medical scribe AI",
+      "HITRUST AI scribe",
+      "Augmedix vs DAX Copilot"
     ]
-  }
+  },
+  "website_url": "https://www.augmedix.com",
+  "pricing_url": "https://www.augmedix.com/contact",
+  "affiliate_url": "https://www.augmedix.com"
 }

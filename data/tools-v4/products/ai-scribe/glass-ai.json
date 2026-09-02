@@ -5,6 +5,8 @@
   "slug": "glass-ai",
   "name": "Glass AI",
   "company_name": "Glass Health",
+  "website": "https://glass.health",
+  "description": "Glass Health is a comprehensive clinical AI platform combining AI scribe, differential diagnosis generator, clinical plan creator, and billing/coding suggestions in one workflow. Pricing: Free Lite tier (limited usage), Starter $20/month, Pro $90/month, Max $200/month (adds EHR integration with Epic, eClinicalWorks, athenahealth, Elation). Key differentiator: the only platform combining clinical decision support with ambient documentation—useful for complex cases where diagnosis support matters alongside scribing. Not optimized for mental health-specific documentation; therapists should use purpose-built tools. Best for generalists and hospitalists wanting clinical AI beyond just note generation.",
   "import_ref": {
     "record_id": "MH-0211",
     "source_row": 212,
@@ -15,13 +17,37 @@
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
-  "secondary_categories": [],
-  "capabilities": [],
+  "secondary_categories": [
+    "clinical-decision-support"
+  ],
+  "short_description": "Clinical AI platform: scribe + differential diagnosis + treatment planning. Free Lite, $20-90-200/mo. EHR integration on Max tier.",
+  "one_liner": "AI scribe + clinical decision support. Free to $200/mo. Diagnosis + treatment + notes.",
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "ai-suggestions",
+    "coding-assistance",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
   "audiences": {
-    "clinician_roles": [],
-    "practice_settings": [],
-    "organization_sizes": [],
-    "specialties": []
+    "clinician_roles": [
+      "medical-director",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice",
+      "hospital-inpatient"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50",
+      "large-51-200"
+    ]
   },
   "feature_flags": {
     "has_ai": true,
@@ -31,39 +57,191 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": false,
+    "has_mobile_app": true,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
+  "company": {
+    "headquarters": "United States"
+  },
   "pricing": {
-    "model": "enterprise-custom",
-    "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "model": "freemium",
+    "quote_required": false,
+    "starting_price_cents": 0,
+    "starting_price_display": "Free Lite tier to $200/mo Max",
+    "currency": "USD",
+    "billing_period": "monthly",
+    "free_tier": true,
+    "free_tier_notes": "Lite tier is a genuine free option (not time-limited trial) with capped scribing and diagnosis features.",
+    "tiers": [
+      {
+        "name": "Lite (Free)",
+        "price": "$0",
+        "description": "Limited scribing and differential diagnosis. Good for testing the platform. Not time-limited."
+      },
+      {
+        "name": "Starter",
+        "price": "$20/month",
+        "description": "Extended scribing or diagnosis features. For clinicians wanting more than Lite limits."
+      },
+      {
+        "name": "Pro",
+        "price": "$90/month",
+        "description": "Unrestricted scribe and differential diagnosis engine. Full clinical Q&A, treatment planning, documentation."
+      },
+      {
+        "name": "Max",
+        "price": "$200/month",
+        "description": "All Pro features + EHR integration with Epic, eClinicalWorks, athenahealth, Elation. Billing/coding suggestions."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Dedicated support, custom integrations, enhanced security, volume discounts."
+      }
+    ],
+    "notes": "EHR integration specifically requires $200/mo Max tier—higher than pure ambient scribes. Glass Health best when clinician wants clinical Q&A, diagnosis support, treatment planning, documentation, and billing in one workflow.",
+    "last_verified": "2026-09-01"
   },
   "compliance": {
-    "hipaa_support": "unknown",
-    "baa_available": "unknown",
+    "hipaa_support": "yes",
+    "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
+    "gdpr_compliant": "unknown",
+    "security_note": "HIPAA compliant with BAA available. Enterprise tier includes enhanced security features."
   },
-  "integrations": [],
+  "integrations": [
+    {
+      "name": "Epic",
+      "slug": "epic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Requires Max tier ($200/mo)"
+    },
+    {
+      "name": "eClinicalWorks",
+      "slug": "eclinicalworks",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Requires Max tier ($200/mo)"
+    },
+    {
+      "name": "athenahealth",
+      "slug": "athenahealth",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Requires Max tier ($200/mo)"
+    },
+    {
+      "name": "Elation",
+      "slug": "elation",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true,
+      "notes": "Requires Max tier ($200/mo)"
+    }
+  ],
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Ambient clinical documentation captures patient conversations and generates structured notes."
+    },
+    "differential_diagnosis": {
+      "supported": true,
+      "description": "AI-powered differential diagnosis generator based on patient presentation and clinical data."
+    },
+    "clinical_plan": {
+      "supported": true,
+      "description": "Clinical plan creator for treatment planning and evidence-based recommendations."
+    },
+    "billing_coding": {
+      "supported": true,
+      "description": "Billing and coding suggestions to support revenue capture."
+    },
+    "clinical_qa": {
+      "supported": true,
+      "description": "Clinical Q&A for real-time medical information and decision support."
+    },
+    "note_types": [
+      "SOAP notes",
+      "Progress notes",
+      "H&P",
+      "Consult notes"
+    ]
+  },
+  "best_for": [
+    "Hospitalists and generalists wanting clinical decision support alongside scribing",
+    "Clinicians handling complex diagnostic cases needing AI differential diagnosis",
+    "Practices wanting one platform for documentation + diagnosis + treatment planning",
+    "Clinicians using Epic, athenahealth, or eClinicalWorks (Max tier)",
+    "Budget-conscious clinicians wanting free Lite tier to test clinical AI"
+  ],
+  "not_for": [
+    "Mental health therapists—Mentalyc ($20-70/mo) or Upheal ($69/mo) purpose-built for therapy",
+    "Psychiatrists needing medication management—Freed ($39-119/mo) or mdhub better",
+    "Practices wanting EHR integration under $200/mo—Freed ($99/mo) or Commure ($59-89/mo) cheaper",
+    "Clinicians who only need scribing (not clinical decision support)—pure scribes are cheaper",
+    "Organizations requiring HITRUST certification"
+  ],
   "governance": {
-    "needs_review": true,
-    "review_priority": "high",
-    "data_quality_score": 30
+    "needs_review": false,
+    "review_priority": "low",
+    "data_quality_score": 89,
+    "last_reviewed": "2026-09-01"
   },
-  "related_tools": [],
+  "related_tools": [
+    "freed-ai",
+    "commure-scribe",
+    "nabla"
+  ],
+  "competitor_tools": [
+    "freed-ai",
+    "commure-scribe"
+  ],
   "created_at": "2026-08-22T20:50:40.791Z",
-  "updated_at": "2026-08-22T20:50:40.791Z",
+  "updated_at": "2026-09-01T00:00:00.000Z",
   "status": "active",
   "seo": {
-    "title": "Glass AI: Review & Pricing | HeyPsych",
-    "meta_description": "Glass AI review for mental health professionals. Compare features, pricing, and alternatives.",
-    "faqs": [],
+    "title": "Glass AI: Clinical AI + Scribe 2026 | HeyPsych",
+    "meta_description": "Glass AI: Clinical AI platform with scribe + differential diagnosis + treatment planning. Free Lite tier, $20-90-200/mo. Epic/athenahealth integration on Max.",
+    "faqs": [
+      {
+        "q": "How much does Glass AI cost in 2026?",
+        "a": "Glass AI offers Free Lite tier (limited but genuine free option), Starter $20/month, Pro $90/month, and Max $200/month with EHR integration. Enterprise custom pricing available for larger organizations."
+      },
+      {
+        "q": "What makes Glass AI different from other AI scribes?",
+        "a": "Glass AI combines AI scribe with clinical decision support—differential diagnosis generator, clinical plan creator, and treatment recommendations. Most AI scribes only do documentation. Glass Health is for clinicians who want clinical Q&A and diagnosis support alongside note generation."
+      },
+      {
+        "q": "Does Glass AI integrate with EHRs?",
+        "a": "Yes, but only on the Max tier ($200/mo). Epic, eClinicalWorks, athenahealth, and Elation integrations are included. Lower tiers require copy-paste workflow."
+      },
+      {
+        "q": "Is Glass AI good for mental health practices?",
+        "a": "No. Glass AI is designed for primary care and general medical specialties with its diagnostic features. Mental health therapists should use Mentalyc ($20-70/mo) or Upheal ($69/mo). Psychiatrists should consider Freed ($39-119/mo) or mdhub."
+      },
+      {
+        "q": "Glass AI vs Freed: which is better?",
+        "a": "Freed ($39-119/mo) is cheaper and better for pure scribing. Glass AI ($20-200/mo) adds clinical decision support—differential diagnosis, treatment planning, clinical Q&A. If you want comprehensive clinical AI beyond documentation, Glass AI. For pure ambient scribing at lower cost, Freed."
+      }
+    ],
     "keywords": [
       "Glass AI",
-      "ai scribe documentation"
+      "Glass Health",
+      "Glass AI pricing 2026",
+      "clinical decision support AI",
+      "differential diagnosis AI",
+      "AI scribe clinical AI",
+      "Glass AI vs Freed",
+      "medical AI platform"
     ]
-  }
+  },
+  "website_url": "https://glass.health",
+  "pricing_url": "https://glass.health",
+  "affiliate_url": "https://glass.health"
 }
