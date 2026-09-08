@@ -71,7 +71,7 @@ export function ClinicianDecisionContext({ tool }: ClinicianDecisionContextProps
   }
 
   // Compliance gaps
-  if (tool.compliance?.baa_available !== true && tool.compliance?.baa_available !== "yes") {
+  if (tool.compliance?.baa_available !== "yes") {
     considerations.push("Verify BAA availability before HIPAA use");
   }
 

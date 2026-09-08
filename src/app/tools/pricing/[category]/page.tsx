@@ -476,7 +476,7 @@ export default async function PricingPage({ params }: PageProps) {
               Compare features, integrations, and user reviews in our full category guide.
             </p>
             <Link
-              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[config.schemaCategory] || config.schemaCategory}/`}
+              href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[config.schemaCategory as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] || config.schemaCategory}/`}
               className="mt-4 inline-flex items-center gap-2 rounded-lg bg-treatment px-6 py-3 text-sm font-medium text-white hover:bg-treatment/90 transition-colors"
             >
               View full comparison

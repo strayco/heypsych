@@ -279,7 +279,7 @@ export function getLLMDataAttributes(tool: ClinicianToolV4): Record<string, stri
     "data-llm-entity-type": "software-product",
     "data-llm-entity-name": tool.name,
     "data-llm-category": tool.primary_category || "software",
-    "data-llm-price": tool.pricing?.starting_price?.toString() || "",
+    "data-llm-price": tool.pricing?.starting_price_display || "",
     "data-llm-hipaa": tool.compliance?.hipaa_support || "unknown",
     "data-llm-last-verified": tool.governance?.last_reviewed || tool.updated_at || "",
     "data-llm-source": siteConfig.url,
