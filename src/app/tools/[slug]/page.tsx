@@ -4,8 +4,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, Scale } from "lucide-react";
 import { ToolService } from "@/lib/tools/tool-service";
+import { KEY_COMPARISONS, TOP_APPS } from "@/lib/seo/patient-programmatic-seo-engine";
 import { DirectAnswerBlock } from "@/components/tools/DirectAnswerBlock";
 import { DecisionContext } from "@/components/tools/DecisionContext";
 import { BoardAttribution } from "@/components/tools/BoardAttribution";
@@ -234,6 +235,9 @@ export default async function ToolPage({
           title={`Alternatives to ${tool.name}`}
           currentToolName={tool.name}
         />
+
+        {/* Compare Section */}
+        <PatientCompareSection currentSlug={slug} toolName={tool.name} />
 
         {/* Related Hubs - SEO enhanced with keyword-rich linking */}
         <RelatedHubs
@@ -509,6 +513,56 @@ function getOperatingSystems(platforms: any): string[] {
   if (platforms.web) os.push("Web");
   if (platforms.desktop) os.push("Windows", "macOS");
   return os;
+}
+
+/**
+ * Compare section showing VS pages that include this tool
+ */
+function PatientCompareSection({ currentSlug, toolName }: { currentSlug: string; toolName: string }) {
+  // Find comparisons that include this tool
+  const relevantComparisons = KEY_COMPARISONS.filter(
+    ({ a, b }) => a === currentSlug || b === currentSlug
+  );
+
+  if (relevantComparisons.length === 0) return null;
+
+  return (
+    <section className="border-t border-neutral-200 bg-neutral-50 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl">
+        <div className="flex items-center gap-2 mb-4">
+          <Scale className="h-5 w-5 text-indigo-600" />
+          <h2 className="text-lg font-semibold text-neutral-900">
+            Compare {toolName}
+          </h2>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {relevantComparisons.map(({ a, b }) => {
+            const otherSlug = a === currentSlug ? b : a;
+            const otherApp = TOP_APPS.find((app) => app.slug === otherSlug);
+            const otherName = otherApp?.name || otherSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+
+            return (
+              <Link
+                key={`${a}-vs-${b}`}
+                href={`/tools/for-patients/compare/${a}-vs-${b}/`}
+                className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 transition-all hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+              >
+                {toolName} vs {otherName}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            );
+          })}
+        </div>
+        <Link
+          href="/tools/for-patients/compare/"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700"
+        >
+          View all comparisons
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  );
 }
 
 export const revalidate = 86400; // 24 hours

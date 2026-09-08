@@ -76,6 +76,22 @@ export const FEATURES = [
   { slug: "measurement-tools", display: "Outcome Measurement", query: "with outcome measurement" },
 ] as const;
 
+/**
+ * Key comparisons for VS pages - exported for use on landing pages
+ */
+export const CLINICIAN_KEY_COMPARISONS = [
+  { a: "simplepractice", b: "therapynotes" },
+  { a: "simplepractice", b: "jane-app" },
+  { a: "simplepractice", b: "valant" },
+  { a: "therapynotes", b: "valant" },
+  { a: "therapynotes", b: "sessions-health" },
+  { a: "freed", b: "mentalyc" },
+  { a: "freed", b: "upheal" },
+  { a: "mentalyc", b: "upheal" },
+  { a: "alma", b: "headway" },
+  { a: "headway", b: "grow-therapy" },
+] as const;
+
 // ============================================================================
 // PAGE CONFIGURATION TYPES
 // ============================================================================
@@ -450,20 +466,6 @@ export function generateAllProgrammaticPages(): {
     "sessions-health",
   ];
 
-  // Key comparisons
-  const keyComparisons = [
-    { a: "simplepractice", b: "therapynotes" },
-    { a: "simplepractice", b: "jane-app" },
-    { a: "simplepractice", b: "valant" },
-    { a: "therapynotes", b: "valant" },
-    { a: "therapynotes", b: "sessions-health" },
-    { a: "freed", b: "mentalyc" },
-    { a: "freed", b: "upheal" },
-    { a: "mentalyc", b: "upheal" },
-    { a: "alma", b: "headway" },
-    { a: "headway", b: "grow-therapy" },
-  ];
-
   const allPages: ProgrammaticPageConfig[] = [
     ...generateBestForProfessionPages(),
     ...generateBestForPracticePages(),
@@ -472,7 +474,7 @@ export function generateAllProgrammaticPages(): {
     ...generatePricePages(),
     ...generateAlternativesPages(topProducts),
     ...generateProductPricingPages(topProducts),
-    ...generateVsPages(keyComparisons),
+    ...generateVsPages(CLINICIAN_KEY_COMPARISONS),
   ];
 
   // Calculate stats

@@ -5,7 +5,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, Search, Star, Smartphone, Check, X } from "lucide-react";
+import { ArrowRight, Search, Star, Smartphone, Check, X, Scale } from "lucide-react";
 import { TaxonomyService } from "@/lib/tools/taxonomy-service";
 import { ToolService } from "@/lib/tools/tool-service";
 import { CampaignService } from "@/lib/tools/campaign-service";
@@ -14,6 +14,7 @@ import { ToolsHeroSearch } from "../_components/ToolsHeroSearch";
 import { SponsoredSection } from "../_components/SponsoredSection";
 import { TrustSignal } from "../_components/TrustSignal";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
+import { KEY_COMPARISONS, TOP_APPS } from "@/lib/seo/patient-programmatic-seo-engine";
 
 const canonicalUrl = `${siteConfig.url}/tools/for-patients`;
 
@@ -328,6 +329,52 @@ export default async function ForPatientsPage() {
           </div>
         </section>
       )}
+
+      {/* Popular Comparisons */}
+      <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex items-center gap-3 mb-1">
+            <Scale className="h-5 w-5 text-treatment" />
+            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+              Compare
+            </p>
+          </div>
+          <h2 className="text-xl font-semibold text-label-primary">
+            Popular Comparisons
+          </h2>
+          <p className="mt-2 text-label-secondary text-sm">
+            Head-to-head comparisons of the most popular mental health apps
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {KEY_COMPARISONS.map(({ a, b }) => {
+              const appA = TOP_APPS.find((app) => app.slug === a);
+              const appB = TOP_APPS.find((app) => app.slug === b);
+              const nameA = appA?.name || a.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+              const nameB = appB?.name || b.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+
+              return (
+                <Link
+                  key={`${a}-vs-${b}`}
+                  href={`/tools/for-patients/compare/${a}-vs-${b}/`}
+                  className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:bg-treatment/5 hover:text-treatment"
+                >
+                  {nameA} vs {nameB}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              );
+            })}
+          </div>
+
+          <Link
+            href="/tools/for-patients/compare/"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
+          >
+            View all comparisons
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
 
       {/* Trust Signal */}
       <TrustSignal />
