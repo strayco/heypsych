@@ -45,7 +45,12 @@ import {
   trackRecommendationShown,
   trackRecommendationAccepted,
   trackProductDetailView,
+  trackVendorVisit,
 } from "@/domains/architect/analytics";
+import {
+  trackDecisionActionClicked,
+  type DecisionSessionContext,
+} from "@/domains/decision";
 
 type ProductDisplay = DemoProductDisplay | ArchitectProductDisplay;
 
@@ -76,6 +81,8 @@ interface ProductDrawerProps {
   onMarkNotNeeded?: () => void;
   onDeferItem?: () => void;
   isDemo?: boolean;
+  /** Decision session for cross-domain funnel attribution */
+  decisionSession?: DecisionSessionContext;
 }
 
 export function ProductDrawer({
@@ -93,6 +100,7 @@ export function ProductDrawer({
   onMarkNotNeeded,
   onDeferItem,
   isDemo,
+  decisionSession,
 }: ProductDrawerProps) {
   const [showAllProducts, setShowAllProducts] = useState(false);
 
@@ -356,33 +364,53 @@ export function ProductDrawer({
                     <span className="text-sm font-medium text-label-secondary">Insurance Options</span>
                   </div>
                   <div className="space-y-2">
-                    {malpracticeProducts.map((product) => (
-                      <a
-                        key={product.slug}
-                        href={'websiteUrl' in product.display && product.display.websiteUrl ? product.display.websiteUrl : `/tools/for-clinicians/malpractice-insurance/${product.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-start gap-3 rounded-xl border border-separator bg-surface p-3 text-left transition-all hover:border-accent/30 hover:shadow-sm"
-                      >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-fill-secondary text-label-tertiary">
-                          <Shield className="h-5 w-5" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium text-label-primary">{product.display.name}</span>
-                            {product.isPrimary && (
-                              <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-700">
-                                Popular
-                              </span>
-                            )}
-                            <ExternalLink className="h-3 w-3 text-label-tertiary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                    {malpracticeProducts.map((product, idx) => {
+                      const isExternalLink = 'websiteUrl' in product.display && product.display.websiteUrl;
+                      const href = isExternalLink
+                        ? product.display.websiteUrl
+                        : `/tools/for-clinicians/malpractice-insurance/${product.slug}`;
+
+                      return (
+                        <a
+                          key={product.slug}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            // Track vendor visit (domain-specific)
+                            if (isExternalLink) {
+                              trackVendorVisit(product.slug, false);
+                            }
+                            // Track decision action (cross-domain funnel)
+                            if (decisionSession) {
+                              trackDecisionActionClicked(decisionSession, "visit", idx === 0, {
+                                targetSlug: product.slug,
+                                isCommercial: isExternalLink, // External vendor links are commercial
+                              });
+                            }
+                          }}
+                          className="group flex items-start gap-3 rounded-xl border border-separator bg-surface p-3 text-left transition-all hover:border-accent/30 hover:shadow-sm"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-fill-secondary text-label-tertiary">
+                            <Shield className="h-5 w-5" />
                           </div>
-                          <p className="mt-0.5 text-xs text-label-secondary line-clamp-2">
-                            {product.display.tagline}
-                          </p>
-                        </div>
-                      </a>
-                    ))}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-label-primary">{product.display.name}</span>
+                              {product.isPrimary && (
+                                <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-700">
+                                  Popular
+                                </span>
+                              )}
+                              <ExternalLink className="h-3 w-3 text-label-tertiary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                            </div>
+                            <p className="mt-0.5 text-xs text-label-secondary line-clamp-2">
+                              {product.display.tagline}
+                            </p>
+                          </div>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               )}

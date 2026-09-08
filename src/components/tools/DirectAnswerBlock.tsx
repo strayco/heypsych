@@ -63,10 +63,19 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
           </div>
         </div>
 
-        {/* One-Liner (Direct Answer) */}
-        <p className="text-lg text-label-secondary leading-relaxed mb-6">
+        {/* One-Liner (Direct Answer) - Voice search optimized */}
+        <p className="text-lg text-label-secondary leading-relaxed mb-6 direct-answer" data-speakable="true">
           {tool.one_liner}
         </p>
+
+        {/* Quick Summary for AI/Voice - Hidden visually but crawlable */}
+        <div className="sr-only" data-speakable="true">
+          {tool.name} is a {tool.support_level === "self-help" ? "self-guided" : tool.support_level} mental health app.
+          {tool.pricing.model === "free" ? " It is completely free to use." :
+           tool.pricing.free_tier ? ` It has a free tier with premium options starting at ${tool.pricing.starting_price || "a monthly fee"}.` :
+           ` Pricing starts at ${tool.pricing.starting_price || "varies"}.`}
+          {tool.app_rating ? ` Rated ${tool.app_rating} out of 5 stars.` : ""}
+        </div>
 
         {/* At-a-Glance Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">

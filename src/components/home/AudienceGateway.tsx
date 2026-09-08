@@ -34,10 +34,10 @@ export function AudienceGateway() {
 
             <div className="mt-6 flex flex-col gap-2">
               <Link
-                href="/tools/find-support"
+                href="/find-support?source=homepage"
                 className="group/link inline-flex items-center justify-between rounded-lg bg-treatment px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
               >
-                <span className="text-white">Find Therapy & Support</span>
+                <span className="text-white">Find My Support Path</span>
                 <ArrowRight className="h-4 w-4 text-white transition-transform group-hover/link:translate-x-0.5" />
               </Link>
               <div className="flex gap-2">

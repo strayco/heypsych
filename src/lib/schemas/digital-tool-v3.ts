@@ -2,6 +2,7 @@
 // V3 Digital Tool Schema - AEO/SEO First, Fully Dynamic
 import { z } from "zod";
 import { UncertaintyBooleanZ } from "./tool-editorial";
+import { CommercialMetadataZ, DEFAULT_COMMERCIAL_METADATA } from "./commercial";
 
 // ============================================================================
 // TAXONOMY ENUMS
@@ -197,6 +198,8 @@ export const AppMetadataZ = z.object({
   website: z.string().url().optional(),
   affiliate_url: z.string().url().optional(), // Affiliate link for monetization
   wikidata_qid: z.string().optional(),
+  // Commercial relationship (Phase 6: truthful attribution)
+  commercial: CommercialMetadataZ.default(DEFAULT_COMMERCIAL_METADATA),
 });
 
 // ============================================================================

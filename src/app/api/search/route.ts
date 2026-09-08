@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { queryWithRetry } from "@/lib/config/db-pool";
 import { EntityService } from "@/lib/data/entity-service";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
 
@@ -18,6 +19,8 @@ type SearchResult = {
   description?: string | null;
   category?: string | null;
   snippets: SearchSnippet[];
+  /** Canonical URL for this result */
+  href: string;
 };
 
 type CategoryResults = {
@@ -86,6 +89,47 @@ export async function GET(req: NextRequest) {
     try {
       // Always try direct database query first - it should always work
       if (type) {
+        // For tools, use V4 ClinicianToolService to get correct URLs
+        if (type === "tool") {
+          const toolsSearchResult = await ClinicianToolService.searchClinicianTools(searchTerm);
+          const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => {
+            const taxonomyCategory =
+              SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
+              tool.primary_category;
+
+            return {
+              type: "tool",
+              id: tool.slug,
+              slug: tool.slug,
+              name: tool.name,
+              description: tool.short_description || tool.one_liner || null,
+              category: tool.primary_category,
+              snippets: buildCleanSnippets(
+                tool.name,
+                tool.short_description || tool.one_liner || null,
+                searchTerms
+              ),
+              href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
+            };
+          });
+
+          const loadTime = Date.now() - startTime;
+          logger.info(`✅ Search completed: "${searchTerm}" (type=tool) in ${loadTime}ms`, {
+            results: toolsResults.length,
+            total: toolsSearchResult.total,
+            source: "v4-tools",
+          });
+
+          return NextResponse.json({
+            results: toolsResults,
+            totalCount: toolsSearchResult.total,
+            hasMore: toolsResults.length < toolsSearchResult.total,
+            loadTimeMs: loadTime,
+            fallbackUsed: false,
+          });
+        }
+
+        // For other types, use database query
         const result = await queryWithRetry(
           'SELECT * FROM search_entities($1, $2, $3, $4)',
           [searchTerm, limit, 0, type]
@@ -147,19 +191,27 @@ export async function GET(req: NextRequest) {
         .filter(Boolean) as SearchResult[];
 
       // Convert V4 clinician tools to SearchResult format
-      const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => ({
-        type: "tool",
-        id: tool.slug,
-        slug: tool.slug,
-        name: tool.name,
-        description: tool.short_description || tool.one_liner || null,
-        category: tool.primary_category,
-        snippets: buildCleanSnippets(
-          tool.name,
-          tool.short_description || tool.one_liner || null,
-          searchTerms
-        ),
-      }));
+      const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => {
+        // Map schema category to taxonomy category for correct URL
+        const taxonomyCategory =
+          SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
+          tool.primary_category;
+
+        return {
+          type: "tool",
+          id: tool.slug,
+          slug: tool.slug,
+          name: tool.name,
+          description: tool.short_description || tool.one_liner || null,
+          category: tool.primary_category,
+          snippets: buildCleanSnippets(
+            tool.name,
+            tool.short_description || tool.one_liner || null,
+            searchTerms
+          ),
+          href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
+        };
+      });
       const toolsTotal = toolsSearchResult.total;
 
       const loadTime = Date.now() - startTime;
@@ -247,19 +299,26 @@ export async function GET(req: NextRequest) {
       let toolsTotal = 0;
       try {
         const toolsSearch = await ClinicianToolService.searchClinicianTools(searchTerm);
-        toolsResults = toolsSearch.tools.slice(0, limit).map((tool) => ({
-          type: "tool" as const,
-          id: tool.slug,
-          slug: tool.slug,
-          name: tool.name,
-          description: tool.short_description || tool.one_liner || null,
-          category: tool.primary_category,
-          snippets: buildCleanSnippets(
-            tool.name,
-            tool.short_description || tool.one_liner || null,
-            searchTerms
-          ),
-        }));
+        toolsResults = toolsSearch.tools.slice(0, limit).map((tool) => {
+          const taxonomyCategory =
+            SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
+            tool.primary_category;
+
+          return {
+            type: "tool" as const,
+            id: tool.slug,
+            slug: tool.slug,
+            name: tool.name,
+            description: tool.short_description || tool.one_liner || null,
+            category: tool.primary_category,
+            snippets: buildCleanSnippets(
+              tool.name,
+              tool.short_description || tool.one_liner || null,
+              searchTerms
+            ),
+            href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
+          };
+        });
         toolsTotal = toolsSearch.total;
       } catch (toolsError) {
         logger.warn("Tools search failed in fallback mode", { error: toolsError });
@@ -403,6 +462,27 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
   // Build clean snippets - ONLY from name and description, never from JSON
   const snippets = buildCleanSnippets(name, description, searchTerms);
 
+  // Generate canonical href based on entity type
+  let href: string;
+  switch (type) {
+    case "condition":
+      href = `/conditions/${slug}`;
+      break;
+    case "treatment":
+      href = `/treatments/${slug}`;
+      break;
+    case "resource":
+      href = `/resources/${slug}`;
+      break;
+    case "tool":
+      // Note: V4 clinician tools should be mapped separately with taxonomy category
+      // This fallback uses the patient tool route
+      href = `/tools/${slug}`;
+      break;
+    default:
+      href = `/${type}s/${slug}`;
+  }
+
   return {
     type,
     id,
@@ -411,6 +491,7 @@ function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: 
     description,
     category,
     snippets,
+    href,
   };
 }
 

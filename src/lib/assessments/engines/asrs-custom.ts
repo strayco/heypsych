@@ -1,4 +1,6 @@
 // src/lib/assessments/engines/asrs-custom.ts
+import type { AssessmentAlert } from "../engines";
+
 export function compute(data: any, answers: Record<string, number>) {
   const rules = data.scoring?.rules || {};
   const questions = data.questions || [];
@@ -85,9 +87,42 @@ export function compute(data: any, answers: Record<string, number>) {
   const maxPartB = partB.length * 4;
   const maxTotal = maxPartA + maxPartB;
 
+  // Build typed alerts - ADHD screening alerts are warnings, not critical
+  const typedAlerts: AssessmentAlert[] = [];
+
+  if (partAPositive) {
+    typedAlerts.push({
+      severity: "warning",
+      message:
+        "Your Part A score indicates a strong likelihood of ADHD - professional evaluation is recommended to confirm diagnosis and discuss treatment options",
+      trigger: "part_a_score",
+      action: "recommend_evaluation",
+    });
+  }
+  if (partBClinicallySignificant) {
+    typedAlerts.push({
+      severity: "info",
+      message:
+        "Your Part B score shows significant additional ADHD symptoms that may impact daily functioning and quality of life",
+      trigger: "part_b_score",
+      action: "info_only",
+    });
+  }
+  if (totalAbove79thPercentile && !partAPositive) {
+    typedAlerts.push({
+      severity: "info",
+      message:
+        "Your total score is above the 79th percentile - while your Part A score is below the main threshold, your overall symptom pattern may still warrant professional evaluation",
+      trigger: "total_score",
+      action: "recommend_evaluation",
+    });
+  }
+
   return {
     score: total,
     max: maxTotal,
+    band: totalDescriptor,
+    alerts: typedAlerts.length > 0 ? typedAlerts : undefined,
     details: {
       // Part A
       part_a_total: partATotal,
@@ -112,7 +147,7 @@ export function compute(data: any, answers: Record<string, number>) {
       sub_hyperactivity_motor: hyperactivityMotorTotal,
       sub_hyperactivity_verbal: hyperactivityVerbalTotal,
 
-      // Clinical interpretation
+      // Clinical interpretation - legacy string array
       alerts: alerts,
     },
   };

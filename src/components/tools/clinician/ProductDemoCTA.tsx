@@ -3,35 +3,55 @@
 // Product Page CTA - Affiliate Link or Demo Request
 // Priority: affiliate_url > demo form
 // Affiliate links open in new tab with nofollow for monetization tracking
+// Phase 6: Includes affiliate disclosure when commercial link is active
 
 import { useState, useEffect } from "react";
-import { X, Calendar, ExternalLink, Sparkles } from "lucide-react";
+import { X, Calendar, ExternalLink, Sparkles, Info } from "lucide-react";
 import { DemoRequestForm } from "./DemoRequestForm";
+import type { CommercialMetadata } from "@/lib/schemas/commercial";
+import { needsDisclosure, getDisclosureText } from "@/lib/schemas/commercial";
 
 interface ProductDemoCTAProps {
   toolSlug: string;
   toolName: string;
   affiliateUrl?: string; // If present, show affiliate link instead of demo form
   websiteUrl?: string; // Fallback to website if no affiliate
+  /** Commercial metadata for disclosure (Phase 6) */
+  commercial?: CommercialMetadata;
+  /** Whether affiliate is disabled via kill switch (passed from server) */
+  affiliateDisabled?: boolean;
 }
 
-export function ProductDemoCTA({ toolSlug, toolName, affiliateUrl, websiteUrl }: ProductDemoCTAProps) {
+export function ProductDemoCTA({
+  toolSlug,
+  toolName,
+  affiliateUrl,
+  websiteUrl,
+  commercial,
+  affiliateDisabled = false,
+}: ProductDemoCTAProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Determine if affiliate link should be used
+  const useAffiliateLink = affiliateUrl && !affiliateDisabled;
+
+  // Determine if disclosure is needed
+  const showDisclosure = useAffiliateLink && needsDisclosure(commercial);
 
   // Auto-open modal when URL has #demo hash (from matcher flow)
   // Only applies when no affiliate URL - affiliate products go direct
   useEffect(() => {
-    if (!affiliateUrl && typeof window !== "undefined" && window.location.hash === "#demo") {
+    if (!useAffiliateLink && typeof window !== "undefined" && window.location.hash === "#demo") {
       setIsModalOpen(true);
       // Clear the hash but preserve query parameters (UTMs, source, etc.)
       const url = new URL(window.location.href);
       url.hash = "";
       window.history.replaceState(null, "", url.toString());
     }
-  }, [affiliateUrl]);
+  }, [useAffiliateLink]);
 
   // AFFILIATE LINK MODE: Direct link to vendor (monetization path)
-  if (affiliateUrl) {
+  if (useAffiliateLink) {
     return (
       <div id="demo" className="rounded-xl border border-treatment/20 bg-treatment/5 p-4 scroll-mt-24">
         <h3 className="flex items-center gap-2 font-semibold text-label-primary mb-2">
@@ -50,6 +70,13 @@ export function ProductDemoCTA({ toolSlug, toolName, affiliateUrl, websiteUrl }:
           Visit {toolName}
           <ExternalLink className="h-4 w-4" />
         </a>
+        {/* Phase 6: Affiliate Disclosure */}
+        {showDisclosure && (
+          <p className="mt-3 text-xs text-label-tertiary flex items-center gap-1">
+            <Info className="h-3 w-3" />
+            {getDisclosureText(commercial?.status ?? "unknown", "short")}
+          </p>
+        )}
       </div>
     );
   }

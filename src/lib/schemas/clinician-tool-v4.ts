@@ -9,6 +9,7 @@ import {
   FactProvenanceZ,
   type UncertaintyBoolean,
 } from "./tool-editorial";
+import { CommercialMetadataZ, DEFAULT_COMMERCIAL_METADATA } from "./commercial";
 
 // ============================================================================
 // SCHEMA VERSION
@@ -687,6 +688,9 @@ export const ClinicianToolV4Z = z.object({
   pricing_url: z.string().url().optional(),
   support_url: z.string().url().optional(),
   affiliate_url: z.string().url().optional(), // Affiliate link for monetization
+
+  // Commercial relationship (Phase 6: truthful attribution)
+  commercial: CommercialMetadataZ.default(DEFAULT_COMMERCIAL_METADATA),
 
   // Logo and media
   logo_url: z.string().url().optional(),

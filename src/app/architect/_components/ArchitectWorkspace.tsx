@@ -60,6 +60,12 @@ import {
   trackProductRemove,
   trackStackUndo,
 } from "@/domains/architect/analytics";
+import {
+  createDecisionSession,
+  trackDecisionStarted,
+  trackDecisionAbandoned,
+  type DecisionSessionContext,
+} from "@/domains/decision";
 
 import { FingerprintWizard } from "./FingerprintWizard";
 import { LifecycleNavigator } from "./LifecycleNavigator";
@@ -113,6 +119,11 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileHealthOpen, setMobileHealthOpen] = useState(false);
   const [mobileShortlistOpen, setMobileShortlistOpen] = useState(false);
+
+  // Decision session context for cross-domain funnel attribution
+  const [decisionSession] = useState<DecisionSessionContext>(() =>
+    createDecisionSession("architect", initialContext?.utmSource || (isDemo ? "demo" : "direct"))
+  );
 
   // Load real products via API (only when not in demo mode)
   const {
@@ -230,12 +241,22 @@ export function ArchitectWorkspace({ initialMode, isDemo, initialContext }: Arch
   // Track page view on mount
   useEffect(() => {
     trackArchitectPageView(isDemo ? "demo" : "direct");
+    trackDecisionStarted(decisionSession);
     if (isDemo) {
       trackDemoStart();
     } else {
       trackModeSelect(mode, false);
     }
-  }, [isDemo, mode]);
+  }, [isDemo, mode, decisionSession]);
+
+  // Track abandonment on unmount (if no products selected)
+  useEffect(() => {
+    return () => {
+      if (stack.selectedProducts.length === 0) {
+        trackDecisionAbandoned(decisionSession, showFingerprint ? "fingerprint" : "workspace");
+      }
+    };
+  }, [stack.selectedProducts.length, showFingerprint, decisionSession]);
 
   // Load saved stack on mount (if not demo)
   useEffect(() => {

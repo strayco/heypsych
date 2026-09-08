@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, Phone, MessageSquare, AlertTriangle } from "lucide-react";
 import {
   SEOMeta,
   SectionList,
@@ -15,6 +15,7 @@ import {
 } from "./shared";
 import { runEngine } from "./index";
 import type { ResourceRendererProps } from "./index";
+import type { AssessmentAlert } from "@/lib/assessments/engines";
 
 // Progress footer component
 function FixedProgressFooter({ percent }: { percent: number }) {
@@ -283,8 +284,77 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                 </Card>
               )}
 
-            {/* Clinical alerts */}
-            {result.details &&
+            {/* Typed clinical alerts with severity-based styling */}
+            {result.alerts && result.alerts.length > 0 && (
+              <>
+                {/* Critical alerts - Show crisis resources */}
+                {result.alerts.some((a: AssessmentAlert) => a.severity === "critical" || a.action === "show_crisis_resources") && (
+                  <div className="rounded-lg border border-negative-border bg-negative-tint p-4">
+                    <div className="flex items-start gap-3">
+                      <AlertTriangle className="h-5 w-5 text-negative mt-0.5 shrink-0" />
+                      <div className="flex-1">
+                        <div className="mb-2 font-semibold text-negative-700">
+                          If you&apos;re having thoughts of harming yourself, help is available now
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2">
+                            <Phone className="h-4 w-4 text-negative-600" />
+                            <a href="tel:988" className="font-medium text-negative underline hover:no-underline">
+                              Call 988
+                            </a>
+                            <span className="text-negative-600">Suicide & Crisis Lifeline (24/7)</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MessageSquare className="h-4 w-4 text-negative-600" />
+                            <a href="sms:741741&body=HOME" className="font-medium text-negative underline hover:no-underline">
+                              Text HOME to 741741
+                            </a>
+                            <span className="text-negative-600">Crisis Text Line (24/7)</span>
+                          </div>
+                        </div>
+                        {result.alerts
+                          .filter((a: AssessmentAlert) => a.severity === "critical")
+                          .map((alert: AssessmentAlert, idx: number) => (
+                            <p key={idx} className="mt-3 text-sm text-negative-700">{alert.message}</p>
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Warning alerts - Clinical attention recommended */}
+                {result.alerts.some((a: AssessmentAlert) => a.severity === "warning" && a.action !== "show_crisis_resources") && (
+                  <div className="rounded-lg border border-caution-border bg-caution-tint p-4">
+                    <div className="mb-2 font-medium text-caution-700">Clinical Alert</div>
+                    <div className="text-sm text-caution space-y-1">
+                      {result.alerts
+                        .filter((a: AssessmentAlert) => a.severity === "warning")
+                        .map((alert: AssessmentAlert, idx: number) => (
+                          <p key={idx}>{alert.message}</p>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Info alerts - Additional context */}
+                {result.alerts.some((a: AssessmentAlert) => a.severity === "info") && (
+                  <div className="rounded-lg border border-accent-border bg-accent-tint/50 p-4">
+                    <div className="mb-2 font-medium text-accent-700">Additional Information</div>
+                    <div className="text-sm text-label-secondary space-y-1">
+                      {result.alerts
+                        .filter((a: AssessmentAlert) => a.severity === "info")
+                        .map((alert: AssessmentAlert, idx: number) => (
+                          <p key={idx}>{alert.message}</p>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Legacy alerts fallback (for assessments without typed alerts) */}
+            {(!result.alerts || result.alerts.length === 0) &&
+              result.details &&
               "alerts" in result.details &&
               result.details.alerts &&
               result.details.alerts.length > 0 && (

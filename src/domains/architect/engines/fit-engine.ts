@@ -82,6 +82,66 @@ function evaluateHardRequirements(
     }
   }
 
+  // Check clinical role exclusions
+  if (fit?.clinicalRolesExcluded?.length && fingerprint.clinicalRoles.length) {
+    const excludedRoles = fingerprint.clinicalRoles.filter((role) =>
+      fit.clinicalRolesExcluded.includes(role)
+    );
+    if (excludedRoles.length > 0) {
+      return {
+        dimension,
+        weight,
+        score: 0,
+        evidence: "mismatch",
+        reasons: [`Not suitable for: ${excludedRoles.join(", ")}`],
+        provenance: fit.provenance,
+      };
+    }
+  }
+
+  // Check size bucket exclusions
+  if (fit?.sizeBucketsExcluded?.length && fingerprint.sizeBucket) {
+    if (fit.sizeBucketsExcluded.includes(fingerprint.sizeBucket)) {
+      return {
+        dimension,
+        weight,
+        score: 0,
+        evidence: "mismatch",
+        reasons: [`Not suitable for ${fingerprint.sizeBucket} provider practices`],
+        provenance: fit.provenance,
+      };
+    }
+  }
+
+  // Check delivery model exclusions
+  // Hard exclude if: product explicitly excludes the practice's delivery model
+  // OR: practice is telehealth-only AND product has explicit delivery models that don't include telehealth
+  if (fingerprint.deliveryModel) {
+    if (fit?.deliveryModelsExcluded?.includes(fingerprint.deliveryModel)) {
+      return {
+        dimension,
+        weight,
+        score: 0,
+        evidence: "mismatch",
+        reasons: [`Does not support ${fingerprint.deliveryModel} delivery`],
+        provenance: fit.provenance,
+      };
+    }
+    // Telehealth-only practices require telehealth support
+    if (fingerprint.deliveryModel === "telehealth" && fit?.deliveryModels?.length) {
+      if (!fit.deliveryModels.includes("telehealth")) {
+        return {
+          dimension,
+          weight,
+          score: 0,
+          evidence: "mismatch",
+          reasons: ["Does not support telehealth delivery"],
+          provenance: fit.provenance,
+        };
+      }
+    }
+  }
+
   // Check EPCS requirement
   if (needsEPCS(fingerprint)) {
     const hasEPCS = input.metadata.capabilities.some(
@@ -122,6 +182,26 @@ function evaluateHardRequirements(
           provenance: "verified",
         };
       }
+    }
+  }
+
+  // Check HIPAA/BAA requirement for insurance-billing practices
+  if (isInsuranceHeavy(fingerprint)) {
+    const compliance = input.metadata.compliance;
+    if (compliance?.baaAvailable === false) {
+      // Explicit no-BAA is a hard exclusion for insurance practices
+      return {
+        dimension,
+        weight,
+        score: 0,
+        evidence: "mismatch",
+        reasons: ["No BAA available - required for insurance billing"],
+        provenance: compliance.provenance ?? "verified",
+      };
+    }
+    // If BAA status is unknown, flag uncertainty but don't hard-exclude
+    if (compliance?.baaAvailable === undefined) {
+      reasons.push("BAA availability unknown - verify before use with insurance");
     }
   }
 

@@ -1724,7 +1724,8 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 const timestamps = {
                   published_date: editorial.dates?.published || entityMetadata.published_date || entity.created_at,
                   last_updated: editorial.dates?.lastUpdated || entityMetadata.last_updated || entity.updated_at,
-                  last_reviewed: editorial.dates?.lastMedicallyReviewed || entityMetadata.medical_review?.review_date || entity.updated_at,
+                  // Use actual review date if available, otherwise don't show a reviewed date
+                  last_reviewed: editorial.dates?.lastMedicallyReviewed || entityMetadata.medical_review?.review_date,
                 };
 
                 const formatDate = (date: string | undefined) => {

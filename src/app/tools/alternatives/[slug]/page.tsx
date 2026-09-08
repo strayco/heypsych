@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const alternativeCount = categoryTools.filter(t => t.slug !== slug).length;
   const hasSubstantiveContent = alternativeCount >= 3;
 
-  const title = `${tool.name} Alternatives (2024) | Top ${tool.name} Competitors`;
+  const title = `${tool.name} Alternatives (2026) | Top ${tool.name} Competitors`;
   const description = `Looking for ${tool.name} alternatives? Compare the best ${tool.name} competitors for mental health practices. Find the right replacement based on your practice needs.`;
 
   return {

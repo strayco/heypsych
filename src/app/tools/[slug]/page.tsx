@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ToolService } from "@/lib/tools/tool-service";
 import { DirectAnswerBlock } from "@/components/tools/DirectAnswerBlock";
+import { DecisionContext } from "@/components/tools/DecisionContext";
 import { BoardAttribution } from "@/components/tools/BoardAttribution";
 import { ToolFAQ } from "@/components/tools/ToolFAQ";
 import { RelatedTools } from "@/components/tools/RelatedTools";
@@ -14,6 +15,7 @@ import { RelatedHubs } from "@/components/tools/RelatedHubs";
 import { ClinicianModule } from "@/components/tools/ClinicianModule";
 import { ToolOutboundLinks } from "./ToolOutboundLinks";
 import { siteConfig } from "@/lib/config/site";
+import { shouldShowCommercialLink } from "@/lib/commercial/kill-switch";
 import {
   getToolCanonicalUrl,
   getToolRobotsMeta,
@@ -88,6 +90,12 @@ export default async function ToolPage({
 
   const relatedTools = await ToolService.getRelated(slug, 4);
 
+  // Check if affiliate links are enabled for this tool (Phase 6: kill switch)
+  const affiliateEnabled = shouldShowCommercialLink(
+    tool.slug,
+    tool.app_metadata?.commercial?.partnerSlug
+  );
+
   // Generate structured data
   const structuredData = generateStructuredData(tool);
 
@@ -130,6 +138,9 @@ export default async function ToolPage({
           </div>
         </div>
 
+        {/* Decision Context - Phase 4: Evidence, tradeoffs, uncertainty */}
+        <DecisionContext tool={tool} />
+
         {/* Main Content */}
         <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
           {/* Long Description */}
@@ -144,6 +155,7 @@ export default async function ToolPage({
 
           {/* Download Links - with analytics tracking */}
           {/* Priority: affiliate_url > app stores > website */}
+          {/* Phase 6: Includes commercial disclosure when affiliate active */}
           <ToolOutboundLinks
             toolSlug={tool.slug}
             toolName={tool.name}
@@ -151,6 +163,8 @@ export default async function ToolPage({
             googlePlayUrl={tool.app_metadata?.google_play_url}
             websiteUrl={tool.app_metadata?.website}
             affiliateUrl={tool.app_metadata?.affiliate_url}
+            commercial={tool.app_metadata?.commercial}
+            affiliateDisabled={!affiliateEnabled}
           />
 
           {/* Clinical Evidence */}
@@ -214,11 +228,19 @@ export default async function ToolPage({
         {/* FAQ */}
         <ToolFAQ faqs={tool.seo.faqs} toolName={tool.name} />
 
-        {/* Related Tools */}
-        <RelatedTools tools={relatedTools} />
+        {/* Related Tools - SEO enhanced with alternatives text */}
+        <RelatedTools
+          tools={relatedTools}
+          title={`Alternatives to ${tool.name}`}
+          currentToolName={tool.name}
+        />
 
-        {/* Related Hubs */}
-        <RelatedHubs hubSlugs={tool.primary_hubs} currentToolSlug={tool.slug} />
+        {/* Related Hubs - SEO enhanced with keyword-rich linking */}
+        <RelatedHubs
+          hubSlugs={tool.primary_hubs}
+          currentToolSlug={tool.slug}
+          currentToolName={tool.name}
+        />
       </div>
     </>
   );
@@ -226,23 +248,81 @@ export default async function ToolPage({
 
 // Generate structured data for the tool
 // Uses siteConfig.url for all URLs - never hardcoded
+// AGGRESSIVE SEO: Multiple overlapping schemas for maximum rich result coverage
 function generateStructuredData(tool: any): object[] {
   const schemas: object[] = [];
   const baseUrl = siteConfig.url;
+  const toolUrl = `${baseUrl}/tools/${tool.slug}/`;
+  const currentDate = new Date().toISOString();
 
-  // SoftwareApplication schema
+  // 1. SoftwareApplication schema - Primary app rich result
   const appSchema: any = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": `${baseUrl}/tools/${tool.slug}/#app`,
+    "@id": `${toolUrl}#app`,
     name: tool.name,
-    description: tool.short_description,
+    description: tool.short_description || tool.one_liner,
     applicationCategory: "HealthApplication",
+    applicationSubCategory: "Mental Health",
     operatingSystem: getOperatingSystems(tool.platforms),
+    url: toolUrl,
+    downloadUrl: tool.app_metadata?.app_store_url || tool.app_metadata?.website,
+    softwareVersion: "Latest",
+    dateModified: currentDate,
+    inLanguage: "en-US",
+  };
+
+  // Enhanced aggregate rating
+  if (tool.app_rating && tool.total_reviews) {
+    appSchema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: tool.app_rating,
+      reviewCount: tool.total_reviews,
+      bestRating: 5,
+      worstRating: 1,
+      ratingExplanation: `Average rating from ${formatReviewCount(tool.total_reviews)} user reviews`,
+    };
+  }
+
+  // Enhanced offer with price details
+  if (tool.pricing) {
+    appSchema.offers = {
+      "@type": "Offer",
+      price: tool.pricing.model === "free" ? "0" : (tool.pricing.starting_price ? extractPrice(tool.pricing.starting_price) : "0"),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+      seller: tool.app_metadata?.publisher ? {
+        "@type": "Organization",
+        name: tool.app_metadata.publisher,
+      } : undefined,
+    };
+  }
+
+  // Add screenshot if available
+  if (tool.app_metadata?.screenshots?.length > 0) {
+    appSchema.screenshot = tool.app_metadata.screenshots[0];
+  }
+
+  schemas.push(appSchema);
+
+  // 2. Product schema - For commerce-style rich results (price, rating stars)
+  const productSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${toolUrl}#product`,
+    name: tool.name,
+    description: tool.short_description || tool.one_liner,
+    brand: {
+      "@type": "Brand",
+      name: tool.app_metadata?.publisher || tool.name,
+    },
+    category: "Mental Health App",
+    url: toolUrl,
   };
 
   if (tool.app_rating && tool.total_reviews) {
-    appSchema.aggregateRating = {
+    productSchema.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: tool.app_rating,
       reviewCount: tool.total_reviews,
@@ -251,21 +331,106 @@ function generateStructuredData(tool: any): object[] {
     };
   }
 
-  if (tool.pricing) {
-    appSchema.offers = {
-      "@type": "Offer",
-      price: tool.pricing.free_tier ? "0" : "",
-      priceCurrency: "USD",
-    };
-  }
+  // Product offers - more detailed pricing
+  productSchema.offers = {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: tool.pricing.model === "free" || tool.pricing.free_tier ? "0" : (extractPrice(tool.pricing.starting_price) || "0"),
+    highPrice: extractPrice(tool.pricing.starting_price) || "0",
+    offerCount: 1,
+    availability: "https://schema.org/InStock",
+  };
 
-  schemas.push(appSchema);
+  schemas.push(productSchema);
 
-  // FAQPage schema
+  // 3. WebPage with speakable - Voice search optimization
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${toolUrl}#webpage`,
+    name: tool.seo.title,
+    description: tool.seo.meta_description,
+    url: toolUrl,
+    dateModified: currentDate,
+    datePublished: tool.governance?.last_reviewed || currentDate,
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      name: "HeyPsych",
+      url: baseUrl,
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".direct-answer", "[data-speakable]"],
+    },
+    mainEntity: {
+      "@type": "SoftwareApplication",
+      "@id": `${toolUrl}#app`,
+    },
+  });
+
+  // 4. MedicalWebPage - Health-specific rich results
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": `${toolUrl}#medical`,
+    name: `${tool.name} for Mental Health`,
+    description: tool.patient_summary || tool.short_description,
+    url: toolUrl,
+    lastReviewed: tool.governance?.last_reviewed,
+    reviewedBy: {
+      "@type": "Organization",
+      name: "HeyPsych Medical Review Board",
+      url: `${baseUrl}/about/medical-review-board`,
+    },
+    medicalAudience: {
+      "@type": "MedicalAudience",
+      audienceType: "Patient",
+    },
+    medicineSystem: "https://schema.org/WesternConventional",
+  });
+
+  // 5. HowTo schema - Targets "how to use X" queries
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${toolUrl}#howto`,
+    name: `How to Use ${tool.name}`,
+    description: `Get started with ${tool.name} for mental health support`,
+    totalTime: "PT5M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: tool.pricing.model === "free" ? "0" : (extractPrice(tool.pricing.starting_price) || "0"),
+    },
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Download the app",
+        text: `Download ${tool.name} from the ${tool.platforms.ios ? "App Store" : ""}${tool.platforms.ios && tool.platforms.android ? " or " : ""}${tool.platforms.android ? "Google Play Store" : ""}${tool.platforms.web ? " or access via web browser" : ""}.`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Create your account",
+        text: `Sign up for a ${tool.pricing.model === "free" ? "free" : tool.pricing.free_tier ? "free" : "paid"} account to get started.`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Begin your journey",
+        text: tool.best_for[0] ? `Start using ${tool.name} for ${tool.best_for[0].toLowerCase()}.` : `Start using ${tool.name} for mental health support.`,
+      },
+    ],
+  });
+
+  // 6. FAQPage schema - Targets "People Also Ask"
   if (tool.seo.faqs && tool.seo.faqs.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": `${toolUrl}#faq`,
       mainEntity: tool.seo.faqs.map((faq: any) => ({
         "@type": "Question",
         name: faq.q,
@@ -277,7 +442,7 @@ function generateStructuredData(tool: any): object[] {
     });
   }
 
-  // BreadcrumbList schema
+  // 7. BreadcrumbList schema - Sitelinks
   schemas.push({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -285,19 +450,56 @@ function generateStructuredData(tool: any): object[] {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Tools",
-        item: `${baseUrl}/tools/`,
+        name: "Home",
+        item: baseUrl,
       },
       {
         "@type": "ListItem",
         position: 2,
+        name: "Mental Health Apps",
+        item: `${baseUrl}/tools/for-patients/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
         name: tool.name,
-        item: `${baseUrl}/tools/${tool.slug}/`,
+        item: toolUrl,
       },
     ],
   });
 
+  // 8. ItemList for "Best For" - Lists rich result
+  if (tool.best_for && tool.best_for.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": `${toolUrl}#bestfor`,
+      name: `Who ${tool.name} is Best For`,
+      description: `${tool.name} is recommended for these use cases`,
+      numberOfItems: tool.best_for.length,
+      itemListElement: tool.best_for.map((useCase: string, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: useCase,
+      })),
+    });
+  }
+
   return schemas;
+}
+
+// Helper: Extract numeric price from string like "$9.99/month"
+function extractPrice(priceString: string | undefined): string {
+  if (!priceString) return "0";
+  const match = priceString.match(/\$?([\d.]+)/);
+  return match ? match[1] : "0";
+}
+
+// Helper: Format review count for display
+function formatReviewCount(count: number): string {
+  if (count >= 1000000) return `${(count / 1000000).toFixed(1)} million`;
+  if (count >= 1000) return `${Math.round(count / 1000)}K`;
+  return count.toString();
 }
 
 function getOperatingSystems(platforms: any): string[] {

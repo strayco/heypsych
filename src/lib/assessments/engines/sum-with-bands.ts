@@ -1,4 +1,6 @@
 // src/lib/assessments/engines/sum-with-bands.ts
+import type { AssessmentAlert } from "../engines";
+
 export function compute(data: any, answers: Record<string, number>) {
   const rules = data.scoring?.rules || {};
   const items = data.items || [];
@@ -47,15 +49,32 @@ export function compute(data: any, answers: Record<string, number>) {
   // Calculate max possible score
   const maxScore = items.length * 3; // Assuming 0-3 scale for now
 
+  // Build typed alerts with severity classification
+  const typedAlerts: AssessmentAlert[] = alertMessages.map((msg) => {
+    const lowerMsg = msg.toLowerCase();
+    const isSuicideRelated =
+      lowerMsg.includes("suicide") ||
+      lowerMsg.includes("self-harm") ||
+      lowerMsg.includes("harm yourself");
+
+    return {
+      severity: isSuicideRelated ? "critical" : "warning",
+      message: msg,
+      trigger: "item_threshold",
+      action: isSuicideRelated ? "show_crisis_resources" : "recommend_evaluation",
+    } as AssessmentAlert;
+  });
+
   return {
     score: total,
     max: maxScore,
+    alerts: typedAlerts.length > 0 ? typedAlerts : undefined,
     details: {
       total,
       severity,
       band: severity,
       suicide_alert: alertMessages.length > 0 ? alertMessages.join("; ") : undefined,
-      alerts: alertMessages,
+      alerts: alertMessages, // Legacy string array
     },
   };
 }

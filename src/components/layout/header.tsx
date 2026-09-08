@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { siteConfig } from "@/lib/config/site";
+import { siteConfig, getActiveNavigation } from "@/lib/config/site";
 import {
   Menu,
   X,
@@ -31,10 +31,16 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   info: Info,
   compass: Compass,
   users: Users,
+  search: Search,
 };
 
 export function Header() {
   const router = useRouter();
+
+  // Get active navigation based on feature flag
+  // Note: This is determined at build time via NAVIGATION_INVERSION env var.
+  // To roll back: set NAVIGATION_INVERSION=false and rebuild.
+  const activeNavigation = getActiveNavigation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,7 +90,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 md:flex">
-            {siteConfig.navigation.map((item) => {
+            {activeNavigation.map((item) => {
               const IconComponent = iconMap[item.icon];
 
               return (
@@ -178,7 +184,7 @@ export function Header() {
                 </div>
 
                 {/* Mobile Navigation Links */}
-                {siteConfig.navigation.map((item) => {
+                {activeNavigation.map((item) => {
                   const IconComponent = iconMap[item.icon];
 
                   return (

@@ -3,9 +3,12 @@
 // Tool Outbound Links Component
 // Client component for tracking outbound clicks to vendor websites
 // Priority: affiliate_url > app stores > website
+// Phase 6: Includes affiliate disclosure when commercial link is active
 
-import { Download, ExternalLink, Sparkles } from "lucide-react";
+import { Download, ExternalLink, Sparkles, Info } from "lucide-react";
 import { trackToolsVendorOutboundClick } from "@/lib/analytics/product-events";
+import type { CommercialMetadata } from "@/lib/schemas/commercial";
+import { needsDisclosure, getDisclosureText } from "@/lib/schemas/commercial";
 
 interface ToolOutboundLinksProps {
   toolSlug: string;
@@ -14,6 +17,10 @@ interface ToolOutboundLinksProps {
   googlePlayUrl?: string;
   websiteUrl?: string;
   affiliateUrl?: string; // Affiliate link for monetization
+  /** Commercial metadata for disclosure (Phase 6) */
+  commercial?: CommercialMetadata;
+  /** Whether affiliate is disabled via kill switch (passed from server) */
+  affiliateDisabled?: boolean;
 }
 
 export function ToolOutboundLinks({
@@ -23,6 +30,8 @@ export function ToolOutboundLinks({
   googlePlayUrl,
   websiteUrl,
   affiliateUrl,
+  commercial,
+  affiliateDisabled = false,
 }: ToolOutboundLinksProps) {
   const hasAnyLink = affiliateUrl || appStoreUrl || googlePlayUrl || websiteUrl;
 
@@ -30,14 +39,20 @@ export function ToolOutboundLinks({
     return null;
   }
 
+  // Determine if affiliate link should be used
+  const useAffiliateLink = affiliateUrl && !affiliateDisabled;
+
+  // Determine if disclosure is needed
+  const showDisclosure = useAffiliateLink && needsDisclosure(commercial);
+
   return (
     <section className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
       <h2 className="text-lg font-bold text-neutral-900 mb-4">
         Get {toolName}
       </h2>
       <div className="flex flex-wrap gap-3">
-        {/* Affiliate Link - Primary CTA when available */}
-        {affiliateUrl && (
+        {/* Affiliate Link - Primary CTA when available and enabled */}
+        {useAffiliateLink && (
           <a
             href={affiliateUrl}
             target="_blank"
@@ -79,8 +94,8 @@ export function ToolOutboundLinks({
           </a>
         )}
 
-        {/* Website - only show if no affiliate link */}
-        {websiteUrl && !affiliateUrl && (
+        {/* Website - show if no affiliate link OR if affiliate is disabled */}
+        {websiteUrl && (!affiliateUrl || affiliateDisabled) && (
           <a
             href={websiteUrl}
             target="_blank"
@@ -94,6 +109,13 @@ export function ToolOutboundLinks({
         )}
       </div>
 
+      {/* Affiliate Disclosure - Phase 6 */}
+      {showDisclosure && (
+        <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1">
+          <Info className="h-3 w-3" />
+          {getDisclosureText(commercial?.status ?? "unknown", "medium")}
+        </p>
+      )}
     </section>
   );
 }

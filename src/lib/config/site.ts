@@ -1,10 +1,21 @@
+import { featureFlags } from "./feature-flags";
+
 export const siteConfig = {
   name: "HeyPsych",
   description: "Make better mental health decisions. For patients: find the right care, apps, and treatments. For clinicians: build the right practice stack with transparent pricing.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   email: "hello@heypsych.com",
 
-  // Navigation V1 - Mental health navigation hierarchy
+  // Navigation V2 - Audience-first navigation (Phase 3 inversion)
+  // Primary hierarchy: Patients and Clinicians as top-level destinations
+  navigationInverted: [
+    { name: "Find Support", href: "/find-support", icon: "compass", audience: "patient" },
+    { name: "Practice Architect", href: "/architect", icon: "stethoscope", audience: "clinician" },
+    { name: "Browse", href: "/browse", icon: "book-open" },
+    { name: "Search", href: "/search", icon: "search" },
+  ],
+
+  // Navigation V1 - Taxonomy-first navigation (rollback option)
   // Primary surfaces: Conditions, Treatments, Tools, Find Care, For Clinicians
   navigation: [
     { name: "Conditions", href: "/conditions", icon: "heart-pulse" },
@@ -39,3 +50,14 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+
+/**
+ * Get the active navigation based on feature flag.
+ * When navigationInversion is enabled, uses audience-first navigation.
+ * When disabled, uses taxonomy-first navigation (rollback).
+ */
+export function getActiveNavigation() {
+  return featureFlags.navigationInversion
+    ? siteConfig.navigationInverted
+    : siteConfig.navigation;
+}

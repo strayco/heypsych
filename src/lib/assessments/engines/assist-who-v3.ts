@@ -1,4 +1,5 @@
 // src/lib/assessments/engines/assist-who-v3.ts
+import type { AssessmentAlert } from "../engines";
 
 export function compute(data: any, answers: Record<string, any>) {
   console.log("ASSIST engine called with answers:", Object.keys(answers).length, "items");
@@ -148,9 +149,52 @@ export function compute(data: any, answers: Record<string, any>) {
   const tobaccoScore = substanceScores.tobacco || 0;
   const maxPossible = highestSubstanceScore === tobaccoScore ? 31 : 39;
 
+  // Build typed alerts with severity classification
+  const typedAlerts: AssessmentAlert[] = [];
+
+  // Recent injection drug use is CRITICAL
+  if (injectionDrugUse === 2) {
+    typedAlerts.push({
+      severity: "critical",
+      message:
+        "Recent injection drug use detected. Immediate assessment for injection-related risks and harm reduction services recommended.",
+      trigger: "injection_use",
+      action: "show_crisis_resources",
+    });
+  } else if (injectionDrugUse === 1) {
+    typedAlerts.push({
+      severity: "warning",
+      message:
+        "History of injection drug use. Consider assessment for blood-borne virus testing and ongoing risk.",
+      trigger: "injection_history",
+      action: "recommend_evaluation",
+    });
+  }
+
+  // Substance-specific alerts
+  Object.entries(substanceResults).forEach(([substance, result]: [string, any]) => {
+    if (result.risk === "High Risk") {
+      typedAlerts.push({
+        severity: "warning",
+        message: `${capitalizeFirst(substance)}: High Risk (Score: ${result.score}). Further assessment and more intensive treatment recommended.`,
+        trigger: `${substance}_risk`,
+        action: "recommend_evaluation",
+      });
+    } else if (result.risk === "Moderate Risk") {
+      typedAlerts.push({
+        severity: "info",
+        message: `${capitalizeFirst(substance)}: Moderate Risk (Score: ${result.score}). Brief intervention recommended.`,
+        trigger: `${substance}_risk`,
+        action: "info_only",
+      });
+    }
+  });
+
   return {
     score: highestSubstanceScore, // Highest individual substance score
     max: maxPossible, // Dynamic max: 31 for tobacco, 39 for other substances
+    band: highestRisk,
+    alerts: typedAlerts.length > 0 ? typedAlerts : undefined,
     details: {
       // Overall WHO ASSIST assessment
       highest_risk: highestRisk,
@@ -191,7 +235,7 @@ export function compute(data: any, answers: Record<string, any>) {
         injectionRisk,
         totalSubstancesWithModerateOrHighRisk
       ),
-      alerts: alerts,
+      alerts: alerts, // Legacy string array
       recommendations: recommendations,
 
       // Detailed substance breakdown for clinical use

@@ -10,7 +10,7 @@ import type {
   PracticeFingerprint,
   ProductArchitectureMetadata,
 } from "../schemas";
-import { createEmptyFingerprint } from "../schemas";
+import { createEmptyFingerprint, isInsuranceHeavy } from "../schemas";
 
 // Factory helpers
 function createTestFingerprint(overrides: Partial<PracticeFingerprint> = {}): PracticeFingerprint {
@@ -124,6 +124,188 @@ describe("generateRecommendation", () => {
 
       // Should not include the state-excluded product
       expect(result.products.some((p) => p.slug === "ehr-limited")).toBe(false);
+    });
+
+    it("should exclude products without BAA for insurance-billing practices", () => {
+      // Create a fingerprint that bills insurance (commercial-insurance is default)
+      const fingerprint = createTestFingerprint();
+      const products = [
+        createTestProduct("ehr-no-baa", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          compliance: {
+            baaAvailable: false,
+            provenance: "verified",
+          },
+        }),
+        createTestProduct("ehr-with-baa", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          compliance: {
+            baaAvailable: true,
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Product without BAA should be excluded
+      expect(result.products.some((p) => p.slug === "ehr-no-baa")).toBe(false);
+      // Product with BAA should be included
+      expect(result.products.some((p) => p.slug === "ehr-with-baa")).toBe(true);
+    });
+
+    it("should not exclude products without BAA for cash-pay practices", () => {
+      const fingerprint = createTestFingerprint({
+        primaryPayerType: "cash",
+        payerMix: { cash: 95, commercial: 5 }, // Under 50% insurance
+      });
+      const products = [
+        createTestProduct("ehr-no-baa", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          compliance: {
+            baaAvailable: false,
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Product without BAA should NOT be excluded for cash-pay
+      expect(result.products.some((p) => p.slug === "ehr-no-baa")).toBe(true);
+    });
+
+    it("should exclude products without BAA when payerMix indicates insurance-heavy", () => {
+      // This test verifies isInsuranceHeavy works correctly with payerMix
+      const fingerprint = createTestFingerprint({
+        payerMix: { commercial: 80, cash: 20 }, // 80% insurance
+      });
+
+      // Verify isInsuranceHeavy returns true for this fingerprint
+      expect(isInsuranceHeavy(fingerprint)).toBe(true);
+
+      const products = [
+        createTestProduct("ehr-no-baa", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          compliance: {
+            baaAvailable: false,
+            provenance: "verified",
+          },
+        }),
+        createTestProduct("ehr-with-baa", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          compliance: {
+            baaAvailable: true,
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Product without BAA should be excluded
+      expect(result.products.some((p) => p.slug === "ehr-no-baa")).toBe(false);
+      // Product with BAA should be included
+      expect(result.products.some((p) => p.slug === "ehr-with-baa")).toBe(true);
+    });
+
+    it("should exclude products with clinical role exclusions", () => {
+      const fingerprint = createTestFingerprint({
+        clinicalRoles: ["psychiatrist", "psychiatric-np"],
+      });
+      const products = [
+        createTestProduct("ehr-compatible", [{ capabilityId: "ehr-clinical-record", strength: "core" }]),
+        createTestProduct("ehr-therapy-only", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          fitEvidence: {
+            clinicalRolesExcluded: ["psychiatrist", "psychiatric-np"],
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Should exclude the therapy-only product for psychiatry practice
+      expect(result.products.some((p) => p.slug === "ehr-therapy-only")).toBe(false);
+      expect(result.products.some((p) => p.slug === "ehr-compatible")).toBe(true);
+    });
+
+    it("should exclude products with size bucket exclusions", () => {
+      const fingerprint = createTestFingerprint({ sizeBucket: "solo" });
+      const products = [
+        createTestProduct("ehr-any-size", [{ capabilityId: "ehr-clinical-record", strength: "core" }]),
+        createTestProduct("ehr-enterprise-only", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          fitEvidence: {
+            sizeBucketsExcluded: ["solo", "2-5"],
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Should exclude enterprise-only product for solo practice
+      expect(result.products.some((p) => p.slug === "ehr-enterprise-only")).toBe(false);
+      expect(result.products.some((p) => p.slug === "ehr-any-size")).toBe(true);
+    });
+
+    it("should exclude products that don't support telehealth for telehealth-only practices", () => {
+      const fingerprint = createTestFingerprint({ deliveryModel: "telehealth" });
+      const products = [
+        createTestProduct("ehr-all-delivery", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          fitEvidence: {
+            deliveryModels: ["in-person", "hybrid", "telehealth"],
+            provenance: "verified",
+          },
+        }),
+        createTestProduct("ehr-in-person-only", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          fitEvidence: {
+            deliveryModels: ["in-person"],
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Should exclude in-person-only for telehealth practice
+      expect(result.products.some((p) => p.slug === "ehr-in-person-only")).toBe(false);
+      expect(result.products.some((p) => p.slug === "ehr-all-delivery")).toBe(true);
+    });
+
+    it("should exclude products with explicit delivery model exclusions", () => {
+      const fingerprint = createTestFingerprint({ deliveryModel: "telehealth" });
+      const products = [
+        createTestProduct("ehr-compatible", [{ capabilityId: "ehr-clinical-record", strength: "core" }]),
+        createTestProduct("ehr-no-telehealth", [{ capabilityId: "ehr-clinical-record", strength: "core" }], {
+          fitEvidence: {
+            deliveryModelsExcluded: ["telehealth"],
+            provenance: "verified",
+          },
+        }),
+      ];
+
+      const result = generateRecommendation({
+        fingerprint,
+        availableProducts: products,
+      });
+
+      // Should exclude product that explicitly excludes telehealth
+      expect(result.products.some((p) => p.slug === "ehr-no-telehealth")).toBe(false);
+      expect(result.products.some((p) => p.slug === "ehr-compatible")).toBe(true);
     });
   });
 

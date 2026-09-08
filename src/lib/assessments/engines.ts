@@ -1,9 +1,35 @@
 // src/lib/assessments/engines.ts
+
+/**
+ * Alert severity levels for assessment results.
+ * CRITICAL: Requires immediate attention (suicide risk, recent injection drug use)
+ * WARNING: Clinical threshold met, professional evaluation recommended
+ * INFO: Contextual information, no immediate action required
+ */
+export type AlertSeverity = "critical" | "warning" | "info";
+
+/**
+ * Typed alert structure for assessment results.
+ * Enables programmatic routing and severity-appropriate UI treatment.
+ */
+export interface AssessmentAlert {
+  severity: AlertSeverity;
+  message: string;
+  /** Identifies what triggered the alert (e.g., "q9", "part_a_score", "injection_use") */
+  trigger?: string;
+  /** Suggested action for this alert type */
+  action?: "show_crisis_resources" | "recommend_evaluation" | "info_only";
+}
+
 export type EngineResult = {
   score: number; // primary score (usually "total")
   max: number; // max possible
   band?: string; // severity band if computed
   interpretation?: string; // human-readable summary (bands/subscores/alerts)
+  /** Typed alerts with severity for routing and display */
+  alerts?: AssessmentAlert[];
+  /** Legacy details object for backward compatibility */
+  details?: Record<string, unknown>;
 };
 
 export type Engine = (resource: any, answers: Record<string, any>) => EngineResult;
@@ -391,10 +417,36 @@ function genericEngine(resource: any, answers: Record<string, any>): EngineResul
     );
   }
 
+  // Build typed alerts from ctx.alerts
+  const typedAlerts: AssessmentAlert[] = [];
+  if (Array.isArray(ctx.alerts) && ctx.alerts.length) {
+    for (const alertMsg of ctx.alerts) {
+      // Determine severity based on alert content
+      const lowerMsg = String(alertMsg).toLowerCase();
+      const isSuicideRelated =
+        lowerMsg.includes("suicide") ||
+        lowerMsg.includes("self-harm") ||
+        lowerMsg.includes("harm yourself");
+
+      typedAlerts.push({
+        severity: isSuicideRelated ? "critical" : "warning",
+        message: String(alertMsg),
+        trigger: "item_alert",
+        action: isSuicideRelated ? "show_crisis_resources" : "recommend_evaluation",
+      });
+    }
+  }
+
   return {
     score,
     max,
     band,
     interpretation: parts.filter(Boolean).join(" — ") || undefined,
+    alerts: typedAlerts.length > 0 ? typedAlerts : undefined,
+    details: {
+      total: ctx.total,
+      band,
+      alerts: ctx.alerts, // Legacy string array for backward compatibility
+    },
   };
 }

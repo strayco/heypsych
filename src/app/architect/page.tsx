@@ -43,6 +43,8 @@ export const metadata: Metadata = {
 };
 
 // Entry mode configurations
+// Phase 1: "Build for Me" activated after SmartOnboarding asks all key questions
+// "Audit" remains coming soon pending parity tests with workspace implementations
 const ENTRY_MODES = [
   {
     id: "build-for-me",
@@ -52,14 +54,14 @@ const ENTRY_MODES = [
     color: "accent",
     href: "/architect/my-practice",
     steps: [
-      "Answer 7 practice questions",
+      "Answer 4 quick questions",
       "Get instant stack recommendations",
       "See fit scores for each product",
       "Customize your final stack",
     ],
     bestFor: "New practices or those wanting fresh recommendations",
-    isPrimary: false,
-    comingSoon: true,
+    isPrimary: true,
+    comingSoon: false,
   },
   {
     id: "build-myself",
@@ -75,7 +77,7 @@ const ENTRY_MODES = [
       "Build at your own pace",
     ],
     bestFor: "Those who know what they need or want to explore",
-    isPrimary: true,
+    isPrimary: false,
     comingSoon: false,
   },
   {

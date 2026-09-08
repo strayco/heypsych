@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, ChevronRight } from "lucide-react";
 import { AudienceGateway } from "@/components/home/AudienceGateway";
+import { TaxonomyHero } from "@/components/home/TaxonomyHero";
+import { featureFlags } from "@/lib/config/feature-flags";
 
 // SEO-optimized metadata - Decision platform positioning
 export const metadata: Metadata = {
@@ -87,8 +89,12 @@ export default function HomePage() {
 
       {/* Homepage Sections */}
       <div className="min-h-screen bg-canvas">
-        {/* AudienceGateway - contains H1 and primary navigation */}
-        <AudienceGateway />
+        {/* Hero section: Audience-first (V2) or Taxonomy-first (V1) based on flag */}
+        {featureFlags.navigationInversion ? (
+          <AudienceGateway />
+        ) : (
+          <TaxonomyHero />
+        )}
 
         {/* Search Bar */}
         <section className="px-4 pb-16 sm:px-6 lg:px-8">
@@ -106,31 +112,33 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Quick Links */}
-        <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <div className="grid gap-px overflow-hidden rounded-xl border border-separator bg-separator sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { href: "/conditions", label: "Conditions", desc: "Symptoms & diagnoses" },
-                { href: "/treatments/compare", label: "Treatments", desc: "Therapy & medication" },
-                { href: "/tools", label: "Tools", desc: "Apps & resources" },
-                { href: "/psychiatrists", label: "Find Care", desc: "Providers near you" },
-              ].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group flex items-center justify-between bg-surface p-4 transition-colors hover:bg-fill-quaternary focus:outline-none focus-visible:bg-accent-tint"
-                >
-                  <div>
-                    <p className="font-medium text-label-primary group-hover:text-accent">{item.label}</p>
-                    <p className="text-sm text-label-tertiary">{item.desc}</p>
-                  </div>
-                  <ChevronRight className="h-5 w-5 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
-                </Link>
-              ))}
+        {/* Quick Links - Only show in V2 mode (V1 has links in TaxonomyHero) */}
+        {featureFlags.navigationInversion && (
+          <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <div className="grid gap-px overflow-hidden rounded-xl border border-separator bg-separator sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { href: "/conditions", label: "Conditions", desc: "Symptoms & diagnoses" },
+                  { href: "/treatments/compare", label: "Treatments", desc: "Therapy & medication" },
+                  { href: "/tools", label: "Tools", desc: "Apps & resources" },
+                  { href: "/psychiatrists", label: "Find Care", desc: "Providers near you" },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="group flex items-center justify-between bg-surface p-4 transition-colors hover:bg-fill-quaternary focus:outline-none focus-visible:bg-accent-tint"
+                  >
+                    <div>
+                      <p className="font-medium text-label-primary group-hover:text-accent">{item.label}</p>
+                      <p className="text-sm text-label-tertiary">{item.desc}</p>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-label-quaternary transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Stats */}
         <section className="px-4 py-12 sm:px-6 lg:px-8">

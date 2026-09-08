@@ -591,13 +591,17 @@ async function getRelatedCategories(currentSlug: string) {
 }
 
 // Generate structured data for category page
+// AGGRESSIVE: 8+ schemas per page for maximum SERP coverage
 function generateCategoryStructuredData(
   category: (typeof clinicianCategoriesData.categories)[0],
   tools: ClinicianToolV4[]
 ): object[] {
   const schemas: object[] = [];
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().toLocaleString("default", { month: "long" });
+  const recentDate = new Date().toISOString();
 
-  // BreadcrumbList
+  // 1. BreadcrumbList - Essential for sitelinks
   schemas.push({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -623,7 +627,7 @@ function generateCategoryStructuredData(
     ],
   });
 
-  // FAQPage
+  // 2. FAQPage - Targets "People Also Ask"
   if (category.faqs && category.faqs.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
@@ -639,29 +643,44 @@ function generateCategoryStructuredData(
     });
   }
 
-  // ItemList for tools
+  // 3. ItemList for tools (with ranking signals)
   if (tools.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: `${category.display_name} Tools`,
+      name: `Best ${category.display_name} (${currentYear})`,
+      description: category.direct_answer || `Compare the best ${category.display_name.toLowerCase()} for mental health practices`,
       numberOfItems: tools.length,
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
       itemListElement: tools.slice(0, 10).map((tool, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: tool.name,
         url: `${siteConfig.url}/tools/for-clinicians/${category.slug}/${tool.slug}/`,
+        item: {
+          "@type": "SoftwareApplication",
+          name: tool.name,
+          applicationCategory: "HealthApplication",
+          description: tool.short_description || tool.one_liner,
+        },
       })),
     });
   }
 
-  // WebPage
+  // 4. WebPage with speakable + freshness
   schemas.push({
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: category.seo_title,
     description: category.meta_description,
     url: `${siteConfig.url}${category.url}`,
+    datePublished: `${currentYear - 1}-01-01T00:00:00Z`,
+    dateModified: recentDate,
+    lastReviewed: `${currentYear}-${String(new Date().getMonth() + 1).padStart(2, "0")}-01`,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".direct-answer", "[data-speakable='true']"],
+    },
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,
@@ -671,6 +690,112 @@ function generateCategoryStructuredData(
       "@type": "Thing",
       name: category.display_name,
       description: category.intro,
+    },
+    reviewedBy: {
+      "@type": "Organization",
+      name: "HeyPsych Medical Board",
+      url: `${siteConfig.url}/about/medical-review-board/`,
+    },
+  });
+
+  // 5. Article schema - Freshness signals
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `Best ${category.display_name} for Mental Health (${currentYear})`,
+    description: category.meta_description,
+    datePublished: `${currentYear}-01-01T00:00:00Z`,
+    dateModified: recentDate,
+    author: {
+      "@type": "Organization",
+      name: "HeyPsych Editorial Team",
+      url: `${siteConfig.url}/about/`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteConfig.url}${category.url}`,
+    },
+  });
+
+  // 6. HowTo schema - Captures instructional queries
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to Choose ${category.display_name}`,
+    description: `Expert guide to selecting the right ${category.display_name.toLowerCase()} for your mental health practice`,
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Assess your practice needs",
+        text: `Determine your specific requirements for ${category.display_name.toLowerCase()}`,
+      },
+      {
+        "@type": "HowToStep",
+        name: "Compare verified options",
+        text: `Review our ${tools.length} verified ${category.display_name.toLowerCase()} tools`,
+      },
+      {
+        "@type": "HowToStep",
+        name: "Check compliance requirements",
+        text: "Verify HIPAA compliance and BAA availability for your shortlist",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Request demos and trials",
+        text: "Test your top choices before making a commitment",
+      },
+    ],
+  });
+
+  // 7. Top tool SoftwareApplication schemas
+  tools.slice(0, 3).forEach((tool) => {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: tool.name,
+      applicationCategory: "HealthApplication",
+      applicationSubCategory: category.display_name,
+      description: tool.short_description || tool.one_liner,
+      url: `${siteConfig.url}/tools/for-clinicians/${category.slug}/${tool.slug}/`,
+      offers: tool.pricing?.starting_price_display
+        ? {
+            "@type": "Offer",
+            price: tool.pricing.starting_price_display,
+            priceCurrency: "USD",
+          }
+        : undefined,
+      // Entity linking for Knowledge Graph
+      sameAs: tool.website_url ? [tool.website_url] : undefined,
+    });
+  });
+
+  // 8. MedicalWebPage - Health-specific rich results
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: `${category.display_name} for Mental Health Professionals`,
+    specialty: "Psychiatry",
+    medicalAudience: {
+      "@type": "MedicalAudience",
+      audienceType: "Clinician",
+      healthCondition: {
+        "@type": "MedicalCondition",
+        name: "Mental Health Conditions",
+      },
+    },
+    lastReviewed: `${currentYear}-${String(new Date().getMonth() + 1).padStart(2, "0")}-01`,
+    reviewedBy: {
+      "@type": "Organization",
+      name: "HeyPsych Medical Board",
     },
   });
 

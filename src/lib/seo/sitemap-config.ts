@@ -137,11 +137,108 @@ export const HUB_SITEMAP_CONFIG: Record<string, SitemapEntryConfig> = {
     priority: 0.9,
     changefreq: 'daily',
   },
-  '/search': {
-    priority: 0.6,
+  // NOTE: /search is excluded from sitemap - it has noindex (see search/layout.tsx)
+  '/treatments/compare': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
+  // ============================================================================
+  // TOOLS HUBS - Clinician & Patient
+  // ============================================================================
+  '/tools': {
+    priority: 1.0,
     changefreq: 'daily',
   },
-  '/treatments/compare': {
+  '/tools/for-clinicians': {
+    priority: 1.0,
+    changefreq: 'daily',
+  },
+  '/tools/for-patients': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  // ============================================================================
+  // PROGRAMMATIC SEO ROUTES - High-Value Long-Tail
+  // ============================================================================
+  // Best for Specialty pages (25+ variations)
+  '/tools/best-for': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  // Free software category pages
+  '/tools/free': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  // Year-based ranking pages (auto-refresh for freshness)
+  '/tools/best': {
+    priority: 0.95,
+    changefreq: 'daily',
+  },
+  // Comparison pages - high commercial intent
+  '/tools/compare': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  // Alternative pages - competitor interception
+  '/tools/alternatives': {
+    priority: 0.9,
+    changefreq: 'weekly',
+  },
+  // Practice type recommendation pages
+  '/tools/for-practices': {
+    priority: 0.85,
+    changefreq: 'weekly',
+  },
+  // Pricing pages - high commercial intent
+  '/tools/pricing': {
+    priority: 0.85,
+    changefreq: 'weekly',
+  },
+};
+
+/**
+ * Programmatic page pattern configurations
+ * Used for dynamic route generation
+ */
+export const PROGRAMMATIC_SITEMAP_CONFIG: Record<string, SitemapEntryConfig> = {
+  // /tools/best-for/[specialty] - 25+ pages
+  'tools/best-for/*': {
+    priority: 0.85,
+    changefreq: 'weekly',
+  },
+  // /tools/free/[category] - 8+ pages
+  'tools/free/*': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
+  // /tools/best/[slug] - 30+ year-based pages
+  'tools/best/*': {
+    priority: 0.9,
+    changefreq: 'daily',
+  },
+  // /tools/compare/[slug] - 80+ comparison pages
+  'tools/compare/*': {
+    priority: 0.85,
+    changefreq: 'weekly',
+  },
+  // /tools/alternatives/[slug] - competitor pages
+  'tools/alternatives/*': {
+    priority: 0.8,
+    changefreq: 'weekly',
+  },
+  // /tools/for-practices/[type] - practice size pages
+  'tools/for-practices/*': {
+    priority: 0.75,
+    changefreq: 'weekly',
+  },
+  // /tools/for-clinicians/[category] - category hubs
+  'tools/for-clinicians/*': {
+    priority: 0.9,
+    changefreq: 'daily',
+  },
+  // /tools/for-clinicians/[category]/[slug] - product detail pages
+  'tools/for-clinicians/*/*': {
     priority: 0.8,
     changefreq: 'weekly',
   },
@@ -187,6 +284,10 @@ export const SITEMAP_FILES = [
   'sitemap-resources.xml',
   'sitemap-hubs.xml',
   'sitemap-static.xml',
+  // Clinician tools sitemaps (split for large volume)
+  'sitemap-tools-clinician.xml',
+  'sitemap-tools-patient.xml',
+  'sitemap-tools-programmatic.xml', // Free, Best, Compare, Alternatives pages
 ] as const;
 
 /**
@@ -213,8 +314,26 @@ export function getSitemapConfigForPath(path: string): SitemapEntryConfig {
     return STATIC_SITEMAP_CONFIG[path];
   }
 
+  // Check programmatic patterns
+  for (const [pattern, config] of Object.entries(PROGRAMMATIC_SITEMAP_CONFIG)) {
+    const regex = new RegExp(`^/${pattern.replace(/\*/g, '[^/]+')}/?$`);
+    if (regex.test(path)) {
+      return config;
+    }
+  }
+
   // Default
   return {
+    priority: 0.5,
+    changefreq: 'monthly',
+  };
+}
+
+/**
+ * Get sitemap config for a programmatic route pattern
+ */
+export function getSitemapConfigForPattern(pattern: string): SitemapEntryConfig {
+  return PROGRAMMATIC_SITEMAP_CONFIG[pattern] || {
     priority: 0.5,
     changefreq: 'monthly',
   };

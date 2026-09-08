@@ -86,7 +86,12 @@ export function Footer() {
               Better mental health starts with better decisions.
             </p>
             <p className="text-xs text-label-tertiary">
-              Clinical content reviewed by mental health professionals.
+              <Link
+                href="/about/review-methodology"
+                className="hover:text-accent hover:underline"
+              >
+                Learn about our clinical review process
+              </Link>
             </p>
           </div>
 

@@ -158,6 +158,7 @@ export const PracticeFitEvidenceZ = z.object({
   minSize: PracticeSizeBucketZ.optional(),
   maxSize: PracticeSizeBucketZ.optional(),
   idealSizes: z.array(PracticeSizeBucketZ).optional().default([]),
+  sizeBucketsExcluded: z.array(PracticeSizeBucketZ).optional().default([]),
 
   // Role fit
   clinicalRoles: z.array(ClinicalRoleZ).optional().default([]),
@@ -172,6 +173,7 @@ export const PracticeFitEvidenceZ = z.object({
 
   // Delivery fit
   deliveryModels: z.array(DeliveryModelZ).optional().default([]),
+  deliveryModelsExcluded: z.array(DeliveryModelZ).optional().default([]),
 
   // Geographic fit
   statesSupported: z.array(USStateZ).optional().default([]),
@@ -272,6 +274,53 @@ export type StructuredPricing = z.infer<typeof StructuredPricingZ>;
 export type StructuredPricingInput = z.input<typeof StructuredPricingZ>;
 
 // ============================================================================
+// COMPLIANCE EVIDENCE
+// ============================================================================
+
+/**
+ * Compliance evidence for regulatory requirements.
+ * Phase 1: Added BAA/HIPAA field per hard eligibility policies.
+ *
+ * "Never silently treat unknown evidence as meeting a hard requirement."
+ * - undefined = unknown (flag to user)
+ * - true = compliant (pass hard requirement)
+ * - false = non-compliant (hard exclude for practices that require it)
+ */
+export const ComplianceEvidenceZ = z.object({
+  // Product slug is optional when nested inside ProductArchitectureMetadata
+  productSlug: z.string().optional(),
+
+  // HIPAA/BAA availability
+  // Required for practices that bill insurance (commercial, Medicare, Medicaid)
+  baaAvailable: z.boolean().optional(), // undefined = unknown
+  baaUrl: z.string().url().optional(),
+
+  // SOC 2 compliance
+  soc2Certified: z.boolean().optional(),
+  soc2Type: z.enum(["type-1", "type-2"]).optional(),
+
+  // HITRUST certification
+  hitrustCertified: z.boolean().optional(),
+
+  // State-specific compliance
+  stateCompliance: z.array(z.object({
+    state: USStateZ,
+    compliant: z.boolean(),
+    notes: z.string().optional(),
+  })).optional().default([]),
+
+  // Notes
+  notes: z.string().optional(),
+
+  // Provenance
+  provenance: ProvenanceStatusZ.optional().default("unknown"),
+  lastVerified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+});
+
+export type ComplianceEvidence = z.infer<typeof ComplianceEvidenceZ>;
+export type ComplianceEvidenceInput = z.input<typeof ComplianceEvidenceZ>;
+
+// ============================================================================
 // PRODUCT ARCHITECTURE METADATA
 // ============================================================================
 
@@ -298,6 +347,9 @@ export const ProductArchitectureMetadataZ = z.object({
 
   // Practice fit evidence
   fitEvidence: PracticeFitEvidenceZ.optional(),
+
+  // Compliance evidence (Phase 1: HIPAA/BAA requirements)
+  compliance: ComplianceEvidenceZ.optional(),
 
   // Structured pricing
   pricing: StructuredPricingZ.optional(),

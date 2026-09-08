@@ -6,12 +6,12 @@
  * Displays author information for E-A-T (Expertise, Authoritativeness, Trustworthiness).
  * Wired to Entity.metadata.author and Entity.metadata.medical_reviewer.
  *
- * CRITICAL: Always displays "Reviewed by the HeyPsych Medical Review Board" when no individual reviewer specified.
- * This ensures YMYL (Your Money Your Life) medical content E-A-T compliance.
+ * Review claims are now GATED: only shown when hasReview is true or medicalReviewer is provided.
+ * When no review evidence exists, links to review methodology for transparency.
  */
 
 import React from "react";
-import { User, CheckCircle, Shield } from "lucide-react";
+import { User, CheckCircle, Shield, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
@@ -42,6 +42,13 @@ interface AuthorBylineProps {
 
   /** Compact mode (single line) */
   compact?: boolean;
+
+  /**
+   * Whether this content has been reviewed.
+   * When true, shows Medical Review Board claim.
+   * When false/undefined, shows link to review methodology instead.
+   */
+  hasReview?: boolean;
 }
 
 export function AuthorByline({
@@ -51,19 +58,22 @@ export function AuthorByline({
   lastUpdated,
   lastReviewed,
   compact = false,
+  hasReview,
 }: AuthorBylineProps) {
-  // Determine review date with fallback priority:
-  // 1. lastReviewed (explicit medical review date)
-  // 2. lastUpdated (content update date)
-  // 3. publishedDate (original publication)
-  const reviewDate = lastReviewed || lastUpdated || publishedDate;
+  // Review date should ONLY be the explicit lastReviewed date
+  // Do not fall back to lastUpdated or publishedDate - those are not reviews
+  const reviewDate = lastReviewed;
 
   // Check if author is anonymous (Knowledge Hub articles use "anonymous" for contributor content)
-  const isAnonymousAuthor = !author || 
+  const isAnonymousAuthor = !author ||
     (typeof author === 'string' && (author as string).toLowerCase() === 'anonymous') ||
     (typeof author === 'object' && author.name?.toLowerCase() === 'anonymous');
 
-  // CRITICAL: Never return null - always show Medical Review Board for E-A-T compliance
+  // Determine if we should show review claims:
+  // - If medicalReviewer is provided, always show
+  // - If hasReview is explicitly true, show board claim
+  // - If lastReviewed date is provided, infer review happened
+  const shouldShowReviewClaim = Boolean(medicalReviewer || hasReview || lastReviewed);
 
   if (compact) {
     return (
@@ -83,19 +93,28 @@ export function AuthorByline({
             {author.verified && <CheckCircle className="h-3.5 w-3.5 text-positive-600" />}
           </div>
         )}
-        {/* Always show Medical Review Board in compact mode */}
-        <div className="flex items-center gap-1">
-          <Shield className="h-3.5 w-3.5 text-positive-600" />
-          <span>
-            {medicalReviewer ? (
-              <>Reviewed by {medicalReviewer.name}</>
-            ) : (
-              <Link href="/about/medical-review-board" className="text-positive-700 hover:underline">
-                Reviewed by the HeyPsych Medical Review Board
-              </Link>
-            )}
-          </span>
-        </div>
+        {/* Show review claim only when we have evidence of review */}
+        {shouldShowReviewClaim ? (
+          <div className="flex items-center gap-1">
+            <Shield className="h-3.5 w-3.5 text-positive-600" />
+            <span>
+              {medicalReviewer ? (
+                <>Reviewed by {medicalReviewer.name}</>
+              ) : (
+                <Link href="/about/medical-review-board" className="text-positive-700 hover:underline">
+                  Reviewed by the HeyPsych Medical Review Board
+                </Link>
+              )}
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1">
+            <Info className="h-3.5 w-3.5 text-label-tertiary" />
+            <Link href="/about/review-methodology" className="text-label-tertiary hover:underline">
+              About our review process
+            </Link>
+          </div>
+        )}
         {reviewDate && (
           <span className="text-label-tertiary">
             • Last reviewed {new Date(reviewDate).toLocaleDateString()}
@@ -116,12 +135,21 @@ export function AuthorByline({
             </div>
             <div className="flex-1">
               <div className="font-semibold text-label-primary">By HeyPsych Contributor</div>
-              <div className="mt-1 text-sm text-label-tertiary">
-                Reviewed by the{" "}
-                <Link href="/about/medical-review-board" className="font-medium text-positive-700 hover:text-positive-700 hover:underline">
-                  HeyPsych Medical Review Board
-                </Link>
-              </div>
+              {/* Only show review claim if we have evidence of review */}
+              {shouldShowReviewClaim ? (
+                <div className="mt-1 text-sm text-label-tertiary">
+                  Reviewed by the{" "}
+                  <Link href="/about/medical-review-board" className="font-medium text-positive-700 hover:text-positive-700 hover:underline">
+                    HeyPsych Medical Review Board
+                  </Link>
+                </div>
+              ) : (
+                <div className="mt-1 text-sm text-label-tertiary">
+                  <Link href="/about/review-methodology" className="hover:underline">
+                    About our review process
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         ) : author && (
@@ -190,8 +218,8 @@ export function AuthorByline({
                 )}
               </div>
             </>
-          ) : (
-            // Fallback: Show Medical Review Board when no individual reviewer
+          ) : shouldShowReviewClaim ? (
+            // Show Medical Review Board when hasReview is true but no individual reviewer
             <>
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-positive-tint">
                 <Shield className="h-6 w-6 text-positive-600" />
@@ -208,6 +236,20 @@ export function AuthorByline({
                 <Badge variant="outline" className="mt-1 bg-positive-tint text-xs text-positive-700">
                   Medical Review Board
                 </Badge>
+              </div>
+            </>
+          ) : (
+            // No review evidence - link to review methodology
+            <>
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fill-tertiary">
+                <Info className="h-6 w-6 text-label-tertiary" />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm text-label-tertiary">
+                  <Link href="/about/review-methodology" className="hover:underline">
+                    Learn about our clinical review process
+                  </Link>
+                </div>
               </div>
             </>
           )}

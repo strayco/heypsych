@@ -17,6 +17,8 @@ interface SearchResult {
   description?: string;
   category?: string;
   snippets?: Array<{ term: string; field: string; snippet: string }>;
+  /** Canonical URL from API */
+  href: string;
 }
 
 interface GroupedResults {
@@ -197,6 +199,11 @@ function SearchPageContent() {
   };
 
   const getResultUrl = (result: SearchResult) => {
+    // Use canonical href from API if available
+    if (result.href) {
+      return result.href;
+    }
+    // Fallback for legacy compatibility
     switch (result.type) {
       case "treatment":
         return `/treatments/${result.slug}`;

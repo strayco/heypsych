@@ -82,6 +82,14 @@ import {
   trackAdvancedToggle,
   trackBlueprintGenerated,
 } from "@/domains/architect/analytics";
+import {
+  createDecisionSession,
+  trackDecisionStarted,
+  trackDecisionResultShown,
+  trackDecisionAbandoned,
+  trackDecisionCompleted,
+  type DecisionSessionContext,
+} from "@/domains/decision";
 
 import {
   type PracticeAreaId,
@@ -154,6 +162,11 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
   const [selectedToolSlug, setSelectedToolSlug] = useState<string | null>(null);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Decision session context for cross-domain funnel attribution
+  const [decisionSession] = useState<DecisionSessionContext>(() =>
+    createDecisionSession("architect", isDemo ? "demo" : "direct")
+  );
 
   // Load real products via API
   const {
@@ -449,12 +462,22 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
   // Track page view
   useEffect(() => {
     trackArchitectPageView(isDemo ? "demo" : "direct");
+    trackDecisionStarted(decisionSession);
     if (isDemo) {
       trackDemoStart();
     } else {
       trackModeSelect("build-for-me", false);
     }
-  }, [isDemo]);
+  }, [isDemo, decisionSession]);
+
+  // Track abandonment on unmount (if no products selected)
+  useEffect(() => {
+    return () => {
+      if (stack.selectedProducts.length === 0) {
+        trackDecisionAbandoned(decisionSession, showingOnboarding ? "onboarding" : "workspace");
+      }
+    };
+  }, [stack.selectedProducts.length, showingOnboarding, decisionSession]);
 
   // Load saved stack (not demo, not showing onboarding)
   useEffect(() => {
@@ -488,9 +511,22 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
         });
         setRecommendation(rec);
         setShowRecommendations(true);
+
+        // Track decision result shown with primary recommendation
+        if (rec.products.length > 0) {
+          decisionSession.primaryResultId = rec.products[0].slug;
+          const confidenceBucket = rec.totalCoveragePercent >= 80 ? "high"
+            : rec.totalCoveragePercent >= 60 ? "moderate" : "low";
+          trackDecisionResultShown(
+            decisionSession,
+            rec.products[0].slug,
+            rec.products.length - 1,
+            confidenceBucket
+          );
+        }
       }
     },
-    [metadataMap]
+    [metadataMap, decisionSession]
   );
 
   // Handle onboarding complete
@@ -534,9 +570,12 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
       };
     });
 
+    // Track decision completion
+    trackDecisionCompleted(decisionSession, recommendation.products.length);
+
     setShowRecommendations(false);
     setRecommendation(null);
-  }, [recommendation]);
+  }, [recommendation, decisionSession]);
 
   // Add product
   const handleAddProduct = useCallback(
@@ -961,6 +1000,7 @@ export function MyPractice({ isDemo = false, showOnboarding = false }: MyPractic
             onMarkNotNeeded={() => handleMarkNotNeeded(selectedItem.areaId, selectedItem.itemId)}
             onDeferItem={() => handleDeferItem(selectedItem.areaId, selectedItem.itemId)}
             isDemo={isDemo}
+            decisionSession={decisionSession}
           />
         )}
       </AnimatePresence>

@@ -24,6 +24,7 @@ import {
   type RelevanceLevel,
   CAPABILITY_REGISTRY,
   hasBuildForMeRequirements,
+  isInsuranceHeavy,
 } from "../schemas";
 import { getCapabilityRelevance } from "./relevance-engine";
 import { calculateFitScore, type ProductFitInput } from "./fit-engine";
@@ -276,6 +277,60 @@ function hasHardIncompatibility(
     };
   }
 
+  // Check clinical role exclusions
+  if (
+    evidence.clinicalRolesExcluded &&
+    evidence.clinicalRolesExcluded.length > 0 &&
+    fingerprint.clinicalRoles &&
+    fingerprint.clinicalRoles.length > 0
+  ) {
+    const excludedRoles = fingerprint.clinicalRoles.filter((role) =>
+      evidence.clinicalRolesExcluded?.includes(role)
+    );
+    if (excludedRoles.length > 0) {
+      return {
+        incompatible: true,
+        reason: `Not suitable for: ${excludedRoles.join(", ")}`,
+      };
+    }
+  }
+
+  // Check size bucket exclusions
+  if (
+    evidence.sizeBucketsExcluded &&
+    evidence.sizeBucketsExcluded.length > 0 &&
+    fingerprint.sizeBucket &&
+    evidence.sizeBucketsExcluded.includes(fingerprint.sizeBucket)
+  ) {
+    return {
+      incompatible: true,
+      reason: `Not suitable for ${fingerprint.sizeBucket} provider practices`,
+    };
+  }
+
+  // Check delivery model exclusions
+  if (fingerprint.deliveryModel) {
+    // Explicit exclusion
+    if (evidence.deliveryModelsExcluded?.includes(fingerprint.deliveryModel)) {
+      return {
+        incompatible: true,
+        reason: `Does not support ${fingerprint.deliveryModel} delivery`,
+      };
+    }
+    // Telehealth-only practices require telehealth support
+    if (
+      fingerprint.deliveryModel === "telehealth" &&
+      evidence.deliveryModels &&
+      evidence.deliveryModels.length > 0 &&
+      !evidence.deliveryModels.includes("telehealth")
+    ) {
+      return {
+        incompatible: true,
+        reason: "Does not support telehealth delivery",
+      };
+    }
+  }
+
   // Check prescribing requirements
   if (
     fingerprint.prescribingLevel === "controlled-substances-epcs" &&
@@ -291,6 +346,17 @@ function hasHardIncompatibility(
     if (isEhrOrPm) {
       // It's an EHR without EPCS - not necessarily incompatible, but note it
       // Don't mark as hard incompatible, just a limitation
+    }
+  }
+
+  // Check HIPAA/BAA requirement for insurance-billing practices
+  if (isInsuranceHeavy(fingerprint)) {
+    const compliance = product.compliance;
+    if (compliance?.baaAvailable === false) {
+      return {
+        incompatible: true,
+        reason: "No BAA available - required for insurance billing",
+      };
     }
   }
 

@@ -1,41 +1,68 @@
 "use client";
 
 import Link from "next/link";
-import { Shield } from "lucide-react";
+import { Shield, Info } from "lucide-react";
 
 interface BoardAttributionProps {
+  /**
+   * Review label to display (e.g., "Reviewed by HeyPsych Board").
+   * When undefined or empty, shows link to review methodology instead.
+   */
   label?: string;
+  /** URL for the review board or methodology page */
   url?: string;
+  /** Date of last review (ISO format) */
   lastReviewed?: string;
   className?: string;
 }
 
 /**
  * BoardAttribution Component
- * 
- * MANDATORY on all tool pages per spec.
- * Displays "Reviewed by HeyPsych Board" with link to review board page.
+ *
+ * Displays review attribution ONLY when actual review evidence exists.
+ * When no review evidence (label is undefined/empty), shows a link to
+ * the review methodology for transparency.
+ *
+ * Phase 4 requirement: No unconditional review claims.
  */
 export function BoardAttribution({
-  label = "Reviewed by HeyPsych Board",
-  url = "https://heypsych.com/about/medical-review-board",
+  label,
+  url = "/about/medical-review-board",
   lastReviewed,
   className = "",
 }: BoardAttributionProps) {
+  // Gate: Only show review claim when we have actual review evidence
+  const hasReviewEvidence = Boolean(label && label.trim());
+
+  if (hasReviewEvidence) {
+    return (
+      <div className={`flex items-center gap-2 text-sm ${className}`}>
+        <Shield className="h-4 w-4 text-positive-600" />
+        <Link
+          href={url}
+          className="text-label-secondary hover:text-accent hover:underline font-medium"
+        >
+          {label}
+        </Link>
+        {lastReviewed && (
+          <span className="text-label-tertiary">
+            · Last reviewed {formatDate(lastReviewed)}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  // No review evidence - show link to review methodology
   return (
     <div className={`flex items-center gap-2 text-sm ${className}`}>
-      <Shield className="h-4 w-4 text-label-tertiary" />
+      <Info className="h-4 w-4 text-label-tertiary" />
       <Link
-        href={url}
-        className="text-label-secondary hover:text-accent hover:underline font-medium"
+        href="/about/review-methodology"
+        className="text-label-tertiary hover:text-accent hover:underline"
       >
-        {label}
+        About our review process
       </Link>
-      {lastReviewed && (
-        <span className="text-label-tertiary">
-          · Last reviewed {formatDate(lastReviewed)}
-        </span>
-      )}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Star, ArrowRight } from "lucide-react";
-import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
+import { Star, ArrowRight, Shield } from "lucide-react";
+import type { DigitalToolV3, SupportLevel } from "@/lib/schemas/digital-tool-v3";
 
 interface ToolCardProps {
   tool: DigitalToolV3;
@@ -10,11 +10,81 @@ interface ToolCardProps {
 }
 
 /**
+ * Get accurate pricing label based on model and free_tier.
+ * Distinguishes between truly free, freemium, and trial-only products.
+ */
+function getPricingLabel(pricing: DigitalToolV3["pricing"]): {
+  label: string;
+  sublabel?: string;
+  highlight?: boolean;
+} {
+  const { model, free_tier, starting_price } = pricing;
+
+  switch (model) {
+    case "free":
+      // Completely free with no in-app purchases
+      return { label: "Free", highlight: true };
+
+    case "freemium":
+      // Has ongoing free functionality (not just a trial)
+      return { label: "Free tier", sublabel: starting_price ? `Premium from ${starting_price}` : undefined };
+
+    case "subscription":
+      if (free_tier) {
+        // Trial only - important distinction
+        return {
+          label: "Free trial",
+          sublabel: starting_price || undefined,
+        };
+      }
+      // Paid subscription, no free access
+      return { label: starting_price || "Subscription" };
+
+    case "one-time":
+      return { label: starting_price || "One-time purchase" };
+
+    case "enterprise":
+      return { label: "Enterprise pricing" };
+
+    case "insurance-covered":
+      return { label: "Insurance covered", sublabel: starting_price ? `or ${starting_price}` : undefined };
+
+    default:
+      return { label: starting_price || "See pricing" };
+  }
+}
+
+/**
+ * Get human-readable support level label.
+ * Answers: "What type of support am I actually getting?"
+ */
+function getSupportLabel(level: SupportLevel): string {
+  switch (level) {
+    case "self-help":
+      return "Self-guided";
+    case "coached":
+      return "With coaching";
+    case "clinical":
+      return "Clinical care";
+    case "crisis":
+      return "Crisis support";
+    default:
+      return "";
+  }
+}
+
+/**
  * ToolCard Component
  *
  * Reusable card for displaying tools in grids and lists.
+ * Shows clear pricing labels to help users understand what's truly free vs. trial-only.
  */
 export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
+  const pricingInfo = getPricingLabel(tool.pricing);
+  const supportLabel = getSupportLabel(tool.support_level);
+  // Show privacy badge only for verified positive facts (no data selling)
+  const showPrivacyBadge = tool.privacy.data_sold === false;
+
   return (
     <Link href={`/tools/${tool.slug}/`} className="group block h-full">
       <div className="h-full rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft">
@@ -40,12 +110,19 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
             )}
           </div>
 
-          {/* AI Badge */}
-          {tool.ai_attributes.includes("ai-powered") && (
-            <span className="text-xs font-medium text-label-tertiary px-2 py-0.5 rounded bg-canvas border border-separator">
-              AI
-            </span>
-          )}
+          {/* Badges - support type and AI */}
+          <div className="flex items-center gap-1.5">
+            {supportLabel && (
+              <span className="text-xs text-label-tertiary px-2 py-0.5 rounded bg-canvas border border-separator">
+                {supportLabel}
+              </span>
+            )}
+            {tool.ai_attributes.includes("ai-powered") && (
+              <span className="text-xs font-medium text-label-tertiary px-2 py-0.5 rounded bg-canvas border border-separator">
+                AI
+              </span>
+            )}
+          </div>
         </div>
 
         {/* One-liner */}
@@ -74,17 +151,28 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
 
         {/* Bottom row */}
         <div className="mt-4 flex items-center justify-between pt-3 border-t border-separator">
-          <div className="flex items-center gap-3 text-xs">
-            {/* Pricing */}
-            {tool.pricing.free_tier && (
-              <span className="text-label-secondary">Free tier</span>
+          <div className="flex items-center gap-2 text-xs flex-wrap">
+            {/* Pricing - clear distinction between free, freemium, and trial */}
+            <span className={pricingInfo.highlight ? "font-medium text-emerald-600" : "text-label-secondary"}>
+              {pricingInfo.label}
+            </span>
+            {pricingInfo.sublabel && (
+              <>
+                <span className="text-label-quaternary">·</span>
+                <span className="text-label-tertiary">
+                  {pricingInfo.sublabel}
+                </span>
+              </>
             )}
-
-            {/* Privacy */}
-            {tool.privacy.grade && tool.privacy.grade !== "unknown" && (
-              <span className="text-label-tertiary">
-                Privacy: {tool.privacy.grade}
-              </span>
+            {/* Privacy - factual indicator, not unexplained grade */}
+            {showPrivacyBadge && (
+              <>
+                <span className="text-label-quaternary">·</span>
+                <span className="inline-flex items-center gap-1 text-label-tertiary" title="This app states they do not sell user data">
+                  <Shield className="h-3 w-3" />
+                  <span>No data selling</span>
+                </span>
+              </>
             )}
           </div>
 

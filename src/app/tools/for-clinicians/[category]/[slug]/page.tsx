@@ -27,6 +27,7 @@ import {
   isToolPublishable,
   type ClinicianToolV4,
 } from "@/lib/tools/clinician-tool-service";
+import { shouldShowCommercialLink } from "@/lib/commercial/kill-switch";
 import {
   isComplianceConfirmedYes,
 } from "@/lib/schemas/tool-editorial";
@@ -37,7 +38,9 @@ import {
 } from "@/lib/schemas/clinician-tool-v4";
 import clinicianCategoriesData from "../../../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { ProductDemoCTA } from "@/components/tools/clinician/ProductDemoCTA";
+import { ClinicianDecisionContext } from "@/components/tools/clinician/ClinicianDecisionContext";
 import { cn } from "@/lib/utils";
+import { buildNuclearClinicianToolSchemas } from "@/lib/seo/schema-builders/clinician-tool-nuclear";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -116,8 +119,14 @@ export default async function ToolDetailPage({ params }: PageProps) {
   const category = getCategoryBySlug(canonicalCategorySlug);
   const relatedTools = await ClinicianToolService.getRelated(slug, 4);
 
-  // Generate structured data
-  const structuredData = generateProductStructuredData(tool, category);
+  // Check if affiliate links are enabled for this tool (Phase 6: kill switch)
+  const affiliateEnabled = shouldShowCommercialLink(
+    tool.slug,
+    tool.commercial?.partnerSlug
+  );
+
+  // Generate structured data - Nuclear SEO: 8-12 schemas per page
+  const structuredData = generateProductStructuredData(tool, canonicalCategorySlug);
 
   return (
     <>
@@ -220,6 +229,9 @@ export default async function ToolDetailPage({ params }: PageProps) {
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Main Column */}
             <div className="lg:col-span-2 space-y-8">
+              {/* Decision Context - Phase 4: Practice fit, cost notes, considerations */}
+              <ClinicianDecisionContext tool={tool} />
+
               {/* Description */}
               {tool.short_description && (
                 <div>
@@ -383,11 +395,14 @@ export default async function ToolDetailPage({ params }: PageProps) {
               )}
 
               {/* CTA: Affiliate Link > Website > Demo Request */}
+              {/* Phase 6: Includes commercial disclosure when affiliate active */}
               <ProductDemoCTA
                 toolSlug={tool.slug}
                 toolName={tool.name}
                 affiliateUrl={tool.affiliate_url}
                 websiteUrl={tool.website_url}
+                commercial={tool.commercial}
+                affiliateDisabled={!affiliateEnabled}
               />
             </div>
           </div>
@@ -515,33 +530,17 @@ function normalizeComplianceValue(value: boolean | string | undefined): "yes" | 
   return "unknown";
 }
 
-// Structured Data
+// Structured Data - Nuclear SEO Implementation
+// Returns 8-12 schemas for maximum SERP feature coverage
 function generateProductStructuredData(
   tool: ClinicianToolV4,
-  category: typeof clinicianCategoriesData.categories[0] | undefined
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: tool.name,
-    description: tool.short_description || tool.one_liner,
-    applicationCategory: "BusinessApplication",
-    applicationSubCategory: category?.display_name || "Healthcare Software",
-    operatingSystem: "Web",
-    url: tool.website_url,
-    // Only include offers if we have real pricing data
-    ...(tool.pricing?.starting_price_display && {
-      offers: {
-        "@type": "Offer",
-        price: tool.pricing.starting_price_cents
-          ? (tool.pricing.starting_price_cents / 100).toFixed(2)
-          : undefined,
-        priceCurrency: "USD",
-        description: tool.pricing.starting_price_display,
-      },
-    }),
-    // Do NOT include aggregateRating - we have no ratings
-  };
+  categorySlug: string
+): Record<string, unknown>[] {
+  // Use nuclear schema builder for aggressive SERP domination
+  return buildNuclearClinicianToolSchemas(tool, categorySlug, {
+    includeHowTo: true,
+    includeFAQ: true,
+  });
 }
 
 export const revalidate = 3600; // 1 hour
