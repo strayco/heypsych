@@ -471,16 +471,4 @@ export function QuickAnswerBox({
   );
 }
 
-// ============================================================================
-// EXPORTS
-// ============================================================================
-
-export {
-  DefinitionSnippet,
-  NumberedListSnippet,
-  BulletedListSnippet,
-  TableSnippet,
-  FAQSnippet,
-  AICitationBlock,
-  QuickAnswerBox,
-};
+// Components are exported inline with their definitions above

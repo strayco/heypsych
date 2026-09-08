@@ -45,9 +45,6 @@ export function DecisionContext({ tool }: DecisionContextProps) {
   if (tool.pricing.model === "subscription" && !tool.pricing.free_tier) {
     tradeoffs.push("Requires ongoing subscription with no free option");
   }
-  if (tool.pricing.insurance_accepted === false) {
-    tradeoffs.push("Not covered by insurance");
-  }
 
   // Platform tradeoff
   if (!tool.platforms.ios && !tool.platforms.android) {

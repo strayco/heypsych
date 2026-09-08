@@ -159,14 +159,14 @@ const PRICING_CONFIGS: Record<string, PricingConfig> = {
 // Helper to format price display
 function formatPrice(pricing: any): string {
   if (!pricing) return "Contact for pricing";
-  if (pricing.starting_price === 0 && pricing.free_tier) {
+  if (pricing.starting_price_cents === 0 && pricing.free_tier) {
     return "Free tier available";
   }
   if (pricing.starting_price_display) {
     return pricing.starting_price_display;
   }
-  if (pricing.starting_price) {
-    return `From $${pricing.starting_price}/mo`;
+  if (pricing.starting_price_cents) {
+    return `From $${(pricing.starting_price_cents / 100).toFixed(0)}/mo`;
   }
   if (pricing.quote_required) {
     return "Contact for quote";
@@ -236,12 +236,12 @@ export default async function PricingPage({ params }: PageProps) {
           "@type": "Product",
           "name": tool.name,
           "description": tool.short_description,
-          "offers": tool.pricing?.tiers?.map((tier: any) => ({
+          "offers": tool.pricing ? {
             "@type": "Offer",
-            "name": tier.name,
-            "price": tier.price,
-            "priceCurrency": tool.pricing?.currency || "USD",
-          })) || [],
+            "price": tool.pricing.starting_price_cents ? (tool.pricing.starting_price_cents / 100) : 0,
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+          } : undefined,
         },
       })),
     },
@@ -374,11 +374,11 @@ export default async function PricingPage({ params }: PageProps) {
         <section className="border-t border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-xl font-semibold text-label-primary mb-6">
-              Detailed Pricing Tiers
+              Detailed Pricing Information
             </h2>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {categoryTools.filter((t) => t.pricing?.tiers?.length).slice(0, 6).map((tool) => (
+              {categoryTools.slice(0, 6).map((tool) => (
                 <div
                   key={tool.slug}
                   className="rounded-xl border border-separator bg-canvas p-5"
@@ -399,43 +399,37 @@ export default async function PricingPage({ params }: PageProps) {
                   </div>
 
                   <div className="space-y-3">
-                    {tool.pricing?.tiers?.map((tier: any, idx: number) => (
-                      <div
-                        key={idx}
-                        className="rounded-lg border border-separator bg-surface p-3"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium text-label-primary text-sm">
-                            {tier.name}
-                          </span>
-                          <span className="font-semibold text-treatment text-sm">
-                            {tier.price}
-                          </span>
-                        </div>
-                        {tier.description && (
-                          <p className="text-xs text-label-tertiary mt-1">
-                            {tier.description}
-                          </p>
-                        )}
+                    <div className="rounded-lg border border-separator bg-surface p-3">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-label-primary text-sm">
+                          Starting at
+                        </span>
+                        <span className="font-semibold text-treatment text-sm">
+                          {formatPrice(tool.pricing)}
+                        </span>
                       </div>
-                    ))}
-                  </div>
-
-                  {tool.pricing?.additional_fees && Object.keys(tool.pricing.additional_fees).length > 0 && (
-                    <div className="mt-4 pt-3 border-t border-separator">
-                      <p className="text-xs font-medium text-label-tertiary mb-2">
-                        Additional fees:
-                      </p>
-                      <ul className="space-y-1">
-                        {Object.entries(tool.pricing.additional_fees).map(([key, value]) => (
-                          <li key={key} className="text-xs text-label-secondary flex items-center gap-1">
-                            <span className="text-label-quaternary">•</span>
-                            {key.replace(/_/g, " ")}: {String(value)}
-                          </li>
-                        ))}
-                      </ul>
+                      {tool.pricing?.model && (
+                        <p className="text-xs text-label-tertiary mt-1 capitalize">
+                          {tool.pricing.model.replace(/-/g, " ")}
+                        </p>
+                      )}
                     </div>
-                  )}
+                    {tool.pricing?.free_trial_days && (
+                      <div className="text-xs text-success">
+                        ✓ {tool.pricing.free_trial_days}-day free trial
+                      </div>
+                    )}
+                    {tool.pricing?.free_tier && (
+                      <div className="text-xs text-success">
+                        ✓ Free tier available
+                      </div>
+                    )}
+                    {tool.pricing?.notes && (
+                      <p className="text-xs text-label-tertiary">
+                        {tool.pricing.notes}
+                      </p>
+                    )}
+                  </div>
 
                   <Link
                     href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${tool.slug}/`}

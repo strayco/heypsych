@@ -193,15 +193,11 @@ function buildProductSchema(
     },
     category: "Practice Management Software > Mental Health",
     offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: tool.pricing?.currency || "USD",
-      lowPrice: tool.pricing?.starting_price || 0,
-      highPrice: tool.pricing?.tiers?.length
-        ? extractHighPrice(tool.pricing.tiers)
-        : (tool.pricing?.starting_price || 0) * 3,
-      offerCount: tool.pricing?.tiers?.length || 1,
-      availability: "https://schema.org/InStock",
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: tool.pricing?.starting_price_cents ? (tool.pricing.starting_price_cents / 100) : 0,
       priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      availability: "https://schema.org/InStock",
       seller: {
         "@type": "Organization",
         name: tool.company_name || tool.name,
@@ -283,7 +279,7 @@ function buildHowToSchema(
     estimatedCost: {
       "@type": "MonetaryAmount",
       currency: "USD",
-      value: tool.pricing?.starting_price || 0,
+      value: tool.pricing?.starting_price_cents ? (tool.pricing.starting_price_cents / 100) : 0,
     },
     step: [
       {
@@ -450,26 +446,20 @@ function buildServiceSchema(
       "@type": "Country",
       name: "United States",
     },
-    hasOfferCatalog: {
+    hasOfferCatalog: tool.pricing ? {
       "@type": "OfferCatalog",
-      name: `${tool.name} Pricing Plans`,
-      itemListElement: tool.pricing?.tiers?.map((tier, idx) => ({
+      name: `${tool.name} Pricing`,
+      itemListElement: [{
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: tier.name,
-          description: tier.description,
+          name: tool.name,
+          description: tool.short_description,
         },
-        price: extractPriceNumber(tier.price),
+        price: tool.pricing.starting_price_cents ? (tool.pricing.starting_price_cents / 100) : 0,
         priceCurrency: "USD",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: extractPriceNumber(tier.price),
-          priceCurrency: "USD",
-          billingDuration: "P1M",
-        },
-      })) || [],
-    },
+      }],
+    } : undefined,
   };
 }
 
@@ -526,24 +516,13 @@ function buildOperatingSystems(tool: ClinicianToolV4): string[] {
   return systems;
 }
 
-function buildOffers(tool: ClinicianToolV4): Record<string, unknown> | Record<string, unknown>[] {
-  if (!tool.pricing?.tiers?.length) {
-    return {
-      "@type": "Offer",
-      price: tool.pricing?.starting_price || 0,
-      priceCurrency: tool.pricing?.currency || "USD",
-      availability: "https://schema.org/InStock",
-    };
-  }
-
-  return tool.pricing.tiers.map(tier => ({
+function buildOffers(tool: ClinicianToolV4): Record<string, unknown> {
+  return {
     "@type": "Offer",
-    name: tier.name,
-    description: tier.description,
-    price: extractPriceNumber(tier.price),
-    priceCurrency: tool.pricing?.currency || "USD",
+    price: tool.pricing?.starting_price_cents ? (tool.pricing.starting_price_cents / 100) : 0,
+    priceCurrency: "USD",
     availability: "https://schema.org/InStock",
-  }));
+  };
 }
 
 function buildFeatureList(tool: ClinicianToolV4): string[] {

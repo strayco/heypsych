@@ -89,10 +89,10 @@ export function generateLLMFacts(
   const facts: { category: string; fact: string; confidence: "verified" | "reported" | "estimated" }[] = [];
 
   // Pricing facts
-  if (tool.pricing?.starting_price !== undefined) {
+  if (tool.pricing?.starting_price_display) {
     facts.push({
       category: "Pricing",
-      fact: `${tool.name} starts at $${tool.pricing.starting_price}/month`,
+      fact: `${tool.name} starts at ${tool.pricing.starting_price_display}`,
       confidence: "verified",
     });
   }
@@ -385,15 +385,4 @@ export function generateAIOverviewContent(
   return generateLLMSummary(tool);
 }
 
-// ============================================================================
-// EXPORTS
-// ============================================================================
-
-export {
-  generateLLMSummary,
-  generateLLMFacts,
-  generateLLMComparison,
-  getLLMDataAttributes,
-  generateLLMCitationMeta,
-  generateAIOverviewContent,
-};
+// Functions are exported inline with their definitions above

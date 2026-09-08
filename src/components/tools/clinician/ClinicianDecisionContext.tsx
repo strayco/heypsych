@@ -23,13 +23,13 @@ export function ClinicianDecisionContext({ tool }: ClinicianDecisionContextProps
   const practiceFitItems: string[] = [];
 
   // Size fit
-  if (tool.audiences?.practice_sizes?.length) {
-    const sizes = tool.audiences.practice_sizes;
-    if (sizes.includes("solo") && sizes.includes("small")) {
+  if (tool.audiences?.organization_sizes?.length) {
+    const sizes = tool.audiences.organization_sizes;
+    if (sizes.includes("solo") && sizes.includes("small-2-10")) {
       practiceFitItems.push("Solo and small practices");
     } else if (sizes.includes("solo")) {
       practiceFitItems.push("Solo practices");
-    } else if (sizes.includes("enterprise") || sizes.includes("large")) {
+    } else if (sizes.includes("enterprise-200-plus") || sizes.includes("large-51-200")) {
       practiceFitItems.push("Larger organizations");
     }
   }
@@ -52,11 +52,11 @@ export function ClinicianDecisionContext({ tool }: ClinicianDecisionContextProps
   if (tool.pricing?.quote_required) {
     costItems.push("Custom pricing - contact vendor");
   }
-  if (tool.pricing?.implementation_fee) {
-    costItems.push("Implementation fee may apply");
+  if (tool.pricing?.model === "per-provider-month" || tool.pricing?.model === "per-provider-year") {
+    costItems.push("Per-provider pricing model");
   }
-  if (tool.pricing?.per_user_pricing) {
-    costItems.push("Per-user pricing model");
+  if (tool.pricing?.model === "enterprise-custom") {
+    costItems.push("Enterprise pricing - contact vendor");
   }
   if (!tool.pricing?.free_tier && !tool.pricing?.free_trial_days) {
     costItems.push("No free trial available");

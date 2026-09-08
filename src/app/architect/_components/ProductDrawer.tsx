@@ -365,10 +365,9 @@ export function ProductDrawer({
                   </div>
                   <div className="space-y-2">
                     {malpracticeProducts.map((product, idx) => {
-                      const isExternalLink = 'websiteUrl' in product.display && product.display.websiteUrl;
-                      const href = isExternalLink
-                        ? product.display.websiteUrl
-                        : `/tools/for-clinicians/malpractice-insurance/${product.slug}`;
+                      const websiteUrl = 'websiteUrl' in product.display ? (product.display as { websiteUrl?: string }).websiteUrl : undefined;
+                      const isExternalLink = Boolean(websiteUrl);
+                      const href = websiteUrl || `/tools/for-clinicians/malpractice-insurance/${product.slug}`;
 
                       return (
                         <a

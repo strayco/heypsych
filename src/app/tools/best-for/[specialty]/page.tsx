@@ -462,7 +462,7 @@ const SPECIALTY_CONFIGS: Record<string, SpecialtyConfig> = {
     description:
       "Find AI-powered documentation tools designed for therapy sessions. Compare ambient scribes that generate progress notes, treatment plans, and session summaries while you focus on your client.",
     icon: Bot,
-    color: "purple",
+    color: "accent",
     seoTitle: "Best AI Scribe for Therapists (2026) | AI Note Taking for Therapy",
     seoDescription:
       "Compare the best AI scribes for therapists. Find HIPAA-compliant ambient documentation tools that generate therapy notes, progress notes, and treatment plans automatically.",
@@ -500,7 +500,7 @@ const SPECIALTY_CONFIGS: Record<string, SpecialtyConfig> = {
     description:
       "Find AI-powered clinical documentation tools optimized for psychiatric evaluations and medication management visits. Compare ambient scribes that capture diagnoses, medication changes, and clinical reasoning.",
     icon: Bot,
-    color: "purple",
+    color: "accent",
     seoTitle: "Best AI Scribe for Psychiatrists (2026) | AI Documentation for Psychiatry",
     seoDescription:
       "Compare the best AI scribes for psychiatrists. Find tools that document psychiatric evaluations, medication management, and clinical decision-making automatically.",
@@ -538,7 +538,7 @@ const SPECIALTY_CONFIGS: Record<string, SpecialtyConfig> = {
     description:
       "Find AI-powered documentation tools for psychiatric nurse practitioners. Compare ambient scribes that handle both therapy and medication management visits with affordable solo practitioner pricing.",
     icon: Bot,
-    color: "purple",
+    color: "accent",
     seoTitle: "Best AI Scribe for PMHNPs (2026) | AI Documentation for Psychiatric NPs",
     seoDescription:
       "Compare the best AI scribes for PMHNPs. Find affordable AI documentation tools for psychiatric nurse practitioners with medication management and therapy note support.",
@@ -842,7 +842,7 @@ const SPECIALTY_CONFIGS: Record<string, SpecialtyConfig> = {
     description:
       "Find AI-powered note-taking tools that generate therapy documentation automatically. Compare ambient listeners, dictation assistants, and AI note generators that create progress notes, SOAP notes, and treatment plans.",
     icon: Bot,
-    color: "purple",
+    color: "accent",
     seoTitle: "Best AI Note Taker for Therapy (2026) | Automated Therapy Notes",
     seoDescription:
       "Compare AI note takers for therapy sessions. Find tools that automatically generate progress notes, SOAP notes, and treatment plans from your sessions.",

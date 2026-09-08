@@ -33,7 +33,14 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
-import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
+import { SCHEMA_TO_TAXONOMY_CATEGORY, type ClinicianProductCategoryZ } from "@/lib/schemas/clinician-tool-v4";
+import type { z } from "zod";
+
+// Helper to safely get taxonomy category
+function getTaxonomyCategory(category: string): string {
+  const key = category as z.infer<typeof ClinicianProductCategoryZ>;
+  return SCHEMA_TO_TAXONOMY_CATEGORY[key] || category;
+}
 import { PracticeTypeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 
@@ -652,7 +659,7 @@ export default async function StackPage({ params }: PageProps) {
                             <p className="text-sm text-label-secondary mt-1">{cat.description}</p>
                           </div>
                           <Link
-                            href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[cat.category] || cat.category}/`}
+                            href={`/tools/for-clinicians/${getTaxonomyCategory(cat.category)}/`}
                             className="flex items-center gap-1 text-sm text-treatment hover:underline whitespace-nowrap"
                           >
                             View all
