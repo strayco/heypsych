@@ -407,7 +407,7 @@ export function generateProductPricingPages(productSlugs: string[]): Programmati
  * Generate "[Product] vs [Product]" comparison pages
  */
 export function generateVsPages(
-  comparisons: Array<{ a: string; b: string }>
+  comparisons: readonly { readonly a: string; readonly b: string }[]
 ): ProgrammaticPageConfig[] {
   return comparisons.map(({ a, b }) => {
     const nameA = a.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
