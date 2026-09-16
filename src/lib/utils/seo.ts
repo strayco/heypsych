@@ -97,21 +97,6 @@ export function generateResourceStructuredData(resource: Resource) {
         hoursAvailable: resource.hours,
       };
 
-    case "knowledge-hub":
-      return {
-        ...baseData,
-        "@type": "Article",
-        headline: resource.name,
-        author: resource.authors?.[0] || resource.author
-          ? {
-              "@type": "Person",
-              name: resource.authors?.[0] || resource.author,
-            }
-          : undefined,
-        datePublished: resource.publishedAt,
-        dateModified: resource.updatedAt || resource.publishedAt,
-      };
-
     case "education-guides":
       return {
         ...baseData,
@@ -165,7 +150,6 @@ function getSchemaType(category: string): string {
   const typeMap: Record<string, string> = {
     "assessments-screeners": "MedicalRiskEstimator",
     "crisis-helplines": "EmergencyService",
-    "knowledge-hub": "Article",
     "education-guides": "HowTo",
     "digital-tools": "SoftwareApplication",
     "support-community": "Organization",

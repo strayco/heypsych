@@ -18,6 +18,13 @@ import type { Entity } from "@/lib/types/database";
 
 const resourceCategories = [
   {
+    title: "Learn",
+    description: "Evidence-based articles on treatments, therapy, medications, and emerging research like GLP-1s and psychedelics.",
+    icon: BookOpen,
+    href: "/learn",
+    emoji: "🧠",
+  },
+  {
     title: "Assessments & Screeners",
     description: "PHQ‑9, GAD‑7, PCL‑5, ASRS and more with scoring guides and PDFs.",
     icon: ClipboardCheck,
@@ -37,13 +44,6 @@ const resourceCategories = [
     icon: Smartphone,
     href: "/resources/digital-tools",
     emoji: "📱",
-  },
-  {
-    title: "Knowledge Hub",
-    description: "4-pillar content hub: self-help & wellness, research & science, how-to guides, and community stories.",
-    icon: BookOpen,
-    href: "/resources/knowledge-hub",
-    emoji: "🧠",
   },
 ];
 
@@ -113,7 +113,7 @@ export function ResourcesOverviewClient({ resources }: ResourcesOverviewClientPr
 
           <div className="text-center">
             <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">
-              A clean hub for assessments, community support, digital tools, and practical guides.
+              Evidence-based articles, clinical assessments, community support, and digital tools.
             </p>
           </div>
         </div>

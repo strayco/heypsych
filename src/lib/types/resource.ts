@@ -2,17 +2,9 @@
 export type ResourceCategory =
   | "assessments-screeners"
   | "support-community"
-  | "knowledge-hub"
   | "crisis-helplines"
   | "education-guides"
   | "digital-tools";
-
-export type KnowledgeHubPillar =
-  | "self-help-and-wellness"
-  | "research-and-science"
-  | "how-to-guides"
-  | "latest"
-  | "community-and-stories";
 
 export interface ResourceBase {
   kind: "resource";
@@ -50,24 +42,6 @@ export interface SupportCommunityResource extends ResourceBase {
   metadata: { category: "support-community"; [k: string]: unknown };
 }
 
-export interface KnowledgeHubResource extends ResourceBase {
-  metadata: { category: "knowledge-hub"; [k: string]: unknown };
-  pillar?: KnowledgeHubPillar;
-  subcategory?: string;
-  authors?: string[];
-  publishedAt?: string;
-  updatedAt?: string;
-  readingMinutes?: number;
-  audience?: string[];
-  format?: "article" | "video" | "podcast" | "infographic";
-  body?: Array<{
-    type: "h2" | "p" | "list" | "related";
-    text?: string;
-    items?: string[];
-    slugs?: string[];
-  }>;
-}
-
 export interface CrisisHelplinesResource extends ResourceBase {
   metadata: { category: "crisis-helplines"; [k: string]: unknown };
 }
@@ -83,7 +57,6 @@ export interface DigitalToolsResource extends ResourceBase {
 export type AnyResource =
   | AssessmentResource
   | SupportCommunityResource
-  | KnowledgeHubResource
   | CrisisHelplinesResource
   | EducationGuidesResource
   | DigitalToolsResource;

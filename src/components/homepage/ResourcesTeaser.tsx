@@ -23,9 +23,9 @@ const resourceLinks = [
   },
   {
     icon: BookOpen,
-    label: "Guides",
-    description: "Articles, research, and how-to guides",
-    href: "/resources/knowledge-hub",
+    label: "Resources",
+    description: "Assessments, support, and digital tools",
+    href: "/resources",
   },
 ];
 

@@ -404,8 +404,6 @@ export function classifyRouteFamily(path: string): RouteFamily {
     if ([
       '/resources',
       '/resources/assessments-screeners',
-      '/resources/articles-guides',
-      '/resources/knowledge-hub',
       '/resources/support-community',
       '/resources/digital-tools',
     ].includes(normalizedPath)) {

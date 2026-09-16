@@ -57,7 +57,6 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
       case 'crisis-helplines':
         return this.generateCrisisTitle(entity, name);
 
-      case 'knowledge-hub':
       case 'articles-blogs':
         return this.generateArticleTitle(entity, name);
 
@@ -150,7 +149,6 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
       case 'crisis-helplines':
         return this.generateCrisisDescription(entity, name);
 
-      case 'knowledge-hub':
       case 'articles-blogs':
         return this.generateArticleDescription(entity, name, description);
 
@@ -335,13 +333,6 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
         );
         break;
 
-      case 'knowledge-hub':
-        baseKeywords.push(
-          'mental health information',
-          'psychiatric education',
-          'mental health guide'
-        );
-        break;
     }
 
     // Add conditions

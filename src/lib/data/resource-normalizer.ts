@@ -1,6 +1,5 @@
 // src/lib/data/resource-normalizer.ts
 import { AnyResourceZ } from "@/lib/schemas/resource";
-import { transformKnowledgeHubArticle, buildBodyFromLegacy } from "@/lib/utils/resource-shape";
 
 function buildCrosslinks(resource: any): Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> {
   const crosslinks: Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> = [];
@@ -51,21 +50,11 @@ function normalizeLegacyResource(content: any) {
   const metadata = { ...(content.metadata || {}) };
   let category: string | undefined = metadata.category || content.category;
 
-  if (category === "articles-blogs" || category === "articles-guides" || category === "articles") {
-    category = "knowledge-hub";
-  }
-
   if (category && metadata.category !== category) {
     metadata.category = category;
   }
 
   normalized.metadata = metadata;
-
-  if (category === "knowledge-hub") {
-    const upgraded = transformKnowledgeHubArticle(normalized);
-    upgraded.body = upgraded.body || buildBodyFromLegacy(upgraded);
-    return upgraded;
-  }
 
   if (!normalized.sections && Array.isArray(normalized.content?.sections)) {
     normalized.sections = normalized.content.sections;

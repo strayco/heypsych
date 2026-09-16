@@ -18,7 +18,6 @@ export type ResourceRenderer = React.ComponentType<ResourceRendererProps>;
 export const resourceRenderers: Record<string, ResourceRenderer> = {
   "assessments-screeners": AssessmentRenderer,
   "support-community": SupportRenderer,
-  "knowledge-hub": ArticleRenderer,
   "crisis-helplines": CrisisRenderer,
   "education-guides": EducationRenderer,
   "digital-tools": DigitalToolRenderer,

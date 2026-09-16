@@ -30,20 +30,6 @@ const randomPages = [
   "/resources/gad-7",
   "/resources/headspace",
   "/resources/calm",
-  // Articles & Knowledge Hub
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/ketamine-therapy-2024",
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/adhd-medication-shortage",
-  "/resources/knowledge-hub/research-and-science/mental-health-trends/ai-therapy-apps",
-  "/resources/knowledge-hub/research-and-science/psychology/exercise-antidepressant-study",
-  "/resources/knowledge-hub/research-and-science/psychology/psychedelics-depression-study",
-  "/resources/knowledge-hub/research-and-science/psychology/sleep-mental-health-link",
-  "/resources/knowledge-hub/how-to-guides/therapy-access/finding-a-therapist",
-  "/resources/knowledge-hub/how-to-guides/therapy-access/find-adhd-therapist",
-  "/resources/knowledge-hub/how-to-guides/health-systems/manage-anxiety-attacks",
-  "/resources/knowledge-hub/how-to-guides/health-systems/talk-to-doctor-antidepressants",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/adhd-women-thirties",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/bipolar-diagnosis-journey",
-  "/resources/knowledge-hub/community-and-stories/personal-stories/ocd-intrusive-thoughts",
 ];
 
 export function StartHere() {

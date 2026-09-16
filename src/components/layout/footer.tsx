@@ -21,8 +21,9 @@ export function Footer() {
     {
       title: "Resources",
       links: [
-        { name: "Knowledge Hub", href: "/resources/knowledge-hub" },
+        { name: "Learn", href: "/learn" },
         { name: "Assessments", href: "/resources/assessments-screeners" },
+        { name: "Support & Crisis", href: "/resources/support-community" },
         { name: "For Clinicians", href: "/tools/for-clinicians" },
       ],
     },

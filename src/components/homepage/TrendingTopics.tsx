@@ -21,24 +21,24 @@ import { Card } from "@/components/ui/card";
 
 const trendingTopics = [
   {
-    title: "Anxiety vs. Stress",
-    description: "Know the difference.",
-    href: "/resources/knowledge-hub/how-to-guides/anxiety-vs-stress",
+    title: "Anxiety Disorders",
+    description: "Symptoms, causes, and treatment options.",
+    href: "/conditions/generalized-anxiety-disorder",
   },
   {
-    title: "SSRI Basics",
-    description: "How they work.",
-    href: "/resources/knowledge-hub/research-and-science/ssri-basics",
+    title: "SSRIs",
+    description: "How antidepressants work.",
+    href: "/treatments/escitalopram-lexapro",
   },
   {
-    title: "CBT Explained",
+    title: "CBT",
     description: "Therapy in plain English.",
-    href: "/resources/knowledge-hub/how-to-guides/cbt-explained",
+    href: "/treatments/cognitive-behavioral-therapy",
   },
   {
-    title: "Panic Attacks",
-    description: "What's happening in the body and mind.",
-    href: "/resources/knowledge-hub/how-to-guides/panic-attacks-body-mind",
+    title: "Panic Disorder",
+    description: "Understanding panic attacks.",
+    href: "/conditions/panic-disorder",
   },
 ];
 

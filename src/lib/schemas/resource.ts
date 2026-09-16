@@ -4,7 +4,6 @@ import { z } from "zod";
 export const ResourceCategoryZ = z.enum([
   "assessments-screeners",
   "support-community",
-  "knowledge-hub",
   "crisis-helplines",
   "education-guides",
   "digital-tools",
@@ -265,33 +264,6 @@ export const SupportCommunityResourceZ = Base.extend({
   accessibility: z.string().optional(),
 });
 
-// Knowledge Hub pillars
-export const KnowledgeHubPillarZ = z.enum([
-  "self-help-and-wellness",
-  "research-and-science",
-  "how-to-guides",
-  "latest",
-  "community-and-stories",
-]);
-
-export const KnowledgeHubResourceZ = Base.extend({
-  metadata: z.object({ category: z.literal("knowledge-hub") }).passthrough(),
-  pillar: KnowledgeHubPillarZ.optional(),
-  subcategory: z.string().optional(),
-  authors: z.array(z.string()).optional(),
-  author: z.string().optional(), // Legacy support
-  publishedAt: z.string().optional(),
-  updatedAt: z.string().optional(),
-  readingMinutes: z.number().optional(),
-  reading_time: z.string().optional(), // Legacy support
-  audience: z.array(z.string()).optional(),
-  format: z.enum(["article", "video", "podcast", "infographic"]).optional(),
-  external_url: z.string().optional(),
-  excerpt: z.string().optional(),
-  related_topics: z.array(z.string()).optional(),
-  body: z.array(z.any()).optional(), // Structured content blocks
-});
-
 export const CrisisHelplinesResourceZ = Base.extend({
   metadata: z.object({ category: z.literal("crisis-helplines") }).passthrough(),
   phone: z.string().optional(),
@@ -332,7 +304,6 @@ export const DigitalToolsResourceZ = Base.extend({
 export const AnyResourceZ = z.union([
   AssessmentResourceZ,
   SupportCommunityResourceZ,
-  KnowledgeHubResourceZ,
   CrisisHelplinesResourceZ,
   EducationGuidesResourceZ,
   DigitalToolsResourceZ,
@@ -342,5 +313,3 @@ export const AnyResourceZ = z.union([
 export type AnyResource = z.infer<typeof AnyResourceZ>;
 export type ResourceCategory = z.infer<typeof ResourceCategoryZ>;
 export type AssessmentResource = z.infer<typeof AssessmentResourceZ>;
-export type KnowledgeHubResource = z.infer<typeof KnowledgeHubResourceZ>;
-export type KnowledgeHubPillar = z.infer<typeof KnowledgeHubPillarZ>;

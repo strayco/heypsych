@@ -5,7 +5,7 @@
  * Mirrors the pattern established in condition-categories.ts for consistency.
  */
 
-import { Brain, HeartPulse, Smartphone, Users, type LucideIcon } from "lucide-react";
+import { Brain, Smartphone, Users, type LucideIcon } from "lucide-react";
 
 export interface ResourceCategoryConfig {
   slug: string;
@@ -94,27 +94,6 @@ export const RESOURCE_CATEGORIES: ResourceCategoryConfig[] = [
       "online therapy"
     ]
   },
-  {
-    slug: "knowledge-hub",
-    displayTitle: "Knowledge Hub",
-    subtitle: "Educational guides & articles",
-    emoji: "📚",
-    icon: HeartPulse,
-    gradient: "from-orange-500 to-red-600",
-    hoverGradient: "from-orange-600 to-red-700",
-    bgColor: "bg-orange-50",
-    iconColor: "text-orange-600",
-    href: "/resources/knowledge-hub",
-    description: "Evidence-based guides, how-to articles, and mental health education resources to help you understand and manage mental health.",
-    keywords: [
-      "therapy guide",
-      "mental health education",
-      "CBT explained",
-      "finding a therapist",
-      "mental health research",
-      "how to guides"
-    ]
-  }
 ];
 
 /**
