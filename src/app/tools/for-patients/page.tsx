@@ -128,11 +128,11 @@ export default async function ForPatientsPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      {/* Hero Section with Direct Answer Block - Optimized for Featured Snippets */}
-      <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+
+      {/* Breadcrumb + Search - Minimal header for catalog browsing */}
+      <section className="border-b border-separator bg-surface px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          {/* Breadcrumb - Schema.org BreadcrumbList */}
-          <nav className="mb-6 flex items-center gap-2 text-sm" aria-label="Breadcrumb">
+          <nav className="mb-4 flex items-center gap-2 text-sm" aria-label="Breadcrumb">
             <Link href="/" className="text-label-secondary hover:text-accent transition-colors">
               Home
             </Link>
@@ -144,28 +144,20 @@ export default async function ForPatientsPage() {
             <span className="text-label-primary font-medium">Mental Health Apps</span>
           </nav>
 
-          <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-            Updated September 2026
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
-            Best Mental Health Apps ({patientTools.length}+ Reviewed)
-          </h1>
-
-          {/* Direct Answer Block - Featured Snippet Bait */}
-          <div className="mt-6 rounded-lg border-l-4 border-emerald-500 bg-emerald-50/50 p-4 sm:p-6">
-            <p className="text-sm font-medium text-emerald-800 mb-2">Quick Answer:</p>
-            <p className="text-label-primary">
-              <strong>Best free mental health apps (2026):</strong> CBT-i Coach (insomnia),
-              MindShift CBT (anxiety), PTSD Coach (trauma). All completely free, no subscriptions.{" "}
-              <strong>Best premium apps:</strong> Calm and Headspace ($70/year each) for meditation and sleep.
-            </p>
-          </div>
-
-          {/* Search */}
-          <div className="mt-8 max-w-lg">
-            <Suspense fallback={<SearchFallback />}>
-              <ToolsHeroSearch />
-            </Suspense>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-semibold text-label-primary">
+                Mental Health Apps
+              </h1>
+              <p className="mt-1 text-sm text-label-secondary">
+                {patientTools.length} apps reviewed by clinicians
+              </p>
+            </div>
+            <div className="max-w-sm flex-1">
+              <Suspense fallback={<SearchFallback />}>
+                <ToolsHeroSearch />
+              </Suspense>
+            </div>
           </div>
         </div>
       </section>
@@ -238,7 +230,7 @@ export default async function ForPatientsPage() {
       )}
 
       {/* Browse by Category */}
-      <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
+      <section id="browse" className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
             Categories

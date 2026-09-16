@@ -1,11 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Filter, X } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { TaxonomyService } from "@/lib/tools/taxonomy-service";
-import type { DigitalToolV3, ToolType, PrivacyGrade } from "@/lib/schemas/digital-tool-v3";
+import { Filter } from "lucide-react";
+import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 
 interface HubFiltersProps {
   tools: DigitalToolV3[];
@@ -14,53 +11,21 @@ interface HubFiltersProps {
 }
 
 interface FilterState {
-  toolTypes: ToolType[];
-  pricing: string[];
-  privacy: PrivacyGrade[];
-  platforms: ("ios" | "android" | "web")[];
-  aiAttributes: string[];
+  cost: ("free" | "has-free" | "paid")[];
+  platform: ("ios" | "android" | "web")[];
 }
 
 /**
  * HubFilters Component
  *
- * Client-side filtering for hub pages.
- * Filter states are noindex, canonical to base hub.
+ * Simple filters for patients: Cost and Platform.
+ * No technical jargon, no privacy grades, no AI features.
  */
-export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) {
+export function HubFilters({ tools, onFilterChange }: HubFiltersProps) {
   const [filters, setFilters] = useState<FilterState>({
-    toolTypes: [],
-    pricing: [],
-    privacy: [],
-    platforms: [],
-    aiAttributes: [],
+    cost: [],
+    platform: [],
   });
-
-  // Extract available filter options from tools
-  const filterOptions = useMemo(() => {
-    const toolTypes = new Set<string>();
-    const pricingModels = new Set<string>();
-    const privacyGrades = new Set<string>();
-    const aiAttributes = new Set<string>();
-
-    tools.forEach((tool) => {
-      tool.tool_types.forEach((tt) => toolTypes.add(tt));
-      pricingModels.add(tool.pricing.model);
-      if (tool.privacy.grade !== "unknown") {
-        privacyGrades.add(tool.privacy.grade);
-      }
-      tool.ai_attributes.forEach((ai) => {
-        if (ai !== "no-ai") aiAttributes.add(ai);
-      });
-    });
-
-    return {
-      toolTypes: Array.from(toolTypes).sort(),
-      pricingModels: Array.from(pricingModels).sort(),
-      privacyGrades: Array.from(privacyGrades).sort(),
-      aiAttributes: Array.from(aiAttributes).sort(),
-    };
-  }, [tools]);
 
   // Apply filters
   const applyFilters = (newFilters: FilterState) => {
@@ -68,33 +33,21 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
 
     let filtered = [...tools];
 
-    if (newFilters.toolTypes.length > 0) {
-      filtered = filtered.filter((t) =>
-        newFilters.toolTypes.some((tt) => t.tool_types.includes(tt))
-      );
+    if (newFilters.cost.length > 0) {
+      filtered = filtered.filter((t) => {
+        const model = t.pricing.model;
+        const hasFree = t.pricing.free_tier;
+
+        if (newFilters.cost.includes("free") && model === "free") return true;
+        if (newFilters.cost.includes("has-free") && (model === "freemium" || hasFree)) return true;
+        if (newFilters.cost.includes("paid") && model === "subscription" && !hasFree) return true;
+        return false;
+      });
     }
 
-    if (newFilters.pricing.length > 0) {
+    if (newFilters.platform.length > 0) {
       filtered = filtered.filter((t) =>
-        newFilters.pricing.includes(t.pricing.model)
-      );
-    }
-
-    if (newFilters.privacy.length > 0) {
-      filtered = filtered.filter((t) =>
-        newFilters.privacy.includes(t.privacy.grade)
-      );
-    }
-
-    if (newFilters.platforms.length > 0) {
-      filtered = filtered.filter((t) =>
-        newFilters.platforms.some((p) => t.platforms[p])
-      );
-    }
-
-    if (newFilters.aiAttributes.length > 0) {
-      filtered = filtered.filter((t) =>
-        newFilters.aiAttributes.some((a) => t.ai_attributes.includes(a as any))
+        newFilters.platform.some((p) => t.platforms[p])
       );
     }
 
@@ -111,34 +64,17 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
   };
 
   const clearAllFilters = () => {
-    const empty: FilterState = {
-      toolTypes: [],
-      pricing: [],
-      privacy: [],
-      platforms: [],
-      aiAttributes: [],
-    };
-    applyFilters(empty);
+    applyFilters({ cost: [], platform: [] });
   };
 
-  const activeCount =
-    filters.toolTypes.length +
-    filters.pricing.length +
-    filters.privacy.length +
-    filters.platforms.length +
-    filters.aiAttributes.length;
+  const activeCount = filters.cost.length + filters.platform.length;
 
   return (
     <div className="rounded-xl border border-separator bg-surface p-5">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Filter className="h-4 w-4 text-label-tertiary" />
-          <h3 className="font-medium text-label-primary">Filters</h3>
-          {activeCount > 0 && (
-            <span className="text-xs text-label-tertiary">
-              ({activeCount})
-            </span>
-          )}
+          <h3 className="font-medium text-label-primary">Filter</h3>
         </div>
         {activeCount > 0 && (
           <button
@@ -151,131 +87,60 @@ export function HubFilters({ tools, onFilterChange, hubSlug }: HubFiltersProps) 
       </div>
 
       <div className="space-y-5">
-        {/* Tool Type Filter */}
-        {filterOptions.toolTypes.length > 1 && (
-          <FilterSection
-            title="Tool Type"
-            options={filterOptions.toolTypes}
-            selected={filters.toolTypes}
-            onToggle={(v) => toggleFilter("toolTypes", v)}
-            formatLabel={formatToolType}
-          />
-        )}
-
-        {/* Pricing Filter */}
-        {filterOptions.pricingModels.length > 1 && (
-          <FilterSection
-            title="Pricing"
-            options={filterOptions.pricingModels}
-            selected={filters.pricing}
-            onToggle={(v) => toggleFilter("pricing", v)}
-            formatLabel={formatPricing}
-          />
-        )}
-
-        {/* Privacy Filter */}
-        {filterOptions.privacyGrades.length > 1 && (
-          <FilterSection
-            title="Privacy Grade"
-            options={filterOptions.privacyGrades}
-            selected={filters.privacy}
-            onToggle={(v) => toggleFilter("privacy", v)}
-          />
-        )}
+        {/* Cost Filter */}
+        <div>
+          <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-label-tertiary">
+            Cost
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { value: "free", label: "Free" },
+              { value: "has-free", label: "Has free version" },
+              { value: "paid", label: "Paid only" },
+            ].map(({ value, label }) => (
+              <button
+                key={value}
+                onClick={() => toggleFilter("cost", value)}
+                className={`rounded-lg px-3 py-1.5 text-sm transition-all ${
+                  filters.cost.includes(value as any)
+                    ? "bg-neutral-900 text-white"
+                    : "bg-canvas text-label-secondary border border-separator hover:border-neutral-300"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Platform Filter */}
-        <FilterSection
-          title="Platform"
-          options={["ios", "android", "web"]}
-          selected={filters.platforms}
-          onToggle={(v) => toggleFilter("platforms", v)}
-          formatLabel={formatPlatform}
-        />
-
-        {/* AI Filter */}
-        {filterOptions.aiAttributes.length > 0 && (
-          <FilterSection
-            title="AI Features"
-            options={filterOptions.aiAttributes}
-            selected={filters.aiAttributes}
-            onToggle={(v) => toggleFilter("aiAttributes", v)}
-            formatLabel={formatAI}
-          />
-        )}
+        <div>
+          <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-label-tertiary">
+            Works on
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { value: "ios", label: "iPhone" },
+              { value: "android", label: "Android" },
+              { value: "web", label: "Website" },
+            ].map(({ value, label }) => (
+              <button
+                key={value}
+                onClick={() => toggleFilter("platform", value)}
+                className={`rounded-lg px-3 py-1.5 text-sm transition-all ${
+                  filters.platform.includes(value as any)
+                    ? "bg-neutral-900 text-white"
+                    : "bg-canvas text-label-secondary border border-separator hover:border-neutral-300"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
-}
-
-// Filter Section Component
-interface FilterSectionProps {
-  title: string;
-  options: string[];
-  selected: string[];
-  onToggle: (value: string) => void;
-  formatLabel?: (value: string) => string;
-}
-
-function FilterSection({ title, options, selected, onToggle, formatLabel }: FilterSectionProps) {
-  return (
-    <div>
-      <h4 className="mb-2 text-xs font-medium uppercase tracking-wider text-label-tertiary">
-        {title}
-      </h4>
-      <div className="flex flex-wrap gap-2">
-        {options.map((option) => (
-          <button
-            key={option}
-            onClick={() => onToggle(option)}
-            className={`rounded-lg px-3 py-1.5 text-sm transition-all ${
-              selected.includes(option)
-                ? "bg-neutral-900 text-white"
-                : "bg-canvas text-label-secondary border border-separator hover:border-neutral-300"
-            }`}
-          >
-            {formatLabel ? formatLabel(option) : option}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Format helpers
-function formatToolType(slug: string): string {
-  const type = TaxonomyService.getToolType(slug);
-  return type?.filter_label || slug.replace(/-/g, " ");
-}
-
-function formatPricing(model: string): string {
-  const labels: Record<string, string> = {
-    free: "Free",
-    freemium: "Freemium",
-    subscription: "Subscription",
-    "one-time": "One-time",
-    enterprise: "Enterprise",
-    "insurance-covered": "Insurance",
-  };
-  return labels[model] || model;
-}
-
-function formatPlatform(platform: string): string {
-  const labels: Record<string, string> = {
-    ios: "iOS",
-    android: "Android",
-    web: "Web",
-  };
-  return labels[platform] || platform;
-}
-
-function formatAI(attr: string): string {
-  const labels: Record<string, string> = {
-    "ai-powered": "AI-Powered",
-    "ai-assisted": "AI-Assisted",
-    "ai-matching": "AI Matching",
-    chatbot: "Chatbot",
-  };
-  return labels[attr] || attr;
 }
 
 export default HubFilters;

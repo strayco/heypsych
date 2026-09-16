@@ -25,6 +25,25 @@ import {
 import { mapV4ToArchitectCapabilities } from "./capability-mapping";
 
 // ============================================================================
+// ADD-ON CAPABILITY MAPPINGS
+// ============================================================================
+
+/**
+ * Maps V4 add-on keys to Architect capability IDs
+ * Used to detect when a capability is provided via paid add-on
+ */
+const ADDON_TO_CAPABILITIES: Record<string, string[]> = {
+  e_prescribing: ["prescribing-erx", "epcs"],
+  eprescribing: ["prescribing-erx", "epcs"],
+  care_aide_ai: ["ai-documentation-scribe"],
+  ai_scribe: ["ai-documentation-scribe"],
+  ai_notes: ["ai-documentation-scribe"],
+  wiley_treatment_planners: ["treatment-planning"],
+  labs: ["labs-results"],
+  telehealth: ["telehealth"],
+};
+
+// ============================================================================
 // AUDIENCE MAPPINGS
 // ============================================================================
 
@@ -131,127 +150,130 @@ export function deriveArchitectMetadata(
 }
 
 /**
+ * Build a map of capability ID → add-on price (in cents) from V4 pricing add_ons
+ */
+function buildAddonCapabilityMap(
+  tool: ClinicianToolV4
+): Map<string, number | undefined> {
+  const addonMap = new Map<string, number | undefined>();
+  const addOns = tool.pricing?.add_ons;
+
+  if (!addOns) return addonMap;
+
+  for (const [addonKey, addonData] of Object.entries(addOns)) {
+    const capabilities = ADDON_TO_CAPABILITIES[addonKey];
+    if (capabilities && addonData) {
+      for (const capId of capabilities) {
+        addonMap.set(capId, addonData.price_cents);
+      }
+    }
+  }
+
+  return addonMap;
+}
+
+/**
  * Derive capability mappings from V4 tool
  */
 function deriveCapabilities(tool: ClinicianToolV4): ProductCapabilityInput[] {
   const caps: ProductCapabilityInput[] = [];
   const seenCaps = new Set<string>();
 
+  // Build map of capabilities that are add-ons
+  const addonCapabilities = buildAddonCapabilityMap(tool);
+
+  // Helper to add a capability, checking if it's an add-on
+  const addCapability = (
+    capId: string,
+    defaultStrength: CapabilityStrength,
+    provenance: ProductCapabilityInput["provenance"]
+  ) => {
+    if (seenCaps.has(capId)) return;
+    seenCaps.add(capId);
+
+    const isAddon = addonCapabilities.has(capId);
+    const addonPrice = addonCapabilities.get(capId);
+
+    caps.push({
+      capabilityId: capId as ProductCapabilityInput["capabilityId"],
+      strength: isAddon ? "addon" : defaultStrength,
+      includedInBase: !isAddon,
+      requiresAddon: isAddon,
+      addonPriceCents: isAddon ? addonPrice : undefined,
+      provenance,
+    });
+  };
+
   // Get core capabilities from primary category
   const coreCaps = CATEGORY_CORE_CAPABILITIES[tool.primary_category] ?? [];
   for (const capId of coreCaps) {
-    if (!seenCaps.has(capId)) {
-      seenCaps.add(capId);
-      caps.push({
-        capabilityId: capId as ProductCapabilityInput["capabilityId"],
-        strength: "core",
-        provenance: "public_source",
-      });
-    }
+    addCapability(capId, "core", "public_source");
   }
 
   // Get capabilities from secondary categories (with "strong" strength)
   for (const secondaryCat of tool.secondary_categories) {
     const secondaryCaps = CATEGORY_CORE_CAPABILITIES[secondaryCat] ?? [];
     for (const capId of secondaryCaps) {
-      if (!seenCaps.has(capId)) {
-        seenCaps.add(capId);
-        caps.push({
-          capabilityId: capId as ProductCapabilityInput["capabilityId"],
-          strength: "strong",
-          provenance: "public_source",
-        });
-      }
+      addCapability(capId, "strong", "public_source");
     }
   }
 
   // Map V4 capabilities to Architect
   const architectCaps = mapV4ToArchitectCapabilities(tool.capabilities);
   for (const capId of architectCaps) {
-    if (!seenCaps.has(capId)) {
-      seenCaps.add(capId);
-      caps.push({
-        capabilityId: capId,
-        strength: inferStrength(tool, capId),
-        provenance: "vendor_provided",
-      });
-    }
+    addCapability(capId, inferStrength(tool, capId), "vendor_provided");
   }
 
   // Infer from feature flags
   if (tool.feature_flags.has_ai && !seenCaps.has("ai-documentation-scribe")) {
-    caps.push({
-      capabilityId: "ai-documentation-scribe",
-      strength: "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("ai-documentation-scribe");
+    addCapability("ai-documentation-scribe", "strong", "public_source");
   }
 
   if (tool.feature_flags.has_telehealth && !seenCaps.has("telehealth")) {
-    caps.push({
-      capabilityId: "telehealth",
-      strength: tool.primary_category === "telehealth-communication" ? "core" : "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("telehealth");
+    addCapability(
+      "telehealth",
+      tool.primary_category === "telehealth-communication" ? "core" : "strong",
+      "public_source"
+    );
   }
 
   if (tool.feature_flags.has_patient_portal && !seenCaps.has("patient-portal")) {
-    caps.push({
-      capabilityId: "patient-portal",
-      strength: "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("patient-portal");
+    addCapability("patient-portal", "strong", "public_source");
   }
 
   if (tool.feature_flags.has_e_prescribing && !seenCaps.has("prescribing-erx")) {
-    caps.push({
-      capabilityId: "prescribing-erx",
-      strength: "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("prescribing-erx");
+    addCapability("prescribing-erx", "strong", "public_source");
   }
 
   if (tool.feature_flags.has_measurement && !seenCaps.has("assessments-mbc")) {
-    caps.push({
-      capabilityId: "assessments-mbc",
-      strength: "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("assessments-mbc");
+    addCapability("assessments-mbc", "strong", "public_source");
   }
 
   // Infer EHR capability from has_ehr flag (for platforms like Blueprint, Alma that include EHR)
   if (tool.feature_flags.has_ehr && !seenCaps.has("ehr-clinical-record")) {
-    caps.push({
-      capabilityId: "ehr-clinical-record",
-      strength: tool.primary_category === "ehr-practice-management" ? "core" : "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("ehr-clinical-record");
+    addCapability(
+      "ehr-clinical-record",
+      tool.primary_category === "ehr-practice-management" ? "core" : "strong",
+      "public_source"
+    );
   }
 
   // Infer clinical documentation from has_ehr (EHRs always have documentation)
   if (tool.feature_flags.has_ehr && !seenCaps.has("clinical-documentation")) {
-    caps.push({
-      capabilityId: "clinical-documentation",
-      strength: tool.primary_category === "ehr-practice-management" ? "core" : "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("clinical-documentation");
+    addCapability(
+      "clinical-documentation",
+      tool.primary_category === "ehr-practice-management" ? "core" : "strong",
+      "public_source"
+    );
   }
 
   // Infer billing/RCM capability from has_rcm flag
   if (tool.feature_flags.has_rcm && !seenCaps.has("billing-rcm")) {
-    caps.push({
-      capabilityId: "billing-rcm",
-      strength: tool.primary_category === "billing-rcm-insurance" ? "core" : "strong",
-      provenance: "public_source",
-    });
-    seenCaps.add("billing-rcm");
+    addCapability(
+      "billing-rcm",
+      tool.primary_category === "billing-rcm-insurance" ? "core" : "strong",
+      "public_source"
+    );
   }
 
   return caps;

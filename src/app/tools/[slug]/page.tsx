@@ -4,7 +4,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, ArrowRight, Scale } from "lucide-react";
+import { ComparisonReferralTracker } from "./ComparisonReferralTracker";
 import { ToolService } from "@/lib/tools/tool-service";
 import { KEY_COMPARISONS, TOP_APPS } from "@/lib/seo/patient-programmatic-seo-engine";
 import { DirectAnswerBlock } from "@/components/tools/DirectAnswerBlock";
@@ -102,6 +104,11 @@ export default async function ToolPage({
 
   return (
     <>
+      {/* Comparison referral tracking - fires event if arrived from comparison page */}
+      <Suspense fallback={null}>
+        <ComparisonReferralTracker toolSlug={slug} />
+      </Suspense>
+
       {/* Structured Data */}
       {structuredData.map((schema, i) => (
         <script
@@ -237,7 +244,12 @@ export default async function ToolPage({
         />
 
         {/* Compare Section */}
-        <PatientCompareSection currentSlug={slug} toolName={tool.name} />
+        <PatientCompareSection
+          currentSlug={slug}
+          toolName={tool.name}
+          relatedSlugs={relatedTools.map(t => t.slug)}
+          allTools={relatedTools.map(t => ({ slug: t.slug, name: t.name }))}
+        />
 
         {/* Related Hubs - SEO enhanced with keyword-rich linking */}
         <RelatedHubs
@@ -516,15 +528,60 @@ function getOperatingSystems(platforms: any): string[] {
 }
 
 /**
- * Compare section showing VS pages that include this tool
+ * Compare section showing VS pages - works for ALL tools
+ * Uses KEY_COMPARISONS if available, otherwise suggests comparisons
+ * based on related_tools or same-category tools
  */
-function PatientCompareSection({ currentSlug, toolName }: { currentSlug: string; toolName: string }) {
-  // Find comparisons that include this tool
-  const relevantComparisons = KEY_COMPARISONS.filter(
-    ({ a, b }) => a === currentSlug || b === currentSlug
+interface PatientCompareSectionProps {
+  currentSlug: string;
+  toolName: string;
+  relatedSlugs?: string[];
+  allTools?: { slug: string; name: string }[];
+}
+
+function PatientCompareSection({
+  currentSlug,
+  toolName,
+  relatedSlugs = [],
+  allTools = [],
+}: PatientCompareSectionProps) {
+  // Find pre-defined comparisons that include this tool
+  const keyComparisons = KEY_COMPARISONS.filter(
+    (comp: { a: string; b: string }) => comp.a === currentSlug || comp.b === currentSlug
   );
 
-  if (relevantComparisons.length === 0) return null;
+  // Build comparison links - prioritize KEY_COMPARISONS, then related tools
+  const comparisonLinks: { slug: string; name: string; href: string }[] = [];
+
+  // Add KEY_COMPARISONS first (these have optimized SEO)
+  for (const comp of keyComparisons) {
+    const otherSlug = comp.a === currentSlug ? comp.b : comp.a;
+    const otherApp = TOP_APPS.find((app: { slug: string; name: string }) => app.slug === otherSlug);
+    const otherName = otherApp?.name || otherSlug.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+    comparisonLinks.push({
+      slug: otherSlug,
+      name: otherName,
+      href: `/tools/for-patients/compare/${comp.a}-vs-${comp.b}/`,
+    });
+  }
+
+  // Add related tools as comparison suggestions (up to 4 total)
+  for (const relatedSlug of relatedSlugs) {
+    if (comparisonLinks.length >= 4) break;
+    if (comparisonLinks.some(c => c.slug === relatedSlug)) continue;
+
+    const relatedTool = allTools.find(t => t.slug === relatedSlug);
+    if (relatedTool) {
+      comparisonLinks.push({
+        slug: relatedSlug,
+        name: relatedTool.name,
+        href: `/tools/for-patients/compare/${currentSlug}-vs-${relatedSlug}/`,
+      });
+    }
+  }
+
+  // If still no comparisons, don't show the section
+  if (comparisonLinks.length === 0) return null;
 
   return (
     <section className="border-t border-neutral-200 bg-neutral-50 px-4 py-8 sm:px-6 lg:px-8">
@@ -536,22 +593,16 @@ function PatientCompareSection({ currentSlug, toolName }: { currentSlug: string;
           </h2>
         </div>
         <div className="flex flex-wrap gap-3">
-          {relevantComparisons.map(({ a, b }) => {
-            const otherSlug = a === currentSlug ? b : a;
-            const otherApp = TOP_APPS.find((app) => app.slug === otherSlug);
-            const otherName = otherApp?.name || otherSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-
-            return (
-              <Link
-                key={`${a}-vs-${b}`}
-                href={`/tools/for-patients/compare/${a}-vs-${b}/`}
-                className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 transition-all hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
-              >
-                {toolName} vs {otherName}
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            );
-          })}
+          {comparisonLinks.map(({ slug, name, href }) => (
+            <Link
+              key={slug}
+              href={href}
+              className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 transition-all hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+            >
+              {toolName} vs {name}
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          ))}
         </div>
         <Link
           href="/tools/for-patients/compare/"

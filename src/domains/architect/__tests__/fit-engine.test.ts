@@ -97,15 +97,23 @@ describe("calculateFitScore", () => {
       fitEvidence: undefined,
       pricing: undefined,
     });
-    const fingerprint = createTestFingerprint();
+    // Use minimal fingerprint with empty priorities and cash-pay to ensure truly insufficient data
+    // Cash-pay avoids the insurance/BAA check that would otherwise add a "known" reason
+    const fingerprint = createTestFingerprint({
+      priorities: [],
+      monthlyBudget: undefined,
+      primaryPayerType: "cash-pay",
+    });
     const input = {
       metadata,
       productName: "Test Product",
       productSlug: "test-product",
     };
 
-    const result = calculateFitScore(input, fingerprint, []);
+    // Pass a non-empty stack to make stack-integration also return "unknown"
+    const result = calculateFitScore(input, fingerprint, ["some-product-in-stack"]);
 
+    // With minimal data on both product and fingerprint, data confidence should be low
     expect(result.isInsufficientData).toBe(true);
     expect(result.fitScore).toBeNull();
     expect(result.dataConfidence).toBeLessThan(25);

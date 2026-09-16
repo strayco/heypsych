@@ -131,7 +131,7 @@ export const SERP_CLUSTERS: SERPCluster[] = [
     estimatedVolume: 880,
     entryPoints: [
       {
-        url: `${SITE_URL}/tools/for-clinicians/compare/simplepractice-vs-therapynotes/`,
+        url: `${SITE_URL}/tools/compare/simplepractice-vs-therapynotes/`,
         type: "comparison",
         title: "SimplePractice vs TherapyNotes (2026) - Detailed Comparison",
         targetPosition: 1,

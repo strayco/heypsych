@@ -34,8 +34,7 @@ type CategoryKey =
   | "articles-blogs"
   | "crisis-helplines"
   | "education-guides"
-  | "digital-tools"
-  | "knowledge-hub";
+  | "digital-tools";
 
 const CategoryIcon: Record<CategoryKey, React.ElementType> = {
   "assessments-screeners": ClipboardCheck,
@@ -44,7 +43,6 @@ const CategoryIcon: Record<CategoryKey, React.ElementType> = {
   "crisis-helplines": AlertTriangle,
   "education-guides": BookOpen,
   "digital-tools": Smartphone,
-  "knowledge-hub": BookOpen,
 };
 
 type CrossLink = {
@@ -278,7 +276,6 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
     'assessments-screeners',
     'articles-blogs',
     'education-guides',
-    'knowledge-hub'
   ].includes(categoryKey);
 
   // Extract editorial metadata

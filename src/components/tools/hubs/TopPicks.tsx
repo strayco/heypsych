@@ -13,36 +13,56 @@ interface TopPicksProps {
 
 /**
  * Generate "Choose X if..." guidance based on tool characteristics.
- * Addresses the growth prompt requirement:
- * "Start with: CHOOSE A IF… CHOOSE B IF… CHOOSE NEITHER IF…"
+ * MUST produce UNIQUE, DIFFERENTIATING reasons - not generic platitudes.
  */
 function getChooseIfReason(tool: DigitalToolV3): string {
-  const reasons: string[] = [];
-
-  // Pricing-based guidance
-  if (tool.pricing.model === "free") {
-    reasons.push("you want a free, no-strings-attached option");
-  } else if (tool.pricing.model === "freemium") {
-    reasons.push("you want to try before committing");
-  }
-
-  // Support level guidance
-  if (tool.support_level === "clinical") {
-    reasons.push("you need professional clinical support");
-  } else if (tool.support_level === "self-help") {
-    reasons.push("you prefer self-guided tools");
-  }
-
-  // Use the first best_for item if no other reason
-  if (reasons.length === 0 && tool.best_for.length > 0) {
-    // Extract a concise reason from best_for
+  // Priority 1: Use best_for (most specific to the tool)
+  if (tool.best_for.length > 0) {
     const bestFor = tool.best_for[0].toLowerCase();
-    if (bestFor.length < 60) {
-      reasons.push(bestFor);
+    // Clean up and make it read naturally after "if you..."
+    if (bestFor.startsWith("people who")) {
+      return bestFor.replace("people who", "you");
+    }
+    if (bestFor.startsWith("those who")) {
+      return bestFor.replace("those who", "you");
+    }
+    if (bestFor.startsWith("users who")) {
+      return bestFor.replace("users who", "you");
+    }
+    // If it's already a "you" statement or short enough, use it
+    if (bestFor.length < 80) {
+      return `you're looking for ${bestFor}`;
     }
   }
 
-  return reasons[0] || "it fits your needs";
+  // Priority 2: Use short_description to extract a differentiator
+  const desc = tool.short_description.toLowerCase();
+
+  // Look for specific differentiating features
+  if (desc.includes("adhd")) return "you need ADHD-specific support";
+  if (desc.includes("medication") && desc.includes("delivery")) return "you want medication delivered to your door";
+  if (desc.includes("unlimited messaging")) return "you prefer text-based therapy over video";
+  if (desc.includes("video")) return "you prefer live video sessions";
+  if (desc.includes("ai") || desc.includes("chatbot")) return "you want 24/7 AI-powered support";
+  if (desc.includes("meditation")) return "you want guided meditation and mindfulness";
+  if (desc.includes("sleep")) return "you're focused on improving sleep";
+  if (desc.includes("journal")) return "you prefer journaling and self-reflection";
+  if (desc.includes("mood track")) return "you want to track and understand your moods";
+  if (desc.includes("cbt") || desc.includes("cognitive behavioral")) return "you want structured CBT exercises";
+  if (desc.includes("psychiatr")) return "you need psychiatric evaluation or medication management";
+  if (desc.includes("couples") || desc.includes("relationship")) return "you're seeking couples or relationship therapy";
+
+  // Priority 3: Pricing-based (only if nothing else works)
+  if (tool.pricing.model === "free") {
+    return "you want a completely free option with no subscription";
+  }
+
+  // Fallback - try to extract something from name/category
+  const name = tool.name.toLowerCase();
+  if (name.includes("calm")) return "you want sleep stories and relaxation content";
+  if (name.includes("headspace")) return "you want structured meditation courses";
+
+  return "it matches your specific needs";
 }
 
 /**

@@ -13,7 +13,7 @@ import { describe, it, expect } from "vitest";
 import {
   generateRecommendation,
 } from "../engines/recommendation-engine";
-import { computeFitScore } from "../engines/fit-engine";
+import { calculateFitScore } from "../engines/fit-engine";
 import type {
   PracticeFingerprint,
   ProductArchitectureMetadata,
@@ -187,18 +187,15 @@ describe("Commercial Isolation", () => {
       ]);
 
       // Compute fit score - this function takes no commercial data
-      const score1 = computeFitScore({
-        product: productData,
-        fingerprint,
-        currentStack: [],
-      });
+      const input = {
+        metadata: productData,
+        productName: "Test EHR",
+        productSlug: productData.productSlug,
+      };
+      const score1 = calculateFitScore(input, fingerprint, []);
 
       // Call again - should be deterministic and ignore any external state
-      const score2 = computeFitScore({
-        product: productData,
-        fingerprint,
-        currentStack: [],
-      });
+      const score2 = calculateFitScore(input, fingerprint, []);
 
       expect(score1.fitScore).toBe(score2.fitScore);
       expect(score1.organicRankingValue).toBe(score2.organicRankingValue);
@@ -211,11 +208,12 @@ describe("Commercial Isolation", () => {
         { capabilityId: "ehr-clinical-record", strength: "core" },
       ]);
 
-      const result = computeFitScore({
-        product,
-        fingerprint,
-        currentStack: [],
-      });
+      const input = {
+        metadata: product,
+        productName: "Test Product",
+        productSlug: product.productSlug,
+      };
+      const result = calculateFitScore(input, fingerprint, []);
 
       // Verify no contribution has a commercial dimension
       const contributionDimensions = result.contributions.map((c) => c.dimension);

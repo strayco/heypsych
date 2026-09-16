@@ -4,7 +4,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, Trophy } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { TrustSignal } from "../_components/TrustSignal";
 import { VendorCTA } from "../_components/VendorCTA";
@@ -266,7 +266,7 @@ export default async function ForCliniciansPage() {
                 return (
                   <Link
                     key={`${a}-vs-${b}`}
-                    href={`/tools/for-clinicians/compare/${a}-vs-${b}/`}
+                    href={`/tools/compare/${a}-vs-${b}/`}
                     className="inline-flex items-center gap-2 rounded-lg border border-separator bg-canvas px-4 py-2.5 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:bg-treatment/5 hover:text-treatment"
                   >
                     {nameA} vs {nameB}
@@ -277,7 +277,7 @@ export default async function ForCliniciansPage() {
             </div>
 
             <Link
-              href="/tools/for-clinicians/compare/"
+              href="/tools/compare/"
               className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
             >
               View all comparisons
@@ -286,8 +286,147 @@ export default async function ForCliniciansPage() {
           </div>
         </section>
 
-        {/* What Clinicians Look For */}
+        {/* Find by Practice Type - High intent pages */}
+        <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex items-center gap-3 mb-1">
+              <Users className="h-5 w-5 text-treatment" />
+              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                By Practice Type
+              </p>
+            </div>
+            <h2 className="text-xl font-semibold text-label-primary">
+              Software for Your Practice
+            </h2>
+            <p className="mt-2 text-label-secondary text-sm">
+              Personalized recommendations based on your practice size and specialty
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Link
+                href="/tools/for-practices/solo-therapist"
+                className="group rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+              >
+                <h3 className="font-semibold text-label-primary group-hover:text-treatment">Solo Therapists</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  All-in-one solutions for individual practitioners
+                </p>
+              </Link>
+              <Link
+                href="/tools/for-practices/therapy-group"
+                className="group rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+              >
+                <h3 className="font-semibold text-label-primary group-hover:text-treatment">Group Practices</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  Multi-provider scheduling, permissions & reporting
+                </p>
+              </Link>
+              <Link
+                href="/tools/for-practices/psychiatry"
+                className="group rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+              >
+                <h3 className="font-semibold text-label-primary group-hover:text-treatment">Psychiatry Practices</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  e-Prescribing, EPCS, and medication management
+                </p>
+              </Link>
+              <Link
+                href="/tools/for-practices/telehealth-first"
+                className="group rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+              >
+                <h3 className="font-semibold text-label-primary group-hover:text-treatment">Telehealth-First</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  Robust video and virtual intake solutions
+                </p>
+              </Link>
+              <Link
+                href="/tools/for-practices/iop-php"
+                className="group rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+              >
+                <h3 className="font-semibold text-label-primary group-hover:text-treatment">IOP / PHP Programs</h3>
+                <p className="mt-2 text-sm text-label-secondary">
+                  Group therapy tracking and outcome measurement
+                </p>
+              </Link>
+              <Link
+                href="/tools/for-practices"
+                className="group rounded-xl border border-dashed border-treatment/30 bg-treatment/5 p-5 hover:bg-treatment/10 transition-colors"
+              >
+                <h3 className="font-semibold text-treatment">View All Practice Types</h3>
+                <p className="mt-2 text-sm text-treatment/70">
+                  See all practice type recommendations →
+                </p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Best of 2026 - Year-based SEO pages */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex items-center gap-3 mb-1">
+              <Trophy className="h-5 w-5 text-warning" />
+              <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
+                Top Picks
+              </p>
+            </div>
+            <h2 className="text-xl font-semibold text-label-primary">
+              Best Software of 2026
+            </h2>
+            <p className="mt-2 text-label-secondary text-sm">
+              Updated rankings based on features, pricing, and user feedback
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/tools/best/mental-health-ehr-2026"
+                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary hover:border-treatment/30 hover:text-treatment transition-colors"
+              >
+                Best Mental Health EHR
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/best/ai-scribe-2026"
+                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary hover:border-treatment/30 hover:text-treatment transition-colors"
+              >
+                Best AI Scribe
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/best/psychiatry-ehr-2026"
+                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary hover:border-treatment/30 hover:text-treatment transition-colors"
+              >
+                Best Psychiatry EHR
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/best/telehealth-platforms-2026"
+                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary hover:border-treatment/30 hover:text-treatment transition-colors"
+              >
+                Best Telehealth
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/best/billing-software-2026"
+                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary hover:border-treatment/30 hover:text-treatment transition-colors"
+              >
+                Best Billing Software
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <Link
+              href="/tools/pricing"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
+            >
+              Compare pricing across categories
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </section>
+
+        {/* What Clinicians Look For */}
+        <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
               Guidance
@@ -297,28 +436,28 @@ export default async function ForCliniciansPage() {
             </h2>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-xl border border-separator bg-surface p-5">
+              <div className="rounded-xl border border-separator bg-canvas p-5">
                 <h3 className="font-medium text-label-primary">HIPAA Compliance</h3>
                 <p className="mt-2 text-sm text-label-secondary">
                   Required for patient data handling in clinical settings.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-separator bg-surface p-5">
+              <div className="rounded-xl border border-separator bg-canvas p-5">
                 <h3 className="font-medium text-label-primary">EHR Integration</h3>
                 <p className="mt-2 text-sm text-label-secondary">
                   Seamless workflow with your existing systems.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-separator bg-surface p-5">
+              <div className="rounded-xl border border-separator bg-canvas p-5">
                 <h3 className="font-medium text-label-primary">Time Savings</h3>
                 <p className="mt-2 text-sm text-label-secondary">
                   Reduces administrative burden so you can focus on patients.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-separator bg-surface p-5">
+              <div className="rounded-xl border border-separator bg-canvas p-5">
                 <h3 className="font-medium text-label-primary">ROI & Pricing</h3>
                 <p className="mt-2 text-sm text-label-secondary">
                   Clear pricing and demonstrable return on investment.

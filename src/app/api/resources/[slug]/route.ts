@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFileSync, readdirSync, existsSync } from "fs";
 import { join } from "path";
 import { logger } from "@/lib/utils/logger";
-import { transformKnowledgeHubArticle } from "@/lib/utils/resource-shape";
 
 class DynamicResourceLoader {
   private static categoriesCache: string[] | null = null;
-  private static knowledgeHubBase = join(process.cwd(), "content", "knowledge-hub");
 
   /** Dynamically discover all resource categories */
   static getResourceCategories(): string[] {
@@ -36,51 +34,8 @@ class DynamicResourceLoader {
     }
   }
 
-  private static findKnowledgeHubFile(slug: string): string | null {
-    const base = this.knowledgeHubBase;
-    if (!existsSync(base)) return null;
-
-    const stack = [base];
-    while (stack.length > 0) {
-      const dir = stack.pop()!;
-      const candidate = join(dir, `${slug}.json`);
-      if (existsSync(candidate)) {
-        return candidate;
-      }
-
-      const entries = readdirSync(dir, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isDirectory() && !entry.name.startsWith("_")) {
-          stack.push(join(dir, entry.name));
-        }
-      }
-    }
-
-    return null;
-  }
-
-  private static loadKnowledgeHubResource(slug: string): { data: any; category: string } | null {
-    const filePath = this.findKnowledgeHubFile(slug);
-    if (!filePath) return null;
-
-    try {
-      const raw = JSON.parse(readFileSync(filePath, "utf-8"));
-      const transformed = transformKnowledgeHubArticle(raw);
-      return { data: transformed, category: "knowledge-hub" };
-    } catch (error) {
-      logger.error("Error loading knowledge hub article", error);
-      return null;
-    }
-  }
-
   /** Load resource from any category (searches subdirectories too) */
   static loadResource(slug: string): { data: any; category: string } | null {
-    const knowledgeHubResource = this.loadKnowledgeHubResource(slug);
-    if (knowledgeHubResource) {
-      logger.debug(`✅ Loaded ${slug} from content/knowledge-hub`);
-      return knowledgeHubResource;
-    }
-
     const categories = this.getResourceCategories();
 
     for (const category of categories) {

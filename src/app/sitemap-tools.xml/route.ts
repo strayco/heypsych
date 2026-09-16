@@ -183,9 +183,14 @@ export async function GET() {
       categoryCounts.set(cat, (categoryCounts.get(cat) || 0) + 1);
     }
 
-    // NOTE: /tools/alternatives has no page.tsx (only /tools/alternatives/[slug]),
-    // so advertising the hub submitted a 404 to Google. It is omitted until a
-    // real hub exists; the per-tool alternatives pages below are unaffected.
+    // Alternatives hub page
+    urls.push({
+      loc: `${siteConfig.url}/tools/alternatives`,
+      changefreq: "weekly",
+      priority: 0.75,
+    });
+
+    // Per-tool alternatives pages
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
       // Quality gate: only include if category has 4+ tools (3+ alternatives)
@@ -199,6 +204,14 @@ export async function GET() {
     }
 
     // 12b. Switch-from pages (/tools/switch-from/[slug])
+    // Hub page first
+    urls.push({
+      loc: `${siteConfig.url}/tools/switch-from`,
+      changefreq: "weekly",
+      priority: 0.75,
+    });
+
+    // Per-tool switch-from pages
     // Only include tools with 4+ category peers (meaningful alternatives to suggest)
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
@@ -269,6 +282,79 @@ export async function GET() {
       changefreq: "weekly",
       priority: 0.8,
     });
+
+    // 12g. Best [Category] [Year] pages - High commercial intent
+    const currentYear = new Date().getFullYear();
+    const bestCategories = [
+      "ehr-software",
+      "ai-scribe",
+      "telehealth-platforms",
+      "billing-software",
+      "therapy-software",
+      "psychiatry-ehr",
+      "mental-health-ehr",
+      "outcome-measurement",
+      "practice-management",
+      "e-prescribing",
+    ];
+    for (const category of bestCategories) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/best/${category}-${currentYear}`,
+        changefreq: "weekly",
+        priority: 0.85, // High priority - year-based "best X" queries are high intent
+      });
+    }
+
+    // 12h. Pricing comparison pages
+    const pricingCategories = ["mental-health-ehr", "therapy-ehr", "psychiatry-ehr", "ai-scribe"];
+    urls.push({
+      loc: `${siteConfig.url}/tools/pricing`,
+      changefreq: "weekly",
+      priority: 0.8,
+    });
+    for (const category of pricingCategories) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/pricing/${category}`,
+        changefreq: "weekly",
+        priority: 0.75,
+      });
+    }
+
+    // 12i. High-intent audience and feature landing pages
+    // These target specific professional audiences and key compliance/feature searches
+    const audiencePages = [
+      { path: "for-therapists", priority: 0.85 },
+      { path: "for-psychiatrists", priority: 0.85 },
+      { path: "for-counselors", priority: 0.85 },
+    ];
+    for (const page of audiencePages) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/${page.path}`,
+        changefreq: "weekly",
+        priority: page.priority,
+      });
+    }
+
+    // 12j. Compliance and feature-focused landing pages
+    const featurePages = [
+      { path: "hipaa-compliant", priority: 0.8 },
+      { path: "with-baa", priority: 0.8 },
+      { path: "for-solo-practice", priority: 0.8 },
+      { path: "for-group-practice", priority: 0.8 },
+      { path: "ai-documentation", priority: 0.75 },
+      { path: "therapy-billing", priority: 0.75 },
+      { path: "credentialing", priority: 0.75 },
+      { path: "cheapest-ehr", priority: 0.8 },
+      { path: "telehealth-comparison", priority: 0.8 },
+      { path: "outcome-measurement", priority: 0.75 },
+    ];
+    for (const page of featurePages) {
+      urls.push({
+        loc: `${siteConfig.url}/tools/${page.path}`,
+        changefreq: "weekly",
+        priority: page.priority,
+      });
+    }
 
     // 11. Curated comparisons (only those with all publishable tools)
     const comparisonsDir = join(process.cwd(), "data/tools-v4/comparisons");

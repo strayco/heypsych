@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
-import { ArrowLeft, Check, Star, Calendar, Award } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Star, Calendar, Award, Scale, HelpCircle } from "lucide-react";
 import { HubHero, TopPicks, ToolGrid, HubFilters, HubFAQ } from "@/components/tools/hubs";
 import type { HubConfig, SubHubConfig } from "@/lib/tools/taxonomy-service";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { getFreshnessString, getRecentDateModified, getCurrentMonthReviewDate } from "@/lib/seo/dark-patterns";
+import { KEY_COMPARISONS, TOP_APPS } from "@/lib/seo/patient-programmatic-seo-engine";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -49,6 +50,14 @@ export function HubPageContent({
   // Find free tools for this hub
   const freeTools = tools.filter((t) => t.pricing.model === "free").slice(0, 3);
 
+  // Find relevant comparisons - tools in this hub that have KEY_COMPARISONS
+  const relevantComparisons = useMemo(() => {
+    const toolSlugs = new Set(tools.map((t) => t.slug));
+    return KEY_COMPARISONS.filter(
+      ({ a, b }) => toolSlugs.has(a) || toolSlugs.has(b)
+    ).slice(0, 6);
+  }, [tools]);
+
   // Generate structured data
   const structuredData = generateHubStructuredData(hub, tools, topPicks);
 
@@ -76,6 +85,20 @@ export function HubPageContent({
             </Link>
           </div>
         </nav>
+
+        {/* Always-visible crisis banner */}
+        <div className="border-b border-red-200 bg-red-50 px-4 py-3 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <span className="text-red-700">Need immediate help?</span>
+            <a href="tel:988" className="font-semibold text-red-800 hover:underline">
+              Call 988
+            </a>
+            <span className="text-red-300 hidden sm:inline">|</span>
+            <a href="sms:741741&body=HOME" className="font-semibold text-red-800 hover:underline">
+              Text HOME to 741741
+            </a>
+          </div>
+        </div>
 
         {/* Hero with Direct Answer */}
         <HubHero hub={hub} toolCount={filteredTools.length} />
@@ -160,10 +183,79 @@ export function HubPageContent({
           </section>
         )}
 
+        {/* VS Comparisons - High-intent decision support */}
+        {relevantComparisons.length > 0 && (
+          <section className="border-b border-separator bg-canvas px-4 py-8 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <div className="flex items-center gap-2 mb-4">
+                <Scale className="h-5 w-5 text-treatment" />
+                <h2 className="text-lg font-semibold text-label-primary">
+                  Compare Apps
+                </h2>
+              </div>
+              <p className="text-sm text-label-secondary mb-4">
+                See how popular {hub.display_name.toLowerCase()} apps compare head-to-head
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {relevantComparisons.map(({ a, b }) => {
+                  const appA = TOP_APPS.find((app) => app.slug === a);
+                  const appB = TOP_APPS.find((app) => app.slug === b);
+                  const nameA = appA?.name || a.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+                  const nameB = appB?.name || b.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+                  return (
+                    <Link
+                      key={`${a}-vs-${b}`}
+                      href={`/tools/for-patients/compare/${a}-vs-${b}/`}
+                      className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:text-treatment"
+                    >
+                      {nameA} vs {nameB}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  );
+                })}
+              </div>
+              <Link
+                href="/tools/for-patients/compare/"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
+              >
+                View all comparisons
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </section>
+        )}
+
         {/* Top Picks with Decision Guide */}
         {topPicks.length > 0 && (
           <TopPicks tools={topPicks} title="Our Top Picks" />
         )}
+
+        {/* Guided Support CTA - Warm, human-centered */}
+        <section className="border-b border-separator bg-treatment/5 px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-treatment/10">
+                <HelpCircle className="h-5 w-5 text-treatment" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-label-primary">
+                  Not sure where to start?
+                </h3>
+                <p className="mt-1 text-sm text-label-secondary">
+                  Apps can be great for some situations, but sometimes you need more support.
+                  We can help you figure out what might work best for you.
+                </p>
+                <Link
+                  href="/find-support"
+                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-treatment-600"
+                >
+                  Help me find what&apos;s right
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Main Content */}
         <section className="px-4 py-10 sm:px-6 lg:px-8">

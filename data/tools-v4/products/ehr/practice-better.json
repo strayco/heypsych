@@ -78,15 +78,61 @@
   "support_url": "https://help.practicebetter.io",
   "logo_url": "https://practicebetter.io/logo.png",
   "pricing": {
+    "model": "per-provider-month",
     "starting_price_cents": 0,
     "starting_price_display": "Free-$155/month",
     "free_tier": true,
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "Five tiers: Sprout (Free, up to 3 clients), Starter ($35/mo or $25/mo annual, up to 10 clients), Professional ($69/mo, up to 300 clients with PDF branding and Zapier), Plus ($99/mo, unlimited clients, full branding, 750 SMS/month), Team ($155/mo for 2+ practitioners, $50/mo each additional). Price increase July 2025.",
-    "last_verified": "2026-08-22",
-    "model": "enterprise-custom"
+    "tiers": [
+      {
+        "name": "Sprout",
+        "price": "Free",
+        "price_cents": 0,
+        "description": "Up to 3 active clients. Scheduling, client portal, basic charting, telehealth, invoicing."
+      },
+      {
+        "name": "Starter",
+        "price": "$35/mo ($25/mo annual)",
+        "price_cents": 3500,
+        "description": "Up to 10 active clients. All Sprout features plus custom intake forms, appointment reminders, food journals."
+      },
+      {
+        "name": "Professional",
+        "price": "$69/mo",
+        "price_cents": 6900,
+        "description": "Up to 300 active clients. PDF branding, Zapier integration, advanced scheduling, packages and programs."
+      },
+      {
+        "name": "Plus",
+        "price": "$99/mo",
+        "price_cents": 9900,
+        "description": "Unlimited clients. Full branding, 750 SMS/month, client app branding, priority support."
+      },
+      {
+        "name": "Team",
+        "price": "$155/mo (2 practitioners)",
+        "price_cents": 15500,
+        "description": "Team practice management. Includes 2 practitioners, $50/mo each additional. Shared client records, team scheduling."
+      }
+    ],
+    "add_ons": {
+      "ai_telehealth": {
+        "price_cents": 1000,
+        "price_display": "$10/practitioner/month",
+        "description": "AI-powered telehealth transcription and note generation. Includes 600 free minutes/month, then $0.60/hour."
+      },
+      "that_clean_life": {
+        "price_display": "$30-60/month",
+        "description": "Meal planning integration (acquired company). Separate subscription required."
+      }
+    },
+    "transaction_fees": {
+      "payment_processing": "Stripe rates (2.9% + 30¢ typical)"
+    },
+    "notes": "14-day free trial on all paid plans. Annual billing saves ~29%. Price increase July 2025.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

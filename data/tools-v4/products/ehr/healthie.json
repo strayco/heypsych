@@ -83,14 +83,56 @@
   "logo_url": "https://www.gethealthie.com/logo.png",
   "pricing": {
     "starting_price_cents": 1999,
-    "starting_price_display": "$19.99-$279/month",
+    "starting_price_display": "$19.99/month (Core)",
     "free_tier": false,
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "mid-market",
-    "notes": "Core: $19.99/mo (or $17/mo annual, up to 10 clients). Essentials: $49/mo (up to 250 clients, custom forms, superbills). Plus: $129/mo (unlimited clients, group telehealth, dedicated eFax). Group: $149/mo (multiple practitioners). Enterprise: custom pricing. Insurance claim integrations (ClaimMD) starting $25/mo additional. Transaction fee: 2.9%.",
-    "last_verified": "2026-08-22",
-    "model": "enterprise-custom"
+    "model": "per-provider-month",
+    "tiers": [
+      {
+        "name": "Core",
+        "price": "$19.99/mo ($18/mo annual)",
+        "price_cents": 1999,
+        "description": "Up to 10 active clients. Solo provider plan with scheduling, charting, telehealth, client portal."
+      },
+      {
+        "name": "Plus",
+        "price": "$129.99/mo",
+        "price_cents": 12999,
+        "description": "Unlimited clients. Premium features for solo providers. All Core features plus advanced capabilities."
+      },
+      {
+        "name": "Group",
+        "price": "$149.99/mo base + $50/mo per additional provider",
+        "price_cents": 14999,
+        "description": "1 provider + 1 support member included. Multi-practitioner practices."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom pricing",
+        "description": "5 provider seats + 5 support seats. Premium integrations, white-labeling, API access."
+      }
+    ],
+    "add_ons": {
+      "claimmd_integration": {
+        "price_display": "$25-30/month",
+        "description": "Insurance claims submission and eligibility checks via ClaimMD"
+      },
+      "efax": {
+        "price_display": "Add-on pricing",
+        "description": "Dedicated eFax line"
+      },
+      "branded_emails": {
+        "price_display": "Add-on pricing",
+        "description": "Custom branded email communications"
+      }
+    },
+    "transaction_fees": {
+      "payment_processing": "2.9% per transaction"
+    },
+    "notes": "Telehealth via integrated Zoom included at all tiers—no add-on fee. Save 10% with annual billing on Group plan.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

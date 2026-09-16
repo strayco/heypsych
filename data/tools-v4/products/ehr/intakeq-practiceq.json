@@ -92,14 +92,39 @@
   "logo_url": "https://intakeq.com/logo.png",
   "pricing": {
     "model": "per-provider-month",
-    "starting_price_cents": 4900,
-    "starting_price_display": "$49-$99/provider/month",
+    "starting_price_cents": 4990,
+    "starting_price_display": "$49.90/month (Forms Only)",
     "free_tier": false,
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "IntakeQ Intake Forms: $49.90/month for unlimited forms and 100 clients/month, $99.90/month for unlimited. PracticeQ (full EHR): starts at $59/month for solo, scaling with providers. ePrescribing add-on: $65/month per prescriber (includes EPCS and ID.me verification), up to 5 supporting staff free, $5/month each additional. Annual billing discounts available.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "IntakeQ Forms Only",
+        "price": "$49.90/month base + $20/additional practitioner",
+        "price_cents": 4990,
+        "description": "Unlimited forms, branded custom forms, e-signatures, reminders, treatment notes, secure sharing, HIPAA BAA. 2 assistant accounts included."
+      },
+      {
+        "name": "PracticeQ (Full EHR)",
+        "price": "$74.90/month base + $25/additional practitioner",
+        "price_cents": 7490,
+        "description": "Everything in Forms Only plus scheduling, booking widget, automated intake, client portal, payments, invoices, claims/superbills, task management, telehealth."
+      }
+    ],
+    "add_ons": {
+      "eprescribe": {
+        "price_cents": 6500,
+        "price_display": "$65/month per prescriber",
+        "description": "ePrescribing with EPCS. Up to 5 supporting staff free, $5/month each additional."
+      }
+    },
+    "transaction_fees": {
+      "form_conversion": "$9 per form (for converting existing forms to web format)",
+      "sms_overage": "Additional charges may apply beyond included limits"
+    },
+    "notes": "Pricing scales with practitioners. Discounted plans available for practices with lower client volumes—contact sales.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

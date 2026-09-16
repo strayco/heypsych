@@ -21,10 +21,17 @@ import {
   FileDown,
   Users,
   Shield,
+  Building2,
+  User,
+  Stethoscope,
+  Database,
+  Download,
+  Upload,
+  Calendar,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService, type ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
-import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
+import { SCHEMA_TO_TAXONOMY_CATEGORY, CLINICIAN_PRODUCT_CATEGORY_LABELS } from "@/lib/schemas/clinician-tool-v4";
 import { AlternativeArchitectCTA } from "@/components/architect/ContextualArchitectCTA";
 import { ClinicianToolCard } from "@/components/tools/clinician";
 
@@ -80,51 +87,209 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Migration checklist items by category
-function getMigrationChecklist(category: string): string[] {
-  const checklistByCategory: Record<string, string[]> = {
+// Detailed migration checklist items by category with phases
+interface MigrationPhase {
+  title: string;
+  items: string[];
+}
+
+function getMigrationPhases(category: string): MigrationPhase[] {
+  const phasesByCategory: Record<string, MigrationPhase[]> = {
     "ehr-practice-management": [
-      "Export all patient records and demographics",
-      "Download clinical notes and documentation",
-      "Export appointment history",
-      "Download billing history and outstanding claims",
-      "Export patient intake forms and documents",
-      "Note all active treatment plans",
-      "Document current scheduling preferences",
-      "List all active integrations to replicate",
-      "Check contract end date and cancellation terms",
-      "Notify patients of any portal changes",
+      {
+        title: "Phase 1: Data Export (Week 1)",
+        items: [
+          "Export all patient demographics and contact information",
+          "Download complete clinical notes and progress notes",
+          "Export treatment plans and care plans",
+          "Download intake forms, assessments, and uploaded documents",
+          "Export appointment history and scheduling data",
+          "Download billing history, superbills, and outstanding claims",
+          "Export insurance/payer information for each patient",
+        ],
+      },
+      {
+        title: "Phase 2: New System Setup (Week 2)",
+        items: [
+          "Import patient demographics into new system",
+          "Configure practice settings, locations, and providers",
+          "Set up fee schedules and billing codes",
+          "Create note templates and documentation workflows",
+          "Configure appointment types and scheduling rules",
+          "Set up insurance/payer information",
+          "Test patient portal and communication features",
+        ],
+      },
+      {
+        title: "Phase 3: Transition (Weeks 3-4)",
+        items: [
+          "Run both systems in parallel for 1-2 weeks",
+          "Train staff on new workflows and features",
+          "Notify patients of portal changes with new login instructions",
+          "Update website and marketing materials with new portal links",
+          "Verify all integrations are working (labs, e-Rx, clearinghouse)",
+          "Confirm data integrity by spot-checking patient records",
+          "Cancel old subscription only after full verification",
+        ],
+      },
     ],
     "ai-scribe-documentation": [
-      "Export any saved templates or macros",
-      "Download documentation history if available",
-      "Note custom settings and preferences",
-      "Cancel any active subscriptions",
-      "Remove integration from your EHR",
+      {
+        title: "Data Export",
+        items: [
+          "Export any saved note templates or custom prompts",
+          "Download documentation history if available",
+          "Screenshot or document any custom settings",
+        ],
+      },
+      {
+        title: "New System Setup",
+        items: [
+          "Install new AI scribe and connect to your EHR",
+          "Configure note format preferences and templates",
+          "Test with a few sessions before going live",
+          "Remove old AI scribe integration from EHR",
+        ],
+      },
+      {
+        title: "Completion",
+        items: [
+          "Cancel old subscription",
+          "Delete stored data from old provider if required",
+        ],
+      },
     ],
-    "billing-rcm": [
-      "Export all claims history",
-      "Document outstanding AR",
-      "Export payment history",
-      "Download ERA/EOB records",
-      "Note all payer enrollments",
-      "Document fee schedules",
+    "billing-rcm-insurance": [
+      {
+        title: "Phase 1: Financial Snapshot",
+        items: [
+          "Export complete claims history (at least 12 months)",
+          "Document all outstanding accounts receivable by payer",
+          "Export payment history and ERA/EOB records",
+          "Download current fee schedules",
+          "List all active payer enrollments and credentials",
+          "Note any pending prior authorizations",
+        ],
+      },
+      {
+        title: "Phase 2: Transition Setup",
+        items: [
+          "Set up new billing system with your fee schedules",
+          "Configure payer information and enrollment status",
+          "Import patient insurance information",
+          "Set up clearinghouse connection",
+          "Test claim submission with a few test claims",
+        ],
+      },
+      {
+        title: "Phase 3: AR Management",
+        items: [
+          "Continue following up on old claims through previous system",
+          "Submit new claims through new system only",
+          "Keep access to old system for 90+ days for payment posting",
+          "Reconcile all outstanding AR before fully transitioning",
+        ],
+      },
     ],
     "telehealth-communication": [
-      "Export session recordings if applicable",
-      "Download any saved session notes",
-      "Note custom waiting room settings",
-      "Update patient communication preferences",
+      {
+        title: "Preparation",
+        items: [
+          "Export session recordings if applicable and permitted",
+          "Document custom waiting room branding/settings",
+          "Note any custom forms or intake workflows",
+        ],
+      },
+      {
+        title: "Setup & Go Live",
+        items: [
+          "Set up new telehealth platform",
+          "Configure waiting room and session settings",
+          "Test video/audio quality thoroughly",
+          "Update appointment confirmations with new links",
+          "Send patients new session links before appointments",
+          "Cancel old subscription",
+        ],
+      },
+    ],
+    "provider-network-virtual-care": [
+      {
+        title: "Phase 1: Preparation",
+        items: [
+          "Review your contract terms and notice period",
+          "Document all insurance panels you're credentialed with through the network",
+          "List your current patient panel from the network",
+          "Understand which patients you can keep vs. network-only",
+        ],
+      },
+      {
+        title: "Phase 2: Credentialing",
+        items: [
+          "Begin direct credentialing with insurance payers (this takes 60-120 days)",
+          "Or sign up with alternative network/platform",
+          "Set up your own billing system if going independent",
+          "Notify patients of changes and transition timeline",
+        ],
+      },
+      {
+        title: "Phase 3: Transition",
+        items: [
+          "Transfer eligible patients to your independent practice",
+          "Update your Psychology Today and directory listings",
+          "Remove network branding from your materials",
+          "Complete off-boarding with the network",
+        ],
+      },
+    ],
+    "credentialing-workforce": [
+      {
+        title: "Data Export",
+        items: [
+          "Export all credentialing documents and certificates",
+          "Download license and certification copies",
+          "Export payer enrollment status for all providers",
+          "Document CAQH profile information",
+        ],
+      },
+      {
+        title: "Transition",
+        items: [
+          "Set up new credentialing system",
+          "Import provider information and documents",
+          "Link to CAQH profiles",
+          "Verify all expiration dates are correctly set",
+          "Cancel old subscription",
+        ],
+      },
     ],
   };
 
-  return checklistByCategory[category] || [
-    "Export all relevant data",
-    "Document current settings",
-    "Cancel subscription",
-    "Remove integrations",
-    "Notify stakeholders of change",
+  return phasesByCategory[category] || [
+    {
+      title: "Data Export",
+      items: [
+        "Export all relevant data and documents",
+        "Document current settings and configurations",
+        "List all active integrations",
+      ],
+    },
+    {
+      title: "Transition",
+      items: [
+        "Set up replacement system",
+        "Import data and configure settings",
+        "Test thoroughly before going live",
+        "Notify relevant stakeholders",
+        "Cancel old subscription",
+      ],
+    },
   ];
+}
+
+// Legacy function for simple checklist (used in structured data)
+function getMigrationChecklist(category: string): string[] {
+  const phases = getMigrationPhases(category);
+  return phases.flatMap(phase => phase.items);
 }
 
 // Get migration complexity estimate
@@ -132,6 +297,8 @@ function getMigrationComplexity(tool: ClinicianToolV4): {
   level: "easy" | "moderate" | "complex";
   timeEstimate: string;
   considerations: string[];
+  dataExportNotes: string[];
+  dataImportNotes: string[];
 } {
   // EHRs are generally most complex
   if (tool.primary_category === "ehr-practice-management") {
@@ -139,10 +306,23 @@ function getMigrationComplexity(tool: ClinicianToolV4): {
       level: "complex",
       timeEstimate: "2-4 weeks",
       considerations: [
-        "Patient data migration requires careful handling",
-        "Active treatment plans need to be transferred",
-        "Staff will need training on new system",
-        "May need to run systems in parallel briefly",
+        "Patient data migration requires careful HIPAA-compliant handling",
+        "Active treatment plans need to be transferred completely",
+        "Staff will need comprehensive training on new system",
+        "Plan to run systems in parallel for 1-2 weeks",
+        "Patient portal changes require clear communication to patients",
+      ],
+      dataExportNotes: [
+        "Most EHRs export to CSV, PDF, or CCD/C-CDA formats",
+        "Request a complete data export - don't rely on individual record downloads",
+        "Export BEFORE canceling - you may lose access immediately",
+        "Keep exports for 7+ years per HIPAA requirements",
+      ],
+      dataImportNotes: [
+        "Many EHRs offer free migration assistance for new customers",
+        "CSV imports typically work for demographics; notes may need manual entry",
+        "Ask about CCD/C-CDA import support for clinical data",
+        "Budget 2-5 hours for data verification after import",
       ],
     };
   }
@@ -153,14 +333,78 @@ function getMigrationComplexity(tool: ClinicianToolV4): {
       level: "moderate",
       timeEstimate: "1-2 weeks",
       considerations: [
-        "Outstanding claims need to be tracked",
-        "Payer enrollments may need updating",
+        "Outstanding claims need to be tracked until fully paid",
+        "Payer enrollments may need updating with new clearinghouse",
         "Payment posting workflows will change",
+        "Keep old system access for 90+ days for AR follow-up",
+      ],
+      dataExportNotes: [
+        "Export claims history as CSV for reference",
+        "Document all outstanding AR by payer and patient",
+        "Save ERA/EOB records for reconciliation",
+        "Export fee schedules to replicate in new system",
+      ],
+      dataImportNotes: [
+        "Set up fee schedules before processing claims",
+        "Configure clearinghouse connection and test with a few claims",
+        "Import patient insurance information carefully",
+        "Verify payer IDs match between old and new systems",
       ],
     };
   }
 
-  // Most other tools are easier
+  // Provider networks are moderate complexity
+  if (tool.primary_category === "provider-network-virtual-care") {
+    return {
+      level: "moderate",
+      timeEstimate: "2-4 months (credentialing dependent)",
+      considerations: [
+        "Direct insurance credentialing takes 60-120 days",
+        "Some patients may not be able to follow you",
+        "You'll need your own billing solution",
+        "Review contract for non-compete or patient ownership clauses",
+      ],
+      dataExportNotes: [
+        "Document which insurance panels you're credentialed through",
+        "Export your patient list if permitted",
+        "Save all session notes and documentation",
+        "Screenshot any performance metrics or reviews",
+      ],
+      dataImportNotes: [
+        "Contact insurers directly to transfer credentialing",
+        "Set up your own practice profile on directories",
+        "Import patient contact info to your own system",
+        "Consider platforms like Alma or Headway if not going fully independent",
+      ],
+    };
+  }
+
+  // AI scribes and telehealth are easiest
+  if (tool.primary_category === "ai-scribe-documentation" ||
+      tool.primary_category === "telehealth-communication") {
+    return {
+      level: "easy",
+      timeEstimate: "1-3 days",
+      considerations: [
+        "Minimal data migration typically required",
+        "Integration setup is straightforward",
+        "Can often switch immediately",
+        "Test thoroughly with a few sessions before going fully live",
+      ],
+      dataExportNotes: [
+        "Export any saved templates or custom settings",
+        "Download documentation history if you want records",
+        "Most data stays in your EHR, not the tool itself",
+      ],
+      dataImportNotes: [
+        "Set up new tool and configure preferences",
+        "Recreate any custom templates",
+        "Connect to your EHR and test the integration",
+      ],
+    };
+  }
+
+  // Default for other categories
   return {
     level: "easy",
     timeEstimate: "1-3 days",
@@ -169,7 +413,46 @@ function getMigrationComplexity(tool: ClinicianToolV4): {
       "Integration setup is straightforward",
       "Can often switch immediately",
     ],
+    dataExportNotes: [
+      "Export any relevant data or settings",
+      "Document custom configurations",
+    ],
+    dataImportNotes: [
+      "Set up new tool with your preferences",
+      "Test before fully transitioning",
+    ],
   };
+}
+
+// Get practice-type based recommendations
+function getPracticeTypeRecommendations(tool: ClinicianToolV4, alternatives: ClinicianToolV4[]): {
+  solo: ClinicianToolV4[];
+  groupSmall: ClinicianToolV4[];
+  groupLarge: ClinicianToolV4[];
+  psychiatry: ClinicianToolV4[];
+} {
+  const solo = alternatives.filter(t =>
+    t.audiences?.organization_sizes?.includes("solo") ||
+    t.pricing?.price_range === "budget"
+  ).slice(0, 3);
+
+  const groupSmall = alternatives.filter(t =>
+    t.audiences?.organization_sizes?.includes("small-2-10") ||
+    t.pricing?.price_range === "mid-market"
+  ).slice(0, 3);
+
+  const groupLarge = alternatives.filter(t =>
+    t.audiences?.organization_sizes?.includes("enterprise-200-plus") ||
+    t.pricing?.price_range === "enterprise"
+  ).slice(0, 3);
+
+  const psychiatry = alternatives.filter(t =>
+    t.audiences?.clinician_roles?.includes("psychiatrist") ||
+    t.feature_flags?.has_e_prescribing ||
+    t.capabilities?.some(c => c.toLowerCase().includes("prescrib"))
+  ).slice(0, 3);
+
+  return { solo, groupSmall, groupLarge, psychiatry };
 }
 
 export default async function SwitchFromPage({ params }: PageProps) {
@@ -182,23 +465,82 @@ export default async function SwitchFromPage({ params }: PageProps) {
 
   // Get alternatives
   const categoryTools = await ClinicianToolService.getByCategory(tool.primary_category);
-  const alternatives = categoryTools.filter((t) => t.slug !== slug).slice(0, 6);
+  const alternatives = categoryTools.filter((t) => t.slug !== slug).slice(0, 12);
   const topAlternatives = alternatives.slice(0, 3);
 
+  const migrationPhases = getMigrationPhases(tool.primary_category);
   const migrationChecklist = getMigrationChecklist(tool.primary_category);
   const migrationComplexity = getMigrationComplexity(tool);
+  const practiceRecommendations = getPracticeTypeRecommendations(tool, alternatives);
 
-  // Structured data
+  // Get category display name
+  const categoryLabel = CLINICIAN_PRODUCT_CATEGORY_LABELS[tool.primary_category] || tool.primary_category;
+
+  // Enhanced structured data with more detail
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: `How to Switch from ${tool.name}`,
-    description: `Step-by-step guide to migrating away from ${tool.name}`,
-    step: migrationChecklist.map((item, idx) => ({
-      "@type": "HowToStep",
-      position: idx + 1,
-      name: item,
-    })),
+    description: `Complete step-by-step guide to migrating away from ${tool.name}. Covers data export, system setup, and transition best practices.`,
+    totalTime: migrationComplexity.timeEstimate,
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
+    step: migrationPhases.flatMap((phase, phaseIdx) =>
+      phase.items.map((item, itemIdx) => ({
+        "@type": "HowToStep",
+        position: phaseIdx * 10 + itemIdx + 1,
+        name: item,
+        itemListElement: {
+          "@type": "HowToDirection",
+          text: item,
+        },
+      }))
+    ),
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "Data export from " + tool.name,
+      },
+      {
+        "@type": "HowToTool",
+        name: "New " + categoryLabel + " software",
+      },
+    ],
+  };
+
+  // Breadcrumb structured data
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Tools",
+        item: `${siteConfig.url}/tools`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "For Clinicians",
+        item: `${siteConfig.url}/tools/for-clinicians`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Migration Guides",
+        item: `${siteConfig.url}/tools/switch-from`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: `Switch from ${tool.name}`,
+        item: `${siteConfig.url}/tools/switch-from/${slug}`,
+      },
+    ],
   };
 
   const complexityColor = {
@@ -219,11 +561,15 @@ export default async function SwitchFromPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
 
       <div className="min-h-screen bg-canvas">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-separator bg-surface">
-          <div className="absolute inset-0 bg-gradient-to-br from-destructive/[0.02] via-transparent to-treatment/[0.02]" />
+          <div className="absolute inset-0 bg-linear-to-br from-destructive/2 via-transparent to-treatment/2" />
           <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             {/* Breadcrumb */}
             <nav className="mb-6 flex items-center gap-2 text-sm">
@@ -235,7 +581,11 @@ export default async function SwitchFromPage({ params }: PageProps) {
                 For Clinicians
               </Link>
               <span className="text-label-quaternary">/</span>
-              <span className="text-label-primary font-medium">Migration Guide</span>
+              <Link href="/tools/switch-from/" className="text-label-secondary hover:text-treatment">
+                Migration Guides
+              </Link>
+              <span className="text-label-quaternary">/</span>
+              <span className="text-label-primary font-medium">{tool.name}</span>
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
@@ -308,25 +658,81 @@ export default async function SwitchFromPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Migration Checklist */}
+        {/* Migration Checklist - Phased Approach */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-xl font-semibold text-label-primary flex items-center gap-2 mb-6">
               <FileDown className="h-5 w-5 text-treatment" />
-              Migration Checklist
+              Step-by-Step Migration Checklist
             </h2>
 
-            <div className="rounded-xl border border-separator bg-surface p-6">
-              <ol className="space-y-4">
-                {migrationChecklist.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-treatment/10 text-xs font-semibold text-treatment">
-                      {idx + 1}
-                    </span>
-                    <span className="text-label-primary">{item}</span>
-                  </li>
-                ))}
-              </ol>
+            <div className="space-y-6">
+              {migrationPhases.map((phase, phaseIdx) => (
+                <div key={phaseIdx} className="rounded-xl border border-separator bg-surface overflow-hidden">
+                  <div className="bg-treatment/5 border-b border-separator px-6 py-3">
+                    <h3 className="font-semibold text-label-primary flex items-center gap-2">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-treatment text-xs font-semibold text-white">
+                        {phaseIdx + 1}
+                      </span>
+                      {phase.title}
+                    </h3>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-3">
+                      {phase.items.map((item, itemIdx) => (
+                        <li key={itemIdx} className="flex items-start gap-3">
+                          <CheckCircle2 className="h-5 w-5 text-treatment shrink-0 mt-0.5" />
+                          <span className="text-label-secondary">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Data Export/Import Considerations */}
+        <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-xl font-semibold text-label-primary flex items-center gap-2 mb-6">
+              <Database className="h-5 w-5 text-treatment" />
+              Data Migration Details
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* Export Notes */}
+              <div className="rounded-xl border border-separator bg-canvas p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <Download className="h-6 w-6 text-destructive" />
+                  <h3 className="font-semibold text-label-primary">Exporting from {tool.name}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {migrationComplexity.dataExportNotes.map((note, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-label-secondary">
+                      <span className="text-destructive mt-1">&#8226;</span>
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Import Notes */}
+              <div className="rounded-xl border border-separator bg-canvas p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <Upload className="h-6 w-6 text-success" />
+                  <h3 className="font-semibold text-label-primary">Importing to New System</h3>
+                </div>
+                <ul className="space-y-3">
+                  {migrationComplexity.dataImportNotes.map((note, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-label-secondary">
+                      <span className="text-success mt-1">&#8226;</span>
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -403,55 +809,273 @@ export default async function SwitchFromPage({ params }: PageProps) {
           </section>
         )}
 
+        {/* Recommendations by Practice Type */}
+        {(practiceRecommendations.solo.length > 0 || practiceRecommendations.groupSmall.length > 0 || practiceRecommendations.psychiatry.length > 0) && (
+          <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-xl font-semibold text-label-primary mb-2">
+                Recommended Replacements by Practice Type
+              </h2>
+              <p className="text-sm text-label-secondary mb-6">
+                Find the best {tool.name} alternative for your specific practice
+              </p>
+
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {/* Solo Practice */}
+                {practiceRecommendations.solo.length > 0 && (
+                  <div className="rounded-xl border border-separator bg-surface p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <User className="h-5 w-5 text-treatment" />
+                      <h3 className="font-semibold text-label-primary">Solo Practice</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {practiceRecommendations.solo.map((alt) => (
+                        <Link
+                          key={alt.slug}
+                          href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`}
+                          className="block text-sm text-label-secondary hover:text-treatment"
+                        >
+                          {alt.name}
+                          {alt.pricing?.starting_price_display && (
+                            <span className="text-xs text-label-quaternary ml-1">
+                              ({alt.pricing.starting_price_display})
+                            </span>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Small Group */}
+                {practiceRecommendations.groupSmall.length > 0 && (
+                  <div className="rounded-xl border border-separator bg-surface p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Users className="h-5 w-5 text-treatment" />
+                      <h3 className="font-semibold text-label-primary">Small Group (2-10)</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {practiceRecommendations.groupSmall.map((alt) => (
+                        <Link
+                          key={alt.slug}
+                          href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`}
+                          className="block text-sm text-label-secondary hover:text-treatment"
+                        >
+                          {alt.name}
+                          {alt.pricing?.starting_price_display && (
+                            <span className="text-xs text-label-quaternary ml-1">
+                              ({alt.pricing.starting_price_display})
+                            </span>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Large Group / Enterprise */}
+                {practiceRecommendations.groupLarge.length > 0 && (
+                  <div className="rounded-xl border border-separator bg-surface p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Building2 className="h-5 w-5 text-treatment" />
+                      <h3 className="font-semibold text-label-primary">Large Group (10+)</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {practiceRecommendations.groupLarge.map((alt) => (
+                        <Link
+                          key={alt.slug}
+                          href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`}
+                          className="block text-sm text-label-secondary hover:text-treatment"
+                        >
+                          {alt.name}
+                          {alt.pricing?.starting_price_display && (
+                            <span className="text-xs text-label-quaternary ml-1">
+                              ({alt.pricing.starting_price_display})
+                            </span>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Psychiatry */}
+                {practiceRecommendations.psychiatry.length > 0 && (
+                  <div className="rounded-xl border border-separator bg-surface p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Stethoscope className="h-5 w-5 text-treatment" />
+                      <h3 className="font-semibold text-label-primary">Psychiatry</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {practiceRecommendations.psychiatry.map((alt) => (
+                        <Link
+                          key={alt.slug}
+                          href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[alt.primary_category] || alt.primary_category}/${alt.slug}/`}
+                          className="block text-sm text-label-secondary hover:text-treatment"
+                        >
+                          {alt.name}
+                          {alt.feature_flags?.has_e_prescribing && (
+                            <span className="text-xs text-success ml-1">(e-Rx)</span>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-6 text-center">
+                <Link
+                  href="/architect"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
+                >
+                  Get personalized recommendations with Practice Architect
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* FAQ Section */}
         <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-xl font-semibold text-label-primary mb-6">
-              Common Questions About Switching
+              Common Questions About Switching from {tool.name}
             </h2>
 
             <div className="space-y-4">
               <details className="group rounded-xl border border-separator bg-surface">
                 <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
-                  Will I lose my patient data?
-                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">▼</span>
+                  Will I lose my patient data when I leave {tool.name}?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
                 </summary>
                 <div className="px-4 pb-4 text-label-secondary">
-                  Most EHRs allow you to export patient data in standard formats. However, some systems
-                  make this easier than others. Always export your data BEFORE canceling your subscription,
-                  as you may lose access immediately upon cancellation.
+                  No, but you must export your data BEFORE canceling your subscription. Most systems allow
+                  you to export patient demographics, notes, and documents in standard formats (CSV, PDF, or
+                  CCD/C-CDA). Once you cancel, you may lose access immediately, so always complete your
+                  data export first.
                 </div>
               </details>
 
               <details className="group rounded-xl border border-separator bg-surface">
                 <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
-                  How long does migration typically take?
-                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">▼</span>
+                  How long does it take to switch from {tool.name}?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
                 </summary>
                 <div className="px-4 pb-4 text-label-secondary">
-                  This varies by system complexity. Simple tools (AI scribes, telehealth) can be switched
-                  in days. EHR migrations typically take 2-4 weeks, including data migration, staff training,
-                  and a parallel running period.
+                  For {tool.name}, we estimate approximately <strong>{migrationComplexity.timeEstimate}</strong>.
+                  This includes data export, setting up your new system, importing data, training staff,
+                  and running a brief parallel period. The actual time depends on your practice size and
+                  the complexity of your data.
                 </div>
               </details>
 
               <details className="group rounded-xl border border-separator bg-surface">
                 <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
-                  Do I need to notify patients?
-                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">▼</span>
+                  Do I need to notify patients about the change?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
                 </summary>
                 <div className="px-4 pb-4 text-label-secondary">
-                  If your EHR includes a patient portal, yes. Patients will need new login credentials
-                  and should be informed of any changes to how they access their information or
-                  communicate with your practice.
+                  If {tool.name} includes a patient portal that your patients use, yes. Patients will need
+                  new login credentials for the new system. Send a clear communication 1-2 weeks before the
+                  switch explaining what's changing, why, and exactly how they'll access their information
+                  going forward.
+                </div>
+              </details>
+
+              <details className="group rounded-xl border border-separator bg-surface">
+                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
+                  What happens to my outstanding insurance claims?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
+                </summary>
+                <div className="px-4 pb-4 text-label-secondary">
+                  Outstanding claims submitted through {tool.name} will continue processing normally. However,
+                  you'll need to track payments and follow up on denials. We recommend keeping access to your
+                  old billing system for at least 90 days after switching to handle AR follow-up and payment
+                  posting for older claims.
+                </div>
+              </details>
+
+              <details className="group rounded-xl border border-separator bg-surface">
+                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
+                  Should I run both systems at the same time?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
+                </summary>
+                <div className="px-4 pb-4 text-label-secondary">
+                  For EHR migrations, yes - we strongly recommend running both systems in parallel for 1-2
+                  weeks. This lets you verify that all data transferred correctly, gives staff time to
+                  adjust, and provides a safety net if any issues arise. Factor this overlap cost into
+                  your migration budget.
+                </div>
+              </details>
+
+              <details className="group rounded-xl border border-separator bg-surface">
+                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
+                  Will my new EHR help with migration?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
+                </summary>
+                <div className="px-4 pb-4 text-label-secondary">
+                  Many EHR vendors offer free or discounted migration assistance for new customers. This
+                  typically includes help importing your patient data, configuring settings, and training
+                  your staff. Ask about migration support during your sales process - it can significantly
+                  reduce the burden on your practice.
+                </div>
+              </details>
+
+              <details className="group rounded-xl border border-separator bg-surface">
+                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-label-primary">
+                  What about my contract with {tool.name}?
+                  <span className="ml-2 text-label-tertiary group-open:rotate-180 transition-transform">&#9660;</span>
+                </summary>
+                <div className="px-4 pb-4 text-label-secondary">
+                  Review your contract carefully for cancellation terms, notice periods, and early termination
+                  fees. Many software contracts auto-renew annually, so timing your switch near your renewal
+                  date can save money. Some vendors require 30-90 days notice, so plan accordingly.
                 </div>
               </details>
             </div>
           </div>
         </section>
 
+        {/* Related Links */}
+        <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href={`/tools/alternatives/${slug}`}
+                className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+              >
+                {tool.name} alternatives
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/switch-from"
+                className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+              >
+                All migration guides
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/tools/compare"
+                className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+              >
+                Compare tools
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="/architect"
+                className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+              >
+                Practice Architect
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Back Link */}
-        <section className="bg-surface px-4 py-8 sm:px-6 lg:px-8">
+        <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl flex items-center justify-between">
             <Link
               href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
@@ -465,7 +1089,7 @@ export default async function SwitchFromPage({ params }: PageProps) {
               href={`/tools/alternatives/${slug}`}
               className="group inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
             >
-              View alternatives
+              View all alternatives
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>

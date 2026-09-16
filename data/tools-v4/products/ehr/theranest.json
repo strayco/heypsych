@@ -94,8 +94,48 @@
     "free_trial_days": 21,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "Three tiers: Essentials ($29/therapist/mo) includes scheduling, portal, EHR, credit card processing. Advanced ($59/therapist/mo) adds insurance billing, custom forms, 30 free claims/month. Premier ($89/therapist/mo) adds unlimited claims, billing automation, integrated telehealth. Annual AMA CPT license: $19.50/therapist. AI Session Assistant: $35/provider/month.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "Essentials",
+        "price": "$29/therapist/month",
+        "price_cents": 2900,
+        "description": "Scheduling, secure client portal, EHR, credit card payments, calendar sync, basic intake forms. AI notes enhancement included."
+      },
+      {
+        "name": "Advanced",
+        "price": "$59/therapist/month",
+        "price_cents": 5900,
+        "description": "All Essentials features plus online booking, secure messaging, custom intake forms, group practice reports, 30 free claims/month."
+      },
+      {
+        "name": "Premier",
+        "price": "$89/therapist/month",
+        "price_cents": 8900,
+        "description": "Unlimited claims, insurance billing automation, integrated telehealth, unlimited reminders, detailed reporting."
+      }
+    ],
+    "add_ons": {
+      "ai_session_assistant": {
+        "price_cents": 3500,
+        "price_display": "$35/provider/month ($17.50 promo)",
+        "description": "AI scribe for telehealth and in-person sessions. Drafts notes and AI Case Summaries. Not included in any base tier."
+      },
+      "additional_admin": {
+        "price_display": "$19-29/month",
+        "description": "Additional administrative users"
+      },
+      "telehealth_addon": {
+        "price_display": "Add-on (included in Premier)",
+        "description": "Optional telehealth add-on for Essentials/Advanced plans"
+      }
+    },
+    "transaction_fees": {
+      "ama_cpt_license": "$19.50/therapist/year",
+      "claims_essentials_advanced": "Charged per claim after 30 free/month on Advanced",
+      "sms_reminders": "Included in Premier, usage-based on other tiers"
+    },
+    "notes": "21-day free trial with Premier access. One month free on annual billing. Now part of Ensora Health.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

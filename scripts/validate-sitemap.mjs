@@ -35,7 +35,6 @@ const EXPECTED_SITEMAPS = [
   'sitemap-resources.xml',
   'sitemap-hubs.xml',
   'sitemap-static.xml',
-  'sitemap-news.xml',
   'sitemap-guide.xml',
   'sitemap-tools.xml',
   'sitemap.xml', // Legacy compatibility
@@ -76,7 +75,6 @@ async function validateSitemapArchitecture() {
       'sitemap-resources.xml',
       'sitemap-hubs.xml',
       'sitemap-static.xml',
-      'sitemap-news.xml',
       'sitemap-guide.xml',
       'sitemap-tools.xml',
     ];

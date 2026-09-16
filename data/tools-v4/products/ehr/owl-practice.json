@@ -82,13 +82,45 @@
   "pricing": {
     "model": "per-provider-month",
     "starting_price_cents": 2500,
-    "starting_price_display": "$25-$49/provider/month",
+    "starting_price_display": "$25-$49 CAD/provider/month",
+    "currency": "CAD",
     "free_tier": false,
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "Plans for students, part-time therapists, 2 solo pricing levels, and group plans. Administrative staff: no charge. Supervisor logins: free. No setup fees, no onboarding fees. Canadian Association discounts available. Refer a Friend: $100 off for referrals.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "Student",
+        "price": "$25 CAD/month",
+        "price_cents": 2500,
+        "description": "For students in training. Basic scheduling, documentation, billing features."
+      },
+      {
+        "name": "Part-Time",
+        "price": "$35 CAD/month",
+        "price_cents": 3500,
+        "description": "For part-time practitioners. Scheduling, documentation, billing, client portal."
+      },
+      {
+        "name": "Professional",
+        "price": "$49 CAD/month",
+        "price_cents": 4900,
+        "description": "Full-time solo practitioners. All features including telehealth, Canadian insurance direct billing, unlimited clients."
+      },
+      {
+        "name": "Group",
+        "price": "Custom pricing",
+        "description": "Custom pricing for practice size. Personalized setup, data migration, no commitment required."
+      }
+    ],
+    "add_ons": {
+      "smart_notes_ai": {
+        "price_display": "$40 CAD/month (or $89/month bundled)",
+        "description": "AI note-taker that turns sessions into documentation. Professional + Smart Notes bundle available at $89/month for 12 months."
+      }
+    },
+    "notes": "14-day free trial. Admin staff and supervisor logins free. No setup/onboarding fees. Canadian Association discounts available. Refer a Friend: $100 off. Canadian data residency, PIPEDA compliant.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

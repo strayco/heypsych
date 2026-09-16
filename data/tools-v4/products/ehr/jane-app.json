@@ -67,16 +67,17 @@
   "long_description": "Jane App is a comprehensive practice management and EMR platform built in Canada, designed for healthcare practices including physiotherapy, chiropractic, massage, mental health, and multi-disciplinary clinics. Founded in 2012 in North Vancouver, British Columbia by Ali Taylor (who opened Canopy Integrated Health clinic) and Trevor Johnston, Jane launched as a licensable product in 2014. The platform handles scheduling with online booking, clinical documentation, HIPAA-compliant telehealth, billing with insurance claims, payments, and automated intake forms. Jane features an AI Scribe for documentation assistance and is known for its exceptional customer service, earning a 2026 Silver Stevie Award. The platform serves clinics across North America and is popular with multi-disciplinary practices that need flexibility across specialties.",
   "one_liner": "The clinic management system that keeps you at the heart of your practice.",
   "best_for": [
-    "Solo practitioners and small independent healthcare clinics",
-    "Multi-disciplinary practices with diverse provider types",
-    "Canadian practices needing Canadian billing and tax compliance",
-    "Clinics wanting exceptional customer support and onboarding"
+    "Solo practitioners and small clinics (up to 10 providers) seeking simple practice management",
+    "Multi-disciplinary practices mixing mental health with allied health (physio, massage, chiropractic)",
+    "Canadian practices needing PIPEDA/PHIPA compliance and Canadian billing workflows",
+    "Integrated care settings combining therapy with complementary services",
+    "Clinics prioritizing exceptional customer support (2026 Silver Stevie Award winner)"
   ],
   "not_for": [
-    "Large enterprise healthcare organizations",
-    "Practices requiring e-prescribing capabilities",
-    "US practices with complex insurance billing needs",
-    "Addiction treatment or residential programs"
+    "Medium to large behavioral health organizations (11+ providers)",
+    "Psychiatrists and prescribers requiring e-prescribing capabilities",
+    "US insurance-heavy practices needing robust claims submission (US billing is add-on, originally designed for Canada)",
+    "Practices requiring outcome measurement tools (PHQ-9, GAD-7 not built-in)"
   ],
   "website_url": "https://jane.app",
   "pricing_url": "https://jane.app/pricing",
@@ -90,8 +91,51 @@
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "mid-market",
-    "notes": "Three main plans: Balance ($54/mo) for up to 20 appointments, Practice ($79/mo) unlimited appointments, Thrive ($99/mo) for advanced features. Add-ons: AI Scribe $15/mo/practitioner, Group Telehealth $15/mo/practitioner, Insurance Billing $20/mo, Jane Websites $59/mo. Additional practitioners: $5/full-timer, $2.50/part-timer for Insurance Billing.",
-    "last_verified": "2026-08-22"
+    "notes": "Three main plans: Balance ($54/mo) for up to 20 appointments/month, Practice ($79/mo) unlimited appointments, Thrive ($99/mo) for advanced features. All plans include 1 full-time practitioner.",
+    "last_verified": "2026-09-15",
+    "tiers": {
+      "balance": {
+        "price_cents": 5400,
+        "price_display": "$54/month",
+        "description": "Single practitioner, limited to 20 appointments/month"
+      },
+      "practice": {
+        "price_cents": 7900,
+        "price_display": "$79/month",
+        "description": "1 full-time practitioner included, unlimited appointments"
+      },
+      "thrive": {
+        "price_cents": 9900,
+        "price_display": "$99/month",
+        "description": "Everything in Practice plus advanced features"
+      }
+    },
+    "add_ons": {
+      "ai_scribe": {
+        "price_cents": 1500,
+        "price_display": "$15/month per practitioner",
+        "description": "AI-powered documentation. Includes 5 free notes/month without subscription."
+      },
+      "group_telehealth": {
+        "price_cents": 1500,
+        "price_display": "$15/month per practitioner",
+        "description": "Group video sessions supporting up to 15 participants"
+      },
+      "insurance_billing": {
+        "price_cents": 2000,
+        "price_display": "$20/month base + $5/full-time or $2.50/part-time practitioner",
+        "description": "US insurance billing. Only available for Practice and Thrive plans."
+      },
+      "jane_websites": {
+        "price_cents": 5900,
+        "price_display": "$59/month per clinic",
+        "description": "Custom practice website builder"
+      }
+    },
+    "transaction_fees": {
+      "online_payments": "2.85% + $0.25 per transaction",
+      "in_person_payments": "2.6% + $0.10 per transaction"
+    }
   },
   "compliance": {
     "hipaa_support": "yes",

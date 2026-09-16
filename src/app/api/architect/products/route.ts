@@ -13,6 +13,35 @@ import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 const MAX_LIMIT = 100;
 const DEFAULT_LIMIT = 50;
 
+// Categories to exclude from Practice Architect (platforms are handled elsewhere on site)
+const EXCLUDED_CATEGORIES = new Set([
+  "provider-network-virtual-care", // Platforms like Alma, BetterHelp, Headway, Grow Therapy
+]);
+
+// Specific slugs to exclude (patient-facing platforms in other categories)
+// These are platforms where clinicians work FOR the platform, not tools they BUY
+const EXCLUDED_SLUGS = new Set([
+  // Patient-facing telehealth platforms
+  "talkspace-psychiatry",
+  "cerebral",
+  "brightside-health",
+  "teladoc-health",
+  "mdlive",
+  "doctor-on-demand",
+  "plushcare",
+  "k-health",
+  "amazon-one-medical",
+  "circle-medical",
+  "galileo",
+  "carbon-health-virtual-care",
+  "sesame",
+  "healthtap",
+  "amwell",
+  "telemynd",
+  "foresight-mental-health",
+  "included-health-virtual-care",
+]);
+
 // In development, clear caches on each request to ensure fresh data
 // This prevents stale data when editing tool files or allowlists
 const isDev = process.env.NODE_ENV === "development";
@@ -55,6 +84,14 @@ export async function GET(request: NextRequest): Promise<NextResponse<ArchitectP
     for (const [slug, metadata] of metadataMap) {
       const display = displayMap.get(slug);
       if (display) {
+        // Exclude platform categories (handled elsewhere on site)
+        if (EXCLUDED_CATEGORIES.has(display.category)) {
+          continue;
+        }
+        // Exclude specific patient-facing platform slugs
+        if (EXCLUDED_SLUGS.has(slug)) {
+          continue;
+        }
         // Filter by capability if specified
         if (capability && !metadata.capabilities.some(c => c.capabilityId === capability)) {
           continue;

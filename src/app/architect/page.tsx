@@ -1,6 +1,5 @@
 // src/app/architect/page.tsx
-// Practice Architect - Gateway Experience
-// Three clear entry paths with equal prominence
+// Practice Architect - Gateway Experience (v1) or Visual Configurator (v2)
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -13,6 +12,8 @@ import {
   Check,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
+import { featureFlags } from "@/lib/config/feature-flags";
+import { PracticeWorkspace } from "./_components/v2";
 
 const canonicalUrl = `${siteConfig.url}/architect`;
 
@@ -52,7 +53,7 @@ const ENTRY_MODES = [
     description: "Tell us about your practice and get personalized stack recommendations",
     icon: Sparkles,
     color: "accent",
-    href: "/architect/my-practice",
+    href: "/architect/studio?onboarding=1",
     steps: [
       "Answer 4 quick questions",
       "Get instant stack recommendations",
@@ -66,14 +67,14 @@ const ENTRY_MODES = [
   {
     id: "build-myself",
     title: "Build Myself",
-    description: "Explore all options and craft your stack capability by capability",
+    description: "Design your practice stack like customizing a car — browse, place, and see it take shape",
     icon: Compass,
     color: "blue",
-    href: "/architect/my-practice?skip=1",
+    href: "/architect/studio",
     steps: [
-      "Browse 6 lifecycle stages",
-      "Explore 40+ capabilities",
-      "Compare products side-by-side",
+      "Browse tools by category",
+      "Place them in your practice",
+      "See live cost and fit feedback",
       "Build at your own pace",
     ],
     bestFor: "Those who know what they need or want to explore",
@@ -100,6 +101,12 @@ const ENTRY_MODES = [
 ];
 
 export default function ArchitectEntryPage() {
+  // v2: Direct to workspace (visual configurator)
+  if (featureFlags.practiceArchitectV2) {
+    return <PracticeWorkspace />;
+  }
+
+  // v1: Gateway page with mode selection
   return (
     <div className="min-h-screen bg-canvas">
       {/* Hero Section */}

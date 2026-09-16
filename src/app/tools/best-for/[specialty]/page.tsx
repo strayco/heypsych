@@ -1333,7 +1333,7 @@ export default async function BestForSpecialtyPage({ params }: PageProps) {
               recommendation from Practice Architect.
             </p>
             <Link
-              href={`/architect/build?mode=build-for-me&utm_source=best-for-${specialty}&utm_medium=cta`}
+              href={`/architect?utm_source=best-for-${specialty}&utm_medium=cta`}
               className="inline-flex items-center gap-2 rounded-lg bg-treatment px-6 py-3 text-sm font-medium text-white transition-all hover:bg-treatment-600"
             >
               Start Practice Architect

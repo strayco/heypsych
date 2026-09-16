@@ -86,13 +86,51 @@
   "pricing": {
     "model": "per-provider-month",
     "starting_price_cents": 3500,
-    "starting_price_display": "$35/provider/month",
+    "starting_price_display": "$35-$213/provider/month",
     "free_tier": false,
     "free_trial_days": 30,
     "quote_required": false,
     "price_range": "mid-market",
-    "notes": "Role-based pricing: Part-Time Notes Only $35/mo, Part-Time Non-Prescribing $45/mo, Full-Time Notes Only $55/mo, Full-Time Non-Prescribing $75/mo, Part-Time Prescribing $138/mo, Full-Time Prescribing $213/mo. No setup fee for non-prescribers. One-time activation fee for prescribers due to e-Prescribing configuration.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "Part-Time Notes Only",
+        "price": "$35/month",
+        "price_cents": 3500,
+        "description": "Documentation features only. For clinicians seeing few patients."
+      },
+      {
+        "name": "Part-Time Non-Prescribing",
+        "price": "$45/month",
+        "price_cents": 4500,
+        "description": "Full EHR for part-time therapists. Scheduling, billing, portal."
+      },
+      {
+        "name": "Full-Time Notes Only",
+        "price": "$55/month",
+        "price_cents": 5500,
+        "description": "Documentation features for full-time clinicians."
+      },
+      {
+        "name": "Full-Time Non-Prescribing",
+        "price": "$75/month",
+        "price_cents": 7500,
+        "description": "Complete EHR for full-time therapists. All features except e-prescribing."
+      },
+      {
+        "name": "Part-Time Prescribing",
+        "price": "$138/month",
+        "price_cents": 13800,
+        "description": "For part-time psychiatrists/PMHNPs. Includes EPCS e-prescribing."
+      },
+      {
+        "name": "Full-Time Prescribing",
+        "price": "$213/month",
+        "price_cents": 21300,
+        "description": "For full-time psychiatrists/PMHNPs. Full EHR + EPCS e-prescribing."
+      }
+    ],
+    "notes": "Role-based pricing—therapists pay less than prescribers. No setup fee for non-prescribers. One-time activation fee for prescribers due to DrFirst e-Prescribing configuration. 75,000+ phrase content library included.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

@@ -89,8 +89,45 @@
     "free_trial_days": 30,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "Freemium: free for up to 3 active clients. Professional: $39/month for first practitioner (unlimited clients), $29/month each additional practitioner. Unlimited administrative staff: free. Optional Telehealth: $10/month per practitioner. Electronic claims: $0.19-$0.25 per claim (volume-based). No extra charges for reminders, portal, or storage.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "price_cents": 0,
+        "description": "Up to 3 active clients. Basic scheduling, documentation, client portal, invoicing. No time limit."
+      },
+      {
+        "name": "Professional (First Practitioner)",
+        "price": "$39/month",
+        "price_cents": 3900,
+        "description": "Unlimited clients, scheduling, documentation, client portal, payments, reports, unlimited storage."
+      },
+      {
+        "name": "Professional (Additional)",
+        "price": "$29/month each",
+        "price_cents": 2900,
+        "description": "Each additional practitioner in group practice."
+      }
+    ],
+    "add_ons": {
+      "telehealth": {
+        "price_cents": 1000,
+        "price_display": "$10/practitioner/month",
+        "description": "HIPAA-compliant video sessions, waiting room, screen sharing, multi-participant support."
+      },
+      "ai_assist": {
+        "price_display": "Included",
+        "description": "AI-powered note generation and documentation assistance included in Professional plan."
+      }
+    },
+    "transaction_fees": {
+      "electronic_claims": "$0.19-$0.25 per claim (volume-based)",
+      "appointment_reminders": "Free (included)",
+      "client_portal": "Free (included)",
+      "document_storage": "Free (unlimited)"
+    },
+    "notes": "30-day free trial on Professional. Unlimited admin staff free. No hidden fees—reminders, portal, and storage included. Therapist-founded company with transparent pricing commitment.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

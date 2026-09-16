@@ -72,10 +72,10 @@
     "customer_count": "36,000+ mental health professionals"
   },
   "pricing": {
-    "model": "per-provider-month",
+    "model": "per-session",
     "quote_required": false,
     "starting_price": 0,
-    "starting_price_display": "Free tier or $1/session (capped at $69/mo)",
+    "starting_price_display": "Free or $1/session (capped at $69/mo)",
     "currency": "USD",
     "free_tier": true,
     "free_trial_days": 30,
@@ -83,26 +83,36 @@
       {
         "name": "Free",
         "price": "Free",
-        "description": "Unlimited typed notes. No audio/video recording. Limited session analytics."
+        "price_cents": 0,
+        "description": "Unlimited basic typed notes at $0. No audio/video recording. Limited analytics."
       },
       {
         "name": "Starter",
-        "price": "$19/mo or $1/session",
-        "description": "50 session notes. Basic analytics, SOAP/DAP formats, manual session uploads."
+        "price": "$19/mo",
+        "price_cents": 1900,
+        "description": "50 session notes/month. Basic analytics, SOAP/DAP/Intake formats, manual session uploads."
       },
       {
         "name": "Premium",
-        "price": "$69/mo or $1/session capped",
-        "description": "100 session notes. BIRP, EMDR, GIRP formats. Recorder for in-person. Full session analytics. Transcript access."
+        "price": "$1/session (capped at $69/mo)",
+        "price_cents": 6900,
+        "description": "100+ session notes. BIRP, EMDR, GIRP formats. In-person recorder. Full analytics. Session transcripts."
       }
     ],
-    "additional_fees": {
-      "card_payments": "2.9% + $0.30",
+    "included_features": [
+      "AI notes generated in under 60 seconds",
+      "170+ preset note sections/templates",
+      "Treatment plans auto-generated from session data",
+      "AI Assistant for practice tasks",
+      "Telehealth, scheduling, payments, forms, client portal"
+    ],
+    "transaction_fees": {
+      "card_payments": "2.9% + $0.30 per transaction",
       "claims_submission": "$0.30 per claim",
       "eligibility_check": "$0.15 per check"
     },
-    "notes": "Pay-per-session model works well for low-volume practitioners. Telehealth calls through Upheal count as sessions. Session analytics require paid plan.",
-    "last_verified": "2026-09-01"
+    "notes": "Full platform (AI notes, telehealth, scheduling, compliance checker, payments, forms, client portal) at $1/session capped at $69/mo—no per-seat fees. Used by 70,000+ providers. BAA included with paid accounts.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

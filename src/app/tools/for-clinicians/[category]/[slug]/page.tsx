@@ -537,7 +537,7 @@ function normalizeComplianceValue(value: boolean | string | undefined): "yes" | 
 }
 
 /**
- * Compare section showing VS pages that include this tool
+ * Compare section showing VS pages that include this tool AND alternatives link
  */
 function CompareSection({ currentSlug, toolName }: { currentSlug: string; toolName: string }) {
   // Find comparisons that include this tool
@@ -545,41 +545,63 @@ function CompareSection({ currentSlug, toolName }: { currentSlug: string; toolNa
     ({ a, b }) => a === currentSlug || b === currentSlug
   );
 
-  if (relevantComparisons.length === 0) return null;
-
   return (
     <section className="border-t border-separator bg-canvas px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        <div className="flex items-center gap-2 mb-4">
-          <Scale className="h-5 w-5 text-treatment" />
-          <h2 className="text-lg font-semibold text-label-primary">
-            Compare {toolName}
-          </h2>
+        {/* Alternatives Link - High buyer intent */}
+        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="font-semibold text-amber-900">Looking for alternatives?</h3>
+              <p className="text-sm text-amber-800">
+                Compare {toolName} with similar tools and find the best fit for your practice.
+              </p>
+            </div>
+            <Link
+              href={`/tools/alternatives/${currentSlug}`}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700 transition-colors whitespace-nowrap"
+            >
+              {toolName} Alternatives
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-3">
-          {relevantComparisons.map(({ a, b }) => {
-            const otherSlug = a === currentSlug ? b : a;
-            const otherName = otherSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
-            return (
-              <Link
-                key={`${a}-vs-${b}`}
-                href={`/tools/for-clinicians/compare/${a}-vs-${b}/`}
-                className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:bg-treatment/5 hover:text-treatment"
-              >
-                {toolName} vs {otherName}
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            );
-          })}
-        </div>
-        <Link
-          href="/tools/for-clinicians/compare/"
-          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
-        >
-          View all comparisons
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+        {/* Head-to-head comparisons */}
+        {relevantComparisons.length > 0 && (
+          <>
+            <div className="flex items-center gap-2 mb-4">
+              <Scale className="h-5 w-5 text-treatment" />
+              <h2 className="text-lg font-semibold text-label-primary">
+                Compare {toolName}
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {relevantComparisons.map(({ a, b }) => {
+                const otherSlug = a === currentSlug ? b : a;
+                const otherName = otherSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+
+                return (
+                  <Link
+                    key={`${a}-vs-${b}`}
+                    href={`/tools/compare/${a}-vs-${b}/`}
+                    className="inline-flex items-center gap-2 rounded-lg border border-separator bg-surface px-4 py-2.5 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:bg-treatment/5 hover:text-treatment"
+                  >
+                    {toolName} vs {otherName}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                );
+              })}
+            </div>
+            <Link
+              href="/tools/compare/"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
+            >
+              View all comparisons
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </>
+        )}
       </div>
     </section>
   );

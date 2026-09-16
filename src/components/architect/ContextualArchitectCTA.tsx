@@ -149,40 +149,12 @@ function getIcon(context: ArchitectContext) {
 export function buildArchitectUrl(context: ArchitectContext): string {
   const params = new URLSearchParams();
 
-  // Set mode based on context
-  if (context.switchingFrom) {
-    params.set("mode", "audit");
-    params.set("replace", context.switchingFrom);
-  } else if (context.preloadedProducts && context.preloadedProducts.length > 0) {
-    params.set("mode", "build-myself");
-    params.set("products", context.preloadedProducts.join(","));
-  } else if (context.practiceTypeHint) {
-    params.set("mode", "build-for-me");
-    params.set("type", context.practiceTypeHint);
-  } else {
-    params.set("mode", "build-for-me");
-  }
-
-  // Add capabilities if specified
-  if (context.preloadedCapabilities && context.preloadedCapabilities.length > 0) {
-    params.set("capabilities", context.preloadedCapabilities.join(","));
-  }
-
-  // Add integration requirement
-  if (context.integratesWith) {
-    params.set("integrates", context.integratesWith);
-  }
-
-  // Add category context
-  if (context.categorySlug) {
-    params.set("category", context.categorySlug);
-  }
-
-  // Add UTM tracking
+  // Add UTM tracking for analytics
   params.set("utm_source", context.utmSource || context.source);
   params.set("utm_medium", "cta");
 
-  return `/architect/build?${params.toString()}`;
+  // v2 Practice Architect - direct to workspace
+  return `/architect?${params.toString()}`;
 }
 
 // ============================================================================

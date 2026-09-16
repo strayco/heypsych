@@ -101,7 +101,7 @@ export const SCHEMA_TO_TAXONOMY_CATEGORY: Record<
   "malpractice-insurance": "malpractice-insurance",
   // Architect practice area categories
   "marketing-patient-acquisition": "marketing-patient-acquisition",
-  "clinical-supervision": "clinical-supervision",
+  "clinical-supervision": "credentialing-workforce", // Supervision → Credentialing & Workforce
 };
 
 /**
@@ -112,7 +112,7 @@ export const TAXONOMY_TO_SCHEMA_CATEGORIES: Record<string, z.infer<typeof Clinic
   "ehr-practice-management": ["ehr-practice-management"],
   "billing-rcm": ["billing-rcm-insurance"],
   "telehealth-communication": ["telehealth-communication"],
-  "credentialing-workforce": ["credentialing-workforce"],
+  "credentialing-workforce": ["credentialing-workforce", "clinical-supervision"],
   "provider-networks": ["provider-network-virtual-care"],
   "measurement-outcomes": ["measurement-outcomes-dtx"],
   "ai-scribe-documentation": ["ai-scribe-documentation"],
@@ -126,7 +126,6 @@ export const TAXONOMY_TO_SCHEMA_CATEGORIES: Record<string, z.infer<typeof Clinic
   "malpractice-insurance": ["malpractice-insurance"],
   // Architect practice area categories
   "marketing-patient-acquisition": ["marketing-patient-acquisition"],
-  "clinical-supervision": ["clinical-supervision"],
   // Categories with no current tool data mapping (need new tools)
   "digital-therapeutics": [], // Could map from measurement-outcomes-dtx
 };
@@ -373,6 +372,33 @@ export const ClinicianPricingModelZ = z.enum([
 ]);
 
 /**
+ * Pricing tier information (e.g., Starter, Essential, Plus)
+ */
+export const PricingTierZ = z.object({
+  name: z.string(),
+  price: z.string().optional(), // Display price like "$49/month"
+  price_cents: z.number().int().nonnegative().optional(),
+  description: z.string().optional(),
+});
+
+/**
+ * Add-on pricing information (e.g., e-prescribing, AI features)
+ */
+export const PricingAddOnZ = z.object({
+  price_cents: z.number().int().nonnegative().optional(),
+  price_display: z.string().optional(), // e.g., "$49/month per prescriber"
+  description: z.string().optional(),
+});
+
+/**
+ * Transaction fees (e.g., payment processing, claims)
+ */
+export const TransactionFeesZ = z.object({
+  payment_processing: z.string().optional(), // e.g., "3.15% + $0.30 per transaction"
+  electronic_claims: z.string().optional(), // e.g., "$0.25 per claim"
+}).passthrough(); // Allow additional fee types
+
+/**
  * Structured pricing information
  */
 export const ClinicianPricingZ = z.object({
@@ -388,6 +414,10 @@ export const ClinicianPricingZ = z.object({
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be YYYY-MM-DD format")
     .optional(),
+  // Extended pricing fields
+  tiers: z.array(PricingTierZ).optional(),
+  add_ons: z.record(z.string(), PricingAddOnZ).optional(), // keyed by add-on slug
+  transaction_fees: TransactionFeesZ.optional(),
 });
 
 // ============================================================================
@@ -742,6 +772,9 @@ export type ImportReference = z.infer<typeof ImportReferenceZ>;
 export type CapabilitySlug = z.infer<typeof CapabilitySlugZ>;
 export type ClinicianPricingModel = z.infer<typeof ClinicianPricingModelZ>;
 export type ClinicianPricing = z.infer<typeof ClinicianPricingZ>;
+export type PricingTier = z.infer<typeof PricingTierZ>;
+export type PricingAddOn = z.infer<typeof PricingAddOnZ>;
+export type TransactionFees = z.infer<typeof TransactionFeesZ>;
 export type ClinicianCompanyInfo = z.infer<typeof ClinicianCompanyInfoZ>;
 export type ClinicianFeatures = z.infer<typeof ClinicianFeaturesZ>;
 export type ClinicianCompliance = z.infer<typeof ClinicianComplianceZ>;

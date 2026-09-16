@@ -64,8 +64,8 @@ const clinicianResources = [
     id: "patient-education",
     title: "Patient Education Resources",
     description:
-      "Materials to help patients understand their conditions and treatment options. Shareable articles and guides.",
-    href: "/resources?category=knowledge-hub",
+      "Materials to help patients understand their conditions and treatment options. Conditions and treatment guides.",
+    href: "/conditions",
     icon: FileText,
     color: "bg-cyan-50 text-cyan-600",
   },

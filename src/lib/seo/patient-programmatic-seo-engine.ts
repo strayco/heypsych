@@ -57,32 +57,109 @@ export const PRICE_MODIFIERS = [
 
 /**
  * Top consumer apps for displacement pages
+ * Ordered by estimated search volume and commercial potential
  */
 export const TOP_APPS = [
-  { slug: "calm", name: "Calm", category: "meditation" },
-  { slug: "headspace", name: "Headspace", category: "meditation" },
+  // Therapy Platforms (highest commercial value)
   { slug: "betterhelp", name: "BetterHelp", category: "therapy" },
   { slug: "talkspace", name: "Talkspace", category: "therapy" },
+  { slug: "brightside-health", name: "Brightside", category: "therapy" },
+  // Psychiatry Platforms
+  // Note: Both Cerebral and Done have had significant regulatory/legal issues
+  // Tool profiles should surface warnings appropriately
   { slug: "cerebral", name: "Cerebral", category: "psychiatry" },
-  { slug: "woebot", name: "Woebot", category: "ai-therapy" },
-  { slug: "wysa", name: "Wysa", category: "ai-therapy" },
-  { slug: "noom-mood", name: "Noom Mood", category: "cbt" },
+  { slug: "talkiatry", name: "Talkiatry", category: "psychiatry" },
+  { slug: "done", name: "Done", category: "psychiatry" },
+  // Meditation Apps
+  { slug: "calm", name: "Calm", category: "meditation" },
+  { slug: "headspace", name: "Headspace", category: "meditation" },
+  { slug: "insight-timer", name: "Insight Timer", category: "meditation" },
+  // AI Therapy / CBT Apps
+  // Note: Woebot and Wysa removed - both pivoted to B2B/enterprise, no longer consumer products
+  { slug: "youper", name: "Youper", category: "ai-therapy" },
+  { slug: "earkick", name: "Earkick", category: "ai-therapy" },
+  // Mood Trackers
   { slug: "daylio", name: "Daylio", category: "mood-tracker" },
+  { slug: "moodfit", name: "MoodFit", category: "mood-tracker" },
   { slug: "finch", name: "Finch", category: "self-care" },
+  // Anxiety Apps
+  { slug: "rootd", name: "Rootd", category: "anxiety" },
+  { slug: "mindshift-cbt", name: "MindShift CBT", category: "anxiety" },
+  { slug: "sanvello", name: "Sanvello", category: "anxiety" },
+  // Sleep Apps
+  { slug: "cbt-i-coach", name: "CBT-i Coach", category: "sleep" },
+  { slug: "sleepio", name: "Sleepio", category: "sleep" },
+  // CBT Apps
+  { slug: "noom-mood", name: "Noom Mood", category: "cbt" },
 ] as const;
 
 /**
- * Key VS comparisons
+ * Regulatory warnings for services with significant legal/safety issues
+ * These MUST be prominently displayed on comparison pages
+ */
+export const REGULATORY_WARNINGS: Record<string, {
+  severity: "critical" | "warning";
+  title: string;
+  summary: string;
+  details: string[];
+}> = {
+  cerebral: {
+    severity: "critical",
+    title: "Regulatory Issues",
+    summary: "Federal investigation, DOJ settlement, major pharmacy restrictions",
+    details: [
+      "Cerebral entered a non-prosecution agreement with DOJ, forfeiting $3.6M+ for unauthorized distribution of controlled substances",
+      "CVS and Walmart stopped filling controlled substance prescriptions from Cerebral",
+      "Multiple insurance networks dropped Cerebral from coverage",
+      "Allegations of prioritizing growth over patient safety with rapid 30-minute ADHD evaluations",
+    ],
+  },
+  done: {
+    severity: "critical",
+    title: "Criminal Prosecution",
+    summary: "DOJ prosecution, executive prison sentences, pharmacy blockades",
+    details: [
+      "Done Global executives faced criminal charges and prison sentences for running a 'digital pill mill'",
+      "DOJ prosecution resulted in guilty verdicts for distributing over 40 million pills",
+      "CVS and Walmart stopped filling controlled substance prescriptions from Done",
+      "Company under DEA investigation for Adderall prescribing practices",
+    ],
+  },
+};
+
+/**
+ * Key VS comparisons - high search volume pairs
+ * Organized by category for maximum coverage
  */
 export const KEY_COMPARISONS = [
-  { a: "calm", b: "headspace" },
+  // Therapy Platforms (highest commercial intent)
   { a: "betterhelp", b: "talkspace" },
-  { a: "cerebral", b: "done" },
-  { a: "woebot", b: "wysa" },
-  { a: "headspace", b: "insight-timer" },
+  { a: "betterhelp", b: "brightside-health" },
+  { a: "talkspace", b: "brightside-health" },
   { a: "betterhelp", b: "cerebral" },
-  { a: "calm", b: "balance" },
   { a: "talkspace", b: "cerebral" },
+  // Psychiatry / ADHD Services
+  { a: "cerebral", b: "done" },
+  { a: "cerebral", b: "talkiatry" },
+  { a: "done", b: "talkiatry" },
+  { a: "brightside-health", b: "cerebral" },
+  { a: "brightside-health", b: "talkiatry" },
+  // Meditation Apps
+  { a: "calm", b: "headspace" },
+  { a: "calm", b: "insight-timer" },
+  { a: "headspace", b: "insight-timer" },
+  // AI Therapy / Self-help Apps
+  // Woebot and Wysa removed - both pivoted to B2B/enterprise
+  { a: "youper", b: "earkick" },
+  // Mood Trackers
+  { a: "daylio", b: "moodfit" },
+  { a: "daylio", b: "finch" },
+  // Anxiety Apps
+  { a: "rootd", b: "mindshift-cbt" },
+  { a: "sanvello", b: "mindshift-cbt" },
+  { a: "rootd", b: "sanvello" },
+  // Sleep Apps
+  { a: "cbt-i-coach", b: "sleepio" },
 ] as const;
 
 // ============================================================================

@@ -73,10 +73,25 @@ const categoryConfig: Record<string, { icon: typeof Brain; color: string; label:
   "self-help": { icon: Brain, color: "text-teal-600 bg-teal-50", label: "Self-Help" },
 };
 
-export default function LearnHub() {
-  const articles = getArticles();
-  const featured = articles.filter((a) => a.featured).slice(0, 3);
-  const recent = articles.filter((a) => !a.featured).slice(0, 12);
+interface PageProps {
+  searchParams: Promise<{ category?: string }>;
+}
+
+export default async function LearnHub({ searchParams }: PageProps) {
+  const { category: activeCategory } = await searchParams;
+  const allArticles = getArticles();
+
+  // Filter by category if one is selected
+  const articles = activeCategory && categoryConfig[activeCategory]
+    ? allArticles.filter((a) => a.category === activeCategory)
+    : allArticles;
+
+  const featured = activeCategory
+    ? [] // Don't show featured section when filtering
+    : allArticles.filter((a) => a.featured).slice(0, 3);
+  const recent = activeCategory
+    ? articles // Show all filtered articles
+    : articles.filter((a) => !a.featured).slice(0, 12);
 
   const categories = Object.entries(categoryConfig);
 
@@ -98,14 +113,30 @@ export default function LearnHub() {
       <section className="border-b border-separator px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/learn"
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${
+                !activeCategory
+                  ? "bg-label-primary text-white"
+                  : "bg-neutral-100 text-label-secondary hover:bg-neutral-200"
+              }`}
+            >
+              All
+              <span className="text-xs opacity-60">({allArticles.length})</span>
+            </Link>
             {categories.map(([key, config]) => {
               const Icon = config.icon;
-              const count = articles.filter((a) => a.category === key).length;
+              const count = allArticles.filter((a) => a.category === key).length;
+              const isActive = activeCategory === key;
               return (
                 <Link
                   key={key}
                   href={`/learn?category=${key}`}
-                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${config.color}`}
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${
+                    isActive
+                      ? "ring-2 ring-offset-2 ring-current " + config.color
+                      : config.color
+                  }`}
                 >
                   <Icon className="h-4 w-4" />
                   {config.label}
@@ -161,7 +192,9 @@ export default function LearnHub() {
       <section className="px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-6 text-sm font-semibold uppercase tracking-wider text-label-tertiary">
-            Latest Articles
+            {activeCategory && categoryConfig[activeCategory]
+              ? `${categoryConfig[activeCategory].label} (${articles.length})`
+              : "Latest Articles"}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {recent.map((article) => {
@@ -193,13 +226,13 @@ export default function LearnHub() {
             })}
           </div>
 
-          {articles.length > 15 && (
+          {!activeCategory && allArticles.length > 15 && (
             <div className="mt-8 text-center">
               <Link
                 href="/learn/archive"
                 className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
               >
-                View all {articles.length} articles
+                View all {allArticles.length} articles
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

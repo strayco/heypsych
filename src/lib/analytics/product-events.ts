@@ -65,7 +65,10 @@ type ProductEvent =
   | "tools_sponsored_click"
   | "tools_vendor_outbound_click"
   | "tools_vendor_listing_cta"
-  | "tools_featured_partner_cta";
+  | "tools_featured_partner_cta"
+  // Comparison events (conversion attribution)
+  | "tools_comparison_view"
+  | "tools_comparison_click_through";
 
 interface EventProperties {
   // Common
@@ -127,6 +130,12 @@ interface EventProperties {
   relatedSymptomSlug?: string;
   assessmentSlug?: string;
   resultCount?: number;
+  // Comparison events
+  comparisonSlug?: string;
+  toolASlug?: string;
+  toolBSlug?: string;
+  winnerSlug?: string;
+  clickedToolSlug?: string;
 }
 
 /**
@@ -707,4 +716,41 @@ export function trackToolsVendorListingCTA(source: string): void {
  */
 export function trackToolsFeaturedPartnerCTA(source: string): void {
   trackProductEvent("tools_featured_partner_cta", { source });
+}
+
+// ============================================================================
+// COMPARISON EVENTS
+// Tracks comparison page views and click-throughs for conversion attribution
+// ============================================================================
+
+/**
+ * Track comparison page view
+ * Enables attribution of downstream conversions to comparison content
+ */
+export function trackToolsComparisonView(
+  toolASlug: string,
+  toolBSlug: string,
+  winnerSlug?: string
+): void {
+  trackProductEvent("tools_comparison_view", {
+    comparisonSlug: `${toolASlug}-vs-${toolBSlug}`,
+    toolASlug,
+    toolBSlug,
+    winnerSlug,
+  });
+}
+
+/**
+ * Track click-through from comparison to tool profile
+ * Helps measure comparison effectiveness in driving consideration
+ */
+export function trackToolsComparisonClickThrough(
+  comparisonSlug: string,
+  clickedToolSlug: string
+): void {
+  trackProductEvent("tools_comparison_click_through", {
+    comparisonSlug,
+    clickedToolSlug,
+    source: "comparison",
+  });
 }

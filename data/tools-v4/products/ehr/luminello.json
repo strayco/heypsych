@@ -97,8 +97,35 @@
     "free_trial_days": 14,
     "quote_required": false,
     "price_range": "mid-market",
-    "notes": "Professional plan starts at $99/month. Premium plan with full features approximately $149/month. E-prescribing with EPCS included in pricing. Group practice discounts available.",
-    "last_verified": "2026-08-22"
+    "tiers": [
+      {
+        "name": "Professional",
+        "price": "$99/provider/month",
+        "price_cents": 9900,
+        "description": "Scheduling, documentation, client portal, secure messaging, basic reports, insurance billing. E-prescribing included."
+      },
+      {
+        "name": "Premium",
+        "price": "$149/provider/month",
+        "price_cents": 14900,
+        "description": "All Professional features plus telehealth (up to 15 participants), advanced reporting, PDMP integration, Wiley Treatment Planners."
+      }
+    ],
+    "add_ons": {
+      "epcs_controlled": {
+        "price_display": "Included",
+        "description": "E-prescribing with EPCS for Schedule II-V controlled substances via DrFirst Rcopia. Included in all plans."
+      },
+      "telehealth": {
+        "price_display": "Included in Premium",
+        "description": "Up to 15 participants, screen sharing, digital whiteboard. Included in Premium plan."
+      }
+    },
+    "transaction_fees": {
+      "payment_processing": "2.9% + 30¢ per transaction (Stripe)"
+    },
+    "notes": "14-day free trial. E-prescribing with EPCS included (major differentiator for psychiatrists). Group practice discounts available. Acquired by SimplePractice in 2021 but continues operating separately.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "yes",

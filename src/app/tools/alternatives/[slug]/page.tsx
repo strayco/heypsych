@@ -50,8 +50,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const alternativeCount = categoryTools.filter(t => t.slug !== slug).length;
   const hasSubstantiveContent = alternativeCount >= 3;
 
-  const title = `${tool.name} Alternatives (2026) | Top ${tool.name} Competitors`;
-  const description = `Looking for ${tool.name} alternatives? Compare the best ${tool.name} competitors for mental health practices. Find the right replacement based on your practice needs.`;
+  // CTR-optimized title: includes count and target audience
+  const title = alternativeCount > 0
+    ? `${alternativeCount} ${tool.name} Alternatives for Therapists & Practices (2026)`
+    : `${tool.name} Alternatives (2026) | Top ${tool.name} Competitors`;
+  const description = `Looking for ${tool.name} alternatives? Compare ${alternativeCount} top ${tool.name} competitors for mental health practices. See pricing, features, and find the best fit for your practice.`;
 
   return {
     title,
@@ -116,6 +119,111 @@ function scoreAlternative(tool: ClinicianToolV4, originalTool: ClinicianToolV4):
   return score;
 }
 
+// Types for specialized recommendations
+interface SpecializedRecommendation {
+  label: string;
+  description: string;
+  tool: ClinicianToolV4 | null;
+  reason: string;
+}
+
+// Find specialized alternatives with concrete reasons
+function getSpecializedRecommendations(
+  original: ClinicianToolV4,
+  alternatives: ClinicianToolV4[]
+): SpecializedRecommendation[] {
+  const originalPrice = original.pricing?.starting_price_cents || 0;
+  const recs: SpecializedRecommendation[] = [];
+
+  // Best cheaper alternative
+  const cheaperAlts = alternatives
+    .filter(t => t.pricing?.starting_price_cents && t.pricing.starting_price_cents < originalPrice)
+    .sort((a, b) => (a.pricing?.starting_price_cents || 0) - (b.pricing?.starting_price_cents || 0));
+
+  if (cheaperAlts[0]) {
+    const savings = originalPrice - (cheaperAlts[0].pricing?.starting_price_cents || 0);
+    const savingsDisplay = `$${(savings / 100).toFixed(0)}/mo`;
+    recs.push({
+      label: "Best Budget Alternative",
+      description: "Save money without sacrificing core features",
+      tool: cheaperAlts[0],
+      reason: `${cheaperAlts[0].name} starts at ${cheaperAlts[0].pricing?.starting_price_display}, saving you ${savingsDisplay} compared to ${original.name}.`,
+    });
+  }
+
+  // Best for solo practices
+  const soloAlts = alternatives.filter(t =>
+    t.audiences?.organization_sizes?.includes("solo") ||
+    t.audiences?.practice_settings?.includes("solo-practice")
+  );
+  if (soloAlts[0]) {
+    recs.push({
+      label: "Best for Solo Practice",
+      description: "Optimized for individual practitioners",
+      tool: soloAlts[0],
+      reason: `${soloAlts[0].name} is designed specifically for solo practitioners with streamlined workflows and solo-friendly pricing.`,
+    });
+  }
+
+  // Best for group practices
+  const groupAlts = alternatives.filter(t =>
+    t.audiences?.organization_sizes?.includes("medium-11-50") ||
+    t.audiences?.organization_sizes?.includes("large-51-200") ||
+    t.audiences?.practice_settings?.includes("group-practice")
+  );
+  if (groupAlts[0]) {
+    recs.push({
+      label: "Best for Group Practice",
+      description: "Built for multi-provider workflows",
+      tool: groupAlts[0],
+      reason: `${groupAlts[0].name} includes group practice features like multi-provider scheduling, staff permissions, and consolidated billing.`,
+    });
+  }
+
+  // Best for prescribers/psychiatrists
+  const prescriberAlts = alternatives.filter(t =>
+    t.feature_flags?.has_e_prescribing ||
+    t.audiences?.clinician_roles?.includes("psychiatrist") ||
+    t.audiences?.clinician_roles?.includes("psychiatric-np-pa")
+  );
+  if (prescriberAlts[0]) {
+    recs.push({
+      label: "Best for Prescribers",
+      description: "e-Prescribing and EPCS support",
+      tool: prescriberAlts[0],
+      reason: `${prescriberAlts[0].name} includes ${prescriberAlts[0].feature_flags?.has_e_prescribing ? "native e-prescribing with EPCS" : "prescriber-focused workflows"} for psychiatrists and NPs.`,
+    });
+  }
+
+  // Best with AI features
+  const aiAlts = alternatives.filter(t => t.feature_flags?.has_ai);
+  if (aiAlts[0] && !original.feature_flags?.has_ai) {
+    recs.push({
+      label: "Best with AI",
+      description: "AI-powered documentation and automation",
+      tool: aiAlts[0],
+      reason: `${aiAlts[0].name} includes AI-powered features that ${original.name} lacks, reducing documentation time significantly.`,
+    });
+  }
+
+  // Best for insurance billing
+  const insuranceAlts = alternatives.filter(t =>
+    t.feature_flags?.has_rcm ||
+    t.capabilities?.includes("claims-submission") ||
+    t.capabilities?.includes("billing-rcm")
+  );
+  if (insuranceAlts[0]) {
+    recs.push({
+      label: "Best for Insurance",
+      description: "Robust claims and billing features",
+      tool: insuranceAlts[0],
+      reason: `${insuranceAlts[0].name} has integrated insurance billing with claims submission, ERA processing, and eligibility verification.`,
+    });
+  }
+
+  return recs.filter(r => r.tool !== null).slice(0, 4);
+}
+
 export default async function AlternativesPage({ params }: PageProps) {
   const { slug } = await params;
   const tool = await ClinicianToolService.getBySlug(slug);
@@ -138,6 +246,9 @@ export default async function AlternativesPage({ params }: PageProps) {
   const otherAlternatives = alternatives.slice(3, 9);
 
   const categoryLabel = getCategoryLabel(tool.primary_category);
+
+  // Get specialized recommendations with concrete reasons
+  const specializedRecs = getSpecializedRecommendations(tool, alternatives);
 
   // Structured data
   const structuredData = {
@@ -299,8 +410,62 @@ export default async function AlternativesPage({ params }: PageProps) {
           </section>
         )}
 
+        {/* Specialized Recommendations - High-value decision support */}
+        {specializedRecs.length > 0 && (
+          <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-xl font-semibold text-label-primary mb-2">
+                Best {tool.name} Alternative For Your Needs
+              </h2>
+              <p className="text-sm text-label-secondary mb-6">
+                Different practices have different needs. Here are our specific recommendations:
+              </p>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {specializedRecs.map((rec) => (
+                  <div
+                    key={rec.label}
+                    className="rounded-xl border border-separator bg-canvas p-5 hover:border-treatment/30 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-treatment">
+                          {rec.label}
+                        </span>
+                        <h3 className="mt-1 text-lg font-semibold text-label-primary">
+                          {rec.tool?.name}
+                        </h3>
+                        <p className="mt-1 text-xs text-label-tertiary">
+                          {rec.description}
+                        </p>
+                      </div>
+                      {rec.tool?.pricing?.starting_price_display && (
+                        <div className="text-right shrink-0">
+                          <span className="text-sm font-medium text-label-primary">
+                            {rec.tool.pricing.starting_price_display}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <p className="mt-3 text-sm text-label-secondary">
+                      {rec.reason}
+                    </p>
+                    <Link
+                      href={`/tools/for-clinicians/${rec.tool?.primary_category ? (SCHEMA_TO_TAXONOMY_CATEGORY[rec.tool.primary_category] || rec.tool.primary_category) : ""}/${rec.tool?.slug}/`}
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+                    >
+                      View {rec.tool?.name}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Architect CTA */}
-        <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
+        <section className="border-b border-separator bg-canvas px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <AlternativeArchitectCTA switchingFrom={slug} />
           </div>

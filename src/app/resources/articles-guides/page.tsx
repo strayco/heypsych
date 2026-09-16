@@ -22,19 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ArticlesGuidesPage() {
-  // Fetch both knowledge-hub and articles-guides categories during transition
-  const [knowledgeHub, articlesGuides] = await Promise.all([
-    getResourcesByCategoryServer("knowledge-hub"),
-    getResourcesByCategoryServer("articles-guides"),
-  ]);
-  
-  // Combine and deduplicate by slug
-  const seen = new Set<string>();
-  const resources = [...knowledgeHub, ...articlesGuides].filter((r) => {
-    if (seen.has(r.slug)) return false;
-    seen.add(r.slug);
-    return true;
-  });
+  const resources = await getResourcesByCategoryServer("articles-guides");
 
   return <ArticlesBlogsHub resources={resources} />;
 }

@@ -141,8 +141,8 @@ describe("Golden Test: Therapy-Seeking Adult", () => {
     // Should NOT include crisis resources (no signal)
     expect(result.urgentResources).toBeUndefined();
 
-    // Should include "find a therapist" action
-    expect(result.nextActions.some((a) => a.label.includes("therapist"))).toBe(true);
+    // Should include therapy-related action
+    expect(result.nextActions.some((a) => a.label.toLowerCase().includes("therapy"))).toBe(true);
 
     // Should include why reasons
     expect(result.primaryPath.whyThisFits.length).toBeGreaterThan(0);

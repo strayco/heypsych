@@ -78,18 +78,38 @@ export const FEATURES = [
 
 /**
  * Key comparisons for VS pages - exported for use on landing pages
+ * These are the highest commercial-value comparisons that map to curated JSON files
+ * in data/tools-v4/comparisons/. Add new comparisons by creating JSON files there.
  */
 export const CLINICIAN_KEY_COMPARISONS = [
+  // EHR / Practice Management - Highest volume searches
   { a: "simplepractice", b: "therapynotes" },
   { a: "simplepractice", b: "jane-app" },
+  { a: "simplepractice", b: "theranest" },
   { a: "simplepractice", b: "valant" },
+  { a: "simplepractice", b: "sessions-health" },
+  { a: "therapynotes", b: "theranest" },
   { a: "therapynotes", b: "valant" },
   { a: "therapynotes", b: "sessions-health" },
+  { a: "jane-app", b: "therapynotes" },
+  { a: "jane-app", b: "theranest" },
+  { a: "jane-app", b: "valant" },
+  // AI Scribes - High growth category
   { a: "freed", b: "mentalyc" },
   { a: "freed", b: "upheal" },
+  { a: "freed", b: "nabla" },
   { a: "mentalyc", b: "upheal" },
-  { a: "alma", b: "headway" },
+  { a: "suki-ai", b: "freed" },
+  { a: "suki-ai", b: "nabla" },
+  { a: "microsoft-dragon-copilot", b: "freed" },
+  // Provider Platforms - High intent insurance/billing searches
+  { a: "headway", b: "alma-provider-platform" },
   { a: "headway", b: "grow-therapy" },
+  { a: "alma-provider-platform", b: "grow-therapy" },
+  { a: "headway", b: "sondermind-provider-network" },
+  // Telehealth
+  { a: "doxy-me", b: "simplepractice" },
+  { a: "doxy-me", b: "therapynotes" },
 ] as const;
 
 // ============================================================================
@@ -416,7 +436,7 @@ export function generateVsPages(
 
     return {
       slug,
-      route: `/tools/for-clinicians/compare/${slug}`,
+      route: `/tools/compare/${slug}`,
       title: `${nameA} vs ${nameB} (2026) - Which Is Better? | HeyPsych`,
       description: `${nameA} vs ${nameB}: detailed comparison of pricing, features, and who each is best for. See which wins for your practice type.`,
       h1: `${nameA} vs ${nameB}: Which Should You Choose?`,
@@ -452,18 +472,36 @@ export function generateAllProgrammaticPages(): {
   pages: ProgrammaticPageConfig[];
 } {
   // Top products to generate competitor displacement pages for
+  // These get alternatives and pricing pages generated in /tools/for-clinicians/guides/
   const topProducts = [
+    // EHR / Practice Management
     "simplepractice",
     "therapynotes",
     "jane-app",
+    "theranest",
     "valant",
+    "sessions-health",
+    "icanotes",
+    "cliniko",
+    // AI Scribes
     "freed",
     "mentalyc",
     "upheal",
+    "nabla",
+    "suki-ai",
+    "autonotes",
+    // Provider Platforms
     "headway",
-    "alma",
+    "alma-provider-platform",
     "grow-therapy",
-    "sessions-health",
+    "sondermind-provider-network",
+    // Telehealth
+    "doxy-me",
+    "thera-link",
+    // Billing / RCM
+    "mentaya",
+    "thrizer",
+    "heard",
   ];
 
   const allPages: ProgrammaticPageConfig[] = [

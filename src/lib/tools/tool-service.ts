@@ -1,7 +1,7 @@
 // src/lib/tools/tool-service.ts
 // Service for loading and querying digital tools from /data/tools/
 
-import type { DigitalToolV3, HubSlug, ToolType, ClinicianHubSlug, ClinicianWorkflow } from "@/lib/schemas/digital-tool-v3";
+import type { DigitalToolV3, HubSlug, ToolType, ClinicianHubSlug, ClinicianWorkflow, SubHubSlug } from "@/lib/schemas/digital-tool-v3";
 import { TaxonomyService } from "./taxonomy-service";
 
 // ============================================================================
@@ -145,15 +145,17 @@ export class ToolService {
   }
 
   /**
-   * Get tools for a sub-hub (filtered by tool type)
+   * Get tools for a sub-hub (filtered by tool type OR explicit sub_hubs tag)
    */
   static async getBySubHub(subHubSlug: string): Promise<DigitalToolV3[]> {
     const subHub = TaxonomyService.getSubHub(subHubSlug);
     if (!subHub) return [];
 
     const allTools = await this.getAll();
-    return allTools.filter((tool) => 
-      tool.tool_types.includes(subHub.tool_type_filter as ToolType)
+    return allTools.filter((tool) =>
+      // Match by tool_type_filter OR by explicit sub_hubs tag
+      tool.tool_types.includes(subHub.tool_type_filter as ToolType) ||
+      (tool.sub_hubs && tool.sub_hubs.includes(subHubSlug as SubHubSlug))
     );
   }
 

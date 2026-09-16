@@ -34,9 +34,30 @@
     "is_specialty_agnostic": true
   },
   "pricing": {
-    "model": "enterprise-custom",
+    "model": "usage-based",
+    "starting_price_cents": 4000,
+    "starting_price_display": "$40/month + processing fees",
+    "free_tier": false,
     "quote_required": true,
-    "notes": "Pricing information needs verification"
+    "tiers": [
+      {
+        "name": "Bridge Payments Basic",
+        "price": "Starting at $40/month",
+        "price_cents": 4000,
+        "description": "Secure payment processing, online payments, card-on-file, reporting, HIPAA/PCI compliance."
+      },
+      {
+        "name": "Bridge Payments Advanced",
+        "price": "Custom pricing",
+        "description": "All Basic features plus payer reimbursement tools, advanced compliance management, HIPAA Risk Assessment."
+      }
+    ],
+    "transaction_fees": {
+      "credit_card_processing": "Starting at 1.99% (quoted rates typically 2.60%-3.08%)",
+      "notes": "Processing rates are separate from monthly platform fee and based on volume/payment mix."
+    },
+    "notes": "Monthly platform fee + separate processing rates. 3-year contracts common. February 2026 had month-long outage affecting merchants. Processing rates negotiable for larger accounts.",
+    "last_verified": "2026-09-15"
   },
   "compliance": {
     "hipaa_support": "unknown",
