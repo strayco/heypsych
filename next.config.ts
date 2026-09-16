@@ -218,6 +218,13 @@ const nextConfig: NextConfig = {
         destination: "/treatments/electroconvulsive-therapy",
         permanent: true,
       },
+      // SEO: Redirect legacy treatment aliases to canonical pages
+      // levomepromazine = methotrimeprazine (same drug, different naming)
+      {
+        source: "/treatments/levomepromazine",
+        destination: "/treatments/methotrimeprazine-nozinan",
+        permanent: true,
+      },
     ];
   },
 };

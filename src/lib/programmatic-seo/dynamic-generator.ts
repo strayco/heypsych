@@ -113,31 +113,50 @@ async function discoverTreatments(): Promise<TreatmentMeta[]> {
         try {
           const content = await fs.readFile(path.join(dirPath, file), 'utf-8');
           const data = JSON.parse(content);
-          
+
+          // Support both V2 and V3 schema formats
+          // V3: identity.slug, identity.name, identity.brand_names
+          // V2: slug, name, metadata.brand_names
+          const isV3 = data.schema_version === 3 || data.identity?.slug;
+
+          // Get name - V3 uses identity.name, V2 uses name
+          const rawName = isV3 ? data.identity?.name : data.name;
+
           // Extract brand name from "Escitalopram (Lexapro)" format
-          const nameMatch = data.name?.match(/^([^(]+)(?:\(([^)]+)\))?/);
-          const genericName = nameMatch?.[1]?.trim() || data.name || '';
-          const brandName = nameMatch?.[2]?.trim() || data.metadata?.brand_names?.[0] || genericName;
-          
-          // Extract linked conditions
-          const linkedConditions = (data.clinical_metadata?.linked_conditions || [])
+          const nameMatch = rawName?.match(/^([^(]+)(?:\(([^)]+)\))?/);
+          const genericName = nameMatch?.[1]?.trim() || rawName || '';
+
+          // V3 has identity.brand_names array, V2 has metadata.brand_names
+          const brandNames = isV3 ? data.identity?.brand_names : data.metadata?.brand_names;
+          const brandName = nameMatch?.[2]?.trim() || brandNames?.[0] || genericName;
+
+          // Extract linked conditions - support both V2 and V3 formats
+          // V3: clinical_profile.indications.primary[].condition_slug
+          // V2: clinical_metadata.linked_conditions[].slug
+          const linkedConditionsV3 = (data.clinical_profile?.indications?.primary || [])
+            .map((ind: any) => ind.condition_slug)
+            .filter(Boolean);
+          const linkedConditionsV2 = (data.clinical_metadata?.linked_conditions || [])
             .map((lc: any) => lc.slug)
             .filter(Boolean);
-          
-          // Also check primary_indications for condition slugs
+
+          // Also check primary_indications for condition slugs (V2 fallback)
           const primaryIndications = (data.clinical_metadata?.primary_indications || [])
             .map((ind: string) => ind.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))
             .filter(Boolean);
-          
+
+          // Get slug - V3 uses identity.slug, V2 uses slug or derived from filename
+          const slug = (isV3 ? data.identity?.slug : data.slug) || file.replace('.json', '').replace('-v2', '');
+
           treatments.push({
-            slug: data.slug || file.replace('.json', '').replace('-v2', ''),
-            name: data.name || '',
+            slug,
+            name: rawName || '',
             brandName: brandName.toLowerCase(),
             genericName: genericName.toLowerCase(),
             type: dir,
-            linkedConditions: [...new Set([...linkedConditions, ...primaryIndications])],
-            hasDosageInfo: !!(data.clinical_metadata?.pharmacokinetics || data.sections?.find((s: any) => s.type === 'dosage')),
-            hasSideEffects: !!(data.sections?.find((s: any) => s.type === 'side_effects' || s.type === 'side-effects')),
+            linkedConditions: [...new Set([...linkedConditionsV3, ...linkedConditionsV2, ...primaryIndications])],
+            hasDosageInfo: !!(data.clinical_profile?.pharmacokinetics || data.clinical_metadata?.pharmacokinetics || data.sections?.find((s: any) => s.type === 'dosage')),
+            hasSideEffects: !!(data.sections?.find((s: any) => s.type === 'side_effects' || s.type === 'side-effects' || s.type === 'adverse_effects')),
             hasInteractions: !!(data.sections?.find((s: any) => s.type === 'interactions' || s.type === 'drug_interactions')),
           });
         } catch (e) {
