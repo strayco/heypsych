@@ -363,9 +363,9 @@ export class SitemapGenerator {
       { loc: `${this.options.baseUrl}/sitemap-symptoms.xml` }, // Symptom exploration pages
       { loc: `${this.options.baseUrl}/sitemap-assessments.xml` },
       { loc: `${this.options.baseUrl}/sitemap-resources.xml` },
+      { loc: `${this.options.baseUrl}/sitemap-learn.xml` }, // Learn articles (guides, research, explainers)
       { loc: `${this.options.baseUrl}/sitemap-hubs.xml` },
       { loc: `${this.options.baseUrl}/sitemap-static.xml` },
-      { loc: `${this.options.baseUrl}/sitemap-news.xml` },
       { loc: `${this.options.baseUrl}/sitemap-guide.xml` }, // Programmatic SEO pages
       { loc: `${this.options.baseUrl}/sitemap-tools.xml` }, // Tools directory pages
     ];

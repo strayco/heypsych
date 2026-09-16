@@ -105,7 +105,7 @@ function getAllTreatmentUrls(): string[] {
   if (!existsSync(treatmentsPath)) return [];
 
   const urls: string[] = [];
-  
+
   function scanDir(dir: string) {
     const items = readdirSync(dir, { withFileTypes: true });
     for (const item of items) {
@@ -121,8 +121,43 @@ function getAllTreatmentUrls(): string[] {
       }
     }
   }
-  
+
   scanDir(treatmentsPath);
+  return urls;
+}
+
+function getAllLearnUrls(): string[] {
+  const learnPath = join(process.cwd(), "data/learn");
+  if (!existsSync(learnPath)) return [];
+
+  return readdirSync(learnPath)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => `/learn/${f.replace(".json", "")}`);
+}
+
+function getAllToolUrls(): string[] {
+  const toolsPath = join(process.cwd(), "data/tools-v4/products");
+  if (!existsSync(toolsPath)) return [];
+
+  const urls: string[] = [];
+
+  function scanDir(dir: string) {
+    const items = readdirSync(dir, { withFileTypes: true });
+    for (const item of items) {
+      if (item.isDirectory()) {
+        scanDir(join(dir, item.name));
+      } else if (item.name.endsWith(".json")) {
+        try {
+          const content = JSON.parse(readFileSync(join(dir, item.name), "utf-8"));
+          if (content.slug) {
+            urls.push(`/tools/${content.slug}`);
+          }
+        } catch {}
+      }
+    }
+  }
+
+  scanDir(toolsPath);
   return urls;
 }
 
@@ -142,12 +177,16 @@ Examples:
   npx tsx scripts/push-indexnow.ts --all-comparisons
   npx tsx scripts/push-indexnow.ts --all-conditions
   npx tsx scripts/push-indexnow.ts --all-treatments
+  npx tsx scripts/push-indexnow.ts --all-learn
+  npx tsx scripts/push-indexnow.ts --all-tools
   npx tsx scripts/push-indexnow.ts --all
 
 Flags:
   --all-comparisons   Push all comparison pages
   --all-conditions    Push all condition pages
   --all-treatments    Push all treatment pages
+  --all-learn         Push all learn articles
+  --all-tools         Push all tool pages
   --all               Push everything
 `);
     return;
@@ -166,11 +205,19 @@ Flags:
       case "--all-treatments":
         urls.push(...getAllTreatmentUrls());
         break;
+      case "--all-learn":
+        urls.push(...getAllLearnUrls());
+        break;
+      case "--all-tools":
+        urls.push(...getAllToolUrls());
+        break;
       case "--all":
         urls.push(...getAllComparisonUrls());
         urls.push(...getAllConditionUrls());
         urls.push(...getAllTreatmentUrls());
-        urls.push("/", "/treatments", "/conditions", "/resources");
+        urls.push(...getAllLearnUrls());
+        urls.push(...getAllToolUrls());
+        urls.push("/", "/treatments", "/conditions", "/resources", "/learn", "/tools");
         break;
       default:
         if (!arg.startsWith("--")) {
