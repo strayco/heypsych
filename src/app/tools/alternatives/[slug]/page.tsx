@@ -19,6 +19,9 @@ import {
   Zap,
   CheckCircle2,
   ArrowUpRight,
+  Clock,
+  FileDown,
+  AlertTriangle,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { ClinicianToolService, type ClinicianToolV4 } from "@/lib/tools/clinician-tool-service";
@@ -117,6 +120,64 @@ function scoreAlternative(tool: ClinicianToolV4, originalTool: ClinicianToolV4):
   score += overlap * 5;
 
   return score;
+}
+
+// Migration complexity estimate
+function getMigrationComplexity(tool: ClinicianToolV4): {
+  level: "easy" | "moderate" | "complex";
+  timeEstimate: string;
+  keySteps: string[];
+} {
+  if (tool.primary_category === "ehr-practice-management") {
+    return {
+      level: "complex",
+      timeEstimate: "2-4 weeks",
+      keySteps: [
+        "Export all patient data (demographics, notes, documents)",
+        "Set up new system and import data",
+        "Run both systems in parallel for 1-2 weeks",
+        "Train staff and notify patients of portal changes",
+      ],
+    };
+  }
+
+  if (tool.primary_category.includes("billing")) {
+    return {
+      level: "moderate",
+      timeEstimate: "1-2 weeks",
+      keySteps: [
+        "Export claims history and outstanding AR",
+        "Set up new billing system with fee schedules",
+        "Configure clearinghouse connection",
+        "Keep old system access for 90+ days for AR follow-up",
+      ],
+    };
+  }
+
+  if (tool.primary_category === "provider-network-virtual-care") {
+    return {
+      level: "moderate",
+      timeEstimate: "2-4 months",
+      keySteps: [
+        "Review contract terms and notice period",
+        "Begin direct insurance credentialing (60-120 days)",
+        "Set up your own billing solution",
+        "Transfer eligible patients to your practice",
+      ],
+    };
+  }
+
+  // AI scribes, telehealth, and other tools
+  return {
+    level: "easy",
+    timeEstimate: "1-3 days",
+    keySteps: [
+      "Export any saved templates or settings",
+      "Set up new tool and configure preferences",
+      "Test with a few sessions before going fully live",
+      "Cancel old subscription",
+    ],
+  };
 }
 
 // Types for specialized recommendations
@@ -250,6 +311,9 @@ export default async function AlternativesPage({ params }: PageProps) {
   // Get specialized recommendations with concrete reasons
   const specializedRecs = getSpecializedRecommendations(tool, alternatives);
 
+  // Get migration complexity for the migration guide section
+  const migrationComplexity = getMigrationComplexity(tool);
+
   // Structured data
   const structuredData = {
     "@context": "https://schema.org",
@@ -316,13 +380,13 @@ export default async function AlternativesPage({ params }: PageProps) {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href={`/tools/switch-from/${slug}`}
+              <a
+                href="#migration-guide"
                 className="inline-flex items-center gap-2 rounded-lg border border-separator bg-canvas px-4 py-2 text-sm font-medium text-label-primary hover:border-treatment/30 transition-colors"
               >
                 <RefreshCw className="h-4 w-4" />
                 Migration Guide
-              </Link>
+              </a>
               <Link
                 href={`/tools/for-clinicians/${SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category] || tool.primary_category}/${slug}/`}
                 className="inline-flex items-center gap-2 text-sm text-treatment hover:underline"
@@ -471,6 +535,86 @@ export default async function AlternativesPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Migration Guide Section */}
+        <section id="migration-guide" className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-xl font-semibold text-label-primary flex items-center gap-2 mb-2">
+              <FileDown className="h-5 w-5 text-treatment" />
+              How to Switch from {tool.name}
+            </h2>
+            <p className="text-sm text-label-secondary mb-6">
+              Migration guide with estimated timeline and key steps
+            </p>
+
+            {/* Complexity indicator */}
+            <div className={`rounded-xl border p-5 mb-6 ${
+              migrationComplexity.level === "easy" ? "bg-positive-tint/30 border-positive-border/30" :
+              migrationComplexity.level === "moderate" ? "bg-warning/10 border-warning/20" :
+              "bg-destructive/10 border-destructive/20"
+            }`}>
+              <div className="flex items-center gap-3">
+                <Clock className={`h-5 w-5 ${
+                  migrationComplexity.level === "easy" ? "text-positive-600" :
+                  migrationComplexity.level === "moderate" ? "text-warning" :
+                  "text-destructive"
+                }`} />
+                <div>
+                  <span className="font-semibold text-label-primary">
+                    Migration Complexity: <span className="capitalize">{migrationComplexity.level}</span>
+                  </span>
+                  <span className="text-label-secondary ml-2">
+                    · Estimated time: {migrationComplexity.timeEstimate}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Key migration steps */}
+            <div className="rounded-xl border border-separator bg-canvas p-5">
+              <h3 className="font-semibold text-label-primary mb-4">Key Migration Steps</h3>
+              <ul className="space-y-3">
+                {migrationComplexity.keySteps.map((step, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-treatment shrink-0 mt-0.5" />
+                    <span className="text-label-secondary">{step}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Important tips */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <div className="flex items-start gap-3 rounded-xl border border-separator bg-canvas p-4">
+                <AlertTriangle className="h-5 w-5 text-warning shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-label-primary text-sm">Export First</h4>
+                  <p className="text-xs text-label-tertiary mt-1">
+                    Always export your data before canceling—you may lose access immediately.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 rounded-xl border border-separator bg-canvas p-4">
+                <AlertTriangle className="h-5 w-5 text-warning shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-label-primary text-sm">Check Contract</h4>
+                  <p className="text-xs text-label-tertiary mt-1">
+                    Review cancellation terms and notice periods to avoid fees.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 rounded-xl border border-separator bg-canvas p-4">
+                <AlertTriangle className="h-5 w-5 text-warning shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-label-primary text-sm">Notify Team</h4>
+                  <p className="text-xs text-label-tertiary mt-1">
+                    Ensure staff knows about the switch and schedule training time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Other Alternatives */}
         {otherAlternatives.length > 0 && (
           <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
@@ -542,17 +686,17 @@ export default async function AlternativesPage({ params }: PageProps) {
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link
-              href={`/tools/switch-from/${slug}`}
-              className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
-            >
-              Switch from {tool.name}
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <Link
               href={`/tools/integrations/${slug}`}
               className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
             >
               {tool.name} integrations
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link
+              href={`/tools/compare?tools=${slug}`}
+              className="flex items-center gap-1 text-sm font-medium text-treatment hover:underline"
+            >
+              Compare tools
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link

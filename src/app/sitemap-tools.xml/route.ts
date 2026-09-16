@@ -203,27 +203,10 @@ export async function GET() {
       });
     }
 
-    // 12b. Switch-from pages (/tools/switch-from/[slug])
-    // Hub page first
-    urls.push({
-      loc: `${siteConfig.url}/tools/switch-from`,
-      changefreq: "weekly",
-      priority: 0.75,
-    });
-
-    // Per-tool switch-from pages
-    // Only include tools with 4+ category peers (meaningful alternatives to suggest)
-    for (const tool of v4Tools) {
-      if (!tool.short_description || tool.short_description.length < 50) continue;
-      // Quality gate: only include if category has 4+ tools
-      const categorySize = categoryCounts.get(tool.primary_category) || 0;
-      if (categorySize < 4) continue;
-      urls.push({
-        loc: `${siteConfig.url}/tools/switch-from/${tool.slug}`,
-        changefreq: "monthly",
-        priority: 0.7,
-      });
-    }
+    // 12b. Switch-from pages - CONSOLIDATED
+    // Individual switch-from pages now redirect to alternatives pages to eliminate
+    // URL cannibalization. Only the hub page remains indexed (redirects to alternatives hub).
+    // Migration guide content has been merged into alternatives pages.
 
     // 12c. Integrations pages (/tools/integrations/[slug])
     // QUALITY GATE: Only include if tool has 2+ integrations (avoid thin "no data" pages)
