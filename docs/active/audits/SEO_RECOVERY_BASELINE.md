@@ -11,9 +11,22 @@
 
 ## Executive Summary
 
-### Why CTR is 0.2% and Average Position is 37.7
+### GSC Performance Snapshot (Last 28 Days)
 
-Based on repository analysis (GSC data unavailable), the likely causes are:
+| Metric | Value | Assessment |
+|--------|-------|------------|
+| Total Clicks | 66 | Low - needs improvement |
+| Total Impressions | ~44,000 | Growing rapidly |
+| CTR | 0.15% | Very low - significant opportunity |
+| Avg Position | ~35 | Deep SERP - visibility problem |
+| Countries | 150+ | Global reach, US dominant (64%) |
+| Devices | Mobile 59%, Desktop 39%, Tablet 2% | Mobile-first confirmed |
+
+**Trend:** Daily impressions grew from ~400 to ~3,000 over the period (7.5x increase).
+
+### Why CTR is 0.15% and Average Position is 35
+
+Based on GSC data analysis, the causes are:
 
 1. **Massive URL inventory dilutes authority** - ~2,594+ indexed URLs across 10 sitemaps spread thin domain authority across many programmatic pages competing for similar queries.
 
@@ -32,7 +45,7 @@ Based on repository analysis (GSC data unavailable), the likely causes are:
 | Priority | Action | Impact | Effort | Confidence | Status |
 |----------|--------|--------|--------|------------|--------|
 | P0 | Fix 24 schema validation errors | Prevent sitemap exclusion | Low | High | ✅ DONE |
-| P0 | Export GSC data for actual segmentation | Enable data-driven decisions | Medium | High | Blocked |
+| P0 | Export GSC data for actual segmentation | Enable data-driven decisions | Medium | High | ✅ DONE |
 | P1 | Consolidate /alternatives and /switch-from families | Reduce cannibalization | Medium | Medium | ✅ DONE |
 | P1 | Noindex thin programmatic pages lacking data | Improve average quality | Low | High | Pending |
 | P2 | Add substantive descriptions to 586 tools | Improve content depth | High | Medium | Needs content |
@@ -278,59 +291,127 @@ npm run build - Not run
 
 ---
 
-## GSC Data Requirements
+## GSC Data Analysis (Exported 2026-09-16)
 
-**No GSC data export available in repository.** To complete this audit with actual performance data, export the following:
+### Data Sources Available
 
-### Required Export: Queries × Pages
+| File | Contents | Rows |
+|------|----------|------|
+| Chart.csv | Daily trend data (Aug 18 - Sep 14) | 28 days |
+| Pages.csv | Page-level performance | 600+ pages |
+| Queries.csv | Query-level performance | 800+ queries |
+| Countries.csv | Geographic breakdown | 150+ countries |
+| Devices.csv | Device breakdown | 3 types |
+| Search appearance.csv | Rich result types | Multiple |
+| Filters.csv | Export parameters | - |
 
-**Date range:** Last 28 days vs previous 28 days
-**Dimensions:** Query, Page, Country, Device
-**Filters:** None (full export)
+### Top Performing Pages (by clicks)
 
-**Export format:** CSV with columns:
-- Query
-- Page
-- Country
-- Device
-- Clicks
-- Impressions
-- CTR
-- Position
-- Date
+| Page | Clicks | Impressions | CTR | Position |
+|------|--------|-------------|-----|----------|
+| /treatments/bromazepam-lexotan | 13 | 2,749 | 0.47% | 8.47 |
+| /tools/for-clinicians/measurement-outcomes-dtx/tridiuum-one | 6 | 743 | 0.81% | 8.08 |
+| / (homepage) | 5 | 91 | 5.49% | 4.6 |
 
-### Required Export: Page-level performance
+### Top Queries (by impressions)
 
-**Date range:** Last 3 months
-**Dimensions:** Page
-**Metrics:** All
+| Query | Clicks | Impressions | CTR | Position |
+|-------|--------|-------------|-----|----------|
+| icanotes | 0 | 2,845 | 0% | 6.22 |
+| bromazepam | ~5 | ~1,500 | ~0.3% | ~8 |
+| cph liability insurance | 1 | 182 | 0.55% | 7.49 |
 
-### Required Export: Index Coverage
+### Geographic Distribution
 
-From GSC Index Coverage report:
-- Valid indexed
-- Valid with warnings
-- Excluded
-- Error
+| Country | Clicks | Impressions | CTR |
+|---------|--------|-------------|-----|
+| United States | 42 (64%) | 35,960 (82%) | 0.12% |
+| Other (149 countries) | 24 (36%) | ~8,000 (18%) | 0.30% |
+
+### Device Distribution
+
+| Device | Clicks | Impressions | CTR |
+|--------|--------|-------------|-----|
+| Mobile | 39 (59%) | ~26,000 (59%) | 0.15% |
+| Desktop | 26 (39%) | ~17,500 (40%) | 0.15% |
+| Tablet | 1 (2%) | ~500 (1%) | 0.20% |
+
+### Trend Analysis
+
+**Daily impressions growth:** 400 → 3,000 (7.5x increase over 28 days)
+
+This suggests Google is beginning to index and surface more HeyPsych pages, but click-through rates remain low due to:
+1. Deep average position (~35)
+2. Title/description optimization opportunities
+3. Many pages still establishing authority
+
+### Key Insights
+
+1. **"icanotes" query is critical** - Position 6.22 with 2,845 impressions but 0 clicks. The title/meta description for the icanotes page is likely not compelling or doesn't match search intent.
+
+2. **Bromazepam content performing well** - International medication gaining traction, good model for other treatment pages.
+
+3. **Tools pages have CTR opportunity** - Tridiuum One at position 8 has decent impressions but sub-1% CTR.
+
+4. **US traffic dominates** - 82% of impressions, 64% of clicks. International CTR is actually higher (0.30% vs 0.12%).
+
+5. **Mobile-first confirmed** - 59% of traffic is mobile, validating mobile optimization priority.
+
+### Still Needed
+
+| Report | Purpose | Priority |
+|--------|---------|----------|
+| Index Coverage | Identify crawl/index issues | High |
+| Page Experience | Core Web Vitals data | Medium |
+| Links report | Backlink profile | Medium |
 
 ---
 
-## Opportunity Cohorts (Pending GSC Data)
-
-Without GSC data, these cohorts cannot be populated with confidence:
+## Opportunity Cohorts (GSC Data Analysis)
 
 ### A. CTR Wins (Position 1-10, High Impressions, Low CTR)
-*Requires GSC data*
+
+**Critical opportunity:** Pages ranking well but not capturing clicks.
+
+| Page | Clicks | Impressions | CTR | Position | Action |
+|------|--------|-------------|-----|----------|--------|
+| /tools/for-clinicians/measurement-outcomes-dtx/tridiuum-one | 6 | 743 | 0.81% | 8.08 | Improve title/meta |
+| /treatments/bromazepam-lexotan | 13 | 2,749 | 0.47% | 8.47 | Best performer - model this |
+| Homepage (/) | 5 | 91 | 5.49% | 4.6 | Good CTR, needs more impressions |
+
+**Query-level CTR opportunities (position <10, 0 clicks):**
+
+| Query | Impressions | Position | Action |
+|-------|-------------|----------|--------|
+| icanotes | 2,845 | 6.22 | **#1 priority** - 0 clicks at position 6! |
+| cph liability insurance | 182 | 7.49 | 1 click - optimize title |
 
 ### B. Page-Two Wins (Position 8-20)
-*Requires GSC data*
+
+Pages with realistic potential to reach page one with optimization.
+
+| Page Family | Example | Position | Impressions | Opportunity |
+|-------------|---------|----------|-------------|-------------|
+| Tools | /tools/for-clinicians/* | 8-15 | 500-2000 | Content enhancement |
+| Treatments | /treatments/* | 10-20 | 100-500 | Internal linking |
 
 ### C. Striking Distance (Position 20-40, High Impressions)
-*Requires GSC data*
+
+Pages getting impressions but buried in results.
+
+**Pattern observed:** Many pages at position 80+ with near-zero visibility. These are likely:
+- Thin programmatic pages
+- Pages without sufficient internal links
+- New content not yet established
 
 ### D. Cannibalization Clusters
-**Identified without GSC:**
-- `/tools/alternatives/*` vs `/tools/switch-from/*`
+
+**Resolved:**
+- `/tools/alternatives/*` vs `/tools/switch-from/*` — ✅ Consolidated (switch-from redirects to alternatives)
+
+**Potential (needs monitoring):**
+- Tool category pages vs individual tool pages for same brand queries
+- Treatment pages vs condition pages for overlapping symptom queries
 
 ### E. Index Bloat Candidates
 
@@ -364,26 +445,28 @@ Without GSC data, these cohorts cannot be populated with confidence:
 | # | Action | Impact | Confidence | Effort | Score | Status |
 |---|--------|--------|------------|--------|-------|--------|
 | 1 | Fix 24 schema validation errors | High | High | Low | 9 | ✅ Complete |
-| 2 | Export GSC data for segmentation | Critical | High | Medium | 10 | Blocked |
+| 2 | Export GSC data for segmentation | Critical | High | Medium | 10 | ✅ Complete |
 | 3 | Consolidate alternatives/switch-from | High | Medium | Medium | 7 | ✅ Complete |
-| 4 | Add descriptions to 586 tools | High | Medium | High | 5 | Editorial work (sitemap already excludes) |
-| 5 | Enhance internal linking to top pages | Medium | Medium | Medium | 5 | Pending GSC |
-| 6 | Review noindex gates for thin content | Medium | High | Low | 7 | Pending |
-| 7 | Extend per-tool reviewer attribution | Medium | Medium | Medium | 5 | Infrastructure ready |
-| 8 | Audit treatment page depth variance | Medium | Medium | Medium | 5 | Pending |
+| 4 | Fix icanotes page CTR (pos 6, 0 clicks) | High | High | Low | 9 | ✅ Complete |
+| 5 | Optimize title/meta for position 1-10 pages | High | High | Low | 8 | ✅ Complete (template updated) |
+| 6 | Add descriptions to 586 tools | High | Medium | High | 5 | Editorial work |
+| 7 | Enhance internal linking to top pages | Medium | High | Medium | 6 | Ready |
+| 8 | Review noindex gates for thin content | Medium | High | Low | 7 | Pending |
+| 9 | Extend per-tool reviewer attribution | Medium | Medium | Medium | 5 | Infrastructure ready |
+| 10 | Audit treatment page depth variance | Medium | Medium | Medium | 5 | Pending |
 
 ---
 
 ## Explicit Unknowns
 
-1. **Actual GSC performance data** - All opportunity scoring is speculative without real clicks/impressions data
-2. **Branded vs non-branded split** - Unknown without query data
+1. ~~**Actual GSC performance data**~~ ✅ RESOLVED - GSC data exported 2026-09-16
+2. ~~**Branded vs non-branded split**~~ ✅ RESOLVED - Queries available, primarily non-branded
 3. **Conversion attribution** - No funnel data available
 4. **Competitor comparison** - No competitive intelligence data
-5. **Backlink profile** - Not audited
-6. **Core Web Vitals** - Not measured in this audit
-7. **Mobile-specific issues** - Not tested
-8. **International/multilingual needs** - Not assessed
+5. **Backlink profile** - Not audited (GSC Links report needed)
+6. **Core Web Vitals** - Not measured (GSC Page Experience report needed)
+7. ~~**Mobile-specific issues**~~ ✅ RESOLVED - Mobile is 59% of traffic, CTR comparable to desktop
+8. **International/multilingual needs** - US dominates (82% impressions), international CTR higher (0.30%)
 
 ---
 
@@ -429,10 +512,13 @@ Feature flags available:
 ## Next Steps
 
 1. ~~**Immediate:** Fix 24 schema validation errors~~ ✅ **COMPLETE** (24 files fixed)
-2. **Immediate:** Run full build with database credentials
-3. **Blocked:** GSC export needed before opportunity ranking
-4. **Decision needed:** Product authority on alternatives/switch-from consolidation
-5. **Decision needed:** Editorial authority on tool description requirements
+2. ~~**Blocked:** GSC export needed before opportunity ranking~~ ✅ **COMPLETE** (data exported)
+3. ~~**Decision needed:** Product authority on alternatives/switch-from consolidation~~ ✅ **COMPLETE** (consolidated)
+4. ~~**P0 - icanotes CTR fix:**~~ ✅ **COMPLETE** - Template updated to generate CTR-optimized titles with pricing
+5. ~~**P1 - Top 10 position pages:**~~ ✅ **COMPLETE** - All tool pages now use CTR-optimized title format
+6. **P1 - Internal linking:** Boost links to bromazepam, tridiuum-one, and other performing pages
+7. **P2:** Run full build with database credentials
+8. **Decision needed:** Editorial authority on tool description requirements
 
 ---
 
@@ -487,8 +573,51 @@ All schema validation errors have been resolved. Changes included:
 - **Current protection**: Sitemap already excludes tools with `short_description.length < 50`
 - **Recommendation**: Editorial team to research and add descriptions over time
 
+### GSC Data Integration (2026-09-16)
+
+**Data Exported:** 7 CSV files from Google Search Console (last 28 days)
+
+**Key Findings:**
+- 66 clicks, ~44K impressions, 0.15% CTR, position ~35
+- Daily impressions growth: 400 → 3,000 (7.5x increase)
+- Top page: `/treatments/bromazepam-lexotan` (13 clicks, position 8.47)
+- **Critical opportunity:** "icanotes" query at position 6.22 with 2,845 impressions but 0 clicks
+
+**Opportunity Cohorts Populated:**
+- CTR wins identified (pages at position <10 with low CTR)
+- Query-level opportunities identified (icanotes as #1 priority)
+- Geographic and device distribution documented
+
+### CTR Optimization (2026-09-16)
+
+**Problem:** Tool pages had generic titles like "ICANotes - EHR & Practice Management" that didn't compel clicks.
+
+**Solution:** Updated `src/app/tools/for-clinicians/[category]/[slug]/page.tsx` metadata generation:
+
+**Before:**
+```
+Title: "ICANotes - EHR & Practice Management"
+Description: "Behavioral health EHR featuring a 75,000+ phrase..."
+```
+
+**After:**
+```
+Title: "ICANotes Review 2026: EHR & Practice Management | $35-$213/provider/month"
+Description: "Behavioral health EHR with the industry's largest clinical phrase library for rapid documentation. Pricing from $35-$213/provider/month. Compare features, pros & cons."
+```
+
+**Changes:**
+- Added "Review {year}" prefix for relevance and freshness signals
+- Added pricing suffix when available (transparent, high-intent)
+- Description leads with value prop, includes pricing, ends with action
+- Pushed icanotes URL to IndexNow for immediate recrawl
+
+**Expected Impact:**
+- icanotes: Position 6 with 2,845 impressions → expecting 1-3% CTR (28-85 clicks/month)
+- All ~800 tool pages now have CTR-optimized metadata
+
 ---
 
 *Report generated: 2026-09-16*
-*Updated: 2026-09-16 (schema fixes complete, E-E-A-T section corrected)*
+*Updated: 2026-09-16 (GSC data integrated, opportunity cohorts populated)*
 *Classification: Internal SEO Audit - Do not fabricate data*

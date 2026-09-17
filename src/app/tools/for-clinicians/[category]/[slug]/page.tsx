@@ -82,9 +82,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Slashless canonical for consistency with sitemap
   const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${canonicalCategorySlug}/${slug}`;
 
+  // CTR-optimized title: Include pricing if available, year, and value signals
+  const hasPricing = tool.pricing?.starting_price_display;
+  const priceNote = hasPricing ? ` | ${tool.pricing.starting_price_display}` : "";
+  const year = new Date().getFullYear();
+  const titleSuffix = category?.display_name || "Clinician Tool";
+
+  // Format: "ICANotes Review 2026: EHR & Practice Management | $35-$213/mo"
+  const title = `${tool.name} Review ${year}: ${titleSuffix}${priceNote}`;
+
+  // CTR-optimized description: Lead with value, include pricing
+  const descPricing = hasPricing ? ` Pricing from ${tool.pricing.starting_price_display}.` : "";
+  const descCore = tool.one_liner || tool.short_description || `${tool.name} for mental health clinicians.`;
+  const description = `${descCore}${descPricing} Compare features, pros & cons.`;
+
   return {
-    title: `${tool.name} - ${category?.display_name || "Clinician Tool"}`,
-    description: tool.short_description || tool.one_liner || `${tool.name} for mental health clinicians.`,
+    title,
+    description,
     alternates: {
       canonical: canonicalUrl,
     },
