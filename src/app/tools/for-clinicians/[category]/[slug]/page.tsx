@@ -83,8 +83,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${canonicalCategorySlug}/${slug}`;
 
   // CTR-optimized title: Include pricing if available, year, and value signals
-  const hasPricing = tool.pricing?.starting_price_display;
-  const priceNote = hasPricing ? ` | ${tool.pricing.starting_price_display}` : "";
+  const priceDisplay = tool.pricing?.starting_price_display;
+  const priceNote = priceDisplay ? ` | ${priceDisplay}` : "";
   const year = new Date().getFullYear();
   const titleSuffix = category?.display_name || "Clinician Tool";
 
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${tool.name} Review ${year}: ${titleSuffix}${priceNote}`;
 
   // CTR-optimized description: Lead with value, include pricing
-  const descPricing = hasPricing ? ` Pricing from ${tool.pricing.starting_price_display}.` : "";
+  const descPricing = priceDisplay ? ` Pricing from ${priceDisplay}.` : "";
   const descCore = tool.one_liner || tool.short_description || `${tool.name} for mental health clinicians.`;
   const description = `${descCore}${descPricing} Compare features, pros & cons.`;
 
