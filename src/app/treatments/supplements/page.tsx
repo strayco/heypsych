@@ -1,18 +1,9 @@
 import { Metadata } from "next";
-import { getSupplementsServer } from "@/lib/data/server-queries";
-import { TreatmentsClient } from "@/components/pages/treatments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Supplements hub page
- * Includes complete SEO metadata
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Force dynamic rendering - this is an index page, not SEO-critical
-// Prevents build-time database queries that can timeout
-export const dynamic = 'force-dynamic';
-
-// Generate SEO metadata for supplements hub page
 export const metadata: Metadata = {
   title: "Mental Health Supplements | Omega-3, Vitamin D, SAMe & Evidence-Based Options",
   description:
@@ -23,6 +14,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/supplements`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Mental Health Supplements",
     description:
       "Evidence-based supplements: omega-3, vitamin D, SAMe, magnesium, and other options for mental health.",
@@ -31,21 +23,22 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Mental Health Supplements",
     description: "Explore evidence-based supplements: omega-3, vitamin D, SAMe, and more.",
   },
 };
 
-export default async function SupplementsPage() {
-  const treatments = await getSupplementsServer();
-
+export default function SupplementsHubPage() {
   return (
-    <TreatmentsClient
-      treatments={treatments}
+    <TreatmentKindHub
+      modality="supplement"
       title="Supplements"
-      description="Evidence-based nutritional supplements that may support mental health and well-being."
-      showDisclaimer={true}
+      description="Nutritional supplements people use for mental health, with what the evidence does and does not show."
+      noun="supplements"
+      searchPlaceholder="Search supplements, e.g. omega-3, magnesium"
+      caution="Supplements can interact with medicines; check with a clinician or pharmacist first."
     />
   );
 }

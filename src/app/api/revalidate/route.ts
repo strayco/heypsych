@@ -14,7 +14,7 @@
  *   Body: { "path": "/treatments/happify" } or { "clearAll": true }
  */
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import {
   withAdminAuth,
@@ -87,6 +87,9 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
     // Ensure path starts with /
     const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
+    // Content read from Supabase is held in the data cache for a day (tag
+    // "supabase-content"); mark it stale so the page rebuilds with fresh rows.
+    revalidateTag("supabase-content", "max");
     revalidatePath(normalizedPath);
 
     return NextResponse.json({ revalidated: true, path: normalizedPath });

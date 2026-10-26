@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "hazelden-betty-ford",
   "name": "Hazelden Betty Ford",
-  "one_liner": "Hazelden Betty Ford provides comprehensive addiction treatment from virtual care to residential rehab, with 75+ years of experience in recovery.",
+  "one_liner": "Nonprofit addiction treatment, from virtual outpatient care to residential rehab, combining Twelve Step work with medical care and medication.",
   "best_for": [
-    "People seeking reputable, established addiction treatment",
-    "Those needing residential or intensive care",
-    "Families wanting comprehensive addiction support",
-    "Those whose insurance covers Hazelden Betty Ford"
+    "Adults with alcohol or drug addiction who want a structured program",
+    "People who need residential treatment or medically managed withdrawal",
+    "People with opioid use disorder who want medication (buprenorphine or naltrexone) within a Twelve Step program",
+    "Families who want a family program alongside a loved one's treatment"
   ],
   "not_for": [
-    "Those seeking only medication without intensive programming",
-    "People without insurance or ability to pay high costs",
-    "Those opposed to 12-Step philosophy in treatment"
+    "Anyone in crisis or overdose danger right now: call 911 or call/text 988",
+    "People on Medicare or most Medicaid plans (not accepted, apart from some HealthPartners Medicaid plans in Minnesota)",
+    "People who want a program without any Twelve Step component"
   ],
   "support_level": "clinical",
-  "short_description": "Hazelden Betty Ford provides comprehensive addiction treatment from virtual care to residential rehab, with 75+ years of experience in recovery.",
-  "long_description": "Hazelden Betty Ford is one of the most recognized names in addiction treatment, offering a full continuum of care from virtual outpatient to residential rehabilitation. Services include medical detox, residential treatment, outpatient programs, MAT, family programs, and alumni support. The organization operates treatment centers across the US and provides virtual services nationwide. Treatment integrates the 12-Step philosophy with evidence-based clinical care. While residential programs are intensive (and expensive without insurance), Hazelden Betty Ford's virtual and outpatient options provide more accessible entry points.",
+  "short_description": "Hazelden Betty Ford runs addiction treatment centers in several states and virtual programs in some, mostly paid through private insurance.",
+  "long_description": "The Hazelden Betty Ford Foundation is a US nonprofit that treats alcohol and drug addiction and related mental health conditions. It offers withdrawal management, residential treatment at centers in Minnesota, California, Oregon and Florida, intensive and standard outpatient programs, virtual (telehealth) outpatient care in some states, family programs and recovery support. Its COR-12 program combines medication for opioid use disorder with Twelve Step-based therapy. It is in network with many commercial insurers but does not take Medicare or most Medicaid plans, and it does not publish program prices; limited financial assistance is available. Its outcome figures are mostly its own patient surveys; one peer-reviewed uncontrolled study describes its opioid program.",
   "primary_hubs": [
     "substance-use",
     "find-support"
@@ -42,15 +42,34 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Varies by program",
-    "notes": "Insurance often covers. Residential programs expensive without coverage."
+    "starting_price": "Copay with insurance; self-pay prices not published",
+    "notes": "Cost depends on level of care and your plan. In network with many commercial insurers; Medicare and most Medicaid not accepted (exception: some HealthPartners Medicaid plans in Minnesota). Limited patient financial assistance.",
+    "sources": [
+      "https://www.hazeldenbettyford.org/insurance",
+      "https://www.hazeldenbettyford.org/rehab-treatment/outpatient-treatment"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.hazeldenbettyford.org/privacy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. 42 CFR Part 2 protections for substance use records."
+    "data_sold": "no",
+    "notes": "Patient records fall under HIPAA and 42 CFR Part 2; the website policy says it does not sell data but offers an opt-out of targeted advertising and honors GPC for ad sharing.",
+    "sources": [
+      "https://www.hazeldenbettyford.org/privacy",
+      "https://www.hazeldenbettyford.org/content/dam/hbff/images/sitecore/files/policies/privacypracticesnotice20170321.pdf"
+    ]
   },
   "seo": {
     "title": "Hazelden Betty Ford | HeyPsych",
@@ -78,7 +97,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "website": "https://www.hazeldenbettyford.org",
@@ -86,12 +105,28 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "COR-12 opioid program at Hazelden Betty Ford: medication for opioid use disorder within Twelve Step-based residential care",
+        "citation": {
+          "authors": "Klein AA, Seppala MD",
+          "title": "Medication-assisted treatment for opioid use disorder within a 12-step based treatment center: Feasibility and initial results",
+          "journal": "Journal of Substance Abuse Treatment",
+          "year": 2019,
+          "doi": "10.1016/j.jsat.2019.06.009"
+        },
+        "outcome": "Most completed residential treatment; taking medication as prescribed was associated with higher abstinence at 1 and 6 months.",
+        "sample_size": 253,
+        "study_design": "Naturalistic prospective cohort (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Addiction treatment",
-      "Residential rehab",
-      "12-Step treatment",
-      "Substance use continuum"
+      "Residential addiction treatment",
+      "Medically managed withdrawal",
+      "Intensive and standard outpatient programs, in person or virtual",
+      "Medication for opioid use disorder within Twelve Step-based care",
+      "Family programs and recovery support"
     ]
   },
   "related_tools": [],
@@ -99,5 +134,17 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.hazeldenbettyford.org",
-  "updated_at": "2026-09-02T06:10:49.774Z"
+  "updated_at": "2026-09-02T06:10:49.774Z",
+  "audience": "patient",
+  "patient_summary": "Hazelden Betty Ford treats alcohol and drug addiction, from virtual outpatient groups to residential rehab. You start by calling admissions or checking your insurance online, and they recommend a level of care. Most people pay through private insurance; prices are not published and Medicare and most Medicaid plans are not accepted.",
+  "availability": {
+    "state": "limited",
+    "note": "Residential centers in MN, CA, OR and FL plus outpatient sites; virtual care only in some states. Does not take Medicare or most Medicaid.",
+    "checked": "2026-10-23",
+    "sources": [
+      "https://www.hazeldenbettyford.org/insurance",
+      "https://www.hazeldenbettyford.org/mental-health-services",
+      "https://www.hazeldenbettyford.org/rehab-treatment/outpatient-treatment"
+    ]
+  }
 }

@@ -83,7 +83,7 @@ export function OrganizationsTab({ resources }: Props) {
         <Card>
           <CardContent className="p-4">
             <div className="relative">
-              <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0" />
+              <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-tertiary" />
               <Input
                 type="text"
                 placeholder="Search organizations and communities..."
@@ -176,7 +176,7 @@ export function OrganizationsTab({ resources }: Props) {
       <Card>
         <CardContent className="p-4">
           <div className="relative">
-            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0" />
+            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-tertiary" />
             <Input
               type="text"
               placeholder="Search this category..."
@@ -208,9 +208,9 @@ export function OrganizationsTab({ resources }: Props) {
                     <p className="text-sm text-label-primary">{sectionResources.length} resources</p>
                   </div>
                   {isExpanded ? (
-                    <ChevronUp className="h-5 w-5 text-label-primary0" />
+                    <ChevronUp className="h-5 w-5 text-label-tertiary" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-label-primary0" />
+                    <ChevronDown className="h-5 w-5 text-label-tertiary" />
                   )}
                 </div>
               </button>

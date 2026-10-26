@@ -128,7 +128,9 @@ export function getLinkPath(
     case "provider":
       return `/providers/${slug}`;
     case "assessment":
-      return `/resources/assessments-screeners/${slug}`;
+      // Assessments are resource pages (/resources/phq-9). The old
+      // /resources/assessments-screeners/<slug> path never existed and 404'd.
+      return `/resources/${slug}`;
     case "resource":
       return `/resources/${slug}`;
     default:

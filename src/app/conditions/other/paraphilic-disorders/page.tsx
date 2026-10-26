@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/paraphilic-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Paraphilic Disorders",
     description: "Clinical guide to paraphilic disorders and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/paraphilic-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Clinical information about paraphilic disorders and evidence-based treatment approaches.",
   icon: "eye",
   iconColor: "text-red-600",
-  bgColor: "from-red-50",
-  gradient: "from-red-900 via-rose-900 to-red-900",
+  bgColor: "bg-red-50",
+  gradient: "bg-red-900",
 };
 
 export default async function ParaphilicDisordersPage() {

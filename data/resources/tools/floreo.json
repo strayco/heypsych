@@ -3,22 +3,20 @@
   "kind": "tool",
   "slug": "floreo",
   "name": "Floreo",
-  "one_liner": "VR social skills and communication therapy for autism and neurodivergent individuals",
+  "one_liner": "Virtual-reality lessons for autistic and other neurodivergent children and adults to practise social, safety and daily-living skills with a guide.",
   "best_for": [
-    "Autism specialists",
-    "BCBAs",
-    "speech-language pathologists",
-    "school-based therapists",
-    "and occupational therapists working with neurodivergent children and adults"
+    "Autistic children, teens and adults practising social and safety skills with a parent, teacher or therapist",
+    "Families, schools and clinics wanting repeatable practice for situations that are hard to stage in real life"
   ],
   "not_for": [
-    "Practices without access to VR equipment",
-    "or patients unable to tolerate VR headset use"
+    "Anyone in crisis or thinking about suicide: call or text 988",
+    "Anyone who cannot use a VR headset comfortably (motion sickness, sensory distress)",
+    "Anyone looking for a replacement for a full therapy program such as ABA or speech therapy"
   ],
-  "support_level": "self-help",
-  "short_description": "VR-based social skills and communication therapy platform for neurodivergent individuals, with immersive lessons developed by educators and clinicians for autis",
-  "long_description": "Floreo VR is a user-friendly therapy tool for neurodivergent individuals of all ages and capabilities, designed to teach social, communication, behavioral, and daily life skills through virtual reality. Created in collaboration with educators, clinicians, and game designers, Floreo's lessons are grounded in evidence-based learning principles. The platform puts learners in virtual situations that are difficult to create naturally, such as street crossing safety, social interactions, and emotional regulation practice. A coaching device pairs with the VR headset to stream the learner's view in real-time, enabling clinician guidance. The standalone app also includes calming sensory spaces (an interactive aquarium and crystal cave) for relaxation and focus. Widely used in autism education and support settings, Floreo has been utilized with individuals with ADHD, PTSD, anxiety, and other neurotypes.",
-  "patient_summary": "VR-based social skills and communication therapy platform for neurodivergent individuals, with immersive lessons developed by educators and clinicians for autism support.",
+  "support_level": "coached",
+  "short_description": "Guided VR lessons for autistic and neurodivergent learners to practise social, communication, safety and daily-living skills.",
+  "long_description": "Floreo is a virtual-reality learning program for neurodivergent people of all ages, especially autistic learners. The learner practises situations in a headset (social greetings, joint attention, street safety, interacting with police, calming strategies) while a guide such as a parent, teacher, behaviour analyst or speech therapist runs and adjusts the lesson from a separate phone or tablet. A family subscription for one learner starts at $69.99 a month, with the headset separate; schools and clinics have tiered pricing. Medicaid waiver programs in some states, including Tennessee, New York, Wisconsin and North Carolina, reimburse it. A 2026 randomized trial of its police-safety module found modest short-term gains compared with a video program. A prescription version, FloreoRx, was submitted to the FDA for De Novo review in April 2026 and is not yet authorized.",
+  "patient_summary": "The learner wears a VR headset and practises real-world situations, such as greeting people, crossing a street or talking with a police officer, while a parent, teacher or therapist guides the lesson from a phone or tablet. Families can subscribe directly, and some state Medicaid waivers, schools and clinics pay for it.",
   "primary_hubs": [
     "anxiety-stress",
     "mood-depression"
@@ -32,23 +30,43 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
+    "ios": true,
     "android": false,
-    "web": true,
+    "web": false,
     "desktop": false,
-    "wearable": false
+    "wearable": true
   },
   "pricing": {
     "model": "subscription",
     "free_tier": false,
-    "starting_price": "$50/student/month",
-    "notes": "Subscriptions ~$50/student/month. PICO and iPhone-holding headsets available separately or bundled. Free Meta Quest headsets available for qualifying school districts through Meta donation."
+    "starting_price": "$69.99/month for one learner (software only)",
+    "notes": "Headset sold separately. School and clinic pricing is tiered by number of students and length. Reimbursed by Medicaid waivers in some states (TN, NY, WI, NC); a Category III CPT code (0770T) exists, but private insurance coverage varies. HSA/FSA use may be possible; check with your provider.",
+    "sources": [
+      "https://floreovr.com/learning-center/faq",
+      "https://www.prnewswire.com/news-releases/north-carolina-approves-reimbursement-of-vr-therapy-for-neurodivergent-residents-under-nc-innovations-waiver-302865547.html"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
+    "grade": "B",
+    "basis": {
+      "policy_url": "https://floreovr.com/privacy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "no",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false
+    "data_sold": "no",
+    "notes": "Says it does not sell personal information or use learner data for advertising, and acts as a HIPAA business associate in healthcare settings; a deletion right for all users is not clearly stated.",
+    "sources": [
+      "https://floreovr.com/privacy",
+      "https://floreovr.com/hipaa-notice"
+    ]
   },
   "seo": {
     "title": "Floreo VR: Autism Social Skills Therapy | HeyPsych",
@@ -76,20 +94,37 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "website": "https://floreovr.com/",
     "affiliate_url": "https://floreovr.com/"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging",
+    "evidence_based": true,
+    "evidence_level": "moderate",
     "primary_uses": [
-      "Autism specialists",
-      "BCBAs",
-      "speech-language pathologists",
-      "school-based therapists"
+      "Practising social and communication skills",
+      "Joint attention practice",
+      "Street and community safety skills",
+      "Practising interactions with police",
+      "Calming and self-regulation strategies"
+    ],
+    "clinical_trials": [
+      {
+        "study": "Floreo Police Safety Module RCT",
+        "citation": {
+          "authors": "Solorzano R, Turnacioglu S, Ravindran V, et al. (author order not verified)",
+          "title": "Virtual Reality Intervention to Empower Autistic People to Interact With Police: A Randomized Controlled Clinical Trial for Autistic Teens and Adults",
+          "journal": "Journal of Autism and Developmental Disorders",
+          "year": 2026,
+          "doi": "10.1007/s10803-026-07339-8",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42090023/"
+        },
+        "outcome": "Reduced fidgeting during live police interactions vs control; other improvements not significantly different between groups. Several authors are Floreo employees.",
+        "sample_size": 47,
+        "study_design": "Randomized controlled trial vs video-based program (BeSAFE)"
+      }
     ]
   },
   "related_tools": [],
@@ -97,5 +132,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://floreovr.com/",
-  "updated_at": "2026-09-02T05:18:37.201Z"
+  "updated_at": "2026-09-02T05:18:37.201Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-23",
+    "note": "Sold to families, schools and clinics; Medicaid waiver reimbursement in some states. FloreoRx (prescription version) is under FDA review.",
+    "sources": [
+      "https://floreovr.com/",
+      "https://floreovr.com/learning-center/faq",
+      "https://www.prnewswire.com/news-releases/north-carolina-approves-reimbursement-of-vr-therapy-for-neurodivergent-residents-under-nc-innovations-waiver-302865547.html"
+    ]
+  }
 }

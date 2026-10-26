@@ -19,7 +19,7 @@ export type ProductMetadataMap = Map<string, ProductArchitectureMetadata>;
 // INDIVIDUAL PRODUCT COST
 // ============================================================================
 
-type ProductCostResult = {
+export type ProductCostResult = {
   slug: string;
   minMonthlyCents: number | null;
   maxMonthlyCents: number | null;
@@ -31,9 +31,12 @@ type ProductCostResult = {
 };
 
 /**
- * Calculate cost for a single product
+ * Calculate cost for a single product.
+ *
+ * Exported as the canonical per-product estimator so the stack cost engine and
+ * the capability recommendation service price a product identically.
  */
-function calculateProductCost(
+export function calculateProductCost(
   productSlug: string,
   metadata: ProductArchitectureMetadata | undefined,
   fingerprint: PracticeFingerprint

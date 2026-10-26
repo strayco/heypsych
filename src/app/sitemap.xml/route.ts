@@ -20,7 +20,9 @@ export async function GET() {
   return NextResponse.redirect(`${baseUrl}/sitemap-index.xml`, {
     status: 301, // Permanent redirect
     headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      // A day, not a year-long "immutable": cheap either way, and it means a
+      // change to where /sitemap.xml points reaches crawlers within a day.
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
     },
   });
 }

@@ -123,8 +123,8 @@ test.describe('Entity Grounding: Knowledge Graph Mapping', () => {
   test('Multiple conditions have entity grounding', async ({ page }) => {
     const conditions = [
       'generalized-anxiety-disorder',
-      'post-traumatic-stress-disorder',
-      'bipolar-disorder',
+      'posttraumatic-stress-disorder',
+      'bipolar-i-disorder',
     ];
 
     for (const condition of conditions) {

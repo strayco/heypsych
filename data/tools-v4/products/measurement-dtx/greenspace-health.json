@@ -1,14 +1,14 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "4003077e-aae4-4312-bfb2-49039ec8f0c8",
+  "id": "a4de040b-a909-58c3-a931-5795bf5627d1",
   "slug": "greenspace-health",
   "name": "Greenspace Health",
-  "company_name": "Greenspace Health",
+  "company_name": "Greenspace Mental Health",
   "import_ref": {
-    "record_id": "MBC-0002",
-    "source_file": "measurement-dtx-research-2026",
-    "import_timestamp": "2026-08-22T00:00:00.000Z"
+    "record_id": "MH-GREENSPACE-HEALTH",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
     "status": "active"
@@ -18,23 +18,24 @@
   "capabilities": [
     "outcome-tracking",
     "phq9-gad7",
-    "patient-portal",
+    "progress-monitoring",
+    "reporting-dashboards",
     "ehr-integration",
+    "api-access",
     "hipaa-compliant",
     "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
-      "psychiatric-np-pa"
+      "psychologist",
+      "medical-director",
+      "practice-administrator"
     ],
     "practice_settings": [
       "group-practice",
-      "multi-site-enterprise",
       "community-mental-health",
-      "hospital-inpatient"
+      "multi-site-enterprise"
     ],
     "organization_sizes": [
       "small-2-10",
@@ -44,177 +45,75 @@
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
     "has_rcm": false,
     "has_telehealth": false,
     "has_measurement": true,
-    "has_mbc": true,
-    "has_patient_portal": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
-    "is_specialty_agnostic": false,
-    "has_e_prescribing": false
+    "is_specialty_agnostic": false
   },
-  "short_description": "Enterprise measurement-based care platform with 300+ assessments, 85+ EHR integrations, and automated outcome tracking for behavioral health organizations.",
-  "long_description": "Greenspace Health is a best-in-class measurement-based care platform that automates the collection and visualization of patient-reported outcome measures (PROMs) throughout treatment. The platform offers over 300 evidence-based assessments delivered automatically via SMS, email, or kiosk, with instant visualization for clinicians. Greenspace integrates with 85+ EHR/EMR systems including Epic, Oracle Cerner, Athenahealth, and Netsmart using FHIR, HL7, and open APIs. Evidence shows that regularly measuring progress with Greenspace increases the likelihood of significant patient improvement by 3.5x, improves clinical outcomes by 42%, and reduces no-show rates by 40%. The platform achieves an 83% assessment completion rate and is trusted by behavioral health clinics, hospitals, integrated health systems, and university student health centers.",
-  "one_liner": "Enterprise MBC platform with 300+ assessments and 85+ EHR integrations.",
+  "short_description": "Measurement-based care platform that sends, scores and tracks validated measures across a clinic, with EHR integrations and reporting.",
+  "long_description": "Greenspace automates delivery, scoring and aggregation of validated mental-health measures, with progress views for clinicians and outcome reporting for practice leaders. One monthly fee per clinic account covers unlimited therapists; pricing is by quote. It lists integrations with EHRs including Qualifacts, Netsmart myAvatar, Welligent and Epic. The company publishes a provider BAA and reports annual SOC 2 Type 2 examinations. Founded in 2015 out of St. Michael's Hospital, Toronto; serves the US and Canada.",
+  "one_liner": "Clinic-wide measurement-based care with outcome reporting, priced per clinic.",
   "best_for": [
-    "Behavioral health clinics implementing measurement-based care at scale",
-    "Health systems needing deep EHR integration (Epic, Cerner, Netsmart)",
-    "University counseling centers tracking student mental health outcomes",
-    "Community mental health organizations seeking quality improvement data"
+    "Group practices that want one clinic fee covering unlimited therapists",
+    "Practice leaders who need outcome reporting across clinicians",
+    "Groups on Qualifacts, Netsmart, Welligent or Epic that need EHR integration",
+    "Practices billing CPT 96127 that need scored measures documented"
   ],
   "not_for": [
-    "Solo practitioners seeking a simple assessment tool",
-    "Practices wanting all-in-one EHR with MBC built-in",
-    "Organizations with no existing EHR infrastructure"
+    "Solo clinicians who want a self-serve, published-price plan",
+    "SimplePractice users who need a documented integration",
+    "Buyers who want to start a trial without a sales call"
   ],
-  "website_url": "https://greenspacehealth.com",
-  "pricing_url": "https://greenspacehealth.com/pricing",
-  "support_url": "https://greenspacehealth.com/support",
-  "logo_url": "https://greenspacehealth.com/logo.png",
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "measurement-based-care",
+      "group-practice",
+      "organization"
+    ],
+    "notes": {
+      "measurement-based-care": "A dedicated MBC platform: automated measures, benchmarks and practice-wide outcome reporting.",
+      "group-practice": "One clinic fee covers unlimited therapists; pricing is by quote.",
+      "organization": "Integrates with Qualifacts, Netsmart, Welligent and Epic, with an annual SOC 2 Type 2 examination."
+    }
+  },
+  "website_url": "https://greenspacehealth.com/en-us/",
+  "pricing_url": "https://greenspacehealth.com/en-us/accounts/pricing",
   "pricing": {
-    "model": "flat-monthly",
-    "starting_price_cents": 2499,
-    "starting_price_display": "$24.99/month (Basic)",
+    "model": "enterprise-custom",
+    "starting_price_display": "By quote (per clinic)",
     "free_tier": false,
-    "free_trial_days": 14,
     "quote_required": true,
     "price_range": "mid-market",
-    "tiers": [
-      {
-        "name": "Basic",
-        "price": "$24.99/month",
-        "description": "Intuitive results delivery, automated assessment delivery, 18 evidence-based assessments"
-      },
-      {
-        "name": "Professional",
-        "price": "Contact for pricing",
-        "description": "Extended assessment library, advanced analytics"
-      },
-      {
-        "name": "Enterprise",
-        "price": "Contact for pricing",
-        "description": "Full 300+ assessment library, custom integrations, dedicated support, API access"
-      }
-    ],
-    "notes": "No cost to clients/patients. Organizations can request customized pricing. Free integration promotion available for new customers.",
-    "last_verified": "2026-09-15"
-  },
-  "mbc_details": {
-    "assessment_count": "300+",
-    "assessments_included": [
-      "PHQ-9",
-      "GAD-7",
-      "PCL-5",
-      "PHQ-A",
-      "AUDIT",
-      "DAST",
-      "Columbia Suicide Severity Rating Scale",
-      "Edinburgh Postnatal Depression Scale",
-      "Outcome Rating Scale (ORS)",
-      "Session Rating Scale (SRS)"
-    ],
-    "assessment_delivery": [
-      "email",
-      "sms",
-      "kiosk",
-      "in-session"
-    ],
-    "automated_scoring": true,
-    "automated_delivery": true,
-    "customizable_schedules": true,
-    "real_time_visualization": true,
-    "outcome_dashboards": true,
-    "provider_benchmarking": true,
-    "population_analytics": true,
-    "completion_rate": "83% average"
-  },
-  "clinical_evidence": {
-    "outcome_improvement": "3.5x more likely to achieve significant change",
-    "clinical_improvement": "42% higher overall improvement",
-    "no_show_reduction": "40% reduction in cancellations and no-shows"
+    "notes": "One monthly fee per clinic account covers unlimited therapists; clients pay nothing."
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "yes",
-    "pipeda_compliant": true,
-    "phipa_compliant": true,
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
-  },
-  "integrations": [
-    {
-      "name": "Epic",
-      "slug": "epic",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
+    "gdpr_compliant": "unknown",
+    "soc2_type": "type2",
+    "baa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://app.greenspacehealth.com/content/legal/baa/en-us/provider/",
+      "verified_date": "2026-10-23"
     },
-    {
-      "name": "Oracle Cerner",
-      "slug": "oracle-cerner",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Meditech",
-      "slug": "meditech",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Netsmart",
-      "slug": "netsmart",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Athenahealth",
-      "slug": "athenahealth",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "AdvancedMD",
-      "slug": "advancedmd",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "NextGen",
-      "slug": "nextgen",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Qualifacts",
-      "slug": "qualifacts",
-      "category": "ehr",
-      "integration_type": "native",
-      "verified": true
+    "soc2_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://greenspacehealth.com/en-us/greenspace-completes-another-soc2-type-2-examination/",
+      "verified_date": "2026-10-23"
     }
-  ],
-  "technical_specs": {
-    "api_type": "RESTful",
-    "fhir_support": true,
-    "hl7_support": true,
-    "smart_on_fhir": true,
-    "sso_support": [
-      "OAuth2.0",
-      "OpenID Connect",
-      "SAML 2.0"
-    ],
-    "total_integrations": "85+"
   },
+  "integrations": [],
   "seo": {
     "title": "Greenspace Health: Enterprise MBC Platform | HeyPsych",
     "meta_description": "Greenspace Health offers 300+ evidence-based assessments with 85+ EHR integrations. 3.5x better outcomes. HIPAA compliant MBC for behavioral health...",
@@ -246,38 +145,25 @@
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-10-23",
     "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 90
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
   },
   "related_tools": [
     "blueprint",
-    "mirah",
-    "owl-insights"
+    "novopsych"
   ],
   "competitor_tools": [
     "blueprint",
-    "mirah",
-    "owl-insights"
+    "novopsych"
   ],
-  "company_info": {
-    "headquarters": "Toronto, Ontario, Canada",
-    "markets": [
-      "United States",
-      "Canada"
-    ],
-    "customer_types": [
-      "Behavioral health clinics",
-      "Hospitals",
-      "Integrated health systems",
-      "University student health centers",
-      "Community mental health organizations"
-    ]
-  },
-  "created_at": "2026-08-22T00:00:00.000Z",
-  "updated_at": "2026-09-01T19:25:35.556Z",
-  "featured": true,
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
+  "featured": false,
   "status": "active",
-  "affiliate_url": "https://greenspacehealth.com"
+  "company_info": {
+    "founded_year": 2015
+  }
 }

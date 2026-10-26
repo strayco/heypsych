@@ -74,7 +74,7 @@ export function buildSafeDestinationUrl(
 ): string {
   // If no campaign URL, use internal tool page
   if (!campaignUrl) {
-    return `/tools/${toolSlug}/`;
+    return `/tools/${toolSlug}`;
   }
 
   // Validate the URL
@@ -86,7 +86,7 @@ export function buildSafeDestinationUrl(
   console.warn(
     `[CAMPAIGN_SERVICE] Invalid sponsored URL rejected: ${campaignUrl}, falling back to /tools/${toolSlug}/`
   );
-  return `/tools/${toolSlug}/`;
+  return `/tools/${toolSlug}`;
 }
 
 /**

@@ -24,8 +24,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       tinted: "bg-accent-tint border border-accent-border",
       // Accent - Prominent accent-tinted card
       accent: "bg-accent-tint border border-accent-border shadow-subtle",
-      // Glass - Translucent material effect
-      glass: "bg-surface/80 backdrop-blur-lg border border-separator/50",
+      // Glass - retired: translucent material is not part of the HeyPsych system.
+      // The name is kept for call sites and renders as a plain surface.
+      glass: "bg-surface border border-separator",
       // Subtle - Very minimal styling
       subtle: "bg-fill-quaternary border border-transparent",
     };
@@ -40,8 +41,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const interactiveClasses = interactive
       ? cn(
           "cursor-pointer",
-          "hover:shadow-card-2 hover:border-accent-border",
-          "active:scale-[0.99]",
+          "hover:-translate-y-0.5 hover:shadow-elevated hover:border-separator-opaque",
+          "motion-reduce:hover:translate-y-0",
+          "active:scale-[0.99] motion-reduce:active:scale-100",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         )
       : "";

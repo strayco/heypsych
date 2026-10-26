@@ -18,6 +18,7 @@
  */
 
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { EntityService } from "./entity-service";
 import type { Entity } from "@/lib/types/database";
 
@@ -51,10 +52,33 @@ export type EntityLookupResult =
  * @param slug - Entity slug to fetch
  * @returns EntityLookupResult with explicit status
  */
+/**
+ * Across requests and server instances: the Next data cache holds each entity
+ * for a day (tag "supabase-content"), so ISR regenerations and crawlers don't
+ * re-download the full row from Supabase. Errors throw and are never cached.
+ */
+const getBySlugShared = unstable_cache(
+  async (slug: string) => EntityService.getBySlug(slug),
+  ["entity-by-slug-v1"],
+  { revalidate: 86400, tags: ["supabase-content"] }
+);
+
+async function getBySlugCached(slug: string): Promise<Entity | null> {
+  try {
+    return await getBySlugShared(slug);
+  } catch (error) {
+    // Outside a Next request (scripts, tests) the data cache is unavailable.
+    if (error instanceof Error && /incrementalCache|static generation store|unstable_cache/i.test(error.message)) {
+      return EntityService.getBySlug(slug);
+    }
+    throw error;
+  }
+}
+
 export const getEntityBySlug = cache(
   async (slug: string): Promise<EntityLookupResult> => {
     try {
-      const entity = await EntityService.getBySlug(slug);
+      const entity = await getBySlugCached(slug);
 
       if (entity) {
         return { status: "found", entity };

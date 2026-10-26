@@ -29,16 +29,8 @@ export function buildToolSoftwareApplicationSchema(tool: DigitalToolV3): object 
     schema.operatingSystem = operatingSystems;
   }
 
-  // Aggregate rating (critical for SERP stars)
-  if (tool.app_rating && tool.total_reviews) {
-    schema.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: tool.app_rating,
-      reviewCount: tool.total_reviews,
-      bestRating: 5,
-      worstRating: 1,
-    };
-  }
+  // No aggregateRating: `app_rating` is legacy and unsourced, and rating
+  // markup must describe reviews collected on this site (Google policy).
 
   // Offers/pricing
   schema.offers = {

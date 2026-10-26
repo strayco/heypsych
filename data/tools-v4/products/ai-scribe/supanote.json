@@ -1,39 +1,33 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "e8f67f70-8610-40e9-ad41-27af8e7af696",
+  "id": "37b670d5-989c-5d95-8646-d6f9d8671e76",
   "slug": "supanote",
   "name": "Supanote",
-  "company_name": "Supanote",
-  "website": "https://supanote.ai",
-  "description": "Supanote is an AI scribe purpose-built for mental health professionals with 10+ note formats, 20+ therapy modalities, and 120+ languages. Pricing: Free (5 notes/month), Starter $29.99/mo (40 notes), Professional $39.99/mo (100 notes), Premium $69.99/mo (unlimited), XL $89.99/mo (unlimited + group sessions). Key differentiator: 'Super Fill' one-click feature pushes completed notes directly into SimplePractice, TherapyNotes, Valant, Tebra, and ICANotes—eliminating copy-paste. AI personalization engine learns each therapist's documentation style over time. HIPAA and PHIPA compliant. Priced higher than AutoNotes ($34/mo) and Mentalyc Pro ($69.99/mo) at the unlimited tier, but Super Fill EHR integration may justify premium for high-volume therapists.",
+  "company_name": "Supanote AI",
   "import_ref": {
-    "record_id": "MH-0162",
-    "source_row": 163,
-    "import_timestamp": "2026-08-22T20:50:40.784Z",
-    "source_file": "master-records.json"
+    "record_id": "MH-SUPANOTE",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
     "status": "active"
   },
   "primary_category": "ai-scribe-documentation",
   "secondary_categories": [],
-  "short_description": "Therapy AI scribe with Super Fill EHR integration. Free (5/mo) to $89.99/mo unlimited. 10+ note formats, 20+ modalities, 120+ languages. HIPAA + PHIPA.",
-  "one_liner": "Therapy AI scribe. Super Fill to SimplePractice/TherapyNotes. Free to $89.99/mo.",
   "capabilities": [
-    "ambient-listening",
     "note-generation",
     "voice-transcription",
+    "clinical-summarization",
+    "treatment-planning",
     "ehr-integration",
     "hipaa-compliant",
     "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
-      "psychiatric-np-pa"
+      "psychologist"
     ],
     "practice_settings": [
       "solo-practice",
@@ -42,8 +36,7 @@
     ],
     "organization_sizes": [
       "solo",
-      "small-2-10",
-      "medium-11-50"
+      "small-2-10"
     ]
   },
   "feature_flags": {
@@ -54,180 +47,91 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": true,
+    "has_mobile_app": false,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "company": {
-    "headquarters": "United States"
+  "short_description": "AI progress notes for therapists from recorded, dictated or uploaded sessions, with treatment plans and transfer into common EHRs.",
+  "long_description": "Supanote turns a recorded, dictated or uploaded therapy session into a progress note (SOAP, DAP, BIRP and custom formats) and can draft treatment plans. Starter is $19.99/month for 40 notes; Pro is $39.99/month for unlimited notes, EHR integration and automatic note deletion; XL ($69.99/month) adds group sessions. A group-practice plan with team permissions and a custom BAA is sold by demo. Every plan starts with a 14-day trial. The vendor states a BAA is available and that session audio is deleted after processing.",
+  "one_liner": "Therapy notes from a session recording, from $19.99/month.",
+  "best_for": [
+    "Solo therapists who want published pricing and a 14-day trial",
+    "Clinicians on SimplePractice, TherapyNotes or IntakeQ who want notes moved into the EHR",
+    "Part-time practitioners: Starter covers 40 notes a month",
+    "Group practices that need shared templates and team permissions"
+  ],
+  "not_for": [
+    "Psychiatric prescribers who need medication-management note structures",
+    "Buyers who require a SOC 2 report before purchase",
+    "Clinicians who want a scribe bundled into their EHR rather than a separate tool"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "solo-therapist",
+      "group-practice",
+      "low-volume"
+    ],
+    "notes": {
+      "solo-therapist": "Unlimited notes with EHR transfer on Pro ($39.99/month), with SOAP, DAP and BIRP formats and treatment plans.",
+      "group-practice": "A group plan adds team permissions, shared templates and a custom BAA (by demo).",
+      "low-volume": "Starter is $19.99/month for 40 notes, enough for a part-time caseload."
+    }
   },
+  "website_url": "https://www.supanote.ai",
+  "pricing_url": "https://www.supanote.ai/pricing",
   "pricing": {
     "model": "per-provider-month",
+    "starting_price_cents": 1999,
+    "starting_price_display": "$19.99/month (40 notes)",
+    "free_tier": false,
+    "free_trial_days": 14,
     "quote_required": false,
-    "starting_price_cents": 0,
-    "starting_price_display": "Free (5/mo) to $89.99/mo unlimited",
-    "currency": "USD",
-    "billing_period": "monthly",
-    "free_tier": true,
-    "free_tier_notes": "5 notes per month free. No credit card required.",
+    "price_range": "budget",
     "tiers": [
       {
-        "name": "Free",
-        "price": "$0",
-        "description": "5 clinical notes per month. Good for testing."
-      },
-      {
         "name": "Starter",
-        "price": "$29.99/month",
-        "description": "40 clinical notes per month. Basic features."
+        "price": "$19.99/month",
+        "price_cents": 1999,
+        "description": "40 notes a month, custom templates, treatment plans, BAA."
       },
       {
-        "name": "Professional",
+        "name": "Pro",
         "price": "$39.99/month",
-        "description": "100 clinical notes per month. Full feature access."
-      },
-      {
-        "name": "Premium",
-        "price": "$69.99/month",
-        "description": "Unlimited clinical notes. Full feature access. Super Fill EHR integration."
+        "price_cents": 3999,
+        "description": "Unlimited notes, EHR integration, style personalization, automatic note deletion."
       },
       {
         "name": "XL",
-        "price": "$89.99/month",
-        "description": "Unlimited notes + group sessions. All features. For high-volume therapists."
+        "price": "$69.99/month",
+        "price_cents": 6999,
+        "description": "Everything in Pro plus group therapy sessions."
+      },
+      {
+        "name": "Group Practice",
+        "price": "By demo",
+        "description": "Unlimited notes, team permissions, custom BAA, dedicated support."
       }
     ],
-    "notes": "Annual billing discounts available (Starter $19.99/mo, Professional $39.99/mo, Premium $69.99/mo). At unlimited tier ($89.99/mo), Supanote is more expensive than AutoNotes ($34/mo) and Mentalyc Pro ($69.99/mo), but Super Fill EHR integration may justify premium.",
-    "last_verified": "2026-09-01"
+    "notes": "Prices shown are 'starting at' on the vendor's pricing page; monthly billing may cost more than annual.",
+    "last_verified": "2026-10-23"
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "phipa_compliant": "yes",
     "gdpr_compliant": "unknown",
-    "security_note": "HIPAA and PHIPA compliant. Patient data fully encrypted and not accessible by Supanote staff. No training on patient data."
+    "baa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://www.supanote.ai/pricing",
+      "verified_date": "2026-10-23",
+      "notes": "BAA listed on Starter; custom BAA on Group Practice."
+    },
+    "notes": "Vendor states session audio is deleted after processing."
   },
-  "integrations": [
-    {
-      "name": "SimplePractice",
-      "slug": "simplepractice",
-      "category": "ehr",
-      "integration_type": "api",
-      "verified": true,
-      "notes": "One-click Super Fill pushes notes directly into SimplePractice"
-    },
-    {
-      "name": "TherapyNotes",
-      "slug": "therapynotes",
-      "category": "ehr",
-      "integration_type": "api",
-      "verified": true
-    },
-    {
-      "name": "Valant",
-      "slug": "valant",
-      "category": "ehr",
-      "integration_type": "api",
-      "verified": true
-    },
-    {
-      "name": "Tebra",
-      "slug": "tebra",
-      "category": "ehr",
-      "integration_type": "api",
-      "verified": true
-    },
-    {
-      "name": "ICANotes",
-      "slug": "icanotes",
-      "category": "ehr",
-      "integration_type": "api",
-      "verified": true
-    }
-  ],
-  "features": {
-    "ambient_ai": {
-      "supported": true,
-      "description": "Captures therapy sessions and generates clinical notes with therapy-specific formatting."
-    },
-    "super_fill": {
-      "supported": true,
-      "description": "One-click feature pushes completed notes directly into SimplePractice, TherapyNotes, Valant, Tebra, and ICANotes—no copy-paste."
-    },
-    "ai_personalization": {
-      "supported": true,
-      "description": "AI personalization engine learns each therapist's documentation style over time for increasingly customized notes."
-    },
-    "therapy_modalities": {
-      "count": "20+",
-      "examples": [
-        "CBT",
-        "DBT",
-        "EMDR",
-        "Psychodynamic",
-        "ACT",
-        "MI"
-      ],
-      "description": "Supports 20+ therapy modalities with modality-aware documentation."
-    },
-    "note_formats": {
-      "count": "10+",
-      "types": [
-        "SOAP",
-        "DAP",
-        "BIRP",
-        "Progress notes",
-        "Intake",
-        "Termination"
-      ],
-      "description": "10+ note formats for mental health documentation."
-    },
-    "languages": {
-      "count": "120+",
-      "description": "Multi-language support for diverse client populations."
-    },
-    "group_sessions": {
-      "supported": true,
-      "tier": "XL ($89.99/mo)",
-      "description": "Group therapy session documentation available on XL plan."
-    }
-  },
-  "best_for": [
-    "Therapists using SimplePractice, TherapyNotes, or Valant wanting Super Fill integration",
-    "High-volume therapists wanting AI that learns their documentation style",
-    "Multilingual practices needing 120+ language support",
-    "Canadian therapists needing PHIPA compliance",
-    "Group practice therapists (XL plan supports group sessions)"
-  ],
-  "not_for": [
-    "Budget-conscious therapists—AutoNotes ($34/mo) or Berries ($79/mo) cheaper unlimited",
-    "Psychiatrists needing medication management—Freed ($39-119/mo) or mdhub better",
-    "Therapists not using supported EHRs—Super Fill only works with 5 EHRs",
-    "Practices wanting HITRUST certification—Supanote focuses on HIPAA/PHIPA",
-    "Low-volume therapists—Free tier (5/mo) or Mentalyc (10/mo) may suffice"
-  ],
-  "governance": {
-    "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 90,
-    "last_reviewed": "2026-09-01"
-  },
-  "related_tools": [
-    "mentalyc",
-    "upheal",
-    "autonotes",
-    "berries"
-  ],
-  "competitor_tools": [
-    "mentalyc",
-    "upheal",
-    "autonotes"
-  ],
-  "created_at": "2026-08-22T20:50:40.784Z",
-  "updated_at": "2026-09-01T00:00:00.000Z",
-  "status": "active",
+  "integrations": [],
   "seo": {
     "title": "Supanote: Therapy AI with Super Fill | HeyPsych",
     "meta_description": "Supanote: Therapy AI scribe with Super Fill EHR integration. Free (5/mo) to $89.99/mo unlimited. SimplePractice, TherapyNotes, Valant. 20+ modalities. HIPAA ...",
@@ -264,7 +168,25 @@
       "mental health AI scribe"
     ]
   },
-  "website_url": "https://supanote.ai",
-  "pricing_url": "https://supanote.ai",
-  "affiliate_url": "https://supanote.ai"
+  "governance": {
+    "last_reviewed": "2026-10-23",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
+  },
+  "related_tools": [
+    "mentalyc",
+    "upheal",
+    "berries"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "berries"
+  ],
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

@@ -2,8 +2,6 @@
 import type { AssessmentAlert } from "../engines";
 
 export function compute(data: any, answers: Record<string, any>) {
-  console.log("ASSIST engine called with answers:", Object.keys(answers).length, "items");
-  console.log("First few answers:", { q1: answers.q1, q2: answers.q2, q60: answers.q60 });
   const rules = data.scoring?.rules || {};
   const substanceMapping = rules.substance_mapping || {};
   const riskThresholds = rules.risk_thresholds || {};

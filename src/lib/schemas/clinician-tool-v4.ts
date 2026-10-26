@@ -666,6 +666,53 @@ const DEFAULT_GOVERNANCE: z.infer<typeof ClinicianGovernanceZ> = {
 };
 
 // ============================================================================
+// POSITIONING SCHEMA
+// ============================================================================
+
+/**
+ * Editorial positioning: the kinds of practice a product genuinely serves.
+ *
+ * Audience tags (`audiences`) say who a vendor will sell to, which for most
+ * products is everyone. Positioning says who a reviewer would actually send
+ * there, and drives "best for" recommendations. Each segment carries one
+ * honest sentence explaining the fit, shown to clinicians verbatim.
+ */
+export const PositioningSegmentZ = z.enum([
+  "solo-therapist",
+  "group-practice",
+  "prescriber",
+  "interventional-psychiatry",
+  "budget",
+  "low-volume",
+  "insurance-billing",
+  "private-pay",
+  "multidisciplinary",
+  "canada",
+  "measurement-based-care",
+  "organization",
+]);
+
+export const ClinicianPositioningZ = z.object({
+  segments: z.array(PositioningSegmentZ).min(1),
+  /** Why this product fits each segment, in one sentence. */
+  notes: z.partialRecord(PositioningSegmentZ, z.string().min(10).max(240)).default({}),
+  /**
+   * A specialist product (Osmind for ketamine and TMS clinics). It is only
+   * suggested as an alternative to products that share one of its segments.
+   */
+  niche: z.boolean().default(false),
+  /**
+   * The job the product does, where a category spans several ("claims",
+   * "payments", "out-of-network", "bookkeeping" under billing). Two products
+   * with different jobs are never offered as alternatives to each other.
+   */
+  job: z.string().regex(/^[a-z-]+$/).optional(),
+});
+
+export type PositioningSegment = z.infer<typeof PositioningSegmentZ>;
+export type ClinicianPositioning = z.infer<typeof ClinicianPositioningZ>;
+
+// ============================================================================
 // MAIN V4 CLINICIAN TOOL SCHEMA
 // ============================================================================
 
@@ -711,6 +758,9 @@ export const ClinicianToolV4Z = z.object({
   // Use cases
   best_for: z.array(z.string()).optional(),
   not_for: z.array(z.string()).optional(),
+
+  // Editorial positioning, for "best for" recommendations
+  positioning: ClinicianPositioningZ.optional(),
 
   // Links
   website_url: z.string().url().optional(),

@@ -45,6 +45,7 @@ export function generateResourceMetadata(resource: Resource): Metadata {
     description,
     keywords: keywords.join(", "),
     openGraph: {
+      images: ["/images/og/heypsych.png"],
       title,
       description,
       url,
@@ -52,6 +53,7 @@ export function generateResourceMetadata(resource: Resource): Metadata {
       siteName: SITE_NAME,
     },
     twitter: {
+      images: ["/images/og/heypsych.png"],
       card: "summary_large_image",
       title,
       description,
@@ -115,13 +117,6 @@ export function generateResourceStructuredData(resource: Resource) {
         "@type": "SoftwareApplication",
         applicationCategory: "HealthApplication",
         operatingSystem: resource.platforms?.join(", "),
-        aggregateRating: resource.app_rating
-          ? {
-              "@type": "AggregateRating",
-              ratingValue: resource.app_rating,
-              reviewCount: resource.total_reviews,
-            }
-          : undefined,
       };
 
     case "support-community":

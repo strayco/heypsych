@@ -8,37 +8,44 @@ import { test, expect } from "@playwright/test";
  * - For Clinicians landing (/tools/for-clinicians/)
  * - Category pages (/tools/for-clinicians/[category]/)
  * - Product pages (/tools/for-clinicians/[category]/[slug]/)
- * - EHR Matcher (/tools/for-clinicians/ehr-practice-management/match/)
+ * - Retired clinician landers redirect into the hub (2026-10-23)
  * - Compare page (/tools/compare/)
  * - Demo request flow
  */
 
-test.describe("Tools Hub Page", () => {
-  test("should display tools hub page", async ({ page }) => {
-    const response = await page.goto("/tools/");
+test.describe("Tools Hub Page (patient app finder)", () => {
+  test("opens with the finder and a crisis line", async ({ page }) => {
+    const response = await page.goto("/tools");
     expect(response?.status()).toBe(200);
-
-    await expect(
-      page.getByRole("heading", { level: 1, name: /mental health tools/i })
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /right app/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: "988" })).toBeVisible();
   });
 
-  test("should have audience selectors (patients/clinicians)", async ({ page }) => {
-    await page.goto("/tools/");
-
-    // Should have links to both audiences
-    await expect(page.getByRole("link", { name: /for patients/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /for clinicians/i })).toBeVisible();
+  test("narrows by need, help and payment", async ({ page }) => {
+    await page.goto("/tools");
+    await page.getByRole("button", { name: "Anxiety or stress" }).click();
+    await page.getByRole("button", { name: /An app I use on my own/ }).click();
+    await page.getByRole("button", { name: "Free", exact: true }).click();
+    await expect(page.locator("#finder-results")).toHaveText(/\d+ match/);
   });
 
-  test("should display EHR matcher CTA in clinician section", async ({ page }) => {
-    await page.goto("/tools/");
-
-    // Should have EHR matcher promotion
-    await expect(
-      page.getByRole("link", { name: /start matching|find.*ehr/i })
-    ).toBeVisible();
+  test("links clinicians to practice software", async ({ page }) => {
+    await page.goto("/tools");
+    await expect(page.getByRole("link", { name: /practice software/i })).toBeVisible();
   });
+});
+
+test.describe("Retired patient pages", () => {
+  for (const [from, to] of [
+    ["/tools/for-patients", /\/tools$/],
+    ["/tools/for-patients/guides/best-anxiety-apps", /\/tools\/anxiety-stress$/],
+    ["/tools/find-support/therapy-platforms", /\/tools\/find-support\?help=therapist$/],
+  ] as const) {
+    test(`${from} redirects`, async ({ page }) => {
+      await page.goto(from);
+      await expect(page).toHaveURL(to);
+    });
+  }
 });
 
 test.describe("For Clinicians Landing Page", () => {
@@ -47,7 +54,7 @@ test.describe("For Clinicians Landing Page", () => {
     expect(response?.status()).toBe(200);
 
     await expect(
-      page.getByRole("heading", { level: 1, name: /clinician|professional/i })
+      page.getByRole("heading", { level: 1, name: /practice software/i })
     ).toBeVisible();
   });
 
@@ -60,14 +67,19 @@ test.describe("For Clinicians Landing Page", () => {
     ).toBeVisible();
   });
 
-  test("should have EHR matcher CTA", async ({ page }) => {
-    await page.goto("/tools/for-clinicians/");
+  test("shortlists a job for a kind of practice, with reviewers' notes", async ({ page }) => {
+    await page.goto("/tools/for-clinicians");
+    await page.getByRole("button", { name: /run the practice/i }).click();
+    await page.getByRole("button", { name: /^solo therapist$/i }).click();
+    await expect(page.getByRole("heading", { name: /picks? for solo therapist practices/i })).toBeVisible();
+    // The interventional-psychiatry EHR is never a solo-therapist pick.
+    const picks = page.locator("[aria-live=polite] ul").first();
+    await expect(picks.getByRole("link", { name: /^osmind$/i })).toHaveCount(0);
+  });
 
-    // Should have prominent EHR matcher link
-    const ehrMatcherLink = page.getByRole("link", {
-      name: /find.*ehr|ehr.*match/i,
-    });
-    await expect(ehrMatcherLink.first()).toBeVisible();
+  test("preselects the practice from the URL", async ({ page }) => {
+    await page.goto("/tools/for-clinicians?practice=group-practice");
+    await expect(page.getByRole("button", { name: /^group practice$/i })).toHaveAttribute("aria-pressed", "true");
   });
 });
 
@@ -105,15 +117,6 @@ test.describe("EHR Category Page", () => {
 
     // Should find at least 2 of the known tools
     expect(foundTools).toBeGreaterThanOrEqual(2);
-  });
-
-  test("should have EHR matcher CTA on EHR page", async ({ page }) => {
-    await page.goto("/tools/for-clinicians/ehr-practice-management/");
-
-    // EHR category should have matcher CTA
-    await expect(
-      page.getByRole("link", { name: /find.*match|start matching/i }).first()
-    ).toBeVisible();
   });
 });
 
@@ -164,24 +167,21 @@ test.describe("Product Page", () => {
   });
 });
 
-test.describe("EHR Matcher", () => {
-  test("should display EHR matcher page", async ({ page }) => {
-    const response = await page.goto(
-      "/tools/for-clinicians/ehr-practice-management/match/"
-    );
-    expect(response?.status()).toBe(200);
-
-    // Should have a heading related to matching
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  });
-
-  test("should have interactive matching form", async ({ page }) => {
-    await page.goto("/tools/for-clinicians/ehr-practice-management/match/");
-
-    // Should have form elements (buttons, radio inputs, etc.)
-    const formElements = page.locator("form, [role=radiogroup], button");
-    await expect(formElements.first()).toBeVisible();
-  });
+test.describe("Retired clinician landers", () => {
+  const cases: [string, RegExp][] = [
+    ["/tools/for-clinicians/ehr-practice-management/match", /\/tools\/for-clinicians\/ehr-practice-management$/],
+    ["/tools/for-therapists", /\/tools\/for-clinicians\?practice=solo-therapist$/],
+    ["/tools/best/ehr-software-2026", /\/tools\/for-clinicians\/ehr-practice-management$/],
+    ["/tools/switch-from/simplepractice", /\/tools\/alternatives\/simplepractice$/],
+    ["/tools/stacks", /\/architect$/],
+  ];
+  for (const [from, to] of cases) {
+    test(`${from} redirects`, async ({ page }) => {
+      const response = await page.goto(from);
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveURL(to);
+    });
+  }
 });
 
 test.describe("Compare Page", () => {
@@ -325,38 +325,18 @@ test.describe("Demo Request API Security", () => {
   });
 });
 
-test.describe("Homepage Clinician Section", () => {
-  test("should display For Clinicians section on homepage", async ({
-    page,
-  }) => {
+test.describe("Homepage Clinician Entry", () => {
+  test("clinician world enters Practice Architect", async ({ page }) => {
     await page.goto("/");
+    await page.getByRole("link", { name: /build my practice/i }).click();
+    await expect(page).toHaveURL(/\/architect$/);
+  });
 
-    // Should have clinician section
+  test("homepage links to clinician tools", async ({ page }) => {
+    await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /clinician|professional/i }).first()
-    ).toBeVisible();
-  });
-
-  test("should have EHR matcher link on homepage", async ({ page }) => {
-    await page.goto("/");
-
-    // Should have link to EHR matcher
-    const matcherLink = page.getByRole("link", {
-      name: /find.*ehr|ehr.*match/i,
-    });
-    await expect(matcherLink.first()).toBeVisible();
-  });
-
-  test("should have browse clinician tools link on homepage", async ({
-    page,
-  }) => {
-    await page.goto("/");
-
-    // Should have link to browse clinician tools
-    const browseLink = page.getByRole("link", {
-      name: /browse.*clinician|all.*clinician/i,
-    });
-    await expect(browseLink.first()).toBeVisible();
+      page.getByRole("link", { name: /^clinician tools/i }).first()
+    ).toHaveAttribute("href", "/tools/for-clinicians");
   });
 });
 
@@ -368,7 +348,6 @@ test.describe("Route Integrity - Clinician Tools", () => {
       "/tools/",
       "/tools/for-clinicians/",
       "/tools/for-clinicians/ehr-practice-management/",
-      "/tools/for-clinicians/ehr-practice-management/match/",
       "/tools/compare/",
     ];
 

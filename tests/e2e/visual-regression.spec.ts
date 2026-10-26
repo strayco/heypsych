@@ -96,19 +96,16 @@ test.describe('Visual Regression - Component Spot Checks', () => {
     });
   });
 
-  test('Navigation grid renders with proper spacing', async ({ page }) => {
+  test('Homepage discovery section renders', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Scroll to navigation grid section
-    const navGrid = page.locator('section').filter({ hasText: 'Treatments' }).first();
-    if (await navGrid.count() > 0) {
-      await navGrid.scrollIntoViewIfNeeded();
-      await page.screenshot({
-        path: 'test-results/screenshots/components/navigation-grid.png',
-        fullPage: false,
-      });
-    }
+    const discovery = page.locator('section[aria-labelledby="discovery-heading"]');
+    await discovery.scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: 'test-results/screenshots/components/homepage-discovery.png',
+      fullPage: false,
+    });
   });
 
   test('Treatment card renders with semantic tokens', async ({ page }) => {

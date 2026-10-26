@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Users, Shield, Hospital } from "lucide-react";
@@ -21,17 +21,44 @@ interface Props {
 
 type TabType = "crisis" | "organizations" | "treatment";
 
-export function SupportCommunityPage({ crisisResources, organizationsResources, treatmentResources, crisisHotlines, defaultTab }: Props) {
+/**
+ * `?tab=` and `?page=` are read with useSearchParams, which on its own would
+ * force every page using this component to render on the server per request.
+ * Behind a Suspense boundary the pages stay static: the server HTML is the
+ * fallback, which is the full page at its default tab and page 1 (so crisis
+ * lines are in the HTML without JavaScript), and the URL-aware version takes
+ * over in the browser.
+ */
+export function SupportCommunityPage(props: Props) {
+  return (
+    <Suspense fallback={<SupportCommunityView {...props} searchParams={null} />}>
+      <SupportCommunityWithParams {...props} />
+    </Suspense>
+  );
+}
+
+function SupportCommunityWithParams(props: Props) {
   const searchParams = useSearchParams();
+  return <SupportCommunityView {...props} searchParams={searchParams} />;
+}
+
+function SupportCommunityView({
+  crisisResources,
+  organizationsResources,
+  treatmentResources,
+  crisisHotlines,
+  defaultTab,
+  searchParams,
+}: Props & { searchParams: URLSearchParams | ReturnType<typeof useSearchParams> | null }) {
   const router = useRouter();
-  const initialTab = defaultTab || (searchParams.get("tab") as TabType) || "crisis";
+  const initialTab = defaultTab || (searchParams?.get("tab") as TabType) || "crisis";
   const [activeTab, setActiveTab] = useState<TabType>(initialTab);
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  const currentPage = parseInt(searchParams?.get("page") || "1", 10);
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
     // Update URL query param
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() ?? window.location.search);
     params.set("tab", tab);
     params.delete("page"); // Reset to page 1 when switching tabs
     router.push(`?${params.toString()}`, { scroll: false });
@@ -54,21 +81,21 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
       label: "Immediate & Crisis Help",
       icon: Shield,
       color: "red",
-      gradient: "from-negative to-negative-600",
+      gradient: "bg-negative",
     },
     {
       id: "organizations" as TabType,
       label: "Organizations & Communities",
       icon: Users,
       color: "blue",
-      gradient: "from-blue-500 to-cyan-600",
+      gradient: "bg-blue-500",
     },
     {
       id: "treatment" as TabType,
       label: "Treatment & Professional Care",
       icon: Hospital,
       color: "green",
-      gradient: "from-green-500 to-emerald-600",
+      gradient: "bg-green-500",
     },
   ];
 
@@ -86,7 +113,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
             className="mb-4 text-center"
           >
             <h1 className="mb-2 text-2xl font-bold sm:text-3xl">
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span>
                 Support & Community
               </span>
             </h1>
@@ -122,7 +149,7 @@ export function SupportCommunityPage({ crisisResources, organizationsResources, 
                       {isActive && (
                         <motion.div
                           layoutId="activeTab"
-                          className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${tab.gradient}`}
+                          className={`absolute bottom-0 left-0 right-0 h-0.5 ${tab.gradient}`}
                         />
                       )}
                     </button>

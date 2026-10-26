@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/articles-guides`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Articles & Guides",
     description: "Comprehensive mental health articles and practical guides.",
     url: `${SITE_CONFIG.url}/resources/articles-guides`,

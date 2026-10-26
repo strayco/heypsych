@@ -18,7 +18,7 @@ const OPTIONS = [
     label: "Talk to someone",
     description: "Connect with a therapist or counselor",
     icon: Heart,
-    href: "/tools/find-support/therapy-platforms/",
+    href: "/tools/find-support/therapy-platforms",
     color: "treatment",
   },
   {
@@ -26,7 +26,7 @@ const OPTIONS = [
     label: "Help myself",
     description: "Apps and tools I can use on my own",
     icon: Sparkles,
-    href: "/tools/for-patients/",
+    href: "/tools/for-patients",
     color: "emerald",
   },
   {
@@ -34,7 +34,7 @@ const OPTIONS = [
     label: "Explore medication",
     description: "See a psychiatrist or prescriber",
     icon: Pill,
-    href: "/tools/find-support/psychiatry-platforms/",
+    href: "/tools/find-support/psychiatry-platforms",
     color: "violet",
   },
 ] as const;
@@ -76,7 +76,7 @@ export function SupportJourney() {
 
       <p className="text-center text-sm text-label-tertiary">
         Not sure?{" "}
-        <Link href="/tools/for-patients/" className="text-treatment hover:underline">
+        <Link href="/tools/for-patients" className="text-treatment hover:underline">
           Browse everything
         </Link>
       </p>

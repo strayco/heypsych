@@ -70,27 +70,27 @@ export const ARCHITECT_STAGE_TO_V4_CATEGORIES: Record<LifecycleStageId, string[]
 export const STAGE_TO_CATEGORY_DISPLAY: Record<LifecycleStageId, { primary: string; url: string }> = {
   grow: {
     primary: "Marketing & Patient Acquisition",
-    url: "/tools/for-clinicians/marketing-patient-acquisition/",
+    url: "/tools/for-clinicians/marketing-patient-acquisition",
   },
   access: {
     primary: "Scheduling & Intake",
-    url: "/tools/for-clinicians/scheduling-intake/",
+    url: "/tools/for-clinicians/ehr-practice-management",
   },
   engage: {
     primary: "Telehealth & Communication",
-    url: "/tools/for-clinicians/telehealth-communication/",
+    url: "/tools/for-clinicians/telehealth-communication",
   },
   care: {
     primary: "EHR & Practice Management",
-    url: "/tools/for-clinicians/ehr-practice-management/",
+    url: "/tools/for-clinicians/ehr-practice-management",
   },
   revenue: {
     primary: "Billing, RCM & Insurance",
-    url: "/tools/for-clinicians/billing-rcm/",
+    url: "/tools/for-clinicians/billing-rcm",
   },
   operate: {
     primary: "Compliance & Security",
-    url: "/tools/for-clinicians/compliance-security/",
+    url: "/tools/for-clinicians",
   },
 };
 

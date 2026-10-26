@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "988-suicide-lifeline",
   "name": "988 Suicide & Crisis Lifeline",
-  "one_liner": "The 988 Suicide & Crisis Lifeline provides free 24/7 support via call or text for anyone in emotional distress or suicidal crisis.",
+  "one_liner": "Call, text or chat 988 any time to reach a trained crisis counselor in the US. Free, confidential, and you don't have to give your name.",
   "best_for": [
-    "Anyone experiencing suicidal thoughts",
-    "People in mental health crisis",
-    "Those needing immediate emotional support",
-    "Friends or family concerned about someone in crisis"
+    "Anyone having thoughts of suicide or in emotional crisis, right now",
+    "Someone worried about a friend or family member who may be in crisis",
+    "Veterans and service members (press 1 for the Veterans Crisis Line)",
+    "Spanish speakers (press 2)"
   ],
   "not_for": [
-    "Life-threatening physical emergencies (call 911)",
-    "Ongoing therapy or non-urgent support",
-    "Medication prescriptions or refills"
+    "Life-threatening medical emergencies or immediate danger: call 911",
+    "Ongoing therapy or regular counseling sessions",
+    "Prescriptions, medication refills or a diagnosis"
   ],
   "support_level": "clinical",
-  "short_description": "The 988 Suicide & Crisis Lifeline provides free 24/7 support via call or text for anyone in emotional distress or suicidal crisis.",
-  "long_description": "The 988 Suicide & Crisis Lifeline (formerly National Suicide Prevention Lifeline) is the national crisis hotline for anyone experiencing emotional distress, suicidal thoughts, or mental health crisis. Call or text 988 to connect with trained crisis counselors 24/7. The service is free, confidential, and available nationwide. Specialized services include lines for veterans (press 1), Spanish speakers (press 2), and LGBTQ+ youth (press 3). 988 connects you with your local crisis center where counselors provide immediate support, safety planning, and connection to ongoing care. This is America's mental health emergency line.",
+  "short_description": "The national US crisis line: call or text 988, or chat at 988lifeline.org, to talk with a trained crisis counselor 24/7 for free.",
+  "long_description": "The 988 Suicide & Crisis Lifeline (formerly the National Suicide Prevention Lifeline) is a US network of local crisis centers funded by SAMHSA and administered by Vibrant Emotional Health. Calling or texting 988, or using the chat at 988lifeline.org, connects you with a trained crisis counselor who listens, helps you get through the moment, can make a safety plan with you, and can connect you to local services. Press 1 reaches the Veterans Crisis Line and press 2 Spanish-language support. The LGBTQ+ youth option (press 3) was defunded in July 2025 and was reported restored on 30 September 2026 after Congress funded it again. You do not need to give your name, and the service is free. Evidence for crisis lines comes from follow-up interviews with callers rather than randomized trials.",
   "primary_hubs": [
     "find-support",
     "mood-depression",
@@ -43,14 +43,35 @@
     "model": "free",
     "free_tier": true,
     "starting_price": "Free",
-    "notes": "Free national crisis service. Call or text 988."
+    "notes": "Free to call, text or chat.",
+    "sources": [
+      "https://988lifeline.org/",
+      "https://www.samhsa.gov/mental-health/988/faqs"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": false,
+    "grade": "B",
+    "basis": {
+      "policy_url": "https://988lifeline.org/privacy-policy/",
+      "checked": "2026-10-23",
+      "sells_or_ads": "no",
+      "deletion": "unknown",
+      "hipaa": "unknown",
+      "on_device_only": false,
+      "account_required": false,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "unknown",
     "gdpr_compliant": false,
-    "data_sold": false,
-    "notes": "National crisis line with privacy protections. Anonymous support available."
+    "data_sold": "no",
+    "notes": "SAMHSA says the administrator, Vibrant, does not sell Lifeline data; local crisis centers keep their own policies, and a 2023 Markup scan found Meta pixels on some local center websites.",
+    "sources": [
+      "https://988lifeline.org/privacy-policy/",
+      "https://988lifeline.org/confidentiality/",
+      "https://www.samhsa.gov/mental-health/988/faqs",
+      "https://themarkup.org/pixel-hunt/2023/06/13/suicide-hotlines-promise-anonymity-dozens-of-their-websites-send-sensitive-data-to-facebook"
+    ]
   },
   "seo": {
     "title": "988 Suicide & Crisis Lifeline | HeyPsych",
@@ -78,7 +99,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "website": "https://988lifeline.org",
@@ -86,12 +107,41 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Follow-up interviews with suicidal callers to the Lifeline (calls April 2020 to August 2021)",
+        "citation": {
+          "authors": "Gould MS, et al.",
+          "title": "National Suicide Prevention Lifeline (Now 988 Suicide and Crisis Lifeline): Evaluation of Crisis Call Outcomes for Suicidal Callers",
+          "journal": "Suicide and Life-Threatening Behavior",
+          "year": 2025,
+          "doi": "10.1111/sltb.70020"
+        },
+        "outcome": "Most callers said the call helped; about 41% reported suicidal thoughts returning after the call.",
+        "sample_size": 437,
+        "study_design": "Uncontrolled follow-up study (caller interviews about 13 days after the call)"
+      },
+      {
+        "study": "Assessment of suicidal callers to 8 Lifeline crisis centers, with follow-up within 3 weeks",
+        "citation": {
+          "authors": "Gould MS, Kalafat J, Harris-Munfakh JL, Kleinman M",
+          "title": "An evaluation of crisis hotline outcomes. Part 2: Suicidal callers",
+          "journal": "Suicide and Life-Threatening Behavior",
+          "year": 2007,
+          "doi": "10.1521/suli.2007.37.3.338"
+        },
+        "outcome": "Suicidality fell during the call; hopelessness and psychological pain kept falling in the following weeks (380 completed follow-up).",
+        "sample_size": 1085,
+        "study_design": "Uncontrolled pre-post study with follow-up"
+      }
+    ],
     "primary_uses": [
-      "Suicide prevention",
-      "Crisis intervention",
-      "Mental health emergency",
-      "24/7 support"
+      "Talking through thoughts of suicide with a trained counselor",
+      "Getting through an emotional crisis in the moment",
+      "Making a safety plan",
+      "Getting connected to local crisis and mental health services",
+      "Help for someone worried about another person"
     ]
   },
   "related_tools": [],
@@ -99,5 +149,18 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://988lifeline.org",
-  "updated_at": "2026-09-02T06:10:49.767Z"
+  "updated_at": "2026-09-02T06:10:49.767Z",
+  "audience": "patient",
+  "patient_summary": "If you are thinking about suicide or are in emotional crisis, you can call or text 988, or chat at 988lifeline.org, at any time. A trained counselor at a local crisis center will talk with you, help you stay safe and point you to more help. It is free and you don't have to share your name.",
+  "availability": {
+    "state": "available",
+    "note": "US only, 24/7 by call, text and web chat. Press 3 for LGBTQ+ youth was cut in July 2025 and reported restored on 30 Sept 2026.",
+    "checked": "2026-10-23",
+    "sources": [
+      "https://988lifeline.org/",
+      "https://www.samhsa.gov/mental-health/988/faqs",
+      "https://www.npr.org/sections/shots-health-news/2025/07/19/nx-s1-5472593/988-suicide-crisis-lifeline-lgbtq",
+      "https://www.washingtonblade.com/2026/10/01/988-restores-crisis-services-for-lgbtq-youth/"
+    ]
+  }
 }

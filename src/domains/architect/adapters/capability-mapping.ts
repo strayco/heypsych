@@ -82,7 +82,11 @@ export const V4_TO_ARCHITECT_CAPABILITY_MAP: Record<string, CapabilityId[]> = {
   "e-prescribing": ["prescribing-erx"],
   "epcs": ["epcs"],
   "epcs-controlled": ["epcs"],
-  "pdmp-integration": ["epcs"],
+  // PDMP integration queries a state prescription-monitoring database. It is
+  // not EPCS, which is DEA-regulated controlled-substance prescribing with its
+  // own identity-proofing and two-factor requirements. A product can do one
+  // without the other, so PDMP must never imply an EPCS capability.
+  "pdmp-integration": ["prescribing-erx"],
   "drug-interaction-check": ["prescribing-erx"],
   "medication-history": ["prescribing-erx"],
   "medication-management": ["prescribing-erx"],

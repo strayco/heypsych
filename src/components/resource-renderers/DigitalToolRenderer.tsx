@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Smartphone, Star, Download, ExternalLink, Shield, Clock, HelpCircle } from "lucide-react";
+import { Smartphone, Download, ExternalLink, Shield, Clock, HelpCircle } from "lucide-react";
 import { SEOMeta, SectionList, ReferencesTable, AutoFields } from "./shared";
 import type { ResourceRendererProps } from "./index";
 import {
@@ -28,13 +28,6 @@ import { ConditionChips } from "./sections/ConditionChips";
 export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
   const data = resource as any;
   const isV2 = data.version === "2.0" || data.patient_summary || data.clinical_metadata;
-
-  // Helper to format large numbers
-  const formatReviews = (count: number) => {
-    if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M`;
-    if (count >= 1000) return `${(count / 1000).toFixed(0)}K`;
-    return count.toString();
-  };
 
   return (
     <>
@@ -68,19 +61,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Rating */}
-          {data.app_rating && (
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1">
-                <Star className="h-5 w-5 fill-current text-caution" />
-                <span className="text-2xl font-bold text-label-primary">{data.app_rating}</span>
-              </div>
-              {data.total_reviews && (
-                <span className="text-sm text-label-tertiary">
-                  {formatReviews(data.total_reviews)} reviews
-                </span>
-              )}
-            </div>
-          )}
+          {/* No rating: app_rating is legacy and unsourced. */}
 
           {/* Platforms */}
           {data.metadata?.platforms && (
@@ -131,7 +112,7 @@ export function DigitalToolRenderer({ resource }: ResourceRendererProps) {
 
           {/* Last Updated */}
           {data.metadata?.last_updated && (
-            <div className="flex items-center gap-2 text-xs text-label-primary0">
+            <div className="flex items-center gap-2 text-xs text-label-tertiary">
               <Clock className="h-3 w-3" />
               Last updated: {new Date(data.metadata.last_updated).toLocaleDateString()}
             </div>

@@ -127,7 +127,7 @@ export default function VendorClaimPage() {
     <div className="min-h-screen bg-canvas">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-separator bg-surface">
-        <div className="absolute inset-0 bg-gradient-to-br from-treatment/[0.03] via-transparent to-accent/[0.02]" />
+        <div className="absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-treatment/20 bg-treatment/5 px-4 py-1.5 text-sm font-medium text-treatment mb-6">
@@ -152,7 +152,7 @@ export default function VendorClaimPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/tools/for-clinicians/"
+                href="/tools/for-clinicians"
                 className="inline-flex items-center gap-2 rounded-xl border border-separator bg-canvas px-6 py-3 font-medium text-label-primary hover:border-treatment/30 transition-colors"
               >
                 Browse Products

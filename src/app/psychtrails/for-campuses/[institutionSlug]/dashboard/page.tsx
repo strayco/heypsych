@@ -199,7 +199,7 @@ function StatCard({
         <span className="text-sm font-medium text-label-tertiary">{label}</span>
       </div>
       <div className="text-2xl font-bold text-label-primary">{value}</div>
-      {subtext && <p className="text-xs text-label-primary0 mt-1">{subtext}</p>}
+      {subtext && <p className="text-xs text-label-tertiary mt-1">{subtext}</p>}
     </div>
   );
 }
@@ -212,7 +212,7 @@ function FollowUpCard({ request }: { request: FollowUpRequest }) {
       <div className="flex items-start justify-between mb-3">
         <div>
           <p className="font-medium text-label-primary">{request.studentIdentifier}</p>
-          <p className="text-xs text-label-primary0">{timeAgo}</p>
+          <p className="text-xs text-label-tertiary">{timeAgo}</p>
         </div>
         <span className="inline-flex items-center gap-1 rounded-full bg-caution-tint border border-caution-700/30 px-2 py-0.5 text-xs font-medium text-caution">
           <AlertCircle className="h-3 w-3" />
@@ -222,16 +222,16 @@ function FollowUpCard({ request }: { request: FollowUpRequest }) {
 
       <div className="space-y-2 text-sm">
         <div>
-          <span className="text-label-primary0">Scenario:</span>{" "}
+          <span className="text-label-tertiary">Scenario:</span>{" "}
           <span className="text-label-secondary">{request.scenarioTitle}</span>
         </div>
         <div>
-          <span className="text-label-primary0">Next step:</span>{" "}
+          <span className="text-label-tertiary">Next step:</span>{" "}
           <span className="text-label-secondary">{request.transferPrompt}</span>
         </div>
         {request.smallestBetterMove && (
           <div>
-            <span className="text-label-primary0">Considering:</span>{" "}
+            <span className="text-label-tertiary">Considering:</span>{" "}
             <span className="text-label-secondary">{request.smallestBetterMove}</span>
           </div>
         )}
@@ -291,7 +291,7 @@ export default function CampusDashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-canvas flex items-center justify-center">
-        <div className="animate-pulse text-label-primary0">Loading...</div>
+        <div className="animate-pulse text-label-tertiary">Loading...</div>
       </div>
     );
   }
@@ -344,7 +344,7 @@ export default function CampusDashboardPage() {
                 <h1 className="text-lg font-semibold text-label-primary">
                   {institution.name}
                 </h1>
-                <p className="text-sm text-label-primary0">PsychTrails Staff Dashboard</p>
+                <p className="text-sm text-label-tertiary">PsychTrails Staff Dashboard</p>
               </div>
             </div>
             <button
@@ -358,7 +358,7 @@ export default function CampusDashboardPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 py-8">
+      <div className="mx-auto max-w-5xl px-4 py-8">
         {/* Demo banner */}
         <div className="mb-6 rounded-xl border border-caution-700/30 bg-caution-tint p-4">
           <p className="text-sm text-caution-700">
@@ -405,7 +405,7 @@ export default function CampusDashboardPage() {
             <div className="rounded-xl border border-separator bg-surface-grouped p-8 text-center">
               <MessageCircle className="h-8 w-8 text-label-quaternary mx-auto mb-3" />
               <p className="text-label-tertiary">No follow-up requests yet</p>
-              <p className="text-sm text-label-primary0 mt-1">
+              <p className="text-sm text-label-tertiary mt-1">
                 Students can opt-in to staff follow-up after completing a scenario
               </p>
             </div>
@@ -430,7 +430,7 @@ export default function CampusDashboardPage() {
             <div className="rounded-xl border border-separator bg-surface-grouped p-8 text-center">
               <Clock className="h-8 w-8 text-label-quaternary mx-auto mb-3" />
               <p className="text-label-tertiary">No activity yet</p>
-              <p className="text-sm text-label-primary0 mt-1">
+              <p className="text-sm text-label-tertiary mt-1">
                 Anonymous practice data will appear here
               </p>
             </div>
@@ -439,13 +439,13 @@ export default function CampusDashboardPage() {
               <table className="w-full">
                 <thead className="bg-surface border-b border-separator">
                   <tr>
-                    <th className="text-left text-xs font-medium text-label-primary0 uppercase tracking-wide px-4 py-3">
+                    <th className="text-left text-xs font-medium text-label-tertiary uppercase tracking-wide px-4 py-3">
                       Time
                     </th>
-                    <th className="text-left text-xs font-medium text-label-primary0 uppercase tracking-wide px-4 py-3">
+                    <th className="text-left text-xs font-medium text-label-tertiary uppercase tracking-wide px-4 py-3">
                       Scenario
                     </th>
-                    <th className="text-left text-xs font-medium text-label-primary0 uppercase tracking-wide px-4 py-3">
+                    <th className="text-left text-xs font-medium text-label-tertiary uppercase tracking-wide px-4 py-3">
                       Outcome
                     </th>
                   </tr>
@@ -490,12 +490,12 @@ export default function CampusDashboardPage() {
 
         {/* Privacy reminder */}
         <div className="mt-8 rounded-xl border border-separator bg-surface-grouped p-4">
-          <p className="text-xs text-label-primary0">
+          <p className="text-xs text-label-tertiary">
             <strong className="text-label-tertiary">Privacy note:</strong> This dashboard only shows students who explicitly opted into follow-up.
             All other activity is anonymous—you see aggregate patterns, not individual choices.
           </p>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

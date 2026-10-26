@@ -4,6 +4,30 @@ import Link from "next/link";
 import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import { ArrowLeft, Clock, Calendar, ArrowRight } from "lucide-react";
+import { ArticleExperience } from "@/components/articles/ArticleExperience";
+import { fromLearn, type ArticleView, type LearnArticle } from "@/domains/articles/experience/model";
+import { linkTargets } from "@/domains/articles/experience/targets";
+
+const CATEGORY_LABELS: Record<string, string> = {
+  "condition-guides": "Condition guide",
+  "treatment-guides": "Treatment guide",
+  "therapy-explained": "Therapy explained",
+  "emerging-science": "Emerging science",
+  "research-digest": "Research digest",
+  "living-with": "Living with",
+  "self-help": "Self-help",
+};
+
+/** The reading model, or null to keep the original layout. */
+function buildView(article: Article): ArticleView | null {
+  try {
+    const view = fromLearn(article as unknown as LearnArticle, linkTargets);
+    return view.title && view.blocks.length > 0 ? view : null;
+  } catch (error) {
+    console.error("[LearnPage] Falling back to the original layout:", article.slug, error);
+    return null;
+  }
+}
 
 interface Article {
   slug: string;
@@ -81,6 +105,7 @@ export async function generateMetadata({
     description: article.seo?.description || article.description,
     keywords: article.seo?.keywords || article.tags,
     openGraph: {
+      images: ["/images/og/heypsych.png"],
       title: article.title,
       description: article.description,
       type: "article",
@@ -221,6 +246,21 @@ export default async function ArticlePage({
     mainEntityOfPage: `https://heypsych.com/learn/${slug}`,
   };
 
+  const view = buildView(article);
+  if (view) {
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <ArticleExperience
+          article={view}
+          back={{ href: "/learn", label: "Learn" }}
+          kicker={CATEGORY_LABELS[article.category] ?? null}
+          reviewer={null}
+        />
+      </>
+    );
+  }
+
   return (
     <>
       <script
@@ -228,7 +268,7 @@ export default async function ArticlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="min-h-screen bg-canvas">
+      <div className="min-h-screen bg-canvas">
         {/* Header */}
         <header className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
@@ -392,7 +432,7 @@ export default async function ArticlePage({
             </p>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

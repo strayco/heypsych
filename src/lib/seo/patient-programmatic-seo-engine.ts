@@ -102,28 +102,36 @@ export const REGULATORY_WARNINGS: Record<string, {
   title: string;
   summary: string;
   details: string[];
+  sources: { label: string; url: string }[];
+  checked: string;
 }> = {
   cerebral: {
-    severity: "critical",
-    title: "Regulatory Issues",
-    summary: "Federal investigation, DOJ settlement, major pharmacy restrictions",
+    severity: "warning",
+    title: "Regulatory history",
+    summary: "Settled federal investigations in 2024; no longer prescribes controlled substances",
     details: [
-      "Cerebral entered a non-prosecution agreement with DOJ, forfeiting $3.6M+ for unauthorized distribution of controlled substances",
-      "CVS and Walmart stopped filling controlled substance prescriptions from Cerebral",
-      "Multiple insurance networks dropped Cerebral from coverage",
-      "Allegations of prioritizing growth over patient safety with rapid 30-minute ADHD evaluations",
+      "In November 2024 Cerebral entered a non-prosecution agreement with the US Attorney's Office (EDNY), forfeiting $3.65 million over 2019–2022 practices that encouraged unauthorized distribution of controlled substances.",
+      "As part of that agreement it committed not to prescribe controlled substances; it had stopped doing so for all patients in October 2022.",
+      "In 2024 it also settled FTC charges over sharing patients' health data and cancellation practices.",
     ],
+    sources: [
+      { label: "US Attorney's Office, EDNY (Nov 4, 2024)", url: "https://www.justice.gov/usao-edny/pr/telehealth-company-cerebral-agrees-pay-over-36-million-connection-business-practices" },
+      { label: "HLTH: Cerebral settles FTC charges (Jun 14, 2024)", url: "https://hlth.com/insights/news/cerebral-settles-ftc-charges-over-data-privacy-and-deceptive-practices-2024-06-14" },
+    ],
+    checked: "2026-10-23",
   },
   done: {
     severity: "critical",
-    title: "Criminal Prosecution",
-    summary: "DOJ prosecution, executive prison sentences, pharmacy blockades",
+    title: "Criminal convictions",
+    summary: "Founder and former clinical president convicted and sentenced over Adderall distribution",
     details: [
-      "Done Global executives faced criminal charges and prison sentences for running a 'digital pill mill'",
-      "DOJ prosecution resulted in guilty verdicts for distributing over 40 million pills",
-      "CVS and Walmart stopped filling controlled substance prescriptions from Done",
-      "Company under DEA investigation for Adderall prescribing practices",
+      "Done Global's founder and former CEO was sentenced on July 7, 2026 to six years in prison and its former clinical president to two years, after a jury convicted them over a $90 million scheme that prosecutors said distributed more than 37 million Adderall pills.",
     ],
+    sources: [
+      { label: "HHS Office of Inspector General (Jul 7, 2026)", url: "https://www.oig.hhs.gov/fraud/enforcement/founderceo-and-clinical-president-of-digital-health-company-sentenced-to-72-months-and-24-months-respectively-for-90-million-scheme-to-distribute-over-37-million-pills-of-adderall/" },
+      { label: "Fierce Healthcare", url: "https://www.fiercehealthcare.com/health-tech/founder-telehealth-startup-done-sentenced-six-years-prison-adderall-fraud-scheme" },
+    ],
+    checked: "2026-10-23",
   },
 };
 
@@ -216,7 +224,7 @@ export function generateConditionPages(): PatientPageConfig[] {
         hub: condition.hub,
       },
       relatedPages: [
-        `/tools/for-patients/${condition.hub}/`,
+        `/tools/for-patients/${condition.hub}`,
         `/tools/for-patients/guides/free-${condition.slug}-apps`,
       ],
       priority: 0.9,

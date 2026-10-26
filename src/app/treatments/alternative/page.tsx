@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import { getAlternativeServer } from "@/lib/data/server-queries";
-import { TreatmentsClient } from "@/components/pages/treatments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Alternative treatments hub page
- * Includes complete SEO metadata
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Generate SEO metadata for alternative treatments hub page
 export const metadata: Metadata = {
   title: "Alternative Mental Health Treatments | Light Therapy, Acupuncture & More",
   description:
@@ -19,6 +14,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/alternative`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Alternative Mental Health Treatments",
     description:
       "Evidence-based alternative treatments: light therapy, acupuncture, mindfulness, and complementary approaches.",
@@ -27,21 +23,21 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Alternative Mental Health Treatments",
     description: "Explore alternative treatments: light therapy, acupuncture, mindfulness, and more.",
   },
 };
 
-export default async function AlternativeTreatmentsPage() {
-  const treatments = await getAlternativeServer();
-
+export default function AlternativeHubPage() {
   return (
-    <TreatmentsClient
-      treatments={treatments}
-      title="Alternative Treatments"
-      description="Evidence-based alternative treatments like bright light therapy, acupuncture, and mindfulness practices."
-      showDisclaimer={true}
+    <TreatmentKindHub
+      modality="alternative"
+      title="Lifestyle & alternative"
+      description="Light therapy, exercise, mindfulness and other approaches, with how strong the evidence is."
+      noun="approaches"
+      searchPlaceholder="Search approaches, e.g. light therapy, yoga"
     />
   );
 }

@@ -10,7 +10,7 @@ export const cardVariants = cva(
         default: "bg-white border-gray-200 hover:shadow-medium",
         outlined: "bg-transparent border-gray-300 hover:border-gray-400",
         filled: "bg-gray-50 border-gray-100 hover:bg-gray-100",
-        gradient: "bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-100",
+        gradient: "bg-blue-50 border-blue-100",
         glow: "bg-white border-blue-200 shadow-glow hover:shadow-large",
         glass: "glass border-white/20",
       },

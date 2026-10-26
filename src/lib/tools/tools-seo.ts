@@ -47,7 +47,7 @@ export function makeToolIndexDecision(
   tool: DigitalToolV3,
   editorial?: ToolEditorialMetadata
 ): IndexDecision {
-  const path = `/tools/${tool.slug}/`;
+  const path = `/tools/${tool.slug}`;
   const routeFamily: RouteFamily = "tools";
   const reasons: string[] = [];
 

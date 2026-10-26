@@ -56,7 +56,7 @@ export function MedicalDisclaimer({
 
   if (config?.prominent) {
     return (
-      <Card className="border-caution-500/30 bg-linear-to-r from-caution-900/20 to-surface-grouped">
+      <Card className="border-caution-500/30 bg-caution-tint">
         <CardContent className={compact ? "p-4" : "p-6"}>
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-caution-tint">

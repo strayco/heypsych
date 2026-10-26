@@ -2,47 +2,74 @@
   "schema_version": "3.0",
   "kind": "tool",
   "slug": "joon-health",
-  "name": "Joon Health",
-  "one_liner": "Joon Health is a digital therapeutic and mental health measurement tool designed to support mental wellness.",
+  "name": "Joon",
+  "one_liner": "Weekly video therapy for 13–26 year olds with a therapist who specializes in teens and young adults, plus skills practice in an app.",
   "best_for": [
-    "People wanting to track their mental health progress",
-    "Those looking for digital therapeutic interventions"
+    "Teens and young adults (13–26) with anxiety, depression, stress or low mood",
+    "Families who want therapy covered by insurance, including Washington Apple Health (Medicaid)",
+    "Young people who prefer video sessions and practising skills in an app between sessions"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "Children under 13 or adults over 26",
+    "People who need medication or a psychiatric prescriber",
+    "Young people who need intensive or in-person treatment"
   ],
-  "support_level": "self-help",
-  "short_description": "Joon Health is a digital therapeutic and mental health measurement tool designed to support your mental wellness journey.",
-  "long_description": "Joon Health is a digital therapeutic and mental health measurement tool. Joon Health offers comprehensive mental health support with easy-to-use features.",
+  "support_level": "clinical",
+  "short_description": "Online therapy for ages 13–26: weekly video sessions with a matched therapist and skill activities in the Joon app.",
+  "long_description": "Joon is an online therapy service for teens and young adults aged 13 to 26. You are matched with a therapist who works with this age group, meet by video (weekly by default, more or less often when clinically appropriate), and complete skill activities in the Joon app between sessions. Joon lists help with anxiety, depression, thoughts of self-harm, sleep, grief, trauma and family or relationship problems. It is in-network with 16 insurers, including Aetna, UnitedHealthcare, Premera, Regence, Kaiser Permanente Washington and Washington Apple Health; self-pay is $150 a session after a $200 first appointment. GeekWire reported Joon serving Washington, Oregon, California, Texas, New York, Delaware and Pennsylvania. Handspring Health, a pediatric behavioral health company, acquired Joon in December 2025, and Joon's website now sends new sign-ups to Handspring. Joon publishes its own outcome figures, but no peer-reviewed study of the service was found.",
   "primary_hubs": [
+    "find-support",
     "anxiety-stress",
     "mood-depression"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder"
+  ],
   "tool_types": [
-    "app",
-    "assessment"
+    "therapy-platform"
   ],
   "ai_attributes": [
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Pricing information needs verification"
+    "starting_price": "Copay with insurance; $150/session self-pay (plus $200 first appointment)",
+    "notes": "In-network with 16 insurers, including Aetna, UnitedHealthcare, Optum, Carelon, Magellan, Premera, Regence, Kaiser Permanente Washington and Apple Health (Washington Medicaid). Out-of-network clients get a superbill. Sliding-scale prices may be offered. Free therapy is available through some partners, such as the City of Seattle.",
+    "sources": [
+      "https://www.joon.com/faq/pricing-insurance",
+      "https://www.joon.com"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "grade": "A",
+    "basis": {
+      "policy_url": "https://www.joon.com/privacy",
+      "sells_or_ads": "no",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Says it does not sell your information or share it with advertisers; therapy records are covered by Joon Care Psychological Corporation's HIPAA notice, and you can delete your account in the app.",
+    "sources": [
+      "https://www.joon.com/privacy"
+    ]
   },
   "seo": {
     "title": "Joon Health: Review & Pricing | HeyPsych",
@@ -66,20 +93,44 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
-    "website": "https://joon.com",
-    "affiliate_url": "https://joon.com"
+    "publisher": "Starling Solutions, Inc. (Joon), now part of Handspring Health",
+    "app_store_url": "https://apps.apple.com/us/app/joon-teletherapy/id1518863762",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.joon.care",
+    "website": "https://www.joon.com",
+    "affiliate_url": "https://www.joon.com"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "emerging",
+    "primary_uses": [
+      "Weekly video therapy for teens and young adults",
+      "Anxiety and depression in ages 13–26",
+      "Practising coping skills in an app between sessions",
+      "Family, relationship and school stress"
+    ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://joon.com",
-  "updated_at": "2026-09-02T05:18:37.202Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You answer a few questions, get matched with a therapist who works with 13–26 year olds, and meet by video, usually weekly, with skill activities in the app in between. Many insurance plans are accepted; otherwise it costs $150 a session after a $200 first appointment. Joon is now part of Handspring Health, so new sign-ups finish on Handspring's site.",
+  "sub_hubs": [
+    "therapy-platforms"
+  ],
+  "availability": {
+    "state": "limited",
+    "note": "Ages 13–26 only, in a limited set of states (GeekWire listed WA, OR, CA, TX, NY, DE and PA). Acquired by Handspring Health in December 2025; new sign-ups are redirected to Handspring.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://www.joon.com",
+      "https://www.geekwire.com/2025/joon-care-a-seattle-based-mental-health-startup-serving-youth-acquired-by-handspring-health/",
+      "https://bhbusiness.com/2025/12/09/pediatric-provider-handspring-health-buys-joon-care/"
+    ]
+  }
 }

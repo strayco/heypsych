@@ -202,7 +202,7 @@ export const GameEventV2Schema = z.object({
 
 export const TimeConfigSchema = z.object({ stepLabel: z.string(), stepLabelPlural: z.string(), maxSteps: z.number().int().positive() });
 export const MetricDefinitionSchema = z.object({ key: z.string(), label: z.string(), min: z.number().default(0), max: z.number().default(100), higherIsBetter: z.boolean().default(true), icon: z.string().optional() });
-export const UIConfigSchema = z.object({ metrics: z.array(MetricDefinitionSchema), showTimeline: z.boolean().default(true), showEventLog: z.boolean().default(false), themeColor: z.string().default("#3b82f6") });
+export const UIConfigSchema = z.object({ metrics: z.array(MetricDefinitionSchema), showTimeline: z.boolean().default(true), showEventLog: z.boolean().default(false), themeColor: z.string().default("#456C7E") });
 export const SkillSignalDefinitionSchema = z.object({ skill: z.string(), description: z.string() });
 export const LLMHintsSchema = z.object({ scenarioContext: z.string(), coachingFocus: z.array(z.string()), debriefPrompts: z.array(z.string()) });
 

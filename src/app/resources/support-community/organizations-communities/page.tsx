@@ -13,7 +13,8 @@ import { SITE_CONFIG } from "@/lib/seo/config";
  * SEO-optimized landing page for support organizations
  */
 
-export const dynamic = "force-dynamic";
+// Static: content is read from data/ files at build time, and the client
+// component reads ?tab/?page behind a Suspense boundary (see SupportCommunityPage).
 
 export const metadata: Metadata = {
   title: "Mental Health Organizations & Support Communities",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/support-community/organizations-communities`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Mental Health Organizations & Support Communities",
     description:
       "Connect with NAMI, DBSA, AA, and specialized mental health support networks and peer communities.",
@@ -33,6 +35,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Mental Health Organizations & Communities",
     description:

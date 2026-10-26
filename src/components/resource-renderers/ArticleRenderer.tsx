@@ -90,9 +90,9 @@ export function ArticleRenderer({ resource }: ResourceRendererProps) {
                 <CardTitle className="text-base">View Infographic</CardTitle>
               </div>
               {showInfographic ? (
-                <ChevronUp className="h-5 w-5 text-label-primary0" />
+                <ChevronUp className="h-5 w-5 text-label-tertiary" />
               ) : (
-                <ChevronDown className="h-5 w-5 text-label-primary0" />
+                <ChevronDown className="h-5 w-5 text-label-tertiary" />
               )}
             </button>
           </CardHeader>

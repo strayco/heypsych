@@ -3,21 +3,28 @@
   "kind": "tool",
   "slug": "healthtap",
   "name": "HealthTap",
-  "one_liner": "HealthTap is a telehealth platform for virtual mental health appointments designed to support mental wellness.",
+  "one_liner": "Online primary care doctors who can treat mild anxiety, depression and OCD with medication by video, with messaging between visits.",
   "best_for": [
-    "People who want virtual appointments with providers",
-    "Those with busy schedules who need flexible care"
+    "Adults with mild anxiety, depression or OCD who want a primary care doctor to start or adjust medication online",
+    "People who want to use insurance or pay a flat per-visit price for virtual care",
+    "People who also want ongoing virtual primary and urgent care"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)"
+    "Anyone in crisis or with suicidal thoughts: call or text 988, or 911 in an emergency",
+    "People who want talk therapy (HealthTap doctors do not provide counseling)",
+    "ADHD, bipolar disorder, schizophrenia, addiction or detox, or anyone under 18",
+    "People who need controlled medications such as Xanax or Adderall"
   ],
   "support_level": "clinical",
-  "short_description": "HealthTap is a telehealth platform for virtual mental health appointments designed to support your mental wellness journey.",
-  "long_description": "HealthTap is a telehealth platform for virtual mental health appointments. HealthTap offers comprehensive mental health support with easy-to-use features.",
+  "short_description": "Virtual primary care: family and internal medicine doctors treat mild anxiety, depression and OCD by video and message, with insurance or self-pay.",
+  "long_description": "HealthTap is a US virtual primary care service. Its mental health care is given by family and internal medicine doctors, who can treat mild anxiety, mild depression and mild OCD, as well as stress, grief, sleep problems and mood changes around periods, pregnancy or menopause, including medication where appropriate. The doctors do not provide talk therapy and do not prescribe controlled drugs; they do not treat ADHD, bipolar disorder, schizophrenia, addiction or anyone under 18. You can pay $129 per visit, or join for $55 every three months (or $180 a year) and pay $44 per primary care visit with unlimited messaging; with insurance you pay your plan's copay, and Medicare is accepted. HealthTap's privacy statement says it does not sell personal data to advertisers but lets advertising partners use cookies to track activity across services. There are no published studies of HealthTap's mental health care.",
   "primary_hubs": [
     "find-support"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
@@ -25,22 +32,41 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Pricing information needs verification"
+    "starting_price": "Copay with insurance; $129/visit self-pay, or $44/visit with a $55/3-month membership",
+    "notes": "Membership is $55 billed every three months or $180 a year, and includes unlimited messaging with your doctor, $44 primary care visits and $59 urgent care visits. Most insurance plans accepted, including Medicare and Medicare Advantage; HSA/FSA cards accepted.",
+    "sources": [
+      "https://www.healthtap.com"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.healthtap.com/privacy/statement/",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "no",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false
+    "data_sold": "yes",
+    "notes": "Visit records are protected by HIPAA, but the privacy statement lets advertising partners track you across services with cookies (it says it does not sell data to advertisers), and only EEA/Swiss users are offered deletion.",
+    "sources": [
+      "https://www.healthtap.com/privacy/statement/"
+    ]
   },
   "seo": {
     "title": "HealthTap: Review & Pricing | HeyPsych",
@@ -64,20 +90,39 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.healthtap.com",
-    "affiliate_url": "https://www.healthtap.com"
+    "affiliate_url": "https://www.healthtap.com",
+    "publisher": "HealthTap"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "emerging",
+    "primary_uses": [
+      "Medication for mild anxiety or depression",
+      "Medication for mild OCD",
+      "Help with stress, grief and sleep problems",
+      "Messaging your doctor between visits",
+      "Virtual primary and urgent care"
+    ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.healthtap.com",
-  "updated_at": "2026-09-02T05:18:37.225Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You book a video visit with a HealthTap primary care doctor, who can diagnose and prescribe for mild anxiety, depression or OCD, then message them with questions afterwards. You pay your insurance copay, $129 per visit, or $44 per visit with a $55 three-month membership. It does not offer talk therapy or controlled medications.",
+  "availability": {
+    "state": "available",
+    "note": "US only; doctors are licensed in one or more US states. Not for under-18s.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://www.healthtap.com",
+      "https://www.healthtap.com/telehealth/mental-health/"
+    ]
+  }
 }

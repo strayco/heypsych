@@ -142,7 +142,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "With this pattern, low mood persists for years rather than weeks, often becoming so familiar it feels like 'just how I am.'",
       },
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Depressive episodes with low mood"],
         context: "Low mood can occur during depressive episodes, which alternate with periods of elevated mood or energy.",
@@ -165,7 +165,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "PHQ-9 Depression Screener",
-        href: "/resources/assessments-screeners/phq-9",
+        href: "/resources/phq-9",
         relevance: "Screens for depressive symptoms including low mood",
       },
     ],
@@ -240,7 +240,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "PHQ-9 Depression Screener",
-        href: "/resources/assessments-screeners/phq-9",
+        href: "/resources/phq-9",
         relevance: "Includes questions about interest and pleasure",
       },
     ],
@@ -296,7 +296,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Constant worry can leave little mental reserve, making minor frustrations feel overwhelming.",
       },
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Irritable mood during manic or hypomanic episodes"],
         context: "Can occur during elevated mood states, sometimes instead of or alongside euphoria.",
@@ -354,7 +354,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     relatedSymptoms: ["irritability", "emotional-numbness", "feeling-overwhelmed"],
     conditionRelationships: [
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Distinct periods of abnormally elevated, expansive, or irritable mood"],
         context: "Involves distinct episodes lasting days to weeks, not moment-to-moment shifts within a single day.",
@@ -431,7 +431,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Emotional numbness can be part of severe depression, where the capacity to feel seems dulled.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Emotional numbing", "Detachment from others"],
         context: "Can develop as a protective response to overwhelming experiences.",
@@ -529,7 +529,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "GAD-7 Anxiety Screener",
-        href: "/resources/assessments-screeners/gad-7",
+        href: "/resources/gad-7",
         relevance: "Screens for generalized anxiety symptoms including worry",
       },
     ],
@@ -572,7 +572,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     relatedSymptoms: ["difficulty-concentrating", "trouble-sleeping", "restlessness"],
     conditionRelationships: [
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Flight of ideas or subjective experience that thoughts are racing"],
         context: "Racing thoughts during manic or hypomanic episodes often feel pleasurable and creative, though overwhelming.",
@@ -654,7 +654,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Panic-like symptoms may occur specifically in social or performance situations.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Intense physiological reactions to trauma reminders"],
         context: "Can be triggered by reminders of traumatic experiences.",
@@ -721,7 +721,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "This keyed-up feeling accompanies the persistent worry and is one of the diagnostic criteria.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Hypervigilance", "Exaggerated startle response"],
         context: "Hyperarousal symptoms develop after trauma, keeping the nervous system in a protective alert state.",
@@ -743,7 +743,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "GAD-7 Anxiety Screener",
-        href: "/resources/assessments-screeners/gad-7",
+        href: "/resources/gad-7",
         relevance: "Includes questions about feeling on edge and restlessness",
       },
     ],
@@ -792,7 +792,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Avoiding social situations is a core feature, driven by fear of judgment or embarrassment.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Avoidance of trauma reminders", "Avoidance of thoughts or feelings about the trauma"],
         context: "Avoiding reminders of traumatic experiences is a hallmark symptom.",
@@ -860,7 +860,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Intrusive thoughts become obsessions when they cause significant distress and lead to compulsive behaviors or mental rituals.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Intrusive memories", "Distressing dreams"],
         context: "Intrusive thoughts and memories of traumatic events are core symptoms.",
@@ -966,7 +966,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "Adult ADHD Self-Report Scale",
-        href: "/resources/assessments-screeners/asrs",
+        href: "/resources/asrs-v1-1",
         relevance: "Screens for attention-related symptoms",
       },
     ],
@@ -1022,7 +1022,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Working memory difficulties are common, affecting recall of instructions, appointments, and daily tasks.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Inability to remember important aspects of the trauma"],
         context: "Memory difficulties may be specific to traumatic events or more general during high-stress periods.",
@@ -1096,7 +1096,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Hyperactive symptoms can persist into adulthood as inner restlessness even if external movement decreases.",
       },
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Increase in goal-directed activity or psychomotor agitation"],
         context: "Restlessness during elevated mood states may feel energizing rather than uncomfortable.",
@@ -1196,7 +1196,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
     assessmentLinks: [
       {
         label: "PHQ-9 Depression Screener",
-        href: "/resources/assessments-screeners/phq-9",
+        href: "/resources/phq-9",
         relevance: "Includes questions about energy and fatigue",
       },
     ],
@@ -1320,7 +1320,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Sleep-onset insomnia is common in depression, though some people experience hypersomnia instead.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Sleep disturbance"],
         context: "Hyperarousal can make it difficult to relax enough to fall asleep.",
@@ -1387,7 +1387,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Some people with depression sleep excessively, using sleep as an escape or simply lacking energy to stay awake.",
       },
       {
-        conditionSlug: "bipolar-disorder",
+        conditionSlug: "bipolar-i-disorder",
         conditionName: "Bipolar Disorder",
         symptomText: ["Hypersomnia during depressive episodes"],
         context: "Excessive sleep typically occurs during depressive episodes, contrasting with decreased need for sleep during elevated mood states.",
@@ -1531,7 +1531,7 @@ export const SYMPTOM_REGISTRY: SymptomEntity[] = [
         context: "Withdrawal is driven by fear of judgment rather than lack of interest.",
       },
       {
-        conditionSlug: "post-traumatic-stress-disorder",
+        conditionSlug: "posttraumatic-stress-disorder",
         conditionName: "Post-Traumatic Stress Disorder",
         symptomText: ["Feelings of detachment from others"],
         context: "Can develop after trauma as part of emotional numbing.",

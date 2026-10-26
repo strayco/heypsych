@@ -57,7 +57,7 @@ export function ClinicianToolCard({
 
   return (
     <Link
-      href={`/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`}
+      href={`/tools/for-clinicians/${taxonomyCategory}/${tool.slug}`}
       className={cn(
         "group relative flex rounded-xl border border-separator bg-surface transition-all",
         "hover:border-treatment/30 hover:shadow-soft",

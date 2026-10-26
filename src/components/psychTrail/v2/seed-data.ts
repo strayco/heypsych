@@ -11,7 +11,7 @@ export const SEED_PACK_CARD: PackCardProps = {
   maxStars: 3,
   masteryTier: "none",
   unlocked: true,
-  theme: { primaryColor: "#3b82f6", accentColor: "#60a5fa" },
+  theme: { primaryColor: "#456C7E", accentColor: "#7398A9" },
 };
 
 export const SEED_SCENARIO_CARD: ScenarioCardProps = {

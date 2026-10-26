@@ -88,7 +88,7 @@ export function ClinicianFilters({
       }
 
       const basePath = category
-        ? `/tools/for-clinicians/${category}/`
+        ? `/tools/for-clinicians/${category}`
         : "/tools/for-clinicians/";
       router.push(`${basePath}?${params.toString()}`, { scroll: false });
     },
@@ -98,7 +98,7 @@ export function ClinicianFilters({
   // Clear all filters
   const clearFilters = useCallback(() => {
     const basePath = category
-      ? `/tools/for-clinicians/${category}/`
+      ? `/tools/for-clinicians/${category}`
       : "/tools/for-clinicians/";
     router.push(basePath, { scroll: false });
   }, [router, category]);

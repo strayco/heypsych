@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/sleep-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Sleep Disorders",
     description: "Comprehensive guide to sleep disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/sleep-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Conditions involving persistent disruptions in sleep patterns that cause distress or impair functioning across multiple life domains.",
   icon: "moon",
   iconColor: "text-indigo-600",
-  bgColor: "from-indigo-50",
-  gradient: "from-indigo-900 via-blue-900 to-indigo-900",
+  bgColor: "bg-indigo-50",
+  gradient: "bg-indigo-900",
   features: [
     {
       icon: "clock",

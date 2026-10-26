@@ -24,8 +24,8 @@ import {
   type RelevanceLevel,
   CAPABILITY_REGISTRY,
   hasBuildForMeRequirements,
-  isInsuranceHeavy,
 } from "../schemas";
+import { evaluateEligibility } from "./eligibility-engine";
 import { getCapabilityRelevance } from "./relevance-engine";
 import { calculateFitScore, type ProductFitInput } from "./fit-engine";
 import { calculateStackCoverage } from "./coverage-engine";
@@ -241,126 +241,17 @@ function calculateIncrementalValue(
 }
 
 /**
- * Check if product has hard incompatibility
+ * Check if product has hard incompatibility.
+ *
+ * Delegates to the eligibility engine so the stack recommender and the
+ * capability-scoped recommender apply identical exclusion policies.
  */
 function hasHardIncompatibility(
   product: ProductArchitectureMetadata,
   fingerprint: PracticeFingerprint
 ): { incompatible: boolean; reason?: string } {
-  const evidence = product.fitEvidence;
-
-  if (!evidence) {
-    return { incompatible: false };
-  }
-
-  // Check practice type exclusions
-  if (
-    evidence.practiceTypesExcluded &&
-    fingerprint.practiceType &&
-    evidence.practiceTypesExcluded.includes(fingerprint.practiceType)
-  ) {
-    return {
-      incompatible: true,
-      reason: `Not compatible with ${fingerprint.practiceType} practices`,
-    };
-  }
-
-  // Check state exclusions
-  if (
-    evidence.statesExcluded &&
-    fingerprint.statesServed &&
-    fingerprint.statesServed.some((s) => evidence.statesExcluded?.includes(s))
-  ) {
-    return {
-      incompatible: true,
-      reason: "Not available in one or more of your states",
-    };
-  }
-
-  // Check clinical role exclusions
-  if (
-    evidence.clinicalRolesExcluded &&
-    evidence.clinicalRolesExcluded.length > 0 &&
-    fingerprint.clinicalRoles &&
-    fingerprint.clinicalRoles.length > 0
-  ) {
-    const excludedRoles = fingerprint.clinicalRoles.filter((role) =>
-      evidence.clinicalRolesExcluded?.includes(role)
-    );
-    if (excludedRoles.length > 0) {
-      return {
-        incompatible: true,
-        reason: `Not suitable for: ${excludedRoles.join(", ")}`,
-      };
-    }
-  }
-
-  // Check size bucket exclusions
-  if (
-    evidence.sizeBucketsExcluded &&
-    evidence.sizeBucketsExcluded.length > 0 &&
-    fingerprint.sizeBucket &&
-    evidence.sizeBucketsExcluded.includes(fingerprint.sizeBucket)
-  ) {
-    return {
-      incompatible: true,
-      reason: `Not suitable for ${fingerprint.sizeBucket} provider practices`,
-    };
-  }
-
-  // Check delivery model exclusions
-  if (fingerprint.deliveryModel) {
-    // Explicit exclusion
-    if (evidence.deliveryModelsExcluded?.includes(fingerprint.deliveryModel)) {
-      return {
-        incompatible: true,
-        reason: `Does not support ${fingerprint.deliveryModel} delivery`,
-      };
-    }
-    // Telehealth-only practices require telehealth support
-    if (
-      fingerprint.deliveryModel === "telehealth" &&
-      evidence.deliveryModels &&
-      evidence.deliveryModels.length > 0 &&
-      !evidence.deliveryModels.includes("telehealth")
-    ) {
-      return {
-        incompatible: true,
-        reason: "Does not support telehealth delivery",
-      };
-    }
-  }
-
-  // Check prescribing requirements
-  if (
-    fingerprint.prescribingLevel === "controlled-substances-epcs" &&
-    !product.capabilities.some((c) => c.capabilityId === "epcs")
-  ) {
-    // Check if this is an EHR/PM that should have EPCS
-    const isEhrOrPm = product.capabilities.some(
-      (c) =>
-        c.capabilityId === "ehr-clinical-record" ||
-        c.capabilityId === "clinical-documentation"
-    );
-
-    if (isEhrOrPm) {
-      // It's an EHR without EPCS - not necessarily incompatible, but note it
-      // Don't mark as hard incompatible, just a limitation
-    }
-  }
-
-  // Check HIPAA/BAA requirement for insurance-billing practices
-  if (isInsuranceHeavy(fingerprint)) {
-    const compliance = product.compliance;
-    if (compliance?.baaAvailable === false) {
-      return {
-        incompatible: true,
-        reason: "No BAA available - required for insurance billing",
-      };
-    }
-  }
-
-  return { incompatible: false };
+  const { eligible, exclusions } = evaluateEligibility(product, fingerprint);
+  return { incompatible: !eligible, reason: exclusions[0]?.reason };
 }
 
 /**

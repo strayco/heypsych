@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { PageIntro } from "@/components/brand/PageIntro";
 import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import { ArrowRight, TrendingUp, Brain, Pill, Users, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Learn | Mental Health Education & Research | HeyPsych",
+  title: "Learn | Mental Health Education & Research",
   description:
     "Evidence-based mental health education. Latest research on treatments, therapy approaches, medications, and emerging science like GLP-1 for addiction and AI in therapy.",
   keywords: [
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "anxiety therapy guide",
   ],
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Learn | Mental Health Education",
     description: "Evidence-based mental health education and latest research.",
     type: "website",
@@ -96,23 +98,17 @@ export default async function LearnHub({ searchParams }: PageProps) {
   const categories = Object.entries(categoryConfig);
 
   return (
-    <main className="min-h-screen bg-canvas">
-      {/* Hero */}
-      <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-bold text-label-primary sm:text-4xl">
-            Learn
-          </h1>
-          <p className="mt-4 text-lg text-label-secondary">
-            Evidence-based mental health education. From emerging research to practical therapy guides.
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-canvas">
+      <PageIntro
+        title="Learn"
+        object="reading"
+        description="Short, plain-language guides to mental health, from how therapy works to what new research actually shows."
+      />
 
       {/* Category Pills */}
       <section className="border-b border-separator px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="/learn"
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${
@@ -239,6 +235,6 @@ export default async function LearnHub({ searchParams }: PageProps) {
           )}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

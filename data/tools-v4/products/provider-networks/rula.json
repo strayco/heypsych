@@ -1,235 +1,97 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "91922b6b-7c1e-4085-9a9e-2dd7f24f937e",
+  "id": "15a903ce-d440-51dc-a4d1-e3c494033c5d",
   "slug": "rula",
   "name": "Rula",
-  "company_name": "Rula Health, Inc.",
-  "one_liner": "Flat per-session pay ($70-90) with e-prescribing for prescribers, fast credentialing, and weekly payments across all 50 states.",
-  "short_description": "Rula (formerly Path Mental Health) offers flat per-session rates for therapists and psychiatrists, with e-prescribing capabilities and weekly direct deposit payments.",
-  "long_description": "Rula (formerly Path Mental Health) is a virtual mental health provider network operating in all 50 states. Unlike revenue-sharing platforms, Rula offers flat per-session rates ranging from $70-90 depending on state and credentials, with prescribers typically earning higher rates. The platform handles credentialing, billing, and patient matching. Rula supports both therapists and psychiatric prescribers with integrated e-prescribing for controlled and non-controlled medications—a key differentiator from therapy-only platforms. Providers work as 1099 independent contractors with flexible scheduling and receive weekly direct deposit payments. Rula is in-network with major insurers including Optum, Cigna, Aetna, Anthem, and various Blue Cross Blue Shield plans. The platform provides steady client referrals through its matching system, though providers report that salary increases have been halted since 2024.",
-  "best_for": [
-    "Therapists wanting predictable flat per-session pay (vs. variable revenue sharing)",
-    "Psychiatric prescribers (PMHNPs, psychiatrists) who need integrated e-prescribing",
-    "Clinicians seeking weekly direct deposit payments",
-    "Providers who prefer knowing exactly what they'll earn per session",
-    "Those wanting turnkey insurance billing without admin burden"
-  ],
-  "not_for": [
-    "Clinicians building their own independent practice (credentials belong to Rula)",
-    "Therapists wanting to maximize per-session earnings (direct credentialing pays more)",
-    "Those expecting regular rate increases (raises halted since 2024)",
-    "Providers wanting control over payer contract negotiations",
-    "Clinicians who may want portable credentials when leaving"
-  ],
+  "company_name": "Rula Health",
   "import_ref": {
-    "record_id": "PN-0010",
-    "source_file": "provider-networks-research-2026",
-    "import_timestamp": "2026-08-22T00:00:00.000Z"
+    "record_id": "MH-RULA",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
-    "status": "active",
-    "former_name": "Path Mental Health"
+    "status": "active"
   },
   "primary_category": "provider-network-virtual-care",
-  "secondary_categories": [],
+  "secondary_categories": [
+    "telehealth-communication"
+  ],
   "capabilities": [
-    "appointment-scheduling",
-    "eligibility-verification",
-    "video-sessions",
     "claims-submission",
-    "e-prescribing",
-    "patient-portal",
-    "hipaa-compliant",
-    "baa-available"
+    "video-sessions",
+    "patient-acquisition"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychiatrist",
-      "psychologist",
       "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatrist",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
-      "solo-practice",
       "telehealth-only"
     ],
     "organization_sizes": [
-      "solo",
-      "small-2-10"
+      "solo"
     ]
   },
   "feature_flags": {
-    "has_ai": true,
+    "has_ai": false,
     "has_ehr": false,
-    "has_rcm": true,
+    "has_rcm": false,
     "has_telehealth": true,
     "has_measurement": false,
-    "has_e_prescribing": true,
-    "has_patient_portal": true,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "Free-to-join network where licensed clinicians see insured clients as 1099 contractors, with rates set by Rula's payer contracts.",
+  "long_description": "Rula (formerly Path Mental Health) contracts licensed clinicians to see insured clients through its platform. Joining is free, with no minimum hours. Rula says most therapists are credentialed and see a first client within about three weeks. Pay rates come from Rula's payer contracts and are paid biweekly. Sessions run on Rula's Zoom account, notes are due within 48 hours, and clinicians work as 1099 contractors. Therapy and psychiatric (PMHNP, MD/DO) tracks are available in all 50 states and DC.",
+  "one_liner": "Insured clients with no membership fee, on Rula's platform and terms.",
+  "best_for": [
+    "Licensed clinicians who want insured clients with no membership fee",
+    "Clinicians who want to start quickly (Rula says about three weeks to a first client)",
+    "Filling part of a caseload with no minimum hours",
+    "Clinicians licensed in several states"
+  ],
+  "not_for": [
+    "Clinicians who want to set their own rates or use their own EHR and telehealth (Rula's Zoom is required)",
+    "Clinicians who dislike strict documentation deadlines (48-hour notes, with pay reductions)",
+    "Clinicians building an independent practice brand"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "insurance-billing",
+      "low-volume"
+    ],
+    "notes": {
+      "insurance-billing": "Free to join; Rula holds the payer contracts and pays biweekly, so you see insured clients without billing.",
+      "low-volume": "No minimum hours, so it can fill part of a caseload alongside a private practice."
+    }
+  },
+  "website_url": "https://www.rula.com/provider-sign-up/",
+  "pricing_url": "https://www.rula.com/provider-faq/",
   "pricing": {
+    "model": "revenue-share",
     "starting_price_cents": 0,
     "starting_price_display": "Free to join",
     "free_tier": true,
     "quote_required": false,
-    "notes": "Free to join with flat per-session rates. No membership fees. Rula pays fixed amounts per session rather than revenue sharing. Rates vary by state and credentials.",
-    "last_verified": "2026-09-15",
-    "model": "enterprise-custom"
-  },
-  "reimbursement_rates": {
-    "model": "Flat per-session (not revenue sharing)",
-    "therapist_range": "$70-90 per session depending on state and credentials",
-    "therapist_criticism": "One therapist called $90 for 90837 'insulting'",
-    "prescriber_range": "Higher rates for psychiatric prescribers (PMHNPs, MDs)",
-    "pmhnp_hourly": "$159/hr average (Indeed, 239 salaries) - 69% above national average",
-    "median_rate": "~$80 per session (therapists)",
-    "rate_increases": "Halted since 2024 per provider reports",
-    "notes": "Unlike Headway/Grow/Alma which take a cut of insurance reimbursements, Rula pays flat rates regardless of what insurers actually pay. PMHNP rates are notably competitive."
+    "price_range": "budget",
+    "notes": "No membership fee. Rula sets pay rates from its payer contracts; clinicians are 1099 contractors paid biweekly."
   },
   "compliance": {
     "hipaa_support": "yes",
-    "baa_available": "yes",
-    "soc2": "yes",
+    "baa_available": "unknown",
+    "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown",
-    "notes": "HIPAA compliant with SOC 2 certification."
+    "gdpr_compliant": "not_applicable"
   },
-  "integrations": [
-    {
-      "name": "Optum",
-      "slug": "optum",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Cigna",
-      "slug": "cigna",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Aetna",
-      "slug": "aetna",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Anthem",
-      "slug": "anthem",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Blue Cross Blue Shield",
-      "slug": "bcbs",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true,
-      "notes": "Various plans"
-    }
-  ],
-  "platforms": {
-    "ios": false,
-    "android": false,
-    "web": true,
-    "desktop": false,
-    "wearable": false
-  },
-  "features": {
-    "credentialing": {
-      "speed": "Fast credentialing (exact timeline varies)",
-      "coverage": "All 50 states"
-    },
-    "billing": {
-      "payment_schedule": "Weekly direct deposit",
-      "rate_model": "Flat per-session (not percentage-based)"
-    },
-    "e_prescribing": {
-      "available": true,
-      "controlled_substances": "Yes, where state law permits",
-      "note": "Key differentiator—supports psychiatrists and PMHNPs"
-    },
-    "contractor_status": {
-      "type": "1099 Independent Contractor",
-      "clinical_autonomy": "Full autonomy over treatment",
-      "scheduling_flexibility": "Set your own hours"
-    }
-  },
-  "network_info": {
-    "coverage": "All 50 states",
-    "provider_types": "Therapists and psychiatric prescribers"
-  },
-  "fairness_rating": {
-    "overall_score": 52,
-    "grade": "C",
-    "breakdown": {
-      "pay_fairness": {
-        "score": 60,
-        "weight": 30,
-        "notes": "Flat $70-90/session is predictable but rates frozen since 2024"
-      },
-      "credential_portability": {
-        "score": 0,
-        "weight": 20,
-        "notes": "Credentials stay with Rula. Must re-credential if you leave"
-      },
-      "compensation_transparency": {
-        "score": 80,
-        "weight": 15,
-        "notes": "Flat $70-90/session rates clearly stated upfront. Know exactly what you'll earn"
-      },
-      "rate_stability": {
-        "score": 55,
-        "weight": 15,
-        "notes": "Rates frozen (not cut) since 2024—stable but stagnant"
-      },
-      "clinician_founded": {
-        "score": 0,
-        "weight": 10,
-        "notes": "Tech-founded by Rowan Coe"
-      },
-      "payment_speed": {
-        "score": 80,
-        "weight": 5,
-        "notes": "Weekly direct deposit"
-      },
-      "benefits_protections": {
-        "score": 75,
-        "weight": 5,
-        "notes": "E-prescribing support for psychiatrists/PMHNPs"
-      }
-    },
-    "methodology": "HeyPsych Fairness Rating v1.0: Weighted score across pay fairness (30%), credential portability (20%), compensation transparency (15%), rate stability (15%), clinician-founded (10%), payment speed (5%), and benefits (5%). Scale: A (80-100), B (65-79), C (50-64), D (35-49), F (<35)."
-  },
-  "hidden_gotchas": {
-    "credential_portability": {
-      "issue": "Credentials belong to Rula, not you",
-      "impact": "If you leave, you lose panel access and must re-credential independently",
-      "mitigation": "Consider dual-credentialing if planning eventual independent practice"
-    },
-    "rate_freeze": {
-      "issue": "Salary/rate increases halted since 2024",
-      "impact": "Don't expect regular pay increases on the platform",
-      "context": "Many therapy platforms have frozen or reduced rates amid market changes"
-    },
-    "flat_rate_tradeoff": {
-      "upside": "You know exactly what you'll earn per session—no surprises",
-      "downside": "If insurers pay Rula more, you don't benefit from the upside",
-      "comparison": "Revenue-sharing platforms pass through higher rates but also take a cut"
-    },
-    "prescriber_focus": {
-      "benefit": "E-prescribing support makes Rula good for prescribers",
-      "note": "Therapy-only providers may find other platforms have stronger therapy features"
-    }
-  },
+  "integrations": [],
   "seo": {
     "title": "Rula: Flat Per-Session Pay for Therapists & Psychiatrists",
     "meta_description": "Rula (formerly Path Mental Health) offers flat $70-90/session rates for therapists and e-prescribing for psychiatrists. Weekly payments, all 50 states.",
@@ -266,57 +128,28 @@
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-29",
+    "last_reviewed": "2026-10-23",
     "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 88
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
   },
   "related_tools": [
     "headway",
     "grow-therapy",
-    "alma",
-    "sondermind",
-    "cerebral"
+    "alma"
   ],
   "competitor_tools": [
     "headway",
     "grow-therapy",
-    "alma",
-    "sondermind"
+    "sondermind",
+    "alma"
   ],
-  "company_info": {
-    "founded_year": 2019,
-    "headquarters": "Los Angeles, California, USA",
-    "employee_count": "200-500",
-    "funding_status": "Venture-backed (Series B)",
-    "former_name": "Path Mental Health",
-    "clinician_founded": false,
-    "founders": [
-      {
-        "name": "Rowan Coe",
-        "title": "CEO & Co-Founder",
-        "background": "Tech entrepreneur",
-        "is_clinician": false
-      }
-    ],
-    "funding": {
-      "total_raised": "$85M+",
-      "latest_round": "Series B (2022)",
-      "latest_round_amount": "$50M",
-      "valuation": "~$300M (estimated, 2022)",
-      "key_investors": [
-        "Founders Fund",
-        "BoxGroup",
-        "Quiet Capital"
-      ],
-      "context": "Smaller valuation than Headway/Alma, but offers flat per-session rates rather than revenue sharing"
-    },
-    "notes": "Rebranded from Path Mental Health to Rula. Tech-founded, not clinician-led. Operates in all 50 states with focus on both therapy and psychiatric prescribing."
-  },
-  "created_at": "2026-08-22T21:10:17.310Z",
-  "updated_at": "2026-09-01T19:34:49.819Z",
-  "featured": true,
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
+  "featured": false,
   "status": "active",
-  "website_url": "https://www.rula.com",
-  "affiliate_url": "https://www.rula.com"
+  "company_info": {
+    "founded_year": 2019
+  }
 }

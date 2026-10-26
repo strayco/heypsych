@@ -36,6 +36,7 @@ export class ConditionMetadataGenerator extends MetadataGenerator {
       alternates: { canonical },
       robots: this.generateRobots(entity), // Uses Central Indexation Firewall
       openGraph: {
+        images: ["/images/og/heypsych.png"],
         ...this.generateOpenGraph(title, description, canonical, 'article'),
         ...(hasCrisisRisk && {
           'article:section': 'Crisis Resources',

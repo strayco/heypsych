@@ -3,22 +3,31 @@
   "kind": "tool",
   "slug": "galileo",
   "name": "Galileo",
-  "one_liner": "24/7 virtual primary care with dedicated care team. $0-99/visit. UnitedHealthcare in-network. Mental",
+  "one_liner": "Virtual primary care app, open around the clock, that also treats anxiety, depression and insomnia; $0–$99 a visit with partner plans.",
   "best_for": [
-    "People who want virtual appointments with providers",
-    "Those with busy schedules who need flexible care"
+    "People with UnitedHealthcare or another partner plan who want a primary care doctor who also treats anxiety and depression",
+    "People with mild anxiety, depression or insomnia who want medication or advice from their regular doctor online",
+    "People managing a chronic condition alongside mental health concerns"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "People looking for weekly talk therapy",
+    "People with severe or complex mental illness who need a psychiatrist"
   ],
   "support_level": "clinical",
-  "short_description": "24/7 virtual primary care with dedicated care team. $0-99/visit. UnitedHealthcare in-network. Mental health integrated into primary care model.",
-  "long_description": "Galileo is a telehealth platform for virtual mental health appointments. 24/7 virtual primary care with dedicated care team. $0-99/visit. UnitedHealthcare in-network. Mental Pricing starts at $0-99/visit.",
-  "patient_summary": "24/7 virtual primary care with dedicated care team. $0-99/visit. UnitedHealthcare in-network. Mental health integrated into primary care model.",
+  "short_description": "Galileo is a virtual doctor's office for primary, urgent and chronic care that also treats anxiety, depression and insomnia.",
+  "long_description": "Galileo is a virtual primary care service run through an app. Its doctors handle everyday and urgent problems, chronic conditions such as diabetes and high blood pressure, and mental health concerns including anxiety, depression and insomnia, with same- or next-day appointments and round-the-clock access. It is in network with UnitedHealthcare, including UnitedHealthcare individual and family ACA Marketplace plans that replaced Virtual First plans in 2025, and its sign-up lists Blue Cross Blue Shield of New Mexico and Molina Healthcare. With these plans a visit costs $0 to $99. People without insurance can pay a membership fee or per visit; the amounts are not published. Mental health care is part of primary care, not a separate therapy service, and specialist and lab referrals go through your insurance. There are no published studies of Galileo's service.",
+  "patient_summary": "You download the Galileo app, add your insurance if you have it, and message or video-call a doctor, including about anxiety, depression or sleep. With UnitedHealthcare and some other plans a visit costs $0 to $99; without insurance you pay a membership or per-visit fee.",
   "primary_hubs": [
-    "find-support"
+    "find-support",
+    "anxiety-stress",
+    "mood-depression"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder",
+    "insomnia-disorder"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
@@ -26,23 +35,42 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
+    "ios": true,
     "android": false,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$0-99/visit",
-    "notes": "Patient-facing virtual primary care with assigned care team. $0-99/visit depending on plan. UnitedHealthcare in-network (all 50 states) as of 2025 for ACA Marketplace plans. Also available through employer plans. Mental health included alongside primary care (anxiety, depression, insomnia). 24/7 access via text, phone, or video."
+    "starting_price": "Copay with insurance ($0–$99/visit with partner plans); self-pay price not published",
+    "notes": "Cost per visit depends on your plan. The app is free to download; people without insurance pay an annual or monthly membership for unlimited appointments, or per visit. Prescriptions start at $0 according to the App Store listing.",
+    "sources": [
+      "https://galileo.io/get-started/united",
+      "https://apps.apple.com/us/app/id1322601067"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://galileo.io/privacy-policy/",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": false,
+    "data_sold": "unknown",
+    "notes": "Medical records fall under the medical group's HIPAA notice and are never sold, but the website and app policy allows interest-based advertising through ad networks; you can delete your data in the app.",
+    "sources": [
+      "https://galileo.io/privacy-policy/"
+    ]
   },
   "seo": {
     "title": "Galileo Health: Virtual Primary Care Review | HeyPsych",
@@ -70,20 +98,50 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
+    "publisher": "Galileo, Inc",
+    "app_store_url": "https://apps.apple.com/us/app/id1322601067",
     "website": "https://www.galileo.io",
     "affiliate_url": "https://www.galileo.io"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "emerging",
+    "primary_uses": [
+      "Anxiety and depression care in primary care",
+      "Insomnia treatment",
+      "Prescription refills",
+      "Urgent and chronic condition care"
+    ]
   },
   "related_tools": [],
-  "related_conditions": [],
+  "related_conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder"
+  ],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.galileo.io",
-  "updated_at": "2026-09-02T05:18:37.224Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-26",
+    "note": "Available nationwide; in network with UnitedHealthcare, and lists Blue Cross Blue Shield of New Mexico and Molina Healthcare at sign-up. Adults 18+ create accounts and can add dependents.",
+    "sources": [
+      "https://galileo.io/get-started/united",
+      "https://apps.apple.com/us/app/id1322601067"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.3,
+      "count": 1800,
+      "url": "https://apps.apple.com/us/app/id1322601067",
+      "checked": "2026-10-26"
+    }
+  ]
 }

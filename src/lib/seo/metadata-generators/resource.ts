@@ -80,8 +80,9 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
   private generateDigitalToolTitle(entity: Entity, name: string): string {
     // V2: Include rating and reviews for SEO impact
     // Format: "Headspace: 4.8★ Mental Health App (1.2M reviews)"
-    const rating = entity.data?.app_rating;
-    const reviews = entity.data?.total_reviews;
+    // Ratings are never put in titles: app_rating is legacy and unsourced.
+    const rating = undefined as number | undefined;
+    const reviews = undefined as number | undefined;
 
     if (rating && reviews) {
       const formattedReviews = this.formatReviewCount(reviews);
@@ -183,10 +184,6 @@ export class ResourceMetadataGenerator extends MetadataGenerator {
       let desc = `${name}`;
 
       // Add rating
-      if (rating && reviews) {
-        const formattedReviews = this.formatReviewCount(reviews);
-        desc += ` (${rating}★, ${formattedReviews} reviews)`;
-      }
 
       // Add efficacy claim if available
       if (efficacy?.percentage_value && efficacy?.metric) {

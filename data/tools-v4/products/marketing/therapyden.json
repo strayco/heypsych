@@ -1,17 +1,14 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "f20b61e9-3da2-4b62-8eee-0f44532405b1",
+  "id": "c56c7890-573d-584b-ba2d-6aab57f08b6a",
   "slug": "therapyden",
   "name": "TherapyDen",
   "company_name": "TherapyDen",
-  "one_liner": "Inclusive therapist directory focused on LGBTQ+ affirming and social justice-oriented providers. Free basic listing, $15/month for premium.",
-  "short_description": "TherapyDen is a therapist directory emphasizing diversity and social justice. Helps clients find LGBTQ+ affirming therapists and providers serving marginalized communities.",
-  "long_description": "TherapyDen is a therapist directory built with a focus on inclusivity and social justice. The platform helps clients find therapists who are affirming of LGBTQ+ identities, work with BIPOC communities, and approach therapy from a social justice lens. Provider profiles highlight specialties, identities, and therapeutic approaches. TherapyDen offers a free basic listing with paid premium options for enhanced visibility. The directory has become a go-to resource for clients seeking therapists who understand intersectional experiences and marginalized identities.",
   "import_ref": {
-    "record_id": "MKT-0004",
-    "source_file": "marketing-tools.json",
-    "import_timestamp": "2026-08-31T00:00:00.000Z"
+    "record_id": "MH-THERAPYDEN",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
     "status": "active"
@@ -19,13 +16,13 @@
   "primary_category": "marketing-patient-acquisition",
   "secondary_categories": [],
   "capabilities": [
-    "patient-acquisition",
-    "reputation-reviews"
+    "patient-acquisition"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychologist",
       "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatrist",
       "psychiatric-np-pa"
     ],
     "practice_settings": [
@@ -50,50 +47,63 @@
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
+  "short_description": "National therapist directory with a free profile and a $30/month premium listing, known for identity-affirming search filters.",
+  "long_description": "TherapyDen is an independent therapist directory with search filters for identity-affirming care (for example LGBTQ+, poly and gender-affirming practice). A free profile gives you a shareable page but does not appear in directory search; Premium ($30/month, with an annual option) appears in search, allows several states and group listings. Cancel any time, no refunds for partial periods.",
+  "one_liner": "An inclusive-care directory that costs about the same as Psychology Today.",
+  "best_for": [
+    "Clinicians serving LGBTQ+, poly or social-justice-focused clients who search by those filters",
+    "A second directory alongside Psychology Today at similar cost",
+    "New practices that want a free profile page to link from their own site",
+    "Clinicians who prefer a small, independent vendor"
+  ],
+  "not_for": [
+    "Clinicians expecting referrals from the free profile, which is not shown in search",
+    "Practices that need proven, high-volume referral numbers (reach is not published)",
+    "Anyone wanting refunds for a partial billing period"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "budget",
+      "solo-therapist"
+    ],
+    "notes": {
+      "budget": "Premium is $30/month; the free profile works as a link page but is not listed in search.",
+      "solo-therapist": "Filters for identity-affirming care help clinicians who serve LGBTQ+ and other underserved clients be found."
+    }
+  },
+  "website_url": "https://www.therapyden.com",
+  "pricing_url": "https://www.therapyden.com/premium-benefits",
   "pricing": {
-    "model": "per-provider-month",
-    "starting_price_cents": 0,
-    "starting_price_display": "Free basic, $15/month premium",
+    "model": "freemium",
+    "starting_price_cents": 3000,
+    "starting_price_display": "Free; Premium $30/month",
     "free_tier": true,
     "quote_required": false,
+    "price_range": "budget",
     "tiers": [
       {
-        "name": "Basic",
+        "name": "Free",
         "price": "Free",
-        "features": [
-          "Searchable profile",
-          "Basic listing"
-        ]
+        "price_cents": 0,
+        "description": "Profile page; not shown in directory search; one state."
       },
       {
         "name": "Premium",
-        "price": "$15/month",
-        "features": [
-          "Enhanced visibility",
-          "Priority placement",
-          "Analytics"
-        ]
+        "price": "$30/month",
+        "price_cents": 3000,
+        "description": "Appears in search, multiple states, group listings. Annual option available."
       }
-    ],
-    "notes": "Most affordable directory option with free tier.",
-    "last_verified": "2026-09-15"
+    ]
   },
   "compliance": {
-    "hipaa_support": "no",
-    "baa_available": "no",
-    "soc2": "unknown",
-    "hitrust": "unknown",
-    "gdpr_compliant": "unknown",
-    "notes": "Directory listing service only."
+    "hipaa_support": "not_applicable",
+    "baa_available": "not_applicable",
+    "soc2": "not_applicable",
+    "hitrust": "not_applicable",
+    "gdpr_compliant": "not_applicable"
   },
   "integrations": [],
-  "platforms": {
-    "ios": false,
-    "android": false,
-    "web": true,
-    "desktop": false,
-    "wearable": false
-  },
   "seo": {
     "title": "TherapyDen: Inclusive Therapist Directory | HeyPsych",
     "meta_description": "TherapyDen inclusive therapist directory. LGBTQ+ affirming providers. Free basic listing, $15/month premium.",
@@ -115,31 +125,23 @@
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-31",
+    "last_reviewed": "2026-10-23",
     "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 80
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
   },
-  "best_for": [
-    "LGBTQ+ affirming therapists",
-    "Providers serving marginalized communities",
-    "Therapists wanting low-cost marketing"
-  ],
-  "not_for": [
-    "Those seeking broad mainstream exposure (smaller than PT)"
-  ],
   "related_tools": [
     "psychology-today",
+    "zencare",
     "goodtherapy"
   ],
   "competitor_tools": [
     "psychology-today",
     "goodtherapy"
   ],
-  "created_at": "2026-08-31T00:00:00.000Z",
-  "updated_at": "2026-09-01T19:25:35.551Z",
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
   "featured": false,
-  "status": "active",
-  "website_url": "https://www.therapyden.com",
-  "affiliate_url": "https://www.therapyden.com"
+  "status": "active"
 }

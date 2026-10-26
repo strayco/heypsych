@@ -79,7 +79,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
     <div ref={searchRef} className="relative w-full">
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <Search className="h-5 w-5 text-label-primary0" />
+          <Search className="h-5 w-5 text-label-tertiary" />
         </div>
 
         <input
@@ -100,7 +100,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
         {query && (
           <button
             onClick={clearSearch}
-            className="absolute inset-y-0 right-0 flex items-center pr-4 text-label-primary0 hover:text-label-secondary"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 text-label-tertiary hover:text-label-secondary"
             aria-label="Clear search"
           >
             <X className="h-5 w-5" />
@@ -142,7 +142,7 @@ export function ResourceSearch({ resources }: ResourceSearchProps) {
           </div>
 
           {filteredResources.length === 8 && (
-            <div className="border-t border-separator px-4 py-2 text-center text-xs text-label-primary0">
+            <div className="border-t border-separator px-4 py-2 text-center text-xs text-label-tertiary">
               Showing first 8 results
             </div>
           )}

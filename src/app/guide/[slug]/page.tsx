@@ -90,6 +90,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: canonicalUrl,
     },
     openGraph: {
+      images: ["/images/og/heypsych.png"],
       title: content.title,
       description: content.metaDescription,
       url: canonicalUrl,
@@ -98,6 +99,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: 'en_US',
     },
     twitter: {
+      images: ["/images/og/heypsych.png"],
       card: 'summary_large_image',
       title: content.title,
       description: content.metaDescription,

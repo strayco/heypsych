@@ -6,6 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
+import { resolveTreatmentAlias } from '@/lib/treatments/treatment-aliases.generated';
 import { supabaseOptional } from '@/lib/config/database';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
@@ -25,7 +26,9 @@ export async function GET() {
     // Fetch all treatment-related entities
     const { data: treatments } = await db
       .from('entities')
-      .select('*')
+      // Only what a sitemap entry needs; full rows carry article content
+      // (megabytes across all treatments) and cost Supabase egress.
+      .select('slug, type, created_at, updated_at, last_updated:metadata->>last_updated')
       .in('type', [
         'medication',
         'therapy',
@@ -50,8 +53,13 @@ export async function GET() {
     //
     // The slugs file is regenerated during build via `npm run generate:treatment-slugs`.
     const renderableSlugs = new Set(treatmentSlugsData.slugs);
-    const renderable = (treatments as unknown as Entity[]).filter((t) =>
-      renderableSlugs.has(t.slug)
+    // Alias slugs (e.g. electroconvulsive-therapy-for-severe-depression)
+    // redirect to their canonical page; a sitemap lists only final URLs.
+    const rows = (treatments as unknown as Array<Record<string, unknown> & { slug: string; last_updated?: string | null }>).map(
+      (t) => ({ ...t, metadata: { last_updated: t.last_updated ?? undefined } })
+    );
+    const renderable = (rows as unknown as Entity[]).filter(
+      (t) => renderableSlugs.has(t.slug) && !resolveTreatmentAlias(t.slug)
     );
     const unrenderable = treatments.length - renderable.length;
 

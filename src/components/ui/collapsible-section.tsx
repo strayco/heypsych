@@ -69,7 +69,7 @@ export function CollapsibleSection({
         </motion.span>
       </button>
       {!isExpanded && (
-        <div className="mt-4 text-sm text-label-primary0 italic">
+        <div className="mt-4 text-sm text-label-tertiary italic">
           {toggleLabel.collapsed} to see full content
         </div>
       )}

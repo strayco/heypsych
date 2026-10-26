@@ -5,10 +5,11 @@ import { join } from "path";
 import { ArrowLeft, TrendingUp, Brain, Pill, Users, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "All Articles | Learn | HeyPsych",
+  title: "All Articles | Learn",
   description:
     "Browse all mental health education articles. Evidence-based guides on treatments, therapy approaches, medications, and emerging research.",
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "All Articles | Learn | HeyPsych",
     description: "Browse all mental health education articles.",
     type: "website",
@@ -67,7 +68,7 @@ export default function LearnArchive() {
   const articles = getArticles();
 
   return (
-    <main className="min-h-screen bg-canvas">
+    <div className="min-h-screen bg-canvas">
       {/* Header */}
       <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -121,6 +122,6 @@ export default function LearnArchive() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

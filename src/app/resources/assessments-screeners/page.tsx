@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/assessments-screeners`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Mental Health Assessments & Screeners",
     description: "Free evidence-based mental health screening tools and validated assessments.",
     url: `${SITE_CONFIG.url}/resources/assessments-screeners`,

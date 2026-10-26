@@ -58,7 +58,7 @@ test.describe('Content Availability Without JavaScript', () => {
     });
 
     test('PTSD - Core content visible without JS', async ({ page }) => {
-      await page.goto(`${BASE_URL}/conditions/post-traumatic-stress-disorder`);
+      await page.goto(`${BASE_URL}/conditions/posttraumatic-stress-disorder`);
 
       const mainHeading = page.locator('h1');
       await expect(mainHeading).toBeVisible();

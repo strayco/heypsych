@@ -3,22 +3,21 @@
   "kind": "tool",
   "slug": "calm",
   "name": "Calm",
-  "one_liner": "Calm is a meditation and sleep app with guided sessions, sleep stories, and relaxation music to reduce stress and improve sleep quality.",
+  "one_liner": "Meditation and sleep app with guided meditations, Sleep Stories, music and breathing exercises; mostly paid after a free trial.",
   "best_for": [
-    "People wanting to start a meditation practice",
-    "Those struggling with sleep or stress",
-    "Anyone interested in guided relaxation and mindfulness",
-    "People who enjoy celebrity-narrated sleep content"
+    "Beginners who want short guided meditations",
+    "People who fall asleep better with stories, soundscapes or music",
+    "People whose employer or health plan offers Calm for free"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People seeking clinical treatment for mental health conditions",
-    "Those who need therapist support (this is self-guided)"
+    "Anyone in crisis: call or text 988",
+    "People with chronic insomnia or a diagnosed anxiety disorder who need treatment such as CBT-I or therapy",
+    "People who don't want their data shared for targeted advertising"
   ],
   "support_level": "self-help",
-  "short_description": "Calm is a meditation and sleep app with guided sessions, sleep stories, and relaxation music to reduce stress and improve sleep quality.",
-  "long_description": "Calm is one of the most popular mental wellness apps worldwide, with over 100 million downloads and the App Store's App of the Year award. The app offers guided meditations ranging from 3-25 minutes, Sleep Stories narrated by celebrities, breathing exercises, stretching routines, and relaxing music. Programs target stress reduction, anxiety management, focus improvement, and better sleep. A 7-day free trial is available, after which premium costs about $70/year. Calm is a self-help tool designed for general wellness—it's not a replacement for clinical treatment of mental health conditions but can complement therapy.",
-  "patient_summary": "Calm helps you relax, meditate, and sleep better. Listen to sleep stories, follow guided meditations, or just play calming sounds. It's polished and easy to use, great for beginners.",
+  "short_description": "Calm is a subscription meditation and sleep app with guided sessions, Sleep Stories, music and breathing exercises.",
+  "long_description": "Calm, from Calm.com, Inc., offers guided meditations, Sleep Stories read by well-known voices, music and soundscapes, breathing exercises and short courses on stress, focus and sleep. A small amount of content is free; most needs Calm Premium after a 7-day trial (about $79.99/year or $16.99/month, with app-store prices varying), and some employers and health plans provide it. Randomized trials of the Calm app by university researchers found reductions in stress in college students and in daytime fatigue in adults with sleep problems. Calm's privacy policy says it does not sell data for payment but shares limited data with ad partners for targeted advertising, which can count as selling or sharing under California law; you can opt out.",
+  "patient_summary": "Calm helps you relax and sleep with guided meditations, Sleep Stories, music and breathing exercises. After a 7-day trial, Premium costs about $79.99 a year or $16.99 a month, though some employers cover it. It's a wellness app rather than treatment, and it shares some data for advertising unless you opt out.",
   "primary_hubs": [
     "sleep",
     "anxiety-stress"
@@ -44,15 +43,36 @@
   "pricing": {
     "model": "subscription",
     "free_tier": true,
-    "starting_price": "$70/year",
-    "notes": "7-day free trial. Limited free content. Some employers provide free access."
+    "starting_price": "$79.99/year or $16.99/month",
+    "notes": "7-day free trial; a small free library. Calm raised its yearly price in February 2026 and app-store prices vary by region (some listings show $69.99/year or $14.99/month). Family plan $99.99/year for up to 6; lifetime $499.99. Some employers and plans include it.",
+    "sources": [
+      "https://www.calm.com/freetrial/plans",
+      "https://support.calm.com/hc/en-us/articles/37467219653915-Calm-App-Pricing-Update",
+      "https://support.calm.com/hc/en-us/articles/360051285254-What-is-the-cost-of-Calm-Premium-"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "B+",
-    "hipaa_compliant": false,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.calm.com/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "not-covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "no",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "Consumer wellness app, not healthcare. Review privacy policy for data practices."
+    "data_sold": "yes",
+    "notes": "Says it doesn't sell data for payment but shares limited data with ad partners for targeted advertising (a 'sale'/'sharing' under CCPA); opt out at calm.com/optout.",
+    "sources": [
+      "https://www.calm.com/privacy-policy",
+      "https://www.calm.com/calm-consumer-health-data-privacy-policy",
+      "https://support.calm.com/hc/en-us/articles/50273122110875-Your-Privacy-Choices-Opting-Out-of-Targeted-Advertising"
+    ]
   },
   "app_rating": 4.8,
   "total_reviews": 1500000,
@@ -82,7 +102,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "publisher": "Calm.com, Inc.",
@@ -93,12 +113,52 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "high",
+    "clinical_trials": [
+      {
+        "study": "Calm app vs waitlist for stress in college students (8 weeks)",
+        "citation": {
+          "authors": "Huberty J, et al.",
+          "title": "Efficacy of the Mindfulness Meditation Mobile App \"Calm\" to Reduce Stress Among College Students: Randomized Controlled Trial",
+          "journal": "JMIR mHealth and uHealth",
+          "year": 2019,
+          "doi": "10.2196/14273"
+        },
+        "outcome": "Lower stress and higher mindfulness and self-compassion vs waitlist.",
+        "sample_size": 88,
+        "study_design": "Randomized controlled trial (waitlist control)"
+      },
+      {
+        "study": "Calm app vs waitlist in adults with sleep disturbance (8 weeks)",
+        "citation": {
+          "authors": "Huberty J, et al.",
+          "title": "Testing a mindfulness meditation mobile app for the treatment of sleep-related symptoms in adults with sleep disturbance: A randomized controlled trial",
+          "journal": "PLOS ONE",
+          "year": 2021,
+          "doi": "10.1371/journal.pone.0244717"
+        },
+        "outcome": "Less daytime fatigue and sleepiness vs waitlist.",
+        "sample_size": 263,
+        "study_design": "Randomized controlled trial (waitlist control)"
+      },
+      {
+        "study": "Calm app for employees in the workplace",
+        "citation": {
+          "authors": "Huberty J, et al.",
+          "title": "Testing the Pragmatic Effectiveness of a Consumer-Based Mindfulness Mobile App in the Workplace: Randomized Controlled Trial",
+          "journal": "JMIR mHealth and uHealth",
+          "year": 2022,
+          "doi": "10.2196/38903"
+        },
+        "sample_size": 1029,
+        "study_design": "Randomized controlled trial"
+      }
+    ],
     "primary_uses": [
-      "Meditation",
-      "Sleep improvement",
-      "Stress reduction",
-      "Relaxation"
+      "Guided meditation for stress",
+      "Sleep Stories and soundscapes for falling asleep",
+      "Breathing exercises",
+      "Short courses on anxiety, focus and sleep"
     ]
   },
   "related_tools": [
@@ -113,5 +173,24 @@
   "featured": true,
   "status": "active",
   "affiliate_url": "https://www.calm.com",
-  "updated_at": "2026-09-02T06:10:49.771Z"
+  "updated_at": "2026-09-02T06:10:49.771Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-23",
+    "sources": [
+      "https://www.calm.com/freetrial/plans",
+      "https://apps.apple.com/us/app/calm/id571800810",
+      "https://play.google.com/store/apps/details?id=com.calm.android"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.8,
+      "count": 2000000,
+      "url": "https://apps.apple.com/us/app/calm/id571800810",
+      "checked": "2026-10-23"
+    }
+  ]
 }

@@ -9,9 +9,3 @@ export {
   useArchitectProductsForCapability,
   type UseArchitectProductsResult,
 } from "./useArchitectProducts";
-
-export {
-  usePlacedProducts,
-  type PlacedProduct,
-  type UsePlacedProductsResult,
-} from "./usePlacedProducts";

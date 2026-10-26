@@ -1,18 +1,9 @@
 import { Metadata } from "next";
-import { getMedicationsServer } from "@/lib/data/server-queries";
-import { MedicationsClient } from "@/components/pages/medications-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Pre-fetches data on server for instant page load
- * Includes complete SEO metadata for medications hub page
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Force dynamic rendering - this is an index page, not SEO-critical
-// Prevents build-time database queries that can timeout
-export const dynamic = 'force-dynamic';
-
-// Generate SEO metadata for medications hub page
 export const metadata: Metadata = {
   title: "Psychiatric Medications A-Z | Antidepressants, Mood Stabilizers & More",
   description:
@@ -23,6 +14,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/medications`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Psychiatric Medications A-Z",
     description:
       "Complete guide to psychiatric medications: antidepressants, antipsychotics, mood stabilizers, and more.",
@@ -31,6 +23,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Psychiatric Medications A-Z",
     description:
@@ -38,7 +31,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function MedicationsPage() {
-  const medications = await getMedicationsServer();
-  return <MedicationsClient medications={medications} />;
+export default function MedicationsHubPage() {
+  return (
+    <TreatmentKindHub
+      modality="medication"
+      title="Medications"
+      description="Prescription medicines for mental health, shelved by family, with what each is used for and what to expect."
+      noun="medications"
+      searchPlaceholder="Search by name or brand, e.g. Zoloft, Lamictal, Adderall"
+    />
+  );
 }

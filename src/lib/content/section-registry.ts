@@ -33,7 +33,7 @@ const DEFAULT_UI_HINTS: Record<string, Partial<UIHints>> = {
   quote_carousel: {
     layout: 'quote_carousel',
     icon: 'quote.bubble.fill',
-    color: '#007AFF',
+    color: '#456C7E',
     visual_priority: 'hero',
     card_style: 'filled',
     animation: 'fade_slide_up'
@@ -41,7 +41,7 @@ const DEFAULT_UI_HINTS: Record<string, Partial<UIHints>> = {
   stat_card: {
     layout: 'stat_card',
     icon: 'chart.bar.fill',
-    color: '#34C759',
+    color: '#487D66',
     visual_priority: 'high',
     card_style: 'elevated',
     animation: 'number_count_up'
@@ -49,7 +49,7 @@ const DEFAULT_UI_HINTS: Record<string, Partial<UIHints>> = {
   alert_banner: {
     layout: 'alert_banner',
     icon: 'exclamationmark.octagon.fill',
-    color: '#FF3B30',
+    color: '#AD655E',
     visual_priority: 'critical',
     card_style: 'filled_critical',
     animation: 'fade_in',
@@ -58,7 +58,7 @@ const DEFAULT_UI_HINTS: Record<string, Partial<UIHints>> = {
   timeline: {
     layout: 'timeline',
     icon: 'clock.fill',
-    color: '#007AFF',
+    color: '#456C7E',
     visual_priority: 'high',
     card_style: 'outlined',
     animation: 'fade_in'

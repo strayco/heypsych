@@ -17,10 +17,10 @@ import {
   BarChart3,
   Settings,
   Home,
-  Shield,
 } from "lucide-react";
 import { isAdminAuthenticated } from "@/lib/auth/admin-auth";
 import { AdminLogoutButton } from "./_components/AdminLogoutButton";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 const NAV_ITEMS = [
   { href: "/hp-ctrl-8k3m9x", label: "Dashboard", icon: Home },
   { href: "/hp-ctrl-8k3m9x/vendors", label: "Vendors", icon: Building2 },
+  { href: "/hp-ctrl-8k3m9x/catalog", label: "Catalog", icon: FileText },
   { href: "/hp-ctrl-8k3m9x/leads", label: "Leads", icon: Users },
   { href: "/hp-ctrl-8k3m9x/content", label: "Content", icon: FileText }, // TODO: Build page
   { href: "/hp-ctrl-8k3m9x/analytics", label: "Analytics", icon: BarChart3 }, // TODO: Build page
@@ -56,10 +57,10 @@ export default async function AdminLayout({
       <header className="sticky top-0 z-50 border-b border-separator bg-surface">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
           <div className="flex items-center gap-4">
-            <Link href="/hp-ctrl-8k3m9x" className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-accent" />
-              <span className="font-semibold text-label-primary">
-                HeyPsych Admin
+            <Link href="/hp-ctrl-8k3m9x" className="flex items-center gap-2.5">
+              <Wordmark size={22} />
+              <span className="rounded-full bg-surface-grouped px-2 py-0.5 text-xs font-medium text-label-secondary">
+                Admin
               </span>
             </Link>
           </div>
@@ -96,7 +97,7 @@ export default async function AdminLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">{children}</main>
+        <div className="flex-1 p-6">{children}</div>
       </div>
     </div>
   );

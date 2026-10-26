@@ -81,36 +81,29 @@ export const FEATURES = [
  * These are the highest commercial-value comparisons that map to curated JSON files
  * in data/tools-v4/comparisons/. Add new comparisons by creating JSON files there.
  */
-export const CLINICIAN_KEY_COMPARISONS = [
-  // EHR / Practice Management - Highest volume searches
-  { a: "simplepractice", b: "therapynotes" },
-  { a: "simplepractice", b: "jane-app" },
-  { a: "simplepractice", b: "theranest" },
-  { a: "simplepractice", b: "valant" },
-  { a: "simplepractice", b: "sessions-health" },
-  { a: "therapynotes", b: "theranest" },
-  { a: "therapynotes", b: "valant" },
-  { a: "therapynotes", b: "sessions-health" },
-  { a: "jane-app", b: "therapynotes" },
-  { a: "jane-app", b: "theranest" },
-  { a: "jane-app", b: "valant" },
-  // AI Scribes - High growth category
-  { a: "freed", b: "mentalyc" },
-  { a: "freed", b: "upheal" },
-  { a: "freed", b: "nabla" },
-  { a: "mentalyc", b: "upheal" },
-  { a: "suki-ai", b: "freed" },
-  { a: "suki-ai", b: "nabla" },
-  { a: "microsoft-dragon-copilot", b: "freed" },
-  // Provider Platforms - High intent insurance/billing searches
-  { a: "headway", b: "alma-provider-platform" },
-  { a: "headway", b: "grow-therapy" },
-  { a: "alma-provider-platform", b: "grow-therapy" },
-  { a: "headway", b: "sondermind-provider-network" },
-  // Telehealth
-  { a: "doxy-me", b: "simplepractice" },
-  { a: "doxy-me", b: "therapynotes" },
-] as const;
+export const CLINICIAN_KEY_COMPARISONS: ReadonlyArray<{
+  a: string;
+  b: string;
+  slug: string;
+}> = [
+  { a: "simplepractice", b: "therapynotes", slug: "simplepractice-vs-therapynotes" },
+  { a: "simplepractice", b: "jane-app", slug: "simplepractice-vs-jane-app" },
+  { a: "simplepractice", b: "theranest", slug: "simplepractice-vs-theranest" },
+  { a: "simplepractice", b: "sessions-health", slug: "simplepractice-vs-sessions-health" },
+  { a: "simplepractice", b: "valant-ehr-suite", slug: "simplepractice-vs-valant" },
+  { a: "therapynotes", b: "theranest", slug: "therapynotes-vs-theranest" },
+  { a: "therapynotes", b: "sessions-health", slug: "sessions-health-vs-therapynotes" },
+  { a: "therapynotes", b: "valant-ehr-suite", slug: "therapynotes-vs-valant" },
+  { a: "jane-app", b: "therapynotes", slug: "jane-app-vs-therapynotes" },
+  { a: "jane-app", b: "theranest", slug: "jane-app-vs-theranest" },
+  { a: "mentalyc", b: "upheal", slug: "mentalyc-vs-upheal" },
+  { a: "headway", b: "grow-therapy", slug: "grow-therapy-vs-headway" },
+  { a: "headway", b: "sondermind", slug: "headway-vs-sondermind-provider-network" },
+  { a: "doxy-me", b: "simplepractice", slug: "doxy-me-vs-simplepractice" },
+  { a: "doxy-me", b: "therapynotes", slug: "doxy-me-vs-therapynotes" },
+  { a: "doxy-me", b: "zoom-for-healthcare", slug: "doxyme-vs-zoom-healthcare" },
+  { a: "mentaya", b: "thrizer", slug: "thrizer-vs-mentaya" },
+];
 
 // ============================================================================
 // PAGE CONFIGURATION TYPES
@@ -181,7 +174,7 @@ export function generateBestForProfessionPages(): ProgrammaticPageConfig[] {
           professions: [profession.slug],
         },
         relatedPages: [
-          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}/`,
+          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}`,
           `/tools/for-clinicians/guides/best-${category.slug}-for-solo-practice`,
           `/tools/for-clinicians/guides/best-${category.slug}-for-group-practice`,
         ],
@@ -220,7 +213,7 @@ export function generateBestForPracticePages(): ProgrammaticPageConfig[] {
           practiceTypes: [practice.slug],
         },
         relatedPages: [
-          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}/`,
+          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}`,
         ],
         priority: 0.85,
         estimatedVolume: "medium",
@@ -262,7 +255,7 @@ export function generateFeaturePages(): ProgrammaticPageConfig[] {
           features: [feature.slug],
         },
         relatedPages: [
-          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}/`,
+          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}`,
         ],
         priority: 0.75,
         estimatedVolume: "medium",
@@ -285,7 +278,7 @@ export function generateCompliancePages(): ProgrammaticPageConfig[] {
       slug: `hipaa-compliant-${category.slug}`,
       route: `/tools/for-clinicians/guides/hipaa-compliant-${category.slug}`,
       title: `HIPAA Compliant ${category.display} Software (2026) | HeyPsych`,
-      description: `Find verified HIPAA compliant ${category.full.toLowerCase()} with BAA available. Compare security features, certifications, and compliance status.`,
+      description: `Find ${category.full.toLowerCase()} whose vendors state HIPAA support and may offer a BAA. Compare stated security features — HeyPsych has not audited compliance.`,
       h1: `HIPAA Compliant ${category.display} Software in 2026`,
       primaryKeyword: `hipaa compliant ${category.display.toLowerCase()}`,
       secondaryKeywords: [
@@ -299,7 +292,7 @@ export function generateCompliancePages(): ProgrammaticPageConfig[] {
         features: ["hipaa"],
       },
       relatedPages: [
-        `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}/`,
+        `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}`,
       ],
       priority: 0.8,
       estimatedVolume: "high",
@@ -342,8 +335,8 @@ export function generatePricePages(): ProgrammaticPageConfig[] {
           priceMax: modifier.slug === "free" ? 0 : modifier.slug === "cheapest" ? 50 : 100,
         },
         relatedPages: [
-          `/tools/pricing/${category.slug}/`,
-          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}/`,
+          `/tools/pricing/${category.slug}`,
+          `/tools/for-clinicians/${mapCategoryToTaxonomy(category.slug)}`,
         ],
         priority: 0.8,
         estimatedVolume: modifier.slug === "free" ? "high" : "medium",
@@ -381,7 +374,7 @@ export function generateAlternativesPages(productSlugs: string[]): ProgrammaticP
       pageType: "alternatives",
       filters: {},
       relatedPages: [
-        `/tools/for-clinicians/ehr-practice-management/${slug}/`,
+        `/tools/for-clinicians/ehr-practice-management/${slug}`,
       ],
       priority: 0.85,
       estimatedVolume: "high",
@@ -414,7 +407,7 @@ export function generateProductPricingPages(productSlugs: string[]): Programmati
       pageType: "pricing",
       filters: {},
       relatedPages: [
-        `/tools/for-clinicians/ehr-practice-management/${slug}/`,
+        `/tools/for-clinicians/ehr-practice-management/${slug}`,
         `/tools/pricing/mental-health-ehr/`,
       ],
       priority: 0.9,
@@ -427,12 +420,12 @@ export function generateProductPricingPages(productSlugs: string[]): Programmati
  * Generate "[Product] vs [Product]" comparison pages
  */
 export function generateVsPages(
-  comparisons: readonly { readonly a: string; readonly b: string }[]
+  comparisons: readonly { readonly a: string; readonly b: string; readonly slug?: string }[]
 ): ProgrammaticPageConfig[] {
-  return comparisons.map(({ a, b }) => {
+  return comparisons.map(({ a, b, slug: comparisonSlug }) => {
     const nameA = a.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     const nameB = b.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-    const slug = `${a}-vs-${b}`;
+    const slug = comparisonSlug ?? `${a}-vs-${b}`;
 
     return {
       slug,
@@ -449,8 +442,8 @@ export function generateVsPages(
       pageType: "comparison",
       filters: {},
       relatedPages: [
-        `/tools/for-clinicians/ehr-practice-management/${a}/`,
-        `/tools/for-clinicians/ehr-practice-management/${b}/`,
+        `/tools/for-clinicians/ehr-practice-management/${a}`,
+        `/tools/for-clinicians/ehr-practice-management/${b}`,
       ],
       priority: 0.9,
       estimatedVolume: "high",
@@ -474,34 +467,30 @@ export function generateAllProgrammaticPages(): {
   // Top products to generate competitor displacement pages for
   // These get alternatives and pricing pages generated in /tools/for-clinicians/guides/
   const topProducts = [
-    // EHR / Practice Management
     "simplepractice",
     "therapynotes",
     "jane-app",
     "theranest",
-    "valant",
     "sessions-health",
+    "intakeq-practiceq",
+    "valant-ehr-suite",
     "icanotes",
-    "cliniko",
-    // AI Scribes
-    "freed",
+    "luminello",
+    "osmind",
     "mentalyc",
     "upheal",
-    "nabla",
-    "suki-ai",
-    "autonotes",
-    // Provider Platforms
+    "blueprint",
     "headway",
-    "alma-provider-platform",
     "grow-therapy",
-    "sondermind-provider-network",
-    // Telehealth
+    "sondermind",
     "doxy-me",
-    "thera-link",
-    // Billing / RCM
+    "zoom-for-healthcare",
     "mentaya",
     "thrizer",
     "heard",
+    "ivypay",
+    "psychology-today",
+    "zencare",
   ];
 
   const allPages: ProgrammaticPageConfig[] = [

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { siteConfig, getActiveNavigation } from "@/lib/config/site";
+import { Wordmark } from "@/components/brand/Wordmark";
 import {
   Menu,
   X,
@@ -36,6 +37,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function Header() {
   const router = useRouter();
+  const pathname = usePathname();
 
   // Get active navigation based on feature flag
   // Note: This is determined at build time via NAVIGATION_INVERSION env var.
@@ -61,7 +63,7 @@ export function Header() {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
     }
   };
@@ -73,52 +75,51 @@ export function Header() {
         sticky top-0 z-50 w-full transition-all duration-200
         ${isScrolled
           ? "hp-material border-b border-separator shadow-subtle"
-          : "bg-canvas/80 backdrop-blur-md border-b border-transparent"
+          : "bg-canvas/90 backdrop-blur-md border-b border-transparent"
         }
       `}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center group transition-transform group-hover:scale-[1.02]">
-            <img
-              src="/logo.svg"
-              alt={siteConfig.name}
-              className="h-10 w-auto"
-            />
+          <Link
+            href="/"
+            aria-label={`${siteConfig.name} home`}
+            className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          >
+            <Wordmark size={28} />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 md:flex">
-            {activeNavigation.map((item) => {
-              const IconComponent = iconMap[item.icon];
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="
-                    flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium
-                    text-label-secondary transition-all duration-150
-                    hover:bg-fill-secondary hover:text-label-primary
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
-                  "
-                >
-                  {IconComponent && <IconComponent className="h-4 w-4" />}
-                  <span>{item.name}</span>
-                </Link>
-              );
-            })}
+            {activeNavigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
+                className="
+                  flex items-center rounded-xl px-3.5 py-2 text-sm font-medium
+                  text-label-secondary transition-all duration-150
+                  hover:bg-fill-secondary hover:text-label-primary
+                  aria-[current=page]:text-label-primary
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+                "
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
           {/* Search and Actions */}
           <div className="flex items-center gap-3">
             {/* Desktop Search */}
             <div className="relative hidden sm:flex">
-              <form onSubmit={handleSearchSubmit}>
+              <form onSubmit={handleSearchSubmit} role="search" action="/search" method="get">
                 <input
-                  type="text"
-                  placeholder="Search..."
+                  type="search"
+                  name="q"
+                  aria-label="Search HeyPsych"
+                  placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="
@@ -130,7 +131,7 @@ export function Header() {
                     focus:outline-none focus:ring-2 focus:ring-accent/20
                   "
                 />
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-label-tertiary" />
+                <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-label-tertiary" />
               </form>
             </div>
 
@@ -169,7 +170,9 @@ export function Header() {
                     }}
                   >
                     <input
-                      type="text"
+                      type="search"
+                      name="q"
+                      aria-label="Search HeyPsych"
                       placeholder="Search conditions, treatments, tools..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -179,7 +182,7 @@ export function Header() {
                         focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20
                       "
                     />
-                    <Search className="absolute left-4 top-3.5 h-4 w-4 text-label-tertiary" />
+                    <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-label-tertiary" />
                   </form>
                 </div>
 

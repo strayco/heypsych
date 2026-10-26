@@ -90,7 +90,7 @@ export function RelatedConditionsSection({
                   >
                     <Badge
                       variant="outline"
-                      className="cursor-pointer border-caution-border bg-caution-tint text-caution-700 transition-colors hover:border-caution-500 hover:bg-caution-900/40"
+                      className="cursor-pointer border-caution-border bg-caution-tint text-caution-700 transition-colors hover:border-caution-500 hover:bg-caution-tint"
                     >
                       {link.anchorOptions[0]}
                     </Badge>

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Other Mental Health Conditions",
     description: "Specialized mental health conditions: sleep, sexual health, dissociative, and more.",
     url: `${SITE_CONFIG.url}/conditions/other`,

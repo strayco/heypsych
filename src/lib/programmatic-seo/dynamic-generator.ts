@@ -233,6 +233,9 @@ async function buildBrandMapping(): Promise<Map<string, string>> {
     // Map brand name to full slug
     if (t.brandName && t.brandName !== t.genericName) {
       mapping.set(t.brandName, t.slug);
+      // The URL form getDisplaySlug emits, so those links resolve.
+      const urlForm = urlSafeBrand(String(t.brandName));
+      if (urlForm && !mapping.has(urlForm)) mapping.set(urlForm, t.slug);
     }
     // Map generic name too
     if (t.genericName && typeof t.genericName === 'string') {
@@ -248,10 +251,33 @@ async function buildBrandMapping(): Promise<Map<string, string>> {
 /**
  * Get SEO-friendly display slug (brand name for medications)
  */
+/**
+ * A brand string as a URL segment: "Saphris, Secuado" → "saphris",
+ * "Effexor XR" → "effexor-xr". Raw brand strings (commas, spaces, capitals)
+ * produced guide URLs that parseDynamicSlug could not resolve, so they 404'd
+ * while being listed in the sitemap.
+ */
+export function urlSafeBrand(brand: string): string {
+  return brand
+    .split(",")[0]
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** The treatment's name as guide URLs spell it ("zoloft", "kava"), or null. */
+export async function guideDisplaySlug(treatmentSlug: string): Promise<string | null> {
+  const treatments = await discoverTreatments();
+  const treatment = treatments.find((t) => t.slug === treatmentSlug);
+  return treatment ? getDisplaySlug(treatment) : null;
+}
+
 function getDisplaySlug(treatment: TreatmentMeta): string {
   // For medications, use brand name if available (more search volume)
   if (treatment.type === 'medications' && treatment.brandName) {
-    return treatment.brandName;
+    const brand = urlSafeBrand(String(treatment.brandName));
+    if (brand) return brand;
   }
   // For therapy, use readable slug
   return treatment.slug.split('-').slice(0, 2).join('-');

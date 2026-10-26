@@ -151,7 +151,7 @@ export function ComparisonTable({
     const [min, max] = metric.scale;
     const percentage = ((numValue - min) / (max - min)) * 100;
 
-    const barColor = metric.higherIsBetter ? "bg-accent-tint0" : "bg-negative-tint0";
+    const barColor = metric.higherIsBetter ? "bg-accent-tint" : "bg-negative-tint";
 
     return (
       <div className="mt-1">

@@ -629,7 +629,7 @@ export const DEMO_PRODUCT_DISPLAY: DemoProductDisplay[] = [
   {
     slug: "demo-rxsync-prescribing",
     name: "RxSync Prescribing",
-    tagline: "E-prescribing with EPCS",
+    tagline: "E-prescribing",
     category: "E-Prescribing",
     isDemo: true,
   },

@@ -65,6 +65,8 @@ export const ToolCampaignZ = z.object({
   priority: z.number().int().min(1).max(100).default(50),
   disclosure_label: z.literal("Sponsored").default("Sponsored"),
   destination_url: z.string().url().optional(),
+  /** One line from the sponsor, shown under the label (e.g. "First month 20% off"). */
+  offer: z.string().max(90).optional(),
   tracking_id: z.string().optional(),
   status: CampaignStatusZ.default("draft"),
   created_at: z.string().datetime().optional(),

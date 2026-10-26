@@ -1,19 +1,14 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "9437e44e-e467-4a16-a35f-b91ab8a3d2e0",
+  "id": "c4b0e369-15e8-5090-8899-9167f48c7c4b",
   "slug": "availity-essentials",
   "name": "Availity Essentials",
-  "company_name": "Availity",
-  "website": "https://www.availity.com",
-  "one_liner": "Free clearinghouse connecting providers to 95%+ of US payers",
-  "short_description": "Availity Essentials is a free healthcare information network that connects providers with payers for eligibility verification, claims status, prior authorization, and other real-time transactions.",
-  "description": "Availity is the largest real-time health information network in the US, connecting over 3 million providers with health plans covering 95%+ of commercially insured patients. Availity Essentials provides free access to eligibility verification, claims status inquiry, prior authorization submission, and remittance advice. The platform serves as a clearinghouse and payer connectivity hub, eliminating the need for multiple payer portals. For enhanced features like automated workflows and analytics, Availity offers paid Essentials Pro.",
+  "company_name": "Availity, LLC",
   "import_ref": {
-    "record_id": "MH-0567",
-    "source_row": 568,
-    "import_timestamp": "2026-08-22T20:50:40.822Z",
-    "source_file": "master-records.json"
+    "record_id": "MH-AVAILITY-ESSENTIALS",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
     "status": "active"
@@ -21,14 +16,21 @@
   "primary_category": "billing-rcm-insurance",
   "secondary_categories": [],
   "capabilities": [
+    "claims-submission",
     "eligibility-verification",
     "prior-authorization",
-    "claims-submission"
+    "billing-rcm",
+    "hipaa-compliant",
+    "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "practice-administrator",
-      "billing-specialist"
+      "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "billing-specialist",
+      "practice-administrator"
     ],
     "practice_settings": [
       "solo-practice",
@@ -37,9 +39,7 @@
     "organization_sizes": [
       "solo",
       "small-2-10",
-      "medium-11-50",
-      "large-51-200",
-      "enterprise-200-plus"
+      "medium-11-50"
     ]
   },
   "feature_flags": {
@@ -50,159 +50,64 @@
     "has_measurement": false,
     "has_e_prescribing": false,
     "has_patient_portal": false,
-    "has_mobile_app": true,
+    "has_mobile_app": false,
     "is_mental_health_specific": false,
     "is_specialty_agnostic": true
   },
-  "company": {
-    "founded_year": 2001,
-    "headquarters": "Jacksonville, FL",
-    "employee_count": "1000+",
-    "funding_stage": "Private Equity",
-    "notable_investors": [
-      "Francisco Partners"
+  "short_description": "Free multi-payer provider portal for eligibility, claims, claim status, remittances and authorizations with participating health plans.",
+  "long_description": "Availity Essentials is the provider portal many health plans (including many Anthem/Elevance, Blue Cross Blue Shield and Highmark plans) sponsor, so it is free for providers. From one login you can check eligibility and benefits, submit professional claims, check claim status, view remittances, and handle authorizations and appeals where the plan supports it. What you can do depends on each payer. A paid Essentials Plus tier adds non-sponsoring payers. It is usually used alongside an EHR's own clearinghouse rather than instead of one.",
+  "one_liner": "The free insurer portal for eligibility, claim status and authorizations.",
+  "best_for": [
+    "Checking eligibility, benefits and claim status at no cost",
+    "Low-volume billers whose main payers sponsor Availity",
+    "Prior authorizations and appeals that a payer requires through Availity",
+    "A companion to an EHR's clearinghouse for payer-specific tasks"
+  ],
+  "not_for": [
+    "Practices with a mixed payer list that want one place to submit everything",
+    "Batch or automated billing workflows on the free tier",
+    "Clinicians who want billing done for them"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "insurance-billing",
+      "budget",
+      "low-volume"
     ],
-    "customer_count": "3+ million providers",
-    "notable_clients": [
-      "Major health plans",
-      "Large health systems",
-      "Independent practices"
-    ]
+    "notes": {
+      "insurance-billing": "The free portal many insurers require for eligibility, claim status, authorizations and appeals.",
+      "budget": "Free for providers with sponsoring health plans; a paid tier covers other payers.",
+      "low-volume": "A low-volume biller can submit claims to sponsoring plans by web form without buying a clearinghouse."
+    },
+    "job": "claims"
   },
+  "website_url": "https://www.availity.com/multi-payer-portal/",
+  "pricing_url": "https://www.availity.com/essentials-plus/",
   "pricing": {
     "model": "freemium",
+    "starting_price_cents": 0,
+    "starting_price_display": "Free (payer-sponsored)",
+    "free_tier": true,
     "quote_required": false,
-    "starting_price": 0,
-    "currency": "USD",
-    "billing_period": "monthly",
-    "tiers": [
-      {
-        "name": "Essentials (Free)",
-        "price": "Free",
-        "description": "Eligibility verification, claims status inquiry, prior authorization submission, remittance advice viewing, patient cost estimates, basic reporting."
-      },
-      {
-        "name": "Essentials Pro",
-        "price": "Custom",
-        "description": "Everything in Essentials plus automated eligibility workflows, batch transaction processing, advanced analytics, custom reporting, API access, dedicated support."
-      }
-    ],
-    "estimated_range": "$100-300/month for Essentials Pro (varies by volume)",
-    "free_trial": {
-      "available": true,
-      "notes": "Essentials is permanently free. Pro features can be trialed."
-    },
-    "notes": "Core Essentials is completely free. Funded by health plan partnerships. Pro tiers for advanced automation."
+    "price_range": "budget",
+    "notes": "Essentials is free for transactions with sponsoring payers. Essentials Plus (non-sponsoring payers) is paid; Availity does not currently publish its price."
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
-    "soc2": "yes",
-    "hitrust": "yes",
-    "gdpr_compliant": "unknown",
-    "compliance_urls": {
-      "security": "https://www.availity.com/security",
-      "compliance": "https://www.availity.com/compliance"
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "not_applicable",
+    "baa_provenance": {
+      "value": "yes",
+      "status": "public_source",
+      "source_url": "https://essentials.availity.com/availity/documents/Availity_OAA.pdf",
+      "verified_date": "2026-10-23",
+      "notes": "Business associate terms are part of the Organization Access Agreement."
     }
   },
-  "integrations": [
-    {
-      "name": "Epic",
-      "method": "api",
-      "native": true,
-      "integration_type": "api",
-      "slug": "epic",
-      "category": "other",
-      "verified": false
-    },
-    {
-      "name": "Cerner",
-      "method": "api",
-      "native": true,
-      "integration_type": "api",
-      "slug": "cerner",
-      "category": "other",
-      "verified": false
-    },
-    {
-      "name": "Athenahealth",
-      "method": "api",
-      "native": true,
-      "integration_type": "api",
-      "slug": "athenahealth",
-      "category": "other",
-      "verified": false
-    },
-    {
-      "name": "eClinicalWorks",
-      "method": "api",
-      "native": true,
-      "integration_type": "api",
-      "slug": "eclinicalworks",
-      "category": "other",
-      "verified": false
-    },
-    {
-      "name": "Major health plans",
-      "method": "direct-connect",
-      "native": true,
-      "notes": "95%+ of US commercial payers",
-      "integration_type": "api",
-      "slug": "major-health-plans",
-      "category": "other",
-      "verified": false
-    }
-  ],
-  "features": {
-    "eligibility_verification": {
-      "supported": true,
-      "description": "Real-time eligibility and benefits verification across 95%+ of payers"
-    },
-    "claims_status": {
-      "supported": true,
-      "description": "Check claim status directly with payers without portal hopping"
-    },
-    "prior_auth": {
-      "supported": true,
-      "description": "Submit and track prior authorization requests electronically"
-    },
-    "remittance": {
-      "supported": true,
-      "description": "View and download electronic remittance advice (ERA/835)"
-    },
-    "payer_coverage": "95%+ of commercially insured patients in the US",
-    "provider_network": "3+ million healthcare providers"
-  },
-  "best_for": [
-    "Any practice wanting free eligibility verification",
-    "Providers tired of logging into multiple payer portals",
-    "Small practices needing basic RCM tools at no cost",
-    "Billing staff wanting single point of payer access",
-    "Organizations seeking HITRUST-certified clearinghouse",
-    "Practices with high commercial payer mix"
-  ],
-  "not_for": [
-    "Practices needing full RCM automation (consider Candid Health or Waystar)",
-    "Organizations wanting AI-powered claims optimization",
-    "Practices primarily seeing Medicaid patients (coverage varies)",
-    "Those needing patient payment solutions"
-  ],
-  "governance": {
-    "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 88,
-    "last_verified": "2024-12-01",
-    "last_reviewed": "2026-08-24"
-  },
-  "related_tools": [
-    "waystar",
-    "candid-health",
-    "trizetto-provider-solutions",
-    "change-healthcare"
-  ],
-  "created_at": "2026-08-22T20:50:40.822Z",
-  "updated_at": "2026-09-01T19:31:57.275Z",
-  "status": "active",
+  "integrations": [],
   "seo": {
     "title": "Availity Essentials",
     "meta_description": "Availity Essentials review - free clearinghouse for 3M+ providers. Eligibility verification, claims status, prior auth. Connects to 95%+ of US payers....",
@@ -235,6 +140,23 @@
       "healthcare clearinghouse"
     ]
   },
-  "website_url": "https://www.availity.com/essentials",
-  "affiliate_url": "https://www.availity.com/essentials"
+  "governance": {
+    "last_reviewed": "2026-10-23",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
+  },
+  "related_tools": [
+    "office-ally",
+    "claim-md"
+  ],
+  "competitor_tools": [
+    "office-ally",
+    "claim-md"
+  ],
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
 }

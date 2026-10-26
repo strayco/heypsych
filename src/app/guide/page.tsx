@@ -7,6 +7,7 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { PageIntro } from "@/components/brand/PageIntro";
 import { ArrowRight } from 'lucide-react';
 import { getDynamicPageStats } from '@/lib/programmatic-seo/dynamic-generator';
 
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     canonical: 'https://heypsych.com/guide',
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: 'Mental Health Treatment Guides',
     description: 'Comprehensive guides on medications, therapies, and treatments for mental health conditions.',
     url: 'https://heypsych.com/guide',
@@ -117,57 +119,23 @@ export default async function GuidePage() {
   }
 
   return (
-    <main className="min-h-screen bg-canvas">
-      {/* Hero Section */}
-      <section className="bg-surface border-b border-separator">
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
-          <p className="text-xs font-medium uppercase tracking-wider text-label-secondary mb-2">
-            {stats.total > 0 ? `${stats.total.toLocaleString()}+` : 'Thousands of'} Guides
-          </p>
-
-          <h1 className="text-3xl md:text-4xl font-semibold text-label-primary tracking-tight mb-4">
-            Mental Health Treatment Guides
-          </h1>
-
-          <p className="text-lg text-label-secondary leading-relaxed max-w-3xl">
-            Evidence-based guides on medications, therapies, and treatments for mental health
-            conditions. Find detailed information tailored to specific conditions, demographics,
-            and treatment goals.
-          </p>
-        </div>
-      </section>
-
-      {/* Stats */}
-      {stats.total > 0 && (
-        <section className="max-w-6xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: 'Treatment Guides', value: stats.byType['treatment-for-condition'] || 0 },
-              { label: 'Comparisons', value: stats.byType['treatment-vs-treatment'] || 0 },
-              { label: 'Symptom Guides', value: stats.byType['condition-symptoms-demographic'] || 0 },
-              { label: 'High-Volume Pages', value: stats.bySearchVolume['high'] || 0 },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-xl border border-separator bg-surface p-4 text-center">
-                <div className="text-2xl font-semibold text-label-primary">{stat.value.toLocaleString()}</div>
-                <div className="text-sm text-label-secondary">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+    <div className="min-h-screen bg-canvas">
+      <PageIntro
+        title="Treatment guides"
+        object="reading"
+        description="Guides to medications, therapies, and other treatments for specific conditions, ages, and goals, with the evidence behind each."
+        footnote={stats.total > 0 ? `${stats.total.toLocaleString()} guides.` : undefined}
+      />
 
       {/* Guide Categories */}
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-          Explore
-        </p>
-        <h2 className="mt-1 text-xl font-semibold text-label-primary sm:text-2xl mb-8">
-          Browse by Category
+        <h2 className="mb-8 text-[26px] text-label-primary sm:text-[30px]">
+          Browse by category
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {GUIDE_CATEGORIES.map((category) => (
-            <div key={category.title} className="rounded-xl border border-separator bg-surface p-6">
+            <div key={category.title} className="rounded-2xl border border-separator bg-surface p-6">
               <h3 className="font-semibold text-label-primary">{category.title}</h3>
               <p className="text-label-secondary text-sm mt-2 mb-4">{category.description}</p>
               <ul className="space-y-2">
@@ -234,6 +202,6 @@ export default async function GuidePage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

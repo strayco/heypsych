@@ -27,6 +27,7 @@ import {
   MedicalDisclaimer,
   ContentTimestamps,
 } from "@/components/eat";
+import { normalizeResource } from "./normalize-resource";
 
 type CategoryKey =
   | "assessments-screeners"
@@ -130,12 +131,12 @@ function ResourceHeader({ resource }: { resource: any }) {
         <CardHeader>
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500">
                 <Icon className="h-6 w-6 text-white" />
               </div>
               <div className="flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
-                  <CardTitle className="text-2xl">{String(resource.name ?? "")}</CardTitle>
+                  <h1 className="text-2xl leading-none font-semibold tracking-tight">{String(resource.name ?? "")}</h1>
                   {resource.validated && (
                     <Badge
                       variant="outline"
@@ -210,63 +211,8 @@ export function ResourceDetailClient({ slug, entity }: ResourceDetailClientProps
 
   if (!resource) notFound();
 
-  // Build crosslinks from related slugs if not already present
-  const buildCrosslinksFromSlugs = (res: any): Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> => {
-    if (res.crosslinks && res.crosslinks.length > 0) {
-      return res.crosslinks;
-    }
-
-    const crosslinks: Array<{ slug: string; type: 'condition' | 'treatment' | 'resource'; display: string }> = [];
-    const slugToDisplay = (slug: string) => slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-
-    const conditionSlugs = res.relatedConditionSlugs || res.data?.relatedConditionSlugs;
-    const treatmentSlugs = res.relatedTreatmentSlugs || res.data?.relatedTreatmentSlugs;
-    const resourceSlugs = res.relatedResourceSlugs || res.data?.relatedResourceSlugs;
-
-    if (Array.isArray(conditionSlugs)) {
-      for (const slug of conditionSlugs) {
-        if (typeof slug === 'string' && slug.trim()) {
-          crosslinks.push({ slug, type: 'condition', display: slugToDisplay(slug) });
-        }
-      }
-    }
-
-    if (Array.isArray(treatmentSlugs)) {
-      for (const slug of treatmentSlugs) {
-        if (typeof slug === 'string' && slug.trim()) {
-          crosslinks.push({ slug, type: 'treatment', display: slugToDisplay(slug) });
-        }
-      }
-    }
-
-    if (Array.isArray(resourceSlugs)) {
-      for (const slug of resourceSlugs) {
-        if (typeof slug === 'string' && slug.trim()) {
-          crosslinks.push({ slug, type: 'resource', display: slugToDisplay(slug) });
-        }
-      }
-    }
-
-    return crosslinks;
-  };
-
-  // Normalize entity structure for renderer
-  // Resource is already normalized by server or hook
-  const normalizedResource = {
-    // Flatten server-side entity.data so renderers can read body/sections at the top level
-    ...(resource?.data || {}),
-    ...resource,
-    // Map Knowledge Hub article metadata fields
-    author: resource.author || resource.metadata?.author,
-    reading_time: resource.reading_time || resource.metadata?.read_time,
-    tags: resource.tags || resource.metadata?.topics,
-    // Pass pre-validated tags from server (no client-side validation needed)
-    validated_tags: resource.validated_tags || [],
-    // Cross-links for related entities (build from slugs if not present)
-    crosslinks: buildCrosslinksFromSlugs(resource),
-    // Conditions for assessments
-    conditions: resource.conditions || [],
-  };
+  // Normalize entity structure for renderer (shared with the assessment shell)
+  const normalizedResource = normalizeResource(resource);
 
   const categoryKey = normalizedResource.metadata?.category || resource.category;
   const Renderer = getRenderer(categoryKey);

@@ -363,9 +363,9 @@ async function processSectionsArray(sections: any[]): Promise<any[]> {
                 }
 
                 // Validate the entity actually exists
-                const { EntityService } = await import('@/lib/data/entity-service');
+                const { getLightEntityBySlug } = await import('@/lib/data/entity-index');
                 try {
-                  const entity = await EntityService.getBySlug(slugToCheck);
+                  const entity = await getLightEntityBySlug(slugToCheck);
 
                   // Only keep link if entity exists, is a condition, and is active
                   if (entity && entity.type === 'condition' && entity.status === 'active') {

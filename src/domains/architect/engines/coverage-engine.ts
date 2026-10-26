@@ -30,6 +30,37 @@ import { getAllCapabilityRelevance } from "./relevance-engine";
 
 export type ProductMetadataMap = Map<string, ProductArchitectureMetadata>;
 
+/**
+ * Capabilities that may only be counted as covered on verified evidence.
+ *
+ * EPCS is DEA-regulated. A vendor marketing page asserting controlled-substance
+ * support is not proof that a given edition, under a given prescribing
+ * arrangement, is authorised. Letting an unreviewed claim produce a confirmed
+ * "strong coverage" result would tell a prescriber a legal requirement is met
+ * when nobody has checked, so the claim is downgraded to a data gap instead.
+ *
+ * The product itself stays eligible and discoverable; only the confident
+ * coverage reading is withheld.
+ */
+export const VERIFICATION_REQUIRED_CAPABILITIES = new Set<CapabilityId>([
+  "epcs",
+]);
+
+/**
+ * Whether a specific capability claim has evidence behind it, rather than
+ * being an unreviewed vendor assertion.
+ */
+function isClaimVerified(
+  metadata: ProductArchitectureMetadata,
+  capabilityId: CapabilityId
+): boolean {
+  const claim = metadata.capabilities.find((c) => c.capabilityId === capabilityId);
+  return (
+    claim?.provenance === "verified" ||
+    metadata.capabilityMapStatus === "reviewed-complete"
+  );
+}
+
 // ============================================================================
 // CAPABILITY COVERAGE
 // ============================================================================
@@ -82,6 +113,17 @@ function calculateCapabilityCoverage(
     );
 
     if (capMapping) {
+      // A claim that needs verification and has not had it cannot establish
+      // coverage. Record it as an unknown so the capability reads as a data
+      // gap rather than as satisfied.
+      if (
+        VERIFICATION_REQUIRED_CAPABILITIES.has(capabilityId) &&
+        !isClaimVerified(metadata, capabilityId)
+      ) {
+        hasUnknownProduct = true;
+        continue;
+      }
+
       const strengthValue = CAPABILITY_STRENGTH_VALUES[capMapping.strength];
       coveringProducts.push({
         slug: selected.slug,

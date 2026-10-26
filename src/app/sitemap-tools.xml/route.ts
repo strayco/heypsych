@@ -22,18 +22,16 @@
  */
 
 import { NextResponse } from "next/server";
-import { existsSync, readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import { TaxonomyService } from "@/lib/tools/taxonomy-service";
+import { NEEDS, isListable } from "@/domains/patient-tools/finder/model";
+import { INTENTS } from "@/domains/patient-tools/shelves/model";
+import { KEY_COMPARISONS } from "@/lib/seo/patient-programmatic-seo-engine";
 import { ToolService } from "@/lib/tools/tool-service";
 import { filterToolsForSitemap } from "@/lib/tools/tools-seo";
 import { siteConfig } from "@/lib/config/site";
-import {
-  ClinicianToolService,
-  isToolPublishable,
-} from "@/lib/tools/clinician-tool-service";
+import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { resolveCategoryHubSlug } from "@/lib/tools/category-hub-slug";
+import { getAllPublishableCurated } from "@/lib/tools/curated-comparisons";
 
 export async function GET() {
   try {
@@ -46,41 +44,40 @@ export async function GET() {
       priority: 0.9,
     });
 
-    // 2. Audience landing pages
-    urls.push({
-      loc: `${siteConfig.url}/tools/for-patients`,
-      changefreq: "weekly",
-      priority: 0.85,
-    });
+    // 2. Clinician hub
     urls.push({
       loc: `${siteConfig.url}/tools/for-clinicians`,
       changefreq: "weekly",
       priority: 0.85,
     });
 
-    // 3. All patient hub pages (no lastmod - static hub pages)
-    const hubs = TaxonomyService.getAllHubs();
-    for (const hub of hubs) {
+    // 3. Patient need pages (the finder, preset to a need)
+    for (const need of NEEDS) {
       urls.push({
-        loc: `${siteConfig.url}${normalizeUrl(hub.url)}`,
+        loc: `${siteConfig.url}${need.href}`,
         changefreq: "weekly",
         priority: 0.8,
       });
     }
 
-    // 4. All sub-hub pages (no lastmod - static hub pages)
-    const subHubs = TaxonomyService.getAllSubHubs();
-    for (const subHub of subHubs) {
+    // 3b. Patient intent pages (online therapy, free apps, …)
+    for (const intent of INTENTS) {
+      urls.push({ loc: `${siteConfig.url}${intent.href}`, changefreq: "weekly", priority: 0.8 });
+    }
+
+    // 4. Compare-any page and patient head-to-heads
+    const activeApps = new Set((await ToolService.getAll()).filter(isListable).map((t) => t.slug));
+    for (const { a, b } of KEY_COMPARISONS.filter((c) => activeApps.has(c.a) && activeApps.has(c.b))) {
       urls.push({
-        loc: `${siteConfig.url}${normalizeUrl(subHub.url)}`,
-        changefreq: "weekly",
-        priority: 0.7,
+        loc: `${siteConfig.url}/tools/for-patients/compare/${a}-vs-${b}`,
+        changefreq: "monthly",
+        priority: 0.6,
       });
     }
 
     // 5. V3 clinician hub pages REMOVED - now redirected to V4
     // Legacy hubs (clinical-answers-evidence, ai-scribes-documentation, etc.)
-    // are 301-redirected to /tools/for-clinicians in middleware.ts
+    // are 301-redirected in next.config.ts (src/lib/tools/clinician-redirects.ts)
     // V4 category pages are added below in section 8.
 
     // 6. All eligible V3 tool pages (filtered by SEO control plane)
@@ -155,15 +152,6 @@ export async function GET() {
       });
     }
 
-    // 9. EHR Matcher page (interactive tool, always include)
-    if (v4CategoriesWithTools.has("ehr-practice-management")) {
-      urls.push({
-        loc: `${siteConfig.url}/tools/for-clinicians/ehr-practice-management/match`,
-        changefreq: "weekly",
-        priority: 0.7,
-      });
-    }
-
     // 10. Compare page (landing)
     urls.push({
       loc: `${siteConfig.url}/tools/compare`,
@@ -183,13 +171,6 @@ export async function GET() {
       categoryCounts.set(cat, (categoryCounts.get(cat) || 0) + 1);
     }
 
-    // Alternatives hub page
-    urls.push({
-      loc: `${siteConfig.url}/tools/alternatives`,
-      changefreq: "weekly",
-      priority: 0.75,
-    });
-
     // Per-tool alternatives pages
     for (const tool of v4Tools) {
       if (!tool.short_description || tool.short_description.length < 50) continue;
@@ -203,54 +184,9 @@ export async function GET() {
       });
     }
 
-    // 12b. Switch-from pages - CONSOLIDATED
-    // Individual switch-from pages now redirect to alternatives pages to eliminate
-    // URL cannibalization. Only the hub page remains indexed (redirects to alternatives hub).
-    // Migration guide content has been merged into alternatives pages.
-
-    // 12c. Integrations pages (/tools/integrations/[slug])
-    // QUALITY GATE: Only include if tool has 2+ integrations (avoid thin "no data" pages)
-    urls.push({
-      loc: `${siteConfig.url}/tools/integrations`,
-      changefreq: "weekly",
-      priority: 0.7,
-    });
-    for (const tool of v4Tools) {
-      if (!tool.short_description || tool.short_description.length < 50) continue;
-      // Quality gate: only include if tool has actual integration data
-      const integrationCount = tool.integrations?.length || 0;
-      if (integrationCount < 2) continue;
-      urls.push({
-        loc: `${siteConfig.url}/tools/integrations/${tool.slug}`,
-        changefreq: "monthly",
-        priority: 0.6,
-      });
-    }
-
-    // 12d. Practice type pages (/tools/for-practices/[type])
-    // High intent - user knows their practice type
-    urls.push({
-      loc: `${siteConfig.url}/tools/for-practices`,
-      changefreq: "weekly",
-      priority: 0.75,
-    });
-    const practiceTypes = [
-      "solo-therapist",
-      "therapy-group",
-      "psychiatry",
-      "telehealth-first",
-      "iop-php",
-      "psychological-testing",
-      "addiction-treatment",
-      "starting-out",
-    ];
-    for (const type of practiceTypes) {
-      urls.push({
-        loc: `${siteConfig.url}/tools/for-practices/${type}`,
-        changefreq: "weekly",
-        priority: 0.7,
-      });
-    }
+    // Retired 2026-10-23 (301s in src/lib/tools/clinician-redirects.ts):
+    // switch-from, integrations, works-with, for-practices, best, best-for,
+    // pricing, stacks, audience and feature landers, clinician guides.
 
     // 12e. Vendor claim page
     urls.push({
@@ -266,113 +202,13 @@ export async function GET() {
       priority: 0.8,
     });
 
-    // 12g. Best [Category] [Year] pages - High commercial intent
-    const currentYear = new Date().getFullYear();
-    const bestCategories = [
-      "ehr-software",
-      "ai-scribe",
-      "telehealth-platforms",
-      "billing-software",
-      "therapy-software",
-      "psychiatry-ehr",
-      "mental-health-ehr",
-      "outcome-measurement",
-      "practice-management",
-      "e-prescribing",
-    ];
-    for (const category of bestCategories) {
+    // 11. Curated comparisons: the same publication gate as the page.
+    for (const c of await getAllPublishableCurated()) {
       urls.push({
-        loc: `${siteConfig.url}/tools/best/${category}-${currentYear}`,
-        changefreq: "weekly",
-        priority: 0.85, // High priority - year-based "best X" queries are high intent
+        loc: `${siteConfig.url}/tools/compare/${c.slug}`,
+        changefreq: "monthly",
+        priority: 0.65,
       });
-    }
-
-    // 12h. Pricing comparison pages
-    const pricingCategories = ["mental-health-ehr", "therapy-ehr", "psychiatry-ehr", "ai-scribe"];
-    urls.push({
-      loc: `${siteConfig.url}/tools/pricing`,
-      changefreq: "weekly",
-      priority: 0.8,
-    });
-    for (const category of pricingCategories) {
-      urls.push({
-        loc: `${siteConfig.url}/tools/pricing/${category}`,
-        changefreq: "weekly",
-        priority: 0.75,
-      });
-    }
-
-    // 12i. High-intent audience and feature landing pages
-    // These target specific professional audiences and key compliance/feature searches
-    const audiencePages = [
-      { path: "for-therapists", priority: 0.85 },
-      { path: "for-psychiatrists", priority: 0.85 },
-      { path: "for-counselors", priority: 0.85 },
-    ];
-    for (const page of audiencePages) {
-      urls.push({
-        loc: `${siteConfig.url}/tools/${page.path}`,
-        changefreq: "weekly",
-        priority: page.priority,
-      });
-    }
-
-    // 12j. Compliance and feature-focused landing pages
-    const featurePages = [
-      { path: "hipaa-compliant", priority: 0.8 },
-      { path: "with-baa", priority: 0.8 },
-      { path: "for-solo-practice", priority: 0.8 },
-      { path: "for-group-practice", priority: 0.8 },
-      { path: "ai-documentation", priority: 0.75 },
-      { path: "therapy-billing", priority: 0.75 },
-      { path: "credentialing", priority: 0.75 },
-      { path: "cheapest-ehr", priority: 0.8 },
-      { path: "telehealth-comparison", priority: 0.8 },
-      { path: "outcome-measurement", priority: 0.75 },
-    ];
-    for (const page of featurePages) {
-      urls.push({
-        loc: `${siteConfig.url}/tools/${page.path}`,
-        changefreq: "weekly",
-        priority: page.priority,
-      });
-    }
-
-    // 11. Curated comparisons (only those with all publishable tools)
-    const comparisonsDir = join(process.cwd(), "data/tools-v4/comparisons");
-    if (existsSync(comparisonsDir)) {
-      const comparisonFiles = readdirSync(comparisonsDir).filter((f) =>
-        f.endsWith(".json")
-      );
-      for (const file of comparisonFiles) {
-        try {
-          const content = JSON.parse(
-            readFileSync(join(comparisonsDir, file), "utf-8")
-          );
-          const toolSlugs: string[] = content.tools || [];
-
-          // Check if all tools are publishable
-          let allPublishable = true;
-          for (const slug of toolSlugs) {
-            const tool = await ClinicianToolService.getBySlug(slug);
-            if (!tool || !isToolPublishable(tool)) {
-              allPublishable = false;
-              break;
-            }
-          }
-
-          if (allPublishable && toolSlugs.length >= 2 && content.slug) {
-            urls.push({
-              loc: `${siteConfig.url}/tools/compare/${content.slug}`,
-              changefreq: "monthly",
-              priority: 0.65,
-            });
-          }
-        } catch {
-          // Skip invalid comparison files
-        }
-      }
     }
 
     // Generate XML
@@ -431,6 +267,3 @@ function escapeXml(str: string): string {
 }
 
 // Remove trailing slashes from URLs (canonical = no trailing slash)
-function normalizeUrl(url: string): string {
-  return url.endsWith("/") ? url.slice(0, -1) : url;
-}

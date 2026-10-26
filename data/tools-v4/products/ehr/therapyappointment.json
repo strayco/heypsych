@@ -1,15 +1,14 @@
 {
   "schema_version": "4.0",
   "kind": "clinician-tool",
-  "id": "3975d5c1-5e3a-4fa5-867f-9186ebe7dcb5",
+  "id": "11343dc5-ce6b-5088-8fcc-3a565d7b4558",
   "slug": "therapyappointment",
   "name": "TherapyAppointment",
-  "company_name": "TherapyAppointment LLC",
+  "company_name": "TherapyAppointment",
   "import_ref": {
-    "record_id": "MH-0123",
-    "source_row": 124,
-    "import_timestamp": "2026-08-22T20:50:40.780Z",
-    "source_file": "master-records.json"
+    "record_id": "MH-THERAPYAPPOINTMENT",
+    "source_file": "catalog-expansion-2026-10",
+    "import_timestamp": "2026-10-23T00:00:00.000Z"
   },
   "lifecycle": {
     "status": "active"
@@ -18,34 +17,37 @@
   "secondary_categories": [
     "billing-rcm-insurance",
     "telehealth-communication",
-    "intake-scheduling-forms"
+    "prescribing-erx"
   ],
   "capabilities": [
     "clinical-notes",
-    "treatment-planning",
     "appointment-scheduling",
     "patient-portal",
     "document-management",
     "claims-submission",
     "eligibility-verification",
     "payment-processing",
-    "video-sessions",
     "secure-messaging",
-    "outcome-tracking",
-    "phq9-gad7",
+    "video-sessions",
+    "e-prescribing",
+    "epcs-controlled",
+    "pdmp-integration",
+    "note-generation",
+    "calendar-sync",
     "hipaa-compliant",
     "baa-available"
   ],
   "audiences": {
     "clinician_roles": [
-      "psychologist",
       "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatrist",
+      "psychiatric-np-pa",
       "practice-administrator"
     ],
     "practice_settings": [
       "solo-practice",
-      "group-practice",
-      "telehealth-only"
+      "group-practice"
     ],
     "organization_sizes": [
       "solo",
@@ -53,85 +55,116 @@
     ]
   },
   "feature_flags": {
-    "has_ai": false,
+    "has_ai": true,
     "has_ehr": true,
     "has_rcm": true,
     "has_telehealth": true,
-    "has_measurement": true,
-    "has_e_prescribing": false,
+    "has_measurement": false,
+    "has_e_prescribing": true,
     "has_patient_portal": true,
     "has_mobile_app": false,
     "is_mental_health_specific": true,
     "is_specialty_agnostic": false
   },
-  "short_description": "Affordable mental health EHR and practice management for therapists and counselors with scheduling, billing, notes, and telehealth.",
-  "long_description": "TherapyAppointment is a cloud-based practice management and EHR platform designed specifically for mental health therapists and counselors. Founded around 2006 in Indiana, TherapyAppointment targets solo practitioners and small group practices with an affordable, straightforward solution. The platform includes online scheduling with client self-booking, clinical documentation with progress note templates, insurance billing with clearinghouse connectivity, payment processing, HIPAA-compliant telehealth, a client portal, and secure messaging. TherapyAppointment offers outcome tracking with standardized assessments including PHQ-9 and GAD-7. The platform emphasizes simplicity and value, positioning itself as a cost-effective alternative to more feature-rich (and expensive) competitors. TherapyAppointment does not include e-prescribing, making it best suited for non-prescribing therapists and counselors rather than psychiatrists. The company offers straightforward per-clinician pricing without long-term contracts.",
-  "one_liner": "The budget-friendly practice management solution for therapists and counselors.",
+  "short_description": "US mental-health EHR with scheduling, notes, insurance claims, client portal and optional DoseSpot e-prescribing, priced by monthly session volume.",
+  "long_description": "TherapyAppointment is a US practice-management system for mental-health clinicians, started in the late 1990s by a psychologist. Pricing is tiered by booked sessions: $10/month until a practice books more than 10 sessions, $39/month up to 39 sessions, then $59/month. Tiers do not step back down automatically. Scheduling, client portal, secure messaging, reminders, ERA posting and intake with e-signatures are included. Electronic claims (15¢ each, paid to Office Ally), integrated telehealth ($15/month per provider), AI notes (59¢ per note) and e-prescribing through DoseSpot, including controlled substances ($65/month per prescriber plus a $110 setup fee), are add-ons.",
+  "one_liner": "Low-cost US therapy EHR that grows with your caseload, with e-prescribing available as an add-on.",
   "best_for": [
-    "Solo therapists seeking affordable practice management",
-    "Small counseling practices with straightforward needs",
-    "Non-prescribing clinicians needing basic EHR and billing",
-    "Therapists wanting simple, no-frills solution"
+    "New or part-time US practices: $10/month until you book more than 10 sessions",
+    "Therapists who bill insurance themselves and want claims and ERA posting built in",
+    "Therapy practices adding a prescriber, via DoseSpot e-prescribing with EPCS ($65/month per prescriber)",
+    "Clinicians who want month-to-month terms with no contract"
   ],
   "not_for": [
-    "Psychiatrists and prescribing providers (no e-prescribing)",
-    "Large group practices with complex workflows",
-    "Practices needing advanced AI documentation",
-    "Organizations requiring enterprise features"
+    "Practices outside the United States",
+    "Practices that want one all-inclusive price: telehealth, AI notes, claims and e-prescribing cost extra",
+    "Teams that need SOC 2 or HITRUST reports from the EHR vendor itself"
   ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "low-volume",
+      "budget",
+      "insurance-billing",
+      "prescriber"
+    ],
+    "notes": {
+      "low-volume": "$10/month until you book more than 10 sessions, then $39 and $59 tiers; month-to-month with a 30-day trial.",
+      "budget": "One of the lowest entry prices for a full US therapy EHR, with claims at 15¢ each and ERA posting free.",
+      "insurance-billing": "Claims, eligibility lookups (7¢ each), ERA auto-posting and claim tracking are built in.",
+      "prescriber": "A therapy-first EHR where adding a prescriber is a $65/month DoseSpot add-on with EPCS, not a switch to a psychiatry system."
+    }
+  },
   "website_url": "https://www.therapyappointment.com",
   "pricing_url": "https://www.therapyappointment.com/pricing",
-  "support_url": "https://www.therapyappointment.com/support",
-  "logo_url": "https://www.therapyappointment.com/logo.png",
   "pricing": {
-    "model": "per-provider-month",
-    "starting_price_cents": 3900,
-    "starting_price_display": "$39-$59/provider/month",
+    "model": "flat-monthly",
+    "starting_price_cents": 1000,
+    "starting_price_display": "$10/month (under 11 sessions)",
     "free_tier": false,
     "free_trial_days": 30,
     "quote_required": false,
     "price_range": "budget",
-    "notes": "Individual plan approximately $39-$49/month, group practice pricing scales per provider. 30-day free trial available. No long-term contracts required. Additional charges for credit card processing.",
-    "last_verified": "2026-09-15"
+    "tiers": [
+      {
+        "name": "Intro",
+        "price": "$10/month",
+        "price_cents": 1000,
+        "description": "Until you book more than 10 sessions in a month."
+      },
+      {
+        "name": "Growing",
+        "price": "$39/month",
+        "price_cents": 3900,
+        "description": "Until you book more than 39 sessions in a month."
+      },
+      {
+        "name": "Standard",
+        "price": "$59/month",
+        "price_cents": 5900,
+        "description": "After booking 40 sessions in a month. Tiers do not step down automatically."
+      }
+    ],
+    "add_ons": {
+      "e_prescribing": {
+        "price_cents": 6500,
+        "price_display": "$65/month per prescriber + $110 setup",
+        "description": "DoseSpot e-prescribing including controlled substances (EPCS)."
+      },
+      "telehealth": {
+        "price_cents": 1500,
+        "price_display": "$15/month per provider",
+        "description": "Integrated telehealth; or integrated Zoom at $5/month plus your own HIPAA Zoom licence."
+      },
+      "ai_notes": {
+        "price_cents": 59,
+        "price_display": "$0.59 per chart note",
+        "description": "Optional AI notes with unlimited free edits."
+      }
+    },
+    "transaction_fees": {
+      "electronic_claims": "$0.15 per claim (paid to Office Ally)",
+      "payment_processing": "2.9% + $0.30 per transaction",
+      "eligibility_checks": "$0.07 per lookup"
+    },
+    "notes": "Group practice pricing via sales. No annual billing.",
+    "last_verified": "2026-10-23"
   },
   "compliance": {
     "hipaa_support": "yes",
     "baa_available": "yes",
     "soc2": "unknown",
     "hitrust": "unknown",
-    "gdpr_compliant": "unknown"
-  },
-  "integrations": [
-    {
-      "name": "Clearinghouse",
-      "slug": "clearinghouse",
-      "category": "payer",
-      "integration_type": "native",
-      "verified": true,
-      "notes": "Insurance claims submission"
-    },
-    {
-      "name": "Stripe",
-      "slug": "stripe",
-      "category": "billing",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Telehealth",
-      "slug": "therapyappointment-telehealth",
-      "category": "telehealth",
-      "integration_type": "native",
-      "verified": true
-    },
-    {
-      "name": "Google Calendar",
-      "slug": "google-calendar",
-      "category": "calendar",
-      "integration_type": "native",
-      "verified": true
+    "gdpr_compliant": "not_applicable",
+    "baa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://www.therapyappointment.com/faqs",
+      "verified_date": "2026-10-23",
+      "notes": "Vendor FAQ refers to the customer's BAA with TherapyAppointment."
     }
-  ],
+  },
+  "integrations": [],
   "seo": {
     "title": "TherapyAppointment: Affordable Mental Health Practice Man...",
     "meta_description": "TherapyAppointment is an affordable EHR for therapists and counselors with scheduling, notes, billing, and telehealth starting at $39/month.",
@@ -162,30 +195,24 @@
     ]
   },
   "governance": {
-    "last_reviewed": "2026-08-22",
+    "last_reviewed": "2026-10-23",
     "needs_review": false,
-    "review_priority": "low",
-    "data_quality_score": 85
+    "review_priority": "medium",
+    "data_quality_score": 80,
+    "review_notes": "Added 2026-10-23 from vendor pages. Re-verify pricing quarterly."
   },
   "related_tools": [
-    "therapynotes",
     "simplepractice",
-    "theranest"
+    "therapynotes",
+    "sessions-health"
   ],
   "competitor_tools": [
-    "therapynotes",
     "simplepractice",
+    "therapynotes",
     "theranest"
   ],
-  "company_info": {
-    "founded_year": 2006,
-    "headquarters": "Indiana, USA",
-    "employee_count": "10-25",
-    "funding_status": "Bootstrapped"
-  },
-  "created_at": "2026-08-22T20:50:40.780Z",
-  "updated_at": "2026-09-01T19:25:35.548Z",
+  "created_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-23T00:00:00.000Z",
   "featured": false,
-  "status": "active",
-  "affiliate_url": "https://www.therapyappointment.com"
+  "status": "active"
 }

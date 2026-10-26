@@ -141,7 +141,7 @@ export function FastFacts({
       id="KEY_FACTS"
       data-answer="true"
       aria-label="Key facts"
-      className="mt-4 sm:mt-6 rounded-xl border border-separator bg-gradient-to-r from-neutral-50 to-white p-4 sm:p-5 shadow-sm"
+      className="mt-4 sm:mt-6 rounded-xl border border-separator bg-neutral-50 p-4 sm:p-5 shadow-sm"
     >
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 list-none m-0 p-0">
         {facts.map((fact, index) => (

@@ -255,10 +255,10 @@ export function SymptomsSearchClient({
       {/* Suggested Prompts */}
       {!query && (
         <div className="mt-4">
-          <p className="text-center text-sm text-label-tertiary">
+          <p className="text-sm text-label-tertiary">
             Or try describing what you&apos;re experiencing:
           </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-2">
+          <div className="mt-3 flex flex-wrap gap-2">
             {suggestedPrompts.map((prompt) => (
               <button
                 key={prompt.slug}

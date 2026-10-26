@@ -259,11 +259,9 @@ export class SitemapGenerator {
    * Generate assessments sitemap
    */
   async generateAssessmentsSitemap(assessments: Entity[]): Promise<string> {
-    const urls = generateEntitySitemapUrls(
-      assessments,
-      '/resources/assessments-screeners',
-      this.options
-    );
+    // Assessments are served at /resources/<slug> (e.g. /resources/phq-9);
+    // /resources/assessments-screeners/<slug> only redirects there.
+    const urls = generateEntitySitemapUrls(assessments, '/resources', this.options);
     return generateSitemapXml(urls, this.options);
   }
 

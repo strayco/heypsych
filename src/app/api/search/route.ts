@@ -1,5 +1,22 @@
-// OPTIMIZED SEARCH API - Uses direct Postgres connection for maximum performance
-// Bypasses Supabase PostgREST overhead to achieve <300ms search times
+/**
+ * Site search API
+ *
+ *   GET /api/search?q=adderall              grouped: conditions, treatments,
+ *                                            resources, tools (5 each)
+ *   GET /api/search?q=adderall&limit=10     grouped, 10 each (max 100)
+ *   GET /api/search?q=adderall&type=tool    one section: { results, totalCount, hasMore }
+ *
+ * Candidates come from one Postgres full-text query (`search_entities_grouped`)
+ * plus the clinician tool catalogue. Every candidate then goes through
+ * `@/lib/search/shape-results`, which files it in the right section, links it
+ * to the page that actually exists, removes duplicates, and ranks direct name
+ * matches first. Grouped and single-section requests share that path, so
+ * "Show more" never disagrees with the summary it expands.
+ *
+ * If the database query fails, entities are searched in memory instead and the
+ * response says `fallbackUsed: true`. The endpoint never returns a 500 for a
+ * search; an empty result set with `error` is easier for the page to handle.
+ */
 
 import { NextRequest, NextResponse } from "next/server";
 import { queryWithRetry } from "@/lib/config/db-pool";
@@ -8,657 +25,368 @@ import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, searchRateLimit } from "@/lib/rate-limit";
+import { getCategoryBySlug } from "@/lib/config/condition-categories";
+import { loadRecord } from "@/lib/search/record-files";
+import {
+  buildSnippets,
+  contextSnippet,
+  getSearchTerms,
+  groupResults,
+  isRelevant,
+  normalizeText,
+  orderSections,
+  rowToResult,
+  SECTION_FOR_TYPE,
+  snippetShowsMatch,
+  type EntityRow,
+  type GroupedResults,
+  type SearchResult,
+  type SearchResultType,
+  type SearchSection,
+} from "@/lib/search/shape-results";
 
-type SearchSnippet = { term: string; field: string; snippet: string };
+const DEFAULT_LIMIT = 5;
+const MAX_LIMIT = 100;
+/** Candidates fetched per database bucket before shaping and trimming. */
+const CANDIDATES_PER_TYPE = 100;
+const MAX_QUERY_LENGTH = 100;
+const SLOW_QUERY_MS = 400;
 
-type SearchResult = {
-  type: string;
-  id: string;
-  slug: string;
-  name: string;
-  description?: string | null;
-  category?: string | null;
-  snippets: SearchSnippet[];
-  /** Canonical URL for this result */
-  href: string;
+const SECTIONS: SearchSection[] = ["conditions", "treatments", "resources", "tools"];
+const RESULT_TYPES = new Set<SearchResultType>(["condition", "treatment", "resource", "tool"]);
+
+const CACHE_HEADERS = {
+  "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
 };
 
-type CategoryResults = {
+type SectionPayload = { results: SearchResult[]; totalCount: number; hasMore: boolean };
+
+type Candidates = {
   results: SearchResult[];
-  totalCount: number;
-  hasMore: boolean;
-};
-
-type GroupedSearchResponse = {
-  conditions: CategoryResults;
-  treatments: CategoryResults;
-  resources: CategoryResults;
-  tools: CategoryResults;
-  loadTimeMs: number;
+  /**
+   * Whether every match was fetched. When the database has more matches than
+   * we asked for, section totals are lower bounds and `hasMore` stays true.
+   */
+  complete: boolean;
+  /** Per-section match counts reported by the database, for incomplete sets. */
+  reportedTotals: Partial<Record<SearchSection, number>>;
   fallbackUsed: boolean;
 };
 
-type LegacySearchPayload = {
-  results: SearchResult[];
-  totalCount: number;
-};
+// ============================================================================
+// HANDLER
+// ============================================================================
 
 export async function GET(req: NextRequest) {
-  // Rate limiting
   const rateLimitResponse = await checkRateLimit(req, searchRateLimit);
   if (rateLimitResponse) return rateLimitResponse;
 
   const startTime = Date.now();
+  const { searchParams } = new URL(req.url);
+
+  const query = (searchParams.get("q") ?? "").trim().slice(0, MAX_QUERY_LENGTH);
+  const limit = parseLimit(searchParams.get("limit"));
+  const typeParam = searchParams.get("type");
+  const type = typeParam && RESULT_TYPES.has(typeParam as SearchResultType)
+    ? (typeParam as SearchResultType)
+    : null;
+
+  if (query.length < 2) {
+    return emptyResponse(type, "Search query must be at least 2 characters");
+  }
+  if (getSearchTerms(query).length === 0) {
+    return emptyResponse(type, "Search query must contain at least one keyword");
+  }
 
   try {
-    const { searchParams } = new URL(req.url);
-    const query = searchParams.get("q");
-    const limit = Math.min(parseInt(searchParams.get("limit") || "5", 10), 100);
-    const type = searchParams.get("type"); // Optional: filter by single type
+    const candidates = await findCandidates(query);
+    const grouped = groupResults(candidates.results, query);
+    const loadTimeMs = Date.now() - startTime;
 
-    if (!query || query.trim().length < 2) {
-      return NextResponse.json({
-        conditions: { results: [], totalCount: 0, hasMore: false },
-        treatments: { results: [], totalCount: 0, hasMore: false },
-        resources: { results: [], totalCount: 0, hasMore: false },
-        tools: { results: [], totalCount: 0, hasMore: false },
-        loadTimeMs: 0,
-        fallbackUsed: false,
-        message: "Search query must be at least 2 characters",
-      });
+    if (loadTimeMs > SLOW_QUERY_MS) {
+      logger.warn("Slow search query", { query, loadTimeMs, fallback: candidates.fallbackUsed });
     }
 
-    const searchTerm = query.trim();
-    const normalizedSearchPhrase = normalizeSearchPhrase(searchTerm);
-    const searchTerms = getSearchTerms(searchTerm);
+    const terms = getSearchTerms(query);
 
-    if (searchTerms.length === 0) {
-      return NextResponse.json({
-        conditions: { results: [], totalCount: 0, hasMore: false },
-        treatments: { results: [], totalCount: 0, hasMore: false },
-        resources: { results: [], totalCount: 0, hasMore: false },
-        tools: { results: [], totalCount: 0, hasMore: false },
-        loadTimeMs: 0,
-        fallbackUsed: false,
-        message: "Search query must contain at least one keyword",
-      });
-    }
-
-    let source: "db" | "legacy" = "db";
-
-    try {
-      // Always try direct database query first - it should always work
-      if (type) {
-        // For tools, use V4 ClinicianToolService to get correct URLs
-        if (type === "tool") {
-          const toolsSearchResult = await ClinicianToolService.searchClinicianTools(searchTerm);
-          const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => {
-            const taxonomyCategory =
-              SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
-              tool.primary_category;
-
-            return {
-              type: "tool",
-              id: tool.slug,
-              slug: tool.slug,
-              name: tool.name,
-              description: tool.short_description || tool.one_liner || null,
-              category: tool.primary_category,
-              snippets: buildCleanSnippets(
-                tool.name,
-                tool.short_description || tool.one_liner || null,
-                searchTerms
-              ),
-              href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
-            };
-          });
-
-          const loadTime = Date.now() - startTime;
-          logger.info(`✅ Search completed: "${searchTerm}" (type=tool) in ${loadTime}ms`, {
-            results: toolsResults.length,
-            total: toolsSearchResult.total,
-            source: "v4-tools",
-          });
-
-          return NextResponse.json({
-            results: toolsResults,
-            totalCount: toolsSearchResult.total,
-            hasMore: toolsResults.length < toolsSearchResult.total,
-            loadTimeMs: loadTime,
-            fallbackUsed: false,
-          });
-        }
-
-        // For other types, use database query
-        const result = await queryWithRetry(
-          'SELECT * FROM search_entities($1, $2, $3, $4)',
-          [searchTerm, limit, 0, type]
-        );
-
-        const resultArray = result.rows;
-        const totalCount = resultArray.length > 0 ? (resultArray[0].total_count || 0) : 0;
-        const normalizedResults = resultArray
-          .map((row: any) => normalizeSearchResult(row, searchTerms, type))
-          .filter(Boolean) as SearchResult[];
-
-        const loadTime = Date.now() - startTime;
-        logger.info(`✅ Search completed: "${searchTerm}" (type=${type}) in ${loadTime}ms`, {
-          results: normalizedResults.length,
-          total: totalCount,
-          source,
-        });
-
-        return NextResponse.json({
-          results: normalizedResults,
-          totalCount,
-          hasMore: normalizedResults.length < totalCount,
-          loadTimeMs: loadTime,
-          fallbackUsed: false,
-        });
-      }
-
-      // Use grouped search for all types (single DB query)
-      // Run database query and V4 tools search in parallel
-      const [dbResult, toolsSearchResult] = await Promise.all([
-        queryWithRetry(
-          'SELECT * FROM search_entities_grouped($1, $2)',
-          [searchTerm, limit]
-        ),
-        ClinicianToolService.searchClinicianTools(searchTerm),
-      ]);
-
-      const allResults = dbResult.rows;
-
-      // Group by entity_type
-      const conditionsArray = allResults.filter(r => r.entity_type === 'condition');
-      const treatmentsArray = allResults.filter(r => r.entity_type === 'treatment');
-      const resourcesArray = allResults.filter(r => r.entity_type === 'resource');
-
-      const conditionsTotal = conditionsArray.length > 0 ? (conditionsArray[0].type_total_count || 0) : 0;
-      const treatmentsTotal = treatmentsArray.length > 0 ? (treatmentsArray[0].type_total_count || 0) : 0;
-      const resourcesTotal = resourcesArray.length > 0 ? (resourcesArray[0].type_total_count || 0) : 0;
-
-      const conditionsResults = conditionsArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
-
-      const treatmentsResults = treatmentsArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
-
-      const resourcesResults = resourcesArray
-        .map((row: any) => normalizeSearchResult(row, searchTerms))
-        .filter(Boolean) as SearchResult[];
-
-      // Convert V4 clinician tools to SearchResult format
-      const toolsResults: SearchResult[] = toolsSearchResult.tools.slice(0, limit).map((tool) => {
-        // Map schema category to taxonomy category for correct URL
-        const taxonomyCategory =
-          SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
-          tool.primary_category;
-
-        return {
-          type: "tool",
-          id: tool.slug,
-          slug: tool.slug,
-          name: tool.name,
-          description: tool.short_description || tool.one_liner || null,
-          category: tool.primary_category,
-          snippets: buildCleanSnippets(
-            tool.name,
-            tool.short_description || tool.one_liner || null,
-            searchTerms
-          ),
-          href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
-        };
-      });
-      const toolsTotal = toolsSearchResult.total;
-
-      const loadTime = Date.now() - startTime;
-      logger.info(
-        `✅ Search completed: "${searchTerm}" in ${loadTime}ms (source=${source})`,
-        {
-          conditions: conditionsResults.length,
-          treatments: treatmentsResults.length,
-          resources: resourcesResults.length,
-          tools: toolsResults.length,
-          totalMatches: conditionsTotal + treatmentsTotal + resourcesTotal + toolsTotal,
-        }
+    if (type) {
+      const section = toSection(grouped, SECTION_FOR_TYPE[type], limit, candidates, terms);
+      await fillSnippetsFromDatabase([section], terms, candidates.fallbackUsed);
+      return NextResponse.json(
+        { ...section, loadTimeMs, fallbackUsed: candidates.fallbackUsed },
+        { headers: candidates.fallbackUsed ? undefined : CACHE_HEADERS }
       );
-
-      if (loadTime > 400) {
-        logger.warn("Slow search query detected", {
-          query: searchTerm,
-          duration: loadTime,
-          threshold: "400ms",
-          source,
-        });
-      }
-
-      const response: GroupedSearchResponse = {
-        conditions: {
-          results: conditionsResults,
-          totalCount: conditionsTotal,
-          hasMore: conditionsResults.length < conditionsTotal,
-        },
-        treatments: {
-          results: treatmentsResults,
-          totalCount: treatmentsTotal,
-          hasMore: treatmentsResults.length < treatmentsTotal,
-        },
-        resources: {
-          results: resourcesResults,
-          totalCount: resourcesTotal,
-          hasMore: resourcesResults.length < resourcesTotal,
-        },
-        tools: {
-          results: toolsResults,
-          totalCount: toolsTotal,
-          hasMore: toolsResults.length < toolsTotal,
-        },
-        loadTimeMs: loadTime,
-        fallbackUsed: false,
-      };
-
-      // Add cache headers for performance
-      const headers = new Headers();
-      headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
-
-      return NextResponse.json(response, { headers });
-
-    } catch (dbError: any) {
-      // Database query failed - log and fall back to legacy search
-      logger.warn("Database search failed, falling back to legacy search", {
-        message: dbError.message,
-        code: dbError.code,
-        name: dbError.name,
-        stack: dbError.stack?.split('\n').slice(0, 3).join(' | '),
-        query: searchTerm,
-      });
-
-      source = "legacy";
-      const fallback = await runLegacySearch(normalizedSearchPhrase, searchTerms, 1000, 0, type);
-
-      if (type) {
-        const loadTime = Date.now() - startTime;
-        return NextResponse.json({
-          results: fallback.results,
-          totalCount: fallback.totalCount,
-          hasMore: fallback.results.length < fallback.totalCount,
-          loadTimeMs: loadTime,
-          fallbackUsed: true,
-        });
-      }
-
-      const conditionsResults = fallback.results.filter(r => r.type === "condition").slice(0, limit);
-      const treatmentsResults = fallback.results.filter(r => r.type === "treatment").slice(0, limit);
-      const resourcesResults = fallback.results.filter(r => r.type === "resource").slice(0, limit);
-
-      // Also search V4 tools in fallback mode
-      let toolsResults: SearchResult[] = [];
-      let toolsTotal = 0;
-      try {
-        const toolsSearch = await ClinicianToolService.searchClinicianTools(searchTerm);
-        toolsResults = toolsSearch.tools.slice(0, limit).map((tool) => {
-          const taxonomyCategory =
-            SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
-            tool.primary_category;
-
-          return {
-            type: "tool" as const,
-            id: tool.slug,
-            slug: tool.slug,
-            name: tool.name,
-            description: tool.short_description || tool.one_liner || null,
-            category: tool.primary_category,
-            snippets: buildCleanSnippets(
-              tool.name,
-              tool.short_description || tool.one_liner || null,
-              searchTerms
-            ),
-            href: `/tools/for-clinicians/${taxonomyCategory}/${tool.slug}/`,
-          };
-        });
-        toolsTotal = toolsSearch.total;
-      } catch (toolsError) {
-        logger.warn("Tools search failed in fallback mode", { error: toolsError });
-      }
-
-      const loadTime = Date.now() - startTime;
-      const response: GroupedSearchResponse = {
-        conditions: {
-          results: conditionsResults,
-          totalCount: fallback.results.filter(r => r.type === "condition").length,
-          hasMore: conditionsResults.length < fallback.results.filter(r => r.type === "condition").length,
-        },
-        treatments: {
-          results: treatmentsResults,
-          totalCount: fallback.results.filter(r => r.type === "treatment").length,
-          hasMore: treatmentsResults.length < fallback.results.filter(r => r.type === "treatment").length,
-        },
-        resources: {
-          results: resourcesResults,
-          totalCount: fallback.results.filter(r => r.type === "resource").length,
-          hasMore: resourcesResults.length < fallback.results.filter(r => r.type === "resource").length,
-        },
-        tools: {
-          results: toolsResults,
-          totalCount: toolsTotal,
-          hasMore: toolsResults.length < toolsTotal,
-        },
-        loadTimeMs: loadTime,
-        fallbackUsed: true,
-      };
-
-      return NextResponse.json(response);
     }
-  } catch (error: any) {
-    const loadTime = Date.now() - startTime;
-    logger.error("Search failed completely", error, {
-      loadTime,
-      message: error?.message,
-      code: error?.code,
-      stack: error?.stack?.split('\n').slice(0, 5).join(' | '),
+
+    const body = Object.fromEntries(
+      SECTIONS.map((section) => [section, toSection(grouped, section, limit, candidates, terms)])
+    ) as Record<SearchSection, SectionPayload>;
+    await fillSnippetsFromDatabase(Object.values(body), terms, candidates.fallbackUsed);
+    return NextResponse.json(
+      {
+        ...body,
+        // Best-matching section first; the page renders in this order.
+        order: orderSections(grouped, query),
+        loadTimeMs,
+        fallbackUsed: candidates.fallbackUsed,
+      },
+      // A degraded answer should not be cached at the edge for five minutes.
+      { headers: candidates.fallbackUsed ? undefined : CACHE_HEADERS }
+    );
+  } catch (error) {
+    logger.error("Search failed", error, { query, loadTimeMs: Date.now() - startTime });
+    return emptyResponse(type, undefined, "Search temporarily unavailable");
+  }
+}
+
+// ============================================================================
+// CANDIDATES
+// ============================================================================
+
+async function findCandidates(query: string): Promise<Candidates> {
+  const terms = getSearchTerms(query);
+  const clinicianTools = searchClinicianTools(query, terms);
+
+  try {
+    const { rows } = await queryWithRetry(
+      "SELECT * FROM search_entities_grouped($1, $2)",
+      [query, CANDIDATES_PER_TYPE]
+    );
+
+    const typedRows = rows as Array<EntityRow & { type_total_count?: number | string }>;
+    const shaped = typedRows.map((row) => rowToResult(row, terms));
+
+    // The database's buckets (condition / resource / everything else) are not
+    // our sections: resource rows include app stubs that belong under tools,
+    // and the treatment bucket holds hotlines. When a bucket has more matches
+    // than we fetched, each section's total is estimated by scaling the
+    // bucket's count by how the fetched sample split across sections.
+    const buckets = new Map<string, { total: number; fetched: number; bySection: Map<SearchSection, number> }>();
+    typedRows.forEach((row, i) => {
+      const key = row.entity_type ?? "";
+      const bucket = buckets.get(key) ?? {
+        total: Number(row.type_total_count) || 0,
+        fetched: 0,
+        bySection: new Map(),
+      };
+      bucket.fetched += 1;
+      const result = shaped[i];
+      if (result) {
+        const section = SECTION_FOR_TYPE[result.type];
+        bucket.bySection.set(section, (bucket.bySection.get(section) ?? 0) + 1);
+      }
+      buckets.set(key, bucket);
     });
 
-    // Return empty results instead of 500 for better UX
-    return NextResponse.json({
-      conditions: { results: [], totalCount: 0, hasMore: false },
-      treatments: { results: [], totalCount: 0, hasMore: false },
-      resources: { results: [], totalCount: 0, hasMore: false },
-      tools: { results: [], totalCount: 0, hasMore: false },
-      loadTimeMs: loadTime,
+    const complete = [...buckets.values()].every((b) => b.total <= b.fetched);
+    const reportedTotals: Partial<Record<SearchSection, number>> = {};
+    for (const bucket of buckets.values()) {
+      for (const [section, count] of bucket.bySection) {
+        const estimate = Math.round((bucket.total * count) / Math.max(bucket.fetched, 1));
+        reportedTotals[section] = (reportedTotals[section] ?? 0) + estimate;
+      }
+    }
+
+    return {
+      // Clinician tools first: where a product exists in both catalogues, the
+      // curated clinician page is the better destination.
+      results: [...(await clinicianTools), ...shaped.filter(isResult)],
+      complete,
+      reportedTotals,
+      fallbackUsed: false,
+    };
+  } catch (dbError) {
+    logger.warn("Database search failed; searching in memory", {
+      message: (dbError as Error)?.message,
+      code: (dbError as { code?: string })?.code,
+      query,
+    });
+
+    return {
+      results: [...(await clinicianTools), ...(await searchInMemory(terms))],
+      complete: true,
+      reportedTotals: {},
       fallbackUsed: true,
-      error: "Search temporarily unavailable",
+    };
+  }
+}
+
+async function searchClinicianTools(query: string, terms: string[]): Promise<SearchResult[]> {
+  try {
+    const { tools } = await ClinicianToolService.searchClinicianTools(query);
+    const results = tools.map((tool) => {
+      const category =
+        SCHEMA_TO_TAXONOMY_CATEGORY[tool.primary_category as keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY] ||
+        tool.primary_category;
+      const description = tool.short_description || tool.one_liner || null;
+      return {
+        type: "tool" as const,
+        id: tool.slug,
+        slug: tool.slug,
+        name: tool.name,
+        description,
+        category: null,
+        snippets: buildSnippets(tool.name, description, terms),
+        href: `/tools/for-clinicians/${category}/${tool.slug}`,
+      };
     });
+    return results.filter((result) => isRelevant(result, query));
+  } catch (error) {
+    logger.warn("Clinician tool search failed", { error });
+    return [];
   }
 }
 
-function normalizeSearchPhrase(input: string): string {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/gi, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function getSearchTerms(searchTerm: string): string[] {
-  return searchTerm
-    .toLowerCase()
-    .split(/\s+/)
-    .map((term) => term.replace(/[^a-z0-9]/gi, "").trim())
-    .filter(Boolean);
-}
-
-function toStringValue(value: unknown): string {
-  if (typeof value === "string") return value;
-  if (typeof value === "number" || typeof value === "boolean") return String(value);
-  return "";
-}
-
-function getNameValue(item: any): string {
-  return (
-    toStringValue(item?.name) ||
-    toStringValue(item?.title) ||
-    toStringValue(item?.content?.name) ||
-    toStringValue(item?.data?.name) ||
-    toStringValue(item?.data?.full_name) ||
-    toStringValue(item?.slug)
-  ).trim();
-}
-
-function getDescriptionValue(item: any): string {
-  return (
-    toStringValue(item?.description) ||
-    toStringValue(item?.content?.description) ||
-    toStringValue(item?.data?.description)
-  ).trim();
-}
-
-function getCategoryValue(item: any): string {
-  return (
-    toStringValue(item?.category) ||
-    toStringValue(item?.metadata?.category) ||
-    toStringValue(item?.data?.category)
-  ).trim();
-}
-
-
-function getSearchableText(item: any): string {
-  const name = getNameValue(item);
-  const description = getDescriptionValue(item);
-  const slug = toStringValue(item?.slug);
-  const category = getCategoryValue(item);
-  const metadata = JSON.stringify(item?.metadata || {});
-  const content = JSON.stringify(item?.content || item?.data || {});
-
-  return `${name} ${description} ${slug} ${category} ${metadata} ${content}`.toLowerCase();
-}
-
-function matchesAllTerms(item: any, searchTerms: string[]): boolean {
-  if (searchTerms.length === 0) return false;
-  const searchable = getSearchableText(item);
-  return searchTerms.every((term) => searchable.includes(term));
-}
-
-function countMatchingTerms(item: any, searchTerms: string[]): number {
-  const searchable = getSearchableText(item);
-  return searchTerms.filter((term) => searchable.includes(term)).length;
-}
-
-function normalizeSearchResult(item: any, searchTerms: string[], typeOverride?: string): SearchResult | null {
-  const type = typeOverride || item?.entity_type || item?.type;
-  const slug = toStringValue(item?.slug);
-  const id = toStringValue(item?.id || slug);
-  const name = getNameValue(item);
-
-  if (!type || !slug || !id || !name) {
-    return null;
-  }
-
-  const description = getDescriptionValue(item) || null;
-  const category = getCategoryValue(item) || null;
-
-  // Build clean snippets - ONLY from name and description, never from JSON
-  const snippets = buildCleanSnippets(name, description, searchTerms);
-
-  // Generate canonical href based on entity type
-  let href: string;
-  switch (type) {
-    case "condition":
-      href = `/conditions/${slug}`;
-      break;
-    case "treatment":
-      href = `/treatments/${slug}`;
-      break;
-    case "resource":
-      href = `/resources/${slug}`;
-      break;
-    case "tool":
-      // Note: V4 clinician tools should be mapped separately with taxonomy category
-      // This fallback uses the patient tool route
-      href = `/tools/${slug}`;
-      break;
-    default:
-      href = `/${type}s/${slug}`;
-  }
-
-  return {
-    type,
-    id,
-    slug,
-    name,
-    description,
-    category,
-    snippets,
-    href,
-  };
-}
-
-/**
- * Build clean snippets from name and description only.
- * Never includes raw JSON, field names, or internal metadata.
- */
-function buildCleanSnippets(name: string, description: string | null, searchTerms: string[]): SearchSnippet[] {
-  const snippets: SearchSnippet[] = [];
-  
-  for (const term of searchTerms) {
-    const lowerTerm = term.toLowerCase();
-    
-    // Check if term is in name
-    if (name.toLowerCase().includes(lowerTerm)) {
-      snippets.push({
-        term,
-        field: "Name",
-        snippet: name
-      });
-      continue;
-    }
-    
-    // Check if term is in description
-    if (description && description.toLowerCase().includes(lowerTerm)) {
-      const snippet = extractCleanSnippet(description, lowerTerm);
-      if (snippet) {
-        snippets.push({
-          term,
-          field: "Description",
-          snippet
-        });
-      }
-      continue;
-    }
-  }
-  
-  // If no term-specific snippets found, use description as fallback
-  if (snippets.length === 0 && description && description.length > 10) {
-    snippets.push({
-      term: searchTerms[0] || '',
-      field: "Description",
-      snippet: description.length > 200 ? description.substring(0, 200) + '...' : description
-    });
-  }
-  
-  return snippets;
-}
-
-/**
- * Extract a clean snippet around a search term.
- * Only works with plain text, no JSON processing.
- */
-function extractCleanSnippet(text: string, term: string): string | null {
-  const lowerText = text.toLowerCase();
-  const index = lowerText.indexOf(term);
-  if (index === -1) return null;
-  
-  const surrounding = 80;
-  const start = Math.max(0, index - surrounding);
-  const end = Math.min(text.length, index + term.length + surrounding);
-  
-  let snippet = text.substring(start, end).trim();
-  
-  // Add ellipsis if we're not at the boundaries
-  if (start > 0) snippet = '...' + snippet;
-  if (end < text.length) snippet = snippet + '...';
-  
-  return snippet;
-}
-
-function hasBrandMatch(brandNames: string[] | undefined, searchTermLower: string, searchTerms: string[]): boolean {
-  if (!Array.isArray(brandNames)) return false;
-  return brandNames.some((brand) => {
-    const normalized = brand.toLowerCase();
-    return normalized === searchTermLower || searchTerms.some((term) => normalized === term);
-  });
-}
-
-function startsWithAnyTerm(name: string, searchTerms: string[]): boolean {
-  const lowerName = name.toLowerCase();
-  return searchTerms.some((term) => lowerName.startsWith(term));
-}
-
-async function runLegacySearch(
-  searchTerm: string,
-  searchTerms: string[],
-  limit: number,
-  offset: number,
-  typeFilter?: string | null
-): Promise<LegacySearchPayload> {
-  if (searchTerms.length === 0) {
-    return { results: [], totalCount: 0 };
-  }
-
+/** Database-free fallback: every term must appear in the entity's text. */
+async function searchInMemory(terms: string[]): Promise<SearchResult[]> {
   const [treatments, conditions, resources] = await Promise.all([
     EntityService.getAllTreatments(),
     EntityService.getByEntityType("condition"),
     EntityService.getByEntityType("resource"),
   ]);
 
-  const typedItems = [
-    ...treatments.map((item) => ({ item, type: "treatment" as const })),
-    ...conditions.map((item) => ({ item, type: "condition" as const })),
-    ...resources.map((item) => ({ item, type: "resource" as const })),
+  const entities = [
+    ...conditions.map((e) => ({ entity: e, type: "condition" })),
+    ...treatments.map((e) => ({ entity: e, type: (e as { type?: string }).type || "treatment" })),
+    ...resources.map((e) => ({ entity: e, type: "resource" })),
   ];
 
-  const withMatches = typedItems
-    .map(({ item, type }) => {
-      if (!matchesAllTerms(item, searchTerms)) return null;
-      const normalized = normalizeSearchResult({ ...item, type }, searchTerms, type);
-      if (!normalized) return null;
-      return {
-        normalized,
-        matchCount: countMatchingTerms(item, searchTerms),
-        brandNames: ((item?.metadata as any)?.brand_names || []) as string[],
-      };
-    })
-    .filter(Boolean) as Array<{
-      normalized: SearchResult;
-      matchCount: number;
-      brandNames: string[];
-    }>;
+  const results: SearchResult[] = [];
+  for (const { entity, type } of entities) {
+    const e = entity as unknown as Record<string, unknown> & EntityRow;
+    const haystack = normalizeText(
+      [e.name, e.title, e.description, e.slug, JSON.stringify(e.metadata ?? {})]
+        .filter(Boolean)
+        .join(" ")
+    );
+    if (!terms.every((t) => haystack.includes(t))) continue;
 
-  const searchTermLower = searchTerm.toLowerCase();
+    const result = rowToResult(
+      {
+        id: e.id,
+        slug: e.slug,
+        title: e.title ?? e.name,
+        description: e.description,
+        type,
+        category: e.category ?? e.metadata?.category,
+      },
+      terms
+    );
+    if (result) results.push(result);
+  }
+  return results;
+}
 
-  withMatches.sort((a, b) => {
-    if (a.matchCount !== b.matchCount) {
-      return b.matchCount - a.matchCount;
-    }
+// ============================================================================
+// RESPONSE HELPERS
+// ============================================================================
 
-    const aExact = a.normalized.name.toLowerCase() === searchTermLower;
-    const bExact = b.normalized.name.toLowerCase() === searchTermLower;
-    if (aExact !== bExact) {
-      return aExact ? -1 : 1;
-    }
+function toSection(
+  grouped: GroupedResults,
+  section: SearchSection,
+  limit: number,
+  candidates: Candidates,
+  terms: string[]
+): SectionPayload {
+  const all = grouped[section];
+  const results = all.slice(0, limit).map(withCategoryLabel).map((r) => withContextSnippet(r, terms));
 
-    const aBrandMatch = hasBrandMatch(a.brandNames, searchTermLower, searchTerms);
-    const bBrandMatch = hasBrandMatch(b.brandNames, searchTermLower, searchTerms);
-    if (aBrandMatch !== bBrandMatch) {
-      return aBrandMatch ? -1 : 1;
-    }
-
-    const aStartsWithQuery = a.normalized.name.toLowerCase().startsWith(searchTermLower);
-    const bStartsWithQuery = b.normalized.name.toLowerCase().startsWith(searchTermLower);
-    if (aStartsWithQuery !== bStartsWithQuery) {
-      return aStartsWithQuery ? -1 : 1;
-    }
-
-    const aStartsAny = startsWithAnyTerm(a.normalized.name, searchTerms);
-    const bStartsAny = startsWithAnyTerm(b.normalized.name, searchTerms);
-    if (aStartsAny !== bStartsAny) {
-      return aStartsAny ? -1 : 1;
-    }
-
-    return 0;
-  });
-
-  const filteredMatches = typeFilter
-    ? withMatches.filter((entry) => entry.normalized.type === typeFilter)
-    : withMatches;
-
-  const totalCount = filteredMatches.length;
-  const paged = filteredMatches.slice(offset, offset + limit).map((entry) => entry.normalized);
+  // With every match in hand the count is exact. Otherwise the database's
+  // count for the matching bucket is the better estimate, never below what
+  // we can actually show.
+  const reported = candidates.reportedTotals[section];
+  const totalCount =
+    candidates.complete || reported === undefined ? all.length : Math.max(all.length, reported);
 
   return {
-    results: paged,
+    results,
     totalCount,
+    hasMore: results.length < totalCount,
   };
+}
+
+/**
+ * When neither the name nor the description shows the search term, show the
+ * sentence from the full record that does ("Cannot prescribe controlled
+ * substances (no Adderall, …)"). Only returned results are enriched, and the
+ * text comes from data/ files, not the database.
+ */
+function withContextSnippet(result: SearchResult, terms: string[]): SearchResult {
+  if (snippetShowsMatch(result, terms)) return result;
+  const record = loadRecord(result.type, result.slug);
+  const snippet = record ? contextSnippet(record, terms) : null;
+  if (!snippet) return result;
+  const term = terms.find((t) => snippet.toLowerCase().includes(t)) ?? terms[0];
+  return { ...result, snippets: [{ term, field: "Match", snippet }] };
+}
+
+/**
+ * Last resort for snippets: records that exist only in the database (most
+ * Knowledge Hub articles have no file under data/). One batched query for
+ * just the returned results that still do not show the match, so a search
+ * costs at most one extra round trip, and the response is CDN-cached.
+ */
+async function fillSnippetsFromDatabase(
+  sections: SectionPayload[],
+  terms: string[],
+  databaseUnavailable: boolean
+): Promise<void> {
+  if (databaseUnavailable) return;
+  const missing = sections
+    .flatMap((s) => s.results)
+    .filter((r) => r.type !== "tool" && !snippetShowsMatch(r, terms));
+  if (missing.length === 0) return;
+
+  try {
+    const { rows } = await queryWithRetry(
+      "SELECT slug, content FROM entities WHERE slug = ANY($1::text[]) AND status = 'active'",
+      [[...new Set(missing.map((r) => r.slug))]],
+      1, // no retries: a snippet is not worth a second round trip
+      3000 // and never hold the search up for long
+    );
+    const contentBySlug = new Map<string, unknown>(
+      (rows as Array<{ slug: string; content: unknown }>).map((row) => [row.slug, row.content])
+    );
+    for (const section of sections) {
+      section.results = section.results.map((result) => {
+        if (!missing.includes(result)) return result;
+        const content = contentBySlug.get(result.slug);
+        const snippet = content ? contextSnippet(content, terms) : null;
+        if (!snippet) return result;
+        const term = terms.find((t) => snippet.toLowerCase().includes(t)) ?? terms[0];
+        return { ...result, snippets: [{ term, field: "Match", snippet }] };
+      });
+    }
+  } catch (error) {
+    // A missing snippet is cosmetic; never fail the search over it.
+    logger.warn("Snippet lookup failed", { message: (error as Error)?.message });
+  }
+}
+
+/** Condition categories are slugs ("attention-learning"); show their title. */
+function withCategoryLabel(result: SearchResult): SearchResult {
+  if (result.type !== "condition" || !result.category) return result;
+  return { ...result, category: getCategoryBySlug(result.category)?.displayTitle ?? null };
+}
+
+function emptyResponse(type: SearchResultType | null, message?: string, error?: string) {
+  const empty: SectionPayload = { results: [], totalCount: 0, hasMore: false };
+  const extra = { loadTimeMs: 0, fallbackUsed: false, ...(message && { message }), ...(error && { error }) };
+
+  if (type) return NextResponse.json({ ...empty, ...extra });
+  return NextResponse.json({
+    ...Object.fromEntries(SECTIONS.map((s) => [s, empty])),
+    results: [],
+    ...extra,
+  });
+}
+
+function parseLimit(raw: string | null): number {
+  const parsed = Number.parseInt(raw ?? "", 10);
+  if (!Number.isFinite(parsed) || parsed < 1) return DEFAULT_LIMIT;
+  return Math.min(parsed, MAX_LIMIT);
+}
+
+function isResult(value: SearchResult | null): value is SearchResult {
+  return value !== null;
 }

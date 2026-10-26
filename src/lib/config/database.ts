@@ -265,6 +265,27 @@ export type Database = {
 };
 
 /**
+ * Public site content (entities and their relationships) changes only when
+ * content is published, so server-side reads of it go through the Next data
+ * cache for a day, shared across server instances and deployments, instead of
+ * pulling the same rows from Supabase on every render. Revalidate early with
+ * revalidateTag("supabase-content"). Writes, other tables (newsletter, leads)
+ * and browser requests are never cached. Responses over the data cache's
+ * per-item limit (about 2 MB) are simply not stored, so wide queries should
+ * still select only the columns they need.
+ */
+const CACHED_CONTENT_PATH = /\/rest\/v1\/(entities|entity_relationships|content_files)(\?|$)/;
+
+function contentCacheOptions(input: RequestInfo | URL, init?: RequestInit): RequestInit {
+  if (typeof window !== "undefined") return {};
+  const method = (init?.method ?? (input instanceof Request ? input.method : "GET")).toUpperCase();
+  if (method !== "GET" && method !== "HEAD") return {};
+  const href = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+  if (!CACHED_CONTENT_PATH.test(new URL(href).pathname + "?")) return {};
+  return { cache: "force-cache", next: { revalidate: 86400, tags: ["supabase-content"] } } as RequestInit;
+}
+
+/**
  * Fetch wrapper for Supabase with timeout
  *
  * No retries to avoid burning egress quota when over limit.
@@ -279,6 +300,7 @@ async function fetchWithTimeout(
   try {
     const response = await fetch(input, {
       ...init,
+      ...contentCacheOptions(input, init),
       signal: controller.signal,
     });
     clearTimeout(timeoutId);

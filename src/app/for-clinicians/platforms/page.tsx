@@ -11,7 +11,7 @@ import {
 } from "@/lib/platforms/provider-platform-service";
 
 export const metadata: Metadata = {
-  title: "Compare Therapist Platforms: Headway vs Grow vs Alma vs Rula | HeyPsych",
+  title: "Compare Therapist Platforms: Headway vs Grow vs Alma vs Rula",
   description:
     "Compare provider platforms for therapists. Headway, Grow Therapy, Alma, Rula, SonderMind - credentialing speed, pay rates, fee structures, and what you own.",
 };
@@ -128,7 +128,7 @@ export default async function PlatformsPage() {
       </div>
 
       {/* Practice Architect CTA */}
-      <div className="border-2 border-blue-200 bg-linear-to-br from-blue-50 to-indigo-50 rounded-lg p-6 mb-12">
+      <div className="border-2 border-blue-200 bg-blue-50 rounded-lg p-6 mb-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-1">

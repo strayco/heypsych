@@ -87,7 +87,7 @@ export function InternationalToggle({ hotlines }: Props) {
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ChevronDown className="h-5 w-5 text-label-primary0" aria-hidden="true" />
+              <ChevronDown className="h-5 w-5 text-label-tertiary" aria-hidden="true" />
             </motion.div>
           </button>
         </CardContent>

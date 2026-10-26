@@ -59,7 +59,7 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
   const IconComponent = iconMap[config.icon] || HelpCircle;
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${config.bgColor} via-white to-blue-50`}>
+    <div className={`min-h-screen ${config.bgColor}`}>
       {/* Header */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -79,7 +79,7 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
                 <IconComponent className={`h-8 w-8 ${config.iconColor}`} />
               </div>
 
-              <h1 className={`mb-4 bg-gradient-to-r ${config.gradient} bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl`}>
+              <h1 className={"mb-4 text-3xl font-bold text-label-primary sm:text-4xl lg:text-5xl"}>
                 {config.title}
               </h1>
 
@@ -88,13 +88,13 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
               </p>
 
               {/* Stats */}
-              <div className="flex items-center justify-center gap-6 text-sm text-label-primary0">
+              <div className="flex items-center justify-center gap-6 text-sm text-label-tertiary">
                 <div className="flex items-center gap-2">
                   <div className={`h-2 w-2 rounded-full ${config.iconColor.replace('text-', 'bg-')}`}></div>
                   {conditions.length} Conditions
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-positive-tint0"></div>
+                  <div className="h-2 w-2 rounded-full bg-positive-tint"></div>
                   Evidence-Based
                 </div>
               </div>
@@ -134,7 +134,7 @@ export function OtherSubcategoryClient({ conditions, config }: OtherSubcategoryC
         <div className="mx-auto max-w-6xl">
           {conditions.length === 0 ? (
             <div className="py-12 text-center">
-              <IconComponent className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
+              <IconComponent className="mx-auto mb-4 h-12 w-12 text-label-tertiary" />
               <p className="text-label-tertiary">No conditions found in this category yet.</p>
             </div>
           ) : (

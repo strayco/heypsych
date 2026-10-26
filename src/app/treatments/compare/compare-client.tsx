@@ -176,7 +176,7 @@ export function ComparePageClient({
         </div>
       </header>
 
-      <main className="container mx-auto px-4 md:px-6 py-6 md:py-8">
+      <div className="container mx-auto px-4 md:px-6 py-6 md:py-8">
         {/* Error State */}
         {error && (
           <div className="mb-6 p-4 bg-negative-50 border border-negative-200 rounded-xl text-negative-700 flex items-start gap-3">
@@ -268,7 +268,7 @@ export function ComparePageClient({
             </div>
           </>
         )}
-      </main>
+      </div>
     </div>
   );
 }

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/substance-use-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,
     url: `${SITE_CONFIG.url}/conditions/substance-use-disorders`,
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: `${categoryConfig.displayTitle}`,
     description: categoryConfig.description,

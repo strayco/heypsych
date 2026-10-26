@@ -19,7 +19,7 @@
  */
 
 import { loadTreatment, loadCondition } from './data-loader';
-import type { DynamicPageConfig } from './dynamic-generator';
+import { urlSafeBrand, guideDisplaySlug, parseDynamicSlug, type DynamicPageConfig } from './dynamic-generator';
 import { 
   generateHonestFreshness, 
   getReviewScope, 
@@ -171,6 +171,35 @@ function addAuthorityFields(
  * Main entry point - generates complete page content
  */
 export async function generatePageContent(config: DynamicPageConfig): Promise<GeneratedContent | null> {
+  const content = await generateRawPageContent(config);
+  if (content?.relatedPages?.length) content.relatedPages = await liveRelatedPages(content.relatedPages, config);
+  return content;
+}
+
+/**
+ * Related guide links are built from a record's display brand ("Kava Kava",
+ * "Bucapsol (US)"), which is not always the brand the guide URLs use. Point
+ * each one at the URL form that exists, and drop any that still would not
+ * resolve, so a guide never links to a 404.
+ */
+async function liveRelatedPages(pages: RelatedPage[], config: DynamicPageConfig): Promise<RelatedPage[]> {
+  const display = config.treatmentSlug ? await guideDisplaySlug(config.treatmentSlug) : null;
+  const out: RelatedPage[] = [];
+  for (const page of pages) {
+    if (!page.url.startsWith('/guide/')) {
+      out.push(page);
+      continue;
+    }
+    let slug = page.url.slice('/guide/'.length);
+    if (!(await parseDynamicSlug(slug)) && display) {
+      slug = slug.replace(/^.*?-(side-effects|withdrawal-symptoms|drug-interactions)$/, `${display}-$1`);
+    }
+    if (await parseDynamicSlug(slug)) out.push({ ...page, url: `/guide/${slug}` });
+  }
+  return out;
+}
+
+async function generateRawPageContent(config: DynamicPageConfig): Promise<GeneratedContent | null> {
   try {
     switch (config.pageType) {
       case 'treatment-for-condition':
@@ -403,7 +432,7 @@ async function generateTreatmentForCondition(config: DynamicPageConfig): Promise
     },
     {
       title: `${brandName} side effects`,
-      url: `/guide/${brandName.toLowerCase()}-side-effects`,
+      url: `/guide/${urlSafeBrand(brandName)}-side-effects`,
       type: 'guide',
       description: 'Detailed guide to common and serious side effects',
     },
@@ -810,8 +839,8 @@ async function generateSideEffects(config: DynamicPageConfig): Promise<Generated
 
   const relatedPages: RelatedPage[] = [
     { title: `${brandName} complete guide`, url: `/treatments/${treatment.slug}`, type: 'treatment' },
-    { title: `${brandName} withdrawal`, url: `/guide/${brandName.toLowerCase()}-withdrawal-symptoms`, type: 'guide' },
-    { title: `${brandName} drug interactions`, url: `/guide/${brandName.toLowerCase()}-drug-interactions`, type: 'guide' },
+    { title: `${brandName} withdrawal`, url: `/guide/${urlSafeBrand(brandName)}-withdrawal-symptoms`, type: 'guide' },
+    { title: `${brandName} drug interactions`, url: `/guide/${urlSafeBrand(brandName)}-drug-interactions`, type: 'guide' },
   ];
 
   const schemas = generateSchemas(config, {
@@ -1015,7 +1044,7 @@ async function generateWithdrawal(config: DynamicPageConfig): Promise<GeneratedC
     faqs,
     quickAnswer,
     relatedPages: [
-      { title: `${brandName} side effects`, url: `/guide/${brandName.toLowerCase()}-side-effects`, type: 'guide' },
+      { title: `${brandName} side effects`, url: `/guide/${urlSafeBrand(brandName)}-side-effects`, type: 'guide' },
       { title: `${brandName} complete guide`, url: `/treatments/${treatment.slug}`, type: 'treatment' },
     ],
     breadcrumbs,
@@ -1132,7 +1161,7 @@ async function generateInteractions(config: DynamicPageConfig): Promise<Generate
     faqs,
     quickAnswer,
     relatedPages: [
-      { title: `${brandName} side effects`, url: `/guide/${brandName.toLowerCase()}-side-effects`, type: 'guide' },
+      { title: `${brandName} side effects`, url: `/guide/${urlSafeBrand(brandName)}-side-effects`, type: 'guide' },
     ],
     breadcrumbs: [
       { name: 'Home', url: '/' },

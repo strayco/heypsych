@@ -59,7 +59,7 @@ export function EndOfRunSummary(props: EndOfRunSummaryProps) {
       <div className="mx-auto max-w-xl px-4 py-10 sm:py-12">
         {/* Header */}
         <div className="mb-8 text-center">
-          <p className="text-sm font-medium text-label-primary0 mb-3">Practice Complete</p>
+          <p className="text-sm font-medium text-label-tertiary mb-3">Practice Complete</p>
           <h1 className="text-2xl font-semibold text-label-primary sm:text-3xl">{endingTitle}</h1>
         </div>
 
@@ -154,17 +154,17 @@ export function EndOfRunSummary(props: EndOfRunSummaryProps) {
                   className="w-full flex items-center justify-between py-3.5 px-5 rounded-xl bg-surface-grouped border border-separator text-label-secondary transition-all hover:bg-fill-secondary hover:border-separator group"
                 >
                   <div className="flex flex-col items-start">
-                    <span className="text-xs text-label-primary0 mb-0.5">Try another scenario</span>
+                    <span className="text-xs text-label-tertiary mb-0.5">Try another scenario</span>
                     <span className="font-medium text-label-primary group-hover:text-label-primary">{relatedScenario.title}</span>
                   </div>
-                  <span className="text-sm text-label-primary0">{relatedScenario.estimatedMinutes} min</span>
+                  <span className="text-sm text-label-tertiary">{relatedScenario.estimatedMinutes} min</span>
                 </button>
               )}
 
               {/* Back Link */}
               <button
                 onClick={onBackToScenarios}
-                className="w-full flex items-center justify-center gap-2 py-3 text-sm text-label-primary0 hover:text-label-secondary transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-3 text-sm text-label-tertiary hover:text-label-secondary transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back to Scenarios</span>

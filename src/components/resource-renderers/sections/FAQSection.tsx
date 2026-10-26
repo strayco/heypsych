@@ -61,9 +61,9 @@ export function FAQSection({ faqs, entityName, entityUrl }: FAQSectionProps) {
                 >
                   <span className="font-medium text-label-primary"><ParsedContent content={faq.q} /></span>
                   {openIndex === i ? (
-                    <ChevronUp className="h-5 w-5 shrink-0 text-label-primary0" />
+                    <ChevronUp className="h-5 w-5 shrink-0 text-label-tertiary" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 shrink-0 text-label-primary0" />
+                    <ChevronDown className="h-5 w-5 shrink-0 text-label-tertiary" />
                   )}
                 </button>
                 {openIndex === i && (

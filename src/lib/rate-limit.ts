@@ -78,7 +78,9 @@ function getRateLimiter(
       rateLimiters[name] = new Ratelimit({
         redis: redisClient,
         limiter: Ratelimit.slidingWindow(windowRequests, windowDuration as any),
-        analytics: true,
+        // Off: Upstash analytics writes extra Redis commands on every check,
+        // roughly doubling billed commands, for a dashboard nobody reads.
+        analytics: false,
         prefix: `ratelimit:${name}`,
       });
     }

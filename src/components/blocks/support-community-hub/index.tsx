@@ -97,7 +97,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
       id: "crisis",
       name: "Crisis Support",
       icon: Shield,
-      gradient: "from-negative to-negative-600",
+      gradient: "bg-negative",
       bgColor: "bg-negative-tint",
       iconColor: "text-negative",
       borderColor: "border-negative-border",
@@ -109,7 +109,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
       id: "communities",
       name: "Support Communities",
       icon: Users,
-      gradient: "from-purple-500 to-indigo-600",
+      gradient: "bg-purple-500",
       bgColor: "bg-purple-50",
       iconColor: "text-purple-600",
       borderColor: "border-purple-200",
@@ -121,7 +121,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
       id: "recovery",
       name: "Recovery Programs",
       icon: Flame,
-      gradient: "from-orange-500 to-amber-600",
+      gradient: "bg-orange-500",
       bgColor: "bg-orange-50",
       iconColor: "text-orange-600",
       borderColor: "border-orange-200",
@@ -133,7 +133,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
       id: "identity",
       name: "Identity & Faith",
       icon: Heart,
-      gradient: "from-emerald-500 to-teal-600",
+      gradient: "bg-emerald-500",
       bgColor: "bg-emerald-50",
       iconColor: "text-emerald-600",
       borderColor: "border-emerald-200",
@@ -191,11 +191,11 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
             className="mb-6 text-center"
           >
             <div className="mb-4 flex items-center justify-center gap-3">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-600 shadow-lg">
                 <Users className="h-7 w-7 text-white" />
               </div>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span>
                   Support & Community
                 </span>
               </h1>
@@ -212,7 +212,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <Card className="mb-8 border-negative-border bg-gradient-to-r from-negative to-negative-600 shadow-xl">
+            <Card className="mb-8 border-negative-border bg-negative shadow-xl">
               <CardContent className="p-6">
                 <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                   <div className="flex items-center gap-4">
@@ -236,7 +236,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                     </a>
                     <a
                       href="sms:741741&body=HELLO"
-                      className="rounded-xl bg-negative-400 px-5 py-2.5 font-bold text-white shadow-lg transition-all hover:bg-negative-tint0 hover:shadow-xl"
+                      className="rounded-xl bg-negative-400 px-5 py-2.5 font-bold text-white shadow-lg transition-all hover:bg-negative-tint hover:shadow-xl"
                     >
                       <MessageCircle className="mr-2 inline h-4 w-4" />
                       Text 741741
@@ -303,7 +303,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
               {/* Search Bar */}
               <div className="mb-4">
                 <div className="relative">
-                  <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transform text-label-primary0" />
+                  <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transform text-label-tertiary" />
                   <input
                     type="text"
                     placeholder="Search organizations, support groups, or resources..."
@@ -459,7 +459,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                     {resource.name}
                                   </h3>
                                   {data?.organization && (
-                                    <p className="mb-2 text-sm text-label-primary0">
+                                    <p className="mb-2 text-sm text-label-tertiary">
                                       {data.organization}
                                     </p>
                                   )}
@@ -505,7 +505,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                                     </span>
                                   ))}
                                   {conditions.length > 3 && (
-                                    <span className="px-2 py-1 text-xs text-label-primary0">
+                                    <span className="px-2 py-1 text-xs text-label-tertiary">
                                       +{conditions.length - 3} more
                                     </span>
                                   )}
@@ -513,7 +513,7 @@ export function SupportCommunityHub({ resources }: SupportCommunityHubProps) {
                               )}
                             </div>
 
-                            <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-label-primary0 transition-all group-hover:translate-x-1 group-hover:text-emerald-500" />
+                            <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-label-tertiary transition-all group-hover:translate-x-1 group-hover:text-emerald-500" />
                           </div>
                         </motion.div>
                       </Link>

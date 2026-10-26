@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/gender-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Gender Identity Conditions",
     description: "Comprehensive guide to gender identity conditions and supportive care options.",
     url: `${SITE_CONFIG.url}/conditions/other/gender-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Gender dysphoria and gender identity-related conditions with affirming care information.",
   icon: "user",
   iconColor: "text-purple-600",
-  bgColor: "from-purple-50",
-  gradient: "from-purple-900 via-violet-900 to-purple-900",
+  bgColor: "bg-purple-50",
+  gradient: "bg-purple-900",
 };
 
 export default async function GenderDisordersPage() {

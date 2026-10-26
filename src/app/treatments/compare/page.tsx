@@ -85,6 +85,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
         canonical: `${SITE_CONFIG.url}/treatments/compare`,
       },
       openGraph: {
+        images: ["/images/og/heypsych.png"],
         title: "Treatment Comparisons",
         description: "Compare mental health medications and therapies side by side.",
       },
@@ -104,6 +105,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     title,
     description,
     openGraph: {
+      images: ["/images/og/heypsych.png"],
       title,
       description,
       type: "website",

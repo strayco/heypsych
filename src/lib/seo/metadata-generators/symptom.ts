@@ -64,6 +64,7 @@ export function generateSymptomMetadata(symptom: SymptomEntity): Metadata {
       }),
     },
     twitter: {
+      images: ["/images/og/heypsych.png"],
       card: "summary_large_image",
       site: SITE_CONFIG.twitter,
       title,
@@ -160,7 +161,7 @@ function extractSymptomKeywords(symptom: SymptomEntity): string[] {
  * Generate metadata for the symptoms hub page
  */
 export function generateSymptomsHubMetadata(): Metadata {
-  const title = "Explore Mental Health Symptoms | HeyPsych";
+  const title = "Explore Mental Health Symptoms";
   const description =
     "Explore common mental health symptoms in plain language. Learn what different experiences can feel like, what they might mean, and when to consider seeking help.";
   const canonical = `${SITE_CONFIG.url}/symptoms`;
@@ -199,6 +200,7 @@ export function generateSymptomsHubMetadata(): Metadata {
       ],
     },
     twitter: {
+      images: ["/images/og/heypsych.png"],
       card: "summary_large_image",
       site: SITE_CONFIG.twitter,
       title,

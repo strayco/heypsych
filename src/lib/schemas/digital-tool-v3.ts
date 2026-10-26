@@ -117,6 +117,9 @@ export const PricingZ = z.object({
   free_tier: z.boolean().default(false),
   starting_price: z.string().optional(),
   notes: z.string().optional(),
+  /** Where the price was read (vendor pricing page, store listing). */
+  sources: z.array(z.string().url()).optional(),
+  checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
 });
 
 /**
@@ -129,8 +132,32 @@ export const PricingZ = z.object({
  */
 export const PrivacyComplianceValueZ = z.union([z.boolean(), UncertaintyBooleanZ]);
 
+/**
+ * The facts a privacy grade is computed from, read from the product's privacy
+ * policy and the public regulatory record. See
+ * docs/active/APP_RESEARCH_STANDARD.md and src/domains/patient-tools/privacy.ts.
+ */
+export const PrivacyBasisZ = z.object({
+  policy_url: z.string().url(),
+  checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  /** Sells personal data, or shares it for targeted / cross-context advertising. */
+  sells_or_ads: z.enum(["yes", "no", "unknown"]),
+  /** Anyone can ask for their data to be deleted. */
+  deletion: z.enum(["yes", "no", "unknown"]),
+  /** Health information is protected by HIPAA (covered entity or business associate). */
+  hipaa: z.enum(["covered", "not-covered", "unknown"]),
+  /** Data is stored only on the person's device. */
+  on_device_only: z.boolean().default(false),
+  /** Can be used without creating an account. */
+  account_required: z.boolean().default(true),
+  /** A regulator's finding or settlement about health data in the last five years, in plain words. */
+  regulatory_action: z.string().nullable().default(null),
+  regulatory_source: z.string().url().optional(),
+});
+
 export const PrivacyZ = z.object({
   grade: PrivacyGradeZ,
+  basis: PrivacyBasisZ.optional(),
   hipaa_compliant: PrivacyComplianceValueZ.default(false),
   gdpr_compliant: PrivacyComplianceValueZ.default(true),
   data_sold: PrivacyComplianceValueZ.default(false),
@@ -243,9 +270,38 @@ export const DigitalToolV3Z = z.object({
   // Privacy
   privacy: PrivacyZ,
   
-  // Ratings
+  // Ratings. `app_rating` / `total_reviews` are legacy and unsourced: never
+  // displayed. Store ratings are shown only with their store, link and date.
   app_rating: z.number().min(0).max(5).optional(),
   total_reviews: z.number().optional(),
+  store_ratings: z
+    .array(
+      z.object({
+        store: z.enum(["App Store", "Google Play"]),
+        rating: z.number().min(0).max(5),
+        count: z.number().int().nonnegative().optional(),
+        url: z.string().url(),
+        checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      })
+    )
+    .optional(),
+
+  // Who the product is for. "clinician" records keep their profile but are
+  // not offered in the patient finder.
+  audience: z.enum(["patient", "clinician", "both"]).optional(),
+
+  // A duplicate record folded into another; its URL redirects there.
+  merged_into: z.string().regex(/^[a-z0-9-]+$/).optional(),
+
+  // Availability, checked against the vendor: whether a person can get it today.
+  availability: z
+    .object({
+      state: z.enum(["available", "limited", "discontinued"]),
+      note: z.string().max(300).optional(),
+      checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      sources: z.array(z.string().url()).optional(),
+    })
+    .optional(),
   
   // SEO (all required for indexing)
   seo: SEOZ,
@@ -289,6 +345,7 @@ export type FAQ = z.infer<typeof FAQZ>;
 export type Platforms = z.infer<typeof PlatformsZ>;
 export type Pricing = z.infer<typeof PricingZ>;
 export type Privacy = z.infer<typeof PrivacyZ>;
+export type PrivacyBasis = z.infer<typeof PrivacyBasisZ>;
 export type Governance = z.infer<typeof GovernanceZ>;
 export type SEO = z.infer<typeof SEOZ>;
 export type ClinicianMetadata = z.infer<typeof ClinicianMetadataZ>;

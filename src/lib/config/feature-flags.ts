@@ -13,7 +13,6 @@
  *   FOR_CLINICIANS_PAGE_ENABLED    - Enable /for-clinicians (default: true)
  *   PATIENT_SUPPORT_JOURNEY        - Enable /find-support decision journey (default: true)
  *   NAVIGATION_INVERSION           - Enable audience-first navigation (default: true)
- *   PRACTICE_ARCHITECT_V2          - Enable Practice Architect v2 (default: true)
  *
  * Usage:
  *   import { featureFlags } from '@/lib/config/feature-flags';
@@ -58,13 +57,6 @@ export interface FeatureFlags {
    * Used in: src/lib/config/site.ts, src/components/layout/header.tsx
    */
   navigationInversion: boolean;
-
-  /**
-   * Enable Practice Architect v2 (visual configurator).
-   * When false, shows the v1 gateway page with mode selection.
-   * Used in: src/app/architect/page.tsx
-   */
-  practiceArchitectV2: boolean;
 }
 
 /**
@@ -90,7 +82,6 @@ export const featureFlags: Readonly<FeatureFlags> = {
   forCliniciansPage: envBool("FOR_CLINICIANS_PAGE_ENABLED", true),
   patientSupportJourney: envBool("PATIENT_SUPPORT_JOURNEY", true), // Enabled: decision support for patient tools
   navigationInversion: envBool("NAVIGATION_INVERSION", true),
-  practiceArchitectV2: envBool("PRACTICE_ARCHITECT_V2", true), // v2 enabled by default
 };
 
 /**

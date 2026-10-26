@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "k-health",
   "name": "K Health",
-  "one_liner": "K Health offers AI-assisted primary care and mental health treatment with real doctors, providing anxiety and depression medication for affordable prices.",
+  "one_liner": "App-based doctors who can prescribe non-controlled medication for anxiety and depression after an AI symptom check; $49 first month.",
   "best_for": [
-    "People wanting affordable telehealth mental health care",
-    "Those comfortable with AI-assisted health platforms",
-    "People with mild to moderate anxiety or depression",
-    "Those seeking both primary care and mental health in one platform"
+    "Adults with mild to moderate anxiety or depression who want to start or continue an antidepressant",
+    "People without insurance who want a flat monthly price for medication visits",
+    "People who want primary care and mental health medication in one app"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People with complex psychiatric conditions",
-    "Those seeking controlled substance prescriptions"
+    "Anyone in crisis: call or text 988",
+    "People with severe depression, bipolar disorder or other high-risk conditions, which K Health refers to in-person care",
+    "Anyone seeking Xanax or other controlled medications",
+    "People who want ongoing talk therapy (K Health refers out for therapy)",
+    "Under-18s"
   ],
   "support_level": "clinical",
-  "short_description": "K Health offers AI-assisted primary care and mental health treatment with real doctors, providing anxiety and depression medication for affordable prices.",
-  "long_description": "K Health is a telehealth platform using AI to help users understand symptoms and connect with licensed doctors for treatment. The mental health services treat anxiety and depression with medication, therapy, and ongoing care. The AI helps triage your concerns before you see a provider, making consultations efficient. K Health offers affordable cash-pay pricing plus insurance options. Unlimited primary care membership (including mental health) costs around $49/year plus per-visit fees. The platform is designed for common conditions that can be effectively treated remotely. It's not suited for complex psychiatric needs.",
-  "patient_summary": "AI + telehealth app for primary care ($29/mo) and mental health ($73/session). Primary care providers treating mental health—not psychiatrists.",
+  "short_description": "Telehealth membership where clinicians treat anxiety and depression with non-controlled medication, after an AI intake; $49 first month, then $147.",
+  "long_description": "K Health is a telehealth service run through an app. You start with an AI chat that asks about your symptoms, then see a K Health clinician by text or video. In its mental health program a clinician may prescribe medication for anxiety or depression, suggest self-guided resources, or refer you to a therapist or psychiatrist; K Health does not offer ongoing therapy itself, does not prescribe controlled substances such as Xanax, and does not treat bipolar disorder or severe depression remotely. The membership is $49 for the first month and then renews at $147 every three months; a one-time visit is $73, medication is extra and shipping is $12 a month. It generally does not take insurance, except some Surest and Elevance Health plans. It serves adults in 48 states. K Health's privacy policy says it may 'sell' and 'share' some personal information, including with advertising partners; you can opt out through 'Your Privacy Choices'. A 2025 study in Annals of Internal Medicine looked at its AI in virtual urgent care, not mental health.",
+  "patient_summary": "You chat with K Health's AI about your symptoms, then message or video-chat with a clinician who can prescribe non-controlled medication for anxiety or depression. It costs $49 for the first month and then $147 every three months, or $73 for a one-time visit; medication is extra and most insurance isn't accepted. It is for adults, and you'll be referred elsewhere for therapy or for severe or complex conditions.",
   "primary_hubs": [
     "anxiety-stress",
     "mood-depression",
@@ -29,14 +30,14 @@
     "major-depressive-disorder"
   ],
   "tool_types": [
-    "therapy-platform"
+    "psychiatry-platform"
   ],
   "ai_attributes": [
     "ai-powered"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
@@ -44,15 +45,33 @@
   "pricing": {
     "model": "subscription",
     "free_tier": false,
-    "starting_price": "$49/year membership",
-    "notes": "Membership plus per-visit fees. Some insurance accepted."
+    "starting_price": "$49/month (billed $147 every 3 months after a $49 first month); $73 one-time visit",
+    "notes": "Medication is not included; shipping from K Health is $12/month, or use your own pharmacy and insurance for the medication. K Health generally does not accept insurance for memberships or visits, except certain Surest and Elevance Health plans.",
+    "sources": [
+      "https://www.khealth.com/mental-health"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "B+",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. AI uses anonymized data. Review privacy policy for details."
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://khealth.com/privacy-policy",
+      "sells_or_ads": "yes",
+      "deletion": "no",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "yes",
+    "notes": "Medical records fall under a joint HIPAA notice, but the privacy policy says K Health may 'sell' and 'share' identifiers and browsing data with ad partners; deletion rights are offered only to residents of states with privacy laws.",
+    "sources": [
+      "https://khealth.com/privacy-policy",
+      "https://khealth.com/consumer-health-data-privacy-notice"
+    ]
   },
   "seo": {
     "title": "K Health: AI Telehealth Review & Pricing | HeyPsych",
@@ -80,20 +99,38 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
+    "publisher": "K Health Inc.",
+    "app_store_url": "https://apps.apple.com/us/app/1180400838",
     "website": "https://www.khealth.com",
     "affiliate_url": "https://www.khealth.com"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Retrospective study of K Health's AI recommendations in AI-assisted virtual urgent care at Cedars-Sinai Connect (not a mental health study)",
+        "citation": {
+          "authors": "Zeltzer D, Kugler Z, Hayat L, Brufman T, Ilan Ber R, Leibovich K, Beer T, Frank I, Shaul R, Goldzweig C, Pevnick J",
+          "title": "Comparison of Initial Artificial Intelligence (AI) and Final Physician Recommendations in AI-Assisted Virtual Urgent Care Visits",
+          "journal": "Annals of Internal Medicine",
+          "year": 2025,
+          "doi": "10.7326/ANNALS-24-03283",
+          "url": "https://cris.tau.ac.il/en/publications/comparison-of-initial-artificial-intelligence-ai-and-final-physic/"
+        },
+        "outcome": "AI and final physician recommendations matched in 56.8% of visits; covers respiratory, urinary, eye and dental complaints, not anxiety or depression.",
+        "sample_size": 461,
+        "study_design": "Retrospective cohort (no control group)"
+      }
+    ],
     "primary_uses": [
-      "AI-assisted healthcare",
-      "Anxiety medication",
-      "Depression treatment",
-      "Affordable telehealth"
+      "Starting or refilling antidepressant or anti-anxiety medication (non-controlled)",
+      "Anxiety and depression check-ins with a clinician by text or video",
+      "AI symptom check before a visit",
+      "Referral to a therapist or psychiatrist"
     ]
   },
   "related_tools": [],
@@ -101,5 +138,26 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.khealth.com",
-  "updated_at": "2026-09-02T06:10:49.775Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "sub_hubs": [
+    "psychiatry-platforms"
+  ],
+  "availability": {
+    "state": "available",
+    "note": "Adults 18+ in 48 states. No controlled substances; severe or high-risk conditions are referred to in-person care.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://www.khealth.com/mental-health"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.7,
+      "count": 44000,
+      "url": "https://apps.apple.com/us/app/1180400838",
+      "checked": "2026-10-26"
+    }
+  ]
 }

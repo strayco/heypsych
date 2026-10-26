@@ -219,7 +219,7 @@ export function scoreEHRTool(
       score += WEIGHTS.ePrescribing;
       matchReasons.push("E-prescribing available");
       if (hasCapability(tool, "epcs-controlled")) {
-        matchReasons.push("EPCS for controlled substances");
+        matchReasons.push("Vendor advertises EPCS (unverified)");
       }
     } else {
       missingRequirements.push("E-prescribing");

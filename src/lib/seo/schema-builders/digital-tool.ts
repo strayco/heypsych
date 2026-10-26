@@ -52,16 +52,7 @@ export function buildDigitalToolSchema(entity: Entity): Record<string, any> {
     schema.operatingSystem = data.platforms;
   }
 
-  // CRITICAL FOR SERP: Aggregate rating (shows stars in Google)
-  if (data.app_rating && data.total_reviews) {
-    schema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: data.app_rating,
-      reviewCount: data.total_reviews,
-      bestRating: 5,
-      worstRating: 1
-    };
-  }
+  // No aggregateRating: `app_rating` is legacy and unsourced.
 
   // Pricing information (offers)
   if (data.subscription_model || data.free !== undefined) {
@@ -296,10 +287,6 @@ export function validateDigitalToolSchema(schema: Record<string, any>): {
   }
   if (!schema.description) {
     warnings.push('Missing description');
-    score -= 15;
-  }
-  if (!schema.aggregateRating) {
-    warnings.push('Missing aggregateRating (no SERP stars)');
     score -= 15;
   }
   if (!schema.offers) {

@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import fs from "fs";
 import path from "path";
+import { buildClinicianRedirects } from "./src/lib/tools/clinician-redirects";
+import { buildPatientRedirects } from "./src/lib/tools/patient-redirects";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -78,6 +80,25 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // Search reads data/ records at runtime for match-in-context snippets
+  // (src/lib/search/record-files.ts); make sure they ship with the function.
+  outputFileTracingIncludes: {
+    // Resource pages render on demand and check crosslink targets against
+    // these files (src/domains/articles/experience/targets.ts).
+    "/resources/[slug]": [
+      "./data/conditions/**/*.json",
+      "./data/treatments/**/*.json",
+      "./data/learn/*.json",
+    ],
+    "/api/search": [
+      "./data/conditions/**/*.json",
+      "./data/treatments/**/*.json",
+      "./data/resources/**/*.json",
+      "./data/learn/**/*.json",
+      "./data/tools-v4/products/**/*.json",
+    ],
+  },
+
   // Mark Node.js built-ins as external for server components
   // This prevents webpack from trying to bundle them
   serverExternalPackages: ['fs', 'path'],
@@ -107,9 +128,16 @@ const nextConfig: NextConfig = {
     return [
       {
         // Apply security headers to all routes
-        // Note: OG image CORS headers are handled in middleware.ts
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        // Keep Vercel preview deployments out of search results. This lived in
+        // middleware, which forced middleware to run on every page; as a static
+        // header rule it costs nothing per request.
+        source: "/(.*)",
+        has: [{ type: "host", value: "(?<preview>.*)\\.vercel\\.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },
@@ -124,6 +152,20 @@ const nextConfig: NextConfig = {
         destination: "/:path+",
         permanent: true, // 301 redirect
       },
+      // Practice Architect 3.0 consolidation.
+      // /architect/{build,audit,demo,my-practice,studio} were five partial
+      // builders of the same practice. There is now one, at /architect.
+      ...[
+        "build",
+        "audit",
+        "demo",
+        "my-practice",
+        "studio",
+      ].map((legacy) => ({
+        source: `/architect/${legacy}`,
+        destination: "/architect",
+        permanent: true, // 301: these URLs are not coming back
+      })),
       // SEO: Redirect singular /treatment/ to plural /treatments/
       {
         source: "/treatment/:slug",
@@ -180,38 +222,57 @@ const nextConfig: NextConfig = {
       // SEO: Domain canonicalization (www → non-www) handled at Vercel DNS level
       // Canonical domain: heypsych.com (non-www)
 
-      // SEO: Legacy clinician hub redirects → V4 category pages
-      // Old 6-category system migrated to new 16-category V4 taxonomy
+      // Clinician Apps & Tools consolidation: retired landers, audience pages,
+      // programmatic guides and legacy hub names. See
+      // src/lib/tools/clinician-redirects.ts.
+      ...buildClinicianRedirects(process.cwd()),
+      ...buildPatientRedirects(process.cwd()),
+      // Assessments live at /resources/<slug>. Links (and the inline-link
+      // parser) used to point at /resources/assessments-screeners/<slug>,
+      // which never existed.
       {
-        source: "/tools/for-clinicians/clinical-answers-evidence",
-        destination: "/tools/for-clinicians/clinical-decision-support",
+        source: "/resources/assessments-screeners/asrs",
+        destination: "/resources/asrs-v1-1",
         permanent: true,
       },
       {
-        source: "/tools/for-clinicians/ai-scribes-documentation",
-        destination: "/tools/for-clinicians/ai-scribe-documentation",
+        source: "/resources/assessments-screeners/:slug",
+        destination: "/resources/:slug",
         permanent: true,
       },
-      {
-        source: "/tools/for-clinicians/billing-coding",
-        destination: "/tools/for-clinicians/billing-rcm",
-        permanent: true,
-      },
-      {
-        source: "/tools/for-clinicians/prescribing-medication-support",
-        destination: "/tools/for-clinicians/prescribing-erx",
-        permanent: true,
-      },
-      {
-        source: "/tools/for-clinicians/practice-admin-operations",
-        destination: "/tools/for-clinicians/ehr-practice-management",
-        permanent: true,
-      },
-      {
-        source: "/tools/for-clinicians/patient-engagement-between-visits",
-        destination: "/tools/for-clinicians/patient-engagement",
-        permanent: true,
-      },
+      // Retired clinician products: send old public URLs to the hub, not a 404.
+      // A product that returns to the catalogue must be removed from this list
+      // (therapyappointment, claim-md, goodtherapy and rula were, 2026-10-23).
+      ...[
+        "ehr-practice-management/theraplatform",
+        "ehr-practice-management/owl-practice",
+        "ehr-practice-management/cliniko",
+        "ehr-practice-management/practice-better",
+        "ehr-practice-management/healthie",
+        "ehr-practice-management/zanda",
+        "ehr-practice-management/tebra",
+        "ehr-practice-management/drchrono",
+        "ai-scribe-documentation/autonotes",
+        "prescribing-erx/drfirst-iprescribe",
+        "analytics-reporting/quickbooks",
+        "analytics-reporting/wave-accounting",
+        "malpractice-insurance/cph-associates",
+        "malpractice-insurance/hpso",
+        "malpractice-insurance/american-professional-agency",
+        "malpractice-insurance/apa-insurance-trust",
+        "malpractice-insurance/prms",
+      ].flatMap((path) => [
+        {
+          source: `/tools/for-clinicians/${path}`,
+          destination: "/tools/for-clinicians",
+          permanent: true,
+        },
+        {
+          source: `/tools/for-clinicians/${path}/`,
+          destination: "/tools/for-clinicians",
+          permanent: true,
+        },
+      ]),
       // SEO: Redirect programmatic-style treatment URLs to canonical treatment pages
       {
         source: "/treatments/electroconvulsive-therapy-for-severe-depression",

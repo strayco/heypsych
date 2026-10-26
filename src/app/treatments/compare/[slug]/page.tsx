@@ -157,12 +157,14 @@ export async function generateMetadata({
       canonical: `${SITE_CONFIG.url}/treatments/compare/${slug}`,
     },
     openGraph: {
+      images: ["/images/og/heypsych.png"],
       title: data.seo.title,
       description: data.seo.description,
       url: `${SITE_CONFIG.url}/treatments/compare/${slug}`,
       type: "article",
     },
     twitter: {
+      images: ["/images/og/heypsych.png"],
       card: "summary_large_image",
       title: data.seo.title,
       description: data.seo.description,

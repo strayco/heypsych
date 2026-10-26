@@ -15,6 +15,13 @@ interface ClinicianModuleProps {
  * Conditional module that appears on tool pages when the tool is clinician-relevant.
  * Displays how clinicians use the tool, workflow fit, and implementation notes.
  */
+const V3_HUB_TARGET: Record<string, string> = {
+  "ai-scribes-documentation": "/tools/for-clinicians/ai-scribe-documentation",
+  "billing-coding": "/tools/for-clinicians/billing-rcm",
+  "practice-admin-operations": "/tools/for-clinicians/ehr-practice-management",
+  "prescribing-medication-support": "/tools/for-clinicians/ehr-practice-management?practice=prescriber",
+};
+
 export function ClinicianModule({ tool }: ClinicianModuleProps) {
   // Only render if tool is clinician-relevant
   if (!tool.clinician?.is_clinician_relevant) {
@@ -32,7 +39,8 @@ export function ClinicianModule({ tool }: ClinicianModuleProps) {
   // Get hub links
   const hubLinks = clinician.primary_clinician_hubs.map((hubSlug) => {
     const hub = TaxonomyService.getClinicianHub(hubSlug);
-    return hub ? { slug: hubSlug, display_name: hub.display_name, url: hub.url } : null;
+    // V3 hub names redirect; link straight to where they land.
+    return hub ? { slug: hubSlug, display_name: hub.display_name, url: V3_HUB_TARGET[hubSlug] ?? "/tools/for-clinicians" } : null;
   }).filter(Boolean);
 
   return (

@@ -1,44 +1,9 @@
-// src/app/tools/anxiety-stress/page.tsx
-// Anxiety & Stress Hub Page
-
-import { Metadata } from "next";
-import { HubPageContent } from "../_components/HubPageContent";
-import { TaxonomyService } from "@/lib/tools/taxonomy-service";
-import { ToolService } from "@/lib/tools/tool-service";
-
-const HUB_SLUG = "anxiety-stress";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const hub = TaxonomyService.getHub(HUB_SLUG);
-  if (!hub) {
-    return { title: "Anxiety & Stress Tools" };
-  }
-
-  return {
-    title: hub.seo_title,
-    description: hub.meta_description,
-    alternates: {
-      canonical: `https://heypsych.com${hub.url}`,
-    },
-  };
-}
-
-export default async function AnxietyStressHubPage() {
-  const hub = TaxonomyService.getHub(HUB_SLUG);
-  if (!hub) {
-    return <div>Hub not found</div>;
-  }
-
-  const tools = await ToolService.getByHub(HUB_SLUG);
-  const topPicks = await ToolService.getTopPicks(HUB_SLUG);
-
-  return (
-    <HubPageContent
-      hub={hub}
-      tools={tools}
-      topPicks={topPicks}
-    />
-  );
-}
+// /tools/anxiety-stress — patient need page (src/app/tools/_components/need-page.tsx).
+import { NeedPage, needMetadata } from "../_components/need-page";
 
 export const revalidate = 86400;
+export const generateMetadata = () => needMetadata("anxiety-stress");
+
+export default function Page() {
+  return <NeedPage id="anxiety-stress" />;
+}

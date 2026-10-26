@@ -54,12 +54,24 @@ export {
 
 // Cost Engine
 export {
+  calculateProductCost,
   calculateStackCost,
   formatCost,
   formatCostRange,
   checkBudget,
+  type ProductCostResult,
   type ProductMetadataMap,
 } from "./cost-engine";
+
+// Eligibility Engine
+export {
+  evaluateEligibility,
+  isEligible,
+  HARD_EXCLUSION_POLICIES,
+  type EligibilityFinding,
+  type EligibilityResult,
+  type HardExclusionPolicy,
+} from "./eligibility-engine";
 
 // Health Engine
 export {

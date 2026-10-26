@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/sexual-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Sexual Health Disorders",
     description: "Comprehensive guide to sexual health conditions and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/sexual-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Sexual dysfunctions and sexual health-related conditions affecting intimacy and relationships.",
   icon: "heart",
   iconColor: "text-rose-600",
-  bgColor: "from-rose-50",
-  gradient: "from-rose-900 via-pink-900 to-rose-900",
+  bgColor: "bg-rose-50",
+  gradient: "bg-rose-900",
 };
 
 export default async function SexualDisordersPage() {

@@ -1,8 +1,10 @@
 /**
- * Apple Design System Utilities
+ * Section Presentation Utilities
  *
- * Interprets ui_hints metadata and returns Tailwind CSS classes
- * following Apple's design principles (Clarity, Deference, Depth)
+ * Interprets content `ui_hints` metadata and returns Tailwind classes built
+ * from the HeyPsych design tokens (see src/app/globals.css). The file and
+ * function names predate the current design system and are kept for import
+ * stability.
  */
 
 export type VisualPriority = 'hero' | 'critical' | 'high' | 'medium' | 'low';
@@ -28,54 +30,70 @@ export function getColorClasses(color?: string): {
   border: string;
   bgLight: string;
 } {
+  // Content data specifies section colours with legacy semantic hex keys
+  // (Apple system colours). Those keys are a data contract, so they stay; each
+  // resolves to the HeyPsych semantic tokens. The brand semantic hexes are
+  // accepted too, so new content can use either.
+  const critical = {
+    text: 'text-negative-700',
+    bg: 'bg-negative',
+    border: 'border-negative-border',
+    bgLight: 'bg-negative-tint',
+  };
+  const warning = {
+    text: 'text-caution-700',
+    bg: 'bg-caution',
+    border: 'border-caution-border',
+    bgLight: 'bg-caution-tint',
+  };
+  const info = {
+    text: 'text-accent-700',
+    bg: 'bg-accent',
+    border: 'border-accent-border',
+    bgLight: 'bg-accent-tint',
+  };
+  const success = {
+    text: 'text-positive-700',
+    bg: 'bg-positive',
+    border: 'border-positive-border',
+    bgLight: 'bg-positive-tint',
+  };
+  const neutral = {
+    text: 'text-label-secondary',
+    bg: 'bg-label-tertiary',
+    border: 'border-separator-opaque',
+    bgLight: 'bg-surface-grouped',
+  };
   const colorMap: Record<string, ReturnType<typeof getColorClasses>> = {
-    '#FF3B30': { // Critical (red)
-      text: 'text-red-700',
-      bg: 'bg-red-500',
-      border: 'border-red-300',
-      bgLight: 'bg-red-50'
-    },
-    '#FF9500': { // Warning (orange)
-      text: 'text-amber-700',
-      bg: 'bg-amber-500',
-      border: 'border-amber-300',
-      bgLight: 'bg-amber-50'
-    },
-    '#007AFF': { // Info (blue)
-      text: 'text-blue-700',
-      bg: 'bg-blue-500',
-      border: 'border-blue-300',
-      bgLight: 'bg-blue-50'
-    },
-    '#34C759': { // Success (green)
-      text: 'text-green-700',
-      bg: 'bg-green-500',
-      border: 'border-green-300',
-      bgLight: 'bg-green-50'
-    },
-    '#8E8E93': { // Neutral (gray)
-      text: 'text-neutral-700',
-      bg: 'bg-neutral-500',
-      border: 'border-neutral-300',
-      bgLight: 'bg-neutral-50'
-    }
+    '#FF3B30': critical,
+    '#AD655E': critical,
+    '#FF9500': warning,
+    '#A98243': warning,
+    '#007AFF': info,
+    '#456C7E': info,
+    '#34C759': success,
+    '#487D66': success,
+    '#8E8E93': neutral,
+    '#6F746E': neutral,
   };
 
-  return colorMap[color || '#007AFF'] || colorMap['#007AFF'];
+  return colorMap[(color || '#007AFF').toUpperCase()] || info;
 }
 
 /**
  * Get card style classes based on card_style hint
  */
 export function getCardStyleClasses(style?: CardStyle): string {
+  // Flat surfaces with warm hairlines, per the Worlds art direction: no
+  // gradients, depth from elevation rather than colour.
   const styleMap: Record<CardStyle, string> = {
-    'subtle': 'bg-white border border-neutral-100 shadow-sm',
-    'outlined': 'bg-white border-2 border-neutral-200',
-    'elevated': 'bg-white border border-neutral-100 shadow-md hover:shadow-lg transition-shadow',
-    'filled': 'bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200',
-    'filled_warning': 'bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-amber-300',
-    'filled_critical': 'bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-300',
-    'outlined_critical': 'bg-white border-3 border-red-500'
+    'subtle': 'bg-surface border border-separator shadow-subtle',
+    'outlined': 'bg-surface border border-separator-opaque',
+    'elevated': 'bg-surface border border-separator shadow-card-2 transition-shadow hover:shadow-card-3',
+    'filled': 'bg-accent-tint border border-accent-border',
+    'filled_warning': 'bg-caution-tint border border-caution-border',
+    'filled_critical': 'bg-negative-tint border border-negative-border',
+    'outlined_critical': 'bg-surface border-2 border-negative'
   };
 
   return styleMap[style || 'subtle'];
@@ -90,7 +108,8 @@ export function getAnimationClasses(animation?: AnimationType): string {
     'fade_slide_up': 'animate-in fade-in slide-in-from-bottom-4 duration-300',
     'scale_up': 'animate-in zoom-in duration-200',
     'number_count_up': 'animate-in zoom-in duration-500',
-    'attention_pulse': 'animate-pulse'
+    // No looping motion: attention comes from placement and colour.
+    'attention_pulse': 'animate-in fade-in duration-200'
   };
 
   return animationMap[animation || 'fade_in'];

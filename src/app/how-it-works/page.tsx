@@ -27,7 +27,7 @@ export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-canvas">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-canvas via-surface to-canvas px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="bg-canvas px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5">
             <Compass className="h-4 w-4 text-accent" />
@@ -90,7 +90,7 @@ export default function HowItWorksPage() {
 
       {/* Trust signal - One line, not a whole section */}
       <section className="border-t border-separator px-4 py-8 sm:px-6 lg:px-8">
-        <p className="text-center text-sm text-label-primary0">
+        <p className="text-center text-sm text-label-tertiary">
           Based on exposure therapy and behavioral activation principles.
           Designed with clinical psychologists.
         </p>
@@ -99,7 +99,7 @@ export default function HowItWorksPage() {
       {/* For campuses teaser */}
       <section className="bg-surface px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-2 text-sm font-medium text-label-primary0">
+          <p className="mb-2 text-sm font-medium text-label-tertiary">
             For universities
           </p>
           <h2 className="mb-4 text-lg font-semibold text-label-primary">

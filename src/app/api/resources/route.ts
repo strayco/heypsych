@@ -17,7 +17,8 @@ export async function GET(request: NextRequest) {
 
     logger.debug(`📚 Loaded ${indexData.resources.length} resources from pre-built index`);
 
-    return NextResponse.json({ resources: indexData.resources });
+    // File-backed and only changes on deploy (which purges the CDN).
+    return NextResponse.json({ resources: indexData.resources }, { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } });
   } catch (error: any) {
     logger.error("Failed to load resources", error);
     return NextResponse.json(

@@ -117,7 +117,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <div className="min-h-screen bg-blue-50">
       {/* Hero */}
       <section className="relative px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
@@ -126,7 +126,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="mb-2 text-2xl font-bold sm:text-3xl">
-              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
+              <span>
                 Digital Tools & Apps
               </span>
             </h1>
@@ -152,7 +152,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                   {/* Search */}
                   <div className="relative md:col-span-2">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-tertiary" />
                     <input
                       type="text"
                       placeholder="Search apps..."
@@ -229,7 +229,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredResources.map((resource, index) => {
                 const data = resource.data as any;
-                const rating = data?.app_rating || 0;
+                const rating = 0; // app_rating is legacy and unsourced; never shown
                 const totalReviews = data?.total_reviews;
                 const platforms = data?.platforms || [];
                 const privacyCertified = data?.privacy_certified;
@@ -270,7 +270,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                               </span>
                             </div>
                             {totalReviews && (
-                              <span className="text-xs text-label-primary0">
+                              <span className="text-xs text-label-tertiary">
                                 ({totalReviews.toLocaleString()})
                               </span>
                             )}

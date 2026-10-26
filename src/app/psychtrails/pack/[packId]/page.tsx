@@ -85,8 +85,8 @@ export default function PackDetailPage() {
           <h1 className="text-3xl font-bold text-label-primary">{pack.title}</h1>
           <p className="mt-2 text-label-tertiary">{pack.description}</p>
           <div className="mt-4 flex items-center gap-4">
-            <span className="text-sm text-label-primary0 capitalize">{pack.difficulty}</span>
-            <span className="text-sm text-label-primary0">~{pack.estimatedTotalMinutes} min total</span>
+            <span className="text-sm text-label-tertiary capitalize">{pack.difficulty}</span>
+            <span className="text-sm text-label-tertiary">~{pack.estimatedTotalMinutes} min total</span>
             {packProgress.masteryTier !== "none" && (
               <span className={`text-xs px-2 py-1 rounded-md capitalize border ${TIER_BADGES[packProgress.masteryTier].bg} ${TIER_BADGES[packProgress.masteryTier].text} ${TIER_BADGES[packProgress.masteryTier].border}`}>
                 {packProgress.masteryTier}
@@ -133,14 +133,14 @@ export default function PackDetailPage() {
                           {scenario.bestGrade}
                         </span>
                       )}
-                      {!scenario.unlocked && <Lock className="h-4 w-4 text-label-primary0" />}
+                      {!scenario.unlocked && <Lock className="h-4 w-4 text-label-tertiary" />}
                     </div>
                   </div>
                   <p className="text-sm text-label-tertiary line-clamp-2">{scenario.summary}</p>
                   <div className="mt-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <span className="text-xs text-label-primary0 capitalize">{scenario.difficulty}</span>
-                      <span className="text-xs text-label-primary0">~{scenario.estimatedMinutes} min</span>
+                      <span className="text-xs text-label-tertiary capitalize">{scenario.difficulty}</span>
+                      <span className="text-xs text-label-tertiary">~{scenario.estimatedMinutes} min</span>
                       <div className="flex gap-0.5">
                         {[1, 2, 3].map((i) => (
                           <Star

@@ -40,7 +40,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Patient acquisition and referral management",
     order: 1,
     primaryCategorySlug: "marketing-patient-acquisition",
-    primaryCategoryUrl: "/tools/for-clinicians/marketing-patient-acquisition/",
+    primaryCategoryUrl: "/tools/for-clinicians/marketing-patient-acquisition",
   },
   access: {
     id: "access",
@@ -48,7 +48,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Intake, scheduling, and patient access",
     order: 2,
     primaryCategorySlug: "scheduling-intake",
-    primaryCategoryUrl: "/tools/for-clinicians/scheduling-intake/",
+    primaryCategoryUrl: "/tools/for-clinicians/ehr-practice-management",
   },
   engage: {
     id: "engage",
@@ -56,7 +56,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Patient communication and engagement",
     order: 3,
     primaryCategorySlug: "telehealth-communication",
-    primaryCategoryUrl: "/tools/for-clinicians/telehealth-communication/",
+    primaryCategoryUrl: "/tools/for-clinicians/telehealth-communication",
   },
   care: {
     id: "care",
@@ -64,7 +64,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Clinical documentation and care delivery",
     order: 4,
     primaryCategorySlug: "ehr-practice-management",
-    primaryCategoryUrl: "/tools/for-clinicians/ehr-practice-management/",
+    primaryCategoryUrl: "/tools/for-clinicians/ehr-practice-management",
   },
   revenue: {
     id: "revenue",
@@ -72,7 +72,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Billing, coding, and revenue cycle",
     order: 5,
     primaryCategorySlug: "billing-rcm",
-    primaryCategoryUrl: "/tools/for-clinicians/billing-rcm/",
+    primaryCategoryUrl: "/tools/for-clinicians/billing-rcm",
   },
   operate: {
     id: "operate",
@@ -80,7 +80,7 @@ export const LIFECYCLE_STAGES: Record<LifecycleStageId, LifecycleStageDefinition
     description: "Practice operations and compliance",
     order: 6,
     primaryCategorySlug: "compliance-security",
-    primaryCategoryUrl: "/tools/for-clinicians/compliance-security/",
+    primaryCategoryUrl: "/tools/for-clinicians",
   },
 };
 
@@ -337,7 +337,9 @@ export const CAPABILITY_REGISTRY: Record<CapabilityId, CapabilityDefinition> = {
     name: "EPCS",
     description: "Electronic prescribing for controlled substances",
     order: 7,
-    v4CapabilityMappings: ["epcs-controlled", "pdmp-integration"],
+    // PDMP integration is deliberately excluded: it is a state database
+    // lookup, not DEA-regulated controlled-substance prescribing.
+    v4CapabilityMappings: ["epcs-controlled"],
   },
   "assessments-mbc": {
     id: "assessments-mbc",

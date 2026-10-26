@@ -116,7 +116,8 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     logger.debug(`✅ Successfully loaded ${slug} from ${category}`);
 
-    return NextResponse.json(entityData);
+    // File-backed and only changes on deploy (which purges the CDN).
+    return NextResponse.json(entityData, { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } });
   } catch (error: any) {
     logger.error("❌ Error in condition API:", error);
     return NextResponse.json(

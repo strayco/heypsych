@@ -1,7 +1,19 @@
 @import "tailwindcss";
 
+/* Plugins. Tailwind v4 does not read tailwind.config.js; plugins are
+   registered here. Typography styles `prose` content (articles, guides) using
+   the --tw-prose-* brand variables below; animate provides `animate-in`. */
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
 /* ============================================================================
-   HEYPSYCH DESIGN SYSTEM - Apple-Inspired Light-First Foundation
+   HEYPSYCH DESIGN SYSTEM - The HeyPsych Worlds
+
+   One visual universe with the homepage worlds and Practice Architect:
+   warm paper, graphite ink, natural materials, slate-teal accent, and an
+   editorial serif for headings. Palette source of truth for illustration:
+   src/domains/architect/world/scene.ts. See
+   docs/active/design/HOMEPAGE_WORLDS_ART_BIBLE.md.
    ============================================================================
 
    Design Principles:
@@ -18,95 +30,96 @@
      Canvas & Surface Tokens
      Light-first neutral foundation
      --------------------------------------------------------------------------- */
-  --hp-canvas: #F5F5F7;
-  --hp-canvas-elevated: #FBFBFD;
+  --hp-canvas: #FAF9F6;
+  --hp-canvas-elevated: #FDFCFA;
   --hp-surface: #FFFFFF;
-  --hp-surface-grouped: #F2F2F7;
-  --hp-surface-control: rgba(255, 255, 255, 0.88);
+  --hp-surface-grouped: #F3F0EA;
+  --hp-surface-control: rgba(255, 255, 255, 0.9);
 
   /* ---------------------------------------------------------------------------
      Label (Text) Tokens
-     Clear hierarchy through opacity-based system
+     Graphite ink. Solid values so contrast is predictable on paper.
      --------------------------------------------------------------------------- */
-  --hp-label-primary: rgba(0, 0, 0, 0.88);
-  --hp-label-secondary: rgba(60, 60, 67, 0.72);
-  --hp-label-tertiary: rgba(60, 60, 67, 0.52);
-  --hp-label-quaternary: rgba(60, 60, 67, 0.36);
+  --hp-label-primary: #252925;
+  --hp-label-secondary: #565C57;
+  --hp-label-tertiary: #6F746E;
+  --hp-label-quaternary: #A3A69F;
 
   /* Inverted labels for dark backgrounds */
-  --hp-label-primary-inverted: rgba(255, 255, 255, 0.92);
-  --hp-label-secondary-inverted: rgba(255, 255, 255, 0.72);
-  --hp-label-tertiary-inverted: rgba(255, 255, 255, 0.52);
+  --hp-label-primary-inverted: rgba(255, 255, 255, 0.94);
+  --hp-label-secondary-inverted: rgba(255, 255, 255, 0.74);
+  --hp-label-tertiary-inverted: rgba(255, 255, 255, 0.56);
 
   /* ---------------------------------------------------------------------------
-     Separator Tokens
+     Separator Tokens - warm hairlines
      --------------------------------------------------------------------------- */
-  --hp-separator: rgba(60, 60, 67, 0.18);
-  --hp-separator-opaque: #C6C6C8;
+  --hp-separator: rgba(92, 78, 52, 0.16);
+  --hp-separator-opaque: #DCD7CC;
 
   /* ---------------------------------------------------------------------------
-     Fill Tokens (for controls, backgrounds)
+     Fill Tokens (for controls, backgrounds) - warm
      --------------------------------------------------------------------------- */
-  --hp-fill-primary: rgba(120, 120, 128, 0.2);
-  --hp-fill-secondary: rgba(120, 120, 128, 0.16);
-  --hp-fill-tertiary: rgba(120, 120, 128, 0.12);
-  --hp-fill-quaternary: rgba(120, 120, 128, 0.08);
+  --hp-fill-primary: rgba(120, 104, 76, 0.18);
+  --hp-fill-secondary: rgba(120, 104, 76, 0.13);
+  --hp-fill-tertiary: rgba(120, 104, 76, 0.09);
+  --hp-fill-quaternary: rgba(120, 104, 76, 0.06);
 
   /* ---------------------------------------------------------------------------
-     Primary Brand Accent - Accessible Blue
-     Apple-inspired #007AFF with full semantic range
+     Primary Brand Accent - Slate Teal
+     The interface accent of the Worlds (PALETTE.accent).
      --------------------------------------------------------------------------- */
-  --hp-accent: #007AFF;
-  --hp-accent-hover: #0062CC;
-  --hp-accent-pressed: #004999;
-  --hp-accent-tint: rgba(0, 122, 255, 0.12);
-  --hp-accent-tint-hover: rgba(0, 122, 255, 0.18);
-  --hp-accent-border: rgba(0, 122, 255, 0.3);
+  --hp-accent: #456C7E;
+  --hp-accent-hover: #3A5C6C;
+  --hp-accent-pressed: #2F4C59;
+  --hp-accent-tint: rgba(69, 108, 126, 0.1);
+  --hp-accent-tint-hover: rgba(69, 108, 126, 0.16);
+  --hp-accent-border: rgba(69, 108, 126, 0.3);
   --hp-accent-foreground: #FFFFFF;
 
   /* ---------------------------------------------------------------------------
      Semantic Colors
-     Used only for specific meanings, never decoratively
+     Used only for specific meanings, never decoratively. Drawn from the
+     same natural palette so meaning never breaks the world.
      --------------------------------------------------------------------------- */
 
-  /* Positive / Success / Available */
-  --hp-positive: #34C759;
-  --hp-positive-tint: rgba(52, 199, 89, 0.12);
-  --hp-positive-border: rgba(52, 199, 89, 0.3);
+  /* Positive / Success / Available - sage */
+  --hp-positive: #487D66;
+  --hp-positive-tint: rgba(72, 125, 102, 0.12);
+  --hp-positive-border: rgba(72, 125, 102, 0.3);
   --hp-positive-foreground: #FFFFFF;
 
-  /* Caution / Warning / Attention */
-  --hp-caution: #FF9500;
-  --hp-caution-tint: rgba(255, 149, 0, 0.12);
-  --hp-caution-border: rgba(255, 149, 0, 0.3);
+  /* Caution / Warning / Attention - ochre */
+  --hp-caution: #A98243;
+  --hp-caution-tint: rgba(169, 130, 67, 0.13);
+  --hp-caution-border: rgba(169, 130, 67, 0.32);
   --hp-caution-foreground: #FFFFFF;
 
-  /* Critical / Error / Danger */
-  --hp-critical: #FF3B30;
-  --hp-critical-tint: rgba(255, 59, 48, 0.12);
-  --hp-critical-border: rgba(255, 59, 48, 0.3);
+  /* Critical / Error / Danger - terracotta */
+  --hp-critical: #AD655E;
+  --hp-critical-tint: rgba(173, 101, 94, 0.12);
+  --hp-critical-border: rgba(173, 101, 94, 0.3);
   --hp-critical-foreground: #FFFFFF;
 
-  /* Treatment / Clinical / Mechanism (indigo/purple) */
-  --hp-treatment: #5856D6;
-  --hp-treatment-tint: rgba(88, 86, 214, 0.12);
-  --hp-treatment-border: rgba(88, 86, 214, 0.3);
+  /* Treatment / Clinical / Mechanism - dusk violet */
+  --hp-treatment: #6E6A8E;
+  --hp-treatment-tint: rgba(110, 106, 142, 0.12);
+  --hp-treatment-border: rgba(110, 106, 142, 0.3);
   --hp-treatment-foreground: #FFFFFF;
 
-  /* Technology / Tools (teal) */
-  --hp-tools: #30B0C7;
-  --hp-tools-tint: rgba(48, 176, 199, 0.12);
-  --hp-tools-border: rgba(48, 176, 199, 0.3);
+  /* Technology / Tools - sage teal */
+  --hp-tools: #5E8C86;
+  --hp-tools-tint: rgba(94, 140, 134, 0.12);
+  --hp-tools-border: rgba(94, 140, 134, 0.3);
   --hp-tools-foreground: #FFFFFF;
 
   /* ---------------------------------------------------------------------------
      Shadow Tokens
      Soft, structural depth - not decorative
      --------------------------------------------------------------------------- */
-  --hp-shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --hp-shadow-control: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --hp-shadow-elevated: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --hp-shadow-floating: 0 18px 50px rgba(0, 0, 0, 0.10);
+  --hp-shadow-subtle: 0 1px 2px rgba(74, 67, 54, 0.05);
+  --hp-shadow-control: 0 2px 8px rgba(74, 67, 54, 0.07);
+  --hp-shadow-elevated: 0 12px 32px rgba(74, 67, 54, 0.09);
+  --hp-shadow-floating: 0 20px 54px rgba(74, 67, 54, 0.12);
 
   /* ---------------------------------------------------------------------------
      Border Radius Tokens
@@ -122,7 +135,7 @@
   /* ---------------------------------------------------------------------------
      Focus Ring
      --------------------------------------------------------------------------- */
-  --hp-focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.4);
+  --hp-focus-ring: 0 0 0 3px rgba(69, 108, 126, 0.42);
   --hp-focus-ring-offset: 0 0 0 2px var(--hp-surface);
 
   /* ---------------------------------------------------------------------------
@@ -132,15 +145,15 @@
   --hp-duration-hover: 150ms;
   --hp-duration-disclosure: 200ms;
   --hp-duration-panel: 280ms;
-  --hp-ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --hp-ease-default: cubic-bezier(0.22, 0.61, 0.36, 1);
   --hp-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* ---------------------------------------------------------------------------
      Material (Glass) Tokens
      For navigation and functional layers only
      --------------------------------------------------------------------------- */
-  --hp-material-light: rgba(255, 255, 255, 0.82);
-  --hp-material-light-hover: rgba(255, 255, 255, 0.92);
+  --hp-material-light: rgba(250, 249, 246, 0.86);
+  --hp-material-light-hover: rgba(250, 249, 246, 0.94);
   --hp-material-blur: saturate(180%) blur(20px);
 
   /* ---------------------------------------------------------------------------
@@ -166,150 +179,481 @@
 @theme inline {
   --color-background: var(--hp-canvas);
   --color-foreground: var(--hp-label-primary);
-  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* Elevation - warm, soft, structural */
+  --shadow-subtle: 0 1px 2px rgba(74, 67, 54, 0.05);
+  --shadow-soft: 0 2px 10px rgba(74, 67, 54, 0.07);
+  --shadow-control: 0 2px 8px rgba(74, 67, 54, 0.07);
+  --shadow-medium: 0 6px 18px rgba(74, 67, 54, 0.08);
+  --shadow-elevated: 0 12px 32px rgba(74, 67, 54, 0.09);
+  --shadow-floating: 0 20px 54px rgba(74, 67, 54, 0.12);
+  --shadow-card-1: 0 1px 3px rgba(74, 67, 54, 0.06), 0 1px 2px rgba(74, 67, 54, 0.04);
+  --shadow-card-2: 0 4px 12px rgba(74, 67, 54, 0.07), 0 1px 3px rgba(74, 67, 54, 0.05);
+  --shadow-card-3: 0 12px 28px rgba(74, 67, 54, 0.09), 0 2px 6px rgba(74, 67, 54, 0.05);
 
   /* Base colors */
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-transparent: transparent;
 
-  /* Canvas & Surface */
-  --color-canvas: #F5F5F7;
-  --color-canvas-elevated: #FBFBFD;
+  /* Canvas & Surface - warm paper */
+  --color-canvas: #FAF9F6;
+  --color-canvas-elevated: #FDFCFA;
   --color-surface: #FFFFFF;
-  --color-surface-grouped: #F2F2F7;
-  --color-surface-control: rgba(255, 255, 255, 0.88);
+  --color-surface-grouped: #F3F0EA;
+  --color-surface-control: rgba(255, 255, 255, 0.9);
 
-  /* Labels */
-  --color-label-primary: rgba(0, 0, 0, 0.88);
-  --color-label-secondary: rgba(60, 60, 67, 0.72);
-  --color-label-tertiary: rgba(60, 60, 67, 0.52);
-  --color-label-quaternary: rgba(60, 60, 67, 0.36);
+  /* Labels - graphite ink */
+  --color-label-primary: #252925;
+  --color-label-secondary: #565C57;
+  --color-label-tertiary: #6F746E;
+  --color-label-quaternary: #A3A69F;
 
-  /* Separators */
-  --color-separator: rgba(60, 60, 67, 0.18);
-  --color-separator-opaque: #C6C6C8;
+  /* Separators - warm hairlines */
+  --color-separator: rgba(92, 78, 52, 0.16);
+  --color-separator-opaque: #DCD7CC;
 
   /* Fills */
-  --color-fill-primary: rgba(120, 120, 128, 0.2);
-  --color-fill-secondary: rgba(120, 120, 128, 0.16);
-  --color-fill-tertiary: rgba(120, 120, 128, 0.12);
-  --color-fill-quaternary: rgba(120, 120, 128, 0.08);
+  --color-fill-primary: rgba(120, 104, 76, 0.18);
+  --color-fill-secondary: rgba(120, 104, 76, 0.13);
+  --color-fill-tertiary: rgba(120, 104, 76, 0.09);
+  --color-fill-quaternary: rgba(120, 104, 76, 0.06);
 
-  /* Accent - Full scale */
-  --color-accent: #007AFF;
-  --color-accent-50: #EFF6FF;
-  --color-accent-100: #DBEAFE;
-  --color-accent-200: #BFDBFE;
-  --color-accent-300: #93C5FD;
-  --color-accent-400: #60A5FA;
-  --color-accent-500: #007AFF;
-  --color-accent-600: #0062CC;
-  --color-accent-700: #004999;
-  --color-accent-800: #003166;
-  --color-accent-900: #001833;
-  --color-accent-hover: #0062CC;
-  --color-accent-pressed: #004999;
-  --color-accent-tint: rgba(0, 122, 255, 0.12);
-  --color-accent-tint-hover: rgba(0, 122, 255, 0.18);
-  --color-accent-border: rgba(0, 122, 255, 0.3);
+  /* Accent - slate teal */
+  --color-accent: #456C7E;
+  --color-accent-50: #F1F5F7;
+  --color-accent-100: #E1EAEE;
+  --color-accent-200: #C4D5DD;
+  --color-accent-300: #9DB9C6;
+  --color-accent-400: #7398A9;
+  --color-accent-500: #456C7E;
+  --color-accent-600: #3A5C6C;
+  --color-accent-700: #2F4C59;
+  --color-accent-800: #243A44;
+  --color-accent-900: #18272E;
+  --color-accent-950: #101B20;
+  --color-accent-hover: #3A5C6C;
+  --color-accent-pressed: #2F4C59;
+  --color-accent-tint: rgba(69, 108, 126, 0.1);
+  --color-accent-tint-hover: rgba(69, 108, 126, 0.16);
+  --color-accent-border: rgba(69, 108, 126, 0.3);
   --color-accent-foreground: #FFFFFF;
 
-  /* Positive / Success - Full scale */
-  --color-positive: #34C759;
-  --color-positive-50: #F0FDF4;
-  --color-positive-100: #DCFCE7;
-  --color-positive-200: #BBF7D0;
-  --color-positive-300: #86EFAC;
-  --color-positive-400: #4ADE80;
-  --color-positive-500: #34C759;
-  --color-positive-600: #16A34A;
-  --color-positive-700: #15803D;
-  --color-positive-800: #166534;
-  --color-positive-900: #14532D;
-  --color-positive-tint: rgba(52, 199, 89, 0.12);
-  --color-positive-border: rgba(52, 199, 89, 0.3);
+  /* Positive - sage */
+  --color-positive: #487D66;
+  --color-positive-50: #F1F6F3;
+  --color-positive-100: #DFECE5;
+  --color-positive-200: #BFD8CB;
+  --color-positive-300: #97BFAA;
+  --color-positive-400: #6E9F87;
+  --color-positive-500: #487D66;
+  --color-positive-600: #3D6B57;
+  --color-positive-700: #325747;
+  --color-positive-800: #274437;
+  --color-positive-900: #1C3127;
+  --color-positive-950: #132219;
+  --color-positive-tint: rgba(72, 125, 102, 0.12);
+  --color-positive-border: rgba(72, 125, 102, 0.3);
   --color-positive-foreground: #FFFFFF;
 
-  /* Caution / Warning - Full scale */
-  --color-caution: #FF9500;
-  --color-caution-50: #FFFBEB;
-  --color-caution-100: #FEF3C7;
-  --color-caution-200: #FDE68A;
-  --color-caution-300: #FCD34D;
-  --color-caution-400: #FBBF24;
-  --color-caution-500: #FF9500;
-  --color-caution-600: #D97706;
-  --color-caution-700: #B45309;
-  --color-caution-800: #92400E;
-  --color-caution-900: #78350F;
-  --color-caution-tint: rgba(255, 149, 0, 0.12);
-  --color-caution-border: rgba(255, 149, 0, 0.3);
+  /* Caution - ochre */
+  --color-caution: #A98243;
+  --color-caution-50: #FBF6EC;
+  --color-caution-100: #F5EAD3;
+  --color-caution-200: #EBD5A9;
+  --color-caution-300: #DDBB7B;
+  --color-caution-400: #C69E58;
+  --color-caution-500: #A98243;
+  --color-caution-600: #8E6C36;
+  --color-caution-700: #72562B;
+  --color-caution-800: #574120;
+  --color-caution-900: #3D2D16;
+  --color-caution-950: #2A1F0F;
+  --color-caution-tint: rgba(169, 130, 67, 0.13);
+  --color-caution-border: rgba(169, 130, 67, 0.32);
   --color-caution-foreground: #FFFFFF;
 
-  /* Negative / Error - Full scale */
-  --color-negative: #FF3B30;
-  --color-negative-50: #FEF2F2;
-  --color-negative-100: #FEE2E2;
-  --color-negative-200: #FECACA;
-  --color-negative-300: #FCA5A5;
-  --color-negative-400: #F87171;
-  --color-negative-500: #FF3B30;
-  --color-negative-600: #DC2626;
-  --color-negative-700: #B91C1C;
-  --color-negative-800: #991B1B;
-  --color-negative-900: #7F1D1D;
-  --color-negative-tint: rgba(255, 59, 48, 0.12);
-  --color-negative-border: rgba(255, 59, 48, 0.3);
+  /* Negative - terracotta */
+  --color-negative: #AD655E;
+  --color-negative-50: #FAF1EF;
+  --color-negative-100: #F3DFDC;
+  --color-negative-200: #E7C0BB;
+  --color-negative-300: #D69B94;
+  --color-negative-400: #C27D75;
+  --color-negative-500: #AD655E;
+  --color-negative-600: #93524C;
+  --color-negative-700: #77423D;
+  --color-negative-800: #5B322E;
+  --color-negative-900: #3F2320;
+  --color-negative-950: #2B1816;
+  --color-negative-tint: rgba(173, 101, 94, 0.12);
+  --color-negative-border: rgba(173, 101, 94, 0.3);
   --color-negative-foreground: #FFFFFF;
 
-  /* Treatment / Clinical - Full scale */
-  --color-treatment: #5856D6;
-  --color-treatment-50: #EEF2FF;
-  --color-treatment-100: #E0E7FF;
-  --color-treatment-200: #C7D2FE;
-  --color-treatment-300: #A5B4FC;
-  --color-treatment-400: #818CF8;
-  --color-treatment-500: #5856D6;
-  --color-treatment-600: #4F46E5;
-  --color-treatment-700: #4338CA;
-  --color-treatment-800: #3730A3;
-  --color-treatment-900: #312E81;
-  --color-treatment-tint: rgba(88, 86, 214, 0.12);
-  --color-treatment-border: rgba(88, 86, 214, 0.3);
+  /* Treatment - dusk violet */
+  --color-treatment: #6E6A8E;
+  --color-treatment-50: #F4F3F7;
+  --color-treatment-100: #E7E5EF;
+  --color-treatment-200: #CDCADD;
+  --color-treatment-300: #ADA8C6;
+  --color-treatment-400: #8D88AB;
+  --color-treatment-500: #6E6A8E;
+  --color-treatment-600: #5C5878;
+  --color-treatment-700: #4A4761;
+  --color-treatment-800: #38364A;
+  --color-treatment-900: #262533;
+  --color-treatment-950: #1A1923;
+  --color-treatment-tint: rgba(110, 106, 142, 0.12);
+  --color-treatment-border: rgba(110, 106, 142, 0.3);
   --color-treatment-foreground: #FFFFFF;
 
-  /* Tools / Technology - Full scale */
-  --color-tools: #30B0C7;
-  --color-tools-50: #F0FDFA;
-  --color-tools-100: #CCFBF1;
-  --color-tools-200: #99F6E4;
-  --color-tools-300: #5EEAD4;
-  --color-tools-400: #2DD4BF;
-  --color-tools-500: #30B0C7;
-  --color-tools-600: #0891B2;
-  --color-tools-700: #0E7490;
-  --color-tools-800: #155E75;
-  --color-tools-900: #164E63;
-  --color-tools-tint: rgba(48, 176, 199, 0.12);
-  --color-tools-border: rgba(48, 176, 199, 0.3);
+  /* Tools - sage teal */
+  --color-tools: #5E8C86;
+  --color-tools-50: #F1F6F5;
+  --color-tools-100: #DEEBE9;
+  --color-tools-200: #BDD6D3;
+  --color-tools-300: #96BDB8;
+  --color-tools-400: #77A39D;
+  --color-tools-500: #5E8C86;
+  --color-tools-600: #4F7671;
+  --color-tools-700: #405F5B;
+  --color-tools-800: #314845;
+  --color-tools-900: #22322F;
+  --color-tools-950: #172220;
+  --color-tools-tint: rgba(94, 140, 134, 0.12);
+  --color-tools-border: rgba(94, 140, 134, 0.3);
   --color-tools-foreground: #FFFFFF;
 
+  /* Semantic aliases. Parts of the codebase use shadcn-style names; they
+     resolve to the HeyPsych semantics so every name renders on-brand. */
+  --color-success: #487D66;
+  --color-success-tint: rgba(72, 125, 102, 0.12);
+  --color-success-border: rgba(72, 125, 102, 0.3);
+  --color-success-foreground: #FFFFFF;
+  --color-success-50: #F1F6F3;
+  --color-success-100: #DFECE5;
+  --color-success-200: #BFD8CB;
+  --color-success-300: #97BFAA;
+  --color-success-400: #6E9F87;
+  --color-success-500: #487D66;
+  --color-success-600: #3D6B57;
+  --color-success-700: #325747;
+  --color-success-800: #274437;
+  --color-success-900: #1C3127;
+  --color-warning: #A98243;
+  --color-warning-tint: rgba(169, 130, 67, 0.13);
+  --color-warning-border: rgba(169, 130, 67, 0.32);
+  --color-warning-foreground: #FFFFFF;
+  --color-warning-50: #FBF6EC;
+  --color-warning-100: #F5EAD3;
+  --color-warning-200: #EBD5A9;
+  --color-warning-300: #DDBB7B;
+  --color-warning-400: #C69E58;
+  --color-warning-500: #A98243;
+  --color-warning-600: #8E6C36;
+  --color-warning-700: #72562B;
+  --color-warning-800: #574120;
+  --color-warning-900: #3D2D16;
+  --color-destructive: #AD655E;
+  --color-destructive-tint: rgba(173, 101, 94, 0.12);
+  --color-destructive-border: rgba(173, 101, 94, 0.3);
+  --color-destructive-foreground: #FFFFFF;
+  --color-destructive-50: #FAF1EF;
+  --color-destructive-100: #F3DFDC;
+  --color-destructive-200: #E7C0BB;
+  --color-destructive-300: #D69B94;
+  --color-destructive-400: #C27D75;
+  --color-destructive-500: #AD655E;
+  --color-destructive-600: #93524C;
+  --color-destructive-700: #77423D;
+  --color-destructive-800: #5B322E;
+  --color-destructive-900: #3F2320;
+  --color-error: #AD655E;
+  --color-error-tint: rgba(173, 101, 94, 0.12);
+  --color-primary: #456C7E;
+  --color-primary-foreground: #FFFFFF;
+  --color-primary-50: #F1F5F7;
+  --color-primary-100: #E1EAEE;
+  --color-primary-200: #C4D5DD;
+  --color-primary-300: #9DB9C6;
+  --color-primary-400: #7398A9;
+  --color-primary-500: #456C7E;
+  --color-primary-600: #3A5C6C;
+  --color-primary-700: #2F4C59;
+  --color-primary-800: #243A44;
+  --color-primary-900: #18272E;
+  --color-surface-secondary: #F3F0EA;
+  --color-canvas-inset: #EFEBE3;
+  --color-treatment-hover: #5C5878;
+
+  /* ------------------------------------------------------------------------
+     Default palette, re-tuned to the Worlds.
+     Any hard-coded Tailwind colour (bg-blue-600, from-purple-500, text-gray-
+     500...) resolves into the same natural palette, so no corner of the site
+     can fall back to stock SaaS colours. Semantic families keep their meaning:
+     red family = terracotta, green family = sage, amber family = ochre.
+     ------------------------------------------------------------------------ */
+  --color-blue-50: #F1F5F7;
+  --color-blue-100: #E1EAEE;
+  --color-blue-200: #C4D5DD;
+  --color-blue-300: #9DB9C6;
+  --color-blue-400: #7398A9;
+  --color-blue-500: #456C7E;
+  --color-blue-600: #3A5C6C;
+  --color-blue-700: #2F4C59;
+  --color-blue-800: #243A44;
+  --color-blue-900: #18272E;
+  --color-blue-950: #101B20;
+  --color-sky-50: #F1F5F7;
+  --color-sky-100: #E1EAEE;
+  --color-sky-200: #C4D5DD;
+  --color-sky-300: #9DB9C6;
+  --color-sky-400: #7398A9;
+  --color-sky-500: #456C7E;
+  --color-sky-600: #3A5C6C;
+  --color-sky-700: #2F4C59;
+  --color-sky-800: #243A44;
+  --color-sky-900: #18272E;
+  --color-sky-950: #101B20;
+  --color-cyan-50: #F1F5F7;
+  --color-cyan-100: #E1EAEE;
+  --color-cyan-200: #C4D5DD;
+  --color-cyan-300: #9DB9C6;
+  --color-cyan-400: #7398A9;
+  --color-cyan-500: #456C7E;
+  --color-cyan-600: #3A5C6C;
+  --color-cyan-700: #2F4C59;
+  --color-cyan-800: #243A44;
+  --color-cyan-900: #18272E;
+  --color-cyan-950: #101B20;
+  --color-indigo-50: #F4F3F7;
+  --color-indigo-100: #E7E5EF;
+  --color-indigo-200: #CDCADD;
+  --color-indigo-300: #ADA8C6;
+  --color-indigo-400: #8D88AB;
+  --color-indigo-500: #6E6A8E;
+  --color-indigo-600: #5C5878;
+  --color-indigo-700: #4A4761;
+  --color-indigo-800: #38364A;
+  --color-indigo-900: #262533;
+  --color-indigo-950: #1A1923;
+  --color-violet-50: #F4F3F7;
+  --color-violet-100: #E7E5EF;
+  --color-violet-200: #CDCADD;
+  --color-violet-300: #ADA8C6;
+  --color-violet-400: #8D88AB;
+  --color-violet-500: #6E6A8E;
+  --color-violet-600: #5C5878;
+  --color-violet-700: #4A4761;
+  --color-violet-800: #38364A;
+  --color-violet-900: #262533;
+  --color-violet-950: #1A1923;
+  --color-purple-50: #F4F3F7;
+  --color-purple-100: #E7E5EF;
+  --color-purple-200: #CDCADD;
+  --color-purple-300: #ADA8C6;
+  --color-purple-400: #8D88AB;
+  --color-purple-500: #6E6A8E;
+  --color-purple-600: #5C5878;
+  --color-purple-700: #4A4761;
+  --color-purple-800: #38364A;
+  --color-purple-900: #262533;
+  --color-purple-950: #1A1923;
+  --color-fuchsia-50: #F4F3F7;
+  --color-fuchsia-100: #E7E5EF;
+  --color-fuchsia-200: #CDCADD;
+  --color-fuchsia-300: #ADA8C6;
+  --color-fuchsia-400: #8D88AB;
+  --color-fuchsia-500: #6E6A8E;
+  --color-fuchsia-600: #5C5878;
+  --color-fuchsia-700: #4A4761;
+  --color-fuchsia-800: #38364A;
+  --color-fuchsia-900: #262533;
+  --color-fuchsia-950: #1A1923;
+  --color-teal-50: #F1F6F5;
+  --color-teal-100: #DEEBE9;
+  --color-teal-200: #BDD6D3;
+  --color-teal-300: #96BDB8;
+  --color-teal-400: #77A39D;
+  --color-teal-500: #5E8C86;
+  --color-teal-600: #4F7671;
+  --color-teal-700: #405F5B;
+  --color-teal-800: #314845;
+  --color-teal-900: #22322F;
+  --color-teal-950: #172220;
+  --color-green-50: #F1F6F3;
+  --color-green-100: #DFECE5;
+  --color-green-200: #BFD8CB;
+  --color-green-300: #97BFAA;
+  --color-green-400: #6E9F87;
+  --color-green-500: #487D66;
+  --color-green-600: #3D6B57;
+  --color-green-700: #325747;
+  --color-green-800: #274437;
+  --color-green-900: #1C3127;
+  --color-green-950: #132219;
+  --color-emerald-50: #F1F6F3;
+  --color-emerald-100: #DFECE5;
+  --color-emerald-200: #BFD8CB;
+  --color-emerald-300: #97BFAA;
+  --color-emerald-400: #6E9F87;
+  --color-emerald-500: #487D66;
+  --color-emerald-600: #3D6B57;
+  --color-emerald-700: #325747;
+  --color-emerald-800: #274437;
+  --color-emerald-900: #1C3127;
+  --color-emerald-950: #132219;
+  --color-lime-50: #F1F6F3;
+  --color-lime-100: #DFECE5;
+  --color-lime-200: #BFD8CB;
+  --color-lime-300: #97BFAA;
+  --color-lime-400: #6E9F87;
+  --color-lime-500: #487D66;
+  --color-lime-600: #3D6B57;
+  --color-lime-700: #325747;
+  --color-lime-800: #274437;
+  --color-lime-900: #1C3127;
+  --color-lime-950: #132219;
+  --color-amber-50: #FBF6EC;
+  --color-amber-100: #F5EAD3;
+  --color-amber-200: #EBD5A9;
+  --color-amber-300: #DDBB7B;
+  --color-amber-400: #C69E58;
+  --color-amber-500: #A98243;
+  --color-amber-600: #8E6C36;
+  --color-amber-700: #72562B;
+  --color-amber-800: #574120;
+  --color-amber-900: #3D2D16;
+  --color-amber-950: #2A1F0F;
+  --color-yellow-50: #FBF6EC;
+  --color-yellow-100: #F5EAD3;
+  --color-yellow-200: #EBD5A9;
+  --color-yellow-300: #DDBB7B;
+  --color-yellow-400: #C69E58;
+  --color-yellow-500: #A98243;
+  --color-yellow-600: #8E6C36;
+  --color-yellow-700: #72562B;
+  --color-yellow-800: #574120;
+  --color-yellow-900: #3D2D16;
+  --color-yellow-950: #2A1F0F;
+  --color-orange-50: #FBF6EC;
+  --color-orange-100: #F5EAD3;
+  --color-orange-200: #EBD5A9;
+  --color-orange-300: #DDBB7B;
+  --color-orange-400: #C69E58;
+  --color-orange-500: #A98243;
+  --color-orange-600: #8E6C36;
+  --color-orange-700: #72562B;
+  --color-orange-800: #574120;
+  --color-orange-900: #3D2D16;
+  --color-orange-950: #2A1F0F;
+  --color-red-50: #FAF1EF;
+  --color-red-100: #F3DFDC;
+  --color-red-200: #E7C0BB;
+  --color-red-300: #D69B94;
+  --color-red-400: #C27D75;
+  --color-red-500: #AD655E;
+  --color-red-600: #93524C;
+  --color-red-700: #77423D;
+  --color-red-800: #5B322E;
+  --color-red-900: #3F2320;
+  --color-red-950: #2B1816;
+  --color-rose-50: #FAF1EF;
+  --color-rose-100: #F3DFDC;
+  --color-rose-200: #E7C0BB;
+  --color-rose-300: #D69B94;
+  --color-rose-400: #C27D75;
+  --color-rose-500: #AD655E;
+  --color-rose-600: #93524C;
+  --color-rose-700: #77423D;
+  --color-rose-800: #5B322E;
+  --color-rose-900: #3F2320;
+  --color-rose-950: #2B1816;
+  --color-pink-50: #FAF1EF;
+  --color-pink-100: #F3DFDC;
+  --color-pink-200: #E7C0BB;
+  --color-pink-300: #D69B94;
+  --color-pink-400: #C27D75;
+  --color-pink-500: #AD655E;
+  --color-pink-600: #93524C;
+  --color-pink-700: #77423D;
+  --color-pink-800: #5B322E;
+  --color-pink-900: #3F2320;
+  --color-pink-950: #2B1816;
+  --color-gray-50: #FAF9F6;
+  --color-gray-100: #F3F0EA;
+  --color-gray-200: #E7E3DA;
+  --color-gray-300: #D5CFC3;
+  --color-gray-400: #A9A499;
+  --color-gray-500: #7E827B;
+  --color-gray-600: #5E645F;
+  --color-gray-700: #474C48;
+  --color-gray-800: #333733;
+  --color-gray-900: #252925;
+  --color-gray-950: #181A18;
+  --color-neutral-50: #FAF9F6;
+  --color-neutral-100: #F3F0EA;
+  --color-neutral-200: #E7E3DA;
+  --color-neutral-300: #D5CFC3;
+  --color-neutral-400: #A9A499;
+  --color-neutral-500: #7E827B;
+  --color-neutral-600: #5E645F;
+  --color-neutral-700: #474C48;
+  --color-neutral-800: #333733;
+  --color-neutral-900: #252925;
+  --color-neutral-950: #181A18;
+  --color-stone-50: #FAF9F6;
+  --color-stone-100: #F3F0EA;
+  --color-stone-200: #E7E3DA;
+  --color-stone-300: #D5CFC3;
+  --color-stone-400: #A9A499;
+  --color-stone-500: #7E827B;
+  --color-stone-600: #5E645F;
+  --color-stone-700: #474C48;
+  --color-stone-800: #333733;
+  --color-stone-900: #252925;
+  --color-stone-950: #181A18;
+  --color-slate-50: #F8F8F5;
+  --color-slate-100: #EFEEEA;
+  --color-slate-200: #E1DFD9;
+  --color-slate-300: #CBC8C0;
+  --color-slate-400: #A3A29A;
+  --color-slate-500: #7A7E78;
+  --color-slate-600: #5B615C;
+  --color-slate-700: #454A46;
+  --color-slate-800: #313532;
+  --color-slate-900: #232724;
+  --color-slate-950: #171917;
+  --color-zinc-50: #F8F8F5;
+  --color-zinc-100: #EFEEEA;
+  --color-zinc-200: #E1DFD9;
+  --color-zinc-300: #CBC8C0;
+  --color-zinc-400: #A3A29A;
+  --color-zinc-500: #7A7E78;
+  --color-zinc-600: #5B615C;
+  --color-zinc-700: #454A46;
+  --color-zinc-800: #313532;
+  --color-zinc-900: #232724;
+  --color-zinc-950: #171917;
+
   /* Legacy graphite mapping */
-  --color-graphite-50: rgba(0, 0, 0, 0.88);
-  --color-graphite-100: rgba(0, 0, 0, 0.84);
-  --color-graphite-200: rgba(0, 0, 0, 0.72);
-  --color-graphite-300: rgba(60, 60, 67, 0.72);
-  --color-graphite-400: rgba(60, 60, 67, 0.52);
-  --color-graphite-500: rgba(60, 60, 67, 0.36);
-  --color-graphite-600: #C6C6C8;
-  --color-graphite-700: #E5E5EA;
-  --color-graphite-750: #F2F2F7;
+  --color-graphite-50: #252925;
+  --color-graphite-100: #2E332E;
+  --color-graphite-200: #474C48;
+  --color-graphite-300: #565C57;
+  --color-graphite-400: #6F746E;
+  --color-graphite-500: #A3A69F;
+  --color-graphite-600: #DCD7CC;
+  --color-graphite-700: #E7E3DA;
+  --color-graphite-750: #F3F0EA;
   --color-graphite-800: #FFFFFF;
-  --color-graphite-850: #FBFBFD;
-  --color-graphite-900: #F5F5F7;
-  --color-graphite-950: #F5F5F7;
+  --color-graphite-850: #FDFCFA;
+  --color-graphite-900: #FAF9F6;
+  --color-graphite-950: #FAF9F6;
 }
 
 /* ============================================================================
@@ -344,17 +688,48 @@ body {
   max-width: 100vw;
 }
 
+/* clip stops sideways scroll like hidden, but without making body a scroll
+   container, so position: sticky keeps working (section bars, article
+   contents, the Architect header). hidden above is the fallback. */
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 body {
   background: var(--hp-canvas);
   color: var(--hp-label-primary);
-  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   line-height: 1.6;
 }
 
+/* ============================================================================
+   EDITORIAL HEADINGS
+   Page and section titles across the whole site use the display serif. This
+   is deliberately unlayered so it applies even where a page sets font-bold:
+   a heavy serif reads as shouting. Opt out with data-heading="sans" for dense
+   interface headings (dashboards, compact panels) on the heading itself.
+   ============================================================================ */
+
+h1:not([data-heading="sans"]),
+h2:not([data-heading="sans"]) {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-weight: 450;
+  letter-spacing: -0.016em;
+  line-height: 1.15;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+/* Small uppercase "eyebrow" labels above titles were a template habit. Keep
+   them legible but quiet: sentence-weight, not shouty tracking. */
+
 /* Selection styling */
 ::selection {
-  background: rgba(0, 122, 255, 0.2);
+  background: rgba(69, 108, 126, 0.18);
   color: var(--hp-label-primary);
 }
 
@@ -529,7 +904,7 @@ select {
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(20px)) {
   .hp-material {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(250, 249, 246, 0.97);
   }
 }
 
@@ -610,3 +985,15 @@ select {
 .bg-white {
   background-color: #FFFFFF !important;
 }
+
+
+/* Symptom notes: "Print for an appointment" prints only the list. */
+@media print {
+  body[data-print-notes] * { visibility: hidden; }
+  body[data-print-notes] [data-notes-print],
+  body[data-print-notes] [data-notes-print] * { visibility: visible; }
+  body[data-print-notes] [data-notes-print] { position: absolute; inset: 0 auto auto 0; box-shadow: none; border: 0; }
+  body[data-print-notes] [data-notes-print] button { display: none; }
+}
+
+

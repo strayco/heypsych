@@ -10,7 +10,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Shield, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { BrandMark } from "@/components/brand/Wordmark";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -51,9 +52,7 @@ export default function AdminLoginPage() {
         <div className="bg-surface border border-separator rounded-xl p-8 shadow-sm">
           {/* Header */}
           <div className="flex flex-col items-center mb-8">
-            <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-accent" />
-            </div>
+            <BrandMark size={44} className="mb-4" />
             <h1 className="text-xl font-semibold text-label-primary">
               Admin Access
             </h1>

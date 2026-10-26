@@ -12,7 +12,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { generateDynamicPageConfigs } from '@/lib/programmatic-seo/dynamic-generator';
+import { generateDynamicPageConfigs, parseDynamicSlug } from '@/lib/programmatic-seo/dynamic-generator';
 import { generatePageContent } from '@/lib/programmatic-seo/content-engine';
 import { makeGuideIndexDecision } from '@/lib/seo/index-decision-service';
 import { evaluateCohort, getSitemapEligiblePages } from '@/lib/programmatic-seo/cohort-manager';
@@ -32,6 +32,9 @@ export async function GET() {
     const indexableConfigs = [];
 
     for (const config of allConfigs) {
+      // Only list URLs that resolve to a page: the page parses its slug back
+      // with parseDynamicSlug, and anything it cannot parse is a 404.
+      if (!/^[a-z0-9-]+$/.test(config.slug) || !(await parseDynamicSlug(config.slug))) continue;
       const content = await generatePageContent(config);
       if (!content) continue;
 

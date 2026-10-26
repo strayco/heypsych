@@ -9,19 +9,8 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import {
-  Heart,
-  ShieldAlert,
-  Moon,
-  Brain,
-  Eye,
-  Shield,
-  Utensils,
-  Battery,
-  Zap,
   Users,
   Search,
-  ArrowRight,
-  HelpCircle,
   Phone,
   ClipboardList,
 } from "lucide-react";
@@ -34,22 +23,13 @@ import {
   getPrebuiltSearchIndex,
 } from "@/domains/symptoms";
 import { SymptomsSearchClient } from "./search-client";
+import { PageIntro } from "@/components/brand/PageIntro";
+import { HubBrowser } from "@/components/hubs/HubBrowser";
+import { NoticedSummary } from "@/components/hubs/NoticedSummary";
+import { buildGroups, type HubItem } from "@/domains/hubs/model";
 
 export const metadata = generateSymptomsHubMetadata();
 
-// Icon mapping for categories
-const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  "mood-motivation": Heart,
-  "worry-fear": ShieldAlert,
-  sleep: Moon,
-  "attention-memory": Brain,
-  "thoughts-perceptions": Eye,
-  "trauma-stress": Shield,
-  "eating-body-image": Utensils,
-  "energy-physical": Battery,
-  "behavior-impulses": Zap,
-  "relationships-social": Users,
-};
 
 export default async function SymptomsPage() {
   // Get all indexable symptoms for server rendering
@@ -57,19 +37,22 @@ export default async function SymptomsPage() {
   const suggestedPrompts = getSuggestedPrompts();
   const searchIndex = getPrebuiltSearchIndex();
 
-  // Group symptoms by category for browsing
-  const symptomsByCategory = SYMPTOM_CATEGORIES.map((category) => ({
-    ...category,
-    symptoms: symptoms.filter((s) => s.category === category.id),
-  })).filter((cat) => cat.symptoms.length > 0);
-
-  // Get popular symptoms (those with most condition relationships)
-  const popularSymptoms = [...symptoms]
-    .sort(
-      (a, b) =>
-        b.conditionRelationships.length - a.conditionRelationships.length
-    )
-    .slice(0, 8);
+  // One small item per symptom; the browser shelves them by category.
+  const hubItems: HubItem[] = [...symptoms]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((symptom) => ({
+      href: `/symptoms/${symptom.slug}`,
+      title: symptom.name,
+      subtitle: symptom.shortDefinition,
+      groups: [symptom.category],
+      facets: [],
+      keywords: symptom.aliases,
+    }));
+  const hubGroups = buildGroups(
+    hubItems,
+    SYMPTOM_CATEGORIES.map((c) => ({ id: c.id, label: c.name, description: c.description })),
+    4
+  );
 
   // Build structured data
   const schemas = buildSymptomsHubSchema();
@@ -85,23 +68,13 @@ export default async function SymptomsPage() {
         />
       ))}
 
-      <main className="min-h-screen bg-canvas">
-        {/* Hero Section */}
-        <section className="bg-surface border-b border-separator pb-12 pt-16 md:pb-16 md:pt-24">
-          <div className="mx-auto max-w-4xl px-4 text-center">
-            <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-              Symptom Explorer
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary md:text-4xl">
-              Explore Mental Health Symptoms
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-label-secondary md:text-xl">
-              Describe what you&apos;ve been noticing in your own words. Learn what
-              different experiences can feel like and what they might mean.
-            </p>
-
-            {/* Search - Client Enhanced */}
-            <div className="mx-auto mt-8 max-w-xl">
+      <div className="min-h-screen bg-canvas">
+        <PageIntro
+          title="Symptoms"
+          object="notebook"
+          description="Describe what you've been noticing, in your own words. See what different experiences can feel like and what they can relate to."
+          footnote="This helps you explore and put words to experiences. It can't diagnose a condition or replace a professional evaluation."
+        >
               <Suspense
                 fallback={
                   <div className="flex h-14 items-center rounded-2xl bg-surface px-4 shadow-subtle">
@@ -117,135 +90,20 @@ export default async function SymptomsPage() {
                   suggestedPrompts={suggestedPrompts}
                 />
               </Suspense>
-            </div>
+        </PageIntro>
 
-            {/* Disclaimer */}
-            <p className="mx-auto mt-6 max-w-lg text-sm text-label-tertiary">
-              This tool helps you explore and understand symptoms. It cannot
-              diagnose conditions or replace professional evaluation.
-            </p>
-          </div>
-        </section>
+        <NoticedSummary />
 
-        {/* Popular Symptoms */}
-        <section className="border-t border-separator bg-surface py-12 md:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <h2 className="text-center text-xl font-semibold text-label-primary md:text-2xl">
-              Common Experiences
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-center text-label-secondary">
-              Many people experience these. Select one to learn more about what
-              it can mean.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {popularSymptoms.map((symptom) => (
-                <Link
-                  key={symptom.slug}
-                  href={`/symptoms/${symptom.slug}`}
-                  className="group rounded-xl border border-separator bg-surface p-5 transition-all hover:border-accent/30 hover:shadow-card-2"
-                >
-                  <h3 className="font-medium text-label-primary group-hover:text-accent">
-                    {symptom.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-sm text-label-secondary">
-                    {symptom.shortDefinition}
-                  </p>
-                  <div className="mt-3 flex items-center text-sm text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                    Learn more
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Browse by Category */}
-        <section className="py-12 md:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <h2 className="text-center text-xl font-semibold text-label-primary md:text-2xl">
-              Browse by Category
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-center text-label-secondary">
-              Explore symptoms grouped by the type of experience
-            </p>
-
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {symptomsByCategory.map((category) => {
-                const IconComponent =
-                  categoryIcons[category.id] || HelpCircle;
-
-                return (
-                  <div
-                    key={category.id}
-                    className="rounded-xl border border-separator bg-surface p-6"
-                  >
-                    <div className="flex items-center gap-3">
-                      <IconComponent className="h-5 w-5 text-label-tertiary" />
-                      <div>
-                        <h3 className="font-semibold text-label-primary">
-                          {category.name}
-                        </h3>
-                        <p className="text-sm text-label-tertiary">
-                          {category.symptoms.length} symptom
-                          {category.symptoms.length !== 1 ? "s" : ""}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="mt-3 text-sm text-label-secondary">
-                      {category.description}
-                    </p>
-                    <ul className="mt-4 space-y-2">
-                      {category.symptoms.slice(0, 4).map((symptom) => (
-                        <li key={symptom.slug}>
-                          <Link
-                            href={`/symptoms/${symptom.slug}`}
-                            className="flex items-center text-sm text-label-primary hover:text-accent"
-                          >
-                            <span className="mr-2 h-1 w-1 rounded-full bg-accent" />
-                            {symptom.name}
-                          </Link>
-                        </li>
-                      ))}
-                      {category.symptoms.length > 4 && (
-                        <li className="text-sm text-label-tertiary">
-                          +{category.symptoms.length - 4} more
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* All Symptoms A-Z (Crawlable Links) */}
-        <section className="border-t border-separator bg-surface py-12 md:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <h2 className="text-center text-xl font-semibold text-label-primary md:text-2xl">
-              All Symptoms A-Z
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-center text-label-secondary">
-              Browse the complete list of symptom pages
-            </p>
-
-            <div className="mt-8 columns-2 gap-8 md:columns-3 lg:columns-4">
-              {[...symptoms]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((symptom) => (
-                  <Link
-                    key={symptom.slug}
-                    href={`/symptoms/${symptom.slug}`}
-                    className="mb-2 block text-sm text-label-primary hover:text-accent hover:underline"
-                  >
-                    {symptom.name}
-                  </Link>
-                ))}
-            </div>
-          </div>
-        </section>
+        <HubBrowser
+          items={hubItems}
+          groups={hubGroups}
+          groupsTitle="Browse by kind of experience"
+          listTitle="All symptoms, A–Z"
+          searchLabel="Filter symptoms"
+          searchPlaceholder="Filter symptoms"
+          showSearch={false}
+          noun="symptoms"
+        />
 
         {/* What This Tool Can & Can't Do */}
         <section className="py-12 md:py-16">
@@ -365,7 +223,7 @@ export default async function SymptomsPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

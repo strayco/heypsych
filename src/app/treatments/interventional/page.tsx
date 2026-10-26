@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import { getInterventionalServer } from "@/lib/data/server-queries";
-import { TreatmentsClient } from "@/components/pages/treatments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Interventional treatments hub page
- * Includes complete SEO metadata
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Generate SEO metadata for interventional treatments hub page
 export const metadata: Metadata = {
   title: "Interventional Mental Health Treatments | TMS, ECT, DBS & Brain Stimulation",
   description:
@@ -19,6 +14,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/interventional`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Interventional Mental Health Treatments",
     description:
       "Brain stimulation treatments: TMS, ECT, deep brain stimulation, and VNS for treatment-resistant conditions.",
@@ -27,21 +23,21 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Interventional Mental Health Treatments",
     description: "Explore brain stimulation treatments: TMS, ECT, DBS, and VNS therapy.",
   },
 };
 
-export default async function InterventionalTreatmentsPage() {
-  const treatments = await getInterventionalServer();
-
+export default function InterventionalHubPage() {
   return (
-    <TreatmentsClient
-      treatments={treatments}
-      title="Interventional Treatments"
-      description="Brain stimulation treatments like TMS, ECT, and deep brain stimulation for treatment-resistant conditions."
-      showDisclaimer={true}
+    <TreatmentKindHub
+      modality="interventional"
+      title="Procedures & brain stimulation"
+      description="Treatments done in a clinic, such as TMS, ECT and ketamine, usually when other options have not helped enough."
+      noun="procedures"
+      searchPlaceholder="Search procedures, e.g. TMS, ECT, ketamine"
     />
   );
 }

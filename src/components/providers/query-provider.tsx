@@ -15,6 +15,9 @@ export function QueryProvider({ children }: QueryProviderProps) {
           queries: {
             staleTime: 60 * 1000, // 1 minute
             retry: 2,
+            // Content changes only on deploy; refetching every time a visitor
+            // returns to the tab just re-bills the API and database.
+            refetchOnWindowFocus: false,
           },
         },
       })

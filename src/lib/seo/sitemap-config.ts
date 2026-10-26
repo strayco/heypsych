@@ -160,39 +160,14 @@ export const HUB_SITEMAP_CONFIG: Record<string, SitemapEntryConfig> = {
   // ============================================================================
   // PROGRAMMATIC SEO ROUTES - High-Value Long-Tail
   // ============================================================================
-  // Best for Specialty pages (25+ variations)
-  '/tools/best-for': {
-    priority: 0.9,
-    changefreq: 'weekly',
-  },
   // Free software category pages
   '/tools/free': {
     priority: 0.9,
     changefreq: 'weekly',
   },
-  // Year-based ranking pages (auto-refresh for freshness)
-  '/tools/best': {
-    priority: 0.95,
-    changefreq: 'daily',
-  },
   // Comparison pages - high commercial intent
   '/tools/compare': {
     priority: 0.9,
-    changefreq: 'weekly',
-  },
-  // Alternative pages - competitor interception
-  '/tools/alternatives': {
-    priority: 0.9,
-    changefreq: 'weekly',
-  },
-  // Practice type recommendation pages
-  '/tools/for-practices': {
-    priority: 0.85,
-    changefreq: 'weekly',
-  },
-  // Pricing pages - high commercial intent
-  '/tools/pricing': {
-    priority: 0.85,
     changefreq: 'weekly',
   },
 };

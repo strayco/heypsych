@@ -1,805 +1,93 @@
-// src/app/tools/for-clinicians/[category]/page.tsx
-// Category hub page for V4 clinician tool categories
-// Dynamic route that renders each of the 16 V4 categories
+// /tools/for-clinicians/<job> — one job of the clinician hub (a taxonomy
+// category with published products). Categories with no products, and schema
+// slugs, redirect; see next.config.ts.
 
-import { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import { Suspense } from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  Laptop,
-  Mic,
-  Receipt,
-  Video,
-  Network,
-  LineChart,
-  Pill,
-  BadgeCheck,
-  Heart,
-  Brain,
-  Calendar,
-  ShieldCheck,
-  BarChart3,
-  Users,
-  Sparkles,
-  GitCompare,
-  Filter,
-} from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
-import { TrustSignal } from "../../_components/TrustSignal";
-import { VendorCTA } from "../../_components/VendorCTA";
-import { HubFAQ } from "@/components/tools/hubs";
-import {
-  ClinicianToolCard,
-  ClinicianFilters,
-  CategoryGrid,
-} from "@/components/tools/clinician";
-import {
-  ClinicianToolService,
-  type ClinicianToolV4,
-} from "@/lib/tools/clinician-tool-service";
-import clinicianCategoriesData from "../../../../../data/tools-v4/taxonomies/clinician-categories.json";
 import { categoryHubPath } from "@/lib/tools/category-hub-slug";
-import { stripBrandTitleSuffix } from "@/lib/seo/title";
-import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
-import { isComplianceConfirmedYes } from "@/lib/schemas/tool-editorial";
+import { JobPage } from "@/components/tools/clinician/hub/JobPage";
+import { liveJobSlugs, loadJobView } from "@/lib/tools/clinician-hub-data";
+import { getJob } from "@/domains/tools/clinician-hub/model";
 
-// Types
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-// Icon mapping for V4 categories
-const categoryIcons: Record<string, LucideIcon> = {
-  "marketing-patient-acquisition": LineChart, // TrendingUp equivalent
-  "ehr-practice-management": Laptop,
-  "ai-scribe-documentation": Mic,
-  "billing-rcm": Receipt,
-  "telehealth-communication": Video,
-  "provider-networks": Network,
-  "measurement-outcomes": LineChart,
-  "prescribing-erx": Pill,
-  "credentialing-workforce": BadgeCheck,
-  "patient-engagement": Heart,
-  "clinical-decision-support": Brain,
-  "scheduling-intake": Calendar,
-  "compliance-security": ShieldCheck,
-  "analytics-reporting": BarChart3,
-  "care-coordination": Users,
-  "digital-therapeutics": Sparkles,
-};
+export const revalidate = 86400;
 
-// Unified neutral style for all categories
-const categoryColorClass = "bg-surface border-separator text-label-tertiary";
-
-// Get category from slug
-function getCategoryBySlug(slug: string) {
-  return clinicianCategoriesData.categories.find((cat) => cat.slug === slug);
-}
-
-/**
- * Tool records store schema category slugs (e.g. "billing-rcm-insurance") and
- * product URLs are built from them, but this hub is keyed by taxonomy slugs
- * (e.g. "billing-rcm"). Requests for a schema slug used to 404, which broke the
- * breadcrumb parent of every product page in six categories. Send them to the
- * single canonical hub instead of serving duplicate content at two URLs.
- */
-function canonicalHubRedirect(slug: string): string | null {
-  if (getCategoryBySlug(slug)) return null;
-
-  const hubPath = categoryHubPath(slug);
-  return hubPath && hubPath !== `/tools/for-clinicians/${slug}` ? hubPath : null;
-}
-
-// Generate static params for all 15 categories
 export async function generateStaticParams() {
-  return clinicianCategoriesData.categories.map((cat) => ({
-    category: cat.slug,
-  }));
+  return (await liveJobSlugs()).map((category) => ({ category }));
 }
 
-// Generate metadata
-export async function generateMetadata({
-  params,
-}: CategoryPageProps): Promise<Metadata> {
-  const { category: categorySlug } = await params;
-  const category = getCategoryBySlug(categorySlug);
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { category } = await params;
+  const data = await loadJobView(category);
+  if (!data) return { title: "Not found", robots: { index: false, follow: true } };
 
-  if (!category) {
-    // Schema-slug aliases redirect at render time; metadata for them must not
-    // claim indexability for a URL that will not serve content.
-    return {
-      title: "Category Not Found",
-      robots: { index: false, follow: true },
-    };
-  }
-
-  // Check if category has any tools
-  const tools = await ClinicianToolService.getByCategory(categorySlug);
-  const hasTools = tools.length > 0;
-
-  // Use canonical URL without trailing slash
-  const canonicalUrl = `${siteConfig.url}${category.url}`.replace(/\/$/, "");
+  const { job } = data;
+  const canonicalUrl = `${siteConfig.url}/tools/for-clinicians/${job.slug}`;
+  const title = `${job.kind} for mental health practices`;
+  const description = `${job.line} ${job.products.length} products, with our reviewers' notes on which practices each suits.`;
 
   return {
-    // Taxonomy seo_title values are authored with a trailing "| HeyPsych"; the
-    // root layout template appends the brand again, so strip it here. The
-    // Open Graph title below is rendered verbatim and keeps its single brand.
-    title: stripBrandTitleSuffix(category.seo_title),
-    description: category.meta_description,
-    // noindex empty categories to prevent thin content indexation
-    robots: hasTools ? undefined : { index: false, follow: true },
-    alternates: {
-      canonical: canonicalUrl,
-    },
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: category.seo_title,
-      description: category.meta_description,
+      images: ["/images/og/heypsych.png"],
+      title,
+      description,
       url: canonicalUrl,
       type: "website",
     },
   };
 }
 
-export default async function CategoryHubPage({
-  params,
-  searchParams,
-}: CategoryPageProps) {
-  const { category: categorySlug } = await params;
-  const searchParamsResolved = await searchParams;
+export default async function CategoryHubPage({ params }: CategoryPageProps) {
+  const { category } = await params;
 
-  const redirectTo = canonicalHubRedirect(categorySlug);
-  if (redirectTo) {
-    permanentRedirect(redirectTo);
-  }
-
-  const category = getCategoryBySlug(categorySlug);
-
-  if (!category) {
+  const data = await loadJobView(category);
+  if (!data) {
+    // A schema slug (billing-rcm-insurance) → its taxonomy page; a known job
+    // or category with nothing published → the hub; anything else 404s.
+    const hubPath = categoryHubPath(category);
+    if (hubPath && hubPath !== `/tools/for-clinicians/${category}`) permanentRedirect(hubPath);
+    if (getJob(category) || hubPath) permanentRedirect("/tools/for-clinicians");
     notFound();
   }
 
-  // Load tools for this category
-  const allCategoryTools = await ClinicianToolService.getByCategory(categorySlug);
-
-  // Apply filters from search params
-  const filteredTools = applyFilters(allCategoryTools, searchParamsResolved);
-
-  // Get comparison candidates (top tools for comparison)
-  const comparisonCandidates = await ClinicianToolService.getComparisonCandidates(
-    categorySlug,
-    4
-  );
-
-  // Get related categories
-  const relatedCategories = await getRelatedCategories(categorySlug);
-
-  // Get icon
-  const Icon = categoryIcons[categorySlug] || Laptop;
-
-  // Generate structured data
-  const structuredData = generateCategoryStructuredData(
-    category,
-    allCategoryTools
-  );
+  const { job, comparisons, otherJobs, placement } = data;
+  const pageUrl = `${siteConfig.url}/tools/for-clinicians/${job.slug}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${job.kind} for mental health practices`,
+    url: pageUrl,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+        { "@type": "ListItem", position: 2, name: "Practice software", item: `${siteConfig.url}/tools/for-clinicians` },
+        { "@type": "ListItem", position: 3, name: job.kind, item: pageUrl },
+      ],
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: job.products.length,
+      itemListElement: job.products.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.name,
+        url: `${siteConfig.url}${p.href}`,
+      })),
+    },
+  };
 
   return (
     <>
-      {/* Structured Data */}
-      {structuredData.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-
-      <div className="min-h-screen bg-canvas">
-        {/* Hero Section */}
-        <section className="bg-surface border-b border-separator">
-          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-            {/* Breadcrumb */}
-            <nav className="mb-6 flex items-center gap-2 text-sm">
-              <Link
-                href="/tools/"
-                className="text-label-secondary hover:text-accent transition-colors"
-              >
-                Tools
-              </Link>
-              <span className="text-label-quaternary">/</span>
-              <Link
-                href="/tools/for-clinicians/"
-                className="text-label-secondary hover:text-accent transition-colors"
-              >
-                For Clinicians
-              </Link>
-              <span className="text-label-quaternary">/</span>
-              <span className="text-label-primary font-medium">
-                {category.short_name || category.display_name}
-              </span>
-            </nav>
-
-            <div className="flex items-center gap-4 mb-4">
-              <Icon className="h-8 w-8 text-label-tertiary" />
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-label-secondary">
-                  Clinician Tools
-                </p>
-                <h1 className="text-2xl font-semibold tracking-tight text-label-primary sm:text-3xl">
-                  {category.display_name}
-                </h1>
-                <p className="mt-1 text-sm text-label-tertiary">
-                  {allCategoryTools.length} tools in this category
-                </p>
-              </div>
-            </div>
-
-            {/* Direct Answer Block */}
-            <div className="mt-4 rounded-xl border border-separator bg-canvas p-5">
-              <p className="text-lg text-label-primary leading-relaxed">
-                {category.direct_answer}
-              </p>
-            </div>
-
-            <p className="mt-4 max-w-3xl text-label-secondary">
-              {category.intro}
-            </p>
-          </div>
-        </section>
-
-        {/* EHR Matcher CTA (only for EHR category) */}
-        {categorySlug === "ehr-practice-management" && (
-          <section className="border-b border-separator bg-canvas px-4 py-6 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-separator bg-surface p-4 sm:p-6">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="h-6 w-6 text-label-tertiary" />
-                  <div>
-                    <p className="font-semibold text-label-primary text-lg">
-                      Find Your EHR Match
-                    </p>
-                    <p className="text-sm text-label-secondary">
-                      Answer 7 quick questions to find the best EHR for your practice
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href="/tools/for-clinicians/ehr-practice-management/match/"
-                  className="group flex items-center justify-center gap-2 rounded-lg bg-treatment px-5 py-2.5 text-sm font-medium text-treatment-foreground transition-all hover:bg-treatment-600"
-                >
-                  Start Matching
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Comparison CTA */}
-        {comparisonCandidates.length >= 2 && (
-          <section className="border-b border-separator bg-canvas px-4 py-6 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <div className="flex items-center justify-between rounded-xl border border-separator bg-surface p-4">
-                <div className="flex items-center gap-3">
-                  <GitCompare className="h-5 w-5 text-label-tertiary" />
-                  <div>
-                    <p className="font-medium text-label-primary">
-                      Compare {category.short_name || category.display_name}
-                    </p>
-                    <p className="text-sm text-label-secondary">
-                      Side-by-side comparison of top{" "}
-                      {comparisonCandidates.length} tools
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href={`/tools/compare/?tools=${comparisonCandidates.map(t => t.slug).join(",")}`}
-                  className="group flex items-center gap-2 rounded-lg bg-treatment px-4 py-2 text-sm font-medium text-treatment-foreground transition-all hover:bg-treatment-600"
-                >
-                  Compare tools
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Subcategories (if any) */}
-        {category.subcategories && category.subcategories.length > 0 && (
-          <section className="border-b border-separator bg-surface px-4 py-8 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-lg font-semibold text-label-primary">
-                Browse by Type
-              </h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {category.subcategories.map((sub) => (
-                  <Link
-                    key={sub.slug}
-                    href={`/tools/for-clinicians/${categorySlug}/?subcategory=${sub.slug}`}
-                    scroll={false}
-                    className="rounded-lg border border-separator bg-canvas px-4 py-2 text-sm font-medium text-label-secondary transition-all hover:border-treatment/30 hover:text-treatment"
-                  >
-                    {sub.display_name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Filters + Tool Grid */}
-        <section className="border-b border-separator bg-canvas px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            {/* Filter Bar */}
-            <Suspense fallback={<div className="h-16 animate-pulse bg-surface rounded-xl" />}>
-              <ClinicianFilters
-                category={categorySlug}
-                totalCount={allCategoryTools.length}
-                filteredCount={filteredTools.length}
-              />
-            </Suspense>
-
-            {/* Tool Grid */}
-            <div className="mt-6">
-              {filteredTools.length > 0 ? (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredTools.map((tool) => (
-                    <ClinicianToolCard key={tool.slug} tool={tool} />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <Filter className="mx-auto h-12 w-12 text-label-quaternary" />
-                  <h3 className="mt-4 text-lg font-semibold text-label-primary">
-                    No tools match your filters
-                  </h3>
-                  <p className="mt-2 text-label-secondary">
-                    Try adjusting your filters or{" "}
-                    <Link
-                      href={`/tools/for-clinicians/${categorySlug}/`}
-                      className="text-treatment hover:underline"
-                    >
-                      clear all filters
-                    </Link>
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Pagination placeholder - implement when needed */}
-            {filteredTools.length > 12 && (
-              <div className="mt-8 flex justify-center">
-                <p className="text-sm text-label-tertiary">
-                  Showing all {filteredTools.length} tools
-                </p>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Category FAQs */}
-        {category.faqs && category.faqs.length > 0 && (
-          <HubFAQ faqs={category.faqs} hubName={category.display_name} />
-        )}
-
-        {/* Related Categories */}
-        {relatedCategories.length > 0 && (
-          <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-xl font-semibold text-label-primary">
-                Related Categories
-              </h2>
-              <p className="mt-1 text-sm text-label-secondary">
-                Explore other tools that work well with {category.short_name}
-              </p>
-
-              <div className="mt-6">
-                <CategoryGrid categories={relatedCategories} variant="compact" />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Trust Signal */}
-        <TrustSignal />
-
-        {/* Back to All Categories */}
-        <section className="bg-canvas px-4 py-8 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <Link
-              href="/tools/for-clinicians/"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-treatment hover:text-treatment-600"
-            >
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-              Back to all clinician categories
-            </Link>
-          </div>
-        </section>
-
-        {/* Vendor CTA */}
-        <VendorCTA />
-      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <JobPage job={job} otherJobs={otherJobs} comparisons={comparisons} placement={placement} />
     </>
   );
 }
-
-// Subcategory to filter mapping
-const SUBCATEGORY_FILTERS: Record<string, (tool: ClinicianToolV4) => boolean> = {
-  // EHR subcategories → organization_sizes
-  "ehr-solo-practice": (t) =>
-    t.audiences?.organization_sizes?.includes("solo") ?? false,
-  "ehr-group-practice": (t) =>
-    (t.audiences?.organization_sizes?.includes("small-2-10") ||
-     t.audiences?.organization_sizes?.includes("medium-11-50")) ?? false,
-  "ehr-enterprise": (t) =>
-    (t.audiences?.organization_sizes?.includes("large-51-200") ||
-     t.audiences?.organization_sizes?.includes("enterprise-200-plus")) ?? false,
-  // Note: "practice-management-only" has no reliable filter - falls through to show all tools
-
-  // AI Scribe subcategories → capabilities/feature_flags
-  "ambient-scribes": (t) =>
-    t.capabilities?.includes("ambient-listening") ?? false,
-  "dictation-transcription": (t) =>
-    t.capabilities?.includes("voice-transcription") ?? false,
-  "note-assistants": (t) =>
-    t.capabilities?.includes("note-generation") ?? false,
-
-  // Telehealth subcategories
-  "video-platforms": (t) =>
-    t.feature_flags?.has_telehealth ?? false,
-  "secure-messaging": (t) =>
-    t.capabilities?.includes("secure-messaging") ?? false,
-
-  // Provider networks subcategories → use RCM flag as proxy
-  "insurance-enablers": (t) =>
-    t.feature_flags?.has_rcm ?? false,
-
-  // Measurement/DTx subcategories
-  "mbc-platforms": (t) =>
-    t.feature_flags?.has_measurement ?? false,
-
-  // Prescribing subcategories
-  "eprescribing-platforms": (t) =>
-    t.feature_flags?.has_e_prescribing ?? false,
-};
-
-// Apply filters from search params
-function applyFilters(
-  tools: ClinicianToolV4[],
-  searchParams: { [key: string]: string | string[] | undefined }
-): ClinicianToolV4[] {
-  let filtered = [...tools];
-
-  const priceRange = searchParams.priceRange as string | undefined;
-  const practiceSize = searchParams.practiceSize as string | undefined;
-  const features = (searchParams.features as string)?.split(",").filter(Boolean) || [];
-  const subcategory = searchParams.subcategory as string | undefined;
-
-  if (priceRange) {
-    filtered = filtered.filter((t) => t.pricing?.price_range === priceRange);
-  }
-
-  if (practiceSize) {
-    filtered = filtered.filter((t) => {
-      const sizes = t.audiences?.organization_sizes ?? [];
-      // Handle "large-50+" as matching both large and enterprise
-      if (practiceSize === "large-50+") {
-        return sizes.includes("large-51-200") || sizes.includes("enterprise-200-plus");
-      }
-      return sizes.includes(
-        practiceSize as "solo" | "small-2-10" | "medium-11-50" | "large-51-200" | "enterprise-200-plus"
-      );
-    });
-  }
-
-  // P0 FIX: Use proper compliance checking, not JavaScript truthiness
-  // "unknown" is truthy but should NOT pass HIPAA/BAA filters
-  if (features.includes("hipaa")) {
-    filtered = filtered.filter((t) => isComplianceConfirmedYes(t.compliance.hipaa_support));
-  }
-
-  if (features.includes("baa")) {
-    filtered = filtered.filter((t) => isComplianceConfirmedYes(t.compliance.baa_available));
-  }
-
-  if (features.includes("ai")) {
-    filtered = filtered.filter((t) => t.feature_flags.has_ai);
-  }
-
-  if (features.includes("telehealth")) {
-    filtered = filtered.filter((t) => t.feature_flags.has_telehealth);
-  }
-
-  if (features.includes("free-tier")) {
-    filtered = filtered.filter((t) => t.pricing?.free_tier);
-  }
-
-  if (features.includes("e-prescribing")) {
-    filtered = filtered.filter((t) => t.feature_flags.has_e_prescribing);
-  }
-
-  // Apply subcategory filter if defined
-  if (subcategory && SUBCATEGORY_FILTERS[subcategory]) {
-    filtered = filtered.filter(SUBCATEGORY_FILTERS[subcategory]);
-  }
-
-  return filtered;
-}
-
-// Get related categories based on category mappings
-async function getRelatedCategories(currentSlug: string) {
-  // Related category mapping from category-mappings.json structure
-  const relatedMap: Record<string, string[]> = {
-    "marketing-patient-acquisition": [
-      "provider-networks",
-      "scheduling-intake",
-      "analytics-reporting",
-    ],
-    "ehr-practice-management": [
-      "scheduling-intake",
-      "billing-rcm",
-      "telehealth-communication",
-    ],
-    "ai-scribe-documentation": [
-      "ehr-practice-management",
-      "clinical-decision-support",
-    ],
-    "billing-rcm": ["ehr-practice-management", "credentialing-workforce"],
-    "telehealth-communication": [
-      "ehr-practice-management",
-      "patient-engagement",
-    ],
-    "provider-networks": ["marketing-patient-acquisition", "credentialing-workforce", "billing-rcm"],
-    "measurement-outcomes": ["patient-engagement", "analytics-reporting"],
-    "prescribing-erx": ["ehr-practice-management", "clinical-decision-support"],
-    "credentialing-workforce": ["provider-networks", "billing-rcm"],
-    "patient-engagement": ["measurement-outcomes", "digital-therapeutics"],
-    "clinical-decision-support": [
-      "ai-scribe-documentation",
-      "prescribing-erx",
-    ],
-    "scheduling-intake": ["ehr-practice-management", "patient-engagement", "marketing-patient-acquisition"],
-    "compliance-security": ["ehr-practice-management", "telehealth-communication"],
-    "analytics-reporting": ["measurement-outcomes", "billing-rcm"],
-    "care-coordination": ["telehealth-communication", "ehr-practice-management"],
-    "digital-therapeutics": ["patient-engagement", "measurement-outcomes"],
-  };
-
-  const relatedSlugs = relatedMap[currentSlug] || [];
-
-  // Fetch counts for each related category in parallel
-  const categoriesWithCounts = await Promise.all(
-    relatedSlugs.map(async (slug) => {
-      const cat = getCategoryBySlug(slug);
-      const tools = await ClinicianToolService.getByCategory(slug);
-      return {
-        slug,
-        display_name: cat?.display_name || slug,
-        short_name: cat?.short_name,
-        url: cat?.url || `/tools/for-clinicians/${slug}/`,
-        count: tools.length,
-        intro: cat?.intro,
-      };
-    })
-  );
-
-  return categoriesWithCounts;
-}
-
-// Generate structured data for category page
-// AGGRESSIVE: 8+ schemas per page for maximum SERP coverage
-function generateCategoryStructuredData(
-  category: (typeof clinicianCategoriesData.categories)[0],
-  tools: ClinicianToolV4[]
-): object[] {
-  const schemas: object[] = [];
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().toLocaleString("default", { month: "long" });
-  const recentDate = new Date().toISOString();
-
-  // 1. BreadcrumbList - Essential for sitelinks
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Tools",
-        item: `${siteConfig.url}/tools/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "For Clinicians",
-        item: `${siteConfig.url}/tools/for-clinicians/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: category.display_name,
-        item: `${siteConfig.url}${category.url}`,
-      },
-    ],
-  });
-
-  // 2. FAQPage - Targets "People Also Ask"
-  if (category.faqs && category.faqs.length > 0) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: category.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.a,
-        },
-      })),
-    });
-  }
-
-  // 3. ItemList for tools (with ranking signals)
-  if (tools.length > 0) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      name: `Best ${category.display_name} (${currentYear})`,
-      description: category.direct_answer || `Compare the best ${category.display_name.toLowerCase()} for mental health practices`,
-      numberOfItems: tools.length,
-      itemListOrder: "https://schema.org/ItemListOrderDescending",
-      itemListElement: tools.slice(0, 10).map((tool, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: tool.name,
-        url: `${siteConfig.url}/tools/for-clinicians/${category.slug}/${tool.slug}/`,
-        item: {
-          "@type": "SoftwareApplication",
-          name: tool.name,
-          applicationCategory: "HealthApplication",
-          description: tool.short_description || tool.one_liner,
-        },
-      })),
-    });
-  }
-
-  // 4. WebPage with speakable + freshness
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: category.seo_title,
-    description: category.meta_description,
-    url: `${siteConfig.url}${category.url}`,
-    datePublished: `${currentYear - 1}-01-01T00:00:00Z`,
-    dateModified: recentDate,
-    lastReviewed: `${currentYear}-${String(new Date().getMonth() + 1).padStart(2, "0")}-01`,
-    speakable: {
-      "@type": "SpeakableSpecification",
-      cssSelector: ["h1", ".direct-answer", "[data-speakable='true']"],
-    },
-    isPartOf: {
-      "@type": "WebSite",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    about: {
-      "@type": "Thing",
-      name: category.display_name,
-      description: category.intro,
-    },
-    reviewedBy: {
-      "@type": "Organization",
-      name: "HeyPsych Medical Board",
-      url: `${siteConfig.url}/about/medical-review-board/`,
-    },
-  });
-
-  // 5. Article schema - Freshness signals
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: `Best ${category.display_name} for Mental Health (${currentYear})`,
-    description: category.meta_description,
-    datePublished: `${currentYear}-01-01T00:00:00Z`,
-    dateModified: recentDate,
-    author: {
-      "@type": "Organization",
-      name: "HeyPsych Editorial Team",
-      url: `${siteConfig.url}/about/`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/logo.png`,
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteConfig.url}${category.url}`,
-    },
-  });
-
-  // 6. HowTo schema - Captures instructional queries
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: `How to Choose ${category.display_name}`,
-    description: `Expert guide to selecting the right ${category.display_name.toLowerCase()} for your mental health practice`,
-    step: [
-      {
-        "@type": "HowToStep",
-        name: "Assess your practice needs",
-        text: `Determine your specific requirements for ${category.display_name.toLowerCase()}`,
-      },
-      {
-        "@type": "HowToStep",
-        name: "Compare verified options",
-        text: `Review our ${tools.length} verified ${category.display_name.toLowerCase()} tools`,
-      },
-      {
-        "@type": "HowToStep",
-        name: "Check compliance requirements",
-        text: "Verify HIPAA compliance and BAA availability for your shortlist",
-      },
-      {
-        "@type": "HowToStep",
-        name: "Request demos and trials",
-        text: "Test your top choices before making a commitment",
-      },
-    ],
-  });
-
-  // 7. Top tool SoftwareApplication schemas
-  tools.slice(0, 3).forEach((tool) => {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: tool.name,
-      applicationCategory: "HealthApplication",
-      applicationSubCategory: category.display_name,
-      description: tool.short_description || tool.one_liner,
-      url: `${siteConfig.url}/tools/for-clinicians/${category.slug}/${tool.slug}/`,
-      offers: tool.pricing?.starting_price_display
-        ? {
-            "@type": "Offer",
-            price: tool.pricing.starting_price_display,
-            priceCurrency: "USD",
-          }
-        : undefined,
-      // Entity linking for Knowledge Graph
-      sameAs: tool.website_url ? [tool.website_url] : undefined,
-    });
-  });
-
-  // 8. MedicalWebPage - Health-specific rich results
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    name: `${category.display_name} for Mental Health Professionals`,
-    specialty: "Psychiatry",
-    medicalAudience: {
-      "@type": "MedicalAudience",
-      audienceType: "Clinician",
-      healthCondition: {
-        "@type": "MedicalCondition",
-        name: "Mental Health Conditions",
-      },
-    },
-    lastReviewed: `${currentYear}-${String(new Date().getMonth() + 1).padStart(2, "0")}-01`,
-    reviewedBy: {
-      "@type": "Organization",
-      name: "HeyPsych Medical Board",
-    },
-  });
-
-  return schemas;
-}
-
-export const revalidate = 3600; // 1 hour

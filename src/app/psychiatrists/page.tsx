@@ -16,10 +16,10 @@ import {
   List,
   X,
   AlertCircle,
-  ArrowLeft,
   Phone,
 } from "lucide-react";
 import Link from "next/link";
+import { PageIntro } from "@/components/brand/PageIntro";
 
 // Transform API data to match component expectations
 interface TransformedProvider {
@@ -316,33 +316,18 @@ export default function ProvidersPage() {
 
   return (
     <div className="min-h-screen bg-canvas">
-      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-        {/* Back Button + Title Row */}
-        <div className="mb-4 flex items-center justify-between">
-          <Link href="/">
-            <Button variant="ghost" className="group text-label-secondary hover:text-label-primary hover:bg-surface-grouped">
-              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              Back to Home
-            </Button>
-          </Link>
-
-          <h1 className="text-2xl font-semibold text-label-primary sm:text-3xl">
-            Psychiatrists
-          </h1>
-
-          <div className="w-[140px]"></div>
-        </div>
-
+      <PageIntro
+        title="Find a psychiatrist"
+        object="care"
+        description="Psychiatrists are medical doctors who can diagnose, prescribe medication, and provide ongoing mental health care. Search by name, location, or specialty."
+        footnote="Directory listings come from the national provider registry (NPPES). Check insurance, availability, and telehealth directly with each practice."
+      />
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="mb-8 text-center">
-          <p className="mx-auto mb-3 max-w-2xl text-sm text-label-tertiary">
-            Find psychiatrists in your area. Psychiatrists are medical doctors who
-            can prescribe medication and provide comprehensive mental health treatment.
-          </p>
-
           {/* Search Stats - only shown after search */}
           {hasSearched && (
-            <div className="mb-4 flex items-center justify-center gap-4 text-xs text-label-primary0">
+            <div className="mb-4 flex items-center justify-center gap-4 text-xs text-label-tertiary">
               <div className="flex items-center gap-1.5">
                 {isLoading ? (
                   <div className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-positive-500 border-t-transparent"></div>
@@ -374,7 +359,7 @@ export default function ProvidersPage() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onKeyDown={handleSearchKeyDown}
-                  className="h-12 pl-10 text-lg bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
+                  className="h-12 pl-10 text-lg bg-surface-grouped border-separator text-label-primary placeholder:text-label-tertiary"
                 />
                 <Button
                   onClick={handleSearch}
@@ -528,7 +513,7 @@ export default function ProvidersPage() {
                               setCityFilter(e.target.value);
                               cityFilterRef.current = e.target.value; // Update ref synchronously
                             }}
-                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
+                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-tertiary"
                           />
                         </div>
 
@@ -548,7 +533,7 @@ export default function ProvidersPage() {
                               setZipFilter(value);
                               zipFilterRef.current = value; // Update ref synchronously
                             }}
-                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-primary0"
+                            className="h-9 text-sm bg-surface-grouped border-separator text-label-primary placeholder:text-label-tertiary"
                             maxLength={5}
                           />
                         </div>
@@ -763,7 +748,7 @@ export default function ProvidersPage() {
           ) : filteredProviders.length === 0 ? (
             <Card className="py-12 text-center border-separator bg-surface">
               <CardContent>
-                <AlertCircle className="mx-auto mb-4 h-12 w-12 text-label-primary0" />
+                <AlertCircle className="mx-auto mb-4 h-12 w-12 text-label-tertiary" />
                 <h3 className="mb-2 text-lg font-semibold text-label-primary">No psychiatrists found</h3>
                 <p className="mb-4 text-label-secondary">
                   We couldn't find any psychiatrists matching your search criteria.
@@ -819,7 +804,7 @@ export default function ProvidersPage() {
               <span className="text-label-secondary">
                 Page {currentPage} of {Math.ceil(totalCount / PROVIDERS_PER_PAGE)}
               </span>
-              <span className="text-label-primary0">•</span>
+              <span className="text-label-tertiary">•</span>
               <span className="text-label-secondary">
                 {totalCount.toLocaleString()} total psychiatrists
               </span>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageIntro } from "@/components/brand/PageIntro";
 import {
   BookOpen,
   Pill,
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description:
     "Clinical resources for mental health professionals. Treatment information, digital tools, assessments, and patient education materials.",
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "For Clinicians",
     description:
       "Clinical resources for mental health professionals. Treatment information, digital tools, and patient education.",
@@ -99,23 +101,24 @@ export default function ForCliniciansPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <section className="bg-white px-4 pb-12 pt-12 sm:px-6 md:pt-16 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Clinical Resources for Mental Health Professionals
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-            Evidence-based treatment information, clinical tools, and patient
-            education resources. All freely accessible.
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-canvas">
+      <PageIntro
+        title="For clinicians"
+        object="clinician"
+        description="Treatment information, condition reference, assessments, and patient education, free to use. And Practice Architect, for designing the practice itself."
+      >
+        <Link
+          href="/architect"
+          className="group inline-flex items-center gap-2 rounded-full bg-label-primary px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        >
+          Build my practice
+          <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+        </Link>
+      </PageIntro>
 
       {/* Resources Grid */}
-      <section className="px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
+      <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {clinicianResources.map((resource) => {
               const IconComponent = resource.icon;
@@ -123,17 +126,17 @@ export default function ForCliniciansPage() {
                 <Link
                   key={resource.id}
                   href={resource.href}
-                  className="group flex flex-col rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
+                  className="group flex flex-col rounded-2xl border border-separator bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-separator-opaque hover:shadow-elevated motion-reduce:hover:translate-y-0"
                 >
                   <div
                     className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg ${resource.color}`}
                   >
                     <IconComponent className="h-6 w-6" />
                   </div>
-                  <h2 className="mb-2 text-lg font-semibold text-slate-900 group-hover:text-blue-700">
+                  <h2 data-heading="sans" className="mb-2 text-lg font-semibold text-label-primary group-hover:text-accent">
                     {resource.title}
                   </h2>
-                  <p className="text-sm text-slate-600">{resource.description}</p>
+                  <p className="text-sm text-label-secondary">{resource.description}</p>
                 </Link>
               );
             })}

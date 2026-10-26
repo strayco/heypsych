@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "ableto",
   "name": "AbleTo",
-  "one_liner": "AbleTo (now Optum Behavioral Health) provides employer-sponsored virtual therapy and coaching with licensed therapists, typically covered through health insurance benefits.",
+  "one_liner": "8-week CBT-based therapy and coaching by phone or video, offered as a benefit through some US health plans and employers.",
   "best_for": [
-    "People whose employer offers AbleTo through health benefits",
-    "Those seeking structured 8-week therapy programs for anxiety or depression",
-    "People who want both therapy and coaching support",
-    "Those looking for insurance-covered virtual mental health care"
+    "Adults whose health plan or employer includes AbleTo as a covered benefit",
+    "People with mild to moderate depression, anxiety or stress who want a short, structured CBT program",
+    "People living with a medical condition such as heart disease or diabetes who also feel low or anxious"
   ],
   "not_for": [
-    "Those in crisis needing immediate emergency care (call 988)",
-    "People without employer-sponsored access (not available direct-to-consumer)",
-    "Those seeking medication management (therapy only)"
+    "Anyone in crisis: call or text 988",
+    "People whose health plan does not include AbleTo",
+    "People who need medication or a psychiatric prescriber",
+    "People who want open-ended, long-term therapy"
   ],
   "support_level": "clinical",
-  "short_description": "AbleTo (now Optum Behavioral Health) provides employer-sponsored virtual therapy and coaching with licensed therapists, typically covered through health insu...",
-  "long_description": "AbleTo, acquired by Optum in 2021, is one of the largest virtual behavioral health platforms in the US, serving over 3 million members through employer health plans. The platform offers 8-week structured therapy programs combining weekly video sessions with a licensed therapist and weekly calls with a behavioral coach. Programs target anxiety, depression, stress, chronic pain, and substance use. Most members access AbleTo at no cost through employer benefits or health insurance. The evidence-based approach uses CBT and other validated techniques. Clinical studies show 50% improvement in depression and anxiety symptoms. Available nationwide with licensed therapists in all 50 states.",
+  "short_description": "AbleTo runs 8-week CBT programs with a licensed therapist and a coach by phone or video, available through some health plans at little or no cost.",
+  "long_description": "AbleTo is a US virtual behavioral health service sold to health plans and employers rather than directly to the public; press reported in 2020 that UnitedHealth Group's Optum was buying it for about $470 million. Its programs run for 8 weeks and use cognitive behavioral therapy, delivered by phone or secure video with a licensed therapist, with a behavioral coach alongside. AbleTo says it is a covered benefit for more than 26 million people and that most participants pay nothing, though copays and deductibles depend on your plan; late rescheduling can incur a $45 fee. The published research is uncontrolled: a 2018 before-after study of 1,482 program graduates found large drops in depression scores, and a 2021 retrospective study of its self-guided AbleTo Digital+ app reported symptom improvement among people who completed at least four modules.",
   "primary_hubs": [
     "anxiety-stress",
     "mood-depression",
@@ -43,15 +43,33 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Free through employer benefits",
-    "notes": "Typically no cost to employees. Access through employer health benefits or insurance only."
+    "starting_price": "Free or copay through your health plan or employer; no self-pay option published",
+    "notes": "AbleTo says it is a fully covered benefit with no cost-share for most participants; copays and deductibles depend on your plan. Rescheduling with less than 24 hours' notice may carry a $45 fee.",
+    "sources": [
+      "https://www.ableto.com/?p=6894"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant as a covered entity through Optum. Enterprise-grade security."
+    "basis": {
+      "policy_url": "https://static.ableto.com/resources/NPP.pdf",
+      "sells_or_ads": "unknown",
+      "deletion": "no",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": false,
+    "data_sold": "unknown",
+    "notes": "AbleTo's HIPAA notice of privacy practices covers your treatment records and lets you request amendments, but it does not address sale of data, ad sharing or deletion, and no website privacy policy could be found.",
+    "sources": [
+      "https://static.ableto.com/resources/NPP.pdf",
+      "https://www.ableto.com/?p=6894"
+    ],
+    "grade": "unknown"
   },
   "seo": {
     "title": "AbleTo: Review & Pricing | HeyPsych",
@@ -79,26 +97,67 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
-    "website": "https://www.optum.com",
-    "affiliate_url": "https://www.optum.com"
+    "website": "https://www.ableto.com",
+    "affiliate_url": "https://www.ableto.com",
+    "publisher": "AbleTo, Inc."
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "low",
     "primary_uses": [
-      "Anxiety treatment",
-      "Depression treatment",
+      "8-week CBT program for depression or anxiety",
       "Stress management",
-      "Behavioral coaching"
+      "Coping with depression or anxiety alongside a medical condition",
+      "Coaching support between therapy sessions"
+    ],
+    "clinical_trials": [
+      {
+        "study": "Before-after evaluation of AbleTo's remote behavioral health program",
+        "citation": {
+          "authors": "Dent L, Peters A, Kerr PL, Mochari-Greenberger H, Pande RL",
+          "title": "Using Telehealth to Implement Cognitive-Behavioral Therapy",
+          "journal": "Psychiatric Services",
+          "year": 2018,
+          "url": "https://psychiatryonline.org/doi/10.1176/appi.ps.201700477",
+          "doi": "10.1176/appi.ps.201700477"
+        },
+        "outcome": "Median DASS-21 depression score fell from 18 to 6 among program graduates; anxiety and stress also improved. No control group.",
+        "sample_size": 1482,
+        "study_design": "Retrospective uncontrolled before-after"
+      },
+      {
+        "study": "Retrospective cohort of the AbleTo Digital+ app",
+        "citation": {
+          "authors": "Anton MT, Mochari Greenberger H, Andreopoulos E, Pande RL",
+          "title": "Evaluation of a Commercial Mobile Health App for Depression and Anxiety (AbleTo Digital+): Retrospective Cohort Study",
+          "journal": "JMIR Formative Research",
+          "year": 2021,
+          "doi": "10.2196/27570",
+          "url": "https://formative.jmir.org/2021/9/e27570"
+        },
+        "outcome": "Among 470 people who completed at least four modules with at least mild symptoms, depression and anxiety scores improved. No control group.",
+        "sample_size": 1896,
+        "study_design": "Retrospective cohort, uncontrolled"
+      }
     ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
-  "affiliate_url": "https://www.optum.com",
-  "updated_at": "2026-09-02T06:10:49.767Z"
+  "affiliate_url": "https://www.ableto.com",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You can use AbleTo only if your health plan or employer covers it; you check your coverage on its site or AbleTo may contact you. You then meet a licensed therapist by phone or video for an 8-week CBT program, with a coach for support between sessions. Most participants pay nothing, but your plan's copay or deductible may apply.",
+  "availability": {
+    "state": "limited",
+    "note": "Only through participating health plans and employers in the US; not sold directly to individuals.",
+    "sources": [
+      "https://www.ableto.com/?p=6894"
+    ],
+    "checked": "2026-10-26"
+  }
 }

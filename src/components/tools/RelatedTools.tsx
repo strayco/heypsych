@@ -60,7 +60,7 @@ export function RelatedTools({ tools, title = "Related Tools", currentToolName }
           {tools.map((tool) => (
             <Link
               key={`quick-${tool.slug}`}
-              href={`/tools/${tool.slug}/`}
+              href={`/tools/${tool.slug}`}
               className="text-sm text-accent hover:underline"
             >
               {getContextualLinkText(tool)}
@@ -79,11 +79,11 @@ export function RelatedTools({ tools, title = "Related Tools", currentToolName }
         <div className="mt-6 text-center">
           <p className="text-sm text-label-tertiary">
             Need help choosing?{" "}
-            <Link href="/tools/for-patients/" className="text-accent hover:underline">
+            <Link href="/tools/for-patients" className="text-accent hover:underline">
               Browse all mental health apps
             </Link>
             {" "}or use our{" "}
-            <Link href="/find-support/" className="text-accent hover:underline">
+            <Link href="/find-support" className="text-accent hover:underline">
               personalized app finder
             </Link>
             .

@@ -3,48 +3,72 @@
   "kind": "tool",
   "slug": "teladoc-betterhelp",
   "name": "Teladoc BetterHelp Business",
-  "one_liner": "Enterprise virtual mental health services from Teladoc for health plans and employers.",
+  "one_liner": "BetterHelp online therapy offered through employers and health plans, including Teladoc's Wellbound EAP; same service as BetterHelp.",
   "best_for": [
-    "Health plans seeking to add virtual mental health to member benefits",
-    "Employers wanting recognizable BetterHelp brand for employees",
-    "Payers expanding mental health coverage nationally",
-    "Organizations with Medicare/Medicare Advantage populations",
-    "TRICARE beneficiaries seeking virtual mental health care"
+    "People whose employer or health plan offers BetterHelp or Teladoc's Wellbound EAP",
+    "Adults with mild to moderate anxiety, depression or stress who want talk therapy from home"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)",
-    "People who prefer in-person therapy exclusively"
+    "Anyone in crisis: call or text 988",
+    "People who need intensive or in-person care for severe mental illness",
+    "People who don't want their data handled by a company with a recent FTC privacy order"
   ],
   "support_level": "clinical",
-  "short_description": "Teladoc BetterHelp Business provides virtual mental health services for health plans and employers through Teladoc's network.",
-  "long_description": "Teladoc BetterHelp Business is the enterprise and health plan division of Teladoc Health's mental health services, leveraging the BetterHelp platform for B2B clients. The service provides virtual therapy and mental health support to members of health plans, employers, and government programs including Medicare, Medicare Advantage, and TRICARE. Teladoc's acquisition of BetterHelp (2015) combined with its existing telehealth infrastructure allows for broad network coverage and integration with existing health plan benefits. The platform offers licensed therapy via video, phone, and messaging.",
-  "patient_summary": "Teladoc BetterHelp Business provides virtual mental health services for health plans and employers through Teladoc's network.",
+  "short_description": "Teladoc's business channel for BetterHelp: employers, organisations and health plans offer BetterHelp therapy to their people.",
+  "long_description": "Teladoc Health, which owns BetterHelp, sells BetterHelp's online therapy to employers, organisations, associations and health plans as well as directly to consumers. Teladoc has also launched Wellbound, an employee assistance program for US employer and health plan clients that uses BetterHelp for its counselling, with employee access from January 1, 2026. For a person, the therapy is the same BetterHelp service: matching with a licensed therapist and sessions by video, phone or chat. In 2023 the FTC finalised an order requiring BetterHelp to pay $7.8 million and banning it from sharing health data for advertising, after alleging it had shared email addresses, IP addresses and health questionnaire answers with Facebook, Snapchat, Criteo and Pinterest. This record duplicates the BetterHelp record.",
+  "patient_summary": "If your employer or health plan offers BetterHelp (for example through Teladoc's Wellbound EAP), you sign up through that benefit and get matched with a licensed therapist for video, phone or chat sessions. Your cost depends on what your sponsor covers. The service is the same as BetterHelp's consumer product.",
   "primary_hubs": [
     "find-support"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
   "ai_attributes": [
-    "no-ai"
+    "ai-matching"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
     "model": "enterprise",
-    "free_tier": false
+    "free_tier": false,
+    "starting_price": "Through your employer or health plan; cost set by the sponsor",
+    "notes": "Sold to employers, organisations and health plans; Wellbound EAP access began January 1, 2026. Without a sponsor, use BetterHelp's consumer subscription.",
+    "sources": [
+      "https://bhbusiness.com/2024/01/10/teladoc-to-grow-betterhelp-mental-health-platform-via-b2b-expansion/",
+      "https://www.fiercehealthcare.com/telehealth/teladoc-launches-wellbound-employee-assistance-program-leverages-betterhelp"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
+    "grade": "D",
+    "basis": {
+      "policy_url": "https://www.betterhelp.com/privacy/",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": "FTC order, 2023: $7.8 million and a ban on sharing health data for advertising, after alleged sharing of email addresses, IP addresses and health questionnaire answers with Facebook, Snapchat, Criteo and Pinterest",
+      "regulatory_source": "https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-gives-final-approval-order-banning-betterhelp-sharing-sensitive-health-data-advertising"
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false
+    "data_sold": "yes",
+    "notes": "Same company and policy as BetterHelp: website data can be shared for ads if you accept ad cookies, and a 2023 FTC order covers past ad sharing of health data.",
+    "sources": [
+      "https://www.betterhelp.com/privacy/",
+      "https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-gives-final-approval-order-banning-betterhelp-sharing-sensitive-health-data-advertising"
+    ]
   },
   "seo": {
     "title": "Teladoc BetterHelp Business: Virtual Mental Health for Pa...",
@@ -68,26 +92,55 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.betterhelp.com",
-    "affiliate_url": "https://www.betterhelp.com"
+    "affiliate_url": "https://www.betterhelp.com",
+    "publisher": "BetterHelp (Teladoc Health)"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging",
+    "evidence_based": true,
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Naturalistic feasibility study of BetterHelp users with depression",
+        "citation": {
+          "authors": "Marcelle ET, Nolting L, Hinshaw SP, Aguilera A",
+          "title": "Effectiveness of a Multimodal Digital Psychotherapy Platform for Adult Depression: A Naturalistic Feasibility Study",
+          "journal": "JMIR mHealth and uHealth",
+          "year": 2019,
+          "doi": "10.2196/10948",
+          "url": "https://mhealth.jmir.org/2019/1/e10948/"
+        },
+        "outcome": "PHQ-9 depression scores fell significantly from enrollment to three months; no control group.",
+        "sample_size": 318,
+        "study_design": "Uncontrolled pre-post (naturalistic, no randomized control)"
+      }
+    ],
     "primary_uses": [
-      "Health plans seeking to add virtual mental health to member benefits",
-      "Employers wanting recognizable BetterHelp brand for employees",
-      "Payers expanding mental health coverage nationally",
-      "Organizations with Medicare/Medicare Advantage populations"
+      "Talk therapy by video, phone or chat through an employer or plan benefit",
+      "Employee assistance program counselling (Wellbound)",
+      "Anxiety, depression and stress"
     ]
   },
-  "related_tools": [],
+  "related_tools": [
+    "betterhelp",
+    "talkspace-business"
+  ],
   "related_conditions": [],
   "featured": false,
-  "status": "active",
+  "status": "archived",
   "affiliate_url": "https://www.betterhelp.com",
-  "updated_at": "2026-09-02T05:18:37.219Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "limited",
+    "checked": "2026-10-26",
+    "note": "Only through employers, organisations or health plans that contract with Teladoc; duplicate of the BetterHelp record.",
+    "sources": [
+      "https://www.fiercehealthcare.com/telehealth/teladoc-launches-wellbound-employee-assistance-program-leverages-betterhelp"
+    ]
+  },
+  "merged_into": "betterhelp"
 }

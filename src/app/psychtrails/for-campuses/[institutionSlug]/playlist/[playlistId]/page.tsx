@@ -240,7 +240,7 @@ export default function CampusPlaylistPage() {
         {/* Playlist header */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500">
               <Compass className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -272,7 +272,7 @@ export default function CampusPlaylistPage() {
         <div className="mb-6">
           <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all"
+              className="h-full bg-purple-500 transition-all"
               style={{ width: `${(progressInfo.completed / progressInfo.total) * 100}%` }}
             />
           </div>
@@ -282,7 +282,7 @@ export default function CampusPlaylistPage() {
         {!isComplete && nextScenario && (
           <button
             onClick={handleStartNext}
-            className="w-full mb-6 py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 font-medium flex items-center justify-center gap-2"
+            className="w-full mb-6 py-3 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 font-medium flex items-center justify-center gap-2"
           >
             <Play className="h-5 w-5" />
             {progressInfo.completed === 0 ? "Start" : "Continue"}

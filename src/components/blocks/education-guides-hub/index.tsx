@@ -95,7 +95,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
     (selectedLevel !== "all" ? 1 : 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-yellow-50">
+    <div className="min-h-screen bg-amber-50">
       {/* Hero */}
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
@@ -105,7 +105,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                 <BookOpen className="h-8 w-8 text-amber-600" />
               </div>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className="bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
+                <span>
                   Education & Guides
                 </span>
               </h1>
@@ -165,7 +165,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Search */}
                   <div className="relative">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-tertiary" />
                     <input
                       type="text"
                       placeholder="Search guides..."
@@ -253,7 +253,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                                   <h3 className="text-lg font-bold text-label-primary transition-colors group-hover:text-amber-600">
                                     {resource.name}
                                   </h3>
-                                  <div className="mt-1 flex items-center gap-3 text-sm text-label-primary0">
+                                  <div className="mt-1 flex items-center gap-3 text-sm text-label-tertiary">
                                     {readingTime && (
                                       <div className="flex items-center gap-1">
                                         <Clock className="h-3 w-3" />
@@ -298,7 +298,7 @@ export function EducationGuidesHub({ resources }: EducationGuidesHubProps) {
                               )}
                             </div>
 
-                            <ArrowRight className="mt-2 h-5 w-5 flex-shrink-0 text-label-primary0" />
+                            <ArrowRight className="mt-2 h-5 w-5 flex-shrink-0 text-label-tertiary" />
                           </div>
                         </CardContent>
                       </Card>

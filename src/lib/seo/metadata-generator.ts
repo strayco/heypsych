@@ -110,6 +110,7 @@ export abstract class MetadataGenerator {
       keywords: entity.seo?.keywords?.join(', '),
       alternates: { canonical },
       openGraph: {
+        images: ["/images/og/heypsych.png"],
         title: entity.seo?.title || entity.name,
         description: entity.seo?.description,
         url: canonical,
@@ -117,6 +118,7 @@ export abstract class MetadataGenerator {
         siteName: SITE_CONFIG.name
       },
       twitter: {
+        images: ["/images/og/heypsych.png"],
         card: 'summary_large_image',
         title: entity.seo?.title || entity.name,
         description: entity.seo?.description

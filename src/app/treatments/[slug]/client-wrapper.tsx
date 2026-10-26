@@ -4,6 +4,7 @@
 // Data is passed from server component (already fetched)
 
 import React from "react";
+import { GuideChapters, readingMinutes, teaserFrom } from "@/components/guide/GuideChapters";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -51,8 +52,48 @@ type DynamicSection = {
   [key: string]: any;
 };
 
+/** The full guide's chapter groups, in reading order. */
+const TREATMENT_GUIDE_GROUPS = ["What it's for", "Taking it", "Safety", "How it works", "Questions"];
+
+const TREATMENT_GUIDE_GROUP_OF: Record<string, string> = {
+  indications: "What it's for",
+  overview: "What it's for",
+  patient_selection: "What it's for",
+  onset_duration: "Taking it",
+  dosing: "Taking it",
+  dosage_forms: "Taking it",
+  tapering: "Taking it",
+  protocol: "Taking it",
+  session_structure: "Taking it",
+  treatment_variants: "Taking it",
+  equipment: "Taking it",
+  training_requirements: "Taking it",
+  cost_considerations: "Taking it",
+  integration_support: "Taking it",
+  warnings: "Safety",
+  adverse_effects: "Safety",
+  side_effects: "Safety",
+  interactions: "Safety",
+  contraindications: "Safety",
+  monitoring: "Safety",
+  special_populations: "Safety",
+  mechanism: "How it works",
+  efficacy: "How it works",
+  research_evidence: "How it works",
+  expected_outcomes: "How it works",
+  clinical_context: "How it works",
+  clinical_notes: "How it works",
+};
+
 interface TreatmentClientWrapperProps {
   entity: Entity;
+  /**
+   * The interactive opening (TreatmentExperience). When given, it replaces the
+   * text header, and the sections below become "The full guide".
+   */
+  intro?: React.ReactNode;
+  /** Section types the opening already presents, left out of the full guide. */
+  guideOmit?: string[];
 }
 
 // ============ HELPER FUNCTIONS (moved outside component for reuse) ============
@@ -176,7 +217,7 @@ function SectionCard({ section, expandAll, onResetExpandAll, renderSectionConten
   );
 }
 
-export default function TreatmentClientWrapper({ entity }: TreatmentClientWrapperProps) {
+export default function TreatmentClientWrapper({ entity, intro, guideOmit = [] }: TreatmentClientWrapperProps) {
   const data = (entity.data || {}) as {
     name?: string;
     summary?: string;
@@ -566,7 +607,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
             {/* Serious side effects */}
             {sectionData.serious && sectionData.serious.length > 0 && (
               <div className="rounded-lg border border-negative-border bg-negative-tint p-3 sm:p-4">
-                <h3 className="mb-2 sm:mb-3 font-semibold text-negative-700 text-base sm:text-lg">⚠️ Serious Side Effects</h3>
+                <h3 className="mb-2 sm:mb-3 font-semibold text-negative-700 text-base sm:text-lg">Serious side effects</h3>
                 <ul className="list-disc space-y-1 pl-4 text-label-secondary">
                   {sectionData.serious.map((effect: any, i: number) => (
                     <li key={i}>
@@ -600,7 +641,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
             )}
             {sectionData.serious && sectionData.serious.length > 0 && (
               <div className="rounded-lg border border-negative-border bg-negative-tint p-4">
-                <h3 className="mb-3 font-semibold text-negative-700">⚠️ Serious Side Effects</h3>
+                <h3 className="mb-3 font-semibold text-negative-700">Serious side effects</h3>
                 <ul className="list-disc space-y-1 pl-4 text-label-secondary">
                   {sectionData.serious.map((effect: any, i: number) => (
                     <li key={i}>
@@ -630,7 +671,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
 
             {sectionData.black_box && (
               <div className="rounded-lg border-2 border-negative-500 bg-negative-tint p-4">
-                <h3 className="mb-2 font-bold text-negative-700">⚠️ BLACK BOX WARNING</h3>
+                <h3 className="mb-2 font-bold text-negative-700">FDA boxed warning</h3>
                 <ParsedContent content={sectionData.black_box} className="text-label-primary" />
               </div>
             )}
@@ -1378,7 +1419,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           )}
           {sectionData.urgent_red_flags && (
             <div className="rounded-lg border-2 border-negative-500 bg-negative-tint p-4">
-              <h4 className="font-semibold text-negative-700 mb-2">⚠️ Urgent Red Flags</h4>
+              <h4 className="font-semibold text-negative-700 mb-2">Urgent red flags</h4>
               <ul className="list-disc space-y-1 pl-6 text-negative-700">
                 {sectionData.urgent_red_flags.map((item: string, i: number) => (
                   <li key={i}><ParsedContent content={item} /></li>
@@ -1690,8 +1731,25 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
   };
 
   return (
-    <main className="min-h-screen bg-canvas" itemScope itemType="https://schema.org/MedicalWebPage">
-      <div className="mx-auto max-w-4xl px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen bg-canvas"
+      {...(intro ? {} : { itemScope: true, itemType: "https://schema.org/MedicalWebPage" })}
+    >
+      {intro}
+      <div className={`mx-auto ${intro ? "max-w-5xl" : "max-w-4xl"} px-4 py-8 sm:py-12 sm:px-6 lg:px-8`}>
+        {intro ? (
+          <div id="full-guide" className="scroll-mt-32 pb-6">
+            {sections.filter((x) => x.type !== "references" && !guideOmit.includes(x.type)).length + (faqs.length > 0 ? 1 : 0) > 2 ? (
+              <>
+                <h2 className="font-display text-label-primary text-[30px] leading-tight sm:text-[36px]">The full guide</h2>
+                <p className="text-label-secondary mt-2 text-[16px]">Everything we know about {title}, section by section.</p>
+              </>
+            ) : (
+              <h2 className="font-display text-label-primary text-[30px] leading-tight sm:text-[36px]">More about {title}</h2>
+            )}
+          </div>
+        ) : (
+        <>
         <div className="mb-8">
           <Button variant="ghost" onClick={() => window.history.back()} className="group text-label-secondary hover:text-label-primary hover:bg-surface-grouped">
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -1738,7 +1796,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                 };
 
                 return (
-                  <div className="mt-4 rounded-xl border border-accent-border bg-linear-to-r from-accent-tint to-surface p-4 shadow-card-1">
+                  <div className="mt-4 rounded-xl border border-accent-border bg-accent-tint p-4 shadow-card-1">
                     <div className="flex items-start gap-3">
                       <div className="shrink-0 mt-0.5">
                         <Shield className="h-5 w-5 text-accent" />
@@ -1756,8 +1814,8 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
                         <p className="text-xs text-label-tertiary leading-relaxed">
                           Board-certified psychiatrists and mental health professionals
                         </p>
-                        <div className="flex items-center gap-1.5 text-xs text-label-primary0 pt-1.5 border-t border-separator">
-                          <Calendar className="h-3.5 w-3.5 text-label-primary0 shrink-0" />
+                        <div className="flex items-center gap-1.5 text-xs text-label-tertiary pt-1.5 border-t border-separator">
+                          <Calendar className="h-3.5 w-3.5 text-label-tertiary shrink-0" />
                           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                             {timestamps.published_date && (
                               <span className="whitespace-nowrap">Published {formatDate(timestamps.published_date)}</span>
@@ -1793,9 +1851,12 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
             </div>
           </div>
         </div>
+        </>
+        )}
 
         {/* Floating Expand All / Collapse All Button */}
-        {sections.some((s) => s.collapsible !== false && !shouldSectionBeExpandedByDefault(s.type)) && (
+        {/* Not shown under the interactive opening: one quiet page, no floating chrome. */}
+        {!intro && sections.some((s) => s.collapsible !== false && !shouldSectionBeExpandedByDefault(s.type)) && (
           <div className="fixed bottom-24 right-6 z-50">
             <Button
               variant="primary"
@@ -1819,6 +1880,81 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           </div>
         )}
 
+        {intro ? (
+          <GuideChapters
+            subject={title}
+            groupOrder={TREATMENT_GUIDE_GROUPS}
+            chapters={[
+              ...sections
+                .filter((section) => section.type !== "references" && !guideOmit.includes(section.type))
+                .map((section) => {
+                  const { type, heading, ux_display, collapsible, ...sectionData } = section;
+                  const raw = sectionData as Record<string, unknown>;
+                  return {
+                    id: getSectionId(type, heading),
+                    title: heading || formatSectionTitle(type),
+                    teaser: teaserFrom([raw.text, raw.intro, raw.summary, raw.highlight, raw.simple_explanation]),
+                    group: TREATMENT_GUIDE_GROUP_OF[type] ?? "More",
+                    minutes: readingMinutes(sectionData),
+                    // Older records store an overview as { title, content }; show
+                    // the text, not its field names.
+                    content:
+                      type === "overview" && typeof raw.content === "string" ? (
+                        <div className="text-label-secondary max-w-3xl space-y-4 text-[17px] leading-relaxed">
+                          {String(raw.content)
+                            .split(/\n{2,}/)
+                            .map((paragraph, i) => (
+                              <p key={i}>
+                                <ParsedContent content={paragraph} />
+                              </p>
+                            ))}
+                        </div>
+                      ) : (
+                        renderSectionContent({ ...sectionData, ux_display, collapsible, heading }, type)
+                      ),
+                  };
+                }),
+              ...(faqs.length > 0
+                ? [
+                    {
+                      id: "faqs",
+                      title: "Questions people ask",
+                      teaser: faqs[0]?.question || faqs[0]?.q || null,
+                      group: "Questions",
+                      minutes: readingMinutes(faqs),
+                      content: (
+                        <div className="space-y-5">
+                          {faqs.map((faq: any, index: number) => (
+                            <div key={index}>
+                              <h4 className="text-label-primary font-semibold">{faq.question || faq.q}</h4>
+                              <p className="text-label-secondary mt-1">{faq.answer || faq.a}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ),
+                    },
+                  ]
+                : []),
+              ...(() => {
+                const references =
+                  data.sections?.find((s: any) => s.type === "references")?.references || entity.metadata?.references;
+                return references && references.length > 0
+                  ? [
+                      {
+                        id: "sources",
+                        title: "Sources",
+                        teaser: `${references.length} scientific references`,
+                        group: "Questions",
+                        minutes: 1,
+                        content: <CitationList citations={references} title="Scientific References" />,
+                      },
+                    ]
+                  : [];
+              })(),
+            ]}
+          />
+        ) : (
+        <>
         <section itemProp="mainEntityOfPage">
           <div className="space-y-4 sm:space-y-6">
             {sections.filter(s => s.type !== 'references').map((section) => (
@@ -1868,6 +2004,9 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           ) : null;
         })()}
 
+        </>
+        )}
+
         {/* Medical Disclaimer */}
         <div className="mt-8">
           <MedicalDisclaimer
@@ -1879,8 +2018,16 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
           />
         </div>
 
+        {intro ? (
+          <div className="border-separator mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-8">
+            <p className="text-label-secondary text-[15px]">Thinking about {title}? A prescriber can tell you if it fits.</p>
+            <Link href="/psychiatrists" className="bg-accent hover:bg-accent-hover rounded-full px-5 py-2.5 text-[15px] font-medium text-white">
+              Find a psychiatrist
+            </Link>
+          </div>
+        ) : (
         <div className="mt-12">
-          <Card className="border-accent-border bg-linear-to-r from-accent-tint to-surface">
+          <Card className="border-accent-border bg-accent-tint">
             <CardContent className="p-8 text-center">
               <h3 className="mb-4 text-2xl font-bold text-label-primary">
                 Interested in this treatment?
@@ -1900,6 +2047,7 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
             </CardContent>
           </Card>
         </div>
+        )}
       </div>
 
       {/* Floating Compare Button - uses canonical slug */}
@@ -1908,6 +2056,6 @@ export default function TreatmentClientWrapper({ entity }: TreatmentClientWrappe
         treatmentName={title}
         modality={treatmentType}
       />
-    </main>
+    </div>
   );
 }

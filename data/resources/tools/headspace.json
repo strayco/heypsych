@@ -3,22 +3,21 @@
   "kind": "tool",
   "slug": "headspace",
   "name": "Headspace",
-  "one_liner": "Headspace is a meditation and mindfulness app offering guided sessions, sleep content, and focus music to improve mental wellness.",
+  "one_liner": "Guided meditation and mindfulness app with courses for stress, sleep and focus, sleep sounds and short daily exercises.",
   "best_for": [
-    "People wanting structured meditation courses",
-    "Beginners learning mindfulness practices",
-    "Those who enjoy animated, approachable content",
-    "Employees with Headspace workplace benefits"
+    "Beginners who want structured, short guided meditations",
+    "People dealing with everyday stress or trouble winding down for sleep",
+    "People whose employer or health plan provides it free"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People seeking clinical treatment for mental health conditions",
-    "Those who need therapist support (self-guided app)"
+    "Anyone in crisis or thinking about suicide: call or text 988",
+    "People with moderate or severe depression, anxiety or PTSD who need treatment from a clinician",
+    "People who want their health app data kept out of advertising"
   ],
   "support_level": "self-help",
-  "short_description": "Headspace is a meditation and mindfulness app offering guided sessions, sleep content, and focus music to improve mental wellness.",
-  "long_description": "Headspace is a leading meditation app founded by a former Buddhist monk, offering guided meditations, sleep sounds, focus music, and mindfulness exercises. The app features structured courses for beginners through advanced meditators, covering stress, anxiety, sleep, focus, and relationships. Animations explain meditation concepts accessibly. Headspace for Work serves employers, and Headspace Health (acquired Ginger) offers clinical mental health services. The consumer app costs about $70/year after a free trial. Research studies show Headspace reduces stress and improves focus. Like Calm, it's a wellness tool rather than clinical treatment.",
-  "patient_summary": "Headspace teaches meditation through short, guided sessions with friendly animations. It's great for beginners learning mindfulness and for managing everyday stress. Not a replacement for therapy if you have clinical anxiety or depression.",
+  "short_description": "Subscription meditation app with guided courses for stress, sleep and focus. $69.99/year; often free through employers.",
+  "long_description": "Headspace is a mindfulness app with guided meditations from a few minutes long, multi-day courses on stress, anxiety, sleep and focus, sleepcasts and sounds, movement sessions and focus music. Beginners start with a basics course. It is a self-guided subscription: $69.99 a year for one person, with family and student plans, and it is widely offered through employers. The same company also offers therapy and text-based coaching, which are separate services. Randomized trials, several funded or run by Headspace, have found improvements in stress, wellbeing and irritability with app use. Its privacy policy says it shares personal information with advertising partners, which some state laws treat as a sale.",
+  "patient_summary": "You pick short guided meditations, courses on stress, anxiety or sleep, sleepcasts and focus music, and do a few minutes a day on your phone. It is a self-guided subscription app, about $70 a year; many employers and some health plans offer it free. Headspace also sells therapy and coaching separately.",
   "primary_hubs": [
     "anxiety-stress",
     "sleep"
@@ -42,16 +41,36 @@
   },
   "pricing": {
     "model": "subscription",
-    "free_tier": true,
-    "starting_price": "$70/year",
-    "notes": "Free trial available. Student discounts. Employer benefits common."
+    "free_tier": false,
+    "starting_price": "$69.99/year or $12.99/month",
+    "notes": "Headspace lists 2026 rates of $69.99/year (Solo), $99/year (Family) and $9.99/year (Student, eligible countries). The $12.99 monthly price is from third-party reviews. Free trials are offered; promotional prices renew at full price. Often free through employers.",
+    "sources": [
+      "https://help.headspace.com/hc/en-us/articles/115015331867-What-is-the-price-for-a-Headspace-subscription",
+      "https://www.headspace.com/subscriptions",
+      "https://www.headspace.com/studentplan"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "B+",
-    "hipaa_compliant": false,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.headspace.com/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "not-covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "no",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "Consumer wellness app. Headspace Health services are HIPAA compliant."
+    "data_sold": "yes",
+    "notes": "Policy (effective March 2026) says it does not sell for payment but shares personal information with advertising partners for targeted ads, which some state laws count as a sale.",
+    "sources": [
+      "https://www.headspace.com/privacy-policy",
+      "https://www.headspace.com/consumer-health-data"
+    ]
   },
   "app_rating": 4.8,
   "total_reviews": 1200000,
@@ -81,7 +100,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "publisher": "Headspace Inc.",
@@ -104,12 +123,39 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "high",
     "primary_uses": [
-      "Meditation",
-      "Mindfulness training",
-      "Stress reduction",
-      "Focus improvement"
+      "Guided meditation for beginners",
+      "Everyday stress reduction",
+      "Winding down for sleep",
+      "Focus and attention practice"
+    ],
+    "clinical_trials": [
+      {
+        "study": "Headspace introductory course vs audiobook control",
+        "citation": {
+          "authors": "Economides M, Martman J, Bell MJ, Sanderson B",
+          "title": "Improvements in Stress, Affect, and Irritability Following Brief Use of a Mindfulness-based Smartphone App: A Randomized Controlled Trial",
+          "journal": "Mindfulness",
+          "year": 2018,
+          "doi": "10.1007/s12671-018-0905-4"
+        },
+        "outcome": "Greater improvement in irritability, affect and stress from external pressure than control.",
+        "study_design": "Randomized controlled trial vs active control (audiobook); authors employed by Headspace"
+      },
+      {
+        "study": "Headspace for employees vs wait-list",
+        "citation": {
+          "authors": "Bostock S, Crosswell AD, Prather AA, Steptoe A",
+          "title": "Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being",
+          "journal": "Journal of Occupational Health Psychology",
+          "year": 2019,
+          "doi": "10.1037/ocp0000118"
+        },
+        "outcome": "Improved wellbeing and job strain sustained at 16 weeks.",
+        "sample_size": 238,
+        "study_design": "Randomized controlled trial vs wait-list"
+      }
     ]
   },
   "related_tools": [
@@ -124,5 +170,24 @@
   "featured": true,
   "status": "active",
   "affiliate_url": "https://www.headspace.com",
-  "updated_at": "2026-09-02T06:10:49.775Z"
+  "updated_at": "2026-09-02T06:10:49.775Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-23",
+    "note": "Self-guided app. Headspace also sells therapy and coaching, billed separately.",
+    "sources": [
+      "https://apps.apple.com/us/app/headspace-guided-meditation-mindfulness/id493145008",
+      "https://www.headspace.com/subscriptions"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.8,
+      "count": 974000,
+      "url": "https://apps.apple.com/us/app/headspace-guided-meditation-mindfulness/id493145008",
+      "checked": "2026-10-23"
+    }
+  ]
 }

@@ -3,22 +3,22 @@
   "kind": "tool",
   "slug": "mdlive",
   "name": "MDLIVE",
-  "one_liner": "MDLIVE provides video psychiatry and therapy appointments, often available within 24 hours, covered by most major insurance plans.",
+  "one_liner": "Video therapy and psychiatry appointments with US-licensed clinicians, billed to insurance or paid per visit; owned by Cigna's Evernorth.",
   "best_for": [
-    "People with Cigna insurance (MDLIVE is owned by Cigna parent company)",
-    "Those needing quick access to a psychiatrist (vs. 6-week waits)",
-    "People seeking medication management for mental health conditions",
-    "Those whose insurance covers telehealth psychiatry"
+    "Adults and children 10+ who want scheduled video therapy, including evenings and weekends",
+    "People with Cigna, Humana, Blue Cross Blue Shield or other participating plans",
+    "People who need a psychiatrist for non-controlled medications"
   ],
   "not_for": [
-    "Those requiring in-person evaluation or testing",
-    "People in psychiatric emergency (call 988 or go to ER)",
-    "Those without insurance seeking affordable care (try Cerebral or Brightside)"
+    "Anyone in crisis: call or text 988",
+    "People who need stimulants, benzodiazepines or other controlled medications",
+    "People who need disability paperwork or emotional support animal letters",
+    "Children under 10"
   ],
   "support_level": "clinical",
-  "short_description": "MDLIVE provides video psychiatry and therapy appointments, often available within 24 hours, covered by most major insurance plans.",
-  "long_description": "MDLIVE (owned by Cigna/Evernorth) offers telehealth psychiatry and therapy across 50 states. The platform connects patients with board-certified psychiatrists for medication management and licensed therapists for ongoing counseling. MDLIVE specializes in treating anxiety, depression, PTSD, bipolar disorder, and other mental health conditions. Appointments are typically available within 24-48 hours, with some same-day availability. Most major insurance plans cover MDLIVE, including Cigna, Aetna, BCBS, and United. Self-pay options available for those without coverage. MDLIVE psychiatrists can prescribe most psychiatric medications including controlled substances where state law permits.",
-  "patient_summary": "MDLIVE is a leading telehealth platform offering 24/7 access to board-certified doctors, licensed therapists, and psychiatrists for mental health care.",
+  "short_description": "Per-visit telehealth therapy and psychiatry across the US and Puerto Rico; up to $179 for a first therapy visit and $299 for a first psychiatry visit.",
+  "long_description": "MDLIVE, part of Cigna's Evernorth, offers scheduled video appointments with licensed therapists (typically 45–60 minutes) and board-certified psychiatrists (typically 15–30 minutes) for people aged 10 and up, anywhere in the US and Puerto Rico; phone visits depend on state rules. You choose your provider and can switch at any time. Before insurance, therapy costs up to $179 for the first visit and $140 for follow-ups, and psychiatry up to $299 for the first visit and $159 for follow-ups; copays on participating plans can be as low as $0. Psychiatrists do not prescribe controlled substances such as stimulants or anti-anxiety drugs. There is a $50 fee for cancelling within 24 hours. MDLIVE's privacy policy says it may share website identifiers and activity for advertising; in 2026 it agreed to a $3.5 million class-action settlement over tracking on its patient portal, without admitting wrongdoing. We found no published study of MDLIVE's behavioral health service.",
+  "patient_summary": "You create an account, pick a licensed therapist or psychiatrist, and book a video visit, including nights and weekends. With insurance you may pay as little as a $0 copay; before insurance a first therapy visit is up to $179 and follow-ups $140, and psychiatry is up to $299 then $159. Psychiatrists can prescribe some medications, but not controlled substances.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -46,15 +46,34 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$0-75 copay with insurance",
-    "notes": "Cigna members often $0 copay. Self-pay: $284 psychiatry, $108-129 therapy."
+    "starting_price": "Copay with insurance; $179 first therapy visit then $140/session before insurance",
+    "notes": "Psychiatry: up to $299 first visit, $159 follow-up before insurance. Copays on participating plans can be $0. $50 fee for cancelling within 24 hours (not for Medicare or Medicaid members).",
+    "sources": [
+      "https://www.mdlive.com/counseling/",
+      "https://www.mdlive.com/psychiatry"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://mdlive.com/privacy-policy",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "checked": "2026-10-26",
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Owned by Cigna/Evernorth with enterprise healthcare security standards."
+    "data_sold": "yes",
+    "notes": "Visit records are PHI handled as a HIPAA business associate, but the policy says website identifiers and activity may be 'shared' for advertising; a 2026 private class action over portal tracking settled for $3.5 million.",
+    "sources": [
+      "https://mdlive.com/privacy-policy",
+      "https://openclassactions.com/settlements/pixel-tracking/mdlive-evernorth-pixel-tracking-privacy-class-action-settlement.php"
+    ]
   },
   "seo": {
     "title": "MDLIVE: 24/7 Telehealth Psychiatry & Therapy | HeyPsych",
@@ -82,20 +101,22 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.mdlive.com",
-    "affiliate_url": "https://www.mdlive.com"
+    "affiliate_url": "https://www.mdlive.com",
+    "publisher": "MDLIVE, Inc.",
+    "app_store_url": "https://apps.apple.com/us/app/-/id839671393"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Online psychiatry",
-      "Medication management",
-      "Telehealth therapy",
-      "Mental health treatment"
+      "Video therapy with a licensed therapist",
+      "Psychiatric evaluation and non-controlled medication management",
+      "Depression and anxiety care",
+      "Care for children and teens aged 10–17"
     ]
   },
   "related_tools": [],
@@ -103,5 +124,24 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.mdlive.com",
-  "updated_at": "2026-09-02T06:10:49.776Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "note": "Ages 10 and up, anywhere in the US and Puerto Rico; phone visits vary by state. English and Spanish.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://www.mdlive.com/counseling/",
+      "https://www.mdlive.com/psychiatry"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.7,
+      "count": 94000,
+      "url": "https://apps.apple.com/us/app/-/id839671393",
+      "checked": "2026-10-26"
+    }
+  ]
 }

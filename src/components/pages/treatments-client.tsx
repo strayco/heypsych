@@ -95,7 +95,7 @@ export function TreatmentsClient({
             </Button>
 
             <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
-              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
+              <span>
                 {title}
               </span>
             </h1>
@@ -108,14 +108,14 @@ export function TreatmentsClient({
 
             <div className="flex items-center justify-center gap-4 text-xs text-label-primary">
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint0"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint"></div>
                 {sortedTreatments?.length || 0} {title}
                 {filteredTreatments?.length !== treatments?.length && (
                   <span className="text-orange-600">(filtered from {treatments?.length})</span>
                 )}
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint0"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint"></div>
                 Evidence-Based
               </div>
             </div>

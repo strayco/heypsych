@@ -17,7 +17,7 @@ export function PopularResourceChips() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-3 flex items-center gap-2">
-        <TrendingUp className="h-4 w-4 text-label-primary0" />
+        <TrendingUp className="h-4 w-4 text-label-tertiary" />
         <span className="text-sm font-semibold text-label-tertiary">Popular</span>
       </div>
 
@@ -34,7 +34,7 @@ export function PopularResourceChips() {
               className="group inline-flex items-center gap-2 rounded-full border border-separator bg-surface-grouped px-4 py-2 text-sm font-medium text-label-secondary transition-all hover:border-separator hover:bg-fill-secondary hover:text-label-primary"
             >
               <span className="font-semibold">{resource.name}</span>
-              <span className="text-xs text-label-primary0 group-hover:text-label-tertiary">
+              <span className="text-xs text-label-tertiary group-hover:text-label-tertiary">
                 {resource.label}
               </span>
             </Link>

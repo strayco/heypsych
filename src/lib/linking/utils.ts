@@ -731,8 +731,8 @@ export async function validateEntityExists(
     return null;
   }
 
-  // Import dependencies dynamically to avoid circular deps
-  const { EntityService } = await import('@/lib/data/entity-service');
+  // Light, cached lookups: link validation needs only id/slug/type/name/status.
+  const { getLightEntityBySlug } = await import('@/lib/data/entity-index');
 
   const baseSlug = slugify(name);
   const lowerName = name.toLowerCase().trim();
@@ -850,7 +850,7 @@ export async function validateEntityExists(
 
     const strategyPromises: Promise<Entity | null>[] = [
       // Strategy 1: Exact slug match
-      EntityService.getBySlug(baseSlug).then(
+      getLightEntityBySlug(baseSlug).then(
         entity => (entity && entity.type === type ? entity : null),
         () => null
       ).catch(() => null),
@@ -869,7 +869,7 @@ export async function validateEntityExists(
         .then(async ({ data: prefixMatches }) => {
           if (prefixMatches && prefixMatches.length > 0) {
             try {
-              const entity = await EntityService.getBySlug(prefixMatches[0].slug);
+              const entity = await getLightEntityBySlug(prefixMatches[0].slug);
               return entity || null;
             } catch {
               return null;
@@ -893,7 +893,7 @@ export async function validateEntityExists(
         .then(async ({ data: suffixMatches }) => {
           if (suffixMatches && suffixMatches.length > 0) {
             try {
-              const entity = await EntityService.getBySlug(suffixMatches[0].slug);
+              const entity = await getLightEntityBySlug(suffixMatches[0].slug);
               return entity || null;
             } catch {
               return null;
@@ -918,7 +918,7 @@ export async function validateEntityExists(
         
         if (commonAbbreviations[lowerName]) {
           try {
-            const entity = await EntityService.getBySlug(commonAbbreviations[lowerName]);
+            const entity = await getLightEntityBySlug(commonAbbreviations[lowerName]);
             return entity || null;
           } catch {
             return null;
@@ -941,7 +941,7 @@ export async function validateEntityExists(
 
       if (abbrevMatches && abbrevMatches.length > 0) {
         try {
-          const entity = await EntityService.getBySlug(abbrevMatches[0].slug);
+          const entity = await getLightEntityBySlug(abbrevMatches[0].slug);
           return entity || null;
         } catch {
           return null;
@@ -985,7 +985,7 @@ export async function validateEntityExists(
 
       // Exact match after normalization
       if (rowSlugNormalized === normalizedSlug || rowTitleNormalized === normalizedInput.replace(/\s+/g, '')) {
-        const entity = await EntityService.getBySlug(row.slug);
+        const entity = await getLightEntityBySlug(row.slug);
         if (entity) {
           validationCache.set(cacheKey, entity);
           return entity;
@@ -1013,7 +1013,7 @@ export async function validateEntityExists(
 
       // Check if name starts with search term (best match)
       if (entityName.startsWith(lowerName) || entitySlug.startsWith(baseSlug)) {
-        const entity = await EntityService.getBySlug(row.slug);
+        const entity = await getLightEntityBySlug(row.slug);
         if (entity) {
           validationCache.set(cacheKey, entity);
           return entity;
@@ -1026,7 +1026,7 @@ export async function validateEntityExists(
     for (const row of nameMatches) {
       const entityName = row.title || '';
       if (wordBoundaryRegex.test(entityName)) {
-        const entity = await EntityService.getBySlug(row.slug);
+        const entity = await getLightEntityBySlug(row.slug);
         if (entity) {
           validationCache.set(cacheKey, entity);
           return entity;
@@ -1048,7 +1048,7 @@ export async function validateEntityExists(
     .limit(1);
 
   if (altNameMatches && altNameMatches.length > 0) {
-    const entity = await EntityService.getBySlug(altNameMatches[0].slug);
+    const entity = await getLightEntityBySlug(altNameMatches[0].slug);
     if (entity) {
       validationCache.set(cacheKey, entity);
       return entity;

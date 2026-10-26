@@ -194,7 +194,7 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
             </Button>
 
             <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
-              <span className="bg-linear-to-r from-accent-600 to-accent bg-clip-text text-transparent">
+              <span>
                 Medications
               </span>
             </h1>
@@ -211,14 +211,14 @@ export function MedicationsClient({ medications }: MedicationsClientProps) {
 
             <div className="flex items-center justify-center gap-4 text-xs text-label-primary">
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint0"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-accent-tint"></div>
                 {sortedMedications?.length || 0} Medications
                 {filteredMedications?.length !== medications?.length && (
                   <span className="text-orange-600">(filtered from {medications?.length})</span>
                 )}
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint0"></div>
+                <div className="h-1.5 w-1.5 rounded-full bg-positive-tint"></div>
                 FDA Approved
               </div>
               <div className="flex items-center gap-1.5">

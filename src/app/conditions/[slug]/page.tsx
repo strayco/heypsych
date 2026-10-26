@@ -19,7 +19,14 @@ import { Metadata } from "next";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory, safeJsonLd } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
+import { pruneDeadLinks } from "@/lib/linking/live-paths";
 import ConditionClientWrapper from "./client-wrapper";
+import { ConditionExperience } from "@/components/conditions/experience/ConditionExperience";
+import { buildConditionExperience } from "@/domains/conditions/experience/model";
+import { getTreatmentsForCondition } from "@/domains/treatments/experience/treatments-for-condition";
+import { getAppsForCondition } from "@/lib/tools/apps-for-condition";
+import { getCategoryBySlug } from "@/lib/config/condition-categories";
+
 import { getEntityType } from "@/lib/utils/entity-type";
 import { featureFlags } from "@/lib/config/feature-flags";
 import {
@@ -142,6 +149,28 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
     }
   }
 
+  // Every condition opens with the interactive experience; the full guide
+  // (the record's tiles, as chapters) follows it.
+  // If a record's shape ever defeats the model, the page keeps its original
+  // layout rather than failing.
+  let intro: React.ReactNode = undefined;
+  try {
+    const content = (entity.data ?? {}) as Record<string, unknown>;
+    const metadata = (entity.metadata ?? {}) as Record<string, unknown>;
+    const category = typeof metadata.category === "string" ? getCategoryBySlug(metadata.category) : undefined;
+    intro = (
+      <ConditionExperience
+        slug={slug}
+        experience={buildConditionExperience(entity.name, content, metadata)}
+        treatments={await getTreatmentsForCondition(slug)}
+        apps={await getAppsForCondition(slug, typeof metadata.category === "string" ? metadata.category : undefined)}
+        category={category ? { title: category.displayTitle, href: category.href } : undefined}
+      />
+    );
+  } catch (error) {
+    console.error("[ConditionPage] Experience failed; using the original layout:", slug, error);
+  }
+
   return (
     <>
       {/* Inject schema.org JSON-LD into page head */}
@@ -155,7 +184,7 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
 
       {/* Pass enhanced entity data to client component for interactivity */}
       {/* Entity names are automatically linked inline via {link:} syntax */}
-      <ConditionClientWrapper entity={enhancedEntity} nextSteps={nextSteps} />
+      <ConditionClientWrapper entity={pruneDeadLinks(enhancedEntity)} nextSteps={nextSteps} intro={intro} />
     </>
   );
 }

@@ -59,7 +59,7 @@ export default function ForCampusesPage() {
   return (
     <div className="min-h-screen bg-canvas">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-canvas via-surface to-canvas px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="bg-canvas px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5">
             <Compass className="h-4 w-4 text-accent" />
@@ -96,7 +96,7 @@ export default function ForCampusesPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-label-primary">Student View</p>
-                  <p className="text-xs text-label-primary0">What students see</p>
+                  <p className="text-xs text-label-tertiary">What students see</p>
                 </div>
               </Link>
               <Link
@@ -108,7 +108,7 @@ export default function ForCampusesPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-label-primary">Staff Dashboard</p>
-                  <p className="text-xs text-label-primary0">Follow-ups & data</p>
+                  <p className="text-xs text-label-tertiary">Follow-ups & data</p>
                 </div>
               </Link>
             </div>

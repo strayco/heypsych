@@ -32,7 +32,7 @@ export function Timeline({
   uiHints,
   className = ""
 }: TimelineProps) {
-  const colors = getColorClasses(uiHints?.color || '#007AFF');
+  const colors = getColorClasses(uiHints?.color || '#456C7E');
 
   return (
     <div className={`space-y-6 ${className}`}>

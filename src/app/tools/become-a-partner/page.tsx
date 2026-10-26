@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Become a Partner",
     description: "Partner with HeyPsych to reach mental health professionals and patients.",
     url: canonicalUrl,
@@ -249,7 +250,7 @@ export default function BecomeAPartnerPage() {
 
           <p className="mt-4 text-sm text-label-tertiary">
             Read our complete{" "}
-            <Link href="/about/sponsorship-policy/" className="text-accent hover:underline">
+            <Link href="/about/sponsorship-policy" className="text-accent hover:underline">
               sponsorship and editorial independence policy
             </Link>
             .
@@ -258,7 +259,7 @@ export default function BecomeAPartnerPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-treatment/5 to-accent/5 px-4 py-12 sm:px-6 lg:px-8">
+      <section className="bg-treatment/5 px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold text-label-primary">Interested in Partnership?</h2>
           <p className="mt-2 text-label-secondary">
@@ -273,7 +274,7 @@ export default function BecomeAPartnerPage() {
           </a>
           <p className="mt-4 text-sm text-label-tertiary">
             Just want a basic listing?{" "}
-            <Link href="/tools/list-your-tool/" className="text-accent hover:underline">
+            <Link href="/tools/list-your-tool" className="text-accent hover:underline">
               Learn about free listings
             </Link>
           </p>

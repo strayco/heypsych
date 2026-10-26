@@ -3,22 +3,21 @@
   "kind": "tool",
   "slug": "wysa",
   "name": "Wysa",
-  "one_liner": "Wysa is an AI mental health chatbot offering CBT-based support, with optional human coaching for anxiety, depression, and stress management.",
+  "one_liner": "AI chatbot app with CBT and DBT-based exercises for stress, anxiety and low mood; free to use, with paid premium tools and text coaching.",
   "best_for": [
-    "People wanting AI support with option for human coaches",
-    "Those looking for CBT and DBT techniques in an app",
-    "People with mild to moderate anxiety or depression",
-    "Employees whose company offers Wysa benefits"
+    "People with everyday stress, worry or low mood who want a free self-help chat at any hour",
+    "People who want to practise CBT and DBT skills between therapy sessions",
+    "People whose employer or health plan provides Wysa premium"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People requiring clinical therapy or medication",
-    "Those with severe mental health conditions"
+    "Anyone in crisis: call or text 988",
+    "People who need diagnosis, therapy or medication for moderate to severe symptoms",
+    "Children under 13"
   ],
   "support_level": "coached",
-  "short_description": "Wysa is an AI mental health chatbot offering CBT-based support, with optional human coaching for anxiety, depression, and stress management.",
-  "long_description": "Wysa is an AI-powered mental health app combining chatbot support with optional access to human coaches. The AI uses CBT, DBT, meditation, and other evidence-based techniques to help users manage anxiety, depression, stress, and sleep issues. Daily check-ins track mood and suggest personalized exercises. For those wanting human support, Wysa offers text-based coaching with trained professionals for an additional fee. The app is available in 60+ countries and partners with employers and health plans. Research shows Wysa's AI can reduce depression symptoms. The free version provides substantial AI support; premium adds coaching.",
-  "patient_summary": "Wysa is a friendly AI penguin that helps you manage stress, anxiety, and low mood using therapy techniques. Chat anytime, and if you want, add sessions with a real human coach. It's affordable and available 24/7.",
+  "short_description": "AI chatbot app for stress, anxiety and low mood. The chat is free; premium exercises and text-based coaching cost extra.",
+  "long_description": "Wysa is an AI chatbot app from Wysa Ltd (originally Touchkin) that offers structured conversations and self-help exercises based on CBT, DBT and mindfulness for stress, anxiety, low mood and sleep. It is designed for people aged 13 and over and says it is not suitable for crisis situations. Anyone in the US can still download it from the App Store and Google Play and use the AI chat for free; premium content and text-based coaching with human coaches are sold as in-app purchases, with US App Store items reported between $4.99 and $144.99 as of October 2026. Wysa also sells to employers, health systems and the NHS, and people who get it through an organisation receive premium at no cost. Wysa says it does not sell data or share it with advertisers, and uses some anonymised messages to train its AI. It has a randomized trial in people with arthritis or diabetes and several uncontrolled studies. It is a self-help tool, not therapy.",
+  "patient_summary": "You download Wysa on your phone and chat with an AI 'penguin' that suggests short CBT, DBT and mindfulness exercises when you feel stressed, anxious or low. The basic chat is free; you can pay in the app for premium exercises or text sessions with a human coach. If your employer or health plan offers Wysa, premium is included.",
   "primary_hubs": [
     "anxiety-stress",
     "mood-depression"
@@ -49,15 +48,35 @@
   "pricing": {
     "model": "freemium",
     "free_tier": true,
-    "starting_price": "Free (premium ~$99/mo)",
-    "notes": "AI is free. Human coaching is premium. Employer benefits available."
+    "starting_price": "Free; Premium about $74.99/year",
+    "notes": "AI chat is free. Premium and coaching are in-app purchases; US App Store items listed from $4.99 to $144.99 (Oct 2026), including Premium (Annual) at $74.99 and $99.99. Wysa does not publish a consumer price list on its site. Free premium if provided by an employer or health plan.",
+    "sources": [
+      "https://apps.apple.com/us/app/wysa-mental-wellbeing-ai/id1166585565",
+      "https://www.wysa.com/faq"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
+    "grade": "B+",
+    "basis": {
+      "policy_url": "https://legal.wysa.io/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "no",
+      "deletion": "yes",
+      "hipaa": "unknown",
+      "on_device_only": false,
+      "account_required": false,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "unknown",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Strong privacy protections for health data."
+    "data_sold": "no",
+    "notes": "Says it does not sell or share data with advertisers; in-app 'reset my data' deletes it; anonymised messages may train its AI; HIPAA status for consumer app not stated.",
+    "sources": [
+      "https://legal.wysa.io/privacy-policy",
+      "https://legal.wysa.io/supplementary-privacy-notice",
+      "https://www.wysa.com/faq"
+    ]
   },
   "app_rating": 4.8,
   "total_reviews": 100000,
@@ -87,7 +106,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "publisher": "Wysa Ltd",
@@ -99,11 +118,40 @@
   "clinical_metadata": {
     "evidence_based": true,
     "evidence_level": "moderate",
+    "clinical_trials": [
+      {
+        "study": "RCT of Wysa vs no intervention for 4 weeks in adults with arthritis or diabetes",
+        "citation": {
+          "authors": "MacNeill AL, Doucet S, Luke A",
+          "title": "Effectiveness of a Mental Health Chatbot for People With Chronic Diseases: Randomized Controlled Trial",
+          "journal": "JMIR Formative Research",
+          "year": 2024,
+          "doi": "10.2196/50025",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11176869/"
+        },
+        "outcome": "Depression and anxiety scores fell in the Wysa group but not the control group; stress did not change.",
+        "study_design": "Randomized controlled trial"
+      },
+      {
+        "study": "Real-world evaluation of Wysa users with depressive symptoms",
+        "citation": {
+          "authors": "Inkster B, Sarda S, Subramanian V",
+          "title": "An Empathy-Driven, Conversational Artificial Intelligence Agent (Wysa) for Digital Mental Well-Being: Real-World Data Evaluation Mixed-Methods Study",
+          "journal": "JMIR mHealth and uHealth",
+          "year": 2018,
+          "doi": "10.2196/12106",
+          "url": "https://mhealth.jmir.org/2018/11/e12106/"
+        },
+        "outcome": "More engaged users had larger improvements in depression scores; no control group.",
+        "study_design": "Uncontrolled real-world mixed-methods study"
+      }
+    ],
     "primary_uses": [
-      "AI mental health support",
-      "CBT techniques",
-      "Mood tracking",
-      "Stress management"
+      "Self-help chat for stress and worry",
+      "CBT thought-reframing exercises",
+      "DBT and mindfulness skills practice",
+      "Mood and sleep check-ins",
+      "Text coaching with a human coach (paid)"
     ]
   },
   "related_tools": [
@@ -134,5 +182,26 @@
   "featured": true,
   "status": "active",
   "affiliate_url": "https://www.wysa.com",
-  "updated_at": "2026-09-02T06:10:49.780Z"
+  "updated_at": "2026-09-02T06:10:49.780Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "note": "Consumer app still downloadable and usable free in the US (App Store and Google Play, Oct 2026). Wysa also sells to employers and health systems; removed from the UK MHRA device register in Sept 2026.",
+    "checked": "2026-10-23",
+    "sources": [
+      "https://apps.apple.com/us/app/wysa-mental-wellbeing-ai/id1166585565",
+      "https://play.google.com/store/apps/details?id=bot.touchkin",
+      "https://www.wysa.com/faq",
+      "https://legal.wysa.io/changelog"
+    ]
+  },
+  "store_ratings": [
+    {
+      "store": "App Store",
+      "rating": 4.8,
+      "count": 24000,
+      "url": "https://apps.apple.com/us/app/wysa-mental-wellbeing-ai/id1166585565",
+      "checked": "2026-10-23"
+    }
+  ]
 }

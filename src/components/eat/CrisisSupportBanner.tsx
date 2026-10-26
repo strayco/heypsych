@@ -62,7 +62,7 @@ export function CrisisSupportBanner({
 
   if (prominent) {
     return (
-      <Card className="border-negative-500/40 bg-linear-to-r from-negative-900/30 via-surface to-negative-900/30">
+      <Card className="border-negative-500/40 bg-negative-tint">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-negative-tint">

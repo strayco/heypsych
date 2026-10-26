@@ -108,7 +108,7 @@ export function InsightBeatCard({
             className="p-1.5 rounded-lg hover:bg-fill-secondary transition-colors shrink-0"
             aria-label="Dismiss"
           >
-            <X className="h-3.5 w-3.5 text-label-primary0" />
+            <X className="h-3.5 w-3.5 text-label-tertiary" />
           </button>
         </div>
       </div>

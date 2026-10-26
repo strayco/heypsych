@@ -87,10 +87,8 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [showResults, setShowResults] = useState(false);
 
-  const result = useMemo(() => {
-    console.log("Calling runEngine with:", data.scoring?.engine, "answers:", answers);
-    return runEngine(data, answers);
-  }, [data, answers]);
+  // Answers are health data: never log them.
+  const result = useMemo(() => runEngine(data, answers), [data, answers]);
 
   const onAnswer = (questionIndex: number, value: number) => {
     // Use item ID if available, otherwise fall back to question number
@@ -267,6 +265,11 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
                   {result.details.band}
                 </div>
               )}
+              <ScoreScale
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                bands={(data as any).scoring?.rules?.severity?.bands}
+                score={result.score}
+              />
             </div>
 
             {/* Clinical interpretation from JSON */}
@@ -419,5 +422,65 @@ export function AssessmentRenderer({ resource }: ResourceRendererProps) {
       <SectionList sections={otherSections} />
       <ReferencesTable refs={data.references} />
     </>
+  );
+}
+
+/**
+ * Where the score sits among the questionnaire's own published bands
+ * (e.g. GAD-7 0–4 Minimal … 15–21 Severe). Drawn only from the record's
+ * bands; nothing is inferred. Hidden when a questionnaire has no bands.
+ */
+function ScoreScale({ bands, score }: { bands?: Record<string, string>; score: number }) {
+  if (!bands || typeof bands !== "object") return null;
+  const parsed = Object.entries(bands)
+    .map(([range, label]) => {
+      const [min, max] = range.split("-").map(Number);
+      return { min, max, label: String(label) };
+    })
+    .filter((b) => Number.isFinite(b.min) && Number.isFinite(b.max) && b.max >= b.min)
+    .sort((a, b) => a.min - b.min);
+  if (parsed.length < 2) return null;
+  const lo = parsed[0].min;
+  const hi = parsed[parsed.length - 1].max;
+  const span = Math.max(1, hi - lo + 1);
+  const at = Math.min(Math.max(score, lo), hi);
+  const pct = ((at - lo + 0.5) / span) * 100;
+  return (
+    <figure className="mx-auto mt-4 max-w-md px-4 text-left" aria-label={`Score ${score} on a scale from ${lo} to ${hi}`}>
+      <div className="relative">
+        <div className="flex h-2 overflow-hidden rounded-full">
+          {parsed.map((b, i) => {
+            const active = score >= b.min && score <= b.max;
+            return (
+              <div
+                key={b.label + i}
+                style={{ width: `${((b.max - b.min + 1) / span) * 100}%` }}
+                className={`${active ? "bg-accent" : "bg-fill-secondary"} ${i > 0 ? "border-l border-canvas" : ""}`}
+              />
+            );
+          })}
+        </div>
+        <div
+          aria-hidden="true"
+          className="bg-canvas border-accent absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-sm"
+          style={{ left: `${pct}%` }}
+        />
+      </div>
+      <figcaption className="mt-2 flex text-[12px] text-label-tertiary">
+        {parsed.map((b, i) => {
+          const active = score >= b.min && score <= b.max;
+          return (
+            <span
+              key={b.label + i}
+              style={{ width: `${((b.max - b.min + 1) / span) * 100}%` }}
+              className={`truncate ${active ? "font-semibold text-label-primary" : ""}`}
+            >
+              {b.label}
+              <span className="block tabular-nums">{b.min}–{b.max}</span>
+            </span>
+          );
+        })}
+      </figcaption>
+    </figure>
   );
 }

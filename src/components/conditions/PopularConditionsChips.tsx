@@ -52,7 +52,7 @@ const POPULAR_CONDITIONS = [
 
 export function PopularConditionsChips() {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <span className="mr-2 text-sm font-medium text-label-tertiary">Popular:</span>
       {POPULAR_CONDITIONS.map((condition) => (
         <Link

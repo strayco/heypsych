@@ -1,3 +1,4 @@
+import { PageIntro } from "@/components/brand/PageIntro";
 // Medical Review Board Page
 // Displays all medical reviewers with credentials and expertise
 
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
   title: "Medical Review Board",
   description: "Meet the board-certified psychiatrists and mental health professionals who review all medical content on HeyPsych to ensure accuracy and reliability.",
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Medical Review Board",
     description: "Board-certified psychiatrists and mental health professionals ensuring medical accuracy",
     url: "https://heypsych.com/about/medical-review-board",
@@ -108,23 +110,14 @@ export default function MedicalReviewBoardPage() {
         />
       ))}
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-canvas">
+        <PageIntro
+          title={organization.name}
+          object="doorway"
+          parent={{ label: "About", href: "/about" }}
+          description={organization.description}
+        />
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="mb-12 text-center">
-            <div className="mb-4 flex justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                <Shield className="h-8 w-8 text-green-600" />
-              </div>
-            </div>
-            <h1 className="mb-4 text-4xl font-bold text-neutral-900">
-              {organization.name}
-            </h1>
-            <p className="mx-auto max-w-3xl text-lg text-neutral-700">
-              {organization.description}
-            </p>
-          </div>
-
           {/* Mission Statement */}
           <Card className="mb-12 border-green-200 bg-green-50">
             <CardContent className="p-6">

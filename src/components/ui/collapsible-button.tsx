@@ -31,7 +31,7 @@ export function CollapsibleButton({
   const variantStyles = {
     default: "text-accent hover:text-accent-700",
     neutral: "text-label-tertiary hover:text-label-secondary",
-    subtle: "text-label-primary0 hover:text-label-tertiary",
+    subtle: "text-label-tertiary hover:text-label-tertiary",
   };
 
   return (

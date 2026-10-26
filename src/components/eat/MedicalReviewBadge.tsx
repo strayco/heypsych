@@ -53,7 +53,7 @@ export function MedicalReviewBadge({
 
   if (prominent) {
     return (
-      <div className="rounded-lg border-2 border-positive-500/30 bg-linear-to-r from-positive-900/20 to-surface-grouped p-4">
+      <div className="rounded-lg border-2 border-positive-500/30 bg-positive-tint p-4">
         <div className="flex items-start gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-positive-tint">
             <Shield className="h-6 w-6 text-positive-600" />

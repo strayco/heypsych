@@ -26,21 +26,6 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-label-primary sm:text-4xl">
               {tool.name}
             </h1>
-            {tool.app_rating && (
-              <div className="flex items-center gap-2 mt-2">
-                <div className="flex items-center">
-                  <Star className="h-4 w-4 fill-current text-label-tertiary" />
-                  <span className="ml-1 font-medium text-label-primary">
-                    {tool.app_rating}
-                  </span>
-                </div>
-                {tool.total_reviews && (
-                  <span className="text-sm text-label-tertiary">
-                    ({formatReviews(tool.total_reviews)} reviews)
-                  </span>
-                )}
-              </div>
-            )}
           </div>
 
           {/* Quick Badges */}
@@ -68,14 +53,6 @@ export function DirectAnswerBlock({ tool }: DirectAnswerBlockProps) {
           {tool.one_liner}
         </p>
 
-        {/* Quick Summary for AI/Voice - Hidden visually but crawlable */}
-        <div className="sr-only" data-speakable="true">
-          {tool.name} is a {tool.support_level === "self-help" ? "self-guided" : tool.support_level} mental health app.
-          {tool.pricing.model === "free" ? " It is completely free to use." :
-           tool.pricing.free_tier ? ` It has a free tier with premium options starting at ${tool.pricing.starting_price || "a monthly fee"}.` :
-           ` Pricing starts at ${tool.pricing.starting_price || "varies"}.`}
-          {tool.app_rating ? ` Rated ${tool.app_rating} out of 5 stars.` : ""}
-        </div>
 
         {/* At-a-Glance Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">

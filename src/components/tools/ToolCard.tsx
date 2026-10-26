@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Star, ArrowRight, Shield } from "lucide-react";
+import { ArrowRight, Shield } from "lucide-react";
 import type { DigitalToolV3, SupportLevel } from "@/lib/schemas/digital-tool-v3";
 
 interface ToolCardProps {
@@ -86,7 +86,7 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
   const showPrivacyBadge = tool.privacy.data_sold === false;
 
   return (
-    <Link href={`/tools/${tool.slug}/`} className="group block h-full">
+    <Link href={`/tools/${tool.slug}`} className="group block h-full">
       <div className="h-full rounded-xl border border-separator bg-surface p-5 transition-all hover:border-neutral-300 hover:shadow-soft">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
@@ -95,19 +95,7 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
             </h3>
 
             {/* Rating */}
-            {tool.app_rating && (
-              <div className="flex items-center gap-1 mt-1">
-                <Star className="h-3 w-3 fill-current text-label-tertiary" />
-                <span className="text-sm text-label-secondary">
-                  {tool.app_rating}
-                </span>
-                {tool.total_reviews && (
-                  <span className="text-xs text-label-tertiary">
-                    ({formatReviews(tool.total_reviews)})
-                  </span>
-                )}
-              </div>
-            )}
+            {/* No rating: app_rating is legacy and unsourced. */}
           </div>
 
           {/* Badges - support type and AI */}
@@ -182,12 +170,6 @@ export function ToolCard({ tool, showHubBadge = false }: ToolCardProps) {
       </div>
     </Link>
   );
-}
-
-function formatReviews(count: number): string {
-  if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M`;
-  if (count >= 1000) return `${Math.round(count / 1000)}K`;
-  return count.toString();
 }
 
 export default ToolCard;

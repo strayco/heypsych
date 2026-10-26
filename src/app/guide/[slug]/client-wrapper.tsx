@@ -35,7 +35,7 @@ const itemVariants = {
 
 export function GuidePageClient({ content }: GuidePageClientProps) {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
       <HeroSection content={content} />
 
@@ -47,7 +47,7 @@ export function GuidePageClient({ content }: GuidePageClientProps) {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="max-w-4xl mx-auto px-6 -mt-8 relative z-10"
         >
-          <Card variant="accent" className="border-accent-500/30 bg-accent-900/10 shadow-card-1">
+          <Card variant="accent" className="border-accent-500/30 bg-accent-tint shadow-card-1">
             <CardContent className="pt-0">
               <div className="flex gap-4">
                 <span className="text-2xl shrink-0">💡</span>
@@ -187,7 +187,7 @@ export function GuidePageClient({ content }: GuidePageClientProps) {
           <DisclaimerCard level={content.disclaimerLevel} />
         </motion.div>
       </motion.section>
-    </main>
+    </div>
   );
 }
 
@@ -197,8 +197,8 @@ function HeroSection({ content }: { content: GeneratedContent }) {
   return (
     <section className="relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-indigo-50/50 to-purple-50/30" />
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-100/20 to-transparent" />
+      <div className="absolute inset-0" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-100/20" />
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}

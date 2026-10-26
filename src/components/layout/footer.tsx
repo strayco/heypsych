@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config/site";
+import { Wordmark } from "@/components/brand/Wordmark";
 import { Phone } from "lucide-react";
 
 export function Footer() {
@@ -14,7 +15,7 @@ export function Footer() {
       links: [
         { name: "Conditions", href: "/conditions" },
         { name: "Treatments", href: "/treatments" },
-        { name: "Tools", href: "/tools" },
+        { name: "Apps & Tools", href: "/tools" },
         { name: "Find Care", href: "/psychiatrists" },
       ],
     },
@@ -22,15 +23,18 @@ export function Footer() {
       title: "Resources",
       links: [
         { name: "Learn", href: "/learn" },
+        { name: "Find Support", href: "/find-support" },
         { name: "Assessments", href: "/resources/assessments-screeners" },
         { name: "Support & Crisis", href: "/resources/support-community" },
-        { name: "For Clinicians", href: "/tools/for-clinicians" },
+        { name: "For Clinicians", href: "/for-clinicians" },
+        { name: "Practice Architect", href: "/architect" },
       ],
     },
     {
       title: "Company",
       links: [
         { name: "About", href: "/about" },
+        { name: "Clinical review", href: "/about/review-methodology" },
         { name: "Privacy", href: "/privacy" },
         { name: "Terms", href: "/terms" },
         { name: "Contact", href: "mailto:hello@heypsych.com" },
@@ -77,11 +81,7 @@ export function Footer() {
           {/* Brand Section */}
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4">
-              <img
-                src="/logo.svg"
-                alt={siteConfig.name}
-                className="h-10 w-auto"
-              />
+              <Wordmark size={28} />
             </div>
             <p className="mb-6 max-w-xs text-sm leading-relaxed text-label-secondary">
               Better mental health starts with better decisions.

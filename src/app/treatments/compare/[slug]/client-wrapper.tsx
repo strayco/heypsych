@@ -16,7 +16,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
+    <div className="min-h-screen bg-white" itemScope itemType="https://schema.org/MedicalWebPage">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <nav className="mb-6 text-sm text-neutral-500">
@@ -49,7 +49,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
         <div className="mb-10">
           <div className="space-y-4">
             <div className="mb-3 flex flex-wrap gap-2">
-              <Badge variant="primary" size="md" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
+              <Badge variant="primary" size="md" className="bg-blue-500 text-white border-0">
                 <Scale className="mr-1.5 h-3.5 w-3.5" />
                 Treatment Comparison
               </Badge>
@@ -70,7 +70,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
 
         {/* Bottom Line Card */}
         <div className="mb-10">
-          <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
+          <Card className="border-blue-200 bg-blue-50 overflow-hidden">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-blue-900">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500">
@@ -236,7 +236,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
                       {section.recommendations.map((rec, i) => (
                         <div
                           key={i}
-                          className="flex items-start gap-4 p-4 rounded-lg bg-gradient-to-r from-neutral-50 to-white border border-neutral-100"
+                          className="flex items-start gap-4 p-4 rounded-lg bg-neutral-50 border border-neutral-100"
                         >
                           <Badge variant="primary" className="shrink-0 mt-0.5">
                             {rec.choose}
@@ -329,7 +329,7 @@ export function ComparisonClientWrapper({ data }: ComparisonClientWrapperProps) 
           </div>
         </footer>
       </div>
-    </main>
+    </div>
   );
 }
 

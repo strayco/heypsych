@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/somatic-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Somatic Symptom Disorders",
     description: "Comprehensive guide to somatic disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/somatic-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Somatic symptom disorders and illness-related conditions affecting physical health perceptions.",
   icon: "stethoscope",
   iconColor: "text-green-600",
-  bgColor: "from-green-50",
-  gradient: "from-green-900 via-emerald-900 to-green-900",
+  bgColor: "bg-green-50",
+  gradient: "bg-green-900",
 };
 
 export default async function SomaticDisordersPage() {

@@ -42,7 +42,8 @@ export async function GET(
 
     logger.debug(`✅ Successfully loaded ${slug}`);
 
-    return NextResponse.json(entityData);
+    // File-backed and only changes on deploy (which purges the CDN).
+    return NextResponse.json(entityData, { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unknown error";
     logger.error("❌ Error in treatment API:", error);

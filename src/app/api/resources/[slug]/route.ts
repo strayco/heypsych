@@ -110,7 +110,8 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     // Return the resource content directly (matches what normalizeResource expects)
     logger.debug(`✅ Successfully loaded ${slug} from ${category}`);
 
-    return NextResponse.json(resourceData);
+    // File-backed and only changes on deploy (which purges the CDN).
+    return NextResponse.json(resourceData, { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } });
   } catch (error: any) {
     logger.error("Error in resource API", error, { slug });
     return NextResponse.json(

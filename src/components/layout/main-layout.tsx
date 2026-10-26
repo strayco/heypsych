@@ -20,9 +20,19 @@ export function MainLayout({
 }: MainLayoutProps) {
   return (
     <div className={`flex min-h-screen flex-col ${className}`}>
+      {/* Skip link: the first focusable element on every page. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-label-primary focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent"
+      >
+        Skip to content
+      </a>
+
       {showHeader && <Header />}
 
-      <main className="flex-1">{children}</main>
+      <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+        {children}
+      </main>
 
       {showFooter && <Footer />}
 

@@ -64,7 +64,7 @@ export function createScenarioFromBlueprint(bp: ScenarioBlueprint): Partial<Scen
       metrics: bp.metricsTemplate.map((m) => ({ key: m.key, label: m.label, min: 0, max: 100, higherIsBetter: true })),
       showTimeline: true,
       showEventLog: false,
-      themeColor: "#3b82f6",
+      themeColor: "#456C7E",
     },
     initialMetrics: Object.fromEntries(bp.metricsTemplate.map((m) => [m.key, m.initial])),
     initialFlags: {},

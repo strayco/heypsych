@@ -1,0 +1,224 @@
+/*
+ * HeyPsych Worlds — interaction states
+ *
+ * Every state is pure CSS, driven by the world link's :hover, :focus-visible,
+ * and [data-selected]. The illustrations render on the server; no script is
+ * needed for any of this, and the static resting state is the foundation.
+ *
+ * Timing: 320ms ease-out for scene changes, 180ms for press. Nothing loops,
+ * nothing bounces, nothing moves while the visitor is reading.
+ */
+
+.choices {
+  --hp-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* -------------------------------------------------------------------------- */
+/* The world as a whole                                                       */
+/* -------------------------------------------------------------------------- */
+
+.world {
+  transition:
+    opacity 320ms var(--hp-ease),
+    filter 320ms var(--hp-ease);
+}
+
+/* While one world is being considered, the other stays visible but quieter. */
+@media (hover: hover) {
+  .choices:has(.world:hover) .world:not(:hover) {
+    opacity: 0.72;
+    filter: saturate(0.82);
+  }
+}
+.choices:has(.world:focus-visible) .world:not(:focus-visible) {
+  opacity: 0.72;
+  filter: saturate(0.82);
+}
+
+.stage {
+  transform: translateY(0) scale(1);
+  transform-box: fill-box;
+  transform-origin: 50% 80%;
+  transition: transform 420ms var(--hp-ease);
+}
+
+@media (hover: hover) {
+  .world:hover .stage {
+    transform: translateY(-6px) scale(1.012);
+  }
+}
+.world:focus-visible .stage {
+  transform: translateY(-6px) scale(1.012);
+}
+
+/* Pressed: immediate, then the selected world settles toward the visitor
+   while the next page loads. Navigation is never held for this. */
+.world:active .stage {
+  transform: translateY(-2px) scale(0.992);
+  transition-duration: 120ms;
+}
+.world[data-selected="true"] .stage {
+  transform: translateY(-8px) scale(1.03);
+  transition-duration: 520ms;
+}
+.choices:has(.world[data-selected="true"]) .world:not([data-selected="true"]) {
+  opacity: 0.45;
+}
+
+/* The page shadow under the plinth deepens as the miniature lifts. */
+.groundShadow {
+  opacity: 0.22;
+  transition: opacity 420ms var(--hp-ease);
+}
+@media (hover: hover) {
+  .world:hover .groundShadow {
+    opacity: 0.32;
+  }
+}
+.world:focus-visible .groundShadow,
+.world[data-selected="true"] .groundShadow {
+  opacity: 0.32;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Scene details that respond to interest                                     */
+/* -------------------------------------------------------------------------- */
+
+/* Light that warms up: lamps, daylight, screens, the open doorway. */
+.light {
+  opacity: var(--rest, 0.35);
+  transition: opacity 420ms var(--hp-ease);
+}
+
+/* Objects that come into the scene: they rise a few units and fade in. */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 320ms var(--hp-ease),
+    transform 320ms var(--hp-ease);
+}
+
+/* Objects that sharpen from a quieter resting state. */
+.focus {
+  opacity: 0.55;
+  transition: opacity 320ms var(--hp-ease);
+}
+
+@media (hover: hover) {
+  .world:hover .light {
+    opacity: var(--active, 1);
+  }
+  .world:hover .reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .world:hover .focus {
+    opacity: 1;
+  }
+}
+
+.world:focus-visible .light,
+.world[data-selected="true"] .light {
+  opacity: var(--active, 1);
+}
+.world:focus-visible .reveal,
+.world[data-selected="true"] .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.world:focus-visible .focus,
+.world[data-selected="true"] .focus {
+  opacity: 1;
+}
+
+/* Staggering keeps a reveal from reading as one flat crossfade. */
+.delay1 {
+  transition-delay: 60ms;
+}
+.delay2 {
+  transition-delay: 120ms;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Label and action                                                           */
+/* -------------------------------------------------------------------------- */
+
+.label {
+  transition: color 240ms var(--hp-ease);
+}
+
+.action {
+  transition:
+    background-color 200ms var(--hp-ease),
+    transform 200ms var(--hp-ease);
+}
+.arrow {
+  display: inline-block;
+  transition: transform 240ms var(--hp-ease);
+}
+@media (hover: hover) {
+  .world:hover .action {
+    background-color: var(--hp-accent);
+  }
+  .world:hover .arrow {
+    transform: translateX(3px);
+  }
+}
+.world:focus-visible .action {
+  background-color: var(--hp-accent);
+}
+.world:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Touch: no hover dependency                                                 */
+/* -------------------------------------------------------------------------- */
+
+/* Touch devices cannot hover, so the scenes rest in their "lit" state: every
+   detail a desktop visitor discovers on hover is simply present. */
+@media (hover: none) {
+  .light {
+    opacity: var(--active, 1);
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .focus {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+/* Nothing moves. Emphasis is still communicated, through light and opacity
+   changes that happen instantly, so the page stays fully expressive. */
+@media (prefers-reduced-motion: reduce) {
+  .world,
+  .stage,
+  .groundShadow,
+  .light,
+  .reveal,
+  .focus,
+  .label,
+  .action,
+  .arrow {
+    transition: none !important;
+  }
+  .stage,
+  .world:hover .stage,
+  .world:focus-visible .stage,
+  .world:active .stage,
+  .world[data-selected="true"] .stage,
+  .reveal,
+  .world:hover .reveal,
+  .world:focus-visible .reveal,
+  .world:hover .arrow,
+  .world:focus-visible .arrow {
+    transform: none !important;
+  }
+}

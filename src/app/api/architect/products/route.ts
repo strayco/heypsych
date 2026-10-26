@@ -117,14 +117,16 @@ export async function GET(request: NextRequest): Promise<NextResponse<ArchitectP
       hasMore: offset + products.length < total,
     });
 
-    // In production: Cache for 5 minutes, stale-while-revalidate for 10 minutes
-    // In development: No caching to ensure fresh data
+    // Products come from data/tools-v4 files, which only change on deploy, and
+    // Vercel purges the CDN on every deploy. So the edge can hold this for a
+    // day; it was 5 minutes, which re-ran the function for most Architect visits.
+    // In development: no caching, so edits show up immediately.
     if (isDev) {
       response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
     } else {
       response.headers.set(
         "Cache-Control",
-        "public, s-maxage=300, stale-while-revalidate=600"
+        "public, s-maxage=86400, stale-while-revalidate=604800"
       );
     }
 

@@ -470,7 +470,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           <p className="text-sm font-medium text-label-primary">Website</p>
                           <p className="text-xs text-label-tertiary">Visit provider's website</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-label-primary0" />
+                        <ExternalLink className="h-3 w-3 text-label-tertiary" />
                       </a>
                     )}
 
@@ -486,7 +486,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           <p className="text-sm font-medium text-label-primary">LinkedIn Profile</p>
                           <p className="text-xs text-label-tertiary">Professional background</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-label-primary0" />
+                        <ExternalLink className="h-3 w-3 text-label-tertiary" />
                       </a>
                     )}
 
@@ -502,7 +502,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           <p className="text-sm font-medium text-label-primary">Academic Profile</p>
                           <p className="text-xs text-label-tertiary">Research & publications</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-label-primary0" />
+                        <ExternalLink className="h-3 w-3 text-label-tertiary" />
                       </a>
                     )}
 
@@ -518,7 +518,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           <p className="text-sm font-medium text-label-primary">Practice Profile</p>
                           <p className="text-xs text-label-tertiary">Group or hospital profile</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-label-primary0" />
+                        <ExternalLink className="h-3 w-3 text-label-tertiary" />
                       </a>
                     )}
 
@@ -535,7 +535,7 @@ export default function ProviderDetailPage({ params }: ProviderDetailPageProps) 
                           <p className="text-sm font-medium text-label-primary">{link.label}</p>
                           <p className="text-xs text-label-tertiary">External link</p>
                         </div>
-                        <ExternalLink className="h-3 w-3 text-label-primary0" />
+                        <ExternalLink className="h-3 w-3 text-label-tertiary" />
                       </a>
                     ))}
                   </CardContent>

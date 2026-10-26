@@ -48,3 +48,12 @@ export function categoryHubPath(schemaCategory: string): string | null {
   const slug = resolveCategoryHubSlug(schemaCategory);
   return slug ? `/tools/for-clinicians/${slug}` : null;
 }
+
+/**
+ * Canonical profile path for a clinician product, or `null` when its category
+ * has no hub (the profile route would 404).
+ */
+export function clinicianToolPath(tool: { slug: string; primary_category: string }): string | null {
+  const hub = resolveCategoryHubSlug(tool.primary_category);
+  return hub ? `/tools/for-clinicians/${hub}/${tool.slug}` : null;
+}

@@ -6,13 +6,15 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   email: "hello@heypsych.com",
 
-  // Navigation V2 - Audience-first navigation (Phase 3 inversion)
-  // Primary hierarchy: Patients and Clinicians as top-level destinations
+  // Navigation V2 - Audience-first navigation
+  // The two decision products are entered from the homepage worlds; the
+  // header stays minimal: a way to explore, Practice Architect for clinicians,
+  // About, and search (rendered as the header's search control).
   navigationInverted: [
-    { name: "Find Support", href: "/find-support", icon: "compass", audience: "patient" },
-    { name: "Practice Architect", href: "/architect", icon: "stethoscope", audience: "clinician" },
-    { name: "Browse", href: "/browse", icon: "book-open" },
-    { name: "Search", href: "/search", icon: "search" },
+    { name: "Explore", href: "/browse", icon: "compass" },
+    { name: "Apps", href: "/tools", icon: "smartphone" },
+    { name: "For Clinicians", href: "/architect", icon: "stethoscope", audience: "clinician" },
+    { name: "About", href: "/about", icon: "info" },
   ],
 
   // Navigation V1 - Taxonomy-first navigation (rollback option)
@@ -45,7 +47,7 @@ export const siteConfig = {
     defaultTheme: "light",
     animationSpeed: "normal" as "slow" | "normal" | "fast",
     density: "comfortable" as "compact" | "comfortable" | "spacious",
-    accentColor: "blue",
+    accentColor: "slate-teal", // --hp-accent #456C7E
   },
 } as const;
 

@@ -3,73 +3,78 @@ import { test, expect } from '@playwright/test';
 /**
  * Navigation V1 E2E Tests
  *
- * Tests for the Navigation V1 mental health navigation platform features:
- * - Homepage intent-based navigation
- * - Primary navigation structure
+ * Tests for the mental health navigation platform:
+ * - Homepage Two Worlds entry (patient and clinician destinations)
+ * - Primary navigation structure and Explore
  * - OCD vertical slice with next steps
  * - For Clinicians page
  * - Search functionality (privacy-safe)
  */
 
-test.describe('Navigation V1 Homepage', () => {
-  test('should display intent-based navigation grid', async ({ page }) => {
+test.describe('Homepage: Two Worlds', () => {
+  test('asks one question and offers the two destinations', async ({ page }) => {
     await page.goto('/');
 
-    // Should have intent cards visible (use more specific text to avoid multiple matches)
-    await expect(page.getByText(/concerned about symptoms/i)).toBeVisible();
-    await expect(page.getByText(/understand a diagnosis/i)).toBeVisible();
-    await expect(page.getByText(/comparing treatments/i)).toBeVisible();
-    await expect(page.getByText(/need to find care/i)).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+      'A little clarity changes everything.'
+    );
+    await expect(page.getByRole('heading', { name: 'Where would you like to begin?' })).toBeVisible();
   });
 
-  test('should navigate to conditions from symptom intent', async ({ page }) => {
+  test('patient world links to the support journey', async ({ page }) => {
     await page.goto('/');
-
-    const symptomCard = page.getByRole('link', { name: /concerned about symptoms/i });
-    await expect(symptomCard).toHaveAttribute('href', '/conditions');
+    const patient = page.getByRole('link', { name: /for me or someone i love.*find my way/i });
+    await expect(patient).toHaveAttribute('href', '/find-support');
   });
 
-  test('should navigate to treatments from treatment intent', async ({ page }) => {
+  test('clinician world links to Practice Architect', async ({ page }) => {
     await page.goto('/');
-
-    const treatmentCard = page.getByRole('link', { name: /comparing treatments/i });
-    await expect(treatmentCard).toHaveAttribute('href', '/treatments');
+    const clinician = page.getByRole('link', { name: /for my practice.*build my practice/i });
+    await expect(clinician).toHaveAttribute('href', '/architect');
   });
 
-  test('should navigate to psychiatrists from find care intent', async ({ page }) => {
+  test('crisis help is available without choosing a world', async ({ page }) => {
     await page.goto('/');
+    await expect(page.locator('main a[href="tel:988"]').first()).toBeVisible();
+  });
 
-    // Use exact text to avoid matching navigation item
-    const findCareCard = page.getByRole('link', { name: /need to find care/i });
-    await expect(findCareCard).toHaveAttribute('href', '/psychiatrists');
+  test('discovery pathways link to the existing libraries', async ({ page }) => {
+    await page.goto('/');
+    for (const [name, href] of [
+      [/^conditions/i, '/conditions'],
+      [/^treatments/i, '/treatments'],
+      [/^apps & tools/i, '/tools'],
+      [/^find care/i, '/psychiatrists'],
+      [/^clinician tools/i, '/tools/for-clinicians'],
+    ] as const) {
+      await expect(page.getByRole('link', { name }).first()).toHaveAttribute('href', href);
+    }
   });
 });
 
 test.describe('Primary Navigation', () => {
-  test('should have correct navigation structure', async ({ page }) => {
+  test('has Explore, For Clinicians, About, and search', async ({ page }) => {
     await page.goto('/');
-
-    // Check primary navigation items exist
-    const nav = page.getByRole('navigation');
-    await expect(nav.getByRole('link', { name: /conditions/i })).toBeVisible();
-    await expect(nav.getByRole('link', { name: /treatments/i })).toBeVisible();
-    await expect(nav.getByRole('link', { name: /tools/i })).toBeVisible();
+    const header = page.locator('#site-header');
+    await expect(header.getByRole('link', { name: 'Explore' })).toHaveAttribute('href', '/browse');
+    await expect(header.getByRole('link', { name: 'For Clinicians' })).toHaveAttribute('href', '/architect');
+    await expect(header.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
+    await expect(header.getByRole('searchbox', { name: 'Search HeyPsych' })).toBeVisible();
   });
 
-  test('should navigate to conditions index', async ({ page }) => {
-    await page.goto('/');
-
-    await page.getByRole('navigation').getByRole('link', { name: /conditions/i }).click();
-    await expect(page).toHaveURL('/conditions');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(/condition/i);
+  test('Explore lists every area of the site', async ({ page }) => {
+    await page.goto('/browse');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Explore HeyPsych');
+    await expect(page.getByRole('link', { name: /^conditions/i }).first()).toHaveAttribute('href', '/conditions');
+    await expect(page.getByRole('link', { name: /^practice architect/i }).first()).toHaveAttribute('href', '/architect');
   });
 
-  test('should navigate to treatments index', async ({ page }) => {
+  test('skip link moves focus to the main content', async ({ page }) => {
     await page.goto('/');
-
-    await page.getByRole('navigation').getByRole('link', { name: /treatments/i }).click();
-    await expect(page).toHaveURL('/treatments');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(/treatment/i);
+    await page.keyboard.press('Tab');
+    const skip = page.getByRole('link', { name: 'Skip to content' });
+    await expect(skip).toBeFocused();
+    await expect(skip).toHaveAttribute('href', '#main-content');
   });
 });
 
@@ -114,13 +119,11 @@ test.describe('For Clinicians Page', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('should have clinician path via AudienceGateway on homepage', async ({ page }) => {
+  test('should have clinician path from the homepage', async ({ page }) => {
     await page.goto('/');
-
-    // Clinician path is via AudienceGateway component (not IntentGrid)
-    // Look for clinician-related link
-    const clinicianLink = page.getByRole('link', { name: /clinician|practice|EHR/i }).first();
-    await expect(clinicianLink).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: /build my practice/i })
+    ).toHaveAttribute('href', '/architect');
   });
 
   test('legacy /for-clinicians page should still work', async ({ page }) => {
@@ -137,7 +140,7 @@ test.describe('Find Care (Psychiatrists)', () => {
     await page.goto('/psychiatrists');
 
     // Should show page title (use exact heading with level 1)
-    await expect(page.getByRole('heading', { level: 1, name: /psychiatrists/i })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: /psychiatrist/i })).toBeVisible();
   });
 
   test('should not show unsupported claims before search', async ({ page }) => {

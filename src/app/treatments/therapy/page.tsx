@@ -1,18 +1,9 @@
 import { Metadata } from "next";
-import { getTherapiesServer } from "@/lib/data/server-queries";
-import { TreatmentsClient } from "@/components/pages/treatments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Therapy/psychotherapy treatments hub page
- * Includes complete SEO metadata
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Force dynamic rendering - this is an index page, not SEO-critical
-// Prevents build-time database queries that can timeout
-export const dynamic = 'force-dynamic';
-
-// Generate SEO metadata for therapy hub page
 export const metadata: Metadata = {
   title: "Psychotherapy Types | CBT, DBT, EMDR, Psychodynamic & More",
   description:
@@ -23,6 +14,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/therapy`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Psychotherapy Types",
     description:
       "Evidence-based psychotherapy approaches: CBT, DBT, EMDR, ACT, and other modalities.",
@@ -31,21 +23,21 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Psychotherapy Types",
     description: "Explore psychotherapy approaches: CBT, DBT, EMDR, ACT, and more.",
   },
 };
 
-export default async function TherapyPage() {
-  const treatments = await getTherapiesServer();
-
+export default function TherapyHubPage() {
   return (
-    <TreatmentsClient
-      treatments={treatments}
-      title="Therapy"
-      description="Psychotherapy approaches including CBT, DBT, EMDR, and other evidence-based modalities for mental health."
-      showDisclaimer={true}
+    <TreatmentKindHub
+      modality="therapy"
+      title="Therapies"
+      description="Talking and skills-based treatments, what each involves and what it helps with."
+      noun="therapies"
+      searchPlaceholder="Search therapies, e.g. CBT, DBT, EMDR"
     />
   );
 }

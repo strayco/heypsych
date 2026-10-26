@@ -83,6 +83,51 @@ async function collectSlugs(
   return [...all].sort();
 }
 
+/** Slugs of every JSON record under a data directory (recursively). */
+function readDataSlugs(dataDir: string): Set<string> {
+  const root = path.join(process.cwd(), dataDir);
+  const slugs = new Set<string>();
+  if (!fs.existsSync(root)) return slugs;
+
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(full);
+      } else if (entry.name.endsWith(".json")) {
+        try {
+          const record = JSON.parse(fs.readFileSync(full, "utf8"));
+          slugs.add(record.slug || path.basename(entry.name, ".json"));
+        } catch {
+          // Unparseable files are reported by the data validators, not here.
+        }
+      }
+    }
+  };
+  walk(root);
+  return slugs;
+}
+
+/**
+ * Resource rows that are only stubs of a patient tool. The database holds a
+ * `resource` row for most tools, but the review lives at `/tools/[slug]`;
+ * `/resources/[slug]` renders an empty card for them. Middleware 301s these
+ * to the tool page and search links there directly.
+ *
+ * A slug that is also a genuine support or assessment resource (NAMI, Crisis
+ * Text Line) keeps its resource page.
+ */
+function collectToolStubSlugs(resourceSlugs: string[]): string[] {
+  const toolSlugs = readDataSlugs("data/resources/tools");
+  const genuine = new Set([
+    ...readDataSlugs("data/resources/support-community"),
+    ...readDataSlugs("data/resources/assessments-screeners"),
+  ]);
+  const stubs = resourceSlugs.filter((s) => toolSlugs.has(s) && !genuine.has(s));
+  console.log(`  resources: ${stubs.length} tool stubs redirect to /tools`);
+  return stubs;
+}
+
 function serializeSet(name: string, slugs: string[]): string {
   const entries = slugs.map((s) => `  ${JSON.stringify(s)},`).join("\n");
   return `export const ${name}: ReadonlySet<string> = new Set([\n${entries}\n]);`;
@@ -93,6 +138,7 @@ async function main() {
 
   const conditionSlugs = await collectSlugs("condition", "conditions");
   const resourceSlugs = await collectSlugs("resource", "resources");
+  const toolStubSlugs = collectToolStubSlugs(resourceSlugs);
 
   const output = `/**
  * GENERATED FILE - DO NOT EDIT
@@ -112,6 +158,9 @@ ${serializeSet("CONDITION_SLUGS", conditionSlugs)}
 
 ${serializeSet("RESOURCE_SLUGS", resourceSlugs)}
 
+/** Resource slugs that are tool stubs; \`/resources/[slug]\` 301s to \`/tools/[slug]\`. */
+${serializeSet("RESOURCE_TOOL_STUB_SLUGS", toolStubSlugs)}
+
 /**
  * Whether a slug resolves to a real page under the given route.
  *
@@ -125,6 +174,11 @@ export function entitySlugExists(
   const slugs = route === "conditions" ? CONDITION_SLUGS : RESOURCE_SLUGS;
   if (slugs.size === 0) return true;
   return slugs.has(slug);
+}
+
+/** Whether \`/resources/[slug]\` is a stub whose real page is \`/tools/[slug]\`. */
+export function isResourceToolStub(slug: string): boolean {
+  return RESOURCE_TOOL_STUB_SLUGS.has(slug);
 }
 `;
 

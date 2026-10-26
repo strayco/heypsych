@@ -3,7 +3,8 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { ClipboardCheck, CheckCircle, ArrowLeft } from "lucide-react";
+import { PageIntro } from "@/components/brand/PageIntro";
+import { CheckCircle } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 
 // Slashless canonical for consistency with sitemap
@@ -21,30 +22,13 @@ export const metadata: Metadata = {
 export default function ReviewMethodologyPage() {
   return (
     <div className="min-h-screen bg-canvas">
-      {/* Header */}
-      <section className="border-b border-separator bg-surface px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <Link
-            href="/tools/"
-            className="mb-6 inline-flex items-center gap-1 text-sm text-label-secondary hover:text-accent transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Tools
-          </Link>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-treatment/10">
-              <ClipboardCheck className="h-6 w-6 text-treatment" />
-            </div>
-            <h1 className="text-3xl font-bold tracking-tight text-label-primary">
-              Review Methodology
-            </h1>
-          </div>
-          <p className="text-label-secondary">
-            Last updated: August 2026
-          </p>
-        </div>
-      </section>
+      <PageIntro
+        title="Review methodology"
+        object="doorway"
+        width="reading"
+        parent={{ label: "About", href: "/about" }}
+        footnote="Last updated: August 2026"
+      />
 
       {/* Content */}
       <section className="px-4 py-12 sm:px-6 lg:px-8">

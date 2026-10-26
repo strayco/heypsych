@@ -11,17 +11,17 @@ interface InterpretationDisplayProps {
 
 const VALENCE_STYLES = {
   positive: {
-    card: "border-positive-600/20 bg-positive-900/10",
+    card: "border-positive-600/20 bg-positive-tint",
     icon: <Check className="h-4 w-4 text-positive-600" />,
     iconBg: "bg-positive-600/20",
   },
   negative: {
-    card: "border-caution-600/20 bg-caution-900/10",
+    card: "border-caution-600/20 bg-caution-tint",
     icon: <AlertCircle className="h-4 w-4 text-caution" />,
     iconBg: "bg-caution-600/20",
   },
   mixed: {
-    card: "border-accent-600/20 bg-accent-900/10",
+    card: "border-accent-600/20 bg-accent-tint",
     icon: <Minus className="h-4 w-4 text-accent" />,
     iconBg: "bg-accent-600/20",
   },
@@ -107,7 +107,7 @@ function RouteInterpretationCard({ route, onTryNextRep }: RouteInterpretationCar
       {/* Details Toggle */}
       <button
         onClick={() => setShowDetails(!showDetails)}
-        className="w-full px-5 py-3 flex items-center justify-center gap-2 text-xs text-label-primary0 hover:text-label-secondary transition-colors border-t border-separator/30"
+        className="w-full px-5 py-3 flex items-center justify-center gap-2 text-xs text-label-tertiary hover:text-label-secondary transition-colors border-t border-separator/30"
       >
         {showDetails ? "Show less" : "More about this pattern"}
         {showDetails ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
@@ -150,7 +150,7 @@ function RouteInterpretationCard({ route, onTryNextRep }: RouteInterpretationCar
           {/* Transfer Bridge */}
           {route.transferBridge && (
             <div className="pt-3 border-t border-separator/30">
-              <p className="text-xs text-label-primary0">
+              <p className="text-xs text-label-tertiary">
                 <span className="text-label-tertiary">In real life:</span> {route.transferBridge}
               </p>
             </div>
@@ -183,11 +183,11 @@ function StepInterpretationCard({ step, isExpanded, onToggle, onTryNextRep }: St
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2 mb-1">
-            <span className="text-xs text-label-primary0">Step {step.stepNumber}</span>
+            <span className="text-xs text-label-tertiary">Step {step.stepNumber}</span>
             {isExpanded ? (
-              <ChevronUp className="h-4 w-4 text-label-primary0 shrink-0" />
+              <ChevronUp className="h-4 w-4 text-label-tertiary shrink-0" />
             ) : (
-              <ChevronDown className="h-4 w-4 text-label-primary0 shrink-0" />
+              <ChevronDown className="h-4 w-4 text-label-tertiary shrink-0" />
             )}
           </div>
           <p className="text-xs text-label-tertiary mb-1">
@@ -250,7 +250,7 @@ function StepInterpretationCard({ step, isExpanded, onToggle, onTryNextRep }: St
             </div>
 
             {/* Consequence */}
-            <p className="text-xs text-label-primary0 italic">
+            <p className="text-xs text-label-tertiary italic">
               If this pattern keeps running: {step.consequenceIfRepeated}
             </p>
           </div>
@@ -269,7 +269,7 @@ interface InterpretationRowProps {
 function InterpretationRow({ label, value, italic }: InterpretationRowProps) {
   return (
     <div>
-      <h4 className="text-xs text-label-primary0 mb-1">{label}</h4>
+      <h4 className="text-xs text-label-tertiary mb-1">{label}</h4>
       <p className={`text-sm text-label-secondary ${italic ? "italic" : ""}`}>{value}</p>
     </div>
   );

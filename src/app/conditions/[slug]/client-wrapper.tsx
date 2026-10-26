@@ -5,6 +5,7 @@
 // Data is passed from server component (already fetched)
 
 import React, { useState, useRef, useEffect } from "react";
+import { GuideChapters, readingMinutes, teaserFrom } from "@/components/guide/GuideChapters";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -51,10 +52,28 @@ import { getCategoryBySlug } from "@/lib/config/condition-categories";
 import { NextStepsSection } from "@/components/navigation";
 import type { NextStep } from "@/domains/navigation/types";
 
+/** The full guide's chapter groups, in reading order. */
+const CONDITION_GUIDE_GROUPS = ["Understanding it", "Signs & diagnosis", "Living with it", "Treatment", "Questions"];
+
+/** Tile ids vary by record ("stories_2", "what-it-feels-like"); group them by what they cover. */
+function conditionGuideGroup(tileId: string | undefined): string {
+  const id = (tileId ?? "").toLowerCase();
+  if (/treat|next-steps|medication|therapy/.test(id)) return "Treatment";
+  if (/faq|question/.test(id)) return "Questions";
+  if (/symptom|sign|diagnos|told-apart|similar|vs|compar|warning/.test(id)) return "Signs & diagnosis";
+  if (/living|stor|lived|real|feel|reaction|support|daily/.test(id)) return "Living with it";
+  return "Understanding it";
+}
+
 interface ConditionClientWrapperProps {
   entity: Entity;
   /** Optional next steps for contextual navigation (Navigation V1) */
   nextSteps?: NextStep[];
+  /**
+   * The interactive opening (ConditionExperience). When given, it replaces the
+   * text header, and the sections below become "The full guide".
+   */
+  intro?: React.ReactNode;
 }
 
 // Tile configuration from JSON
@@ -242,7 +261,7 @@ const extractSafeText = (data: any, fallback = "No information available"): stri
   return str || fallback;
 };
 
-export default function ConditionClientWrapper({ entity, nextSteps }: ConditionClientWrapperProps) {
+export default function ConditionClientWrapper({ entity, nextSteps, intro }: ConditionClientWrapperProps) {
   const [expandedTiles, setExpandedTiles] = useState<Record<string, boolean>>({});
   const [activeTile, setActiveTile] = useState<string | null>(null);
   const detailPanelRef = useRef<HTMLDivElement>(null);
@@ -319,7 +338,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
   const renderAnyValue = (value: any, depth = 0): React.ReactNode => {
     // Null/undefined
     if (value === null || value === undefined) {
-      return <span className="text-label-primary0 italic">Not available</span>;
+      return <span className="text-label-tertiary italic">Not available</span>;
     }
 
     // Primitives
@@ -341,7 +360,7 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
 
     // Arrays
     if (Array.isArray(value)) {
-      if (value.length === 0) return <span className="text-label-primary0 italic">None</span>;
+      if (value.length === 0) return <span className="text-label-tertiary italic">None</span>;
 
       const firstItem = value[0];
 
@@ -860,8 +879,16 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
     descriptionText?.toLowerCase().includes('suicide');
 
   return (
-    <main className="min-h-screen bg-canvas" itemScope itemType="https://schema.org/MedicalWebPage">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-canvas" itemScope itemType="https://schema.org/MedicalWebPage">
+      {intro}
+      <div className={`mx-auto ${intro ? "max-w-5xl" : "max-w-6xl"} px-4 py-12 sm:px-6 lg:px-8`}>
+        {intro ? (
+          <div id="full-guide" className="scroll-mt-32 pb-6">
+            <h2 className="font-display text-label-primary text-[30px] leading-tight sm:text-[36px]">The full guide</h2>
+            <p className="text-label-secondary mt-2 text-[16px]">Everything we know about {entity.name}, section by section.</p>
+          </div>
+        ) : (
+        <>
         {/* Breadcrumbs */}
         {category && (
           <div className="mb-6">
@@ -907,6 +934,9 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           </div>
         </div>
 
+        </>
+        )}
+
         {/* Crisis Support Banner (for sensitive conditions) */}
         {isSensitive && (
           <div className="mb-8">
@@ -916,6 +946,60 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
 
         {/* Content Sections */}
         <div className="space-y-6">
+          {intro ? (
+            <GuideChapters
+              subject={entity.name}
+              groupOrder={CONDITION_GUIDE_GROUPS}
+              chapters={[
+                ...tiles
+                  .map((tile, tileIndex) => {
+                    // Records vary: a tile may lack an id or a title.
+                    const tileTitle = tile.title || formatTitle(String(tile.id ?? "")) || `Part ${tileIndex + 1}`;
+                    const tileId =
+                      String(tile.id ?? "").trim() ||
+                      tileTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") ||
+                      `chapter-${tileIndex + 1}`;
+                    const refs = Array.isArray(tile.content_refs) ? tile.content_refs : [];
+                    const resolved = refs
+                      .map((ref) => ({ ref, data: resolveContentRef(content, ref) }))
+                      .filter(({ data }) => data !== null && data !== undefined);
+                    if (resolved.length === 0) return null;
+                    return {
+                      id: tileId,
+                      title: tileTitle,
+                      teaser: tile.teaser || tile.summary || teaserFrom(resolved.map((r) => r.data)),
+                      group: conditionGuideGroup(`${tileId} ${tileTitle}`),
+                      minutes: readingMinutes(resolved.map((r) => r.data)),
+                      content: (
+                        <div className="space-y-6">
+                          {resolved.map(({ ref, data }, idx) => (
+                            <div key={ref} className={idx > 0 ? "border-separator border-t pt-5" : ""}>
+                              {renderContentRef(data, ref)}
+                            </div>
+                          ))}
+                        </div>
+                      ),
+                    };
+                  })
+                  .filter((c): c is NonNullable<typeof c> => c !== null),
+                ...(() => {
+                  const linkedMedications = content.linkedMedications || content.linked_medications;
+                  const approaches = content.treatment_approaches || content.treatmentApproaches;
+                  const medications = approaches?.linkedMedications || linkedMedications;
+                  return medications && Array.isArray(medications) && medications.length > 0
+                    ? [{ id: "medications", title: "Medications", teaser: `${medications.length} medications used`, group: "Treatment", minutes: 1, content: <MedicationsList medications={medications} /> }]
+                    : [];
+                })(),
+                ...(() => {
+                  const citations = content.citations || content.references || entity.metadata?.references;
+                  return citations && citations.length > 0
+                    ? [{ id: "sources", title: "Sources", teaser: `${citations.length} scientific references`, group: "Questions", minutes: 1, content: <CitationList citations={citations} title="Scientific References" /> }]
+                    : [];
+                })(),
+              ]}
+            />
+          ) : (
+          <>
           {/* Overview Card - Always show for key stats */}
           {(content.description || content.prevalence || content.age_of_onset) && (
             <section itemProp="mainEntityOfPage">
@@ -1112,6 +1196,9 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
             ) : null;
           })()}
 
+          </>
+          )}
+
           {/* Medical Disclaimer */}
           <MedicalDisclaimer
             config={{
@@ -1134,7 +1221,15 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           )}
 
           {/* Call to Action (fallback when no next steps) */}
-          {(!nextSteps || nextSteps.length === 0) && (
+          {intro && (!nextSteps || nextSteps.length === 0) && (
+            <div className="border-separator mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-8">
+            <p className="text-label-secondary text-[15px]">Recognise this in yourself or someone close? Help is available, and it works.</p>
+            <Link href="/psychiatrists" className="bg-accent hover:bg-accent-hover rounded-full px-5 py-2.5 text-[15px] font-medium text-white">
+              Find a psychiatrist
+            </Link>
+          </div>
+          )}
+          {!intro && (!nextSteps || nextSteps.length === 0) && (
             <Card className="border-separator">
               <CardContent className="p-8 text-center">
                 <p className="text-xs font-medium uppercase tracking-wider text-label-secondary mb-2">
@@ -1159,6 +1254,6 @@ export default function ConditionClientWrapper({ entity, nextSteps }: ConditionC
           )}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

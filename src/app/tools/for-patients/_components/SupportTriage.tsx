@@ -86,7 +86,7 @@ export function SupportTriage() {
         {/* Direct links */}
         <div className="space-y-3">
           <Link
-            href="/tools/find-support/therapy-platforms/"
+            href="/tools/find-support/therapy-platforms"
             className="group flex items-center gap-4 rounded-xl border border-separator bg-canvas p-5 transition-all hover:border-treatment/30 hover:shadow-md"
           >
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-treatment/10">
@@ -102,7 +102,7 @@ export function SupportTriage() {
           </Link>
 
           <Link
-            href="/tools/find-support/psychiatry-platforms/"
+            href="/tools/find-support/psychiatry-platforms"
             className="group flex items-center gap-4 rounded-xl border border-separator bg-canvas p-5 transition-all hover:border-violet-300 hover:shadow-md"
           >
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100">

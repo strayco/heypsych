@@ -44,7 +44,7 @@ export function TreatmentTab({ resources, page = 1 }: Props) {
 
   return (
     <div className="space-y-8">
-      <Card className="border-positive-border bg-gradient-to-r from-green-50 to-emerald-50">
+      <Card className="border-positive-border bg-green-50">
         <CardContent className="p-6">
           <h2 className="mb-2 text-xl font-bold text-label-primary">Professional Treatment Resources</h2>
           <p className="text-sm text-label-secondary">
@@ -57,7 +57,7 @@ export function TreatmentTab({ resources, page = 1 }: Props) {
       <Card>
         <CardContent className="p-4">
           <div className="relative">
-            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-primary0" />
+            <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-label-tertiary" />
             <Input
               type="text"
               placeholder="Search treatment resources and directories..."

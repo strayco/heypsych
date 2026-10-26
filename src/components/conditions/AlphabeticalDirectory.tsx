@@ -114,9 +114,9 @@ export function AlphabeticalDirectory({ conditions }: AlphabeticalDirectoryProps
                   {/* Mobile expand/collapse icon */}
                   <span className="sm:hidden">
                     {isExpanded ? (
-                      <ChevronDown className="h-5 w-5 text-label-primary0" />
+                      <ChevronDown className="h-5 w-5 text-label-tertiary" />
                     ) : (
-                      <ChevronRight className="h-5 w-5 text-label-primary0" />
+                      <ChevronRight className="h-5 w-5 text-label-tertiary" />
                     )}
                   </span>
                 </button>

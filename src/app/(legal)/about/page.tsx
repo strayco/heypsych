@@ -1,249 +1,202 @@
 import { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Heart, Users, Target, Shield, ArrowLeft, Lightbulb, Stethoscope } from "lucide-react";
 import Link from "next/link";
+import { PageIntro } from "@/components/brand/PageIntro";
 
 export const metadata: Metadata = {
-  title: "About HeyPsych | Mental Health Decision Platform",
+  title: "About",
   description:
-    "HeyPsych helps people make better mental-health decisions. For patients: find the right care, apps, and treatments. For clinicians: build the right practice stack.",
+    "HeyPsych helps people make better mental-health decisions. For patients and families: understand options and find support. For clinicians: build the right practice.",
 };
+
+const FOR_YOU = [
+  {
+    title: "Understand what you're experiencing",
+    body: "Plain-language guides to symptoms and conditions, including how they're diagnosed and what to expect from treatment.",
+    href: "/conditions",
+  },
+  {
+    title: "Compare treatments",
+    body: "Medications, therapies, and other approaches side by side, with the strength of the evidence and common side effects.",
+    href: "/treatments",
+  },
+  {
+    title: "Find care",
+    body: "A directory of psychiatrists you can search by name, location, and specialty.",
+    href: "/psychiatrists",
+  },
+  {
+    title: "Choose apps and tools",
+    body: "Digital tools for mood, sleep, stress, and more, compared on evidence, privacy, and price.",
+    href: "/tools/for-patients",
+  },
+];
+
+const FOR_CLINICIANS = [
+  {
+    title: "Practice Architect",
+    body: "Design your practice room by room and see the tools it needs, with the reasons behind every suggestion.",
+    href: "/architect",
+  },
+  {
+    title: "Compare practice software",
+    body: "EHR, billing, telehealth, and documentation tools side by side, with transparent pricing.",
+    href: "/tools/for-clinicians",
+  },
+  {
+    title: "Clinical reference",
+    body: "Treatment information, condition reference, assessments, and patient education, free to use.",
+    href: "/for-clinicians",
+  },
+];
+
+function Column({
+  heading,
+  items,
+}: {
+  heading: string;
+  items: { title: string; body: string; href: string }[];
+}) {
+  return (
+    <section>
+      <h2 className="text-label-primary text-[24px] sm:text-[28px]">{heading}</h2>
+      <ul role="list" className="divide-separator border-separator mt-5 divide-y border-y">
+        {items.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className="group focus-visible:ring-accent flex items-start justify-between gap-4 py-5 focus-visible:rounded focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <span>
+                <span className="text-label-primary group-hover:text-accent block text-[16px] font-semibold">
+                  {item.title}
+                </span>
+                <span className="text-label-secondary mt-1 block text-[15px] leading-relaxed">
+                  {item.body}
+                </span>
+              </span>
+              <span
+                aria-hidden="true"
+                className="text-label-quaternary group-hover:text-accent mt-0.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
+              >
+                →
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+const linkClass =
+  "font-medium text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent";
 
 export default function AboutPage() {
   return (
-    <div className="space-y-8">
-      {/* Back Button + Title Row */}
-      <div className="flex items-center justify-between">
-        <Link href="/">
-          <Button variant="ghost" className="group">
-            <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to Home
-          </Button>
-        </Link>
+    <div>
+      <PageIntro
+        title="About HeyPsych"
+        object="doorway"
+        width="reading"
+        description="Better mental health starts with better decisions. HeyPsych helps patients, families, and clinicians understand their options and take a clear next step."
+      />
 
-        <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-          <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            About HeyPsych
-          </span>
-        </h1>
+      <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <section className="max-w-2xl">
+          <h2 className="text-label-primary text-[24px] sm:text-[28px]">Why we exist</h2>
+          <div className="text-label-secondary mt-4 space-y-4 text-[17px] leading-relaxed">
+            <p>
+              The hardest part of mental health often isn&apos;t finding information. It&apos;s
+              knowing what to do with it. HeyPsych structures what&apos;s known so you can compare
+              options, understand the tradeoffs, and decide what to do next.
+            </p>
+            <p>
+              Everything here is held to one question:{" "}
+              <span className="text-label-primary font-medium">
+                does this help someone make a decision?
+              </span>
+            </p>
+          </div>
+        </section>
 
-        <div className="w-[140px]"></div>
-      </div>
+        <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
+          <Column heading="For you and the people you care about" items={FOR_YOU} />
+          <Column heading="For mental health professionals" items={FOR_CLINICIANS} />
+        </div>
 
-      <div className="text-center">
-        <p className="mx-auto mb-3 max-w-2xl text-lg text-slate-700 font-medium">
-          Better mental health starts with better decisions.
+        <section className="mt-16 max-w-2xl">
+          <h2 className="text-label-primary text-[24px] sm:text-[28px]">How we stay trustworthy</h2>
+          <dl className="mt-5 space-y-5 text-[15px] leading-relaxed">
+            <div>
+              <dt className="text-label-primary font-semibold">Clinical review</dt>
+              <dd className="text-label-secondary mt-1">
+                Clinical content is reviewed by board-certified psychiatrists and licensed mental
+                health professionals.{" "}
+                <Link href="/about/medical-review-board" className={linkClass}>
+                  Meet the medical review board
+                </Link>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-label-primary font-semibold">Editorial independence</dt>
+              <dd className="text-label-secondary mt-1">
+                Sponsors can&apos;t buy reviews, rankings, or favorable coverage.{" "}
+                <Link href="/about/sponsorship-policy" className={linkClass}>
+                  Read the sponsorship policy
+                </Link>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-label-primary font-semibold">Published methodology</dt>
+              <dd className="text-label-secondary mt-1">
+                We document how tools are evaluated: clinical evidence, privacy, pricing, and
+                features.{" "}
+                <Link href="/about/review-methodology" className={linkClass}>
+                  See the review methodology
+                </Link>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section className="mt-16 grid gap-4 sm:grid-cols-2">
+          <div className="border-separator bg-surface rounded-2xl border p-5">
+            <h2 data-heading="sans" className="text-label-primary text-[15px] font-semibold">
+              Not medical advice
+            </h2>
+            <p className="text-label-secondary mt-1.5 text-[14px] leading-relaxed">
+              HeyPsych provides decision-support information. It isn&apos;t a substitute for
+              professional medical advice, diagnosis, or treatment. Always talk with a qualified
+              provider about your care.
+            </p>
+          </div>
+          <div className="border-negative-border bg-negative-tint rounded-2xl border p-5">
+            <h2 data-heading="sans" className="text-label-primary text-[15px] font-semibold">
+              If you&apos;re in crisis
+            </h2>
+            <p className="text-label-secondary mt-1.5 text-[14px] leading-relaxed">
+              Call or text{" "}
+              <a
+                href="tel:988"
+                className="text-label-primary font-semibold underline underline-offset-4"
+              >
+                988
+              </a>{" "}
+              (Suicide &amp; Crisis Lifeline, US), or go to your nearest emergency room.{" "}
+              <Link href="/resources/support-community/immediate-crisis" className={linkClass}>
+                More crisis resources
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        <p className="text-label-secondary mt-12 text-[15px]">
+          General inquiries, media, and partnerships:{" "}
+          <a href="mailto:hello@heypsych.com" className={linkClass}>
+            hello@heypsych.com
+          </a>
         </p>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5 text-blue-600" />
-            Our Mission
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="leading-relaxed text-gray-700">
-            HeyPsych is a mental health decision-support platform. We help patients, families,
-            and clinicians make better decisions about mental health care.
-          </p>
-          <p className="leading-relaxed text-gray-700">
-            We believe the hardest part of mental health isn&apos;t finding information—it&apos;s
-            knowing what to do with it. Our platform turns information into action by helping
-            you compare options, understand tradeoffs, and take your next step with confidence.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Heart className="h-5 w-5 text-red-600" />
-            For Patients & Families
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4 text-gray-700">
-            We help you make decisions about your mental health care:
-          </p>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Find the Right Care</h3>
-              <p className="text-sm text-gray-700">
-                Search 70,000+ psychiatrists. Filter by specialty, location, and insurance.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Compare Treatments</h3>
-              <p className="text-sm text-gray-700">
-                Understand medications, therapies, and alternatives. See evidence levels and side effects.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Explore Conditions</h3>
-              <p className="text-sm text-gray-700">
-                Learn about symptoms, diagnostic criteria, and what to expect from treatment.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Discover Apps & Tools</h3>
-              <p className="text-sm text-gray-700">
-                Find digital tools for mood tracking, meditation, crisis support, and more.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Stethoscope className="h-5 w-5 text-purple-600" />
-            For Clinicians
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4 text-gray-700">
-            We help you make decisions about your practice stack:
-          </p>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Compare EHR & Practice Tools</h3>
-              <p className="text-sm text-gray-700">
-                Side-by-side comparisons of practice management software with transparent pricing.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Practice Architect</h3>
-              <p className="text-sm text-gray-700">
-                Build your complete practice stack—from front door to back office—with fit scores.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Billing & Credentialing</h3>
-              <p className="text-sm text-gray-700">
-                Find billing services, credentialing support, and revenue cycle management tools.
-              </p>
-            </div>
-            <div className="rounded-lg border border-gray-200 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">AI Scribes & Documentation</h3>
-              <p className="text-sm text-gray-700">
-                Compare AI documentation tools with HIPAA compliance and integration details.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-amber-500" />
-            How We&apos;re Different
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="leading-relaxed text-gray-700">
-            Every piece of content on HeyPsych is filtered through one question:
-            <strong> &quot;Does this help someone make a decision?&quot;</strong>
-          </p>
-          <p className="leading-relaxed text-gray-700">
-            We don&apos;t just aggregate information. We structure it for comparison,
-            verify it for accuracy, and present it with the context you need to act.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5 text-green-600" />
-            Trust & Transparency
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div>
-            <h3 className="mb-2 font-semibold text-gray-900">Medical Review Board</h3>
-            <p className="text-sm text-gray-700">
-              Clinical content is reviewed by board-certified psychiatrists and licensed mental
-              health professionals.{" "}
-              <Link
-                href="/about/medical-review-board"
-                className="font-medium text-green-700 hover:text-green-800 hover:underline"
-              >
-                Meet our Medical Review Board →
-              </Link>
-            </p>
-          </div>
-          <div>
-            <h3 className="mb-2 font-semibold text-gray-900">Editorial Independence</h3>
-            <p className="text-sm text-gray-700">
-              Sponsors cannot purchase reviews, rankings, or favorable coverage.{" "}
-              <Link
-                href="/about/sponsorship-policy"
-                className="font-medium text-green-700 hover:text-green-800 hover:underline"
-              >
-                Read our Sponsorship Policy →
-              </Link>
-            </p>
-          </div>
-          <div>
-            <h3 className="mb-2 font-semibold text-gray-900">Review Methodology</h3>
-            <p className="text-sm text-gray-700">
-              We document how we evaluate tools—clinical evidence, privacy, pricing, and features.{" "}
-              <Link
-                href="/about/review-methodology"
-                className="font-medium text-green-700 hover:text-green-800 hover:underline"
-              >
-                See our Review Methodology →
-              </Link>
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5 text-purple-600" />
-            Important Disclaimer
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="rounded border-l-4 border-yellow-400 bg-yellow-50 p-4">
-            <p className="text-sm text-gray-700">
-              <strong>Medical Disclaimer:</strong> HeyPsych provides decision-support information
-              and should not be used as a substitute for professional medical advice, diagnosis,
-              or treatment. Always consult a qualified mental health provider.
-            </p>
-          </div>
-          <div className="rounded border-l-4 border-red-400 bg-red-50 p-4">
-            <p className="text-sm text-gray-700">
-              <strong>Crisis Support:</strong> If you are experiencing a mental health emergency,
-              please call 988 (Suicide & Crisis Lifeline) or go to your nearest emergency room.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Contact</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-gray-700">
-            For general inquiries, media, and partnerships:{" "}
-            <a
-              href="mailto:hello@heypsych.com"
-              className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
-            >
-              hello@heypsych.com
-            </a>
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

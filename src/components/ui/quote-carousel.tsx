@@ -34,7 +34,7 @@ export function QuoteCarousel({
   rotateInterval = 5000
 }: QuoteCarouselProps) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const colors = getColorClasses(uiHints?.color || '#007AFF');
+  const colors = getColorClasses(uiHints?.color || '#456C7E');
 
   // Auto-rotate quotes
   React.useEffect(() => {
@@ -67,7 +67,7 @@ export function QuoteCarousel({
         </p>
       )}
 
-      <div className="relative rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-accent-border p-8 shadow-lg min-h-[200px] flex items-center">
+      <div className="relative rounded-2xl bg-blue-50 border-2 border-accent-border p-8 shadow-lg min-h-[200px] flex items-center">
         {/* Quote Icon */}
         <div className={`absolute top-6 left-6 ${colors.text} opacity-20`}>
           <MessageCircle className="h-12 w-12" strokeWidth={1.5} />

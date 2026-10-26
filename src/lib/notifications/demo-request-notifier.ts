@@ -74,54 +74,98 @@ async function sendEmailNotification(
   }
 }
 
+// ============================================================================
+// EMAIL LAYOUT
+// ============================================================================
+
+/**
+ * Brand values for email. Email clients do not load the site stylesheet or
+ * web fonts, so these mirror the design tokens in src/app/globals.css with
+ * safe fallbacks: Georgia for the display serif, the system sans for body.
+ */
+const EMAIL = {
+  paper: "#FAF9F6",
+  surface: "#FFFFFF",
+  grouped: "#F3F0EA",
+  ink: "#252925",
+  secondary: "#565C57",
+  tertiary: "#6F746E",
+  hairline: "#E7E3DA",
+  accent: "#456C7E",
+  serif: "Georgia, 'Times New Roman', serif",
+  sans: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
+  logo: "https://heypsych.com/images/logo-wordmark.png",
+} as const;
+
+/** Escape user-supplied text before it is placed in email HTML. */
+function esc(value: string | undefined | null): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function emailLayout(heading: string, body: string, footer: string): string {
+  return `
+  <div style="background:${EMAIL.paper};padding:32px 16px;">
+    <div style="max-width:600px;margin:0 auto;">
+      <img src="${EMAIL.logo}" width="154" height="34" alt="HeyPsych" style="display:block;margin:0 0 24px;border:0;" />
+      <div style="background:${EMAIL.surface};border:1px solid ${EMAIL.hairline};border-radius:16px;padding:28px;font-family:${EMAIL.sans};font-size:15px;line-height:1.6;color:${EMAIL.ink};">
+        <h1 style="font-family:${EMAIL.serif};font-weight:400;font-size:26px;line-height:1.2;letter-spacing:-0.01em;margin:0 0 16px;color:${EMAIL.ink};">${heading}</h1>
+        ${body}
+      </div>
+      <p style="font-family:${EMAIL.sans};font-size:13px;line-height:1.6;color:${EMAIL.tertiary};margin:16px 4px 0;">${footer}</p>
+    </div>
+  </div>`;
+}
+
+function emailPanel(title: string, rows: string): string {
+  return `<div style="background:${EMAIL.grouped};border-radius:12px;padding:16px 18px;margin:16px 0;">
+    <p style="font-weight:600;margin:0 0 8px;color:${EMAIL.ink};">${title}</p>
+    ${rows}
+  </div>`;
+}
+
+function emailRow(label: string, value: string): string {
+  return `<p style="margin:4px 0;color:${EMAIL.secondary};"><strong style="color:${EMAIL.ink};font-weight:600;">${label}:</strong> ${value}</p>`;
+}
+
+const emailLink = (href: string, text: string) =>
+  `<a href="${href}" style="color:${EMAIL.accent};text-decoration:underline;">${text}</a>`;
+
 function formatEmailHtml(data: DemoRequest, requestId: string): string {
-  const practiceInfo = data.practiceName
-    ? `<p><strong>Practice:</strong> ${data.practiceName}</p>`
+  const contact = [
+    emailRow("Name", `${esc(data.firstName)} ${esc(data.lastName)}`),
+    emailRow("Email", emailLink(`mailto:${esc(data.email)}`, esc(data.email))),
+    data.phone ? emailRow("Phone", esc(data.phone)) : "",
+    data.practiceName ? emailRow("Practice", esc(data.practiceName)) : "",
+  ].join("");
+
+  const practice = [
+    emailRow("Role", esc(formatRole(data.role))),
+    emailRow("Practice size", esc(formatPracticeSize(data.practiceSize))),
+    emailRow("Practice setting", esc(formatPracticeSetting(data.practiceSetting))),
+    data.timeline ? emailRow("Timeline", esc(data.timeline)) : "",
+  ].join("");
+
+  const message = data.message
+    ? emailPanel("Message from the lead", `<p style="margin:0;color:${EMAIL.ink};white-space:pre-wrap;">${esc(data.message)}</p>`)
     : "";
 
-  const messageSection = data.message
-    ? `<h3>Message from Lead:</h3><p style="background: #f5f5f5; padding: 12px; border-radius: 4px;">${data.message}</p>`
-    : "";
-
-  const utmInfo =
+  const utm =
     data.utmSource || data.utmMedium || data.utmCampaign
-      ? `<p style="color: #666; font-size: 12px;">UTM: ${data.utmSource || "-"} / ${data.utmMedium || "-"} / ${data.utmCampaign || "-"}</p>`
+      ? `<br/>UTM: ${esc(data.utmSource) || "-"} / ${esc(data.utmMedium) || "-"} / ${esc(data.utmCampaign) || "-"}`
       : "";
 
-  return `
-    <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #16a34a;">New Demo Request for ${data.toolName}</h2>
+  const footer = `Request ID: ${esc(requestId)}<br/>Tool: ${esc(data.toolName)} (${esc(data.toolSlug)})<br/>Source: ${data.matcherSource ? "EHR Matcher" : "Direct"} · Marketing consent: ${data.marketingConsent ? "Yes" : "No"}${utm}`;
 
-      <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin: 16px 0;">
-        <h3 style="margin-top: 0;">Contact Information</h3>
-        <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
-        <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
-        ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ""}
-        ${practiceInfo}
-      </div>
-
-      <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin: 16px 0;">
-        <h3 style="margin-top: 0;">Practice Details</h3>
-        <p><strong>Role:</strong> ${formatRole(data.role)}</p>
-        <p><strong>Practice Size:</strong> ${formatPracticeSize(data.practiceSize)}</p>
-        <p><strong>Practice Setting:</strong> ${formatPracticeSetting(data.practiceSetting)}</p>
-        ${data.timeline ? `<p><strong>Timeline:</strong> ${data.timeline}</p>` : ""}
-      </div>
-
-      ${messageSection}
-
-      <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-        <p style="color: #666; font-size: 14px;">
-          <strong>Request ID:</strong> ${requestId}<br/>
-          <strong>Tool:</strong> ${data.toolName} (${data.toolSlug})<br/>
-          <strong>Source:</strong> ${data.matcherSource ? "EHR Matcher" : "Direct"}<br/>
-          <strong>Marketing Consent:</strong> ${data.marketingConsent ? "Yes" : "No"}
-        </p>
-        ${utmInfo}
-      </div>
-
-    </div>
-  `;
+  return emailLayout(
+    `New demo request for ${esc(data.toolName)}`,
+    emailPanel("Contact", contact) + emailPanel("Practice", practice) + message,
+    footer
+  );
 }
 
 function formatEmailText(data: DemoRequest, requestId: string): string {
@@ -306,32 +350,23 @@ async function sendBuyerConfirmation(
 }
 
 function formatBuyerConfirmationHtml(data: DemoRequest, requestId: string): string {
-  return `
-    <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #16a34a;">Thanks for your interest in ${data.toolName}</h2>
-
-      <p>Hi ${data.firstName},</p>
-
-      <p>We've received your demo request and a member of our team will be in touch within 1 business day.</p>
-
-      <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin: 16px 0;">
-        <h3 style="margin-top: 0;">What you requested:</h3>
-        <p><strong>Tool:</strong> ${data.toolName}</p>
-        ${data.message ? `<p><strong>Your message:</strong> ${data.message}</p>` : ""}
-      </div>
-
-      <p>In the meantime, you can:</p>
-      <ul>
-        <li><a href="https://heypsych.com/tools/for-clinicians/ehr-practice-management/${data.toolSlug}/">Learn more about ${data.toolName}</a></li>
-        <li><a href="https://heypsych.com/tools/for-clinicians/">Browse other clinician tools</a></li>
-      </ul>
-
-      <p style="color: #666; font-size: 14px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-        Reference: ${requestId}<br/>
-        If you have questions, reply to this email or contact us at hello@heypsych.com
-      </p>
-    </div>
-  `;
+  const toolSlug = encodeURIComponent(data.toolSlug);
+  const body = `
+    <p style="margin:0 0 12px;">Hi ${esc(data.firstName)},</p>
+    <p style="margin:0 0 12px;">We've received your demo request. A member of our team will be in touch within one business day.</p>
+    ${emailPanel(
+      "What you requested",
+      emailRow("Tool", esc(data.toolName)) +
+        (data.message ? emailRow("Your message", esc(data.message)) : "")
+    )}
+    <p style="margin:16px 0 6px;">In the meantime, you can:</p>
+    <ul style="margin:0;padding-left:20px;color:${EMAIL.secondary};">
+      <li>${emailLink(`https://heypsych.com/tools/for-clinicians/ehr-practice-management/${toolSlug}/`, `Learn more about ${esc(data.toolName)}`)}</li>
+      <li>${emailLink("https://heypsych.com/tools/for-clinicians/", "Compare other practice software")}</li>
+      <li>${emailLink("https://heypsych.com/architect", "Plan your whole practice in Practice Architect")}</li>
+    </ul>`;
+  const footer = `Reference: ${esc(requestId)}<br/>Questions? Reply to this email or write to ${emailLink("mailto:hello@heypsych.com", "hello@heypsych.com")}.`;
+  return emailLayout(`Thanks for your interest in ${esc(data.toolName)}`, body, footer);
 }
 
 function formatBuyerConfirmationText(data: DemoRequest, requestId: string): string {

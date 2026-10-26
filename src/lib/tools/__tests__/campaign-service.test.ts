@@ -303,19 +303,19 @@ describe("Safe URL Parsing", () => {
 
     it("falls back to internal URL if campaign URL is invalid", () => {
       expect(buildSafeDestinationUrl("javascript:alert(1)", "betterhelp")).toBe(
-        "/tools/betterhelp/"
+        "/tools/betterhelp"
       );
     });
 
     it("falls back to internal URL if campaign URL is HTTP", () => {
       expect(buildSafeDestinationUrl("http://insecure.com", "sometool")).toBe(
-        "/tools/sometool/"
+        "/tools/sometool"
       );
     });
 
     it("returns internal URL if no campaign URL provided", () => {
       expect(buildSafeDestinationUrl(undefined, "betterhelp")).toBe(
-        "/tools/betterhelp/"
+        "/tools/betterhelp"
       );
     });
   });

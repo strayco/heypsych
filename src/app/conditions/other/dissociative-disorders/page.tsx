@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/dissociative-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Dissociative Disorders",
     description: "Comprehensive guide to dissociative disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/dissociative-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Dissociative identity disorder, amnesia, depersonalization, and related conditions.",
   icon: "waves",
   iconColor: "text-cyan-600",
-  bgColor: "from-cyan-50",
-  gradient: "from-cyan-900 via-teal-900 to-cyan-900",
+  bgColor: "bg-cyan-50",
+  gradient: "bg-cyan-900",
 };
 
 export default async function DissociativeDisordersPage() {

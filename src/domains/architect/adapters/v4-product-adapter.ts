@@ -33,8 +33,10 @@ import { mapV4ToArchitectCapabilities } from "./capability-mapping";
  * Used to detect when a capability is provided via paid add-on
  */
 const ADDON_TO_CAPABILITIES: Record<string, string[]> = {
-  e_prescribing: ["prescribing-erx", "epcs"],
-  eprescribing: ["prescribing-erx", "epcs"],
+  // A generic e-prescribing add-on covers legend drugs. It is not evidence of
+  // EPCS, which must come from an explicit controlled-substance claim.
+  e_prescribing: ["prescribing-erx"],
+  eprescribing: ["prescribing-erx"],
   care_aide_ai: ["ai-documentation-scribe"],
   ai_scribe: ["ai-documentation-scribe"],
   ai_notes: ["ai-documentation-scribe"],
@@ -121,7 +123,10 @@ const CATEGORY_CORE_CAPABILITIES: Record<string, string[]> = {
   "clinical-decision-support": ["treatment-planning"],
   "patient-engagement": ["patient-portal", "secure-messaging", "appointment-reminders"],
   "intake-scheduling-forms": ["intake", "scheduling", "forms-e-signature"],
-  "prescribing-erx": ["prescribing-erx", "epcs"],
+  // Category membership is not EPCS evidence. A dedicated e-prescribing
+  // product covers legend-drug prescribing; controlled-substance (EPCS)
+  // support must come from an explicit `epcs` or `epcs-controlled` claim.
+  "prescribing-erx": ["prescribing-erx"],
   "compliance-consent-security": ["compliance-security"],
   "analytics-reporting": ["analytics-bi"],
   "care-coordination-referrals": ["care-coordination", "referrals-transitions"],

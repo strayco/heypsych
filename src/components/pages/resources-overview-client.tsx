@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { PageIntro } from "@/components/brand/PageIntro";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +11,6 @@ import {
   Smartphone,
   BookOpen,
   ArrowRight,
-  ArrowLeft,
 } from "lucide-react";
 import { ResourceSearch } from "@/components/resources/ResourceSearch";
 import { PopularResourceChips } from "@/components/resources/PopularResourceChips";
@@ -78,7 +78,7 @@ function ResourceTile({ category, index }: { category: typeof resourceCategories
             <span className="text-label-tertiary group-hover:text-label-secondary transition-colors">
               Explore
             </span>
-            <ArrowRight className="h-4 w-4 text-label-primary0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-label-tertiary" />
+            <ArrowRight className="h-4 w-4 text-label-tertiary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-label-tertiary" />
           </div>
         </div>
       </motion.div>
@@ -93,31 +93,11 @@ interface ResourcesOverviewClientProps {
 export function ResourcesOverviewClient({ resources }: ResourcesOverviewClientProps) {
   return (
     <div className="bg-canvas">
-      {/* Hero */}
-      <section className="relative px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-4 flex items-center justify-between">
-            <Link href="/">
-              <Button variant="ghost" className="group text-label-secondary hover:text-label-primary">
-                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                Back to Home
-              </Button>
-            </Link>
-
-            <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
-              Resources
-            </h1>
-
-            <div className="w-[140px]"></div>
-          </div>
-
-          <div className="text-center">
-            <p className="mx-auto mb-3 max-w-2xl text-sm text-label-secondary">
-              Evidence-based articles, clinical assessments, community support, and digital tools.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageIntro
+        title="Resources"
+        object="reading"
+        description="Assessments and screeners, support communities, crisis lines, digital tools, and articles, gathered in one place."
+      />
 
       {/* Search Bar */}
       <section className="px-4 py-4 sm:px-6 lg:px-8">

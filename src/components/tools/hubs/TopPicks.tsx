@@ -97,7 +97,7 @@ export function TopPicks({ tools, title = "Top Picks", showDecisionGuide = true 
                 <li key={tool.slug} className="flex items-start gap-2 text-sm">
                   <span className="text-label-tertiary">→</span>
                   <span>
-                    <Link href={`/tools/${tool.slug}/`} className="font-medium text-accent hover:underline">
+                    <Link href={`/tools/${tool.slug}`} className="font-medium text-accent hover:underline">
                       Choose {tool.name}
                     </Link>
                     <span className="text-label-secondary"> if {getChooseIfReason(tool)}</span>

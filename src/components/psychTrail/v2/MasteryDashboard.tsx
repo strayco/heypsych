@@ -54,11 +54,11 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
         {/* Best Run */}
         {bestRun && (
           <div className="rounded-xl bg-surface-grouped border border-separator p-5">
-            <h3 className="text-xs font-medium text-label-primary0 uppercase tracking-wider mb-4">Best Run</h3>
+            <h3 className="text-xs font-medium text-label-tertiary uppercase tracking-wider mb-4">Best Run</h3>
             <div className="flex items-center justify-center gap-8">
               <div className="text-center">
                 <div className={`text-4xl font-bold ${GRADE_COLORS[bestRun.grade]}`}>{bestRun.grade}</div>
-                <p className="text-xs text-label-primary0 mt-1">Grade</p>
+                <p className="text-xs text-label-tertiary mt-1">Grade</p>
               </div>
               <div className="text-center">
                 <div className="flex gap-1 justify-center">
@@ -73,11 +73,11 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
                     />
                   ))}
                 </div>
-                <p className="text-xs text-label-primary0 mt-1">Stars</p>
+                <p className="text-xs text-label-tertiary mt-1">Stars</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-semibold text-label-primary">{bestRun.score}</div>
-                <p className="text-xs text-label-primary0 mt-1">Score</p>
+                <p className="text-xs text-label-tertiary mt-1">Score</p>
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-label-primary">{r.name}</div>
-                  <div className="text-xs text-label-primary0">{r.description}</div>
+                  <div className="text-xs text-label-tertiary">{r.description}</div>
                 </div>
               </div>
             ))}
@@ -114,7 +114,7 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-accent-700">Hidden Route</div>
-                  {r.hint && <div className="text-xs text-label-primary0 italic">{r.hint}</div>}
+                  {r.hint && <div className="text-xs text-label-tertiary italic">{r.hint}</div>}
                 </div>
               </div>
             ))}
@@ -137,7 +137,7 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
             {objectives.remaining.map((o) => (
               <div key={o.id} className="flex items-center gap-3 text-sm">
                 <Circle className="h-4 w-4 text-label-quaternary shrink-0" />
-                <span className="text-label-primary0">{o.title}</span>
+                <span className="text-label-tertiary">{o.title}</span>
               </div>
             ))}
           </div>
@@ -159,11 +159,11 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
             {challenges.remaining.map((c) => (
               <div key={c.id} className="flex items-center gap-3 text-sm">
                 <Circle className="h-4 w-4 text-label-quaternary shrink-0" />
-                <span className="text-label-primary0">{c.title}</span>
+                <span className="text-label-tertiary">{c.title}</span>
               </div>
             ))}
             {challenges.completed.length === 0 && challenges.remaining.length === 0 && (
-              <p className="text-sm text-label-primary0">No challenges available</p>
+              <p className="text-sm text-label-tertiary">No challenges available</p>
             )}
           </div>
         </div>
@@ -180,7 +180,7 @@ export function MasteryDashboard(props: MasteryDashboardProps) {
                   ) : (
                     <Circle className="h-4 w-4 text-label-quaternary shrink-0" />
                   )}
-                  <span className={r.met ? "text-label-secondary" : "text-label-primary0"}>{r.description}</span>
+                  <span className={r.met ? "text-label-secondary" : "text-label-tertiary"}>{r.description}</span>
                 </div>
               ))}
             </div>

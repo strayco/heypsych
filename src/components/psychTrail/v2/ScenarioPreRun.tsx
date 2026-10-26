@@ -50,7 +50,7 @@ export function ScenarioPreRun({
         {/* Back Link */}
         <button
           onClick={onBack}
-          className="flex items-center gap-1.5 text-sm text-label-primary0 hover:text-label-secondary transition-colors mb-8"
+          className="flex items-center gap-1.5 text-sm text-label-tertiary hover:text-label-secondary transition-colors mb-8"
         >
           <ChevronLeft className="h-4 w-4" />
           Back to scenarios
@@ -68,7 +68,7 @@ export function ScenarioPreRun({
 
         {/* Practice explanation */}
         {scenario.stuckMoment && (
-          <p className="mt-4 text-sm text-label-primary0 leading-relaxed">
+          <p className="mt-4 text-sm text-label-tertiary leading-relaxed">
             Practice{" "}
             <span className="text-label-tertiary">{scenario.stuckMoment.toLowerCase()}</span>.
           </p>
@@ -77,7 +77,7 @@ export function ScenarioPreRun({
         {/* Metadata */}
         <div className="mt-6 flex items-center gap-4 text-sm">
           <span className="flex items-center gap-1.5 text-label-tertiary">
-            <Clock className="h-4 w-4 text-label-primary0" />
+            <Clock className="h-4 w-4 text-label-tertiary" />
             ~{scenario.estimatedMinutes} min
           </span>
           <span className={DIFFICULTY_COLORS[scenario.difficulty] || "text-label-tertiary"}>

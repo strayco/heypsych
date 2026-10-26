@@ -73,7 +73,7 @@ export function ContentTimestamps({
     <div className={containerClass}>
       {publishDate && (
         <div className="flex items-center gap-1.5 text-sm text-label-tertiary">
-          <Calendar className="h-4 w-4 text-label-primary0" />
+          <Calendar className="h-4 w-4 text-label-tertiary" />
           <span className="font-medium">Published:</span>
           <span>
             {formatDate(publishDate)}
@@ -88,7 +88,7 @@ export function ContentTimestamps({
 
       {updateDate && updateDate !== publishDate && (
         <div className="flex items-center gap-1.5 text-sm text-label-tertiary">
-          <RefreshCw className="h-4 w-4 text-label-primary0" />
+          <RefreshCw className="h-4 w-4 text-label-tertiary" />
           <span className="font-medium">Updated:</span>
           <span>
             {formatDate(updateDate)}

@@ -13,7 +13,8 @@ import { SITE_CONFIG } from "@/lib/seo/config";
  * SEO-optimized landing page for crisis resources
  */
 
-export const dynamic = "force-dynamic";
+// Static: content is read from data/ files at build time, and the client
+// component reads ?tab/?page behind a Suspense boundary (see SupportCommunityPage).
 
 export const metadata: Metadata = {
   title: "Crisis Helplines & Hotlines | 24/7 Mental Health Support",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/resources/support-community/immediate-crisis`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Crisis Helplines & Hotlines | 24/7 Mental Health Support",
     description:
       "24/7 crisis helplines: 988 Lifeline, Crisis Text Line, and specialized support for veterans, LGBTQ+, and more.",
@@ -33,6 +35,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Crisis Helplines & Hotlines",
     description:

@@ -16,6 +16,9 @@ interface ManifestCache {
   timestamp: number;
 }
 
+// File-backed; the CDN can hold it for a day (deploys purge it).
+const CDN_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" };
+
 // Cache for 5 minutes in production
 const CACHE_TTL_MS = process.env.NODE_ENV === "production" ? 5 * 60 * 1000 : 30 * 1000;
 let manifestCache: ManifestCache | null = null;
@@ -36,7 +39,7 @@ export async function GET() {
         modalities: manifestCache.data.modalities,
         categories: manifestCache.data.categories,
         cached: true,
-      });
+      }, { headers: CDN_CACHE });
     }
 
     // Build fresh manifest using canonical loader
@@ -54,7 +57,7 @@ export async function GET() {
       modalities: manifest.modalities,
       categories: manifest.categories,
       cached: false,
-    });
+    }, { headers: CDN_CACHE });
   } catch (error) {
     logger.error("Error in treatment manifest API:", error);
     return NextResponse.json(

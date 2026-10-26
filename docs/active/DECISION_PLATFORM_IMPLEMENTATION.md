@@ -628,26 +628,18 @@ Recommended default when a choice is needed for non-production planning:
 
 <!-- BEGIN IMPLEMENTATION STATE -->
 ```yaml
-state_version: 27
-last_verified_at: "2026-09-02"
-verified_commit: "e1ebb5bf1260947954e94bd63b3a16f6f4c23348"
+state_version: 31
+last_verified_at: "2026-10-22"
+verified_commit: "16b36c4318d8a6b67919135b2f2458bec591ebb1"
 
 active_phase: 6
 active_slice: "complete"
 phase_status: "complete"
 next_action: >-
-  Phases 0-6 complete. All core decision platform infrastructure is in place:
-  (1) Contracts and safety invariants (Phase 0)
-  (2) Architect clinician journey with hard exclusions (Phase 1)
-  (3) Patient support journey with crisis handling (Phase 2)
-  (4) Homepage/navigation inversion (Phase 3)
-  (5) Decision-first pages (Phase 4)
-  (6) Shared decision infrastructure with session context (Phase 5)
-  (7) Commercial action layer with isCommercial tracking (Phase 6)
-
-  Cross-domain funnel analysis now possible via DecisionSessionContext.
-  Phase 7 (scale decisions / AI parsing) depends on measured pilot success.
-  Ready for pilot launch and measurement.
+  Clinician catalog is 24 decision-set products (21 in Architect after
+  excluding insurance panels). Remaining: clinical review of EPCS/BAA
+  claims, physical-device QA, visual regression snapshots, and Phase 7
+  Architect session analytics. Do not rebuild the Architect.
 
 pre_existing_changes:
   - "AGENTS.md (discovery pointer)"
@@ -769,9 +761,335 @@ decisions_added:
 drift_or_blockers:
   - "Clinical owner and initial launch jurisdiction require authority decision."
   - "Product, editorial, privacy, and commercial owners require assignment."
-  - "0 Architect products have reviewed metadata."
-  - "Audit mode requires parity tests before activation."
+  - "0 Architect products have reviewed-complete capability maps."
+  - "Delivery-model notices still fire on inspectors; EPCS claims still require verification."
+  - "Clinician catalog is 24 decision-set products on disk (21 in Architect after excluding Headway/Grow/SonderMind). 877 other V4 product files and 56 orphan comparisons were deleted."
+  - "User instruction (delete tools people are not deciding between) takes precedence over preserving unused clinician-tool URLs. Retired public slugs 308 to /tools/for-clinicians."
+  - "Physical-device testing and visual regression snapshots are outstanding."
 ```
+
+### Practice Architect 3.0 — "The Living Practice" (in progress, 2026-10-22)
+
+A rebuild of the Practice Architect experience as an illustrated, interactive
+isometric office. Tracked separately from the decision-platform phase ledger
+above; the phase numbers below belong to the Practice Architect 3.0 brief.
+
+**Drift found and corrected (important).** This document recorded Phase 1
+("hard exclusions enforced on the Architect journey") as complete. It was
+complete in `src/domains/architect/engines`, but the shipped UI did not call
+those engines. `src/app/architect/_components/v2/RecommendationPanel.tsx`
+ranked products with a hardcoded `POPULAR_TOOLS` dictionary (lines 30-71) and
+accepted a `profile` prop it never read. In production, therefore, none of the
+seven hard eligibility policies ran, and the onboarding answers changed
+nothing. The 35 golden tests passed throughout, because they exercised the
+engines directly rather than the path the UI used.
+
+Lesson recorded: engine-level tests do not establish that a user-visible
+journey enforces a policy. Production paths need their own coverage.
+
+**Phase 0-1 (complete, verified by execution):**
+- `src/domains/architect/engines/eligibility-engine.ts` — extracted from the
+  private `hasHardIncompatibility` in `recommendation-engine.ts` so eligibility
+  has one implementation. The engine now delegates to it; behaviour preserved
+  (125 tests passing before and after the extraction).
+- `calculateProductCost` and `ProductCostResult` exported from `cost-engine.ts`
+  so the world prices a product identically to the stack recommender.
+- `src/domains/architect/adapters/profile-to-fingerprint.ts` — onboarding
+  answers now normalize into the canonical `PracticeFingerprint`.
+- `src/domains/architect/services/capability-recommendation-service.ts` —
+  the authoritative path for the world. Composes eligibility, fit, relevance,
+  and cost. Contains no vendor list and no popularity table.
+- `src/domains/architect/persistence/project-persistence.ts` — real
+  persistence with a write-then-read-back check, replacing the v2 no-op save.
+  Includes a v2 migration so saved stacks are not silently dropped.
+- Hydration: the v2 mismatch class is removed by construction, not patched.
+  The server renders only a skeleton, and the client's first render produces
+  the identical skeleton; storage, time, and randomness are read exclusively
+  inside effects. Verified: `curl` of `/architect` returns the skeleton and no
+  scene markup.
+
+**Phase 3-4 (prototype complete, art unfinished):**
+- `src/domains/architect/world/` — `scene.ts` (projection, palette, materials,
+  lighting, camera), `object-registry.ts` (14 objects bound to capability IDs,
+  never vendor slugs), `world-state.ts` (scene derived from the project, never
+  persisted).
+- `src/app/architect/_components/world/` — `PracticeScene`, `RoomShell`,
+  `primitives`, `object-art`, `ObjectInspector`, `PracticeOnboarding`,
+  `WorldList`, `usePracticeProject`, `PracticeArchitect`.
+- Live behind `PRACTICE_ARCHITECT_V3` (default true) in
+  `src/lib/config/feature-flags.ts`.
+
+**First acceptance checkpoint (brief Part XXVI §34) — passes end to end.**
+Verified in a real browser against the dev server on 2026-10-22, all eleven
+steps: open Architect, complete a minimal solo profile, see the illustrated
+office, click the computer, see real recommendations from the existing engines,
+select an eligible product, see the object change state, see cost and coverage
+update ("1 of 11 decisions made · $50/month"), save, reload, and confirm both
+the selection and the illustrated state persist.
+
+Two defects were found and fixed by running the real journey rather than the
+tests: a "Good fit" product outranked three "Strong fit" products (ranking is
+now lexicographic — native coverage, then fit tier, then score — so the order
+matches the badges it displays), and a verification warning that fires on every
+product in the catalog was repeated on every card (now reported once per panel
+as `sharedUncertainties`).
+
+**Phase 5 (complete):**
+- `src/domains/architect/services/setup-plan-service.ts` and
+  `_components/world/SetupPlan.tsx` — the blueprint as ordered work, grouped
+  decide → verify → sign up → paperwork → set up → move across, with a
+  plain-text export. Tasks are per product rather than per object, so a tool
+  covering several functions is never signed up for twice. Task state
+  persists; verified by ticking a task and reloading.
+
+**Phase 6 (complete):**
+- `/architect/{build,audit,demo,my-practice,studio}` now 301 to `/architect`
+  (`next.config.ts`). Verified: all five return 308 in dev, 301 in production
+  config. No inbound link anywhere in the site pointed at them; only the dead
+  v1 gateway did.
+- Deleted: the `(workspace)` route group, `_components/v2/` (including
+  `POPULAR_TOOLS`), `_components/studio/`, and seventeen orphaned legacy
+  components. `rg POPULAR_TOOLS src` now returns nothing.
+- Removed the `practiceArchitectV2` / `practiceArchitectV3` flags. Nothing
+  read them after consolidation, and a flag that implies an off-switch it no
+  longer has is worse than no flag.
+
+**Phase 7 (substantially complete):**
+- Keyboard: every object is a real focusable control. Verified in-browser —
+  focus an object, Enter opens the inspector, focus moves into the panel,
+  Escape closes it, and focus returns to the same object.
+- Reduced motion respected via `useReducedMotion` throughout.
+- Narrow screens open on the list view, which carries identical state and
+  actions; the office stays one tap away rather than being withheld.
+- Production build passes; `/architect` prerenders static.
+- ESLint clean across all new code.
+
+**A clinical-safety gap found and closed during Phase 7.** The EPCS policy
+only handled a *missing* EPCS claim. It had nothing to say about a product
+that *claims* EPCS on unreviewed, vendor-provided evidence — which is the
+more dangerous direction, since a missing claim sends a prescriber elsewhere
+while a false one sends them to buy a system believing they may lawfully
+e-prescribe controlled substances. Thirteen catalog products claim EPCS and
+none is `reviewed-complete`; all were being shown to prescribers as "covers
+EPCS as a built-in feature" with no caveat. `eligibility-engine.ts` now raises
+an uncertainty for any unverified EPCS claim. The product stays eligible,
+because the claim may be true, but it is never presented as established.
+
+Related presentation fix: the evidence badge said "High confidence" directly
+above a notice listing what we had not verified. It measures how well
+documented a product is, not whether a claim was checked, so it now reads
+"Well documented" / "Partly documented" / "Thinly documented".
+
+**Tests:** 167 passing in `src/domains/architect` (35 original golden tests
+preserved and passing), 891 across the repository, 0 failing.
+`npx tsc --noEmit` and `npx next build` both clean.
+
+**Not yet done (carried into 3.1):** visual regression snapshots and testing
+on physical devices. Catalog BAA and delivery-model review remains the
+largest clinical-data risk.
+
+### Practice Architect 3.1 — polish, catalog, evidence (2026-10-22)
+
+Harden/polish release. Did not rebuild the 3.0 engines, routes, or world.
+
+**Verified by execution:**
+- `npx tsc --noEmit` pass.
+- `npx vitest run --exclude='**/psychTrail/**'`: 916 passed, 1 skipped.
+- Architect domain: 182 passed, including the original 35 golden tests.
+- Live `/architect` 200. `/architect/{build,audit,demo,my-practice,studio}` 308 to `/architect`.
+- Browser: illustrated office, prescribing inspector copy, setup plan.
+
+**Shipped in 3.1:**
+- Wall-mounted objects use `WallPlaque` (wall-plane contact shadow). Decorative picture, shelf volumes, floor lamp.
+- Hover labels and focus rings. Inspector starts below the site header (`top-32`) so the title is not clipped.
+- Recovery banner + quarantine that autosave cannot overwrite.
+- Category membership is not EPCS. Unreviewed EPCS copy: "EPCS support requires verification".
+- Unknown/quote pricing is never `$0`. Structured data Offer omits price when unknown.
+- Catalog inventory of 901 records (`scripts/catalog/inventory.mjs`). 12 identity-only drafts added (unpublished). Ensora parent-company redirects removed so TheraNest is not merged with Fusion.
+- Admin catalog review at `/hp-ctrl-8k3m9x/catalog`. Evidence freshness intervals in `src/lib/tools/evidence-freshness.ts`.
+- Cross-surface claim-language guard extended; psychiatrist landing no longer says "EPCS compliance verified".
+
+**Still true:** BAA unknown on 634 records. Delivery-model uncertainty still appears on inspectors. New drafts have no approved capability claims. Physical devices not tested. No visual snapshot suite.
+
+### Practice Architect production catalog — quality over quantity (2026-10-22)
+
+User instruction: professional-grade, well-known tools only. Precedence over
+preserving every public tool URL. Did not rebuild engines or add a second
+recommender.
+
+**Shipped:**
+- `PRACTICE_GRADE_SLUGS` (43 recognizable independent/small-group products) is
+  now `LAUNCH_ALLOWLIST`. Hospital/enterprise EHRs (Cerner, Epic, Netsmart),
+  drafts, and obscure adjacent products stay in `data/tools-v4` but do not
+  publish. JSON files were not deleted.
+- 16 flagship records failed schema on SEO titles over 60 characters
+  (SimplePractice, TherapyNotes, Doxy.me, Headway, and peers). Titles and
+  metas were shortened so they actually publish. Live: SimplePractice 200,
+  Cerner Millennium 404.
+- Architect inspector shows one recommended + two alternatives. Marketplace
+  dump and excluded-tools list removed. `alternativeCount` default is 2.
+- Admin catalog shows a Public catalog count distinct from the research archive.
+
+**Verified by execution:**
+- `npx tsc --noEmit` pass.
+- `npx vitest run --exclude='**/psychTrail/**'`: 920 passed, 1 skipped.
+- `GET /api/architect/products?limit=100`: 39 products (practice-grade minus
+  provider networks). No eClinicalWorks, Qualifacts InSync, Cerner, Netsmart.
+- Browser, `/architect` prescribing: IntakeQ, Luminello, TherapyNotes.
+  Clinical records: IntakeQ, Owl Practice, Jane App. Inspector title not clipped.
+
+**Still true:** ranking still comes from the existing engines (IntakeQ can
+outrank SimplePractice on cost/coverage). Physical devices not tested.
+
+### Decision catalog — keep the shopping set, delete the rest (2026-10-22)
+
+User instruction: go in depth on tools people actually decide between, then
+delete everything else. Precedence over preserving unused clinician-tool
+files. Did not rebuild engines.
+
+**Keep (24), by real shopping pair:**
+- Therapist EHR: SimplePractice, TherapyNotes, TheraNest, Jane, Sessions Health, IntakeQ
+- Psychiatry EHR: ICANotes, Luminello, Valant, Osmind
+- AI notes: Mentalyc, Upheal, Blueprint
+- Video: Doxy.me, Zoom for Healthcare
+- Panels: Headway, Grow Therapy, SonderMind
+- Directories: Psychology Today, Zencare
+- Money: Ivy Pay, Mentaya vs Thrizer, Heard
+
+**Deleted:** 877 V4 product JSON files, 56 comparisons that named a deleted
+product, and `data/tools-v4/raw`. Patient tools and Architect engines untouched.
+
+**Verified:** `npx tsc --noEmit` pass. Architect + tools tests 369 passed.
+`GET /api/architect/products`: 21 products, no Cerner/Epic/Netsmart/Freed.
+Disk: 24 product files.
+
+### Clinician catalog — positioning, honest alternatives, +10 tools (2026-10-23)
+
+User report: `/tools/alternatives/intakeq-practiceq` named Osmind (a ketamine/TMS
+clinic EHR) "best for solo", "best for group" and "best for prescribers". Cause:
+picks were the first tool matching self-declared audience tags, with template
+reasons; every record's own `best_for` / `not_for` was ignored.
+
+**Shipped:**
+- `positioning` on the V4 schema (`segments`, one-sentence `notes` per segment,
+  `niche`). All 34 records carry it; notes are drawn from each record's data.
+- `src/lib/tools/alternatives.ts`: one tool per slot, reason = positioning note,
+  niche tools only offered to the same niche, "budget" only if actually cheaper.
+  The page and its title count use the same filter.
+- `ToolMark` monogram replaces `logo_url` (all 11 values were guessed
+  `/logo.png` URLs; removed from data).
+- +10 tools, on the allowlist: TherapyAppointment, Supanote, Berries, NovoPsych,
+  Greenspace Health, Office Ally, TherapyDen, GoodTherapy, Alma, Rula. Pricing
+  read live on 2026-10-23 for TherapyAppointment, Supanote, Berries, NovoPsych
+  (AUD page) and Alma (`pricing.last_verified` set only for those).
+- Not added: Owl Practice (pricing page 404), VSee (2026 delisting and sale of
+  the clinic unit), DrChrono (general medical EHR).
+
+**Verified:** `tsc --noEmit` pass. All 34 records parse and are publish-ready;
+8 alternatives tests on the real catalogue pass. Live: all 10 new profiles 200;
+IntakeQ alternatives now SimplePractice / TheraNest / TherapyNotes / Luminello.
+
+**Follow-up, insurance claims (2026-10-23):**
+- +3 claims options: Claim.MD ($30/$60/$120 per month, read live), Availity
+  Essentials (free, payer-sponsored), TheraThink (outsourced billing, % of paid
+  claims, read live). Not added: Cascade Therapy Billing (pricing and BAA
+  unverifiable), Reimbursify (client-filed OON app, very small team).
+- `positioning.job` ("claims", "payments", "out-of-network", "bookkeeping")
+  so a clearinghouse is never offered as an alternative to a card processor.
+- IvyPay's `website_url` pointed at ivypay.com, now a parked domain for sale.
+  Official site is talktoivy.com/ivypay; 2.75% flat and BAA re-confirmed live.
+- Bug fixed: `next.config.ts` "retired products" redirects still sent
+  therapyappointment, goodtherapy, rula and claim-md to the hub. Removed. The
+  earlier live check only compared status codes; checks now compare the final
+  URL. Requires a dev-server restart to take effect locally.
+- Clinician tool search is punctuation-insensitive ("claim md" → Claim.MD).
+- 46 tests pass (37 records + 9 alternatives); `tsc --noEmit` clean.
+
+### Hosting cost pass (2026-10-23)
+
+- `src/middleware.ts` → `src/proxy.ts` (Next 16 rename). Matcher narrowed from
+  every page to `/treatments/*`, `/conditions/*`, `/resources/*`, `/tools`,
+  `/tools/search`, `/tools/for-clinicians/*`, two legacy `/tools/*` paths and
+  `/llms.txt`. Preview `X-Robots-Tag: noindex` moved to `next.config.ts`
+  `headers()` (host match on `*.vercel.app`).
+- 30 file-backed `/tools/*` pages: `revalidate` 3600 → 86400.
+- Two crisis/support pages: `force-dynamic` removed; `useSearchParams` moved
+  behind Suspense with a full-content fallback (hotlines verified in server HTML).
+- CDN cache (`s-maxage=86400`) on file-backed GET APIs: architect/products
+  (was 300s), treatments/[slug], treatments/manifest, conditions/[slug],
+  resources, resources/[slug].
+- Upstash rate-limit `analytics: false`; Speed Insights `sampleRate={0.25}`;
+  React Query `refetchOnWindowFocus: false`.
+- Removed dead `components/ui/validated-tags.tsx` and `/api/entities/validate`
+  (no callers). Removed a stale `.git/index.lock`.
+- Verified in dev: all proxy behaviours (stub redirect, alias, true 404, legacy
+  redirects, llms.txt CORS). Production build not run here.
+
+### Treatment and condition pages — interactive experience (2026-10-23)
+
+All 591 treatment and 131 condition pages open with an interactive
+experience and present their full text as a chapter guide. Design rules:
+art bible §13.
+
+- Models (pure, from the record only): `src/domains/treatments/experience/model.ts`,
+  `src/domains/conditions/experience/model.ts`; reverse index of treatments
+  per condition in `treatments-for-condition.ts` (files, no DB).
+- Components: `src/components/{treatments,conditions}/experience/`,
+  `src/components/guide/GuideChapters.tsx` (chapter index + reading sheet;
+  closed chapters stay in the DOM, `hidden`).
+- Existing client wrappers take `intro`; when set, the old header, floating
+  Expand All and large CTA card are replaced. If the model throws, the page
+  falls back to the original layout.
+- Fixed along the way: conditions keep their definition in `aeo.what_is`
+  (129 of 130); one record had a tile without `id`, which crashed the page.
+- Verified: crawl of all 722 pages in dev, each 200 with `<h1>` and the new
+  layout in server HTML; 14 model tests over every record; tsc clean.
+- Coverage notes: ~100 older-format treatments only have an overview and get
+  the opening plus "More about …"; only 92 treatments give side-effect rates
+  as percentages, so the rest list side effects without bars.
+
+### Site-wide redesign — symptoms, hubs, tools, articles, resources (2026-10-23)
+
+Every public detail page and hub now follows art bible §13 / §13.1.
+Built in parallel (four forks) plus integration fixes:
+
+- Symptoms (20): new SymptomExperience; private "I've noticed this" list
+  (`localStorage` `hp:noticed`, printable). Fixed 14 symptom→condition links
+  to non-existent pages (PTSD, bipolar) and screener links to
+  `/resources/assessments-screeners/<slug>` (never existed; also emitted by
+  `getLinkPath("assessment")`). Old URLs 301 to `/resources/<slug>`.
+- Hubs: `/conditions` (+17 category hubs), `/treatments` (now all 591 from
+  files, was a 500-row DB query), `/symptoms`.
+- Patient apps 328/330 (2 already redirect); clinician profiles 37 and
+  alternatives 37; learn 46; resources: articles, 56 support, 4 assessments.
+- Integration fixes: `overflow-x: clip` on html/body (sticky was broken
+  site-wide); answer logging removed from AssessmentRenderer and the ASSIST
+  engine; e2e specs updated to real condition slugs; unused
+  `conditions-overview-client.tsx` / `treatments-overview-client.tsx` removed.
+- Verified: tsc clean; 1,259 unit tests pass (project-persistence needs
+  jsdom, not runnable in the sandbox); per-family crawls by each fork; a
+  full sitemap crawl (see below).
+
+### Broken internal links (2026-10-23)
+
+A crawl of 2,330 sitemap pages / 1,666 internal links found 42 dead links.
+Fixed at the source, not per link:
+
+- `src/lib/linking/live-paths.ts`: `isLivePath` (from the generated slug
+  manifests) and `pruneDeadLinks`, run server-side on condition, treatment and
+  resource records before they reach client components. Dead `{link:…}` tokens
+  become plain text; dead linked-medication and resource-alternative slugs are
+  cleared so the name shows unlinked. Server-only so the manifests never ship
+  in client bundles. Tests: `src/lib/linking/__tests__/live-paths.test.ts`.
+- Guides: related links used the raw brand ("kava kava", "elavil (historical
+  brand)"); now URL-safe and re-pointed to the slug the guide actually uses,
+  and dropped if they still would not parse (`liveRelatedPages` in
+  content-engine). Guide sitemap now lists only parseable slugs (959).
+- Tools hubs: `/tools/outcome-measurement` linked clinician products at
+  `/tools/<slug>` (patient catalog) → `/tools/for-clinicians/<category>/<slug>`,
+  unlinked when no profile exists; `measurement-dtx` → `measurement-outcomes`;
+  fixed `/tools/compare/simplepractice-vs-valant` and solo-practice links.
+- Re-crawl: 0 dead links on the affected pages and a sample of guides.
 
 ### Last completed work
 
@@ -1081,4 +1399,288 @@ drift_or_blockers:
   - Integrate session context into Architect journey
   - Run typecheck to verify changes compile
   - Consider additional decision journeys
+
+### Homepage "Two Worlds" and site-wide Worlds identity (2026-10-22/23)
+
+- Homepage rebuilt around two illustrated worlds (patient reading room,
+  clinician office derived from the canonical Architect `RoomShell` and object
+  art). Inline server-rendered SVG, CSS-only interaction, reduced-motion and
+  touch states. Files: `src/components/home/**`, `src/app/page.tsx`.
+- `/find-support` now opens with "What brings you here?" (six starting points to
+  existing routes); `?need=support` continues to the existing SupportJourney.
+  Crisis information shown on every view.
+- Hard-coded homepage inventory counts removed (supersedes the Phase 3 note
+  keeping 130+/650+/100+).
+- Header navigation is now Explore (`/browse`), For Clinicians (`/architect`),
+  About, plus search. Find Support and Practice Architect remain in the footer,
+  homepage, and Explore.
+- Site-wide identity: tokens and Tailwind default palettes remapped to the
+  Worlds palette, Newsreader display headings, new wordmark/favicons/social
+  image, `PageIntro` on hubs, Architect onboarding shows the office. See
+  `docs/active/design/HOMEPAGE_WORLDS_ART_BIBLE.md` section 12.
+- Fixes found along the way: nested `<main>` landmarks removed (15 files), skip
+  link added, doubled "| HeyPsych" titles stripped (30+ routes), `/psychiatrists`
+  given metadata, legal layout's duplicate footer removed, About page claim of
+  insurance filtering removed (not supported by data).
+- Evidence: `tsc --noEmit` clean; ESLint 0 errors on touched files; rendered
+  review in the dev server at desktop 1280 and mobile 375.
+- Open, needs product authority: `src/lib/seo/dark-patterns.ts` randomizes
+  `dateModified`, stamps `lastReviewed` to the current month, and shows a
+  visible "Updated <month year>" badge on tool hubs regardless of edits. This
+  conflicts with the trust copy and causes hydration mismatches.
+- Not yet done: visual-regression snapshots, automated a11y run, Lighthouse.
+
+### Brand consistency pass (2026-10-23)
+
+- Mark simplified to a neutral stone cube; every icon, logo, and social asset
+  regenerated from `src/components/brand/Wordmark.tsx`. Spec:
+  `docs/active/design/BRAND.md`.
+- Head: full icon set (ico, svg, 48/96/192 PNG for Google), manifest with
+  maskable icons, `theme-color` `#FAF9F6`, homepage title separator unified.
+- Structured data: nine schema blocks pointed at a non-existent `/logo.png`;
+  all now use the square `/images/logo.png` (512 × 512).
+- Social: 94 `openGraph` and 38 `twitter` blocks had no image (Next merges
+  metadata shallowly), so those pages shared without a picture. All now name
+  `/images/og/heypsych.png`. The dead `/opengraph-image` route reference and
+  middleware branch were removed.
+- Codebase: 161 gradient literals flattened (11 gradient-text headings
+  removed); ~250 classes that referenced undefined colours fixed (a
+  `label-primary0` find-replace typo, and shadcn names now aliased to brand
+  semantics); all arbitrary hex classes replaced with tokens; Tailwind
+  typography and animate plugins registered (never loaded under v4);
+  `tailwind.config.js` (unused under v4) deleted; primary Button unified to
+  the graphite capsule; glass card variant retired.
+- Emails restyled to the brand and user input escaped (was unescaped HTML).
+- Dead code removed: `src/components/homepage/*`, `AudienceGateway`, public
+  `logo.html`, `robots.txt.backup`, Next starter SVGs.
+- Tests: homepage/navigation e2e rewritten for Two Worlds; new
+  `tests/e2e/brand.spec.ts`.
+- Evidence: `tsc --noEmit` clean; `eslint src --quiet` 0 errors; all brand
+  assets and per-route og/twitter images return 200 in the dev server.
+- Not run here: Playwright e2e and Vitest (native binaries unavailable in the
+  agent environment). Run `npm run test:e2e` locally.
+### Apps & Tools rehaul, clinician side (2026-10-23)
+
+User choice: clinician first; consolidate with 301s. Patient side is next.
+
+- `/tools/for-clinicians` rebuilt around jobs (run the practice, write notes,
+  get paid, insurance networks, directories, telehealth, outcome measures),
+  each drawn with its Practice Architect office object. Island: job →
+  kind of practice (`positioning.segments`) → reviewers' picks with their
+  note; the rest of the job listed below. Choice kept in `localStorage`
+  (`hp:clinician-practice`) only; `?job=` / `?practice=` preselect.
+  Every product link is also in the server HTML (index section).
+- `/tools/for-clinicians/[category]` is now that job's page (same island,
+  billing split by `positioning.job`, "also built into" from
+  `secondary_categories`, same-job head-to-heads). Categories with no
+  products redirect to the hub. Taxonomy SEO titles/FAQs (year bait,
+  products no longer in the catalog, unsourced "save 1–2 hours") are no
+  longer rendered; the data file is unchanged.
+- Code: `src/domains/tools/clinician-hub/model.ts` (+ tests),
+  `src/components/tools/clinician/hub/*`, `src/lib/tools/clinician-hub-data.ts`,
+  `src/lib/tools/curated-comparisons.ts` (comparison gate shared by page,
+  hubs and sitemap).
+- Retired 34 route files (audience pages, best/best-for/year pages, pricing,
+  stacks, integrations, works-with, switch-from, HIPAA/BAA, topic landers,
+  EHR matcher, programmatic clinician guides, legacy V3 hub stubs). 226
+  permanent redirects built from the catalog in
+  `src/lib/tools/clinician-redirects.ts`, spread into `next.config.ts`.
+  Removed the dead V3 redirect blocks in `src/proxy.ts` and the retired URLs
+  from `sitemap-tools.xml` and `sitemap-config.ts`.
+- Fabricated structured data removed: clinician profiles emitted an
+  AggregateRating and Review derived from `data_quality_score`, plus HowTo
+  and auto-written FAQs (`clinician-tool-nuclear.ts` → `clinician-tool.ts`,
+  record-only). Comparisons: dropped HowTo/Review/Table/speakable, guessed
+  G2/Capterra/Crunchbase `sameAs`, `new Date()` dates, "Winner?" titles,
+  trailing-slash canonicals. Profile titles no longer carry the current year.
+  Deleted unused `aggressive-schema.ts`, `serp-domination.ts`,
+  `entity-sameas-registry.ts`, `EHRMatcherClient.tsx`.
+- Evidence: `tsc --noEmit` clean (only a stale `.next/types` entry for the
+  previously deleted `/api/entities/validate`); ESLint clean on touched files;
+  9/9 hub model tests (run under Node with a vitest shim; vitest itself
+  needs the macOS binaries); dev server: all clinician sitemap pages (115)
+  and their 131 internal links return 200, none carry rating/HowTo schema;
+  sample redirects land on the intended URLs. e2e spec updated
+  (`tests/e2e/clinician-tools-v4.spec.ts`), not run here.
+- Open: claim-md's record FAQ says "$120/month, no per-claim fees" while its
+  pricing says "$30/month + per claim"; heard-vs-thrizer and other
+  cross-job comparisons stay live but are not featured; orphaned SEO modules
+  predating this work (`clinician-tool-answer-kings.ts`,
+  `page-priority-engine.ts`, `paa-*`, `psychtrail-*`, …) left in place;
+  patient-side AggregateRating in `schema-builders/tool-v3.ts`,
+  `digital-tool.ts` and `tools/[slug]` to review in the patient pass.
+### Apps & Tools rehaul, patient side + commercial layer (2026-10-23)
+
+User direction: Apple-like, info all still there, monetization later via
+affiliate and sponsorship but "very soft" — no ad clutter (no partners yet).
+
+- `/tools` is the patient app finder: three questions (what's going on, kind
+  of help, how you'd pay) over record fields only, live counts, name search
+  (replaces /tools/search, `?q=` carried), crisis line in server HTML, A–Z
+  index in a `<details>`. Order: sign-up-yourself first, then research, then
+  privacy grade, then name. Answers in `localStorage` (`hp:app-finder`) only,
+  never in the URL. Model: `src/domains/patient-tools/finder/model.ts`
+  (+ tests). 33 clinician-facing records (MBC platforms, EHR add-ons,
+  provider platforms, hospital telehealth) are excluded from the finder by
+  name/one-liner (`isClinicianFacing`); their profiles remain.
+- Need pages kept at their URLs (`/tools/anxiety-stress` … `/tools/find-support`)
+  via `src/app/tools/_components/need-page.tsx`.
+- Patient compare (`/tools/for-patients/compare/a-vs-b`) rebuilt record-only:
+  the old page scored a "winner" (including a `featured` bonus) and wrote
+  verdict text. Non-curated pairs are noindex.
+- Clinician compare (`/tools/compare/[slug]`) rebuilt from the curated JSON
+  (bottom line, key differences, table, sections, FAQs) — no tabs. `/tools/compare`
+  is a compare-any builder (`?tools=a,b,c`). Removed `compare-client.tsx`,
+  `comparison-engine.ts`, `components/tools/comparison/*`.
+- Condition pages gain "Apps and online care" (3 picks, one per kind of help,
+  plus a link to the need page): `src/lib/tools/apps-for-condition.ts`.
+- Header nav adds "Apps"; Explore links updated.
+- Commercial layer, dormant until there are partners:
+  `src/lib/commercial/outbound.ts` (partner link only for an
+  `active_affiliate` record and an open kill switch, then disclosed and
+  rel="sponsored"; otherwise the vendor site, untracked),
+  `src/lib/commercial/placements.ts` + `SponsoredCard` (existing campaign
+  files; now also clinician products; optional `offer` line). Placements render
+  beside, never inside, picks. Visit buttons live only on profiles and
+  comparisons, not on list cards. ProductDemoCTA (unreachable) removed.
+- Patient profile schema: removed AggregateRating/Product built from unsourced
+  store ratings, `new Date()` dates, $0 for unknown prices
+  (`schema-builders/patient-app.ts`). 6 app meta descriptions cleaned of
+  "★ rating" and "the best … app".
+- Retired with 301s (`src/lib/tools/patient-redirects.ts`): /tools/for-patients,
+  its compare index and guides, /tools/find-support/* sub-hubs, /tools/free/*,
+  /tools/search, plus removal of the old `_components` (HubPageContent etc.).
+- Open: profiles still show "4.8★ app rating" from unsourced record fields;
+  `REGULATORY_WARNINGS` (Cerebral, Done) need citations; the "Reviewed by
+  HeyPsych Board" label needs the authority decision noted in §12.
+  Redirect changes need a dev-server restart (the `/tools/search` redirect is
+  not live in the running server yet).
+
+### Apps & Tools rehaul, finish-off (2026-10-23)
+
+- Ratings: legacy `app_rating` / `total_reviews` (unsourced) no longer reach
+  any page or schema: AggregateRating removed from `schema-builders/tool-v3.ts`,
+  `digital-tool.ts` and `utils/seo.ts`; "4.8★ … (1.2M reviews)" titles and
+  descriptions removed from `metadata-generators/resource.ts`; star displays
+  removed from `DigitalToolRenderer`, `ToolCard` and the legacy
+  digital-tools-hub blocks. Sourced `store_ratings` (store, link, date) still show.
+- Bait: "Unknown (#1 App 2026) – Brutally honest…" `seo` blocks the ballistic
+  script added to 8 taxonomy files and the example campaign removed (none in HEAD).
+- Deleted 12 SEO modules nothing imports (answer-kings, PAA, page-priority,
+  psychtrail, freshness automation, internal-link network, …; ~4,200 lines).
+- Checked, already resolved: REGULATORY_WARNINGS cite DOJ/HHS-OIG/EDNY sources
+  (Done sentencing re-verified against the DOJ release); Claim.MD FAQ matches
+  its pricing. "Reviewed by HeyPsych Board" stays: the board exists
+  (`data/editorial/reviewers/medical-review-board.json`); whether each app was
+  individually reviewed is an owner decision (§12).
+- Evidence: `tsc --noEmit` clean; 1,335 unit tests pass (2 suites use jest
+  globals, not runnable in the sandbox config); dev-server crawl of
+  `sitemap-tools.xml`: 466 pages, 1,728 internal links, all 200, no
+  AggregateRating/Review/HowTo markup.
+
+### Consumer apps: led by what people are looking for (2026-10-23)
+
+User direction: "own the consumer apps space"; focus on experience and
+presentation; no screening up front, "what is the user looking for".
+
+- `/tools` now opens with search (names and plain words: "sleep", "takes my
+  insurance", "therapist"), then "Start with what you need" tiles, need
+  chips with counts, and App Store–style shelves of real options. The
+  three-question finder stays below as "Narrow it down".
+- Six intent pages, each with every option, an at-a-glance strip (how many
+  take insurance, are free to start, involve a real person; typical listed
+  monthly price only when 5+ list one, with the denominator), a "Before you
+  choose" checklist, and shelves by kind of help and by need:
+  `/tools/online-therapy`, `/online-psychiatry`, `/self-guided`, `/free-apps`,
+  `/takes-insurance`, `/peer-support` (in `sitemap-tools.xml`). Shared body
+  `src/app/tools/_components/intent-page.tsx`.
+- Need pages (`/tools/anxiety-stress` …) gain the at-a-glance strip and
+  shelves split by kind of help.
+- Saved apps: heart on every card and a Save button on profiles; a bottom
+  pill ("2 saved · Compare") opens the list and links any two to the patient
+  compare page. `localStorage` "hp:saved-apps" only, never sent.
+- Profiles: glance tiles are now What you get / What it costs (+ what the
+  listed price comes to over a year) / How you start / Know first or
+  Evidence. The cost section shows the year working and any annual-plan
+  saving, labelled as worked out from the listed price.
+- Shelf order (`shelfOrder`): open sign-up, research, then reach (sourced
+  store review counts, then how many needs it serves), privacy, name. Never
+  commercial. Model: `src/domains/patient-tools/shelves/model.ts` (+ tests);
+  UI: `src/components/patient-tools/shelves/*`. Finder cards reuse `AppCard`.
+- Evidence: tsc and ESLint clean on touched files; 1,341 unit tests pass.
+
+### Consumer apps: the support ladder (2026-10-23, same day, supersedes shelves on hubs)
+
+User feedback: "not just a wall of apps… user needs to be guided, creatively;
+not a screener questionnaire; not continuous scrolling."
+
+- `/tools` and every need page now centre on the **support ladder**
+  (`src/components/patient-tools/ladder/SupportLadder.tsx`, model
+  `src/domains/patient-tools/ladder/model.ts` + tests): stepped care as an
+  isometric staircase — on your own (phone), coach or peer (doorway),
+  therapist (armchair), prescriber (prescription box) — with 988 on the
+  ground floor. Tap a step (or More/Less support); a game-piece "you" walks
+  there and the panel shows what the step is good for, what it looks like,
+  typical listed price, how many are free / take insurance, three good places
+  to start, and when people step up. Two lenses (what's on your mind, how
+  you'd pay) re-tune every step's count and picks at once. Step and lenses in
+  `localStorage` "hp:ladder" only. Need pages fix the "mind" lens.
+- Removed from hubs: the shelf rows and the three-question finder
+  (`PatientFinder.tsx` deleted; `hubShelves`/`helpShelves`/`ShelfRow` removed).
+- Intent pages: three "Good places to start" cards, then every option as a
+  compact narrow-in-place list (`OptionList.tsx`, 15 rows, then more), instead
+  of up to eight shelves and a 100-card grid.
+- Employer-only products are no longer offered on consumer pages
+  (`isEmployerOnly` in the finder model: name/wording rules plus a reviewed
+  slug list — e.g. Wysa for Employers, Talkspace for Business, Lyra, Spring,
+  Calm Health, Headspace Health, Modern Health, EAPs and health-plan
+  programs, college/school services, SilverCloud, Koa, ieso). Profiles stay.
+  `open` now means "not employer-only" (the price model "enterprise" was
+  wrongly hiding consumer services such as NOCD, Sesame and Doctor On Demand).
+- `notFirstStop` (IOP/PHP/residential, prescription-only, pediatric ADHD)
+  ranks after regular care in picks. Data fixes: EndeavorRx, EndeavorOTC,
+  Akili moved to the focus/ADHD hub (were anxiety/mood); Cognoa Canvas Dx
+  (clinician-prescribed autism diagnostic aid) set to `audience: clinician`.
+- Wysa (consumer app) kept: listed in the US App Store with a free tier as of
+  2026-10-23 (record's availability check). Owner to confirm.
+
+### Consumer apps: telling options apart (2026-10-23)
+
+User feedback: the ladder separates kinds of care, but inside a step (60
+self-guided apps) everything still looks alike; people need to see which one
+is best for them, visually, in every category.
+
+- `src/domains/patient-tools/fit/model.ts` (+ tests):
+  - **Approaches** — what you do with it, read from the record's types, uses,
+    best-for and one-liner. Self-guided: learn a program, meditate and unwind,
+    track and reflect, in-the-moment relief, chat it through (AI type wins),
+    habits/focus/recovery, VR, community. People: general therapy, specialist
+    care, teens and families, couples, messaging-first, someone who shares
+    your background, browse a directory, with your primary care, medication,
+    ADHD, addiction. Each app has one **main approach per step** (the one its
+    wording names most), so tiles split the set cleanly.
+  - **Roles** — Best-studied, Best free (self-guided only; for people it is
+    "Uses insurance", since "free" there means free to search), Most private,
+    Most used (published store rating counts). Each role goes to a different
+    app and shows the one fact that won it. Falls back to "A good place to
+    start" when no fact separates the set.
+  - **Price level** (`costTier`): Free / Free to start / $ / $$ / $$$ / Insurance.
+- `FactRow` on every card in every category: research dots, privacy grade,
+  price level, who you work with. Missing facts show "–".
+- `FitPicker` — "Which [step] option is right for you?": approach tiles (up to
+  8, icons) then the role picks, compare-the-top-two link. Full width under
+  the ladder, synced to the chosen step and lenses; also on every intent page
+  (pay intents use approaches across all steps).
+- Cards now say their approach ("Learn a program", "Specialist care") rather
+  than only "On your own".
+
 <!-- END IMPLEMENTATION STATE -->
+
+## Supabase egress fix (2026-10-26)
+
+The free-plan egress quota (5.5 GB) ran out on 2026-10-26; requests are dropped until 2026-11-04. Cause, from the code:
+- **Link validation** (`src/lib/linking/utils.ts`, `content-enhancer.ts`) fetched whole entity rows, article content included, over the uncached direct Postgres pool, several times per linked name, on every ISR regeneration of condition and treatment pages. Crawlers regenerate hundreds of pages a day. Now uses `src/lib/data/entity-index.ts`: one light query (id, slug, type, title, status) held in the Next data cache for a day.
+- **Page entity** (`entity-cache.ts` `getEntityBySlug`, also the `/api/markdown/*` routes AI bots hit) now goes through `unstable_cache` for a day, shared across instances.
+- **All server-side GET reads of `entities` / `entity_relationships` / `content_files`** through the Supabase client now use the data cache (`database.ts` `contentCacheOptions`), so builds and regenerations reuse rows instead of re-downloading them. Newsletter, leads and other tables are untouched.
+- **Treatment and assessment sitemaps** selected `*` (about 14 MB for treatments) per crawl; now select only slug, type and dates.
+- Tag `supabase-content`; `/api/revalidate` marks it stale when a path is revalidated.

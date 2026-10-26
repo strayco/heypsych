@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import { getInvestigationalServer } from "@/lib/data/server-queries";
-import { TreatmentsClient } from "@/components/pages/treatments-client";
 import { SITE_CONFIG } from "@/lib/seo/config";
+import { TreatmentKindHub } from "@/components/hubs/TreatmentKindHub";
 
-/**
- * Server Component - Investigational treatments hub page
- * Includes complete SEO metadata
- */
+// Static: built from the treatment files, which only change on deploy.
 
-// Generate SEO metadata for investigational treatments hub page
 export const metadata: Metadata = {
   title:
     "Investigational Mental Health Treatments | Psilocybin, MDMA & Clinical Trials",
@@ -20,6 +15,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/treatments/investigational`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Investigational Mental Health Treatments",
     description:
       "Breakthrough investigational treatments: psilocybin, MDMA, ketamine, and other novel therapies in clinical trials.",
@@ -28,6 +24,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
   },
   twitter: {
+    images: ["/images/og/heypsych.png"],
     card: "summary_large_image",
     title: "Investigational Mental Health Treatments",
     description:
@@ -35,15 +32,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function InvestigationalTreatmentsPage() {
-  const treatments = await getInvestigationalServer();
-
+export default function InvestigationalHubPage() {
   return (
-    <TreatmentsClient
-      treatments={treatments}
-      title="Investigational Treatments"
-      description="Clinical trial treatments including psilocybin, MDMA, and other breakthrough therapies currently under research."
-      showDisclaimer={true}
+    <TreatmentKindHub
+      modality="investigational"
+      title="Investigational"
+      description="Treatments still being studied in clinical trials. Most are not approved and are available only in research settings."
+      noun="treatments"
+      searchPlaceholder="Search, e.g. psilocybin, MDMA"
+      caution="These are still being studied; most are only available in clinical trials."
     />
   );
 }

@@ -66,7 +66,7 @@ export function PricingSection({
                   <p className="mb-2 text-sm text-label-primary"><ParsedContent content={plan.best_for} /></p>
                 )}
                 {plan.annual_cost && (
-                  <p className="text-xs text-label-primary0">
+                  <p className="text-xs text-label-tertiary">
                     Annual cost: {plan.annual_cost}
                   </p>
                 )}

@@ -56,7 +56,7 @@ export function StatCard({
   className = ""
 }: StatCardProps) {
   const [showDetails, setShowDetails] = React.useState(false);
-  const colors = getColorClasses(uiHints?.color || '#34C759');
+  const colors = getColorClasses(uiHints?.color || '#487D66');
   const numberSize = getStatNumberSize(uiHints?.visual_priority || 'high');
 
   // Extract numeric value for animation
@@ -115,7 +115,7 @@ export function StatCard({
       transition={{ duration: 0.5 }}
       className={`
         rounded-2xl
-        bg-gradient-to-br from-green-50 via-emerald-50 to-green-100
+         bg-green-50  
         border-2 border-positive-border
         p-6 sm:p-8
         shadow-lg hover:shadow-xl
@@ -159,7 +159,7 @@ export function StatCard({
             <span className="text-sm font-medium text-green-800 w-20">Active</span>
             <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-positive-border">
               <motion.div
-                className="h-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-end px-3"
+                className="h-full bg-green-500 flex items-center justify-end px-3"
                 initial={{ width: 0 }}
                 animate={{ width: `${mainBarWidth}%` }}
                 transition={{ duration: 1.5, delay: 0.5 }}
@@ -174,7 +174,7 @@ export function StatCard({
             <span className="text-sm font-medium text-label-tertiary w-20">Placebo</span>
             <div className="flex-1 h-8 bg-white rounded-lg overflow-hidden border border-separator">
               <motion.div
-                className="h-full bg-gradient-to-r from-neutral-300 to-neutral-400 flex items-center justify-end px-3"
+                className="h-full bg-neutral-300 flex items-center justify-end px-3"
                 initial={{ width: 0 }}
                 animate={{ width: `${comparisonBarWidth}%` }}
                 transition={{ duration: 1.5, delay: 0.7 }}

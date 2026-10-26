@@ -61,13 +61,8 @@ export function MedicationsList({ medications, className }: MedicationsListProps
             </div>
             <ul className="space-y-1">
               {firstLine.map((med) => (
-                <li key={med.slug}>
-                  <Link
-                    href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
-                  >
-                    {med.name}
-                  </Link>
+                <li key={med.slug || med.name}>
+                  <MedName med={med} />
                 </li>
               ))}
             </ul>
@@ -85,13 +80,8 @@ export function MedicationsList({ medications, className }: MedicationsListProps
             </div>
             <ul className="space-y-1">
               {secondLine.map((med) => (
-                <li key={med.slug}>
-                  <Link
-                    href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
-                  >
-                    {med.name}
-                  </Link>
+                <li key={med.slug || med.name}>
+                  <MedName med={med} />
                 </li>
               ))}
             </ul>
@@ -109,13 +99,8 @@ export function MedicationsList({ medications, className }: MedicationsListProps
             </div>
             <ul className="space-y-1">
               {offLabel.map((med) => (
-                <li key={med.slug}>
-                  <Link
-                    href={`/treatments/${med.slug}`}
-                    className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
-                  >
-                    {med.name}
-                  </Link>
+                <li key={med.slug || med.name}>
+                  <MedName med={med} />
                 </li>
               ))}
             </ul>
@@ -123,5 +108,18 @@ export function MedicationsList({ medications, className }: MedicationsListProps
         )}
       </div>
     </div>
+  );
+}
+
+/** Linked when the treatment has a page; plain text when it does not (slug cleared server-side). */
+function MedName({ med }: { med: Medication }) {
+  if (!med.slug) return <span className="inline-block text-sm text-label-secondary">{med.name}</span>;
+  return (
+    <Link
+      href={`/treatments/${med.slug}`}
+      className="inline-block text-sm text-accent hover:text-accent-700 hover:underline"
+    >
+      {med.name}
+    </Link>
   );
 }

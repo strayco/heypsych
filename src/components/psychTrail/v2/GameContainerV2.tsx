@@ -476,7 +476,7 @@ export function GameContainerV2({
 
               <button
                 onClick={onBack}
-                className="flex items-center justify-center h-8 w-8 rounded-lg text-label-primary0 hover:text-label-secondary hover:bg-surface-grouped transition-colors"
+                className="flex items-center justify-center h-8 w-8 rounded-lg text-label-tertiary hover:text-label-secondary hover:bg-surface-grouped transition-colors"
                 aria-label="Exit"
               >
                 <X className="h-4 w-4" />
@@ -489,14 +489,14 @@ export function GameContainerV2({
                 {scenario.uiConfig.metrics.map((m) => (
                   <div key={m.key} className="flex-1">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs text-label-primary0">{m.label}</span>
-                      <span className="text-xs text-label-primary0">
+                      <span className="text-xs text-label-tertiary">{m.label}</span>
+                      <span className="text-xs text-label-tertiary">
                         {Math.round(((state.metrics[m.key] ?? 0) / m.max) * 100)}%
                       </span>
                     </div>
                     <div className="h-1 bg-surface-grouped rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-canvas-elevated0 rounded-full transition-all duration-300"
+                        className="h-full bg-canvas-elevated rounded-full transition-all duration-300"
                         style={{ width: `${((state.metrics[m.key] ?? 0) / m.max) * 100}%` }}
                       />
                     </div>
@@ -529,7 +529,7 @@ export function GameContainerV2({
                     {choice.text}
                   </span>
                   {choice.description && (
-                    <p className="mt-1.5 text-xs text-label-primary0 group-hover:text-label-tertiary">
+                    <p className="mt-1.5 text-xs text-label-tertiary group-hover:text-label-tertiary">
                       {choice.description}
                     </p>
                   )}
@@ -560,7 +560,7 @@ export function GameContainerV2({
                 />
               ) : (
                 <div className="rounded-xl bg-surface/50 border border-separator/50 p-5">
-                  <p className="text-sm text-label-primary0 text-center">
+                  <p className="text-sm text-label-tertiary text-center">
                     Insights will appear here as you play
                   </p>
                 </div>

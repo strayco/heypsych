@@ -23,7 +23,8 @@ export async function GET() {
     // Fetch all assessment resources
     const { data: assessments, error } = await db
       .from('entities')
-      .select('*')
+      // Only what a sitemap entry needs (see sitemap-treatments).
+      .select('slug, type, created_at, updated_at, category:metadata->>category, last_updated:metadata->>last_updated')
       .eq('type', 'resource')
       .eq('status', 'active')
       .order('title');
@@ -34,10 +35,9 @@ export async function GET() {
     }
 
     // Filter for assessments category
-    const filteredAssessments = assessments?.filter(a => {
-      const metadataCategory = (a.metadata as any)?.category;
-      return metadataCategory === 'assessments-screeners';
-    }) || [];
+    const filteredAssessments = ((assessments ?? []) as unknown as Array<Record<string, unknown> & { category?: string | null; last_updated?: string | null }>)
+      .filter((a) => a.category === 'assessments-screeners')
+      .map((a) => ({ ...a, metadata: { category: a.category, last_updated: a.last_updated ?? undefined } }));
 
     const generator = getSitemapGenerator();
     const xml = await generator.generateAssessmentsSitemap(filteredAssessments as unknown as Entity[]);

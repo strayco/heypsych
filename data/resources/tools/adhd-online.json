@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "adhd-online",
   "name": "ADHD Online",
-  "one_liner": "ADHD Online provides comprehensive ADHD assessments and telehealth treatment with board-certified providers, including medication management.",
+  "one_liner": "Self-paced online ADHD and mental health evaluation read by a psychologist, with optional telehealth medication and therapy for adults.",
   "best_for": [
-    "Adults or teens seeking comprehensive ADHD evaluation",
-    "Those wanting detailed assessment beyond basic screening",
-    "People seeking ongoing telehealth ADHD medication management",
-    "Those preferring board-certified providers for ADHD care"
+    "Adults, teens or children 6 and over who want an ADHD evaluation without a waitlist",
+    "Adults who want follow-on medication management or therapy by video after diagnosis",
+    "People paying out of pocket, or with HSA/FSA funds, who can file their own out-of-network claims"
   ],
   "not_for": [
-    "Children under 12",
-    "Those seeking therapy-only ADHD treatment",
-    "People in states where services aren't available"
+    "Anyone in crisis: call or text 988",
+    "People who want their insurance billed directly, or who use Medicaid or Medicare",
+    "Children and teens who need ongoing treatment (treatment is adults 18+ only)",
+    "People in states where medical treatment is not offered"
   ],
   "support_level": "clinical",
-  "short_description": "ADHD Online provides comprehensive ADHD assessments and telehealth treatment with board-certified providers, including medication management.",
-  "long_description": "ADHD Online offers a comprehensive approach to ADHD evaluation and treatment through telehealth. Their proprietary assessment combines clinical interviews with cognitive testing to provide thorough ADHD diagnosis. After evaluation, patients can continue with ADHD Online for medication management with board-certified providers. The platform serves adults and adolescents (ages 12+). Treatment includes ongoing video appointments for medication management and prescription services. ADHD Online accepts some insurance plans for treatment visits. Their detailed assessment approach differentiates them from simpler questionnaire-only evaluations.",
+  "short_description": "ADHD Online (Mentavi Health) sells a $219 online diagnostic evaluation reviewed by a doctorate-level psychologist, plus adult telehealth medication.",
+  "long_description": "ADHD Online, now operating as Mentavi Health, offers an online mental health diagnostic evaluation: you complete a self-paced questionnaire and a doctorate-level psychologist reviews it and writes a report. The evaluation costs $219 (or three payments of $73), is for ages 6 and up, and is available nationwide. Adults can then book medical treatment ($199 first visit, $185 follow-ups) in 40+ states, therapy at $220 a session where offered, or coaching at $59 a session. Stimulant prescribing is decided case by case by the treating clinician. ADHD Online does not bill insurance or take Medicaid or Medicare, but provides superbills for out-of-network claims and accepts HSA/FSA. A 2025 company-funded study in the Journal of Clinical Psychiatry compared its online assessment with clinician video interviews in 345 adults and found 78% agreement, with the online tool diagnosing ADHD less often.",
   "primary_hubs": [
     "focus-adhd",
     "find-support"
@@ -42,17 +42,36 @@
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "one-time",
     "free_tier": false,
-    "starting_price": "$199 assessment",
-    "notes": "Assessment fee plus subscription for ongoing treatment. Some insurance accepted for visits."
+    "starting_price": "$219 evaluation, then $185–$199/visit",
+    "notes": "Evaluation can be split into 3 payments of $73. Therapy $220/session and coaching $59/session for adults. No direct insurance billing; superbills for out-of-network claims; HSA/FSA may be used; Medicaid, Medicare and CareCredit not accepted.",
+    "sources": [
+      "https://adhdonline.com/pricing/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Healthcare-grade security for assessments and treatment."
+    "basis": {
+      "policy_url": "https://adhdonline.com/privacy-policy/",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": false,
+    "data_sold": "no",
+    "notes": "Clinical records fall under a notice of privacy practices that says data is never sold, but the website runs Google, Meta, TikTok and other ad pixels once you accept ad cookies (disabled in CA, NV, MD, CO and WA).",
+    "sources": [
+      "https://adhdonline.com/privacy-policy/",
+      "https://adhdonline.com/notice-of-privacy-practices/",
+      "https://adhdonline.com/washington-state-consumer-health-privacy-policy/"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "ADHD Online: Review & Pricing | HeyPsych",
@@ -80,26 +99,54 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
-    "website": "https://www.adhdonline.com",
-    "affiliate_url": "https://www.adhdonline.com"
+    "website": "https://adhdonline.com",
+    "affiliate_url": "https://adhdonline.com",
+    "publisher": "Mentavi Health (ADHD Online)"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "low",
     "primary_uses": [
-      "ADHD assessment",
-      "ADHD medication management",
-      "Comprehensive evaluation",
-      "Telehealth treatment"
+      "Online ADHD diagnostic evaluation",
+      "Adult ADHD medication management by video",
+      "Therapy with a licensed clinician",
+      "Mental wellness coaching"
+    ],
+    "clinical_trials": [
+      {
+        "study": "Validity of the online assessment against clinician video interviews",
+        "citation": {
+          "authors": "Herman BK, Faraone SV, Cutler AJ, Newcorn JH, LaFrance EM, Ripper Lewis M, Ruetsch C",
+          "title": "Validity of an Online Assessment of Attention-Deficit/Hyperactivity Disorder Among a Real-World Sample of Adults Seeking Web-Based Mental Health Care",
+          "journal": "Journal of Clinical Psychiatry",
+          "year": 2025,
+          "doi": "10.4088/JCP.25m15846",
+          "url": "https://www.psychiatrist.com/jcp/validity-online-adhd-assessment-real-world-sample-adults-seeking-web-based-mental-healthcare/"
+        },
+        "outcome": "78% agreement with clinical interview (sensitivity 80.6%, specificity 44.0%); the online tool diagnosed ADHD less often. Funded by Mentavi Health.",
+        "sample_size": 345,
+        "study_design": "Cross-sectional diagnostic accuracy study, no treatment outcomes"
+      }
     ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
-  "affiliate_url": "https://www.adhdonline.com",
-  "updated_at": "2026-09-02T06:10:49.767Z"
+  "affiliate_url": "https://adhdonline.com",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "note": "Evaluation nationwide for ages 6+; medication treatment and therapy for adults only, in 40+ states.",
+    "sources": [
+      "https://adhdonline.com/pricing/",
+      "https://adhdonline.com/faq/"
+    ],
+    "checked": "2026-10-26"
+  },
+  "patient_summary": "You answer an online questionnaire at your own pace, and a psychologist reviews it and sends you a diagnostic report; the evaluation costs $219. If you are an adult in a covered state, you can then see a clinician by video for medication ($199 first visit, $185 follow-ups) or book therapy. You pay yourself; insurance is not billed directly, but you can submit a superbill."
 }

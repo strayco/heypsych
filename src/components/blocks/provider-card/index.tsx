@@ -55,7 +55,7 @@ export function ProviderCard({
             <Star
               key={i}
               className={`h-4 w-4 ${
-                i < Math.floor(data.rating) ? "fill-current text-caution" : "text-label-primary0"
+                i < Math.floor(data.rating) ? "fill-current text-caution" : "text-label-tertiary"
               }`}
             />
           ))}
@@ -124,7 +124,7 @@ export function ProviderCard({
           <CardContent className="p-6">
             <div className="flex items-start space-x-4">
               {/* Avatar */}
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-positive-500 to-accent-500">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-positive-500">
                 <User className="h-8 w-8 text-white" />
               </div>
 
@@ -367,7 +367,7 @@ export function ProviderCard({
           <div className="flex items-start justify-between">
             <div className="flex flex-1 items-start space-x-3">
               {/* Avatar */}
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-positive-500 to-accent-500">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-positive-500">
                 <User className="h-6 w-6 text-white" />
               </div>
 

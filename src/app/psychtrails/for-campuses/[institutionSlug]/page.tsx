@@ -134,11 +134,11 @@ export default function CampusLandingPage() {
           <div className="mb-8 flex justify-center gap-8 text-center">
             <div>
               <div className="text-xl font-medium text-label-primary">{practiceCount}</div>
-              <div className="text-xs text-label-primary0 mt-0.5">Practice Sessions</div>
+              <div className="text-xs text-label-tertiary mt-0.5">Practice Sessions</div>
             </div>
             <div>
               <div className="text-xl font-medium text-label-primary">{scenariosCompleted}</div>
-              <div className="text-xs text-label-primary0 mt-0.5">Scenarios Completed</div>
+              <div className="text-xs text-label-tertiary mt-0.5">Scenarios Completed</div>
             </div>
           </div>
         )}
@@ -168,13 +168,13 @@ export default function CampusLandingPage() {
                         {scenario.title}
                       </h3>
                       {hasPlayed && (
-                        <span className="text-xs text-label-primary0">Practiced</span>
+                        <span className="text-xs text-label-tertiary">Practiced</span>
                       )}
                     </div>
                     <p className="mt-1 text-sm text-label-tertiary line-clamp-2">
                       {scenario.summary}
                     </p>
-                    <div className="mt-2 flex items-center gap-3 text-xs text-label-primary0">
+                    <div className="mt-2 flex items-center gap-3 text-xs text-label-tertiary">
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         {scenario.estimatedMinutes} min
@@ -190,7 +190,7 @@ export default function CampusLandingPage() {
 
         {/* Trust Note - new users only */}
         {!isReturning && (
-          <p className="mt-8 text-center text-sm text-label-primary0">
+          <p className="mt-8 text-center text-sm text-label-tertiary">
             Private practice. Your choices stay on your device.
           </p>
         )}
@@ -203,7 +203,7 @@ export default function CampusLandingPage() {
             </p>
             <button
               onClick={() => router.push(`/psychtrails/for-campuses/${institutionSlug}/dashboard`)}
-              className="text-xs text-label-primary0 hover:text-label-secondary transition-colors"
+              className="text-xs text-label-tertiary hover:text-label-secondary transition-colors"
             >
               Staff →
             </button>

@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "teladoc-health",
   "name": "Teladoc Health",
-  "one_liner": "Teladoc offers 24/7 video therapy and psychiatry with typical wait times under 5 minutes, covered by most insurance plans.",
+  "one_liner": "Video or phone therapy and psychiatry from licensed US clinicians, usually through an employer or health plan; self-pay visits are also offered.",
   "best_for": [
-    "People whose insurance or employer offers Teladoc benefits",
-    "Those needing quick access to mental health care (24/7 availability)",
-    "People seeking both therapy and psychiatric medication management",
-    "Those who travel frequently and need consistent provider access"
+    "People whose employer or health plan includes Teladoc mental health benefits",
+    "Adults who want therapy and psychiatric medication management in one service",
+    "People who prefer paying per visit rather than a monthly subscription",
+    "Teens 13–17 covered as dependents who need therapy (not psychiatry)"
   ],
   "not_for": [
-    "Those in life-threatening crisis (call 911 or 988)",
-    "People preferring in-person appointments",
-    "Those without insurance or employer benefits (self-pay is expensive)"
+    "Anyone in crisis: call or text 988, or call 911",
+    "Teens who need psychiatric medication (psychiatry is adults only)",
+    "People who want in-person appointments",
+    "People who need intensive programs such as partial hospitalization or residential care"
   ],
   "support_level": "clinical",
-  "short_description": "Teladoc offers 24/7 video therapy and psychiatry with typical wait times under 5 minutes, covered by most insurance plans.",
-  "long_description": "Teladoc (including BetterHelp through acquisition) is the largest telehealth platform in the US, serving over 80 million members through employer and insurance plans. Mental health services include on-demand therapy, scheduled ongoing therapy, and psychiatry for medication management. Teladoc therapists and psychiatrists are available 24/7, with average wait times under 5 minutes for on-demand care. Most members access Teladoc through employer benefits or insurance with $0-75 copays. Self-pay options available starting at $99/visit. The platform treats anxiety, depression, ADHD, bipolar disorder, PTSD, and more. Available nationwide with licensed providers in all 50 states.",
-  "patient_summary": "Teladoc Health is the largest telehealth company in the US, providing virtual medical, mental health, and specialty care to millions through employer and insurance benefits.",
+  "short_description": "Per-visit video or phone therapy and psychiatry, mostly through employer or health-plan benefits, with self-pay visits available.",
+  "long_description": "Teladoc Health is a US virtual care company whose mental health service offers scheduled therapy with licensed therapists and psychiatry (evaluation and medication management) with psychiatrists and psychiatric providers, by video or phone. Most members get access through an employer, health plan or other benefit program, which determines the cost. People without Teladoc benefits or without insurance can still register and pay per visit; Teladoc's mental health page lists self-pay prices of $95 for therapy, $235 for a first psychiatry visit and $105 for psychiatry follow-ups, while its billing FAQ gives ranges up to $119 for therapy and $299/$129 for psychiatry, so the price shown before you confirm a visit is the one that applies. Teens 13–17 can see a therapist as eligible dependents, with a parent or guardian present at the start and end of the first visit; psychiatry is not offered to that age group. Teladoc also offers a self-guided digital mental health program (formerly myStrength) only through qualifying employer or health-plan benefits. Teladoc owns BetterHelp, which is a separate subscription service. It is not a crisis service.",
+  "patient_summary": "Teladoc Health connects you with a licensed therapist or psychiatrist by video or phone, scheduled through its app or website. Most people get it as a benefit from an employer or health plan, which sets what you pay (often a copay); if you don't have it as a benefit you can still book and pay per visit. Psychiatry and medication are for adults; teens 13–17 can get therapy as eligible dependents with a parent present at the first visit.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -41,20 +42,41 @@
     "android": true,
     "web": true,
     "desktop": false,
-    "wearable": true
+    "wearable": false
   },
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$0-75 copay with insurance",
-    "notes": "Most access through employer/insurance. Self-pay starts at $99/visit for therapy, $199 for psychiatry."
+    "starting_price": "Copay with employer or insurance benefit; $95/session therapy self-pay",
+    "notes": "Self-pay prices on Teladoc's mental health page: therapy $95/visit, first psychiatry visit $235, psychiatry follow-up $105. Teladoc's billing FAQ lists ranges of $0–$119 for therapy, $0–$299 for a first psychiatry visit and $0–$129 for follow-ups; the exact fee is shown before you confirm a visit. HSA/FSA/HRA cards accepted on eligible plans. No subscription.",
+    "sources": [
+      "https://www.teladochealth.com/individuals/mental-health",
+      "https://www.teladochealth.com/helpcenter/article/billing-and-insurance-faqs",
+      "https://www.teladochealth.com/start/no-insurance"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. NYSE-listed company with enterprise-grade security. SOC 2 certified."
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.teladochealth.com/legal/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Clinical records are HIPAA-protected; the website privacy policy says it uses targeting cookies and shares identifiers with advertising partners (opt-out offered). No regulator action against Teladoc found; its subsidiary BetterHelp has a 2023 FTC order.",
+    "sources": [
+      "https://www.teladochealth.com/legal/privacy-policy",
+      "https://member.teladoc.com/terms/privacy",
+      "https://www.teladochealth.com/legal/account-deletion-policy"
+    ]
   },
   "seo": {
     "title": "Teladoc Health: Largest US Telehealth Platform | HeyPsych",
@@ -82,20 +104,20 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
-    "website": "https://www.teladoc.com",
+    "website": "https://www.teladochealth.com/individuals/mental-health",
     "affiliate_url": "https://www.teladoc.com"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Telehealth therapy",
-      "Online psychiatry",
-      "Mental health urgent care",
-      "Medication management"
+      "Video or phone therapy for anxiety, depression and stress",
+      "Psychiatric evaluation",
+      "Medication management for adults",
+      "Therapy for teens 13–17 (as dependents)"
     ]
   },
   "related_tools": [],
@@ -103,5 +125,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.teladoc.com",
-  "updated_at": "2026-09-02T06:10:49.779Z"
+  "updated_at": "2026-09-02T06:10:49.779Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-23",
+    "note": "US. Therapy for adults and teens 13–17 (as eligible dependents); psychiatry adults only. Usually via employer or health-plan benefits; self-pay visits available.",
+    "sources": [
+      "https://www.teladochealth.com/individuals/mental-health",
+      "https://www.teladochealth.com/start/no-insurance"
+    ]
+  }
 }

@@ -71,7 +71,7 @@ export default async function CompareRedirectPage({ params }: PageProps) {
 
   // If curated comparison exists, redirect to canonical URL
   if (hasCuratedComparison(slug)) {
-    redirect(`/tools/compare/${slug}/`);
+    redirect(`/tools/compare/${slug}`);
   }
 
   // If no curated comparison exists, 404

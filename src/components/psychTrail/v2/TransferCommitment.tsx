@@ -239,7 +239,7 @@ export function TransferCommitment(props: TransferCommitmentProps) {
               <span className={`text-sm font-medium ${selectedAction === action ? "text-label-primary" : "text-label-secondary"}`}>
                 {label}
               </span>
-              <span className="block text-xs text-label-primary0 mt-0.5">{subtext}</span>
+              <span className="block text-xs text-label-tertiary mt-0.5">{subtext}</span>
             </button>
           ))}
         </div>
@@ -257,7 +257,7 @@ export function TransferCommitment(props: TransferCommitmentProps) {
                 className="w-full flex items-center justify-between px-4 py-3 rounded-lg border border-separator bg-surface-grouped hover:border-separator transition-all"
               >
                 <span className="text-sm text-label-primary">{resource.label}</span>
-                <ExternalLink className="h-4 w-4 text-label-primary0" />
+                <ExternalLink className="h-4 w-4 text-label-tertiary" />
               </button>
             ))}
           </div>
@@ -327,7 +327,7 @@ export function TransferCommitment(props: TransferCommitmentProps) {
       )}
 
       {/* Privacy notice */}
-      <div className="flex items-start gap-2.5 text-xs text-label-primary0">
+      <div className="flex items-start gap-2.5 text-xs text-label-tertiary">
         <Lock className="h-4 w-4 shrink-0 mt-0.5 text-positive-500" />
         <p>
           {isInCampusMode
@@ -358,7 +358,7 @@ export function TransferCommitment(props: TransferCommitmentProps) {
           </summary>
           <ul className="mt-3 space-y-2">
             {reflectionPrompts.map((prompt, i) => (
-              <li key={i} className="text-sm text-label-primary0 pl-4 border-l-2 border-separator">
+              <li key={i} className="text-sm text-label-tertiary pl-4 border-l-2 border-separator">
                 {prompt}
               </li>
             ))}

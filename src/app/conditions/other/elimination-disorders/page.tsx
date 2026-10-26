@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_CONFIG.url}/conditions/other/elimination-disorders`,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "Elimination Disorders",
     description: "Comprehensive guide to elimination disorders: symptoms, causes, and treatment options.",
     url: `${SITE_CONFIG.url}/conditions/other/elimination-disorders`,
@@ -26,8 +27,8 @@ const config = {
   description: "Enuresis, encopresis, and elimination-related conditions affecting children and adults.",
   icon: "droplet",
   iconColor: "text-amber-600",
-  bgColor: "from-amber-50",
-  gradient: "from-amber-900 via-orange-900 to-amber-900",
+  bgColor: "bg-amber-50",
+  gradient: "bg-amber-900",
 };
 
 export default async function EliminationDisordersPage() {

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { PageIntro } from "@/components/brand/PageIntro";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
@@ -10,11 +11,9 @@ export default function PrivacyPage() {
   const lastUpdated = "August 2026";
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="mb-4 text-4xl font-bold text-gray-900">Privacy Policy</h1>
-        <p className="text-sm text-gray-600">Last Updated: {lastUpdated}</p>
-      </div>
+    <div>
+      <PageIntro title="Privacy Policy" width="reading" footnote={`Last updated ${lastUpdated}`} />
+      <div className="mx-auto max-w-4xl space-y-6 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
 
       <Card>
         <CardHeader>
@@ -189,6 +188,7 @@ export default function PrivacyPage() {
           </p>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

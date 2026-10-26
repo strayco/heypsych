@@ -9,13 +9,13 @@ import { ArrowRight, Brain, Pill, Smartphone, MapPin } from "lucide-react";
 
 export function TaxonomyHero() {
   return (
-    <section className="px-4 pb-16 pt-16 sm:px-6 md:pt-24 lg:px-8">
+    <section className="px-4 pt-16 pb-16 sm:px-6 md:pt-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
         {/* Primary H1 */}
-        <h1 className="text-center text-xl font-semibold tracking-tight text-label-primary sm:text-2xl md:text-3xl lg:text-4xl">
+        <h1 className="text-label-primary text-center text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl lg:text-4xl">
           Evidence-based mental health information
         </h1>
-        <p className="mt-4 text-center text-lg text-label-secondary">
+        <p className="text-label-secondary mt-4 text-center text-lg">
           Conditions, treatments, and resources reviewed by mental health professionals.
         </p>
 
@@ -23,16 +23,16 @@ export function TaxonomyHero() {
           {/* Conditions */}
           <Link
             href="/conditions"
-            className="group rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-accent/50 hover:shadow-soft"
+            className="group border-separator bg-surface hover:border-accent/50 hover:shadow-soft rounded-2xl border p-6 transition-all"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-tint">
-              <Brain className="h-6 w-6 text-accent" />
+            <div className="bg-accent-tint flex h-12 w-12 items-center justify-center rounded-xl">
+              <Brain className="text-accent h-6 w-6" />
             </div>
-            <h2 className="mt-4 text-lg font-semibold text-label-primary">Conditions</h2>
-            <p className="mt-1 text-sm text-label-secondary">
+            <h2 className="text-label-primary mt-4 text-lg font-semibold">Conditions</h2>
+            <p className="text-label-secondary mt-1 text-sm">
               Symptoms, diagnosis, and treatment pathways
             </p>
-            <div className="mt-4 flex items-center text-sm font-medium text-accent">
+            <div className="text-accent mt-4 flex items-center text-sm font-medium">
               Explore
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
@@ -41,13 +41,13 @@ export function TaxonomyHero() {
           {/* Treatments */}
           <Link
             href="/treatments"
-            className="group rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-blue-300 hover:shadow-soft"
+            className="group border-separator bg-surface hover:shadow-soft rounded-2xl border p-6 transition-all hover:border-blue-300"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50">
               <Pill className="h-6 w-6 text-blue-600" />
             </div>
-            <h2 className="mt-4 text-lg font-semibold text-label-primary">Treatments</h2>
-            <p className="mt-1 text-sm text-label-secondary">
+            <h2 className="text-label-primary mt-4 text-lg font-semibold">Treatments</h2>
+            <p className="text-label-secondary mt-1 text-sm">
               Medications, therapy, and alternatives
             </p>
             <div className="mt-4 flex items-center text-sm font-medium text-blue-600">
@@ -59,16 +59,16 @@ export function TaxonomyHero() {
           {/* Tools */}
           <Link
             href="/tools"
-            className="group rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-treatment/50 hover:shadow-soft"
+            className="group border-separator bg-surface hover:border-treatment/50 hover:shadow-soft rounded-2xl border p-6 transition-all"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-treatment/10">
-              <Smartphone className="h-6 w-6 text-treatment" />
+            <div className="bg-treatment/10 flex h-12 w-12 items-center justify-center rounded-xl">
+              <Smartphone className="text-treatment h-6 w-6" />
             </div>
-            <h2 className="mt-4 text-lg font-semibold text-label-primary">Tools</h2>
-            <p className="mt-1 text-sm text-label-secondary">
+            <h2 className="text-label-primary mt-4 text-lg font-semibold">Tools</h2>
+            <p className="text-label-secondary mt-1 text-sm">
               Apps, assessments, and practice software
             </p>
-            <div className="mt-4 flex items-center text-sm font-medium text-treatment">
+            <div className="text-treatment mt-4 flex items-center text-sm font-medium">
               Explore
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>
@@ -77,16 +77,16 @@ export function TaxonomyHero() {
           {/* Find Care */}
           <Link
             href="/psychiatrists"
-            className="group rounded-2xl border border-separator bg-surface p-6 transition-all hover:border-positive/50 hover:shadow-soft"
+            className="group border-separator bg-surface hover:border-positive/50 hover:shadow-soft rounded-2xl border p-6 transition-all"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-positive-tint">
-              <MapPin className="h-6 w-6 text-positive-600" />
+            <div className="bg-positive-tint flex h-12 w-12 items-center justify-center rounded-xl">
+              <MapPin className="text-positive-600 h-6 w-6" />
             </div>
-            <h2 className="mt-4 text-lg font-semibold text-label-primary">Find Care</h2>
-            <p className="mt-1 text-sm text-label-secondary">
+            <h2 className="text-label-primary mt-4 text-lg font-semibold">Find Care</h2>
+            <p className="text-label-secondary mt-1 text-sm">
               Psychiatrists and providers near you
             </p>
-            <div className="mt-4 flex items-center text-sm font-medium text-positive-600">
+            <div className="text-positive-600 mt-4 flex items-center text-sm font-medium">
               Search
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </div>

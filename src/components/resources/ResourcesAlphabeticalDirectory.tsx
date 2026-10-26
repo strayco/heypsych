@@ -124,7 +124,7 @@ export function ResourcesAlphabeticalDirectory({ resources, page = 1 }: Resource
                     ${
                       hasResources
                         ? isVisibleOnPage
-                          ? "bg-accent-tint0 text-white shadow-md ring-2 ring-accent-border ring-offset-2"
+                          ? "bg-accent-tint text-white shadow-md ring-2 ring-accent-border ring-offset-2"
                           : "bg-surface border-2 border-separator text-label-secondary hover:bg-accent-tint hover:border-accent hover:text-accent-700"
                         : "bg-surface-grouped border-2 border-separator text-label-quaternary cursor-not-allowed"
                     }

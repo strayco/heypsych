@@ -154,7 +154,7 @@ export function trackAIBotRequest(
 /**
  * Middleware helper to track AI bots
  *
- * Call this in middleware.ts to track all AI bot requests
+ * Call this in src/proxy.ts to track all AI bot requests
  */
 export function maybeTrackAIBot(request: Request, contentType: AIRetrievalEvent['contentType']): void {
   const userAgent = request.headers.get('user-agent') || '';

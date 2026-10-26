@@ -3,22 +3,32 @@
   "kind": "tool",
   "slug": "meru-health",
   "name": "Meru Health",
-  "one_liner": "Meru Health is a online therapy and virtual mental health care platform designed to support mental wellness.",
+  "one_liner": "A 12-week app-based program for depression, anxiety and burnout with a dedicated licensed therapist, in-app chat and video sessions.",
   "best_for": [
-    "People seeking convenient online therapy or psychiatry",
-    "Those who prefer video sessions from home"
+    "Adults with mild to moderate depression, anxiety or burnout who want a structured 12-week program",
+    "People whose health plan or employer covers Meru Health",
+    "People who like daily app lessons plus messaging with a therapist between video sessions",
+    "Teens 13+ whose parent or guardian enrolls them"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)",
-    "People who prefer in-person therapy exclusively"
+    "Anyone in crisis: call or text 988 (Meru Health is not a crisis service)",
+    "People who want open-ended weekly video therapy rather than a time-limited program",
+    "People who prefer in-person care"
   ],
   "support_level": "clinical",
-  "short_description": "Meru Health is a online therapy and virtual mental health care platform designed to support your mental wellness journey.",
-  "long_description": "Meru Health is a online therapy and virtual mental health care platform. Meru Health offers comprehensive mental health support with easy-to-use features.",
+  "short_description": "A 12-week smartphone program for depression, anxiety and burnout, guided by a licensed therapist, often covered by health plans or employers.",
+  "long_description": "Meru Health runs a 12-week, app-based treatment program for depression, anxiety and burnout. You start with a video intake with a licensed therapist who stays with you through the program. Each week has short pre-recorded lessons and practices drawing on mindfulness-based therapy, cognitive behavioral therapy and behavioral activation, plus sleep and nutrition guidance. You can message your therapist in the app and schedule a limited number of video sessions (Meru's FAQ says up to four during the program). Participants get a heart-rate-variability biofeedback device for breathing practice and can join an anonymous peer community. Meru Health is offered through some health plans and employers; it also accepts self-pay and HSA/FSA, but does not publish a self-pay price. Teens 13+ can be enrolled by a parent or guardian. In May 2026 the company announced Meru Health Advanced, a program for adults with more complex or treatment-resistant conditions.",
+  "patient_summary": "You get a 12-week program on your phone: weekly lessons and practices, a biofeedback breathing device, and a licensed therapist you can message and meet by video. You start by checking your insurance or employer coverage on Meru's sign-up page, or choosing to pay yourself, then booking an intake call. It is not a crisis service.",
   "primary_hubs": [
+    "mood-depression",
+    "anxiety-stress",
     "find-support"
   ],
-  "conditions": [],
+  "conditions": [
+    "depression",
+    "anxiety",
+    "burnout"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
@@ -26,22 +36,45 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Pricing information needs verification"
+    "starting_price": "Copay with insurance or free through some employers; self-pay price not published",
+    "notes": "Covered by some health plans (e.g. Harvard Pilgrim, Moda) and offered free as a benefit by some employers and plans; cost otherwise depends on your copay and deductible. Meru says it accepts self-pay and HSA/FSA but does not list a self-pay price.",
+    "sources": [
+      "https://www.meruhealth.com/how-it-works",
+      "https://www.meruhealth.com/faqs",
+      "https://www.meruhealth.com/sign-up/aps",
+      "https://www.harvardpilgrim.org/public/meru-health"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.meruhealth.com/legal/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false
+    "data_sold": "unknown",
+    "notes": "Clinical records are PHI under HIPAA via Meru's medical groups, but the policy lets third-party cookies on its websites and apps be used for interest-based advertising.",
+    "sources": [
+      "https://www.meruhealth.com/legal/privacy-policy",
+      "https://policy.meruhealth.com/"
+    ]
   },
   "seo": {
     "title": "Meru Health: Review & Pricing | HeyPsych",
@@ -65,20 +98,69 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "website": "https://www.meruhealth.com",
-    "affiliate_url": "https://www.meruhealth.com"
+    "affiliate_url": "https://www.meruhealth.com",
+    "app_store_url": "https://apps.apple.com/us/app/meru-health/id1549162768",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.meruhealth.app"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "high",
+    "clinical_trials": [
+      {
+        "study": "Meru Health Program added to usual care vs usual care alone, Finnish university students with major depression",
+        "citation": {
+          "authors": "Raevuori A, Vahlberg T, Korhonen T, Hilgert O, Aittakumpu-Hyden R, Forman-Hoffman V",
+          "title": "A therapist-guided smartphone app for major depression in young adults: A randomized clinical trial",
+          "journal": "Journal of Affective Disorders",
+          "year": 2021,
+          "doi": "10.1016/j.jad.2021.02.007",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33743385/"
+        },
+        "outcome": "No significant difference in depression scores vs usual care alone over the 8-week program; some authors had company ties.",
+        "sample_size": 124,
+        "study_design": "Randomized controlled trial"
+      },
+      {
+        "study": "12-week Meru Health Program with HRV biofeedback vs waitlist, adults with depressive symptoms (NCT04738084)",
+        "citation": {
+          "authors": "Forman-Hoffman VL, Sihvonen S, Wielgosz J, Kuhn E, Nelson BW, Peiper NC, Gould CE",
+          "title": "Therapist-supported digital mental health intervention for depressive symptoms: A randomized clinical trial",
+          "journal": "Journal of Affective Disorders",
+          "year": 2024,
+          "doi": "10.1016/j.jad.2024.01.057",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38211747"
+        },
+        "outcome": "Greater reduction in depressive symptoms than waitlist (d = -0.8); authors included company employees and stockholders.",
+        "sample_size": 100,
+        "study_design": "Randomized controlled trial (waitlist control)"
+      }
+    ],
+    "primary_uses": [
+      "Depression",
+      "Anxiety",
+      "Burnout",
+      "Insomnia and sleep problems linked to low mood",
+      "Stress management with HRV biofeedback breathing"
+    ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.meruhealth.com",
-  "updated_at": "2026-09-02T05:18:37.215Z"
+  "updated_at": "2026-09-02T05:18:37.215Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "note": "Individuals can still sign up through go.meruhealth.com (insurance, employer benefit or self-pay). States served not confirmed this pass.",
+    "checked": "2026-10-23",
+    "sources": [
+      "https://go.meruhealth.com/sign-up",
+      "https://www.meruhealth.com/how-it-works"
+    ]
+  }
 }

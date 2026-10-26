@@ -3,19 +3,22 @@
   "kind": "tool",
   "slug": "dynamicare-health",
   "name": "DynamiCare Health",
-  "one_liner": "DynamiCare Health is a online therapy and virtual mental health care platform designed to support mental wellness.",
+  "one_liner": "A smartphone recovery program for alcohol, drug and nicotine use: remote breath and saliva tests, cash rewards for negative tests, and a recovery coach.",
   "best_for": [
-    "People seeking convenient online therapy or psychiatry",
-    "Those who prefer video sessions from home"
+    "Adults working on alcohol, opioid, stimulant or nicotine use who respond to concrete rewards",
+    "People in outpatient addiction treatment who want extra accountability between visits",
+    "Families who want to support a loved one's recovery with verified testing"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)",
-    "People who prefer in-person therapy exclusively"
+    "Anyone in crisis: call or text 988",
+    "People who need medically supervised detox or withdrawal management",
+    "People without a smartphone or who are uncomfortable recording test videos"
   ],
   "support_level": "clinical",
-  "short_description": "DynamiCare Health is a online therapy and virtual mental health care platform designed to support your mental wellness journey.",
-  "long_description": "DynamiCare Health is a online therapy and virtual mental health care platform. DynamiCare Health offers comprehensive mental health support with easy-to-use features.",
+  "short_description": "Smartphone contingency management for substance use: video-verified breath and saliva tests, rewards on a restricted debit card, and weekly coaching.",
+  "long_description": "DynamiCare Health delivers contingency management, a behavioral treatment that rewards verified abstinence, through a smartphone app. Members get a breathalyzer (for alcohol or, in the smoking program, nicotine) and saliva drug-test strips, and submit tests on request by recording a selfie video that DynamiCare staff check. Negative tests and attending treatment earn money on a smart debit card that blocks spending at bars, casinos and on cash withdrawals, with rewards rising as sobriety lengthens. Each member has a recovery coach, typically for weekly one-hour video sessions, with text support in between. The full program runs about 12 months. It is offered directly to individuals and families and through health plans and treatment providers, and is meant as an add-on to treatment rather than a replacement for medical care or detox.",
   "primary_hubs": [
+    "substance-use",
     "find-support"
   ],
   "conditions": [],
@@ -26,22 +29,44 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "subscription",
     "free_tier": false,
-    "notes": "Pricing information needs verification"
+    "starting_price": "From $20/week self-pay; some insurance plans cover it",
+    "notes": "FAQ says self-pay programs start at $20/week, billed monthly with any add-ons. Plan pages also describe a $0/week option where the family deposits the reward money ($25/week suggested); check current plans at enrollment. Ask DynamiCare to check insurance coverage.",
+    "sources": [
+      "https://www.dynamicarehealth.com/faq",
+      "https://www.dynamicarehealth.com/plans-and-pricing"
+    ],
+    "checked": "2026-10-23"
   },
   "privacy": {
     "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "basis": {
+      "policy_url": "https://www.dynamicarehealth.com/privacy-policy",
+      "checked": "2026-10-23",
+      "sells_or_ads": "unknown",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "unknown",
+    "notes": "Has a HIPAA Notice of Privacy Practices that controls over the policy; terms allow deletion on written request and use of de-identified data; policy does not say whether it sells or shares data for ads.",
+    "sources": [
+      "https://www.dynamicarehealth.com/privacy-policy",
+      "https://www.dynamicarehealth.com/notice-of-hipaa-privacy-practices",
+      "https://www.dynamicarehealth.com/terms-of-use"
+    ]
   },
   "seo": {
     "title": "DynamiCare Health: Review & Pricing | HeyPsych",
@@ -65,20 +90,65 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-23"
   },
   "app_metadata": {
     "website": "https://www.dynamicarehealth.com",
     "affiliate_url": "https://www.dynamicarehealth.com"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "high",
+    "clinical_trials": [
+      {
+        "study": "Pilot randomized trial of DynamiCare plus usual care vs usual care alone in outpatients with alcohol use disorder (90 days); feasibility focus, small sample",
+        "citation": {
+          "authors": "Hammond AS, Sweeney MM, Chikosi TU, Stitzer ML",
+          "title": "Digital delivery of a contingency management intervention for substance use disorder: A feasibility study with DynamiCare Health",
+          "journal": "Journal of Substance Abuse Treatment",
+          "year": 2021,
+          "doi": "10.1016/j.jsat.2021.108425"
+        },
+        "study_design": "Pilot randomized controlled trial",
+        "sample_size": 61,
+        "outcome": "Two-thirds used the app for at least 57 days; more app users remained in treatment at 90 days (24% vs 3%)."
+      },
+      {
+        "study": "Randomized trial of smartphone-delivered financial incentives (DynamiCare app) plus best practices vs best practices alone for smoking in pregnancy and postpartum",
+        "citation": {
+          "authors": "Kurti AN, Nighbor TD, Tang K, Bolívar HA, Evemy CG, Skelly J, Higgins ST",
+          "title": "Effect of Smartphone-Based Financial Incentives on Peripartum Smoking Among Pregnant Individuals: A Randomized Clinical Trial",
+          "journal": "JAMA Network Open",
+          "year": 2022,
+          "doi": "10.1001/jamanetworkopen.2022.11889"
+        },
+        "study_design": "Randomized clinical trial",
+        "sample_size": 90
+      }
+    ],
+    "primary_uses": [
+      "Contingency management for alcohol use",
+      "Support during opioid or stimulant use treatment",
+      "Quitting smoking or vaping",
+      "Remote breath and saliva testing",
+      "Recovery coaching"
+    ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.dynamicarehealth.com",
-  "updated_at": "2026-09-02T05:18:37.212Z"
+  "updated_at": "2026-09-02T05:18:37.212Z",
+  "audience": "patient",
+  "patient_summary": "You use the DynamiCare app to take breath or saliva tests on video when prompted and earn money on a debit card for negative tests, while meeting weekly with a recovery coach. You start with a short survey and a call with the enrollment team. Self-pay programs start at $20 per week, and some insurance plans cover it.",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-23",
+    "note": "Enrolling individuals and families by phone and app; also offered through health plans and treatment programs. State-by-state availability not published.",
+    "sources": [
+      "https://www.dynamicarehealth.com/",
+      "https://www.dynamicarehealth.com/faq"
+    ]
+  }
 }

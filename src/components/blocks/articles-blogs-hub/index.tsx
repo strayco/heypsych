@@ -124,7 +124,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
       id: "self-help-and-wellness",
       name: "Self-Help & Wellness",
       icon: Heart,
-      gradient: "from-negative to-negative-600",
+      fill: "bg-negative",
       bgColor: "bg-rose-50",
       iconColor: "text-rose-600",
       borderColor: "border-rose-200",
@@ -136,7 +136,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
       id: "research-and-science",
       name: "Research & Science",
       icon: Lightbulb,
-      gradient: "from-purple-500 to-indigo-600",
+      fill: "bg-purple-500",
       bgColor: "bg-purple-50",
       iconColor: "text-purple-600",
       borderColor: "border-purple-200",
@@ -148,7 +148,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
       id: "how-to-guides",
       name: "How-To Guides",
       icon: BookOpen,
-      gradient: "from-emerald-500 to-teal-600",
+      fill: "bg-emerald-500",
       bgColor: "bg-emerald-50",
       iconColor: "text-emerald-600",
       borderColor: "border-emerald-200",
@@ -160,7 +160,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
       id: "community-and-stories",
       name: "Community & Stories",
       icon: Users,
-      gradient: "from-amber-500 to-orange-600",
+      fill: "bg-amber-500",
       bgColor: "bg-amber-50",
       iconColor: "text-amber-600",
       borderColor: "border-amber-200",
@@ -249,15 +249,15 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
           <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
             {/* Featured Image */}
             {imageUrl && (
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-fill-secondary to-fill-tertiary">
+              <div className="relative h-48 overflow-hidden bg-fill-secondary">
                 <img
                   src={imageUrl}
                   alt={resource.name || "Article image"}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 z-10 bg-label-primary/60" />
                 <div className="absolute top-4 left-4 z-20">
-                  <Badge className={`bg-gradient-to-r ${cardPillarInfo.gradient} text-white`}>
+                  <Badge className={`${cardPillarInfo.fill} text-white`}>
                     {cardPillarInfo.name}
                   </Badge>
                 </div>
@@ -283,7 +283,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
               </h3>
 
               {/* Meta Info */}
-              <div className="mb-3 flex items-center gap-3 text-xs text-label-primary0">
+              <div className="mb-3 flex items-center gap-3 text-xs text-label-tertiary">
                 {author && (
                   <div className="flex items-center gap-1">
                     <User className="h-3 w-3" />
@@ -352,7 +352,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
             className="mb-3 text-center"
           >
             <h1 className="mb-2 text-2xl font-bold sm:text-3xl">
-              <span className="bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+              <span>
                 Knowledge Hub
               </span>
             </h1>
@@ -363,7 +363,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
         </div>
       </section>
 
-      {/* 4 Pillar Tabs - Full width with gradients */}
+      {/* 4 Pillar Tabs - full width; the selected pillar takes its fill colour */}
       <section className="px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Pillar Tabs */}
@@ -379,13 +379,13 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
                 }
                 className={`group relative overflow-hidden rounded-lg border-2 p-4 text-left transition-all duration-300 ${
                   selectedPillar === pillar.id
-                    ? `${pillar.borderColor} bg-gradient-to-br ${pillar.gradient} shadow-lg`
+                    ? `${pillar.borderColor} ${pillar.fill} shadow-lg`
                     : `border-separator ${pillar.bgColor} hover:border-separator-opaque hover:shadow-md`
                 }`}
               >
-                {/* Background gradient overlay when selected */}
+                {/* Fill overlay when selected */}
                 {selectedPillar === pillar.id && (
-                  <div className="absolute inset-0 bg-gradient-to-br opacity-90 ${pillar.gradient}" />
+                  <div className={`absolute inset-0 opacity-90 ${pillar.fill}`} />
                 )}
 
                 {/* Content */}
@@ -435,7 +435,7 @@ export function ArticlesBlogsHub({ resources, showBackButton = false }: Articles
               onClick={() => setSelectedPillar("latest")}
               className={`gap-2 transition-all ${
                 selectedPillar === "latest"
-                  ? "bg-linear-to-r from-accent-600 to-accent hover:from-accent-700 hover:to-accent-600"
+                  ? "bg-accent hover:bg-accent-hover"
                   : ""
               }`}
             >

@@ -7,6 +7,10 @@
 
 import type { ClinicianToolV4 } from "@/lib/schemas/clinician-tool-v4";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import {
+  dedupeByCanonicalSlug,
+  resolveCanonicalSlug,
+} from "@/lib/tools/canonical-identity";
 import { deriveArchitectMetadata } from "../adapters/v4-product-adapter";
 import type { ProductArchitectureMetadata, CapabilityId } from "../schemas";
 
@@ -102,7 +106,13 @@ export class ArchitectProductService {
 
     // PUBLICATION SAFETY: Only load publishable tools (not drafts)
     // This applies the same publication gate as public clinician pages
-    const tools = await ClinicianToolService.loadClinicianTools();
+    const publishable = await ClinicianToolService.loadClinicianTools();
+
+    // IDENTITY SAFETY: collapse alias records to one entry per real product.
+    // Without this a clinician can select both halves of a duplicated record
+    // (e.g. "valant" and "valant-ehr-suite") and be shown two subscriptions,
+    // a false overlap, and a doubled cost estimate for one system.
+    const tools = dedupeByCanonicalSlug(publishable, (tool) => tool.slug);
 
     const metadataMap = new Map<string, ProductArchitectureMetadata>();
     const displayMap = new Map<string, ArchitectProductDisplay>();
@@ -139,7 +149,10 @@ export class ArchitectProductService {
    */
   static async getMetadata(slug: string): Promise<ProductArchitectureMetadata | null> {
     const { metadataMap } = await this.loadProducts();
-    return metadataMap.get(slug) ?? null;
+    // Saved projects may hold a slug that has since been resolved to an alias.
+    // Fall back to the canonical record so deduplication never silently drops
+    // a tool the clinician already selected.
+    return metadataMap.get(slug) ?? metadataMap.get(resolveCanonicalSlug(slug)) ?? null;
   }
 
   /**
@@ -147,7 +160,7 @@ export class ArchitectProductService {
    */
   static async getDisplay(slug: string): Promise<ArchitectProductDisplay | null> {
     const { displayMap } = await this.loadProducts();
-    return displayMap.get(slug) ?? null;
+    return displayMap.get(slug) ?? displayMap.get(resolveCanonicalSlug(slug)) ?? null;
   }
 
   /**

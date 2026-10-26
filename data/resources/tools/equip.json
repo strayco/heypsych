@@ -3,21 +3,20 @@
   "kind": "tool",
   "slug": "equip",
   "name": "Equip",
-  "one_liner": "Equip provides virtual eating disorder treatment for all ages with a family-based approach, including therapy, medical monitoring, and nutrition counseling.",
+  "one_liner": "Virtual eating disorder treatment with a therapist, dietitian, medical provider and peer mentor; all 50 states, mostly paid by insurance.",
   "best_for": [
-    "Families seeking evidence-based eating disorder treatment",
-    "Adolescents with eating disorders (FBT specialization)",
-    "Those wanting comprehensive team-based care",
-    "People whose insurance covers Equip"
+    "Children and teens with anorexia, bulimia or ARFID whose families can take part in treatment at home",
+    "Adults with an eating disorder who want a specialist team without travelling to a clinic",
+    "People with private insurance or a participating Medicaid plan"
   ],
   "not_for": [
-    "Those requiring inpatient or residential level of care",
-    "Patients needing acute medical stabilization",
-    "People without family/caregiver involvement (FBT requires it)"
+    "Anyone in crisis: call or text 988",
+    "People who are medically unstable and need hospital or residential care",
+    "People who rely on Medicare, which Equip does not accept"
   ],
   "support_level": "clinical",
-  "short_description": "Equip provides virtual eating disorder treatment for all ages with a family-based approach, including therapy, medical monitoring, and nutrition counseling.",
-  "long_description": "Equip is a virtual eating disorder treatment program that brings gold-standard Family-Based Treatment (FBT) to patients of all ages through telehealth. The program includes a dedicated 5-person treatment team: therapist, dietitian, physician, peer mentor (someone with lived experience), and family mentor. Equip treats anorexia, bulimia, binge eating disorder, ARFID, and other eating disorders. The family-based approach means caregivers are actively involved in treatment, which research shows produces better outcomes especially for adolescents. Treatment happens through video appointments and the Equip app. Most major insurance plans are accepted.",
+  "short_description": "Equip treats eating disorders at home by video, using family-based treatment and CBT with a team of therapist, dietitian, medical provider and peer mentor.",
+  "long_description": "Equip is a virtual eating disorder treatment program available in all 50 states. Each patient gets a care team made up of a therapist, a dietitian and a medical provider who specialise in eating disorders, plus a mentor with lived experience, and families take part in treatment. Care also includes support groups, skills workshops, real-time meal support and the Equip app. It treats anorexia, bulimia, binge eating disorder and ARFID. Equip is in network with most private insurers, including UnitedHealthcare, Aetna, Cigna, Blue Cross Blue Shield and Anthem, and some Medicaid plans; it does not take Medicare. Self-pay patients get a cost estimate before starting, with HSA/FSA and interest-free payment plans. Equip's own researchers have published a randomized comparison of two dietary approaches within its family-based treatment (100 patients) and an uncontrolled study of 783 patients treated for ARFID, in which weight and symptoms improved.",
   "primary_hubs": [
     "anxiety-stress",
     "find-support"
@@ -25,7 +24,8 @@
   "conditions": [
     "anorexia-nervosa",
     "bulimia-nervosa",
-    "binge-eating-disorder"
+    "binge-eating-disorder",
+    "avoidant-restrictive-food-intake-disorder"
   ],
   "tool_types": [
     "therapy-platform"
@@ -43,15 +43,33 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Insurance-based",
-    "notes": "Most major insurance plans accepted."
+    "starting_price": "Copay with insurance; self-pay by estimate (price not published)",
+    "notes": "In network with most private insurers (UnitedHealthcare, Aetna, Cigna, Optum, Blue Cross Blue Shield, Anthem, Carelon, Centene and others) and some Medicaid plans; Medicare not accepted. Self-pay patients get an estimate before treatment; HSA/FSA and zero-interest payment plans are available.",
+    "sources": [
+      "https://equip.health/blog-insurance"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Eating disorder records handled with sensitivity."
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://equip.health/privacy-policy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": false,
+    "data_sold": "no",
+    "notes": "Equip's medical practices follow a HIPAA notice for treatment records, but the website privacy policy says it shares personal information with third parties for targeted advertising when you browse without logging in.",
+    "sources": [
+      "https://equip.health/privacy-policy",
+      "https://equip.health/privacy-practices"
+    ]
   },
   "seo": {
     "title": "Equip: Review & Pricing | HeyPsych",
@@ -79,7 +97,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://equip.health",
@@ -87,18 +105,64 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "moderate",
+    "clinical_trials": [
+      {
+        "study": "Randomized comparison of two dietary approaches within Equip's virtual family-based treatment",
+        "citation": {
+          "authors": "Equip Health researchers (all authors hold equity in Equip)",
+          "title": "Dietary Interventions in Family-Based Treatment for Eating Disorders: Results of a Randomized Comparative Effectiveness Study",
+          "journal": "Eating Disorders: The Journal of Treatment & Prevention",
+          "year": 2024,
+          "doi": "10.1080/10640266.2024.2336278",
+          "url": "https://www.informahealthcare.com/doi/full/10.1080/10640266.2024.2336278"
+        },
+        "outcome": "A daily calorie target and the Plate-by-Plate approach led to similar weight gain and eating disorder symptom improvement; caregivers rated the calorie target as more effective.",
+        "sample_size": 100,
+        "study_design": "Randomized comparative effectiveness study (two active arms, no untreated control); 76 analysed"
+      },
+      {
+        "study": "Naturalistic study of Equip's virtual ARFID treatment",
+        "citation": {
+          "authors": "Hellner M, Cai K, Freestone D, Baker JH, Menzel J, Steinberg DM",
+          "title": "Clinical Outcomes in a Large Sample of Youth and Adult Patients Receiving Virtual Evidence-Based Treatment for ARFID: A Naturalistic Study",
+          "journal": "International Journal of Eating Disorders",
+          "year": 2025,
+          "doi": "10.1002/eat.24355",
+          "url": "https://onlinelibrary.wiley.com/doi/10.1002/eat.24355"
+        },
+        "outcome": "Youth and adults on weight restoration moved closer to target weight, and ARFID symptoms, anxiety and depression improved. No control group.",
+        "sample_size": 783,
+        "study_design": "Uncontrolled naturalistic cohort"
+      }
+    ],
     "primary_uses": [
-      "Eating disorder treatment",
-      "Family-Based Treatment",
-      "Adolescent eating disorders",
-      "Nutrition rehabilitation"
+      "Family-based treatment for anorexia and bulimia",
+      "ARFID treatment",
+      "Binge eating disorder treatment",
+      "Meal support and nutrition counselling",
+      "Medical monitoring during recovery"
     ]
   },
   "related_tools": [],
-  "related_conditions": [],
+  "related_conditions": [
+    "anorexia-nervosa",
+    "bulimia-nervosa",
+    "binge-eating-disorder",
+    "avoidant-restrictive-food-intake-disorder"
+  ],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://equip.health",
-  "updated_at": "2026-09-02T06:10:49.774Z"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-26",
+    "note": "Virtual treatment in all 50 states.",
+    "sources": [
+      "https://equip.health/blog-insurance"
+    ]
+  },
+  "patient_summary": "You and your family meet your Equip team by video: a therapist, a dietitian, a medical provider and a peer mentor, with meal support and groups in between. Most private insurance plans and some Medicaid plans cover it; you can check your plan with Equip's insurance screener or get a self-pay estimate before you start."
 }

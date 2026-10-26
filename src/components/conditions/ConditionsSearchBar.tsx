@@ -135,7 +135,7 @@ export function ConditionsSearchBar({
     <div className="relative w-full max-w-2xl mx-auto">
       {/* Search Input */}
       <div className="relative">
-        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-label-primary0" />
+        <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-label-tertiary" />
         <input
           ref={inputRef}
           type="text"
@@ -159,7 +159,7 @@ export function ConditionsSearchBar({
         {searchTerm && (
           <button
             onClick={clearSearch}
-            className="absolute top-1/2 right-4 -translate-y-1/2 text-label-primary0 hover:text-label-secondary transition-colors"
+            className="absolute top-1/2 right-4 -translate-y-1/2 text-label-tertiary hover:text-label-secondary transition-colors"
             aria-label="Clear search"
           >
             <X className="h-5 w-5" />

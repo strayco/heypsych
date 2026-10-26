@@ -131,7 +131,7 @@ export function AuthorByline({
         {isAnonymousAuthor ? (
           <div className="flex items-start gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fill-tertiary">
-              <User className="h-6 w-6 text-label-primary0" />
+              <User className="h-6 w-6 text-label-tertiary" />
             </div>
             <div className="flex-1">
               <div className="font-semibold text-label-primary">By HeyPsych Contributor</div>
@@ -162,7 +162,7 @@ export function AuthorByline({
               />
             ) : (
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fill-tertiary">
-                <User className="h-6 w-6 text-label-primary0" />
+                <User className="h-6 w-6 text-label-tertiary" />
               </div>
             )}
             <div className="flex-1">

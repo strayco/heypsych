@@ -115,7 +115,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
             </Button>
 
             <h1 className="text-2xl font-bold text-label-primary sm:text-3xl">
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span>
                 Digital Tools & Apps
               </span>
             </h1>
@@ -133,7 +133,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
       {/* Filters */}
       <section className="px-4 pb-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <Card className="border-separator bg-surface/80 backdrop-blur">
+          <Card className="border-separator bg-surface">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -247,7 +247,7 @@ export function DigitalToolsHub({ resources }: DigitalToolsHubProps) {
                 tool.data?.version === "2.0" ||
                 tool.data?.patient_summary ||
                 tool.data?.clinical_metadata;
-              const rating = tool.data?.app_rating;
+              const rating: number | undefined = undefined; // app_rating is legacy and unsourced
               const reviews = tool.data?.total_reviews;
               const platforms =
                 tool.metadata?.platforms || tool.data?.platforms || [];

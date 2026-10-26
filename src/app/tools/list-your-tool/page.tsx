@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
+    images: ["/images/og/heypsych.png"],
     title: "List Your Tool",
     description: "Submit your mental health app or software for listing on HeyPsych.",
     url: canonicalUrl,
@@ -280,7 +281,7 @@ export default function ListYourToolPage() {
             </ul>
             <p className="mt-3 text-sm text-label-secondary">
               See our{" "}
-              <Link href="/about/sponsorship-policy/" className="text-accent hover:underline">
+              <Link href="/about/sponsorship-policy" className="text-accent hover:underline">
                 sponsorship policy
               </Link>{" "}
               for details on how we maintain editorial independence.
@@ -290,7 +291,7 @@ export default function ListYourToolPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-accent/5 to-treatment/5 px-4 py-12 sm:px-6 lg:px-8">
+      <section className="bg-accent/5 px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold text-label-primary">Ready to Get Listed?</h2>
           <p className="mt-2 text-label-secondary">
@@ -305,7 +306,7 @@ export default function ListYourToolPage() {
           </a>
           <p className="mt-4 text-sm text-label-tertiary">
             Interested in sponsored placements?{" "}
-            <Link href="/tools/become-a-partner/" className="text-accent hover:underline">
+            <Link href="/tools/become-a-partner" className="text-accent hover:underline">
               Learn about partnership options
             </Link>
           </p>

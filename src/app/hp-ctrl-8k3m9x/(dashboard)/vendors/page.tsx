@@ -253,7 +253,7 @@ export default function VendorsPage() {
                   <td className="px-4 py-4">
                     <div className="flex items-center justify-end gap-2">
                       <Link
-                        href={`/tools/for-clinicians/${vendor.category}/${vendor.slug}/`}
+                        href={`/tools/for-clinicians/${vendor.category}/${vendor.slug}`}
                         target="_blank"
                         className="rounded-lg p-2 text-label-tertiary hover:bg-separator hover:text-label-primary"
                         title="View public page"

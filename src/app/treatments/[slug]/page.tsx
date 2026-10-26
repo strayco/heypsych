@@ -18,12 +18,15 @@ import { Metadata } from "next";
 import { MetadataFactory } from "@/lib/seo/metadata-factory";
 import { SchemaFactory, safeJsonLd } from "@/lib/seo/schema-factory";
 import { enhanceEntityContent } from "@/lib/linking/content-enhancer";
+import { pruneDeadLinks } from "@/lib/linking/live-paths";
 import TreatmentClientWrapper from "./client-wrapper";
 import { getEntityType, isTreatmentType } from "@/lib/utils/entity-type";
 
 // Canonical treatment loader - single source of truth
 import { loadTreatment, getAllTreatmentSlugs } from "@/lib/comparison/treatment-loader";
 import { treatmentV3ToEntity } from "@/lib/comparison/treatment-entity-adapter";
+import { TreatmentExperience } from "@/components/treatments/experience/TreatmentExperience";
+import { buildTreatmentExperience, feelJourney } from "@/domains/treatments/experience/model";
 
 // Generate static params for ALL treatments
 // Pre-renders all treatment pages at build time for instant page loads
@@ -125,6 +128,16 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
   // 5. FAQPage (auto-generated or explicit)
   const schemas = SchemaFactory.generateAll(entity);
 
+  // If a record's shape ever defeats the model, the page keeps its original
+  // layout rather than failing.
+  let intro: React.ReactNode = undefined;
+  try {
+    buildTreatmentExperience(treatment);
+    intro = <TreatmentExperience treatment={treatment} />;
+  } catch (error) {
+    console.error("[TreatmentPage] Experience failed; using the original layout:", slug, error);
+  }
+
   return (
     <>
       {/* Inject schema.org JSON-LD into page head */}
@@ -138,7 +151,12 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
       {/* Pass enhanced entity data to client component for interactivity */}
       {/* Entity names are automatically linked inline via {link:} syntax */}
-      <TreatmentClientWrapper entity={enhancedEntity} />
+      <TreatmentClientWrapper
+        entity={pruneDeadLinks(enhancedEntity)}
+        intro={intro}
+        // The opening shows "What people feel" as a journey; the guide skips it.
+        guideOmit={intro && feelJourney(treatment.sections) ? ["patient_experience"] : []}
+      />
     </>
   );
 }

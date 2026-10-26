@@ -520,7 +520,7 @@ export default function TreatmentPage() {
 
         {/* CTA */}
         <div className="mt-12">
-          <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
+          <Card className="border-blue-200 bg-blue-50">
             <CardContent className="p-8 text-center">
               <h3 className="mb-4 text-2xl font-bold text-neutral-900">
                 Interested in this treatment?

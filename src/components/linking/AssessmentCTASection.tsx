@@ -65,7 +65,7 @@ export function AssessmentCTASection({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className={prominent ? 'border-accent-500/30 bg-linear-to-r from-accent-900/20 to-surface-grouped' : ''}>
+      <Card className={prominent ? 'border-accent-500/30 bg-accent-tint' : ''}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <ClipboardCheck className={`h-5 w-5 ${prominent ? 'text-accent' : 'text-label-tertiary'}`} />
@@ -114,7 +114,7 @@ function renderProminentSingle(link: CandidateLink, title: string, description: 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="border-accent-500/30 bg-linear-to-r from-accent-900/20 via-surface to-accent-900/20 shadow-card-1">
+      <Card className="border-accent-500/30 bg-accent-tint shadow-card-1">
         <CardContent className="p-8 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-tint">
             <ClipboardCheck className="h-8 w-8 text-accent" />

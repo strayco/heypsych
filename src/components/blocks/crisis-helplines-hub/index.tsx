@@ -92,7 +92,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
     (searchQuery ? 1 : 0) + (selectedType !== "all" ? 1 : 0) + (selectedRegion !== "all" ? 1 : 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-negative-tint to-surface">
+    <div className="min-h-screen bg-negative-tint">
       {/* Hero */}
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
@@ -102,7 +102,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                 <Shield className="h-8 w-8 text-rose-600" />
               </div>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className="bg-gradient-to-r from-negative to-negative-600 bg-clip-text text-transparent">
+                <span>
                   Crisis & Helplines
                 </span>
               </h1>
@@ -119,7 +119,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
       <section className="px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-            <Card className="border-0 bg-gradient-to-r from-negative to-negative-600 text-white shadow-2xl">
+            <Card className="border-0 bg-negative text-white shadow-2xl">
               <CardContent className="p-8 text-center">
                 <AlertTriangle className="mx-auto mb-4 h-12 w-12" />
                 <h2 className="mb-3 text-2xl font-bold">If you're in crisis right now</h2>
@@ -170,7 +170,7 @@ export function CrisisHelplinesHub({ resources }: CrisisHelplinesHubProps) {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   {/* Search */}
                   <div className="relative">
-                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-primary0" />
+                    <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-label-tertiary" />
                     <input
                       type="text"
                       placeholder="Search helplines..."

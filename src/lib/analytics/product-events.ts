@@ -21,6 +21,8 @@ type ProductEvent =
   | "homepage_psychtrails_click"
   | "homepage_how_it_works_click"
   | "homepage_resources_click"
+  | "homepage_world_select"
+  | "homepage_discovery_click"
   | "psychtrails_scenario_start"
   | "psychtrails_scenario_complete"
   | "psychtrails_scenario_replay"
@@ -185,6 +187,19 @@ export function trackHomepageHowItWorksClick(): void {
 
 export function trackHomepageResourcesClick(resourceType: string): void {
   trackProductEvent("homepage_resources_click", { source: resourceType });
+}
+
+/**
+ * Track which homepage world a visitor enters.
+ * Records only the audience chosen; nothing about the visitor.
+ */
+export function trackHomepageWorldSelect(world: "patient" | "clinician"): void {
+  trackProductEvent("homepage_world_select", { source: world });
+}
+
+/** Track a click on a homepage discovery pathway. */
+export function trackHomepageDiscoveryClick(navItem: string): void {
+  trackProductEvent("homepage_discovery_click", { navItem, source: "homepage" });
 }
 
 export function trackScenarioStart(

@@ -8,7 +8,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { EntityService } from '@/lib/data/entity-service';
+import { getCachedEntity } from '@/lib/data/entity-cache';
 import { conditionToMarkdown } from '@/lib/content/markdown-converter';
 import { maybeTrackAIBot } from '@/lib/analytics/ai-telemetry';
 
@@ -23,7 +23,7 @@ export async function GET(
     const { slug } = await params;
 
     // Fetch entity from database
-    const entity = await EntityService.getBySlug(slug);
+    const entity = await getCachedEntity(slug);
 
     if (!entity || entity.type !== 'condition') {
       return new NextResponse('Condition not found', { status: 404 });

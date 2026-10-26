@@ -27,12 +27,12 @@ function PackCard({ pack, onSelect }: { pack: PackCardProps; onSelect: () => voi
       <div className="p-5">
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-semibold text-label-primary">{pack.title}</h3>
-          {!pack.unlocked && <Lock className="h-4 w-4 text-label-primary0" />}
+          {!pack.unlocked && <Lock className="h-4 w-4 text-label-tertiary" />}
         </div>
         <p className="text-sm text-label-tertiary line-clamp-2 leading-relaxed">{pack.description}</p>
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span className="text-xs text-label-primary0">{pack.completedCount}/{pack.scenarioCount} completed</span>
+            <span className="text-xs text-label-tertiary">{pack.completedCount}/{pack.scenarioCount} completed</span>
             <div className="flex gap-0.5">
               {Array.from({ length: pack.maxStars }).map((_, i) => (
                 <Star

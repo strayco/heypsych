@@ -76,7 +76,7 @@ test.describe('E-A-T Compliance', () => {
   });
 
   test('Medical disclaimer is present on condition pages', async ({ page }) => {
-    await page.goto(`${BASE_URL}/conditions/bipolar-disorder`);
+    await page.goto(`${BASE_URL}/conditions/bipolar-i-disorder`);
     
     const disclaimer = page.locator('text=/not a substitute|professional advice|consult.*doctor/i');
     await expect(disclaimer.first()).toBeVisible({ timeout: 10000 });
