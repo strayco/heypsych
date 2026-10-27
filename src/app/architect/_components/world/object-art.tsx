@@ -262,6 +262,56 @@ const ClinicalComputer: ArtComponent = ({ installed }) => {
   );
 };
 
+/**
+ * A small desk recorder beside the clinical computer: AI note-taking. A
+ * pill-shaped puck with a grille and a soft waveform, so it reads as
+ * "listening and drafting" without depicting any vendor's product.
+ */
+const AiScribe: ArtComponent = ({ installed }) => {
+  if (!installed) {
+    return <Placeholder origin={ORIGIN} w={9} d={9} h={6} />;
+  }
+  const top = iso(4.5, 4.5, 6.4);
+  const bars = [2.2, 4.2, 3, 5, 2.6];
+  return (
+    <g>
+      <ContactShadow origin={ORIGIN} w={9} d={9} opacity={0.1} />
+      {/* Base and body. */}
+      <IsoBox origin={ORIGIN} w={9} d={9} h={1.4} material="graphite" />
+      <IsoBox
+        origin={{ x: iso(1, 1, 1.4).x, y: iso(1, 1, 1.4).y }}
+        w={7}
+        d={7}
+        h={5}
+        material="ceramic"
+        topMaterial="aluminium"
+      />
+      {/* Grille on the top face. */}
+      {[-2.4, 0, 2.4].map((dx) => (
+        <line
+          key={dx}
+          x1={top.x - 5 + dx}
+          y1={top.y - 1.2 + dx / 2}
+          x2={top.x + 1 + dx}
+          y2={top.y + 1.8 + dx / 2}
+          stroke={shade(MATERIALS.graphite, 1.4)}
+          strokeWidth={0.7}
+          strokeLinecap="round"
+          opacity={0.55}
+        />
+      ))}
+      {/* Listening light. */}
+      <circle cx={iso(2.2, 8, 4.6).x} cy={iso(2.2, 8, 4.6).y} r={0.9} fill="#E07A5F" />
+      {/* A soft waveform rising from the puck: notes being drafted. */}
+      <g transform={`translate(${top.x - 4}, ${top.y - 9})`} opacity={0.85}>
+        {bars.map((h, i) => (
+          <rect key={i} x={i * 1.8} y={-h} width={1.1} height={h} rx={0.55} fill="#8FB3C2" />
+        ))}
+      </g>
+    </g>
+  );
+};
+
 /** Wall-mounted video display for telehealth. */
 const TelehealthDisplay: ArtComponent = ({ installed }) => {
   if (!installed) {
@@ -677,6 +727,7 @@ export const OBJECT_ART: Record<WorldObjectId, ArtComponent> = {
   intake_tablet: IntakeTablet,
   communication_phone: CommunicationPhone,
   clinical_computer: ClinicalComputer,
+  ai_scribe: AiScribe,
   telehealth_display: TelehealthDisplay,
   clinical_cabinet: ClinicalCabinet,
   assessment_kit: AssessmentKit,

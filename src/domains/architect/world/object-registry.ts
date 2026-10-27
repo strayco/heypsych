@@ -75,6 +75,7 @@ export type WorldObjectId =
   | "reception_calendar"
   | "intake_tablet"
   | "clinical_computer"
+  | "ai_scribe"
   | "clinical_cabinet"
   | "telehealth_display"
   | "assessment_kit"
@@ -221,13 +222,27 @@ export const WORLD_OBJECTS: Record<WorldObjectId, WorldObjectDefinition> = {
       "ehr-clinical-record",
       "clinical-documentation",
       "treatment-planning",
-      "ai-documentation-scribe",
     ],
     applicabilityRule: "always",
     defaultAnchor: { x: 784, y: 462 },
     bounds: { width: 150, height: 128 },
     zOrder: 46,
     accessibleName: "Clinical records: notes, documentation, treatment plans",
+  },
+
+  ai_scribe: {
+    objectId: "ai_scribe",
+    assetId: "ai-scribe",
+    zone: "clinical",
+    name: "AI note-taking",
+    description:
+      "Drafts session notes from a recording or a dictated summary, for you to review and sign.",
+    capabilityIds: ["ai-documentation-scribe"],
+    applicabilityRule: "capability",
+    defaultAnchor: { x: 724, y: 486 },
+    bounds: { width: 44, height: 44 },
+    zOrder: 47,
+    accessibleName: "AI note-taking: drafts session notes for you to review",
   },
 
   telehealth_display: {

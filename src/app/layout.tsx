@@ -64,18 +64,20 @@ export const metadata: Metadata = {
   // picks, it is the same cube. Google Search requires a square icon at a
   // multiple of 48px: the 48/96/192 PNGs satisfy that; the SVG keeps tabs
   // crisp on high-density screens; the .ico is the legacy fallback.
+  // Version tag forces browsers to drop a cached old icon after a rebrand;
+  // bump it whenever the icon files change.
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico?v=20261027", sizes: "48x48" },
+      { url: "/favicon.svg?v=20261027", type: "image/svg+xml" },
+      { url: "/favicon-48x48.png?v=20261027", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png?v=20261027", sizes: "96x96", type: "image/png" },
+      { url: "/favicon-192x192.png?v=20261027", sizes: "192x192", type: "image/png" },
     ],
-    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
-    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png?v=20261027", sizes: "180x180" },
+    shortcut: "/favicon.ico?v=20261027",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/site.webmanifest?v=20261027",
   applicationName: "HeyPsych",
   appleWebApp: { title: "HeyPsych", statusBarStyle: "default" },
 };

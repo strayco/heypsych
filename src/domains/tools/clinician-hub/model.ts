@@ -62,7 +62,7 @@ export const CLINICIAN_JOBS: JobDefinition[] = [
     name: "Write notes faster",
     kind: "AI note-taking",
     line: "Drafts progress notes from a session recording or a dictated summary, for you to edit and sign.",
-    object: "intake_tablet",
+    object: "ai_scribe",
   },
   {
     slug: "billing-rcm",
