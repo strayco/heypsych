@@ -5,10 +5,10 @@
 -- anon) key could read, edit and delete these tables through the REST API.
 --
 -- How the app uses each table:
---   * Content tables (entity_relationships, content_files, collections,
---     entity_schemas) are READ by the site with the public key, and only
---     written by scripts with the service-role key. They get a public
---     read-only policy; no public insert/update/delete.
+--   * Content tables collections and entity_schemas are READ with the public
+--     key and only written by scripts with the service-role key. They get a
+--     public read-only policy; no public insert/update/delete.
+--     (entity_relationships and content_files already have RLS; untouched.)
 --   * newsletter_subscribers holds email addresses. It is only touched by
 --     /api/newsletter/subscribe, which now uses the service-role key. No
 --     public policy at all.
@@ -19,15 +19,20 @@
 
 begin;
 
--- Private: subscriber emails. RLS on, no policies = no public access.
+-- Private: RLS on, no policies = no public access. newsletter_subscribers
+-- holds emails; field_types, entity_collections and comparison_metrics are
+-- not used by the app (found by the Supabase advisor, 2026-10-27).
 alter table if exists public.newsletter_subscribers enable row level security;
 drop policy if exists "Public read access" on public.newsletter_subscribers;
+alter table if exists public.field_types enable row level security;
+alter table if exists public.entity_collections enable row level security;
+alter table if exists public.comparison_metrics enable row level security;
 
 -- Public content: read-only for everyone, writes only via service role.
 do $$
 declare t text;
 begin
-  foreach t in array array['entity_relationships', 'content_files', 'collections', 'entity_schemas'] loop
+  foreach t in array array['collections', 'entity_schemas'] loop
     if to_regclass('public.' || t) is not null then
       execute format('alter table public.%I enable row level security', t);
       execute format('drop policy if exists "Public read access" on public.%I', t);
