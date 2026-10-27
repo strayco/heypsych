@@ -13,7 +13,7 @@ import { loadTreatmentHub, MEDICATION_FAMILIES } from "@/domains/hubs/treatment-
 const OTHER_KINDS = [
   { id: "medication", label: "Medications", href: "/treatments/medications" },
   { id: "therapy", label: "Therapies", href: "/treatments/therapy" },
-  { id: "interventional", label: "Procedures", href: "/treatments/interventional" },
+  { id: "interventional", label: "Procedures & devices", href: "/treatments/interventional" },
   { id: "supplement", label: "Supplements", href: "/treatments/supplements" },
   { id: "alternative", label: "Lifestyle & alternative", href: "/treatments/alternative" },
   { id: "investigational", label: "Investigational", href: "/treatments/investigational" },
@@ -76,9 +76,10 @@ export async function TreatmentKindHub({
           items={items}
           groups={groups && groups.length > 1 ? groups : undefined}
           facets={facets}
-          groupsTitle="Families"
+          groupsTitle="Jump to a family"
+          sectioned={modality === "medication"}
           facetsTitle="What it's for"
-          listTitle={`All ${noun}, A–Z`}
+          listTitle={modality === "medication" ? "By family" : `All ${noun}, A–Z`}
           searchLabel={`Search ${noun}`}
           searchPlaceholder={searchPlaceholder}
           noun={noun}

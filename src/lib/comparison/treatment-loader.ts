@@ -21,6 +21,7 @@
 import fs from "fs";
 import path from "path";
 import type { TreatmentV3 } from "../schemas/treatment-v3";
+import { isMergedTreatment } from "../treatments/merged-treatments";
 import { getTreatmentAsV3, isV2Treatment, type TreatmentV2 } from "./treatment-normalizer";
 
 const TREATMENTS_DIR = path.join(process.cwd(), "data/treatments");
@@ -350,7 +351,9 @@ export function findTreatmentFile(slug: string): string | null {
  */
 export function getAllTreatmentSlugs(): string[] {
   const index = buildTreatmentIndex();
-  return index.map((t) => t.slug);
+  // Duplicates of a researched record redirect to it (next.config), so they
+  // are not listed, pre-rendered or put in sitemaps.
+  return index.map((t) => t.slug).filter((slug) => !isMergedTreatment(slug));
 }
 
 /**

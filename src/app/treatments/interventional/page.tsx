@@ -34,8 +34,8 @@ export default function InterventionalHubPage() {
   return (
     <TreatmentKindHub
       modality="interventional"
-      title="Procedures & brain stimulation"
-      description="Treatments done in a clinic, such as TMS, ECT and ketamine, usually when other options have not helped enough."
+      title="Procedures & devices"
+      description="Brain stimulation (TMS, ECT), ketamine, neurofeedback, biofeedback and light therapy. Most are done in a clinic, often when other options have not helped enough."
       noun="procedures"
       searchPlaceholder="Search procedures, e.g. TMS, ECT, ketamine"
     />

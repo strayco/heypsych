@@ -7,6 +7,7 @@
 
 import { NextResponse } from 'next/server';
 import { resolveTreatmentAlias } from '@/lib/treatments/treatment-aliases.generated';
+import { isMergedTreatment } from '@/lib/treatments/merged-treatments';
 import { supabaseOptional } from '@/lib/config/database';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
@@ -59,7 +60,7 @@ export async function GET() {
       (t) => ({ ...t, metadata: { last_updated: t.last_updated ?? undefined } })
     );
     const renderable = (rows as unknown as Entity[]).filter(
-      (t) => renderableSlugs.has(t.slug) && !resolveTreatmentAlias(t.slug)
+      (t) => renderableSlugs.has(t.slug) && !resolveTreatmentAlias(t.slug) && !isMergedTreatment(t.slug)
     );
     const unrenderable = treatments.length - renderable.length;
 

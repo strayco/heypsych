@@ -7,8 +7,8 @@
  * rather than filled with a placeholder.
  */
 
+import { resolveConditionSlug } from "@/lib/conditions/condition-aliases";
 import type { TreatmentV3 } from "@/lib/schemas/treatment-v3";
-import { CONDITION_SLUGS } from "@/lib/entities/entity-slugs.generated";
 
 export type TreatmentObject = "medication" | "supplement" | "therapy" | "procedure";
 
@@ -84,6 +84,8 @@ export interface TreatmentExperience {
   situations: Situation[];
   warnings: Warning[];
   boxedWarning: string | null;
+  /** The boxed warning in plain words (the official text stays in boxedWarning). */
+  boxedWarningPlain: string | null;
   feel: FeelJourney | null;
 }
 
@@ -145,15 +147,96 @@ function splitRisk(risk: string): Warning {
 }
 
 /** The onset display's first clause: "Depression: initial effects may appear within 1–2 weeks". */
-function onsetSummary(display: string | undefined): string | null {
+/** Pharmacology, not what a person notices. */
+const PK_CLAUSE = /steady[- ]state|half-life|plasma|\bpeaks?\b|pharmacokinetic|absorb|absorption|t\s?max|cmax|biologic|side effects?/i;
+/** Placeholder text that should never reach a page. */
+const EMPTY_CLAUSE = /not applicable|not established|provided notes|^unknown$|^varies$|^n\/a$/i;
+/** Words that say when people feel a difference. */
+const BENEFIT_CLAUSE = /benefit|improve|better|response|relief|symptom|mood|anxiety|feel|notice|calm|wake|drows|sedat|appetite|craving|effect/i;
+
+/**
+ * One clause for the "Starts working" tile: when people feel a difference.
+ * Records often open with pharmacology ("Biologic steady state reached in
+ * about 1 week; clinical benefits emerge over 2–6 weeks"), which would tell a
+ * patient Lexapro works in a week. Prefer the clause about benefit, skip
+ * pharmacokinetic ones, and capitalise what is left.
+ */
+export function onsetSummary(display: string | undefined): string | null {
   if (!display) return null;
-  const clause = display.split(/;|\. /)[0].trim();
-  return clause.length > 0 ? clause : null;
+  const clauses = display
+    .split(/;|\. (?=[A-Z])/)
+    .map((c) => c.replace(/\s*\(\[[^\]]*\]\[\d+\]\)/g, "").trim().replace(/\.$/, ""))
+    .filter(Boolean);
+  const plain = clauses.filter((c) => !PK_CLAUSE.test(c) && !EMPTY_CLAUSE.test(c));
+  const pick = plain.find((c) => BENEFIT_CLAUSE.test(c)) ?? plain[0];
+  if (!pick) return null;
+  return pick.charAt(0).toUpperCase() + pick.slice(1);
 }
+
+/** Text records use to say there is no boxed warning. */
+const NO_BOXED = /^\s*(not applicable|none\b|n\/a\b|no (formal |official )?(us |fda |u\.s\. )*(boxed|black[- ]box)|there is no (formal |official )?(us |fda )*(boxed|black[- ]box))|does not carry an official/i;
 
 function boxed(warning: string | string[] | undefined): string | null {
   if (!warning) return null;
-  return Array.isArray(warning) ? warning.join(" ") : warning;
+  const text = (Array.isArray(warning) ? warning.join(" ") : warning).trim();
+  // ~40 records say "Not applicable for this medication." here, which the
+  // page used to show as "Boxed warning: Not applicable…".
+  if (!text || NO_BOXED.test(text)) return null;
+  return text;
+}
+
+/**
+ * A boxed warning in plain words for the "Know first" tile. FDA wording is
+ * written for prescribers ("Closely monitor all antidepressant-treated
+ * patients…"); these say what it means for the person taking it. Each rule
+ * matches the standard class warning; anything else falls back to the
+ * record's own first sentence.
+ */
+export function plainBoxedWarning(text: string, name = ""): string {
+  const t = text.toLowerCase();
+  const drug = name.toLowerCase();
+  if (/neutropenia|neutrophil/.test(t))
+    return "Can drop white blood cells dangerously low, so regular blood tests are required.";
+  if (/buprenorphine|methadone/.test(drug) && /opioid/.test(t))
+    return "Carries opioid risks: misuse, overdose and dangerously slowed breathing, especially with alcohol, benzodiazepines or other sedatives.";
+  if (/suicid/.test(t)) {
+    // Antidepressants: under 25. ADHD non-stimulants: children and teens.
+    const who = /atomoxetine|viloxazine/.test(drug) || /adhd/.test(t) ? "children and teens" : "people under 25";
+    return `In ${who}, it can raise suicidal thoughts, mostly in the first months or after a dose change. Tell someone right away if that happens.`;
+  }
+  if (/dementia/.test(t) && /psychosis|behavior/.test(t))
+    return "Raises the risk of death in older adults with dementia-related psychosis. It is not approved for that.";
+  if (/complex sleep behavio|sleep-?walking|sleep-?driving/.test(t))
+    return "Can cause sleep-walking, sleep-driving and other actions while not fully awake. Stop it and tell your prescriber if that happens.";
+  if (/opioid/.test(t) && (/benzodiazep|phenobarbital|barbiturate/.test(t) || /azepam|zolam|clobazam|clorazepate|chlordiazepoxide/.test(drug)))
+    return "Taking it with opioids, alcohol or other sedatives can slow breathing dangerously. Stop it gradually, with your prescriber, rather than all at once.";
+  if (/abuse|misuse/.test(t) && /stimulant|amphetamine|methylphenidate/.test(t))
+    return "Can be misused and lead to addiction. Take it only as prescribed and keep it somewhere secure.";
+  if (/opioid/.test(t) && /addiction|abuse|misuse|overdose/.test(t))
+    return "Carries opioid risks: misuse, overdose and dangerously slowed breathing, especially with alcohol or sedatives.";
+  if (/stevens|epidermal necrolysis|serious rash/.test(t))
+    return "Can cause a rare but serious skin reaction. Call your prescriber about any new rash, especially in the first two months.";
+  if (/hepatotoxic|liver/.test(t))
+    return /pregnan|fetal|birth defect|teratogen/.test(t)
+      ? "Can cause serious liver damage and harm a developing baby. Regular blood tests are needed."
+      : "Can cause serious liver damage. Regular blood tests are needed.";
+  if (/qt|torsade/.test(t))
+    return "Can cause a dangerous heart-rhythm problem. An ECG may be needed before and during treatment.";
+  if (/respiratory depression|breathing/.test(t) && /oxybate|cns depressant|central nervous system depressant/.test(t))
+    return "Can slow breathing dangerously, especially with alcohol or sedatives. It is only available through a restricted program.";
+  if (/driv/.test(t) && /impair/.test(t))
+    return "Impairs driving. Do not drive or do other risky activities for at least 12 hours after a dose.";
+  if (/visual field|\bvision\b/.test(t))
+    return "Can cause permanent loss of side vision, so regular eye exams are required.";
+  if (/younger than 2|under 2 years/.test(t))
+    return "Not for children under 2: it can slow their breathing dangerously.";
+  if (/continuous monitoring|continuously monitor|hospital/.test(t) && /administ/.test(t))
+    return "Given only in hospitals or clinics that can monitor breathing continuously.";
+  if (/lactic acidosis/.test(t))
+    return "Rarely causes lactic acidosis, a dangerous build-up of acid in the blood.";
+  if (/sedation|loss of consciousness/.test(t) && /infusion|administration/.test(t))
+    return "Can cause heavy sedation or passing out, so it is given only where you can be monitored.";
+  return firstSentence(text.replace(/^\[?[^\]:]*boxed warning\]?:\s*/i, ""), 140) ?? text;
 }
 
 const TIME_WORDS = /^(?:day|days|week|weeks|month|months|first|after|year|years|session|sessions|hour|hours|minute|minutes|long[- ]term)\b/i;
@@ -211,12 +294,13 @@ export function buildTreatmentExperience(treatment: TreatmentV3): TreatmentExper
   ]
     .filter((c) => c.condition_slug && c.condition_name)
     .map((c) => ({
-      slug: c.condition_slug,
+      // "insomnia" → insomnia-disorder, so the use links to its page.
+      slug: resolveConditionSlug(c.condition_slug) ?? c.condition_slug,
       name: c.condition_name ?? c.condition_slug,
       context: c.context ?? null,
       fdaApproved: Boolean(c.fda_approved),
       offLabel: c.offLabel,
-      hasPage: CONDITION_SLUGS.has(c.condition_slug),
+      hasPage: resolveConditionSlug(c.condition_slug) !== null,
     }));
 
   const sideEffects: SideEffect[] = (safety.common_adverse_effects ?? [])
@@ -270,7 +354,7 @@ export function buildTreatmentExperience(treatment: TreatmentV3): TreatmentExper
     glance.push({
       id: "know",
       label: "Know first",
-      value: `Boxed warning: ${firstSentence(boxedWarning, 120)}`,
+      value: `Boxed warning: ${plainBoxedWarning(boxedWarning, treatment.identity?.name)}`,
       href: "#safety",
       tone: "caution",
     });
@@ -312,6 +396,7 @@ export function buildTreatmentExperience(treatment: TreatmentV3): TreatmentExper
     situations,
     warnings: (safety.serious_risks ?? []).map((r) => splitRisk(r.risk)).slice(0, 6),
     boxedWarning,
+    boxedWarningPlain: boxedWarning ? plainBoxedWarning(boxedWarning, treatment.identity?.name) : null,
     feel: feelJourney((treatment as { sections?: unknown }).sections),
   };
 }

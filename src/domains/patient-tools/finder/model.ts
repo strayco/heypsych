@@ -172,7 +172,9 @@ function costLine(pricing: DigitalToolV3["pricing"]): string {
   if (pricing.model === "free") return "Free";
   if (pricing.model === "insurance-covered") return pricing.starting_price ?? "Takes insurance";
   if (pricing.model === "enterprise") return "Through work, school or a health plan";
-  if (pricing.starting_price) return `${pricing.free_tier ? "Free, or " : ""}${pricing.starting_price}`;
+  // Researched prices often already say "Free; Premium $39.99/year".
+  if (pricing.starting_price)
+    return `${pricing.free_tier && !/^free\b/i.test(pricing.starting_price) ? "Free, or " : ""}${pricing.starting_price}`;
   return pricing.free_tier ? "Free to start" : "Paid";
 }
 

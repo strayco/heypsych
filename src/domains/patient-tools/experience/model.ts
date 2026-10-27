@@ -152,7 +152,11 @@ export function platformsLine(p: DigitalToolV3["platforms"]): string | null {
 
 export function costHeadline(pricing: DigitalToolV3["pricing"]): string {
   if (pricing.model === "free") return "Free";
-  if (pricing.starting_price) return `${pricing.free_tier ? "Free, or from " : "From "}${pricing.starting_price}`;
+  if (pricing.starting_price) {
+    // Researched prices often already say "Free; Premium $39.99/year".
+    if (/^free\b/i.test(pricing.starting_price)) return pricing.starting_price;
+    return `${pricing.free_tier ? "Free, or from " : "From "}${pricing.starting_price}`;
+  }
   if (pricing.free_tier) return "Free to start";
   return MODEL_LABELS[pricing.model] ?? "Pricing varies";
 }

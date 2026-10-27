@@ -43,9 +43,9 @@ export const metadata: Metadata = {
 const MODALITIES = [
   { id: "medication", label: "Medications", description: "Prescription medicines: antidepressants, mood stabilizers, stimulants and more.", href: "/treatments/medications" },
   { id: "therapy", label: "Therapies", description: "Talking and skills-based treatments such as CBT, DBT and EMDR.", href: "/treatments/therapy" },
-  { id: "interventional", label: "Procedures & brain stimulation", description: "Treatments such as TMS, ECT and ketamine infusions.", href: "/treatments/interventional" },
+  { id: "interventional", label: "Procedures & devices", description: "TMS, ECT, ketamine, neurofeedback and light therapy.", href: "/treatments/interventional" },
   { id: "supplement", label: "Supplements", description: "Nutritional supplements, with what the evidence says.", href: "/treatments/supplements" },
-  { id: "alternative", label: "Lifestyle & alternative", description: "Light therapy, exercise, mindfulness and other approaches.", href: "/treatments/alternative" },
+  { id: "alternative", label: "Lifestyle & alternative", description: "Meditation, breathwork, yoga, creative arts therapies and other approaches.", href: "/treatments/alternative" },
   { id: "investigational", label: "Investigational", description: "Treatments still in clinical trials, such as psilocybin.", href: "/treatments/investigational" },
 ];
 

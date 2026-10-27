@@ -35,7 +35,7 @@ export default function AlternativeHubPage() {
     <TreatmentKindHub
       modality="alternative"
       title="Lifestyle & alternative"
-      description="Light therapy, exercise, mindfulness and other approaches, with how strong the evidence is."
+      description="Meditation, breathwork, yoga, massage, creative arts therapies and other approaches, with how strong the evidence is for each."
       noun="approaches"
       searchPlaceholder="Search approaches, e.g. light therapy, yoga"
     />

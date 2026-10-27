@@ -17,6 +17,8 @@ import { filterItems, type HubFacet, type HubGroup, type HubItem } from "@/domai
 
 const TONES = ["bg-accent", "bg-treatment", "bg-positive", "bg-caution", "bg-negative", "bg-label-tertiary"];
 const PAGE = 48;
+/** Cards per family shelf before "Show all". */
+const SHELF = 9;
 
 export function HubBrowser({
   items,
@@ -29,6 +31,7 @@ export function HubBrowser({
   searchPlaceholder,
   showSearch = true,
   noun = "results",
+  sectioned = false,
 }: {
   items: HubItem[];
   groups?: HubGroup[];
@@ -40,11 +43,18 @@ export function HubBrowser({
   searchPlaceholder: string;
   showSearch?: boolean;
   noun?: string;
+  /**
+   * Shelve the list by group (medication families): a compact jump bar
+   * instead of big tiles, then one section per group, so every family's
+   * members are on screen rather than behind a filter below the tiles.
+   */
+  sectioned?: boolean;
 }) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<string | null>(null);
   const [facet, setFacet] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(false);
+  const [openShelves, setOpenShelves] = useState<Set<string>>(() => new Set());
 
   const matches = useMemo(() => filterItems(items, { query, group, facet }), [items, query, group, facet]);
   const filtering = Boolean(query.trim() || group || facet);
@@ -57,6 +67,24 @@ export function HubBrowser({
   const visibleCount = expanded || filtering ? matches.length : Math.min(PAGE, matches.length);
   const activeGroup = groups.find((g) => g.id === group);
   const activeFacet = facets.find((f) => f.id === facet);
+
+  // Sectioned: matches per group, in match order.
+  const sections = useMemo(() => {
+    if (!sectioned) return [];
+    return groups.map((g) => ({ group: g, members: matches.filter((m) => m.groups.includes(g.id)) }));
+  }, [sectioned, groups, matches]);
+  const sectionCounts = useMemo(() => new Map(sections.map((x) => [x.group.id, x.members.length])), [sections]);
+
+  const scrollToResults = () => {
+    if (typeof window === "undefined") return;
+    // After React applies the filter, so the list is its final height.
+    requestAnimationFrame(() => {
+      const el = document.getElementById("hub-list-title");
+      if (!el) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
+  };
 
   const clear = () => {
     setQuery("");
@@ -92,7 +120,34 @@ export function HubBrowser({
       )}
 
       {/* Shelves ------------------------------------------------------------- */}
-      {groups.length > 0 && (
+      {groups.length > 0 && sectioned && (
+        <nav aria-label={groupsTitle} className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
+          <h2 className="text-label-tertiary text-[13px] font-semibold tracking-wide uppercase">{groupsTitle}</h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {groups.map((g, i) => {
+              const n = sectionCounts.get(g.id) ?? 0;
+              return (
+                <li key={g.id}>
+                  <a
+                    href={`#shelf-${g.id}`}
+                    aria-disabled={n === 0}
+                    className={`focus-visible:ring-accent inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[14px] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none ${
+                      n === 0
+                        ? "border-separator text-label-tertiary pointer-events-none opacity-50"
+                        : "border-separator bg-surface text-label-primary hover:border-label-tertiary"
+                    }`}
+                  >
+                    <span aria-hidden="true" className={`h-2 w-2 rounded-full ${TONES[i % TONES.length]}`} />
+                    {g.label}
+                    <span className="opacity-60 tabular-nums">{n}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
+      {groups.length > 0 && !sectioned && (
         <section aria-labelledby="hub-groups-title" className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 lg:px-8">
           <h2 id="hub-groups-title" className="font-display text-label-primary text-[28px] leading-tight sm:text-[32px]">
             {groupsTitle}
@@ -102,6 +157,21 @@ export function HubBrowser({
           <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {groups.map((g, i) => {
               const selected = g.id === group;
+              const head = (
+                <>
+                  <span aria-hidden="true" className={`mt-2 h-2 w-2 shrink-0 rounded-full ${TONES[i % TONES.length]}`} />
+                  <span className="min-w-0 flex-1">
+                    <span className="text-label-primary group-hover/tile:text-accent block text-[17px] font-semibold leading-snug">{g.label}</span>
+                    {g.description && <span className="text-label-secondary mt-0.5 line-clamp-2 text-[14px]">{g.description}</span>}
+                  </span>
+                  <span className="text-label-tertiary shrink-0 text-[14px] tabular-nums">
+                    {g.count}
+                    {g.href && <span aria-hidden="true" className="text-accent ml-1.5">→</span>}
+                  </span>
+                </>
+              );
+              const headClass =
+                "focus-visible:ring-accent flex w-full items-start gap-3 rounded-lg text-left focus-visible:ring-2 focus-visible:outline-none";
               return (
                 <li
                   key={g.id}
@@ -111,23 +181,26 @@ export function HubBrowser({
                       : "border-separator bg-surface shadow-card-1 hover:-translate-y-0.5 hover:shadow-card-2 motion-reduce:hover:translate-y-0"
                   }`}
                 >
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setGroup(selected ? null : g.id);
-                      setExpanded(false);
-                    }}
-                    aria-pressed={selected}
-                    aria-controls="hub-results"
-                    className="focus-visible:ring-accent flex w-full items-start gap-3 rounded-lg text-left focus-visible:ring-2 focus-visible:outline-none"
-                  >
-                    <span aria-hidden="true" className={`mt-2 h-2 w-2 shrink-0 rounded-full ${TONES[i % TONES.length]}`} />
-                    <span className="min-w-0 flex-1">
-                      <span className="text-label-primary block text-[17px] font-semibold leading-snug">{g.label}</span>
-                      {g.description && <span className="text-label-secondary mt-0.5 line-clamp-2 text-[14px]">{g.description}</span>}
-                    </span>
-                    <span className="text-label-tertiary shrink-0 text-[14px] tabular-nums">{g.count}</span>
-                  </button>
+                  {/* A tile with its own page opens it; one without filters the list below. */}
+                  {g.href ? (
+                    <Link href={g.href} className={headClass}>
+                      {head}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setGroup(selected ? null : g.id);
+                        setExpanded(false);
+                        if (!selected) scrollToResults();
+                      }}
+                      aria-pressed={selected}
+                      aria-controls="hub-results"
+                      className={headClass}
+                    >
+                      {head}
+                    </button>
+                  )}
                   {g.top.length > 0 && (
                     <ul className="mt-3 space-y-1 pl-5">
                       {g.top.map((t) => (
@@ -138,11 +211,6 @@ export function HubBrowser({
                         </li>
                       ))}
                     </ul>
-                  )}
-                  {g.href && (
-                    <Link href={g.href} className="text-accent hover:text-accent-hover mt-3 inline-block pl-5 text-[14px] font-medium">
-                      All {g.count} <span aria-hidden="true">→</span>
-                    </Link>
                   )}
                 </li>
               );
@@ -167,6 +235,7 @@ export function HubBrowser({
                   onClick={() => {
                     setFacet(selected ? null : f.id);
                     setExpanded(false);
+                    if (!selected) scrollToResults();
                   }}
                   aria-pressed={selected}
                   aria-controls="hub-results"
@@ -186,7 +255,7 @@ export function HubBrowser({
       {/* The list ----------------------------------------------------------- */}
       <section aria-labelledby="hub-list-title" className="mx-auto max-w-6xl px-4 pt-12 pb-16 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
-          <h2 id="hub-list-title" className="font-display text-label-primary text-[28px] leading-tight sm:text-[32px]">
+          <h2 id="hub-list-title" className="scroll-mt-24 font-display text-label-primary text-[28px] leading-tight sm:text-[32px]">
             {activeGroup ? activeGroup.label : listTitle}
             {activeFacet && <span className="text-label-tertiary"> · for {activeFacet.label}</span>}
           </h2>
@@ -210,32 +279,82 @@ export function HubBrowser({
           </p>
         )}
 
-        <ul id="hub-results" className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {ordered.map((item, index) => (
-            <li key={item.href} hidden={index >= visibleCount}>
-              <Link
-                href={item.href}
-                className="border-separator bg-surface hover:border-accent/40 focus-visible:ring-accent group block h-full rounded-2xl border px-4 py-3.5 transition-colors focus-visible:ring-2 focus-visible:outline-none"
-              >
-                <span className="text-label-primary group-hover:text-accent block text-[15px] font-medium leading-snug">{item.title}</span>
-                {item.subtitle && <span className="text-label-secondary mt-1 line-clamp-2 text-[13px] leading-snug">{item.subtitle}</span>}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {!filtering && !expanded && matches.length > PAGE && (
-          <div className="mt-6 text-center">
-            <button
-              type="button"
-              onClick={() => setExpanded(true)}
-              className="border-separator bg-surface text-label-primary hover:bg-fill-quaternary rounded-full border px-6 py-2.5 text-[15px] font-medium"
-            >
-              Show all {matches.length}
-            </button>
+        {sectioned ? (
+          <div id="hub-results" className="mt-2">
+            {groups.map((g, i) => {
+              const all = items.filter((it) => it.groups.includes(g.id));
+              const shown = sections.find((x) => x.group.id === g.id)?.members ?? [];
+              const shownSet = new Set(shown);
+              const open = filtering || openShelves.has(g.id);
+              const limit = open ? Infinity : SHELF;
+              // Matches first (in match order), then the rest hidden, so every link stays in the HTML.
+              const list = [...shown, ...all.filter((it) => !shownSet.has(it))];
+              return (
+                <section key={g.id} id={`shelf-${g.id}`} hidden={shown.length === 0} aria-labelledby={`shelf-${g.id}-title`} className="scroll-mt-24 pt-10">
+                  <div className="border-separator flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b pb-3">
+                    <span aria-hidden="true" className={`h-2.5 w-2.5 self-center rounded-full ${TONES[i % TONES.length]}`} />
+                    <h3 id={`shelf-${g.id}-title`} className="text-label-primary text-[22px] font-semibold leading-tight">
+                      {g.label}
+                    </h3>
+                    <span className="text-label-tertiary text-[14px] tabular-nums">{shown.length}</span>
+                    {g.description && <p className="text-label-secondary w-full text-[14px] sm:w-auto sm:flex-1">{g.description}</p>}
+                  </div>
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {list.map((item, index) => (
+                      <li key={item.href} hidden={!shownSet.has(item) || index >= limit}>
+                        <ItemCard item={item} />
+                      </li>
+                    ))}
+                  </ul>
+                  {!open && shown.length > SHELF && (
+                    <button
+                      type="button"
+                      onClick={() => setOpenShelves((prev) => new Set(prev).add(g.id))}
+                      className="text-accent hover:text-accent-hover mt-3 text-[15px] font-medium"
+                    >
+                      Show all {shown.length} {g.label}
+                    </button>
+                  )}
+                </section>
+              );
+            })}
           </div>
+        ) : (
+          <>
+            <ul id="hub-results" className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {ordered.map((item, index) => (
+                <li key={item.href} hidden={index >= visibleCount}>
+                  <ItemCard item={item} />
+                </li>
+              ))}
+            </ul>
+
+            {!filtering && !expanded && matches.length > PAGE && (
+              <div className="mt-6 text-center">
+                <button
+                  type="button"
+                  onClick={() => setExpanded(true)}
+                  className="border-separator bg-surface text-label-primary hover:bg-fill-quaternary rounded-full border px-6 py-2.5 text-[15px] font-medium"
+                >
+                  Show all {matches.length}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>
+  );
+}
+
+function ItemCard({ item }: { item: HubItem }) {
+  return (
+    <Link
+      href={item.href}
+      className="border-separator bg-surface hover:border-accent/40 focus-visible:ring-accent group block h-full rounded-2xl border px-4 py-3.5 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+    >
+      <span className="text-label-primary group-hover:text-accent block text-[15px] font-medium leading-snug">{item.title}</span>
+      {item.subtitle && <span className="text-label-secondary mt-1 line-clamp-2 text-[13px] leading-snug">{item.subtitle}</span>}
+    </Link>
   );
 }

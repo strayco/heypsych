@@ -241,7 +241,10 @@ export function TreatmentExperience({ treatment }: { treatment: TreatmentV3 }) {
               {x.boxedWarning && (
                 <p className={`text-label-secondary text-[15px] leading-relaxed ${x.warnings.length > 0 ? "border-negative/20 mt-6 border-t pt-5" : ""}`}>
                   <strong className="text-label-primary">Boxed warning. </strong>
-                  {firstSentence(x.boxedWarning, 400)}
+                  {x.boxedWarningPlain ?? firstSentence(x.boxedWarning, 400)}
+                  <span className="text-label-tertiary mt-2 block text-[13px]">
+                    Official wording: {firstSentence(x.boxedWarning, 400)}
+                  </span>
                 </p>
               )}
               <p className="text-label-primary mt-5 text-[15px] font-medium">

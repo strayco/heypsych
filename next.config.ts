@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { buildClinicianRedirects } from "./src/lib/tools/clinician-redirects";
 import { buildPatientRedirects } from "./src/lib/tools/patient-redirects";
+import { MERGED_TREATMENTS } from "./src/lib/treatments/merged-treatments";
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -268,19 +269,13 @@ const nextConfig: NextConfig = {
           permanent: true,
         },
       ]),
-      // SEO: Redirect programmatic-style treatment URLs to canonical treatment pages
-      {
-        source: "/treatments/electroconvulsive-therapy-for-severe-depression",
-        destination: "/treatments/electroconvulsive-therapy",
+      // Thin legacy treatment records that duplicate a researched one
+      // (src/lib/treatments/merged-treatments.ts).
+      ...Object.entries(MERGED_TREATMENTS).map(([from, to]) => ({
+        source: `/treatments/${from}`,
+        destination: `/treatments/${to}`,
         permanent: true,
-      },
-      // SEO: Redirect legacy treatment aliases to canonical pages
-      // levomepromazine = methotrimeprazine (same drug, different naming)
-      {
-        source: "/treatments/levomepromazine",
-        destination: "/treatments/methotrimeprazine-nozinan",
-        permanent: true,
-      },
+      })),
     ];
   },
 };
