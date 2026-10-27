@@ -27,8 +27,10 @@ describe("practice-grade catalog", () => {
   it("is the actual shopping set, not a directory", () => {
     expect(PRACTICE_GRADE_SLUGS.size).toBeGreaterThanOrEqual(20);
     // 37 after the 2026-10-23 expansion (claims, AI notes, measurement,
-    // networks). The cap guards against drifting back into a full directory.
-    expect(PRACTICE_GRADE_SLUGS.size).toBeLessThanOrEqual(45);
+    // networks); 55 after the 2026-10-26 restore of pages that carried search
+    // traffic (malpractice, agency EHRs, CE). The cap guards against drifting
+    // back into a full directory.
+    expect(PRACTICE_GRADE_SLUGS.size).toBeLessThanOrEqual(60);
     expect(slugsOnDisk.size).toBe(PRACTICE_GRADE_SLUGS.size);
   });
 
@@ -44,6 +46,24 @@ describe("practice-grade catalog", () => {
     expect(isPracticeGrade("cerner-millennium")).toBe(false);
     expect(isPracticeGrade("epic-cosmos")).toBe(false);
     expect(isPracticeGrade("netsmart-myavatar")).toBe(false);
+    expect(isPracticeGrade("qualifacts-insync")).toBe(false);
+  });
+
+  it("keeps every retired slug off disk, and every redirect target live", () => {
+    const retired = JSON.parse(readFileSync("data/tools-v4/retired-products.json", "utf8")) as string[];
+    expect(retired.filter((slug) => slugsOnDisk.has(slug))).toEqual([]);
+    const map = JSON.parse(readFileSync("data/tools-v4/retired-redirects.json", "utf8")) as {
+      clinician: Record<string, string>;
+      patient: Record<string, string>;
+    };
+    for (const [slug, target] of Object.entries(map.clinician)) {
+      expect(retired).toContain(slug);
+      expect(isPracticeGrade(target)).toBe(true);
+    }
+    for (const [slug, target] of Object.entries(map.patient)) {
+      expect(retired).toContain(slug);
+      expect(statSync(`data/resources/tools/${target}.json`).isFile()).toBe(true);
+    }
   });
 
   it("is the only set Architect and the directory can publish", async () => {

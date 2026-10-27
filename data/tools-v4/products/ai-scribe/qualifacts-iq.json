@@ -1,0 +1,201 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "8171a6b3-3857-48c0-8594-77b25bbad684",
+  "slug": "qualifacts-iq",
+  "name": "Qualifacts iQ",
+  "company_name": "Qualifacts Systems, Inc.",
+  "import_ref": {
+    "record_id": "MH-0177",
+    "source_row": 178,
+    "import_timestamp": "2026-08-22T20:50:40.785Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": [
+    "ai-copilot-clinical",
+    "billing-rcm-insurance"
+  ],
+  "capabilities": [
+    "ambient-listening",
+    "note-generation",
+    "voice-transcription",
+    "clinical-summarization",
+    "ai-suggestions",
+    "ehr-integration",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychologist",
+      "therapist-lcsw-lmft",
+      "psychiatric-np-pa",
+      "care-coordinator",
+      "billing-specialist",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "community-mental-health",
+      "multi-site-enterprise",
+      "residential-treatment",
+      "integrated-care"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "features": {
+    "ambient_ai": {
+      "supported": true,
+      "description": "Listens to a session or reads dictation and drafts a note into the EHR's templates for clinician review and approval."
+    },
+    "note_types": [
+      "DAP",
+      "BIRP",
+      "SOAP",
+      "Intake",
+      "Assessment",
+      "Treatment plan"
+    ],
+    "custom_templates": true,
+    "multi_language": true
+  },
+  "short_description": "AI built into Qualifacts' EHRs: ambient or dictated note drafting for behavioral health, plus an assistant and scheduling and billing agents.",
+  "long_description": "Qualifacts iQ is the AI layer inside Qualifacts' behavioral health EHRs (Credible, CareLogic and InSync) and is not sold on its own. Its main paid part, iQ Clinical Documentation, listens to a session or reads dictation and drafts a formatted note into the agency's EHR templates; the clinician reviews and approves it before it enters the record. It supports DAP, BIRP and SOAP progress notes, intakes, assessments, treatment plans and custom templates, works in 120+ languages, and can pull diagnoses, medications, allergies, goals and prior documentation into the draft. Qualifacts says iQ Clinical Documentation is available on all its platforms, iQ Assistant is included free for all customers, and the iQ scheduling and billing agents are currently available on Credible. Qualifacts reports ISO/IEC 42001 certification for AI management and says customer data is handled under each customer's BAA. Pricing is quoted through the customer's Qualifacts account team.",
+  "one_liner": "AI note drafting and agents for agencies already on Qualifacts Credible, CareLogic or InSync.",
+  "best_for": [
+    "Agencies already using Qualifacts Credible, CareLogic or InSync",
+    "Behavioral health clinicians who write DAP, BIRP or SOAP notes into agency templates",
+    "Multilingual agencies, with note drafting from sessions in 120+ languages",
+    "Credible customers who want AI scheduling and billing agents"
+  ],
+  "not_for": [
+    "Practices not on a Qualifacts EHR",
+    "Solo clinicians looking for a standalone AI scribe",
+    "Buyers who want published per-clinician pricing"
+  ],
+  "positioning": {
+    "niche": true,
+    "segments": [
+      "organization"
+    ],
+    "notes": {
+      "organization": "An AI add-on only for agencies on Qualifacts EHRs (Credible, CareLogic, InSync); drafts notes into agency templates for clinician approval."
+    }
+  },
+  "website_url": "https://www.qualifacts.com/qualifacts-iq/",
+  "pricing": {
+    "model": "enterprise-custom",
+    "quote_required": true,
+    "free_tier": false,
+    "price_range": "enterprise",
+    "notes": "iQ Assistant is included for all Qualifacts customers. iQ Clinical Documentation and the agents are priced through the customer's Qualifacts account team; no public price."
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://www.qualifacts.com/about/ehr-security/",
+      "verified_date": "2026-10-26",
+      "notes": "Vendor security page states HIPAA compliance, SOC 2 certification and ONC certification."
+    },
+    "baa_available": "yes",
+    "baa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://www.qualifacts.com/wp-content/uploads/2024/11/Intervention-Risk-Management-Summary-DEC-9-2024.pdf",
+      "verified_date": "2026-10-26",
+      "notes": "Qualifacts states customer data is handled under each customer's Business Associate Agreement and MSA; its terms and FHIR API pages also reference BAAs."
+    },
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "not_applicable",
+    "notes": "Qualifacts reports ISO/IEC 42001 (AI management) certification and says iQ is built to keep data compliant with SOC 2 and ONC standards; iQ-specific SOC 2 report not confirmed."
+  },
+  "integrations": [
+    {
+      "name": "Credible",
+      "slug": "qualifacts-credible",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "CareLogic",
+      "slug": "qualifacts-carelogic",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    },
+    {
+      "name": "InSync",
+      "slug": "qualifacts-insync",
+      "category": "ehr",
+      "integration_type": "native",
+      "verified": true
+    }
+  ],
+  "seo": {
+    "title": "Qualifacts iQ: AI Notes for Qualifacts EHRs",
+    "meta_description": "Qualifacts iQ drafts DAP, BIRP and SOAP notes from sessions or dictation inside Credible, CareLogic and InSync, for clinician review. Quote-based pricing.",
+    "faqs": [
+      {
+        "q": "Which EHRs does Qualifacts iQ work with?",
+        "a": "Qualifacts iQ works inside Qualifacts' own EHRs: Credible, CareLogic and InSync. iQ Clinical Documentation is available on all three; the scheduling and billing agents are currently on Credible."
+      },
+      {
+        "q": "What note formats does iQ Clinical Documentation support?",
+        "a": "DAP, BIRP and SOAP progress notes, plus intakes, assessments, treatment plans and custom templates. The clinician reviews and approves every draft."
+      },
+      {
+        "q": "Is Qualifacts iQ free?",
+        "a": "iQ Assistant is included for all Qualifacts customers. iQ Clinical Documentation and the agents are priced through the Qualifacts account team."
+      }
+    ],
+    "keywords": [
+      "Qualifacts iQ",
+      "behavioral health AI notes",
+      "CCBHC AI documentation",
+      "Credible AI scribe",
+      "CareLogic AI"
+    ]
+  },
+  "related_tools": [
+    "qualifacts-credible",
+    "qualifacts-carelogic"
+  ],
+  "competitor_tools": [
+    "eleos-health"
+  ],
+  "governance": {
+    "last_reviewed": "2026-10-26",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 72,
+    "review_notes": "Restored 2026-10-26 from vendor pages. Web fetch was unavailable; facts taken from vendor pages via search results. Recategorized from ai-copilot-clinical to ai-scribe-documentation because note drafting is the core paid product."
+  },
+  "created_at": "2026-08-22T20:50:40.785Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

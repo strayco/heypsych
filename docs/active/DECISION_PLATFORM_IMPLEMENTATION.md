@@ -1005,6 +1005,82 @@ IntakeQ alternatives now SimplePractice / TheraNest / TherapyNotes / Luminello.
 - Clinician tool search is punctuation-insensitive ("claim md" → Claim.MD).
 - 46 tests pass (37 records + 9 alternatives); `tsc --noEmit` clean.
 
+### Clinician catalog — restore pages that carried search traffic (2026-10-26)
+
+Why: Search Console (export of 2026-10-20, "Pages") showed the product pages
+deleted on 2026-10-22 had ~25% of site impressions (31.6k of 127k) and 59 of
+242 clicks. Precedence: user instruction over the 10-22 "delete the rest" scope
+for the slugs below. Enterprise EHRs stay out (user decision, 2026-10-26).
+
+**Restored (18, researched V4 records, on `PRACTICE_GRADE_SLUGS`, removed from
+`retired-products.json`):**
+- Malpractice (`malpractice-insurance`, new hub job "Get covered", object
+  `insurance_frame`): cph-associates, apa-insurance-trust (now "The Trust"),
+  prms, hpso, american-professional-agency, preferra-insurance, cmf-group.
+- AI notes: nuance-dragon-medical-one (still sold by Microsoft; Dragon Copilot
+  is separate), zoom-clinical-notes, eleos-health (moved from EHR: it sits on
+  top of an agency EHR), qualifacts-iq (moved from clinical decision support).
+- EHR: qualifacts-carelogic, qualifacts-credible, procentive (Ensora Health),
+  theraplatform.
+- Billing: tebra-billing (absorbs kareo-billing), candid-health (site now
+  candidhealth.com).
+- CE: pesi (`credentialing-workforce`, new hub job "Keep your license current").
+
+**Redirected (`data/tools-v4/retired-redirects.json`, read by
+`clinician-redirects.ts` for next.config and by the profile page as fallback;
+covers `/tools/for-clinicians/:category/<slug>`, `/tools/alternatives/<slug>`,
+`/tools/integrations/<slug>`):**
+- To the live clinician profile: valant → valant-ehr-suite, alma-provider-platform
+  → alma, grow-therapy-provider-platform → grow-therapy, rula-provider-platform →
+  rula, sondermind-provider-network → sondermind, kareo-billing → tebra-billing,
+  ensora-mental-health → theranest (Ensora Mental Health was TheraNest renamed;
+  Ensora's pages use TheraNest again).
+- To the patient profile `/tools/<slug>`: nocd, betterhelp, brightside-health,
+  teladoc-health, talkspace-business → talkspace, charlie-health-iop,
+  charlie-health → charlie-health-iop, lyra-health, doctor-on-demand, cerebral.
+- Still category redirects: cerner-millennium, netsmart-myavatar,
+  qualifacts-insync (user: keep out); tridiuum-one (acquired by New Directions in
+  2022, relaunched as Lucet for health plans; no practice product);
+  behavioral-health-billing-services (generic name, no single company found).
+
+**Other code changes:**
+- `ARCHITECT_EXCLUDED_SLUGS`: agency-only products (CareLogic, Credible,
+  Qualifacts iQ, Eleos, Procentive, Candid) and general medical scribes (Dragon,
+  Zoom Clinical Notes) publish as profiles but are not offered in Architect.
+  `/api/architect/products` also excludes the malpractice and CE categories.
+- Provider-networks job object changed to `team_workspace`; `insurance_frame` is
+  the registry's malpractice-cover object.
+- Hard-coded next.config redirects that still sent theraplatform and five
+  malpractice profiles to the hub were removed.
+- Profile page: category mismatch now a permanent redirect (was 307); retired
+  slugs under schema category slugs (`measurement-outcomes-dtx/...`) land on the
+  taxonomy category, not the hub.
+- Test caps raised (practice-grade ≤ 60, catalog files ≤ 60); new test checks
+  every retired slug is off disk and every redirect target is live.
+
+**Sourcing caveat:** web fetch was disabled by org policy in this session, so
+facts come from search-engine excerpts of the vendors' own pages, not full page
+reads. No record has `pricing.last_verified`; each `governance.review_notes`
+says so. Research logs: `.audit-tmp/restore-1026/logs/` (gitignored). Re-read
+vendor pages before marking any price verified.
+
+**Verified by execution (Linux sandbox, copy of the repo):** `tsc --noEmit`: 0
+errors outside stale `.next/types`; ESLint clean on touched files (one existing
+warning in next.config.ts); `validate:tools:v4` pass, 55/55 publishable; vitest
+src/lib/tools + src/domains/tools + src/domains/architect + src/lib/schemas: 620
+passed. Dev server: all 18 profiles 200; 169 URLs (every GSC page for these
+slugs plus each canonical and alternatives URL) end on the expected page, first
+hop 308; the one exception is `/tools/switch-from/tridiuum-one` →
+`/tools/alternatives/tridiuum-one` 404 (5 impressions; alternatives for retired
+slugs has no fallback). Architect API: 34 products, none excluded above.
+
+**Open:** HPSO student price ($43/year) and American Professional Agency student
+rates seen only in excerpts (left out); CPH's carrier not named on its pages;
+Tebra's $49–$799/provider/month range is in notes only; Eleos and Dragon BAA
+unknown. Architect's malpractice object (`component-mapping.ts`) still links to
+vendor sites, not the new profiles. Existing records still carry related slugs
+that no longer exist (valant, freed-ai, vsee, …) and some hype words.
+
 ### Hosting cost pass (2026-10-23)
 
 - `src/middleware.ts` → `src/proxy.ts` (Next 16 rename). Matcher narrowed from

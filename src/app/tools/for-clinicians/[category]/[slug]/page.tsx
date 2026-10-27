@@ -5,8 +5,9 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { notFound, permanentRedirect, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import retiredProducts from "../../../../../../data/tools-v4/retired-products.json";
+import retiredRedirects from "../../../../../../data/tools-v4/retired-redirects.json";
 import { siteConfig } from "@/lib/config/site";
 import {
   ClinicianToolService,
@@ -110,11 +111,21 @@ export default async function ToolDetailPage({ params }: PageProps) {
   const { category: categorySlug, slug } = await params;
   const tool = await ClinicianToolService.getBySlug(slug);
 
-  // Products retired from the catalogue (2026-10-22) keep their search value:
-  // send them to their category if it still lists tools, else the hub.
+  // Products retired from the catalogue (2026-10-22) keep their search value.
+  // Duplicates go to the live profile and consumer services to their patient
+  // page (retired-redirects.json; next.config does the same before rendering);
+  // the rest to their category if it still lists tools, else the hub.
   if (!tool && RETIRED.has(slug)) {
+    const clinicianTarget = (retiredRedirects.clinician as Record<string, string>)[slug];
+    const target = clinicianTarget ? await ClinicianToolService.getBySlug(clinicianTarget) : null;
+    if (target && isToolPublishable(target)) permanentRedirect(profileHref(target));
+    const patientTarget = (retiredRedirects.patient as Record<string, string>)[slug];
+    if (patientTarget) permanentRedirect(`/tools/${patientTarget}`);
     const counts = await ClinicianToolService.getToolCountsByTaxonomy();
-    permanentRedirect(counts[categorySlug] ? `/tools/for-clinicians/${categorySlug}` : "/tools/for-clinicians");
+    // Old URLs used schema slugs too (measurement-outcomes-dtx/tridiuum-one).
+    const taxonomySlug =
+      SCHEMA_TO_TAXONOMY_CATEGORY[categorySlug as ClinicianToolV4["primary_category"]] ?? categorySlug;
+    permanentRedirect(counts[taxonomySlug] ? `/tools/for-clinicians/${taxonomySlug}` : "/tools/for-clinicians");
   }
 
   // 404 if tool doesn't exist or isn't publishable
@@ -127,8 +138,10 @@ export default async function ToolDetailPage({ params }: PageProps) {
 
   // CANONICAL URL ENFORCEMENT: Redirect to taxonomy category if accessed via schema slug or secondary category
   // This prevents duplicate content from /billing-rcm-insurance/tool (schema) and /billing-rcm/tool (taxonomy)
+  // Permanent: old URLs under a previous category (eleos-health was filed
+  // under EHR, qualifacts-iq under clinical decision support) carry search value.
   if (categorySlug !== canonicalCategorySlug) {
-    redirect(`/tools/for-clinicians/${canonicalCategorySlug}/${slug}`);
+    permanentRedirect(`/tools/for-clinicians/${canonicalCategorySlug}/${slug}`);
   }
 
   const category = getCategoryBySlug(canonicalCategorySlug);

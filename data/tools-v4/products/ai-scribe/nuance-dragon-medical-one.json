@@ -1,0 +1,160 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "88ccb341-7d22-458b-9383-e936d07ff415",
+  "slug": "nuance-dragon-medical-one",
+  "name": "Dragon Medical One",
+  "company_name": "Microsoft (Nuance)",
+  "import_ref": {
+    "record_id": "MH-0230",
+    "source_row": 231,
+    "import_timestamp": "2026-08-22T20:50:40.792Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active",
+    "notes": "Nuance product now sold by Microsoft (Microsoft for Healthcare product page and Microsoft Marketplace listings, US and Canada). Microsoft also sells Dragon Copilot, an AI assistant that builds on Dragon Medical One and offers migration that keeps existing commands, vocabularies, profiles and AutoTexts. No end-of-sale notice for Dragon Medical One was found as of 2026-10-26."
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": [],
+  "capabilities": [
+    "voice-transcription",
+    "ehr-integration",
+    "hipaa-compliant"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "psychiatrist",
+      "psychiatric-np-pa"
+    ],
+    "practice_settings": [
+      "hospital-inpatient",
+      "multi-site-enterprise",
+      "integrated-care"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "features": {
+    "ambient_ai": {
+      "supported": false,
+      "description": "Dictation: the clinician speaks the note and it is transcribed. Ambient note generation is sold separately as Microsoft Dragon Copilot."
+    },
+    "voice_commands": true
+  },
+  "short_description": "Microsoft's cloud speech recognition for clinical dictation into the EHR. Not ambient and not mental-health-specific; sold per user, by quote.",
+  "long_description": "Dragon Medical One is cloud-based clinical speech-to-text, originally from Nuance and now sold by Microsoft. Clinicians dictate notes and commands into the EHR; the vendor says it needs no voice profile training, detects accents automatically and manages user profiles and updates in the cloud. It is listed on Microsoft Marketplace as a per-user SaaS offer in US and Canadian editions, with pricing through sales. Microsoft describes the cloud platform as HITRUST CSF certified, hosted on Azure, with traffic encrypted over HTTPS using AES-256. It is a dictation tool for any specialty, not an ambient scribe: it does not listen to a therapy session and write the note. Microsoft now also sells Dragon Copilot, which builds on Dragon Medical One, keeps its voice commands, and adds ambient note drafting. For mental health, Dragon Medical One suits psychiatrists and psychiatric NPs in hospital or health-system settings who already dictate; therapists in private practice looking for automatic session notes are better served by a therapy-specific scribe.",
+  "one_liner": "Cloud dictation for clinicians: speak the note into the EHR. Now sold by Microsoft.",
+  "best_for": [
+    "Psychiatrists and psychiatric NPs in hospitals or health systems who already dictate notes",
+    "Organizations that want speech recognition across specialties, not just behavioral health",
+    "Clinicians who want voice commands and dictation without ambient recording of the session",
+    "Health systems planning a later move to Dragon Copilot with existing profiles carried over"
+  ],
+  "not_for": [
+    "Therapists who want notes written automatically from a session recording",
+    "Solo clinicians who want published pricing and self-serve sign-up",
+    "Practices that want mental-health note templates such as DAP or BIRP out of the box"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "prescriber",
+      "organization"
+    ],
+    "notes": {
+      "prescriber": "Fits psychiatric prescribers who dictate their own notes; it transcribes what is spoken rather than drafting a note from the visit.",
+      "organization": "Sold per user through Microsoft and its Marketplace to health systems; HITRUST CSF-certified cloud on Azure."
+    }
+  },
+  "website_url": "https://www.microsoft.com/en-us/health-solutions/clinical-workflow/dragon-medical-one",
+  "pricing_url": "https://marketplace.microsoft.com/en-us/product/saas/nuance_gskaff.dragon_medical_one_per_user?tab=overview",
+  "pricing": {
+    "model": "enterprise-custom",
+    "free_tier": false,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "Sold as a per-user subscription through Microsoft sales and Microsoft Marketplace; no list price was found."
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": "yes",
+      "status": "public_source",
+      "source_url": "https://learn.microsoft.com/en-us/industry/healthcare/speechkit/concepts/patient-privacy-hipaa",
+      "verified_date": "2026-10-26",
+      "notes": "Microsoft Learn states the Dragon Medical cloud data centers are operated under HIPAA rules; Microsoft Marketplace describes Dragon Medical One as HITRUST CSF certified. No Dragon Medical One-specific HIPAA statement was found on the product page."
+    },
+    "baa_available": "unknown",
+    "soc2": "unknown",
+    "hitrust": "yes",
+    "hitrust_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://marketplace.microsoft.com/en-us/product/nuance_gskaff.dragon_medical_one?tab=Overview",
+      "verified_date": "2026-10-26",
+      "notes": "Marketplace listing calls it a HITRUST CSF-certified solution."
+    },
+    "gdpr_compliant": "unknown",
+    "notes": "Microsoft's Service Trust Portal has a Dragon Medical One compliance document; BAA terms should be confirmed with Microsoft."
+  },
+  "integrations": [],
+  "seo": {
+    "title": "Dragon Medical One for Psychiatry",
+    "meta_description": "Dragon Medical One: Microsoft's cloud clinical dictation. How it differs from ambient AI scribes and Dragon Copilot, and who it suits in mental health.",
+    "faqs": [
+      {
+        "q": "Is Dragon Medical One still sold?",
+        "a": "Yes. Microsoft has a Dragon Medical One product page and per-user Marketplace listings for the US and Canada. Microsoft also sells Dragon Copilot, which builds on Dragon Medical One."
+      },
+      {
+        "q": "Is Dragon Medical One an ambient AI scribe?",
+        "a": "No. It is speech recognition: you dictate and it transcribes into the EHR. Ambient note drafting from the conversation is offered in Microsoft Dragon Copilot."
+      },
+      {
+        "q": "Can Dragon Medical One users move to Dragon Copilot?",
+        "a": "Microsoft describes a migration that keeps existing commands, vocabularies, profiles, templates and AutoTexts, and says Dragon Copilot recognizes Dragon Medical One voice commands."
+      }
+    ],
+    "keywords": [
+      "Dragon Medical One",
+      "Nuance Dragon Medical",
+      "Dragon Copilot",
+      "medical dictation software",
+      "psychiatry dictation"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-10-26",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 62,
+    "review_notes": "Restored 2026-10-26 from vendor pages as surfaced by web search (direct page fetch was disabled in this session). Still sold under its own name; Dragon Copilot is a separate, newer product. HIPAA basis is indirect; BAA unconfirmed. Old record's 99% accuracy, language list and KLAS claims not carried over."
+  },
+  "related_tools": [
+    "zoom-clinical-notes",
+    "eleos-health"
+  ],
+  "competitor_tools": [
+    "zoom-clinical-notes"
+  ],
+  "created_at": "2026-08-22T20:50:40.792Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

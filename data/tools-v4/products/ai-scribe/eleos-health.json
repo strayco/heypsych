@@ -1,0 +1,213 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "d2c2b355-5b9b-414e-83c2-a06732e1a43a",
+  "slug": "eleos-health",
+  "name": "Eleos",
+  "company_name": "Eleos Health",
+  "import_ref": {
+    "record_id": "MH-0028",
+    "source_row": 29,
+    "import_timestamp": "2026-08-22T20:50:40.772Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active"
+  },
+  "primary_category": "ai-scribe-documentation",
+  "secondary_categories": [
+    "compliance-consent-security"
+  ],
+  "capabilities": [
+    "note-generation",
+    "clinical-summarization",
+    "ehr-integration",
+    "mobile-app",
+    "quality-assurance",
+    "hipaa-compliant",
+    "sso-authentication"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "therapist-lcsw-lmft",
+      "psychologist",
+      "psychiatrist",
+      "care-coordinator",
+      "medical-director"
+    ],
+    "practice_settings": [
+      "community-mental-health",
+      "residential-treatment",
+      "multi-site-enterprise"
+    ],
+    "organization_sizes": [
+      "medium-11-50",
+      "large-51-200",
+      "enterprise-200-plus"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": false,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": true,
+    "is_mental_health_specific": true,
+    "is_specialty_agnostic": false
+  },
+  "features": {
+    "multi_language": true
+  },
+  "short_description": "AI documentation for community behavioral health agencies: notes drafted in a sidebar over the agency's web EHR, plus note compliance review. Sold by demo.",
+  "long_description": "Eleos is AI documentation and workflow software sold to community behavioral health organizations, substance use treatment providers and care-at-home agencies, not to individual clinicians. Its main product, Scribe, drafts notes and session summaries and gives leadership reporting; Eleos says it can work without recording the session, while Replay adds consented session recordings and transcripts for supervision. Outreach is a mobile tool for field-based case managers that works offline and syncs notes to the EHR later, and Eleos Compliance reviews eligible notes for compliance risk. Eleos runs as a browser-extension sidebar over any web-based EHR rather than through custom API builds; named EHRs include CareLogic, Credible, InSync, SmartCare, myAvatar NX, myEvolv, EchoVantage, PCE, Kipu, Welligent, eHana and Exym. The vendor lists support for over 150 languages, HIPAA compliance, HITRUST certification, SOC 2 Type II and ISO 27001, with data on HIPAA-eligible AWS servers in the US. Pricing is not published.",
+  "one_liner": "AI notes and compliance review for community behavioral health agencies, on top of their EHR.",
+  "best_for": [
+    "Community mental health centers and CCBHCs that want AI notes inside an existing web EHR",
+    "Agencies on CareLogic, Credible, SmartCare, myAvatar NX, myEvolv or Kipu",
+    "Organizations with field-based case managers who document offline",
+    "Quality and compliance teams that want every eligible note reviewed for risk"
+  ],
+  "not_for": [
+    "Solo or small private practices; Eleos sells to organizations by demo",
+    "Clinicians who want published pricing or a self-serve trial",
+    "Practices whose EHR is a desktop application rather than web-based"
+  ],
+  "positioning": {
+    "niche": true,
+    "segments": [
+      "organization"
+    ],
+    "notes": {
+      "organization": "Built for community behavioral health and SUD agencies: browser sidebar over web EHRs such as CareLogic, Credible and SmartCare, sold by demo."
+    }
+  },
+  "website_url": "https://eleos.health/",
+  "pricing_url": "https://eleos.health/documentation/",
+  "pricing": {
+    "model": "enterprise-custom",
+    "free_tier": false,
+    "quote_required": true,
+    "price_range": "enterprise",
+    "notes": "No published pricing; sold to organizations through a demo."
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "hipaa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://eleos.health/security/",
+      "verified_date": "2026-10-26",
+      "notes": "Security page lists HIPAA compliant, HITRUST certified, SOC 2 Type II, ISO 27001, ISO 27799, ISO 42001."
+    },
+    "baa_available": "unknown",
+    "soc2": "yes",
+    "soc2_type": "type2",
+    "soc2_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://eleos.health/security/",
+      "verified_date": "2026-10-26"
+    },
+    "hitrust": "yes",
+    "hitrust_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://eleos.health/security/",
+      "verified_date": "2026-10-26"
+    },
+    "gdpr_compliant": "unknown",
+    "iso27001": "yes",
+    "notes": "Data stored on HIPAA-eligible AWS servers in US data centers; most session audio and transcripts are processed in real time and deleted shortly after. BAA not mentioned on public pages; expected in an enterprise contract but unconfirmed."
+  },
+  "integrations": [
+    {
+      "name": "CareLogic",
+      "category": "ehr",
+      "integration_type": "partner",
+      "verified": false,
+      "notes": "Browser-extension sidebar over web EHR."
+    },
+    {
+      "name": "Credible",
+      "category": "ehr",
+      "integration_type": "partner",
+      "verified": false,
+      "notes": "Browser-extension sidebar over web EHR."
+    },
+    {
+      "name": "SmartCare",
+      "category": "ehr",
+      "integration_type": "partner",
+      "verified": false,
+      "notes": "Browser-extension sidebar over web EHR."
+    },
+    {
+      "name": "myAvatar NX",
+      "category": "ehr",
+      "integration_type": "partner",
+      "verified": false,
+      "notes": "Browser-extension sidebar over web EHR."
+    },
+    {
+      "name": "Kipu",
+      "category": "ehr",
+      "integration_type": "partner",
+      "verified": false,
+      "notes": "Browser-extension sidebar over web EHR."
+    }
+  ],
+  "seo": {
+    "title": "Eleos AI Notes for Behavioral Health Agencies",
+    "meta_description": "Eleos: AI documentation for community behavioral health agencies. Sidebar over web EHRs like CareLogic and SmartCare, note compliance review, HITRUST.",
+    "faqs": [
+      {
+        "q": "Is Eleos an EHR?",
+        "a": "No. Eleos runs as a browser-extension sidebar on top of an agency's existing web-based EHR, such as CareLogic, Credible, SmartCare, myAvatar NX or Kipu, and drafts notes there."
+      },
+      {
+        "q": "Does Eleos record therapy sessions?",
+        "a": "Eleos says Scribe can produce documentation without recording the session. Its Replay product adds session recordings and transcripts for supervision, with patient consent required."
+      },
+      {
+        "q": "What security certifications does Eleos have?",
+        "a": "Eleos's security page lists HIPAA compliance, HITRUST certification, SOC 2 Type II, ISO 27001, ISO 27799 and ISO 42001, with data on HIPAA-eligible AWS servers in the US."
+      },
+      {
+        "q": "Can solo therapists buy Eleos?",
+        "a": "Eleos is sold to behavioral health organizations through a demo, and it does not publish pricing or a self-serve plan."
+      }
+    ],
+    "keywords": [
+      "Eleos Health",
+      "Eleos Scribe",
+      "behavioral health AI documentation",
+      "CCBHC AI notes",
+      "community mental health AI scribe"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-10-26",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 68,
+    "review_notes": "Restored 2026-10-26 from vendor pages as surfaced by web search (direct page fetch was disabled in this session). Recategorized from ehr-practice-management to ai-scribe-documentation: Eleos sits on top of an EHR and is not one. BAA not stated publicly. Old record's outcome and funding claims not carried over."
+  },
+  "related_tools": [
+    "qualifacts-carelogic",
+    "qualifacts-credible",
+    "mentalyc",
+    "zoom-clinical-notes"
+  ],
+  "competitor_tools": [
+    "mentalyc",
+    "upheal",
+    "zoom-clinical-notes"
+  ],
+  "created_at": "2026-08-22T20:50:40.772Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

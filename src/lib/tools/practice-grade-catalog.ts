@@ -25,10 +25,15 @@
  * 7. Getting paid — Ivy Pay for cards; Mentaya vs Thrizer for out-of-network
  *    claims; Heard for therapist bookkeeping.
  *
- * Explicitly out: hospital EHRs, Canada/AU-first products, coach/wellness
- * EHRs, Alma (acquired), Freed/Nabla/Suki (general medical scribes),
- * GoodTherapy, malpractice carriers (Architect treats cover as insurance,
- * not software), QuickBooks/Wave, clearinghouses, credentialing utilities.
+ * Explicitly out: hospital EHRs (Cerner, Epic, Netsmart myAvatar, Qualifacts
+ * InSync), Canada/AU-first products, coach/wellness EHRs, Freed/Nabla/Suki
+ * (general medical scribes), QuickBooks/Wave, credentialing utilities.
+ *
+ * 2026-10-26: products whose pages carried search traffic before the cut
+ * came back as researched profiles: malpractice programs (a hub job; still
+ * not in Architect, which treats cover as insurance, not software), agency
+ * EHRs and AI notes (directory only, see ARCHITECT_EXCLUDED_SLUGS),
+ * TheraPlatform, Tebra billing (formerly Kareo), Candid Health and PESI.
  */
 
 export const PRACTICE_GRADE_SLUGS: ReadonlySet<string> = new Set([
@@ -82,6 +87,46 @@ export const PRACTICE_GRADE_SLUGS: ReadonlySet<string> = new Set([
   "claim-md",
   "availity-essentials",
   "therathink",
+
+  // Restored 2026-10-26 (pages that carried search traffic before the cut).
+  // Malpractice cover: its own job on the hub, kept out of Architect.
+  "cph-associates",
+  "apa-insurance-trust",
+  "prms",
+  "hpso",
+  "american-professional-agency",
+  "preferra-insurance",
+  "cmf-group",
+  // Notes, EHR, billing, CE
+  "nuance-dragon-medical-one",
+  "zoom-clinical-notes",
+  "eleos-health",
+  "qualifacts-iq",
+  "qualifacts-carelogic",
+  "qualifacts-credible",
+  "procentive",
+  "theraplatform",
+  "tebra-billing",
+  "candid-health",
+  "pesi",
+]);
+
+/**
+ * Published as directory profiles but not offered in Practice Architect:
+ * products sold only to agencies and larger organizations (CMHCs, CCBHCs,
+ * health systems), or add-ons to them, and general medical dictation/scribes
+ * (same rule that keeps Freed, Nabla and Suki out). Architect builds
+ * independent and small-group practices.
+ */
+export const ARCHITECT_EXCLUDED_SLUGS: ReadonlySet<string> = new Set([
+  "nuance-dragon-medical-one",
+  "zoom-clinical-notes",
+  "qualifacts-carelogic",
+  "qualifacts-credible",
+  "qualifacts-iq",
+  "eleos-health",
+  "procentive",
+  "candid-health",
 ]);
 
 export function isPracticeGrade(slug: string): boolean {

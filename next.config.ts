@@ -242,9 +242,9 @@ const nextConfig: NextConfig = {
       },
       // Retired clinician products: send old public URLs to the hub, not a 404.
       // A product that returns to the catalogue must be removed from this list
-      // (therapyappointment, claim-md, goodtherapy and rula were, 2026-10-23).
+      // (therapyappointment, claim-md, goodtherapy and rula were, 2026-10-23;
+      // theraplatform and the five malpractice programs, 2026-10-26).
       ...[
-        "ehr-practice-management/theraplatform",
         "ehr-practice-management/owl-practice",
         "ehr-practice-management/cliniko",
         "ehr-practice-management/practice-better",
@@ -256,11 +256,6 @@ const nextConfig: NextConfig = {
         "prescribing-erx/drfirst-iprescribe",
         "analytics-reporting/quickbooks",
         "analytics-reporting/wave-accounting",
-        "malpractice-insurance/cph-associates",
-        "malpractice-insurance/hpso",
-        "malpractice-insurance/american-professional-agency",
-        "malpractice-insurance/apa-insurance-trust",
-        "malpractice-insurance/prms",
       ].flatMap((path) => [
         {
           source: `/tools/for-clinicians/${path}`,

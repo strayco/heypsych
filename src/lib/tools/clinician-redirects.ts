@@ -76,9 +76,43 @@ export function emptyCategories(root: string, products: Product[]): string[] {
 
 const r = (source: string, destination: string): Redirect => ({ source, destination, permanent: true });
 
+/**
+ * Retired slugs with one specific destination (data/tools-v4/retired-redirects.json):
+ * a duplicate of a live clinician profile, or a consumer service whose real
+ * page is the patient profile at /tools/<slug>. A target that is not on disk
+ * is skipped, so the slug falls back to the category redirect.
+ */
+export function loadRetiredTargets(root: string, products: Product[] = loadProductPaths(root)): Map<string, string> {
+  const out = new Map<string, string>();
+  const file = path.join(root, "data/tools-v4/retired-redirects.json");
+  if (!fs.existsSync(file)) return out;
+  const data = readJson(file) as { clinician?: Record<string, string>; patient?: Record<string, string> };
+  const live = new Map(products.map((p) => [p.slug, p.path]));
+  for (const [slug, target] of Object.entries(data.clinician ?? {})) {
+    const dest = live.get(target);
+    if (dest && !live.has(slug)) out.set(slug, dest);
+  }
+  for (const [slug, target] of Object.entries(data.patient ?? {})) {
+    if (live.has(slug)) continue;
+    if (fs.existsSync(path.join(root, "data/resources/tools", `${target}.json`))) out.set(slug, `/tools/${target}`);
+  }
+  return out;
+}
+
 export function buildClinicianRedirects(root: string = process.cwd()): Redirect[] {
   const products = loadProductPaths(root);
   const out: Redirect[] = [];
+
+  // Retired duplicates and consumer services → their one real page. Before the
+  // generic integrations/alternatives rules below so these match first.
+  for (const [slug, dest] of loadRetiredTargets(root, products)) {
+    const clinician = dest.startsWith(`${HUB}/`);
+    out.push(
+      r(`${HUB}/:category/${slug}`, dest),
+      r(`/tools/alternatives/${slug}`, clinician ? `/tools/alternatives/${dest.split("/").pop()}` : dest),
+      r(`/tools/integrations/${slug}`, dest)
+    );
+  }
 
   // Audience pages → the hub, preselecting the kind of practice.
   out.push(

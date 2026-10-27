@@ -51,6 +51,13 @@ export const CLINICIAN_JOBS: JobDefinition[] = [
     object: "clinical_computer",
   },
   {
+    slug: "malpractice-insurance",
+    name: "Get covered",
+    kind: "Malpractice insurance",
+    line: "Professional liability cover, bought from a carrier or a program that places it. Needed before you see your first client.",
+    object: "insurance_frame",
+  },
+  {
     slug: "ai-scribe-documentation",
     name: "Write notes faster",
     kind: "AI note-taking",
@@ -75,7 +82,8 @@ export const CLINICIAN_JOBS: JobDefinition[] = [
     name: "Take insurance without the paperwork",
     kind: "Insurance networks",
     line: "Networks that credential you with insurers and handle the claims, so you can accept insurance without billing it yourself.",
-    object: "insurance_frame",
+    // insurance_frame is the malpractice-cover object; networks are a team you join.
+    object: "team_workspace",
   },
   {
     slug: "marketing-patient-acquisition",
@@ -97,6 +105,13 @@ export const CLINICIAN_JOBS: JobDefinition[] = [
     kind: "Outcome measurement",
     line: "Send validated questionnaires between sessions and follow scores over time.",
     object: "assessment_kit",
+  },
+  {
+    slug: "credentialing-workforce",
+    name: "Keep your license current",
+    kind: "Continuing education",
+    line: "Courses, live webinars and seminars that count toward license renewal. Check each course's approval with your board.",
+    object: "clinical_cabinet",
   },
 ];
 

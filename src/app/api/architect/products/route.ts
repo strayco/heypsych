@@ -8,6 +8,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ArchitectProductService, type ArchitectProductDisplay } from "@/domains/architect/services";
 import type { ProductArchitectureMetadata } from "@/domains/architect/schemas";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { ARCHITECT_EXCLUDED_SLUGS } from "@/lib/tools/practice-grade-catalog";
 
 // Maximum products per request to prevent payload bloat
 const MAX_LIMIT = 100;
@@ -16,6 +17,8 @@ const DEFAULT_LIMIT = 50;
 // Categories to exclude from Practice Architect (platforms are handled elsewhere on site)
 const EXCLUDED_CATEGORIES = new Set([
   "provider-network-virtual-care", // Platforms like Alma, BetterHelp, Headway, Grow Therapy
+  "malpractice-insurance", // Cover is arranged with an insurer (the external insurance_frame object)
+  "credentialing-workforce", // Continuing education, not practice software
 ]);
 
 // Specific slugs to exclude (patient-facing platforms in other categories)
@@ -89,7 +92,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<ArchitectP
           continue;
         }
         // Exclude specific patient-facing platform slugs
-        if (EXCLUDED_SLUGS.has(slug)) {
+        if (EXCLUDED_SLUGS.has(slug) || ARCHITECT_EXCLUDED_SLUGS.has(slug)) {
           continue;
         }
         // Filter by capability if specified

@@ -1,0 +1,167 @@
+{
+  "schema_version": "4.0",
+  "kind": "clinician-tool",
+  "id": "22aea2e0-9cc5-401b-94c6-aedf8d5eda72",
+  "slug": "tebra-billing",
+  "name": "Tebra Billing",
+  "company_name": "Tebra",
+  "import_ref": {
+    "record_id": "MH-0616",
+    "source_row": 617,
+    "import_timestamp": "2026-08-22T20:50:40.826Z",
+    "source_file": "master-records.json"
+  },
+  "lifecycle": {
+    "status": "active",
+    "notes": "Formerly Kareo billing. Kareo and PatientPop merged to form Tebra, announced 2 November 2021; the kareo-billing slug should redirect here."
+  },
+  "primary_category": "billing-rcm-insurance",
+  "secondary_categories": [
+    "ehr-practice-management"
+  ],
+  "capabilities": [
+    "claims-submission",
+    "eligibility-verification",
+    "denial-management",
+    "payment-processing",
+    "billing-rcm",
+    "hipaa-compliant",
+    "baa-available"
+  ],
+  "audiences": {
+    "clinician_roles": [
+      "practice-administrator",
+      "billing-specialist",
+      "psychiatrist",
+      "psychiatric-np-pa",
+      "psychologist",
+      "therapist-lcsw-lmft"
+    ],
+    "practice_settings": [
+      "solo-practice",
+      "group-practice"
+    ],
+    "organization_sizes": [
+      "solo",
+      "small-2-10",
+      "medium-11-50"
+    ]
+  },
+  "feature_flags": {
+    "has_ai": true,
+    "has_ehr": false,
+    "has_rcm": true,
+    "has_telehealth": false,
+    "has_measurement": false,
+    "has_e_prescribing": false,
+    "has_patient_portal": false,
+    "has_mobile_app": false,
+    "is_mental_health_specific": false,
+    "is_specialty_agnostic": true
+  },
+  "short_description": "Billing software in the Tebra platform (formerly Kareo): claim scrubbing, eligibility checks, ERA posting and patient payments, with optional managed billing.",
+  "long_description": "Tebra Billing is the billing and payments part of Tebra, the company formed when Kareo and PatientPop merged in 2021; it is the product many practices still know as Kareo billing. In-house billers get claim scrubbing against a rules engine before submission, real-time eligibility checks (270/271) with more than 2,700 payers, automatic tracking of rejections and denials, and ERA processing that reconciles payments and flags discrepancies. Patient payments cover card, ACH, mobile wallets, recurring payments, cards on file and automated text, email and mailed statements. Practices that would rather outsource can use Tebra's managed billing, where Tebra matches the practice with a partner billing company that handles claims through collections. Billing is sold alone or inside the Practice Essentials bundle with the EHR and telehealth; pricing is per provider and quoted, and an AI Billing Assistant is a separately priced add-on. Tebra serves many specialties and is not mental-health specific.",
+  "one_liner": "Kareo's billing software, now part of Tebra, with an option to hand billing to a partner company.",
+  "best_for": [
+    "Practices with an in-house biller who want claim scrubbing, eligibility checks and ERA posting in one system",
+    "Former Kareo customers staying on the same billing platform under the Tebra name",
+    "Practices that want the option to move to managed billing later without changing software",
+    "Multi-specialty groups where behavioral health sits alongside medical services"
+  ],
+  "not_for": [
+    "Solo therapists who want a published monthly price before a sales call",
+    "Practices looking for therapy-specific billing workflows; Tebra is built for many specialties",
+    "Clinicians who want billing done by an in-house vendor team: managed billing is delivered by partner companies"
+  ],
+  "positioning": {
+    "niche": false,
+    "segments": [
+      "insurance-billing",
+      "group-practice",
+      "multidisciplinary"
+    ],
+    "notes": {
+      "insurance-billing": "Claim scrubbing, real-time eligibility with 2,700+ payers, denial tracking and ERA reconciliation for practices that bill insurance in-house.",
+      "group-practice": "Priced per provider rather than per user, so billing and front-desk staff do not add seat fees.",
+      "multidisciplinary": "A specialty-agnostic platform suited to practices that bill medical and behavioral health services together."
+    },
+    "job": "claims"
+  },
+  "website_url": "https://www.tebra.com/billing-payments",
+  "pricing_url": "https://www.tebra.com/pricing",
+  "pricing": {
+    "model": "per-provider-month",
+    "free_tier": false,
+    "quote_required": true,
+    "notes": "Tebra's pricing page gives a range of $49 to $799 per provider per month across single solutions and bundles, depending on provider count and type, claim volume and specialty. Lower pricing applies to practices with 100 or fewer claims a month. AI add-ons such as AI Billing Assistant are priced separately. Managed billing fees are not published. Card processing: 2.75% + $0.30 card-present, 3.25% + $0.30 card-not-present.",
+    "transaction_fees": {
+      "payment_processing": "2.75% + $0.30 card-present; 3.25% + $0.30 card-not-present"
+    }
+  },
+  "compliance": {
+    "hipaa_support": "yes",
+    "baa_available": "yes",
+    "soc2": "unknown",
+    "hitrust": "unknown",
+    "gdpr_compliant": "not_applicable",
+    "baa_provenance": {
+      "value": "yes",
+      "status": "vendor_provided",
+      "source_url": "https://www.tebra.com/business-associate-agreement",
+      "verified_date": "2026-10-26",
+      "notes": "BAA is incorporated into Tebra's Terms of Service for covered-entity customers; payment processing is outside its scope."
+    }
+  },
+  "integrations": [],
+  "seo": {
+    "title": "Tebra Billing (formerly Kareo) Review",
+    "meta_description": "Tebra Billing, formerly Kareo: claim scrubbing, eligibility checks, ERA posting and patient payments, with optional managed billing via partners.",
+    "faqs": [
+      {
+        "q": "Is Tebra the same as Kareo?",
+        "a": "Yes. Kareo and PatientPop merged in 2021 to form Tebra, and Kareo's practice management and billing software continues as part of the Tebra platform."
+      },
+      {
+        "q": "Does Tebra offer managed billing?",
+        "a": "Yes. Tebra matches a practice with a partner billing company for its specialty, which handles revenue management from claim submission to collections. Tebra says most practices are live in 3 to 4 weeks."
+      },
+      {
+        "q": "How is Tebra priced?",
+        "a": "Per provider, by quote. Tebra's pricing page gives a range of $49 to $799 per provider per month depending on the products chosen, provider count and type, claim volume and specialty."
+      },
+      {
+        "q": "Does Tebra sign a BAA?",
+        "a": "Yes. Tebra's business associate agreement is part of its Terms of Service for covered-entity customers."
+      }
+    ],
+    "keywords": [
+      "Tebra billing",
+      "Kareo billing",
+      "Kareo",
+      "Tebra managed billing",
+      "medical billing software"
+    ]
+  },
+  "governance": {
+    "last_reviewed": "2026-10-26",
+    "needs_review": false,
+    "review_priority": "medium",
+    "data_quality_score": 70,
+    "review_notes": "Restored 2026-10-26 from vendor pages. Merged kareo-billing into this record. Facts came from vendor pages via search-index excerpts (direct page fetch was unavailable); re-open tebra.com/pricing and confirm the per-provider range before marking pricing verified."
+  },
+  "related_tools": [
+    "claim-md",
+    "office-ally",
+    "availity-essentials"
+  ],
+  "competitor_tools": [
+    "therathink",
+    "office-ally",
+    "simplepractice",
+    "therapynotes"
+  ],
+  "created_at": "2026-08-22T20:50:40.826Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "featured": false,
+  "status": "active"
+}

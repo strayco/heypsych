@@ -36,7 +36,7 @@ describe("catalog identity", () => {
 
   it("parses every remaining product file", () => {
     expect(records.length).toBeGreaterThan(0);
-    expect(records.length).toBeLessThanOrEqual(45); // 37 as of 2026-10-23
+    expect(records.length).toBeLessThanOrEqual(60); // 37 as of 2026-10-23, 55 after the 2026-10-26 restore
   });
 
   it("does not allow two files to share a slug", () => {
