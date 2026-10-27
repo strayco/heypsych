@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "headway",
   "name": "Headway",
-  "one_liner": "Headway helps you find therapists and psychiatrists who accept your insurance, with typical copays of $0-30 per session.",
+  "one_liner": "Search for in-network therapists and psychiatric prescribers, book online, and pay only your insurance copay or coinsurance.",
   "best_for": [
-    "People with health insurance seeking in-network therapy",
-    "Those frustrated finding therapists who accept their insurance",
-    "People who want to use insurance benefits rather than pay out-of-pocket",
-    "Those seeking both therapy and psychiatric medication management"
+    "People with commercial insurance or select Medicare Advantage or Medicaid managed care plans who want therapy for their copay",
+    "People who want to choose their own therapist or prescriber from profiles",
+    "People who need medication management from an in-network psychiatrist or nurse practitioner",
+    "People who want an estimated cost before they book"
   ],
   "not_for": [
-    "Those without health insurance (try Open Path Collective or sliding scale options)",
-    "People in immediate crisis (call 988)",
-    "Those whose insurance isn't accepted (check coverage first)"
+    "Anyone in crisis: call or text 988",
+    "People without insurance or with Original Medicare (Headway has no self-pay option)",
+    "People whose plan is not accepted in their state",
+    "People who want text-based or messaging-only therapy"
   ],
   "support_level": "clinical",
-  "short_description": "Headway helps you find therapists and psychiatrists who accept your insurance, with typical copays of $0-30 per session.",
-  "long_description": "Headway is a platform that connects patients with therapists and psychiatrists who accept their health insurance. Unlike subscription-based services, Headway enables providers to bill your insurance directly, so you only pay your copay (typically $0-30). The network includes 35,000+ licensed therapists and prescribers across most US states. Search by insurance, location, specialty, and availability. Book appointments online with next-day availability common. Headway handles insurance verification, billing, and claims. Particularly valuable for those with insurance that covers mental health but struggle to find in-network providers accepting new patients.",
-  "patient_summary": "Headway is a free insurance credentialing platform for mental health providers with the largest network of 70,000+ therapists and protection from billing clawbacks.",
+  "short_description": "A directory of in-network therapists and prescribers; you book a session and pay only your insurance cost-share.",
+  "long_description": "Headway is a US service that lists 80,000+ licensed therapists, psychiatrists and psychiatric nurse practitioners who are credentialed with insurance plans through Headway. You search by your insurance, state, specialty and availability, book online, and meet by video or, with many providers, in person. Headway bills your insurer, gives you an estimated per-session cost at booking, and charges your share (copay, coinsurance or deductible) after the visit; it charges no platform fee. Headway requires an in-network plan and has no cash-pay option. It accepts select Medicare Advantage and Medicaid managed care plans in some states, but not Original Medicare or Medicaid fee-for-service. Since July 2026, telehealth sessions with a provider not credentialed in the state where you are located are out of network. Late-cancellation fees are set by your provider and are not covered by insurance. Headway's privacy policy says it does not sell personal information or use it for targeted advertising; private class actions filed in 2024 and 2025 allege that website trackers sent data to Google and LinkedIn, and those claims are unresolved.",
+  "patient_summary": "You enter your insurance on Headway, browse licensed therapists and psychiatric prescribers who are in network with your plan, and book a video or in-office session. Headway bills your insurer, shows an estimated cost when you book, and charges you only your copay, coinsurance or deductible after the session. You need an accepted insurance plan; there is no self-pay option.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -38,7 +39,7 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
+    "ios": true,
     "android": false,
     "web": true,
     "desktop": false,
@@ -46,16 +47,36 @@
   },
   "pricing": {
     "model": "insurance-covered",
-    "free_tier": true,
-    "starting_price": "Insurance required; copays typically $0–$35",
-    "notes": "No platform fee. You pay your insurance copay only. Copay varies by plan."
+    "free_tier": false,
+    "starting_price": "Copay or coinsurance with insurance; no self-pay option",
+    "notes": "No platform fee; you pay your plan's cost-share (copay, coinsurance or deductible), billed after the session, with an estimate shown at booking. Medication-management visits can cost more than the estimate. Providers may charge late-cancellation fees that insurance does not cover. No cash-pay option.",
+    "sources": [
+      "https://help.headway.co/hc/en-us/articles/4427387656852-Client-fees-and-responsibility",
+      "https://headway.co/frequently-asked-questions"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Functions as a healthcare platform connecting you with licensed providers."
+    "basis": {
+      "policy_url": "https://headway.co/legal/privacy",
+      "sells_or_ads": "no",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "data_sold": "no",
+    "notes": "Policy says it does not use personal information for targeted advertising and did not sell or share it for cross-context ads in the prior 12 months; you can request deletion (health records kept as law requires). Unresolved private class actions (2024, 2025) allege trackers sent data to Google and LinkedIn; no regulator action found.",
+    "sources": [
+      "https://headway.co/legal/privacy",
+      "https://headway.co/legal/privacy-practices",
+      "https://www.courthousenews.com/federal-judge-says-class-privacy-claims-may-proceed-against-online-mental-health-platform/",
+      "https://www.classaction.org/news/therapy-platform-headway-illegally-shares-private-user-data-with-linkedin-class-action-suit-claims"
+    ],
+    "grade": "A"
   },
   "seo": {
     "title": "Headway: Find In-Network Therapists & Psychiatrists",
@@ -83,19 +104,21 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://headway.co",
-    "affiliate_url": "https://headway.co"
+    "affiliate_url": "https://headway.co",
+    "app_store_url": "https://apps.apple.com/us/app/headway-therapy-psychiatry/id6783091001"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Insurance-based therapy access",
-      "Therapist matching",
-      "Psychiatric care access"
+      "Finding an in-network therapist",
+      "Medication management with an in-network psychiatrist or nurse practitioner",
+      "Weekly video or in-office therapy billed to insurance",
+      "Checking estimated session cost before booking"
     ]
   },
   "related_tools": [],
@@ -103,14 +126,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://headway.co",
-  "updated_at": "2026-09-02T06:10:49.775Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Directory of 80,000+ in-network therapists and prescribers in all 50 states; no self-pay option. Medicare and Medicaid acceptance varies by plan and state.",
+    "checked": "2026-10-26",
+    "note": "US only; requires an in-network insurance plan. Select Medicare Advantage and Medicaid managed care plans in some states; not Original Medicare or Medicaid fee-for-service.",
     "sources": [
-      "https://www.rula.com/blog/thriveworks-alternatives/"
+      "https://headway.co/frequently-asked-questions",
+      "https://help.headway.co/hc/en-us/articles/360039125771-Using-insurance-on-Headway",
+      "https://apps.apple.com/us/app/headway-therapy-psychiatry/id6783091001"
     ]
   }
 }

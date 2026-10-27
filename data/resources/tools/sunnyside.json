@@ -3,24 +3,27 @@
   "kind": "tool",
   "slug": "sunnyside",
   "name": "Sunnyside",
-  "one_liner": "Sunnyside helps you drink more mindfully with a weekly drink plan, tracking by app or text message, and access to human coaches, without requiring sobriety.",
+  "one_liner": "Sunnyside is an app and text-message program for cutting back on alcohol: a weekly drink plan, daily check-ins and a coach.",
   "best_for": [
-    "People who want to cut back rather than quit",
-    "Simple tracking by text message",
-    "Light-touch coaching"
+    "Adults who want to cut back on drinking rather than quit",
+    "People who would rather log drinks by text message than open an app",
+    "People who want light-touch accountability from a coach"
   ],
   "not_for": [
-    "Anyone who may need medical help to stop drinking safely",
-    "People aiming for full sobriety who want a recovery program"
+    "Anyone in crisis: call or text 988",
+    "People who get withdrawal symptoms (shakes, sweats, seizures) when they stop drinking: they need medical help to stop safely",
+    "People with severe alcohol use disorder who need treatment, not a moderation app"
   ],
   "support_level": "coached",
-  "short_description": "Sunnyside helps you drink more mindfully with a weekly drink plan, tracking by app or text message, and access to human coaches, without requiring sobriety.",
-  "long_description": "Sunnyside helps you drink more mindfully with a weekly drink plan, tracking by app or text message, and access to human coaches, without requiring sobriety. Answer a short survey, get a weekly plan, and log drinks by text or in the app. Daily tips and text access to a coach keep you on track. Designed for moderation rather than quitting. What it includes: Weekly drink plans; Tracking by app or text; Coach messaging; Community; Progress dashboard.",
-  "patient_summary": "Answer a short survey, get a weekly plan, and log drinks by text or in the app. Daily tips and text access to a coach keep you on track. Designed for moderation rather than quitting.",
+  "short_description": "App and text-message program to drink less: weekly drink plan, daily tracking and coach messages. 15-day trial, then about $99/year.",
+  "long_description": "Sunnyside (made by Cutback Coach, Inc.) is a US moderation program for people who want to drink less without necessarily quitting. You set a weekly drink plan, log drinks by text message or in the iOS or Android app, and get daily tips and messages from a coach. Reviews list plans at about $12 a month, $29 a quarter or $99 a year after a 15-day free trial, with a pricier premium tier that adds more hands-on coaching. The company has also launched Sunnyside Med, a separate online program that adds a naltrexone prescription for $99 a month (billed quarterly) plus a $50 intake fee. A 2024 study in Alcohol: Clinical and Experimental Research looked at data from more than 45,000 Sunnyside users and found self-reported weekly drinking fell by about a third over 12 weeks; it had no comparison group, so it cannot show the program caused the drop. Its privacy policy says it does not share self-reported drinking data with ad partners but does share other data with advertising companies for interest-based ads.",
+  "patient_summary": "You answer a short quiz, get a weekly drinking goal, and log drinks by text or in the app, with daily tips and messages from a coach. It is aimed at drinking less rather than quitting. After a 15-day free trial it costs about $99 a year (reviews also list $12 a month).",
   "primary_hubs": [
     "substance-use"
   ],
-  "conditions": [],
+  "conditions": [
+    "alcohol-use-disorder"
+  ],
   "tool_types": [
     "app",
     "coaching"
@@ -38,13 +41,34 @@
   "pricing": {
     "model": "subscription",
     "free_tier": false,
-    "starting_price": "15-day trial, then about $99.99/year"
+    "starting_price": "15-day free trial, then about $99/year or $12/month",
+    "notes": "Reviews list $12/month, $29/quarter or $99/year, and a premium coaching tier (about $298/year). No free version after the trial. Sunnyside Med (naltrexone plus coaching) is $99/month billed quarterly at $297, plus a $50 intake fee; HSA/FSA eligible, no insurance.",
+    "sources": [
+      "https://www.sunnyside.co/product/mindful-drinking/",
+      "https://www.choosingtherapy.com/sunnyside-app-review/",
+      "https://www.joinsunnysidemed.com/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "unknown",
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.sunnyside.co/privacy/",
+      "checked": "2026-10-27",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "unknown",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
     "hipaa_compliant": "unknown",
     "gdpr_compliant": "unknown",
-    "data_sold": "unknown"
+    "data_sold": "unknown",
+    "notes": "Policy lists advertising companies as recipients for interest-based ads; says self-reported drinking data and SMS phone numbers are not shared with ad partners. Account and content deletion in the app.",
+    "sources": [
+      "https://www.sunnyside.co/privacy/"
+    ]
   },
   "seo": {
     "title": "Sunnyside: Review & Pricing",
@@ -72,38 +96,57 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "publisher": "Cutback Coach, Inc.",
     "app_store_url": "https://apps.apple.com/us/app/sunnyside-drink-less-alcohol/id1593489083",
     "commercial": {
       "status": "unknown"
-    }
+    },
+    "website": "https://www.sunnyside.co/",
+    "google_play_url": "https://play.google.com/store/apps/details?id=co.sunnyside"
   },
   "clinical_metadata": {
     "evidence_based": false,
-    "evidence_level": "emerging",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Self-reported drinking among Sunnyside users over 12 weeks",
+        "citation": {
+          "authors": "Vadhan NP, et al.",
+          "title": "Self-reported alcohol consumption during participation in a text messaging-based online drinking moderation platform",
+          "journal": "Alcohol: Clinical and Experimental Research",
+          "year": 2024,
+          "doi": "10.1111/acer.15414",
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/acer.15414"
+        },
+        "outcome": "Self-reported weekly drinks fell by about one third over 12 weeks, mostly in the first 6 weeks. Self-selected users, no control group, missing data grew over time; Sunnyside supplied data but says it did not run the analysis.",
+        "study_design": "Retrospective analysis of user data (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Weekly drink plans",
-      "Tracking by app or text",
-      "Coach messaging",
-      "Community",
-      "Progress dashboard"
+      "Setting a weekly drink limit",
+      "Logging drinks by text message or app",
+      "Daily tips and coach messages",
+      "Tracking progress toward drinking less"
     ]
   },
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
+    "note": "Sold in the US; iOS and Android apps plus text messages.",
+    "checked": "2026-10-27",
     "sources": [
-      "https://apps.apple.com/us/app/sunnyside-drink-less-alcohol/id1593489083"
+      "https://www.sunnyside.co/product/mindful-drinking/",
+      "https://apps.apple.com/us/app/sunnyside-drink-less-alcohol/id1593489083",
+      "https://play.google.com/store/apps/details?id=co.sunnyside&hl=en_US"
     ]
   },
   "featured": false,
   "status": "active",
   "created_at": "2026-10-23T00:00:00.000Z",
-  "updated_at": "2026-10-23T00:00:00.000Z",
+  "updated_at": "2026-10-27T00:00:00.000Z",
   "store_ratings": [
     {
       "store": "App Store",

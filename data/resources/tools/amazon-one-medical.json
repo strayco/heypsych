@@ -3,21 +3,22 @@
   "kind": "tool",
   "slug": "amazon-one-medical",
   "name": "Amazon One Medical",
-  "one_liner": "Amazon One Medical offers virtual primary care with integrated mental health services including therapy and medication management for members and Prime subscribers.",
+  "one_liner": "Membership primary care from Amazon, by app, video and in some cities in clinics; its doctors treat common anxiety and depression.",
   "best_for": [
-    "Amazon Prime members wanting integrated health care",
-    "People seeking both primary care and mental health in one platform",
-    "Those with insurance who want concierge-style access",
-    "People in cities with One Medical physical locations"
+    "Adults who want a primary care doctor who can also treat mild to moderate anxiety or depression",
+    "Prime members who want fast video or message visits",
+    "People near a One Medical office who want both in-person and virtual care",
+    "People who want medication for common mental health conditions through primary care"
   ],
   "not_for": [
-    "Those seeking specialized psychiatric care for severe conditions",
-    "People without insurance (visits can be expensive)",
-    "Those in areas without One Medical coverage"
+    "Anyone in crisis: call or text 988, or call 911",
+    "People who need ongoing therapy in an area where One Medical doesn't offer it",
+    "People with severe or complex conditions who need a psychiatrist (One Medical refers out)",
+    "People who don't want an Amazon account"
   ],
   "support_level": "clinical",
-  "short_description": "Amazon One Medical offers virtual primary care with integrated mental health services including therapy and medication management for members and Prime subsc...",
-  "long_description": "One Medical, acquired by Amazon, is a membership-based primary care practice with integrated mental health services. Members can access virtual and in-person care with same-day or next-day appointments. Mental health services include therapy with licensed therapists and medication management through primary care providers or psychiatric specialists. The $199/year membership (free for Prime members) provides access to virtual visits, but actual care costs depend on your insurance. One Medical accepts most major insurance plans. The integration of physical and mental health care under one roof simplifies coordinated treatment for conditions where both are relevant.",
+  "short_description": "Amazon's membership primary care: app, video and in-clinic visits; its clinicians treat common anxiety and depression and refer out for therapy.",
+  "long_description": "One Medical is a US primary care practice owned by Amazon since 2023. Members book same- or next-day visits in the app, by video or message, and in physical offices in a number of metro areas. Its primary care clinicians handle common mental health concerns such as stress, anxiety, panic, sleep problems and depression, including prescribing, and offer longer visits for mental health; they are not psychotherapists. Therapy is available only in select areas, with coaching available more widely, and One Medical refers members to outside therapists and psychiatrists. Membership costs $9 a month or $99 a year for Prime members ($6 a month or $66 a year per added family member) and $199 a year otherwise; visits are billed to insurance. Without a membership, Amazon's pay-per-visit care starts at $29 for a message visit and $49 for a video visit. A separate Mindset behavioral health program is sold to employers. Amazon Health Services is a HIPAA covered entity and says it does not sell patient data.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -34,24 +35,46 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
     "model": "subscription",
-    "free_tier": true,
-    "starting_price": "Free with Prime ($199/yr otherwise)",
-    "notes": "Membership provides access. Actual visits billed to insurance."
+    "free_tier": false,
+    "starting_price": "$9/month or $99/year with Prime; $199/year without",
+    "notes": "Membership covers access; visits are billed to insurance. Added family members $6/month or $66/year with Prime. Pay-per-visit (no membership) from $29 for a message visit or $49 for a video visit. Therapy only in select areas.",
+    "sources": [
+      "https://health.amazon.com/prime",
+      "https://www.amazon.com/gp/help/customer/display.html?nodeId=TjqvKqjxQH0HOams6s",
+      "https://health.amazon.com/onemedical"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "B+",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Now owned by Amazon—review privacy policy for data practices."
+    "basis": {
+      "policy_url": "https://health.amazon.com/onemedical/legal/hipaa",
+      "checked": "2026-10-27",
+      "sells_or_ads": "no",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "grade": "A",
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Amazon Health Services is a single HIPAA covered entity; it says it does not sell personal information or PHI and won't use One Medical health data to market other Amazon products without permission. Deletion can be requested, but medical records are kept as law requires. The FTC warned Amazon about patient-data use when the 2023 merger closed (a statement, not a finding).",
+    "sources": [
+      "https://health.amazon.com/onemedical/legal/hipaa",
+      "https://health.amazon.com/onemedical/privacy",
+      "https://www.aboutamazon.com/news/retail/patient-privacy-amazon-one-medical-amazon-pharmacy",
+      "https://www.ftc.gov/system/files/ftc_gov/pdf/2210191amazononemedicalkhanslaughterwilsonbedoya.pdf"
+    ]
   },
   "seo": {
     "title": "Amazon One Medical: Review & Pricing | HeyPsych",
@@ -79,20 +102,22 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://www.onemedical.com",
-    "affiliate_url": "https://www.onemedical.com"
+    "affiliate_url": "https://www.onemedical.com",
+    "app_store_url": "https://apps.apple.com/us/app/one-medical/id393507802",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.onemedical.android"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Integrated primary and mental health care",
-      "Therapy",
-      "Medication management",
-      "Accessible care"
+      "Primary care treatment of anxiety and depression, including medication",
+      "Same- or next-day video and message visits",
+      "Referral to therapists and psychiatrists",
+      "Therapy or coaching where offered"
     ]
   },
   "related_tools": [],
@@ -100,6 +125,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.onemedical.com",
-  "updated_at": "2026-09-02T06:10:49.768Z",
-  "audience": "patient"
+  "updated_at": "2026-10-27T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You join One Medical ($9 a month or $99 a year with Prime, or $199 a year without) and book video, message or in-office visits with primary care clinicians, who can treat common anxiety, depression, stress and sleep problems and prescribe medication. Therapy is only offered in some areas; otherwise they refer you to therapists and psychiatrists. Visits are billed to your insurance, or you can pay per visit without a membership.",
+  "availability": {
+    "state": "available",
+    "note": "Virtual care across the US; in-person offices only in some metro areas; therapy only in select areas.",
+    "checked": "2026-10-27",
+    "sources": [
+      "https://health.amazon.com/onemedical",
+      "https://www.onemedical.com/services/mindset/"
+    ]
+  }
 }

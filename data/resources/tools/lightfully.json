@@ -3,25 +3,34 @@
   "kind": "tool",
   "slug": "lightfully",
   "name": "Lightfully Behavioral Health",
-  "one_liner": "Precision Care Model treatment provider with weekly outcomes tracking and 88% depression improvement rates.",
+  "one_liner": "California treatment centers with residential, day (PHP), intensive outpatient and virtual IOP mental health programs for teens and adults.",
   "best_for": [
-    "Patients needing residential or intensive outpatient mental health treatment",
-    "Adolescents (12+) and adults requiring structured treatment programs",
-    "Those seeking outcomes-driven treatment with weekly progress tracking"
+    "Adults in California who need more support than weekly therapy, such as residential or day treatment",
+    "Teens 12–17 in the San Diego area who need PHP or IOP",
+    "People stepping down from a hospital stay who need structured follow-on care",
+    "Anthem Blue Cross members in California"
   ],
   "not_for": [
-    "Clinicians seeking practice management software (Lightfully is a provider)",
-    "Organizations seeking MBC software platforms",
-    "Low-acuity outpatient needs"
+    "Anyone in crisis: call or text 988; for immediate danger call 911",
+    "People outside California",
+    "People with mild symptoms who only need weekly outpatient therapy",
+    "People whose main problem is substance use (it is a mental health program)"
   ],
   "support_level": "clinical",
-  "short_description": "Primary mental health treatment provider with Precision Care Model, weekly outcome assessments, and proven results (41% depression reduction, 45% anxiety reduct",
-  "long_description": "Lightfully Behavioral Health is a primary mental health care provider established in 2021, offering treatment across the care continuum from residential to virtual intensive outpatient programs. The organization uses a proprietary Precision Care Model that combines evidence-based therapies to create personalized treatment plans based on patient goals. Lightfully emphasizes rigorous outcomes measurement, conducting weekly assessments to track patient progress and demonstrate effectiveness. Their 2024-2025 clinical outcomes data shows significant results: 88% of adult clients with depression reported improvement at discharge, 86% with psychological distress showed improvement, 41% reduction in depression scores, 45% reduction in anxiety scores, and 32% reduction in PTSD scores. The organization serves patients from adolescence through late adulthood (ages 12-79) with dedicated programs for teens and adults. Lightfully has also implemented AI-powered chart auditing (via Brellium) to reduce chart review time by 87%.",
-  "patient_summary": "Primary mental health treatment provider with Precision Care Model, weekly outcome assessments, and proven results (41% depression reduction, 45% anxiety reduction).",
+  "short_description": "California residential, PHP, IOP and virtual IOP programs for adults and teens with depression, anxiety, trauma and other conditions; insurance-based.",
+  "long_description": "Lightfully Behavioral Health, founded in 2021, runs mental health treatment programs across California, with locations in the Los Angeles area (including Westwood, Santa Monica and Brentwood), Thousand Oaks, Santa Barbara, San Diego County (including Carlsbad and Encinitas), San Jose and Northern California. Levels of care are residential treatment, partial hospitalization (PHP), intensive outpatient (IOP) and a virtual IOP. Adult programs treat anxiety, depression, trauma, personality disorders, thought disorders and other conditions; teen programs (ages 12 to 17) are offered in the San Diego area. It describes a 'Precision Care Model' with weekly symptom measurement and publishes its own outcome figures, but no peer-reviewed study of its programs was found. It is in-network with Anthem Blue Cross in California and says it works with several major insurers; prices are quoted by admissions.",
+  "patient_summary": "You call admissions, who check your insurance and recommend a level of care: live-in residential treatment, or day programs (PHP or IOP) several days a week at a center or by video. Programmes are for adults, with teen (12–17) programs in the San Diego area, and are mostly paid through insurance such as Anthem Blue Cross.",
   "primary_hubs": [
-    "find-support"
+    "find-support",
+    "mood-depression",
+    "anxiety-stress",
+    "trauma-ptsd"
   ],
-  "conditions": [],
+  "conditions": [
+    "major-depressive-disorder",
+    "generalized-anxiety-disorder",
+    "post-traumatic-stress-disorder"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
@@ -36,16 +45,35 @@
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Insurance-based / Program fees",
-    "notes": "Lightfully is a treatment provider offering residential, PHP, IOP, and virtual IOP programs. Contact admissions for insurance verification and program costs."
+    "starting_price": "Insurance-based; program cost quoted by admissions",
+    "notes": "In-network with Anthem Blue Cross in California for all levels of care; says it works with several other major insurers. No self-pay price is published; admissions verifies benefits.",
+    "sources": [
+      "https://lightfully.com/treatment-for-anthem-members/",
+      "https://lightfully.com/locations/central-coast/lightfully-santa-barbara-php-iop/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "basis": {
+      "policy_url": "https://lightfully.com/privacy-policy/",
+      "checked": "2026-10-27",
+      "sells_or_ads": "unknown",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Its HIPAA notice says it will not sell medical information or use it for marketing without your authorization; it does not say how website and ad-tracking data are used.",
+    "sources": [
+      "https://lightfully.com/privacy-policy/"
+    ],
+    "grade": "unknown"
   },
   "seo": {
     "title": "Lightfully Behavioral Health: Outcomes-Driven Treatment",
@@ -73,19 +101,20 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://lightfully.com",
     "affiliate_url": "https://lightfully.com"
   },
   "clinical_metadata": {
-    "evidence_based": false,
+    "evidence_based": true,
     "evidence_level": "emerging",
     "primary_uses": [
-      "Patients needing residential or intensive outpatient mental health treatment",
-      "Adolescents (12+) and adults requiring structured treatment programs",
-      "Those seeking outcomes-driven treatment with weekly progress tracking"
+      "Residential mental health treatment",
+      "Partial hospitalization (PHP) day treatment",
+      "Intensive outpatient (IOP), in person or virtual",
+      "Teen PHP and IOP"
     ]
   },
   "related_tools": [],
@@ -93,6 +122,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://lightfully.com",
-  "updated_at": "2026-09-02T05:18:37.203Z",
-  "audience": "patient"
+  "updated_at": "2026-10-27T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "limited",
+    "note": "California only. Adult programs at several sites; teen (12–17) programs in the San Diego area; virtual IOP for California residents.",
+    "checked": "2026-10-27",
+    "sources": [
+      "https://lightfully.com/treatment-for-anthem-members/",
+      "https://lightfully.com/locations/central-coast/lightfully-santa-barbara-php-iop/"
+    ]
+  }
 }

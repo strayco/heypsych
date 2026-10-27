@@ -3,24 +3,22 @@
   "kind": "tool",
   "slug": "talkiatry",
   "name": "Talkiatry",
-  "one_liner": "Talkiatry is a leading online psychiatry platform that connects you with licensed psychiatrists for medication management, accepting most major insurance plans for accessible virtual psychiatric care.",
+  "one_liner": "Online psychiatry practice: video visits with a psychiatrist for diagnosis and medication, billed in-network to commercial insurance and Medicare.",
   "best_for": [
-    "People who need psychiatric medication management and have insurance",
-    "Those who prefer video appointments from home over in-person visits",
-    "People having difficulty finding local psychiatrists with availability",
-    "Those wanting a psychiatrist who can also provide therapy (if needed)",
-    "People seeking ongoing psychiatric care, not just one-time consultations"
+    "Adults and children 5+ with commercial insurance or Medicare who need a psychiatrist for medication",
+    "People who can't find a local psychiatrist with openings",
+    "People who want therapy and medication from the same practice (therapy needs a Talkiatry psychiatrist's referral)"
   ],
   "not_for": [
-    "People in immediate psychiatric crisis (call 988 or go to ER)",
-    "Those seeking only therapy without medication needs",
-    "People without insurance who need low-cost options",
-    "Those needing controlled substances with strict telehealth restrictions"
+    "Anyone in crisis: call or text 988",
+    "People with Medicaid (not accepted)",
+    "People who only want talk therapy without a psychiatrist",
+    "People seeking treatment for schizophrenia, primary eating disorders or medication for opioid use disorder (not offered)"
   ],
   "support_level": "clinical",
-  "short_description": "Online psychiatry platform with licensed psychiatrists, medication management, and broad insurance acceptance.",
-  "long_description": "Talkiatry is a telehealth psychiatry practice that provides psychiatric evaluation, diagnosis, and medication management through video appointments. Unlike some platforms, Talkiatry psychiatrists are employees (not contractors), which allows for better continuity of care. Most appointments are 45-60 minutes for initial evaluations and 20-30 minutes for follow-ups. Talkiatry accepts most major insurance plans and is available in most U.S. states.",
-  "patient_summary": "Talkiatry connects you with a psychiatrist for video appointments. They can evaluate you, diagnose conditions, and prescribe medications. Most insurance is accepted, so your cost may just be a copay.",
+  "short_description": "Video psychiatry with Talkiatry's own psychiatrists, in-network with many commercial plans and Medicare; not Medicaid.",
+  "long_description": "Talkiatry is a US telepsychiatry practice. You complete an online assessment, are matched with a psychiatrist, and have a video evaluation followed by medication-management visits; therapy is available only after referral by a Talkiatry psychiatrist. It treats people aged 5 and up and works mainly through insurance: it is in-network with many commercial plans and Medicare and does not take Medicaid. Its insurance page says it now offers self-pay for people whose insurer it doesn't accept (not for Medicaid or Medicare), but a help-center article still says there is no self-pay option, and no self-pay price is published. Whether controlled medications can be prescribed depends on your state's in-person rules. Its published research is two company-funded retrospective analyses of its own patients (2023 and 2025), with no control group, reporting reduced depression and anxiety scores during treatment.",
+  "patient_summary": "You fill in an online assessment, get matched with a psychiatrist, and meet by video for an evaluation and then medication follow-ups. You pay your insurance copay or deductible; Medicaid isn't accepted, and self-pay is only offered to some people without a published price.",
   "primary_hubs": [
     "find-support"
   ],
@@ -41,7 +39,7 @@
   ],
   "platforms": {
     "ios": true,
-    "android": true,
+    "android": false,
     "web": true,
     "desktop": false,
     "wearable": false
@@ -49,15 +47,37 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Accepts most major insurance. Without insurance, initial evaluation is approximately $300-400, follow-ups $150-250.",
-    "starting_price": "Insurance copay; self-pay on request"
+    "starting_price": "Copay with insurance; self-pay price not published",
+    "notes": "In-network with many commercial plans and Medicare; not Medicaid. Talkiatry's insurance page says self-pay is now offered when your insurer isn't accepted (not for Medicaid or Medicare patients), while a help-center article says there is no self-pay option; no self-pay rate is published. Your cost depends on your plan's copay and deductible.",
+    "sources": [
+      "https://www.talkiatry.com/insurance",
+      "https://www.talkiatry.com/help-center-articles/do-i-have-to-go-through-insurance",
+      "https://www.talkiatry.com/help-center-articles/how-much-will-my-visit-cost"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA-compliant medical practice. Your data is protected health information."
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.talkiatry.com/privacy-policy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "yes",
+    "notes": "Talkiatry's California notice says it treats advertising and analytics cookies as a 'sale' and lists identifiers sold in the past year; you can opt out. Your medical records are protected health information under its HIPAA notice, and deletion requests are honored within HIPAA's limits.",
+    "sources": [
+      "https://www.talkiatry.com/privacy-policy",
+      "https://www.talkiatry.com/ccpa-privacy-notice",
+      "https://www.talkiatry.com/notice-of-privacy-practices",
+      "https://www.talkiatry.com/washington-privacy-addendum"
+    ]
   },
   "app_rating": 4.5,
   "total_reviews": 3000,
@@ -87,21 +107,52 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "publisher": "Talkiatry",
     "website": "https://www.talkiatry.com",
-    "affiliate_url": "https://www.talkiatry.com"
+    "affiliate_url": "https://www.talkiatry.com",
+    "app_store_url": "https://apps.apple.com/us/app/talkiatry-virtual-psychiatry/id6744372607"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Retrospective analysis of depression and anxiety outcomes in Talkiatry patients",
+        "citation": {
+          "authors": "Person C, O'Connor N, Koehler L, Venkatachalam K, Gaveras G",
+          "title": "Evaluating Clinical Outcomes in Patients Being Treated Exclusively via Telepsychiatry: Retrospective Data Analysis",
+          "journal": "JMIR Formative Research",
+          "year": 2023,
+          "doi": "10.2196/53293",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10746963/"
+        },
+        "outcome": "PHQ-8 and GAD-7 scores fell substantially during treatment (d = 1.23 and 1.30); company-sponsored, no control group.",
+        "sample_size": 1826,
+        "study_design": "Retrospective cohort, no control group"
+      },
+      {
+        "study": "Therapeutic alliance and outcomes in Talkiatry patients",
+        "citation": {
+          "authors": "Person C, Phillips ND, Venkatachalam K, Gaveras G",
+          "title": "Association Between Therapeutic Alliance and Clinical Outcomes in Virtual Telepsychiatry: Retrospective Analysis of Data From Talkiatry",
+          "journal": "JMIR Formative Research",
+          "year": 2025,
+          "doi": "10.2196/77243",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41004118/"
+        },
+        "outcome": "Stronger patient-rated alliance was linked to greater improvement in depression and anxiety; company-sponsored, no control group.",
+        "study_design": "Retrospective cohort, no control group"
+      }
+    ],
     "primary_uses": [
-      "Psychiatric evaluation and diagnosis",
+      "Psychiatric evaluation and diagnosis by video",
       "Medication management",
       "ADHD assessment and treatment",
-      "Depression and anxiety treatment"
+      "Depression and anxiety treatment",
+      "Child and adolescent psychiatry (ages 5+)"
     ]
   },
   "related_tools": [
@@ -120,11 +171,13 @@
   "updated_at": "2026-09-01T19:25:58.710Z",
   "audience": "patient",
   "availability": {
-    "state": "available",
-    "checked": "2026-10-23",
-    "note": "In-network psychiatry with 100+ plans including Original Medicare; not Medicaid. 45 states and DC (not AK, DE, HI, ND, WY). Ages 5+. Can prescribe controlled medications where state rules allow.",
+    "state": "limited",
+    "checked": "2026-10-26",
+    "note": "US, in most states; insurance-based (commercial plans and Medicare, not Medicaid); ages 5+. Controlled prescriptions depend on state rules.",
     "sources": [
-      "https://www.choosingtherapy.com/talkiatry-review/"
+      "https://www.talkiatry.com/insurance",
+      "https://www.talkiatry.com/help-center-articles/how-old-does-my-child-have-to-be-to-see-a-talkiatry-psychiatrist",
+      "https://www.talkiatry.com/help-center-articles/can-talkiatry-prescribe-controlled-substances"
     ]
   }
 }

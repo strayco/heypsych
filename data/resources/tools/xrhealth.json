@@ -3,29 +3,30 @@
   "kind": "tool",
   "slug": "xrhealth",
   "name": "XRHealth",
-  "one_liner": "FDA-registered VR therapeutic platform with Medicare-reimbursed telehealth",
+  "one_liner": "XRHealth ships a VR headset to your home and runs therapy sessions by video with licensed clinicians, often billed to Medicare Part B.",
   "best_for": [
-    "Health systems",
-    "rehabilitation facilities",
-    "and mental health practices seeking FDA-registered",
-    "Medicare-reimbursed VR therapy with integrated telehealth clinician support"
+    "People with Original Medicare Part B whose provider prescribes VR therapy",
+    "Adults with anxiety, stress or chronic pain who want structured exercises at home",
+    "People who are comfortable using a VR headset"
   ],
   "not_for": [
-    "Solo practitioners without infrastructure for VR device management",
-    "or practices not serving patients who can use VR headsets"
+    "Anyone in crisis: call or text 988",
+    "People with Medicare Advantage only, or without insurance who need a known price",
+    "People prone to motion sickness, seizures or who can't use a headset safely"
   ],
-  "support_level": "self-help",
-  "short_description": "FDA-registered VR/XR therapeutic platform with Medicare-reimbursed telehealth services for mental health, pain management, and rehabilitation delivered by licen",
-  "long_description": "XRHealth is the leading XR therapeutic platform and the only FDA-registered, multidisciplinary XR solution with CMS-classified VR CBT device covered as Durable Medical Equipment (DME). The platform addresses mental health conditions including PTSD, trauma, anxiety, phobias, OCD, ADHD, stress, and addictive disorders through VR-delivered therapy. XRHealth operates a virtual clinic staffed by licensed Physical Therapists, Occupational Therapists, and Licensed Clinical Social Workers specially trained in VR therapy. The platform features over 150 therapeutic applications, direct EHR integration with Epic and Cerner, AI-powered personalized therapy programs, and real-world data collection from patients at home. With 1M+ sessions delivered and partnerships with VA and NHS, XRHealth offers both full-service VR (software + in-clinic headsets) and software-only remote treatment options.",
-  "patient_summary": "FDA-registered VR/XR therapeutic platform with Medicare-reimbursed telehealth services for mental health, pain management, and rehabilitation delivered by licensed clinicians.",
+  "support_level": "clinical",
+  "short_description": "At-home VR therapy with licensed clinicians by video: anxiety, stress, pain and rehab. Bills insurance; VR CBT device covered by Medicare Part B.",
+  "long_description": "XRHealth is a virtual reality therapy company that runs a telehealth clinic in the US (and operates in Israel and Australia). A clinician meets you by video, a VR headset kit is shipped to your home, and you use VR programs for anxiety and stress, chronic pain, and physical and occupational rehabilitation. Its VR cognitive behavioral therapy device is billed to Original Medicare Part B as durable medical equipment (code E1905, from January 2025) when a provider prescribes it; XRHealth says many patients pay little or nothing, though Medicare Advantage is not included. It says it is in-network with many insurers and covers some veterans through the VA, and offers a direct-pay plan without a published price. Clinicians are licensed in the states where they treat; the current state list was not confirmed. A 2023 study by XRHealth staff of 61 people treated in its remote VR clinic reported lower anxiety and stress scores, but it had no control group.",
+  "patient_summary": "You meet an XRHealth clinician by video, they send a loaner VR headset to your home, and you do guided VR exercises for anxiety, stress, pain or rehab between and during sessions. XRHealth bills insurance, and its VR CBT device is covered by Original Medicare Part B as medical equipment when prescribed; Medicare Advantage is not included. If you're not covered there is a direct-pay plan, but no price is published.",
   "primary_hubs": [
     "anxiety-stress",
     "mood-depression"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder"
+  ],
   "tool_types": [
-    "app",
-    "assessment"
+    "therapy-platform"
   ],
   "ai_attributes": [
     "ai-powered"
@@ -38,15 +39,39 @@
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Per clinician license with flexible packages. Full-service VR includes software + headsets. Software-only for remote treatment. Medicare DME reimbursement available."
+    "starting_price": "Insurance or Medicare Part B; direct-pay plan (price not published)",
+    "notes": "VR CBT device covered by Original Medicare Part B as DME (HCPCS E1905) when prescribed; not Medicare Advantage. XRHealth says it is in-network with most insurers and covers qualifying veterans through the VA. Direct Pay Plan offered; no price found.",
+    "sources": [
+      "https://www.xr.health/us/products/",
+      "https://www.xr.health/us/blog/vr-mental-health-treatment-medicare/",
+      "https://www.xr.health/us/services/faq/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
     "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "basis": {
+      "policy_url": "https://www.xr.health/us/web-privacy/",
+      "checked": "2026-10-27",
+      "sells_or_ads": "unknown",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "US website policy says it does not sell your information; HIPAA notice covers clinic records. Whether US data goes to ad platforms is not stated (its Australian policy says it sends hashed data to Meta for ads).",
+    "sources": [
+      "https://www.xr.health/us/web-privacy/",
+      "https://www.xr.health/notice-of-privacy-practices/",
+      "https://www.xr.health/us/products/product-privacy-policy/",
+      "https://www.xr.health/au/pp/"
+    ]
   },
   "seo": {
     "title": "XRHealth: FDA-Registered VR Therapy Platform | HeyPsych",
@@ -74,20 +99,35 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://www.xr.health/",
     "affiliate_url": "https://www.xr.health/"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging",
+    "evidence_based": true,
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Remote VR treatment for stress and anxiety in XRHealth clinics (US, Israel, Australia), 2020-2022",
+        "citation": {
+          "authors": "Orr E, Arbel T, Levy M, et al.",
+          "title": "Virtual reality in the management of stress and anxiety disorders: A retrospective analysis of 61 people treated in the metaverse",
+          "journal": "Heliyon",
+          "year": 2023,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10362070/"
+        },
+        "outcome": "GAD-7 anxiety fell 34% and perceived stress 32%; 22-50% dropped out in the first month. No control group; authors employed by XRHealth.",
+        "sample_size": 61,
+        "study_design": "Retrospective chart review (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Health systems",
-      "rehabilitation facilities",
-      "and mental health practices seeking FDA-registered",
-      "Medicare-reimbursed VR therapy with integrated telehealth clinician support"
+      "VR-based therapy for anxiety and stress",
+      "VR programs for chronic pain",
+      "Physical and occupational therapy at home",
+      "Video sessions with a licensed clinician"
     ]
   },
   "related_tools": [],
@@ -95,6 +135,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.xr.health/",
-  "updated_at": "2026-09-02T05:18:37.209Z",
-  "audience": "patient"
+  "updated_at": "2026-10-27T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "limited",
+    "note": "US telehealth clinic (also Israel and Australia); clinicians treat only in states where licensed, current state list not confirmed. Needs a prescription for Medicare coverage.",
+    "checked": "2026-10-27",
+    "sources": [
+      "https://www.xr.health/us/services/faq/",
+      "https://www.xr.health/us/products/"
+    ]
+  }
 }

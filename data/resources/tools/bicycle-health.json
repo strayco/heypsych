@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "bicycle-health",
   "name": "Bicycle Health",
-  "one_liner": "Bicycle Health provides virtual Suboxone treatment for opioid use disorder with licensed physicians, therapy, and 24/7 support, covered by most insurance.",
+  "one_liner": "Online Suboxone treatment for opioid use disorder: video visits with a prescriber, coaching and support groups, in 27 states.",
   "best_for": [
-    "People seeking medication-assisted treatment for opioid addiction",
-    "Those wanting discreet, virtual addiction treatment",
-    "People in areas with limited MAT providers",
-    "Those looking for Suboxone treatment with support services"
+    "Adults with opioid use disorder who want to start buprenorphine (Suboxone) quickly by video",
+    "People with commercial insurance, Medicaid or Medicare in one of Bicycle's 27 states",
+    "People who want discreet treatment without visiting a clinic"
   ],
   "not_for": [
-    "Those in acute withdrawal needing immediate medical detox",
-    "People seeking treatment for alcohol or other substance use only",
-    "Those requiring inpatient treatment level of care"
+    "Anyone in crisis or overdose: call 911, or call or text 988",
+    "People who want treatment for alcohol or other drugs only",
+    "People who need medically supervised detox or residential care",
+    "People outside Bicycle Health's 27 states"
   ],
   "support_level": "clinical",
-  "short_description": "Bicycle Health provides virtual Suboxone treatment for opioid use disorder with licensed physicians, therapy, and 24/7 support, covered by most insurance.",
-  "long_description": "Bicycle Health is a telemedicine platform specializing in medication-assisted treatment (MAT) for opioid use disorder. The platform connects patients with physicians who prescribe Suboxone (buprenorphine/naloxone) via video appointments, combined with peer support, therapy, and 24/7 crisis resources. Treatment follows evidence-based protocols with an 87% retention rate in one study. Bicycle Health accepts most major insurance including Medicaid in many states, with self-pay options around $195/month for medication management. The platform operates in 32+ states with licensed providers. The comprehensive approach addresses the access gap for addiction treatment in underserved areas.",
+  "short_description": "Telehealth buprenorphine (Suboxone) treatment for opioid use disorder in 27 states; insurance, Medicaid and Medicare accepted, or $249/month self-pay.",
+  "long_description": "Bicycle Health is a US telehealth practice that treats opioid use disorder with buprenorphine (Suboxone). Clinicians see you by video, can often send a prescription the same day, and follow up with regular visits; the program also includes lab tests, coaching and support groups. The company says it operates in 27 states and accepts most major commercial plans, Medicaid and Medicare, with most insured patients paying under $35 a month; a directory listing notes Medicaid places are sometimes limited. Self-pay is $249 a month including labs, with the medication billed separately by the pharmacy (roughly $0–$150 depending on coverage). Bicycle Health staff published a descriptive study in BMJ Innovations (2022) reporting that 80% of insured patients were still in treatment at 90 days; there is no randomized trial. Its website privacy policy allows sharing personal information for targeted advertising, though it says it does not sell health information.",
   "primary_hubs": [
     "substance-use",
     "find-support"
@@ -42,15 +42,35 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$249/month self-pay (labs included); most insured pay under $35/month",
-    "notes": "Insurance accepted including Medicaid. Self-pay available."
+    "starting_price": "Copay with insurance (most pay under $35/month); $249/month self-pay",
+    "notes": "Self-pay $249/month includes lab tests (previously $199). Suboxone is billed separately by the pharmacy, generally $0–$150 depending on coverage. Most major commercial plans, Medicaid and Medicare accepted; Medicaid capacity can be limited.",
+    "sources": [
+      "https://www.bicyclehealth.com/insurance-and-pricing",
+      "https://www.bicyclehealth.com/suboxone-faq/how-much-does-suboxone-cost"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant healthcare platform. 42 CFR Part 2 protections for substance use records."
+    "basis": {
+      "policy_url": "https://www.bicyclehealth.com/legal/privacy",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Website policy allows sharing personal information with third parties for marketing and targeted advertising (with an opt-out); says it will not sell or use health information from its secure platform for advertising; clinical records under its HIPAA notice.",
+    "sources": [
+      "https://www.bicyclehealth.com/legal/privacy",
+      "https://partner.bicyclehealth.com/privacy-policy",
+      "https://www.bicyclehealth.com/legal/npp"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Bicycle Health: Review & Pricing | HeyPsych",
@@ -78,7 +98,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.bicyclehealth.com",
@@ -86,12 +106,26 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Description and 90-day retention of Bicycle Health's telehealth buprenorphine model",
+        "citation": {
+          "authors": "Rollston R, Gallogly W, Hoffman L, et al.",
+          "title": "Collaborative, patient-centred care model that provides tech-enabled treatment of opioid use disorder via telehealth",
+          "journal": "BMJ Innovations",
+          "year": 2022,
+          "url": "https://www.bicyclehealth.com/opioid-education/opioid-use-disorder"
+        },
+        "outcome": "Company reports 80% of insured patients retained at 90 days (59% insured and self-pay combined); descriptive, no control group, authors employed by Bicycle Health. BMJ Innovations 2022;8:117-122; DOI not verified, link is the company summary.",
+        "study_design": "Descriptive (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Opioid addiction treatment",
-      "MAT/Suboxone",
-      "Virtual addiction care",
-      "Recovery support"
+      "Starting buprenorphine (Suboxone) by video",
+      "Ongoing medication management for opioid use disorder",
+      "Recovery coaching and support groups",
+      "Using Medicaid or Medicare for opioid treatment"
     ]
   },
   "related_tools": [],
@@ -99,14 +133,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.bicyclehealth.com",
-  "updated_at": "2026-09-02T06:10:49.770Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
-    "state": "available",
-    "checked": "2026-10-23",
-    "note": "Online Suboxone treatment in 27 states; commercial plans, Medicaid and Medicare. Video visits, same-day prescriptions often possible, coaching and free support groups.",
+    "state": "limited",
+    "note": "27 US states, per Bicycle Health; check your state at sign-up.",
+    "checked": "2026-10-26",
     "sources": [
-      "https://www.bicyclehealth.com/suboxone"
+      "https://www.bicyclehealth.com/insurance-and-pricing",
+      "https://www.bicyclehealth.com/treatment/suboxone-clinic"
     ]
-  }
+  },
+  "patient_summary": "You book a video visit with a Bicycle Health clinician, who can prescribe buprenorphine (Suboxone), often the same day, and you keep regular check-ins plus optional coaching and support groups. Most insured patients pay under $35 a month; self-pay is $249 a month with lab tests included. The medication itself is billed by your pharmacy."
 }

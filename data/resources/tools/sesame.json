@@ -3,18 +3,21 @@
   "kind": "tool",
   "slug": "sesame",
   "name": "Sesame",
-  "one_liner": "Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance. ",
+  "one_liner": "Cash-pay marketplace where you book a video visit with a therapist, psychiatric prescriber or doctor at a price shown upfront. No insurance billing.",
   "best_for": [
-    "People who want virtual appointments with providers",
-    "Those with busy schedules who need flexible care"
+    "People without insurance or with high-deductible plans who want an upfront price",
+    "People who need a quick psychiatric visit or non-controlled medication refills",
+    "People who want to pick a specific provider by price and availability"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "People who need stimulants, benzodiazepines or other controlled medications",
+    "People who want their insurance billed directly"
   ],
   "support_level": "clinical",
-  "short_description": "Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance. Cannot prescribe controlled substances.",
-  "long_description": "Sesame is a telehealth platform for virtual mental health appointments. Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance.  Pricing starts at $75/session.",
-  "patient_summary": "Cash-pay healthcare marketplace with therapy $75-130/session and psychiatry $100-175. No insurance. Cannot prescribe controlled substances.",
+  "short_description": "Cash-pay telehealth marketplace. Each provider sets a visit price shown before booking; Mental Health Rx medication management is $79/month.",
+  "long_description": "Sesame is a US marketplace for cash-pay health care. You browse independent providers, see each one's price upfront, and book a video (or some in-person) visit; it covers mental health along with urgent care, prescriptions, weight loss and other services. For mental health you can book therapy sessions or psychiatric visits with a psychiatrist or psychiatric nurse practitioner, or join Mental Health Rx, a $79/month subscription for ongoing medication management with refills and provider messaging. Sesame does not bill insurance, though you can submit receipts yourself for out-of-network reimbursement. Its providers do not prescribe controlled substances such as stimulants (Adderall, Vyvanse) or benzodiazepines, and it does not have psychiatrists in every state. Visits tend to be one-off bookings, so ongoing therapy with one clinician depends on that clinician's availability. Sesame also sells a medication membership, Everyday Rx (see the SesameRx record).",
+  "patient_summary": "You pick a provider on Sesame, see their price before you book, and pay by card for a video visit; prices vary by provider and location. For ongoing psychiatric medication, Mental Health Rx costs $79/month. Sesame does not take insurance and its providers can't prescribe controlled substances like Adderall or Xanax.",
   "primary_hubs": [
     "find-support"
   ],
@@ -26,23 +29,45 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "one-time",
     "free_tier": false,
-    "starting_price": "$75/session",
-    "notes": "Patient-facing healthcare marketplace. NO INSURANCE ACCEPTED - cash pay only. Therapy $75-130/session. Psychiatry $100-175/session (initial up to $350). Mental Health Rx subscription $79/month for ongoing med management. Cannot prescribe controlled substances (no Adderall, benzos, opioids). Patients can submit bills to insurance for reimbursement."
+    "starting_price": "Price set by each provider, shown before booking; Mental Health Rx $79/month",
+    "notes": "Pay per visit at the provider's listed price (varies by provider and location). Mental Health Rx: $79/month for ongoing medication management (refills, messaging, video visits). Optional Sesame Plus membership gives visit discounts (reported $10.99/month or $99/year by ChoosingTherapy; confirm on Sesame). Costco members get lower prices. No insurance billing; you can submit receipts for out-of-network reimbursement.",
+    "sources": [
+      "https://sesamecare.com/category/mental-health",
+      "https://sesamecare.com/blog/sesame-launches-mental-health-rx",
+      "https://sesamecare.com/join/membership",
+      "https://www.choosingtherapy.com/sesame-care-review/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://sesamecare.com/privacy",
+      "checked": "2026-10-27",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "unknown",
+    "notes": "Policy says Sesame may share personal information with third parties for their direct marketing (California residents can opt out) and share de-identified data with advertisers. Provider terms require health data to be kept under HIPAA. Deletion rights for all users not confirmed. No regulatory action found.",
+    "sources": [
+      "https://sesamecare.com/privacy",
+      "https://sesamecare.com/join/provider-terms-of-service"
+    ]
   },
   "seo": {
     "title": "Sesame Care: Review & Pricing | HeyPsych",
@@ -70,21 +95,38 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://sesamecare.com",
-    "affiliate_url": "https://sesamecare.com"
+    "affiliate_url": "https://sesamecare.com",
+    "app_store_url": "https://apps.apple.com/us/app/sesame-telehealth-care-more/id6448565675",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.sesamecare.patient"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "emerging",
+    "primary_uses": [
+      "Cash-pay video therapy sessions",
+      "Psychiatric evaluation and medication management",
+      "Non-controlled psychiatric medication refills",
+      "Comparing provider prices before booking"
+    ]
   },
   "related_tools": [],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://sesamecare.com",
-  "updated_at": "2026-09-02T05:18:37.228Z",
-  "audience": "patient"
+  "updated_at": "2026-10-27T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "available",
+    "checked": "2026-10-27",
+    "note": "US only. Psychiatrists are not available in every state; primary care providers may prescribe some mental health medications instead.",
+    "sources": [
+      "https://sesamecare.com/",
+      "https://sesamecare.com/complaint/online-mental-health-medication"
+    ]
+  }
 }

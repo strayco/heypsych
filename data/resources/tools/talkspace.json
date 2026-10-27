@@ -3,22 +3,21 @@
   "kind": "tool",
   "slug": "talkspace",
   "name": "Talkspace",
-  "one_liner": "Talkspace offers online therapy and psychiatry with licensed providers, accepting many insurance plans, with unlimited messaging plus live sessions starting at $69/week.",
+  "one_liner": "Online therapy with a licensed therapist by messaging and live video, billed weekly or through many insurance plans; psychiatry is a separate service.",
   "best_for": [
-    "People whose insurance covers Talkspace therapy",
-    "Those wanting both therapy and psychiatry in one platform",
-    "People who prefer asynchronous text-based therapy",
-    "Employees with Talkspace as an EAP benefit"
+    "Adults with depression, anxiety or stress who want a therapist they can message between live sessions",
+    "People whose insurance or employer plan covers Talkspace",
+    "People who would rather write to a therapist than keep fixed weekly appointments"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People seeking controlled substance prescriptions (limited availability)",
-    "Those preferring frequent live video sessions over messaging"
+    "Anyone in crisis: call or text 988",
+    "People who need controlled medications such as stimulants or benzodiazepines (Talkspace does not prescribe them)",
+    "People with severe mental illness who need intensive or in-person care"
   ],
   "support_level": "clinical",
-  "short_description": "Talkspace offers online therapy and psychiatry with licensed providers, accepting many insurance plans, with unlimited messaging plus live sessions starting ...",
-  "long_description": "Talkspace is a leading telehealth platform for therapy and psychiatry serving millions of users. The platform offers unlimited text, video, and audio messaging with licensed therapists plus optional live video sessions. Talkspace accepts many major insurance plans including Aetna, Cigna, Optum, and employer EAPs, making it more accessible than cash-pay competitors. Psychiatry services are available for medication management. Therapy plans start at $69/week without insurance. The platform uses evidence-based approaches including CBT, DBT, and psychodynamic therapy. Teen therapy (13-17) is available with parental consent.",
-  "patient_summary": "Talkspace connects you with a therapist you can message anytime and meet with live. Many insurance plans cover it. You can also add psychiatry for medications if needed.",
+  "short_description": "Online therapy by messaging and video with a licensed therapist; $69–$109/week self-pay, or a copay through many insurance plans.",
+  "long_description": "Talkspace is a US online therapy service. After an intake you are matched with a licensed therapist and can message them at any time and, depending on your plan, have live video sessions. Talkspace's pricing page lists self-pay therapy at $69 to $99 a week depending on the plan, with a premium tier at $109 a week; quarterly or twice-yearly billing costs less, and many insurance and employer plans are accepted. Psychiatry (medication management) is billed separately: $299 for the first evaluation and $175 per follow-up without insurance, and Talkspace does not prescribe controlled substances. Three randomized trials run on the platform, published in 2023, 2024 and 2025, found that messaging-based therapy worked about as well as weekly video therapy for depression; most were co-authored by Talkspace researchers. Universal Health Services completed its purchase of Talkspace in August 2026.",
+  "patient_summary": "You answer an intake questionnaire, get matched with a licensed therapist, then message them any time and meet by live video depending on your plan. Without insurance it costs $69–$109 a week; many insurance and employer plans cover it, so check coverage at sign-up. Medication is a separate psychiatry service, and controlled substances are not prescribed.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -48,15 +47,36 @@
   "pricing": {
     "model": "subscription",
     "free_tier": false,
-    "starting_price": "$69/week (messaging); $99/week with video; insurance copays average $10",
-    "notes": "Many insurance plans accepted. Employer EAP benefits common."
+    "starting_price": "$69–$109/week self-pay; copay with insurance",
+    "notes": "Self-pay therapy plans run $69–$99/week, with a $109/week premium tier; quarterly or biannual billing saves about 10–20%. Couples therapy and psychiatry are priced separately (psychiatry $299 first visit, $175 follow-up). Many insurance and employer plans accepted; check coverage at sign-up.",
+    "sources": [
+      "https://www.talkspace.com/pricing",
+      "https://help.talkspace.com/hc/en-us/articles/360041531131-Talkspace-Services-Out-of-Pocket-Pricing"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "B+",
-    "hipaa_compliant": true,
+    "grade": "C",
+    "basis": {
+      "policy_url": "https://www.talkspace.com/public/privacy-policy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Review their privacy practices before sharing sensitive information."
+    "data_sold": "yes",
+    "notes": "Talkspace's US state privacy notice says it discloses personal information to third parties for analytics and advertising (you can opt out), but says it does not sell, share or target ads once you are a patient using the portal; care records fall under its HIPAA notice. Chat history can be deleted on request; medical records are kept as the law requires.",
+    "sources": [
+      "https://www.talkspace.com/public/privacy-policy",
+      "https://www.talkspace.com/public/notice-of-us-state-privacy-rights",
+      "https://help.talkspace.com/hc/en-us/articles/5512316419739-Managing-and-Deleting-Your-Personal-Data-and-Account",
+      "https://www.talkspace.com/notice-of-privacy-practices"
+    ]
   },
   "app_rating": 4.8,
   "total_reviews": 50000,
@@ -86,7 +106,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "publisher": "Talkspace",
@@ -97,12 +117,56 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "high",
+    "clinical_trials": [
+      {
+        "study": "Randomized trial of message-based vs once-weekly video therapy on Talkspace for moderate depression",
+        "citation": {
+          "authors": "Song J, Litvin B, Allred R, Chen S, Hull TD, Areán PA",
+          "title": "Comparing Message-Based Psychotherapy to Once-Weekly, Video-Based Psychotherapy for Moderate Depression: Randomized Controlled Trial",
+          "journal": "Journal of Medical Internet Research",
+          "year": 2023,
+          "doi": "10.2196/46052",
+          "url": "https://www.jmir.org/2023/1/e46052"
+        },
+        "outcome": "Message-based therapy was noninferior to weekly video therapy on depression, anxiety and functional impairment.",
+        "sample_size": 83,
+        "study_design": "Randomized controlled noninferiority trial"
+      },
+      {
+        "study": "Sequential multiple-assignment randomized trial of video vs message-based therapy for depression on Talkspace",
+        "citation": {
+          "authors": "Areán PA, Pullmann MD, Griffith Fillipo IR, Wu J, Mosser BA, Chen S, Heagerty PJ, Hull TD",
+          "title": "Randomized Trial of the Effectiveness of Videoconferencing-Based Versus Message-Based Psychotherapy on Depression",
+          "journal": "Psychiatric Services",
+          "year": 2024,
+          "doi": "10.1176/appi.ps.20230176",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39026468/"
+        },
+        "outcome": "Depression outcomes were similar between messaging and video; people in messaging stayed in treatment longer.",
+        "sample_size": 215,
+        "study_design": "Sequential multiple-assignment randomized trial (SMART)"
+      },
+      {
+        "study": "Larger randomized trial of message-based vs video-based therapy for depression on Talkspace",
+        "citation": {
+          "authors": "Pullmann MD, et al.",
+          "title": "Message-Based vs Video-Based Psychotherapy for Depression: A Randomized Clinical Trial",
+          "journal": "JAMA Network Open",
+          "year": 2025,
+          "doi": "10.1001/jamanetworkopen.2025.40065",
+          "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2840708"
+        },
+        "outcome": "No meaningful differences between messaging and video in depression, anxiety, disability or global improvement at 6 or 12 weeks.",
+        "study_design": "Randomized clinical trial"
+      }
+    ],
     "primary_uses": [
-      "Online therapy",
-      "Text-based counseling",
-      "Psychiatry",
-      "Medication management"
+      "Messaging a licensed therapist between sessions",
+      "Live video therapy sessions",
+      "Depression and anxiety symptoms",
+      "Stress and life changes",
+      "Couples therapy (separate plan)"
     ]
   },
   "related_tools": [
@@ -121,10 +185,11 @@
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
+    "checked": "2026-10-26",
+    "note": "US only. Owned by Universal Health Services since August 2026; the service still operates.",
     "sources": [
-      "https://apps.apple.com/us/app/talkspace-virtual-therapy-app/id661829386",
-      "https://www.talkspace.com/blog/blog-how-much-talkspace-costs/"
+      "https://www.talkspace.com/pricing",
+      "https://uhs.com/news/universal-health-services-inc-completes-acquisition-of-talkspace-inc/"
     ]
   },
   "store_ratings": [

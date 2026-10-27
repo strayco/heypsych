@@ -3,22 +3,21 @@
   "kind": "tool",
   "slug": "insight-timer",
   "name": "Insight Timer",
-  "one_liner": "Insight Timer is a free meditation app with over 150,000 guided meditations, music tracks, and courses from thousands of teachers worldwide.",
+  "one_liner": "Large free library of guided meditations, sleep tracks and talks from many teachers, with a timer; optional paid MemberPlus.",
   "best_for": [
-    "People wanting free meditation content",
-    "Those who like variety in teachers and styles",
-    "People interested in community and live events",
-    "Budget-conscious meditators"
+    "People who want a large free meditation and sleep library without paying",
+    "People who like choosing between many teachers and styles",
+    "Experienced meditators who want a flexible timer and practice stats"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People seeking clinical mental health treatment",
-    "Those preferring polished, curated apps like Calm"
+    "Anyone in crisis: call or text 988",
+    "People who need treatment for anxiety, depression or insomnia: it is a wellness app, not care",
+    "People who want one consistent, curated program rather than a big mixed library"
   ],
   "support_level": "self-help",
-  "short_description": "Insight Timer is a free meditation app with over 150,000 guided meditations, music tracks, and courses from thousands of teachers worldwide.",
-  "long_description": "Insight Timer is the world's largest free meditation library, offering over 150,000 guided meditations, music tracks, ambient sounds, and courses from 10,000+ teachers. The app is free with optional premium membership. Features include a meditation timer, progress tracking, community groups, and live events. Content covers mindfulness, sleep, stress, anxiety, and personal growth. Unlike subscription-focused competitors, Insight Timer's model keeps most content free while premium unlocks additional features. The global community aspect connects millions of meditators worldwide.",
-  "patient_summary": "Insight Timer is like a library of guided meditations. Find meditations for sleep, anxiety, trauma, or anything else you're working on. Most content is free, and there are thousands of teachers to explore.",
+  "short_description": "A meditation app with a big free library from thousands of teachers, a timer, and an optional paid MemberPlus subscription.",
+  "long_description": "Insight Timer offers a large free library of guided meditations, music, sleep tracks and talks from many independent teachers, along with a customizable meditation timer, progress stats, groups and live sessions. Content ranges across mindfulness, sleep, stress and anxiety, but quality and style vary from teacher to teacher. MemberPlus ($59.99/year or $9.99/month in the US, with a 7-day free trial) adds courses, offline listening and other features; some courses can also be bought one at a time. Research on the app itself is limited: a small 2023 randomized trial (100 US adults) found 10 minutes a day for 30 days reduced anxiety and improved well-being compared with no app, and a large study of app users linked consistent practice (4 to 7 days a week) with better mood and resilience.",
+  "patient_summary": "Insight Timer gives you thousands of free guided meditations, sleep tracks and talks, plus a simple timer for silent practice. Most content is free; MemberPlus costs $59.99 a year or $9.99 a month if you want courses and offline listening. Teachers and quality vary, so try a few to find what suits you.",
   "primary_hubs": [
     "anxiety-stress",
     "sleep"
@@ -43,15 +42,36 @@
   "pricing": {
     "model": "freemium",
     "free_tier": true,
-    "starting_price": "Free; Premium $59.99/year or $9.99/month",
-    "notes": "Most content free. Premium adds features."
+    "starting_price": "Free; MemberPlus $59.99/year or $9.99/month",
+    "notes": "Most of the library is free. MemberPlus adds courses, offline listening and more, with a 7-day free trial; prices vary by country and store. Some courses can be bought individually.",
+    "sources": [
+      "https://help.insighttimer.com/support/solutions/articles/67000664579-how-much-does-insight-timer-cost-",
+      "https://insighttimer.com/member-plus"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
     "grade": "B+",
-    "hipaa_compliant": false,
+    "basis": {
+      "policy_url": "https://insighttimer.com/legal/privacy-policy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "no",
+      "deletion": "yes",
+      "hipaa": "unknown",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "unknown",
     "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "Consumer app, not healthcare. Review privacy policy."
+    "data_sold": "no",
+    "notes": "Insight Timer's help center (March 2026) says it does not sell or share app or website data for advertising; deletion on request via the app or privacy@insighttimer.com. The policy still lists analytics and advertising partners and doesn't honor Do Not Track, and Mozilla (2023) reported ad-network use, so review cookie settings.",
+    "sources": [
+      "https://insighttimer.com/legal/privacy-policy",
+      "https://help.insighttimer.com/support/solutions/articles/67000728901-does-insight-timer-sell-or-share-personal-data-collected-through-its-mobile-app-and-website-for-adver",
+      "https://help.insighttimer.com/support/solutions/articles/67000728907-how-can-i-request-the-deletion-of-my-account-data-",
+      "https://www.mozillafoundation.org/en/privacynotincluded/insight-timer/"
+    ]
   },
   "app_rating": 4.8,
   "total_reviews": 800000,
@@ -81,7 +101,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "publisher": "Insight Network Inc",
@@ -93,11 +113,41 @@
   "clinical_metadata": {
     "evidence_based": true,
     "evidence_level": "moderate",
+    "clinical_trials": [
+      {
+        "study": "10 minutes a day of Insight Timer for 30 days vs no app, US adults during COVID-19",
+        "citation": {
+          "authors": "O'Donnell K, Dunbar M, Speelman D",
+          "title": "Effectiveness of Daily Mindfulness Meditation App Usage to Reduce Anxiety and Improve Well-Being During the COVID-19 Pandemic: A Randomized Controlled Trial",
+          "journal": "Cureus",
+          "year": 2023,
+          "doi": "10.7759/cureus.42432",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37637657/"
+        },
+        "outcome": "Lower anxiety (GAD-7) and better well-being (WHO-5) than controls; small, open-label trial.",
+        "sample_size": 100,
+        "study_design": "Randomized controlled trial (no-app control, open label)"
+      },
+      {
+        "study": "Real-world Insight Timer users in 103 countries rating mood before and after sessions over 14 months",
+        "citation": {
+          "authors": "Cearns M, Clark SR",
+          "title": "The Effects of Dose, Practice Habits, and Objects of Focus on Digital Meditation Effectiveness and Adherence: Longitudinal Study of 280,000 Digital Meditation Sessions Across 103 Countries",
+          "journal": "Journal of Medical Internet Research",
+          "year": 2023,
+          "doi": "10.2196/43358",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37725801/"
+        },
+        "outcome": "Mood, equanimity and resilience improved; practising 4 to 7 days a week was linked to the largest change.",
+        "sample_size": 10409,
+        "study_design": "Observational longitudinal study (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Meditation",
-      "Mindfulness",
-      "Sleep sounds",
-      "Stress relief"
+      "Guided meditation for stress and anxiety",
+      "Sleep tracks and wind-down audio",
+      "Silent meditation with a timer",
+      "Courses and talks on mindfulness"
     ]
   },
   "related_tools": [
@@ -116,8 +166,9 @@
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
+    "checked": "2026-10-26",
     "sources": [
+      "https://insighttimer.com/",
       "https://apps.apple.com/us/app/insight-timer-meditate-sleep/id337472899"
     ]
   },

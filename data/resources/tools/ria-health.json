@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "ria-health",
   "name": "Ria Health",
-  "one_liner": "Ria Health provides virtual alcohol addiction treatment with medication, coaching, and digital tools, covered by many insurance plans with no abstinence requirement.",
+  "one_liner": "Online alcohol treatment with a doctor, medication such as naltrexone, coaching and a connected breathalyzer, to cut back or quit.",
   "best_for": [
-    "People wanting to reduce or quit alcohol without inpatient treatment",
-    "Those interested in medication-assisted alcohol treatment",
-    "People who want coaching support alongside medication",
-    "Those whose insurance covers Ria Health"
+    "Adults who want medication and coaching to drink less, not only to quit",
+    "People whose insurance has Ria in network",
+    "People who want to track progress with a connected breathalyzer"
   ],
   "not_for": [
-    "Those requiring medical alcohol detox",
-    "People with alcohol withdrawal risk needing in-person monitoring",
-    "Those seeking treatment for drug use other than alcohol"
+    "Anyone in crisis: call or text 988, or call 911",
+    "People who may have dangerous alcohol withdrawal and need medical detox",
+    "People on Medicaid (not accepted)",
+    "People who need treatment for drugs other than alcohol"
   ],
   "support_level": "clinical",
-  "short_description": "Ria Health provides virtual alcohol addiction treatment with medication, coaching, and digital tools, covered by many insurance plans with no abstinence requ...",
-  "long_description": "Ria Health is a virtual alcohol addiction treatment program that meets you where you are—whether you want to quit completely or reduce your drinking. The program combines FDA-approved anti-craving medications (naltrexone, others) with weekly coaching calls, progress tracking through their app, and optional support groups. A key differentiator is their evidence-based approach that doesn't require complete abstinence as a goal. The Sinclair Method and other medication-assisted approaches are used. Ria accepts many major insurance plans and operates nationwide. Treatment is entirely virtual with medications shipped to your pharmacy.",
+  "short_description": "Telehealth alcohol treatment combining prescribed medication, coaching and breathalyzer tracking; in-network with some insurers.",
+  "long_description": "Ria Health is a US telehealth program for alcohol use disorder. Members see a medical provider by video who can prescribe anti-craving medication such as naltrexone, meet with a recovery coach, and log blood alcohol readings with a Bluetooth breathalyzer in its app; the goal can be moderation or abstinence. It is reported to be available in all 50 states and is in-network with some insurers (including Anthem/BCBS, UnitedHealthcare/Optum, Oxford and Carelon), but not Medicaid. Ria does not publish self-pay prices; reviews report about $175 to $449 a month, and reviewers often mention billing and cancellation complaints. Two uncontrolled studies of Ria members, co-authored by company staff, reported lower breathalyzer readings among people who stayed in the program for 90 days, with about half still enrolled at 90 days in the first study; there is no randomized trial.",
   "primary_hubs": [
     "substance-use",
     "find-support"
@@ -32,8 +32,8 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
@@ -41,15 +41,35 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$350/month self-pay",
-    "notes": "Many insurance plans accepted. Self-pay available."
+    "starting_price": "Copay with insurance; self-pay reported at about $175–$449/month (not published by Ria)",
+    "notes": "Ria says cost depends on your insurance and the plan you choose; the self-pay range is from third-party reviews. Medication pharmacy costs may be separate (Ria estimates $25–$60/month for oral naltrexone).",
+    "sources": [
+      "https://riahealth.com/insurance/",
+      "https://www.choosingtherapy.com/ria-health-review/",
+      "https://riahealth.com/treatment/medications/naltrexone/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Substance use records have additional 42 CFR Part 2 protections."
+    "basis": {
+      "policy_url": "https://riahealth.com/privacy/",
+      "checked": "2026-10-27",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Policy (Aug 2025) says it does not sell personal information under the CCPA but uses advertising and targeting cookies on riahealth.com (not member sites); member health information falls under its HIPAA notice.",
+    "sources": [
+      "https://riahealth.com/privacy/",
+      "https://riahealth.com/ria-health-hipaa-privacy-notice/"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Ria Health: Review & Pricing | HeyPsych",
@@ -77,20 +97,52 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://www.riahealth.com",
-    "affiliate_url": "https://www.riahealth.com"
+    "affiliate_url": "https://www.riahealth.com",
+    "app_store_url": "https://apps.apple.com/us/app/ria-health/id6738706853",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.app.riaHealth"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Breathalyzer readings over the first 90 days on the Ria Treatment Platform",
+        "citation": {
+          "authors": "Mitchell MM, Mendelson J, Gryczynski J, Carswell SB, Schwartz RP",
+          "title": "A novel telehealth platform for alcohol use disorder treatment: preliminary evidence of reductions in drinking",
+          "journal": "The American Journal of Drug and Alcohol Abuse",
+          "year": 2020,
+          "doi": "10.1080/00952990.2019.1658197",
+          "url": "https://doi.org/10.1080/00952990.2019.1658197"
+        },
+        "outcome": "55% still in treatment at 90 days; among them average breathalyzer BAC fell about 50% (0.091 to 0.045). No control group; company-affiliated authors.",
+        "sample_size": 77,
+        "study_design": "Uncontrolled cohort (pre-post)"
+      },
+      {
+        "study": "Treatment retention and BAC change in a larger cohort of Ria members",
+        "citation": {
+          "authors": "Hallgren KA, Galloway GP, Witkiewitz K, Linde PR, Nix B, Mendelson JE",
+          "title": "Treatment retention and reductions in blood alcohol concentration (BAC) during the first 90 days of a telehealth program for alcohol use disorder",
+          "journal": "The American Journal of Drug and Alcohol Abuse",
+          "year": 2023,
+          "doi": "10.1080/00952990.2023.2175322",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/00952990.2023.2175322"
+        },
+        "outcome": "Reported falling daily peak BAC over 90 days among members; no control group; some authors employed by or hold equity in Ria.",
+        "study_design": "Retrospective cohort (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Alcohol use disorder",
-      "Medication-assisted treatment",
-      "Harm reduction",
-      "The Sinclair Method"
+      "Naltrexone and other anti-craving medication for alcohol use disorder",
+      "Video visits with a medical provider",
+      "Recovery coaching sessions",
+      "Breathalyzer tracking in the app",
+      "Drinking-less (moderation) or quitting goals"
     ]
   },
   "related_tools": [],
@@ -98,14 +150,17 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.riahealth.com",
-  "updated_at": "2026-09-02T06:10:49.778Z",
+  "updated_at": "2026-10-27T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Online alcohol treatment: medical team by video, medication, coaching and tracking. In-network with Anthem/BCBS, UnitedHealthcare/Optum, Oxford and Carelon; not Medicaid.",
+    "note": "Reported in all 50 states. In-network with Anthem/BCBS, UnitedHealthcare/Optum, Oxford and Carelon; not Medicaid.",
+    "checked": "2026-10-27",
     "sources": [
-      "https://riahealth.com/insurance/"
+      "https://riahealth.com/insurance/",
+      "https://riahealth.com/",
+      "https://www.choosingtherapy.com/ria-health-review/"
     ]
-  }
+  },
+  "patient_summary": "You meet a Ria doctor by video, who may prescribe medication such as naltrexone, and you have regular coaching sessions and check your blood alcohol with a connected breathalyzer in the Ria app. Your goal can be drinking less or stopping. Cost depends on your insurance; Ria does not publish self-pay prices."
 }

@@ -3,21 +3,20 @@
   "kind": "tool",
   "slug": "togetherall",
   "name": "Togetherall",
-  "one_liner": "Togetherall is an online peer support community for mental health, offering anonymous support, self-guided courses, and 24/7 clinical moderation.",
+  "one_liner": "Togetherall is an anonymous online peer community for mental health, moderated 24/7 by clinicians, available only through a sponsor.",
   "best_for": [
-    "People who want anonymous peer support for mental health",
-    "Those whose employer or school offers Togetherall",
-    "People who prefer community support over one-on-one therapy",
-    "Night owls needing 24/7 mental health support"
+    "Students and staff whose university or college offers Togetherall",
+    "Employees whose employer or EAP includes it",
+    "People who want anonymous peer support at any hour with clinicians watching for risk"
   ],
   "not_for": [
-    "Those in crisis needing immediate care (call 988)",
-    "People requiring clinical treatment or medication",
-    "Those without sponsored access (not available direct-to-consumer)"
+    "Anyone in crisis: call or text 988",
+    "US adults without a sponsoring school, employer or organisation (there is no way to pay for it yourself)",
+    "People who need one-to-one therapy or medication"
   ],
   "support_level": "self-help",
-  "short_description": "Togetherall is an online peer support community for mental health, offering anonymous support, self-guided courses, and 24/7 clinical moderation.",
-  "long_description": "Togetherall (formerly Big White Wall) is a clinically moderated online mental health community providing peer support 24/7. Users share experiences anonymously in forums and group support, complete self-guided courses, and access therapeutic tools. The community is moderated by trained Wall Guides who ensure safety and appropriate support. Togetherall is typically offered free through employers, colleges, or health plans. The anonymous format reduces stigma and encourages open discussion about mental health challenges. Clinical research shows participation improves well-being and reduces anxiety and depression symptoms.",
+  "short_description": "Anonymous mental health peer community with 24/7 clinical moderation. Free through universities, employers and health services; no individual plan.",
+  "long_description": "Togetherall (formerly Big White Wall) is an online peer support community for people 16 and over. Members are anonymous and share and respond to posts, with trained clinicians called Wall Guides moderating around the clock and stepping in if someone is at risk. It also offers self-guided courses and tools. Togetherall says there is no paid individual subscription: you get access free through a funding organisation such as a university or college, employer, health authority (including NHS areas in the UK) or professional body. In the US that mostly means colleges and some employers, so many people can't join on their own. One randomized trial of Big White Wall in England (2021) found no difference from an NHS information website, but only 17% of participants completed the main follow-up, so the result was inconclusive.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -28,7 +27,7 @@
     "major-depressive-disorder"
   ],
   "tool_types": [
-    "app"
+    "peer-support"
   ],
   "ai_attributes": [
     "no-ai"
@@ -42,16 +41,36 @@
   },
   "pricing": {
     "model": "enterprise",
-    "free_tier": true,
-    "starting_price": "Free through sponsor",
-    "notes": "Available through employers, colleges, and health plans. Not direct-to-consumer."
+    "free_tier": false,
+    "starting_price": "Free through a sponsoring university, employer or health service; no individual plan",
+    "notes": "Togetherall says there is currently no option for an individual paid subscription. Eligibility routes include post-secondary email, employer or organisation search, and in some areas post/zip code.",
+    "sources": [
+      "https://togetherall.com/en-gb/faqs/becoming-a-member-and-managing-your-profile/",
+      "https://togetherall.com/en-us/join/freeuniversitysupport/"
+    ],
+    "checked": "2026-10-27"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "Anonymous by design. Clinical moderation with strict privacy protocols."
+    "grade": "unknown",
+    "basis": {
+      "policy_url": "https://togetherall.com/en-ie/privacy-policy/",
+      "checked": "2026-10-27",
+      "sells_or_ads": "unknown",
+      "deletion": "yes",
+      "hipaa": "unknown",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "unknown",
+    "gdpr_compliant": "unknown",
+    "data_sold": "unknown",
+    "notes": "Members are anonymous to each other. Policy excerpts read do not say whether data is sold or used for ads; site cookies are also used for marketing. Data kept 8 years after account closure; deletion on request to theteam@togetherall.com, reviewed by the clinical team.",
+    "sources": [
+      "https://togetherall.com/en-ie/privacy-policy/",
+      "https://togetherall.com/en-us/cookies/",
+      "https://togetherall.com/en-us/faqs/safety-and-privacy/"
+    ]
   },
   "seo": {
     "title": "Togetherall: Review | HeyPsych",
@@ -79,20 +98,35 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-27"
   },
   "app_metadata": {
     "website": "https://togetherall.com",
     "affiliate_url": "https://togetherall.com"
   },
   "clinical_metadata": {
-    "evidence_based": true,
+    "evidence_based": false,
     "evidence_level": "moderate",
+    "clinical_trials": [
+      {
+        "study": "Big White Wall vs NHS Moodzone website for mild-to-moderate depression or anxiety (England)",
+        "citation": {
+          "authors": "Morriss R, et al.",
+          "title": "A Direct-to-Public Peer Support Program (Big White Wall) Versus Web-Based Information to Aid the Self-management of Depression and Anxiety: Results and Challenges of an Automated Randomized Controlled Trial",
+          "journal": "Journal of Medical Internet Research",
+          "year": 2021,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33890858/"
+        },
+        "outcome": "No difference between groups on well-being, depression or anxiety, but only 131 of 790 (16.6%) completed the primary outcome, so the trial could not test effectiveness. A correction was published in 2021.",
+        "sample_size": 790,
+        "study_design": "Randomized controlled trial (fully automated, single-blind)"
+      }
+    ],
     "primary_uses": [
-      "Peer support",
-      "Anonymous community",
-      "Self-guided courses",
-      "24/7 support"
+      "Anonymous peer support for anxiety, depression and stress",
+      "Talking with others at any hour, with clinicians moderating",
+      "Self-guided courses and tools",
+      "Student and workplace mental health support"
     ]
   },
   "related_tools": [],
@@ -100,6 +134,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://togetherall.com",
-  "updated_at": "2026-09-02T06:10:49.780Z",
-  "audience": "patient"
+  "updated_at": "2026-10-27T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You join under a username and post or read in an anonymous community where trained clinicians (Wall Guides) watch over conversations 24/7, with self-guided courses and tools. You can't pay for it yourself: access is free only if your university, employer, health service or other organisation pays for it. Check eligibility on Togetherall's join page with your school email, employer or zip/postcode.",
+  "availability": {
+    "state": "limited",
+    "note": "Only through a sponsor (universities, employers, health services such as NHS areas, some professional bodies); ages 16+. No individual paid plan, so many US adults cannot join.",
+    "checked": "2026-10-27",
+    "sources": [
+      "https://togetherall.com/en-gb/faqs/becoming-a-member-and-managing-your-profile/",
+      "https://togetherall.com/en-us/mental-health-services/college-students/"
+    ]
+  }
 }

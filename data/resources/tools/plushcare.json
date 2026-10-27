@@ -3,21 +3,21 @@
   "kind": "tool",
   "slug": "plushcare",
   "name": "PlushCare",
-  "one_liner": "PlushCare provides online doctor visits for primary care and mental health, with licensed providers available same-day for video appointments.",
+  "one_liner": "Online primary care doctors who can treat anxiety and depression and refill some medications, plus separate video talk therapy.",
   "best_for": [
-    "People wanting quick telehealth access for mental health concerns",
-    "Those seeking medication management for anxiety or depression",
-    "People with insurance covering PlushCare visits",
-    "Those who want combined primary care and mental health"
+    "Adults with mild to moderate anxiety or depression who want a primary care doctor to start or refill medication",
+    "People who want primary care and mental health care in one place",
+    "People who want video talk therapy alongside medical care"
   ],
   "not_for": [
-    "Those seeking in-depth psychotherapy (limited therapy focus)",
-    "People needing specialized psychiatric care",
-    "Those in crisis needing emergency care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "People who need a psychiatrist or complex medication management",
+    "People who need controlled substances such as ADHD stimulants or benzodiazepines",
+    "People who do not want a monthly membership fee"
   ],
   "support_level": "clinical",
-  "short_description": "PlushCare provides online doctor visits for primary care and mental health, with licensed providers available same-day for video appointments.",
-  "long_description": "PlushCare is a telehealth platform offering primary care, mental health services, and ongoing condition management through video appointments with licensed physicians. For mental health, PlushCare treats anxiety, depression, and other conditions with therapy and medication management. Same-day appointments are often available. PlushCare accepts many insurance plans, making visits affordable with copays typically $20-50. The platform is designed for convenient access to medical care without the wait times of traditional practices. PlushCare physicians can prescribe medications (including some controlled substances with limitations) and provide referrals.",
+  "short_description": "A US online primary care service whose doctors treat common mental health conditions with medication, plus separate video therapy; it has no psychiatrists.",
+  "long_description": "PlushCare is a telehealth primary care service; its clinicians work for affiliated physician-owned practices. For mental health, its primary care doctors can evaluate anxiety and depression and prescribe or refill some medications such as antidepressants, but PlushCare has no psychiatrists, its therapists do not prescribe, and it does not prescribe controlled substances. Talk therapy with a licensed therapist is a separate service at $169 per session self-pay. Doctor visits require a membership of $19.99 a month (not covered by insurance or HSA/FSA) plus your insurance rate or $129 per visit without insurance; medication and lab costs are extra. PlushCare was owned by Accolade (part of Transcarent from 2025) and became part of Fabric Labs on July 31, 2026; existing accounts carried over. No published study of PlushCare's mental health care was found.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -41,17 +41,38 @@
     "wearable": false
   },
   "pricing": {
-    "model": "insurance-covered",
+    "model": "subscription",
     "free_tier": false,
-    "starting_price": "Psychiatry $129 first, $99 follow-up; therapy $169 (self-pay); optional membership $19.99/month",
-    "notes": "Many insurance plans accepted. Self-pay memberships available."
+    "starting_price": "$19.99/month membership plus $129/visit self-pay or your insurance copay; therapy $169/session",
+    "notes": "Membership also sold at $149/year after a 30-day trial (per Inside Telehealth). The membership fee is not covered by most insurance and is not HSA/FSA eligible; medication and lab costs are separate. Visits can be billed to in-network insurance.",
+    "sources": [
+      "https://plushcare.com/about",
+      "https://plushcare.com/membership",
+      "https://plushcare.com/how-it-works",
+      "https://insidetelehealth.org/companies/plushcare/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant telehealth platform."
+    "basis": {
+      "policy_url": "https://plushcare.com/privacy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Says it does not sell personal information for money, but advertising partners' cookies track activity for targeted ads and its analytics sharing may count as a sale or share under state law; medical records fall under HIPAA.",
+    "sources": [
+      "https://plushcare.com/privacy",
+      "https://plushcare.com/consumer-health-data-privacy-policy"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "PlushCare: Review & Pricing | HeyPsych",
@@ -79,20 +100,22 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.plushcare.com",
-    "affiliate_url": "https://www.plushcare.com"
+    "affiliate_url": "https://www.plushcare.com",
+    "app_store_url": "https://apps.apple.com/us/app/plushcare-online-doctor/id955183607",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.plushcare.plushcare.prod"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Telehealth primary care",
-      "Mental health medication",
-      "Quick access care",
-      "Anxiety treatment"
+      "Starting or refilling antidepressants with a primary care doctor",
+      "Assessment of anxiety and depression by video",
+      "Video talk therapy with a licensed therapist",
+      "Primary care visits"
     ]
   },
   "related_tools": [],
@@ -100,14 +123,17 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.plushcare.com",
-  "updated_at": "2026-09-02T06:10:49.778Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Adults nationwide. Does not prescribe controlled substances. In-network with a limited set of plans; not Medicaid.",
+    "note": "Became part of Fabric Labs on July 31, 2026 (previously Accolade/Transcarent); existing accounts unaffected. No psychiatrists and no controlled-substance prescriptions.",
+    "checked": "2026-10-26",
     "sources": [
-      "https://www.choosingtherapy.com/plushcare-review/"
+      "https://plushcare.com/terms",
+      "https://plushcare.com/",
+      "https://insidetelehealth.org/companies/plushcare/"
     ]
-  }
+  },
+  "patient_summary": "You book a video visit with a PlushCare primary care doctor, who can assess anxiety or depression and prescribe or refill some non-controlled medications; talk therapy with a licensed therapist is booked separately. Doctor visits need a $19.99/month membership plus your insurance copay or $129 per visit; therapy is $169 per session self-pay."
 }

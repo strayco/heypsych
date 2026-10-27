@@ -3,22 +3,31 @@
   "kind": "tool",
   "slug": "doctor-on-demand-behavioral-health",
   "name": "Doctor On Demand Behavioral Health",
-  "one_liner": "Doctor On Demand Behavioral Health is a online therapy and virtual mental health care platform designed to support mental wellness.",
+  "one_liner": "The mental health side of Doctor On Demand: video therapy and psychiatry visits, with insurance or per-visit self-pay.",
   "best_for": [
-    "People seeking convenient online therapy or psychiatry",
-    "Those who prefer video sessions from home"
+    "Adults with mild to moderate anxiety or depression who want video therapy or psychiatry",
+    "People whose health plan or employer covers Doctor On Demand (often $0)",
+    "People who want to pay per visit with no membership",
+    "People who want mental health and medical visits in one app"
   ],
   "not_for": [
-    "Those in crisis who need immediate emergency care (call 988)",
-    "People who prefer in-person therapy exclusively"
+    "Anyone in crisis: call or text 988",
+    "People who need controlled substances such as ADHD stimulants or benzodiazepines",
+    "People with severe or complex conditions needing intensive or in-person care",
+    "People who want unlimited messaging with a therapist between sessions"
   ],
   "support_level": "clinical",
-  "short_description": "Doctor On Demand Behavioral Health is a online therapy and virtual mental health care platform designed to support your mental wellness journey.",
-  "long_description": "Doctor On Demand Behavioral Health is a online therapy and virtual mental health care platform. Doctor On Demand Behavioral Health offers comprehensive mental health support with easy-to-use features.",
+  "short_description": "Video therapy and psychiatry from Doctor On Demand by Included Health, billed to insurance or paid per visit.",
+  "long_description": "This is the mental health (behavioral health) service of Doctor On Demand, which Included Health now runs; it uses the same app, account and prices as Doctor On Demand's medical visits. You create a free account, then book a video visit with a licensed psychologist or therapist (from $134 for 25 minutes self-pay) or a psychiatrist ($299 for a 45-minute first visit, then $129 for 15-minute follow-ups); with insurance or employer coverage the cost is often $0. Mental health visits are by appointment and usually available within 1 to 2 days. The service is aimed at mild to moderate symptoms, and its clinicians do not prescribe controlled substances. No published study of Doctor On Demand's mental health service was found.",
   "primary_hubs": [
-    "find-support"
+    "find-support",
+    "anxiety-stress",
+    "mood-depression"
   ],
-  "conditions": [],
+  "conditions": [
+    "generalized-anxiety-disorder",
+    "major-depressive-disorder"
+  ],
   "tool_types": [
     "therapy-platform"
   ],
@@ -26,22 +35,44 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": false,
-    "android": false,
+    "ios": true,
+    "android": true,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "enterprise",
+    "model": "insurance-covered",
     "free_tier": false,
-    "notes": "Pricing information needs verification"
+    "starting_price": "Copay with insurance (often $0); $134/session therapy or $299 first psychiatry visit self-pay",
+    "notes": "Self-pay: therapy from $134 for 25 minutes; psychiatry $299 for a 45-minute first visit, then $129 for a 15-minute follow-up. Free account, no membership fee, no card needed to sign up; your exact price is shown before booking. Many health plans and employers cover visits.",
+    "sources": [
+      "https://doctorondemand.com/faqs/",
+      "https://doctorondemand.com/about-us/cost-insurance/",
+      "https://doctorondemand.com/online-psychiatry/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "unknown",
-    "hipaa_compliant": false,
-    "gdpr_compliant": true,
-    "data_sold": false
+    "basis": {
+      "policy_url": "https://includedhealth.com/legal/privacy/",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Included Health says it does not sell personal information, but its third-party cookies and analytics may count as a sale or share under state law (a Do Not Sell or Share link is offered); visit records fall under its HIPAA notice.",
+    "sources": [
+      "https://includedhealth.com/legal/privacy/",
+      "https://includedhealth.com/legal/npp/"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Doctor On Demand Behavioral Health: Review & Pricing",
@@ -65,21 +96,46 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
-    "website": "https://includedhealth.com",
-    "affiliate_url": "https://includedhealth.com"
+    "website": "https://doctorondemand.com/mental-health/",
+    "affiliate_url": "https://includedhealth.com",
+    "app_store_url": "https://apps.apple.com/us/app/doctor-on-demand/id591981144",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.doctorondemand.android.patient"
   },
   "clinical_metadata": {
-    "evidence_based": false,
-    "evidence_level": "emerging"
+    "evidence_based": true,
+    "evidence_level": "emerging",
+    "primary_uses": [
+      "Video therapy with a licensed psychologist or therapist",
+      "Psychiatric evaluation and medication management by video",
+      "Treatment of mild to moderate depression and anxiety",
+      "Urgent and primary care visits in the same app"
+    ]
   },
-  "related_tools": [],
+  "related_tools": [
+    "doctor-on-demand"
+  ],
   "related_conditions": [],
   "featured": false,
   "status": "active",
   "affiliate_url": "https://includedhealth.com",
-  "updated_at": "2026-09-02T05:18:37.212Z",
-  "audience": "patient"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "patient_summary": "You sign up free at Doctor On Demand (run by Included Health) and book a video visit with a therapist or psychiatrist, usually within 1 to 2 days. With insurance or employer coverage visits are often $0; self-pay therapy starts at $134 and a first psychiatry visit is $299.",
+  "sub_hubs": [
+    "psychiatry-platforms"
+  ],
+  "availability": {
+    "state": "available",
+    "note": "Run by Included Health; anyone can sign up free at doctorondemand.com or in the app, with or without insurance. Mental health visits are by appointment, usually within 1 to 2 days. No controlled substances.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://doctorondemand.com/faqs/",
+      "https://doctorondemand.com/mental-health/",
+      "https://doctorondemand.com/about-us/cost-insurance/"
+    ]
+  },
+  "merged_into": "doctor-on-demand"
 }

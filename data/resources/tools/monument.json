@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "monument",
   "name": "Monument",
-  "one_liner": "Monument provides virtual alcohol treatment with medication, therapy groups, and one-on-one coaching designed for people who want to change their relationship with alcohol.",
+  "one_liner": "Online alcohol treatment by video: a doctor can prescribe medication, plus therapy, mostly paid by insurance at about $25 a visit.",
   "best_for": [
-    "People wanting to change their relationship with alcohol",
-    "Those interested in community support through therapist-led groups",
-    "People seeking a modern, non-judgmental approach to alcohol treatment",
-    "Those wanting combined medication, therapy, and coaching"
+    "Adults who want to cut back or stop drinking with a doctor's help, without going to a clinic",
+    "People with in-network insurance (e.g. Cigna/Evernorth, Aetna, UnitedHealthcare/Optum) in a state Monument serves",
+    "People who want medication for alcohol plus optional therapy by video"
   ],
   "not_for": [
-    "Those requiring medical alcohol detox",
-    "People with severe withdrawal risk needing in-person monitoring",
-    "Those seeking treatment for substances other than alcohol"
+    "Anyone in crisis: call or text 988",
+    "People at risk of severe alcohol withdrawal (seizures, DTs) who need medically supervised detox",
+    "People outside the states Monument serves",
+    "People who want treatment for opioids or other drugs",
+    "People who want a phone app (care is through a web portal)"
   ],
   "support_level": "clinical",
-  "short_description": "Monument provides virtual alcohol treatment with medication, therapy groups, and one-on-one coaching designed for people who want to change their relationshi...",
-  "long_description": "Monument (formerly Tempest) is a virtual alcohol treatment platform offering medication management, therapist-led groups, and personal coaching. The program is designed for people who want to change their relationship with alcohol—whether that means quitting, cutting back, or exploring moderation. Physicians prescribe FDA-approved medications like naltrexone. Therapist-led groups provide community and CBT-based education. Personal coaches offer ongoing accountability and support. Monument accepts some insurance plans and offers affordable self-pay options. The approach is modern and non-judgmental, designed for people who don't identify with traditional 'alcoholic' labels.",
-  "patient_summary": "Monument is an online platform for alcohol treatment offering therapy, FDA-approved medications, physician consultations, and community support groups.",
+  "short_description": "Video visits with doctors and therapists for cutting back or stopping drinking; about $25 a visit with insurance or $100 self-pay, in some states.",
+  "long_description": "Monument (which took over Tempest's members) is a US telehealth practice that began as an online alcohol treatment program and now also advertises therapy and doctor visits for depression and everyday illnesses. For alcohol, you start with a video visit with a physician, who asks about your drinking and medical history and decides whether medication-assisted treatment is safe; therapy based on cognitive behavioral therapy and motivational interviewing can be added in 'Total Care' plans. Monument says most people pay $25 per video appointment with in-network insurance (it lists UnitedHealthcare/Optum, Cigna/Evernorth, Aetna and Medicare in some states) and $100 per session self-pay. An October 2026 review counted seven states. In 2024 the FTC and DOJ charged Monument with sending users' health information to Meta and Google for advertising from 2020 to 2022 without consent; a court order now bans it from sharing health data for advertising. No published study of Monument's own program was found.",
+  "patient_summary": "You sign up online, choose your state and insurance, and meet a doctor by video who checks whether medication for drinking is safe for you; therapy sessions can be added. With in-network insurance most visits cost about $25; without it a session is $100. It is only offered in some states, and it now also offers general therapy and doctor visits.",
   "primary_hubs": [
     "substance-use",
     "find-support"
@@ -33,24 +34,46 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": true,
-    "android": true,
+    "ios": false,
+    "android": false,
     "web": true,
     "desktop": false,
     "wearable": false
   },
   "pricing": {
-    "model": "subscription",
+    "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "$25 with insurance; support groups $14.99/month",
-    "notes": "Full programs $199-299/month. Some insurance accepted."
+    "starting_price": "$25/visit with in-network insurance; $100/session self-pay",
+    "notes": "Monument's homepage says most people pay $25 per video appointment with insurance; its FAQ gives a flat $100 per session self-pay rate. In-network carriers vary by state (UnitedHealthcare/Optum, Cigna/Evernorth, Aetna, Medicare listed). Older $14.99 community and $199–$299 monthly plans are no longer advertised.",
+    "sources": [
+      "https://joinmonument.com/",
+      "https://joinmonument.com/faq/",
+      "https://joinmonument.com/insurance/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Alcohol treatment records handled confidentially."
+    "basis": {
+      "policy_url": "https://joinmonument.com/notice-of-privacy-practices/",
+      "sells_or_ads": "unknown",
+      "deletion": "unknown",
+      "hipaa": "not-covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": "FTC/DOJ order, 2024: shared users' health data with Meta and Google for advertising without consent (2020–2022); now banned from sharing health data for ads",
+      "regulatory_source": "https://www.ftc.gov/news-events/news/press-releases/2024/04/alcohol-addiction-treatment-firm-will-be-banned-disclosing-health-data-advertising-settle-ftc",
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "no",
+    "gdpr_compliant": "unknown",
+    "data_sold": "unknown",
+    "notes": "FTC/DOJ 2024 order after Monument sent health data to ad platforms; its notice says it no longer discloses health information for advertising and that it is not a HIPAA covered entity but voluntarily follows HIPAA. Website policy on ad cookies and deletion not confirmed.",
+    "sources": [
+      "https://joinmonument.com/notice-of-privacy-practices/",
+      "https://www.ftc.gov/news-events/news/press-releases/2024/04/alcohol-addiction-treatment-firm-will-be-banned-disclosing-health-data-advertising-settle-ftc",
+      "https://www.ftc.gov/legal-library/browse/cases-proceedings/2323043-monument-inc-us-v"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Monument: Online Alcohol Treatment with Therapy & Medication",
@@ -78,7 +101,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://joinmonument.com",
@@ -86,12 +109,12 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Alcohol use disorder",
-      "Medication-assisted treatment",
-      "Group therapy",
-      "Alcohol moderation"
+      "Medication to reduce drinking, prescribed by video",
+      "Therapy for cutting back or quitting alcohol (CBT, motivational interviewing)",
+      "Using insurance for online alcohol treatment",
+      "General therapy and doctor visits in some states"
     ]
   },
   "related_tools": [],
@@ -99,14 +122,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://joinmonument.com",
-  "updated_at": "2026-09-02T06:10:49.776Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
-    "state": "available",
-    "checked": "2026-10-23",
-    "note": "Online alcohol treatment: physician-led medication, therapists who specialise in substance use, 60+ moderated groups. Took over Tempest's members.",
+    "state": "limited",
+    "note": "Only in some US states (a review checked in October 2026 counted seven); pick your state at sign-up. Took over Tempest's members.",
+    "checked": "2026-10-26",
     "sources": [
-      "https://joinmonument.com/?p=11929"
+      "https://app.joinmonument.com/patient/signup",
+      "https://www.choosingtherapy.com/monument-review/"
     ]
   }
 }

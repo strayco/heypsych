@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "lifestance-health",
   "name": "LifeStance Health",
-  "one_liner": "LifeStance Health is one of the largest outpatient mental health providers in the US with 550+ locations across 33 states, offering in-person and virtual therapy and psychiatry.",
+  "one_liner": "In-person and video therapy and psychiatry from a large US group practice in 33 states, mostly billed to your insurance.",
   "best_for": [
-    "People wanting in-person therapy at local clinics",
-    "Those seeking combined therapy and psychiatry services",
-    "People with commercial insurance seeking in-network care",
-    "Those preferring hybrid in-person and virtual appointments"
+    "People who want to see a therapist or psychiatrist in person, with video as an option",
+    "People with commercial insurance who want in-network care",
+    "Families looking for care for children and teens as well as adults",
+    "People who want therapy and medication management in the same practice"
   ],
   "not_for": [
-    "Those in crisis needing immediate emergency care (call 988)",
-    "People in states without LifeStance locations",
-    "Those seeking specialized inpatient or residential treatment"
+    "Anyone in crisis: call or text 988",
+    "People in states where LifeStance has no clinicians",
+    "People who need inpatient, residential or intensive programs",
+    "Self-pay patients who want a clear published price up front"
   ],
   "support_level": "clinical",
-  "short_description": "LifeStance Health is one of the largest outpatient mental health providers in the US with 550+ locations across 33 states, offering therapy and psychiatry.",
-  "long_description": "LifeStance Health is one of the largest outpatient mental health companies in the United States, operating over 550 centers across 33 states with 7,400+ clinicians including psychiatrists, psychologists, and therapists. For patients, LifeStance offers convenient access to mental health care with both in-person visits and telehealth options. The company accepts most major commercial insurance plans for therapy, psychiatry, and medication management services. LifeStance treats anxiety, depression, ADHD, bipolar disorder, and other conditions across the lifespan including children, teens, and adults. Appointments can typically be scheduled within 1-2 weeks. The large clinic network means many patients can find a local LifeStance location for in-person care when preferred.",
-  "patient_summary": "LifeStance Health has 550+ mental health clinics across 33 states offering therapy and psychiatry. Both in-person and video appointments available. Most commercial insurance accepted.",
+  "short_description": "A large outpatient group practice offering in-person and video therapy and psychiatry for all ages in 33 US states.",
+  "long_description": "LifeStance Health is a US outpatient mental health company; it and its supported practices report more than 550 centers in 33 states. You choose a psychologist, therapist, psychiatrist or psychiatric nurse practitioner from its directory and meet in person or by video (telehealth clinicians must be licensed in the state you are in). It is in network with many commercial plans; self-pay estimates vary by state, for example $210 to $432 for a psychiatry visit, and uninsured patients can ask for a Good Faith Estimate. In April 2026 LifeStance released its own analysis of about 180,000 patients reporting that most improved on PHQ-9 and GAD-7 scores, but this is a company report, not a peer-reviewed or controlled study. Clinical records are covered by its HIPAA notice; in a class action over Meta and Google tracking pixels on its website (2020 to 2023), it settled for $3 million without admitting wrongdoing and agreed to stop using those tracking tools.",
+  "patient_summary": "You search LifeStance's directory for a therapist or psychiatrist near you, then see them in an office or by video. Most people pay their insurance copay; self-pay rates vary by state and are quoted by your local office (psychiatry visits run roughly $210 to $432).",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -41,8 +42,8 @@
     "no-ai"
   ],
   "platforms": {
-    "ios": true,
-    "android": true,
+    "ios": false,
+    "android": false,
     "web": true,
     "desktop": false,
     "wearable": false
@@ -50,15 +51,37 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Copay with insurance",
-    "notes": "Accepts most commercial insurance plans. Copays typically $20-60/session depending on plan. Self-pay rates available."
+    "starting_price": "Copay with insurance; self-pay about $210–$432/session for psychiatry (varies by state)",
+    "notes": "Self-pay rates are estimates set by state and location; LifeStance state pages from October 2024 list therapy at $213–$522 per visit in Ohio and $204–$375 in Oregon. Estimates exclude deductibles and coinsurance; uninsured patients can request a Good Faith Estimate. Call the local office for an exact price.",
+    "sources": [
+      "https://lifestance.com/self-pay/",
+      "https://lifestance.com/insurance/",
+      "https://lifestance.com/insurance/oh/",
+      "https://lifestance.com/insurance/or/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant healthcare provider. Medical records protected by HIPAA regulations."
+    "basis": {
+      "policy_url": "https://lifestance.com/online-privacy-policy/",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Says it does not sell personal information, but its website policy describes marketing cookies for personalized ads elsewhere; settled a $3M class action (no admission) over Meta and Google pixels on its site from 2020 to 2023. Clinical records fall under its HIPAA notice.",
+    "sources": [
+      "https://lifestance.com/online-privacy-policy/",
+      "https://lifestance.com/privacy-policy/",
+      "https://www.classaction.org/news/class-action-alleges-lifestance-health-discloses-web-visitors-info-to-facebook-google"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "LifeStance Health: Therapy & Psychiatry | HeyPsych",
@@ -86,7 +109,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-09-02"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://lifestance.com",
@@ -94,12 +117,13 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Individual therapy",
-      "Psychiatry and medication management",
-      "Anxiety and depression treatment",
-      "Child and adolescent mental health"
+      "In-person or video therapy",
+      "Psychiatric evaluation and medication management",
+      "Child and adolescent mental health care",
+      "Psychological testing and assessment where offered",
+      "TMS for treatment-resistant depression at some locations"
     ]
   },
   "related_tools": [],
@@ -107,6 +131,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://lifestance.com",
-  "updated_at": "2026-09-02T05:18:37.215Z",
-  "audience": "patient"
+  "updated_at": "2026-10-26T00:00:00.000Z",
+  "audience": "patient",
+  "availability": {
+    "state": "limited",
+    "note": "In-person and telehealth care in 33 US states only; LifeStance reports more than 550 centers.",
+    "checked": "2026-10-26",
+    "sources": [
+      "https://www.prnewswire.com/news-releases/lifestance-publishes-outcomes-data-validating-the-benefit-of-mental-health-treatment-at-scale-302737404.html",
+      "https://lifestance.com/insurance/"
+    ]
+  }
 }

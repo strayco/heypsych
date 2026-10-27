@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "amwell",
   "name": "Amwell",
-  "one_liner": "Amwell provides telehealth psychiatry and therapy covered by most major insurance plans, with appointments often available within days.",
+  "one_liner": "Video therapy and psychiatry visits through Amwell's app or website, billed to one of 55+ health plans or paid per visit.",
   "best_for": [
-    "People whose insurance or employer covers Amwell telehealth",
-    "Those needing psychiatry appointments faster than traditional wait times",
-    "People seeking combined medication management and therapy",
-    "Those in health system networks that partner with Amwell"
+    "People whose health plan or employer covers Amwell visits",
+    "Adults who want video psychiatry for medication management",
+    "Parents looking for video therapy for a child aged 10 to 17",
+    "People who want to pay per visit with no subscription"
   ],
   "not_for": [
-    "Those in psychiatric emergency (call 988 or go to ER)",
-    "People requiring in-person evaluation",
-    "Those without insurance seeking lowest-cost options"
+    "Anyone in crisis: call or text 988",
+    "People who want in-person care",
+    "People looking for the lowest self-pay price, since prices are not published up front",
+    "People who need intensive or inpatient treatment"
   ],
   "support_level": "clinical",
-  "short_description": "Amwell provides telehealth psychiatry and therapy covered by most major insurance plans, with appointments often available within days.",
-  "long_description": "Amwell is a leading telehealth platform offering psychiatry and therapy services across all 50 states. The platform connects patients with board-certified psychiatrists for medication management and licensed therapists for counseling. Amwell partners with major health systems and insurance plans, making it widely accessible through employer benefits. Services cover anxiety, depression, bipolar disorder, PTSD, ADHD, and other mental health conditions. Most insurance plans cover Amwell with standard copays. Self-pay options available. Appointments typically available within 3-7 days. The Amwell platform includes Amwell Psychiatric Care (formerly SilverCloud) for digital CBT programs.",
-  "patient_summary": "Enterprise telehealth platform serving health systems, insurers, and employers with white-label virtual care solutions, including behavioral health and psychiatry.",
+  "short_description": "Telehealth video therapy and psychiatry, plus urgent care, billed to many health plans or paid per visit.",
+  "long_description": "Amwell is a telehealth company whose clinicians (Amwell Medical Group) offer video therapy and psychiatry across all 50 states and DC; many health plans and employers also offer Amwell under their own branding. You sign up free, choose a clinician licensed in your state and book a visit; children aged 10 to 17 can see a therapist through a parent's account with consent. Initial psychiatry visits last 45 minutes and follow-ups 15 minutes. Amwell's own pages do not print self-pay prices; a third-party review in October 2026 reported $109 to $142 per therapy session and $292 for a first psychiatry visit, while other reviews report lower figures. In January 2025 Amwell sold its hospital-focused Amwell Psychiatric Care business to Avel eCare but kept therapy, psychiatry and its SilverCloud digital programs in its medical group. No published study of Amwell's own therapy or psychiatry service was found.",
+  "patient_summary": "You create a free Amwell account with your name, state and birthdate, then book a video visit with a therapist or psychiatrist licensed in your state. You pay your plan's copay if Amwell is covered, or a per-visit self-pay price (reported at about $109 to $142 for therapy and $292 for a first psychiatry visit); there is no subscription.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -50,15 +51,34 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Therapy $109–$129/session; psychiatry $279 first visit (self-pay); insurance accepted",
-    "notes": "Most access through insurance. Self-pay available but pricing varies by service."
+    "starting_price": "Copay with insurance; about $109–$142/session therapy or $292 first psychiatry visit self-pay",
+    "notes": "Self-pay prices from a third-party review (October 2026): psychiatry follow-up $109 for 15 minutes or $169 for 30 minutes. Other reviews report lower prices ($99 therapy, $199 first psychiatry visit). Amwell's own pages do not publish self-pay prices. No subscription or sign-up fee; accepts insurance from 55+ health plans.",
+    "sources": [
+      "https://www.choosingtherapy.com/amwell-review/",
+      "https://patients.amwell.com/services/online-psychiatry/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. NYSE-listed company with enterprise healthcare security. Partners with major health systems."
+    "basis": {
+      "policy_url": "https://business.amwell.com/company/privacy-policy",
+      "checked": "2026-10-26",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "no",
+    "notes": "Says it does not sell personal information, but lets third parties use some data to show you tailored online ads (opt-out available); offers deletion requests. Visit records are covered by the Amwell Medical Group HIPAA notice.",
+    "sources": [
+      "https://business.amwell.com/company/privacy-policy",
+      "https://patients.amwell.com/notices/notice-of-privacy-practices"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Amwell: Enterprise Telehealth Platform for Health Systems",
@@ -86,20 +106,22 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.amwell.com",
-    "affiliate_url": "https://www.amwell.com"
+    "affiliate_url": "https://www.amwell.com",
+    "app_store_url": "https://apps.apple.com/us/app/amwell-doctor-visits-24-7/id655783752",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.americanwell.android.member.amwell"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Telehealth psychiatry",
-      "Online therapy",
-      "Medication management",
-      "Digital mental health"
+      "Video therapy with a licensed therapist",
+      "Psychiatric evaluation and medication management by video",
+      "Therapy for children aged 10 to 17 with parental consent",
+      "Urgent care visits by video"
     ]
   },
   "related_tools": [],
@@ -107,14 +129,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.amwell.com",
-  "updated_at": "2026-09-02T06:10:49.769Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Therapy for ages 10+, psychiatry for adults, plus urgent and primary care. 55+ plans.",
+    "note": "All 50 states and DC. Therapy from age 10 (minors through a parent's account). Amwell sold its hospital psychiatric service to Avel eCare in 2025; consumer visits continue through Amwell Medical Group.",
+    "checked": "2026-10-26",
     "sources": [
-      "https://www.choosingtherapy.com/best-online-therapy-platforms-that-take-insurance/"
+      "https://patients.amwell.com/services/online-therapy",
+      "https://patients.amwell.com/faq/can-my-kids-see-a-therapist-on-amwell/",
+      "https://www.healthcaredive.com/news/amwell-sells-virtual-psychiatric-care-business-avel-ecare/736962/"
     ]
   }
 }

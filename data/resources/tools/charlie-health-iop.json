@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "charlie-health-iop",
   "name": "Charlie Health IOP",
-  "one_liner": "Charlie Health provides virtual intensive outpatient programs (IOP) for teens and young adults with serious mental health needs, often covered by insurance.",
+  "one_liner": "Virtual intensive outpatient program (IOP): about 9–12 hours a week of group, individual and family therapy by video, ages 8–64.",
   "best_for": [
-    "Teens and young adults needing more than weekly therapy",
-    "Families seeking insurance-covered intensive outpatient programs",
-    "Those stepping down from inpatient/residential treatment",
-    "Parents of teens struggling with depression, self-harm, or eating disorders"
+    "Kids, teens and adults whose symptoms need more than one therapy session a week but not a hospital stay",
+    "People stepping down from inpatient or residential treatment",
+    "Families who want family therapy built into treatment",
+    "People with commercial insurance, or Medicaid in a state where Charlie Health takes it"
   ],
   "not_for": [
-    "Those in acute psychiatric crisis requiring hospitalization",
-    "Adults over 30 (program focuses on youth)",
-    "Those who cannot commit to 3+ hours daily of treatment"
+    "Anyone in crisis or at immediate risk: call 911, or call or text 988",
+    "People who need 24-hour supervision, detox or hospitalization",
+    "People who can't commit about 9+ hours a week for several weeks (insurers may stop covering below that)",
+    "People looking for occasional or weekly therapy only"
   ],
   "support_level": "clinical",
-  "short_description": "Charlie Health provides virtual intensive outpatient programs (IOP) for teens and young adults with serious mental health needs, often covered by insurance.",
-  "long_description": "Charlie Health offers virtual intensive outpatient programs (IOP) and partial hospitalization programs (PHP) for adolescents, teens, and young adults (ages 11-30) dealing with serious mental health challenges. Programs address depression, anxiety, trauma, suicidal ideation, self-harm, eating disorders, and substance use. Treatment includes 3+ hours daily of group therapy, individual therapy, and family sessions—all via secure video. Most commercial insurance covers Charlie Health, with many families paying $0 out-of-pocket. The model fills the gap between weekly outpatient therapy and residential treatment. Clinicians are licensed in all 50 states with specialized training in adolescent and young adult care.",
-  "patient_summary": "Charlie Health is a virtual intensive outpatient program (IOP) for adolescents, young adults, and families dealing with serious mental health conditions.",
+  "short_description": "Virtual intensive outpatient program (IOP) for serious mental health or substance use needs: more than weekly therapy, less than residential.",
+  "long_description": "Charlie Health runs a virtual intensive outpatient program (IOP), a level of care between weekly outpatient therapy and residential or inpatient treatment. Its site describes 10+ hours of care a week, typically across three days, made up of three group sessions, one individual session and one family session a week, with medication management if needed; programs typically last 6 to 12 weeks. It serves ages 8 to 64 (substance use care from 13) in about 40 states and works with 600+ insurance plans, plus Medicaid in some states. It publishes no self-pay rate. Charlie Health staff have published several uncontrolled quality-improvement analyses of their own patients in JMIR Formative Research; there are no randomized trials of the program.",
+  "patient_summary": "Charlie Health is a step above weekly therapy: you join a virtual intensive outpatient program with about three group sessions a week plus individual and family therapy, usually for several weeks, from home by video. You start with a call to admissions, who check whether your insurance covers it; most patients use commercial insurance or Medicaid in some states, and self-pay is offered only in some states by estimate.",
   "primary_hubs": [
     "mood-depression",
     "anxiety-stress",
@@ -46,15 +47,35 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Insurance (most pay $0 out of pocket); self-pay by estimate",
-    "notes": "Most commercial insurance covers IOP. Self-pay options available."
+    "starting_price": "Copay with insurance; no published self-pay rate",
+    "notes": "Works with 600+ insurance plans and Medicaid in states where IOP is covered. Self-pay offered only in select states, with payment plans; ask admissions for an estimate. Coverage may stop if attendance drops below about 9 hours a week.",
+    "sources": [
+      "https://www.charliehealth.com/insurance",
+      "https://www.charliehealth.com/faqs",
+      "https://www.choosingtherapy.com/charlie-health-review/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant. Specialized privacy protections for minors."
+    "basis": {
+      "policy_url": "https://www.charliehealth.com/privacy-policy",
+      "sells_or_ads": "yes",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "gdpr_compliant": "unknown",
+    "data_sold": "unknown",
+    "notes": "Policy says it discloses some personal information to advertising partners for targeted advertising (opt-out form offered) while also saying it does not sell it; deletion rights depend on your state. Treatment records fall under its HIPAA notice and 42 CFR Part 2.",
+    "sources": [
+      "https://www.charliehealth.com/privacy-policy",
+      "https://www.charliehealth.com/hipaa-notice-of-privacy-practices"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Charlie Health: Virtual IOP for Teens & Young Adults",
@@ -82,7 +103,7 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.charliehealth.com",
@@ -90,12 +111,55 @@
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Outcomes for youth with public vs private insurance in Charlie Health's virtual IOP",
+        "citation": {
+          "authors": "Gliske K, Berry KR, Ballard J, Evans-Chase M, Solomon PL, Fenkel C",
+          "title": "Mental Health Outcomes for Youths With Public Versus Private Health Insurance Attending a Telehealth Intensive Outpatient Program: Quality Improvement Analysis",
+          "journal": "JMIR Formative Research",
+          "year": 2022,
+          "doi": "10.2196/41721",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36355428/"
+        },
+        "outcome": "Youth on public and private insurance engaged at similar rates and had similar improvements in depression, suicidality and self-harm scores; no control group; company-funded.",
+        "sample_size": 495,
+        "study_design": "Quality improvement analysis (uncontrolled pre-post)"
+      },
+      {
+        "study": "Predicting engagement in Charlie Health's remote IOP",
+        "citation": {
+          "authors": "Gliske K, Berry KR, Ballard J, Schmidt C, Kroll E, Kohlmeier J, Killian M, Fenkel C",
+          "title": "Predicting Youth and Young Adult Treatment Engagement in a Transdiagnostic Remote Intensive Outpatient Program: Latent Profile Analysis",
+          "journal": "JMIR Formative Research",
+          "year": 2023,
+          "doi": "10.2196/47917",
+          "url": "https://formative.jmir.org/2023/1/e47917"
+        },
+        "outcome": "Grouped about 2,900 discharged clients by intake acuity to study engagement; company-authored.",
+        "study_design": "Quality improvement analysis (uncontrolled)"
+      },
+      {
+        "study": "Mental health emergency department visits after Charlie Health's remote IOP",
+        "citation": {
+          "authors": "Gliske K, Ballard J, Berry KR, Killian M, Kroll E, Fenkel C",
+          "title": "Reduction of Mental Health-Related Emergency Department Admissions for Youth and Young Adults Following a Remote Intensive Outpatient Program: Quality Improvement Analysis",
+          "journal": "JMIR Formative Research",
+          "year": 2023,
+          "doi": "10.2196/47895",
+          "url": "https://doi.org/10.2196/47895"
+        },
+        "outcome": "Reported fewer mental health ED visits after treatment than before; no control group; company-authored.",
+        "study_design": "Quality improvement analysis (uncontrolled pre-post)"
+      }
+    ],
     "primary_uses": [
-      "Teen depression treatment",
-      "Adolescent IOP",
-      "Young adult mental health",
-      "Family therapy"
+      "Intensive outpatient care for depression, anxiety and trauma",
+      "Support after self-harm or suicidal thoughts when hospitalization isn't needed",
+      "Step-down care after inpatient or residential treatment",
+      "Family therapy alongside group and individual therapy",
+      "Substance use treatment (ages 13+)"
     ]
   },
   "related_tools": [],
@@ -103,13 +167,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.charliehealth.com",
-  "updated_at": "2026-09-02T06:10:49.772Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
-    "state": "available",
-    "checked": "2026-10-23",
-    "note": "Virtual intensive outpatient program, ages 8–64 (substance use 13+): about 9–12 hours a week of groups plus individual and family therapy for 9–12 weeks, medication management if needed. 600+ plans, Tricare and Medicaid in some states; 40 states.",
+    "state": "limited",
+    "note": "Virtual IOP in about 40 US states, ages 8–64 (substance use 13+); about 9–12 hours a week for roughly 6–12 weeks. Medicaid only in some states.",
+    "checked": "2026-10-26",
     "sources": [
+      "https://www.charliehealth.com/how-it-works/iop",
+      "https://www.charliehealth.com/faqs",
       "https://www.choosingtherapy.com/charlie-health-review/"
     ]
   }

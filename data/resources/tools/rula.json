@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "rula",
   "name": "Rula",
-  "one_liner": "Rula connects you with licensed therapists and psychiatrists who accept your insurance, with average wait times under 5 days.",
+  "one_liner": "Get matched with an in-network therapist or psychiatric prescriber for video sessions and pay your insurance copay (Rula says about $15 on average).",
   "best_for": [
-    "People who need to see a therapist quickly",
-    "Those wanting both therapy and psychiatry options",
-    "People with insurance seeking in-network care",
-    "Those frustrated by long wait times elsewhere"
+    "People with commercial insurance who want a video therapy appointment soon",
+    "People who want therapy and medication management in one practice",
+    "Families seeking therapy for children (from age 5) or psychiatry for teens (from 13)",
+    "Uninsured people who want a flat, published self-pay rate"
   ],
   "not_for": [
-    "Those requiring in-person sessions only",
-    "People seeking specialized treatment (availability varies)",
-    "Those in crisis needing immediate care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "People who want in-person sessions",
+    "Uninsured people on a tight budget (self-pay therapy is $150 a session)",
+    "People who do not want their data shared with advertising partners"
   ],
   "support_level": "clinical",
-  "short_description": "Rula connects you with licensed therapists and psychiatrists who accept your insurance, with average wait times under 5 days.",
-  "long_description": "Rula (formerly Path Mental Health) is a mental health platform focused on fast access to care. The platform connects patients with licensed therapists and psychiatrists who take their insurance, with an emphasis on reducing wait times—averaging under 5 days for first appointments. Rula handles insurance verification, matching, and scheduling to simplify the process. The platform offers both therapy and psychiatry for comprehensive care. Available nationwide with providers in most states. Rula's operational efficiency helps more people access mental health care when they need it.",
-  "patient_summary": "Rula (formerly Path Mental Health) offers flat per-session rates for therapists and psychiatrists, with e-prescribing capabilities and weekly direct deposit payments.",
+  "short_description": "A virtual group practice of in-network therapists and prescribers; you book a video session and pay your copay or a flat self-pay rate.",
+  "long_description": "Rula (formerly Path Mental Health) is a US virtual mental health practice whose therapists and psychiatric prescribers work through affiliated medical groups rather than as independent listings. You enter your insurance, answer some questions, choose from matched clinicians and book a video session. Therapy is available from age 5 and psychiatry from age 13 in all 50 states and DC. Rula accepts major commercial plans (including Aetna, Anthem, many Blue Cross Blue Shield plans, Cigna, Optum, Oscar and UnitedHealthcare) and select Medicare Advantage and Medicaid managed care plans in some states. Rula says patients typically pay about $15 a session with insurance; deductible amounts are billed a few weeks later. Self-pay is $150 per individual therapy session, $165 for couples or family sessions, $225 for a psychiatry intake and $175 for a psychiatry follow-up. Missed appointments cost $99 (therapy) or $150 (psychiatry). Rula's privacy policy says it does not sell personal information for money but shares some data with advertising partners for targeted ads.",
+  "patient_summary": "You check your insurance on Rula, get matched with a licensed therapist or psychiatric prescriber in its group practice, and meet by video. With insurance you pay your copay or coinsurance (Rula says patients typically pay about $15 a session); without coverage therapy is $150 a session and a psychiatry intake is $225.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -40,7 +41,7 @@
     "ai-matching"
   ],
   "platforms": {
-    "ios": true,
+    "ios": false,
     "android": true,
     "web": true,
     "desktop": false,
@@ -49,15 +50,34 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Insurance (average copay about $15); self-pay from $150/session",
-    "notes": "Most major insurance accepted."
+    "starting_price": "Copay with insurance (Rula says ~$15/session average); $150/session self-pay",
+    "notes": "Self-pay: $150 individual therapy, $165 couples or family, $225 psychiatry intake, $175 psychiatry follow-up. Deductible amounts are billed 3–4 weeks after the visit. Missed-appointment fees $99 (therapy) and $150 (psychiatry), not covered by insurance. HSA/FSA accepted.",
+    "sources": [
+      "https://www.rula.com/how-much-does-therapy-cost/",
+      "https://www.rula.com/faq/",
+      "https://www.choosingtherapy.com/rula-health-review/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant healthcare platform."
+    "basis": {
+      "policy_url": "https://www.rula.com/privacy-policy/",
+      "sells_or_ads": "yes",
+      "deletion": "yes",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "data_sold": "no",
+    "notes": "Says it does not sell personal information for money but shares some with advertising partners for cross-context (targeted) ads, with an opt-out; you can request deletion (medical and billing records excepted); care records fall under the affiliated medical groups' HIPAA notice.",
+    "sources": [
+      "https://www.rula.com/privacy-policy/",
+      "https://www.rula.com/privacy-notice-ca-residents/"
+    ],
+    "grade": "C"
   },
   "seo": {
     "title": "Rula: Flat Per-Session Pay for Therapists & Psychiatrists",
@@ -85,20 +105,21 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.rula.com",
-    "affiliate_url": "https://www.rula.com"
+    "affiliate_url": "https://www.rula.com",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.rula.patientapp"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "moderate",
+    "evidence_level": "emerging",
     "primary_uses": [
-      "Individual therapy",
-      "Psychiatry",
-      "Medication management",
-      "Fast access mental health care"
+      "Weekly video therapy with an in-network therapist",
+      "Psychiatric evaluation and medication management (age 13+)",
+      "Child and family therapy (age 5+)",
+      "Couples therapy"
     ]
   },
   "related_tools": [],
@@ -106,14 +127,15 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.rula.com",
-  "updated_at": "2026-09-02T06:10:49.778Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Therapy and psychiatry by video or in person in all 50 states; 170+ plans including Medicare and Medicaid in select states. Therapy from age 5, psychiatry from 13.",
+    "checked": "2026-10-26",
+    "note": "US only, all 50 states and DC; therapy from age 5, psychiatry from age 13. Select Medicare Advantage and Medicaid managed care plans in some states.",
     "sources": [
-      "https://www.rula.com/blog/brightside-alternatives/"
+      "https://patientsupport.rula.com/hc/en-us/articles/31159841879323-Getting-started-with-Rula-Eligibility-and-care-options",
+      "https://www.rula.com/faq/"
     ]
   }
 }

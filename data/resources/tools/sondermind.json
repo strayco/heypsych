@@ -3,22 +3,23 @@
   "kind": "tool",
   "slug": "sondermind",
   "name": "SonderMind",
-  "one_liner": "SonderMind matches you with licensed therapists who take your insurance, offering personalized matching and easy scheduling for video or in-person sessions.",
+  "one_liner": "Get matched with an in-network therapist or psychiatric prescriber for video or in-person sessions and pay your insurance copay.",
   "best_for": [
-    "People wanting personalized therapist matching",
-    "Those seeking in-network insurance coverage",
-    "People who value having in-person therapy as an option",
-    "Those wanting data-driven therapist matching"
+    "People with commercial insurance or Medicare who want to be matched rather than browse",
+    "People who want the option of in-person sessions",
+    "People who want therapy and medication management from one service",
+    "People who like tracking progress with regular questionnaires"
   ],
   "not_for": [
-    "Those requiring psychiatric medication management",
-    "People seeking couples therapy in all areas (availability varies)",
-    "Those in crisis needing immediate care (call 988)"
+    "Anyone in crisis: call or text 988",
+    "People with Medicaid (not accepted, and self-pay is not offered to them)",
+    "People who need a sliding-scale fee",
+    "People who want text-based or messaging-only therapy"
   ],
   "support_level": "clinical",
-  "short_description": "SonderMind matches you with licensed therapists who take your insurance, offering personalized matching and easy scheduling for video or in-person sessions.",
-  "long_description": "SonderMind is a mental health platform that matches patients with in-network therapists based on needs, preferences, and insurance coverage. The platform's matching algorithm considers specialty, approach, personality, and schedule to find appropriate therapist fits. SonderMind works with most major insurance plans for affordable care. Patients can choose video or in-person sessions where available. The platform has grown rapidly, with thousands of therapists across most US states. SonderMind handles insurance verification, billing, and scheduling to simplify access to care.",
-  "patient_summary": "SonderMind is a free-to-join therapist network with VA partnership, AI-powered patient matching, measurement-based care emphasis, and no-show reimbursement for insured clients.",
+  "short_description": "A matching service for in-network therapists and prescribers; you book a session and pay your copay or a published self-pay rate.",
+  "long_description": "SonderMind is a US service that matches you with licensed therapists and psychiatric prescribers who are in network with your insurance, for video or in-person sessions in all 50 states and DC. Therapy is offered for individuals, couples, families, teens and children with select providers; minors need a parent or guardian on the account. It accepts most major commercial plans, Medicare and Medicare Advantage, but not Medicaid. With insurance you pay your plan's cost-share. Self-pay prices are listed by state and range from about $50 to $180 a session depending on session length and the clinician's credentials; there is no sliding scale, and cancelling within 24 hours can cost up to the full session fee. Clients fill out regular symptom questionnaires that their therapist can review (measurement-based care). Researchers working with SonderMind have published observational studies of its clients, but no controlled trial. Whether its privacy policy allows sharing data for advertising could not be confirmed in this review.",
+  "patient_summary": "You answer questions about what you need and your insurance, and SonderMind matches you with licensed therapists or psychiatric prescribers for video or in-person sessions. With insurance you pay your plan's copay or coinsurance; without it, self-pay prices are shown by state and run about $50 to $180 a session. SonderMind accepts Medicare but not Medicaid.",
   "primary_hubs": [
     "find-support",
     "anxiety-stress",
@@ -44,15 +45,35 @@
   "pricing": {
     "model": "insurance-covered",
     "free_tier": false,
-    "starting_price": "Insurance copay $0–$55; self-pay $45–$183/session",
-    "notes": "Most major insurance accepted. Self-pay available."
+    "starting_price": "Copay with insurance; about $50–$180/session self-pay",
+    "notes": "Self-pay prices are shown upfront by state and vary by session length and clinician credentials; no sliding scale. Cancel or reschedule at least 24 hours ahead or pay a fee of up to the full session cost. HSA/FSA eligible. Medicare accepted; Medicaid not accepted.",
+    "sources": [
+      "https://www.sondermind.com/resources/articles-and-content/self-pay-rates-for-therapy/",
+      "https://www.sondermind.com/self-pay/",
+      "https://www.sondermind.com/sondermind-ai-info/"
+    ],
+    "checked": "2026-10-26"
   },
   "privacy": {
-    "grade": "A",
-    "hipaa_compliant": true,
-    "gdpr_compliant": true,
-    "data_sold": false,
-    "notes": "HIPAA compliant healthcare platform."
+    "basis": {
+      "policy_url": "https://privacy.sondermind.com/policies/en/?name=privacy-policy",
+      "sells_or_ads": "unknown",
+      "deletion": "unknown",
+      "hipaa": "covered",
+      "on_device_only": false,
+      "account_required": true,
+      "regulatory_action": null,
+      "checked": "2026-10-26"
+    },
+    "hipaa_compliant": "yes",
+    "data_sold": "unknown",
+    "notes": "Has a HIPAA Notice of Privacy Practices and a privacy-request page, but the policy text could not be read in this check, so whether it sells or shares data for ads is not confirmed.",
+    "sources": [
+      "https://privacy.sondermind.com/policies/en/?name=privacy-policy",
+      "https://privacy.sondermind.com/policies?name=notice-of-privacy-practices",
+      "https://privacy.sondermind.com/about"
+    ],
+    "grade": "unknown"
   },
   "seo": {
     "title": "SonderMind: VA Partnership & AI Matching for Therapists",
@@ -80,19 +101,53 @@
   "governance": {
     "reviewed_by_label": "Reviewed by HeyPsych Board",
     "reviewed_by_url": "https://heypsych.com/about/medical-review-board",
-    "last_reviewed": "2026-10-23"
+    "last_reviewed": "2026-10-26"
   },
   "app_metadata": {
     "website": "https://www.sondermind.com",
-    "affiliate_url": "https://www.sondermind.com"
+    "affiliate_url": "https://www.sondermind.com",
+    "app_store_url": "https://apps.apple.com/us/app/sondermind-mental-health/id1475263597",
+    "google_play_url": "https://play.google.com/store/apps/details?id=com.sondermind.client"
   },
   "clinical_metadata": {
     "evidence_based": true,
-    "evidence_level": "high",
+    "evidence_level": "low",
+    "clinical_trials": [
+      {
+        "study": "Therapist viewing of SonderMind measurement-based care scores and client depression outcomes",
+        "citation": {
+          "authors": "Bugatti M, Owen J, et al.",
+          "title": "Therapist engagement in measurement-based care: The association between client outcomes and therapist viewing frequency",
+          "journal": "Clinical Psychology & Psychotherapy",
+          "year": 2024,
+          "doi": "10.1002/cpp.2939",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38072869/"
+        },
+        "outcome": "Observational analysis of clients with depression in SonderMind's practice-research group; looked at whether therapists' viewing of outcome scores related to client outcomes. Authors have a research contract with SonderMind.",
+        "sample_size": 6182,
+        "study_design": "Retrospective observational (uncontrolled)"
+      },
+      {
+        "study": "Changes in therapists' client dropout rates on the SonderMind practice-research group, 2018–2022",
+        "citation": {
+          "authors": "Bugatti M, Owen J, et al.",
+          "title": "Changes in therapists' client dropout rates over time: Findings from a practice-research group",
+          "journal": "Journal of Counseling & Development",
+          "year": 2024,
+          "doi": "10.1002/jcad.12521",
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/jcad.12521"
+        },
+        "outcome": "Therapists' client dropout rates rose as they gained experience on the platform; sample is therapists, not a test of client benefit.",
+        "sample_size": 2591,
+        "study_design": "Retrospective observational (uncontrolled)"
+      }
+    ],
     "primary_uses": [
-      "Individual therapy",
-      "Therapist matching",
-      "Insurance-covered therapy"
+      "Matching with an in-network therapist",
+      "Video or in-person therapy billed to insurance",
+      "Medication management with a psychiatric prescriber",
+      "Couples, family and child therapy with select providers",
+      "Symptom tracking with regular questionnaires"
     ]
   },
   "related_tools": [],
@@ -100,14 +155,16 @@
   "featured": false,
   "status": "active",
   "affiliate_url": "https://www.sondermind.com",
-  "updated_at": "2026-09-02T06:10:49.779Z",
+  "updated_at": "2026-10-26T00:00:00.000Z",
   "audience": "patient",
   "availability": {
     "state": "available",
-    "checked": "2026-10-23",
-    "note": "Therapy, psychiatry and groups by video, phone or in person; commercial plans and Medicare, not Medicaid.",
+    "checked": "2026-10-26",
+    "note": "US only, all 50 states and DC, video or in person. Medicare accepted; Medicaid not accepted. Minors need a parent or guardian on the account.",
     "sources": [
-      "https://www.rula.com/blog/the-6-best-alma-alternatives-for-insurance-covered-therapy-in-2026/"
+      "https://www.sondermind.com/sondermind-ai-info/",
+      "https://www.sondermind.com/faqs/",
+      "https://apps.apple.com/us/app/sondermind-mental-health/id1475263597"
     ]
   }
 }
