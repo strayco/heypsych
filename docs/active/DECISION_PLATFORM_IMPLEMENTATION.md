@@ -1785,10 +1785,14 @@ Standard: `docs/active/APP_RESEARCH_STANDARD.md`. Validator:
   discontinued incl. Youper and Ahead; 2 merged). Grades: A+ 8, A 6, B+ 11,
   B 11, C 57, D 4, unknown 44. Research: high 12, moderate 21, low 27,
   emerging 63, none 18.
-- Still thin, needs pages read directly (web fetch disabled for agents):
-  44 privacy grades "unknown" (policy text not reachable via search
-  snippets) and store ratings (45 apps have one, only 18 re-checked; 45
-  mobile apps have none).
+- 2026-10-27 browser pass: 42 privacy policies read directly (38 graded,
+  2 unreadable: OxfordVR has no policy page, Refresh returns 403). Grades now
+  A+ 8, A 8, B+ 14, B 14, C 80, D 4, unknown 13 (policies that don't say
+  whether they sell/share for ads, or post only a HIPAA notice). Store
+  ratings verified from Apple's lookup API and Google Play listings: 83 of 90
+  mobile apps (none for Big Health company record, Joon, K Health, Mightier
+  parent app, Rula (too few reviews), SparkRx, Togetherall). Play counts are
+  the listing's rounded figure (e.g. 66K).
 - Merged: doctor-on-demand-behavioral-health → doctor-on-demand, sesamerx →
   sesame (`merged_into`, 301 via patient-redirects). Employer/sponsor-only
   now hidden from consumer views: rethink-first, togetherall.
