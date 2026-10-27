@@ -10,7 +10,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { checkRateLimit, leadCaptureRateLimit } from "@/lib/rate-limit";
-import { supabaseServiceRole } from "@/lib/config/database";
+import { insertLead } from "@/lib/data/form-store";
 
 // ============================================================================
 // VALIDATION
@@ -124,32 +124,21 @@ export async function POST(request: NextRequest) {
     const score = calculateLeadScore(lead);
     const tier = getLeadTier(score);
 
-    // Store in database (Supabase)
-    // Service role only: leads has RLS with no public insert policy.
-    const db = supabaseServiceRole();
-
-    if (!db) {
-      console.error("[Lead Capture] No database connection available");
-      return NextResponse.json(
-        { success: false, error: "Service temporarily unavailable. Please try again." },
-        { status: 503 }
-      );
-    }
-
-    const { error: dbError } = await db.from("leads").insert({
-      email: lead.email,
-      intent: lead.intent,
-      product_slugs: lead.productSlugs || null,
-      category_slug: lead.categorySlug || null,
-      switching_from: lead.switchingFrom || null,
-      source_path: lead.source || null,
-      referrer: lead.referrer || null,
-      score,
-      tier,
-    });
-
-    if (dbError) {
-      console.error("[Lead Capture] Database error:", dbError.message);
+    // Store in database: direct connection first, service-role fallback.
+    try {
+      await insertLead({
+        email: lead.email,
+        intent: lead.intent,
+        product_slugs: lead.productSlugs || null,
+        category_slug: lead.categorySlug || null,
+        switching_from: lead.switchingFrom || null,
+        source_path: lead.source || null,
+        referrer: lead.referrer || null,
+        score,
+        tier,
+      });
+    } catch (dbError) {
+      console.error("[Lead Capture] Database error:", (dbError as Error).message);
       return NextResponse.json(
         { success: false, error: "Failed to save your information. Please try again." },
         { status: 500 }

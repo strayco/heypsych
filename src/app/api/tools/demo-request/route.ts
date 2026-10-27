@@ -3,7 +3,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { DemoRequestZ } from "@/lib/tools/demo-request";
-import { supabaseServiceRole, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
+import { FormStoreError, insertDemoRequest, updateDemoNotificationStatus } from "@/lib/data/form-store";
 import {
   ClinicianToolService,
   isToolPublishable,
@@ -147,27 +147,10 @@ export async function POST(request: NextRequest) {
       data.toolName = tool.name;
     }
 
-    // P0-8 FIX: Use service role client for server-only writes
-    // This bypasses RLS and ensures only the server can write to demo_requests
-    const db = supabaseServiceRole();
-
-    if (!db || SUPABASE_UNAVAILABLE) {
-      // P0-6 FIX: Return proper 503 error instead of fake success
-      console.error("[Demo Request] Database unavailable, cannot process request");
-
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Our demo request system is temporarily unavailable. Please try again later or contact us directly.",
-        },
-        { status: 503 }
-      );
-    }
-
-    // Insert into database
-    const { data: insertedRow, error } = await db
-      .from("demo_requests")
-      .insert({
+    // Server-only write: direct connection first, service-role fallback.
+    let requestId: string;
+    try {
+      requestId = await insertDemoRequest({
         email: data.email,
         first_name: data.firstName,
         last_name: data.lastName,
@@ -187,50 +170,29 @@ export async function POST(request: NextRequest) {
         agreed_to_terms: data.agreedToTerms,
         marketing_consent: data.marketingConsent || false,
         status: "new",
-      })
-      .select("id")
-      .single();
-
-    if (error) {
-      console.error("[Demo Request] Database error:", error);
-
-      // Handle duplicate email for same tool
-      if (error.code === "23505") {
+      });
+    } catch (error) {
+      if (error instanceof FormStoreError && error.code === "23505") {
         return NextResponse.json({
           success: true,
           message: "You've already requested a demo for this tool. We'll be in touch soon!",
           duplicate: true,
         });
       }
-
+      console.error("[Demo Request] Database error:", error);
       return NextResponse.json(
-        {
-          success: false,
-          error: "Failed to submit demo request. Please try again.",
-        },
+        { success: false, error: "Failed to submit demo request. Please try again." },
         { status: 500 }
       );
     }
 
     // Send notifications (awaited but non-blocking on failure)
-    const requestId = insertedRow?.id || `unknown-${Date.now()}`;
-
-    // Await notifications so we can track their status
     const notificationResult = await notifyDemoRequestDual(data, requestId);
 
-    // Update database with notification status (best effort, don't fail the request)
-    // IMPORTANT: Supabase doesn't throw on query errors - must check error in response
-    const { error: notificationUpdateError } = await db
-      .from("demo_requests")
-      .update({
-        notification_status_operator: notificationResult.operator.success ? "sent" : "failed",
-        notification_status_buyer: notificationResult.buyer.success ? "sent" : "failed",
-        notification_sent_at: new Date().toISOString(),
-      })
-      .eq("id", requestId);
-
-    if (notificationUpdateError) {
-      // Log but don't fail - the demo request was already saved
+    // Record notification status (best effort; the request is already saved)
+    try {
+      await updateDemoNotificationStatus(requestId, notificationResult.operator.success, notificationResult.buyer.success);
+    } catch (notificationUpdateError) {
       console.error("[Demo Request] Failed to update notification status:", notificationUpdateError);
     }
 
@@ -245,7 +207,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Demo request submitted successfully! We'll be in touch within 1 business day.",
-      id: insertedRow?.id,
+      id: requestId,
     });
   } catch (error) {
     console.error("[Demo Request] Unexpected error:", error);
