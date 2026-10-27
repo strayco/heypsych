@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabaseOptional } from "@/lib/config/database";
+import { supabaseServiceRole } from "@/lib/config/database";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, newsletterRateLimit } from "@/lib/rate-limit";
 import { validateBody } from "@/lib/validation";
@@ -16,8 +16,10 @@ export async function POST(req: NextRequest) {
 
   const { email } = data!;
 
-  // Get database client
-  const db = supabaseOptional();
+  // Server-only client. Subscriber emails are private: the table has RLS with
+  // no public policies (migration 045), so the public key can't read or write
+  // it. Never fall back to the anon client here.
+  const db = supabaseServiceRole();
   if (!db) {
     return NextResponse.json(
       { error: "Database unavailable" },

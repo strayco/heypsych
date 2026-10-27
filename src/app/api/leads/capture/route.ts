@@ -10,7 +10,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { checkRateLimit, leadCaptureRateLimit } from "@/lib/rate-limit";
-import { supabaseServiceRole, supabaseOptional } from "@/lib/config/database";
+import { supabaseServiceRole } from "@/lib/config/database";
 
 // ============================================================================
 // VALIDATION
@@ -125,8 +125,8 @@ export async function POST(request: NextRequest) {
     const tier = getLeadTier(score);
 
     // Store in database (Supabase)
-    // Use service role to bypass RLS, fall back to anon client
-    const db = supabaseServiceRole() || supabaseOptional();
+    // Service role only: leads has RLS with no public insert policy.
+    const db = supabaseServiceRole();
 
     if (!db) {
       console.error("[Lead Capture] No database connection available");
