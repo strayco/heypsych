@@ -5,6 +5,7 @@
  * real review date rather than "now".
  */
 
+import { faqsFor } from "@/domains/patient-tools/faqs";
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { siteConfig } from "@/lib/config/site";
 
@@ -62,7 +63,8 @@ export function buildPatientAppSchemas(tool: DigitalToolV3): Record<string, unkn
     },
   ];
 
-  const faqs = tool.seo?.faqs ?? [];
+  // Same answers the page shows (researched records answer from verified facts).
+  const faqs = faqsFor(tool as Parameters<typeof faqsFor>[0]);
   if (faqs.length > 0) {
     schemas.push({
       "@context": "https://schema.org",

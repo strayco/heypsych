@@ -254,7 +254,9 @@ const EMPLOYER_ONLY_SLUGS = new Set([
   "optum-behavioral-health", "magellan-behavioral-health", "lucet", "healthjoy-behavioral-health",
   "included-health-behavioral-health", "included-health-virtual-care", "personify-health-mental-wellbeing",
   "vida-health-mental-health", "omada-mental-health", "pelago", "curalinc-healthcare", "mindoula",
-  "happify-twill",
+  "happify-twill", "rethink-first",
+  // Sponsor-only peer communities (university, employer or health service)
+  "togetherall",
   // Schools and colleges
   "timelycare", "mantra-health", "uwill", "daybreak-health", "hazel-health-mental-health", "cartwheel-care",
   // Health systems and clinics (prescribed or referred, not consumer sign-up)

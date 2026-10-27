@@ -12,6 +12,7 @@ import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { CONDITION_SLUGS } from "@/lib/entities/entity-slugs.generated";
 import { helpOf, payOf } from "@/domains/patient-tools/finder/model";
 import { whatYouGet, yearCost, type YearCost } from "@/domains/patient-tools/shelves/model";
+import { basisLines } from "@/domains/patient-tools/privacy";
 
 type Compliance = boolean | "yes" | "no" | "unknown" | "not_applicable" | undefined;
 
@@ -67,8 +68,16 @@ export interface ToolExperience {
     grade: string | null;
     rows: { label: string; value: string; good: boolean | null }[];
     notes: string | null;
+    /** The policy the grade was read from, when researched. */
+    source: { url: string; checked: string } | null;
   };
-  evidence: { level: "high" | "moderate" | "low" | "emerging" | null; label: string; step: number };
+  evidence: {
+    level: "high" | "moderate" | "low" | "emerging" | null;
+    label: string;
+    step: number;
+    /** Verified studies of this product, with links. */
+    studies: { label: string; url: string | null; design: string | null }[];
+  };
   uncertainties: string[];
   tradeoffs: string[];
   /** The record says this is not for people in crisis. */
@@ -163,14 +172,21 @@ export function buildToolExperience(tool: DigitalToolV3, conditionNames: Record<
   const privacy = tool.privacy;
   const grade = privacy.grade && privacy.grade !== "unknown" ? privacy.grade : null;
   const level = tool.clinical_metadata?.evidence_level;
+  const studies = (tool.clinical_metadata?.clinical_trials ?? [])
+    .filter((t) => t.citation)
+    .map((t) => {
+      const c = t.citation!;
+      const url = c.doi ? `https://doi.org/${c.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, "")}` : c.url ?? null;
+      return { label: `${c.authors} (${c.year}). ${c.title}. ${c.journal}.`, url, design: t.study_design ?? null };
+    });
   const evidence =
     level && EVIDENCE[level]
-      ? { level: level as ToolExperience["evidence"]["level"], ...EVIDENCE[level] }
-      : { level: null, label: "Not independently studied", step: 0 };
+      ? { level: level as ToolExperience["evidence"]["level"], ...EVIDENCE[level], studies }
+      : { level: null, label: "Not independently studied", step: 0, studies };
 
   // Same rules as DecisionContext.
   const uncertainties: string[] = [];
-  if (!grade) uncertainties.push("Privacy practices have not been independently verified");
+  if (!grade) uncertainties.push(privacy.basis ? "Its privacy policy doesn't say whether it sells data or shares it for advertising" : "Privacy practices have not been independently verified");
   if (privacy.hipaa_compliant === "unknown" || privacy.hipaa_compliant === undefined)
     uncertainties.push("HIPAA compliance status is unverified");
   if (!tool.clinical_metadata?.evidence_based && !level) uncertainties.push("Clinical effectiveness has not been independently studied");
@@ -258,7 +274,8 @@ export function buildToolExperience(tool: DigitalToolV3, conditionNames: Record<
     cost,
     privacy: {
       grade,
-      rows: [
+      source: privacy.basis ? { url: privacy.basis.policy_url, checked: privacy.basis.checked } : null,
+      rows: privacy.basis ? basisLines(privacy.basis) : [
         { label: "HIPAA compliant", value: complianceText(privacy.hipaa_compliant), good: isYes(privacy.hipaa_compliant) ? true : isNo(privacy.hipaa_compliant) ? false : null },
         { label: "GDPR compliant", value: complianceText(privacy.gdpr_compliant), good: isYes(privacy.gdpr_compliant) ? true : isNo(privacy.gdpr_compliant) ? false : null },
         // Selling data is the bad direction, so "No" is the good answer.

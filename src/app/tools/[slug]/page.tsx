@@ -1,6 +1,8 @@
 // src/app/tools/[slug]/page.tsx
 // Individual Tool Page
 
+import { faqsFor } from "@/domains/patient-tools/faqs";
+import { seoFor } from "@/domains/patient-tools/seo";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -65,12 +67,13 @@ export async function generateMetadata({
   const canonicalUrl = getToolCanonicalUrl(slug);
   const robotsMeta = getToolRobotsMeta(tool);
 
+  // Researched records take title/description from verified facts (seoFor).
+  const seo = seoFor(tool);
+
   return {
-    // Tool data authors titles with a trailing "| HeyPsych"; the root layout
-    // template appends the brand too. Open Graph keeps the authored form since
-    // Next.js renders it verbatim without the template.
-    title: stripBrandTitleSuffix(tool.seo.title),
-    description: tool.seo.meta_description,
+    // The root layout template appends the brand; Open Graph renders verbatim.
+    title: stripBrandTitleSuffix(seo.title),
+    description: seo.description,
     alternates: {
       canonical: canonicalUrl,
     },
@@ -78,8 +81,8 @@ export async function generateMetadata({
     robots: robotsMeta,
     openGraph: {
       images: ["/images/og/heypsych.png"],
-      title: tool.seo.title,
-      description: tool.seo.meta_description,
+      title: `${stripBrandTitleSuffix(seo.title)} | HeyPsych`,
+      description: seo.description,
       url: canonicalUrl,
       type: "website",
     },
@@ -287,7 +290,7 @@ export default async function ToolPage({
         <ClinicianModule tool={tool} />
 
         {/* FAQ */}
-        <ToolFAQ faqs={tool.seo.faqs} toolName={tool.name} />
+        <ToolFAQ faqs={faqsFor(tool)} toolName={tool.name} />
 
         {/* Related Tools - SEO enhanced with alternatives text */}
         <RelatedTools
@@ -361,7 +364,7 @@ function buildToolGuide(tool: any): GuideChapter[] {
       ),
     });
   }
-  const faqs = tool.seo?.faqs ?? [];
+  const faqs = faqsFor(tool);
   if (faqs.length > 0) {
     chapters.push({
       id: "faqs",

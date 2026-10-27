@@ -1760,3 +1760,50 @@ The free-plan egress quota (5.5 GB) ran out on 2026-10-26; requests are dropped 
 - **All server-side GET reads of `entities` / `entity_relationships` / `content_files`** through the Supabase client now use the data cache (`database.ts` `contentCacheOptions`), so builds and regenerations reuse rows instead of re-downloading them. Newsletter, leads and other tables are untouched.
 - **Treatment and assessment sitemaps** selected `*` (about 14 MB for treatments) per crawl; now select only slug, type and dates.
 - Tag `supabase-content`; `/api/revalidate` marks it stale when a path is revalidated.
+
+### Consumer app research pass (2026-10-23 to 2026-10-26)
+
+Standard: `docs/active/APP_RESEARCH_STANDARD.md`. Validator:
+`src/lib/schemas/__tests__/patient-tool-records.test.ts` (`STRICT_SLUGS=…` or `STRICT=all`).
+
+- Privacy grades are now computed (`src/domains/patient-tools/privacy.ts`,
+  `gradeFromBasis`) from `privacy.basis` facts read from each policy plus the
+  regulatory record (A+ on-device/no account … C sells/ads or regulator
+  finding, D both). Schema gained `privacy.basis`, `pricing.sources`,
+  `pricing.checked`.
+- Research levels are about studies of the product itself; every listed
+  study has a verified DOI or URL. Many "high"/"moderate" claims with nothing
+  cited were lowered (e.g. Grow, Rula, Alma, LifeStance, Cerebral, Teladoc).
+- Profiles show the facts behind the grade, the policy link and read date,
+  and linked studies; `/about/review-methodology#privacy` and `#research`
+  state both rubrics.
+- FAQs for researched records are generated from the verified fields
+  (`src/domains/patient-tools/faqs.ts`, page + FAQPage schema), because the
+  hand-written SEO FAQs had gone stale (wrong prices, "prescribes controlled
+  substances").
+- Status 2026-10-27: all 151 consumer records pass `STRICT` (141 live, 8
+  discontinued incl. Youper and Ahead; 2 merged). Grades: A+ 8, A 6, B+ 11,
+  B 11, C 57, D 4, unknown 44. Research: high 12, moderate 21, low 27,
+  emerging 63, none 18.
+- Still thin, needs pages read directly (web fetch disabled for agents):
+  44 privacy grades "unknown" (policy text not reachable via search
+  snippets) and store ratings (45 apps have one, only 18 re-checked; 45
+  mobile apps have none).
+- Merged: doctor-on-demand-behavioral-health → doctor-on-demand, sesamerx →
+  sesame (`merged_into`, 301 via patient-redirects). Employer/sponsor-only
+  now hidden from consumer views: rethink-first, togetherall.
+- Search titles/descriptions for researched records come from verified
+  fields (`src/domains/patient-tools/seo.ts`); stale authored titles (therapist
+  job pages, "for mental health professionals", "largest"/"first") replaced.
+- Renamed or sold, record names unchanged: Nystrom → Sagent Behavioral
+  Health (2025); Aware Recovery Care assets → Renew Health + Recovery (2026).
+- Findings: Youper discontinued (2026-09-30). Wysa consumer app still live.
+  MindShift CBT now run by 247 Labs after Anxiety Canada closed. Carbon Health
+  emerged from Chapter 11 (June 2026). Duplicates to merge:
+  doctor-on-demand-behavioral-health → doctor-on-demand; talkspace-psychiatry
+  is Talkspace's medication service (kept separate). Cerebral graded D (FTC
+  2024 + ad sharing); BetterHelp and Teen Counseling D (FTC 2023 order).
+- Store ratings: agents could not read listings directly; ratings kept from
+  the earlier pass are unverified, and several unsourced ones were removed.
+- Dev server caches tool records in memory: restart `next dev` to see data
+  changes.

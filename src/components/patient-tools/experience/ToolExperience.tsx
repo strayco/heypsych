@@ -288,7 +288,7 @@ export function ToolExperience({ tool: x, reviewed, outbound, related, compare, 
                 >
                   {x.privacy.grade ?? "N/R"}
                 </span>
-                <p className="text-label-secondary text-[14px]">{x.privacy.grade ? "Our privacy grade" : "Not yet rated"}</p>
+                <p className="text-label-secondary text-[14px]">{x.privacy.grade ? "Our privacy grade, from the facts below" : "Not yet rated"}</p>
               </div>
               <dl className="mt-4 space-y-2">
                 {x.privacy.rows.map((row) => (
@@ -307,6 +307,25 @@ export function ToolExperience({ tool: x, reviewed, outbound, related, compare, 
               <div className="mt-4">
                 <EvidenceMeter step={x.evidence.step} label={x.evidence.label} />
               </div>
+              {x.evidence.studies.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {x.evidence.studies.slice(0, 4).map((st) => (
+                    <li key={st.label} className="text-label-secondary text-[13px] leading-snug">
+                      {st.url ? (
+                        <a href={st.url} target="_blank" rel="noopener nofollow" className="hover:text-label-primary underline decoration-[var(--color-separator)] underline-offset-2">
+                          {st.label}
+                        </a>
+                      ) : (
+                        st.label
+                      )}
+                      {st.design && <span className="text-label-tertiary"> {st.design}</span>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <a href="/about/review-methodology#research" className="text-label-tertiary hover:text-label-primary mt-3 inline-block text-[12.5px] underline underline-offset-2">
+                How we rate research
+              </a>
               {x.tradeoffs.length > 0 && (
                 <>
                   <p className="text-label-tertiary mt-5 text-[12px] font-semibold tracking-[0.06em] uppercase">Trade-offs</p>
@@ -335,6 +354,19 @@ export function ToolExperience({ tool: x, reviewed, outbound, related, compare, 
                 <p className="text-label-secondary mt-3 text-[14px]">Nothing outstanding in our review.</p>
               )}
               {x.privacy.notes && <p className="text-label-tertiary border-separator mt-4 border-t pt-3 text-[13px] leading-relaxed">{x.privacy.notes}</p>}
+              <p className="text-label-tertiary mt-3 text-[12.5px]">
+                {x.privacy.source && (
+                  <>
+                    <a href={x.privacy.source.url} target="_blank" rel="noopener nofollow" className="hover:text-label-primary underline underline-offset-2">
+                      Privacy policy
+                    </a>{" "}
+                    read {x.privacy.source.checked} ·{" "}
+                  </>
+                )}
+                <a href="/about/review-methodology#privacy" className="hover:text-label-primary underline underline-offset-2">
+                  How we grade privacy
+                </a>
+              </p>
             </div>
           </div>
 

@@ -115,6 +115,44 @@ export default function ReviewMethodologyPage() {
             <li>Regular updates to reflect changes in features, pricing, or evidence</li>
           </ol>
 
+          <h2 id="privacy" className="mt-8 scroll-mt-28 text-xl font-bold text-label-primary">
+            How we grade privacy
+          </h2>
+          <p className="mt-3 text-label-secondary">
+            We read each app&apos;s privacy policy and check the public regulatory record (FTC, HHS, DOJ, state
+            attorneys general). We record a few facts, then apply a fixed rule, so the same facts always give
+            the same grade. Each profile shows the facts and links the policy we read.
+          </p>
+          <dl className="mt-4 space-y-2 text-label-secondary">
+            <div><dt className="inline font-semibold text-label-primary">A+</dt> <dd className="inline">Data stays on your device, no account is needed, and it doesn&apos;t sell or share data for advertising.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">A</dt> <dd className="inline">No sale or ad sharing, you can have your data deleted, and your health information is protected by HIPAA (or kept only on your device).</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">B+</dt> <dd className="inline">No sale or ad sharing, and you can have your data deleted.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">B</dt> <dd className="inline">No sale or ad sharing, but no clear way to delete your data.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">C</dt> <dd className="inline">It sells data or shares it for advertising (including tracking pixels and &quot;sharing&quot; under state privacy laws), or a regulator found a problem with its handling of health data in the last five years.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">D</dt> <dd className="inline">Both of the above.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">Not yet rated</dt> <dd className="inline">The policy doesn&apos;t say whether it sells or shares data for ads.</dd></div>
+          </dl>
+
+          <h2 id="research" className="mt-8 scroll-mt-28 text-xl font-bold text-label-primary">
+            How we rate research
+          </h2>
+          <p className="mt-3 text-label-secondary">
+            The research level is about studies of that specific app or service, not the method it uses in
+            general. Many services deliver well-proven therapy but have never been studied themselves; we say so.
+            Every study we list has been checked, with a link.
+          </p>
+          <dl className="mt-4 space-y-2 text-label-secondary">
+            <div><dt className="inline font-semibold text-label-primary">Strong research support</dt> <dd className="inline">At least two randomized controlled trials of the product, or FDA clearance based on trial data.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">Some research support</dt> <dd className="inline">At least one randomized or controlled study of the product.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">Limited research</dt> <dd className="inline">Published studies without a control group (before-and-after, real-world data).</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">Early research</dt> <dd className="inline">Built on an established method (such as CBT, licensed therapy or medication treatment), but no published study of the product itself.</dd></div>
+            <div><dt className="inline font-semibold text-label-primary">Not independently studied</dt> <dd className="inline">Neither of the above.</dd></div>
+          </dl>
+          <p className="mt-3 text-label-secondary">
+            Prices, availability and store ratings are read from the vendor&apos;s own pages and the App Store or
+            Google Play, each with the date we checked. Studies funded or written by the company are noted.
+          </p>
+
           <h2 className="mt-8 text-xl font-bold text-label-primary">
             What We Don&apos;t Do
           </h2>
