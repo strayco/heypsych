@@ -151,8 +151,45 @@ export function PracticeScene({
             })}
           </g>
         )}
+
+        {/* Name of the hovered or focused object. Drawn last, above every
+            object and marker, so nothing covers it. Touch does not need it:
+            the inspector opens on tap, and the accessible name is already on
+            the control. */}
+        {hoveredObjectId && (
+          <HoverLabel
+            object={world.byId.get(hoveredObjectId)}
+            position={markerNumbers?.has(hoveredObjectId) ? markerPositions.get(hoveredObjectId) : undefined}
+            hasMarker={markerNumbers?.has(hoveredObjectId) ?? false}
+          />
+        )}
       </g>
     </svg>
+  );
+}
+
+function HoverLabel({
+  object,
+  position,
+  hasMarker,
+}: {
+  object?: WorldObjectState;
+  position?: MarkerPosition;
+  hasMarker: boolean;
+}) {
+  if (!object) return null;
+  const { definition } = object;
+  const { x: ax, y: ay } = definition.defaultAnchor;
+  // Sit just above the marker (radius 15 when highlighted, plus its halo),
+  // or above the object when there is no marker.
+  const markerTop =
+    position?.y ?? ay - Math.min(definition.bounds.height, 120) - 24;
+  const x = hasMarker ? (position?.x ?? ax) : ax;
+  const y = hasMarker ? markerTop - 24 : ay - definition.bounds.height - 34;
+  return (
+    <g aria-hidden="true">
+      <ObjectLabel x={x} y={y} name={definition.name} width={definition.bounds.width} forceVisible />
+    </g>
   );
 }
 
@@ -294,17 +331,6 @@ function SceneObject({
         height={height + 16}
         fill="transparent"
         rx={10}
-      />
-
-      {/* Compact name on hover and keyboard focus. Touch does not need it:
-          the inspector opens on tap, and the accessible name is already on
-          the control. */}
-      <ObjectLabel
-        x={x}
-        y={y - height - 34}
-        name={definition.name}
-        width={width}
-        forceVisible={isHighlighted}
       />
 
       {/* Keyboard focus indicator. Drawn last so it is never obscured, and
