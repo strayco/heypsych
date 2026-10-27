@@ -57,12 +57,37 @@ function readStaticSegments(routeDir: string): string[] {
     .sort();
 }
 
+/**
+ * Active slugs of one entity type. Direct Postgres connection first (it keeps
+ * working when Supabase's REST API is restricted, e.g. over a quota), then the
+ * Supabase client.
+ */
+async function fetchSlugs(entityType: "condition" | "resource"): Promise<string[]> {
+  if (process.env.SUPABASE_DB_URL || process.env.DATABASE_URL) {
+    try {
+      const { queryWithRetry, closeDbPool } = await import("../src/lib/config/db-pool");
+      const { rows } = await queryWithRetry<{ slug: string }>(
+        "select slug from entities where type = $1 and status = 'active'",
+        [entityType],
+        1,
+        20000
+      );
+      await closeDbPool().catch(() => {});
+      const slugs = rows.map((r) => r.slug).filter(Boolean);
+      if (slugs.length > 0) return slugs;
+    } catch (error) {
+      console.warn(`  direct connection failed for ${entityType}: ${(error as Error).message}`);
+    }
+  }
+  const entities = await EntityService.getByType(entityType as never);
+  return entities.map((e) => e.slug).filter(Boolean);
+}
+
 async function collectSlugs(
   entityType: "condition" | "resource",
   routeDir: string
 ): Promise<string[]> {
-  const entities = await EntityService.getByType(entityType as never);
-  const dbSlugs = entities.map((e) => e.slug).filter(Boolean);
+  const dbSlugs = await fetchSlugs(entityType);
 
   const minimum = MIN_EXPECTED[entityType] ?? 1;
   if (dbSlugs.length < minimum) {
@@ -192,5 +217,15 @@ export function isResourceToolStub(slug: string): boolean {
 
 main().catch((error) => {
   console.error("\nEntity slug generation failed:", error.message);
+  // The manifest is committed. If the database can't be reached at build
+  // time, building with the last good manifest is safe (it only decides 404 vs
+  // page for unknown URLs); building with an empty one is not, so that still
+  // fails. Never overwrite the committed file with a bad result.
+  const existing = fs.existsSync(OUTPUT_PATH) ? fs.readFileSync(OUTPUT_PATH, "utf8") : "";
+  const kept = (existing.match(/^  "[^"]+",$/gm) ?? []).length;
+  if (kept >= (MIN_EXPECTED.condition ?? 1) + (MIN_EXPECTED.resource ?? 1)) {
+    console.warn(`Keeping the committed manifest (${kept} slugs) and continuing the build.`);
+    process.exit(0);
+  }
   process.exit(1);
 });
