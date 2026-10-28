@@ -41,6 +41,14 @@ export const metadata: Metadata = {
 export default async function ConditionsPage() {
   const conditions = await getConditionsServer();
 
+  // getConditionsServer() swallows database errors and returns []. Never let
+  // that become a cached, empty hub: throwing here makes Next.js keep serving
+  // the last good static page (ISR) or fail the build, instead of publishing
+  // "0 conditions" to every visitor.
+  if (conditions.length === 0) {
+    throw new Error("Conditions hub: no conditions loaded from the database; refusing to render an empty page.");
+  }
+
   const items: HubItem[] = conditions
     .filter((c) => c.slug && c.name)
     .map((c) => {
