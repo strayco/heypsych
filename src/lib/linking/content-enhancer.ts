@@ -302,14 +302,19 @@ async function enhanceTextField(
 /**
  * Enhance array field (e.g., list of medications)
  */
-async function enhanceArrayField(
-  items: string[],
+async function enhanceArrayField<T>(
+  items: T[],
   expectedTypes: EntityType[]
-): Promise<string[]> {
+): Promise<(T | string)[]> {
   if (!Array.isArray(items)) return items;
 
+  // Only plain strings are linkified. Structured items (e.g. differential
+  // diagnosis entries like { condition, distinguishing_features }) are kept
+  // as-is; String() on them produced "[object Object]".
   const enhanced = await Promise.all(
-    items.map(item => enhanceTextField(String(item), expectedTypes))
+    items.map(item =>
+      typeof item === "string" ? enhanceTextField(item, expectedTypes) : item
+    )
   );
 
   return enhanced;
