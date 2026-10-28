@@ -43,6 +43,54 @@ export function SEOMeta({ seo }: { seo?: any }) {
   );
 }
 
+/**
+ * A section's readable content: its text, then any subsections
+ * ({ heading, content }) or string items. Never the raw object: sections with
+ * subsections used to render as a JSON dump.
+ */
+function SectionBody({ section }: { section: Section }) {
+  const s = section as Record<string, unknown>;
+  const text = typeof s?.text === "string" ? s.text : typeof s?.content === "string" ? s.content : null;
+  const subsections = Array.isArray(s?.subsections)
+    ? (s.subsections as Array<Record<string, unknown>>).filter((x) => x && (typeof x.content === "string" || typeof x.text === "string"))
+    : [];
+  const items = Array.isArray(s?.items) ? (s.items as unknown[]).filter((x): x is string => typeof x === "string") : [];
+  // Comparison verdicts: [{ choose, when }]
+  const recommendations = Array.isArray(s?.recommendations)
+    ? (s.recommendations as Array<Record<string, unknown>>).filter((r) => r && typeof r.choose === "string" && typeof r.when === "string")
+    : [];
+  return (
+    <>
+      {text && <ParsedContent content={text} />}
+      {subsections.map((sub, i) => (
+        <div key={i}>
+          {typeof sub.heading === "string" && <h3 className="mb-1 font-semibold text-label-primary">{sub.heading}</h3>}
+          <ParsedContent content={String(sub.content ?? sub.text)} />
+        </div>
+      ))}
+      {recommendations.length > 0 && (
+        <ul className="space-y-2">
+          {recommendations.map((r, i) => (
+            <li key={i}>
+              <span className="font-semibold text-label-primary">Choose {String(r.choose)}:</span>{" "}
+              <ParsedContent content={String(r.when)} />
+            </li>
+          ))}
+        </ul>
+      )}
+      {items.length > 0 && (
+        <ul className="list-disc space-y-1 pl-6">
+          {items.map((item, i) => (
+            <li key={i}>
+              <ParsedContent content={item} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
 export function SectionList({ sections = [] }: { sections?: Section[] }) {
   if (!Array.isArray(sections) || sections.length === 0) return null;
   return (
@@ -54,16 +102,8 @@ export function SectionList({ sections = [] }: { sections?: Section[] }) {
               {String(section?.title ?? section?.heading ?? section?.type ?? "Section")}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-label-secondary">
-            <ParsedContent
-              content={
-                typeof section?.text === "string"
-                  ? section.text
-                  : typeof section?.content === "string"
-                  ? section.content
-                  : JSON.stringify(section)
-              }
-            />
+          <CardContent className="space-y-4 text-label-secondary">
+            <SectionBody section={section} />
           </CardContent>
         </Card>
       ))}

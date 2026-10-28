@@ -30,7 +30,12 @@ const ALIASES: Readonly<Record<string, readonly string[]>> = {
   "smoking-cessation": ["tobacco"],
   "tobacco-use-disorder": ["tobacco"],
   "nicotine-dependence": ["tobacco"],
-  "opioid-withdrawal": ["opioid-use-disorder"],
+  "opioid-withdrawal": ["opioid"],
+  // Older slugs of the substance pages, still used by treatment and tool
+  // records; the pages are /conditions/opioid, /inhalant, /phencyclidine.
+  "opioid-use-disorder": ["opioid"],
+  "inhalant-use-disorder": ["inhalant"],
+  "phencyclidine-use-disorder": ["phencyclidine"],
   catatonia: ["catatonia-associated-with-mental-disorder"],
   "tourette-syndrome": ["tourettes-disorder"],
   "tourettes-syndrome": ["tourettes-disorder"],

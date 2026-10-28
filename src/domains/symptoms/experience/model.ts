@@ -9,6 +9,7 @@
 import type { SymptomEntity } from "../types";
 import { getCategoryMeta, getSymptomBySlug } from "../registry";
 import { CONDITION_SLUGS } from "@/lib/entities/entity-slugs.generated";
+import { resolveConditionSlug } from "@/lib/conditions/condition-aliases";
 
 export interface SymptomSource {
   slug: string;
@@ -43,13 +44,16 @@ function list(names: string[], max = 2): string {
 
 export function buildSymptomExperience(symptom: SymptomEntity): SymptomExperience {
   const category = getCategoryMeta(symptom.category);
-  const conditions: SymptomSource[] = symptom.conditionRelationships.map((r) => ({
-    slug: r.conditionSlug,
-    name: r.conditionName,
-    context: r.context,
-    described: r.symptomText ?? [],
-    hasPage: CONDITION_SLUGS.has(r.conditionSlug),
-  }));
+  const conditions: SymptomSource[] = symptom.conditionRelationships.map((r) => {
+    const page = resolveConditionSlug(r.conditionSlug);
+    return {
+      slug: page ?? r.conditionSlug,
+      name: r.conditionName,
+      context: r.context,
+      described: r.symptomText ?? [],
+      hasPage: page !== null && CONDITION_SLUGS.has(page),
+    };
+  });
   const otherCauses = symptom.nonPsychiatricConsiderations ?? [];
   const help = symptom.whenToSeekHelp ?? [];
 

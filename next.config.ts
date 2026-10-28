@@ -180,6 +180,7 @@ const nextConfig: NextConfig = {
         ["/resources/treatment-professional-care-directory", "/resources/support-community"],
         ["/resources/index", "/resources"],
         ["/resources/988-suicide-crisis-lifeline", "/resources/988-lifeline"],
+        ["/resources/nami-helpline", "/resources/nami"],
         ["/resources/alcoholics-anonymous", "/resources/aa"],
         ["/resources/deepscribe", "/tools/for-clinicians"],
         ["/resources/adhd-medication-shortage", "/learn"],

@@ -10,6 +10,7 @@
 
 import type { DigitalToolV3 } from "@/lib/schemas/digital-tool-v3";
 import { CONDITION_SLUGS } from "@/lib/entities/entity-slugs.generated";
+import { resolveConditionSlug } from "@/lib/conditions/condition-aliases";
 import { helpOf, payOf } from "@/domains/patient-tools/finder/model";
 import { whatYouGet, yearCost, type YearCost } from "@/domains/patient-tools/shelves/model";
 import { basisLines } from "@/domains/patient-tools/privacy";
@@ -169,9 +170,14 @@ export function buildToolExperience(tool: DigitalToolV3, conditionNames: Record<
   const kind = [types.slice(0, 2).join(" & "), support].filter(Boolean).join(" · ") || null;
 
   const conditionSlugs = [...new Set([...(tool.conditions ?? []), ...(tool.related_conditions ?? [])])];
+  // Tool records use the tools taxonomy's condition slugs; link each to the
+  // condition page it means (e.g. "opioid-use-disorder" → /conditions/opioid).
+  const seen = new Set<string>();
   const conditions = conditionSlugs
-    .filter((slug) => CONDITION_SLUGS.has(slug))
-    .map((slug) => ({ slug, name: conditionNames[slug] ?? nameFromSlug(slug) }));
+    .map((slug) => ({ slug, page: resolveConditionSlug(slug) }))
+    .filter((c): c is { slug: string; page: string } => c.page !== null && CONDITION_SLUGS.has(c.page))
+    .filter((c) => (seen.has(c.page) ? false : (seen.add(c.page), true)))
+    .map((c) => ({ slug: c.page, name: conditionNames[c.page] ?? conditionNames[c.slug] ?? nameFromSlug(c.page) }));
 
   const privacy = tool.privacy;
   const grade = privacy.grade && privacy.grade !== "unknown" ? privacy.grade : null;
