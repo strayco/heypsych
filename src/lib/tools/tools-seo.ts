@@ -178,6 +178,9 @@ export function filterToolsForSitemap(
   tools: DigitalToolV3[]
 ): Array<{ tool: DigitalToolV3; decision: IndexDecision }> {
   return tools
+    // A tool merged into another 308-redirects to it (patient-redirects.ts);
+    // sitemaps should list only the final URL.
+    .filter(tool => !tool.merged_into)
     .map(tool => ({
       tool,
       decision: makeToolIndexDecision(tool),
