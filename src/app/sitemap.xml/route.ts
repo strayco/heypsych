@@ -14,6 +14,10 @@
 
 import { NextResponse } from 'next/server';
 
+// Without this the route is prerendered at build, and the redirect is baked
+// into an empty static file served as a 200 (no sitemap at /sitemap.xml).
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://heypsych.com').trim().replace(/\/+$/, '');
 
