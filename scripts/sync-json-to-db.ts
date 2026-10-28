@@ -118,8 +118,8 @@ function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
         }
         traverse(fullPath);
       } else if (entry.isFile() && entry.name.endsWith(".json")) {
-        // Skip backup files and index files
-        if (entry.name.includes(".backup") || entry.name === "index.json") {
+        // Skip backup files, index files and templates (e.g. _example-campaign.json)
+        if (entry.name.includes(".backup") || entry.name === "index.json" || entry.name.startsWith("_")) {
           continue;
         }
 
@@ -214,12 +214,18 @@ function normalizeToEntity(filePath: string, content: any): any {
     throw new Error(`Invalid entity type "${type}" for ${filePath}. Must be one of: ${validTypes.join(', ')}`);
   }
 
+  // v3 records (schema_version 3) keep slug/name/brands under `identity`.
+  const identity = content.identity ?? {};
+  const slug: string | undefined = content.slug ?? identity.slug;
+  const name: string | undefined = content.name ?? content.title ?? identity.name;
+  const brandNames = content.brand_names ?? identity.brand_names;
+
   // Validate required fields
-  if (!content.slug) {
-    throw new Error("Missing required field: slug");
+  if (!slug) {
+    throw new Error("Missing required field: slug (or identity.slug)");
   }
-  if (!content.name && !content.title) {
-    throw new Error("Missing required field: name or title");
+  if (!name) {
+    throw new Error("Missing required field: name or title (or identity.name)");
   }
 
   // Build metadata
@@ -236,8 +242,8 @@ function normalizeToEntity(filePath: string, content: any): any {
   }
 
   // Extract brand names for medications
-  if (type === "medication" && content.brand_names) {
-    metadata.brand_names = content.brand_names;
+  if (type === "medication" && brandNames) {
+    metadata.brand_names = brandNames;
   }
 
   // Extract diagnostic codes for conditions
@@ -252,9 +258,9 @@ function normalizeToEntity(filePath: string, content: any): any {
   }
 
   return {
-    slug: content.slug,
+    slug,
     type,
-    title: content.name || content.title,
+    title: name,
     description: content.description || content.summary || null,
     content: content, // Store full content in JSONB column
     metadata,
@@ -267,8 +273,8 @@ function normalizeToEntity(filePath: string, content: any): any {
  */
 async function batchUpsertEntities(entities: any[], type: string, retryCount = 0): Promise<void> {
   if (isDryRun) {
+    // Counted by the caller (syncContentType); counting here too doubled the totals.
     console.log(`   [DRY RUN] Would upsert ${entities.length} ${type}s`);
-    stats[type].created += entities.length;
     return;
   }
 
@@ -306,7 +312,7 @@ async function batchUpsertEntities(entities: any[], type: string, retryCount = 0
     }
 
     console.error(`   ❌ Batch upsert failed for ${type}:`, error.message);
-    stats[type].errors += entities.length;
+    // Counted by the caller's catch; counting here too doubled the totals.
     throw error;
   }
 
@@ -594,7 +600,11 @@ async function main() {
       process.exit(0);
     }
 
-    console.log(`❌ Success rate: ${(successRate * 100).toFixed(1)}% (< ${(MIN_SUCCESS_RATE * 100).toFixed(0)}% threshold)`);
+    console.log(
+      IS_CI
+        ? `❌ Success rate: ${(successRate * 100).toFixed(1)}% (< ${(MIN_SUCCESS_RATE * 100).toFixed(0)}% threshold)`
+        : `❌ ${totalErrors} file(s) failed (success rate ${(successRate * 100).toFixed(1)}%). Fix them and run again.`
+    );
     process.exit(1);
   }
 
