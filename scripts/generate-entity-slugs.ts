@@ -222,7 +222,7 @@ main().catch((error) => {
   // page for unknown URLs); building with an empty one is not, so that still
   // fails. Never overwrite the committed file with a bad result.
   const existing = fs.existsSync(OUTPUT_PATH) ? fs.readFileSync(OUTPUT_PATH, "utf8") : "";
-  const kept = (existing.match(/^  "[^"]+",$/gm) ?? []).length;
+  const kept = (existing.match(/^ {2}"[^"]+",$/gm) ?? []).length;
   if (kept >= (MIN_EXPECTED.condition ?? 1) + (MIN_EXPECTED.resource ?? 1)) {
     console.warn(`Keeping the committed manifest (${kept} slugs) and continuing the build.`);
     process.exit(0);
