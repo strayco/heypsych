@@ -2,6 +2,7 @@
 import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import type { Entity, Collection, EntityType, SchemaName, EntityMetadata } from "@/lib/types/database";
 import { normalizeEntityContent, categoryToSchemaName } from "@/lib/data/entity-mappers";
+import { ENTITY_COLUMNS, ENTITY_SQL_COLUMNS } from "@/lib/data/entity-columns";
 
 // Helper to get supabase client - returns null if unavailable (build without credentials)
 function getDb() {
@@ -349,7 +350,7 @@ export class EntityService {
         try {
           const { queryWithRetry } = await import('@/lib/config/db-pool');
           const result = await queryWithRetry(
-            `SELECT * FROM entities WHERE slug = $1 AND status = $2 ORDER BY type ASC LIMIT 1`,
+            `SELECT ${ENTITY_SQL_COLUMNS} FROM entities WHERE slug = $1 AND status = $2 ORDER BY type ASC LIMIT 1`,
             [slug, 'active']
           );
 
@@ -371,7 +372,7 @@ export class EntityService {
       const data = await withRetry(async () => {
         const result = await db
           .from("entities")
-          .select("*")
+          .select(ENTITY_COLUMNS)
           .eq("slug", slug)
           .eq("status", "active")
           .order("type", { ascending: true })
@@ -435,7 +436,7 @@ export class EntityService {
 
     let query = db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .eq("type", filter.type)
       .eq("status", "active")
       .order("title")
@@ -473,7 +474,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", entityType)
         .eq("status", "active")
         .order("title")
@@ -514,7 +515,7 @@ export class EntityService {
       try {
         const { queryWithRetry } = await import('@/lib/config/db-pool');
         const result = await queryWithRetry(
-          `SELECT * FROM entities WHERE status = $1 ORDER BY type, title LIMIT 1000`,
+          `SELECT ${ENTITY_SQL_COLUMNS} FROM entities WHERE status = $1 ORDER BY type, title LIMIT 1000`,
           ['active']
         );
 
@@ -534,7 +535,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("status", "active")
         .order("type")
         .order("title")
@@ -575,7 +576,7 @@ export class EntityService {
 
       const query = db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("status", "active")
         .not("type", "in", `(${excludedTypes.join(",")})`)
         .order("title")
@@ -635,7 +636,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "condition")
         .eq("status", "active")
         .eq("metadata->>category", category)
@@ -660,7 +661,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "condition")
         .eq("status", "active")
         .or(`metadata->>category.eq.${category},slug.ilike.${category}%,slug.ilike.%${category}%`)
@@ -685,7 +686,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", entityType)
         .eq("status", "active")
         .eq("metadata->>category", category)
@@ -764,7 +765,7 @@ export class EntityService {
 
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .in("type", treatmentTypes)
         .like("metadata->>category", `${category}%`)
         .eq("status", "active")
@@ -800,7 +801,7 @@ export class EntityService {
 
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .in("type", treatmentTypes)
         .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
         .eq("status", "active")
@@ -838,7 +839,7 @@ export class EntityService {
     try {
       const { data, error } = await db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("status", "active")
         .order("title")
         .limit(500);

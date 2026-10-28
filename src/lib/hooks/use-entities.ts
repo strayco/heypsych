@@ -6,6 +6,7 @@ import { supabaseOptional } from "@/lib/config/database";
 import type { EntitiesRow, MappedEntity, EntityType, SchemaName } from "@/lib/types/database";
 import { EntityService } from "@/lib/data/entity-service";
 import { mapRowToEntity, normalizeEntityContent, TREATMENT_TYPE_MAP, categoryToSchemaName } from "@/lib/data/entity-mappers";
+import { ENTITY_COLUMNS } from "@/lib/data/entity-columns";
 
 // Helper to get supabase client - returns null if unavailable
 function getDb() {
@@ -78,7 +79,7 @@ export function useMedications() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .in("type", TREATMENT_TYPE_MAP.medication)
         .eq("status", "active")
         .order("title")
@@ -108,7 +109,7 @@ export function useInterventionalTreatments() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "interventional")
         .eq("status", "active")
         .order("title")
@@ -128,7 +129,7 @@ export function useSupplements() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "supplement")
         .eq("status", "active")
         .order("title")
@@ -148,7 +149,7 @@ export function useTherapies() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "therapy")
         .eq("status", "active")
         .order("title")
@@ -168,7 +169,7 @@ export function useAlternativeTreatments() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "alternative")
         .eq("status", "active")
         .order("title")
@@ -188,7 +189,7 @@ export function useInvestigationalTreatments() {
     queryFn: async () => {
       const { data, error} = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "investigational")
         .eq("status", "active")
         .order("title")
@@ -208,7 +209,7 @@ export function useAssessments() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "resource")
         .eq("metadata->>category", "assessments-screeners")
         .eq("status", "active")
@@ -233,7 +234,7 @@ export function useEntityByType<T = any>(type: EntityType, slug: string) {
       // Query database only - NO API FALLBACK
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", type)
         .eq("slug", slug)
         .eq("status", "active")
@@ -257,7 +258,7 @@ export function useConditions() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "condition")
         .eq("status", "active")
         .order("title")
@@ -281,7 +282,7 @@ export function useConditionsByCategory(category: string) {
       try {
         const { data, error } = await getDb()!
           .from("entities")
-          .select("*")
+          .select(ENTITY_COLUMNS)
           .eq("type", "condition")
           .eq("status", "active")
           .eq("metadata->>category", category)
@@ -325,7 +326,7 @@ export function useTreatmentsByCategory(category: string) {
 
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .in("type", treatmentTypes)
         .like("metadata->>category", `${category}%`)
         .eq("status", "active")
@@ -349,7 +350,7 @@ export function useEntitySearch(query: string, schemaType?: string) {
 
       let supabaseQuery = db
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
         .eq("status", "active")
         .limit(20);
@@ -386,7 +387,7 @@ export function useTreatmentSearch(query: string) {
 
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .in("type", treatmentTypes)
         .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
         .eq("status", "active")
@@ -406,7 +407,7 @@ export function useProviders() {
     queryFn: async () => {
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "provider")
         .eq("status", "active")
         .order("title")
@@ -427,7 +428,7 @@ export function useResources() {
       // Query database only - NO API FALLBACK
       const { data, error } = await getDb()!
         .from("entities")
-        .select("*")
+        .select(ENTITY_COLUMNS)
         .eq("type", "resource")
         .eq("status", "active")
         .order("title")

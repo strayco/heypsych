@@ -2,6 +2,7 @@
 import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import { mapRowToEntity, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
 import type { Entity } from "@/lib/types/database";
+import { ENTITY_COLUMNS, ENTITY_SQL_COLUMNS } from "@/lib/data/entity-columns";
 
 // Helper to get supabase client - returns null if unavailable (build without credentials)
 function getDb() {
@@ -49,7 +50,7 @@ export async function getMedicationsServer(): Promise<Entity[]> {
   try {
     const { data, error} = await db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .in("type", TREATMENT_TYPE_MAP.medication)
       .eq("status", "active")
       .order("title")
@@ -106,7 +107,7 @@ export async function getInterventionalServer(): Promise<Entity[]> {
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "interventional")
     .eq("status", "active")
     .order("title")
@@ -126,7 +127,7 @@ export async function getSupplementsServer(): Promise<Entity[]> {
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "supplement")
     .eq("status", "active")
     .order("title")
@@ -146,7 +147,7 @@ export async function getTherapiesServer(): Promise<Entity[]> {
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "therapy")
     .eq("status", "active")
     .order("title")
@@ -166,7 +167,7 @@ export async function getAlternativeServer(): Promise<Entity[]> {
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "alternative")
     .eq("status", "active")
     .order("title")
@@ -186,7 +187,7 @@ export async function getInvestigationalServer(): Promise<Entity[]> {
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "investigational")
     .eq("status", "active")
     .order("title")
@@ -223,7 +224,7 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
       const { queryWithRetry } = await import('@/lib/config/db-pool');
       const typeList = treatmentTypes.map(t => `'${t}'`).join(',');
       const result = await queryWithRetry(
-        `SELECT * FROM entities WHERE type IN (${typeList}) AND status = $1 ORDER BY title LIMIT 500`,
+        `SELECT ${ENTITY_SQL_COLUMNS} FROM entities WHERE type IN (${typeList}) AND status = $1 ORDER BY title LIMIT 500`,
         ['active']
       );
 
@@ -256,7 +257,7 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
   try {
     const { data, error } = await db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .in("type", treatmentTypes)
       .eq("status", "active")
       .order("title")
@@ -301,7 +302,7 @@ export async function getConditionsServer(): Promise<Entity[]> {
   try {
     const { data, error } = await db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .eq("type", "condition")
       .eq("status", "active")
       .order("title")
@@ -328,7 +329,7 @@ export async function getConditionsByCategoryServer(category: string): Promise<E
   try {
     const { data, error } = await db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .eq("type", "condition")
       .eq("status", "active")
       .eq("metadata->>category", category)
@@ -361,7 +362,7 @@ export async function getResourcesServer(): Promise<Entity[]> {
   try {
     const { data, error } = await db
       .from("entities")
-      .select("*")
+      .select(ENTITY_COLUMNS)
       .eq("type", "resource")
       .eq("status", "active")
       .order("title")
@@ -399,7 +400,7 @@ export async function getResourcesByCategoryServer(category: string): Promise<En
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "resource")
     .eq("status", "active")
     .eq("metadata->>category", category)
@@ -420,7 +421,7 @@ export async function getOtherConditionsSubcategoryServer(subcategory: string): 
 
   const { data, error } = await db
     .from("entities")
-    .select("*")
+    .select(ENTITY_COLUMNS)
     .eq("type", "condition")
     .eq("status", "active")
     .eq("metadata->>category", `other-conditions/${subcategory}`)
