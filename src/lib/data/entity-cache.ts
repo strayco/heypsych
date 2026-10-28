@@ -18,8 +18,7 @@
  */
 
 import { cache } from "react";
-import { unstable_cache } from "next/cache";
-import { EntityService } from "./entity-service";
+import { getEntityBySlugLocal } from "./local-queries";
 import type { Entity } from "@/lib/types/database";
 
 // =============================================================================
@@ -53,28 +52,12 @@ export type EntityLookupResult =
  * @returns EntityLookupResult with explicit status
  */
 /**
- * Across requests and server instances: the Next data cache holds each entity
- * for a day (tag "supabase-content"), so ISR regenerations and crawlers don't
- * re-download the full row from Supabase. Errors throw and are never cached.
+ * Content is read from data/ files (src/lib/data/local-queries.ts), so there
+ * is no database round trip and nothing to cache across requests: a change to
+ * a file is live on the next deploy.
  */
-const getBySlugShared = unstable_cache(
-  async (slug: string) => EntityService.getBySlug(slug),
-  // Bump the version to discard cached rows after a bulk content sync
-  // (the Vercel data cache survives deploys).
-  ["entity-by-slug-v2"],
-  { revalidate: 86400, tags: ["supabase-content"] }
-);
-
 async function getBySlugCached(slug: string): Promise<Entity | null> {
-  try {
-    return await getBySlugShared(slug);
-  } catch (error) {
-    // Outside a Next request (scripts, tests) the data cache is unavailable.
-    if (error instanceof Error && /incrementalCache|static generation store|unstable_cache/i.test(error.message)) {
-      return EntityService.getBySlug(slug);
-    }
-    throw error;
-  }
+  return getEntityBySlugLocal(slug);
 }
 
 export const getEntityBySlug = cache(

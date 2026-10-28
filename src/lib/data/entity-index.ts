@@ -2,14 +2,11 @@
  * Light index of every active entity: id, slug, type, title, status.
  *
  * Link validation only needs to know that an entity exists and what it is
- * called. Fetching whole rows (with their full article content) for every
- * linked name on every page regeneration was the main source of Supabase
- * egress. This index is one small query, held in the Next data cache for a
- * day and shared by every page and every server instance.
+ * called. Built from the data/ files (src/lib/data/local-entities.ts); no
+ * database access.
  */
 
-import { unstable_cache } from "next/cache";
-import { supabaseOptional } from "@/lib/config/database";
+import { getAllLocalRows } from "@/lib/data/local-entities";
 import type { Entity } from "@/lib/types/database";
 
 export interface IndexedEntity {
@@ -20,50 +17,23 @@ export interface IndexedEntity {
   status: string;
 }
 
-const PAGE = 1000;
-
-async function fetchIndex(): Promise<IndexedEntity[]> {
-  const db = supabaseOptional();
-  if (!db) return [];
-  const out: IndexedEntity[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
-      .from("entities")
-      .select("id, slug, type, title, status")
-      .eq("status", "active")
-      .order("slug")
-      .order("type")
-      .range(from, from + PAGE - 1);
-    if (error) throw error;
-    out.push(...((data ?? []) as IndexedEntity[]));
-    if (!data || data.length < PAGE) break;
-  }
-  return out;
-}
-
+/** Kept for callers that revalidate by tag; content now comes from files. */
 export const ENTITY_INDEX_TAG = "supabase-content";
 
-const getIndexCached = unstable_cache(fetchIndex, ["entity-index-v1"], {
-  revalidate: 86400,
-  tags: [ENTITY_INDEX_TAG],
-});
+let memo: Map<string, IndexedEntity> | null = null;
 
-let memo: { at: number; bySlug: Map<string, IndexedEntity> } | null = null;
-
-async function bySlugMap(): Promise<Map<string, IndexedEntity>> {
-  if (memo && Date.now() - memo.at < 10 * 60 * 1000) return memo.bySlug;
-  let rows: IndexedEntity[];
-  try {
-    rows = await getIndexCached();
-  } catch {
-    // Outside a Next request (scripts, tests) the data cache is unavailable.
-    rows = await fetchIndex();
-  }
+function bySlugMap(): Map<string, IndexedEntity> {
+  if (memo) return memo;
+  // Ordered by slug then type, so the first per slug matches
+  // getBySlug's "lowest type name wins".
+  const rows = [...getAllLocalRows()].sort((a, b) =>
+    a.slug !== b.slug ? (a.slug < b.slug ? -1 : 1) : a.type < b.type ? -1 : a.type > b.type ? 1 : 0
+  );
   const map = new Map<string, IndexedEntity>();
-  // Rows are ordered by slug then type, so the first per slug matches
-  // EntityService.getBySlug's "ORDER BY type ASC LIMIT 1".
-  for (const r of rows) if (!map.has(r.slug)) map.set(r.slug, r);
-  memo = { at: Date.now(), bySlug: map };
+  for (const r of rows) {
+    if (!map.has(r.slug)) map.set(r.slug, { id: r.id, slug: r.slug, type: r.type, title: r.title, status: r.status });
+  }
+  memo = map;
   return map;
 }
 
@@ -72,7 +42,7 @@ async function bySlugMap(): Promise<Map<string, IndexedEntity>> {
  * Enough for link validation; never use it to render an entity's content.
  */
 export async function getLightEntityBySlug(slug: string): Promise<Entity | null> {
-  const r = (await bySlugMap()).get(slug);
+  const r = bySlugMap().get(slug);
   if (!r) return null;
   return {
     id: r.id,

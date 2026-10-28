@@ -25,6 +25,11 @@ import { createClient } from "@supabase/supabase-js";
 import pLimit from "p-limit";
 import dotenv from "dotenv";
 import { execSync } from "child_process";
+import {
+  readJsonFiles,
+  normalizeToEntity,
+  dedupeEntities,
+} from "../src/lib/content/content-files";
 
 // Load environment variables from .env.local if it exists (local dev)
 // In CI/production, environment variables are already injected
@@ -86,185 +91,6 @@ function initStats(type: string) {
     skipped: 0,
     errors: 0,
     errorDetails: [],
-  };
-}
-
-/**
- * Recursively read all JSON files in a directory
- */
-function readJsonFiles(dir: string): Array<{ path: string; content: any }> {
-  const files: Array<{ path: string; content: any }> = [];
-  const v2Files = new Set<string>(); // Track which base names have v2 versions
-
-  function traverse(currentDir: string) {
-    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-
-    // First pass: identify all v2 files
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name.endsWith("-v2.json")) {
-        // Extract base name (e.g., "sertraline-zoloft" from "sertraline-zoloft-v2.json")
-        const baseName = entry.name.replace(/-v2\.json$/, "");
-        v2Files.add(path.join(currentDir, baseName));
-      }
-    }
-
-    for (const entry of entries) {
-      const fullPath = path.join(currentDir, entry.name);
-
-      if (entry.isDirectory()) {
-        // Skip backup directories and taxonomies
-        if (entry.name.startsWith("_backup") || entry.name === "taxonomies") {
-          continue;
-        }
-        traverse(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".json")) {
-        // Skip backup files, index files and templates (e.g. _example-campaign.json)
-        if (entry.name.includes(".backup") || entry.name === "index.json" || entry.name.startsWith("_")) {
-          continue;
-        }
-
-        // Handle legacy files: skip if v2 version exists
-        if (entry.name.endsWith(".legacy.json")) {
-          const baseName = entry.name.replace(/\.legacy\.json$/, "");
-          const baseKey = path.join(currentDir, baseName);
-          if (v2Files.has(baseKey)) {
-            // v2 exists, skip legacy
-            continue;
-          }
-        }
-
-        // Handle regular files: skip if v2 version exists (e.g., skip foo.json if foo-v2.json exists)
-        if (!entry.name.endsWith("-v2.json") && !entry.name.endsWith(".legacy.json")) {
-          const baseName = entry.name.replace(/\.json$/, "");
-          const baseKey = path.join(currentDir, baseName);
-          if (v2Files.has(baseKey)) {
-            // v2 exists, skip this older version
-            continue;
-          }
-        }
-
-        try {
-          const content = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
-          files.push({ path: fullPath, content });
-        } catch (error) {
-          console.error(`⚠️  Failed to parse ${fullPath}:`, error);
-        }
-      }
-    }
-  }
-
-  traverse(dir);
-  return files;
-}
-
-/**
- * Determine entity type from file path and content
- */
-function determineEntityType(filePath: string, content: any): string {
-  // Check content.type first
-  if (content.type) {
-    // SAFEGUARD: Convert legacy type values to correct types
-    // Old data had "digital-tool" and "hotline" which should be "resource"
-    if (content.type === "digital-tool" || content.type === "hotline") {
-      console.warn(`⚠️  Converting legacy type "${content.type}" to "resource" for ${filePath}`);
-      return "resource";
-    }
-    return content.type;
-  }
-
-  // Infer from directory structure
-  if (filePath.includes("/treatments/medications/")) return "medication";
-  if (filePath.includes("/treatments/therapy/")) return "therapy";
-  if (filePath.includes("/treatments/interventional/")) return "interventional";
-  if (filePath.includes("/treatments/investigational/")) return "investigational";
-  if (filePath.includes("/treatments/alternative/")) return "alternative";
-  if (filePath.includes("/treatments/supplements/")) return "supplement";
-  if (filePath.includes("/treatments/")) return "treatment";
-  if (filePath.includes("/conditions/")) return "condition";
-  if (filePath.includes("/resources/")) return "resource";
-
-  return "unknown";
-}
-
-/**
- * Extract category from file path
- */
-function extractCategory(filePath: string): string | null {
-  const match = filePath.match(/data\/(\w+)\/([\w-]+)\//);
-  if (match) {
-    return match[2]; // e.g., "medications", "anxiety-fear"
-  }
-  return null;
-}
-
-/**
- * Normalize JSON content to Entity format
- */
-function normalizeToEntity(filePath: string, content: any): any {
-  const type = determineEntityType(filePath, content);
-  const category = extractCategory(filePath);
-
-  // Validate entity type - prevent legacy/invalid types
-  const validTypes = [
-    'condition', 'medication', 'therapy', 'treatment',
-    'interventional', 'investigational', 'alternative', 'supplement',
-    'resource', 'provider'
-  ];
-  if (!validTypes.includes(type)) {
-    throw new Error(`Invalid entity type "${type}" for ${filePath}. Must be one of: ${validTypes.join(', ')}`);
-  }
-
-  // v3 records (schema_version 3) keep slug/name/brands under `identity`.
-  const identity = content.identity ?? {};
-  const slug: string | undefined = content.slug ?? identity.slug;
-  const name: string | undefined = content.name ?? content.title ?? identity.name;
-  const brandNames = content.brand_names ?? identity.brand_names;
-
-  // Validate required fields
-  if (!slug) {
-    throw new Error("Missing required field: slug (or identity.slug)");
-  }
-  if (!name) {
-    throw new Error("Missing required field: name or title (or identity.name)");
-  }
-
-  // Build metadata
-  const metadata: any = {
-    category: category || content.category || content.metadata?.category,
-    source: "json-file",
-    file_path: path.relative(process.cwd(), filePath),
-    last_synced: new Date().toISOString(),
-  };
-
-  // Merge existing metadata
-  if (content.metadata) {
-    Object.assign(metadata, content.metadata);
-  }
-
-  // Extract brand names for medications
-  if (type === "medication" && brandNames) {
-    metadata.brand_names = brandNames;
-  }
-
-  // Extract diagnostic codes for conditions
-  if (type === "condition") {
-    if (content.dsm5_code) metadata.dsm5_code = content.dsm5_code;
-    if (content.icd10_code) metadata.icd10_code = content.icd10_code;
-  }
-
-  // Extract pillar for resources
-  if (type === "resource" && content.pillar) {
-    metadata.pillar = content.pillar;
-  }
-
-  return {
-    slug,
-    type,
-    title: name,
-    description: content.description || content.summary || null,
-    content: content, // Store full content in JSONB column
-    metadata,
-    status: content.status || "active",
   };
 }
 
@@ -335,7 +161,7 @@ async function syncContentType(type: string, directory: string): Promise<void> {
   }
 
   // Read all JSON files
-  const files = readJsonFiles(dir);
+  const files = readJsonFiles(dir, (file, error) => console.error(`⚠️  Failed to parse ${file}:`, error));
   stats[type].total = files.length;
   console.log(`   Found ${files.length} files`);
 
@@ -347,8 +173,9 @@ async function syncContentType(type: string, directory: string): Promise<void> {
   const entities: any[] = [];
   for (const file of files) {
     try {
-      const entity = normalizeToEntity(file.path, file.content);
-      entities.push(entity);
+      const entity: any = normalizeToEntity(file.path, file.content);
+      entity.metadata.last_synced = new Date().toISOString();
+      entities.push({ entity, filePath: file.path });
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : String(error);
       stats[type].errors++;
@@ -368,45 +195,9 @@ async function syncContentType(type: string, directory: string): Promise<void> {
   }
 
   // Deduplicate by type+slug (prefer v2 files over legacy/older files)
-  const seen = new Map<string, { entity: any; filePath: string }>();
-  const dedupedEntities: any[] = [];
-
-  for (const entity of entities) {
-    const key = `${entity.type}:${entity.slug}`;
-    const existing = seen.get(key);
-
-    if (!existing) {
-      seen.set(key, { entity, filePath: entity.metadata?.file_path || '' });
-      dedupedEntities.push(entity);
-    } else {
-      // Prefer v2 files over legacy or older files
-      const existingPath = existing.filePath;
-      const newPath = entity.metadata?.file_path || '';
-
-      const existingIsV2 = existingPath.includes('-v2.json');
-      const newIsV2 = newPath.includes('-v2.json');
-      const existingIsLegacy = existingPath.includes('.legacy.json');
-      const newIsLegacy = newPath.includes('.legacy.json');
-
-      // Priority: v2 > regular > legacy
-      const existingPriority = existingIsV2 ? 2 : existingIsLegacy ? 0 : 1;
-      const newPriority = newIsV2 ? 2 : newIsLegacy ? 0 : 1;
-
-      if (newPriority > existingPriority) {
-        // Replace with the newer/better version
-        const existingIndex = dedupedEntities.findIndex(e => e === existing.entity);
-        if (existingIndex !== -1) {
-          dedupedEntities[existingIndex] = entity;
-        }
-        seen.set(key, { entity, filePath: newPath });
-        if (verbose) {
-          console.log(`   ℹ️  Deduped: keeping ${newPath} over ${existingPath}`);
-        }
-      } else if (verbose) {
-        console.log(`   ℹ️  Deduped: skipping ${newPath} (keeping ${existingPath})`);
-      }
-    }
-  }
+  const dedupedEntities = dedupeEntities(entities, (skipped, kept) => {
+    if (verbose) console.log(`   ℹ️  Deduped: skipping ${skipped} (keeping ${kept})`);
+  }).map((item) => item.entity);
 
   if (verbose && dedupedEntities.length < entities.length) {
     console.log(`   ℹ️  Removed ${entities.length - dedupedEntities.length} duplicate(s)`);

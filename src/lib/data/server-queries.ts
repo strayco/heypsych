@@ -3,6 +3,13 @@ import { supabaseOptional, SUPABASE_UNAVAILABLE } from "@/lib/config/database";
 import { mapRowToEntity, TREATMENT_TYPE_MAP } from "@/lib/data/entity-mappers";
 import type { Entity } from "@/lib/types/database";
 import { ENTITY_COLUMNS, ENTITY_SQL_COLUMNS } from "@/lib/data/entity-columns";
+import {
+  getConditionsByCategoryLocal,
+  getConditionsLocal,
+  getOtherConditionsSubcategoryLocal,
+  getResourcesByCategoryLocal,
+  getResourcesLocal,
+} from "@/lib/data/local-queries";
 
 // Helper to get supabase client - returns null if unavailable (build without credentials)
 function getDb() {
@@ -292,145 +299,22 @@ export async function getAllTreatmentsServer(): Promise<Entity[]> {
 }
 
 export async function getConditionsServer(): Promise<Entity[]> {
-  // Check cache first
-  const cached = getCached('conditions');
-  if (cached) return cached;
-
-  const db = getDb();
-  if (!db) return []; // Build without credentials
-
-  try {
-    const { data, error } = await db
-      .from("entities")
-      .select(ENTITY_COLUMNS)
-      .eq("type", "condition")
-      .eq("status", "active")
-      .order("title")
-      .limit(200);
-
-    if (error) {
-      console.error("Error fetching conditions:", error);
-      return [];
-    }
-
-    const result = (data || []).map((row) => mapRowToEntity(row, "condition"));
-    setCache('conditions', result);
-    return result;
-  } catch (err) {
-    console.error("Error fetching conditions:", err);
-    return [];
-  }
+  // Read from data/ files (src/lib/data/local-queries.ts), not Supabase.
+  return getConditionsLocal();
 }
 
 export async function getConditionsByCategoryServer(category: string): Promise<Entity[]> {
-  const db = getDb();
-  if (!db) return []; // Build without credentials
-
-  try {
-    const { data, error } = await db
-      .from("entities")
-      .select(ENTITY_COLUMNS)
-      .eq("type", "condition")
-      .eq("status", "active")
-      .eq("metadata->>category", category)
-      .order("title")
-      .limit(100); // Limit to prevent timeout on large categories
-
-    if (error) {
-      console.error(`Error fetching conditions for category ${category}:`, error);
-      return [];
-    }
-
-    return (data || []).map((row) => mapRowToEntity(row, "condition"));
-  } catch (err) {
-    // Handle network/timeout errors gracefully during build
-    console.error(`Exception fetching conditions for category ${category}:`, err);
-    return [];
-  }
+  return getConditionsByCategoryLocal(category);
 }
 
 export async function getResourcesServer(): Promise<Entity[]> {
-  // Check cache first
-  const cached = getCached('resources');
-  if (cached) return cached;
-
-  const db = getDb();
-  if (!db) return []; // Build without credentials
-
-  // Fetch all resources for client-side search and navigation features
-  // Limit set to 500 to support growth while preventing runaway queries
-  try {
-    const { data, error } = await db
-      .from("entities")
-      .select(ENTITY_COLUMNS)
-      .eq("type", "resource")
-      .eq("status", "active")
-      .order("title")
-      .limit(500);
-
-    if (!error && data && data.length > 0) {
-      // Deduplicate by name during mapping for better performance
-      const byName = new Map<string, Entity>();
-
-      for (const row of data) {
-        const entity = mapRowToEntity(row, "resource");
-        const existing = byName.get(entity.name);
-
-        // If no existing entry or current has longer slug (more descriptive), add it
-        if (!existing || entity.slug.length > existing.slug.length) {
-          byName.set(entity.name, entity);
-        }
-      }
-
-      const result = Array.from(byName.values());
-      setCache('resources', result);
-      return result;
-    }
-  } catch (err) {
-    console.error("Database error loading resources:", err);
-  }
-
-  // Fallback to empty array - resources are primarily loaded via API route
-  return [];
+  return getResourcesLocal();
 }
 
 export async function getResourcesByCategoryServer(category: string): Promise<Entity[]> {
-  const db = getDb();
-  if (!db) return []; // Build without credentials
-
-  const { data, error } = await db
-    .from("entities")
-    .select(ENTITY_COLUMNS)
-    .eq("type", "resource")
-    .eq("status", "active")
-    .eq("metadata->>category", category)
-    .order("metadata->>order", { ascending: true, nullsFirst: false })
-    .order("title");
-
-  if (error) {
-    console.error(`Error fetching resources for category ${category}:`, error);
-    return [];
-  }
-
-  return (data || []).map((row) => mapRowToEntity(row, "resource"));
+  return getResourcesByCategoryLocal(category);
 }
 
 export async function getOtherConditionsSubcategoryServer(subcategory: string): Promise<Entity[]> {
-  const db = getDb();
-  if (!db) return []; // Build without credentials
-
-  const { data, error } = await db
-    .from("entities")
-    .select(ENTITY_COLUMNS)
-    .eq("type", "condition")
-    .eq("status", "active")
-    .eq("metadata->>category", `other-conditions/${subcategory}`)
-    .order("title");
-
-  if (error) {
-    console.error(`Error fetching conditions for subcategory ${subcategory}:`, error);
-    return [];
-  }
-
-  return (data || []).map((row) => mapRowToEntity(row, "condition"));
+  return getOtherConditionsSubcategoryLocal(subcategory);
 }

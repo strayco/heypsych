@@ -209,7 +209,7 @@ class FileSystemScanner {
 }
 
 // ---------- mapping ----------
-function normalizeEntity(row: any): Entity {
+export function normalizeEntity(row: any): Entity {
   // FIXED: Use entity type first, then fall back to category-based mapping
   let schemaName: SchemaName;
   const normalizedContent = normalizeEntityContent(row.content || row.data || {});
