@@ -6,7 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { supabaseOptional } from '@/lib/config/database';
+import { compareTitles, getLocalRowsByType } from '@/lib/data/local-entities';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
 
@@ -15,24 +15,17 @@ export const revalidate = 86400; // Revalidate daily
 
 export async function GET() {
   try {
-    const db = supabaseOptional();
-    if (!db) {
-      return new NextResponse('Database unavailable', { status: 503 });
-    }
-
-    // Fetch all assessment resources
-    const { data: assessments, error } = await db
-      .from('entities')
-      // Only what a sitemap entry needs (see sitemap-treatments).
-      .select('slug, type, created_at, updated_at, category:metadata->>category, last_updated:metadata->>last_updated')
-      .eq('type', 'resource')
-      .eq('status', 'active')
-      .order('title');
-
-    if (error) {
-      console.error('Supabase query error:', error);
-      throw error;
-    }
+    // Read from data/ files (src/lib/data/local-entities.ts), not Supabase.
+    const assessments = [...getLocalRowsByType('resource')]
+      .sort(compareTitles)
+      .map((r) => ({
+        slug: r.slug,
+        type: r.type,
+        created_at: r.created_at,
+        updated_at: r.updated_at,
+        category: (r.metadata?.category as string | undefined) ?? null,
+        last_updated: (r.metadata?.last_updated as string | undefined) ?? null,
+      }));
 
     // Filter for assessments category
     const filteredAssessments = ((assessments ?? []) as unknown as Array<Record<string, unknown> & { category?: string | null; last_updated?: string | null }>)

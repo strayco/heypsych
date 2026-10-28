@@ -1,6 +1,6 @@
 // src/app/resources/digital-tools/page.tsx
 import { Metadata } from "next";
-import { EntityService } from "@/lib/data/entity-service";
+import { getByTypeAndCategoryLocal } from "@/lib/data/local-queries";
 import { DigitalToolsHub } from "@/components/blocks/digital-tools-hub";
 import { logger } from "@/lib/utils/logger";
 
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
 export default async function DigitalToolsPage() {
   try {
     // Try both possible category names
-    let resources = await EntityService.getByTypeAndCategory("resource", "digital-tools");
+    let resources = getByTypeAndCategoryLocal("resource", "digital-tools");
 
     // Fallback to 'tools' if no resources found
     if (!resources || resources.length === 0) {
-      resources = await EntityService.getByTypeAndCategory("resource", "tools");
+      resources = getByTypeAndCategoryLocal("resource", "tools");
     }
 
     logger.debug(`✅ Loaded ${resources.length} digital tool resources`);

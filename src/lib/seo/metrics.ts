@@ -6,7 +6,7 @@
  */
 
 import type { Entity } from "@/lib/types/database";
-import { EntityService } from "@/lib/data/entity-service";
+import { getAllLocal } from "@/lib/data/local-queries";
 import { MetadataFactory } from "./metadata-factory";
 import { SchemaFactory } from "./schema-factory";
 import { getPageLinks } from "@/lib/linking/link-service";
@@ -164,7 +164,7 @@ export class SEOMetricsEngine {
   async generateReport(): Promise<SEOMetricsReport> {
     console.log('🔍 Generating SEO metrics report...');
 
-    const entities = await EntityService.getAll();
+    const entities = getAllLocal();
     const activeEntities = entities.filter((e) => e.status === 'active');
 
     console.log(`📊 Analyzing ${activeEntities.length} active entities...`);

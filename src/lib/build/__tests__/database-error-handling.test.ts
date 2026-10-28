@@ -93,11 +93,9 @@ describe("Database Error Handling", () => {
 
   describe("EntityCache error classification", () => {
     it("classifies database errors as unavailable", async () => {
-      // Mock EntityService to throw (simulating database error)
-      vi.doMock("@/lib/data/entity-service", () => ({
-        EntityService: {
-          getBySlug: vi.fn().mockRejectedValue(new Error("Database timeout")),
-        },
+      // Mock the entity source to throw (simulating database error)
+      vi.doMock("@/lib/data/local-queries", () => ({
+        getEntityBySlugLocal: vi.fn().mockRejectedValue(new Error("Database timeout")),
       }));
 
       const { getEntityBySlug, isEntityUnavailable, isEntityNotFound } =
@@ -111,11 +109,9 @@ describe("Database Error Handling", () => {
     });
 
     it("classifies null result as not_found", async () => {
-      // Mock EntityService to return null (confirmed not found)
-      vi.doMock("@/lib/data/entity-service", () => ({
-        EntityService: {
-          getBySlug: vi.fn().mockResolvedValue(null),
-        },
+      // Mock the entity source to return null (confirmed not found)
+      vi.doMock("@/lib/data/local-queries", () => ({
+        getEntityBySlugLocal: vi.fn().mockResolvedValue(null),
       }));
 
       const { getEntityBySlug, isEntityFound, isEntityNotFound } = await import(
@@ -138,11 +134,9 @@ describe("Database Error Handling", () => {
         status: "active",
       };
 
-      // Mock EntityService to return entity
-      vi.doMock("@/lib/data/entity-service", () => ({
-        EntityService: {
-          getBySlug: vi.fn().mockResolvedValue(mockEntity),
-        },
+      // Mock the entity source to return entity
+      vi.doMock("@/lib/data/local-queries", () => ({
+        getEntityBySlugLocal: vi.fn().mockResolvedValue(mockEntity),
       }));
 
       const { getEntityBySlug, isEntityFound, isEntityNotFound, isEntityUnavailable } =

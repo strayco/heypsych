@@ -77,6 +77,13 @@ const securityHeaders = [
   },
 ];
 
+/** Content records read at request time by src/lib/data/local-entities.ts */
+const CONTENT_RECORD_FILES = [
+  "./data/conditions/**/*.json",
+  "./data/resources/**/*.json",
+  "./data/treatments/**/*.json",
+];
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -84,6 +91,20 @@ const nextConfig: NextConfig = {
   // Search reads data/ records at runtime for match-in-context snippets
   // (src/lib/search/record-files.ts); make sure they ship with the function.
   outputFileTracingIncludes: {
+    // Pages, hubs, sitemaps and link validation read condition, resource and
+    // treatment records from data/ (src/lib/data/local-entities.ts).
+    ...Object.fromEntries(
+      [
+        "/conditions/**",
+        "/resources/**",
+        "/treatments/**",
+        "/api/markdown/**",
+        "/sitemap-conditions.xml",
+        "/sitemap-resources.xml",
+        "/sitemap-assessments.xml",
+        "/sitemap-treatments.xml",
+      ].map((route) => [route, CONTENT_RECORD_FILES])
+    ),
     // Resource pages render on demand and check crosslink targets against
     // these files (src/domains/articles/experience/targets.ts).
     "/resources/[slug]": [
@@ -147,6 +168,43 @@ const nextConfig: NextConfig = {
     const articleRedirects = loadArticleRedirects();
     return [
       ...articleRedirects,
+      // Pages served from leftover Supabase rows until condition and resource
+      // pages moved to reading data/ files (2026-10-28). Each had no file:
+      // old slugs of renamed conditions, directory rows built from index.json,
+      // knowledge-hub articles replaced by /learn, and removed resources.
+      ...([
+        ["/conditions/opioid-use-disorder", "/conditions/opioid"],
+        ["/conditions/inhalant-use-disorder", "/conditions/inhalant"],
+        ["/conditions/phencyclidine-use-disorder", "/conditions/phencyclidine"],
+        ["/resources/immediate-crisis-directory", "/resources/support-community/immediate-crisis"],
+        ["/resources/treatment-professional-care-directory", "/resources/support-community"],
+        ["/resources/index", "/resources"],
+        ["/resources/988-suicide-crisis-lifeline", "/resources/988-lifeline"],
+        ["/resources/alcoholics-anonymous", "/resources/aa"],
+        ["/resources/deepscribe", "/tools/for-clinicians"],
+        ["/resources/adhd-medication-shortage", "/learn"],
+        ["/resources/adhd-women-thirties", "/learn/adhd-in-adults"],
+        ["/resources/ai-therapy-apps", "/learn/ai-therapy-apps"],
+        ["/resources/anxiety-vs-stress", "/learn/anxiety-symptoms-or-something-else"],
+        ["/resources/bipolar-diagnosis-journey", "/learn/bipolar-vs-depression"],
+        ["/resources/building-daily-mental-health-routine", "/learn"],
+        ["/resources/cbt-explained", "/learn/cbt-explained"],
+        ["/resources/exercise-antidepressant-study", "/learn/exercise-vs-antidepressants"],
+        ["/resources/find-adhd-therapist", "/learn/how-to-find-therapist"],
+        ["/resources/finding-a-therapist", "/learn/finding-the-right-therapist"],
+        ["/resources/glp-1-diabetes-medicine-mental-health-hope", "/learn/glp1-addiction-treatment"],
+        ["/resources/insurance-navigation", "/learn"],
+        ["/resources/ketamine-therapy-2024", "/learn/ketamine-depression-guide"],
+        ["/resources/manage-anxiety-attacks", "/learn/panic-attack-guide"],
+        ["/resources/ocd-intrusive-thoughts", "/learn/intrusive-thoughts-guide"],
+        ["/resources/panic-attacks-body-mind", "/learn/panic-attack-guide"],
+        ["/resources/psychedelics-depression-study", "/learn/psilocybin-depression-research"],
+        ["/resources/sleep-mental-health-link", "/learn/sleep-mental-health-connection"],
+        ["/resources/ssri-basics", "/learn/ssri-guide"],
+        ["/resources/talk-to-doctor-antidepressants", "/learn/tapering-off-antidepressants"],
+        ["/resources/therapy-insurance", "/learn"],
+        ["/resources/understanding-therapy-types", "/learn"],
+      ] as const).map(([source, destination]) => ({ source, destination, permanent: true })),
       // SEO: Remove trailing slashes for URL consistency (canonical = no trailing slash)
       {
         source: "/:path+/",

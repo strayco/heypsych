@@ -839,229 +839,117 @@ export async function validateEntityExists(
     return null;
   }
 
-  // Run first 3 strategies in parallel for better performance
-  // Wrap in try-catch to prevent build crashes on timeout
+  // Matching strategies, in order. They run against the content files
+  // (src/lib/data/local-entities.ts) and mirror the database queries they
+  // replaced: same filters, same order of preference.
   try {
-    const { supabaseOptional } = await import('@/lib/config/database');
-    const db = supabaseOptional();
+    const { getLocalRowsByType } = await import('@/lib/data/local-entities');
+    const rows = getLocalRowsByType(type);
+    const bySlugAsc = (a: { slug: string }, b: { slug: string }) => (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0);
+    const titleCollator = new Intl.Collator('en', { sensitivity: 'variant' });
 
-    // If database unavailable (build without credentials), skip DB-based strategies
-    const dbAvailable = !!db;
+    const found = (entity: Entity | null): Entity | null => {
+      if (entity) validationCache.set(cacheKey, entity);
+      return entity;
+    };
 
-    const strategyPromises: Promise<Entity | null>[] = [
-      // Strategy 1: Exact slug match
-      getLightEntityBySlug(baseSlug).then(
-        entity => (entity && entity.type === type ? entity : null),
-        () => null
-      ).catch(() => null),
+    // Strategy 1: Exact slug match
+    const exact = await getLightEntityBySlug(baseSlug);
+    if (exact && exact.type === type) return found(exact);
 
-    // Strategy 2: Slug starts with base slug (handles generic → brand combinations)
-    // Example: "fluoxetine" → "fluoxetine-prozac"
-    !dbAvailable ? Promise.resolve(null) : Promise.resolve(
-      db
-        .from('entities')
-        .select('slug')
-        .eq('type', type)
-        .eq('status', 'active')
-        .ilike('slug', `${baseSlug}-%`)
-        .order('slug')
-        .limit(1)
-        .then(async ({ data: prefixMatches }) => {
-          if (prefixMatches && prefixMatches.length > 0) {
-            try {
-              const entity = await getLightEntityBySlug(prefixMatches[0].slug);
-              return entity || null;
-            } catch {
-              return null;
-            }
-          }
-          return null;
-        })
-    ),
-
-    // Strategy 2b: Slug ends with base slug (handles brand name lookups)
-    // Example: "prozac" → "fluoxetine-prozac", "zoloft" → "sertraline-zoloft"
-    !dbAvailable ? Promise.resolve(null) : Promise.resolve(
-      db
-        .from('entities')
-        .select('slug')
-        .eq('type', type)
-        .eq('status', 'active')
-        .ilike('slug', `%-${baseSlug}`)
-        .order('slug')
-        .limit(1)
-        .then(async ({ data: suffixMatches }) => {
-          if (suffixMatches && suffixMatches.length > 0) {
-            try {
-              const entity = await getLightEntityBySlug(suffixMatches[0].slug);
-              return entity || null;
-            } catch {
-              return null;
-            }
-          }
-          return null;
-        })
-    ),
-    
-    // Strategy 3a: Check hardcoded common abbreviations
-    (async () => {
-      if (lowerName.length <= 10 && type === 'condition') {
-        const commonAbbreviations: Record<string, string> = {
-          'gad': 'generalized-anxiety-disorder',
-          'mdd': 'major-depressive-disorder',
-          'ptsd': 'posttraumatic-stress-disorder',
-          'ocd': 'obsessive-compulsive-disorder',
-          'adhd': 'attention-deficit-hyperactivity-disorder',
-          'sad': 'social-anxiety-disorder',
-          'pmdd': 'premenstrual-dysphoric-disorder',
-        };
-        
-        if (commonAbbreviations[lowerName]) {
-          try {
-            const entity = await getLightEntityBySlug(commonAbbreviations[lowerName]);
-            return entity || null;
-          } catch {
-            return null;
-          }
-        }
-      }
-      return null;
-    })(),
-    
-    // Strategy 3b: Check metadata abbreviations
-    (async () => {
-      if (!dbAvailable || lowerName.length > 10) return null;
-      const { data: abbrevMatches } = await db
-        .from('entities')
-        .select('slug')
-        .eq('type', type)
-        .eq('status', 'active')
-        .or(`content->abbreviation.ilike.${lowerName},metadata->abbreviation.ilike.${lowerName}`)
-        .limit(1);
-
-      if (abbrevMatches && abbrevMatches.length > 0) {
-        try {
-          const entity = await getLightEntityBySlug(abbrevMatches[0].slug);
-          return entity || null;
-        } catch {
-          return null;
-        }
-      }
-      return null;
-    })(),
-  ];
-  
-  // Wait for first strategies in parallel, return first match
-  const strategyResults = await Promise.all(strategyPromises);
-  for (const result of strategyResults) {
-    if (result) {
-      validationCache.set(cacheKey, result);
-      return result;
+    // Strategy 2: Slug starts with base slug (generic → brand, e.g. "fluoxetine" → "fluoxetine-prozac")
+    const prefix = rows.filter(r => r.slug.toLowerCase().startsWith(`${baseSlug}-`)).sort(bySlugAsc)[0];
+    if (prefix) {
+      const entity = await getLightEntityBySlug(prefix.slug);
+      if (entity) return found(entity);
     }
-  }
 
-  // Strategy 4: Normalized matching (handles spelling variants like "post-traumatic" vs "posttraumatic")
-  // Remove hyphens from both input and database values for comparison
-  const normalizedInput = lowerName.replace(/-/g, '');
-  const normalizedSlug = baseSlug.replace(/-/g, '');
+    // Strategy 2b: Slug ends with base slug (brand lookups, e.g. "prozac" → "fluoxetine-prozac")
+    const suffix = rows.filter(r => r.slug.toLowerCase().endsWith(`-${baseSlug}`)).sort(bySlugAsc)[0];
+    if (suffix) {
+      const entity = await getLightEntityBySlug(suffix.slug);
+      if (entity) return found(entity);
+    }
 
-  // Skip DB-based strategies if database unavailable
-  if (!dbAvailable) {
-    validationCache.set(cacheKey, null);
-    return null;
-  }
+    // Strategy 3a: Hardcoded common abbreviations
+    if (lowerName.length <= 10 && type === 'condition') {
+      const commonAbbreviations: Record<string, string> = {
+        'gad': 'generalized-anxiety-disorder',
+        'mdd': 'major-depressive-disorder',
+        'ptsd': 'posttraumatic-stress-disorder',
+        'ocd': 'obsessive-compulsive-disorder',
+        'adhd': 'attention-deficit-hyperactivity-disorder',
+        'sad': 'social-anxiety-disorder',
+        'pmdd': 'premenstrual-dysphoric-disorder',
+      };
+      if (commonAbbreviations[lowerName]) {
+        const entity = await getLightEntityBySlug(commonAbbreviations[lowerName]);
+        if (entity) return found(entity);
+      }
+    }
 
-  const { data: normalizedMatches } = await db
-    .from('entities')
-    .select('slug, title')
-    .eq('type', type)
-    .eq('status', 'active')
-    .limit(50); // Get more results for client-side filtering
+    // Strategy 3b: Abbreviation recorded on the entity
+    if (lowerName.length <= 10) {
+      const abbrevMatch = rows.find(r => {
+        const a = r.content?.abbreviation ?? r.metadata?.abbreviation;
+        return typeof a === 'string' && a.toLowerCase() === lowerName;
+      });
+      if (abbrevMatch) {
+        const entity = await getLightEntityBySlug(abbrevMatch.slug);
+        if (entity) return found(entity);
+      }
+    }
 
-  if (normalizedMatches && normalizedMatches.length > 0) {
-    for (const row of normalizedMatches) {
+    // Strategy 4: Normalized matching (spelling variants like "post-traumatic" vs "posttraumatic")
+    const normalizedInput = lowerName.replace(/-/g, '');
+    const normalizedSlug = baseSlug.replace(/-/g, '');
+    for (const row of rows) {
       const rowSlugNormalized = (row.slug || '').toLowerCase().replace(/-/g, '');
       const rowTitleNormalized = (row.title || '').toLowerCase().replace(/-/g, '').replace(/\s+/g, '');
-
-      // Exact match after normalization
       if (rowSlugNormalized === normalizedSlug || rowTitleNormalized === normalizedInput.replace(/\s+/g, '')) {
         const entity = await getLightEntityBySlug(row.slug);
-        if (entity) {
-          validationCache.set(cacheKey, entity);
-          return entity;
-        }
+        if (entity) return found(entity);
       }
     }
-  }
 
-  // Strategy 5: Name contains search term (word boundary aware)
-  // Example: "cognitive behavioral" → "cognitive-behavioral-therapy"
-  const { data: nameMatches } = await db
-    .from('entities')
-    .select('slug, title')
-    .eq('type', type)
-    .eq('status', 'active')
-    .ilike('title', `%${name}%`)
-    .order('title')
-    .limit(5);
-
-  if (nameMatches && nameMatches.length > 0) {
-    // Prefer exact word matches over partial matches
-    for (const row of nameMatches) {
-      const entityName = (row.title || '').toLowerCase();
-      const entitySlug = (row.slug || '').toLowerCase();
-
-      // Check if name starts with search term (best match)
-      if (entityName.startsWith(lowerName) || entitySlug.startsWith(baseSlug)) {
-        const entity = await getLightEntityBySlug(row.slug);
-        if (entity) {
-          validationCache.set(cacheKey, entity);
-          return entity;
+    // Strategy 5: Name contains search term (word boundary aware)
+    const nameMatches = rows
+      .filter(r => (r.title || '').toLowerCase().includes(name.toLowerCase()))
+      .sort((a, b) => titleCollator.compare(a.title || '', b.title || ''))
+      .slice(0, 5);
+    if (nameMatches.length > 0) {
+      // Prefer names (or slugs) that start with the search term
+      for (const row of nameMatches) {
+        const entityName = (row.title || '').toLowerCase();
+        const entitySlug = (row.slug || '').toLowerCase();
+        if (entityName.startsWith(lowerName) || entitySlug.startsWith(baseSlug)) {
+          const entity = await getLightEntityBySlug(row.slug);
+          if (entity) return found(entity);
+        }
+      }
+      // Then whole-word matches. NO FALLBACK beyond this: never guess.
+      const wordBoundaryRegex = new RegExp(`\\b${lowerName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      for (const row of nameMatches) {
+        if (wordBoundaryRegex.test(row.title || '')) {
+          const entity = await getLightEntityBySlug(row.slug);
+          if (entity) return found(entity);
         }
       }
     }
 
-    // Check for word boundary match
-    const wordBoundaryRegex = new RegExp(`\\b${lowerName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-    for (const row of nameMatches) {
-      const entityName = row.title || '';
-      if (wordBoundaryRegex.test(entityName)) {
-        const entity = await getLightEntityBySlug(row.slug);
-        if (entity) {
-          validationCache.set(cacheKey, entity);
-          return entity;
-        }
-      }
+    // Strategy 6: alternative_names listed in the content
+    const altMatch = rows.find(r => Array.isArray(r.content?.alternative_names) && r.content.alternative_names.includes(name));
+    if (altMatch) {
+      const entity = await getLightEntityBySlug(altMatch.slug);
+      if (entity) return found(entity);
     }
-
-    // NO FALLBACK - if we didn't find an exact match, don't guess
-    // This prevents linking generic words to random entities
-  }
-
-  // Strategy 6: Check alternative_names array in content
-  const { data: altNameMatches } = await db
-    .from('entities')
-    .select('slug')
-    .eq('type', type)
-    .eq('status', 'active')
-    .contains('content', { alternative_names: [name] })
-    .limit(1);
-
-  if (altNameMatches && altNameMatches.length > 0) {
-    const entity = await getLightEntityBySlug(altNameMatches[0].slug);
-    if (entity) {
-      validationCache.set(cacheKey, entity);
-      return entity;
-    }
-  }
 
     // Cache the negative result too to avoid repeated lookups
     validationCache.set(cacheKey, null);
     return null;
   } catch (error) {
-    // Gracefully handle timeouts and errors during validation
-    // Don't crash the build - just cache negative result and continue
-    console.warn(`Entity validation timeout/error for "${name}" (${type}):`, error instanceof Error ? error.message : 'Unknown error');
+    // Never let link validation break a page; treat as "no link".
+    console.warn(`Entity validation error for "${name}" (${type}):`, error instanceof Error ? error.message : 'Unknown error');
     validationCache.set(cacheKey, null);
     return null;
   }

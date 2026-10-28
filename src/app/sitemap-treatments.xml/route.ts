@@ -8,7 +8,7 @@
 import { NextResponse } from 'next/server';
 import { resolveTreatmentAlias } from '@/lib/treatments/treatment-aliases.generated';
 import { isMergedTreatment } from '@/lib/treatments/merged-treatments';
-import { supabaseOptional } from '@/lib/config/database';
+import { compareTitles, getAllLocalRows } from '@/lib/data/local-entities';
 import type { Entity } from '@/lib/types/database';
 import { getSitemapGenerator } from '@/lib/seo/sitemap-generator';
 // Use pre-generated slugs file for fast lookup (no file I/O at runtime)
@@ -19,32 +19,26 @@ export const revalidate = 86400; // Revalidate daily
 
 export async function GET() {
   try {
-    const db = supabaseOptional();
-    if (!db) {
-      return new NextResponse('Database unavailable', { status: 503 });
-    }
-
-    // Fetch all treatment-related entities
-    const { data: treatments } = await db
-      .from('entities')
-      // Only what a sitemap entry needs; full rows carry article content
-      // (megabytes across all treatments) and cost Supabase egress.
-      .select('slug, type, created_at, updated_at, last_updated:metadata->>last_updated')
-      .in('type', [
-        'medication',
-        'therapy',
-        'treatment',
-        'interventional',
-        'alternative',
-        'supplement',
-        'investigational',
-      ])
-      .eq('status', 'active')
-      .order('title');
-
-    if (!treatments) {
-      return new NextResponse('No treatments found', { status: 404 });
-    }
+    // Treatment records from the data/ files (src/lib/data/local-entities.ts).
+    const TREATMENT_TYPES = new Set([
+      'medication',
+      'therapy',
+      'treatment',
+      'interventional',
+      'alternative',
+      'supplement',
+      'investigational',
+    ]);
+    const treatments = getAllLocalRows()
+      .filter((r) => TREATMENT_TYPES.has(r.type))
+      .sort(compareTitles)
+      .map((r) => ({
+        slug: r.slug,
+        type: r.type,
+        created_at: r.created_at,
+        updated_at: r.updated_at,
+        last_updated: (r.metadata?.last_updated as string | undefined) ?? null,
+      }));
 
     // RENDERABILITY GATE
     //

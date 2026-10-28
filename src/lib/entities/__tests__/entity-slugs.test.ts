@@ -52,7 +52,9 @@ describe("entity slug manifest", () => {
 
   it("recognises known condition and resource pages", () => {
     expect(entitySlugExists("conditions", "generalized-anxiety-disorder")).toBe(true);
-    expect(entitySlugExists("conditions", "opioid-use-disorder")).toBe(true);
+    expect(entitySlugExists("conditions", "opioid")).toBe(true);
+    // Old slug of the same condition: next.config.ts redirects it to /conditions/opioid.
+    expect(entitySlugExists("conditions", "opioid-use-disorder")).toBe(false);
   });
 
   it("rejects slugs that resolve to no page", () => {

@@ -15,7 +15,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { EntityService } from "@/lib/data/entity-service";
+import { getByTypeLocal } from "@/lib/data/local-queries";
 import { getSitemapGenerator, generateSitemapXml } from "@/lib/seo/sitemap-generator";
 import {
   filterEntitiesForSitemapWithReport,
@@ -34,7 +34,7 @@ export async function GET() {
 
   try {
     // Try database first for the most up-to-date data
-    const conditions = await EntityService.getByType("condition");
+    const conditions = getByTypeLocal("condition");
     const activeConditions = conditions.filter((c) => c.status === "active");
 
     // Apply the central indexation firewall. Without this the database path

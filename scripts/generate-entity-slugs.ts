@@ -1,8 +1,8 @@
 /**
  * ENTITY SLUG MANIFEST GENERATOR
  *
- * `/conditions/[slug]` and `/resources/[slug]` are database-backed, so the
- * static generation policy classifies them `on_demand`: `generateStaticParams`
+ * `/conditions/[slug]` and `/resources/[slug]` render on demand (the static
+ * generation policy classifies them `on_demand`): `generateStaticParams`
  * returns an empty list and `dynamicParams` stays true. Every URL under those
  * prefixes therefore reaches the page component, and an unknown slug renders a
  * shell before `notFound()` resolves - the response is HTTP 200 with no
@@ -18,16 +18,16 @@
  * are real pages that are not database rows, so they are read from the app
  * directory and included - omitting them would 404 working hubs.
  *
- * The generator fails rather than emitting an empty or short manifest: a
- * transient database outage at build time must not silently ship a middleware
- * that 404s a whole section.
+ * Slugs come from the data/ files the pages render. The generator still fails
+ * rather than emitting an empty or short manifest, so a broken checkout can
+ * never ship a middleware that 404s a whole section.
  *
  * Run via `npm run generate:entity-slugs` (wired into prebuild).
  */
 
 import fs from "fs";
 import path from "path";
-import { EntityService } from "../src/lib/data/entity-service";
+import { getLocalRowsByType } from "../src/lib/data/local-entities";
 
 const OUTPUT_PATH = path.join(
   process.cwd(),
@@ -58,29 +58,11 @@ function readStaticSegments(routeDir: string): string[] {
 }
 
 /**
- * Active slugs of one entity type. Direct Postgres connection first (it keeps
- * working when Supabase's REST API is restricted, e.g. over a quota), then the
- * Supabase client.
+ * Active slugs of one entity type, from the data/ files the pages render
+ * (src/lib/data/local-entities.ts), so the manifest always matches the site.
  */
 async function fetchSlugs(entityType: "condition" | "resource"): Promise<string[]> {
-  if (process.env.SUPABASE_DB_URL || process.env.DATABASE_URL) {
-    try {
-      const { queryWithRetry, closeDbPool } = await import("../src/lib/config/db-pool");
-      const { rows } = await queryWithRetry<{ slug: string }>(
-        "select slug from entities where type = $1 and status = 'active'",
-        [entityType],
-        1,
-        20000
-      );
-      await closeDbPool().catch(() => {});
-      const slugs = rows.map((r) => r.slug).filter(Boolean);
-      if (slugs.length > 0) return slugs;
-    } catch (error) {
-      console.warn(`  direct connection failed for ${entityType}: ${(error as Error).message}`);
-    }
-  }
-  const entities = await EntityService.getByType(entityType as never);
-  return entities.map((e) => e.slug).filter(Boolean);
+  return getLocalRowsByType(entityType).map((r) => r.slug).filter(Boolean);
 }
 
 async function collectSlugs(
@@ -94,7 +76,7 @@ async function collectSlugs(
     throw new Error(
       `Only ${dbSlugs.length} ${entityType} slugs returned (expected at least ${minimum}). ` +
         `Refusing to generate a manifest that would 404 live pages. ` +
-        `Check database credentials before building.`
+        `Check the data/ content files before building.`
     );
   }
 
@@ -102,7 +84,7 @@ async function collectSlugs(
   const all = new Set([...dbSlugs, ...staticSegments]);
 
   console.log(
-    `  ${routeDir}: ${dbSlugs.length} from database + ${staticSegments.length} static routes = ${all.size} slugs`
+    `  ${routeDir}: ${dbSlugs.length} from data files + ${staticSegments.length} static routes = ${all.size} slugs`
   );
 
   return [...all].sort();
@@ -148,7 +130,11 @@ function collectToolStubSlugs(resourceSlugs: string[]): string[] {
     ...readDataSlugs("data/resources/support-community"),
     ...readDataSlugs("data/resources/assessments-screeners"),
   ]);
-  const stubs = resourceSlugs.filter((s) => toolSlugs.has(s) && !genuine.has(s));
+  // Every tool file, whatever its status: an archived or merged tool still
+  // has its old /resources/<slug> URL redirected to /tools/<slug>, where the
+  // tools section decides what to show.
+  void resourceSlugs;
+  const stubs = [...toolSlugs].filter((s) => !genuine.has(s)).sort();
   console.log(`  resources: ${stubs.length} tool stubs redirect to /tools`);
   return stubs;
 }

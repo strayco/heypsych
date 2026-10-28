@@ -52,7 +52,7 @@ export type RenderingReason =
  * Route classification for determining build strategy
  */
 export type RouteType =
-  | "conditions" // Database-backed mental health conditions
+  | "conditions" // Mental health conditions (data/conditions files)
   | "treatments" // Local JSON-backed treatments
   | "resources" // Database-backed resources
   | "guide" // Programmatic SEO pages (potentially thousands)
@@ -149,7 +149,7 @@ export function isDevelopmentMode(): boolean {
 const ROUTE_CONFIGS: Record<RouteType, RouteConfig> = {
   conditions: {
     type: "conditions",
-    dataSource: "database",
+    dataSource: "local", // data/ files (src/lib/data/local-entities.ts)
     estimatedCount: "medium", // ~130 pages
   },
   treatments: {
@@ -159,7 +159,7 @@ const ROUTE_CONFIGS: Record<RouteType, RouteConfig> = {
   },
   resources: {
     type: "resources",
-    dataSource: "database",
+    dataSource: "local", // data/ files (src/lib/data/local-entities.ts)
     estimatedCount: "medium", // ~100 pages
   },
   guide: {

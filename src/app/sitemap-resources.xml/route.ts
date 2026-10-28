@@ -14,7 +14,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { EntityService } from "@/lib/data/entity-service";
+import { getByTypeLocal } from "@/lib/data/local-queries";
 import type { Entity } from "@/lib/types/database";
 import { getSitemapGenerator, generateSitemapXml } from "@/lib/seo/sitemap-generator";
 import {
@@ -39,7 +39,7 @@ export async function GET() {
     // so passing raw rows failed every gate and excluded 100% of resources.
     // The safety valve then republished the unfiltered list, meaning this
     // sitemap advertised pages whose own markup says `noindex`.
-    const resources = await EntityService.getByType("resource");
+    const resources = getByTypeLocal("resource");
 
     if (resources.length === 0) {
       throw new Error("No resources returned");
