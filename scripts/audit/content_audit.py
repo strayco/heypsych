@@ -93,7 +93,7 @@ RULES = [
     ("double-space", "info", r"\S  +\S", "Double spaces."),
 ]
 
-JARGON_RE = re.compile(r"\b(" + "|".join(JARGON) + r")\b(?!" + EXPLAINED + ")", re.I)
+JARGON_RE = re.compile(r"(?<!\()(?<!\( )\b(" + "|".join(JARGON) + r")\b(?!" + EXPLAINED + ")", re.I)
 RULES_RE = [(rid, sev, re.compile(rx, re.I if rid not in ("shouting",) else 0), note) for rid, sev, rx, note in RULES]
 
 
