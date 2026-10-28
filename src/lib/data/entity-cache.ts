@@ -59,7 +59,9 @@ export type EntityLookupResult =
  */
 const getBySlugShared = unstable_cache(
   async (slug: string) => EntityService.getBySlug(slug),
-  ["entity-by-slug-v1"],
+  // Bump the version to discard cached rows after a bulk content sync
+  // (the Vercel data cache survives deploys).
+  ["entity-by-slug-v2"],
   { revalidate: 86400, tags: ["supabase-content"] }
 );
 
