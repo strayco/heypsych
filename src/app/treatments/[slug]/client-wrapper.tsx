@@ -98,6 +98,44 @@ interface TreatmentClientWrapperProps {
 
 // ============ HELPER FUNCTIONS (moved outside component for reuse) ============
 
+// Keys the page adds to every section for layout; never shown as content.
+const SECTION_INTERNAL_KEYS = new Set(["ux_display", "collapsible", "heading", "type", "ui_hints", "visual_priority", "card_style"]);
+
+const humanizeKey = (key: string) => key.replace(/_/g, " ");
+
+/**
+ * Render a dosing value that may be a string or a nested object
+ * (e.g. per-indication dosing: { initial, titration, usual_range, max }).
+ * String() on an object rendered "[object Object]".
+ */
+function DosingValue({ value }: { value: unknown }) {
+  if (value === null || value === undefined) return null;
+  if (Array.isArray(value)) {
+    return (
+      <ul className="mt-1 list-disc space-y-1 pl-5">
+        {value.map((item, i) => (
+          <li key={i}>
+            <DosingValue value={item} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  if (typeof value === "object") {
+    return (
+      <span className="mt-1 block space-y-1 pl-4">
+        {Object.entries(value as Record<string, unknown>).map(([k, v]) => (
+          <span key={k} className="block">
+            <span className="font-medium capitalize text-label-primary">{humanizeKey(k)}:</span>{" "}
+            <DosingValue value={v} />
+          </span>
+        ))}
+      </span>
+    );
+  }
+  return <>{String(value)}</>;
+}
+
 const getIconForSectionType = (type: string) => {
   const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
     indications: Shield,
@@ -888,12 +926,12 @@ export default function TreatmentClientWrapper({ entity, intro, guideOmit = [] }
                     <h3 className="mb-2 font-semibold text-label-primary">Adult Dosing</h3>
                     <div className="rounded-lg bg-fill-secondary p-3 space-y-2">
                       {Object.entries(sectionData.adult).map(([key, value]) => (
-                        <p key={key} className="text-label-secondary text-sm">
+                        <div key={key} className="text-label-secondary text-sm">
                           <span className="font-medium capitalize text-label-primary">
                             {key.replace(/_/g, " ")}:
                           </span>{" "}
-                          {String(value)}
-                        </p>
+                          <DosingValue value={value} />
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -942,12 +980,12 @@ export default function TreatmentClientWrapper({ entity, intro, guideOmit = [] }
               <h3 className="mb-2 font-semibold text-label-primary">Adult Dosing</h3>
               <div className="rounded-lg bg-surface-grouped p-3 space-y-2">
                 {Object.entries(sectionData.adult).map(([key, value]: [string, any]) => (
-                  <p key={key} className="text-label-secondary">
+                  <div key={key} className="text-label-secondary">
                     <span className="font-medium capitalize text-label-primary">
                       {key.replace(/_/g, " ")}:
                     </span>{" "}
-                    {String(value)}
-                  </p>
+                    <DosingValue value={value} />
+                  </div>
                 ))}
               </div>
             </div>
@@ -1345,12 +1383,14 @@ export default function TreatmentClientWrapper({ entity, intro, guideOmit = [] }
     if (type === "cost_considerations") {
       return (
         <div className="space-y-3 text-label-secondary">
-          {Object.entries(sectionData).map(([key, value]: [string, any]) => (
-            <p key={key}>
-              <span className="font-semibold capitalize text-label-primary">{key.replace(/_/g, " ")}:</span>{" "}
-              <ParsedContent content={String(value)} />
-            </p>
-          ))}
+          {Object.entries(sectionData)
+            .filter(([key, value]) => !SECTION_INTERNAL_KEYS.has(key) && value !== null && value !== undefined && value !== "")
+            .map(([key, value]: [string, any]) => (
+              <p key={key}>
+                <span className="font-semibold capitalize text-label-primary">{humanizeKey(key)}:</span>{" "}
+                <ParsedContent content={String(value)} />
+              </p>
+            ))}
         </div>
       );
     }

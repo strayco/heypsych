@@ -7,6 +7,14 @@ import type { ResourceRendererProps } from "./index";
 
 export function GenericRenderer({ resource }: ResourceRendererProps) {
   const data = resource as any;
+  // summary is usually a string, but comparison records store an object
+  // ({ bottom_line, winner_for }); String() on it rendered "[object Object]".
+  const summaryText: string | null =
+    typeof data.summary === "string"
+      ? data.summary
+      : typeof data.summary?.bottom_line === "string"
+        ? data.summary.bottom_line
+        : null;
 
   return (
     <>
@@ -20,8 +28,8 @@ export function GenericRenderer({ resource }: ResourceRendererProps) {
           {resource.description && (
             <ParsedContent content={String(resource.description)} className="text-label-secondary" />
           )}
-          {data.summary && (
-            <ParsedContent content={String(data.summary)} className="text-label-secondary" />
+          {summaryText && (
+            <ParsedContent content={summaryText} className="text-label-secondary" />
           )}
         </CardContent>
       </Card>
